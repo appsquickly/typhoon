@@ -4,14 +4,14 @@ A Spring-like dependency injection container for Objective-C.
 
 ### What is Dependency Injection? 
 
-In conventional software development, the dependent object decides for itself what concrete classes it will use. 
+"In conventional software development, the dependent object decides for itself what concrete classes it will use. 
 In the dependency injection pattern, this decision is delegated to the "injector" which can choose to substitute 
 different concrete class implementations of a dependency contract interface at run-time rather than at compile time.
 
 Being able to make this decision at run-time rather than compile time is the key advantage of dependency injection. 
 Multiple, different implementations of a single software component can be created at run-time and passed (injected) 
 into the same test code. The test code can then test each different software component without being aware that what 
-has been injected is implemented differently. [Wikipedia]
+has been injected is implemented differently." -- Wikipedia
 
 ### Why Spring for Objective-C?
 
