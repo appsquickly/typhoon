@@ -72,7 +72,7 @@
 
 }
 
-- (void)test_handles_circular_dependencies
+- (void)test_prevents_circular_dependencies_by_reference
 {
     SpringXmlComponentFactory* factory = [[SpringXmlComponentFactory alloc] initWithConfigFileName:@"CircularDependenciesAssembly.xml"];
 
@@ -85,8 +85,21 @@
     {
         assertThat([e description], equalTo(@"Circular dependency detected: {(\n    classB,\n    classA\n)}"));
     }
+}
 
+- (void)test_prevents_circular_dependencies_by_type
+{
+    SpringXmlComponentFactory* factory = [[SpringXmlComponentFactory alloc] initWithConfigFileName:@"CircularDependenciesAssembly.xml"];
 
+    @try
+    {
+        ClassADependsOnB* classA = [factory objectForType:[ClassADependsOnB class]];
+        STFail(@"Should have thrown exception");
+    }
+    @catch (NSException* e)
+    {
+        assertThat([e description], equalTo(@"Circular dependency detected: {(\n    classB,\n    classA\n)}"));
+    }
 }
 
 @end
