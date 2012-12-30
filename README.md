@@ -41,6 +41,9 @@ DI though. DI is just a design pattern and you can do it without a container. Ha
 
 
 ```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<assembly>
+
     <component class="Knight" id="knight">
         <property name="quest" ref="quest"/>
         <property name="damselsRescued" value="12"/>
@@ -61,7 +64,11 @@ DI though. DI is just a design pattern and you can do it without a container. Ha
             <argument parameterName="string" value="http://dev.foobar.com/service/"/>
         </factory-method>
     </component>
+
+</assembly>
 ```
+
+### Using Assembled Components 
 
 ```objective-c
 SpringComponentFactory componentFactory = [[SpringXmlComponentFactory alloc] 
