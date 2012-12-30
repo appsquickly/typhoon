@@ -21,9 +21,9 @@ There have been a couple of dependency injection containers that follow in the f
 have done a great job, but personally I prefer a spring-style (especially with XML) approach for the following 
 reasons:
 
-* Allows both dependency injection (classes defined in the DI context) as well as configuration management - values 
-* that get converted to the required type at runtime.
-* Application assembly is all encapsulated in a convenient document. 
+* Allows both dependency injection (classes defined in the DI context) as well as configuration management (values 
+* that get converted to the required type at runtime).
+* Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a convenient document. 
 * Encourages polymorphism and makes it easy to have multiple implementations of a base-class or protocol. For example
  you can have a tunes-store client, and inject either a master-card payment engine or a visa payment engine.
 * Supports dependency injection by type (definitions satisfying a class or protocol) as well as by reference. 
@@ -31,7 +31,7 @@ reasons:
 
 ###Isn't Objective-C a dynamic language? 
 
-Yes, and I love categories, method swizzling duck-typing and all that cool stuff. None of these are replacements for 
+Yes, and I love categories, method swizzling, duck-typing and all that cool stuff. None of these are replacements for 
 DI though. DI is just a design pattern and you can do it without a container. Having one is handy though. 
 
 
@@ -41,6 +41,9 @@ DI though. DI is just a design pattern and you can do it without a container. Ha
 
 
 ```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<assembly>
+
     <component class="Knight" id="knight">
         <property name="quest" ref="quest"/>
         <property name="damselsRescued" value="12"/>
@@ -61,7 +64,11 @@ DI though. DI is just a design pattern and you can do it without a container. Ha
             <argument parameterName="string" value="http://dev.foobar.com/service/"/>
         </factory-method>
     </component>
+
+</assembly>
 ```
+
+### Using Assembled Components 
 
 ```objective-c
 SpringComponentFactory componentFactory = [[SpringXmlComponentFactory alloc] 
@@ -118,7 +125,7 @@ If you're using the API shoot me an email and tell me what you're doing with it.
 # Who's using it? 
 
 * Just me so far. I had a family beach holiday booked over the Christmas/New Year period of 2012, but there was a late typhoon passing over
- the Philippines, so I rolled-up my sleeves and wrote the DI container I was meaning to get around to. It's basically feature-complete for
+ the Philippines, so I rolled-up my sleeves and wrote the DI container that I'd been meaning to get around to. It's basically feature-complete for
  version 1.0, and over the coming days I'll be writing more tests and documentation.
 
 # Authors
