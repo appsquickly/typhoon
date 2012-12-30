@@ -125,7 +125,7 @@ If you're using the API shoot me an email and tell me what you're doing with it.
 # Who's using it? 
 
 * Just me so far. I had a family beach holiday booked over the Christmas/New Year period of 2012, but there was a late typhoon passing over
- the Philippines, so I rolled-up my sleeves and wrote the DI container I was meaning to get around to. It's basically feature-complete for
+ the Philippines, so I rolled-up my sleeves and wrote the DI container that I'd been meaning to get around to. It's basically feature-complete for
  version 1.0, and over the coming days I'll be writing more tests and documentation.
 
 # Authors
