@@ -56,7 +56,8 @@ DI though. DI is just a design pattern and you can do it without a container. Ha
     <component class="CampaignQuest" id="quest" scope="prototype">
         <property name="imageUrl" value="http://www.appsquick.ly/theQuest.jpg"/>
     </component>
-    
+
+    <!-- This time, we're using initializer injection, instead of property injection -->
     <component class="CavalryMan" id="anotherKnight">
         <initializer selector="initWithQuest:">
             <argument parameterName="quest" ref="quest"/>
