@@ -15,7 +15,8 @@
 #import "SpringTypeConverter.h"
 
 
-@interface SpringPrimitiveTypeConverter : NSObject <SpringTypeConverter>
+@interface SpringPrimitiveTypeConverter : NSObject
 
+- (void*)convert:(NSString*)stringValue requiredType:(SpringTypeDescriptor*)typeDescriptor;
 
 @end

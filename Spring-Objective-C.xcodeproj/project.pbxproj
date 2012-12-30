@@ -56,11 +56,13 @@
 		6BAAF73D168B274400507B63 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 6BAAF73C168B274400507B63 /* README */; };
 		6BD6F9A1168936D500FE2774 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD6F984168935FB00FE2774 /* SenTestingKit.framework */; };
 		6BD6F9A2168936D500FE2774 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD6F986168935FB00FE2774 /* Cocoa.framework */; };
+		BA79801ADDCBC4B8E98758A1 /* SpringPassThroughTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79889370B8FF5CDA59B809 /* SpringPassThroughTypeConverter.m */; };
 		BA79811CEE346B32C64200F3 /* RXMLElement+SpringXmlComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79817B99FDC25A21F54C2D /* RXMLElement+SpringXmlComponentFactory.m */; };
 		BA7984CF27AD228E5F031AA3 /* SpringParameterInjectedByValue.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7983996A0CA2392B6135C5 /* SpringParameterInjectedByValue.h */; };
 		BA7985022D4ACCAC87D1036C /* RXMLElement+SpringXmlComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79817B99FDC25A21F54C2D /* RXMLElement+SpringXmlComponentFactory.m */; };
 		BA79851D446E9F6A1639BAEE /* Quest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798E7749DFCE6A88093CCE /* Quest.h */; };
 		BA7985ED08D040AB08963218 /* SpringParameterInjectedByValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798B91A6CD6E636559D4BE /* SpringParameterInjectedByValue.m */; };
+		BA7986154FCB945F25C7EB7E /* SpringPassThroughTypeConverter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798E0A8A42E7BA09670CE3 /* SpringPassThroughTypeConverter.h */; };
 		BA7986FDD3BDA82E7C838AD1 /* SpringBundleResource.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798128D3D8B80920C549F7 /* SpringBundleResource.m */; };
 		BA79871613216FCA07350CFE /* RXMLElement+SpringXmlComponentFactory.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798568F0E1710A3F0DF761 /* RXMLElement+SpringXmlComponentFactory.h */; };
 		BA79876F25A31B1B13B2814E /* RXMLElement+SpringXmlComponentFactory.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798568F0E1710A3F0DF761 /* RXMLElement+SpringXmlComponentFactory.h */; };
@@ -71,8 +73,10 @@
 		BA798B78334A7D1B2F07B631 /* SpringInjectedParameter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798704F1F26A3519F598F0 /* SpringInjectedParameter.h */; };
 		BA798CDB24D3A53A4F5E20A0 /* SpringInjectedParameter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798704F1F26A3519F598F0 /* SpringInjectedParameter.h */; };
 		BA798D159B2E0C44EEFEF4FA /* SpringPropertyInjectionDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA79816210851532B5508614 /* SpringPropertyInjectionDelegate.h */; };
+		BA798DC65CAF5C4CB47E087D /* SpringPassThroughTypeConverter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798E0A8A42E7BA09670CE3 /* SpringPassThroughTypeConverter.h */; };
 		BA798DF233819828A039274D /* Quest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798E7749DFCE6A88093CCE /* Quest.h */; };
 		BA798E1AB198474D577CB312 /* MiddleAgesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = BA798386B768F0D4DEECA5D5 /* MiddleAgesAssembly.xml */; };
+		BA798EACA6FC433F0F8A36F4 /* SpringPassThroughTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79889370B8FF5CDA59B809 /* SpringPassThroughTypeConverter.m */; };
 		BA798EF72DFA8D87DE0B9C73 /* SpringBundleResource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798A0DC71ACCA8F4AD009E /* SpringBundleResource.h */; };
 		BA798EFF4799F469234FF8E7 /* SpringPropertyInjectionDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA79816210851532B5508614 /* SpringPropertyInjectionDelegate.h */; };
 		BA798F4E7C72625BE12C342B /* SpringBundleResource.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798128D3D8B80920C549F7 /* SpringBundleResource.m */; };
@@ -93,6 +97,7 @@
 				BA798D159B2E0C44EEFEF4FA /* SpringPropertyInjectionDelegate.h in CopyFiles */,
 				BA798CDB24D3A53A4F5E20A0 /* SpringInjectedParameter.h in CopyFiles */,
 				BA7984CF27AD228E5F031AA3 /* SpringParameterInjectedByValue.h in CopyFiles */,
+				BA7986154FCB945F25C7EB7E /* SpringPassThroughTypeConverter.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -109,6 +114,7 @@
 				BA798EFF4799F469234FF8E7 /* SpringPropertyInjectionDelegate.h in CopyFiles */,
 				BA798B78334A7D1B2F07B631 /* SpringInjectedParameter.h in CopyFiles */,
 				BA798A893E86A8EC0C97961D /* SpringParameterInjectedByValue.h in CopyFiles */,
+				BA798DC65CAF5C4CB47E087D /* SpringPassThroughTypeConverter.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,9 +192,11 @@
 		BA798568F0E1710A3F0DF761 /* RXMLElement+SpringXmlComponentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RXMLElement+SpringXmlComponentFactory.h"; sourceTree = "<group>"; };
 		BA798704F1F26A3519F598F0 /* SpringInjectedParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringInjectedParameter.h; sourceTree = "<group>"; };
 		BA798754085BEEED840E5182 /* SpringXmlComponentFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringXmlComponentFactoryTests.m; sourceTree = "<group>"; };
+		BA79889370B8FF5CDA59B809 /* SpringPassThroughTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringPassThroughTypeConverter.m; sourceTree = "<group>"; };
 		BA798A0DC71ACCA8F4AD009E /* SpringBundleResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringBundleResource.h; sourceTree = "<group>"; };
 		BA798ACBBE11925AFC181DA2 /* SpringTypeConverterRegistryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringTypeConverterRegistryTests.m; sourceTree = "<group>"; };
 		BA798B91A6CD6E636559D4BE /* SpringParameterInjectedByValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringParameterInjectedByValue.m; sourceTree = "<group>"; };
+		BA798E0A8A42E7BA09670CE3 /* SpringPassThroughTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringPassThroughTypeConverter.h; sourceTree = "<group>"; };
 		BA798E7749DFCE6A88093CCE /* Quest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quest.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -359,6 +367,8 @@
 				6BA9C80D168E92AF00E6AD6C /* SpringTypeConverter.h */,
 				6BA9C80E168E92AF00E6AD6C /* SpringTypeConverterRegistry.h */,
 				6BA9C80F168E92AF00E6AD6C /* SpringTypeConverterRegistry.m */,
+				BA798E0A8A42E7BA09670CE3 /* SpringPassThroughTypeConverter.h */,
+				BA79889370B8FF5CDA59B809 /* SpringPassThroughTypeConverter.m */,
 			);
 			path = TypeConversion;
 			sourceTree = "<group>";
@@ -608,6 +618,7 @@
 				BA7985022D4ACCAC87D1036C /* RXMLElement+SpringXmlComponentFactory.m in Sources */,
 				BA798F4E7C72625BE12C342B /* SpringBundleResource.m in Sources */,
 				BA798B3BEF7AD26B60B0B382 /* SpringParameterInjectedByValue.m in Sources */,
+				BA79801ADDCBC4B8E98758A1 /* SpringPassThroughTypeConverter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +656,7 @@
 				BA7986FDD3BDA82E7C838AD1 /* SpringBundleResource.m in Sources */,
 				BA798A741A5809BFBCDEFC10 /* SpringTypeConverterRegistryTests.m in Sources */,
 				BA7985ED08D040AB08963218 /* SpringParameterInjectedByValue.m in Sources */,
+				BA798EACA6FC433F0F8A36F4 /* SpringPassThroughTypeConverter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

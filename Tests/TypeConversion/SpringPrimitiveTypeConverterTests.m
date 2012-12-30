@@ -26,7 +26,7 @@
 
 @implementation SpringPrimitiveTypeConverterTests
 {
-    id <SpringTypeConverter> _typeConverter;
+    SpringPrimitiveTypeConverter* _typeConverter;
 }
 
 - (void)setUp

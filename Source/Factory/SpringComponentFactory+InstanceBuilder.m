@@ -24,6 +24,7 @@
 #import "SpringPropertyInjectionDelegate.h"
 #import "SpringParameterInjectedByValue.h"
 #import "NSObject+SpringReflectionUtils.h"
+#import "SpringPrimitiveTypeConverter.h"
 
 
 @implementation SpringComponentFactory (InstanceBuilder)
@@ -70,20 +71,22 @@
         else if (parameter.type == SpringParameterInjectedByValueType)
         {
             SpringParameterInjectedByValue* injectedByValue = (SpringParameterInjectedByValue*) parameter;
-            id <SpringTypeConverter> converter;
-            SpringTypeDescriptor* typeDescriptor;
+
+
             if (injectedByValue.classOrProtocol)
             {
-                typeDescriptor = [SpringTypeDescriptor descriptorWithClassOrProtocol:injectedByValue.classOrProtocol];
+                LogDebug(@"$$$$$$$$$$$$ handle object type");
             }
             else
             {
                 NSArray* typeCodes = [instanceOrClass typeCodesForSelector:definition.initializer.selector];
-                typeDescriptor = [SpringTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:parameter.index]];
+                SpringTypeDescriptor* descriptor = [SpringTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:parameter.index]];
+                SpringPrimitiveTypeConverter* converter = [[SpringTypeConverterRegistry shared] primitiveTypeConverter];
+                void* converted = [converter convert:injectedByValue.value requiredType:descriptor];
+                [invocation setArgument:&converted atIndex:parameter.index + 2];
             }
-            converter = [[SpringTypeConverterRegistry shared] converterFor:typeDescriptor];
-            void* converted = [converter convert:injectedByValue.value requiredType:typeDescriptor];
-            [invocation setArgument:&converted atIndex:parameter.index + 2];
+
+
         }
     }
     [invocation invoke];
@@ -132,9 +135,17 @@
     else if (property.type == SpringPropertyInjectionByValueType)
     {
         SpringPropertyInjectedByValue* valueProperty = (SpringPropertyInjectedByValue*) property;
-        id <SpringTypeConverter> converter = [[SpringTypeConverterRegistry shared] converterFor:typeDescriptor];
-        void* converted = [converter convert:valueProperty.textValue requiredType:typeDescriptor];
-        objc_msgSend(instance, [instance setterForPropertyWithName:property.name], converted, nil);
+        if (typeDescriptor.isPrimitive)
+        {
+            SpringPrimitiveTypeConverter* converter = [[SpringTypeConverterRegistry shared] primitiveTypeConverter];
+            void* converted = [converter convert:valueProperty.textValue requiredType:typeDescriptor];
+            objc_msgSend(instance, [instance setterForPropertyWithName:property.name], converted, nil);
+        }
+        else
+        {
+            LogDebug(@"Handle object type");
+            id <SpringTypeConverter> converter = [[SpringTypeConverterRegistry shared] converterFor:typeDescriptor];
+        }
     }
 }
 

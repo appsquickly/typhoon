@@ -15,6 +15,7 @@
 
 @protocol SpringTypeConverter;
 @class SpringTypeDescriptor;
+@class SpringPrimitiveTypeConverter;
 
 
 @interface SpringTypeConverterRegistry : NSObject
@@ -25,6 +26,8 @@
 
 + (SpringTypeConverterRegistry*)shared;
 
-- (id<SpringTypeConverter>)converterFor:(SpringTypeDescriptor*)typeDescriptor;
+- (id<SpringTypeConverter>)converterFor:(id)typeDescriptor;
+
+- (SpringPrimitiveTypeConverter*)primitiveTypeConverter;
 
 @end

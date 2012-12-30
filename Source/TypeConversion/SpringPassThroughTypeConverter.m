@@ -1,14 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-//  AppsQuick.ly
-//  Copyright 2012 AppsQuick.ly
+//  JASPER BLUES
+//  Copyright 2012 Jasper Blues
 //  All Rights Reserved.
 //
-//  NOTICE: AppsQuick.ly permits you to use, modify, and distribute this file
+//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
-
 
 
 #import "SpringPassThroughTypeConverter.h"
@@ -29,7 +28,7 @@
 }
 
 /* =========================================================== Protocol Methods ========================================================= */
-- (id)convert:(NSString*)stringValue requiredType:(SpringTypeDescriptor*)typeDescriptor
+- (id)convert:(NSString*)stringValue
 {
     if (_isMutable)
     {

@@ -50,7 +50,8 @@
 {
     if (typeDescriptor.isPrimitive)
     {
-        return _primitiveTypeConverter;
+        [NSException raise:NSInvalidArgumentException
+                    format:@"Type is primitive. Use [[SpringTypeConverterRegistry shared] primitiveTypeConverter]"];
     }
     else
     {
@@ -61,6 +62,11 @@
         }
     }
     [NSException raise:NSInvalidArgumentException format:@"No type converter registered for type: '%@'.", [typeDescriptor classOrProtocol]];
+}
+
+- (SpringPrimitiveTypeConverter*)primitiveTypeConverter
+{
+    return _primitiveTypeConverter;
 }
 
 
