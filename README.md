@@ -17,15 +17,17 @@ has been injected is implemented differently." -- Wikipedia
 
 Spring is a very popular dependency injection container for Java and .NET. 
 
-There have been a couple of dependency injection containers that follow in the footsteps of Google Guice. The authors
-have done a great job, but personally I prefer a spring-style (especially with XML) approach for the following 
-reasons:
+In Objective-C land, there have been a couple of dependency injection containers that follow in the footsteps of 
+Google Guice. The authors have done a great job (objection is especially good), but personally I prefer a 
+spring-style approach for the following reasons:
 
-* Allows both dependency injection (classes defined in the DI context) as well as configuration management (values 
-* that get converted to the required type at runtime).
-* Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a convenient document. 
-* Encourages polymorphism and makes it easy to have multiple implementations of a base-class or protocol. For example
- you can have a tunes-store client, and inject either a master-card payment engine or a visa payment engine.
+* Allows both dependency injection (injection of classes defined in the DI context) as well as configuration 
+ management (values that get converted to the required type at runtime).
+* Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a 
+convenient document. 
+* Encourages polymorphism and makes it easy to have multiple implementations of a base-class or protocol. For example,
+ let's say you have a music store application that depends on a payment engine. You could define both a master-card 
+ payment engine or a visa payment engine.
 * Supports dependency injection by type (definitions satisfying a class or protocol) as well as by reference. 
 * Also supports "annotation" (aka Macro) and code style injection.
 
