@@ -170,6 +170,7 @@
         }
         else
         {
+            //TODO: Handle object type
             LogDebug(@"$$$$$$$$$$$$$$$$$ Handle object type");
             id <SpringTypeConverter> converter = [[SpringTypeConverterRegistry shared] converterFor:typeDescriptor];
         }
