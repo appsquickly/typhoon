@@ -7,7 +7,7 @@
     </component>
 
     <component class="CampaignQuest" id="quest" scope="prototype">
-
+        <property name="imageUrl" value="http://www.appsquick.ly/theQuest.jpg"/>
     </component>
 
     <component class="CavalryMan" id="anotherKnight">

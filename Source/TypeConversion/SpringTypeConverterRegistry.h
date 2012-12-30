@@ -30,4 +30,6 @@
 
 - (SpringPrimitiveTypeConverter*)primitiveTypeConverter;
 
+- (void)register:(id<SpringTypeConverter>)converter forClassOrProtocol:(id)classOrProtocol;
+
 @end

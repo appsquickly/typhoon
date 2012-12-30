@@ -1,23 +1,19 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-//  JASPER BLUES
-//  Copyright 2012 Jasper Blues
+//  AppsQuick.ly
+//  Copyright 2012 AppsQuick.ly
 //  All Rights Reserved.
 //
-//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
+//  NOTICE: AppsQuick.ly permits you to use, modify, and distribute this file
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import "CampaignQuest.h"
+
+#import <Foundation/Foundation.h>
+#import "SpringTypeConverter.h"
 
 
-@implementation CampaignQuest
-
-- (NSString*)questName
-{
-    return @"Campaign Quest";
-}
-
+@interface SpringNSURLTypeConverter : NSObject<SpringTypeConverter>
 @end

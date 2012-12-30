@@ -141,9 +141,9 @@
         }
         else
         {
-            //TODO: Handle object type
-            LogDebug(@"$$$$$$$$$$$$$$$$$ Handle object type");
-            //id <SpringTypeConverter> converter = [[SpringTypeConverterRegistry shared] converterFor:typeDescriptor];
+            id <SpringTypeConverter> converter = [[SpringTypeConverterRegistry shared] converterFor:typeDescriptor];
+            id converted = [converter convert:valueProperty.textValue];
+            objc_msgSend(instance, [instance setterForPropertyWithName:property.name], converted, nil);
         }
     }
 }

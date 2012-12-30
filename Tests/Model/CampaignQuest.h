@@ -16,5 +16,7 @@
 
 @interface CampaignQuest : NSObject <Quest>
 
+@property (nonatomic, strong) NSURL* imageUrl;
+
 
 @end

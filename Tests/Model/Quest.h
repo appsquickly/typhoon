@@ -16,4 +16,8 @@
 
 - (NSString*)questName;
 
+- (NSURL*)imageUrl;
+
+- (void)setImageUrl:(NSURL*)imageUrl;
+
 @end

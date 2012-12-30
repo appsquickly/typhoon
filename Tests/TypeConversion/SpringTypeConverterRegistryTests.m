@@ -14,11 +14,12 @@
 #import "SpringTypeDescriptor.h"
 #import "NSObject+SpringReflectionUtils.h"
 #import "SpringTypeConverter.h"
+#import "SpringNSURLTypeConverter.h"
 
 
 @interface SpringTypeConverterRegistryTests : SenTestCase
 
-@property(nonatomic, strong) NSURL* url;
+@property(nonatomic, strong) NSData* data;
 
 @end
 
@@ -34,7 +35,7 @@
 
 - (void)test_raises_exception_when_converter_class_not_registered
 {
-    SpringTypeDescriptor* typeDescriptor = [self typeForPropertyWithName:@"url"];
+    SpringTypeDescriptor* typeDescriptor = [self typeForPropertyWithName:@"data"];
 
     @try
     {
@@ -44,9 +45,22 @@
     }
     @catch (NSException* e)
     {
-        assertThat([e description], equalTo(@"No type converter registered for type: 'NSURL'."));
+        assertThat([e description], equalTo(@"No type converter registered for type: 'NSData'."));
     }
+}
 
+- (void)test_raises_exception_when_converter_registered_more_than_once
+{
+    @try
+    {
+        SpringNSURLTypeConverter* converter = [[SpringNSURLTypeConverter alloc] init];
+        [_registry register:converter forClassOrProtocol:[NSURL class]];
+        STFail(@"SHould have thrown exception");
+    }
+    @catch (NSException* e)
+    {
+        assertThat([e description], equalTo(@"Converter for 'NSURL' already registered."));
+    }
 
 }
 
