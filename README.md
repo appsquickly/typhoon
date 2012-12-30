@@ -21,9 +21,9 @@ There have been a couple of dependency injection containers that follow in the f
 have done a great job, but personally I prefer a spring-style (especially with XML) approach for the following 
 reasons:
 
-* Allows both dependency injection (classes defined in the DI context) as well as configuration management - values 
-* that get converted to the required type at runtime.
-* Application assembly is all encapsulated in a convenient document. 
+* Allows both dependency injection (classes defined in the DI context) as well as configuration management (values 
+* that get converted to the required type at runtime).
+* Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a convenient document. 
 * Encourages polymorphism and makes it easy to have multiple implementations of a base-class or protocol. For example
  you can have a tunes-store client, and inject either a master-card payment engine or a visa payment engine.
 * Supports dependency injection by type (definitions satisfying a class or protocol) as well as by reference. 
