@@ -57,11 +57,13 @@ DI though. DI is just a design pattern and you can do it without a container. Ha
         <property name="imageUrl" value="http://www.appsquick.ly/theQuest.jpg"/>
     </component>
 
-    <!-- This time, we're using initializer injection, instead of property injection -->
+    <!-- This time, we're using initializer injection. As shown below, you can also mix initializer injection with
+    property injection -->
     <component class="CavalryMan" id="anotherKnight">
         <initializer selector="initWithQuest:">
             <argument parameterName="quest" ref="quest"/>
         </initializer>
+        <property name="hasHorseWillTravel" value="yes"/>
     </component>
 
     <!-- This is just an example of a factory-method class. In fact, you could just inject an NSURL instance directly by 
@@ -88,7 +90,12 @@ Knight* knight = [_componentFactory objectForKey:@"knight"];
 id<Quest> quest = knight.quest; 
 
 //This has been injected by value. The container takes care of type conversion. 
-NSUInteger damselsRescued = knight.damselsRescued 
+NSUInteger damselsRescued = knight.damselsRescued
+
+//This class conforms to <SpringPropertyInjectionDelegate> which has callbacks that get triggered before and after properties are
+//injected.
+Knight* anotherKnight = [_componentFactory objectForKey:@"anotherKnight"];
+
 
 ```
 

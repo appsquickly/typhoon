@@ -22,6 +22,7 @@
 @property (nonatomic, strong) id<Quest> quest;
 @property (nonatomic, strong) id<NSObject> foobar;
 @property (nonatomic) NSUInteger damselsRescued;
+@property (nonatomic) BOOL hasHorseWillTravel;
 
 - (id)initWithQuest:(id<Quest>)quest;
 

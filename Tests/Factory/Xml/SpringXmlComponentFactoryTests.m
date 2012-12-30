@@ -39,12 +39,12 @@
 
 }
 
-- (void)test_initializer_injection
+- (void)test_mixed_initializer_and_property_injection
 {
     Knight* anotherKnight = [_componentFactory objectForKey:@"anotherKnight"];
     LogDebug(@"Here's another knight: %@", anotherKnight);
     assertThat(anotherKnight.quest, notNilValue());
-
+    assertThatBool(anotherKnight.hasHorseWillTravel, equalToBool(YES));
     _componentFactory = nil;
 }
 
