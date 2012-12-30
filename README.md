@@ -32,7 +32,7 @@ reasons:
 ###Isn't Objective-C a dynamic language? 
 
 Yes, and I love categories, method swizzling, duck-typing and all that cool stuff. None of these are replacements for 
-DI though. DI is just a design pattern and you can do it without a container. Having one is handy though. 
+DI. DI is just a design pattern and you can do it without a container. Having one is handy though. 
 
 
 # Usage
