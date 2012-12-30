@@ -57,8 +57,8 @@ DI though. DI is just a design pattern and you can do it without a container. Ha
         </initializer>
     </component>
 
-    <!-- This is just an example of a factory-method class. You could actually just inject an NSURL class by value. . 
-    . more examples and better docs coming soon! -->
+    <!-- This is just an example of a factory-method class. In fact, you could just inject an NSURL instance directly by 
+    value. . . more examples and better docs to follow in the coming days. -->
     <component class="NSURL" id="serviceUrl">
         <factory-method selector="URLWithString:">
             <argument parameterName="string" value="http://dev.foobar.com/service/"/>
