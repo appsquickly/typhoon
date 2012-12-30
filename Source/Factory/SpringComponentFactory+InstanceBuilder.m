@@ -16,14 +16,12 @@
 #import "SpringParameterInjectedByReference.h"
 #import "SpringComponentInitializer.h"
 #import "SpringPropertyInjectedByReference.h"
-#import "SpringPropertyInjectedByType.h"
 #import "SpringTypeDescriptor.h"
 #import "SpringTypeConverter.h"
 #import "SpringTypeConverterRegistry.h"
 #import "SpringPropertyInjectedByValue.h"
 #import "SpringPropertyInjectionDelegate.h"
 #import "SpringParameterInjectedByValue.h"
-#import "NSObject+SpringReflectionUtils.h"
 #import "SpringPrimitiveTypeConverter.h"
 #import "SpringReflectionUtils.h"
 
@@ -154,6 +152,7 @@
     }
 }
 
+//TODO: Move this to parameter class
 - (SpringTypeDescriptor*)typeDescriptorForParameterAtIndex:(NSUInteger)index inSelector:(SEL)selector ofClassOrInstance:(id)classOrInstance
 {
     BOOL isClass = class_isMetaClass(object_getClass(classOrInstance));
