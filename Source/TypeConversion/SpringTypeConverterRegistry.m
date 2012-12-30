@@ -46,7 +46,7 @@
 
 
 /* ========================================================== Interface Methods ========================================================= */
-- (id <SpringTypeConverter>)typeConverterFor:(SpringTypeDescriptor*)typeDescriptor
+- (id <SpringTypeConverter>)converterFor:(SpringTypeDescriptor*)typeDescriptor
 {
     if (typeDescriptor.isPrimitive)
     {

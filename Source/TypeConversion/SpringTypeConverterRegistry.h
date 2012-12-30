@@ -25,6 +25,6 @@
 
 + (SpringTypeConverterRegistry*)shared;
 
-- (id<SpringTypeConverter>)typeConverterFor:(SpringTypeDescriptor*)typeDescriptor;
+- (id<SpringTypeConverter>)converterFor:(SpringTypeDescriptor*)typeDescriptor;
 
 @end

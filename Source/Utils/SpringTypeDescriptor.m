@@ -101,6 +101,18 @@
     }
 }
 
+/* ============================================================ Utility Methods ========================================================= */
+- (NSString*)description
+{
+    if (_isPrimitive)
+    {
+        return [NSString stringWithFormat:@"Type descriptor for primitive: %i", _primitiveType];
+    }
+    else
+    {
+        return [NSString stringWithFormat:@"Type descriptor: %@", [self classOrProtocol]];
+    }
+}
 
 /* ============================================================ Private Methods ========================================================= */
 - (void)parsePrimitiveType:(NSString*)typeCode
