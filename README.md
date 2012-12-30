@@ -26,6 +26,7 @@ reasons:
 * Application assembly is all encapsulated in a convenient document. 
 * Encourages polymorphism and makes it easy to have multiple implementations of a base-class or protocol. For example
  you can have a tunes-store client, and inject either a master-card payment engine or a visa payment engine.
+* Supports dependency injection by type (definitions satisfying a class or protocol) as well as by reference. 
 * Also supports "annotation" and code style injection. 
 
 ###Isn't Objective-C a dynamic language? 
