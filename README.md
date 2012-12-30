@@ -15,7 +15,7 @@ has been injected is implemented differently." -- Wikipedia
 
 ### Why Spring for Objective-C?
 
-Spring is a very popular dependency injection container for Java and .NET. 
+Spring is a very popular dependency injection container that is available for Java and .NET, as well as ActionScript.  
 
 In Objective-C land, there have been a couple of dependency injection containers that follow in the footsteps of 
 Google Guice. The authors have done a great job (objection is especially good), but personally I prefer a 
@@ -25,11 +25,11 @@ spring-style approach for the following reasons:
  management (values that get converted to the required type at runtime).
 * Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a 
 convenient document. 
-* Encourages polymorphism and makes it easy to have multiple implementations of a base-class or protocol. For example,
- let's say you have a music store application that depends on a payment engine. You could define both a master-card 
- payment engine or a visa payment engine.
+* Encourages polymorphism and makes it easy to have multiple implementations of the same base-class or protocol. 
+ For example, let's say you have a music store application that depends on a payment engine. Spring-style makes it
+easy to define both a master-card payment engine or a visa payment engine.
 * Supports dependency injection by type (definitions satisfying a class or protocol) as well as by reference. 
-* Also supports "annotation" (aka Macro) and code style injection.
+* Also supports "annotation" (aka Macro) and code/DSL style injection.
 
 ###Isn't Objective-C a dynamic language? 
 
