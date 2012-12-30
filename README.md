@@ -45,7 +45,10 @@ DI though. DI is just a design pattern and you can do it without a container. Ha
 <assembly>
 
     <component class="Knight" id="knight">
+        <!-- Dependencies can be resolved by reference (ie a name), or by matching the required type or protocol -->
         <property name="quest" ref="quest"/>
+        <!-- Property arguments can be injected by value. The container will look up the required class or 
+        primitive type. You can also register your own converters. -->
         <property name="damselsRescued" value="12"/>
     </component>
 
@@ -61,7 +64,9 @@ DI though. DI is just a design pattern and you can do it without a container. Ha
     value. . . more examples and better docs to follow in the coming days. -->
     <component class="NSURL" id="serviceUrl">
         <factory-method selector="URLWithString:">
-            <argument parameterName="string" value="http://dev.foobar.com/service/"/>
+            <!-- Initializer arguments require type to be set explicitly, unless the type is a primitive 
+            (BOOL, int , etc) -->
+            <argument parameterName="string" value="http://dev.foobar.com/service/" required-type="NSString" />
         </factory-method>
     </component>
 
