@@ -94,8 +94,8 @@ id<Quest> quest = knight.quest;
 //This has been injected by value. The container takes care of type conversion. 
 NSUInteger damselsRescued = knight.damselsRescued
 
-//This class conforms to <SpringPropertyInjectionDelegate> which has callbacks that get triggered before and after properties are
-//injected.
+//This class conforms to <SpringPropertyInjectionDelegate> which has callbacks that get triggered before 
+//and after properties are injected.
 Knight* anotherKnight = [_componentFactory objectForKey:@"anotherKnight"];
 
 
