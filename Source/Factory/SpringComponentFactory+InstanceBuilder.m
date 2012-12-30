@@ -78,13 +78,13 @@
                 SpringTypeDescriptor* descriptor = [SpringTypeDescriptor descriptorWithClassOrProtocol:injectedByValue.classOrProtocol];
                 id <SpringTypeConverter> converter = [[SpringTypeConverterRegistry shared] converterFor:descriptor];
                 id converted = [converter convert:injectedByValue.value];
-                LogDebug(@"$$$$$$$$$$$ Here's the converted value: %@", converted);
                 [invocation setArgument:&converted atIndex:parameter.index + 2];
             }
             else
             {
                 NSArray* typeCodes = [instanceOrClass typeCodesForSelector:definition.initializer.selector];
                 SpringTypeDescriptor* descriptor = [SpringTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:parameter.index]];
+                LogDebug(@"$$$$$$$$$$$$ Here's the descriptor %@", descriptor);
                 SpringPrimitiveTypeConverter* converter = [[SpringTypeConverterRegistry shared] primitiveTypeConverter];
                 void* converted = [converter convert:injectedByValue.value requiredType:descriptor];
                 [invocation setArgument:&converted atIndex:parameter.index + 2];

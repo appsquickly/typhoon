@@ -46,11 +46,12 @@
     assertThat(anotherKnight.quest, notNilValue());
 }
 
-//- (void)test_factory_method_injection
-//{
-//    NSURL* url =[_componentFactory objectForKey:@"serviceUrl"];
-//    LogDebug(@"Here's the url: %@", url);
-//}
+- (void)test_factory_method_injection
+{
+    LogDebug(@"Component Factory: %@", [_componentFactory description]);
+    NSURL* url =[_componentFactory objectForKey:@"serviceUrl"];
+    LogDebug(@"Here's the url: %@", url);
+}
 
 
 @end

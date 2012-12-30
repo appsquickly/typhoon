@@ -30,4 +30,6 @@
 
 - (id) objectForKey:(NSString*)key;
 
+- (NSString*)description;
+
 @end

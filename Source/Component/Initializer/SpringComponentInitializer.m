@@ -98,7 +98,8 @@
 /* ============================================================ Utility Methods ========================================================= */
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"Initializer: %@", NSStringFromSelector(_selector)];
+    return [NSString stringWithFormat:@"Initializer: %@, isFactoryMethod? %@", NSStringFromSelector(_selector),
+                                      _isFactoryMethod ? @"YES" : @"NO"];
 }
 
 /* ============================================================ Private Methods ========================================================= */

@@ -87,6 +87,16 @@
     return [self objectForDefinition:definition];
 }
 
+/* ============================================================ Utility Methods ========================================================= */
+- (NSString*)description
+{
+    NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
+    [description appendFormat:@"_registry=%@", _registry];
+    [description appendString:@">"];
+    return description;
+}
+
+
 /* ============================================================ Private Methods ========================================================= */
 - (id)objectForDefinition:(SpringComponentDefinition*)definition
 {

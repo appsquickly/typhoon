@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
+#import <Foundation/Foundation.h>
 #import "RXMLElement+SpringXmlComponentFactory.h"
 #import "SpringComponentDefinition.h"
 #import "SpringInjectedProperty.h"
@@ -97,7 +98,27 @@
         {
             NSString* name = [child attribute:@"parameterName"];
             NSString* reference = [child attribute:@"ref"];
-            [initializer injectParameterNamed:name withReference:reference];
+            NSString* value = [child attribute:@"value"];
+
+            if (reference)
+            {
+                [initializer injectParameterNamed:name withReference:reference];
+            }
+            else if (value)
+            {
+                NSString* classAsString = [child attribute:@"required-class"];
+                Class clazz;
+                if (classAsString)
+                {
+                    clazz = NSClassFromString(classAsString);
+                    if (clazz == nil)
+                    {
+                        [NSException raise:NSInvalidArgumentException format:@"Class '%@' could not be resolved."];
+                    }
+                }
+                [initializer injectParameterNamed:name withValueAsText:value requiredTypeOrNil:clazz];
+            }
+
         }
         else
         {
