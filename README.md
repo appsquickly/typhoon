@@ -56,6 +56,8 @@ DI. DI is just a design pattern and you can do it without a container. Having on
     
     <!-- Knight has a dependency on any type of id<Quest>, in this case it's a [CampaignQuest class] -->
     <component class="CampaignQuest" id="quest" scope="prototype">
+        <!-- This is a property of type NSURL. The container will convert the supplied string value and inject it
+        for us .-->
         <property name="imageUrl" value="http://www.appsquick.ly/theQuest.jpg"/>
     </component>
 
@@ -65,6 +67,7 @@ DI. DI is just a design pattern and you can do it without a container. Having on
         <initializer selector="initWithQuest:">
             <argument parameterName="quest" ref="quest"/>
         </initializer>
+        <!-- This is a primitive property of type BOOL -->
         <property name="hasHorseWillTravel" value="yes"/>
     </component>
 
@@ -94,8 +97,8 @@ id<Quest> quest = knight.quest;
 //This has been injected by value. The container takes care of type conversion. 
 NSUInteger damselsRescued = knight.damselsRescued
 
-//This class conforms to <SpringPropertyInjectionDelegate> which has callbacks that get triggered before and after properties are
-//injected.
+//This class conforms to <SpringPropertyInjectionDelegate> which has callbacks that get triggered before 
+//and after properties are injected.
 Knight* anotherKnight = [_componentFactory objectForKey:@"anotherKnight"];
 
 
