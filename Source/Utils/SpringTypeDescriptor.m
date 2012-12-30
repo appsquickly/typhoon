@@ -49,7 +49,7 @@
 
 + (SpringTypeDescriptor*)descriptorWithClassOrProtocol:(id)classOrProtocol;
 {
-    if (class_isMetaClass(classOrProtocol))
+    if (class_isMetaClass(object_getClass(classOrProtocol)))
     {
         return [self descriptorWithTypeCode:[NSString stringWithFormat:@"T@%@", NSStringFromClass(classOrProtocol)]];
     }

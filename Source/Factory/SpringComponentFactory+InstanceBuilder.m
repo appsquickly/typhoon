@@ -82,7 +82,7 @@
                 typeDescriptor = [SpringTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:parameter.index]];
             }
             converter = [[SpringTypeConverterRegistry shared] converterFor:typeDescriptor];
-            void* converted = [converter convertIfNecessary:injectedByValue.value requiredType:typeDescriptor];
+            void* converted = [converter convert:injectedByValue.value requiredType:typeDescriptor];
             [invocation setArgument:&converted atIndex:parameter.index + 2];
         }
     }
@@ -133,7 +133,7 @@
     {
         SpringPropertyInjectedByValue* valueProperty = (SpringPropertyInjectedByValue*) property;
         id <SpringTypeConverter> converter = [[SpringTypeConverterRegistry shared] converterFor:typeDescriptor];
-        void* converted = [converter convertIfNecessary:valueProperty.textValue requiredType:typeDescriptor];
+        void* converted = [converter convert:valueProperty.textValue requiredType:typeDescriptor];
         objc_msgSend(instance, [instance setterForPropertyWithName:property.name], converted, nil);
     }
 }

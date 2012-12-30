@@ -38,22 +38,22 @@
 {
     SpringTypeDescriptor* typeDescriptor = [self typeForPropertyWithName:@"boolProperty"];
 
-    BOOL converted = (BOOL) [_typeConverter convertIfNecessary:@"true" requiredType:typeDescriptor];
+    BOOL converted = (BOOL) [_typeConverter convert:@"true" requiredType:typeDescriptor];
     assertThatBool(converted, equalToBool(YES));
 
-    converted = (BOOL) [_typeConverter convertIfNecessary:@"yes" requiredType:typeDescriptor];
+    converted = (BOOL) [_typeConverter convert:@"yes" requiredType:typeDescriptor];
     assertThatBool(converted, equalToBool(YES));
 
-    converted = (BOOL) [_typeConverter convertIfNecessary:@"1" requiredType:typeDescriptor];
+    converted = (BOOL) [_typeConverter convert:@"1" requiredType:typeDescriptor];
     assertThatBool(converted, equalToBool(YES));
 
-    converted = (BOOL) [_typeConverter convertIfNecessary:@"no" requiredType:typeDescriptor];
+    converted = (BOOL) [_typeConverter convert:@"no" requiredType:typeDescriptor];
     assertThatBool(converted, equalToBool(NO));
 
-    converted = (BOOL) [_typeConverter convertIfNecessary:@"false" requiredType:typeDescriptor];
+    converted = (BOOL) [_typeConverter convert:@"false" requiredType:typeDescriptor];
     assertThatBool(converted, equalToBool(NO));
 
-    converted = (BOOL) [_typeConverter convertIfNecessary:@"0" requiredType:typeDescriptor];
+    converted = (BOOL) [_typeConverter convert:@"0" requiredType:typeDescriptor];
     assertThatBool(converted, equalToBool(NO));
 }
 
@@ -61,10 +61,10 @@
 {
     SpringTypeDescriptor* typeDescriptor = [self typeForPropertyWithName:@"intProperty"];
 
-    int converted = (int) [_typeConverter convertIfNecessary:@"123" requiredType:typeDescriptor];
+    int converted = (int) [_typeConverter convert:@"123" requiredType:typeDescriptor];
     assertThatInt(converted, equalToInt(123));
 
-    converted = (int) [_typeConverter convertIfNecessary:@"zzz" requiredType:typeDescriptor];
+    converted = (int) [_typeConverter convert:@"zzz" requiredType:typeDescriptor];
     assertThatInt(converted, equalToInt(0));
 }
 
@@ -72,10 +72,10 @@
 {
     SpringTypeDescriptor* typeDescriptor = [self typeForPropertyWithName:@"nsuIntegerProperty"];
 
-    NSUInteger converted = (NSUInteger) [_typeConverter convertIfNecessary:@"123" requiredType:typeDescriptor];
+    NSUInteger converted = (NSUInteger) [_typeConverter convert:@"123" requiredType:typeDescriptor];
     assertThatUnsignedLongLong(converted, equalToUnsignedLongLong(123));
 
-    converted = (int) [_typeConverter convertIfNecessary:@"zzz" requiredType:typeDescriptor];
+    converted = (int) [_typeConverter convert:@"zzz" requiredType:typeDescriptor];
     assertThatUnsignedLongLong(converted, equalToUnsignedLongLong(0));
 }
 

@@ -17,6 +17,6 @@
 
 @protocol SpringTypeConverter <NSObject>
 
-- (void*)convertIfNecessary:(NSString*)stringValue requiredType:(SpringTypeDescriptor*)typeDescriptor;
+- (void*)convert:(NSString*)stringValue requiredType:(SpringTypeDescriptor*)typeDescriptor;
 
 @end

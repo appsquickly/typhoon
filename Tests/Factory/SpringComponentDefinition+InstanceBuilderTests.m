@@ -51,13 +51,16 @@
 
 - (void)test_injects_required_initializer_dependencies_with_factory_method
 {
-    SpringComponentDefinition* bundleDefinition = [[SpringComponentDefinition alloc] initWithClazz:[NSBundle class] key:@"bundle"];
-    [bundleDefinition setInitializer:[[SpringComponentInitializer alloc] initWithSelector:@selector(mainBundle) isFactoryMethod:YES]];
-    [_componentFactory register:bundleDefinition];
+    SpringComponentDefinition* urlDefinition = [[SpringComponentDefinition alloc] initWithClazz:[NSURL class] key:@"url"];
+    SpringComponentInitializer
+            * initializer = [[SpringComponentInitializer alloc] initWithSelector:@selector(URLWithString:) isFactoryMethod:YES];
+    [initializer injectParameterAt:0 withValueAsText:@"http://www.appsquick.ly" requiredTypeOrNil:[NSString class]];
+    [urlDefinition setInitializer:initializer];
+    [_componentFactory register:urlDefinition];
 
-    NSBundle* bundle = [_componentFactory buildInstanceWithDefinition:bundleDefinition];
-    LogDebug(@"Here's the bundle: %@", bundle);
-    assertThat(bundle, notNilValue());
+    NSURL* url = [_componentFactory buildInstanceWithDefinition:urlDefinition];
+    LogDebug(@"Here's the bundle: %@", url);
+    assertThat(url, notNilValue());
 }
 
 - (void)test_injects_required_property_dependencies
@@ -121,23 +124,5 @@
     assertThatLong(knight.damselsRescued, equalToLongLong(12));
 }
 
-- (void)test_ivar_reflection
-{
-    unsigned int ivarCount = 0;
-    Ivar* ivars = class_copyIvarList([Knight class], &ivarCount);
-
-    for (unsigned int x = 0; x < ivarCount; x++)
-    {
-        NSLog(@"Name [%@] encoding [%@]", [NSString stringWithCString:ivar_getName(ivars[x]) encoding:NSUTF8StringEncoding],
-                [NSString stringWithCString:ivar_getTypeEncoding(ivars[x]) encoding:NSUTF8StringEncoding]);
-    }
-
-}
-
-- (void)test_is_kind_of_class
-{
-    BOOL kind = [[CampaignQuest class] conformsToProtocol:@protocol(NSTableViewDataSource)];
-    LogDebug(@"Is kind of class? %@", kind == YES ? @"YES" : @"NO");
-}
 
 @end
