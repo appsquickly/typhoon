@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>SpringPrimitiveTypeConverter Class Reference</title>
+		<title>SpringReflectionUtils Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">SpringPrimitiveTypeConverter Class Reference</h1>
+				<h1 class="hideInXcode">SpringReflectionUtils Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -38,11 +38,11 @@
 	
 	
 	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/typeCodesForSelector:ofClass:isClassMethod:">&nbsp;&nbsp;&nbsp;&nbsp;+ typeCodesForSelector:ofClass:isClassMethod:</option>
 	
 	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/convert:requiredType:">&nbsp;&nbsp;&nbsp;&nbsp;- convert:requiredType:</option>
 	
 	
 	
@@ -66,20 +66,20 @@
 
 
 
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/convert:requiredType:">convert:requiredType:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/typeCodesForSelector:ofClass:isClassMethod:">typeCodesForSelector:ofClass:isClassMethod:</a></span></li>
 	
 </ul></li>
+
+
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="SpringPrimitiveTypeConverter Class Reference" name="top"></a>
+				<a title="SpringReflectionUtils Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -88,7 +88,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">SpringPrimitiveTypeConverter Class Reference</h1>
+						<h1 class="title title-header">SpringReflectionUtils Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -99,7 +99,7 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">SpringPrimitiveTypeConverter.h</td>
+	<td class="specification-value">SpringReflectionUtils.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -119,7 +119,7 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/convert:requiredType:">&ndash;&nbsp;convert:requiredType:</a></code>
+		<code><a href="#//api/name/typeCodesForSelector:ofClass:isClassMethod:">+&nbsp;typeCodesForSelector:ofClass:isClassMethod:</a></code>
 		
 	</span>
 	
@@ -135,24 +135,24 @@
 					
 					
 					
-					
-					
 					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/convert:requiredType:" title="convert:requiredType:"></a>
-	<h3 class="subsubtitle method-title">convert:requiredType:</h3>
+	<a name="//api/name/typeCodesForSelector:ofClass:isClassMethod:" title="typeCodesForSelector:ofClass:isClassMethod:"></a>
+	<h3 class="subsubtitle method-title">typeCodesForSelector:ofClass:isClassMethod:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (void *)convert:(NSString *)<em>stringValue</em> requiredType:(SpringTypeDescriptor *)<em>typeDescriptor</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (NSArray *)typeCodesForSelector:(SEL)<em>selector</em> ofClass:(Class)<em>clazz</em> isClassMethod:(BOOL)<em>isClassMethod</em></code></div>
 
     
 </div>
 						
 					</div>
+					
+					
 					
 					
 				</div>

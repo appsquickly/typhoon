@@ -75,7 +75,7 @@
 <span class="lineNum">      17 </span>            : @implementation SpringPrimitiveTypeConverter
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span>            : - (void*)convertIfNecessary:(NSString*)stringValue requiredType:(SpringTypeDescriptor*)typeDescriptor
+<span class="lineNum">      20 </span>            : - (void*)convert:(NSString*)stringValue requiredType:(SpringTypeDescriptor*)typeDescriptor
 <span class="lineNum">      21 </span><span class="lineCov">         13 : {</span>
 <span class="lineNum">      22 </span>            :     LogDebug(@&quot;Converting value: %@&quot;, stringValue);
 <span class="lineNum">      23 </span><span class="lineCov">         13 :     [self checkSupportedTypes:typeDescriptor];</span>

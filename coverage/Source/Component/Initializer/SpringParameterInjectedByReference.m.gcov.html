@@ -72,20 +72,20 @@
 <span class="lineNum">      14 </span>            : #import &quot;SpringParameterInjectedByReference.h&quot;
 <span class="lineNum">      15 </span>            : 
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span><span class="lineCov">          2 : @implementation SpringParameterInjectedByReference</span>
+<span class="lineNum">      17 </span><span class="lineCov">          1 : @implementation SpringParameterInjectedByReference</span>
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span>            : /* ============================================================ Initializers ============================================================ */
 <span class="lineNum">      20 </span>            : - (id)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString*)reference
-<span class="lineNum">      21 </span><span class="lineCov">         11 : {</span>
+<span class="lineNum">      21 </span><span class="lineCov">         10 : {</span>
 <span class="lineNum">      22 </span>            :     self = [super init];
-<span class="lineNum">      23 </span><span class="lineCov">         11 :     if (self)</span>
-<span class="lineNum">      24 </span><span class="lineCov">         11 :     {</span>
+<span class="lineNum">      23 </span><span class="lineCov">         10 :     if (self)</span>
+<span class="lineNum">      24 </span><span class="lineCov">         10 :     {</span>
 <span class="lineNum">      25 </span>            :         _index = parameterIndex;
-<span class="lineNum">      26 </span><span class="lineCov">         11 :         _reference = reference;</span>
-<span class="lineNum">      27 </span><span class="lineCov">         11 :     }</span>
-<span class="lineNum">      28 </span><span class="lineCov">         11 :     return self;</span>
-<span class="lineNum">      29 </span><span class="lineCov">         11 : }</span>
-<span class="lineNum">      30 </span><span class="lineCov">         11 : </span>
+<span class="lineNum">      26 </span><span class="lineCov">         10 :         _reference = reference;</span>
+<span class="lineNum">      27 </span><span class="lineCov">         10 :     }</span>
+<span class="lineNum">      28 </span><span class="lineCov">         10 :     return self;</span>
+<span class="lineNum">      29 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">      30 </span><span class="lineCov">         10 : </span>
 <span class="lineNum">      31 </span>            : /* =========================================================== Protocol Methods ========================================================= */
 <span class="lineNum">      32 </span>            : - (SpringParameterInjectionType)type
 <span class="lineNum">      33 </span><span class="lineCov">          6 : {</span>
