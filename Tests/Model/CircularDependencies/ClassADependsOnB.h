@@ -13,25 +13,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class SpringComponentDefinition;
+@class ClassBDependsOnA;
 
 
-@interface SpringComponentFactory : NSObject
-{
-    NSMutableArray* _registry;
-    NSMutableDictionary* _singletons;
+@interface ClassADependsOnB : NSObject
 
-    NSMutableSet* _currentlyResolvingReferences;
-}
-
-- (void) register:(SpringComponentDefinition*)definition;
-
-- (id) objectForType:(id)classOrProtocol;
-
- - (NSArray*)allObjectsForType:(id)classOrProtocol;
-
-- (id) objectForKey:(NSString*)key;
-
-- (NSString*)description;
+@property(nonatomic, strong) ClassBDependsOnA* dependencyOnB;
 
 @end

@@ -25,6 +25,7 @@
     {
         _registry = [[NSMutableArray alloc] init];
         _singletons = [[NSMutableDictionary alloc] init];
+        _currentlyResolvingReferences = [[NSMutableSet alloc] init];
     }
     return self;
 }
@@ -66,7 +67,8 @@
             {
                 [results addObject:[self objectForDefinition:definition]];
             }
-        } else
+        }
+        else
         {
             if ([definition.type conformsToProtocol:classOrProtocol])
             {
@@ -79,12 +81,19 @@
 
 - (id)objectForKey:(NSString*)key
 {
+    if ([_currentlyResolvingReferences containsObject:key])
+    {
+        [NSException raise:NSInvalidArgumentException format:@"Circular dependency detected: %@", _currentlyResolvingReferences];
+    }
+    [_currentlyResolvingReferences addObject:key];
     SpringComponentDefinition* definition = [self definitionForKey:key];
     if (!definition)
     {
         [NSException raise:NSInvalidArgumentException format:@"No component matching id '%@'.", key];
     }
-    return [self objectForDefinition:definition];
+    id returnValue = [self objectForDefinition:definition];
+    [_currentlyResolvingReferences removeAllObjects];
+    return returnValue;
 }
 
 /* ============================================================ Utility Methods ========================================================= */
@@ -103,7 +112,8 @@
     if (definition.lifecycle == SpringComponentLifeCycleSingleton)
     {
         return [self singletonForKey:definition];
-    } else
+    }
+    else
     {
         return [self buildInstanceWithDefinition:definition];
     }

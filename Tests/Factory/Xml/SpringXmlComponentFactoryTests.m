@@ -12,6 +12,8 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "SpringXmlComponentFactory.h"
 #import "Knight.h"
+#import "ClassADependsOnB.h"
+#import "ClassBDependsOnA.h"
 
 
 @interface SpringXmlComponentFactoryTests : SenTestCase
@@ -64,10 +66,23 @@
     }
     @catch (NSException* e)
     {
-        assertThat([e description], equalTo(@"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"));
+        assertThat([e description], equalTo(
+            @"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"));
     }
 
 }
 
+- (void)test_handles_circular_dependencies
+{
+    SpringXmlComponentFactory* factory = [[SpringXmlComponentFactory alloc] initWithConfigFileName:@"CircularDependenciesAssembly.xml"];
+
+    ClassADependsOnB* classA = [factory objectForKey:@"classA"];
+    assertThat(classA, notNilValue());
+    assertThat(classA.dependencyOnB, notNilValue());
+
+    ClassBDependsOnA* classB = [factory objectForKey:@"classB"];
+    assertThat(classB, notNilValue());
+    assertThat(classB.dependencyOnA, notNilValue());
+}
 
 @end
