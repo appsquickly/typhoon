@@ -45,7 +45,7 @@
     {
         instance = [self invokeInitializerOn:instance withDefinition:definition];
     }
-    else
+    else if (definition.initializer == nil)
     {
         instance = objc_msgSend(instance, @selector(init));
     }
@@ -75,7 +75,11 @@
 
             if (injectedByValue.classOrProtocol)
             {
-                LogDebug(@"$$$$$$$$$$$$ handle object type");
+                SpringTypeDescriptor* descriptor = [SpringTypeDescriptor descriptorWithClassOrProtocol:injectedByValue.classOrProtocol];
+                id <SpringTypeConverter> converter = [[SpringTypeConverterRegistry shared] converterFor:descriptor];
+                id converted = [converter convert:injectedByValue.value];
+                LogDebug(@"$$$$$$$$$$$ Here's the converted value: %@", converted);
+                [invocation setArgument:&converted atIndex:parameter.index + 2];
             }
             else
             {
@@ -85,13 +89,20 @@
                 void* converted = [converter convert:injectedByValue.value requiredType:descriptor];
                 [invocation setArgument:&converted atIndex:parameter.index + 2];
             }
-
-
         }
     }
     [invocation invoke];
-    [invocation getReturnValue:&instanceOrClass];
-    return instanceOrClass;
+    if (definition.initializer.isFactoryMethod)
+    {
+        id <NSObject> returnValue = nil;
+        [invocation getReturnValue:&returnValue];
+        return returnValue;
+    }
+    else
+    {
+        [invocation getReturnValue:&instanceOrClass];
+        return instanceOrClass;
+    }
 }
 
 - (void)injectPropertyDependenciesOn:(id <SpringReflectiveNSObject>)instance withDefinition:(SpringComponentDefinition*)definition
@@ -143,7 +154,7 @@
         }
         else
         {
-            LogDebug(@"Handle object type");
+            LogDebug(@"$$$$$$$$$$$$$$$$$ Handle object type");
             id <SpringTypeConverter> converter = [[SpringTypeConverterRegistry shared] converterFor:typeDescriptor];
         }
     }

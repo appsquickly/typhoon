@@ -36,7 +36,7 @@
     }
     else
     {
-        return [stringValue copy];
+        return [NSString stringWithString:stringValue];
     }
 }
 

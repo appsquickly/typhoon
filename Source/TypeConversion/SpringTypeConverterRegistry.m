@@ -15,6 +15,7 @@
 #import "SpringTypeConverter.h"
 #import "SpringTypeDescriptor.h"
 #import "SpringPrimitiveTypeConverter.h"
+#import "SpringPassThroughTypeConverter.h"
 
 
 @implementation SpringTypeConverterRegistry
@@ -40,6 +41,10 @@
     {
         _typeConverters = [[NSMutableDictionary alloc] init];
         _primitiveTypeConverter = [[SpringPrimitiveTypeConverter alloc] init];
+
+        [_typeConverters setObject:[[SpringPassThroughTypeConverter alloc] initWithIsMutable:NO] forKey:(id <NSCopying>) [NSString class]];
+        [_typeConverters setObject:[[SpringPassThroughTypeConverter alloc] initWithIsMutable:YES]
+                            forKey:(id <NSCopying>) [NSMutableString class]];
     }
     return self;
 }
@@ -62,6 +67,7 @@
         }
     }
     [NSException raise:NSInvalidArgumentException format:@"No type converter registered for type: '%@'.", [typeDescriptor classOrProtocol]];
+    return nil;
 }
 
 - (SpringPrimitiveTypeConverter*)primitiveTypeConverter

@@ -20,13 +20,13 @@
 
 @interface SpringTypeConverterRegistry : NSObject
 {
-    id<SpringTypeConverter> _primitiveTypeConverter;
+    SpringPrimitiveTypeConverter* _primitiveTypeConverter;
     NSMutableDictionary* _typeConverters;
 }
 
 + (SpringTypeConverterRegistry*)shared;
 
-- (id<SpringTypeConverter>)converterFor:(id)typeDescriptor;
+- (id <SpringTypeConverter>)converterFor:(id)typeDescriptor;
 
 - (SpringPrimitiveTypeConverter*)primitiveTypeConverter;
 
