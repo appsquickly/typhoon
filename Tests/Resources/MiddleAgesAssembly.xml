@@ -22,5 +22,11 @@
         </factory-method>
     </component>
 
+    <component class="NSURL" id="anotherServiceUrl">
+        <factory-method selector="URLWithString:">
+            <argument parameterName="string" value="http://dev.foobar.com/service/" />
+        </factory-method>
+    </component>
+
 </assembly>
 

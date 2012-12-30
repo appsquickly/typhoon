@@ -42,7 +42,7 @@
         [componentDefinitions addObject:definition];
     }];
 
-    assertThat(componentDefinitions, hasCountOf(4));
+    assertThat(componentDefinitions, hasCountOf(5));
 }
 
 

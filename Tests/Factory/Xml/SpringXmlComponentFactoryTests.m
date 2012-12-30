@@ -48,9 +48,23 @@
 
 - (void)test_factory_method_injection
 {
-    LogDebug(@"Component Factory: %@", [_componentFactory description]);
-    NSURL* url =[_componentFactory objectForKey:@"serviceUrl"];
+    NSURL* url = [_componentFactory objectForKey:@"serviceUrl"];
     LogDebug(@"Here's the url: %@", url);
+}
+
+- (void)test_factory_method_injection_raises_exception_if_required_class_not_set
+{
+    @try
+    {
+        NSURL* url = [_componentFactory objectForKey:@"anotherServiceUrl"];
+        LogDebug(@"Here's the url: %@", url);
+        STFail(@"Should have thrown exception");
+    }
+    @catch (NSException* e)
+    {
+        assertThat([e description], equalTo(@"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"));
+    }
+
 }
 
 
