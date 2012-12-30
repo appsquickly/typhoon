@@ -76,13 +76,17 @@
 {
     SpringXmlComponentFactory* factory = [[SpringXmlComponentFactory alloc] initWithConfigFileName:@"CircularDependenciesAssembly.xml"];
 
-    ClassADependsOnB* classA = [factory objectForKey:@"classA"];
-    assertThat(classA, notNilValue());
-    assertThat(classA.dependencyOnB, notNilValue());
+    @try
+    {
+        ClassADependsOnB* classA = [factory objectForKey:@"classA"];
+        STFail(@"Should have thrown exception");
+    }
+    @catch (NSException* e)
+    {
+        assertThat([e description], equalTo(@"Circular dependency detected: {(\n    classB,\n    classA\n)}"));
+    }
 
-    ClassBDependsOnA* classB = [factory objectForKey:@"classB"];
-    assertThat(classB, notNilValue());
-    assertThat(classB.dependencyOnA, notNilValue());
+
 }
 
 @end
