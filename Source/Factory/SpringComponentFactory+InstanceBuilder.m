@@ -57,7 +57,6 @@
 
 
 /* ============================================================ Private Methods ========================================================= */
-//TODO: Too long - clean this up!!!!!!
 - (id)invokeInitializerOn:(id)instanceOrClass withDefinition:(SpringComponentDefinition*)definition
 {
     NSInvocation* invocation = [definition.initializer asInvocationFor:instanceOrClass];
@@ -74,7 +73,6 @@
         {
             SpringParameterInjectedByValue* injectedByValue = (SpringParameterInjectedByValue*) parameter;
 
-
             if (injectedByValue.classOrProtocol)
             {
                 SpringTypeDescriptor* descriptor = [SpringTypeDescriptor descriptorWithClassOrProtocol:injectedByValue.classOrProtocol];
@@ -84,41 +82,20 @@
             }
             else
             {
-                NSArray* typeCodes;
-                if (definition.initializer.isFactoryMethod)
-                {
-                    typeCodes = [SpringReflectionUtils typeCodesForSelector:definition.initializer.selector ofClass:instanceOrClass
-                                                              isClassMethod:YES];
-                }
-                else
-                {
-                    typeCodes = [instanceOrClass typeCodesForSelector:definition.initializer.selector];
-                }
-                if ([[typeCodes objectAtIndex:parameter.index] isEqualToString:@"@"])
-                {
-                    [NSException raise:NSInvalidArgumentException
-                                format:@"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"];
-                }
-                SpringTypeDescriptor* descriptor = [SpringTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:parameter.index]];
-                LogDebug(@"$$$$$$$$$$$$ Here's the descriptor %@", descriptor);
                 SpringPrimitiveTypeConverter* converter = [[SpringTypeConverterRegistry shared] primitiveTypeConverter];
+                SpringTypeDescriptor* descriptor =
+                        [self typeDescriptorForParameterAtIndex:parameter.index inSelector:definition.initializer.selector
+                                              ofClassOrInstance:instanceOrClass];
+
                 void* converted = [converter convert:injectedByValue.value requiredType:descriptor];
                 [invocation setArgument:&converted atIndex:parameter.index + 2];
             }
         }
     }
     [invocation invoke];
-    if (definition.initializer.isFactoryMethod)
-    {
-        id <NSObject> returnValue = nil;
-        [invocation getReturnValue:&returnValue];
-        return returnValue;
-    }
-    else
-    {
-        [invocation getReturnValue:&instanceOrClass];
-        return instanceOrClass;
-    }
+    id<NSObject> returnValue = definition.initializer.isFactoryMethod ? nil : instanceOrClass;
+    [invocation getReturnValue:&returnValue];
+    return returnValue;
 }
 
 - (void)injectPropertyDependenciesOn:(id <SpringReflectiveNSObject>)instance withDefinition:(SpringComponentDefinition*)definition
@@ -177,5 +154,27 @@
     }
 }
 
+- (SpringTypeDescriptor*)typeDescriptorForParameterAtIndex:(NSUInteger)index inSelector:(SEL)selector ofClassOrInstance:(id)classOrInstance
+{
+    BOOL isClass = class_isMetaClass(object_getClass(classOrInstance));
+    Class clazz;
+    if (isClass)
+    {
+        clazz = classOrInstance;
+    }
+    else
+    {
+        clazz = [classOrInstance class];
+    }
+    NSArray* typeCodes = [SpringReflectionUtils typeCodesForSelector:selector ofClass:clazz isClassMethod:isClass];
+
+    if ([[typeCodes objectAtIndex:index] isEqualToString:@"@"])
+    {
+        [NSException raise:NSInvalidArgumentException
+                    format:@"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"];
+    }
+    return [SpringTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:index]];
+
+}
 
 @end

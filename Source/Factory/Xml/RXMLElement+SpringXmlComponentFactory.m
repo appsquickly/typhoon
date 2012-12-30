@@ -113,7 +113,7 @@
                     clazz = NSClassFromString(classAsString);
                     if (clazz == nil)
                     {
-                        [NSException raise:NSInvalidArgumentException format:@"Class '%@' could not be resolved."];
+                        [NSException raise:NSInvalidArgumentException format:@"Class '%@' could not be resolved.", classAsString];
                     }
                 }
                 [initializer injectParameterNamed:name withValueAsText:value requiredTypeOrNil:clazz];
