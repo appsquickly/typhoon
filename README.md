@@ -80,9 +80,13 @@ DI though. DI is just a design pattern and you can do it without a container. Ha
 SpringComponentFactory componentFactory = [[SpringXmlComponentFactory alloc] 
     initWithConfigFileName:@"MiddleAgesAssembly.xml"];
 Knight* knight = [_componentFactory objectForKey:@"knight"];
-id<Quest> quest = knight.quest; //This has been injected by reference
-NSUInteger damselsRescued = knight.damselsRescued //This has been injected by value. The container takes care of 
-type conversion. 
+
+//This has been injected by reference
+id<Quest> quest = knight.quest; 
+
+//This has been injected by value. The container takes care of type conversion. 
+NSUInteger damselsRescued = knight.damselsRescued 
+
 ```
 
 # Docs
