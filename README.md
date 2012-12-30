@@ -45,23 +45,29 @@ DI though. DI is just a design pattern and you can do it without a container. Ha
 <assembly>
 
     <component class="Knight" id="knight">
+        <!-- Dependencies can be resolved by reference (ie a name), or by matching the required type or protocol -->
         <property name="quest" ref="quest"/>
+        <!-- Property arguments can be injected by value. The container will look up the required class or 
+        primitive type. You can also register your own converters. -->
         <property name="damselsRescued" value="12"/>
     </component>
-
-    <component class="CampaignQuest" id="quest" scope="prototype">
-
-    </component>
-
+    
+    <!-- Knight has a dependency on any type of id<Quest>, in this case it's a [CampaignQuest class] -->
+    <component class="CampaignQuest" id="quest" scope="prototype"/>
+    
     <component class="CavalryMan" id="anotherKnight">
         <initializer selector="initWithQuest:">
             <argument parameterName="quest" ref="quest"/>
         </initializer>
     </component>
 
+    <!-- This is just an example of a factory-method class. In fact, you could just inject an NSURL instance directly by 
+    value. . . more examples and better docs to follow in the coming days. -->
     <component class="NSURL" id="serviceUrl">
         <factory-method selector="URLWithString:">
-            <argument parameterName="string" value="http://dev.foobar.com/service/"/>
+            <!-- Initializer arguments require type to be set explicitly, unless the type is a primitive 
+            (BOOL, int , etc) -->
+            <argument parameterName="string" value="http://dev.foobar.com/service/" required-type="NSString" />
         </factory-method>
     </component>
 
@@ -74,7 +80,13 @@ DI though. DI is just a design pattern and you can do it without a container. Ha
 SpringComponentFactory componentFactory = [[SpringXmlComponentFactory alloc] 
     initWithConfigFileName:@"MiddleAgesAssembly.xml"];
 Knight* knight = [_componentFactory objectForKey:@"knight"];
-id<Quest> quest = knight.quest;
+
+//This has been injected by reference
+id<Quest> quest = knight.quest; 
+
+//This has been injected by value. The container takes care of type conversion. 
+NSUInteger damselsRescued = knight.damselsRescued 
+
 ```
 
 # Docs
@@ -120,14 +132,17 @@ If you're using the API shoot me an email and tell me what you're doing with it.
 
 # Compatibility 
 
-* Spring-Objective-C can be used with OSX and iOS. It has not been tested with GnuStep. It uses ARC.
+* Spring-Objective-C can be used with OSX and iOS. It has not been tested with GnuStep. It was built with ARC, but
+should also work with garbage collection and 32 bit environments (more on this in the coming days). 
 
 # Who's using it? 
 
 * Just me so far. I had a family beach holiday booked over the Christmas/New Year period of 2012, but there was a late typhoon passing over
  the Philippines, so I rolled-up my sleeves and wrote the DI container that I'd been meaning to get around to. It's basically feature-complete for
  version 1.0, and over the coming days I'll be writing more tests and documentation.
-
+ 
+ If you're using it, please shoot me an email and let me know.
+ 
 # Authors
 
 * <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> - <a href="mailto:jasper@appsquick.ly?Subject=spring-objective-c">jasper@appsquick.ly</a>
