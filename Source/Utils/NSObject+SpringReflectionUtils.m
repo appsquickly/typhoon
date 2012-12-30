@@ -13,6 +13,7 @@
 
 #import <objc/runtime.h>
 #import "SpringTypeDescriptor.h"
+#import "SpringReflectionUtils.h"
 
 
 @implementation NSObject (SpringReflectionUtils)
@@ -81,18 +82,9 @@
 
 - (NSArray*)typeCodesForSelector:(SEL)selector
 {
-    NSMutableArray* typeCodes = [[NSMutableArray alloc] init];
-
-    Method method = class_getInstanceMethod([self class], selector);
-    unsigned int argumentCount = method_getNumberOfArguments(method);
-
-    for (int i = 2; i < argumentCount; i++)
-    {
-        char typeInfo[100];
-        method_getArgumentType(method, i, typeInfo, 100);
-        [typeCodes addObject:[NSString stringWithUTF8String:typeInfo]];
-    }
-    return [typeCodes copy];
+    return [SpringReflectionUtils typeCodesForSelector:selector ofClass:[self class] isClassMethod:NO];
 }
+
+
 
 @end

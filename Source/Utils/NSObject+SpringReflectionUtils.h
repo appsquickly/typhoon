@@ -29,4 +29,6 @@
 
 - (NSArray*)typeCodesForSelector:(SEL)selector;
 
+- (NSArray*)typeCodesForSelector:(SEL)selector onClass:(Class)class;
+
 @end

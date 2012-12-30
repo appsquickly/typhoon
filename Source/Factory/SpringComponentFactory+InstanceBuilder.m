@@ -25,6 +25,7 @@
 #import "SpringParameterInjectedByValue.h"
 #import "NSObject+SpringReflectionUtils.h"
 #import "SpringPrimitiveTypeConverter.h"
+#import "SpringReflectionUtils.h"
 
 
 @implementation SpringComponentFactory (InstanceBuilder)
@@ -82,7 +83,21 @@
             }
             else
             {
-                NSArray* typeCodes = [instanceOrClass typeCodesForSelector:definition.initializer.selector];
+                NSArray* typeCodes;
+                if (definition.initializer.isFactoryMethod)
+                {
+                    typeCodes = [SpringReflectionUtils typeCodesForSelector:definition.initializer.selector ofClass:instanceOrClass
+                                                              isClassMethod:YES];
+                }
+                else
+                {
+                    typeCodes = [instanceOrClass typeCodesForSelector:definition.initializer.selector];
+                }
+                if ([[typeCodes objectAtIndex:parameter.index] isEqualToString:@"@"])
+                {
+                    [NSException raise:NSInvalidArgumentException
+                                format:@"Unless the type is primitive, initializer injection requires the required class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"];
+                }
                 SpringTypeDescriptor* descriptor = [SpringTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:parameter.index]];
                 LogDebug(@"$$$$$$$$$$$$ Here's the descriptor %@", descriptor);
                 SpringPrimitiveTypeConverter* converter = [[SpringTypeConverterRegistry shared] primitiveTypeConverter];
