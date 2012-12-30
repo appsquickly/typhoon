@@ -49,16 +49,16 @@ DI though. DI is just a design pattern and you can do it without a container. Ha
         <property name="damselsRescued" value="12"/>
     </component>
 
-    <component class="CampaignQuest" id="quest" scope="prototype">
-
-    </component>
-
+    <component class="CampaignQuest" id="quest" scope="prototype"/>
+    
     <component class="CavalryMan" id="anotherKnight">
         <initializer selector="initWithQuest:">
             <argument parameterName="quest" ref="quest"/>
         </initializer>
     </component>
 
+    <!-- This is just an example of a factory-method class. You could actually just inject an NSURL class by value. . 
+    . more examples and better docs coming soon! -->
     <component class="NSURL" id="serviceUrl">
         <factory-method selector="URLWithString:">
             <argument parameterName="string" value="http://dev.foobar.com/service/"/>
