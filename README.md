@@ -51,7 +51,8 @@ DI though. DI is just a design pattern and you can do it without a container. Ha
         primitive type. You can also register your own converters. -->
         <property name="damselsRescued" value="12"/>
     </component>
-
+    
+    <!-- Knight has a dependency on any type of id<Quest>, in this case it's a [CampaignQuest class] -->
     <component class="CampaignQuest" id="quest" scope="prototype"/>
     
     <component class="CavalryMan" id="anotherKnight">
