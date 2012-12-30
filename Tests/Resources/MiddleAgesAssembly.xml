@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<assembly>
+
+    <component class="Knight" id="knight">
+        <property name="quest" ref="quest"/>
+        <property name="damselsRescued" value="12"/>
+    </component>
+
+    <component class="CampaignQuest" id="quest" scope="prototype">
+
+    </component>
+
+    <component class="CavalryMan" id="anotherKnight">
+        <initializer selector="initWithQuest:">
+            <argument parameterName="quest" ref="quest"/>
+        </initializer>
+    </component>
+
+    <component class="NSURL" id="serviceUrl">
+        <factory-method selector="URLWithString:">
+            <argument parameterName="string" value="http://dev.foobar.com/service/"/>
+        </factory-method>
+    </component>
+
+</assembly>
+
