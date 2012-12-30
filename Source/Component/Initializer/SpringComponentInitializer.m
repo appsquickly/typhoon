@@ -69,8 +69,10 @@
 {
     if (index != NSUIntegerMax && index < [_parameterNames count])
     {
-        [_injectedParameters addObject:[[SpringParameterInjectedByValue alloc]
-                initWithIndex:index value:text classOrProtocol:classOrProtocol]];
+        SpringParameterInjectedByValue* parameterInjectedByValue =
+                [[SpringParameterInjectedByValue alloc] initWithIndex:index value:text classOrProtocol:classOrProtocol];
+        [parameterInjectedByValue setInitializer:self];
+        [_injectedParameters addObject:parameterInjectedByValue];
     }
 }
 
@@ -100,6 +102,15 @@
 {
     return [NSString stringWithFormat:@"Initializer: %@, isFactoryMethod? %@", NSStringFromSelector(_selector),
                                       _isFactoryMethod ? @"YES" : @"NO"];
+}
+
+- (void)dealloc
+{
+    for (id <SpringInjectedParameter> parameter in _injectedParameters)
+    {
+        //Null out the __unsafe_unretained property. 
+        [parameter setInitializer:nil];
+    }
 }
 
 /* ============================================================ Private Methods ========================================================= */

@@ -44,6 +44,8 @@
     Knight* anotherKnight = [_componentFactory objectForKey:@"anotherKnight"];
     LogDebug(@"Here's another knight: %@", anotherKnight);
     assertThat(anotherKnight.quest, notNilValue());
+
+    _componentFactory = nil;
 }
 
 - (void)test_factory_method_injection

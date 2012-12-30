@@ -23,7 +23,6 @@
 #import "SpringPropertyInjectionDelegate.h"
 #import "SpringParameterInjectedByValue.h"
 #import "SpringPrimitiveTypeConverter.h"
-#import "SpringReflectionUtils.h"
 
 
 @implementation SpringComponentFactory (InstanceBuilder)
@@ -81,17 +80,14 @@
             else
             {
                 SpringPrimitiveTypeConverter* converter = [[SpringTypeConverterRegistry shared] primitiveTypeConverter];
-                SpringTypeDescriptor* descriptor =
-                        [self typeDescriptorForParameterAtIndex:parameter.index inSelector:definition.initializer.selector
-                                              ofClassOrInstance:instanceOrClass];
-
+                SpringTypeDescriptor* descriptor = [injectedByValue resolveTypeWith:instanceOrClass];
                 void* converted = [converter convert:injectedByValue.value requiredType:descriptor];
                 [invocation setArgument:&converted atIndex:parameter.index + 2];
             }
         }
     }
     [invocation invoke];
-    id<NSObject> returnValue = definition.initializer.isFactoryMethod ? nil : instanceOrClass;
+    id <NSObject> returnValue = definition.initializer.isFactoryMethod ? nil : instanceOrClass;
     [invocation getReturnValue:&returnValue];
     return returnValue;
 }
@@ -147,33 +143,9 @@
         {
             //TODO: Handle object type
             LogDebug(@"$$$$$$$$$$$$$$$$$ Handle object type");
-            id <SpringTypeConverter> converter = [[SpringTypeConverterRegistry shared] converterFor:typeDescriptor];
+            //id <SpringTypeConverter> converter = [[SpringTypeConverterRegistry shared] converterFor:typeDescriptor];
         }
     }
-}
-
-//TODO: Move this to parameter class
-- (SpringTypeDescriptor*)typeDescriptorForParameterAtIndex:(NSUInteger)index inSelector:(SEL)selector ofClassOrInstance:(id)classOrInstance
-{
-    BOOL isClass = class_isMetaClass(object_getClass(classOrInstance));
-    Class clazz;
-    if (isClass)
-    {
-        clazz = classOrInstance;
-    }
-    else
-    {
-        clazz = [classOrInstance class];
-    }
-    NSArray* typeCodes = [SpringReflectionUtils typeCodesForSelector:selector ofClass:clazz isClassMethod:isClass];
-
-    if ([[typeCodes objectAtIndex:index] isEqualToString:@"@"])
-    {
-        [NSException raise:NSInvalidArgumentException
-                    format:@"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"];
-    }
-    return [SpringTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:index]];
-
 }
 
 @end

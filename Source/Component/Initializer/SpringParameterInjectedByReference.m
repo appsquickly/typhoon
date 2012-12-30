@@ -12,6 +12,7 @@
 
 
 #import "SpringParameterInjectedByReference.h"
+#import "SpringComponentInitializer.h"
 
 
 @implementation SpringParameterInjectedByReference
@@ -34,6 +35,10 @@
     return SpringParameterInjectedByReferenceType;
 }
 
+- (void)setInitializer:(SpringComponentInitializer*)initializer
+{
+    //Do nothing.
+}
 
 /* ============================================================ Utility Methods ========================================================= */
 - (NSString*)description

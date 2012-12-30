@@ -12,6 +12,7 @@
 
 
 #import <Foundation/Foundation.h>
+@class SpringComponentInitializer;
 
 typedef enum
 {
@@ -24,5 +25,7 @@ typedef enum
 - (NSUInteger)index;
 
 - (SpringParameterInjectionType)type;
+
+- (void)setInitializer:(SpringComponentInitializer*)initializer;
 
 @end
