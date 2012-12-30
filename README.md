@@ -11,7 +11,7 @@ different concrete class implementations of a dependency contract interface at r
 Being able to make this decision at run-time rather than compile time is the key advantage of dependency injection. 
 Multiple, different implementations of a single software component can be created at run-time and passed (injected) 
 into the same test code. The test code can then test each different software component without being aware that what 
-has been injected is implemented differently.
+has been injected is implemented differently. [Wikipedia]
 
 ### Why Spring for Objective-C?
 
