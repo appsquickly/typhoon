@@ -1,20 +1,32 @@
 # Description
 
-A port of the Spring dependency injection container for Objective-C.
+A Spring-like dependency injection container for Objective-C.
+
+### What is Dependency Injection? 
+
+In conventional software development, the dependent object decides for itself what concrete classes it will use. 
+In the dependency injection pattern, this decision is delegated to the "injector" which can choose to substitute 
+different concrete class implementations of a dependency contract interface at run-time rather than at compile time.
+
+Being able to make this decision at run-time rather than compile time is the key advantage of dependency injection. 
+Multiple, different implementations of a single software component can be created at run-time and passed (injected) 
+into the same test code. The test code can then test each different software component without being aware that what 
+has been injected is implemented differently.
 
 ### Why Spring for Objective-C?
 
-Spring is a popular dependency injection container for Java and .NET. But what is dependency injection?
+Spring is a very popular dependency injection container for Java and .NET. 
 
-In conventional software development, the dependent object decides for itself what concrete classes it will use. In the dependency injection pattern, this decision is delegated to the "injector" which can choose to substitute different concrete class implementations of a dependency contract interface at run-time rather than at compile time.
+There have been a couple of dependency injection containers that follow in the footsteps of Google Guice. The authors
+have done a great job, but personally I prefer a spring-style (especially with XML) approach for the following 
+reasons:
 
-Being able to make this decision at run-time rather than compile time is the key advantage of dependency injection. Multiple, different implementations of a single software component can be created at run-time and passed (injected) into the same test code. The test code can then test each different software component without being aware that what has been injected is implemented differently.
-
-There have been a couple of dependency injection containers that follow in the footsteps of Google Guice. The authors have done a great job, but personally I prefer a spring-style (especially with XML) approach for the following reasons:
-
-* Allows both dependency injection (classes defined in the DI context) as well as configuration management - values that get converted to the required type at runtime.
-* Application assembly is all encapsulated in a convenient document.
-* Encourages polymorphism and makes it easy to have multiple implementations of a base-class or protocol. For example you can have a tunes-store client, and inject either a master-card payment engine or a visa payment engine.
+* Allows both dependency injection (classes defined in the DI context) as well as configuration management - values 
+* that get converted to the required type at runtime.
+* Application assembly is all encapsulated in a convenient document. 
+* Encourages polymorphism and makes it easy to have multiple implementations of a base-class or protocol. For example
+ you can have a tunes-store client, and inject either a master-card payment engine or a visa payment engine.
+* Also supports "annotation" and code style injection. 
 
 
 # Usage
@@ -46,7 +58,8 @@ There have been a couple of dependency injection containers that follow in the f
 ```
 
 ```objective-c
-SpringComponentFactory componentFactory = [[SpringXmlComponentFactory alloc] initWithConfigFileName:@"MiddleAgesAssembly.xml"];
+SpringComponentFactory componentFactory = [[SpringXmlComponentFactory alloc] 
+    initWithConfigFileName:@"MiddleAgesAssembly.xml"];
 Knight* knight = [_componentFactory objectForKey:@"knight"];
 id<Quest> quest = knight.quest;
 ```
