@@ -53,7 +53,9 @@ DI though. DI is just a design pattern and you can do it without a container. Ha
     </component>
     
     <!-- Knight has a dependency on any type of id<Quest>, in this case it's a [CampaignQuest class] -->
-    <component class="CampaignQuest" id="quest" scope="prototype"/>
+    <component class="CampaignQuest" id="quest" scope="prototype">
+        <property name="imageUrl" value="http://www.appsquick.ly/theQuest.jpg"/>
+    </component>
     
     <component class="CavalryMan" id="anotherKnight">
         <initializer selector="initWithQuest:">
