@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-12-30</td>
+            <td class="headerValue">2012-12-31</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -73,7 +73,7 @@
 <span class="lineNum">      15 </span>            : #import &quot;SpringPropertyInjectedByValue.h&quot;
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">          6 : @implementation SpringComponentDefinition</span>
+<span class="lineNum">      18 </span><span class="lineCov">         11 : @implementation SpringComponentDefinition</span>
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : /* ============================================================ Initializers ============================================================ */
 <span class="lineNum">      21 </span>            : - (id)initWithClazz:(Class)clazz key:(NSString*)key
@@ -108,28 +108,28 @@
 <span class="lineNum">      50 </span><span class="lineCov">          7 : - (void)injectProperty:(NSString*)propertyName withValueAsText:(NSString*)textValue</span>
 <span class="lineNum">      51 </span>            : {
 <span class="lineNum">      52 </span>            :     [_injectedProperties addObject:[[SpringPropertyInjectedByValue alloc] initWithName:propertyName value:textValue]];
-<span class="lineNum">      53 </span><span class="lineCov">          6 : }</span>
+<span class="lineNum">      53 </span><span class="lineCov">         16 : }</span>
 <span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span><span class="lineCov">          6 : - (void)addInjectedProperty:(id &lt;SpringInjectedProperty&gt;)property</span>
-<span class="lineNum">      56 </span><span class="lineCov">          6 : {</span>
+<span class="lineNum">      55 </span><span class="lineCov">         16 : - (void)addInjectedProperty:(id &lt;SpringInjectedProperty&gt;)property</span>
+<span class="lineNum">      56 </span><span class="lineCov">         16 : {</span>
 <span class="lineNum">      57 </span>            :     if ([property isKindOfClass:[SpringPropertyInjectedByReference class]])
-<span class="lineNum">      58 </span><span class="lineCov">         10 :     {</span>
+<span class="lineNum">      58 </span><span class="lineCov">         20 :     {</span>
 <span class="lineNum">      59 </span>            :         SpringPropertyInjectedByReference* referenceProperty = (SpringPropertyInjectedByReference*) property;
-<span class="lineNum">      60 </span><span class="lineCov">         10 :         [self injectProperty:referenceProperty.name withReference:referenceProperty.reference];</span>
+<span class="lineNum">      60 </span><span class="lineCov">         20 :         [self injectProperty:referenceProperty.name withReference:referenceProperty.reference];</span>
 <span class="lineNum">      61 </span>            :     }
 <span class="lineNum">      62 </span><span class="lineCov">          5 :     else if ([property isKindOfClass:[SpringPropertyInjectedByType class]])</span>
 <span class="lineNum">      63 </span><span class="lineCov">          5 :     {</span>
 <span class="lineNum">      64 </span><span class="lineCov">          5 :         [self injectProperty:property.name];</span>
-<span class="lineNum">      65 </span><span class="lineCov">          5 :     }</span>
+<span class="lineNum">      65 </span><span class="lineCov">         15 :     }</span>
 <span class="lineNum">      66 </span>            :     else if ([property isKindOfClass:[SpringPropertyInjectedByValue class]])
 <span class="lineNum">      67 </span><span class="lineNoCov">          0 :     {</span>
 <span class="lineNum">      68 </span><span class="lineNoCov">          0 :         SpringPropertyInjectedByValue* valueProperty = (SpringPropertyInjectedByValue*) property;</span>
-<span class="lineNum">      69 </span><span class="lineCov">          5 :         [self injectProperty:valueProperty.name withValueAsText:valueProperty.textValue];</span>
+<span class="lineNum">      69 </span><span class="lineCov">         15 :         [self injectProperty:valueProperty.name withValueAsText:valueProperty.textValue];</span>
 <span class="lineNum">      70 </span>            :     }
-<span class="lineNum">      71 </span><span class="lineCov">          5 : }</span>
-<span class="lineNum">      72 </span><span class="lineCov">          5 : </span>
-<span class="lineNum">      73 </span><span class="lineCov">          5 : - (NSSet*)injectedProperties</span>
-<span class="lineNum">      74 </span><span class="lineCov">         10 : {</span>
+<span class="lineNum">      71 </span><span class="lineCov">         15 : }</span>
+<span class="lineNum">      72 </span><span class="lineCov">         15 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">         15 : - (NSSet*)injectedProperties</span>
+<span class="lineNum">      74 </span><span class="lineCov">         20 : {</span>
 <span class="lineNum">      75 </span>            :     return [_injectedProperties copy];
 <span class="lineNum">      76 </span><span class="lineCov">         28 : }</span>
 <span class="lineNum">      77 </span>            : 

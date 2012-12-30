@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-12-30</td>
+            <td class="headerValue">2012-12-31</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -97,38 +97,38 @@
 <span class="lineNum">      39 </span><span class="lineCov">         25 : }</span>
 <span class="lineNum">      40 </span>            : 
 <span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span><span class="lineCov">         10 : - (id &lt;SpringInjectedProperty&gt;)asInjectedProperty</span>
+<span class="lineNum">      42 </span><span class="lineCov">         20 : - (id &lt;SpringInjectedProperty&gt;)asInjectedProperty</span>
 <span class="lineNum">      43 </span>            : {
-<span class="lineNum">      44 </span><span class="lineCov">         10 :     [self assertTagName:@&quot;property&quot;];</span>
+<span class="lineNum">      44 </span><span class="lineCov">         20 :     [self assertTagName:@&quot;property&quot;];</span>
 <span class="lineNum">      45 </span>            : 
-<span class="lineNum">      46 </span><span class="lineCov">         10 :     NSString* propertyName = [self attribute:@&quot;name&quot;];</span>
-<span class="lineNum">      47 </span><span class="lineCov">         10 :     NSString* referenceName = [self attribute:@&quot;ref&quot;];</span>
-<span class="lineNum">      48 </span><span class="lineCov">         10 :     NSString* value = [self attribute:@&quot;value&quot;];</span>
+<span class="lineNum">      46 </span><span class="lineCov">         20 :     NSString* propertyName = [self attribute:@&quot;name&quot;];</span>
+<span class="lineNum">      47 </span><span class="lineCov">         20 :     NSString* referenceName = [self attribute:@&quot;ref&quot;];</span>
+<span class="lineNum">      48 </span><span class="lineCov">         20 :     NSString* value = [self attribute:@&quot;value&quot;];</span>
 <span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span><span class="lineCov">         10 :     id &lt;SpringInjectedProperty&gt; injectedProperty = nil;</span>
+<span class="lineNum">      50 </span><span class="lineCov">         20 :     id &lt;SpringInjectedProperty&gt; injectedProperty = nil;</span>
 <span class="lineNum">      51 </span><span class="lineCov">          5 :     if (referenceName &amp;&amp; value)</span>
 <span class="lineNum">      52 </span>            :     {
 <span class="lineNum">      53 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Ambigous - both reference and value attributes are set. Can only be one.&quot;];</span>
 <span class="lineNum">      54 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      55 </span><span class="lineCov">         10 :     else if (referenceName &amp;&amp; [referenceName length] == 0)</span>
+<span class="lineNum">      55 </span><span class="lineCov">         20 :     else if (referenceName &amp;&amp; [referenceName length] == 0)</span>
 <span class="lineNum">      56 </span>            :     {
 <span class="lineNum">      57 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Reference cannot be empty.&quot;];</span>
 <span class="lineNum">      58 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span><span class="lineCov">         10 :     else if ([referenceName length] &gt; 0)</span>
+<span class="lineNum">      60 </span><span class="lineCov">         20 :     else if ([referenceName length] &gt; 0)</span>
 <span class="lineNum">      61 </span>            :     {
 <span class="lineNum">      62 </span><span class="lineCov">          5 :         injectedProperty = [[SpringPropertyInjectedByReference alloc] initWithName:propertyName reference:referenceName];</span>
 <span class="lineNum">      63 </span><span class="lineCov">          5 :     }</span>
-<span class="lineNum">      64 </span><span class="lineCov">          5 :     else if (value)</span>
+<span class="lineNum">      64 </span><span class="lineCov">         15 :     else if (value)</span>
 <span class="lineNum">      65 </span>            :     {
-<span class="lineNum">      66 </span><span class="lineCov">          5 :         injectedProperty = [[SpringPropertyInjectedByValue alloc] initWithName:propertyName value:value];</span>
-<span class="lineNum">      67 </span><span class="lineCov">          5 :     }</span>
+<span class="lineNum">      66 </span><span class="lineCov">         15 :         injectedProperty = [[SpringPropertyInjectedByValue alloc] initWithName:propertyName value:value];</span>
+<span class="lineNum">      67 </span><span class="lineCov">         15 :     }</span>
 <span class="lineNum">      68 </span>            :     else
 <span class="lineNum">      69 </span>            :     {
 <span class="lineNum">      70 </span><span class="lineNoCov">          0 :         injectedProperty = [[SpringPropertyInjectedByType alloc] initWithName:propertyName];</span>
 <span class="lineNum">      71 </span>            :     }
-<span class="lineNum">      72 </span><span class="lineCov">         10 :     return injectedProperty;</span>
-<span class="lineNum">      73 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">      72 </span><span class="lineCov">         20 :     return injectedProperty;</span>
+<span class="lineNum">      73 </span><span class="lineCov">         20 : }</span>
 <span class="lineNum">      74 </span>            : 
 <span class="lineNum">      75 </span><span class="lineCov">          5 : - (SpringComponentInitializer*)asInitializer</span>
 <span class="lineNum">      76 </span>            : {
@@ -171,7 +171,7 @@
 <span class="lineNum">     113 </span><span class="lineCov">          5 :                     clazz = NSClassFromString(classAsString);</span>
 <span class="lineNum">     114 </span><span class="lineCov">          5 :                     if (clazz == nil)</span>
 <span class="lineNum">     115 </span>            :                     {
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 :                         [NSException raise:NSInvalidArgumentException format:@&quot;Class '%@' could not be resolved.&quot;];</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :                         [NSException raise:NSInvalidArgumentException format:@&quot;Class '%@' could not be resolved.&quot;, classAsString];</span>
 <span class="lineNum">     117 </span><span class="lineNoCov">          0 :                     }</span>
 <span class="lineNum">     118 </span>            :                 }
 <span class="lineNum">     119 </span><span class="lineCov">         10 :                 [initializer injectParameterNamed:name withValueAsText:value requiredTypeOrNil:clazz];</span>
@@ -186,13 +186,13 @@
 <span class="lineNum">     128 </span><span class="lineCov">         30 :     return initializer;</span>
 <span class="lineNum">     129 </span><span class="lineCov">         15 : }</span>
 <span class="lineNum">     130 </span>            : 
-<span class="lineNum">     131 </span><span class="lineCov">         50 : - (void)assertTagName:(NSString*)tagName</span>
+<span class="lineNum">     131 </span><span class="lineCov">         60 : - (void)assertTagName:(NSString*)tagName</span>
 <span class="lineNum">     132 </span>            : {
-<span class="lineNum">     133 </span><span class="lineCov">         50 :     if (![self.tag isEqualToString:tagName])</span>
+<span class="lineNum">     133 </span><span class="lineCov">         60 :     if (![self.tag isEqualToString:tagName])</span>
 <span class="lineNum">     134 </span>            :     {
 <span class="lineNum">     135 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Element is not a '%@'.&quot;, tagName];</span>
 <span class="lineNum">     136 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     137 </span><span class="lineCov">         50 : }</span>
+<span class="lineNum">     137 </span><span class="lineCov">         60 : }</span>
 <span class="lineNum">     138 </span>            : 
 <span class="lineNum">     139 </span>            : - (void)setScopeForDefinition:(SpringComponentDefinition*)definition withStringValue:(NSString*)scope;
 <span class="lineNum">     140 </span><span class="lineCov">         25 : {</span>
@@ -222,14 +222,14 @@
 <span class="lineNum">     164 </span><span class="lineCov">         25 : }</span>
 <span class="lineNum">     165 </span><span class="lineCov">         25 : </span>
 <span class="lineNum">     166 </span>            : - (void)parseComponentDefinitionChildren:(SpringComponentDefinition*)componentDefinition
-<span class="lineNum">     167 </span><span class="lineCov">         75 : {</span>
+<span class="lineNum">     167 </span><span class="lineCov">         95 : {</span>
 <span class="lineNum">     168 </span>            :     [self iterate:@&quot;*&quot; usingBlock:^(RXMLElement* child)
-<span class="lineNum">     169 </span><span class="lineCov">         50 :     {</span>
-<span class="lineNum">     170 </span><span class="lineCov">         25 :         if ([[child tag] isEqualToString:@&quot;property&quot;])</span>
-<span class="lineNum">     171 </span><span class="lineCov">         25 :         {</span>
+<span class="lineNum">     169 </span><span class="lineCov">         60 :     {</span>
+<span class="lineNum">     170 </span><span class="lineCov">         35 :         if ([[child tag] isEqualToString:@&quot;property&quot;])</span>
+<span class="lineNum">     171 </span><span class="lineCov">         35 :         {</span>
 <span class="lineNum">     172 </span>            :             [componentDefinition addInjectedProperty:[child asInjectedProperty]];
-<span class="lineNum">     173 </span><span class="lineCov">         10 :         }</span>
-<span class="lineNum">     174 </span><span class="lineCov">         10 :         else if ([[child tag] isEqualToString:@&quot;initializer&quot;])</span>
+<span class="lineNum">     173 </span><span class="lineCov">         20 :         }</span>
+<span class="lineNum">     174 </span><span class="lineCov">         20 :         else if ([[child tag] isEqualToString:@&quot;initializer&quot;])</span>
 <span class="lineNum">     175 </span><span class="lineCov">         15 :         {</span>
 <span class="lineNum">     176 </span>            :             [componentDefinition setInitializer:[child asInitializer]];
 <span class="lineNum">     177 </span><span class="lineCov">          5 :         }</span>
@@ -243,7 +243,7 @@
 <span class="lineNum">     185 </span><span class="lineNoCov">          0 :                                                                  [child tag]];</span>
 <span class="lineNum">     186 </span>            :         }
 <span class="lineNum">     187 </span>            :     }];
-<span class="lineNum">     188 </span><span class="lineCov">         25 : }</span>
+<span class="lineNum">     188 </span><span class="lineCov">         35 : }</span>
 <span class="lineNum">     189 </span><span class="lineCov">         25 : </span>
 <span class="lineNum">     190 </span>            : @end
 </pre>

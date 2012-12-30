@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-12-30</td>
+            <td class="headerValue">2012-12-31</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -76,13 +76,13 @@
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : - (void*)convert:(NSString*)stringValue requiredType:(SpringTypeDescriptor*)typeDescriptor
-<span class="lineNum">      21 </span><span class="lineCov">         13 : {</span>
+<span class="lineNum">      21 </span><span class="lineCov">         14 : {</span>
 <span class="lineNum">      22 </span>            :     LogDebug(@&quot;Converting value: %@&quot;, stringValue);
-<span class="lineNum">      23 </span><span class="lineCov">         13 :     [self checkSupportedTypes:typeDescriptor];</span>
-<span class="lineNum">      24 </span><span class="lineCov">         13 :     if (typeDescriptor.primitiveType == SpringPrimitiveTypeBoolean || typeDescriptor.primitiveType == SpringPrimitiveTypeChar)</span>
-<span class="lineNum">      25 </span><span class="lineCov">         13 :     {</span>
+<span class="lineNum">      23 </span><span class="lineCov">         14 :     [self checkSupportedTypes:typeDescriptor];</span>
+<span class="lineNum">      24 </span><span class="lineCov">         14 :     if (typeDescriptor.primitiveType == SpringPrimitiveTypeBoolean || typeDescriptor.primitiveType == SpringPrimitiveTypeChar)</span>
+<span class="lineNum">      25 </span><span class="lineCov">         14 :     {</span>
 <span class="lineNum">      26 </span>            :         return (void*) [stringValue boolValue];
-<span class="lineNum">      27 </span><span class="lineCov">          6 :     }</span>
+<span class="lineNum">      27 </span><span class="lineCov">          7 :     }</span>
 <span class="lineNum">      28 </span>            :     else if (typeDescriptor.primitiveType == SpringPrimitiveTypeString)
 <span class="lineNum">      29 </span><span class="lineCov">          7 :     {</span>
 <span class="lineNum">      30 </span>            :         return (void*) [stringValue cStringUsingEncoding:NSUTF8StringEncoding];
@@ -93,49 +93,49 @@
 <span class="lineNum">      35 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      36 </span>            :     return [self convertNumericTypes:stringValue typeDescriptor:typeDescriptor];
 <span class="lineNum">      37 </span><span class="lineCov">          7 : }</span>
-<span class="lineNum">      38 </span><span class="lineCov">         13 : </span>
+<span class="lineNum">      38 </span><span class="lineCov">         14 : </span>
 <span class="lineNum">      39 </span>            : 
 <span class="lineNum">      40 </span>            : /* ============================================================ Private Methods ========================================================= */
 <span class="lineNum">      41 </span>            : - (void)checkSupportedTypes:(SpringTypeDescriptor*)typeDescriptor
-<span class="lineNum">      42 </span><span class="lineCov">         13 : {</span>
+<span class="lineNum">      42 </span><span class="lineCov">         14 : {</span>
 <span class="lineNum">      43 </span>            :     if (typeDescriptor.isArray)
-<span class="lineNum">      44 </span><span class="lineCov">         13 :     {</span>
+<span class="lineNum">      44 </span><span class="lineCov">         14 :     {</span>
 <span class="lineNum">      45 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;Array type not yet supported&quot;];
 <span class="lineNum">      46 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      47 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.isStructure)</span>
-<span class="lineNum">      48 </span><span class="lineCov">         13 :     {</span>
+<span class="lineNum">      48 </span><span class="lineCov">         14 :     {</span>
 <span class="lineNum">      49 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;Structure type can't be converted&quot;];
 <span class="lineNum">      50 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      51 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == SpringPrimitiveTypeClass)</span>
-<span class="lineNum">      52 </span><span class="lineCov">         13 :     {</span>
+<span class="lineNum">      52 </span><span class="lineCov">         14 :     {</span>
 <span class="lineNum">      53 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;Class type can't be converted. Consider using NSString&quot;];
 <span class="lineNum">      54 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      55 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == SpringPrimitiveTypeDouble)</span>
-<span class="lineNum">      56 </span><span class="lineCov">         13 :     {</span>
+<span class="lineNum">      56 </span><span class="lineCov">         14 :     {</span>
 <span class="lineNum">      57 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;double type can't be converted. Consider using NSNumber.&quot;];
 <span class="lineNum">      58 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      59 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == SpringPrimitiveTypeFloat)</span>
-<span class="lineNum">      60 </span><span class="lineCov">         13 :     {</span>
+<span class="lineNum">      60 </span><span class="lineCov">         14 :     {</span>
 <span class="lineNum">      61 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;float type can't be converted. Consider using NSNumber.&quot;];
 <span class="lineNum">      62 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      63 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == SpringPrimitiveTypeBitField)</span>
-<span class="lineNum">      64 </span><span class="lineCov">         13 :     {</span>
+<span class="lineNum">      64 </span><span class="lineCov">         14 :     {</span>
 <span class="lineNum">      65 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;bitfield type can't be converted&quot;];
 <span class="lineNum">      66 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      67 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == SpringPrimitiveTypeUnsignedChar)</span>
-<span class="lineNum">      68 </span><span class="lineCov">         13 :     {</span>
+<span class="lineNum">      68 </span><span class="lineCov">         14 :     {</span>
 <span class="lineNum">      69 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;unsigned char type can't be converted&quot;];
 <span class="lineNum">      70 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      71 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == SpringPrimitiveTypeVoid)</span>
-<span class="lineNum">      72 </span><span class="lineCov">         13 :     {</span>
+<span class="lineNum">      72 </span><span class="lineCov">         14 :     {</span>
 <span class="lineNum">      73 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;void type can't be converted&quot;];
 <span class="lineNum">      74 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      75 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == SpringPrimitiveTypeUnknown)</span>
-<span class="lineNum">      76 </span><span class="lineCov">         13 :     {</span>
+<span class="lineNum">      76 </span><span class="lineCov">         14 :     {</span>
 <span class="lineNum">      77 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;unknown type can't be converted&quot;];
 <span class="lineNum">      78 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      79 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      80 </span><span class="lineCov">         13 : </span>
+<span class="lineNum">      80 </span><span class="lineCov">         14 : </span>
 <span class="lineNum">      81 </span>            : - (void*)convertNumericTypes:(NSString*)stringValue typeDescriptor:(SpringTypeDescriptor*)typeDescriptor
 <span class="lineNum">      82 </span>            : {
 <span class="lineNum">      83 </span><span class="lineCov">          7 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
