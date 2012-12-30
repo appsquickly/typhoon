@@ -28,7 +28,7 @@ reasons:
  you can have a tunes-store client, and inject either a master-card payment engine or a visa payment engine.
 * Also supports "annotation" and code style injection. 
 
-Isn't Objective-C a dynamic language? 
+###Isn't Objective-C a dynamic language? 
 
 Yes, and I love categories, method swizzling duck-typing and all that cool stuff. None of these are replacements for 
 DI though. DI is just a design pattern and you can do it without a container. Having one is handy though. 
