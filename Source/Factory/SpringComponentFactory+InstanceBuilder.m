@@ -57,6 +57,7 @@
 
 
 /* ============================================================ Private Methods ========================================================= */
+//TODO: Too long - clean this up!!!!!!
 - (id)invokeInitializerOn:(id)instanceOrClass withDefinition:(SpringComponentDefinition*)definition
 {
     NSInvocation* invocation = [definition.initializer asInvocationFor:instanceOrClass];
