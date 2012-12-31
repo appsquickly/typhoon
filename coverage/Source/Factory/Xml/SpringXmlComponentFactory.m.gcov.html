@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">27</td>
             <td class="headerCovTableEntry">29</td>
-            <td class="headerCovTableEntryHi">93.1 %</td>
+            <td class="headerCovTableEntry">31</td>
+            <td class="headerCovTableEntryHi">93.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-12-31</td>
+            <td class="headerValue">2013-01-01</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -111,15 +111,18 @@
 <span class="lineNum">      53 </span><span class="lineCov">          8 :         NSString* xmlString = [SpringBundleResource withName:resourceName];</span>
 <span class="lineNum">      54 </span><span class="lineCov">          8 :         RXMLElement* element = [RXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];</span>
 <span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span><span class="lineCov">         42 :         [element iterate:@&quot;*&quot; usingBlock:^(RXMLElement* child)</span>
-<span class="lineNum">      57 </span><span class="lineCov">         34 :         {</span>
-<span class="lineNum">      58 </span><span class="lineCov">         34 :             [self register:[child asComponentDefinition]];</span>
-<span class="lineNum">      59 </span><span class="lineCov">         68 :         }];</span>
-<span class="lineNum">      60 </span><span class="lineCov">          8 :     }</span>
-<span class="lineNum">      61 </span><span class="lineCov">          8 : }</span>
-<span class="lineNum">      62 </span>            : 
-<span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span>            : @end
+<span class="lineNum">      56 </span><span class="lineCov">         48 :         [element iterate:@&quot;*&quot; usingBlock:^(RXMLElement* child)</span>
+<span class="lineNum">      57 </span><span class="lineCov">         40 :         {</span>
+<span class="lineNum">      58 </span><span class="lineCov">         40 :             if ([[child tag] isEqualToString:@&quot;component&quot;])</span>
+<span class="lineNum">      59 </span>            :             {
+<span class="lineNum">      60 </span><span class="lineCov">         34 :                 [self register:[child asComponentDefinition]];</span>
+<span class="lineNum">      61 </span><span class="lineCov">         34 :             }</span>
+<span class="lineNum">      62 </span><span class="lineCov">         40 :         }];</span>
+<span class="lineNum">      63 </span><span class="lineCov">          8 :     }</span>
+<span class="lineNum">      64 </span><span class="lineCov">          8 : }</span>
+<span class="lineNum">      65 </span>            : 
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span>            : @end
 </pre>
       </td>
     </tr>

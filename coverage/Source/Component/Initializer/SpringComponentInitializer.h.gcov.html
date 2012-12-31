@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-12-31</td>
+            <td class="headerValue">2013-01-01</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -71,32 +71,39 @@
 <span class="lineNum">      13 </span>            : 
 <span class="lineNum">      14 </span>            : #import &lt;Foundation/Foundation.h&gt;
 <span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span>            : @interface SpringComponentInitializer : NSObject
+<span class="lineNum">      16 </span>            : typedef enum
 <span class="lineNum">      17 </span>            : {
-<span class="lineNum">      18 </span>            :     NSMutableArray* _injectedParameters;
-<span class="lineNum">      19 </span>            :     NSArray* _parameterNames;
-<span class="lineNum">      20 </span>            : }
-<span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineCov">          2 : @property(nonatomic, readonly) SEL selector;</span>
-<span class="lineNum">      23 </span><span class="lineCov">         27 : @property(nonatomic, readonly) BOOL isFactoryMethod;</span>
-<span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span>            : - (id)initWithSelector:(SEL)initializer;
-<span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span>            : - (id)initWithSelector:(SEL)initializer isFactoryMethod:(BOOL)isFactoryMethod;
+<span class="lineNum">      18 </span>            :     SpringComponentInitializerIsClassMethodGuess,
+<span class="lineNum">      19 </span>            :     SpringComponentInitializerIsClassMethodYes,
+<span class="lineNum">      20 </span>            :     SpringComponentInitializerIsClassMethodNo
+<span class="lineNum">      21 </span>            : } SpringComponentInitializerIsClassMethod;
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span>            : @interface SpringComponentInitializer : NSObject
+<span class="lineNum">      24 </span>            : {
+<span class="lineNum">      25 </span>            :     NSMutableArray* _injectedParameters;
+<span class="lineNum">      26 </span>            :     NSArray* _parameterNames;
+<span class="lineNum">      27 </span>            : }
 <span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span>            : - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference;
-<span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span>            : - (void)injectParameterAt:(NSUInteger)index withReference:(NSString*)reference;
-<span class="lineNum">      32 </span>            : 
-<span class="lineNum">      33 </span>            : - (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol;
-<span class="lineNum">      34 </span>            : 
-<span class="lineNum">      35 </span>            : - (void)injectParameterAt:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol;
-<span class="lineNum">      36 </span>            : 
-<span class="lineNum">      37 </span>            : - (NSArray*)injectedParameters;
-<span class="lineNum">      38 </span>            : 
-<span class="lineNum">      39 </span>            : - (NSInvocation*)asInvocationFor:(id)classOrInstance;
-<span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span>            : @end
+<span class="lineNum">      29 </span><span class="lineCov">          2 : @property(nonatomic, readonly) SEL selector;</span>
+<span class="lineNum">      30 </span><span class="lineCov">         27 : @property(nonatomic, readonly) BOOL isClassMethod;</span>
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            : - (id)initWithSelector:(SEL)initializer;
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : - (id)initWithSelector:(SEL)initializer isClassMethod:(SpringComponentInitializerIsClassMethod)isClassMethod;
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference;
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span>            : - (void)injectParameterAt:(NSUInteger)index withReference:(NSString*)reference;
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span>            : - (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol;
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : - (void)injectParameterAt:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol;
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : - (NSArray*)injectedParameters;
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span>            : - (NSInvocation*)asInvocationFor:(id)classOrInstance;
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span>            : @end
 </pre>
       </td>
     </tr>

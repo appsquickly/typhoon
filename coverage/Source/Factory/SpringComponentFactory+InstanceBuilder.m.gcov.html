@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2012-12-31</td>
+            <td class="headerValue">2013-01-01</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -88,7 +88,7 @@
 <span class="lineNum">      30 </span><span class="lineCov">         30 : - (id)buildInstanceWithDefinition:(SpringComponentDefinition*)definition</span>
 <span class="lineNum">      31 </span>            : {
 <span class="lineNum">      32 </span><span class="lineCov">         30 :     id &lt;SpringReflectiveNSObject&gt; instance;</span>
-<span class="lineNum">      33 </span><span class="lineCov">         30 :     if (definition.initializer &amp;&amp; definition.initializer.isFactoryMethod)</span>
+<span class="lineNum">      33 </span><span class="lineCov">         30 :     if (definition.initializer &amp;&amp; definition.initializer.isClassMethod)</span>
 <span class="lineNum">      34 </span>            :     {
 <span class="lineNum">      35 </span><span class="lineCov">          2 :         instance = [self invokeInitializerOn:definition.type withDefinition:definition];</span>
 <span class="lineNum">      36 </span><span class="lineCov">          3 :     }</span>
@@ -97,7 +97,7 @@
 <span class="lineNum">      39 </span><span class="lineCov">         27 :         instance = [definition.type alloc];</span>
 <span class="lineNum">      40 </span>            :     }
 <span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span><span class="lineCov">         29 :     if (definition.initializer &amp;&amp; definition.initializer.isFactoryMethod == NO)</span>
+<span class="lineNum">      42 </span><span class="lineCov">         29 :     if (definition.initializer &amp;&amp; definition.initializer.isClassMethod == NO)</span>
 <span class="lineNum">      43 </span>            :     {
 <span class="lineNum">      44 </span><span class="lineCov">          6 :         instance = [self invokeInitializerOn:instance withDefinition:definition];</span>
 <span class="lineNum">      45 </span><span class="lineCov">          7 :     }</span>
@@ -145,7 +145,7 @@
 <span class="lineNum">      87 </span><span class="lineCov">          2 :         }</span>
 <span class="lineNum">      88 </span><span class="lineCov">          3 :     }</span>
 <span class="lineNum">      89 </span><span class="lineCov">          8 :     [invocation invoke];</span>
-<span class="lineNum">      90 </span><span class="lineCov">          8 :     id &lt;NSObject&gt; returnValue = definition.initializer.isFactoryMethod ? nil : instanceOrClass;</span>
+<span class="lineNum">      90 </span><span class="lineCov">          8 :     id &lt;NSObject&gt; returnValue = definition.initializer.isClassMethod ? nil : instanceOrClass;</span>
 <span class="lineNum">      91 </span><span class="lineCov">          8 :     [invocation getReturnValue:&amp;returnValue];</span>
 <span class="lineNum">      92 </span><span class="lineCov">          8 :     return returnValue;</span>
 <span class="lineNum">      93 </span><span class="lineCov">          8 : }</span>
@@ -162,7 +162,7 @@
 <span class="lineNum">     104 </span><span class="lineCov">         29 :         SpringTypeDescriptor* typeDescriptor = [instance typeForPropertyWithName:property.name];</span>
 <span class="lineNum">     105 </span>            :         if (typeDescriptor == nil)
 <span class="lineNum">     106 </span><span class="lineCov">         14 :         {</span>
-<span class="lineNum">     107 </span><span class="lineCov">         14 :             [NSException raise:NSIllegalSelectorException</span>
+<span class="lineNum">     107 </span><span class="lineCov">         14 :             [NSException raise:NSInvalidArgumentException</span>
 <span class="lineNum">     108 </span>            :                         format:@&quot;Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.&quot;,
 <span class="lineNum">     109 </span><span class="lineNoCov">          0 :                                property.name, [instance class]];</span>
 <span class="lineNum">     110 </span>            :         }
