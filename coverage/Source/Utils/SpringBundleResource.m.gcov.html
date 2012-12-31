@@ -72,26 +72,26 @@
 <span class="lineNum">      14 </span>            : 
 <span class="lineNum">      15 </span>            : @implementation SpringBundleResource
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span><span class="lineCov">          5 : + (NSString*)withName:(NSString*)name {</span>
+<span class="lineNum">      17 </span><span class="lineCov">          9 : + (NSString*)withName:(NSString*)name {</span>
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span><span class="lineCov">          5 :     NSString* contents;</span>
-<span class="lineNum">      20 </span><span class="lineCov">          5 :     NSRange lastDot = [name rangeOfString:@&quot;.&quot; options:NSBackwardsSearch];</span>
-<span class="lineNum">      21 </span><span class="lineCov">          5 :     if (lastDot.location != NSNotFound) {</span>
-<span class="lineNum">      22 </span><span class="lineCov">          5 :         NSString* resource = [name substringToIndex:lastDot.location];</span>
-<span class="lineNum">      23 </span><span class="lineCov">          5 :         NSString* type = [name substringFromIndex:lastDot.location + 1];</span>
-<span class="lineNum">      24 </span><span class="lineCov">          5 :         LogDebug(@&quot;Resource: %@.%@&quot;, resource, type);</span>
-<span class="lineNum">      25 </span><span class="lineCov">          5 :         NSString* filePath = [[NSBundle bundleForClass:[self class]] pathForResource:resource ofType:type];</span>
-<span class="lineNum">      26 </span><span class="lineCov">          5 :         contents =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];</span>
-<span class="lineNum">      27 </span><span class="lineCov">          5 :     }</span>
+<span class="lineNum">      19 </span><span class="lineCov">          9 :     NSString* contents;</span>
+<span class="lineNum">      20 </span><span class="lineCov">          9 :     NSRange lastDot = [name rangeOfString:@&quot;.&quot; options:NSBackwardsSearch];</span>
+<span class="lineNum">      21 </span><span class="lineCov">          9 :     if (lastDot.location != NSNotFound) {</span>
+<span class="lineNum">      22 </span><span class="lineCov">          9 :         NSString* resource = [name substringToIndex:lastDot.location];</span>
+<span class="lineNum">      23 </span><span class="lineCov">          9 :         NSString* type = [name substringFromIndex:lastDot.location + 1];</span>
+<span class="lineNum">      24 </span><span class="lineCov">          9 :         LogDebug(@&quot;Resource: %@.%@&quot;, resource, type);</span>
+<span class="lineNum">      25 </span><span class="lineCov">          9 :         NSString* filePath = [[NSBundle bundleForClass:[self class]] pathForResource:resource ofType:type];</span>
+<span class="lineNum">      26 </span><span class="lineCov">          9 :         contents =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];</span>
+<span class="lineNum">      27 </span><span class="lineCov">          9 :     }</span>
 <span class="lineNum">      28 </span>            :     else {
 <span class="lineNum">      29 </span><span class="lineNoCov">          0 :         NSString* filePath = [[NSBundle bundleForClass:[self class]] pathForResource:name ofType:nil];</span>
 <span class="lineNum">      30 </span><span class="lineNoCov">          0 :         contents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];</span>
 <span class="lineNum">      31 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      32 </span><span class="lineCov">          5 :     if (contents == nil) {</span>
+<span class="lineNum">      32 </span><span class="lineCov">          9 :     if (contents == nil) {</span>
 <span class="lineNum">      33 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Expected contents of file %@ not to be nil&quot;, name];</span>
 <span class="lineNum">      34 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      35 </span><span class="lineCov">          5 :     return contents;</span>
-<span class="lineNum">      36 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">      35 </span><span class="lineCov">          9 :     return contents;</span>
+<span class="lineNum">      36 </span><span class="lineCov">          9 : }</span>
 <span class="lineNum">      37 </span>            : 
 <span class="lineNum">      38 </span>            : @end
 </pre>

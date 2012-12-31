@@ -77,18 +77,18 @@
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : /* ============================================================ Initializers ============================================================ */
 <span class="lineNum">      21 </span>            : - (id)initWithClazz:(Class)clazz key:(NSString*)key
-<span class="lineNum">      22 </span><span class="lineCov">         49 : {</span>
+<span class="lineNum">      22 </span><span class="lineCov">         63 : {</span>
 <span class="lineNum">      23 </span>            :     self = [super init];
-<span class="lineNum">      24 </span><span class="lineCov">         49 :     if (self)</span>
-<span class="lineNum">      25 </span><span class="lineCov">         49 :     {</span>
+<span class="lineNum">      24 </span><span class="lineCov">         63 :     if (self)</span>
+<span class="lineNum">      25 </span><span class="lineCov">         63 :     {</span>
 <span class="lineNum">      26 </span>            :         _type = clazz;
-<span class="lineNum">      27 </span><span class="lineCov">         46 :         _key = [key stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];</span>
-<span class="lineNum">      28 </span><span class="lineCov">         46 :         _injectedProperties = [[NSMutableSet alloc] init];</span>
-<span class="lineNum">      29 </span><span class="lineCov">         46 :         [self validateRequiredParametersAreSet];</span>
-<span class="lineNum">      30 </span><span class="lineCov">         46 :     }</span>
-<span class="lineNum">      31 </span><span class="lineCov">         49 :     return self;</span>
-<span class="lineNum">      32 </span><span class="lineCov">         46 : }</span>
-<span class="lineNum">      33 </span><span class="lineCov">         46 : </span>
+<span class="lineNum">      27 </span><span class="lineCov">         60 :         _key = [key stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];</span>
+<span class="lineNum">      28 </span><span class="lineCov">         60 :         _injectedProperties = [[NSMutableSet alloc] init];</span>
+<span class="lineNum">      29 </span><span class="lineCov">         60 :         [self validateRequiredParametersAreSet];</span>
+<span class="lineNum">      30 </span><span class="lineCov">         60 :     }</span>
+<span class="lineNum">      31 </span><span class="lineCov">         63 :     return self;</span>
+<span class="lineNum">      32 </span><span class="lineCov">         60 : }</span>
+<span class="lineNum">      33 </span><span class="lineCov">         60 : </span>
 <span class="lineNum">      34 </span>            : - (id)init
 <span class="lineNum">      35 </span><span class="lineNoCov">          0 : {</span>
 <span class="lineNum">      36 </span>            :     return [self initWithClazz:nil key:nil];
@@ -102,38 +102,38 @@
 <span class="lineNum">      44 </span><span class="lineCov">          1 : </span>
 <span class="lineNum">      45 </span>            : - (void)injectProperty:(NSString*)propertyName withReference:(NSString*)reference
 <span class="lineNum">      46 </span>            : {
-<span class="lineNum">      47 </span><span class="lineCov">          7 :     [_injectedProperties addObject:[[SpringPropertyInjectedByReference alloc] initWithName:propertyName reference:reference]];</span>
+<span class="lineNum">      47 </span><span class="lineCov">         13 :     [_injectedProperties addObject:[[SpringPropertyInjectedByReference alloc] initWithName:propertyName reference:reference]];</span>
 <span class="lineNum">      48 </span>            : }
-<span class="lineNum">      49 </span><span class="lineCov">          7 : </span>
-<span class="lineNum">      50 </span><span class="lineCov">          7 : - (void)injectProperty:(NSString*)propertyName withValueAsText:(NSString*)textValue</span>
+<span class="lineNum">      49 </span><span class="lineCov">         13 : </span>
+<span class="lineNum">      50 </span><span class="lineCov">         13 : - (void)injectProperty:(NSString*)propertyName withValueAsText:(NSString*)textValue</span>
 <span class="lineNum">      51 </span>            : {
 <span class="lineNum">      52 </span>            :     [_injectedProperties addObject:[[SpringPropertyInjectedByValue alloc] initWithName:propertyName value:textValue]];
-<span class="lineNum">      53 </span><span class="lineCov">         16 : }</span>
+<span class="lineNum">      53 </span><span class="lineCov">         22 : }</span>
 <span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span><span class="lineCov">         16 : - (void)addInjectedProperty:(id &lt;SpringInjectedProperty&gt;)property</span>
-<span class="lineNum">      56 </span><span class="lineCov">         16 : {</span>
+<span class="lineNum">      55 </span><span class="lineCov">         22 : - (void)addInjectedProperty:(id &lt;SpringInjectedProperty&gt;)property</span>
+<span class="lineNum">      56 </span><span class="lineCov">         22 : {</span>
 <span class="lineNum">      57 </span>            :     if ([property isKindOfClass:[SpringPropertyInjectedByReference class]])
-<span class="lineNum">      58 </span><span class="lineCov">         20 :     {</span>
+<span class="lineNum">      58 </span><span class="lineCov">         32 :     {</span>
 <span class="lineNum">      59 </span>            :         SpringPropertyInjectedByReference* referenceProperty = (SpringPropertyInjectedByReference*) property;
-<span class="lineNum">      60 </span><span class="lineCov">         20 :         [self injectProperty:referenceProperty.name withReference:referenceProperty.reference];</span>
+<span class="lineNum">      60 </span><span class="lineCov">         32 :         [self injectProperty:referenceProperty.name withReference:referenceProperty.reference];</span>
 <span class="lineNum">      61 </span>            :     }
-<span class="lineNum">      62 </span><span class="lineCov">          5 :     else if ([property isKindOfClass:[SpringPropertyInjectedByType class]])</span>
-<span class="lineNum">      63 </span><span class="lineCov">          5 :     {</span>
-<span class="lineNum">      64 </span><span class="lineCov">          5 :         [self injectProperty:property.name];</span>
-<span class="lineNum">      65 </span><span class="lineCov">         15 :     }</span>
+<span class="lineNum">      62 </span><span class="lineCov">         11 :     else if ([property isKindOfClass:[SpringPropertyInjectedByType class]])</span>
+<span class="lineNum">      63 </span><span class="lineCov">         11 :     {</span>
+<span class="lineNum">      64 </span><span class="lineCov">         11 :         [self injectProperty:property.name];</span>
+<span class="lineNum">      65 </span><span class="lineCov">         21 :     }</span>
 <span class="lineNum">      66 </span>            :     else if ([property isKindOfClass:[SpringPropertyInjectedByValue class]])
 <span class="lineNum">      67 </span><span class="lineNoCov">          0 :     {</span>
 <span class="lineNum">      68 </span><span class="lineNoCov">          0 :         SpringPropertyInjectedByValue* valueProperty = (SpringPropertyInjectedByValue*) property;</span>
-<span class="lineNum">      69 </span><span class="lineCov">         15 :         [self injectProperty:valueProperty.name withValueAsText:valueProperty.textValue];</span>
+<span class="lineNum">      69 </span><span class="lineCov">         21 :         [self injectProperty:valueProperty.name withValueAsText:valueProperty.textValue];</span>
 <span class="lineNum">      70 </span>            :     }
-<span class="lineNum">      71 </span><span class="lineCov">         15 : }</span>
-<span class="lineNum">      72 </span><span class="lineCov">         15 : </span>
-<span class="lineNum">      73 </span><span class="lineCov">         15 : - (NSSet*)injectedProperties</span>
-<span class="lineNum">      74 </span><span class="lineCov">         20 : {</span>
+<span class="lineNum">      71 </span><span class="lineCov">         21 : }</span>
+<span class="lineNum">      72 </span><span class="lineCov">         21 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">         21 : - (NSSet*)injectedProperties</span>
+<span class="lineNum">      74 </span><span class="lineCov">         32 : {</span>
 <span class="lineNum">      75 </span>            :     return [_injectedProperties copy];
-<span class="lineNum">      76 </span><span class="lineCov">         28 : }</span>
+<span class="lineNum">      76 </span><span class="lineCov">         33 : }</span>
 <span class="lineNum">      77 </span>            : 
-<span class="lineNum">      78 </span><span class="lineCov">         28 : </span>
+<span class="lineNum">      78 </span><span class="lineCov">         33 : </span>
 <span class="lineNum">      79 </span>            : /* ============================================================ Utility Methods ========================================================= */
 <span class="lineNum">      80 </span>            : - (NSString*)description
 <span class="lineNum">      81 </span>            : {
@@ -152,14 +152,14 @@
 <span class="lineNum">      94 </span>            : - (void)validateRequiredParametersAreSet
 <span class="lineNum">      95 </span>            : {
 <span class="lineNum">      96 </span>            :     if (_type == nil)
-<span class="lineNum">      97 </span><span class="lineCov">         49 :     {</span>
+<span class="lineNum">      97 </span><span class="lineCov">         63 :     {</span>
 <span class="lineNum">      98 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;Property 'clazz' is required.&quot;];
-<span class="lineNum">      99 </span><span class="lineCov">         49 :     }</span>
+<span class="lineNum">      99 </span><span class="lineCov">         63 :     }</span>
 <span class="lineNum">     100 </span>            : 
 <span class="lineNum">     101 </span><span class="lineNoCov">          0 :     if ([_key length] == 0)</span>
 <span class="lineNum">     102 </span><span class="lineCov">          2 :     {</span>
 <span class="lineNum">     103 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;Property 'key' is required.&quot;];
-<span class="lineNum">     104 </span><span class="lineCov">         47 :     }</span>
+<span class="lineNum">     104 </span><span class="lineCov">         61 :     }</span>
 <span class="lineNum">     105 </span>            : 
 <span class="lineNum">     106 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     107 </span><span class="lineCov">          1 : </span>

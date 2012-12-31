@@ -84,19 +84,19 @@
 <span class="lineNum">      26 </span><span class="lineCov">          5 : }</span>
 <span class="lineNum">      27 </span>            : 
 <span class="lineNum">      28 </span>            : - (id)initWithSelector:(SEL)initializer isFactoryMethod:(BOOL)isFactoryMethod;
-<span class="lineNum">      29 </span><span class="lineCov">         22 : {</span>
+<span class="lineNum">      29 </span><span class="lineCov">         28 : {</span>
 <span class="lineNum">      30 </span>            :     self = [super init];
-<span class="lineNum">      31 </span><span class="lineCov">         22 :     if (self)</span>
-<span class="lineNum">      32 </span><span class="lineCov">         22 :     {</span>
+<span class="lineNum">      31 </span><span class="lineCov">         28 :     if (self)</span>
+<span class="lineNum">      32 </span><span class="lineCov">         28 :     {</span>
 <span class="lineNum">      33 </span>            :         _selector = initializer;
-<span class="lineNum">      34 </span><span class="lineCov">         22 :         _isFactoryMethod = isFactoryMethod;</span>
-<span class="lineNum">      35 </span><span class="lineCov">         22 :         _parameterNames = [self parameterNamesForSelector:_selector];</span>
-<span class="lineNum">      36 </span><span class="lineCov">         22 : </span>
+<span class="lineNum">      34 </span><span class="lineCov">         28 :         _isFactoryMethod = isFactoryMethod;</span>
+<span class="lineNum">      35 </span><span class="lineCov">         28 :         _parameterNames = [self parameterNamesForSelector:_selector];</span>
+<span class="lineNum">      36 </span><span class="lineCov">         28 : </span>
 <span class="lineNum">      37 </span>            :         _injectedParameters = [[NSMutableArray alloc] init];
-<span class="lineNum">      38 </span><span class="lineCov">         22 :     }</span>
-<span class="lineNum">      39 </span><span class="lineCov">         22 :     return self;</span>
-<span class="lineNum">      40 </span><span class="lineCov">         22 : }</span>
-<span class="lineNum">      41 </span><span class="lineCov">         22 : </span>
+<span class="lineNum">      38 </span><span class="lineCov">         28 :     }</span>
+<span class="lineNum">      39 </span><span class="lineCov">         28 :     return self;</span>
+<span class="lineNum">      40 </span><span class="lineCov">         28 : }</span>
+<span class="lineNum">      41 </span><span class="lineCov">         28 : </span>
 <span class="lineNum">      42 </span>            : - (id)init
 <span class="lineNum">      43 </span><span class="lineNoCov">          0 : {</span>
 <span class="lineNum">      44 </span>            :     return [self initWithSelector:@selector(init) isFactoryMethod:NO];
@@ -106,38 +106,38 @@
 <span class="lineNum">      48 </span>            : 
 <span class="lineNum">      49 </span>            : - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference
 <span class="lineNum">      50 </span>            : {
-<span class="lineNum">      51 </span><span class="lineCov">         10 :     [self injectParameterAt:[self indexOfParameter:name] withReference:reference];</span>
+<span class="lineNum">      51 </span><span class="lineCov">         12 :     [self injectParameterAt:[self indexOfParameter:name] withReference:reference];</span>
 <span class="lineNum">      52 </span>            : }
-<span class="lineNum">      53 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">      54 </span><span class="lineCov">         10 : </span>
+<span class="lineNum">      53 </span><span class="lineCov">         12 : </span>
+<span class="lineNum">      54 </span><span class="lineCov">         12 : </span>
 <span class="lineNum">      55 </span>            : - (void)injectParameterAt:(NSUInteger)index withReference:(NSString*)reference
 <span class="lineNum">      56 </span>            : {
 <span class="lineNum">      57 </span>            :     if (index != NSUIntegerMax &amp;&amp; index &lt; [_parameterNames count])
-<span class="lineNum">      58 </span><span class="lineCov">         10 :     {</span>
+<span class="lineNum">      58 </span><span class="lineCov">         12 :     {</span>
 <span class="lineNum">      59 </span>            :         [_injectedParameters addObject:[[SpringParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference]];
-<span class="lineNum">      60 </span><span class="lineCov">         10 :     }</span>
+<span class="lineNum">      60 </span><span class="lineCov">         12 :     }</span>
 <span class="lineNum">      61 </span>            : }
-<span class="lineNum">      62 </span><span class="lineCov">         10 : </span>
-<span class="lineNum">      63 </span><span class="lineCov">         10 : - (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol</span>
-<span class="lineNum">      64 </span><span class="lineCov">         10 : {</span>
+<span class="lineNum">      62 </span><span class="lineCov">         12 : </span>
+<span class="lineNum">      63 </span><span class="lineCov">         12 : - (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol</span>
+<span class="lineNum">      64 </span><span class="lineCov">         12 : {</span>
 <span class="lineNum">      65 </span>            :     [self injectParameterAt:[self indexOfParameter:name] withValueAsText:text requiredTypeOrNil:classOrProtocol];
 <span class="lineNum">      66 </span>            : }
-<span class="lineNum">      67 </span><span class="lineCov">         11 : </span>
+<span class="lineNum">      67 </span><span class="lineCov">         15 : </span>
 <span class="lineNum">      68 </span>            : - (void)injectParameterAt:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol
-<span class="lineNum">      69 </span><span class="lineCov">         11 : {</span>
-<span class="lineNum">      70 </span><span class="lineCov">         11 :     if (index != NSUIntegerMax &amp;&amp; index &lt; [_parameterNames count])</span>
+<span class="lineNum">      69 </span><span class="lineCov">         15 : {</span>
+<span class="lineNum">      70 </span><span class="lineCov">         15 :     if (index != NSUIntegerMax &amp;&amp; index &lt; [_parameterNames count])</span>
 <span class="lineNum">      71 </span>            :     {
 <span class="lineNum">      72 </span>            :         SpringParameterInjectedByValue* parameterInjectedByValue =
-<span class="lineNum">      73 </span><span class="lineCov">         12 :                 [[SpringParameterInjectedByValue alloc] initWithIndex:index value:text classOrProtocol:classOrProtocol];</span>
+<span class="lineNum">      73 </span><span class="lineCov">         16 :                 [[SpringParameterInjectedByValue alloc] initWithIndex:index value:text classOrProtocol:classOrProtocol];</span>
 <span class="lineNum">      74 </span>            :         [parameterInjectedByValue setInitializer:self];
-<span class="lineNum">      75 </span><span class="lineCov">         12 :         [_injectedParameters addObject:parameterInjectedByValue];</span>
+<span class="lineNum">      75 </span><span class="lineCov">         16 :         [_injectedParameters addObject:parameterInjectedByValue];</span>
 <span class="lineNum">      76 </span>            :     }
 <span class="lineNum">      77 </span>            : }
-<span class="lineNum">      78 </span><span class="lineCov">         12 : </span>
-<span class="lineNum">      79 </span><span class="lineCov">         12 : - (NSArray*)injectedParameters</span>
-<span class="lineNum">      80 </span><span class="lineCov">         12 : {</span>
-<span class="lineNum">      81 </span><span class="lineCov">         12 :     return [_injectedParameters copy];</span>
-<span class="lineNum">      82 </span><span class="lineCov">         12 : }</span>
+<span class="lineNum">      78 </span><span class="lineCov">         16 : </span>
+<span class="lineNum">      79 </span><span class="lineCov">         16 : - (NSArray*)injectedParameters</span>
+<span class="lineNum">      80 </span><span class="lineCov">         16 : {</span>
+<span class="lineNum">      81 </span><span class="lineCov">         16 :     return [_injectedParameters copy];</span>
+<span class="lineNum">      82 </span><span class="lineCov">         16 : }</span>
 <span class="lineNum">      83 </span>            : 
 <span class="lineNum">      84 </span><span class="lineCov">         10 : - (NSInvocation*)asInvocationFor:(id)classOrInstance</span>
 <span class="lineNum">      85 </span>            : {
@@ -177,16 +177,16 @@
 <span class="lineNum">     119 </span><span class="lineCov">          6 :     int parameterIndex = NSUIntegerMax;</span>
 <span class="lineNum">     120 </span>            :     for (int i = 0; i &lt; [_parameterNames count]; i++)
 <span class="lineNum">     121 </span>            :     {
-<span class="lineNum">     122 </span><span class="lineCov">         21 :         NSString* parameterName = [_parameterNames objectAtIndex:i];</span>
+<span class="lineNum">     122 </span><span class="lineCov">         27 :         NSString* parameterName = [_parameterNames objectAtIndex:i];</span>
 <span class="lineNum">     123 </span>            :         if ([name isEqualToString:parameterName])
-<span class="lineNum">     124 </span><span class="lineCov">         21 :         {</span>
-<span class="lineNum">     125 </span><span class="lineCov">         22 :             parameterIndex = i;</span>
+<span class="lineNum">     124 </span><span class="lineCov">         27 :         {</span>
+<span class="lineNum">     125 </span><span class="lineCov">         28 :             parameterIndex = i;</span>
 <span class="lineNum">     126 </span>            :             break;
-<span class="lineNum">     127 </span><span class="lineCov">         22 :         }</span>
-<span class="lineNum">     128 </span><span class="lineCov">         22 :     }</span>
+<span class="lineNum">     127 </span><span class="lineCov">         28 :         }</span>
+<span class="lineNum">     128 </span><span class="lineCov">         28 :     }</span>
 <span class="lineNum">     129 </span>            :     return parameterIndex;
-<span class="lineNum">     130 </span><span class="lineCov">         21 : }</span>
-<span class="lineNum">     131 </span><span class="lineCov">         21 : </span>
+<span class="lineNum">     130 </span><span class="lineCov">         27 : }</span>
+<span class="lineNum">     131 </span><span class="lineCov">         27 : </span>
 <span class="lineNum">     132 </span>            : @end
 </pre>
       </td>

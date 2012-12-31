@@ -79,17 +79,17 @@
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            : /* ============================================================ Initializers ============================================================ */
 <span class="lineNum">      23 </span>            : - (id)initWithIndex:(NSUInteger)index value:(NSString*)value classOrProtocol:(id)classOrProtocol
-<span class="lineNum">      24 </span><span class="lineCov">         12 : {</span>
+<span class="lineNum">      24 </span><span class="lineCov">         16 : {</span>
 <span class="lineNum">      25 </span>            :     self = [super init];
-<span class="lineNum">      26 </span><span class="lineCov">         12 :     if (self)</span>
-<span class="lineNum">      27 </span><span class="lineCov">         12 :     {</span>
+<span class="lineNum">      26 </span><span class="lineCov">         16 :     if (self)</span>
+<span class="lineNum">      27 </span><span class="lineCov">         16 :     {</span>
 <span class="lineNum">      28 </span>            :         _index = index;
-<span class="lineNum">      29 </span><span class="lineCov">         12 :         _value = value;</span>
-<span class="lineNum">      30 </span><span class="lineCov">         12 :         _classOrProtocol = classOrProtocol;</span>
-<span class="lineNum">      31 </span><span class="lineCov">         12 :     }</span>
-<span class="lineNum">      32 </span><span class="lineCov">         12 :     return self;</span>
-<span class="lineNum">      33 </span><span class="lineCov">         12 : }</span>
-<span class="lineNum">      34 </span><span class="lineCov">         12 : </span>
+<span class="lineNum">      29 </span><span class="lineCov">         16 :         _value = value;</span>
+<span class="lineNum">      30 </span><span class="lineCov">         16 :         _classOrProtocol = classOrProtocol;</span>
+<span class="lineNum">      31 </span><span class="lineCov">         16 :     }</span>
+<span class="lineNum">      32 </span><span class="lineCov">         16 :     return self;</span>
+<span class="lineNum">      33 </span><span class="lineCov">         16 : }</span>
+<span class="lineNum">      34 </span><span class="lineCov">         16 : </span>
 <span class="lineNum">      35 </span>            : /* ========================================================== Interface Methods ========================================================= */
 <span class="lineNum">      36 </span>            : - (SpringTypeDescriptor*)resolveTypeWith:(id)classOrInstance
 <span class="lineNum">      37 </span><span class="lineCov">          2 : {</span>
@@ -126,10 +126,10 @@
 <span class="lineNum">      68 </span><span class="lineCov">          8 : }</span>
 <span class="lineNum">      69 </span>            : 
 <span class="lineNum">      70 </span>            : - (void)setInitializer:(SpringComponentInitializer*)initializer
-<span class="lineNum">      71 </span><span class="lineCov">         16 : {</span>
+<span class="lineNum">      71 </span><span class="lineCov">         20 : {</span>
 <span class="lineNum">      72 </span>            :     _initializer = initializer;
-<span class="lineNum">      73 </span><span class="lineCov">         16 : }</span>
-<span class="lineNum">      74 </span><span class="lineCov">         16 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">         20 : }</span>
+<span class="lineNum">      74 </span><span class="lineCov">         20 : </span>
 <span class="lineNum">      75 </span>            : /* ============================================================ Utility Methods ========================================================= */
 <span class="lineNum">      76 </span>            : - (NSString*)description
 <span class="lineNum">      77 </span><span class="lineNoCov">          0 : {</span>
