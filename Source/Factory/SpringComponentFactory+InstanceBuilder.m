@@ -30,7 +30,7 @@
 - (id)buildInstanceWithDefinition:(SpringComponentDefinition*)definition
 {
     id <SpringReflectiveNSObject> instance;
-    if (definition.initializer && definition.initializer.isFactoryMethod)
+    if (definition.initializer && definition.initializer.isClassMethod)
     {
         instance = [self invokeInitializerOn:definition.type withDefinition:definition];
     }
@@ -39,7 +39,7 @@
         instance = [definition.type alloc];
     }
 
-    if (definition.initializer && definition.initializer.isFactoryMethod == NO)
+    if (definition.initializer && definition.initializer.isClassMethod == NO)
     {
         instance = [self invokeInitializerOn:instance withDefinition:definition];
     }
@@ -87,7 +87,7 @@
         }
     }
     [invocation invoke];
-    id <NSObject> returnValue = definition.initializer.isFactoryMethod ? nil : instanceOrClass;
+    id <NSObject> returnValue = definition.initializer.isClassMethod ? nil : instanceOrClass;
     [invocation getReturnValue:&returnValue];
     return returnValue;
 }
@@ -104,7 +104,7 @@
         SpringTypeDescriptor* typeDescriptor = [instance typeForPropertyWithName:property.name];
         if (typeDescriptor == nil)
         {
-            [NSException raise:NSIllegalSelectorException
+            [NSException raise:NSInvalidArgumentException
                         format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",
                                property.name, [instance class]];
         }

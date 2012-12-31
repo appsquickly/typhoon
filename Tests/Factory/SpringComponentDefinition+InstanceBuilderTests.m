@@ -53,7 +53,7 @@
 {
     SpringComponentDefinition* urlDefinition = [[SpringComponentDefinition alloc] initWithClazz:[NSURL class] key:@"url"];
     SpringComponentInitializer
-            * initializer = [[SpringComponentInitializer alloc] initWithSelector:@selector(URLWithString:) isFactoryMethod:YES];
+            * initializer = [[SpringComponentInitializer alloc] initWithSelector:@selector(URLWithString:) isClassMethod:YES];
     [initializer injectParameterAt:0 withValueAsText:@"http://www.appsquick.ly" requiredTypeOrNil:[NSString class]];
     [urlDefinition setInitializer:initializer];
     [_componentFactory register:urlDefinition];
@@ -114,7 +114,7 @@
 {
     SpringComponentDefinition* knightDefinition = [[SpringComponentDefinition alloc] initWithClazz:[Knight class] key:@"knight"];
     SpringComponentInitializer* initializer =
-            [[SpringComponentInitializer alloc] initWithSelector:@selector(initWithQuest:damselsRescued:) isFactoryMethod:NO];
+            [[SpringComponentInitializer alloc] initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethod:NO];
     [initializer injectParameterNamed:@"damselsRescued" withValueAsText:@"12" requiredTypeOrNil:nil];
     [knightDefinition setInitializer:initializer];
 

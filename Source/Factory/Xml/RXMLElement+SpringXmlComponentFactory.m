@@ -90,7 +90,7 @@
 {
     SEL selector = NSSelectorFromString([self attribute:@"selector"]);
     SpringComponentInitializer
-            * initializer = [[SpringComponentInitializer alloc] initWithSelector:selector isFactoryMethod:isFactoryMethod];
+            * initializer = [[SpringComponentInitializer alloc] initWithSelector:selector isClassMethod:isFactoryMethod];
 
     [self iterate:@"*" usingBlock:^(RXMLElement* child)
     {

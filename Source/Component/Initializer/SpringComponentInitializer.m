@@ -22,18 +22,17 @@
 /* ============================================================ Initializers ============================================================ */
 - (id)initWithSelector:(SEL)initializer
 {
-    return [self initWithSelector:initializer isFactoryMethod:NO];
+    return [self initWithSelector:initializer isClassMethod:SpringComponentInitializerIsClassMethodGuess];
 }
 
-- (id)initWithSelector:(SEL)initializer isFactoryMethod:(BOOL)isFactoryMethod;
+- (id)initWithSelector:(SEL)initializer isClassMethod:(SpringComponentInitializerIsClassMethod)isClassMethod;
 {
     self = [super init];
     if (self)
     {
         _selector = initializer;
-        _isFactoryMethod = isFactoryMethod;
+        _isClassMethod = [self resolveIsClassMethod:isClassMethod];
         _parameterNames = [self parameterNamesForSelector:_selector];
-
         _injectedParameters = [[NSMutableArray alloc] init];
     }
     return self;
@@ -41,7 +40,7 @@
 
 - (id)init
 {
-    return [self initWithSelector:@selector(init) isFactoryMethod:NO];
+    return [self initWithSelector:@selector(init) isClassMethod:NO];
 }
 
 /* ========================================================== Interface Methods ========================================================= */
@@ -84,7 +83,7 @@
 - (NSInvocation*)asInvocationFor:(id)classOrInstance
 {
     NSInvocation* invocation;
-    if (_isFactoryMethod)
+    if (_isClassMethod)
     {
         invocation = [NSInvocation invocationWithMethodSignature:[classOrInstance methodSignatureForSelector:_selector]];
     }
@@ -101,14 +100,14 @@
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"Initializer: %@, isFactoryMethod? %@", NSStringFromSelector(_selector),
-                                      _isFactoryMethod ? @"YES" : @"NO"];
+                                      _isClassMethod ? @"YES" : @"NO"];
 }
 
 - (void)dealloc
 {
     for (id <SpringInjectedParameter> parameter in _injectedParameters)
     {
-        //Null out the __unsafe_unretained property. 
+        //Null out the __unsafe_unretained pointer back to self.
         [parameter setInitializer:nil];
     }
 }
@@ -127,6 +126,19 @@
         }
     }
     return parameterIndex;
+}
+
+- (BOOL)resolveIsClassMethod:(SpringComponentInitializerIsClassMethod)isClassMethod
+{
+    switch (isClassMethod)
+    {
+        case SpringComponentInitializerIsClassMethodNo:
+            return NO;
+        case SpringComponentInitializerIsClassMethodYes:
+            return YES;
+        case SpringComponentInitializerIsClassMethodGuess:
+            return ![NSStringFromSelector(_selector) hasPrefix:@"init"];
+    }
 }
 
 @end

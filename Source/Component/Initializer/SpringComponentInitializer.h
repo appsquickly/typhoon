@@ -13,6 +13,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum
+{
+    SpringComponentInitializerIsClassMethodGuess,
+    SpringComponentInitializerIsClassMethodYes,
+    SpringComponentInitializerIsClassMethodNo
+} SpringComponentInitializerIsClassMethod;
+
 @interface SpringComponentInitializer : NSObject
 {
     NSMutableArray* _injectedParameters;
@@ -20,11 +27,11 @@
 }
 
 @property(nonatomic, readonly) SEL selector;
-@property(nonatomic, readonly) BOOL isFactoryMethod;
+@property(nonatomic, readonly) BOOL isClassMethod;
 
 - (id)initWithSelector:(SEL)initializer;
 
-- (id)initWithSelector:(SEL)initializer isFactoryMethod:(BOOL)isFactoryMethod;
+- (id)initWithSelector:(SEL)initializer isClassMethod:(SpringComponentInitializerIsClassMethod)isClassMethod;
 
 - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference;
 
