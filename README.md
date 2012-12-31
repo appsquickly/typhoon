@@ -55,12 +55,17 @@ DI. DI is just a design pattern and you can do it without a container. Having on
     </description>
 
     <component class="Knight" id="knight">
-        <description>
-            Property arguments can be injected by value. The container will look up the required class or
-            primitive type. You can also register your own converters.
-        </description>
-        <property name="quest" ref="quest"/>
-        <property name="damselsRescued" value="12"/>
+        <property name="quest" ref="quest">
+            <description>
+                Properties can be injected by reference.
+            </description>
+        </property>
+        <property name="damselsRescued" value="12">
+            <description>
+                Property arguments can be injected by value. The container will look up the required class or
+                primitive type. You can also register your own converters.
+            </description>
+        </property>
     </component>
 
 
@@ -97,7 +102,7 @@ DI. DI is just a design pattern and you can do it without a container. Having on
     <component class="NSURL" id="serviceUrl">
         <description>
             This is an example of a component instantiated from a class method. (In fact, you could inject
-            an NSURL instance directly by value).
+            an NSURL instance directly by value, but anyway. . . ).
 
             Note the "is-class-method" attribute: Spring Objective-C will normally guess this, so if the method follows
             objective-c naming conventions, this wouldn't be needed.
