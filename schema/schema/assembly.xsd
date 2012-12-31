@@ -10,16 +10,18 @@
   <xs:element name="component">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" ref="factory-method"/>
         <xs:element minOccurs="0" ref="initializer"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="property"/>
+        <xs:choice>
+          <xs:element ref="factory-method"/>
+          <xs:element maxOccurs="unbounded" ref="property"/>
+        </xs:choice>
       </xs:sequence>
       <xs:attribute name="class" use="required" type="xs:NCName"/>
       <xs:attribute name="id" use="required" type="xs:NCName"/>
       <xs:attribute name="scope" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="factory-method">
+  <xs:element name="initializer">
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="argument">
@@ -28,7 +30,7 @@
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
-  <xs:element name="initializer">
+  <xs:element name="factory-method">
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="argument">
