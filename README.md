@@ -54,7 +54,6 @@ DI. DI is just a design pattern and you can do it without a container. Having on
         Dependencies can be resolved by reference (ie a name), by matching the required type or protocol or by value.
     </description>
 
-
     <component class="Knight" id="knight">
         <property name="quest" ref="quest">
             <description>
@@ -72,7 +71,8 @@ DI. DI is just a design pattern and you can do it without a container. Having on
 
     <component class="CampaignQuest" id="quest" scope="prototype">
         <description>
-            Knight has a dependency on any class conforming to the Quest protocol. In this case it's a [CampaignQuest class]
+            Knight has a dependency on any class conforming to the Quest protocol. In this case it's a
+            [CampaignQuest class].
         </description>
 
         <property name="imageUrl" value="http://www.appsquick.ly/theQuest.jpg">
@@ -86,8 +86,8 @@ DI. DI is just a design pattern and you can do it without a container. Having on
 
     <component class="CavalryMan" id="anotherKnight">
         <description>
-            This time, we're using initializer injection. As shown below, you can also mix initializer injection with
-            property injection.
+            This time, we're using initializer injection. As shown below, you can also mix initializer injection
+            with property injection.
         </description>
         <initializer selector="initWithQuest:">
             <argument parameterName="quest" ref="quest"/>
@@ -105,8 +105,8 @@ DI. DI is just a design pattern and you can do it without a container. Having on
             This is an example of a component instantiated from a class method. (In fact, you could inject
             an NSURL instance directly by value, but anyway. . . ).
 
-            Note the "is-class-method" attribute: Spring Objective-C will normally guess this, so if the method follows
-            objective-c naming conventions, this wouldn't be needed.
+            Note the "is-class-method" attribute: Spring Objective-C will normally guess this, so if the method
+            follows objective-c naming conventions, this wouldn't be needed.
         </description>
         <initializer selector="URLWithString:" is-class-method="yes">
             <description>
