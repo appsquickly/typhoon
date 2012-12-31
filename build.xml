@@ -156,7 +156,7 @@
         <echo file="${temp.dir}/publish-site.sh">
             #!/bin/sh
             cd ${basedir}
-            cp -fr ${basedir}/Schemas ${reports.dir}
+            cp -fr ${basedir}/schema ${reports.dir}
             git checkout gh-pages
             git pull
             rm -fr ./coverage
@@ -165,7 +165,7 @@
             rm -fr ./api
             cp -fr ${reports.dir}/api ./api
             git add api
-            cp -fr ${reports.dir}/Schemas ./Schemas
+            cp -fr ${reports.dir}/schema ./schema
             git add Schemas
             git commit -a -m "publish reports to gh-pages"
             git push -u origin gh-pages
