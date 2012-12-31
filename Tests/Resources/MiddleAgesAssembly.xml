@@ -52,7 +52,8 @@
         </initializer>
         <property name="hasHorseWillTravel" value="yes">
             <description>
-                This is a primitive property of type BOOL - the container will convert it for us.
+                Besides object conversion types, primitives are supported. This is a primitive property of type BOOL -
+                the container will convert it for us.
             </description>
         </property>
     </component>
