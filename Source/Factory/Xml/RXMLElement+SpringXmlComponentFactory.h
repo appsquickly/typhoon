@@ -27,7 +27,6 @@
 
 - (SpringComponentInitializer*)asInitializer;
 
-- (SpringComponentInitializer*)asFactoryMethod;
 
 
 @end

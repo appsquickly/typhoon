@@ -75,50 +75,15 @@
 - (SpringComponentInitializer*)asInitializer
 {
     [self assertTagName:@"initializer"];
-    return [self asInitializerIsFactoryMethod:NO];
-}
-
-- (SpringComponentInitializer*)asFactoryMethod
-{
-    [self assertTagName:@"factory-method"];
-    return [self asInitializerIsFactoryMethod:YES];
-}
-
-
-/* ============================================================ Private Methods ========================================================= */
-- (SpringComponentInitializer*)asInitializerIsFactoryMethod:(BOOL)isFactoryMethod
-{
     SEL selector = NSSelectorFromString([self attribute:@"selector"]);
-    SpringComponentInitializer
-            * initializer = [[SpringComponentInitializer alloc] initWithSelector:selector isClassMethod:isFactoryMethod];
+    SpringComponentInitializerIsClassMethod isClassMethod = [self handleIsClassMethod:[self attribute:@"is-class-method"]];
+    SpringComponentInitializer* initializer = [[SpringComponentInitializer alloc] initWithSelector:selector isClassMethod:isClassMethod];
 
     [self iterate:@"*" usingBlock:^(RXMLElement* child)
     {
         if ([[child tag] isEqualToString:@"argument"])
         {
-            NSString* name = [child attribute:@"parameterName"];
-            NSString* reference = [child attribute:@"ref"];
-            NSString* value = [child attribute:@"value"];
-
-            if (reference)
-            {
-                [initializer injectParameterNamed:name withReference:reference];
-            }
-            else if (value)
-            {
-                NSString* classAsString = [child attribute:@"required-class"];
-                Class clazz;
-                if (classAsString)
-                {
-                    clazz = NSClassFromString(classAsString);
-                    if (clazz == nil)
-                    {
-                        [NSException raise:NSInvalidArgumentException format:@"Class '%@' could not be resolved.", classAsString];
-                    }
-                }
-                [initializer injectParameterNamed:name withValueAsText:value requiredTypeOrNil:clazz];
-            }
-
+            [self setArgumentOnInitializer:initializer withChildTag:child];
         }
         else
         {
@@ -128,6 +93,7 @@
     return initializer;
 }
 
+/* ============================================================ Private Methods ========================================================= */
 - (void)assertTagName:(NSString*)tagName
 {
     if (![self.tag isEqualToString:tagName])
@@ -175,16 +141,54 @@
         {
             [componentDefinition setInitializer:[child asInitializer]];
         }
-        else if ([[child tag] isEqualToString:@"factory-method"])
-        {
-            [componentDefinition setInitializer:[child asFactoryMethod]];
-        }
         else
         {
             [NSException raise:NSInvalidArgumentException format:@"The tag '%@' can't be used as part of a component definition.",
                                                                  [child tag]];
         }
     }];
+}
+
+- (void)setArgumentOnInitializer:(SpringComponentInitializer*)initializer withChildTag:(RXMLElement*)child
+{
+    NSString* name = [child attribute:@"parameterName"];
+    NSString* reference = [child attribute:@"ref"];
+    NSString* value = [child attribute:@"value"];
+
+    if (reference)
+    {
+        [initializer injectParameterNamed:name withReference:reference];
+    }
+    else if (value)
+    {
+        NSString* classAsString = [child attribute:@"required-class"];
+        Class clazz;
+        if (classAsString)
+        {
+            clazz = NSClassFromString(classAsString);
+            if (clazz == nil)
+            {
+                [NSException raise:NSInvalidArgumentException format:@"Class '%@' could not be resolved.", classAsString];
+            }
+        }
+        [initializer injectParameterNamed:name withValueAsText:value requiredTypeOrNil:clazz];
+    }
+}
+
+- (SpringComponentInitializerIsClassMethod)handleIsClassMethod:(NSString*)isClassMethodString
+{
+    if ([[isClassMethodString lowercaseString] isEqualToString:@"yes"] || [[isClassMethodString lowercaseString] isEqualToString:@"true"])
+    {
+        return SpringComponentInitializerIsClassMethodYes;
+    }
+    else if ([[isClassMethodString lowercaseString] isEqualToString:@"no"] || [[isClassMethodString lowercaseString] isEqualToString:@"no"])
+    {
+        return SpringComponentInitializerIsClassMethodNo;
+    }
+    else
+    {
+        return SpringComponentInitializerIsClassMethodGuess;
+    }
 }
 
 @end
