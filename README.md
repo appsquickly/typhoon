@@ -81,8 +81,8 @@ DI. DI is just a design pattern and you can do it without a container. Having on
                 This is a property of type NSURL. The container will convert the supplied string value and inject it
                 for us.
 
-                A handful of useful conversion types are included. You can also easily register your own additional
-                converters.
+                Besides the primitive types (int, BOOL, etc), a handful of useful object conversion types are included.
+                You can also easily register your own additional converters.
             </description>
         </property>
     </component>
