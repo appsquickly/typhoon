@@ -49,10 +49,10 @@ DI. DI is just a design pattern and you can do it without a container. Having on
         http://jasperblues.github.com/spring-objective-c/schema/assembly.xsd">
 
     <description>
-        This is the application assembly. The schema declaration above gives IDE code-completion in supported IDEs.
-        (works in AppCode).
+        This is the application assembly. The schema declaration above gives code-completion in supported IDEs (works in AppCode).
         Dependencies can be resolved by reference (ie a name), by matching the required type or protocol or by value.
     </description>
+
 
     <component class="Knight" id="knight">
         <property name="quest" ref="quest">
