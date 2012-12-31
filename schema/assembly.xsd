@@ -157,8 +157,8 @@
         <xsd:complexType>
             <xsd:sequence>
                 <xsd:element ref="description" minOccurs="0"/>
-                <xsd:choice minOccurs="0" maxOccurs="1">
-                    <xsd:element ref="component"/>
+                <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                    <xsd:element ref="argument"/>
                     <xsd:any namespace="##other" processContents="strict"/>
                 </xsd:choice>
             </xsd:sequence>
@@ -202,7 +202,6 @@
         </xsd:annotation>
     </xsd:element>
 
-
     <xsd:complexType name="propertyType">
         <xsd:sequence>
             <xsd:element ref="description" minOccurs="0"/>
@@ -234,7 +233,53 @@
         </xsd:attribute>
     </xsd:complexType>
 
+    <xsd:element name="argument" type="argumentType">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[
+	Initializers can have zero or more arguments. Supports primitives, references to other
+	components, as well as objects that will be converted to the required type using a type
+	converter registry.
+			]]></xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
 
+    <xsd:complexType name="argumentType">
+        <xsd:sequence>
+            <xsd:element ref="description" minOccurs="0"/>
+            <xsd:choice minOccurs="0" maxOccurs="1">
+                <xsd:element ref="component"/>
+                <xsd:any namespace="##other" processContents="strict"/>
+            </xsd:choice>
+        </xsd:sequence>
+        <xsd:attribute name="parameterName" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+	The name of the argument, following Objective-C naming conventions.
+				]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="ref" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+	A reference to a component definition.
+				]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="value" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+	The value to be injected. Will be converted to the required type.
+				]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="required-class" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+	The class to be injected. Required for non-primitive argument types.
+				]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
 
     <!-- simple internal types -->
     <xsd:simpleType name="defaultable-boolean">

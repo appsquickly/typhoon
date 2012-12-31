@@ -21,15 +21,15 @@
     </component>
 
     <component class="NSURL" id="serviceUrl">
-        <factory-method selector="URLWithString:">
+        <initializer selector="URLWithString:">
             <argument parameterName="string" value="http://dev.foobar.com/service/" required-class="NSString" />
-        </factory-method>
+        </initializer>
     </component>
 
     <component class="NSURL" id="anotherServiceUrl">
-        <factory-method selector="URLWithString:">
+        <initializer selector="URLWithString:">
             <argument parameterName="string" value="http://dev.foobar.com/service/" />
-        </factory-method>
+        </initializer>
     </component>
 
 </assembly>
