@@ -43,42 +43,72 @@ DI. DI is just a design pattern and you can do it without a container. Having on
 
 
 ```xml
-<?xml version='1.0' encoding='UTF-8'?>
-<assembly>
+<assembly xmlns="http://jasperblues.github.com/spring-objective-c/schema/assembly"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://jasperblues.github.com/spring-objective-c/schema/assembly
+        http://jasperblues.github.com/spring-objective-c/schema/assembly.xsd">
+
+    <description>
+        This is the application assembly. The schema declaration above gives IDE code-completion in supported IDEs.
+        (works in AppCode).
+        Dependencies can be resolved by reference (ie a name), by matching the required type or protocol or by value.
+    </description>
 
     <component class="Knight" id="knight">
-        <!-- Dependencies can be resolved by reference (ie a name), or by matching the required type or protocol -->
+        <description>
+            Property arguments can be injected by value. The container will look up the required class or
+            primitive type. You can also register your own converters.
+        </description>
         <property name="quest" ref="quest"/>
-        <!-- Property arguments can be injected by value. The container will look up the required class or 
-        primitive type. You can also register your own converters. -->
         <property name="damselsRescued" value="12"/>
     </component>
-    
-    <!-- Knight has a dependency on any type of id<Quest>, in this case it's a [CampaignQuest class] -->
+
+
     <component class="CampaignQuest" id="quest" scope="prototype">
-        <!-- This is a property of type NSURL. The container will convert the supplied string value and inject it
-        for us .-->
-        <property name="imageUrl" value="http://www.appsquick.ly/theQuest.jpg"/>
+        <description>
+            Knight has a dependency on any class conforming to the Quest protocol. In this case it's a [CampaignQuest class]
+        </description>
+
+        <property name="imageUrl" value="http://www.appsquick.ly/theQuest.jpg">
+            <description>
+                This is a property of type NSURL. The container will convert the supplied string value and inject it
+                for us.
+            </description>
+        </property>
     </component>
 
-    <!-- This time, we're using initializer injection. As shown below, you can also mix initializer injection with
-    property injection -->
+
     <component class="CavalryMan" id="anotherKnight">
+        <description>
+            This time, we're using initializer injection. As shown below, you can also mix initializer injection with
+            property injection.
+        </description>
         <initializer selector="initWithQuest:">
             <argument parameterName="quest" ref="quest"/>
         </initializer>
-        <!-- This is a primitive property of type BOOL -->
-        <property name="hasHorseWillTravel" value="yes"/>
+        <property name="hasHorseWillTravel" value="yes">
+            <description>
+                This is a primitive property of type BOOL - the container will convert it for us.
+            </description>
+        </property>
     </component>
 
-    <!-- This is just an example of a factory-method class. In fact, you could inject an NSURL instance directly
-    by value. . . more examples and better docs to follow real soon -->
+
     <component class="NSURL" id="serviceUrl">
-        <factory-method selector="URLWithString:">
-            <!-- Initializer arguments require type to be set explicitly, unless the type is a primitive 
-            (BOOL, int , etc) -->
-            <argument parameterName="string" value="http://dev.foobar.com/service/" required-type="NSString" />
-        </factory-method>
+        <description>
+            This is an example of a component instantiated from a class method. (In fact, you could inject
+            an NSURL instance directly by value).
+
+            Note the "is-class-method" attribute: Spring Objective-C will normally guess this, so if the method follows
+            objective-c naming conventions, this wouldn't be needed.
+        </description>
+        <initializer selector="URLWithString:" is-class-method="yes">
+            <description>
+                Initializer arguments require type to be set explicitly, unless the type is a primitive
+                (BOOL, int , etc).
+            </description>
+            <argument parameterName="string" value="http://dev.foobar.com/service/" required-class="NSString"/>
+        </initializer>
     </component>
 
 </assembly>

@@ -37,14 +37,16 @@
 
     [_element iterate:@"*" usingBlock:^(RXMLElement* child)
     {
-        SpringComponentDefinition* definition = [child asComponentDefinition];
-        LogDebug(@"Here's the component definition: %@", definition);
-        [componentDefinitions addObject:definition];
+        if ([[child tag] isEqualToString:@"component"])
+        {
+            SpringComponentDefinition* definition = [child asComponentDefinition];
+            LogDebug(@"Here's the component definition: %@", definition);
+            [componentDefinitions addObject:definition];
+        }
     }];
 
     assertThat(componentDefinitions, hasCountOf(5));
 }
-
 
 
 @end

@@ -55,7 +55,10 @@
 
         [element iterate:@"*" usingBlock:^(RXMLElement* child)
         {
-            [self register:[child asComponentDefinition]];
+            if ([[child tag] isEqualToString:@"component"])
+            {
+                [self register:[child asComponentDefinition]];
+            }
         }];
     }
 }

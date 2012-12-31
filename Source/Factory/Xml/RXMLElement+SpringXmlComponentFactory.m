@@ -85,6 +85,10 @@
         {
             [self setArgumentOnInitializer:initializer withChildTag:child];
         }
+        else if ([[child tag] isEqualToString:@"description"])
+        {
+            //do nothing.
+        }
         else
         {
             [NSException raise:NSInvalidArgumentException format:@"The tag '%@' can't be used as part of an initializer.", [child tag]];
@@ -140,6 +144,10 @@
         else if ([[child tag] isEqualToString:@"initializer"])
         {
             [componentDefinition setInitializer:[child asInitializer]];
+        }
+        else if ([[child tag] isEqualToString:@"description"])
+        {
+            // do nothing
         }
         else
         {
