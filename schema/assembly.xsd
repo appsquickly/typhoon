@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://jasperblues.github.com/spring-objective-c/schema/components">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://jasperblues.github.com/spring-objective-c/schema/assembly">
   <xs:element name="assembly">
     <xs:complexType>
       <xs:sequence>

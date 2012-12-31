@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<assembly xmlns="http://jasperblues.github.com/spring-objective-c/schema/components"
+<assembly xmlns="http://jasperblues.github.com/spring-objective-c/schema/assembly"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://jasperblues.github.com/spring-objective-c/schema/components
-        http://jasperblues.github.com/spring-objective-c/Schemas/components.xsd
-        http://jasperblues.github.com/spring-objective-c/schema/components">
+        xsi:schemaLocation="http://jasperblues.github.com/spring-objective-c/schema/assembly
+        http://jasperblues.github.com/spring-objective-c/schema/assembly.xsd
+        http://jasperblues.github.com/spring-objective-c/schema/assembly">
 
     <component class="Knight" id="knight">
         <property name="quest" ref="quest"/>
