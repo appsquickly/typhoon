@@ -52,6 +52,7 @@ DI. DI is just a design pattern and you can do it without a container. Having on
         This is the application assembly. The schema declaration above gives code-completion in supported IDEs
         (works in AppCode, but the Xcode XML editor doesn't resolve schemas, it seems).
         Dependencies can be resolved by reference (ie a name), by matching the required type or protocol or by value.
+        Dependencies can be declared in any order - Spring Objective-C will work out how to resolve them.
     </description>
 
     <component class="Knight" id="knight">
