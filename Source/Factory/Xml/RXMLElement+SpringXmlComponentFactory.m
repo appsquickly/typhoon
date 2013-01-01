@@ -32,6 +32,7 @@
     NSString* key = [self createOrRetrieveIdComponentId];
     SpringComponentDefinition* definition = [[SpringComponentDefinition alloc] initWithClazz:clazz key:key];
 
+    [definition setBeforePropertyInjection:NSSelectorFromString([self attribute:@"before-property-injection"])];
     [definition setAfterPropertyInjection:NSSelectorFromString([self attribute:@"after-property-injection"])];
     [self setScopeForDefinition:definition withStringValue:[[self attribute:@"scope"] lowercaseString]];
     [self parseComponentDefinitionChildren:definition];

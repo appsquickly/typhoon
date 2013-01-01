@@ -100,6 +100,18 @@
                 </xsd:restriction>
             </xsd:simpleType>
         </xsd:attribute>
+        <xsd:attribute name="before-property-injection" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+	The name of the custom initialization method to invoke before setting
+	component properties. The method must have no arguments, but may throw any
+	exception.
+
+	This is an alternative to implementing Spring Objective-C's SpringPropertyInjectionDelegate
+	protocol.
+				]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
         <xsd:attribute name="after-property-injection" type="xsd:string">
             <xsd:annotation>
                 <xsd:documentation><![CDATA[

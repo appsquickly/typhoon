@@ -221,8 +221,10 @@
 		BA798568F0E1710A3F0DF761 /* RXMLElement+SpringXmlComponentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RXMLElement+SpringXmlComponentFactory.h"; sourceTree = "<group>"; };
 		BA798704F1F26A3519F598F0 /* SpringInjectedParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringInjectedParameter.h; sourceTree = "<group>"; };
 		BA798754085BEEED840E5182 /* SpringXmlComponentFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringXmlComponentFactoryTests.m; sourceTree = "<group>"; };
+		BA79887AE533B0ED8FD40BFA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = README.md; sourceTree = "<group>"; };
 		BA79889370B8FF5CDA59B809 /* SpringPassThroughTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringPassThroughTypeConverter.m; sourceTree = "<group>"; };
 		BA7988E7A0B25288092F2A6D /* ClassADependsOnB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassADependsOnB.h; sourceTree = "<group>"; };
+		BA7989BC98F3A59831CD05C6 /* assembly.xsd */ = {isa = PBXFileReference; lastKnownFileType = file.xsd; path = assembly.xsd; sourceTree = "<group>"; };
 		BA798A0DC71ACCA8F4AD009E /* SpringBundleResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringBundleResource.h; sourceTree = "<group>"; };
 		BA798A2904C4FF1D6453E8C1 /* SpringReflectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringReflectionUtils.m; sourceTree = "<group>"; };
 		BA798A2E10EABDBD7912DBE5 /* ClassBDependsOnA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassBDependsOnA.m; sourceTree = "<group>"; };
@@ -266,6 +268,8 @@
 				6B263723168556790026E894 /* Frameworks */,
 				6B263721168556790026E894 /* Products */,
 				BA7983592CC086F4C90AAC2F /* External */,
+				BA79887AE533B0ED8FD40BFA /* README.md */,
+				BA798FBD584D543429E89A75 /* schema */,
 			);
 			sourceTree = "<group>";
 		};
@@ -548,6 +552,14 @@
 				BA798B67C3EBDEA3B67B0CA9 /* CircularDependenciesAssembly.xml */,
 			);
 			path = CircularDependencies;
+			sourceTree = "<group>";
+		};
+		BA798FBD584D543429E89A75 /* schema */ = {
+			isa = PBXGroup;
+			children = (
+				BA7989BC98F3A59831CD05C6 /* assembly.xsd */,
+			);
+			path = schema;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

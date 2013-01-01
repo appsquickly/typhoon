@@ -18,6 +18,8 @@
 
 @property(nonatomic, strong) NSURL* imageUrl;
 
+- (void)questBeforePropertyInjection;
+
 - (void)questAfterPropertyInjection;
 
 @end

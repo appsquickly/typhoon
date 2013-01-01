@@ -92,12 +92,12 @@
     return returnValue;
 }
 
+/* ====================================================================================================================================== */
+#pragma mark - Property Injection
+
 - (void)injectPropertyDependenciesOn:(id <SpringReflectiveNSObject>)instance withDefinition:(SpringComponentDefinition*)definition
 {
-    if ([instance conformsToProtocol:@protocol(SpringPropertyInjectionDelegate)])
-    {
-        [(id <SpringPropertyInjectionDelegate>) instance beforePropertiesSet];
-    }
+    [self doBeforePropertyInjectionOn:instance withDefinition:definition];
 
     for (id <SpringInjectedProperty> property in [definition injectedProperties])
     {
@@ -111,13 +111,18 @@
         [self doPropertyInjection:instance property:property typeDescriptor:typeDescriptor];
     }
 
+    [self doAfterPropertyInjectionOn:instance withDefinition:definition];
+}
+
+- (void)doBeforePropertyInjectionOn:(id <SpringReflectiveNSObject>)instance withDefinition:(SpringComponentDefinition*)definition
+{
     if ([instance conformsToProtocol:@protocol(SpringPropertyInjectionDelegate)])
     {
-        [(id <SpringPropertyInjectionDelegate>) instance afterPropertiesSet];
+        [(id <SpringPropertyInjectionDelegate>) instance beforePropertiesSet];
     }
-    if ([instance respondsToSelector:definition.afterPropertyInjection])
+    if ([instance respondsToSelector:definition.beforePropertyInjection])
     {
-        [instance performSelector:definition.afterPropertyInjection];
+        [instance performSelector:definition.beforePropertyInjection];
     }
 }
 
@@ -149,6 +154,18 @@
             id converted = [converter convert:valueProperty.textValue];
             objc_msgSend(instance, [instance setterForPropertyWithName:property.name], converted, nil);
         }
+    }
+}
+
+- (void)doAfterPropertyInjectionOn:(id <SpringReflectiveNSObject>)instance withDefinition:(SpringComponentDefinition*)definition
+{
+    if ([instance conformsToProtocol:@protocol(SpringPropertyInjectionDelegate)])
+    {
+        [(id <SpringPropertyInjectionDelegate>) instance afterPropertiesSet];
+    }
+    if ([instance respondsToSelector:definition.afterPropertyInjection])
+    {
+        [instance performSelector:definition.afterPropertyInjection];
     }
 }
 
