@@ -67,12 +67,16 @@
             an NSURL instance directly by value, but anyway. . . ).
 
             Note the "is-class-method" attribute: Spring Objective-C will normally guess this, so if the method
-            follows objective-c naming conventions, this wouldn't be needed.
+            follows objective-c naming conventions, this wouldn't be needed. That is to say, if the method name
+            starts with "init" it will be treated as an instance method, otherwise it will be resolved as a class
+            method. . . supplying this attribute will override Spring Objective-C's guess.
         </description>
         <initializer selector="URLWithString:" is-class-method="yes">
             <description>
-                Initializer arguments require type to be set explicitly, unless the type is a primitive
-                (BOOL, int , etc).
+                Unlike property injection, initializer arguments require type to be set explicitly, unless the type
+                is a primitive - BOOL, int, etc. . . This is because the Objective-C runtime doesn't include detailed
+                type information for selectors. Only whether the type is an object or the primitive type. (The container
+                will remind you to set this attribute if you forget).
             </description>
             <argument parameterName="string" value="http://dev.foobar.com/service/" required-class="NSString"/>
         </initializer>
