@@ -101,8 +101,7 @@ DI. DI is just a design pattern and you can do it without a container. Having on
         </initializer>
         <property name="hasHorseWillTravel" value="yes">
             <description>
-                Besides object conversion types, primitives are supported. This is a primitive property
-                of type BOOL - the container will convert it for us.
+                This is a primitive property of type BOOL.
             </description>
         </property>
     </component>
