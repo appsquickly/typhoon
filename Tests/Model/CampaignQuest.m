@@ -20,4 +20,18 @@
     return @"Campaign Quest";
 }
 
+- (void)questAfterPropertyInjection
+{
+    LogDebug(@"$$$$$$$$$$$$$$$$$ My dependencies have been injected. And I know look like this: %@", [self description]);
+}
+
+- (NSString*)description
+{
+    NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
+    [description appendFormat:@"self.imageUrl=%@", self.imageUrl];
+    [description appendString:@">"];
+    return description;
+}
+
+
 @end

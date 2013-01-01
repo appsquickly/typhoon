@@ -70,10 +70,13 @@ DI. DI is just a design pattern and you can do it without a container. Having on
     </component>
 
 
-    <component class="CampaignQuest" key="quest" scope="prototype">
+    <component class="CampaignQuest" key="quest" scope="prototype" after-property-injection="questAfterPropertyInjection">
         <description>
             Knight has a dependency on any class conforming to the Quest protocol. In this case it's a
             [CampaignQuest class].
+
+            Note the 'after-property-injection' attribute. This is a custom method that can be called after all
+            properties have been injected.
         </description>
 
         <property name="imageUrl" value="http://www.appsquick.ly/theQuest.jpg">
@@ -86,6 +89,7 @@ DI. DI is just a design pattern and you can do it without a container. Having on
             </description>
         </property>
     </component>
+
 
     <component class="CavalryMan" key="anotherKnight">
         <description>

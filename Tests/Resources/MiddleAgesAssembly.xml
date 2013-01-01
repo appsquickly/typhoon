@@ -10,7 +10,7 @@
         Dependencies can be declared in any order - Spring Objective-C will work out how to resolve them.
     </description>
 
-    <component class="Knight" key="knight" after-property-injection="knightAfterPropertyInjection">
+    <component class="Knight" key="knight">
         <property name="quest" ref="quest">
             <description>
                 Properties can be injected by reference.
@@ -25,10 +25,13 @@
     </component>
 
 
-    <component class="CampaignQuest" key="quest" scope="prototype">
+    <component class="CampaignQuest" key="quest" scope="prototype" after-property-injection="questAfterPropertyInjection">
         <description>
             Knight has a dependency on any class conforming to the Quest protocol. In this case it's a
             [CampaignQuest class].
+
+            Note the 'after-property-injection' attribute. This is a custom method that can be called after all
+            properties have been injected.
         </description>
 
         <property name="imageUrl" value="http://www.appsquick.ly/theQuest.jpg">

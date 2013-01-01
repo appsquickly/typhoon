@@ -31,7 +31,5 @@
 
 - (NSString*)description;
 
-- (void)knightAfterPropertyInjection;
-
 
 @end

@@ -41,12 +41,6 @@
     _quest = quest;
 }
 
-- (void)knightAfterPropertyInjection
-{
-    LogDebug(@"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ My properties have now been injected. Here's what I look like: %@", [self description]);
-}
-
-
 - (NSString*)description
 {
     NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
