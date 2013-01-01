@@ -70,8 +70,7 @@ DI. DI is just a design pattern and you can do it without a container. Having on
     </component>
 
 
-    <component class="CampaignQuest" key="quest" scope="prototype" before-property-injection="questBeforePropertyInjection"
-               after-property-injection="questAfterPropertyInjection">
+    <component class="CampaignQuest" key="quest" scope="prototype" after-property-injection="questAfterPropertyInjection">
         <description>
             Knight has a dependency on any class conforming to the Quest protocol. In this case it's a
             [CampaignQuest class].
