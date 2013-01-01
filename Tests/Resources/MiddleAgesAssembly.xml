@@ -19,7 +19,7 @@
         <property name="damselsRescued" value="12">
             <description>
                 Property arguments can also be injected by value. The container will look up the required class or
-                primitive type. You can also register your own converters.
+                primitive type. It's easy to register your own additional converters.
             </description>
         </property>
     </component>
