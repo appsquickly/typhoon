@@ -376,6 +376,8 @@
 				6BA9C800168E92AF00E6AD6C /* SpringComponentFactory+InstanceBuilder.h */,
 				6BA9C801168E92AF00E6AD6C /* SpringComponentFactory+InstanceBuilder.m */,
 				6BA9C804168E92AF00E6AD6C /* Xml */,
+				6BA9C803168E92AF00E6AD6C /* SpringComponentFactory.m */,
+				6BA9C802168E92AF00E6AD6C /* SpringComponentFactory.h */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -387,8 +389,6 @@
 				6BA9C806168E92AF00E6AD6C /* SpringXmlComponentFactory.m */,
 				BA79817B99FDC25A21F54C2D /* RXMLElement+SpringXmlComponentFactory.m */,
 				BA798568F0E1710A3F0DF761 /* RXMLElement+SpringXmlComponentFactory.h */,
-				6BA9C803168E92AF00E6AD6C /* SpringComponentFactory.m */,
-				6BA9C802168E92AF00E6AD6C /* SpringComponentFactory.h */,
 			);
 			path = Xml;
 			sourceTree = "<group>";
