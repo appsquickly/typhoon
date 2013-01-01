@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <assembly>
 
-    <component class="ClassADependsOnB" id="classA">
+    <component class="ClassADependsOnB" key="classA">
         <property name="dependencyOnB" ref="classB"/>
     </component>
 
-    <component class="ClassBDependsOnA" id="classB">
+    <component class="ClassBDependsOnA" key="classB">
         <property name="dependencyOnA" ref="classA"/>
     </component>
 

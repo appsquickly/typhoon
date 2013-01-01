@@ -78,7 +78,11 @@
 
     <component class="NSURL" key="anotherServiceUrl">
         <initializer selector="URLWithString:">
-            <argument parameterName="string" value="http://dev.foobar.com/service/"/>
+            <argument parameterName="string" value="http://dev.foobar.com/service/">
+                <description>
+                    This will fail because the required-class attribute is not set.
+                </description>
+            </argument>
         </initializer>
     </component>
 

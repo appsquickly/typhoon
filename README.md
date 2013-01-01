@@ -55,7 +55,7 @@ DI. DI is just a design pattern and you can do it without a container. Having on
         Dependencies can be declared in any order - Spring Objective-C will work out how to resolve them.
     </description>
 
-    <component class="Knight" id="knight">
+    <component class="Knight" key="knight">
         <property name="quest" ref="quest">
             <description>
                 Properties can be injected by reference.
@@ -70,7 +70,7 @@ DI. DI is just a design pattern and you can do it without a container. Having on
     </component>
 
 
-    <component class="CampaignQuest" id="quest" scope="prototype">
+    <component class="CampaignQuest" key="quest" scope="prototype">
         <description>
             Knight has a dependency on any class conforming to the Quest protocol. In this case it's a
             [CampaignQuest class].
@@ -87,7 +87,7 @@ DI. DI is just a design pattern and you can do it without a container. Having on
         </property>
     </component>
 
-    <component class="CavalryMan" id="anotherKnight">
+    <component class="CavalryMan" key="anotherKnight">
         <description>
             This time, we're using initializer injection. As shown below, you can also mix initializer
             injection with property injection.
@@ -104,7 +104,7 @@ DI. DI is just a design pattern and you can do it without a container. Having on
     </component>
 
 
-    <component class="NSURL" id="serviceUrl">
+    <component class="NSURL" key="serviceUrl">
         <description>
             This is an example of a component instantiated from a class method. (In fact, you could inject
             an NSURL instance directly by value, but anyway. . . ).

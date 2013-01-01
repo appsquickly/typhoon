@@ -206,7 +206,8 @@
         <xsd:sequence>
             <xsd:element ref="description" minOccurs="0"/>
             <xsd:choice minOccurs="0" maxOccurs="1">
-                <xsd:element ref="component"/>
+                <!-- Inline components not supported yet -->
+                <!--<xsd:element ref="component"/>-->
                 <xsd:any namespace="##other" processContents="strict"/>
             </xsd:choice>
         </xsd:sequence>
@@ -247,7 +248,8 @@
         <xsd:sequence>
             <xsd:element ref="description" minOccurs="0"/>
             <xsd:choice minOccurs="0" maxOccurs="1">
-                <xsd:element ref="component"/>
+                <!-- inline components not supported yet -->
+                <!--<xsd:element ref="component"/>-->
                 <xsd:any namespace="##other" processContents="strict"/>
             </xsd:choice>
         </xsd:sequence>

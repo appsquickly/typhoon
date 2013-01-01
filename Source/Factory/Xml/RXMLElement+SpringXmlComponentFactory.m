@@ -125,7 +125,7 @@
 
 - (NSString*)createOrRetrieveIdComponentId
 {
-    NSString* componentId = [self attribute:@"id"];
+    NSString* componentId = [self attribute:@"key"];
     if (componentId == nil)
     {
         [NSException raise:NSInternalInconsistencyException format:@"$$$$$$$$$$$$$$ Need to implement support for nil id"];
