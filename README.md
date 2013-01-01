@@ -63,7 +63,7 @@ DI. DI is just a design pattern and you can do it without a container. Having on
         </property>
         <property name="damselsRescued" value="12">
             <description>
-                Property arguments can be injected by value. The container will look up the required class or
+                Property arguments can also be injected by value. The container will look up the required class or
                 primitive type. You can also register your own converters.
             </description>
         </property>

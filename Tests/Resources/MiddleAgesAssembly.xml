@@ -18,7 +18,7 @@
         </property>
         <property name="damselsRescued" value="12">
             <description>
-                Property arguments can be injected by value. The container will look up the required class or
+                Property arguments can also be injected by value. The container will look up the required class or
                 primitive type. You can also register your own converters.
             </description>
         </property>
