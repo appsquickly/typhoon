@@ -146,7 +146,8 @@ Knight* anotherKnight = [_componentFactory objectForKey:@"anotherKnight"];
 
 # Docs
 
-More to follow over the coming days. Meanwhile, the Tests folder contains further usage examples.
+More to follow over the coming days. Meanwhile, the Tests folder contains further usage examples. The API and 
+Test Coverage reports below are published by my build server, after each commit. 
 
 * <a href="https://github.com/jasperblues/spring-objective-c/wiki">Wiki</a>
 * <a href="http://jasperblues.github.com/spring-objective-c/api/index.html">API</a>
