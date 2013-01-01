@@ -14,21 +14,24 @@
 #import <Foundation/Foundation.h>
 
 @class CampaignQuest;
+
 #import "Quest.h"
 
 
 @interface Knight : NSObject
 
-@property (nonatomic, strong) id<Quest> quest;
-@property (nonatomic, strong) id<NSObject> foobar;
-@property (nonatomic) NSUInteger damselsRescued;
-@property (nonatomic) BOOL hasHorseWillTravel;
+@property(nonatomic, strong) id <Quest> quest;
+@property(nonatomic, strong) id <NSObject> foobar;
+@property(nonatomic) NSUInteger damselsRescued;
+@property(nonatomic) BOOL hasHorseWillTravel;
 
-- (id)initWithQuest:(id<Quest>)quest;
+- (id)initWithQuest:(id <Quest>)quest;
 
-- (id)initWithQuest:(id<Quest>)quest damselsRescued:(NSUInteger)damselsRescued;
+- (id)initWithQuest:(id <Quest>)quest damselsRescued:(NSUInteger)damselsRescued;
 
 - (NSString*)description;
+
+- (void)knightAfterPropertyInjection;
 
 
 @end

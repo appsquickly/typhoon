@@ -10,7 +10,7 @@
         Dependencies can be declared in any order - Spring Objective-C will work out how to resolve them.
     </description>
 
-    <component class="Knight" key="knight">
+    <component class="Knight" key="knight" after-property-injection="knightAfterPropertyInjection">
         <property name="quest" ref="quest">
             <description>
                 Properties can be injected by reference.

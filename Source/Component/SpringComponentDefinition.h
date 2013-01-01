@@ -29,6 +29,7 @@ typedef enum
 @property(nonatomic, readonly) Class type;
 @property(nonatomic, strong, readonly) NSString* key;
 @property(nonatomic, strong) SpringComponentInitializer* initializer;
+@property(nonatomic) SEL afterPropertyInjection;
 @property(nonatomic, strong, readonly) NSSet* injectedProperties;
 @property(nonatomic) SpringComponentLifecycle lifecycle;
 

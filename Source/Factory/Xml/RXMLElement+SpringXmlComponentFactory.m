@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  JASPER BLUES
-//  Copyright 2012 Jasper Blues
+//  Copyright 2012 - 2013 Jasper Blues
 //  All Rights Reserved.
 //
 //  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <Foundation/Foundation.h>
+
 #import "RXMLElement+SpringXmlComponentFactory.h"
 #import "SpringComponentDefinition.h"
 #import "SpringInjectedProperty.h"
@@ -18,7 +18,6 @@
 #import "SpringPropertyInjectedByValue.h"
 #import "SpringPropertyInjectedByType.h"
 #import "SpringComponentInitializer.h"
-#import "SpringInjectedParameter.h"
 
 @implementation RXMLElement (SpringXmlComponentFactory)
 
@@ -31,11 +30,12 @@
         [NSException raise:NSInvalidArgumentException format:@"Class '%@' can't be resolved.", [self attribute:@"class"]];
     }
     NSString* key = [self createOrRetrieveIdComponentId];
-    SpringComponentDefinition* componentDefinition = [[SpringComponentDefinition alloc] initWithClazz:clazz key:key];
+    SpringComponentDefinition* definition = [[SpringComponentDefinition alloc] initWithClazz:clazz key:key];
 
-    [self setScopeForDefinition:componentDefinition withStringValue:[[self attribute:@"scope"] lowercaseString]];
-    [self parseComponentDefinitionChildren:componentDefinition];
-    return componentDefinition;
+    [definition setAfterPropertyInjection:NSSelectorFromString([self attribute:@"after-property-injection"])];
+    [self setScopeForDefinition:definition withStringValue:[[self attribute:@"scope"] lowercaseString]];
+    [self parseComponentDefinitionChildren:definition];
+    return definition;
 }
 
 

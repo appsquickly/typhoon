@@ -115,6 +115,10 @@
     {
         [(id <SpringPropertyInjectionDelegate>) instance afterPropertiesSet];
     }
+    if ([instance respondsToSelector:definition.afterPropertyInjection])
+    {
+        [instance performSelector:definition.afterPropertyInjection];
+    }
 }
 
 - (void)doPropertyInjection:(id <SpringReflectiveNSObject>)instance property:(id <SpringInjectedProperty>)property
