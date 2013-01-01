@@ -31,8 +31,8 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">80</td>
-            <td class="headerCovTableEntry">81</td>
+            <td class="headerCovTableEntry">83</td>
+            <td class="headerCovTableEntry">84</td>
             <td class="headerCovTableEntryHi">98.8 %</td>
           </tr>
           <tr>
@@ -173,40 +173,44 @@
 <span class="lineNum">     115 </span>            :     {
 <span class="lineNum">     116 </span><span class="lineCov">         22 :         [(id &lt;SpringPropertyInjectionDelegate&gt;) instance afterPropertiesSet];</span>
 <span class="lineNum">     117 </span>            :     }
-<span class="lineNum">     118 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     119 </span><span class="lineCov">          3 : </span>
-<span class="lineNum">     120 </span><span class="lineCov">         22 : - (void)doPropertyInjection:(id &lt;SpringReflectiveNSObject&gt;)instance property:(id &lt;SpringInjectedProperty&gt;)property</span>
-<span class="lineNum">     121 </span>            :              typeDescriptor:(SpringTypeDescriptor*)typeDescriptor
-<span class="lineNum">     122 </span>            : {
-<span class="lineNum">     123 </span><span class="lineCov">         13 :     if (property.type == SpringPropertyInjectionByTypeType)</span>
-<span class="lineNum">     124 </span><span class="lineCov">         13 :     {</span>
-<span class="lineNum">     125 </span>            :         id reference = [self objectForType:[typeDescriptor classOrProtocol]];
-<span class="lineNum">     126 </span><span class="lineCov">         13 :         objc_msgSend(instance, [instance setterForPropertyWithName:property.name], reference, nil);</span>
-<span class="lineNum">     127 </span>            :     }
-<span class="lineNum">     128 </span><span class="lineCov">          1 :     else if (property.type == SpringPropertyInjectionByReferenceType)</span>
-<span class="lineNum">     129 </span><span class="lineCov">          1 :     {</span>
-<span class="lineNum">     130 </span><span class="lineCov">          1 :         id reference = [self objectForKey:((SpringPropertyInjectedByReference*) property).reference];</span>
-<span class="lineNum">     131 </span><span class="lineCov">         12 :         objc_msgSend(instance, [instance setterForPropertyWithName:property.name], reference, nil);</span>
-<span class="lineNum">     132 </span>            :     }
-<span class="lineNum">     133 </span><span class="lineCov">          2 :     else if (property.type == SpringPropertyInjectionByValueType)</span>
-<span class="lineNum">     134 </span><span class="lineCov">          2 :     {</span>
-<span class="lineNum">     135 </span><span class="lineCov">          7 :         SpringPropertyInjectedByValue* valueProperty = (SpringPropertyInjectedByValue*) property;</span>
-<span class="lineNum">     136 </span><span class="lineCov">          5 :         if (typeDescriptor.isPrimitive)</span>
-<span class="lineNum">     137 </span>            :         {
-<span class="lineNum">     138 </span><span class="lineCov">          5 :             SpringPrimitiveTypeConverter* converter = [[SpringTypeConverterRegistry shared] primitiveTypeConverter];</span>
-<span class="lineNum">     139 </span><span class="lineCov">          5 :             void* converted = [converter convert:valueProperty.textValue requiredType:typeDescriptor];</span>
-<span class="lineNum">     140 </span>            :             objc_msgSend(instance, [instance setterForPropertyWithName:property.name], converted, nil);
-<span class="lineNum">     141 </span><span class="lineCov">          8 :         }</span>
-<span class="lineNum">     142 </span><span class="lineCov">          3 :         else</span>
-<span class="lineNum">     143 </span><span class="lineCov">          3 :         {</span>
-<span class="lineNum">     144 </span><span class="lineCov">          3 :             id &lt;SpringTypeConverter&gt; converter = [[SpringTypeConverterRegistry shared] converterFor:typeDescriptor];</span>
-<span class="lineNum">     145 </span>            :             id converted = [converter convert:valueProperty.textValue];
-<span class="lineNum">     146 </span>            :             objc_msgSend(instance, [instance setterForPropertyWithName:property.name], converted, nil);
-<span class="lineNum">     147 </span><span class="lineCov">          2 :         }</span>
-<span class="lineNum">     148 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">     149 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">     150 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">     151 </span><span class="lineCov">          5 : @end</span>
+<span class="lineNum">     118 </span><span class="lineCov">          3 :     if ([instance respondsToSelector:definition.afterPropertyInjection])</span>
+<span class="lineNum">     119 </span><span class="lineCov">          3 :     {</span>
+<span class="lineNum">     120 </span><span class="lineCov">         22 :         [instance performSelector:definition.afterPropertyInjection];</span>
+<span class="lineNum">     121 </span>            :     }
+<span class="lineNum">     122 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     123 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     124 </span><span class="lineCov">         22 : - (void)doPropertyInjection:(id &lt;SpringReflectiveNSObject&gt;)instance property:(id &lt;SpringInjectedProperty&gt;)property</span>
+<span class="lineNum">     125 </span>            :              typeDescriptor:(SpringTypeDescriptor*)typeDescriptor
+<span class="lineNum">     126 </span>            : {
+<span class="lineNum">     127 </span><span class="lineCov">         13 :     if (property.type == SpringPropertyInjectionByTypeType)</span>
+<span class="lineNum">     128 </span><span class="lineCov">         13 :     {</span>
+<span class="lineNum">     129 </span>            :         id reference = [self objectForType:[typeDescriptor classOrProtocol]];
+<span class="lineNum">     130 </span><span class="lineCov">         13 :         objc_msgSend(instance, [instance setterForPropertyWithName:property.name], reference, nil);</span>
+<span class="lineNum">     131 </span>            :     }
+<span class="lineNum">     132 </span><span class="lineCov">          1 :     else if (property.type == SpringPropertyInjectionByReferenceType)</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :     {</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :         id reference = [self objectForKey:((SpringPropertyInjectedByReference*) property).reference];</span>
+<span class="lineNum">     135 </span><span class="lineCov">         12 :         objc_msgSend(instance, [instance setterForPropertyWithName:property.name], reference, nil);</span>
+<span class="lineNum">     136 </span>            :     }
+<span class="lineNum">     137 </span><span class="lineCov">          2 :     else if (property.type == SpringPropertyInjectionByValueType)</span>
+<span class="lineNum">     138 </span><span class="lineCov">          2 :     {</span>
+<span class="lineNum">     139 </span><span class="lineCov">          7 :         SpringPropertyInjectedByValue* valueProperty = (SpringPropertyInjectedByValue*) property;</span>
+<span class="lineNum">     140 </span><span class="lineCov">          5 :         if (typeDescriptor.isPrimitive)</span>
+<span class="lineNum">     141 </span>            :         {
+<span class="lineNum">     142 </span><span class="lineCov">          5 :             SpringPrimitiveTypeConverter* converter = [[SpringTypeConverterRegistry shared] primitiveTypeConverter];</span>
+<span class="lineNum">     143 </span><span class="lineCov">          5 :             void* converted = [converter convert:valueProperty.textValue requiredType:typeDescriptor];</span>
+<span class="lineNum">     144 </span>            :             objc_msgSend(instance, [instance setterForPropertyWithName:property.name], converted, nil);
+<span class="lineNum">     145 </span><span class="lineCov">          8 :         }</span>
+<span class="lineNum">     146 </span><span class="lineCov">          3 :         else</span>
+<span class="lineNum">     147 </span><span class="lineCov">          3 :         {</span>
+<span class="lineNum">     148 </span><span class="lineCov">          3 :             id &lt;SpringTypeConverter&gt; converter = [[SpringTypeConverterRegistry shared] converterFor:typeDescriptor];</span>
+<span class="lineNum">     149 </span>            :             id converted = [converter convert:valueProperty.textValue];
+<span class="lineNum">     150 </span>            :             objc_msgSend(instance, [instance setterForPropertyWithName:property.name], converted, nil);
+<span class="lineNum">     151 </span><span class="lineCov">          2 :         }</span>
+<span class="lineNum">     152 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">     153 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     154 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">     155 </span><span class="lineCov">          5 : @end</span>
 </pre>
       </td>
     </tr>

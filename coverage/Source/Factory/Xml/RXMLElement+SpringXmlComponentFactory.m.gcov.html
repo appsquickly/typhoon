@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">89</td>
-            <td class="headerCovTableEntry">109</td>
-            <td class="headerCovTableEntryMed">81.7 %</td>
+            <td class="headerCovTableEntry">90</td>
+            <td class="headerCovTableEntry">110</td>
+            <td class="headerCovTableEntryMed">81.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -59,7 +59,7 @@
 <span class="lineNum">       1 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">       2 </span>            : //
 <span class="lineNum">       3 </span>            : //  JASPER BLUES
-<span class="lineNum">       4 </span>            : //  Copyright 2012 Jasper Blues
+<span class="lineNum">       4 </span>            : //  Copyright 2012 - 2013 Jasper Blues
 <span class="lineNum">       5 </span>            : //  All Rights Reserved.
 <span class="lineNum">       6 </span>            : //
 <span class="lineNum">       7 </span>            : //  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
@@ -68,7 +68,7 @@
 <span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            : 
-<span class="lineNum">      13 </span>            : #import &lt;Foundation/Foundation.h&gt;
+<span class="lineNum">      13 </span>            : 
 <span class="lineNum">      14 </span>            : #import &quot;RXMLElement+SpringXmlComponentFactory.h&quot;
 <span class="lineNum">      15 </span>            : #import &quot;SpringComponentDefinition.h&quot;
 <span class="lineNum">      16 </span>            : #import &quot;SpringInjectedProperty.h&quot;
@@ -76,24 +76,24 @@
 <span class="lineNum">      18 </span>            : #import &quot;SpringPropertyInjectedByValue.h&quot;
 <span class="lineNum">      19 </span>            : #import &quot;SpringPropertyInjectedByType.h&quot;
 <span class="lineNum">      20 </span>            : #import &quot;SpringComponentInitializer.h&quot;
-<span class="lineNum">      21 </span>            : #import &quot;SpringInjectedParameter.h&quot;
-<span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span>            : @implementation RXMLElement (SpringXmlComponentFactory)
-<span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span><span class="lineCov">         39 : - (SpringComponentDefinition*)asComponentDefinition</span>
-<span class="lineNum">      26 </span>            : {
-<span class="lineNum">      27 </span><span class="lineCov">         39 :     [self assertTagName:@&quot;component&quot;];</span>
-<span class="lineNum">      28 </span><span class="lineCov">         39 :     Class clazz = NSClassFromString([self attribute:@&quot;class&quot;]);</span>
-<span class="lineNum">      29 </span><span class="lineCov">         39 :     if (clazz == nil)</span>
-<span class="lineNum">      30 </span>            :     {
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Class '%@' can't be resolved.&quot;, [self attribute:@&quot;class&quot;]];</span>
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      33 </span><span class="lineCov">         39 :     NSString* key = [self createOrRetrieveIdComponentId];</span>
-<span class="lineNum">      34 </span><span class="lineCov">         39 :     SpringComponentDefinition* componentDefinition = [[SpringComponentDefinition alloc] initWithClazz:clazz key:key];</span>
-<span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span><span class="lineCov">         39 :     [self setScopeForDefinition:componentDefinition withStringValue:[[self attribute:@&quot;scope&quot;] lowercaseString]];</span>
-<span class="lineNum">      37 </span><span class="lineCov">         39 :     [self parseComponentDefinitionChildren:componentDefinition];</span>
-<span class="lineNum">      38 </span><span class="lineCov">         39 :     return componentDefinition;</span>
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : @implementation RXMLElement (SpringXmlComponentFactory)
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span><span class="lineCov">         39 : - (SpringComponentDefinition*)asComponentDefinition</span>
+<span class="lineNum">      25 </span>            : {
+<span class="lineNum">      26 </span><span class="lineCov">         39 :     [self assertTagName:@&quot;component&quot;];</span>
+<span class="lineNum">      27 </span><span class="lineCov">         39 :     Class clazz = NSClassFromString([self attribute:@&quot;class&quot;]);</span>
+<span class="lineNum">      28 </span><span class="lineCov">         39 :     if (clazz == nil)</span>
+<span class="lineNum">      29 </span>            :     {
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Class '%@' can't be resolved.&quot;, [self attribute:@&quot;class&quot;]];</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      32 </span><span class="lineCov">         39 :     NSString* key = [self createOrRetrieveIdComponentId];</span>
+<span class="lineNum">      33 </span><span class="lineCov">         39 :     SpringComponentDefinition* definition = [[SpringComponentDefinition alloc] initWithClazz:clazz key:key];</span>
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span><span class="lineCov">         39 :     [definition setAfterPropertyInjection:NSSelectorFromString([self attribute:@&quot;after-property-injection&quot;])];</span>
+<span class="lineNum">      36 </span><span class="lineCov">         39 :     [self setScopeForDefinition:definition withStringValue:[[self attribute:@&quot;scope&quot;] lowercaseString]];</span>
+<span class="lineNum">      37 </span><span class="lineCov">         39 :     [self parseComponentDefinitionChildren:definition];</span>
+<span class="lineNum">      38 </span><span class="lineCov">         39 :     return definition;</span>
 <span class="lineNum">      39 </span><span class="lineCov">         39 : }</span>
 <span class="lineNum">      40 </span>            : 
 <span class="lineNum">      41 </span>            : 
