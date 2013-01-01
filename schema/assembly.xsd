@@ -15,10 +15,10 @@
 
     <!-- base types -->
     <xsd:complexType name="identifiedType" abstract="true">
-        <xsd:attribute name="id" type="xsd:string">
+        <xsd:attribute name="key" type="xsd:string">
             <xsd:annotation>
                 <xsd:documentation><![CDATA[
-	The unique identifier for component bean. A component id may not be used more than once
+	The unique identifier for component bean. A component key may not be used more than once
 	within the same <assembly> element.
 				]]></xsd:documentation>
             </xsd:annotation>

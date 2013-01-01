@@ -405,6 +405,8 @@
 				BA79889370B8FF5CDA59B809 /* SpringPassThroughTypeConverter.m */,
 				BA7982C33FFA6B229739E25F /* SpringNSURLTypeConverter.m */,
 				BA7985652B561697D483540D /* SpringNSURLTypeConverter.h */,
+				6BA9C814168E92AF00E6AD6C /* SpringTypeDescriptor.h */,
+				6BA9C815168E92AF00E6AD6C /* SpringTypeDescriptor.m */,
 			);
 			path = TypeConversion;
 			sourceTree = "<group>";
@@ -413,8 +415,6 @@
 			isa = PBXGroup;
 			children = (
 				6BA9C811168E92AF00E6AD6C /* SpringReflectiveNSObject.h */,
-				6BA9C814168E92AF00E6AD6C /* SpringTypeDescriptor.h */,
-				6BA9C815168E92AF00E6AD6C /* SpringTypeDescriptor.m */,
 				6BA9C816168E92AF00E6AD6C /* NSObject+SpringReflectionUtils.h */,
 				6BA9C817168E92AF00E6AD6C /* NSObject+SpringReflectionUtils.m */,
 				BA798128D3D8B80920C549F7 /* SpringBundleResource.m */,
