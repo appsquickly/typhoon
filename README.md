@@ -62,15 +62,16 @@ DI. DI is just a design pattern and you can do it without a container. Having on
             </description>
         </property>
         <property name="damselsRescued" value="12">
-        <description>
-                Property arguments can also be injected by value. The container will look up the required class or
-                primitive type. It's easy to register your own additional converters.
+            <description>
+                Property arguments can also be injected by value. The container will look up the required
+                class or primitive type. It's easy to register your own additional converters.
             </description>
         </property>
     </component>
 
 
-    <component class="CampaignQuest" key="quest" scope="prototype" after-property-injection="questAfterPropertyInjection">
+    <component class="CampaignQuest" key="quest" scope="prototype" before-property-injection="questBeforePropertyInjection"
+               after-property-injection="questAfterPropertyInjection">
         <description>
             Knight has a dependency on any class conforming to the Quest protocol. In this case it's a
             [CampaignQuest class].
@@ -89,7 +90,6 @@ DI. DI is just a design pattern and you can do it without a container. Having on
             </description>
         </property>
     </component>
-
 
     <component class="CavalryMan" key="anotherKnight">
         <description>
@@ -114,15 +114,15 @@ DI. DI is just a design pattern and you can do it without a container. Having on
 
             Note the "is-class-method" attribute: Spring Objective-C will normally guess this, so if the method
             follows objective-c naming conventions, this wouldn't be needed. That is to say, if the method name
-            starts with "init" it will be treated as an instance method, otherwise it will be resolved as a class
-            method. . . supplying this attribute will override Spring Objective-C's guess.
+            starts with "init" it will be treated as an instance method, otherwise it will be resolved as a
+            class method. . . supplying this attribute will override Spring Objective-C's guess.
         </description>
         <initializer selector="URLWithString:" is-class-method="yes">
             <description>
-                Unlike property injection, initializer arguments require type to be set explicitly, unless the type
-                is a primitive - BOOL, int, etc. . . This is because the Objective-C runtime doesn't include detailed
-                type information for selectors. Only whether the type is an object or the primitive type. (The container
-                will remind you to set this attribute if you forget).
+                Unlike property injection, initializer arguments require type to be set explicitly, unless the
+                type is a primitive - BOOL, int, etc. . . (This is because the Objective-C runtime doesn't
+                include detailed type information for selectors - only whether the type is an object or
+                primitive type. (The container will remind you to set this attribute if you forget).
             </description>
             <argument parameterName="string" value="http://dev.foobar.com/service/" required-class="NSString"/>
         </initializer>
