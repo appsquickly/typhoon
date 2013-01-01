@@ -15,10 +15,10 @@
 
     <!-- base types -->
     <xsd:complexType name="identifiedType" abstract="true">
-        <xsd:attribute name="id" type="xsd:string">
+        <xsd:attribute name="key" type="xsd:string">
             <xsd:annotation>
                 <xsd:documentation><![CDATA[
-	The unique identifier for component bean. A component id may not be used more than once
+	The unique identifier for component bean. A component key may not be used more than once
 	within the same <assembly> element.
 				]]></xsd:documentation>
             </xsd:annotation>
@@ -206,7 +206,8 @@
         <xsd:sequence>
             <xsd:element ref="description" minOccurs="0"/>
             <xsd:choice minOccurs="0" maxOccurs="1">
-                <xsd:element ref="component"/>
+                <!-- Inline components not supported yet -->
+                <!--<xsd:element ref="component"/>-->
                 <xsd:any namespace="##other" processContents="strict"/>
             </xsd:choice>
         </xsd:sequence>
@@ -247,7 +248,8 @@
         <xsd:sequence>
             <xsd:element ref="description" minOccurs="0"/>
             <xsd:choice minOccurs="0" maxOccurs="1">
-                <xsd:element ref="component"/>
+                <!-- inline components not supported yet -->
+                <!--<xsd:element ref="component"/>-->
                 <xsd:any namespace="##other" processContents="strict"/>
             </xsd:choice>
         </xsd:sequence>

@@ -183,7 +183,7 @@
 <span class="lineNum">     125 </span><span class="lineCov">         39 : </span>
 <span class="lineNum">     126 </span>            : - (NSString*)createOrRetrieveIdComponentId
 <span class="lineNum">     127 </span><span class="lineCov">         39 : {</span>
-<span class="lineNum">     128 </span>            :     NSString* componentId = [self attribute:@&quot;id&quot;];
+<span class="lineNum">     128 </span>            :     NSString* componentId = [self attribute:@&quot;key&quot;];
 <span class="lineNum">     129 </span><span class="lineCov">         39 :     if (componentId == nil)</span>
 <span class="lineNum">     130 </span><span class="lineCov">         39 :     {</span>
 <span class="lineNum">     131 </span>            :         [NSException raise:NSInternalInconsistencyException format:@&quot;$$$$$$$$$$$$$$ Need to implement support for nil id&quot;];
