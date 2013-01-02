@@ -25,7 +25,7 @@
     }
     else
     {
-        LogDebug("Out of stock. Returning regular sword");
+        SpringDebug("Out of stock. Returning regular sword");
         return [[Sword alloc] initWithSpecification:@"Yer typical run-o-the-mill rusty sword."];
     }
 }

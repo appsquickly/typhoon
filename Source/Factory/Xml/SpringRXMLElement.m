@@ -1,5 +1,5 @@
 // ================================================================================================
-//  RXMLElement.m
+//  SpringRXMLElement.m
 //  Fast processing of XML files
 //
 // ================================================================================================
@@ -28,7 +28,7 @@
 // ================================================================================================
 //
 
-#import "RXMLElement.h"
+#import "SpringRXMLElement.h"
 
 // macros for supporting ARC/NON-ARC without need for a branch
 
@@ -42,7 +42,7 @@
     #define SAFE_ARC_SUPER_DEALLOC() ([super dealloc])
 #endif
 
-@implementation RXMLElement
+@implementation SpringRXMLElement
 
 - (id)initFromXMLString:(NSString *)xmlString encoding:(NSStringEncoding)encoding {
     if ((self = [super init])) {
@@ -144,27 +144,27 @@
 }
 
 + (id)elementFromXMLString:(NSString *)attributeXML_ encoding:(NSStringEncoding)encoding {
-    return SAFE_ARC_AUTORELEASE([[RXMLElement alloc] initFromXMLString:attributeXML_ encoding:encoding]);    
+    return SAFE_ARC_AUTORELEASE([[SpringRXMLElement alloc] initFromXMLString:attributeXML_ encoding:encoding]);
 }
 
 + (id)elementFromXMLFile:(NSString *)filename {
-    return SAFE_ARC_AUTORELEASE([[RXMLElement alloc] initFromXMLFile:filename]);    
+    return SAFE_ARC_AUTORELEASE([[SpringRXMLElement alloc] initFromXMLFile:filename]);
 }
 
 + (id)elementFromXMLFilename:(NSString *)filename fileExtension:(NSString *)extension {
-    return SAFE_ARC_AUTORELEASE([[RXMLElement alloc] initFromXMLFile:filename fileExtension:extension]);
+    return SAFE_ARC_AUTORELEASE([[SpringRXMLElement alloc] initFromXMLFile:filename fileExtension:extension]);
 }
 
 + (id)elementFromURL:(NSURL *)url {
-    return SAFE_ARC_AUTORELEASE([[RXMLElement alloc] initFromURL:url]);
+    return SAFE_ARC_AUTORELEASE([[SpringRXMLElement alloc] initFromURL:url]);
 }
 
 + (id)elementFromXMLData:(NSData *)data {
-    return SAFE_ARC_AUTORELEASE([[RXMLElement alloc] initFromXMLData:data]);
+    return SAFE_ARC_AUTORELEASE([[SpringRXMLElement alloc] initFromXMLData:data]);
 }
 
 + (id)elementFromXMLNode:(xmlNodePtr)node {
-    return SAFE_ARC_AUTORELEASE([[RXMLElement alloc] initFromXMLNode:node]);
+    return SAFE_ARC_AUTORELEASE([[SpringRXMLElement alloc] initFromXMLNode:node]);
 }
 
 - (NSString *)description {
@@ -242,7 +242,7 @@
 
 #pragma mark -
 
-- (RXMLElement *)child:(NSString *)tag {
+- (SpringRXMLElement*)child:(NSString *)tag {
     NSArray *components = [tag componentsSeparatedByString:@"."];
     xmlNodePtr cur = node_;
     
@@ -273,13 +273,13 @@
     }
     
     if (cur) {
-        return [RXMLElement elementFromXMLNode:cur];
+        return [SpringRXMLElement elementFromXMLNode:cur];
     }
   
     return nil;
 }
 
-- (RXMLElement *)child:(NSString *)tag inNamespace:(NSString *)ns {
+- (SpringRXMLElement*)child:(NSString *)tag inNamespace:(NSString *)ns {
     NSArray *components = [tag componentsSeparatedByString:@"."];
     xmlNodePtr cur = node_;
     const xmlChar *namespaceC = (const xmlChar *)[ns cStringUsingEncoding:NSUTF8StringEncoding];
@@ -311,7 +311,7 @@
     }
     
     if (cur) {
-        return [RXMLElement elementFromXMLNode:cur];
+        return [SpringRXMLElement elementFromXMLNode:cur];
     }
     
     return nil;
@@ -324,7 +324,7 @@
 
     while (cur != nil) {
         if (cur->type == XML_ELEMENT_NODE && !xmlStrcmp(cur->name, tagC)) {
-            [children addObject:[RXMLElement elementFromXMLNode:cur]];
+            [children addObject:[SpringRXMLElement elementFromXMLNode:cur]];
         }
         
         cur = cur->next;
@@ -341,7 +341,7 @@
     
     while (cur != nil) {
         if (cur->type == XML_ELEMENT_NODE && !xmlStrcmp(cur->name, tagC) && !xmlStrcmp(cur->ns->href, namespaceC)) {
-            [children addObject:[RXMLElement elementFromXMLNode:cur]];
+            [children addObject:[SpringRXMLElement elementFromXMLNode:cur]];
         }
         
         cur = cur->next;
@@ -375,7 +375,7 @@
 	NSMutableArray *resultNodes = [NSMutableArray array];
     
     for (NSInteger i = 0; i < nodes->nodeNr; i++) {
-		RXMLElement *element = [RXMLElement elementFromXMLNode:nodes->nodeTab[i]];
+		SpringRXMLElement*element = [SpringRXMLElement elementFromXMLNode:nodes->nodeTab[i]];
         
 		if (element != NULL) {
 			[resultNodes addObject:element];
@@ -390,7 +390,7 @@
 
 #pragma mark -
 
-- (void)iterate:(NSString *)query usingBlock:(void (^)(RXMLElement *))blk {
+- (void)iterate:(NSString *)query usingBlock:(void (^)(SpringRXMLElement*))blk {
     // check for a query
     if (!query) {
         return;
@@ -411,7 +411,7 @@
                 // midstream
                 do {
                     if (cur->type == XML_ELEMENT_NODE) {
-                        RXMLElement *element = [RXMLElement elementFromXMLNode:cur];
+                        SpringRXMLElement*element = [SpringRXMLElement elementFromXMLNode:cur];
                         NSString *restOfQuery = [[components subarrayWithRange:NSMakeRange(i + 1, components.count - i - 1)] componentsJoinedByString:@"."];
                         [element iterate:restOfQuery usingBlock:blk];
                     }
@@ -444,7 +444,7 @@
         
         do {
             if (cur->type == XML_ELEMENT_NODE) {
-                RXMLElement *element = [RXMLElement elementFromXMLNode:cur];
+                SpringRXMLElement*element = [SpringRXMLElement elementFromXMLNode:cur];
                 blk(element);
             }
             
@@ -463,13 +463,13 @@
     }
 }
 
-- (void)iterateWithRootXPath:(NSString *)xpath usingBlock:(void (^)(RXMLElement *))blk {
+- (void)iterateWithRootXPath:(NSString *)xpath usingBlock:(void (^)(SpringRXMLElement*))blk {
     NSArray *children = [self childrenWithRootXPath:xpath];
     [self iterateElements:children usingBlock:blk];
 }
 
-- (void)iterateElements:(NSArray *)elements usingBlock:(void (^)(RXMLElement *))blk {
-    for (RXMLElement *iElement in elements) {
+- (void)iterateElements:(NSArray *)elements usingBlock:(void (^)(SpringRXMLElement*))blk {
+    for (SpringRXMLElement*iElement in elements) {
         blk(iElement);
     }
 }

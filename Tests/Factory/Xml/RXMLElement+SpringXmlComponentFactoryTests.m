@@ -12,7 +12,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "SpringBundleResource.h"
 #import "SpringComponentDefinition.h"
-#import "RXMLElement+SpringXmlComponentFactory.h"
+#import "SpringRXMLElement+SpringXmlComponentFactory.h"
 
 
 @interface RXMLElement_SpringXmlComponentFactoryTests : SenTestCase
@@ -20,14 +20,14 @@
 
 @implementation RXMLElement_SpringXmlComponentFactoryTests
 {
-    RXMLElement* _element;
+    SpringRXMLElement* _element;
 }
 
 - (void)setUp
 {
     NSString* xmlString = [SpringBundleResource withName:@"MiddleAgesAssembly.xml"];
-    LogDebug(@"Xml string: %@", xmlString);
-    _element = [RXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
+    SpringDebug(@"Xml string: %@", xmlString);
+    _element = [SpringRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
 }
 
 - (void)test_asComponentDefinition
@@ -35,12 +35,12 @@
     NSMutableArray* componentDefinitions = [[NSMutableArray alloc] init];
 
 
-    [_element iterate:@"*" usingBlock:^(RXMLElement* child)
+    [_element iterate:@"*" usingBlock:^(SpringRXMLElement* child)
     {
         if ([[child tag] isEqualToString:@"component"])
         {
             SpringComponentDefinition* definition = [child asComponentDefinition];
-            LogDebug(@"Here's the component definition: %@", definition);
+            SpringDebug(@"Here's the component definition: %@", definition);
             [componentDefinitions addObject:definition];
         }
     }];

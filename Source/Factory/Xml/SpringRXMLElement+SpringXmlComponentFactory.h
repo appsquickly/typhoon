@@ -12,14 +12,14 @@
 
 
 #import <Foundation/Foundation.h>
-#import "RXMLElement.h"
+#import "SpringRXMLElement.h"
 
 @class SpringComponentDefinition;
 @protocol SpringInjectedProperty;
 @class SpringComponentInitializer;
 @protocol SpringInjectedParameter;
 
-@interface RXMLElement (SpringXmlComponentFactory)
+@interface SpringRXMLElement (SpringXmlComponentFactory)
 
 - (SpringComponentDefinition*)asComponentDefinition;
 

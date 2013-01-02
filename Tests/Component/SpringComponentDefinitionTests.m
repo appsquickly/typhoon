@@ -12,7 +12,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "Knight.h"
 #import "SpringComponentDefinition.h"
-#import "OCLogTemplate.h"
+#import "SpringLogTemplate.h"
 
 @interface SpringComponentDefinitionTests : SenTestCase
 @end
@@ -47,7 +47,7 @@
     @try
     {
         SpringComponentDefinition* definition = [[SpringComponentDefinition alloc] init];
-        LogDebug(@"Def: %@", definition);
+        SpringDebug(@"Def: %@", definition);
         STFail(@"Should've thrown exception");
     }
     @catch (NSException* e)
@@ -58,7 +58,7 @@
     @try
     {
         SpringComponentDefinition* definition = [[SpringComponentDefinition alloc] initWithClazz:nil key:nil];
-        LogDebug(@"Def: %@", definition);
+        SpringDebug(@"Def: %@", definition);
         STFail(@"Should've thrown exception");
     }
     @catch (NSException* e)
@@ -69,7 +69,7 @@
     @try
     {
         SpringComponentDefinition* definition = [[SpringComponentDefinition alloc] initWithClazz:[Knight class] key:nil];
-        LogDebug(@"Def: %@", definition);
+        SpringDebug(@"Def: %@", definition);
         STFail(@"Should've thrown exception");
     }
     @catch (NSException* e)

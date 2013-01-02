@@ -17,12 +17,12 @@
 
 - (void)beforePropertiesSet
 {
-    LogDebug(@"#################### CavalryMan before properties set");
+    SpringDebug(@"#################### CavalryMan before properties set");
 }
 
 - (void)afterPropertiesSet
 {
-    LogDebug(@"############# CavalryMan after properties set");
+    SpringDebug(@"############# CavalryMan after properties set");
 }
 
 @end

@@ -19,7 +19,7 @@
 
 - (void*)convert:(NSString*)stringValue requiredType:(SpringTypeDescriptor*)typeDescriptor
 {
-    LogDebug(@"Converting value: %@", stringValue);
+    SpringDebug(@"Converting value: %@", stringValue);
     [self checkSupportedTypes:typeDescriptor];
     if (typeDescriptor.primitiveType == SpringPrimitiveTypeBoolean || typeDescriptor.primitiveType == SpringPrimitiveTypeChar)
     {

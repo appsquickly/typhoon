@@ -12,7 +12,7 @@
 
 #import "SpringXmlComponentFactory.h"
 #import "SpringBundleResource.h"
-#import "RXMLElement+SpringXmlComponentFactory.h"
+#import "SpringRXMLElement+SpringXmlComponentFactory.h"
 
 
 @implementation SpringXmlComponentFactory
@@ -51,9 +51,9 @@
     for (NSString* resourceName in _resourceNames)
     {
         NSString* xmlString = [SpringBundleResource withName:resourceName];
-        RXMLElement* element = [RXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
+        SpringRXMLElement* element = [SpringRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
 
-        [element iterate:@"*" usingBlock:^(RXMLElement* child)
+        [element iterate:@"*" usingBlock:^(SpringRXMLElement* child)
         {
             if ([[child tag] isEqualToString:@"component"])
             {

@@ -11,7 +11,7 @@
 
 
 
-#import "RXMLElement+SpringXmlComponentFactory.h"
+#import "SpringRXMLElement+SpringXmlComponentFactory.h"
 #import "SpringComponentDefinition.h"
 #import "SpringInjectedProperty.h"
 #import "SpringPropertyInjectedByReference.h"
@@ -19,7 +19,7 @@
 #import "SpringPropertyInjectedByType.h"
 #import "SpringComponentInitializer.h"
 
-@implementation RXMLElement (SpringXmlComponentFactory)
+@implementation SpringRXMLElement (SpringXmlComponentFactory)
 
 - (SpringComponentDefinition*)asComponentDefinition
 {
@@ -81,7 +81,7 @@
     SpringComponentInitializerIsClassMethod isClassMethod = [self handleIsClassMethod:[self attribute:@"is-class-method"]];
     SpringComponentInitializer* initializer = [[SpringComponentInitializer alloc] initWithSelector:selector isClassMethod:isClassMethod];
 
-    [self iterate:@"*" usingBlock:^(RXMLElement* child)
+    [self iterate:@"*" usingBlock:^(SpringRXMLElement* child)
     {
         if ([[child tag] isEqualToString:@"argument"])
         {
@@ -137,7 +137,7 @@
 
 - (void)parseComponentDefinitionChildren:(SpringComponentDefinition*)componentDefinition
 {
-    [self iterate:@"*" usingBlock:^(RXMLElement* child)
+    [self iterate:@"*" usingBlock:^(SpringRXMLElement* child)
     {
         if ([[child tag] isEqualToString:@"property"])
         {
@@ -159,7 +159,7 @@
     }];
 }
 
-- (void)setArgumentOnInitializer:(SpringComponentInitializer*)initializer withChildTag:(RXMLElement*)child
+- (void)setArgumentOnInitializer:(SpringComponentInitializer*)initializer withChildTag:(SpringRXMLElement*)child
 {
     NSString* name = [child attribute:@"parameterName"];
     NSString* reference = [child attribute:@"ref"];

@@ -52,7 +52,7 @@
     assertThat(knight, instanceOf([Knight class]));
     assertThat(knight.quest, notNilValue());
 
-    LogDebug(@"Here's the knight: %@", knight);
+    SpringDebug(@"Here's the knight: %@", knight);
 }
 
 - (void)test_objectForKey_raises_exception_if_reference_does_not_exist
@@ -66,7 +66,7 @@
     @try
     {
         Knight* knight = [_componentFactory componentForKey:@"knight"];
-        LogDebug(@"Knight: %@", knight);
+        SpringDebug(@"Knight: %@", knight);
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -118,7 +118,7 @@
     @try
     {
         Knight* knight = [_componentFactory componentForType:[Knight class]];
-        LogDebug(@"Here's the knight: %@", knight);
+        SpringDebug(@"Here's the knight: %@", knight);
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -129,7 +129,7 @@
     @try
     {
         Knight* knight = [_componentFactory componentForType:[Champion class]];
-        LogDebug(@"Here's the knight: %@", knight);
+        SpringDebug(@"Here's the knight: %@", knight);
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -153,7 +153,7 @@
     assertThat(knight, instanceOf([Knight class]));
     assertThat(knight.quest, notNilValue());
 
-    LogDebug(@"Here's the knight: %@", knight);
+    SpringDebug(@"Here's the knight: %@", knight);
 }
 
 @end

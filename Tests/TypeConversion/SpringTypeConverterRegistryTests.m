@@ -40,7 +40,7 @@
     @try
     {
         id <SpringTypeConverter> converter = [[SpringTypeConverterRegistry shared] converterFor:typeDescriptor];
-        LogDebug(@"here's the converter: %@", converter);
+        SpringDebug(@"here's the converter: %@", converter);
         STFail(@"Should've thrown exception");
     }
     @catch (NSException* e)

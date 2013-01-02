@@ -118,7 +118,7 @@
 /* ============================================================ Private Methods ========================================================= */
 - (void)parsePrimitiveType:(NSString*)typeCode
 {
-    LogDebug(@"Parsing typeCode: %@", typeCode);
+    SpringDebug(@"Parsing typeCode: %@", typeCode);
     typeCode = [self extractArrayInformation:typeCode];
     typeCode = [self extractPointerInformation:typeCode];
     typeCode = [self extractStructureInformation:typeCode];

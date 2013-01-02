@@ -1,5 +1,5 @@
 // ================================================================================================
-//  RXMLElement.h
+//  SpringRXMLElement.h
 //  Fast processing of XML files
 //
 // ================================================================================================
@@ -34,7 +34,7 @@
 #import <libxml/xpath.h>
 #import <libxml/xpathInternals.h>
 
-@interface RXMLElement : NSObject
+@interface SpringRXMLElement : NSObject
 {
     xmlDocPtr doc_;
     xmlNodePtr node_;
@@ -63,16 +63,16 @@
 - (double)attributeAsDouble:(NSString *)attributeName;
 - (double)attributeAsDouble:(NSString *)attributeName inNamespace:(NSString *)ns;
 
-- (RXMLElement *)child:(NSString *)tag;
-- (RXMLElement *)child:(NSString *)tag inNamespace:(NSString *)ns;
+- (SpringRXMLElement*)child:(NSString *)tag;
+- (SpringRXMLElement*)child:(NSString *)tag inNamespace:(NSString *)ns;
 
 - (NSArray *)children:(NSString *)tag;
 - (NSArray *)children:(NSString *)tag inNamespace:(NSString *)ns;
 - (NSArray *)childrenWithRootXPath:(NSString *)xpath;
 
-- (void)iterate:(NSString *)query usingBlock:(void (^)(RXMLElement *))blk;
-- (void)iterateWithRootXPath:(NSString *)xpath usingBlock:(void (^)(RXMLElement *))blk;
-- (void)iterateElements:(NSArray *)elements usingBlock:(void (^)(RXMLElement *))blk;
+- (void)iterate:(NSString *)query usingBlock:(void (^)(SpringRXMLElement*))blk;
+- (void)iterateWithRootXPath:(NSString *)xpath usingBlock:(void (^)(SpringRXMLElement*))blk;
+- (void)iterateElements:(NSArray *)elements usingBlock:(void (^)(SpringRXMLElement*))blk;
 
 @property (nonatomic, readonly) NSString *tag;
 @property (nonatomic, readonly) NSString *text;
@@ -82,5 +82,5 @@
 
 @end
 
-typedef void (^RXMLBlock)(RXMLElement *element);
+typedef void (^RXMLBlock)(SpringRXMLElement*element);
 

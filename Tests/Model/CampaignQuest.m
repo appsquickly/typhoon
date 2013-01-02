@@ -22,13 +22,13 @@
 
 - (void)questBeforePropertyInjection
 {
-    LogDebug(@"###### My dependencies have not yet been injected. Here's what I look like: %@", [self description]);
+    SpringDebug(@"###### My dependencies have not yet been injected. Here's what I look like: %@", [self description]);
 }
 
 
 - (void)questAfterPropertyInjection
 {
-    LogDebug(@"$$$$$$$$$$$$$$$$$ My dependencies have been injected. And I know look like this: %@", [self description]);
+    SpringDebug(@"$$$$$$$$$$$$$$$$$ My dependencies have been injected. And I know look like this: %@", [self description]);
 }
 
 - (NSString*)description

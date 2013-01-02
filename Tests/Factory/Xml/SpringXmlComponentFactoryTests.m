@@ -45,7 +45,7 @@
 - (void)test_mixed_initializer_and_property_injection
 {
     Knight* anotherKnight = [_componentFactory componentForKey:@"anotherKnight"];
-    LogDebug(@"Here's another knight: %@", anotherKnight);
+    SpringDebug(@"Here's another knight: %@", anotherKnight);
     assertThat(anotherKnight.quest, notNilValue());
     assertThatBool(anotherKnight.hasHorseWillTravel, equalToBool(YES));
     _componentFactory = nil;
@@ -54,7 +54,7 @@
 - (void)test_factory_method_injection
 {
     NSURL* url = [_componentFactory componentForKey:@"serviceUrl"];
-    LogDebug(@"Here's the url: %@", url);
+    SpringDebug(@"Here's the url: %@", url);
 }
 
 - (void)test_factory_method_injection_raises_exception_if_required_class_not_set
@@ -63,7 +63,7 @@
     @try
     {
         NSURL* url = [factory componentForKey:@"anotherServiceUrl"];
-        LogDebug(@"Here's the url: %@", url);
+        SpringDebug(@"Here's the url: %@", url);
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -81,7 +81,7 @@
     @try
     {
         ClassADependsOnB* classA = [factory componentForKey:@"classA"];
-        LogDebug(@"Class A: %@", classA); //Suppress unused var compiler warning.
+        SpringDebug(@"Class A: %@", classA); //Suppress unused var compiler warning.
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -97,7 +97,7 @@
     @try
     {
         ClassADependsOnB* classA = [factory componentForType:[ClassADependsOnB class]];
-        LogDebug(@"Class A: %@", classA); //Suppress unused var compiler warning.
+        SpringDebug(@"Class A: %@", classA); //Suppress unused var compiler warning.
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -113,7 +113,7 @@
     @try
     {
         NSString* aString = [factory componentForKey:@"aBlaString"];
-        LogDebug(@"A string: %@", aString); //Suppress unused var compiler warning.
+        SpringDebug(@"A string: %@", aString); //Suppress unused var compiler warning.
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)

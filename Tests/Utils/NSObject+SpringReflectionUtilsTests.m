@@ -85,7 +85,7 @@ typedef struct
 - (void)test_parameterNamesForSelector_init_method
 {
     NSArray* parameterNames = [self parameterNamesForSelector:@selector(initWithNibName:bundle:)];
-    LogDebug(@"Parameter names: %@", parameterNames);
+    SpringDebug(@"Parameter names: %@", parameterNames);
     assertThat(parameterNames, hasCountOf(2));
     assertThat([parameterNames objectAtIndex:0], equalTo(@"nibName"));
     assertThat([parameterNames objectAtIndex:1], equalTo(@"bundle"));
@@ -94,7 +94,7 @@ typedef struct
 - (void)test_parameterNamesForSelector_factory_method
 {
     NSArray* parameterNames = [self parameterNamesForSelector:@selector(URLWithString:)];
-    LogDebug(@"Parameter names: %@", parameterNames);
+    SpringDebug(@"Parameter names: %@", parameterNames);
     assertThat(parameterNames, hasCountOf(1));
     assertThat([parameterNames objectAtIndex:0], equalTo(@"string"));
 }
@@ -104,7 +104,7 @@ typedef struct
     Knight* knight = [[Knight alloc] initWithQuest:nil damselsRescued:0];
     NSArray* typeCodes = [knight typeCodesForSelector:@selector(initWithQuest:damselsRescued:)];
 
-    LogDebug(@"Here's the typeCodes: %@", typeCodes);
+    SpringDebug(@"Here's the typeCodes: %@", typeCodes);
     assertThat([typeCodes objectAtIndex:0], equalTo(@"@"));
     assertThat([typeCodes objectAtIndex:1], equalTo(@"Q"));
 
