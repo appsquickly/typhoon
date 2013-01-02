@@ -14,6 +14,7 @@
 #import "Knight.h"
 #import "ClassADependsOnB.h"
 #import "ClassBDependsOnA.h"
+#import "Sword.h"
 
 
 @interface SpringXmlComponentFactoryTests : SenTestCase
@@ -31,7 +32,7 @@
 
 - (void)test_property_injection
 {
-    Knight* knight = [_componentFactory objectForKey:@"knight"];
+    Knight* knight = [_componentFactory componentForKey:@"knight"];
 
     assertThat(knight, notNilValue());
     assertThat(knight.quest, notNilValue());
@@ -43,7 +44,7 @@
 
 - (void)test_mixed_initializer_and_property_injection
 {
-    Knight* anotherKnight = [_componentFactory objectForKey:@"anotherKnight"];
+    Knight* anotherKnight = [_componentFactory componentForKey:@"anotherKnight"];
     LogDebug(@"Here's another knight: %@", anotherKnight);
     assertThat(anotherKnight.quest, notNilValue());
     assertThatBool(anotherKnight.hasHorseWillTravel, equalToBool(YES));
@@ -52,17 +53,17 @@
 
 - (void)test_factory_method_injection
 {
-    NSURL* url = [_componentFactory objectForKey:@"serviceUrl"];
+    NSURL* url = [_componentFactory componentForKey:@"serviceUrl"];
     LogDebug(@"Here's the url: %@", url);
 }
 
 - (void)test_factory_method_injection_raises_exception_if_required_class_not_set
 {
     SpringXmlComponentFactory
-            * factory = [[SpringXmlComponentFactory alloc] initWithConfigFileName:@"MissingRequiredClassAttributeAssembly.xml"];
+            * factory = [[SpringXmlComponentFactory alloc] initWithConfigFileName:@"ExceptionTestAssembly.xml"];
     @try
     {
-        NSURL* url = [factory objectForKey:@"anotherServiceUrl"];
+        NSURL* url = [factory componentForKey:@"anotherServiceUrl"];
         LogDebug(@"Here's the url: %@", url);
         STFail(@"Should have thrown exception");
     }
@@ -80,7 +81,7 @@
 
     @try
     {
-        ClassADependsOnB* classA = [factory objectForKey:@"classA"];
+        ClassADependsOnB* classA = [factory componentForKey:@"classA"];
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -95,13 +96,35 @@
 
     @try
     {
-        ClassADependsOnB* classA = [factory objectForType:[ClassADependsOnB class]];
+        ClassADependsOnB* classA = [factory componentForType:[ClassADependsOnB class]];
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
     {
         assertThat([e description], equalTo(@"Circular dependency detected: {(\n    classB,\n    classA\n)}"));
     }
+}
+
+- (void)test_raises_exception_for_invalid_selector_name
+{
+    SpringXmlComponentFactory* factory = [[SpringXmlComponentFactory alloc] initWithConfigFileName:@"ExceptionTestAssembly.xml"];
+
+    @try
+    {
+        NSString* aString = [factory componentForKey:@"aBlaString"];
+        STFail(@"Should have thrown exception");
+    }
+    @catch (NSException* e)
+    {
+        assertThat([e description], equalTo(@"Class method 'stringWithBlingBlaBla' not found on 'NSString'"));
+    }
+}
+
+- (void)test_returns_component_from_factory_component
+{
+    Sword* sword = [_componentFactory componentForKey:@"blueSword"];
+    assertThat([sword description], equalTo(@"A bright blue sword with orange pom-poms at the hilt."));
+
 }
 
 @end

@@ -28,12 +28,10 @@
 
 - (void) register:(SpringComponentDefinition*)definition;
 
-- (id) objectForType:(id)classOrProtocol;
+- (id)componentForType:(id)classOrProtocol;
 
- - (NSArray*)allObjectsForType:(id)classOrProtocol;
+ - (NSArray*)allComponentsForType:(id)classOrProtocol;
 
-- (id) objectForKey:(NSString*)key;
-
-- (NSString*)description;
+- (id)componentForKey:(NSString*)key;
 
 @end

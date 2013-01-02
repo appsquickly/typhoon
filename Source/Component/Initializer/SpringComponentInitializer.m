@@ -83,6 +83,13 @@
 
 - (NSInvocation*)asInvocationFor:(id)classOrInstance
 {
+    if (![classOrInstance respondsToSelector:_selector])
+    {
+        [NSException raise:NSInvalidArgumentException format:@"Class method '%@' not found on '%@'", NSStringFromSelector(_selector),
+                                                             _isClassMethod ? NSStringFromClass(classOrInstance) :
+                                                                     NSStringFromClass([classOrInstance class])];
+    }
+
     NSInvocation* invocation;
     if (_isClassMethod)
     {

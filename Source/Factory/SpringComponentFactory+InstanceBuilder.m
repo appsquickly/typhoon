@@ -65,7 +65,7 @@
         if (parameter.type == SpringParameterInjectedByReferenceType)
         {
             SpringParameterInjectedByReference* byReference = (SpringParameterInjectedByReference*) parameter;
-            id reference = [self objectForKey:byReference.reference];
+            id reference = [self componentForKey:byReference.reference];
             [invocation setArgument:&reference atIndex:parameter.index + 2];
         }
         else if (parameter.type == SpringParameterInjectedByValueType)
@@ -133,12 +133,12 @@
 {
     if (property.type == SpringPropertyInjectionByTypeType)
     {
-        id reference = [self objectForType:[typeDescriptor classOrProtocol]];
+        id reference = [self componentForType:[typeDescriptor classOrProtocol]];
         objc_msgSend(instance, [instance setterForPropertyWithName:property.name], reference, nil);
     }
     else if (property.type == SpringPropertyInjectionByReferenceType)
     {
-        id reference = [self objectForKey:((SpringPropertyInjectedByReference*) property).reference];
+        id reference = [self componentForKey:((SpringPropertyInjectedByReference*) property).reference];
         objc_msgSend(instance, [instance setterForPropertyWithName:property.name], reference, nil);
     }
     else if (property.type == SpringPropertyInjectionByValueType)

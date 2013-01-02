@@ -106,7 +106,7 @@
     [knightDefinition injectProperty:@"damselsRescued" withValueAsText:@"12"];
     [_componentFactory register:knightDefinition];
 
-    Knight* knight = [_componentFactory objectForKey:@"knight"];
+    Knight* knight = [_componentFactory componentForKey:@"knight"];
     assertThatLong(knight.damselsRescued, equalToLongLong(12));
 }
 
@@ -120,7 +120,7 @@
 
     [_componentFactory register:knightDefinition];
 
-    Knight* knight = [_componentFactory objectForKey:@"knight"];
+    Knight* knight = [_componentFactory componentForKey:@"knight"];
     assertThatLong(knight.damselsRescued, equalToLongLong(12));
 }
 

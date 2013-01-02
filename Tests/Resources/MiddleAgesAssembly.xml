@@ -83,5 +83,13 @@
         </initializer>
     </component>
 
+    <component class="SwordFactory" key="swordFactory"/>
+
+    <component class="Sword" key="blueSword" factory-component="swordFactory">
+        <initializer selector="swordWithSpecification">
+            <argument parameterName="specification" value="blue"/>
+        </initializer>
+    </component>
+
 
 </assembly>

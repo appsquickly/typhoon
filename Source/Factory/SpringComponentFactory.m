@@ -41,9 +41,9 @@
     [_registry addObject:definition];
 }
 
-- (id)objectForType:(id)classOrProtocol
+- (id)componentForType:(id)classOrProtocol
 {
-    NSArray* candidates = [self allObjectsForType:classOrProtocol];
+    NSArray* candidates = [self allComponentsForType:classOrProtocol];
     if ([candidates count] == 0)
     {
         [NSException raise:NSInvalidArgumentException format:@"No components defined which satisify type: '%@'", classOrProtocol];
@@ -55,7 +55,7 @@
     return [candidates objectAtIndex:0];
 }
 
-- (NSArray*)allObjectsForType:(id)classOrProtocol
+- (NSArray*)allComponentsForType:(id)classOrProtocol
 {
     NSMutableArray* results = [[NSMutableArray alloc] init];
     BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
@@ -80,7 +80,7 @@
     return [results copy];
 }
 
-- (id)objectForKey:(NSString*)key
+- (id)componentForKey:(NSString*)key
 {
     if ([_currentlyResolvingReferences containsObject:key])
     {

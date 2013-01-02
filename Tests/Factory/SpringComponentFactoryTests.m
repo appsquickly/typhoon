@@ -46,7 +46,7 @@
     SpringComponentDefinition* questDefinition = [[SpringComponentDefinition alloc] initWithClazz:[CampaignQuest class] key:@"quest"];
     [_componentFactory register:questDefinition];
 
-    Knight* knight = [_componentFactory objectForKey:@"knight"];
+    Knight* knight = [_componentFactory componentForKey:@"knight"];
 
     assertThat(knight, notNilValue());
     assertThat(knight, instanceOf([Knight class]));
@@ -65,7 +65,7 @@
 
     @try
     {
-        Knight* knight = [_componentFactory objectForKey:@"knight"];
+        Knight* knight = [_componentFactory componentForKey:@"knight"];
         LogDebug(@"Knight: %@", knight);
         STFail(@"Should have thrown exception");
     }
@@ -93,9 +93,9 @@
     SpringComponentDefinition* questDefinition = [[SpringComponentDefinition alloc] initWithClazz:[CampaignQuest class] key:@"quest"];
     [_componentFactory register:questDefinition];
 
-    assertThat([_componentFactory allObjectsForType:[Knight class]], hasCountOf(2));
-    assertThat([_componentFactory allObjectsForType:[CampaignQuest class]], hasCountOf(1));
-    assertThat([_componentFactory allObjectsForType:@protocol(NSObject)], hasCountOf(3));
+    assertThat([_componentFactory allComponentsForType:[Knight class]], hasCountOf(2));
+    assertThat([_componentFactory allComponentsForType:[CampaignQuest class]], hasCountOf(1));
+    assertThat([_componentFactory allComponentsForType:@protocol(NSObject)], hasCountOf(3));
 }
 
 - (void)test_objectForType
@@ -113,11 +113,11 @@
     SpringComponentDefinition* questDefinition = [[SpringComponentDefinition alloc] initWithClazz:[CampaignQuest class] key:@"quest"];
     [_componentFactory register:questDefinition];
 
-    assertThat([_componentFactory objectForType:[CavalryMan class]], notNilValue());
+    assertThat([_componentFactory componentForType:[CavalryMan class]], notNilValue());
 
     @try
     {
-        Knight* knight = [_componentFactory objectForType:[Knight class]];
+        Knight* knight = [_componentFactory componentForType:[Knight class]];
         LogDebug(@"Here's the knight: %@", knight);
         STFail(@"Should have thrown exception");
     }
@@ -128,7 +128,7 @@
 
     @try
     {
-        Knight* knight = [_componentFactory objectForType:[Champion class]];
+        Knight* knight = [_componentFactory componentForType:[Champion class]];
         LogDebug(@"Here's the knight: %@", knight);
         STFail(@"Should have thrown exception");
     }
@@ -147,7 +147,7 @@
     SpringComponentDefinition* questDefinition = [[SpringComponentDefinition alloc] initWithClazz:[CampaignQuest class] key:@"quest"];
     [_componentFactory register:questDefinition];
 
-    Knight* knight = [_componentFactory objectForKey:@"knight"];
+    Knight* knight = [_componentFactory componentForKey:@"knight"];
 
     assertThat(knight, notNilValue());
     assertThat(knight, instanceOf([Knight class]));
