@@ -7,42 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B263725168556790026E894 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B263724168556790026E894 /* Foundation.framework */; };
 		6B46752416894EB70049404E /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B46752116894D910049404E /* OCHamcrest.framework */; };
 		6B467526168950510049404E /* OCHamcrest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6B46752116894D910049404E /* OCHamcrest.framework */; };
-		6BA403D2168DEDF600A89433 /* RXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA403D0168DEDF600A89433 /* RXMLElement.m */; };
-		6BA403D3168DEDF600A89433 /* RXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA403D0168DEDF600A89433 /* RXMLElement.m */; };
-		6BA403EC168DF30000A89433 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA403E9168DF13F00A89433 /* libxml2.dylib */; };
 		6BA403ED168DF30600A89433 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA403E9168DF13F00A89433 /* libxml2.dylib */; };
-		6BA9C818168E92AF00E6AD6C /* SpringComponentDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C7EF168E92AF00E6AD6C /* SpringComponentDefinition.m */; };
-		6BA9C819168E92AF00E6AD6C /* SpringComponentDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C7EF168E92AF00E6AD6C /* SpringComponentDefinition.m */; };
-		6BA9C81A168E92AF00E6AD6C /* SpringComponentInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C7F2168E92AF00E6AD6C /* SpringComponentInitializer.m */; };
-		6BA9C81B168E92AF00E6AD6C /* SpringComponentInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C7F2168E92AF00E6AD6C /* SpringComponentInitializer.m */; };
-		6BA9C81C168E92AF00E6AD6C /* SpringParameterInjectedByReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C7F4168E92AF00E6AD6C /* SpringParameterInjectedByReference.m */; };
-		6BA9C81D168E92AF00E6AD6C /* SpringParameterInjectedByReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C7F4168E92AF00E6AD6C /* SpringParameterInjectedByReference.m */; };
-		6BA9C820168E92AF00E6AD6C /* SpringPropertyInjectedByReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C7FA168E92AF00E6AD6C /* SpringPropertyInjectedByReference.m */; };
-		6BA9C821168E92AF00E6AD6C /* SpringPropertyInjectedByReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C7FA168E92AF00E6AD6C /* SpringPropertyInjectedByReference.m */; };
-		6BA9C822168E92AF00E6AD6C /* SpringPropertyInjectedByValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C7FC168E92AF00E6AD6C /* SpringPropertyInjectedByValue.m */; };
-		6BA9C823168E92AF00E6AD6C /* SpringPropertyInjectedByValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C7FC168E92AF00E6AD6C /* SpringPropertyInjectedByValue.m */; };
-		6BA9C824168E92AF00E6AD6C /* SpringPropertyInjectedByType.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C7FE168E92AF00E6AD6C /* SpringPropertyInjectedByType.m */; };
-		6BA9C825168E92AF00E6AD6C /* SpringPropertyInjectedByType.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C7FE168E92AF00E6AD6C /* SpringPropertyInjectedByType.m */; };
-		6BA9C826168E92AF00E6AD6C /* SpringComponentFactory+InstanceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C801168E92AF00E6AD6C /* SpringComponentFactory+InstanceBuilder.m */; };
-		6BA9C827168E92AF00E6AD6C /* SpringComponentFactory+InstanceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C801168E92AF00E6AD6C /* SpringComponentFactory+InstanceBuilder.m */; };
-		6BA9C828168E92AF00E6AD6C /* SpringComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C803168E92AF00E6AD6C /* SpringComponentFactory.m */; };
-		6BA9C829168E92AF00E6AD6C /* SpringComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C803168E92AF00E6AD6C /* SpringComponentFactory.m */; };
-		6BA9C82A168E92AF00E6AD6C /* SpringXmlComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C806168E92AF00E6AD6C /* SpringXmlComponentFactory.m */; };
-		6BA9C82B168E92AF00E6AD6C /* SpringXmlComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C806168E92AF00E6AD6C /* SpringXmlComponentFactory.m */; };
-		6BA9C82C168E92AF00E6AD6C /* FruitJuice.1 in Resources */ = {isa = PBXBuildFile; fileRef = 6BA9C807168E92AF00E6AD6C /* FruitJuice.1 */; };
-		6BA9C82D168E92AF00E6AD6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C808168E92AF00E6AD6C /* main.m */; };
-		6BA9C82E168E92AF00E6AD6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C808168E92AF00E6AD6C /* main.m */; };
-		6BA9C82F168E92AF00E6AD6C /* SpringPrimitiveTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C80C168E92AF00E6AD6C /* SpringPrimitiveTypeConverter.m */; };
-		6BA9C830168E92AF00E6AD6C /* SpringPrimitiveTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C80C168E92AF00E6AD6C /* SpringPrimitiveTypeConverter.m */; };
-		6BA9C831168E92AF00E6AD6C /* SpringTypeConverterRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C80F168E92AF00E6AD6C /* SpringTypeConverterRegistry.m */; };
-		6BA9C832168E92AF00E6AD6C /* SpringTypeConverterRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C80F168E92AF00E6AD6C /* SpringTypeConverterRegistry.m */; };
-		6BA9C835168E92AF00E6AD6C /* SpringTypeDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C815168E92AF00E6AD6C /* SpringTypeDescriptor.m */; };
-		6BA9C836168E92AF00E6AD6C /* SpringTypeDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C815168E92AF00E6AD6C /* SpringTypeDescriptor.m */; };
-		6BA9C837168E92AF00E6AD6C /* NSObject+SpringReflectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C817168E92AF00E6AD6C /* NSObject+SpringReflectionUtils.m */; };
-		6BA9C838168E92AF00E6AD6C /* NSObject+SpringReflectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C817168E92AF00E6AD6C /* NSObject+SpringReflectionUtils.m */; };
 		6BA9C853168E92B900E6AD6C /* SpringComponentDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C83B168E92B900E6AD6C /* SpringComponentDefinitionTests.m */; };
 		6BA9C854168E92B900E6AD6C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BA9C83C168E92B900E6AD6C /* InfoPlist.strings */; };
 		6BA9C855168E92B900E6AD6C /* SpringComponentDefinition+InstanceBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C83F168E92B900E6AD6C /* SpringComponentDefinition+InstanceBuilderTests.m */; };
@@ -53,80 +20,127 @@
 		6BA9C85C168E92B900E6AD6C /* CampaignQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C84D168E92B900E6AD6C /* CampaignQuest.m */; };
 		6BA9C85D168E92B900E6AD6C /* SpringPrimitiveTypeConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C84F168E92B900E6AD6C /* SpringPrimitiveTypeConverterTests.m */; };
 		6BA9C85F168E92B900E6AD6C /* NSObject+SpringReflectionUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C852168E92B900E6AD6C /* NSObject+SpringReflectionUtilsTests.m */; };
-		6BAAF73D168B274400507B63 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 6BAAF73C168B274400507B63 /* README */; };
+		6BCBE9EB1694027C0096F861 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD6F986168935FB00FE2774 /* Cocoa.framework */; };
+		6BCBEB9D169408990096F861 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B263724168556790026E894 /* Foundation.framework */; };
+		6BCBEBE6169408F30096F861 /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCBEBA9169408F30096F861 /* OCHamcrest.framework */; };
+		6BCBEBE7169408F30096F861 /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCBEBA9169408F30096F861 /* OCHamcrest.framework */; };
+		6BCBEBE8169408F30096F861 /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCBEBA9169408F30096F861 /* OCHamcrest.framework */; };
+		6BCBEBE9169408F30096F861 /* OCLogTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBAB169408F30096F861 /* OCLogTemplate.h */; };
+		6BCBEBEA169408F30096F861 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 6BCBEBAC169408F30096F861 /* README */; };
+		6BCBEBEB169408F30096F861 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 6BCBEBAC169408F30096F861 /* README */; };
+		6BCBEBEC169408F30096F861 /* RXMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBAE169408F30096F861 /* RXMLElement.h */; };
+		6BCBEBED169408F30096F861 /* RXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBAF169408F30096F861 /* RXMLElement.m */; };
+		6BCBEBEE169408F30096F861 /* RXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBAF169408F30096F861 /* RXMLElement.m */; };
+		6BCBEBEF169408F30096F861 /* RXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBAF169408F30096F861 /* RXMLElement.m */; };
+		6BCBEBF0169408F30096F861 /* SpringComponentInitializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBB3169408F30096F861 /* SpringComponentInitializer.h */; };
+		6BCBEBF1169408F30096F861 /* SpringComponentInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBB4169408F30096F861 /* SpringComponentInitializer.m */; };
+		6BCBEBF2169408F30096F861 /* SpringComponentInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBB4169408F30096F861 /* SpringComponentInitializer.m */; };
+		6BCBEBF3169408F30096F861 /* SpringComponentInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBB4169408F30096F861 /* SpringComponentInitializer.m */; };
+		6BCBEBF4169408F30096F861 /* SpringInjectedParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBB5169408F30096F861 /* SpringInjectedParameter.h */; };
+		6BCBEBF5169408F30096F861 /* SpringParameterInjectedByReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBB6169408F30096F861 /* SpringParameterInjectedByReference.h */; };
+		6BCBEBF6169408F30096F861 /* SpringParameterInjectedByReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBB7169408F30096F861 /* SpringParameterInjectedByReference.m */; };
+		6BCBEBF7169408F30096F861 /* SpringParameterInjectedByReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBB7169408F30096F861 /* SpringParameterInjectedByReference.m */; };
+		6BCBEBF8169408F30096F861 /* SpringParameterInjectedByReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBB7169408F30096F861 /* SpringParameterInjectedByReference.m */; };
+		6BCBEBF9169408F30096F861 /* SpringParameterInjectedByValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBB8169408F30096F861 /* SpringParameterInjectedByValue.h */; };
+		6BCBEBFA169408F30096F861 /* SpringParameterInjectedByValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBB9169408F30096F861 /* SpringParameterInjectedByValue.m */; };
+		6BCBEBFB169408F30096F861 /* SpringParameterInjectedByValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBB9169408F30096F861 /* SpringParameterInjectedByValue.m */; };
+		6BCBEBFC169408F30096F861 /* SpringParameterInjectedByValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBB9169408F30096F861 /* SpringParameterInjectedByValue.m */; };
+		6BCBEBFD169408F30096F861 /* SpringInjectedProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBBB169408F30096F861 /* SpringInjectedProperty.h */; };
+		6BCBEBFE169408F30096F861 /* SpringPropertyInjectedByReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBBC169408F30096F861 /* SpringPropertyInjectedByReference.h */; };
+		6BCBEBFF169408F30096F861 /* SpringPropertyInjectedByReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBBD169408F30096F861 /* SpringPropertyInjectedByReference.m */; };
+		6BCBEC00169408F30096F861 /* SpringPropertyInjectedByReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBBD169408F30096F861 /* SpringPropertyInjectedByReference.m */; };
+		6BCBEC01169408F30096F861 /* SpringPropertyInjectedByReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBBD169408F30096F861 /* SpringPropertyInjectedByReference.m */; };
+		6BCBEC02169408F30096F861 /* SpringPropertyInjectedByType.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBBE169408F30096F861 /* SpringPropertyInjectedByType.h */; };
+		6BCBEC03169408F30096F861 /* SpringPropertyInjectedByType.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBBF169408F30096F861 /* SpringPropertyInjectedByType.m */; };
+		6BCBEC04169408F30096F861 /* SpringPropertyInjectedByType.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBBF169408F30096F861 /* SpringPropertyInjectedByType.m */; };
+		6BCBEC05169408F30096F861 /* SpringPropertyInjectedByType.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBBF169408F30096F861 /* SpringPropertyInjectedByType.m */; };
+		6BCBEC06169408F30096F861 /* SpringPropertyInjectedByValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBC0169408F30096F861 /* SpringPropertyInjectedByValue.h */; };
+		6BCBEC07169408F30096F861 /* SpringPropertyInjectedByValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBC1169408F30096F861 /* SpringPropertyInjectedByValue.m */; };
+		6BCBEC08169408F30096F861 /* SpringPropertyInjectedByValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBC1169408F30096F861 /* SpringPropertyInjectedByValue.m */; };
+		6BCBEC09169408F30096F861 /* SpringPropertyInjectedByValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBC1169408F30096F861 /* SpringPropertyInjectedByValue.m */; };
+		6BCBEC0A169408F30096F861 /* SpringPropertyInjectionDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBC2169408F30096F861 /* SpringPropertyInjectionDelegate.h */; };
+		6BCBEC0B169408F30096F861 /* SpringComponentDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBC3169408F30096F861 /* SpringComponentDefinition.h */; };
+		6BCBEC0C169408F30096F861 /* SpringComponentDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBC4169408F30096F861 /* SpringComponentDefinition.m */; };
+		6BCBEC0D169408F30096F861 /* SpringComponentDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBC4169408F30096F861 /* SpringComponentDefinition.m */; };
+		6BCBEC0E169408F30096F861 /* SpringComponentDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBC4169408F30096F861 /* SpringComponentDefinition.m */; };
+		6BCBEC0F169408F30096F861 /* SpringComponentFactory+InstanceBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBC6169408F30096F861 /* SpringComponentFactory+InstanceBuilder.h */; };
+		6BCBEC10169408F30096F861 /* SpringComponentFactory+InstanceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBC7169408F30096F861 /* SpringComponentFactory+InstanceBuilder.m */; };
+		6BCBEC11169408F30096F861 /* SpringComponentFactory+InstanceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBC7169408F30096F861 /* SpringComponentFactory+InstanceBuilder.m */; };
+		6BCBEC12169408F30096F861 /* SpringComponentFactory+InstanceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBC7169408F30096F861 /* SpringComponentFactory+InstanceBuilder.m */; };
+		6BCBEC13169408F30096F861 /* SpringComponentFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBC8169408F30096F861 /* SpringComponentFactory.h */; };
+		6BCBEC14169408F30096F861 /* SpringComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBC9169408F30096F861 /* SpringComponentFactory.m */; };
+		6BCBEC15169408F30096F861 /* SpringComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBC9169408F30096F861 /* SpringComponentFactory.m */; };
+		6BCBEC16169408F30096F861 /* SpringComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBC9169408F30096F861 /* SpringComponentFactory.m */; };
+		6BCBEC17169408F30096F861 /* RXMLElement+SpringXmlComponentFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBCB169408F30096F861 /* RXMLElement+SpringXmlComponentFactory.h */; };
+		6BCBEC18169408F30096F861 /* RXMLElement+SpringXmlComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBCC169408F30096F861 /* RXMLElement+SpringXmlComponentFactory.m */; };
+		6BCBEC19169408F30096F861 /* RXMLElement+SpringXmlComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBCC169408F30096F861 /* RXMLElement+SpringXmlComponentFactory.m */; };
+		6BCBEC1A169408F30096F861 /* RXMLElement+SpringXmlComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBCC169408F30096F861 /* RXMLElement+SpringXmlComponentFactory.m */; };
+		6BCBEC1B169408F30096F861 /* SpringXmlComponentFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBCD169408F30096F861 /* SpringXmlComponentFactory.h */; };
+		6BCBEC1C169408F30096F861 /* SpringXmlComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBCE169408F30096F861 /* SpringXmlComponentFactory.m */; };
+		6BCBEC1D169408F30096F861 /* SpringXmlComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBCE169408F30096F861 /* SpringXmlComponentFactory.m */; };
+		6BCBEC1E169408F30096F861 /* SpringXmlComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBCE169408F30096F861 /* SpringXmlComponentFactory.m */; };
+		6BCBEC1F169408F30096F861 /* FruitJuice.1 in Resources */ = {isa = PBXBuildFile; fileRef = 6BCBEBCF169408F30096F861 /* FruitJuice.1 */; };
+		6BCBEC20169408F30096F861 /* FruitJuice.1 in Resources */ = {isa = PBXBuildFile; fileRef = 6BCBEBCF169408F30096F861 /* FruitJuice.1 */; };
+		6BCBEC21169408F30096F861 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBD0169408F30096F861 /* main.m */; };
+		6BCBEC22169408F30096F861 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBD0169408F30096F861 /* main.m */; };
+		6BCBEC23169408F30096F861 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBD0169408F30096F861 /* main.m */; };
+		6BCBEC24169408F30096F861 /* Spring-Objective-C-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBD1169408F30096F861 /* Spring-Objective-C-Prefix.pch */; };
+		6BCBEC25169408F30096F861 /* SpringNSURLTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBD3169408F30096F861 /* SpringNSURLTypeConverter.h */; };
+		6BCBEC26169408F30096F861 /* SpringNSURLTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBD4169408F30096F861 /* SpringNSURLTypeConverter.m */; };
+		6BCBEC27169408F30096F861 /* SpringNSURLTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBD4169408F30096F861 /* SpringNSURLTypeConverter.m */; };
+		6BCBEC28169408F30096F861 /* SpringNSURLTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBD4169408F30096F861 /* SpringNSURLTypeConverter.m */; };
+		6BCBEC29169408F30096F861 /* SpringPassThroughTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBD5169408F30096F861 /* SpringPassThroughTypeConverter.h */; };
+		6BCBEC2A169408F30096F861 /* SpringPassThroughTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBD6169408F30096F861 /* SpringPassThroughTypeConverter.m */; };
+		6BCBEC2B169408F30096F861 /* SpringPassThroughTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBD6169408F30096F861 /* SpringPassThroughTypeConverter.m */; };
+		6BCBEC2C169408F30096F861 /* SpringPassThroughTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBD6169408F30096F861 /* SpringPassThroughTypeConverter.m */; };
+		6BCBEC2D169408F30096F861 /* SpringPrimitiveTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBD7169408F30096F861 /* SpringPrimitiveTypeConverter.h */; };
+		6BCBEC2E169408F30096F861 /* SpringPrimitiveTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBD8169408F30096F861 /* SpringPrimitiveTypeConverter.m */; };
+		6BCBEC2F169408F30096F861 /* SpringPrimitiveTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBD8169408F30096F861 /* SpringPrimitiveTypeConverter.m */; };
+		6BCBEC30169408F30096F861 /* SpringPrimitiveTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBD8169408F30096F861 /* SpringPrimitiveTypeConverter.m */; };
+		6BCBEC31169408F30096F861 /* SpringTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBD9169408F30096F861 /* SpringTypeConverter.h */; };
+		6BCBEC32169408F30096F861 /* SpringTypeConverterRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBDA169408F30096F861 /* SpringTypeConverterRegistry.h */; };
+		6BCBEC33169408F30096F861 /* SpringTypeConverterRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBDB169408F30096F861 /* SpringTypeConverterRegistry.m */; };
+		6BCBEC34169408F30096F861 /* SpringTypeConverterRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBDB169408F30096F861 /* SpringTypeConverterRegistry.m */; };
+		6BCBEC35169408F30096F861 /* SpringTypeConverterRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBDB169408F30096F861 /* SpringTypeConverterRegistry.m */; };
+		6BCBEC36169408F30096F861 /* SpringTypeDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBDC169408F30096F861 /* SpringTypeDescriptor.h */; };
+		6BCBEC37169408F30096F861 /* SpringTypeDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBDD169408F30096F861 /* SpringTypeDescriptor.m */; };
+		6BCBEC38169408F30096F861 /* SpringTypeDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBDD169408F30096F861 /* SpringTypeDescriptor.m */; };
+		6BCBEC39169408F30096F861 /* SpringTypeDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBDD169408F30096F861 /* SpringTypeDescriptor.m */; };
+		6BCBEC3A169408F30096F861 /* NSObject+SpringReflectionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBDF169408F30096F861 /* NSObject+SpringReflectionUtils.h */; };
+		6BCBEC3B169408F30096F861 /* NSObject+SpringReflectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBE0169408F30096F861 /* NSObject+SpringReflectionUtils.m */; };
+		6BCBEC3C169408F30096F861 /* NSObject+SpringReflectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBE0169408F30096F861 /* NSObject+SpringReflectionUtils.m */; };
+		6BCBEC3D169408F30096F861 /* NSObject+SpringReflectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBE0169408F30096F861 /* NSObject+SpringReflectionUtils.m */; };
+		6BCBEC3E169408F30096F861 /* SpringBundleResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBE1169408F30096F861 /* SpringBundleResource.h */; };
+		6BCBEC3F169408F30096F861 /* SpringBundleResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBE2169408F30096F861 /* SpringBundleResource.m */; };
+		6BCBEC40169408F30096F861 /* SpringBundleResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBE2169408F30096F861 /* SpringBundleResource.m */; };
+		6BCBEC41169408F30096F861 /* SpringBundleResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBE2169408F30096F861 /* SpringBundleResource.m */; };
+		6BCBEC42169408F30096F861 /* SpringReflectionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBE3169408F30096F861 /* SpringReflectionUtils.h */; };
+		6BCBEC43169408F30096F861 /* SpringReflectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBE4169408F30096F861 /* SpringReflectionUtils.m */; };
+		6BCBEC44169408F30096F861 /* SpringReflectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBE4169408F30096F861 /* SpringReflectionUtils.m */; };
+		6BCBEC45169408F30096F861 /* SpringReflectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCBEBE4169408F30096F861 /* SpringReflectionUtils.m */; };
+		6BCBEC46169408F30096F861 /* SpringReflectiveNSObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCBEBE5169408F30096F861 /* SpringReflectiveNSObject.h */; };
+		6BCBEC48169409B60096F861 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCBEC47169409B60096F861 /* libxml2.dylib */; };
+		6BCBEC4A169409BC0096F861 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCBEC49169409BC0096F861 /* libz.dylib */; };
 		6BD6F9A1168936D500FE2774 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD6F984168935FB00FE2774 /* SenTestingKit.framework */; };
 		6BD6F9A2168936D500FE2774 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD6F986168935FB00FE2774 /* Cocoa.framework */; };
-		BA79801ADDCBC4B8E98758A1 /* SpringPassThroughTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79889370B8FF5CDA59B809 /* SpringPassThroughTypeConverter.m */; };
-		BA798064B4D6A5B7E3C3ECF7 /* SpringReflectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798A2904C4FF1D6453E8C1 /* SpringReflectionUtils.m */; };
-		BA79811CEE346B32C64200F3 /* RXMLElement+SpringXmlComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79817B99FDC25A21F54C2D /* RXMLElement+SpringXmlComponentFactory.m */; };
-		BA7983BF36A84FD4B9B30E31 /* SpringReflectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798A2904C4FF1D6453E8C1 /* SpringReflectionUtils.m */; };
 		BA7984831FBA879932CC8360 /* ClassADependsOnB.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7988E7A0B25288092F2A6D /* ClassADependsOnB.h */; };
-		BA7984C5C73CDE273D644B98 /* SpringNSURLTypeConverter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7985652B561697D483540D /* SpringNSURLTypeConverter.h */; };
-		BA7984CF27AD228E5F031AA3 /* SpringParameterInjectedByValue.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7983996A0CA2392B6135C5 /* SpringParameterInjectedByValue.h */; };
-		BA7985022D4ACCAC87D1036C /* RXMLElement+SpringXmlComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79817B99FDC25A21F54C2D /* RXMLElement+SpringXmlComponentFactory.m */; };
-		BA79851D446E9F6A1639BAEE /* Quest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798E7749DFCE6A88093CCE /* Quest.h */; };
 		BA79859119F90487480416FC /* ClassADependsOnB.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7983D2CEC00D7FAF64C182 /* ClassADependsOnB.m */; };
-		BA7985ED08D040AB08963218 /* SpringParameterInjectedByValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798B91A6CD6E636559D4BE /* SpringParameterInjectedByValue.m */; };
-		BA79861286F94CEB448EC49C /* ClassBDependsOnA.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798A2E10EABDBD7912DBE5 /* ClassBDependsOnA.m */; };
-		BA7986154FCB945F25C7EB7E /* SpringPassThroughTypeConverter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798E0A8A42E7BA09670CE3 /* SpringPassThroughTypeConverter.h */; };
 		BA79862624FE5AEE47CC28A4 /* SwordFactory.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798FC85927B67C2C25C725 /* SwordFactory.h */; };
-		BA7986350DF8F00800ED73B9 /* SpringNSURLTypeConverter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7985652B561697D483540D /* SpringNSURLTypeConverter.h */; };
-		BA7986FDD3BDA82E7C838AD1 /* SpringBundleResource.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798128D3D8B80920C549F7 /* SpringBundleResource.m */; };
-		BA798706232D8DD35937F60D /* ClassADependsOnB.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7988E7A0B25288092F2A6D /* ClassADependsOnB.h */; };
-		BA79871613216FCA07350CFE /* RXMLElement+SpringXmlComponentFactory.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798568F0E1710A3F0DF761 /* RXMLElement+SpringXmlComponentFactory.h */; };
-		BA79876F25A31B1B13B2814E /* RXMLElement+SpringXmlComponentFactory.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798568F0E1710A3F0DF761 /* RXMLElement+SpringXmlComponentFactory.h */; };
-		BA7987F544E36F6C872324A8 /* ClassADependsOnB.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7983D2CEC00D7FAF64C182 /* ClassADependsOnB.m */; };
-		BA7987FD5DD52BE5F26EF347 /* SpringNSURLTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982C33FFA6B229739E25F /* SpringNSURLTypeConverter.m */; };
-		BA79890CC8371801CB5529DA /* ClassBDependsOnA.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7982CAB715A6777CA9E5F9 /* ClassBDependsOnA.h */; };
 		BA79893ADF8224DC6381B1F6 /* ClassBDependsOnA.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7982CAB715A6777CA9E5F9 /* ClassBDependsOnA.h */; };
 		BA7989CF067CB29C461CC402 /* SpringXmlComponentFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798754085BEEED840E5182 /* SpringXmlComponentFactoryTests.m */; };
 		BA7989DF446D51BAB908086B /* CircularDependenciesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = BA798B67C3EBDEA3B67B0CA9 /* CircularDependenciesAssembly.xml */; };
 		BA798A741A5809BFBCDEFC10 /* SpringTypeConverterRegistryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798ACBBE11925AFC181DA2 /* SpringTypeConverterRegistryTests.m */; };
-		BA798A893E86A8EC0C97961D /* SpringParameterInjectedByValue.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7983996A0CA2392B6135C5 /* SpringParameterInjectedByValue.h */; };
-		BA798B3BEF7AD26B60B0B382 /* SpringParameterInjectedByValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798B91A6CD6E636559D4BE /* SpringParameterInjectedByValue.m */; };
-		BA798B78334A7D1B2F07B631 /* SpringInjectedParameter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798704F1F26A3519F598F0 /* SpringInjectedParameter.h */; };
 		BA798B7F6AA60453902B2418 /* Sword.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7989FB1913BE74D1F93913 /* Sword.m */; };
-		BA798B8764B29D02C9D1EECC /* SpringReflectionUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798B1E85E01560B3EE662E /* SpringReflectionUtils.h */; };
 		BA798BB70C1A71EDF5DABE5F /* ClassBDependsOnA.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798A2E10EABDBD7912DBE5 /* ClassBDependsOnA.m */; };
-		BA798CB9555C2768611CDF23 /* SpringNSURLTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982C33FFA6B229739E25F /* SpringNSURLTypeConverter.m */; };
-		BA798CDB24D3A53A4F5E20A0 /* SpringInjectedParameter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798704F1F26A3519F598F0 /* SpringInjectedParameter.h */; };
-		BA798D159B2E0C44EEFEF4FA /* SpringPropertyInjectionDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA79816210851532B5508614 /* SpringPropertyInjectionDelegate.h */; };
-		BA798DC65CAF5C4CB47E087D /* SpringPassThroughTypeConverter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798E0A8A42E7BA09670CE3 /* SpringPassThroughTypeConverter.h */; };
 		BA798DF233819828A039274D /* Quest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798E7749DFCE6A88093CCE /* Quest.h */; };
 		BA798E0B7B2B1A387D394030 /* ExceptionTestAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = BA798AE0738703EA3204887F /* ExceptionTestAssembly.xml */; };
 		BA798E1AB198474D577CB312 /* MiddleAgesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = BA798386B768F0D4DEECA5D5 /* MiddleAgesAssembly.xml */; };
 		BA798E81CDB3C2DC9307EF0E /* SwordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798580D7B774719BB23661 /* SwordFactory.m */; };
-		BA798EACA6FC433F0F8A36F4 /* SpringPassThroughTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79889370B8FF5CDA59B809 /* SpringPassThroughTypeConverter.m */; };
-		BA798EB0D04BCACEA7A6BC86 /* SpringReflectionUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798B1E85E01560B3EE662E /* SpringReflectionUtils.h */; };
-		BA798EF72DFA8D87DE0B9C73 /* SpringBundleResource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798A0DC71ACCA8F4AD009E /* SpringBundleResource.h */; };
-		BA798EFF4799F469234FF8E7 /* SpringPropertyInjectionDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA79816210851532B5508614 /* SpringPropertyInjectionDelegate.h */; };
-		BA798F4E7C72625BE12C342B /* SpringBundleResource.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798128D3D8B80920C549F7 /* SpringBundleResource.m */; };
 		BA798F582042629F5486FB72 /* RXMLElement+SpringXmlComponentFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79847BA473D646F208D8AB /* RXMLElement+SpringXmlComponentFactoryTests.m */; };
-		BA798FEBCD3F82F186EA67B0 /* SpringBundleResource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798A0DC71ACCA8F4AD009E /* SpringBundleResource.h */; };
 		BA798FF82E290811436984A2 /* Sword.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7984166797DDC512D79B49 /* Sword.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		6B26371E168556790026E894 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-				BA79871613216FCA07350CFE /* RXMLElement+SpringXmlComponentFactory.h in CopyFiles */,
-				BA798FEBCD3F82F186EA67B0 /* SpringBundleResource.h in CopyFiles */,
-				BA79851D446E9F6A1639BAEE /* Quest.h in CopyFiles */,
-				BA798D159B2E0C44EEFEF4FA /* SpringPropertyInjectionDelegate.h in CopyFiles */,
-				BA798CDB24D3A53A4F5E20A0 /* SpringInjectedParameter.h in CopyFiles */,
-				BA7984CF27AD228E5F031AA3 /* SpringParameterInjectedByValue.h in CopyFiles */,
-				BA7986154FCB945F25C7EB7E /* SpringPassThroughTypeConverter.h in CopyFiles */,
-				BA798B8764B29D02C9D1EECC /* SpringReflectionUtils.h in CopyFiles */,
-				BA7986350DF8F00800ED73B9 /* SpringNSURLTypeConverter.h in CopyFiles */,
-				BA798706232D8DD35937F60D /* ClassADependsOnB.h in CopyFiles */,
-				BA79890CC8371801CB5529DA /* ClassBDependsOnA.h in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 		6B467525168950310049404E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -134,15 +148,7 @@
 			dstSubfolderSpec = 16;
 			files = (
 				6B467526168950510049404E /* OCHamcrest.framework in CopyFiles */,
-				BA79876F25A31B1B13B2814E /* RXMLElement+SpringXmlComponentFactory.h in CopyFiles */,
-				BA798EF72DFA8D87DE0B9C73 /* SpringBundleResource.h in CopyFiles */,
 				BA798DF233819828A039274D /* Quest.h in CopyFiles */,
-				BA798EFF4799F469234FF8E7 /* SpringPropertyInjectionDelegate.h in CopyFiles */,
-				BA798B78334A7D1B2F07B631 /* SpringInjectedParameter.h in CopyFiles */,
-				BA798A893E86A8EC0C97961D /* SpringParameterInjectedByValue.h in CopyFiles */,
-				BA798DC65CAF5C4CB47E087D /* SpringPassThroughTypeConverter.h in CopyFiles */,
-				BA798EB0D04BCACEA7A6BC86 /* SpringReflectionUtils.h in CopyFiles */,
-				BA7984C5C73CDE273D644B98 /* SpringNSURLTypeConverter.h in CopyFiles */,
 				BA7984831FBA879932CC8360 /* ClassADependsOnB.h in CopyFiles */,
 				BA79893ADF8224DC6381B1F6 /* ClassBDependsOnA.h in CopyFiles */,
 				BA79862624FE5AEE47CC28A4 /* SwordFactory.h in CopyFiles */,
@@ -150,47 +156,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6BCBEB9A169408990096F861 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6B263720168556790026E894 /* Spring-Objective-C */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Spring-Objective-C"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B263724168556790026E894 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6B46752116894D910049404E /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrest.framework; path = External/OCHamcrest.framework; sourceTree = "<group>"; };
-		6BA403CF168DEDF600A89433 /* RXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMLElement.h; sourceTree = "<group>"; };
-		6BA403D0168DEDF600A89433 /* RXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXMLElement.m; sourceTree = "<group>"; };
 		6BA403E9168DF13F00A89433 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		6BA9C7EE168E92AF00E6AD6C /* SpringComponentDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringComponentDefinition.h; sourceTree = "<group>"; };
-		6BA9C7EF168E92AF00E6AD6C /* SpringComponentDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringComponentDefinition.m; sourceTree = "<group>"; };
-		6BA9C7F1168E92AF00E6AD6C /* SpringComponentInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringComponentInitializer.h; sourceTree = "<group>"; };
-		6BA9C7F2168E92AF00E6AD6C /* SpringComponentInitializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringComponentInitializer.m; sourceTree = "<group>"; };
-		6BA9C7F3168E92AF00E6AD6C /* SpringParameterInjectedByReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringParameterInjectedByReference.h; sourceTree = "<group>"; };
-		6BA9C7F4168E92AF00E6AD6C /* SpringParameterInjectedByReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringParameterInjectedByReference.m; sourceTree = "<group>"; };
-		6BA9C7F8168E92AF00E6AD6C /* SpringInjectedProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringInjectedProperty.h; sourceTree = "<group>"; };
-		6BA9C7F9168E92AF00E6AD6C /* SpringPropertyInjectedByReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringPropertyInjectedByReference.h; sourceTree = "<group>"; };
-		6BA9C7FA168E92AF00E6AD6C /* SpringPropertyInjectedByReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringPropertyInjectedByReference.m; sourceTree = "<group>"; };
-		6BA9C7FB168E92AF00E6AD6C /* SpringPropertyInjectedByValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringPropertyInjectedByValue.h; sourceTree = "<group>"; };
-		6BA9C7FC168E92AF00E6AD6C /* SpringPropertyInjectedByValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringPropertyInjectedByValue.m; sourceTree = "<group>"; };
-		6BA9C7FD168E92AF00E6AD6C /* SpringPropertyInjectedByType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringPropertyInjectedByType.h; sourceTree = "<group>"; };
-		6BA9C7FE168E92AF00E6AD6C /* SpringPropertyInjectedByType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringPropertyInjectedByType.m; sourceTree = "<group>"; };
-		6BA9C800168E92AF00E6AD6C /* SpringComponentFactory+InstanceBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SpringComponentFactory+InstanceBuilder.h"; sourceTree = "<group>"; };
-		6BA9C801168E92AF00E6AD6C /* SpringComponentFactory+InstanceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SpringComponentFactory+InstanceBuilder.m"; sourceTree = "<group>"; };
-		6BA9C802168E92AF00E6AD6C /* SpringComponentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringComponentFactory.h; sourceTree = "<group>"; };
-		6BA9C803168E92AF00E6AD6C /* SpringComponentFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringComponentFactory.m; sourceTree = "<group>"; };
-		6BA9C805168E92AF00E6AD6C /* SpringXmlComponentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringXmlComponentFactory.h; sourceTree = "<group>"; };
-		6BA9C806168E92AF00E6AD6C /* SpringXmlComponentFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringXmlComponentFactory.m; sourceTree = "<group>"; };
-		6BA9C807168E92AF00E6AD6C /* FruitJuice.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = FruitJuice.1; sourceTree = "<group>"; };
-		6BA9C808168E92AF00E6AD6C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6BA9C809168E92AF00E6AD6C /* Spring-Objective-C-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Spring-Objective-C-Prefix.pch"; sourceTree = "<group>"; };
-		6BA9C80B168E92AF00E6AD6C /* SpringPrimitiveTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringPrimitiveTypeConverter.h; sourceTree = "<group>"; };
-		6BA9C80C168E92AF00E6AD6C /* SpringPrimitiveTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringPrimitiveTypeConverter.m; sourceTree = "<group>"; };
-		6BA9C80D168E92AF00E6AD6C /* SpringTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringTypeConverter.h; sourceTree = "<group>"; };
-		6BA9C80E168E92AF00E6AD6C /* SpringTypeConverterRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringTypeConverterRegistry.h; sourceTree = "<group>"; };
-		6BA9C80F168E92AF00E6AD6C /* SpringTypeConverterRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringTypeConverterRegistry.m; sourceTree = "<group>"; };
-		6BA9C811168E92AF00E6AD6C /* SpringReflectiveNSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringReflectiveNSObject.h; sourceTree = "<group>"; };
-		6BA9C814168E92AF00E6AD6C /* SpringTypeDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringTypeDescriptor.h; sourceTree = "<group>"; };
-		6BA9C815168E92AF00E6AD6C /* SpringTypeDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringTypeDescriptor.m; sourceTree = "<group>"; };
-		6BA9C816168E92AF00E6AD6C /* NSObject+SpringReflectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SpringReflectionUtils.h"; sourceTree = "<group>"; };
-		6BA9C817168E92AF00E6AD6C /* NSObject+SpringReflectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SpringReflectionUtils.m"; sourceTree = "<group>"; };
 		6BA9C83B168E92B900E6AD6C /* SpringComponentDefinitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringComponentDefinitionTests.m; sourceTree = "<group>"; };
 		6BA9C83D168E92B900E6AD6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6BA9C83F168E92B900E6AD6C /* SpringComponentDefinition+InstanceBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SpringComponentDefinition+InstanceBuilderTests.m"; sourceTree = "<group>"; };
@@ -207,54 +187,104 @@
 		6BA9C84D168E92B900E6AD6C /* CampaignQuest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampaignQuest.m; sourceTree = "<group>"; };
 		6BA9C84F168E92B900E6AD6C /* SpringPrimitiveTypeConverterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringPrimitiveTypeConverterTests.m; sourceTree = "<group>"; };
 		6BA9C852168E92B900E6AD6C /* NSObject+SpringReflectionUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SpringReflectionUtilsTests.m"; sourceTree = "<group>"; };
-		6BAAF73B168B274400507B63 /* OCLogTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLogTemplate.h; sourceTree = "<group>"; };
-		6BAAF73C168B274400507B63 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		6BCBE9EA1694027C0096F861 /* Spring-OSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Spring-OSX.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BCBEB9C169408990096F861 /* libSpring-iOS-StaticLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSpring-iOS-StaticLib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BCBEBA9169408F30096F861 /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OCHamcrest.framework; sourceTree = "<group>"; };
+		6BCBEBAB169408F30096F861 /* OCLogTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCLogTemplate.h; sourceTree = "<group>"; };
+		6BCBEBAC169408F30096F861 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		6BCBEBAE169408F30096F861 /* RXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMLElement.h; sourceTree = "<group>"; };
+		6BCBEBAF169408F30096F861 /* RXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXMLElement.m; sourceTree = "<group>"; };
+		6BCBEBB3169408F30096F861 /* SpringComponentInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringComponentInitializer.h; sourceTree = "<group>"; };
+		6BCBEBB4169408F30096F861 /* SpringComponentInitializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringComponentInitializer.m; sourceTree = "<group>"; };
+		6BCBEBB5169408F30096F861 /* SpringInjectedParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringInjectedParameter.h; sourceTree = "<group>"; };
+		6BCBEBB6169408F30096F861 /* SpringParameterInjectedByReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringParameterInjectedByReference.h; sourceTree = "<group>"; };
+		6BCBEBB7169408F30096F861 /* SpringParameterInjectedByReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringParameterInjectedByReference.m; sourceTree = "<group>"; };
+		6BCBEBB8169408F30096F861 /* SpringParameterInjectedByValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringParameterInjectedByValue.h; sourceTree = "<group>"; };
+		6BCBEBB9169408F30096F861 /* SpringParameterInjectedByValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringParameterInjectedByValue.m; sourceTree = "<group>"; };
+		6BCBEBBB169408F30096F861 /* SpringInjectedProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringInjectedProperty.h; sourceTree = "<group>"; };
+		6BCBEBBC169408F30096F861 /* SpringPropertyInjectedByReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringPropertyInjectedByReference.h; sourceTree = "<group>"; };
+		6BCBEBBD169408F30096F861 /* SpringPropertyInjectedByReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringPropertyInjectedByReference.m; sourceTree = "<group>"; };
+		6BCBEBBE169408F30096F861 /* SpringPropertyInjectedByType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringPropertyInjectedByType.h; sourceTree = "<group>"; };
+		6BCBEBBF169408F30096F861 /* SpringPropertyInjectedByType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringPropertyInjectedByType.m; sourceTree = "<group>"; };
+		6BCBEBC0169408F30096F861 /* SpringPropertyInjectedByValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringPropertyInjectedByValue.h; sourceTree = "<group>"; };
+		6BCBEBC1169408F30096F861 /* SpringPropertyInjectedByValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringPropertyInjectedByValue.m; sourceTree = "<group>"; };
+		6BCBEBC2169408F30096F861 /* SpringPropertyInjectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringPropertyInjectionDelegate.h; sourceTree = "<group>"; };
+		6BCBEBC3169408F30096F861 /* SpringComponentDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringComponentDefinition.h; sourceTree = "<group>"; };
+		6BCBEBC4169408F30096F861 /* SpringComponentDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringComponentDefinition.m; sourceTree = "<group>"; };
+		6BCBEBC6169408F30096F861 /* SpringComponentFactory+InstanceBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SpringComponentFactory+InstanceBuilder.h"; sourceTree = "<group>"; };
+		6BCBEBC7169408F30096F861 /* SpringComponentFactory+InstanceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SpringComponentFactory+InstanceBuilder.m"; sourceTree = "<group>"; };
+		6BCBEBC8169408F30096F861 /* SpringComponentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringComponentFactory.h; sourceTree = "<group>"; };
+		6BCBEBC9169408F30096F861 /* SpringComponentFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringComponentFactory.m; sourceTree = "<group>"; };
+		6BCBEBCB169408F30096F861 /* RXMLElement+SpringXmlComponentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RXMLElement+SpringXmlComponentFactory.h"; sourceTree = "<group>"; };
+		6BCBEBCC169408F30096F861 /* RXMLElement+SpringXmlComponentFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RXMLElement+SpringXmlComponentFactory.m"; sourceTree = "<group>"; };
+		6BCBEBCD169408F30096F861 /* SpringXmlComponentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringXmlComponentFactory.h; sourceTree = "<group>"; };
+		6BCBEBCE169408F30096F861 /* SpringXmlComponentFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringXmlComponentFactory.m; sourceTree = "<group>"; };
+		6BCBEBCF169408F30096F861 /* FruitJuice.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = FruitJuice.1; sourceTree = "<group>"; };
+		6BCBEBD0169408F30096F861 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6BCBEBD1169408F30096F861 /* Spring-Objective-C-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Spring-Objective-C-Prefix.pch"; sourceTree = "<group>"; };
+		6BCBEBD3169408F30096F861 /* SpringNSURLTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringNSURLTypeConverter.h; sourceTree = "<group>"; };
+		6BCBEBD4169408F30096F861 /* SpringNSURLTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringNSURLTypeConverter.m; sourceTree = "<group>"; };
+		6BCBEBD5169408F30096F861 /* SpringPassThroughTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringPassThroughTypeConverter.h; sourceTree = "<group>"; };
+		6BCBEBD6169408F30096F861 /* SpringPassThroughTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringPassThroughTypeConverter.m; sourceTree = "<group>"; };
+		6BCBEBD7169408F30096F861 /* SpringPrimitiveTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringPrimitiveTypeConverter.h; sourceTree = "<group>"; };
+		6BCBEBD8169408F30096F861 /* SpringPrimitiveTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringPrimitiveTypeConverter.m; sourceTree = "<group>"; };
+		6BCBEBD9169408F30096F861 /* SpringTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringTypeConverter.h; sourceTree = "<group>"; };
+		6BCBEBDA169408F30096F861 /* SpringTypeConverterRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringTypeConverterRegistry.h; sourceTree = "<group>"; };
+		6BCBEBDB169408F30096F861 /* SpringTypeConverterRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringTypeConverterRegistry.m; sourceTree = "<group>"; };
+		6BCBEBDC169408F30096F861 /* SpringTypeDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringTypeDescriptor.h; sourceTree = "<group>"; };
+		6BCBEBDD169408F30096F861 /* SpringTypeDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringTypeDescriptor.m; sourceTree = "<group>"; };
+		6BCBEBDF169408F30096F861 /* NSObject+SpringReflectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SpringReflectionUtils.h"; sourceTree = "<group>"; };
+		6BCBEBE0169408F30096F861 /* NSObject+SpringReflectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SpringReflectionUtils.m"; sourceTree = "<group>"; };
+		6BCBEBE1169408F30096F861 /* SpringBundleResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringBundleResource.h; sourceTree = "<group>"; };
+		6BCBEBE2169408F30096F861 /* SpringBundleResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringBundleResource.m; sourceTree = "<group>"; };
+		6BCBEBE3169408F30096F861 /* SpringReflectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringReflectionUtils.h; sourceTree = "<group>"; };
+		6BCBEBE4169408F30096F861 /* SpringReflectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringReflectionUtils.m; sourceTree = "<group>"; };
+		6BCBEBE5169408F30096F861 /* SpringReflectiveNSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringReflectiveNSObject.h; sourceTree = "<group>"; };
+		6BCBEC47169409B60096F861 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/usr/lib/libxml2.dylib; sourceTree = DEVELOPER_DIR; };
+		6BCBEC49169409BC0096F861 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		6BD6F984168935FB00FE2774 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		6BD6F986168935FB00FE2774 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		6BD6F989168935FB00FE2774 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		6BD6F98A168935FB00FE2774 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6BD6F98B168935FB00FE2774 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6BD6F9A0168936D500FE2774 /* Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA798128D3D8B80920C549F7 /* SpringBundleResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringBundleResource.m; sourceTree = "<group>"; };
-		BA79816210851532B5508614 /* SpringPropertyInjectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringPropertyInjectionDelegate.h; sourceTree = "<group>"; };
-		BA79817B99FDC25A21F54C2D /* RXMLElement+SpringXmlComponentFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RXMLElement+SpringXmlComponentFactory.m"; sourceTree = "<group>"; };
-		BA7982C33FFA6B229739E25F /* SpringNSURLTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringNSURLTypeConverter.m; sourceTree = "<group>"; };
 		BA7982CAB715A6777CA9E5F9 /* ClassBDependsOnA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassBDependsOnA.h; sourceTree = "<group>"; };
 		BA798386B768F0D4DEECA5D5 /* MiddleAgesAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MiddleAgesAssembly.xml; sourceTree = "<group>"; };
-		BA7983996A0CA2392B6135C5 /* SpringParameterInjectedByValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringParameterInjectedByValue.h; sourceTree = "<group>"; };
 		BA7983D2CEC00D7FAF64C182 /* ClassADependsOnB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassADependsOnB.m; sourceTree = "<group>"; };
 		BA7984166797DDC512D79B49 /* Sword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sword.h; sourceTree = "<group>"; };
 		BA79847BA473D646F208D8AB /* RXMLElement+SpringXmlComponentFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RXMLElement+SpringXmlComponentFactoryTests.m"; sourceTree = "<group>"; };
-		BA7985652B561697D483540D /* SpringNSURLTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringNSURLTypeConverter.h; sourceTree = "<group>"; };
-		BA798568F0E1710A3F0DF761 /* RXMLElement+SpringXmlComponentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RXMLElement+SpringXmlComponentFactory.h"; sourceTree = "<group>"; };
 		BA798580D7B774719BB23661 /* SwordFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwordFactory.m; sourceTree = "<group>"; };
-		BA798704F1F26A3519F598F0 /* SpringInjectedParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringInjectedParameter.h; sourceTree = "<group>"; };
 		BA798754085BEEED840E5182 /* SpringXmlComponentFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringXmlComponentFactoryTests.m; sourceTree = "<group>"; };
 		BA79887AE533B0ED8FD40BFA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = README.md; sourceTree = "<group>"; };
-		BA79889370B8FF5CDA59B809 /* SpringPassThroughTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringPassThroughTypeConverter.m; sourceTree = "<group>"; };
 		BA7988E7A0B25288092F2A6D /* ClassADependsOnB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassADependsOnB.h; sourceTree = "<group>"; };
 		BA7989BC98F3A59831CD05C6 /* assembly.xsd */ = {isa = PBXFileReference; lastKnownFileType = file.xsd; path = assembly.xsd; sourceTree = "<group>"; };
 		BA7989FB1913BE74D1F93913 /* Sword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sword.m; sourceTree = "<group>"; };
-		BA798A0DC71ACCA8F4AD009E /* SpringBundleResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringBundleResource.h; sourceTree = "<group>"; };
-		BA798A2904C4FF1D6453E8C1 /* SpringReflectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringReflectionUtils.m; sourceTree = "<group>"; };
 		BA798A2E10EABDBD7912DBE5 /* ClassBDependsOnA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassBDependsOnA.m; sourceTree = "<group>"; };
 		BA798ACBBE11925AFC181DA2 /* SpringTypeConverterRegistryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringTypeConverterRegistryTests.m; sourceTree = "<group>"; };
 		BA798AE0738703EA3204887F /* ExceptionTestAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ExceptionTestAssembly.xml; sourceTree = "<group>"; };
-		BA798B1E85E01560B3EE662E /* SpringReflectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringReflectionUtils.h; sourceTree = "<group>"; };
 		BA798B67C3EBDEA3B67B0CA9 /* CircularDependenciesAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CircularDependenciesAssembly.xml; sourceTree = "<group>"; };
-		BA798B91A6CD6E636559D4BE /* SpringParameterInjectedByValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringParameterInjectedByValue.m; sourceTree = "<group>"; };
-		BA798E0A8A42E7BA09670CE3 /* SpringPassThroughTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringPassThroughTypeConverter.h; sourceTree = "<group>"; };
 		BA798E7749DFCE6A88093CCE /* Quest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quest.h; sourceTree = "<group>"; };
 		BA798FC85927B67C2C25C725 /* SwordFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwordFactory.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6B26371D168556790026E894 /* Frameworks */ = {
+		6BCBE9E61694027C0096F861 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BA403EC168DF30000A89433 /* libxml2.dylib in Frameworks */,
-				6B263725168556790026E894 /* Foundation.framework in Frameworks */,
+				6BCBE9EB1694027C0096F861 /* Cocoa.framework in Frameworks */,
+				6BCBEBE7169408F30096F861 /* OCHamcrest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BCBEB99169408990096F861 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BCBEC4A169409BC0096F861 /* libz.dylib in Frameworks */,
+				6BCBEC48169409B60096F861 /* libxml2.dylib in Frameworks */,
+				6BCBEB9D169408990096F861 /* Foundation.framework in Frameworks */,
+				6BCBEBE8169408F30096F861 /* OCHamcrest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +296,7 @@
 				6BD6F9A1168936D500FE2774 /* SenTestingKit.framework in Frameworks */,
 				6BD6F9A2168936D500FE2774 /* Cocoa.framework in Frameworks */,
 				6B46752416894EB70049404E /* OCHamcrest.framework in Frameworks */,
+				6BCBEBE6169408F30096F861 /* OCHamcrest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,11 +306,13 @@
 		6B263715168556790026E894 = {
 			isa = PBXGroup;
 			children = (
+				6BCBEC49169409BC0096F861 /* libz.dylib */,
+				6BCBEC47169409B60096F861 /* libxml2.dylib */,
+				6BCBEBA8169408F30096F861 /* External */,
+				6BCBEBB0169408F30096F861 /* Source */,
 				6BA9C839168E92B900E6AD6C /* Tests */,
-				6BA9C7EC168E92AF00E6AD6C /* Source */,
 				6B263723168556790026E894 /* Frameworks */,
 				6B263721168556790026E894 /* Products */,
-				BA7983592CC086F4C90AAC2F /* External */,
 				BA79887AE533B0ED8FD40BFA /* README.md */,
 				BA798FBD584D543429E89A75 /* schema */,
 			);
@@ -288,8 +321,9 @@
 		6B263721168556790026E894 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6B263720168556790026E894 /* Spring-Objective-C */,
 				6BD6F9A0168936D500FE2774 /* Tests.octest */,
+				6BCBE9EA1694027C0096F861 /* Spring-OSX.framework */,
+				6BCBEB9C169408990096F861 /* libSpring-iOS-StaticLib.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -305,140 +339,6 @@
 				6BD6F988168935FB00FE2774 /* Other Frameworks */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6BA403CD168DEDF600A89433 /* RaptureXML */ = {
-			isa = PBXGroup;
-			children = (
-				6BA403CE168DEDF600A89433 /* RaptureXML */,
-				6BA403CF168DEDF600A89433 /* RXMLElement.h */,
-				6BA403D0168DEDF600A89433 /* RXMLElement.m */,
-				6BA403D1168DEDF600A89433 /* Samples */,
-			);
-			path = RaptureXML;
-			sourceTree = "<group>";
-		};
-		6BA403CE168DEDF600A89433 /* RaptureXML */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RaptureXML;
-			sourceTree = "<group>";
-		};
-		6BA403D1168DEDF600A89433 /* Samples */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Samples;
-			sourceTree = "<group>";
-		};
-		6BA9C7EC168E92AF00E6AD6C /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				6BA9C7ED168E92AF00E6AD6C /* Component */,
-				6BA9C7FF168E92AF00E6AD6C /* Factory */,
-				6BA9C807168E92AF00E6AD6C /* FruitJuice.1 */,
-				6BA9C808168E92AF00E6AD6C /* main.m */,
-				6BA9C809168E92AF00E6AD6C /* Spring-Objective-C-Prefix.pch */,
-				6BA9C80A168E92AF00E6AD6C /* TypeConversion */,
-				6BA9C810168E92AF00E6AD6C /* Utils */,
-			);
-			path = Source;
-			sourceTree = "<group>";
-		};
-		6BA9C7ED168E92AF00E6AD6C /* Component */ = {
-			isa = PBXGroup;
-			children = (
-				6BA9C7EE168E92AF00E6AD6C /* SpringComponentDefinition.h */,
-				6BA9C7EF168E92AF00E6AD6C /* SpringComponentDefinition.m */,
-				6BA9C7F0168E92AF00E6AD6C /* Initializer */,
-				6BA9C7F7168E92AF00E6AD6C /* Properties */,
-			);
-			path = Component;
-			sourceTree = "<group>";
-		};
-		6BA9C7F0168E92AF00E6AD6C /* Initializer */ = {
-			isa = PBXGroup;
-			children = (
-				6BA9C7F1168E92AF00E6AD6C /* SpringComponentInitializer.h */,
-				6BA9C7F2168E92AF00E6AD6C /* SpringComponentInitializer.m */,
-				6BA9C7F3168E92AF00E6AD6C /* SpringParameterInjectedByReference.h */,
-				6BA9C7F4168E92AF00E6AD6C /* SpringParameterInjectedByReference.m */,
-				BA798704F1F26A3519F598F0 /* SpringInjectedParameter.h */,
-				BA798B91A6CD6E636559D4BE /* SpringParameterInjectedByValue.m */,
-				BA7983996A0CA2392B6135C5 /* SpringParameterInjectedByValue.h */,
-			);
-			path = Initializer;
-			sourceTree = "<group>";
-		};
-		6BA9C7F7168E92AF00E6AD6C /* Properties */ = {
-			isa = PBXGroup;
-			children = (
-				6BA9C7F8168E92AF00E6AD6C /* SpringInjectedProperty.h */,
-				6BA9C7F9168E92AF00E6AD6C /* SpringPropertyInjectedByReference.h */,
-				6BA9C7FA168E92AF00E6AD6C /* SpringPropertyInjectedByReference.m */,
-				6BA9C7FB168E92AF00E6AD6C /* SpringPropertyInjectedByValue.h */,
-				6BA9C7FC168E92AF00E6AD6C /* SpringPropertyInjectedByValue.m */,
-				6BA9C7FD168E92AF00E6AD6C /* SpringPropertyInjectedByType.h */,
-				6BA9C7FE168E92AF00E6AD6C /* SpringPropertyInjectedByType.m */,
-				BA79816210851532B5508614 /* SpringPropertyInjectionDelegate.h */,
-			);
-			path = Properties;
-			sourceTree = "<group>";
-		};
-		6BA9C7FF168E92AF00E6AD6C /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-				6BA9C800168E92AF00E6AD6C /* SpringComponentFactory+InstanceBuilder.h */,
-				6BA9C801168E92AF00E6AD6C /* SpringComponentFactory+InstanceBuilder.m */,
-				6BA9C804168E92AF00E6AD6C /* Xml */,
-				6BA9C803168E92AF00E6AD6C /* SpringComponentFactory.m */,
-				6BA9C802168E92AF00E6AD6C /* SpringComponentFactory.h */,
-			);
-			path = Factory;
-			sourceTree = "<group>";
-		};
-		6BA9C804168E92AF00E6AD6C /* Xml */ = {
-			isa = PBXGroup;
-			children = (
-				6BA9C805168E92AF00E6AD6C /* SpringXmlComponentFactory.h */,
-				6BA9C806168E92AF00E6AD6C /* SpringXmlComponentFactory.m */,
-				BA79817B99FDC25A21F54C2D /* RXMLElement+SpringXmlComponentFactory.m */,
-				BA798568F0E1710A3F0DF761 /* RXMLElement+SpringXmlComponentFactory.h */,
-			);
-			path = Xml;
-			sourceTree = "<group>";
-		};
-		6BA9C80A168E92AF00E6AD6C /* TypeConversion */ = {
-			isa = PBXGroup;
-			children = (
-				6BA9C80B168E92AF00E6AD6C /* SpringPrimitiveTypeConverter.h */,
-				6BA9C80C168E92AF00E6AD6C /* SpringPrimitiveTypeConverter.m */,
-				6BA9C80D168E92AF00E6AD6C /* SpringTypeConverter.h */,
-				6BA9C80E168E92AF00E6AD6C /* SpringTypeConverterRegistry.h */,
-				6BA9C80F168E92AF00E6AD6C /* SpringTypeConverterRegistry.m */,
-				BA798E0A8A42E7BA09670CE3 /* SpringPassThroughTypeConverter.h */,
-				BA79889370B8FF5CDA59B809 /* SpringPassThroughTypeConverter.m */,
-				BA7982C33FFA6B229739E25F /* SpringNSURLTypeConverter.m */,
-				BA7985652B561697D483540D /* SpringNSURLTypeConverter.h */,
-				6BA9C814168E92AF00E6AD6C /* SpringTypeDescriptor.h */,
-				6BA9C815168E92AF00E6AD6C /* SpringTypeDescriptor.m */,
-			);
-			path = TypeConversion;
-			sourceTree = "<group>";
-		};
-		6BA9C810168E92AF00E6AD6C /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				6BA9C811168E92AF00E6AD6C /* SpringReflectiveNSObject.h */,
-				6BA9C816168E92AF00E6AD6C /* NSObject+SpringReflectionUtils.h */,
-				6BA9C817168E92AF00E6AD6C /* NSObject+SpringReflectionUtils.m */,
-				BA798128D3D8B80920C549F7 /* SpringBundleResource.m */,
-				BA798A0DC71ACCA8F4AD009E /* SpringBundleResource.h */,
-				BA798A2904C4FF1D6453E8C1 /* SpringReflectionUtils.m */,
-				BA798B1E85E01560B3EE662E /* SpringReflectionUtils.h */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		6BA9C839168E92B900E6AD6C /* Tests */ = {
@@ -510,13 +410,141 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		6BAAF73A168B274400507B63 /* OCLogTemplate */ = {
+		6BCBEBA8169408F30096F861 /* External */ = {
 			isa = PBXGroup;
 			children = (
-				6BAAF73B168B274400507B63 /* OCLogTemplate.h */,
-				6BAAF73C168B274400507B63 /* README */,
+				6BCBEBA9169408F30096F861 /* OCHamcrest.framework */,
+				6BCBEBAA169408F30096F861 /* OCLogTemplate */,
+				6BCBEBAD169408F30096F861 /* RaptureXML */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		6BCBEBAA169408F30096F861 /* OCLogTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				6BCBEBAB169408F30096F861 /* OCLogTemplate.h */,
+				6BCBEBAC169408F30096F861 /* README */,
 			);
 			path = OCLogTemplate;
+			sourceTree = "<group>";
+		};
+		6BCBEBAD169408F30096F861 /* RaptureXML */ = {
+			isa = PBXGroup;
+			children = (
+				6BCBEBAE169408F30096F861 /* RXMLElement.h */,
+				6BCBEBAF169408F30096F861 /* RXMLElement.m */,
+			);
+			path = RaptureXML;
+			sourceTree = "<group>";
+		};
+		6BCBEBB0169408F30096F861 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				6BCBEBB1169408F30096F861 /* Component */,
+				6BCBEBC5169408F30096F861 /* Factory */,
+				6BCBEBCF169408F30096F861 /* FruitJuice.1 */,
+				6BCBEBD0169408F30096F861 /* main.m */,
+				6BCBEBD1169408F30096F861 /* Spring-Objective-C-Prefix.pch */,
+				6BCBEBD2169408F30096F861 /* TypeConversion */,
+				6BCBEBDE169408F30096F861 /* Utils */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		6BCBEBB1169408F30096F861 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				6BCBEBB2169408F30096F861 /* Initializer */,
+				6BCBEBBA169408F30096F861 /* Properties */,
+				6BCBEBC3169408F30096F861 /* SpringComponentDefinition.h */,
+				6BCBEBC4169408F30096F861 /* SpringComponentDefinition.m */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		6BCBEBB2169408F30096F861 /* Initializer */ = {
+			isa = PBXGroup;
+			children = (
+				6BCBEBB3169408F30096F861 /* SpringComponentInitializer.h */,
+				6BCBEBB4169408F30096F861 /* SpringComponentInitializer.m */,
+				6BCBEBB5169408F30096F861 /* SpringInjectedParameter.h */,
+				6BCBEBB6169408F30096F861 /* SpringParameterInjectedByReference.h */,
+				6BCBEBB7169408F30096F861 /* SpringParameterInjectedByReference.m */,
+				6BCBEBB8169408F30096F861 /* SpringParameterInjectedByValue.h */,
+				6BCBEBB9169408F30096F861 /* SpringParameterInjectedByValue.m */,
+			);
+			path = Initializer;
+			sourceTree = "<group>";
+		};
+		6BCBEBBA169408F30096F861 /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				6BCBEBBB169408F30096F861 /* SpringInjectedProperty.h */,
+				6BCBEBBC169408F30096F861 /* SpringPropertyInjectedByReference.h */,
+				6BCBEBBD169408F30096F861 /* SpringPropertyInjectedByReference.m */,
+				6BCBEBBE169408F30096F861 /* SpringPropertyInjectedByType.h */,
+				6BCBEBBF169408F30096F861 /* SpringPropertyInjectedByType.m */,
+				6BCBEBC0169408F30096F861 /* SpringPropertyInjectedByValue.h */,
+				6BCBEBC1169408F30096F861 /* SpringPropertyInjectedByValue.m */,
+				6BCBEBC2169408F30096F861 /* SpringPropertyInjectionDelegate.h */,
+			);
+			path = Properties;
+			sourceTree = "<group>";
+		};
+		6BCBEBC5169408F30096F861 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				6BCBEBC6169408F30096F861 /* SpringComponentFactory+InstanceBuilder.h */,
+				6BCBEBC7169408F30096F861 /* SpringComponentFactory+InstanceBuilder.m */,
+				6BCBEBC8169408F30096F861 /* SpringComponentFactory.h */,
+				6BCBEBC9169408F30096F861 /* SpringComponentFactory.m */,
+				6BCBEBCA169408F30096F861 /* Xml */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		6BCBEBCA169408F30096F861 /* Xml */ = {
+			isa = PBXGroup;
+			children = (
+				6BCBEBCB169408F30096F861 /* RXMLElement+SpringXmlComponentFactory.h */,
+				6BCBEBCC169408F30096F861 /* RXMLElement+SpringXmlComponentFactory.m */,
+				6BCBEBCD169408F30096F861 /* SpringXmlComponentFactory.h */,
+				6BCBEBCE169408F30096F861 /* SpringXmlComponentFactory.m */,
+			);
+			path = Xml;
+			sourceTree = "<group>";
+		};
+		6BCBEBD2169408F30096F861 /* TypeConversion */ = {
+			isa = PBXGroup;
+			children = (
+				6BCBEBD3169408F30096F861 /* SpringNSURLTypeConverter.h */,
+				6BCBEBD4169408F30096F861 /* SpringNSURLTypeConverter.m */,
+				6BCBEBD5169408F30096F861 /* SpringPassThroughTypeConverter.h */,
+				6BCBEBD6169408F30096F861 /* SpringPassThroughTypeConverter.m */,
+				6BCBEBD7169408F30096F861 /* SpringPrimitiveTypeConverter.h */,
+				6BCBEBD8169408F30096F861 /* SpringPrimitiveTypeConverter.m */,
+				6BCBEBD9169408F30096F861 /* SpringTypeConverter.h */,
+				6BCBEBDA169408F30096F861 /* SpringTypeConverterRegistry.h */,
+				6BCBEBDB169408F30096F861 /* SpringTypeConverterRegistry.m */,
+				6BCBEBDC169408F30096F861 /* SpringTypeDescriptor.h */,
+				6BCBEBDD169408F30096F861 /* SpringTypeDescriptor.m */,
+			);
+			path = TypeConversion;
+			sourceTree = "<group>";
+		};
+		6BCBEBDE169408F30096F861 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6BCBEBDF169408F30096F861 /* NSObject+SpringReflectionUtils.h */,
+				6BCBEBE0169408F30096F861 /* NSObject+SpringReflectionUtils.m */,
+				6BCBEBE1169408F30096F861 /* SpringBundleResource.h */,
+				6BCBEBE2169408F30096F861 /* SpringBundleResource.m */,
+				6BCBEBE3169408F30096F861 /* SpringReflectionUtils.h */,
+				6BCBEBE4169408F30096F861 /* SpringReflectionUtils.m */,
+				6BCBEBE5169408F30096F861 /* SpringReflectiveNSObject.h */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		6BD6F988168935FB00FE2774 /* Other Frameworks */ = {
@@ -527,15 +555,6 @@
 				6BD6F98B168935FB00FE2774 /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		BA7983592CC086F4C90AAC2F /* External */ = {
-			isa = PBXGroup;
-			children = (
-				6BA403CD168DEDF600A89433 /* RaptureXML */,
-				6BAAF73A168B274400507B63 /* OCLogTemplate */,
-			);
-			path = External;
 			sourceTree = "<group>";
 		};
 		BA7983874FECEBEFD3BFB980 /* Factory */ = {
@@ -589,23 +608,78 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		6BCBE9E71694027C0096F861 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BCBEBE9169408F30096F861 /* OCLogTemplate.h in Headers */,
+				6BCBEBEC169408F30096F861 /* RXMLElement.h in Headers */,
+				6BCBEBF0169408F30096F861 /* SpringComponentInitializer.h in Headers */,
+				6BCBEBF4169408F30096F861 /* SpringInjectedParameter.h in Headers */,
+				6BCBEBF5169408F30096F861 /* SpringParameterInjectedByReference.h in Headers */,
+				6BCBEBF9169408F30096F861 /* SpringParameterInjectedByValue.h in Headers */,
+				6BCBEBFD169408F30096F861 /* SpringInjectedProperty.h in Headers */,
+				6BCBEBFE169408F30096F861 /* SpringPropertyInjectedByReference.h in Headers */,
+				6BCBEC02169408F30096F861 /* SpringPropertyInjectedByType.h in Headers */,
+				6BCBEC06169408F30096F861 /* SpringPropertyInjectedByValue.h in Headers */,
+				6BCBEC0A169408F30096F861 /* SpringPropertyInjectionDelegate.h in Headers */,
+				6BCBEC0B169408F30096F861 /* SpringComponentDefinition.h in Headers */,
+				6BCBEC0F169408F30096F861 /* SpringComponentFactory+InstanceBuilder.h in Headers */,
+				6BCBEC13169408F30096F861 /* SpringComponentFactory.h in Headers */,
+				6BCBEC17169408F30096F861 /* RXMLElement+SpringXmlComponentFactory.h in Headers */,
+				6BCBEC1B169408F30096F861 /* SpringXmlComponentFactory.h in Headers */,
+				6BCBEC24169408F30096F861 /* Spring-Objective-C-Prefix.pch in Headers */,
+				6BCBEC25169408F30096F861 /* SpringNSURLTypeConverter.h in Headers */,
+				6BCBEC29169408F30096F861 /* SpringPassThroughTypeConverter.h in Headers */,
+				6BCBEC2D169408F30096F861 /* SpringPrimitiveTypeConverter.h in Headers */,
+				6BCBEC31169408F30096F861 /* SpringTypeConverter.h in Headers */,
+				6BCBEC32169408F30096F861 /* SpringTypeConverterRegistry.h in Headers */,
+				6BCBEC36169408F30096F861 /* SpringTypeDescriptor.h in Headers */,
+				6BCBEC3A169408F30096F861 /* NSObject+SpringReflectionUtils.h in Headers */,
+				6BCBEC3E169408F30096F861 /* SpringBundleResource.h in Headers */,
+				6BCBEC42169408F30096F861 /* SpringReflectionUtils.h in Headers */,
+				6BCBEC46169408F30096F861 /* SpringReflectiveNSObject.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		6B26371F168556790026E894 /* Spring-Objective-C */ = {
+		6BCBE9E91694027C0096F861 /* Spring-OSX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B26372F168556790026E894 /* Build configuration list for PBXNativeTarget "Spring-Objective-C" */;
+			buildConfigurationList = 6BCBE9F81694027C0096F861 /* Build configuration list for PBXNativeTarget "Spring-OSX" */;
 			buildPhases = (
-				6B26371C168556790026E894 /* Sources */,
-				6B26371D168556790026E894 /* Frameworks */,
-				6B26371E168556790026E894 /* CopyFiles */,
+				6BCBE9E51694027C0096F861 /* Sources */,
+				6BCBE9E61694027C0096F861 /* Frameworks */,
+				6BCBE9E71694027C0096F861 /* Headers */,
+				6BCBE9E81694027C0096F861 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Spring-Objective-C";
-			productName = FruitJuice;
-			productReference = 6B263720168556790026E894 /* Spring-Objective-C */;
-			productType = "com.apple.product-type.tool";
+			name = "Spring-OSX";
+			productName = "Spring-OSX";
+			productReference = 6BCBE9EA1694027C0096F861 /* Spring-OSX.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6BCBEB9B169408990096F861 /* Spring-iOS-StaticLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BCBEBA5169408990096F861 /* Build configuration list for PBXNativeTarget "Spring-iOS-StaticLib" */;
+			buildPhases = (
+				6BCBEB98169408990096F861 /* Sources */,
+				6BCBEB99169408990096F861 /* Frameworks */,
+				6BCBEB9A169408990096F861 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Spring-iOS-StaticLib";
+			productName = "Spring-iOS-StaticLib";
+			productReference = 6BCBEB9C169408990096F861 /* libSpring-iOS-StaticLib.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 		6BD6F99F168936D500FE2774 /* Tests */ = {
 			isa = PBXNativeTarget;
@@ -647,23 +721,33 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6B26371F168556790026E894 /* Spring-Objective-C */,
 				6BD6F99F168936D500FE2774 /* Tests */,
+				6BCBE9E91694027C0096F861 /* Spring-OSX */,
+				6BCBEB9B169408990096F861 /* Spring-iOS-StaticLib */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6BCBE9E81694027C0096F861 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BCBEBEB169408F30096F861 /* README in Resources */,
+				6BCBEC20169408F30096F861 /* FruitJuice.1 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6BD6F99D168936D500FE2774 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BAAF73D168B274400507B63 /* README in Resources */,
-				6BA9C82C168E92AF00E6AD6C /* FruitJuice.1 in Resources */,
 				6BA9C854168E92B900E6AD6C /* InfoPlist.strings in Resources */,
 				BA798E1AB198474D577CB312 /* MiddleAgesAssembly.xml in Resources */,
 				BA7989DF446D51BAB908086B /* CircularDependenciesAssembly.xml in Resources */,
 				BA798E0B7B2B1A387D394030 /* ExceptionTestAssembly.xml in Resources */,
+				6BCBEBEA169408F30096F861 /* README in Resources */,
+				6BCBEC1F169408F30096F861 /* FruitJuice.1 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,33 +770,59 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6B26371C168556790026E894 /* Sources */ = {
+		6BCBE9E51694027C0096F861 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BA403D2168DEDF600A89433 /* RXMLElement.m in Sources */,
-				6BA9C818168E92AF00E6AD6C /* SpringComponentDefinition.m in Sources */,
-				6BA9C81A168E92AF00E6AD6C /* SpringComponentInitializer.m in Sources */,
-				6BA9C81C168E92AF00E6AD6C /* SpringParameterInjectedByReference.m in Sources */,
-				6BA9C820168E92AF00E6AD6C /* SpringPropertyInjectedByReference.m in Sources */,
-				6BA9C822168E92AF00E6AD6C /* SpringPropertyInjectedByValue.m in Sources */,
-				6BA9C824168E92AF00E6AD6C /* SpringPropertyInjectedByType.m in Sources */,
-				6BA9C826168E92AF00E6AD6C /* SpringComponentFactory+InstanceBuilder.m in Sources */,
-				6BA9C828168E92AF00E6AD6C /* SpringComponentFactory.m in Sources */,
-				6BA9C82A168E92AF00E6AD6C /* SpringXmlComponentFactory.m in Sources */,
-				6BA9C82D168E92AF00E6AD6C /* main.m in Sources */,
-				6BA9C82F168E92AF00E6AD6C /* SpringPrimitiveTypeConverter.m in Sources */,
-				6BA9C831168E92AF00E6AD6C /* SpringTypeConverterRegistry.m in Sources */,
-				6BA9C835168E92AF00E6AD6C /* SpringTypeDescriptor.m in Sources */,
-				6BA9C837168E92AF00E6AD6C /* NSObject+SpringReflectionUtils.m in Sources */,
-				BA7985022D4ACCAC87D1036C /* RXMLElement+SpringXmlComponentFactory.m in Sources */,
-				BA798F4E7C72625BE12C342B /* SpringBundleResource.m in Sources */,
-				BA798B3BEF7AD26B60B0B382 /* SpringParameterInjectedByValue.m in Sources */,
-				BA79801ADDCBC4B8E98758A1 /* SpringPassThroughTypeConverter.m in Sources */,
-				BA798064B4D6A5B7E3C3ECF7 /* SpringReflectionUtils.m in Sources */,
-				BA798CB9555C2768611CDF23 /* SpringNSURLTypeConverter.m in Sources */,
-				BA7987F544E36F6C872324A8 /* ClassADependsOnB.m in Sources */,
-				BA79861286F94CEB448EC49C /* ClassBDependsOnA.m in Sources */,
+				6BCBEBEE169408F30096F861 /* RXMLElement.m in Sources */,
+				6BCBEBF2169408F30096F861 /* SpringComponentInitializer.m in Sources */,
+				6BCBEBF7169408F30096F861 /* SpringParameterInjectedByReference.m in Sources */,
+				6BCBEBFB169408F30096F861 /* SpringParameterInjectedByValue.m in Sources */,
+				6BCBEC00169408F30096F861 /* SpringPropertyInjectedByReference.m in Sources */,
+				6BCBEC04169408F30096F861 /* SpringPropertyInjectedByType.m in Sources */,
+				6BCBEC08169408F30096F861 /* SpringPropertyInjectedByValue.m in Sources */,
+				6BCBEC0D169408F30096F861 /* SpringComponentDefinition.m in Sources */,
+				6BCBEC11169408F30096F861 /* SpringComponentFactory+InstanceBuilder.m in Sources */,
+				6BCBEC15169408F30096F861 /* SpringComponentFactory.m in Sources */,
+				6BCBEC19169408F30096F861 /* RXMLElement+SpringXmlComponentFactory.m in Sources */,
+				6BCBEC1D169408F30096F861 /* SpringXmlComponentFactory.m in Sources */,
+				6BCBEC22169408F30096F861 /* main.m in Sources */,
+				6BCBEC27169408F30096F861 /* SpringNSURLTypeConverter.m in Sources */,
+				6BCBEC2B169408F30096F861 /* SpringPassThroughTypeConverter.m in Sources */,
+				6BCBEC2F169408F30096F861 /* SpringPrimitiveTypeConverter.m in Sources */,
+				6BCBEC34169408F30096F861 /* SpringTypeConverterRegistry.m in Sources */,
+				6BCBEC38169408F30096F861 /* SpringTypeDescriptor.m in Sources */,
+				6BCBEC3C169408F30096F861 /* NSObject+SpringReflectionUtils.m in Sources */,
+				6BCBEC40169408F30096F861 /* SpringBundleResource.m in Sources */,
+				6BCBEC44169408F30096F861 /* SpringReflectionUtils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BCBEB98169408990096F861 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BCBEBEF169408F30096F861 /* RXMLElement.m in Sources */,
+				6BCBEBF3169408F30096F861 /* SpringComponentInitializer.m in Sources */,
+				6BCBEBF8169408F30096F861 /* SpringParameterInjectedByReference.m in Sources */,
+				6BCBEBFC169408F30096F861 /* SpringParameterInjectedByValue.m in Sources */,
+				6BCBEC01169408F30096F861 /* SpringPropertyInjectedByReference.m in Sources */,
+				6BCBEC05169408F30096F861 /* SpringPropertyInjectedByType.m in Sources */,
+				6BCBEC09169408F30096F861 /* SpringPropertyInjectedByValue.m in Sources */,
+				6BCBEC0E169408F30096F861 /* SpringComponentDefinition.m in Sources */,
+				6BCBEC12169408F30096F861 /* SpringComponentFactory+InstanceBuilder.m in Sources */,
+				6BCBEC16169408F30096F861 /* SpringComponentFactory.m in Sources */,
+				6BCBEC1A169408F30096F861 /* RXMLElement+SpringXmlComponentFactory.m in Sources */,
+				6BCBEC1E169408F30096F861 /* SpringXmlComponentFactory.m in Sources */,
+				6BCBEC23169408F30096F861 /* main.m in Sources */,
+				6BCBEC28169408F30096F861 /* SpringNSURLTypeConverter.m in Sources */,
+				6BCBEC2C169408F30096F861 /* SpringPassThroughTypeConverter.m in Sources */,
+				6BCBEC30169408F30096F861 /* SpringPrimitiveTypeConverter.m in Sources */,
+				6BCBEC35169408F30096F861 /* SpringTypeConverterRegistry.m in Sources */,
+				6BCBEC39169408F30096F861 /* SpringTypeDescriptor.m in Sources */,
+				6BCBEC3D169408F30096F861 /* NSObject+SpringReflectionUtils.m in Sources */,
+				6BCBEC41169408F30096F861 /* SpringBundleResource.m in Sources */,
+				6BCBEC45169408F30096F861 /* SpringReflectionUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -720,21 +830,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BA403D3168DEDF600A89433 /* RXMLElement.m in Sources */,
-				6BA9C819168E92AF00E6AD6C /* SpringComponentDefinition.m in Sources */,
-				6BA9C81B168E92AF00E6AD6C /* SpringComponentInitializer.m in Sources */,
-				6BA9C81D168E92AF00E6AD6C /* SpringParameterInjectedByReference.m in Sources */,
-				6BA9C821168E92AF00E6AD6C /* SpringPropertyInjectedByReference.m in Sources */,
-				6BA9C823168E92AF00E6AD6C /* SpringPropertyInjectedByValue.m in Sources */,
-				6BA9C825168E92AF00E6AD6C /* SpringPropertyInjectedByType.m in Sources */,
-				6BA9C827168E92AF00E6AD6C /* SpringComponentFactory+InstanceBuilder.m in Sources */,
-				6BA9C829168E92AF00E6AD6C /* SpringComponentFactory.m in Sources */,
-				6BA9C82B168E92AF00E6AD6C /* SpringXmlComponentFactory.m in Sources */,
-				6BA9C82E168E92AF00E6AD6C /* main.m in Sources */,
-				6BA9C830168E92AF00E6AD6C /* SpringPrimitiveTypeConverter.m in Sources */,
-				6BA9C832168E92AF00E6AD6C /* SpringTypeConverterRegistry.m in Sources */,
-				6BA9C836168E92AF00E6AD6C /* SpringTypeDescriptor.m in Sources */,
-				6BA9C838168E92AF00E6AD6C /* NSObject+SpringReflectionUtils.m in Sources */,
 				6BA9C853168E92B900E6AD6C /* SpringComponentDefinitionTests.m in Sources */,
 				6BA9C855168E92B900E6AD6C /* SpringComponentDefinition+InstanceBuilderTests.m in Sources */,
 				6BA9C856168E92B900E6AD6C /* SpringComponentFactoryTests.m in Sources */,
@@ -745,18 +840,33 @@
 				6BA9C85D168E92B900E6AD6C /* SpringPrimitiveTypeConverterTests.m in Sources */,
 				6BA9C85F168E92B900E6AD6C /* NSObject+SpringReflectionUtilsTests.m in Sources */,
 				BA7989CF067CB29C461CC402 /* SpringXmlComponentFactoryTests.m in Sources */,
-				BA79811CEE346B32C64200F3 /* RXMLElement+SpringXmlComponentFactory.m in Sources */,
 				BA798F582042629F5486FB72 /* RXMLElement+SpringXmlComponentFactoryTests.m in Sources */,
-				BA7986FDD3BDA82E7C838AD1 /* SpringBundleResource.m in Sources */,
 				BA798A741A5809BFBCDEFC10 /* SpringTypeConverterRegistryTests.m in Sources */,
-				BA7985ED08D040AB08963218 /* SpringParameterInjectedByValue.m in Sources */,
-				BA798EACA6FC433F0F8A36F4 /* SpringPassThroughTypeConverter.m in Sources */,
-				BA7983BF36A84FD4B9B30E31 /* SpringReflectionUtils.m in Sources */,
-				BA7987FD5DD52BE5F26EF347 /* SpringNSURLTypeConverter.m in Sources */,
 				BA79859119F90487480416FC /* ClassADependsOnB.m in Sources */,
 				BA798BB70C1A71EDF5DABE5F /* ClassBDependsOnA.m in Sources */,
 				BA798E81CDB3C2DC9307EF0E /* SwordFactory.m in Sources */,
 				BA798B7F6AA60453902B2418 /* Sword.m in Sources */,
+				6BCBEBED169408F30096F861 /* RXMLElement.m in Sources */,
+				6BCBEBF1169408F30096F861 /* SpringComponentInitializer.m in Sources */,
+				6BCBEBF6169408F30096F861 /* SpringParameterInjectedByReference.m in Sources */,
+				6BCBEBFA169408F30096F861 /* SpringParameterInjectedByValue.m in Sources */,
+				6BCBEBFF169408F30096F861 /* SpringPropertyInjectedByReference.m in Sources */,
+				6BCBEC03169408F30096F861 /* SpringPropertyInjectedByType.m in Sources */,
+				6BCBEC07169408F30096F861 /* SpringPropertyInjectedByValue.m in Sources */,
+				6BCBEC0C169408F30096F861 /* SpringComponentDefinition.m in Sources */,
+				6BCBEC10169408F30096F861 /* SpringComponentFactory+InstanceBuilder.m in Sources */,
+				6BCBEC14169408F30096F861 /* SpringComponentFactory.m in Sources */,
+				6BCBEC18169408F30096F861 /* RXMLElement+SpringXmlComponentFactory.m in Sources */,
+				6BCBEC1C169408F30096F861 /* SpringXmlComponentFactory.m in Sources */,
+				6BCBEC21169408F30096F861 /* main.m in Sources */,
+				6BCBEC26169408F30096F861 /* SpringNSURLTypeConverter.m in Sources */,
+				6BCBEC2A169408F30096F861 /* SpringPassThroughTypeConverter.m in Sources */,
+				6BCBEC2E169408F30096F861 /* SpringPrimitiveTypeConverter.m in Sources */,
+				6BCBEC33169408F30096F861 /* SpringTypeConverterRegistry.m in Sources */,
+				6BCBEC37169408F30096F861 /* SpringTypeDescriptor.m in Sources */,
+				6BCBEC3B169408F30096F861 /* NSObject+SpringReflectionUtils.m in Sources */,
+				6BCBEC3F169408F30096F861 /* SpringBundleResource.m in Sources */,
+				6BCBEC43169408F30096F861 /* SpringReflectionUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,23 +937,98 @@
 			};
 			name = Release;
 		};
-		6B263730168556790026E894 /* Debug */ = {
+		6BCBE9F61694027C0096F861 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+					"\"$(SRCROOT)/External\"",
+				);
+				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Source/Spring-Objective-C-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
-				PRODUCT_NAME = "Spring-Objective-C";
+				INFOPLIST_FILE = "Info-OSX.plist";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-lz",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
 		};
-		6B263731168556790026E894 /* Release */ = {
+		6BCBE9F71694027C0096F861 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+					"\"$(SRCROOT)/External\"",
+				);
+				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Source/Spring-Objective-C-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
-				PRODUCT_NAME = "Spring-Objective-C";
+				INFOPLIST_FILE = "Info-OSX.plist";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-lz",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		6BCBEBA6169408990096F861 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Spring_iOS_StaticLib.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Source/Spring-Objective-C-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s";
+			};
+			name = Debug;
+		};
+		6BCBEBA7169408990096F861 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Spring_iOS_StaticLib.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Source/Spring-Objective-C-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -899,14 +1084,21 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B26372F168556790026E894 /* Build configuration list for PBXNativeTarget "Spring-Objective-C" */ = {
+		6BCBE9F81694027C0096F861 /* Build configuration list for PBXNativeTarget "Spring-OSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6B263730168556790026E894 /* Debug */,
-				6B263731168556790026E894 /* Release */,
+				6BCBE9F61694027C0096F861 /* Debug */,
+				6BCBE9F71694027C0096F861 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+		};
+		6BCBEBA5169408990096F861 /* Build configuration list for PBXNativeTarget "Spring-iOS-StaticLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BCBEBA6169408990096F861 /* Debug */,
+				6BCBEBA7169408990096F861 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		6BD6F9AD168936D500FE2774 /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;

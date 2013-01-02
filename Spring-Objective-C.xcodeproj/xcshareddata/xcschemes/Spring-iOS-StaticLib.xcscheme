@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6B26371F168556790026E894"
-               BuildableName = "Spring-Objective-C"
-               BlueprintName = "Spring-Objective-C"
+               BlueprintIdentifier = "6BCBEB9B169408990096F861"
+               BuildableName = "libSpring-iOS-StaticLib.a"
+               BlueprintName = "Spring-iOS-StaticLib"
                ReferencedContainer = "container:Spring-Objective-C.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,15 +29,6 @@
       buildConfiguration = "Debug">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6B26371F168556790026E894"
-            BuildableName = "Spring-Objective-C"
-            BlueprintName = "Spring-Objective-C"
-            ReferencedContainer = "container:Spring-Objective-C.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -48,15 +39,6 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6B26371F168556790026E894"
-            BuildableName = "Spring-Objective-C"
-            BlueprintName = "Spring-Objective-C"
-            ReferencedContainer = "container:Spring-Objective-C.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -66,15 +48,6 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6B26371F168556790026E894"
-            BuildableName = "Spring-Objective-C"
-            BlueprintName = "Spring-Objective-C"
-            ReferencedContainer = "container:Spring-Objective-C.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
