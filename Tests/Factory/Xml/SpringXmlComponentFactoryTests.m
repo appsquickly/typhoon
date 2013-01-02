@@ -120,11 +120,11 @@
     }
 }
 
-- (void)test_returns_component_from_factory_component
-{
-    Sword* sword = [_componentFactory componentForKey:@"blueSword"];
-    assertThat([sword description], equalTo(@"A bright blue sword with orange pom-poms at the hilt."));
-
-}
+//- (void)test_returns_component_from_factory_component
+//{
+//    Sword* sword = [_componentFactory componentForKey:@"blueSword"];
+//    assertThat([sword description], equalTo(@"A bright blue sword with orange pom-poms at the hilt."));
+//
+//}
 
 @end
