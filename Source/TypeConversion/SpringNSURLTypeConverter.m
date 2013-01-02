@@ -1,14 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-//  AppsQuick.ly
-//  Copyright 2012 AppsQuick.ly
+//  JASPER BLUES
+//  Copyright 2012 - 2013 Jasper Blues
 //  All Rights Reserved.
 //
-//  NOTICE: AppsQuick.ly permits you to use, modify, and distribute this file
+//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
-
 
 
 #import "SpringNSURLTypeConverter.h"
