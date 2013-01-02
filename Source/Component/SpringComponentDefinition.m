@@ -11,32 +11,42 @@
 
 
 
+#import <Foundation/Foundation.h>
 #import "SpringComponentDefinition.h"
 #import "SpringPropertyInjectedByType.h"
 #import "SpringPropertyInjectedByReference.h"
 #import "SpringPropertyInjectedByValue.h"
+#import "SpringComponentInitializer.h"
 
 
 @implementation SpringComponentDefinition
 
+
 /* ============================================================ Initializers ============================================================ */
-- (id)initWithClazz:(Class)clazz key:(NSString*)key
+- (id)initWithClazz:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent
 {
     self = [super init];
     if (self)
     {
         _type = clazz;
-        _key = [key stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        _key = [key copy];
+        _factoryComponent = [factoryComponent copy];
         _injectedProperties = [[NSMutableSet alloc] init];
         [self validateRequiredParametersAreSet];
     }
     return self;
 }
 
+- (id)initWithClazz:(Class)clazz key:(NSString*)key
+{
+    return [self initWithClazz:clazz key:key factoryComponent:nil];
+}
+
 - (id)init
 {
-    return [self initWithClazz:nil key:nil];
+    return [self initWithClazz:nil key:nil factoryComponent:nil];
 }
+
 
 /* ========================================================== Interface Methods ========================================================= */
 - (void)injectProperty:(NSString*)propertyName
@@ -77,6 +87,11 @@
     return [_injectedProperties copy];
 }
 
+- (void)setInitializer:(SpringComponentInitializer*)initializer
+{
+    _initializer = initializer;
+    [_initializer setComponentDefinition:self];
+}
 
 /* ============================================================ Utility Methods ========================================================= */
 - (NSString*)description
@@ -91,6 +106,11 @@
     return description;
 }
 
+- (void)dealloc
+{
+    //Null out the __unsafe_unretained property on initializer
+    [_initializer setComponentDefinition:nil];
+}
 
 /* ============================================================ Private Methods ========================================================= */
 - (void)validateRequiredParametersAreSet

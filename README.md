@@ -127,6 +127,22 @@ DI. DI is just a design pattern and you can do it without a container. Having on
         </initializer>
     </component>
 
+    <component class="SwordFactory" key="swordFactory">
+        <description>
+            This is a factory component.
+        </description>
+    </component>
+
+    <component class="Sword" key="blueSword" factory-component="swordFactory">
+        <description>
+            This is a component that has been manufactured from a factory component.
+        </description>
+        <initializer selector="swordWithSpecification:">
+            <argument parameterName="specification" value="blue" required-class="NSString"/>
+        </initializer>
+    </component>
+
+
 </assembly>
 ```
 

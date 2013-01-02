@@ -32,7 +32,12 @@
 - (id)buildInstanceWithDefinition:(SpringComponentDefinition*)definition
 {
     id <SpringReflectiveNSObject> instance;
-    if (definition.initializer && definition.initializer.isClassMethod)
+
+    if (definition.factoryComponent)
+    {
+         instance = [self componentForKey:definition.factoryComponent];
+    }
+    else if (definition.initializer && definition.initializer.isClassMethod)
     {
         instance = [self invokeInitializerOn:definition.type withDefinition:definition];
     }
@@ -89,7 +94,7 @@
         }
     }
     [invocation invoke];
-    id <NSObject> returnValue = definition.initializer.isClassMethod ? nil : instanceOrClass;
+    id <NSObject> returnValue = definition.initializer.isClassMethod || definition.factoryComponent ? nil : instanceOrClass;
     [invocation getReturnValue:&returnValue];
     return returnValue;
 }

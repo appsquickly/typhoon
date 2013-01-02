@@ -59,8 +59,7 @@
 
 - (void)test_factory_method_injection_raises_exception_if_required_class_not_set
 {
-    SpringXmlComponentFactory
-            * factory = [[SpringXmlComponentFactory alloc] initWithConfigFileName:@"ExceptionTestAssembly.xml"];
+    SpringXmlComponentFactory* factory = [[SpringXmlComponentFactory alloc] initWithConfigFileName:@"ExceptionTestAssembly.xml"];
     @try
     {
         NSURL* url = [factory componentForKey:@"anotherServiceUrl"];
@@ -119,7 +118,8 @@
     }
     @catch (NSException* e)
     {
-        assertThat([e description], equalTo(@"Class method 'stringWithBlingBlaBla' not found on 'NSString'"));
+        assertThat([e description], equalTo(
+            @"Class method 'stringWithBlingBlaBla' not found on 'NSString'. Did you include the required ':' characters to signify arguments?"));
     }
 }
 

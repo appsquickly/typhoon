@@ -14,6 +14,7 @@
 
 
 #import <Foundation/Foundation.h>
+@class SpringComponentDefinition;
 
 typedef enum
 {
@@ -26,6 +27,8 @@ typedef enum
 {
     NSMutableArray* _injectedParameters;
     NSArray* _parameterNames;
+    __unsafe_unretained SpringComponentDefinition* _definition;
+    SpringComponentInitializerIsClassMethod _isClassMethodStrategy;
 }
 
 @property(nonatomic, readonly) SEL selector;
@@ -46,5 +49,7 @@ typedef enum
 - (NSArray*)injectedParameters;
 
 - (NSInvocation*)asInvocationFor:(id)classOrInstance;
+
+- (void)setComponentDefinition:(SpringComponentDefinition*)definition;
 
 @end

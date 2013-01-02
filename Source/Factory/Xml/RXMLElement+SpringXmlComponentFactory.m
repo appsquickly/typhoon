@@ -30,7 +30,8 @@
         [NSException raise:NSInvalidArgumentException format:@"Class '%@' can't be resolved.", [self attribute:@"class"]];
     }
     NSString* key = [self createOrRetrieveIdComponentId];
-    SpringComponentDefinition* definition = [[SpringComponentDefinition alloc] initWithClazz:clazz key:key];
+    NSString* factory = [self attributeOrNilIfEmpty:@"factory-component"];
+    SpringComponentDefinition* definition = [[SpringComponentDefinition alloc] initWithClazz:clazz key:key factoryComponent:factory];
 
     [definition setBeforePropertyInjection:NSSelectorFromString([self attribute:@"before-property-injection"])];
     [definition setAfterPropertyInjection:NSSelectorFromString([self attribute:@"after-property-injection"])];
@@ -198,6 +199,16 @@
     {
         return SpringComponentInitializerIsClassMethodGuess;
     }
+}
+
+- (NSString*)attributeOrNilIfEmpty:(NSString*)attributeName
+{
+    NSString* attribute = [self attribute:attributeName];
+    if ([attribute length] > 0)
+    {
+        return attribute;
+    }
+    return nil;
 }
 
 @end

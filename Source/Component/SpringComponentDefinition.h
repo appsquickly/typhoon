@@ -30,6 +30,7 @@ typedef enum
 
 @property(nonatomic, readonly) Class type;
 @property(nonatomic, strong, readonly) NSString* key;
+@property(nonatomic, strong, readonly) NSString* factoryComponent;
 @property(nonatomic, strong) SpringComponentInitializer* initializer;
 @property(nonatomic) SEL beforePropertyInjection;
 @property(nonatomic) SEL afterPropertyInjection;
@@ -38,6 +39,8 @@ typedef enum
 
 
 - (id)initWithClazz:(Class)clazz key:(NSString*)key;
+
+- (id)initWithClazz:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent;
 
 - (void)injectProperty:(NSString*)propertyName;
 

@@ -15,6 +15,7 @@
 #import "SpringParameterInjectedByReference.h"
 #import "NSObject+SpringReflectionUtils.h"
 #import "SpringParameterInjectedByValue.h"
+#import "SpringComponentDefinition.h"
 
 
 @implementation SpringComponentInitializer
@@ -32,7 +33,7 @@
     if (self)
     {
         _selector = initializer;
-        _isClassMethod = [self resolveIsClassMethod:isClassMethod];
+        _isClassMethodStrategy = isClassMethod;
         _parameterNames = [self parameterNamesForSelector:_selector];
         _injectedParameters = [[NSMutableArray alloc] init];
     }
@@ -85,13 +86,14 @@
 {
     if (![classOrInstance respondsToSelector:_selector])
     {
-        [NSException raise:NSInvalidArgumentException format:@"Class method '%@' not found on '%@'", NSStringFromSelector(_selector),
-                                                             _isClassMethod ? NSStringFromClass(classOrInstance) :
-                                                                     NSStringFromClass([classOrInstance class])];
+        [NSException raise:NSInvalidArgumentException
+                    format:@"Class method '%@' not found on '%@'. Did you include the required ':' characters to signify arguments?",
+                           NSStringFromSelector(_selector),
+                           self.isClassMethod ? NSStringFromClass(classOrInstance) : NSStringFromClass([classOrInstance class])];
     }
 
     NSInvocation* invocation;
-    if (_isClassMethod)
+    if (self.isClassMethod)
     {
         invocation = [NSInvocation invocationWithMethodSignature:[classOrInstance methodSignatureForSelector:_selector]];
     }
@@ -104,11 +106,22 @@
     return invocation;
 }
 
+- (void)setComponentDefinition:(SpringComponentDefinition*)definition
+{
+    _definition = definition;
+    [self resolveIsClassMethod];
+}
+
+- (BOOL)isClassMethod
+{
+    return [self resolveIsClassMethod];
+}
+
 /* ============================================================ Utility Methods ========================================================= */
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"Initializer: %@, isFactoryMethod? %@", NSStringFromSelector(_selector),
-                                      _isClassMethod ? @"YES" : @"NO"];
+                                      self.isClassMethod ? @"YES" : @"NO"];
 }
 
 - (void)dealloc
@@ -136,9 +149,21 @@
     return parameterIndex;
 }
 
-- (BOOL)resolveIsClassMethod:(SpringComponentInitializerIsClassMethod)isClassMethod
+- (BOOL)resolveIsClassMethod
 {
-    switch (isClassMethod)
+    if (_definition.factoryComponent)
+    {
+        if (_isClassMethodStrategy == YES)
+        {
+            [NSException raise:NSInvalidArgumentException format:@"'is-class-method' can't be 'YES' when factory-component is used!"];
+        }
+        else
+        {
+            return NO;
+        }
+    }
+
+    switch (_isClassMethodStrategy)
     {
         case SpringComponentInitializerIsClassMethodNo:
             return NO;
