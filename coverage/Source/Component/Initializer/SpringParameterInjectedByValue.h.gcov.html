@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-01-01</td>
+            <td class="headerValue">2013-01-02</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -59,7 +59,7 @@
 <span class="lineNum">       1 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">       2 </span>            : //
 <span class="lineNum">       3 </span>            : //  JASPER BLUES
-<span class="lineNum">       4 </span>            : //  Copyright 2012 Jasper Blues
+<span class="lineNum">       4 </span>            : //  Copyright 2012 - 2013 Jasper Blues
 <span class="lineNum">       5 </span>            : //  All Rights Reserved.
 <span class="lineNum">       6 </span>            : //
 <span class="lineNum">       7 </span>            : //  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
@@ -68,32 +68,34 @@
 <span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            : 
-<span class="lineNum">      13 </span>            : #import &lt;Foundation/Foundation.h&gt;
-<span class="lineNum">      14 </span>            : #import &quot;SpringInjectedParameter.h&quot;
-<span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span>            : @class SpringTypeDescriptor;
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span>            : #import &lt;Foundation/Foundation.h&gt;
+<span class="lineNum">      16 </span>            : #import &quot;SpringInjectedParameter.h&quot;
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span>            : @interface SpringParameterInjectedByValue : NSObject &lt;SpringInjectedParameter&gt;
-<span class="lineNum">      20 </span>            : {
-<span class="lineNum">      21 </span>            :     __unsafe_unretained SpringComponentInitializer* _initializer;
-<span class="lineNum">      22 </span>            : }
-<span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineCov">          3 : @property(nonatomic, readonly) NSUInteger index;</span>
-<span class="lineNum">      25 </span>            : @property(nonatomic, readonly) SpringParameterInjectionType type;
-<span class="lineNum">      26 </span><span class="lineCov">          3 : @property(nonatomic, strong, readonly) NSString* value;</span>
-<span class="lineNum">      27 </span><span class="lineCov">          6 : @property(nonatomic, strong, readonly) id classOrProtocol;</span>
-<span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span>            : - (id)initWithIndex:(NSUInteger)index value:(NSString*)value classOrProtocol:(id)classOrProtocol;
+<span class="lineNum">      18 </span>            : @class SpringTypeDescriptor;
+<span class="lineNum">      19 </span>            : 
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span>            : @interface SpringParameterInjectedByValue : NSObject &lt;SpringInjectedParameter&gt;
+<span class="lineNum">      22 </span>            : {
+<span class="lineNum">      23 </span>            :     __unsafe_unretained SpringComponentInitializer* _initializer;
+<span class="lineNum">      24 </span>            : }
+<span class="lineNum">      25 </span>            : 
+<span class="lineNum">      26 </span><span class="lineCov">          3 : @property(nonatomic, readonly) NSUInteger index;</span>
+<span class="lineNum">      27 </span>            : @property(nonatomic, readonly) SpringParameterInjectionType type;
+<span class="lineNum">      28 </span><span class="lineCov">          3 : @property(nonatomic, strong, readonly) NSString* value;</span>
+<span class="lineNum">      29 </span><span class="lineCov">          6 : @property(nonatomic, strong, readonly) id classOrProtocol;</span>
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span>            : /**
-<span class="lineNum">      32 </span>            : * If the parameter is a primitive type, resolves the type descriptor. Throws an exception if either:
-<span class="lineNum">      33 </span>            : * - classOrProtocol is set
-<span class="lineNum">      34 </span>            : * - The parameter is an object type. (If the parameter is an object type, classOrProtocol must be set explicitly).
-<span class="lineNum">      35 </span>            : */
-<span class="lineNum">      36 </span>            : - (SpringTypeDescriptor*)resolveTypeWith:(id)classOrInstance;
-<span class="lineNum">      37 </span>            : 
-<span class="lineNum">      38 </span>            : @end
+<span class="lineNum">      31 </span>            : - (id)initWithIndex:(NSUInteger)index value:(NSString*)value classOrProtocol:(id)classOrProtocol;
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span>            : /**
+<span class="lineNum">      34 </span>            : * If the parameter is a primitive type, resolves the type descriptor. Throws an exception if either:
+<span class="lineNum">      35 </span>            : * - classOrProtocol is set
+<span class="lineNum">      36 </span>            : * - The parameter is an object type. (If the parameter is an object type, classOrProtocol must be set explicitly).
+<span class="lineNum">      37 </span>            : */
+<span class="lineNum">      38 </span>            : - (SpringTypeDescriptor*)resolveTypeWith:(id)classOrInstance;
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span>            : @end
 </pre>
       </td>
     </tr>
