@@ -221,6 +221,6 @@ coming days I'll be writing more tests and documentation.
 
 Apache License, Version 2.0, January 2004, http://www.apache.org/licenses/
 
-* © 2012 jasper blues
+* © 2012 - 2013 jasper blues
 
 
