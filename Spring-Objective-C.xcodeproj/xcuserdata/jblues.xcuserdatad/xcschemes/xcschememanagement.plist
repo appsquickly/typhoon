@@ -12,6 +12,11 @@
 		<key>Spring-iOS-StaticLib.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Spring-iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
 		<key>Tests.xcscheme_^#shared#^_</key>
@@ -23,6 +28,26 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>6B26371F168556790026E894</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BA6C9ED169431FE0062DA5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BA6CA00169434760062DA5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BA6CA13169434A50062DA5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BA6CAF3169435D60062DA5D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -48,6 +73,11 @@
 			<true/>
 		</dict>
 		<key>6BCBEB9B169408990096F861</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BCBEC4B16940A9F0096F861</key>
 		<dict>
 			<key>primary</key>
 			<true/>

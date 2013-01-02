@@ -19,6 +19,8 @@
     --make.dirs,
     --clean,
     --make.dirs,
+    --build.ios.universal,
+    --build.osx,
     --unit.tests.build,
     --assemble.coverage.data,
     --coverage.report,
@@ -62,13 +64,6 @@
         <fail if="tests.failed" message="Tests failed. Report is at ${tests.report}"/>
         <fail if="tests.exception" message="Tests failed. Report is at ${tests.report}"/>
     </target>
-
-    <target name="--framework.build">
-        <exec executable="xcodebuild" failonerror="true">
-            <arg line="-target ${application.target.name}"/>
-        </exec>
-    </target>
-
 
     <target name="--assemble.coverage.data">
         <mkdir dir="${temp.dir}/coverage-data"/>
@@ -129,8 +124,8 @@
         <delete file="${basedir}/docset-installed.txt"/>
 
         <pathconvert pathsep=" " property="doc.files.list" refid="headers">
-	    <map from='${source.main.dir}' to='"${source.main.dir}"' />
-	</pathconvert>
+            <map from='${source.main.dir}' to='"${source.main.dir}"'/>
+        </pathconvert>
         <echo message="Documenting: ${doc.files.list}"/>
 
         <exec executable="appledoc">
@@ -173,6 +168,48 @@
         </echo>
         <chmod perm="+x" file="${temp.dir}/publish-site.sh"/>
         <exec executable="${temp.dir}/publish-site.sh" failonerror="true" failifexecutionfails="true"/>
+    </target>
+
+    <target name="--build.ios.universal">
+        <delete dir="${target.dir}"/>
+        <exec executable="${xcodebuild}" failonerror="true">
+            <arg line="CONFIGURATION_BUILD_DIR='${temp.dir}/simulator' -sdk iphonesimulator${module.sdk.version} -arch i386 -target Spring-iOS-StaticLib"/>
+        </exec>
+        <exec executable="${xcodebuild}" failonerror="true">
+            <arg line="CONFIGURATION_BUILD_DIR='${temp.dir}/device' -sdk iphoneos${module.sdk.version} -arch armv7 -target Spring-iOS-StaticLib"/>
+        </exec>
+
+        <echo file="${temp.dir}/lipo.sh">
+            #!/bin/sh
+            cd ${basedir}
+
+            # Create framework directory structure.
+            mkdir -p "${target.dir}/ios-universal/Headers" &amp;&amp;
+
+            # Generate universal binary from desktop, device, and simulator builds.
+            lipo "${temp.dir}/simulator/libSpring-iOS-StaticLib.a" "${temp.dir}/device/libSpring-iOS-StaticLib.a" -create -output "${target.dir}/ios-universal/libSpring-iOS.a"
+
+
+        </echo>
+        <chmod perm="+x" file="${temp.dir}/lipo.sh"/>
+        <exec executable="${temp.dir}/lipo.sh" failonerror="true" failifexecutionfails="true"/>
+
+        <copy todir="${target.dir}/ios-universal/Headers" flatten="true">
+            <fileset dir="${source.main.dir}">
+                <include name="**/*.h"/>
+            </fileset>
+        </copy>
+
+    </target>
+
+    <target name="--build.osx">
+        <exec executable="xcodebuild" failonerror="true">
+            <arg line="CONFIGURATION_BUILD_DIR='${temp.dir}/osx' -target Spring-OSX"/>
+        </exec>
+
+        <copy todir="${target.dir}/osx">
+            <fileset dir="${temp.dir}/osx/Spring-OSX.framework"/>
+        </copy>
     </target>
 
 
