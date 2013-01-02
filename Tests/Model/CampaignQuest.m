@@ -11,6 +11,7 @@
 
 
 #import "CampaignQuest.h"
+#import "SpringLogTemplate.h"
 
 
 @implementation CampaignQuest

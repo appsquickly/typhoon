@@ -13,6 +13,7 @@
 #import "SpringTypeDescriptor.h"
 #import "Knight.h"
 #import "NSObject+SpringReflectionUtils.h"
+#import "SpringLogTemplate.h"
 
 typedef struct
 {

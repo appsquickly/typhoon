@@ -11,6 +11,7 @@
 
 
 #import "CavalryMan.h"
+#import "SpringLogTemplate.h"
 
 
 @implementation CavalryMan

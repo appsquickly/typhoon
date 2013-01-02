@@ -11,9 +11,10 @@
 
 
 
+
 #import "SwordFactory.h"
 #import "Sword.h"
-
+#import "SpringLogTemplate.h"
 
 @implementation SwordFactory
 

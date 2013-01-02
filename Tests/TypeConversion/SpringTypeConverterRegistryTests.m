@@ -15,6 +15,7 @@
 #import "NSObject+SpringReflectionUtils.h"
 #import "SpringTypeConverter.h"
 #import "SpringNSURLTypeConverter.h"
+#import "SpringLogTemplate.h"
 
 
 @interface SpringTypeConverterRegistryTests : SenTestCase

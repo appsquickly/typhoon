@@ -17,6 +17,7 @@
 #import "Knight.h"
 #import "CampaignQuest.h"
 #import "SpringComponentFactory+InstanceBuilder.h"
+#import "SpringLogTemplate.h"
 
 
 @interface ComponentDefinition_InstanceBuilderTests : SenTestCase

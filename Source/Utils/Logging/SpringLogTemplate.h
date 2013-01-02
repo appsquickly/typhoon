@@ -15,6 +15,6 @@
 #	define LOGGING_ENABLED		1
 #endif
 
-#define LOG_FORMAT_WITH_LOCATION(fmt, lvl, ...) NSLog((@"%s[Line %d] [%@] " fmt), __PRETTY_FUNCTION__, __LINE__, lvl, ##__VA_ARGS__)
-#define SPRING_LOG_FORMAT(fmt, lvl, ...) LOG_FORMAT_WITH_LOCATION(fmt, lvl, ##__VA_ARGS__)
+#define SPRING_LOG_FORMAT_WITH_LOCATION(fmt, lvl, ...) NSLog((@"%s[Line %d] [%@] " fmt), __PRETTY_FUNCTION__, __LINE__, lvl, ##__VA_ARGS__)
+#define SPRING_LOG_FORMAT(fmt, lvl, ...) SPRING_LOG_FORMAT_WITH_LOCATION(fmt, lvl, ##__VA_ARGS__)
 #define SpringDebug(fmt, ...) SPRING_LOG_FORMAT(fmt, @"DEBUG", ##__VA_ARGS__)

@@ -17,6 +17,7 @@
 #import "CampaignQuest.h"
 #import "CavalryMan.h"
 #import "Champion.h"
+#import "SpringLogTemplate.h"
 
 
 @interface SpringComponentFactoryTests : SenTestCase

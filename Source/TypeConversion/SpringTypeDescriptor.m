@@ -13,6 +13,7 @@
 
 #import <objc/runtime.h>
 #import "SpringTypeDescriptor.h"
+#import "SpringLogTemplate.h"
 
 @implementation NSDictionary (DeucePrimitiveType)
 

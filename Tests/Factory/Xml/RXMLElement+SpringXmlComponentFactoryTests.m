@@ -13,7 +13,7 @@
 #import "SpringBundleResource.h"
 #import "SpringComponentDefinition.h"
 #import "SpringRXMLElement+SpringXmlComponentFactory.h"
-
+#import "SpringLogTemplate.h"
 
 @interface RXMLElement_SpringXmlComponentFactoryTests : SenTestCase
 @end

@@ -8,4 +8,3 @@
 
 #define HC_SHORTHAND
 #import <OCHamcrest/OCHamcrest.h>
-#import "SpringLogTemplate.h"

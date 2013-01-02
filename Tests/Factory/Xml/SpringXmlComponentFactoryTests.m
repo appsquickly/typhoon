@@ -15,7 +15,7 @@
 #import "ClassADependsOnB.h"
 #import "ClassBDependsOnA.h"
 #import "Sword.h"
-
+#import "SpringLogTemplate.h"
 
 @interface SpringXmlComponentFactoryTests : SenTestCase
 @end

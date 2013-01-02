@@ -12,6 +12,7 @@
 
 #import "SpringPrimitiveTypeConverter.h"
 #import "SpringTypeDescriptor.h"
+#import "SpringLogTemplate.h"
 
 
 @implementation SpringPrimitiveTypeConverter
