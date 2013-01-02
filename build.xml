@@ -207,7 +207,7 @@
             <arg line="CONFIGURATION_BUILD_DIR='${temp.dir}/osx' -target Spring-OSX"/>
         </exec>
 
-        <copy todir="${target.dir}/osx">
+        <copy todir="${target.dir}/osx/Spring-OSX.framework">
             <fileset dir="${temp.dir}/osx/Spring-OSX.framework"/>
         </copy>
     </target>
