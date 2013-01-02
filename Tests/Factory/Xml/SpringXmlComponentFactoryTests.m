@@ -13,7 +13,6 @@
 #import "SpringXmlComponentFactory.h"
 #import "Knight.h"
 #import "ClassADependsOnB.h"
-#import "ClassBDependsOnA.h"
 #import "Sword.h"
 #import "SpringLogTemplate.h"
 
@@ -22,13 +21,14 @@
 
 @implementation SpringXmlComponentFactoryTests
 {
-    SpringXmlComponentFactory* _componentFactory;
+    SpringComponentFactory* _componentFactory;
 }
 
 - (void)setUp
 {
     _componentFactory = [[SpringXmlComponentFactory alloc] initWithConfigFileName:@"MiddleAgesAssembly.xml"];
 }
+
 
 - (void)test_property_injection
 {
@@ -48,7 +48,6 @@
     SpringDebug(@"Here's another knight: %@", anotherKnight);
     assertThat(anotherKnight.quest, notNilValue());
     assertThatBool(anotherKnight.hasHorseWillTravel, equalToBool(YES));
-    _componentFactory = nil;
 }
 
 - (void)test_factory_method_injection

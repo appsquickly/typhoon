@@ -102,7 +102,7 @@
 		6BA6CAEF169434C60062DA5D /* SpringReflectiveNSObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BA6CA5C169434C60062DA5D /* SpringReflectiveNSObject.h */; };
 		6BA9C853168E92B900E6AD6C /* SpringComponentDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C83B168E92B900E6AD6C /* SpringComponentDefinitionTests.m */; };
 		6BA9C854168E92B900E6AD6C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BA9C83C168E92B900E6AD6C /* InfoPlist.strings */; };
-		6BA9C855168E92B900E6AD6C /* SpringComponentDefinition+InstanceBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C83F168E92B900E6AD6C /* SpringComponentDefinition+InstanceBuilderTests.m */; };
+		6BA9C855168E92B900E6AD6C /* SpringComponentFactory+InstanceBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C83F168E92B900E6AD6C /* SpringComponentFactory+InstanceBuilderTests.m */; };
 		6BA9C856168E92B900E6AD6C /* SpringComponentFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C840168E92B900E6AD6C /* SpringComponentFactoryTests.m */; };
 		6BA9C859168E92B900E6AD6C /* CavalryMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C847168E92B900E6AD6C /* CavalryMan.m */; };
 		6BA9C85A168E92B900E6AD6C /* Champion.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9C849168E92B900E6AD6C /* Champion.m */; };
@@ -216,7 +216,7 @@
 		6BA6CA5C169434C60062DA5D /* SpringReflectiveNSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringReflectiveNSObject.h; sourceTree = "<group>"; };
 		6BA9C83B168E92B900E6AD6C /* SpringComponentDefinitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringComponentDefinitionTests.m; sourceTree = "<group>"; };
 		6BA9C83D168E92B900E6AD6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6BA9C83F168E92B900E6AD6C /* SpringComponentDefinition+InstanceBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SpringComponentDefinition+InstanceBuilderTests.m"; sourceTree = "<group>"; };
+		6BA9C83F168E92B900E6AD6C /* SpringComponentFactory+InstanceBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SpringComponentFactory+InstanceBuilderTests.m"; sourceTree = "<group>"; };
 		6BA9C840168E92B900E6AD6C /* SpringComponentFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringComponentFactoryTests.m; sourceTree = "<group>"; };
 		6BA9C842168E92B900E6AD6C /* JuicyTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "JuicyTests-Info.plist"; sourceTree = "<group>"; };
 		6BA9C843168E92B900E6AD6C /* JuicyTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JuicyTests-Prefix.pch"; sourceTree = "<group>"; };
@@ -496,7 +496,7 @@
 		6BA9C83E168E92B900E6AD6C /* Factory */ = {
 			isa = PBXGroup;
 			children = (
-				6BA9C83F168E92B900E6AD6C /* SpringComponentDefinition+InstanceBuilderTests.m */,
+				6BA9C83F168E92B900E6AD6C /* SpringComponentFactory+InstanceBuilderTests.m */,
 				6BA9C840168E92B900E6AD6C /* SpringComponentFactoryTests.m */,
 				BA798C7304717F68677420A2 /* Xml */,
 			);
@@ -824,7 +824,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BA9C853168E92B900E6AD6C /* SpringComponentDefinitionTests.m in Sources */,
-				6BA9C855168E92B900E6AD6C /* SpringComponentDefinition+InstanceBuilderTests.m in Sources */,
+				6BA9C855168E92B900E6AD6C /* SpringComponentFactory+InstanceBuilderTests.m in Sources */,
 				6BA9C856168E92B900E6AD6C /* SpringComponentFactoryTests.m in Sources */,
 				6BA9C859168E92B900E6AD6C /* CavalryMan.m in Sources */,
 				6BA9C85A168E92B900E6AD6C /* Champion.m in Sources */,

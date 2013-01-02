@@ -14,9 +14,18 @@
 #import "SpringComponentFactory.h"
 #import "SpringComponentDefinition.h"
 #import "SpringComponentFactory+InstanceBuilder.h"
+#import "SpringLogTemplate.h"
 
+static SpringComponentFactory* defaultComponentFactory;
 
 @implementation SpringComponentFactory
+
+
+/* =========================================================== Class Methods ============================================================ */
++ (SpringComponentFactory*)defaultFactory
+{
+    return defaultComponentFactory;
+}
 
 /* ============================================================ Initializers ============================================================ */
 - (id)init
@@ -30,6 +39,7 @@
     }
     return self;
 }
+
 
 /* ========================================================== Interface Methods ========================================================= */
 - (void)register:(SpringComponentDefinition*)definition
@@ -96,6 +106,19 @@
     [_currentlyResolvingReferences removeAllObjects];
     return returnValue;
 }
+
+- (void)makeDefault
+{
+    if (!defaultComponentFactory)
+    {
+        defaultComponentFactory = self;
+    }
+    else
+    {
+        [NSException raise:NSInternalInconsistencyException format:@"The default component factory has already been set."];
+    }
+}
+
 
 /* ============================================================ Utility Methods ========================================================= */
 - (NSString*)description

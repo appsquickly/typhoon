@@ -26,6 +26,8 @@
     NSMutableSet* _currentlyResolvingReferences;
 }
 
++ (SpringComponentFactory*)defaultFactory;
+
 - (void) register:(SpringComponentDefinition*)definition;
 
 - (id)componentForType:(id)classOrProtocol;
@@ -33,5 +35,7 @@
  - (NSArray*)allComponentsForType:(id)classOrProtocol;
 
 - (id)componentForKey:(NSString*)key;
+
+- (void)makeDefault;
 
 @end
