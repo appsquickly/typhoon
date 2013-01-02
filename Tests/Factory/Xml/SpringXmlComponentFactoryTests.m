@@ -58,9 +58,11 @@
 
 - (void)test_factory_method_injection_raises_exception_if_required_class_not_set
 {
+    SpringXmlComponentFactory
+            * factory = [[SpringXmlComponentFactory alloc] initWithConfigFileName:@"MissingRequiredClassAttributeAssembly.xml"];
     @try
     {
-        NSURL* url = [_componentFactory objectForKey:@"anotherServiceUrl"];
+        NSURL* url = [factory objectForKey:@"anotherServiceUrl"];
         LogDebug(@"Here's the url: %@", url);
         STFail(@"Should have thrown exception");
     }

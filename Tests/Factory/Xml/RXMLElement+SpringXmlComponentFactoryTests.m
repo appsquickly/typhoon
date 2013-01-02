@@ -45,7 +45,7 @@
         }
     }];
 
-    assertThat(componentDefinitions, hasCountOf(5));
+    assertThat(componentDefinitions, hasCountOf(4));
 }
 
 

@@ -1,0 +1,17 @@
+<assembly xmlns="http://jasperblues.github.com/spring-objective-c/schema/assembly"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://jasperblues.github.com/spring-objective-c/schema/assembly
+        http://jasperblues.github.com/spring-objective-c/schema/assembly.xsd">
+
+
+    <component class="NSURL" key="anotherServiceUrl">
+        <initializer selector="URLWithString:">
+            <argument parameterName="string" value="http://dev.foobar.com/service/">
+                <description>
+                    This will fail because the required-class attribute is not set.
+                </description>
+            </argument>
+        </initializer>
+    </component>
+
+</assembly>

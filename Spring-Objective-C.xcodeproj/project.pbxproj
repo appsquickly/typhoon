@@ -91,6 +91,7 @@
 		BA798D159B2E0C44EEFEF4FA /* SpringPropertyInjectionDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA79816210851532B5508614 /* SpringPropertyInjectionDelegate.h */; };
 		BA798DC65CAF5C4CB47E087D /* SpringPassThroughTypeConverter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798E0A8A42E7BA09670CE3 /* SpringPassThroughTypeConverter.h */; };
 		BA798DF233819828A039274D /* Quest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798E7749DFCE6A88093CCE /* Quest.h */; };
+		BA798E0B7B2B1A387D394030 /* MissingRequiredClassAttributeAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = BA798AE0738703EA3204887F /* MissingRequiredClassAttributeAssembly.xml */; };
 		BA798E1AB198474D577CB312 /* MiddleAgesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = BA798386B768F0D4DEECA5D5 /* MiddleAgesAssembly.xml */; };
 		BA798EACA6FC433F0F8A36F4 /* SpringPassThroughTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79889370B8FF5CDA59B809 /* SpringPassThroughTypeConverter.m */; };
 		BA798EB0D04BCACEA7A6BC86 /* SpringReflectionUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798B1E85E01560B3EE662E /* SpringReflectionUtils.h */; };
@@ -229,6 +230,7 @@
 		BA798A2904C4FF1D6453E8C1 /* SpringReflectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringReflectionUtils.m; sourceTree = "<group>"; };
 		BA798A2E10EABDBD7912DBE5 /* ClassBDependsOnA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassBDependsOnA.m; sourceTree = "<group>"; };
 		BA798ACBBE11925AFC181DA2 /* SpringTypeConverterRegistryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringTypeConverterRegistryTests.m; sourceTree = "<group>"; };
+		BA798AE0738703EA3204887F /* MissingRequiredClassAttributeAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MissingRequiredClassAttributeAssembly.xml; sourceTree = "<group>"; };
 		BA798B1E85E01560B3EE662E /* SpringReflectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringReflectionUtils.h; sourceTree = "<group>"; };
 		BA798B67C3EBDEA3B67B0CA9 /* CircularDependenciesAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CircularDependenciesAssembly.xml; sourceTree = "<group>"; };
 		BA798B91A6CD6E636559D4BE /* SpringParameterInjectedByValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringParameterInjectedByValue.m; sourceTree = "<group>"; };
@@ -529,6 +531,8 @@
 			isa = PBXGroup;
 			children = (
 				BA798386B768F0D4DEECA5D5 /* MiddleAgesAssembly.xml */,
+				BA798B67C3EBDEA3B67B0CA9 /* CircularDependenciesAssembly.xml */,
+				BA798AE0738703EA3204887F /* MissingRequiredClassAttributeAssembly.xml */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -549,7 +553,6 @@
 				BA7988E7A0B25288092F2A6D /* ClassADependsOnB.h */,
 				BA798A2E10EABDBD7912DBE5 /* ClassBDependsOnA.m */,
 				BA7982CAB715A6777CA9E5F9 /* ClassBDependsOnA.h */,
-				BA798B67C3EBDEA3B67B0CA9 /* CircularDependenciesAssembly.xml */,
 			);
 			path = CircularDependencies;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				6BA9C854168E92B900E6AD6C /* InfoPlist.strings in Resources */,
 				BA798E1AB198474D577CB312 /* MiddleAgesAssembly.xml in Resources */,
 				BA7989DF446D51BAB908086B /* CircularDependenciesAssembly.xml in Resources */,
+				BA798E0B7B2B1A387D394030 /* MissingRequiredClassAttributeAssembly.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
