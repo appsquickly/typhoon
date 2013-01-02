@@ -82,6 +82,7 @@
     @try
     {
         ClassADependsOnB* classA = [factory componentForKey:@"classA"];
+        LogDebug(@"Class A: %@", classA); //Suppress unused var compiler warning.
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -97,6 +98,7 @@
     @try
     {
         ClassADependsOnB* classA = [factory componentForType:[ClassADependsOnB class]];
+        LogDebug(@"Class A: %@", classA); //Suppress unused var compiler warning.
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -112,6 +114,7 @@
     @try
     {
         NSString* aString = [factory componentForKey:@"aBlaString"];
+        LogDebug(@"A string: %@", aString); //Suppress unused var compiler warning.
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -120,11 +123,11 @@
     }
 }
 
-//- (void)test_returns_component_from_factory_component
-//{
-//    Sword* sword = [_componentFactory componentForKey:@"blueSword"];
-//    assertThat([sword description], equalTo(@"A bright blue sword with orange pom-poms at the hilt."));
-//
-//}
+- (void)test_returns_component_from_factory_component
+{
+    Sword* sword = [_componentFactory componentForKey:@"blueSword"];
+    assertThat([sword description], equalTo(@"A bright blue sword with orange pom-poms at the hilt."));
+
+}
 
 @end

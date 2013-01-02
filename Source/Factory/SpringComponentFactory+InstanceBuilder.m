@@ -124,7 +124,7 @@
     }
     if ([instance respondsToSelector:definition.beforePropertyInjection])
     {
-        [instance performSelector:definition.beforePropertyInjection];
+        objc_msgSend(instance, definition.beforePropertyInjection);
     }
 }
 
@@ -167,7 +167,7 @@
     }
     if ([instance respondsToSelector:definition.afterPropertyInjection])
     {
-        [instance performSelector:definition.afterPropertyInjection];
+        objc_msgSend(instance, definition.afterPropertyInjection);
     }
 }
 
