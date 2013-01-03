@@ -38,19 +38,24 @@
 	
 	
 	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/defaultFactory">&nbsp;&nbsp;&nbsp;&nbsp;+ defaultFactory</option>
+	
+	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/allObjectsForType:">&nbsp;&nbsp;&nbsp;&nbsp;- allObjectsForType:</option>
+	<option value="//api/name/allComponentsForType:">&nbsp;&nbsp;&nbsp;&nbsp;- allComponentsForType:</option>
 	
 	<option value="//api/name/buildInstanceWithDefinition:">&nbsp;&nbsp;&nbsp;&nbsp;- buildInstanceWithDefinition:</option>
 	
-	<option value="//api/name/description">&nbsp;&nbsp;&nbsp;&nbsp;- description</option>
+	<option value="//api/name/componentForKey:">&nbsp;&nbsp;&nbsp;&nbsp;- componentForKey:</option>
 	
-	<option value="//api/name/objectForKey:">&nbsp;&nbsp;&nbsp;&nbsp;- objectForKey:</option>
+	<option value="//api/name/componentForType:">&nbsp;&nbsp;&nbsp;&nbsp;- componentForType:</option>
 	
-	<option value="//api/name/objectForType:">&nbsp;&nbsp;&nbsp;&nbsp;- objectForType:</option>
+	<option value="//api/name/makeDefault">&nbsp;&nbsp;&nbsp;&nbsp;- makeDefault</option>
 	
 	<option value="//api/name/register:">&nbsp;&nbsp;&nbsp;&nbsp;- register:</option>
 	
@@ -78,19 +83,25 @@
 
 
 
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/defaultFactory">defaultFactory</a></span></li>
+	
+</ul></li>
+
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/allObjectsForType:">allObjectsForType:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/allComponentsForType:">allComponentsForType:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/buildInstanceWithDefinition:">buildInstanceWithDefinition:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/description">description</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/componentForKey:">componentForKey:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/objectForKey:">objectForKey:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/componentForType:">componentForType:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/objectForType:">objectForType:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/makeDefault">makeDefault</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/register:">register:</a></span></li>
 	
@@ -141,6 +152,13 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
+		<code><a href="#//api/name/defaultFactory">+&nbsp;defaultFactory</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/register:">&ndash;&nbsp;register:</a></code>
 		
 	</span>
@@ -148,28 +166,28 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/objectForType:">&ndash;&nbsp;objectForType:</a></code>
+		<code><a href="#//api/name/componentForType:">&ndash;&nbsp;componentForType:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/allObjectsForType:">&ndash;&nbsp;allObjectsForType:</a></code>
+		<code><a href="#//api/name/allComponentsForType:">&ndash;&nbsp;allComponentsForType:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/objectForKey:">&ndash;&nbsp;objectForKey:</a></code>
+		<code><a href="#//api/name/componentForKey:">&ndash;&nbsp;componentForKey:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/description">&ndash;&nbsp;description</a></code>
+		<code><a href="#//api/name/makeDefault">&ndash;&nbsp;makeDefault</a></code>
 		
 	</span>
 	
@@ -200,6 +218,23 @@
 					
 					
 					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/defaultFactory" title="defaultFactory"></a>
+	<h3 class="subsubtitle method-title">defaultFactory</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (SpringComponentFactory *)defaultFactory</code></div>
+
+    
+</div>
+						
+					</div>
+					
 					
 					
 					<div class="section section-methods">
@@ -207,12 +242,12 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/allObjectsForType:" title="allObjectsForType:"></a>
-	<h3 class="subsubtitle method-title">allObjectsForType:</h3>
+	<a name="//api/name/allComponentsForType:" title="allComponentsForType:"></a>
+	<h3 class="subsubtitle method-title">allComponentsForType:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (NSArray *)allObjectsForType:(id)<em>classOrProtocol</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (NSArray *)allComponentsForType:(id)<em>classOrProtocol</em></code></div>
 
     
 </div>
@@ -229,34 +264,34 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/description" title="description"></a>
-	<h3 class="subsubtitle method-title">description</h3>
+	<a name="//api/name/componentForKey:" title="componentForKey:"></a>
+	<h3 class="subsubtitle method-title">componentForKey:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (NSString *)description</code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/objectForKey:" title="objectForKey:"></a>
-	<h3 class="subsubtitle method-title">objectForKey:</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>- (id)objectForKey:(NSString *)<em>key</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)componentForKey:(NSString *)<em>key</em></code></div>
 
     
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/objectForType:" title="objectForType:"></a>
-	<h3 class="subsubtitle method-title">objectForType:</h3>
+	<a name="//api/name/componentForType:" title="componentForType:"></a>
+	<h3 class="subsubtitle method-title">componentForType:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (id)objectForType:(id)<em>classOrProtocol</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)componentForType:(id)<em>classOrProtocol</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/makeDefault" title="makeDefault"></a>
+	<h3 class="subsubtitle method-title">makeDefault</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)makeDefault</code></div>
 
     
 </div>
@@ -285,7 +320,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Jasper_Blues. All rights reserved. (Last updated: 2013-01-02)</span><br />
+						<p><span class="copyright">&copy; 2013 Jasper_Blues. All rights reserved. (Last updated: 2013-01-03)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
