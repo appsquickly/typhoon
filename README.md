@@ -21,6 +21,7 @@ ___Without dependency injection, you might have a View Controller thus___:
  self = [super init];
  if (self) 
  {
+ //The class using some collaborating class makes the collaborator
   _weatherClient = [GoogleWeatherClient alloc] initWithParameters:xyz];
  }
  return self;
