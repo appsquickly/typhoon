@@ -179,6 +179,15 @@ The API and Test Coverage reports below are published by my build server, after 
 
 # Building 
 
+There's a Spring Objective-C installer and IDE plugin for Xcode coming soon. Meanwhile, to integrate Spring Objective-C into your project do the following: 
+
+* Copy the files from the 'Source' directory into your project. 
+* Click on the target. 
+* In "other linker flags" add "-lxml2" 
+* In "header search paths" add "${SDKROOT}/usr/include/libxml2" 
+
+# Hacking
+
 ## Just the Framework
 
 Open the project in XCode and choose Product/Build. 
