@@ -101,7 +101,7 @@
             #!/bin/sh
             geninfo "${temp.dir}/coverage-data/"*.gcda --no-recursion -o "${temp.dir}/coverage-temp.info"
             #Remove symbols we're not interested in.
-            lcov -r "${temp.dir}/coverage-temp.info" _string.h NSRange.h once.h > "${temp.dir}/coverage.info"
+            lcov -r "${temp.dir}/coverage-temp.info" _string.h NSRange.h once.h SpringRXMLElement.m SpringRXMLElement.h > "${temp.dir}/coverage.info"
         </echo>
         <chmod perm="+x" file="${temp.dir}/geninfo.sh"/>
         <exec executable="${temp.dir}/geninfo.sh" failonerror="true" failifexecutionfails="true"/>
