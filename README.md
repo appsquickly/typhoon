@@ -68,8 +68,7 @@ easy to define both a master-card payment engine or a visa payment engine.
 ###Isn't Objective-C a dynamic language? 
 
 Yes, and I love categories, method swizzling, duck-typing and all that cool stuff. None of these are replacements for 
-DI. DI is just a design pattern and as I mentioned above, you can do it without a container. Having one is handy 
-though. 
+DI. DI is just a design pattern and as I mentioned above, you can do it without a container. But then you'd have to make sure all of the components are declared in the right order (not necessarily the best order for humans), perform configuration management and keep it neat. 
 
 
 # Usage
