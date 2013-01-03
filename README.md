@@ -4,14 +4,37 @@ A Spring-like dependency injection container for Objective-C.
 
 ### What is Dependency Injection? 
 
-"In conventional software development, the dependent object decides for itself what concrete classes it will use. 
-In the dependency injection pattern, this decision is delegated to the "injector" which can choose to substitute 
-different concrete class implementations of a dependency contract interface at run-time rather than at compile time.
+Many people have trouble coming to grips with dependency injection at first. And I think part of the problem is that
+it is actually so simple. Imagine that you had an app that gives weather reports. You'd like to integrate with 
+different weather service providers, so you make a WeatherClient protocol backed by a few different implementations. 
 
-Being able to make this decision at run-time rather than compile time is the key advantage of dependency injection. 
-Multiple, different implementations of a single software component can be created at run-time and passed (injected) 
-into the same test code. The test code can then test each different software component without being aware that what 
-has been injected is implemented differently." -- Wikipedia
+In traditional software development you might have a View Controller thus: 
+
+```objective-c
+
+-(id) init 
+{
+ self = [super init];
+ if (self) 
+ {
+  _weatherClient = [GoogleWeatherClient alloc] initWithParameters:xyz];
+ }
+ return self;
+}
+
+```
+The thing with this approach is, if you wanted to change to another weather client implementation you'd have to go
+and find all the places in your code that use it, and move them over. 
+
+Also, in order to test your view controller, you now have to test the weather client at the same time, and this 
+can get tricky. 
+
+So, with dependency injection rather than having components make their own collaborators we always have them supplied
+via an initializer or property setter - injected. And then the wiring of all the collaborators is done in a single 
+place. And its as simple as that!
+
+You don't need a depencency injection container to use this pattern, but as shown below it helps. 
+
 
 ### Why Spring for Objective-C?
 
@@ -34,7 +57,8 @@ easy to define both a master-card payment engine or a visa payment engine.
 ###Isn't Objective-C a dynamic language? 
 
 Yes, and I love categories, method swizzling, duck-typing and all that cool stuff. None of these are replacements for 
-DI. DI is just a design pattern and you can do it without a container. Having one is handy though. 
+DI. DI is just a design pattern and as I mentioned above, you can do it without a container. Having one is handy 
+though. 
 
 
 # Usage
