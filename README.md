@@ -43,7 +43,7 @@ declared in a single place, and all of the classes that need to use some kind of
 passed in. This means that now: 
 
 * If you want to change from one implementation to another, you need only change a single declaration. 
-* Classes are easier to test, because we can supply simple mocks and stubs in place of real concrete collaborators. 
+* Classes are easier to test, because we can supply simple mocks and stubs in place of concrete collaborators. 
 * It promotes separation of concerns and a clear contract between classes. 
 * Your app is easier to maintain and can accommodate new requirements. 
 
