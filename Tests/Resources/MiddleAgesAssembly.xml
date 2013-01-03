@@ -1,7 +1,7 @@
 <assembly xmlns="http://jasperblues.github.com/spring-objective-c/schema/assembly"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://jasperblues.github.com/spring-objective-c/schema/assembly
-        http://jasperblues.github.com/spring-objective-c/schema/assembly.xsd">
+          http://www.appsquick.ly/schema/assembly.xsd">
 
     <description>
         This is the application assembly. The schema declaration above gives code-completion in supported IDEs
@@ -23,7 +23,8 @@
             </description>
         </property>
     </component>
-
+    
+    
 
     <component class="CampaignQuest" key="quest" scope="prototype" before-property-injection="questBeforePropertyInjection"
                after-property-injection="questAfterPropertyInjection">

@@ -46,7 +46,7 @@ DI. DI is just a design pattern and you can do it without a container. Having on
 <assembly xmlns="http://jasperblues.github.com/spring-objective-c/schema/assembly"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://jasperblues.github.com/spring-objective-c/schema/assembly
-        http://jasperblues.github.com/spring-objective-c/schema/assembly.xsd">
+          http://www.appsquick.ly/schema/assembly.xsd">
 
     <description>
         This is the application assembly. The schema declaration above gives code-completion in supported IDEs
