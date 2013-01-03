@@ -34,12 +34,13 @@ Also, in order to test your view controller, you now have to test the weather cl
 can get tricky, especially as your application gets more complex. 
 
 So with dependency injection, rather than having objects make their own collaborators we have them supplied
-via an initializer or property setter - injected. The WeatherClient is now declared in a single place, and all of the
-classes that need to use it have it passed in. This means that now: 
+via an initializer or property setter. WTF? Is that all they mean by 'injected'?. Yes it is. And because of this, the
+SimpleWeatherClientImpl is now declared in a single place, and all of the classes that need to use some kind of 
+id<WeatherClient> have it passed in. This means that now: 
 
 * If you want to change from one implementation to another, you need only change a single declaration. 
 * Classes are easier to test, because we can supply mocks and stubs in place of collaborators. 
-* It promotes separation of concerns and a contract between classes. 
+* It promotes separation of concerns and a clear contract between classes. 
 * Your app is easier to maintain and can accommodate new requirements. 
 
 You don't need a depencency injection container to use this pattern, but as shown below it helps. 
