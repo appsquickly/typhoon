@@ -945,10 +945,7 @@
 				GCC_PREFIX_HEADER = "Source/Spring-Objective-C-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = "Info-OSX.plist";
-				OTHER_LDFLAGS = (
-					"-lxml2",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -970,10 +967,7 @@
 				GCC_PREFIX_HEADER = "Source/Spring-Objective-C-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = "Info-OSX.plist";
-				OTHER_LDFLAGS = (
-					"-lxml2",
-					"-lz",
-				);
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
