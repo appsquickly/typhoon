@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -68,6 +70,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -139,6 +143,15 @@
 					
 					
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>This is the base class for for all spring component factories. Although, it could be used as-is, the intention is to use a
+sub-class like <a href="../Classes/SpringXmlComponentFactory.html">SpringXmlComponentFactory</a>.</p>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -153,7 +166,17 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/defaultFactory">+&nbsp;defaultFactory</a></code>
-		
+		<span class="tooltip"><p>Returns the default component factory, if one has been set. (See <a href="#//api/name/makeDefault">makeDefault</a> ).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/makeDefault">&ndash;&nbsp;makeDefault</a></code>
+		<span class="tooltip"><ul>
+<li>Sets a given instance of SpringComponentFactory, as the default factory so that it can be retrieved later with:</li>
+</ul>
+</span>
 	</span>
 	
 	
@@ -181,13 +204,6 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/componentForKey:">&ndash;&nbsp;componentForKey:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/makeDefault">&ndash;&nbsp;makeDefault</a></code>
 		
 	</span>
 	
@@ -227,10 +243,40 @@
 	<h3 class="subsubtitle method-title">defaultFactory</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the default component factory, if one has been set. (See <a href="#//api/name/makeDefault">makeDefault</a> ).</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>+ (SpringComponentFactory *)defaultFactory</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the default component factory, if one has been set. (See <a href="#//api/name/makeDefault">makeDefault</a> ).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SpringComponentFactory.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>
@@ -290,10 +336,48 @@
 	<h3 class="subsubtitle method-title">makeDefault</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<ul>
+<li>Sets a given instance of SpringComponentFactory, as the default factory so that it can be retrieved later with:</li>
+</ul>
+
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (void)makeDefault</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<ul>
+<li><p>Sets a given instance of SpringComponentFactory, as the default factory so that it can be retrieved later with:</p>
+
+<p>  <a href="#//api/name/defaultFactory">[SpringComponentFactory defaultFactory]</a>;</p></li>
+</ul>
+
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SpringComponentFactory.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
