@@ -4,9 +4,13 @@ A Spring-like dependency injection container for Objective-C.
 
 ### What is Dependency Injection? 
 
-Many people have trouble coming to grips with dependency injection at first. And I think part of the problem is that
-it is actually so simple. Imagine that you had an app that gives weather reports. You'd like to integrate with 
-different weather service providers, so you make a WeatherClient protocol backed by a few different implementations. 
+Many people have trouble coming to grips with dependency injection, at first. And I think part of the problem is that
+it is actually so simple that we're inclined to look for something more complicated - as surely that there has to be
+more to it! 
+
+So, with that in mind, imagine that you had an app that gives weather reports. At first you go for a free weather 
+report provider, but in future you'd like to integrate one with more features. So you make a WeatherClient protocol
+and back it with the simple implementation. 
 
 In traditional software development you might have a View Controller thus: 
 
@@ -24,14 +28,19 @@ In traditional software development you might have a View Controller thus:
 
 ```
 The thing with this approach is, if you wanted to change to another weather client implementation you'd have to go
-and find all the places in your code that use it, and move them over. 
+and find all the places in your code that use it, and move them over to the new one. 
 
 Also, in order to test your view controller, you now have to test the weather client at the same time, and this 
-can get tricky. 
+can get tricky, especially as your application gets more complex. 
 
-So, with dependency injection rather than having components make their own collaborators we always have them supplied
-via an initializer or property setter - injected. And then the wiring of all the collaborators is done in a single 
-place. And its as simple as that!
+So with dependency injection, rather than having objects make their own collaborators we have them supplied
+via an initializer or property setter - injected. The WeatherClient is now declared in a single place, and all of the
+classes that need to use it have it passed in. This means that now: 
+
+* If you want to change from one implementation to another, you need only change a single declaration. 
+* Classes are easier to test, because we can supply mocks and stubs in place of collaborators. 
+* It promotes separation of concerns and a contract between classes. 
+* Your app is easier to maintain and can accommodate new requirements. 
 
 You don't need a depencency injection container to use this pattern, but as shown below it helps. 
 
