@@ -21,7 +21,7 @@ ___Without dependency injection, you might have a View Controller thus___:
  {
  //The class using some collaborating class makes the collaborator
  //it might be one of several classes using the weatherClient. 
-  _weatherClient = [GoogleWeatherClient alloc] initWithParameters:xyz];
+  _weatherClient = [GoogleWeatherClientImpl alloc] initWithParameters:xyz];
  }
  return self;
 }
@@ -35,7 +35,7 @@ can get tricky, especially as your application gets more complex.
 
 So with dependency injection, rather than having objects make their own collaborators we have them supplied to the class instance via an initializer or property setter. 
 
-_WTF? Is that all they mean by 'injected'?_. Yes it is. And because of this, the SimpleWeatherClientImpl is now 
+_WTF? Is that all they mean by 'injected'?_. Yes it is. And because of this, the GoogleWeatherClientImpl is now 
 declared in a single place, and all of the classes that need to use some kind of id&lt;WeatherClient&gt; have it 
 passed in. This means that: 
 
