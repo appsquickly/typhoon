@@ -258,7 +258,6 @@ ant
 
 . . . are very welcome. 
 
-If you're using the API shoot me an email and tell me what you're doing with it. 
 
 # Compatibility 
 
