@@ -6,7 +6,7 @@ A Spring-like dependency injection container for Objective-C.
 
 Many people have trouble getting the hang of dependency injection, at first. And I think part of the problem is that
 it is actually so simple that we're inclined to look for something more complicated. "Surely that there has to be
-more to it!", so to say.  
+more to it?!", so to say.  
 
 So, with that in mind, imagine that you had an app that gives weather reports. You need a cloud-service to provide the data, and at first you go for a free weather report provider, but in future you'd like to integrate a weather service with more features. So, like a good object-oriented developer, you make a WeatherClient protocol and back it initially with an implementation based on the free provider. 
 
