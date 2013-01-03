@@ -12,7 +12,7 @@ So, with that in mind, imagine that you had an app that gives weather reports. A
 report provider, but in future you'd like to integrate a weather service with more features. So, like a good
 object-oriented developer, you make a WeatherClient protocol and back it initially with the simple implementation. 
 
-Without dependency injection, you might have a View Controller thus: 
+___Without dependency injection, you might have a View Controller thus___: 
 
 ```objective-c
 
