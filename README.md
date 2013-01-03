@@ -4,14 +4,46 @@ A Spring-like dependency injection container for Objective-C.
 
 ### What is Dependency Injection? 
 
-"In conventional software development, the dependent object decides for itself what concrete classes it will use. 
-In the dependency injection pattern, this decision is delegated to the "injector" which can choose to substitute 
-different concrete class implementations of a dependency contract interface at run-time rather than at compile time.
+Many people have trouble coming to grips with dependency injection, at first. And I think part of the problem is that
+it is actually so simple that we're inclined to look for something more complicated. "Surely that there has to be
+more to it!", so to say.  
 
-Being able to make this decision at run-time rather than compile time is the key advantage of dependency injection. 
-Multiple, different implementations of a single software component can be created at run-time and passed (injected) 
-into the same test code. The test code can then test each different software component without being aware that what 
-has been injected is implemented differently." -- Wikipedia
+So, with that in mind, imagine that you had an app that gives weather reports. At first you go for a free weather 
+report provider, but in future you'd like to integrate a weather service with more features. So you make a
+WeatherClient protocol and back it initially with the simple implementation. 
+
+In traditional software development you might have a View Controller thus: 
+
+```objective-c
+
+-(id) init 
+{
+ self = [super init];
+ if (self) 
+ {
+  _weatherClient = [GoogleWeatherClient alloc] initWithParameters:xyz];
+ }
+ return self;
+}
+
+```
+The thing with this approach is, if you wanted to change to another weather client implementation you'd have to go
+and find all the places in your code that use the old one, and move them over to the new one. 
+
+Also, in order to test your view controller, you now have to test the weather client at the same time, and this 
+can get tricky, especially as your application gets more complex. 
+
+So with dependency injection, rather than having objects make their own collaborators we have them supplied
+via an initializer or property setter - injected. The WeatherClient is now declared in a single place, and all of the
+classes that need to use it have it passed in. This means that now: 
+
+* If you want to change from one implementation to another, you need only change a single declaration. 
+* Classes are easier to test, because we can supply mocks and stubs in place of collaborators. 
+* It promotes separation of concerns and a contract between classes. 
+* Your app is easier to maintain and can accommodate new requirements. 
+
+You don't need a depencency injection container to use this pattern, but as shown below it helps. 
+
 
 ### Why Spring for Objective-C?
 
@@ -34,7 +66,8 @@ easy to define both a master-card payment engine or a visa payment engine.
 ###Isn't Objective-C a dynamic language? 
 
 Yes, and I love categories, method swizzling, duck-typing and all that cool stuff. None of these are replacements for 
-DI. DI is just a design pattern and you can do it without a container. Having one is handy though. 
+DI. DI is just a design pattern and as I mentioned above, you can do it without a container. Having one is handy 
+though. 
 
 
 # Usage
@@ -178,6 +211,15 @@ The API and Test Coverage reports below are published by my build server, after 
 * <a href="http://jasperblues.github.com/spring-objective-c/coverage/index.html">Coverage Reports</a>
 
 # Building 
+
+There's a Spring Objective-C installer and IDE plugin for Xcode coming soon. Meanwhile, to integrate Spring Objective-C into your project do the following: 
+
+* Copy the files from the 'Source' directory into your project. 
+* Click on the target. 
+* In "other linker flags" add "-lxml2" 
+* In "header search paths" add "${SDKROOT}/usr/include/libxml2" 
+
+# Hacking
 
 ## Just the Framework
 
