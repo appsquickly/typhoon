@@ -219,10 +219,16 @@ The API and Test Coverage reports below are published by my build server, after 
 
 There's a Spring Objective-C installer and IDE plugin for Xcode coming soon. Meanwhile, to integrate Spring Objective-C into your project do the following: 
 
+*Manual* 
+
 * Copy the files from the 'Source' directory into your project. 
 * Click on the target. 
 * In "other linker flags" add "-lxml2" 
 * In "header search paths" add "${SDKROOT}/usr/include/libxml2" 
+
+*CocoaPods*
+
+Spring Objective-C is also available through <a href="http://cocoapods.org/">CocaoPods</a>
 
 # Hacking
 
@@ -271,22 +277,22 @@ coming days I'll be writing more tests and documentation.
  
  If you're using it, please shoot me an email and let me know.
 
-##Roadmap
+#Roadmap
  
-##Immediate: (coming days)
+*Immediate: (coming days)*
 
 * API documentation
 * 100% test coverage
 * A sample application. 
 * Better github docs. 
 
-Next: (coming weeks) 
+*Next: (coming weeks)*
 
 * A block-based, terse code-style of component definition. 
 * A IDE plugin to: a) Install the framework b) provide some tool support.
 * "Annotations" and a test framework, with auto-wiring in test cases.
 
-Later: 
+*Later:*
 
 * AOP support. 
 
@@ -297,7 +303,7 @@ Later:
          
 ### With contributions from: 
 
-* Your name here!!!!!!
+* Your name here!!!!!! (See roadmap above. I'm also open to pull requests and suggestions). 
 
 
 # LICENSE
