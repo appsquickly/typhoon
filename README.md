@@ -5,8 +5,8 @@ A Spring-like dependency injection container for Objective-C.
 ### What is Dependency Injection? 
 
 Many people have trouble coming to grips with dependency injection, at first. And I think part of the problem is that
-it is actually so simple that we're inclined to look for something more complicated - as surely that there has to be
-more to it! 
+it is actually so simple that we're inclined to look for something more complicated. "Surely that there has to be
+more to it!", so to say.  
 
 So, with that in mind, imagine that you had an app that gives weather reports. At first you go for a free weather 
 report provider, but in future you'd like to integrate one with more features. So you make a WeatherClient protocol
