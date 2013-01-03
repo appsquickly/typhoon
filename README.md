@@ -303,7 +303,7 @@ coming days I'll be writing more tests and documentation.
          
 ### With contributions from: 
 
-* Your name here!!!!!! (See roadmap above. I'm also open to pull requests and suggestions). 
+* Your name here!!!!!!  
 
 
 # LICENSE
