@@ -4,7 +4,7 @@ A Spring-like dependency injection container for Objective-C.
 
 ### What is Dependency Injection? 
 
-Many people have trouble coming to grips with dependency injection, at first. And I think part of the problem is that
+Many people have trouble getting the hang of dependency injection, at first. And I think part of the problem is that
 it is actually so simple that we're inclined to look for something more complicated. "Surely that there has to be
 more to it!", so to say.  
 
