@@ -13,7 +13,6 @@
 #import "SpringTypeDescriptor.h"
 #import "Knight.h"
 #import "NSObject+SpringReflectionUtils.h"
-#import "SpringLogTemplate.h"
 
 typedef struct
 {
@@ -86,7 +85,7 @@ typedef struct
 - (void)test_parameterNamesForSelector_init_method
 {
     NSArray* parameterNames = [self parameterNamesForSelector:@selector(initWithNibName:bundle:)];
-    SpringDebug(@"Parameter names: %@", parameterNames);
+    NSLog(@"Parameter names: %@", parameterNames);
     assertThat(parameterNames, hasCountOf(2));
     assertThat([parameterNames objectAtIndex:0], equalTo(@"nibName"));
     assertThat([parameterNames objectAtIndex:1], equalTo(@"bundle"));
@@ -95,7 +94,7 @@ typedef struct
 - (void)test_parameterNamesForSelector_factory_method
 {
     NSArray* parameterNames = [self parameterNamesForSelector:@selector(URLWithString:)];
-    SpringDebug(@"Parameter names: %@", parameterNames);
+    NSLog(@"Parameter names: %@", parameterNames);
     assertThat(parameterNames, hasCountOf(1));
     assertThat([parameterNames objectAtIndex:0], equalTo(@"string"));
 }
@@ -105,7 +104,7 @@ typedef struct
     Knight* knight = [[Knight alloc] initWithQuest:nil damselsRescued:0];
     NSArray* typeCodes = [knight typeCodesForSelector:@selector(initWithQuest:damselsRescued:)];
 
-    SpringDebug(@"Here's the typeCodes: %@", typeCodes);
+    NSLog(@"Here's the typeCodes: %@", typeCodes);
     assertThat([typeCodes objectAtIndex:0], equalTo(@"@"));
     assertThat([typeCodes objectAtIndex:1], equalTo(@"Q"));
 

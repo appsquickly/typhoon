@@ -13,7 +13,6 @@
 
 #import <objc/runtime.h>
 #import "SpringTypeDescriptor.h"
-#import "SpringLogTemplate.h"
 
 @implementation NSDictionary (DeucePrimitiveType)
 
@@ -119,7 +118,7 @@
 /* ============================================================ Private Methods ========================================================= */
 - (void)parsePrimitiveType:(NSString*)typeCode
 {
-    SpringDebug(@"Parsing typeCode: %@", typeCode);
+    NSLog(@"Parsing typeCode: %@", typeCode);
     typeCode = [self extractArrayInformation:typeCode];
     typeCode = [self extractPointerInformation:typeCode];
     typeCode = [self extractStructureInformation:typeCode];

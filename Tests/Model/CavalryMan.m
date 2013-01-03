@@ -11,19 +11,18 @@
 
 
 #import "CavalryMan.h"
-#import "SpringLogTemplate.h"
 
 
 @implementation CavalryMan
 
 - (void)beforePropertiesSet
 {
-    SpringDebug(@"#################### CavalryMan before properties set");
+    NSLog(@"#################### CavalryMan before properties set");
 }
 
 - (void)afterPropertiesSet
 {
-    SpringDebug(@"############# CavalryMan after properties set");
+    NSLog(@"############# CavalryMan after properties set");
 }
 
 @end

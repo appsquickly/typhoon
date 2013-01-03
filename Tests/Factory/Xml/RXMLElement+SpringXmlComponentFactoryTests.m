@@ -13,7 +13,6 @@
 #import "SpringBundleResource.h"
 #import "SpringComponentDefinition.h"
 #import "SpringRXMLElement+SpringXmlComponentFactory.h"
-#import "SpringLogTemplate.h"
 
 @interface RXMLElement_SpringXmlComponentFactoryTests : SenTestCase
 @end
@@ -26,7 +25,7 @@
 - (void)setUp
 {
     NSString* xmlString = [SpringBundleResource withName:@"MiddleAgesAssembly.xml"];
-    SpringDebug(@"Xml string: %@", xmlString);
+    NSLog(@"Xml string: %@", xmlString);
     _element = [SpringRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
 }
 
@@ -40,7 +39,7 @@
         if ([[child tag] isEqualToString:@"component"])
         {
             SpringComponentDefinition* definition = [child asComponentDefinition];
-            SpringDebug(@"Here's the component definition: %@", definition);
+            NSLog(@"Here's the component definition: %@", definition);
             [componentDefinitions addObject:definition];
         }
     }];

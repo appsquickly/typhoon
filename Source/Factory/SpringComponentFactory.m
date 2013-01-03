@@ -14,7 +14,6 @@
 #import "SpringComponentFactory.h"
 #import "SpringComponentDefinition.h"
 #import "SpringComponentFactory+InstanceBuilder.h"
-#import "SpringLogTemplate.h"
 
 static SpringComponentFactory* defaultComponentFactory;
 

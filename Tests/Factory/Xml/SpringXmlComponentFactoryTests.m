@@ -14,7 +14,6 @@
 #import "Knight.h"
 #import "ClassADependsOnB.h"
 #import "Sword.h"
-#import "SpringLogTemplate.h"
 
 @interface SpringXmlComponentFactoryTests : SenTestCase
 @end
@@ -45,7 +44,7 @@
 - (void)test_mixed_initializer_and_property_injection
 {
     Knight* anotherKnight = [_componentFactory componentForKey:@"anotherKnight"];
-    SpringDebug(@"Here's another knight: %@", anotherKnight);
+    NSLog(@"Here's another knight: %@", anotherKnight);
     assertThat(anotherKnight.quest, notNilValue());
     assertThatBool(anotherKnight.hasHorseWillTravel, equalToBool(YES));
 }
@@ -53,7 +52,7 @@
 - (void)test_factory_method_injection
 {
     NSURL* url = [_componentFactory componentForKey:@"serviceUrl"];
-    SpringDebug(@"Here's the url: %@", url);
+    NSLog(@"Here's the url: %@", url);
 }
 
 - (void)test_factory_method_injection_raises_exception_if_required_class_not_set
@@ -62,7 +61,7 @@
     @try
     {
         NSURL* url = [factory componentForKey:@"anotherServiceUrl"];
-        SpringDebug(@"Here's the url: %@", url);
+        NSLog(@"Here's the url: %@", url);
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -80,7 +79,7 @@
     @try
     {
         ClassADependsOnB* classA = [factory componentForKey:@"classA"];
-        SpringDebug(@"Class A: %@", classA); //Suppress unused var compiler warning.
+        NSLog(@"Class A: %@", classA); //Suppress unused var compiler warning.
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -96,7 +95,7 @@
     @try
     {
         ClassADependsOnB* classA = [factory componentForType:[ClassADependsOnB class]];
-        SpringDebug(@"Class A: %@", classA); //Suppress unused var compiler warning.
+        NSLog(@"Class A: %@", classA); //Suppress unused var compiler warning.
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -112,7 +111,7 @@
     @try
     {
         NSString* aString = [factory componentForKey:@"aBlaString"];
-        SpringDebug(@"A string: %@", aString); //Suppress unused var compiler warning.
+        NSLog(@"A string: %@", aString); //Suppress unused var compiler warning.
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)

@@ -17,7 +17,6 @@
 #import "CampaignQuest.h"
 #import "CavalryMan.h"
 #import "Champion.h"
-#import "SpringLogTemplate.h"
 
 
 @interface SpringComponentFactoryTests : SenTestCase
@@ -53,7 +52,7 @@
     assertThat(knight, instanceOf([Knight class]));
     assertThat(knight.quest, notNilValue());
 
-    SpringDebug(@"Here's the knight: %@", knight);
+    NSLog(@"Here's the knight: %@", knight);
 }
 
 - (void)test_objectForKey_raises_exception_if_reference_does_not_exist
@@ -67,7 +66,7 @@
     @try
     {
         Knight* knight = [_componentFactory componentForKey:@"knight"];
-        SpringDebug(@"Knight: %@", knight);
+        NSLog(@"Knight: %@", knight);
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -119,7 +118,7 @@
     @try
     {
         Knight* knight = [_componentFactory componentForType:[Knight class]];
-        SpringDebug(@"Here's the knight: %@", knight);
+        NSLog(@"Here's the knight: %@", knight);
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -130,7 +129,7 @@
     @try
     {
         Knight* knight = [_componentFactory componentForType:[Champion class]];
-        SpringDebug(@"Here's the knight: %@", knight);
+        NSLog(@"Here's the knight: %@", knight);
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -154,7 +153,7 @@
     assertThat(knight, instanceOf([Knight class]));
     assertThat(knight.quest, notNilValue());
 
-    SpringDebug(@"Here's the knight: %@", knight);
+    NSLog(@"Here's the knight: %@", knight);
 }
 
 @end

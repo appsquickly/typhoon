@@ -17,7 +17,6 @@
 #import "Knight.h"
 #import "CampaignQuest.h"
 #import "SpringComponentFactory+InstanceBuilder.h"
-#import "SpringLogTemplate.h"
 
 
 @interface ComponentDefinition_InstanceBuilderTests : SenTestCase
@@ -45,7 +44,7 @@
     [_componentFactory register:questDefinition];
 
     Knight* knight = [_componentFactory buildInstanceWithDefinition:knightDefinition];
-    SpringDebug(@"Here's the knight: %@", knight);
+    NSLog(@"Here's the knight: %@", knight);
     assertThat(knight, notNilValue());
     assertThat(knight.quest, notNilValue());
 }
@@ -60,7 +59,7 @@
     [_componentFactory register:urlDefinition];
 
     NSURL* url = [_componentFactory buildInstanceWithDefinition:urlDefinition];
-    SpringDebug(@"Here's the bundle: %@", url);
+    NSLog(@"Here's the bundle: %@", url);
     assertThat(url, notNilValue());
 }
 
@@ -74,7 +73,7 @@
     [_componentFactory register:questDefinition];
 
     Knight* knight = [_componentFactory buildInstanceWithDefinition:knightDefinition];
-    SpringDebug(@"Here's the knight: %@", knight);
+    NSLog(@"Here's the knight: %@", knight);
     assertThat(knight, notNilValue());
     assertThat(knight.quest, notNilValue());
 }
@@ -91,7 +90,7 @@
     @try
     {
         Knight* knight = [_componentFactory buildInstanceWithDefinition:knightDefinition];
-        SpringDebug(@"Here's the knight: %@", knight);
+        NSLog(@"Here's the knight: %@", knight);
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)

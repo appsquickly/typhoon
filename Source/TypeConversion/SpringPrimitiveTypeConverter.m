@@ -12,7 +12,6 @@
 
 #import "SpringPrimitiveTypeConverter.h"
 #import "SpringTypeDescriptor.h"
-#import "SpringLogTemplate.h"
 
 
 @implementation SpringPrimitiveTypeConverter
@@ -20,7 +19,7 @@
 
 - (void*)convert:(NSString*)stringValue requiredType:(SpringTypeDescriptor*)typeDescriptor
 {
-    SpringDebug(@"Converting value: %@", stringValue);
+    NSLog(@"Converting value: %@", stringValue);
     [self checkSupportedTypes:typeDescriptor];
     if (typeDescriptor.primitiveType == SpringPrimitiveTypeBoolean || typeDescriptor.primitiveType == SpringPrimitiveTypeChar)
     {

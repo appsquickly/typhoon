@@ -10,7 +10,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import "SpringLogTemplate.h"
 #import "SpringBundleResource.h"
 
 
@@ -23,7 +22,7 @@
     if (lastDot.location != NSNotFound) {
         NSString* resource = [name substringToIndex:lastDot.location];
         NSString* type = [name substringFromIndex:lastDot.location + 1];
-        SpringDebug(@"Resource: %@.%@", resource, type);
+        NSLog(@"Resource: %@.%@", resource, type);
         NSString* filePath = [[NSBundle bundleForClass:[self class]] pathForResource:resource ofType:type];
         contents =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     }

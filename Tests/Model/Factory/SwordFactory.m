@@ -14,7 +14,6 @@
 
 #import "SwordFactory.h"
 #import "Sword.h"
-#import "SpringLogTemplate.h"
 
 @implementation SwordFactory
 
@@ -26,7 +25,7 @@
     }
     else
     {
-        SpringDebug("Out of stock. Returning regular sword");
+        NSLog(@"Out of stock. Returning regular sword");
         return [[Sword alloc] initWithSpecification:@"Yer typical run-o-the-mill rusty sword."];
     }
 }

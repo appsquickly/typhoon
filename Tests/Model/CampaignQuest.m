@@ -11,7 +11,6 @@
 
 
 #import "CampaignQuest.h"
-#import "SpringLogTemplate.h"
 
 
 @implementation CampaignQuest
@@ -23,13 +22,13 @@
 
 - (void)questBeforePropertyInjection
 {
-    SpringDebug(@"###### My dependencies have not yet been injected. Here's what I look like: %@", [self description]);
+    NSLog(@"###### My dependencies have not yet been injected. Here's what I look like: %@", [self description]);
 }
 
 
 - (void)questAfterPropertyInjection
 {
-    SpringDebug(@"$$$$$$$$$$$$$$$$$ My dependencies have been injected. And I know look like this: %@", [self description]);
+    NSLog(@"$$$$$$$$$$$$$$$$$ My dependencies have been injected. And I know look like this: %@", [self description]);
 }
 
 - (NSString*)description

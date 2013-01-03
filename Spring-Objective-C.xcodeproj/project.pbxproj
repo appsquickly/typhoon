@@ -13,7 +13,6 @@
 		6BA6CA5D169434C60062DA5D /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6CA20169434C60062DA5D /* OCHamcrest.framework */; };
 		6BA6CA5E169434C60062DA5D /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6CA20169434C60062DA5D /* OCHamcrest.framework */; };
 		6BA6CA5F169434C60062DA5D /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6CA20169434C60062DA5D /* OCHamcrest.framework */; };
-		6BA6CA61169434C60062DA5D /* SpringLogTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BA6CA22169434C60062DA5D /* SpringLogTemplate.h */; };
 		6BA6CA66169434C60062DA5D /* SpringRXMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BA6CA25169434C60062DA5D /* SpringRXMLElement.h */; };
 		6BA6CA68169434C60062DA5D /* SpringRXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6CA26169434C60062DA5D /* SpringRXMLElement.m */; };
 		6BA6CA69169434C60062DA5D /* SpringRXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6CA26169434C60062DA5D /* SpringRXMLElement.m */; };
@@ -165,7 +164,6 @@
 		6B46752116894D910049404E /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrest.framework; path = External/OCHamcrest.framework; sourceTree = "<group>"; };
 		6BA403E9168DF13F00A89433 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		6BA6CA20169434C60062DA5D /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OCHamcrest.framework; sourceTree = "<group>"; };
-		6BA6CA22169434C60062DA5D /* SpringLogTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringLogTemplate.h; sourceTree = "<group>"; };
 		6BA6CA25169434C60062DA5D /* SpringRXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringRXMLElement.h; sourceTree = "<group>"; };
 		6BA6CA26169434C60062DA5D /* SpringRXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringRXMLElement.m; sourceTree = "<group>"; };
 		6BA6CA2A169434C60062DA5D /* SpringComponentInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringComponentInitializer.h; sourceTree = "<group>"; };
@@ -464,7 +462,6 @@
 				6BA6CA5A169434C60062DA5D /* SpringReflectionUtils.h */,
 				6BA6CA5B169434C60062DA5D /* SpringReflectionUtils.m */,
 				6BA6CA5C169434C60062DA5D /* SpringReflectiveNSObject.h */,
-				BA7984A85A138679E4D1D72A /* Logging */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -559,14 +556,6 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
-		BA7984A85A138679E4D1D72A /* Logging */ = {
-			isa = PBXGroup;
-			children = (
-				6BA6CA22169434C60062DA5D /* SpringLogTemplate.h */,
-			);
-			path = Logging;
-			sourceTree = "<group>";
-		};
 		BA7988FF676E9EDD6840234D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,7 +601,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BA6CA61169434C60062DA5D /* SpringLogTemplate.h in Headers */,
 				6BA6CA66169434C60062DA5D /* SpringRXMLElement.h in Headers */,
 				6BA6CA6C169434C60062DA5D /* SpringComponentInitializer.h in Headers */,
 				6BA6CA72169434C60062DA5D /* SpringInjectedParameter.h in Headers */,
