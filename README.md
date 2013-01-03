@@ -270,6 +270,26 @@ container that I'd been meaning to get around to! It's basically feature-complet
 coming days I'll be writing more tests and documentation.
  
  If you're using it, please shoot me an email and let me know.
+
+##Roadmap
+ 
+##Immediate: (coming days)
+
+* API documentation
+* 100% test coverage
+* A sample application. 
+* Better github docs. 
+
+Next: (coming weeks) 
+
+* A block-based, terse code-style of component definition. 
+* A IDE plugin to: a) Install the framework b) provide some tool support.
+* "Annotations" and a test framework, with auto-wiring in test cases.
+
+Later: 
+
+* AOP support. 
+
  
 # Authors
 
