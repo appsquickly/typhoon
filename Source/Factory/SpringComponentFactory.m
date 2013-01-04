@@ -17,6 +17,12 @@
 
 static SpringComponentFactory* defaultComponentFactory;
 
+@interface SpringComponentDefinition (SpringComponentFactory)
+
+@property (nonatomic, strong) NSString* key;
+
+@end
+
 @implementation SpringComponentFactory
 
 
@@ -46,6 +52,11 @@ static SpringComponentFactory* defaultComponentFactory;
     if ([self definitionForKey:definition.key])
     {
         [NSException raise:NSInvalidArgumentException format:@"Key '%@' is already registered.", definition.key];
+    }
+    if ([definition.key length] == 0)
+    {
+        NSString *uuidStr = [[NSProcessInfo processInfo] globallyUniqueString];
+        definition.key = [NSString stringWithFormat:@"%@%@", NSStringFromClass(definition.type), uuidStr];
     }
     [_registry addObject:definition];
 }
@@ -96,6 +107,7 @@ static SpringComponentFactory* defaultComponentFactory;
         [NSException raise:NSInvalidArgumentException format:@"Circular dependency detected: %@", _currentlyResolvingReferences];
     }
     [_currentlyResolvingReferences addObject:key];
+
     SpringComponentDefinition* definition = [self definitionForKey:key];
     if (!definition)
     {
@@ -148,6 +160,7 @@ static SpringComponentFactory* defaultComponentFactory;
     if (instance == nil)
     {
         instance = [self buildInstanceWithDefinition:definition];
+        NSLog(@"Setting %@ for key %@", instance, definition.key);
         [_singletons setObject:instance forKey:definition.key];
     }
     return instance;

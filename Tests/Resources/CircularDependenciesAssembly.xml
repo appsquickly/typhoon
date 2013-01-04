@@ -1,11 +1,13 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<assembly>
+<assembly xmlns="http://jasperblues.github.com/spring-objective-c/schema/assembly"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://jasperblues.github.com/spring-objective-c/schema/assembly
+          http://www.appsquick.ly/schema/assembly.xsd">
 
-    <component class="ClassADependsOnB" key="classA">
+    <component class="ClassADependsOnB" key="classA" scope="prototype">
         <property name="dependencyOnB" ref="classB"/>
     </component>
 
-    <component class="ClassBDependsOnA" key="classB">
+    <component class="ClassBDependsOnA" key="classB" scope="prototype">
         <property name="dependencyOnA" ref="classA"/>
     </component>
 

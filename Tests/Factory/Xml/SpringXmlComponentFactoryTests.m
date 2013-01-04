@@ -100,6 +100,7 @@
     }
     @catch (NSException* e)
     {
+        NSLog(@"%@", [e description]);
         assertThat([e description], equalTo(@"Circular dependency detected: {(\n    classB,\n    classA\n)}"));
     }
 }

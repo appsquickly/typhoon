@@ -37,13 +37,27 @@
 /**
 * Sets a given instance of SpringComponentFactory, as the default factory so that it can be retrieved later with:
 
-    [SpringComponentFactory defaultFactory];
+        [SpringComponentFactory defaultFactory];
 
 */
 - (void)makeDefault;
 
+/**
+* Registers a component into the factory. Components can be declared in any order, the container will work out how to resolve them.
+*/
 - (void) register:(SpringComponentDefinition*)definition;
 
+/**
+* Returns an an instance of the component matching the supplied class or protocol. For example:
+
+        [factory objectForType:[Knight class]];
+        [factory objectForType:@protocol(Quest)];
+
+* @exception NSInvalidArgumentException When no singletons or prototypes match the requested type.
+* @exception NSInvalidArgumentException When when more than one singleton or prototype matches the requested type.
+*
+* @See: allComponentsForType:
+*/
 - (id)componentForType:(id)classOrProtocol;
 
  - (NSArray*)allComponentsForType:(id)classOrProtocol;
