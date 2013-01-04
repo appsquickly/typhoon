@@ -277,7 +277,7 @@ coming days I'll be writing more tests and documentation.
 *Immediate: (coming days, help appreciated!)*
 
 * API documentation
-* 100% test coverage
+* ~100% test coverage. (Currently at 84%)
 * A sample application. 
 * Better github docs. 
 * More type converters
