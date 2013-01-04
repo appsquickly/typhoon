@@ -224,7 +224,7 @@ There's a Spring Objective-C installer and IDE plugin for Xcode coming soon. Mea
 
 *CocoaPods*
 
-Spring Objective-C is also available through <a href="http://cocoapods.org/">CocaoPods</a>
+Spring Objective-C is also available through <a href="http://cocoapods.org/">CocoaPods</a>
 
 # Hacking
 
