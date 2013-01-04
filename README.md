@@ -4,13 +4,11 @@ A Spring-like dependency injection container for Objective-C.
 
 ### What is Dependency Injection? 
 
-Many people have trouble coming to grips with dependency injection, at first. And I think part of the problem is that
+Many people have trouble getting the hang of dependency injection, at first. And I think part of the problem is that
 it is actually so simple that we're inclined to look for something more complicated. "Surely that there has to be
-more to it!", so to say.  
+more to it?!", so to say.  
 
-So, with that in mind, imagine that you had an app that gives weather reports. At first you go for a free weather 
-report provider, but in future you'd like to integrate a weather service with more features. So, like a good
-object-oriented developer, you make a WeatherClient protocol and back it initially with the simple implementation. 
+So, with that in mind, imagine that you're writing an app that gives weather reports. You need a cloud-service ('scuse the pun ;) ) to provide the data, and at first you go for a free weather report provider, but in future you'd like to integrate a weather service with better accuracy and more features. So, like a good object-oriented developer, you make a WeatherClient protocol and back it initially with an implementation based on the free provider. 
 
 ___Without dependency injection, you might have a View Controller thus___: 
 
@@ -23,27 +21,26 @@ ___Without dependency injection, you might have a View Controller thus___:
  {
  //The class using some collaborating class makes the collaborator
  //it might be one of several classes using the weatherClient. 
-  _weatherClient = [GoogleWeatherClient alloc] initWithParameters:xyz];
+  _weatherClient = [GoogleWeatherClientImpl alloc] initWithParameters:xyz];
  }
  return self;
 }
 
 ```
 The thing with this approach is, if you wanted to change to another weather client implementation you'd have to go
-and find all the places in your code that use the old one, and move them over to the new one. 
+and find all the places in your code that use the old one, and move them over to the new one. Each time, making sure to pass in the correct initialization parameters. 
 
 Also, in order to test your view controller, you now have to test the weather client at the same time, and this 
-can get tricky, especially as your application gets more complex. 
+can get tricky, especially as your application gets more complex. Imagine testing Class A, depends on Class B, depends on Class C, depends on .... Not much fun!
 
-So with dependency injection, rather than having objects make their own collaborators we have them supplied
-via an initializer or property setter. 
+So with dependency injection, rather than having objects make their own collaborators we have them supplied to the class instance via an initializer or property setter. 
 
-_WTF? Is that all they mean by 'injected'?_. Yes it is. And because of this, the SimpleWeatherClientImpl is now 
+_WTF? Is that all they mean by 'injected'?_. Yes it is. And because of this, the GoogleWeatherClientImpl is now 
 declared in a single place, and all of the classes that need to use some kind of id&lt;WeatherClient&gt; have it 
-passed in. This means that now: 
+passed in. This means that: 
 
 * If you want to change from one implementation to another, you need only change a single declaration. 
-* Classes are easier to test, because we can supply simple mocks and stubs in place of concrete collaborators. 
+* Classes are easier to test, because we can supply simple mocks and stubs in place of concrete collaborators. Or the real collaborators, but configured to be used in a test scenario.
 * It promotes separation of concerns and a clear contract between classes. 
 * Your app is easier to maintain and can accommodate new requirements. 
 
@@ -61,7 +58,7 @@ spring-style approach for the following reasons:
 * Allows both dependency injection (injection of classes defined in the DI context) as well as configuration 
  management (values that get converted to the required type at runtime).
 * Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a 
-convenient document. 
+convenient document. This modularization is a good thing. Now you know where to look if you need to change something. 
 * Encourages polymorphism and makes it easy to have multiple implementations of the same base-class or protocol. 
  For example, let's say you have a music store application that depends on a payment engine. Spring-style makes it
 easy to define both a master-card payment engine or a visa payment engine.
@@ -71,8 +68,7 @@ easy to define both a master-card payment engine or a visa payment engine.
 ###Isn't Objective-C a dynamic language? 
 
 Yes, and I love categories, method swizzling, duck-typing and all that cool stuff. None of these are replacements for 
-DI. DI is just a design pattern and as I mentioned above, you can do it without a container. Having one is handy 
-though. 
+DI. DI is just a design pattern and as I mentioned above, you can do it without a container. But then you'd have to make sure all of the components are declared in the right order (not necessarily the best order for humans), perform configuration management, keep it neat and so on.  
 
 
 # Usage
@@ -219,10 +215,16 @@ The API and Test Coverage reports below are published by my build server, after 
 
 There's a Spring Objective-C installer and IDE plugin for Xcode coming soon. Meanwhile, to integrate Spring Objective-C into your project do the following: 
 
+*Manual* 
+
 * Copy the files from the 'Source' directory into your project. 
 * Click on the target. 
 * In "other linker flags" add "-lxml2" 
 * In "header search paths" add "${SDKROOT}/usr/include/libxml2" 
+
+*CocoaPods*
+
+Spring Objective-C is also available through <a href="http://cocoapods.org/">CocoaPods</a>
 
 # Hacking
 
@@ -255,7 +257,6 @@ ant
 
 . . . are very welcome. 
 
-If you're using the API shoot me an email and tell me what you're doing with it. 
 
 # Compatibility 
 
@@ -270,6 +271,28 @@ container that I'd been meaning to get around to! It's basically feature-complet
 coming days I'll be writing more tests and documentation.
  
  If you're using it, please shoot me an email and let me know.
+
+#Roadmap
+ 
+*Immediate: (coming days, help appreciated!)*
+
+* API documentation
+* ~100% test coverage. (Currently at 84%)
+* A sample application. 
+* Better github docs. 
+* More type converters
+* PropertyPlaceholderConfigurer
+
+*Next: (coming weeks)*
+
+* A block-based, terse code-style of component definition. 
+* A IDE plugin to: a) Install the framework b) provide some tool support.
+* "Annotations" and a test framework, with auto-wiring in test cases.
+
+*Later:*
+
+* AOP support. 
+
  
 # Authors
 
@@ -277,7 +300,7 @@ coming days I'll be writing more tests and documentation.
          
 ### With contributions from: 
 
-* Your name here!!!!!!
+* Your name here!!!!!!  
 
 
 # LICENSE
