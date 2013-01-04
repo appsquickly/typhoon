@@ -274,12 +274,14 @@ coming days I'll be writing more tests and documentation.
 
 #Roadmap
  
-*Immediate: (coming days)*
+*Immediate: (coming days, help appreciated!)*
 
 * API documentation
 * 100% test coverage
 * A sample application. 
 * Better github docs. 
+* More type converters
+* PropertPlaceholderConfigurer
 
 *Next: (coming weeks)*
 
