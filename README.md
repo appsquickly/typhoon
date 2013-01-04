@@ -58,7 +58,7 @@ spring-style approach for the following reasons:
 * Allows both dependency injection (injection of classes defined in the DI context) as well as configuration 
  management (values that get converted to the required type at runtime).
 * Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a 
-convenient document. Encapsulation is a good thing. Now you know where to look if you need to change something. 
+convenient document. This modularization is a good thing. Now you know where to look if you need to change something. 
 * Encourages polymorphism and makes it easy to have multiple implementations of the same base-class or protocol. 
  For example, let's say you have a music store application that depends on a payment engine. Spring-style makes it
 easy to define both a master-card payment engine or a visa payment engine.
