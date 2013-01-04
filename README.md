@@ -31,7 +31,7 @@ The thing with this approach is, if you wanted to change to another weather clie
 and find all the places in your code that use the old one, and move them over to the new one. Each time, making sure to pass in the correct initialization parameters, and so forth.
 
 Also, in order to test your view controller, you now have to test the weather client at the same time, and this 
-can get tricky, especially as your application gets more complex. 
+can get tricky, especially as your application gets more complex. Imagine testing Class A, depends on Class B, depends on Class C, depends on .... Not much fun!
 
 So with dependency injection, rather than having objects make their own collaborators we have them supplied to the class instance via an initializer or property setter. 
 
