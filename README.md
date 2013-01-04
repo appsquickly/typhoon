@@ -281,7 +281,7 @@ coming days I'll be writing more tests and documentation.
 * A sample application. 
 * Better github docs. 
 * More type converters
-* PropertPlaceholderConfigurer
+* PropertyPlaceholderConfigurer
 
 *Next: (coming weeks)*
 
