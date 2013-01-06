@@ -79,7 +79,7 @@ Just that if you want:
 * Ability to configure components for use in eg test vs production scenarios. 
 * Both initializer and property injection. 
 
-. . then its an approach that already works. 
+. . then its an approach that has already been shown to work.  
 
 Stay tuned for more DI styles in the coming weeks. Including a GUI tool that I'll think you'll really like! 
 
