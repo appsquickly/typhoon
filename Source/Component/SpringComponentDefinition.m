@@ -120,11 +120,6 @@
         [NSException raise:NSInvalidArgumentException format:@"Property 'clazz' is required."];
     }
 
-    if ([_key length] == 0)
-    {
-        [NSException raise:NSInvalidArgumentException format:@"Property 'key' is required."];
-    }
-
 }
 
 @end

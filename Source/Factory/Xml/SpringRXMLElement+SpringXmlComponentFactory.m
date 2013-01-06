@@ -29,7 +29,7 @@
     {
         [NSException raise:NSInvalidArgumentException format:@"Class '%@' can't be resolved.", [self attribute:@"class"]];
     }
-    NSString* key = [self createOrRetrieveIdComponentId];
+    NSString* key = [self attribute:@"key"];
     NSString* factory = [self attributeOrNilIfEmpty:@"factory-component"];
     SpringComponentDefinition* definition = [[SpringComponentDefinition alloc] initWithClazz:clazz key:key factoryComponent:factory];
 
@@ -125,15 +125,7 @@
     }
 }
 
-- (NSString*)createOrRetrieveIdComponentId
-{
-    NSString* componentId = [self attribute:@"key"];
-    if (componentId == nil)
-    {
-        [NSException raise:NSInternalInconsistencyException format:@"$$$$$$$$$$$$$$ Need to implement support for nil id"];
-    }
-    return componentId;
-}
+
 
 - (void)parseComponentDefinitionChildren:(SpringComponentDefinition*)componentDefinition
 {
