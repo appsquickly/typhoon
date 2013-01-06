@@ -86,10 +86,11 @@
 {
     if (![classOrInstance respondsToSelector:_selector])
     {
+        NSString* typeType = self.isClassMethod ? @"Class" : @"Instance";
+        NSString* typeName = self.isClassMethod ? NSStringFromClass(classOrInstance) : NSStringFromClass([classOrInstance class]);
         [NSException raise:NSInvalidArgumentException
-                    format:@"Class method '%@' not found on '%@'. Did you include the required ':' characters to signify arguments?",
-                           NSStringFromSelector(_selector),
-                           self.isClassMethod ? NSStringFromClass(classOrInstance) : NSStringFromClass([classOrInstance class])];
+                    format:@"%@ method '%@' not found on '%@'. Did you include the required ':' characters to signify arguments?", typeType,
+                           NSStringFromSelector(_selector), typeName];
     }
 
     NSInvocation* invocation;
