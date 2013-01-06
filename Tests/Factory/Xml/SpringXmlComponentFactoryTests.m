@@ -26,12 +26,13 @@
 - (void)setUp
 {
     _componentFactory = [[SpringXmlComponentFactory alloc] initWithConfigFileName:@"MiddleAgesAssembly.xml"];
+    [_componentFactory makeDefault];
 }
 
 
 - (void)test_property_injection
 {
-    Knight* knight = [_componentFactory componentForKey:@"knight"];
+    Knight* knight = [[SpringXmlComponentFactory defaultFactory] componentForKey:@"knight"];
 
     assertThat(knight, notNilValue());
     assertThat(knight.quest, notNilValue());
@@ -43,7 +44,7 @@
 
 - (void)test_mixed_initializer_and_property_injection
 {
-    Knight* anotherKnight = [_componentFactory componentForKey:@"anotherKnight"];
+    Knight* anotherKnight = [[SpringXmlComponentFactory defaultFactory] componentForKey:@"anotherKnight"];
     NSLog(@"Here's another knight: %@", anotherKnight);
     assertThat(anotherKnight.quest, notNilValue());
     assertThatBool(anotherKnight.hasHorseWillTravel, equalToBool(YES));

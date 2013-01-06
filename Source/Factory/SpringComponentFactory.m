@@ -15,7 +15,6 @@
 #import "SpringComponentDefinition.h"
 #import "SpringComponentFactory+InstanceBuilder.h"
 
-static SpringComponentFactory* defaultComponentFactory;
 
 @interface SpringComponentDefinition (SpringComponentFactory)
 
@@ -25,11 +24,13 @@ static SpringComponentFactory* defaultComponentFactory;
 
 @implementation SpringComponentFactory
 
+static SpringComponentFactory* defaultFactory;
+
 
 /* =========================================================== Class Methods ============================================================ */
 + (SpringComponentFactory*)defaultFactory
 {
-    return defaultComponentFactory;
+    return defaultFactory;
 }
 
 /* ============================================================ Initializers ============================================================ */
@@ -120,14 +121,11 @@ static SpringComponentFactory* defaultComponentFactory;
 
 - (void)makeDefault
 {
-    if (!defaultComponentFactory)
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
     {
-        defaultComponentFactory = self;
-    }
-    else
-    {
-        [NSException raise:NSInternalInconsistencyException format:@"The default component factory has already been set."];
-    }
+        defaultFactory = self;
+    });
 }
 
 

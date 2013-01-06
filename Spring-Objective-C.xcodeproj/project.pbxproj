@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6B46752416894EB70049404E /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B46752116894D910049404E /* OCHamcrest.framework */; };
-		6B467526168950510049404E /* OCHamcrest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6B46752116894D910049404E /* OCHamcrest.framework */; };
+		6B467526168950510049404E /* OCHamcrest.framework in Install OCHamcrest */ = {isa = PBXBuildFile; fileRef = 6B46752116894D910049404E /* OCHamcrest.framework */; };
 		6BA403ED168DF30600A89433 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA403E9168DF13F00A89433 /* libxml2.dylib */; };
 		6BA6CA5D169434C60062DA5D /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6CA20169434C60062DA5D /* OCHamcrest.framework */; };
 		6BA6CA5E169434C60062DA5D /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA6CA20169434C60062DA5D /* OCHamcrest.framework */; };
@@ -115,37 +115,28 @@
 		6BCBEC4A169409BC0096F861 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCBEC49169409BC0096F861 /* libz.dylib */; };
 		6BD6F9A1168936D500FE2774 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD6F984168935FB00FE2774 /* SenTestingKit.framework */; };
 		6BD6F9A2168936D500FE2774 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD6F986168935FB00FE2774 /* Cocoa.framework */; };
-		BA7984831FBA879932CC8360 /* ClassADependsOnB.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7988E7A0B25288092F2A6D /* ClassADependsOnB.h */; };
 		BA79859119F90487480416FC /* ClassADependsOnB.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7983D2CEC00D7FAF64C182 /* ClassADependsOnB.m */; };
-		BA79862624FE5AEE47CC28A4 /* SwordFactory.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798FC85927B67C2C25C725 /* SwordFactory.h */; };
-		BA79893ADF8224DC6381B1F6 /* ClassBDependsOnA.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7982CAB715A6777CA9E5F9 /* ClassBDependsOnA.h */; };
 		BA7989CF067CB29C461CC402 /* SpringXmlComponentFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798754085BEEED840E5182 /* SpringXmlComponentFactoryTests.m */; };
 		BA7989DF446D51BAB908086B /* CircularDependenciesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = BA798B67C3EBDEA3B67B0CA9 /* CircularDependenciesAssembly.xml */; };
 		BA798A741A5809BFBCDEFC10 /* SpringTypeConverterRegistryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798ACBBE11925AFC181DA2 /* SpringTypeConverterRegistryTests.m */; };
 		BA798B7F6AA60453902B2418 /* Sword.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7989FB1913BE74D1F93913 /* Sword.m */; };
 		BA798BB70C1A71EDF5DABE5F /* ClassBDependsOnA.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798A2E10EABDBD7912DBE5 /* ClassBDependsOnA.m */; };
-		BA798DF233819828A039274D /* Quest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798E7749DFCE6A88093CCE /* Quest.h */; };
 		BA798E0B7B2B1A387D394030 /* ExceptionTestAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = BA798AE0738703EA3204887F /* ExceptionTestAssembly.xml */; };
 		BA798E1AB198474D577CB312 /* MiddleAgesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = BA798386B768F0D4DEECA5D5 /* MiddleAgesAssembly.xml */; };
 		BA798E81CDB3C2DC9307EF0E /* SwordFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798580D7B774719BB23661 /* SwordFactory.m */; };
 		BA798F582042629F5486FB72 /* RXMLElement+SpringXmlComponentFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79847BA473D646F208D8AB /* RXMLElement+SpringXmlComponentFactoryTests.m */; };
-		BA798FF82E290811436984A2 /* Sword.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7984166797DDC512D79B49 /* Sword.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		6B467525168950310049404E /* CopyFiles */ = {
+		6B467525168950310049404E /* Install OCHamcrest */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				6B467526168950510049404E /* OCHamcrest.framework in CopyFiles */,
-				BA798DF233819828A039274D /* Quest.h in CopyFiles */,
-				BA7984831FBA879932CC8360 /* ClassADependsOnB.h in CopyFiles */,
-				BA79893ADF8224DC6381B1F6 /* ClassBDependsOnA.h in CopyFiles */,
-				BA79862624FE5AEE47CC28A4 /* SwordFactory.h in CopyFiles */,
-				BA798FF82E290811436984A2 /* Sword.h in CopyFiles */,
+				6B467526168950510049404E /* OCHamcrest.framework in Install OCHamcrest */,
 			);
+			name = "Install OCHamcrest";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6BCBEB9A169408990096F861 /* CopyFiles */ = {
@@ -675,7 +666,7 @@
 				6BD6F99B168936D500FE2774 /* Sources */,
 				6BD6F99C168936D500FE2774 /* Frameworks */,
 				6BD6F99D168936D500FE2774 /* Resources */,
-				6B467525168950310049404E /* CopyFiles */,
+				6B467525168950310049404E /* Install OCHamcrest */,
 				6BD6F99E168936D500FE2774 /* ShellScript */,
 			);
 			buildRules = (
