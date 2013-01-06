@@ -75,9 +75,7 @@ injection containers. So the question becomes which approach do you like best?
 
 ### Why XML? 
 
-I had 10 days to get a DI container working over the holiday period. I'm not saying XML is the ultimate destination. 
-
-___But I think it's already an improvement if you want: ___
+I'm not saying XML is the ultimate destination. ___But I think it's already an improvement if you want:___
 
 * Dependencies declared in any order. (The order that makes sense).  
 * Modularization of application assembly details.  
