@@ -77,7 +77,7 @@ containers. So the question becomes which approach do you like best?
 
 I had 10 days to get a DI container working over the holiday period. I'm not saying XML is the ultimate destination. 
 
-But I think it's already an improvement if you want: 
+***But I think it's already an improvement if you want: ***
 
 * Dependencies declared in any order. (The order that makes sense).  
 * Modularization of application assembly details.  
