@@ -88,7 +88,8 @@ Stay tuned for more DI styles in the coming weeks. Including a GUI tool that I'l
 
 # Usage
 
-##New! Check out the example at: https://github.com/jasperblues/spring-objective-c-example
+##New! 
+Check out the example at: https://github.com/jasperblues/spring-objective-c-example
 
 ### Defining Components
 
