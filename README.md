@@ -71,15 +71,19 @@ patterns is that they're often relevant in more than one language.
 
 Besides, people said that <a href="http://stackoverflow.com/questions/309711/dependency-injection-framework-for-cocoa">
 you don't need DI in Objective-C</a> three years ago. Now there are around 15 different dependency injection 
-containers. So the question becomes which approach do you like best? I'm not saying XML is the ultimate destination. 
-Just that if you want: 
+containers. So the question becomes which approach do you like best? 
+
+### Why XML? 
+
+I had 10 days to get a DI container working over the holiday period. I'm not saying XML is the ultimate destination. 
+
+But I think it's already an improvement if you want: 
 
 * Dependencies declared in any order. (The order that makes sense).  
-* Modularization of application assembly details. 
+* Modularization of application assembly details.  
 * Ability to configure components for use in eg test vs production scenarios. 
 * Both initializer and property injection. 
 
-. . then its an approach that has already been shown to work.  
 
 Stay tuned for more DI styles in the coming weeks. Including a GUI tool that I'll think you'll really like! 
 
