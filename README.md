@@ -2,6 +2,9 @@
 
 A Spring-like dependency injection container for Objective-C.
 
+##New! 
+Check out the example at: https://github.com/jasperblues/spring-objective-c-example
+
 ### What is Dependency Injection? 
 
 Many people have trouble getting the hang of dependency injection, at first. And I think part of the problem is that
@@ -44,8 +47,6 @@ passed in. This means that:
 * It promotes separation of concerns and a clear contract between classes. 
 * Your app is easier to maintain and can accommodate new requirements. 
 
-You don't need a depencency injection container to use this pattern, but as shown below it helps. 
-
 
 ### Why Spring for Objective-C?
 
@@ -67,8 +68,25 @@ easy to define both a master-card payment engine or a visa payment engine.
 
 ###Isn't Objective-C a dynamic language? 
 
-Yes, and I love categories, method swizzling, duck-typing and all that cool stuff. None of these are replacements for 
-DI. DI is just a design pattern and as I mentioned above, you can do it without a container. But then you'd have to make sure all of the components are declared in the right order (not necessarily the best order for humans), perform configuration management, keep it neat and so on.  
+Yes, and I love categories, method swizzling, duck-typing, class clusters, accociative references in categories, and 
+all that cool stuff. None of these are replacements for DI. DI is just a design pattern, and the thing about design
+patterns is that they're often relevant in more than one language. 
+
+Besides, people said that <a href="http://stackoverflow.com/questions/309711/dependency-injection-framework-for-cocoa">
+you don't need Dependency Injection in Objective-C</a> three years ago. Now there are around 15 different dependency 
+injection containers. So the question becomes which approach do you like best? 
+
+### Why XML? 
+
+I'm not saying XML is the ultimate destination. ___But I think it's already an improvement if you want:___
+
+* Dependencies declared in any order. (The order that makes sense).  
+* Non-invasive.
+* Modularization of application assembly details.  
+* Ability to configure components for use in eg test vs production scenarios. 
+* Both initializer and property injection. 
+
+Stay tuned for more DI styles in the coming weeks. Including a GUI tool that I'll think you'll really like! 
 
 
 # Usage
