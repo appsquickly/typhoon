@@ -78,10 +78,10 @@ injection containers. So the question becomes which approach do you like best?
 I'm not saying XML is the ultimate destination. ___But I think it's already an improvement if you want:___
 
 * Dependencies declared in any order. (The order that makes sense).  
+* Non-invasive.
 * Modularization of application assembly details.  
 * Ability to configure components for use in eg test vs production scenarios. 
 * Both initializer and property injection. 
-
 
 Stay tuned for more DI styles in the coming weeks. Including a GUI tool that I'll think you'll really like! 
 
