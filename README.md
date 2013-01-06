@@ -65,8 +65,23 @@ easy to define both a master-card payment engine or a visa payment engine.
 
 ###Isn't Objective-C a dynamic language? 
 
-Yes, and I love categories, method swizzling, duck-typing and all that cool stuff. None of these are replacements for 
-DI. DI is just a design pattern and you can do it without a container. But then you'd have to make sure all of the components are declared in the right order (not necessarily the best order for humans), perform configuration management, keep it neat and so on.  
+Yes, and I love categories, method swizzling, duck-typing, class clusters, accociative references in categories, and 
+all that cool stuff. None of these are replacements for DI. DI is just a design pattern, and the thing about design
+patterns is that they're often relevant in more than one language. 
+
+Besides, people said that <a href="http://stackoverflow.com/questions/309711/dependency-injection-framework-for-cocoa">
+you don't need DI in Objective-C</a> three years ago. Now there are around 15 different dependency injection 
+containers. So the question becomes which approach do you like best? I'm not saying XML is the ultimate destination. 
+Just that if you want: 
+
+* Dependencies declared in any order. (The order that makes sense).  
+* Modularization of application assembly details. 
+* Ability to configure components for use in eg test vs production scenarios. 
+* Both initializer and property injection. 
+
+. . then its an approach that already works. 
+
+Stay tuned for more DI styles in the coming weeks. Including a GUI tool that I'll think you'll really like! 
 
 
 # Usage
