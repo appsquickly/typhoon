@@ -2,6 +2,9 @@
 
 A Spring-like dependency injection container for Objective-C.
 
+##New! 
+Check out the example at: https://github.com/jasperblues/spring-objective-c-example
+
 ### What is Dependency Injection? 
 
 Many people have trouble getting the hang of dependency injection, at first. And I think part of the problem is that
@@ -87,9 +90,6 @@ Stay tuned for more DI styles in the coming weeks. Including a GUI tool that I'l
 
 
 # Usage
-
-##New! 
-Check out the example at: https://github.com/jasperblues/spring-objective-c-example
 
 ### Defining Components
 
