@@ -76,6 +76,8 @@ Besides, people said that <a href="http://stackoverflow.com/questions/309711/dep
 you don't need Dependency Injection in Objective-C</a> three years ago. Now there are around 15 different dependency 
 injection containers. So the question becomes which approach do you like best? 
 
+You can even do dependency injection without a container. (It's simple, after all). Having a container helps though. 
+
 ### Why XML? 
 
 I'm not saying XML is the ultimate destination. ___But I think it's already an improvement if you want:___
@@ -85,6 +87,9 @@ I'm not saying XML is the ultimate destination. ___But I think it's already an i
 * Modularization of application assembly details.  
 * Ability to configure components for use in eg test vs production scenarios. 
 * Both initializer and property injection. 
+
+Also, XML with GUI tools takes less CPU and memory on constrained devices than a usable DSL. This is the approach 
+Apple takes with Story Boards and Interface Builder. 
 
 Stay tuned for more DI styles in the coming weeks. Including a GUI tool that I'll think you'll really like! 
 
