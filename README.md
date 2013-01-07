@@ -126,9 +126,9 @@ The API and Test Coverage reports below are published by my build server, after 
 
 * Look at and contribute to the <a href="https://github.com/jasperblues/spring-objective-c/wiki/Roadmap">roadmap</a> here.
 
-* Frequently Asked Questions
+### Frequently Asked Questions
 
-are <a href="https://github.com/jasperblues/spring-objective-c/wiki/FAQ">here</a>.
+. . . are <a href="https://github.com/jasperblues/spring-objective-c/wiki/FAQ">here</a>.
 
 
 # Who's using it? 
