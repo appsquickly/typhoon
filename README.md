@@ -39,7 +39,7 @@ to pass in the correct initialization parameters.
 A very common approach is to have a centrally configured singleton:
 
 ```objective-c  
-  _weatherClient = [GoogleWeatherClient sharedInstance];
+_weatherClient = [GoogleWeatherClient sharedInstance];
 ```  
 
 With either of the above approaches, in order to test your view controller, you now have to test its collaborating 
