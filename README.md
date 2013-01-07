@@ -71,10 +71,10 @@ classes that need to use some kind of id&lt;WeatherClient&gt; will have it passe
 Well. . . it's not necessarily Spring. Just my personal take on what Dependency Injection should look like in 
 Objective-C. I guess that I could've called it ___'The Typhoon Framework'.___ 
 
-First of all, based on the above definition - you can do dependency injection without a container, if you want to. I 
-think it helps to have one though. In Objective-C land, there have been a couple of dependency injection containers that follow in the footsteps of 
-Google Guice. The authors have done a great job (Objection is especially good), but I wanted an approach that
-allows the following: 
+First of all, based on the above definition - you can do dependency injection without a container, if you want to.  
+It helps to have one though. In Objective-C land, there have been a couple of dependency injection containers that 
+follow in the footsteps of Google Guice. The authors have done a great job (Objection is especially good), however I 
+wanted an approach that allows the following: 
 
 * Dependencies declared in any order. (The order that makes sense to humans).
 
