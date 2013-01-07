@@ -62,7 +62,7 @@ allows the following:
 * Dependencies declared in any order. (The order that makes sense to humans).
 
 * Allows both dependency injection (injection of classes defined in the DI context) as well as configuration 
- management (values that get converted to the required type at runtime).
+ management (values that get converted to the required type at runtime). Because this allows. . . 
  
 * Ability to configure components for use in eg test vs production scenarios. This faciliates a good compromise 
 between integration testing and pure unit testing. 
