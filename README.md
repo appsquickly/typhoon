@@ -51,22 +51,37 @@ passed in. This means that:
 
 ### Why Spring for Objective-C?
 
-Spring is a very popular dependency injection container that is available for Java and .NET, as well as ActionScript.  
+Well. . . it's not really Spring. Just my personal take on Dependency Injection be for Objective-C. I guess 
+I could've called it 'The Typhoon Framework'. 
+
 
 In Objective-C land, there have been a couple of dependency injection containers that follow in the footsteps of 
-Google Guice. The authors have done a great job (objection is especially good), but personally I prefer a 
-spring-style approach for the following reasons:
+Google Guice. The authors have done a great job (objection is especially good), but I wanted an approach that
+allows the following: 
+
+* Dependencies declared in any order. (The order that makes sense).
 
 * Allows both dependency injection (injection of classes defined in the DI context) as well as configuration 
  management (values that get converted to the required type at runtime).
+ 
 * Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a 
-convenient document. This modularization is a good thing. Now you know where to look if you need to change something. 
-* Encourages polymorphism and makes it easy to have multiple implementations of the same base-class or protocol. 
- For example, let's say you have a music store application that depends on a payment engine. Spring-style makes it
-easy to define both a master-card payment engine or a visa payment engine.
-* Supports dependency injection by type (definitions satisfying a class or protocol) as well as by reference. 
-* Also supports "annotation" (aka Macro) and code/DSL style injection.
+convenient document. Now you know where to look if you need to change something. 
 
+* Non-invasive.
+
+* Encourages polymorphism and makes it easy to have multiple implementations of the same base-class or protocol. 
+Supports by auto-wiring and wiring by reference. 
+
+* Supports dependency injection by type (definitions satisfying a class or protocol) as well as by reference. 
+
+* Supports both initializer and property injection.
+
+* Ability to configure components for use in eg test vs production scenarios.
+
+
+. . and also a container that supports dependencies declared in any order. Initially I've provided an XML
+implementation, because I believe its the fastest way I could satisfactorily meet the above goals.  I have other 
+DI-styles planned, included GUI support. (More on this in <a href="https://github.com/jasperblues/spring-objective-c/wiki/FAQ">the faq</a>.
 
 
 
