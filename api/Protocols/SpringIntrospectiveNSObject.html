@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>NSObject(SpringReflectionUtils) Category Reference</title>
+		<title>SpringIntrospectiveNSObject Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">NSObject(SpringReflectionUtils) Category Reference</h1>
+				<h1 class="hideInXcode">SpringIntrospectiveNSObject Protocol Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -42,13 +42,7 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/parameterNamesForSelector:">&nbsp;&nbsp;&nbsp;&nbsp;- parameterNamesForSelector:</option>
-	
 	<option value="//api/name/setterForPropertyWithName:">&nbsp;&nbsp;&nbsp;&nbsp;- setterForPropertyWithName:</option>
-	
-	<option value="//api/name/typeCodesForSelector:">&nbsp;&nbsp;&nbsp;&nbsp;- typeCodesForSelector:</option>
-	
-	<option value="//api/name/typeCodesForSelector:onClass:">&nbsp;&nbsp;&nbsp;&nbsp;- typeCodesForSelector:onClass:</option>
 	
 	<option value="//api/name/typeForPropertyWithName:">&nbsp;&nbsp;&nbsp;&nbsp;- typeForPropertyWithName:</option>
 	
@@ -78,13 +72,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parameterNamesForSelector:">parameterNamesForSelector:</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setterForPropertyWithName:">setterForPropertyWithName:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/typeCodesForSelector:">typeCodesForSelector:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/typeCodesForSelector:onClass:">typeCodesForSelector:onClass:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/typeForPropertyWithName:">typeForPropertyWithName:</a></span></li>
 	
@@ -95,7 +83,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="NSObject(SpringReflectionUtils) Category Reference" name="top"></a>
+				<a title="SpringIntrospectiveNSObject Protocol Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -104,7 +92,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">NSObject(SpringReflectionUtils) Category Reference</h1>
+						<h1 class="title title-header">SpringIntrospectiveNSObject Protocol Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -112,10 +100,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Conforms to</td>
-	<td class="specification-value"><a href="../Protocols/SpringReflectiveNSObject.html">SpringReflectiveNSObject</a></td>
+	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">NSObject+SpringReflectionUtils.h</td>
+	<td class="specification-value">SpringIntrospectiveNSObject.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -136,38 +124,17 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/typeForPropertyWithName:">&ndash;&nbsp;typeForPropertyWithName:</a></code>
-		<span class="tooltip"><p>Returns a Class object or <a href="../Classes/SpringTypeDescriptor.html"><code>SpringTypeDescriptor</code></a> in the case of a primitive type.</p></span>
+		
 	</span>
 	
-	
+	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setterForPropertyWithName:">&ndash;&nbsp;setterForPropertyWithName:</a></code>
 		
 	</span>
 	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/parameterNamesForSelector:">&ndash;&nbsp;parameterNamesForSelector:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/typeCodesForSelector:">&ndash;&nbsp;typeCodesForSelector:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/typeCodesForSelector:onClass:">&ndash;&nbsp;typeCodesForSelector:onClass:</a></code>
-		
-	</span>
-	
-	
+	<span class="task-item-suffix">required method</span>
 </li>
 						</ul>
 						
@@ -186,17 +153,6 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/parameterNamesForSelector:" title="parameterNamesForSelector:"></a>
-	<h3 class="subsubtitle method-title">parameterNamesForSelector:</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>- (NSArray *)parameterNamesForSelector:(SEL)<em>selector</em></code></div>
-
-    
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/setterForPropertyWithName:" title="setterForPropertyWithName:"></a>
 	<h3 class="subsubtitle method-title">setterForPropertyWithName:</h3>
 	
@@ -208,66 +164,14 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/typeCodesForSelector:" title="typeCodesForSelector:"></a>
-	<h3 class="subsubtitle method-title">typeCodesForSelector:</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>- (NSArray *)typeCodesForSelector:(SEL)<em>selector</em></code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/typeCodesForSelector:onClass:" title="typeCodesForSelector:onClass:"></a>
-	<h3 class="subsubtitle method-title">typeCodesForSelector:onClass:</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>- (NSArray *)typeCodesForSelector:(SEL)<em>selector</em> onClass:(Class)<em>class</em></code></div>
-
-    
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/typeForPropertyWithName:" title="typeForPropertyWithName:"></a>
 	<h3 class="subsubtitle method-title">typeForPropertyWithName:</h3>
 	
 	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns a Class object or <a href="../Classes/SpringTypeDescriptor.html"><code>SpringTypeDescriptor</code></a> in the case of a primitive type.</p>
-	</div>		
-	
-    
 
 	<div class="method-subsection method-declaration"><code>- (SpringTypeDescriptor *)typeForPropertyWithName:(NSString *)<em>propertyName</em></code></div>
 
     
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns a Class object or <a href="../Classes/SpringTypeDescriptor.html"><code>SpringTypeDescriptor</code></a> in the case of a primitive type.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">NSObject+SpringReflectionUtils.h</code><br />
-	</div>				
-	
-	
 </div>
 						
 					</div>

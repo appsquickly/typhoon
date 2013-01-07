@@ -89,7 +89,7 @@
 <span class="lineNum">      31 </span>            : 
 <span class="lineNum">      32 </span><span class="lineCov">         33 : - (id)buildInstanceWithDefinition:(SpringComponentDefinition*)definition</span>
 <span class="lineNum">      33 </span>            : {
-<span class="lineNum">      34 </span><span class="lineCov">         33 :     id &lt;SpringReflectiveNSObject&gt; instance;</span>
+<span class="lineNum">      34 </span><span class="lineCov">         33 :     id &lt;SpringIntrospectiveNSObject&gt; instance;</span>
 <span class="lineNum">      35 </span>            : 
 <span class="lineNum">      36 </span><span class="lineCov">         33 :     if (definition.factoryComponent)</span>
 <span class="lineNum">      37 </span>            :     {
@@ -160,7 +160,7 @@
 <span class="lineNum">     102 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     103 </span>            : #pragma mark - Property Injection
 <span class="lineNum">     104 </span>            : 
-<span class="lineNum">     105 </span>            : - (void)injectPropertyDependenciesOn:(id &lt;SpringReflectiveNSObject&gt;)instance withDefinition:(SpringComponentDefinition*)definition
+<span class="lineNum">     105 </span>            : - (void)injectPropertyDependenciesOn:(id &lt;SpringIntrospectiveNSObject&gt;)instance withDefinition:(SpringComponentDefinition*)definition
 <span class="lineNum">     106 </span>            : {
 <span class="lineNum">     107 </span><span class="lineCov">         30 :     [self doBeforePropertyInjectionOn:instance withDefinition:definition];</span>
 <span class="lineNum">     108 </span>            : 
@@ -179,7 +179,7 @@
 <span class="lineNum">     121 </span><span class="lineCov">         13 :     [self doAfterPropertyInjectionOn:instance withDefinition:definition];</span>
 <span class="lineNum">     122 </span>            : }
 <span class="lineNum">     123 </span><span class="lineCov">         24 : </span>
-<span class="lineNum">     124 </span><span class="lineCov">         24 : - (void)doBeforePropertyInjectionOn:(id &lt;SpringReflectiveNSObject&gt;)instance withDefinition:(SpringComponentDefinition*)definition</span>
+<span class="lineNum">     124 </span><span class="lineCov">         24 : - (void)doBeforePropertyInjectionOn:(id &lt;SpringIntrospectiveNSObject&gt;)instance withDefinition:(SpringComponentDefinition*)definition</span>
 <span class="lineNum">     125 </span>            : {
 <span class="lineNum">     126 </span>            :     if ([instance conformsToProtocol:@protocol(SpringPropertyInjectionDelegate)])
 <span class="lineNum">     127 </span><span class="lineCov">         30 :     {</span>
@@ -191,7 +191,7 @@
 <span class="lineNum">     133 </span><span class="lineCov">         30 :     }</span>
 <span class="lineNum">     134 </span>            : }
 <span class="lineNum">     135 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">     136 </span><span class="lineCov">          2 : - (void)doPropertyInjection:(id &lt;SpringReflectiveNSObject&gt;)instance property:(id &lt;SpringInjectedProperty&gt;)property</span>
+<span class="lineNum">     136 </span><span class="lineCov">          2 : - (void)doPropertyInjection:(id &lt;SpringIntrospectiveNSObject&gt;)instance property:(id &lt;SpringInjectedProperty&gt;)property</span>
 <span class="lineNum">     137 </span><span class="lineCov">         30 :              typeDescriptor:(SpringTypeDescriptor*)typeDescriptor</span>
 <span class="lineNum">     138 </span>            : {
 <span class="lineNum">     139 </span>            :     if (property.type == SpringPropertyInjectionByTypeType)
@@ -222,7 +222,7 @@
 <span class="lineNum">     164 </span><span class="lineCov">          2 :     }</span>
 <span class="lineNum">     165 </span><span class="lineCov">          2 : }</span>
 <span class="lineNum">     166 </span><span class="lineCov">          2 : </span>
-<span class="lineNum">     167 </span><span class="lineCov">          2 : - (void)doAfterPropertyInjectionOn:(id &lt;SpringReflectiveNSObject&gt;)instance withDefinition:(SpringComponentDefinition*)definition</span>
+<span class="lineNum">     167 </span><span class="lineCov">          2 : - (void)doAfterPropertyInjectionOn:(id &lt;SpringIntrospectiveNSObject&gt;)instance withDefinition:(SpringComponentDefinition*)definition</span>
 <span class="lineNum">     168 </span><span class="lineCov">          5 : {</span>
 <span class="lineNum">     169 </span><span class="lineCov">          8 :     if ([instance conformsToProtocol:@protocol(SpringPropertyInjectionDelegate)])</span>
 <span class="lineNum">     170 </span>            :     {

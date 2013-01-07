@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -62,6 +64,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -125,6 +129,14 @@
 					
 					
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Registry of type converters, with special treatment for primitives.</p>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -139,28 +151,29 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/shared">+&nbsp;shared</a></code>
-		
+		<span class="tooltip"><p>Returns the shard/default registry instance used by the container.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/converterFor:">&ndash;&nbsp;converterFor:</a></code>
-		
+		<span class="tooltip"><p>Returns the type converter for the given type either a Class object or @protocol(SomeType).</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/primitiveTypeConverter">&ndash;&nbsp;primitiveTypeConverter</a></code>
-		
+		<span class="tooltip"><p>Returns the type converter for primitives &ndash; BOOLS, ints, floats, etc.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/register:forClassOrProtocol:">&ndash;&nbsp;register:forClassOrProtocol:</a></code>
-		
+		<span class="tooltip"><p>Registers a converter for the given type (either a Class object or @protocol. If a converter exists for the type,
+raises an exception.</p></span>
 	</span>
 	
 	
@@ -184,10 +197,40 @@
 	<h3 class="subsubtitle method-title">shared</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the shard/default registry instance used by the container.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>+ (SpringTypeConverterRegistry *)shared</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the shard/default registry instance used by the container.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SpringTypeConverterRegistry.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>
@@ -203,10 +246,40 @@
 	<h3 class="subsubtitle method-title">converterFor:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the type converter for the given type either a Class object or @protocol(SomeType).</p>
+	</div>		
+	
+    
 
-	<div class="method-subsection method-declaration"><code>- (id&lt;SpringTypeConverter&gt;)converterFor:(id)<em>typeDescriptor</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id&lt;SpringTypeConverter&gt;)converterFor:(id)<em>classOrProtocol</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the type converter for the given type either a Class object or @protocol(SomeType).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SpringTypeConverterRegistry.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -214,10 +287,40 @@
 	<h3 class="subsubtitle method-title">primitiveTypeConverter</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the type converter for primitives &ndash; BOOLS, ints, floats, etc.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (SpringPrimitiveTypeConverter *)primitiveTypeConverter</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the type converter for primitives &ndash; BOOLS, ints, floats, etc.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SpringTypeConverterRegistry.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -225,10 +328,42 @@
 	<h3 class="subsubtitle method-title">register:forClassOrProtocol:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Registers a converter for the given type (either a Class object or @protocol. If a converter exists for the type,
+raises an exception.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (void)register:(id&lt;SpringTypeConverter&gt;)<em>converter</em> forClassOrProtocol:(id)<em>classOrProtocol</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Registers a converter for the given type (either a Class object or @protocol. If a converter exists for the type,
+raises an exception.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SpringTypeConverterRegistry.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>

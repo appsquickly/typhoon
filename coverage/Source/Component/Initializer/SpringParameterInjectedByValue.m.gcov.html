@@ -72,7 +72,7 @@
 <span class="lineNum">      14 </span>            : #import &quot;SpringParameterInjectedByValue.h&quot;
 <span class="lineNum">      15 </span>            : #import &quot;SpringComponentInitializer.h&quot;
 <span class="lineNum">      16 </span>            : #import &quot;SpringTypeDescriptor.h&quot;
-<span class="lineNum">      17 </span>            : #import &quot;SpringReflectionUtils.h&quot;
+<span class="lineNum">      17 </span>            : #import &quot;SpringIntrospectionUtils.h&quot;
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span><span class="lineCov">          3 : @implementation SpringParameterInjectedByValue</span>
@@ -107,7 +107,7 @@
 <span class="lineNum">      49 </span>            :     {
 <span class="lineNum">      50 </span>            :         clazz = [classOrInstance class];
 <span class="lineNum">      51 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">      52 </span>            :     NSArray* typeCodes = [SpringReflectionUtils typeCodesForSelector:_initializer.selector ofClass:clazz isClassMethod:isClass];
+<span class="lineNum">      52 </span>            :     NSArray* typeCodes = [SpringIntrospectionUtils typeCodesForSelector:_initializer.selector ofClass:clazz isClassMethod:isClass];
 <span class="lineNum">      53 </span><span class="lineCov">          2 : </span>
 <span class="lineNum">      54 </span>            :     if ([[typeCodes objectAtIndex:_index] isEqualToString:@&quot;@&quot;])
 <span class="lineNum">      55 </span><span class="lineCov">          2 :     {</span>

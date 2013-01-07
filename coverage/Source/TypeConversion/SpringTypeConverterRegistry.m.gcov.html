@@ -110,14 +110,14 @@
 <span class="lineNum">      52 </span>            : 
 <span class="lineNum">      53 </span>            : 
 <span class="lineNum">      54 </span>            : /* ========================================================== Interface Methods ========================================================= */
-<span class="lineNum">      55 </span><span class="lineCov">          6 : - (id &lt;SpringTypeConverter&gt;)converterFor:(SpringTypeDescriptor*)typeDescriptor</span>
+<span class="lineNum">      55 </span><span class="lineCov">          6 : - (id &lt;SpringTypeConverter&gt;)converterFor:(id)classOrProtocol</span>
 <span class="lineNum">      56 </span>            : {
 <span class="lineNum">      57 </span>            : 
-<span class="lineNum">      58 </span><span class="lineCov">          6 :     id &lt;SpringTypeConverter&gt; converter = [_typeConverters objectForKey:[typeDescriptor classOrProtocol]];</span>
+<span class="lineNum">      58 </span><span class="lineCov">          6 :     id &lt;SpringTypeConverter&gt; converter = [_typeConverters objectForKey:[classOrProtocol classOrProtocol]];</span>
 <span class="lineNum">      59 </span><span class="lineCov">          6 :     if (!converter)</span>
 <span class="lineNum">      60 </span>            :     {
 <span class="lineNum">      61 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;No type converter registered for type: '%@'.&quot;,</span>
-<span class="lineNum">      62 </span>            :                                                              [typeDescriptor classOrProtocol]];
+<span class="lineNum">      62 </span>            :                                                              [classOrProtocol classOrProtocol]];
 <span class="lineNum">      63 </span>            : 
 <span class="lineNum">      64 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">      65 </span><span class="lineCov">          5 :     return converter;</span>
