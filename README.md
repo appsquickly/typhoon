@@ -36,7 +36,24 @@ and find all the places in your code that use the old one, and move them over to
 Also, in order to test your view controller, you now have to test the weather client at the same time, and this 
 can get tricky, especially as your application gets more complex. Imagine testing Class A, depends on Class B, depends on Class C, depends on .... Not much fun!
 
-So with dependency injection, rather than having objects make their own collaborators we have them supplied to the class instance via an initializer or property setter. 
+So with dependency injection, rather than having objects make their own collaborators we have them supplied to the 
+class instance via an initializer or property setter. So it becomes: 
+
+___Without dependency injection, you might have a View Controller thus___: 
+
+```objective-c
+
+-(id) initWithWeatherClient:id<WeatherClient>weatherClient
+{
+ self = [super init];
+ if (self) 
+ {
+     _weatherClient = weatherClient;
+ }
+ return self;
+}
+
+```
 
 _WTF? Is that all they mean by 'injected'?_. Yes it is. And because of this, the GoogleWeatherClientImpl is now 
 declared in a single place, and all of the classes that need to use some kind of id&lt;WeatherClient&gt; have it 
