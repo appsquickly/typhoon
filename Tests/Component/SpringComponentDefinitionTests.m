@@ -65,16 +65,6 @@
         assertThat([e description], equalTo(@"Property 'clazz' is required."));
     }
 
-    @try
-    {
-        SpringComponentDefinition* definition = [[SpringComponentDefinition alloc] initWithClazz:[Knight class] key:nil];
-        NSLog(@"Def: %@", definition);
-        STFail(@"Should've thrown exception");
-    }
-    @catch (NSException* e)
-    {
-        assertThat([e description], equalTo(@"Property 'key' is required."));
-    }
 }
 
 @end
