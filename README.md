@@ -90,7 +90,7 @@ adequate. ___But___, I think it helps a lot to have one.
 
 * So, going down the library/framework route, there's been quite a lot of action in Objective-C land, over the last 
 three years. There are now around 15 Dependency Injection frameworks, many following in the footsteps of Google Guice. 
-The authors have done a great job (Objection is especially good), _however_ I wanted an approach that allows the 
+The authors have done a great job (Objection is especially good), however I wanted an approach that allows the 
 following: 
 
 ## Design Goals / Features
