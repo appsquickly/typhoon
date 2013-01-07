@@ -24,7 +24,7 @@ ___Without dependency injection, you might have a View Controller like this___:
  self = [super init];
  if (self) 
  {
- //The class using some collaborating class makes the collaborator
+ //The class using some collaborating class builds its own assistant.
  //it might be one of several classes using the weatherClient. 
   _weatherClient = [GoogleWeatherClientImpl alloc] initWithParameters:xyz];
  }
@@ -33,11 +33,18 @@ ___Without dependency injection, you might have a View Controller like this___:
 
 ```
 The thing with this approach is, if you wanted to change to another weather client implementation you'd have to go
-and find all the places in your code that use the old one, and move them over to the new one. Each time, making sure to pass in the correct initialization parameters. 
+and find all the places in your code that use the old one, and move them over to the new one. Each time, making sure 
+to pass in the correct initialization parameters. 
 
-Also, in order to test your view controller, you now have to test its collaborating class (the weather client) 
-at the same time, and this can get tricky, especially as your application gets more complex. Imagine testing 
-Class A, depends on Class B, depends on Class C, depends on .... Not much fun!
+A very common approach is to have a centrally configured singleton:
+
+```objective-c  
+  _weatherClient = [GoogleWeatherClient sharedInstance];
+```  
+
+With either of the above approaches, in order to test your view controller, you now have to test its collaborating 
+class (the weather client) at the same time, and this can get tricky, especially as your application gets more 
+complex. Imagine testing Class A, depends on Class B, depends on Class C, depends on .... Not much fun!
 
 So with dependency injection, rather than having objects make their own collaborators, we have them supplied to the 
 class instance via an initializer or property setter.
@@ -59,9 +66,11 @@ ___And now, it simply becomes___:
 ```
 
 
-___Is that all they mean by 'injected'?___.  Yes it is. And if you do this with significant collaborators throughout your app, it means that the  
-GoogleWeatherClientImpl is now declared in a single place - the top-level assembly, so-to-speak. ___And___ all of the 
-classes that need to use some kind of id&lt;WeatherClient&gt; will have it passed in. This means that: 
+####Is that all they mean by 'injected'?
+Yes it is. And if you do this with significant collaborators throughout 
+your app, it means that the __GoogleWeatherClientImpl__ is now declared in a single place - the top-level assembly, 
+so-to-speak. ___And___ all of the classes that need to use some kind of __id&lt;WeatherClient&gt;__ will have it passed
+in. This means that: 
 
 * If you want to change from one implementation to another, you need only change a single declaration. 
 * Classes are easier to test, because we can supply simple mocks and stubs in place of concrete collaborators. Or 
@@ -83,7 +92,7 @@ believe that Objective-C somehow magically alleviates the need for common-sense.
 class-clusters!")_, then there are basically two options: 
 
 * You can do dependency injection without a framework/library/container to help you. It ___is___ simple after all, and in 
-fact I recommend you do this, at least as an exercise in software design. Indeed, it is certainly possble that this will be 
+fact I recommend you do this, at least as an exercise in software design. And yes, it is certainly possble that this will be 
 adequate. ___But___, I think its good to have help, if you can get it. 
 
 * So, going down the library/framework route, there's been quite a lot of action in Objective-C land, over the last 
@@ -107,7 +116,7 @@ convenient document. Now you know where to look if you need to change something.
 * Non-invasive.
 
 * Encourages polymorphism and makes it easy to have multiple implementations of the same base-class or protocol. 
-Supports both auto-wiring and wiring-by-reference. 
+Supports both auto-wiring by type and wiring-by-reference. 
 
 * Supports both initializer and property injection. In the case of the latter, it has customizable call-backs to 
 ensure that the class is in the required state before and after properties are set. 
@@ -136,8 +145,8 @@ And then:
 
 # Reports
 
-The API and Test Coverage reports below are published by my build server, after each commit. (If you'd like the script
-I will share it). 
+In the spirit of lean-methodologies, the API and Test Coverage reports below are published by my build server, after 
+each commit. (If you'd like the script I will share it). 
 
 * <a href="http://jasperblues.github.com/spring-objective-c/api/index.html">API</a>
 * <a href="http://jasperblues.github.com/spring-objective-c/coverage/index.html">Coverage Reports</a>
