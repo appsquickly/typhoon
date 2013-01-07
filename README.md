@@ -81,11 +81,12 @@ take on what Dependency Injection should look like in Objective-C. I guess that 
 ___'The Typhoon Framework'.___. Or Michael.  
 
 First of all, based on the above definition - you can do dependency injection without a framework/library/container to
-help you, if you want to. ___But___, I think it helps a lot to have one. (The points below explain why). 
+help you. . . If you wanted to. ___But___, I think it helps a lot to have one. (The points below 
+explain why). 
 
-In the last three years there have been around 15 Dependency Injection frameworks for Objective-C. Many following in 
-the footsteps of Google Guice. The authors have done a great job (Objection is especially good), however I wanted an 
-approach that allows the following: 
+So, on the container/library front, there's been quite a lot of action over the last three years. There's now around 15 
+Dependency Injection frameworks for Objective-C. Many follow in the footsteps of Google Guice, and the authors have 
+done a great job (Objection is especially good), however I wanted an approach that allows the following: 
 
 ## Design Goals / Features
 
