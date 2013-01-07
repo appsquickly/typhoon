@@ -72,9 +72,9 @@ Yes, and I love categories, method swizzling, duck-typing, class clusters, accoc
 all that cool stuff. None of these are replacements for DI. DI is just a design pattern, and the thing about design
 patterns is that they're often relevant in more than one language. 
 
-Besides, people said that <a href="http://stackoverflow.com/questions/309711/dependency-injection-framework-for-cocoa">
-you don't need Dependency Injection in Objective-C</a> three years ago. Now there are around 15 different dependency 
-injection containers. So the question becomes which approach do you like best? 
+Besides, around three years ago, people said that <a href="http://stackoverflow.com/questions/309711/dependency-injection-framework-for-cocoa">
+you don't need Dependency Injection in Objective-C</a>. Now there are around 15 different dependency injection 
+containers. So the question becomes which approach do you like best? 
 
 You can even do dependency injection without a container. (It's simple, after all). Having a container helps though. 
 
