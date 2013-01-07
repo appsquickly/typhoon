@@ -117,36 +117,12 @@ The API and Test Coverage reports below are published by my build server, after 
 * <a href="http://jasperblues.github.com/spring-objective-c/coverage/index.html">Coverage Reports</a>
 
 
-# Hacking
 
-## Just the Framework
-
-Open the project in XCode and choose Product/Build. 
-
-## Command-line Build
-
-Includes Unit Tests, Integration Tests, Code Coverge and API reports installed to Xcode. 
-
-### Requirements (one time only)
-
-In addition to Xcode, requires the Appledoc and lcov packages. A nice way to install these is with <a href="http://www.macports.org/install.php">MacPorts</a>.
-
-```sh
-git clone https://github.com/tomaz/appledoc.git
-sudo install-appledoc.sh
-sudo port install lcov
-```
-
-NB: Xcode 4.3+ requires command-line tools to be installed separately. 
-
-### Running the build (every other time)
-
-```sh
-ant 
-```
 # Feature Requests and Contributions
 
 . . . are very welcome. 
+
+* <a href="https://github.com/jasperblues/spring-objective-c/wiki/Contribution-Guide">Contribution Guide.</a>
 
 
 # Compatibility 
