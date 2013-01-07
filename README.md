@@ -126,11 +126,10 @@ The API and Test Coverage reports below are published by my build server, after 
 
 * Look at and contribute to the <a href="https://github.com/jasperblues/spring-objective-c/wiki/Roadmap">roadmap</a> here.
 
+* Frequently Asked Questions
 
-# Compatibility 
+are <a href="https://github.com/jasperblues/spring-objective-c/wiki/FAQ">here</a>.
 
-* Spring-Objective-C can be used with OSX and iOS. It has not been tested with GnuStep. It was built with ARC, but
-should also work with garbage collection and 32 bit environments (more on this in the coming days). 
 
 # Who's using it? 
 
