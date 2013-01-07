@@ -98,7 +98,7 @@ Stay tuned for more DI styles in the coming weeks. Including a GUI tool that I'l
 
 ### Defining Components
 
-* <a href="https://github.com/jasperblues/spring-objective-c/wiki/AssemblingComponents">Assembling Components</a>
+* <a href="https://github.com/jasperblues/spring-objective-c/wiki/Assembling-Components">Assembling Components</a>
 
 ### Using Assembled Components 
 
