@@ -179,25 +179,9 @@ coming days I'll be writing more tests and documentation.
  If you're using it, please shoot me an email and let me know.
 
 #Roadmap
+
+* Look at and contribute to the <a href="https://github.com/jasperblues/spring-objective-c/wiki/Roadmap">roadmap</a> here.
  
-*Immediate: (coming days, help appreciated!)*
-
-* API documentation
-* ~100% test coverage. (Currently at 84%)
-* More type converters
-* PropertyPlaceholderConfigurer
-* Compile-time checking
-
-*Next: (coming weeks)*
-
-* A IDE plugin to: a) Install the framework b) provide some tool support. (GUI component assembly & environment 
-configuration!)
-* "Annotations" and a test framework, with auto-wiring in test cases.
-
-*Later:*
-
-* AOP support. 
-
  
 # Authors
 
