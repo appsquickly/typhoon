@@ -73,8 +73,9 @@ the real collaborators, but configured to be used in a test scenario. (One of my
 
 ### Why Spring for Objective-C?
 
-Well. . . it's not necessarily Spring. Just my personal take on what Dependency Injection should look like in 
-Objective-C. I guess that I could've called it ___'The Typhoon Framework'.___. Or Michael.  
+Well. . . it's not necessarily Spring (the well-known DI container for Java, .NET and ActionScript). Just my personal 
+take on what Dependency Injection should look like in Objective-C. I guess that I could've called it
+___'The Typhoon Framework'.___. Or Michael.  
 
 First of all, based on the above definition - you can do dependency injection without a tool to help you, if you want 
 to. ___But___, I think it helps a lot to have one. (The points below explain why). A tool to manage the provision of
