@@ -40,7 +40,7 @@ Class A, depends on Class B, depends on Class C, depends on .... Not much fun!
 So with dependency injection, rather than having objects make their own collaborators we have them supplied to the 
 class instance via an initializer or property setter.
 
-___So with dependency injection, it becomes___: 
+___And now, it simply becomes___: 
 
 ```objective-c
 
