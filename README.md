@@ -128,6 +128,8 @@ it worked for Apple with Interface Builder and StoryBoard, didn't it?) The addit
 
 * <a href="https://github.com/jasperblues/spring-objective-c-example">Play with the sample application</a>.
 
+And then:
+
 * <a href="https://github.com/jasperblues/spring-objective-c/wiki/Assembling-Components">Assembling Components</a>
 
 * <a href="https://github.com/jasperblues/spring-objective-c/wiki/Using-Assembled-Components">Using Assembled Components</a>
