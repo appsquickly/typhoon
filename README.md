@@ -65,7 +65,8 @@ GoogleWeatherClientImpl is now declared in a single place - the top-level assemb
 classes that need to use some kind of id&lt;WeatherClient&gt; will have it passed in. This means that: 
 
 * If you want to change from one implementation to another, you need only change a single declaration. 
-* Classes are easier to test, because we can supply simple mocks and stubs in place of concrete collaborators. Or the real collaborators, but configured to be used in a test scenario.
+* Classes are easier to test, because we can supply simple mocks and stubs in place of concrete collaborators. Or 
+the real collaborators, but configured to be used in a test scenario.
 * It promotes separation of concerns and a clear contract between classes. 
 * Your app is easier to maintain and can accommodate new requirements. 
 
