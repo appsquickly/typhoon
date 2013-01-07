@@ -52,14 +52,14 @@
 
 
 /* ========================================================== Interface Methods ========================================================= */
-- (id <SpringTypeConverter>)converterFor:(SpringTypeDescriptor*)typeDescriptor
+- (id <SpringTypeConverter>)converterFor:(id)classOrProtocol
 {
 
-    id <SpringTypeConverter> converter = [_typeConverters objectForKey:[typeDescriptor classOrProtocol]];
+    id <SpringTypeConverter> converter = [_typeConverters objectForKey:[classOrProtocol classOrProtocol]];
     if (!converter)
     {
         [NSException raise:NSInvalidArgumentException format:@"No type converter registered for type: '%@'.",
-                                                             [typeDescriptor classOrProtocol]];
+                                                             [classOrProtocol classOrProtocol]];
 
     }
     return converter;

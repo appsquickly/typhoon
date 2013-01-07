@@ -187,8 +187,6 @@
 		6BA6CA43169434C60062DA5D /* SpringRXMLElement+SpringXmlComponentFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SpringRXMLElement+SpringXmlComponentFactory.m"; sourceTree = "<group>"; };
 		6BA6CA44169434C60062DA5D /* SpringXmlComponentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringXmlComponentFactory.h; sourceTree = "<group>"; };
 		6BA6CA45169434C60062DA5D /* SpringXmlComponentFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringXmlComponentFactory.m; sourceTree = "<group>"; };
-		6BA6CA46169434C60062DA5D /* FruitJuice.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = FruitJuice.1; sourceTree = "<group>"; };
-		6BA6CA47169434C60062DA5D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BA6CA48169434C60062DA5D /* Spring-Objective-C-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Spring-Objective-C-Prefix.pch"; sourceTree = "<group>"; };
 		6BA6CA4A169434C60062DA5D /* SpringNSURLTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringNSURLTypeConverter.h; sourceTree = "<group>"; };
 		6BA6CA4B169434C60062DA5D /* SpringNSURLTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringNSURLTypeConverter.m; sourceTree = "<group>"; };
@@ -357,8 +355,6 @@
 			children = (
 				6BA6CA28169434C60062DA5D /* Component */,
 				6BA6CA3C169434C60062DA5D /* Factory */,
-				6BA6CA46169434C60062DA5D /* FruitJuice.1 */,
-				6BA6CA47169434C60062DA5D /* main.m */,
 				6BA6CA48169434C60062DA5D /* Spring-Objective-C-Prefix.pch */,
 				6BA6CA49169434C60062DA5D /* TypeConversion */,
 				6BA6CA55169434C60062DA5D /* Utils */,

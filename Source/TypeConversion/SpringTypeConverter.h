@@ -14,6 +14,9 @@
 
 @class SpringTypeDescriptor;
 
+/**
+* Declares a contract for converting configuration arguments to their required runtime type.
+*/
 @protocol SpringTypeConverter <NSObject>
 
 - (id)convert:(NSString*)stringValue;

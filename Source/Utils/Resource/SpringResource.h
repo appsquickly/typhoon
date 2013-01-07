@@ -15,6 +15,9 @@
 
 @protocol SpringResource<NSObject>
 
+/**
+* Returns the resource with the given name, as an NSString.
+*/
 + (NSString*)withName:(NSString*)name;
 
 @end

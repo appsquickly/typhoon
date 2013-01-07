@@ -14,7 +14,9 @@
 #import <Foundation/Foundation.h>
 #import "SpringResource.h"
 
-
+/**
+* Represents a resource within the application bundle.
+*/
 @interface SpringBundleResource : NSObject<SpringResource>
 
 

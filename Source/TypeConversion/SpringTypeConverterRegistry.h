@@ -17,18 +17,34 @@
 @class SpringPrimitiveTypeConverter;
 
 
+/**
+* Registry of type converters, with special treatment for primitives.
+*/
 @interface SpringTypeConverterRegistry : NSObject
 {
     SpringPrimitiveTypeConverter* _primitiveTypeConverter;
     NSMutableDictionary* _typeConverters;
 }
 
+/**
+* Returns the shard/default registry instance used by the container.
+*/
 + (SpringTypeConverterRegistry*)shared;
 
-- (id <SpringTypeConverter>)converterFor:(id)typeDescriptor;
+/**
+* Returns the type converter for the given type either a Class object or @protocol(SomeType).
+*/
+- (id <SpringTypeConverter>)converterFor:(id)classOrProtocol;
 
+/**
+* Returns the type converter for primitives - BOOLS, ints, floats, etc.
+*/
 - (SpringPrimitiveTypeConverter*)primitiveTypeConverter;
 
+/**
+* Registers a converter for the given type (either a Class object or @protocol. If a converter exists for the type,
+* raises an exception.
+*/
 - (void)register:(id<SpringTypeConverter>)converter forClassOrProtocol:(id)classOrProtocol;
 
 @end
