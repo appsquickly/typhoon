@@ -59,9 +59,10 @@ ___And now, it simply becomes___:
 ```
 
 
-___Is that all they mean by 'injected'?___.  Yes it is. And if you do this with significant collaborators throughout your app, it means that the  
-GoogleWeatherClientImpl is now declared in a single place - the top-level assembly, so-to-speak. ___And___ all of the 
-classes that need to use some kind of id&lt;WeatherClient&gt; will have it passed in. This means that: 
+___Is that all they mean by 'injected'?___.  Yes it is. And if you do this with significant collaborators throughout 
+your app, it means that the _GoogleWeatherClientImpl_ is now declared in a single place - the top-level assembly, 
+so-to-speak. ___And___ all of the classes that need to use some kind of _id&lt;WeatherClient&gt;_ will have it passed
+in. This means that: 
 
 * If you want to change from one implementation to another, you need only change a single declaration. 
 * Classes are easier to test, because we can supply simple mocks and stubs in place of concrete collaborators. Or 
