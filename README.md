@@ -36,7 +36,8 @@ The thing with this approach is, if you wanted to change to another weather clie
 and find all the places in your code that use the old one, and move them over to the new one. Each time, making sure 
 to pass in the correct initialization parameters. 
 
-A very common approach is to:
+A very common approach is to have a centrally configured singleton:
+
 ```objective-c  
   _weatherClient = [GoogleWeatherClient sharedInstance];
 ```  
