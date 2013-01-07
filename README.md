@@ -111,10 +111,13 @@ Supports both auto-wiring and wiring-by-reference.
 * Supports both initializer and property injection. In the case of the latter has customizable call-backs to ensure
 the class is in the required state before and after properties are set. 
 
+* Flexibility. Supports different approaches of dependency injection for different scenarios, including "annotations"
+and GUI tool-support. 
+
 
 . . Initially I've provided an XML implementation, because it was the fastest way I could satisfactorily meet 
-the above goals. It's already fast and effective, especially if you use AppCode with XML-schema completion. I have 
-other DI-styles planned, including "annotations" and GUI tool-support. (I think the GUI tool will be fun to use).  
+the above goals. It's already fast and effective, especially if you use AppCode with XML-schema completion. The 
+additoinal approaches (including "annotations and GUI tool) are in the backlog. 
 
 
 # Usage
@@ -128,7 +131,8 @@ other DI-styles planned, including "annotations" and GUI tool-support. (I think 
 
 # Reports
 
-The API and Test Coverage reports below are published by my build server, after each commit. 
+The API and Test Coverage reports below are published by my build server, after each commit. (If you'd like the script
+I will share it). 
 
 * <a href="http://jasperblues.github.com/spring-objective-c/api/index.html">API</a>
 * <a href="http://jasperblues.github.com/spring-objective-c/coverage/index.html">Coverage Reports</a>
