@@ -98,7 +98,7 @@ convenient document. Now you know where to look if you need to change something.
 Supports both auto-wiring and wiring-by-reference. 
 
 * Supports both initializer and property injection. In the case of the latter has customizable call-backs to ensure
-the class is in the required state before usage. 
+the class is in the required state before and after properties are set. 
 
 
 . . Initially I've provided an XML implementation, because it was the fastest way I could satisfactorily meet 
