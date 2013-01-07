@@ -85,7 +85,7 @@ believe that Objective-C somehow magically alleviates the need for common-sense.
 class-clusters!")_, then there are basically two options: 
 
 * You can do dependency injection without a framework/library/container to help you. It is simple after all, and in 
-fact I recommend it at least as an exercise in software design. And it is certainly possble that this will be 
+fact I recommend it at least as an exercise in software design. Indeed, it is certainly possble that this will be 
 adequate. ___But___, I think it helps a lot to have one. 
 
 * So, going down the library/framework route, there's been quite a lot of action in Objective-C land, over the last 
