@@ -39,7 +39,7 @@ can get tricky, especially as your application gets more complex. Imagine testin
 So with dependency injection, rather than having objects make their own collaborators we have them supplied to the 
 class instance via an initializer or property setter. So it becomes: 
 
-___Without dependency injection, you might have a View Controller thus___: 
+___So with dependency injection, it becomes___: 
 
 ```objective-c
 
