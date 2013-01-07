@@ -109,7 +109,7 @@ convenient document. Now you know where to look if you need to change something.
 * Non-invasive.
 
 * Encourages polymorphism and makes it easy to have multiple implementations of the same base-class or protocol. 
-Supports both auto-wiring by type and wiring-by-reference (aka with a qualifier). 
+Supports both auto-wiring by type and wiring-by-reference. 
 
 * Supports both initializer and property injection. In the case of the latter, it has customizable call-backs to 
 ensure that the class is in the required state before and after properties are set. 
