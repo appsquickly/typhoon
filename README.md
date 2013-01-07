@@ -105,11 +105,7 @@ I have a GUI tool planned!
 
 * <a href="https://github.com/jasperblues/spring-objective-c/wiki/Using-Assembled-Components">Using Assembled Components</a>
 
-# Docs
-
-More to follow over the coming days. Meanwhile, the Tests folder contains further usage examples. 
-
-* <a href="https://github.com/jasperblues/spring-objective-c/wiki">Wiki</a>
+# Reports
 
 The API and Test Coverage reports below are published by my build server, after each commit. 
 
