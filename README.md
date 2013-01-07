@@ -91,8 +91,8 @@ I'm not saying XML is the ultimate destination. ___But I think it's already an i
 Also, XML with GUI tools takes less CPU and memory on constrained devices than a usable DSL. This is the approach 
 Apple takes with Story Boards and Interface Builder. 
 
-The key thing is that the containr can support the above goals. Stay tuned for more DI styles in the coming weeks. 
-Including a GUI tool that I'll think you'll really like! 
+The key thing is that the container can support the above goals. Stay tuned for more DI styles in the coming weeks. 
+I have a GUI tool planned! 
 
 
 # Usage
@@ -183,15 +183,14 @@ coming days I'll be writing more tests and documentation.
 
 * API documentation
 * ~100% test coverage. (Currently at 84%)
-* A sample application. 
-* Better github docs. 
 * More type converters
 * PropertyPlaceholderConfigurer
+* Compile-time checking
 
 *Next: (coming weeks)*
 
-* A block-based, terse code-style of component definition. 
-* A IDE plugin to: a) Install the framework b) provide some tool support.
+* A IDE plugin to: a) Install the framework b) provide some tool support. (GUI component assembly & environment 
+configuration!)
 * "Annotations" and a test framework, with auto-wiring in test cases.
 
 *Later:*
