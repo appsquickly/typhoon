@@ -103,7 +103,7 @@ the class is in the required state before and after properties are set.
 
 . . Initially I've provided an XML implementation, because it was the fastest way I could satisfactorily meet 
 the above goals. It's already fast and effective, especially if you use AppCode with XML-schema completion. I have 
-other DI-styles planned, including "annotations" and GUI tool-support. 
+other DI-styles planned, including "annotations" and GUI tool-support. (I think the GUI tool will be fun to use).  
 
 
 # Usage
