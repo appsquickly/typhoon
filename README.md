@@ -27,20 +27,23 @@ ___Without dependency injection, you might have a View Controller like this___:
  //The class using some collaborating class builds its own assistant.
  //it might be one of several classes using the weatherClient. 
   _weatherClient = [GoogleWeatherClientImpl alloc] initWithParameters:xyz];
-  
-  //Or perhaps
-  _weatherClient = [GoogleWeatherClient sharedInstance];
  }
  return self;
 }
 
 ```
 The thing with this approach is, if you wanted to change to another weather client implementation you'd have to go
-and find all the places in your code that use the old one, and move them over to the new one. Each time, making sure to pass in the correct initialization parameters. 
+and find all the places in your code that use the old one, and move them over to the new one. Each time, making sure 
+to pass in the correct initialization parameters. 
 
-Also, in order to test your view controller, you now have to test its collaborating class (the weather client) 
-at the same time, and this can get tricky, especially as your application gets more complex. Imagine testing 
-Class A, depends on Class B, depends on Class C, depends on .... Not much fun!
+A very common approach is to:
+```objective-c  
+  _weatherClient = [GoogleWeatherClient sharedInstance];
+```  
+
+With either of the above approaches, in order to test your view controller, you now have to test its collaborating 
+class (the weather client) at the same time, and this can get tricky, especially as your application gets more 
+complex. Imagine testing Class A, depends on Class B, depends on Class C, depends on .... Not much fun!
 
 So with dependency injection, rather than having objects make their own collaborators, we have them supplied to the 
 class instance via an initializer or property setter.
