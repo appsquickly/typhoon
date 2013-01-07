@@ -27,6 +27,9 @@ ___Without dependency injection, you might have a View Controller like this___:
  //The class using some collaborating class builds its own assistant.
  //it might be one of several classes using the weatherClient. 
   _weatherClient = [GoogleWeatherClientImpl alloc] initWithParameters:xyz];
+  
+  //Or perhaps
+  _weatherClient = [GoogleWeatherClient sharedInstance];
  }
  return self;
 }
