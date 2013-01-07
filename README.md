@@ -38,7 +38,7 @@ at the same time, and this can get tricky, especially as your application gets m
 Class A, depends on Class B, depends on Class C, depends on .... Not much fun!
 
 So with dependency injection, rather than having objects make their own collaborators we have them supplied to the 
-class instance via an initializer or property setter. So it becomes: 
+class instance via an initializer or property setter.
 
 ___So with dependency injection, it becomes___: 
 
