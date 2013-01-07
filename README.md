@@ -136,8 +136,8 @@ And then:
 
 # Reports
 
-The API and Test Coverage reports below are published by my build server, after each commit. (If you'd like the script
-I will share it). 
+In the spirit of lean-methodologies, the API and Test Coverage reports below are published by my build server, after 
+each commit. (If you'd like the script I will share it). 
 
 * <a href="http://jasperblues.github.com/spring-objective-c/api/index.html">API</a>
 * <a href="http://jasperblues.github.com/spring-objective-c/coverage/index.html">Coverage Reports</a>
