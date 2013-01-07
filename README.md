@@ -80,7 +80,9 @@ Well. . . it's not necessarily Spring, the well-known DI framework for Java, .NE
 personal take on what Dependency Injection should look like in Objective-C. I guess that I could've called it
 'The Typhoon Framework'. Or Michael.
 
-If you proceed with the Dependency Injection pattern, there are basically two options: 
+If you proceed with the Dependency Injection pattern (and there are still a good many "flat-earthers", who believe 
+that Objective-C somehow magically alleviates the need for common-sense. "Oh, I don't do DI, I use swizzling class 
+clusters!"), there are basically two options: 
 
 * You can do dependency injection without a framework/library/container to help you. (It is simple after all). 
 It is certainly possble that this will be adequate. ___But___, I think it helps a lot to have one. 
