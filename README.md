@@ -64,7 +64,7 @@ allows the following:
 * Allows both dependency injection (injection of classes defined in the DI context) as well as configuration 
  management (values that get converted to the required type at runtime). Because this allows. . . 
  
-* Ability to configure components for use in eg test vs production scenarios. This faciliates a good compromise 
+* . . . ability to configure components for use in eg test vs production scenarios. This faciliates a good compromise 
 between integration testing and pure unit testing. 
  
 * Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a 
