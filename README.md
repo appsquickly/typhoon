@@ -102,13 +102,12 @@ I have a GUI tool planned!
 
 # Usage
 
-### Defining Components
 
 * <a href="https://github.com/jasperblues/spring-objective-c/wiki/Assembling-Components">Assembling Components</a>
 
-### Using Assembled Components 
-
 * <a href="https://github.com/jasperblues/spring-objective-c/wiki/Using-Assembled-Components">Using Assembled Components</a>
+
+* <a href="https://github.com/jasperblues/spring-objective-c/wiki/Incorporating">Incorporating the framework into your project.</a>
 
 # Reports
 
@@ -117,20 +116,6 @@ The API and Test Coverage reports below are published by my build server, after 
 * <a href="http://jasperblues.github.com/spring-objective-c/api/index.html">API</a>
 * <a href="http://jasperblues.github.com/spring-objective-c/coverage/index.html">Coverage Reports</a>
 
-# Building 
-
-There's a Spring Objective-C installer and IDE plugin for Xcode coming soon. Meanwhile, to integrate Spring Objective-C into your project do the following: 
-
-*Manual* 
-
-* Copy the files from the 'Source' directory into your project. 
-* Click on the target. 
-* In "other linker flags" add "-lxml2" 
-* In "header search paths" add "${SDKROOT}/usr/include/libxml2" 
-
-*CocoaPods*
-
-Spring Objective-C is also available through <a href="http://cocoapods.org/">CocoaPods</a>
 
 # Hacking
 
