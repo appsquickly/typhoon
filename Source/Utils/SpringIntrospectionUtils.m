@@ -13,10 +13,10 @@
 
 
 #import <objc/runtime.h>
-#import "SpringReflectionUtils.h"
+#import "SpringIntrospectionUtils.h"
 
 
-@implementation SpringReflectionUtils
+@implementation SpringIntrospectionUtils
 
 + (NSArray*)typeCodesForSelector:(SEL)selector ofClass:(Class)clazz isClassMethod:(BOOL)isClassMethod
 {

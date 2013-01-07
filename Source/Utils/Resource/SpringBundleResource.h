@@ -11,12 +11,11 @@
 
 
 
-
 #import <Foundation/Foundation.h>
+#import "SpringResource.h"
 
 
-@interface SpringReflectionUtils : NSObject
+@interface SpringBundleResource : NSObject<SpringResource>
 
-+ (NSArray*)typeCodesForSelector:(SEL)selector ofClass:(Class)clazz isClassMethod:(BOOL)isClassMethod;
 
 @end

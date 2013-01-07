@@ -16,7 +16,7 @@
 /**
 * A 'type converter' for NSString and NSMutableString.
 */
-@interface SpringPassThroughTypeConverter : NSObject<SpringTypeConverter>
+@interface SpringPassThroughTypeConverter : NSObject <SpringTypeConverter>
 
 @property (nonatomic, readonly) BOOL isMutable;
 

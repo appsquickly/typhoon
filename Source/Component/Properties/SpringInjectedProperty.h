@@ -13,7 +13,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "SpringReflectiveNSObject.h"
+#import "SpringIntrospectiveNSObject.h"
 
 typedef enum SpringPropertyInjectionType
 {

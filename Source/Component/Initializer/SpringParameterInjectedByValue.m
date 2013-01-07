@@ -14,7 +14,7 @@
 #import "SpringParameterInjectedByValue.h"
 #import "SpringComponentInitializer.h"
 #import "SpringTypeDescriptor.h"
-#import "SpringReflectionUtils.h"
+#import "SpringIntrospectionUtils.h"
 
 
 @implementation SpringParameterInjectedByValue
@@ -49,7 +49,7 @@
     {
         clazz = [classOrInstance class];
     }
-    NSArray* typeCodes = [SpringReflectionUtils typeCodesForSelector:_initializer.selector ofClass:clazz isClassMethod:isClass];
+    NSArray* typeCodes = [SpringIntrospectionUtils typeCodesForSelector:_initializer.selector ofClass:clazz isClassMethod:isClass];
 
     if ([[typeCodes objectAtIndex:_index] isEqualToString:@"@"])
     {

@@ -14,10 +14,10 @@
 
 #import <objc/runtime.h>
 #import "SpringTypeDescriptor.h"
-#import "SpringReflectionUtils.h"
+#import "SpringIntrospectionUtils.h"
 
 
-@implementation NSObject (SpringReflectionUtils)
+@implementation NSObject (SpringIntrospectionUtils)
 
 - (SpringTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName;
 {
@@ -83,7 +83,7 @@
 
 - (NSArray*)typeCodesForSelector:(SEL)selector
 {
-    return [SpringReflectionUtils typeCodesForSelector:selector ofClass:[self class] isClassMethod:NO];
+    return [SpringIntrospectionUtils typeCodesForSelector:selector ofClass:[self class] isClassMethod:NO];
 }
 
 

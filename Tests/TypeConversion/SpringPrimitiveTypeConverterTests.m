@@ -12,8 +12,8 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "SpringPrimitiveTypeConverter.h"
 #import "SpringTypeDescriptor.h"
-#import "SpringReflectiveNSObject.h"
-#import "NSObject+SpringReflectionUtils.h"
+#import "SpringIntrospectiveNSObject.h"
+#import "NSObject+SpringIntrospectionUtils.h"
 
 @interface SpringPrimitiveTypeConverterTests : SenTestCase
 

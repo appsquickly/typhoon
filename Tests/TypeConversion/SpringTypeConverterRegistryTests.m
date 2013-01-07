@@ -12,7 +12,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "SpringTypeConverterRegistry.h"
 #import "SpringTypeDescriptor.h"
-#import "NSObject+SpringReflectionUtils.h"
+#import "NSObject+SpringIntrospectionUtils.h"
 #import "SpringTypeConverter.h"
 #import "SpringNSURLTypeConverter.h"
 

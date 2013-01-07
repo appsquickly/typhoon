@@ -10,14 +10,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
+
+
 #import <Foundation/Foundation.h>
 
-@class SpringTypeDescriptor;
 
-@protocol SpringReflectiveNSObject <NSObject>
+@interface SpringIntrospectionUtils : NSObject
 
-- (SpringTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName;
-
-- (SEL)setterForPropertyWithName:(NSString*)propertyName;
++ (NSArray*)typeCodesForSelector:(SEL)selector ofClass:(Class)clazz isClassMethod:(BOOL)isClassMethod;
 
 @end

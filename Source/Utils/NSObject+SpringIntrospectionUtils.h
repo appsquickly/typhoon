@@ -13,11 +13,11 @@
 
 
 #import <Foundation/Foundation.h>
-#import "SpringReflectiveNSObject.h"
+#import "SpringIntrospectiveNSObject.h"
 
 @class SpringTypeDescriptor;
 
-@interface NSObject (SpringReflectionUtils) <SpringReflectiveNSObject>
+@interface NSObject (SpringIntrospectionUtils) <SpringIntrospectiveNSObject>
 
 /**
 * Returns a Class object or `SpringTypeDescriptor` in the case of a primitive type.

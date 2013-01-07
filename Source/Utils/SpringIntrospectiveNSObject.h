@@ -10,12 +10,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-
 #import <Foundation/Foundation.h>
 
+@class SpringTypeDescriptor;
 
-@interface SpringBundleResource : NSObject
+@protocol SpringIntrospectiveNSObject <NSObject>
 
-+ (NSString*)withName:(NSString*)name;
+- (SpringTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName;
+
+- (SEL)setterForPropertyWithName:(NSString*)propertyName;
 
 @end

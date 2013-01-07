@@ -12,7 +12,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "SpringTypeDescriptor.h"
 #import "Knight.h"
-#import "NSObject+SpringReflectionUtils.h"
+#import "NSObject+SpringIntrospectionUtils.h"
 
 typedef struct
 {
@@ -108,7 +108,7 @@ typedef struct
     assertThat([typeCodes objectAtIndex:0], equalTo(@"@"));
     assertThat([typeCodes objectAtIndex:1], equalTo(@"Q"));
 
-//    SpringTypeDescriptor* typeDescriptor = [SpringTypeDescriptor descriptorWithClassOrProtocol:@protocol(NSObject)];
+//    SpringTypeDescriptor* typeDescriptor = [SpringTypeDescriptor descriptorWithClassOrProtocol:@protocol(NSObject+SpringIntrospectionUtils)];
 //    assertThatBool(typeDescriptor.isPrimitive, equalToBool(NO));
 //    assertThat([typeDescriptor classOrProtocol], notNilValue());
 //    LogDebug(@"The type: %@", NSStringFromProtocol(typeDescriptor.classOrProtocol));

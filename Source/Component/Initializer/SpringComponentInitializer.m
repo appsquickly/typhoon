@@ -13,7 +13,7 @@
 
 #import "SpringComponentInitializer.h"
 #import "SpringParameterInjectedByReference.h"
-#import "NSObject+SpringReflectionUtils.h"
+#import "NSObject+SpringIntrospectionUtils.h"
 #import "SpringParameterInjectedByValue.h"
 #import "SpringComponentDefinition.h"
 
