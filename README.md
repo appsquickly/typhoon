@@ -126,6 +126,7 @@ it worked for Apple with Interface Builder and StoryBoard, didn't it?) The addit
 
 # Usage
 
+* <a href="https://github.com/jasperblues/spring-objective-c-example">Play with the sample application</a>.
 
 * <a href="https://github.com/jasperblues/spring-objective-c/wiki/Assembling-Components">Assembling Components</a>
 
