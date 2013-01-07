@@ -73,20 +73,18 @@ the real collaborators, but configured to be used in a test scenario. (One of my
 
 ### Why Spring for Objective-C?
 
-Well. . . it's not necessarily Spring (the well-known DI container for Java, .NET and ActionScript). Just my personal 
+Well. . . it's not necessarily Spring (the well-known DI framework for Java, .NET and ActionScript). Just my personal 
 take on what Dependency Injection should look like in Objective-C. I guess that I could've called it
 ___'The Typhoon Framework'.___. Or Michael.  
 
-First of all, based on the above definition - you can do dependency injection without a tool to help you, if you want 
-to. ___But___, I think it helps a lot to have one. (The points below explain why). A tool to manage the provision of
-collaborators is called a dependency injection ___container___ (also goes by a few other names in various languages). 
+First of all, based on the above definition - you can do dependency injection without a framework/library/container to
+help you, if you want to. ___But___, I think it helps a lot to have one. (The points below explain why). 
 
-We'll look at the benefits of using a dependency injection container in just a second, but before we proceed let's 
-say you're open to using a container, and you'd like to know what your options are in Objective-C land. 
+In the last three years there have been around 15 Dependency Injection frameworks for Objective-C. Many following in 
+the footsteps of Google Guice. The authors have done a great job (Objection is especially good), however I wanted an 
+approach that allows the following: 
 
-In the last three years there have been around 15 implmentations, many following in the footsteps of Google Guice. 
-The authors have done a great job (Objection is especially good), however I wanted an approach that allows the 
-following: 
+## Design Goals / Features
 
 * Dependencies declared in any order. (The order that makes sense to humans).
 
