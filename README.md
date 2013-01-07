@@ -41,7 +41,7 @@ Also, in order to test your view controller, you now have to test its collaborat
 at the same time, and this can get tricky, especially as your application gets more complex. Imagine testing 
 Class A, depends on Class B, depends on Class C, depends on .... Not much fun!
 
-So with dependency injection, rather than having objects make their own collaborators we have them supplied to the 
+So with dependency injection, rather than having objects make their own collaborators, we have them supplied to the 
 class instance via an initializer or property setter.
 
 ___And now, it simply becomes___: 
