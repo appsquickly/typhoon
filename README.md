@@ -17,7 +17,7 @@ like to integrate a weather service with better accuracy and more features. So, 
 developers, you make a WeatherClient protocol and back it initially with an implementation based on the free, online
 data provider. 
 
-___Without dependency injection, you might have a View Controller thus___: 
+___Without dependency injection, you might have a View Controller like this___: 
 
 ```objective-c
 
