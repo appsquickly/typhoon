@@ -78,15 +78,17 @@ the real collaborators, but configured to be used in a test scenario. (One of my
 
 Well. . . it's not necessarily Spring, the well-known DI framework for Java, .NET and ActionScript. . . Just my 
 personal take on what Dependency Injection should look like in Objective-C. I guess that I could've called it
-___'The Typhoon Framework'.___. Or Michael.  
+___'The Typhoon Framework'.___. Or Michael.
 
-First of all, based on the above definition - you can do dependency injection without a framework/library/container to
-help you. . . If you wanted to. ___But___, I think it helps a lot to have one. (The points below 
-explain why). 
+If you proceed with the Dependency Injection pattern, there are basically two options: 
 
-So, on the container/library front, there's been quite a lot of action over the last three years. There's now around 15 
-Dependency Injection frameworks for Objective-C. Many follow in the footsteps of Google Guice, and the authors have 
-done a great job (Objection is especially good), however I wanted an approach that allows the following: 
+* You can do dependency injection without a framework/library/container to help you. (It is simple after all) 
+It is certainly possble that this will be adequate. ___But___, I think it helps a lot to have one. 
+
+* So, going down the library/framework route, there's been quite a lot of action in Objective-C land, over the last 
+three years. There's now around 15 Dependency Injection frameworks. Many follow in the footsteps of Google Guice, and 
+the authors have done a great job (Objection is especially good), ___however___ I wanted an approach that allows the 
+following: 
 
 ## Design Goals / Features
 
