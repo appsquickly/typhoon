@@ -120,8 +120,8 @@ and GUI tool-support.
 
 . . Initially I've provided an XML implementation, because it was the fastest way I could satisfactorily meet 
 the above goals. It's already fast and effective, especially if you use AppCode with XML-schema completion. (And hey, 
-it worked for Apple with Interface Builder and StoryBoard, didn't it?) The additional approaches (including 
-"annotations and GUI tool) are in the backlog. 
+it worked for Apple with Interface Builder and StoryBoard, didn't it?) The additional approaches, including 
+"annotations and GUI tool, are in the backlog. 
 
 
 # Usage
