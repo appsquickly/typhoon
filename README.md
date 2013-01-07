@@ -56,9 +56,7 @@ ___And now, it simply becomes___:
 
 ```
 
-___Is that all they mean by 'injected'?___. 
-
-Yes it is. And if you do this with significant collaborators throughout your app, it means that the  
+___Is that all they mean by 'injected'?___.  Yes it is. And if you do this with significant collaborators throughout your app, it means that the  
 GoogleWeatherClientImpl is now declared in a single place - the top-level assembly, so-to-speak. ___And___ all of the 
 classes that need to use some kind of id&lt;WeatherClient&gt; will have it passed in. This means that: 
 
