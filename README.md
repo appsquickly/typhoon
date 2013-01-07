@@ -1,6 +1,6 @@
 # Description
 
-A Spring-like dependency injection container for Objective-C.
+A Spring-like dependency injection container for Objective-C. Built during a typhoon. 
 
 ##New! 
 Check out the example at: https://github.com/jasperblues/spring-objective-c-example
