@@ -15,7 +15,7 @@ So, with that in mind, imagine that you're writing an app that gives weather rep
 (excuse the pun ;) ) to provide the data, and at first you go for a free weather report provider, but in future you'd 
 like to integrate a weather service with better accuracy and more features. So, as do all good object-oriented 
 developers, you make a WeatherClient protocol and back it initially with an implementation based on the free online
-weather service. 
+weather provider. 
 
 ___Without dependency injection, you might have a View Controller thus___: 
 
