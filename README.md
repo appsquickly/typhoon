@@ -91,7 +91,8 @@ I'm not saying XML is the ultimate destination. ___But I think it's already an i
 Also, XML with GUI tools takes less CPU and memory on constrained devices than a usable DSL. This is the approach 
 Apple takes with Story Boards and Interface Builder. 
 
-Stay tuned for more DI styles in the coming weeks. Including a GUI tool that I'll think you'll really like! 
+The key thing is that the containr can support the above goals. Stay tuned for more DI styles in the coming weeks. 
+Including a GUI tool that I'll think you'll really like! 
 
 
 # Usage
@@ -102,23 +103,7 @@ Stay tuned for more DI styles in the coming weeks. Including a GUI tool that I'l
 
 ### Using Assembled Components 
 
-```objective-c
-SpringComponentFactory componentFactory = [[SpringXmlComponentFactory alloc] 
-    initWithConfigFileName:@"MiddleAgesAssembly.xml"];
-Knight* knight = [_componentFactory objectForKey:@"knight"];
-
-//This has been injected by reference
-id<Quest> quest = knight.quest; 
-
-//This has been injected by value. The container takes care of type conversion. 
-NSUInteger damselsRescued = knight.damselsRescued
-
-//This class conforms to <SpringPropertyInjectionDelegate> which has callbacks that get triggered before 
-//and after properties are injected.
-Knight* anotherKnight = [_componentFactory objectForKey:@"anotherKnight"];
-
-
-```
+* <a href="https://github.com/jasperblues/spring-objective-c/wiki/Using-Assembled-Components">Using Assembled Components</a>
 
 # Docs
 
