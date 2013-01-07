@@ -71,7 +71,7 @@ the real collaborators, but configured to be used in a test scenario. (One of my
 * Your app is easier to maintain and can accommodate new requirements. 
 
 
-### Why Spring for Objective-C?
+# Why Spring for Objective-C?
 
 Well. . . it's not necessarily Spring (the well-known DI framework for Java, .NET and ActionScript). Just my personal 
 take on what Dependency Injection should look like in Objective-C. I guess that I could've called it
