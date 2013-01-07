@@ -124,8 +124,6 @@ The API and Test Coverage reports below are published by my build server, after 
 
 * <a href="https://github.com/jasperblues/spring-objective-c/wiki/Contribution-Guide">Contribution Guide.</a>
 
-#Roadmap
-
 * Look at and contribute to the <a href="https://github.com/jasperblues/spring-objective-c/wiki/Roadmap">roadmap</a> here.
 
 
