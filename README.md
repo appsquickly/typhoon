@@ -96,10 +96,9 @@ Supports both auto-wiring and wiring-by-reference.
 the class is in the required state before usage. 
 
 
-. . Initially I've provided an XML implementation, because I believe its the fastest way I could satisfactorily meet 
-the above goals.  I have other DI-styles planned, including "annotations" and GUI tool-support. 
-
-
+. . Initially I've provided an XML implementation, because it was the fastest way I could satisfactorily meet 
+the above goals. It's already fast and effective, especially if you use AppCode with XML-schema completion. I have 
+other DI-styles planned, including "annotations" and GUI tool-support. 
 
 
 # Usage
