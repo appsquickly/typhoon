@@ -48,6 +48,7 @@ passed in. This means that:
 * Your app is easier to maintain and can accommodate new requirements. 
 
 
+
 ### Why Spring for Objective-C?
 
 Spring is a very popular dependency injection container that is available for Java and .NET, as well as ActionScript.  
@@ -66,6 +67,8 @@ easy to define both a master-card payment engine or a visa payment engine.
 * Supports dependency injection by type (definitions satisfying a class or protocol) as well as by reference. 
 * Also supports "annotation" (aka Macro) and code/DSL style injection.
 
+
+
 ###Isn't Objective-C a dynamic language? 
 
 Yes, and I love categories, method swizzling, duck-typing, class clusters, accociative references in categories, and 
@@ -77,6 +80,8 @@ you don't need Dependency Injection in Objective-C</a>. Now there are around 15 
 containers. So the question becomes which approach do you like best? 
 
 You can even do dependency injection without a container. (It's simple, after all). Having a container helps though. 
+
+
 
 ### Why XML? 
 
