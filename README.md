@@ -82,7 +82,7 @@ personal take on what Dependency Injection should look like in Objective-C. I gu
 
 If you proceed with the Dependency Injection pattern, there are basically two options: 
 
-* You can do dependency injection without a framework/library/container to help you. (It is simple after all) 
+* You can do dependency injection without a framework/library/container to help you. (It is simple after all). 
 It is certainly possble that this will be adequate. ___But___, I think it helps a lot to have one. 
 
 * So, going down the library/framework route, there's been quite a lot of action in Objective-C land, over the last 
