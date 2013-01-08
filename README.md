@@ -171,10 +171,10 @@ and I don't have the time or money right now.
 
 * There's already a defacto or recognized standard with the Spring-style approach in Java, .NET and ActionScript.  
 * Evyeryone knows XML. 
-* As for learning the markup: You don't need to, because, its very easy to provide code-completion and hints. As it 
-stands now, I have schema-based completion, which is pretty cool. And I'm working with the Jetbrains team to provide 
-more code introspections for <a href="http://www.jetbrains.com/objc/">AppCode</a> so you get initializer, selector 
-and property-name completion. 
+* As for learning the markup: You don't need to, because there's code-completion and hints. As it stands now, I have 
+schema-based completion, which is pretty cool. And I'm working with the Jetbrains team to provide more code 
+introspections for <a href="http://www.jetbrains.com/objc/">AppCode</a> so you get initializer, selector and 
+property-names. 
 * It provides very low overhead, so is compatible with memory and CPU-constrained devices. 
 * It can still be used as the foundation for a future GUI-tool - this is what Apple does with Interface Builder and 
 StoryBoards. 
