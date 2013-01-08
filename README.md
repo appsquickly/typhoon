@@ -181,11 +181,13 @@ you'll see that this is ___simply not true___. There is not much of it, and what
 appropriately. 
 
 The argument comes from those with a vested interest in another approach, and was actually the same one that was used
-by Google in defense of their Guice container when it came out. At the time it was partially successful because we 
-were still in the midst of the XML hangover after ___everyone___ had to have XML
-on their product sheet in the early 2000s. It's a little ironic that we were seemingly unaware of being caught-up
-in the sebsequent ___annotation craze___ with a new annotation coming out every week. But I think, we're over that 
-phase now, and in the words of Bruce Lee "XML is just XML". 
+by Google in defense of their Guice container when it came out. (But not at all by Justin in relation to his Guice-like
+DI container for Objective-C).
+
+At the time the argument was partially successful because we were still in the midst of the XML hangover after 
+___everyone___ had to have XML on their product sheet in the early 2000s. It's a little ironic that we were all 
+seemingly unaware of being caught-up in the sebsequent ___annotation craze___ with a new annotation coming out every 
+week. But I think, we're over both of those now, and in the words of Bruce Lee " 'tations are tations, and XML is just XML". 
 
 # Usage
 
