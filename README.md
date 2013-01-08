@@ -181,7 +181,7 @@ my container <a href="http://jasperblues.github.com/spring-objective-c/api/Class
 * There's already a defacto or recognized standard with the Spring-style approach in Java, .NET and ActionScript. These 
 are communities we can tap, as we get into DI with Objective-C. 
 * Evyeryone knows XML. 
-* As for learning the markup/schema: You don't need to, because there's code-completion and hints. Right now, I have 
+* As for learning the markup: You don't need to, because there's code-completion and hints. Right now, I have 
 schema-based completion, which is pretty cool. And I'm working with the Jetbrains team to provide more code 
 introspections for <a href="http://www.jetbrains.com/objc/">AppCode</a> so you get completion/validation on initializer, 
 selector and property-names. 
