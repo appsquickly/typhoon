@@ -171,7 +171,7 @@ Also it would cost a lot to develop, and I don't have the time or money right no
 
 Ummm, someone on Twitter suggested JSON (I kid you not!), but I don't think I'll be saying anything more on that one. The 
 thing is, it was actually someone who's work I respect very much. That suggestion sure did baffle me, though. 
-Waaaohhh man! I guess the only thing I can say on that is, friend, if you want to write a JSON extension for your
+Waaaohhh man! . . .  I guess the only thing I ___can___ say is that, friend, if you want to write a JSON extension for your
 own use, then my container <a href="http://jasperblues.github.com/spring-objective-c/api/Classes/SpringComponentFactory.html">fully supports that</a>. 
 
 
