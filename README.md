@@ -169,7 +169,7 @@ Also it would cost a lot to develop, and I don't have the time or money right no
 #### JSON (@#$*@*) ???
 
 Ummm, someone on Twitter suggested Json. But I don't think I'll be saying anything more on that one! The thing is, I 
-respect the guy's work a lot, but that suggestion sure did baffle me.  
+respect the guy's work a lot, but that suggestion sure did baffle me. Waaaohhh man! Say, wha?
 
 
 ####So the XML is the winner. It provides the features that I stated above. And also:
