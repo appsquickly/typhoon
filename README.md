@@ -202,7 +202,7 @@ by Google in defense of their Guice container when it came out___. _(NB: But not
 DI container for Objective-C. I admire Justin's work and moreover his personal integrity when he defended mine against the 
 "talk-first, think-later (TM)" Twitter masses)._
 
-So anyway, at the time Google/Guice brought that argument up, it was partially successful because back then in 2008, 
+So anyway, at the time Google/Guice brought that argument up, it was partially successful. Because, back then in 2008 
 we were still in the midst of the XML hangover after ___everyone___ had to have XML on their product sheet in the 
 early 2000s. (And the funny thing is, it's a little ironic that we were all seemingly unaware of being caught-up 
 in the sebsequent ___annotation craze___ that followed!). The good old builder with a new hammer, looking for a nail 
