@@ -192,8 +192,8 @@ you'll see that this is ___simply not true___. There is not much of it, and what
 appropriately. 
 
 The argument comes from those with a vested interest in another approach, and was actually the same one that was used
-by Google in defense of their Guice container when it came out. (But not at all by Justin in relation to his Guice-like
-DI container for Objective-C).
+by Google in defense of their Guice container when it came out. _(But not at all by Justin in relation to his Guice-like
+DI container for Objective-C)._
 
 At the time the argument was partially successful because we were still in the midst of the XML hangover after 
 ___everyone___ had to have XML on their product sheet in the early 2000s. It's a little ironic that we were all 
