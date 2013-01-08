@@ -131,7 +131,7 @@ XML implementation, because it was the fastest way I could satisfactorily meet t
 rapid and effective, especially if you use AppCode with XML-schema completion. . . But, the real idea is to decouple 
 the internal componet model from the definitions, because this provides all of the flexibility. XML will still serve 
 as the basis for the GUI-tool. (And hey, it worked for Apple with Interface Builder and StoryBoard, didn't it?) . . 
-DSL will be a separate ComponentFactory sub-class. 
+DSL will be a separate ComponentFactory sub-class. "Annotations" coming real soon. 
 
 
 # Usage
