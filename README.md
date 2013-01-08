@@ -152,7 +152,7 @@ use of <a href="http://en.wikipedia.org/wiki/Compiler-compiler">compiler compile
 
 * Just another language that people will need to learn, given that there is no current standard. 
 * Would pose additional overhead on memory and CPU-constrained devices. Like the Objective-C runtime, I want 
-something thin enough as to be hardly there. 
+something thin enough as to be hardly there, so that my framework can be used in demanding applications, like games. 
 
 
 #### GUI Tool
