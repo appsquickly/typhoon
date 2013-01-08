@@ -102,7 +102,7 @@ fact I recommend you do this, at least as an exercise in software design. And ye
 adequate. ___But___, I think its good to have help, if you can get it. 
 
 * So, going down the library/framework route, there's been quite a lot of action in Objective-C land, over the last 
-three years. There are now around 15 Dependency Injection frameworks, many following in the footsteps of Google Guice. 
+three years. In fact, there are now around 15 Dependency Injection frameworks, many following in the footsteps of Google Guice. 
 The authors have done a great job (Objection is especially good). However, I wanted an approach that allows the 
 following: 
 
