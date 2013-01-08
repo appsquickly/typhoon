@@ -156,14 +156,14 @@ something thin enough as to be hardly there.
 #### GUI Tool
 
 This is going to be neat, but in the experience of my friends at Jetbrains " a text-editor approach is more 
-convenient and fluent than GUI-based approach." After all, when writing serious Apps do you use nibs? So the idea
+convenient and fluent than GUI-based approach." After all, when writing serious Apps do you use nibs? The idea
 with the GUI tool is to faciliate rapid feedback, but at the same time produce readable code. Also it would cost a 
-lot to develop, and I don't have the time or money. 
+lot to develop, and I don't have the time or money right now. 
 
 
 __So the XML is the winner. It provides the features that I stated above. And also:__ 
 
-* There's already a defacto standard with the Spring-style approach in Java, .NET and ActionScript.  
+* There's already a defacto or recognized standard with the Spring-style approach in Java, .NET and ActionScript.  
 * Evyeryone knows XML. 
 * It provides very low overhead, so is compatible with memory and CPU-constrained devices. 
 * There's nothing new to learn, because, its very easy to provide code-completion and hints. As it stands now, 
