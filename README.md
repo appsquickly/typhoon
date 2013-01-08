@@ -157,10 +157,10 @@ something thin enough as to be hardly there.
 
 #### GUI Tool
 
-This is going to be neat, but in the experience of my friends at Jetbrains " a text-editor approach is more 
-convenient and fluent than GUI-based approach." After all, when writing serious Apps do you use nibs? The idea
-with the GUI tool is to faciliate rapid feedback, but at the same time produce readable code. Also it would cost a 
-lot to develop, and I don't have the time or money right now. 
+Still an option and it could be really neat, but in the experience of my friends at Jetbrains 
+"a text-editor approach is more convenient and fluent than GUI-based approach." You're a developer after all right, 
+And while Interface Builder is super cool, do you use it to write serious apps? Also it would cost a lot to develop, 
+and I don't have the time or money right now. 
 
 
 __So the XML is the winner. It provides the features that I stated above. And also:__ 
