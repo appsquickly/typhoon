@@ -195,8 +195,8 @@ appropriately.
 
 The argument comes from those with a vested interest in another approach, and was actually the same one that was used
 by Google in defense of their Guice container when it came out. _(But not at all by Justin in relation to his Guice-like
-DI container for Objective-C. I admire Justin's work and also his personal integrity when he defended mine against the 
-talk-first, think-later Twitter masses)._
+DI container for Objective-C. I admire Justin's work and moreover his personal integrity when he defended mine against the 
+talk-first, think-later Twitter masses!)._
 
 So anyway, at the time when Google/Guice brought that argument up, it was partially successful because we were still 
 in the midst of the XML hangover after ___everyone___ had to have XML on their product sheet in the early 2000s. And 
