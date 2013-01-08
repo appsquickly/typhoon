@@ -148,7 +148,7 @@ ___So what are the options for runtime interpretation of component recipes?___
 modularization or configuration management options that I'm after. (I will be supporting them, and I do 
 like them for test cases).
 
-And that leaves: 
+What else?
 
 #### Domain Specific Language
 I thought about writing an interpreted, domain-specific language (DSL). This is certainly a fun exercise in the 
@@ -165,6 +165,11 @@ and augmented reality. (Because 2013 is the year of Augmented Reality, right?)
 Still an option and it could be really neat, but in the experience of my friends at Jetbrains 
 "a text-editor approach is more convenient and fluent than GUI-based approach." You're a programmer after all right? 
 Also it would cost a lot to develop, and I don't have the time or money right now. 
+
+#### JSON (@#$*@*) ???
+
+Ummm, someone on Twitter suggested Json. But I don't think I'll be saying anything more on that one! The thing is, I 
+respect the guy's work a lot, but that suggestion sure did baffle me.  
 
 
 ####So the XML is the winner. It provides the features that I stated above. And also:
