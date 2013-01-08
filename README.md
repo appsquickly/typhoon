@@ -198,7 +198,7 @@ you'll see that this is <a href="https://github.com/jasperblues/spring-objective
 There is not much of it, it looks just fine and what there is can be grouped and modularized appropriately. 
 
 The argument actually ___comes from those with a vested interest in another approach___, and was the ___same one that was used
-by Google in defense of their Guice container when it came out___. _(NB: But not at all by Justin in relation to his Guice-like
+by Google to go on the offensive against Spring when their own Guice container came out___. _(NB: But not at all by Justin in relation to his Guice-like
 DI container for Objective-C. I admire Justin's work and moreover his personal integrity when he defended mine against the 
 "talk-first, think-later (TM)" Twitter masses, despite having a competing solution)._
 
