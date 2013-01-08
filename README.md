@@ -132,14 +132,46 @@ and GUI tool-support.
 
 ### So, does this mean XML? 
 
-When I say Spring-like, I mean that it supports the above features. It does not mean XML! (Spring for Java doesn't 
-imply XML either). . . Initially I've provided an XML implementation, because it was the fastest way I could 
-satisfactorily meet the above goals. 
+When I say Spring-like, I mean that it supports the above features. It does not necessarily mean XML! (Spring for 
+Java doesn't imply XML either). ___To give the above benefits requires that the component definitions be interpreted 
+at runtime.___ Otherwise you run into problems with the order of definition of components, type conversion, and 
+others that you're probably not interested in hearing about, unless you're writing a DI container of your own. 
 
-I think it's ___already rapid and effective___, _especially if you use AppCode with XML-schema completion_. . . But, 
-the real idea is to decouple the internal component model from the definitions, because this provides all of the 
-flexibility. XML will still serve as the basis for the GUI-tool. (And hey, it worked for Apple with Interface Builder and StoryBoard, didn't it?) . . 
-DSL will be a separate ComponentFactory sub-class. "Annotations" coming real soon. 
+#### Annotations
+
+"Annotations" (aka Macros) have their place, but they don't really provide the modularization of concerns or 
+configuration management options that I'm after. (I will be supporting them, and I do like them for test cases).
+
+So that leaves: 
+
+#### DSL
+I thought about writing an interpreted, domain-specific language (DSL). This is certainly a fun exercise in the 
+use of <a href="http://en.wikipedia.org/wiki/Compiler-compiler">compiler compilers</a>. However it would be: 
+
+* Just another language that people will need to learn, given that there is no current standard. 
+* Would pose additional overhead on memory and CPU-constrained devices. Like the Objective-C runtime, I want 
+something thin enough as to be hardly there. 
+
+
+#### GUI Tool
+
+This is going to be neat, but in the experience of my friends at Jetbrains " a text-editor approach is more 
+convenient and fluent than GUI-based approach." After all, when writing serious Apps do you use nibs? So the idea
+with the GUI tool is to faciliate rapid feedback, but at the same time produce readable code. Also it would cost a 
+lot to develop, and I don't have the time or money. 
+
+
+__So the XML is the winner. It provides the features that I stated above. And also:__ 
+
+* There's already a defacto standard with the Spring-style approach in Java, .NET and ActionScript.  
+* Evyeryone knows XML. 
+* It provides very low overhead, so is compatible with memory and CPU-constrained devices. 
+* There's nothing new to learn, because, its very easy to provide code-completion and hints. As it stands now, 
+I have schema-based completion, which is pretty cool. And I'm working with the Jetbrains team to provide more code 
+introspections for <a href="http://www.jetbrains.com/objc/">AppCode</a> so you get initializer, selector and property-name 
+completion. 
+* It can still be used as the foundation for a future GUI-tool - this is what Apple does with Interface Builder and 
+StoryBoards. 
 
 
 # Usage
