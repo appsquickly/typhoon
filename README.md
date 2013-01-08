@@ -163,8 +163,7 @@ and augmented reality. (Because 2013 is the year of Augmented Reality, right?)
 
 Still an option and it could be really neat, but in the experience of my friends at Jetbrains 
 "a text-editor approach is more convenient and fluent than GUI-based approach." You're a programmer after all right? 
-And while Interface Builder is super cool, do you use it to write serious apps? Also it would cost a lot to develop, 
-and I don't have the time or money right now. 
+Also it would cost a lot to develop, and I don't have the time or money right now. 
 
 
 ####So the XML is the winner. It provides the features that I stated above. And also:
