@@ -132,8 +132,8 @@ and GUI tool-support.
 
 ### So, does this mean XML? 
 
-When I say Spring-like, I mean that it supports the above features. It does not necessarily mean XML! (Spring for 
-Java doesn't imply XML either). ___To give the above benefits requires that the component definitions be interpreted 
+When I say Spring-like, I mean that it supports the above features. It does not necessarily mean XML at all! (Spring 
+for Java doesn't imply XML either). ___To give the above benefits requires that the component definitions be interpreted 
 at runtime.___ Otherwise you run into problems with the order of definition of components, type conversion, and 
 others that you're probably not interested in hearing about, unless you're writing a DI container of your own. 
 
