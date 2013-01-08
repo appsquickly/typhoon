@@ -257,6 +257,8 @@ each commit. (If you'd like the script I will share it).
 
 * Jeffrey Roberts, Mobile Software Engineer at Riot Games, previous contributor to Swiz for ActionScript. . . Feedback and testing. 
 
+Thanks!!!
+
 
 # LICENSE
 
