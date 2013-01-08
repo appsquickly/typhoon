@@ -193,7 +193,7 @@ StoryBoards.
 There's been a criticism that the XML is verbose and un-readable. If you take a look at the 
 <a href="https://github.com/jasperblues/spring-objective-c-example">___sample application___</a> 
 you'll see that this is <a href="https://github.com/jasperblues/spring-objective-c-example/blob/master/PocketForecast/Assembly.xml">___simply not true___</a>. 
-There is not much of it, and what there is can be grouped and modularized appropriately. 
+There is not much of it, it looks just fine and what there is can be grouped and modularized appropriately. 
 
 The argument comes from those with a vested interest in another approach, and was actually the same one that was used
 by Google in defense of their Guice container when it came out. _(But not at all by Justin in relation to his Guice-like
