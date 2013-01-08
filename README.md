@@ -137,6 +137,8 @@ for Java doesn't imply XML either). ___To give the above benefits requires that 
 at runtime.___ Otherwise you run into problems with the order of definition of components, type conversion, and 
 others that you're probably not interested in hearing about, unless you're writing a DI container of your own. 
 
+___So what are the options for runtime interpretation of component recipes?___
+
 #### Annotations
 
 "Annotations" (aka Macros) have their place, but they don't really provide the modularization of concerns or 
