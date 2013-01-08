@@ -130,9 +130,9 @@ ensure that the class is in the required state before and after properties are s
 * Flexibility. Supports different approaches of dependency injection for different scenarios, including "annotations"
 and GUI tool-support. 
 
-### So, does this mean XML? 
+## So, does this mean XML? 
 
-___(I'll move this to the <a href="https://github.com/jasperblues/spring-objective-c/wiki/FAQ">FAQ</a> later, but its
+___(I'll move this discussion to the <a href="https://github.com/jasperblues/spring-objective-c/wiki/FAQ">FAQ</a> later, but its
 currently the hot topic for discussion, now that we've established the case for DI).___
 
 When I say Spring-like, I mean that it supports the above features. It does not necessarily mean XML at all! (Spring 
@@ -147,7 +147,7 @@ ___So what are the options for runtime interpretation of component recipes?___
 "Annotations" (aka Macros) have their place, but they don't really provide the modularization of concerns or 
 configuration management options that I'm after. (I will be supporting them, and I do like them for test cases).
 
-So that leaves: 
+And that leaves: 
 
 #### DSL
 I thought about writing an interpreted, domain-specific language (DSL). This is certainly a fun exercise in the 
