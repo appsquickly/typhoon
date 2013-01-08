@@ -167,7 +167,7 @@ And while Interface Builder is super cool, do you use it to write serious apps? 
 and I don't have the time or money right now. 
 
 
-__So the XML is the winner. It provides the features that I stated above. And also:__ 
+####So the XML is the winner. It provides the features that I stated above. And also:
 
 * There's already a defacto or recognized standard with the Spring-style approach in Java, .NET and ActionScript.  
 * Evyeryone knows XML. 
