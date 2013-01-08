@@ -205,7 +205,7 @@ we were still in the midst of the XML hangover after ___everyone___ had to have 
 early 2000s. (And the funny thing is, it's a little ironic that we were all seemingly unaware of being caught-up 
 in the sebsequent ___annotation craze___ that followed!). The good old builder with a new hammer, looking for a nail 
 thing. But I think we're over both of those phases now, and in the words of 
-<a href="http://en.wikipedia.org/wiki/Bruce_Lee">Bruce Lee</a>"Annotations are annotations, and XML is XML". 
+<a href="http://en.wikipedia.org/wiki/Bruce_Lee">Bruce Lee</a> -- Annotations are annotations, and XML is XML". 
 
 # Usage
 
