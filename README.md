@@ -126,8 +126,8 @@ and GUI tool-support.
 
 ### So, does this mean XML? 
 
-When I say Spring-like, I mean that it supports the above features. It does not mean XML! (the same is Spring for 
-Java does not mean XML). . . Initially I've provided an XML implementation, because it was the fastest way I could 
+When I say Spring-like, I mean that it supports the above features. It does not mean XML! (Spring for Java doesn't 
+imply XML either). . . Initially I've provided an XML implementation, because it was the fastest way I could 
 satisfactorily meet the above goals. 
 
 I think it's ___already rapid and effective___, _especially if you use AppCode with XML-schema completion_. . . But, 
