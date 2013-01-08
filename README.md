@@ -145,7 +145,7 @@ ___So what are the options for runtime interpretation of component recipes?___
 #### Annotations
 
 "Annotations" (aka faking them with Macros in Objective-C) have their place, but they don't really provide the 
-modularization of concerns or configuration management options that I'm after. (I will be supporting them, and I do 
+modularization or configuration management options that I'm after. (I will be supporting them, and I do 
 like them for test cases).
 
 And that leaves: 
