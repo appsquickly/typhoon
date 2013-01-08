@@ -178,7 +178,7 @@ thing is, it was actually someone who's work I respect very much, but that sugge
 * There's already a defacto or recognized standard with the Spring-style approach in Java, .NET and ActionScript. These 
 are communities we can tap, as we get into DI with Objective-C. 
 * Evyeryone knows XML. 
-* As for learning the markup: You don't need to, because there's code-completion and hints. As it stands now, I have 
+* As for learning the markup: You don't need to, because there's code-completion and hints. Right now, I have 
 schema-based completion, which is pretty cool. And I'm working with the Jetbrains team to provide more code 
 introspections for <a href="http://www.jetbrains.com/objc/">AppCode</a> so you get completion on initializer, 
 selector and property-names. 
