@@ -126,11 +126,13 @@ and GUI tool-support.
 
 ### So, does this mean XML? 
 
-When I say Spring-like, I mean only that it supports the above. It does not mean XML! . . Initially I've provided an 
-XML implementation, because it was the fastest way I could satisfactorily meet the above goals. I think it's already 
-rapid and effective, especially if you use AppCode with XML-schema completion. . . But, the real idea is to decouple 
-the internal component model from the definitions, because this provides all of the flexibility. XML will still serve 
-as the basis for the GUI-tool. (And hey, it worked for Apple with Interface Builder and StoryBoard, didn't it?) . . 
+When I say Spring-like, I mean that it supports the above features. It does not mean XML! (the same is Spring for 
+Java does not mean XML). . . Initially I've provided an XML implementation, because it was the fastest way I could 
+satisfactorily meet the above goals. 
+
+I think it's ___already rapid and effective___, _especially if you use AppCode with XML-schema completion_. . . But, 
+the real idea is to decouple the internal component model from the definitions, because this provides all of the 
+flexibility. XML will still serve as the basis for the GUI-tool. (And hey, it worked for Apple with Interface Builder and StoryBoard, didn't it?) . . 
 DSL will be a separate ComponentFactory sub-class. "Annotations" coming real soon. 
 
 
