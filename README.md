@@ -169,7 +169,7 @@ Also it would cost a lot to develop, and I don't have the time or money right no
 
 #### JSON (. . . the f@#$*@* ????) 
 
-Ummm, one of my strident critics on Twitter (who is actually well-known and whose work I respect) suggested . . . 
+Ummm, one of my strident critics on Twitter, who is actually well-known and whose work I respect suggested . . . 
 wait for it . . (but if you're currently having a drink get ready to spray it all over the place) . . . Ready? OK. .
 . . ___"JSON!"___ . . I kid you not!. . . But, yeah, I don't think I'll be saying anything more on that one. 
 I guess the only thing I ___can___ say is that, friend, if you want to write a JSON extension for your own use, then 
