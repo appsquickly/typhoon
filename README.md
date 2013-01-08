@@ -190,7 +190,8 @@ StoryBoards.
 
 #### Reams of it?
 
-There's been a criticism that the XML is verbose and un-readable. If you take a look at the <a href="https://github.com/jasperblues/spring-objective-c-example">sample application</a> 
+There's been a criticism that the XML is verbose and un-readable. If you take a look at the 
+<a href="https://github.com/jasperblues/spring-objective-c-example">___sample application___</a> 
 you'll see that this is <a href="https://github.com/jasperblues/spring-objective-c-example/blob/master/PocketForecast/Assembly.xml">___simply not true___</a>. 
 There is not much of it, and what there is can be grouped and modularized appropriately. 
 
