@@ -200,7 +200,7 @@ There is not much of it, it looks just fine and what there is can be grouped and
 The argument actually ___comes from those with a vested interest in another approach___, and was the ___same one that was used
 by Google in defense of their Guice container when it came out___. _(NB: But not at all by Justin in relation to his Guice-like
 DI container for Objective-C. I admire Justin's work and moreover his personal integrity when he defended mine against the 
-"talk-first, think-later (TM)" Twitter masses)._
+"talk-first, think-later (TM)" Twitter masses, despite having a competing solution)._
 
 So anyway, at the time Google/Guice brought that argument up, it was partially successful. Because, back then in 2008 
 we were still in the midst of the XML hangover after ___everyone___ had to have XML on their product sales-pitch in the 
