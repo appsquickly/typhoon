@@ -206,7 +206,7 @@ So anyway, at the time Google/Guice brought that argument up, it was partially s
 we were still in the midst of a hangover after ___everyone___ had to have XML on their product sales-pitch in the 
 early 2000s. (So its funny and ironic that we were all unaware about being caught-up 
 in the sebsequent ___annotation craze___ that followed!). The good old builder with a new hammer, looking for a nail 
-thing. I think we're over both of those phases now, and in the words of 
+thing. . .  I think we're over both of those phases now, and in the words of 
 <a href="http://en.wikipedia.org/wiki/Bruce_Lee">Bruce Lee</a> -- _"Annotations are annotations, and XML is XML"_. 
 
 # Usage
