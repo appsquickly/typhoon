@@ -162,7 +162,7 @@ and augmented reality. (Because 2013 is the year of Augmented Reality, right?)
 #### GUI Tool
 
 Still an option and it could be really neat, but in the experience of my friends at Jetbrains 
-"a text-editor approach is more convenient and fluent than GUI-based approach." You're a developer after all right, 
+"a text-editor approach is more convenient and fluent than GUI-based approach." You're a programmer after all right? 
 And while Interface Builder is super cool, do you use it to write serious apps? Also it would cost a lot to develop, 
 and I don't have the time or money right now. 
 
@@ -171,11 +171,11 @@ and I don't have the time or money right now.
 
 * There's already a defacto or recognized standard with the Spring-style approach in Java, .NET and ActionScript.  
 * Evyeryone knows XML. 
+* As for learning the markup: You don't need to, because, its very easy to provide code-completion and hints. As it 
+stands now, I have schema-based completion, which is pretty cool. And I'm working with the Jetbrains team to provide 
+more code introspections for <a href="http://www.jetbrains.com/objc/">AppCode</a> so you get initializer, selector 
+and property-name completion. 
 * It provides very low overhead, so is compatible with memory and CPU-constrained devices. 
-* There's nothing new to learn, because, its very easy to provide code-completion and hints. As it stands now, 
-I have schema-based completion, which is pretty cool. And I'm working with the Jetbrains team to provide more code 
-introspections for <a href="http://www.jetbrains.com/objc/">AppCode</a> so you get initializer, selector and property-name 
-completion. 
 * It can still be used as the foundation for a future GUI-tool - this is what Apple does with Interface Builder and 
 StoryBoards. 
 
