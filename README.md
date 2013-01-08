@@ -173,7 +173,7 @@ Ummm, someone on Twitter suggested Json (I kid you not!). I don't think I'll be 
 thing is, it was actually someone who's work I respect very much, but that suggestion sure did baffle me. Waaaohhh man! 
 
 
-####So the XML is the winner. It provides the features that I stated above. And also:
+####So XML is the winner. It provides the features that I stated above. And also:
 
 * There's already a defacto or recognized standard with the Spring-style approach in Java, .NET and ActionScript.  
 * Evyeryone knows XML. 
