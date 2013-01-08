@@ -149,7 +149,7 @@ configuration management options that I'm after. (I will be supporting them, and
 
 And that leaves: 
 
-#### DSL
+#### Domain Specific Language
 I thought about writing an interpreted, domain-specific language (DSL). This is certainly a fun exercise in the 
 use of <a href="http://en.wikipedia.org/wiki/Compiler-compiler">compiler compilers</a>. However it would be: 
 
