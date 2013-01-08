@@ -124,6 +124,8 @@ ensure that the class is in the required state before and after properties are s
 * Flexibility. Supports different approaches of dependency injection for different scenarios, including "annotations"
 and GUI tool-support. 
 
+### So, does this mean XML? 
+
 When I say Spring-like, I mean only that it supports the above. It does not mean XML! . . Initially I've provided an 
 XML implementation, because it was the fastest way I could satisfactorily meet the above goals. I think it's already 
 fast andeffective, especially if you use AppCode with XML-schema completion. . . But, the real idea is to decouple 
