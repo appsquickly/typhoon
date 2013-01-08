@@ -168,10 +168,7 @@ each commit. (If you'd like the script I will share it).
 
 # Who's using it? 
 
-* Just me so far. I had a family beach holiday booked over the Christmas/New Year period of 2012, but there was a 
-late-in-season typhoon passing over the Philippines (where we live) . . . so I rolled-up my sleeves and wrote the DI
-container that I'd been meaning to get around to! It's basically feature-complete for version 1.0, and over the 
-coming days I'll be writing more tests and documentation.
+* Mod Productions - Two applications currently in development. 
  
  If you're using it, please shoot me an email and let me know.
 
