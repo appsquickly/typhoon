@@ -182,7 +182,7 @@ coming days I'll be writing more tests and documentation.
          
 ### With contributions from: 
 
-* Your name here!!!!!!  
+* Jeffrey Roberts, Mobile Software Engineer at Riot Games, previous contributor to Swiz for ActionScript. . . Feedback and testing. 
 
 
 # LICENSE
