@@ -18,7 +18,14 @@
 * Represents a resource within the application bundle.
 */
 @interface SpringBundleResource : NSObject<SpringResource>
+{
+    NSString* _stringValue;
+}
 
-- (id<SpringResource>)withName;
+
+
++ (id<SpringResource>)withName:(NSString*)name;
+
+- (id)initWithStringValue:(NSString*)stringValue;
 
 @end

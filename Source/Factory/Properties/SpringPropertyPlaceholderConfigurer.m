@@ -12,6 +12,7 @@
 
 
 #import "SpringPropertyPlaceholderConfigurer.h"
+#import "SpringResource.h"
 
 
 @implementation SpringPropertyPlaceholderConfigurer
@@ -38,7 +39,7 @@
 /* ========================================================== Interface Methods ========================================================= */
 - (void)usePropertyResource:(id <SpringResource>)resource
 {
-    [_propertyResources addObject:[resource asString];
+    [_propertyResources addObject:[resource asString]];
 }
 
 

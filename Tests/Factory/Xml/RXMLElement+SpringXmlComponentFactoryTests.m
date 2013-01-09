@@ -24,7 +24,7 @@
 
 - (void)setUp
 {
-    NSString* xmlString = [SpringBundleResource withName:@"MiddleAgesAssembly.xml"];
+    NSString* xmlString = [[SpringBundleResource withName:@"MiddleAgesAssembly.xml"] asString];
     NSLog(@"Xml string: %@", xmlString);
     _element = [SpringRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
 }

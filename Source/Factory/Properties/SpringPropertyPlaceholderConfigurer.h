@@ -12,7 +12,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import <Spring-OSX/SpringComponentFactoryMutator.h>
+#import "SpringComponentFactoryMutator.h"
 
 @protocol SpringResource;
 

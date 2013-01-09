@@ -50,7 +50,7 @@
 {
     for (NSString* resourceName in _resourceNames)
     {
-        NSString* xmlString = [SpringBundleResource withName:resourceName];
+        NSString* xmlString = [[SpringBundleResource withName:resourceName] asString];
         SpringRXMLElement* element = [SpringRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
 
         [element iterate:@"*" usingBlock:^(SpringRXMLElement* child)

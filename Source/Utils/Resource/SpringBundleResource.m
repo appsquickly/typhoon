@@ -15,7 +15,8 @@
 
 @implementation SpringBundleResource
 
-+ (NSString*)withName:(NSString*)name {
+/* =========================================================== Class Methods ============================================================ */
++ (id<SpringResource>)withName:(NSString*)name {
 
     NSString* contents;
     NSRange lastDot = [name rangeOfString:@"." options:NSBackwardsSearch];
@@ -33,7 +34,25 @@
     if (contents == nil) {
         [NSException raise:NSInvalidArgumentException format:@"Expected contents of file %@ not to be nil", name];
     }
-    return contents;
+    return [[[self class] alloc] initWithStringValue:contents];
 }
+
+/* ============================================================ Initializers ============================================================ */
+- (id)initWithStringValue:(NSString*)stringValue
+{
+    self = [super init];
+    if (self)
+    {
+        _stringValue = stringValue;
+    }
+
+    return self;
+}
+
+- (NSString*)asString
+{
+    return _stringValue;
+}
+
 
 @end
