@@ -18,7 +18,7 @@
 
 @interface SpringComponentDefinition (SpringComponentFactory)
 
-@property (nonatomic, strong) NSString* key;
+@property(nonatomic, strong) NSString* key;
 
 @end
 
@@ -56,7 +56,7 @@ static SpringComponentFactory* defaultFactory;
     }
     if ([definition.key length] == 0)
     {
-        NSString *uuidStr = [[NSProcessInfo processInfo] globallyUniqueString];
+        NSString* uuidStr = [[NSProcessInfo processInfo] globallyUniqueString];
         definition.key = [NSString stringWithFormat:@"%@%@", NSStringFromClass(definition.type), uuidStr];
     }
     [_registry addObject:definition];
@@ -83,6 +83,11 @@ static SpringComponentFactory* defaultFactory;
 
     for (SpringComponentDefinition* definition in _registry)
     {
+        if ([_currentlyResolvingReferences containsObject:definition.key])
+        {
+            [NSException raise:NSInvalidArgumentException format:@"Circular dependency detected: %@", _currentlyResolvingReferences];
+        }
+        [_currentlyResolvingReferences addObject:definition.key];
         if (isClass)
         {
             if (definition.type == classOrProtocol || [definition.type isSubclassOfClass:classOrProtocol])
@@ -98,6 +103,7 @@ static SpringComponentFactory* defaultFactory;
             }
         }
     }
+    [_currentlyResolvingReferences removeAllObjects];
     return [results copy];
 }
 
@@ -123,9 +129,9 @@ static SpringComponentFactory* defaultFactory;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
-    {
-        defaultFactory = self;
-    });
+{
+    defaultFactory = self;
+});
 }
 
 
