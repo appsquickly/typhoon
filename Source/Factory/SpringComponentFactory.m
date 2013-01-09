@@ -83,15 +83,11 @@ static SpringComponentFactory* defaultFactory;
 
     for (SpringComponentDefinition* definition in _registry)
     {
-        if ([_currentlyResolvingReferences containsObject:definition.key])
-        {
-            [NSException raise:NSInvalidArgumentException format:@"Circular dependency detected: %@", _currentlyResolvingReferences];
-        }
-        [_currentlyResolvingReferences addObject:definition.key];
         if (isClass)
         {
             if (definition.type == classOrProtocol || [definition.type isSubclassOfClass:classOrProtocol])
             {
+                [self assertNotCircularDependency:definition.key];
                 [results addObject:[self objectForDefinition:definition]];
             }
         }
@@ -99,6 +95,7 @@ static SpringComponentFactory* defaultFactory;
         {
             if ([definition.type conformsToProtocol:classOrProtocol])
             {
+                [self assertNotCircularDependency:definition.key];
                 [results addObject:[self objectForDefinition:definition]];
             }
         }
@@ -107,14 +104,10 @@ static SpringComponentFactory* defaultFactory;
     return [results copy];
 }
 
+
 - (id)componentForKey:(NSString*)key
 {
-    if ([_currentlyResolvingReferences containsObject:key])
-    {
-        [NSException raise:NSInvalidArgumentException format:@"Circular dependency detected: %@", _currentlyResolvingReferences];
-    }
-    [_currentlyResolvingReferences addObject:key];
-
+    [self assertNotCircularDependency:key];
     SpringComponentDefinition* definition = [self definitionForKey:key];
     if (!definition)
     {
@@ -180,6 +173,16 @@ static SpringComponentFactory* defaultFactory;
         }
     }
     return nil;
+}
+
+- (void)assertNotCircularDependency:(NSString*)key
+{
+    if ([_currentlyResolvingReferences containsObject:key])
+    {
+        [NSException raise:NSInvalidArgumentException format:@"Circular dependency detected: %@",
+                                                             _currentlyResolvingReferences];
+    }
+    [_currentlyResolvingReferences addObject:key];
 }
 
 @end
