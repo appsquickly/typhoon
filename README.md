@@ -59,7 +59,7 @@ ___And now, it simply becomes___:
 
 ```objective-c
 
--(id) initWithWeatherClient:id<WeatherClient>weatherClient
+-(id) initWithWeatherClient:(id<WeatherClient>)weatherClient
 {
  self = [super init];
  if (self) 
