@@ -146,7 +146,7 @@ definitions be interpreted at runtime.___ Otherwise you run into problems with t
 dependencies, type conversion, and others that you wouldn't be interested in hearing about, unless you're rolling 
 your own DI container. 
 
-___So what are the options for runtime interpretation of component recipes?___
+___So what, then, are the options for runtime interpretation of component recipes?___
 
 #### Annotations
 
