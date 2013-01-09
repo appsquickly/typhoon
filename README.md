@@ -94,6 +94,8 @@ personal take on what Dependency Injection should look like in Objective-C. I gu
 'The Typhoon Framework'. Or Michael? I don't work at SpringSource (I did once) and I'm not getting any financial 
 benefit from this. I'm doing it because I think it is the right thing to do. 
 
+### Your Dependency Injection Options
+
 If you proceed with the Dependency Injection pattern _(assuming you're not one of the remaining "flat-earthers", who 
 believe that Objective-C somehow magically alleviates the need for common-sense. "Oh, I don't do DI, I use swizzling 
 class-clusters!")_, then there are basically two options: 
