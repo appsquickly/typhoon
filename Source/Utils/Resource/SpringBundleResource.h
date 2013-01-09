@@ -19,5 +19,6 @@
 */
 @interface SpringBundleResource : NSObject<SpringResource>
 
+- (id<SpringResource>)withName;
 
 @end

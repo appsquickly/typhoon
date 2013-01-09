@@ -12,14 +12,22 @@
 
 
 #import <Foundation/Foundation.h>
+#import <Spring-OSX/SpringComponentFactoryMutator.h>
 
-@protocol SpringResource<NSObject>
+@protocol SpringResource;
 
-/**
-* Returns the resource with the given name, as an NSString.
-*/
 
-- (NSString*)asString;
+@interface SpringPropertyPlaceholderConfigurer : NSObject<SpringComponentFactoryMutator>
+{
+    NSString* _prefix;
+    NSString* _suffix;
+    NSMutableArray* _propertyResources;
+}
 
++ (SpringPropertyPlaceholderConfigurer*)configurer;
+
+- (id)initWithPrefix:(NSString*)aPrefix suffix:(NSString*)aSuffix;
+
+- (void)usePropertyResource:(id<SpringResource>)resource;
 
 @end

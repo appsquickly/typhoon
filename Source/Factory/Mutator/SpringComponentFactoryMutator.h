@@ -13,13 +13,8 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol SpringResource<NSObject>
+@protocol SpringComponentFactoryMutator
 
-/**
-* Returns the resource with the given name, as an NSString.
-*/
-
-- (NSString*)asString;
-
+- (void)mutateComponentDefinitionsIfRequired:(NSArray*)componentDefinitions;
 
 @end

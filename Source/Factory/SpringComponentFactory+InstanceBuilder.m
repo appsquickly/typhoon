@@ -29,6 +29,7 @@
 
 @implementation SpringComponentFactory (InstanceBuilder)
 
+/* ========================================================== Interface Methods ========================================================= */
 - (id)buildInstanceWithDefinition:(SpringComponentDefinition*)definition
 {
     id <SpringIntrospectiveNSObject> instance;
@@ -75,20 +76,20 @@
         }
         else if (parameter.type == SpringParameterInjectedByValueType)
         {
-            SpringParameterInjectedByValue* injectedByValue = (SpringParameterInjectedByValue*) parameter;
+            SpringParameterInjectedByValue* byValue = (SpringParameterInjectedByValue*) parameter;
 
-            if (injectedByValue.classOrProtocol)
+            if (byValue.classOrProtocol)
             {
-                SpringTypeDescriptor* descriptor = [SpringTypeDescriptor descriptorWithClassOrProtocol:injectedByValue.classOrProtocol];
+                SpringTypeDescriptor* descriptor = [SpringTypeDescriptor descriptorWithClassOrProtocol:byValue.classOrProtocol];
                 id <SpringTypeConverter> converter = [[SpringTypeConverterRegistry shared] converterFor:descriptor];
-                id converted = [converter convert:injectedByValue.value];
+                id converted = [converter convert:byValue.value];
                 [invocation setArgument:&converted atIndex:parameter.index + 2];
             }
             else
             {
                 SpringPrimitiveTypeConverter* converter = [[SpringTypeConverterRegistry shared] primitiveTypeConverter];
-                SpringTypeDescriptor* descriptor = [injectedByValue resolveTypeWith:instanceOrClass];
-                void* converted = [converter convert:injectedByValue.value requiredType:descriptor];
+                SpringTypeDescriptor* descriptor = [byValue resolveTypeWith:instanceOrClass];
+                void* converted = [converter convert:byValue.value requiredType:descriptor];
                 [invocation setArgument:&converted atIndex:parameter.index + 2];
             }
         }
