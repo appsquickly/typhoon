@@ -212,10 +212,10 @@ thing. . .  I think we're over both of those phases now, and in the words of
 ## Spring for Objective-C (TM) ?
 
 I don't work at SpringSource (I did once) and I'm not getting any financial benefit from this. I'm doing this because
-I think it's right. God knows, I'm the lastperson who would have any loyalty to the organization! When I left SpringSource 
-to move to the same country as my (then girlfriend now) wife they dropped a 400-page no-compete clause on my head and 
-threatened legal action!! I had no intention to compete. So, I gave up my share options, and soon after SpringSource 
-was bought by VmWare for $400M so they all got rich while I ended up in the Philippines where money doesn't exactly grow 
+I think it's right. God knows, I'm the last person who would have any loyalty to the organization! When I left 
+SpringSource to move to the same country as my (then girlfriend now) wife they dropped a 400-page no-compete clause 
+on my head and threatened legal action!! I had no intention to compete. So, I gave up my share options, and soon 
+after SpringSource was bought by VmWare for $400M. They all got serious $$$, while I ended up in the Philippines where money doesn't exactly grow 
 on trees, you know!? (I got two lovely children, and a very lovely wife). . . so, no. It is not (TM). Just one frail, 
 consumptive poet and his DI container, pecking away through the nights on an old Mac Quadra. 
 
