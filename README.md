@@ -187,7 +187,7 @@ Ummm, one of my vociferous critics on Twitter (a well-known individual), suggest
 wait for it . . (but if you're currently having a drink get ready to spray it all over the place) . . . Ready? .
 . . ___"JSON!"___ . . I kid you not. . . .
 I guess the only thing I can say is that if you want to write a JSON extension for your own use, then 
-my container <a href="http://jasperblues.github.com/spring-objective-c/api/Classes/SpringComponentFactory.html">fully supports that</a>. 
+the container <a href="http://jasperblues.github.com/spring-objective-c/api/Classes/SpringComponentFactory.html">fully supports that</a>. 
 
 
 ####So XML is the winner. It provides the features that I stated above. And also:
