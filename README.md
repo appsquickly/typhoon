@@ -217,7 +217,8 @@ and (my favorite) ___"It came screeching out of my dot-matrix printer, like the 
 the night the world ended!"___ (actually, I made that one up myself). . . . ___Stop the press!___. . . 
 If you take a look at the <a href="https://github.com/jasperblues/spring-objective-c-example">___sample application___</a> 
 you'll see that this is <a href="https://github.com/jasperblues/spring-objective-c-example/blob/master/PocketForecast/Assembly.xml">___simply not true___</a>. 
-___There is not much of it, it looks just fine and what there is can be grouped and modularized appropriately.___ 
+<a href="https://github.com/jasperblues/spring-objective-c-example/blob/master/PocketForecast/ViewControllers.xml">There is not much of it, it looks 
+just fine and what there is can be grouped and modularized appropriately.</a>
 
 The argument actually ___comes from those with a vested interest in another approach___, and was the ___same one that was used
 by Google to go on the offensive against Spring, when their own Guice container was released___. _(NB: But not at all by Justin in relation to his Guice-like
