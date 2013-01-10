@@ -272,6 +272,7 @@ each commit. (If you'd like the script I will share it).
 ### With contributions from: 
 
 * Jeffrey Roberts, Mobile Software Engineer at Riot Games, previous contributor to Swiz for ActionScript : Feedback and testing. 
+* John Blanco of Rapture in Venice, LLC : contributed his very lean and elegant yet richly featured XML parser. 
 * <a href="http://www.jetbrains.com/">Jetbrains</a>, maker of very cool software development tools : Assistance with AppCode integration. 
 
 Thanks!!!
