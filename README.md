@@ -204,7 +204,7 @@ selector and property-names.
 StoryBoards. 
 
 
-#### Reams of it?
+#### F@&$*ing reams of it?!?
 
 Wait, we're still not done yet. One last thing: There's been a criticism that the XML is "un-readable", "pages and pages long", "heavy-weight", "all tangled up", "It made my son go blind!" and (my favorite) "My horse's tail fell off!". . ___Stop the press!___. . . 
 If you take a look at the <a href="https://github.com/jasperblues/spring-objective-c-example">___sample application___</a> 
