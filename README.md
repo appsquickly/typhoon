@@ -2,9 +2,7 @@
 
 A Spring-like dependency injection container for Objective-C. Built during a typhoon. 
 
-## Status!?!?
-
-__It's ready to use:__
+## Status? It's ready to use!
 
 * <a href="https://github.com/jasperblues/spring-objective-c-example">Try the sample application</a>.
 * Current work: More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
