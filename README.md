@@ -229,9 +229,7 @@ we were still in the midst of a hangover after ___everyone___ had to have XML on
 early 2000s. (Its funny and ironic that we were all unaware about being caught-up 
 in the subsequent ___annotation craze___ that followed!). It's the classic _builder with a new hammer and everything looks like a nail_ 
 story . .  Folks, its 2013 and I think we're over both of those phases now. In the words of 
-<a href="http://en.wikipedia.org/wiki/Bruce_Lee">Bruce Lee</a> -- _"Annotations are annotations, and XML is XML"_. And full-featured
-is not the same as heavy. 
-
+<a href="http://en.wikipedia.org/wiki/Bruce_Lee">Bruce Lee</a> -- _"Annotations are annotations, and XML is XML"_. 
 # Usage
 
 * <a href="https://github.com/jasperblues/spring-objective-c-example">Play with the sample application</a>.
@@ -281,7 +279,10 @@ each commit. (If you'd like the script I will share it).
 ### With contributions from: 
 
 * Jeffrey Roberts, Mobile Software Engineer at Riot Games, previous contributor to Swiz for ActionScript : Feedback and testing. 
-* John Blanco of Rapture in Venice, LLC : contributed his very lean and elegant yet richly featured XML parser. 
+* John Blanco of Rapture in Venice, LLC : contributed his 
+<a href="https://github.com/ZaBlanc/RaptureXML">lean and elegant XML library</a>. A great example that full-featured
+is not the same as heavy. 
+ 
 * <a href="http://www.jetbrains.com/">Jetbrains</a>, maker of very cool software development tools : Assistance with AppCode integration. 
 
 Thanks!!!
