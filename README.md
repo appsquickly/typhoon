@@ -144,7 +144,7 @@ When I say Spring-like, I mean that it supports the above design goals and featu
 at all! (Spring for Java doesn't imply XML either). ___To give the above benefits, requires that the component 
 definitions be interpreted at runtime.___ Otherwise you run into problems with the order of declarations, transitive 
 dependencies, type conversion, and others that you wouldn't be interested in hearing about, unless you're rolling 
-your own DI container. 
+your own DI. 
 
 ___So what, then, are the options for runtime interpretation of component recipes?___
 
