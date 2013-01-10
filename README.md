@@ -206,7 +206,7 @@ StoryBoards.
 
 #### Reams of it?
 
-Wait, we're still not done yet. One last thing: There's been a criticism that the XML "un-readable", "pages and pages long", "heavy-weight", "all tangled up". "Bad!". 
+Wait, we're still not done yet. One last thing: There's been a criticism that the XML is "un-readable", "pages and pages long", "heavy-weight", "all tangled up". "Bad!". 
 If you take a look at the <a href="https://github.com/jasperblues/spring-objective-c-example">___sample application___</a> 
 you'll see that this is <a href="https://github.com/jasperblues/spring-objective-c-example/blob/master/PocketForecast/Assembly.xml">___simply not true___</a>. 
 There is not much of it, it looks just fine and what there is can be grouped and modularized appropriately. 
