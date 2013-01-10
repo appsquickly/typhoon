@@ -217,7 +217,7 @@ and (my favorite) ___"It came screeching out of my dot-matrix printer, like the 
 the night the world ended!"___ (actually, I made that one up myself). . . . ___Stop the press!___. . . 
 If you take a look at the <a href="https://github.com/jasperblues/spring-objective-c-example">___sample application___</a> 
 you'll see that this is <a href="https://github.com/jasperblues/spring-objective-c-example/blob/master/PocketForecast/Assembly.xml">___simply not true___</a>. 
-___There is not much of it, it looks just fine and what there is can be___
+There is not much of it, it looks just fine and what there is can be 
 <a href="https://github.com/jasperblues/spring-objective-c-example/blob/master/PocketForecast/ViewControllers.xml">___grouped and modularized appropriately.___</a>
 
 The argument actually ___comes from those with a vested interest in another approach___, and was the ___same one that was used
