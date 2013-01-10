@@ -150,9 +150,10 @@ ___So what, then, are the options for runtime interpretation of component recipe
 
 #### Pure Objective-C API
 
-This is <a href="https://github.com/jasperblues/spring-objective-c/blob/master/Tests/Factory/SpringComponentFactoryTests.m">already supported</a>, 
-however I find it too verbose to be of practical use. It does get you one step ahead of the game by allowing you to 
-define components in any order, as well as inject by type, reference, value, with property and with initializer. Its 
+This is 
+<a href="https://github.com/jasperblues/spring-objective-c/blob/master/Tests/Factory/SpringComponentFactoryTests.m">already supported</a>, 
+however I find it too verbose to be of practical use. It certainly gets you a couple of steps ahead, by allowing you to 
+define components in any order, as well as inject by type, reference and value. And with properties or initializers. Its 
 the foundation of what is built on top. 
 
 #### Annotations
