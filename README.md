@@ -204,7 +204,7 @@ StoryBoards. Great build-time tools, lean runtime.
 #### _Reams_ of it?!?
 
 _(It will help if you roll your 'R' (as-in 'Rrrrrreeeeams') for the above sentence. Say it in a tone of voice like 
-the mean guy in Oliver Twist, when Oliver asks for some more . . . . Perhaps also, look down your nose, as though 
+the mean guy in Oliver Twist when Oliver asks for some more . . . . Perhaps also, look down your nose, as though 
 through small, bookish spectacles perched low upon it)._ 
 
 ![Mooooooore?](http://www.appsquick.ly/oliver-twist.jpg)
