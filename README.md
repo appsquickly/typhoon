@@ -251,7 +251,7 @@ each commit. (If you'd like the script I will share it).
 
 * <a href="https://github.com/jasperblues/spring-objective-c/wiki/Contribution-Guide">Contribution Guide.</a>
 
-* Look at and contribute to the <a href="https://github.com/jasperblues/spring-objective-c/wiki/Roadmap">roadmap</a> here.
+* Look at, and contribute to the <a href="https://github.com/jasperblues/spring-objective-c/wiki/Roadmap">roadmap</a> here.
 
 # Frequently Asked Questions
 
