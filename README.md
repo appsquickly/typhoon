@@ -206,7 +206,7 @@ StoryBoards.
 
 #### _Reams_ of it?!?
 
-_(It helps if you roll your 'R', (as-in 'Rrrrrreeeeams!?!??') for the above sentence, and say it in the same tone of voice, like 
+_(It helps if you roll your 'R', (as-in 'Rrrrrreeeeams!?!??') for the above sentence. And say it in a tone of voice like 
 the mean guy in Oliver Twist, when Oliver asks for some more._ 
 
 ![Mooooooore?](http://www.appsquick.ly/oliver-twist.jpg)
