@@ -225,12 +225,13 @@ by Google to go on the offensive against Spring, when their own Guice container 
 DI container for Objective-C. I admire Justin's work and moreover his personal integrity when he defended mine against the 
 "talk-first, think-later (TM)" Twitter masses, despite having a competing solution)._
 
-So anyway, at the time Google/Guice brought that argument up, it was partially successful. Because, back then around 2008 
-we were still in the midst of a hangover after ___everyone___ had to have XML on their product sales-pitch in the 
-early 2000s. (Its funny and ironic that we were all unaware about being caught-up 
-in the subsequent ___annotation craze___ that followed!). It's the classic _builder with a new hammer and everything looks like a nail_ 
-story . .  Folks, its 2013 and I think we're over both of those phases now. In the words of 
+So anyway, at the time Google/Guice brought that argument up, it was partially successful. Because? Back then around 
+2008 we were still in the midst of a hangover after ___everyone___ had to have XML on their product sales-pitch in the 
+early 2000s. For a while, it was the classic _builder with a new hammer and everything looks like a nail_ story. What's funny 
+and ironic that we were all unaware about being caught-up in the subsequent ___annotation craze___ that followed!. 
+Its 2013 and I think we're over both of those phases now. They both have their valid uses. In the words of 
 <a href="http://en.wikipedia.org/wiki/Bruce_Lee">Bruce Lee</a> -- _"Annotations are annotations, and XML is XML"_. 
+
 # Usage
 
 * <a href="https://github.com/jasperblues/spring-objective-c-example">Play with the sample application</a>.
