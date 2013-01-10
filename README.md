@@ -204,7 +204,7 @@ StoryBoards. Great build-time tools, lean runtime.
 #### _Reams_ of it?!?
 
 Wait. .  We're still not done yet. One last thing: There's been a criticism that the XML is "tangled, un-readable", "pages and pages long", "heavy-weight", 
-and (my favorite) ___"It suddenly came screeching out of my old dot-matrix printer, like the sirens of death on 
+and (my favorite) ___"It suddenly came out of my old dot-matrix printer, like the sirens of death on 
 the night the world ended!"___ (actually, I made that one up myself). . . . ___Stop the press!___. . . 
 If you take a look at the <a href="https://github.com/jasperblues/spring-objective-c-example">___sample application___</a> 
 you'll see that this is <a href="https://github.com/jasperblues/spring-objective-c-example/blob/master/PocketForecast/Assembly.xml">___simply not true___</a>. 
