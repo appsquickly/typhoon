@@ -260,7 +260,7 @@ each commit. (If you'd like the script I will share it).
 
 # Who's using it? 
 
-* Mod Productions - Two applications currently in development. 
+* <a href=http://modprods.com/">Mod Productions</a> : Two very exciting applications currently in development. Stay tuned for release.
  
  If you're using it, please shoot me an email and let me know.
 
