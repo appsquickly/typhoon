@@ -212,7 +212,7 @@ through small, bookish spectacles perched low upon it)._
 
 ![Mooooooore?](http://www.appsquick.ly/oliver-twist.jpg)
 
-Wait. .  We're still not done yet. One last thing: There's been a criticism that the XML is "un-readable", "pages and pages long", "heavy-weight", 
+Wait. .  We're still not done yet. One last thing: There's been a criticism that the XML is "tangled, un-readable", "pages and pages long", "heavy-weight", 
 and (my favorite) ___"It came screeching out of my dot-matrix printer, like the sirens of death, on 
 the night the world ended!"___ (actually, I made that one up myself). . . . ___Stop the press!___. . . 
 If you take a look at the <a href="https://github.com/jasperblues/spring-objective-c-example">___sample application___</a> 
