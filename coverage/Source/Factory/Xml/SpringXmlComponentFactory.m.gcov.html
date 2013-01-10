@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-01-07</td>
+            <td class="headerValue">2013-01-10</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -108,7 +108,7 @@
 <span class="lineNum">      50 </span>            : {
 <span class="lineNum">      51 </span><span class="lineCov">         12 :     for (NSString* resourceName in _resourceNames)</span>
 <span class="lineNum">      52 </span>            :     {
-<span class="lineNum">      53 </span><span class="lineCov">         12 :         NSString* xmlString = [SpringBundleResource withName:resourceName];</span>
+<span class="lineNum">      53 </span><span class="lineCov">         12 :         NSString* xmlString = [[SpringBundleResource withName:resourceName] asString];</span>
 <span class="lineNum">      54 </span><span class="lineCov">         12 :         SpringRXMLElement* element = [SpringRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];</span>
 <span class="lineNum">      55 </span>            : 
 <span class="lineNum">      56 </span><span class="lineCov">         76 :         [element iterate:@&quot;*&quot; usingBlock:^(SpringRXMLElement* child)</span>
