@@ -206,13 +206,13 @@ StoryBoards.
 
 #### _Reams_ of it?!?
 
-_(It will help if you roll your 'R' (as-in 'Rrrrrreeeeams!?!??') for the above sentence, and say it in a tone of voice like 
+_(It will help if you roll your 'R' (as-in 'Rrrrrreeeeams') for the above sentence, and say it in a tone of voice like 
 the mean guy in Oliver Twist, when Oliver asks for some more . . . . Perhaps also, look down your nose, as though 
 through small, bookish spectacles perched low upon it)._ 
 
 ![Mooooooore?](http://www.appsquick.ly/oliver-twist.jpg)
 
-Wait, we're still not done yet. One last thing: There's been a criticism that the XML is "un-readable", "pages and pages long", "heavy-weight", 
+Wait. .  We're still not done yet. One last thing: There's been a criticism that the XML is "un-readable", "pages and pages long", "heavy-weight", 
 and (my favorite) ___"It came screeching out of my dot-matrix printer, like the sirens of death, on 
 the night the world ended!"___ (actually, I made that one up myself). . . . ___Stop the press!___. . . 
 If you take a look at the <a href="https://github.com/jasperblues/spring-objective-c-example">___sample application___</a> 
@@ -229,7 +229,8 @@ we were still in the midst of a hangover after ___everyone___ had to have XML on
 early 2000s. (Its funny and ironic that we were all unaware about being caught-up 
 in the subsequent ___annotation craze___ that followed!). It's the classic _builder with a new hammer and everything looks like a nail_ 
 story . .  Folks, its 2013 and I think we're over both of those phases now. In the words of 
-<a href="http://en.wikipedia.org/wiki/Bruce_Lee">Bruce Lee</a> -- _"Annotations are annotations, and XML is XML"_. 
+<a href="http://en.wikipedia.org/wiki/Bruce_Lee">Bruce Lee</a> -- _"Annotations are annotations, and XML is XML"_. And full-featured
+is not the same as heavy. 
 
 # Usage
 
