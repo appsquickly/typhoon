@@ -89,7 +89,7 @@ the real collaborators, but configured to be used in a test scenario. (One of my
 
 Well. . . it's not necessarily Spring, the well-known DI framework for Java, .NET and ActionScript. . . Just my 
 personal take on what Dependency Injection should look like in Objective-C. I guess that I could've called it
-'The Typhoon Framework'. Or Michael? I don't work at SpringSource (I did once). I'm not getting any financial 
+'The Typhoon Framework'. Or Michael? I don't work at SpringSource (I did once) and I'm not getting any financial 
 benefit from this. I'm doing it because I think it is the right thing to do.
 
 ### Your Dependency Injection Options
