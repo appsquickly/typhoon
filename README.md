@@ -164,7 +164,7 @@ What else?
 
 #### Domain Specific Language
 I thought about writing an interpreted, domain-specific language (DSL). This is certainly a fun exercise in the 
-use of <a href="http://en.wikipedia.org/wiki/Compiler-compiler">compiler compilers</a> (or should that be _interpreter interpreter_ ;) ). But I think it would be: 
+use of <a href="http://en.wikipedia.org/wiki/Compiler-compiler">compiler compilers</a> (or should that be _interpreter interpreters_ ;) ). But I think it would be: 
 
 * Just another language that people will need to learn, given that there is no current standard. 
 * Would pose additional overhead on memory and CPU-constrained devices. Like the Objective-C runtime, I want 
