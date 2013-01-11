@@ -220,7 +220,7 @@ So anyway, at the time Google/Guice brought that argument up, it was partially s
 early 2000s. For a while there, it was the classic _builder with a new hammer and everything looks like a nail_ story. What's funny 
 and ironic is that we were all unaware about being caught-up in the subsequent ___annotation craze___ that followed!. 
 Its 2013 and I think we're over both of those phases now. They both have their valid uses. In the words of 
-<a href="http://en.wikipedia.org/wiki/Bruce_Lee">Bruce Lee</a> -- _"Annotations are annotations, and XML is XML"_. 
+<a href="http://shutterfinger.typepad.com/shutterfinger/2011/02/in-martial-arts-as-in-life-you-dont-win-the-trophy-without-a-fight-before-i-learned-the-art-a-punch-was-just-a-punch-an.html">Bruce Lee</a> -- _"Annotations are annotations, and XML is XML"_. 
 
 # Usage
 
