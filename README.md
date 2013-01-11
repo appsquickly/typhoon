@@ -134,6 +134,8 @@ ensure that the class is in the required state before and after properties are s
 * Flexibility. Supports different approaches of dependency injection for different scenarios, including "annotations"
 and GUI tool-support. 
 
+* Lean. It has a very low footprint, so is appropriate for CPU and memory constrained devices. 
+
 ## So, does this mean XML? 
 
 ___(I'll move this discussion to the <a href="https://github.com/jasperblues/spring-objective-c/wiki/FAQ">FAQ</a> later, but its
