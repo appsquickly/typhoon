@@ -1,6 +1,6 @@
 # Description
 
-A Spring-like dependency injection container for Objective-C.  Light-weight, yet full-featured. Built during a typhoon. 
+A Spring-like dependency injection container for Objective-C and Cocoa.  Light-weight, yet full-featured. Built during a typhoon. 
 
 ## Status? It's ready to use!
 
