@@ -210,6 +210,8 @@ StoryBoards. Great build-time tools, lean runtime. (NB: Not an all-or-nothing ap
 
 #### _Reams_ of it?!?
 
+![Computer Hell](http://www.appsquick.ly/computer-hell.jpg)
+
 Wait. .  We're still not done yet. One last thing: There's been a criticism that the XML is "tangled, un-readable", "pages and pages long", "heavy-weight", 
 and (my favorite) ___"It suddenly came out of my old dot-matrix printer, like the sirens of death on 
 the night the world ended!"___ (actually, I made that one up myself). . . . ___Stop the press!___. . . 
