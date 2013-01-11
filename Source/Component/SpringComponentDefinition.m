@@ -93,6 +93,22 @@
     [_initializer setComponentDefinition:self];
 }
 
+- (NSSet*)propertiesInjectedByValue
+{
+    return [self injectedPropertiesWithKindClass:[SpringPropertyInjectedByValue class]];
+}
+
+- (NSSet*)propertiesInjectedByType
+{
+    return [self injectedPropertiesWithKindClass:[SpringPropertyInjectedByType class]];
+}
+
+- (NSSet*)propertiesInjectedByReference
+{
+    return [self injectedPropertiesWithKindClass:[SpringPropertyInjectedByReference class]];
+}
+
+
 /* ============================================================ Utility Methods ========================================================= */
 - (NSString*)description
 {
@@ -119,7 +135,15 @@
     {
         [NSException raise:NSInvalidArgumentException format:@"Property 'clazz' is required."];
     }
+}
 
+- (NSSet*)injectedPropertiesWithKindClass:(Class)clazz
+{
+    NSPredicate* predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary* bindings)
+    {
+        return [evaluatedObject isKindOfClass:clazz];
+    }];
+    return [_injectedProperties filteredSetUsingPredicate:predicate];
 }
 
 @end

@@ -17,17 +17,19 @@
 @protocol SpringResource;
 
 
-@interface SpringPropertyPlaceholderConfigurer : NSObject<SpringComponentFactoryMutator>
+@interface SpringPropertyPlaceholderConfigurer : NSObject <SpringComponentFactoryMutator>
 {
     NSString* _prefix;
     NSString* _suffix;
-    NSMutableArray* _propertyResources;
+    NSMutableDictionary* _properties;
 }
 
 + (SpringPropertyPlaceholderConfigurer*)configurer;
 
-- (id)initWithPrefix:(NSString*)aPrefix suffix:(NSString*)aSuffix;
+- (id)initWithPrefix:(NSString*)prefix suffix:(NSString*)suffix;
 
-- (void)usePropertyResource:(id<SpringResource>)resource;
+- (void)usePropertyStyleResource:(id <SpringResource>)resource;
+
+- (NSDictionary*)properties;
 
 @end

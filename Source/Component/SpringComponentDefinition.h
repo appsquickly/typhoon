@@ -50,6 +50,10 @@ typedef enum
 
 - (void)addInjectedProperty:(id<SpringInjectedProperty>)property;
 
-- (NSString*)description;
+- (NSSet*)propertiesInjectedByValue;
+
+- (NSSet*)propertiesInjectedByType;
+
+- (NSSet*)propertiesInjectedByReference;
 
 @end
