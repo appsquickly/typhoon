@@ -199,7 +199,9 @@ are communities we can tap, as we get into DI with Objective-C.
 * Evyeryone knows XML. 
 * As for learning the markup: You don't need to, because there's code-completion and hints. Right now, I have 
 schema-based completion, which is pretty cool. And I'm working with the Jetbrains team, who make the brilliant 
-<a href="http://www.jetbrains.com/objc/">AppCode IDE</a>. They're kindly opening up their previously private APIs and will provide more code introspections so you get completion/validation on initializer, selector and property-names, as well as checks on all of your components wired by reference. 
+<a href="http://www.jetbrains.com/objc/">AppCode IDE</a>. They're kindly opening up their previously private APIs 
+which will allow more code introspections. So you get completion/validation on initializer, selector and 
+property-names, as well as checks on all of your components wired by reference. 
 * It provides very low overhead, so is compatible with memory and CPU-constrained devices. 
 * It can still be used as the foundation for a future GUI-tool - this is what Apple does with Interface Builder and 
 StoryBoards. Great build-time tools, lean runtime. 
