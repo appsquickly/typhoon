@@ -202,7 +202,8 @@ schema-based completion, which is pretty cool. And I'm working with the Jetbrain
 <a href="http://www.jetbrains.com/objc/">AppCode IDE</a>. They're kindly opening up their previously private APIs 
 which will allow more code introspections. So you get completion/validation on initializer, selector and 
 property-names, as well as checks on all of your components wired by reference. 
-* It provides very low overhead, so is compatible with memory and CPU-constrained devices. 
+* It provides very low overhead, so is compatible with memory and CPU-constrained devices. (I mentioned this before 
+but its worth mentioning again). 
 * It can still be used as the foundation for a future GUI-tool - this is what Apple does with Interface Builder and 
 StoryBoards. Great build-time tools, lean runtime. 
 
