@@ -203,7 +203,7 @@ property-names, as well as checks on all of your components wired by reference.
 * It provides very low overhead, so is compatible with memory and CPU-constrained devices. (I mentioned this before 
 but its worth mentioning again). 
 * It can still be used as the foundation for a future GUI-tool - this is what Apple does with Interface Builder and 
-StoryBoards. Great build-time tools, lean runtime. (NB: Not an all-or-nothing approach, the xml will still be readable). 
+StoryBoards. Great build-time tools, lean runtime. 
 
 
 #### _Reams_ of it?!?
