@@ -181,7 +181,7 @@ I will do it!!!!)
 
 #### JSON (. . . the f@#$*@* ????) 
 
-Ummm, one of my vociferous critics on Twitter (a well-known individual), suggested . . . 
+One of my vociferous critics on Twitter (a well-known individual), suggested . . . 
 wait for it . . (but if you're currently having a drink get ready to spray it all over the place) . . . Ready? .
 . . ___"JSON!"___ . . I kid you not. . . .
 I guess the only thing I can say is that if you want to write a JSON extension for your own use, then 
@@ -213,8 +213,7 @@ There is not much of it, it looks just fine and what there is can be
 
 The argument actually ___comes from those with a vested interest in another approach___, and was the ___same one that was used
 by Google to go on the offensive against Spring, when their own Guice container was released___. _(NB: But not at all by Justin in relation to his Guice-like
-DI container for Objective-C. I admire Justin's work and moreover his personal integrity when he defended mine against the 
-"talk-first, think-later (TM)" Twitter masses, despite having a competing solution)._
+DI container for Objective-C. I admire Justin's work and moreover his personal integrity when he defended mine despite having a competing solution)._
 
 So anyway, at the time Google/Guice brought that argument up, it was partially successful. Because? Back then around year
 2008 we were still in the midst of a hangover after ___everyone___ had to have XML on their product sales-pitch in the 
