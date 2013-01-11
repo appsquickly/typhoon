@@ -58,6 +58,7 @@
 
     <target name="--unit.tests.build">
         <exec executable="xcodebuild" failonerror="true">
+            <env key="PATH" value="${tools.paths}"/>
             <arg line="-target ${tests.target.name}"/>
         </exec>
 
@@ -104,7 +105,9 @@
             lcov -r "${temp.dir}/coverage-temp.info" _string.h NSRange.h once.h SpringRXMLElement.m SpringRXMLElement.h > "${temp.dir}/coverage.info"
         </echo>
         <chmod perm="+x" file="${temp.dir}/geninfo.sh"/>
-        <exec executable="${temp.dir}/geninfo.sh" failonerror="true" failifexecutionfails="true"/>
+        <exec executable="${temp.dir}/geninfo.sh" failonerror="true" failifexecutionfails="true">
+            <env key="PATH" value="${tools.paths}"/>
+        </exec>
 
         <echo file="${temp.dir}/genhtml.sh">
             #!/bin/sh
@@ -112,7 +115,9 @@
             --prefix "${basedir}" "${temp.dir}/coverage.info"
         </echo>
         <chmod perm="+x" file="${temp.dir}/genhtml.sh"/>
-        <exec executable="${temp.dir}/genhtml.sh" failonerror="true" failifexecutionfails="true"/>
+        <exec executable="${temp.dir}/genhtml.sh" failonerror="true" failifexecutionfails="true">
+            <env key="PATH" value="${tools.paths}"/>
+        </exec>
     </target>
 
     <target name="--api.report">
@@ -128,7 +133,8 @@
         </pathconvert>
         <echo message="Documenting: ${doc.files.list}"/>
 
-        <exec executable="${appledoc}">
+        <exec executable="appledoc">
+            <env key="PATH" value="${tools.paths}"/>
             <arg line="--project-name=${module.name}"/>
             <arg line="--project-company=${module.company}"/>
             <arg line="--company-id=${module.company}"/>
@@ -167,7 +173,9 @@
             git checkout master
         </echo>
         <chmod perm="+x" file="${temp.dir}/publish-site.sh"/>
-        <exec executable="${temp.dir}/publish-site.sh" failonerror="true" failifexecutionfails="true"/>
+        <exec executable="${temp.dir}/publish-site.sh" failonerror="true" failifexecutionfails="true">
+            <env key="PATH" value="${tools.paths}"/>
+        </exec>
     </target>
 
     <target name="--build.ios.universal">
