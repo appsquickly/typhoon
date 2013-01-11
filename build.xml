@@ -128,7 +128,7 @@
         </pathconvert>
         <echo message="Documenting: ${doc.files.list}"/>
 
-        <exec executable="appledoc">
+        <exec executable="${appledoc}">
             <arg line="--project-name=${module.name}"/>
             <arg line="--project-company=${module.company}"/>
             <arg line="--company-id=${module.company}"/>
