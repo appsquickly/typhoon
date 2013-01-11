@@ -101,7 +101,7 @@ class-clusters!")_, then there are basically two options:
 * You can do dependency injection without a framework/library/container to help you. It ___is___ simple after all, and in 
 fact I recommend you do this, at least as an exercise in software design. And yes, it is certainly possble that this will be 
 adequate. ___But___, I think its good to have help, if you can get it. You can also write tests without a test 
-framework, mocks with out a mock library, software without a compiler/interpreter. 
+framework, mocks with out a mock library, software without a compiler. 
 
 * So, going down the library/framework route, there's been quite a lot of action in Objective-C land, over the last 
 three years. In fact, there are now around 15 Dependency Injection frameworks, many following in the footsteps of Google Guice. 
