@@ -1,6 +1,6 @@
 # Description
 
-A Spring-like dependency injection container for Objective-C. Built during a typhoon. 
+A Spring-like dependency injection container for Objective-C and Cocoa.  Light-weight, yet full-featured. Built during a typhoon. 
 
 ## Status? It's ready to use!
 
@@ -136,96 +136,12 @@ and GUI tool-support.
 
 ## So, does this mean XML? 
 
-___(I'll move this discussion to the <a href="https://github.com/jasperblues/spring-objective-c/wiki/FAQ">FAQ</a> later, but its
-currently the hot topic for discussion, now that we've established the case for Dependency Injection in Objective-C 
-. . . If you like, you can skip straight to the Usage section).___
+* If you're interested in reading an architectural discussion, especially ___why xml is a good choice___ to declare
+components, their collaborating classes and their configurations, as well as what other styles of dependency injection 
+this cotainer will be supporting: 
+<a href="https://github.com/jasperblues/spring-objective-c/wiki/Does-this-mean-XML%3F">___then please read this.___</a>
 
-When I say Spring-like, I mean that it supports the above design goals and features. It does not necessarily mean XML 
-at all! (Spring for Java doesn't imply XML either). ___To give the above benefits, requires that the component 
-definitions be interpreted at runtime.___ Otherwise you run into problems with the order of declarations, transitive 
-dependencies, type conversion, and others that you wouldn't be interested in hearing about, unless you're rolling 
-your own DI. 
-
-___So what, then, are the options for runtime interpretation of component recipes?___
-
-#### Pure Objective-C API
-
-This is 
-<a href="https://github.com/jasperblues/spring-objective-c/blob/master/Tests/Factory/SpringComponentFactoryTests.m">already supported</a>, 
-however I find it too verbose to be of practical use. It certainly gets you a couple of steps ahead, by allowing you to 
-define components in any order, as well as inject by type, reference and value. And with properties or initializers. Its 
-the foundation of what is built on top. 
-
-#### Annotations
-
-"Annotations" (aka faking them with Macros in Objective-C) have their place, but they don't really provide the 
-modularization or configuration management options that I'm after. (I will be supporting them, and I do 
-like them for test cases).
-
-What else?
-
-#### Domain Specific Language
-I thought about writing an interpreted, domain-specific language (DSL). This is certainly a fun exercise in the 
-use of <a href="http://en.wikipedia.org/wiki/Compiler-compiler">compiler compilers</a> (or should that be _interpreter interpreters_ ;) ). But I think it would be: 
-
-* Just another language that people will need to learn, given that there is no current standard. 
-* Would pose additional overhead on memory and CPU-constrained devices. Like the Objective-C runtime, I want 
-something thin enough as to be hardly there. This way the framework can be used in demanding applications, like games 
-and augmented reality. (Because 2013 is the year of Augmented Reality, right?) 
-
-
-#### GUI Tool
-
-Still an option and it could be really neat, but in the experience of my friends at Jetbrains 
-"a text-editor approach is more convenient and fluent than GUI-based approach." You're a programmer after all right? 
-Also it would cost a lot to develop. . . and I don't have the time or money right now. (If you want to give me some 
-I will do it!!!!)
-
-#### JSON (. . . the f@#$*@* ????) 
-
-One of my vociferous critics on Twitter (a well-known individual), suggested . . . 
-wait for it . . (but if you're currently having a drink get ready to spray it all over the place) . . . Ready? .
-. . ___"JSON!"___ . . I kid you not. . . .
-I guess the only thing I can say is that if you want to write a JSON extension for your own use, then 
-the container <a href="http://jasperblues.github.com/spring-objective-c/api/Classes/SpringComponentFactory.html">fully supports that</a>. 
-
-
-####So XML is the winner. It provides the features that I stated above. And also:
-
-* There's already a defacto or recognized standard with the Spring-style approach in Java, .NET and ActionScript. These 
-are communities we can tap, as we get into DI with Objective-C. 
-* Evyeryone knows XML. 
-* As for learning the markup: You don't need to, because there's code-completion and hints. Right now, I have 
-schema-based completion, which is pretty cool. And I'm working with the Jetbrains team, who make the brilliant 
-<a href="http://www.jetbrains.com/objc/">AppCode IDE</a>. They're kindly opening up their previously private APIs 
-which will allow more code introspections. So you get completion/validation on initializer, selector and 
-property-names, as well as checks on all of your components wired by reference. 
-* It provides very low overhead, so is compatible with memory and CPU-constrained devices. (I mentioned this before 
-but its worth mentioning again). 
-* It can still be used as the foundation for a future GUI-tool - this is what Apple does with Interface Builder and 
-StoryBoards. Great build-time tools, lean runtime. 
-
-
-#### _Reams_ of it?!?
-
-Wait. .  We're still not done yet. One last thing: There's been a criticism that the XML is "tangled, un-readable", "pages and pages long", "heavy-weight", 
-and (my favorite) ___"It suddenly came out of my old dot-matrix printer, like the sirens of death on 
-the night the world ended!"___ (actually, I made that one up myself). . . . ___Stop the press!___. . . 
-If you take a look at the <a href="https://github.com/jasperblues/spring-objective-c-example">___sample application___</a> 
-you'll see that this is <a href="https://github.com/jasperblues/spring-objective-c-example/blob/master/PocketForecast/Assembly.xml">___simply not true___</a>. 
-There is not much of it, it looks just fine and what there is can be 
-<a href="https://github.com/jasperblues/spring-objective-c-example/blob/master/PocketForecast/ViewControllers.xml">___grouped and modularized appropriately.___</a>
-
-The argument actually ___comes from those with a vested interest in another approach___, and was the ___same one that was used
-by Google to go on the offensive against Spring, when their own Guice container was released___. _(NB: But not at all by Justin in relation to his Guice-like
-DI container for Objective-C. I admire Justin's work and moreover his personal integrity when he defended mine despite having a competing solution)._
-
-So anyway, at the time Google/Guice brought that argument up, it was partially successful. Because? Back then around year
-2008 we were still in the midst of a hangover after ___everyone___ had to have XML on their product sales-pitch in the 
-early 2000s. For a while there, it was the classic _builder with a new hammer and everything looks like a nail_ story. What's funny 
-and ironic is that we were all unaware about being caught-up in the subsequent ___annotation craze___ that followed!. 
-Its 2013 and I think we're over both of those phases now. They both have their valid uses. In the words of 
-<a href="http://shutterfinger.typepad.com/shutterfinger/2011/02/in-martial-arts-as-in-life-you-dont-win-the-trophy-without-a-fight-before-i-learned-the-art-a-punch-was-just-a-punch-an.html">Bruce Lee</a> -- _"Annotations are annotations, and XML is XML"_. 
+otherwise . . . 
 
 # Usage
 
