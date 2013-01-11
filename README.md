@@ -191,7 +191,7 @@ each commit. (If you'd like the script I will share it).
          
 ### With contributions from: 
 
-* Jeffrey Roberts, Mobile Software Engineer at Riot Games, previous contributor to Swiz for ActionScript : Advice, feedback and testing. 
+* Jeffrey Roberts, Mobile Software Engineer at <a href="http://www.riotgames.com/">Riot Games</a>, previous contributor to Swiz for ActionScript : Advice, feedback and testing. 
 * John Blanco of Rapture in Venice, LLC : contributed his 
 <a href="https://github.com/ZaBlanc/RaptureXML">lean and elegant XML library</a>. A great example that full-featured
 is not the same as heavy. 
