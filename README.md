@@ -91,7 +91,7 @@ Well. . . it's not necessarily Spring, the well-known DI framework for Java, .NE
 personal take on what Dependency Injection should look like in Objective-C. I guess that I could've called it
 'The Typhoon Framework'. Or Michael? I don't work at SpringSource. I did once, but I ran away with a girl and now
 live in Manila, Philippines. Shortly after, SpringSource was sold to VmWare for $400M, so a lot of people got serious
-money, meanwhile I got two lovely children, and a very lovely wife. Long story short: I'm not getting any financial 
+money, meanwhile I got two lovely children, and a very lovely wife. ___In summary___: I'm not getting any financial 
 benefit from this. I'm doing it because I think it is the right thing to do.
 
 ### Your Dependency Injection Options
