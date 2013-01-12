@@ -119,10 +119,13 @@
 		BA79818DCAA220A9665C42CD /* SpringPropertyPlaceholderConfigurer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798493DAF5101ABE58EE49 /* SpringPropertyPlaceholderConfigurer.h */; };
 		BA79823A65D2033DB1902AE9 /* SpringComponentFactoryMutator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA798286C502183E6D8C1FA5 /* SpringComponentFactoryMutator.h */; };
 		BA798275044D2AF5234F83DD /* SpringPropertyPlaceholderConfigurer.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798493DAF5101ABE58EE49 /* SpringPropertyPlaceholderConfigurer.h */; };
+		BA79830232E529AC24D8FE78 /* Spring.h in Install OCHamcrest */ = {isa = PBXBuildFile; fileRef = BA7981FE2061E072BCF759D9 /* Spring.h */; };
 		BA798318C31D6A344CE15943 /* SpringPropertyPlaceholderConfigurer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E68137750E8359B63D3 /* SpringPropertyPlaceholderConfigurer.m */; };
 		BA798457DC9F984E582CEC86 /* SpringPropertyPlaceholderConfigurerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7983FDC1DFA7B961E964DC /* SpringPropertyPlaceholderConfigurerTests.m */; };
 		BA79859119F90487480416FC /* ClassADependsOnB.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7983D2CEC00D7FAF64C182 /* ClassADependsOnB.m */; };
+		BA7985B23A8B481DAF1CACD1 /* Spring.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BA7981FE2061E072BCF759D9 /* Spring.h */; };
 		BA7987B9F1868BD46A030D1E /* SpringPropertyPlaceholderConfigurer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E68137750E8359B63D3 /* SpringPropertyPlaceholderConfigurer.m */; };
+		BA7987C4A466623BFDCF313D /* Spring.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7981FE2061E072BCF759D9 /* Spring.h */; };
 		BA798969A257CF1AF0ADBBC4 /* SpringResource.h in Install OCHamcrest */ = {isa = PBXBuildFile; fileRef = BA798F1D031DA01F8C0B97BC /* SpringResource.h */; };
 		BA79898A566A00AB64021C90 /* SomeProperties.properties in Resources */ = {isa = PBXBuildFile; fileRef = BA798B4AC8D15803ED17AD82 /* SomeProperties.properties */; };
 		BA7989CF067CB29C461CC402 /* SpringXmlComponentFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798754085BEEED840E5182 /* SpringXmlComponentFactoryTests.m */; };
@@ -152,6 +155,7 @@
 				BA798969A257CF1AF0ADBBC4 /* SpringResource.h in Install OCHamcrest */,
 				BA798A3995C65B3FD3E7AE0E /* SpringComponentFactoryMutator.h in Install OCHamcrest */,
 				BA798C504636F53A259D3181 /* SpringPropertyPlaceholderConfigurer.h in Install OCHamcrest */,
+				BA79830232E529AC24D8FE78 /* Spring.h in Install OCHamcrest */,
 			);
 			name = "Install OCHamcrest";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,6 +169,7 @@
 				BA798145F2B745CDB7FD6BA2 /* SpringResource.h in CopyFiles */,
 				BA79823A65D2033DB1902AE9 /* SpringComponentFactoryMutator.h in CopyFiles */,
 				BA79818DCAA220A9665C42CD /* SpringPropertyPlaceholderConfigurer.h in CopyFiles */,
+				BA7985B23A8B481DAF1CACD1 /* Spring.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +252,7 @@
 		6BD6F98A168935FB00FE2774 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6BD6F98B168935FB00FE2774 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6BD6F9A0168936D500FE2774 /* Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA7981FE2061E072BCF759D9 /* Spring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spring.h; sourceTree = "<group>"; };
 		BA798286C502183E6D8C1FA5 /* SpringComponentFactoryMutator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringComponentFactoryMutator.h; sourceTree = "<group>"; };
 		BA7982CAB715A6777CA9E5F9 /* ClassBDependsOnA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassBDependsOnA.h; sourceTree = "<group>"; };
 		BA798386B768F0D4DEECA5D5 /* MiddleAgesAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MiddleAgesAssembly.xml; sourceTree = "<group>"; };
@@ -378,6 +384,7 @@
 				6BA6CA48169434C60062DA5D /* Spring-Objective-C-Prefix.pch */,
 				6BA6CA49169434C60062DA5D /* TypeConversion */,
 				6BA6CA55169434C60062DA5D /* Utils */,
+				BA7981FE2061E072BCF759D9 /* Spring.h */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -689,6 +696,7 @@
 				BA798C4F057324CAF0FF6B26 /* SpringResource.h in Headers */,
 				BA798C5B0F9DBAB5C44A7398 /* SpringComponentFactoryMutator.h in Headers */,
 				BA798275044D2AF5234F83DD /* SpringPropertyPlaceholderConfigurer.h in Headers */,
+				BA7987C4A466623BFDCF313D /* Spring.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

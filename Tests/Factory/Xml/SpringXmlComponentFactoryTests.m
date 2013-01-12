@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "SpringXmlComponentFactory.h"
+#import "Spring.h"
 #import "Knight.h"
 #import "ClassADependsOnB.h"
 #import "Sword.h"

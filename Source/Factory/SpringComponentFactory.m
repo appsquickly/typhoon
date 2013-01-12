@@ -127,6 +127,10 @@ static SpringComponentFactory* defaultFactory;
 });
 }
 
+- (NSArray*)registry
+{
+    return [_registry copy];
+}
 
 /* ============================================================ Utility Methods ========================================================= */
 - (NSString*)description
@@ -179,8 +183,7 @@ static SpringComponentFactory* defaultFactory;
 {
     if ([_currentlyResolvingReferences containsObject:key])
     {
-        [NSException raise:NSInvalidArgumentException format:@"Circular dependency detected: %@",
-                                                             _currentlyResolvingReferences];
+        [NSException raise:NSInvalidArgumentException format:@"Circular dependency detected: %@", _currentlyResolvingReferences];
     }
     [_currentlyResolvingReferences addObject:key];
 }

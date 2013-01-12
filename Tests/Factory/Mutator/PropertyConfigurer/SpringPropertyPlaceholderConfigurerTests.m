@@ -10,8 +10,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "SpringPropertyPlaceholderConfigurer.h"
-#import "SpringBundleResource.h"
+#import "Spring.h"
+#import "Knight.h"
 
 @interface SpringPropertyPlaceholderConfigurerTests : SenTestCase
 @end
@@ -24,13 +24,26 @@
 - (void)setUp
 {
     _configurer = [[SpringPropertyPlaceholderConfigurer alloc] init];
+    [_configurer usePropertyStyleResource:[SpringBundleResource withName:@"SomeProperties.properties"]];
 }
 
-- (void)test_should_parse_property_name_value_pairs
+- (void)test_parses_property_name_value_pairs
 {
-    [_configurer usePropertyStyleResource:[SpringBundleResource withName:@"SomeProperties.properties"]];
     NSDictionary* properties = [_configurer properties];
     NSLog(@"Properties: %@", properties);
+}
+
+- (void)test_mutates_property_values
+{
+    SpringComponentFactory* factory = [[SpringComponentFactory alloc] init];
+    SpringComponentDefinition* knightDefinition = [[SpringComponentDefinition alloc] initWithClazz:[Knight class] key:@"knight"];
+    [knightDefinition injectProperty:@"damselsRescued" withValueAsText:@"${damsels.rescued}"];
+    [factory register:knightDefinition];
+
+    [_configurer mutateComponentDefinitionsIfRequired:[factory registry]];
+
+    Knight* knight = [factory componentForType:[Knight class]];
+    assertThatInt(knight.damselsRescued, equalToInt(12));
 
 }
 

@@ -16,6 +16,23 @@
 #import "SpringComponentDefinition.h"
 #import "SpringPropertyInjectedByValue.h"
 
+@interface SpringPropertyInjectedByValue(PropertyPlaceHolderConfigurer)
+
+- (void)setTextValue:(NSString*)textValue;
+
+@end
+
+
+@implementation SpringPropertyInjectedByValue(PropertyPlaceHolderConfigurer)
+
+- (void)setTextValue:(NSString*)textValue
+{
+    _textValue = textValue;
+}
+
+
+@end
+
 @implementation SpringPropertyPlaceholderConfigurer
 
 /* =========================================================== Class Methods ============================================================ */
@@ -73,7 +90,11 @@
         {
             if ([property.textValue hasPrefix:_prefix] && [property.textValue hasSuffix:_suffix])
             {
-
+                NSString* key = [property.textValue substringFromIndex:[_prefix length]];
+                key = [key substringToIndex:[key length] - [_suffix length]];
+                NSString* value = [_properties valueForKey:key];
+                NSLog(@"Setting property '%@' to value '%@'", key, value);
+                property.textValue = value;
             }
         }
     }

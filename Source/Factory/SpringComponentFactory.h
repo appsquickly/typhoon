@@ -64,6 +64,6 @@
 
 - (id)componentForKey:(NSString*)key;
 
-
+- (NSArray*)registry;
 
 @end

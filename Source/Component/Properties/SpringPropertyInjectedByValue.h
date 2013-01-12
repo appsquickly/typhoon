@@ -10,13 +10,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-
-
 #import <Foundation/Foundation.h>
 #import "SpringInjectedProperty.h"
 
 
 @interface SpringPropertyInjectedByValue : NSObject <SpringInjectedProperty>
+{
+    NSString* _textValue;
+}
 
 @property (nonatomic, strong, readonly) NSString* name;
 @property (nonatomic, readonly) SpringPropertyInjectionType type;
