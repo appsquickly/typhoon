@@ -44,6 +44,7 @@ static SpringComponentFactory* defaultFactory;
         _singletons = [[NSMutableDictionary alloc] init];
         _currentlyResolvingReferences = [[NSMutableSet alloc] init];
         _mutators = [[NSMutableArray alloc] init];
+        _hasPerformedMutations = NO;
     }
     return self;
 }
@@ -80,7 +81,7 @@ static SpringComponentFactory* defaultFactory;
 
 - (NSArray*)allComponentsForType:(id)classOrProtocol
 {
-    [self runMutators];
+    [self performMutations];
     NSMutableArray* results = [[NSMutableArray alloc] init];
     BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
 
@@ -110,7 +111,7 @@ static SpringComponentFactory* defaultFactory;
 
 - (id)componentForKey:(NSString*)key
 {
-    [self runMutators];
+    [self performMutations];
     [self assertNotCircularDependency:key];
     SpringComponentDefinition* definition = [self definitionForKey:key];
     if (!definition)
@@ -126,9 +127,9 @@ static SpringComponentFactory* defaultFactory;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
-    {
-        defaultFactory = self;
-    });
+{
+    defaultFactory = self;
+});
 }
 
 - (NSArray*)registry
@@ -199,18 +200,17 @@ static SpringComponentFactory* defaultFactory;
     [_currentlyResolvingReferences addObject:key];
 }
 
-- (void)runMutators
+- (void)performMutations
 {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^
+    if (!_hasPerformedMutations)
     {
         NSLog(@"Running mutators. . . %@", _mutators);
         for (id <SpringComponentFactoryMutator> mutator in _mutators)
         {
             [mutator mutateComponentDefinitionsIfRequired:_registry];
         }
-
-    });
+        _hasPerformedMutations = YES;
+    }
 }
 
 @end

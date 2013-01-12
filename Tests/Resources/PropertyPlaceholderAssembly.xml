@@ -1,0 +1,16 @@
+<assembly xmlns="http://jasperblues.github.com/spring-objective-c/schema/assembly"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://jasperblues.github.com/spring-objective-c/schema/assembly
+          http://www.appsquick.ly/schema/assembly.xsd">
+
+
+    <component class="Knight" key="knight">
+        <property name="damselsRescued" value="${damsels.rescued}"/>
+    </component>
+
+    <component class="CavalryMan" key="anotherKnight">
+        <property name="hasHorseWillTravel" value="${hasHorseWillTravel}"/>
+    </component>
+
+
+</assembly>

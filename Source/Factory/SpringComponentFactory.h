@@ -28,6 +28,8 @@
 
     NSMutableSet* _currentlyResolvingReferences;
     NSMutableArray* _mutators;
+
+    BOOL _hasPerformedMutations;
 }
 
 /**

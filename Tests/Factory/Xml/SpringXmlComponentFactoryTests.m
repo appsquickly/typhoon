@@ -14,6 +14,7 @@
 #import "Knight.h"
 #import "ClassADependsOnB.h"
 #import "Sword.h"
+#import "CavalryMan.h"
 
 @interface SpringXmlComponentFactoryTests : SenTestCase
 @end
@@ -32,8 +33,10 @@
     [_componentFactory makeDefault];
 }
 
+/* ====================================================================================================================================== */
+#pragma mark - Property Injection
 
-- (void)test_property_injection
+- (void)test_property_injection_by_reference
 {
     Knight* knight = [[SpringXmlComponentFactory defaultFactory] componentForKey:@"knight"];
 
@@ -52,6 +55,9 @@
     assertThat(anotherKnight.quest, notNilValue());
     assertThatBool(anotherKnight.hasHorseWillTravel, equalToBool(YES));
 }
+
+/* ====================================================================================================================================== */
+#pragma mark factory method injection
 
 - (void)test_factory_method_injection
 {
@@ -75,6 +81,15 @@
     }
 
 }
+
+- (void)test_returns_component_from_factory_component
+{
+    Sword* sword = [_componentFactory componentForKey:@"blueSword"];
+    assertThat([sword description], equalTo(@"A bright blue sword with orange pom-poms at the hilt."));
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Circular dependencies.
 
 - (void)test_prevents_circular_dependencies_by_reference
 {
@@ -109,6 +124,10 @@
     }
 }
 
+
+/* ====================================================================================================================================== */
+#pragma mark initializer injection
+
 - (void)test_raises_exception_for_invalid_selector_name
 {
     SpringXmlComponentFactory* factory = [[SpringXmlComponentFactory alloc] initWithConfigFileName:@"ExceptionTestAssembly.xml"];
@@ -126,10 +145,21 @@
     }
 }
 
-- (void)test_returns_component_from_factory_component
+/* ====================================================================================================================================== */
+#pragma mark Property-based configuration
+
+- (void)test_resolves_property_values
 {
-    Sword* sword = [_componentFactory componentForKey:@"blueSword"];
-    assertThat([sword description], equalTo(@"A bright blue sword with orange pom-poms at the hilt."));
+    SpringXmlComponentFactory* factory = [[SpringXmlComponentFactory alloc] initWithConfigFileName:@"PropertyPlaceholderAssembly.xml"];
+    SpringPropertyPlaceholderConfigurer*  configurer = [SpringPropertyPlaceholderConfigurer configurer];
+    [configurer usePropertyStyleResource:[SpringBundleResource withName:@"SomeProperties.properties"]];
+    [factory attachMutator:configurer];
+
+    Knight* knight = [factory componentForKey:@"knight"];
+    assertThatInt(knight.damselsRescued, equalToInt(12));
+
+    CavalryMan* anotherKnight = [factory componentForKey:@"anotherKnight"];
+    assertThatBool(anotherKnight.hasHorseWillTravel, equalToBool(NO));
 
 }
 
