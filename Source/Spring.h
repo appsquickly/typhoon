@@ -20,5 +20,6 @@
 #import "SpringComponentFactoryMutator.h"
 #import "SpringRXMLElement+SpringXmlComponentFactory.h"
 #import "SpringRXMLElement.h"
+#import "SpringTestUtils.h"
 
 
