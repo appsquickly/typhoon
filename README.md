@@ -155,6 +155,8 @@ And then:
 
 * <a href="https://github.com/jasperblues/spring-objective-c/wiki/Incorporating">Incorporating the framework into your project.</a>
 
+* <a href="https://github.com/jasperblues/spring-objective-c/wiki/Configuration-Management-&-Testing"/>Configuration Management & Integration Testing</a>
+
 # Reports
 
 In the spirit of lean-methodologies, the API and Test Coverage reports below are published by my build server, after 
