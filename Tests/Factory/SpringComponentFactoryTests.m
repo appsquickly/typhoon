@@ -10,10 +10,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "SpringComponentFactory.h"
-#import "SpringComponentDefinition.h"
-#import "Knight.h"
+#import "Spring.h"
 #import "SpringComponentInitializer.h"
+
+#import "Knight.h"
 #import "CampaignQuest.h"
 #import "CavalryMan.h"
 #import "Champion.h"

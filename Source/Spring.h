@@ -9,11 +9,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "SpringComponentDefinition.h"
+#import "SpringComponentInitializer.h"
 #import "SpringPropertyPlaceholderConfigurer.h"
 #import "SpringResource.h"
 #import "SpringBundleResource.h"
 #import "SpringComponentFactory.h"
+#import "SpringComponentFactory+InstanceBuilder.h"
 #import "SpringXmlComponentFactory.h"
-#import "SpringComponentDefinition.h"
 #import "SpringComponentFactoryMutator.h"
+#import "SpringRXMLElement+SpringXmlComponentFactory.h"
+#import "SpringRXMLElement.h"
+
 

@@ -10,9 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "SpringBundleResource.h"
-#import "SpringComponentDefinition.h"
-#import "SpringRXMLElement+SpringXmlComponentFactory.h"
+#import "Spring.h"
 
 @interface RXMLElement_SpringXmlComponentFactoryTests : SenTestCase
 @end

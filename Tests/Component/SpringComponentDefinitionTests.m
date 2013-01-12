@@ -11,7 +11,7 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "Knight.h"
-#import "SpringComponentDefinition.h"
+#import "Spring.h"
 
 @interface SpringComponentDefinitionTests : SenTestCase
 @end

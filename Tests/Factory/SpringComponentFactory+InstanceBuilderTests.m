@@ -11,12 +11,10 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <objc/runtime.h>
-#import "SpringComponentDefinition.h"
-#import "SpringComponentFactory.h"
-#import "SpringComponentInitializer.h"
+#import "Spring.h"
 #import "Knight.h"
 #import "CampaignQuest.h"
-#import "SpringComponentFactory+InstanceBuilder.h"
+#import "SpringComponentInitializer.h"
 
 
 @interface ComponentDefinition_InstanceBuilderTests : SenTestCase
