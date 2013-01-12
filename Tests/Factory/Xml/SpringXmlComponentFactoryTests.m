@@ -26,6 +26,9 @@
 - (void)setUp
 {
     _componentFactory = [[SpringXmlComponentFactory alloc] initWithConfigFileName:@"MiddleAgesAssembly.xml"];
+    SpringPropertyPlaceholderConfigurer* configurer = [[SpringPropertyPlaceholderConfigurer alloc] init];
+    [configurer usePropertyStyleResource:[SpringBundleResource withName:@"SomeProperties.properties"]];
+    [_componentFactory attachMutator:configurer];
     [_componentFactory makeDefault];
 }
 

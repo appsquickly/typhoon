@@ -16,7 +16,7 @@
                 Properties can be injected by reference.
             </description>
         </property>
-        <property name="damselsRescued" value="12">
+        <property name="damselsRescued" value="${damsels.rescued}">
             <description>
                 Property arguments can also be injected by value. The container will look up the required
                 class or primitive type. It's easy to register your own additional converters.

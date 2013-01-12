@@ -14,6 +14,7 @@
 #import "SpringComponentFactory.h"
 #import "SpringComponentDefinition.h"
 #import "SpringComponentFactory+InstanceBuilder.h"
+#import "SpringComponentFactoryMutator.h"
 
 
 @interface SpringComponentDefinition (SpringComponentFactory)
@@ -42,6 +43,7 @@ static SpringComponentFactory* defaultFactory;
         _registry = [[NSMutableArray alloc] init];
         _singletons = [[NSMutableDictionary alloc] init];
         _currentlyResolvingReferences = [[NSMutableSet alloc] init];
+        _mutators = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -78,6 +80,7 @@ static SpringComponentFactory* defaultFactory;
 
 - (NSArray*)allComponentsForType:(id)classOrProtocol
 {
+    [self runMutators];
     NSMutableArray* results = [[NSMutableArray alloc] init];
     BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
 
@@ -107,6 +110,7 @@ static SpringComponentFactory* defaultFactory;
 
 - (id)componentForKey:(NSString*)key
 {
+    [self runMutators];
     [self assertNotCircularDependency:key];
     SpringComponentDefinition* definition = [self definitionForKey:key];
     if (!definition)
@@ -122,15 +126,22 @@ static SpringComponentFactory* defaultFactory;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
-{
-    defaultFactory = self;
-});
+    {
+        defaultFactory = self;
+    });
 }
 
 - (NSArray*)registry
 {
     return [_registry copy];
 }
+
+- (void)attachMutator:(id)mutator
+{
+    NSLog(@"Attaching mutator: %@", mutator);
+    [_mutators addObject:mutator];
+}
+
 
 /* ============================================================ Utility Methods ========================================================= */
 - (NSString*)description
@@ -186,6 +197,20 @@ static SpringComponentFactory* defaultFactory;
         [NSException raise:NSInvalidArgumentException format:@"Circular dependency detected: %@", _currentlyResolvingReferences];
     }
     [_currentlyResolvingReferences addObject:key];
+}
+
+- (void)runMutators
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^
+    {
+        NSLog(@"Running mutators. . . %@", _mutators);
+        for (id <SpringComponentFactoryMutator> mutator in _mutators)
+        {
+            [mutator mutateComponentDefinitionsIfRequired:_registry];
+        }
+
+    });
 }
 
 @end
