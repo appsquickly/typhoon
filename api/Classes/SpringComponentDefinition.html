@@ -63,8 +63,6 @@
 	
 	<option value="//api/name/addInjectedProperty:">&nbsp;&nbsp;&nbsp;&nbsp;- addInjectedProperty:</option>
 	
-	<option value="//api/name/description">&nbsp;&nbsp;&nbsp;&nbsp;- description</option>
-	
 	<option value="//api/name/initWithClazz:key:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithClazz:key:</option>
 	
 	<option value="//api/name/initWithClazz:key:factoryComponent:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithClazz:key:factoryComponent:</option>
@@ -74,6 +72,12 @@
 	<option value="//api/name/injectProperty:withReference:">&nbsp;&nbsp;&nbsp;&nbsp;- injectProperty:withReference:</option>
 	
 	<option value="//api/name/injectProperty:withValueAsText:">&nbsp;&nbsp;&nbsp;&nbsp;- injectProperty:withValueAsText:</option>
+	
+	<option value="//api/name/propertiesInjectedByReference">&nbsp;&nbsp;&nbsp;&nbsp;- propertiesInjectedByReference</option>
+	
+	<option value="//api/name/propertiesInjectedByType">&nbsp;&nbsp;&nbsp;&nbsp;- propertiesInjectedByType</option>
+	
+	<option value="//api/name/propertiesInjectedByValue">&nbsp;&nbsp;&nbsp;&nbsp;- propertiesInjectedByValue</option>
 	
 	
 	
@@ -123,8 +127,6 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addInjectedProperty:">addInjectedProperty:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/description">description</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithClazz:key:">initWithClazz:key:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithClazz:key:factoryComponent:">initWithClazz:key:factoryComponent:</a></span></li>
@@ -134,6 +136,12 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/injectProperty:withReference:">injectProperty:withReference:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/injectProperty:withValueAsText:">injectProperty:withValueAsText:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/propertiesInjectedByReference">propertiesInjectedByReference</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/propertiesInjectedByType">propertiesInjectedByType</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/propertiesInjectedByValue">propertiesInjectedByValue</a></span></li>
 	
 </ul></li>
 
@@ -280,7 +288,21 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/description">&ndash;&nbsp;description</a></code>
+		<code><a href="#//api/name/propertiesInjectedByValue">&ndash;&nbsp;propertiesInjectedByValue</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/propertiesInjectedByType">&ndash;&nbsp;propertiesInjectedByType</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/propertiesInjectedByReference">&ndash;&nbsp;propertiesInjectedByReference</a></code>
 		
 	</span>
 	
@@ -408,17 +430,6 @@
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/description" title="description"></a>
-	<h3 class="subsubtitle method-title">description</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>- (NSString *)description</code></div>
-
-    
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/initWithClazz:key:" title="initWithClazz:key:"></a>
 	<h3 class="subsubtitle method-title">initWithClazz:key:</h3>
 	
@@ -473,6 +484,39 @@
     
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/propertiesInjectedByReference" title="propertiesInjectedByReference"></a>
+	<h3 class="subsubtitle method-title">propertiesInjectedByReference</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSSet *)propertiesInjectedByReference</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/propertiesInjectedByType" title="propertiesInjectedByType"></a>
+	<h3 class="subsubtitle method-title">propertiesInjectedByType</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSSet *)propertiesInjectedByType</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/propertiesInjectedByValue" title="propertiesInjectedByValue"></a>
+	<h3 class="subsubtitle method-title">propertiesInjectedByValue</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSSet *)propertiesInjectedByValue</code></div>
+
+    
+</div>
+						
 					</div>
 					
 					
@@ -486,7 +530,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Jasper_Blues. All rights reserved. (Last updated: 2013-01-10)</span><br />
+						<p><span class="copyright">&copy; 2013 Jasper_Blues. All rights reserved. (Last updated: 2013-01-12)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
