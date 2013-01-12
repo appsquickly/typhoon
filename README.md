@@ -155,7 +155,7 @@ And then:
 
 * <a href="https://github.com/jasperblues/spring-objective-c/wiki/Incorporating">Incorporating the framework into your project.</a>
 
-* <a href="https://github.com/jasperblues/spring-objective-c/wiki/Configuration-Management-&-Testing"/>Configuration Management & Integration Testing</a>
+* <a href="https://github.com/jasperblues/spring-objective-c/wiki/Configuration-Management-&amp;-Testing">Configuration Management & Testing.</a>
 
 # Reports
 
