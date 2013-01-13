@@ -30,6 +30,9 @@
     _componentFactory = [[SpringComponentFactory alloc] init];
 }
 
+/* ====================================================================================================================================== */
+#pragma mark - Initializer injection
+
 - (void)test_injects_required_initializer_dependencies
 {
     SpringComponentDefinition* knightDefinition = [[SpringComponentDefinition alloc] initWithClazz:[Knight class] key:@"knight"];
@@ -60,6 +63,9 @@
     NSLog(@"Here's the bundle: %@", url);
     assertThat(url, notNilValue());
 }
+
+/* ====================================================================================================================================== */
+#pragma mark - Property injection
 
 - (void)test_injects_required_property_dependencies
 {
@@ -98,21 +104,21 @@
     }
 }
 
-- (void)test_injects_property_value_as_long
-{
-    SpringComponentDefinition* knightDefinition = [[SpringComponentDefinition alloc] initWithClazz:[Knight class] key:@"knight"];
-    [knightDefinition injectProperty:@"damselsRescued" withValueAsText:@"12"];
-    [_componentFactory register:knightDefinition];
-
-    Knight* knight = [_componentFactory componentForKey:@"knight"];
-    assertThatLong(knight.damselsRescued, equalToLongLong(12));
-}
+//- (void)test_injects_property_value_as_long
+//{
+//    SpringComponentDefinition* knightDefinition = [[SpringComponentDefinition alloc] initWithClazz:[Knight class] key:@"knight"];
+//    [knightDefinition injectProperty:@"damselsRescued" withValueAsText:@"12"];
+//    [_componentFactory register:knightDefinition];
+//
+//    Knight* knight = [_componentFactory componentForKey:@"knight"];
+//    assertThatLong(knight.damselsRescued, equalToLongLong(12));
+//}
 
 - (void)test_injects_initializer_value_as_long
 {
     SpringComponentDefinition* knightDefinition = [[SpringComponentDefinition alloc] initWithClazz:[Knight class] key:@"knight"];
-    SpringComponentInitializer* initializer =
-            [[SpringComponentInitializer alloc] initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethod:NO];
+    SpringComponentInitializer
+            * initializer = [[SpringComponentInitializer alloc] initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethod:NO];
     [initializer injectParameterNamed:@"damselsRescued" withValueAsText:@"12" requiredTypeOrNil:nil];
     [knightDefinition setInitializer:initializer];
 
@@ -122,5 +128,46 @@
     assertThatLong(knight.damselsRescued, equalToLongLong(12));
 }
 
+/* ====================================================================================================================================== */
+#pragma mark - Property injection error handling
+
+- (void)test_raises_exception_if_property_has_no_setter
+{
+    @try
+    {
+        SpringComponentDefinition* knightDefinition = [[SpringComponentDefinition alloc] initWithClazz:[Knight class] key:@"knight"];
+        [knightDefinition injectProperty:@"propertyDoesNotExist" withReference:@"quest"];
+        [_componentFactory register:knightDefinition];
+
+        Knight* knight = [_componentFactory componentForKey:@"knight"];
+        STFail(@"Should have thrown exception");
+    }
+    @catch (NSException* e)
+    {
+        assertThat([e description], equalTo(
+            @"Tried to inject property 'propertyDoesNotExist' on object of type 'Knight', but the instance has no setter for this property."));
+    }
+
+}
+
+- (void)test_raises_exception_if_property_is_readonly
+{
+    @try
+    {
+        SpringComponentDefinition* knightDefinition = [[SpringComponentDefinition alloc] initWithClazz:[Knight class] key:@"knight"];
+        [knightDefinition injectProperty:@"readOnlyQuest" withReference:@"quest"];
+        [_componentFactory register:knightDefinition];
+
+        SpringComponentDefinition* questDefinition = [[SpringComponentDefinition alloc] initWithClazz:[CampaignQuest class] key:@"quest"];
+        [_componentFactory register:questDefinition];
+
+        Knight* knight = [_componentFactory componentForKey:@"knight"];
+        STFail(@"Should have thrown exception");
+    }
+    @catch (NSException* e)
+    {
+        assertThat([e description], equalTo(@"Property 'readOnlyQuest' of class 'Knight' is readonly."));
+    }
+}
 
 @end

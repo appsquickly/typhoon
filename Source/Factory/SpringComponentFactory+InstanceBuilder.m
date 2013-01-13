@@ -25,7 +25,6 @@
 #import "SpringPropertyInjectionDelegate.h"
 #import "SpringParameterInjectedByValue.h"
 #import "SpringPrimitiveTypeConverter.h"
-#import "NSObject+SpringIntrospectionUtils.h"
 
 
 @implementation SpringComponentFactory (InstanceBuilder)
@@ -33,7 +32,6 @@
 /* ========================================================== Interface Methods ========================================================= */
 - (id)buildInstanceWithDefinition:(SpringComponentDefinition*)definition
 {
-    NSLog(@"Building instance for: %@", definition);
     id <SpringIntrospectiveNSObject> instance;
 
     if (definition.factoryComponent)
@@ -136,18 +134,18 @@
     }
 }
 
-- (void)doPropertyInjection:(NSObject*)instance property:(id <SpringInjectedProperty>)property
+- (void)doPropertyInjection:(id <SpringIntrospectiveNSObject>)instance property:(id <SpringInjectedProperty>)property
         typeDescriptor:(SpringTypeDescriptor*)typeDescriptor
 {
     if (property.type == SpringPropertyInjectionByTypeType)
     {
         id reference = [self componentForType:[typeDescriptor classOrProtocol]];
-        [instance setValue:reference forKey:property.name];
+        objc_msgSend(instance, [instance setterForPropertyWithName:property.name], reference, nil);
     }
     else if (property.type == SpringPropertyInjectionByReferenceType)
     {
         id reference = [self componentForKey:((SpringPropertyInjectedByReference*) property).reference];
-        [instance setValue:reference forKey:property.name];
+        objc_msgSend(instance, [instance setterForPropertyWithName:property.name], reference, nil);
     }
     else if (property.type == SpringPropertyInjectionByValueType)
     {
@@ -162,7 +160,7 @@
         {
             id <SpringTypeConverter> converter = [[SpringTypeConverterRegistry shared] converterFor:typeDescriptor];
             id converted = [converter convert:valueProperty.textValue];
-            [instance setValue:converted forKey:property.name];
+            objc_msgSend(instance, [instance setterForPropertyWithName:property.name], converted, nil);
         }
     }
 }

@@ -49,10 +49,23 @@
 
 - (SEL)setterForPropertyWithName:(NSString*)propertyName
 {
+
     NSString* firstLetterUppercase = [[propertyName substringToIndex:1] uppercaseString];
     NSString* propertyPart = [propertyName stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:firstLetterUppercase];
     NSString* selectorName = [NSString stringWithFormat:@"set%@:", propertyPart];
-    return NSSelectorFromString(selectorName);
+    SEL selector = NSSelectorFromString(selectorName); //It's crashing here, not the next line.
+    if (![self respondsToSelector:selector])
+    {
+        if ([self respondsToSelector:NSSelectorFromString(propertyName)])
+        {
+            [NSException raise:NSInvalidArgumentException format:@"Property '%@' of class '%@' is readonly.", propertyName, [self class]];
+        }
+        else
+        {
+            [NSException raise:NSInvalidArgumentException format:@"No setter named '%@' on class '%@'.", selectorName, [self class]];
+        }
+    }
+    return selector;
 }
 
 - (NSArray*)parameterNamesForSelector:(SEL)selector
@@ -69,7 +82,7 @@
         if ([parameterName length] > 0)
         {
             parameterName = [parameterName stringByReplacingCharactersInRange:NSMakeRange(0, 1)
-                                                                   withString:[[parameterName substringToIndex:1] lowercaseString]];
+                    withString:[[parameterName substringToIndex:1] lowercaseString]];
             [parameterNames addObject:parameterName];
         }
     }
@@ -80,7 +93,6 @@
 {
     return [SpringIntrospectionUtils typeCodesForSelector:selector ofClass:[self class] isClassMethod:NO];
 }
-
 
 
 @end
