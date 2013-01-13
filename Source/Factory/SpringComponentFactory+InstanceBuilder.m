@@ -25,6 +25,7 @@
 #import "SpringPropertyInjectionDelegate.h"
 #import "SpringParameterInjectedByValue.h"
 #import "SpringPrimitiveTypeConverter.h"
+#import "NSObject+SpringIntrospectionUtils.h"
 
 
 @implementation SpringComponentFactory (InstanceBuilder)
@@ -32,11 +33,12 @@
 /* ========================================================== Interface Methods ========================================================= */
 - (id)buildInstanceWithDefinition:(SpringComponentDefinition*)definition
 {
+    NSLog(@"Building instance for: %@", definition);
     id <SpringIntrospectiveNSObject> instance;
 
     if (definition.factoryComponent)
     {
-         instance = [self componentForKey:definition.factoryComponent];
+        instance = [self componentForKey:definition.factoryComponent];
     }
     else if (definition.initializer && definition.initializer.isClassMethod)
     {
@@ -113,8 +115,8 @@
         if (typeDescriptor == nil)
         {
             [NSException raise:NSInvalidArgumentException
-                        format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",
-                               property.name, [instance class]];
+                    format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",
+                           property.name, [instance class]];
         }
         [self doPropertyInjection:instance property:property typeDescriptor:typeDescriptor];
     }
@@ -134,18 +136,18 @@
     }
 }
 
-- (void)doPropertyInjection:(id <SpringIntrospectiveNSObject>)instance property:(id <SpringInjectedProperty>)property
-             typeDescriptor:(SpringTypeDescriptor*)typeDescriptor
+- (void)doPropertyInjection:(NSObject*)instance property:(id <SpringInjectedProperty>)property
+        typeDescriptor:(SpringTypeDescriptor*)typeDescriptor
 {
     if (property.type == SpringPropertyInjectionByTypeType)
     {
         id reference = [self componentForType:[typeDescriptor classOrProtocol]];
-        objc_msgSend(instance, [instance setterForPropertyWithName:property.name], reference, nil);
+        [instance setValue:reference forKey:property.name];
     }
     else if (property.type == SpringPropertyInjectionByReferenceType)
     {
         id reference = [self componentForKey:((SpringPropertyInjectedByReference*) property).reference];
-        objc_msgSend(instance, [instance setterForPropertyWithName:property.name], reference, nil);
+        [instance setValue:reference forKey:property.name];
     }
     else if (property.type == SpringPropertyInjectionByValueType)
     {
@@ -160,7 +162,7 @@
         {
             id <SpringTypeConverter> converter = [[SpringTypeConverterRegistry shared] converterFor:typeDescriptor];
             id converted = [converter convert:valueProperty.textValue];
-            objc_msgSend(instance, [instance setterForPropertyWithName:property.name], converted, nil);
+            [instance setValue:converted forKey:property.name];
         }
     }
 }

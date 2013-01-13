@@ -52,12 +52,7 @@
     NSString* firstLetterUppercase = [[propertyName substringToIndex:1] uppercaseString];
     NSString* propertyPart = [propertyName stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:firstLetterUppercase];
     NSString* selectorName = [NSString stringWithFormat:@"set%@:", propertyPart];
-    SEL selector = NSSelectorFromString(selectorName);
-    if ([self respondsToSelector:selector])
-    {
-        return selector;
-    }
-    return nil;
+    return NSSelectorFromString(selectorName);
 }
 
 - (NSArray*)parameterNamesForSelector:(SEL)selector
