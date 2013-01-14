@@ -158,6 +158,8 @@
             #!/bin/sh
             cd ${basedir}
             cp -fr ${basedir}/schema ${reports.dir}
+            git remote set-url origin git@github.com:jasperblues/spring-objective-c.git
+            git fetch origin gh-pages
             git checkout gh-pages
             git pull
             rm -fr ./coverage
