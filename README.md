@@ -138,7 +138,7 @@ and GUI tool-support.
 
 * If you're interested in reading an architectural discussion, especially ___why xml is a good choice___ to declare
 components, their collaborating classes and their configurations, as well as what other styles of dependency injection 
-this cotainer will be supporting: 
+this container will be supporting: 
 <a href="https://github.com/jasperblues/spring-objective-c/wiki/Does-this-mean-XML%3F">___then please read this.___</a>
 
 otherwise . . . 
