@@ -169,14 +169,17 @@ static SpringComponentFactory* defaultFactory;
 
 - (id)singletonForKey:(SpringComponentDefinition*)definition
 {
-    id instance = [_singletons objectForKey:definition.key];
-    if (instance == nil)
+    @synchronized (self)
     {
-        instance = [self buildInstanceWithDefinition:definition];
-        NSLog(@"Setting %@ for key %@", instance, definition.key);
-        [_singletons setObject:instance forKey:definition.key];
+        id instance = [_singletons objectForKey:definition.key];
+        if (instance == nil)
+        {
+            instance = [self buildInstanceWithDefinition:definition];
+            NSLog(@"Setting %@ for key %@", instance, definition.key);
+            [_singletons setObject:instance forKey:definition.key];
+        }
+        return instance;
     }
-    return instance;
 }
 
 - (SpringComponentDefinition*)definitionForKey:(NSString*)key

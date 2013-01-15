@@ -28,9 +28,9 @@
     static SpringTypeConverterRegistry* instance;
 
     dispatch_once(&onceToken, ^
-{
-    instance = [[[self class] alloc] init];
-});
+    {
+        instance = [[[self class] alloc] init];
+    });
     return instance;
 }
 
