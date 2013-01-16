@@ -37,16 +37,16 @@
 - (void)test_objectForKey_returns_singleton_with_initializer_dependencies
 {
 
-    [_componentFactory register:[SpringComponentDefinition definitionWithClass:[Knight class]
-            initializer:^(SpringComponentInitializer* initializer)
-            {
-                initializer.selector = @selector(initWithQuest:);
-                [initializer injectParameterAtIndex:0 withReference:@"quest"];
-            }]];
+[_componentFactory register:[SpringComponentDefinition definitionWithClass:[Knight class]
+        initializer:^(SpringComponentInitializer* initializer)
+        {
+            initializer.selector = @selector(initWithQuest:);
+            [initializer injectParameterAtIndex:0 withReference:@"quest"];
+        }]];
 
-    [_componentFactory register:[SpringComponentDefinition definitionWithClass:[CampaignQuest class] key:@"quest"]];
+[_componentFactory register:[SpringComponentDefinition definitionWithClass:[CampaignQuest class] key:@"quest"]];
 
-    Knight* knight = [_componentFactory componentForType:[Knight class]];
+Knight* knight = [_componentFactory componentForType:[Knight class]];
 
     assertThat(knight, notNilValue());
     assertThat(knight, instanceOf([Knight class]));
