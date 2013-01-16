@@ -32,8 +32,8 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">50.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -89,8 +89,8 @@
 <span class="lineNum">      31 </span>            :     SpringComponentInitializerIsClassMethod _isClassMethodStrategy;
 <span class="lineNum">      32 </span>            : }
 <span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span><span class="lineCov">          2 : @property(nonatomic, readonly) SEL selector;</span>
-<span class="lineNum">      35 </span>            : @property(nonatomic, readonly) BOOL isClassMethod;
+<span class="lineNum">      34 </span><span class="lineCov">          2 : @property(nonatomic) SEL selector;</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : @property(nonatomic) BOOL isClassMethod;</span>
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : - (id)initWithSelector:(SEL)initializer;
 <span class="lineNum">      38 </span>            : 
@@ -98,7 +98,7 @@
 <span class="lineNum">      40 </span>            : 
 <span class="lineNum">      41 </span>            : - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference;
 <span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span>            : - (void)injectParameterAt:(NSUInteger)index withReference:(NSString*)reference;
+<span class="lineNum">      43 </span>            : - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference;
 <span class="lineNum">      44 </span>            : 
 <span class="lineNum">      45 </span>            : - (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol;
 <span class="lineNum">      46 </span>            : 

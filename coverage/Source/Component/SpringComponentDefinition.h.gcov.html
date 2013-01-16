@@ -81,40 +81,41 @@
 <span class="lineNum">      23 </span>            :     SpringComponentLifeCyclePrototype
 <span class="lineNum">      24 </span>            : } SpringComponentLifecycle;
 <span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span>            : @interface SpringComponentDefinition : NSObject
-<span class="lineNum">      27 </span>            : {
-<span class="lineNum">      28 </span>            :     NSMutableSet* _injectedProperties;
-<span class="lineNum">      29 </span>            : }
-<span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">         76 : @property(nonatomic, readonly) Class type;</span>
-<span class="lineNum">      32 </span><span class="lineCov">        476 : @property(nonatomic, strong) NSString* key;</span>
-<span class="lineNum">      33 </span><span class="lineCov">        132 : @property(nonatomic, strong, readonly) NSString* factoryComponent;</span>
-<span class="lineNum">      34 </span><span class="lineCov">        157 : @property(nonatomic, strong) SpringComponentInitializer* initializer;</span>
-<span class="lineNum">      35 </span><span class="lineCov">        106 : @property(nonatomic) SEL beforePropertyInjection;</span>
-<span class="lineNum">      36 </span><span class="lineCov">         99 : @property(nonatomic) SEL afterPropertyInjection;</span>
-<span class="lineNum">      37 </span>            : @property(nonatomic, strong, readonly) NSSet* injectedProperties;
-<span class="lineNum">      38 </span><span class="lineCov">         58 : @property(nonatomic) SpringComponentLifecycle lifecycle;</span>
-<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            : @interface SpringComponentDefinition : NSObject
+<span class="lineNum">      28 </span>            : {
+<span class="lineNum">      29 </span>            :     NSMutableSet* _injectedProperties;
+<span class="lineNum">      30 </span>            : }
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span><span class="lineCov">         81 : @property(nonatomic, readonly) Class type;</span>
+<span class="lineNum">      33 </span><span class="lineCov">        483 : @property(nonatomic, strong) NSString* key;</span>
+<span class="lineNum">      34 </span><span class="lineCov">        133 : @property(nonatomic, strong, readonly) NSString* factoryComponent;</span>
+<span class="lineNum">      35 </span><span class="lineCov">        160 : @property(nonatomic, strong) SpringComponentInitializer* initializer;</span>
+<span class="lineNum">      36 </span><span class="lineCov">        107 : @property(nonatomic) SEL beforePropertyInjection;</span>
+<span class="lineNum">      37 </span><span class="lineCov">        100 : @property(nonatomic) SEL afterPropertyInjection;</span>
+<span class="lineNum">      38 </span>            : @property(nonatomic, strong, readonly) NSSet* injectedProperties;
+<span class="lineNum">      39 </span><span class="lineCov">         59 : @property(nonatomic) SpringComponentLifecycle lifecycle;</span>
 <span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span>            : - (id)initWithClazz:(Class)clazz key:(NSString*)key;
-<span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span>            : - (id)initWithClazz:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent;
-<span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span>            : - (void)injectProperty:(NSString*)propertyName;
-<span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span>            : - (void)injectProperty:(NSString*)propertyName withReference:(NSString*)reference;
-<span class="lineNum">      48 </span>            : 
-<span class="lineNum">      49 </span>            : - (void)injectProperty:(NSString*)propertyName withValueAsText:(NSString*)textValue;
-<span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span>            : - (void)addInjectedProperty:(id&lt;SpringInjectedProperty&gt;)property;
-<span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span>            : - (NSSet*)propertiesInjectedByValue;
-<span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span>            : - (NSSet*)propertiesInjectedByType;
-<span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span>            : - (NSSet*)propertiesInjectedByReference;
-<span class="lineNum">      58 </span>            : 
-<span class="lineNum">      59 </span>            : @end
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : - (id)initWithClazz:(Class)clazz key:(NSString*)key;
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : - (id)initWithClazz:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent;
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span>            : - (void)injectProperty:(NSString*)propertyName;
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span>            : - (void)injectProperty:(NSString*)propertyName withReference:(NSString*)reference;
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span>            : - (void)injectProperty:(NSString*)propertyName withValueAsText:(NSString*)textValue;
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : - (void)addInjectedProperty:(id &lt;SpringInjectedProperty&gt;)property;
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span>            : - (NSSet*)propertiesInjectedByValue;
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            : - (NSSet*)propertiesInjectedByType;
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : - (NSSet*)propertiesInjectedByReference;
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span>            : @end
 </pre>
       </td>
     </tr>
