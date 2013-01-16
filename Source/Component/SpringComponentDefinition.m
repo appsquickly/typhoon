@@ -10,16 +10,15 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-
-#import <Foundation/Foundation.h>
+#import "SpringComponentInitializer.h"
 #import "SpringComponentDefinition.h"
 #import "SpringPropertyInjectedByType.h"
 #import "SpringPropertyInjectedByReference.h"
 #import "SpringPropertyInjectedByValue.h"
-#import "SpringComponentInitializer.h"
 
 
 @implementation SpringComponentDefinition
+
 
 
 /* ============================================================ Initializers ============================================================ */

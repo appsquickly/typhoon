@@ -104,15 +104,15 @@
     }
 }
 
-//- (void)test_injects_property_value_as_long
-//{
-//    SpringComponentDefinition* knightDefinition = [[SpringComponentDefinition alloc] initWithClazz:[Knight class] key:@"knight"];
-//    [knightDefinition injectProperty:@"damselsRescued" withValueAsText:@"12"];
-//    [_componentFactory register:knightDefinition];
-//
-//    Knight* knight = [_componentFactory componentForKey:@"knight"];
-//    assertThatLong(knight.damselsRescued, equalToLongLong(12));
-//}
+- (void)test_injects_property_value_as_long
+{
+    SpringComponentDefinition* knightDefinition = [[SpringComponentDefinition alloc] initWithClazz:[Knight class] key:@"knight"];
+    [knightDefinition injectProperty:@"damselsRescued" withValueAsText:@"12"];
+    [_componentFactory register:knightDefinition];
+
+    Knight* knight = [_componentFactory componentForKey:@"knight"];
+    assertThatLong(knight.damselsRescued, equalToLongLong(12));
+}
 
 - (void)test_injects_initializer_value_as_long
 {
@@ -140,6 +140,7 @@
         [_componentFactory register:knightDefinition];
 
         Knight* knight = [_componentFactory componentForKey:@"knight"];
+        NSLog(@"Knight: %@", knight); //Suppress unused warning.
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)

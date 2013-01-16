@@ -23,6 +23,7 @@ typedef enum
     SpringComponentLifeCyclePrototype
 } SpringComponentLifecycle;
 
+
 @interface SpringComponentDefinition : NSObject
 {
     NSMutableSet* _injectedProperties;
@@ -48,7 +49,7 @@ typedef enum
 
 - (void)injectProperty:(NSString*)propertyName withValueAsText:(NSString*)textValue;
 
-- (void)addInjectedProperty:(id<SpringInjectedProperty>)property;
+- (void)addInjectedProperty:(id <SpringInjectedProperty>)property;
 
 - (NSSet*)propertiesInjectedByValue;
 

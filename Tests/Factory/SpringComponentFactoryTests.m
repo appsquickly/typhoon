@@ -11,7 +11,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "Spring.h"
-#import "SpringComponentInitializer.h"
 
 #import "Knight.h"
 #import "CampaignQuest.h"
@@ -37,16 +36,17 @@
 
 - (void)test_objectForKey_returns_singleton_with_initializer_dependencies
 {
-    SpringComponentDefinition* knightDefinition = [[SpringComponentDefinition alloc] initWithClazz:[Knight class] key:@"knight"];
-    SpringComponentInitializer* knightInitializer = [[SpringComponentInitializer alloc] initWithSelector:@selector(initWithQuest:)];
-    [knightInitializer injectParameterNamed:@"quest" withReference:@"quest"];
-    [knightDefinition setInitializer:knightInitializer];
-    [_componentFactory register:knightDefinition];
 
-    SpringComponentDefinition* questDefinition = [[SpringComponentDefinition alloc] initWithClazz:[CampaignQuest class] key:@"quest"];
-    [_componentFactory register:questDefinition];
+    [_componentFactory register:[SpringComponentDefinition definitionWithClass:[Knight class]
+            initializer:^(SpringComponentInitializer* initializer)
+            {
+                initializer.selector = @selector(initWithQuest:);
+                [initializer injectParameterAtIndex:0 withReference:@"quest"];
+            }]];
 
-    Knight* knight = [_componentFactory componentForKey:@"knight"];
+    [_componentFactory register:[SpringComponentDefinition definitionWithClass:[CampaignQuest class] key:@"quest"]];
+
+    Knight* knight = [_componentFactory componentForType:[Knight class]];
 
     assertThat(knight, notNilValue());
     assertThat(knight, instanceOf([Knight class]));

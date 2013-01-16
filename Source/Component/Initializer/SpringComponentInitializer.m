@@ -32,10 +32,9 @@
     self = [super init];
     if (self)
     {
-        _selector = initializer;
-        _isClassMethodStrategy = isClassMethod;
-        _parameterNames = [self parameterNamesForSelector:_selector];
         _injectedParameters = [[NSMutableArray alloc] init];
+        _isClassMethodStrategy = isClassMethod;
+        self.selector = initializer;
     }
     return self;
 }
@@ -45,21 +44,22 @@
     return [self initWithSelector:@selector(init) isClassMethod:NO];
 }
 
-/* ========================================================== Interface Methods ========================================================= */
 
+/* ========================================================== Interface Methods ========================================================= */
 - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference
 {
-    [self injectParameterAt:[self indexOfParameter:name] withReference:reference];
+    [self injectParameterAtIndex:[self indexOfParameter:name] withReference:reference];
 }
 
 
-- (void)injectParameterAt:(NSUInteger)index withReference:(NSString*)reference
+- (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference
 {
     if (index != NSUIntegerMax && index < [_parameterNames count])
     {
         [_injectedParameters addObject:[[SpringParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference]];
     }
 }
+
 
 - (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol
 {
@@ -89,8 +89,8 @@
         NSString* typeType = self.isClassMethod ? @"Class" : @"Instance";
         NSString* typeName = self.isClassMethod ? NSStringFromClass(classOrInstance) : NSStringFromClass([classOrInstance class]);
         [NSException raise:NSInvalidArgumentException
-                    format:@"%@ method '%@' not found on '%@'. Did you include the required ':' characters to signify arguments?", typeType,
-                           NSStringFromSelector(_selector), typeName];
+                format:@"%@ method '%@' not found on '%@'. Did you include the required ':' characters to signify arguments?", typeType,
+                       NSStringFromSelector(_selector), typeName];
     }
 
     NSInvocation* invocation;
@@ -118,11 +118,17 @@
     return [self resolveIsClassMethod];
 }
 
+- (void)setSelector:(SEL)selector
+{
+    _selector = selector;
+    _parameterNames = [self parameterNamesForSelector:_selector];
+}
+
 /* ============================================================ Utility Methods ========================================================= */
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"Initializer: %@, isFactoryMethod? %@", NSStringFromSelector(_selector),
-                                      self.isClassMethod ? @"YES" : @"NO"];
+    return [NSString stringWithFormat:@"Initializer: %@, isFactoryMethod? %@, parameters: %@", NSStringFromSelector(_selector),
+                                      self.isClassMethod ? @"YES" : @"NO", _injectedParameters];
 }
 
 - (void)dealloc

@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "SpringComponentDefinition.h"
+#import "SpringComponentDefinition+BlockBuilders.h"
 #import "SpringComponentInitializer.h"
 #import "SpringPropertyPlaceholderConfigurer.h"
 #import "SpringResource.h"

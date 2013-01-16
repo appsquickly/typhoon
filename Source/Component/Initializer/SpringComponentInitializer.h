@@ -31,8 +31,8 @@ typedef enum
     SpringComponentInitializerIsClassMethod _isClassMethodStrategy;
 }
 
-@property(nonatomic, readonly) SEL selector;
-@property(nonatomic, readonly) BOOL isClassMethod;
+@property(nonatomic) SEL selector;
+@property(nonatomic) BOOL isClassMethod;
 
 - (id)initWithSelector:(SEL)initializer;
 
@@ -40,7 +40,7 @@ typedef enum
 
 - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference;
 
-- (void)injectParameterAt:(NSUInteger)index withReference:(NSString*)reference;
+- (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference;
 
 - (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol;
 
