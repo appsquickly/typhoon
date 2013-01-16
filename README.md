@@ -146,7 +146,9 @@ otherwise . . .
 
 And then:
 
-* <a href="https://github.com/jasperblues/spring-objective-c/wiki/Assembling-Components">Assembling Components</a>
+* <a href="https://github.com/jasperblues/spring-objective-c/wiki/Assembling-Components-in-XML">Assembling Components in XML</a>
+
+* <a href="https://github.com/jasperblues/spring-objective-c/wiki/Assembling-Components-with-Blocks">Assembling Components in Blocks</a>
 
 * <a href="https://github.com/jasperblues/spring-objective-c/wiki/Using-Assembled-Components">Using Assembled Components</a>
 
