@@ -5,7 +5,7 @@ A Spring-like dependency injection container for Objective-C and Cocoa.  Light-w
 ## Status? It's ready to use!
 
 * <a href="https://github.com/jasperblues/spring-objective-c-example">Try the sample application</a>.
-* Current work: More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
+* Current work: More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). A very cool block-based application assembly. A secret, new name!
 
 ### What is Dependency Injection? 
 
