@@ -18,6 +18,8 @@
 #import "Champion.h"
 
 
+static NSString * const DEFAULT_QUEST = @"quest";
+
 @interface SpringComponentFactoryTests : SenTestCase
 @end
 
@@ -41,10 +43,10 @@
         initializer:^(SpringComponentInitializer* initializer)
         {
             initializer.selector = @selector(initWithQuest:);
-            [initializer injectParameterAtIndex:0 withReference:@"quest"];
+            [initializer injectParameterAtIndex:0 withReference:DEFAULT_QUEST];
         }]];
 
-[_componentFactory register:[SpringComponentDefinition definitionWithClass:[CampaignQuest class] key:@"quest"]];
+[_componentFactory register:[SpringComponentDefinition definitionWithClass:[CampaignQuest class] key:DEFAULT_QUEST]];
 
 Knight* knight = [_componentFactory componentForType:[Knight class]];
 
