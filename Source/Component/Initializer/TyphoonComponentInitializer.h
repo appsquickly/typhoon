@@ -38,7 +38,11 @@ typedef enum
 
 - (id)initWithSelector:(SEL)initializer isClassMethod:(TyphoonComponentInitializerIsClassMethod)isClassMethod;
 
+- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonComponentDefinition*)definition;
+
 - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference;
+
+- (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonComponentDefinition*)definition;
 
 - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference;
 

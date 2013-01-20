@@ -30,7 +30,7 @@
         if ([key length] == 0)
         {
             NSString* uuidStr = [[NSProcessInfo processInfo] globallyUniqueString];
-            _key = [NSString stringWithFormat:@"%@%@", NSStringFromClass(_type), uuidStr];
+            _key = [NSString stringWithFormat:@"%@_%@", NSStringFromClass(_type), uuidStr];
         }
         else
         {
@@ -58,6 +58,11 @@
 - (void)injectProperty:(NSString*)propertyName
 {
     [_injectedProperties addObject:[[TyphoonPropertyInjectedByType alloc] initWithName:propertyName]];
+}
+
+- (void)injectProperty:(NSString*)propertyName withDefinition:(TyphoonComponentDefinition*)definition
+{
+    [self injectProperty:propertyName withReference:definition.key];
 }
 
 - (void)injectProperty:(NSString*)propertyName withReference:(NSString*)reference

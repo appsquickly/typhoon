@@ -52,7 +52,7 @@ static TyphoonComponentFactory* defaultFactory;
 /* ========================================================== Interface Methods ========================================================= */
 - (void)register:(TyphoonComponentDefinition*)definition
 {
-    NSLog(@"Registering: %@", definition);
+    NSLog(@"Registering: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
     if ([self definitionForKey:definition.key])
     {
         [NSException raise:NSInvalidArgumentException format:@"Key '%@' is already registered.", definition.key];

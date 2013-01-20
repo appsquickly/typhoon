@@ -11,8 +11,6 @@
 
 
 
-
-
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryMutator.h"
 @class TyphoonComponentDefinition;
@@ -36,6 +34,7 @@
 * Returns the default component factory, if one has been set. (See makeDefault ).
 */
 + (TyphoonComponentFactory*)defaultFactory;
+
 
 /**
 * Sets a given instance of TyphoonComponentFactory, as the default factory so that it can be retrieved later with:

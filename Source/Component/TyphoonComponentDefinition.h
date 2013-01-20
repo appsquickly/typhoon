@@ -45,6 +45,8 @@ typedef enum
 
 - (void)injectProperty:(NSString*)propertyName;
 
+- (void)injectProperty:(NSString*)propertyName withDefinition:(TyphoonComponentDefinition*)definition;
+
 - (void)injectProperty:(NSString*)propertyName withReference:(NSString*)reference;
 
 - (void)injectProperty:(NSString*)propertyName withValueAsText:(NSString*)textValue;

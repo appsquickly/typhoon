@@ -45,12 +45,22 @@
 }
 
 
+
 /* ========================================================== Interface Methods ========================================================= */
+- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonComponentDefinition*)definition
+{
+    [self injectParameterNamed:name withReference:definition.key];
+}
+
 - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference
 {
     [self injectParameterAtIndex:[self indexOfParameter:name] withReference:reference];
 }
 
+- (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonComponentDefinition*)definition
+{
+    [self injectParameterAtIndex:index1 withReference:definition.key];
+}
 
 - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference
 {
@@ -59,7 +69,6 @@
         [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference]];
     }
 }
-
 
 - (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol
 {
