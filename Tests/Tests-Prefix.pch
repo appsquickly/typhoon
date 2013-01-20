@@ -1,0 +1,11 @@
+//
+// Prefix header for all source files of the 'Tests' target in the 'Tests' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
+
+
+#define HC_SHORTHAND
+#import <OCHamcrest/OCHamcrest.h>

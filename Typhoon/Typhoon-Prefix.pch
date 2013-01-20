@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Typhoon' target in the 'Typhoon' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

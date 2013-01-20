@@ -13,6 +13,7 @@
 #import "Knight.h"
 #import "Typhoon.h"
 
+
 @interface TyphoonComponentDefinitionTests : SenTestCase
 @end
 
