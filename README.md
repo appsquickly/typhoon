@@ -5,11 +5,11 @@ A Spring-like dependency injection container for Objective-C and Cocoa.  Light-w
 ## Status? It's ready to use!
 
 * <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a>.
+* **New!!** A super-cool <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">block and category-based application assembly</a>, for those that prefer pure-code!!! 
 
 ##Current Work?
 
 * More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
-* A very cool <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">block-based application assembly</a>, for those that prefer pure-code. (Mostly done, just need to do the docs).
 * Macro-style injection
 
 ### What is Dependency Injection? 
