@@ -128,14 +128,6 @@ and GUI tool-support.
 
 * Lean. It has a very low footprint, so is appropriate for CPU and memory constrained devices. 
 
-## So, does this mean XML? 
-
-* If you're interested in reading an architectural discussion, especially ___why xml is a good choice___ to declare
-components, their collaborating classes and their configurations, as well as what other styles of dependency injection 
-this container will be supporting: 
-<a href="https://github.com/jasperblues/Typhoon/wiki/Does-this-mean-XML%3F">___then please read this.___</a>
-
-otherwise . . . 
 
 # Usage
 
