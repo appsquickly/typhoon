@@ -16,10 +16,10 @@
 #import "TyphoonAssembly.h"
 #import "MiddleAgesAssembly.h"
 
-@interface TyphoonNanoComponentFactoryTests : SenTestCase
+@interface TyphoonBlockComponentFactoryTests : SenTestCase
 @end
 
-@implementation TyphoonNanoComponentFactoryTests
+@implementation TyphoonBlockComponentFactoryTests
 {
     TyphoonComponentFactory* _factory;
 }
