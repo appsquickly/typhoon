@@ -5,11 +5,11 @@ A Spring-like dependency injection container for Objective-C and Cocoa.  Light-w
 ## Status? It's ready to use!
 
 * <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a>.
+* **New!!** A super-cool <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">block and category-based application assembly</a>, for those that prefer pure-code!!! 
 
 ##Current Work?
 
 * More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
-* A very cool <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">block-based application assembly</a>, for those that prefer pure-code. (Mostly done, just need to do the docs).
 * Macro-style injection
 
 ### What is Dependency Injection? 
@@ -86,15 +86,7 @@ the real collaborators, but configured to be used in a test scenario. (One of my
 
 
 
-
-# Why Spring for Objective-C?
-
-Well. . . it's not necessarily Spring, the well-known DI framework for Java, .NET and ActionScript. . . Just my 
-personal take on what Dependency Injection should look like in Objective-C. I guess that I could've called it
-'The Typhoon Framework'. Or Michael? I don't work at SpringSource (I did once) and I'm not getting any financial 
-benefit from this. I'm doing it because I think it is the right thing to do.
-
-### Your Dependency Injection Options
+# Your Dependency Injection Options
 
 If you proceed with the Dependency Injection pattern _(assuming you're not one of the remaining "flat-earthers", who 
 believe that Objective-C somehow magically alleviates the need for common-sense: "Oh, I don't do DI, I use swizzling 
@@ -136,14 +128,6 @@ and GUI tool-support.
 
 * Lean. It has a very low footprint, so is appropriate for CPU and memory constrained devices. 
 
-## So, does this mean XML? 
-
-* If you're interested in reading an architectural discussion, especially ___why xml is a good choice___ to declare
-components, their collaborating classes and their configurations, as well as what other styles of dependency injection 
-this container will be supporting: 
-<a href="https://github.com/jasperblues/Typhoon/wiki/Does-this-mean-XML%3F">___then please read this.___</a>
-
-otherwise . . . 
 
 # Usage
 
