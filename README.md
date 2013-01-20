@@ -11,7 +11,6 @@ A Spring-like dependency injection container for Objective-C and Cocoa.  Light-w
 * More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
 * A very cool <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">block-based application assembly</a>, for those that prefer pure-code. (Mostly done, just need to do the docs).
 * Macro-style injection
-* A super-secret new name!
 
 ### What is Dependency Injection? 
 
