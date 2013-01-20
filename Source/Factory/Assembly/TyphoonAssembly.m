@@ -24,6 +24,8 @@
 
 @implementation TyphoonAssembly
 
+
+
 /* =========================================================== Class Methods ============================================================ */
 + (TyphoonAssembly*)assembly
 {
@@ -36,28 +38,26 @@
     {
         return [super resolveInstanceMethod:sel];
     }
+
     NSString* name = NSStringFromSelector(sel);
-    if ([name hasSuffix:@"__typhoonBeforeAdvice"])
+    if ([name hasSuffix:TYPHOON_BEFORE_ADVICE_SUFFIX])
     {
         IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me, BOOL selected)
         {
-            NSLog(@"Starting. . . ");
             NSString* key =
-                    [NSStringFromSelector(sel) stringByReplacingOccurrencesOfString:@"__typhoonBeforeAdvice" withString:@""];
-            NSMutableDictionary* cache = [me cachedSelectors];
+                    [NSStringFromSelector(sel) stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@""];
 
             NSLog(@"Looking up cached value for: %@", key);
-            id cached = [cache objectForKey:key];
-            NSLog(@"$$$$$$$$ Here it is: %@", cached);
+            id cached = [[me cachedSelectors] objectForKey:key];
 
             if (cached == nil)
             {
-                NSLog(@"Populating cache: %@", name);
+                NSLog(@"Cache empty, populating. . . ");
                 NSError* error;
                 [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:&error];
                 if (error)
                 {
-                    NSLog(@"Error: %@", error);
+                    [NSException raise:NSInternalInconsistencyException format:[error description]];
                 }
                 cached = objc_msgSend(me, sel);
                 if (cached && [cached isKindOfClass:[TyphoonComponentDefinition class]])
@@ -67,20 +67,14 @@
                     {
                         definition.key = key;
                     }
-                    [cache setObject:definition forKey:key];
+                    [[me cachedSelectors] setObject:definition forKey:key];
                 }
-                NSLog(@"Cached now: %@", cached);
                 [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:&error];
                 if (error)
                 {
-                    NSLog(@"Error: %@", error);
+                    [NSException raise:NSInternalInconsistencyException format:[error description]];
                 }
             }
-            else
-            {
-                NSLog(@"Returning cached");
-            }
-
             return cached;
 
         }));

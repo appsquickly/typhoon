@@ -36,7 +36,7 @@
     self = [super init];
     if (self)
     {
-        [self swizzle:assembly];
+        [self applyBeforeAdviceToAssemblyMethods:assembly];
 
         int methodCount;
         Method* methodList = class_copyMethodList([assembly class], &methodCount);
@@ -62,37 +62,29 @@
     return self;
 }
 
-- (void)swizzle:(TyphoonAssembly*)assembly
+- (void)applyBeforeAdviceToAssemblyMethods:(TyphoonAssembly*)assembly
 {
-    NSLog(@"$$$$$$$$$$$$$$$$$$$$$ in load $$$$$$$$$$$$$$");
     int methodCount;
     Method* methodList = class_copyMethodList([assembly class], &methodCount);
     for (int i = 0; i < methodCount; i++)
     {
         Method method = methodList[i];
-        SEL methodSelector = method_getName(method);
         int argumentCount = method_getNumberOfArguments(method);
-        NSLog(@"Method: %@, args: %i", NSStringFromSelector(methodSelector), argumentCount);
         if (argumentCount == 2)
         {
-
+            SEL methodSelector = method_getName(method);
             if ([TyphoonAssembly selectorReserved:methodSelector] == NO)
             {
-                NSLog(@"Selector: %@", NSStringFromSelector(methodSelector));
                 SEL swizzled =
-                        NSSelectorFromString([NSStringFromSelector(methodSelector) stringByAppendingString:@"__typhoonBeforeAdvice"]);
-                NSLog(@"############ Exchanging: %@ with: %@", NSStringFromSelector(methodSelector), NSStringFromSelector(swizzled));
+                        NSSelectorFromString([NSStringFromSelector(methodSelector) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
+                NSLog(@"Exchanging: %@ with: %@", NSStringFromSelector(methodSelector), NSStringFromSelector(swizzled));
 
                 NSError* error;
                 [[assembly class] typhoon_swizzleMethod:methodSelector withMethod:swizzled error:&error];
                 if (error)
                 {
-                    NSLog(@"Error: %@", error);
+                    [NSException raise:NSInternalInconsistencyException format:[error description]];
                 }
-            }
-            else
-            {
-                NSLog(@"Skipping: %@", NSStringFromSelector(methodSelector));
             }
         }
     }
