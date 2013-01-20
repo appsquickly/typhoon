@@ -29,7 +29,7 @@
     _factory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[MiddleAgesAssembly assembly]];
 }
 
-- (void)test_registers_category_definitions
+- (void)test_resolves_from_assembly
 {
     Knight* knight = [_factory componentForKey:@"basicKnight"];
     assertThat(knight, notNilValue());
