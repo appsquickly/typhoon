@@ -27,15 +27,7 @@
     if (self)
     {
         _type = clazz;
-        if ([key length] == 0)
-        {
-            NSString* uuidStr = [[NSProcessInfo processInfo] globallyUniqueString];
-            _key = [NSString stringWithFormat:@"%@_%@", NSStringFromClass(_type), uuidStr];
-        }
-        else
-        {
-            _key = [key copy];
-        }
+        _key = [key copy];
         _factoryComponent = [factoryComponent copy];
         _injectedProperties = [[NSMutableSet alloc] init];
         [self validateRequiredParametersAreSet];

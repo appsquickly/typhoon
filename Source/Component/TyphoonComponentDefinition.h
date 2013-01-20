@@ -30,7 +30,7 @@ typedef enum
 }
 
 @property(nonatomic, readonly) Class type;
-@property(nonatomic, strong, readonly) NSString* key;
+@property(nonatomic, strong) NSString* key;
 @property(nonatomic, strong, readonly) NSString* factoryComponent;
 @property(nonatomic, strong) TyphoonComponentInitializer* initializer;
 @property(nonatomic) SEL beforePropertyInjection;

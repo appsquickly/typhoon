@@ -42,11 +42,10 @@
         IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me, BOOL selected)
         {
             NSLog(@"Starting. . . ");
-            NSString* originalSelectorAsString =
+            NSString* key =
                     [NSStringFromSelector(sel) stringByReplacingOccurrencesOfString:@"__typhoonBeforeAdvice" withString:@""];
             NSMutableDictionary* cache = [me cachedSelectors];
 
-            NSString* key = [NSStringFromSelector(sel) stringByReplacingOccurrencesOfString:@"__typhoonCachedValue" withString:@""];
             NSLog(@"Looking up cached value for: %@", key);
             id cached = [cache objectForKey:key];
             NSLog(@"$$$$$$$$ Here it is: %@", cached);
@@ -55,18 +54,23 @@
             {
                 NSLog(@"Populating cache: %@", name);
                 NSError* error;
-                [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(originalSelectorAsString) error:&error];
+                [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:&error];
                 if (error)
                 {
                     NSLog(@"Error: %@", error);
                 }
                 cached = objc_msgSend(me, sel);
-                if (cached)
+                if (cached && [cached isKindOfClass:[TyphoonComponentDefinition class]])
                 {
-                    [cache setObject:cached forKey:key];
+                    TyphoonComponentDefinition* definition = (TyphoonComponentDefinition*) cached;
+                    if ([definition.key length] == 0)
+                    {
+                        definition.key = key;
+                    }
+                    [cache setObject:definition forKey:key];
                 }
                 NSLog(@"Cached now: %@", cached);
-                [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(originalSelectorAsString) error:&error];
+                [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:&error];
                 if (error)
                 {
                     NSLog(@"Error: %@", error);
@@ -108,7 +112,6 @@
 {
     return _cachedDefinitions;
 }
-
 
 
 @end
