@@ -22,10 +22,13 @@
 
 + (BOOL)selectorReserved:(SEL)selector;
 
+- (NSMutableDictionary*)cachedSelectors;
+
 @end
 
 @implementation TyphoonBlockComponentFactory
 
+/* ============================================================ Initializers ============================================================ */
 - (id)initWithAssembly:(TyphoonAssembly*)assembly;
 {
     if (![assembly isKindOfClass:[TyphoonAssembly class]])
@@ -37,29 +40,36 @@
     if (self)
     {
         [self applyBeforeAdviceToAssemblyMethods:assembly];
-
-        int methodCount;
-        Method* methodList = class_copyMethodList([assembly class], &methodCount);
-        for (int i = 0; i < methodCount; i++)
+        NSArray* definitions = [self populateCache:assembly];
+        for (TyphoonComponentDefinition* definition in definitions)
         {
-            Method method = methodList[i];
-
-            int argumentCount = method_getNumberOfArguments(method);
-            if (argumentCount == 2)
-            {
-                SEL methodSelector = method_getName(method);
-                if (![[assembly class] selectorReserved:methodSelector])
-                {
-                    id anObject = objc_msgSend(assembly, methodSelector);
-                    if ([anObject isKindOfClass:[TyphoonComponentDefinition class]])
-                    {
-                        [self register:anObject];
-                    }
-                }
-            }
+            [self register:definition];
         }
     }
     return self;
+}
+
+/* ============================================================ Private Methods ========================================================= */
+- (NSArray*)populateCache:(TyphoonAssembly*)assembly
+{
+    int methodCount;
+    Method* methodList = class_copyMethodList([assembly class], &methodCount);
+    for (int i = 0; i < methodCount; i++)
+    {
+        Method method = methodList[i];
+
+        int argumentCount = method_getNumberOfArguments(method);
+        if (argumentCount == 2)
+        {
+            SEL methodSelector = method_getName(method);
+            if (![[assembly class] selectorReserved:methodSelector])
+            {
+                objc_msgSend(assembly, methodSelector);
+            }
+        }
+    }
+    NSMutableDictionary* dictionary = [assembly cachedSelectors];
+    return [dictionary allValues];
 }
 
 - (void)applyBeforeAdviceToAssemblyMethods:(TyphoonAssembly*)assembly

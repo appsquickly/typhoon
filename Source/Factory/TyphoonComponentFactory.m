@@ -175,7 +175,6 @@ static TyphoonComponentFactory* defaultFactory;
         if (instance == nil)
         {
             instance = [self buildInstanceWithDefinition:definition];
-            NSLog(@"Setting %@ for key %@", instance, definition.key);
             [_singletons setObject:instance forKey:definition.key];
         }
         return instance;
