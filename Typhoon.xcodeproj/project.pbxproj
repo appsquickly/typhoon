@@ -790,7 +790,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = AppsQuick.ly;
 			};
-			buildConfigurationList = 6B26371A168556790026E894 /* Build configuration list for PBXProject "Spring-Objective-C" */;
+			buildConfigurationList = 6B26371A168556790026E894 /* Build configuration list for PBXProject "Typhoon" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1150,7 +1150,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6B26371A168556790026E894 /* Build configuration list for PBXProject "Spring-Objective-C" */ = {
+		6B26371A168556790026E894 /* Build configuration list for PBXProject "Typhoon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6B26372D168556790026E894 /* Debug */,

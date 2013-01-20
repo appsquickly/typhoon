@@ -17,7 +17,7 @@
                BlueprintIdentifier = "6BCBEB9B169408990096F861"
                BuildableName = "libSpring-iOS-StaticLib.a"
                BlueprintName = "Spring-iOS-StaticLib"
-               ReferencedContainer = "container:Spring-Objective-C.xcodeproj">
+               ReferencedContainer = "container:Typhoon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
