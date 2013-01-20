@@ -22,7 +22,6 @@
 
 @implementation MiddleAgesAssembly
 
-
 - (TyphoonComponentDefinition*)basicKnight
 {
     return [TyphoonComponentDefinition withClass:[Knight class] initialization:^(TyphoonComponentInitializer* initializer)
@@ -30,11 +29,6 @@
         initializer.selector = @selector(initWithQuest:);
         [initializer injectParameterAtIndex:0 withDefinition:[self defaultQuest]];
     }];
-}
-
-- (TyphoonComponentDefinition*)cavalryMan
-{
-    return nil;
 }
 
 - (TyphoonComponentDefinition*)defaultQuest

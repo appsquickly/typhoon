@@ -17,7 +17,7 @@
 @class TyphoonAssembly;
 
 
-@interface TyphoonNanoComponentFactory : TyphoonComponentFactory
+@interface TyphoonBlockComponentFactory : TyphoonComponentFactory
 
 - (id)initWithAssembly:(TyphoonAssembly*)assembly;
 

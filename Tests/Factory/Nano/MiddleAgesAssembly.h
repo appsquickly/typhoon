@@ -14,6 +14,13 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonAssembly.h"
 
+@class TyphoonComponentDefinition;
+
 
 @interface MiddleAgesAssembly : TyphoonAssembly
+
+- (TyphoonComponentDefinition*)basicKnight;
+
+- (TyphoonComponentDefinition*)defaultQuest;
+
 @end

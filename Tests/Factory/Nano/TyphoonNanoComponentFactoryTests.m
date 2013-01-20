@@ -12,7 +12,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "TyphoonComponentFactory.h"
 #import "Knight.h"
-#import "TyphoonNanoComponentFactory.h"
+#import "TyphoonBlockComponentFactory.h"
 #import "TyphoonAssembly.h"
 #import "MiddleAgesAssembly.h"
 
@@ -26,12 +26,12 @@
 
 - (void)setUp
 {
-    _factory = [[TyphoonNanoComponentFactory alloc] initWithAssembly:[MiddleAgesAssembly assembly]];
+    _factory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[MiddleAgesAssembly assembly]];
 }
 
 - (void)test_registers_category_definitions
 {
-    Knight* knight = [_factory componentForType:[Knight class]];
+    Knight* knight = [_factory componentForKey:@"basicKnight"];
     assertThat(knight, notNilValue());
     assertThat(knight.quest, notNilValue());
     NSLog(@"#################### Knight: %@", knight);

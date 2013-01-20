@@ -13,7 +13,7 @@
 
 #import <objc/runtime.h>
 #import <objc/message.h>
-#import "TyphoonNanoComponentFactory.h"
+#import "TyphoonBlockComponentFactory.h"
 #import "TyphoonAssembly.h"
 #import "TyphoonComponentDefinition.h"
 #import "TyphoonJRSwizzle.h"
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation TyphoonNanoComponentFactory
+@implementation TyphoonBlockComponentFactory
 
 - (id)initWithAssembly:(TyphoonAssembly*)assembly;
 {
