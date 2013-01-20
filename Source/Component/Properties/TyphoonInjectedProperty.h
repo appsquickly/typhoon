@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  JASPER BLUES
-//  Copyright 2012 Jasper Blues
+//  Copyright 2012 - 2013 Jasper Blues
 //  All Rights Reserved.
 //
 //  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
@@ -10,10 +10,22 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
+
+
 #import <Foundation/Foundation.h>
-#import "Knight.h"
-#import "TyphoonPropertyInjectionDelegate.h"
+#import "TyphoonIntrospectiveNSObject.h"
 
+typedef enum
+{
+    TyphoonPropertyInjectionByReferenceType,
+    TyphoonPropertyInjectionByTypeType,
+    TyphoonPropertyInjectionByValueType
+} TyphoonPropertyInjectionType;
 
-@interface CavalryMan : Knight<TyphoonPropertyInjectionDelegate>
+@protocol TyphoonInjectedProperty <NSObject>
+
+- (NSString*)name;
+
+- (TyphoonPropertyInjectionType)type;
+
 @end

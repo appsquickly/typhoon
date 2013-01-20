@@ -4,12 +4,12 @@ A Spring-like dependency injection container for Objective-C and Cocoa.  Light-w
 
 ## Status? It's ready to use!
 
-* <a href="https://github.com/jasperblues/spring-objective-c-example">Try the sample application</a>.
+* <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a>.
 
 ##Current Work?
 
 * More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
-* A very cool <a href="https://github.com/jasperblues/spring-objective-c/wiki/Assembling-Components-with-Blocks">block-based application assembly</a>, for those that prefer pure-code. (Mostly done, just need to do the docs). 
+* A very cool <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">block-based application assembly</a>, for those that prefer pure-code. (Mostly done, just need to do the docs).
 * Macro-style injection
 * A super-secret new name!
 
@@ -142,31 +142,31 @@ and GUI tool-support.
 * If you're interested in reading an architectural discussion, especially ___why xml is a good choice___ to declare
 components, their collaborating classes and their configurations, as well as what other styles of dependency injection 
 this container will be supporting: 
-<a href="https://github.com/jasperblues/spring-objective-c/wiki/Does-this-mean-XML%3F">___then please read this.___</a>
+<a href="https://github.com/jasperblues/Typhoon/wiki/Does-this-mean-XML%3F">___then please read this.___</a>
 
 otherwise . . . 
 
 # Usage
 
-* <a href="https://github.com/jasperblues/spring-objective-c-example">Play with the sample application</a>.
+* <a href="https://github.com/jasperblues/Typhoon-example">Play with the sample application</a>.
 
 And then:
 
-* <a href="https://github.com/jasperblues/spring-objective-c/wiki/Assembling-Components-in-XML">Assembling Components in XML</a> ___or___ <a href="https://github.com/jasperblues/spring-objective-c/wiki/Assembling-Components-with-Blocks">Assembling Components with Blocks</a>
+* <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-in-XML">Assembling Components in XML</a> ___or___ <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">Assembling Components with Blocks</a>
 
-* <a href="https://github.com/jasperblues/spring-objective-c/wiki/Using-Assembled-Components">Using Assembled Components</a>
+* <a href="https://github.com/jasperblues/Typhoon/wiki/Using-Assembled-Components">Using Assembled Components</a>
 
-* <a href="https://github.com/jasperblues/spring-objective-c/wiki/Incorporating">Incorporating the framework into your project.</a>
+* <a href="https://github.com/jasperblues/Typhoon/wiki/Incorporating">Incorporating the framework into your project.</a>
 
-* <a href="https://github.com/jasperblues/spring-objective-c/wiki/Configuration-Management-&amp;-Testing">Configuration Management & Testing.</a>
+* <a href="https://github.com/jasperblues/Typhoon/wiki/Configuration-Management-&amp;-Testing">Configuration Management & Testing.</a>
 
 # Reports
 
 In the spirit of lean-methodologies, the API and Test Coverage reports below are published by my build server, after 
 each commit. (If you'd like the script I will share it). 
 
-* <a href="http://jasperblues.github.com/spring-objective-c/api/index.html">API</a>
-* <a href="http://jasperblues.github.com/spring-objective-c/coverage/index.html">Coverage Reports</a>
+* <a href="http://jasperblues.github.com/Typhoon/api/index.html">API</a>
+* <a href="http://jasperblues.github.com/Typhoon/coverage/index.html">Coverage Reports</a>
 
 
 
@@ -174,13 +174,13 @@ each commit. (If you'd like the script I will share it).
 
 . . . are very welcome. 
 
-* <a href="https://github.com/jasperblues/spring-objective-c/wiki/Contribution-Guide">Contribution Guide.</a>
+* <a href="https://github.com/jasperblues/Typhoon/wiki/Contribution-Guide">Contribution Guide.</a>
 
-* Look at, and contribute to the <a href="https://github.com/jasperblues/spring-objective-c/wiki/Roadmap">roadmap</a> here.
+* Look at, and contribute to the <a href="https://github.com/jasperblues/Typhoon/wiki/Roadmap">roadmap</a> here.
 
 # Frequently Asked Questions
 
-. . . are <a href="https://github.com/jasperblues/spring-objective-c/wiki/FAQ">here</a>.
+. . . are <a href="https://github.com/jasperblues/Typhoon/wiki/FAQ">here</a>.
 
 
 # Who's using it? 
@@ -192,7 +192,7 @@ each commit. (If you'd like the script I will share it).
 
 # Authors
 
-* <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> - <a href="mailto:jasper@appsquick.ly?Subject=spring-objective-c">jasper@appsquick.ly</a>
+* <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> - <a href="mailto:jasper@appsquick.ly?Subject=Typhoon">jasper@appsquick.ly</a>
          
 ### With contributions from: 
 

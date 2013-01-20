@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  JASPER BLUES
-//  Copyright 2012 Jasper Blues
+//  Copyright 2012 - 2013 Jasper Blues
 //  All Rights Reserved.
 //
 //  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
@@ -10,10 +10,19 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
+
+
 #import <Foundation/Foundation.h>
-#import "Knight.h"
-#import "TyphoonPropertyInjectionDelegate.h"
+#import "TyphoonComponentFactory.h"
 
 
-@interface CavalryMan : Knight<TyphoonPropertyInjectionDelegate>
+@interface TyphoonXmlComponentFactory : TyphoonComponentFactory
+{
+    NSMutableArray* _resourceNames;
+}
+
+- (id)initWithConfigFileName:(NSString*)configFileName;
+
+- (id)initWithConfigFileNames:(NSString*)configFileNames, ...NS_REQUIRES_NIL_TERMINATION;
+
 @end

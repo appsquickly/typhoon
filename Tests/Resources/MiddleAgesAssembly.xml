@@ -1,6 +1,6 @@
-<assembly xmlns="http://jasperblues.github.com/spring-objective-c/schema/assembly"
+<assembly xmlns="http://jasperblues.github.com/typhoon/schema/assembly"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://jasperblues.github.com/spring-objective-c/schema/assembly
+          xsi:schemaLocation="http://jasperblues.github.com/typhoon/schema/assembly
           http://www.appsquick.ly/schema/assembly.xsd">
 
     <description>

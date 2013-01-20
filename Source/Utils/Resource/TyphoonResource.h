@@ -1,19 +1,25 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-//  JASPER BLUES
-//  Copyright 2012 Jasper Blues
+//  AppsQuick.ly
+//  Copyright 2012 AppsQuick.ly
 //  All Rights Reserved.
 //
-//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
+//  NOTICE: AppsQuick.ly permits you to use, modify, and distribute this file
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
 
+
 #import <Foundation/Foundation.h>
-#import "Knight.h"
-#import "TyphoonPropertyInjectionDelegate.h"
+
+@protocol TyphoonResource <NSObject>
+
+/**
+* Returns the resource with the given name, as an NSString.
+*/
+
+- (NSString*)asString;
 
 
-@interface CavalryMan : Knight<TyphoonPropertyInjectionDelegate>
 @end

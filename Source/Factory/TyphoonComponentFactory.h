@@ -1,0 +1,74 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+//  JASPER BLUES
+//  Copyright 2012 - 2013 Jasper Blues
+//  All Rights Reserved.
+//
+//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+#import <Foundation/Foundation.h>
+#import "TyphoonComponentFactoryMutator.h"
+@class TyphoonComponentDefinition;
+
+/**
+* This is the base class for for all spring component factories. Although, it could be used as-is, the intention is to use a
+* sub-class like TyphoonXmlComponentFactory.
+*/
+@interface TyphoonComponentFactory : NSObject
+{
+    NSMutableArray* _registry;
+    NSMutableDictionary* _singletons;
+
+    NSMutableSet* _currentlyResolvingReferences;
+    NSMutableArray* _mutators;
+
+    BOOL _hasPerformedMutations;
+}
+
+/**
+* Returns the default component factory, if one has been set. (See makeDefault ).
+*/
++ (TyphoonComponentFactory*)defaultFactory;
+
+/**
+* Sets a given instance of TyphoonComponentFactory, as the default factory so that it can be retrieved later with:
+
+        [TyphoonComponentFactory defaultFactory];
+
+*/
+- (void)makeDefault;
+
+/**
+* Registers a component into the factory. Components can be declared in any order, the container will work out how to resolve them.
+*/
+- (void) register:(TyphoonComponentDefinition*)definition;
+
+/**
+* Returns an an instance of the component matching the supplied class or protocol. For example:
+
+        [factory objectForType:[Knight class]];
+        [factory objectForType:@protocol(Quest)];
+
+* @exception NSInvalidArgumentException When no singletons or prototypes match the requested type.
+* @exception NSInvalidArgumentException When when more than one singleton or prototype matches the requested type.
+*
+* @See: allComponentsForType:
+*/
+- (id)componentForType:(id)classOrProtocol;
+
+ - (NSArray*)allComponentsForType:(id)classOrProtocol;
+
+- (id)componentForKey:(NSString*)key;
+
+- (NSArray*)registry;
+
+- (void)attachMutator:(id<TyphoonComponentFactoryMutator>)mutator;
+
+@end

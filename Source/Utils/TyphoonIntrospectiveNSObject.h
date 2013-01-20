@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  JASPER BLUES
-//  Copyright 2012 Jasper Blues
+//  Copyright 2012 - 2013 Jasper Blues
 //  All Rights Reserved.
 //
 //  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
@@ -11,9 +11,13 @@
 
 
 #import <Foundation/Foundation.h>
-#import "Knight.h"
-#import "TyphoonPropertyInjectionDelegate.h"
 
+@class TyphoonTypeDescriptor;
 
-@interface CavalryMan : Knight<TyphoonPropertyInjectionDelegate>
+@protocol TyphoonIntrospectiveNSObject <NSObject>
+
+- (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName;
+
+- (SEL)setterForPropertyWithName:(NSString*)propertyName;
+
 @end

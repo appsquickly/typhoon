@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  JASPER BLUES
-//  Copyright 2012 Jasper Blues
+//  Copyright 2013 Jasper Blues
 //  All Rights Reserved.
 //
 //  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
@@ -11,9 +11,9 @@
 
 
 #import <Foundation/Foundation.h>
-#import "Knight.h"
-#import "TyphoonPropertyInjectionDelegate.h"
 
+@protocol TyphoonComponentFactoryMutator
 
-@interface CavalryMan : Knight<TyphoonPropertyInjectionDelegate>
+- (void)mutateComponentDefinitionsIfRequired:(NSArray*)componentDefinitions;
+
 @end
