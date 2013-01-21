@@ -52,11 +52,6 @@
     [_injectedProperties addObject:[[TyphoonPropertyInjectedByType alloc] initWithName:propertyName]];
 }
 
-- (void)injectProperty:(NSString*)propertyName withDefinition:(TyphoonDefinition*)definition
-{
-    [self injectProperty:propertyName withReference:definition.key];
-}
-
 - (void)injectProperty:(NSString*)propertyName withReference:(NSString*)reference
 {
     [_injectedProperties addObject:[[TyphoonPropertyInjectedByReference alloc] initWithName:propertyName reference:reference]];

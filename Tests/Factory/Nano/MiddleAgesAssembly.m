@@ -13,11 +13,9 @@
 
 #import <objc/runtime.h>
 #import "MiddleAgesAssembly.h"
-#import "TyphoonDefinition.h"
-#import "TyphoonDefinition+BlockBuilders.h"
 #import "Knight.h"
-#import "TyphoonInitializer.h"
 #import "CampaignQuest.h"
+#import "Typhoon.h"
 
 
 @implementation MiddleAgesAssembly

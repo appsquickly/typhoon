@@ -34,7 +34,6 @@
     {
         _injectedParameters = [[NSMutableArray alloc] init];
         _isClassMethodStrategy = isClassMethod;
-        _index = 0;
         self.selector = initializer;
     }
     return self;
@@ -48,25 +47,15 @@
 
 
 /* ========================================================== Interface Methods ========================================================= */
-- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition
-{
-    [self injectParameterNamed:name withReference:definition.key];
-}
+
 
 - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference
 {
     [self injectParameterAtIndex:[self indexOfParameter:name] withReference:reference];
 }
 
-- (void)injectWithDefinition:(TyphoonDefinition*)definition;
-{
-    [self injectParameterAtIndex:_index++ withDefinition:definition];
-}
 
-- (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonDefinition*)definition
-{
-    [self injectParameterAtIndex:index1 withReference:definition.key];
-}
+
 
 - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference
 {
