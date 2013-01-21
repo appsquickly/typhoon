@@ -26,7 +26,7 @@
 
     <target name="clean" depends="--clean"/>
 
-    <target name="bamboo" depends="
+    <target name="build-publish" depends="
     build,
     --publish.site"/>
 
