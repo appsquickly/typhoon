@@ -21,6 +21,8 @@
 
 - (id)basicKnight;
 
+- (id)cavalryMan;
+
 - (id)defaultQuest;
 
 @end

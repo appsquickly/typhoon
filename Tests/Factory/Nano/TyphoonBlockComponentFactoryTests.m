@@ -62,6 +62,14 @@
     NSLog(@"#################### Knight: %@", knight);
 }
 
+- (void)test_returns_cavalryMan
+{
+    Knight* knight = [(MiddleAgesAssembly*) _factory cavalryMan];
+    assertThat(knight, notNilValue());
+    assertThat(knight.quest, notNilValue());
+    NSLog(@"#################### Knight: %@", knight);
+}
+
 
 @end
 

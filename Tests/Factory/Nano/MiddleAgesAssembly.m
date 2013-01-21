@@ -11,11 +11,12 @@
 
 
 
-#import <objc/runtime.h>
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
 #import "CampaignQuest.h"
 #import "Typhoon.h"
+#import "CavalryMan.h"
+#import "TyphoonDefinition+BlockAssembly.h"
 
 
 @implementation MiddleAgesAssembly
@@ -26,6 +27,15 @@
     {
         initializer.selector = @selector(initWithQuest:);
         [initializer injectWithDefinition:[self defaultQuest]];
+    }];
+}
+
+- (id)cavalryMan
+{
+    return [TyphoonDefinition withClass:[CavalryMan class] properties:^(TyphoonDefinition* definition)
+    {
+        [definition injectProperty:@"quest" withDefinition:[self defaultQuest]];
+        [definition injectProperty:@"damselsRescued" withValueAsText:@"12"];
     }];
 }
 
