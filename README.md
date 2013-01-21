@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Description
 
 A Spring-like dependency injection container for Objective-C and Cocoa.  Light-weight, yet full-featured. Built during a typhoon. 
@@ -11,7 +10,7 @@ A Spring-like dependency injection container for Objective-C and Cocoa.  Light-w
 ##Current Work?
 
 * More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
-* Macro-style injection
+* Macro-style injection - but still honoring all of the design goals listed below!! (Using a self-installing, compile-time pre-processor).  
 
 ### What is Dependency Injection? 
 
@@ -199,8 +198,3 @@ Thanks!!!
 Apache License, Version 2.0, January 2004, http://www.apache.org/licenses/
 
 * © 2012 - 2013 jasper blues
-
-
-=======
-# This project has been renamed! Please go to: https://github.com/jasperblues/Typhoon
->>>>>>> fee324d5ed9f313a989bb081f0323a8f8be3a69e
