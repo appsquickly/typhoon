@@ -29,6 +29,7 @@ typedef enum
     NSArray* _parameterNames;
     __unsafe_unretained TyphoonDefinition* _definition;
     TyphoonComponentInitializerIsClassMethod _isClassMethodStrategy;
+    int _index;
 }
 
 @property(nonatomic) SEL selector;
@@ -41,6 +42,8 @@ typedef enum
 - (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition;
 
 - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference;
+
+- (void)injectWithDefinition:(TyphoonDefinition*)definition;
 
 - (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonDefinition*)definition;
 

@@ -27,7 +27,7 @@
     return [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer* initializer)
     {
         initializer.selector = @selector(initWithQuest:);
-        [initializer injectParameterAtIndex:0 withDefinition:[self defaultQuest]];
+        [initializer injectWithDefinition:[self defaultQuest]];
     }];
 }
 
