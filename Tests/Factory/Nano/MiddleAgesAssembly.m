@@ -22,7 +22,7 @@
 
 @implementation MiddleAgesAssembly
 
-- (TyphoonComponentDefinition*)basicKnight
+- (id)basicKnight
 {
     return [TyphoonComponentDefinition withClass:[Knight class] initialization:^(TyphoonComponentInitializer* initializer)
     {
@@ -31,7 +31,7 @@
     }];
 }
 
-- (TyphoonComponentDefinition*)defaultQuest
+- (id)defaultQuest
 {
     return [TyphoonComponentDefinition withClass:[CampaignQuest class]];
 }

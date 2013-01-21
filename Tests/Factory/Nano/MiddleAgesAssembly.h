@@ -19,8 +19,8 @@
 
 @interface MiddleAgesAssembly : TyphoonAssembly
 
-- (TyphoonComponentDefinition*)basicKnight;
+- (id)basicKnight;
 
-- (TyphoonComponentDefinition*)defaultQuest;
+- (id)defaultQuest;
 
 @end
