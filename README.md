@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Description
 
 A Spring-like dependency injection container for Objective-C and Cocoa.  Light-weight, yet full-featured. Built during a typhoon. 
