@@ -112,14 +112,17 @@ following:
  
 * . . . ability to configure components for use in eg ___Test___ vs ___Production___ scenarios. This faciliates a 
 good compromise between integration testing and pure unit testing. (Biggest testing bang-for-your-buck). 
+
+* ***Encourages polymorphism and makes it easy to have multiple configurations of the same base-class or protocol. 
+For example a MasterCardPaymentEngine and a VisaPaymentEngine, both implementing a PaymentEngine protocol.
+(Some other DI containers for Objective-C have problems with this).*** 
+
+* Supports both auto-wiring by type and wiring-by-reference.
  
 * Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a 
 convenient document. Now you know where to look if you need to change something. 
 
 * Non-invasive.
-
-* Encourages polymorphism and makes it easy to have multiple implementations of the same base-class or protocol. 
-Supports both auto-wiring by type and wiring-by-reference. 
 
 * Supports both initializer and property injection. In the case of the latter, it has customizable call-backs to 
 ensure that the class is in the required state before and after properties are set. 
