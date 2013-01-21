@@ -113,8 +113,10 @@ following:
 good compromise between integration testing and pure unit testing. (Biggest testing bang-for-your-buck). 
 
 * ***Encourages polymorphism and makes it easy to have multiple configurations of the same base-class or protocol. 
-For example a MasterCardPaymentEngine and a VisaPaymentEngine, both implementing a PaymentEngine protocol. 
-*** (Some other DI containers for Objective-C have problems with this). Supports both auto-wiring by type and wiring-by-reference.
+For example a MasterCardPaymentEngine and a VisaPaymentEngine, both implementing a PaymentEngine protocol.*** 
+(Some other DI containers for Objective-C have problems with this). 
+
+* Supports both auto-wiring by type and wiring-by-reference.
  
 * Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a 
 convenient document. Now you know where to look if you need to change something. 
