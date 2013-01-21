@@ -14,7 +14,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class TyphoonComponentInitializer;
+@class TyphoonInitializer;
 @protocol TyphoonInjectedProperty;
 
 typedef enum
@@ -24,7 +24,7 @@ typedef enum
 } TyphoonComponentLifecycle;
 
 
-@interface TyphoonComponentDefinition : NSObject
+@interface TyphoonDefinition : NSObject
 {
     NSMutableSet* _injectedProperties;
 }
@@ -32,7 +32,7 @@ typedef enum
 @property(nonatomic, readonly) Class type;
 @property(nonatomic, strong) NSString* key;
 @property(nonatomic, strong, readonly) NSString* factoryComponent;
-@property(nonatomic, strong) TyphoonComponentInitializer* initializer;
+@property(nonatomic, strong) TyphoonInitializer* initializer;
 @property(nonatomic) SEL beforePropertyInjection;
 @property(nonatomic) SEL afterPropertyInjection;
 @property(nonatomic, strong, readonly) NSSet* injectedProperties;
@@ -45,7 +45,7 @@ typedef enum
 
 - (void)injectProperty:(NSString*)propertyName;
 
-- (void)injectProperty:(NSString*)propertyName withDefinition:(TyphoonComponentDefinition*)definition;
+- (void)injectProperty:(NSString*)propertyName withDefinition:(TyphoonDefinition*)definition;
 
 - (void)injectProperty:(NSString*)propertyName withReference:(NSString*)reference;
 

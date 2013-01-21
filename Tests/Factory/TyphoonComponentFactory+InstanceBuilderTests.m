@@ -14,7 +14,7 @@
 #import "Typhoon.h"
 #import "Knight.h"
 #import "CampaignQuest.h"
-#import "TyphoonComponentInitializer.h"
+#import "TyphoonInitializer.h"
 
 
 @interface ComponentDefinition_InstanceBuilderTests : SenTestCase
@@ -35,13 +35,13 @@
 
 - (void)test_injects_required_initializer_dependencies
 {
-    TyphoonComponentDefinition* knightDefinition = [[TyphoonComponentDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    TyphoonComponentInitializer* knightInitializer = [[TyphoonComponentInitializer alloc] initWithSelector:@selector(initWithQuest:)];
+    TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+    TyphoonInitializer* knightInitializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithQuest:)];
     [knightInitializer injectParameterNamed:@"quest" withReference:@"quest"];
     [knightDefinition setInitializer:knightInitializer];
     [_componentFactory register:knightDefinition];
 
-    TyphoonComponentDefinition* questDefinition = [[TyphoonComponentDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
+    TyphoonDefinition* questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
     [_componentFactory register:questDefinition];
 
     Knight* knight = [_componentFactory buildInstanceWithDefinition:knightDefinition];
@@ -52,9 +52,9 @@
 
 - (void)test_injects_required_initializer_dependencies_with_factory_method
 {
-    TyphoonComponentDefinition* urlDefinition = [[TyphoonComponentDefinition alloc] initWithClass:[NSURL class] key:@"url"];
-    TyphoonComponentInitializer
-            * initializer = [[TyphoonComponentInitializer alloc] initWithSelector:@selector(URLWithString:) isClassMethod:YES];
+    TyphoonDefinition* urlDefinition = [[TyphoonDefinition alloc] initWithClass:[NSURL class] key:@"url"];
+    TyphoonInitializer
+            * initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(URLWithString:) isClassMethod:YES];
     [initializer injectParameterAt:0 withValueAsText:@"http://www.appsquick.ly" requiredTypeOrNil:[NSString class]];
     [urlDefinition setInitializer:initializer];
     [_componentFactory register:urlDefinition];
@@ -69,11 +69,11 @@
 
 - (void)test_injects_required_property_dependencies
 {
-    TyphoonComponentDefinition* knightDefinition = [[TyphoonComponentDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+    TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     [knightDefinition injectProperty:@"quest" withReference:@"quest"];
     [_componentFactory register:knightDefinition];
 
-    TyphoonComponentDefinition* questDefinition = [[TyphoonComponentDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
+    TyphoonDefinition* questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
     [_componentFactory register:questDefinition];
 
     Knight* knight = [_componentFactory buildInstanceWithDefinition:knightDefinition];
@@ -84,11 +84,11 @@
 
 - (void)test_raises_exception_if_property_setter_does_not_exist
 {
-    TyphoonComponentDefinition* knightDefinition = [[TyphoonComponentDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+    TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     [knightDefinition injectProperty:@"propertyThatDoesNotExist" withReference:@"quest"];
     [_componentFactory register:knightDefinition];
 
-    TyphoonComponentDefinition* questDefinition = [[TyphoonComponentDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
+    TyphoonDefinition* questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
     [_componentFactory register:questDefinition];
 
     @try
@@ -106,7 +106,7 @@
 
 - (void)test_injects_property_value_as_long
 {
-    TyphoonComponentDefinition* knightDefinition = [[TyphoonComponentDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+    TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     [knightDefinition injectProperty:@"damselsRescued" withValueAsText:@"12"];
     [_componentFactory register:knightDefinition];
 
@@ -116,9 +116,9 @@
 
 - (void)test_injects_initializer_value_as_long
 {
-    TyphoonComponentDefinition* knightDefinition = [[TyphoonComponentDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    TyphoonComponentInitializer
-            * initializer = [[TyphoonComponentInitializer alloc] initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethod:NO];
+    TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+    TyphoonInitializer
+            * initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethod:NO];
     [initializer injectParameterNamed:@"damselsRescued" withValueAsText:@"12" requiredTypeOrNil:nil];
     [knightDefinition setInitializer:initializer];
 
@@ -135,7 +135,7 @@
 {
     @try
     {
-        TyphoonComponentDefinition* knightDefinition = [[TyphoonComponentDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+        TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
         [knightDefinition injectProperty:@"propertyDoesNotExist" withReference:@"quest"];
         [_componentFactory register:knightDefinition];
 
@@ -155,11 +155,11 @@
 {
     @try
     {
-        TyphoonComponentDefinition* knightDefinition = [[TyphoonComponentDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+        TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
         [knightDefinition injectProperty:@"readOnlyQuest" withReference:@"quest"];
         [_componentFactory register:knightDefinition];
 
-        TyphoonComponentDefinition* questDefinition = [[TyphoonComponentDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
+        TyphoonDefinition* questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
         [_componentFactory register:questDefinition];
 
         Knight* knight = [_componentFactory componentForKey:@"knight"];

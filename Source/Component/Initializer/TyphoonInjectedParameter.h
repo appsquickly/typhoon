@@ -12,7 +12,7 @@
 
 
 #import <Foundation/Foundation.h>
-@class TyphoonComponentInitializer;
+@class TyphoonInitializer;
 
 typedef enum
 {
@@ -26,6 +26,6 @@ typedef enum
 
 - (TyphoonParameterInjectionType)type;
 
-- (void)setInitializer:(TyphoonComponentInitializer*)initializer;
+- (void)setInitializer:(TyphoonInitializer*)initializer;
 
 @end

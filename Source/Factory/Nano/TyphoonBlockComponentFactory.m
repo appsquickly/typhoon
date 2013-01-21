@@ -15,7 +15,7 @@
 #import <objc/message.h>
 #import "TyphoonBlockComponentFactory.h"
 #import "TyphoonAssembly.h"
-#import "TyphoonComponentDefinition.h"
+#import "TyphoonDefinition.h"
 #import "TyphoonJRSwizzle.h"
 
 static NSMutableArray* swizzleRegistry;
@@ -64,7 +64,7 @@ static NSMutableArray* swizzleRegistry;
     {
         [self applyBeforeAdviceToAssemblyMethods:assembly];
         NSArray* definitions = [self populateCache:assembly];
-        for (TyphoonComponentDefinition* definition in definitions)
+        for (TyphoonDefinition* definition in definitions)
         {
             [self register:definition];
         }

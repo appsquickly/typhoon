@@ -11,14 +11,14 @@
 
 
 
-#import "TyphoonComponentInitializer.h"
+#import "TyphoonInitializer.h"
 #import "TyphoonParameterInjectedByReference.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
 #import "TyphoonParameterInjectedByValue.h"
-#import "TyphoonComponentDefinition.h"
+#import "TyphoonDefinition.h"
 
 
-@implementation TyphoonComponentInitializer
+@implementation TyphoonInitializer
 
 
 /* ============================================================ Initializers ============================================================ */
@@ -47,7 +47,7 @@
 
 
 /* ========================================================== Interface Methods ========================================================= */
-- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonComponentDefinition*)definition
+- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition
 {
     [self injectParameterNamed:name withReference:definition.key];
 }
@@ -57,7 +57,7 @@
     [self injectParameterAtIndex:[self indexOfParameter:name] withReference:reference];
 }
 
-- (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonComponentDefinition*)definition
+- (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonDefinition*)definition
 {
     [self injectParameterAtIndex:index1 withReference:definition.key];
 }
@@ -116,7 +116,7 @@
     return invocation;
 }
 
-- (void)setComponentDefinition:(TyphoonComponentDefinition*)definition
+- (void)setComponentDefinition:(TyphoonDefinition*)definition
 {
     _definition = definition;
     [self resolveIsClassMethod];

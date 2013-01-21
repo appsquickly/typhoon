@@ -36,7 +36,7 @@
 
 - (void)test_allows_initialization_with_class_and_key_parameters
 {
-    TyphoonComponentDefinition* definition = [[TyphoonComponentDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+    TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
 
     assertThat(definition.key, equalTo(@"knight"));
     assertThat(definition.type, equalTo([Knight class]));
@@ -46,7 +46,7 @@
 {
     @try
     {
-        TyphoonComponentDefinition* definition = [[TyphoonComponentDefinition alloc] init];
+        TyphoonDefinition* definition = [[TyphoonDefinition alloc] init];
         NSLog(@"Def: %@", definition);
         STFail(@"Should've thrown exception");
     }
@@ -57,7 +57,7 @@
 
     @try
     {
-        TyphoonComponentDefinition* definition = [[TyphoonComponentDefinition alloc] initWithClass:nil key:nil];
+        TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:nil key:nil];
         NSLog(@"Def: %@", definition);
         STFail(@"Should've thrown exception");
     }

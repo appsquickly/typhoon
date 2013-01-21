@@ -13,10 +13,10 @@
 
 #import <objc/runtime.h>
 #import "MiddleAgesAssembly.h"
-#import "TyphoonComponentDefinition.h"
-#import "TyphoonComponentDefinition+BlockBuilders.h"
+#import "TyphoonDefinition.h"
+#import "TyphoonDefinition+BlockBuilders.h"
 #import "Knight.h"
-#import "TyphoonComponentInitializer.h"
+#import "TyphoonInitializer.h"
 #import "CampaignQuest.h"
 
 
@@ -24,7 +24,7 @@
 
 - (id)basicKnight
 {
-    return [TyphoonComponentDefinition withClass:[Knight class] initialization:^(TyphoonComponentInitializer* initializer)
+    return [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer* initializer)
     {
         initializer.selector = @selector(initWithQuest:);
         [initializer injectParameterAtIndex:0 withDefinition:[self defaultQuest]];
@@ -33,7 +33,7 @@
 
 - (id)defaultQuest
 {
-    return [TyphoonComponentDefinition withClass:[CampaignQuest class]];
+    return [TyphoonDefinition withClass:[CampaignQuest class]];
 }
 
 @end

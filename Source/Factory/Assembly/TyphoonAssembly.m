@@ -15,10 +15,10 @@
 #import <objc/message.h>
 #import "TyphoonAssembly.h"
 #import "TyphoonJRSwizzle.h"
-#import "TyphoonComponentDefinition.h"
+#import "TyphoonDefinition.h"
 #import "Knight.h"
-#import "TyphoonComponentDefinition+BlockBuilders.h"
-#import "TyphoonComponentInitializer.h"
+#import "TyphoonDefinition+BlockBuilders.h"
+#import "TyphoonInitializer.h"
 #import "CampaignQuest.h"
 
 
@@ -58,9 +58,9 @@
                     [NSException raise:NSInternalInconsistencyException format:[error description]];
                 }
                 cached = objc_msgSend(me, sel);
-                if (cached && [cached isKindOfClass:[TyphoonComponentDefinition class]])
+                if (cached && [cached isKindOfClass:[TyphoonDefinition class]])
                 {
-                    TyphoonComponentDefinition* definition = (TyphoonComponentDefinition*) cached;
+                    TyphoonDefinition* definition = (TyphoonDefinition*) cached;
                     if ([definition.key length] == 0)
                     {
                         definition.key = key;

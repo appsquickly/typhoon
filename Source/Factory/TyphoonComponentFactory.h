@@ -13,7 +13,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryMutator.h"
-@class TyphoonComponentDefinition;
+@class TyphoonDefinition;
 
 /**
 * This is the base class for for all spring component factories. Although, it could be used as-is, the intention is to use a
@@ -47,7 +47,7 @@
 /**
 * Registers a component into the factory. Components can be declared in any order, the container will work out how to resolve them.
 */
-- (void) register:(TyphoonComponentDefinition*)definition;
+- (void) register:(TyphoonDefinition*)definition;
 
 /**
 * Returns an an instance of the component matching the supplied class or protocol. For example:

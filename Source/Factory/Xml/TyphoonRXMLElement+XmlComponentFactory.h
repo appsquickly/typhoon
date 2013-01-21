@@ -14,18 +14,18 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonRXMLElement.h"
 
-@class TyphoonComponentDefinition;
+@class TyphoonDefinition;
 @protocol TyphoonInjectedProperty;
-@class TyphoonComponentInitializer;
+@class TyphoonInitializer;
 @protocol TyphoonInjectedParameter;
 
 @interface TyphoonRXMLElement (XmlComponentFactory)
 
-- (TyphoonComponentDefinition*)asComponentDefinition;
+- (TyphoonDefinition*)asComponentDefinition;
 
 - (id<TyphoonInjectedProperty>)asInjectedProperty;
 
-- (TyphoonComponentInitializer*)asInitializer;
+- (TyphoonInitializer*)asInitializer;
 
 
 

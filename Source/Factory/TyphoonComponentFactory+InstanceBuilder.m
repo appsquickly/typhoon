@@ -14,9 +14,9 @@
 
 #import <objc/message.h>
 #import "TyphoonComponentFactory+InstanceBuilder.h"
-#import "TyphoonComponentDefinition.h"
+#import "TyphoonDefinition.h"
 #import "TyphoonParameterInjectedByReference.h"
-#import "TyphoonComponentInitializer.h"
+#import "TyphoonInitializer.h"
 #import "TyphoonPropertyInjectedByReference.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphonTypeConverter.h"
@@ -30,7 +30,7 @@
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
 /* ========================================================== Interface Methods ========================================================= */
-- (id)buildInstanceWithDefinition:(TyphoonComponentDefinition*)definition
+- (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
     id <TyphoonIntrospectiveNSObject> instance;
 
@@ -62,7 +62,7 @@
 
 
 /* ============================================================ Private Methods ========================================================= */
-- (id)invokeInitializerOn:(id)instanceOrClass withDefinition:(TyphoonComponentDefinition*)definition
+- (id)invokeInitializerOn:(id)instanceOrClass withDefinition:(TyphoonDefinition*)definition
 {
     NSInvocation* invocation = [definition.initializer asInvocationFor:instanceOrClass];
 
@@ -103,7 +103,7 @@
 /* ====================================================================================================================================== */
 #pragma mark - Property Injection
 
-- (void)injectPropertyDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonComponentDefinition*)definition
+- (void)injectPropertyDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
 {
     [self doBeforePropertyInjectionOn:instance withDefinition:definition];
 
@@ -122,7 +122,7 @@
     [self doAfterPropertyInjectionOn:instance withDefinition:definition];
 }
 
-- (void)doBeforePropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonComponentDefinition*)definition
+- (void)doBeforePropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
 {
     if ([instance conformsToProtocol:@protocol(TyphoonPropertyInjectionDelegate)])
     {
@@ -165,7 +165,7 @@
     }
 }
 
-- (void)doAfterPropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonComponentDefinition*)definition
+- (void)doAfterPropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
 {
     if ([instance conformsToProtocol:@protocol(TyphoonPropertyInjectionDelegate)])
     {

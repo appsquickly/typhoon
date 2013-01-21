@@ -36,7 +36,7 @@
 - (void)test_mutates_property_values
 {
     TyphoonComponentFactory* factory = [[TyphoonComponentFactory alloc] init];
-    TyphoonComponentDefinition* knightDefinition = [[TyphoonComponentDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+    TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     [knightDefinition injectProperty:@"damselsRescued" withValueAsText:@"${damsels.rescued}"];
     [factory register:knightDefinition];
 

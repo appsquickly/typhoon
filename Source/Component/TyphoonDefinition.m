@@ -10,14 +10,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import "TyphoonComponentInitializer.h"
-#import "TyphoonComponentDefinition.h"
+#import "TyphoonInitializer.h"
+#import "TyphoonDefinition.h"
 #import "TyphoonPropertyInjectedByType.h"
 #import "TyphoonPropertyInjectedByReference.h"
 #import "TyphoonPropertyInjectedByValue.h"
 
 
-@implementation TyphoonComponentDefinition
+@implementation TyphoonDefinition
 
 
 /* ============================================================ Initializers ============================================================ */
@@ -52,7 +52,7 @@
     [_injectedProperties addObject:[[TyphoonPropertyInjectedByType alloc] initWithName:propertyName]];
 }
 
-- (void)injectProperty:(NSString*)propertyName withDefinition:(TyphoonComponentDefinition*)definition
+- (void)injectProperty:(NSString*)propertyName withDefinition:(TyphoonDefinition*)definition
 {
     [self injectProperty:propertyName withReference:definition.key];
 }
@@ -90,7 +90,7 @@
     return [_injectedProperties copy];
 }
 
-- (void)setInitializer:(TyphoonComponentInitializer*)initializer
+- (void)setInitializer:(TyphoonInitializer*)initializer
 {
     _initializer = initializer;
     [_initializer setComponentDefinition:self];

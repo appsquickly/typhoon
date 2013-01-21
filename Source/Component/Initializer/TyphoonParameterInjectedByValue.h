@@ -20,7 +20,7 @@
 
 @interface TyphoonParameterInjectedByValue : NSObject <TyphoonInjectedParameter>
 {
-    __unsafe_unretained TyphoonComponentInitializer* _initializer;
+    __unsafe_unretained TyphoonInitializer* _initializer;
 }
 
 @property(nonatomic, readonly) NSUInteger index;

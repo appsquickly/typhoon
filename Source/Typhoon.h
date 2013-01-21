@@ -9,9 +9,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonComponentDefinition.h"
-#import "TyphoonComponentDefinition+BlockBuilders.h"
-#import "TyphoonComponentInitializer.h"
+#import "TyphoonDefinition.h"
+#import "TyphoonDefinition+BlockBuilders.h"
+#import "TyphoonInitializer.h"
 #import "TyphoonPropertyPlaceholderConfigurer.h"
 #import "TyphoonResource.h"
 #import "TyphoonBundleResource.h"

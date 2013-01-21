@@ -16,6 +16,6 @@
 
 @interface TyphoonComponentFactory (InstanceBuilder)
 
-- (id)buildInstanceWithDefinition:(TyphoonComponentDefinition*)definition;
+- (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition;
 
 @end

@@ -12,11 +12,11 @@
 
 #import <objc/runtime.h>
 #import "TyphoonComponentFactory.h"
-#import "TyphoonComponentDefinition.h"
+#import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 
 
-@interface TyphoonComponentDefinition (SpringComponentFactory)
+@interface TyphoonDefinition (TyphoonComponentFactory)
 
 @property(nonatomic, strong) NSString* key;
 
@@ -50,7 +50,7 @@ static TyphoonComponentFactory* defaultFactory;
 
 
 /* ========================================================== Interface Methods ========================================================= */
-- (void)register:(TyphoonComponentDefinition*)definition
+- (void)register:(TyphoonDefinition*)definition
 {
     NSLog(@"Registering: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
     if ([definition.key length] == 0)
@@ -85,7 +85,7 @@ static TyphoonComponentFactory* defaultFactory;
     NSMutableArray* results = [[NSMutableArray alloc] init];
     BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
 
-    for (TyphoonComponentDefinition* definition in _registry)
+    for (TyphoonDefinition* definition in _registry)
     {
         if (isClass)
         {
@@ -113,7 +113,7 @@ static TyphoonComponentFactory* defaultFactory;
 {
     [self performMutations];
     [self assertNotCircularDependency:key];
-    TyphoonComponentDefinition* definition = [self definitionForKey:key];
+    TyphoonDefinition* definition = [self definitionForKey:key];
     if (!definition)
     {
         [NSException raise:NSInvalidArgumentException format:@"No component matching id '%@'.", key];
@@ -155,7 +155,7 @@ static TyphoonComponentFactory* defaultFactory;
 
 
 /* ============================================================ Private Methods ========================================================= */
-- (id)objectForDefinition:(TyphoonComponentDefinition*)definition
+- (id)objectForDefinition:(TyphoonDefinition*)definition
 {
     if (definition.lifecycle == TyphoonComponentLifeCycleSingleton)
     {
@@ -167,7 +167,7 @@ static TyphoonComponentFactory* defaultFactory;
     }
 }
 
-- (id)singletonForKey:(TyphoonComponentDefinition*)definition
+- (id)singletonForKey:(TyphoonDefinition*)definition
 {
     @synchronized (self)
     {
@@ -181,9 +181,9 @@ static TyphoonComponentFactory* defaultFactory;
     }
 }
 
-- (TyphoonComponentDefinition*)definitionForKey:(NSString*)key
+- (TyphoonDefinition*)definitionForKey:(NSString*)key
 {
-    for (TyphoonComponentDefinition* definition in _registry)
+    for (TyphoonDefinition* definition in _registry)
     {
         if ([definition.key isEqualToString:key])
         {

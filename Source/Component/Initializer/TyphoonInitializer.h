@@ -14,7 +14,7 @@
 
 
 #import <Foundation/Foundation.h>
-@class TyphoonComponentDefinition;
+@class TyphoonDefinition;
 
 typedef enum
 {
@@ -23,11 +23,11 @@ typedef enum
     TyphoonComponentInitializerIsClassMethodNo
 } TyphoonComponentInitializerIsClassMethod;
 
-@interface TyphoonComponentInitializer : NSObject
+@interface TyphoonInitializer : NSObject
 {
     NSMutableArray* _injectedParameters;
     NSArray* _parameterNames;
-    __unsafe_unretained TyphoonComponentDefinition* _definition;
+    __unsafe_unretained TyphoonDefinition* _definition;
     TyphoonComponentInitializerIsClassMethod _isClassMethodStrategy;
 }
 
@@ -38,11 +38,11 @@ typedef enum
 
 - (id)initWithSelector:(SEL)initializer isClassMethod:(TyphoonComponentInitializerIsClassMethod)isClassMethod;
 
-- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonComponentDefinition*)definition;
+- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition;
 
 - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference;
 
-- (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonComponentDefinition*)definition;
+- (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonDefinition*)definition;
 
 - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference;
 
@@ -54,6 +54,6 @@ typedef enum
 
 - (NSInvocation*)asInvocationFor:(id)classOrInstance;
 
-- (void)setComponentDefinition:(TyphoonComponentDefinition*)definition;
+- (void)setComponentDefinition:(TyphoonDefinition*)definition;
 
 @end

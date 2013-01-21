@@ -36,7 +36,7 @@
     {
         if ([[child tag] isEqualToString:@"component"])
         {
-            TyphoonComponentDefinition* definition = [child asComponentDefinition];
+            TyphoonDefinition* definition = [child asComponentDefinition];
             NSLog(@"Here's the component definition: %@", definition);
             [componentDefinitions addObject:definition];
         }

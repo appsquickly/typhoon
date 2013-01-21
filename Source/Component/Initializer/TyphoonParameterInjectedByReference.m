@@ -12,7 +12,7 @@
 
 
 #import "TyphoonParameterInjectedByReference.h"
-#import "TyphoonComponentInitializer.h"
+#import "TyphoonInitializer.h"
 
 
 @implementation TyphoonParameterInjectedByReference
@@ -35,7 +35,7 @@
     return TyphoonParameterInjectedByReferenceType;
 }
 
-- (void)setInitializer:(TyphoonComponentInitializer*)initializer
+- (void)setInitializer:(TyphoonInitializer*)initializer
 {
     //Do nothing.
 }

@@ -12,16 +12,16 @@
 
 
 #import "TyphoonRXMLElement+XmlComponentFactory.h"
-#import "TyphoonComponentDefinition.h"
+#import "TyphoonDefinition.h"
 #import "TyphoonInjectedProperty.h"
 #import "TyphoonPropertyInjectedByReference.h"
 #import "TyphoonPropertyInjectedByValue.h"
 #import "TyphoonPropertyInjectedByType.h"
-#import "TyphoonComponentInitializer.h"
+#import "TyphoonInitializer.h"
 
 @implementation TyphoonRXMLElement (XmlComponentFactory)
 
-- (TyphoonComponentDefinition*)asComponentDefinition
+- (TyphoonDefinition*)asComponentDefinition
 {
     [self assertTagName:@"component"];
     Class clazz = NSClassFromString([self attribute:@"class"]);
@@ -31,7 +31,7 @@
     }
     NSString* key = [self attribute:@"key"];
     NSString* factory = [self attributeOrNilIfEmpty:@"factory-component"];
-    TyphoonComponentDefinition* definition = [[TyphoonComponentDefinition alloc] initWithClass:clazz key:key factoryComponent:factory];
+    TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key factoryComponent:factory];
 
     [definition setBeforePropertyInjection:NSSelectorFromString([self attribute:@"before-property-injection"])];
     [definition setAfterPropertyInjection:NSSelectorFromString([self attribute:@"after-property-injection"])];
@@ -74,12 +74,12 @@
     return injectedProperty;
 }
 
-- (TyphoonComponentInitializer*)asInitializer
+- (TyphoonInitializer*)asInitializer
 {
     [self assertTagName:@"initializer"];
     SEL selector = NSSelectorFromString([self attribute:@"selector"]);
     TyphoonComponentInitializerIsClassMethod isClassMethod = [self handleIsClassMethod:[self attribute:@"is-class-method"]];
-    TyphoonComponentInitializer* initializer = [[TyphoonComponentInitializer alloc] initWithSelector:selector isClassMethod:isClassMethod];
+    TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:selector isClassMethod:isClassMethod];
 
     [self iterate:@"*" usingBlock:^(TyphoonRXMLElement* child)
     {
@@ -108,7 +108,7 @@
     }
 }
 
-- (void)setScopeForDefinition:(TyphoonComponentDefinition*)definition withStringValue:(NSString*)scope;
+- (void)setScopeForDefinition:(TyphoonDefinition*)definition withStringValue:(NSString*)scope;
 {
 
     if ([scope isEqualToString:@"singleton"])
@@ -127,7 +127,7 @@
 
 
 
-- (void)parseComponentDefinitionChildren:(TyphoonComponentDefinition*)componentDefinition
+- (void)parseComponentDefinitionChildren:(TyphoonDefinition*)componentDefinition
 {
     [self iterate:@"*" usingBlock:^(TyphoonRXMLElement* child)
     {
@@ -151,7 +151,7 @@
     }];
 }
 
-- (void)setArgumentOnInitializer:(TyphoonComponentInitializer*)initializer withChildTag:(TyphoonRXMLElement*)child
+- (void)setArgumentOnInitializer:(TyphoonInitializer*)initializer withChildTag:(TyphoonRXMLElement*)child
 {
     NSString* name = [child attribute:@"parameterName"];
     NSString* reference = [child attribute:@"ref"];

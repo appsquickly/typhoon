@@ -12,7 +12,7 @@
 
 #import "TyphoonPropertyPlaceholderConfigurer.h"
 #import "TyphoonResource.h"
-#import "TyphoonComponentDefinition.h"
+#import "TyphoonDefinition.h"
 #import "TyphoonPropertyInjectedByValue.h"
 
 @interface TyphoonPropertyInjectedByValue (PropertyPlaceHolderConfigurer)
@@ -83,7 +83,7 @@
 /* =========================================================== Protocol Methods ========================================================= */
 - (void)mutateComponentDefinitionsIfRequired:(NSArray*)componentDefinitions
 {
-    for (TyphoonComponentDefinition* definition in componentDefinitions)
+    for (TyphoonDefinition* definition in componentDefinitions)
     {
         for (TyphoonPropertyInjectedByValue* property in [definition propertiesInjectedByValue])
         {

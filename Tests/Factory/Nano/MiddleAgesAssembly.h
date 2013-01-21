@@ -14,7 +14,7 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonAssembly.h"
 
-@class TyphoonComponentDefinition;
+@class TyphoonDefinition;
 
 
 @interface MiddleAgesAssembly : TyphoonAssembly

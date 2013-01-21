@@ -12,7 +12,7 @@
 
 #import <objc/runtime.h>
 #import "TyphoonParameterInjectedByValue.h"
-#import "TyphoonComponentInitializer.h"
+#import "TyphoonInitializer.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonIntrospectionUtils.h"
 
@@ -67,7 +67,7 @@
     return TyphoonParameterInjectedByValueType;
 }
 
-- (void)setInitializer:(TyphoonComponentInitializer*)initializer
+- (void)setInitializer:(TyphoonInitializer*)initializer
 {
     _initializer = initializer;
 }

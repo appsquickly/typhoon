@@ -39,14 +39,13 @@ static NSString* const DEFAULT_QUEST = @"quest";
 - (void)test_objectForKey_returns_singleton_with_initializer_dependencies
 {
 
-    [_componentFactory register:[TyphoonComponentDefinition withClass:[Knight class]
-            initialization:^(TyphoonComponentInitializer* initializer)
-            {
-                initializer.selector = @selector(initWithQuest:);
-                [initializer injectParameterAtIndex:0 withReference:DEFAULT_QUEST];
-            }]];
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer* initializer)
+    {
+        initializer.selector = @selector(initWithQuest:);
+        [initializer injectParameterAtIndex:0 withReference:DEFAULT_QUEST];
+    }]];
 
-    [_componentFactory register:[TyphoonComponentDefinition withClass:[CampaignQuest class] key:DEFAULT_QUEST]];
+    [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] key:DEFAULT_QUEST]];
 
     Knight* knight = [_componentFactory componentForType:[Knight class]];
 
@@ -59,8 +58,8 @@ static NSString* const DEFAULT_QUEST = @"quest";
 
 - (void)test_objectForKey_raises_exception_if_reference_does_not_exist
 {
-    [_componentFactory register:[TyphoonComponentDefinition withClass:[Knight class] key:@"knight"
-            initialization:^(TyphoonComponentInitializer* initializer)
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight"
+            initialization:^(TyphoonInitializer* initializer)
             {
                 initializer.selector = @selector(initWithQuest:);
                 [initializer injectParameterAtIndex:0 withReference:DEFAULT_QUEST];
@@ -84,15 +83,15 @@ static NSString* const DEFAULT_QUEST = @"quest";
 - (void)test_allObjectsForType
 {
 
-    [_componentFactory register:[TyphoonComponentDefinition withClass:[Knight class] key:@"knight"
-            initialization:^(TyphoonComponentInitializer* initializer)
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight"
+            initialization:^(TyphoonInitializer* initializer)
             {
                 [initializer setSelector:@selector(initWithQuest:)];
                 [initializer injectParameterNamed:@"quest" withReference:@"quest"];
             }]];
 
-    [_componentFactory register:[TyphoonComponentDefinition withClass:[CavalryMan class] key:@"cavalryMan"]];
-    [_componentFactory register:[TyphoonComponentDefinition withClass:[CampaignQuest class] key:@"quest"]];
+    [_componentFactory register:[TyphoonDefinition withClass:[CavalryMan class] key:@"cavalryMan"]];
+    [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
 
     assertThat([_componentFactory allComponentsForType:[Knight class]], hasCountOf(2));
     assertThat([_componentFactory allComponentsForType:[CampaignQuest class]], hasCountOf(1));
@@ -102,15 +101,15 @@ static NSString* const DEFAULT_QUEST = @"quest";
 - (void)test_objectForType
 {
 
-    [_componentFactory register:[TyphoonComponentDefinition withClass:[Knight class] key:@"knight"
-            initialization:^(TyphoonComponentInitializer* initializer)
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight"
+            initialization:^(TyphoonInitializer* initializer)
             {
                 [initializer setSelector:@selector(initWithQuest:)];
                 [initializer injectParameterNamed:@"quest" withReference:@"quest"];
             }]];
 
-    [_componentFactory register:[TyphoonComponentDefinition withClass:[CavalryMan class] key:@"cavalryMan"]];
-    [_componentFactory register:[TyphoonComponentDefinition withClass:[CampaignQuest class] key:@"quest"]];
+    [_componentFactory register:[TyphoonDefinition withClass:[CavalryMan class] key:@"cavalryMan"]];
+    [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
 
     assertThat([_componentFactory componentForType:[CavalryMan class]], notNilValue());
 
@@ -140,14 +139,13 @@ static NSString* const DEFAULT_QUEST = @"quest";
 - (void)test_objectForKey_returns_singleton_with_property_dependencies_resolved_by_type
 {
 
-    [_componentFactory register:[TyphoonComponentDefinition withClass:[Knight class] key:@"knight"
-            properties:^(TyphoonComponentDefinition* definition)
-            {
-                [definition injectProperty:@"quest"];
-                [definition setLifecycle:TyphoonComponentLifeCyclePrototype];
-            }]];
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight" properties:^(TyphoonDefinition* definition)
+    {
+        [definition injectProperty:@"quest"];
+        [definition setLifecycle:TyphoonComponentLifeCyclePrototype];
+    }]];
 
-    [_componentFactory register:[TyphoonComponentDefinition withClass:[CampaignQuest class] key:@"quest"]];
+    [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
 
     Knight* knight = [_componentFactory componentForKey:@"knight"];
 
