@@ -25,7 +25,6 @@
 @implementation TyphoonAssembly
 
 
-
 /* =========================================================== Class Methods ============================================================ */
 + (TyphoonAssembly*)assembly
 {
@@ -44,8 +43,7 @@
     {
         IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me, BOOL selected)
         {
-            NSString* key =
-                    [NSStringFromSelector(sel) stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@""];
+            NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@""];
 
             NSLog(@"Looking up cached value for: %@", key);
             id cached = [[me cachedSelectors] objectForKey:key];
