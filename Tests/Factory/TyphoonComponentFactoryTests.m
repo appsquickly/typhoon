@@ -141,7 +141,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
 
     [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight" properties:^(TyphoonDefinition* definition)
     {
-        [definition injectProperty:@"quest"];
+        [definition injectProperty:@selector(quest)];
         [definition setLifecycle:TyphoonComponentLifeCyclePrototype];
     }]];
 

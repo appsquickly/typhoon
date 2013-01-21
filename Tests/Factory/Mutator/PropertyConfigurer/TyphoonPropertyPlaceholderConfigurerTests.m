@@ -37,7 +37,7 @@
 {
     TyphoonComponentFactory* factory = [[TyphoonComponentFactory alloc] init];
     TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    [knightDefinition injectProperty:@"damselsRescued" withValueAsText:@"${damsels.rescued}"];
+    [knightDefinition injectProperty:@selector(damselsRescued) withValueAsText:@"${damsels.rescued}"];
     [factory register:knightDefinition];
 
     [_configurer mutateComponentDefinitionsIfRequired:[factory registry]];

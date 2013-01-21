@@ -43,11 +43,11 @@ typedef enum
 
 - (id)initWithClass:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent;
 
-- (void)injectProperty:(NSString*)propertyName;
+- (void)injectProperty:(SEL)withSelector;
 
-- (void)injectProperty:(NSString*)propertyName withReference:(NSString*)reference;
+- (void)injectProperty:(SEL)withSelector withReference:(NSString*)reference;
 
-- (void)injectProperty:(NSString*)propertyName withValueAsText:(NSString*)textValue;
+- (void)injectProperty:(SEL)withSelector withValueAsText:(NSString*)textValue;
 
 - (void)addInjectedProperty:(id <TyphoonInjectedProperty>)property;
 

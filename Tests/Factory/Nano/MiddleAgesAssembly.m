@@ -27,6 +27,9 @@
     {
         initializer.selector = @selector(initWithQuest:);
         [initializer injectWithDefinition:[self defaultQuest]];
+    } properties:^(TyphoonDefinition* definition)
+    {
+        [definition setLifecycle:TyphoonComponentLifeCyclePrototype];
     }];
 }
 
@@ -34,8 +37,8 @@
 {
     return [TyphoonDefinition withClass:[CavalryMan class] properties:^(TyphoonDefinition* definition)
     {
-        [definition injectProperty:@"quest" withDefinition:[self defaultQuest]];
-        [definition injectProperty:@"damselsRescued" withValueAsText:@"12"];
+        [definition injectProperty:@selector(quest) withDefinition:[self defaultQuest]];
+        [definition injectProperty:@selector(damselsRescued) withValueAsText:@"12"];
     }];
 }
 

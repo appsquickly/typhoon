@@ -47,37 +47,25 @@
 
 
 /* ========================================================== Interface Methods ========================================================= */
-- (void)injectProperty:(NSString*)propertyName
+- (void)injectProperty:(SEL)selector
 {
-    [_injectedProperties addObject:[[TyphoonPropertyInjectedByType alloc] initWithName:propertyName]];
+    [_injectedProperties addObject:[[TyphoonPropertyInjectedByType alloc] initWithName:NSStringFromSelector(selector)]];
 }
 
-- (void)injectProperty:(NSString*)propertyName withReference:(NSString*)reference
+- (void)injectProperty:(SEL)selector withReference:(NSString*)reference
 {
-    [_injectedProperties addObject:[[TyphoonPropertyInjectedByReference alloc] initWithName:propertyName reference:reference]];
+    [_injectedProperties addObject:[[TyphoonPropertyInjectedByReference alloc]
+            initWithName:NSStringFromSelector(selector) reference:reference]];
 }
 
-- (void)injectProperty:(NSString*)propertyName withValueAsText:(NSString*)textValue
+- (void)injectProperty:(SEL)selector withValueAsText:(NSString*)textValue
 {
-    [_injectedProperties addObject:[[TyphoonPropertyInjectedByValue alloc] initWithName:propertyName value:textValue]];
+    [_injectedProperties addObject:[[TyphoonPropertyInjectedByValue alloc] initWithName:NSStringFromSelector(selector) value:textValue]];
 }
 
 - (void)addInjectedProperty:(id <TyphoonInjectedProperty>)property
 {
-    if ([property isKindOfClass:[TyphoonPropertyInjectedByReference class]])
-    {
-        TyphoonPropertyInjectedByReference* referenceProperty = (TyphoonPropertyInjectedByReference*) property;
-        [self injectProperty:referenceProperty.name withReference:referenceProperty.reference];
-    }
-    else if ([property isKindOfClass:[TyphoonPropertyInjectedByType class]])
-    {
-        [self injectProperty:property.name];
-    }
-    else if ([property isKindOfClass:[TyphoonPropertyInjectedByValue class]])
-    {
-        TyphoonPropertyInjectedByValue* valueProperty = (TyphoonPropertyInjectedByValue*) property;
-        [self injectProperty:valueProperty.name withValueAsText:valueProperty.textValue];
-    }
+    [_injectedProperties addObject:property];
 }
 
 - (NSSet*)injectedProperties

@@ -16,6 +16,6 @@
 
 @interface TyphoonDefinition (BlockAssembly)
 
-- (void)injectProperty:(NSString*)propertyName withDefinition:(TyphoonDefinition*)definition;
+- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition;
 
 @end
