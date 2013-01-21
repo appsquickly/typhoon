@@ -19,8 +19,6 @@
     --make.dirs,
     --clean,
     --make.dirs,
-    --build.ios.universal,
-    --build.osx,
     --unit.tests.build,
     --assemble.coverage.data,
     --coverage.report,
@@ -28,7 +26,7 @@
 
     <target name="clean" depends="--clean"/>
 
-    <target name="jenkins" depends="
+    <target name="bamboo" depends="
     build,
     --publish.site"/>
 
@@ -158,7 +156,7 @@
             #!/bin/sh
             cd ${basedir}
             cp -fr ${basedir}/schema ${reports.dir}
-            git remote set-url origin git@github.com:jasperblues/spring-objective-c.git
+            git remote set-url origin git@github.com:jasperblues/Typhoon.git
             git fetch origin gh-pages:gh-pages
             git fetch origin gh-pages
             git checkout gh-pages

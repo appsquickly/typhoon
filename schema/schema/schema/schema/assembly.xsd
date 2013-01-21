@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
-<xsd:schema xmlns="http://jasperblues.github.com/typhoon/schema/assembly"
+<xsd:schema xmlns="http://jasperblues.github.com/spring-objective-c/schema/assembly"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            targetNamespace="http://jasperblues.github.com/typhoon/schema/assembly">
+            targetNamespace="http://jasperblues.github.com/spring-objective-c/schema/assembly">
 
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
 
     <xsd:annotation>
         <xsd:documentation><![CDATA[
-	Typhoon Components Schema
+	Spring-Objective-C Components Schema, version 0.9
 	Authors: Jasper Blues (based on the Spring Java version by Juergen Hoeller et al).
 		]]></xsd:documentation>
     </xsd:annotation>
@@ -107,7 +107,7 @@
 	component properties. The method must have no arguments, but may throw any
 	exception.
 
-	This is an alternative to implementing TyphoonPropertyInjectionDelegate
+	This is an alternative to implementing Spring Objective-C's SpringPropertyInjectionDelegate
 	protocol.
 				]]></xsd:documentation>
             </xsd:annotation>
@@ -119,7 +119,7 @@
 	component properties. The method must have no arguments, but may throw any
 	exception.
 
-	This is an alternative to implementing TyphoonPropertyInjectionDelegate
+	This is an alternative to implementing Spring Objective-C's SpringPropertyInjectionDelegate
 	protocol.
 				]]></xsd:documentation>
             </xsd:annotation>
@@ -207,7 +207,7 @@
             <xsd:documentation><![CDATA[
 	Component definitions can have zero or more properties.
 	Property elements correspond to Objective-C setter methods exposed
-	by the bean classes. Typhoon supports primitives, references to other
+	by the bean classes. Spring Objective-C supports primitives, references to other
 	components in the same or related factories, as well as objects that will be
 	converted to the required type using a type converter registry.
 			]]></xsd:documentation>
