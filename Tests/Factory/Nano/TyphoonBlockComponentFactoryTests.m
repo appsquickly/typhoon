@@ -37,6 +37,30 @@
     NSLog(@"#################### Knight: %@", knight);
 }
 
+- (void)test_resolves_from_assembly2
+{
+    Knight* knight = [_factory componentForKey:@"basicKnight"];
+    assertThat(knight, notNilValue());
+    assertThat(knight.quest, notNilValue());
+    NSLog(@"#################### Knight: %@", knight);
+}
+
+- (void)test_resolves_from_assembly3
+{
+    Knight* knight = [_factory componentForKey:@"basicKnight"];
+    assertThat(knight, notNilValue());
+    assertThat(knight.quest, notNilValue());
+    NSLog(@"#################### Knight: %@", knight);
+}
+
+
+- (void)test_returns_component_with_assembly_selector
+{
+    Knight* knight = [(MiddleAgesAssembly*) _factory basicKnight];
+    assertThat(knight, notNilValue());
+    assertThat(knight.quest, notNilValue());
+    NSLog(@"#################### Knight: %@", knight);
+}
 
 
 @end

@@ -18,6 +18,8 @@
 #import "TyphoonComponentDefinition.h"
 #import "TyphoonJRSwizzle.h"
 
+static NSMutableArray* swizzleRegistry;
+
 @interface TyphoonAssembly (NanoFactoryFriend)
 
 + (BOOL)selectorReserved:(SEL)selector;
@@ -27,6 +29,27 @@
 @end
 
 @implementation TyphoonBlockComponentFactory
+
+/* =========================================================== Class Methods ============================================================ */
++ (BOOL)resolveInstanceMethod:(SEL)sel
+{
+    if ([super resolveInstanceMethod:sel] == NO)
+    {
+        IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me, BOOL selected)
+        {
+            return [me componentForKey:NSStringFromSelector(sel)];
+        }));
+        class_addMethod(self, sel, imp, "@");
+        return YES;
+    }
+}
+
++ (void)initialize
+{
+    [super initialize];
+    swizzleRegistry = [[NSMutableArray alloc] init];
+}
+
 
 /* ============================================================ Initializers ============================================================ */
 - (id)initWithAssembly:(TyphoonAssembly*)assembly;
@@ -74,26 +97,30 @@
 
 - (void)applyBeforeAdviceToAssemblyMethods:(TyphoonAssembly*)assembly
 {
-    int methodCount;
-    Method* methodList = class_copyMethodList([assembly class], &methodCount);
-    for (int i = 0; i < methodCount; i++)
+    if (![swizzleRegistry containsObject:[TyphoonAssembly class]])
     {
-        Method method = methodList[i];
-        int argumentCount = method_getNumberOfArguments(method);
-        if (argumentCount == 2)
+        [swizzleRegistry addObject:[TyphoonAssembly class]];
+        int methodCount;
+        Method* methodList = class_copyMethodList([assembly class], &methodCount);
+        for (int i = 0; i < methodCount; i++)
         {
-            SEL methodSelector = method_getName(method);
-            if ([TyphoonAssembly selectorReserved:methodSelector] == NO)
+            Method method = methodList[i];
+            int argumentCount = method_getNumberOfArguments(method);
+            if (argumentCount == 2)
             {
-                SEL swizzled =
-                        NSSelectorFromString([NSStringFromSelector(methodSelector) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
-                NSLog(@"Exchanging: %@ with: %@", NSStringFromSelector(methodSelector), NSStringFromSelector(swizzled));
-
-                NSError* error;
-                [[assembly class] typhoon_swizzleMethod:methodSelector withMethod:swizzled error:&error];
-                if (error)
+                SEL methodSelector = method_getName(method);
+                if ([TyphoonAssembly selectorReserved:methodSelector] == NO)
                 {
-                    [NSException raise:NSInternalInconsistencyException format:[error description]];
+                    SEL swizzled = NSSelectorFromString(
+                            [NSStringFromSelector(methodSelector) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
+                    NSLog(@"Exchanging: %@ with: %@", NSStringFromSelector(methodSelector), NSStringFromSelector(swizzled));
+
+                    NSError* error;
+                    [[assembly class] typhoon_swizzleMethod:methodSelector withMethod:swizzled error:&error];
+                    if (error)
+                    {
+                        [NSException raise:NSInternalInconsistencyException format:[error description]];
+                    }
                 }
             }
         }

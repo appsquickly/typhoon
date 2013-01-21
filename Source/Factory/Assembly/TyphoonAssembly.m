@@ -69,7 +69,7 @@
                     }
                     [[me cachedSelectors] setObject:definition forKey:key];
                 }
-                [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:&error];
+                [[self class] typhoon_swizzleMethod:NSSelectorFromString(key) withMethod:sel error:&error];
                 if (error)
                 {
                     [NSException raise:NSInternalInconsistencyException format:[error description]];
