@@ -70,16 +70,16 @@
 <span class="lineNum">      12 </span>            : 
 <span class="lineNum">      13 </span>            : 
 <span class="lineNum">      14 </span>            : #import &quot;TyphoonRXMLElement+XmlComponentFactory.h&quot;
-<span class="lineNum">      15 </span>            : #import &quot;TyphoonComponentDefinition.h&quot;
+<span class="lineNum">      15 </span>            : #import &quot;TyphoonDefinition.h&quot;
 <span class="lineNum">      16 </span>            : #import &quot;TyphoonInjectedProperty.h&quot;
 <span class="lineNum">      17 </span>            : #import &quot;TyphoonPropertyInjectedByReference.h&quot;
 <span class="lineNum">      18 </span>            : #import &quot;TyphoonPropertyInjectedByValue.h&quot;
 <span class="lineNum">      19 </span>            : #import &quot;TyphoonPropertyInjectedByType.h&quot;
-<span class="lineNum">      20 </span>            : #import &quot;TyphoonComponentInitializer.h&quot;
+<span class="lineNum">      20 </span>            : #import &quot;TyphoonInitializer.h&quot;
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            : @implementation TyphoonRXMLElement (XmlComponentFactory)
 <span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineCov">         70 : - (TyphoonComponentDefinition*)asComponentDefinition</span>
+<span class="lineNum">      24 </span><span class="lineCov">         70 : - (TyphoonDefinition*)asComponentDefinition</span>
 <span class="lineNum">      25 </span>            : {
 <span class="lineNum">      26 </span><span class="lineCov">         70 :     [self assertTagName:@&quot;component&quot;];</span>
 <span class="lineNum">      27 </span><span class="lineCov">         70 :     Class clazz = NSClassFromString([self attribute:@&quot;class&quot;]);</span>
@@ -89,7 +89,7 @@
 <span class="lineNum">      31 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      32 </span><span class="lineCov">         70 :     NSString* key = [self attribute:@&quot;key&quot;];</span>
 <span class="lineNum">      33 </span><span class="lineCov">         70 :     NSString* factory = [self attributeOrNilIfEmpty:@&quot;factory-component&quot;];</span>
-<span class="lineNum">      34 </span><span class="lineCov">         70 :     TyphoonComponentDefinition* definition = [[TyphoonComponentDefinition alloc] initWithClass:clazz key:key factoryComponent:factory];</span>
+<span class="lineNum">      34 </span><span class="lineCov">         70 :     TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key factoryComponent:factory];</span>
 <span class="lineNum">      35 </span>            : 
 <span class="lineNum">      36 </span><span class="lineCov">         70 :     [definition setBeforePropertyInjection:NSSelectorFromString([self attribute:@&quot;before-property-injection&quot;])];</span>
 <span class="lineNum">      37 </span><span class="lineCov">         70 :     [definition setAfterPropertyInjection:NSSelectorFromString([self attribute:@&quot;after-property-injection&quot;])];</span>
@@ -132,12 +132,12 @@
 <span class="lineNum">      74 </span><span class="lineCov">         46 :     return injectedProperty;</span>
 <span class="lineNum">      75 </span><span class="lineCov">         46 : }</span>
 <span class="lineNum">      76 </span>            : 
-<span class="lineNum">      77 </span><span class="lineCov">         34 : - (TyphoonComponentInitializer*)asInitializer</span>
+<span class="lineNum">      77 </span><span class="lineCov">         34 : - (TyphoonInitializer*)asInitializer</span>
 <span class="lineNum">      78 </span>            : {
 <span class="lineNum">      79 </span><span class="lineCov">         34 :     [self assertTagName:@&quot;initializer&quot;];</span>
 <span class="lineNum">      80 </span><span class="lineCov">         34 :     SEL selector = NSSelectorFromString([self attribute:@&quot;selector&quot;]);</span>
 <span class="lineNum">      81 </span><span class="lineCov">         34 :     TyphoonComponentInitializerIsClassMethod isClassMethod = [self handleIsClassMethod:[self attribute:@&quot;is-class-method&quot;]];</span>
-<span class="lineNum">      82 </span><span class="lineCov">        122 :     TyphoonComponentInitializer* initializer = [[TyphoonComponentInitializer alloc] initWithSelector:selector isClassMethod:isClassMethod];</span>
+<span class="lineNum">      82 </span><span class="lineCov">        122 :     TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:selector isClassMethod:isClassMethod];</span>
 <span class="lineNum">      83 </span>            : 
 <span class="lineNum">      84 </span><span class="lineCov">         78 :     [self iterate:@&quot;*&quot; usingBlock:^(TyphoonRXMLElement* child)</span>
 <span class="lineNum">      85 </span><span class="lineCov">         44 :     {</span>
@@ -166,7 +166,7 @@
 <span class="lineNum">     108 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     109 </span><span class="lineCov">        150 : }</span>
 <span class="lineNum">     110 </span>            : 
-<span class="lineNum">     111 </span>            : - (void)setScopeForDefinition:(TyphoonComponentDefinition*)definition withStringValue:(NSString*)scope;
+<span class="lineNum">     111 </span>            : - (void)setScopeForDefinition:(TyphoonDefinition*)definition withStringValue:(NSString*)scope;
 <span class="lineNum">     112 </span><span class="lineCov">         70 : {</span>
 <span class="lineNum">     113 </span>            : 
 <span class="lineNum">     114 </span>            :     if ([scope isEqualToString:@&quot;singleton&quot;])
@@ -185,7 +185,7 @@
 <span class="lineNum">     127 </span><span class="lineCov">         70 : </span>
 <span class="lineNum">     128 </span>            : 
 <span class="lineNum">     129 </span>            : 
-<span class="lineNum">     130 </span>            : - (void)parseComponentDefinitionChildren:(TyphoonComponentDefinition*)componentDefinition
+<span class="lineNum">     130 </span>            : - (void)parseComponentDefinitionChildren:(TyphoonDefinition*)componentDefinition
 <span class="lineNum">     131 </span><span class="lineCov">        330 : {</span>
 <span class="lineNum">     132 </span>            :     [self iterate:@&quot;*&quot; usingBlock:^(TyphoonRXMLElement* child)
 <span class="lineNum">     133 </span><span class="lineCov">        200 :     {</span>
@@ -209,7 +209,7 @@
 <span class="lineNum">     151 </span>            :     }];
 <span class="lineNum">     152 </span><span class="lineCov">        130 : }</span>
 <span class="lineNum">     153 </span><span class="lineCov">         70 : </span>
-<span class="lineNum">     154 </span>            : - (void)setArgumentOnInitializer:(TyphoonComponentInitializer*)initializer withChildTag:(TyphoonRXMLElement*)child
+<span class="lineNum">     154 </span>            : - (void)setArgumentOnInitializer:(TyphoonInitializer*)initializer withChildTag:(TyphoonRXMLElement*)child
 <span class="lineNum">     155 </span>            : {
 <span class="lineNum">     156 </span><span class="lineCov">         34 :     NSString* name = [child attribute:@&quot;parameterName&quot;];</span>
 <span class="lineNum">     157 </span>            :     NSString* reference = [child attribute:@&quot;ref&quot;];

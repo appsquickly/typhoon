@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <title>LCOV - coverage.info - Source/Component/Initializer/TyphoonComponentInitializer.h</title>
+  <title>LCOV - coverage.info - Source/Component/Initializer/TyphoonInitializer.h</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -19,7 +19,7 @@
         <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Source/Component/Initializer</a> - TyphoonComponentInitializer.h</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Source/Component/Initializer</a> - TyphoonInitializer.h</td>
             <td width="5%"></td>
             <td width="15%"></td>
             <td width="10%" class="headerCovTableHead">Hit</td>
@@ -68,24 +68,24 @@
 <span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            : 
-<span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      13 </span>            : #import &lt;Foundation/Foundation.h&gt;
+<span class="lineNum">      14 </span>            : @class TyphoonDefinition;
 <span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span>            : #import &lt;Foundation/Foundation.h&gt;
-<span class="lineNum">      17 </span>            : @class TyphoonComponentDefinition;
-<span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span>            : typedef enum
-<span class="lineNum">      20 </span>            : {
-<span class="lineNum">      21 </span>            :     TyphoonComponentInitializerIsClassMethodGuess,
-<span class="lineNum">      22 </span>            :     TyphoonComponentInitializerIsClassMethodYes,
-<span class="lineNum">      23 </span>            :     TyphoonComponentInitializerIsClassMethodNo
-<span class="lineNum">      24 </span>            : } TyphoonComponentInitializerIsClassMethod;
-<span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span>            : @interface TyphoonComponentInitializer : NSObject
+<span class="lineNum">      16 </span>            : typedef enum
+<span class="lineNum">      17 </span>            : {
+<span class="lineNum">      18 </span>            :     TyphoonComponentInitializerIsClassMethodGuess,
+<span class="lineNum">      19 </span>            :     TyphoonComponentInitializerIsClassMethodYes,
+<span class="lineNum">      20 </span>            :     TyphoonComponentInitializerIsClassMethodNo
+<span class="lineNum">      21 </span>            : } TyphoonComponentInitializerIsClassMethod;
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span>            : /**
+<span class="lineNum">      24 </span>            : * Represents an initializer for a component.
+<span class="lineNum">      25 </span>            : */
+<span class="lineNum">      26 </span>            : @interface TyphoonInitializer : NSObject
 <span class="lineNum">      27 </span>            : {
 <span class="lineNum">      28 </span>            :     NSMutableArray* _injectedParameters;
 <span class="lineNum">      29 </span>            :     NSArray* _parameterNames;
-<span class="lineNum">      30 </span>            :     __unsafe_unretained TyphoonComponentDefinition* _definition;
+<span class="lineNum">      30 </span>            :     __unsafe_unretained TyphoonDefinition* _definition;
 <span class="lineNum">      31 </span>            :     TyphoonComponentInitializerIsClassMethod _isClassMethodStrategy;
 <span class="lineNum">      32 </span>            : }
 <span class="lineNum">      33 </span>            : 
@@ -96,25 +96,21 @@
 <span class="lineNum">      38 </span>            : 
 <span class="lineNum">      39 </span>            : - (id)initWithSelector:(SEL)initializer isClassMethod:(TyphoonComponentInitializerIsClassMethod)isClassMethod;
 <span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span>            : - (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonComponentDefinition*)definition;
+<span class="lineNum">      41 </span>            : - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference;
 <span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span>            : - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference;
+<span class="lineNum">      43 </span>            : - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference;
 <span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span>            : - (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonComponentDefinition*)definition;
+<span class="lineNum">      45 </span>            : - (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol;
 <span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span>            : - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference;
+<span class="lineNum">      47 </span>            : - (void)injectParameterAt:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol;
 <span class="lineNum">      48 </span>            : 
-<span class="lineNum">      49 </span>            : - (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol;
+<span class="lineNum">      49 </span>            : - (NSArray*)injectedParameters;
 <span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span>            : - (void)injectParameterAt:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol;
+<span class="lineNum">      51 </span>            : - (NSInvocation*)asInvocationFor:(id)classOrInstance;
 <span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span>            : - (NSArray*)injectedParameters;
+<span class="lineNum">      53 </span>            : - (void)setComponentDefinition:(TyphoonDefinition*)definition;
 <span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span>            : - (NSInvocation*)asInvocationFor:(id)classOrInstance;
-<span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span>            : - (void)setComponentDefinition:(TyphoonComponentDefinition*)definition;
-<span class="lineNum">      58 </span>            : 
-<span class="lineNum">      59 </span>            : @end
+<span class="lineNum">      55 </span>            : @end
 </pre>
       </td>
     </tr>

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <title>LCOV - coverage.info - Source/Component/TyphoonComponentDefinition.h</title>
+  <title>LCOV - coverage.info - Source/Component/TyphoonDefinition.h</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -19,7 +19,7 @@
         <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">Source/Component</a> - TyphoonComponentDefinition.h</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">Source/Component</a> - TyphoonDefinition.h</td>
             <td width="5%"></td>
             <td width="15%"></td>
             <td width="10%" class="headerCovTableHead">Hit</td>
@@ -72,7 +72,7 @@
 <span class="lineNum">      14 </span>            : 
 <span class="lineNum">      15 </span>            : #import &lt;Foundation/Foundation.h&gt;
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span>            : @class TyphoonComponentInitializer;
+<span class="lineNum">      17 </span>            : @class TyphoonInitializer;
 <span class="lineNum">      18 </span>            : @protocol TyphoonInjectedProperty;
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : typedef enum
@@ -82,42 +82,40 @@
 <span class="lineNum">      24 </span>            : } TyphoonComponentLifecycle;
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span>            : @interface TyphoonComponentDefinition : NSObject
+<span class="lineNum">      27 </span>            : @interface TyphoonDefinition : NSObject
 <span class="lineNum">      28 </span>            : {
 <span class="lineNum">      29 </span>            :     NSMutableSet* _injectedProperties;
 <span class="lineNum">      30 </span>            : }
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">        173 : @property(nonatomic, readonly) Class type;</span>
-<span class="lineNum">      33 </span><span class="lineCov">        567 : @property(nonatomic, strong) NSString* key;</span>
-<span class="lineNum">      34 </span><span class="lineCov">        141 : @property(nonatomic, strong, readonly) NSString* factoryComponent;</span>
-<span class="lineNum">      35 </span><span class="lineCov">        170 : @property(nonatomic, strong) TyphoonComponentInitializer* initializer;</span>
-<span class="lineNum">      36 </span><span class="lineCov">        109 : @property(nonatomic) SEL beforePropertyInjection;</span>
-<span class="lineNum">      37 </span><span class="lineCov">        102 : @property(nonatomic) SEL afterPropertyInjection;</span>
+<span class="lineNum">      32 </span><span class="lineCov">        194 : @property(nonatomic, readonly) Class type;</span>
+<span class="lineNum">      33 </span><span class="lineCov">        694 : @property(nonatomic, strong) NSString* key;</span>
+<span class="lineNum">      34 </span><span class="lineCov">        168 : @property(nonatomic, strong, readonly) NSString* factoryComponent;</span>
+<span class="lineNum">      35 </span><span class="lineCov">        206 : @property(nonatomic, strong) TyphoonInitializer* initializer;</span>
+<span class="lineNum">      36 </span><span class="lineCov">        117 : @property(nonatomic) SEL beforePropertyInjection;</span>
+<span class="lineNum">      37 </span><span class="lineCov">        110 : @property(nonatomic) SEL afterPropertyInjection;</span>
 <span class="lineNum">      38 </span>            : @property(nonatomic, strong, readonly) NSSet* injectedProperties;
-<span class="lineNum">      39 </span><span class="lineCov">         62 : @property(nonatomic) TyphoonComponentLifecycle lifecycle;</span>
+<span class="lineNum">      39 </span><span class="lineCov">         75 : @property(nonatomic) TyphoonComponentLifecycle lifecycle;</span>
 <span class="lineNum">      40 </span>            : 
 <span class="lineNum">      41 </span>            : 
 <span class="lineNum">      42 </span>            : - (id)initWithClass:(Class)clazz key:(NSString*)key;
 <span class="lineNum">      43 </span>            : 
 <span class="lineNum">      44 </span>            : - (id)initWithClass:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent;
 <span class="lineNum">      45 </span>            : 
-<span class="lineNum">      46 </span>            : - (void)injectProperty:(NSString*)propertyName;
+<span class="lineNum">      46 </span>            : - (void)injectProperty:(SEL)withSelector;
 <span class="lineNum">      47 </span>            : 
-<span class="lineNum">      48 </span>            : - (void)injectProperty:(NSString*)propertyName withDefinition:(TyphoonComponentDefinition*)definition;
+<span class="lineNum">      48 </span>            : - (void)injectProperty:(SEL)withSelector withReference:(NSString*)reference;
 <span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span>            : - (void)injectProperty:(NSString*)propertyName withReference:(NSString*)reference;
+<span class="lineNum">      50 </span>            : - (void)injectProperty:(SEL)withSelector withValueAsText:(NSString*)textValue;
 <span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span>            : - (void)injectProperty:(NSString*)propertyName withValueAsText:(NSString*)textValue;
+<span class="lineNum">      52 </span>            : - (void)addInjectedProperty:(id &lt;TyphoonInjectedProperty&gt;)property;
 <span class="lineNum">      53 </span>            : 
-<span class="lineNum">      54 </span>            : - (void)addInjectedProperty:(id &lt;TyphoonInjectedProperty&gt;)property;
+<span class="lineNum">      54 </span>            : - (NSSet*)propertiesInjectedByValue;
 <span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span>            : - (NSSet*)propertiesInjectedByValue;
+<span class="lineNum">      56 </span>            : - (NSSet*)propertiesInjectedByType;
 <span class="lineNum">      57 </span>            : 
-<span class="lineNum">      58 </span>            : - (NSSet*)propertiesInjectedByType;
+<span class="lineNum">      58 </span>            : - (NSSet*)propertiesInjectedByReference;
 <span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span>            : - (NSSet*)propertiesInjectedByReference;
-<span class="lineNum">      61 </span>            : 
-<span class="lineNum">      62 </span>            : @end
+<span class="lineNum">      60 </span>            : @end
 </pre>
       </td>
     </tr>

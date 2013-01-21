@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>TyphoonComponentDefinition Class Reference</title>
+		<title>TyphoonDefinition Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">TyphoonComponentDefinition Class Reference</h1>
+				<h1 class="hideInXcode">TyphoonDefinition Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -114,6 +114,8 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_BlockAssembly Methods">BlockAssembly Methods</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_BlockBuilders Methods">BlockBuilders Methods</a></span></li>
 	
 </ul></li>
@@ -195,7 +197,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="TyphoonComponentDefinition Class Reference" name="top"></a>
+				<a title="TyphoonDefinition Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -204,7 +206,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">TyphoonComponentDefinition Class Reference</h1>
+						<h1 class="title title-header">TyphoonDefinition Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -215,7 +217,7 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">TyphoonComponentDefinition.h</td>
+	<td class="specification-value">TyphoonDefinition.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -312,13 +314,6 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/injectProperty:withDefinition:">&ndash;&nbsp;injectProperty:withDefinition:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/injectProperty:withReference:">&ndash;&nbsp;injectProperty:withReference:</a></code>
 		
 	</span>
@@ -355,6 +350,21 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/propertiesInjectedByReference">&ndash;&nbsp;propertiesInjectedByReference</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="BlockAssembly Methods" name="task_BlockAssembly Methods"></a>
+						<h3 class="subsubtitle task-title">BlockAssembly Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/injectProperty:withDefinition:">&ndash;&nbsp;injectProperty:withDefinition:</a></code>
 		
 	</span>
 	
@@ -475,7 +485,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) TyphoonComponentInitializer *initializer</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) TyphoonInitializer *initializer</code></div>
 
     
 </div>
@@ -538,7 +548,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (TyphoonComponentDefinition *)withClass:(Class)<em>clazz</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (TyphoonDefinition *)withClass:(Class)<em>clazz</em></code></div>
 
     
 </div>
@@ -549,7 +559,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (TyphoonComponentDefinition *)withClass:(Class)<em>clazz</em> initialization:(TyphoonInitializationBlock)<em>initialization</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (TyphoonDefinition *)withClass:(Class)<em>clazz</em> initialization:(TyphoonInitializationBlock)<em>initialization</em></code></div>
 
     
 </div>
@@ -560,7 +570,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (TyphoonComponentDefinition *)withClass:(Class)<em>clazz</em> initialization:(TyphoonInitializationBlock)<em>initialization</em> properties:(TyphoonPropertyInjectionBlock)<em>properties</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (TyphoonDefinition *)withClass:(Class)<em>clazz</em> initialization:(TyphoonInitializationBlock)<em>initialization</em> properties:(TyphoonPropertyInjectionBlock)<em>properties</em></code></div>
 
     
 </div>
@@ -571,7 +581,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (TyphoonComponentDefinition *)withClass:(Class)<em>clazz</em> key:(NSString *)<em>key</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (TyphoonDefinition *)withClass:(Class)<em>clazz</em> key:(NSString *)<em>key</em></code></div>
 
     
 </div>
@@ -582,7 +592,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (TyphoonComponentDefinition *)withClass:(Class)<em>clazz</em> key:(NSString *)<em>key</em> initialization:(TyphoonInitializationBlock)<em>initialization</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (TyphoonDefinition *)withClass:(Class)<em>clazz</em> key:(NSString *)<em>key</em> initialization:(TyphoonInitializationBlock)<em>initialization</em></code></div>
 
     
 </div>
@@ -593,7 +603,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (TyphoonComponentDefinition *)withClass:(Class)<em>clazz</em> key:(NSString *)<em>key</em> initialization:(TyphoonInitializationBlock)<em>initialization</em> properties:(TyphoonPropertyInjectionBlock)<em>properties</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (TyphoonDefinition *)withClass:(Class)<em>clazz</em> key:(NSString *)<em>key</em> initialization:(TyphoonInitializationBlock)<em>initialization</em> properties:(TyphoonPropertyInjectionBlock)<em>properties</em></code></div>
 
     
 </div>
@@ -604,7 +614,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (TyphoonComponentDefinition *)withClass:(Class)<em>clazz</em> key:(NSString *)<em>key</em> properties:(TyphoonPropertyInjectionBlock)<em>properties</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (TyphoonDefinition *)withClass:(Class)<em>clazz</em> key:(NSString *)<em>key</em> properties:(TyphoonPropertyInjectionBlock)<em>properties</em></code></div>
 
     
 </div>
@@ -615,7 +625,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (TyphoonComponentDefinition *)withClass:(Class)<em>clazz</em> properties:(TyphoonPropertyInjectionBlock)<em>properties</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (TyphoonDefinition *)withClass:(Class)<em>clazz</em> properties:(TyphoonPropertyInjectionBlock)<em>properties</em></code></div>
 
     
 </div>
@@ -667,7 +677,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (void)injectProperty:(NSString *)<em>propertyName</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)injectProperty:(SEL)<em>withSelector</em></code></div>
 
     
 </div>
@@ -678,7 +688,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (void)injectProperty:(NSString *)<em>propertyName</em> withDefinition:(TyphoonComponentDefinition *)<em>definition</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)injectProperty:(SEL)<em>selector</em> withDefinition:(TyphoonDefinition *)<em>definition</em></code></div>
 
     
 </div>
@@ -689,7 +699,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (void)injectProperty:(NSString *)<em>propertyName</em> withReference:(NSString *)<em>reference</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)injectProperty:(SEL)<em>withSelector</em> withReference:(NSString *)<em>reference</em></code></div>
 
     
 </div>
@@ -700,7 +710,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (void)injectProperty:(NSString *)<em>propertyName</em> withValueAsText:(NSString *)<em>textValue</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)injectProperty:(SEL)<em>withSelector</em> withValueAsText:(NSString *)<em>textValue</em></code></div>
 
     
 </div>
