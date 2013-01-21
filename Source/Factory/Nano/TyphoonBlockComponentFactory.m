@@ -42,6 +42,7 @@ static NSMutableArray* swizzleRegistry;
         class_addMethod(self, sel, imp, "@");
         return YES;
     }
+    return NO;
 }
 
 + (void)initialize
@@ -56,7 +57,7 @@ static NSMutableArray* swizzleRegistry;
 {
     if (![assembly isKindOfClass:[TyphoonAssembly class]])
     {
-        [NSException raise:NSInvalidArgumentException format:@"Class '%@' is not a sub-class of %@", NSStringFromClass(assembly),
+        [NSException raise:NSInvalidArgumentException format:@"Class '%@' is not a sub-class of %@", NSStringFromClass([assembly class]),
                                                              NSStringFromClass([TyphoonAssembly class])];
     }
     self = [super init];

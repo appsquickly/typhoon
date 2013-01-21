@@ -82,5 +82,5 @@
 
 @end
 
-typedef void (^RXMLBlock)(TyphoonRXMLElement*element);
+typedef void (^TyphoonRXMLBlock)(TyphoonRXMLElement*element);
 
