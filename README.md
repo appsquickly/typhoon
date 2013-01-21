@@ -198,8 +198,3 @@ Thanks!!!
 Apache License, Version 2.0, January 2004, http://www.apache.org/licenses/
 
 * © 2012 - 2013 jasper blues
-
-
-=======
-# This project has been renamed! Please go to: https://github.com/jasperblues/Typhoon
->>>>>>> fee324d5ed9f313a989bb081f0323a8f8be3a69e
