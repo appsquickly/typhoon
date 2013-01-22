@@ -11,7 +11,7 @@ A new dependency injection container for Objective-C. Light-weight, yet full-fea
 
 * More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
 * Macro-style injection - but still honoring all of the design goals listed below!! Get some auto-wiring by mixing it 
-with one of the other styles. Or if you want to go macro all the way: Using a self-installing, compile-time pre-processor).  
+with one of the other styles. Or if you want to go macro all the way: Using a self-installing, compile-time pre-processor.  
 
 ### What is Dependency Injection? 
 
