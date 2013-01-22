@@ -134,7 +134,7 @@
 <span class="lineNum">      76 </span>            : /* ============================================================ Private Methods ========================================================= */
 <span class="lineNum">      77 </span><span class="lineCov">          5 : - (NSArray*)populateCache:(TyphoonAssembly*)assembly</span>
 <span class="lineNum">      78 </span>            : {
-<span class="lineNum">      79 </span><span class="lineCov">          5 :     int methodCount;</span>
+<span class="lineNum">      79 </span><span class="lineCov">          5 :     unsigned int methodCount;</span>
 <span class="lineNum">      80 </span><span class="lineCov">          5 :     Method* methodList = class_copyMethodList([assembly class], &amp;methodCount);</span>
 <span class="lineNum">      81 </span><span class="lineCov">         35 :     for (int i = 0; i &lt; methodCount; i++)</span>
 <span class="lineNum">      82 </span>            :     {
@@ -159,7 +159,7 @@
 <span class="lineNum">     101 </span><span class="lineCov">          5 :     if (![swizzleRegistry containsObject:[TyphoonAssembly class]])</span>
 <span class="lineNum">     102 </span>            :     {
 <span class="lineNum">     103 </span><span class="lineCov">          1 :         [swizzleRegistry addObject:[TyphoonAssembly class]];</span>
-<span class="lineNum">     104 </span><span class="lineCov">          1 :         int methodCount;</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :         unsigned int methodCount;</span>
 <span class="lineNum">     105 </span><span class="lineCov">          1 :         Method* methodList = class_copyMethodList([assembly class], &amp;methodCount);</span>
 <span class="lineNum">     106 </span><span class="lineCov">          4 :         for (int i = 0; i &lt; methodCount; i++)</span>
 <span class="lineNum">     107 </span>            :         {
