@@ -109,7 +109,6 @@
 		BA798B291EDCA2E25701D626 /* TyphoonDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798CA3A88193EC0242E6EC /* TyphoonDefinition.h */; };
 		BA798B76E26191EA1F0CF605 /* TyphoonDefinition+BlockBuilders.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798C2FE39B47B1030DD371 /* TyphoonDefinition+BlockBuilders.m */; };
 		BA798B82BE8C9399E0DAC53C /* TyphoonParameterInjectedByValue.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7987099DAD3FC6A242E863 /* TyphoonParameterInjectedByValue.m */; };
-		BA798BAA3EE819BF2E34F35A /* TyphoonBlockComponentFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7981FA89E44727928240C1 /* TyphoonBlockComponentFactoryTests.m */; };
 		BA798BB4D9038A4C5E6B8FFF /* TyphonTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7983E3C21E67A0ABCEB3C4 /* TyphonTypeConverter.h */; };
 		BA798BBAFE0BD0E6B8595BC7 /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA798F0C33EBF7B9102B886A /* Info-iOS.plist */; };
 		BA798BE56FC8C7D40AEC1ECB /* TyphoonPrimitiveTypeConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79835B6157EAC72445EC18 /* TyphoonPrimitiveTypeConverterTests.m */; };
@@ -929,7 +928,6 @@
 				BA7980F06792726585C8F808 /* TyphoonJRSwizzle.m in Sources */,
 				BA798576613C0F22AFCBC4A8 /* TyphoonAssembly.m in Sources */,
 				BA798F9DC5E7204C1B50E83A /* TyphoonBlockComponentFactory.m in Sources */,
-				BA798BAA3EE819BF2E34F35A /* TyphoonBlockComponentFactoryTests.m in Sources */,
 				BA7981C6C1CFB28CF4FED014 /* MiddleAgesAssembly.m in Sources */,
 				BA7982D4ED734F93A7219513 /* TyphoonDefinition+BlockAssembly.m in Sources */,
 				BA798AF55E9A41F5DC65913C /* TyphoonInitializer+BlockAssembly.m in Sources */,
@@ -1071,7 +1069,7 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Typhoon/Typhoon-Prefix.pch";
+				GCC_PREFIX_HEADER = Source/Typhoon.pch;
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1086,7 +1084,7 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Typhoon/Typhoon-Prefix.pch";
+				GCC_PREFIX_HEADER = Source/Typhoon.pch;
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";

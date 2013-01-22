@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
-<xsd:schema xmlns="http://jasperblues.github.com/typhoon/schema/assembly"
+<xsd:schema xmlns="http://jasperblues.github.com/Typhoon/schema/assembly"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            targetNamespace="http://jasperblues.github.com/typhoon/schema/assembly">
+            targetNamespace="http://jasperblues.github.com/Typhoon/schema/assembly">
 
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
 

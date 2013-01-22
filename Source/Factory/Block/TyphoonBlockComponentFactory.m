@@ -76,7 +76,7 @@ static NSMutableArray* swizzleRegistry;
 /* ============================================================ Private Methods ========================================================= */
 - (NSArray*)populateCache:(TyphoonAssembly*)assembly
 {
-    int methodCount;
+    unsigned int methodCount;
     Method* methodList = class_copyMethodList([assembly class], &methodCount);
     for (int i = 0; i < methodCount; i++)
     {
@@ -101,7 +101,7 @@ static NSMutableArray* swizzleRegistry;
     if (![swizzleRegistry containsObject:[TyphoonAssembly class]])
     {
         [swizzleRegistry addObject:[TyphoonAssembly class]];
-        int methodCount;
+        unsigned int methodCount;
         Method* methodList = class_copyMethodList([assembly class], &methodCount);
         for (int i = 0; i < methodCount; i++)
         {
