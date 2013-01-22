@@ -85,7 +85,7 @@
 <span class="lineNum">      27 </span>            : #define GetClass(obj)   (obj ? obj-&gt;isa : Nil)
 <span class="lineNum">      28 </span>            : #endif
 <span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span>            : @implementation NSObject (JRSwizzle)
+<span class="lineNum">      30 </span>            : @implementation NSObject (TyphoonJRSwizzle)
 <span class="lineNum">      31 </span>            : 
 <span class="lineNum">      32 </span>            : + (BOOL)typhoon_swizzleMethod:(SEL)origSel_ withMethod:(SEL)altSel_ error:(NSError**)error_ {
 <span class="lineNum">      33 </span><span class="lineCov">         63 : #if OBJC_API_VERSION &gt;= 2</span>
