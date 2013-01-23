@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">54</td>
-            <td class="headerCovTableEntry">60</td>
-            <td class="headerCovTableEntryHi">90.0 %</td>
+            <td class="headerCovTableEntry">53</td>
+            <td class="headerCovTableEntry">59</td>
+            <td class="headerCovTableEntryMed">89.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -172,7 +172,7 @@
 <span class="lineNum">     114 </span>            :                 {
 <span class="lineNum">     115 </span>            :                     SEL swizzled = NSSelectorFromString(
 <span class="lineNum">     116 </span><span class="lineCov">          3 :                             [NSStringFromSelector(methodSelector) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);</span>
-<span class="lineNum">     117 </span><span class="lineCov">          3 :                     NSLog(@&quot;Exchanging: %@ with: %@&quot;, NSStringFromSelector(methodSelector), NSStringFromSelector(swizzled));</span>
+<span class="lineNum">     117 </span>            : //                    NSLog(@&quot;Exchanging: %@ with: %@&quot;, NSStringFromSelector(methodSelector), NSStringFromSelector(swizzled));
 <span class="lineNum">     118 </span>            : 
 <span class="lineNum">     119 </span><span class="lineCov">          3 :                     NSError* error;</span>
 <span class="lineNum">     120 </span><span class="lineCov">          3 :                     [[assembly class] typhoon_swizzleMethod:methodSelector withMethod:swizzled error:&amp;error];</span>
