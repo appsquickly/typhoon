@@ -170,7 +170,6 @@
 		6B3F39A216ABF8E5001A601C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B3F39A716ABF8E5001A601C /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		6B3F39C116ABFAC3001A601C /* libTyphoon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTyphoon.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B3F39C516ABFAC3001A601C /* Typhoon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Typhoon-Prefix.pch"; sourceTree = "<group>"; };
 		6BD2B6DD16AC02DD0066C5DB /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrest.framework; path = External/OCHamcrest.framework; sourceTree = "<group>"; };
 		6BD2B6E116AC031B0066C5DB /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrest.framework; path = External/OCHamcrest.framework; sourceTree = "<group>"; };
 		BA798012692BC6CFD0CCB60F /* TyphoonInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonInitializer.h; sourceTree = "<group>"; };
@@ -301,7 +300,6 @@
 			isa = PBXGroup;
 			children = (
 				6B3F399E16ABF8E5001A601C /* Tests */,
-				6B3F39C316ABFAC3001A601C /* Typhoon */,
 				6B3F397316ABF854001A601C /* Frameworks */,
 				6B3F397116ABF854001A601C /* Products */,
 				BA79878F47DCC140652F7088 /* Source */,
@@ -361,22 +359,6 @@
 				6B3F39A016ABF8E5001A601C /* Tests-Info.plist */,
 				6B3F39A116ABF8E5001A601C /* InfoPlist.strings */,
 				6B3F39A716ABF8E5001A601C /* Tests-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6B3F39C316ABFAC3001A601C /* Typhoon */ = {
-			isa = PBXGroup;
-			children = (
-				6B3F39C416ABFAC3001A601C /* Supporting Files */,
-			);
-			path = Typhoon;
-			sourceTree = "<group>";
-		};
-		6B3F39C416ABFAC3001A601C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				6B3F39C516ABFAC3001A601C /* Typhoon-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
