@@ -41,12 +41,10 @@
         {
             NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@""];
 
-            NSLog(@"Looking up cached value for: %@", key);
             id cached = [[me cachedSelectors] objectForKey:key];
 
             if (cached == nil)
             {
-                NSLog(@"Cache empty, populating. . . ");
                 NSError* error;
                 [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:&error];
                 if (error)
