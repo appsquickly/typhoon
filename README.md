@@ -198,3 +198,5 @@ Thanks!!!
 Apache License, Version 2.0, January 2004, http://www.apache.org/licenses/
 
 * © 2012 - 2013 jasper blues
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/0e47e2f2028b2badfc88e13f95914938 "githalytics.com")](http://githalytics.com/jasperblues/Typhoon)
