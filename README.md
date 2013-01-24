@@ -53,7 +53,11 @@ _weatherClient = [GoogleWeatherClient sharedInstance];
 
 With either of the above approaches, in order to test your view controller, you now have to test its collaborating 
 class (the weather client) at the same time, and this can get tricky, especially as your application gets more 
-complex. Imagine testing Class A, depends on Class B, depends on Class C, depends on .... Not much fun!
+complex. Imagine testing Class A, depends on Class B, depends on Class C, depends on .... Not much fun! 
+
+Sure, you could patch out the singleton with a mock but this requires peeking inside the code to find the dependencies, but
+this ends up becoming "glass-box" testing as opposed to "black-box" testing. Isn't it better to be able to test the
+external interface to a class, without having worry about what's going on inside? 
 
 So with dependency injection, rather than having objects make their own collaborators, we have them supplied to the 
 class instance via an initializer or property setter.
@@ -81,9 +85,9 @@ Yes it is. Right now, you might be thinking "Geez! That's a pretty fancy name fo
 * If you want to change from one implementation to another, you need only change a single declaration. 
 * Classes are easier to test, because we can supply simple mocks and stubs in place of concrete collaborators. Or 
 the real collaborators, but configured to be used in a test scenario. (One of my design goals). 
-* It promotes separation of concerns and a clear contract between classes. 
+* It promotes separation of concerns and a clear contract between classes. Its easy to see what each class needs in order
+to do its job. 
 * Your app is easier to maintain and can accommodate new requirements. 
-
 
 
 # Your Dependency Injection Options
