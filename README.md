@@ -59,9 +59,9 @@ _Sure, you could patch out the singleton with a mock or a stub, but this require
 dependencies. Besides taking time that could be better spent else-where, this ends up becoming "glass-box" testing as
 opposed to "black-box" testing. Isn't it better to be able to test the external interface to a class, without having 
 worry about what's going on inside? And you have to remember un-patching it again at the end of the test-case or risk 
-strange breakages to other tests, where its difficult to pin-point where the real problem is._
+strange breakages to other tests, where its difficult to pin-point where the real problem is._ . . 
 
-So with dependency injection, rather than having objects make their own collaborators, we have them supplied to the 
+. . . So with dependency injection, rather than having objects make their own collaborators, we have them supplied to the 
 class instance via an initializer or property setter.
 
 ___And now, it simply becomes___: 
