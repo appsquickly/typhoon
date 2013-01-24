@@ -55,9 +55,11 @@ With either of the above approaches, in order to test your view controller, you 
 class (the weather client) at the same time, and this can get tricky, especially as your application gets more 
 complex. Imagine testing Class A, depends on Class B, depends on Class C, depends on .... Not much fun! 
 
-Sure, you could patch out the singleton with a mock but this requires peeking inside the code to find the dependencies, but
+Sure, you could patch out the singleton with a mock or a stub, but this requires peeking inside the code to find the dependencies, but
 this ends up becoming "glass-box" testing as opposed to "black-box" testing. Isn't it better to be able to test the
-external interface to a class, without having worry about what's going on inside? 
+external interface to a class, without having worry about what's going on inside? And then you have to remember un-patching
+it again at the end of the test-case or risk strange breakages to other tests, where its difficult to pin-point where 
+the real problem is. 
 
 So with dependency injection, rather than having objects make their own collaborators, we have them supplied to the 
 class instance via an initializer or property setter.
