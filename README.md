@@ -4,7 +4,7 @@ A new dependency injection container for Objective-C. Light-weight, yet full-fea
 
 Typhoon is nice on Xcode, even better with . . . 
 
-<a href="http://www.jetbrains.com/objc/">![AppCode](http://jasperblues.github.com/Typhoon/appcode.png)</a>
+<a href="http://www.jetbrains.com/objc/">![AppCode](http://jasperblues.github.com/Typhoon/appcode-logo.png)</a>
 
 ## Status? It's ready to use!
 
