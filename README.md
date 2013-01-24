@@ -1,11 +1,10 @@
+# Description
+
+A new dependency injection container for Objective-C. Light-weight, yet full-featured. 
+
 Typhoon is nice on Xcode, even better with . . . 
 
 <a href="http://www.jetbrains.com/objc/">![AppCode](http://jasperblues.github.com/Typhoon/appcode.png)</a>
-
-
-# Description
-
-A new dependency injection container for Objective-C. Light-weight, yet full-featured. Built during a typhoon. 
 
 ## Status? It's ready to use!
 
