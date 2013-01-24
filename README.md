@@ -7,6 +7,10 @@ A new dependency injection container for Objective-C. Light-weight, yet full-fea
 * <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a>.
 * **New!!** A super-cool <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">block and category-based application assembly</a>, for those that prefer pure-code!!! 
 
+Typhoon is nice on Xcode, even better with . . . 
+
+<a href="http://www.jetbrains.com/objc/" style="display:block; background:#fff url(http://www.jetbrains.com/objc/features/objc_banners/objc1/objc468x60_white.gif) no-repeat 10px 50%; border:solid 1px #435570; margin:0;padding:0;text-decoration:none;text-indent:0;letter-spacing:-0.001em; width:466px; height:58px" alt="Professional Obj-C IDE: code assist, refactoring and navigation done right" title="Professional Obj-C IDE: code assist, refactoring and navigation done right"><span style="margin: 2px 0 0 65px;padding: 0;float: left;font-size: 12px;cursor:pointer;  background-image:none;border:0;color: #435570; font-family: trebuchet ms,arial,sans-serif;font-weight: normal;text-align:left;">Developed with</span><span style="margin:0 0 0 200px;padding:18px 0 2px 0; line-height:14px;font-size:14px;cursor:pointer;  background-image:none;border:0;display:block; width:265px; color:#435570; font-family: trebuchet ms,arial,sans-serif;font-weight: normal;text-align:left;">Professional Obj-C IDE: code assist, refactoring and navigation done right</span></a>
+
 ##Current Work?
 
 * More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
