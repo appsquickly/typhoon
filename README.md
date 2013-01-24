@@ -12,10 +12,6 @@ A new dependency injection container for Objective-C. Light-weight, yet full-fea
 * <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a>.
 * **New!!** A super-cool <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">block and category-based application assembly</a>, for those that prefer pure-code!!! 
 
-##Current Work?
-
-* More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
-* Macro-style injection, especially some shortcuts for when simple auto-wiring is all you need. 
 
 ### What is Dependency Injection? 
 
@@ -168,6 +164,11 @@ each commit. (If you'd like the script I will share it).
 * <a href="https://github.com/jasperblues/Typhoon/wiki/Contribution-Guide">Contribution Guide.</a>
 
 * Look at, and contribute to the <a href="https://github.com/jasperblues/Typhoon/wiki/Roadmap">roadmap</a> here.
+
+##Current Work?
+
+* More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
+* Macro-style injection, especially some shortcuts for when simple auto-wiring is all you need. 
 
 # Frequently Asked Questions
 
