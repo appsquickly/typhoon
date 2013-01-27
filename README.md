@@ -1,21 +1,16 @@
-Typhoon is nice on Xcode, even better with . . . 
-
-<a href="http://www.jetbrains.com/objc/">![AppCode](http://jasperblues.github.com/Typhoon/appcode.png)</a>
-
-
 # Description
 
-A new dependency injection container for Objective-C. Light-weight, yet full-featured. Built during a typhoon. 
+A new dependency injection container for Objective-C. Light-weight, yet full-featured. 
+
+Typhoon is nice on Xcode, even better with . . . 
+
+<a href="http://www.jetbrains.com/objc/">![AppCode](http://jasperblues.github.com/Typhoon/appcode-logo.png)</a>
 
 ## Status? It's ready to use!
 
 * <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a>.
 * **New!!** A super-cool <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">block and category-based application assembly</a>, for those that prefer pure-code!!! 
 
-##Current Work?
-
-* More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
-* Macro-style injection, especially some shortcuts for when simple auto-wiring is all you need. 
 
 ### What is Dependency Injection? 
 
@@ -58,9 +53,15 @@ _weatherClient = [GoogleWeatherClient sharedInstance];
 
 With either of the above approaches, in order to test your view controller, you now have to test its collaborating 
 class (the weather client) at the same time, and this can get tricky, especially as your application gets more 
-complex. Imagine testing Class A, depends on Class B, depends on Class C, depends on .... Not much fun!
+complex. Imagine testing Class A, depends on Class B, depends on Class C, depends on .... Not much fun! 
 
-So with dependency injection, rather than having objects make their own collaborators, we have them supplied to the 
+_Sure, you could patch out the singleton with a mock or a stub, but this requires peeking inside the code to find the
+dependencies. Besides taking time that could be better spent else-where, this ends up becoming "glass-box" testing as
+opposed to "black-box" testing. Isn't it better to be able to test the external interface to a class, without having 
+worry about what's going on inside? _And_ you have to remember un-patch again at the end of the test-case or risk 
+strange breakages to other tests, where its difficult to pin-point what the real problem is might be._ . . 
+
+. . . So with dependency injection, rather than having objects make their own collaborators, we have them supplied to the 
 class instance via an initializer or property setter.
 
 ___And now, it simply becomes___: 
@@ -86,9 +87,9 @@ Yes it is. Right now, you might be thinking "Geez! That's a pretty fancy name fo
 * If you want to change from one implementation to another, you need only change a single declaration. 
 * Classes are easier to test, because we can supply simple mocks and stubs in place of concrete collaborators. Or 
 the real collaborators, but configured to be used in a test scenario. (One of my design goals). 
-* It promotes separation of concerns and a clear contract between classes. 
+* It promotes separation of concerns and a clear contract between classes. Its easy to see what each class needs in order
+to do its job. 
 * Your app is easier to maintain and can accommodate new requirements. 
-
 
 
 # Your Dependency Injection Options
@@ -169,6 +170,11 @@ each commit. (If you'd like the script I will share it).
 
 * Look at, and contribute to the <a href="https://github.com/jasperblues/Typhoon/wiki/Roadmap">roadmap</a> here.
 
+##Current Work?
+
+* More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
+* Macro-style injection, especially some shortcuts for when simple auto-wiring is all you need. 
+
 # Frequently Asked Questions
 
 . . . are <a href="https://github.com/jasperblues/Typhoon/wiki/FAQ">here</a>.
@@ -202,6 +208,6 @@ Thanks!!!
 
 Apache License, Version 2.0, January 2004, http://www.apache.org/licenses/
 
-* © 2012 - 2013 jasper blues
+© 2012 - 2013 Jasper Blues and contributors.
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/0e47e2f2028b2badfc88e13f95914938 "githalytics.com")](http://githalytics.com/jasperblues/Typhoon)
