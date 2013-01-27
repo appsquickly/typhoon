@@ -80,25 +80,25 @@
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : /* ============================================================ Initializers ============================================================ */
 <span class="lineNum">      24 </span>            : - (id)initWithClass:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent
-<span class="lineNum">      25 </span><span class="lineCov">        112 : {</span>
+<span class="lineNum">      25 </span><span class="lineCov">        114 : {</span>
 <span class="lineNum">      26 </span>            :     self = [super init];
-<span class="lineNum">      27 </span><span class="lineCov">        112 :     if (self)</span>
-<span class="lineNum">      28 </span><span class="lineCov">        112 :     {</span>
+<span class="lineNum">      27 </span><span class="lineCov">        114 :     if (self)</span>
+<span class="lineNum">      28 </span><span class="lineCov">        114 :     {</span>
 <span class="lineNum">      29 </span>            :         _type = clazz;
-<span class="lineNum">      30 </span><span class="lineCov">        110 :         _key = [key copy];</span>
-<span class="lineNum">      31 </span><span class="lineCov">        110 :         _factoryComponent = [factoryComponent copy];</span>
-<span class="lineNum">      32 </span><span class="lineCov">        110 :         _injectedProperties = [[NSMutableSet alloc] init];</span>
-<span class="lineNum">      33 </span><span class="lineCov">        110 :         [self validateRequiredParametersAreSet];</span>
-<span class="lineNum">      34 </span><span class="lineCov">        110 :     }</span>
-<span class="lineNum">      35 </span><span class="lineCov">        112 :     return self;</span>
-<span class="lineNum">      36 </span><span class="lineCov">        110 : }</span>
-<span class="lineNum">      37 </span><span class="lineCov">        110 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">        112 :         _key = [key copy];</span>
+<span class="lineNum">      31 </span><span class="lineCov">        112 :         _factoryComponent = [factoryComponent copy];</span>
+<span class="lineNum">      32 </span><span class="lineCov">        112 :         _injectedProperties = [[NSMutableSet alloc] init];</span>
+<span class="lineNum">      33 </span><span class="lineCov">        112 :         [self validateRequiredParametersAreSet];</span>
+<span class="lineNum">      34 </span><span class="lineCov">        112 :     }</span>
+<span class="lineNum">      35 </span><span class="lineCov">        114 :     return self;</span>
+<span class="lineNum">      36 </span><span class="lineCov">        112 : }</span>
+<span class="lineNum">      37 </span><span class="lineCov">        112 : </span>
 <span class="lineNum">      38 </span>            : - (id)initWithClass:(Class)clazz key:(NSString*)key
 <span class="lineNum">      39 </span>            : {
-<span class="lineNum">      40 </span><span class="lineCov">         40 :     return [self initWithClass:clazz key:key factoryComponent:nil];</span>
+<span class="lineNum">      40 </span><span class="lineCov">         42 :     return [self initWithClass:clazz key:key factoryComponent:nil];</span>
 <span class="lineNum">      41 </span>            : }
-<span class="lineNum">      42 </span><span class="lineCov">         80 : </span>
-<span class="lineNum">      43 </span><span class="lineCov">         40 : - (id)init</span>
+<span class="lineNum">      42 </span><span class="lineCov">         84 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">         42 : - (id)init</span>
 <span class="lineNum">      44 </span>            : {
 <span class="lineNum">      45 </span><span class="lineNoCov">          0 :     return [self initWithClass:nil key:nil factoryComponent:nil];</span>
 <span class="lineNum">      46 </span>            : }
@@ -107,10 +107,10 @@
 <span class="lineNum">      49 </span>            : /* ========================================================== Interface Methods ========================================================= */
 <span class="lineNum">      50 </span>            : - (void)injectProperty:(SEL)selector
 <span class="lineNum">      51 </span>            : {
-<span class="lineNum">      52 </span><span class="lineCov">          1 :     [_injectedProperties addObject:[[TyphoonPropertyInjectedByType alloc] initWithName:NSStringFromSelector(selector)]];</span>
+<span class="lineNum">      52 </span><span class="lineCov">          2 :     [_injectedProperties addObject:[[TyphoonPropertyInjectedByType alloc] initWithName:NSStringFromSelector(selector)]];</span>
 <span class="lineNum">      53 </span>            : }
-<span class="lineNum">      54 </span><span class="lineCov">          1 : </span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : - (void)injectProperty:(SEL)selector withReference:(NSString*)reference</span>
+<span class="lineNum">      54 </span><span class="lineCov">          2 : </span>
+<span class="lineNum">      55 </span><span class="lineCov">          2 : - (void)injectProperty:(SEL)selector withReference:(NSString*)reference</span>
 <span class="lineNum">      56 </span>            : {
 <span class="lineNum">      57 </span>            :     [_injectedProperties addObject:[[TyphoonPropertyInjectedByReference alloc]
 <span class="lineNum">      58 </span><span class="lineCov">          9 :             initWithName:NSStringFromSelector(selector) reference:reference]];</span>
@@ -130,9 +130,9 @@
 <span class="lineNum">      72 </span><span class="lineCov">         46 : {</span>
 <span class="lineNum">      73 </span><span class="lineCov">         46 :     return [_injectedProperties copy];</span>
 <span class="lineNum">      74 </span>            : }
-<span class="lineNum">      75 </span><span class="lineCov">         51 : </span>
+<span class="lineNum">      75 </span><span class="lineCov">         53 : </span>
 <span class="lineNum">      76 </span>            : - (void)setInitializer:(TyphoonInitializer*)initializer
-<span class="lineNum">      77 </span><span class="lineCov">         51 : {</span>
+<span class="lineNum">      77 </span><span class="lineCov">         53 : {</span>
 <span class="lineNum">      78 </span>            :     _initializer = initializer;
 <span class="lineNum">      79 </span>            :     [_initializer setComponentDefinition:self];
 <span class="lineNum">      80 </span><span class="lineCov">         46 : }</span>
@@ -177,13 +177,13 @@
 <span class="lineNum">     119 </span><span class="lineCov">         10 : {</span>
 <span class="lineNum">     120 </span>            :     if (_type == nil)
 <span class="lineNum">     121 </span>            :     {
-<span class="lineNum">     122 </span><span class="lineCov">        112 :         [NSException raise:NSInvalidArgumentException format:@&quot;Property 'clazz' is required.&quot;];</span>
+<span class="lineNum">     122 </span><span class="lineCov">        114 :         [NSException raise:NSInvalidArgumentException format:@&quot;Property 'clazz' is required.&quot;];</span>
 <span class="lineNum">     123 </span>            :     }
-<span class="lineNum">     124 </span><span class="lineCov">        112 : }</span>
+<span class="lineNum">     124 </span><span class="lineCov">        114 : }</span>
 <span class="lineNum">     125 </span>            : 
 <span class="lineNum">     126 </span><span class="lineNoCov">          0 : - (NSSet*)injectedPropertiesWithKindClass:(Class)clazz</span>
 <span class="lineNum">     127 </span><span class="lineCov">          2 : {</span>
-<span class="lineNum">     128 </span><span class="lineCov">        110 :     NSPredicate* predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary* bindings)</span>
+<span class="lineNum">     128 </span><span class="lineCov">        112 :     NSPredicate* predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary* bindings)</span>
 <span class="lineNum">     129 </span>            :     {
 <span class="lineNum">     130 </span><span class="lineCov">         37 :         return [evaluatedObject isKindOfClass:clazz];</span>
 <span class="lineNum">     131 </span>            :     }];
