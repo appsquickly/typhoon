@@ -13,7 +13,6 @@
 
 #import "Knight.h"
 #import "CampaignQuest.h"
-#import "Quest.h"
 
 
 @implementation Knight

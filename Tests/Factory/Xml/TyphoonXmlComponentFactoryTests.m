@@ -156,7 +156,7 @@
     [factory attachMutator:configurer];
 
     Knight* knight = [factory componentForKey:@"knight"];
-    assertThatInt(knight.damselsRescued, equalToInt(12));
+    assertThatUnsignedLongLong(knight.damselsRescued, equalToUnsignedLongLong(12));
 
     CavalryMan* anotherKnight = [factory componentForKey:@"anotherKnight"];
     assertThatBool(anotherKnight.hasHorseWillTravel, equalToBool(NO));

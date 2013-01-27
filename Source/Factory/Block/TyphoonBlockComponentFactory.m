@@ -114,14 +114,7 @@ static NSMutableArray* swizzleRegistry;
                 {
                     SEL swizzled = NSSelectorFromString(
                             [NSStringFromSelector(methodSelector) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
-//                    NSLog(@"Exchanging: %@ with: %@", NSStringFromSelector(methodSelector), NSStringFromSelector(swizzled));
-
-                    NSError* error;
-                    [[assembly class] typhoon_swizzleMethod:methodSelector withMethod:swizzled error:&error];
-                    if (error)
-                    {
-                        [NSException raise:NSInternalInconsistencyException format:[error description]];
-                    }
+                    [[assembly class] typhoon_swizzleMethod:methodSelector withMethod:swizzled error:nil];
                 }
             }
         }

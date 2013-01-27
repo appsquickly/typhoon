@@ -10,12 +10,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <SenTestingKit/SenTestingKit.h>
+#import <objc/message.h>
 #import "Typhoon.h"
 
 #import "Knight.h"
 #import "CampaignQuest.h"
 #import "CavalryMan.h"
 #import "Champion.h"
+#import "NSObject+TyphoonIntrospectionUtils.h"
+#import "AutoWiringKnight.h"
+#import "AutoWiringSubClassedKnight.h"
 
 
 static NSString* const DEFAULT_QUEST = @"quest";
@@ -58,12 +62,11 @@ static NSString* const DEFAULT_QUEST = @"quest";
 
 - (void)test_objectForKey_raises_exception_if_reference_does_not_exist
 {
-    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight"
-            initialization:^(TyphoonInitializer* initializer)
-            {
-                initializer.selector = @selector(initWithQuest:);
-                [initializer injectParameterAtIndex:0 withReference:DEFAULT_QUEST];
-            }]];
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight" initialization:^(TyphoonInitializer* initializer)
+    {
+        initializer.selector = @selector(initWithQuest:);
+        [initializer injectParameterAtIndex:0 withReference:DEFAULT_QUEST];
+    }]];
 
     @try
     {
@@ -83,12 +86,11 @@ static NSString* const DEFAULT_QUEST = @"quest";
 - (void)test_allObjectsForType
 {
 
-    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight"
-            initialization:^(TyphoonInitializer* initializer)
-            {
-                [initializer setSelector:@selector(initWithQuest:)];
-                [initializer injectParameterNamed:@"quest" withReference:@"quest"];
-            }]];
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight" initialization:^(TyphoonInitializer* initializer)
+    {
+        [initializer setSelector:@selector(initWithQuest:)];
+        [initializer injectParameterNamed:@"quest" withReference:@"quest"];
+    }]];
 
     [_componentFactory register:[TyphoonDefinition withClass:[CavalryMan class] key:@"cavalryMan"]];
     [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
@@ -101,12 +103,11 @@ static NSString* const DEFAULT_QUEST = @"quest";
 - (void)test_objectForType
 {
 
-    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight"
-            initialization:^(TyphoonInitializer* initializer)
-            {
-                [initializer setSelector:@selector(initWithQuest:)];
-                [initializer injectParameterNamed:@"quest" withReference:@"quest"];
-            }]];
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight" initialization:^(TyphoonInitializer* initializer)
+    {
+        [initializer setSelector:@selector(initWithQuest:)];
+        [initializer injectParameterNamed:@"quest" withReference:@"quest"];
+    }]];
 
     [_componentFactory register:[TyphoonDefinition withClass:[CavalryMan class] key:@"cavalryMan"]];
     [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
@@ -154,6 +155,21 @@ static NSString* const DEFAULT_QUEST = @"quest";
     assertThat(knight.quest, notNilValue());
 
     NSLog(@"Here's the knight: %@", knight);
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Auto-wiring
+
+- (void)test_autoWired_properties
+{
+    NSSet* autoWired = objc_msgSend([AutoWiringKnight class], @selector(typhoonAutoInjectedProperties));
+    assertThatInt([autoWired count], equalToInt(1));
+    assertThat(autoWired, hasItem(@"quest"));
+
+    autoWired = objc_msgSend([AutoWiringSubClassedKnight class], @selector(typhoonAutoInjectedProperties));
+    assertThatInt([autoWired count], equalToInt(2));
+    assertThat(autoWired, hasItem(@"quest"));
+    assertThat(autoWired, hasItem(@"foobar"));
 }
 
 @end

@@ -43,7 +43,7 @@
     [_configurer mutateComponentDefinitionsIfRequired:[factory registry]];
 
     Knight* knight = [factory componentForType:[Knight class]];
-    assertThatInt(knight.damselsRescued, equalToInt(12));
+    assertThatUnsignedLongLong(knight.damselsRescued, equalToUnsignedLongLong(12));
 
 }
 

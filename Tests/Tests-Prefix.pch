@@ -9,3 +9,6 @@
 
 #define HC_SHORTHAND
 #import <OCHamcrest/OCHamcrest.h>
+
+#define typhoon_shorthand
+

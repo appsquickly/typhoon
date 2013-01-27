@@ -163,6 +163,7 @@
         [_componentFactory register:questDefinition];
 
         Knight* knight = [_componentFactory componentForKey:@"knight"];
+        NSLog(@"Knight: %@", knight); //suppress unused warning.
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
