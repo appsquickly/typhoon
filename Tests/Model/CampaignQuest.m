@@ -11,6 +11,7 @@
 
 
 #import "CampaignQuest.h"
+#import "Typhoon.h"
 
 
 @implementation CampaignQuest

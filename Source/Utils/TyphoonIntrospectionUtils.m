@@ -44,4 +44,27 @@
 
 @end
 
+NSSet* TyphoonAutoWiredProperties(Class clazz, NSSet* properties)
+{
+    Class superClass = class_getSuperclass([clazz class]);
+    if ([superClass respondsToSelector:@selector(typhoonAutoInjectedProperties)])
+    {
+        NSMutableSet* superAutoWired = [[superClass performSelector:@selector(typhoonAutoInjectedProperties)] mutableCopy];
+        [superAutoWired unionSet:properties];
+        return superAutoWired;
+    }
+    return properties;
+}
 
+
+NSString* TyphoonTypeStringFor(id classOrProtocol)
+{
+    if (class_isMetaClass(object_getClass(classOrProtocol)))
+    {
+        return NSStringFromClass(classOrProtocol);
+    }
+    else
+    {
+        return [NSString stringWithFormat:@"id<%@>", NSStringFromProtocol(classOrProtocol)];
+    }
+}

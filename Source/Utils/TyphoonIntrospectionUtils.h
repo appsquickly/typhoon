@@ -15,17 +15,10 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
-static NSSet* TyphoonAutoInjectedProperties(Class clazz, NSSet* properties)
-{
-    Class superClass = class_getSuperclass([clazz class]);
-    if ([superClass respondsToSelector:@selector(typhoonAutoInjectedProperties)])
-    {
-        NSMutableSet* superAutoWired = [[superClass performSelector:@selector(typhoonAutoInjectedProperties)] mutableCopy];
-        [superAutoWired unionSet:properties];
-        return superAutoWired;
-    }
-    return properties;
-}
+NSSet* TyphoonAutoWiredProperties(Class clazz, NSSet* properties);
+
+NSString* TyphoonTypeStringFor(id classOrProtocol);
+
 
 @interface TyphoonIntrospectionUtils : NSObject
 

@@ -28,7 +28,7 @@
 #import "TyphoonInitializer+BlockAssembly.h"
 #import "TyphoonDefinition+BlockAssembly.h"
 
-#define typhoon_autoInject(args...) \
+#define typhoon_autoWire(args...) \
     + (NSSet *)typhoonAutoInjectedProperties { \
         NSMutableSet* autoInjectProperties = [NSMutableSet set]; \
         SEL the_selectors[] = {args}; \
@@ -37,10 +37,10 @@
             SEL selector = the_selectors[i]; \
             [autoInjectProperties addObject:NSStringFromSelector(selector)]; \
         } \
-        return TyphoonAutoInjectedProperties(self, autoInjectProperties); \
+        return TyphoonAutoWiredProperties(self, autoInjectProperties); \
     }
 
 #ifdef typhoon_shorthand
-#define autoInject typhoon_autoInject
+#define autoWire typhoon_autoWire
 #endif
 

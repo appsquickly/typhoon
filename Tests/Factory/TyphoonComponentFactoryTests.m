@@ -10,16 +10,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <SenTestingKit/SenTestingKit.h>
-#import <objc/message.h>
 #import "Typhoon.h"
 
 #import "Knight.h"
 #import "CampaignQuest.h"
 #import "CavalryMan.h"
 #import "Champion.h"
-#import "NSObject+TyphoonIntrospectionUtils.h"
 #import "AutoWiringKnight.h"
-#import "AutoWiringSubClassedKnight.h"
 
 
 static NSString* const DEFAULT_QUEST = @"quest";
@@ -160,16 +157,13 @@ static NSString* const DEFAULT_QUEST = @"quest";
 /* ====================================================================================================================================== */
 #pragma mark - Auto-wiring
 
-- (void)test_autoWired_properties
+- (void)test_autoWires
 {
-    NSSet* autoWired = objc_msgSend([AutoWiringKnight class], @selector(typhoonAutoInjectedProperties));
-    assertThatInt([autoWired count], equalToInt(1));
-    assertThat(autoWired, hasItem(@"quest"));
+    [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class]]];
 
-    autoWired = objc_msgSend([AutoWiringSubClassedKnight class], @selector(typhoonAutoInjectedProperties));
-    assertThatInt([autoWired count], equalToInt(2));
-    assertThat(autoWired, hasItem(@"quest"));
-    assertThat(autoWired, hasItem(@"foobar"));
+    Knight* knight = [_componentFactory componentForType:[AutoWiringKnight class]];
+    assertThat(knight.quest, notNilValue());
 }
+
 
 @end

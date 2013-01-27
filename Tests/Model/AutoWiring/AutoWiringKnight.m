@@ -16,6 +16,6 @@
 
 
 @implementation AutoWiringKnight
-autoInject(@selector(quest))
+autoWire(@selector(quest))
 
 @end

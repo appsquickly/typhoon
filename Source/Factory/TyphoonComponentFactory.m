@@ -11,9 +11,12 @@
 
 
 #import <objc/runtime.h>
+#import <objc/message.h>
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
+#import "TyphoonDefinition+BlockBuilders.h"
+#import "TyphoonIntrospectionUtils.h"
 
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
@@ -52,7 +55,6 @@ static TyphoonComponentFactory* defaultFactory;
 /* ========================================================== Interface Methods ========================================================= */
 - (void)register:(TyphoonDefinition*)definition
 {
-    NSLog(@"Registering: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
     if ([definition.key length] == 0)
     {
         NSString* uuidStr = [[NSProcessInfo processInfo] globallyUniqueString];
@@ -62,6 +64,14 @@ static TyphoonComponentFactory* defaultFactory;
     {
         [NSException raise:NSInvalidArgumentException format:@"Key '%@' is already registered.", definition.key];
     }
+    if ([definition.type respondsToSelector:@selector(typhoonAutoInjectedProperties)])
+    {
+        for (NSString* autoWired in objc_msgSend(definition.type, @selector(typhoonAutoInjectedProperties)))
+        {
+            [definition injectProperty:NSSelectorFromString(autoWired)];
+        }
+    }
+    NSLog(@"Registering: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
     [_registry addObject:definition];
 }
 
@@ -70,7 +80,15 @@ static TyphoonComponentFactory* defaultFactory;
     NSArray* candidates = [self allComponentsForType:classOrProtocol];
     if ([candidates count] == 0)
     {
-        [NSException raise:NSInvalidArgumentException format:@"No components defined which satisify type: '%@'", classOrProtocol];
+        if (class_isMetaClass(object_getClass(classOrProtocol)) &&
+                [classOrProtocol respondsToSelector:@selector(typhoonAutoInjectedProperties)])
+        {
+            NSLog(@"Class %@ wants auto-wiring. . . registering.", NSStringFromClass(classOrProtocol));
+            [self register:[TyphoonDefinition withClass:classOrProtocol]];
+            return [self componentForType:classOrProtocol];
+        }
+        [NSException raise:NSInvalidArgumentException format:@"No components defined which satisify type: '%@'",
+                                                             TyphoonTypeStringFor(classOrProtocol)];
     }
     if ([candidates count] > 1)
     {

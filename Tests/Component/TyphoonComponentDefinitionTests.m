@@ -10,8 +10,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <SenTestingKit/SenTestingKit.h>
+#import <objc/message.h>
 #import "Knight.h"
 #import "Typhoon.h"
+#import "AutoWiringKnight.h"
+#import "AutoWiringSubClassedKnight.h"
 
 
 @interface TyphoonComponentDefinitionTests : SenTestCase
@@ -66,6 +69,21 @@
         assertThat([e description], equalTo(@"Property 'clazz' is required."));
     }
 
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Auto-wiring
+
+- (void)test_autoWired_properties
+{
+    NSSet* autoWired = objc_msgSend([AutoWiringKnight class], @selector(typhoonAutoInjectedProperties));
+    assertThatInt([autoWired count], equalToInt(1));
+    assertThat(autoWired, hasItem(@"quest"));
+
+    autoWired = objc_msgSend([AutoWiringSubClassedKnight class], @selector(typhoonAutoInjectedProperties));
+    assertThatInt([autoWired count], equalToInt(2));
+    assertThat(autoWired, hasItem(@"quest"));
+    assertThat(autoWired, hasItem(@"foobar"));
 }
 
 @end

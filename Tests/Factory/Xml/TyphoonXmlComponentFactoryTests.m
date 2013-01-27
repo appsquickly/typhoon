@@ -15,6 +15,7 @@
 #import "ClassADependsOnB.h"
 #import "Sword.h"
 #import "CavalryMan.h"
+#import "CampaignQuest.h"
 
 @interface TyphoonXmlComponentFactoryTests : SenTestCase
 @end

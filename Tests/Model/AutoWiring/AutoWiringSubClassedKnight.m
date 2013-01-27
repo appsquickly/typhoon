@@ -16,6 +16,6 @@
 
 
 @implementation AutoWiringSubClassedKnight
-autoInject(@selector(quest), @selector(foobar))
+autoWire(@selector(quest), @selector(foobar))
 
 @end
