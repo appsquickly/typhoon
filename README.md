@@ -175,7 +175,6 @@ each commit. (If you'd like the script I will share it).
 ##Current Work?
 
 * More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
-* Macro-style injection, especially some shortcuts for when simple auto-wiring is all you need. 
 
 # Frequently Asked Questions
 
