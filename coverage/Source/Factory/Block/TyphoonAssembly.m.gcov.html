@@ -98,72 +98,61 @@
 <span class="lineNum">      40 </span><span class="lineCov">         40 :         IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me, BOOL selected)</span>
 <span class="lineNum">      41 </span>            :         {
 <span class="lineNum">      42 </span>            :             NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@&quot;&quot;];
-<span class="lineNum">      43 </span>            : 
-<span class="lineNum">      44 </span>            :             id cached = [[me cachedSelectors] objectForKey:key];
-<span class="lineNum">      45 </span>            : 
-<span class="lineNum">      46 </span>            :             if (cached == nil)
-<span class="lineNum">      47 </span>            :             {
-<span class="lineNum">      48 </span>            :                 NSError* error;
-<span class="lineNum">      49 </span>            :                 [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:&amp;error];
-<span class="lineNum">      50 </span>            :                 if (error)
-<span class="lineNum">      51 </span>            :                 {
-<span class="lineNum">      52 </span>            :                     [NSException raise:NSInternalInconsistencyException format:[error description]];
-<span class="lineNum">      53 </span>            :                 }
-<span class="lineNum">      54 </span>            :                 cached = objc_msgSend(me, sel);
-<span class="lineNum">      55 </span>            :                 if (cached &amp;&amp; [cached isKindOfClass:[TyphoonDefinition class]])
-<span class="lineNum">      56 </span>            :                 {
-<span class="lineNum">      57 </span>            :                     TyphoonDefinition* definition = (TyphoonDefinition*) cached;
-<span class="lineNum">      58 </span>            :                     if ([definition.key length] == 0)
-<span class="lineNum">      59 </span>            :                     {
-<span class="lineNum">      60 </span>            :                         definition.key = key;
-<span class="lineNum">      61 </span>            :                     }
-<span class="lineNum">      62 </span>            :                     [[me cachedSelectors] setObject:definition forKey:key];
-<span class="lineNum">      63 </span>            :                 }
-<span class="lineNum">      64 </span>            :                 [[self class] typhoon_swizzleMethod:NSSelectorFromString(key) withMethod:sel error:&amp;error];
-<span class="lineNum">      65 </span>            :                 if (error)
-<span class="lineNum">      66 </span>            :                 {
-<span class="lineNum">      67 </span>            :                     [NSException raise:NSInternalInconsistencyException format:[error description]];
-<span class="lineNum">      68 </span>            :                 }
-<span class="lineNum">      69 </span>            :             }
-<span class="lineNum">      70 </span>            :             return cached;
-<span class="lineNum">      71 </span>            : 
-<span class="lineNum">      72 </span><span class="lineCov">          3 :         }));</span>
-<span class="lineNum">      73 </span><span class="lineCov">          3 :         class_addMethod(self, sel, imp, &quot;@&quot;);</span>
-<span class="lineNum">      74 </span>            :         return YES;
-<span class="lineNum">      75 </span><span class="lineCov">          3 :     }</span>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 :     return NO;</span>
-<span class="lineNum">      77 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">      78 </span>            : 
-<span class="lineNum">      79 </span><span class="lineCov">         21 : + (BOOL)selectorReserved:(SEL)selector</span>
-<span class="lineNum">      80 </span>            : {
-<span class="lineNum">      81 </span><span class="lineCov">         21 :     return selector == @selector(init) || selector == @selector(cachedSelectors) || selector == NSSelectorFromString(@&quot;.cxx_destruct&quot;);</span>
-<span class="lineNum">      82 </span>            : }
+<span class="lineNum">      43 </span>            :             id cached = [[me cachedSelectors] objectForKey:key];
+<span class="lineNum">      44 </span>            :             if (cached == nil)
+<span class="lineNum">      45 </span>            :             {
+<span class="lineNum">      46 </span>            :                 [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:nil];
+<span class="lineNum">      47 </span>            :                 cached = objc_msgSend(me, sel);
+<span class="lineNum">      48 </span>            :                 if (cached &amp;&amp; [cached isKindOfClass:[TyphoonDefinition class]])
+<span class="lineNum">      49 </span>            :                 {
+<span class="lineNum">      50 </span>            :                     TyphoonDefinition* definition = (TyphoonDefinition*) cached;
+<span class="lineNum">      51 </span>            :                     if ([definition.key length] == 0)
+<span class="lineNum">      52 </span>            :                     {
+<span class="lineNum">      53 </span>            :                         definition.key = key;
+<span class="lineNum">      54 </span>            :                     }
+<span class="lineNum">      55 </span>            :                     [[me cachedSelectors] setObject:definition forKey:key];
+<span class="lineNum">      56 </span>            :                 }
+<span class="lineNum">      57 </span>            :                 [[self class] typhoon_swizzleMethod:NSSelectorFromString(key) withMethod:sel error:nil];
+<span class="lineNum">      58 </span>            :             }
+<span class="lineNum">      59 </span>            :             return cached;
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span><span class="lineCov">          3 :         }));</span>
+<span class="lineNum">      62 </span><span class="lineCov">          3 :         class_addMethod(self, sel, imp, &quot;@&quot;);</span>
+<span class="lineNum">      63 </span>            :         return YES;
+<span class="lineNum">      64 </span><span class="lineCov">          3 :     }</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :     return NO;</span>
+<span class="lineNum">      66 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span><span class="lineCov">         21 : + (BOOL)selectorReserved:(SEL)selector</span>
+<span class="lineNum">      69 </span>            : {
+<span class="lineNum">      70 </span><span class="lineCov">         21 :     return selector == @selector(init) || selector == @selector(cachedSelectors) || selector == NSSelectorFromString(@&quot;.cxx_destruct&quot;);</span>
+<span class="lineNum">      71 </span>            : }
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span>            : /* ============================================================ Initializers ============================================================ */
+<span class="lineNum">      74 </span><span class="lineCov">          5 : - (id)init</span>
+<span class="lineNum">      75 </span>            : {
+<span class="lineNum">      76 </span><span class="lineCov">          5 :     self = [super init];</span>
+<span class="lineNum">      77 </span><span class="lineCov">          5 :     if (self)</span>
+<span class="lineNum">      78 </span>            :     {
+<span class="lineNum">      79 </span><span class="lineCov">          5 :         _cachedDefinitions = [[NSMutableDictionary alloc] init];</span>
+<span class="lineNum">      80 </span><span class="lineCov">          5 :     }</span>
+<span class="lineNum">      81 </span><span class="lineCov">          5 :     return self;</span>
+<span class="lineNum">      82 </span><span class="lineCov">          5 : }</span>
 <span class="lineNum">      83 </span>            : 
-<span class="lineNum">      84 </span>            : /* ============================================================ Initializers ============================================================ */
-<span class="lineNum">      85 </span><span class="lineCov">          5 : - (id)init</span>
+<span class="lineNum">      84 </span>            : /* ============================================================ Utility Methods ========================================================= */
+<span class="lineNum">      85 </span><span class="lineCov">          5 : - (void)dealloc</span>
 <span class="lineNum">      86 </span>            : {
-<span class="lineNum">      87 </span><span class="lineCov">          5 :     self = [super init];</span>
-<span class="lineNum">      88 </span><span class="lineCov">          5 :     if (self)</span>
-<span class="lineNum">      89 </span>            :     {
-<span class="lineNum">      90 </span><span class="lineCov">          5 :         _cachedDefinitions = [[NSMutableDictionary alloc] init];</span>
-<span class="lineNum">      91 </span><span class="lineCov">          5 :     }</span>
-<span class="lineNum">      92 </span><span class="lineCov">          5 :     return self;</span>
-<span class="lineNum">      93 </span><span class="lineCov">          5 : }</span>
-<span class="lineNum">      94 </span>            : 
-<span class="lineNum">      95 </span>            : /* ============================================================ Utility Methods ========================================================= */
-<span class="lineNum">      96 </span><span class="lineCov">          5 : - (void)dealloc</span>
-<span class="lineNum">      97 </span>            : {
-<span class="lineNum">      98 </span><span class="lineCov">          5 :     NSLog(@&quot;$$$$$$ %@ in dealloc!&quot;, [self class]);</span>
-<span class="lineNum">      99 </span><span class="lineCov">          5 : }</span>
-<span class="lineNum">     100 </span>            : 
-<span class="lineNum">     101 </span>            : /* ============================================================ Private Methods ========================================================= */
-<span class="lineNum">     102 </span><span class="lineCov">         75 : - (NSMutableDictionary*)cachedSelectors</span>
-<span class="lineNum">     103 </span>            : {
-<span class="lineNum">     104 </span><span class="lineCov">         75 :     return _cachedDefinitions;</span>
-<span class="lineNum">     105 </span>            : }
-<span class="lineNum">     106 </span>            : 
-<span class="lineNum">     107 </span>            : 
-<span class="lineNum">     108 </span>            : @end
+<span class="lineNum">      87 </span><span class="lineCov">          5 :     NSLog(@&quot;$$$$$$ %@ in dealloc!&quot;, [self class]);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span>            : /* ============================================================ Private Methods ========================================================= */
+<span class="lineNum">      91 </span><span class="lineCov">         75 : - (NSMutableDictionary*)cachedSelectors</span>
+<span class="lineNum">      92 </span>            : {
+<span class="lineNum">      93 </span><span class="lineCov">         75 :     return _cachedDefinitions;</span>
+<span class="lineNum">      94 </span>            : }
+<span class="lineNum">      95 </span>            : 
+<span class="lineNum">      96 </span>            : 
+<span class="lineNum">      97 </span>            : @end
 </pre>
       </td>
     </tr>
