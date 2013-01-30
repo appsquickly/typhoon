@@ -64,12 +64,12 @@
     {
         TyphoonInitializer* componentInitializer = [[TyphoonInitializer alloc] init];
         definition.initializer = componentInitializer;
-        __weak TyphoonInitializer* weakInitializer = componentInitializer;
+        __unsafe_unretained TyphoonInitializer* weakInitializer = componentInitializer;
         initialization(weakInitializer);
     }
     if (properties)
     {
-        __weak TyphoonDefinition* weakDefinition = definition;
+        __unsafe_unretained TyphoonDefinition* weakDefinition = definition;
         properties(weakDefinition);
     }
     return definition;
