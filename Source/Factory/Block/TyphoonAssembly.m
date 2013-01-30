@@ -40,17 +40,10 @@
         IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me, BOOL selected)
         {
             NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@""];
-
             id cached = [[me cachedSelectors] objectForKey:key];
-
             if (cached == nil)
             {
-                NSError* error;
-                [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:&error];
-                if (error)
-                {
-                    [NSException raise:NSInternalInconsistencyException format:[error description]];
-                }
+                [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:nil];
                 cached = objc_msgSend(me, sel);
                 if (cached && [cached isKindOfClass:[TyphoonDefinition class]])
                 {
@@ -61,11 +54,7 @@
                     }
                     [[me cachedSelectors] setObject:definition forKey:key];
                 }
-                [[self class] typhoon_swizzleMethod:NSSelectorFromString(key) withMethod:sel error:&error];
-                if (error)
-                {
-                    [NSException raise:NSInternalInconsistencyException format:[error description]];
-                }
+                [[self class] typhoon_swizzleMethod:NSSelectorFromString(key) withMethod:sel error:nil];
             }
             return cached;
 
