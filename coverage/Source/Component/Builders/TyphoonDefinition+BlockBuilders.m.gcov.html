@@ -122,12 +122,12 @@
 <span class="lineNum">      64 </span><span class="lineCov">         15 :     {</span>
 <span class="lineNum">      65 </span>            :         TyphoonInitializer* componentInitializer = [[TyphoonInitializer alloc] init];
 <span class="lineNum">      66 </span>            :         definition.initializer = componentInitializer;
-<span class="lineNum">      67 </span><span class="lineCov">         15 :         __weak TyphoonInitializer* weakInitializer = componentInitializer;</span>
+<span class="lineNum">      67 </span><span class="lineCov">         15 :         __unsafe_unretained TyphoonInitializer* weakInitializer = componentInitializer;</span>
 <span class="lineNum">      68 </span><span class="lineCov">         15 :         initialization(weakInitializer);</span>
 <span class="lineNum">      69 </span>            :     }
 <span class="lineNum">      70 </span><span class="lineCov">          9 :     if (properties)</span>
 <span class="lineNum">      71 </span><span class="lineCov">          9 :     {</span>
-<span class="lineNum">      72 </span><span class="lineCov">          9 :         __weak TyphoonDefinition* weakDefinition = definition;</span>
+<span class="lineNum">      72 </span><span class="lineCov">          9 :         __unsafe_unretained TyphoonDefinition* weakDefinition = definition;</span>
 <span class="lineNum">      73 </span><span class="lineCov">          9 :         properties(weakDefinition);</span>
 <span class="lineNum">      74 </span><span class="lineCov">          9 :     }</span>
 <span class="lineNum">      75 </span><span class="lineCov">         15 :     return definition;</span>
