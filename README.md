@@ -146,6 +146,8 @@ And then:
 
 * <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">Assembling Components with Blocks</a> ___or___ <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-in-XML">Assembling Components in XML</a>
 
+* <a href="https://github.com/jasperblues/Typhoon/wiki/Autowiring">Autowiring</a>
+
 * <a href="https://github.com/jasperblues/Typhoon/wiki/Using-Assembled-Components">Using Assembled Components</a>
 
 * <a href="https://github.com/jasperblues/Typhoon/wiki/Incorporating">Incorporating the framework into your project.</a>
