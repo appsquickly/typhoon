@@ -146,6 +146,8 @@ And then:
 
 * <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">Assembling Components with Blocks</a> ___or___ <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-in-XML">Assembling Components in XML</a>
 
+* <a href="https://github.com/jasperblues/Typhoon/wiki/Autowiring">Autowiring</a>
+
 * <a href="https://github.com/jasperblues/Typhoon/wiki/Using-Assembled-Components">Using Assembled Components</a>
 
 * <a href="https://github.com/jasperblues/Typhoon/wiki/Incorporating">Incorporating the framework into your project.</a>
@@ -173,7 +175,8 @@ each commit. (If you'd like the script I will share it).
 ##Current Work?
 
 * More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
-* Macro-style injection, especially some shortcuts for when simple auto-wiring is all you need. 
+* Documentation (including API docs). 
+* ALl kinds of testing. 
 
 # Frequently Asked Questions
 
