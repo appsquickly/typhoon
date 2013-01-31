@@ -23,8 +23,9 @@
 
 - (void)setUp
 {
-    _configurer = [[TyphoonPropertyPlaceholderConfigurer alloc] init];
-    [_configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
+    id<TyphoonResource> propertyFile1 = [TyphoonBundleResource withName:@"SomeProperties.properties"];
+    _configurer = [TyphoonPropertyPlaceholderConfigurer configurerWithResources:propertyFile1, nil];
+
 }
 
 - (void)test_parses_property_name_value_pairs

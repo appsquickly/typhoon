@@ -10,7 +10,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonDefinition.h"
-#import "TyphoonDefinition+BlockBuilders.h"
 #import "TyphoonInitializer.h"
 #import "TyphoonPropertyPlaceholderConfigurer.h"
 #import "TyphoonResource.h"
@@ -29,19 +28,6 @@
 #import "TyphoonInitializer+BlockAssembly.h"
 #import "TyphoonDefinition+BlockAssembly.h"
 
-#define typhoon_autoWire(args...) \
-    + (NSSet *)typhoonAutoInjectedProperties { \
-        NSMutableSet* autoInjectProperties = [NSMutableSet set]; \
-        SEL the_selectors[] = {args}; \
-        int argCount = (sizeof((SEL[]){args})/sizeof(SEL)); \
-        for (int i = 0; i < argCount; i++) { \
-            SEL selector = the_selectors[i]; \
-            [autoInjectProperties addObject:NSStringFromSelector(selector)]; \
-        } \
-        return TyphoonAutoWiredProperties(self, autoInjectProperties); \
-    }
+#import "TyphoonAutowire.h"
 
-#ifdef typhoon_shorthand
-#define autoWire typhoon_autoWire
-#endif
 

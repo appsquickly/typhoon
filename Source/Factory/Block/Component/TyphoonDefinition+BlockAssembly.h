@@ -14,8 +14,51 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonDefinition.h"
 
+@class TyphoonInitializer;
+@class TyphoonDefinition;
+
+
+typedef void(^TyphoonInitializationBlock)(TyphoonInitializer* initializer);
+
+typedef void(^TyphoonPropertyInjectionBlock)(TyphoonDefinition* propertyInjector);
+
+
 @interface TyphoonDefinition (BlockAssembly)
 
+
+
+/* ====================================================================================================================================== */
+#pragma mark No injection
+
++ (TyphoonDefinition*)withClass:(Class)clazz;
+
++ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key;
+
+
+/* ====================================================================================================================================== */
+#pragma mark Anonymous keys
+
++ (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializationBlock)initialization
+        properties:(TyphoonPropertyInjectionBlock)properties;
+
++ (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializationBlock)initialization;
+
+
++ (TyphoonDefinition*)withClass:(Class)clazz properties:(TyphoonPropertyInjectionBlock)properties;
+
+
+/* ====================================================================================================================================== */
+#pragma mark - Explicit keys
+
++ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key initialization:(TyphoonInitializationBlock)initialization;
+
++ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key properties:(TyphoonPropertyInjectionBlock)properties;
+
++ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key initialization:(TyphoonInitializationBlock)initialization
+        properties:(TyphoonPropertyInjectionBlock)properties;
+
+
+/* ====================================================================================================================================== */
 - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition;
 
 @end

@@ -40,6 +40,30 @@
     return [[[self class] alloc] init];
 }
 
++ (TyphoonPropertyPlaceholderConfigurer*)configurerWithResource:(id <TyphoonResource>)resource
+{
+    TyphoonPropertyPlaceholderConfigurer* configurer = [TyphoonPropertyPlaceholderConfigurer configurer];
+    [configurer usePropertyStyleResource:resource];
+    return configurer;
+}
+
++ (TyphoonPropertyPlaceholderConfigurer*)configurerWithResources:(id <TyphoonResource>)first,...
+{
+    TyphoonPropertyPlaceholderConfigurer* configurer = [TyphoonPropertyPlaceholderConfigurer configurer];
+    [configurer usePropertyStyleResource:first];
+
+    va_list resource_list;
+    va_start(resource_list, first);
+    id<TyphoonResource> resource;
+    while ((resource = va_arg( resource_list, id<TyphoonResource>)))
+    {
+        [configurer usePropertyStyleResource:resource];
+    }
+    va_end(resource_list);
+    return configurer;
+}
+
+
 /* ============================================================ Initializers ============================================================ */
 - (id)initWithPrefix:(NSString*)prefix suffix:(NSString*)suffix
 {
@@ -61,6 +85,7 @@
 /* ========================================================== Interface Methods ========================================================= */
 - (void)usePropertyStyleResource:(id <TyphoonResource>)resource
 {
+    NSLog(@"$$$$$$$ here we go$$$$$$");
     NSArray* lines = [[resource asString] componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     for (NSString* line in lines)
     {

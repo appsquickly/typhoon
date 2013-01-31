@@ -28,7 +28,6 @@
     self = [super init];
     if (self)
     {
-
         va_list xml_list;
         _resourceNames = [NSMutableArray arrayWithObject:configFileName];
 
