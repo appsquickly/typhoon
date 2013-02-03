@@ -77,21 +77,21 @@
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : /* ============================================================ Initializers ============================================================ */
 <span class="lineNum">      21 </span>            : - (id)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString*)reference
-<span class="lineNum">      22 </span><span class="lineCov">         20 : {</span>
+<span class="lineNum">      22 </span><span class="lineCov">         22 : {</span>
 <span class="lineNum">      23 </span>            :     self = [super init];
-<span class="lineNum">      24 </span><span class="lineCov">         20 :     if (self)</span>
-<span class="lineNum">      25 </span><span class="lineCov">         20 :     {</span>
+<span class="lineNum">      24 </span><span class="lineCov">         22 :     if (self)</span>
+<span class="lineNum">      25 </span><span class="lineCov">         22 :     {</span>
 <span class="lineNum">      26 </span>            :         _index = parameterIndex;
-<span class="lineNum">      27 </span><span class="lineCov">         20 :         _reference = reference;</span>
-<span class="lineNum">      28 </span><span class="lineCov">         20 :     }</span>
-<span class="lineNum">      29 </span><span class="lineCov">         20 :     return self;</span>
-<span class="lineNum">      30 </span><span class="lineCov">         20 : }</span>
-<span class="lineNum">      31 </span><span class="lineCov">         20 : </span>
+<span class="lineNum">      27 </span><span class="lineCov">         22 :         _reference = reference;</span>
+<span class="lineNum">      28 </span><span class="lineCov">         22 :     }</span>
+<span class="lineNum">      29 </span><span class="lineCov">         22 :     return self;</span>
+<span class="lineNum">      30 </span><span class="lineCov">         22 : }</span>
+<span class="lineNum">      31 </span><span class="lineCov">         22 : </span>
 <span class="lineNum">      32 </span>            : /* =========================================================== Protocol Methods ========================================================= */
 <span class="lineNum">      33 </span>            : - (TyphoonParameterInjectionType)type
-<span class="lineNum">      34 </span><span class="lineCov">         11 : {</span>
+<span class="lineNum">      34 </span><span class="lineCov">          8 : {</span>
 <span class="lineNum">      35 </span>            :     return TyphoonParameterInjectedByReferenceType;
-<span class="lineNum">      36 </span><span class="lineCov">         11 : }</span>
+<span class="lineNum">      36 </span><span class="lineCov">          8 : }</span>
 <span class="lineNum">      37 </span>            : 
 <span class="lineNum">      38 </span>            : - (void)setInitializer:(TyphoonInitializer*)initializer
 <span class="lineNum">      39 </span><span class="lineCov">          1 : {</span>

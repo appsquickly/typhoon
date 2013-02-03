@@ -73,28 +73,28 @@
 <span class="lineNum">      15 </span>            : #import &quot;TyphoonPropertyInjectedByValue.h&quot;
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">          6 : @implementation TyphoonPropertyInjectedByValue</span>
+<span class="lineNum">      18 </span><span class="lineCov">          8 : @implementation TyphoonPropertyInjectedByValue</span>
 <span class="lineNum">      19 </span>            : {
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span>            : }
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : /* ============================================================ Initializers ============================================================ */
 <span class="lineNum">      24 </span>            : - (id)initWithName:(NSString*)name value:(NSString*)value
-<span class="lineNum">      25 </span><span class="lineCov">         39 : {</span>
+<span class="lineNum">      25 </span><span class="lineCov">         57 : {</span>
 <span class="lineNum">      26 </span>            :     self = [super init];
-<span class="lineNum">      27 </span><span class="lineCov">         39 :     if (self)</span>
-<span class="lineNum">      28 </span><span class="lineCov">         39 :     {</span>
+<span class="lineNum">      27 </span><span class="lineCov">         57 :     if (self)</span>
+<span class="lineNum">      28 </span><span class="lineCov">         57 :     {</span>
 <span class="lineNum">      29 </span>            :         _name = name;
-<span class="lineNum">      30 </span><span class="lineCov">         39 :         _textValue = value;</span>
-<span class="lineNum">      31 </span><span class="lineCov">         39 :     }</span>
-<span class="lineNum">      32 </span><span class="lineCov">         39 :     return self;</span>
-<span class="lineNum">      33 </span><span class="lineCov">         39 : }</span>
-<span class="lineNum">      34 </span><span class="lineCov">         39 : </span>
+<span class="lineNum">      30 </span><span class="lineCov">         57 :         _textValue = value;</span>
+<span class="lineNum">      31 </span><span class="lineCov">         57 :     }</span>
+<span class="lineNum">      32 </span><span class="lineCov">         57 :     return self;</span>
+<span class="lineNum">      33 </span><span class="lineCov">         57 : }</span>
+<span class="lineNum">      34 </span><span class="lineCov">         57 : </span>
 <span class="lineNum">      35 </span>            : /* =========================================================== Protocol Methods ========================================================= */
 <span class="lineNum">      36 </span>            : - (TyphoonPropertyInjectionType)type
-<span class="lineNum">      37 </span><span class="lineCov">         27 : {</span>
+<span class="lineNum">      37 </span><span class="lineCov">         36 : {</span>
 <span class="lineNum">      38 </span>            :     return TyphoonPropertyInjectionByValueType;
-<span class="lineNum">      39 </span><span class="lineCov">         27 : }</span>
+<span class="lineNum">      39 </span><span class="lineCov">         36 : }</span>
 <span class="lineNum">      40 </span>            : 
 <span class="lineNum">      41 </span>            : /* ============================================================ Utility Methods ========================================================= */
 <span class="lineNum">      42 </span>            : - (NSString*)description
