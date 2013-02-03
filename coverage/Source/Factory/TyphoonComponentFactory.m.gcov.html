@@ -83,7 +83,7 @@
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : @end
 <span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span><span class="lineCov">         11 : @implementation TyphoonComponentFactory</span>
+<span class="lineNum">      28 </span><span class="lineCov">          9 : @implementation TyphoonComponentFactory</span>
 <span class="lineNum">      29 </span>            : 
 <span class="lineNum">      30 </span>            : static TyphoonComponentFactory* defaultFactory;
 <span class="lineNum">      31 </span>            : 
@@ -95,43 +95,43 @@
 <span class="lineNum">      37 </span>            : }
 <span class="lineNum">      38 </span>            : 
 <span class="lineNum">      39 </span>            : /* ============================================================ Initializers ============================================================ */
-<span class="lineNum">      40 </span><span class="lineCov">         41 : - (id)init</span>
+<span class="lineNum">      40 </span><span class="lineCov">         55 : - (id)init</span>
 <span class="lineNum">      41 </span>            : {
-<span class="lineNum">      42 </span><span class="lineCov">         41 :     self = [super init];</span>
-<span class="lineNum">      43 </span><span class="lineCov">         41 :     if (self)</span>
+<span class="lineNum">      42 </span><span class="lineCov">         55 :     self = [super init];</span>
+<span class="lineNum">      43 </span><span class="lineCov">         55 :     if (self)</span>
 <span class="lineNum">      44 </span>            :     {
-<span class="lineNum">      45 </span><span class="lineCov">         41 :         _registry = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      46 </span><span class="lineCov">         41 :         _singletons = [[NSMutableDictionary alloc] init];</span>
-<span class="lineNum">      47 </span><span class="lineCov">         41 :         _currentlyResolvingReferences = [[NSMutableSet alloc] init];</span>
-<span class="lineNum">      48 </span><span class="lineCov">         41 :         _mutators = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      49 </span><span class="lineCov">         41 :         _hasPerformedMutations = NO;</span>
-<span class="lineNum">      50 </span><span class="lineCov">         41 :     }</span>
-<span class="lineNum">      51 </span><span class="lineCov">         41 :     return self;</span>
-<span class="lineNum">      52 </span><span class="lineCov">         41 : }</span>
+<span class="lineNum">      45 </span><span class="lineCov">         55 :         _registry = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      46 </span><span class="lineCov">         55 :         _singletons = [[NSMutableDictionary alloc] init];</span>
+<span class="lineNum">      47 </span><span class="lineCov">         55 :         _currentlyResolvingReferences = [[NSMutableSet alloc] init];</span>
+<span class="lineNum">      48 </span><span class="lineCov">         55 :         _mutators = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      49 </span><span class="lineCov">         55 :         _hasPerformedMutations = NO;</span>
+<span class="lineNum">      50 </span><span class="lineCov">         55 :     }</span>
+<span class="lineNum">      51 </span><span class="lineCov">         55 :     return self;</span>
+<span class="lineNum">      52 </span><span class="lineCov">         55 : }</span>
 <span class="lineNum">      53 </span>            : 
 <span class="lineNum">      54 </span>            : 
 <span class="lineNum">      55 </span>            : /* ========================================================== Interface Methods ========================================================= */
-<span class="lineNum">      56 </span><span class="lineCov">        150 : - (void)register:(TyphoonDefinition*)definition</span>
+<span class="lineNum">      56 </span><span class="lineCov">        178 : - (void)register:(TyphoonDefinition*)definition</span>
 <span class="lineNum">      57 </span>            : {
-<span class="lineNum">      58 </span><span class="lineCov">        150 :     if ([definition.key length] == 0)</span>
+<span class="lineNum">      58 </span><span class="lineCov">        178 :     if ([definition.key length] == 0)</span>
 <span class="lineNum">      59 </span>            :     {
 <span class="lineNum">      60 </span><span class="lineCov">          3 :         NSString* uuidStr = [[NSProcessInfo processInfo] globallyUniqueString];</span>
 <span class="lineNum">      61 </span><span class="lineCov">          3 :         definition.key = [NSString stringWithFormat:@&quot;%@_%@&quot;, NSStringFromClass(definition.type), uuidStr];</span>
 <span class="lineNum">      62 </span><span class="lineCov">          3 :     }</span>
-<span class="lineNum">      63 </span><span class="lineCov">        150 :     if ([self definitionForKey:definition.key])</span>
+<span class="lineNum">      63 </span><span class="lineCov">        178 :     if ([self definitionForKey:definition.key])</span>
 <span class="lineNum">      64 </span>            :     {
 <span class="lineNum">      65 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Key '%@' is already registered.&quot;, definition.key];</span>
 <span class="lineNum">      66 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      67 </span><span class="lineCov">        150 :     if ([definition.type respondsToSelector:@selector(typhoonAutoInjectedProperties)])</span>
+<span class="lineNum">      67 </span><span class="lineCov">        178 :     if ([definition.type respondsToSelector:@selector(typhoonAutoInjectedProperties)])</span>
 <span class="lineNum">      68 </span>            :     {
 <span class="lineNum">      69 </span><span class="lineCov">          1 :         for (NSString* autoWired in objc_msgSend(definition.type, @selector(typhoonAutoInjectedProperties)))</span>
 <span class="lineNum">      70 </span>            :         {
 <span class="lineNum">      71 </span><span class="lineCov">          1 :             [definition injectProperty:NSSelectorFromString(autoWired)];</span>
 <span class="lineNum">      72 </span><span class="lineCov">          1 :         }</span>
 <span class="lineNum">      73 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">      74 </span><span class="lineCov">        150 :     NSLog(@&quot;Registering: %@ with key: %@&quot;, NSStringFromClass(definition.type), definition.key);</span>
-<span class="lineNum">      75 </span><span class="lineCov">        150 :     [_registry addObject:definition];</span>
-<span class="lineNum">      76 </span><span class="lineCov">        150 : }</span>
+<span class="lineNum">      74 </span><span class="lineCov">        178 :     NSLog(@&quot;Registering: %@ with key: %@&quot;, NSStringFromClass(definition.type), definition.key);</span>
+<span class="lineNum">      75 </span><span class="lineCov">        178 :     [_registry addObject:definition];</span>
+<span class="lineNum">      76 </span><span class="lineCov">        178 : }</span>
 <span class="lineNum">      77 </span>            : 
 <span class="lineNum">      78 </span><span class="lineCov">          9 : - (id)componentForType:(id)classOrProtocol</span>
 <span class="lineNum">      79 </span>            : {
@@ -257,17 +257,17 @@
 <span class="lineNum">     199 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     200 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     201 </span>            : 
-<span class="lineNum">     202 </span><span class="lineCov">        190 : - (TyphoonDefinition*)definitionForKey:(NSString*)key</span>
+<span class="lineNum">     202 </span><span class="lineCov">        218 : - (TyphoonDefinition*)definitionForKey:(NSString*)key</span>
 <span class="lineNum">     203 </span>            : {
-<span class="lineNum">     204 </span><span class="lineCov">        400 :     for (TyphoonDefinition* definition in _registry)</span>
+<span class="lineNum">     204 </span><span class="lineCov">        415 :     for (TyphoonDefinition* definition in _registry)</span>
 <span class="lineNum">     205 </span>            :     {
-<span class="lineNum">     206 </span><span class="lineCov">        400 :         if ([definition.key isEqualToString:key])</span>
+<span class="lineNum">     206 </span><span class="lineCov">        415 :         if ([definition.key isEqualToString:key])</span>
 <span class="lineNum">     207 </span>            :         {
 <span class="lineNum">     208 </span><span class="lineCov">         39 :             return definition;</span>
 <span class="lineNum">     209 </span>            :         }
-<span class="lineNum">     210 </span><span class="lineCov">        441 :     }</span>
-<span class="lineNum">     211 </span><span class="lineCov">        151 :     return nil;</span>
-<span class="lineNum">     212 </span><span class="lineCov">        190 : }</span>
+<span class="lineNum">     210 </span><span class="lineCov">        470 :     }</span>
+<span class="lineNum">     211 </span><span class="lineCov">        179 :     return nil;</span>
+<span class="lineNum">     212 </span><span class="lineCov">        218 : }</span>
 <span class="lineNum">     213 </span>            : 
 <span class="lineNum">     214 </span><span class="lineCov">         60 : - (void)assertNotCircularDependency:(NSString*)key</span>
 <span class="lineNum">     215 </span>            : {
