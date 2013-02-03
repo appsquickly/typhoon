@@ -20,7 +20,3 @@
         } \
         return TyphoonAutoWiredProperties(self, autoInjectProperties); \
     }
-
-#ifdef typhoon_shorthand
-#define autoWire typhoon_autoWire
-#endif

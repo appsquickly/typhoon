@@ -29,5 +29,6 @@
 #import "TyphoonDefinition+BlockAssembly.h"
 
 #import "TyphoonAutowire.h"
+#import "TyphoonShorthand.h"
 
 
