@@ -93,6 +93,7 @@ static NSMutableArray* swizzleRegistry;
         }
     }
     NSMutableDictionary* dictionary = [assembly cachedSelectors];
+    free(methodList);
     return [dictionary allValues];
 }
 
@@ -118,6 +119,7 @@ static NSMutableArray* swizzleRegistry;
                 }
             }
         }
+        free(methodList);
     }
 }
 
