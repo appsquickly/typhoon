@@ -35,4 +35,10 @@
 }
 
 
+- (void)dealloc
+{
+    NSLog(@"$$$$$$$$$$$$$$ %@ in dealloc!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", NSStringFromClass([self class]));
+}
+
+
 @end

@@ -19,8 +19,8 @@
 
 typedef enum
 {
-    TyphoonComponentLifeCycleSingleton,
-    TyphoonComponentLifeCyclePrototype
+    TyphoonComponentLifeCyclePrototype,
+    TyphoonComponentLifeCycleSingleton
 } TyphoonComponentLifecycle;
 
 
