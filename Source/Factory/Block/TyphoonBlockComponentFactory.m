@@ -18,9 +18,9 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonJRSwizzle.h"
 
-static NSMutableDictionary* swizzleRegistry;
+static NSMutableArray* swizzleRegistry;
 
-@interface TyphoonAssembly (NanoFactoryFriend)
+@interface TyphoonAssembly (BlockFactoryFriend)
 
 + (BOOL)selectorReserved:(SEL)selector;
 
@@ -50,7 +50,7 @@ static NSMutableDictionary* swizzleRegistry;
     [super initialize];
     @synchronized (self)
     {
-        swizzleRegistry = [[NSMutableDictionary alloc] init];
+        swizzleRegistry = [[NSMutableArray alloc] init];
     }
 }
 
@@ -110,16 +110,9 @@ static NSMutableDictionary* swizzleRegistry;
 {
     @synchronized (self)
     {
-        NSMutableArray* swizzledListForClass = [swizzleRegistry objectForKey:NSStringFromClass([self class])];
-        if (swizzledListForClass == nil)
+        if (![swizzleRegistry containsObject:[assembly class]])
         {
-            swizzledListForClass = [[NSMutableArray alloc] init];
-            [swizzleRegistry setObject:swizzledListForClass forKey:NSStringFromClass([self class])];
-        }
-//        NSLog(@"swizzled: %@", swizzledListForClass);
-        if (![swizzledListForClass containsObject:[assembly class]])
-        {
-            [swizzledListForClass addObject:[assembly class]];
+            [swizzleRegistry addObject:[assembly class]];
             unsigned int methodCount;
             Method* methodList = class_copyMethodList([assembly class], &methodCount);
             for (int i = 0; i < methodCount; i++)
