@@ -10,7 +10,7 @@ Typhoon is nice on Xcode, even better with . . .
 
 * <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a>.
 * **New!!** A super-cool <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">block and category-based application assembly</a>, for those that prefer pure-code!!! 
-* **Important!!** As of 1.0.7, the default scope is 'prototype', while 'singleton' can be set explicitly. This suits mobile better. 
+* **Important!!** As of 1.0.7, the default scope is 'prototype', while 'singleton' can be set explicitly. 
 
 
 ### What is Dependency Injection? 
