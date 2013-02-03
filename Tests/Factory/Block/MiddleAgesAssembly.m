@@ -81,6 +81,7 @@
         [initializer injectParameterNamed:@"specification" withValueAsText:@"blue" requiredTypeOrNil:[NSString class]];
     } properties:^(TyphoonDefinition* definition)
     {
+        //TODO: Fix this
         definition.factoryComponent = @"swordFactory";
     }];
 }

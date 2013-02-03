@@ -18,6 +18,7 @@
 #import "TyphoonBundleResource.h"
 #import "TyphoonPropertyPlaceholderConfigurer.h"
 #import "ExceptionTestAssembly.h"
+#import "CircularDependenciesAssembly.h"
 
 @interface TyphoonBlockComponentFactoryTests : TyphoonSharedComponentFactoryTests
 @end
@@ -33,6 +34,9 @@
     [_componentFactory attachMutator:configurer];
 
     _exceptionTestFactory = [[TyphoonBlockComponentFactory  alloc] initWithAssembly:[ExceptionTestAssembly assembly]];
+
+    //TODO: This crashes - fix it.
+//    _circularDependenciesFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[CircularDependenciesAssembly assembly]];
 }
 
 

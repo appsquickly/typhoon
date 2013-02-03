@@ -93,11 +93,9 @@
 
 - (void)test_prevents_circular_dependencies_by_reference
 {
-    TyphoonXmlComponentFactory* factory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"CircularDependenciesAssembly.xml"];
-
     @try
     {
-        ClassADependsOnB* classA = [factory componentForKey:@"classA"];
+        ClassADependsOnB* classA = [_circularDependenciesFactory componentForKey:@"classA"];
         NSLog(@"Class A: %@", classA); //Suppress unused var compiler warning.
         STFail(@"Should have thrown exception");
     }
