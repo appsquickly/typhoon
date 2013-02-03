@@ -18,6 +18,7 @@
 #import "TyphoonSharedComponentFactoryTests.h"
 
 
+
 @implementation TyphoonSharedComponentFactoryTests
 
 
@@ -67,11 +68,9 @@
 
 - (void)test_factory_method_injection_raises_exception_if_required_class_not_set
 {
-    NSLog(@"in here!!!!!!!!!!!!!!!!!!!");
-    TyphoonXmlComponentFactory* factory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"ExceptionTestAssembly.xml"];
     @try
     {
-        NSURL* url = [factory componentForKey:@"anotherServiceUrl"];
+        NSURL* url = [_exceptionTestFactory componentForKey:@"anotherServiceUrl"];
         NSLog(@"Here's the url: %@", url);
         STFail(@"Should have thrown exception");
     }

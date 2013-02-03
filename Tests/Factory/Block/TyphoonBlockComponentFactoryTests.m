@@ -17,6 +17,7 @@
 #import "TyphoonSharedComponentFactoryTests.h"
 #import "TyphoonBundleResource.h"
 #import "TyphoonPropertyPlaceholderConfigurer.h"
+#import "ExceptionTestAssembly.h"
 
 @interface TyphoonBlockComponentFactoryTests : TyphoonSharedComponentFactoryTests
 @end
@@ -30,6 +31,8 @@
     TyphoonPropertyPlaceholderConfigurer* configurer = [[TyphoonPropertyPlaceholderConfigurer alloc] init];
     [configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
     [_componentFactory attachMutator:configurer];
+
+    _exceptionTestFactory = [[TyphoonBlockComponentFactory  alloc] initWithAssembly:[ExceptionTestAssembly assembly]];
 }
 
 

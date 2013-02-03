@@ -18,7 +18,7 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonJRSwizzle.h"
 
-static NSMutableArray* swizzleRegistry;
+static NSMutableDictionary* swizzleRegistry;
 
 @interface TyphoonAssembly (NanoFactoryFriend)
 
@@ -48,13 +48,17 @@ static NSMutableArray* swizzleRegistry;
 + (void)initialize
 {
     [super initialize];
-    swizzleRegistry = [[NSMutableArray alloc] init];
+    @synchronized (self)
+    {
+        swizzleRegistry = [[NSMutableDictionary alloc] init];
+    }
 }
 
 
 /* ============================================================ Initializers ============================================================ */
 - (id)initWithAssembly:(TyphoonAssembly*)assembly;
 {
+    NSLog(@"Building assembly: %@", NSStringFromClass([assembly class]));
     if (![assembly isKindOfClass:[TyphoonAssembly class]])
     {
         [NSException raise:NSInvalidArgumentException format:@"Class '%@' is not a sub-class of %@", NSStringFromClass([assembly class]),
@@ -65,6 +69,7 @@ static NSMutableArray* swizzleRegistry;
     {
         [self applyBeforeAdviceToAssemblyMethods:assembly];
         NSArray* definitions = [self populateCache:assembly];
+        NSLog(@"Definitions: %@", definitions);
         for (TyphoonDefinition* definition in definitions)
         {
             [self register:definition];
@@ -76,50 +81,64 @@ static NSMutableArray* swizzleRegistry;
 /* ============================================================ Private Methods ========================================================= */
 - (NSArray*)populateCache:(TyphoonAssembly*)assembly
 {
-    unsigned int methodCount;
-    Method* methodList = class_copyMethodList([assembly class], &methodCount);
-    for (int i = 0; i < methodCount; i++)
+    @synchronized (self)
     {
-        Method method = methodList[i];
-
-        int argumentCount = method_getNumberOfArguments(method);
-        if (argumentCount == 2)
-        {
-            SEL methodSelector = method_getName(method);
-            if (![[assembly class] selectorReserved:methodSelector])
-            {
-                objc_msgSend(assembly, methodSelector);
-            }
-        }
-    }
-    NSMutableDictionary* dictionary = [assembly cachedSelectors];
-    free(methodList);
-    return [dictionary allValues];
-}
-
-- (void)applyBeforeAdviceToAssemblyMethods:(TyphoonAssembly*)assembly
-{
-    if (![swizzleRegistry containsObject:[TyphoonAssembly class]])
-    {
-        [swizzleRegistry addObject:[TyphoonAssembly class]];
         unsigned int methodCount;
         Method* methodList = class_copyMethodList([assembly class], &methodCount);
         for (int i = 0; i < methodCount; i++)
         {
             Method method = methodList[i];
+//            NSLog(@"Selector: %@", NSStringFromSelector(method_getName(method)));
+
             int argumentCount = method_getNumberOfArguments(method);
             if (argumentCount == 2)
             {
                 SEL methodSelector = method_getName(method);
-                if ([TyphoonAssembly selectorReserved:methodSelector] == NO)
+                if (![[assembly class] selectorReserved:methodSelector])
                 {
-                    SEL swizzled = NSSelectorFromString(
-                            [NSStringFromSelector(methodSelector) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
-                    [[assembly class] typhoon_swizzleMethod:methodSelector withMethod:swizzled error:nil];
+                    objc_msgSend(assembly, methodSelector);
                 }
             }
         }
+        NSMutableDictionary* dictionary = [assembly cachedSelectors];
         free(methodList);
+        return [dictionary allValues];
+    }
+}
+
+- (void)applyBeforeAdviceToAssemblyMethods:(TyphoonAssembly*)assembly
+{
+    @synchronized (self)
+    {
+        NSMutableArray* swizzledListForClass = [swizzleRegistry objectForKey:NSStringFromClass([self class])];
+        if (swizzledListForClass == nil)
+        {
+            swizzledListForClass = [[NSMutableArray alloc] init];
+            [swizzleRegistry setObject:swizzledListForClass forKey:NSStringFromClass([self class])];
+        }
+//        NSLog(@"swizzled: %@", swizzledListForClass);
+        if (![swizzledListForClass containsObject:[assembly class]])
+        {
+            [swizzledListForClass addObject:[assembly class]];
+            unsigned int methodCount;
+            Method* methodList = class_copyMethodList([assembly class], &methodCount);
+            for (int i = 0; i < methodCount; i++)
+            {
+                Method method = methodList[i];
+                int argumentCount = method_getNumberOfArguments(method);
+                if (argumentCount == 2)
+                {
+                    SEL methodSelector = method_getName(method);
+                    if ([TyphoonAssembly selectorReserved:methodSelector] == NO)
+                    {
+                        SEL swizzled = NSSelectorFromString(
+                                [NSStringFromSelector(methodSelector) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
+                        [[assembly class] typhoon_swizzleMethod:methodSelector withMethod:swizzled error:nil];
+                    }
+                }
+            }
+            free(methodList);
+        }
     }
 }
 

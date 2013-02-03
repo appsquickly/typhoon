@@ -98,14 +98,7 @@
 /* ============================================================ Utility Methods ========================================================= */
 - (NSString*)description
 {
-    NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
-    [description appendFormat:@"self.injectedProperties=%@", self.injectedProperties];
-    [description appendFormat:@", self.type=%@", self.type];
-    [description appendFormat:@", self.key=%@", self.key];
-    [description appendFormat:@", self.initializer=%@", self.initializer];
-    [description appendFormat:@", self.lifecycle=%@", self.lifecycle == TyphoonComponentLifeCycleSingleton ? @"Singleton" : @"Prototype"];
-    [description appendString:@">"];
-    return description;
+    return [NSString stringWithFormat:@"Definition: class='%@'", NSStringFromClass(_type)];
 }
 
 - (void)dealloc
