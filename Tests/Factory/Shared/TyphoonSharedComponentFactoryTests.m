@@ -88,40 +88,6 @@
     assertThat([sword description], equalTo(@"A bright blue sword with orange pom-poms at the hilt."));
 }
 
-/* ====================================================================================================================================== */
-#pragma mark - Circular dependencies.
-
-- (void)test_prevents_circular_dependencies_by_reference
-{
-    @try
-    {
-        ClassADependsOnB* classA = [_circularDependenciesFactory componentForKey:@"classA"];
-        NSLog(@"Class A: %@", classA); //Suppress unused var compiler warning.
-        STFail(@"Should have thrown exception");
-    }
-    @catch (NSException* e)
-    {
-        assertThat([e description], equalTo(@"Circular dependency detected: {(\n    classB,\n    classA\n)}"));
-    }
-}
-
-- (void)test_prevents_circular_dependencies_by_type
-{
-    TyphoonXmlComponentFactory* factory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"CircularDependenciesAssembly.xml"];
-
-    @try
-    {
-        ClassADependsOnB* classA = [factory componentForType:[ClassADependsOnB class]];
-        NSLog(@"Class A: %@", classA); //Suppress unused var compiler warning.
-        STFail(@"Should have thrown exception");
-    }
-    @catch (NSException* e)
-    {
-        NSLog(@"%@", [e description]);
-        assertThat([e description], equalTo(@"Circular dependency detected: {(\n    classB,\n    classA\n)}"));
-    }
-}
-
 
 /* ====================================================================================================================================== */
 #pragma mark initializer injection

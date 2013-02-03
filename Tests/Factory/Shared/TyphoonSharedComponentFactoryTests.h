@@ -20,7 +20,6 @@
 {
     TyphoonComponentFactory* _componentFactory;
     TyphoonComponentFactory* _exceptionTestFactory;
-    TyphoonComponentFactory* _circularDependenciesFactory;
 }
 
 @end

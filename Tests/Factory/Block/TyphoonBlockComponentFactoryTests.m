@@ -34,9 +34,6 @@
     [_componentFactory attachMutator:configurer];
 
     _exceptionTestFactory = [[TyphoonBlockComponentFactory  alloc] initWithAssembly:[ExceptionTestAssembly assembly]];
-
-    //TODO: This crashes - fix it.
-//    _circularDependenciesFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[CircularDependenciesAssembly assembly]];
 }
 
 

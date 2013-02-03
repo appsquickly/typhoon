@@ -43,6 +43,18 @@
             id cached = [[me cachedSelectors] objectForKey:key];
             if (cached == nil)
             {
+                [resolveStack addObject:key];
+                if ([resolveStack count] > 100)
+                {
+                    NSString* bottom = [resolveStack objectAtIndex:0];
+                    NSString* top = [resolveStack objectAtIndex:[resolveStack count] -1];
+                    if ([top isEqualToString:bottom])
+                    {
+                        NSLog(@"Resolve stack: %@", resolveStack);
+                        [NSException raise:NSInternalInconsistencyException format:@"Circular dependency detected."];
+                    }
+                }
+
                 [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:nil];
                 cached = objc_msgSend(me, sel);
                 if (cached && [cached isKindOfClass:[TyphoonDefinition class]])
@@ -56,6 +68,7 @@
                 }
                 [[self class] typhoon_swizzleMethod:NSSelectorFromString(key) withMethod:sel error:nil];
             }
+            [resolveStack removeAllObjects];
             return cached;
 
         }));
@@ -68,6 +81,12 @@
 + (BOOL)selectorReserved:(SEL)selector
 {
     return selector == @selector(init) || selector == @selector(cachedSelectors) || selector == NSSelectorFromString(@".cxx_destruct");
+}
+
++ (void)load
+{
+    [super load];
+    resolveStack = [[NSMutableArray alloc] init];
 }
 
 /* ============================================================ Initializers ============================================================ */
