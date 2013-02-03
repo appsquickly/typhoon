@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-01-31</td>
+            <td class="headerValue">2013-02-03</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -77,8 +77,8 @@
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : typedef enum
 <span class="lineNum">      21 </span>            : {
-<span class="lineNum">      22 </span>            :     TyphoonComponentLifeCycleSingleton,
-<span class="lineNum">      23 </span>            :     TyphoonComponentLifeCyclePrototype
+<span class="lineNum">      22 </span>            :     TyphoonComponentLifeCyclePrototype,
+<span class="lineNum">      23 </span>            :     TyphoonComponentLifeCycleSingleton
 <span class="lineNum">      24 </span>            : } TyphoonComponentLifecycle;
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : 
@@ -87,14 +87,14 @@
 <span class="lineNum">      29 </span>            :     NSMutableSet* _injectedProperties;
 <span class="lineNum">      30 </span>            : }
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">        313 : @property(nonatomic, readonly) Class type;</span>
-<span class="lineNum">      33 </span><span class="lineCov">        709 : @property(nonatomic, strong) NSString* key;</span>
-<span class="lineNum">      34 </span><span class="lineCov">        170 : @property(nonatomic, strong, readonly) NSString* factoryComponent;</span>
-<span class="lineNum">      35 </span><span class="lineCov">        212 : @property(nonatomic, strong) TyphoonInitializer* initializer;</span>
-<span class="lineNum">      36 </span><span class="lineCov">        119 : @property(nonatomic) SEL beforePropertyInjection;</span>
-<span class="lineNum">      37 </span><span class="lineCov">        112 : @property(nonatomic) SEL afterPropertyInjection;</span>
+<span class="lineNum">      32 </span><span class="lineCov">        319 : @property(nonatomic, readonly) Class type;</span>
+<span class="lineNum">      33 </span><span class="lineCov">        642 : @property(nonatomic, strong) NSString* key;</span>
+<span class="lineNum">      34 </span><span class="lineCov">        227 : @property(nonatomic, strong, readonly) NSString* factoryComponent;</span>
+<span class="lineNum">      35 </span><span class="lineCov">        234 : @property(nonatomic, strong) TyphoonInitializer* initializer;</span>
+<span class="lineNum">      36 </span><span class="lineCov">        125 : @property(nonatomic) SEL beforePropertyInjection;</span>
+<span class="lineNum">      37 </span><span class="lineCov">        118 : @property(nonatomic) SEL afterPropertyInjection;</span>
 <span class="lineNum">      38 </span>            : @property(nonatomic, strong, readonly) NSSet* injectedProperties;
-<span class="lineNum">      39 </span><span class="lineCov">         77 : @property(nonatomic) TyphoonComponentLifecycle lifecycle;</span>
+<span class="lineNum">      39 </span><span class="lineCov">         78 : @property(nonatomic) TyphoonComponentLifecycle lifecycle;</span>
 <span class="lineNum">      40 </span>            : 
 <span class="lineNum">      41 </span>            : 
 <span class="lineNum">      42 </span>            : - (id)initWithClass:(Class)clazz key:(NSString*)key;

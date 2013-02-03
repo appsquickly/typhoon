@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-01-31</td>
+            <td class="headerValue">2013-02-03</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -75,7 +75,7 @@
 <span class="lineNum">      17 </span>            : #import &quot;TyphoonPropertyInjectedByValue.h&quot;
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span><span class="lineCov">         10 : @implementation TyphoonDefinition</span>
+<span class="lineNum">      20 </span><span class="lineCov">         12 : @implementation TyphoonDefinition</span>
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : /* ============================================================ Initializers ============================================================ */
@@ -130,9 +130,9 @@
 <span class="lineNum">      72 </span><span class="lineCov">         46 : {</span>
 <span class="lineNum">      73 </span><span class="lineCov">         46 :     return [_injectedProperties copy];</span>
 <span class="lineNum">      74 </span>            : }
-<span class="lineNum">      75 </span><span class="lineCov">         53 : </span>
+<span class="lineNum">      75 </span><span class="lineCov">         59 : </span>
 <span class="lineNum">      76 </span>            : - (void)setInitializer:(TyphoonInitializer*)initializer
-<span class="lineNum">      77 </span><span class="lineCov">         53 : {</span>
+<span class="lineNum">      77 </span><span class="lineCov">         59 : {</span>
 <span class="lineNum">      78 </span>            :     _initializer = initializer;
 <span class="lineNum">      79 </span>            :     [_initializer setComponentDefinition:self];
 <span class="lineNum">      80 </span><span class="lineCov">         46 : }</span>
@@ -170,11 +170,11 @@
 <span class="lineNum">     112 </span><span class="lineCov">         12 : {</span>
 <span class="lineNum">     113 </span><span class="lineCov">          6 :     //Null out the __unsafe_unretained property on initializer</span>
 <span class="lineNum">     114 </span>            :     [_initializer setComponentDefinition:nil];
-<span class="lineNum">     115 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">     115 </span><span class="lineCov">         12 : }</span>
 <span class="lineNum">     116 </span>            : 
 <span class="lineNum">     117 </span>            : /* ============================================================ Private Methods ========================================================= */
-<span class="lineNum">     118 </span><span class="lineCov">         10 : - (void)validateRequiredParametersAreSet</span>
-<span class="lineNum">     119 </span><span class="lineCov">         10 : {</span>
+<span class="lineNum">     118 </span><span class="lineCov">         12 : - (void)validateRequiredParametersAreSet</span>
+<span class="lineNum">     119 </span><span class="lineCov">         12 : {</span>
 <span class="lineNum">     120 </span>            :     if (_type == nil)
 <span class="lineNum">     121 </span>            :     {
 <span class="lineNum">     122 </span><span class="lineCov">        114 :         [NSException raise:NSInvalidArgumentException format:@&quot;Property 'clazz' is required.&quot;];</span>

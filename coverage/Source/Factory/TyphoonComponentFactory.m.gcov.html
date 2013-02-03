@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">117</td>
+            <td class="headerCovTableEntry">106</td>
             <td class="headerCovTableEntry">131</td>
-            <td class="headerCovTableEntryMed">89.3 %</td>
+            <td class="headerCovTableEntryMed">80.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-01-31</td>
+            <td class="headerValue">2013-02-03</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -83,7 +83,7 @@
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : @end
 <span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span><span class="lineCov">          4 : @implementation TyphoonComponentFactory</span>
+<span class="lineNum">      28 </span><span class="lineCov">          6 : @implementation TyphoonComponentFactory</span>
 <span class="lineNum">      29 </span>            : 
 <span class="lineNum">      30 </span>            : static TyphoonComponentFactory* defaultFactory;
 <span class="lineNum">      31 </span>            : 
@@ -185,19 +185,19 @@
 <span class="lineNum">     127 </span><span class="lineCov">         12 : }</span>
 <span class="lineNum">     128 </span>            : 
 <span class="lineNum">     129 </span>            : 
-<span class="lineNum">     130 </span><span class="lineCov">         37 : - (id)componentForKey:(NSString*)key</span>
+<span class="lineNum">     130 </span><span class="lineCov">         38 : - (id)componentForKey:(NSString*)key</span>
 <span class="lineNum">     131 </span>            : {
-<span class="lineNum">     132 </span><span class="lineCov">         37 :     [self performMutations];</span>
-<span class="lineNum">     133 </span><span class="lineCov">         37 :     [self assertNotCircularDependency:key];</span>
-<span class="lineNum">     134 </span><span class="lineCov">         37 :     TyphoonDefinition* definition = [self definitionForKey:key];</span>
-<span class="lineNum">     135 </span><span class="lineCov">         37 :     if (!definition)</span>
+<span class="lineNum">     132 </span><span class="lineCov">         38 :     [self performMutations];</span>
+<span class="lineNum">     133 </span><span class="lineCov">         38 :     [self assertNotCircularDependency:key];</span>
+<span class="lineNum">     134 </span><span class="lineCov">         38 :     TyphoonDefinition* definition = [self definitionForKey:key];</span>
+<span class="lineNum">     135 </span><span class="lineCov">         38 :     if (!definition)</span>
 <span class="lineNum">     136 </span>            :     {
 <span class="lineNum">     137 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;No component matching id '%@'.&quot;, key];</span>
 <span class="lineNum">     138 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     139 </span><span class="lineCov">         28 :     id returnValue = [self objectForDefinition:definition];</span>
-<span class="lineNum">     140 </span><span class="lineCov">         28 :     [_currentlyResolvingReferences removeAllObjects];</span>
-<span class="lineNum">     141 </span><span class="lineCov">         36 :     return returnValue;</span>
-<span class="lineNum">     142 </span><span class="lineCov">         28 : }</span>
+<span class="lineNum">     139 </span><span class="lineCov">         29 :     __autoreleasing id returnValue = [self objectForDefinition:definition];</span>
+<span class="lineNum">     140 </span><span class="lineCov">         29 :     [_currentlyResolvingReferences removeAllObjects];</span>
+<span class="lineNum">     141 </span><span class="lineCov">         37 :     return returnValue;</span>
+<span class="lineNum">     142 </span><span class="lineCov">         29 : }</span>
 <span class="lineNum">     143 </span>            : 
 <span class="lineNum">     144 </span><span class="lineCov">          9 : - (void)makeDefault</span>
 <span class="lineNum">     145 </span>            : {
@@ -231,58 +231,58 @@
 <span class="lineNum">     173 </span>            : 
 <span class="lineNum">     174 </span>            : 
 <span class="lineNum">     175 </span>            : /* ============================================================ Private Methods ========================================================= */
-<span class="lineNum">     176 </span><span class="lineCov">         51 : - (id)objectForDefinition:(TyphoonDefinition*)definition</span>
+<span class="lineNum">     176 </span><span class="lineCov">         52 : - (id)objectForDefinition:(TyphoonDefinition*)definition</span>
 <span class="lineNum">     177 </span>            : {
-<span class="lineNum">     178 </span><span class="lineCov">         51 :     if (definition.lifecycle == TyphoonComponentLifeCycleSingleton)</span>
+<span class="lineNum">     178 </span><span class="lineCov">         52 :     if (definition.lifecycle == TyphoonComponentLifeCycleSingleton)</span>
 <span class="lineNum">     179 </span>            :     {
-<span class="lineNum">     180 </span><span class="lineCov">         40 :         return [self singletonForKey:definition];</span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :         return [self singletonForKey:definition];</span>
 <span class="lineNum">     181 </span>            :     }
 <span class="lineNum">     182 </span>            :     else
 <span class="lineNum">     183 </span>            :     {
-<span class="lineNum">     184 </span><span class="lineCov">         11 :         return [self buildInstanceWithDefinition:definition];</span>
+<span class="lineNum">     184 </span><span class="lineCov">         52 :         return [self buildInstanceWithDefinition:definition];</span>
 <span class="lineNum">     185 </span>            :     }
-<span class="lineNum">     186 </span><span class="lineCov">         42 : }</span>
+<span class="lineNum">     186 </span><span class="lineCov">         43 : }</span>
 <span class="lineNum">     187 </span>            : 
-<span class="lineNum">     188 </span><span class="lineCov">         40 : - (id)singletonForKey:(TyphoonDefinition*)definition</span>
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 : - (id)singletonForKey:(TyphoonDefinition*)definition</span>
 <span class="lineNum">     189 </span>            : {
-<span class="lineNum">     190 </span><span class="lineCov">         40 :     @synchronized (self)</span>
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 :     @synchronized (self)</span>
 <span class="lineNum">     191 </span>            :     {
-<span class="lineNum">     192 </span><span class="lineCov">         40 :         id instance = [_singletons objectForKey:definition.key];</span>
-<span class="lineNum">     193 </span><span class="lineCov">         40 :         if (instance == nil)</span>
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 :         id instance = [_singletons objectForKey:definition.key];</span>
+<span class="lineNum">     193 </span><span class="lineNoCov">          0 :         if (instance == nil)</span>
 <span class="lineNum">     194 </span>            :         {
-<span class="lineNum">     195 </span><span class="lineCov">         35 :             instance = [self buildInstanceWithDefinition:definition];</span>
-<span class="lineNum">     196 </span><span class="lineCov">         24 :             [_singletons setObject:instance forKey:definition.key];</span>
-<span class="lineNum">     197 </span><span class="lineCov">         30 :         }</span>
-<span class="lineNum">     198 </span><span class="lineCov">         35 :         return instance;</span>
-<span class="lineNum">     199 </span><span class="lineCov">          5 :     }</span>
-<span class="lineNum">     200 </span><span class="lineCov">         35 : }</span>
+<span class="lineNum">     195 </span><span class="lineNoCov">          0 :             instance = [self buildInstanceWithDefinition:definition];</span>
+<span class="lineNum">     196 </span><span class="lineNoCov">          0 :             [_singletons setObject:instance forKey:definition.key];</span>
+<span class="lineNum">     197 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     198 </span><span class="lineNoCov">          0 :         return instance;</span>
+<span class="lineNum">     199 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     200 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     201 </span>            : 
-<span class="lineNum">     202 </span><span class="lineCov">        142 : - (TyphoonDefinition*)definitionForKey:(NSString*)key</span>
+<span class="lineNum">     202 </span><span class="lineCov">        143 : - (TyphoonDefinition*)definitionForKey:(NSString*)key</span>
 <span class="lineNum">     203 </span>            : {
-<span class="lineNum">     204 </span><span class="lineCov">        244 :     for (TyphoonDefinition* definition in _registry)</span>
+<span class="lineNum">     204 </span><span class="lineCov">        247 :     for (TyphoonDefinition* definition in _registry)</span>
 <span class="lineNum">     205 </span>            :     {
-<span class="lineNum">     206 </span><span class="lineCov">        244 :         if ([definition.key isEqualToString:key])</span>
+<span class="lineNum">     206 </span><span class="lineCov">        247 :         if ([definition.key isEqualToString:key])</span>
 <span class="lineNum">     207 </span>            :         {
-<span class="lineNum">     208 </span><span class="lineCov">         36 :             return definition;</span>
+<span class="lineNum">     208 </span><span class="lineCov">         37 :             return definition;</span>
 <span class="lineNum">     209 </span>            :         }
-<span class="lineNum">     210 </span><span class="lineCov">        278 :     }</span>
+<span class="lineNum">     210 </span><span class="lineCov">        281 :     }</span>
 <span class="lineNum">     211 </span><span class="lineCov">        106 :     return nil;</span>
-<span class="lineNum">     212 </span><span class="lineCov">        142 : }</span>
+<span class="lineNum">     212 </span><span class="lineCov">        143 : }</span>
 <span class="lineNum">     213 </span>            : 
-<span class="lineNum">     214 </span><span class="lineCov">         54 : - (void)assertNotCircularDependency:(NSString*)key</span>
+<span class="lineNum">     214 </span><span class="lineCov">         55 : - (void)assertNotCircularDependency:(NSString*)key</span>
 <span class="lineNum">     215 </span>            : {
-<span class="lineNum">     216 </span><span class="lineCov">         54 :     if ([_currentlyResolvingReferences containsObject:key])</span>
+<span class="lineNum">     216 </span><span class="lineCov">         55 :     if ([_currentlyResolvingReferences containsObject:key])</span>
 <span class="lineNum">     217 </span>            :     {
 <span class="lineNum">     218 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Circular dependency detected: %@&quot;, _currentlyResolvingReferences];</span>
 <span class="lineNum">     219 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">     220 </span><span class="lineCov">         52 :     [_currentlyResolvingReferences addObject:key];</span>
-<span class="lineNum">     221 </span><span class="lineCov">         52 : }</span>
+<span class="lineNum">     220 </span><span class="lineCov">         53 :     [_currentlyResolvingReferences addObject:key];</span>
+<span class="lineNum">     221 </span><span class="lineCov">         53 : }</span>
 <span class="lineNum">     222 </span>            : 
-<span class="lineNum">     223 </span><span class="lineCov">         52 : - (void)performMutations</span>
+<span class="lineNum">     223 </span><span class="lineCov">         53 : - (void)performMutations</span>
 <span class="lineNum">     224 </span>            : {
-<span class="lineNum">     225 </span><span class="lineCov">         52 :     @synchronized (self)</span>
+<span class="lineNum">     225 </span><span class="lineCov">         53 :     @synchronized (self)</span>
 <span class="lineNum">     226 </span>            :     {
-<span class="lineNum">     227 </span><span class="lineCov">         52 :         if (!_hasPerformedMutations)</span>
+<span class="lineNum">     227 </span><span class="lineCov">         53 :         if (!_hasPerformedMutations)</span>
 <span class="lineNum">     228 </span>            :         {
 <span class="lineNum">     229 </span><span class="lineCov">         25 :             NSLog(@&quot;Running mutators. . . %@&quot;, _mutators);</span>
 <span class="lineNum">     230 </span><span class="lineCov">         25 :             for (id &lt;TyphoonComponentFactoryMutator&gt; mutator in _mutators)</span>
@@ -292,7 +292,7 @@
 <span class="lineNum">     234 </span><span class="lineCov">         25 :             _hasPerformedMutations = YES;</span>
 <span class="lineNum">     235 </span><span class="lineCov">         25 :         }</span>
 <span class="lineNum">     236 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     237 </span><span class="lineCov">         52 : }</span>
+<span class="lineNum">     237 </span><span class="lineCov">         53 : }</span>
 <span class="lineNum">     238 </span>            : 
 <span class="lineNum">     239 </span>            : @end
 </pre>
