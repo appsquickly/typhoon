@@ -59,12 +59,11 @@
 /* ====================================================================================================================================== */
 #pragma mark factory method injection
 
-//TODO: Fix this - crashes in block assembly
-//- (void)test_factory_method_injection
-//{
-//    NSURL* url = [_componentFactory componentForKey:@"serviceUrl"];
-//    NSLog(@"Here's the url: %@", url);
-//}
+- (void)test_factory_method_injection
+{
+    NSURL* url = [_componentFactory componentForKey:@"serviceUrl"];
+    NSLog(@"Here's the url: %@", url);
+}
 
 - (void)test_factory_method_injection_raises_exception_if_required_class_not_set
 {

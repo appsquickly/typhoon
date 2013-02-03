@@ -57,7 +57,7 @@
     }
 
     [self injectPropertyDependenciesOn:instance withDefinition:definition];
-    if (definition.factoryComponent)
+    if (definition.factoryComponent || definition.initializer.isClassMethod)
     {
         int retainCount = objc_msgSend(instance, NSSelectorFromString(@"retainCount"));
         NSLog(@"Instance of class '%@' returned from factory. Retain count: %i", NSStringFromClass([instance class]), retainCount);
