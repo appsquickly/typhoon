@@ -85,7 +85,6 @@
 /* ========================================================== Interface Methods ========================================================= */
 - (void)usePropertyStyleResource:(id <TyphoonResource>)resource
 {
-    NSLog(@"$$$$$$$ here we go$$$$$$");
     NSArray* lines = [[resource asString] componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     for (NSString* line in lines)
     {
