@@ -17,6 +17,7 @@
 #import "TyphoonJRSwizzle.h"
 #import "TyphoonDefinition.h"
 
+static NSMutableArray* resolveStack;
 
 @implementation TyphoonAssembly
 

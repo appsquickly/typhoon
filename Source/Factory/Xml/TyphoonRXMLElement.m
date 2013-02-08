@@ -48,7 +48,7 @@
     if ((self = [super init])) {
         NSData *data = [xmlString dataUsingEncoding:encoding];
 
-        doc_ = xmlReadMemory([data bytes], [data length], "", nil, XML_PARSE_RECOVER);
+        doc_ = xmlReadMemory([data bytes], (int) [data length], "", nil, XML_PARSE_RECOVER);
         
         if ([self isValid]) {
             node_ = xmlDocGetRootElement(doc_);
@@ -67,7 +67,7 @@
         NSString *fullPath = [[[NSBundle bundleForClass:self.class] bundlePath] stringByAppendingPathComponent:filename];
         NSData *data = [NSData dataWithContentsOfFile:fullPath];
 
-        doc_ = xmlReadMemory([data bytes], [data length], "", nil, XML_PARSE_RECOVER);
+        doc_ = xmlReadMemory([data bytes], (int) [data length], "", nil, XML_PARSE_RECOVER);
         
         if ([self isValid]) {
             node_ = xmlDocGetRootElement(doc_);
@@ -86,7 +86,7 @@
         NSString *fullPath = [[NSBundle bundleForClass:[self class]] pathForResource:filename ofType:extension];
         NSData *data = [NSData dataWithContentsOfFile:fullPath];
         
-        doc_ = xmlReadMemory([data bytes], [data length], "", nil, XML_PARSE_RECOVER);
+        doc_ = xmlReadMemory([data bytes], (int) [data length], "", nil, XML_PARSE_RECOVER);
         
         if ([self isValid]) {
             node_ = xmlDocGetRootElement(doc_);
@@ -104,7 +104,7 @@
     if ((self = [super init])) {
         NSData *data = [NSData dataWithContentsOfURL:url];
         
-        doc_ = xmlReadMemory([data bytes], [data length], "", nil, XML_PARSE_RECOVER);
+        doc_ = xmlReadMemory([data bytes], (int) [data length], "", nil, XML_PARSE_RECOVER);
         
         if ([self isValid]) {
             node_ = xmlDocGetRootElement(doc_);
@@ -120,7 +120,7 @@
 
 - (id)initFromXMLData:(NSData *)data {
     if ((self = [super init])) {
-        doc_ = xmlReadMemory([data bytes], [data length], "", nil, XML_PARSE_RECOVER);
+        doc_ = xmlReadMemory([data bytes], (int) [data length], "", nil, XML_PARSE_RECOVER);
         
         if ([self isValid]) {
             node_ = xmlDocGetRootElement(doc_);

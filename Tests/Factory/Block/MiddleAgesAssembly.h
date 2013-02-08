@@ -19,7 +19,7 @@
 
 @interface MiddleAgesAssembly : TyphoonAssembly
 
-- (id)basicKnight;
+- (id)knight;
 
 - (id)cavalryMan;
 

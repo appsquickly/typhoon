@@ -15,7 +15,6 @@
 
 
 static NSString * const TYPHOON_BEFORE_ADVICE_SUFFIX = @"__typhoonBeforeAdvice";
-static NSMutableArray* resolveStack;
 
 @interface TyphoonAssembly : NSObject
 {

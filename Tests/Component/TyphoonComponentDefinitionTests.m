@@ -77,11 +77,11 @@
 - (void)test_autoWired_properties
 {
     NSSet* autoWired = objc_msgSend([AutoWiringKnight class], @selector(typhoonAutoInjectedProperties));
-    assertThatInt([autoWired count], equalToInt(1));
+    assertThatUnsignedLongLong([autoWired count], equalToUnsignedLongLong(1));
     assertThat(autoWired, hasItem(@"quest"));
 
     autoWired = objc_msgSend([AutoWiringSubClassedKnight class], @selector(typhoonAutoInjectedProperties));
-    assertThatInt([autoWired count], equalToInt(2));
+    assertThatUnsignedLongLong([autoWired count], equalToUnsignedLongLong(2));
     assertThat(autoWired, hasItem(@"quest"));
     assertThat(autoWired, hasItem(@"foobar"));
 }
