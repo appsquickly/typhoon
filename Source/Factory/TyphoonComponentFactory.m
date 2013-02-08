@@ -31,7 +31,7 @@ static TyphoonComponentFactory* defaultFactory;
 
 
 /* =========================================================== Class Methods ============================================================ */
-+ (TyphoonComponentFactory*)defaultFactory
++ (id)defaultFactory
 {
     return defaultFactory;
 }

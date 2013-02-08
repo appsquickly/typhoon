@@ -33,7 +33,7 @@
 /**
 * Returns the default component factory, if one has been set. (See makeDefault ).
 */
-+ (TyphoonComponentFactory*)defaultFactory;
++ (id)defaultFactory;
 
 
 /**
