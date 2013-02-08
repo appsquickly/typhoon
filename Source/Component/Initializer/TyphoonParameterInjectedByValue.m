@@ -72,16 +72,5 @@
     _initializer = initializer;
 }
 
-/* ============================================================ Utility Methods ========================================================= */
-- (NSString*)description
-{
-    NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
-    [description appendFormat:@"self.index=%lu", self.index];
-    [description appendFormat:@", self.value=%@", self.value];
-    [description appendFormat:@", self.classOrProtocol=%@", self.classOrProtocol];
-    [description appendString:@">"];
-    return description;
-}
-
 
 @end

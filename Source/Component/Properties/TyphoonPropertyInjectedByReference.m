@@ -38,15 +38,7 @@
     return TyphoonPropertyInjectionByReferenceType;
 }
 
-/* ============================================================ Utility Methods ========================================================= */
-- (NSString*)description
-{
-    NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
-    [description appendFormat:@"self.name=%@", self.name];
-    [description appendFormat:@", self.reference=%@", self.reference];
-    [description appendString:@">"];
-    return description;
-}
+
 
 
 @end
