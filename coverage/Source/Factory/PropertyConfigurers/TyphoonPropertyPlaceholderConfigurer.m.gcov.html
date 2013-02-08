@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">55</td>
-            <td class="headerCovTableEntry">62</td>
-            <td class="headerCovTableEntryMed">88.7 %</td>
+            <td class="headerCovTableEntry">54</td>
+            <td class="headerCovTableEntry">61</td>
+            <td class="headerCovTableEntryMed">88.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -143,46 +143,45 @@
 <span class="lineNum">      85 </span>            : /* ========================================================== Interface Methods ========================================================= */
 <span class="lineNum">      86 </span>            : - (void)usePropertyStyleResource:(id &lt;TyphoonResource&gt;)resource
 <span class="lineNum">      87 </span><span class="lineCov">         18 : {</span>
-<span class="lineNum">      88 </span>            :     NSLog(@&quot;$$$$$$$ here we go$$$$$$&quot;);
-<span class="lineNum">      89 </span><span class="lineCov">         18 :     NSArray* lines = [[resource asString] componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];</span>
-<span class="lineNum">      90 </span><span class="lineCov">         18 :     for (NSString* line in lines)</span>
-<span class="lineNum">      91 </span><span class="lineCov">         54 :     {</span>
-<span class="lineNum">      92 </span>            :         NSRange range = [line rangeOfString:@&quot;=&quot;];
-<span class="lineNum">      93 </span><span class="lineCov">         54 :         if (range.location != NSNotFound)</span>
-<span class="lineNum">      94 </span><span class="lineCov">         54 :         {</span>
-<span class="lineNum">      95 </span>            :             NSString* property = [line substringToIndex:range.location];
-<span class="lineNum">      96 </span><span class="lineCov">         36 :             NSString* value = [line substringFromIndex:range.location + range.length];</span>
-<span class="lineNum">      97 </span><span class="lineCov">         36 :             [_properties setObject:value forKey:property];</span>
-<span class="lineNum">      98 </span><span class="lineCov">         36 :         }</span>
-<span class="lineNum">      99 </span><span class="lineCov">         36 :     }</span>
-<span class="lineNum">     100 </span><span class="lineCov">         54 : }</span>
-<span class="lineNum">     101 </span><span class="lineCov">         18 : </span>
-<span class="lineNum">     102 </span>            : - (NSDictionary*)properties
-<span class="lineNum">     103 </span><span class="lineCov">          1 : {</span>
-<span class="lineNum">     104 </span>            :     return [_properties copy];
-<span class="lineNum">     105 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      88 </span>            :     NSArray* lines = [[resource asString] componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+<span class="lineNum">      89 </span><span class="lineCov">         18 :     for (NSString* line in lines)</span>
+<span class="lineNum">      90 </span><span class="lineCov">         54 :     {</span>
+<span class="lineNum">      91 </span>            :         NSRange range = [line rangeOfString:@&quot;=&quot;];
+<span class="lineNum">      92 </span><span class="lineCov">         54 :         if (range.location != NSNotFound)</span>
+<span class="lineNum">      93 </span><span class="lineCov">         54 :         {</span>
+<span class="lineNum">      94 </span>            :             NSString* property = [line substringToIndex:range.location];
+<span class="lineNum">      95 </span><span class="lineCov">         36 :             NSString* value = [line substringFromIndex:range.location + range.length];</span>
+<span class="lineNum">      96 </span><span class="lineCov">         36 :             [_properties setObject:value forKey:property];</span>
+<span class="lineNum">      97 </span><span class="lineCov">         36 :         }</span>
+<span class="lineNum">      98 </span><span class="lineCov">         36 :     }</span>
+<span class="lineNum">      99 </span><span class="lineCov">         54 : }</span>
+<span class="lineNum">     100 </span><span class="lineCov">         18 : </span>
+<span class="lineNum">     101 </span>            : - (NSDictionary*)properties
+<span class="lineNum">     102 </span><span class="lineCov">          1 : {</span>
+<span class="lineNum">     103 </span>            :     return [_properties copy];
+<span class="lineNum">     104 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     105 </span>            : 
 <span class="lineNum">     106 </span>            : 
-<span class="lineNum">     107 </span>            : 
-<span class="lineNum">     108 </span>            : /* =========================================================== Protocol Methods ========================================================= */
-<span class="lineNum">     109 </span>            : - (void)mutateComponentDefinitionsIfRequired:(NSArray*)componentDefinitions
-<span class="lineNum">     110 </span><span class="lineCov">         11 : {</span>
-<span class="lineNum">     111 </span>            :     for (TyphoonDefinition* definition in componentDefinitions)
-<span class="lineNum">     112 </span><span class="lineCov">         57 :     {</span>
-<span class="lineNum">     113 </span>            :         for (TyphoonPropertyInjectedByValue* property in [definition propertiesInjectedByValue])
-<span class="lineNum">     114 </span><span class="lineCov">         57 :         {</span>
-<span class="lineNum">     115 </span>            :             if ([property.textValue hasPrefix:_prefix] &amp;&amp; [property.textValue hasSuffix:_suffix])
-<span class="lineNum">     116 </span><span class="lineCov">         29 :             {</span>
-<span class="lineNum">     117 </span>            :                 NSString* key = [property.textValue substringFromIndex:[_prefix length]];
-<span class="lineNum">     118 </span><span class="lineCov">          5 :                 key = [key substringToIndex:[key length] - [_suffix length]];</span>
-<span class="lineNum">     119 </span><span class="lineCov">          5 :                 NSString* value = [_properties valueForKey:key];</span>
-<span class="lineNum">     120 </span><span class="lineCov">          5 :                 NSLog(@&quot;Setting property '%@' to value '%@'&quot;, key, value);</span>
-<span class="lineNum">     121 </span><span class="lineCov">          5 :                 property.textValue = value;</span>
-<span class="lineNum">     122 </span><span class="lineCov">          5 :             }</span>
-<span class="lineNum">     123 </span><span class="lineCov">          5 :         }</span>
-<span class="lineNum">     124 </span><span class="lineCov">         29 :     }</span>
-<span class="lineNum">     125 </span><span class="lineCov">         57 : }</span>
-<span class="lineNum">     126 </span><span class="lineCov">         11 : </span>
-<span class="lineNum">     127 </span>            : @end
+<span class="lineNum">     107 </span>            : /* =========================================================== Protocol Methods ========================================================= */
+<span class="lineNum">     108 </span>            : - (void)mutateComponentDefinitionsIfRequired:(NSArray*)componentDefinitions
+<span class="lineNum">     109 </span><span class="lineCov">         11 : {</span>
+<span class="lineNum">     110 </span>            :     for (TyphoonDefinition* definition in componentDefinitions)
+<span class="lineNum">     111 </span><span class="lineCov">         57 :     {</span>
+<span class="lineNum">     112 </span>            :         for (TyphoonPropertyInjectedByValue* property in [definition propertiesInjectedByValue])
+<span class="lineNum">     113 </span><span class="lineCov">         57 :         {</span>
+<span class="lineNum">     114 </span>            :             if ([property.textValue hasPrefix:_prefix] &amp;&amp; [property.textValue hasSuffix:_suffix])
+<span class="lineNum">     115 </span><span class="lineCov">         29 :             {</span>
+<span class="lineNum">     116 </span>            :                 NSString* key = [property.textValue substringFromIndex:[_prefix length]];
+<span class="lineNum">     117 </span><span class="lineCov">          5 :                 key = [key substringToIndex:[key length] - [_suffix length]];</span>
+<span class="lineNum">     118 </span><span class="lineCov">          5 :                 NSString* value = [_properties valueForKey:key];</span>
+<span class="lineNum">     119 </span><span class="lineCov">          5 :                 NSLog(@&quot;Setting property '%@' to value '%@'&quot;, key, value);</span>
+<span class="lineNum">     120 </span><span class="lineCov">          5 :                 property.textValue = value;</span>
+<span class="lineNum">     121 </span><span class="lineCov">          5 :             }</span>
+<span class="lineNum">     122 </span><span class="lineCov">          5 :         }</span>
+<span class="lineNum">     123 </span><span class="lineCov">         29 :     }</span>
+<span class="lineNum">     124 </span><span class="lineCov">         57 : }</span>
+<span class="lineNum">     125 </span><span class="lineCov">         11 : </span>
+<span class="lineNum">     126 </span>            : @end
 </pre>
       </td>
     </tr>
