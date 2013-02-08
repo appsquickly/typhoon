@@ -25,7 +25,5 @@
 
 - (id)initWithName:(NSString*)name value:(NSString*)value;
 
-- (NSString*)description;
-
 
 @end

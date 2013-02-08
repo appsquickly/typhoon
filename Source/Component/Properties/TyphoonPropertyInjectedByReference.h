@@ -23,6 +23,5 @@
 
 - (id)initWithName:(NSString*)name reference:(NSString*)reference;
 
-- (NSString*)description;
 
 @end
