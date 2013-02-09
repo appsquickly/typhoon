@@ -24,7 +24,7 @@
 #import "TyphoonPropertyInjectedByValue.h"
 #import "TyphoonPropertyInjectionDelegate.h"
 #import "TyphoonParameterInjectedByValue.h"
-#import "TyphoonPrimitiveTypeConverter.h"
+#import "TyphoonComponentFactory+PrimitiveTypeInjection.h"
 
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
@@ -104,14 +104,6 @@
     return returnValue;
 }
 
-- (void)setPrimitiveArgumentFor:(NSInvocation*)invocation parameter:(TyphoonParameterInjectedByValue*)parameter
-        requiredType:(TyphoonTypeDescriptor*)requiredType
-{
-    TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
-    void* converted = [converter convert:parameter.value requiredType:requiredType];
-    [invocation setArgument:&converted atIndex:parameter.index + 2];
-}
-
 /* ====================================================================================================================================== */
 #pragma mark - Property Injection
 
@@ -164,9 +156,7 @@
         TyphoonPropertyInjectedByValue* valueProperty = (TyphoonPropertyInjectedByValue*) property;
         if (typeDescriptor.isPrimitive)
         {
-            TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
-            void* converted = [converter convert:valueProperty.textValue requiredType:typeDescriptor];
-            objc_msgSend(instance, [instance setterForPropertyWithName:property.name], converted, nil);
+            [self injectPrimitivePropertyValueOn:instance property:property valueProperty:valueProperty requiredType:typeDescriptor];
         }
         else
         {
@@ -176,6 +166,7 @@
         }
     }
 }
+
 
 - (void)doAfterPropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
 {

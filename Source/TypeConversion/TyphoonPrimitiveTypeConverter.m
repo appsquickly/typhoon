@@ -11,125 +11,119 @@
 
 
 #import "TyphoonPrimitiveTypeConverter.h"
-#import "TyphoonTypeDescriptor.h"
 
 
 @implementation TyphoonPrimitiveTypeConverter
 
 
-- (void*)convert:(NSString*)stringValue requiredType:(TyphoonTypeDescriptor*)typeDescriptor
-{
-    NSLog(@"Converting value: %@", stringValue);
-    [self checkSupportedTypes:typeDescriptor];
-    if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeBoolean || typeDescriptor.primitiveType == TyphoonPrimitiveTypeChar)
-    {
-        return (void*) [stringValue boolValue];
-    }
-    else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeString)
-    {
-        return (void*) [stringValue cStringUsingEncoding:NSUTF8StringEncoding];
-    }
-    else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeSelector)
-    {
-        return (void*) NSSelectorFromString(stringValue);
-    }
-    return [self convertNumericTypes:stringValue typeDescriptor:typeDescriptor];
-}
+/* ========================================================== Interface Methods ========================================================= */
 
-
-/* ============================================================ Private Methods ========================================================= */
-- (void)checkSupportedTypes:(TyphoonTypeDescriptor*)typeDescriptor
-{
-    if (typeDescriptor.isArray)
-    {
-        [NSException raise:NSInvalidArgumentException format:@"Array type not yet supported"];
-    }
-    else if (typeDescriptor.isStructure)
-    {
-        [NSException raise:NSInvalidArgumentException format:@"Structure type can't be converted"];
-    }
-    else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeClass)
-    {
-        [NSException raise:NSInvalidArgumentException format:@"Class type can't be converted. Consider using NSString"];
-    }
-    else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeDouble)
-    {
-        [NSException raise:NSInvalidArgumentException format:@"double type can't be converted. Consider using NSNumber."];
-    }
-    else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeFloat)
-    {
-        [NSException raise:NSInvalidArgumentException format:@"float type can't be converted. Consider using NSNumber."];
-    }
-    else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeBitField)
-    {
-        [NSException raise:NSInvalidArgumentException format:@"bitfield type can't be converted"];
-    }
-    else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeUnsignedChar)
-    {
-        [NSException raise:NSInvalidArgumentException format:@"unsigned char type can't be converted"];
-    }
-    else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeVoid)
-    {
-        [NSException raise:NSInvalidArgumentException format:@"void type can't be converted"];
-    }
-    else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeUnknown)
-    {
-        [NSException raise:NSInvalidArgumentException format:@"unknown type can't be converted"];
-    }
-}
-
-- (void*)convertNumericTypes:(NSString*)stringValue typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor
+- (int)convertToInt:(NSString*)stringValue
 {
     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeInt)
-    {
-        int converted = 0;
-        [scanner scanInt:&converted];
-        return (void*) converted;
-    }
-    else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeUnsignedInt)
-    {
-        int converted = 0;
-        [scanner scanInt:&converted];
-        return (void*) [[NSNumber numberWithUnsignedInt:converted] unsignedIntValue];
-    }
-    else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeShort)
-    {
-        int converted = 0;
-        [scanner scanInt:&converted];
-        return (void*) [[NSNumber numberWithInt:converted] shortValue];
-    }
-    else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeUnsignedShort)
-    {
-        int converted = 0;
-        [scanner scanInt:&converted];
-        return (void*) [[NSNumber numberWithUnsignedInt:converted] unsignedShortValue];
-    }
-    else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeLong)
-    {
-        long long converted = 0;
-        [scanner scanLongLong:&converted];
-        return (void*) [[NSNumber numberWithLong:converted] longValue];
-    }
-    else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeUnsignedLong)
-    {
-        long long converted = 0;
-        [scanner scanLongLong:&converted];
-        return (void*) [[NSNumber numberWithUnsignedLong:converted] unsignedLongValue];
-    }
-    else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeLongLong)
-    {
-        long long converted = 0;
-        [scanner scanLongLong:&converted];
-        return (void*) converted;
-    }
-    else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeUnsignedLongLong)
-    {
-        long long converted = 0;
-        [scanner scanLongLong:&converted];
-        return (void*) [[NSNumber numberWithUnsignedLongLong:converted] unsignedLongLongValue];
-    }
-    return nil;
+    int converted = 0;
+    [scanner scanInt:&converted];
+    return converted;
+}
+
+- (short)convertToShort:(NSString*)stringValue
+{
+    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
+    short converted = 0;
+    [scanner scanInt:(int*) &converted];
+    return converted;
+}
+
+- (long)convertToLong:(NSString*)stringValue
+{
+    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
+    long long converted = 0;
+    [scanner scanLongLong:&converted];
+    return [[NSNumber numberWithLongLong:converted] longValue];
+}
+
+- (long long)convertToLongLong:(NSString*)stringValue
+{
+    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
+    long long converted = 0;
+    [scanner scanLongLong:&converted];
+    return converted;
+}
+
+- (unsigned char)convertToUnsignedChar:(NSString*)stringValue
+{
+    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
+    unsigned char converted = 0;
+    [scanner scanInt:(int*) &converted];
+    return converted;
+}
+
+- (unsigned int)convertToUnsignedInt:(NSString*)stringValue
+{
+    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
+    int converted = 0;
+    [scanner scanInt:&converted];
+    return [[NSNumber numberWithInt:converted] unsignedIntValue];
+}
+
+- (unsigned short)convertToUnsignedShort:(NSString*)stringValue
+{
+    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
+    int converted = 0;
+    [scanner scanInt:&converted];
+    return [[NSNumber numberWithInt:converted] unsignedShortValue];
+}
+
+- (unsigned long)convertToUnsignedLong:(NSString*)stringValue
+{
+    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
+    long long converted = 0;
+    [scanner scanLongLong:&converted];
+    return [[NSNumber numberWithLong:converted] unsignedLongValue];
+}
+
+- (unsigned long long)convertToUnsignedLongLong:(NSString*)stringValue
+{
+    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
+    long long converted = 0;
+    [scanner scanLongLong:&converted];
+    return [[NSNumber numberWithLongLong:converted] unsignedLongValue];
+}
+
+- (float)convertToFloat:(NSString*)stringValue
+{
+    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
+    long long converted = 0;
+    [scanner scanLongLong:&converted];
+    return [[NSNumber numberWithLongLong:converted] floatValue];
+}
+
+- (double)convertToDouble:(NSString*)stringValue
+{
+    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
+    long long converted = 0;
+    [scanner scanLongLong:&converted];
+    return [[NSNumber numberWithLongLong:converted] doubleValue];
+}
+
+- (BOOL)convertToBoolean:(NSString*)stringValue
+{
+    return [stringValue boolValue];
+}
+
+- (const char*)convertToCString:(NSString*)stringValue
+{
+    return [stringValue cStringUsingEncoding:NSUTF8StringEncoding];
+}
+
+- (Class)convertToClass:(NSString*)stringValue
+{
+    return NSClassFromString(stringValue);
+}
+
+- (SEL)convertToSelector:(NSString*)stringValue
+{
+    return NSSelectorFromString(stringValue);
 }
 
 @end

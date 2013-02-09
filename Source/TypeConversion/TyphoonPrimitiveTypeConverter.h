@@ -16,6 +16,36 @@
 
 @interface TyphoonPrimitiveTypeConverter : NSObject
 
-- (void*)convert:(NSString*)stringValue requiredType:(TyphoonTypeDescriptor*)typeDescriptor;
+
+- (int)convertToInt:(NSString*)stringValue;
+
+- (short)convertToShort:(NSString*)stringValue;
+
+- (long)convertToLong:(NSString*)stringValue;
+
+- (long long)convertToLongLong:(NSString*)stringValue;
+
+- (unsigned char)convertToUnsignedChar:(NSString*)stringValue;
+
+- (unsigned int)convertToUnsignedInt:(NSString*)stringValue;
+
+- (unsigned short)convertToUnsignedShort:(NSString*)stringValue;
+
+- (unsigned long)convertToUnsignedLong:(NSString*)stringValue;
+
+- (unsigned long long)convertToUnsignedLongLong:(NSString*)stringValue;
+
+- (float)convertToFloat:(NSString*)stringValue;
+
+- (double)convertToDouble:(NSString*)stringValue;
+
+- (BOOL)convertToBoolean:(NSString*)stringValue;
+
+- (const char*)convertToCString:(NSString*)stringValue;
+
+- (Class)convertToClass:(NSString*)stringValue;
+
+- (SEL)convertToSelector:(NSString*)stringValue;
+
 
 @end
