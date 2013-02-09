@@ -19,7 +19,7 @@
     --make.dirs,
     --clean,
     --make.dirs,
-    --unit.tests.build,
+    --tests.build,
     --assemble.coverage.data,
     --coverage.report,
     --api.report"/>
@@ -54,16 +54,6 @@
         </delete>
     </target>
 
-    <target name="--unit.tests.build">
-        <exec executable="xcodebuild" failonerror="true">
-            <env key="PATH" value="${tools.paths}"/>
-            <arg line="-target ${tests.target.name}"/>
-        </exec>
-
-        <fail if="tests.failed" message="Tests failed. Report is at ${tests.report}"/>
-        <fail if="tests.exception" message="Tests failed. Report is at ${tests.report}"/>
-    </target>
-
     <target name="--assemble.coverage.data">
         <mkdir dir="${temp.dir}/coverage-data"/>
         <pathconvert pathsep=", " property="gcno.list" refid="classes">
@@ -91,6 +81,58 @@
             <fileset dir="${target.dir}" includes="${gcda.list}"/>
         </copy>
     </target>
+
+    <target name="--tests.build">
+        <property name="tests.report" value="${reports.dir}/tests/test-results.txt"/>
+        <exec executable="xcodebuild" failonerror="false" outputproperty="unit.tests.output">
+            <arg line="-target Tests TEST_AFTER_BUILD=YES"/>
+        </exec>
+
+        <!-- Write report to disk -->
+        <echo file="${tests.report}" message="${unit.tests.output}"/>
+        <!-- Print report to console -->
+        <echo message="${unit.tests.output}"/>
+
+        <loadfile srcfile="${tests.report}" property="tests.error">
+            <filterchain>
+                <filterreader classname="org.apache.tools.ant.filters.LineContains">
+                    <param type="contains" value="BUILD FAILED"/>
+                </filterreader>
+            </filterchain>
+        </loadfile>
+        <fail if="tests.error" message="Tests failed to build."/>
+
+        <loadfile srcfile="${tests.report}" property="tests.failed">
+            <filterchain>
+                <filterreader classname="org.apache.tools.ant.filters.LineContains">
+                    <param type="contains" value="FAILURE"/>
+                </filterreader>
+            </filterchain>
+        </loadfile>
+
+        <echo message="Convert test output"/>
+        <echo file="${temp.dir}/convert-test-output.sh">
+            #!/bin/sh
+            cd ${temp.dir}
+            ocunit2junit ${tests.report}
+        </echo>
+        <chmod perm="+x" file="${temp.dir}/convert-test-output.sh"/>
+        <exec executable="${temp.dir}/convert-test-output.sh" failonerror="true" failifexecutionfails="true"/>
+
+        <junitreport todir="${temp.dir}">
+            <fileset dir="${temp.dir}/test-reports" includes="*xml"/>
+            <report format="frames" styledir="${scripts.dir}" todir="${reports.dir}/test-results">
+                <param name="TITLE" expression="Test Results"/>
+            </report>
+        </junitreport>
+        <copy todir="${reports.dir}/test-results">
+            <fileset dir="${scripts.dir}" includes="**/*.png"/>
+        </copy>
+
+        <fail if="tests.failed" message="Tests failed. Report is at ${tests.report}"/>
+
+    </target>
+
 
     <target name="--coverage.report">
         <property name="coverage.reports.dir" value="${reports.dir}/coverage"/>
