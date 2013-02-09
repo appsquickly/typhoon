@@ -1,0 +1,66 @@
+
+body {
+    font:normal 68% Verdana,Arial,Helvetica;
+    color:#000000;
+}
+table tr td, table tr th {
+    font-size: 68%;
+    empty-cells:show;
+}
+
+table.details tr th{
+    font-weight: bold;
+    text-align:left;
+    background:#005a92;
+    color: #f0fcec;
+}
+table.details tr td{
+    background:#f0f0f0;
+    border:1px dotted #002e61;
+}
+
+a {
+  color:#333333;
+}
+
+p {
+    line-height:1.5em;
+    margin-top:0.5em; margin-bottom:1.0em;
+}
+h1 {
+    margin: 0px 0px 5px; font: 165% verdana,arial,helvetica
+}
+h2 {
+    margin-top: 1em; margin-bottom: 0.5em; font: bold 125% verdana,arial,helvetica
+}
+h3 {
+    margin-bottom: 0.5em; font: bold 115% verdana,arial,helvetica
+}
+h4 {
+    margin-bottom: 0.5em; font: bold 100% verdana,arial,helvetica
+}
+h5 {
+    margin-bottom: 0.5em; font: bold 100% verdana,arial,helvetica
+}
+h6 {
+    margin-bottom: 0.5em; font: bold 100% verdana,arial,helvetica
+}
+.Error {
+    font-weight:bold; color:e20a16;
+}
+.Failure {
+    font-weight:bold; color:#e20a16;
+}
+.Properties {
+  text-align:right;
+}
+
+.heading {
+   text-align:left;
+   background:#ffffff;
+   color: #006dac;
+   font-weight: bold;	
+   font-size: 170%;
+   margin: 0px; 
+   padding: 0px;
+}
