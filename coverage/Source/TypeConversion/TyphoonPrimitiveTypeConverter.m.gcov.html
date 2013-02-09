@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">37</td>
-            <td class="headerCovTableEntry">76</td>
-            <td class="headerCovTableEntryLo">48.7 %</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntry">78</td>
+            <td class="headerCovTableEntryLo">19.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -69,128 +69,122 @@
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            : 
 <span class="lineNum">      13 </span>            : #import &quot;TyphoonPrimitiveTypeConverter.h&quot;
-<span class="lineNum">      14 </span>            : #import &quot;TyphoonTypeDescriptor.h&quot;
+<span class="lineNum">      14 </span>            : 
 <span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span>            : @implementation TyphoonPrimitiveTypeConverter
+<span class="lineNum">      16 </span>            : @implementation TyphoonPrimitiveTypeConverter
+<span class="lineNum">      17 </span>            : 
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span>            : - (void*)convert:(NSString*)stringValue requiredType:(TyphoonTypeDescriptor*)typeDescriptor
-<span class="lineNum">      21 </span><span class="lineCov">         21 : {</span>
-<span class="lineNum">      22 </span>            :     NSLog(@&quot;Converting value: %@&quot;, stringValue);
-<span class="lineNum">      23 </span><span class="lineCov">         21 :     [self checkSupportedTypes:typeDescriptor];</span>
-<span class="lineNum">      24 </span><span class="lineCov">         21 :     if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeBoolean || typeDescriptor.primitiveType == TyphoonPrimitiveTypeChar)</span>
-<span class="lineNum">      25 </span><span class="lineCov">         21 :     {</span>
-<span class="lineNum">      26 </span>            :         return (void*) [stringValue boolValue];
-<span class="lineNum">      27 </span><span class="lineCov">         10 :     }</span>
-<span class="lineNum">      28 </span>            :     else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeString)
-<span class="lineNum">      29 </span><span class="lineCov">         11 :     {</span>
-<span class="lineNum">      30 </span>            :         return (void*) [stringValue cStringUsingEncoding:NSUTF8StringEncoding];
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      32 </span>            :     else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeSelector)
-<span class="lineNum">      33 </span><span class="lineCov">         11 :     {</span>
-<span class="lineNum">      34 </span>            :         return (void*) NSSelectorFromString(stringValue);
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      36 </span>            :     return [self convertNumericTypes:stringValue typeDescriptor:typeDescriptor];
-<span class="lineNum">      37 </span><span class="lineCov">         11 : }</span>
-<span class="lineNum">      38 </span><span class="lineCov">         21 : </span>
-<span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span>            : /* ============================================================ Private Methods ========================================================= */
-<span class="lineNum">      41 </span>            : - (void)checkSupportedTypes:(TyphoonTypeDescriptor*)typeDescriptor
-<span class="lineNum">      42 </span><span class="lineCov">         21 : {</span>
-<span class="lineNum">      43 </span>            :     if (typeDescriptor.isArray)
-<span class="lineNum">      44 </span><span class="lineCov">         21 :     {</span>
-<span class="lineNum">      45 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;Array type not yet supported&quot;];
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.isStructure)</span>
-<span class="lineNum">      48 </span><span class="lineCov">         21 :     {</span>
-<span class="lineNum">      49 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;Structure type can't be converted&quot;];
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeClass)</span>
-<span class="lineNum">      52 </span><span class="lineCov">         21 :     {</span>
-<span class="lineNum">      53 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;Class type can't be converted. Consider using NSString&quot;];
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeDouble)</span>
-<span class="lineNum">      56 </span><span class="lineCov">         21 :     {</span>
-<span class="lineNum">      57 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;double type can't be converted. Consider using NSNumber.&quot;];
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeFloat)</span>
-<span class="lineNum">      60 </span><span class="lineCov">         21 :     {</span>
-<span class="lineNum">      61 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;float type can't be converted. Consider using NSNumber.&quot;];
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeBitField)</span>
-<span class="lineNum">      64 </span><span class="lineCov">         21 :     {</span>
-<span class="lineNum">      65 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;bitfield type can't be converted&quot;];
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeUnsignedChar)</span>
-<span class="lineNum">      68 </span><span class="lineCov">         21 :     {</span>
-<span class="lineNum">      69 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;unsigned char type can't be converted&quot;];
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeVoid)</span>
-<span class="lineNum">      72 </span><span class="lineCov">         21 :     {</span>
-<span class="lineNum">      73 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;void type can't be converted&quot;];
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeUnknown)</span>
-<span class="lineNum">      76 </span><span class="lineCov">         21 :     {</span>
-<span class="lineNum">      77 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;unknown type can't be converted&quot;];
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      80 </span><span class="lineCov">         21 : </span>
-<span class="lineNum">      81 </span>            : - (void*)convertNumericTypes:(NSString*)stringValue typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor
-<span class="lineNum">      82 </span>            : {
-<span class="lineNum">      83 </span><span class="lineCov">         11 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
-<span class="lineNum">      84 </span>            :     if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeInt)
-<span class="lineNum">      85 </span><span class="lineCov">         11 :     {</span>
-<span class="lineNum">      86 </span><span class="lineCov">         11 :         int converted = 0;</span>
-<span class="lineNum">      87 </span>            :         [scanner scanInt:&amp;converted];
-<span class="lineNum">      88 </span><span class="lineCov">          2 :         return (void*) converted;</span>
-<span class="lineNum">      89 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">      90 </span><span class="lineCov">          2 :     else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeUnsignedInt)</span>
-<span class="lineNum">      91 </span>            :     {
-<span class="lineNum">      92 </span><span class="lineCov">          9 :         int converted = 0;</span>
-<span class="lineNum">      93 </span>            :         [scanner scanInt:&amp;converted];
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 :         return (void*) [[NSNumber numberWithUnsignedInt:converted] unsignedIntValue];</span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeShort)</span>
-<span class="lineNum">      97 </span>            :     {
-<span class="lineNum">      98 </span><span class="lineCov">          9 :         int converted = 0;</span>
-<span class="lineNum">      99 </span>            :         [scanner scanInt:&amp;converted];
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 :         return (void*) [[NSNumber numberWithInt:converted] shortValue];</span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeUnsignedShort)</span>
-<span class="lineNum">     103 </span>            :     {
-<span class="lineNum">     104 </span><span class="lineCov">          9 :         int converted = 0;</span>
-<span class="lineNum">     105 </span>            :         [scanner scanInt:&amp;converted];
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 :         return (void*) [[NSNumber numberWithUnsignedInt:converted] unsignedShortValue];</span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeLong)</span>
-<span class="lineNum">     109 </span>            :     {
-<span class="lineNum">     110 </span><span class="lineCov">          9 :         long long converted = 0;</span>
-<span class="lineNum">     111 </span>            :         [scanner scanLongLong:&amp;converted];
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 :         return (void*) [[NSNumber numberWithLong:converted] longValue];</span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeUnsignedLong)</span>
-<span class="lineNum">     115 </span>            :     {
-<span class="lineNum">     116 </span><span class="lineCov">          9 :         long long converted = 0;</span>
-<span class="lineNum">     117 </span>            :         [scanner scanLongLong:&amp;converted];
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 :         return (void*) [[NSNumber numberWithUnsignedLong:converted] unsignedLongValue];</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeLongLong)</span>
-<span class="lineNum">     121 </span>            :     {
-<span class="lineNum">     122 </span><span class="lineCov">          9 :         long long converted = 0;</span>
-<span class="lineNum">     123 </span>            :         [scanner scanLongLong:&amp;converted];
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 :         return (void*) converted;</span>
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 :     else if (typeDescriptor.primitiveType == TyphoonPrimitiveTypeUnsignedLongLong)</span>
-<span class="lineNum">     127 </span>            :     {
-<span class="lineNum">     128 </span><span class="lineCov">          9 :         long long converted = 0;</span>
-<span class="lineNum">     129 </span>            :         [scanner scanLongLong:&amp;converted];
-<span class="lineNum">     130 </span><span class="lineCov">          9 :         return (void*) [[NSNumber numberWithUnsignedLongLong:converted] unsignedLongLongValue];</span>
-<span class="lineNum">     131 </span><span class="lineCov">          9 :     }</span>
-<span class="lineNum">     132 </span><span class="lineCov">          9 :     return nil;</span>
-<span class="lineNum">     133 </span>            : }
-<span class="lineNum">     134 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">     135 </span><span class="lineCov">         11 : @end</span>
+<span class="lineNum">      19 </span>            : /* ========================================================== Interface Methods ========================================================= */
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span><span class="lineCov">          2 : - (int)convertToInt:(NSString*)stringValue</span>
+<span class="lineNum">      22 </span>            : {
+<span class="lineNum">      23 </span><span class="lineCov">          2 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      24 </span><span class="lineCov">          2 :     int converted = 0;</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 :     [scanner scanInt:&amp;converted];</span>
+<span class="lineNum">      26 </span><span class="lineCov">          4 :     return converted;</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 : - (short)convertToShort:(NSString*)stringValue</span>
+<span class="lineNum">      30 </span>            : {
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :     short converted = 0;</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     [scanner scanInt:(int*) &amp;converted];</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :     return converted;</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : - (long)convertToLong:(NSString*)stringValue</span>
+<span class="lineNum">      38 </span>            : {
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 :     long long converted = 0;</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     [scanner scanLongLong:&amp;converted];</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     return [[NSNumber numberWithLongLong:converted] longValue];</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : - (long long)convertToLongLong:(NSString*)stringValue</span>
+<span class="lineNum">      46 </span>            : {
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :     long long converted = 0;</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     [scanner scanLongLong:&amp;converted];</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :     return converted;</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : - (unsigned char)convertToUnsignedChar:(NSString*)stringValue</span>
+<span class="lineNum">      54 </span>            : {
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :     unsigned char converted = 0;</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :     [scanner scanInt:(int*) &amp;converted];</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :     return converted;</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 : - (unsigned int)convertToUnsignedInt:(NSString*)stringValue</span>
+<span class="lineNum">      62 </span>            : {
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :     int converted = 0;</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :     [scanner scanInt:&amp;converted];</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     return [[NSNumber numberWithInt:converted] unsignedIntValue];</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 : - (unsigned short)convertToUnsignedShort:(NSString*)stringValue</span>
+<span class="lineNum">      70 </span>            : {
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :     int converted = 0;</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :     [scanner scanInt:&amp;converted];</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :     return [[NSNumber numberWithInt:converted] unsignedShortValue];</span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 : - (unsigned long)convertToUnsignedLong:(NSString*)stringValue</span>
+<span class="lineNum">      78 </span>            : {
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 :     long long converted = 0;</span>
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 :     [scanner scanLongLong:&amp;converted];</span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 :     return [[NSNumber numberWithLong:converted] unsignedLongValue];</span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span><span class="lineCov">          9 : - (unsigned long long)convertToUnsignedLongLong:(NSString*)stringValue</span>
+<span class="lineNum">      86 </span>            : {
+<span class="lineNum">      87 </span><span class="lineCov">          9 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      88 </span><span class="lineCov">          9 :     long long converted = 0;</span>
+<span class="lineNum">      89 </span><span class="lineCov">          9 :     [scanner scanLongLong:&amp;converted];</span>
+<span class="lineNum">      90 </span><span class="lineCov">         18 :     return [[NSNumber numberWithLongLong:converted] unsignedLongValue];</span>
+<span class="lineNum">      91 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">      92 </span>            : 
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 : - (float)convertToFloat:(NSString*)stringValue</span>
+<span class="lineNum">      94 </span>            : {
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :     long long converted = 0;</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :     [scanner scanLongLong:&amp;converted];</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :     return [[NSNumber numberWithLongLong:converted] floatValue];</span>
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     100 </span>            : 
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 : - (double)convertToDouble:(NSString*)stringValue</span>
+<span class="lineNum">     102 </span>            : {
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :     long long converted = 0;</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :     [scanner scanLongLong:&amp;converted];</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :     return [[NSNumber numberWithLongLong:converted] doubleValue];</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     108 </span>            : 
+<span class="lineNum">     109 </span><span class="lineCov">         10 : - (BOOL)convertToBoolean:(NSString*)stringValue</span>
+<span class="lineNum">     110 </span>            : {
+<span class="lineNum">     111 </span><span class="lineCov">         20 :     return [stringValue boolValue];</span>
+<span class="lineNum">     112 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">     113 </span>            : 
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 : - (const char*)convertToCString:(NSString*)stringValue</span>
+<span class="lineNum">     115 </span>            : {
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :     return [stringValue cStringUsingEncoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     118 </span>            : 
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 : - (Class)convertToClass:(NSString*)stringValue</span>
+<span class="lineNum">     120 </span>            : {
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :     return NSClassFromString(stringValue);</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 : - (SEL)convertToSelector:(NSString*)stringValue</span>
+<span class="lineNum">     125 </span>            : {
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 :     return NSSelectorFromString(stringValue);</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     128 </span>            : 
+<span class="lineNum">     129 </span>            : @end
 </pre>
       </td>
     </tr>

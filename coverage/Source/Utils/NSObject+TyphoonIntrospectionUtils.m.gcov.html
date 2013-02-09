@@ -77,33 +77,33 @@
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : @implementation NSObject (TyphoonIntrospectionUtils)
 <span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineCov">         34 : - (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName;</span>
+<span class="lineNum">      22 </span><span class="lineCov">         31 : - (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName;</span>
 <span class="lineNum">      23 </span>            : {
-<span class="lineNum">      24 </span><span class="lineCov">         34 :     TyphoonTypeDescriptor* typeDescriptor = nil;</span>
-<span class="lineNum">      25 </span><span class="lineCov">         34 :     objc_property_t propertyReflection = class_getProperty([self class], [propertyName UTF8String]);</span>
-<span class="lineNum">      26 </span><span class="lineCov">         34 :     if (propertyReflection)</span>
+<span class="lineNum">      24 </span><span class="lineCov">         31 :     TyphoonTypeDescriptor* typeDescriptor = nil;</span>
+<span class="lineNum">      25 </span><span class="lineCov">         31 :     objc_property_t propertyReflection = class_getProperty([self class], [propertyName UTF8String]);</span>
+<span class="lineNum">      26 </span><span class="lineCov">         31 :     if (propertyReflection)</span>
 <span class="lineNum">      27 </span>            :     {
-<span class="lineNum">      28 </span><span class="lineCov">         32 :         const char* attrs = property_getAttributes(propertyReflection);</span>
-<span class="lineNum">      29 </span><span class="lineCov">         32 :         if (attrs == NULL)</span>
+<span class="lineNum">      28 </span><span class="lineCov">         29 :         const char* attrs = property_getAttributes(propertyReflection);</span>
+<span class="lineNum">      29 </span><span class="lineCov">         29 :         if (attrs == NULL)</span>
 <span class="lineNum">      30 </span>            :         {
 <span class="lineNum">      31 </span><span class="lineNoCov">          0 :             return (NULL);</span>
 <span class="lineNum">      32 </span>            :         }
 <span class="lineNum">      33 </span>            : 
 <span class="lineNum">      34 </span>            :         static char buffer[256];
-<span class="lineNum">      35 </span><span class="lineCov">         32 :         const char* e = strchr(attrs, ',');</span>
-<span class="lineNum">      36 </span><span class="lineCov">         32 :         if (e == NULL)</span>
+<span class="lineNum">      35 </span><span class="lineCov">         29 :         const char* e = strchr(attrs, ',');</span>
+<span class="lineNum">      36 </span><span class="lineCov">         29 :         if (e == NULL)</span>
 <span class="lineNum">      37 </span>            :         {
 <span class="lineNum">      38 </span><span class="lineNoCov">          0 :             return (NULL);</span>
 <span class="lineNum">      39 </span>            :         }
 <span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span><span class="lineCov">         32 :         int len = (int) (e - attrs);</span>
-<span class="lineNum">      42 </span><span class="lineCov">         32 :         memcpy( buffer, attrs, len );</span>
-<span class="lineNum">      43 </span><span class="lineCov">         32 :         buffer[len] = '\0';</span>
+<span class="lineNum">      41 </span><span class="lineCov">         29 :         int len = (int) (e - attrs);</span>
+<span class="lineNum">      42 </span><span class="lineCov">         29 :         memcpy( buffer, attrs, len );</span>
+<span class="lineNum">      43 </span><span class="lineCov">         29 :         buffer[len] = '\0';</span>
 <span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span><span class="lineCov">         32 :         typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:[NSString stringWithCString:buffer encoding:NSUTF8StringEncoding]];</span>
-<span class="lineNum">      46 </span><span class="lineCov">         32 :     }</span>
-<span class="lineNum">      47 </span><span class="lineCov">         34 :     return typeDescriptor;</span>
-<span class="lineNum">      48 </span><span class="lineCov">         34 : }</span>
+<span class="lineNum">      45 </span><span class="lineCov">         29 :         typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:[NSString stringWithCString:buffer encoding:NSUTF8StringEncoding]];</span>
+<span class="lineNum">      46 </span><span class="lineCov">         29 :     }</span>
+<span class="lineNum">      47 </span><span class="lineCov">         31 :     return typeDescriptor;</span>
+<span class="lineNum">      48 </span><span class="lineCov">         31 : }</span>
 <span class="lineNum">      49 </span>            : 
 <span class="lineNum">      50 </span><span class="lineCov">         18 : - (SEL)setterForPropertyWithName:(NSString*)propertyName</span>
 <span class="lineNum">      51 </span>            : {
