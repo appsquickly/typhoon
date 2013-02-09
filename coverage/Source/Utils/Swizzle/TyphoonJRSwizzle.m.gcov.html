@@ -88,10 +88,10 @@
 <span class="lineNum">      30 </span>            : @implementation NSObject (TyphoonJRSwizzle)
 <span class="lineNum">      31 </span>            : 
 <span class="lineNum">      32 </span>            : + (BOOL)typhoon_swizzleMethod:(SEL)origSel_ withMethod:(SEL)altSel_ error:(NSError**)error_ {
-<span class="lineNum">      33 </span><span class="lineCov">        363 : #if OBJC_API_VERSION &gt;= 2</span>
+<span class="lineNum">      33 </span><span class="lineCov">        399 : #if OBJC_API_VERSION &gt;= 2</span>
 <span class="lineNum">      34 </span>            :         Method origMethod = class_getInstanceMethod(self, origSel_);
-<span class="lineNum">      35 </span><span class="lineCov">        363 :         if (!origMethod) {</span>
-<span class="lineNum">      36 </span><span class="lineCov">        363 : #if TARGET_OS_IPHONE</span>
+<span class="lineNum">      35 </span><span class="lineCov">        399 :         if (!origMethod) {</span>
+<span class="lineNum">      36 </span><span class="lineCov">        399 : #if TARGET_OS_IPHONE</span>
 <span class="lineNum">      37 </span>            :                 SetNSError(error_, @&quot;original method %@ not found for class %@&quot;, NSStringFromSelector(origSel_), [self class]);
 <span class="lineNum">      38 </span>            : #else
 <span class="lineNum">      39 </span>            :                 SetNSError(error_, @&quot;original method %@ not found for class %@&quot;, NSStringFromSelector(origSel_), [self className]);
@@ -100,8 +100,8 @@
 <span class="lineNum">      42 </span><span class="lineNoCov">          0 :         }</span>
 <span class="lineNum">      43 </span>            :         
 <span class="lineNum">      44 </span>            :         Method altMethod = class_getInstanceMethod(self, altSel_);
-<span class="lineNum">      45 </span><span class="lineCov">        363 :         if (!altMethod) {</span>
-<span class="lineNum">      46 </span><span class="lineCov">        363 : #if TARGET_OS_IPHONE</span>
+<span class="lineNum">      45 </span><span class="lineCov">        399 :         if (!altMethod) {</span>
+<span class="lineNum">      46 </span><span class="lineCov">        399 : #if TARGET_OS_IPHONE</span>
 <span class="lineNum">      47 </span>            :                 SetNSError(error_, @&quot;alternate method %@ not found for class %@&quot;, NSStringFromSelector(altSel_), [self class]);
 <span class="lineNum">      48 </span>            : #else
 <span class="lineNum">      49 </span>            :                 SetNSError(error_, @&quot;alternate method %@ not found for class %@&quot;, NSStringFromSelector(altSel_), [self className]);
@@ -112,15 +112,15 @@
 <span class="lineNum">      54 </span>            :         class_addMethod(self,
 <span class="lineNum">      55 </span>            :                                         origSel_,
 <span class="lineNum">      56 </span>            :                                         class_getMethodImplementation(self, origSel_),
-<span class="lineNum">      57 </span><span class="lineCov">        363 :                                         method_getTypeEncoding(origMethod));</span>
-<span class="lineNum">      58 </span><span class="lineCov">        363 :         class_addMethod(self,</span>
+<span class="lineNum">      57 </span><span class="lineCov">        399 :                                         method_getTypeEncoding(origMethod));</span>
+<span class="lineNum">      58 </span><span class="lineCov">        399 :         class_addMethod(self,</span>
 <span class="lineNum">      59 </span>            :                                         altSel_,
 <span class="lineNum">      60 </span>            :                                         class_getMethodImplementation(self, altSel_),
-<span class="lineNum">      61 </span><span class="lineCov">        363 :                                         method_getTypeEncoding(altMethod));</span>
-<span class="lineNum">      62 </span><span class="lineCov">        363 :         </span>
+<span class="lineNum">      61 </span><span class="lineCov">        399 :                                         method_getTypeEncoding(altMethod));</span>
+<span class="lineNum">      62 </span><span class="lineCov">        399 :         </span>
 <span class="lineNum">      63 </span>            :         method_exchangeImplementations(class_getInstanceMethod(self, origSel_), class_getInstanceMethod(self, altSel_));
-<span class="lineNum">      64 </span><span class="lineCov">        363 :         return YES;</span>
-<span class="lineNum">      65 </span><span class="lineCov">        363 : #else</span>
+<span class="lineNum">      64 </span><span class="lineCov">        399 :         return YES;</span>
+<span class="lineNum">      65 </span><span class="lineCov">        399 : #else</span>
 <span class="lineNum">      66 </span>            :         //      Scan for non-inherited methods.
 <span class="lineNum">      67 </span>            :         Method directOriginalMethod = NULL, directAlternateMethod = NULL;
 <span class="lineNum">      68 </span>            :         
@@ -184,7 +184,7 @@
 <span class="lineNum">     126 </span>            :         return YES;
 <span class="lineNum">     127 </span>            : #endif
 <span class="lineNum">     128 </span>            : }
-<span class="lineNum">     129 </span><span class="lineCov">        363 : </span>
+<span class="lineNum">     129 </span><span class="lineCov">        399 : </span>
 <span class="lineNum">     130 </span>            : + (BOOL)typhoon_swizzleClassMethod:(SEL)origSel_ withClassMethod:(SEL)altSel_ error:(NSError**)error_ {
 <span class="lineNum">     131 </span>            :         return [GetClass((id) self) typhoon_swizzleMethod:origSel_ withMethod:altSel_ error:error_];
 <span class="lineNum">     132 </span><span class="lineNoCov">          0 : }</span>
