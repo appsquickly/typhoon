@@ -67,9 +67,6 @@
 }
 
 
-
-
-
 /* ============================================================ Private Methods ========================================================= */
 - (id)invokeInitializerOn:(id)instanceOrClass withDefinition:(TyphoonDefinition*)definition
 {
@@ -96,10 +93,8 @@
             }
             else
             {
-                TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
                 TyphoonTypeDescriptor* descriptor = [byValue resolveTypeWith:instanceOrClass];
-                void* converted = [converter convert:byValue.value requiredType:descriptor];
-                [invocation setArgument:&converted atIndex:parameter.index + 2];
+                [self setPrimitiveArgumentFor:invocation parameter:byValue requiredType:descriptor];
             }
         }
     }
@@ -107,6 +102,14 @@
     id <NSObject> returnValue = definition.initializer.isClassMethod || definition.factoryComponent ? nil : instanceOrClass;
     [invocation getReturnValue:&returnValue];
     return returnValue;
+}
+
+- (void)setPrimitiveArgumentFor:(NSInvocation*)invocation parameter:(TyphoonParameterInjectedByValue*)parameter
+        requiredType:(TyphoonTypeDescriptor*)requiredType
+{
+    TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
+    void* converted = [converter convert:parameter.value requiredType:requiredType];
+    [invocation setArgument:&converted atIndex:parameter.index + 2];
 }
 
 /* ====================================================================================================================================== */
