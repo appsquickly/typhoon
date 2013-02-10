@@ -19,12 +19,10 @@
 #import "TyphoonInitializer.h"
 #import "TyphoonPropertyInjectedByReference.h"
 #import "TyphoonTypeDescriptor.h"
-#import "TyphonTypeConverter.h"
 #import "TyphoonTypeConverterRegistry.h"
 #import "TyphoonPropertyInjectedByValue.h"
 #import "TyphoonPropertyInjectionDelegate.h"
 #import "TyphoonParameterInjectedByValue.h"
-#import "TyphoonPrimitiveTypeConverter.h"
 
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
