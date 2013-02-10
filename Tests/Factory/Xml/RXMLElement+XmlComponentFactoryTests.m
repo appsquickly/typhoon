@@ -23,15 +23,12 @@
 - (void)setUp
 {
     NSString* xmlString = [[TyphoonBundleResource withName:@"MiddleAgesAssembly.xml"] asString];
-    NSLog(@"Xml string: %@", xmlString);
     _element = [TyphoonRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
 }
 
 - (void)test_asComponentDefinition
 {
     NSMutableArray* componentDefinitions = [[NSMutableArray alloc] init];
-
-
     [_element iterate:@"*" usingBlock:^(TyphoonRXMLElement* child)
     {
         if ([[child tag] isEqualToString:@"component"])
@@ -43,6 +40,29 @@
     }];
 
     assertThat(componentDefinitions, hasCountOf(7));
+}
+
+- (void)test_asComponentDefinition_raises_exception_for_invalid_class_name
+{
+    @try
+    {
+        NSString* xmlString = [[TyphoonBundleResource withName:@"AssemblyWithInvalidClassName.xml"] asString];
+        _element = [TyphoonRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
+        [_element iterate:@"*" usingBlock:^(TyphoonRXMLElement* child)
+        {
+            if ([[child tag] isEqualToString:@"component"])
+            {
+                TyphoonDefinition* definition = [child asComponentDefinition];
+                STFail(@"Should have thrown exception");
+            }
+        }];
+
+    }
+    @catch (NSException* e)
+    {
+        assertThat([e description], equalTo(@"Class 'AClassThatDoesNotExist' can't be resolved."));
+    }
+
 }
 
 
