@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">21</td>
             <td class="headerCovTableEntry">78</td>
-            <td class="headerCovTableEntryLo">26.9 %</td>
+            <td class="headerCovTableEntry">78</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -84,61 +84,61 @@
 <span class="lineNum">      26 </span><span class="lineCov">          4 :     return converted;</span>
 <span class="lineNum">      27 </span><span class="lineCov">          2 : }</span>
 <span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 : - (short)convertToShort:(NSString*)stringValue</span>
+<span class="lineNum">      29 </span><span class="lineCov">          1 : - (short)convertToShort:(NSString*)stringValue</span>
 <span class="lineNum">      30 </span>            : {
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 :     short converted = 0;</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     [scanner scanInt:(int*) &amp;converted];</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 :     return converted;</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :     int converted = 0;</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :     [scanner scanInt:&amp;converted];</span>
+<span class="lineNum">      34 </span><span class="lineCov">          2 :     return [[NSNumber numberWithInt:converted] shortValue];</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      36 </span>            : 
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : - (long)convertToLong:(NSString*)stringValue</span>
+<span class="lineNum">      37 </span><span class="lineCov">          1 : - (long)convertToLong:(NSString*)stringValue</span>
 <span class="lineNum">      38 </span>            : {
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 :     long long converted = 0;</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     [scanner scanLongLong:&amp;converted];</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     return [[NSNumber numberWithLongLong:converted] longValue];</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      40 </span><span class="lineCov">          1 :     long long converted = 0;</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 :     [scanner scanLongLong:&amp;converted];</span>
+<span class="lineNum">      42 </span><span class="lineCov">          2 :     return [[NSNumber numberWithLongLong:converted] longValue];</span>
+<span class="lineNum">      43 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : - (long long)convertToLongLong:(NSString*)stringValue</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 : - (long long)convertToLongLong:(NSString*)stringValue</span>
 <span class="lineNum">      46 </span>            : {
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 :     long long converted = 0;</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     [scanner scanLongLong:&amp;converted];</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :     return converted;</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      47 </span><span class="lineCov">          1 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :     long long converted = 0;</span>
+<span class="lineNum">      49 </span><span class="lineCov">          1 :     [scanner scanLongLong:&amp;converted];</span>
+<span class="lineNum">      50 </span><span class="lineCov">          2 :     return converted;</span>
+<span class="lineNum">      51 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : - (unsigned char)convertToUnsignedChar:(NSString*)stringValue</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 : - (unsigned char)convertToUnsignedChar:(NSString*)stringValue</span>
 <span class="lineNum">      54 </span>            : {
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 :     unsigned char converted = 0;</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 :     [scanner scanInt:(int*) &amp;converted];</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 :     return converted;</span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      55 </span><span class="lineCov">          1 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      56 </span><span class="lineCov">          1 :     unsigned int converted = 0;</span>
+<span class="lineNum">      57 </span><span class="lineCov">          1 :     [scanner scanInt:&amp;converted];</span>
+<span class="lineNum">      58 </span><span class="lineCov">          2 :     return (unsigned char) converted;</span>
+<span class="lineNum">      59 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      60 </span>            : 
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 : - (unsigned int)convertToUnsignedInt:(NSString*)stringValue</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 : - (unsigned int)convertToUnsignedInt:(NSString*)stringValue</span>
 <span class="lineNum">      62 </span>            : {
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 :     int converted = 0;</span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 :     [scanner scanInt:&amp;converted];</span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     return [[NSNumber numberWithInt:converted] unsignedIntValue];</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      63 </span><span class="lineCov">          1 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      64 </span><span class="lineCov">          1 :     int converted = 0;</span>
+<span class="lineNum">      65 </span><span class="lineCov">          1 :     [scanner scanInt:&amp;converted];</span>
+<span class="lineNum">      66 </span><span class="lineCov">          2 :     return [[NSNumber numberWithInt:converted] unsignedIntValue];</span>
+<span class="lineNum">      67 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      68 </span>            : 
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 : - (unsigned short)convertToUnsignedShort:(NSString*)stringValue</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 : - (unsigned short)convertToUnsignedShort:(NSString*)stringValue</span>
 <span class="lineNum">      70 </span>            : {
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 :     int converted = 0;</span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 :     [scanner scanInt:&amp;converted];</span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 :     return [[NSNumber numberWithInt:converted] unsignedShortValue];</span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :     int converted = 0;</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :     [scanner scanInt:&amp;converted];</span>
+<span class="lineNum">      74 </span><span class="lineCov">          2 :     return [[NSNumber numberWithInt:converted] unsignedShortValue];</span>
+<span class="lineNum">      75 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      76 </span>            : 
-<span class="lineNum">      77 </span><span class="lineNoCov">          0 : - (unsigned long)convertToUnsignedLong:(NSString*)stringValue</span>
+<span class="lineNum">      77 </span><span class="lineCov">          1 : - (unsigned long)convertToUnsignedLong:(NSString*)stringValue</span>
 <span class="lineNum">      78 </span>            : {
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 :     long long converted = 0;</span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 :     [scanner scanLongLong:&amp;converted];</span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 :     return [[NSNumber numberWithLong:converted] unsignedLongValue];</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 :     long long converted = 0;</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 :     [scanner scanLongLong:&amp;converted];</span>
+<span class="lineNum">      82 </span><span class="lineCov">          2 :     return [[NSNumber numberWithLong:converted] unsignedLongValue];</span>
+<span class="lineNum">      83 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      84 </span>            : 
 <span class="lineNum">      85 </span><span class="lineCov">         10 : - (unsigned long long)convertToUnsignedLongLong:(NSString*)stringValue</span>
 <span class="lineNum">      86 </span>            : {
@@ -156,33 +156,33 @@
 <span class="lineNum">      98 </span><span class="lineCov">          8 :     return converted;</span>
 <span class="lineNum">      99 </span><span class="lineCov">          4 : }</span>
 <span class="lineNum">     100 </span>            : 
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 : - (double)convertToDouble:(NSString*)stringValue</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 : - (double)convertToDouble:(NSString*)stringValue</span>
 <span class="lineNum">     102 </span>            : {
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 :     long long converted = 0;</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 :     [scanner scanLongLong:&amp;converted];</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 :     return [[NSNumber numberWithLongLong:converted] doubleValue];</span>
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     103 </span><span class="lineCov">          1 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :     double converted = 0;</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :     [scanner scanDouble:&amp;converted];</span>
+<span class="lineNum">     106 </span><span class="lineCov">          2 :     return converted;</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">     108 </span>            : 
 <span class="lineNum">     109 </span><span class="lineCov">         12 : - (BOOL)convertToBoolean:(NSString*)stringValue</span>
 <span class="lineNum">     110 </span>            : {
 <span class="lineNum">     111 </span><span class="lineCov">         24 :     return [stringValue boolValue];</span>
 <span class="lineNum">     112 </span><span class="lineCov">         12 : }</span>
 <span class="lineNum">     113 </span>            : 
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 : - (const char*)convertToCString:(NSString*)stringValue</span>
+<span class="lineNum">     114 </span><span class="lineCov">          1 : - (const char*)convertToCString:(NSString*)stringValue</span>
 <span class="lineNum">     115 </span>            : {
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 :     return [stringValue cStringUsingEncoding:NSUTF8StringEncoding];</span>
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     116 </span><span class="lineCov">          2 :     return [stringValue cStringUsingEncoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">     118 </span>            : 
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 : - (Class)convertToClass:(NSString*)stringValue</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 : - (Class)convertToClass:(NSString*)stringValue</span>
 <span class="lineNum">     120 </span>            : {
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 :     return NSClassFromString(stringValue);</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     121 </span><span class="lineCov">          2 :     return NSClassFromString(stringValue);</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">     123 </span>            : 
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 : - (SEL)convertToSelector:(NSString*)stringValue</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 : - (SEL)convertToSelector:(NSString*)stringValue</span>
 <span class="lineNum">     125 </span>            : {
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 :     return NSSelectorFromString(stringValue);</span>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     126 </span><span class="lineCov">          2 :     return NSSelectorFromString(stringValue);</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">     128 </span>            : 
 <span class="lineNum">     129 </span>            : @end
 </pre>

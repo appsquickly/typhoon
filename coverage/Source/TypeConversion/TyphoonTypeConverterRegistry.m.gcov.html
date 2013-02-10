@@ -80,16 +80,16 @@
 <span class="lineNum">      22 </span><span class="lineNoCov">          0 : @implementation TyphoonTypeConverterRegistry</span>
 <span class="lineNum">      23 </span>            : 
 <span class="lineNum">      24 </span>            : /* =========================================================== Class Methods ============================================================ */
-<span class="lineNum">      25 </span><span class="lineCov">         29 : + (TyphoonTypeConverterRegistry*)shared</span>
+<span class="lineNum">      25 </span><span class="lineCov">         31 : + (TyphoonTypeConverterRegistry*)shared</span>
 <span class="lineNum">      26 </span>            : {
 <span class="lineNum">      27 </span>            :     static dispatch_once_t onceToken;
 <span class="lineNum">      28 </span>            :     static TyphoonTypeConverterRegistry* instance;
 <span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span><span class="lineCov">         30 :     dispatch_once(&amp;onceToken, ^</span>
+<span class="lineNum">      30 </span><span class="lineCov">         32 :     dispatch_once(&amp;onceToken, ^</span>
 <span class="lineNum">      31 </span><span class="lineCov">          1 :     {</span>
 <span class="lineNum">      32 </span><span class="lineCov">          1 :         instance = [[[self class] alloc] init];</span>
 <span class="lineNum">      33 </span><span class="lineCov">          2 :     });</span>
-<span class="lineNum">      34 </span><span class="lineCov">         29 :     return instance;</span>
+<span class="lineNum">      34 </span><span class="lineCov">         31 :     return instance;</span>
 <span class="lineNum">      35 </span>            : }
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : /* ============================================================ Initializers ============================================================ */
@@ -110,18 +110,18 @@
 <span class="lineNum">      52 </span>            : 
 <span class="lineNum">      53 </span>            : 
 <span class="lineNum">      54 </span>            : /* ========================================================== Interface Methods ========================================================= */
-<span class="lineNum">      55 </span><span class="lineCov">          9 : - (id &lt;TyphonTypeConverter&gt;)converterFor:(id)classOrProtocol</span>
+<span class="lineNum">      55 </span><span class="lineCov">         11 : - (id &lt;TyphonTypeConverter&gt;)converterFor:(TyphoonTypeDescriptor*)typeDescriptor</span>
 <span class="lineNum">      56 </span>            : {
 <span class="lineNum">      57 </span>            : 
-<span class="lineNum">      58 </span><span class="lineCov">          9 :     id &lt;TyphonTypeConverter&gt; converter = [_typeConverters objectForKey:[classOrProtocol classOrProtocol]];</span>
-<span class="lineNum">      59 </span><span class="lineCov">          9 :     if (!converter)</span>
+<span class="lineNum">      58 </span><span class="lineCov">         11 :     id &lt;TyphonTypeConverter&gt; converter = [_typeConverters objectForKey:[typeDescriptor classOrProtocol]];</span>
+<span class="lineNum">      59 </span><span class="lineCov">         11 :     if (!converter)</span>
 <span class="lineNum">      60 </span>            :     {
 <span class="lineNum">      61 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;No type converter registered for type: '%@'.&quot;,</span>
-<span class="lineNum">      62 </span>            :                                                              [classOrProtocol classOrProtocol]];
+<span class="lineNum">      62 </span>            :                                                              [typeDescriptor classOrProtocol]];
 <span class="lineNum">      63 </span>            : 
 <span class="lineNum">      64 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">      65 </span><span class="lineCov">          8 :     return converter;</span>
-<span class="lineNum">      66 </span><span class="lineCov">          8 : }</span>
+<span class="lineNum">      65 </span><span class="lineCov">         10 :     return converter;</span>
+<span class="lineNum">      66 </span><span class="lineCov">         10 : }</span>
 <span class="lineNum">      67 </span>            : 
 <span class="lineNum">      68 </span><span class="lineCov">         18 : - (TyphoonPrimitiveTypeConverter*)primitiveTypeConverter</span>
 <span class="lineNum">      69 </span>            : {

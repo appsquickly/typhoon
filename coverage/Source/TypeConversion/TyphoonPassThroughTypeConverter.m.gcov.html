@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">11</td>
             <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntryHi">91.7 %</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -69,37 +69,36 @@
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            : 
 <span class="lineNum">      13 </span>            : #import &quot;TyphoonPassThroughTypeConverter.h&quot;
-<span class="lineNum">      14 </span>            : #import &quot;TyphoonTypeDescriptor.h&quot;
+<span class="lineNum">      14 </span>            : 
 <span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span>            : @implementation TyphoonPassThroughTypeConverter
-<span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span>            : /* ============================================================ Initializers ============================================================ */
-<span class="lineNum">      20 </span><span class="lineCov">          2 : - (id)initWithIsMutable:(BOOL)isMutable</span>
-<span class="lineNum">      21 </span>            : {
-<span class="lineNum">      22 </span><span class="lineCov">          2 :     self = [super init];</span>
-<span class="lineNum">      23 </span><span class="lineCov">          2 :     if (self)</span>
-<span class="lineNum">      24 </span>            :     {
-<span class="lineNum">      25 </span><span class="lineCov">          2 :         _isMutable = isMutable;</span>
-<span class="lineNum">      26 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">      27 </span><span class="lineCov">          2 :     return self;</span>
-<span class="lineNum">      28 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span>            : /* =========================================================== Protocol Methods ========================================================= */
-<span class="lineNum">      31 </span><span class="lineCov">          5 : - (id)convert:(NSString*)stringValue</span>
-<span class="lineNum">      32 </span>            : {
-<span class="lineNum">      33 </span><span class="lineCov">          5 :     if (_isMutable)</span>
-<span class="lineNum">      34 </span>            :     {
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 :         return [NSMutableString stringWithString:stringValue];</span>
-<span class="lineNum">      36 </span>            :     }
-<span class="lineNum">      37 </span>            :     else
-<span class="lineNum">      38 </span>            :     {
-<span class="lineNum">      39 </span><span class="lineCov">          5 :         return [NSString stringWithString:stringValue];</span>
-<span class="lineNum">      40 </span>            :     }
-<span class="lineNum">      41 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">      16 </span>            : @implementation TyphoonPassThroughTypeConverter
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : /* ============================================================ Initializers ============================================================ */
+<span class="lineNum">      19 </span><span class="lineCov">          2 : - (id)initWithIsMutable:(BOOL)isMutable</span>
+<span class="lineNum">      20 </span>            : {
+<span class="lineNum">      21 </span><span class="lineCov">          2 :     self = [super init];</span>
+<span class="lineNum">      22 </span><span class="lineCov">          2 :     if (self)</span>
+<span class="lineNum">      23 </span>            :     {
+<span class="lineNum">      24 </span><span class="lineCov">          2 :         _isMutable = isMutable;</span>
+<span class="lineNum">      25 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">      26 </span><span class="lineCov">          2 :     return self;</span>
+<span class="lineNum">      27 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span>            : /* =========================================================== Protocol Methods ========================================================= */
+<span class="lineNum">      30 </span><span class="lineCov">          7 : - (id)convert:(NSString*)stringValue</span>
+<span class="lineNum">      31 </span>            : {
+<span class="lineNum">      32 </span><span class="lineCov">          7 :     if (_isMutable)</span>
+<span class="lineNum">      33 </span>            :     {
+<span class="lineNum">      34 </span><span class="lineCov">          1 :         return [NSMutableString stringWithString:stringValue];</span>
+<span class="lineNum">      35 </span>            :     }
+<span class="lineNum">      36 </span>            :     else
+<span class="lineNum">      37 </span>            :     {
+<span class="lineNum">      38 </span><span class="lineCov">          6 :         return [NSString stringWithString:stringValue];</span>
+<span class="lineNum">      39 </span>            :     }
+<span class="lineNum">      40 </span><span class="lineCov">          7 : }</span>
+<span class="lineNum">      41 </span>            : 
 <span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span>            : 
-<span class="lineNum">      44 </span>            : @end
+<span class="lineNum">      43 </span>            : @end
 </pre>
       </td>
     </tr>
