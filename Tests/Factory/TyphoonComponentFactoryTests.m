@@ -165,5 +165,14 @@ static NSString* const DEFAULT_QUEST = @"quest";
     assertThat(knight.quest, notNilValue());
 }
 
+/* ====================================================================================================================================== */
+#pragma mark - Description
+
+- (void)test_able_to_describe_itself
+{
+    NSString* description = [_componentFactory description];
+    NSLog(@"Description: %@", description);
+    assertThat(description, equalTo(@"<TyphoonComponentFactory: _registry=(\n)>"));
+}
 
 @end
