@@ -134,7 +134,7 @@
 <span class="lineNum">      76 </span><span class="lineCov">          7 :             }</span>
 <span class="lineNum">      77 </span>            :             else
 <span class="lineNum">      78 </span>            :             {
-<span class="lineNum">      79 </span><span class="lineCov">         13 :                 _metaClass = NSClassFromString(typeCode);</span>
+<span class="lineNum">      79 </span><span class="lineCov">         13 :                 _typeBeingDescribed = NSClassFromString(typeCode);</span>
 <span class="lineNum">      80 </span>            :             }
 <span class="lineNum">      81 </span>            :         }
 <span class="lineNum">      82 </span>            :         else
@@ -150,9 +150,9 @@
 <span class="lineNum">      92 </span>            : /* ========================================================== Interface Methods ========================================================= */
 <span class="lineNum">      93 </span><span class="lineCov">         12 : - (id)classOrProtocol</span>
 <span class="lineNum">      94 </span>            : {
-<span class="lineNum">      95 </span><span class="lineCov">         12 :     if (_metaClass)</span>
+<span class="lineNum">      95 </span><span class="lineCov">         12 :     if (_typeBeingDescribed)</span>
 <span class="lineNum">      96 </span>            :     {
-<span class="lineNum">      97 </span><span class="lineCov">         10 :         return _metaClass;</span>
+<span class="lineNum">      97 </span><span class="lineCov">         10 :         return _typeBeingDescribed;</span>
 <span class="lineNum">      98 </span>            :     }
 <span class="lineNum">      99 </span>            :     else
 <span class="lineNum">     100 </span>            :     {

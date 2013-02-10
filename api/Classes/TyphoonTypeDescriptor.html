@@ -48,13 +48,13 @@
 	
 	<option value="//api/name/isStructure">&nbsp;&nbsp;&nbsp;&nbsp;isStructure</option>
 	
-	<option value="//api/name/metaClass">&nbsp;&nbsp;&nbsp;&nbsp;metaClass</option>
-	
 	<option value="//api/name/primitiveType">&nbsp;&nbsp;&nbsp;&nbsp;primitiveType</option>
 	
 	<option value="//api/name/protocol">&nbsp;&nbsp;&nbsp;&nbsp;protocol</option>
 	
 	<option value="//api/name/structureTypeName">&nbsp;&nbsp;&nbsp;&nbsp;structureTypeName</option>
+	
+	<option value="//api/name/typeBeingDescribed">&nbsp;&nbsp;&nbsp;&nbsp;typeBeingDescribed</option>
 	
 	
 	
@@ -106,13 +106,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isStructure">isStructure</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/metaClass">metaClass</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/primitiveType">primitiveType</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/protocol">protocol</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/structureTypeName">structureTypeName</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/typeBeingDescribed">typeBeingDescribed</a></span></li>
 	
 </ul></li>
 
@@ -182,56 +182,56 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/isPrimitive">&nbsp;&nbsp;isPrimitive</a></code>
-		
+		<span class="tooltip"><p>Indicates if the type being described is a primitive.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/primitiveType">&nbsp;&nbsp;primitiveType</a></code>
-		
+		<span class="tooltip"><p>The primitive type being described (if the type being described is a primitive).</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/metaClass">&nbsp;&nbsp;metaClass</a></code>
-		
+		<code><a href="#//api/name/typeBeingDescribed">&nbsp;&nbsp;typeBeingDescribed</a></code>
+		<span class="tooltip"><p>The type being described, or nil if the type is a primitive or <a href="#//api/name/protocol">protocol</a>.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/protocol">&nbsp;&nbsp;protocol</a></code>
-		
+		<span class="tooltip"><p>The protocol being described.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/isArray">&nbsp;&nbsp;isArray</a></code>
-		
+		<span class="tooltip"><p>Indicates a primitive type is an array.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/arrayLength">&nbsp;&nbsp;arrayLength</a></code>
-		
+		<span class="tooltip"><p>Array lenght for primitive type.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/isPointer">&nbsp;&nbsp;isPointer</a></code>
-		
+		<span class="tooltip"><p>Indicates a primitive type is a pointer.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/isStructure">&nbsp;&nbsp;isStructure</a></code>
-		
+		<span class="tooltip"><p>Indicates a primitive type is a structure.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -288,10 +288,40 @@
 	<h3 class="subsubtitle method-title">arrayLength</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Array lenght for primitive type.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) int arrayLength</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Array lenght for primitive type.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonTypeDescriptor.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -299,10 +329,40 @@
 	<h3 class="subsubtitle method-title">isArray</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Indicates a primitive type is an array.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL isArray</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Indicates a primitive type is an array.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonTypeDescriptor.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -310,10 +370,40 @@
 	<h3 class="subsubtitle method-title">isPointer</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Indicates a primitive type is a pointer.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL isPointer</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Indicates a primitive type is a pointer.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonTypeDescriptor.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -321,10 +411,40 @@
 	<h3 class="subsubtitle method-title">isPrimitive</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Indicates if the type being described is a primitive.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL isPrimitive</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Indicates if the type being described is a primitive.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonTypeDescriptor.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -332,21 +452,40 @@
 	<h3 class="subsubtitle method-title">isStructure</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Indicates a primitive type is a structure.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL isStructure</code></div>
 
     
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/metaClass" title="metaClass"></a>
-	<h3 class="subsubtitle method-title">metaClass</h3>
 	
 	
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) Class metaClass</code></div>
-
-    
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Indicates a primitive type is a structure.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonTypeDescriptor.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -354,10 +493,40 @@
 	<h3 class="subsubtitle method-title">primitiveType</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>The primitive type being described (if the type being described is a primitive).</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) TyphoonPrimitiveType primitiveType</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The primitive type being described (if the type being described is a primitive).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonTypeDescriptor.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -365,10 +534,40 @@
 	<h3 class="subsubtitle method-title">protocol</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>The protocol being described.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) Protocol *protocol</code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The protocol being described.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonTypeDescriptor.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -380,6 +579,47 @@
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *structureTypeName</code></div>
 
     
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/typeBeingDescribed" title="typeBeingDescribed"></a>
+	<h3 class="subsubtitle method-title">typeBeingDescribed</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The type being described, or nil if the type is a primitive or <a href="#//api/name/protocol">protocol</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) Class typeBeingDescribed</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The type being described, or nil if the type is a primitive or <a href="#//api/name/protocol">protocol</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonTypeDescriptor.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>
