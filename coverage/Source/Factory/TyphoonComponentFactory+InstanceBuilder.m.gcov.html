@@ -235,7 +235,7 @@
 <span class="lineNum">     177 </span><span class="lineCov">         27 :     }</span>
 <span class="lineNum">     178 </span><span class="lineCov">         27 :     else</span>
 <span class="lineNum">     179 </span>            :     {
-<span class="lineNum">     180 </span><span class="lineCov">         54 :         id &lt;TyphonTypeConverter&gt; converter = [[TyphoonTypeConverterRegistry shared] converterFor:requiredType];</span>
+<span class="lineNum">     180 </span><span class="lineCov">         54 :         id &lt;TyphoonTypeConverter&gt; converter = [[TyphoonTypeConverterRegistry shared] converterFor:requiredType];</span>
 <span class="lineNum">     181 </span>            :         id converted = [converter convert:textValue];
 <span class="lineNum">     182 </span><span class="lineCov">         45 :         [invocation setArgument:&amp;converted atIndex:index1];</span>
 <span class="lineNum">     183 </span><span class="lineCov">         18 :     }</span>

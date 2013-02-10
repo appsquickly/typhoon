@@ -70,7 +70,7 @@
 <span class="lineNum">      12 </span>            : 
 <span class="lineNum">      13 </span>            : #import &lt;objc/runtime.h&gt;
 <span class="lineNum">      14 </span>            : #import &quot;TyphoonTypeConverterRegistry.h&quot;
-<span class="lineNum">      15 </span>            : #import &quot;TyphonTypeConverter.h&quot;
+<span class="lineNum">      15 </span>            : #import &quot;TyphoonTypeConverter.h&quot;
 <span class="lineNum">      16 </span>            : #import &quot;TyphoonTypeDescriptor.h&quot;
 <span class="lineNum">      17 </span>            : #import &quot;TyphoonPrimitiveTypeConverter.h&quot;
 <span class="lineNum">      18 </span>            : #import &quot;TyphoonPassThroughTypeConverter.h&quot;
@@ -110,10 +110,10 @@
 <span class="lineNum">      52 </span>            : 
 <span class="lineNum">      53 </span>            : 
 <span class="lineNum">      54 </span>            : /* ========================================================== Interface Methods ========================================================= */
-<span class="lineNum">      55 </span><span class="lineCov">         12 : - (id &lt;TyphonTypeConverter&gt;)converterFor:(TyphoonTypeDescriptor*)typeDescriptor</span>
+<span class="lineNum">      55 </span><span class="lineCov">         12 : - (id &lt;TyphoonTypeConverter&gt;)converterFor:(TyphoonTypeDescriptor*)typeDescriptor</span>
 <span class="lineNum">      56 </span>            : {
 <span class="lineNum">      57 </span>            : 
-<span class="lineNum">      58 </span><span class="lineCov">         12 :     id &lt;TyphonTypeConverter&gt; converter = [_typeConverters objectForKey:[typeDescriptor classOrProtocol]];</span>
+<span class="lineNum">      58 </span><span class="lineCov">         12 :     id &lt;TyphoonTypeConverter&gt; converter = [_typeConverters objectForKey:[typeDescriptor classOrProtocol]];</span>
 <span class="lineNum">      59 </span><span class="lineCov">         12 :     if (!converter)</span>
 <span class="lineNum">      60 </span>            :     {
 <span class="lineNum">      61 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;No type converter registered for type: '%@'.&quot;,</span>
@@ -128,7 +128,7 @@
 <span class="lineNum">      70 </span><span class="lineCov">         18 :     return _primitiveTypeConverter;</span>
 <span class="lineNum">      71 </span>            : }
 <span class="lineNum">      72 </span>            : 
-<span class="lineNum">      73 </span>            : - (void)register:(id &lt;TyphonTypeConverter&gt;)converter forClassOrProtocol:(id)classOrProtocol;
+<span class="lineNum">      73 </span>            : - (void)register:(id &lt;TyphoonTypeConverter&gt;)converter forClassOrProtocol:(id)classOrProtocol;
 <span class="lineNum">      74 </span><span class="lineCov">          4 : {</span>
 <span class="lineNum">      75 </span>            :     if (!([_typeConverters objectForKey:classOrProtocol]))
 <span class="lineNum">      76 </span><span class="lineCov">          4 :     {</span>
