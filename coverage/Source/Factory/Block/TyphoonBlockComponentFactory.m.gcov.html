@@ -93,7 +93,7 @@
 <span class="lineNum">      35 </span>            : {
 <span class="lineNum">      36 </span><span class="lineCov">          1 :     if ([super resolveInstanceMethod:sel] == NO)</span>
 <span class="lineNum">      37 </span>            :     {
-<span class="lineNum">      38 </span><span class="lineCov">          4 :         IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me, BOOL selected)</span>
+<span class="lineNum">      38 </span><span class="lineCov">          4 :         IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me)</span>
 <span class="lineNum">      39 </span>            :         {
 <span class="lineNum">      40 </span>            :             return [me componentForKey:NSStringFromSelector(sel)];
 <span class="lineNum">      41 </span>            :         }));

@@ -96,7 +96,7 @@
 <span class="lineNum">      38 </span><span class="lineCov">        305 :     NSString* name = NSStringFromSelector(sel);</span>
 <span class="lineNum">      39 </span><span class="lineCov">         12 :     if ([name hasSuffix:TYPHOON_BEFORE_ADVICE_SUFFIX])</span>
 <span class="lineNum">      40 </span>            :     {
-<span class="lineNum">      41 </span><span class="lineCov">        293 :         IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me, BOOL selected)</span>
+<span class="lineNum">      41 </span><span class="lineCov">        293 :         IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me)</span>
 <span class="lineNum">      42 </span>            :         {
 <span class="lineNum">      43 </span>            :             NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@&quot;&quot;];
 <span class="lineNum">      44 </span>            :             id cached = [[me cachedSelectors] objectForKey:key];
