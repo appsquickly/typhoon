@@ -38,7 +38,7 @@ static NSMutableArray* resolveStack;
     NSString* name = NSStringFromSelector(sel);
     if ([name hasSuffix:TYPHOON_BEFORE_ADVICE_SUFFIX])
     {
-        IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me, BOOL selected)
+        IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me)
         {
             NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@""];
             id cached = [[me cachedSelectors] objectForKey:key];

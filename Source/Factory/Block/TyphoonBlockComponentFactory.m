@@ -35,7 +35,7 @@ static NSMutableArray* swizzleRegistry;
 {
     if ([super resolveInstanceMethod:sel] == NO)
     {
-        IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me, BOOL selected)
+        IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me)
         {
             return [me componentForKey:NSStringFromSelector(sel)];
         }));
