@@ -17,6 +17,7 @@
 #import "CavalryMan.h"
 #import "Champion.h"
 #import "AutoWiringKnight.h"
+#import "Harlot.h"
 
 
 static NSString* const DEFAULT_QUEST = @"quest";
@@ -131,6 +132,16 @@ static NSString* const DEFAULT_QUEST = @"quest";
     @catch (NSException* e)
     {
         assertThat([e description], equalTo(@"No components defined which satisify type: 'Champion'"));
+    }
+
+    @try
+    {
+        id<Harlot> harlot = [_componentFactory componentForType:@protocol(Harlot)];
+        STFail(@"Should have thrown exception");
+    }
+    @catch (NSException* e)
+    {
+        assertThat([e description], equalTo(@"No components defined which satisify type: 'id<Harlot>'"));
     }
 }
 
