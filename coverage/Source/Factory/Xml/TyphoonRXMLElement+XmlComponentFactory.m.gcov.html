@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">93</td>
+            <td class="headerCovTableEntry">95</td>
             <td class="headerCovTableEntry">111</td>
-            <td class="headerCovTableEntryMed">83.8 %</td>
+            <td class="headerCovTableEntryMed">85.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -172,13 +172,13 @@
 <span class="lineNum">     114 </span>            :     if ([scope isEqualToString:@&quot;singleton&quot;])
 <span class="lineNum">     115 </span><span class="lineCov">         84 :     {</span>
 <span class="lineNum">     116 </span>            :         [definition setLifecycle:TyphoonComponentLifeCycleSingleton];
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 :     else if ([scope isEqualToString:@&quot;prototype&quot;])</span>
-<span class="lineNum">     119 </span><span class="lineCov">         84 :     {</span>
+<span class="lineNum">     117 </span><span class="lineCov">          8 :     }</span>
+<span class="lineNum">     118 </span><span class="lineCov">          8 :     else if ([scope isEqualToString:@&quot;prototype&quot;])</span>
+<span class="lineNum">     119 </span><span class="lineCov">         76 :     {</span>
 <span class="lineNum">     120 </span>            :         [definition setLifecycle:TyphoonComponentLifeCyclePrototype];
 <span class="lineNum">     121 </span><span class="lineCov">         14 :     }</span>
 <span class="lineNum">     122 </span><span class="lineCov">         14 :     else if ([scope length] &gt; 0)</span>
-<span class="lineNum">     123 </span><span class="lineCov">         70 :     {</span>
+<span class="lineNum">     123 </span><span class="lineCov">         62 :     {</span>
 <span class="lineNum">     124 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;Scope was '%@', but can only be 'singleton' or 'prototype'&quot;, scope];
 <span class="lineNum">     125 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     126 </span><span class="lineNoCov">          0 : }</span>
