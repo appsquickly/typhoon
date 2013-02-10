@@ -47,4 +47,7 @@
 */
 - (void)register:(id <TyphoonTypeConverter>)converter forClassOrProtocol:(id)classOrProtocol;
 
+- (void)setArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index1 textValue:(NSString*)textValue
+        requiredType:(TyphoonTypeDescriptor*)requiredType;
+
 @end

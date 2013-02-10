@@ -151,17 +151,8 @@
     else if (property.type == TyphoonPropertyInjectionByValueType)
     {
         TyphoonPropertyInjectedByValue* valueProperty = (TyphoonPropertyInjectedByValue*) property;
-        if (typeDescriptor.isPrimitive)
-        {
-            TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
-            [converter setPrimitiveArgumentFor:invocation index:2 textValue:valueProperty.textValue requiredType:typeDescriptor];
-        }
-        else
-        {
-            id <TyphonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:typeDescriptor];
-            id converted = [converter convert:valueProperty.textValue];
-            [invocation setArgument:&converted atIndex:2];
-        }
+        [[TyphoonTypeConverterRegistry shared]
+                setArgumentFor:invocation index:2 textValue:valueProperty.textValue requiredType:typeDescriptor];
     }
     [invocation invoke];
 }
@@ -169,7 +160,7 @@
 - (NSInvocation*)propertySetterInvocationFor:(id <TyphoonIntrospectiveNSObject>)instance property:(id <TyphoonInjectedProperty>)property
 {
     SEL pSelector = [instance setterForPropertyWithName:property.name];
-    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*)instance methodSignatureForSelector:pSelector]];
+    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*) instance methodSignatureForSelector:pSelector]];
     [invocation setTarget:instance];
     [invocation setSelector:pSelector];
     return invocation;

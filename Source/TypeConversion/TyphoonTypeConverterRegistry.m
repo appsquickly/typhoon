@@ -84,5 +84,20 @@
     }
 }
 
+- (void)setArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index1 textValue:(NSString*)textValue
+        requiredType:(TyphoonTypeDescriptor*)requiredType
+{
+    if(requiredType.isPrimitive)
+    {
+        [_primitiveTypeConverter setPrimitiveArgumentFor:invocation index:index1 textValue:textValue requiredType:requiredType];
+    }
+    else
+    {
+        id <TyphonTypeConverter> converter = [self converterFor:requiredType];
+        id converted = [converter convert:textValue];
+        [invocation setArgument:&converted atIndex:index1];
+    }
+}
+
 
 @end
