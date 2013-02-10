@@ -11,6 +11,7 @@
 
 
 #import "TyphoonPrimitiveTypeConverter.h"
+#import "TyphoonTypeDescriptor.h"
 
 
 @implementation TyphoonPrimitiveTypeConverter
@@ -125,5 +126,81 @@
 {
     return NSSelectorFromString(stringValue);
 }
+
+/* ====================================================================================================================================== */
+- (void)setPrimitiveArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index textValue:(NSString*)textValue
+        requiredType:(TyphoonTypeDescriptor*)requiredType
+{
+    if (requiredType.primitiveType == TyphoonPrimitiveTypeBoolean || requiredType.primitiveType == TyphoonPrimitiveTypeChar)
+    {
+        BOOL converted = [self convertToBoolean:textValue];
+        [invocation setArgument:&converted atIndex:index];
+    }
+    else if (requiredType.primitiveType == TyphoonPrimitiveTypeClass)
+    {
+        Class converted = [self convertToClass:textValue];
+        [invocation setArgument:&converted atIndex:index];
+    }
+    else if (requiredType.primitiveType == TyphoonPrimitiveTypeDouble)
+    {
+        double converted = [self convertToDouble:textValue];
+        [invocation setArgument:&converted atIndex:index];
+    }
+    else if (requiredType.primitiveType == TyphoonPrimitiveTypeFloat)
+    {
+        float converted = [self convertToFloat:textValue];
+        [invocation setArgument:&converted atIndex:index];
+    }
+    else if (requiredType.primitiveType == TyphoonPrimitiveTypeInt)
+    {
+        int converted = [self convertToInt:textValue];
+        [invocation setArgument:&converted atIndex:index];
+    }
+    else if (requiredType.primitiveType == TyphoonPrimitiveTypeLong)
+    {
+        long converted = [self convertToLong:textValue];
+        [invocation setArgument:&converted atIndex:index];
+    }
+    else if (requiredType.primitiveType == TyphoonPrimitiveTypeLongLong)
+    {
+        long long converted = [self convertToLongLong:textValue];
+        [invocation setArgument:&converted atIndex:index];
+    }
+    else if (requiredType.primitiveType == TyphoonPrimitiveTypeSelector)
+    {
+        SEL converted = [self convertToSelector:textValue];
+        [invocation setArgument:&converted atIndex:index];
+    }
+    else if (requiredType.primitiveType == TyphoonPrimitiveTypeString)
+    {
+        const char* converted = [self convertToCString:textValue];
+        [invocation setArgument:&converted atIndex:index];
+    }
+    else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedChar)
+    {
+        unsigned char converted = [self convertToUnsignedChar:textValue];
+        [invocation setArgument:&converted atIndex:index];
+    }
+    else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedInt)
+    {
+        unsigned int converted = [self convertToUnsignedInt:textValue];
+        [invocation setArgument:&converted atIndex:index];
+    }
+    else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedLong)
+    {
+        unsigned long converted = [self convertToUnsignedLong:textValue];
+        [invocation setArgument:&converted atIndex:index];
+    }
+    else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedLongLong)
+    {
+        unsigned long long converted = [self convertToUnsignedLongLong:textValue];
+        [invocation setArgument:&converted atIndex:index];
+    }
+    else
+    {
+        [NSException raise:NSInvalidArgumentException format:@"Type for %@ is not supported.", requiredType];
+    }
+}
+
 
 @end

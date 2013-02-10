@@ -24,7 +24,7 @@
 #import "TyphoonPropertyInjectedByValue.h"
 #import "TyphoonPropertyInjectionDelegate.h"
 #import "TyphoonParameterInjectedByValue.h"
-#import "TyphoonComponentFactory+PrimitiveTypeInjection.h"
+#import "TyphoonPrimitiveTypeConverter.h"
 
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
@@ -88,7 +88,8 @@
             else
             {
                 TyphoonTypeDescriptor* descriptor = [byValue resolveTypeWith:instanceOrClass];
-                [self setPrimitiveArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue requiredType:descriptor];
+                TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
+                [converter setPrimitiveArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue requiredType:descriptor];
             }
         }
     }
@@ -152,7 +153,8 @@
         TyphoonPropertyInjectedByValue* valueProperty = (TyphoonPropertyInjectedByValue*) property;
         if (typeDescriptor.isPrimitive)
         {
-            [self setPrimitiveArgumentFor:invocation index:2 textValue:valueProperty.textValue requiredType:typeDescriptor];
+            TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
+            [converter setPrimitiveArgumentFor:invocation index:2 textValue:valueProperty.textValue requiredType:typeDescriptor];
         }
         else
         {

@@ -47,5 +47,7 @@
 
 - (SEL)convertToSelector:(NSString*)stringValue;
 
+- (void)setPrimitiveArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index textValue:(NSString*)textValue
+        requiredType:(TyphoonTypeDescriptor*)requiredType;
 
 @end
