@@ -16,6 +16,17 @@
 
 @implementation CampaignQuest
 
+- (id)initWithImageUrl:(NSURL*)imageUrl
+{
+    self = [super init];
+    if (self)
+    {
+        _imageUrl = imageUrl;
+    }
+
+    return self;
+}
+
 - (NSString*)questName
 {
     return @"Campaign Quest";

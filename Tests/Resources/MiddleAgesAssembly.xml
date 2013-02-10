@@ -47,6 +47,12 @@
         </property>
     </component>
 
+    <component class="CampaignQuest" key="anotherQuest" scope="prototype">
+        <initializer selector="initWithImageUrl:">
+            <argument parameterName="imageUrl" value="http://www.foobar.com" required-class="NSURL"/>
+        </initializer>
+    </component>
+
     <component class="CavalryMan" key="anotherKnight" scope="singleton">
         <description>
             This time, we're using initializer injection. As shown below, you can also mix initializer
