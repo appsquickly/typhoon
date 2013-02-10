@@ -94,5 +94,4 @@
     return [TyphoonIntrospectionUtils typeCodesForSelector:selector ofClass:[self class] isClassMethod:NO];
 }
 
-
 @end

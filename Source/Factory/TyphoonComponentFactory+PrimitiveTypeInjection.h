@@ -20,10 +20,7 @@
 
 @interface TyphoonComponentFactory (PrimitiveTypeInjection)
 
-- (void)setPrimitiveArgumentFor:(NSInvocation*)invocation parameter:(TyphoonParameterInjectedByValue*)parameter
+- (void)setPrimitiveArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index textValue:(NSString*)textValue
         requiredType:(TyphoonTypeDescriptor*)requiredType;
-
-- (void)injectPrimitivePropertyValueOn:(id <TyphoonIntrospectiveNSObject>)instance property:(id <TyphoonInjectedProperty>)property
-        valueProperty:(TyphoonPropertyInjectedByValue*)parameter requiredType:(TyphoonTypeDescriptor*)requiredType;
 
 @end

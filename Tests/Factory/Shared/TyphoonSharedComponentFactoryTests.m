@@ -50,10 +50,17 @@
 
 - (void)test_mixed_initializer_and_property_injection
 {
-    Knight* anotherKnight = [_componentFactory componentForKey:@"anotherKnight"];
+    CavalryMan* anotherKnight = [_componentFactory componentForKey:@"anotherKnight"];
     NSLog(@"Here's another knight: %@", anotherKnight);
     assertThat(anotherKnight.quest, notNilValue());
     assertThatBool(anotherKnight.hasHorseWillTravel, equalToBool(YES));
+    assertThatFloat(anotherKnight.hitRatio, equalToFloat(13.75));
+
+    CavalryMan* yetAnotherKnight = [_componentFactory componentForKey:@"yetAnotherKnight"];
+    NSLog(@"Here's yet another knight: %@", yetAnotherKnight);
+    assertThat(yetAnotherKnight.quest, notNilValue());
+    assertThatBool(yetAnotherKnight.hasHorseWillTravel, equalToBool(YES));
+    assertThatFloat(yetAnotherKnight.hitRatio, equalToFloat(13.75));
 }
 
 /* ====================================================================================================================================== */

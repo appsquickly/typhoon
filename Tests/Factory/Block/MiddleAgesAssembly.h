@@ -25,4 +25,8 @@
 
 - (id)defaultQuest;
 
+- (id)anotherKnight;
+
+- (id)yetAnotherKnight;
+
 @end

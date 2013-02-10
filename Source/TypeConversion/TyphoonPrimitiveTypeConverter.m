@@ -93,9 +93,9 @@
 - (float)convertToFloat:(NSString*)stringValue
 {
     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    long long converted = 0;
-    [scanner scanLongLong:&converted];
-    return [[NSNumber numberWithLongLong:converted] floatValue];
+    float converted = 0;
+    [scanner scanFloat:&converted];
+    return converted;
 }
 
 - (double)convertToDouble:(NSString*)stringValue

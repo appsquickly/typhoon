@@ -42,7 +42,7 @@
         }
     }];
 
-    assertThat(componentDefinitions, hasCountOf(6));
+    assertThat(componentDefinitions, hasCountOf(7));
 }
 
 

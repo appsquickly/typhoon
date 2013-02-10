@@ -25,10 +25,10 @@
 
 @property(nonatomic, readonly) NSUInteger index;
 @property(nonatomic, readonly) TyphoonParameterInjectionType type;
-@property(nonatomic, strong, readonly) NSString* value;
-@property(nonatomic, strong, readonly) id classOrProtocol;
+@property(nonatomic, strong, readonly) NSString* textValue;
+@property(nonatomic, strong, readonly) Class requiredType;
 
-- (id)initWithIndex:(NSUInteger)index value:(NSString*)value classOrProtocol:(id)classOrProtocol;
+- (id)initWithIndex:(NSUInteger)index value:(NSString*)value requiredTypeOrNil:(Class)requiredTypeOrNil;
 
 /**
 * If the parameter is a primitive type, resolves the type descriptor. Throws an exception if either:

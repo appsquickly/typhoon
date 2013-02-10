@@ -70,12 +70,12 @@
     [self injectParameterAt:[self indexOfParameter:name] withValueAsText:text requiredTypeOrNil:classOrProtocol];
 }
 
-- (void)injectParameterAt:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol
+- (void)injectParameterAt:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass
 {
     if (index != NSUIntegerMax && index < [_parameterNames count])
     {
         TyphoonParameterInjectedByValue* parameterInjectedByValue =
-                [[TyphoonParameterInjectedByValue alloc] initWithIndex:index value:text classOrProtocol:classOrProtocol];
+                [[TyphoonParameterInjectedByValue alloc] initWithIndex:index value:text requiredTypeOrNil:requiredClass];
         [parameterInjectedByValue setInitializer:self];
         [_injectedParameters addObject:parameterInjectedByValue];
     }

@@ -16,4 +16,10 @@
 
 
 @interface CavalryMan : Knight<TyphoonPropertyInjectionDelegate>
+
+@property (nonatomic) float hitRatio;
+
+- (id)initWithQuest:(id<Quest>)quest hitRatio:(float)hitRatio;
+
+
 @end

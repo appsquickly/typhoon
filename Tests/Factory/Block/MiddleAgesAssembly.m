@@ -45,10 +45,27 @@
 {
     return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer* initializer)
     {
-        initializer.selector = @selector(initWithQuest:);
+        initializer.selector = @selector(initWithQuest:hitRatio:);
         [initializer injectWithDefinition:[self defaultQuest]];
+        [initializer injectWithText:@"13.75"];
+
     } properties:^(TyphoonDefinition* definition)
     {
+        [definition injectProperty:@selector(hasHorseWillTravel) withValueAsText:@"YES"];
+
+    }];
+}
+
+- (id)yetAnotherKnight
+{
+    return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer* initializer)
+    {
+        initializer.selector = @selector(initWithQuest:);
+        [initializer injectWithDefinition:[self defaultQuest]];
+
+    } properties:^(TyphoonDefinition* definition)
+    {
+        [definition injectProperty:@selector(hitRatio) withValueAsText:@"13.75"];
         [definition injectProperty:@selector(hasHorseWillTravel) withValueAsText:@"YES"];
 
     }];

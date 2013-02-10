@@ -15,6 +15,18 @@
 
 @implementation CavalryMan
 
+- (id)initWithQuest:(id<Quest>)quest hitRatio:(float)hitRatio;
+{
+    self = [super init];
+    if (self)
+    {
+        self.quest = quest;
+        _hitRatio = hitRatio;
+    }
+
+    return self;
+}
+
 - (void)beforePropertiesSet
 {
     NSLog(@"#################### CavalryMan before properties set");

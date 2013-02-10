@@ -52,6 +52,22 @@
             This time, we're using initializer injection. As shown below, you can also mix initializer
             injection with property injection.
         </description>
+        <initializer selector="initWithQuest:hitRatio:">
+            <argument parameterName="quest" ref="quest"/>
+            <argument parameterName="hitRatio" value="13.75"/>
+        </initializer>
+        <property name="hasHorseWillTravel" value="yes">
+            <description>
+                This is a primitive property of type BOOL.
+            </description>
+        </property>
+    </component>
+
+    <component class="CavalryMan" key="yetAnotherKnight">
+        <description>
+            This time, we're using initializer injection. As shown below, you can also mix initializer
+            injection with property injection.
+        </description>
         <initializer selector="initWithQuest:">
             <argument parameterName="quest" ref="quest"/>
         </initializer>
@@ -60,6 +76,7 @@
                 This is a primitive property of type BOOL.
             </description>
         </property>
+        <property name="hitRatio" value="13.75"/>
     </component>
 
 
