@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">95</td>
+            <td class="headerCovTableEntry">96</td>
             <td class="headerCovTableEntry">111</td>
-            <td class="headerCovTableEntryMed">85.6 %</td>
+            <td class="headerCovTableEntryMed">86.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -79,14 +79,14 @@
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            : @implementation TyphoonRXMLElement (XmlComponentFactory)
 <span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineCov">         84 : - (TyphoonDefinition*)asComponentDefinition</span>
+<span class="lineNum">      24 </span><span class="lineCov">         85 : - (TyphoonDefinition*)asComponentDefinition</span>
 <span class="lineNum">      25 </span>            : {
-<span class="lineNum">      26 </span><span class="lineCov">         84 :     [self assertTagName:@&quot;component&quot;];</span>
-<span class="lineNum">      27 </span><span class="lineCov">         84 :     Class clazz = NSClassFromString([self attribute:@&quot;class&quot;]);</span>
-<span class="lineNum">      28 </span><span class="lineCov">         84 :     if (clazz == nil)</span>
+<span class="lineNum">      26 </span><span class="lineCov">         85 :     [self assertTagName:@&quot;component&quot;];</span>
+<span class="lineNum">      27 </span><span class="lineCov">         85 :     Class clazz = NSClassFromString([self attribute:@&quot;class&quot;]);</span>
+<span class="lineNum">      28 </span><span class="lineCov">         85 :     if (clazz == nil)</span>
 <span class="lineNum">      29 </span>            :     {
 <span class="lineNum">      30 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Class '%@' can't be resolved.&quot;, [self attribute:@&quot;class&quot;]];</span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">      32 </span><span class="lineCov">         84 :     NSString* key = [self attribute:@&quot;key&quot;];</span>
 <span class="lineNum">      33 </span><span class="lineCov">         84 :     NSString* factory = [self attributeOrNilIfEmpty:@&quot;factory-component&quot;];</span>
 <span class="lineNum">      34 </span><span class="lineCov">         84 :     TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key factoryComponent:factory];</span>
@@ -158,13 +158,13 @@
 <span class="lineNum">     100 </span><span class="lineCov">         50 : }</span>
 <span class="lineNum">     101 </span>            : 
 <span class="lineNum">     102 </span>            : /* ============================================================ Private Methods ========================================================= */
-<span class="lineNum">     103 </span><span class="lineCov">        192 : - (void)assertTagName:(NSString*)tagName</span>
+<span class="lineNum">     103 </span><span class="lineCov">        193 : - (void)assertTagName:(NSString*)tagName</span>
 <span class="lineNum">     104 </span>            : {
-<span class="lineNum">     105 </span><span class="lineCov">        192 :     if (![self.tag isEqualToString:tagName])</span>
+<span class="lineNum">     105 </span><span class="lineCov">        193 :     if (![self.tag isEqualToString:tagName])</span>
 <span class="lineNum">     106 </span>            :     {
 <span class="lineNum">     107 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Element is not a '%@'.&quot;, tagName];</span>
 <span class="lineNum">     108 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     109 </span><span class="lineCov">        192 : }</span>
+<span class="lineNum">     109 </span><span class="lineCov">        193 : }</span>
 <span class="lineNum">     110 </span>            : 
 <span class="lineNum">     111 </span>            : - (void)setScopeForDefinition:(TyphoonDefinition*)definition withStringValue:(NSString*)scope;
 <span class="lineNum">     112 </span><span class="lineCov">         84 : {</span>
