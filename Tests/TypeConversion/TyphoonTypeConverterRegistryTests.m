@@ -13,7 +13,7 @@
 #import "TyphoonTypeConverterRegistry.h"
 #import "TyphoonTypeDescriptor.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
-#import "TyphonTypeConverter.h"
+#import "TyphoonTypeConverter.h"
 #import "TyphoonNSURLTypeConverter.h"
 
 
@@ -39,7 +39,7 @@
 
     @try
     {
-        id <TyphonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:typeDescriptor];
+        id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:typeDescriptor];
         NSLog(@"here's the converter: %@", converter);
         STFail(@"Should've thrown exception");
     }

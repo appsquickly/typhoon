@@ -11,7 +11,7 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "TyphoonTypeConverterRegistry.h"
-#import "TyphonTypeConverter.h"
+#import "TyphoonTypeConverter.h"
 #import "TyphoonTypeDescriptor.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
 
@@ -28,7 +28,7 @@
 - (void)test_forwards_NSString
 {
     TyphoonTypeDescriptor* descriptor = [self typeForPropertyWithName:@"aStringProperty"];
-    id<TyphonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
+    id<TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
     NSString* converted = [converter convert:@"foobar foobar"];
     assertThat(converted, equalTo(@"foobar foobar"));
     assertThatBool([converted isKindOfClass:[NSString class]], equalToBool(YES));
@@ -37,7 +37,7 @@
 - (void)test_forwards_NSMutableString
 {
     TyphoonTypeDescriptor* descriptor = [self typeForPropertyWithName:@"aMutableStringProperty"];
-    id<TyphonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
+    id<TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
     NSString* converted = [converter convert:@"foobar foobar"];
     assertThat(converted, equalTo(@"foobar foobar"));
     assertThatBool([converted isKindOfClass:[NSMutableString class]], equalToBool(YES));

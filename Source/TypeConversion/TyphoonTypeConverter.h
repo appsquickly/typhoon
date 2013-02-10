@@ -17,7 +17,7 @@
 /**
 * Declares a contract for converting configuration arguments to their required runtime type.
 */
-@protocol TyphonTypeConverter <NSObject>
+@protocol TyphoonTypeConverter <NSObject>
 
 - (id)convert:(NSString*)stringValue;
 

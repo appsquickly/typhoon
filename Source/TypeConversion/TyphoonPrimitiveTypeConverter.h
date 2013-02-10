@@ -11,7 +11,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphonTypeConverter.h"
+#import "TyphoonTypeConverter.h"
 
 
 @interface TyphoonPrimitiveTypeConverter : NSObject

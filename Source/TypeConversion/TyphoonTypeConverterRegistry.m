@@ -12,7 +12,7 @@
 
 #import <objc/runtime.h>
 #import "TyphoonTypeConverterRegistry.h"
-#import "TyphonTypeConverter.h"
+#import "TyphoonTypeConverter.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonPrimitiveTypeConverter.h"
 #import "TyphoonPassThroughTypeConverter.h"
@@ -52,10 +52,10 @@
 
 
 /* ========================================================== Interface Methods ========================================================= */
-- (id <TyphonTypeConverter>)converterFor:(TyphoonTypeDescriptor*)typeDescriptor
+- (id <TyphoonTypeConverter>)converterFor:(TyphoonTypeDescriptor*)typeDescriptor
 {
 
-    id <TyphonTypeConverter> converter = [_typeConverters objectForKey:[typeDescriptor classOrProtocol]];
+    id <TyphoonTypeConverter> converter = [_typeConverters objectForKey:[typeDescriptor classOrProtocol]];
     if (!converter)
     {
         [NSException raise:NSInvalidArgumentException format:@"No type converter registered for type: '%@'.",
@@ -70,7 +70,7 @@
     return _primitiveTypeConverter;
 }
 
-- (void)register:(id <TyphonTypeConverter>)converter forClassOrProtocol:(id)classOrProtocol;
+- (void)register:(id <TyphoonTypeConverter>)converter forClassOrProtocol:(id)classOrProtocol;
 {
     if (!([_typeConverters objectForKey:classOrProtocol]))
     {

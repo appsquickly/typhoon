@@ -12,8 +12,8 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphonTypeConverter.h"
+#import "TyphoonTypeConverter.h"
 
 
-@interface TyphoonNSURLTypeConverter : NSObject <TyphonTypeConverter>
+@interface TyphoonNSURLTypeConverter : NSObject <TyphoonTypeConverter>
 @end

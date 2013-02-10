@@ -177,7 +177,7 @@
     }
     else
     {
-        id <TyphonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:requiredType];
+        id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:requiredType];
         id converted = [converter convert:textValue];
         [invocation setArgument:&converted atIndex:index1];
     }
