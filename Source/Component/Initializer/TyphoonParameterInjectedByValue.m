@@ -37,27 +37,29 @@
 {
     if (_requiredType)
     {
-        [NSException raise:NSInvalidArgumentException format:@"Can't resolve type descriptor - requiredType is already explicitly set"];
-    }
-    BOOL isClass = class_isMetaClass(object_getClass(classOrInstance));
-    Class clazz;
-    if (isClass)
-    {
-        clazz = classOrInstance;
+        return [TyphoonTypeDescriptor descriptorWithClassOrProtocol:_requiredType];
     }
     else
     {
-        clazz = [classOrInstance class];
-    }
-    NSArray* typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:_initializer.selector ofClass:clazz isClassMethod:isClass];
+        BOOL isClass = class_isMetaClass(object_getClass(classOrInstance));
+        Class clazz;
+        if (isClass)
+        {
+            clazz = classOrInstance;
+        }
+        else
+        {
+            clazz = [classOrInstance class];
+        }
+        NSArray* typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:_initializer.selector ofClass:clazz isClassMethod:isClass];
 
-    if ([[typeCodes objectAtIndex:_index] isEqualToString:@"@"])
-    {
-        [NSException raise:NSInvalidArgumentException
+        if ([[typeCodes objectAtIndex:_index] isEqualToString:@"@"])
+        {
+            [NSException raise:NSInvalidArgumentException
                     format:@"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"];
+        }
+        return [TyphoonTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:_index]];
     }
-    return [TyphoonTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:_index]];
-
 }
 
 

@@ -77,20 +77,8 @@
         else if (parameter.type == TyphoonParameterInjectedByValueType)
         {
             TyphoonParameterInjectedByValue* byValue = (TyphoonParameterInjectedByValue*) parameter;
-
-            if (byValue.requiredType)
-            {
-                TyphoonTypeDescriptor* descriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:byValue.requiredType];
-                id <TyphonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
-                id converted = [converter convert:byValue.textValue];
-                [invocation setArgument:&converted atIndex:parameter.index + 2];
-            }
-            else
-            {
-                TyphoonTypeDescriptor* descriptor = [byValue resolveTypeWith:instanceOrClass];
-                TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
-                [converter setPrimitiveArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue requiredType:descriptor];
-            }
+            [[TyphoonTypeConverterRegistry shared] setArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue
+                    requiredType:[byValue resolveTypeWith:instanceOrClass]];
         }
     }
     [invocation invoke];
