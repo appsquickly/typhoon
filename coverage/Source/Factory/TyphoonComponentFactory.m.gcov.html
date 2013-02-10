@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">106</td>
+            <td class="headerCovTableEntry">112</td>
             <td class="headerCovTableEntry">131</td>
-            <td class="headerCovTableEntryMed">80.9 %</td>
+            <td class="headerCovTableEntryMed">85.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -95,19 +95,19 @@
 <span class="lineNum">      37 </span>            : }
 <span class="lineNum">      38 </span>            : 
 <span class="lineNum">      39 </span>            : /* ============================================================ Initializers ============================================================ */
-<span class="lineNum">      40 </span><span class="lineCov">         53 : - (id)init</span>
+<span class="lineNum">      40 </span><span class="lineCov">         54 : - (id)init</span>
 <span class="lineNum">      41 </span>            : {
-<span class="lineNum">      42 </span><span class="lineCov">         53 :     self = [super init];</span>
-<span class="lineNum">      43 </span><span class="lineCov">         53 :     if (self)</span>
+<span class="lineNum">      42 </span><span class="lineCov">         54 :     self = [super init];</span>
+<span class="lineNum">      43 </span><span class="lineCov">         54 :     if (self)</span>
 <span class="lineNum">      44 </span>            :     {
-<span class="lineNum">      45 </span><span class="lineCov">         53 :         _registry = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      46 </span><span class="lineCov">         53 :         _singletons = [[NSMutableDictionary alloc] init];</span>
-<span class="lineNum">      47 </span><span class="lineCov">         53 :         _currentlyResolvingReferences = [[NSMutableSet alloc] init];</span>
-<span class="lineNum">      48 </span><span class="lineCov">         53 :         _mutators = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      49 </span><span class="lineCov">         53 :         _hasPerformedMutations = NO;</span>
-<span class="lineNum">      50 </span><span class="lineCov">         53 :     }</span>
-<span class="lineNum">      51 </span><span class="lineCov">         53 :     return self;</span>
-<span class="lineNum">      52 </span><span class="lineCov">         53 : }</span>
+<span class="lineNum">      45 </span><span class="lineCov">         54 :         _registry = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      46 </span><span class="lineCov">         54 :         _singletons = [[NSMutableDictionary alloc] init];</span>
+<span class="lineNum">      47 </span><span class="lineCov">         54 :         _currentlyResolvingReferences = [[NSMutableSet alloc] init];</span>
+<span class="lineNum">      48 </span><span class="lineCov">         54 :         _mutators = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      49 </span><span class="lineCov">         54 :         _hasPerformedMutations = NO;</span>
+<span class="lineNum">      50 </span><span class="lineCov">         54 :     }</span>
+<span class="lineNum">      51 </span><span class="lineCov">         54 :     return self;</span>
+<span class="lineNum">      52 </span><span class="lineCov">         54 : }</span>
 <span class="lineNum">      53 </span>            : 
 <span class="lineNum">      54 </span>            : 
 <span class="lineNum">      55 </span>            : /* ========================================================== Interface Methods ========================================================= */
@@ -221,13 +221,13 @@
 <span class="lineNum">     163 </span>            : 
 <span class="lineNum">     164 </span>            : 
 <span class="lineNum">     165 </span>            : /* ============================================================ Utility Methods ========================================================= */
-<span class="lineNum">     166 </span><span class="lineNoCov">          0 : - (NSString*)description</span>
+<span class="lineNum">     166 </span><span class="lineCov">          1 : - (NSString*)description</span>
 <span class="lineNum">     167 </span>            : {
-<span class="lineNum">     168 </span><span class="lineNoCov">          0 :     NSMutableString* description = [NSMutableString stringWithFormat:@&quot;&lt;%@: &quot;, NSStringFromClass([self class])];</span>
-<span class="lineNum">     169 </span><span class="lineNoCov">          0 :     [description appendFormat:@&quot;_registry=%@&quot;, _registry];</span>
-<span class="lineNum">     170 </span><span class="lineNoCov">          0 :     [description appendString:@&quot;&gt;&quot;];</span>
-<span class="lineNum">     171 </span><span class="lineNoCov">          0 :     return description;</span>
-<span class="lineNum">     172 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :     NSMutableString* description = [NSMutableString stringWithFormat:@&quot;&lt;%@: &quot;, NSStringFromClass([self class])];</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :     [description appendFormat:@&quot;_registry=%@&quot;, _registry];</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :     [description appendString:@&quot;&gt;&quot;];</span>
+<span class="lineNum">     171 </span><span class="lineCov">          2 :     return description;</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">     173 </span>            : 
 <span class="lineNum">     174 </span>            : 
 <span class="lineNum">     175 </span>            : /* ============================================================ Private Methods ========================================================= */
@@ -259,13 +259,13 @@
 <span class="lineNum">     201 </span>            : 
 <span class="lineNum">     202 </span><span class="lineCov">        227 : - (TyphoonDefinition*)definitionForKey:(NSString*)key</span>
 <span class="lineNum">     203 </span>            : {
-<span class="lineNum">     204 </span><span class="lineCov">        516 :     for (TyphoonDefinition* definition in _registry)</span>
+<span class="lineNum">     204 </span><span class="lineCov">        522 :     for (TyphoonDefinition* definition in _registry)</span>
 <span class="lineNum">     205 </span>            :     {
-<span class="lineNum">     206 </span><span class="lineCov">        516 :         if ([definition.key isEqualToString:key])</span>
+<span class="lineNum">     206 </span><span class="lineCov">        522 :         if ([definition.key isEqualToString:key])</span>
 <span class="lineNum">     207 </span>            :         {
 <span class="lineNum">     208 </span><span class="lineCov">         43 :             return definition;</span>
 <span class="lineNum">     209 </span>            :         }
-<span class="lineNum">     210 </span><span class="lineCov">        568 :     }</span>
+<span class="lineNum">     210 </span><span class="lineCov">        574 :     }</span>
 <span class="lineNum">     211 </span><span class="lineCov">        184 :     return nil;</span>
 <span class="lineNum">     212 </span><span class="lineCov">        227 : }</span>
 <span class="lineNum">     213 </span>            : 
