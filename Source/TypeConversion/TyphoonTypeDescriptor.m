@@ -76,7 +76,7 @@
             }
             else
             {
-                _metaClass = NSClassFromString(typeCode);
+                _typeBeingDescribed = NSClassFromString(typeCode);
             }
         }
         else
@@ -92,9 +92,9 @@
 /* ========================================================== Interface Methods ========================================================= */
 - (id)classOrProtocol
 {
-    if (_metaClass)
+    if (_typeBeingDescribed)
     {
-        return _metaClass;
+        return _typeBeingDescribed;
     }
     else
     {

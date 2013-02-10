@@ -38,14 +38,46 @@ typedef enum
 
 @interface TyphoonTypeDescriptor : NSObject
 
+/**
+* Indicates if the type being described is a primitive.
+*/
 @property(nonatomic, readonly) BOOL isPrimitive;
+
+/**
+* The primitive type being described (if the type being described is a primitive).
+*/
 @property(nonatomic, readonly) TyphoonPrimitiveType primitiveType;
-@property(nonatomic, readonly) Class metaClass;
+
+/**
+* The type being described, or nil if the type is a primitive or protocol.
+*/
+@property(nonatomic, readonly) Class typeBeingDescribed;
+
+/**
+* The protocol being described.
+*/
 @property(nonatomic, readonly) Protocol* protocol;
+
+/**
+* Indicates a primitive type is an array.
+*/
 @property(nonatomic, readonly) BOOL isArray;
+
+/**
+* Array lenght for primitive type.
+*/
 @property(nonatomic, readonly) int arrayLength;
+
+/**
+* Indicates a primitive type is a pointer.
+*/
 @property(nonatomic, readonly) BOOL isPointer;
+
+/**
+* Indicates a primitive type is a structure.
+*/
 @property(nonatomic, readonly) BOOL isStructure;
+
 @property(nonatomic, strong, readonly) NSString* structureTypeName;
 
 + (TyphoonTypeDescriptor*)descriptorWithTypeCode:(NSString*)typeCode;
