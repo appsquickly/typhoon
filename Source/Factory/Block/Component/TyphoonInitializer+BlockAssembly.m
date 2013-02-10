@@ -29,7 +29,7 @@
 
 - (void)injectWithText:(NSString*)text
 {
-    [self injectParameterAt:[_injectedParameters count] withValueAsText:text requiredTypeOrNil:nil];
+    [self injectWithText:text requiredTypeOrNil:nil];
 }
 
 - (void)injectWithText:(NSString*)text requiredTypeOrNil:(id)requiredTypeOrNil
