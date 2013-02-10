@@ -180,9 +180,9 @@
 <span class="lineNum">     122 </span><span class="lineCov">        111 :     return [self resolveIsClassMethod];</span>
 <span class="lineNum">     123 </span><span class="lineCov">        111 : }</span>
 <span class="lineNum">     124 </span>            : 
-<span class="lineNum">     125 </span><span class="lineCov">         84 : - (void)setSelector:(SEL)selector</span>
+<span class="lineNum">     125 </span><span class="lineCov">         71 : - (void)setSelector:(SEL)selector</span>
 <span class="lineNum">     126 </span>            : {
-<span class="lineNum">     127 </span><span class="lineCov">         84 :     _selector = selector;</span>
+<span class="lineNum">     127 </span><span class="lineCov">         71 :     _selector = selector;</span>
 <span class="lineNum">     128 </span>            :     _parameterNames = [self parameterNamesForSelector:_selector];
 <span class="lineNum">     129 </span>            : }
 <span class="lineNum">     130 </span><span class="lineCov">        157 : </span>
@@ -223,9 +223,9 @@
 <span class="lineNum">     165 </span><span class="lineCov">         94 :     if (_definition.factoryComponent)</span>
 <span class="lineNum">     166 </span><span class="lineCov">         94 :     {</span>
 <span class="lineNum">     167 </span>            :         if (_isClassMethodStrategy == YES)
-<span class="lineNum">     168 </span><span class="lineCov">        195 :         {</span>
+<span class="lineNum">     168 </span><span class="lineCov">        182 :         {</span>
 <span class="lineNum">     169 </span>            :             [NSException raise:NSInvalidArgumentException format:@&quot;'is-class-method' can't be 'YES' when factory-component is used!&quot;];
-<span class="lineNum">     170 </span><span class="lineCov">        195 :         }</span>
+<span class="lineNum">     170 </span><span class="lineCov">        182 :         }</span>
 <span class="lineNum">     171 </span>            :         else
 <span class="lineNum">     172 </span><span class="lineCov">         14 :         {</span>
 <span class="lineNum">     173 </span>            :             return NO;
@@ -237,12 +237,12 @@
 <span class="lineNum">     179 </span>            :         case TyphoonComponentInitializerIsClassMethodNo:
 <span class="lineNum">     180 </span><span class="lineNoCov">          0 :             return NO;</span>
 <span class="lineNum">     181 </span>            :         case TyphoonComponentInitializerIsClassMethodYes:
-<span class="lineNum">     182 </span><span class="lineCov">        181 :             return YES;</span>
+<span class="lineNum">     182 </span><span class="lineCov">        168 :             return YES;</span>
 <span class="lineNum">     183 </span>            :         case TyphoonComponentInitializerIsClassMethodGuess:
 <span class="lineNum">     184 </span>            :             return ![NSStringFromSelector(_selector) hasPrefix:@&quot;init&quot;];
 <span class="lineNum">     185 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     186 </span>            : }
-<span class="lineNum">     187 </span><span class="lineCov">         20 : </span>
+<span class="lineNum">     187 </span><span class="lineCov">         18 : </span>
 <span class="lineNum">     188 </span>            : @end
 </pre>
       </td>
