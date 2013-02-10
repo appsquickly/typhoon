@@ -38,13 +38,13 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/classOrProtocol">&nbsp;&nbsp;&nbsp;&nbsp;classOrProtocol</option>
-	
 	<option value="//api/name/index">&nbsp;&nbsp;&nbsp;&nbsp;index</option>
 	
-	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
+	<option value="//api/name/requiredType">&nbsp;&nbsp;&nbsp;&nbsp;requiredType</option>
 	
-	<option value="//api/name/value">&nbsp;&nbsp;&nbsp;&nbsp;value</option>
+	<option value="//api/name/textValue">&nbsp;&nbsp;&nbsp;&nbsp;textValue</option>
+	
+	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
 	
 	
 	
@@ -53,7 +53,7 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/initWithIndex:value:classOrProtocol:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithIndex:value:classOrProtocol:</option>
+	<option value="//api/name/initWithIndex:value:requiredTypeOrNil:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithIndex:value:requiredTypeOrNil:</option>
 	
 	<option value="//api/name/resolveTypeWith:">&nbsp;&nbsp;&nbsp;&nbsp;- resolveTypeWith:</option>
 	
@@ -79,13 +79,13 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/classOrProtocol">classOrProtocol</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/index">index</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/type">type</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requiredType">requiredType</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/value">value</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/textValue">textValue</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/type">type</a></span></li>
 	
 </ul></li>
 
@@ -95,7 +95,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithIndex:value:classOrProtocol:">initWithIndex:value:classOrProtocol:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithIndex:value:requiredTypeOrNil:">initWithIndex:value:requiredTypeOrNil:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resolveTypeWith:">resolveTypeWith:</a></span></li>
 	
@@ -163,21 +163,21 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/value">&nbsp;&nbsp;value</a></code>
+		<code><a href="#//api/name/textValue">&nbsp;&nbsp;textValue</a></code>
 		
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/classOrProtocol">&nbsp;&nbsp;classOrProtocol</a></code>
+		<code><a href="#//api/name/requiredType">&nbsp;&nbsp;requiredType</a></code>
 		
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithIndex:value:classOrProtocol:">&ndash;&nbsp;initWithIndex:value:classOrProtocol:</a></code>
+		<code><a href="#//api/name/initWithIndex:value:requiredTypeOrNil:">&ndash;&nbsp;initWithIndex:value:requiredTypeOrNil:</a></code>
 		
 	</span>
 	
@@ -186,8 +186,8 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/resolveTypeWith:">&ndash;&nbsp;resolveTypeWith:</a></code>
 		<span class="tooltip"><p>If the parameter is a primitive <a href="#//api/name/type">type</a>, resolves the <a href="#//api/name/type">type</a> descriptor. Throws an exception if either:
-&ndash; <a href="#//api/name/classOrProtocol">classOrProtocol</a> is set
-&ndash; The parameter is an object <a href="#//api/name/type">type</a>. (If the parameter is an object <a href="#//api/name/type">type</a>, <a href="#//api/name/classOrProtocol">classOrProtocol</a> must be set explicitly).</p></span>
+&ndash; classOrProtocol is set
+&ndash; The parameter is an object <a href="#//api/name/type">type</a>. (If the parameter is an object <a href="#//api/name/type">type</a>, classOrProtocol must be set explicitly).</p></span>
 	</span>
 	
 	
@@ -205,23 +205,34 @@
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/classOrProtocol" title="classOrProtocol"></a>
-	<h3 class="subsubtitle method-title">classOrProtocol</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) id classOrProtocol</code></div>
-
-    
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/index" title="index"></a>
 	<h3 class="subsubtitle method-title">index</h3>
 	
 	
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSUInteger index</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/requiredType" title="requiredType"></a>
+	<h3 class="subsubtitle method-title">requiredType</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) Class requiredType</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/textValue" title="textValue"></a>
+	<h3 class="subsubtitle method-title">textValue</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *textValue</code></div>
 
     
 </div>
@@ -237,17 +248,6 @@
     
 </div>
 						
-						<div class="section-method">
-	<a name="//api/name/value" title="value"></a>
-	<h3 class="subsubtitle method-title">value</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *value</code></div>
-
-    
-</div>
-						
 					</div>
 					
 					
@@ -259,12 +259,12 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithIndex:value:classOrProtocol:" title="initWithIndex:value:classOrProtocol:"></a>
-	<h3 class="subsubtitle method-title">initWithIndex:value:classOrProtocol:</h3>
+	<a name="//api/name/initWithIndex:value:requiredTypeOrNil:" title="initWithIndex:value:requiredTypeOrNil:"></a>
+	<h3 class="subsubtitle method-title">initWithIndex:value:requiredTypeOrNil:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithIndex:(NSUInteger)<em>index</em> value:(NSString *)<em>value</em> classOrProtocol:(id)<em>classOrProtocol</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithIndex:(NSUInteger)<em>index</em> value:(NSString *)<em>value</em> requiredTypeOrNil:(Class)<em>requiredTypeOrNil</em></code></div>
 
     
 </div>
@@ -277,8 +277,8 @@
 	
 	<div class="method-subsection brief-description">
 		<p>If the parameter is a primitive <a href="#//api/name/type">type</a>, resolves the <a href="#//api/name/type">type</a> descriptor. Throws an exception if either:
-&ndash; <a href="#//api/name/classOrProtocol">classOrProtocol</a> is set
-&ndash; The parameter is an object <a href="#//api/name/type">type</a>. (If the parameter is an object <a href="#//api/name/type">type</a>, <a href="#//api/name/classOrProtocol">classOrProtocol</a> must be set explicitly).</p>
+&ndash; classOrProtocol is set
+&ndash; The parameter is an object <a href="#//api/name/type">type</a>. (If the parameter is an object <a href="#//api/name/type">type</a>, classOrProtocol must be set explicitly).</p>
 	</div>		
 	
     
@@ -296,8 +296,8 @@
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>If the parameter is a primitive <a href="#//api/name/type">type</a>, resolves the <a href="#//api/name/type">type</a> descriptor. Throws an exception if either:
-&ndash; <a href="#//api/name/classOrProtocol">classOrProtocol</a> is set
-&ndash; The parameter is an object <a href="#//api/name/type">type</a>. (If the parameter is an object <a href="#//api/name/type">type</a>, <a href="#//api/name/classOrProtocol">classOrProtocol</a> must be set explicitly).</p>
+&ndash; classOrProtocol is set
+&ndash; The parameter is an object <a href="#//api/name/type">type</a>. (If the parameter is an object <a href="#//api/name/type">type</a>, classOrProtocol must be set explicitly).</p>
 	</div>
 	
 	
@@ -327,7 +327,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Jasper_Blues. All rights reserved. (Last updated: 2013-02-09)</span><br />
+						<p><span class="copyright">&copy; 2013 Jasper_Blues. All rights reserved. (Last updated: 2013-02-10)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

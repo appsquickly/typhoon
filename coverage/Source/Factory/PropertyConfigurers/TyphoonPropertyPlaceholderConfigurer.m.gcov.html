@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-02-09</td>
+            <td class="headerValue">2013-02-10</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -166,11 +166,11 @@
 <span class="lineNum">     108 </span>            : - (void)mutateComponentDefinitionsIfRequired:(NSArray*)componentDefinitions
 <span class="lineNum">     109 </span><span class="lineCov">         12 : {</span>
 <span class="lineNum">     110 </span>            :     for (TyphoonDefinition* definition in componentDefinitions)
-<span class="lineNum">     111 </span><span class="lineCov">         64 :     {</span>
+<span class="lineNum">     111 </span><span class="lineCov">         73 :     {</span>
 <span class="lineNum">     112 </span>            :         for (TyphoonPropertyInjectedByValue* property in [definition propertiesInjectedByValue])
-<span class="lineNum">     113 </span><span class="lineCov">         64 :         {</span>
+<span class="lineNum">     113 </span><span class="lineCov">         82 :         {</span>
 <span class="lineNum">     114 </span>            :             if ([property.textValue hasPrefix:_prefix] &amp;&amp; [property.textValue hasSuffix:_suffix])
-<span class="lineNum">     115 </span><span class="lineCov">         32 :             {</span>
+<span class="lineNum">     115 </span><span class="lineCov">         50 :             {</span>
 <span class="lineNum">     116 </span>            :                 NSString* key = [property.textValue substringFromIndex:[_prefix length]];
 <span class="lineNum">     117 </span><span class="lineCov">          5 :                 key = [key substringToIndex:[key length] - [_suffix length]];</span>
 <span class="lineNum">     118 </span><span class="lineCov">          5 :                 NSString* value = [_properties valueForKey:key];</span>
@@ -178,8 +178,8 @@
 <span class="lineNum">     120 </span><span class="lineCov">          5 :                 property.textValue = value;</span>
 <span class="lineNum">     121 </span><span class="lineCov">          5 :             }</span>
 <span class="lineNum">     122 </span><span class="lineCov">          5 :         }</span>
-<span class="lineNum">     123 </span><span class="lineCov">         32 :     }</span>
-<span class="lineNum">     124 </span><span class="lineCov">         64 : }</span>
+<span class="lineNum">     123 </span><span class="lineCov">         50 :     }</span>
+<span class="lineNum">     124 </span><span class="lineCov">         73 : }</span>
 <span class="lineNum">     125 </span><span class="lineCov">         12 : </span>
 <span class="lineNum">     126 </span>            : @end
 </pre>

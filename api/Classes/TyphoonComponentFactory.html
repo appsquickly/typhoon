@@ -59,15 +59,13 @@
 	
 	<option value="//api/name/componentForType:">&nbsp;&nbsp;&nbsp;&nbsp;- componentForType:</option>
 	
-	<option value="//api/name/injectPrimitivePropertyValueOn:property:valueProperty:requiredType:">&nbsp;&nbsp;&nbsp;&nbsp;- injectPrimitivePropertyValueOn:property:valueProperty:requiredType:</option>
-	
 	<option value="//api/name/makeDefault">&nbsp;&nbsp;&nbsp;&nbsp;- makeDefault</option>
 	
 	<option value="//api/name/register:">&nbsp;&nbsp;&nbsp;&nbsp;- register:</option>
 	
 	<option value="//api/name/registry">&nbsp;&nbsp;&nbsp;&nbsp;- registry</option>
 	
-	<option value="//api/name/setPrimitiveArgumentFor:parameter:requiredType:">&nbsp;&nbsp;&nbsp;&nbsp;- setPrimitiveArgumentFor:parameter:requiredType:</option>
+	<option value="//api/name/setPrimitiveArgumentFor:index:textValue:requiredType:">&nbsp;&nbsp;&nbsp;&nbsp;- setPrimitiveArgumentFor:index:textValue:requiredType:</option>
 	
 	
 	
@@ -85,9 +83,9 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_InstanceBuilder Methods">InstanceBuilder Methods</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_PrimitiveTypeInjection Methods">PrimitiveTypeInjection Methods</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_InstanceBuilder Methods">InstanceBuilder Methods</a></span></li>
 	
 </ul></li>
 
@@ -117,15 +115,13 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/componentForType:">componentForType:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/injectPrimitivePropertyValueOn:property:valueProperty:requiredType:">injectPrimitivePropertyValueOn:property:valueProperty:requiredType:</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/makeDefault">makeDefault</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/register:">register:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/registry">registry</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setPrimitiveArgumentFor:parameter:requiredType:">setPrimitiveArgumentFor:parameter:requiredType:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setPrimitiveArgumentFor:index:textValue:requiredType:">setPrimitiveArgumentFor:index:textValue:requiredType:</a></span></li>
 	
 </ul></li>
 
@@ -247,13 +243,13 @@ sub-class like <a href="../Classes/TyphoonXmlComponentFactory.html">TyphoonXmlCo
 						</ul>
 						
 						
-						<a title="InstanceBuilder Methods" name="task_InstanceBuilder Methods"></a>
-						<h3 class="subsubtitle task-title">InstanceBuilder Methods</h3>
+						<a title="PrimitiveTypeInjection Methods" name="task_PrimitiveTypeInjection Methods"></a>
+						<h3 class="subsubtitle task-title">PrimitiveTypeInjection Methods</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/buildInstanceWithDefinition:">&ndash;&nbsp;buildInstanceWithDefinition:</a></code>
+		<code><a href="#//api/name/setPrimitiveArgumentFor:index:textValue:requiredType:">&ndash;&nbsp;setPrimitiveArgumentFor:index:textValue:requiredType:</a></code>
 		
 	</span>
 	
@@ -262,20 +258,13 @@ sub-class like <a href="../Classes/TyphoonXmlComponentFactory.html">TyphoonXmlCo
 						</ul>
 						
 						
-						<a title="PrimitiveTypeInjection Methods" name="task_PrimitiveTypeInjection Methods"></a>
-						<h3 class="subsubtitle task-title">PrimitiveTypeInjection Methods</h3>
+						<a title="InstanceBuilder Methods" name="task_InstanceBuilder Methods"></a>
+						<h3 class="subsubtitle task-title">InstanceBuilder Methods</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/setPrimitiveArgumentFor:parameter:requiredType:">&ndash;&nbsp;setPrimitiveArgumentFor:parameter:requiredType:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/injectPrimitivePropertyValueOn:property:valueProperty:requiredType:">&ndash;&nbsp;injectPrimitivePropertyValueOn:property:valueProperty:requiredType:</a></code>
+		<code><a href="#//api/name/buildInstanceWithDefinition:">&ndash;&nbsp;buildInstanceWithDefinition:</a></code>
 		
 	</span>
 	
@@ -444,17 +433,6 @@ sub-class like <a href="../Classes/TyphoonXmlComponentFactory.html">TyphoonXmlCo
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/injectPrimitivePropertyValueOn:property:valueProperty:requiredType:" title="injectPrimitivePropertyValueOn:property:valueProperty:requiredType:"></a>
-	<h3 class="subsubtitle method-title">injectPrimitivePropertyValueOn:property:valueProperty:requiredType:</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>- (void)injectPrimitivePropertyValueOn:(id&lt;TyphoonIntrospectiveNSObject&gt;)<em>instance</em> property:(id&lt;TyphoonInjectedProperty&gt;)<em>property</em> valueProperty:(TyphoonPropertyInjectedByValue *)<em>parameter</em> requiredType:(TyphoonTypeDescriptor *)<em>requiredType</em></code></div>
-
-    
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/makeDefault" title="makeDefault"></a>
 	<h3 class="subsubtitle method-title">makeDefault</h3>
 	
@@ -557,12 +535,12 @@ sub-class like <a href="../Classes/TyphoonXmlComponentFactory.html">TyphoonXmlCo
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/setPrimitiveArgumentFor:parameter:requiredType:" title="setPrimitiveArgumentFor:parameter:requiredType:"></a>
-	<h3 class="subsubtitle method-title">setPrimitiveArgumentFor:parameter:requiredType:</h3>
+	<a name="//api/name/setPrimitiveArgumentFor:index:textValue:requiredType:" title="setPrimitiveArgumentFor:index:textValue:requiredType:"></a>
+	<h3 class="subsubtitle method-title">setPrimitiveArgumentFor:index:textValue:requiredType:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (void)setPrimitiveArgumentFor:(NSInvocation *)<em>invocation</em> parameter:(TyphoonParameterInjectedByValue *)<em>parameter</em> requiredType:(TyphoonTypeDescriptor *)<em>requiredType</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)setPrimitiveArgumentFor:(NSInvocation *)<em>invocation</em> index:(NSUInteger)<em>index</em> textValue:(NSString *)<em>textValue</em> requiredType:(TyphoonTypeDescriptor *)<em>requiredType</em></code></div>
 
     
 </div>
@@ -580,7 +558,7 @@ sub-class like <a href="../Classes/TyphoonXmlComponentFactory.html">TyphoonXmlCo
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Jasper_Blues. All rights reserved. (Last updated: 2013-02-09)</span><br />
+						<p><span class="copyright">&copy; 2013 Jasper_Blues. All rights reserved. (Last updated: 2013-02-10)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

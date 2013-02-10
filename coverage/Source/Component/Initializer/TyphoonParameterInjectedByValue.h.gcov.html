@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-02-09</td>
+            <td class="headerValue">2013-02-10</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -81,12 +81,12 @@
 <span class="lineNum">      23 </span>            :     __unsafe_unretained TyphoonInitializer* _initializer;
 <span class="lineNum">      24 </span>            : }
 <span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span><span class="lineCov">          6 : @property(nonatomic, readonly) NSUInteger index;</span>
+<span class="lineNum">      26 </span><span class="lineCov">          8 : @property(nonatomic, readonly) NSUInteger index;</span>
 <span class="lineNum">      27 </span>            : @property(nonatomic, readonly) TyphoonParameterInjectionType type;
-<span class="lineNum">      28 </span><span class="lineCov">          6 : @property(nonatomic, strong, readonly) NSString* value;</span>
-<span class="lineNum">      29 </span><span class="lineCov">         13 : @property(nonatomic, strong, readonly) id classOrProtocol;</span>
+<span class="lineNum">      28 </span><span class="lineCov">          8 : @property(nonatomic, strong, readonly) NSString* textValue;</span>
+<span class="lineNum">      29 </span><span class="lineCov">         15 : @property(nonatomic, strong, readonly) Class requiredType;</span>
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span>            : - (id)initWithIndex:(NSUInteger)index value:(NSString*)value classOrProtocol:(id)classOrProtocol;
+<span class="lineNum">      31 </span>            : - (id)initWithIndex:(NSUInteger)index value:(NSString*)value requiredTypeOrNil:(Class)requiredTypeOrNil;
 <span class="lineNum">      32 </span>            : 
 <span class="lineNum">      33 </span>            : /**
 <span class="lineNum">      34 </span>            : * If the parameter is a primitive type, resolves the type descriptor. Throws an exception if either:

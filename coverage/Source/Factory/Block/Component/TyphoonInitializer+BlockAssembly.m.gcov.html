@@ -31,13 +31,13 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">6</td>
             <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntryLo">66.7 %</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntryLo">60.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-02-09</td>
+            <td class="headerValue">2013-02-10</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -81,16 +81,27 @@
 <span class="lineNum">      23 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      24 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      25 </span>            : - (void)injectWithDefinition:(TyphoonDefinition*)definition;
-<span class="lineNum">      26 </span><span class="lineCov">          8 : {</span>
+<span class="lineNum">      26 </span><span class="lineCov">         16 : {</span>
 <span class="lineNum">      27 </span>            :     [self injectParameterAtIndex:[_injectedParameters count] withDefinition:definition];
-<span class="lineNum">      28 </span><span class="lineCov">          8 : }</span>
-<span class="lineNum">      29 </span><span class="lineCov">          8 : </span>
-<span class="lineNum">      30 </span>            : - (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonDefinition*)definition
-<span class="lineNum">      31 </span>            : {
-<span class="lineNum">      32 </span><span class="lineCov">          8 :     [self injectParameterAtIndex:index1 withReference:definition.key];</span>
-<span class="lineNum">      33 </span>            : }
+<span class="lineNum">      28 </span><span class="lineCov">         16 : }</span>
+<span class="lineNum">      29 </span><span class="lineCov">         16 : </span>
+<span class="lineNum">      30 </span>            : - (void)injectWithText:(NSString*)text
+<span class="lineNum">      31 </span><span class="lineCov">          8 : {</span>
+<span class="lineNum">      32 </span>            :     [self injectParameterAt:[_injectedParameters count] withValueAsText:text requiredTypeOrNil:nil];
+<span class="lineNum">      33 </span><span class="lineCov">          8 : }</span>
 <span class="lineNum">      34 </span><span class="lineCov">          8 : </span>
-<span class="lineNum">      35 </span><span class="lineCov">          8 : @end</span>
+<span class="lineNum">      35 </span>            : - (void)injectWithText:(NSString*)text requiredTypeOrNil:(id)requiredTypeOrNil
+<span class="lineNum">      36 </span>            : {
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :     [self injectParameterAt:[_injectedParameters count] withValueAsText:text requiredTypeOrNil:requiredTypeOrNil];</span>
+<span class="lineNum">      38 </span>            : }
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      41 </span>            : - (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonDefinition*)definition
+<span class="lineNum">      42 </span>            : {
+<span class="lineNum">      43 </span>            :     [self injectParameterAtIndex:index1 withReference:definition.key];
+<span class="lineNum">      44 </span><span class="lineCov">         16 : }</span>
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span><span class="lineCov">         16 : @end</span>
 </pre>
       </td>
     </tr>

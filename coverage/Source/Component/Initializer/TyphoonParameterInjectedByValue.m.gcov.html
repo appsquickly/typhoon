@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-02-09</td>
+            <td class="headerValue">2013-02-10</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -75,61 +75,61 @@
 <span class="lineNum">      17 </span>            : #import &quot;TyphoonIntrospectionUtils.h&quot;
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span><span class="lineCov">          4 : @implementation TyphoonParameterInjectedByValue</span>
+<span class="lineNum">      20 </span><span class="lineCov">          5 : @implementation TyphoonParameterInjectedByValue</span>
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            : /* ============================================================ Initializers ============================================================ */
-<span class="lineNum">      23 </span>            : - (id)initWithIndex:(NSUInteger)index value:(NSString*)value classOrProtocol:(id)classOrProtocol
-<span class="lineNum">      24 </span><span class="lineCov">         51 : {</span>
+<span class="lineNum">      23 </span>            : - (id)initWithIndex:(NSUInteger)index value:(NSString*)value requiredTypeOrNil:(Class)requiredTypeOrNil
+<span class="lineNum">      24 </span><span class="lineCov">         67 : {</span>
 <span class="lineNum">      25 </span>            :     self = [super init];
-<span class="lineNum">      26 </span><span class="lineCov">         51 :     if (self)</span>
-<span class="lineNum">      27 </span><span class="lineCov">         51 :     {</span>
+<span class="lineNum">      26 </span><span class="lineCov">         67 :     if (self)</span>
+<span class="lineNum">      27 </span><span class="lineCov">         67 :     {</span>
 <span class="lineNum">      28 </span>            :         _index = index;
-<span class="lineNum">      29 </span><span class="lineCov">         51 :         _value = value;</span>
-<span class="lineNum">      30 </span><span class="lineCov">         51 :         _classOrProtocol = classOrProtocol;</span>
-<span class="lineNum">      31 </span><span class="lineCov">         51 :     }</span>
-<span class="lineNum">      32 </span><span class="lineCov">         51 :     return self;</span>
-<span class="lineNum">      33 </span><span class="lineCov">         51 : }</span>
-<span class="lineNum">      34 </span><span class="lineCov">         51 : </span>
+<span class="lineNum">      29 </span><span class="lineCov">         67 :         _textValue = value;</span>
+<span class="lineNum">      30 </span><span class="lineCov">         67 :         _requiredType = requiredTypeOrNil;</span>
+<span class="lineNum">      31 </span><span class="lineCov">         67 :     }</span>
+<span class="lineNum">      32 </span><span class="lineCov">         67 :     return self;</span>
+<span class="lineNum">      33 </span><span class="lineCov">         67 : }</span>
+<span class="lineNum">      34 </span><span class="lineCov">         67 : </span>
 <span class="lineNum">      35 </span>            : /* ========================================================== Interface Methods ========================================================= */
 <span class="lineNum">      36 </span>            : - (TyphoonTypeDescriptor*)resolveTypeWith:(id)classOrInstance
-<span class="lineNum">      37 </span><span class="lineCov">          3 : {</span>
-<span class="lineNum">      38 </span>            :     if (_classOrProtocol)
-<span class="lineNum">      39 </span><span class="lineCov">          3 :     {</span>
-<span class="lineNum">      40 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;Can't resolve type descriptor - classOrProtocol is already explicitly set&quot;];
+<span class="lineNum">      37 </span><span class="lineCov">          5 : {</span>
+<span class="lineNum">      38 </span>            :     if (_requiredType)
+<span class="lineNum">      39 </span><span class="lineCov">          5 :     {</span>
+<span class="lineNum">      40 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;Can't resolve type descriptor - requiredType is already explicitly set&quot;];
 <span class="lineNum">      41 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      42 </span><span class="lineNoCov">          0 :     BOOL isClass = class_isMetaClass(object_getClass(classOrInstance));</span>
-<span class="lineNum">      43 </span><span class="lineCov">          3 :     Class clazz;</span>
-<span class="lineNum">      44 </span><span class="lineCov">          3 :     if (isClass)</span>
-<span class="lineNum">      45 </span><span class="lineCov">          3 :     {</span>
+<span class="lineNum">      43 </span><span class="lineCov">          5 :     Class clazz;</span>
+<span class="lineNum">      44 </span><span class="lineCov">          5 :     if (isClass)</span>
+<span class="lineNum">      45 </span><span class="lineCov">          5 :     {</span>
 <span class="lineNum">      46 </span>            :         clazz = classOrInstance;
 <span class="lineNum">      47 </span><span class="lineCov">          2 :     }</span>
 <span class="lineNum">      48 </span><span class="lineCov">          2 :     else</span>
 <span class="lineNum">      49 </span>            :     {
 <span class="lineNum">      50 </span>            :         clazz = [classOrInstance class];
-<span class="lineNum">      51 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      51 </span><span class="lineCov">          3 :     }</span>
 <span class="lineNum">      52 </span>            :     NSArray* typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:_initializer.selector ofClass:clazz isClassMethod:isClass];
-<span class="lineNum">      53 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      53 </span><span class="lineCov">          5 : </span>
 <span class="lineNum">      54 </span>            :     if ([[typeCodes objectAtIndex:_index] isEqualToString:@&quot;@&quot;])
-<span class="lineNum">      55 </span><span class="lineCov">          3 :     {</span>
+<span class="lineNum">      55 </span><span class="lineCov">          5 :     {</span>
 <span class="lineNum">      56 </span>            :         [NSException raise:NSInvalidArgumentException
 <span class="lineNum">      57 </span><span class="lineNoCov">          0 :                     format:@&quot;Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. Eg: &lt;argument parameterName=\&quot;string\&quot; value=\&quot;http://dev.foobar.com/service/\&quot; required-class=\&quot;NSString\&quot; /&gt;&quot;];</span>
 <span class="lineNum">      58 </span>            :     }
 <span class="lineNum">      59 </span><span class="lineCov">          2 :     return [TyphoonTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:_index]];</span>
-<span class="lineNum">      60 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      60 </span><span class="lineCov">          3 : </span>
 <span class="lineNum">      61 </span>            : }
-<span class="lineNum">      62 </span><span class="lineCov">          1 : </span>
+<span class="lineNum">      62 </span><span class="lineCov">          3 : </span>
 <span class="lineNum">      63 </span>            : 
 <span class="lineNum">      64 </span>            : /* =========================================================== Protocol Methods ========================================================= */
 <span class="lineNum">      65 </span>            : - (TyphoonParameterInjectionType)type
-<span class="lineNum">      66 </span><span class="lineCov">         16 : {</span>
+<span class="lineNum">      66 </span><span class="lineCov">         20 : {</span>
 <span class="lineNum">      67 </span>            :     return TyphoonParameterInjectedByValueType;
-<span class="lineNum">      68 </span><span class="lineCov">         16 : }</span>
+<span class="lineNum">      68 </span><span class="lineCov">         20 : }</span>
 <span class="lineNum">      69 </span>            : 
 <span class="lineNum">      70 </span>            : - (void)setInitializer:(TyphoonInitializer*)initializer
-<span class="lineNum">      71 </span><span class="lineCov">         55 : {</span>
+<span class="lineNum">      71 </span><span class="lineCov">         72 : {</span>
 <span class="lineNum">      72 </span>            :     _initializer = initializer;
-<span class="lineNum">      73 </span><span class="lineCov">         55 : }</span>
-<span class="lineNum">      74 </span><span class="lineCov">         55 : </span>
+<span class="lineNum">      73 </span><span class="lineCov">         72 : }</span>
+<span class="lineNum">      74 </span><span class="lineCov">         72 : </span>
 <span class="lineNum">      75 </span>            : 
 <span class="lineNum">      76 </span>            : @end
 </pre>
