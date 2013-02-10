@@ -64,7 +64,7 @@ typedef enum
 @property(nonatomic, readonly) BOOL isArray;
 
 /**
-* Array lenght for primitive type.
+* Array length for primitive type.
 */
 @property(nonatomic, readonly) int arrayLength;
 

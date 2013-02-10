@@ -52,14 +52,14 @@
 
 
 /* ========================================================== Interface Methods ========================================================= */
-- (id <TyphonTypeConverter>)converterFor:(id)classOrProtocol
+- (id <TyphonTypeConverter>)converterFor:(TyphoonTypeDescriptor*)typeDescriptor
 {
 
-    id <TyphonTypeConverter> converter = [_typeConverters objectForKey:[classOrProtocol classOrProtocol]];
+    id <TyphonTypeConverter> converter = [_typeConverters objectForKey:[typeDescriptor classOrProtocol]];
     if (!converter)
     {
         [NSException raise:NSInvalidArgumentException format:@"No type converter registered for type: '%@'.",
-                                                             [classOrProtocol classOrProtocol]];
+                                                             [typeDescriptor classOrProtocol]];
 
     }
     return converter;

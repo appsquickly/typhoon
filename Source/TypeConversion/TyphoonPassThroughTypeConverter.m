@@ -11,7 +11,6 @@
 
 
 #import "TyphoonPassThroughTypeConverter.h"
-#import "TyphoonTypeDescriptor.h"
 
 
 @implementation TyphoonPassThroughTypeConverter

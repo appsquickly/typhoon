@@ -29,9 +29,9 @@
 - (short)convertToShort:(NSString*)stringValue
 {
     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    short converted = 0;
-    [scanner scanInt:(int*) &converted];
-    return converted;
+    int converted = 0;
+    [scanner scanInt:&converted];
+    return [[NSNumber numberWithInt:converted] shortValue];
 }
 
 - (long)convertToLong:(NSString*)stringValue
@@ -53,9 +53,9 @@
 - (unsigned char)convertToUnsignedChar:(NSString*)stringValue
 {
     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    unsigned char converted = 0;
-    [scanner scanInt:(int*) &converted];
-    return converted;
+    unsigned int converted = 0;
+    [scanner scanInt:&converted];
+    return (unsigned char) converted;
 }
 
 - (unsigned int)convertToUnsignedInt:(NSString*)stringValue
@@ -101,9 +101,9 @@
 - (double)convertToDouble:(NSString*)stringValue
 {
     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    long long converted = 0;
-    [scanner scanLongLong:&converted];
-    return [[NSNumber numberWithLongLong:converted] doubleValue];
+    double converted = 0;
+    [scanner scanDouble:&converted];
+    return converted;
 }
 
 - (BOOL)convertToBoolean:(NSString*)stringValue

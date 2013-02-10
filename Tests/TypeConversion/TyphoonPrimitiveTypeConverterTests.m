@@ -11,7 +11,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "TyphoonPrimitiveTypeConverter.h"
-#import "TyphoonIntrospectiveNSObject.h"
 
 @interface TyphoonPrimitiveTypeConverterTests : SenTestCase
 
@@ -32,42 +31,110 @@
     _typeConverter = [[TyphoonPrimitiveTypeConverter alloc] init];
 }
 
-- (void)test_convertToBool
+- (void)test_converts_to_bool
 {
-    BOOL converted = (BOOL) [_typeConverter convertToBoolean:@"true"];
+    BOOL converted = [_typeConverter convertToBoolean:@"true"];
     assertThatBool(converted, equalToBool(YES));
 
-    converted = (BOOL) [_typeConverter convertToBoolean:@"yes"];
+    converted = [_typeConverter convertToBoolean:@"yes"];
     assertThatBool(converted, equalToBool(YES));
 
-    converted = (BOOL) [_typeConverter convertToBoolean:@"1"];
+    converted = [_typeConverter convertToBoolean:@"1"];
     assertThatBool(converted, equalToBool(YES));
 
-    converted = (BOOL) [_typeConverter convertToBoolean:@"no"];
+    converted = [_typeConverter convertToBoolean:@"no"];
     assertThatBool(converted, equalToBool(NO));
 
-    converted = (BOOL) [_typeConverter convertToBoolean:@"false"];
+    converted = [_typeConverter convertToBoolean:@"false"];
     assertThatBool(converted, equalToBool(NO));
 
-    converted = (BOOL) [_typeConverter convertToBoolean:@"0"];
+    converted = [_typeConverter convertToBoolean:@"0"];
     assertThatBool(converted, equalToBool(NO));
 }
 
-- (void)test_convertToInt
+- (void)test_converts_to_short
 {
-    int converted = (int) [_typeConverter convertToInt:@"123"];
+    short converted = [_typeConverter convertToShort:@"1245"];
+    assertThatShort(converted, equalToShort(1245));
+}
+
+- (void)test_converts_to_long
+{
+    long converted = [_typeConverter convertToLong:@"1245"];
+    assertThatLong(converted, equalToLong(1245));
+}
+
+- (void)test_converts_to_NSInteger
+{
+    NSInteger converted = [_typeConverter convertToLongLong:@"1245"];
+    assertThatLongLong(converted, equalToLongLong(1245));
+}
+
+- (void)test_converts_to_unsigned_char
+{
+    unsigned char converted = [_typeConverter convertToUnsignedChar:@"65"];
+    assertThatUnsignedChar(converted, equalToUnsignedChar(65));
+}
+
+- (void)test_converts_to_unsigned_int
+{
+    unsigned int converted = [_typeConverter convertToUnsignedInt:@"123"];
+    assertThatUnsignedInt(converted, equalToUnsignedChar(123));
+}
+
+- (void)test_converts_to_unsigned_short
+{
+    unsigned short converted = [_typeConverter convertToUnsignedShort:@"123"];
+    assertThatUnsignedShort(converted, equalToUnsignedShort(123));
+}
+
+- (void)test_converts_to_unsigned_long
+{
+    unsigned long converted = [_typeConverter convertToUnsignedLong:@"123"];
+    assertThatUnsignedLong(converted, equalToUnsignedLong(123));
+}
+
+- (void)test_converts_to_unsigned_double
+{
+    double converted = [_typeConverter convertToDouble:@"3.14159628"];
+    assertThatDouble(converted, equalToDouble(3.14159628));
+}
+
+- (void)test_converts_to_selector
+{
+    SEL converted = [_typeConverter convertToSelector:@"initWithQuest:"];
+    STAssertEquals(converted, @selector(initWithQuest:), nil, nil);
+}
+
+- (void)test_converts_to_class
+{
+    Class converted = [_typeConverter convertToClass:@"NSString"];
+    STAssertTrue(converted == [NSString class], nil);
+}
+
+- (void)test_converts_to_c_string
+{
+    char* converted = [_typeConverter convertToCString:@"the quick brown fox"];
+    STAssertTrue(strcmp(converted, [@"the quick brown fox" cStringUsingEncoding:NSUTF8StringEncoding]) == 0, nil);
+    NSLog(@"Converted: %s", converted);
+}
+
+
+- (void)test_converts_to_int
+{
+    int converted = [_typeConverter convertToInt:@"123"];
     assertThatInt(converted, equalToInt(123));
 
-    converted = (int) [_typeConverter convertToInt:@"zzz"];
+    converted = [_typeConverter convertToInt:@"zzz"];
     assertThatInt(converted, equalToInt(0));
 }
 
-- (void)test_convertToNSUInteger
+- (void)test_converts_to_NSUInteger
 {
-    NSUInteger converted = (NSUInteger) [_typeConverter convertToUnsignedLongLong:@"123"];
+    NSUInteger converted = [_typeConverter convertToUnsignedLongLong:@"123"];
     assertThatUnsignedLongLong(converted, equalToUnsignedLongLong(123));
 
-    converted = (int) [_typeConverter convertToUnsignedLongLong:@"zzz"];
+    converted = [_typeConverter convertToUnsignedLongLong:@"zzz"];
     assertThatUnsignedLongLong(converted, equalToUnsignedLongLong(0));
 }
 

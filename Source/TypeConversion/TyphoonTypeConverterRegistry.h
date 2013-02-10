@@ -34,7 +34,7 @@
 /**
 * Returns the type converter for the given type either a Class object or @protocol(SomeType).
 */
-- (id <TyphonTypeConverter>)converterFor:(id)classOrProtocol;
+- (id <TyphonTypeConverter>)converterFor:(TyphoonTypeDescriptor*)typeDescriptor;
 
 /**
 * Returns the type converter for primitives - BOOLS, ints, floats, etc.
@@ -45,6 +45,6 @@
 * Registers a converter for the given type (either a Class object or @protocol. If a converter exists for the type,
 * raises an exception.
 */
-- (void)register:(id<TyphonTypeConverter>)converter forClassOrProtocol:(id)classOrProtocol;
+- (void)register:(id <TyphonTypeConverter>)converter forClassOrProtocol:(id)classOrProtocol;
 
 @end
