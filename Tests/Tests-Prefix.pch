@@ -12,3 +12,6 @@
 
 #define typhoon_shorthand
 
+#define MOCKITO_SHORTHAND
+#import <OCMockito/OCMockito.h>
+

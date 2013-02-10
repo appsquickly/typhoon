@@ -11,6 +11,7 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "TyphoonPrimitiveTypeConverter.h"
+#import "TyphoonTypeDescriptor.h"
 
 @interface TyphoonPrimitiveTypeConverterTests : SenTestCase
 
@@ -137,5 +138,16 @@
     converted = [_typeConverter convertToUnsignedLongLong:@"zzz"];
     assertThatUnsignedLongLong(converted, equalToUnsignedLongLong(0));
 }
+
+/* ====================================================================================================================================== */
+#pragma mark - Invocations
+
+- (void)test_invocations
+{
+//    NSInvocation* mockInvocation = mock([NSInvocation class]);
+//    TyphoonTypeDescriptor* descriptor =
+//    [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"true" requiredType:nil];
+}
+
 
 @end
