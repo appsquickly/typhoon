@@ -16,24 +16,28 @@
 @implementation TyphoonBundleResource
 
 /* =========================================================== Class Methods ============================================================ */
-+ (id<TyphoonResource>)withName:(NSString*)name {
++ (id <TyphoonResource>)withName:(NSString*)name
+{
 
     NSString* contents;
+    NSString* filePath;
     NSRange lastDot = [name rangeOfString:@"." options:NSBackwardsSearch];
-    if (lastDot.location != NSNotFound) {
+    if (lastDot.location != NSNotFound)
+    {
         NSString* resource = [name substringToIndex:lastDot.location];
         NSString* type = [name substringFromIndex:lastDot.location + 1];
         NSLog(@"Resource: %@.%@", resource, type);
-        NSString* filePath = [[NSBundle bundleForClass:[self class]] pathForResource:resource ofType:type];
-        contents =  [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+        filePath = [[NSBundle bundleForClass:[self class]] pathForResource:resource ofType:type];
     }
-    else {
-        NSString* filePath = [[NSBundle bundleForClass:[self class]] pathForResource:name ofType:nil];
-        contents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    else
+    {
+        filePath = [[NSBundle bundleForClass:[self class]] pathForResource:name ofType:nil];
     }
-    if (contents == nil) {
-        [NSException raise:NSInvalidArgumentException format:@"Expected contents of file %@ not to be nil", name];
+    if (filePath == nil)
+    {
+        [NSException raise:NSInvalidArgumentException format:@"Resource named '%@' not in bundle.", name];
     }
+    contents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     return [[[self class] alloc] initWithStringValue:contents];
 }
 
