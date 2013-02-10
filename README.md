@@ -176,8 +176,8 @@ each commit. (If you'd like the script I will share it).
 ##Current Work?
 
 * More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
-* Documentation (including API docs). 
-* ALl kinds of testing. 
+* A new website. 
+* API docs. 
 
 # Frequently Asked Questions
 
