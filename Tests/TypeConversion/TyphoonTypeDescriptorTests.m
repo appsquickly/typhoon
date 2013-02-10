@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  JASPER BLUES
-//  Copyright 2012 Jasper Blues
+//  Copyright 2013 Jasper Blues
 //  All Rights Reserved.
 //
 //  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
@@ -11,8 +11,9 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "TyphoonTypeDescriptor.h"
-#import "Knight.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
+#import "Quest.h"
+#import "Knight.h"
 
 typedef struct
 {
@@ -20,7 +21,11 @@ typedef struct
     char bar[255];
 } SomeStructType;
 
-@interface NSObject_SpringReflectionUtilsTests : SenTestCase
+@interface TyphoonTypeDescriptorTests : SenTestCase
+
+@property BOOL aBoolProperty;
+@property NSURL* anNSURLProperty;
+@property id<Quest> aQuestProperty;
 
 @property(nonatomic, readonly) char charProperty;
 @property(nonatomic, readonly) int intProperty;
@@ -31,8 +36,42 @@ typedef struct
 
 @end
 
+@implementation TyphoonTypeDescriptorTests
 
-@implementation NSObject_SpringReflectionUtilsTests
+- (void) test_type_description_primitive
+{
+    TyphoonTypeDescriptor* descriptor = [self typeForPropertyWithName:@"aBoolProperty"];
+    assertThatBool([descriptor isPrimitive], equalToBool(YES));
+    assertThat([descriptor typeBeingDescribed], nilValue());
+    assertThat([descriptor protocol], nilValue());
+    assertThatBool([descriptor isArray], equalToBool(NO));
+    assertThatInt([descriptor arrayLength], equalToInt(0));
+
+    NSString* description = [descriptor description];
+    assertThat(description, equalTo(@"Type descriptor for primitive: 1"));
+}
+
+- (void)test_type_description_class
+{
+    TyphoonTypeDescriptor* descriptor = [self typeForPropertyWithName:@"anNSURLProperty"];
+    assertThatBool([descriptor isPrimitive], equalToBool(NO));
+    assertThat([descriptor typeBeingDescribed], equalTo([NSURL class]));
+    assertThat([descriptor protocol], nilValue());
+
+    NSString* description = [descriptor description];
+    assertThat(description, equalTo(@"Type descriptor: NSURL"));
+}
+
+- (void)test_type_description_protocol
+{
+    TyphoonTypeDescriptor* descriptor = [self typeForPropertyWithName:@"aQuestProperty"];
+    assertThatBool([descriptor isPrimitive], equalToBool(NO));
+    assertThat([descriptor typeBeingDescribed], nilValue());
+    assertThat([descriptor protocol], equalTo(@protocol(Quest)));
+
+    NSString* description = [descriptor description];
+    assertThat(description, equalTo(@"Type descriptor: id<Quest>"));
+}
 
 - (void)test_typeForPropertyWithName_char
 {
@@ -108,17 +147,9 @@ typedef struct
     assertThat([typeCodes objectAtIndex:0], equalTo(@"@"));
     assertThat([typeCodes objectAtIndex:1], equalTo(@"Q"));
 
-//    TyphoonTypeDescriptor* typeDescriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:@protocol(NSObject+TyphoonIntrospectionUtils+TyphoonIntrospectionUtils)];
-//    assertThatBool(typeDescriptor.isPrimitive, equalToBool(NO));
-//    assertThat([typeDescriptor classOrProtocol], notNilValue());
-//    LogDebug(@"The type: %@", NSStringFromProtocol(typeDescriptor.classOrProtocol));
-
-
     TyphoonTypeDescriptor* typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:1]];
     assertThatBool(typeDescriptor.isPrimitive, equalToBool(YES));
     assertThatInt(typeDescriptor.primitiveType, equalToInt(TyphoonPrimitiveTypeUnsignedLongLong));
-
 }
-
 
 @end

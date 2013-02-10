@@ -111,7 +111,16 @@
     }
     else
     {
-        return [NSString stringWithFormat:@"Type descriptor: %@", [self classOrProtocol]];
+        Protocol* protocol = [self protocol];
+        if (protocol)
+        {
+            return [NSString stringWithFormat:@"Type descriptor: id<%@>", NSStringFromProtocol(protocol)];
+        }
+        else 
+        {
+            return [NSString stringWithFormat:@"Type descriptor: %@", [self classOrProtocol]];
+        }
+        
     }
 }
 
