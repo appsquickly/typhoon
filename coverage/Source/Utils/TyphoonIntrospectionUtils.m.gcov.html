@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">22</td>
+            <td class="headerCovTableEntry">23</td>
             <td class="headerCovTableEntry">27</td>
-            <td class="headerCovTableEntryMed">81.5 %</td>
+            <td class="headerCovTableEntryMed">85.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -116,15 +116,15 @@
 <span class="lineNum">      58 </span><span class="lineCov">          3 : </span>
 <span class="lineNum">      59 </span>            : 
 <span class="lineNum">      60 </span>            : NSString* TyphoonTypeStringFor(id classOrProtocol)
-<span class="lineNum">      61 </span><span class="lineCov">          1 : {</span>
+<span class="lineNum">      61 </span><span class="lineCov">          2 : {</span>
 <span class="lineNum">      62 </span>            :     if (class_isMetaClass(object_getClass(classOrProtocol)))
-<span class="lineNum">      63 </span><span class="lineCov">          1 :     {</span>
+<span class="lineNum">      63 </span><span class="lineCov">          2 :     {</span>
 <span class="lineNum">      64 </span>            :         return NSStringFromClass(classOrProtocol);
 <span class="lineNum">      65 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">      66 </span>            :     else
 <span class="lineNum">      67 </span>            :     {
 <span class="lineNum">      68 </span>            :         return [NSString stringWithFormat:@&quot;id&lt;%@&gt;&quot;, NSStringFromProtocol(classOrProtocol)];
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">      70 </span>            : }
 </pre>
       </td>
