@@ -23,6 +23,7 @@
 #import "TyphoonPropertyInjectedByValue.h"
 #import "TyphoonPropertyInjectionDelegate.h"
 #import "TyphoonParameterInjectedByValue.h"
+#import "TyphoonPrimitiveTypeConverter.h"
 
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
@@ -75,7 +76,7 @@
         else if (parameter.type == TyphoonParameterInjectedByValueType)
         {
             TyphoonParameterInjectedByValue* byValue = (TyphoonParameterInjectedByValue*) parameter;
-            [[TyphoonTypeConverterRegistry shared] setArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue
+            [self setArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue
                     requiredType:[byValue resolveTypeWith:instanceOrClass]];
         }
     }
@@ -137,8 +138,7 @@
     else if (property.type == TyphoonPropertyInjectionByValueType)
     {
         TyphoonPropertyInjectedByValue* valueProperty = (TyphoonPropertyInjectedByValue*) property;
-        [[TyphoonTypeConverterRegistry shared]
-                setArgumentFor:invocation index:2 textValue:valueProperty.textValue requiredType:typeDescriptor];
+        [self setArgumentFor:invocation index:2 textValue:valueProperty.textValue requiredType:typeDescriptor];
     }
     [invocation invoke];
 }
@@ -162,6 +162,24 @@
     if ([instance respondsToSelector:definition.afterPropertyInjection])
     {
         objc_msgSend(instance, definition.afterPropertyInjection);
+    }
+}
+
+
+/* ====================================================================================================================================== */
+- (void)setArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index1 textValue:(NSString*)textValue
+        requiredType:(TyphoonTypeDescriptor*)requiredType
+{
+    if (requiredType.isPrimitive)
+    {
+        TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
+        [converter setPrimitiveArgumentFor:invocation index:index1 textValue:textValue requiredType:requiredType];
+    }
+    else
+    {
+        id <TyphonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:requiredType];
+        id converted = [converter convert:textValue];
+        [invocation setArgument:&converted atIndex:index1];
     }
 }
 
