@@ -81,17 +81,17 @@
 
 - (NSSet*)propertiesInjectedByValue
 {
-    return [self injectedPropertiesWithKindClass:[TyphoonPropertyInjectedByValue class]];
+    return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByValue class]];
 }
 
 - (NSSet*)propertiesInjectedByType
 {
-    return [self injectedPropertiesWithKindClass:[TyphoonPropertyInjectedByType class]];
+    return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByType class]];
 }
 
 - (NSSet*)propertiesInjectedByReference
 {
-    return [self injectedPropertiesWithKindClass:[TyphoonPropertyInjectedByReference class]];
+    return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByReference class]];
 }
 
 
@@ -116,7 +116,7 @@
     }
 }
 
-- (NSSet*)injectedPropertiesWithKindClass:(Class)clazz
+- (NSSet*)injectedPropertiesWithKind:(Class)clazz
 {
     NSPredicate* predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary* bindings)
     {

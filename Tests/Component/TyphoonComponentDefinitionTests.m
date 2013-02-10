@@ -68,7 +68,37 @@
     {
         assertThat([e description], equalTo(@"Property 'clazz' is required."));
     }
+}
 
+/* ====================================================================================================================================== */
+#pragma mark - Describing
+
+- (void)test_enumerates_properties_injected_by_value
+{
+    TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+
+    //by value
+    [definition injectProperty:@selector(foobar) withValueAsText:@"zzz"];
+    [definition injectProperty:@selector(rapunzal) withValueAsText:@"ttt"];
+
+    //by reference
+    [definition injectProperty:@selector(dd) withReference:@"someReference"];
+
+    assertThatUnsignedLongLong([[definition propertiesInjectedByValue] count], equalToUnsignedLongLong(2));
+}
+
+- (void)test_enumerates_properties_injected_by_reference
+{
+    TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+
+    //by value
+    [definition injectProperty:@selector(foobar) withValueAsText:@"zzz"];
+    [definition injectProperty:@selector(rapunzal) withValueAsText:@"ttt"];
+
+    //by reference
+    [definition injectProperty:@selector(dd) withReference:@"someReference"];
+
+    assertThatUnsignedLongLong([[definition propertiesInjectedByReference] count], equalToUnsignedLongLong(1));
 }
 
 /* ====================================================================================================================================== */
