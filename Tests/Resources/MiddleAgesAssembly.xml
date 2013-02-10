@@ -47,7 +47,7 @@
         </property>
     </component>
 
-    <component class="CavalryMan" key="anotherKnight">
+    <component class="CavalryMan" key="anotherKnight" scope="singleton">
         <description>
             This time, we're using initializer injection. As shown below, you can also mix initializer
             injection with property injection.
