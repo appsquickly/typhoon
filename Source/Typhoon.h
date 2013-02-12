@@ -27,6 +27,7 @@
 //TODO: Possibly move this to make explicit
 #import "TyphoonInitializer+BlockAssembly.h"
 #import "TyphoonDefinition+BlockAssembly.h"
+#import "TyphoonBlockComponentFactory.h"
 
 #import "TyphoonAutowire.h"
 #import "TyphoonShorthand.h"
