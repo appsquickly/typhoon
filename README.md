@@ -1,6 +1,6 @@
 # Description
 
-A new dependency injection container for Objective-C. Light-weight, yet full-featured. 
+A new dependency injection container for Objective-C. Light-weight, yet full-featured. First visit? Check out the <a href="http://www.typhoonframework.org/">website</a>.
 
 Typhoon is nice on Xcode, even better with . . . 
 
@@ -8,10 +8,8 @@ Typhoon is nice on Xcode, even better with . . .
 
 ## Status? It's ready to use!
 
-* First visit? Check out the <a href="http://www.typhoonframework.org/">website</a>.
 * <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a>.
 * **New!!** A super-cool <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">block and category-based application assembly</a>, for those that prefer pure-code!!! 
-
 
 ### What is Dependency Injection? 
 
