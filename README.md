@@ -8,6 +8,7 @@ Typhoon is nice on Xcode, even better with . . .
 
 ## Status? It's ready to use!
 
+* First visit? Check out the <a href="http://www.typhoonframework.org/">website</a>.
 * <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a>.
 * **New!!** A super-cool <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">block and category-based application assembly</a>, for those that prefer pure-code!!! 
 
@@ -181,15 +182,7 @@ each commit. (If you'd like the script I will share it).
 
 # Frequently Asked Questions
 
-. . . are <a href="https://github.com/jasperblues/Typhoon/wiki/FAQ">here</a>.
-
-
-# Who's using it? 
-
-* <a href="http://modprods.com">Mod Productions</a> : Two very exciting applications currently in development. Stay tuned for release.
- 
- If you're using it, please shoot me an email and let me know.
-
+. . . are <a href="http://www.typhoonframework.org/#services">here</a>.
 
 # Authors
 
