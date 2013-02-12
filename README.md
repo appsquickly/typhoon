@@ -2,10 +2,6 @@
 
 A new dependency injection container for Objective-C. Light-weight, yet full-featured. First visit? Check out the <a href="http://www.typhoonframework.org/">website</a>.
 
-Typhoon is nice on Xcode, even better with . . . 
-
-<a href="http://www.jetbrains.com/objc/">![AppCode](http://jasperblues.github.com/Typhoon/appcode-logo.png)</a>
-
 ## Status? It's ready to use!
 
 * <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a>.
@@ -175,7 +171,6 @@ each commit. (If you'd like the script I will share it).
 ##Current Work?
 
 * More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
-* A new website. 
 * API docs. 
 
 # Frequently Asked Questions
