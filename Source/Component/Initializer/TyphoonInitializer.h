@@ -48,6 +48,8 @@ typedef enum
 
 - (NSArray*)injectedParameters;
 
+- (NSArray*)parametersInjectedByValue;
+
 - (NSInvocation*)asInvocationFor:(id)classOrInstance;
 
 - (void)setComponentDefinition:(TyphoonDefinition*)definition;
