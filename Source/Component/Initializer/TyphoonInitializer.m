@@ -86,6 +86,16 @@
     return [_injectedParameters copy];
 }
 
+- (NSArray *)parametersInjectedByValue
+{
+    NSPredicate* predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary* bindings)
+                              {
+                                  return [evaluatedObject isKindOfClass:[TyphoonParameterInjectedByValue class]];
+                              }];
+    return [_injectedParameters filteredArrayUsingPredicate:predicate];
+
+}
+
 - (NSInvocation*)asInvocationFor:(id)classOrInstance
 {
     if (![classOrInstance respondsToSelector:_selector])

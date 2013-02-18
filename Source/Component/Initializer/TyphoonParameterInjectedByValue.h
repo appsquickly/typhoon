@@ -25,7 +25,7 @@
 
 @property(nonatomic, readonly) NSUInteger index;
 @property(nonatomic, readonly) TyphoonParameterInjectionType type;
-@property(nonatomic, strong, readonly) NSString* textValue;
+@property(nonatomic, strong) NSString* textValue;
 @property(nonatomic, strong, readonly) Class requiredType;
 
 - (id)initWithIndex:(NSUInteger)index value:(NSString*)value requiredTypeOrNil:(Class)requiredTypeOrNil;
