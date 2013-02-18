@@ -2,15 +2,11 @@
 
 A new dependency injection container for Objective-C. Light-weight, yet full-featured. 
 
-Typhoon is nice on Xcode, even better with . . . 
-
-<a href="http://www.jetbrains.com/objc/">![AppCode](http://jasperblues.github.com/Typhoon/appcode-logo.png)</a>
-
 ## Status? It's ready to use!
 
+* First visit? Check out the <a href="http://www.typhoonframework.org/">website</a>.
 * <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a>.
 * **New!!** A super-cool <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">block and category-based application assembly</a>, for those that prefer pure-code!!! 
-
 
 ### What is Dependency Injection? 
 
@@ -144,7 +140,7 @@ and GUI tool-support.
 
 And then:
 
-* <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">Assembling Components with Blocks</a> ___or___ <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-in-XML">Assembling Components in XML</a>
+* <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">Assembling Components with Blocks (recommended) </a> ___or___ <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-in-XML">Assembling Components in XML</a>
 
 * <a href="https://github.com/jasperblues/Typhoon/wiki/Autowiring">Autowiring</a>
 
@@ -176,20 +172,11 @@ each commit. (If you'd like the script I will share it).
 ##Current Work?
 
 * More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
-* A new website. 
 * API docs. 
 
 # Frequently Asked Questions
 
-. . . are <a href="https://github.com/jasperblues/Typhoon/wiki/FAQ">here</a>.
-
-
-# Who's using it? 
-
-* <a href="http://modprods.com">Mod Productions</a> : Two very exciting applications currently in development. Stay tuned for release.
- 
- If you're using it, please shoot me an email and let me know.
-
+. . . are <a href="http://www.typhoonframework.org/#services">here</a>.
 
 # Authors
 
