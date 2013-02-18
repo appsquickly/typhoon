@@ -1,4 +1,4 @@
-pod do |spec|
+Pod::Spec.new do |spec|
     spec.name         = 'Typhoon'
     spec.version      = '1.1.0'
     spec.license      = 'Apache2.0'
