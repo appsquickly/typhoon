@@ -77,29 +77,29 @@
 <span class="lineNum">      19 </span>            : @implementation TyphoonIntrospectionUtils
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span>            : + (NSArray*)typeCodesForSelector:(SEL)selector ofClass:(Class)clazz isClassMethod:(BOOL)isClassMethod
-<span class="lineNum">      22 </span><span class="lineCov">          6 : {</span>
+<span class="lineNum">      22 </span><span class="lineCov">          7 : {</span>
 <span class="lineNum">      23 </span>            :     NSMutableArray* typeCodes = [[NSMutableArray alloc] init];
-<span class="lineNum">      24 </span><span class="lineCov">          6 : </span>
+<span class="lineNum">      24 </span><span class="lineCov">          7 : </span>
 <span class="lineNum">      25 </span>            :     Method method;
 <span class="lineNum">      26 </span>            :     if (isClassMethod)
-<span class="lineNum">      27 </span><span class="lineCov">          6 :     {</span>
+<span class="lineNum">      27 </span><span class="lineCov">          7 :     {</span>
 <span class="lineNum">      28 </span>            :         method = class_getClassMethod(clazz, selector);
 <span class="lineNum">      29 </span><span class="lineCov">          2 :     }</span>
 <span class="lineNum">      30 </span><span class="lineCov">          2 :     else</span>
 <span class="lineNum">      31 </span>            :     {
 <span class="lineNum">      32 </span>            :         method = class_getInstanceMethod(clazz, selector);
-<span class="lineNum">      33 </span><span class="lineCov">          4 :     }</span>
+<span class="lineNum">      33 </span><span class="lineCov">          5 :     }</span>
 <span class="lineNum">      34 </span>            :     unsigned int argumentCount = method_getNumberOfArguments(method);
-<span class="lineNum">      35 </span><span class="lineCov">          6 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">          7 : </span>
 <span class="lineNum">      36 </span>            :     for (int i = 2; i &lt; argumentCount; i++)
-<span class="lineNum">      37 </span><span class="lineCov">         16 :     {</span>
+<span class="lineNum">      37 </span><span class="lineCov">         19 :     {</span>
 <span class="lineNum">      38 </span>            :         char typeInfo[100];
-<span class="lineNum">      39 </span><span class="lineCov">         10 :         method_getArgumentType(method, i, typeInfo, 100);</span>
-<span class="lineNum">      40 </span><span class="lineCov">         10 :         [typeCodes addObject:[NSString stringWithUTF8String:typeInfo]];</span>
-<span class="lineNum">      41 </span><span class="lineCov">         10 :     }</span>
+<span class="lineNum">      39 </span><span class="lineCov">         12 :         method_getArgumentType(method, i, typeInfo, 100);</span>
+<span class="lineNum">      40 </span><span class="lineCov">         12 :         [typeCodes addObject:[NSString stringWithUTF8String:typeInfo]];</span>
+<span class="lineNum">      41 </span><span class="lineCov">         12 :     }</span>
 <span class="lineNum">      42 </span>            :     return [typeCodes copy];
-<span class="lineNum">      43 </span><span class="lineCov">          6 : }</span>
-<span class="lineNum">      44 </span><span class="lineCov">          6 : </span>
+<span class="lineNum">      43 </span><span class="lineCov">          7 : }</span>
+<span class="lineNum">      44 </span><span class="lineCov">          7 : </span>
 <span class="lineNum">      45 </span>            : @end
 <span class="lineNum">      46 </span>            : 
 <span class="lineNum">      47 </span>            : NSSet* TyphoonAutoWiredProperties(Class clazz, NSSet* properties)

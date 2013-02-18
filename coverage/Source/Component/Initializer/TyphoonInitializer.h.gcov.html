@@ -89,7 +89,7 @@
 <span class="lineNum">      31 </span>            :     TyphoonComponentInitializerIsClassMethod _isClassMethodStrategy;
 <span class="lineNum">      32 </span>            : }
 <span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span><span class="lineCov">          5 : @property(nonatomic) SEL selector;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          6 : @property(nonatomic) SEL selector;</span>
 <span class="lineNum">      35 </span><span class="lineNoCov">          0 : @property(nonatomic) BOOL isClassMethod;</span>
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : - (id)initWithSelector:(SEL)initializer;
@@ -106,11 +106,13 @@
 <span class="lineNum">      48 </span>            : 
 <span class="lineNum">      49 </span>            : - (NSArray*)injectedParameters;
 <span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span>            : - (NSInvocation*)asInvocationFor:(id)classOrInstance;
+<span class="lineNum">      51 </span>            : - (NSArray*)parametersInjectedByValue;
 <span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span>            : - (void)setComponentDefinition:(TyphoonDefinition*)definition;
+<span class="lineNum">      53 </span>            : - (NSInvocation*)asInvocationFor:(id)classOrInstance;
 <span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span>            : @end
+<span class="lineNum">      55 </span>            : - (void)setComponentDefinition:(TyphoonDefinition*)definition;
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            : @end
 </pre>
       </td>
     </tr>
