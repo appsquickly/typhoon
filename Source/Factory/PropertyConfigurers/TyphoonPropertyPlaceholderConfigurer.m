@@ -13,7 +13,9 @@
 #import "TyphoonPropertyPlaceholderConfigurer.h"
 #import "TyphoonResource.h"
 #import "TyphoonDefinition.h"
+#import "TyphoonInitializer.h"
 #import "TyphoonPropertyInjectedByValue.h"
+#import "TyphoonParameterInjectedByValue.h"
 
 @interface TyphoonPropertyInjectedByValue (PropertyPlaceHolderConfigurer)
 
@@ -109,6 +111,17 @@
 {
     for (TyphoonDefinition* definition in componentDefinitions)
     {
+        for (TyphoonParameterInjectedByValue* parameter in [definition.initializer parametersInjectedByValue]) {
+            if ([parameter.textValue hasPrefix:_prefix] && [parameter.textValue hasSuffix:_suffix])
+            {
+                NSString* key = [parameter.textValue substringFromIndex:[_prefix length]];
+                key = [key substringToIndex:[key length] - [_suffix length]];
+                NSString* value = [_properties valueForKey:key];
+                NSLog(@"Setting property '%@' to value '%@'", key, value);
+                parameter.textValue = value;
+            }
+        }
+        
         for (TyphoonPropertyInjectedByValue* property in [definition propertiesInjectedByValue])
         {
             if ([property.textValue hasPrefix:_prefix] && [property.textValue hasSuffix:_suffix])
