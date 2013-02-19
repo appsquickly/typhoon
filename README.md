@@ -189,8 +189,8 @@ each commit. (If you'd like the script I will share it).
 <a href="https://github.com/ZaBlanc/RaptureXML">lean and elegant XML library</a>. A great example that full-featured
 is not the same as heavy. 
 * <a href="http://www.jetbrains.com/">Jetbrains</a>, maker of very cool software development tools : Assistance with AppCode integration. 
-* Your name here!!!!!!! 
 * <a href="http://es.linkedin.com/in/josegonzalezgomez/">José González Gómez</a>, Mobile and cloud developer at OPEN input : Feedback; testing, support for property placeholders in initializers. 
+* ___Your name here!!!!!!!___ 
 
 Thanks!!!
 
