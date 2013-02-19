@@ -190,6 +190,7 @@ each commit. (If you'd like the script I will share it).
 is not the same as heavy. 
 * <a href="http://www.jetbrains.com/">Jetbrains</a>, maker of very cool software development tools : Assistance with AppCode integration. 
 * Your name here!!!!!!! 
+* <a href="es.linkedin.com/in/josegonzalezgomez/">José González Gómez</a> - , Mobile and cloud developer at OPEN input : Feedback; testing, support for property placeholders in initializers. 
 
 Thanks!!!
 
