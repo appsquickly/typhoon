@@ -53,6 +53,7 @@
             if ([[child tag] isEqualToString:@"component"])
             {
                 TyphoonDefinition* definition = [child asComponentDefinition];
+                NSLog(@"Definition: %@", definition); //suppress unused variable warning
                 STFail(@"Should have thrown exception");
             }
         }];

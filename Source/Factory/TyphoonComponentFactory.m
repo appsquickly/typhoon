@@ -175,7 +175,7 @@ static TyphoonComponentFactory* defaultFactory;
 /* ============================================================ Private Methods ========================================================= */
 - (id)objectForDefinition:(TyphoonDefinition*)definition
 {
-    if (definition.lifecycle == TyphoonComponentLifeCycleSingleton)
+    if (definition.lifecycle == TyphoonScopeSingleton)
     {
         return [self singletonForKey:definition];
     }

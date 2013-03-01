@@ -137,6 +137,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
     @try
     {
         id<Harlot> harlot = [_componentFactory componentForType:@protocol(Harlot)];
+        NSLog(@"Harlot: %@", harlot); //suppress unused variable warning
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -151,7 +152,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
     [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight" properties:^(TyphoonDefinition* definition)
     {
         [definition injectProperty:@selector(quest)];
-        [definition setLifecycle:TyphoonComponentLifeCyclePrototype];
+        [definition setLifecycle:TyphoonScopeDefault];
     }]];
 
     [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];

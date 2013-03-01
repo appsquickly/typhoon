@@ -30,6 +30,7 @@
     @try
     {
         id <TyphoonResource> resource = [TyphoonBundleResource withName:@"SomeResourceThatDoesNotExist.txt"];
+        NSLog(@"Resource: %@", resource);
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)

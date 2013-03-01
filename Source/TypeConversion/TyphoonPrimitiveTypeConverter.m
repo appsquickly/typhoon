@@ -54,7 +54,7 @@
 - (unsigned char)convertToUnsignedChar:(NSString*)stringValue
 {
     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    unsigned int converted = 0;
+    int converted = 0;
     [scanner scanInt:&converted];
     return (unsigned char) converted;
 }
