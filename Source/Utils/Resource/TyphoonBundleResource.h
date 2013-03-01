@@ -19,13 +19,12 @@
 */
 @interface TyphoonBundleResource : NSObject <TyphoonResource>
 {
-    NSString* _stringValue;
+    NSData* _data;
 }
 
 
 
 + (id<TyphoonResource>)withName:(NSString*)name;
 
-- (id)initWithStringValue:(NSString*)stringValue;
 
 @end

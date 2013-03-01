@@ -10,11 +10,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <SenTestingKit/SenTestingKit.h>
-#import <objc/runtime.h>
 #import "Typhoon.h"
 #import "Knight.h"
 #import "CampaignQuest.h"
-#import "TyphoonInitializer.h"
 
 
 @interface ComponentDefinition_InstanceBuilderTests : SenTestCase

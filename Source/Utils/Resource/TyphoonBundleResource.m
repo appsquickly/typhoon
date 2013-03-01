@@ -18,8 +18,6 @@
 /* =========================================================== Class Methods ============================================================ */
 + (id <TyphoonResource>)withName:(NSString*)name
 {
-
-    NSString* contents;
     NSString* filePath;
     NSRange lastDot = [name rangeOfString:@"." options:NSBackwardsSearch];
     if (lastDot.location != NSNotFound)
@@ -37,25 +35,33 @@
     {
         [NSException raise:NSInvalidArgumentException format:@"Resource named '%@' not in bundle.", name];
     }
-    contents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-    return [[[self class] alloc] initWithStringValue:contents];
+    return [[[self class] alloc] initWithData:[NSData dataWithContentsOfFile:filePath]];
 }
 
 /* ============================================================ Initializers ============================================================ */
-- (id)initWithStringValue:(NSString*)stringValue
+- (id)initWithData:(NSData*)data
 {
     self = [super init];
     if (self)
     {
-        _stringValue = stringValue;
+        _data = data;
     }
-
     return self;
 }
 
 - (NSString*)asString
 {
-    return _stringValue;
+    return [self asStringWithEncoding:NSUTF8StringEncoding];
+}
+
+- (NSString*)asStringWithEncoding:(NSStringEncoding)encoding
+{
+    return [[NSString alloc] initWithData:_data encoding:encoding];
+}
+
+- (NSData*)data
+{
+    return _data;
 }
 
 

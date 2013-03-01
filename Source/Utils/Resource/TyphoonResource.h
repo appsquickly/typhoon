@@ -21,5 +21,9 @@
 
 - (NSString*)asString;
 
+- (NSString*)asStringWithEncoding:(NSStringEncoding)encoding;
+
+- (NSData*)data;
+
 
 @end

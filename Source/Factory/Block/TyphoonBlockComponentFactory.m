@@ -55,6 +55,11 @@ static NSMutableArray* swizzleRegistry;
 }
 
 
++ (id)factoryWithAssembly:(TyphoonAssembly*)assembly
+{
+    return [[[self class] alloc] initWithAssembly:assembly];
+}
+
 /* ============================================================ Initializers ============================================================ */
 - (id)initWithAssembly:(TyphoonAssembly*)assembly;
 {
