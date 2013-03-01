@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-02-28</td>
+            <td class="headerValue">2013-03-01</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -171,11 +171,11 @@
 <span class="lineNum">     113 </span>            : 
 <span class="lineNum">     114 </span>            :     if ([scope isEqualToString:@&quot;singleton&quot;])
 <span class="lineNum">     115 </span><span class="lineCov">        102 :     {</span>
-<span class="lineNum">     116 </span>            :         [definition setLifecycle:TyphoonComponentLifeCycleSingleton];
+<span class="lineNum">     116 </span>            :         [definition setScope:TyphoonScopeSingleton];
 <span class="lineNum">     117 </span><span class="lineCov">          9 :     }</span>
 <span class="lineNum">     118 </span><span class="lineCov">          9 :     else if ([scope isEqualToString:@&quot;prototype&quot;])</span>
 <span class="lineNum">     119 </span><span class="lineCov">         93 :     {</span>
-<span class="lineNum">     120 </span>            :         [definition setLifecycle:TyphoonComponentLifeCyclePrototype];
+<span class="lineNum">     120 </span>            :         [definition setScope:TyphoonScopeDefault];
 <span class="lineNum">     121 </span><span class="lineCov">         24 :     }</span>
 <span class="lineNum">     122 </span><span class="lineCov">         24 :     else if ([scope length] &gt; 0)</span>
 <span class="lineNum">     123 </span><span class="lineCov">         69 :     {</span>

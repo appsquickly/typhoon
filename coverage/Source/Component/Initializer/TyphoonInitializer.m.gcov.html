@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-02-28</td>
+            <td class="headerValue">2013-03-01</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -149,15 +149,15 @@
 <span class="lineNum">      91 </span><span class="lineCov">         20 :     NSPredicate* predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary* bindings)</span>
 <span class="lineNum">      92 </span>            :                               {
 <span class="lineNum">      93 </span>            :                                   return [evaluatedObject isKindOfClass:[TyphoonParameterInjectedByValue class]];
-<span class="lineNum">      94 </span><span class="lineCov">         46 :                               }];</span>
+<span class="lineNum">      94 </span><span class="lineCov">         42 :                               }];</span>
 <span class="lineNum">      95 </span>            :     return [_injectedParameters filteredArrayUsingPredicate:predicate];
-<span class="lineNum">      96 </span><span class="lineCov">         56 : </span>
+<span class="lineNum">      96 </span><span class="lineCov">         51 : </span>
 <span class="lineNum">      97 </span>            : }
-<span class="lineNum">      98 </span><span class="lineCov">        112 : </span>
-<span class="lineNum">      99 </span><span class="lineCov">        102 : - (NSInvocation*)asInvocationFor:(id)classOrInstance</span>
-<span class="lineNum">     100 </span><span class="lineCov">         92 : {</span>
+<span class="lineNum">      98 </span><span class="lineCov">        102 : </span>
+<span class="lineNum">      99 </span><span class="lineCov">         93 : - (NSInvocation*)asInvocationFor:(id)classOrInstance</span>
+<span class="lineNum">     100 </span><span class="lineCov">         84 : {</span>
 <span class="lineNum">     101 </span>            :     if (![classOrInstance respondsToSelector:_selector])
-<span class="lineNum">     102 </span><span class="lineCov">         46 :     {</span>
+<span class="lineNum">     102 </span><span class="lineCov">         42 :     {</span>
 <span class="lineNum">     103 </span>            :         NSString* typeType = self.isClassMethod ? @&quot;Class&quot; : @&quot;Instance&quot;;
 <span class="lineNum">     104 </span><span class="lineCov">         22 :         NSString* typeName = self.isClassMethod ? NSStringFromClass(classOrInstance) : NSStringFromClass([classOrInstance class]);</span>
 <span class="lineNum">     105 </span>            :         [NSException raise:NSInvalidArgumentException
