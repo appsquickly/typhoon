@@ -1,12 +1,11 @@
-# Description
+# Typhoon! (www.typhoonframework.org)
 
 A new dependency injection container for Objective-C. Light-weight, yet full-featured. 
 
 ## Status? It's ready to use!
 
-* First visit? Check out the <a href="http://www.typhoonframework.org/">website</a>.
 * <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a>.
-* **New!!** A super-cool <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">block and category-based application assembly</a>, for those that prefer pure-code!!! 
+* <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">Read the User Guide</a>.
 
 ### What is Dependency Injection? 
 
@@ -190,7 +189,8 @@ each commit. (If you'd like the script I will share it).
 <a href="https://github.com/ZaBlanc/RaptureXML">lean and elegant XML library</a>. A great example that full-featured
 is not the same as heavy. 
 * <a href="http://www.jetbrains.com/">Jetbrains</a>, maker of very cool software development tools : Assistance with AppCode integration. 
-* Your name here!!!!!!! 
+* <a href="http://es.linkedin.com/in/josegonzalezgomez/">José González Gómez</a>, Mobile and cloud developer at OPEN input : Feedback; testing, support for property placeholders in initializers. 
+* ___Your name here!!!!!!!___ 
 
 Thanks!!!
 
