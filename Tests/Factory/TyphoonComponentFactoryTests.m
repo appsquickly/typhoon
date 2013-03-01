@@ -152,7 +152,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
     [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight" properties:^(TyphoonDefinition* definition)
     {
         [definition injectProperty:@selector(quest)];
-        [definition setLifecycle:TyphoonScopeDefault];
+        [definition setScope:TyphoonScopeDefault];
     }]];
 
     [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];

@@ -99,7 +99,7 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (NSArray*)allComponentsForType:(id)classOrProtocol
 {
-    [self performMutations];
+    [self performMutationsIfRequired];
     NSMutableArray* results = [[NSMutableArray alloc] init];
     BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
 
@@ -129,7 +129,7 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (id)componentForKey:(NSString*)key
 {
-    [self performMutations];
+    [self performMutationsIfRequired];
     [self assertNotCircularDependency:key];
     TyphoonDefinition* definition = [self definitionForKey:key];
     if (!definition)
@@ -145,9 +145,9 @@ static TyphoonComponentFactory* defaultFactory;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^
-{
-    defaultFactory = self;
-});
+    {
+        defaultFactory = self;
+    });
 }
 
 - (NSArray*)registry
@@ -175,17 +175,17 @@ static TyphoonComponentFactory* defaultFactory;
 /* ============================================================ Private Methods ========================================================= */
 - (id)objectForDefinition:(TyphoonDefinition*)definition
 {
-    if (definition.lifecycle == TyphoonScopeSingleton)
-    {
-        return [self singletonForKey:definition];
-    }
-    else
+    if (definition.scope == TyphoonScopeDefault)
     {
         return [self buildInstanceWithDefinition:definition];
     }
+    else
+    {
+        return [self singletonForDefinition:definition];
+    }
 }
 
-- (id)singletonForKey:(TyphoonDefinition*)definition
+- (id)singletonForDefinition:(TyphoonDefinition*)definition
 {
     @synchronized (self)
     {
@@ -220,7 +220,7 @@ static TyphoonComponentFactory* defaultFactory;
     [_currentlyResolvingReferences addObject:key];
 }
 
-- (void)performMutations
+- (void)performMutationsIfRequired
 {
     @synchronized (self)
     {
