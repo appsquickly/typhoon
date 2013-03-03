@@ -100,7 +100,7 @@
     } properties:^(TyphoonDefinition* definition)
     {
         //TODO: Fix this
-        definition.factoryComponent = @"swordFactory";
+        definition.factoryReference = @"swordFactory";
     }];
 }
 

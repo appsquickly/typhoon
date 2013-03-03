@@ -34,7 +34,7 @@ typedef void(^TyphoonPropertyInjectionBlock)(TyphoonDefinition* propertyInjector
 
 @property(nonatomic, readonly) Class type;
 @property(nonatomic, strong) NSString* key;
-@property(nonatomic, strong) NSString* factoryComponent;
+@property(nonatomic, strong) NSString* factoryReference;
 @property(nonatomic, strong) TyphoonInitializer* initializer;
 @property(nonatomic) SEL beforePropertyInjection;
 @property(nonatomic) SEL afterPropertyInjection;

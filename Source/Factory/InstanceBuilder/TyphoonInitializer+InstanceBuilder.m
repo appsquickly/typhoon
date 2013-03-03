@@ -81,7 +81,7 @@
 /* ============================================================ Private Methods ========================================================= */
 - (BOOL)resolveIsClassMethod
 {
-    if (_definition.factoryComponent)
+    if (_definition.factoryReference)
     {
         if (_isClassMethodStrategy == YES)
         {

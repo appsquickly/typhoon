@@ -88,7 +88,7 @@
     {
         _type = clazz;
         _key = [key copy];
-        _factoryComponent = [factoryComponent copy];
+        _factoryReference = [factoryComponent copy];
         _injectedProperties = [[NSMutableSet alloc] init];
         [self validateRequiredParametersAreSet];
     }
