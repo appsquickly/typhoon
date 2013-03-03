@@ -23,4 +23,6 @@
 
 - (NSSet*)propertiesInjectedByReference;
 
+- (void)addInjectedProperty:(id <TyphoonInjectedProperty>)property;
+
 @end

@@ -16,7 +16,6 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
-#import "TyphoonDefinition+BlockAssembly.h"
 
 
 @interface TyphoonDefinition (TyphoonComponentFactory)

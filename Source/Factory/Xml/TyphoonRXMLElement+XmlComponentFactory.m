@@ -18,6 +18,7 @@
 #import "TyphoonPropertyInjectedByValue.h"
 #import "TyphoonPropertyInjectedByType.h"
 #import "TyphoonInitializer.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
 
 @implementation TyphoonRXMLElement (XmlComponentFactory)
 

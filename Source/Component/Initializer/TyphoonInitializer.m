@@ -79,6 +79,34 @@
     }
 }
 
+/* ====================================================================================================================================== */
+- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition;
+{
+    [self injectParameterNamed:name withReference:definition.key];
+}
+
+- (void)injectWithDefinition:(TyphoonDefinition*)definition;
+{
+    [self injectParameterAtIndex:[_injectedParameters count] withDefinition:definition];
+}
+
+- (void)injectWithText:(NSString*)text
+{
+    [self injectWithText:text requiredTypeOrNil:nil];
+}
+
+- (void)injectWithText:(NSString*)text requiredTypeOrNil:(id)requiredTypeOrNil
+{
+    [self injectParameterAt:[_injectedParameters count] withValueAsText:text requiredTypeOrNil:requiredTypeOrNil];
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Block assembly
+
+- (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonDefinition*)definition
+{
+    [self injectParameterAtIndex:index1 withReference:definition.key];
+}
 
 
 - (void)setSelector:(SEL)selector

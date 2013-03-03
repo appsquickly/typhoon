@@ -11,7 +11,6 @@
 
 #import "CircularDependenciesAssembly.h"
 #import "TyphoonDefinition.h"
-#import "TyphoonDefinition+BlockAssembly.h"
 #import "ClassADependsOnB.h"
 #import "ClassBDependsOnA.h"
 

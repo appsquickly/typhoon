@@ -39,6 +39,10 @@
     return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByReference class]];
 }
 
+- (void)addInjectedProperty:(id <TyphoonInjectedProperty>)property
+{
+    [_injectedProperties addObject:property];
+}
 
 /* ============================================================ Private Methods ========================================================= */
 - (NSSet*)injectedPropertiesWithKind:(Class)clazz

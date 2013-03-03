@@ -13,8 +13,7 @@
 
 #import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonParameterInjectedByValue.h"
-#import "TyphoonDefinition+BlockAssembly.h"
-
+#import "TyphoonDefinition.h"
 
 
 @implementation TyphoonInitializer (InstanceBuilder)

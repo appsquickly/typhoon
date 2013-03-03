@@ -46,4 +46,18 @@ typedef enum
 
 - (void)injectParameterAt:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass;
 
+
+/* ====================================================================================================================================== */
+#pragma mark - Block assembly
+
+- (void)injectWithDefinition:(TyphoonDefinition*)definition;
+
+- (void)injectWithText:(NSString*)text;
+
+- (void)injectWithText:(NSString*)text requiredTypeOrNil:(id)requiredTypeOrNil;
+
+- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition;
+
+- (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonDefinition*)definition;
+
 @end

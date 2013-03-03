@@ -11,7 +11,6 @@
 
 #import "ExceptionTestAssembly.h"
 #import "TyphoonDefinition.h"
-#import "TyphoonDefinition+BlockAssembly.h"
 #import "TyphoonInitializer.h"
 
 

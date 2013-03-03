@@ -10,11 +10,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-
-
 #import <Foundation/Foundation.h>
 
 @class TyphoonInitializer;
+@class TyphoonDefinition;
 @protocol TyphoonInjectedProperty;
 
 typedef enum
@@ -22,6 +21,10 @@ typedef enum
     TyphoonScopeDefault,
     TyphoonScopeSingleton
 } TyphoonScope;
+
+typedef void(^TyphoonInitializationBlock)(TyphoonInitializer* initializer);
+
+typedef void(^TyphoonPropertyInjectionBlock)(TyphoonDefinition* propertyInjector);
 
 
 @interface TyphoonDefinition : NSObject
@@ -39,16 +42,34 @@ typedef enum
 @property(nonatomic) TyphoonScope scope;
 
 
+/* ====================================================================================================================================== */
+#pragma mark Factory methods
+
++ (TyphoonDefinition*)withClass:(Class)clazz;
+
++ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key;
+
++ (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializationBlock)initialization
+        properties:(TyphoonPropertyInjectionBlock)properties;
+
++ (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializationBlock)initialization;
+
++ (TyphoonDefinition*)withClass:(Class)clazz properties:(TyphoonPropertyInjectionBlock)properties;
+
+/* ====================================================================================================================================== */
+#pragma mark Initializers
+
 - (id)initWithClass:(Class)clazz key:(NSString*)key;
 
 - (id)initWithClass:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent;
+
+/* ====================================================================================================================================== */
+#pragma mark Injection
 
 - (void)injectProperty:(SEL)withSelector;
 
 - (void)injectProperty:(SEL)withSelector withValueAsText:(NSString*)textValue;
 
-- (void)addInjectedProperty:(id <TyphoonInjectedProperty>)property;
-
-
+- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition;
 
 @end
