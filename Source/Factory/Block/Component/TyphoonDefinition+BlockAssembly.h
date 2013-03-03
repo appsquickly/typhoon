@@ -48,17 +48,6 @@ typedef void(^TyphoonPropertyInjectionBlock)(TyphoonDefinition* propertyInjector
 
 
 /* ====================================================================================================================================== */
-#pragma mark - Explicit keys
-
-+ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key initialization:(TyphoonInitializationBlock)initialization;
-
-+ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key properties:(TyphoonPropertyInjectionBlock)properties;
-
-+ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key initialization:(TyphoonInitializationBlock)initialization
-        properties:(TyphoonPropertyInjectionBlock)properties;
-
-
-/* ====================================================================================================================================== */
 - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition;
 
 @end

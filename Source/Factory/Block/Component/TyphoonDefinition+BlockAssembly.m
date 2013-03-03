@@ -53,8 +53,14 @@
 }
 
 
+
 /* ====================================================================================================================================== */
-#pragma mark Explicit keys
+- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition
+{
+    [self injectProperty:selector withReference:definition.key];
+}
+
+/* ============================================================ Private Methods ========================================================= */
 + (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key initialization:(TyphoonInitializationBlock)initialization
         properties:(TyphoonPropertyInjectionBlock)properties
 {
@@ -86,11 +92,5 @@
 }
 
 
-
-/* ====================================================================================================================================== */
-- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition
-{
-    [self injectProperty:selector withReference:definition.key];
-}
 
 @end

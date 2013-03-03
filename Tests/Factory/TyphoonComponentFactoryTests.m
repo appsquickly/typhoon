@@ -60,10 +60,13 @@ static NSString* const DEFAULT_QUEST = @"quest";
 
 - (void)test_objectForKey_raises_exception_if_reference_does_not_exist
 {
-    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight" initialization:^(TyphoonInitializer* initializer)
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer* initializer)
     {
         initializer.selector = @selector(initWithQuest:);
         [initializer injectParameterAtIndex:0 withReference:DEFAULT_QUEST];
+    } properties:^(TyphoonDefinition* definition)
+    {
+        definition.key = @"knight";
     }]];
 
     @try
@@ -84,10 +87,13 @@ static NSString* const DEFAULT_QUEST = @"quest";
 - (void)test_allObjectsForType
 {
 
-    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight" initialization:^(TyphoonInitializer* initializer)
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer* initializer)
     {
         [initializer setSelector:@selector(initWithQuest:)];
         [initializer injectParameterNamed:@"quest" withReference:@"quest"];
+    } properties:^(TyphoonDefinition* definition)
+    {
+        definition.key = @"knight";
     }]];
 
     [_componentFactory register:[TyphoonDefinition withClass:[CavalryMan class] key:@"cavalryMan"]];
@@ -101,10 +107,13 @@ static NSString* const DEFAULT_QUEST = @"quest";
 - (void)test_objectForType
 {
 
-    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight" initialization:^(TyphoonInitializer* initializer)
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer* initializer)
     {
         [initializer setSelector:@selector(initWithQuest:)];
         [initializer injectParameterNamed:@"quest" withReference:@"quest"];
+    } properties:^(TyphoonDefinition* definition)
+    {
+        definition.key = @"knight";
     }]];
 
     [_componentFactory register:[TyphoonDefinition withClass:[CavalryMan class] key:@"cavalryMan"]];
@@ -136,7 +145,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
 
     @try
     {
-        id<Harlot> harlot = [_componentFactory componentForType:@protocol(Harlot)];
+        id <Harlot> harlot = [_componentFactory componentForType:@protocol(Harlot)];
         NSLog(@"Harlot: %@", harlot); //suppress unused variable warning
         STFail(@"Should have thrown exception");
     }
@@ -149,10 +158,11 @@ static NSString* const DEFAULT_QUEST = @"quest";
 - (void)test_objectForKey_returns_singleton_with_property_dependencies_resolved_by_type
 {
 
-    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] key:@"knight" properties:^(TyphoonDefinition* definition)
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
     {
         [definition injectProperty:@selector(quest)];
         [definition setScope:TyphoonScopeDefault];
+        [definition setKey:@"knight"];
     }]];
 
     [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
