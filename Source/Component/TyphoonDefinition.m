@@ -131,6 +131,12 @@
     [_initializer setComponentDefinition:self];
 }
 
+- (void)setFactory:(TyphoonDefinition*)factory
+{
+    _factory = factory;
+    [self setFactoryReference:_factory.key];
+}
+
 
 /* ====================================================================================================================================== */
 - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition

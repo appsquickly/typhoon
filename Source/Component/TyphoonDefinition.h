@@ -40,6 +40,7 @@ typedef void(^TyphoonPropertyInjectionBlock)(TyphoonDefinition* propertyInjector
 @property(nonatomic) SEL afterPropertyInjection;
 @property(nonatomic, strong, readonly) NSSet* injectedProperties;
 @property(nonatomic) TyphoonScope scope;
+@property(nonatomic, strong) TyphoonDefinition* factory;
 
 
 /* ====================================================================================================================================== */

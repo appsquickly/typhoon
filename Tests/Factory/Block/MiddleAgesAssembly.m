@@ -18,7 +18,6 @@
 #import "CavalryMan.h"
 #import "SwordFactory.h"
 #import "Sword.h"
-#import "TyphoonDefinition+InstanceBuilder.h"
 
 
 @implementation MiddleAgesAssembly
@@ -100,8 +99,7 @@
         [initializer injectParameterNamed:@"specification" withValueAsText:@"blue" requiredTypeOrNil:[NSString class]];
     } properties:^(TyphoonDefinition* definition)
     {
-        //TODO: Fix this
-        definition.factoryReference = @"swordFactory";
+        definition.factory = [self swordFactory];
     }];
 }
 
