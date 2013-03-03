@@ -32,8 +32,8 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntryLo">50.0 %</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -87,10 +87,10 @@
 <span class="lineNum">      29 </span>            :     NSArray* _parameterNames;
 <span class="lineNum">      30 </span>            :     __unsafe_unretained TyphoonDefinition* _definition;
 <span class="lineNum">      31 </span>            :     TyphoonComponentInitializerIsClassMethod _isClassMethodStrategy;
-<span class="lineNum">      32 </span>            : }
-<span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span><span class="lineCov">          6 : @property(nonatomic) SEL selector;</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : @property(nonatomic) BOOL isClassMethod;</span>
+<span class="lineNum">      32 </span>            :     SEL _selector;
+<span class="lineNum">      33 </span>            : }
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span><span class="lineCov">          6 : @property(nonatomic) SEL selector;</span>
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : - (id)initWithSelector:(SEL)initializer;
 <span class="lineNum">      38 </span>            : 
@@ -104,15 +104,21 @@
 <span class="lineNum">      46 </span>            : 
 <span class="lineNum">      47 </span>            : - (void)injectParameterAt:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass;
 <span class="lineNum">      48 </span>            : 
-<span class="lineNum">      49 </span>            : - (NSArray*)injectedParameters;
-<span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span>            : - (NSArray*)parametersInjectedByValue;
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">      51 </span>            : #pragma mark - Block assembly
 <span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span>            : - (NSInvocation*)asInvocationFor:(id)classOrInstance;
+<span class="lineNum">      53 </span>            : - (void)injectWithDefinition:(TyphoonDefinition*)definition;
 <span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span>            : - (void)setComponentDefinition:(TyphoonDefinition*)definition;
+<span class="lineNum">      55 </span>            : - (void)injectWithText:(NSString*)text;
 <span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span>            : @end
+<span class="lineNum">      57 </span>            : - (void)injectWithText:(NSString*)text requiredTypeOrNil:(id)requiredTypeOrNil;
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            : - (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition;
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span>            : - (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonDefinition*)definition;
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            : @end
 </pre>
       </td>
     </tr>

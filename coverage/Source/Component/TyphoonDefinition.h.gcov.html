@@ -68,54 +68,69 @@
 <span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            : 
-<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      13 </span>            : #import &lt;Foundation/Foundation.h&gt;
 <span class="lineNum">      14 </span>            : 
-<span class="lineNum">      15 </span>            : #import &lt;Foundation/Foundation.h&gt;
-<span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span>            : @class TyphoonInitializer;
-<span class="lineNum">      18 </span>            : @protocol TyphoonInjectedProperty;
-<span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span>            : typedef enum
-<span class="lineNum">      21 </span>            : {
-<span class="lineNum">      22 </span>            :     TyphoonScopeDefault,
-<span class="lineNum">      23 </span>            :     TyphoonScopeSingleton
-<span class="lineNum">      24 </span>            : } TyphoonScope;
-<span class="lineNum">      25 </span>            : 
+<span class="lineNum">      15 </span>            : @class TyphoonInitializer;
+<span class="lineNum">      16 </span>            : @class TyphoonDefinition;
+<span class="lineNum">      17 </span>            : @protocol TyphoonInjectedProperty;
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span>            : typedef enum
+<span class="lineNum">      20 </span>            : {
+<span class="lineNum">      21 </span>            :     TyphoonScopeDefault,
+<span class="lineNum">      22 </span>            :     TyphoonScopeSingleton
+<span class="lineNum">      23 </span>            : } TyphoonScope;
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span>            : typedef void(^TyphoonInitializationBlock)(TyphoonInitializer* initializer);
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span>            : @interface TyphoonDefinition : NSObject
-<span class="lineNum">      28 </span>            : {
-<span class="lineNum">      29 </span>            :     NSMutableSet* _injectedProperties;
-<span class="lineNum">      30 </span>            : }
-<span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">        516 : @property(nonatomic, readonly) Class type;</span>
-<span class="lineNum">      33 </span><span class="lineCov">       1509 : @property(nonatomic, strong) NSString* key;</span>
-<span class="lineNum">      34 </span><span class="lineCov">        288 : @property(nonatomic, strong) NSString* factoryComponent;</span>
-<span class="lineNum">      35 </span><span class="lineCov">        344 : @property(nonatomic, strong) TyphoonInitializer* initializer;</span>
-<span class="lineNum">      36 </span><span class="lineCov">        164 : @property(nonatomic) SEL beforePropertyInjection;</span>
-<span class="lineNum">      37 </span><span class="lineCov">        157 : @property(nonatomic) SEL afterPropertyInjection;</span>
-<span class="lineNum">      38 </span>            : @property(nonatomic, strong, readonly) NSSet* injectedProperties;
-<span class="lineNum">      39 </span><span class="lineCov">        110 : @property(nonatomic) TyphoonScope scope;</span>
-<span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span>            : - (id)initWithClass:(Class)clazz key:(NSString*)key;
+<span class="lineNum">      27 </span>            : typedef void(^TyphoonPropertyInjectionBlock)(TyphoonDefinition* propertyInjector);
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            : @interface TyphoonDefinition : NSObject
+<span class="lineNum">      31 </span>            : {
+<span class="lineNum">      32 </span>            :     NSMutableSet* _injectedProperties;
+<span class="lineNum">      33 </span>            : }
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span><span class="lineCov">        516 : @property(nonatomic, readonly) Class type;</span>
+<span class="lineNum">      36 </span><span class="lineCov">       1503 : @property(nonatomic, strong) NSString* key;</span>
+<span class="lineNum">      37 </span><span class="lineCov">        288 : @property(nonatomic, strong) NSString* factoryComponent;</span>
+<span class="lineNum">      38 </span><span class="lineCov">        344 : @property(nonatomic, strong) TyphoonInitializer* initializer;</span>
+<span class="lineNum">      39 </span><span class="lineCov">        164 : @property(nonatomic) SEL beforePropertyInjection;</span>
+<span class="lineNum">      40 </span><span class="lineCov">        157 : @property(nonatomic) SEL afterPropertyInjection;</span>
+<span class="lineNum">      41 </span>            : @property(nonatomic, strong, readonly) NSSet* injectedProperties;
+<span class="lineNum">      42 </span><span class="lineCov">        110 : @property(nonatomic) TyphoonScope scope;</span>
 <span class="lineNum">      43 </span>            : 
-<span class="lineNum">      44 </span>            : - (id)initWithClass:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent;
-<span class="lineNum">      45 </span>            : 
-<span class="lineNum">      46 </span>            : - (void)injectProperty:(SEL)withSelector;
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">      46 </span>            : #pragma mark Factory methods
 <span class="lineNum">      47 </span>            : 
-<span class="lineNum">      48 </span>            : - (void)injectProperty:(SEL)withSelector withReference:(NSString*)reference;
+<span class="lineNum">      48 </span>            : + (TyphoonDefinition*)withClass:(Class)clazz;
 <span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span>            : - (void)injectProperty:(SEL)withSelector withValueAsText:(NSString*)textValue;
+<span class="lineNum">      50 </span>            : + (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key;
 <span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span>            : - (void)addInjectedProperty:(id &lt;TyphoonInjectedProperty&gt;)property;
-<span class="lineNum">      53 </span>            : 
-<span class="lineNum">      54 </span>            : - (NSSet*)propertiesInjectedByValue;
-<span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span>            : - (NSSet*)propertiesInjectedByType;
-<span class="lineNum">      57 </span>            : 
-<span class="lineNum">      58 </span>            : - (NSSet*)propertiesInjectedByReference;
-<span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span>            : @end
+<span class="lineNum">      52 </span>            : + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializationBlock)initialization
+<span class="lineNum">      53 </span>            :         properties:(TyphoonPropertyInjectionBlock)properties;
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            : + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializationBlock)initialization;
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            : + (TyphoonDefinition*)withClass:(Class)clazz properties:(TyphoonPropertyInjectionBlock)properties;
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">      60 </span>            : #pragma mark Initializers
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span>            : - (id)initWithClass:(Class)clazz key:(NSString*)key;
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span>            : - (id)initWithClass:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent;
+<span class="lineNum">      65 </span>            : 
+<span class="lineNum">      66 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">      67 </span>            : #pragma mark Injection
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span>            : - (void)injectProperty:(SEL)withSelector;
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span>            : - (void)injectProperty:(SEL)withSelector withValueAsText:(NSString*)textValue;
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span>            : - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition;
+<span class="lineNum">      74 </span>            : 
+<span class="lineNum">      75 </span>            : @end
 </pre>
       </td>
     </tr>
