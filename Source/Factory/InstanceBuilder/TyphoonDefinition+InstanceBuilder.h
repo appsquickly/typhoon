@@ -15,6 +15,10 @@
 
 @interface TyphoonDefinition (InstanceBuilder)
 
+- (NSString*)factoryReference;
+
+- (void)setFactoryReference:(NSString*)factoryReference;
+
 - (void)injectProperty:(SEL)withSelector withReference:(NSString*)reference;
 
 - (NSSet*)propertiesInjectedByValue;

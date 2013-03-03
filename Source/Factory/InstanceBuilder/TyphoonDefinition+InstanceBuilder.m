@@ -17,7 +17,19 @@
 
 @implementation TyphoonDefinition (InstanceBuilder)
 
+
+
 /* ========================================================== Interface Methods ========================================================= */
+- (NSString*)factoryReference
+{
+    return _factoryReference;
+}
+
+- (void)setFactoryReference:(NSString*)factoryReference;
+{
+    _factoryReference = factoryReference;
+}
+
 - (void)injectProperty:(SEL)selector withReference:(NSString*)reference
 {
     [_injectedProperties addObject:[[TyphoonPropertyInjectedByReference alloc]

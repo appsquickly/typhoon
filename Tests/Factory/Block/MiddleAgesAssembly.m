@@ -18,6 +18,7 @@
 #import "CavalryMan.h"
 #import "SwordFactory.h"
 #import "Sword.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
 
 
 @implementation MiddleAgesAssembly
