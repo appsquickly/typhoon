@@ -36,7 +36,7 @@ typedef void(^TyphoonPropertyInjectionBlock)(TyphoonDefinition* propertyInjector
 
 
 /* ====================================================================================================================================== */
-#pragma mark Anonymous keys
+#pragma mark Initializer and property injection
 
 + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializationBlock)initialization
         properties:(TyphoonPropertyInjectionBlock)properties;

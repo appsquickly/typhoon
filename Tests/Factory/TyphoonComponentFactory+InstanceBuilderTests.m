@@ -13,6 +13,7 @@
 #import "Typhoon.h"
 #import "Knight.h"
 #import "CampaignQuest.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
 
 
 @interface ComponentDefinition_InstanceBuilderTests : SenTestCase

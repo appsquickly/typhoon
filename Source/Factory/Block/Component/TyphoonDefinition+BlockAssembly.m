@@ -13,6 +13,7 @@
 
 #import "TyphoonDefinition+BlockAssembly.h"
 #import "TyphoonInitializer+BlockAssembly.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
 
 
 @implementation TyphoonDefinition (BlockAssembly)
@@ -34,7 +35,7 @@
 
 
 /* ====================================================================================================================================== */
-#pragma mark Anonymous keys
+#pragma mark Initializer and property injection
 
 + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializationBlock)initialization
 {

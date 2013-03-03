@@ -52,11 +52,7 @@
     [_injectedProperties addObject:[[TyphoonPropertyInjectedByType alloc] initWithName:NSStringFromSelector(selector)]];
 }
 
-- (void)injectProperty:(SEL)selector withReference:(NSString*)reference
-{
-    [_injectedProperties addObject:[[TyphoonPropertyInjectedByReference alloc]
-            initWithName:NSStringFromSelector(selector) reference:reference]];
-}
+
 
 - (void)injectProperty:(SEL)selector withValueAsText:(NSString*)textValue
 {
@@ -79,20 +75,7 @@
     [_initializer setComponentDefinition:self];
 }
 
-- (NSSet*)propertiesInjectedByValue
-{
-    return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByValue class]];
-}
 
-- (NSSet*)propertiesInjectedByType
-{
-    return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByType class]];
-}
-
-- (NSSet*)propertiesInjectedByReference
-{
-    return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByReference class]];
-}
 
 
 /* ============================================================ Utility Methods ========================================================= */
@@ -116,13 +99,6 @@
     }
 }
 
-- (NSSet*)injectedPropertiesWithKind:(Class)clazz
-{
-    NSPredicate* predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary* bindings)
-    {
-        return [evaluatedObject isKindOfClass:clazz];
-    }];
-    return [_injectedProperties filteredSetUsingPredicate:predicate];
-}
+
 
 @end

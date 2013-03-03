@@ -15,6 +15,7 @@
 #import "Typhoon.h"
 #import "AutoWiringKnight.h"
 #import "AutoWiringSubClassedKnight.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
 
 
 @interface TyphoonComponentDefinitionTests : SenTestCase

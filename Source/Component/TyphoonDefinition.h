@@ -45,16 +45,10 @@ typedef enum
 
 - (void)injectProperty:(SEL)withSelector;
 
-- (void)injectProperty:(SEL)withSelector withReference:(NSString*)reference;
-
 - (void)injectProperty:(SEL)withSelector withValueAsText:(NSString*)textValue;
 
 - (void)addInjectedProperty:(id <TyphoonInjectedProperty>)property;
 
-- (NSSet*)propertiesInjectedByValue;
 
-- (NSSet*)propertiesInjectedByType;
-
-- (NSSet*)propertiesInjectedByReference;
 
 @end
