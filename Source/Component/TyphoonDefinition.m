@@ -15,6 +15,7 @@
 #import "TyphoonPropertyInjectedByType.h"
 #import "TyphoonPropertyInjectedByReference.h"
 #import "TyphoonPropertyInjectedByValue.h"
+#import "TyphoonInitializer+InstanceBuilder.h"
 
 
 @implementation TyphoonDefinition

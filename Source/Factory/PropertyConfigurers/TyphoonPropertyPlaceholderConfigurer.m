@@ -17,6 +17,7 @@
 #import "TyphoonPropertyInjectedByValue.h"
 #import "TyphoonParameterInjectedByValue.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonInitializer+InstanceBuilder.h"
 
 @interface TyphoonPropertyInjectedByValue (PropertyPlaceHolderConfigurer)
 

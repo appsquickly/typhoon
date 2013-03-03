@@ -24,6 +24,7 @@
 #import "TyphoonPropertyInjectionDelegate.h"
 #import "TyphoonParameterInjectedByValue.h"
 #import "TyphoonPrimitiveTypeConverter.h"
+#import "TyphoonInitializer+InstanceBuilder.h"
 
 
 @implementation TyphoonComponentFactory (InstanceBuilder)

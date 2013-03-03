@@ -29,10 +29,10 @@ typedef enum
     NSArray* _parameterNames;
     __unsafe_unretained TyphoonDefinition* _definition;
     TyphoonComponentInitializerIsClassMethod _isClassMethodStrategy;
+    SEL _selector;
 }
 
 @property(nonatomic) SEL selector;
-@property(nonatomic) BOOL isClassMethod;
 
 - (id)initWithSelector:(SEL)initializer;
 
@@ -45,13 +45,5 @@ typedef enum
 - (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol;
 
 - (void)injectParameterAt:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass;
-
-- (NSArray*)injectedParameters;
-
-- (NSArray*)parametersInjectedByValue;
-
-- (NSInvocation*)asInvocationFor:(id)classOrInstance;
-
-- (void)setComponentDefinition:(TyphoonDefinition*)definition;
 
 @end
