@@ -31,8 +31,8 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">7</td>
-            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">6</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
@@ -88,11 +88,11 @@
 <span class="lineNum">      30 </span>            : @interface TyphoonDefinition : NSObject
 <span class="lineNum">      31 </span>            : {
 <span class="lineNum">      32 </span>            :     NSMutableSet* _injectedProperties;
-<span class="lineNum">      33 </span>            : }
-<span class="lineNum">      34 </span>            : 
-<span class="lineNum">      35 </span><span class="lineCov">        516 : @property(nonatomic, readonly) Class type;</span>
-<span class="lineNum">      36 </span><span class="lineCov">       1503 : @property(nonatomic, strong) NSString* key;</span>
-<span class="lineNum">      37 </span><span class="lineCov">        288 : @property(nonatomic, strong) NSString* factoryComponent;</span>
+<span class="lineNum">      33 </span>            :     NSString* _factoryReference;
+<span class="lineNum">      34 </span>            : }
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span><span class="lineCov">        516 : @property(nonatomic, readonly) Class type;</span>
+<span class="lineNum">      37 </span><span class="lineCov">       1509 : @property(nonatomic, strong) NSString* key;</span>
 <span class="lineNum">      38 </span><span class="lineCov">        344 : @property(nonatomic, strong) TyphoonInitializer* initializer;</span>
 <span class="lineNum">      39 </span><span class="lineCov">        164 : @property(nonatomic) SEL beforePropertyInjection;</span>
 <span class="lineNum">      40 </span><span class="lineCov">        157 : @property(nonatomic) SEL afterPropertyInjection;</span>

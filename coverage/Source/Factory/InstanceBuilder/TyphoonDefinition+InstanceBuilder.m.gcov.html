@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">18</td>
-            <td class="headerCovTableEntry">20</td>
-            <td class="headerCovTableEntryHi">90.0 %</td>
+            <td class="headerCovTableEntry">23</td>
+            <td class="headerCovTableEntry">25</td>
+            <td class="headerCovTableEntryHi">92.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -75,44 +75,56 @@
 <span class="lineNum">      17 </span>            : 
 <span class="lineNum">      18 </span>            : @implementation TyphoonDefinition (InstanceBuilder)
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span>            : /* ========================================================== Interface Methods ========================================================= */
-<span class="lineNum">      21 </span>            : - (void)injectProperty:(SEL)selector withReference:(NSString*)reference
-<span class="lineNum">      22 </span><span class="lineCov">         22 : {</span>
-<span class="lineNum">      23 </span>            :     [_injectedProperties addObject:[[TyphoonPropertyInjectedByReference alloc]
-<span class="lineNum">      24 </span><span class="lineCov">         22 :             initWithName:NSStringFromSelector(selector) reference:reference]];</span>
-<span class="lineNum">      25 </span><span class="lineCov">         22 : }</span>
-<span class="lineNum">      26 </span><span class="lineCov">         22 : </span>
-<span class="lineNum">      27 </span>            : - (NSSet*)propertiesInjectedByValue
-<span class="lineNum">      28 </span><span class="lineCov">         79 : {</span>
-<span class="lineNum">      29 </span>            :     return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByValue class]];
-<span class="lineNum">      30 </span><span class="lineCov">         79 : }</span>
-<span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span>            : - (NSSet*)propertiesInjectedByType
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : {</span>
-<span class="lineNum">      34 </span>            :     return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByType class]];
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      36 </span>            : 
-<span class="lineNum">      37 </span>            : - (NSSet*)propertiesInjectedByReference
-<span class="lineNum">      38 </span><span class="lineCov">          1 : {</span>
-<span class="lineNum">      39 </span>            :     return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByReference class]];
-<span class="lineNum">      40 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span>            : - (void)addInjectedProperty:(id &lt;TyphoonInjectedProperty&gt;)property
-<span class="lineNum">      43 </span><span class="lineCov">         64 : {</span>
-<span class="lineNum">      44 </span>            :     [_injectedProperties addObject:property];
-<span class="lineNum">      45 </span><span class="lineCov">         64 : }</span>
-<span class="lineNum">      46 </span><span class="lineCov">         64 : </span>
-<span class="lineNum">      47 </span>            : /* ============================================================ Private Methods ========================================================= */
-<span class="lineNum">      48 </span>            : - (NSSet*)injectedPropertiesWithKind:(Class)clazz
-<span class="lineNum">      49 </span><span class="lineCov">        218 : {</span>
-<span class="lineNum">      50 </span>            :     NSPredicate* predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary* bindings)
-<span class="lineNum">      51 </span><span class="lineCov">         69 :     {</span>
-<span class="lineNum">      52 </span><span class="lineCov">         69 :         return [evaluatedObject isKindOfClass:clazz];</span>
-<span class="lineNum">      53 </span><span class="lineCov">        138 :     }];</span>
-<span class="lineNum">      54 </span><span class="lineCov">         80 :     return [_injectedProperties filteredSetUsingPredicate:predicate];</span>
-<span class="lineNum">      55 </span><span class="lineCov">        160 : }</span>
-<span class="lineNum">      56 </span><span class="lineCov">         80 : </span>
-<span class="lineNum">      57 </span>            : @end
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : /* ========================================================== Interface Methods ========================================================= */
+<span class="lineNum">      23 </span><span class="lineCov">        280 : - (NSString*)factoryReference</span>
+<span class="lineNum">      24 </span>            : {
+<span class="lineNum">      25 </span><span class="lineCov">        280 :     return _factoryReference;</span>
+<span class="lineNum">      26 </span>            : }
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span><span class="lineCov">          8 : - (void)setFactoryReference:(NSString*)factoryReference;</span>
+<span class="lineNum">      29 </span>            : {
+<span class="lineNum">      30 </span><span class="lineCov">          8 :     _factoryReference = factoryReference;</span>
+<span class="lineNum">      31 </span><span class="lineCov">          8 : }</span>
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span>            : - (void)injectProperty:(SEL)selector withReference:(NSString*)reference
+<span class="lineNum">      34 </span><span class="lineCov">         22 : {</span>
+<span class="lineNum">      35 </span>            :     [_injectedProperties addObject:[[TyphoonPropertyInjectedByReference alloc]
+<span class="lineNum">      36 </span><span class="lineCov">         22 :             initWithName:NSStringFromSelector(selector) reference:reference]];</span>
+<span class="lineNum">      37 </span><span class="lineCov">         22 : }</span>
+<span class="lineNum">      38 </span><span class="lineCov">         22 : </span>
+<span class="lineNum">      39 </span>            : - (NSSet*)propertiesInjectedByValue
+<span class="lineNum">      40 </span><span class="lineCov">         79 : {</span>
+<span class="lineNum">      41 </span>            :     return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByValue class]];
+<span class="lineNum">      42 </span><span class="lineCov">         79 : }</span>
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : - (NSSet*)propertiesInjectedByType
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : {</span>
+<span class="lineNum">      46 </span>            :     return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByType class]];
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span>            : - (NSSet*)propertiesInjectedByReference
+<span class="lineNum">      50 </span><span class="lineCov">          1 : {</span>
+<span class="lineNum">      51 </span>            :     return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByReference class]];
+<span class="lineNum">      52 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span>            : - (void)addInjectedProperty:(id &lt;TyphoonInjectedProperty&gt;)property
+<span class="lineNum">      55 </span><span class="lineCov">         64 : {</span>
+<span class="lineNum">      56 </span>            :     [_injectedProperties addObject:property];
+<span class="lineNum">      57 </span><span class="lineCov">         64 : }</span>
+<span class="lineNum">      58 </span><span class="lineCov">         64 : </span>
+<span class="lineNum">      59 </span>            : /* ============================================================ Private Methods ========================================================= */
+<span class="lineNum">      60 </span>            : - (NSSet*)injectedPropertiesWithKind:(Class)clazz
+<span class="lineNum">      61 </span><span class="lineCov">        218 : {</span>
+<span class="lineNum">      62 </span>            :     NSPredicate* predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary* bindings)
+<span class="lineNum">      63 </span><span class="lineCov">         69 :     {</span>
+<span class="lineNum">      64 </span><span class="lineCov">         69 :         return [evaluatedObject isKindOfClass:clazz];</span>
+<span class="lineNum">      65 </span><span class="lineCov">        138 :     }];</span>
+<span class="lineNum">      66 </span><span class="lineCov">         80 :     return [_injectedProperties filteredSetUsingPredicate:predicate];</span>
+<span class="lineNum">      67 </span><span class="lineCov">        160 : }</span>
+<span class="lineNum">      68 </span><span class="lineCov">         80 : </span>
+<span class="lineNum">      69 </span>            : @end
 </pre>
       </td>
     </tr>
