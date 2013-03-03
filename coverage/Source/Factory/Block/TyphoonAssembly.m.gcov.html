@@ -86,17 +86,17 @@
 <span class="lineNum">      28 </span><span class="lineCov">         17 :     return [[[self class] alloc] init];</span>
 <span class="lineNum">      29 </span>            : }
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">        497 : + (BOOL)resolveInstanceMethod:(SEL)sel</span>
+<span class="lineNum">      31 </span><span class="lineCov">        513 : + (BOOL)resolveInstanceMethod:(SEL)sel</span>
 <span class="lineNum">      32 </span>            : {
 <span class="lineNum">      33 </span><span class="lineCov">         12 :     if ([TyphoonAssembly selectorReserved:sel])</span>
 <span class="lineNum">      34 </span>            :     {
 <span class="lineNum">      35 </span><span class="lineNoCov">          0 :         return [super resolveInstanceMethod:sel];</span>
 <span class="lineNum">      36 </span>            :     }
 <span class="lineNum">      37 </span>            : 
-<span class="lineNum">      38 </span><span class="lineCov">        305 :     NSString* name = NSStringFromSelector(sel);</span>
+<span class="lineNum">      38 </span><span class="lineCov">        313 :     NSString* name = NSStringFromSelector(sel);</span>
 <span class="lineNum">      39 </span><span class="lineCov">         12 :     if ([name hasSuffix:TYPHOON_BEFORE_ADVICE_SUFFIX])</span>
 <span class="lineNum">      40 </span>            :     {
-<span class="lineNum">      41 </span><span class="lineCov">        293 :         IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me)</span>
+<span class="lineNum">      41 </span><span class="lineCov">        301 :         IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me)</span>
 <span class="lineNum">      42 </span>            :         {
 <span class="lineNum">      43 </span>            :             NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@&quot;&quot;];
 <span class="lineNum">      44 </span>            :             id cached = [[me cachedSelectors] objectForKey:key];
@@ -166,9 +166,9 @@
 <span class="lineNum">     108 </span><span class="lineCov">         16 : }</span>
 <span class="lineNum">     109 </span>            : 
 <span class="lineNum">     110 </span>            : /* ============================================================ Private Methods ========================================================= */
-<span class="lineNum">     111 </span><span class="lineCov">        469 : - (NSMutableDictionary*)cachedSelectors</span>
+<span class="lineNum">     111 </span><span class="lineCov">        477 : - (NSMutableDictionary*)cachedSelectors</span>
 <span class="lineNum">     112 </span>            : {
-<span class="lineNum">     113 </span><span class="lineCov">        469 :     return _cachedDefinitions;</span>
+<span class="lineNum">     113 </span><span class="lineCov">        477 :     return _cachedDefinitions;</span>
 <span class="lineNum">     114 </span>            : }
 <span class="lineNum">     115 </span>            : 
 <span class="lineNum">     116 </span>            : 

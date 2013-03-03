@@ -31,9 +31,9 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">69</td>
-            <td class="headerCovTableEntry">79</td>
-            <td class="headerCovTableEntryMed">87.3 %</td>
+            <td class="headerCovTableEntry">73</td>
+            <td class="headerCovTableEntry">83</td>
+            <td class="headerCovTableEntryMed">88.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -189,37 +189,43 @@
 <span class="lineNum">     131 </span>            :     [_initializer setComponentDefinition:self];
 <span class="lineNum">     132 </span>            : }
 <span class="lineNum">     133 </span><span class="lineCov">         59 : </span>
-<span class="lineNum">     134 </span>            : 
-<span class="lineNum">     135 </span><span class="lineCov">         59 : /* ====================================================================================================================================== */</span>
-<span class="lineNum">     136 </span>            : - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition
-<span class="lineNum">     137 </span>            : {
-<span class="lineNum">     138 </span><span class="lineCov">        121 :     [self injectProperty:selector withReference:definition.key];</span>
-<span class="lineNum">     139 </span>            : }
+<span class="lineNum">     134 </span>            : - (void)setFactory:(TyphoonDefinition*)factory
+<span class="lineNum">     135 </span><span class="lineCov">         59 : {</span>
+<span class="lineNum">     136 </span>            :     _factory = factory;
+<span class="lineNum">     137 </span>            :     [self setFactoryReference:_factory.key];
+<span class="lineNum">     138 </span><span class="lineCov">        121 : }</span>
+<span class="lineNum">     139 </span>            : 
 <span class="lineNum">     140 </span><span class="lineCov">        121 : </span>
-<span class="lineNum">     141 </span><span class="lineCov">        121 : /* ============================================================ Utility Methods ========================================================= */</span>
-<span class="lineNum">     142 </span><span class="lineCov">        121 : - (NSString*)description</span>
+<span class="lineNum">     141 </span><span class="lineCov">        121 : /* ====================================================================================================================================== */</span>
+<span class="lineNum">     142 </span><span class="lineCov">        121 : - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition</span>
 <span class="lineNum">     143 </span>            : {
-<span class="lineNum">     144 </span>            :     return [NSString stringWithFormat:@&quot;Definition: class='%@'&quot;, NSStringFromClass(_type)];
+<span class="lineNum">     144 </span><span class="lineCov">          8 :     [self injectProperty:selector withReference:definition.key];</span>
 <span class="lineNum">     145 </span>            : }
-<span class="lineNum">     146 </span>            : 
-<span class="lineNum">     147 </span><span class="lineCov">         16 : - (void)dealloc</span>
-<span class="lineNum">     148 </span>            : {
-<span class="lineNum">     149 </span><span class="lineCov">         16 :     //Null out the __unsafe_unretained property on initializer</span>
-<span class="lineNum">     150 </span><span class="lineCov">         16 :     [_initializer setComponentDefinition:nil];</span>
+<span class="lineNum">     146 </span><span class="lineCov">          8 : </span>
+<span class="lineNum">     147 </span><span class="lineCov">          8 : /* ============================================================ Utility Methods ========================================================= */</span>
+<span class="lineNum">     148 </span><span class="lineCov">          8 : - (NSString*)description</span>
+<span class="lineNum">     149 </span>            : {
+<span class="lineNum">     150 </span>            :     return [NSString stringWithFormat:@&quot;Definition: class='%@'&quot;, NSStringFromClass(_type)];
 <span class="lineNum">     151 </span>            : }
 <span class="lineNum">     152 </span>            : 
-<span class="lineNum">     153 </span><span class="lineCov">          8 : /* ============================================================ Private Methods ========================================================= */</span>
-<span class="lineNum">     154 </span>            : - (void)validateRequiredParametersAreSet
-<span class="lineNum">     155 </span><span class="lineCov">          8 : {</span>
-<span class="lineNum">     156 </span>            :     if (_type == nil)
-<span class="lineNum">     157 </span>            :     {
-<span class="lineNum">     158 </span><span class="lineCov">         19 :         [NSException raise:NSInvalidArgumentException format:@&quot;Property 'clazz' is required.&quot;];</span>
-<span class="lineNum">     159 </span>            :     }
-<span class="lineNum">     160 </span>            : }
-<span class="lineNum">     161 </span><span class="lineCov">         19 : </span>
-<span class="lineNum">     162 </span><span class="lineCov">         19 : </span>
-<span class="lineNum">     163 </span>            : 
-<span class="lineNum">     164 </span>            : @end
+<span class="lineNum">     153 </span><span class="lineCov">         16 : - (void)dealloc</span>
+<span class="lineNum">     154 </span>            : {
+<span class="lineNum">     155 </span><span class="lineCov">         16 :     //Null out the __unsafe_unretained property on initializer</span>
+<span class="lineNum">     156 </span><span class="lineCov">         16 :     [_initializer setComponentDefinition:nil];</span>
+<span class="lineNum">     157 </span>            : }
+<span class="lineNum">     158 </span>            : 
+<span class="lineNum">     159 </span><span class="lineCov">          8 : /* ============================================================ Private Methods ========================================================= */</span>
+<span class="lineNum">     160 </span>            : - (void)validateRequiredParametersAreSet
+<span class="lineNum">     161 </span><span class="lineCov">          8 : {</span>
+<span class="lineNum">     162 </span>            :     if (_type == nil)
+<span class="lineNum">     163 </span>            :     {
+<span class="lineNum">     164 </span><span class="lineCov">         19 :         [NSException raise:NSInvalidArgumentException format:@&quot;Property 'clazz' is required.&quot;];</span>
+<span class="lineNum">     165 </span>            :     }
+<span class="lineNum">     166 </span>            : }
+<span class="lineNum">     167 </span><span class="lineCov">         19 : </span>
+<span class="lineNum">     168 </span><span class="lineCov">         19 : </span>
+<span class="lineNum">     169 </span>            : 
+<span class="lineNum">     170 </span>            : @end
 </pre>
       </td>
     </tr>
