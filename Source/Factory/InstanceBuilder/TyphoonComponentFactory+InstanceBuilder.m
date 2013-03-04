@@ -33,7 +33,7 @@
 /* ========================================================== Interface Methods ========================================================= */
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
-    id <TyphoonIntrospectiveNSObject> instance;
+    __autoreleasing id <TyphoonIntrospectiveNSObject> instance;
 
     if (definition.factoryReference)
     {
@@ -83,9 +83,16 @@
         }
     }
     [invocation invoke];
-    __autoreleasing id <NSObject> returnValue = definition.initializer.isClassMethod || definition.factoryReference ? nil : instanceOrClass;
-    [invocation getReturnValue:&returnValue];
-    return returnValue;
+    if (definition.initializer.isClassMethod || definition.factoryReference)
+    {
+        __autoreleasing id <NSObject> returnValue =  nil;
+        [invocation getReturnValue:&returnValue];
+        return returnValue;
+    }
+    else
+    {
+        return instanceOrClass;
+    }
 }
 
 /* ====================================================================================================================================== */
