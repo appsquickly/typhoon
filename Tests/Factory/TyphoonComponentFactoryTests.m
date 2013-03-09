@@ -38,7 +38,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
 /* ====================================================================================================================================== */
 #pragma mark - Dependencies resolved by reference
 
-- (void)test_objectForKey_returns_singleton_with_initializer_dependencies
+- (void)test_componentForKey_returns_with_initializer_dependencies_injected
 {
 
     [_componentFactory register:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer* initializer)
@@ -58,7 +58,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
     NSLog(@"Here's the knight: %@", knight);
 }
 
-- (void)test_objectForKey_raises_exception_if_reference_does_not_exist
+- (void)test_componentForKey_raises_exception_if_reference_does_not_exist
 {
     [_componentFactory register:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer* initializer)
     {
@@ -81,10 +81,16 @@ static NSString* const DEFAULT_QUEST = @"quest";
     }
 }
 
+- (void)test_componentForKey_returns_nil_for_nil_argument
+{
+    id value = [_componentFactory componentForKey:nil];
+    assertThat(value, nilValue());
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Dependencies resolved by type
 
-- (void)test_allObjectsForType
+- (void)test_allComponentsForType
 {
 
     [_componentFactory register:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer* initializer)
@@ -104,7 +110,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
     assertThat([_componentFactory allComponentsForType:@protocol(NSObject)], hasCountOf(3));
 }
 
-- (void)test_objectForType
+- (void)test_componentForType
 {
 
     [_componentFactory register:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer* initializer)
@@ -155,7 +161,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
     }
 }
 
-- (void)test_objectForKey_returns_singleton_with_property_dependencies_resolved_by_type
+- (void)test_componentForKey_returns_with_property_dependencies_resolved_by_type
 {
 
     [_componentFactory register:[TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)

@@ -128,16 +128,20 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (id)componentForKey:(NSString*)key
 {
-    [self performMutationsIfRequired];
-    [self assertNotCircularDependency:key];
-    TyphoonDefinition* definition = [self definitionForKey:key];
-    if (!definition)
+    if (key)
     {
-        [NSException raise:NSInvalidArgumentException format:@"No component matching id '%@'.", key];
+        [self performMutationsIfRequired];
+        [self assertNotCircularDependency:key];
+        TyphoonDefinition* definition = [self definitionForKey:key];
+        if (!definition)
+        {
+            [NSException raise:NSInvalidArgumentException format:@"No component matching id '%@'.", key];
+        }
+        __autoreleasing id returnValue = [self objectForDefinition:definition];
+        [_currentlyResolvingReferences removeAllObjects];
+        return returnValue;
     }
-    __autoreleasing id returnValue = [self objectForDefinition:definition];
-    [_currentlyResolvingReferences removeAllObjects];
-    return returnValue;
+    return nil;
 }
 
 - (void)makeDefault
