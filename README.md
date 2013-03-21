@@ -36,6 +36,7 @@ ___Without dependency injection, you might have a View Controller like this___:
 }
 
 ```
+
 The thing with this approach is, if you wanted to change to another weather client implementation you'd have to go
 and find all the places in your code that use the old one, and move them over to the new one. Each time, making sure 
 to pass in the correct initialization parameters. 
