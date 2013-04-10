@@ -538,7 +538,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (TyphoonDefinition *)withClass:(Class)<em>clazz</em> initialization:(TyphoonInitializationBlock)<em>initialization</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (TyphoonDefinition *)withClass:(Class)<em>clazz</em> initialization:(void ( ^ ) ( TyphoonInitializer *))<em>initialization</em></code></div>
 
     
 </div>
@@ -549,7 +549,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (TyphoonDefinition *)withClass:(Class)<em>clazz</em> initialization:(TyphoonInitializationBlock)<em>initialization</em> properties:(TyphoonPropertyInjectionBlock)<em>properties</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (TyphoonDefinition *)withClass:(Class)<em>clazz</em> initialization:(void ( ^ ) ( TyphoonInitializer *))<em>initialization</em> properties:(void ( ^ ) ( TyphoonDefinition *))<em>properties</em></code></div>
 
     
 </div>
@@ -571,7 +571,7 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (TyphoonDefinition *)withClass:(Class)<em>clazz</em> properties:(TyphoonPropertyInjectionBlock)<em>properties</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (TyphoonDefinition *)withClass:(Class)<em>clazz</em> properties:(void ( ^ ) ( TyphoonDefinition *))<em>properties</em></code></div>
 
     
 </div>
