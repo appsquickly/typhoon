@@ -337,21 +337,22 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/injectProperty:">&ndash;&nbsp;injectProperty:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/injectProperty:withValueAsText:">&ndash;&nbsp;injectProperty:withValueAsText:</a></code>
-		
+		<span class="tooltip"><p>Injects property with a component from the container that matches the <a href="#//api/name/type">type</a> (class or protocol) of the property.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/injectProperty:withDefinition:">&ndash;&nbsp;injectProperty:withDefinition:</a></code>
-		
+		<span class="tooltip"><p>Injects property with the given definition.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/injectProperty:withValueAsText:">&ndash;&nbsp;injectProperty:withValueAsText:</a></code>
+		<span class="tooltip"><p>Injects property with the value represented by the given text. The text will be used to create an instance of a class matching the
+required <a href="#//api/name/type">type</a>.</p></span>
 	</span>
 	
 	
@@ -633,10 +634,40 @@
 	<h3 class="subsubtitle method-title">injectProperty:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Injects property with a component from the container that matches the <a href="#//api/name/type">type</a> (class or protocol) of the property.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (void)injectProperty:(SEL)<em>withSelector</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Injects property with a component from the container that matches the <a href="#//api/name/type">type</a> (class or protocol) of the property.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonDefinition.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -644,10 +675,40 @@
 	<h3 class="subsubtitle method-title">injectProperty:withDefinition:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Injects property with the given definition.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (void)injectProperty:(SEL)<em>selector</em> withDefinition:(TyphoonDefinition *)<em>definition</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Injects property with the given definition.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonDefinition.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -666,10 +727,51 @@
 	<h3 class="subsubtitle method-title">injectProperty:withValueAsText:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Injects property with the value represented by the given text. The text will be used to create an instance of a class matching the
+required <a href="#//api/name/type">type</a>.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>- (void)injectProperty:(SEL)<em>withSelector</em> withValueAsText:(NSString *)<em>textValue</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Injects property with the value represented by the given text. The text will be used to create an instance of a class matching the
+required <a href="#//api/name/type">type</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="../Classes/TyphoonTypeConverterRegistry.html">TyphoonTypeConverterRegistry</a> for details on declaring your own <a href="#//api/name/type">@property type</a> converters.</p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonDefinition.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">

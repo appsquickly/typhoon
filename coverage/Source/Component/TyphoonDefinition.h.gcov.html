@@ -121,13 +121,25 @@
 <span class="lineNum">      63 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      64 </span>            : #pragma mark Injection
 <span class="lineNum">      65 </span>            : 
-<span class="lineNum">      66 </span>            : - (void)injectProperty:(SEL)withSelector;
-<span class="lineNum">      67 </span>            : 
-<span class="lineNum">      68 </span>            : - (void)injectProperty:(SEL)withSelector withValueAsText:(NSString*)textValue;
-<span class="lineNum">      69 </span>            : 
-<span class="lineNum">      70 </span>            : - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition;
-<span class="lineNum">      71 </span>            : 
-<span class="lineNum">      72 </span>            : @end
+<span class="lineNum">      66 </span>            : /**
+<span class="lineNum">      67 </span>            : * Injects property with a component from the container that matches the type (class or protocol) of the property.
+<span class="lineNum">      68 </span>            : */
+<span class="lineNum">      69 </span>            : - (void)injectProperty:(SEL)withSelector;
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span>            : /**
+<span class="lineNum">      72 </span>            : * Injects property with the given definition.
+<span class="lineNum">      73 </span>            : */
+<span class="lineNum">      74 </span>            : - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition;
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span>            : /**
+<span class="lineNum">      77 </span>            : * Injects property with the value represented by the given text. The text will be used to create an instance of a class matching the
+<span class="lineNum">      78 </span>            : * required type.
+<span class="lineNum">      79 </span>            : *
+<span class="lineNum">      80 </span>            : * @see TyphoonTypeConverterRegistry for details on declaring your own type converters.
+<span class="lineNum">      81 </span>            : */
+<span class="lineNum">      82 </span>            : - (void)injectProperty:(SEL)withSelector withValueAsText:(NSString*)textValue;
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span>            : @end
 </pre>
       </td>
     </tr>
