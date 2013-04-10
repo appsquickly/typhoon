@@ -23,5 +23,10 @@ static NSString * const TYPHOON_BEFORE_ADVICE_SUFFIX = @"__typhoonBeforeAdvice";
 
 +(TyphoonAssembly*)assembly;
 
+/**
+* Returns the [TyphoonComponentFactory defaultFactory], with components exposed using an assembly interface.
+*/
++(TyphoonAssembly*)defaultAssembly;
+
 
 @end

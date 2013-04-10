@@ -16,6 +16,7 @@
 #import "TyphoonAssembly.h"
 #import "TyphoonJRSwizzle.h"
 #import "TyphoonDefinition.h"
+#import "TyphoonComponentFactory.h"
 
 static NSMutableArray* resolveStack;
 
@@ -48,7 +49,7 @@ static NSMutableArray* resolveStack;
                 if ([resolveStack count] > 100)
                 {
                     NSString* bottom = [resolveStack objectAtIndex:0];
-                    NSString* top = [resolveStack objectAtIndex:[resolveStack count] -1];
+                    NSString* top = [resolveStack objectAtIndex:[resolveStack count] - 1];
                     if ([top isEqualToString:bottom])
                     {
                         NSLog(@"Resolve stack: %@", resolveStack);
@@ -79,9 +80,16 @@ static NSMutableArray* resolveStack;
     return NO;
 }
 
++ (TyphoonAssembly*)defaultAssembly
+{
+    return (TyphoonAssembly*) [TyphoonComponentFactory defaultFactory];
+}
+
+
 + (BOOL)selectorReserved:(SEL)selector
 {
-    return selector == @selector(init) || selector == @selector(cachedSelectors) || selector == NSSelectorFromString(@".cxx_destruct");
+    return selector == @selector(init) || selector == @selector(cachedSelectors) || selector == NSSelectorFromString(@".cxx_destruct") ||
+            selector == @selector(defaultAssembly);
 }
 
 + (void)load
