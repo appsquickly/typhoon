@@ -28,14 +28,15 @@ ___Without dependency injection, you might have a View Controller like this___:
  self = [super init];
  if (self) 
  {
- //The class using some collaborating class builds its own assistant.
- //it might be one of several classes using the weatherClient. 
-  _weatherClient = [GoogleWeatherClientImpl alloc] initWithParameters:xyz];
+  //The class using some collaborating class builds its own assistant.
+  //it might be one of several classes using the weatherClient. 
+  _weatherClient = [[GoogleWeatherClientImpl alloc] initWithParameters:xyz];
  }
  return self;
 }
 
 ```
+
 The thing with this approach is, if you wanted to change to another weather client implementation you'd have to go
 and find all the places in your code that use the old one, and move them over to the new one. Each time, making sure 
 to pass in the correct initialization parameters. 
