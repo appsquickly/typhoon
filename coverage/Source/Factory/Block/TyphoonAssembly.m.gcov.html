@@ -32,8 +32,8 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">30</td>
-            <td class="headerCovTableEntry">32</td>
-            <td class="headerCovTableEntryHi">93.8 %</td>
+            <td class="headerCovTableEntry">34</td>
+            <td class="headerCovTableEntryMed">88.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -74,105 +74,113 @@
 <span class="lineNum">      16 </span>            : #import &quot;TyphoonAssembly.h&quot;
 <span class="lineNum">      17 </span>            : #import &quot;TyphoonJRSwizzle.h&quot;
 <span class="lineNum">      18 </span>            : #import &quot;TyphoonDefinition.h&quot;
-<span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span>            : static NSMutableArray* resolveStack;
-<span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineCov">         16 : @implementation TyphoonAssembly</span>
-<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      19 </span>            : #import &quot;TyphoonComponentFactory.h&quot;
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span>            : static NSMutableArray* resolveStack;
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span><span class="lineCov">         16 : @implementation TyphoonAssembly</span>
 <span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span>            : /* =========================================================== Class Methods ============================================================ */
-<span class="lineNum">      26 </span><span class="lineCov">         17 : + (TyphoonAssembly*)assembly</span>
-<span class="lineNum">      27 </span>            : {
-<span class="lineNum">      28 </span><span class="lineCov">         17 :     return [[[self class] alloc] init];</span>
-<span class="lineNum">      29 </span>            : }
-<span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">        513 : + (BOOL)resolveInstanceMethod:(SEL)sel</span>
-<span class="lineNum">      32 </span>            : {
-<span class="lineNum">      33 </span><span class="lineCov">         12 :     if ([TyphoonAssembly selectorReserved:sel])</span>
-<span class="lineNum">      34 </span>            :     {
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 :         return [super resolveInstanceMethod:sel];</span>
-<span class="lineNum">      36 </span>            :     }
-<span class="lineNum">      37 </span>            : 
-<span class="lineNum">      38 </span><span class="lineCov">        313 :     NSString* name = NSStringFromSelector(sel);</span>
-<span class="lineNum">      39 </span><span class="lineCov">         12 :     if ([name hasSuffix:TYPHOON_BEFORE_ADVICE_SUFFIX])</span>
-<span class="lineNum">      40 </span>            :     {
-<span class="lineNum">      41 </span><span class="lineCov">        301 :         IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me)</span>
-<span class="lineNum">      42 </span>            :         {
-<span class="lineNum">      43 </span>            :             NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@&quot;&quot;];
-<span class="lineNum">      44 </span>            :             id cached = [[me cachedSelectors] objectForKey:key];
-<span class="lineNum">      45 </span>            :             if (cached == nil)
-<span class="lineNum">      46 </span>            :             {
-<span class="lineNum">      47 </span>            :                 [resolveStack addObject:key];
-<span class="lineNum">      48 </span>            :                 if ([resolveStack count] &gt; 100)
-<span class="lineNum">      49 </span>            :                 {
-<span class="lineNum">      50 </span>            :                     NSString* bottom = [resolveStack objectAtIndex:0];
-<span class="lineNum">      51 </span>            :                     NSString* top = [resolveStack objectAtIndex:[resolveStack count] -1];
-<span class="lineNum">      52 </span>            :                     if ([top isEqualToString:bottom])
-<span class="lineNum">      53 </span>            :                     {
-<span class="lineNum">      54 </span>            :                         NSLog(@&quot;Resolve stack: %@&quot;, resolveStack);
-<span class="lineNum">      55 </span>            :                         [NSException raise:NSInternalInconsistencyException format:@&quot;Circular dependency detected.&quot;];
-<span class="lineNum">      56 </span>            :                     }
-<span class="lineNum">      57 </span>            :                 }
-<span class="lineNum">      58 </span>            : 
-<span class="lineNum">      59 </span>            :                 [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:nil];
-<span class="lineNum">      60 </span>            :                 cached = objc_msgSend(me, sel);
-<span class="lineNum">      61 </span>            :                 if (cached &amp;&amp; [cached isKindOfClass:[TyphoonDefinition class]])
-<span class="lineNum">      62 </span>            :                 {
-<span class="lineNum">      63 </span>            :                     TyphoonDefinition* definition = (TyphoonDefinition*) cached;
-<span class="lineNum">      64 </span>            :                     if ([definition.key length] == 0)
-<span class="lineNum">      65 </span>            :                     {
-<span class="lineNum">      66 </span>            :                         definition.key = key;
-<span class="lineNum">      67 </span>            :                     }
-<span class="lineNum">      68 </span>            :                     [[me cachedSelectors] setObject:definition forKey:key];
-<span class="lineNum">      69 </span>            :                 }
-<span class="lineNum">      70 </span>            :                 [[self class] typhoon_swizzleMethod:NSSelectorFromString(key) withMethod:sel error:nil];
-<span class="lineNum">      71 </span>            :             }
-<span class="lineNum">      72 </span>            :             [resolveStack removeAllObjects];
-<span class="lineNum">      73 </span>            :             return cached;
-<span class="lineNum">      74 </span>            : 
-<span class="lineNum">      75 </span><span class="lineCov">         12 :         }));</span>
-<span class="lineNum">      76 </span><span class="lineCov">         12 :         class_addMethod(self, sel, imp, &quot;@&quot;);</span>
-<span class="lineNum">      77 </span>            :         return YES;
-<span class="lineNum">      78 </span><span class="lineCov">         12 :     }</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 :     return NO;</span>
-<span class="lineNum">      80 </span><span class="lineCov">         12 : }</span>
-<span class="lineNum">      81 </span>            : 
-<span class="lineNum">      82 </span><span class="lineCov">        105 : + (BOOL)selectorReserved:(SEL)selector</span>
-<span class="lineNum">      83 </span>            : {
-<span class="lineNum">      84 </span><span class="lineCov">        105 :     return selector == @selector(init) || selector == @selector(cachedSelectors) || selector == NSSelectorFromString(@&quot;.cxx_destruct&quot;);</span>
-<span class="lineNum">      85 </span>            : }
-<span class="lineNum">      86 </span>            : 
-<span class="lineNum">      87 </span><span class="lineCov">          1 : + (void)load</span>
-<span class="lineNum">      88 </span>            : {
-<span class="lineNum">      89 </span><span class="lineCov">          1 :     [super load];</span>
-<span class="lineNum">      90 </span><span class="lineCov">          1 :     resolveStack = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      92 </span>            : 
-<span class="lineNum">      93 </span>            : /* ============================================================ Initializers ============================================================ */
-<span class="lineNum">      94 </span><span class="lineCov">         17 : - (id)init</span>
-<span class="lineNum">      95 </span>            : {
-<span class="lineNum">      96 </span><span class="lineCov">         17 :     self = [super init];</span>
-<span class="lineNum">      97 </span><span class="lineCov">         17 :     if (self)</span>
-<span class="lineNum">      98 </span>            :     {
-<span class="lineNum">      99 </span><span class="lineCov">         17 :         _cachedDefinitions = [[NSMutableDictionary alloc] init];</span>
-<span class="lineNum">     100 </span><span class="lineCov">         17 :     }</span>
-<span class="lineNum">     101 </span><span class="lineCov">         17 :     return self;</span>
-<span class="lineNum">     102 </span><span class="lineCov">         17 : }</span>
-<span class="lineNum">     103 </span>            : 
-<span class="lineNum">     104 </span>            : /* ============================================================ Utility Methods ========================================================= */
-<span class="lineNum">     105 </span><span class="lineCov">         16 : - (void)dealloc</span>
-<span class="lineNum">     106 </span>            : {
-<span class="lineNum">     107 </span><span class="lineCov">         16 :     NSLog(@&quot;$$$$$$ %@ in dealloc!&quot;, [self class]);</span>
-<span class="lineNum">     108 </span><span class="lineCov">         16 : }</span>
-<span class="lineNum">     109 </span>            : 
-<span class="lineNum">     110 </span>            : /* ============================================================ Private Methods ========================================================= */
-<span class="lineNum">     111 </span><span class="lineCov">        477 : - (NSMutableDictionary*)cachedSelectors</span>
-<span class="lineNum">     112 </span>            : {
-<span class="lineNum">     113 </span><span class="lineCov">        477 :     return _cachedDefinitions;</span>
-<span class="lineNum">     114 </span>            : }
-<span class="lineNum">     115 </span>            : 
-<span class="lineNum">     116 </span>            : 
-<span class="lineNum">     117 </span>            : @end
+<span class="lineNum">      25 </span>            : 
+<span class="lineNum">      26 </span>            : /* =========================================================== Class Methods ============================================================ */
+<span class="lineNum">      27 </span><span class="lineCov">         17 : + (TyphoonAssembly*)assembly</span>
+<span class="lineNum">      28 </span>            : {
+<span class="lineNum">      29 </span><span class="lineCov">         17 :     return [[[self class] alloc] init];</span>
+<span class="lineNum">      30 </span>            : }
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span><span class="lineCov">        513 : + (BOOL)resolveInstanceMethod:(SEL)sel</span>
+<span class="lineNum">      33 </span>            : {
+<span class="lineNum">      34 </span><span class="lineCov">         12 :     if ([TyphoonAssembly selectorReserved:sel])</span>
+<span class="lineNum">      35 </span>            :     {
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :         return [super resolveInstanceMethod:sel];</span>
+<span class="lineNum">      37 </span>            :     }
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span><span class="lineCov">        313 :     NSString* name = NSStringFromSelector(sel);</span>
+<span class="lineNum">      40 </span><span class="lineCov">         12 :     if ([name hasSuffix:TYPHOON_BEFORE_ADVICE_SUFFIX])</span>
+<span class="lineNum">      41 </span>            :     {
+<span class="lineNum">      42 </span><span class="lineCov">        301 :         IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me)</span>
+<span class="lineNum">      43 </span>            :         {
+<span class="lineNum">      44 </span>            :             NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@&quot;&quot;];
+<span class="lineNum">      45 </span>            :             id cached = [[me cachedSelectors] objectForKey:key];
+<span class="lineNum">      46 </span>            :             if (cached == nil)
+<span class="lineNum">      47 </span>            :             {
+<span class="lineNum">      48 </span>            :                 [resolveStack addObject:key];
+<span class="lineNum">      49 </span>            :                 if ([resolveStack count] &gt; 100)
+<span class="lineNum">      50 </span>            :                 {
+<span class="lineNum">      51 </span>            :                     NSString* bottom = [resolveStack objectAtIndex:0];
+<span class="lineNum">      52 </span>            :                     NSString* top = [resolveStack objectAtIndex:[resolveStack count] - 1];
+<span class="lineNum">      53 </span>            :                     if ([top isEqualToString:bottom])
+<span class="lineNum">      54 </span>            :                     {
+<span class="lineNum">      55 </span>            :                         NSLog(@&quot;Resolve stack: %@&quot;, resolveStack);
+<span class="lineNum">      56 </span>            :                         [NSException raise:NSInternalInconsistencyException format:@&quot;Circular dependency detected.&quot;];
+<span class="lineNum">      57 </span>            :                     }
+<span class="lineNum">      58 </span>            :                 }
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span>            :                 [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:nil];
+<span class="lineNum">      61 </span>            :                 cached = objc_msgSend(me, sel);
+<span class="lineNum">      62 </span>            :                 if (cached &amp;&amp; [cached isKindOfClass:[TyphoonDefinition class]])
+<span class="lineNum">      63 </span>            :                 {
+<span class="lineNum">      64 </span>            :                     TyphoonDefinition* definition = (TyphoonDefinition*) cached;
+<span class="lineNum">      65 </span>            :                     if ([definition.key length] == 0)
+<span class="lineNum">      66 </span>            :                     {
+<span class="lineNum">      67 </span>            :                         definition.key = key;
+<span class="lineNum">      68 </span>            :                     }
+<span class="lineNum">      69 </span>            :                     [[me cachedSelectors] setObject:definition forKey:key];
+<span class="lineNum">      70 </span>            :                 }
+<span class="lineNum">      71 </span>            :                 [[self class] typhoon_swizzleMethod:NSSelectorFromString(key) withMethod:sel error:nil];
+<span class="lineNum">      72 </span>            :             }
+<span class="lineNum">      73 </span>            :             [resolveStack removeAllObjects];
+<span class="lineNum">      74 </span>            :             return cached;
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span><span class="lineCov">         12 :         }));</span>
+<span class="lineNum">      77 </span><span class="lineCov">         12 :         class_addMethod(self, sel, imp, &quot;@&quot;);</span>
+<span class="lineNum">      78 </span>            :         return YES;
+<span class="lineNum">      79 </span><span class="lineCov">         12 :     }</span>
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 :     return NO;</span>
+<span class="lineNum">      81 </span><span class="lineCov">         12 : }</span>
+<span class="lineNum">      82 </span>            : 
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 : + (TyphoonAssembly*)defaultAssembly</span>
+<span class="lineNum">      84 </span>            : {
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 :     return (TyphoonAssembly*) [TyphoonComponentFactory defaultFactory];</span>
+<span class="lineNum">      86 </span>            : }
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span>            : 
+<span class="lineNum">      89 </span><span class="lineCov">        105 : + (BOOL)selectorReserved:(SEL)selector</span>
+<span class="lineNum">      90 </span>            : {
+<span class="lineNum">      91 </span><span class="lineCov">        105 :     return selector == @selector(init) || selector == @selector(cachedSelectors) || selector == NSSelectorFromString(@&quot;.cxx_destruct&quot;) ||</span>
+<span class="lineNum">      92 </span>            :             selector == @selector(defaultAssembly);
+<span class="lineNum">      93 </span>            : }
+<span class="lineNum">      94 </span>            : 
+<span class="lineNum">      95 </span><span class="lineCov">          1 : + (void)load</span>
+<span class="lineNum">      96 </span>            : {
+<span class="lineNum">      97 </span><span class="lineCov">          1 :     [super load];</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :     resolveStack = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     100 </span>            : 
+<span class="lineNum">     101 </span>            : /* ============================================================ Initializers ============================================================ */
+<span class="lineNum">     102 </span><span class="lineCov">         17 : - (id)init</span>
+<span class="lineNum">     103 </span>            : {
+<span class="lineNum">     104 </span><span class="lineCov">         17 :     self = [super init];</span>
+<span class="lineNum">     105 </span><span class="lineCov">         17 :     if (self)</span>
+<span class="lineNum">     106 </span>            :     {
+<span class="lineNum">     107 </span><span class="lineCov">         17 :         _cachedDefinitions = [[NSMutableDictionary alloc] init];</span>
+<span class="lineNum">     108 </span><span class="lineCov">         17 :     }</span>
+<span class="lineNum">     109 </span><span class="lineCov">         17 :     return self;</span>
+<span class="lineNum">     110 </span><span class="lineCov">         17 : }</span>
+<span class="lineNum">     111 </span>            : 
+<span class="lineNum">     112 </span>            : /* ============================================================ Utility Methods ========================================================= */
+<span class="lineNum">     113 </span><span class="lineCov">         16 : - (void)dealloc</span>
+<span class="lineNum">     114 </span>            : {
+<span class="lineNum">     115 </span><span class="lineCov">         16 :     NSLog(@&quot;$$$$$$ %@ in dealloc!&quot;, [self class]);</span>
+<span class="lineNum">     116 </span><span class="lineCov">         16 : }</span>
+<span class="lineNum">     117 </span>            : 
+<span class="lineNum">     118 </span>            : /* ============================================================ Private Methods ========================================================= */
+<span class="lineNum">     119 </span><span class="lineCov">        477 : - (NSMutableDictionary*)cachedSelectors</span>
+<span class="lineNum">     120 </span>            : {
+<span class="lineNum">     121 </span><span class="lineCov">        477 :     return _cachedDefinitions;</span>
+<span class="lineNum">     122 </span>            : }
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span>            : 
+<span class="lineNum">     125 </span>            : @end
 </pre>
       </td>
     </tr>
