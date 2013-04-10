@@ -83,10 +83,10 @@
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : + (void)waitForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions
 <span class="lineNum">      27 </span><span class="lineNoCov">          0 : {</span>
-<span class="lineNum">      28 </span>            :     [self wait:7 forCondition:condition andPerformTests:assertions];
+<span class="lineNum">      28 </span>            :     [self wait:7 secondsForCondition:condition andPerformTests:assertions];
 <span class="lineNum">      29 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      30 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      31 </span>            : + (void)wait:(NSTimeInterval)seconds forCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions
+<span class="lineNum">      31 </span>            : + (void)wait:(NSTimeInterval)seconds secondsForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions
 <span class="lineNum">      32 </span>            : {
 <span class="lineNum">      33 </span><span class="lineNoCov">          0 :     __block BOOL conditionMet;</span>
 <span class="lineNum">      34 </span>            :     for (int i = 0; i &lt; seconds; i++)
