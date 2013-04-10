@@ -12,6 +12,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define typhoon_asynch_condition(expression) return expression;
+
 @interface TyphoonTestUtils : NSObject
 
 + (void)waitForCondition:(BOOL (^)())condition;
