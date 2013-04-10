@@ -9,11 +9,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#define assertWillHappen(expression) \
-[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];\
-if (!expression) [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];\
-if (!expression) [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];\
-if (!expression) [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];\
-if (!expression) [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:3]];\
-if (!expression) [NSException raise:NSInternalInconsistencyException \
-format:@"Expression did not occur before timeout."];
+
+#import <Foundation/Foundation.h>
+
+@interface TyphoonTestUtils : NSObject
+
++ (void)waitForCondition:(BOOL (^)())condition;
+
++ (void)waitForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions;
+
++ (void)wait:(NSTimeInterval)seconds forCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions;
+
+
+@end

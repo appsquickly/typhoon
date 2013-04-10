@@ -125,7 +125,7 @@
 
 - (void)test_converts_to_c_string
 {
-    char* converted = [_typeConverter convertToCString:@"the quick brown fox"];
+    const char* converted = [_typeConverter convertToCString:@"the quick brown fox"];
     STAssertTrue(strcmp(converted, [@"the quick brown fox" cStringUsingEncoding:NSUTF8StringEncoding]) == 0, nil);
     NSLog(@"Converted: %s", converted);
 }

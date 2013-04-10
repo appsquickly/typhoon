@@ -22,10 +22,6 @@ typedef enum
     TyphoonScopeSingleton
 } TyphoonScope;
 
-typedef void(^TyphoonInitializationBlock)(TyphoonInitializer* initializer);
-
-typedef void(^TyphoonPropertyInjectionBlock)(TyphoonDefinition* propertyInjector);
-
 
 @interface TyphoonDefinition : NSObject
 {
@@ -50,12 +46,12 @@ typedef void(^TyphoonPropertyInjectionBlock)(TyphoonDefinition* propertyInjector
 
 + (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key;
 
-+ (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializationBlock)initialization
-        properties:(TyphoonPropertyInjectionBlock)properties;
++ (TyphoonDefinition*)withClass:(Class)clazz initialization:(void (^)(TyphoonInitializer*))initialization
+        properties:(void (^)(TyphoonDefinition*))properties;
 
-+ (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializationBlock)initialization;
++ (TyphoonDefinition*)withClass:(Class)clazz initialization:(void (^)(TyphoonInitializer*))initialization;
 
-+ (TyphoonDefinition*)withClass:(Class)clazz properties:(TyphoonPropertyInjectionBlock)properties;
++ (TyphoonDefinition*)withClass:(Class)clazz properties:(void (^)(TyphoonDefinition*))properties;
 
 /* ====================================================================================================================================== */
 #pragma mark Initializers
