@@ -20,7 +20,7 @@
 
 + (void)waitForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions;
 
-+ (void)wait:(NSTimeInterval)seconds forCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions;
++ (void)wait:(NSTimeInterval)seconds secondsForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions;
 
 
 @end

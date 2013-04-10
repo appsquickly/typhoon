@@ -25,10 +25,10 @@
 
 + (void)waitForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions
 {
-    [self wait:7 forCondition:condition andPerformTests:assertions];
+    [self wait:7 secondsForCondition:condition andPerformTests:assertions];
 }
 
-+ (void)wait:(NSTimeInterval)seconds forCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions
++ (void)wait:(NSTimeInterval)seconds secondsForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions
 {
     __block BOOL conditionMet;
     for (int i = 0; i < seconds; i++)
