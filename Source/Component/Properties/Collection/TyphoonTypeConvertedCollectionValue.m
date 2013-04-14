@@ -28,7 +28,7 @@
 
 - (TyphoonCollectionValueType)type
 {
-    return TyphoonTextCollectionType;
+    return TyphoonCollectionValueTypeConvertedText;
 }
 
 @end

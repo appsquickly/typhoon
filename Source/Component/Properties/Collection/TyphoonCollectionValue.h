@@ -13,8 +13,8 @@
 
 typedef enum
 {
-    TyphoonByReferenceCollectionType,
-    TyphoonTextCollectionType
+    TyphoonCollectionValueTypeByReference,
+    TyphoonCollectionValueTypeConvertedText
 } TyphoonCollectionValueType;
 
 @protocol TyphoonCollectionValue <NSObject>

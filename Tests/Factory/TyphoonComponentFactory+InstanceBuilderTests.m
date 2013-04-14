@@ -144,8 +144,8 @@
     Knight* knight = [_componentFactory componentForKey:@"knight"];
     NSArray* favoriteDamsels = [knight favoriteDamsels];
     assertThat(favoriteDamsels, notNilValue());
-
-
+    assertThat(favoriteDamsels, hasCountOf(2));
+    NSLog(@"Favorite damsels: %@", favoriteDamsels);
 }
 
 /* ====================================================================================================================================== */

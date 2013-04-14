@@ -133,6 +133,7 @@
         __unsafe_unretained TyphoonPropertyInjectedAsCollection* weakPropertyInjectedAsCollection = propertyInjectedAsCollection;
         collectionValues(weakPropertyInjectedAsCollection);
     }
+    [_injectedProperties addObject:propertyInjectedAsCollection];
 }
 
 

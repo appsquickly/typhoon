@@ -10,8 +10,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-
-
 #import <objc/message.h>
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonDefinition.h"
@@ -26,6 +24,10 @@
 #import "TyphoonPrimitiveTypeConverter.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonPropertyInjectedAsCollection.h"
+#import "TyphoonCollectionValue.h"
+#import "TyphoonByReferenceCollectionValue.h"
+#import "TyphoonTypeConvertedCollectionValue.h"
 
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
@@ -85,7 +87,7 @@
     [invocation invoke];
     if (definition.initializer.isClassMethod || definition.factoryReference)
     {
-        __autoreleasing id <NSObject> returnValue =  nil;
+        __autoreleasing id <NSObject> returnValue = nil;
         [invocation getReturnValue:&returnValue];
         return returnValue;
     }
@@ -149,6 +151,11 @@
         TyphoonPropertyInjectedByValue* valueProperty = (TyphoonPropertyInjectedByValue*) property;
         [self setArgumentFor:invocation index:2 textValue:valueProperty.textValue requiredType:typeDescriptor];
     }
+    else if (property.injectionType == TyphoonPropertyInjectionAsCollection)
+    {
+        id collection = [self buildCollectionFor:(TyphoonPropertyInjectedAsCollection*) property instance:instance];
+        [invocation setArgument:&collection atIndex:2];
+    }
     [invocation invoke];
 }
 
@@ -191,5 +198,53 @@
         [invocation setArgument:&converted atIndex:index1];
     }
 }
+
+- (id)buildCollectionFor:(TyphoonPropertyInjectedAsCollection*)propertyInjectedAsCollection
+        instance:(id <TyphoonIntrospectiveNSObject>)instance
+{
+    id collection = [self collectionFor:propertyInjectedAsCollection givenInstance:instance];
+    NSLog(@"Property: %@", propertyInjectedAsCollection);
+    for (id <TyphoonCollectionValue> value in [propertyInjectedAsCollection values])
+    {
+        if (value.type == TyphoonCollectionValueTypeByReference)
+        {
+            TyphoonByReferenceCollectionValue* byReferenceValue = (TyphoonByReferenceCollectionValue*) value;
+            id reference = [self componentForKey:byReferenceValue.componentName];
+            [collection addObject:reference];
+        }
+        else if (value.type == TyphoonCollectionValueTypeConvertedText)
+        {
+            TyphoonTypeConvertedCollectionValue* typeConvertedValue = (TyphoonTypeConvertedCollectionValue*) value;
+            TyphoonTypeDescriptor* descriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:typeConvertedValue.requiredType];
+            id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
+            id converted = [converter convert:typeConvertedValue.textValue];
+            [collection addObject:converted];
+        }
+    }
+    return propertyInjectedAsCollection.injectionType == TyphoonCollectionTypeNSMutableArray || TyphoonCollectionTypeNSMutableSet ?
+            [collection copy] : collection;
+}
+
+- (id)collectionFor:(TyphoonPropertyInjectedAsCollection*)propertyInjectedAsCollection
+        givenInstance:(id <TyphoonIntrospectiveNSObject>)instance
+{
+    TyphoonCollectionType type = [propertyInjectedAsCollection resolveCollectionTypeWith:instance];
+    id collection;
+    if (type == TyphoonCollectionTypeNSArray || type == TyphoonCollectionTypeNSMutableArray)
+    {
+        collection = [[NSMutableArray alloc] init];
+    }
+    else if (type == TyphoonCollectionTypeNSCountedSet)
+    {
+        collection = [[NSCountedSet alloc] init];
+    }
+    else if (type == TyphoonCollectionTypeNSSet || type == TyphoonCollectionTypeNSMutableSet)
+    {
+        collection = [[NSMutableSet alloc] init];
+    }
+    NSLog(@"Returning this collection: %@", collection);
+    return collection;
+}
+
 
 @end

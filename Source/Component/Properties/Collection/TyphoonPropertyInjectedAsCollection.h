@@ -20,7 +20,8 @@ typedef enum
     TyphoonCollectionTypeNSArray,
     TyphoonCollectionTypeNSMutableArray,
     TyphoonCollectionTypeNSSet,
-    TyphoonCollectionTypeNSMutableSet
+    TyphoonCollectionTypeNSMutableSet,
+    TyphoonCollectionTypeNSCountedSet
 } TyphoonCollectionType;
 
 /**
@@ -42,13 +43,13 @@ typedef enum
 
 - (void)addItemWithDefinition:(TyphoonDefinition*)definition;
 
+- (NSArray*)values;
+
 /**
 * Returns the collection type for the named property on the parameter class. Raises an exception if the property is neither an NSSet nor
 * an NSArray.
 */
-- (TyphoonCollectionType)resolveCollectionTypeGiven:(Class)clazz;
-
-
+- (TyphoonCollectionType)resolveCollectionTypeWith:(id<TyphoonIntrospectiveNSObject>)instance;
 
 
 

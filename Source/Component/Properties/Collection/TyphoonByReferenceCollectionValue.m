@@ -29,7 +29,7 @@
 
 - (TyphoonCollectionValueType)type
 {
-    return TyphoonByReferenceCollectionType;
+    return TyphoonCollectionValueTypeByReference;
 }
 
 @end
