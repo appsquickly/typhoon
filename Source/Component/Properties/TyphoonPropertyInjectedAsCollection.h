@@ -13,6 +13,8 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonInjectedProperty.h"
 
+@class TyphoonDefinition;
+
 typedef enum
 {
     TyphoonCollectionTypeNSArray,
@@ -26,17 +28,27 @@ typedef enum
 {
     NSString* _name;
     NSMutableArray* _values;
+    NSMutableArray* _references;
 }
 
 @property(nonatomic, strong, readonly) NSString* name;
 
 - (id)initWithName:(NSString*)name;
 
+- (void)addItemWithText:(NSString*)text;
+
+- (void)addItemWithComponentName:(NSString*)componentName;
+
+- (void)addItemWithDefinition:(TyphoonDefinition*)definition;
+
 /**
 * Returns the collection type for the named property on the parameter class. Raises an exception if the property is neither an NSSet nor
 * an NSArray.
 */
 - (TyphoonCollectionType)resolveCollectionTypeGiven:(Class)clazz;
+
+
+
 
 
 @end

@@ -13,6 +13,7 @@
 #import "TyphoonPropertyInjectedAsCollection.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonIntrospectionUtils.h"
+#import "TyphoonDefinition.h"
 
 
 @implementation TyphoonPropertyInjectedAsCollection
@@ -26,11 +27,29 @@
     {
         _name = name;
         _values = [[NSMutableArray alloc] init];
+        _references = [[NSMutableArray alloc] init];
+
     }
     return self;
 }
 
+
 /* ========================================================== Interface Methods ========================================================= */
+- (void)addItemWithText:(NSString*)text
+{
+    [_values addObject:text];
+}
+
+- (void)addItemWithComponentName:(NSString*)componentName
+{
+    [_references addObject:componentName];
+}
+
+- (void)addItemWithDefinition:(TyphoonDefinition*)definition
+{
+    [_references addObject:definition.key];
+}
+
 - (TyphoonCollectionType)resolveCollectionTypeGiven:(Class)clazz
 {
     TyphoonTypeDescriptor* descriptor = [TyphoonIntrospectionUtils typeForPropertyWithName:_name inClass:clazz];

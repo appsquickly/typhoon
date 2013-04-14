@@ -82,6 +82,7 @@
                 * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:@"notACollection"];
         TyphoonCollectionType
                 collectionType = [propertyInjectedAsCollection resolveCollectionTypeGiven:[_classWithCollectionProperties class]];
+        NSLog(@"%i", collectionType); //suppress warning;
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -98,6 +99,7 @@
                 * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:@"notACollectionzzz"];
         TyphoonCollectionType
                 collectionType = [propertyInjectedAsCollection resolveCollectionTypeGiven:[_classWithCollectionProperties class]];
+        NSLog(@"%i", collectionType); //suppress warning;
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)

@@ -112,13 +112,15 @@
     [_injectedProperties addObject:[[TyphoonPropertyInjectedByType alloc] initWithName:NSStringFromSelector(selector)]];
 }
 
-
-
 - (void)injectProperty:(SEL)selector withValueAsText:(NSString*)textValue
 {
     [_injectedProperties addObject:[[TyphoonPropertyInjectedByValue alloc] initWithName:NSStringFromSelector(selector) value:textValue]];
 }
 
+- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition
+{
+    [self injectProperty:selector withReference:definition.key];
+}
 
 - (NSSet*)injectedProperties
 {
@@ -137,12 +139,6 @@
     [self setFactoryReference:_factory.key];
 }
 
-
-/* ====================================================================================================================================== */
-- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition
-{
-    [self injectProperty:selector withReference:definition.key];
-}
 
 /* ============================================================ Utility Methods ========================================================= */
 - (NSString*)description
