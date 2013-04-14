@@ -12,11 +12,9 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "Typhoon.h"
 #import "Knight.h"
-#import "ClassADependsOnB.h"
 #import "Sword.h"
 #import "CavalryMan.h"
 #import "TyphoonSharedComponentFactoryTests.h"
-#import "TyphoonPropertyInjectedAsCollection.h"
 
 
 @implementation TyphoonSharedComponentFactoryTests
@@ -109,7 +107,6 @@
 - (void)test_raises_exception_for_invalid_selector_name
 {
     TyphoonXmlComponentFactory* factory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"ExceptionTestAssembly.xml"];
-
     @try
     {
         NSString* aString = [factory componentForKey:@"aBlaString"];
