@@ -34,7 +34,7 @@ typedef enum
 
 - (id)initWithName:(NSString*)name;
 
-- (void)addItemWithText:(NSString*)text;
+- (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType;
 
 - (void)addItemWithComponentName:(NSString*)componentName;
 

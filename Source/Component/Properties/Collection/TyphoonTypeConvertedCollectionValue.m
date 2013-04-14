@@ -15,12 +15,13 @@
 @implementation TyphoonTypeConvertedCollectionValue
 
 /* ============================================================ Initializers ============================================================ */
-- (id)initWithTextValue:(NSString*)textValue
+- (id)initWithTextValue:(NSString*)textValue requiredType:(Class)requiredType
 {
     self = [super init];
     if (self)
     {
         _textValue = textValue;
+        _requiredType = requiredType;
     }
     return self;
 }

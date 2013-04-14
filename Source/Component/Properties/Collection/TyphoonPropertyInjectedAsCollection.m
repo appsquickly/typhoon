@@ -35,9 +35,9 @@
 
 
 /* ========================================================== Interface Methods ========================================================= */
-- (void)addItemWithText:(NSString*)text
+- (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType
 {
-    [_values addObject:[[TyphoonTypeConvertedCollectionValue alloc] initWithTextValue:text]];
+    [_values addObject:[[TyphoonTypeConvertedCollectionValue alloc] initWithTextValue:text requiredType:requiredType]];
 }
 
 - (void)addItemWithComponentName:(NSString*)componentName

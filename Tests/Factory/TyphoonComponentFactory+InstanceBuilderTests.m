@@ -14,6 +14,7 @@
 #import "Knight.h"
 #import "CampaignQuest.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonPropertyInjectedAsCollection.h"
 
 
 @interface ComponentDefinition_InstanceBuilderTests : SenTestCase
@@ -52,8 +53,7 @@
 - (void)test_injects_required_initializer_dependencies_with_factory_method
 {
     TyphoonDefinition* urlDefinition = [[TyphoonDefinition alloc] initWithClass:[NSURL class] key:@"url"];
-    TyphoonInitializer
-            * initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(URLWithString:) isClassMethod:YES];
+    TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(URLWithString:) isClassMethod:YES];
     [initializer injectParameterAt:0 withValueAsText:@"http://www.appsquick.ly" requiredTypeOrNil:[NSString class]];
     [urlDefinition setInitializer:initializer];
     [_componentFactory register:urlDefinition];
@@ -61,6 +61,20 @@
     NSURL* url = [_componentFactory buildInstanceWithDefinition:urlDefinition];
     NSLog(@"Here's the bundle: %@", url);
     assertThat(url, notNilValue());
+}
+
+- (void)test_injects_initializer_value_as_long
+{
+    TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+    TyphoonInitializer
+            * initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethod:NO];
+    [initializer injectParameterNamed:@"damselsRescued" withValueAsText:@"12" requiredTypeOrNil:nil];
+    [knightDefinition setInitializer:initializer];
+
+    [_componentFactory register:knightDefinition];
+
+    Knight* knight = [_componentFactory componentForKey:@"knight"];
+    assertThatLong(knight.damselsRescued, equalToLongLong(12));
 }
 
 /* ====================================================================================================================================== */
@@ -99,7 +113,7 @@
     @catch (NSException* e)
     {
         assertThat([e description], equalTo(
-            @"Tried to inject property 'propertyThatDoesNotExist' on object of type 'Knight', but the instance has no setter for this property."));
+                @"Tried to inject property 'propertyThatDoesNotExist' on object of type 'Knight', but the instance has no setter for this property."));
     }
 }
 
@@ -113,18 +127,25 @@
     assertThatLong(knight.damselsRescued, equalToLongLong(12));
 }
 
-- (void)test_injects_initializer_value_as_long
-{
-    TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    TyphoonInitializer
-            * initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethod:NO];
-    [initializer injectParameterNamed:@"damselsRescued" withValueAsText:@"12" requiredTypeOrNil:nil];
-    [knightDefinition setInitializer:initializer];
 
-    [_componentFactory register:knightDefinition];
+/* ====================================================================================================================================== */
+#pragma mark - Collections
+
+- (void)test_injects_type_converted_array_collection
+{
+    TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+    [definition injectProperty:@selector(favoriteDamsels) asCollectionWithValues:^(TyphoonPropertyInjectedAsCollection* collection)
+    {
+        [collection addItemWithText:@"Jane" requiredType:[NSString class]];
+        [collection addItemWithText:@"Mary" requiredType:[NSString class]];
+    }];
+    [_componentFactory register:definition];
 
     Knight* knight = [_componentFactory componentForKey:@"knight"];
-    assertThatLong(knight.damselsRescued, equalToLongLong(12));
+    NSArray* favoriteDamsels = [knight favoriteDamsels];
+    assertThat(favoriteDamsels, notNilValue());
+
+
 }
 
 /* ====================================================================================================================================== */
@@ -145,7 +166,7 @@
     @catch (NSException* e)
     {
         assertThat([e description], equalTo(
-            @"Tried to inject property 'propertyDoesNotExist' on object of type 'Knight', but the instance has no setter for this property."));
+                @"Tried to inject property 'propertyDoesNotExist' on object of type 'Knight', but the instance has no setter for this property."));
     }
 
 }

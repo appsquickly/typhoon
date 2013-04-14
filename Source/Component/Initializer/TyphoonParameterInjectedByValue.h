@@ -32,7 +32,7 @@
 
 /**
 * If the parameter is a primitive type, resolves the type descriptor. Throws an exception if either:
-* - classOrProtocol is set
+* - requiredType is set
 * - The parameter is an object type. (If the parameter is an object type, classOrProtocol must be set explicitly).
 */
 - (TyphoonTypeDescriptor*)resolveTypeWith:(id)classOrInstance;

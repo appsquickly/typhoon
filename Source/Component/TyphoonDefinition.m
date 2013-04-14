@@ -16,6 +16,7 @@
 #import "TyphoonPropertyInjectedByValue.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonPropertyInjectedAsCollection.h"
 
 
 @implementation TyphoonDefinition
@@ -122,6 +123,19 @@
     [self injectProperty:selector withReference:definition.key];
 }
 
+- (void)injectProperty:(SEL)withSelector asCollectionWithValues:(void (^)(TyphoonPropertyInjectedAsCollection*))collectionValues;
+{
+    TyphoonPropertyInjectedAsCollection* propertyInjectedAsCollection =
+            [[TyphoonPropertyInjectedAsCollection alloc] initWithName:NSStringFromSelector(withSelector)];
+
+    if (collectionValues)
+    {
+        __unsafe_unretained TyphoonPropertyInjectedAsCollection* weakPropertyInjectedAsCollection = propertyInjectedAsCollection;
+        collectionValues(weakPropertyInjectedAsCollection);
+    }
+}
+
+
 - (NSSet*)injectedProperties
 {
     return [_injectedProperties copy];
@@ -160,7 +174,6 @@
         [NSException raise:NSInvalidArgumentException format:@"Property 'clazz' is required."];
     }
 }
-
 
 
 @end

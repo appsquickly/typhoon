@@ -18,11 +18,11 @@
 #import "TyphoonDefinition+InstanceBuilder.h"
 
 
-@interface TyphoonComponentDefinitionTests : SenTestCase
+@interface TyphoonDefinitionTests : SenTestCase
 @end
 
 
-@implementation TyphoonComponentDefinitionTests
+@implementation TyphoonDefinitionTests
 
 - (void)setUp
 {

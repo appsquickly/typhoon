@@ -15,6 +15,7 @@
 @class TyphoonInitializer;
 @class TyphoonDefinition;
 @protocol TyphoonInjectedProperty;
+@class TyphoonPropertyInjectedAsCollection;
 
 typedef enum
 {
@@ -80,5 +81,7 @@ typedef enum
 * @see TyphoonTypeConverterRegistry for details on declaring your own type converters.
 */
 - (void)injectProperty:(SEL)withSelector withValueAsText:(NSString*)textValue;
+
+- (void)injectProperty:(SEL)withSelector asCollectionWithValues:(void (^)(TyphoonPropertyInjectedAsCollection*))collectionValues;
 
 @end
