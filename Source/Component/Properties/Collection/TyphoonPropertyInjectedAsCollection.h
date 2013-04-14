@@ -28,7 +28,6 @@ typedef enum
 {
     NSString* _name;
     NSMutableArray* _values;
-    NSMutableArray* _references;
 }
 
 @property(nonatomic, strong, readonly) NSString* name;

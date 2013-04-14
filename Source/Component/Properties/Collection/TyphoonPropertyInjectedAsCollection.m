@@ -14,6 +14,8 @@
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonDefinition.h"
+#import "TyphoonTypeConvertedCollectionValue.h"
+#import "TyphoonByReferenceCollectionValue.h"
 
 
 @implementation TyphoonPropertyInjectedAsCollection
@@ -27,8 +29,6 @@
     {
         _name = name;
         _values = [[NSMutableArray alloc] init];
-        _references = [[NSMutableArray alloc] init];
-
     }
     return self;
 }
@@ -37,17 +37,17 @@
 /* ========================================================== Interface Methods ========================================================= */
 - (void)addItemWithText:(NSString*)text
 {
-    [_values addObject:text];
+    [_values addObject:[[TyphoonTypeConvertedCollectionValue alloc] initWithTextValue:text]];
 }
 
 - (void)addItemWithComponentName:(NSString*)componentName
 {
-    [_references addObject:componentName];
+    [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:componentName]];
 }
 
 - (void)addItemWithDefinition:(TyphoonDefinition*)definition
 {
-    [_references addObject:definition.key];
+    [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:definition.key]];
 }
 
 - (TyphoonCollectionType)resolveCollectionTypeGiven:(Class)clazz
