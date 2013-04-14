@@ -123,7 +123,7 @@
     [self injectProperty:selector withReference:definition.key];
 }
 
-- (void)injectProperty:(SEL)withSelector asCollectionWithValues:(void (^)(TyphoonPropertyInjectedAsCollection*))collectionValues;
+- (void)injectProperty:(SEL)withSelector asCollection:(void (^)(TyphoonPropertyInjectedAsCollection*))collectionValues;
 {
     TyphoonPropertyInjectedAsCollection* propertyInjectedAsCollection =
             [[TyphoonPropertyInjectedAsCollection alloc] initWithName:NSStringFromSelector(withSelector)];

@@ -16,7 +16,7 @@
 #import "Sword.h"
 #import "CavalryMan.h"
 #import "TyphoonSharedComponentFactoryTests.h"
-
+#import "TyphoonPropertyInjectedAsCollection.h"
 
 
 @implementation TyphoonSharedComponentFactoryTests
@@ -63,6 +63,14 @@
     assertThatFloat(yetAnotherKnight.hitRatio, equalToFloat(13.75));
 }
 
+- (void)test_injects_type_converted_array_collection
+{
+    Knight* knight = [_componentFactory componentForKey:@"knightWithCollections"];
+    NSArray* favoriteDamsels = [knight favoriteDamsels];
+    assertThat(favoriteDamsels, notNilValue());
+    assertThat(favoriteDamsels, hasCountOf(2));
+    NSLog(@"Favorite damsels: %@", favoriteDamsels);
+}
 /* ====================================================================================================================================== */
 #pragma mark factory method injection
 

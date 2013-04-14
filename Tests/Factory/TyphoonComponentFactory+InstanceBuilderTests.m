@@ -129,26 +129,6 @@
 
 
 /* ====================================================================================================================================== */
-#pragma mark - Collections
-
-- (void)test_injects_type_converted_array_collection
-{
-    TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    [definition injectProperty:@selector(favoriteDamsels) asCollectionWithValues:^(TyphoonPropertyInjectedAsCollection* collection)
-    {
-        [collection addItemWithText:@"Jane" requiredType:[NSString class]];
-        [collection addItemWithText:@"Mary" requiredType:[NSString class]];
-    }];
-    [_componentFactory register:definition];
-
-    Knight* knight = [_componentFactory componentForKey:@"knight"];
-    NSArray* favoriteDamsels = [knight favoriteDamsels];
-    assertThat(favoriteDamsels, notNilValue());
-    assertThat(favoriteDamsels, hasCountOf(2));
-    NSLog(@"Favorite damsels: %@", favoriteDamsels);
-}
-
-/* ====================================================================================================================================== */
 #pragma mark - Property injection error handling
 
 - (void)test_raises_exception_if_property_has_no_setter

@@ -82,6 +82,6 @@ typedef enum
 */
 - (void)injectProperty:(SEL)withSelector withValueAsText:(NSString*)textValue;
 
-- (void)injectProperty:(SEL)withSelector asCollectionWithValues:(void (^)(TyphoonPropertyInjectedAsCollection*))collectionValues;
+- (void)injectProperty:(SEL)withSelector asCollection:(void (^)(TyphoonPropertyInjectedAsCollection*))collectionValues;
 
 @end

@@ -18,6 +18,7 @@
 #import "CavalryMan.h"
 #import "SwordFactory.h"
 #import "Sword.h"
+#import "TyphoonPropertyInjectedAsCollection.h"
 
 
 @implementation MiddleAgesAssembly
@@ -69,6 +70,23 @@
         [definition injectProperty:@selector(hitRatio) withValueAsText:@"13.75"];
         [definition injectProperty:@selector(hasHorseWillTravel) withValueAsText:@"YES"];
 
+    }];
+}
+
+- (id)knightWithCollections
+{
+    return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer* initializer)
+    {
+        initializer.selector = @selector(initWithQuest:);
+        [initializer injectWithDefinition:[self defaultQuest]];
+
+    } properties:^(TyphoonDefinition* definition)
+    {
+        [definition injectProperty:@selector(favoriteDamsels) asCollection:^(TyphoonPropertyInjectedAsCollection* collection)
+        {
+            [collection addItemWithText:@"Mary" requiredType:[NSString class]];
+            [collection addItemWithText:@"Mary" requiredType:[NSString class]];
+        }];
     }];
 }
 
