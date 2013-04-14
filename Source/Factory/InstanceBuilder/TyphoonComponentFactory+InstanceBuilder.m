@@ -134,17 +134,17 @@
 {
     NSInvocation* invocation = [self propertySetterInvocationFor:instance property:property];
     NSLog(@"Property setter invocation: %@", invocation);
-    if (property.type == TyphoonPropertyInjectionByTypeType)
+    if (property.injectionType == TyphoonPropertyInjectionByTypeType)
     {
         id reference = [self componentForType:[typeDescriptor classOrProtocol]];
         [invocation setArgument:&reference atIndex:2];
     }
-    else if (property.type == TyphoonPropertyInjectionByReferenceType)
+    else if (property.injectionType == TyphoonPropertyInjectionByReferenceType)
     {
         id reference = [self componentForKey:((TyphoonPropertyInjectedByReference*) property).reference];
         [invocation setArgument:&reference atIndex:2];
     }
-    else if (property.type == TyphoonPropertyInjectionByValueType)
+    else if (property.injectionType == TyphoonPropertyInjectionByValueType)
     {
         TyphoonPropertyInjectedByValue* valueProperty = (TyphoonPropertyInjectedByValue*) property;
         [self setArgumentFor:invocation index:2 textValue:valueProperty.textValue requiredType:typeDescriptor];

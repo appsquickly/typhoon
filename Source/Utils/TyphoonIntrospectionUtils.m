@@ -14,9 +14,39 @@
 
 #import <objc/runtime.h>
 #import "TyphoonIntrospectionUtils.h"
+#import "TyphoonTypeDescriptor.h"
 
 
 @implementation TyphoonIntrospectionUtils
+
++ (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName inClass:(Class)clazz
+{
+    TyphoonTypeDescriptor* typeDescriptor = nil;
+    objc_property_t propertyReflection = class_getProperty(clazz, [propertyName UTF8String]);
+    if (propertyReflection)
+    {
+        const char* attrs = property_getAttributes(propertyReflection);
+        if (attrs == NULL)
+        {
+            return (NULL);
+        }
+
+        static char buffer[256];
+        const char* e = strchr(attrs, ',');
+        if (e == NULL)
+        {
+            return (NULL);
+        }
+
+        int len = (int) (e - attrs);
+        memcpy( buffer, attrs, len );
+        buffer[len] = '\0';
+
+        typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:[NSString stringWithCString:buffer encoding:NSUTF8StringEncoding]];
+    }
+    return typeDescriptor;
+}
+
 
 + (NSArray*)typeCodesForSelector:(SEL)selector ofClass:(Class)clazz isClassMethod:(BOOL)isClassMethod
 {

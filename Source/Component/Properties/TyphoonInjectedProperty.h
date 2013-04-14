@@ -19,13 +19,14 @@ typedef enum
 {
     TyphoonPropertyInjectionByReferenceType,
     TyphoonPropertyInjectionByTypeType,
-    TyphoonPropertyInjectionByValueType
+    TyphoonPropertyInjectionByValueType,
+    TyphoonPropertyInjectionAsCollection
 } TyphoonPropertyInjectionType;
 
 @protocol TyphoonInjectedProperty <NSObject>
 
 - (NSString*)name;
 
-- (TyphoonPropertyInjectionType)type;
+- (TyphoonPropertyInjectionType)injectionType;
 
 @end

@@ -33,7 +33,7 @@
 }
 
 /* =========================================================== Protocol Methods ========================================================= */
-- (TyphoonPropertyInjectionType)type
+- (TyphoonPropertyInjectionType)injectionType
 {
     return TyphoonPropertyInjectionByValueType;
 }

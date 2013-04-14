@@ -15,6 +15,8 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
+@class TyphoonTypeDescriptor;
+
 NSSet* TyphoonAutoWiredProperties(Class clazz, NSSet* properties);
 
 NSString* TyphoonTypeStringFor(id classOrProtocol);
@@ -23,5 +25,7 @@ NSString* TyphoonTypeStringFor(id classOrProtocol);
 @interface TyphoonIntrospectionUtils : NSObject
 
 + (NSArray*)typeCodesForSelector:(SEL)selector ofClass:(Class)clazz isClassMethod:(BOOL)isClassMethod;
+
++ (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName inClass:(Class)clazz;
 
 @end
