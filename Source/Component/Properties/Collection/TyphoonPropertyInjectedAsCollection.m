@@ -59,13 +59,21 @@
         [NSException raise:NSInvalidArgumentException format:@"Property named '%@' does not exist on class '%@'.", _name,
                                                              NSStringFromClass(clazz)];
     }
-    if (describedClass == [NSArray class] || [describedClass isSubclassOfClass:[NSArray class]])
+    if (describedClass == [NSArray class])
     {
         return TyphoonCollectionTypeNSArray;
     }
-    else if (describedClass == [NSSet class] || [describedClass isSubclassOfClass:[NSSet class]])
+    else if ([describedClass isSubclassOfClass:[NSArray class]])
+    {
+        return TyphoonCollectionTypeNSMutableArray;
+    }
+    else if (describedClass == [NSSet class])
     {
         return TyphoonCollectionTypeNSSet;
+    }
+    else if ([describedClass isSubclassOfClass:[NSSet class]])
+    {
+        return TyphoonCollectionTypeNSMutableSet;
     }
     [NSException raise:NSInvalidArgumentException format:@"Property named '%@' on '%@' is neither an NSSet nor NSArray.", _name,
                                                          NSStringFromClass(describedClass)];

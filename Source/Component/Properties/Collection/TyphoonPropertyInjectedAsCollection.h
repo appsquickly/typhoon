@@ -18,7 +18,9 @@
 typedef enum
 {
     TyphoonCollectionTypeNSArray,
-    TyphoonCollectionTypeNSSet
+    TyphoonCollectionTypeNSMutableArray,
+    TyphoonCollectionTypeNSSet,
+    TyphoonCollectionTypeNSMutableSet
 } TyphoonCollectionType;
 
 /**

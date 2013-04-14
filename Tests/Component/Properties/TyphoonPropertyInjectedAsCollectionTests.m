@@ -46,7 +46,7 @@
             * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:@"mutableArrayCollection"];
 
     TyphoonCollectionType collectionType = [propertyInjectedAsCollection resolveCollectionTypeGiven:[_classWithCollectionProperties class]];
-    assertThatInt(collectionType, equalToInt(TyphoonCollectionTypeNSArray));
+    assertThatInt(collectionType, equalToInt(TyphoonCollectionTypeNSMutableArray));
 
 }
 
@@ -68,7 +68,7 @@
             * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:@"mutableSetCollection"];
 
     TyphoonCollectionType collectionType = [propertyInjectedAsCollection resolveCollectionTypeGiven:[_classWithCollectionProperties class]];
-    assertThatInt(collectionType, equalToInt(TyphoonCollectionTypeNSSet));
+    assertThatInt(collectionType, equalToInt(TyphoonCollectionTypeNSMutableSet));
 }
 
 /* ====================================================================================================================================== */
@@ -104,7 +104,8 @@
     }
     @catch (NSException* e)
     {
-        assertThat([e description], equalTo(@"Property named 'notACollectionzzz' does not exist on class 'ClassWithCollectionProperties'."));
+        assertThat([e description], equalTo(
+                @"Property named 'notACollectionzzz' does not exist on class 'ClassWithCollectionProperties'."));
     }
 
 }
