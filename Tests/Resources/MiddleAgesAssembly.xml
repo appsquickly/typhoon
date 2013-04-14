@@ -1,7 +1,4 @@
-<assembly xmlns="http://jasperblues.github.com/Typhoon/schema/assembly"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://jasperblues.github.com/Typhoon/schema/assembly
-          http://www.appsquick.ly/schema/assembly.xsd">
+<assembly xmlns="http://jasperblues.github.com/Typhoon/schema/assembly">
 
     <description>
         This is the application assembly. The schema declaration above gives code-completion in supported IDEs
@@ -44,6 +41,10 @@
                 Besides the primitive types (int, BOOL, etc), a handful of useful object conversion types
                 are included. You can also easily register your own additional converters.
             </description>
+            <collection>
+                <reference>foobar</reference>
+                <value>one two three</value>
+            </collection>
         </property>
     </component>
 

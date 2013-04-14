@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
-<xsd:schema xmlns="http://jasperblues.github.com/Typhoon/schema/assembly"
+<xsd:schema xmlns="http://www.typhoonframework.org/schema/assembly"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            targetNamespace="http://jasperblues.github.com/Typhoon/schema/assembly">
+            targetNamespace="http://www.typhoonframework.org/schema/assembly">
 
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
 
@@ -218,6 +218,7 @@
         <xsd:sequence>
             <xsd:element ref="description" minOccurs="0"/>
             <xsd:choice minOccurs="0" maxOccurs="1">
+                <xsd:element ref="collection" minOccurs="0" maxOccurs="1"/>
                 <!-- Inline components not supported yet -->
                 <!--<xsd:element ref="component"/>-->
                 <xsd:any namespace="##other" processContents="strict"/>
@@ -303,5 +304,42 @@
             <xsd:enumeration value="false"/>
         </xsd:restriction>
     </xsd:simpleType>
+
+
+    <xsd:element name="collection">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[
+	Represents a collection of values.
+			]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="true">
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element ref="reference"/>
+                <xsd:element ref="value"/>
+            </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="reference">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[
+	foobar foobar
+			]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="true">
+            <xsd:choice minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="value">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[
+	foobar foobar
+			]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="true">
+            <xsd:choice minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:complexType>
+    </xsd:element>
 
 </xsd:schema>
