@@ -1,7 +1,7 @@
-<assembly xmlns="http://jasperblues.github.com/typhoon/schema/assembly"
+<assembly xmlns="http://www.typhoonframework.org/schema/assembly"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://jasperblues.github.com/typhoon/schema/assembly
-          http://www.appsquick.ly/schema/assembly.xsd">
+          xsi:schemaLocation="http://www.typhoonframework.org/schema/assembly
+          http://www.typhoonframework.org/schema/assembly.xsd">
 
     <component class="ClassADependsOnB" key="classA" scope="prototype">
         <property name="dependencyOnB" ref="classB"/>
