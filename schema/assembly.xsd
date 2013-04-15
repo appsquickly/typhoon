@@ -266,10 +266,17 @@
                 <xsd:any namespace="##other" processContents="strict"/>
             </xsd:choice>
         </xsd:sequence>
-        <xsd:attribute name="parameterName" type="xsd:string" use="required">
+        <xsd:attribute name="parameterName" type="xsd:string" use="optional">
             <xsd:annotation>
                 <xsd:documentation><![CDATA[
 	The name of the argument, following Objective-C naming conventions.
+				]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="index" type="xsd:integer" use="optional">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+	The index of the argument.
 				]]></xsd:documentation>
             </xsd:annotation>
         </xsd:attribute>

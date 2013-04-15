@@ -221,8 +221,9 @@
             [collection addObject:converted];
         }
     }
-    return propertyInjectedAsCollection.injectionType == TyphoonCollectionTypeNSMutableArray || TyphoonCollectionTypeNSMutableSet ?
-            [collection copy] : collection;
+    BOOL isMutable = propertyInjectedAsCollection.injectionType == TyphoonCollectionTypeNSMutableArray ||
+            propertyInjectedAsCollection.injectionType == TyphoonCollectionTypeNSMutableSet;
+    return propertyInjectedAsCollection.injectionType == isMutable ? [collection copy] : collection;
 }
 
 - (id)collectionFor:(TyphoonPropertyInjectedAsCollection*)propertyInjectedAsCollection

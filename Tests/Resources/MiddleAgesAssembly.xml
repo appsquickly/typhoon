@@ -71,7 +71,7 @@
         </description>
         <initializer selector="initWithQuest:hitRatio:">
             <argument parameterName="quest" ref="quest"/>
-            <argument parameterName="hitRatio" value="13.75"/>
+            <argument index="1" value="13.75"/>
         </initializer>
         <property name="hasHorseWillTravel" value="yes">
             <description>

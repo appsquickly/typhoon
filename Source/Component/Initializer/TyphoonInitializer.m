@@ -65,10 +65,10 @@
 
 - (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol
 {
-    [self injectParameterAt:[self indexOfParameter:name] withValueAsText:text requiredTypeOrNil:classOrProtocol];
+    [self injectParameterAtIndex:[self indexOfParameter:name] withValueAsText:text requiredTypeOrNil:classOrProtocol];
 }
 
-- (void)injectParameterAt:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass
+- (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass
 {
     if (index != NSUIntegerMax && index < [_parameterNames count])
     {
@@ -97,7 +97,7 @@
 
 - (void)injectWithText:(NSString*)text requiredTypeOrNil:(id)requiredTypeOrNil
 {
-    [self injectParameterAt:[_injectedParameters count] withValueAsText:text requiredTypeOrNil:requiredTypeOrNil];
+    [self injectParameterAtIndex:[_injectedParameters count] withValueAsText:text requiredTypeOrNil:requiredTypeOrNil];
 }
 
 /* ====================================================================================================================================== */

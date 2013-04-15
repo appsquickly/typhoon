@@ -54,7 +54,7 @@
 {
     TyphoonDefinition* urlDefinition = [[TyphoonDefinition alloc] initWithClass:[NSURL class] key:@"url"];
     TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(URLWithString:) isClassMethod:YES];
-    [initializer injectParameterAt:0 withValueAsText:@"http://www.appsquick.ly" requiredTypeOrNil:[NSString class]];
+    [initializer injectParameterAtIndex:0 withValueAsText:@"http://www.appsquick.ly" requiredTypeOrNil:[NSString class]];
     [urlDefinition setInitializer:initializer];
     [_componentFactory register:urlDefinition];
 

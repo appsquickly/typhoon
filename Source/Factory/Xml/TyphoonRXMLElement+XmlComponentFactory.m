@@ -185,12 +185,27 @@
 - (void)setArgumentOnInitializer:(TyphoonInitializer*)initializer withChildTag:(TyphoonRXMLElement*)child
 {
     NSString* name = [child attribute:@"parameterName"];
+    NSString* index = [child attribute:@"index"];
+
+    if (name && index)
+    {
+        [NSException raise:NSInvalidArgumentException format:@"'parameterName' and 'index' cannot be used together"];
+    }
+
     NSString* reference = [child attribute:@"ref"];
     NSString* value = [child attribute:@"value"];
 
     if (reference)
     {
-        [initializer injectParameterNamed:name withReference:reference];
+        if (name)
+        {
+            [initializer injectParameterNamed:name withReference:reference];
+        }
+        else if (index)
+        {
+            [initializer injectParameterAtIndex:[index integerValue] withReference:reference];
+        }
+
     }
     else if (value)
     {
@@ -204,7 +219,15 @@
                 [NSException raise:NSInvalidArgumentException format:@"Class '%@' could not be resolved.", classAsString];
             }
         }
-        [initializer injectParameterNamed:name withValueAsText:value requiredTypeOrNil:clazz];
+        if (name)
+        {
+            [initializer injectParameterNamed:name withValueAsText:value requiredTypeOrNil:clazz];
+        }
+        else if (index)
+        {
+            [initializer injectParameterAtIndex:[index integerValue] withValueAsText:value requiredTypeOrNil:clazz];
+        }
+
     }
 }
 
