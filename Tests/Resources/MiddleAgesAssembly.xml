@@ -23,8 +23,19 @@
             </description>
         </property>
     </component>
-    
-    
+
+    <component class="Knight" key="knightWithCollections">
+        <initializer selector="initWithQuest:">
+            <argument parameterName="quest" ref="defaultQuest"/>
+        </initializer>
+        <property name="favoriteDamsels">
+            <collection>
+                <value requiredType="NSString">mary</value>
+                <value requiredType="NSString">jane</value>
+            </collection>
+        </property>
+    </component>
+
 
     <component class="CampaignQuest" key="quest" scope="prototype" before-property-injection="questBeforePropertyInjection"
                after-property-injection="questAfterPropertyInjection">
@@ -44,10 +55,6 @@
                 Besides the primitive types (int, BOOL, etc), a handful of useful object conversion types
                 are included. You can also easily register your own additional converters.
             </description>
-            <collection>
-                <reference>foobar</reference>
-                <value>one two three</value>
-            </collection>
         </property>
     </component>
 

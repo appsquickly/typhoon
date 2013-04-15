@@ -314,16 +314,16 @@
         </xsd:annotation>
         <xsd:complexType mixed="true">
             <xsd:choice minOccurs="0" maxOccurs="unbounded">
-                <xsd:element ref="reference"/>
+                <xsd:element ref="ref"/>
                 <xsd:element ref="value"/>
             </xsd:choice>
         </xsd:complexType>
     </xsd:element>
 
-    <xsd:element name="reference">
+    <xsd:element name="ref">
         <xsd:annotation>
             <xsd:documentation><![CDATA[
-	foobar foobar
+	Adds a collection value by referencing another component definition in the container.
 			]]></xsd:documentation>
         </xsd:annotation>
         <xsd:complexType mixed="true">
@@ -334,11 +334,12 @@
     <xsd:element name="value">
         <xsd:annotation>
             <xsd:documentation><![CDATA[
-	foobar foobar
+	Adds a collection value by performing type conversion on the text value.
 			]]></xsd:documentation>
         </xsd:annotation>
         <xsd:complexType mixed="true">
             <xsd:choice minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:attribute name="requiredType" type="xsd:string" use="required"/>
         </xsd:complexType>
     </xsd:element>
 

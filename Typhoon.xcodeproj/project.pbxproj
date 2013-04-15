@@ -333,6 +333,7 @@
 		BA798EA73AA4E7181ACB1002 /* ClassWithCollectionProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassWithCollectionProperties.m; sourceTree = "<group>"; };
 		BA798F0B0FA574136DA6A52A /* TyphoonAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssembly.h; sourceTree = "<group>"; };
 		BA798F0C33EBF7B9102B886A /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		BA798F28A13AE6BA4386F62A /* assembly.xsd */ = {isa = PBXFileReference; lastKnownFileType = file.xsd; name = assembly.xsd; path = schema/assembly.xsd; sourceTree = "<group>"; };
 		BA798F3057F2763006387D93 /* TyphoonPropertyInjectedByReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonPropertyInjectedByReference.m; sourceTree = "<group>"; };
 		BA798F905F4B216CEA7A4D8A /* TyphoonDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonDefinition.m; sourceTree = "<group>"; };
 		BA798F939EF6855E92D46BDB /* ExceptionTestAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ExceptionTestAssembly.xml; sourceTree = "<group>"; };
@@ -370,6 +371,7 @@
 				6B3F397316ABF854001A601C /* Frameworks */,
 				6B3F397116ABF854001A601C /* Products */,
 				BA79878F47DCC140652F7088 /* Source */,
+				BA798F28A13AE6BA4386F62A /* assembly.xsd */,
 			);
 			sourceTree = "<group>";
 		};
