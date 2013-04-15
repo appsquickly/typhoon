@@ -26,7 +26,7 @@
 
     <component class="Knight" key="knightWithCollections">
         <initializer selector="initWithQuest:">
-            <argument parameterName="quest" ref="defaultQuest"/>
+            <argument parameterName="quest" ref="quest"/>
         </initializer>
         <property name="favoriteDamsels">
             <collection>

@@ -19,6 +19,7 @@
 #import "TyphoonPropertyInjectedByType.h"
 #import "TyphoonInitializer.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonPropertyInjectedAsCollection.h"
 
 @implementation TyphoonRXMLElement (XmlComponentFactory)
 
@@ -41,7 +42,7 @@
     return definition;
 }
 
-
+//TODO: Method too long, clean it up.
 - (id <TyphoonInjectedProperty>)asInjectedProperty
 {
     [self assertTagName:@"property"];
@@ -49,6 +50,12 @@
     NSString* propertyName = [self attribute:@"name"];
     NSString* referenceName = [self attribute:@"ref"];
     NSString* value = [self attribute:@"value"];
+
+    TyphoonRXMLElement* collection = [self child:@"collection"];
+    if ((referenceName || value) && collection)
+    {
+        [NSException raise:NSInvalidArgumentException format:@"'ref' and 'value' attributes cannot be used with 'collection'"];
+    }
 
     id <TyphoonInjectedProperty> injectedProperty = nil;
     if (referenceName && value)
@@ -68,12 +75,36 @@
     {
         injectedProperty = [[TyphoonPropertyInjectedByValue alloc] initWithName:propertyName value:value];
     }
+    else if (collection)
+    {
+        TyphoonPropertyInjectedAsCollection* property = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:propertyName];
+        [collection iterate:@"*" usingBlock:^(TyphoonRXMLElement* child)
+        {
+            if ([[child tag] isEqualToString:@"ref"])
+            {
+                [property addItemWithComponentName:[child text]];
+            }
+            else if ([[child tag] isEqualToString:@"value"])
+            {
+                Class type = NSClassFromString([child attribute:@"requiredType"]);
+                if (!type)
+                {
+                    [NSException raise:NSInvalidArgumentException format:@"Type '%@' could not be resolved.",
+                                                                         [child attribute:@"requiredType"]];
+                }
+                [property addItemWithText:[child text] requiredType:type];
+            }
+        }];
+        NSLog(@"$$$$$$$$$$$$$$ Here's the injected property: %@", property);
+        injectedProperty = property;
+    }
     else
     {
         injectedProperty = [[TyphoonPropertyInjectedByType alloc] initWithName:propertyName];
     }
     return injectedProperty;
 }
+
 
 - (TyphoonInitializer*)asInitializer
 {
@@ -125,7 +156,6 @@
         [NSException raise:NSInvalidArgumentException format:@"Scope was '%@', but can only be 'singleton' or 'prototype'", scope];
     }
 }
-
 
 
 - (void)parseComponentDefinitionChildren:(TyphoonDefinition*)componentDefinition
