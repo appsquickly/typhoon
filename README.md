@@ -121,8 +121,8 @@ good compromise between integration testing and pure unit testing. (Biggest test
 For example a MasterCardPaymentEngine and a VisaPaymentEngine, both implementing a PaymentEngine protocol.
 (Some other DI containers for Objective-C have problems with this).*** 
 
-* Supports auto-wiring, for simple cases. For more complex gets straight-to-the-point without getting too "meta" 
-(aka annotaiton-crazy) by defining fragmented qualifiers and so forth. 
+* Supports auto-wiring "annotations" (macros), for simple cases. When convention-over-configuration doesn't provide a simple answer, it 
+gets straight-to-the-point by defining what depends on what. (No "meta" fragmented qualifier macros, etc). 
  
 * Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a 
 convenient document. Now you know where to look if you need to change something. 
