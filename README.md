@@ -130,7 +130,7 @@ convenient document. At the same time this document can be grouped into chapters
 * Supports both initializer and property injection. In the case of the latter, it has customizable call-backs to 
 ensure that the class is in the required state before and after properties are set. 
 
-* Flexibility. Supports different approaches of dependency injection for different scenarios - block-style, auto-wiring macros or Spring-style XML.
+* Flexibility. Supports different approaches of dependency injection for different scenarios - native block-style, auto-wiring macros or Spring-style XML.
 
 * Lean. It has a very low footprint, so is appropriate for CPU and memory constrained devices. 
 
