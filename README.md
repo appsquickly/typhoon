@@ -125,13 +125,12 @@ gets straight-to-the-point by defining what depends on what.***
 * Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a 
 convenient document. At the same time this document can be grouped into chapters. Now you know where to look if you need to change something. 
 
-* Non-invasive. Its not necessary to change ***any*** of your classes to use the framework. 
+* Non-invasive. Its not necessary to change ***any*** of your classes to use the framework. It does not swizzle your classes, so you can use the same class with or without dependency injection. 
 
 * Supports both initializer and property injection. In the case of the latter, it has customizable call-backs to 
 ensure that the class is in the required state before and after properties are set. 
 
-* Flexibility. Supports different approaches of dependency injection for different scenarios, including "annotations"
-and GUI tool-support. 
+* Flexibility. Supports different approaches of dependency injection for different scenarios. 
 
 * Lean. It has a very low footprint, so is appropriate for CPU and memory constrained devices. 
 
