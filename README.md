@@ -122,7 +122,8 @@ For example a MasterCardPaymentEngine and a VisaPaymentEngine, both implementing
 (Some other DI containers for Objective-C have problems with this).*** 
 
 * Supports auto-wiring "annotations" (macros), for simple cases. When convention-over-configuration doesn't provide a simple answer, it 
-gets straight-to-the-point by defining what depends on what. (No "meta" fragmented qualifier macros, etc). 
+gets straight-to-the-point by defining what depends on what. (No fragmented qualifier macros, etc this is all too "meta" 
+for my liking). 
  
 * Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a 
 convenient document. Now you know where to look if you need to change something. 
