@@ -118,10 +118,12 @@ following:
 good compromise between integration testing and pure unit testing. (Biggest testing bang-for-your-buck). 
 
 * ***Doesn't get all "meta" on you. Supports auto-wiring "annotations" (macros), for simple cases. When convention-over-configuration doesn't provide a simple answer, it 
-gets straight-to-the-point by defining what depends on what. (No fragmented qualifier macros, modules, etc). *** makes it easy to have multiple configurations of the same base-class or protocol. 
+gets straight-to-the-point by defining what depends on what.*** 
+
+* No fragmented qualifier macros, modules, etc. Makes it easy to have multiple configurations of the same base-class or protocol. 
  
 * Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a 
-convenient document. Now you know where to look if you need to change something. 
+convenient document. At the same time this document can be grouped into chapters. Now you know where to look if you need to change something. 
 
 * Non-invasive. Its not necessary to change ***any*** of your classes to use the framework. 
 
