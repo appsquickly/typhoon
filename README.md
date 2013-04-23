@@ -123,7 +123,7 @@ For example a MasterCardPaymentEngine and a VisaPaymentEngine, both implementing
 * Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a 
 convenient document. Now you know where to look if you need to change something. 
 
-* Non-invasive.
+* Non-invasive. Its not necessary to change ***any*** of your classes to use the framework. 
 
 * Supports both initializer and property injection. In the case of the latter, it has customizable call-backs to 
 ensure that the class is in the required state before and after properties are set. 
