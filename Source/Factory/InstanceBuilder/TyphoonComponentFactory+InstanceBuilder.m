@@ -63,6 +63,25 @@
     return instance;
 }
 
+- (void)injectPropertyDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
+{
+    [self doBeforePropertyInjectionOn:instance withDefinition:definition];
+    
+    for (id <TyphoonInjectedProperty> property in [definition injectedProperties])
+    {
+        TyphoonTypeDescriptor* typeDescriptor = [instance typeForPropertyWithName:property.name];
+        if (typeDescriptor == nil)
+        {
+            [NSException raise:NSInvalidArgumentException
+                        format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",
+             property.name, [instance class]];
+        }
+        [self doPropertyInjection:instance property:property typeDescriptor:typeDescriptor];
+    }
+    
+    [self doAfterPropertyInjectionOn:instance withDefinition:definition];
+}
+
 
 /* ============================================================ Private Methods ========================================================= */
 - (id)invokeInitializerOn:(id)instanceOrClass withDefinition:(TyphoonDefinition*)definition
@@ -99,25 +118,6 @@
 
 /* ====================================================================================================================================== */
 #pragma mark - Property Injection
-
-- (void)injectPropertyDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
-{
-    [self doBeforePropertyInjectionOn:instance withDefinition:definition];
-
-    for (id <TyphoonInjectedProperty> property in [definition injectedProperties])
-    {
-        TyphoonTypeDescriptor* typeDescriptor = [instance typeForPropertyWithName:property.name];
-        if (typeDescriptor == nil)
-        {
-            [NSException raise:NSInvalidArgumentException
-                    format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",
-                           property.name, [instance class]];
-        }
-        [self doPropertyInjection:instance property:property typeDescriptor:typeDescriptor];
-    }
-
-    [self doAfterPropertyInjectionOn:instance withDefinition:definition];
-}
 
 - (void)doBeforePropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
 {
