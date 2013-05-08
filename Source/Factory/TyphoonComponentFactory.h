@@ -70,4 +70,9 @@
 
 - (void)attachMutator:(id<TyphoonComponentFactoryMutator>)mutator;
 
+/**
+ * Injects the properties of an object
+ */
+- (void)injectProperties:(id)instance;
+
 @end

@@ -203,4 +203,22 @@ static NSString* const DEFAULT_QUEST = @"quest";
     assertThat(description, equalTo(@"<TyphoonComponentFactory: _registry=(\n)>"));
 }
 
+/* ====================================================================================================================================== */
+#pragma mark - Inject properties
+
+- (void)test_injectProperties
+{
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
+    {
+        [definition injectProperty:@selector(quest)];
+    }]];
+    [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
+    
+    Knight* knight = [[Knight alloc] init];
+    [_componentFactory injectProperties:knight];
+    
+    assertThat(knight.quest, notNilValue());
+
+}
+
 @end

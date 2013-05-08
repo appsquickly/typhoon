@@ -164,6 +164,16 @@ static TyphoonComponentFactory* defaultFactory;
     [_mutators addObject:mutator];
 }
 
+- (void)injectProperties:(id)instance {
+    Class class = [instance class];
+    for (TyphoonDefinition* definition in _registry)
+    {
+        if(definition.type == class || [definition.type isSubclassOfClass:class])
+        {
+            [self injectPropertyDependenciesOn:instance withDefinition:definition];
+        }
+    }
+}
 
 /* ============================================================ Utility Methods ========================================================= */
 - (NSString*)description
@@ -238,5 +248,7 @@ static TyphoonComponentFactory* defaultFactory;
         }
     }
 }
+
+
 
 @end
