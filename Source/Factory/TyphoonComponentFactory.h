@@ -73,6 +73,6 @@
 /**
  * Injects the properties of an object
  */
-- (void)injectInstance:(id)instance;
+- (void)injectProperties:(id)instance;
 
 @end

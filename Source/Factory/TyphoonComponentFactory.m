@@ -164,7 +164,7 @@ static TyphoonComponentFactory* defaultFactory;
     [_mutators addObject:mutator];
 }
 
-- (void)injectInstance:(id)instance {
+- (void)injectProperties:(id)instance {
     Class class = [instance class];
     for (TyphoonDefinition* definition in _registry)
     {

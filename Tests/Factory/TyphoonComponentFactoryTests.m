@@ -204,9 +204,9 @@ static NSString* const DEFAULT_QUEST = @"quest";
 }
 
 /* ====================================================================================================================================== */
-#pragma mark - Inject instance
+#pragma mark - Inject properties
 
-- (void)test_injectInstance
+- (void)test_injectProperties
 {
     [_componentFactory register:[TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
     {
@@ -215,7 +215,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
     [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
     
     Knight* knight = [[Knight alloc] init];
-    [_componentFactory injectInstance:knight];
+    [_componentFactory injectProperties:knight];
     
     assertThat(knight.quest, notNilValue());
 
