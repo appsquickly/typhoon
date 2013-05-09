@@ -168,7 +168,7 @@ static TyphoonComponentFactory* defaultFactory;
     Class class = [instance class];
     for (TyphoonDefinition* definition in _registry)
     {
-        if(definition.type == class || [definition.type isSubclassOfClass:class])
+        if(definition.type == class || [class isSubclassOfClass:definition.type])
         {
             [self injectPropertyDependenciesOn:instance withDefinition:definition];
         }
