@@ -233,16 +233,17 @@ static NSString* const DEFAULT_QUEST = @"quest";
                                  }]];
     [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
     
-    CavalryMan* cavelryMan = [[CavalryMan alloc] init];
-    [_componentFactory injectProperties:cavelryMan];
+    CavalryMan* cavalryMan = [[CavalryMan alloc] init];
+    [_componentFactory injectProperties:cavalryMan];
     
-    assertThat(cavelryMan.quest, notNilValue());
-    assertThatFloat(cavelryMan.hitRatio, equalToFloat(3.0f));
+    assertThat(cavalryMan.quest, nilValue());
+    assertThatFloat(cavalryMan.hitRatio, equalToFloat(3.0f));
     
     Knight* knight = [[Knight alloc] init];
     [_componentFactory injectProperties:knight];
     
     assertThat(knight.quest, notNilValue());
+
     
 }
 
