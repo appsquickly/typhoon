@@ -221,4 +221,31 @@ static NSString* const DEFAULT_QUEST = @"quest";
 
 }
 
+- (void)test_injectProperties_subclassing
+{
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
+                                 {
+                                     [definition injectProperty:@selector(quest)];
+                                 }]];
+    [_componentFactory register:[TyphoonDefinition withClass:[CavalryMan class] properties:^(TyphoonDefinition* definition)
+                                 {
+                                     [definition injectProperty:@selector(hitRatio) withValueAsText:@"3.0"];
+                                 }]];
+    [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
+    
+    CavalryMan* cavalryMan = [[CavalryMan alloc] init];
+    [_componentFactory injectProperties:cavalryMan];
+    
+    assertThat(cavalryMan.quest, nilValue());
+    assertThatFloat(cavalryMan.hitRatio, equalToFloat(3.0f));
+    
+    Knight* knight = [[Knight alloc] init];
+    [_componentFactory injectProperties:knight];
+    
+    assertThat(knight.quest, notNilValue());
+
+    
+}
+
+
 @end

@@ -87,27 +87,54 @@ static NSMutableArray* swizzleRegistry;
 {
     @synchronized (self)
     {
-        unsigned int methodCount;
-        Method* methodList = class_copyMethodList([assembly class], &methodCount);
-        for (int i = 0; i < methodCount; i++)
-        {
-            Method method = methodList[i];
-//            NSLog(@"Selector: %@", NSStringFromSelector(method_getName(method)));
-
-            int argumentCount = method_getNumberOfArguments(method);
-            if (argumentCount == 2)
-            {
-                SEL methodSelector = method_getName(method);
-                if (![[assembly class] selectorReserved:methodSelector])
-                {
-                    objc_msgSend(assembly, methodSelector);
-                }
-            }
-        }
+        NSSet *definitionSelectors = [self obtainDefinitionSelectors:assembly];
+        
+        [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+            objc_msgSend(assembly, (SEL)[obj pointerValue]);
+        }];
+        
         NSMutableDictionary* dictionary = [assembly cachedSelectors];
-        free(methodList);
         return [dictionary allValues];
     }
+}
+
+- (NSSet *)obtainDefinitionSelectors:(TyphoonAssembly*)assembly
+{
+    NSMutableSet *definitionSelectors = [[NSMutableSet alloc] init];
+    
+    Class currentClass = [assembly class];
+    while (strcmp(class_getName(currentClass), "TyphoonAssembly") != 0) {
+        [definitionSelectors unionSet:[self obtainDefinitionSelectorsInAssemblyClass:currentClass]];
+        currentClass = class_getSuperclass(currentClass);
+    }
+    
+    return definitionSelectors;
+}
+
+- (NSSet *)obtainDefinitionSelectorsInAssemblyClass:(Class)class
+{
+    NSMutableSet *definitionSelectors = [[NSMutableSet alloc] init];
+    
+    unsigned int methodCount;
+    Method* methodList = class_copyMethodList(class, &methodCount);
+    for (int i = 0; i < methodCount; i++)
+    {
+        Method method = methodList[i];
+        //            NSLog(@"Selector: %@", NSStringFromSelector(method_getName(method)));
+        
+        int argumentCount = method_getNumberOfArguments(method);
+        if (argumentCount == 2)
+        {
+            SEL methodSelector = method_getName(method);
+            if (![class selectorReserved:methodSelector])
+            {
+                [definitionSelectors addObject:[NSValue valueWithPointer:methodSelector]];
+            }
+        }
+    }
+    free(methodList);
+    
+    return definitionSelectors;
 }
 
 - (void)applyBeforeAdviceToAssemblyMethods:(TyphoonAssembly*)assembly
@@ -117,24 +144,14 @@ static NSMutableArray* swizzleRegistry;
         if (![swizzleRegistry containsObject:[assembly class]])
         {
             [swizzleRegistry addObject:[assembly class]];
-            unsigned int methodCount;
-            Method* methodList = class_copyMethodList([assembly class], &methodCount);
-            for (int i = 0; i < methodCount; i++)
-            {
-                Method method = methodList[i];
-                int argumentCount = method_getNumberOfArguments(method);
-                if (argumentCount == 2)
-                {
-                    SEL methodSelector = method_getName(method);
-                    if ([TyphoonAssembly selectorReserved:methodSelector] == NO)
-                    {
-                        SEL swizzled = NSSelectorFromString(
-                                [NSStringFromSelector(methodSelector) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
-                        [[assembly class] typhoon_swizzleMethod:methodSelector withMethod:swizzled error:nil];
-                    }
-                }
-            }
-            free(methodList);
+            
+            NSSet *definitionSelectors = [self obtainDefinitionSelectors:assembly];
+            [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+                SEL methodSelector = (SEL)[obj pointerValue];
+                SEL swizzled = NSSelectorFromString(
+                                                    [NSStringFromSelector(methodSelector) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
+                [[assembly class] typhoon_swizzleMethod:methodSelector withMethod:swizzled error:nil];
+            }];
         }
     }
 }
