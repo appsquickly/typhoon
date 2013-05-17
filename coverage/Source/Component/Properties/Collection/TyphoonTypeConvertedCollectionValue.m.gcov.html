@@ -74,31 +74,31 @@
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span>            : /* ============================================================ Initializers ============================================================ */
 <span class="lineNum">      18 </span>            : - (id)initWithTextValue:(NSString*)textValue requiredType:(Class)requiredType
-<span class="lineNum">      19 </span><span class="lineCov">         38 : {</span>
+<span class="lineNum">      19 </span><span class="lineCov">         56 : {</span>
 <span class="lineNum">      20 </span>            :     self = [super init];
-<span class="lineNum">      21 </span><span class="lineCov">         38 :     if (self)</span>
-<span class="lineNum">      22 </span><span class="lineCov">         38 :     {</span>
+<span class="lineNum">      21 </span><span class="lineCov">         56 :     if (self)</span>
+<span class="lineNum">      22 </span><span class="lineCov">         56 :     {</span>
 <span class="lineNum">      23 </span>            :         _textValue = textValue;
-<span class="lineNum">      24 </span><span class="lineCov">         38 :         _requiredType = requiredType;</span>
-<span class="lineNum">      25 </span><span class="lineCov">         38 :     }</span>
-<span class="lineNum">      26 </span><span class="lineCov">         38 :     return self;</span>
-<span class="lineNum">      27 </span><span class="lineCov">         38 : }</span>
-<span class="lineNum">      28 </span><span class="lineCov">         38 : </span>
+<span class="lineNum">      24 </span><span class="lineCov">         56 :         _requiredType = requiredType;</span>
+<span class="lineNum">      25 </span><span class="lineCov">         56 :     }</span>
+<span class="lineNum">      26 </span><span class="lineCov">         56 :     return self;</span>
+<span class="lineNum">      27 </span><span class="lineCov">         56 : }</span>
+<span class="lineNum">      28 </span><span class="lineCov">         56 : </span>
 <span class="lineNum">      29 </span>            : - (TyphoonCollectionValueType)type
-<span class="lineNum">      30 </span><span class="lineCov">          8 : {</span>
+<span class="lineNum">      30 </span><span class="lineCov">         12 : {</span>
 <span class="lineNum">      31 </span>            :     return TyphoonCollectionValueTypeConvertedText;
-<span class="lineNum">      32 </span><span class="lineCov">          8 : }</span>
+<span class="lineNum">      32 </span><span class="lineCov">         12 : }</span>
 <span class="lineNum">      33 </span>            : 
 <span class="lineNum">      34 </span>            : /* ============================================================ Utility Methods ========================================================= */
 <span class="lineNum">      35 </span>            : - (NSString*)description
-<span class="lineNum">      36 </span><span class="lineCov">         24 : {</span>
+<span class="lineNum">      36 </span><span class="lineCov">         26 : {</span>
 <span class="lineNum">      37 </span>            :     NSMutableString* description = [NSMutableString stringWithFormat:@&quot;&lt;%@: &quot;, NSStringFromClass([self class])];
-<span class="lineNum">      38 </span><span class="lineCov">         24 :     [description appendFormat:@&quot;self.textValue=%@&quot;, self.textValue];</span>
-<span class="lineNum">      39 </span><span class="lineCov">         24 :     [description appendFormat:@&quot;, self.requiredType=%@&quot;, self.requiredType];</span>
-<span class="lineNum">      40 </span><span class="lineCov">         24 :     [description appendString:@&quot;&gt;&quot;];</span>
-<span class="lineNum">      41 </span><span class="lineCov">         24 :     return description;</span>
-<span class="lineNum">      42 </span><span class="lineCov">         48 : }</span>
-<span class="lineNum">      43 </span><span class="lineCov">         24 : </span>
+<span class="lineNum">      38 </span><span class="lineCov">         26 :     [description appendFormat:@&quot;self.textValue=%@&quot;, self.textValue];</span>
+<span class="lineNum">      39 </span><span class="lineCov">         26 :     [description appendFormat:@&quot;, self.requiredType=%@&quot;, self.requiredType];</span>
+<span class="lineNum">      40 </span><span class="lineCov">         26 :     [description appendString:@&quot;&gt;&quot;];</span>
+<span class="lineNum">      41 </span><span class="lineCov">         26 :     return description;</span>
+<span class="lineNum">      42 </span><span class="lineCov">         52 : }</span>
+<span class="lineNum">      43 </span><span class="lineCov">         26 : </span>
 <span class="lineNum">      44 </span>            : @end
 </pre>
       </td>

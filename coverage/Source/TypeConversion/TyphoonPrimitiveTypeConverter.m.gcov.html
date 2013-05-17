@@ -141,21 +141,21 @@
 <span class="lineNum">      83 </span><span class="lineCov">          2 :     return [[NSNumber numberWithLong:converted] unsignedLongValue];</span>
 <span class="lineNum">      84 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      85 </span>            : 
-<span class="lineNum">      86 </span><span class="lineCov">         12 : - (unsigned long long)convertToUnsignedLongLong:(NSString*)stringValue</span>
+<span class="lineNum">      86 </span><span class="lineCov">         15 : - (unsigned long long)convertToUnsignedLongLong:(NSString*)stringValue</span>
 <span class="lineNum">      87 </span>            : {
-<span class="lineNum">      88 </span><span class="lineCov">         12 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
-<span class="lineNum">      89 </span><span class="lineCov">         12 :     long long converted = 0;</span>
-<span class="lineNum">      90 </span><span class="lineCov">         12 :     [scanner scanLongLong:&amp;converted];</span>
-<span class="lineNum">      91 </span><span class="lineCov">         24 :     return [[NSNumber numberWithLongLong:converted] unsignedLongValue];</span>
-<span class="lineNum">      92 </span><span class="lineCov">         12 : }</span>
+<span class="lineNum">      88 </span><span class="lineCov">         15 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      89 </span><span class="lineCov">         15 :     long long converted = 0;</span>
+<span class="lineNum">      90 </span><span class="lineCov">         15 :     [scanner scanLongLong:&amp;converted];</span>
+<span class="lineNum">      91 </span><span class="lineCov">         30 :     return [[NSNumber numberWithLongLong:converted] unsignedLongValue];</span>
+<span class="lineNum">      92 </span><span class="lineCov">         15 : }</span>
 <span class="lineNum">      93 </span>            : 
-<span class="lineNum">      94 </span><span class="lineCov">          5 : - (float)convertToFloat:(NSString*)stringValue</span>
+<span class="lineNum">      94 </span><span class="lineCov">          7 : - (float)convertToFloat:(NSString*)stringValue</span>
 <span class="lineNum">      95 </span>            : {
-<span class="lineNum">      96 </span><span class="lineCov">          5 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
-<span class="lineNum">      97 </span><span class="lineCov">          5 :     float converted = 0;</span>
-<span class="lineNum">      98 </span><span class="lineCov">          5 :     [scanner scanFloat:&amp;converted];</span>
-<span class="lineNum">      99 </span><span class="lineCov">         10 :     return converted;</span>
-<span class="lineNum">     100 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">      96 </span><span class="lineCov">          7 :     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];</span>
+<span class="lineNum">      97 </span><span class="lineCov">          7 :     float converted = 0;</span>
+<span class="lineNum">      98 </span><span class="lineCov">          7 :     [scanner scanFloat:&amp;converted];</span>
+<span class="lineNum">      99 </span><span class="lineCov">         14 :     return converted;</span>
+<span class="lineNum">     100 </span><span class="lineCov">          7 : }</span>
 <span class="lineNum">     101 </span>            : 
 <span class="lineNum">     102 </span><span class="lineCov">          2 : - (double)convertToDouble:(NSString*)stringValue</span>
 <span class="lineNum">     103 </span>            : {
@@ -165,10 +165,10 @@
 <span class="lineNum">     107 </span><span class="lineCov">          4 :     return converted;</span>
 <span class="lineNum">     108 </span><span class="lineCov">          2 : }</span>
 <span class="lineNum">     109 </span>            : 
-<span class="lineNum">     110 </span><span class="lineCov">         13 : - (BOOL)convertToBoolean:(NSString*)stringValue</span>
+<span class="lineNum">     110 </span><span class="lineCov">         16 : - (BOOL)convertToBoolean:(NSString*)stringValue</span>
 <span class="lineNum">     111 </span>            : {
-<span class="lineNum">     112 </span><span class="lineCov">         26 :     return [stringValue boolValue];</span>
-<span class="lineNum">     113 </span><span class="lineCov">         13 : }</span>
+<span class="lineNum">     112 </span><span class="lineCov">         32 :     return [stringValue boolValue];</span>
+<span class="lineNum">     113 </span><span class="lineCov">         16 : }</span>
 <span class="lineNum">     114 </span>            : 
 <span class="lineNum">     115 </span><span class="lineCov">          2 : - (const char*)convertToCString:(NSString*)stringValue</span>
 <span class="lineNum">     116 </span>            : {
@@ -187,79 +187,79 @@
 <span class="lineNum">     129 </span>            : 
 <span class="lineNum">     130 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     131 </span>            : - (void)setPrimitiveArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index textValue:(NSString*)textValue
-<span class="lineNum">     132 </span><span class="lineCov">         30 :         requiredType:(TyphoonTypeDescriptor*)requiredType</span>
-<span class="lineNum">     133 </span><span class="lineCov">         30 : {</span>
+<span class="lineNum">     132 </span><span class="lineCov">         38 :         requiredType:(TyphoonTypeDescriptor*)requiredType</span>
+<span class="lineNum">     133 </span><span class="lineCov">         38 : {</span>
 <span class="lineNum">     134 </span>            :     if (requiredType.primitiveType == TyphoonPrimitiveTypeBoolean || requiredType.primitiveType == TyphoonPrimitiveTypeChar)
-<span class="lineNum">     135 </span><span class="lineCov">         30 :     {</span>
+<span class="lineNum">     135 </span><span class="lineCov">         38 :     {</span>
 <span class="lineNum">     136 </span>            :         BOOL converted = [self convertToBoolean:textValue];
-<span class="lineNum">     137 </span><span class="lineCov">          7 :         [invocation setArgument:&amp;converted atIndex:index];</span>
-<span class="lineNum">     138 </span><span class="lineCov">          7 :     }</span>
-<span class="lineNum">     139 </span><span class="lineCov">          7 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeClass)</span>
-<span class="lineNum">     140 </span><span class="lineCov">         23 :     {</span>
+<span class="lineNum">     137 </span><span class="lineCov">         10 :         [invocation setArgument:&amp;converted atIndex:index];</span>
+<span class="lineNum">     138 </span><span class="lineCov">         10 :     }</span>
+<span class="lineNum">     139 </span><span class="lineCov">         10 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeClass)</span>
+<span class="lineNum">     140 </span><span class="lineCov">         28 :     {</span>
 <span class="lineNum">     141 </span>            :         Class converted = [self convertToClass:textValue];
 <span class="lineNum">     142 </span><span class="lineCov">          1 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     143 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">     144 </span><span class="lineCov">          1 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeDouble)</span>
-<span class="lineNum">     145 </span><span class="lineCov">         22 :     {</span>
+<span class="lineNum">     145 </span><span class="lineCov">         27 :     {</span>
 <span class="lineNum">     146 </span>            :         double converted = [self convertToDouble:textValue];
 <span class="lineNum">     147 </span><span class="lineCov">          1 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     148 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">     149 </span><span class="lineCov">          1 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeFloat)</span>
-<span class="lineNum">     150 </span><span class="lineCov">         21 :     {</span>
+<span class="lineNum">     150 </span><span class="lineCov">         26 :     {</span>
 <span class="lineNum">     151 </span>            :         float converted = [self convertToFloat:textValue];
-<span class="lineNum">     152 </span><span class="lineCov">          5 :         [invocation setArgument:&amp;converted atIndex:index];</span>
-<span class="lineNum">     153 </span><span class="lineCov">          5 :     }</span>
-<span class="lineNum">     154 </span><span class="lineCov">          5 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeInt)</span>
-<span class="lineNum">     155 </span><span class="lineCov">         16 :     {</span>
+<span class="lineNum">     152 </span><span class="lineCov">          7 :         [invocation setArgument:&amp;converted atIndex:index];</span>
+<span class="lineNum">     153 </span><span class="lineCov">          7 :     }</span>
+<span class="lineNum">     154 </span><span class="lineCov">          7 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeInt)</span>
+<span class="lineNum">     155 </span><span class="lineCov">         19 :     {</span>
 <span class="lineNum">     156 </span>            :         int converted = [self convertToInt:textValue];
 <span class="lineNum">     157 </span><span class="lineCov">          1 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     158 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">     159 </span><span class="lineCov">          1 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeLong)</span>
-<span class="lineNum">     160 </span><span class="lineCov">         15 :     {</span>
+<span class="lineNum">     160 </span><span class="lineCov">         18 :     {</span>
 <span class="lineNum">     161 </span>            :         long converted = [self convertToLong:textValue];
 <span class="lineNum">     162 </span><span class="lineNoCov">          0 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     163 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     164 </span><span class="lineNoCov">          0 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeLongLong)</span>
-<span class="lineNum">     165 </span><span class="lineCov">         15 :     {</span>
+<span class="lineNum">     165 </span><span class="lineCov">         18 :     {</span>
 <span class="lineNum">     166 </span>            :         long long converted = [self convertToLongLong:textValue];
 <span class="lineNum">     167 </span><span class="lineCov">          1 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     168 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">     169 </span><span class="lineCov">          1 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeSelector)</span>
-<span class="lineNum">     170 </span><span class="lineCov">         14 :     {</span>
+<span class="lineNum">     170 </span><span class="lineCov">         17 :     {</span>
 <span class="lineNum">     171 </span>            :         SEL converted = [self convertToSelector:textValue];
 <span class="lineNum">     172 </span><span class="lineCov">          1 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     173 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">     174 </span><span class="lineCov">          1 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeString)</span>
-<span class="lineNum">     175 </span><span class="lineCov">         13 :     {</span>
+<span class="lineNum">     175 </span><span class="lineCov">         16 :     {</span>
 <span class="lineNum">     176 </span>            :         const char* converted = [self convertToCString:textValue];
 <span class="lineNum">     177 </span><span class="lineCov">          1 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     178 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">     179 </span><span class="lineCov">          1 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedChar)</span>
-<span class="lineNum">     180 </span><span class="lineCov">         12 :     {</span>
+<span class="lineNum">     180 </span><span class="lineCov">         15 :     {</span>
 <span class="lineNum">     181 </span>            :         unsigned char converted = [self convertToUnsignedChar:textValue];
 <span class="lineNum">     182 </span><span class="lineCov">          1 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     183 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">     184 </span><span class="lineCov">          1 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedInt)</span>
-<span class="lineNum">     185 </span><span class="lineCov">         11 :     {</span>
+<span class="lineNum">     185 </span><span class="lineCov">         14 :     {</span>
 <span class="lineNum">     186 </span>            :         unsigned int converted = [self convertToUnsignedInt:textValue];
 <span class="lineNum">     187 </span><span class="lineCov">          1 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     188 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">     189 </span><span class="lineCov">          1 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedLong)</span>
-<span class="lineNum">     190 </span><span class="lineCov">         10 :     {</span>
+<span class="lineNum">     190 </span><span class="lineCov">         13 :     {</span>
 <span class="lineNum">     191 </span>            :         unsigned long converted = [self convertToUnsignedLong:textValue];
 <span class="lineNum">     192 </span><span class="lineNoCov">          0 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     193 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     194 </span><span class="lineNoCov">          0 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedLongLong)</span>
-<span class="lineNum">     195 </span><span class="lineCov">         10 :     {</span>
+<span class="lineNum">     195 </span><span class="lineCov">         13 :     {</span>
 <span class="lineNum">     196 </span>            :         unsigned long long converted = [self convertToUnsignedLongLong:textValue];
-<span class="lineNum">     197 </span><span class="lineCov">         10 :         [invocation setArgument:&amp;converted atIndex:index];</span>
-<span class="lineNum">     198 </span><span class="lineCov">         10 :     }</span>
-<span class="lineNum">     199 </span><span class="lineCov">         10 :     else</span>
+<span class="lineNum">     197 </span><span class="lineCov">         13 :         [invocation setArgument:&amp;converted atIndex:index];</span>
+<span class="lineNum">     198 </span><span class="lineCov">         13 :     }</span>
+<span class="lineNum">     199 </span><span class="lineCov">         13 :     else</span>
 <span class="lineNum">     200 </span>            :     {
 <span class="lineNum">     201 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;Type for %@ is not supported.&quot;, requiredType];
 <span class="lineNum">     202 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     203 </span>            : }
-<span class="lineNum">     204 </span><span class="lineCov">         30 : </span>
+<span class="lineNum">     204 </span><span class="lineCov">         38 : </span>
 <span class="lineNum">     205 </span>            : 
 <span class="lineNum">     206 </span>            : @end
 </pre>

@@ -85,17 +85,17 @@
 <span class="lineNum">      27 </span><span class="lineCov">          2 : }</span>
 <span class="lineNum">      28 </span>            : 
 <span class="lineNum">      29 </span>            : /* =========================================================== Protocol Methods ========================================================= */
-<span class="lineNum">      30 </span><span class="lineCov">         11 : - (id)convert:(NSString*)stringValue</span>
+<span class="lineNum">      30 </span><span class="lineCov">         15 : - (id)convert:(NSString*)stringValue</span>
 <span class="lineNum">      31 </span>            : {
-<span class="lineNum">      32 </span><span class="lineCov">         11 :     if (_isMutable)</span>
+<span class="lineNum">      32 </span><span class="lineCov">         15 :     if (_isMutable)</span>
 <span class="lineNum">      33 </span>            :     {
 <span class="lineNum">      34 </span><span class="lineCov">          1 :         return [NSMutableString stringWithString:stringValue];</span>
 <span class="lineNum">      35 </span>            :     }
 <span class="lineNum">      36 </span>            :     else
 <span class="lineNum">      37 </span>            :     {
-<span class="lineNum">      38 </span><span class="lineCov">         10 :         return [NSString stringWithString:stringValue];</span>
+<span class="lineNum">      38 </span><span class="lineCov">         14 :         return [NSString stringWithString:stringValue];</span>
 <span class="lineNum">      39 </span>            :     }
-<span class="lineNum">      40 </span><span class="lineCov">         11 : }</span>
+<span class="lineNum">      40 </span><span class="lineCov">         15 : }</span>
 <span class="lineNum">      41 </span>            : 
 <span class="lineNum">      42 </span>            : 
 <span class="lineNum">      43 </span>            : @end
