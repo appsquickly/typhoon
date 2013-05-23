@@ -15,6 +15,7 @@
 #import "TyphoonParameterInjectedByReference.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
 #import "TyphoonParameterInjectedByValue.h"
+#import "TyphoonParameterInjectedByRawValue.h"
 #import "TyphoonDefinition.h"
 
 
@@ -98,6 +99,24 @@
 - (void)injectWithText:(NSString*)text requiredTypeOrNil:(id)requiredTypeOrNil
 {
     [self injectParameterAtIndex:[_injectedParameters count] withValueAsText:text requiredTypeOrNil:requiredTypeOrNil];
+}
+
+- (void)injectParameterAtIndex:(NSUInteger)index withValue:(id)value
+{
+    if (index != NSUIntegerMax && index < [_parameterNames count])
+    {
+        [_injectedParameters addObject:[[TyphoonParameterInjectedByRawValue alloc] initWithParameterIndex:index value:value]];
+    }
+}
+
+- (void)injectParameterNamed:(NSString*)name withValue:(id)value
+{
+    [self injectParameterAtIndex:[self indexOfParameter:name] withValue:value];
+}
+
+- (void)injectParameterWithValue:(id)value
+{
+    [self injectParameterAtIndex:[_injectedParameters count] withValue:value];
 }
 
 /* ====================================================================================================================================== */

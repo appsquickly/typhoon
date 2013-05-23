@@ -28,6 +28,7 @@
 #import "TyphoonCollectionValue.h"
 #import "TyphoonByReferenceCollectionValue.h"
 #import "TyphoonTypeConvertedCollectionValue.h"
+#import "TyphoonParameterInjectedByRawValue.h"
 
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
@@ -101,6 +102,12 @@
             TyphoonParameterInjectedByValue* byValue = (TyphoonParameterInjectedByValue*) parameter;
             [self setArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue
                     requiredType:[byValue resolveTypeWith:instanceOrClass]];
+        }
+        else if (parameter.type == TyphoonParameterInjectedByRawValueType)
+        {
+            TyphoonParameterInjectedByRawValue* byValue = (TyphoonParameterInjectedByRawValue*) parameter;
+            id value = byValue.value;
+            [invocation setArgument:&value atIndex:parameter.index + 2];
         }
     }
     [invocation invoke];
