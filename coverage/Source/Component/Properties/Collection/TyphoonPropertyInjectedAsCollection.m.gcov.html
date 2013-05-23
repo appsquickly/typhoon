@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-05-20</td>
+            <td class="headerValue">2013-05-23</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -80,24 +80,24 @@
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : 
 <span class="lineNum">      24 </span>            : /* ============================================================ Initializers ============================================================ */
-<span class="lineNum">      25 </span><span class="lineCov">         34 : - (id)initWithName:(NSString*)name</span>
+<span class="lineNum">      25 </span><span class="lineCov">         35 : - (id)initWithName:(NSString*)name</span>
 <span class="lineNum">      26 </span>            : {
-<span class="lineNum">      27 </span><span class="lineCov">         34 :     self = [super init];</span>
-<span class="lineNum">      28 </span><span class="lineCov">         34 :     if (self)</span>
+<span class="lineNum">      27 </span><span class="lineCov">         35 :     self = [super init];</span>
+<span class="lineNum">      28 </span><span class="lineCov">         35 :     if (self)</span>
 <span class="lineNum">      29 </span>            :     {
-<span class="lineNum">      30 </span><span class="lineCov">         34 :         _name = name;</span>
-<span class="lineNum">      31 </span><span class="lineCov">         34 :         _values = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      32 </span><span class="lineCov">         34 :     }</span>
-<span class="lineNum">      33 </span><span class="lineCov">         34 :     return self;</span>
-<span class="lineNum">      34 </span><span class="lineCov">         34 : }</span>
+<span class="lineNum">      30 </span><span class="lineCov">         35 :         _name = name;</span>
+<span class="lineNum">      31 </span><span class="lineCov">         35 :         _values = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      32 </span><span class="lineCov">         35 :     }</span>
+<span class="lineNum">      33 </span><span class="lineCov">         35 :     return self;</span>
+<span class="lineNum">      34 </span><span class="lineCov">         35 : }</span>
 <span class="lineNum">      35 </span>            : 
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : /* ========================================================== Interface Methods ========================================================= */
 <span class="lineNum">      38 </span>            : - (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType
-<span class="lineNum">      39 </span><span class="lineCov">         56 : {</span>
+<span class="lineNum">      39 </span><span class="lineCov">         58 : {</span>
 <span class="lineNum">      40 </span>            :     [_values addObject:[[TyphoonTypeConvertedCollectionValue alloc] initWithTextValue:text requiredType:requiredType]];
-<span class="lineNum">      41 </span><span class="lineCov">         56 : }</span>
-<span class="lineNum">      42 </span><span class="lineCov">         56 : </span>
+<span class="lineNum">      41 </span><span class="lineCov">         58 : }</span>
+<span class="lineNum">      42 </span><span class="lineCov">         58 : </span>
 <span class="lineNum">      43 </span>            : - (void)addItemWithComponentName:(NSString*)componentName
 <span class="lineNum">      44 </span><span class="lineNoCov">          0 : {</span>
 <span class="lineNum">      45 </span>            :     [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:componentName]];

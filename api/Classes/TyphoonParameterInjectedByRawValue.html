@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>TyphoonIntrospectionUtils Class Reference</title>
+		<title>TyphoonParameterInjectedByRawValue Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">TyphoonIntrospectionUtils Class Reference</h1>
+				<h1 class="hideInXcode">TyphoonParameterInjectedByRawValue Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -36,15 +36,22 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/index">&nbsp;&nbsp;&nbsp;&nbsp;index</option>
+	
+	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
+	
+	<option value="//api/name/value">&nbsp;&nbsp;&nbsp;&nbsp;value</option>
 	
 	
-	<option value="class_methods">Class Methods</option>
-	
-	<option value="//api/name/typeCodesForSelector:ofClass:isClassMethod:">&nbsp;&nbsp;&nbsp;&nbsp;+ typeCodesForSelector:ofClass:isClassMethod:</option>
-	
-	<option value="//api/name/typeForPropertyWithName:inClass:">&nbsp;&nbsp;&nbsp;&nbsp;+ typeForPropertyWithName:inClass:</option>
 	
 	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/initWithParameterIndex:value:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithParameterIndex:value:</option>
 	
 	
 	
@@ -66,24 +73,32 @@
 
 
 
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/typeCodesForSelector:ofClass:isClassMethod:">typeCodesForSelector:ofClass:isClassMethod:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/index">index</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/typeForPropertyWithName:inClass:">typeForPropertyWithName:inClass:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/type">type</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/value">value</a></span></li>
 	
 </ul></li>
 
 
 
 
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithParameterIndex:value:">initWithParameterIndex:value:</a></span></li>
+	
+</ul></li>
+
+
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="TyphoonIntrospectionUtils Class Reference" name="top"></a>
+				<a title="TyphoonParameterInjectedByRawValue Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -92,7 +107,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">TyphoonIntrospectionUtils Class Reference</h1>
+						<h1 class="title title-header">TyphoonParameterInjectedByRawValue Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -102,8 +117,11 @@
 	<td class="specification-title">Inherits from</td>
 	<td class="specification-value">NSObject</td>
 </tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value"><a href="../Protocols/TyphoonInjectedParameter.html">TyphoonInjectedParameter</a></td>
+</tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">TyphoonIntrospectionUtils.h</td>
+	<td class="specification-value">TyphoonParameterInjectedByRawValue.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -123,14 +141,28 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/typeCodesForSelector:ofClass:isClassMethod:">+&nbsp;typeCodesForSelector:ofClass:isClassMethod:</a></code>
+		<code><a href="#//api/name/index">&nbsp;&nbsp;index</a></code>
 		
 	</span>
-	
+	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/typeForPropertyWithName:inClass:">+&nbsp;typeForPropertyWithName:inClass:</a></code>
+		<code><a href="#//api/name/type">&nbsp;&nbsp;type</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/value">&nbsp;&nbsp;value</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithParameterIndex:value:">&ndash;&nbsp;initWithParameterIndex:value:</a></code>
 		
 	</span>
 	
@@ -144,30 +176,39 @@
 					
 					
 					
-					
-					
 					<div class="section section-methods">
-						<a title="Class Methods" name="class_methods"></a>
-						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/typeCodesForSelector:ofClass:isClassMethod:" title="typeCodesForSelector:ofClass:isClassMethod:"></a>
-	<h3 class="subsubtitle method-title">typeCodesForSelector:ofClass:isClassMethod:</h3>
+	<a name="//api/name/index" title="index"></a>
+	<h3 class="subsubtitle method-title">index</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (NSArray *)typeCodesForSelector:(SEL)<em>selector</em> ofClass:(Class)<em>clazz</em> isClassMethod:(BOOL)<em>isClassMethod</em></code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSUInteger index</code></div>
 
     
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/typeForPropertyWithName:inClass:" title="typeForPropertyWithName:inClass:"></a>
-	<h3 class="subsubtitle method-title">typeForPropertyWithName:inClass:</h3>
+	<a name="//api/name/type" title="type"></a>
+	<h3 class="subsubtitle method-title">type</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (TyphoonTypeDescriptor *)typeForPropertyWithName:(NSString *)<em>propertyName</em> inClass:(Class)<em>clazz</em></code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) TyphoonParameterInjectionType type</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/value" title="value"></a>
+	<h3 class="subsubtitle method-title">value</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) id value</code></div>
 
     
 </div>
@@ -175,6 +216,25 @@
 					</div>
 					
 					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithParameterIndex:value:" title="initWithParameterIndex:value:"></a>
+	<h3 class="subsubtitle method-title">initWithParameterIndex:value:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithParameterIndex:(NSUInteger)<em>index</em> value:(id)<em>value</em></code></div>
+
+    
+</div>
+						
+					</div>
 					
 					
 				</div>

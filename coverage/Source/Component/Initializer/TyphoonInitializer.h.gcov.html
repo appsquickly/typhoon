@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-05-20</td>
+            <td class="headerValue">2013-05-23</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -118,7 +118,12 @@
 <span class="lineNum">      60 </span>            : 
 <span class="lineNum">      61 </span>            : - (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonDefinition*)definition;
 <span class="lineNum">      62 </span>            : 
-<span class="lineNum">      63 </span>            : @end
+<span class="lineNum">      63 </span>            : - (void)injectParameterAtIndex:(NSUInteger)index withValue:(id)value;
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span>            : - (void)injectParameterNamed:(NSString*)name withValue:(id)value;
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span>            : - (void)injectParameterWithValue:(id)value;
+<span class="lineNum">      68 </span>            : @end
 </pre>
       </td>
     </tr>
