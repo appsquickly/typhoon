@@ -17,6 +17,8 @@
 		6B7CE44516C74919002E0107 /* OCMockito.framework in Install Hamcrest and Mockito */ = {isa = PBXBuildFile; fileRef = 6B7CE44416C74919002E0107 /* OCMockito.framework */; };
 		6BD2B6DE16AC02DD0066C5DB /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BD2B6DD16AC02DD0066C5DB /* OCHamcrest.framework */; };
 		6BD2B6E216AC031B0066C5DB /* OCHamcrest.framework in Install Hamcrest and Mockito */ = {isa = PBXBuildFile; fileRef = 6BD2B6E116AC031B0066C5DB /* OCHamcrest.framework */; };
+		B594F87F174DF32800BF5DC5 /* TyphoonParameterInjectedByRawValue.m in Sources */ = {isa = PBXBuildFile; fileRef = B594F87E174DF32800BF5DC5 /* TyphoonParameterInjectedByRawValue.m */; };
+		B594F880174DF32E00BF5DC5 /* TyphoonParameterInjectedByRawValue.m in Sources */ = {isa = PBXBuildFile; fileRef = B594F87E174DF32800BF5DC5 /* TyphoonParameterInjectedByRawValue.m */; };
 		BA79800736608E888611A7B3 /* TyphoonParameterInjectedByReference.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798E2173A9C04887B7291B /* TyphoonParameterInjectedByReference.h */; };
 		BA79800B110019810E388455 /* TyphoonXmlComponentFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798CE9339A8FBFF40E4B13 /* TyphoonXmlComponentFactoryTests.m */; };
 		BA79800FBAC7DD90540E5AD0 /* AutoWiringKnight.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798705F411B8128A8D3DE5 /* AutoWiringKnight.m */; };
@@ -216,6 +218,8 @@
 		6B7CE44416C74919002E0107 /* OCMockito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMockito.framework; path = External/OCMockito.framework; sourceTree = "<group>"; };
 		6BD2B6DD16AC02DD0066C5DB /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrest.framework; path = External/OCHamcrest.framework; sourceTree = "<group>"; };
 		6BD2B6E116AC031B0066C5DB /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrest.framework; path = External/OCHamcrest.framework; sourceTree = "<group>"; };
+		B594F87D174DF32700BF5DC5 /* TyphoonParameterInjectedByRawValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonParameterInjectedByRawValue.h; sourceTree = "<group>"; };
+		B594F87E174DF32800BF5DC5 /* TyphoonParameterInjectedByRawValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonParameterInjectedByRawValue.m; sourceTree = "<group>"; };
 		BA798012692BC6CFD0CCB60F /* TyphoonInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonInitializer.h; sourceTree = "<group>"; };
 		BA79801A7ED2DD0708D6AF5F /* TyphoonTypeDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonTypeDescriptor.m; sourceTree = "<group>"; };
 		BA79801AE4DCFB941CCC29CF /* TyphoonDefinitionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonDefinitionTests.m; sourceTree = "<group>"; };
@@ -791,6 +795,8 @@
 				BA79832904B8D31EAB17C3CE /* TyphoonParameterInjectedByReference.m */,
 				BA79866B01F50CC47F6507CE /* TyphoonParameterInjectedByValue.h */,
 				BA7987099DAD3FC6A242E863 /* TyphoonParameterInjectedByValue.m */,
+				B594F87D174DF32700BF5DC5 /* TyphoonParameterInjectedByRawValue.h */,
+				B594F87E174DF32800BF5DC5 /* TyphoonParameterInjectedByRawValue.m */,
 			);
 			path = Initializer;
 			sourceTree = "<group>";
@@ -1047,6 +1053,7 @@
 				BA7982E1BDA4C7924D7285BB /* TyphoonPropertyInjectedAsCollectionTests.m in Sources */,
 				1D7493181746216900EAB208 /* MiddleAgesAssemblyOverride.m in Sources */,
 				1D74931C17462B8300EAB208 /* TyphoonBlockComponentFactoryOverrideTests.m in Sources */,
+				B594F87F174DF32800BF5DC5 /* TyphoonParameterInjectedByRawValue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1087,6 +1094,7 @@
 				BA798917A7860D9B8DC321BE /* TyphoonPropertyInjectedAsCollection.m in Sources */,
 				BA798A4C71CEC4CDB76D64B1 /* TyphoonByReferenceCollectionValue.m in Sources */,
 				BA798FC40F89DECD91733E69 /* TyphoonTypeConvertedCollectionValue.m in Sources */,
+				B594F880174DF32E00BF5DC5 /* TyphoonParameterInjectedByRawValue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

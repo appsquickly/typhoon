@@ -8,6 +8,7 @@
 
 #import "MiddleAgesAssemblyOverride.h"
 #import "TyphoonDefinition.h"
+#import "TyphoonInitializer.h"
 #import "Knight.h"
 
 
@@ -21,6 +22,16 @@
                 [definition injectProperty:@selector(damselsRescued) withValueAsText:@"50"]; // different from parent assembly definition
                 [definition setScope:TyphoonScopeDefault];
             }];
+}
+
+- (id)testString
+{
+    return [TyphoonDefinition withClass:[NSDictionary class] initialization:^(TyphoonInitializer* initializer)
+            {
+                initializer.selector = @selector(initWithDictionary:);
+                [initializer injectParameterWithValue:@{@"test": @123}];
+            }];
+
 }
 
 @end
