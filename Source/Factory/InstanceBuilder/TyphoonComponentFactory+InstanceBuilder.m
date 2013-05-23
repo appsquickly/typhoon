@@ -104,16 +104,9 @@
         }
     }
     [invocation invoke];
-    if (definition.initializer.isClassMethod || definition.factoryReference)
-    {
-        __autoreleasing id <NSObject> returnValue = nil;
-        [invocation getReturnValue:&returnValue];
-        return returnValue;
-    }
-    else
-    {
-        return instanceOrClass;
-    }
+    __autoreleasing id <NSObject> returnValue = nil;
+    [invocation getReturnValue:&returnValue];
+    return returnValue;
 }
 
 /* ====================================================================================================================================== */
