@@ -44,4 +44,11 @@
     assertThatUnsignedLongLong(knight.damselsRescued, equalToUnsignedLongLong(50));
 }
 
+- (void)test_injects_properties_by_raw_value
+{
+    NSDictionary* string = [_componentFactory componentForType:[NSDictionary class]];
+//    assertThat(string, notNilValue());
+//    assertThat(string, equalTo(@"test string"));
+}
+
 @end

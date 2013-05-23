@@ -60,4 +60,9 @@ typedef enum
 
 - (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonDefinition*)definition;
 
+- (void)injectParameterAtIndex:(NSUInteger)index withValue:(id)value;
+
+- (void)injectParameterNamed:(NSString*)name withValue:(id)value;
+
+- (void)injectParameterWithValue:(id)value;
 @end
