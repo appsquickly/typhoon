@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-05-23</td>
+            <td class="headerValue">2013-05-24</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -76,49 +76,49 @@
 <span class="lineNum">      18 </span><span class="lineCov">          7 : @implementation TyphoonXmlComponentFactory</span>
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : /* ============================================================ Initializers ============================================================ */
-<span class="lineNum">      21 </span><span class="lineCov">         27 : - (id)initWithConfigFileName:(NSString*)configFileName</span>
+<span class="lineNum">      21 </span><span class="lineCov">         29 : - (id)initWithConfigFileName:(NSString*)configFileName</span>
 <span class="lineNum">      22 </span>            : {
-<span class="lineNum">      23 </span><span class="lineCov">         54 :     return [self initWithConfigFileNames:configFileName, nil];</span>
-<span class="lineNum">      24 </span><span class="lineCov">         27 : }</span>
+<span class="lineNum">      23 </span><span class="lineCov">         58 :     return [self initWithConfigFileNames:configFileName, nil];</span>
+<span class="lineNum">      24 </span><span class="lineCov">         29 : }</span>
 <span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span><span class="lineCov">         27 : - (id)initWithConfigFileNames:(NSString*)configFileName, ...</span>
+<span class="lineNum">      26 </span><span class="lineCov">         29 : - (id)initWithConfigFileNames:(NSString*)configFileName, ...</span>
 <span class="lineNum">      27 </span>            : {
-<span class="lineNum">      28 </span><span class="lineCov">         27 :     self = [super init];</span>
-<span class="lineNum">      29 </span><span class="lineCov">         27 :     if (self)</span>
+<span class="lineNum">      28 </span><span class="lineCov">         29 :     self = [super init];</span>
+<span class="lineNum">      29 </span><span class="lineCov">         29 :     if (self)</span>
 <span class="lineNum">      30 </span>            :     {
-<span class="lineNum">      31 </span><span class="lineCov">         27 :         va_list xml_list;</span>
-<span class="lineNum">      32 </span><span class="lineCov">         27 :         _resourceNames = [NSMutableArray arrayWithObject:configFileName];</span>
+<span class="lineNum">      31 </span><span class="lineCov">         29 :         va_list xml_list;</span>
+<span class="lineNum">      32 </span><span class="lineCov">         29 :         _resourceNames = [NSMutableArray arrayWithObject:configFileName];</span>
 <span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span><span class="lineCov">         27 :         va_start(xml_list, configFileName);</span>
-<span class="lineNum">      35 </span><span class="lineCov">         27 :         NSString* resourceName;</span>
-<span class="lineNum">      36 </span><span class="lineCov">         27 :         while ((resourceName = va_arg( xml_list, NSString *)))</span>
+<span class="lineNum">      34 </span><span class="lineCov">         29 :         va_start(xml_list, configFileName);</span>
+<span class="lineNum">      35 </span><span class="lineCov">         29 :         NSString* resourceName;</span>
+<span class="lineNum">      36 </span><span class="lineCov">         29 :         while ((resourceName = va_arg( xml_list, NSString *)))</span>
 <span class="lineNum">      37 </span>            :         {
 <span class="lineNum">      38 </span><span class="lineNoCov">          0 :             [_resourceNames addObject:resourceName];</span>
 <span class="lineNum">      39 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">      40 </span><span class="lineCov">         27 :         va_end(xml_list);</span>
-<span class="lineNum">      41 </span><span class="lineCov">         27 :         [self parseComponentDefinitions];</span>
-<span class="lineNum">      42 </span><span class="lineCov">         27 :     }</span>
-<span class="lineNum">      43 </span><span class="lineCov">         27 :     return self;</span>
-<span class="lineNum">      44 </span><span class="lineCov">         27 : }</span>
+<span class="lineNum">      40 </span><span class="lineCov">         29 :         va_end(xml_list);</span>
+<span class="lineNum">      41 </span><span class="lineCov">         29 :         [self parseComponentDefinitions];</span>
+<span class="lineNum">      42 </span><span class="lineCov">         29 :     }</span>
+<span class="lineNum">      43 </span><span class="lineCov">         29 :     return self;</span>
+<span class="lineNum">      44 </span><span class="lineCov">         29 : }</span>
 <span class="lineNum">      45 </span>            : 
 <span class="lineNum">      46 </span>            : 
 <span class="lineNum">      47 </span>            : /* ============================================================ Private Methods ========================================================= */
-<span class="lineNum">      48 </span><span class="lineCov">         27 : - (void)parseComponentDefinitions</span>
+<span class="lineNum">      48 </span><span class="lineCov">         29 : - (void)parseComponentDefinitions</span>
 <span class="lineNum">      49 </span>            : {
-<span class="lineNum">      50 </span><span class="lineCov">         27 :     for (NSString* resourceName in _resourceNames)</span>
+<span class="lineNum">      50 </span><span class="lineCov">         29 :     for (NSString* resourceName in _resourceNames)</span>
 <span class="lineNum">      51 </span>            :     {
-<span class="lineNum">      52 </span><span class="lineCov">         27 :         NSString* xmlString = [[TyphoonBundleResource withName:resourceName] asString];</span>
-<span class="lineNum">      53 </span><span class="lineCov">         27 :         TyphoonRXMLElement* element = [TyphoonRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">      52 </span><span class="lineCov">         29 :         NSString* xmlString = [[TyphoonBundleResource withName:resourceName] asString];</span>
+<span class="lineNum">      53 </span><span class="lineCov">         29 :         TyphoonRXMLElement* element = [TyphoonRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];</span>
 <span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span><span class="lineCov">        153 :         [element iterate:@&quot;*&quot; usingBlock:^(TyphoonRXMLElement* child)</span>
-<span class="lineNum">      56 </span><span class="lineCov">        126 :         {</span>
-<span class="lineNum">      57 </span><span class="lineCov">        126 :             if ([[child tag] isEqualToString:@&quot;component&quot;])</span>
+<span class="lineNum">      55 </span><span class="lineCov">        167 :         [element iterate:@&quot;*&quot; usingBlock:^(TyphoonRXMLElement* child)</span>
+<span class="lineNum">      56 </span><span class="lineCov">        138 :         {</span>
+<span class="lineNum">      57 </span><span class="lineCov">        138 :             if ([[child tag] isEqualToString:@&quot;component&quot;])</span>
 <span class="lineNum">      58 </span>            :             {
-<span class="lineNum">      59 </span><span class="lineCov">        117 :                 [self register:[child asComponentDefinition]];</span>
-<span class="lineNum">      60 </span><span class="lineCov">        117 :             }</span>
-<span class="lineNum">      61 </span><span class="lineCov">        126 :         }];</span>
-<span class="lineNum">      62 </span><span class="lineCov">         27 :     }</span>
-<span class="lineNum">      63 </span><span class="lineCov">         27 : }</span>
+<span class="lineNum">      59 </span><span class="lineCov">        128 :                 [self register:[child asComponentDefinition]];</span>
+<span class="lineNum">      60 </span><span class="lineCov">        128 :             }</span>
+<span class="lineNum">      61 </span><span class="lineCov">        138 :         }];</span>
+<span class="lineNum">      62 </span><span class="lineCov">         29 :     }</span>
+<span class="lineNum">      63 </span><span class="lineCov">         29 : }</span>
 <span class="lineNum">      64 </span>            : 
 <span class="lineNum">      65 </span>            : 
 <span class="lineNum">      66 </span>            : @end
