@@ -69,6 +69,16 @@
     assertThat(favoriteDamsels, hasCountOf(2));
     NSLog(@"Favorite damsels: %@", favoriteDamsels);
 }
+
+- (void)test_injects_collection_of_referenced_components_into_set
+{
+    Knight* knight = [_componentFactory componentForKey:@"knightWithCollections"];
+    NSSet* friends = [knight friends];
+    assertThat(friends, notNilValue());
+    assertThat(friends, hasCountOf(2));
+    NSLog(@"Friends: %@", friends);
+}
+
 /* ====================================================================================================================================== */
 #pragma mark factory method injection
 

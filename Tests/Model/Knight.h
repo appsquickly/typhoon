@@ -26,6 +26,7 @@
 @property(nonatomic) BOOL hasHorseWillTravel;
 @property(nonatomic, strong, readonly) id <Quest> readOnlyQuest;
 @property(nonatomic, strong) NSArray* favoriteDamsels;
+@property(nonatomic, strong) NSSet* friends;
 
 
 - (id)initWithQuest:(id <Quest>)quest;

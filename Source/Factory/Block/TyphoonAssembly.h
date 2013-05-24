@@ -14,19 +14,19 @@
 #import <Foundation/Foundation.h>
 
 
-static NSString * const TYPHOON_BEFORE_ADVICE_SUFFIX = @"__typhoonBeforeAdvice";
+static NSString* const TYPHOON_BEFORE_ADVICE_SUFFIX = @"__typhoonBeforeAdvice";
 
 @interface TyphoonAssembly : NSObject
 {
     NSMutableDictionary* _cachedDefinitions;
 }
 
-+(TyphoonAssembly*)assembly;
++ (instancetype)assembly;
 
 /**
 * Returns the [TyphoonComponentFactory defaultFactory], with components exposed using an assembly interface.
 */
-+(TyphoonAssembly*)defaultAssembly;
++ (instancetype)defaultAssembly;
 
 
 @end

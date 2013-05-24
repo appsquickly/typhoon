@@ -87,6 +87,12 @@
             [collection addItemWithText:@"Mary" requiredType:[NSString class]];
             [collection addItemWithText:@"Mary" requiredType:[NSString class]];
         }];
+
+        [definition injectProperty:@selector(friends) asCollection:^(TyphoonPropertyInjectedAsCollection* collection)
+        {
+            [collection addItemWithDefinition:[self knight]];
+            [collection addItemWithDefinition:[self anotherKnight]];
+        }];
     }];
 }
 

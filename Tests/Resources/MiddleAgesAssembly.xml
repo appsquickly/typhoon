@@ -28,12 +28,21 @@
         <initializer selector="initWithQuest:">
             <argument parameterName="quest" ref="quest"/>
         </initializer>
+
         <property name="favoriteDamsels">
             <collection>
                 <value requiredType="NSString">mary</value>
                 <value requiredType="NSString">jane</value>
             </collection>
         </property>
+
+        <property name="friends">
+            <collection>
+                <ref>knight</ref>
+                <ref>anotherKnight</ref>
+            </collection>
+        </property>
+
     </component>
 
 
