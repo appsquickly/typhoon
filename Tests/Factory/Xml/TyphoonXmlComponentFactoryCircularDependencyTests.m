@@ -13,6 +13,7 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonXmlComponentFactory.h"
 #import "ClassADependsOnB.h"
+#import "ClassBDependsOnA.h"
 
 
 @interface TyphoonXmlComponentFactoryCircularDependencyTests : SenTestCase
@@ -33,36 +34,28 @@
 /* ====================================================================================================================================== */
 #pragma mark - Circular dependencies.
 
-- (void)test_prevents_circular_dependencies_by_reference
+- (void)test_resolves_circular_dependencies_for_property_injected_by_reference
 {
-    @try
-    {
-        ClassADependsOnB* classA = [_circularDependenciesFactory componentForKey:@"classA"];
-        NSLog(@"Class A: %@", classA); //Suppress unused var compiler warning.
-        STFail(@"Should have thrown exception");
-    }
-    @catch (NSException* e)
-    {
-        NSLog(@"Exception: %@", e);
-        assertThat([e description], equalTo(@"Circular dependency detected: {(\n    classB,\n    classA\n)}"));
-    }
+    ClassADependsOnB* classA = [_circularDependenciesFactory componentForKey:@"classA"];
+    NSLog(@"Dependency on B: %@", classA.dependencyOnB);
+    assertThat(classA.dependencyOnB, notNilValue());
+
+    ClassBDependsOnA* classB = [_circularDependenciesFactory componentForKey:@"classB"];
+    NSLog(@"Dependency on A: %@", classB.dependencyOnA);
+    assertThat(classB.dependencyOnA, notNilValue());
+
 }
 
-- (void)test_prevents_circular_dependencies_by_type
+- (void)test_resolves_circular_dependencies_for_property_injected_by_type
 {
-    TyphoonXmlComponentFactory* factory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"CircularDependenciesAssembly.xml"];
+    ClassADependsOnB* classA = [_circularDependenciesFactory componentForType:[ClassADependsOnB class]];
+    NSLog(@"Dependency on B: %@", classA.dependencyOnB);
+    assertThat(classA.dependencyOnB, notNilValue());
 
-    @try
-    {
-        ClassADependsOnB* classA = [factory componentForType:[ClassADependsOnB class]];
-        NSLog(@"Class A: %@", classA); //Suppress unused var compiler warning.
-        STFail(@"Should have thrown exception");
-    }
-    @catch (NSException* e)
-    {
-        NSLog(@"%@", [e description]);
-        assertThat([e description], equalTo(@"Circular dependency detected: {(\n    classB,\n    classA\n)}"));
-    }
+    ClassBDependsOnA* classB = [_circularDependenciesFactory componentForType:[ClassBDependsOnA class]];
+    NSLog(@"Dependency on A: %@", classB.dependencyOnA);
+    assertThat(classB.dependencyOnA, notNilValue());
+
 }
 
 

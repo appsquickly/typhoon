@@ -24,11 +24,10 @@
     NSMutableArray* _registry;
     NSMutableDictionary* _singletons;
 
-    NSMutableSet* _currentlyResolvingReferences;
+    NSMutableDictionary* _currentlyResolvingReferences;
     NSMutableArray* _mutators;
 
     BOOL _hasPerformedMutations;
-
 
 }
 

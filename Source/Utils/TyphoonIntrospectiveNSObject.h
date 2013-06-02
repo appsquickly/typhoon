@@ -16,6 +16,8 @@
 
 @protocol TyphoonIntrospectiveNSObject <NSObject>
 
+@property(nonatomic, strong, readonly) NSMutableDictionary* circularDependentProperties;
+
 - (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName;
 
 - (SEL)setterForPropertyWithName:(NSString*)propertyName;

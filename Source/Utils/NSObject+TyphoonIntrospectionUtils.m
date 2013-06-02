@@ -17,7 +17,7 @@
 #import "TyphoonIntrospectionUtils.h"
 
 
-static char const* const INJECT_LATER_KEY = "typhoon.injectLater";
+static char const* const CIRCULAR_DEPENDENCIES_KEY = "typhoon.injectLater";
 
 @implementation NSObject (TyphoonIntrospectionUtils)
 
@@ -72,6 +72,18 @@ static char const* const INJECT_LATER_KEY = "typhoon.injectLater";
 {
     return [TyphoonIntrospectionUtils typeCodesForSelector:selector ofClass:[self class] isClassMethod:NO];
 }
+
+- (NSMutableDictionary*)circularDependentProperties
+{
+    NSMutableDictionary* circularDependentProperties = objc_getAssociatedObject(self, &CIRCULAR_DEPENDENCIES_KEY);
+    if (circularDependentProperties == nil)
+    {
+        circularDependentProperties = [[NSMutableDictionary alloc] init];
+        objc_setAssociatedObject(self, &CIRCULAR_DEPENDENCIES_KEY, circularDependentProperties, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return circularDependentProperties;
+}
+
 
 
 @end

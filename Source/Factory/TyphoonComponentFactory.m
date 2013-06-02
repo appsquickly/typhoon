@@ -43,7 +43,7 @@ static TyphoonComponentFactory* defaultFactory;
     {
         _registry = [[NSMutableArray alloc] init];
         _singletons = [[NSMutableDictionary alloc] init];
-        _currentlyResolvingReferences = [[NSMutableSet alloc] init];
+        _currentlyResolvingReferences = [[NSMutableDictionary alloc] init];
         _mutators = [[NSMutableArray alloc] init];
         _hasPerformedMutations = NO;
     }
