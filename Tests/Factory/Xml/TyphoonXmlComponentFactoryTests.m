@@ -1,14 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-//  MOD PRODUCTIONS
-//  Copyright 2013 Mod Productions
+//  JASPER BLUES
+//  Copyright 2013 Jasper Blues
 //  All Rights Reserved.
 //
-//  NOTICE: Mod Productions permit you to use, modify, and distribute this file
+//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
-
 
 
 #import "TyphoonSharedComponentFactoryTests.h"
