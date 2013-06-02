@@ -42,18 +42,19 @@ static NSMutableArray* resolveStack;
         IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me)
         {
             NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@""];
-            id cached = [[me cachedSelectors] objectForKey:key];
+            TyphoonDefinition* cached = [[me cachedSelectors] objectForKey:key];
             if (cached == nil)
             {
                 [resolveStack addObject:key];
-                if ([resolveStack count] > 100)
+                if ([resolveStack count] > 2)
                 {
                     NSString* bottom = [resolveStack objectAtIndex:0];
                     NSString* top = [resolveStack objectAtIndex:[resolveStack count] - 1];
                     if ([top isEqualToString:bottom])
                     {
                         NSLog(@"Resolve stack: %@", resolveStack);
-                        [NSException raise:NSInternalInconsistencyException format:@"Circular dependency detected."];
+                        return [[TyphoonDefinition alloc] initWithClass:[NSString class] key:key];
+//                        [NSException raise:NSInternalInconsistencyException format:@"Circular dependency detected."];
                     }
                 }
 

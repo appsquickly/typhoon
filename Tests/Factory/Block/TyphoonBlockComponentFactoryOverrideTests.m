@@ -14,6 +14,7 @@
 #import "ExceptionTestAssembly.h"
 #import "MiddleAgesAssemblyOverride.h"
 #import "Knight.h"
+#import "CircularDependenciesAssembly.h"
 
 
 @interface TyphoonBlockComponentFactoryOverrideTests : TyphoonSharedComponentFactoryTests
@@ -31,9 +32,10 @@
     [_componentFactory makeDefault];
     
     _exceptionTestFactory = [[TyphoonBlockComponentFactory  alloc] initWithAssembly:[ExceptionTestAssembly assembly]];
+    _circularDependenciesFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[CircularDependenciesAssembly assembly]];
 }
 
-// This test overrides the same test in the base class, testing for the damselsRescued overrided value in MiddleAgesAssemblyOverride
+// This test overrides the same test in the base class, testing for the damselsRescued overridden value in MiddleAgesAssemblyOverride
 - (void)test_injects_properties_by_reference_and_by_value
 {
     Knight* knight = [_componentFactory componentForKey:@"knight"];

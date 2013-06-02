@@ -19,6 +19,7 @@
 #import "TyphoonPropertyPlaceholderConfigurer.h"
 #import "ExceptionTestAssembly.h"
 #import "Knight.h"
+#import "CircularDependenciesAssembly.h"
 
 @interface TyphoonBlockComponentFactoryTests : TyphoonSharedComponentFactoryTests
 @end
@@ -35,6 +36,7 @@
     [_componentFactory makeDefault];
 
     _exceptionTestFactory = [[TyphoonBlockComponentFactory  alloc] initWithAssembly:[ExceptionTestAssembly assembly]];
+    _circularDependenciesFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[CircularDependenciesAssembly assembly]];
 }
 
 - (void)test_resolves_component_using_selector
