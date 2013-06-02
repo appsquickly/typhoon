@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D7493181746216900EAB208 /* MiddleAgesAssemblyOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7493171746216900EAB208 /* MiddleAgesAssemblyOverride.m */; };
-		1D74931C17462B8300EAB208 /* TyphoonBlockComponentFactoryOverrideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D74931A1746228D00EAB208 /* TyphoonBlockComponentFactoryOverrideTests.m */; };
 		6B3F399716ABF8E5001A601C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B3F399616ABF8E5001A601C /* SenTestingKit.framework */; };
 		6B3F399916ABF8E5001A601C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B3F399816ABF8E5001A601C /* Cocoa.framework */; };
 		6B3F39A316ABF8E5001A601C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B3F39A116ABF8E5001A601C /* InfoPlist.strings */; };
@@ -199,9 +197,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1D7493161746216900EAB208 /* MiddleAgesAssemblyOverride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiddleAgesAssemblyOverride.h; sourceTree = "<group>"; };
-		1D7493171746216900EAB208 /* MiddleAgesAssemblyOverride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiddleAgesAssemblyOverride.m; sourceTree = "<group>"; };
-		1D74931A1746228D00EAB208 /* TyphoonBlockComponentFactoryOverrideTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonBlockComponentFactoryOverrideTests.m; sourceTree = "<group>"; };
 		6B3F397416ABF854001A601C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6B3F399516ABF8E5001A601C /* Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B3F399616ABF8E5001A601C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -673,13 +668,10 @@
 				BA7981FA89E44727928240C1 /* TyphoonBlockComponentFactoryTests.m */,
 				BA7988E402E5F36CBBC4C2B8 /* MiddleAgesAssembly.m */,
 				BA798DC1ABB84C7568A95693 /* MiddleAgesAssembly.h */,
-				1D7493161746216900EAB208 /* MiddleAgesAssemblyOverride.h */,
-				1D7493171746216900EAB208 /* MiddleAgesAssemblyOverride.m */,
 				BA798FF63253FDE4538CCC56 /* ExceptionTestAssembly.m */,
 				BA798377C899BDEDF524624D /* ExceptionTestAssembly.h */,
 				BA798718B12F783930A46333 /* CircularDependenciesAssembly.m */,
 				BA798D616BF4A763D5A7CC8E /* CircularDependenciesAssembly.h */,
-				1D74931A1746228D00EAB208 /* TyphoonBlockComponentFactoryOverrideTests.m */,
 			);
 			path = Block;
 			sourceTree = "<group>";
@@ -1043,8 +1035,6 @@
 				BA798FA07C462CD337A80DFF /* TyphoonByReferenceCollectionValue.m in Sources */,
 				BA798EA4DDC838A133459796 /* TyphoonTypeConvertedCollectionValue.m in Sources */,
 				BA7982E1BDA4C7924D7285BB /* TyphoonPropertyInjectedAsCollectionTests.m in Sources */,
-				1D7493181746216900EAB208 /* MiddleAgesAssemblyOverride.m in Sources */,
-				1D74931C17462B8300EAB208 /* TyphoonBlockComponentFactoryOverrideTests.m in Sources */,
 				B594F87F174DF32800BF5DC5 /* TyphoonParameterInjectedByRawValue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
