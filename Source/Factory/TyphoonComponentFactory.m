@@ -15,7 +15,6 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
-#import "TyphoonIntrospectionUtils.h"
 
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
@@ -89,6 +88,7 @@ static TyphoonComponentFactory* defaultFactory;
     {
         [results addObject:[self objectForDefinition:definition]];
     }
+    [_currentlyResolvingReferences removeAllObjects];
     return [results copy];
 }
 
@@ -104,6 +104,7 @@ static TyphoonComponentFactory* defaultFactory;
             [NSException raise:NSInvalidArgumentException format:@"No component matching id '%@'.", key];
         }
         __autoreleasing id returnValue = [self objectForDefinition:definition];
+        [_currentlyResolvingReferences removeAllObjects];
         return returnValue;
     }
     return nil;
