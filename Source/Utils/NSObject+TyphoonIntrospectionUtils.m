@@ -17,6 +17,8 @@
 #import "TyphoonIntrospectionUtils.h"
 
 
+static char const* const INJECT_LATER_KEY = "typhoon.injectLater";
+
 @implementation NSObject (TyphoonIntrospectionUtils)
 
 - (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName;
@@ -70,5 +72,6 @@
 {
     return [TyphoonIntrospectionUtils typeCodesForSelector:selector ofClass:[self class] isClassMethod:NO];
 }
+
 
 @end

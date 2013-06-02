@@ -29,6 +29,7 @@
 #import "TyphoonByReferenceCollectionValue.h"
 #import "TyphoonTypeConvertedCollectionValue.h"
 #import "TyphoonParameterInjectedByRawValue.h"
+#import "TyphoonIntrospectionUtils.h"
 
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
@@ -67,19 +68,19 @@
 - (void)injectPropertyDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
 {
     [self doBeforePropertyInjectionOn:instance withDefinition:definition];
-    
+
     for (id <TyphoonInjectedProperty> property in [definition injectedProperties])
     {
         TyphoonTypeDescriptor* typeDescriptor = [instance typeForPropertyWithName:property.name];
         if (typeDescriptor == nil)
         {
             [NSException raise:NSInvalidArgumentException
-                        format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",
-             property.name, [instance class]];
+                    format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",
+                           property.name, [instance class]];
         }
         [self doPropertyInjection:instance property:property typeDescriptor:typeDescriptor];
     }
-    
+
     [self doAfterPropertyInjectionOn:instance withDefinition:definition];
 }
 
@@ -138,12 +139,16 @@
     NSLog(@"Property setter invocation: %@", invocation);
     if (property.injectionType == TyphoonPropertyInjectionByTypeType)
     {
-        id reference = [self componentForType:[typeDescriptor classOrProtocol]];
+        TyphoonDefinition*  definition = [self definitionForType:[typeDescriptor classOrProtocol]];
+        [self assertNotCircularDependency:definition.key isProperty:YES];
+        id reference = [self componentForKey:definition.key];
         [invocation setArgument:&reference atIndex:2];
     }
     else if (property.injectionType == TyphoonPropertyInjectionByReferenceType)
     {
-        id reference = [self componentForKey:((TyphoonPropertyInjectedByReference*) property).reference];
+        TyphoonPropertyInjectedByReference* byReference = (TyphoonPropertyInjectedByReference*) property;
+        [self assertNotCircularDependency:byReference.reference isProperty:YES];
+        id reference = [self componentForKey:byReference.reference];
         [invocation setArgument:&reference atIndex:2];
     }
     else if (property.injectionType == TyphoonPropertyInjectionByValueType)
@@ -247,5 +252,70 @@
     return collection;
 }
 
+
+- (TyphoonDefinition*)definitionForType:(id)classOrProtocol
+{
+    NSArray* candidates = [self allDefinitionsForType:classOrProtocol];
+    if ([candidates count] == 0)
+    {
+        if (class_isMetaClass(object_getClass(classOrProtocol)) &&
+                [classOrProtocol respondsToSelector:@selector(typhoonAutoInjectedProperties)])
+        {
+            NSLog(@"Class %@ wants auto-wiring. . . registering.", NSStringFromClass(classOrProtocol));
+            [self register:[TyphoonDefinition withClass:classOrProtocol]];
+            return [self definitionForType:classOrProtocol];
+        }
+        [NSException raise:NSInvalidArgumentException format:@"No components defined which satisify type: '%@'",
+                                                             TyphoonTypeStringFor(classOrProtocol)];
+    }
+    if ([candidates count] > 1)
+    {
+        [NSException raise:NSInvalidArgumentException format:@"More than one component is defined satisfying type: '%@'", classOrProtocol];
+    }
+    return [candidates objectAtIndex:0];
+}
+
+
+- (NSArray*)allDefinitionsForType:(id)classOrProtocol
+{
+    NSMutableArray* results = [[NSMutableArray alloc] init];
+    BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
+
+    for (TyphoonDefinition* definition in _registry)
+    {
+        if (isClass)
+        {
+            if (definition.type == classOrProtocol || [definition.type isSubclassOfClass:classOrProtocol])
+            {
+                [results addObject:definition];
+            }
+        }
+        else
+        {
+            if ([definition.type conformsToProtocol:classOrProtocol])
+            {
+                [results addObject:definition];
+            }
+        }
+    }
+    return [results copy];
+}
+
+
+- (void)assertNotCircularDependency:(NSString*)key isProperty:(BOOL)isProperty
+{
+    if ([_currentlyResolvingReferences containsObject:key])
+    {
+        if (isProperty)
+        {
+
+        }
+        else
+        {
+            [NSException raise:NSInvalidArgumentException format:@"Circular dependency detected: %@", _currentlyResolvingReferences];
+        }
+    }
+    [_currentlyResolvingReferences addObject:key];
+}
 
 @end

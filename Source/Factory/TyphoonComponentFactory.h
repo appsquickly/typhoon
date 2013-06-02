@@ -28,6 +28,8 @@
     NSMutableArray* _mutators;
 
     BOOL _hasPerformedMutations;
+
+
 }
 
 /**
