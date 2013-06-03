@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-05-31</td>
+            <td class="headerValue">2013-06-03</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -80,86 +80,86 @@
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : 
 <span class="lineNum">      24 </span>            : /* ============================================================ Initializers ============================================================ */
-<span class="lineNum">      25 </span><span class="lineCov">         70 : - (id)initWithName:(NSString*)name</span>
+<span class="lineNum">      25 </span><span class="lineCov">         56 : - (id)initWithName:(NSString*)name</span>
 <span class="lineNum">      26 </span>            : {
-<span class="lineNum">      27 </span><span class="lineCov">         70 :     self = [super init];</span>
-<span class="lineNum">      28 </span><span class="lineCov">         70 :     if (self)</span>
+<span class="lineNum">      27 </span><span class="lineCov">         56 :     self = [super init];</span>
+<span class="lineNum">      28 </span><span class="lineCov">         56 :     if (self)</span>
 <span class="lineNum">      29 </span>            :     {
-<span class="lineNum">      30 </span><span class="lineCov">         70 :         _name = name;</span>
-<span class="lineNum">      31 </span><span class="lineCov">         70 :         _values = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      32 </span><span class="lineCov">         70 :     }</span>
-<span class="lineNum">      33 </span><span class="lineCov">         70 :     return self;</span>
-<span class="lineNum">      34 </span><span class="lineCov">         70 : }</span>
+<span class="lineNum">      30 </span><span class="lineCov">         56 :         _name = name;</span>
+<span class="lineNum">      31 </span><span class="lineCov">         56 :         _values = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      32 </span><span class="lineCov">         56 :     }</span>
+<span class="lineNum">      33 </span><span class="lineCov">         56 :     return self;</span>
+<span class="lineNum">      34 </span><span class="lineCov">         56 : }</span>
 <span class="lineNum">      35 </span>            : 
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : /* ========================================================== Interface Methods ========================================================= */
 <span class="lineNum">      38 </span>            : - (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType
-<span class="lineNum">      39 </span><span class="lineCov">         64 : {</span>
+<span class="lineNum">      39 </span><span class="lineCov">         50 : {</span>
 <span class="lineNum">      40 </span>            :     [_values addObject:[[TyphoonTypeConvertedCollectionValue alloc] initWithTextValue:text requiredType:requiredType]];
-<span class="lineNum">      41 </span><span class="lineCov">         64 : }</span>
-<span class="lineNum">      42 </span><span class="lineCov">         64 : </span>
+<span class="lineNum">      41 </span><span class="lineCov">         50 : }</span>
+<span class="lineNum">      42 </span><span class="lineCov">         50 : </span>
 <span class="lineNum">      43 </span>            : - (void)addItemWithComponentName:(NSString*)componentName
-<span class="lineNum">      44 </span><span class="lineCov">         22 : {</span>
+<span class="lineNum">      44 </span><span class="lineCov">         26 : {</span>
 <span class="lineNum">      45 </span>            :     [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:componentName]];
-<span class="lineNum">      46 </span><span class="lineCov">         22 : }</span>
-<span class="lineNum">      47 </span><span class="lineCov">         22 : </span>
+<span class="lineNum">      46 </span><span class="lineCov">         26 : }</span>
+<span class="lineNum">      47 </span><span class="lineCov">         26 : </span>
 <span class="lineNum">      48 </span>            : - (void)addItemWithDefinition:(TyphoonDefinition*)definition
-<span class="lineNum">      49 </span><span class="lineCov">         42 : {</span>
+<span class="lineNum">      49 </span><span class="lineCov">         24 : {</span>
 <span class="lineNum">      50 </span>            :     [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:definition.key]];
-<span class="lineNum">      51 </span><span class="lineCov">         42 : }</span>
-<span class="lineNum">      52 </span><span class="lineCov">         42 : </span>
+<span class="lineNum">      51 </span><span class="lineCov">         24 : }</span>
+<span class="lineNum">      52 </span><span class="lineCov">         24 : </span>
 <span class="lineNum">      53 </span>            : - (TyphoonCollectionType)resolveCollectionTypeWith:(id&lt;TyphoonIntrospectiveNSObject&gt;)instance;
-<span class="lineNum">      54 </span><span class="lineCov">         18 : {</span>
+<span class="lineNum">      54 </span><span class="lineCov">         14 : {</span>
 <span class="lineNum">      55 </span>            :     TyphoonTypeDescriptor* descriptor = [TyphoonIntrospectionUtils typeForPropertyWithName:_name inClass:[instance class]];
-<span class="lineNum">      56 </span><span class="lineCov">         18 :     Class describedClass = (Class) [descriptor classOrProtocol];</span>
-<span class="lineNum">      57 </span><span class="lineCov">         18 :     if (describedClass == nil)</span>
-<span class="lineNum">      58 </span><span class="lineCov">         18 :     {</span>
+<span class="lineNum">      56 </span><span class="lineCov">         14 :     Class describedClass = (Class) [descriptor classOrProtocol];</span>
+<span class="lineNum">      57 </span><span class="lineCov">         14 :     if (describedClass == nil)</span>
+<span class="lineNum">      58 </span><span class="lineCov">         14 :     {</span>
 <span class="lineNum">      59 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;Property named '%@' does not exist on class '%@'.&quot;, _name,
 <span class="lineNum">      60 </span><span class="lineNoCov">          0 :                                                              NSStringFromClass([instance class])];</span>
 <span class="lineNum">      61 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      62 </span><span class="lineCov">          1 :     if ([describedClass isSubclassOfClass:[NSMutableArray class]])</span>
-<span class="lineNum">      63 </span><span class="lineCov">         17 :     {</span>
+<span class="lineNum">      63 </span><span class="lineCov">         13 :     {</span>
 <span class="lineNum">      64 </span>            :         return TyphoonCollectionTypeNSMutableArray;
 <span class="lineNum">      65 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">      66 </span>            :     else if ([describedClass isSubclassOfClass:[NSArray class]])
-<span class="lineNum">      67 </span><span class="lineCov">         16 :     {</span>
+<span class="lineNum">      67 </span><span class="lineCov">         12 :     {</span>
 <span class="lineNum">      68 </span>            :         return TyphoonCollectionTypeNSArray;
-<span class="lineNum">      69 </span><span class="lineCov">          7 :     }</span>
+<span class="lineNum">      69 </span><span class="lineCov">          5 :     }</span>
 <span class="lineNum">      70 </span>            :     else if ([describedClass isSubclassOfClass:[NSCountedSet class]])
-<span class="lineNum">      71 </span><span class="lineCov">          9 :     {</span>
+<span class="lineNum">      71 </span><span class="lineCov">          7 :     {</span>
 <span class="lineNum">      72 </span>            :         return TyphoonCollectionTypeNSCountedSet;
 <span class="lineNum">      73 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      74 </span>            :     else if ([describedClass isSubclassOfClass:[NSMutableSet class]])
-<span class="lineNum">      75 </span><span class="lineCov">          9 :     {</span>
+<span class="lineNum">      75 </span><span class="lineCov">          7 :     {</span>
 <span class="lineNum">      76 </span>            :         return TyphoonCollectionTypeNSMutableSet;
 <span class="lineNum">      77 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">      78 </span>            :     else if ([describedClass isSubclassOfClass:[NSSet class]])
-<span class="lineNum">      79 </span><span class="lineCov">          8 :     {</span>
+<span class="lineNum">      79 </span><span class="lineCov">          6 :     {</span>
 <span class="lineNum">      80 </span>            :         return TyphoonCollectionTypeNSSet;
-<span class="lineNum">      81 </span><span class="lineCov">          7 :     }</span>
+<span class="lineNum">      81 </span><span class="lineCov">          5 :     }</span>
 <span class="lineNum">      82 </span>            : 
 <span class="lineNum">      83 </span>            :     [NSException raise:NSInvalidArgumentException format:@&quot;Property named '%@' on '%@' is neither an NSSet nor NSArray.&quot;, _name,
 <span class="lineNum">      84 </span><span class="lineNoCov">          0 :                                                          NSStringFromClass(describedClass)];</span>
 <span class="lineNum">      85 </span><span class="lineNoCov">          0 :     return nil;</span>
 <span class="lineNum">      86 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      87 </span><span class="lineCov">         16 : </span>
+<span class="lineNum">      87 </span><span class="lineCov">         12 : </span>
 <span class="lineNum">      88 </span>            : - (NSArray*)values
-<span class="lineNum">      89 </span><span class="lineCov">         12 : {</span>
+<span class="lineNum">      89 </span><span class="lineCov">          8 : {</span>
 <span class="lineNum">      90 </span>            :     return [_values copy];
-<span class="lineNum">      91 </span><span class="lineCov">         12 : }</span>
+<span class="lineNum">      91 </span><span class="lineCov">          8 : }</span>
 <span class="lineNum">      92 </span>            : 
 <span class="lineNum">      93 </span>            : /* =========================================================== Protocol Methods ========================================================= */
 <span class="lineNum">      94 </span>            : #pragma mark - &lt;TyphoonInjectedProperty&gt;
 <span class="lineNum">      95 </span>            : 
 <span class="lineNum">      96 </span>            : - (NSString*)name
-<span class="lineNum">      97 </span><span class="lineCov">         58 : {</span>
+<span class="lineNum">      97 </span><span class="lineCov">         50 : {</span>
 <span class="lineNum">      98 </span>            :     return _name;
-<span class="lineNum">      99 </span><span class="lineCov">         58 : }</span>
+<span class="lineNum">      99 </span><span class="lineCov">         50 : }</span>
 <span class="lineNum">     100 </span>            : 
 <span class="lineNum">     101 </span>            : - (TyphoonPropertyInjectionType)injectionType
-<span class="lineNum">     102 </span><span class="lineCov">         84 : {</span>
+<span class="lineNum">     102 </span><span class="lineCov">         56 : {</span>
 <span class="lineNum">     103 </span>            :     return TyphoonPropertyInjectionAsCollection;
-<span class="lineNum">     104 </span><span class="lineCov">         84 : }</span>
+<span class="lineNum">     104 </span><span class="lineCov">         56 : }</span>
 <span class="lineNum">     105 </span>            : 
 <span class="lineNum">     106 </span>            : /* ============================================================ Utility Methods ========================================================= */
 <span class="lineNum">     107 </span>            : - (NSString*)description
