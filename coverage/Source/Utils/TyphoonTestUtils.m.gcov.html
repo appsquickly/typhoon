@@ -32,7 +32,7 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntry">18</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
@@ -103,16 +103,19 @@
 <span class="lineNum">      45 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      46 </span>            :     if (conditionMet)
 <span class="lineNum">      47 </span>            :     {
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 :         assertions();</span>
-<span class="lineNum">      49 </span>            :     }
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :     else</span>
-<span class="lineNum">      51 </span>            :     {
-<span class="lineNum">      52 </span>            :         [NSException raise:NSGenericException format:@&quot;Condition didn't happen before timeout: %f&quot;, seconds];
-<span class="lineNum">      53 </span>            :     }
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 : </span>
-<span class="lineNum">      57 </span>            : @end
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :         if (assertions)</span>
+<span class="lineNum">      49 </span>            :         {
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :             assertions();</span>
+<span class="lineNum">      51 </span>            :         }
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      53 </span>            :     else
+<span class="lineNum">      54 </span>            :     {
+<span class="lineNum">      55 </span>            :         [NSException raise:NSGenericException format:@&quot;Condition didn't happen before timeout: %f&quot;, seconds];
+<span class="lineNum">      56 </span>            :     }
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      60 </span>            : @end
 </pre>
       </td>
     </tr>
