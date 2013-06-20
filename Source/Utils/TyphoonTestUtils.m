@@ -45,7 +45,10 @@
     }
     if (conditionMet)
     {
-        assertions();
+        if (assertions)
+        {
+            assertions();
+        }
     }
     else
     {
