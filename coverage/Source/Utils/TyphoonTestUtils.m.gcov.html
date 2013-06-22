@@ -88,7 +88,7 @@
 <span class="lineNum">      30 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">      31 </span>            : + (void)wait:(NSTimeInterval)seconds secondsForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions
 <span class="lineNum">      32 </span>            : {
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     __block BOOL conditionMet;</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     __block BOOL conditionMet = NO;</span>
 <span class="lineNum">      34 </span>            :     for (int i = 0; i &lt; seconds; i++)
 <span class="lineNum">      35 </span><span class="lineNoCov">          0 :     {</span>
 <span class="lineNum">      36 </span><span class="lineNoCov">          0 :         conditionMet = condition();</span>
