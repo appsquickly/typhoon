@@ -916,7 +916,7 @@
 		6B3F396716ABF854001A601C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Jasper Blues";
 			};
 			buildConfigurationList = 6B3F396A16ABF854001A601C /* Build configuration list for PBXProject "Typhoon" */;
@@ -1212,6 +1212,7 @@
 		6B3F39CA16ABFAC3001A601C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
@@ -1227,6 +1228,7 @@
 		6B3F39CB16ABFAC3001A601C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",

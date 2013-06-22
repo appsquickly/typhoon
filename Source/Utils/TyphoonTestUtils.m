@@ -30,7 +30,7 @@
 
 + (void)wait:(NSTimeInterval)seconds secondsForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions
 {
-    __block BOOL conditionMet;
+    __block BOOL conditionMet = NO;
     for (int i = 0; i < seconds; i++)
     {
         conditionMet = condition();

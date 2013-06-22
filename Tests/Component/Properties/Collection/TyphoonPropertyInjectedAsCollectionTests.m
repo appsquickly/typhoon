@@ -35,7 +35,8 @@
     TyphoonPropertyInjectedAsCollection
             * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:@"arrayCollection"];
 
-    TyphoonCollectionType collectionType = [propertyInjectedAsCollection resolveCollectionTypeWith:_classWithCollectionProperties];
+    TyphoonCollectionType collectionType =
+            [propertyInjectedAsCollection resolveCollectionTypeWith:(id <TyphoonIntrospectiveNSObject>) _classWithCollectionProperties];
     assertThatInt(collectionType, equalToInt(TyphoonCollectionTypeNSArray));
 
 }
@@ -45,7 +46,8 @@
     TyphoonPropertyInjectedAsCollection
             * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:@"mutableArrayCollection"];
 
-    TyphoonCollectionType collectionType = [propertyInjectedAsCollection resolveCollectionTypeWith:_classWithCollectionProperties];
+    TyphoonCollectionType collectionType =
+            [propertyInjectedAsCollection resolveCollectionTypeWith:(id <TyphoonIntrospectiveNSObject>) _classWithCollectionProperties];
     assertThatInt(collectionType, equalToInt(TyphoonCollectionTypeNSMutableArray));
 
 }
@@ -58,7 +60,8 @@
     TyphoonPropertyInjectedAsCollection
             * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:@"setCollection"];
 
-    TyphoonCollectionType collectionType = [propertyInjectedAsCollection resolveCollectionTypeWith:_classWithCollectionProperties];
+    TyphoonCollectionType collectionType =
+            [propertyInjectedAsCollection resolveCollectionTypeWith:(id <TyphoonIntrospectiveNSObject>) _classWithCollectionProperties];
     assertThatInt(collectionType, equalToInt(TyphoonCollectionTypeNSSet));
 }
 
@@ -67,7 +70,8 @@
     TyphoonPropertyInjectedAsCollection
             * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:@"mutableSetCollection"];
 
-    TyphoonCollectionType collectionType = [propertyInjectedAsCollection resolveCollectionTypeWith:_classWithCollectionProperties];
+    TyphoonCollectionType collectionType =
+            [propertyInjectedAsCollection resolveCollectionTypeWith:(id <TyphoonIntrospectiveNSObject>) _classWithCollectionProperties];
     assertThatInt(collectionType, equalToInt(TyphoonCollectionTypeNSMutableSet));
 }
 
@@ -80,8 +84,8 @@
     {
         TyphoonPropertyInjectedAsCollection
                 * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:@"notACollection"];
-        TyphoonCollectionType
-                collectionType = [propertyInjectedAsCollection resolveCollectionTypeWith:_classWithCollectionProperties];
+        TyphoonCollectionType collectionType =
+                [propertyInjectedAsCollection resolveCollectionTypeWith:(id <TyphoonIntrospectiveNSObject>) _classWithCollectionProperties];
         NSLog(@"%i", collectionType); //suppress warning;
         STFail(@"Should have thrown exception");
     }
@@ -97,8 +101,8 @@
     {
         TyphoonPropertyInjectedAsCollection
                 * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:@"notACollectionzzz"];
-        TyphoonCollectionType
-                collectionType = [propertyInjectedAsCollection resolveCollectionTypeWith:_classWithCollectionProperties];
+        TyphoonCollectionType collectionType =
+                [propertyInjectedAsCollection resolveCollectionTypeWith:(id <TyphoonIntrospectiveNSObject>) _classWithCollectionProperties];
         NSLog(@"%i", collectionType); //suppress warning;
         STFail(@"Should have thrown exception");
     }
