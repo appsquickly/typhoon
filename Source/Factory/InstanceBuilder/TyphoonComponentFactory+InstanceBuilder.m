@@ -62,6 +62,7 @@
         instance = objc_msgSend(instance, @selector(init));
     }
 
+    [_currentlyResolvingReferences setValue:instance forKey:definition.key];
     [self injectPropertyDependenciesOn:instance withDefinition:definition];
     [self injectCircularDependenciesOn:instance];
 
@@ -322,7 +323,6 @@
         [circularDependencies setValue:componentKey forKey:propertyName];
         NSLog(@"$$$$$$$$$$$$ Circular now: %@", [instance circularDependentProperties]);
     }
-    [_currentlyResolvingReferences setObject:instance forKey:componentKey];
 }
 
 - (void)injectCircularDependenciesOn:(__autoreleasing id <TyphoonIntrospectiveNSObject>)instance

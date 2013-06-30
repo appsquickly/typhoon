@@ -157,10 +157,14 @@
     ClassADependsOnB* classA = [_circularDependenciesFactory componentForKey:@"classA"];
     NSLog(@"Dependency on B: %@", classA.dependencyOnB);
     assertThat(classA.dependencyOnB, notNilValue());
+    assertThat(classA, equalTo(classA.dependencyOnB.dependencyOnA));
+    assertThat([classA.dependencyOnB class], equalTo([ClassBDependsOnA class]));
 
     ClassBDependsOnA* classB = [_circularDependenciesFactory componentForKey:@"classB"];
     NSLog(@"Dependency on A: %@", classB.dependencyOnA);
     assertThat(classB.dependencyOnA, notNilValue());
+    assertThat(classB, equalTo(classB.dependencyOnA.dependencyOnB));
+    assertThat([classB.dependencyOnA class], equalTo([ClassADependsOnB class]));
 
 }
 
@@ -169,10 +173,14 @@
     ClassADependsOnB* classA = [_circularDependenciesFactory componentForType:[ClassADependsOnB class]];
     NSLog(@"Dependency on B: %@", classA.dependencyOnB);
     assertThat(classA.dependencyOnB, notNilValue());
+    assertThat(classA, equalTo(classA.dependencyOnB.dependencyOnA));
+    assertThat([classA.dependencyOnB class], equalTo([ClassBDependsOnA class]));
 
     ClassBDependsOnA* classB = [_circularDependenciesFactory componentForType:[ClassBDependsOnA class]];
     NSLog(@"Dependency on A: %@", classB.dependencyOnA);
     assertThat(classB.dependencyOnA, notNilValue());
+    assertThat(classB, equalTo(classB.dependencyOnA.dependencyOnB));
+    assertThat([classB.dependencyOnA class], equalTo([ClassADependsOnB class]));
 
 }
 
