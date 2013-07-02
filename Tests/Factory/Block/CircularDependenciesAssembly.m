@@ -15,6 +15,9 @@
 #import "TyphoonDefinition.h"
 #import "ClassADependsOnB.h"
 #import "ClassBDependsOnA.h"
+#import "ClassCDependsOnDAndE.h"
+#import "ClassDDependsOnC.h"
+#import "ClassEDependsOnC.h"
 
 
 @implementation CircularDependenciesAssembly
@@ -35,5 +38,32 @@
         [definition injectProperty:@selector(dependencyOnA) withDefinition:[self classA]];
     }];
 }
+
+/*
+- (id)classC
+{
+    return [TyphoonDefinition withClass:[ClassCDependsOnDAndE class] properties:^(TyphoonDefinition *definition)
+    {
+        [definition injectProperty:@selector(dependencyOnD) withDefinition:[self classD]];
+        [definition injectProperty:@selector(dependencyOnE) withDefinition:[self classE]];
+    }];
+}
+
+- (id)classD
+{
+    return [TyphoonDefinition withClass:[ClassDDependsOnC class] properties:^(TyphoonDefinition *definition)
+    {
+        [definition injectProperty:@selector(dependencyOnC) withDefinition:[self classC]];
+    }];
+}
+
+- (id)classE
+{
+    return [TyphoonDefinition withClass:[ClassEDependsOnC class] properties:^(TyphoonDefinition *definition)
+    {
+        [definition injectProperty:@selector(dependencyOnC) withDefinition:[self classC]];
+    }];
+}
+*/
 
 @end

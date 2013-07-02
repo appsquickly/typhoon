@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65EB6978177F61A500391D0B /* ClassDDependsOnC.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EB6977177F61A500391D0B /* ClassDDependsOnC.m */; };
+		65EB697B177F61BE00391D0B /* ClassEDependsOnC.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EB697A177F61BE00391D0B /* ClassEDependsOnC.m */; };
+		65EB697E177F626B00391D0B /* ClassCDependsOnDAndE.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EB697D177F626B00391D0B /* ClassCDependsOnDAndE.m */; };
 		6B3F399716ABF8E5001A601C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B3F399616ABF8E5001A601C /* SenTestingKit.framework */; };
 		6B3F399916ABF8E5001A601C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B3F399816ABF8E5001A601C /* Cocoa.framework */; };
 		6B3F39A316ABF8E5001A601C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B3F39A116ABF8E5001A601C /* InfoPlist.strings */; };
@@ -197,6 +200,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		65EB6976177F61A500391D0B /* ClassDDependsOnC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassDDependsOnC.h; sourceTree = "<group>"; };
+		65EB6977177F61A500391D0B /* ClassDDependsOnC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassDDependsOnC.m; sourceTree = "<group>"; };
+		65EB6979177F61BE00391D0B /* ClassEDependsOnC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassEDependsOnC.h; sourceTree = "<group>"; };
+		65EB697A177F61BE00391D0B /* ClassEDependsOnC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassEDependsOnC.m; sourceTree = "<group>"; };
+		65EB697C177F626B00391D0B /* ClassCDependsOnDAndE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassCDependsOnDAndE.h; sourceTree = "<group>"; };
+		65EB697D177F626B00391D0B /* ClassCDependsOnDAndE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassCDependsOnDAndE.m; sourceTree = "<group>"; };
 		6B3F397416ABF854001A601C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6B3F399516ABF8E5001A601C /* Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B3F399616ABF8E5001A601C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -654,10 +663,16 @@
 		BA798988DA6C716409711479 /* CircularDependencies */ = {
 			isa = PBXGroup;
 			children = (
-				BA798C719DB799A72B877AA6 /* ClassADependsOnB.m */,
 				BA798E265F77622D00A10B49 /* ClassADependsOnB.h */,
-				BA79856D23D2E1F11B2D98A8 /* ClassBDependsOnA.m */,
+				BA798C719DB799A72B877AA6 /* ClassADependsOnB.m */,
 				BA7986806CAD48DFD9D79DF2 /* ClassBDependsOnA.h */,
+				BA79856D23D2E1F11B2D98A8 /* ClassBDependsOnA.m */,
+				65EB697C177F626B00391D0B /* ClassCDependsOnDAndE.h */,
+				65EB697D177F626B00391D0B /* ClassCDependsOnDAndE.m */,
+				65EB6976177F61A500391D0B /* ClassDDependsOnC.h */,
+				65EB6977177F61A500391D0B /* ClassDDependsOnC.m */,
+				65EB6979177F61BE00391D0B /* ClassEDependsOnC.h */,
+				65EB697A177F61BE00391D0B /* ClassEDependsOnC.m */,
 			);
 			path = CircularDependencies;
 			sourceTree = "<group>";
@@ -1036,6 +1051,9 @@
 				BA798EA4DDC838A133459796 /* TyphoonTypeConvertedCollectionValue.m in Sources */,
 				BA7982E1BDA4C7924D7285BB /* TyphoonPropertyInjectedAsCollectionTests.m in Sources */,
 				B594F87F174DF32800BF5DC5 /* TyphoonParameterInjectedByRawValue.m in Sources */,
+				65EB6978177F61A500391D0B /* ClassDDependsOnC.m in Sources */,
+				65EB697B177F61BE00391D0B /* ClassEDependsOnC.m in Sources */,
+				65EB697E177F626B00391D0B /* ClassCDependsOnDAndE.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
