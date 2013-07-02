@@ -11,5 +11,18 @@
         <property name="dependencyOnA" ref="classA"/>
     </component>
 
+    <component class="ClassCDependsOnDAndE" key="classC" scope="prototype">
+        <property name="dependencyOnD" ref="classD"/>
+        <property name="dependencyOnE" ref="classE"/>
+    </component>
+
+    <component class="ClassDDependsOnC" key="classD" scope="prototype">
+        <property name="dependencyOnC" ref="classC"/>
+    </component>
+
+    <component class="ClassEDependsOnC" key="classE" scope="prototype">
+        <property name="dependencyOnC" ref="classC"/>
+    </component>
+
 </assembly>
 
