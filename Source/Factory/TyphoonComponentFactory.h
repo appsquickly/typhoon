@@ -26,10 +26,29 @@
 
     NSMutableDictionary* _currentlyResolvingReferences;
     NSMutableArray* _mutators;
-
-    BOOL _hasPerformedMutations;
-
+	BOOL _isLoading;
 }
+
+/**
+* The instantiated singletons.
+*/
+@property (nonatomic, strong, readonly) NSArray *singletons;
+
+/**
+* Say if the factory has been loaded.
+*/
+@property (nonatomic, assign, getter = isLoaded) BOOL loaded;
+
+/**
+* Mutate the component definitions with the mutators and
+* build the not-lazy singletons.
+*/
+- (void)load;
+
+/**
+* Dump all the singletons.
+*/
+- (void)unload;
 
 /**
 * Returns the default component factory, if one has been set. (See makeDefault ).

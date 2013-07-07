@@ -31,13 +31,20 @@
     {
         [NSException raise:NSInvalidArgumentException format:@"Class '%@' can't be resolved.", [self attribute:@"class"]];
     }
+	
     NSString* key = [self attribute:@"key"];
     NSString* factory = [self attributeOrNilIfEmpty:@"factory-component"];
-    TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key factoryComponent:factory];
-
+	TyphoonScope scope = [self scopeForStringValue:[[self attribute:@"scope"] lowercaseString]];
+	BOOL isLazy = (scope == TyphoonScopeSingleton) && [self attributeAsBool:@"lazy-init"];
+    // Don't throw exception if a lazy init is set to a prototype.
+	// Even if the input is wrong, this won't set the definition
+	// in an unstable statement.
+	
+	TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key factoryComponent:factory];
     [definition setBeforePropertyInjection:NSSelectorFromString([self attribute:@"before-property-injection"])];
     [definition setAfterPropertyInjection:NSSelectorFromString([self attribute:@"after-property-injection"])];
-    [self setScopeForDefinition:definition withStringValue:[[self attribute:@"scope"] lowercaseString]];
+    [definition setLazy:isLazy];
+	[definition setScope:scope];
     [self parseComponentDefinitionChildren:definition];
     return definition;
 }
@@ -140,21 +147,21 @@
     }
 }
 
-- (void)setScopeForDefinition:(TyphoonDefinition*)definition withStringValue:(NSString*)scope;
+- (TyphoonScope)scopeForStringValue:(NSString*)scope
 {
-
-    if ([scope isEqualToString:@"singleton"])
-    {
-        [definition setScope:TyphoonScopeSingleton];
+	NSArray *acceptedScopes = @[@"prototype", @"singleton"];
+	if (([scope length] > 0) && (! [acceptedScopes containsObject:scope])) {
+		[NSException raise:NSInvalidArgumentException format:@"Scope was '%@', but can only be 'singleton' or 'prototype'", scope];
+	}
+	
+	// Here, we don't follow the Spring's implementation :
+	// the "default" scope is the prototype.
+	TyphoonScope result = TyphoonScopeDefault;
+	if ([scope isEqualToString:@"singleton"]) {
+		result = TyphoonScopeSingleton;
     }
-    else if ([scope isEqualToString:@"prototype"])
-    {
-        [definition setScope:TyphoonScopeDefault];
-    }
-    else if ([scope length] > 0)
-    {
-        [NSException raise:NSInvalidArgumentException format:@"Scope was '%@', but can only be 'singleton' or 'prototype'", scope];
-    }
+	
+	return result;
 }
 
 

@@ -243,8 +243,47 @@ static NSString* const DEFAULT_QUEST = @"quest";
     [_componentFactory injectProperties:knight];
     
     assertThat(knight.quest, notNilValue());
+}
 
-    
+- (void)test_load_isLoad {
+	[_componentFactory load];
+	assertThatBool([_componentFactory isLoaded], is(@YES));
+}
+
+- (void)test_unload_isLoad {
+	[_componentFactory load];
+	[_componentFactory unload];
+	assertThatBool([_componentFactory isLoaded], is(@NO));
+}
+
+- (void)test_registery_isLoad {
+	[_componentFactory registry];
+	assertThatBool([_componentFactory isLoaded], is(@YES));
+}
+
+- (void)test_load_mutators {
+	id<TyphoonComponentFactoryMutator> mutator = mockProtocol(@protocol(TyphoonComponentFactoryMutator));
+	[_componentFactory attachMutator:mutator];
+	[_componentFactory load];
+	[_componentFactory load]; // Should do nothing
+	[verifyCount(mutator, times(1)) mutateComponentDefinitionsIfRequired:[_componentFactory registry]];
+}
+
+- (void)test_load_singleton {
+	[_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition *definition) {
+		[definition setScope:TyphoonScopeSingleton];
+		[definition setLazy:NO];
+	}]];
+	[_componentFactory register:[TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+		[definition setScope:TyphoonScopeSingleton];
+		[definition setLazy:YES];
+    }]];
+	[_componentFactory register:[TyphoonDefinition withClass:[CavalryMan class] properties:^(TyphoonDefinition *definition) {
+		[definition setScope:TyphoonScopeDefault];
+		[definition setLazy:YES];
+    }]];
+	[_componentFactory load];
+	assertThatUnsignedInteger([[_componentFactory singletons] count], is(@1));
 }
 
 

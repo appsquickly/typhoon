@@ -39,6 +39,11 @@ typedef enum
 @property(nonatomic) TyphoonScope scope;
 @property(nonatomic, strong) TyphoonDefinition* factory;
 
+/**
+ * Say if the componant (scoped as a singleton) should be lazily instantiated.
+ */
+@property(nonatomic, assign, getter = isLazy) BOOL lazy;
+
 
 /* ====================================================================================================================================== */
 #pragma mark Factory methods
