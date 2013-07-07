@@ -36,8 +36,8 @@
     NSString* factory = [self attributeOrNilIfEmpty:@"factory-component"];
 	TyphoonScope scope = [self scopeForStringValue:[[self attribute:@"scope"] lowercaseString]];
 	BOOL isLazy = (scope == TyphoonScopeSingleton) && [self attributeAsBool:@"lazy-init"];
-    // Consider that we don't throw exception if a lazy init is set to
-	// a singleton. Even if the input is wrong, this won't set the definition
+    // Don't throw exception if a lazy init is set to a prototype.
+	// Even if the input is wrong, this won't set the definition
 	// in an unstable statement.
 	
 	TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key factoryComponent:factory];

@@ -29,16 +29,25 @@
 	BOOL _isLoading;
 }
 
-/* The instanciated singletons. */
+/**
+* The instantiated singletons.
+*/
 @property (nonatomic, strong, readonly) NSArray *singletons;
 
-/** Say if the factory has been loaded.  */
+/**
+* Say if the factory has been loaded.
+*/
 @property (nonatomic, assign, getter = isLoaded) BOOL loaded;
 
-/** Build all its not-lazy singletons. */
+/**
+* Mutate the component definitions with the mutators and
+* build the not-lazy singletons.
+*/
 - (void)load;
 
-/** Dump all its singletons. */
+/**
+* Dump all the singletons.
+*/
 - (void)unload;
 
 /**

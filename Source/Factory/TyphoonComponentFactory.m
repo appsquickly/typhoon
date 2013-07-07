@@ -60,6 +60,7 @@ static TyphoonComponentFactory* defaultFactory;
 	{
 		if (!_isLoading && ![self isLoaded])
 		{
+			// ensure that the method won't be call recursively.
 			_isLoading = YES;
 			
 			// First, we call the mutator on every registered definition.
@@ -114,17 +115,19 @@ static TyphoonComponentFactory* defaultFactory;
     NSLog(@"Registering: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
     [_registry addObject:definition];
 	
-	// Dangerous statement. I would handle it via an exception but, in
-	// order to keep the contract of the class, I have implemented this
+	// I would handle it via an exception but, in order to keep
+	// the contract of the class, I have implemented another
 	// strategy: since the not-lazy singletons have to be built once
 	// the factory has been loaded, we build it directly in
 	// the register method if the factory is already loaded.
-	if ([self isLoaded]) {
+	if ([self isLoaded])
+	{
 		[_mutators enumerateObjectsUsingBlock:^(id<TyphoonComponentFactoryMutator> mutator, NSUInteger idx, BOOL *stop) {
 			[mutator mutateComponentDefinitionsIfRequired:@[definition]];
 		}];
 		
-		if (([definition scope] == TyphoonScopeSingleton) && ![definition isLazy]) {
+		if (([definition scope] == TyphoonScopeSingleton) && ![definition isLazy])
+		{
 			[self singletonForDefinition:definition];
 		}
 	}
@@ -189,7 +192,8 @@ static TyphoonComponentFactory* defaultFactory;
     [_mutators addObject:mutator];
 }
 
-- (void)injectProperties:(id)instance {
+- (void)injectProperties:(id)instance
+{
     Class class = [instance class];
     for (TyphoonDefinition* definition in _registry)
     {

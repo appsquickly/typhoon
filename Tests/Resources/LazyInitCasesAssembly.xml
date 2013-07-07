@@ -4,7 +4,7 @@
 	http://www.typhoonframework.org/schema/assembly.xsd">
 	
     <description>
-        Enumerate all cases for the lazy-init value.
+        Enumerate all cases for the lazy-init attribute.
 		Please, use this convension:
 		- if the component is a prototype, set a key that contains 'prototype';
 		- if the component is a singleton, set a key that contains 'singleton';
