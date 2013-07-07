@@ -44,13 +44,55 @@ static TyphoonComponentFactory* defaultFactory;
         _singletons = [[NSMutableDictionary alloc] init];
         _currentlyResolvingReferences = [[NSMutableDictionary alloc] init];
         _mutators = [[NSMutableArray alloc] init];
-        _hasPerformedMutations = NO;
     }
     return self;
 }
 
 
 /* ========================================================== Interface Methods ========================================================= */
+- (NSArray *)singletons {
+	return [_singletons copy];
+}
+
+- (void)load
+{
+	@synchronized (self)
+	{
+		if (!_isLoading && ![self isLoaded])
+		{
+			_isLoading = YES;
+			
+			// First, we call the mutator on every registered definition.
+			[_mutators enumerateObjectsUsingBlock:^(id<TyphoonComponentFactoryMutator> mutator, NSUInteger idx, BOOL *stop) {
+				[mutator mutateComponentDefinitionsIfRequired:[self registry]];
+			}];
+			
+			// Then, we instanciate the not-lazy singletons.
+			[_registry enumerateObjectsUsingBlock:^(id definition, NSUInteger idx, BOOL *stop) {
+				if (([definition scope] == TyphoonScopeSingleton) && ![definition isLazy]) {
+					[self singletonForDefinition:definition];
+				}
+				
+			}];
+			
+			_isLoading = NO;
+			[self setLoaded:YES];
+		}
+	}
+}
+
+- (void)unload
+{
+	@synchronized (self)
+	{
+		if ([self isLoaded])
+		{
+			[_singletons removeAllObjects];
+			[self setLoaded:NO];
+		}
+	}
+}
+
 - (void)register:(TyphoonDefinition*)definition
 {
     if ([definition.key length] == 0)
@@ -71,16 +113,32 @@ static TyphoonComponentFactory* defaultFactory;
     }
     NSLog(@"Registering: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
     [_registry addObject:definition];
+	
+	// Dangerous statement. I would handle it via an exception but, in
+	// order to keep the contract of the class, I have implemented this
+	// strategy: since the not-lazy singletons have to be built once
+	// the factory has been loaded, we build it directly in
+	// the register method if the factory is already loaded.
+	if ([self isLoaded]) {
+		[_mutators enumerateObjectsUsingBlock:^(id<TyphoonComponentFactoryMutator> mutator, NSUInteger idx, BOOL *stop) {
+			[mutator mutateComponentDefinitionsIfRequired:@[definition]];
+		}];
+		
+		if (([definition scope] == TyphoonScopeSingleton) && ![definition isLazy]) {
+			[self singletonForDefinition:definition];
+		}
+	}
 }
 
 - (id)componentForType:(id)classOrProtocol
 {
+	if (! [self isLoaded]) [self load];
     return [self objectForDefinition:[self definitionForType:classOrProtocol]];
 }
 
 - (NSArray*)allComponentsForType:(id)classOrProtocol
 {
-    [self performMutationsIfRequired];
+	if (! [self isLoaded]) [self load];
     NSMutableArray* results = [[NSMutableArray alloc] init];
     NSArray* definitions = [self allDefinitionsForType:classOrProtocol];
     NSLog(@"Definitions: %@", definitions);
@@ -97,7 +155,7 @@ static TyphoonComponentFactory* defaultFactory;
 {
     if (key)
     {
-        [self performMutationsIfRequired];
+		if (! [self isLoaded]) [self load];
         TyphoonDefinition* definition = [self definitionForKey:key];
         if (!definition)
         {
@@ -121,6 +179,7 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (NSArray*)registry
 {
+	if (! [self isLoaded]) [self load];
     return [_registry copy];
 }
 
@@ -189,23 +248,5 @@ static TyphoonComponentFactory* defaultFactory;
     }
     return nil;
 }
-
-- (void)performMutationsIfRequired
-{
-    @synchronized (self)
-    {
-        if (!_hasPerformedMutations)
-        {
-            NSLog(@"Running mutators. . . %@", _mutators);
-            for (id <TyphoonComponentFactoryMutator> mutator in _mutators)
-            {
-                [mutator mutateComponentDefinitionsIfRequired:_registry];
-            }
-            _hasPerformedMutations = YES;
-        }
-    }
-}
-
-
 
 @end
