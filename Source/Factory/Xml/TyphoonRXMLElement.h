@@ -63,6 +63,9 @@
 - (double)attributeAsDouble:(NSString *)attributeName;
 - (double)attributeAsDouble:(NSString *)attributeName inNamespace:(NSString *)ns;
 
+- (BOOL)attributeAsBool:(NSString *)attName;
+- (BOOL)attributeAsBool:(NSString *)attName inNamespace:(NSString *)ns;
+
 - (TyphoonRXMLElement*)child:(NSString *)tag;
 - (TyphoonRXMLElement*)child:(NSString *)tag inNamespace:(NSString *)ns;
 

@@ -173,6 +173,7 @@
 		BA798FD2FBC0CA91B17AEEFC /* TyphoonDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798F905F4B216CEA7A4D8A /* TyphoonDefinition.m */; };
 		BA798FE29893B57DF87E1841 /* NSObject+TyphoonIntrospectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798263556BF9A8D3735540 /* NSObject+TyphoonIntrospectionUtils.m */; };
 		BA798FFBB9425F45FF745AF0 /* TyphoonPassThroughTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79884CFD33CEBCCFC2EDFB /* TyphoonPassThroughTypeConverter.h */; };
+		FFF2541017899826005D2089 /* LazyInitCasesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = FFF2540F17899826005D2089 /* LazyInitCasesAssembly.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -348,6 +349,7 @@
 		BA798F939EF6855E92D46BDB /* ExceptionTestAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ExceptionTestAssembly.xml; sourceTree = "<group>"; };
 		BA798FEB8B4BF76B9D0717DF /* TyphoonPropertyInjectedByReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonPropertyInjectedByReference.h; sourceTree = "<group>"; };
 		BA798FF63253FDE4538CCC56 /* ExceptionTestAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExceptionTestAssembly.m; sourceTree = "<group>"; };
+		FFF2540F17899826005D2089 /* LazyInitCasesAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LazyInitCasesAssembly.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -607,6 +609,7 @@
 		BA7985A14209EDAA0D5F322C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FFF2540F17899826005D2089 /* LazyInitCasesAssembly.xml */,
 				BA798F939EF6855E92D46BDB /* ExceptionTestAssembly.xml */,
 				BA798202AE023A0FAABDA909 /* MiddleAgesAssembly.xml */,
 				BA798A14A75896A016E940AB /* SomeProperties.properties */,
@@ -966,6 +969,7 @@
 				BA798FA1E881FBA470DDB3A3 /* CircularDependenciesAssembly.xml in Resources */,
 				BA798645C06B7F823F2EEF21 /* PropertyPlaceholderAssembly.xml in Resources */,
 				BA7988BBFF5261E02753A6E9 /* AssemblyWithInvalidClassName.xml in Resources */,
+				FFF2541017899826005D2089 /* LazyInitCasesAssembly.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

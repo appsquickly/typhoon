@@ -236,6 +236,21 @@
     return [[self attribute:attName inNamespace:ns] doubleValue];
 }
 
+- (BOOL)attributeAsBool:(NSString *)attName {
+	// if the string value is different from true or yes, we considere it as NO.
+	BOOL result = NO;
+	result |= [[[self attribute:attName] lowercaseString] isEqualTo:@"true"];
+	result |= [[[self attribute:attName] lowercaseString] isEqualTo:@"yes"];
+    return result;
+}
+
+- (BOOL)attributeAsBool:(NSString *)attName inNamespace:(NSString *)ns {
+	BOOL result = NO;
+	result |= [[[self attribute:attName inNamespace:ns] lowercaseString] isEqualTo:@"true"];
+	result |= [[[self attribute:attName inNamespace:ns] lowercaseString] isEqualTo:@"yes"];
+    return result;
+}
+
 - (BOOL)isValid {
     return (doc_ != nil);
 }
