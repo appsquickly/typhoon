@@ -17,6 +17,9 @@
 #import "TyphoonSharedComponentFactoryTests.h"
 #import "ClassBDependsOnA.h"
 #import "ClassADependsOnB.h"
+#import "ClassCDependsOnDAndE.h"
+#import "ClassDDependsOnC.h"
+#import "ClassEDependsOnC.h"
 
 @implementation TyphoonSharedComponentFactoryTests
 
@@ -184,5 +187,22 @@
 
 }
 
+/*
+- (void)test_resolves_two_circular_dependencies_for_property_injected_by_reference
+{
+    ClassCDependsOnDAndE* classC = [_circularDependenciesFactory componentForKey:@"classC"];
+    assertThat(classC.dependencyOnD, notNilValue());
+    assertThat(classC.dependencyOnE, notNilValue());
+    assertThat(classC, equalTo(classC.dependencyOnD.dependencyOnC));
+    assertThat(classC, equalTo(classC.dependencyOnE.dependencyOnC));
+    assertThat([classC.dependencyOnD class], equalTo([ClassDDependsOnC class]));
+    assertThat([classC.dependencyOnE class], equalTo([ClassEDependsOnC class]));
+
+    ClassDDependsOnC* classD = [_circularDependenciesFactory componentForKey:@"classD"];
+    assertThat(classD.dependencyOnC, notNilValue());
+    assertThat(classD, equalTo(classD.dependencyOnC.dependencyOnD));
+    assertThat([classD.dependencyOnC class], equalTo([ClassCDependsOnDAndE class]));
+}
+*/
 
 @end
