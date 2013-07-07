@@ -38,6 +38,13 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/loaded">&nbsp;&nbsp;&nbsp;&nbsp;loaded</option>
+	
+	<option value="//api/name/singletons">&nbsp;&nbsp;&nbsp;&nbsp;singletons</option>
+	
+	
 	
 	
 	<option value="class_methods">Class Methods</option>
@@ -67,11 +74,15 @@
 	
 	<option value="//api/name/injectPropertyDependenciesOn:withDefinition:">&nbsp;&nbsp;&nbsp;&nbsp;- injectPropertyDependenciesOn:withDefinition:</option>
 	
+	<option value="//api/name/load">&nbsp;&nbsp;&nbsp;&nbsp;- load</option>
+	
 	<option value="//api/name/makeDefault">&nbsp;&nbsp;&nbsp;&nbsp;- makeDefault</option>
 	
 	<option value="//api/name/register:">&nbsp;&nbsp;&nbsp;&nbsp;- register:</option>
 	
 	<option value="//api/name/registry">&nbsp;&nbsp;&nbsp;&nbsp;- registry</option>
+	
+	<option value="//api/name/unload">&nbsp;&nbsp;&nbsp;&nbsp;- unload</option>
 	
 	
 	
@@ -96,6 +107,14 @@
 
 
 
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loaded">loaded</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/singletons">singletons</a></span></li>
+	
+</ul></li>
 
 
 
@@ -127,11 +146,15 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/injectPropertyDependenciesOn:withDefinition:">injectPropertyDependenciesOn:withDefinition:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/load">load</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/makeDefault">makeDefault</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/register:">register:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/registry">registry</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/unload">unload</a></span></li>
 	
 </ul></li>
 
@@ -188,6 +211,35 @@ sub-class like <a href="../Classes/TyphoonXmlComponentFactory.html">TyphoonXmlCo
 
 						<ul class="task-list">
 							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/singletons">&nbsp;&nbsp;singletons</a></code>
+		<span class="tooltip"><p>The instantiated singletons.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/loaded">&nbsp;&nbsp;loaded</a></code>
+		<span class="tooltip"><p>Say if the factory has been loaded.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/load">&ndash;&nbsp;load</a></code>
+		<span class="tooltip"><p>Mutate the component definitions with the mutators and
+build the not-lazy <a href="#//api/name/singletons">singletons</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/unload">&ndash;&nbsp;unload</a></code>
+		<span class="tooltip"><p>Dump all the <a href="#//api/name/singletons">singletons</a>.</p></span>
+	</span>
+	
+	
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/defaultFactory">+&nbsp;defaultFactory</a></code>
 		<span class="tooltip"><p>Returns the default component factory, if one has been set. (See <a href="#//api/name/makeDefault">makeDefault</a> ).</p></span>
@@ -300,6 +352,94 @@ sub-class like <a href="../Classes/TyphoonXmlComponentFactory.html">TyphoonXmlCo
 					
 					
 					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/loaded" title="loaded"></a>
+	<h3 class="subsubtitle method-title">loaded</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Say if the factory has been loaded.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, getter=isLoaded) BOOL loaded</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Say if the factory has been loaded.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonComponentFactory.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/singletons" title="singletons"></a>
+	<h3 class="subsubtitle method-title">singletons</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The instantiated singletons.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSArray *singletons</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The instantiated singletons.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonComponentFactory.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
 					
 					
 					
@@ -444,7 +584,7 @@ sub-class like <a href="../Classes/TyphoonXmlComponentFactory.html">TyphoonXmlCo
 <pre><code>  [factory objectForType:[Knight class]];
   [factory objectForType:@protocol(Quest)];
 </code></pre></li>
-<li><p>@exception NSInvalidArgumentException When no singletons or prototypes match the requested type.</p></li>
+<li><p>@exception NSInvalidArgumentException When no <a href="#//api/name/singletons">singletons</a> or prototypes match the requested type.</p></li>
 <li>@exception NSInvalidArgumentException When when more than one singleton or prototype matches the requested type.
 *</li>
 <li>@See: <a href="#//api/name/allComponentsForType:">allComponentsForType:</a></li>
@@ -527,6 +667,49 @@ sub-class like <a href="../Classes/TyphoonXmlComponentFactory.html">TyphoonXmlCo
 	<div class="method-subsection method-declaration"><code>- (void)injectPropertyDependenciesOn:(id&lt;TyphoonIntrospectiveNSObject&gt;)<em>instance</em> withDefinition:(TyphoonDefinition *)<em>definition</em></code></div>
 
     
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/load" title="load"></a>
+	<h3 class="subsubtitle method-title">load</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Mutate the component definitions with the mutators and
+build the not-lazy <a href="#//api/name/singletons">singletons</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)load</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Mutate the component definitions with the mutators and
+build the not-lazy <a href="#//api/name/singletons">singletons</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonComponentFactory.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -629,6 +812,47 @@ sub-class like <a href="../Classes/TyphoonXmlComponentFactory.html">TyphoonXmlCo
 	<div class="method-subsection method-declaration"><code>- (NSArray *)registry</code></div>
 
     
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/unload" title="unload"></a>
+	<h3 class="subsubtitle method-title">unload</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Dump all the <a href="#//api/name/singletons">singletons</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)unload</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Dump all the <a href="#//api/name/singletons">singletons</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonComponentFactory.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>

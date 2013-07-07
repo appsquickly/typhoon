@@ -50,6 +50,8 @@
 	
 	<option value="//api/name/key">&nbsp;&nbsp;&nbsp;&nbsp;key</option>
 	
+	<option value="//api/name/lazy">&nbsp;&nbsp;&nbsp;&nbsp;lazy</option>
+	
 	<option value="//api/name/scope">&nbsp;&nbsp;&nbsp;&nbsp;scope</option>
 	
 	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
@@ -135,6 +137,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/injectedProperties">injectedProperties</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/key">key</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/lazy">lazy</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/scope">scope</a></span></li>
 	
@@ -286,6 +290,13 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/factory">&nbsp;&nbsp;factory</a></code>
 		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/lazy">&nbsp;&nbsp;lazy</a></code>
+		<span class="tooltip"><p>Say if the componant (scoped as a singleton) should be lazily instantiated.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -501,6 +512,47 @@ required <a href="#//api/name/type">type</a>.</p></span>
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *key</code></div>
 
     
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/lazy" title="lazy"></a>
+	<h3 class="subsubtitle method-title">lazy</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Say if the componant (scoped as a singleton) should be lazily instantiated.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, getter=isLazy) BOOL lazy</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Say if the componant (scoped as a singleton) should be lazily instantiated.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonDefinition.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
