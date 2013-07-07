@@ -358,11 +358,11 @@
 <span class="lineNum">     300 </span><span class="lineCov">         20 :                 [results addObject:definition];</span>
 <span class="lineNum">     301 </span><span class="lineCov">         20 :             }</span>
 <span class="lineNum">     302 </span>            :         }
-<span class="lineNum">     303 </span><span class="lineCov">         45 :         else</span>
+<span class="lineNum">     303 </span><span class="lineCov">         51 :         else</span>
 <span class="lineNum">     304 </span>            :         {
-<span class="lineNum">     305 </span><span class="lineCov">         45 :             if ([definition.type conformsToProtocol:classOrProtocol])</span>
+<span class="lineNum">     305 </span><span class="lineCov">         51 :             if ([definition.type conformsToProtocol:classOrProtocol])</span>
 <span class="lineNum">     306 </span>            :             {
-<span class="lineNum">     307 </span><span class="lineCov">         30 :                 [results addObject:definition];</span>
+<span class="lineNum">     307 </span><span class="lineCov">         36 :                 [results addObject:definition];</span>
 <span class="lineNum">     308 </span>            :             }
 <span class="lineNum">     309 </span><span class="lineCov">         14 :         }</span>
 <span class="lineNum">     310 </span><span class="lineCov">         14 :     }</span>
@@ -374,7 +374,7 @@
 <span class="lineNum">     316 </span><span class="lineCov">          7 : </span>
 <span class="lineNum">     317 </span><span class="lineCov">          7 : - (void)evaluateCircularDependency:(NSString*)componentKey property:(NSString*)propertyName</span>
 <span class="lineNum">     318 </span>            :         instance:(id &lt;TyphoonIntrospectiveNSObject&gt;)instance;
-<span class="lineNum">     319 </span><span class="lineCov">         45 : {</span>
+<span class="lineNum">     319 </span><span class="lineCov">         51 : {</span>
 <span class="lineNum">     320 </span><span class="lineCov">         20 :     if ([_currentlyResolvingReferences objectForKey:componentKey] != nil)</span>
 <span class="lineNum">     321 </span><span class="lineCov">         20 :     {</span>
 <span class="lineNum">     322 </span>            :         NSDictionary* circularDependencies = [instance circularDependentProperties];

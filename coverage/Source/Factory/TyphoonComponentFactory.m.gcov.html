@@ -109,27 +109,27 @@
 <span class="lineNum">      51 </span>            : 
 <span class="lineNum">      52 </span>            : 
 <span class="lineNum">      53 </span>            : /* ========================================================== Interface Methods ========================================================= */
-<span class="lineNum">      54 </span><span class="lineCov">        352 : - (void)register:(TyphoonDefinition*)definition</span>
+<span class="lineNum">      54 </span><span class="lineCov">        388 : - (void)register:(TyphoonDefinition*)definition</span>
 <span class="lineNum">      55 </span>            : {
-<span class="lineNum">      56 </span><span class="lineCov">        352 :     if ([definition.key length] == 0)</span>
+<span class="lineNum">      56 </span><span class="lineCov">        388 :     if ([definition.key length] == 0)</span>
 <span class="lineNum">      57 </span>            :     {
 <span class="lineNum">      58 </span><span class="lineCov">          6 :         NSString* uuidStr = [[NSProcessInfo processInfo] globallyUniqueString];</span>
 <span class="lineNum">      59 </span><span class="lineCov">          6 :         definition.key = [NSString stringWithFormat:@&quot;%@_%@&quot;, NSStringFromClass(definition.type), uuidStr];</span>
 <span class="lineNum">      60 </span><span class="lineCov">          6 :     }</span>
-<span class="lineNum">      61 </span><span class="lineCov">        352 :     if ([self definitionForKey:definition.key])</span>
+<span class="lineNum">      61 </span><span class="lineCov">        388 :     if ([self definitionForKey:definition.key])</span>
 <span class="lineNum">      62 </span>            :     {
 <span class="lineNum">      63 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Key '%@' is already registered.&quot;, definition.key];</span>
 <span class="lineNum">      64 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      65 </span><span class="lineCov">        352 :     if ([definition.type respondsToSelector:@selector(typhoonAutoInjectedProperties)])</span>
+<span class="lineNum">      65 </span><span class="lineCov">        388 :     if ([definition.type respondsToSelector:@selector(typhoonAutoInjectedProperties)])</span>
 <span class="lineNum">      66 </span>            :     {
 <span class="lineNum">      67 </span><span class="lineCov">          1 :         for (NSString* autoWired in objc_msgSend(definition.type, @selector(typhoonAutoInjectedProperties)))</span>
 <span class="lineNum">      68 </span>            :         {
 <span class="lineNum">      69 </span><span class="lineCov">          1 :             [definition injectProperty:NSSelectorFromString(autoWired)];</span>
 <span class="lineNum">      70 </span><span class="lineCov">          1 :         }</span>
 <span class="lineNum">      71 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">      72 </span><span class="lineCov">        352 :     NSLog(@&quot;Registering: %@ with key: %@&quot;, NSStringFromClass(definition.type), definition.key);</span>
-<span class="lineNum">      73 </span><span class="lineCov">        352 :     [_registry addObject:definition];</span>
-<span class="lineNum">      74 </span><span class="lineCov">        352 : }</span>
+<span class="lineNum">      72 </span><span class="lineCov">        388 :     NSLog(@&quot;Registering: %@ with key: %@&quot;, NSStringFromClass(definition.type), definition.key);</span>
+<span class="lineNum">      73 </span><span class="lineCov">        388 :     [_registry addObject:definition];</span>
+<span class="lineNum">      74 </span><span class="lineCov">        388 : }</span>
 <span class="lineNum">      75 </span>            : 
 <span class="lineNum">      76 </span><span class="lineCov">          9 : - (id)componentForType:(id)classOrProtocol</span>
 <span class="lineNum">      77 </span>            : {
@@ -236,17 +236,17 @@
 <span class="lineNum">     178 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     179 </span><span class="lineCov">          3 : }</span>
 <span class="lineNum">     180 </span>            : 
-<span class="lineNum">     181 </span><span class="lineCov">        433 : - (TyphoonDefinition*)definitionForKey:(NSString*)key</span>
+<span class="lineNum">     181 </span><span class="lineCov">        469 : - (TyphoonDefinition*)definitionForKey:(NSString*)key</span>
 <span class="lineNum">     182 </span>            : {
-<span class="lineNum">     183 </span><span class="lineCov">       1163 :     for (TyphoonDefinition* definition in _registry)</span>
+<span class="lineNum">     183 </span><span class="lineCov">       1282 :     for (TyphoonDefinition* definition in _registry)</span>
 <span class="lineNum">     184 </span>            :     {
-<span class="lineNum">     185 </span><span class="lineCov">       1163 :         if ([definition.key isEqualToString:key])</span>
+<span class="lineNum">     185 </span><span class="lineCov">       1282 :         if ([definition.key isEqualToString:key])</span>
 <span class="lineNum">     186 </span>            :         {
 <span class="lineNum">     187 </span><span class="lineCov">         80 :             return definition;</span>
 <span class="lineNum">     188 </span>            :         }
-<span class="lineNum">     189 </span><span class="lineCov">       1257 :     }</span>
-<span class="lineNum">     190 </span><span class="lineCov">        353 :     return nil;</span>
-<span class="lineNum">     191 </span><span class="lineCov">        433 : }</span>
+<span class="lineNum">     189 </span><span class="lineCov">       1376 :     }</span>
+<span class="lineNum">     190 </span><span class="lineCov">        389 :     return nil;</span>
+<span class="lineNum">     191 </span><span class="lineCov">        469 : }</span>
 <span class="lineNum">     192 </span>            : 
 <span class="lineNum">     193 </span><span class="lineCov">         84 : - (void)performMutationsIfRequired</span>
 <span class="lineNum">     194 </span>            : {

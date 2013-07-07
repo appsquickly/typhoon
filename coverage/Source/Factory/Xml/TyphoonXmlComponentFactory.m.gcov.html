@@ -110,13 +110,13 @@
 <span class="lineNum">      52 </span><span class="lineCov">         40 :         NSString* xmlString = [[TyphoonBundleResource withName:resourceName] asString];</span>
 <span class="lineNum">      53 </span><span class="lineCov">         40 :         TyphoonRXMLElement* element = [TyphoonRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];</span>
 <span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span><span class="lineCov">        216 :         [element iterate:@&quot;*&quot; usingBlock:^(TyphoonRXMLElement* child)</span>
-<span class="lineNum">      56 </span><span class="lineCov">        176 :         {</span>
-<span class="lineNum">      57 </span><span class="lineCov">        176 :             if ([[child tag] isEqualToString:@&quot;component&quot;])</span>
+<span class="lineNum">      55 </span><span class="lineCov">        252 :         [element iterate:@&quot;*&quot; usingBlock:^(TyphoonRXMLElement* child)</span>
+<span class="lineNum">      56 </span><span class="lineCov">        212 :         {</span>
+<span class="lineNum">      57 </span><span class="lineCov">        212 :             if ([[child tag] isEqualToString:@&quot;component&quot;])</span>
 <span class="lineNum">      58 </span>            :             {
-<span class="lineNum">      59 </span><span class="lineCov">        164 :                 [self register:[child asComponentDefinition]];</span>
-<span class="lineNum">      60 </span><span class="lineCov">        164 :             }</span>
-<span class="lineNum">      61 </span><span class="lineCov">        176 :         }];</span>
+<span class="lineNum">      59 </span><span class="lineCov">        200 :                 [self register:[child asComponentDefinition]];</span>
+<span class="lineNum">      60 </span><span class="lineCov">        200 :             }</span>
+<span class="lineNum">      61 </span><span class="lineCov">        212 :         }];</span>
 <span class="lineNum">      62 </span><span class="lineCov">         40 :     }</span>
 <span class="lineNum">      63 </span><span class="lineCov">         40 : }</span>
 <span class="lineNum">      64 </span>            : 

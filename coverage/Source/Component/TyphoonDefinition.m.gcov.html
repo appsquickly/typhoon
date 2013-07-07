@@ -148,19 +148,19 @@
 <span class="lineNum">      90 </span>            :         _type = clazz;
 <span class="lineNum">      91 </span>            :         _key = [key copy];
 <span class="lineNum">      92 </span>            :         _factoryReference = [factoryComponent copy];
-<span class="lineNum">      93 </span><span class="lineCov">        378 :         _injectedProperties = [[NSMutableSet alloc] init];</span>
+<span class="lineNum">      93 </span><span class="lineCov">        414 :         _injectedProperties = [[NSMutableSet alloc] init];</span>
 <span class="lineNum">      94 </span>            :         [self validateRequiredParametersAreSet];
-<span class="lineNum">      95 </span><span class="lineCov">        378 :     }</span>
-<span class="lineNum">      96 </span><span class="lineCov">        378 :     return self;</span>
+<span class="lineNum">      95 </span><span class="lineCov">        414 :     }</span>
+<span class="lineNum">      96 </span><span class="lineCov">        414 :     return self;</span>
 <span class="lineNum">      97 </span>            : }
-<span class="lineNum">      98 </span><span class="lineCov">        376 : </span>
-<span class="lineNum">      99 </span><span class="lineCov">        376 : - (id)initWithClass:(Class)clazz key:(NSString*)key</span>
-<span class="lineNum">     100 </span><span class="lineCov">        376 : {</span>
-<span class="lineNum">     101 </span><span class="lineCov">        376 :     return [self initWithClass:clazz key:key factoryComponent:nil];</span>
-<span class="lineNum">     102 </span><span class="lineCov">        376 : }</span>
-<span class="lineNum">     103 </span><span class="lineCov">        378 : </span>
-<span class="lineNum">     104 </span><span class="lineCov">        376 : - (id)init</span>
-<span class="lineNum">     105 </span><span class="lineCov">        376 : {</span>
+<span class="lineNum">      98 </span><span class="lineCov">        412 : </span>
+<span class="lineNum">      99 </span><span class="lineCov">        412 : - (id)initWithClass:(Class)clazz key:(NSString*)key</span>
+<span class="lineNum">     100 </span><span class="lineCov">        412 : {</span>
+<span class="lineNum">     101 </span><span class="lineCov">        412 :     return [self initWithClass:clazz key:key factoryComponent:nil];</span>
+<span class="lineNum">     102 </span><span class="lineCov">        412 : }</span>
+<span class="lineNum">     103 </span><span class="lineCov">        414 : </span>
+<span class="lineNum">     104 </span><span class="lineCov">        412 : - (id)init</span>
+<span class="lineNum">     105 </span><span class="lineCov">        412 : {</span>
 <span class="lineNum">     106 </span>            :     return [self initWithClass:nil key:nil factoryComponent:nil];
 <span class="lineNum">     107 </span>            : }
 <span class="lineNum">     108 </span><span class="lineCov">        203 : </span>
