@@ -1,0 +1,20 @@
+xcodeproj 'Tests'
+workspace '../Typhoon'
+
+def import_pods
+  pod 'Typhoon', :path => '../'
+  pod 'OCHamcrest', '~> 1.9'
+  pod 'OCMockito', '~> 0.2'
+end
+
+target :ios do
+  platform :ios, '5.0'
+  link_with 'iOS Tests'
+  import_pods
+end
+
+target :osx do
+  platform :osx, '10.7'
+  link_with 'OS X Tests'
+  import_pods
+end
