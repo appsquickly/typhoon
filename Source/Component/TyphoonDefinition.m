@@ -34,26 +34,24 @@
     return [[TyphoonDefinition alloc] initWithClass:clazz key:key];
 }
 
-+ (TyphoonDefinition*)withClass:(Class)clazz initialization:(void (^)(TyphoonInitializer*))initialization
++ (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
 {
     return [TyphoonDefinition withClass:clazz key:nil initialization:initialization properties:nil];
 }
 
-+ (TyphoonDefinition*)withClass:(Class)clazz properties:(void (^)(TyphoonDefinition*))properties
++ (TyphoonDefinition*)withClass:(Class)clazz properties:(TyphoonDefinitionBlock)properties
 {
     return [TyphoonDefinition withClass:clazz key:nil initialization:nil properties:properties];
 }
 
-+ (TyphoonDefinition*)withClass:(Class)clazz initialization:(void (^)(TyphoonInitializer*))initialization
-        properties:(void (^)(TyphoonDefinition*))properties
++ (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization properties:(TyphoonDefinitionBlock)properties
 {
     return [TyphoonDefinition withClass:clazz key:nil initialization:initialization properties:properties];
 }
 
-+ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key initialization:(void (^)(TyphoonInitializer*))initialization
-        properties:(void (^)(TyphoonDefinition*))properties
++ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key initialization:(TyphoonInitializerBlock)initialization properties:(TyphoonDefinitionBlock)properties
 {
-
+    
     TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key];
     if (initialization)
     {
@@ -70,12 +68,12 @@
     return definition;
 }
 
-+ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key initialization:(void (^)(TyphoonInitializer*))initialization
++ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key initialization:(TyphoonInitializerBlock)initialization
 {
     return [TyphoonDefinition withClass:clazz key:key initialization:initialization properties:nil];
 }
 
-+ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key properties:(void (^)(TyphoonDefinition*))properties
++ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key properties:(TyphoonDefinitionBlock)properties
 {
     return [TyphoonDefinition withClass:clazz key:key initialization:nil properties:properties];
 }
