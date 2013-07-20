@@ -1,0 +1,21 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+//  JASPER BLUES
+//  Copyright 2013 Jasper Blues
+//  All Rights Reserved.
+//
+//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
+//
+////////////////////////////////////////////////////////////////////////////////
+
+#ifdef typhoon_shorthand
+
+#define autoWire typhoon_autoWire
+
+#define Singleton TyphoonComponentLifecycleSingleton
+
+#define Prototype TyphoonComponentLifecyclePrototype
+
+#endif
+

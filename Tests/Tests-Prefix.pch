@@ -3,7 +3,13 @@
 //
 
 #ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
+    #import <Foundation/Foundation.h>
+
+    #if __IPHONE_OS_VERSION_MIN_REQUIRED
+    
+    #else
+        #import <Cocoa/Cocoa.h>
+    #endif
 #endif
 
 
