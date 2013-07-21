@@ -80,7 +80,7 @@
 - (TyphoonDefinition *)definitionInElement:(TyphoonRXMLElement *)elt forKey:(NSString *)key {
 	NSArray *components = [elt children:@"component"];
 	NSUInteger index = [components indexOfObjectPassingTest:^BOOL(TyphoonRXMLElement *child, NSUInteger idx, BOOL *stop) {
-		return [[child attribute:@"key"] isEqualTo:key];
+		return [[child attribute:@"key"] isEqual:key];
 	}];
 	return (index != NSNotFound) ? [[components objectAtIndex:index] asComponentDefinition] : nil;
 }
