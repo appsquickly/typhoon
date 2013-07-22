@@ -13,13 +13,14 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonRXMLElement.h"
+#import "TyphoonDefinition.h"
 
-@class TyphoonDefinition;
 @protocol TyphoonInjectedProperty;
 @class TyphoonInitializer;
 @protocol TyphoonInjectedParameter;
 
 @interface TyphoonRXMLElement (XmlComponentFactory)
+@property (nonatomic, assign) TyphoonScope defaultScope;
 
 - (TyphoonDefinition*)asComponentDefinition;
 
