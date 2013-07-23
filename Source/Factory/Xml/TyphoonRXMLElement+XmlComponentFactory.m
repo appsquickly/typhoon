@@ -22,7 +22,6 @@
 #import "TyphoonPropertyInjectedAsCollection.h"
 
 @implementation TyphoonRXMLElement (XmlComponentFactory)
-@dynamic defaultScope;
 
 - (TyphoonDefinition*)asComponentDefinition
 {
