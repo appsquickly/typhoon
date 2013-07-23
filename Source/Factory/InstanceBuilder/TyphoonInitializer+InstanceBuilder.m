@@ -101,9 +101,13 @@
         case TyphoonComponentInitializerIsClassMethodYes:
             return YES;
         case TyphoonComponentInitializerIsClassMethodGuess:
-            return ![NSStringFromSelector(_selector) hasPrefix:@"init"];
+            return [self selectorDoesNotStartWithInit];
     }
 }
 
+- (BOOL)selectorDoesNotStartWithInit
+{
+    return ![NSStringFromSelector(_selector) hasPrefix:@"init"];
+}
 
 @end
