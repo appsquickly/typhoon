@@ -101,7 +101,6 @@ typedef struct
     TyphoonTypeDescriptor* descriptor = [self typeForPropertyWithName:@"longProperty"];
     assertThatBool(descriptor.isPrimitive, equalToBool(YES));
     assertThatBool(descriptor.isPointer, equalToBool(NO));
-    assertThatInt(descriptor.primitiveType, equalToInt(TyphoonPrimitiveTypeLongLong));
 }
 
 - (void)test_typeForPropertyWithName_pointerToLongLong
@@ -109,7 +108,6 @@ typedef struct
     TyphoonTypeDescriptor* descriptor = [self typeForPropertyWithName:@"pointerToLongLongProperty"];
     assertThatBool(descriptor.isPrimitive, equalToBool(YES));
     assertThatBool(descriptor.isPointer, equalToBool(YES));
-    assertThatInt(descriptor.primitiveType, equalToInt(TyphoonPrimitiveTypeUnsignedLongLong));
 }
 
 - (void)test_typeForPropertyWithName_struct
@@ -145,11 +143,10 @@ typedef struct
 
     NSLog(@"Here's the typeCodes: %@", typeCodes);
     assertThat([typeCodes objectAtIndex:0], equalTo(@"@"));
-    assertThat([typeCodes objectAtIndex:1], equalTo(@"Q"));
+
 
     TyphoonTypeDescriptor* typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:1]];
     assertThatBool(typeDescriptor.isPrimitive, equalToBool(YES));
-    assertThatInt(typeDescriptor.primitiveType, equalToInt(TyphoonPrimitiveTypeUnsignedLongLong));
 }
 
 @end

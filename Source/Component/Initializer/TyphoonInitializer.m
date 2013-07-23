@@ -91,17 +91,17 @@
     [self injectParameterAtIndex:[_injectedParameters count] withDefinition:definition];
 }
 
-- (void)injectWithText:(NSString*)text
+- (void)injectWithValueAsText:(NSString*)text
 {
-    [self injectWithText:text requiredTypeOrNil:nil];
+    [self injectWithValueAsText:text requiredTypeOrNil:nil];
 }
 
-- (void)injectWithText:(NSString*)text requiredTypeOrNil:(id)requiredTypeOrNil
+- (void)injectWithValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredTypeOrNil
 {
     [self injectParameterAtIndex:[_injectedParameters count] withValueAsText:text requiredTypeOrNil:requiredTypeOrNil];
 }
 
-- (void)injectParameterAtIndex:(NSUInteger)index withValue:(id)value
+- (void)injectParameterAtIndex:(NSUInteger)index withObject:(id)value
 {
     if (index != NSUIntegerMax && index < [_parameterNames count])
     {
@@ -109,14 +109,14 @@
     }
 }
 
-- (void)injectParameterNamed:(NSString*)name withValue:(id)value
+- (void)injectParameterNamed:(NSString*)name withObject:(id)value
 {
-    [self injectParameterAtIndex:[self indexOfParameter:name] withValue:value];
+    [self injectParameterAtIndex:[self indexOfParameter:name] withObject:value];
 }
 
-- (void)injectParameterWithValue:(id)value
+- (void)injectParameterWithObject:(id)value
 {
-    [self injectParameterAtIndex:[_injectedParameters count] withValue:value];
+    [self injectParameterAtIndex:[_injectedParameters count] withObject:value];
 }
 
 /* ====================================================================================================================================== */

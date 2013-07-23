@@ -29,5 +29,4 @@
 - (TyphoonInitializer*)asInitializer;
 
 
-
 @end

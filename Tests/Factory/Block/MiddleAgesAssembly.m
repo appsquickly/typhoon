@@ -49,7 +49,7 @@
     {
         initializer.selector = @selector(initWithQuest:hitRatio:);
         [initializer injectWithDefinition:[self defaultQuest]];
-        [initializer injectWithText:@"13.75"];
+        [initializer injectWithValueAsText:@"13.75"];
 
     } properties:^(TyphoonDefinition* definition)
     {

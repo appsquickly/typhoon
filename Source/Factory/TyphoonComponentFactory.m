@@ -24,7 +24,7 @@
 @end
 
 @implementation TyphoonComponentFactory
-@synthesize defaultScope = _defaultScope;
+
 static TyphoonComponentFactory* defaultFactory;
 
 
@@ -44,8 +44,6 @@ static TyphoonComponentFactory* defaultFactory;
         _singletons = [[NSMutableDictionary alloc] init];
         _currentlyResolvingReferences = [[NSMutableDictionary alloc] init];
         _mutators = [[NSMutableArray alloc] init];
-        
-        self.defaultScope = TyphoonScopePrototype;
     }
     return self;
 }
@@ -215,24 +213,11 @@ static TyphoonComponentFactory* defaultFactory;
     return description;
 }
 
-- (void)setDefaultScope:(TyphoonScope)defaultScope
-{
-    if (defaultScope == TyphoonScopeDefault) {
-        defaultScope = TyphoonScopePrototype;
-    }
-    
-    _defaultScope = defaultScope;
-}
 
 /* ============================================================ Private Methods ========================================================= */
 - (id)objectForDefinition:(TyphoonDefinition*)definition
 {
     if (definition.scope == TyphoonScopeDefault)
-    {
-        definition.scope = self.defaultScope;
-    }
-    
-    if (definition.scope == TyphoonScopePrototype)
     {
         return [self buildInstanceWithDefinition:definition];
     }
