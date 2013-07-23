@@ -45,7 +45,7 @@
     NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
     [description appendFormat:@"self.quest=%@", self.quest];
     [description appendFormat:@", self.foobar=%@", self.foobar];
-    [description appendFormat:@", self.damselsRescued=%lu", self.damselsRescued];
+    [description appendFormat:@", self.damselsRescued=%lu", (unsigned long)self.damselsRescued];
     [description appendString:@">"];
     return description;
 }

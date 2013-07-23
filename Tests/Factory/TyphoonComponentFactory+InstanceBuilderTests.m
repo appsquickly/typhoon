@@ -53,7 +53,7 @@
 - (void)test_injects_required_initializer_dependencies_with_factory_method
 {
     TyphoonDefinition* urlDefinition = [[TyphoonDefinition alloc] initWithClass:[NSURL class] key:@"url"];
-    TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(URLWithString:) isClassMethod:YES];
+    TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(URLWithString:) isClassMethod:TyphoonComponentInitializerIsClassMethodYes];
     [initializer injectParameterAtIndex:0 withValueAsText:@"http://www.appsquick.ly" requiredTypeOrNil:[NSString class]];
     [urlDefinition setInitializer:initializer];
     [_componentFactory register:urlDefinition];
@@ -67,7 +67,7 @@
 {
     TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     TyphoonInitializer
-            * initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethod:NO];
+            * initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethod:TyphoonComponentInitializerIsClassMethodNo];
     [initializer injectParameterNamed:@"damselsRescued" withValueAsText:@"12" requiredTypeOrNil:nil];
     [knightDefinition setInitializer:initializer];
 

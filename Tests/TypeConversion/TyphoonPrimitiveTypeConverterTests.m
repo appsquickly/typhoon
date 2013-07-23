@@ -157,7 +157,7 @@
     NSInvocation* mockInvocation = mock([NSInvocation class]);
     TyphoonTypeDescriptor* descriptor = [self typeForPropertyWithName:@"boolProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"true" requiredType:descriptor];
-    [verify(mockInvocation) setArgument:YES atIndex:2];
+    [verify(mockInvocation) setArgument:(void *)YES atIndex:2];
 }
 
 - (void)test_set_argument_class

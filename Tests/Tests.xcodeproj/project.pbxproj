@@ -78,8 +78,6 @@
 		4B841528179B0EA600916BF5 /* PropertyPlaceholderAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DD179B0EA600916BF5 /* PropertyPlaceholderAssembly.xml */; };
 		4B841529179B0EA600916BF5 /* SomeProperties.properties in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DE179B0EA600916BF5 /* SomeProperties.properties */; };
 		4B84152A179B0EA600916BF5 /* SomeProperties.properties in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DE179B0EA600916BF5 /* SomeProperties.properties */; };
-		4B84152B179B0EA600916BF5 /* Tests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DF179B0EA600916BF5 /* Tests-Info.plist */; };
-		4B84152C179B0EA600916BF5 /* Tests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DF179B0EA600916BF5 /* Tests-Info.plist */; };
 		4B84152D179B0EA600916BF5 /* TyphoonPassthroughTypeConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8414E2179B0EA600916BF5 /* TyphoonPassthroughTypeConverterTests.m */; };
 		4B84152E179B0EA600916BF5 /* TyphoonPassthroughTypeConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8414E2179B0EA600916BF5 /* TyphoonPassthroughTypeConverterTests.m */; };
 		4B84152F179B0EA600916BF5 /* TyphoonPrimitiveTypeConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8414E3179B0EA600916BF5 /* TyphoonPrimitiveTypeConverterTests.m */; };
@@ -495,8 +493,6 @@
 			mainGroup = 4B841460179B0E1B00916BF5;
 			productRefGroup = 4B84146D179B0E3900916BF5 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				4B84146B179B0E3900916BF5 /* iOS Tests */,
@@ -517,7 +513,6 @@
 				4B841525179B0EA600916BF5 /* MiddleAgesAssembly.xml in Resources */,
 				4B841527179B0EA600916BF5 /* PropertyPlaceholderAssembly.xml in Resources */,
 				4B841529179B0EA600916BF5 /* SomeProperties.properties in Resources */,
-				4B84152B179B0EA600916BF5 /* Tests-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,7 +527,6 @@
 				4B841526179B0EA600916BF5 /* MiddleAgesAssembly.xml in Resources */,
 				4B841528179B0EA600916BF5 /* PropertyPlaceholderAssembly.xml in Resources */,
 				4B84152A179B0EA600916BF5 /* SomeProperties.properties in Resources */,
-				4B84152C179B0EA600916BF5 /* Tests-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

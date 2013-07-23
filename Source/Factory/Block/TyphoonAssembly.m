@@ -54,7 +54,6 @@ static NSMutableArray* resolveStack;
                     {
                         NSLog(@"Resolve stack: %@", resolveStack);
                         return [[TyphoonDefinition alloc] initWithClass:[NSString class] key:key];
-//                        [NSException raise:NSInternalInconsistencyException format:@"Circular dependency detected."];
                     }
                 }
 
