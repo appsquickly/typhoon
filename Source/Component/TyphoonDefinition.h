@@ -20,7 +20,6 @@
 typedef enum
 {
     TyphoonScopeDefault,
-    TyphoonScopePrototype,
     TyphoonScopeSingleton
 } TyphoonScope;
 

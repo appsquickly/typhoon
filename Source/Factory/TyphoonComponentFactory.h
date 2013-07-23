@@ -13,7 +13,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryMutator.h"
-#import "TyphoonDefinition.h"
+@class TyphoonDefinition;
 
 /**
 * This is the base class for for all spring component factories. Although, it could be used as-is, the intention is to use a
@@ -38,11 +38,6 @@
 * Say if the factory has been loaded.
 */
 @property (nonatomic, assign, getter = isLoaded) BOOL loaded;
-
-/**
-* Setting default scope
-*/
-@property (nonatomic, assign) TyphoonScope defaultScope;
 
 /**
 * Mutate the component definitions with the mutators and

@@ -13,7 +13,6 @@
 #import "TyphoonXmlComponentFactory.h"
 #import "TyphoonBundleResource.h"
 #import "TyphoonRXMLElement+XmlComponentFactory.h"
-#import "TyphoonDefinition.h"
 
 
 @implementation TyphoonXmlComponentFactory
@@ -57,7 +56,6 @@
         {
             if ([[child tag] isEqualToString:@"component"])
             {
-                [child setDefaultScope:self.defaultScope];
                 [self register:[child asComponentDefinition]];
             }
         }];

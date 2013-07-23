@@ -22,7 +22,6 @@
 #import "TyphoonPropertyInjectedAsCollection.h"
 
 @implementation TyphoonRXMLElement (XmlComponentFactory)
-@dynamic defaultScope;
 
 - (TyphoonDefinition*)asComponentDefinition
 {
@@ -155,13 +154,11 @@
 		[NSException raise:NSInvalidArgumentException format:@"Scope was '%@', but can only be 'singleton' or 'prototype'", scope];
 	}
 	
-	TyphoonScope result = self.defaultScope;
+	// Here, we don't follow the Spring's implementation :
+	// the "default" scope is the prototype.
+	TyphoonScope result = TyphoonScopeDefault;
 	if ([scope isEqualToString:@"singleton"]) {
 		result = TyphoonScopeSingleton;
-    }
-    else if ([scope isEqualToString:@"prototype"])
-    {
-        result = TyphoonScopePrototype;
     }
 	
 	return result;
