@@ -20,8 +20,6 @@
     --clean,
     --make.dirs,
     --tests.build,
-    --assemble.coverage.data,
-    --coverage.report,
     --api.report"/>
 
     <target name="clean" depends="--clean"/>
@@ -54,38 +52,11 @@
         </delete>
     </target>
 
-    <target name="--assemble.coverage.data">
-        <mkdir dir="${temp.dir}/coverage-data"/>
-        <pathconvert pathsep=", " property="gcno.list" refid="classes">
-            <mapper>
-                <chainedmapper>
-                    <flattenmapper/>
-                    <globmapper from="*.m" to="**/*.gcno"/>
-                </chainedmapper>
-            </mapper>
-        </pathconvert>
-        <echo message="Coverage info files: ${gcno.list}"/>
-        <copy todir="${temp.dir}/coverage-data" flatten="true">
-            <fileset dir="${target.dir}" includes="${gcno.list}"/>
-        </copy>
-        <pathconvert pathsep=", " property="gcda.list" refid="classes">
-            <mapper>
-                <chainedmapper>
-                    <flattenmapper/>
-                    <globmapper from="*.m" to="**/*.gcda"/>
-                </chainedmapper>
-            </mapper>
-        </pathconvert>
-        <echo message="Coverage data files: ${gcda.list}"/>
-        <copy todir="${temp.dir}/coverage-data" flatten="true">
-            <fileset dir="${target.dir}" includes="${gcda.list}"/>
-        </copy>
-    </target>
 
     <target name="--tests.build">
         <property name="tests.report" value="${reports.dir}/tests/test-results.txt"/>
         <exec executable="xcodebuild" failonerror="false" outputproperty="unit.tests.output">
-            <arg line="-target Tests TEST_AFTER_BUILD=YES"/>
+            <arg line="-sdk iphonesimulator${module.sdk.version} -workspace Typhoon.xcworkspace -scheme 'iOS Tests' TEST_AFTER_BUILD=YES"/>
         </exec>
 
         <!-- Write report to disk -->
@@ -134,31 +105,57 @@
     </target>
 
 
+    <target name="--assemble.coverage.data">
+        <mkdir dir="${temp.dir}/coverage-data"/>
+        <pathconvert pathsep=", " property="gcno.list" refid="classes">
+            <mapper>
+                <chainedmapper>
+                    <flattenmapper/>
+                    <globmapper from="*.m" to="**/*.gcno"/>
+                </chainedmapper>
+            </mapper>
+        </pathconvert>
+        <echo message="Coverage info files: ${gcno.list}"/>
+        <copy todir="${temp.dir}/coverage-data" flatten="true">
+            <fileset dir="${user.home}/Library/Developer/Xcode/DerivedData" includes="${gcno.list}"/>
+        </copy>
+        <pathconvert pathsep=", " property="gcda.list" refid="classes">
+            <mapper>
+                <chainedmapper>
+                    <flattenmapper/>
+                    <globmapper from="*.m" to="**/*.gcda"/>
+                </chainedmapper>
+            </mapper>
+        </pathconvert>
+        <echo message="Coverage data files: ${gcda.list}"/>
+        <copy todir="${temp.dir}/coverage-data" flatten="true">
+            <fileset dir="${user.home}/Library/Developer/Xcode/DerivedData" includes="${gcda.list}"/>
+        </copy>
+    </target>
+
     <target name="--coverage.report">
         <property name="coverage.reports.dir" value="${reports.dir}/coverage"/>
         <mkdir dir="${coverage.reports.dir}"/>
 
         <echo file="${temp.dir}/geninfo.sh">
             #!/bin/sh
-            geninfo "${temp.dir}/coverage-data/"*.gcda --no-recursion -o "${temp.dir}/coverage-temp.info"
+            geninfo ${temp.dir}/coverage-data/*.gcno --no-recursion --output-filename \
+            ${temp.dir}/${module.name}-temp.info
             #Remove symbols we're not interested in.
-            lcov -r "${temp.dir}/coverage-temp.info" _string.h NSRange.h once.h TyphoonRXMLElement.m TyphoonRXMLElement.h TyphoonJRSwizzle.m 	 > "${temp.dir}/coverage.info"
+            lcov -r ${temp.dir}/${module.name}-temp.info UIGeometry.h CGGeometry.h > ${temp.dir}/${module.name}.info
         </echo>
         <chmod perm="+x" file="${temp.dir}/geninfo.sh"/>
-        <exec executable="${temp.dir}/geninfo.sh" failonerror="true" failifexecutionfails="true">
-            <env key="PATH" value="${tools.paths}"/>
-        </exec>
+        <exec executable="${temp.dir}/geninfo.sh" failonerror="true" failifexecutionfails="true"/>
 
         <echo file="${temp.dir}/genhtml.sh">
             #!/bin/sh
-            genhtml -p "${source.main.dir}" --no-function-coverage --no-branch-coverage -o "${coverage.reports.dir}" \
-            --prefix "${basedir}" "${temp.dir}/coverage.info"
+            genhtml --no-function-coverage --no-branch-coverage -o ${coverage.reports.dir} \
+            --prefix ${basedir} ${temp.dir}/${module.name}.info
         </echo>
         <chmod perm="+x" file="${temp.dir}/genhtml.sh"/>
-        <exec executable="${temp.dir}/genhtml.sh" failonerror="true" failifexecutionfails="true">
-            <env key="PATH" value="${tools.paths}"/>
-        </exec>
+        <exec executable="${temp.dir}/genhtml.sh" failonerror="true" failifexecutionfails="true"/>
     </target>
+
 
     <target name="--api.report">
         <mkdir dir="${reports.dir}/api"/>
