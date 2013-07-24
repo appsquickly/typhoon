@@ -33,6 +33,7 @@
 #import <libxml2/libxml/xmlmemory.h>
 #import <libxml/xpath.h>
 #import <libxml/xpathInternals.h>
+#import "TyphoonDefinition.h"
 
 @interface TyphoonRXMLElement : NSObject
 {
@@ -82,6 +83,7 @@
 @property (nonatomic, readonly) NSInteger textAsInt;
 @property (nonatomic, readonly) double textAsDouble;
 @property (nonatomic, readonly) BOOL isValid;
+@property (nonatomic, assign) TyphoonScope defaultScope;
 
 @end
 
