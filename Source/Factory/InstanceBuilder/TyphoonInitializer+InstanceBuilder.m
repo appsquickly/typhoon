@@ -84,9 +84,9 @@
 {
     if (_definition.factoryReference)
     {
-        if (_isClassMethodStrategy == YES)
+        if (_isClassMethodStrategy == TyphoonComponentInitializerIsClassMethodYes)
         {
-            [NSException raise:NSInvalidArgumentException format:@"'is-class-method' can't be 'YES' when factory-component is used!"];
+            [NSException raise:NSInvalidArgumentException format:@"'is-class-method' can't be 'TyphoonComponentInitializerIsClassMethodYes' when factory-component is used!"];
         }
         else
         {
@@ -101,9 +101,13 @@
         case TyphoonComponentInitializerIsClassMethodYes:
             return YES;
         case TyphoonComponentInitializerIsClassMethodGuess:
-            return ![NSStringFromSelector(_selector) hasPrefix:@"init"];
+            return [self selectorDoesNotStartWithInit];
     }
 }
 
+- (BOOL)selectorDoesNotStartWithInit
+{
+    return ![NSStringFromSelector(_selector) hasPrefix:@"init"];
+}
 
 @end

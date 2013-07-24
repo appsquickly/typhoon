@@ -42,7 +42,7 @@
 
 - (id)init
 {
-    return [self initWithSelector:@selector(init) isClassMethod:NO];
+    return [self initWithSelector:@selector(init) isClassMethod:TyphoonComponentInitializerIsClassMethodGuess];
 }
 
 
