@@ -21,12 +21,12 @@
 
 @interface TyphoonRXMLElement (XmlComponentFactory)
 
+
 - (TyphoonDefinition*)asComponentDefinition;
 
 - (id<TyphoonInjectedProperty>)asInjectedProperty;
 
 - (TyphoonInitializer*)asInitializer;
-
 
 
 @end
