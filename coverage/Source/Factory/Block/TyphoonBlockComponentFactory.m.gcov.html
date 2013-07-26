@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <title>LCOV - Typhoon.info - Source/Factory/Block/TyphoonBlockComponentFactory.m</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">75</td>
+            <td class="headerCovTableEntry">72</td>
             <td class="headerCovTableEntry">82</td>
-            <td class="headerCovTableEntryHi">91.5 %</td>
+            <td class="headerCovTableEntryMed">87.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-07-26</td>
+            <td class="headerValue">2013-07-27</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -108,8 +108,8 @@
 <span class="lineNum">      50 </span><span class="lineCov">          1 :     [super initialize];</span>
 <span class="lineNum">      51 </span><span class="lineCov">          1 :     @synchronized (self)</span>
 <span class="lineNum">      52 </span>            :     {
-<span class="lineNum">      53 </span><span class="lineCov">          3 :         swizzleRegistry = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      53 </span><span class="lineCov">          1 :         swizzleRegistry = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      55 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      56 </span>            : 
 <span class="lineNum">      57 </span>            : 
@@ -132,12 +132,12 @@
 <span class="lineNum">      74 </span>            :     {
 <span class="lineNum">      75 </span><span class="lineCov">         36 :         [self applyBeforeAdviceToAssemblyMethods:assembly];</span>
 <span class="lineNum">      76 </span><span class="lineCov">         36 :         NSArray* definitions = [self populateCache:assembly];</span>
-<span class="lineNum">      77 </span><span class="lineCov">        384 :         for (TyphoonDefinition* definition in definitions)</span>
+<span class="lineNum">      77 </span><span class="lineCov">        156 :         for (TyphoonDefinition* definition in definitions)</span>
 <span class="lineNum">      78 </span>            :         {
 <span class="lineNum">      79 </span><span class="lineCov">        156 :             [self register:definition];</span>
-<span class="lineNum">      80 </span><span class="lineCov">        384 :         }</span>
+<span class="lineNum">      80 </span><span class="lineCov">        156 :         }</span>
 <span class="lineNum">      81 </span><span class="lineCov">         36 :     }</span>
-<span class="lineNum">      82 </span><span class="lineCov">         72 :     return self;</span>
+<span class="lineNum">      82 </span><span class="lineCov">         36 :     return self;</span>
 <span class="lineNum">      83 </span><span class="lineCov">         36 : }</span>
 <span class="lineNum">      84 </span>            : 
 <span class="lineNum">      85 </span>            : /* ============================================================ Private Methods ========================================================= */
@@ -147,13 +147,13 @@
 <span class="lineNum">      89 </span>            :     {
 <span class="lineNum">      90 </span><span class="lineCov">         72 :         NSSet *definitionSelectors = [self obtainDefinitionSelectors:assembly];</span>
 <span class="lineNum">      91 </span>            :         
-<span class="lineNum">      92 </span><span class="lineCov">        192 :         [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {</span>
+<span class="lineNum">      92 </span><span class="lineCov">         36 :         [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {</span>
 <span class="lineNum">      93 </span><span class="lineCov">        156 :             objc_msgSend(assembly, (SEL)[obj pointerValue]);</span>
 <span class="lineNum">      94 </span><span class="lineCov">        156 :         }];</span>
 <span class="lineNum">      95 </span>            :         
-<span class="lineNum">      96 </span><span class="lineCov">         72 :         NSMutableDictionary* dictionary = [assembly cachedSelectors];</span>
-<span class="lineNum">      97 </span><span class="lineCov">        108 :         return [dictionary allValues];</span>
-<span class="lineNum">      98 </span><span class="lineCov">         36 :     }</span>
+<span class="lineNum">      96 </span><span class="lineCov">         36 :         NSMutableDictionary* dictionary = [assembly cachedSelectors];</span>
+<span class="lineNum">      97 </span><span class="lineCov">         36 :         return [dictionary allValues];</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      99 </span><span class="lineCov">         36 : }</span>
 <span class="lineNum">     100 </span>            : 
 <span class="lineNum">     101 </span><span class="lineCov">         39 : - (NSSet *)obtainDefinitionSelectors:(TyphoonAssembly*)assembly</span>
@@ -161,12 +161,12 @@
 <span class="lineNum">     103 </span><span class="lineCov">         39 :     NSMutableSet *definitionSelectors = [[NSMutableSet alloc] init];</span>
 <span class="lineNum">     104 </span>            :     
 <span class="lineNum">     105 </span><span class="lineCov">         39 :     Class currentClass = [assembly class];</span>
-<span class="lineNum">     106 </span><span class="lineCov">        117 :     while (strcmp(class_getName(currentClass), &quot;TyphoonAssembly&quot;) != 0) {</span>
+<span class="lineNum">     106 </span><span class="lineCov">         78 :     while (strcmp(class_getName(currentClass), &quot;TyphoonAssembly&quot;) != 0) {</span>
 <span class="lineNum">     107 </span><span class="lineCov">         39 :         [definitionSelectors unionSet:[self obtainDefinitionSelectorsInAssemblyClass:currentClass]];</span>
 <span class="lineNum">     108 </span><span class="lineCov">         39 :         currentClass = class_getSuperclass(currentClass);</span>
 <span class="lineNum">     109 </span><span class="lineCov">         39 :     }</span>
 <span class="lineNum">     110 </span>            :     
-<span class="lineNum">     111 </span><span class="lineCov">         78 :     return definitionSelectors;</span>
+<span class="lineNum">     111 </span><span class="lineCov">         39 :     return definitionSelectors;</span>
 <span class="lineNum">     112 </span><span class="lineCov">         39 : }</span>
 <span class="lineNum">     113 </span>            : 
 <span class="lineNum">     114 </span><span class="lineCov">         39 : - (NSSet *)obtainDefinitionSelectorsInAssemblyClass:(Class)class</span>
@@ -175,7 +175,7 @@
 <span class="lineNum">     117 </span>            :     
 <span class="lineNum">     118 </span><span class="lineCov">         39 :     unsigned int methodCount;</span>
 <span class="lineNum">     119 </span><span class="lineCov">         39 :     Method* methodList = class_copyMethodList(class, &amp;methodCount);</span>
-<span class="lineNum">     120 </span><span class="lineCov">        728 :     for (int i = 0; i &lt; methodCount; i++)</span>
+<span class="lineNum">     120 </span><span class="lineCov">        364 :     for (int i = 0; i &lt; methodCount; i++)</span>
 <span class="lineNum">     121 </span>            :     {
 <span class="lineNum">     122 </span><span class="lineCov">        325 :         Method method = methodList[i];</span>
 <span class="lineNum">     123 </span>            :         //            NSLog(@&quot;Selector: %@&quot;, NSStringFromSelector(method_getName(method)));
@@ -192,26 +192,26 @@
 <span class="lineNum">     134 </span><span class="lineCov">        325 :     }</span>
 <span class="lineNum">     135 </span><span class="lineCov">         39 :     free(methodList);</span>
 <span class="lineNum">     136 </span>            :     
-<span class="lineNum">     137 </span><span class="lineCov">         78 :     return definitionSelectors;</span>
+<span class="lineNum">     137 </span><span class="lineCov">         39 :     return definitionSelectors;</span>
 <span class="lineNum">     138 </span><span class="lineCov">         39 : }</span>
 <span class="lineNum">     139 </span>            : 
 <span class="lineNum">     140 </span><span class="lineCov">         62 : - (void)applyBeforeAdviceToAssemblyMethods:(TyphoonAssembly*)assembly</span>
 <span class="lineNum">     141 </span>            : {
 <span class="lineNum">     142 </span><span class="lineCov">         36 :     @synchronized (self)</span>
 <span class="lineNum">     143 </span>            :     {
-<span class="lineNum">     144 </span><span class="lineCov">        108 :         if (![swizzleRegistry containsObject:[assembly class]])</span>
+<span class="lineNum">     144 </span><span class="lineCov">         36 :         if (![swizzleRegistry containsObject:[assembly class]])</span>
 <span class="lineNum">     145 </span>            :         {
-<span class="lineNum">     146 </span><span class="lineCov">          6 :             [swizzleRegistry addObject:[assembly class]];</span>
+<span class="lineNum">     146 </span><span class="lineCov">          3 :             [swizzleRegistry addObject:[assembly class]];</span>
 <span class="lineNum">     147 </span>            :             
-<span class="lineNum">     148 </span><span class="lineCov">          6 :             NSSet *definitionSelectors = [self obtainDefinitionSelectors:assembly];</span>
-<span class="lineNum">     149 </span><span class="lineCov">         16 :             [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {</span>
+<span class="lineNum">     148 </span><span class="lineCov">          3 :             NSSet *definitionSelectors = [self obtainDefinitionSelectors:assembly];</span>
+<span class="lineNum">     149 </span><span class="lineCov">          3 :             [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {</span>
 <span class="lineNum">     150 </span><span class="lineCov">         13 :                 SEL methodSelector = (SEL)[obj pointerValue];</span>
 <span class="lineNum">     151 </span><span class="lineCov">         13 :                 SEL swizzled = NSSelectorFromString(</span>
 <span class="lineNum">     152 </span><span class="lineCov">         13 :                                                     [NSStringFromSelector(methodSelector) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);</span>
 <span class="lineNum">     153 </span><span class="lineCov">         13 :                 [[assembly class] typhoon_swizzleMethod:methodSelector withMethod:swizzled error:nil];</span>
 <span class="lineNum">     154 </span><span class="lineCov">         13 :             }];</span>
 <span class="lineNum">     155 </span><span class="lineCov">          3 :         }</span>
-<span class="lineNum">     156 </span><span class="lineCov">         36 :     }</span>
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     157 </span><span class="lineCov">         36 : }</span>
 <span class="lineNum">     158 </span>            : 
 <span class="lineNum">     159 </span>            : @end
@@ -223,7 +223,7 @@
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
     <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
-    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.9</a></td></tr>
   </table>
   <br>
 

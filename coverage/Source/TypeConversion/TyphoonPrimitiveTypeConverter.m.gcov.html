@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <title>LCOV - Typhoon.info - Source/TypeConversion/TyphoonPrimitiveTypeConverter.m</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">122</td>
+            <td class="headerCovTableEntry">123</td>
             <td class="headerCovTableEntry">134</td>
-            <td class="headerCovTableEntryHi">91.0 %</td>
+            <td class="headerCovTableEntryHi">91.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-07-26</td>
+            <td class="headerValue">2013-07-27</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -186,80 +186,80 @@
 <span class="lineNum">     128 </span><span class="lineCov">          2 : }</span>
 <span class="lineNum">     129 </span>            : 
 <span class="lineNum">     130 </span>            : /* ====================================================================================================================================== */
-<span class="lineNum">     131 </span><span class="lineCov">         56 : - (void)setPrimitiveArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index textValue:(NSString*)textValue</span>
+<span class="lineNum">     131 </span>            : - (void)setPrimitiveArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index textValue:(NSString*)textValue
 <span class="lineNum">     132 </span><span class="lineCov">         56 :         requiredType:(TyphoonTypeDescriptor*)requiredType</span>
-<span class="lineNum">     133 </span>            : {
-<span class="lineNum">     134 </span><span class="lineCov">        112 :     if (requiredType.primitiveType == TyphoonPrimitiveTypeBoolean || requiredType.primitiveType == TyphoonPrimitiveTypeChar)</span>
-<span class="lineNum">     135 </span>            :     {
-<span class="lineNum">     136 </span><span class="lineCov">         15 :         BOOL converted = [self convertToBoolean:textValue];</span>
+<span class="lineNum">     133 </span><span class="lineCov">         56 : {</span>
+<span class="lineNum">     134 </span>            :     if (requiredType.primitiveType == TyphoonPrimitiveTypeBoolean || requiredType.primitiveType == TyphoonPrimitiveTypeChar)
+<span class="lineNum">     135 </span><span class="lineCov">         56 :     {</span>
+<span class="lineNum">     136 </span>            :         BOOL converted = [self convertToBoolean:textValue];
 <span class="lineNum">     137 </span><span class="lineCov">         15 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     138 </span><span class="lineCov">         15 :     }</span>
-<span class="lineNum">     139 </span><span class="lineCov">         41 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeClass)</span>
-<span class="lineNum">     140 </span>            :     {
-<span class="lineNum">     141 </span><span class="lineCov">          1 :         Class converted = [self convertToClass:textValue];</span>
+<span class="lineNum">     139 </span><span class="lineCov">         15 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeClass)</span>
+<span class="lineNum">     140 </span><span class="lineCov">         41 :     {</span>
+<span class="lineNum">     141 </span>            :         Class converted = [self convertToClass:textValue];
 <span class="lineNum">     142 </span><span class="lineCov">          1 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     143 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     144 </span><span class="lineCov">         40 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeDouble)</span>
-<span class="lineNum">     145 </span>            :     {
-<span class="lineNum">     146 </span><span class="lineCov">          1 :         double converted = [self convertToDouble:textValue];</span>
+<span class="lineNum">     144 </span><span class="lineCov">          1 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeDouble)</span>
+<span class="lineNum">     145 </span><span class="lineCov">         40 :     {</span>
+<span class="lineNum">     146 </span>            :         double converted = [self convertToDouble:textValue];
 <span class="lineNum">     147 </span><span class="lineCov">          1 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     148 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     149 </span><span class="lineCov">         39 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeFloat)</span>
-<span class="lineNum">     150 </span>            :     {
-<span class="lineNum">     151 </span><span class="lineCov">         13 :         float converted = [self convertToFloat:textValue];</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeFloat)</span>
+<span class="lineNum">     150 </span><span class="lineCov">         39 :     {</span>
+<span class="lineNum">     151 </span>            :         float converted = [self convertToFloat:textValue];
 <span class="lineNum">     152 </span><span class="lineCov">         13 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     153 </span><span class="lineCov">         13 :     }</span>
-<span class="lineNum">     154 </span><span class="lineCov">         26 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeInt)</span>
-<span class="lineNum">     155 </span>            :     {
-<span class="lineNum">     156 </span><span class="lineCov">          1 :         int converted = [self convertToInt:textValue];</span>
+<span class="lineNum">     154 </span><span class="lineCov">         13 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeInt)</span>
+<span class="lineNum">     155 </span><span class="lineCov">         26 :     {</span>
+<span class="lineNum">     156 </span>            :         int converted = [self convertToInt:textValue];
 <span class="lineNum">     157 </span><span class="lineCov">          1 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     158 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     159 </span><span class="lineCov">         25 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeLong)</span>
-<span class="lineNum">     160 </span>            :     {
-<span class="lineNum">     161 </span><span class="lineCov">          1 :         long converted = [self convertToLong:textValue];</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeLong)</span>
+<span class="lineNum">     160 </span><span class="lineCov">         25 :     {</span>
+<span class="lineNum">     161 </span>            :         long converted = [self convertToLong:textValue];
 <span class="lineNum">     162 </span><span class="lineCov">          1 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     163 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     164 </span><span class="lineCov">         24 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeLongLong)</span>
-<span class="lineNum">     165 </span>            :     {
-<span class="lineNum">     166 </span><span class="lineNoCov">          0 :         long long converted = [self convertToLongLong:textValue];</span>
+<span class="lineNum">     164 </span><span class="lineCov">          1 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeLongLong)</span>
+<span class="lineNum">     165 </span><span class="lineCov">         24 :     {</span>
+<span class="lineNum">     166 </span>            :         long long converted = [self convertToLongLong:textValue];
 <span class="lineNum">     167 </span><span class="lineNoCov">          0 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     168 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     169 </span><span class="lineCov">         24 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeSelector)</span>
-<span class="lineNum">     170 </span>            :     {
-<span class="lineNum">     171 </span><span class="lineCov">          1 :         SEL converted = [self convertToSelector:textValue];</span>
+<span class="lineNum">     169 </span><span class="lineNoCov">          0 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeSelector)</span>
+<span class="lineNum">     170 </span><span class="lineCov">         24 :     {</span>
+<span class="lineNum">     171 </span>            :         SEL converted = [self convertToSelector:textValue];
 <span class="lineNum">     172 </span><span class="lineCov">          1 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     173 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     174 </span><span class="lineCov">         23 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeString)</span>
-<span class="lineNum">     175 </span>            :     {
-<span class="lineNum">     176 </span><span class="lineCov">          1 :         const char* converted = [self convertToCString:textValue];</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeString)</span>
+<span class="lineNum">     175 </span><span class="lineCov">         23 :     {</span>
+<span class="lineNum">     176 </span>            :         const char* converted = [self convertToCString:textValue];
 <span class="lineNum">     177 </span><span class="lineCov">          1 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     178 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     179 </span><span class="lineCov">         22 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedChar)</span>
-<span class="lineNum">     180 </span>            :     {
-<span class="lineNum">     181 </span><span class="lineCov">          1 :         unsigned char converted = [self convertToUnsignedChar:textValue];</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedChar)</span>
+<span class="lineNum">     180 </span><span class="lineCov">         22 :     {</span>
+<span class="lineNum">     181 </span>            :         unsigned char converted = [self convertToUnsignedChar:textValue];
 <span class="lineNum">     182 </span><span class="lineCov">          1 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     183 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     184 </span><span class="lineCov">         21 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedInt)</span>
-<span class="lineNum">     185 </span>            :     {
-<span class="lineNum">     186 </span><span class="lineCov">         21 :         unsigned int converted = [self convertToUnsignedInt:textValue];</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedInt)</span>
+<span class="lineNum">     185 </span><span class="lineCov">         21 :     {</span>
+<span class="lineNum">     186 </span>            :         unsigned int converted = [self convertToUnsignedInt:textValue];
 <span class="lineNum">     187 </span><span class="lineCov">         21 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     188 </span><span class="lineCov">         21 :     }</span>
-<span class="lineNum">     189 </span><span class="lineNoCov">          0 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedLong)</span>
-<span class="lineNum">     190 </span>            :     {
-<span class="lineNum">     191 </span><span class="lineNoCov">          0 :         unsigned long converted = [self convertToUnsignedLong:textValue];</span>
+<span class="lineNum">     189 </span><span class="lineCov">         21 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedLong)</span>
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 :     {</span>
+<span class="lineNum">     191 </span>            :         unsigned long converted = [self convertToUnsignedLong:textValue];
 <span class="lineNum">     192 </span><span class="lineNoCov">          0 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     193 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     194 </span><span class="lineNoCov">          0 :     else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedLongLong)</span>
-<span class="lineNum">     195 </span>            :     {
-<span class="lineNum">     196 </span><span class="lineNoCov">          0 :         unsigned long long converted = [self convertToUnsignedLongLong:textValue];</span>
+<span class="lineNum">     195 </span><span class="lineNoCov">          0 :     {</span>
+<span class="lineNum">     196 </span>            :         unsigned long long converted = [self convertToUnsignedLongLong:textValue];
 <span class="lineNum">     197 </span><span class="lineNoCov">          0 :         [invocation setArgument:&amp;converted atIndex:index];</span>
 <span class="lineNum">     198 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     199 </span>            :     else
+<span class="lineNum">     199 </span><span class="lineNoCov">          0 :     else</span>
 <span class="lineNum">     200 </span>            :     {
-<span class="lineNum">     201 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Type for %@ is not supported.&quot;, requiredType];</span>
-<span class="lineNum">     202 </span>            :     }
-<span class="lineNum">     203 </span><span class="lineCov">         56 : }</span>
-<span class="lineNum">     204 </span>            : 
+<span class="lineNum">     201 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;Type for %@ is not supported.&quot;, requiredType];
+<span class="lineNum">     202 </span><span class="lineCov">         41 :     }</span>
+<span class="lineNum">     203 </span>            : }
+<span class="lineNum">     204 </span><span class="lineCov">         56 : </span>
 <span class="lineNum">     205 </span>            : 
 <span class="lineNum">     206 </span>            : @end
 </pre>
@@ -270,7 +270,7 @@
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
     <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.9</a></td></tr>
   </table>
   <br>
 
