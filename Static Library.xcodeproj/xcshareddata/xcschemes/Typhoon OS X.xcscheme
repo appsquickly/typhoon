@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6B3F39C016ABFAC3001A601C"
-               BuildableName = "libTyphoon.a"
-               BlueprintName = "Typhoon"
-               ReferencedContainer = "container:Typhoon.xcodeproj">
+               BuildableName = "libTyphoon-OSX.a"
+               BlueprintName = "Typhoon-OSX"
+               ReferencedContainer = "container:Static Library.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,6 +28,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4B841486179B0E5200916BF5"
+               BuildableName = "OS X Tests (Cocoapods).octest"
+               BlueprintName = "OS X Tests (Cocoapods)"
+               ReferencedContainer = "container:Tests/Tests.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

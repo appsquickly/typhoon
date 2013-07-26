@@ -1,20 +1,41 @@
 xcodeproj 'Tests'
 workspace '../Typhoon'
 
-def import_pods
-  pod 'Typhoon', :path => '../'
+def import_test_pods
   pod 'OCHamcrest', '~> 1.9'
   pod 'OCMockito', '~> 0.2'
 end
 
+def import_typhoon_pod
+  pod 'Typhoon', :path => '../'
+end
+
 target :ios do
   platform :ios, '5.0'
-  link_with 'iOS Tests'
-  import_pods
+  import_test_pods
+  link_with 'iOS Tests (Static Library)'
+
+  
+end
+
+target 'iOS Tests (Cocoapods)' do
+    platform :ios, '5.0'
+    import_test_pods
+    import_typhoon_pod
 end
 
 target :osx do
   platform :osx, '10.7'
-  link_with 'OS X Tests'
-  import_pods
+  import_test_pods
+
+  # until such time as we start generating os x coverage. then, use the commented out lines below.
+  link_with 'OS X Tests (Cocoapods)'
+  import_typhoon_pod
+
+
+  # link_with 'OS X Tests (Static Library)'
+
+  # target 'OS X Tests (Cocoapods)' do
+  #   import_typhoon_pod
+  # end
 end

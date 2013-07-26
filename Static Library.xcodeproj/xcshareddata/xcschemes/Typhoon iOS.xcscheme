@@ -7,14 +7,17 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
+            buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForTesting = "YES">
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4B84146B179B0E3900916BF5"
-               BuildableName = "iOS Tests.octest"
-               BlueprintName = "iOS Tests"
-               ReferencedContainer = "container:Tests.xcodeproj">
+               BlueprintIdentifier = "4BC648F717A20BD7007F0463"
+               BuildableName = "libTyphoon-iOS.a"
+               BlueprintName = "Typhoon-iOS"
+               ReferencedContainer = "container:Static Library.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -30,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4B84146B179B0E3900916BF5"
-               BuildableName = "iOS Tests.octest"
-               BlueprintName = "iOS Tests"
-               ReferencedContainer = "container:Tests.xcodeproj">
+               BuildableName = "iOS Tests (Cocoapods).octest"
+               BlueprintName = "iOS Tests (Cocoapods)"
+               ReferencedContainer = "container:Tests/Tests.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

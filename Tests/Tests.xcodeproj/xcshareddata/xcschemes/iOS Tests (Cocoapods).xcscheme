@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4B841486179B0E5200916BF5"
-               BuildableName = "OS X Tests.octest"
-               BlueprintName = "OS X Tests"
+               BlueprintIdentifier = "4B84146B179B0E3900916BF5"
+               BuildableName = "iOS Tests (Cocoapods).octest"
+               BlueprintName = "iOS Tests (Cocoapods)"
                ReferencedContainer = "container:Tests.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4B841486179B0E5200916BF5"
-               BuildableName = "OS X Tests.octest"
-               BlueprintName = "OS X Tests"
+               BlueprintIdentifier = "4B84146B179B0E3900916BF5"
+               BuildableName = "iOS Tests (Cocoapods).octest"
+               BlueprintName = "iOS Tests (Cocoapods)"
                ReferencedContainer = "container:Tests.xcodeproj">
             </BuildableReference>
          </TestableReference>
