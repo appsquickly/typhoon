@@ -13,11 +13,7 @@
 
 #import "CircularDependenciesAssembly.h"
 #import "TyphoonDefinition.h"
-#import "ClassADependsOnB.h"
-#import "ClassBDependsOnA.h"
-#import "ClassCDependsOnDAndE.h"
-#import "ClassDDependsOnC.h"
-#import "ClassEDependsOnC.h"
+#import "TyphoonInitializer.h"
 
 
 @implementation CircularDependenciesAssembly
@@ -38,6 +34,24 @@
         [definition injectProperty:@selector(dependencyOnA) withDefinition:[self classA]];
     }];
 }
+
+//- (id)unsatisfiableClassFWithCircularDependencyInInitializer;
+//{
+//    return [TyphoonDefinition withClass:[UnsatisfiableClassFDependsOnGInInitializer class] initialization:^(TyphoonInitializer *initializer) {
+//        initializer.selector = @selector(initWithG:);
+//        
+//        [initializer injectWithDefinition:[self unsatisfiableClassGWithCircularDependencyInInitializer]];
+//    }];
+//}
+//
+//- (id)unsatisfiableClassGWithCircularDependencyInInitializer;
+//{
+//    return [TyphoonDefinition withClass:[UnsatisfiableClassGDependsOnFInInitializer class] initialization:^(TyphoonInitializer *initializer) {
+//        initializer.selector = @selector(initWithF:);
+//        
+//        [initializer injectWithDefinition:[self unsatisfiableClassFWithCircularDependencyInInitializer]];
+//    }];
+//}
 
 /*
 - (id)classC

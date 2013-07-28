@@ -20,6 +20,8 @@
 #import "ClassCDependsOnDAndE.h"
 #import "ClassDDependsOnC.h"
 #import "ClassEDependsOnC.h"
+#import "UnsatisfiableClassFDependsOnGInInitializer.h"
+#import "CircularDependenciesAssembly.h"
 
 @implementation TyphoonSharedComponentFactoryTests
 
@@ -184,7 +186,11 @@
     assertThat(classB.dependencyOnA, notNilValue());
     assertThat(classB, equalTo(classB.dependencyOnA.dependencyOnB));
     assertThat([classB.dependencyOnA class], equalTo([ClassADependsOnB class]));
+}
 
+- (void)test_raises_when_circular_dependency_in_initializer;
+{
+    STAssertThrows([(CircularDependenciesAssembly *)_circularDependenciesFactory unsatisfiableClassFWithCircularDependencyInInitializer], nil);
 }
 
 /*

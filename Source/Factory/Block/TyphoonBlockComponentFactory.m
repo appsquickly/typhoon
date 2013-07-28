@@ -24,7 +24,7 @@ static NSMutableArray* swizzleRegistry;
 
 + (BOOL)selectorReserved:(SEL)selector;
 
-- (NSMutableDictionary*)cachedSelectors;
+- (NSMutableDictionary*)cachedDefinitionsForMethodName;
 
 @end
 
@@ -73,7 +73,7 @@ static NSMutableArray* swizzleRegistry;
     if (self)
     {
         [self applyBeforeAdviceToAssemblyMethods:assembly];
-        NSArray* definitions = [self populateCache:assembly];
+        NSArray* definitions = [self definitionsByPopulatingCache:assembly];
         for (TyphoonDefinition* definition in definitions)
         {
             [self register:definition];
@@ -83,7 +83,7 @@ static NSMutableArray* swizzleRegistry;
 }
 
 /* ============================================================ Private Methods ========================================================= */
-- (NSArray*)populateCache:(TyphoonAssembly*)assembly
+- (NSArray*)definitionsByPopulatingCache:(TyphoonAssembly*)assembly
 {
     @synchronized (self)
     {
@@ -93,7 +93,7 @@ static NSMutableArray* swizzleRegistry;
             objc_msgSend(assembly, (SEL)[obj pointerValue]);
         }];
         
-        NSMutableDictionary* dictionary = [assembly cachedSelectors];
+        NSMutableDictionary* dictionary = [assembly cachedDefinitionsForMethodName];
         return [dictionary allValues];
     }
 }
@@ -101,40 +101,68 @@ static NSMutableArray* swizzleRegistry;
 - (NSSet *)obtainDefinitionSelectors:(TyphoonAssembly*)assembly
 {
     NSMutableSet *definitionSelectors = [[NSMutableSet alloc] init];
-    
+    [self addDefinitionSelectorsForSubclassesOfAssembly:assembly toSet:definitionSelectors];
+    return definitionSelectors;
+}
+
+- (void)addDefinitionSelectorsForSubclassesOfAssembly:(TyphoonAssembly *)assembly toSet:(NSMutableSet *)definitionSelectors
+{
     Class currentClass = [assembly class];
     while (strcmp(class_getName(currentClass), "TyphoonAssembly") != 0) {
         [definitionSelectors unionSet:[self obtainDefinitionSelectorsInAssemblyClass:currentClass]];
         currentClass = class_getSuperclass(currentClass);
     }
-    
-    return definitionSelectors;
 }
 
 - (NSSet *)obtainDefinitionSelectorsInAssemblyClass:(Class)class
 {
     NSMutableSet *definitionSelectors = [[NSMutableSet alloc] init];
-    
+    [self addDefinitionSelectorsInClass:class toSet:definitionSelectors];
+    return definitionSelectors;
+}
+
+- (void)addDefinitionSelectorsInClass:(Class)aClass toSet:(NSMutableSet *)definitionSelectors
+{
+    [self enumerateMethodsInClass:aClass usingBlock:^(Method method) {
+        if ([self method:method onClassIsDefinitionSelector:aClass]) {
+            [self addDefinitionSelectorForMethod:method toSet:definitionSelectors];
+        }
+    }];
+}
+
+typedef void(^MethodEnumerationBlock)(Method method);
+- (void)enumerateMethodsInClass:(Class)class usingBlock:(MethodEnumerationBlock)block;
+{
     unsigned int methodCount;
     Method* methodList = class_copyMethodList(class, &methodCount);
     for (int i = 0; i < methodCount; i++)
     {
         Method method = methodList[i];
-        //            NSLog(@"Selector: %@", NSStringFromSelector(method_getName(method)));
-        
-        int argumentCount = method_getNumberOfArguments(method);
-        if (argumentCount == 2)
-        {
-            SEL methodSelector = method_getName(method);
-            if (![class selectorReserved:methodSelector])
-            {
-                [definitionSelectors addObject:[NSValue valueWithPointer:methodSelector]];
-            }
-        }
+        block(method);
     }
     free(methodList);
-    
-    return definitionSelectors;
+}
+
+- (BOOL)method:(Method)method onClassIsDefinitionSelector:(Class)aClass;
+{
+    return ([self methodHasNoArguments:method] && [self method:method onClassIsNotReserved:aClass]);
+}
+
+- (BOOL)methodHasNoArguments:(Method)method
+{
+    return method_getNumberOfArguments(method) == 2;
+}
+
+- (BOOL)method:(Method)method onClassIsNotReserved:(Class)aClass;
+{
+    SEL methodSelector = method_getName(method);
+    return ![aClass selectorReserved:methodSelector];
+}
+
+- (void)addDefinitionSelectorForMethod:(Method)method toSet:(NSMutableSet *)definitionSelectors
+{
+    SEL methodSelector = method_getName(method);
+    [definitionSelectors addObject:[NSValue valueWithPointer:methodSelector]];
 }
 
 - (void)applyBeforeAdviceToAssemblyMethods:(TyphoonAssembly*)assembly
@@ -147,13 +175,20 @@ static NSMutableArray* swizzleRegistry;
             
             NSSet *definitionSelectors = [self obtainDefinitionSelectors:assembly];
             [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-                SEL methodSelector = (SEL)[obj pointerValue];
-                SEL swizzled = NSSelectorFromString(
-                                                    [NSStringFromSelector(methodSelector) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
-                [[assembly class] typhoon_swizzleMethod:methodSelector withMethod:swizzled error:nil];
+                [self replaceImplementationOfDefinitionOnAssembly:assembly withDynamicBeforeAdviceImplementation:obj];
             }];
+            
+            NSLog(@"Just applied before advice prefix to all definition selectors on assembly %@.", assembly);
         }
     }
+}
+
+- (void)replaceImplementationOfDefinitionOnAssembly:(TyphoonAssembly *)assembly withDynamicBeforeAdviceImplementation:(id)obj;
+{
+    SEL methodSelector = (SEL)[obj pointerValue];
+    SEL swizzled = NSSelectorFromString(
+                                        [NSStringFromSelector(methodSelector) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
+    [[assembly class] typhoon_swizzleMethod:methodSelector withMethod:swizzled error:nil];
 }
 
 @end

@@ -29,4 +29,6 @@
 
 - (id)yetAnotherKnight;
 
+- (id)serviceUrl;
+
 @end
