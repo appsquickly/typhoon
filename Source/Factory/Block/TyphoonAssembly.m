@@ -76,11 +76,11 @@ static NSMutableArray* resolveStack;
                    if ([top isEqualToString:bottom])
                    {
                        NSLog(@"Resolve stack: %@", resolveStack);
-                       //                       return [[TyphoonDefinition alloc] initWithClass:[NSString class] key:key]; // safe to return nonsense here because the TyphoonBlockComponentFactory doesn't use the return value, and instead cares about cached selectors.
+                                              return [[TyphoonDefinition alloc] initWithClass:[NSString class] key:key]; // safe to return nonsense here because the TyphoonBlockComponentFactory doesn't use the return value, and instead cares about cached selectors.
                        // this terminates the circular dependecy. the definition closest to the top of the resolve stack is the one used. this will NOT be a nonsense definition.
                        
                        // this is never hit when a cached definition is available, which occurs for all calling user code AFTER initial construction.
-                       [NSException raise:NSInternalInconsistencyException format:@"Circular dependency detected."];
+                       //    [NSException raise:NSInternalInconsistencyException format:@"Circular dependency detected."];
                        //                       return nil; // will need to call this. 
                    }
                }

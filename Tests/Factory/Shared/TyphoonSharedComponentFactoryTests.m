@@ -188,11 +188,6 @@
     assertThat([classB.dependencyOnA class], equalTo([ClassADependsOnB class]));
 }
 
-- (void)test_raises_when_circular_dependency_in_initializer;
-{
-    STAssertThrows([(CircularDependenciesAssembly *)_circularDependenciesFactory unsatisfiableClassFWithCircularDependencyInInitializer], nil);
-}
-
 /*
 - (void)test_resolves_two_circular_dependencies_for_property_injected_by_reference
 {
