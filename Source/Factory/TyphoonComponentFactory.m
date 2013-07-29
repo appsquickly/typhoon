@@ -150,7 +150,6 @@ static TyphoonComponentFactory* defaultFactory;
     {
         [results addObject:[self objectForDefinition:definition]];
     }
-    [_currentlyResolvingReferences removeAllObjects]; // OK - externally called only
     return [results copy];
 }
 
