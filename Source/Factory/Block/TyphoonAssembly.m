@@ -18,7 +18,8 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
 
-static NSMutableArray* resolveStack;
+//static NSMutableArray* resolveStack;
+static NSMutableDictionary *resolveStackForKey;
 
 @implementation TyphoonAssembly
 
@@ -65,63 +66,57 @@ static NSMutableArray* resolveStack;
     return imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me)
        {
            NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@""];
+            NSMutableArray *resolveStack = [resolveStackForKey objectForKey:key];
+            if (!resolveStack) {
+                resolveStack = [[NSMutableArray alloc] init];
+                [resolveStackForKey setObject:resolveStack forKey:key];
+            }
+
            TyphoonDefinition* cached = [[me cachedDefinitionsForMethodName] objectForKey:key];
            if (cached == nil)
-           {
-               [resolveStack addObject:key];
-               if ([resolveStack count] > 2)
-               {
-                   NSString* bottom = [resolveStack objectAtIndex:0];
-                   NSString* top = [resolveStack objectAtIndex:[resolveStack count] - 1];
-                   if ([top isEqualToString:bottom])
-                   {
-                       NSLog(@"Resolve stack: %@", resolveStack);
-                                              return [[TyphoonDefinition alloc] initWithClass:[NSString class] key:key]; // safe to return nonsense here because the TyphoonBlockComponentFactory doesn't use the return value, and instead cares about cached selectors.
-                       // this terminates the circular dependecy. the definition closest to the top of the resolve stack is the one used. this will NOT be a nonsense definition.
-                       
-                       // this is never hit when a cached definition is available, which occurs for all calling user code AFTER initial construction.
-                       //    [NSException raise:NSInternalInconsistencyException format:@"Circular dependency detected."];
-                       //                       return nil; // will need to call this. 
-                   }
-               }
-               
-               SEL originalSEL = NSSelectorFromString(key);
-               [[self class] typhoon_swizzleMethod:selWithAdvicePrefix withMethod:originalSEL error:nil]; // let there be an assembly method called 'objectDefinition', returning a TyphoonDefinition.
-                                                                                                          // in the block below, this dynami9c swizzling will be turned off.
-               
-               
-               // BELOW IS NOT TRUE!
-                                                                                                      // in the block below, the implementation of 'objectDefinition' will be resolved dynamically as '#{TYPHOON_BEFORE_ADVICE_SUFFIX}objectDefinition'.
-                                                                                                      // calling '#{TYPHOON_BEFORE_ADVICE_SUFFIX}objectDefinition' will be resolved as calling 'objectDefinition'
-               
-               
-               
-               cached = objc_msgSend(me, selWithAdvicePrefix); // normally would go to the original method. now is dynamic and reentrant. this explains:
-               /**
-                2013-07-28 10:18:27.024 otest[73021:303] Building assembly: CircularDependenciesAssembly
-                2013-07-28 10:18:27.024 otest[73021:303] Just applied before advice prefix to all definition selectors on assembly <CircularDependenciesAssembly: 0x1756d50>.
-                2013-07-28 10:18:27.025 otest[73021:303] Resolve stack: (
-                classB,
-                classB,
-                classA,
-                classA,
-                classB
-                )
-                */
-               
-               if (cached && [cached isKindOfClass:[TyphoonDefinition class]]) // when can it NOT be a TyphoonDefinition? raise here if its not. will be nil when returning nil to not stick garbage in here, even temporarily.
-               {
-                   TyphoonDefinition* definition = (TyphoonDefinition*) cached;
-                   [self setKey:key onDefinitionIfExistingKeyEmpty:definition];
-                   [[me cachedDefinitionsForMethodName] setObject:definition forKey:key];
-               }
-               [[self class] typhoon_swizzleMethod:originalSEL withMethod:selWithAdvicePrefix error:nil];
-               // restore original implementations - '#{TYPHOON_BEFORE_ADVICE_SUFFIX}objectDefinition' will be dynamically handled, and direct calls handled normally.
-               
-           }
-           [resolveStack removeAllObjects]; // why outside the if (cached == nil)?
-           return cached;
-           
+            {
+                NSLog(@"%@ not cached.", key);
+                
+                [resolveStack addObject:key];
+                NSLog(@"Resolve stack: %@ for key: %@", resolveStack, key);
+                
+                if ([resolveStack count] > 2)
+                {
+                    NSString* bottom = [resolveStack objectAtIndex:0];
+                    NSString* top = [resolveStack objectAtIndex:[resolveStack count] - 1];
+                    if ([top isEqualToString:bottom])
+                    {
+                        NSLog(@"CIRCULAR DEPNEDENCY DETECTEED! TERMINATIN IT WITH SOME DUMMY DEFINITION!");
+                        return [[TyphoonDefinition alloc] initWithClass:[NSString class] key:key];
+//                        [NSException raise:NSInternalInconsistencyException format:@"Circular dependency detected."];
+                    }
+                }
+
+//                [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:nil];
+//                SEL normalSEL = NSSelectorFromString(key);
+                cached = objc_msgSend(me, sel); // will go to normal b/c of swizzling. 
+                if (cached && [cached isKindOfClass:[TyphoonDefinition class]])
+                {
+                    TyphoonDefinition* definition = (TyphoonDefinition*) cached;
+                    if ([definition.key length] == 0)
+                    {
+                        definition.key = key;
+                    }
+                    [[me cachedSelectors] setObject:definition forKey:key];
+                }
+//                [[self class] typhoon_swizzleMethod:NSSelectorFromString(key) withMethod:sel error:nil];
+                NSLog(@"Did finish satisfying: %@", key);
+            }else{
+                NSLog(@"returning cached key %@.", key);
+            }
+            if (resolveStack.count) {
+                NSLog(@"Will clear resolve stack: %@ for key: %@", resolveStack, key);
+            }
+            [resolveStack removeAllObjects]; 
+            #warning BUG!
+            
+            
+            return cached;
        }));
 }
 
@@ -140,7 +135,8 @@ static NSMutableArray* resolveStack;
 + (void)load
 {
     [super load];
-    resolveStack = [[NSMutableArray alloc] init];
+//    resolveStack = [[NSMutableArray alloc] init];
+    resolveStackForKey = [[NSMutableDictionary alloc] init];
 }
 
 /* ============================================================ Initializers ============================================================ */

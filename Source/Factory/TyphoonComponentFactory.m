@@ -156,7 +156,7 @@ static TyphoonComponentFactory* defaultFactory;
     {
         [results addObject:[self objectForDefinition:definition]];
     }
-    [_currentlyResolvingReferences removeAllObjects];
+    [_currentlyResolvingReferences removeAllObjects]; // OK - externally called only
     return [results copy];
 }
 
@@ -165,17 +165,22 @@ static TyphoonComponentFactory* defaultFactory;
 {
     if (key)
     {
-		if (! [self isLoaded]) [self load];
+		if ([self notLoaded]) [self load];
         TyphoonDefinition* definition = [self definitionForKey:key];
         if (!definition)
         {
             [NSException raise:NSInvalidArgumentException format:@"No component matching id '%@'.", key];
         }
         __autoreleasing id returnValue = [self objectForDefinition:definition];
-        [_currentlyResolvingReferences removeAllObjects];
+        [_currentlyResolvingReferences removeObjectForKey:key];
         return returnValue;
     }
     return nil;
+}
+
+- (BOOL)notLoaded;
+{
+    return ![self isLoaded];
 }
 
 - (void)makeDefault
