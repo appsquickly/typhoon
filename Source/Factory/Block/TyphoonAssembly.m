@@ -18,7 +18,6 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
 
-//static NSMutableArray* resolveStack;
 static NSMutableDictionary *resolveStackForKey;
 
 @implementation TyphoonAssembly
@@ -38,7 +37,6 @@ static NSMutableDictionary *resolveStackForKey;
 + (void)load
 {
     [super load];
-    //    resolveStack = [[NSMutableArray alloc] init];
     resolveStackForKey = [[NSMutableDictionary alloc] init];
 }
 
