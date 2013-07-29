@@ -112,12 +112,6 @@ static TyphoonComponentFactory* defaultFactory;
             [definition injectProperty:NSSelectorFromString(autoWired)];
         }
     }
-
-    // this is where we must detect unsatisfiable circular dependencies and raise an exception.
-    // fail if:
-    // there is a circular dependency, and any of the members of that dependency are found in any other members of  that depnedencies TyphoonInitializer injectedProperties.
-    // detect the members of a circular dependency?
-    // detect the dependency at the definition level. set the head and tail in that method?
     
     NSLog(@"Registering: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
     [_registry addObject:definition];
