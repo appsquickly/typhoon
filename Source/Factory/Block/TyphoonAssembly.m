@@ -17,6 +17,7 @@
 #import "TyphoonJRSwizzle.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
+#import "TyphoonAssemblySelectorWrapper.h"
 
 static NSMutableDictionary *resolveStackForKey;
 
@@ -53,19 +54,13 @@ static NSMutableDictionary *resolveStackForKey;
 
 + (BOOL)shouldProvideDynamicImplementationFor:(SEL)sel;
 {
-    return (![TyphoonAssembly selectorReserved:sel] && [self selectorIsWrapped:sel]);
+    return (![TyphoonAssembly selectorReserved:sel] && [TyphoonAssemblySelectorWrapper selectorIsWrapped:sel]);
 }
 
 + (BOOL)selectorReserved:(SEL)selector
 {
     return selector == @selector(init) || selector == @selector(cachedDefinitionsForMethodName) || selector == NSSelectorFromString(@".cxx_destruct") ||
     selector == @selector(defaultAssembly);
-}
-
-+ (BOOL)selectorIsWrapped:(SEL)sel;
-{
-    NSString* name = NSStringFromSelector(sel);
-    return [name hasSuffix:TYPHOON_BEFORE_ADVICE_SUFFIX];  // a name will always have this suffix after a TyphoonBlockComponentFactory has been initialized with us as the assembly. Make this clearer. All user facing calls will always go through the dynamic implementation machinery.
 }
 
 + (void)provideDynamicImplementationToConstructDefinitionForSEL:(SEL)sel;
@@ -78,16 +73,9 @@ static NSMutableDictionary *resolveStackForKey;
 {
     return imp_implementationWithBlock((__bridge id) objc_unretainedPointer((TyphoonDefinition *)^(id me)
        {
-           NSString *key = [self keyForWrappedSEL:selWithAdvicePrefix];
+           NSString *key = [TyphoonAssemblySelectorWrapper keyForWrappedSEL:selWithAdvicePrefix];
            return [self definitionForKey:key me:me];
        }));
-}
-
-+ (NSString *)keyForWrappedSEL:(SEL)selWithAdvicePrefix
-{
-    NSString* name = NSStringFromSelector(selWithAdvicePrefix);
-    NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@""];
-    return key;
 }
 
 + (TyphoonDefinition *)definitionForKey:(NSString *)key me:(id)me
@@ -174,15 +162,9 @@ static NSMutableDictionary *resolveStackForKey;
 
 + (id)definitionByCallingAssemblyMethodForKey:(NSString *)key me:(TyphoonAssembly *)me
 {
-    SEL sel = [self wrappedSELForKey:key];
+    SEL sel = [TyphoonAssemblySelectorWrapper wrappedSELForKey:key];
     id cached = objc_msgSend(me, sel); // the wrappedSEL will call through to the original, unwrapped implementation because of the active swizzling.
     return cached;
-}
-
-+ (SEL)wrappedSELForKey:(NSString *)key;
-{
-    // deduplicate with - (void)replaceImplementationOfDefinitionOnAssembly:(TyphoonAssembly *)assembly withDynamicBeforeAdviceImplementation:(id)obj;
-    return NSSelectorFromString([key stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
 }
 
 + (void)populateCacheWithDefinition:(TyphoonDefinition *)cached forKey:(NSString *)key me:(id)me

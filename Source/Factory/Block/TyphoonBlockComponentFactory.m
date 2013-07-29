@@ -17,6 +17,7 @@
 #import "TyphoonAssembly.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonJRSwizzle.h"
+#import "TyphoonAssemblySelectorWrapper.h"
 
 static NSMutableArray* swizzleRegistry;
 
@@ -186,8 +187,7 @@ typedef void(^MethodEnumerationBlock)(Method method);
 - (void)replaceImplementationOfDefinitionOnAssembly:(TyphoonAssembly *)assembly withDynamicBeforeAdviceImplementation:(id)obj;
 {
     SEL methodSelector = (SEL)[obj pointerValue];
-    SEL swizzled = NSSelectorFromString(
-                                        [NSStringFromSelector(methodSelector) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
+    SEL swizzled = [TyphoonAssemblySelectorWrapper wrappedSELForSEL:methodSelector];
     [[assembly class] typhoon_swizzleMethod:methodSelector withMethod:swizzled error:nil];
 }
 
