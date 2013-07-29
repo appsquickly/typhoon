@@ -18,7 +18,8 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
 
-static NSMutableArray* resolveStack;
+//static NSMutableArray* resolveStack;
+static NSMutableDictionary *resolveStackForKey;
 
 @implementation TyphoonAssembly
 
@@ -41,24 +42,37 @@ static NSMutableArray* resolveStack;
     {
         IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me)
         {
+
             NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@""];
+            NSMutableArray *resolveStack = [resolveStackForKey objectForKey:key];
+            if (!resolveStack) {
+                resolveStack = [[NSMutableArray alloc] init];
+                [resolveStackForKey setObject:resolveStack forKey:key];
+            }
+            
             TyphoonDefinition* cached = [[me cachedSelectors] objectForKey:key];
             if (cached == nil)
             {
+                NSLog(@"%@ not cached.", key);
+                
                 [resolveStack addObject:key];
+                NSLog(@"Resolve stack: %@ for key: %@", resolveStack, key);
+                
                 if ([resolveStack count] > 2)
                 {
                     NSString* bottom = [resolveStack objectAtIndex:0];
                     NSString* top = [resolveStack objectAtIndex:[resolveStack count] - 1];
                     if ([top isEqualToString:bottom])
                     {
-                        NSLog(@"Resolve stack: %@", resolveStack);
+                        NSLog(@"CIRCULAR DEPNEDENCY DETECTEED! TERMINATIN IT WITH SOME DUMMY DEFINITION!");
                         return [[TyphoonDefinition alloc] initWithClass:[NSString class] key:key];
+//                        [NSException raise:NSInternalInconsistencyException format:@"Circular dependency detected."];
                     }
                 }
 
-                [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:nil];
-                cached = objc_msgSend(me, sel);
+//                [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:nil];
+//                SEL normalSEL = NSSelectorFromString(key);
+                cached = objc_msgSend(me, sel); // will go to normal b/c of swizzling. 
                 if (cached && [cached isKindOfClass:[TyphoonDefinition class]])
                 {
                     TyphoonDefinition* definition = (TyphoonDefinition*) cached;
@@ -68,9 +82,17 @@ static NSMutableArray* resolveStack;
                     }
                     [[me cachedSelectors] setObject:definition forKey:key];
                 }
-                [[self class] typhoon_swizzleMethod:NSSelectorFromString(key) withMethod:sel error:nil];
+//                [[self class] typhoon_swizzleMethod:NSSelectorFromString(key) withMethod:sel error:nil];
+                NSLog(@"Did finish satisfying: %@", key);
+            }else{
+                NSLog(@"returning cached key %@.", key);
+            }
+            if (resolveStack.count) {
+                NSLog(@"Will clear resolve stack: %@ for key: %@", resolveStack, key);
             }
             [resolveStack removeAllObjects];
+            
+            
             return cached;
 
         }));
@@ -95,7 +117,8 @@ static NSMutableArray* resolveStack;
 + (void)load
 {
     [super load];
-    resolveStack = [[NSMutableArray alloc] init];
+//    resolveStack = [[NSMutableArray alloc] init];
+    resolveStackForKey = [[NSMutableDictionary alloc] init];
 }
 
 /* ============================================================ Initializers ============================================================ */
