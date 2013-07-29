@@ -35,24 +35,6 @@
     }];
 }
 
-//- (id)unsatisfiableClassFWithCircularDependencyInInitializer;
-//{
-//    return [TyphoonDefinition withClass:[UnsatisfiableClassFDependsOnGInInitializer class] initialization:^(TyphoonInitializer *initializer) {
-//        initializer.selector = @selector(initWithG:);
-//        
-//        [initializer injectWithDefinition:[self unsatisfiableClassGWithCircularDependencyInInitializer]];
-//    }];
-//}
-//
-//- (id)unsatisfiableClassGWithCircularDependencyInInitializer;
-//{
-//    return [TyphoonDefinition withClass:[UnsatisfiableClassGDependsOnFInInitializer class] initialization:^(TyphoonInitializer *initializer) {
-//        initializer.selector = @selector(initWithF:);
-//        
-//        [initializer injectWithDefinition:[self unsatisfiableClassFWithCircularDependencyInInitializer]];
-//    }];
-//}
-
 - (id)classC;
 {
     return [TyphoonDefinition withClass:[ClassCDependsOnDAndE class] properties:^(TyphoonDefinition *definition)
@@ -78,5 +60,22 @@
     }];
 }
 
+//- (id)unsatisfiableClassFWithCircularDependencyInInitializer;
+//{
+//    return [TyphoonDefinition withClass:[UnsatisfiableClassFDependsOnGInInitializer class] initialization:^(TyphoonInitializer *initializer) {
+//        initializer.selector = @selector(initWithG:);
+//
+//        [initializer injectWithDefinition:[self unsatisfiableClassGWithCircularDependencyInInitializer]];
+//    }];
+//}
+//
+//- (id)unsatisfiableClassGWithCircularDependencyInInitializer;
+//{
+//    return [TyphoonDefinition withClass:[UnsatisfiableClassGDependsOnFInInitializer class] initialization:^(TyphoonInitializer *initializer) {
+//        initializer.selector = @selector(initWithF:);
+//
+//        [initializer injectWithDefinition:[self unsatisfiableClassFWithCircularDependencyInInitializer]];
+//    }];
+//}
 
 @end

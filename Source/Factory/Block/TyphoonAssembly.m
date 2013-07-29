@@ -30,10 +30,23 @@ static NSMutableDictionary *resolveStackForKey;
     return [[[self class] alloc] init];
 }
 
++ (TyphoonAssembly*)defaultAssembly
+{
+    return (TyphoonAssembly*) [TyphoonComponentFactory defaultFactory];
+}
+
++ (void)load
+{
+    [super load];
+    //    resolveStack = [[NSMutableArray alloc] init];
+    resolveStackForKey = [[NSMutableDictionary alloc] init];
+}
+
+#pragma mark - Instance Method Resolution
 + (BOOL)resolveInstanceMethod:(SEL)sel
 {
     if ([self shouldProvideDynamicImplementationFor:sel]) {
-        [self provideDynamicImplementationForDefinitionMethodByDoingSomethingAroundIt:sel];
+        [self provideDynamicImplementationToConstructDefinitionForSEL:sel];
         return YES;
     }
     
@@ -42,15 +55,147 @@ static NSMutableDictionary *resolveStackForKey;
 
 + (BOOL)shouldProvideDynamicImplementationFor:(SEL)sel;
 {
-    NSString* name = NSStringFromSelector(sel);
-    return (![TyphoonAssembly selectorReserved:sel] && [name hasSuffix:TYPHOON_BEFORE_ADVICE_SUFFIX]); // a name will always have this suffix after a TyphoonBlockComponentFactory has been initialized with us as the assembly. Make this clearer. All user facing calls will go through the dynamic implementation machinery.
+    return (![TyphoonAssembly selectorReserved:sel] && [self selectorIsWrapped:sel]);
 }
 
-+ (void)provideDynamicImplementationForDefinitionMethodByDoingSomethingAroundIt:(SEL)sel;
++ (BOOL)selectorReserved:(SEL)selector
+{
+    return selector == @selector(init) || selector == @selector(cachedDefinitionsForMethodName) || selector == NSSelectorFromString(@".cxx_destruct") ||
+    selector == @selector(defaultAssembly);
+}
+
++ (BOOL)selectorIsWrapped:(SEL)sel;
 {
     NSString* name = NSStringFromSelector(sel);
-    IMP imp = [self implementationToWrapDefinitionReturningMethodAndDoSomethingAroundWithSEL:sel name:name];
+    return [name hasSuffix:TYPHOON_BEFORE_ADVICE_SUFFIX];  // a name will always have this suffix after a TyphoonBlockComponentFactory has been initialized with us as the assembly. Make this clearer. All user facing calls will always go through the dynamic implementation machinery.
+}
+
++ (void)provideDynamicImplementationToConstructDefinitionForSEL:(SEL)sel;
+{
+    IMP imp = [self implementationToConstructDefinitionForSEL:sel];
     class_addMethod(self, sel, imp, "@");
+}
+
++ (IMP)implementationToConstructDefinitionForSEL:(SEL)selWithAdvicePrefix
+{
+    return imp_implementationWithBlock((__bridge id) objc_unretainedPointer((TyphoonDefinition *)^(id me)
+       {
+           NSString *key = [self keyForWrappedSEL:selWithAdvicePrefix];
+           return [self definitionForKey:key me:me];
+       }));
+}
+
++ (NSString *)keyForWrappedSEL:(SEL)selWithAdvicePrefix
+{
+    NSString* name = NSStringFromSelector(selWithAdvicePrefix);
+    NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@""];
+    return key;
+}
+
++ (TyphoonDefinition *)definitionForKey:(NSString *)key me:(id)me
+{
+    NSLog(@"Resolving request for definition for key: %@", key);
+
+    TyphoonDefinition *cached = [self cachedDefinitionForKey:key me:me];
+    if (!cached)
+    {
+        NSLog(@"Definition for key: '%@' is not cached, building...", key);
+        return [self buildDefinitionForKey:key me:me];
+    }
+        
+    NSLog(@"Using cached definition for key '%@.'", key);
+    return cached;
+}
+
++ (TyphoonDefinition *)cachedDefinitionForKey:(NSString *)key me:(id)me
+{
+    return [[me cachedDefinitionsForMethodName] objectForKey:key];
+}
+
++ (TyphoonDefinition *)buildDefinitionForKey:(NSString *)key me:(TyphoonAssembly *)me;
+{
+    NSMutableArray *resolveStack = [self resolveStackForKey:key];
+    [self markCurrentlyResolvingKey:key resolveStack:resolveStack];
+    
+    if ([self dependencyForKey:key involvedInCircularDependencyInResolveStack:resolveStack]) {
+        return [self definitionToTerminateCircularDependencyForKey:key];
+    }
+    
+    id cached = [self populateCacheWithDefinitionForKey:key me:me];
+    [self markKeyResolved:key resolveStack:resolveStack];
+    
+    NSLog(@"Did finish building definition for key: '%@'", key);
+    
+    return cached;
+}
+
++ (BOOL)dependencyForKey:(NSString *)key involvedInCircularDependencyInResolveStack:(NSArray *)resolveStack;
+{
+    if ([resolveStack count] >= 2)
+    {
+        NSString* bottom = [resolveStack objectAtIndex:0];
+        NSString* top = [resolveStack objectAtIndex:[resolveStack count] - 1];
+        if ([top isEqualToString:bottom])
+        {
+            NSLog(@"Circular dependency detected in definition for key '%@'. Breaking the cycle.", key);
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
++ (TyphoonDefinition *)definitionToTerminateCircularDependencyForKey:(NSString *)key
+{
+    // we return a 'dummy' definition just to terminate the cycle. This dummy definition will be overwritten by the real one, which will be set further up the stack and will overwrite this one in 'cachedDefinitionsForMethodName'.
+    return [[TyphoonDefinition alloc] initWithClass:[NSString class] key:key];
+}
+
++ (NSMutableArray *)resolveStackForKey:(NSString *)key
+{
+    NSMutableArray *resolveStack = [resolveStackForKey objectForKey:key];
+    if (!resolveStack) {
+        resolveStack = [[NSMutableArray alloc] init];
+        [resolveStackForKey setObject:resolveStack forKey:key];
+    }
+    return resolveStack;
+}
+
++ (void)markCurrentlyResolvingKey:(NSString *)key resolveStack:(NSMutableArray *)resolveStack
+{
+    [resolveStack addObject:key];
+    NSLog(@"Definition resolve stack: '%@' for key: '%@'", resolveStack, key);
+}
+
++ (TyphoonDefinition *)populateCacheWithDefinitionForKey:(NSString *)key me:(TyphoonAssembly *)me;
+{
+    id d = [self definitionByCallingAssemblyMethodForKey:key me:me];
+    [self populateCacheWithDefinition:d forKey:key me:me];
+    return d;
+}
+
++ (id)definitionByCallingAssemblyMethodForKey:(NSString *)key me:(TyphoonAssembly *)me
+{
+    SEL sel = [self wrappedSELForKey:key];
+    id cached = objc_msgSend(me, sel); // the wrappedSEL will call through to the original, unwrapped implementation because of the active swizzling.
+    return cached;
+}
+
++ (SEL)wrappedSELForKey:(NSString *)key;
+{
+    // deduplicate with - (void)replaceImplementationOfDefinitionOnAssembly:(TyphoonAssembly *)assembly withDynamicBeforeAdviceImplementation:(id)obj;
+    return NSSelectorFromString([key stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
+}
+
++ (void)populateCacheWithDefinition:(TyphoonDefinition *)cached forKey:(NSString *)key me:(id)me
+{
+    if (cached && [cached isKindOfClass:[TyphoonDefinition class]])
+    {
+        TyphoonDefinition* definition = (TyphoonDefinition*) cached;
+        [self setKey:key onDefinitionIfExistingKeyEmpty:definition];
+        
+        [[me cachedDefinitionsForMethodName] setObject:definition forKey:key];
+    }
 }
 
 + (void)setKey:(NSString *)key onDefinitionIfExistingKeyEmpty:(TyphoonDefinition *)definition
@@ -61,84 +206,15 @@ static NSMutableDictionary *resolveStackForKey;
     }
 }
 
-+ (IMP)implementationToWrapDefinitionReturningMethodAndDoSomethingAroundWithSEL:(SEL)selWithAdvicePrefix name:(NSString *)name
++ (void)markKeyResolved:(NSString *)key resolveStack:(NSMutableArray *)resolveStack
 {
-    return imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me)
-       {
-           NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@""];
-            NSMutableArray *resolveStack = [resolveStackForKey objectForKey:key];
-            if (!resolveStack) {
-                resolveStack = [[NSMutableArray alloc] init];
-                [resolveStackForKey setObject:resolveStack forKey:key];
-            }
-
-           TyphoonDefinition* cached = [[me cachedDefinitionsForMethodName] objectForKey:key];
-           if (cached == nil)
-            {
-                NSLog(@"%@ not cached.", key);
-                
-                [resolveStack addObject:key];
-                NSLog(@"Resolve stack: %@ for key: %@", resolveStack, key);
-                
-                if ([resolveStack count] > 2)
-                {
-                    NSString* bottom = [resolveStack objectAtIndex:0];
-                    NSString* top = [resolveStack objectAtIndex:[resolveStack count] - 1];
-                    if ([top isEqualToString:bottom])
-                    {
-                        NSLog(@"CIRCULAR DEPNEDENCY DETECTEED! TERMINATIN IT WITH SOME DUMMY DEFINITION!");
-                        return [[TyphoonDefinition alloc] initWithClass:[NSString class] key:key];
-//                        [NSException raise:NSInternalInconsistencyException format:@"Circular dependency detected."];
-                    }
-                }
-
-//                [[self class] typhoon_swizzleMethod:sel withMethod:NSSelectorFromString(key) error:nil];
-//                SEL normalSEL = NSSelectorFromString(key);
-                cached = objc_msgSend(me, sel); // will go to normal b/c of swizzling. 
-                if (cached && [cached isKindOfClass:[TyphoonDefinition class]])
-                {
-                    TyphoonDefinition* definition = (TyphoonDefinition*) cached;
-                    if ([definition.key length] == 0)
-                    {
-                        definition.key = key;
-                    }
-                    [[me cachedSelectors] setObject:definition forKey:key];
-                }
-//                [[self class] typhoon_swizzleMethod:NSSelectorFromString(key) withMethod:sel error:nil];
-                NSLog(@"Did finish satisfying: %@", key);
-            }else{
-                NSLog(@"returning cached key %@.", key);
-            }
-            if (resolveStack.count) {
-                NSLog(@"Will clear resolve stack: %@ for key: %@", resolveStack, key);
-            }
-            [resolveStack removeAllObjects]; 
-            #warning BUG!
-            
-            
-            return cached;
-       }));
+    if (resolveStack.count) {
+        NSLog(@"Will clear definition resolve stack: '%@' for key: '%@'", resolveStack, key);
+        [resolveStack removeAllObjects];
+    }
 }
 
-+ (TyphoonAssembly*)defaultAssembly
-{
-    return (TyphoonAssembly*) [TyphoonComponentFactory defaultFactory];
-}
-
-
-+ (BOOL)selectorReserved:(SEL)selector
-{
-    return selector == @selector(init) || selector == @selector(cachedDefinitionsForMethodName) || selector == NSSelectorFromString(@".cxx_destruct") ||
-            selector == @selector(defaultAssembly);
-}
-
-+ (void)load
-{
-    [super load];
-//    resolveStack = [[NSMutableArray alloc] init];
-    resolveStackForKey = [[NSMutableDictionary alloc] init];
-}
-
+#pragma mark - Initializers
 /* ============================================================ Initializers ============================================================ */
 - (id)init
 {

@@ -28,7 +28,7 @@
 - (id)classD;
 - (id)classE;
 
-- (id)unsatisfiableClassFWithCircularDependencyInInitializer;
-- (id)unsatisfiableClassGWithCircularDependencyInInitializer;
+//- (id)unsatisfiableClassFWithCircularDependencyInInitializer;
+//- (id)unsatisfiableClassGWithCircularDependencyInInitializer;
 
 @end
