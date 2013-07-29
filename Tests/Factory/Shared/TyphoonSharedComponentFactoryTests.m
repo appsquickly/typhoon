@@ -188,7 +188,9 @@
     assertThat([classB.dependencyOnA class], equalTo([ClassADependsOnB class]));
 }
 
-/*
+//- (void)test_resolves_circular_dependency_for
+
+
 - (void)test_resolves_two_circular_dependencies_for_property_injected_by_reference
 {
     ClassCDependsOnDAndE* classC = [_circularDependenciesFactory componentForKey:@"classC"];
@@ -204,6 +206,6 @@
     assertThat(classD, equalTo(classD.dependencyOnC.dependencyOnD));
     assertThat([classD.dependencyOnC class], equalTo([ClassCDependsOnDAndE class]));
 }
-*/
+
 
 @end

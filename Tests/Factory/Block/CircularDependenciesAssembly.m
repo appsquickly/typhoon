@@ -53,8 +53,7 @@
 //    }];
 //}
 
-/*
-- (id)classC
+- (id)classC;
 {
     return [TyphoonDefinition withClass:[ClassCDependsOnDAndE class] properties:^(TyphoonDefinition *definition)
     {
@@ -63,7 +62,7 @@
     }];
 }
 
-- (id)classD
+- (id)classD;
 {
     return [TyphoonDefinition withClass:[ClassDDependsOnC class] properties:^(TyphoonDefinition *definition)
     {
@@ -71,13 +70,13 @@
     }];
 }
 
-- (id)classE
+- (id)classE;
 {
     return [TyphoonDefinition withClass:[ClassEDependsOnC class] properties:^(TyphoonDefinition *definition)
     {
         [definition injectProperty:@selector(dependencyOnC) withDefinition:[self classC]];
     }];
 }
-*/
+
 
 @end
