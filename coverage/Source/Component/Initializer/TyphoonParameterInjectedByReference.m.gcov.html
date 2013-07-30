@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>LCOV - Typhoon.info - Source/Component/Initializer/TyphoonParameterInjectedByReference.m</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-07-27</td>
+            <td class="headerValue">2013-07-30</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -76,28 +76,28 @@
 <span class="lineNum">      18 </span><span class="lineCov">          3 : @implementation TyphoonParameterInjectedByReference</span>
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : /* ============================================================ Initializers ============================================================ */
-<span class="lineNum">      21 </span>            : - (id)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString*)reference
-<span class="lineNum">      22 </span><span class="lineCov">         80 : {</span>
-<span class="lineNum">      23 </span>            :     self = [super init];
-<span class="lineNum">      24 </span><span class="lineCov">         80 :     if (self)</span>
-<span class="lineNum">      25 </span><span class="lineCov">         80 :     {</span>
-<span class="lineNum">      26 </span>            :         _index = parameterIndex;
-<span class="lineNum">      27 </span><span class="lineCov">         80 :         _reference = reference;</span>
-<span class="lineNum">      28 </span><span class="lineCov">         80 :     }</span>
-<span class="lineNum">      29 </span><span class="lineCov">         80 :     return self;</span>
-<span class="lineNum">      30 </span><span class="lineCov">         80 : }</span>
-<span class="lineNum">      31 </span><span class="lineCov">         80 : </span>
+<span class="lineNum">      21 </span><span class="lineCov">         86 : - (id)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString*)reference</span>
+<span class="lineNum">      22 </span>            : {
+<span class="lineNum">      23 </span><span class="lineCov">         86 :     self = [super init];</span>
+<span class="lineNum">      24 </span><span class="lineCov">         86 :     if (self)</span>
+<span class="lineNum">      25 </span>            :     {
+<span class="lineNum">      26 </span><span class="lineCov">         86 :         _index = parameterIndex;</span>
+<span class="lineNum">      27 </span><span class="lineCov">         86 :         _reference = reference;</span>
+<span class="lineNum">      28 </span><span class="lineCov">         86 :     }</span>
+<span class="lineNum">      29 </span><span class="lineCov">        172 :     return self;</span>
+<span class="lineNum">      30 </span><span class="lineCov">         86 : }</span>
+<span class="lineNum">      31 </span>            : 
 <span class="lineNum">      32 </span>            : /* =========================================================== Protocol Methods ========================================================= */
-<span class="lineNum">      33 </span>            : - (TyphoonParameterInjectionType)type
-<span class="lineNum">      34 </span><span class="lineCov">         21 : {</span>
-<span class="lineNum">      35 </span>            :     return TyphoonParameterInjectedByReferenceType;
-<span class="lineNum">      36 </span><span class="lineCov">         21 : }</span>
+<span class="lineNum">      33 </span><span class="lineCov">         21 : - (TyphoonParameterInjectionType)type</span>
+<span class="lineNum">      34 </span>            : {
+<span class="lineNum">      35 </span><span class="lineCov">         21 :     return TyphoonParameterInjectedByReferenceType;</span>
+<span class="lineNum">      36 </span>            : }
 <span class="lineNum">      37 </span>            : 
-<span class="lineNum">      38 </span>            : - (void)setInitializer:(TyphoonInitializer*)initializer
-<span class="lineNum">      39 </span><span class="lineCov">          3 : {</span>
+<span class="lineNum">      38 </span><span class="lineCov">          3 : - (void)setInitializer:(TyphoonInitializer*)initializer</span>
+<span class="lineNum">      39 </span>            : {
 <span class="lineNum">      40 </span>            :     //Do nothing.
-<span class="lineNum">      41 </span>            : }
-<span class="lineNum">      42 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      41 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      42 </span>            : 
 <span class="lineNum">      43 </span>            : @end
 </pre>
       </td>
@@ -107,7 +107,7 @@
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
     <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
-    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.9</a></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
   </table>
   <br>
 
