@@ -127,13 +127,10 @@
 /* ============================================================ Private Methods ========================================================= */
 - (void)parsePrimitiveType:(NSString*)typeCode
 {
-    NSLog(@"Parsing typeCode: %@", typeCode);
     typeCode = [self extractArrayInformation:typeCode];
     typeCode = [self extractPointerInformation:typeCode];
     typeCode = [self extractStructureInformation:typeCode];
     _primitiveType = [self typeFromTypeCode:typeCode];
-
-
 }
 
 - (NSString*)extractArrayInformation:(NSString*)typeCode

@@ -24,7 +24,6 @@
     {
         NSString* resource = [name substringToIndex:lastDot.location];
         NSString* type = [name substringFromIndex:lastDot.location + 1];
-        NSLog(@"Resource: %@.%@", resource, type);
         filePath = [[NSBundle bundleForClass:[self class]] pathForResource:resource ofType:type];
     }
     else

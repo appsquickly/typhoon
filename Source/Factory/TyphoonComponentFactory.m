@@ -15,7 +15,7 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
-
+#import "OCLogTemplate.h"
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
 
@@ -113,7 +113,7 @@ static TyphoonComponentFactory* defaultFactory;
         }
     }
     
-    NSLog(@"Registering: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
+    LogTrace(@"Registering: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
     [_registry addObject:definition];
 	
 	// I would handle it via an exception but, in order to keep
@@ -145,7 +145,6 @@ static TyphoonComponentFactory* defaultFactory;
 	if (! [self isLoaded]) [self load];
     NSMutableArray* results = [[NSMutableArray alloc] init];
     NSArray* definitions = [self allDefinitionsForType:classOrProtocol];
-    NSLog(@"Definitions: %@", definitions);
     for (TyphoonDefinition* definition in definitions)
     {
         [results addObject:[self objectForDefinition:definition]];
@@ -190,7 +189,7 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (void)attachMutator:(id)mutator
 {
-    NSLog(@"Attaching mutator: %@", mutator);
+    LogTrace(@"Attaching mutator: %@", mutator);
     [_mutators addObject:mutator];
 }
 

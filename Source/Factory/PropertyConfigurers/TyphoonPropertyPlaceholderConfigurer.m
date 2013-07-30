@@ -18,6 +18,7 @@
 #import "TyphoonParameterInjectedByValue.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
+#import "OCLogTemplate.h"
 
 @interface TyphoonPropertyInjectedByValue (PropertyPlaceHolderConfigurer)
 
@@ -123,7 +124,7 @@
                 NSString* key = [parameter.textValue substringFromIndex:[_prefix length]];
                 key = [key substringToIndex:[key length] - [_suffix length]];
                 NSString* value = [_properties valueForKey:key];
-                NSLog(@"Setting property '%@' to value '%@'", key, value);
+                LogTrace(@"Setting property '%@' to value '%@'", key, value);
                 parameter.textValue = value;
             }
         }
@@ -135,7 +136,7 @@
                 NSString* key = [property.textValue substringFromIndex:[_prefix length]];
                 key = [key substringToIndex:[key length] - [_suffix length]];
                 NSString* value = [_properties valueForKey:key];
-                NSLog(@"Setting property '%@' to value '%@'", key, value);
+                LogTrace(@"Setting property '%@' to value '%@'", key, value);
                 property.textValue = value;
             }
         }

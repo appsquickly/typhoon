@@ -31,7 +31,7 @@
 #import "TyphoonTypeConvertedCollectionValue.h"
 #import "TyphoonParameterInjectedByRawValue.h"
 #import "TyphoonIntrospectionUtils.h"
-
+#import "OCLogTemplate.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
@@ -82,9 +82,8 @@
 - (void)markCurrentlyResolvingDefinition:(TyphoonDefinition *)definition withInstance:(__autoreleasing id)instance
 {
     NSString *key = definition.key;
-    // NSAssert(![_currentlyResolvingReferences valueForKey:key], @""); // This can fail in production, but passes all tests. When does this fail? Capture with a test case.
     [_currentlyResolvingReferences setValue:instance forKey:key];
-    NSLog(@"Building instance with definition: '%@' as part of definitions pending resolution: '%@'.", definition, _currentlyResolvingReferences);
+    LogTrace(@"Building instance with definition: '%@' as part of definitions pending resolution: '%@'.", definition, _currentlyResolvingReferences);
 }
 
 - (void)injectPropertyDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
@@ -122,7 +121,7 @@
              typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor
 {
     NSInvocation* invocation = [self propertySetterInvocationFor:instance property:property];
-    NSLog(@"Property setter invocation: %@", invocation);
+
     if (property.injectionType == TyphoonPropertyInjectionByTypeType)
     {
         TyphoonDefinition* definition = [self definitionForType:[typeDescriptor classOrProtocol]];
@@ -176,13 +175,13 @@
     {
         NSDictionary* circularDependencies = [instance circularDependentProperties];
         [circularDependencies setValue:componentKey forKey:propertyName];
-        NSLog(@"$$$$$$$$$$$$ Circular now: %@", [instance circularDependentProperties]);
+        LogTrace(@"$$$$$$$$$$$$ Circular dependency detected: %@", [instance circularDependentProperties]);
     }
 }
 
 - (BOOL)propertyIsNotCircular:(id <TyphoonInjectedProperty>)property instance:(id <TyphoonIntrospectiveNSObject>)instance;
 {
-    return    [[instance circularDependentProperties] objectForKey:property.name] == nil;
+    return [[instance circularDependentProperties] objectForKey:property.name] == nil;
 }
 
 - (void)configureInvocation:(NSInvocation *)invocation toInjectByReferenceProperty:(TyphoonPropertyInjectedByReference *)byReference;
@@ -283,7 +282,7 @@
         instance:(id <TyphoonIntrospectiveNSObject>)instance
 {
     id collection = [self collectionFor:propertyInjectedAsCollection givenInstance:instance];
-    NSLog(@"Property: %@", propertyInjectedAsCollection);
+
     for (id <TyphoonCollectionValue> value in [propertyInjectedAsCollection values])
     {
         if (value.type == TyphoonCollectionValueTypeByReference)
@@ -323,7 +322,7 @@
     {
         collection = [[NSMutableSet alloc] init];
     }
-    NSLog(@"Returning this collection: %@", collection);
+
     return collection;
 }
 
@@ -336,7 +335,7 @@
         if (class_isMetaClass(object_getClass(classOrProtocol)) &&
                 [classOrProtocol respondsToSelector:@selector(typhoonAutoInjectedProperties)])
         {
-            NSLog(@"Class %@ wants auto-wiring. . . registering.", NSStringFromClass(classOrProtocol));
+            LogTrace(@"Class %@ wants auto-wiring. . . registering.", NSStringFromClass(classOrProtocol));
             [self register:[TyphoonDefinition withClass:classOrProtocol]];
             return [self definitionForType:classOrProtocol];
         }

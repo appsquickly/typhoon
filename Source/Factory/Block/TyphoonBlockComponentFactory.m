@@ -18,6 +18,7 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonJRSwizzle.h"
 #import "TyphoonAssemblySelectorWrapper.h"
+#import "OCLogTemplate.h"
 
 static NSMutableArray* swizzleRegistry;
 
@@ -64,7 +65,7 @@ static NSMutableArray* swizzleRegistry;
 /* ============================================================ Initializers ============================================================ */
 - (id)initWithAssembly:(TyphoonAssembly*)assembly;
 {
-    NSLog(@"Building assembly: %@", NSStringFromClass([assembly class]));
+    LogTrace(@"Building assembly: %@", NSStringFromClass([assembly class]));
     if (![assembly isKindOfClass:[TyphoonAssembly class]])
     {
         [NSException raise:NSInvalidArgumentException format:@"Class '%@' is not a sub-class of %@", NSStringFromClass([assembly class]),
@@ -178,8 +179,6 @@ typedef void(^MethodEnumerationBlock)(Method method);
             [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
                 [self replaceImplementationOfDefinitionOnAssembly:assembly withDynamicBeforeAdviceImplementation:obj];
             }];
-            
-            NSLog(@"Just applied before advice prefix to all definition selectors on assembly %@.", assembly);
         }
     }
 }

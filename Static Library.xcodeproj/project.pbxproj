@@ -165,6 +165,8 @@
 		4B9BD33E17A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssemblySelectorWrapper.h; sourceTree = "<group>"; };
 		4B9BD33F17A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblySelectorWrapper.m; sourceTree = "<group>"; };
 		4BC6494817A20BD7007F0463 /* libTyphoon-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libTyphoon-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BED3D6117A85010006D262C /* OCLogTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCLogTemplate.h; sourceTree = "<group>"; };
+		4BED3D6217A85010006D262C /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		6B3F397416ABF854001A601C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6B3F399616ABF8E5001A601C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		6B3F399816ABF8E5001A601C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
@@ -269,6 +271,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4BED3D5F17A85010006D262C /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				4BED3D6017A85010006D262C /* OCLogTemplate */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		4BED3D6017A85010006D262C /* OCLogTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				4BED3D6117A85010006D262C /* OCLogTemplate.h */,
+				4BED3D6217A85010006D262C /* README */,
+			);
+			path = OCLogTemplate;
+			sourceTree = "<group>";
+		};
 		6B3F396516ABF854001A601C = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +433,7 @@
 				BA7988D81E615CF122461784 /* Typhoon.pch */,
 				BA79890C0F10164E6B504106 /* TyphoonAutowire.h */,
 				BA79844939DE1F872B92FEFB /* TyphoonShorthand.h */,
+				4BED3D5F17A85010006D262C /* Vendor */,
 			);
 			path = Source;
 			sourceTree = "<group>";

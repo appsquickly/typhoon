@@ -18,6 +18,7 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonAssemblySelectorWrapper.h"
+#import "OCLogTemplate.h"
 
 static NSMutableDictionary *resolveStackForKey;
 
@@ -80,16 +81,16 @@ static NSMutableDictionary *resolveStackForKey;
 
 + (TyphoonDefinition *)definitionForKey:(NSString *)key me:(id)me
 {
-    NSLog(@"Resolving request for definition for key: %@", key);
+    LogTrace(@"Resolving request for definition for key: %@", key);
 
     TyphoonDefinition *cached = [self cachedDefinitionForKey:key me:me];
     if (!cached)
     {
-        NSLog(@"Definition for key: '%@' is not cached, building...", key);
+        LogTrace(@"Definition for key: '%@' is not cached, building...", key);
         return [self buildDefinitionForKey:key me:me];
     }
         
-    NSLog(@"Using cached definition for key '%@.'", key);
+    LogTrace(@"Using cached definition for key '%@.'", key);
     return cached;
 }
 
@@ -110,7 +111,7 @@ static NSMutableDictionary *resolveStackForKey;
     id cached = [self populateCacheWithDefinitionForKey:key me:me];
     [self markKeyResolved:key resolveStack:resolveStack];
     
-    NSLog(@"Did finish building definition for key: '%@'", key);
+    LogTrace(@"Did finish building definition for key: '%@'", key);
     
     return cached;
 }
@@ -123,7 +124,7 @@ static NSMutableDictionary *resolveStackForKey;
         NSString* top = [resolveStack objectAtIndex:[resolveStack count] - 1];
         if ([top isEqualToString:bottom])
         {
-            NSLog(@"Circular dependency detected in definition for key '%@'. Breaking the cycle.", key);
+            LogInfo(@"Circular dependency detected in definition for key '%@'. Breaking the cycle.", key);
             return YES;
         }
     }
@@ -150,7 +151,6 @@ static NSMutableDictionary *resolveStackForKey;
 + (void)markCurrentlyResolvingKey:(NSString *)key resolveStack:(NSMutableArray *)resolveStack
 {
     [resolveStack addObject:key];
-    NSLog(@"Definition resolve stack: '%@' for key: '%@'", resolveStack, key);
 }
 
 + (TyphoonDefinition *)populateCacheWithDefinitionForKey:(NSString *)key me:(TyphoonAssembly *)me;
@@ -189,7 +189,6 @@ static NSMutableDictionary *resolveStackForKey;
 + (void)markKeyResolved:(NSString *)key resolveStack:(NSMutableArray *)resolveStack
 {
     if (resolveStack.count) {
-        NSLog(@"Will clear definition resolve stack: '%@' for key: '%@'", resolveStack, key);
         [resolveStack removeAllObjects];
     }
 }
@@ -209,7 +208,7 @@ static NSMutableDictionary *resolveStackForKey;
 /* ============================================================ Utility Methods ========================================================= */
 - (void)dealloc
 {
-    NSLog(@"$$$$$$ %@ in dealloc!", [self class]);
+    LogTrace(@"$$$$$$ %@ in dealloc!", [self class]);
 }
 
 /* ============================================================ Private Methods ========================================================= */

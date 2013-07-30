@@ -102,7 +102,7 @@
                 [property addItemWithText:[child text] requiredType:type];
             }
         }];
-        NSLog(@"$$$$$$$$$$$$$$ Here's the injected property: %@", property);
+
         injectedProperty = property;
     }
     else
