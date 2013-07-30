@@ -19,6 +19,10 @@
 
 @implementation TyphoonParameterInjectedByValue
 
+
+
+@synthesize textValue = _textValue;
+
 /* ============================================================ Initializers ============================================================ */
 - (id)initWithIndex:(NSUInteger)index value:(NSString*)value requiredTypeOrNil:(Class)requiredTypeOrNil
 {

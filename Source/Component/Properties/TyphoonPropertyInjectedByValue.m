@@ -16,9 +16,10 @@
 
 
 @implementation TyphoonPropertyInjectedByValue
-{
 
-}
+
+
+@synthesize textValue = _textValue;
 
 /* ============================================================ Initializers ============================================================ */
 - (id)initWithName:(NSString*)name value:(NSString*)value

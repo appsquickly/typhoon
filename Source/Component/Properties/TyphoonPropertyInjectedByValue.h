@@ -12,16 +12,13 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonInjectedProperty.h"
+#import "TyphoonComponentInjectedByValue.h"
 
-
-@interface TyphoonPropertyInjectedByValue : NSObject <TyphoonInjectedProperty>
-{
-    NSString* _textValue;
-}
+@interface TyphoonPropertyInjectedByValue : NSObject <TyphoonInjectedProperty, TyphoonComponentInjectedByValue>
 
 @property (nonatomic, strong, readonly) NSString* name;
 @property (nonatomic, readonly) TyphoonPropertyInjectionType type;
-@property (nonatomic, strong, readonly) NSString* textValue;
+
 
 - (id)initWithName:(NSString*)name value:(NSString*)value;
 

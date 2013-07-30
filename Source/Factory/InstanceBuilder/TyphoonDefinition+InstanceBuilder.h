@@ -19,6 +19,8 @@
 
 - (void)setFactoryReference:(NSString*)factoryReference;
 
+- (NSSet *)componentsInjectedByValue;
+
 - (void)injectProperty:(SEL)withSelector withReference:(NSString*)reference;
 
 - (NSSet*)propertiesInjectedByValue;

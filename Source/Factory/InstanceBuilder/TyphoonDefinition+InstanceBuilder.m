@@ -13,7 +13,7 @@
 #import "TyphoonPropertyInjectedByValue.h"
 #import "TyphoonPropertyInjectedByType.h"
 #import "TyphoonPropertyInjectedByReference.h"
-
+#import "TyphoonInitializer+InstanceBuilder.h"
 
 @implementation TyphoonDefinition (InstanceBuilder)
 
@@ -28,6 +28,16 @@
 - (void)setFactoryReference:(NSString*)factoryReference;
 {
     _factoryReference = factoryReference;
+}
+
+- (NSSet *)componentsInjectedByValue;
+{
+    NSMutableSet *set = [[NSMutableSet alloc] init];
+    [set unionSet:[self propertiesInjectedByValue]];
+    
+    NSArray *a = [self.initializer parametersInjectedByValue];
+    [set unionSet:[NSSet setWithArray:a]];
+    return set;
 }
 
 - (void)injectProperty:(SEL)selector withReference:(NSString*)reference

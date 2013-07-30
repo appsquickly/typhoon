@@ -14,18 +14,18 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonInjectedParameter.h"
+#import "TyphoonComponentInjectedByValue.h"
 
 @class TyphoonTypeDescriptor;
 
 
-@interface TyphoonParameterInjectedByValue : NSObject <TyphoonInjectedParameter>
+@interface TyphoonParameterInjectedByValue : NSObject <TyphoonInjectedParameter, TyphoonComponentInjectedByValue>
 {
     __unsafe_unretained TyphoonInitializer* _initializer;
 }
 
 @property(nonatomic, readonly) NSUInteger index;
 @property(nonatomic, readonly) TyphoonParameterInjectionType type;
-@property(nonatomic, strong) NSString* textValue;
 @property(nonatomic, strong, readonly) Class requiredType;
 
 - (id)initWithIndex:(NSUInteger)index value:(NSString*)value requiredTypeOrNil:(Class)requiredTypeOrNil;
