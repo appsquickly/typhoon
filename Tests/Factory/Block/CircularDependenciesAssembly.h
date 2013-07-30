@@ -12,7 +12,23 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonAssembly.h"
-
+#import "ClassADependsOnB.h"
+#import "ClassBDependsOnA.h"
+#import "ClassCDependsOnDAndE.h"
+#import "ClassDDependsOnC.h"
+#import "ClassEDependsOnC.h"
+#import "UnsatisfiableClassFDependsOnGInInitializer.h"
+#import "UnsatisfiableClassGDependsOnFInInitializer.h"
 
 @interface CircularDependenciesAssembly : TyphoonAssembly
+
+- (id)classA;
+- (id)classB;
+- (id)classC;
+- (id)classD;
+- (id)classE;
+
+//- (id)unsatisfiableClassFWithCircularDependencyInInitializer;
+//- (id)unsatisfiableClassGWithCircularDependencyInInitializer;
+
 @end

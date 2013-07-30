@@ -14,7 +14,6 @@
 #import <Foundation/Foundation.h>
 
 
-static NSString* const TYPHOON_BEFORE_ADVICE_SUFFIX = @"__typhoonBeforeAdvice";
 
 @interface TyphoonAssembly : NSObject
 {

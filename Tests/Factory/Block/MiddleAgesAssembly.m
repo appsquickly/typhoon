@@ -101,7 +101,7 @@
     return [TyphoonDefinition withClass:[CampaignQuest class]];
 }
 
-- (id)serviceUrl
+- (id)serviceUrl;
 {
     return [TyphoonDefinition withClass:[NSURL class] initialization:^(TyphoonInitializer* initializer)
     {

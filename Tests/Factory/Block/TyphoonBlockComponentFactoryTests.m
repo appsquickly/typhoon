@@ -33,7 +33,6 @@
     TyphoonPropertyPlaceholderConfigurer* configurer = [[TyphoonPropertyPlaceholderConfigurer alloc] init];
     [configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
     [_componentFactory attachMutator:configurer];
-    [_componentFactory makeDefault];
 
     _exceptionTestFactory = [[TyphoonBlockComponentFactory  alloc] initWithAssembly:[ExceptionTestAssembly assembly]];
     _circularDependenciesFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[CircularDependenciesAssembly assembly]];
@@ -41,8 +40,7 @@
 
 - (void)test_resolves_component_using_selector
 {
-    [_componentFactory makeDefault];
-    MiddleAgesAssembly* assembly = [TyphoonComponentFactory  defaultFactory];
+    MiddleAgesAssembly* assembly = (MiddleAgesAssembly *)_componentFactory;
     Knight* knight = [assembly knight];
     assertThat(knight, notNilValue());
 }
