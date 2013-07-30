@@ -82,7 +82,7 @@
 - (void)markCurrentlyResolvingDefinition:(TyphoonDefinition *)definition withInstance:(__autoreleasing id)instance
 {
     NSString *key = definition.key;
-    NSAssert(![_currentlyResolvingReferences valueForKey:key], @"");
+    // NSAssert(![_currentlyResolvingReferences valueForKey:key], @""); // This can fail in production, but passes all tests. When does this fail? Capture with a test case.
     [_currentlyResolvingReferences setValue:instance forKey:key];
     NSLog(@"Building instance with definition: '%@' as part of definitions pending resolution: '%@'.", definition, _currentlyResolvingReferences);
 }
