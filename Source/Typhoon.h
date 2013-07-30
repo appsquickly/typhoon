@@ -30,8 +30,3 @@
 #import "TyphoonAutowire.h"
 #import "TyphoonShorthand.h"
 
-
-//TODO: Add debug and info level logs
-
-#define Typhoon_LogDealloc() NSLog(@"******* %@ in dealloc ****", NSStringFromClass([self class]));
-
