@@ -167,6 +167,7 @@
 		4BC6494817A20BD7007F0463 /* libTyphoon-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libTyphoon-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BED3D6117A85010006D262C /* OCLogTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCLogTemplate.h; sourceTree = "<group>"; };
 		4BED3D6217A85010006D262C /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		4BED3D6317A853E6006D262C /* TyphoonComponentInjectedByValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonComponentInjectedByValue.h; sourceTree = "<group>"; };
 		6B3F397416ABF854001A601C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6B3F399616ABF8E5001A601C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		6B3F399816ABF8E5001A601C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
@@ -468,6 +469,7 @@
 				BA798E985943E046737DF9F9 /* Initializer */,
 				BA798CA3A88193EC0242E6EC /* TyphoonDefinition.h */,
 				BA798F905F4B216CEA7A4D8A /* TyphoonDefinition.m */,
+				4BED3D6317A853E6006D262C /* TyphoonComponentInjectedByValue.h */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -662,6 +664,7 @@
 		6B3F396716ABF854001A601C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = Typhoon;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Jasper Blues";
 			};
