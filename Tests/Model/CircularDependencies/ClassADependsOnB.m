@@ -16,7 +16,5 @@
 
 
 @implementation ClassADependsOnB
-{
 
-}
 @end

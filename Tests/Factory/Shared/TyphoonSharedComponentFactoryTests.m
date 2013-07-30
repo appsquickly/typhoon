@@ -20,6 +20,8 @@
 #import "ClassCDependsOnDAndE.h"
 #import "ClassDDependsOnC.h"
 #import "ClassEDependsOnC.h"
+#import "UnsatisfiableClassFDependsOnGInInitializer.h"
+#import "CircularDependenciesAssembly.h"
 
 @implementation TyphoonSharedComponentFactoryTests
 
@@ -184,10 +186,8 @@
     assertThat(classB.dependencyOnA, notNilValue());
     assertThat(classB, equalTo(classB.dependencyOnA.dependencyOnB));
     assertThat([classB.dependencyOnA class], equalTo([ClassADependsOnB class]));
-
 }
 
-/*
 - (void)test_resolves_two_circular_dependencies_for_property_injected_by_reference
 {
     ClassCDependsOnDAndE* classC = [_circularDependenciesFactory componentForKey:@"classC"];
@@ -203,6 +203,6 @@
     assertThat(classD, equalTo(classD.dependencyOnC.dependencyOnD));
     assertThat([classD.dependencyOnC class], equalTo([ClassCDependsOnDAndE class]));
 }
-*/
+
 
 @end
