@@ -186,7 +186,7 @@ each commit. (If you'd like the script I will share it).
          
 ### With contributions from: 
 
-* <a href="https://github.com">Robert Gilliam</a> : Loads of fixes and enhancements. Big thanks!
+* <a href="https://github.com/rhgills">Robert Gilliam</a> : Loads of fixes and enhancements. Big thanks!
 * <a href="https://github.com/BrynCooke">Bryn Cooke</a> : Late injections & story board integration. 
 * <a href="http://www.linkedin.com/in/jeffreydroberts">Jeffrey Roberts</a>, Mobile Software Engineer at 
 <a href="http://www.riotgames.com/">Riot Games</a>, previous contributor to Swiz for ActionScript : Advice, feedback and testing. 
