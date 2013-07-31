@@ -186,6 +186,8 @@ each commit. (If you'd like the script I will share it).
          
 ### With contributions from: 
 
+* <a href="Robert Gilliam>Robert Gilliam</a> : Loads really good stuff. Big thanks Robert!
+* <a href="https://github.com/BrynCooke">Bryn Cooke</a> : Storyboard integration
 * <a href="http://www.linkedin.com/in/jeffreydroberts">Jeffrey Roberts</a>, Mobile Software Engineer at 
 <a href="http://www.riotgames.com/">Riot Games</a>, previous contributor to Swiz for ActionScript : Advice, feedback and testing. 
 * John Blanco of Rapture in Venice, LLC : contributed his 
