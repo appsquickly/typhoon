@@ -125,10 +125,15 @@ static NSMutableArray* swizzleRegistry;
 - (void)addDefinitionSelectorsForSubclassesOfAssembly:(TyphoonAssembly *)assembly toSet:(NSMutableSet *)definitionSelectors
 {
     Class currentClass = [assembly class];
-    while (strcmp(class_getName(currentClass), "TyphoonAssembly") != 0) {
+    while ([self classNotRootAssemblyClass:currentClass]) {
         [definitionSelectors unionSet:[self obtainDefinitionSelectorsInAssemblyClass:currentClass]];
         currentClass = class_getSuperclass(currentClass);
     }
+}
+
+- (BOOL)classNotRootAssemblyClass:(Class)currentClass;
+{
+    return ![NSStringFromClass(currentClass) isEqualToString:NSStringFromClass([TyphoonAssembly class])];
 }
 
 - (NSSet *)obtainDefinitionSelectorsInAssemblyClass:(Class)class

@@ -82,7 +82,7 @@ static NSMutableArray *reservedSelectorsAsStrings;
 
 + (BOOL)selectorReserved:(SEL)selector
 {
-    return ![reservedSelectorsAsStrings containsObject:NSStringFromSelector(selector)];
+    return [reservedSelectorsAsStrings containsObject:NSStringFromSelector(selector)];
 }
 
 + (void)provideDynamicImplementationToConstructDefinitionForSEL:(SEL)sel;
