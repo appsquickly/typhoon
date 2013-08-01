@@ -31,4 +31,16 @@
 
 - (id)serviceUrl;
 
+- (id)castleWithMoat:(id)theMoat;
+//- (id)moatFilledWithWater;
+- (id)moatFilledWithLava;
+
 @end
+
+
+
+
+
+
+
+

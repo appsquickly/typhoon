@@ -21,6 +21,9 @@
 #import "Knight.h"
 #import "CircularDependenciesAssembly.h"
 
+#import "Moat.h"
+#import "Castle.h"
+
 @interface TyphoonBlockComponentFactoryTests : TyphoonSharedComponentFactoryTests
 @end
 
@@ -44,6 +47,19 @@
     Knight* knight = [assembly knight];
     assertThat(knight, notNilValue());
 }
+
+- (void)test_resolves_parameterized_component_using_selector
+{
+    MiddleAgesAssembly* assembly = (MiddleAgesAssembly *)_componentFactory;
+    
+    Moat *lavaMoat = [assembly moatFilledWithLava];
+    assertThat(lavaMoat, instanceOf([Moat class]));
+    
+    Castle* castle = [assembly castleWithMoat:lavaMoat];
+    assertThat(castle, instanceOf([Castle class]));
+    assertThat(castle.moat, sameInstance(lavaMoat));
+}
+
 
 @end
 

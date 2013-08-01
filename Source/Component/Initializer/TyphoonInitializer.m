@@ -91,6 +91,11 @@
     [self injectParameterAtIndex:[_injectedParameters count] withDefinition:definition];
 }
 
+- (void)injectWithRuntimeObject:(id)anObject
+{
+    
+}
+
 - (void)injectWithValueAsText:(NSString*)text
 {
     [self injectWithValueAsText:text requiredTypeOrNil:nil];

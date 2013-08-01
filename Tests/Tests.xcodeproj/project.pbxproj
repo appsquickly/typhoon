@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B30CC0017AAF2C0007D987C /* Moat.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B30CBFF17AAF2C0007D987C /* Moat.m */; };
+		4B30CC0117AAF2C0007D987C /* Moat.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B30CBFF17AAF2C0007D987C /* Moat.m */; };
+		4B30CC0217AAF2C0007D987C /* Moat.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B30CBFF17AAF2C0007D987C /* Moat.m */; };
+		4B30CC0517AAF2D3007D987C /* Castle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B30CC0417AAF2D3007D987C /* Castle.m */; };
+		4B30CC0617AAF2D3007D987C /* Castle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B30CC0417AAF2D3007D987C /* Castle.m */; };
+		4B30CC0717AAF2D3007D987C /* Castle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B30CC0417AAF2D3007D987C /* Castle.m */; };
 		4B841470179B0E3900916BF5 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B84146F179B0E3900916BF5 /* SenTestingKit.framework */; };
 		4B841472179B0E3900916BF5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841471179B0E3900916BF5 /* UIKit.framework */; };
 		4B841474179B0E3900916BF5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841473179B0E3900916BF5 /* Foundation.framework */; };
@@ -145,6 +151,10 @@
 		159D62E0E7314B4D9C0B9CC1 /* Pods-iOS Tests (Cocoapods).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests (Cocoapods).xcconfig"; path = "Pods/Pods-iOS Tests (Cocoapods).xcconfig"; sourceTree = SOURCE_ROOT; };
 		1AC491FA50E048988BFB5756 /* libPods-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		272E8645AA624C0897EA4CF6 /* Pods-osx.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-osx.xcconfig"; path = "Pods/Pods-osx.xcconfig"; sourceTree = SOURCE_ROOT; };
+		4B30CBFE17AAF2C0007D987C /* Moat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Moat.h; sourceTree = "<group>"; };
+		4B30CBFF17AAF2C0007D987C /* Moat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Moat.m; sourceTree = "<group>"; };
+		4B30CC0317AAF2D3007D987C /* Castle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Castle.h; sourceTree = "<group>"; };
+		4B30CC0417AAF2D3007D987C /* Castle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Castle.m; sourceTree = "<group>"; };
 		4B84146C179B0E3900916BF5 /* iOS Tests (Cocoapods).octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Tests (Cocoapods).octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B84146F179B0E3900916BF5 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		4B841471179B0E3900916BF5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -420,6 +430,10 @@
 				4B8414CF179B0EA600916BF5 /* Factory */,
 				4B8414D4179B0EA600916BF5 /* Knight.h */,
 				4B8414D5179B0EA600916BF5 /* Knight.m */,
+				4B30CBFE17AAF2C0007D987C /* Moat.h */,
+				4B30CBFF17AAF2C0007D987C /* Moat.m */,
+				4B30CC0317AAF2D3007D987C /* Castle.h */,
+				4B30CC0417AAF2D3007D987C /* Castle.m */,
 				4B8414D6179B0EA600916BF5 /* Quest.h */,
 			);
 			path = Model;
@@ -814,6 +828,8 @@
 				4B841535179B0EA600916BF5 /* TyphoonBundleResourceTests.m in Sources */,
 				4BE1AA4F17A5876E00FE2DA1 /* UnsatisfiableClassFDependsOnGInInitializer.m in Sources */,
 				4BE1AA5417A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m in Sources */,
+				4B30CC0017AAF2C0007D987C /* Moat.m in Sources */,
+				4B30CC0517AAF2D3007D987C /* Castle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -854,6 +870,8 @@
 				4B841536179B0EA600916BF5 /* TyphoonBundleResourceTests.m in Sources */,
 				4BE1AA5017A5876E00FE2DA1 /* UnsatisfiableClassFDependsOnGInInitializer.m in Sources */,
 				4BE1AA5517A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m in Sources */,
+				4B30CC0117AAF2C0007D987C /* Moat.m in Sources */,
+				4B30CC0617AAF2D3007D987C /* Castle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -894,6 +912,8 @@
 				4BC648E017A20AD2007F0463 /* TyphoonBundleResourceTests.m in Sources */,
 				4BE1AA5117A5876E00FE2DA1 /* UnsatisfiableClassFDependsOnGInInitializer.m in Sources */,
 				4BE1AA5617A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m in Sources */,
+				4B30CC0217AAF2C0007D987C /* Moat.m in Sources */,
+				4B30CC0717AAF2D3007D987C /* Castle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

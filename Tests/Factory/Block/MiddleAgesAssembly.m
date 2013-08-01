@@ -19,7 +19,8 @@
 #import "SwordFactory.h"
 #import "Sword.h"
 #import "TyphoonPropertyInjectedAsCollection.h"
-
+#import "Moat.h"
+#import "Castle.h"
 
 @implementation MiddleAgesAssembly
 
@@ -124,6 +125,28 @@
     } properties:^(TyphoonDefinition* definition)
     {
         definition.factory = [self swordFactory];
+    }];
+}
+
+// don't call from other definitions
+- (id)castleWithMoat:(id)theMoat;
+{
+    return [TyphoonDefinition withClass:[Castle class] initialization:^(TyphoonInitializer *initializer) {
+        initializer.selector = @selector(initWithMoat:);
+        
+        [initializer injectWithRuntimeObject:theMoat]; // later - or definition
+    }];
+}
+
+//- (id)moatFilledWithWater;
+//{
+//    return 
+//}
+//
+- (id)moatFilledWithLava;
+{
+    return [TyphoonDefinition withClass:[Moat class] properties:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(filledWith) withValueAsText:@"Lava"];
     }];
 }
 

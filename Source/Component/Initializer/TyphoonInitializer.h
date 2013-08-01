@@ -56,6 +56,8 @@ typedef enum
 
 - (void)injectWithDefinition:(TyphoonDefinition*)definition;
 
+- (void)injectWithRuntimeObject:(id)anObject;
+
 - (void)injectWithValueAsText:(NSString*)text;
 
 - (void)injectWithValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredTypeOrNil;
