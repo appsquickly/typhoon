@@ -1,0 +1,2 @@
+parameterized constructor:
+	currently: have a probable bug - we assume that constructor parameters and the parameters to the defintion are identical. they aren't! expose this with a test case, and then derive a fix

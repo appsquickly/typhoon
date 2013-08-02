@@ -17,6 +17,7 @@
 @interface TyphoonComponentFactory (InstanceBuilder)
 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition;
+- (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition arguments:(NSArray *)args;
 
 - (void)injectPropertyDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition;
 

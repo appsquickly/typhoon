@@ -32,6 +32,7 @@
 #import "TyphoonParameterInjectedByRawValue.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
+#import "TyphoonParameterInjectedAtRuntime.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
@@ -62,6 +63,40 @@
         instance = objc_msgSend(instance, @selector(init));
     }
 
+    [self resolvePropertyDependenciesOn:instance definition:definition];
+    
+    return instance;
+}
+
+- (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition arguments:(NSArray *)args;
+{
+    __autoreleasing id <TyphoonIntrospectiveNSObject> instance;
+    
+    if (definition.factoryReference)
+    {
+        instance = [self componentForKey:definition.factoryReference]; // clears currently resolving.
+                                                                       // how does this work?
+    }
+    else if (definition.initializer && definition.initializer.isClassMethod)
+    {
+        // this is theo nly one implemented
+        instance = [self invokeInitializerOn:definition.type withDefinition:definition arguments:args];
+    }
+    else
+    {
+        instance = [definition.type alloc];
+    }
+    
+    if (definition.initializer && definition.initializer.isClassMethod == NO)
+    {
+        // this too.
+        instance = [self invokeInitializerOn:instance withDefinition:definition arguments:args];
+    }
+    else if (definition.initializer == nil)
+    {
+        instance = objc_msgSend(instance, @selector(init));
+    }
+    
     [self resolvePropertyDependenciesOn:instance definition:definition];
     
     return instance;
@@ -253,6 +288,43 @@
             TyphoonParameterInjectedByRawValue* byValue = (TyphoonParameterInjectedByRawValue*) parameter;
             id value = byValue.value;
             [invocation setArgument:&value atIndex:parameter.index + 2];
+        }
+    }
+    [invocation invoke];
+    __autoreleasing id <NSObject> returnValue = nil;
+    [invocation getReturnValue:&returnValue];
+    return returnValue;
+}
+
+- (id)invokeInitializerOn:(id)instanceOrClass withDefinition:(TyphoonDefinition*)definition arguments:(NSArray *)args;
+{
+    NSInvocation* invocation = [definition.initializer asInvocationFor:instanceOrClass];
+    
+    for (id <TyphoonInjectedParameter> parameter in [definition.initializer injectedParameters])
+    {
+        if (parameter.type == TyphoonParameterInjectedByReferenceType)
+        {
+            TyphoonParameterInjectedByReference* byReference = (TyphoonParameterInjectedByReference*) parameter;
+            id reference = [self componentForKey:byReference.reference];
+            [invocation setArgument:&reference atIndex:parameter.index + 2];
+        }
+        else if (parameter.type == TyphoonParameterInjectedByValueType)
+        {
+            TyphoonParameterInjectedByValue* byValue = (TyphoonParameterInjectedByValue*) parameter;
+            [self setArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue
+                    requiredType:[byValue resolveTypeWith:instanceOrClass]];
+        }
+        else if (parameter.type == TyphoonParameterInjectedByRawValueType)
+        {
+            TyphoonParameterInjectedByRawValue* byValue = (TyphoonParameterInjectedByRawValue*) parameter;
+            id value = byValue.value;
+            [invocation setArgument:&value atIndex:parameter.index + 2];
+        }
+        else if (parameter.type == TyphoonParameterInjectedAtRuntimeType)
+        {
+            //TyphoonParameterInjectedAtRuntime* atRuntime = (TyphoonParameterInjectedAtRuntime*) parameter;
+            id object = args[parameter.index];
+            [invocation setArgument:&object atIndex:parameter.index + 2];
         }
     }
     [invocation invoke];

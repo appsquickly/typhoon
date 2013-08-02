@@ -17,6 +17,7 @@
 #import "TyphoonParameterInjectedByValue.h"
 #import "TyphoonParameterInjectedByRawValue.h"
 #import "TyphoonDefinition.h"
+#import "TyphoonParameterInjectedAtRuntime.h"
 
 
 @implementation TyphoonInitializer
@@ -93,7 +94,15 @@
 
 - (void)injectWithRuntimeObject:(id)anObject
 {
-    
+    [self injectParameterAtIndex:[_injectedParameters count] withRuntimeObject:anObject];
+}
+
+- (void)injectParameterAtIndex:(NSUInteger)index withRuntimeObject:(id)value;
+{
+    if (index != NSUIntegerMax && index < [_parameterNames count])
+    {
+        [_injectedParameters addObject:[[TyphoonParameterInjectedAtRuntime alloc] initWithParameterIndex:index]];
+    }
 }
 
 - (void)injectWithValueAsText:(NSString*)text

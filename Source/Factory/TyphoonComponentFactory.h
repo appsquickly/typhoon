@@ -85,6 +85,7 @@
  - (NSArray*)allComponentsForType:(id)classOrProtocol;
 
 - (id)componentForKey:(NSString*)key;
+- (id)componentForKey:(NSString*)key arguments:(NSArray *)args;
 
 - (NSArray*)registry;
 

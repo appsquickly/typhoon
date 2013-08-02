@@ -24,3 +24,10 @@
 - (id)initWithAssembly:(TyphoonAssembly*)assembly;
 
 @end
+
+
+@interface NSString (TyphoonBlockComponentFactoryAdditions)
+
+- (NSUInteger)numberOfOccurencesOfString:(NSString *)otherString;
+
+@end

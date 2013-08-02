@@ -37,15 +37,44 @@ static NSMutableArray* swizzleRegistry;
 {
     if ([super resolveInstanceMethod:sel] == NO)
     {
-        IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me)
-        {
-            return [me componentForKey:NSStringFromSelector(sel)];
-        }));
-        class_addMethod(self, sel, imp, "@");
+//        IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me)
+//        {
+//            return [me componentForKey:NSStringFromSelector(sel)];
+//        }));
+//        class_addMethod(self, sel, imp, "@");
+        
+        class_addMethod(self, sel, (IMP)myMethodIMP, "@@:?");
+        
         return YES;
     }
     return NO;
 }
+
+// dup with TyphoonAssembly
++ (NSUInteger)numberOfUserArgumentsInSelector:(SEL)selector;
+{
+    NSString *original = NSStringFromSelector(selector);
+    NSString *withArgumentsRemoved = [original stringByReplacingOccurrencesOfString:@":" withString:@""];
+    return ([original length] - [withArgumentsRemoved length]);
+}
+
+id myMethodIMP(id self, SEL _cmd, ...)
+{
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:0];
+    int numArgs = [[TyphoonBlockComponentFactory class] numberOfUserArgumentsInSelector:_cmd];
+    
+    va_list args;
+    va_start(args, _cmd);
+    id anArg = nil;
+    for (int i = 0; i < numArgs; i++) {
+        anArg = va_arg(args, id);
+        [array addObject:anArg];
+    }
+    va_end(args);
+    
+    return [self componentForKey:NSStringFromSelector(_cmd) arguments:array];
+}
+
 
 + (void)initialize
 {
@@ -195,13 +224,40 @@ typedef void(^MethodEnumerationBlock)(Method method);
     {
         NSSet *definitionSelectors = [self obtainDefinitionSelectors:assembly];
         
+                
         [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-            objc_msgSend(assembly, (SEL)[obj pointerValue]);
+            SEL sel = (SEL)[obj pointerValue];
+            [self callAssemblyDefinitionMethod:sel assembly:assembly];
         }];
         
         NSMutableDictionary* dictionary = [assembly cachedDefinitionsForMethodName];
         return [dictionary allValues];
     }
+}
+
+- (void)callAssemblyDefinitionMethod:(SEL)sel assembly:(TyphoonAssembly *)assembly;
+{
+    NSMethodSignature *sig = [assembly methodSignatureForSelector:sel];
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
+    [invocation setTarget:assembly];
+    [invocation setSelector:sel];
+
+    if ([sig numberOfArguments] > 2) {
+            NSLog(@"BB");
+
+    }
+    
+    [invocation invoke];
+}
+
+@end
+
+@implementation NSString (TyphoonBlockComponentFactoryAdditions)
+
+- (NSUInteger)numberOfOccurencesOfString:(NSString *)otherString;
+{
+    NSString *stringWithoutOccurencesOfString = [self stringByReplacingOccurrencesOfString:otherString withString:@""];
+    return [self length] - [stringWithoutOccurencesOfString length];
 }
 
 @end

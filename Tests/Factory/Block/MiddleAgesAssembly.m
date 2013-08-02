@@ -128,6 +128,19 @@
     }];
 }
 
+- (id)estateWithCastle:(id)castle
+{
+    return [TyphoonDefinition withClass:[Estate class] initialization:^(TyphoonInitializer *initializer) ] {
+        initializer.selector = @selector(initWithCastle:);
+        
+        id aMoat = [self moatFilledWithLava]; // actually a definition. what to do here?
+        [initializer injectWithDefinition:[self castleWithMoat:aMoat]]; // later - or definition
+        
+        id aMoat = [[Moat alloc] init]; // ugly. don't encourage this? or allow it?
+        [initializer injectWithDefinition:[self castleWithMoat:aMoat]]; // later - or definition
+    }];
+}
+
 // don't call from other definitions
 - (id)castleWithMoat:(id)theMoat;
 {
@@ -138,15 +151,38 @@
     }];
 }
 
-//- (id)moatFilledWithWater;
-//{
-//    return 
-//}
-//
+- (id)moatFilledWithWater;
+{
+    return [TyphoonDefinition withClass:[Moat class] properties:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(filledWith) withValueAsText:@"Water"];
+    }];
+}
+
 - (id)moatFilledWithLava;
 {
     return [TyphoonDefinition withClass:[Moat class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(filledWith) withValueAsText:@"Lava"];
+    }];
+    
+//    return [self moatFilledWith:@"Lava"];
+// return [self moatFilledWith:[self lava]]; // allows only one moatFilledWith: definition, parameterized by the liquid. say we have two different liquids. this is three method definitions for four object configurations.
+// lava, water, lava castle, water castle
+    
+    // compare to lacking parameters like this:
+    // you need four definitions for four object configurations, and seperate ones for lava castle and water castle.
+    // you should still have a seperate lava castle and water castle exposed outwards, but internally, you can deduplicate via parameters.
+}
+
+- (id)lava;
+{
+    //
+}
+
+- (id)moatFilledWith:(NSString *)aLiquid;
+{
+    return [TyphoonDefinition withClass:[Moat class] properties:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(filledWith) withRuntimeObject:aLiquid];
+        [definition injectProperty:@selector(filledWith2) withRuntimeObject:anotherLiquid];
     }];
 }
 

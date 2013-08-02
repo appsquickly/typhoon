@@ -65,6 +65,15 @@ static NSMutableArray *reservedSelectorsAsStrings;
 }
 
 #pragma mark - Instance Method Resolution
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
+{
+    if ([[self class] shouldProvideDynamicImplementationFor:aSelector]) {
+        return [[self class] methodSignatureForDynamicImplementationOf:aSelector];
+    }
+    
+    return [super methodSignatureForSelector:aSelector];
+}
+
 + (BOOL)resolveInstanceMethod:(SEL)sel
 {
     if ([self shouldProvideDynamicImplementationFor:sel]) {
@@ -78,6 +87,76 @@ static NSMutableArray *reservedSelectorsAsStrings;
 + (BOOL)shouldProvideDynamicImplementationFor:(SEL)sel;
 {
     return (![TyphoonAssembly selectorReserved:sel] && [TyphoonAssemblySelectorWrapper selectorIsWrapped:sel]);
+}
+
++ (char *)typesForAssemblyMethodWithUserArguments:(NSUInteger)args
+{
+    char *types = malloc([self sizeOfTypesForMethodWithUserArguments:args]);
+    
+    [self setReturnValueAndHiddenArgumentTypes:types];
+    [self setTypes:types forUserArgumentsOfTypeId:args];
+    [self setNullTerminator:types afterUserArguments:args];
+    
+    return types;
+}
+
++ (void)setReturnValueAndHiddenArgumentTypes:(char *)types;
+{
+    types[0] = '@';
+    types[1] = '@';
+    types[2] = ':';
+}
+
++ (void)setTypes:(char *)types forUserArgumentsOfTypeId:(NSUInteger)args
+{
+    for (NSUInteger i = offsetForReturnValueAndHiddenArguments(); i < offsetForReturnValueAndHiddenArguments() + args; i++) {
+        types[i] = '@';
+    }
+}
+
++ (void)setNullTerminator:(char *)types afterUserArguments:(NSUInteger)args;
+{
+    types[args + offsetForReturnValueAndHiddenArguments()] = '\0';
+}
+
+int offsetForReturnValueAndHiddenArguments()
+{
+    return 1 + 2;
+}
+
+
++ (size_t)sizeOfTypesForMethodWithUserArguments:(NSUInteger)args
+{
+    return [self sizeOfTypesForUserArguments:args] + [self sizeOfTypesForHiddenArguments] + [self sizeOfTypesForReturnValueAndNullTerminator];
+}
+
++ (size_t)sizeOfTypesForUserArguments:(NSUInteger)args
+{
+    return sizeof(char) * args;
+}
+
++ (size_t)sizeOfTypesForHiddenArguments
+{
+    return sizeof(char) * 2;
+}
+
++ (size_t)sizeOfTypesForReturnValueAndNullTerminator
+{
+    return sizeof(char) * 2;
+}
+
++ (NSMethodSignature *)methodSignatureForDynamicImplementationOf:(SEL)aSelector;
+{
+    NSUInteger args = [self numberOfUserArgumentsInSelector:aSelector];
+    char *types = [self typesForAssemblyMethodWithUserArguments:args];
+    return [NSMethodSignature signatureWithObjCTypes:types];
+}
+
++ (NSUInteger)numberOfUserArgumentsInSelector:(SEL)selector;
+{
+    NSString *original = NSStringFromSelector(selector);
+    NSString *withArgumentsRemoved = [original stringByReplacingOccurrencesOfString:@":" withString:@""];
+    return ([original length] - [withArgumentsRemoved length]);
 }
 
 + (BOOL)selectorReserved:(SEL)selector

@@ -16,9 +16,10 @@
 
 typedef enum
 {
-    TyphoonParameterInjectedByReferenceType,
-    TyphoonParameterInjectedByValueType, 
-    TyphoonParameterInjectedByRawValueType
+    TyphoonParameterInjectedByReferenceType = 0,
+    TyphoonParameterInjectedByValueType = 1,
+    TyphoonParameterInjectedByRawValueType = 2,
+    TyphoonParameterInjectedAtRuntimeType = 3
 } TyphoonParameterInjectionType;
 
 @protocol TyphoonInjectedParameter <NSObject>

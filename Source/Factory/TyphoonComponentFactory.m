@@ -167,6 +167,20 @@ static TyphoonComponentFactory* defaultFactory;
     return [self objectForDefinition:definition];
 }
 
+- (id)componentForKey:(NSString*)key arguments:(NSArray *)args;
+{
+    if (!key)
+        return nil;
+    
+    if ([self notLoaded]) [self load];
+    TyphoonDefinition* definition = [self definitionForKey:key];
+    if (!definition)
+    {
+        [NSException raise:NSInvalidArgumentException format:@"No component matching id '%@'.", key];
+    }
+    return [self objectForDefinition:definition arguments:args];
+}
+
 - (BOOL)notLoaded;
 {
     return ![self isLoaded];
@@ -224,6 +238,30 @@ static TyphoonComponentFactory* defaultFactory;
     }
     
     return [self buildInstanceWithDefinition:definition];
+}
+
+- (id)objectForDefinition:(TyphoonDefinition*)definition arguments:(NSArray *)args;
+{
+    if (definition.scope == TyphoonScopeSingleton)
+    {
+        return [self singletonForDefinition:definition arguments:args];
+    }
+    
+    return [self buildInstanceWithDefinition:definition arguments:args];
+}
+
+- (id)singletonForDefinition:(TyphoonDefinition*)definition arguments:(NSArray *)args;
+{
+    @synchronized (self)
+    {
+        id instance = [_singletons objectForKey:definition.key];
+        if (instance == nil)
+        {
+            instance = [self buildInstanceWithDefinition:definition arguments:args];
+            [_singletons setObject:instance forKey:definition.key];
+        }
+        return instance;
+    }
 }
 
 - (id)singletonForDefinition:(TyphoonDefinition*)definition
