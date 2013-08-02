@@ -25,7 +25,9 @@ static NSMutableDictionary *resolveStackForKey;
 @implementation TyphoonAssembly
 
 
-/* =========================================================== Class Methods ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Class Methods
+
 + (TyphoonAssembly*)assembly
 {
     return [[[self class] alloc] init];
@@ -193,8 +195,9 @@ static NSMutableDictionary *resolveStackForKey;
     }
 }
 
-#pragma mark - Initializers
-/* ============================================================ Initializers ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)init
 {
     self = [super init];
@@ -205,13 +208,14 @@ static NSMutableDictionary *resolveStackForKey;
     return self;
 }
 
-/* ============================================================ Utility Methods ========================================================= */
 - (void)dealloc
 {
     LogTrace(@"$$$$$$ %@ in dealloc!", [self class]);
 }
 
-/* ============================================================ Private Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
+
 - (NSMutableDictionary*)cachedDefinitionsForMethodName
 {
     return _cachedDefinitions;

@@ -14,7 +14,9 @@
 
 @implementation TyphoonTypeConvertedCollectionValue
 
-/* ============================================================ Initializers ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)initWithTextValue:(NSString*)textValue requiredType:(Class)requiredType
 {
     self = [super init];
@@ -31,7 +33,9 @@
     return TyphoonCollectionValueTypeConvertedText;
 }
 
-/* ============================================================ Utility Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
 - (NSString*)description
 {
     NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];

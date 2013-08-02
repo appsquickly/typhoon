@@ -28,13 +28,17 @@
 static TyphoonComponentFactory* defaultFactory;
 
 
-/* =========================================================== Class Methods ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Class Methods
+
 + (id)defaultFactory
 {
     return defaultFactory;
 }
 
-/* ============================================================ Initializers ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)init
 {
     self = [super init];
@@ -49,7 +53,9 @@ static TyphoonComponentFactory* defaultFactory;
 }
 
 
-/* ========================================================== Interface Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
+
 - (NSArray *)singletons {
 	return [_singletons copy];
 }
@@ -205,7 +211,9 @@ static TyphoonComponentFactory* defaultFactory;
     }
 }
 
-/* ============================================================ Utility Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
 - (NSString*)description
 {
     NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
@@ -215,7 +223,9 @@ static TyphoonComponentFactory* defaultFactory;
 }
 
 
-/* ============================================================ Private Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
+
 - (id)objectForDefinition:(TyphoonDefinition*)definition
 {
     if (definition.scope == TyphoonScopeSingleton)

@@ -22,7 +22,9 @@
 @implementation TyphoonInitializer
 
 
-/* ============================================================ Initializers ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)initWithSelector:(SEL)initializer
 {
     return [self initWithSelector:initializer isClassMethod:TyphoonComponentInitializerIsClassMethodGuess];
@@ -47,7 +49,8 @@
 
 
 
-/* ========================================================== Interface Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
 
 
 - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference
@@ -134,7 +137,9 @@
     _parameterNames = [self parameterNamesForSelector:_selector];
 }
 
-/* ============================================================ Utility Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
 - (void)dealloc
 {
     for (id <TyphoonInjectedParameter> parameter in _injectedParameters)
@@ -144,7 +149,9 @@
     }
 }
 
-/* ============================================================ Private Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
+
 - (int)indexOfParameter:(NSString*)name
 {
     int parameterIndex = NSUIntegerMax;

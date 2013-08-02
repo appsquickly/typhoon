@@ -32,7 +32,9 @@ static NSMutableArray* swizzleRegistry;
 
 @implementation TyphoonBlockComponentFactory
 
-/* =========================================================== Class Methods ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Class Methods
+
 + (BOOL)resolveInstanceMethod:(SEL)sel
 {
     if ([super resolveInstanceMethod:sel] == NO)
@@ -62,7 +64,9 @@ static NSMutableArray* swizzleRegistry;
     return [[[self class] alloc] initWithAssembly:assembly];
 }
 
-/* ============================================================ Initializers ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)initWithAssembly:(TyphoonAssembly*)assembly;
 {
     LogTrace(@"Building assembly: %@", NSStringFromClass([assembly class]));
@@ -84,7 +88,9 @@ static NSMutableArray* swizzleRegistry;
     return self;
 }
 
-/* ============================================================ Private Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
+
 - (NSArray*)definitionsByPopulatingCache:(TyphoonAssembly*)assembly
 {
     @synchronized (self)

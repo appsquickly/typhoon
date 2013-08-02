@@ -17,7 +17,9 @@
 @implementation TyphoonPropertyInjectedByType
 
 
-/* ============================================================ Initializers ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)initWithName:(NSString*)name
 {
     self = [super init];
@@ -28,7 +30,9 @@
     return self;
 }
 
-/* =========================================================== Protocol Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Protocol Methods
+
 - (TyphoonPropertyInjectionType)injectionType
 {
     return TyphoonPropertyInjectionByTypeType;

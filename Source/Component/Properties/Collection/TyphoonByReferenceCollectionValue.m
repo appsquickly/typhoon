@@ -15,7 +15,9 @@
 
 @implementation TyphoonByReferenceCollectionValue
 
-/* ============================================================ Initializers ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)initWithComponentName:(NSString*)componentName
 {
     self = [super init];

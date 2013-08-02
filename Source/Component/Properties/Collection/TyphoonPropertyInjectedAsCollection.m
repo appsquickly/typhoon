@@ -21,7 +21,9 @@
 @implementation TyphoonPropertyInjectedAsCollection
 
 
-/* ============================================================ Initializers ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)initWithName:(NSString*)name
 {
     self = [super init];
@@ -34,7 +36,9 @@
 }
 
 
-/* ========================================================== Interface Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
+
 - (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType
 {
     [_values addObject:[[TyphoonTypeConvertedCollectionValue alloc] initWithTextValue:text requiredType:requiredType]];
@@ -90,7 +94,8 @@
     return [_values copy];
 }
 
-/* =========================================================== Protocol Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Protocol Methods
 #pragma mark - <TyphoonInjectedProperty>
 
 - (NSString*)name
@@ -103,7 +108,9 @@
     return TyphoonPropertyInjectionAsCollection;
 }
 
-/* ============================================================ Utility Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
 - (NSString*)description
 {
     NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];

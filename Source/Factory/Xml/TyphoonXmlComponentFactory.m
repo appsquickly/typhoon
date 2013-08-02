@@ -17,7 +17,9 @@
 
 @implementation TyphoonXmlComponentFactory
 
-/* ============================================================ Initializers ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)initWithConfigFileName:(NSString*)configFileName
 {
     return [self initWithConfigFileNames:configFileName, nil];
@@ -44,7 +46,9 @@
 }
 
 
-/* ============================================================ Private Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
+
 - (void)parseComponentDefinitions
 {
     for (NSString* resourceName in _resourceNames)

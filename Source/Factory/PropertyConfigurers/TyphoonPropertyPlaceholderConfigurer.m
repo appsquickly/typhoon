@@ -13,18 +13,16 @@
 #import "TyphoonPropertyPlaceholderConfigurer.h"
 #import "TyphoonResource.h"
 #import "TyphoonDefinition.h"
-#import "TyphoonInitializer.h"
 #import "TyphoonPropertyInjectedByValue.h"
-#import "TyphoonParameterInjectedByValue.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
-#import "TyphoonInitializer+InstanceBuilder.h"
 #import "OCLogTemplate.h"
-
 
 
 @implementation TyphoonPropertyPlaceholderConfigurer
 
-/* =========================================================== Class Methods ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Class Methods
+
 + (TyphoonPropertyPlaceholderConfigurer*)configurer
 {
     return [[[self class] alloc] init];
@@ -54,7 +52,9 @@
 }
 
 
-/* ============================================================ Initializers ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)initWithPrefix:(NSString*)prefix suffix:(NSString*)suffix
 {
     self = [super init];
@@ -72,7 +72,9 @@
     return [self initWithPrefix:@"${" suffix:@"}"];
 }
 
-/* ========================================================== Interface Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
+
 - (void)usePropertyStyleResource:(id <TyphoonResource>)resource
 {
     NSArray* lines = [[resource asString] componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
@@ -97,7 +99,9 @@
 }
 
 
-/* =========================================================== Protocol Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Protocol Methods
+
 - (void)mutateComponentDefinitionsIfRequired:(NSArray*)componentDefinitions
 {
     for (TyphoonDefinition* definition in componentDefinitions)

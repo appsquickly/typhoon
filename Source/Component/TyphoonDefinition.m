@@ -22,7 +22,7 @@
 @implementation TyphoonDefinition
 
 /* ====================================================================================================================================== */
-#pragma mark - Factory methods
+#pragma mark - Class Methods
 
 + (TyphoonDefinition*)withClass:(Class)clazz
 {
@@ -79,7 +79,9 @@
 }
 
 
-/* ============================================================ Initializers ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)initWithClass:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent
 {
     self = [super init];
@@ -105,7 +107,9 @@
 }
 
 
-/* ========================================================== Interface Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
+
 - (void)injectProperty:(SEL)selector
 {
     [_injectedProperties addObject:[[TyphoonPropertyInjectedByType alloc] initWithName:NSStringFromSelector(selector)]];
@@ -153,7 +157,9 @@
 }
 
 
-/* ============================================================ Utility Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"Definition: class='%@'", NSStringFromClass(_type)];
@@ -165,7 +171,9 @@
     [_initializer setComponentDefinition:nil];
 }
 
-/* ============================================================ Private Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
+
 - (void)validateRequiredParametersAreSet
 {
     if (_type == nil)

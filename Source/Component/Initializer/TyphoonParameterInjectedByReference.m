@@ -17,7 +17,9 @@
 
 @implementation TyphoonParameterInjectedByReference
 
-/* ============================================================ Initializers ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString*)reference
 {
     self = [super init];
@@ -29,7 +31,9 @@
     return self;
 }
 
-/* =========================================================== Protocol Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Protocol Methods
+
 - (TyphoonParameterInjectionType)type
 {
     return TyphoonParameterInjectedByReferenceType;

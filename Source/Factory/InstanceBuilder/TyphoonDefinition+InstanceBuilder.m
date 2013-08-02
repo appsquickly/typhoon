@@ -19,7 +19,9 @@
 
 
 
-/* ========================================================== Interface Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (NSString*)factoryReference
 {
     return _factoryReference;
@@ -66,7 +68,9 @@
     [_injectedProperties addObject:property];
 }
 
-/* ============================================================ Private Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
+
 - (NSSet*)injectedPropertiesWithKind:(Class)clazz
 {
     NSPredicate* predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary* bindings)

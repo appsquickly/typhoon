@@ -35,7 +35,9 @@
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
-/* ========================================================== Interface Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
     __autoreleasing id <TyphoonIntrospectiveNSObject> instance;
@@ -229,7 +231,10 @@
 }
 
 #pragma mark - End Property Injection
-/* ============================================================ Private Methods ========================================================= */
+
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
+
 - (id)invokeInitializerOn:(id)instanceOrClass withDefinition:(TyphoonDefinition*)definition
 {
     NSInvocation* invocation = [definition.initializer asInvocationFor:instanceOrClass];
@@ -374,10 +379,6 @@
     }
     return [results copy];
 }
-
-/* ====================================================================================================================================== */
-#pragma mark - Circular Dependencies
-
 
 
 @end

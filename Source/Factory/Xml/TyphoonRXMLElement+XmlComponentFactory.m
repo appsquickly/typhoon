@@ -12,7 +12,6 @@
 
 
 #import "TyphoonRXMLElement+XmlComponentFactory.h"
-#import "TyphoonDefinition.h"
 #import "TyphoonInjectedProperty.h"
 #import "TyphoonPropertyInjectedByReference.h"
 #import "TyphoonPropertyInjectedByValue.h"
@@ -138,7 +137,9 @@
     return initializer;
 }
 
-/* ============================================================ Private Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
+
 - (void)assertTagName:(NSString*)tagName
 {
     if (![self.tag isEqualToString:tagName])

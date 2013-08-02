@@ -23,7 +23,9 @@
 
 @synthesize textValue = _textValue;
 
-/* ============================================================ Initializers ============================================================ */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (id)initWithIndex:(NSUInteger)index value:(NSString*)value requiredTypeOrNil:(Class)requiredTypeOrNil
 {
     self = [super init];
@@ -36,7 +38,9 @@
     return self;
 }
 
-/* ========================================================== Interface Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
+
 - (TyphoonTypeDescriptor*)resolveTypeWith:(id)classOrInstance
 {
     if (_requiredType)
@@ -67,7 +71,9 @@
 }
 
 
-/* =========================================================== Protocol Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Protocol Methods
+
 - (TyphoonParameterInjectionType)type
 {
     return TyphoonParameterInjectedByValueType;
