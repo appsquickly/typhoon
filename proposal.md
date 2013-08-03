@@ -146,3 +146,9 @@ OR
     }
 
 Returning a definition seems cleaner (and might actually end up being necessary due to some complexity I haven't forseen). But just calling the method instead of specifying how to call the method is certainly simpler.
+
+**JB Points:**
+
+* You can currently inject a 'raw object'. . . this code hasn't been well-tested yet. . It does seem to help to unify the method to inject either a definition or a type. . Would this lead to any cognitivie dissonance regarding type safety/clarity?
+* Certainly faster to type the short-hand for simple objects. 
+* Another 'option' (or related feature) is we have pre-canned common singletons. 
