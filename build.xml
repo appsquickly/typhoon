@@ -76,9 +76,6 @@
 
     <target name="--clean" unless="fast">
         <delete dir="${target.dir}"/>
-        <delete verbose="yes" failonerror="no">
-            <fileset dir="/tmp" includes="**/*.pbxproj,**/*.m,**/*.h"/>
-        </delete>
     </target>
 
     <target name="--test.cocoapods">
