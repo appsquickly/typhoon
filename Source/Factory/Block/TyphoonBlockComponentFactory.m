@@ -241,12 +241,7 @@ typedef void(^MethodEnumerationBlock)(Method method);
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
     [invocation setTarget:assembly];
     [invocation setSelector:sel];
-
-    if ([sig numberOfArguments] > 2) {
-            NSLog(@"BB");
-
-    }
-    
+    // any arguments can be nil!
     [invocation invoke];
 }
 

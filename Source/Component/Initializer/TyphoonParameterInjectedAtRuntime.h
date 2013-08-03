@@ -13,6 +13,8 @@
 
 @property (nonatomic, readonly) NSUInteger index;
 
-- (id)initWithParameterIndex:(NSUInteger)parameterIndex;
+- (id)initWithParameterIndex:(NSUInteger)parameterIndex runtimeArgumentIndex:(NSUInteger)runtimeArgumentIndex;
+
+@property (nonatomic, readonly) NSUInteger runtimeArgumentIndex;
 
 @end

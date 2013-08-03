@@ -151,6 +151,9 @@
 		4BE1AA5417A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1AA5317A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m */; };
 		4BE1AA5517A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1AA5317A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m */; };
 		4BE1AA5617A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1AA5317A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m */; };
+		4BF94D9617ADA645000152D9 /* Township.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF94D9517ADA645000152D9 /* Township.m */; };
+		4BF94D9717ADA645000152D9 /* Township.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF94D9517ADA645000152D9 /* Township.m */; };
+		4BF94D9817ADA645000152D9 /* Township.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF94D9517ADA645000152D9 /* Township.m */; };
 		52D870D7DE6E4FB09D059A5C /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B50DFBF255467DA9F7C30F /* libPods-ios.a */; };
 		CD65DA1387F74352A0088704 /* libPods-iOS Tests (Cocoapods).a in Frameworks */ = {isa = PBXBuildFile; fileRef = B90D396911F743468FF96BB5 /* libPods-iOS Tests (Cocoapods).a */; };
 		D174EF8C2C6845E69666DC4F /* libPods-osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC491FA50E048988BFB5756 /* libPods-osx.a */; };
@@ -164,7 +167,7 @@
 		4B30CBFF17AAF2C0007D987C /* Moat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Moat.m; sourceTree = "<group>"; };
 		4B30CC0317AAF2D3007D987C /* Castle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Castle.h; sourceTree = "<group>"; };
 		4B30CC0417AAF2D3007D987C /* Castle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Castle.m; sourceTree = "<group>"; };
-		4B30CC0817AAFA2E007D987C /* libTyphoon-iOS.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libTyphoon-iOS.a"; path = "../build/Release-iphoneos/libTyphoon-iOS.a"; sourceTree = "<group>"; };
+		4B30CC0817AAFA2E007D987C /* libTyphoon-iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libTyphoon-iOS.a"; path = "../build/Release-iphoneos/libTyphoon-iOS.a"; sourceTree = "<group>"; };
 		4B30CC1017AAFD58007D987C /* TyphoonAssemblyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblyTests.m; sourceTree = "<group>"; };
 		4B30CC1417AB119E007D987C /* TyphoonBlockComponentFactoryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonBlockComponentFactoryTests.h; sourceTree = "<group>"; };
 		4B30CC1517AB119E007D987C /* TyphoonBlockComponentFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonBlockComponentFactoryTests.m; sourceTree = "<group>"; };
@@ -244,6 +247,8 @@
 		4BE1AA4E17A5876E00FE2DA1 /* UnsatisfiableClassFDependsOnGInInitializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsatisfiableClassFDependsOnGInInitializer.m; sourceTree = "<group>"; };
 		4BE1AA5217A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnsatisfiableClassGDependsOnFInInitializer.h; sourceTree = "<group>"; };
 		4BE1AA5317A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsatisfiableClassGDependsOnFInInitializer.m; sourceTree = "<group>"; };
+		4BF94D9417ADA645000152D9 /* Township.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Township.h; sourceTree = "<group>"; };
+		4BF94D9517ADA645000152D9 /* Township.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Township.m; sourceTree = "<group>"; };
 		B1C044F0F19E4B448A36BEFB /* Pods-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.xcconfig"; path = "Pods/Pods-ios.xcconfig"; sourceTree = SOURCE_ROOT; };
 		B90D396911F743468FF96BB5 /* libPods-iOS Tests (Cocoapods).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Tests (Cocoapods).a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8B50DFBF255467DA9F7C30F /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -453,6 +458,8 @@
 				4B30CBFF17AAF2C0007D987C /* Moat.m */,
 				4B30CC0317AAF2D3007D987C /* Castle.h */,
 				4B30CC0417AAF2D3007D987C /* Castle.m */,
+				4BF94D9417ADA645000152D9 /* Township.h */,
+				4BF94D9517ADA645000152D9 /* Township.m */,
 				4B8414D6179B0EA600916BF5 /* Quest.h */,
 			);
 			path = Model;
@@ -852,6 +859,7 @@
 				4B30CC1117AAFD58007D987C /* TyphoonAssemblyTests.m in Sources */,
 				4B30CC1617AB119E007D987C /* TyphoonBlockComponentFactoryTests.m in Sources */,
 				4B30CC1B17AB1234007D987C /* TyphoonAssemblySelectorWrapperTests.m in Sources */,
+				4BF94D9617ADA645000152D9 /* Township.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,6 +905,7 @@
 				4B30CC1217AAFD58007D987C /* TyphoonAssemblyTests.m in Sources */,
 				4B30CC1717AB119E007D987C /* TyphoonBlockComponentFactoryTests.m in Sources */,
 				4B30CC1C17AB1234007D987C /* TyphoonAssemblySelectorWrapperTests.m in Sources */,
+				4BF94D9717ADA645000152D9 /* Township.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,6 +951,7 @@
 				4B30CC1317AAFD58007D987C /* TyphoonAssemblyTests.m in Sources */,
 				4B30CC1817AB119E007D987C /* TyphoonBlockComponentFactoryTests.m in Sources */,
 				4B30CC1D17AB1234007D987C /* TyphoonAssemblySelectorWrapperTests.m in Sources */,
+				4BF94D9817ADA645000152D9 /* Township.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,9 +35,10 @@
 //- (id)moatFilledWithWater;
 - (id)moatFilledWithLava;
 
+- (id)townshipWithMoat:(id)theMoat;
+- (id)townshipWithMoat:(id)theMoat sheriff:(id)theSheriff;
+
 @end
-
-
 
 
 

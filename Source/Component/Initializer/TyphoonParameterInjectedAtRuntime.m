@@ -9,15 +9,20 @@
 #import "TyphoonParameterInjectedAtRuntime.h"
 
 
-@implementation TyphoonParameterInjectedAtRuntime
+@implementation TyphoonParameterInjectedAtRuntime {
+    NSUInteger runtimeArgumentIndex;
+}
 
-- (id)initWithParameterIndex:(NSUInteger)parameterIndex
+@synthesize runtimeArgumentIndex;
+
+- (id)initWithParameterIndex:(NSUInteger)parameterIndex runtimeArgumentIndex:(NSUInteger)theRuntimeArgumentIndex
 {
     self = [super init];
-    if (self)
-    {
-        _index = parameterIndex;
-    }
+    if (!self) return nil;
+    
+    _index = parameterIndex;
+    runtimeArgumentIndex = theRuntimeArgumentIndex;
+    
     return self;
 }
 

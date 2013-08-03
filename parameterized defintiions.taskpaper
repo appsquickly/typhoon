@@ -1,12 +1,5 @@
 parameterized constructor:
-	currently: have a probable bug - we assume that constructor parameters and the parameters to the defintion are identical. they aren't! expose this with a test case, and then derive a fix
-
-	should be able to repro with:
-		 - (id)somethingWithAnObject:(id)runtimeObject;
-		constructor: initWithSomethingStatic:initWithSomethingAtRuntime: 
-		[inject withRuntimeObject: runtimeObject]
-
-
+	- have a probable bug - we assume that constructor parameters and the parameters to the defintion are identical. they aren't! expose this with a test case, and then derive a fix @done
 
 	- add an estate class to use in an example definition that:
 		- constructs and passes a runtime object to a parameterized definition

@@ -19,6 +19,7 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonAssemblySelectorWrapper.h"
 #import "OCLogTemplate.h"
+#import "TyphoonRuntimeObjectPlaceholder.h"
 
 static NSMutableDictionary *resolveStackForKey;
 static NSMutableArray *reservedSelectorsAsStrings;
@@ -263,8 +264,31 @@ int offsetForReturnValueAndHiddenArguments()
 + (id)definitionByCallingAssemblyMethodForKey:(NSString *)key me:(TyphoonAssembly *)me
 {
     SEL sel = [TyphoonAssemblySelectorWrapper wrappedSELForKey:key];
-    id cached = objc_msgSend(me, sel); // the wrappedSEL will call through to the original, unwrapped implementation because of the active swizzling.
+    id cached = [self definitionByCallingAssemblyMethodForSelector:sel me:me];
     return cached;
+}
+
++ (id)definitionByCallingAssemblyMethodForSelector:(SEL)sel me:(TyphoonAssembly *)me;
+{
+    NSMethodSignature *sig = [me methodSignatureForSelector:sel];
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
+    [invocation setTarget:me];
+    [invocation setSelector:sel];
+    
+    NSUInteger args = [self numberOfUserArgumentsInSelector:sel];
+    
+    NSMutableArray *placeholders = [NSMutableArray arrayWithCapacity:args]; // make sure arc realizes that the placeholder should be held onto until this method returns (instead of until a single turn of the for loop below). this is better than telling the invocation to retain arguments, as it avoids having to CFRelease?
+    for (NSUInteger aUserArgumentIndex = 0; aUserArgumentIndex < args; aUserArgumentIndex++) {
+        TyphoonRuntimeObjectPlaceholder *aPlaceholder = [[TyphoonRuntimeObjectPlaceholder alloc] initWithIndexInArguments:aUserArgumentIndex];
+        [invocation setArgument:&aPlaceholder atIndex:aUserArgumentIndex + 2];
+        [placeholders addObject:aPlaceholder];
+    }
+    
+    [invocation invoke];
+    
+    __unsafe_unretained id returnedValue;
+    [invocation getReturnValue:&returnedValue];
+    return returnedValue;
 }
 
 + (void)populateCacheWithDefinition:(TyphoonDefinition *)cached forKey:(NSString *)key me:(id)me

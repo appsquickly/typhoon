@@ -18,6 +18,7 @@
 #import "TyphoonParameterInjectedByRawValue.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonParameterInjectedAtRuntime.h"
+#import "TyphoonRuntimeObjectPlaceholder.h"
 
 
 @implementation TyphoonInitializer
@@ -97,11 +98,24 @@
     [self injectParameterAtIndex:[_injectedParameters count] withRuntimeObject:anObject];
 }
 
-- (void)injectParameterAtIndex:(NSUInteger)index withRuntimeObject:(id)value;
+- (void)injectParameterAtIndex:(NSUInteger)index withRuntimeObject:(TyphoonRuntimeObjectPlaceholder *)placeholder;
 {
     if (index != NSUIntegerMax && index < [_parameterNames count])
     {
-        [_injectedParameters addObject:[[TyphoonParameterInjectedAtRuntime alloc] initWithParameterIndex:index]];
+        [_injectedParameters addObject:[[TyphoonParameterInjectedAtRuntime alloc] initWithParameterIndex:index runtimeArgumentIndex:placeholder.indexInArguments]];
+    }
+}
+
+- (void)injectWithRuntimeObjectAtIndex:(NSUInteger)runtimeArgumentIndex;
+{
+    [self injectParameterAtIndex:[_injectedParameters count] withRuntimeObjectAtIndex:runtimeArgumentIndex];
+}
+
+- (void)injectParameterAtIndex:(NSUInteger)index withRuntimeObjectAtIndex:(NSUInteger)runtimeArgumentIndex;
+{
+    if (index != NSUIntegerMax && index < [_parameterNames count])
+    {
+        [_injectedParameters addObject:[[TyphoonParameterInjectedAtRuntime alloc] initWithParameterIndex:index runtimeArgumentIndex:runtimeArgumentIndex]];
     }
 }
 

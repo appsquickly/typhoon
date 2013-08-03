@@ -66,6 +66,9 @@ typedef enum
 
 - (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonDefinition*)definition;
 
+- (void)injectWithRuntimeObjectAtIndex:(NSUInteger)runtimeArgumentIndex;
+- (void)injectParameterAtIndex:(NSUInteger)index withRuntimeObjectAtIndex:(NSUInteger)runtimeArgumentIndex;
+
 - (void)injectParameterWithObject:(id)value;
 
 

@@ -271,23 +271,24 @@
 
     for (id <TyphoonInjectedParameter> parameter in [definition.initializer injectedParameters])
     {
+        NSUInteger invocationArgumentIndex = parameter.index + 2;
         if (parameter.type == TyphoonParameterInjectedByReferenceType)
         {
             TyphoonParameterInjectedByReference* byReference = (TyphoonParameterInjectedByReference*) parameter;
             id reference = [self componentForKey:byReference.reference];
-            [invocation setArgument:&reference atIndex:parameter.index + 2];
+            [invocation setArgument:&reference atIndex:invocationArgumentIndex];
         }
         else if (parameter.type == TyphoonParameterInjectedByValueType)
         {
             TyphoonParameterInjectedByValue* byValue = (TyphoonParameterInjectedByValue*) parameter;
-            [self setArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue
+            [self setArgumentFor:invocation index:invocationArgumentIndex textValue:byValue.textValue
                     requiredType:[byValue resolveTypeWith:instanceOrClass]];
         }
         else if (parameter.type == TyphoonParameterInjectedByRawValueType)
         {
             TyphoonParameterInjectedByRawValue* byValue = (TyphoonParameterInjectedByRawValue*) parameter;
             id value = byValue.value;
-            [invocation setArgument:&value atIndex:parameter.index + 2];
+            [invocation setArgument:&value atIndex:invocationArgumentIndex];
         }
     }
     [invocation invoke];
@@ -302,33 +303,40 @@
     
     for (id <TyphoonInjectedParameter> parameter in [definition.initializer injectedParameters])
     {
+        NSUInteger invocationArgumentIndex = parameter.index + 2;
         if (parameter.type == TyphoonParameterInjectedByReferenceType)
         {
             TyphoonParameterInjectedByReference* byReference = (TyphoonParameterInjectedByReference*) parameter;
             id reference = [self componentForKey:byReference.reference];
-            [invocation setArgument:&reference atIndex:parameter.index + 2];
+            [invocation setArgument:&reference atIndex:invocationArgumentIndex];
         }
         else if (parameter.type == TyphoonParameterInjectedByValueType)
         {
             TyphoonParameterInjectedByValue* byValue = (TyphoonParameterInjectedByValue*) parameter;
-            [self setArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue
+            [self setArgumentFor:invocation index:invocationArgumentIndex textValue:byValue.textValue
                     requiredType:[byValue resolveTypeWith:instanceOrClass]];
         }
         else if (parameter.type == TyphoonParameterInjectedByRawValueType)
         {
             TyphoonParameterInjectedByRawValue* byValue = (TyphoonParameterInjectedByRawValue*) parameter;
             id value = byValue.value;
-            [invocation setArgument:&value atIndex:parameter.index + 2];
+            [invocation setArgument:&value atIndex:invocationArgumentIndex];
         }
         else if (parameter.type == TyphoonParameterInjectedAtRuntimeType)
         {
-            //TyphoonParameterInjectedAtRuntime* atRuntime = (TyphoonParameterInjectedAtRuntime*) parameter;
-            id object = args[parameter.index];
-            [invocation setArgument:&object atIndex:parameter.index + 2];
+            TyphoonParameterInjectedAtRuntime* atRuntime = (TyphoonParameterInjectedAtRuntime*) parameter;
+            id object = args[atRuntime.runtimeArgumentIndex];
+            [invocation setArgument:&object atIndex:invocationArgumentIndex];
         }
     }
     [invocation invoke];
     __autoreleasing id <NSObject> returnValue = nil;
+    /** 
+     http://clang.llvm.org/docs/AutomaticReferenceCounting.html#ownership.semantics
+     "For __autoreleasing objects, the new pointee is retained, autoreleased, and stored into the lvalue using primitive semantics."
+     Why not use __unsafe_unretained or __weak here?
+     */
+    
     [invocation getReturnValue:&returnValue];
     return returnValue;
 }

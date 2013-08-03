@@ -21,6 +21,7 @@
 #import "TyphoonPropertyInjectedAsCollection.h"
 #import "Moat.h"
 #import "Castle.h"
+#import "Township.h"
 
 @implementation MiddleAgesAssembly
 
@@ -128,18 +129,18 @@
     }];
 }
 
-- (id)estateWithCastle:(id)castle
-{
-    return [TyphoonDefinition withClass:[Estate class] initialization:^(TyphoonInitializer *initializer) ] {
-        initializer.selector = @selector(initWithCastle:);
-        
-        id aMoat = [self moatFilledWithLava]; // actually a definition. what to do here?
-        [initializer injectWithDefinition:[self castleWithMoat:aMoat]]; // later - or definition
-        
-        id aMoat = [[Moat alloc] init]; // ugly. don't encourage this? or allow it?
-        [initializer injectWithDefinition:[self castleWithMoat:aMoat]]; // later - or definition
-    }];
-}
+//- (id)estateWithCastle:(id)castle
+//{
+//    return [TyphoonDefinition withClass:[Estate class] initialization:^(TyphoonInitializer *initializer) ] {
+//        initializer.selector = @selector(initWithCastle:);
+//        
+//        id aMoat = [self moatFilledWithLava]; // actually a definition. what to do here?
+//        [initializer injectWithDefinition:[self castleWithMoat:aMoat]]; // later - or definition
+//        
+//        id aMoat = [[Moat alloc] init]; // ugly. don't encourage this? or allow it?
+//        [initializer injectWithDefinition:[self castleWithMoat:aMoat]]; // later - or definition
+//    }];
+//}
 
 // don't call from other definitions (yet)
 - (id)castleWithMoat:(id)theMoat;
@@ -148,6 +149,27 @@
         initializer.selector = @selector(initWithMoat:);
         
         [initializer injectWithRuntimeObject:theMoat]; // later - or definition
+    }];
+}
+
+- (id)townshipWithMoat:(id)theMoat;
+{
+    return [TyphoonDefinition withClass:[Township class] initialization:^(TyphoonInitializer *initializer) {
+        initializer.selector = @selector(initWithSheriff:moat:);
+        
+        [initializer injectWithDefinition:[self knight]];
+                [initializer injectWithRuntimeObject:theMoat];
+//        [initializer injectWithRuntimeObjectAtIndex:0];
+    }];
+}
+
+- (id)townshipWithMoat:(id)theMoat sheriff:(id)theSheriff;
+{
+    return [TyphoonDefinition withClass:[Township class] initialization:^(TyphoonInitializer *initializer) {
+        initializer.selector = @selector(initWithSheriff:moat:);
+        
+        [initializer injectWithRuntimeObject:theSheriff];
+        [initializer injectWithRuntimeObject:theMoat];
     }];
 }
 
@@ -173,25 +195,25 @@
     // you should still have a seperate lava castle and water castle exposed outwards, but internally, you can deduplicate via parameters.
 }
 
-- (id)lava;
-{
-    //
-}
-
-- (id)moatFilledWith:(NSString *)aLiquid;
-{
-    return [TyphoonDefinition withClass:[Moat class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(filledWith) withRuntimeObject:aLiquid];
-        [definition injectProperty:@selector(filledWith2) withRuntimeObject:anotherLiquid];
-    }];
-}
-
-- (id)moatFilledWith:(NSString *)aDangerousLiquid secondaryDefensiveLayer:(NSString *)anotherVolatileLiquid;
-{
-    return [TyphoonDefinition withClass:[Moat class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(filledWith) withRuntimeObject:aDangerousLiquid];
-        [definition injectProperty:@selector(filledWith2) withRuntimeObject:anotherVolatileLiquid];
-    }];
-}
+//- (id)lava;
+//{
+//    //
+//}
+//
+//- (id)moatFilledWith:(NSString *)aLiquid;
+//{
+//    return [TyphoonDefinition withClass:[Moat class] properties:^(TyphoonDefinition *definition) {
+//        [definition injectProperty:@selector(filledWith) withRuntimeObject:aLiquid];
+//        [definition injectProperty:@selector(filledWith2) withRuntimeObject:anotherLiquid];
+//    }];
+//}
+//
+//- (id)moatFilledWith:(NSString *)aDangerousLiquid secondaryDefensiveLayer:(NSString *)anotherVolatileLiquid;
+//{
+//    return [TyphoonDefinition withClass:[Moat class] properties:^(TyphoonDefinition *definition) {
+//        [definition injectProperty:@selector(filledWith) withRuntimeObject:aDangerousLiquid];
+//        [definition injectProperty:@selector(filledWith2) withRuntimeObject:anotherVolatileLiquid];
+//    }];
+//}
 
 @end
