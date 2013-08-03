@@ -141,7 +141,7 @@
     }];
 }
 
-// don't call from other definitions
+// don't call from other definitions (yet)
 - (id)castleWithMoat:(id)theMoat;
 {
     return [TyphoonDefinition withClass:[Castle class] initialization:^(TyphoonInitializer *initializer) {
@@ -183,6 +183,14 @@
     return [TyphoonDefinition withClass:[Moat class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(filledWith) withRuntimeObject:aLiquid];
         [definition injectProperty:@selector(filledWith2) withRuntimeObject:anotherLiquid];
+    }];
+}
+
+- (id)moatFilledWith:(NSString *)aDangerousLiquid secondaryDefensiveLayer:(NSString *)anotherVolatileLiquid;
+{
+    return [TyphoonDefinition withClass:[Moat class] properties:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(filledWith) withRuntimeObject:aDangerousLiquid];
+        [definition injectProperty:@selector(filledWith2) withRuntimeObject:anotherVolatileLiquid];
     }];
 }
 

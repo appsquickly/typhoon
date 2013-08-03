@@ -1,2 +1,15 @@
 parameterized constructor:
 	currently: have a probable bug - we assume that constructor parameters and the parameters to the defintion are identical. they aren't! expose this with a test case, and then derive a fix
+
+
+
+	- add an estate class to use in an example definition that:
+		- constructs and passes a runtime object to a parameterized definition
+		- passes a definition to a parameterized definition
+
+	- support injecting a property with a runtimeObject
+
+	- consider renaming withRuntimeObject to withRuntimeObjectOrDefinition
+		- should this replace withDefinition? so that everything can take a runtime object transparently?
+
+	- does it make sense to have assembly 'definition' methods that return only a runtime object, if they are simple? 
