@@ -11,5 +11,6 @@ parameterized constructor:
 
 	- consider renaming withRuntimeObject to withRuntimeObjectOrDefinition
 		- should this replace withDefinition? so that everything can take a runtime object transparently?
+		  (JB: Nice idea. . . the one the that irks me is the parameter type becomes ambiguous. Thinking if this is a net gain. . . )
 
 	- does it make sense to have assembly 'definition' methods that return only a runtime object, if they are simple? 
