@@ -307,7 +307,7 @@
         if (parameter.type == TyphoonParameterInjectedByReferenceType)
         {
             TyphoonParameterInjectedByReference* byReference = (TyphoonParameterInjectedByReference*) parameter;
-            id reference = [self componentForKey:byReference.reference];
+            id reference = [self componentForKey:byReference.reference arguments:args];
             [invocation setArgument:&reference atIndex:invocationArgumentIndex];
         }
         else if (parameter.type == TyphoonParameterInjectedByValueType)
