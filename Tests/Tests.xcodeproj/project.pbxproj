@@ -104,6 +104,15 @@
 		4B841534179B0EA600916BF5 /* TyphoonTypeDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8414E5179B0EA600916BF5 /* TyphoonTypeDescriptorTests.m */; };
 		4B841535179B0EA600916BF5 /* TyphoonBundleResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8414E8179B0EA600916BF5 /* TyphoonBundleResourceTests.m */; };
 		4B841536179B0EA600916BF5 /* TyphoonBundleResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8414E8179B0EA600916BF5 /* TyphoonBundleResourceTests.m */; };
+		4B9DBD7117AEE09A002BF5E5 /* TyphoonInjectionAwareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9DBD7017AEE09A002BF5E5 /* TyphoonInjectionAwareTests.m */; };
+		4B9DBD7217AEE09A002BF5E5 /* TyphoonInjectionAwareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9DBD7017AEE09A002BF5E5 /* TyphoonInjectionAwareTests.m */; };
+		4B9DBD7317AEE09A002BF5E5 /* TyphoonInjectionAwareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9DBD7017AEE09A002BF5E5 /* TyphoonInjectionAwareTests.m */; };
+		4B9DBD7617AEE0D1002BF5E5 /* InjectionAwareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9DBD7517AEE0D1002BF5E5 /* InjectionAwareObject.m */; };
+		4B9DBD7717AEE0D1002BF5E5 /* InjectionAwareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9DBD7517AEE0D1002BF5E5 /* InjectionAwareObject.m */; };
+		4B9DBD7817AEE0D1002BF5E5 /* InjectionAwareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9DBD7517AEE0D1002BF5E5 /* InjectionAwareObject.m */; };
+		4B9DBD7B17AEE1D0002BF5E5 /* InjectionAwareAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9DBD7A17AEE1D0002BF5E5 /* InjectionAwareAssembly.m */; };
+		4B9DBD7C17AEE1D0002BF5E5 /* InjectionAwareAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9DBD7A17AEE1D0002BF5E5 /* InjectionAwareAssembly.m */; };
+		4B9DBD7D17AEE1D0002BF5E5 /* InjectionAwareAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9DBD7A17AEE1D0002BF5E5 /* InjectionAwareAssembly.m */; };
 		4BC648C217A20AD2007F0463 /* ClassWithCollectionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B84149F179B0EA600916BF5 /* ClassWithCollectionProperties.m */; };
 		4BC648C317A20AD2007F0463 /* TyphoonPropertyInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8414A1179B0EA600916BF5 /* TyphoonPropertyInjectedAsCollectionTests.m */; };
 		4BC648C417A20AD2007F0463 /* TyphoonDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8414A2179B0EA600916BF5 /* TyphoonDefinitionTests.m */; };
@@ -241,6 +250,11 @@
 		4B8414E4179B0EA600916BF5 /* TyphoonTypeConverterRegistryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonTypeConverterRegistryTests.m; sourceTree = "<group>"; };
 		4B8414E5179B0EA600916BF5 /* TyphoonTypeDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonTypeDescriptorTests.m; sourceTree = "<group>"; };
 		4B8414E8179B0EA600916BF5 /* TyphoonBundleResourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonBundleResourceTests.m; sourceTree = "<group>"; };
+		4B9DBD7017AEE09A002BF5E5 /* TyphoonInjectionAwareTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonInjectionAwareTests.m; sourceTree = "<group>"; };
+		4B9DBD7417AEE0D1002BF5E5 /* InjectionAwareObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InjectionAwareObject.h; sourceTree = "<group>"; };
+		4B9DBD7517AEE0D1002BF5E5 /* InjectionAwareObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InjectionAwareObject.m; sourceTree = "<group>"; };
+		4B9DBD7917AEE1D0002BF5E5 /* InjectionAwareAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InjectionAwareAssembly.h; sourceTree = "<group>"; };
+		4B9DBD7A17AEE1D0002BF5E5 /* InjectionAwareAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InjectionAwareAssembly.m; sourceTree = "<group>"; };
 		4BC648F317A20AD2007F0463 /* iOS Tests (Static Library).octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Tests (Static Library).octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BCA951817A2F04200EA69D1 /* libTyphoon-iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libTyphoon-iOS.a"; path = "../build/Release-iphoneos/libTyphoon-iOS.a"; sourceTree = "<group>"; };
 		4BE1AA4D17A5876E00FE2DA1 /* UnsatisfiableClassFDependsOnGInInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnsatisfiableClassFDependsOnGInInitializer.h; sourceTree = "<group>"; };
@@ -353,6 +367,11 @@
 			children = (
 				4B84149D179B0EA600916BF5 /* Properties */,
 				4B8414A2179B0EA600916BF5 /* TyphoonDefinitionTests.m */,
+				4B9DBD7017AEE09A002BF5E5 /* TyphoonInjectionAwareTests.m */,
+				4B9DBD7417AEE0D1002BF5E5 /* InjectionAwareObject.h */,
+				4B9DBD7517AEE0D1002BF5E5 /* InjectionAwareObject.m */,
+				4B9DBD7917AEE1D0002BF5E5 /* InjectionAwareAssembly.h */,
+				4B9DBD7A17AEE1D0002BF5E5 /* InjectionAwareAssembly.m */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -618,7 +637,9 @@
 		4B841461179B0E1B00916BF5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = Typhoon;
 				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Jasper Blues";
 			};
 			buildConfigurationList = 4B841464179B0E1B00916BF5 /* Build configuration list for PBXProject "Tests" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -860,6 +881,9 @@
 				4B30CC1617AB119E007D987C /* TyphoonBlockComponentFactoryTests.m in Sources */,
 				4B30CC1B17AB1234007D987C /* TyphoonAssemblySelectorWrapperTests.m in Sources */,
 				4BF94D9617ADA645000152D9 /* Township.m in Sources */,
+				4B9DBD7117AEE09A002BF5E5 /* TyphoonInjectionAwareTests.m in Sources */,
+				4B9DBD7617AEE0D1002BF5E5 /* InjectionAwareObject.m in Sources */,
+				4B9DBD7B17AEE1D0002BF5E5 /* InjectionAwareAssembly.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -906,6 +930,9 @@
 				4B30CC1717AB119E007D987C /* TyphoonBlockComponentFactoryTests.m in Sources */,
 				4B30CC1C17AB1234007D987C /* TyphoonAssemblySelectorWrapperTests.m in Sources */,
 				4BF94D9717ADA645000152D9 /* Township.m in Sources */,
+				4B9DBD7217AEE09A002BF5E5 /* TyphoonInjectionAwareTests.m in Sources */,
+				4B9DBD7717AEE0D1002BF5E5 /* InjectionAwareObject.m in Sources */,
+				4B9DBD7C17AEE1D0002BF5E5 /* InjectionAwareAssembly.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -952,6 +979,9 @@
 				4B30CC1817AB119E007D987C /* TyphoonBlockComponentFactoryTests.m in Sources */,
 				4B30CC1D17AB1234007D987C /* TyphoonAssemblySelectorWrapperTests.m in Sources */,
 				4BF94D9817ADA645000152D9 /* Township.m in Sources */,
+				4B9DBD7317AEE09A002BF5E5 /* TyphoonInjectionAwareTests.m in Sources */,
+				4B9DBD7817AEE0D1002BF5E5 /* InjectionAwareObject.m in Sources */,
+				4B9DBD7D17AEE1D0002BF5E5 /* InjectionAwareAssembly.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

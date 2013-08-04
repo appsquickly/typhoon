@@ -33,39 +33,14 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
 #import "TyphoonParameterInjectedAtRuntime.h"
+#import "TyphoonInjectionAware.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
 /* ========================================================== Interface Methods ========================================================= */
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
-    __autoreleasing id <TyphoonIntrospectiveNSObject> instance;
-
-    if (definition.factoryReference)
-    {
-        instance = [self componentForKey:definition.factoryReference]; // clears currently resolving.
-    }
-    else if (definition.initializer && definition.initializer.isClassMethod)
-    {
-        instance = [self invokeInitializerOn:definition.type withDefinition:definition];
-    }
-    else
-    {
-        instance = [definition.type alloc];
-    }
-
-    if (definition.initializer && definition.initializer.isClassMethod == NO)
-    {
-        instance = [self invokeInitializerOn:instance withDefinition:definition];
-    }
-    else if (definition.initializer == nil)
-    {
-        instance = objc_msgSend(instance, @selector(init));
-    }
-
-    [self resolvePropertyDependenciesOn:instance definition:definition];
-    
-    return instance;
+    return [self buildInstanceWithDefinition:definition arguments:nil];
 }
 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition arguments:(NSArray *)args;
@@ -98,8 +73,21 @@
     }
     
     [self resolvePropertyDependenciesOn:instance definition:definition];
+    [self injectAssemblyOnInstanceIfTyphoonAware:instance];
     
     return instance;
+}
+
+- (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance;
+{
+    if ([instance conformsToProtocol:@protocol(TyphoonInjectionAware)]) {
+        [self injectAssemblyOnInstance:instance];
+    }
+}
+
+- (void)injectAssemblyOnInstance:(id <TyphoonInjectionAware>)instance;
+{
+    [instance setAssembly:self];
 }
 
 /* ====================================================================================================================================== */

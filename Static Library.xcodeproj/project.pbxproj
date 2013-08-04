@@ -172,6 +172,7 @@
 /* Begin PBXFileReference section */
 		4B9BD33E17A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssemblySelectorWrapper.h; sourceTree = "<group>"; };
 		4B9BD33F17A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblySelectorWrapper.m; sourceTree = "<group>"; };
+		4B9DBD6E17AEDF29002BF5E5 /* TyphoonInjectionAware.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonInjectionAware.h; sourceTree = "<group>"; };
 		4BB09D8B17AB272E000DB001 /* TyphoonParameterInjectedAtRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonParameterInjectedAtRuntime.h; sourceTree = "<group>"; };
 		4BB09D8C17AB272E000DB001 /* TyphoonParameterInjectedAtRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonParameterInjectedAtRuntime.m; sourceTree = "<group>"; };
 		4BC6494817A20BD7007F0463 /* libTyphoon-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libTyphoon-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -479,6 +480,7 @@
 			children = (
 				BA79837576EEAF3CCA49888A /* Properties */,
 				BA798E985943E046737DF9F9 /* Initializer */,
+				4B9DBD6E17AEDF29002BF5E5 /* TyphoonInjectionAware.h */,
 				BA798CA3A88193EC0242E6EC /* TyphoonDefinition.h */,
 				BA798F905F4B216CEA7A4D8A /* TyphoonDefinition.m */,
 				4BED3D6317A853E6006D262C /* TyphoonComponentInjectedByValue.h */,

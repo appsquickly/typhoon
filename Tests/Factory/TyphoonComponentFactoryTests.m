@@ -286,5 +286,10 @@ static NSString* const DEFAULT_QUEST = @"quest";
 	assertThatUnsignedInteger([[_componentFactory singletons] count], is(@1));
 }
 
+- (void)test_injects_if_instance_aware;
+{
+    
+}
+
 
 @end
