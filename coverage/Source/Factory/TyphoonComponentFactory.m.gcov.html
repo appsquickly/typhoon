@@ -310,13 +310,13 @@
 <span class="lineNum">     252 </span>            : 
 <span class="lineNum">     253 </span><span class="lineCov">        563 : - (TyphoonDefinition*)definitionForKey:(NSString*)key</span>
 <span class="lineNum">     254 </span>            : {
-<span class="lineNum">     255 </span><span class="lineCov">       1540 :     for (TyphoonDefinition* definition in _registry)</span>
+<span class="lineNum">     255 </span><span class="lineCov">       1523 :     for (TyphoonDefinition* definition in _registry)</span>
 <span class="lineNum">     256 </span>            :     {
-<span class="lineNum">     257 </span><span class="lineCov">       1540 :         if ([definition.key isEqualToString:key])</span>
+<span class="lineNum">     257 </span><span class="lineCov">       1523 :         if ([definition.key isEqualToString:key])</span>
 <span class="lineNum">     258 </span>            :         {
 <span class="lineNum">     259 </span><span class="lineCov">        103 :             return definition;</span>
 <span class="lineNum">     260 </span>            :         }
-<span class="lineNum">     261 </span><span class="lineCov">       1641 :     }</span>
+<span class="lineNum">     261 </span><span class="lineCov">       1624 :     }</span>
 <span class="lineNum">     262 </span><span class="lineCov">        460 :     return nil;</span>
 <span class="lineNum">     263 </span><span class="lineCov">       1023 : }</span>
 <span class="lineNum">     264 </span>            : 
