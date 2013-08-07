@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <title>LCOV - Typhoon.info - Source/Component/Initializer/TyphoonInitializer.m</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-07-30</td>
+            <td class="headerValue">2013-08-07</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -80,147 +80,154 @@
 <span class="lineNum">      22 </span><span class="lineCov">          9 : @implementation TyphoonInitializer</span>
 <span class="lineNum">      23 </span>            : 
 <span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span>            : /* ============================================================ Initializers ============================================================ */
-<span class="lineNum">      26 </span><span class="lineCov">          1 : - (id)initWithSelector:(SEL)initializer</span>
-<span class="lineNum">      27 </span>            : {
-<span class="lineNum">      28 </span><span class="lineCov">          2 :     return [self initWithSelector:initializer isClassMethod:TyphoonComponentInitializerIsClassMethodGuess];</span>
-<span class="lineNum">      29 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">        213 : - (id)initWithSelector:(SEL)initializer isClassMethod:(TyphoonComponentInitializerIsClassMethod)isClassMethod;</span>
-<span class="lineNum">      32 </span>            : {
-<span class="lineNum">      33 </span><span class="lineCov">        213 :     self = [super init];</span>
-<span class="lineNum">      34 </span><span class="lineCov">        213 :     if (self)</span>
-<span class="lineNum">      35 </span>            :     {
-<span class="lineNum">      36 </span><span class="lineCov">        213 :         _injectedParameters = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      37 </span><span class="lineCov">        213 :         _isClassMethodStrategy = isClassMethod;</span>
-<span class="lineNum">      38 </span><span class="lineCov">        213 :         self.selector = initializer;</span>
-<span class="lineNum">      39 </span><span class="lineCov">        213 :     }</span>
-<span class="lineNum">      40 </span><span class="lineCov">        426 :     return self;</span>
-<span class="lineNum">      41 </span><span class="lineCov">        213 : }</span>
-<span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span><span class="lineCov">         96 : - (id)init</span>
-<span class="lineNum">      44 </span>            : {
-<span class="lineNum">      45 </span><span class="lineCov">        192 :     return [self initWithSelector:@selector(init) isClassMethod:TyphoonComponentInitializerIsClassMethodGuess];</span>
-<span class="lineNum">      46 </span><span class="lineCov">         96 : }</span>
-<span class="lineNum">      47 </span>            : 
-<span class="lineNum">      48 </span>            : 
-<span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span>            : /* ========================================================== Interface Methods ========================================================= */
+<span class="lineNum">      25 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">      26 </span>            : #pragma mark - Initialization &amp; Destruction
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span><span class="lineCov">          1 : - (id)initWithSelector:(SEL)initializer</span>
+<span class="lineNum">      29 </span>            : {
+<span class="lineNum">      30 </span><span class="lineCov">          2 :     return [self initWithSelector:initializer isClassMethod:TyphoonComponentInitializerIsClassMethodGuess];</span>
+<span class="lineNum">      31 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span>            : - (id)initWithSelector:(SEL)initializer isClassMethod:(TyphoonComponentInitializerIsClassMethod)isClassMethod;
+<span class="lineNum">      34 </span><span class="lineCov">        213 : {</span>
+<span class="lineNum">      35 </span>            :     self = [super init];
+<span class="lineNum">      36 </span><span class="lineCov">        213 :     if (self)</span>
+<span class="lineNum">      37 </span><span class="lineCov">        213 :     {</span>
+<span class="lineNum">      38 </span>            :         _injectedParameters = [[NSMutableArray alloc] init];
+<span class="lineNum">      39 </span><span class="lineCov">        213 :         _isClassMethodStrategy = isClassMethod;</span>
+<span class="lineNum">      40 </span><span class="lineCov">        213 :         self.selector = initializer;</span>
+<span class="lineNum">      41 </span><span class="lineCov">        213 :     }</span>
+<span class="lineNum">      42 </span><span class="lineCov">        213 :     return self;</span>
+<span class="lineNum">      43 </span><span class="lineCov">        213 : }</span>
+<span class="lineNum">      44 </span><span class="lineCov">        213 : </span>
+<span class="lineNum">      45 </span>            : - (id)init
+<span class="lineNum">      46 </span><span class="lineCov">         96 : {</span>
+<span class="lineNum">      47 </span>            :     return [self initWithSelector:@selector(init) isClassMethod:TyphoonComponentInitializerIsClassMethodGuess];
+<span class="lineNum">      48 </span><span class="lineCov">        192 : }</span>
+<span class="lineNum">      49 </span><span class="lineCov">         96 : </span>
+<span class="lineNum">      50 </span>            : 
 <span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span><span class="lineCov">         45 : - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference</span>
-<span class="lineNum">      54 </span>            : {
-<span class="lineNum">      55 </span><span class="lineCov">         45 :     [self injectParameterAtIndex:[self indexOfParameter:name] withReference:reference];</span>
-<span class="lineNum">      56 </span><span class="lineCov">         45 : }</span>
-<span class="lineNum">      57 </span>            : 
-<span class="lineNum">      58 </span>            : 
-<span class="lineNum">      59 </span><span class="lineCov">         86 : - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference</span>
-<span class="lineNum">      60 </span>            : {
-<span class="lineNum">      61 </span><span class="lineCov">        172 :     if (index != NSUIntegerMax &amp;&amp; index &lt; [_parameterNames count])</span>
-<span class="lineNum">      62 </span>            :     {
-<span class="lineNum">      63 </span><span class="lineCov">         86 :         [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference]];</span>
-<span class="lineNum">      64 </span><span class="lineCov">         86 :     }</span>
-<span class="lineNum">      65 </span><span class="lineCov">         86 : }</span>
-<span class="lineNum">      66 </span>            : 
-<span class="lineNum">      67 </span><span class="lineCov">        125 : - (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol</span>
-<span class="lineNum">      68 </span>            : {
-<span class="lineNum">      69 </span><span class="lineCov">        125 :     [self injectParameterAtIndex:[self indexOfParameter:name] withValueAsText:text requiredTypeOrNil:classOrProtocol];</span>
-<span class="lineNum">      70 </span><span class="lineCov">        125 : }</span>
-<span class="lineNum">      71 </span>            : 
-<span class="lineNum">      72 </span><span class="lineCov">        154 : - (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass</span>
-<span class="lineNum">      73 </span>            : {
-<span class="lineNum">      74 </span><span class="lineCov">        280 :     if (index != NSUIntegerMax &amp;&amp; index &lt; [_parameterNames count])</span>
-<span class="lineNum">      75 </span>            :     {
-<span class="lineNum">      76 </span><span class="lineCov">        126 :         TyphoonParameterInjectedByValue* parameterInjectedByValue =</span>
-<span class="lineNum">      77 </span><span class="lineCov">        126 :                 [[TyphoonParameterInjectedByValue alloc] initWithIndex:index value:text requiredTypeOrNil:requiredClass];</span>
-<span class="lineNum">      78 </span><span class="lineCov">        126 :         [parameterInjectedByValue setInitializer:self];</span>
-<span class="lineNum">      79 </span><span class="lineCov">        126 :         [_injectedParameters addObject:parameterInjectedByValue];</span>
-<span class="lineNum">      80 </span><span class="lineCov">        126 :     }</span>
-<span class="lineNum">      81 </span><span class="lineCov">        154 : }</span>
-<span class="lineNum">      82 </span>            : 
-<span class="lineNum">      83 </span>            : /* ====================================================================================================================================== */
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 : - (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition;</span>
-<span class="lineNum">      85 </span>            : {
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 :     [self injectParameterNamed:name withReference:definition.key];</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      88 </span>            : 
-<span class="lineNum">      89 </span><span class="lineCov">         39 : - (void)injectWithDefinition:(TyphoonDefinition*)definition;</span>
-<span class="lineNum">      90 </span>            : {
-<span class="lineNum">      91 </span><span class="lineCov">         39 :     [self injectParameterAtIndex:[_injectedParameters count] withDefinition:definition];</span>
-<span class="lineNum">      92 </span><span class="lineCov">         39 : }</span>
-<span class="lineNum">      93 </span>            : 
-<span class="lineNum">      94 </span><span class="lineCov">         13 : - (void)injectWithValueAsText:(NSString*)text</span>
-<span class="lineNum">      95 </span>            : {
-<span class="lineNum">      96 </span><span class="lineCov">         13 :     [self injectWithValueAsText:text requiredTypeOrNil:nil];</span>
-<span class="lineNum">      97 </span><span class="lineCov">         13 : }</span>
-<span class="lineNum">      98 </span>            : 
-<span class="lineNum">      99 </span><span class="lineCov">         13 : - (void)injectWithValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredTypeOrNil</span>
-<span class="lineNum">     100 </span>            : {
-<span class="lineNum">     101 </span><span class="lineCov">         13 :     [self injectParameterAtIndex:[_injectedParameters count] withValueAsText:text requiredTypeOrNil:requiredTypeOrNil];</span>
-<span class="lineNum">     102 </span><span class="lineCov">         13 : }</span>
-<span class="lineNum">     103 </span>            : 
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 : - (void)injectParameterAtIndex:(NSUInteger)index withObject:(id)value</span>
-<span class="lineNum">     105 </span>            : {
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 :     if (index != NSUIntegerMax &amp;&amp; index &lt; [_parameterNames count])</span>
-<span class="lineNum">     107 </span>            :     {
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 :         [_injectedParameters addObject:[[TyphoonParameterInjectedByRawValue alloc] initWithParameterIndex:index value:value]];</span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     111 </span>            : 
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 : - (void)injectParameterNamed:(NSString*)name withObject:(id)value</span>
-<span class="lineNum">     113 </span>            : {
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 :     [self injectParameterAtIndex:[self indexOfParameter:name] withObject:value];</span>
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     116 </span>            : 
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 : - (void)injectParameterWithObject:(id)value</span>
-<span class="lineNum">     118 </span>            : {
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 :     [self injectParameterAtIndex:[_injectedParameters count] withObject:value];</span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     121 </span>            : 
-<span class="lineNum">     122 </span>            : /* ====================================================================================================================================== */
-<span class="lineNum">     123 </span>            : #pragma mark - Block assembly
-<span class="lineNum">     124 </span>            : 
-<span class="lineNum">     125 </span><span class="lineCov">         39 : - (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonDefinition*)definition</span>
-<span class="lineNum">     126 </span>            : {
-<span class="lineNum">     127 </span><span class="lineCov">         39 :     [self injectParameterAtIndex:index1 withReference:definition.key];</span>
-<span class="lineNum">     128 </span><span class="lineCov">         39 : }</span>
-<span class="lineNum">     129 </span>            : 
-<span class="lineNum">     130 </span>            : 
-<span class="lineNum">     131 </span><span class="lineCov">        309 : - (void)setSelector:(SEL)selector</span>
-<span class="lineNum">     132 </span>            : {
-<span class="lineNum">     133 </span><span class="lineCov">        309 :     _selector = selector;</span>
-<span class="lineNum">     134 </span><span class="lineCov">        309 :     _parameterNames = [self parameterNamesForSelector:_selector];</span>
-<span class="lineNum">     135 </span><span class="lineCov">        309 : }</span>
-<span class="lineNum">     136 </span>            : 
-<span class="lineNum">     137 </span>            : /* ============================================================ Utility Methods ========================================================= */
-<span class="lineNum">     138 </span><span class="lineCov">          9 : - (void)dealloc</span>
-<span class="lineNum">     139 </span>            : {
-<span class="lineNum">     140 </span><span class="lineCov">         38 :     for (id &lt;TyphoonInjectedParameter&gt; parameter in _injectedParameters)</span>
-<span class="lineNum">     141 </span>            :     {
-<span class="lineNum">     142 </span>            :         //Null out the __unsafe_unretained pointer back to self.
-<span class="lineNum">     143 </span><span class="lineCov">         10 :         [parameter setInitializer:nil];</span>
-<span class="lineNum">     144 </span><span class="lineCov">         38 :     }</span>
-<span class="lineNum">     145 </span><span class="lineCov">          9 : }</span>
-<span class="lineNum">     146 </span>            : 
-<span class="lineNum">     147 </span>            : /* ============================================================ Private Methods ========================================================= */
-<span class="lineNum">     148 </span><span class="lineCov">        170 : - (int)indexOfParameter:(NSString*)name</span>
-<span class="lineNum">     149 </span>            : {
-<span class="lineNum">     150 </span><span class="lineCov">        170 :     int parameterIndex = NSUIntegerMax;</span>
-<span class="lineNum">     151 </span><span class="lineCov">        398 :     for (int i = 0; i &lt; [_parameterNames count]; i++)</span>
-<span class="lineNum">     152 </span>            :     {
-<span class="lineNum">     153 </span><span class="lineCov">        171 :         NSString* parameterName = [_parameterNames objectAtIndex:i];</span>
-<span class="lineNum">     154 </span><span class="lineCov">        171 :         if ([name isEqualToString:parameterName])</span>
-<span class="lineNum">     155 </span>            :         {
-<span class="lineNum">     156 </span><span class="lineCov">        142 :             parameterIndex = i;</span>
-<span class="lineNum">     157 </span><span class="lineCov">        142 :             break;</span>
-<span class="lineNum">     158 </span>            :         }
-<span class="lineNum">     159 </span><span class="lineCov">        257 :     }</span>
-<span class="lineNum">     160 </span><span class="lineCov">        340 :     return parameterIndex;</span>
-<span class="lineNum">     161 </span><span class="lineCov">        170 : }</span>
-<span class="lineNum">     162 </span>            : 
-<span class="lineNum">     163 </span>            : 
-<span class="lineNum">     164 </span>            : 
-<span class="lineNum">     165 </span>            : @end
+<span class="lineNum">      52 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">      53 </span>            : #pragma mark - Interface Methods
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            : - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference
+<span class="lineNum">      57 </span>            : {
+<span class="lineNum">      58 </span><span class="lineCov">         45 :     [self injectParameterAtIndex:[self indexOfParameter:name] withReference:reference];</span>
+<span class="lineNum">      59 </span>            : }
+<span class="lineNum">      60 </span><span class="lineCov">         45 : </span>
+<span class="lineNum">      61 </span><span class="lineCov">         45 : </span>
+<span class="lineNum">      62 </span>            : - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference
+<span class="lineNum">      63 </span>            : {
+<span class="lineNum">      64 </span>            :     if (index != NSUIntegerMax &amp;&amp; index &lt; [_parameterNames count])
+<span class="lineNum">      65 </span><span class="lineCov">         86 :     {</span>
+<span class="lineNum">      66 </span>            :         [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference]];
+<span class="lineNum">      67 </span><span class="lineCov">         86 :     }</span>
+<span class="lineNum">      68 </span>            : }
+<span class="lineNum">      69 </span><span class="lineCov">         86 : </span>
+<span class="lineNum">      70 </span><span class="lineCov">         86 : - (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol</span>
+<span class="lineNum">      71 </span><span class="lineCov">         86 : {</span>
+<span class="lineNum">      72 </span>            :     [self injectParameterAtIndex:[self indexOfParameter:name] withValueAsText:text requiredTypeOrNil:classOrProtocol];
+<span class="lineNum">      73 </span>            : }
+<span class="lineNum">      74 </span><span class="lineCov">        125 : </span>
+<span class="lineNum">      75 </span>            : - (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass
+<span class="lineNum">      76 </span><span class="lineCov">        125 : {</span>
+<span class="lineNum">      77 </span><span class="lineCov">        125 :     if (index != NSUIntegerMax &amp;&amp; index &lt; [_parameterNames count])</span>
+<span class="lineNum">      78 </span>            :     {
+<span class="lineNum">      79 </span>            :         TyphoonParameterInjectedByValue* parameterInjectedByValue =
+<span class="lineNum">      80 </span><span class="lineCov">        154 :                 [[TyphoonParameterInjectedByValue alloc] initWithIndex:index value:text requiredTypeOrNil:requiredClass];</span>
+<span class="lineNum">      81 </span>            :         [parameterInjectedByValue setInitializer:self];
+<span class="lineNum">      82 </span><span class="lineCov">        126 :         [_injectedParameters addObject:parameterInjectedByValue];</span>
+<span class="lineNum">      83 </span>            :     }
+<span class="lineNum">      84 </span><span class="lineCov">        126 : }</span>
+<span class="lineNum">      85 </span><span class="lineCov">        126 : </span>
+<span class="lineNum">      86 </span><span class="lineCov">        126 : /* ====================================================================================================================================== */</span>
+<span class="lineNum">      87 </span><span class="lineCov">        126 : - (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition;</span>
+<span class="lineNum">      88 </span><span class="lineCov">        126 : {</span>
+<span class="lineNum">      89 </span><span class="lineCov">        154 :     [self injectParameterNamed:name withReference:definition.key];</span>
+<span class="lineNum">      90 </span>            : }
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span>            : - (void)injectWithDefinition:(TyphoonDefinition*)definition;
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 : {</span>
+<span class="lineNum">      94 </span>            :     [self injectParameterAtIndex:[_injectedParameters count] withDefinition:definition];
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">      97 </span>            : - (void)injectWithValueAsText:(NSString*)text
+<span class="lineNum">      98 </span><span class="lineCov">         39 : {</span>
+<span class="lineNum">      99 </span>            :     [self injectWithValueAsText:text requiredTypeOrNil:nil];
+<span class="lineNum">     100 </span><span class="lineCov">         39 : }</span>
+<span class="lineNum">     101 </span><span class="lineCov">         39 : </span>
+<span class="lineNum">     102 </span>            : - (void)injectWithValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredTypeOrNil
+<span class="lineNum">     103 </span><span class="lineCov">         13 : {</span>
+<span class="lineNum">     104 </span>            :     [self injectParameterAtIndex:[_injectedParameters count] withValueAsText:text requiredTypeOrNil:requiredTypeOrNil];
+<span class="lineNum">     105 </span><span class="lineCov">         13 : }</span>
+<span class="lineNum">     106 </span><span class="lineCov">         13 : </span>
+<span class="lineNum">     107 </span>            : - (void)injectParameterAtIndex:(NSUInteger)index withObject:(id)value
+<span class="lineNum">     108 </span>            : {
+<span class="lineNum">     109 </span><span class="lineCov">         13 :     if (index != NSUIntegerMax &amp;&amp; index &lt; [_parameterNames count])</span>
+<span class="lineNum">     110 </span>            :     {
+<span class="lineNum">     111 </span><span class="lineCov">         13 :         [_injectedParameters addObject:[[TyphoonParameterInjectedByRawValue alloc] initWithParameterIndex:index value:value]];</span>
+<span class="lineNum">     112 </span><span class="lineCov">         13 :     }</span>
+<span class="lineNum">     113 </span>            : }
+<span class="lineNum">     114 </span>            : 
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 : - (void)injectParameterNamed:(NSString*)name withObject:(id)value</span>
+<span class="lineNum">     116 </span>            : {
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 :     [self injectParameterAtIndex:[self indexOfParameter:name] withObject:value];</span>
+<span class="lineNum">     118 </span>            : }
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 : - (void)injectParameterWithObject:(id)value</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 : {</span>
+<span class="lineNum">     122 </span>            :     [self injectParameterAtIndex:[_injectedParameters count] withObject:value];
+<span class="lineNum">     123 </span>            : }
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     125 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 : #pragma mark - Block assembly</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     128 </span>            : - (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonDefinition*)definition
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 : {</span>
+<span class="lineNum">     130 </span>            :     [self injectParameterAtIndex:index1 withReference:definition.key];
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     133 </span>            : 
+<span class="lineNum">     134 </span>            : - (void)setSelector:(SEL)selector
+<span class="lineNum">     135 </span>            : {
+<span class="lineNum">     136 </span>            :     _selector = selector;
+<span class="lineNum">     137 </span>            :     _parameterNames = [self parameterNamesForSelector:_selector];
+<span class="lineNum">     138 </span><span class="lineCov">         39 : }</span>
+<span class="lineNum">     139 </span>            : 
+<span class="lineNum">     140 </span><span class="lineCov">         39 : /* ====================================================================================================================================== */</span>
+<span class="lineNum">     141 </span><span class="lineCov">         39 : #pragma mark - Utility Methods</span>
+<span class="lineNum">     142 </span>            : 
+<span class="lineNum">     143 </span>            : - (void)dealloc
+<span class="lineNum">     144 </span><span class="lineCov">        309 : {</span>
+<span class="lineNum">     145 </span>            :     for (id &lt;TyphoonInjectedParameter&gt; parameter in _injectedParameters)
+<span class="lineNum">     146 </span><span class="lineCov">        309 :     {</span>
+<span class="lineNum">     147 </span><span class="lineCov">        309 :         //Null out the __unsafe_unretained pointer back to self.</span>
+<span class="lineNum">     148 </span><span class="lineCov">        309 :         [parameter setInitializer:nil];</span>
+<span class="lineNum">     149 </span>            :     }
+<span class="lineNum">     150 </span>            : }
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">     153 </span><span class="lineCov">          9 : #pragma mark - Private Methods</span>
+<span class="lineNum">     154 </span>            : 
+<span class="lineNum">     155 </span><span class="lineCov">         10 : - (int)indexOfParameter:(NSString*)name</span>
+<span class="lineNum">     156 </span>            : {
+<span class="lineNum">     157 </span>            :     int parameterIndex = NSUIntegerMax;
+<span class="lineNum">     158 </span><span class="lineCov">         10 :     for (int i = 0; i &lt; [_parameterNames count]; i++)</span>
+<span class="lineNum">     159 </span><span class="lineCov">         10 :     {</span>
+<span class="lineNum">     160 </span><span class="lineCov">          9 :         NSString* parameterName = [_parameterNames objectAtIndex:i];</span>
+<span class="lineNum">     161 </span>            :         if ([name isEqualToString:parameterName])
+<span class="lineNum">     162 </span>            :         {
+<span class="lineNum">     163 </span>            :             parameterIndex = i;
+<span class="lineNum">     164 </span>            :             break;
+<span class="lineNum">     165 </span><span class="lineCov">        170 :         }</span>
+<span class="lineNum">     166 </span>            :     }
+<span class="lineNum">     167 </span><span class="lineCov">        170 :     return parameterIndex;</span>
+<span class="lineNum">     168 </span><span class="lineCov">        199 : }</span>
+<span class="lineNum">     169 </span>            : 
+<span class="lineNum">     170 </span><span class="lineCov">        171 : </span>
+<span class="lineNum">     171 </span><span class="lineCov">        171 : </span>
+<span class="lineNum">     172 </span>            : @end
 </pre>
       </td>
     </tr>
@@ -229,7 +236,7 @@
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
     <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
-    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.9</a></td></tr>
   </table>
   <br>
 

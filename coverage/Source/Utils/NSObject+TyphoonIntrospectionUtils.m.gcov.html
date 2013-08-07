@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <title>LCOV - Typhoon.info - Source/Utils/NSObject+TyphoonIntrospectionUtils.m</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">37</td>
+            <td class="headerCovTableEntry">38</td>
             <td class="headerCovTableEntry">41</td>
-            <td class="headerCovTableEntryHi">90.2 %</td>
+            <td class="headerCovTableEntryHi">92.7 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-07-30</td>
+            <td class="headerValue">2013-08-07</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -96,20 +96,20 @@
 <span class="lineNum">      38 </span><span class="lineCov">          1 :         if ([self respondsToSelector:NSSelectorFromString(propertyName)])</span>
 <span class="lineNum">      39 </span>            :         {
 <span class="lineNum">      40 </span><span class="lineNoCov">          0 :             [NSException raise:NSInvalidArgumentException format:@&quot;Property '%@' of class '%@' is readonly.&quot;, propertyName, [self class]];</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">      41 </span><span class="lineCov">          1 :         }</span>
 <span class="lineNum">      42 </span>            :         else
 <span class="lineNum">      43 </span>            :         {
 <span class="lineNum">      44 </span><span class="lineNoCov">          0 :             [NSException raise:NSInvalidArgumentException format:@&quot;No setter named '%@' on class '%@'.&quot;, selectorName, [self class]];</span>
 <span class="lineNum">      45 </span>            :         }
 <span class="lineNum">      46 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      47 </span><span class="lineCov">        246 :     return selector;</span>
+<span class="lineNum">      47 </span><span class="lineCov">        123 :     return selector;</span>
 <span class="lineNum">      48 </span><span class="lineCov">        123 : }</span>
 <span class="lineNum">      49 </span>            : 
 <span class="lineNum">      50 </span><span class="lineCov">        311 : - (NSArray*)parameterNamesForSelector:(SEL)selector</span>
 <span class="lineNum">      51 </span>            : {
 <span class="lineNum">      52 </span><span class="lineCov">        311 :     NSMutableArray* parameterNames = [[NSMutableArray alloc] init];</span>
 <span class="lineNum">      53 </span><span class="lineCov">        311 :     NSArray* parameters = [NSStringFromSelector(selector) componentsSeparatedByString:@&quot;:&quot;];</span>
-<span class="lineNum">      54 </span><span class="lineCov">       1704 :     for (int i = 0; i &lt; [parameters count]; i++)</span>
+<span class="lineNum">      54 </span><span class="lineCov">        852 :     for (int i = 0; i &lt; [parameters count]; i++)</span>
 <span class="lineNum">      55 </span>            :     {
 <span class="lineNum">      56 </span><span class="lineCov">        541 :         NSString* parameterName = [parameters objectAtIndex:i];</span>
 <span class="lineNum">      57 </span><span class="lineCov">        541 :         if (i == 0)</span>
@@ -123,7 +123,7 @@
 <span class="lineNum">      65 </span><span class="lineCov">        341 :             [parameterNames addObject:parameterName];</span>
 <span class="lineNum">      66 </span><span class="lineCov">        341 :         }</span>
 <span class="lineNum">      67 </span><span class="lineCov">        541 :     }</span>
-<span class="lineNum">      68 </span><span class="lineCov">        622 :     return [parameterNames copy];</span>
+<span class="lineNum">      68 </span><span class="lineCov">        311 :     return [parameterNames copy];</span>
 <span class="lineNum">      69 </span><span class="lineCov">        311 : }</span>
 <span class="lineNum">      70 </span>            : 
 <span class="lineNum">      71 </span><span class="lineCov">          1 : - (NSArray*)typeCodesForSelector:(SEL)selector</span>
@@ -139,7 +139,7 @@
 <span class="lineNum">      81 </span><span class="lineCov">        128 :         circularDependentProperties = [[NSMutableDictionary alloc] init];</span>
 <span class="lineNum">      82 </span><span class="lineCov">        128 :         objc_setAssociatedObject(self, &amp;CIRCULAR_DEPENDENCIES_KEY, circularDependentProperties, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</span>
 <span class="lineNum">      83 </span><span class="lineCov">        128 :     }</span>
-<span class="lineNum">      84 </span><span class="lineCov">        386 :     return circularDependentProperties;</span>
+<span class="lineNum">      84 </span><span class="lineCov">        193 :     return circularDependentProperties;</span>
 <span class="lineNum">      85 </span><span class="lineCov">        193 : }</span>
 <span class="lineNum">      86 </span>            : 
 <span class="lineNum">      87 </span>            : 
@@ -153,7 +153,7 @@
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
     <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.9</a></td></tr>
   </table>
   <br>
 
