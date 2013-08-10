@@ -12,11 +12,10 @@
     </component>
 
 	<component class="SingletonC" key="singletonC" scope="singleton">
-        <property name="dependencyOnNotSingletonA" ref="notSingletonA"/>
+        <property name="dependencyOnD" ref="singletonD"/>
     </component>
 
-
-    <component class="NotSingletonA" key="notSingletonA" scope="prototype">
+    <component class="SingletonD" key="singletonD" scope="singleton">
         <initializer selector="initWithSingletonB:">
             <argument parameterName="singletonB" ref="singletonB"/>
         </initializer>

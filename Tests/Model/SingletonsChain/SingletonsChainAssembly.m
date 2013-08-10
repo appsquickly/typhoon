@@ -12,7 +12,7 @@
 #import "SingletonA.h"
 #import "SingletonB.h"
 #import "SingletonC.h"
-#import "NotSingletonA.h"
+#import "SingletonD.h"
 
 @implementation SingletonsChainAssembly
 
@@ -35,16 +35,18 @@
 - (id)singletonC
 {
 	return [TyphoonDefinition withClass:[SingletonC class] properties:^(TyphoonDefinition *definition) {
-		[definition injectProperty:@selector(dependencyOnNotSingletonA) withDefinition:[self notSingletonA]];
+		[definition injectProperty:@selector(dependencyOnD) withDefinition:[self singletonD]];
 		[definition setScope:TyphoonScopeSingleton];
 	}];
 }
 
-- (id)notSingletonA
+- (id)singletonD
 {
-	return [TyphoonDefinition withClass:[NotSingletonA class] initialization:^(TyphoonInitializer *initializer) {
+	return [TyphoonDefinition withClass:[SingletonD class] initialization:^(TyphoonInitializer *initializer) {
 		initializer.selector = @selector(initWithSingletonB:);
 		[initializer injectWithDefinition:[self singletonB]];
+	} properties:^(TyphoonDefinition *definition) {
+		[definition setScope:TyphoonScopeSingleton];
 	}];
 }
 

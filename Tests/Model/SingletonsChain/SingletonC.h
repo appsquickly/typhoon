@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@class NotSingletonA;
+@class SingletonD;
 
 @interface SingletonC : NSObject
 
-@property (nonatomic, strong) NotSingletonA *dependencyOnNotSingletonA;
+@property (nonatomic, strong) SingletonD *dependencyOnD;
 
 @end
