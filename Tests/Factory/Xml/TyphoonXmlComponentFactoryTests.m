@@ -31,6 +31,7 @@
 
     _exceptionTestFactory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"ExceptionTestAssembly.xml"];
     _circularDependenciesFactory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"CircularDependenciesAssembly.xml"];
+    _singletonsChainFactory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"SingletonsChainAssembly.xml"];
 }
 
 - (void)test_injects_initializer_by_value

@@ -21,6 +21,10 @@
 #import "ClassDDependsOnC.h"
 #import "ClassEDependsOnC.h"
 #import "UnsatisfiableClassFDependsOnGInInitializer.h"
+#import "SingletonA.h"
+#import "SingletonB.h"
+#import "SingletonC.h"
+#import "NotSingletonA.h"
 #import "CircularDependenciesAssembly.h"
 
 @implementation TyphoonSharedComponentFactoryTests
@@ -203,6 +207,36 @@
     assertThat(classD, equalTo(classD.dependencyOnC.dependencyOnD));
     assertThat([classD.dependencyOnC class], equalTo([ClassCDependsOnDAndE class]));
 }
+
+/* ====================================================================================================================================== */
+#pragma mark - Circular dependencies on singleton chains
+
+- (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_type
+{
+	SingletonA *singletonA = [_singletonsChainFactory componentForType:[SingletonA class]];
+	SingletonB *singletonB = [_singletonsChainFactory componentForType:[SingletonB class]];
+	SingletonC *singletonC = [_singletonsChainFactory componentForType:[SingletonC class]];
+	assertThat(singletonA.dependencyOnB, is(singletonB));
+	assertThat(singletonB.dependencyOnC, is(singletonC));
+	// Next assert consistently fails with xml assembly, and could fail with block assembly
+	// depending on the order in which singletons are assembled during load (can be forced
+	// to fail just by sorting _registry alphabetically in load method).
+	assertThat(singletonC.dependencyOnNotSingletonA.dependencyOnB, is(singletonB));
+}
+
+- (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_reference
+{
+	SingletonA *singletonA = [_singletonsChainFactory componentForKey:@"singletonA"];
+	SingletonB *singletonB = [_singletonsChainFactory componentForKey:@"singletonB"];
+	SingletonC *singletonC = [_singletonsChainFactory componentForKey:@"singletonC"];
+	assertThat(singletonA.dependencyOnB, is(singletonB));
+	assertThat(singletonB.dependencyOnC, is(singletonC));
+	// Next assert consistently fails with xml assembly, and could fail with block assembly
+	// depending on the order in which singletons are assembled during load (can be forced
+	// to fail just by sorting _registry alphabetically in load method).
+	assertThat(singletonC.dependencyOnNotSingletonA.dependencyOnB, is(singletonB));
+}
+
 
 
 @end
