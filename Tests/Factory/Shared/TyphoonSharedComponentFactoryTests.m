@@ -21,7 +21,6 @@
 #import "ClassDDependsOnC.h"
 #import "ClassEDependsOnC.h"
 #import "UnsatisfiableClassFDependsOnGInInitializer.h"
-#import "SingletonA.h"
 #import "SingletonB.h"
 #import "SingletonC.h"
 #import "SingletonD.h"
@@ -213,11 +212,9 @@
 
 - (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_type
 {
-	SingletonA *singletonA = [_singletonsChainFactory componentForType:[SingletonA class]];
 	SingletonB *singletonB = [_singletonsChainFactory componentForType:[SingletonB class]];
 	SingletonC *singletonC = [_singletonsChainFactory componentForType:[SingletonC class]];
 	SingletonD *singletonD = [_singletonsChainFactory componentForType:[SingletonD class]];
-	assertThat(singletonA.dependencyOnB, is(singletonB));
 	assertThat(singletonB.dependencyOnC, is(singletonC));
 	assertThat(singletonC.dependencyOnD, is(singletonD));
 	// Next assert consistently fails with xml assembly, and could fail with block assembly
@@ -228,11 +225,9 @@
 
 - (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_reference
 {
-	SingletonA *singletonA = [_singletonsChainFactory componentForKey:@"singletonA"];
 	SingletonB *singletonB = [_singletonsChainFactory componentForKey:@"singletonB"];
 	SingletonC *singletonC = [_singletonsChainFactory componentForKey:@"singletonC"];
 	SingletonD *singletonD = [_singletonsChainFactory componentForKey:@"singletonD"];
-	assertThat(singletonA.dependencyOnB, is(singletonB));
 	assertThat(singletonB.dependencyOnC, is(singletonC));
 	assertThat(singletonC.dependencyOnD, is(singletonD));
 	// Next assert consistently fails with xml assembly, and could fail with block assembly

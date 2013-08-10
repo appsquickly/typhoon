@@ -9,7 +9,6 @@
 #import "SingletonsChainAssembly.h"
 #import "Typhoon.h"
 
-#import "SingletonA.h"
 #import "SingletonB.h"
 #import "SingletonC.h"
 #import "SingletonD.h"

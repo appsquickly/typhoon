@@ -139,9 +139,6 @@
 		4E08794717B6762E004B86C9 /* SingletonD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E08794617B6762E004B86C9 /* SingletonD.m */; };
 		4E08794817B6762E004B86C9 /* SingletonD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E08794617B6762E004B86C9 /* SingletonD.m */; };
 		4E08794917B6762E004B86C9 /* SingletonD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E08794617B6762E004B86C9 /* SingletonD.m */; };
-		4EB2190217B4F2C500B901C9 /* SingletonA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB218FB17B4F2C500B901C9 /* SingletonA.m */; };
-		4EB2190317B4F2C500B901C9 /* SingletonA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB218FB17B4F2C500B901C9 /* SingletonA.m */; };
-		4EB2190417B4F2C500B901C9 /* SingletonA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB218FB17B4F2C500B901C9 /* SingletonA.m */; };
 		4EB2190517B4F2C500B901C9 /* SingletonB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB218FD17B4F2C500B901C9 /* SingletonB.m */; };
 		4EB2190617B4F2C500B901C9 /* SingletonB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB218FD17B4F2C500B901C9 /* SingletonB.m */; };
 		4EB2190717B4F2C500B901C9 /* SingletonB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB218FD17B4F2C500B901C9 /* SingletonB.m */; };
@@ -240,8 +237,6 @@
 		4BE1AA5317A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsatisfiableClassGDependsOnFInInitializer.m; sourceTree = "<group>"; };
 		4E08794517B6762E004B86C9 /* SingletonD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonD.h; sourceTree = "<group>"; };
 		4E08794617B6762E004B86C9 /* SingletonD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonD.m; sourceTree = "<group>"; };
-		4EB218FA17B4F2C500B901C9 /* SingletonA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonA.h; sourceTree = "<group>"; };
-		4EB218FB17B4F2C500B901C9 /* SingletonA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonA.m; sourceTree = "<group>"; };
 		4EB218FC17B4F2C500B901C9 /* SingletonB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonB.h; sourceTree = "<group>"; };
 		4EB218FD17B4F2C500B901C9 /* SingletonB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonB.m; sourceTree = "<group>"; };
 		4EB218FE17B4F2C500B901C9 /* SingletonC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonC.h; sourceTree = "<group>"; };
@@ -545,8 +540,6 @@
 		4EB218F917B4F2C500B901C9 /* SingletonsChain */ = {
 			isa = PBXGroup;
 			children = (
-				4EB218FA17B4F2C500B901C9 /* SingletonA.h */,
-				4EB218FB17B4F2C500B901C9 /* SingletonA.m */,
 				4EB218FC17B4F2C500B901C9 /* SingletonB.h */,
 				4EB218FD17B4F2C500B901C9 /* SingletonB.m */,
 				4EB218FE17B4F2C500B901C9 /* SingletonC.h */,
@@ -865,7 +858,6 @@
 				4B841535179B0EA600916BF5 /* TyphoonBundleResourceTests.m in Sources */,
 				4BE1AA4F17A5876E00FE2DA1 /* UnsatisfiableClassFDependsOnGInInitializer.m in Sources */,
 				4BE1AA5417A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m in Sources */,
-				4EB2190217B4F2C500B901C9 /* SingletonA.m in Sources */,
 				4EB2190517B4F2C500B901C9 /* SingletonB.m in Sources */,
 				4EB2190817B4F2C500B901C9 /* SingletonC.m in Sources */,
 				4EB2191017B4F30D00B901C9 /* SingletonsChainAssembly.m in Sources */,
@@ -910,7 +902,6 @@
 				4B841536179B0EA600916BF5 /* TyphoonBundleResourceTests.m in Sources */,
 				4BE1AA5017A5876E00FE2DA1 /* UnsatisfiableClassFDependsOnGInInitializer.m in Sources */,
 				4BE1AA5517A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m in Sources */,
-				4EB2190317B4F2C500B901C9 /* SingletonA.m in Sources */,
 				4EB2190617B4F2C500B901C9 /* SingletonB.m in Sources */,
 				4EB2190917B4F2C500B901C9 /* SingletonC.m in Sources */,
 				4EB2191117B4F30D00B901C9 /* SingletonsChainAssembly.m in Sources */,
@@ -955,7 +946,6 @@
 				4BC648E017A20AD2007F0463 /* TyphoonBundleResourceTests.m in Sources */,
 				4BE1AA5117A5876E00FE2DA1 /* UnsatisfiableClassFDependsOnGInInitializer.m in Sources */,
 				4BE1AA5617A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m in Sources */,
-				4EB2190417B4F2C500B901C9 /* SingletonA.m in Sources */,
 				4EB2190717B4F2C500B901C9 /* SingletonB.m in Sources */,
 				4EB2190A17B4F2C500B901C9 /* SingletonC.m in Sources */,
 				4EB2191217B4F30D00B901C9 /* SingletonsChainAssembly.m in Sources */,
