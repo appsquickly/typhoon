@@ -1,5 +1,5 @@
 //
-//  SingletonC.h
+//  SingletonA.h
 //  CircularTyphoon
 //
 //  Created by Cesar Estebanez Tascon on 09/08/13.
@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@class SingletonD;
+@class SingletonB;
 
-@interface SingletonC : NSObject
+@interface SingletonA : NSObject
 
-@property (nonatomic, strong) SingletonD *dependencyOnD;
+@property (nonatomic, strong) SingletonB *dependencyOnB;
 
 @end

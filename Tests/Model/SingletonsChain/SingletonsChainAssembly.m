@@ -9,9 +9,9 @@
 #import "SingletonsChainAssembly.h"
 #import "Typhoon.h"
 
+#import "SingletonA.h"
 #import "SingletonB.h"
-#import "SingletonC.h"
-#import "SingletonD.h"
+#import "NotSingletonA.h"
 
 @implementation SingletonsChainAssembly
 
@@ -26,26 +26,16 @@
 - (id)singletonB
 {
 	return [TyphoonDefinition withClass:[SingletonB class] properties:^(TyphoonDefinition *definition) {
-		[definition injectProperty:@selector(dependencyOnC) withDefinition:[self singletonC]];
+		[definition injectProperty:@selector(dependencyOnNotSingletonA) withDefinition:[self notSingletonA]];
 		[definition setScope:TyphoonScopeSingleton];
 	}];
 }
 
-- (id)singletonC
+- (id)notSingletonA
 {
-	return [TyphoonDefinition withClass:[SingletonC class] properties:^(TyphoonDefinition *definition) {
-		[definition injectProperty:@selector(dependencyOnD) withDefinition:[self singletonD]];
-		[definition setScope:TyphoonScopeSingleton];
-	}];
-}
-
-- (id)singletonD
-{
-	return [TyphoonDefinition withClass:[SingletonD class] initialization:^(TyphoonInitializer *initializer) {
-		initializer.selector = @selector(initWithSingletonB:);
-		[initializer injectWithDefinition:[self singletonB]];
-	} properties:^(TyphoonDefinition *definition) {
-		[definition setScope:TyphoonScopeSingleton];
+	return [TyphoonDefinition withClass:[NotSingletonA class] initialization:^(TyphoonInitializer *initializer) {
+		initializer.selector = @selector(initWithSingletonA:);
+		[initializer injectWithDefinition:[self singletonA]];
 	}];
 }
 

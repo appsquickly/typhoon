@@ -21,9 +21,9 @@
 #import "ClassDDependsOnC.h"
 #import "ClassEDependsOnC.h"
 #import "UnsatisfiableClassFDependsOnGInInitializer.h"
+#import "SingletonA.h"
 #import "SingletonB.h"
-#import "SingletonC.h"
-#import "SingletonD.h"
+#import "NotSingletonA.h"
 #import "CircularDependenciesAssembly.h"
 
 @implementation TyphoonSharedComponentFactoryTests
@@ -210,30 +210,34 @@
 /* ====================================================================================================================================== */
 #pragma mark - Circular dependencies on singleton chains
 
+////////////////////////////////////////////////////////////////////////////////
+//
+//  FAILING TESTS
+//
+//  These tests consistently fails with xml assembly, and could fail with block
+//  assembly depending on the order in which singletons are assembled during
+//  TyphoonComponentFactory load method.
+//
+////////////////////////////////////////////////////////////////////////////////
+
 - (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_type
 {
+	SingletonA *singletonA = [_singletonsChainFactory componentForType:[SingletonA class]];
 	SingletonB *singletonB = [_singletonsChainFactory componentForType:[SingletonB class]];
-	SingletonC *singletonC = [_singletonsChainFactory componentForType:[SingletonC class]];
-	SingletonD *singletonD = [_singletonsChainFactory componentForType:[SingletonD class]];
-	assertThat(singletonB.dependencyOnC, is(singletonC));
-	assertThat(singletonC.dependencyOnD, is(singletonD));
-	// Next assert consistently fails with xml assembly, and could fail with block assembly
-	// depending on the order in which singletons are assembled during load (can be forced
-	// to fail just by sorting _registry alphabetically in load method).
-	assertThat(singletonD.dependencyOnB, is(singletonB));
+	NotSingletonA *notSingletonA = [_singletonsChainFactory componentForType:[NotSingletonA class]];
+	assertThat(singletonA.dependencyOnB, is(singletonB));
+	assertThat(singletonB.dependencyOnNotSingletonA.dependencyOnA, is(singletonA));
+	assertThat(notSingletonA.dependencyOnA, is(singletonA));
 }
 
 - (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_reference
 {
+	SingletonA *singletonA = [_singletonsChainFactory componentForKey:@"singletonA"];
 	SingletonB *singletonB = [_singletonsChainFactory componentForKey:@"singletonB"];
-	SingletonC *singletonC = [_singletonsChainFactory componentForKey:@"singletonC"];
-	SingletonD *singletonD = [_singletonsChainFactory componentForKey:@"singletonD"];
-	assertThat(singletonB.dependencyOnC, is(singletonC));
-	assertThat(singletonC.dependencyOnD, is(singletonD));
-	// Next assert consistently fails with xml assembly, and could fail with block assembly
-	// depending on the order in which singletons are assembled during load (can be forced
-	// to fail just by sorting _registry alphabetically in load method).
-	assertThat(singletonD.dependencyOnB, is(singletonB));
+	NotSingletonA *notSingletonA = [_singletonsChainFactory componentForKey:@"notSingletonA"];
+	assertThat(singletonA.dependencyOnB, is(singletonB));
+	assertThat(singletonB.dependencyOnNotSingletonA.dependencyOnA, is(singletonA));
+	assertThat(notSingletonA.dependencyOnA, is(singletonA));
 }
 
 

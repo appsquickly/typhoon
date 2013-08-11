@@ -12,7 +12,6 @@
 
 - (id)singletonA;
 - (id)singletonB;
-- (id)singletonC;
-- (id)singletonD;
+- (id)notSingletonA;
 
 @end

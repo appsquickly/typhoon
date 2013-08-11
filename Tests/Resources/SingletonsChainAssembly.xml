@@ -8,18 +8,14 @@
     </component>
 
     <component class="SingletonB" key="singletonB" scope="singleton">
-        <property name="dependencyOnC" ref="singletonC"/>
+        <property name="dependencyOnNotSingletonA" ref="notSingletonA"/>
     </component>
 
-	<component class="SingletonC" key="singletonC" scope="singleton">
-        <property name="dependencyOnD" ref="singletonD"/>
-    </component>
-
-    <component class="SingletonD" key="singletonD" scope="singleton">
-        <initializer selector="initWithSingletonB:">
-            <argument parameterName="singletonB" ref="singletonB"/>
-        </initializer>
-    </component>
+	<component class="NotSingletonA" key="notSingletonA" scope="prototype">
+		<initializer selector="initWithSingletonA:">
+			<argument parameterName="singletonA" ref="singletonA"/>
+		</initializer>
+	</component>
 
 </assembly>
 
