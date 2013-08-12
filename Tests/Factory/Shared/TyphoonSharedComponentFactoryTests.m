@@ -214,9 +214,13 @@
 //
 //  FAILING TESTS
 //
-//  These tests consistently fails with xml assembly, and could fail with block
+//  These tests consistently fail with xml assembly, and could fail with block
 //  assembly depending on the order in which singletons are assembled during
 //  TyphoonComponentFactory load method.
+//
+//  In fact, they can be forced to fail just by sorting _registry alphabetically
+//  before instantiating not lazy singletons in load method (see commented code
+//  in TyphoonComponentFactory.m)
 //
 ////////////////////////////////////////////////////////////////////////////////
 
