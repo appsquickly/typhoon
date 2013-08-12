@@ -69,6 +69,20 @@
     return instance;
 }
 
+- (id)buildSingletonWithDefinition:(TyphoonDefinition*)definition
+{
+    if ([self alreadyResolvingDefinition:definition])
+    {
+        return [_currentlyResolvingReferences valueForKey:definition.key];
+    }
+    return [self buildInstanceWithDefinition:definition];
+}
+
+- (BOOL)alreadyResolvingDefinition:(TyphoonDefinition *)definition
+{
+    return ([_currentlyResolvingReferences valueForKey:definition.key] != nil);
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Property Injection
 - (void)resolvePropertyDependenciesOn:(__autoreleasing id)instance definition:(TyphoonDefinition *)definition

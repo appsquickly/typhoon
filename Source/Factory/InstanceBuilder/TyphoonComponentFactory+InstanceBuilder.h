@@ -18,6 +18,8 @@
 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition;
 
+- (id)buildSingletonWithDefinition:(TyphoonDefinition*)definition;
+
 - (void)injectPropertyDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition;
 
 - (NSArray*)allDefinitionsForType:(id)classOrProtocol;
