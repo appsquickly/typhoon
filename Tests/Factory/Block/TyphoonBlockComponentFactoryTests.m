@@ -20,6 +20,7 @@
 #import "ExceptionTestAssembly.h"
 #import "Knight.h"
 #import "CircularDependenciesAssembly.h"
+#import "SingletonsChainAssembly.h"
 
 @interface TyphoonBlockComponentFactoryTests : TyphoonSharedComponentFactoryTests
 @end
@@ -36,6 +37,7 @@
 
     _exceptionTestFactory = [[TyphoonBlockComponentFactory  alloc] initWithAssembly:[ExceptionTestAssembly assembly]];
     _circularDependenciesFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[CircularDependenciesAssembly assembly]];
+    _singletonsChainFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[SingletonsChainAssembly assembly]];
 }
 
 - (void)test_resolves_component_using_selector

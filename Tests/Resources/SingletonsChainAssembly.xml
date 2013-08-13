@@ -1,0 +1,21 @@
+<assembly xmlns="http://www.typhoonframework.org/schema/assembly"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.typhoonframework.org/schema/assembly
+          http://www.typhoonframework.org/schema/assembly.xsd">
+
+    <component class="SingletonA" key="singletonA" scope="singleton">
+        <property name="dependencyOnB" ref="singletonB"/>
+    </component>
+
+    <component class="SingletonB" key="singletonB" scope="singleton">
+        <property name="dependencyOnNotSingletonA" ref="notSingletonA"/>
+    </component>
+
+	<component class="NotSingletonA" key="notSingletonA" scope="prototype">
+		<initializer selector="initWithSingletonA:">
+			<argument parameterName="singletonA" ref="singletonA"/>
+		</initializer>
+	</component>
+
+</assembly>
+
