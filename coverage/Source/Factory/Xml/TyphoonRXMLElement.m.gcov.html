@@ -103,23 +103,23 @@
 <span class="lineNum">      45 </span>            : @implementation TyphoonRXMLElement
 <span class="lineNum">      46 </span>            : 
 <span class="lineNum">      47 </span>            : - (id)initFromXMLString:(NSString *)xmlString encoding:(NSStringEncoding)encoding {
-<span class="lineNum">      48 </span><span class="lineCov">         62 :     if ((self = [super init])) {</span>
-<span class="lineNum">      49 </span><span class="lineCov">         62 :         NSData *data = [xmlString dataUsingEncoding:encoding];</span>
-<span class="lineNum">      50 </span><span class="lineCov">         62 : </span>
+<span class="lineNum">      48 </span><span class="lineCov">         83 :     if ((self = [super init])) {</span>
+<span class="lineNum">      49 </span><span class="lineCov">         83 :         NSData *data = [xmlString dataUsingEncoding:encoding];</span>
+<span class="lineNum">      50 </span><span class="lineCov">         83 : </span>
 <span class="lineNum">      51 </span>            :         doc_ = xmlReadMemory([data bytes], (int) [data length], &quot;&quot;, nil, XML_PARSE_RECOVER);
-<span class="lineNum">      52 </span><span class="lineCov">         62 :         </span>
+<span class="lineNum">      52 </span><span class="lineCov">         83 :         </span>
 <span class="lineNum">      53 </span>            :         if ([self isValid]) {
-<span class="lineNum">      54 </span><span class="lineCov">         62 :             node_ = xmlDocGetRootElement(doc_);</span>
-<span class="lineNum">      55 </span><span class="lineCov">         62 :             </span>
+<span class="lineNum">      54 </span><span class="lineCov">         83 :             node_ = xmlDocGetRootElement(doc_);</span>
+<span class="lineNum">      55 </span><span class="lineCov">         83 :             </span>
 <span class="lineNum">      56 </span>            :             if (!node_) {
-<span class="lineNum">      57 </span><span class="lineCov">         62 :                 xmlFreeDoc(doc_); doc_ = nil;</span>
+<span class="lineNum">      57 </span><span class="lineCov">         83 :                 xmlFreeDoc(doc_); doc_ = nil;</span>
 <span class="lineNum">      58 </span><span class="lineNoCov">          0 :             }</span>
 <span class="lineNum">      59 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">      60 </span><span class="lineCov">         62 :     }</span>
-<span class="lineNum">      61 </span><span class="lineCov">         62 :     </span>
+<span class="lineNum">      60 </span><span class="lineCov">         83 :     }</span>
+<span class="lineNum">      61 </span><span class="lineCov">         83 :     </span>
 <span class="lineNum">      62 </span>            :     return self;    
-<span class="lineNum">      63 </span><span class="lineCov">         62 : }</span>
-<span class="lineNum">      64 </span><span class="lineCov">         62 : </span>
+<span class="lineNum">      63 </span><span class="lineCov">         83 : }</span>
+<span class="lineNum">      64 </span><span class="lineCov">         83 : </span>
 <span class="lineNum">      65 </span>            : - (id)initFromXMLFile:(NSString *)filename {
 <span class="lineNum">      66 </span><span class="lineNoCov">          0 :     if ((self = [super init])) {</span>
 <span class="lineNum">      67 </span><span class="lineNoCov">          0 :         NSString *fullPath = [[[NSBundle bundleForClass:self.class] bundlePath] stringByAppendingPathComponent:filename];</span>
@@ -194,19 +194,19 @@
 <span class="lineNum">     136 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     137 </span><span class="lineNoCov">          0 : - (id)initFromXMLNode:(xmlNodePtr)node {</span>
 <span class="lineNum">     138 </span>            :     if ((self = [super init])) {
-<span class="lineNum">     139 </span><span class="lineCov">        915 :         doc_ = nil;</span>
-<span class="lineNum">     140 </span><span class="lineCov">        915 :         node_ = node;</span>
-<span class="lineNum">     141 </span><span class="lineCov">        915 :     }</span>
-<span class="lineNum">     142 </span><span class="lineCov">        915 :     </span>
-<span class="lineNum">     143 </span><span class="lineCov">        915 :     return self;        </span>
+<span class="lineNum">     139 </span><span class="lineCov">       1142 :         doc_ = nil;</span>
+<span class="lineNum">     140 </span><span class="lineCov">       1142 :         node_ = node;</span>
+<span class="lineNum">     141 </span><span class="lineCov">       1142 :     }</span>
+<span class="lineNum">     142 </span><span class="lineCov">       1142 :     </span>
+<span class="lineNum">     143 </span><span class="lineCov">       1142 :     return self;        </span>
 <span class="lineNum">     144 </span>            : }
-<span class="lineNum">     145 </span><span class="lineCov">        915 : </span>
-<span class="lineNum">     146 </span><span class="lineCov">        915 : + (id)elementFromXMLString:(NSString *)attributeXML_ encoding:(NSStringEncoding)encoding {</span>
+<span class="lineNum">     145 </span><span class="lineCov">       1142 : </span>
+<span class="lineNum">     146 </span><span class="lineCov">       1142 : + (id)elementFromXMLString:(NSString *)attributeXML_ encoding:(NSStringEncoding)encoding {</span>
 <span class="lineNum">     147 </span>            :     return SAFE_ARC_AUTORELEASE([[TyphoonRXMLElement alloc] initFromXMLString:attributeXML_ encoding:encoding]);
 <span class="lineNum">     148 </span>            : }
-<span class="lineNum">     149 </span><span class="lineCov">         62 : </span>
-<span class="lineNum">     150 </span><span class="lineCov">        124 : + (id)elementFromXMLFile:(NSString *)filename {</span>
-<span class="lineNum">     151 </span><span class="lineCov">         62 :     return SAFE_ARC_AUTORELEASE([[TyphoonRXMLElement alloc] initFromXMLFile:filename]);</span>
+<span class="lineNum">     149 </span><span class="lineCov">         83 : </span>
+<span class="lineNum">     150 </span><span class="lineCov">        166 : + (id)elementFromXMLFile:(NSString *)filename {</span>
+<span class="lineNum">     151 </span><span class="lineCov">         83 :     return SAFE_ARC_AUTORELEASE([[TyphoonRXMLElement alloc] initFromXMLFile:filename]);</span>
 <span class="lineNum">     152 </span>            : }
 <span class="lineNum">     153 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     154 </span><span class="lineNoCov">          0 : + (id)elementFromXMLFilename:(NSString *)filename fileExtension:(NSString *)extension {</span>
@@ -225,32 +225,32 @@
 <span class="lineNum">     167 </span><span class="lineNoCov">          0 :     return SAFE_ARC_AUTORELEASE([[TyphoonRXMLElement alloc] initFromXMLNode:node]);</span>
 <span class="lineNum">     168 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     169 </span>            : 
-<span class="lineNum">     170 </span><span class="lineCov">        915 : - (NSString *)description {</span>
-<span class="lineNum">     171 </span><span class="lineCov">        915 :     return [self text];</span>
+<span class="lineNum">     170 </span><span class="lineCov">       1142 : - (NSString *)description {</span>
+<span class="lineNum">     171 </span><span class="lineCov">       1142 :     return [self text];</span>
 <span class="lineNum">     172 </span>            : }
 <span class="lineNum">     173 </span>            : 
 <span class="lineNum">     174 </span><span class="lineNoCov">          0 : - (void)dealloc {</span>
 <span class="lineNum">     175 </span><span class="lineNoCov">          0 :     if (doc_ != nil) xmlFreeDoc(doc_);</span>
 <span class="lineNum">     176 </span>            :     SAFE_ARC_SUPER_DEALLOC();
 <span class="lineNum">     177 </span>            : }
-<span class="lineNum">     178 </span><span class="lineCov">        967 : </span>
-<span class="lineNum">     179 </span><span class="lineCov">         53 : #pragma mark -</span>
+<span class="lineNum">     178 </span><span class="lineCov">       1215 : </span>
+<span class="lineNum">     179 </span><span class="lineCov">         74 : #pragma mark -</span>
 <span class="lineNum">     180 </span>            : 
-<span class="lineNum">     181 </span><span class="lineCov">        967 : - (NSString *)tag {</span>
+<span class="lineNum">     181 </span><span class="lineCov">       1215 : - (NSString *)tag {</span>
 <span class="lineNum">     182 </span>            :     return [NSString stringWithUTF8String:(const char *)node_-&gt;name];
 <span class="lineNum">     183 </span>            : }
 <span class="lineNum">     184 </span>            : 
-<span class="lineNum">     185 </span><span class="lineCov">       1717 : - (NSString *)text {</span>
-<span class="lineNum">     186 </span><span class="lineCov">       1717 :     xmlChar *key = xmlNodeGetContent(node_);</span>
+<span class="lineNum">     185 </span><span class="lineCov">       2167 : - (NSString *)text {</span>
+<span class="lineNum">     186 </span><span class="lineCov">       2167 :     xmlChar *key = xmlNodeGetContent(node_);</span>
 <span class="lineNum">     187 </span>            :     NSString *text = (key ? [NSString stringWithUTF8String:(const char *)key] : @&quot;&quot;);
 <span class="lineNum">     188 </span>            :     xmlFree(key);
-<span class="lineNum">     189 </span><span class="lineCov">         56 : </span>
-<span class="lineNum">     190 </span><span class="lineCov">         56 :     return text;</span>
-<span class="lineNum">     191 </span><span class="lineCov">         56 : }</span>
-<span class="lineNum">     192 </span><span class="lineCov">         56 : </span>
+<span class="lineNum">     189 </span><span class="lineCov">         64 : </span>
+<span class="lineNum">     190 </span><span class="lineCov">         64 :     return text;</span>
+<span class="lineNum">     191 </span><span class="lineCov">         64 : }</span>
+<span class="lineNum">     192 </span><span class="lineCov">         64 : </span>
 <span class="lineNum">     193 </span>            : - (NSInteger)textAsInt {
-<span class="lineNum">     194 </span><span class="lineCov">         56 :     return [self.text intValue];</span>
-<span class="lineNum">     195 </span><span class="lineCov">         56 : }</span>
+<span class="lineNum">     194 </span><span class="lineCov">         64 :     return [self.text intValue];</span>
+<span class="lineNum">     195 </span><span class="lineCov">         64 : }</span>
 <span class="lineNum">     196 </span>            : 
 <span class="lineNum">     197 </span><span class="lineNoCov">          0 : - (double)textAsDouble {</span>
 <span class="lineNum">     198 </span><span class="lineNoCov">          0 :     return [self.text doubleValue];</span>
@@ -260,17 +260,17 @@
 <span class="lineNum">     202 </span><span class="lineNoCov">          0 :     NSString *ret = nil;</span>
 <span class="lineNum">     203 </span>            :     const unsigned char *attCStr = xmlGetProp(node_, (const xmlChar *)[attName cStringUsingEncoding:NSUTF8StringEncoding]);        
 <span class="lineNum">     204 </span>            :     
-<span class="lineNum">     205 </span><span class="lineCov">       2896 :     if (attCStr) {</span>
-<span class="lineNum">     206 </span><span class="lineCov">       2896 :         ret = [NSString stringWithUTF8String:(const char *)attCStr];</span>
-<span class="lineNum">     207 </span><span class="lineCov">       2896 :         xmlFree((void *)attCStr);</span>
+<span class="lineNum">     205 </span><span class="lineCov">       3806 :     if (attCStr) {</span>
+<span class="lineNum">     206 </span><span class="lineCov">       3806 :         ret = [NSString stringWithUTF8String:(const char *)attCStr];</span>
+<span class="lineNum">     207 </span><span class="lineCov">       3806 :         xmlFree((void *)attCStr);</span>
 <span class="lineNum">     208 </span>            :     }
-<span class="lineNum">     209 </span><span class="lineCov">       2896 :     </span>
-<span class="lineNum">     210 </span><span class="lineCov">       1470 :     return ret;</span>
-<span class="lineNum">     211 </span><span class="lineCov">       1470 : }</span>
-<span class="lineNum">     212 </span><span class="lineCov">       1470 : </span>
+<span class="lineNum">     209 </span><span class="lineCov">       3806 :     </span>
+<span class="lineNum">     210 </span><span class="lineCov">       1912 :     return ret;</span>
+<span class="lineNum">     211 </span><span class="lineCov">       1912 : }</span>
+<span class="lineNum">     212 </span><span class="lineCov">       1912 : </span>
 <span class="lineNum">     213 </span>            : - (NSString *)attribute:(NSString *)attName inNamespace:(NSString *)ns {
-<span class="lineNum">     214 </span><span class="lineCov">       2896 :     const unsigned char *attCStr = xmlGetNsProp(node_, (const xmlChar *)[attName cStringUsingEncoding:NSUTF8StringEncoding], (const xmlChar *)[ns cStringUsingEncoding:NSUTF8StringEncoding]);</span>
-<span class="lineNum">     215 </span><span class="lineCov">       2896 : </span>
+<span class="lineNum">     214 </span><span class="lineCov">       3806 :     const unsigned char *attCStr = xmlGetNsProp(node_, (const xmlChar *)[attName cStringUsingEncoding:NSUTF8StringEncoding], (const xmlChar *)[ns cStringUsingEncoding:NSUTF8StringEncoding]);</span>
+<span class="lineNum">     215 </span><span class="lineCov">       3806 : </span>
 <span class="lineNum">     216 </span>            :     if (attCStr) {
 <span class="lineNum">     217 </span>            :         return [NSString stringWithUTF8String:(const char *)attCStr];
 <span class="lineNum">     218 </span><span class="lineNoCov">          0 :     }</span>
@@ -301,13 +301,13 @@
 <span class="lineNum">     243 </span><span class="lineNoCov">          0 :         result |= [[[self attribute:attName] lowercaseString] isEqual:@&quot;yes&quot;];</span>
 <span class="lineNum">     244 </span><span class="lineNoCov">          0 :     return result;</span>
 <span class="lineNum">     245 </span>            : }
-<span class="lineNum">     246 </span><span class="lineCov">         19 : </span>
+<span class="lineNum">     246 </span><span class="lineCov">         51 : </span>
 <span class="lineNum">     247 </span>            : - (BOOL)attributeAsBool:(NSString *)attName inNamespace:(NSString *)ns {
-<span class="lineNum">     248 </span><span class="lineCov">         19 :         BOOL result = NO;</span>
-<span class="lineNum">     249 </span><span class="lineCov">         19 :         result |= [[[self attribute:attName inNamespace:ns] lowercaseString] isEqual:@&quot;true&quot;];</span>
-<span class="lineNum">     250 </span><span class="lineCov">         19 :         result |= [[[self attribute:attName inNamespace:ns] lowercaseString] isEqual:@&quot;yes&quot;];</span>
-<span class="lineNum">     251 </span><span class="lineCov">         38 :     return result;</span>
-<span class="lineNum">     252 </span><span class="lineCov">         19 : }</span>
+<span class="lineNum">     248 </span><span class="lineCov">         51 :         BOOL result = NO;</span>
+<span class="lineNum">     249 </span><span class="lineCov">         51 :         result |= [[[self attribute:attName inNamespace:ns] lowercaseString] isEqual:@&quot;true&quot;];</span>
+<span class="lineNum">     250 </span><span class="lineCov">         51 :         result |= [[[self attribute:attName inNamespace:ns] lowercaseString] isEqual:@&quot;yes&quot;];</span>
+<span class="lineNum">     251 </span><span class="lineCov">        102 :     return result;</span>
+<span class="lineNum">     252 </span><span class="lineCov">         51 : }</span>
 <span class="lineNum">     253 </span>            : 
 <span class="lineNum">     254 </span>            : - (BOOL)isValid {
 <span class="lineNum">     255 </span><span class="lineNoCov">          0 :     return (doc_ != nil);</span>
@@ -317,48 +317,48 @@
 <span class="lineNum">     259 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     260 </span><span class="lineNoCov">          0 : - (TyphoonRXMLElement*)child:(NSString *)tag {</span>
 <span class="lineNum">     261 </span>            :     NSArray *components = [tag componentsSeparatedByString:@&quot;.&quot;];
-<span class="lineNum">     262 </span><span class="lineCov">         62 :     xmlNodePtr cur = node_;</span>
-<span class="lineNum">     263 </span><span class="lineCov">         62 :     </span>
+<span class="lineNum">     262 </span><span class="lineCov">         83 :     xmlNodePtr cur = node_;</span>
+<span class="lineNum">     263 </span><span class="lineCov">         83 :     </span>
 <span class="lineNum">     264 </span>            :     // navigate down
 <span class="lineNum">     265 </span>            :     for (NSString *itag in components) {
 <span class="lineNum">     266 </span>            :         const xmlChar *tagC = (const xmlChar *)[itag cStringUsingEncoding:NSUTF8StringEncoding];
 <span class="lineNum">     267 </span>            : 
-<span class="lineNum">     268 </span><span class="lineCov">        194 :         if ([itag isEqualToString:@&quot;*&quot;]) {</span>
-<span class="lineNum">     269 </span><span class="lineCov">        194 :             cur = cur-&gt;children;</span>
-<span class="lineNum">     270 </span><span class="lineCov">        194 :             </span>
+<span class="lineNum">     268 </span><span class="lineCov">        252 :         if ([itag isEqualToString:@&quot;*&quot;]) {</span>
+<span class="lineNum">     269 </span><span class="lineCov">        252 :             cur = cur-&gt;children;</span>
+<span class="lineNum">     270 </span><span class="lineCov">        252 :             </span>
 <span class="lineNum">     271 </span>            :             while (cur != nil &amp;&amp; cur-&gt;type != XML_ELEMENT_NODE) {
 <span class="lineNum">     272 </span>            :                 cur = cur-&gt;next;
-<span class="lineNum">     273 </span><span class="lineCov">        194 :             }</span>
-<span class="lineNum">     274 </span><span class="lineCov">        194 :         } else {</span>
+<span class="lineNum">     273 </span><span class="lineCov">        252 :             }</span>
+<span class="lineNum">     274 </span><span class="lineCov">        252 :         } else {</span>
 <span class="lineNum">     275 </span>            :             cur = cur-&gt;children;
-<span class="lineNum">     276 </span><span class="lineCov">        194 :             while (cur != nil) {</span>
+<span class="lineNum">     276 </span><span class="lineCov">        252 :             while (cur != nil) {</span>
 <span class="lineNum">     277 </span><span class="lineNoCov">          0 :                 if (cur-&gt;type == XML_ELEMENT_NODE &amp;&amp; !xmlStrcmp(cur-&gt;name, tagC)) {</span>
 <span class="lineNum">     278 </span>            :                     break;
 <span class="lineNum">     279 </span><span class="lineNoCov">          0 :                 }</span>
 <span class="lineNum">     280 </span><span class="lineNoCov">          0 :                 </span>
 <span class="lineNum">     281 </span><span class="lineNoCov">          0 :                 cur = cur-&gt;next;</span>
 <span class="lineNum">     282 </span><span class="lineNoCov">          0 :             }</span>
-<span class="lineNum">     283 </span><span class="lineCov">        194 :         }</span>
-<span class="lineNum">     284 </span><span class="lineCov">        432 :         </span>
-<span class="lineNum">     285 </span><span class="lineCov">        266 :         if (!cur) {</span>
-<span class="lineNum">     286 </span><span class="lineCov">         28 :             break;</span>
+<span class="lineNum">     283 </span><span class="lineCov">        252 :         }</span>
+<span class="lineNum">     284 </span><span class="lineCov">        524 :         </span>
+<span class="lineNum">     285 </span><span class="lineCov">        304 :         if (!cur) {</span>
+<span class="lineNum">     286 </span><span class="lineCov">         32 :             break;</span>
 <span class="lineNum">     287 </span>            :         }
 <span class="lineNum">     288 </span>            :     }
-<span class="lineNum">     289 </span><span class="lineCov">        238 :     </span>
-<span class="lineNum">     290 </span><span class="lineCov">        432 :     if (cur) {</span>
+<span class="lineNum">     289 </span><span class="lineCov">        272 :     </span>
+<span class="lineNum">     290 </span><span class="lineCov">        524 :     if (cur) {</span>
 <span class="lineNum">     291 </span>            :         return [TyphoonRXMLElement elementFromXMLNode:cur];
 <span class="lineNum">     292 </span>            :     }
-<span class="lineNum">     293 </span><span class="lineCov">        194 :   </span>
-<span class="lineNum">     294 </span><span class="lineCov">        166 :     return nil;</span>
+<span class="lineNum">     293 </span><span class="lineCov">        252 :   </span>
+<span class="lineNum">     294 </span><span class="lineCov">        220 :     return nil;</span>
 <span class="lineNum">     295 </span>            : }
-<span class="lineNum">     296 </span><span class="lineCov">        194 : </span>
+<span class="lineNum">     296 </span><span class="lineCov">        252 : </span>
 <span class="lineNum">     297 </span>            : - (TyphoonRXMLElement*)child:(NSString *)tag inNamespace:(NSString *)ns {
-<span class="lineNum">     298 </span><span class="lineCov">        222 :     NSArray *components = [tag componentsSeparatedByString:@&quot;.&quot;];</span>
-<span class="lineNum">     299 </span><span class="lineCov">         28 :     xmlNodePtr cur = node_;</span>
+<span class="lineNum">     298 </span><span class="lineCov">        284 :     NSArray *components = [tag componentsSeparatedByString:@&quot;.&quot;];</span>
+<span class="lineNum">     299 </span><span class="lineCov">         32 :     xmlNodePtr cur = node_;</span>
 <span class="lineNum">     300 </span>            :     const xmlChar *namespaceC = (const xmlChar *)[ns cStringUsingEncoding:NSUTF8StringEncoding];
 <span class="lineNum">     301 </span>            :     
-<span class="lineNum">     302 </span><span class="lineCov">        166 :     // navigate down</span>
-<span class="lineNum">     303 </span><span class="lineCov">        194 :     for (NSString *itag in components) {</span>
+<span class="lineNum">     302 </span><span class="lineCov">        220 :     // navigate down</span>
+<span class="lineNum">     303 </span><span class="lineCov">        252 :     for (NSString *itag in components) {</span>
 <span class="lineNum">     304 </span>            :         const xmlChar *tagC = (const xmlChar *)[itag cStringUsingEncoding:NSUTF8StringEncoding];
 <span class="lineNum">     305 </span>            :         
 <span class="lineNum">     306 </span><span class="lineNoCov">          0 :         if ([itag isEqualToString:@&quot;*&quot;]) {</span>
@@ -474,24 +474,24 @@
 <span class="lineNum">     416 </span>            : 
 <span class="lineNum">     417 </span>            :     // navigate down
 <span class="lineNum">     418 </span>            :     for (NSInteger i=0; i &lt; components.count; ++i) {
-<span class="lineNum">     419 </span><span class="lineCov">        419 :         NSString *iTagName = [components objectAtIndex:i];</span>
+<span class="lineNum">     419 </span><span class="lineCov">        552 :         NSString *iTagName = [components objectAtIndex:i];</span>
 <span class="lineNum">     420 </span>            :         
-<span class="lineNum">     421 </span><span class="lineCov">        419 :         if ([iTagName isEqualToString:@&quot;*&quot;]) {</span>
+<span class="lineNum">     421 </span><span class="lineCov">        552 :         if ([iTagName isEqualToString:@&quot;*&quot;]) {</span>
 <span class="lineNum">     422 </span><span class="lineNoCov">          0 :             cur = cur-&gt;children;</span>
 <span class="lineNum">     423 </span>            : 
 <span class="lineNum">     424 </span>            :             // different behavior depending on if this is the end of the query or midstream
-<span class="lineNum">     425 </span><span class="lineCov">        419 :             if (i &lt; (components.count - 1)) {</span>
-<span class="lineNum">     426 </span><span class="lineCov">        419 :                 // midstream</span>
+<span class="lineNum">     425 </span><span class="lineCov">        552 :             if (i &lt; (components.count - 1)) {</span>
+<span class="lineNum">     426 </span><span class="lineCov">        552 :                 // midstream</span>
 <span class="lineNum">     427 </span>            :                 do {
 <span class="lineNum">     428 </span>            :                     if (cur-&gt;type == XML_ELEMENT_NODE) {
-<span class="lineNum">     429 </span><span class="lineCov">        838 :                         TyphoonRXMLElement*element = [TyphoonRXMLElement elementFromXMLNode:cur];</span>
-<span class="lineNum">     430 </span><span class="lineCov">        419 :                         NSString *restOfQuery = [[components subarrayWithRange:NSMakeRange(i + 1, components.count - i - 1)] componentsJoinedByString:@&quot;.&quot;];</span>
+<span class="lineNum">     429 </span><span class="lineCov">       1104 :                         TyphoonRXMLElement*element = [TyphoonRXMLElement elementFromXMLNode:cur];</span>
+<span class="lineNum">     430 </span><span class="lineCov">        552 :                         NSString *restOfQuery = [[components subarrayWithRange:NSMakeRange(i + 1, components.count - i - 1)] componentsJoinedByString:@&quot;.&quot;];</span>
 <span class="lineNum">     431 </span>            :                         [element iterate:restOfQuery usingBlock:blk];
-<span class="lineNum">     432 </span><span class="lineCov">        419 :                     }</span>
-<span class="lineNum">     433 </span><span class="lineCov">        419 :                     </span>
+<span class="lineNum">     432 </span><span class="lineCov">        552 :                     }</span>
+<span class="lineNum">     433 </span><span class="lineCov">        552 :                     </span>
 <span class="lineNum">     434 </span>            :                     cur = cur-&gt;next;
 <span class="lineNum">     435 </span>            :                 } while (cur != nil);
-<span class="lineNum">     436 </span><span class="lineCov">        419 :                     </span>
+<span class="lineNum">     436 </span><span class="lineCov">        552 :                     </span>
 <span class="lineNum">     437 </span>            :             }
 <span class="lineNum">     438 </span><span class="lineNoCov">          0 :         } else {</span>
 <span class="lineNum">     439 </span><span class="lineNoCov">          0 :             const xmlChar *tagNameC = (const xmlChar *)[iTagName cStringUsingEncoding:NSUTF8StringEncoding];</span>
@@ -504,7 +504,7 @@
 <span class="lineNum">     446 </span><span class="lineNoCov">          0 :                 </span>
 <span class="lineNum">     447 </span>            :                 cur = cur-&gt;next;
 <span class="lineNum">     448 </span><span class="lineNoCov">          0 :             }</span>
-<span class="lineNum">     449 </span><span class="lineCov">        419 :         }</span>
+<span class="lineNum">     449 </span><span class="lineCov">        552 :         }</span>
 <span class="lineNum">     450 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     451 </span>            :         if (!cur) {
 <span class="lineNum">     452 </span><span class="lineNoCov">          0 :             break;</span>
@@ -517,24 +517,24 @@
 <span class="lineNum">     459 </span><span class="lineNoCov">          0 :         </span>
 <span class="lineNum">     460 </span>            :         do {
 <span class="lineNum">     461 </span>            :             if (cur-&gt;type == XML_ELEMENT_NODE) {
-<span class="lineNum">     462 </span><span class="lineCov">        419 :                 TyphoonRXMLElement*element = [TyphoonRXMLElement elementFromXMLNode:cur];</span>
+<span class="lineNum">     462 </span><span class="lineCov">        552 :                 TyphoonRXMLElement*element = [TyphoonRXMLElement elementFromXMLNode:cur];</span>
 <span class="lineNum">     463 </span><span class="lineNoCov">          0 :                 blk(element);</span>
 <span class="lineNum">     464 </span>            :             }
-<span class="lineNum">     465 </span><span class="lineCov">        419 :             </span>
+<span class="lineNum">     465 </span><span class="lineCov">        552 :             </span>
 <span class="lineNum">     466 </span>            :             if ([childTagName isEqualToString:@&quot;*&quot;]) {
-<span class="lineNum">     467 </span><span class="lineCov">        838 :                 cur = cur-&gt;next;</span>
+<span class="lineNum">     467 </span><span class="lineCov">       1104 :                 cur = cur-&gt;next;</span>
 <span class="lineNum">     468 </span>            :             } else {
-<span class="lineNum">     469 </span><span class="lineCov">        419 :                 const xmlChar *tagNameC = (const xmlChar *)[childTagName cStringUsingEncoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">     469 </span><span class="lineCov">        552 :                 const xmlChar *tagNameC = (const xmlChar *)[childTagName cStringUsingEncoding:NSUTF8StringEncoding];</span>
 <span class="lineNum">     470 </span>            : 
-<span class="lineNum">     471 </span><span class="lineCov">        419 :                 while ((cur = cur-&gt;next)) {</span>
-<span class="lineNum">     472 </span><span class="lineCov">       2094 :                     if (cur-&gt;type == XML_ELEMENT_NODE &amp;&amp; !xmlStrcmp(cur-&gt;name, tagNameC)) {</span>
-<span class="lineNum">     473 </span><span class="lineCov">        837 :                         break;</span>
-<span class="lineNum">     474 </span><span class="lineCov">        837 :                     }                    </span>
-<span class="lineNum">     475 </span><span class="lineCov">        838 :                 }</span>
+<span class="lineNum">     471 </span><span class="lineCov">        552 :                 while ((cur = cur-&gt;next)) {</span>
+<span class="lineNum">     472 </span><span class="lineCov">       2673 :                     if (cur-&gt;type == XML_ELEMENT_NODE &amp;&amp; !xmlStrcmp(cur-&gt;name, tagNameC)) {</span>
+<span class="lineNum">     473 </span><span class="lineCov">       1060 :                         break;</span>
+<span class="lineNum">     474 </span><span class="lineCov">       1060 :                     }                    </span>
+<span class="lineNum">     475 </span><span class="lineCov">       1061 :                 }</span>
 <span class="lineNum">     476 </span>            :             }
-<span class="lineNum">     477 </span><span class="lineCov">       2093 :         } while (cur);</span>
-<span class="lineNum">     478 </span><span class="lineCov">       2093 :     }</span>
-<span class="lineNum">     479 </span><span class="lineCov">       2093 : }</span>
+<span class="lineNum">     477 </span><span class="lineCov">       2672 :         } while (cur);</span>
+<span class="lineNum">     478 </span><span class="lineCov">       2672 :     }</span>
+<span class="lineNum">     479 </span><span class="lineCov">       2672 : }</span>
 <span class="lineNum">     480 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     481 </span>            : - (void)iterateWithRootXPath:(NSString *)xpath usingBlock:(void (^)(TyphoonRXMLElement*))blk {
 <span class="lineNum">     482 </span><span class="lineNoCov">          0 :     NSArray *children = [self childrenWithRootXPath:xpath];</span>
@@ -543,9 +543,9 @@
 <span class="lineNum">     485 </span>            : 
 <span class="lineNum">     486 </span><span class="lineNoCov">          0 : - (void)iterateElements:(NSArray *)elements usingBlock:(void (^)(TyphoonRXMLElement*))blk {</span>
 <span class="lineNum">     487 </span>            :     for (TyphoonRXMLElement*iElement in elements) {
-<span class="lineNum">     488 </span><span class="lineCov">       2093 :         blk(iElement);</span>
-<span class="lineNum">     489 </span><span class="lineCov">        418 :     }</span>
-<span class="lineNum">     490 </span><span class="lineCov">        418 : }</span>
+<span class="lineNum">     488 </span><span class="lineCov">       2672 :         blk(iElement);</span>
+<span class="lineNum">     489 </span><span class="lineCov">        551 :     }</span>
+<span class="lineNum">     490 </span><span class="lineCov">        551 : }</span>
 <span class="lineNum">     491 </span>            : 
 <span class="lineNum">     492 </span>            : @end
 </pre>

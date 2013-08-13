@@ -74,27 +74,27 @@
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span>            : @implementation TyphoonAssemblySelectorWrapper
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span><span class="lineCov">        208 : + (SEL)wrappedSELForKey:(NSString *)key;</span>
+<span class="lineNum">      19 </span><span class="lineCov">        285 : + (SEL)wrappedSELForKey:(NSString *)key;</span>
 <span class="lineNum">      20 </span>            : {
-<span class="lineNum">      21 </span><span class="lineCov">        416 :     return NSSelectorFromString([key stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);</span>
-<span class="lineNum">      22 </span><span class="lineCov">        208 : }</span>
+<span class="lineNum">      21 </span><span class="lineCov">        570 :     return NSSelectorFromString([key stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);</span>
+<span class="lineNum">      22 </span><span class="lineCov">        285 : }</span>
 <span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineCov">        390 : + (NSString *)keyForWrappedSEL:(SEL)selWithAdvicePrefix;</span>
+<span class="lineNum">      24 </span><span class="lineCov">        540 : + (NSString *)keyForWrappedSEL:(SEL)selWithAdvicePrefix;</span>
 <span class="lineNum">      25 </span>            : {
-<span class="lineNum">      26 </span><span class="lineCov">        390 :     NSString* name = NSStringFromSelector(selWithAdvicePrefix);</span>
-<span class="lineNum">      27 </span><span class="lineCov">        390 :     NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@&quot;&quot;];</span>
-<span class="lineNum">      28 </span><span class="lineCov">        780 :     return key;</span>
-<span class="lineNum">      29 </span><span class="lineCov">        390 : }</span>
+<span class="lineNum">      26 </span><span class="lineCov">        540 :     NSString* name = NSStringFromSelector(selWithAdvicePrefix);</span>
+<span class="lineNum">      27 </span><span class="lineCov">        540 :     NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@&quot;&quot;];</span>
+<span class="lineNum">      28 </span><span class="lineCov">       1080 :     return key;</span>
+<span class="lineNum">      29 </span><span class="lineCov">        540 : }</span>
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">         16 : + (BOOL)selectorIsWrapped:(SEL)sel;</span>
+<span class="lineNum">      31 </span><span class="lineCov">         19 : + (BOOL)selectorIsWrapped:(SEL)sel;</span>
 <span class="lineNum">      32 </span>            : {
-<span class="lineNum">      33 </span><span class="lineCov">         16 :     NSString* name = NSStringFromSelector(sel);</span>
-<span class="lineNum">      34 </span><span class="lineCov">         32 :     return [name hasSuffix:TYPHOON_BEFORE_ADVICE_SUFFIX];  // a name will always have this suffix after a TyphoonBlockComponentFactory has been initialized with us as the assembly. Make this clearer. All user facing calls will always go through the dynamic implementation machinery.</span>
-<span class="lineNum">      35 </span><span class="lineCov">         16 : }</span>
+<span class="lineNum">      33 </span><span class="lineCov">         19 :     NSString* name = NSStringFromSelector(sel);</span>
+<span class="lineNum">      34 </span><span class="lineCov">         38 :     return [name hasSuffix:TYPHOON_BEFORE_ADVICE_SUFFIX];  // a name will always have this suffix after a TyphoonBlockComponentFactory has been initialized with us as the assembly. Make this clearer. All user facing calls will always go through the dynamic implementation machinery.</span>
+<span class="lineNum">      35 </span><span class="lineCov">         19 : }</span>
 <span class="lineNum">      36 </span>            : 
-<span class="lineNum">      37 </span><span class="lineCov">         16 : + (SEL)wrappedSELForSEL:(SEL)unwrappedSEL;</span>
+<span class="lineNum">      37 </span><span class="lineCov">         19 : + (SEL)wrappedSELForSEL:(SEL)unwrappedSEL;</span>
 <span class="lineNum">      38 </span>            : {
-<span class="lineNum">      39 </span><span class="lineCov">         16 :     return NSSelectorFromString([NSStringFromSelector(unwrappedSEL) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);</span>
+<span class="lineNum">      39 </span><span class="lineCov">         19 :     return NSSelectorFromString([NSStringFromSelector(unwrappedSEL) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);</span>
 <span class="lineNum">      40 </span>            : }
 <span class="lineNum">      41 </span>            : 
 <span class="lineNum">      42 </span>            : @end

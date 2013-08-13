@@ -79,23 +79,23 @@
 <span class="lineNum">      21 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : - (id)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString*)reference
-<span class="lineNum">      24 </span><span class="lineCov">         86 : {</span>
+<span class="lineNum">      24 </span><span class="lineCov">        128 : {</span>
 <span class="lineNum">      25 </span>            :     self = [super init];
-<span class="lineNum">      26 </span><span class="lineCov">         86 :     if (self)</span>
-<span class="lineNum">      27 </span><span class="lineCov">         86 :     {</span>
+<span class="lineNum">      26 </span><span class="lineCov">        128 :     if (self)</span>
+<span class="lineNum">      27 </span><span class="lineCov">        128 :     {</span>
 <span class="lineNum">      28 </span>            :         _index = parameterIndex;
-<span class="lineNum">      29 </span><span class="lineCov">         86 :         _reference = reference;</span>
-<span class="lineNum">      30 </span><span class="lineCov">         86 :     }</span>
-<span class="lineNum">      31 </span><span class="lineCov">         86 :     return self;</span>
-<span class="lineNum">      32 </span><span class="lineCov">         86 : }</span>
-<span class="lineNum">      33 </span><span class="lineCov">         86 : </span>
+<span class="lineNum">      29 </span><span class="lineCov">        128 :         _reference = reference;</span>
+<span class="lineNum">      30 </span><span class="lineCov">        128 :     }</span>
+<span class="lineNum">      31 </span><span class="lineCov">        128 :     return self;</span>
+<span class="lineNum">      32 </span><span class="lineCov">        128 : }</span>
+<span class="lineNum">      33 </span><span class="lineCov">        128 : </span>
 <span class="lineNum">      34 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      35 </span>            : #pragma mark - Protocol Methods
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : - (TyphoonParameterInjectionType)type
-<span class="lineNum">      38 </span><span class="lineCov">         21 : {</span>
+<span class="lineNum">      38 </span><span class="lineCov">         29 : {</span>
 <span class="lineNum">      39 </span>            :     return TyphoonParameterInjectedByReferenceType;
-<span class="lineNum">      40 </span><span class="lineCov">         21 : }</span>
+<span class="lineNum">      40 </span><span class="lineCov">         29 : }</span>
 <span class="lineNum">      41 </span>            : 
 <span class="lineNum">      42 </span>            : - (void)setInitializer:(TyphoonInitializer*)initializer
 <span class="lineNum">      43 </span><span class="lineCov">          3 : {</span>
