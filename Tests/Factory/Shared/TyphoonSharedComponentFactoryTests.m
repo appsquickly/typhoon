@@ -21,6 +21,9 @@
 #import "ClassDDependsOnC.h"
 #import "ClassEDependsOnC.h"
 #import "UnsatisfiableClassFDependsOnGInInitializer.h"
+#import "SingletonA.h"
+#import "SingletonB.h"
+#import "NotSingletonA.h"
 #import "CircularDependenciesAssembly.h"
 
 @implementation TyphoonSharedComponentFactoryTests
@@ -203,6 +206,44 @@
     assertThat(classD, equalTo(classD.dependencyOnC.dependencyOnD));
     assertThat([classD.dependencyOnC class], equalTo([ClassCDependsOnDAndE class]));
 }
+
+/* ====================================================================================================================================== */
+#pragma mark - Circular dependencies on singleton chains
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//  FAILING TESTS
+//
+//  These tests consistently fail with xml assembly, and could fail with block
+//  assembly depending on the order in which singletons are assembled during
+//  TyphoonComponentFactory load method.
+//
+//  In fact, they can be forced to fail just by sorting _registry alphabetically
+//  before instantiating not lazy singletons in load method (see commented code
+//  in TyphoonComponentFactory.m)
+//
+////////////////////////////////////////////////////////////////////////////////
+
+- (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_type
+{
+	SingletonA *singletonA = [_singletonsChainFactory componentForType:[SingletonA class]];
+	SingletonB *singletonB = [_singletonsChainFactory componentForType:[SingletonB class]];
+	NotSingletonA *notSingletonA = [_singletonsChainFactory componentForType:[NotSingletonA class]];
+	assertThat(singletonA.dependencyOnB, is(singletonB));
+	assertThat(singletonB.dependencyOnNotSingletonA.dependencyOnA, is(singletonA));
+	assertThat(notSingletonA.dependencyOnA, is(singletonA));
+}
+
+- (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_reference
+{
+	SingletonA *singletonA = [_singletonsChainFactory componentForKey:@"singletonA"];
+	SingletonB *singletonB = [_singletonsChainFactory componentForKey:@"singletonB"];
+	NotSingletonA *notSingletonA = [_singletonsChainFactory componentForKey:@"notSingletonA"];
+	assertThat(singletonA.dependencyOnB, is(singletonB));
+	assertThat(singletonB.dependencyOnNotSingletonA.dependencyOnA, is(singletonA));
+	assertThat(notSingletonA.dependencyOnA, is(singletonA));
+}
+
 
 
 @end
