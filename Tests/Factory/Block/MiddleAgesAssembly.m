@@ -33,17 +33,6 @@
     }];
 }
 
-//- (id)knightWithWeapon:(NSObject*)weapon
-//{
-//    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
-//    {
-//        [definition injectProperty:@selector(quest) withDefinition:[self defaultQuest]];
-//        [definition injectProperty:@selector(damselsRescued) withValueAsText:@"12"];
-//        [definition setScope:TyphoonScopeDefault];
-//    }];
-//}
-
-
 - (id)cavalryMan
 {
     return [TyphoonDefinition withClass:[CavalryMan class] properties:^(TyphoonDefinition* definition)

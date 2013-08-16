@@ -21,8 +21,6 @@
 
 - (id)knight;
 
-//- (id)knightWithWeapon:(NSObject*)weapon;
-
 - (id)cavalryMan;
 
 - (id)defaultQuest;

@@ -11,12 +11,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TyphoonAssemblySelectorAdviser : NSObject
+@interface TyphoonAssemblySelectorWrapper : NSObject
 
-+ (SEL)advisedSELForKey:(NSString *)key;
-+ (NSString *)keyForAdvisedSEL:(SEL)selWithAdvicePrefix;
-+ (BOOL)selectorIsAdvised:(SEL)sel;
++ (SEL)wrappedSELForKey:(NSString *)key;
++ (NSString *)keyForWrappedSEL:(SEL)selWithAdvicePrefix;
++ (BOOL)selectorIsWrapped:(SEL)sel;
 
-+ (SEL)advisedSELForSEL:(SEL)unwrappedSEL;
++ (SEL)wrappedSELForSEL:(SEL)unwrappedSEL;
 
 @end

@@ -15,7 +15,6 @@
 #import <objc/runtime.h>
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonTypeDescriptor.h"
-#import "OCLogTemplate.h"
 
 
 @implementation TyphoonIntrospectionUtils
@@ -32,7 +31,7 @@
             return (NULL);
         }
 
-        char buffer[256];
+        static char buffer[256];
         const char* e = strchr(attrs, ',');
         if (e == NULL)
         {
@@ -47,6 +46,7 @@
     }
     return typeDescriptor;
 }
+
 
 + (NSArray*)typeCodesForSelector:(SEL)selector ofClass:(Class)clazz isClassMethod:(BOOL)isClassMethod
 {

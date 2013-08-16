@@ -28,5 +28,4 @@ NSString* TyphoonTypeStringFor(id classOrProtocol);
 
 + (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName inClass:(Class)clazz;
 
-
 @end
