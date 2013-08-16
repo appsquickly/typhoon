@@ -14,10 +14,9 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 #import "TyphoonAssembly.h"
-#import "TyphoonJRSwizzle.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
-#import "TyphoonAssemblySelectorWrapper.h"
+#import "TyphoonAssemblySelectorAdviser.h"
 #import "OCLogTemplate.h"
 
 static NSMutableDictionary *resolveStackForKey;
@@ -57,7 +56,7 @@ static NSMutableDictionary *resolveStackForKey;
 
 + (BOOL)shouldProvideDynamicImplementationFor:(SEL)sel;
 {
-    return (![TyphoonAssembly selectorReserved:sel] && [TyphoonAssemblySelectorWrapper selectorIsWrapped:sel]);
+    return (![TyphoonAssembly selectorReserved:sel] && [TyphoonAssemblySelectorAdviser selectorIsAdvised:sel]);
 }
 
 + (BOOL)selectorReserved:(SEL)selector
@@ -76,7 +75,7 @@ static NSMutableDictionary *resolveStackForKey;
 {
     return imp_implementationWithBlock((__bridge id) objc_unretainedPointer((TyphoonDefinition *)^(id me)
        {
-           NSString *key = [TyphoonAssemblySelectorWrapper keyForWrappedSEL:selWithAdvicePrefix];
+           NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selWithAdvicePrefix];
            return [self definitionForKey:key me:me];
        }));
 }
@@ -136,7 +135,8 @@ static NSMutableDictionary *resolveStackForKey;
 
 + (TyphoonDefinition *)definitionToTerminateCircularDependencyForKey:(NSString *)key
 {
-    // we return a 'dummy' definition just to terminate the cycle. This dummy definition will be overwritten by the real one, which will be set further up the stack and will overwrite this one in 'cachedDefinitionsForMethodName'.
+    // we return a 'dummy' definition just to terminate the cycle. This dummy definition will be overwritten by the real one, which will be
+    // set further up the stack and will overwrite this one in 'cachedDefinitionsForMethodName'.
     return [[TyphoonDefinition alloc] initWithClass:[NSString class] key:key];
 }
 
@@ -164,7 +164,7 @@ static NSMutableDictionary *resolveStackForKey;
 
 + (id)definitionByCallingAssemblyMethodForKey:(NSString *)key me:(TyphoonAssembly *)me
 {
-    SEL sel = [TyphoonAssemblySelectorWrapper wrappedSELForKey:key];
+    SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key];
     id cached = objc_msgSend(me, sel); // the wrappedSEL will call through to the original, unwrapped implementation because of the active swizzling.
     return cached;
 }

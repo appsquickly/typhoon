@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B9BD34017A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B9BD33E17A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.h */; };
-		4B9BD34117A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B9BD33E17A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.h */; };
-		4B9BD34217A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BD33F17A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.m */; };
-		4B9BD34317A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BD33F17A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.m */; };
+		4B9BD34017A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B9BD33E17A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.h */; };
+		4B9BD34117A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B9BD33E17A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.h */; };
+		4B9BD34217A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BD33F17A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.m */; };
+		4B9BD34317A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BD33F17A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.m */; };
 		4BC648F917A20BD7007F0463 /* TyphoonRXMLElement+XmlComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79882A81566B59CD4717ED /* TyphoonRXMLElement+XmlComponentFactory.m */; };
 		4BC648FA17A20BD7007F0463 /* TyphoonRXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7984360A52643AABE03C09 /* TyphoonRXMLElement.m */; };
 		4BC648FB17A20BD7007F0463 /* TyphoonXmlComponentFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798DB938D859CED0C5327C /* TyphoonXmlComponentFactory.m */; };
@@ -162,8 +162,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4B9BD33E17A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssemblySelectorWrapper.h; sourceTree = "<group>"; };
-		4B9BD33F17A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblySelectorWrapper.m; sourceTree = "<group>"; };
+		4B9BD33E17A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssemblySelectorAdviser.h; sourceTree = "<group>"; };
+		4B9BD33F17A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblySelectorAdviser.m; sourceTree = "<group>"; };
 		4BC6494817A20BD7007F0463 /* libTyphoon-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libTyphoon-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BED3D6117A85010006D262C /* OCLogTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCLogTemplate.h; sourceTree = "<group>"; };
 		4BED3D6217A85010006D262C /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
@@ -403,8 +403,8 @@
 				BA7981B0A8AB21B6A5B628EE /* TyphoonBlockComponentFactory.h */,
 				BA798D912CB8052A1A8B131F /* TyphoonAssembly.m */,
 				BA798F0B0FA574136DA6A52A /* TyphoonAssembly.h */,
-				4B9BD33E17A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.h */,
-				4B9BD33F17A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.m */,
+				4B9BD33E17A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.h */,
+				4B9BD33F17A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.m */,
 			);
 			path = Block;
 			sourceTree = "<group>";
@@ -530,7 +530,7 @@
 				4BC6491D17A20BD7007F0463 /* TyphoonRXMLElement.h in Headers */,
 				4BC6491E17A20BD7007F0463 /* TyphoonXmlComponentFactory.h in Headers */,
 				4BC6491F17A20BD7007F0463 /* TyphoonPropertyPlaceholderConfigurer.h in Headers */,
-				4B9BD34117A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.h in Headers */,
+				4B9BD34117A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.h in Headers */,
 				4BC6492017A20BD7007F0463 /* TyphoonComponentFactory+InstanceBuilder.h in Headers */,
 				4BC6492117A20BD7007F0463 /* TyphoonComponentFactory.h in Headers */,
 				4BC6492217A20BD7007F0463 /* TyphoonInjectedProperty.h in Headers */,
@@ -580,7 +580,7 @@
 				BA798A0D8F6CE3D38773C960 /* TyphoonRXMLElement.h in Headers */,
 				BA798DA01100FCD8AA272792 /* TyphoonXmlComponentFactory.h in Headers */,
 				BA79880E0C2659895AB6D1EE /* TyphoonPropertyPlaceholderConfigurer.h in Headers */,
-				4B9BD34017A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.h in Headers */,
+				4B9BD34017A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.h in Headers */,
 				BA798FAC7F3BC5B63B3576EC /* TyphoonComponentFactory+InstanceBuilder.h in Headers */,
 				BA7983A5AB140D6C97FCD503 /* TyphoonComponentFactory.h in Headers */,
 				BA79894BAEA538B8166596FA /* TyphoonInjectedProperty.h in Headers */,
@@ -698,7 +698,7 @@
 				4BC648FD17A20BD7007F0463 /* TyphoonComponentFactory+InstanceBuilder.m in Sources */,
 				4BC648FE17A20BD7007F0463 /* TyphoonComponentFactory.m in Sources */,
 				4BC648FF17A20BD7007F0463 /* TyphoonPropertyInjectedByReference.m in Sources */,
-				4B9BD34317A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.m in Sources */,
+				4B9BD34317A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.m in Sources */,
 				4BC6490017A20BD7007F0463 /* TyphoonPropertyInjectedByType.m in Sources */,
 				4BC6490117A20BD7007F0463 /* TyphoonPropertyInjectedWithStringRepresentation.m in Sources */,
 				4BC6490217A20BD7007F0463 /* TyphoonInitializer.m in Sources */,
@@ -737,7 +737,7 @@
 				BA7989A7C8AE7E636C08962A /* TyphoonComponentFactory+InstanceBuilder.m in Sources */,
 				BA798EDDD02EF1FBC226119A /* TyphoonComponentFactory.m in Sources */,
 				BA798532B43FB3D827EFA950 /* TyphoonPropertyInjectedByReference.m in Sources */,
-				4B9BD34217A6DCBA008921C7 /* TyphoonAssemblySelectorWrapper.m in Sources */,
+				4B9BD34217A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.m in Sources */,
 				BA798410D85DE95CC8DF4DDC /* TyphoonPropertyInjectedByType.m in Sources */,
 				BA798ADC644922BAE4940888 /* TyphoonPropertyInjectedWithStringRepresentation.m in Sources */,
 				BA798EACB35B10ABCFF95396 /* TyphoonInitializer.m in Sources */,
