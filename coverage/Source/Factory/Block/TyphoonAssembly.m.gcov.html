@@ -31,8 +31,8 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">103</td>
-            <td class="headerCovTableEntry">106</td>
+            <td class="headerCovTableEntry">104</td>
+            <td class="headerCovTableEntry">107</td>
             <td class="headerCovTableEntryHi">97.2 %</td>
           </tr>
           <tr>
@@ -77,7 +77,7 @@
 <span class="lineNum">      19 </span>            : #import &quot;TyphoonAssemblySelectorAdviser.h&quot;
 <span class="lineNum">      20 </span>            : #import &quot;OCLogTemplate.h&quot;
 <span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span>            : static NSMutableDictionary *resolveStackForKey;
+<span class="lineNum">      22 </span>            : static NSMutableDictionary* resolveStackForKey;
 <span class="lineNum">      23 </span>            : 
 <span class="lineNum">      24 </span><span class="lineCov">         60 : @implementation TyphoonAssembly</span>
 <span class="lineNum">      25 </span>            : 
@@ -104,183 +104,188 @@
 <span class="lineNum">      46 </span>            : #pragma mark - Instance Method Resolution
 <span class="lineNum">      47 </span><span class="lineCov">         19 : + (BOOL)resolveInstanceMethod:(SEL)sel</span>
 <span class="lineNum">      48 </span>            : {
-<span class="lineNum">      49 </span><span class="lineCov">         19 :     if ([self shouldProvideDynamicImplementationFor:sel]) {</span>
-<span class="lineNum">      50 </span><span class="lineCov">         19 :         [self provideDynamicImplementationToConstructDefinitionForSEL:sel];</span>
-<span class="lineNum">      51 </span><span class="lineCov">         19 :         return YES;</span>
-<span class="lineNum">      52 </span>            :     }
-<span class="lineNum">      53 </span>            :     
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     return [super resolveInstanceMethod:sel];</span>
-<span class="lineNum">      55 </span><span class="lineCov">         19 : }</span>
-<span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span><span class="lineCov">         19 : + (BOOL)shouldProvideDynamicImplementationFor:(SEL)sel;</span>
-<span class="lineNum">      58 </span>            : {
-<span class="lineNum">      59 </span><span class="lineCov">         19 :     return (![TyphoonAssembly selectorReserved:sel] &amp;&amp; [TyphoonAssemblySelectorAdviser selectorIsAdvised:sel]);</span>
-<span class="lineNum">      60 </span><span class="lineCov">         19 : }</span>
-<span class="lineNum">      61 </span>            : 
-<span class="lineNum">      62 </span><span class="lineCov">        323 : + (BOOL)selectorReserved:(SEL)selector</span>
-<span class="lineNum">      63 </span>            : {
-<span class="lineNum">      64 </span><span class="lineCov">        323 :     return selector == @selector(init) || selector == @selector(cachedDefinitionsForMethodName) || selector == NSSelectorFromString(@&quot;.cxx_destruct&quot;) ||</span>
-<span class="lineNum">      65 </span>            :     selector == @selector(defaultAssembly);
-<span class="lineNum">      66 </span>            : }
-<span class="lineNum">      67 </span>            : 
-<span class="lineNum">      68 </span><span class="lineCov">         19 : + (void)provideDynamicImplementationToConstructDefinitionForSEL:(SEL)sel;</span>
-<span class="lineNum">      69 </span>            : {
-<span class="lineNum">      70 </span><span class="lineCov">         19 :     IMP imp = [self implementationToConstructDefinitionForSEL:sel];</span>
-<span class="lineNum">      71 </span><span class="lineCov">         19 :     class_addMethod(self, sel, imp, &quot;@&quot;);</span>
-<span class="lineNum">      72 </span><span class="lineCov">         19 : }</span>
-<span class="lineNum">      73 </span>            : 
-<span class="lineNum">      74 </span><span class="lineCov">       1099 : + (IMP)implementationToConstructDefinitionForSEL:(SEL)selWithAdvicePrefix</span>
-<span class="lineNum">      75 </span>            : {
-<span class="lineNum">      76 </span><span class="lineCov">       1658 :     return imp_implementationWithBlock((__bridge id) objc_unretainedPointer((TyphoonDefinition *)^(id me)</span>
-<span class="lineNum">      77 </span>            :        {
-<span class="lineNum">      78 </span>            :            NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selWithAdvicePrefix];
-<span class="lineNum">      79 </span>            :            return [self definitionForKey:key me:me];
-<span class="lineNum">      80 </span>            :        }));
-<span class="lineNum">      81 </span>            : }
-<span class="lineNum">      82 </span>            : 
-<span class="lineNum">      83 </span>            : + (TyphoonDefinition *)definitionForKey:(NSString *)key me:(id)me
-<span class="lineNum">      84 </span><span class="lineCov">        540 : {</span>
-<span class="lineNum">      85 </span>            :     LogTrace(@&quot;Resolving request for definition for key: %@&quot;, key);
-<span class="lineNum">      86 </span>            : 
-<span class="lineNum">      87 </span>            :     TyphoonDefinition *cached = [self cachedDefinitionForKey:key me:me];
-<span class="lineNum">      88 </span><span class="lineCov">        540 :     if (!cached)</span>
-<span class="lineNum">      89 </span><span class="lineCov">        540 :     {</span>
-<span class="lineNum">      90 </span>            :         LogTrace(@&quot;Definition for key: '%@' is not cached, building...&quot;, key);
-<span class="lineNum">      91 </span>            :         return [self buildDefinitionForKey:key me:me];
-<span class="lineNum">      92 </span><span class="lineCov">        345 :     }</span>
-<span class="lineNum">      93 </span>            :         
-<span class="lineNum">      94 </span>            :     LogTrace(@&quot;Using cached definition for key '%@.'&quot;, key);
-<span class="lineNum">      95 </span>            :     return cached;
-<span class="lineNum">      96 </span><span class="lineCov">        195 : }</span>
-<span class="lineNum">      97 </span><span class="lineCov">        540 : </span>
-<span class="lineNum">      98 </span>            : + (TyphoonDefinition *)cachedDefinitionForKey:(NSString *)key me:(id)me
-<span class="lineNum">      99 </span>            : {
-<span class="lineNum">     100 </span><span class="lineCov">        540 :     return [[me cachedDefinitionsForMethodName] objectForKey:key];</span>
-<span class="lineNum">     101 </span>            : }
-<span class="lineNum">     102 </span><span class="lineCov">       1080 : </span>
-<span class="lineNum">     103 </span><span class="lineCov">        540 : + (TyphoonDefinition *)buildDefinitionForKey:(NSString *)key me:(TyphoonAssembly *)me;</span>
-<span class="lineNum">     104 </span>            : {
-<span class="lineNum">     105 </span>            :     NSMutableArray *resolveStack = [self resolveStackForKey:key];
-<span class="lineNum">     106 </span><span class="lineCov">        345 :     [self markCurrentlyResolvingKey:key resolveStack:resolveStack];</span>
-<span class="lineNum">     107 </span>            :     
-<span class="lineNum">     108 </span><span class="lineCov">        345 :     if ([self dependencyForKey:key involvedInCircularDependencyInResolveStack:resolveStack]) {</span>
-<span class="lineNum">     109 </span><span class="lineCov">        345 :         return [self definitionToTerminateCircularDependencyForKey:key];</span>
-<span class="lineNum">     110 </span>            :     }
-<span class="lineNum">     111 </span><span class="lineCov">        345 :     </span>
-<span class="lineNum">     112 </span><span class="lineCov">         60 :     id cached = [self populateCacheWithDefinitionForKey:key me:me];</span>
-<span class="lineNum">     113 </span>            :     [self markKeyResolved:key resolveStack:resolveStack];
-<span class="lineNum">     114 </span>            :     
-<span class="lineNum">     115 </span><span class="lineCov">        285 :     LogTrace(@&quot;Did finish building definition for key: '%@'&quot;, key);</span>
-<span class="lineNum">     116 </span><span class="lineCov">        285 :     </span>
-<span class="lineNum">     117 </span>            :     return cached;
-<span class="lineNum">     118 </span>            : }
-<span class="lineNum">     119 </span>            : 
-<span class="lineNum">     120 </span><span class="lineCov">        285 : + (BOOL)dependencyForKey:(NSString *)key involvedInCircularDependencyInResolveStack:(NSArray *)resolveStack;</span>
-<span class="lineNum">     121 </span><span class="lineCov">        345 : {</span>
-<span class="lineNum">     122 </span>            :     if ([resolveStack count] &gt;= 2)
-<span class="lineNum">     123 </span>            :     {
-<span class="lineNum">     124 </span><span class="lineCov">        345 :         NSString* bottom = [resolveStack objectAtIndex:0];</span>
-<span class="lineNum">     125 </span>            :         NSString* top = [resolveStack objectAtIndex:[resolveStack count] - 1];
-<span class="lineNum">     126 </span><span class="lineCov">        345 :         if ([top isEqualToString:bottom])</span>
-<span class="lineNum">     127 </span>            :         {
-<span class="lineNum">     128 </span><span class="lineCov">         60 :             LogInfo(@&quot;Circular dependency detected in definition for key '%@'. Breaking the cycle.&quot;, key);</span>
-<span class="lineNum">     129 </span><span class="lineCov">         60 :             return YES;</span>
-<span class="lineNum">     130 </span><span class="lineCov">         60 :         }</span>
-<span class="lineNum">     131 </span>            :     }
-<span class="lineNum">     132 </span><span class="lineCov">         60 :     </span>
-<span class="lineNum">     133 </span><span class="lineCov">         60 :     return NO;</span>
-<span class="lineNum">     134 </span>            : }
-<span class="lineNum">     135 </span><span class="lineCov">         60 : </span>
-<span class="lineNum">     136 </span>            : + (TyphoonDefinition *)definitionToTerminateCircularDependencyForKey:(NSString *)key
-<span class="lineNum">     137 </span><span class="lineCov">        285 : {</span>
-<span class="lineNum">     138 </span><span class="lineCov">        617 :     // we return a 'dummy' definition just to terminate the cycle. This dummy definition will be overwritten by the real one, which will be</span>
-<span class="lineNum">     139 </span>            :     // set further up the stack and will overwrite this one in 'cachedDefinitionsForMethodName'.
-<span class="lineNum">     140 </span><span class="lineCov">         60 :     return [[TyphoonDefinition alloc] initWithClass:[NSString class] key:key];</span>
-<span class="lineNum">     141 </span>            : }
-<span class="lineNum">     142 </span>            : 
-<span class="lineNum">     143 </span>            : + (NSMutableArray *)resolveStackForKey:(NSString *)key
-<span class="lineNum">     144 </span><span class="lineCov">        120 : {</span>
-<span class="lineNum">     145 </span><span class="lineCov">         60 :     NSMutableArray *resolveStack = [resolveStackForKey objectForKey:key];</span>
-<span class="lineNum">     146 </span>            :     if (!resolveStack) {
-<span class="lineNum">     147 </span><span class="lineCov">        345 :         resolveStack = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">     148 </span>            :         [resolveStackForKey setObject:resolveStack forKey:key];
-<span class="lineNum">     149 </span><span class="lineCov">        345 :     }</span>
-<span class="lineNum">     150 </span><span class="lineCov">        345 :     return resolveStack;</span>
-<span class="lineNum">     151 </span><span class="lineCov">         19 : }</span>
-<span class="lineNum">     152 </span><span class="lineCov">         19 : </span>
-<span class="lineNum">     153 </span><span class="lineCov">         19 : + (void)markCurrentlyResolvingKey:(NSString *)key resolveStack:(NSMutableArray *)resolveStack</span>
-<span class="lineNum">     154 </span><span class="lineCov">        345 : {</span>
-<span class="lineNum">     155 </span><span class="lineCov">        345 :     [resolveStack addObject:key];</span>
-<span class="lineNum">     156 </span>            : }
-<span class="lineNum">     157 </span>            : 
-<span class="lineNum">     158 </span><span class="lineCov">        345 : + (TyphoonDefinition *)populateCacheWithDefinitionForKey:(NSString *)key me:(TyphoonAssembly *)me;</span>
-<span class="lineNum">     159 </span>            : {
-<span class="lineNum">     160 </span><span class="lineCov">        345 :     id d = [self definitionByCallingAssemblyMethodForKey:key me:me];</span>
-<span class="lineNum">     161 </span><span class="lineCov">        345 :     [self populateCacheWithDefinition:d forKey:key me:me];</span>
-<span class="lineNum">     162 </span>            :     return d;
-<span class="lineNum">     163 </span>            : }
-<span class="lineNum">     164 </span><span class="lineCov">        285 : </span>
-<span class="lineNum">     165 </span>            : + (id)definitionByCallingAssemblyMethodForKey:(NSString *)key me:(TyphoonAssembly *)me
-<span class="lineNum">     166 </span><span class="lineCov">        285 : {</span>
-<span class="lineNum">     167 </span><span class="lineCov">        285 :     SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key];</span>
-<span class="lineNum">     168 </span><span class="lineCov">        570 :     id cached = objc_msgSend(me, sel); // the wrappedSEL will call through to the original, unwrapped implementation because of the active swizzling.</span>
-<span class="lineNum">     169 </span><span class="lineCov">        285 :     return cached;</span>
-<span class="lineNum">     170 </span>            : }
-<span class="lineNum">     171 </span>            : 
-<span class="lineNum">     172 </span><span class="lineCov">        285 : + (void)populateCacheWithDefinition:(TyphoonDefinition *)cached forKey:(NSString *)key me:(id)me</span>
-<span class="lineNum">     173 </span>            : {
-<span class="lineNum">     174 </span><span class="lineCov">        285 :     if (cached &amp;&amp; [cached isKindOfClass:[TyphoonDefinition class]])</span>
-<span class="lineNum">     175 </span><span class="lineCov">        285 :     {</span>
-<span class="lineNum">     176 </span><span class="lineCov">        570 :         TyphoonDefinition* definition = (TyphoonDefinition*) cached;</span>
-<span class="lineNum">     177 </span><span class="lineCov">        285 :         [self setKey:key onDefinitionIfExistingKeyEmpty:definition];</span>
-<span class="lineNum">     178 </span>            :         
-<span class="lineNum">     179 </span>            :         [[me cachedDefinitionsForMethodName] setObject:definition forKey:key];
-<span class="lineNum">     180 </span><span class="lineCov">        285 :     }</span>
-<span class="lineNum">     181 </span>            : }
-<span class="lineNum">     182 </span><span class="lineCov">        285 : </span>
-<span class="lineNum">     183 </span>            : + (void)setKey:(NSString *)key onDefinitionIfExistingKeyEmpty:(TyphoonDefinition *)definition
-<span class="lineNum">     184 </span><span class="lineCov">        285 : {</span>
-<span class="lineNum">     185 </span><span class="lineCov">        285 :     if ([definition.key length] == 0)</span>
-<span class="lineNum">     186 </span>            :     {
-<span class="lineNum">     187 </span><span class="lineCov">        285 :         definition.key = key;</span>
-<span class="lineNum">     188 </span><span class="lineCov">        285 :     }</span>
-<span class="lineNum">     189 </span><span class="lineCov">        285 : }</span>
-<span class="lineNum">     190 </span>            : 
-<span class="lineNum">     191 </span>            : + (void)markKeyResolved:(NSString *)key resolveStack:(NSMutableArray *)resolveStack
-<span class="lineNum">     192 </span><span class="lineCov">        285 : {</span>
-<span class="lineNum">     193 </span>            :     if (resolveStack.count) {
-<span class="lineNum">     194 </span><span class="lineCov">        285 :         [resolveStack removeAllObjects];</span>
-<span class="lineNum">     195 </span>            :     }
-<span class="lineNum">     196 </span><span class="lineCov">        285 : }</span>
-<span class="lineNum">     197 </span><span class="lineCov">        285 : </span>
-<span class="lineNum">     198 </span><span class="lineCov">        285 : /* ====================================================================================================================================== */</span>
-<span class="lineNum">     199 </span>            : #pragma mark - Initialization &amp; Destruction
-<span class="lineNum">     200 </span>            : 
-<span class="lineNum">     201 </span><span class="lineCov">        285 : - (id)init</span>
-<span class="lineNum">     202 </span>            : {
-<span class="lineNum">     203 </span><span class="lineCov">        285 :     self = [super init];</span>
-<span class="lineNum">     204 </span><span class="lineCov">        285 :     if (self)</span>
-<span class="lineNum">     205 </span><span class="lineCov">        285 :     {</span>
-<span class="lineNum">     206 </span><span class="lineCov">        285 :         _cachedDefinitions = [[NSMutableDictionary alloc] init];</span>
-<span class="lineNum">     207 </span>            :     }
-<span class="lineNum">     208 </span>            :     return self;
-<span class="lineNum">     209 </span>            : }
-<span class="lineNum">     210 </span>            : 
-<span class="lineNum">     211 </span><span class="lineCov">         60 : - (void)dealloc</span>
-<span class="lineNum">     212 </span>            : {
-<span class="lineNum">     213 </span><span class="lineCov">         60 :     LogTrace(@&quot;$$$$$$ %@ in dealloc!&quot;, [self class]);</span>
-<span class="lineNum">     214 </span><span class="lineCov">         60 : }</span>
+<span class="lineNum">      49 </span><span class="lineCov">         19 :     if ([self shouldProvideDynamicImplementationFor:sel])</span>
+<span class="lineNum">      50 </span>            :     {
+<span class="lineNum">      51 </span><span class="lineCov">         19 :         [self provideDynamicImplementationToConstructDefinitionForSEL:sel];</span>
+<span class="lineNum">      52 </span><span class="lineCov">         19 :         return YES;</span>
+<span class="lineNum">      53 </span>            :     }
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     return [super resolveInstanceMethod:sel];</span>
+<span class="lineNum">      56 </span><span class="lineCov">         19 : }</span>
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span><span class="lineCov">         19 : + (BOOL)shouldProvideDynamicImplementationFor:(SEL)sel;</span>
+<span class="lineNum">      59 </span>            : {
+<span class="lineNum">      60 </span><span class="lineCov">         19 :     return (![TyphoonAssembly selectorReserved:sel] &amp;&amp; [TyphoonAssemblySelectorAdviser selectorIsAdvised:sel]);</span>
+<span class="lineNum">      61 </span><span class="lineCov">         19 : }</span>
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span><span class="lineCov">        323 : + (BOOL)selectorReserved:(SEL)selector</span>
+<span class="lineNum">      64 </span>            : {
+<span class="lineNum">      65 </span><span class="lineCov">        323 :     return selector == @selector(init) || selector == @selector(cachedDefinitionsForMethodName) || selector ==</span>
+<span class="lineNum">      66 </span><span class="lineCov">        323 :         NSSelectorFromString(@&quot;.cxx_destruct&quot;) || selector == @selector(defaultAssembly);</span>
+<span class="lineNum">      67 </span>            : }
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span><span class="lineCov">         19 : + (void)provideDynamicImplementationToConstructDefinitionForSEL:(SEL)sel;</span>
+<span class="lineNum">      70 </span>            : {
+<span class="lineNum">      71 </span><span class="lineCov">         19 :     IMP imp = [self implementationToConstructDefinitionForSEL:sel];</span>
+<span class="lineNum">      72 </span><span class="lineCov">         19 :     class_addMethod(self, sel, imp, &quot;@&quot;);</span>
+<span class="lineNum">      73 </span><span class="lineCov">         19 : }</span>
+<span class="lineNum">      74 </span>            : 
+<span class="lineNum">      75 </span><span class="lineCov">       1099 : + (IMP)implementationToConstructDefinitionForSEL:(SEL)selWithAdvicePrefix</span>
+<span class="lineNum">      76 </span>            : {
+<span class="lineNum">      77 </span><span class="lineCov">       1658 :     return imp_implementationWithBlock((__bridge id) objc_unretainedPointer((TyphoonDefinition*) ^(id me)</span>
+<span class="lineNum">      78 </span>            :     {
+<span class="lineNum">      79 </span>            :         NSString* key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selWithAdvicePrefix];
+<span class="lineNum">      80 </span>            :         return [self definitionForKey:key me:me];
+<span class="lineNum">      81 </span>            :     }));
+<span class="lineNum">      82 </span>            : }
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span>            : + (TyphoonDefinition*)definitionForKey:(NSString*)key me:(id)me
+<span class="lineNum">      85 </span><span class="lineCov">        540 : {</span>
+<span class="lineNum">      86 </span>            :     LogTrace(@&quot;Resolving request for definition for key: %@&quot;, key);
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span>            :     TyphoonDefinition* cached = [self cachedDefinitionForKey:key me:me];
+<span class="lineNum">      89 </span><span class="lineCov">        540 :     if (!cached)</span>
+<span class="lineNum">      90 </span><span class="lineCov">        540 :     {</span>
+<span class="lineNum">      91 </span>            :         LogTrace(@&quot;Definition for key: '%@' is not cached, building...&quot;, key);
+<span class="lineNum">      92 </span>            :         return [self buildDefinitionForKey:key me:me];
+<span class="lineNum">      93 </span><span class="lineCov">        345 :     }</span>
+<span class="lineNum">      94 </span>            : 
+<span class="lineNum">      95 </span>            :     LogTrace(@&quot;Using cached definition for key '%@.'&quot;, key);
+<span class="lineNum">      96 </span>            :     return cached;
+<span class="lineNum">      97 </span><span class="lineCov">        195 : }</span>
+<span class="lineNum">      98 </span><span class="lineCov">        540 : </span>
+<span class="lineNum">      99 </span>            : + (TyphoonDefinition*)cachedDefinitionForKey:(NSString*)key me:(id)me
+<span class="lineNum">     100 </span>            : {
+<span class="lineNum">     101 </span><span class="lineCov">        540 :     return [[me cachedDefinitionsForMethodName] objectForKey:key];</span>
+<span class="lineNum">     102 </span>            : }
+<span class="lineNum">     103 </span><span class="lineCov">       1080 : </span>
+<span class="lineNum">     104 </span><span class="lineCov">        540 : + (TyphoonDefinition*)buildDefinitionForKey:(NSString*)key me:(TyphoonAssembly*)me;</span>
+<span class="lineNum">     105 </span>            : {
+<span class="lineNum">     106 </span>            :     NSMutableArray* resolveStack = [self resolveStackForKey:key];
+<span class="lineNum">     107 </span><span class="lineCov">        345 :     [self markCurrentlyResolvingKey:key resolveStack:resolveStack];</span>
+<span class="lineNum">     108 </span>            : 
+<span class="lineNum">     109 </span><span class="lineCov">        345 :     if ([self dependencyForKey:key involvedInCircularDependencyInResolveStack:resolveStack])</span>
+<span class="lineNum">     110 </span><span class="lineCov">        345 :     {</span>
+<span class="lineNum">     111 </span>            :         return [self definitionToTerminateCircularDependencyForKey:key];
+<span class="lineNum">     112 </span><span class="lineCov">        345 :     }</span>
+<span class="lineNum">     113 </span>            : 
+<span class="lineNum">     114 </span><span class="lineCov">         60 :     id cached = [self populateCacheWithDefinitionForKey:key me:me];</span>
+<span class="lineNum">     115 </span>            :     [self markKeyResolved:key resolveStack:resolveStack];
+<span class="lineNum">     116 </span>            : 
+<span class="lineNum">     117 </span><span class="lineCov">        285 :     LogTrace(@&quot;Did finish building definition for key: '%@'&quot;, key);</span>
+<span class="lineNum">     118 </span><span class="lineCov">        285 : </span>
+<span class="lineNum">     119 </span>            :     return cached;
+<span class="lineNum">     120 </span>            : }
+<span class="lineNum">     121 </span>            : 
+<span class="lineNum">     122 </span><span class="lineCov">        285 : + (BOOL)dependencyForKey:(NSString*)key involvedInCircularDependencyInResolveStack:(NSArray*)resolveStack;</span>
+<span class="lineNum">     123 </span><span class="lineCov">        345 : {</span>
+<span class="lineNum">     124 </span>            :     if ([resolveStack count] &gt;= 2)
+<span class="lineNum">     125 </span>            :     {
+<span class="lineNum">     126 </span><span class="lineCov">        345 :         NSString* bottom = [resolveStack objectAtIndex:0];</span>
+<span class="lineNum">     127 </span>            :         NSString* top = [resolveStack objectAtIndex:[resolveStack count] - 1];
+<span class="lineNum">     128 </span><span class="lineCov">        345 :         if ([top isEqualToString:bottom])</span>
+<span class="lineNum">     129 </span>            :         {
+<span class="lineNum">     130 </span><span class="lineCov">         60 :             LogInfo(@&quot;Circular dependency detected in definition for key '%@'. Breaking the cycle.&quot;, key);</span>
+<span class="lineNum">     131 </span><span class="lineCov">         60 :             return YES;</span>
+<span class="lineNum">     132 </span><span class="lineCov">         60 :         }</span>
+<span class="lineNum">     133 </span>            :     }
+<span class="lineNum">     134 </span><span class="lineCov">         60 : </span>
+<span class="lineNum">     135 </span><span class="lineCov">         60 :     return NO;</span>
+<span class="lineNum">     136 </span>            : }
+<span class="lineNum">     137 </span><span class="lineCov">         60 : </span>
+<span class="lineNum">     138 </span>            : + (TyphoonDefinition*)definitionToTerminateCircularDependencyForKey:(NSString*)key
+<span class="lineNum">     139 </span><span class="lineCov">        285 : {</span>
+<span class="lineNum">     140 </span><span class="lineCov">        617 :     // we return a 'dummy' definition just to terminate the cycle. This dummy definition will be overwritten by the real one, which will be</span>
+<span class="lineNum">     141 </span>            :     // set further up the stack and will overwrite this one in 'cachedDefinitionsForMethodName'.
+<span class="lineNum">     142 </span><span class="lineCov">         60 :     return [[TyphoonDefinition alloc] initWithClass:[NSString class] key:key];</span>
+<span class="lineNum">     143 </span>            : }
+<span class="lineNum">     144 </span>            : 
+<span class="lineNum">     145 </span>            : + (NSMutableArray*)resolveStackForKey:(NSString*)key
+<span class="lineNum">     146 </span><span class="lineCov">        120 : {</span>
+<span class="lineNum">     147 </span><span class="lineCov">         60 :     NSMutableArray* resolveStack = [resolveStackForKey objectForKey:key];</span>
+<span class="lineNum">     148 </span>            :     if (!resolveStack)
+<span class="lineNum">     149 </span><span class="lineCov">        345 :     {</span>
+<span class="lineNum">     150 </span>            :         resolveStack = [[NSMutableArray alloc] init];
+<span class="lineNum">     151 </span><span class="lineCov">        345 :         [resolveStackForKey setObject:resolveStack forKey:key];</span>
+<span class="lineNum">     152 </span><span class="lineCov">        345 :     }</span>
+<span class="lineNum">     153 </span>            :     return resolveStack;
+<span class="lineNum">     154 </span><span class="lineCov">         19 : }</span>
+<span class="lineNum">     155 </span><span class="lineCov">         19 : </span>
+<span class="lineNum">     156 </span><span class="lineCov">         19 : + (void)markCurrentlyResolvingKey:(NSString*)key resolveStack:(NSMutableArray*)resolveStack</span>
+<span class="lineNum">     157 </span><span class="lineCov">        345 : {</span>
+<span class="lineNum">     158 </span><span class="lineCov">        345 :     [resolveStack addObject:key];</span>
+<span class="lineNum">     159 </span>            : }
+<span class="lineNum">     160 </span>            : 
+<span class="lineNum">     161 </span><span class="lineCov">        345 : + (TyphoonDefinition*)populateCacheWithDefinitionForKey:(NSString*)key me:(TyphoonAssembly*)me;</span>
+<span class="lineNum">     162 </span>            : {
+<span class="lineNum">     163 </span><span class="lineCov">        345 :     id d = [self definitionByCallingAssemblyMethodForKey:key me:me];</span>
+<span class="lineNum">     164 </span><span class="lineCov">        345 :     [self populateCacheWithDefinition:d forKey:key me:me];</span>
+<span class="lineNum">     165 </span>            :     return d;
+<span class="lineNum">     166 </span>            : }
+<span class="lineNum">     167 </span><span class="lineCov">        285 : </span>
+<span class="lineNum">     168 </span>            : + (id)definitionByCallingAssemblyMethodForKey:(NSString*)key me:(TyphoonAssembly*)me
+<span class="lineNum">     169 </span><span class="lineCov">        285 : {</span>
+<span class="lineNum">     170 </span><span class="lineCov">        285 :     SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key];</span>
+<span class="lineNum">     171 </span><span class="lineCov">        570 :     id cached = objc_msgSend(me,</span>
+<span class="lineNum">     172 </span><span class="lineCov">        285 :         sel); // the wrappedSEL will call through to the original, unwrapped implementation because of the active swizzling.</span>
+<span class="lineNum">     173 </span>            :     return cached;
+<span class="lineNum">     174 </span>            : }
+<span class="lineNum">     175 </span><span class="lineCov">        285 : </span>
+<span class="lineNum">     176 </span>            : + (void)populateCacheWithDefinition:(TyphoonDefinition*)cached forKey:(NSString*)key me:(id)me
+<span class="lineNum">     177 </span><span class="lineCov">        285 : {</span>
+<span class="lineNum">     178 </span><span class="lineCov">        285 :     if (cached &amp;&amp; [cached isKindOfClass:[TyphoonDefinition class]])</span>
+<span class="lineNum">     179 </span>            :     {
+<span class="lineNum">     180 </span><span class="lineCov">        570 :         TyphoonDefinition* definition = (TyphoonDefinition*) cached;</span>
+<span class="lineNum">     181 </span><span class="lineCov">        285 :         [self setKey:key onDefinitionIfExistingKeyEmpty:definition];</span>
+<span class="lineNum">     182 </span>            : 
+<span class="lineNum">     183 </span>            :         [[me cachedDefinitionsForMethodName] setObject:definition forKey:key];
+<span class="lineNum">     184 </span><span class="lineCov">        285 :     }</span>
+<span class="lineNum">     185 </span>            : }
+<span class="lineNum">     186 </span><span class="lineCov">        285 : </span>
+<span class="lineNum">     187 </span>            : + (void)setKey:(NSString*)key onDefinitionIfExistingKeyEmpty:(TyphoonDefinition*)definition
+<span class="lineNum">     188 </span><span class="lineCov">        285 : {</span>
+<span class="lineNum">     189 </span><span class="lineCov">        285 :     if ([definition.key length] == 0)</span>
+<span class="lineNum">     190 </span>            :     {
+<span class="lineNum">     191 </span><span class="lineCov">        285 :         definition.key = key;</span>
+<span class="lineNum">     192 </span><span class="lineCov">        285 :     }</span>
+<span class="lineNum">     193 </span><span class="lineCov">        285 : }</span>
+<span class="lineNum">     194 </span>            : 
+<span class="lineNum">     195 </span>            : + (void)markKeyResolved:(NSString*)key resolveStack:(NSMutableArray*)resolveStack
+<span class="lineNum">     196 </span><span class="lineCov">        285 : {</span>
+<span class="lineNum">     197 </span>            :     if (resolveStack.count)
+<span class="lineNum">     198 </span><span class="lineCov">        285 :     {</span>
+<span class="lineNum">     199 </span>            :         [resolveStack removeAllObjects];
+<span class="lineNum">     200 </span><span class="lineCov">        285 :     }</span>
+<span class="lineNum">     201 </span><span class="lineCov">        285 : }</span>
+<span class="lineNum">     202 </span><span class="lineCov">        285 : </span>
+<span class="lineNum">     203 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">     204 </span>            : #pragma mark - Initialization &amp; Destruction
+<span class="lineNum">     205 </span><span class="lineCov">        285 : </span>
+<span class="lineNum">     206 </span>            : - (id)init
+<span class="lineNum">     207 </span><span class="lineCov">        285 : {</span>
+<span class="lineNum">     208 </span>            :     self = [super init];
+<span class="lineNum">     209 </span><span class="lineCov">        285 :     if (self)</span>
+<span class="lineNum">     210 </span><span class="lineCov">        285 :     {</span>
+<span class="lineNum">     211 </span><span class="lineCov">        285 :         _cachedDefinitions = [[NSMutableDictionary alloc] init];</span>
+<span class="lineNum">     212 </span>            :     }
+<span class="lineNum">     213 </span>            :     return self;
+<span class="lineNum">     214 </span>            : }
 <span class="lineNum">     215 </span>            : 
-<span class="lineNum">     216 </span><span class="lineCov">         60 : /* ====================================================================================================================================== */</span>
-<span class="lineNum">     217 </span><span class="lineCov">         60 : #pragma mark - Private Methods</span>
-<span class="lineNum">     218 </span><span class="lineCov">         60 : </span>
-<span class="lineNum">     219 </span><span class="lineCov">         60 : - (NSMutableDictionary*)cachedDefinitionsForMethodName</span>
-<span class="lineNum">     220 </span>            : {
-<span class="lineNum">     221 </span><span class="lineCov">         60 :     return _cachedDefinitions;</span>
-<span class="lineNum">     222 </span>            : }
-<span class="lineNum">     223 </span>            : 
-<span class="lineNum">     224 </span><span class="lineCov">         60 : </span>
-<span class="lineNum">     225 </span>            : @end
+<span class="lineNum">     216 </span><span class="lineCov">         60 : - (void)dealloc</span>
+<span class="lineNum">     217 </span>            : {
+<span class="lineNum">     218 </span><span class="lineCov">         60 :     LogTrace(@&quot;$$$$$$ %@ in dealloc!&quot;, [self class]);</span>
+<span class="lineNum">     219 </span><span class="lineCov">         60 : }</span>
+<span class="lineNum">     220 </span>            : 
+<span class="lineNum">     221 </span><span class="lineCov">         60 : /* ====================================================================================================================================== */</span>
+<span class="lineNum">     222 </span><span class="lineCov">         60 : #pragma mark - Private Methods</span>
+<span class="lineNum">     223 </span><span class="lineCov">         60 : </span>
+<span class="lineNum">     224 </span><span class="lineCov">         60 : - (NSMutableDictionary*)cachedDefinitionsForMethodName</span>
+<span class="lineNum">     225 </span>            : {
+<span class="lineNum">     226 </span><span class="lineCov">         60 :     return _cachedDefinitions;</span>
+<span class="lineNum">     227 </span>            : }
+<span class="lineNum">     228 </span>            : 
+<span class="lineNum">     229 </span><span class="lineCov">         60 : </span>
+<span class="lineNum">     230 </span>            : @end
 </pre>
       </td>
     </tr>
