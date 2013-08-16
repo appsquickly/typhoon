@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">131</td>
             <td class="headerCovTableEntry">152</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryMed">86.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -80,249 +80,249 @@
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : @implementation TyphoonRXMLElement (XmlComponentFactory)
 <span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span><span class="lineNoCov">          0 : - (TyphoonDefinition*)asComponentDefinition</span>
+<span class="lineNum">      25 </span><span class="lineCov">        310 : - (TyphoonDefinition*)asComponentDefinition</span>
 <span class="lineNum">      26 </span>            : {
-<span class="lineNum">      27 </span><span class="lineNoCov">          0 :     [self assertTagName:@&quot;component&quot;];</span>
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     Class clazz = NSClassFromString([self attribute:@&quot;class&quot;]);</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 :     if (clazz == nil)</span>
+<span class="lineNum">      27 </span><span class="lineCov">        310 :     [self assertTagName:@&quot;component&quot;];</span>
+<span class="lineNum">      28 </span><span class="lineCov">        310 :     Class clazz = NSClassFromString([self attribute:@&quot;class&quot;]);</span>
+<span class="lineNum">      29 </span><span class="lineCov">        310 :     if (clazz == nil)</span>
 <span class="lineNum">      30 </span>            :     {
 <span class="lineNum">      31 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Class '%@' can't be resolved.&quot;, [self attribute:@&quot;class&quot;]];</span>
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">      33 </span>            :         
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 :     NSString* key = [self attribute:@&quot;key&quot;];</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 :     NSString* factory = [self attributeOrNilIfEmpty:@&quot;factory-component&quot;];</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 :         TyphoonScope scope = [self scopeForStringValue:[[self attribute:@&quot;scope&quot;] lowercaseString]];</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 :         BOOL isLazy = (scope == TyphoonScopeSingleton) &amp;&amp; [self attributeAsBool:@&quot;lazy-init&quot;];</span>
+<span class="lineNum">      34 </span><span class="lineCov">        309 :     NSString* key = [self attribute:@&quot;key&quot;];</span>
+<span class="lineNum">      35 </span><span class="lineCov">        309 :     NSString* factory = [self attributeOrNilIfEmpty:@&quot;factory-component&quot;];</span>
+<span class="lineNum">      36 </span><span class="lineCov">        309 :         TyphoonScope scope = [self scopeForStringValue:[[self attribute:@&quot;scope&quot;] lowercaseString]];</span>
+<span class="lineNum">      37 </span><span class="lineCov">        309 :         BOOL isLazy = (scope == TyphoonScopeSingleton) &amp;&amp; [self attributeAsBool:@&quot;lazy-init&quot;];</span>
 <span class="lineNum">      38 </span>            :     // Don't throw exception if a lazy init is set to a prototype.
 <span class="lineNum">      39 </span>            :         // Even if the input is wrong, this won't set the definition
 <span class="lineNum">      40 </span>            :         // in an unstable statement.
 <span class="lineNum">      41 </span>            :         
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 :         TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key factoryComponent:factory];</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     [definition setBeforePropertyInjection:NSSelectorFromString([self attribute:@&quot;before-property-injection&quot;])];</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     [definition setAfterPropertyInjection:NSSelectorFromString([self attribute:@&quot;after-property-injection&quot;])];</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 :     [definition setLazy:isLazy];</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 :         [definition setScope:scope];</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 :     [self parseComponentDefinitionChildren:definition];</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 :     return definition;</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      42 </span><span class="lineCov">        309 :         TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key factoryComponent:factory];</span>
+<span class="lineNum">      43 </span><span class="lineCov">        309 :     [definition setBeforePropertyInjection:NSSelectorFromString([self attribute:@&quot;before-property-injection&quot;])];</span>
+<span class="lineNum">      44 </span><span class="lineCov">        309 :     [definition setAfterPropertyInjection:NSSelectorFromString([self attribute:@&quot;after-property-injection&quot;])];</span>
+<span class="lineNum">      45 </span><span class="lineCov">        309 :     [definition setLazy:isLazy];</span>
+<span class="lineNum">      46 </span><span class="lineCov">        309 :         [definition setScope:scope];</span>
+<span class="lineNum">      47 </span><span class="lineCov">        309 :     [self parseComponentDefinitionChildren:definition];</span>
+<span class="lineNum">      48 </span><span class="lineCov">        309 :     return definition;</span>
+<span class="lineNum">      49 </span><span class="lineCov">        309 : }</span>
 <span class="lineNum">      50 </span>            : 
 <span class="lineNum">      51 </span>            : //TODO: Method too long, clean it up.
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : - (id &lt;TyphoonInjectedProperty&gt;)asInjectedProperty</span>
+<span class="lineNum">      52 </span><span class="lineCov">        252 : - (id &lt;TyphoonInjectedProperty&gt;)asInjectedProperty</span>
 <span class="lineNum">      53 </span>            : {
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     [self assertTagName:@&quot;property&quot;];</span>
+<span class="lineNum">      54 </span><span class="lineCov">        252 :     [self assertTagName:@&quot;property&quot;];</span>
 <span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 :     NSString* propertyName = [self attribute:@&quot;name&quot;];</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 :     NSString* referenceName = [self attribute:@&quot;ref&quot;];</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 :     NSString* value = [self attribute:@&quot;value&quot;];</span>
+<span class="lineNum">      56 </span><span class="lineCov">        252 :     NSString* propertyName = [self attribute:@&quot;name&quot;];</span>
+<span class="lineNum">      57 </span><span class="lineCov">        252 :     NSString* referenceName = [self attribute:@&quot;ref&quot;];</span>
+<span class="lineNum">      58 </span><span class="lineCov">        252 :     NSString* value = [self attribute:@&quot;value&quot;];</span>
 <span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 :     TyphoonRXMLElement* collection = [self child:@&quot;collection&quot;];</span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 :     if ((referenceName || value) &amp;&amp; collection)</span>
+<span class="lineNum">      60 </span><span class="lineCov">        252 :     TyphoonRXMLElement* collection = [self child:@&quot;collection&quot;];</span>
+<span class="lineNum">      61 </span><span class="lineCov">        252 :     if ((referenceName || value) &amp;&amp; collection)</span>
 <span class="lineNum">      62 </span>            :     {
 <span class="lineNum">      63 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;'ref' and 'value' attributes cannot be used with 'collection'&quot;];</span>
 <span class="lineNum">      64 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      65 </span>            : 
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     id &lt;TyphoonInjectedProperty&gt; injectedProperty = nil;</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 :     if (referenceName &amp;&amp; value)</span>
+<span class="lineNum">      66 </span><span class="lineCov">        252 :     id &lt;TyphoonInjectedProperty&gt; injectedProperty = nil;</span>
+<span class="lineNum">      67 </span><span class="lineCov">        252 :     if (referenceName &amp;&amp; value)</span>
 <span class="lineNum">      68 </span>            :     {
 <span class="lineNum">      69 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Ambigous - both reference and value attributes are set. Can only be one.&quot;];</span>
 <span class="lineNum">      70 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 :     else if (referenceName &amp;&amp; [referenceName length] == 0)</span>
+<span class="lineNum">      71 </span><span class="lineCov">        252 :     else if (referenceName &amp;&amp; [referenceName length] == 0)</span>
 <span class="lineNum">      72 </span>            :     {
 <span class="lineNum">      73 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Reference cannot be empty.&quot;];</span>
 <span class="lineNum">      74 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      75 </span>            : 
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 :     else if ([referenceName length] &gt; 0)</span>
+<span class="lineNum">      76 </span><span class="lineCov">        252 :     else if ([referenceName length] &gt; 0)</span>
 <span class="lineNum">      77 </span>            :     {
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 :         injectedProperty = [[TyphoonPropertyInjectedByReference alloc] initWithName:propertyName reference:referenceName];</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 :     else if (value)</span>
+<span class="lineNum">      78 </span><span class="lineCov">        136 :         injectedProperty = [[TyphoonPropertyInjectedByReference alloc] initWithName:propertyName reference:referenceName];</span>
+<span class="lineNum">      79 </span><span class="lineCov">        136 :     }</span>
+<span class="lineNum">      80 </span><span class="lineCov">        116 :     else if (value)</span>
 <span class="lineNum">      81 </span>            :     {
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 :         injectedProperty = [[TyphoonPropertyInjectedWithStringRepresentation alloc] initWithName:propertyName value:value];</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 :     else if (collection)</span>
+<span class="lineNum">      82 </span><span class="lineCov">         84 :         injectedProperty = [[TyphoonPropertyInjectedWithStringRepresentation alloc] initWithName:propertyName value:value];</span>
+<span class="lineNum">      83 </span><span class="lineCov">         84 :     }</span>
+<span class="lineNum">      84 </span><span class="lineCov">         32 :     else if (collection)</span>
 <span class="lineNum">      85 </span>            :     {
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 :         TyphoonPropertyInjectedAsCollection* property = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:propertyName];</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 :         [collection iterate:@&quot;*&quot; usingBlock:^(TyphoonRXMLElement* child)</span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 :         {</span>
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 :             if ([[child tag] isEqualToString:@&quot;ref&quot;])</span>
+<span class="lineNum">      86 </span><span class="lineCov">        160 :         TyphoonPropertyInjectedAsCollection* property = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:propertyName];</span>
+<span class="lineNum">      87 </span><span class="lineCov">         96 :         [collection iterate:@&quot;*&quot; usingBlock:^(TyphoonRXMLElement* child)</span>
+<span class="lineNum">      88 </span><span class="lineCov">         64 :         {</span>
+<span class="lineNum">      89 </span><span class="lineCov">         64 :             if ([[child tag] isEqualToString:@&quot;ref&quot;])</span>
 <span class="lineNum">      90 </span>            :             {
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 :                 [property addItemWithComponentName:[child text]];</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 :             }</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 :             else if ([[child tag] isEqualToString:@&quot;value&quot;])</span>
+<span class="lineNum">      91 </span><span class="lineCov">         32 :                 [property addItemWithComponentName:[child text]];</span>
+<span class="lineNum">      92 </span><span class="lineCov">         32 :             }</span>
+<span class="lineNum">      93 </span><span class="lineCov">         32 :             else if ([[child tag] isEqualToString:@&quot;value&quot;])</span>
 <span class="lineNum">      94 </span>            :             {
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 :                 Class type = NSClassFromString([child attribute:@&quot;requiredType&quot;]);</span>
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 :                 if (!type)</span>
+<span class="lineNum">      95 </span><span class="lineCov">         32 :                 Class type = NSClassFromString([child attribute:@&quot;requiredType&quot;]);</span>
+<span class="lineNum">      96 </span><span class="lineCov">         32 :                 if (!type)</span>
 <span class="lineNum">      97 </span>            :                 {
 <span class="lineNum">      98 </span><span class="lineNoCov">          0 :                     [NSException raise:NSInvalidArgumentException format:@&quot;Type '%@' could not be resolved.&quot;,</span>
 <span class="lineNum">      99 </span>            :                                                                          [child attribute:@&quot;requiredType&quot;]];
 <span class="lineNum">     100 </span><span class="lineNoCov">          0 :                 }</span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 :                 [property addItemWithText:[child text] requiredType:type];</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 :             }</span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 :         }];</span>
+<span class="lineNum">     101 </span><span class="lineCov">         32 :                 [property addItemWithText:[child text] requiredType:type];</span>
+<span class="lineNum">     102 </span><span class="lineCov">         32 :             }</span>
+<span class="lineNum">     103 </span><span class="lineCov">         64 :         }];</span>
 <span class="lineNum">     104 </span>            : 
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 :         injectedProperty = property;</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     105 </span><span class="lineCov">         32 :         injectedProperty = property;</span>
+<span class="lineNum">     106 </span><span class="lineCov">         32 :     }</span>
 <span class="lineNum">     107 </span>            :     else
 <span class="lineNum">     108 </span>            :     {
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 :         injectedProperty = [[TyphoonPropertyInjectedByType alloc] initWithName:propertyName];</span>
+<span class="lineNum">     109 </span><span class="lineCov">        252 :         injectedProperty = [[TyphoonPropertyInjectedByType alloc] initWithName:propertyName];</span>
 <span class="lineNum">     110 </span>            :     }
-<span class="lineNum">     111 </span><span class="lineNoCov">          0 :     return injectedProperty;</span>
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     111 </span><span class="lineCov">        252 :     return injectedProperty;</span>
+<span class="lineNum">     112 </span><span class="lineCov">        252 : }</span>
 <span class="lineNum">     113 </span>            : 
 <span class="lineNum">     114 </span>            : 
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 : - (TyphoonInitializer*)asInitializer</span>
+<span class="lineNum">     115 </span><span class="lineCov">        145 : - (TyphoonInitializer*)asInitializer</span>
 <span class="lineNum">     116 </span>            : {
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 :     [self assertTagName:@&quot;initializer&quot;];</span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 :     SEL selector = NSSelectorFromString([self attribute:@&quot;selector&quot;]);</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 :     TyphoonComponentInitializerIsClassMethod isClassMethod = [self handleIsClassMethod:[self attribute:@&quot;is-class-method&quot;]];</span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 :     TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:selector isClassMethod:isClassMethod];</span>
+<span class="lineNum">     117 </span><span class="lineCov">        145 :     [self assertTagName:@&quot;initializer&quot;];</span>
+<span class="lineNum">     118 </span><span class="lineCov">        145 :     SEL selector = NSSelectorFromString([self attribute:@&quot;selector&quot;]);</span>
+<span class="lineNum">     119 </span><span class="lineCov">        145 :     TyphoonComponentInitializerIsClassMethod isClassMethod = [self handleIsClassMethod:[self attribute:@&quot;is-class-method&quot;]];</span>
+<span class="lineNum">     120 </span><span class="lineCov">        499 :     TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:selector isClassMethod:isClassMethod];</span>
 <span class="lineNum">     121 </span>            : 
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 :     [self iterate:@&quot;*&quot; usingBlock:^(TyphoonRXMLElement* child)</span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 :     {</span>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 :         if ([[child tag] isEqualToString:@&quot;argument&quot;])</span>
+<span class="lineNum">     122 </span><span class="lineCov">        322 :     [self iterate:@&quot;*&quot; usingBlock:^(TyphoonRXMLElement* child)</span>
+<span class="lineNum">     123 </span><span class="lineCov">        177 :     {</span>
+<span class="lineNum">     124 </span><span class="lineCov">        177 :         if ([[child tag] isEqualToString:@&quot;argument&quot;])</span>
 <span class="lineNum">     125 </span>            :         {
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 :             [self setArgumentOnInitializer:initializer withChildTag:child];</span>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     128 </span><span class="lineNoCov">          0 :         else if ([[child tag] isEqualToString:@&quot;description&quot;])</span>
+<span class="lineNum">     126 </span><span class="lineCov">        161 :             [self setArgumentOnInitializer:initializer withChildTag:child];</span>
+<span class="lineNum">     127 </span><span class="lineCov">        161 :         }</span>
+<span class="lineNum">     128 </span><span class="lineCov">         16 :         else if ([[child tag] isEqualToString:@&quot;description&quot;])</span>
 <span class="lineNum">     129 </span>            :         {
 <span class="lineNum">     130 </span>            :             //do nothing.
-<span class="lineNum">     131 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     131 </span><span class="lineCov">         16 :         }</span>
 <span class="lineNum">     132 </span>            :         else
 <span class="lineNum">     133 </span>            :         {
-<span class="lineNum">     134 </span><span class="lineNoCov">          0 :             [NSException raise:NSInvalidArgumentException format:@&quot;The tag '%@' can't be used as part of an initializer.&quot;, [child tag]];</span>
+<span class="lineNum">     134 </span><span class="lineCov">         16 :             [NSException raise:NSInvalidArgumentException format:@&quot;The tag '%@' can't be used as part of an initializer.&quot;, [child tag]];</span>
 <span class="lineNum">     135 </span>            :         }
-<span class="lineNum">     136 </span><span class="lineNoCov">          0 :     }];</span>
-<span class="lineNum">     137 </span><span class="lineNoCov">          0 :     return initializer;</span>
-<span class="lineNum">     138 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     136 </span><span class="lineCov">        177 :     }];</span>
+<span class="lineNum">     137 </span><span class="lineCov">        290 :     return initializer;</span>
+<span class="lineNum">     138 </span><span class="lineCov">        145 : }</span>
 <span class="lineNum">     139 </span>            : 
 <span class="lineNum">     140 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     141 </span>            : #pragma mark - Private Methods
 <span class="lineNum">     142 </span>            : 
-<span class="lineNum">     143 </span><span class="lineNoCov">          0 : - (void)assertTagName:(NSString*)tagName</span>
+<span class="lineNum">     143 </span><span class="lineCov">        707 : - (void)assertTagName:(NSString*)tagName</span>
 <span class="lineNum">     144 </span>            : {
-<span class="lineNum">     145 </span><span class="lineNoCov">          0 :     if (![self.tag isEqualToString:tagName])</span>
+<span class="lineNum">     145 </span><span class="lineCov">        707 :     if (![self.tag isEqualToString:tagName])</span>
 <span class="lineNum">     146 </span>            :     {
 <span class="lineNum">     147 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Element is not a '%@'.&quot;, tagName];</span>
 <span class="lineNum">     148 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     149 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     149 </span><span class="lineCov">        707 : }</span>
 <span class="lineNum">     150 </span>            : 
-<span class="lineNum">     151 </span><span class="lineNoCov">          0 : - (TyphoonScope)scopeForStringValue:(NSString*)scope</span>
+<span class="lineNum">     151 </span><span class="lineCov">        309 : - (TyphoonScope)scopeForStringValue:(NSString*)scope</span>
 <span class="lineNum">     152 </span>            : {
-<span class="lineNum">     153 </span><span class="lineNoCov">          0 :         NSArray *acceptedScopes = @[@&quot;prototype&quot;, @&quot;singleton&quot;];</span>
-<span class="lineNum">     154 </span><span class="lineNoCov">          0 :         if (([scope length] &gt; 0) &amp;&amp; (! [acceptedScopes containsObject:scope])) {</span>
+<span class="lineNum">     153 </span><span class="lineCov">        309 :         NSArray *acceptedScopes = @[@&quot;prototype&quot;, @&quot;singleton&quot;];</span>
+<span class="lineNum">     154 </span><span class="lineCov">        173 :         if (([scope length] &gt; 0) &amp;&amp; (! [acceptedScopes containsObject:scope])) {</span>
 <span class="lineNum">     155 </span><span class="lineNoCov">          0 :                 [NSException raise:NSInvalidArgumentException format:@&quot;Scope was '%@', but can only be 'singleton' or 'prototype'&quot;, scope];</span>
 <span class="lineNum">     156 </span><span class="lineNoCov">          0 :         }</span>
 <span class="lineNum">     157 </span>            :         
 <span class="lineNum">     158 </span>            :         // Here, we don't follow the Spring's implementation :
 <span class="lineNum">     159 </span>            :         // the &quot;default&quot; scope is the prototype.
-<span class="lineNum">     160 </span><span class="lineNoCov">          0 :         TyphoonScope result = TyphoonScopeDefault;</span>
-<span class="lineNum">     161 </span><span class="lineNoCov">          0 :         if ([scope isEqualToString:@&quot;singleton&quot;]) {</span>
-<span class="lineNum">     162 </span><span class="lineNoCov">          0 :                 result = TyphoonScopeSingleton;</span>
-<span class="lineNum">     163 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     160 </span><span class="lineCov">        309 :         TyphoonScope result = TyphoonScopeDefault;</span>
+<span class="lineNum">     161 </span><span class="lineCov">        309 :         if ([scope isEqualToString:@&quot;singleton&quot;]) {</span>
+<span class="lineNum">     162 </span><span class="lineCov">         51 :                 result = TyphoonScopeSingleton;</span>
+<span class="lineNum">     163 </span><span class="lineCov">         51 :     }</span>
 <span class="lineNum">     164 </span>            :         
-<span class="lineNum">     165 </span><span class="lineNoCov">          0 :         return result;</span>
-<span class="lineNum">     166 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     165 </span><span class="lineCov">        309 :         return result;</span>
+<span class="lineNum">     166 </span><span class="lineCov">        309 : }</span>
 <span class="lineNum">     167 </span>            : 
 <span class="lineNum">     168 </span>            : 
-<span class="lineNum">     169 </span><span class="lineNoCov">          0 : - (void)parseComponentDefinitionChildren:(TyphoonDefinition*)componentDefinition</span>
+<span class="lineNum">     169 </span><span class="lineCov">       1309 : - (void)parseComponentDefinitionChildren:(TyphoonDefinition*)componentDefinition</span>
 <span class="lineNum">     170 </span>            : {
-<span class="lineNum">     171 </span><span class="lineNoCov">          0 :     [self iterate:@&quot;*&quot; usingBlock:^(TyphoonRXMLElement* child)</span>
-<span class="lineNum">     172 </span><span class="lineNoCov">          0 :     {</span>
-<span class="lineNum">     173 </span><span class="lineNoCov">          0 :         if ([[child tag] isEqualToString:@&quot;property&quot;])</span>
+<span class="lineNum">     171 </span><span class="lineCov">        809 :     [self iterate:@&quot;*&quot; usingBlock:^(TyphoonRXMLElement* child)</span>
+<span class="lineNum">     172 </span><span class="lineCov">        500 :     {</span>
+<span class="lineNum">     173 </span><span class="lineCov">        500 :         if ([[child tag] isEqualToString:@&quot;property&quot;])</span>
 <span class="lineNum">     174 </span>            :         {
-<span class="lineNum">     175 </span><span class="lineNoCov">          0 :             [componentDefinition addInjectedProperty:[child asInjectedProperty]];</span>
-<span class="lineNum">     176 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     177 </span><span class="lineNoCov">          0 :         else if ([[child tag] isEqualToString:@&quot;initializer&quot;])</span>
+<span class="lineNum">     175 </span><span class="lineCov">        252 :             [componentDefinition addInjectedProperty:[child asInjectedProperty]];</span>
+<span class="lineNum">     176 </span><span class="lineCov">        252 :         }</span>
+<span class="lineNum">     177 </span><span class="lineCov">        248 :         else if ([[child tag] isEqualToString:@&quot;initializer&quot;])</span>
 <span class="lineNum">     178 </span>            :         {
-<span class="lineNum">     179 </span><span class="lineNoCov">          0 :             [componentDefinition setInitializer:[child asInitializer]];</span>
-<span class="lineNum">     180 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     181 </span><span class="lineNoCov">          0 :         else if ([[child tag] isEqualToString:@&quot;description&quot;])</span>
+<span class="lineNum">     179 </span><span class="lineCov">        145 :             [componentDefinition setInitializer:[child asInitializer]];</span>
+<span class="lineNum">     180 </span><span class="lineCov">        145 :         }</span>
+<span class="lineNum">     181 </span><span class="lineCov">        103 :         else if ([[child tag] isEqualToString:@&quot;description&quot;])</span>
 <span class="lineNum">     182 </span>            :         {
 <span class="lineNum">     183 </span>            :             // do nothing
-<span class="lineNum">     184 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     184 </span><span class="lineCov">        103 :         }</span>
 <span class="lineNum">     185 </span>            :         else
 <span class="lineNum">     186 </span>            :         {
-<span class="lineNum">     187 </span><span class="lineNoCov">          0 :             [NSException raise:NSInvalidArgumentException format:@&quot;The tag '%@' can't be used as part of a component definition.&quot;,</span>
+<span class="lineNum">     187 </span><span class="lineCov">        248 :             [NSException raise:NSInvalidArgumentException format:@&quot;The tag '%@' can't be used as part of a component definition.&quot;,</span>
 <span class="lineNum">     188 </span>            :                                                                  [child tag]];
 <span class="lineNum">     189 </span>            :         }
-<span class="lineNum">     190 </span><span class="lineNoCov">          0 :     }];</span>
-<span class="lineNum">     191 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     190 </span><span class="lineCov">        500 :     }];</span>
+<span class="lineNum">     191 </span><span class="lineCov">        309 : }</span>
 <span class="lineNum">     192 </span>            : 
 <span class="lineNum">     193 </span>            : - (void)setArgumentOnInitializer:(TyphoonInitializer*)initializer withChildTag:(TyphoonRXMLElement*)child
-<span class="lineNum">     194 </span><span class="lineNoCov">          0 : {</span>
+<span class="lineNum">     194 </span><span class="lineCov">        161 : {</span>
 <span class="lineNum">     195 </span>            :     NSString* name = [child attribute:@&quot;parameterName&quot;];
-<span class="lineNum">     196 </span><span class="lineNoCov">          0 :     NSString* index = [child attribute:@&quot;index&quot;];</span>
-<span class="lineNum">     197 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     196 </span><span class="lineCov">        161 :     NSString* index = [child attribute:@&quot;index&quot;];</span>
+<span class="lineNum">     197 </span><span class="lineCov">        161 : </span>
 <span class="lineNum">     198 </span>            :     if (name &amp;&amp; index)
-<span class="lineNum">     199 </span><span class="lineNoCov">          0 :     {</span>
+<span class="lineNum">     199 </span><span class="lineCov">        145 :     {</span>
 <span class="lineNum">     200 </span>            :         [NSException raise:NSInvalidArgumentException format:@&quot;'parameterName' and 'index' cannot be used together&quot;];
 <span class="lineNum">     201 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     202 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     203 </span>            :     NSString* reference = [child attribute:@&quot;ref&quot;];
-<span class="lineNum">     204 </span><span class="lineNoCov">          0 :     NSString* value = [child attribute:@&quot;value&quot;];</span>
-<span class="lineNum">     205 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     204 </span><span class="lineCov">        161 :     NSString* value = [child attribute:@&quot;value&quot;];</span>
+<span class="lineNum">     205 </span><span class="lineCov">        161 : </span>
 <span class="lineNum">     206 </span>            :     if (reference)
-<span class="lineNum">     207 </span><span class="lineNoCov">          0 :     {</span>
+<span class="lineNum">     207 </span><span class="lineCov">        161 :     {</span>
 <span class="lineNum">     208 </span>            :         if (name)
-<span class="lineNum">     209 </span><span class="lineNoCov">          0 :         {</span>
+<span class="lineNum">     209 </span><span class="lineCov">         63 :         {</span>
 <span class="lineNum">     210 </span>            :             [initializer injectParameterNamed:name withReference:reference];
-<span class="lineNum">     211 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     212 </span><span class="lineNoCov">          0 :         else if (index)</span>
+<span class="lineNum">     211 </span><span class="lineCov">         63 :         }</span>
+<span class="lineNum">     212 </span><span class="lineCov">         63 :         else if (index)</span>
 <span class="lineNum">     213 </span><span class="lineNoCov">          0 :         {</span>
 <span class="lineNum">     214 </span>            :             [initializer injectParameterAtIndex:[index integerValue] withReference:reference];
 <span class="lineNum">     215 </span><span class="lineNoCov">          0 :         }</span>
 <span class="lineNum">     216 </span><span class="lineNoCov">          0 : </span>
 <span class="lineNum">     217 </span>            :     }
-<span class="lineNum">     218 </span><span class="lineNoCov">          0 :     else if (value)</span>
-<span class="lineNum">     219 </span><span class="lineNoCov">          0 :     {</span>
+<span class="lineNum">     218 </span><span class="lineCov">         63 :     else if (value)</span>
+<span class="lineNum">     219 </span><span class="lineCov">         98 :     {</span>
 <span class="lineNum">     220 </span>            :         NSString* classAsString = [child attribute:@&quot;required-class&quot;];
-<span class="lineNum">     221 </span><span class="lineNoCov">          0 :         Class clazz;</span>
-<span class="lineNum">     222 </span><span class="lineNoCov">          0 :         if (classAsString)</span>
-<span class="lineNum">     223 </span><span class="lineNoCov">          0 :         {</span>
+<span class="lineNum">     221 </span><span class="lineCov">         98 :         Class clazz;</span>
+<span class="lineNum">     222 </span><span class="lineCov">         98 :         if (classAsString)</span>
+<span class="lineNum">     223 </span><span class="lineCov">         98 :         {</span>
 <span class="lineNum">     224 </span>            :             clazz = NSClassFromString(classAsString);
-<span class="lineNum">     225 </span><span class="lineNoCov">          0 :             if (clazz == nil)</span>
-<span class="lineNum">     226 </span><span class="lineNoCov">          0 :             {</span>
+<span class="lineNum">     225 </span><span class="lineCov">         48 :             if (clazz == nil)</span>
+<span class="lineNum">     226 </span><span class="lineCov">         48 :             {</span>
 <span class="lineNum">     227 </span>            :                 [NSException raise:NSInvalidArgumentException format:@&quot;Class '%@' could not be resolved.&quot;, classAsString];
 <span class="lineNum">     228 </span><span class="lineNoCov">          0 :             }</span>
 <span class="lineNum">     229 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     230 </span><span class="lineNoCov">          0 :         if (name)</span>
-<span class="lineNum">     231 </span><span class="lineNoCov">          0 :         {</span>
+<span class="lineNum">     230 </span><span class="lineCov">         48 :         if (name)</span>
+<span class="lineNum">     231 </span><span class="lineCov">         98 :         {</span>
 <span class="lineNum">     232 </span>            :             [initializer injectParameterNamed:name withValueAsText:value requiredTypeOrNil:clazz];
-<span class="lineNum">     233 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     234 </span><span class="lineNoCov">          0 :         else if (index)</span>
-<span class="lineNum">     235 </span><span class="lineNoCov">          0 :         {</span>
+<span class="lineNum">     233 </span><span class="lineCov">         82 :         }</span>
+<span class="lineNum">     234 </span><span class="lineCov">         82 :         else if (index)</span>
+<span class="lineNum">     235 </span><span class="lineCov">         16 :         {</span>
 <span class="lineNum">     236 </span>            :             [initializer injectParameterAtIndex:[index integerValue] withValueAsText:value requiredTypeOrNil:clazz];
-<span class="lineNum">     237 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     238 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     237 </span><span class="lineCov">         16 :         }</span>
+<span class="lineNum">     238 </span><span class="lineCov">         16 : </span>
 <span class="lineNum">     239 </span>            :     }
-<span class="lineNum">     240 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     241 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     240 </span><span class="lineCov">         98 : }</span>
+<span class="lineNum">     241 </span><span class="lineCov">        161 : </span>
 <span class="lineNum">     242 </span>            : - (TyphoonComponentInitializerIsClassMethod)handleIsClassMethod:(NSString*)isClassMethodString
-<span class="lineNum">     243 </span><span class="lineNoCov">          0 : {</span>
+<span class="lineNum">     243 </span><span class="lineCov">        145 : {</span>
 <span class="lineNum">     244 </span>            :     if ([[isClassMethodString lowercaseString] isEqualToString:@&quot;yes&quot;] || [[isClassMethodString lowercaseString] isEqualToString:@&quot;true&quot;])
-<span class="lineNum">     245 </span><span class="lineNoCov">          0 :     {</span>
+<span class="lineNum">     245 </span><span class="lineCov">        145 :     {</span>
 <span class="lineNum">     246 </span>            :         return TyphoonComponentInitializerIsClassMethodYes;
-<span class="lineNum">     247 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     247 </span><span class="lineCov">         16 :     }</span>
 <span class="lineNum">     248 </span>            :     else if ([[isClassMethodString lowercaseString] isEqualToString:@&quot;no&quot;] || [[isClassMethodString lowercaseString] isEqualToString:@&quot;no&quot;])
-<span class="lineNum">     249 </span><span class="lineNoCov">          0 :     {</span>
+<span class="lineNum">     249 </span><span class="lineCov">        129 :     {</span>
 <span class="lineNum">     250 </span>            :         return TyphoonComponentInitializerIsClassMethodNo;
 <span class="lineNum">     251 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     252 </span>            :     else
 <span class="lineNum">     253 </span>            :     {
 <span class="lineNum">     254 </span>            :         return TyphoonComponentInitializerIsClassMethodGuess;
-<span class="lineNum">     255 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     255 </span><span class="lineCov">        129 :     }</span>
 <span class="lineNum">     256 </span>            : }
-<span class="lineNum">     257 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     257 </span><span class="lineCov">        145 : </span>
 <span class="lineNum">     258 </span>            : - (NSString*)attributeOrNilIfEmpty:(NSString*)attributeName
-<span class="lineNum">     259 </span><span class="lineNoCov">          0 : {</span>
+<span class="lineNum">     259 </span><span class="lineCov">        309 : {</span>
 <span class="lineNum">     260 </span>            :     NSString* attribute = [self attribute:attributeName];
-<span class="lineNum">     261 </span><span class="lineNoCov">          0 :     if ([attribute length] &gt; 0)</span>
-<span class="lineNum">     262 </span><span class="lineNoCov">          0 :     {</span>
+<span class="lineNum">     261 </span><span class="lineCov">        309 :     if ([attribute length] &gt; 0)</span>
+<span class="lineNum">     262 </span><span class="lineCov">        309 :     {</span>
 <span class="lineNum">     263 </span>            :         return attribute;
-<span class="lineNum">     264 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     264 </span><span class="lineCov">         16 :     }</span>
 <span class="lineNum">     265 </span>            :     return nil;
-<span class="lineNum">     266 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     267 </span><span class="lineNoCov">          0 : </span>
+<span class="lineNum">     266 </span><span class="lineCov">        293 : }</span>
+<span class="lineNum">     267 </span><span class="lineCov">        309 : </span>
 <span class="lineNum">     268 </span>            : @end
 </pre>
       </td>
