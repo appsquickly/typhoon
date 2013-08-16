@@ -12,10 +12,15 @@
 
 
 
-#import "TyphoonPropertyInjectedByValue.h"
+#import "TyphoonPropertyInjectedWithStringRepresentation.h"
 
-
-@implementation TyphoonPropertyInjectedByValue
+/**
+* Represents a property injected with a string representation. The type converter system will convert the representation to an instance of
+* an object of the required type.
+*
+* @see TyphoonPropertyPlaceholderConfigurer
+*/
+@implementation TyphoonPropertyInjectedWithStringRepresentation
 
 
 

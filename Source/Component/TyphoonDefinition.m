@@ -13,7 +13,7 @@
 #import "TyphoonInitializer.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonPropertyInjectedByType.h"
-#import "TyphoonPropertyInjectedByValue.h"
+#import "TyphoonPropertyInjectedWithStringRepresentation.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonPropertyInjectedAsCollection.h"
@@ -117,7 +117,7 @@
 
 - (void)injectProperty:(SEL)selector withValueAsText:(NSString*)textValue
 {
-    [_injectedProperties addObject:[[TyphoonPropertyInjectedByValue alloc] initWithName:NSStringFromSelector(selector) value:textValue]];
+    [_injectedProperties addObject:[[TyphoonPropertyInjectedWithStringRepresentation alloc] initWithName:NSStringFromSelector(selector) value:textValue]];
 }
 
 - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition

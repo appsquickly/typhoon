@@ -9,9 +9,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonParameterInjectedByRawValue.h"
+#import "TyphoonParameterInjectedWithObjectInstance.h"
 
-@implementation TyphoonParameterInjectedByRawValue
+@implementation TyphoonParameterInjectedWithObjectInstance
 
 - (id)initWithParameterIndex:(NSUInteger)index value:(id)value
 {

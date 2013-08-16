@@ -12,7 +12,7 @@
 
 
 #import "TyphoonInitializer+InstanceBuilder.h"
-#import "TyphoonParameterInjectedByValue.h"
+#import "TyphoonParameterInjectedWithStringRepresentation.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 
@@ -29,7 +29,7 @@
 {
     NSPredicate* predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary* bindings)
     {
-        return [evaluatedObject isKindOfClass:[TyphoonParameterInjectedByValue class]];
+        return [evaluatedObject isKindOfClass:[TyphoonParameterInjectedWithStringRepresentation class]];
     }];
     return [_injectedParameters filteredArrayUsingPredicate:predicate];
 

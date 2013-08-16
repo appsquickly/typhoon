@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonDefinition+InstanceBuilder.h"
-#import "TyphoonPropertyInjectedByValue.h"
+#import "TyphoonPropertyInjectedWithStringRepresentation.h"
 #import "TyphoonPropertyInjectedByType.h"
 #import "TyphoonPropertyInjectedByReference.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
@@ -50,7 +50,7 @@
 
 - (NSSet*)propertiesInjectedByValue
 {
-    return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByValue class]];
+    return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedWithStringRepresentation class]];
 }
 
 - (NSSet*)propertiesInjectedByType

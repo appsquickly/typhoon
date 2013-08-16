@@ -18,8 +18,14 @@
 
 @class TyphoonTypeDescriptor;
 
-
-@interface TyphoonParameterInjectedByValue : NSObject <TyphoonInjectedParameter, TyphoonComponentInjectedByValue>
+/**
+* Represents a parameter injected with a string representation. The type converter system will convert the representation to an instance of
+* the required type.
+*
+* @see TyphoonPropertyPlaceholderConfigurer
+*
+*/
+@interface TyphoonParameterInjectedWithStringRepresentation : NSObject <TyphoonInjectedParameter, TyphoonComponentInjectedByValue>
 {
     __unsafe_unretained TyphoonInitializer* _initializer;
 }

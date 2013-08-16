@@ -14,7 +14,14 @@
 #import "TyphoonInjectedProperty.h"
 #import "TyphoonComponentInjectedByValue.h"
 
-@interface TyphoonPropertyInjectedByValue : NSObject <TyphoonInjectedProperty, TyphoonComponentInjectedByValue>
+/**
+* Represents a property injected with a string representation. The type converter system will convert the representation to an instance of
+* the required type.
+*
+* @see TyphoonPropertyPlaceholderConfigurer
+*
+*/
+@interface TyphoonPropertyInjectedWithStringRepresentation : NSObject <TyphoonInjectedProperty, TyphoonComponentInjectedByValue>
 
 @property (nonatomic, strong, readonly) NSString* name;
 @property (nonatomic, readonly) TyphoonPropertyInjectionType type;

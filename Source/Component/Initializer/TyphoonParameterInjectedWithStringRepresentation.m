@@ -11,13 +11,13 @@
 
 
 #import <objc/runtime.h>
-#import "TyphoonParameterInjectedByValue.h"
+#import "TyphoonParameterInjectedWithStringRepresentation.h"
 #import "TyphoonInitializer.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonIntrospectionUtils.h"
 
 
-@implementation TyphoonParameterInjectedByValue
+@implementation TyphoonParameterInjectedWithStringRepresentation
 
 
 

@@ -19,9 +19,9 @@
 #import "TyphoonPropertyInjectedByReference.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonTypeConverterRegistry.h"
-#import "TyphoonPropertyInjectedByValue.h"
+#import "TyphoonPropertyInjectedWithStringRepresentation.h"
 #import "TyphoonPropertyInjectionDelegate.h"
-#import "TyphoonParameterInjectedByValue.h"
+#import "TyphoonParameterInjectedWithStringRepresentation.h"
 #import "TyphoonPrimitiveTypeConverter.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
@@ -29,7 +29,7 @@
 #import "TyphoonCollectionValue.h"
 #import "TyphoonByReferenceCollectionValue.h"
 #import "TyphoonTypeConvertedCollectionValue.h"
-#import "TyphoonParameterInjectedByRawValue.h"
+#import "TyphoonParameterInjectedWithObjectInstance.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
 
@@ -159,7 +159,7 @@
     }
     else if (property.injectionType == TyphoonPropertyInjectionByValueType)
     {
-        TyphoonPropertyInjectedByValue* valueProperty = (TyphoonPropertyInjectedByValue*) property;
+        TyphoonPropertyInjectedWithStringRepresentation* valueProperty = (TyphoonPropertyInjectedWithStringRepresentation*) property;
         [self setArgumentFor:invocation index:2 textValue:valueProperty.textValue requiredType:typeDescriptor];
     }
     else if (property.injectionType == TyphoonPropertyInjectionAsCollection)
@@ -263,13 +263,13 @@
         }
         else if (parameter.type == TyphoonParameterInjectedByValueType)
         {
-            TyphoonParameterInjectedByValue* byValue = (TyphoonParameterInjectedByValue*) parameter;
+            TyphoonParameterInjectedWithStringRepresentation* byValue = (TyphoonParameterInjectedWithStringRepresentation*) parameter;
             [self setArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue
                     requiredType:[byValue resolveTypeWith:instanceOrClass]];
         }
         else if (parameter.type == TyphoonParameterInjectedByRawValueType)
         {
-            TyphoonParameterInjectedByRawValue* byValue = (TyphoonParameterInjectedByRawValue*) parameter;
+            TyphoonParameterInjectedWithObjectInstance* byValue = (TyphoonParameterInjectedWithObjectInstance*) parameter;
             id value = byValue.value;
             [invocation setArgument:&value atIndex:parameter.index + 2];
         }

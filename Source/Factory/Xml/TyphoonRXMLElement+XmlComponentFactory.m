@@ -14,7 +14,7 @@
 #import "TyphoonRXMLElement+XmlComponentFactory.h"
 #import "TyphoonInjectedProperty.h"
 #import "TyphoonPropertyInjectedByReference.h"
-#import "TyphoonPropertyInjectedByValue.h"
+#import "TyphoonPropertyInjectedWithStringRepresentation.h"
 #import "TyphoonPropertyInjectedByType.h"
 #import "TyphoonInitializer.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
@@ -79,7 +79,7 @@
     }
     else if (value)
     {
-        injectedProperty = [[TyphoonPropertyInjectedByValue alloc] initWithName:propertyName value:value];
+        injectedProperty = [[TyphoonPropertyInjectedWithStringRepresentation alloc] initWithName:propertyName value:value];
     }
     else if (collection)
     {

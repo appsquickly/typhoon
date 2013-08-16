@@ -14,8 +14,8 @@
 #import "TyphoonInitializer.h"
 #import "TyphoonParameterInjectedByReference.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
-#import "TyphoonParameterInjectedByValue.h"
-#import "TyphoonParameterInjectedByRawValue.h"
+#import "TyphoonParameterInjectedWithStringRepresentation.h"
+#import "TyphoonParameterInjectedWithObjectInstance.h"
 #import "TyphoonDefinition.h"
 
 
@@ -76,8 +76,8 @@
 {
     if (index != NSUIntegerMax && index < [_parameterNames count])
     {
-        TyphoonParameterInjectedByValue* parameterInjectedByValue =
-                [[TyphoonParameterInjectedByValue alloc] initWithIndex:index value:text requiredTypeOrNil:requiredClass];
+        TyphoonParameterInjectedWithStringRepresentation* parameterInjectedByValue =
+                [[TyphoonParameterInjectedWithStringRepresentation alloc] initWithIndex:index value:text requiredTypeOrNil:requiredClass];
         [parameterInjectedByValue setInitializer:self];
         [_injectedParameters addObject:parameterInjectedByValue];
     }
@@ -108,7 +108,7 @@
 {
     if (index != NSUIntegerMax && index < [_parameterNames count])
     {
-        [_injectedParameters addObject:[[TyphoonParameterInjectedByRawValue alloc] initWithParameterIndex:index value:value]];
+        [_injectedParameters addObject:[[TyphoonParameterInjectedWithObjectInstance alloc] initWithParameterIndex:index value:value]];
     }
 }
 
