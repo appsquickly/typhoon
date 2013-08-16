@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <title>LCOV - Typhoon.info - Source/Component/Properties/TyphoonPropertyInjectedByValue.h</title>
+  <title>LCOV - Typhoon.info - Source/Component/Properties/TyphoonPropertyInjectedWithStringRepresentation.h</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -19,7 +19,7 @@
         <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Source/Component/Properties</a> - TyphoonPropertyInjectedByValue.h</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Source/Component/Properties</a> - TyphoonPropertyInjectedWithStringRepresentation.h</td>
             <td width="5%"></td>
             <td width="15%"></td>
             <td width="10%" class="headerCovTableHead">Hit</td>
@@ -72,16 +72,23 @@
 <span class="lineNum">      14 </span>            : #import &quot;TyphoonInjectedProperty.h&quot;
 <span class="lineNum">      15 </span>            : #import &quot;TyphoonComponentInjectedByValue.h&quot;
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span>            : @interface TyphoonPropertyInjectedByValue : NSObject &lt;TyphoonInjectedProperty, TyphoonComponentInjectedByValue&gt;
-<span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span><span class="lineCov">         96 : @property (nonatomic, strong, readonly) NSString* name;</span>
-<span class="lineNum">      20 </span><span class="lineNoCov">          0 : @property (nonatomic, readonly) TyphoonPropertyInjectionType type;</span>
-<span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span>            : - (id)initWithName:(NSString*)name value:(NSString*)value;
-<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      17 </span>            : /**
+<span class="lineNum">      18 </span>            : * Represents a property injected with a string representation. The type converter system will convert the representation to an instance of
+<span class="lineNum">      19 </span>            : * the required type.
+<span class="lineNum">      20 </span>            : *
+<span class="lineNum">      21 </span>            : * @see TyphoonPropertyPlaceholderConfigurer
+<span class="lineNum">      22 </span>            : *
+<span class="lineNum">      23 </span>            : */
+<span class="lineNum">      24 </span>            : @interface TyphoonPropertyInjectedWithStringRepresentation : NSObject &lt;TyphoonInjectedProperty, TyphoonComponentInjectedByValue&gt;
 <span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span>            : @end
+<span class="lineNum">      26 </span><span class="lineCov">         96 : @property (nonatomic, strong, readonly) NSString* name;</span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 : @property (nonatomic, readonly) TyphoonPropertyInjectionType type;</span>
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            : - (id)initWithName:(NSString*)name value:(NSString*)value;
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span>            : @end
 </pre>
       </td>
     </tr>

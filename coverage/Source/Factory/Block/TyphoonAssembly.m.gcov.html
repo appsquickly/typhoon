@@ -194,7 +194,7 @@
 <span class="lineNum">     136 </span><span class="lineCov">         60 : </span>
 <span class="lineNum">     137 </span>            : + (TyphoonDefinition *)definitionToTerminateCircularDependencyForKey:(NSString *)key
 <span class="lineNum">     138 </span><span class="lineCov">        285 : {</span>
-<span class="lineNum">     139 </span><span class="lineCov">        616 :     // we return a 'dummy' definition just to terminate the cycle. This dummy definition will be overwritten by the real one, which will be set further up the stack and will overwrite this one in 'cachedDefinitionsForMethodName'.</span>
+<span class="lineNum">     139 </span><span class="lineCov">        617 :     // we return a 'dummy' definition just to terminate the cycle. This dummy definition will be overwritten by the real one, which will be set further up the stack and will overwrite this one in 'cachedDefinitionsForMethodName'.</span>
 <span class="lineNum">     140 </span>            :     return [[TyphoonDefinition alloc] initWithClass:[NSString class] key:key];
 <span class="lineNum">     141 </span><span class="lineCov">         60 : }</span>
 <span class="lineNum">     142 </span>            : 

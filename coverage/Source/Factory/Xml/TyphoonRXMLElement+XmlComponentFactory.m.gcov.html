@@ -72,7 +72,7 @@
 <span class="lineNum">      14 </span>            : #import &quot;TyphoonRXMLElement+XmlComponentFactory.h&quot;
 <span class="lineNum">      15 </span>            : #import &quot;TyphoonInjectedProperty.h&quot;
 <span class="lineNum">      16 </span>            : #import &quot;TyphoonPropertyInjectedByReference.h&quot;
-<span class="lineNum">      17 </span>            : #import &quot;TyphoonPropertyInjectedByValue.h&quot;
+<span class="lineNum">      17 </span>            : #import &quot;TyphoonPropertyInjectedWithStringRepresentation.h&quot;
 <span class="lineNum">      18 </span>            : #import &quot;TyphoonPropertyInjectedByType.h&quot;
 <span class="lineNum">      19 </span>            : #import &quot;TyphoonInitializer.h&quot;
 <span class="lineNum">      20 </span>            : #import &quot;TyphoonDefinition+InstanceBuilder.h&quot;
@@ -137,7 +137,7 @@
 <span class="lineNum">      79 </span><span class="lineCov">        136 :     }</span>
 <span class="lineNum">      80 </span><span class="lineCov">        116 :     else if (value)</span>
 <span class="lineNum">      81 </span>            :     {
-<span class="lineNum">      82 </span><span class="lineCov">         84 :         injectedProperty = [[TyphoonPropertyInjectedByValue alloc] initWithName:propertyName value:value];</span>
+<span class="lineNum">      82 </span><span class="lineCov">         84 :         injectedProperty = [[TyphoonPropertyInjectedWithStringRepresentation alloc] initWithName:propertyName value:value];</span>
 <span class="lineNum">      83 </span><span class="lineCov">         84 :     }</span>
 <span class="lineNum">      84 </span><span class="lineCov">         32 :     else if (collection)</span>
 <span class="lineNum">      85 </span>            :     {

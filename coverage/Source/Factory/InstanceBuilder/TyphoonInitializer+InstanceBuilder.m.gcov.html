@@ -70,7 +70,7 @@
 <span class="lineNum">      12 </span>            : 
 <span class="lineNum">      13 </span>            : 
 <span class="lineNum">      14 </span>            : #import &quot;TyphoonInitializer+InstanceBuilder.h&quot;
-<span class="lineNum">      15 </span>            : #import &quot;TyphoonParameterInjectedByValue.h&quot;
+<span class="lineNum">      15 </span>            : #import &quot;TyphoonParameterInjectedWithStringRepresentation.h&quot;
 <span class="lineNum">      16 </span>            : #import &quot;TyphoonDefinition.h&quot;
 <span class="lineNum">      17 </span>            : #import &quot;TyphoonDefinition+InstanceBuilder.h&quot;
 <span class="lineNum">      18 </span>            : 
@@ -87,7 +87,7 @@
 <span class="lineNum">      29 </span>            : {
 <span class="lineNum">      30 </span><span class="lineCov">        170 :     NSPredicate* predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary* bindings)</span>
 <span class="lineNum">      31 </span><span class="lineCov">         92 :     {</span>
-<span class="lineNum">      32 </span><span class="lineCov">        184 :         return [evaluatedObject isKindOfClass:[TyphoonParameterInjectedByValue class]];</span>
+<span class="lineNum">      32 </span><span class="lineCov">        184 :         return [evaluatedObject isKindOfClass:[TyphoonParameterInjectedWithStringRepresentation class]];</span>
 <span class="lineNum">      33 </span><span class="lineCov">        170 :     }];</span>
 <span class="lineNum">      34 </span><span class="lineCov">        156 :     return [_injectedParameters filteredArrayUsingPredicate:predicate];</span>
 <span class="lineNum">      35 </span>            : 

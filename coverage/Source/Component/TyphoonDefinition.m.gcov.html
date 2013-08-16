@@ -71,7 +71,7 @@
 <span class="lineNum">      13 </span>            : #import &quot;TyphoonInitializer.h&quot;
 <span class="lineNum">      14 </span>            : #import &quot;TyphoonDefinition.h&quot;
 <span class="lineNum">      15 </span>            : #import &quot;TyphoonPropertyInjectedByType.h&quot;
-<span class="lineNum">      16 </span>            : #import &quot;TyphoonPropertyInjectedByValue.h&quot;
+<span class="lineNum">      16 </span>            : #import &quot;TyphoonPropertyInjectedWithStringRepresentation.h&quot;
 <span class="lineNum">      17 </span>            : #import &quot;TyphoonInitializer+InstanceBuilder.h&quot;
 <span class="lineNum">      18 </span>            : #import &quot;TyphoonDefinition+InstanceBuilder.h&quot;
 <span class="lineNum">      19 </span>            : #import &quot;TyphoonPropertyInjectedAsCollection.h&quot;
@@ -175,7 +175,7 @@
 <span class="lineNum">     117 </span>            : 
 <span class="lineNum">     118 </span>            : - (void)injectProperty:(SEL)selector withValueAsText:(NSString*)textValue
 <span class="lineNum">     119 </span>            : {
-<span class="lineNum">     120 </span>            :     [_injectedProperties addObject:[[TyphoonPropertyInjectedByValue alloc] initWithName:NSStringFromSelector(selector) value:textValue]];
+<span class="lineNum">     120 </span>            :     [_injectedProperties addObject:[[TyphoonPropertyInjectedWithStringRepresentation alloc] initWithName:NSStringFromSelector(selector) value:textValue]];
 <span class="lineNum">     121 </span>            : }
 <span class="lineNum">     122 </span><span class="lineCov">          4 : </span>
 <span class="lineNum">     123 </span>            : - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition

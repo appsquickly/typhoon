@@ -72,8 +72,8 @@
 <span class="lineNum">      14 </span>            : #import &quot;TyphoonInitializer.h&quot;
 <span class="lineNum">      15 </span>            : #import &quot;TyphoonParameterInjectedByReference.h&quot;
 <span class="lineNum">      16 </span>            : #import &quot;NSObject+TyphoonIntrospectionUtils.h&quot;
-<span class="lineNum">      17 </span>            : #import &quot;TyphoonParameterInjectedByValue.h&quot;
-<span class="lineNum">      18 </span>            : #import &quot;TyphoonParameterInjectedByRawValue.h&quot;
+<span class="lineNum">      17 </span>            : #import &quot;TyphoonParameterInjectedWithStringRepresentation.h&quot;
+<span class="lineNum">      18 </span>            : #import &quot;TyphoonParameterInjectedWithObjectInstance.h&quot;
 <span class="lineNum">      19 </span>            : #import &quot;TyphoonDefinition.h&quot;
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span>            : 
@@ -134,8 +134,8 @@
 <span class="lineNum">      76 </span><span class="lineCov">        143 : {</span>
 <span class="lineNum">      77 </span><span class="lineCov">        143 :     if (index != NSUIntegerMax &amp;&amp; index &lt; [_parameterNames count])</span>
 <span class="lineNum">      78 </span>            :     {
-<span class="lineNum">      79 </span>            :         TyphoonParameterInjectedByValue* parameterInjectedByValue =
-<span class="lineNum">      80 </span><span class="lineCov">        176 :                 [[TyphoonParameterInjectedByValue alloc] initWithIndex:index value:text requiredTypeOrNil:requiredClass];</span>
+<span class="lineNum">      79 </span>            :         TyphoonParameterInjectedWithStringRepresentation* parameterInjectedByValue =
+<span class="lineNum">      80 </span><span class="lineCov">        176 :                 [[TyphoonParameterInjectedWithStringRepresentation alloc] initWithIndex:index value:text requiredTypeOrNil:requiredClass];</span>
 <span class="lineNum">      81 </span>            :         [parameterInjectedByValue setInitializer:self];
 <span class="lineNum">      82 </span><span class="lineCov">        144 :         [_injectedParameters addObject:parameterInjectedByValue];</span>
 <span class="lineNum">      83 </span>            :     }
@@ -166,7 +166,7 @@
 <span class="lineNum">     108 </span>            : {
 <span class="lineNum">     109 </span><span class="lineCov">         15 :     if (index != NSUIntegerMax &amp;&amp; index &lt; [_parameterNames count])</span>
 <span class="lineNum">     110 </span>            :     {
-<span class="lineNum">     111 </span><span class="lineCov">         15 :         [_injectedParameters addObject:[[TyphoonParameterInjectedByRawValue alloc] initWithParameterIndex:index value:value]];</span>
+<span class="lineNum">     111 </span><span class="lineCov">         15 :         [_injectedParameters addObject:[[TyphoonParameterInjectedWithObjectInstance alloc] initWithParameterIndex:index value:value]];</span>
 <span class="lineNum">     112 </span><span class="lineCov">         15 :     }</span>
 <span class="lineNum">     113 </span>            : }
 <span class="lineNum">     114 </span>            : 

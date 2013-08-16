@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>TyphoonPropertyInjectedByValue Class Reference</title>
+		<title>TyphoonParameterInjectedWithObjectInstance Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">TyphoonPropertyInjectedByValue Class Reference</h1>
+				<h1 class="hideInXcode">TyphoonParameterInjectedWithObjectInstance Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -26,6 +26,8 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
 	
 	
 	
@@ -38,9 +40,11 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;name</option>
+	<option value="//api/name/index">&nbsp;&nbsp;&nbsp;&nbsp;index</option>
 	
 	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
+	
+	<option value="//api/name/value">&nbsp;&nbsp;&nbsp;&nbsp;value</option>
 	
 	
 	
@@ -49,7 +53,7 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/initWithName:value:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:value:</option>
+	<option value="//api/name/initWithParameterIndex:value:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithParameterIndex:value:</option>
 	
 	
 	
@@ -60,6 +64,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -73,9 +79,11 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/index">index</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/type">type</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/value">value</a></span></li>
 	
 </ul></li>
 
@@ -85,7 +93,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:value:">initWithName:value:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithParameterIndex:value:">initWithParameterIndex:value:</a></span></li>
 	
 </ul></li>
 
@@ -94,7 +102,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="TyphoonPropertyInjectedByValue Class Reference" name="top"></a>
+				<a title="TyphoonParameterInjectedWithObjectInstance Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -103,7 +111,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">TyphoonPropertyInjectedByValue Class Reference</h1>
+						<h1 class="title title-header">TyphoonParameterInjectedWithObjectInstance Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -114,13 +122,21 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Conforms to</td>
-	<td class="specification-value"><a href="../Protocols/TyphoonComponentInjectedByValue.html">TyphoonComponentInjectedByValue</a><br /><a href="../Protocols/TyphoonInjectedProperty.html">TyphoonInjectedProperty</a></td>
+	<td class="specification-value"><a href="../Protocols/TyphoonInjectedParameter.html">TyphoonInjectedParameter</a></td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">TyphoonPropertyInjectedByValue.h</td>
+	<td class="specification-value">TyphoonParameterInjectedWithObjectInstance.h</td>
 </tr>
 						</tbody></table></div>
 					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Represents a parameter injected with an instance of an object &ndash; something constructed outside of the container.</p>
+					</div>
 					
 					
 					
@@ -137,7 +153,7 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
+		<code><a href="#//api/name/index">&nbsp;&nbsp;index</a></code>
 		
 	</span>
 	<span class="task-item-suffix">property</span>
@@ -151,7 +167,14 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithName:value:">&ndash;&nbsp;initWithName:value:</a></code>
+		<code><a href="#//api/name/value">&nbsp;&nbsp;value</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithParameterIndex:value:">&ndash;&nbsp;initWithParameterIndex:value:</a></code>
 		
 	</span>
 	
@@ -170,12 +193,12 @@
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/name" title="name"></a>
-	<h3 class="subsubtitle method-title">name</h3>
+	<a name="//api/name/index" title="index"></a>
+	<h3 class="subsubtitle method-title">index</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *name</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSUInteger index</code></div>
 
     
 </div>
@@ -186,7 +209,18 @@
 	
 	
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) TyphoonPropertyInjectionType type</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) TyphoonParameterInjectionType type</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/value" title="value"></a>
+	<h3 class="subsubtitle method-title">value</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) id value</code></div>
 
     
 </div>
@@ -202,12 +236,12 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithName:value:" title="initWithName:value:"></a>
-	<h3 class="subsubtitle method-title">initWithName:value:</h3>
+	<a name="//api/name/initWithParameterIndex:value:" title="initWithParameterIndex:value:"></a>
+	<h3 class="subsubtitle method-title">initWithParameterIndex:value:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> value:(NSString *)<em>value</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithParameterIndex:(NSUInteger)<em>index</em> value:(id)<em>value</em></code></div>
 
     
 </div>

@@ -74,16 +74,18 @@
 <span class="lineNum">      16 </span>            : #import &lt;Foundation/Foundation.h&gt;
 <span class="lineNum">      17 </span>            : #import &quot;TyphoonInjectedProperty.h&quot;
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span>            : @interface TyphoonPropertyInjectedByType : NSObject &lt;TyphoonInjectedProperty&gt;
-<span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineCov">         16 : @property (nonatomic, strong, readonly) NSString* name;</span>
-<span class="lineNum">      23 </span><span class="lineNoCov">          0 : @property (nonatomic, readonly) TyphoonPropertyInjectionType type;</span>
-<span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span>            : - (id)initWithName:(NSString*)name;
+<span class="lineNum">      19 </span>            : /**
+<span class="lineNum">      20 </span>            : * Represents a property injected by matching a definition of the required type from the container.
+<span class="lineNum">      21 </span>            : */
+<span class="lineNum">      22 </span>            : @interface TyphoonPropertyInjectedByType : NSObject &lt;TyphoonInjectedProperty&gt;
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span><span class="lineCov">         16 : @property (nonatomic, strong, readonly) NSString* name;</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : @property (nonatomic, readonly) TyphoonPropertyInjectionType type;</span>
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span>            : @end
+<span class="lineNum">      27 </span>            : - (id)initWithName:(NSString*)name;
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            : @end
 </pre>
       </td>
     </tr>
