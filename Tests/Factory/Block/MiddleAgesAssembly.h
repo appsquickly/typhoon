@@ -21,7 +21,7 @@
 
 - (id)knight;
 
-- (id)knightWithWeapon:(NSObject*)weapon;
+//- (id)knightWithWeapon:(NSObject*)weapon;
 
 - (id)cavalryMan;
 

@@ -168,8 +168,14 @@ static NSMutableDictionary* resolveStackForKey;
 + (id)definitionByCallingAssemblyMethodForKey:(NSString*)key me:(TyphoonAssembly*)me
 {
     SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key];
-    id cached = objc_msgSend(me,
-        sel); // the wrappedSEL will call through to the original, unwrapped implementation because of the active swizzling.
+
+    LogDebug(@"Selector: %@", NSStringFromSelector(sel));
+//
+//    NSMethodSignature* signature = [[[self class] class] instanceMethodSignatureForSelector:sel];
+//    LogDebug(@"Arguments count: %i", [signature numberOfArguments]);
+
+    // the advisedSEL will call through to the original, unwrapped implementation because of the active swizzling.
+    id cached = objc_msgSend(me, sel);
     return cached;
 }
 

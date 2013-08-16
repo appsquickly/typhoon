@@ -81,16 +81,16 @@ static NSMutableArray* swizzleRegistry;
 {
     NSString* componentKey = NSStringFromSelector([invocation selector]);
     NSLog(@"Component key: %@", componentKey);
+//
+//    NSMutableArray* arguments = [[NSMutableArray alloc] init];
+//    for (int i = 2; i < ([[invocation methodSignature] numberOfArguments]); i++)
+//    {
+//        id argument;
+//        [invocation getArgument:&argument atIndex:i];
+//        [arguments addObject:argument];
+//    }
 
-    NSMutableArray* arguments = [[NSMutableArray alloc] init];
-    for (int i = 2; i < ([[invocation methodSignature] numberOfArguments]); i++)
-    {
-        id argument;
-        [invocation getArgument:&argument atIndex:i];
-        [arguments addObject:argument];
-    }
-
-    LogDebug(@"Runtime arguments: %@", arguments);
+//    LogDebug(@"Runtime arguments: %@", arguments);
 
     [invocation setSelector:@selector(componentForKey:)];
     [invocation setArgument:&componentKey atIndex:2];

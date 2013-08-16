@@ -12,7 +12,7 @@
 #import "TyphoonAssemblySelectorAdviser.h"
 
 
-static NSString* const TYPHOON_BEFORE_ADVICE_SUFFIX = @"__typhoonBeforeAdvice";
+static NSString* const TYPHOON_BEFORE_ADVICE_PREFIX = @"__typhoonBeforeAdvice__";
 
 /**
 * Used to apply an aspect to TyphoonAssembly methods. Before invoking the original target we re-route to a cache to check if there is a
@@ -21,15 +21,15 @@ static NSString* const TYPHOON_BEFORE_ADVICE_SUFFIX = @"__typhoonBeforeAdvice";
 */
 @implementation TyphoonAssemblySelectorAdviser
 
-+ (SEL)advisedSELForKey:(NSString *)key;
++ (SEL)advisedSELForKey:(NSString*)key;
 {
-    return NSSelectorFromString([key stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
+    return NSSelectorFromString([TYPHOON_BEFORE_ADVICE_PREFIX stringByAppendingString:key]);
 }
 
-+ (NSString *)keyForAdvisedSEL:(SEL)selWithAdvicePrefix;
++ (NSString*)keyForAdvisedSEL:(SEL)selWithAdvicePrefix;
 {
     NSString* name = NSStringFromSelector(selWithAdvicePrefix);
-    NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@""];
+    NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_PREFIX withString:@""];
     return key;
 }
 
@@ -38,12 +38,12 @@ static NSString* const TYPHOON_BEFORE_ADVICE_SUFFIX = @"__typhoonBeforeAdvice";
     NSString* name = NSStringFromSelector(sel);
     // a name will always have this suffix after a TyphoonBlockComponentFactory has been initialized with us as the assembly. 
     // TODO: Make this clearer. All user facing calls will always go through the dynamic implementation machinery.
-    return [name hasSuffix:TYPHOON_BEFORE_ADVICE_SUFFIX];  
+    return [name hasSuffix:TYPHOON_BEFORE_ADVICE_PREFIX];
 }
 
 + (SEL)advisedSELForSEL:(SEL)unwrappedSEL;
 {
-    return NSSelectorFromString([NSStringFromSelector(unwrappedSEL) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
+    return NSSelectorFromString([TYPHOON_BEFORE_ADVICE_PREFIX stringByAppendingString:NSStringFromSelector(unwrappedSEL)]);
 }
 
 @end
