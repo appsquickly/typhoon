@@ -35,20 +35,6 @@ static NSMutableArray* swizzleRegistry;
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 
-//+ (BOOL)resolveInstanceMethod:(SEL)sel
-//{
-//    if ([super resolveInstanceMethod:sel] == NO)
-//    {
-//        IMP imp = imp_implementationWithBlock((__bridge id) objc_unretainedPointer(^(id me)
-//        {
-//            return [me componentForKey:NSStringFromSelector(sel)];
-//        }));
-//        class_addMethod(self, sel, imp, "@");
-//        return YES;
-//    }
-//    return NO;
-//}
-
 + (void)initialize
 {
     [super initialize];
@@ -95,19 +81,20 @@ static NSMutableArray* swizzleRegistry;
 {
     NSString* componentKey = NSStringFromSelector([invocation selector]);
     NSLog(@"Component key: %@", componentKey);
+
+    NSMutableArray* arguments = [[NSMutableArray alloc] init];
+    for (int i = 2; i < ([[invocation methodSignature] numberOfArguments]); i++)
+    {
+        id argument;
+        [invocation getArgument:&argument atIndex:i];
+        [arguments addObject:argument];
+    }
+
+    LogDebug(@"Runtime arguments: %@", arguments);
+
     [invocation setSelector:@selector(componentForKey:)];
     [invocation setArgument:&componentKey atIndex:2];
     [invocation invoke];
-
-//    NSLog(@"$$$$$$$$$$$$$$$$$$$$$$$$$ In forward invocation!!!!!!!!");
-//    SEL selector = @selector(componentForKey:);
-//    NSInvocation* newInvocation = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:selector]];
-//    [newInvocation setTarget:self];
-//    [newInvocation setSelector:selector];
-//    NSString* componentKey = NSStringFromSelector([invocation selector]);
-//    NSLog(@"Component key: %@", componentKey);
-//    [newInvocation setArgument:&componentKey atIndex:2];
-//    [newInvocation invoke];
 }
 
 - (NSMethodSignature*)methodSignatureForSelector:(SEL)aSelector
@@ -170,7 +157,7 @@ static NSMutableArray* swizzleRegistry;
 {
     [self enumerateMethodsInClass:aClass usingBlock:^(Method method)
     {
-        if ([self method:method onClassIsDefinitionSelector:aClass])
+        if ([self method:method onClassIsNotReserved:aClass])
         {
             [self addDefinitionSelectorForMethod:method toSet:definitionSelectors];
         }
@@ -189,16 +176,6 @@ typedef void(^MethodEnumerationBlock)(Method method);
         block(method);
     }
     free(methodList);
-}
-
-- (BOOL)method:(Method)method onClassIsDefinitionSelector:(Class)aClass;
-{
-    return ([self methodHasNoArguments:method] && [self method:method onClassIsNotReserved:aClass]);
-}
-
-- (BOOL)methodHasNoArguments:(Method)method
-{
-    return method_getNumberOfArguments(method) == 2;
 }
 
 - (BOOL)method:(Method)method onClassIsNotReserved:(Class)aClass;

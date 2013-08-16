@@ -43,7 +43,7 @@
 - (void)test_resolves_component_using_selector
 {
     MiddleAgesAssembly* assembly = (MiddleAgesAssembly *)_componentFactory;
-    Knight* knight = [assembly knight];
+    Knight* knight = [assembly knightWithWeapon:@"Foobar"];
     assertThat(knight, notNilValue());
 }
 
