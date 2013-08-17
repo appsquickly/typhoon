@@ -75,7 +75,7 @@
 <span class="lineNum">      17 </span>            : #import &quot;TyphoonIntrospectionUtils.h&quot;
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span><span class="lineCov">          7 : @implementation TyphoonParameterInjectedWithStringRepresentation</span>
+<span class="lineNum">      20 </span><span class="lineCov">         67 : @implementation TyphoonParameterInjectedWithStringRepresentation</span>
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : 
@@ -85,17 +85,17 @@
 <span class="lineNum">      27 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      28 </span>            : 
 <span class="lineNum">      29 </span>            : - (id)initWithIndex:(NSUInteger)index value:(NSString*)value requiredTypeOrNil:(Class)requiredTypeOrNil
-<span class="lineNum">      30 </span><span class="lineCov">        144 : {</span>
+<span class="lineNum">      30 </span><span class="lineCov">        204 : {</span>
 <span class="lineNum">      31 </span>            :     self = [super init];
-<span class="lineNum">      32 </span><span class="lineCov">        144 :     if (self)</span>
-<span class="lineNum">      33 </span><span class="lineCov">        144 :     {</span>
+<span class="lineNum">      32 </span><span class="lineCov">        204 :     if (self)</span>
+<span class="lineNum">      33 </span><span class="lineCov">        204 :     {</span>
 <span class="lineNum">      34 </span>            :         _index = index;
-<span class="lineNum">      35 </span><span class="lineCov">        144 :         _textValue = value;</span>
-<span class="lineNum">      36 </span><span class="lineCov">        144 :         _requiredType = requiredTypeOrNil;</span>
-<span class="lineNum">      37 </span><span class="lineCov">        144 :     }</span>
-<span class="lineNum">      38 </span><span class="lineCov">        144 :     return self;</span>
-<span class="lineNum">      39 </span><span class="lineCov">        144 : }</span>
-<span class="lineNum">      40 </span><span class="lineCov">        144 : </span>
+<span class="lineNum">      35 </span><span class="lineCov">        204 :         _textValue = value;</span>
+<span class="lineNum">      36 </span><span class="lineCov">        204 :         _requiredType = requiredTypeOrNil;</span>
+<span class="lineNum">      37 </span><span class="lineCov">        204 :     }</span>
+<span class="lineNum">      38 </span><span class="lineCov">        204 :     return self;</span>
+<span class="lineNum">      39 </span><span class="lineCov">        204 : }</span>
+<span class="lineNum">      40 </span><span class="lineCov">        204 : </span>
 <span class="lineNum">      41 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      42 </span>            : #pragma mark - Interface Methods
 <span class="lineNum">      43 </span>            : 
@@ -138,10 +138,10 @@
 <span class="lineNum">      80 </span><span class="lineCov">         40 : }</span>
 <span class="lineNum">      81 </span>            : 
 <span class="lineNum">      82 </span>            : - (void)setInitializer:(TyphoonInitializer*)initializer
-<span class="lineNum">      83 </span><span class="lineCov">        151 : {</span>
+<span class="lineNum">      83 </span><span class="lineCov">        271 : {</span>
 <span class="lineNum">      84 </span>            :     _initializer = initializer;
-<span class="lineNum">      85 </span><span class="lineCov">        151 : }</span>
-<span class="lineNum">      86 </span><span class="lineCov">        151 : </span>
+<span class="lineNum">      85 </span><span class="lineCov">        271 : }</span>
+<span class="lineNum">      86 </span><span class="lineCov">        271 : </span>
 <span class="lineNum">      87 </span>            : 
 <span class="lineNum">      88 </span>            : @end
 </pre>

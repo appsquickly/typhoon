@@ -82,12 +82,12 @@
 <span class="lineNum">      24 </span><span class="lineCov">        570 :     return NSSelectorFromString([key stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);</span>
 <span class="lineNum">      25 </span><span class="lineCov">        285 : }</span>
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">        540 : + (NSString *)keyForWrappedSEL:(SEL)selWithAdvicePrefix;</span>
+<span class="lineNum">      27 </span><span class="lineCov">        795 : + (NSString *)keyForWrappedSEL:(SEL)selWithAdvicePrefix;</span>
 <span class="lineNum">      28 </span>            : {
-<span class="lineNum">      29 </span><span class="lineCov">        540 :     NSString* name = NSStringFromSelector(selWithAdvicePrefix);</span>
-<span class="lineNum">      30 </span><span class="lineCov">        540 :     NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@&quot;&quot;];</span>
-<span class="lineNum">      31 </span><span class="lineCov">       1080 :     return key;</span>
-<span class="lineNum">      32 </span><span class="lineCov">        540 : }</span>
+<span class="lineNum">      29 </span><span class="lineCov">        795 :     NSString* name = NSStringFromSelector(selWithAdvicePrefix);</span>
+<span class="lineNum">      30 </span><span class="lineCov">        795 :     NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@&quot;&quot;];</span>
+<span class="lineNum">      31 </span><span class="lineCov">       1590 :     return key;</span>
+<span class="lineNum">      32 </span><span class="lineCov">        795 : }</span>
 <span class="lineNum">      33 </span>            : 
 <span class="lineNum">      34 </span><span class="lineCov">         19 : + (BOOL)selectorIsWrapped:(SEL)sel;</span>
 <span class="lineNum">      35 </span>            : {
