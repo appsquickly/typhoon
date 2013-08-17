@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-08-17</td>
+            <td class="headerValue">2013-08-18</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -118,9 +118,9 @@
 <span class="lineNum">      60 </span><span class="lineCov">          1 :         return [_singletons copy];</span>
 <span class="lineNum">      61 </span>            : }
 <span class="lineNum">      62 </span>            : 
-<span class="lineNum">      63 </span><span class="lineCov">         93 : - (void)load</span>
+<span class="lineNum">      63 </span><span class="lineCov">         95 : - (void)load</span>
 <span class="lineNum">      64 </span>            : {
-<span class="lineNum">      65 </span><span class="lineCov">         93 :         @synchronized (self)</span>
+<span class="lineNum">      65 </span><span class="lineCov">         95 :         @synchronized (self)</span>
 <span class="lineNum">      66 </span>            :         {
 <span class="lineNum">      67 </span><span class="lineCov">         52 :                 if (!_isLoading &amp;&amp; ![self isLoaded])</span>
 <span class="lineNum">      68 </span>            :                 {
@@ -148,7 +148,7 @@
 <span class="lineNum">      90 </span><span class="lineCov">         51 :                         [self setLoaded:YES];</span>
 <span class="lineNum">      91 </span><span class="lineCov">         51 :                 }</span>
 <span class="lineNum">      92 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">      93 </span><span class="lineCov">         93 : }</span>
+<span class="lineNum">      93 </span><span class="lineCov">         95 : }</span>
 <span class="lineNum">      94 </span>            : 
 <span class="lineNum">      95 </span><span class="lineCov">          1 : - (void)unload</span>
 <span class="lineNum">      96 </span>            : {
@@ -221,23 +221,23 @@
 <span class="lineNum">     163 </span><span class="lineCov">          3 : }</span>
 <span class="lineNum">     164 </span>            : 
 <span class="lineNum">     165 </span>            : 
-<span class="lineNum">     166 </span><span class="lineCov">        125 : - (id)componentForKey:(NSString*)key</span>
+<span class="lineNum">     166 </span><span class="lineCov">        127 : - (id)componentForKey:(NSString*)key</span>
 <span class="lineNum">     167 </span>            : {
-<span class="lineNum">     168 </span><span class="lineCov">        125 :     if (!key)</span>
+<span class="lineNum">     168 </span><span class="lineCov">        127 :     if (!key)</span>
 <span class="lineNum">     169 </span><span class="lineCov">          1 :         return nil;</span>
 <span class="lineNum">     170 </span>            :     
-<span class="lineNum">     171 </span><span class="lineCov">        124 :     if ([self notLoaded]) [self load];</span>
-<span class="lineNum">     172 </span><span class="lineCov">        124 :     TyphoonDefinition* definition = [self definitionForKey:key];</span>
-<span class="lineNum">     173 </span><span class="lineCov">        124 :     if (!definition)</span>
+<span class="lineNum">     171 </span><span class="lineCov">        126 :     if ([self notLoaded]) [self load];</span>
+<span class="lineNum">     172 </span><span class="lineCov">        126 :     TyphoonDefinition* definition = [self definitionForKey:key];</span>
+<span class="lineNum">     173 </span><span class="lineCov">        126 :     if (!definition)</span>
 <span class="lineNum">     174 </span>            :     {
 <span class="lineNum">     175 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;No component matching id '%@'.&quot;, key];</span>
 <span class="lineNum">     176 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     177 </span><span class="lineCov">        116 :     return [self objectForDefinition:definition];</span>
-<span class="lineNum">     178 </span><span class="lineCov">        124 : }</span>
+<span class="lineNum">     177 </span><span class="lineCov">        118 :     return [self objectForDefinition:definition];</span>
+<span class="lineNum">     178 </span><span class="lineCov">        126 : }</span>
 <span class="lineNum">     179 </span>            : 
-<span class="lineNum">     180 </span><span class="lineCov">        124 : - (BOOL)notLoaded;</span>
+<span class="lineNum">     180 </span><span class="lineCov">        126 : - (BOOL)notLoaded;</span>
 <span class="lineNum">     181 </span>            : {
-<span class="lineNum">     182 </span><span class="lineCov">        124 :     return ![self isLoaded];</span>
+<span class="lineNum">     182 </span><span class="lineCov">        126 :     return ![self isLoaded];</span>
 <span class="lineNum">     183 </span>            : }
 <span class="lineNum">     184 </span>            : 
 <span class="lineNum">     185 </span><span class="lineNoCov">          0 : - (void)makeDefault</span>
@@ -288,41 +288,41 @@
 <span class="lineNum">     230 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     231 </span>            : #pragma mark - Private Methods
 <span class="lineNum">     232 </span>            : 
-<span class="lineNum">     233 </span><span class="lineCov">        144 : - (id)objectForDefinition:(TyphoonDefinition*)definition</span>
+<span class="lineNum">     233 </span><span class="lineCov">        146 : - (id)objectForDefinition:(TyphoonDefinition*)definition</span>
 <span class="lineNum">     234 </span>            : {
-<span class="lineNum">     235 </span><span class="lineCov">        144 :     if (definition.scope == TyphoonScopeSingleton)</span>
+<span class="lineNum">     235 </span><span class="lineCov">        146 :     if (definition.scope == TyphoonScopeSingleton)</span>
 <span class="lineNum">     236 </span>            :     {
-<span class="lineNum">     237 </span><span class="lineCov">         21 :         return [self singletonForDefinition:definition];</span>
+<span class="lineNum">     237 </span><span class="lineCov">         23 :         return [self singletonForDefinition:definition];</span>
 <span class="lineNum">     238 </span>            :     }
 <span class="lineNum">     239 </span>            :     
 <span class="lineNum">     240 </span><span class="lineCov">        123 :     return [self buildInstanceWithDefinition:definition];</span>
-<span class="lineNum">     241 </span><span class="lineCov">        137 : }</span>
+<span class="lineNum">     241 </span><span class="lineCov">        139 : }</span>
 <span class="lineNum">     242 </span>            : 
-<span class="lineNum">     243 </span><span class="lineCov">         44 : - (id)singletonForDefinition:(TyphoonDefinition*)definition</span>
+<span class="lineNum">     243 </span><span class="lineCov">         46 : - (id)singletonForDefinition:(TyphoonDefinition*)definition</span>
 <span class="lineNum">     244 </span>            : {
-<span class="lineNum">     245 </span><span class="lineCov">         44 :     @synchronized (self)</span>
+<span class="lineNum">     245 </span><span class="lineCov">         46 :     @synchronized (self)</span>
 <span class="lineNum">     246 </span>            :     {
-<span class="lineNum">     247 </span><span class="lineCov">         44 :         id instance = [_singletons objectForKey:definition.key];</span>
-<span class="lineNum">     248 </span><span class="lineCov">         44 :         if (instance == nil)</span>
+<span class="lineNum">     247 </span><span class="lineCov">         46 :         id instance = [_singletons objectForKey:definition.key];</span>
+<span class="lineNum">     248 </span><span class="lineCov">         46 :         if (instance == nil)</span>
 <span class="lineNum">     249 </span>            :         {
-<span class="lineNum">     250 </span><span class="lineCov">         25 :             instance = [self buildSingletonWithDefinition:definition];</span>
+<span class="lineNum">     250 </span><span class="lineCov">         27 :             instance = [self buildSingletonWithDefinition:definition];</span>
 <span class="lineNum">     251 </span><span class="lineCov">         19 :             [_singletons setObject:instance forKey:definition.key];</span>
-<span class="lineNum">     252 </span><span class="lineCov">         25 :         }</span>
-<span class="lineNum">     253 </span><span class="lineCov">         44 :         return instance;</span>
+<span class="lineNum">     252 </span><span class="lineCov">         27 :         }</span>
+<span class="lineNum">     253 </span><span class="lineCov">         46 :         return instance;</span>
 <span class="lineNum">     254 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     255 </span><span class="lineCov">         44 : }</span>
+<span class="lineNum">     255 </span><span class="lineCov">         46 : }</span>
 <span class="lineNum">     256 </span>            : 
-<span class="lineNum">     257 </span><span class="lineCov">        737 : - (TyphoonDefinition*)definitionForKey:(NSString*)key</span>
+<span class="lineNum">     257 </span><span class="lineCov">        739 : - (TyphoonDefinition*)definitionForKey:(NSString*)key</span>
 <span class="lineNum">     258 </span>            : {
-<span class="lineNum">     259 </span><span class="lineCov">       1842 :     for (TyphoonDefinition* definition in _registry)</span>
+<span class="lineNum">     259 </span><span class="lineCov">       1922 :     for (TyphoonDefinition* definition in _registry)</span>
 <span class="lineNum">     260 </span>            :     {
-<span class="lineNum">     261 </span><span class="lineCov">       1842 :         if ([definition.key isEqualToString:key])</span>
+<span class="lineNum">     261 </span><span class="lineCov">       1922 :         if ([definition.key isEqualToString:key])</span>
 <span class="lineNum">     262 </span>            :         {
-<span class="lineNum">     263 </span><span class="lineCov">        123 :             return definition;</span>
+<span class="lineNum">     263 </span><span class="lineCov">        125 :             return definition;</span>
 <span class="lineNum">     264 </span>            :         }
-<span class="lineNum">     265 </span><span class="lineCov">       1985 :     }</span>
+<span class="lineNum">     265 </span><span class="lineCov">       2065 :     }</span>
 <span class="lineNum">     266 </span><span class="lineCov">        614 :     return nil;</span>
-<span class="lineNum">     267 </span><span class="lineCov">       1351 : }</span>
+<span class="lineNum">     267 </span><span class="lineCov">       1353 : }</span>
 <span class="lineNum">     268 </span>            : 
 <span class="lineNum">     269 </span>            : @end
 </pre>
