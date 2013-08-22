@@ -12,3 +12,9 @@ parameterized constructor:
 		  (JB: Nice idea. . . the one the that irks me is the parameter type becomes ambiguous. Thinking if this is a net gain. . . )
 
 	- does it make sense to have assembly 'definition' methods that return only a runtime object, if they are simple? 
+
+	- what does inject with reference do?
+		rename with reference to with key.
+
+	
+	
