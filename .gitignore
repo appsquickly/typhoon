@@ -16,3 +16,6 @@ DerivedData
 
 
 .DS_Store
+
+# AppCode
+.idea/workspace.xml
