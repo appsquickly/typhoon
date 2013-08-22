@@ -123,10 +123,11 @@
 
 - (void)doBeforePropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
 {
-    if ([instance conformsToProtocol:@protocol(TyphoonPropertyInjectionDelegate)])
+    if ([instance respondsToSelector:@selector(beforePropertiesSet)])
     {
-        [(id <TyphoonPropertyInjectionDelegate>) instance beforePropertiesSet];
+        [(id <TyphoonPropertyInjectionDelegate>)instance beforePropertiesSet];
     }
+
     if ([instance respondsToSelector:definition.beforePropertyInjection])
     {
         objc_msgSend(instance, definition.beforePropertyInjection);
@@ -229,10 +230,11 @@
 
 - (void)doAfterPropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
 {
-    if ([instance conformsToProtocol:@protocol(TyphoonPropertyInjectionDelegate)])
+    if ([instance respondsToSelector:@selector(afterPropertiesSet)])
     {
-        [(id <TyphoonPropertyInjectionDelegate>) instance afterPropertiesSet];
+        [(id <TyphoonPropertyInjectionDelegate>)instance afterPropertiesSet];
     }
+
     if ([instance respondsToSelector:definition.afterPropertyInjection])
     {
         objc_msgSend(instance, definition.afterPropertyInjection);

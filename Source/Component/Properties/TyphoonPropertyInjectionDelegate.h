@@ -15,8 +15,8 @@
 
 @protocol TyphoonPropertyInjectionDelegate <NSObject>
 
+@optional
 - (void)beforePropertiesSet;
-
 - (void)afterPropertiesSet;
 
 @end
