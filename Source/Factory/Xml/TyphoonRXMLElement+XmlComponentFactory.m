@@ -117,7 +117,7 @@
     [self assertTagName:@"initializer"];
     SEL selector = NSSelectorFromString([self attribute:@"selector"]);
     TyphoonComponentInitializerIsClassMethod isClassMethod = [self handleIsClassMethod:[self attribute:@"is-class-method"]];
-    TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:selector isClassMethod:isClassMethod];
+    TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:selector isClassMethodStrategy:isClassMethod];
 
     [self iterate:@"*" usingBlock:^(TyphoonRXMLElement* child)
     {

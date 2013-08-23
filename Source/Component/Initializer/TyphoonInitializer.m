@@ -27,10 +27,10 @@
 
 - (id)initWithSelector:(SEL)initializer
 {
-    return [self initWithSelector:initializer isClassMethod:TyphoonComponentInitializerIsClassMethodGuess];
+    return [self initWithSelector:initializer isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodGuess];
 }
 
-- (id)initWithSelector:(SEL)initializer isClassMethod:(TyphoonComponentInitializerIsClassMethod)isClassMethod;
+- (id)initWithSelector:(SEL)initializer isClassMethodStrategy:(TyphoonComponentInitializerIsClassMethod)isClassMethod;
 {
     self = [super init];
     if (self)
@@ -44,7 +44,7 @@
 
 - (id)init
 {
-    return [self initWithSelector:@selector(init) isClassMethod:TyphoonComponentInitializerIsClassMethodGuess];
+    return [self initWithSelector:@selector(init) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodGuess];
 }
 
 
