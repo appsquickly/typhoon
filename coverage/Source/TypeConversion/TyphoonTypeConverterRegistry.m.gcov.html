@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>LCOV - Typhoon.info - Source/TypeConversion/TyphoonTypeConverterRegistry.m</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">33</td>
-            <td class="headerCovTableEntry">36</td>
-            <td class="headerCovTableEntryHi">91.7 %</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">38</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-08-20</td>
+            <td class="headerValue">2013-08-23</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -82,72 +82,72 @@
 <span class="lineNum">      24 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      25 </span>            : #pragma mark - Class Methods
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">         79 : + (TyphoonTypeConverterRegistry*)shared</span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 : + (TyphoonTypeConverterRegistry*)shared</span>
 <span class="lineNum">      28 </span>            : {
 <span class="lineNum">      29 </span>            :     static dispatch_once_t onceToken;
 <span class="lineNum">      30 </span>            :     static TyphoonTypeConverterRegistry* instance;
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">         80 :     dispatch_once(&amp;onceToken, ^</span>
-<span class="lineNum">      33 </span><span class="lineCov">          1 :     {</span>
-<span class="lineNum">      34 </span><span class="lineCov">          1 :         instance = [[[self class] alloc] init];</span>
-<span class="lineNum">      35 </span><span class="lineCov">          2 :     });</span>
-<span class="lineNum">      36 </span><span class="lineCov">         79 :     return instance;</span>
-<span class="lineNum">      37 </span>            : }
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :     dispatch_once(&amp;onceToken, ^</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     {</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :         instance = [[[self class] alloc] init];</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :     });</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :     return instance;</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      38 </span>            : 
 <span class="lineNum">      39 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      40 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span><span class="lineCov">          1 : - (id)init</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : - (id)init</span>
 <span class="lineNum">      43 </span>            : {
-<span class="lineNum">      44 </span><span class="lineCov">          1 :     self = [super init];</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 :     if (self)</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     self = [super init];</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :     if (self)</span>
 <span class="lineNum">      46 </span>            :     {
-<span class="lineNum">      47 </span><span class="lineCov">          1 :         _typeConverters = [[NSMutableDictionary alloc] init];</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 :         _primitiveTypeConverter = [[TyphoonPrimitiveTypeConverter alloc] init];</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :         _typeConverters = [[NSMutableDictionary alloc] init];</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :         _primitiveTypeConverter = [[TyphoonPrimitiveTypeConverter alloc] init];</span>
 <span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span><span class="lineCov">          1 :         [self register:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:NO] forClassOrProtocol:[NSString class]];</span>
-<span class="lineNum">      51 </span><span class="lineCov">          1 :         [self register:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:YES] forClassOrProtocol:[NSMutableString class]];</span>
-<span class="lineNum">      52 </span><span class="lineCov">          1 :         [self register:[[TyphoonNSURLTypeConverter alloc] init] forClassOrProtocol:[NSURL class]];</span>
-<span class="lineNum">      53 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">      54 </span><span class="lineCov">          1 :     return self;</span>
-<span class="lineNum">      55 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :         [self register:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:NO] forClassOrProtocol:[NSString class]];</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :         [self register:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:YES] forClassOrProtocol:[NSMutableString class]];</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :         [self register:[[TyphoonNSURLTypeConverter alloc] init] forClassOrProtocol:[NSURL class]];</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      56 </span>            : 
 <span class="lineNum">      57 </span>            : 
 <span class="lineNum">      58 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      59 </span>            : #pragma mark - Interface Methods
 <span class="lineNum">      60 </span>            : 
-<span class="lineNum">      61 </span><span class="lineCov">         30 : - (id &lt;TyphoonTypeConverter&gt;)converterFor:(TyphoonTypeDescriptor*)typeDescriptor</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 : - (id &lt;TyphoonTypeConverter&gt;)converterFor:(TyphoonTypeDescriptor*)typeDescriptor</span>
 <span class="lineNum">      62 </span>            : {
 <span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span><span class="lineCov">         30 :     id &lt;TyphoonTypeConverter&gt; converter = [_typeConverters objectForKey:[typeDescriptor classOrProtocol]];</span>
-<span class="lineNum">      65 </span><span class="lineCov">         30 :     if (!converter)</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :     id &lt;TyphoonTypeConverter&gt; converter = [_typeConverters objectForKey:[typeDescriptor classOrProtocol]];</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :     if (!converter)</span>
 <span class="lineNum">      66 </span>            :     {
 <span class="lineNum">      67 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;No type converter registered for type: '%@'.&quot;,</span>
 <span class="lineNum">      68 </span>            :                                                              [typeDescriptor classOrProtocol]];
 <span class="lineNum">      69 </span>            : 
-<span class="lineNum">      70 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">      71 </span><span class="lineCov">         29 :     return converter;</span>
-<span class="lineNum">      72 </span><span class="lineCov">         29 : }</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 :     return converter;</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      73 </span>            : 
-<span class="lineNum">      74 </span><span class="lineCov">         47 : - (TyphoonPrimitiveTypeConverter*)primitiveTypeConverter</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 : - (TyphoonPrimitiveTypeConverter*)primitiveTypeConverter</span>
 <span class="lineNum">      75 </span>            : {
-<span class="lineNum">      76 </span><span class="lineCov">         47 :     return _primitiveTypeConverter;</span>
-<span class="lineNum">      77 </span>            : }
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 :     return _primitiveTypeConverter;</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      78 </span>            : 
-<span class="lineNum">      79 </span>            : - (void)register:(id &lt;TyphoonTypeConverter&gt;)converter forClassOrProtocol:(id)classOrProtocol;
-<span class="lineNum">      80 </span><span class="lineCov">          4 : {</span>
-<span class="lineNum">      81 </span>            :     if (!([_typeConverters objectForKey:classOrProtocol]))
-<span class="lineNum">      82 </span><span class="lineCov">          4 :     {</span>
-<span class="lineNum">      83 </span>            :         [_typeConverters setObject:converter forKey:(id &lt;NSCopying&gt;) classOrProtocol];
-<span class="lineNum">      84 </span><span class="lineCov">          3 :     }</span>
-<span class="lineNum">      85 </span><span class="lineCov">          3 :     else</span>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 : - (void)register:(id &lt;TyphoonTypeConverter&gt;)converter forClassOrProtocol:(id)classOrProtocol;</span>
+<span class="lineNum">      80 </span>            : {
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 :     if (!([_typeConverters objectForKey:classOrProtocol]))</span>
+<span class="lineNum">      82 </span>            :     {
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :         [_typeConverters setObject:converter forKey:(id &lt;NSCopying&gt;) classOrProtocol];</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      85 </span>            :     else
 <span class="lineNum">      86 </span>            :     {
-<span class="lineNum">      87 </span>            :         BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
-<span class="lineNum">      88 </span><span class="lineCov">          1 :         NSString* name = isClass ? NSStringFromClass(classOrProtocol) : NSStringFromProtocol(classOrProtocol);</span>
-<span class="lineNum">      89 </span><span class="lineCov">          1 :         [NSException raise:NSInvalidArgumentException format:@&quot;Converter for '%@' already registered.&quot;, name];</span>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 :         BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 :         NSString* name = isClass ? NSStringFromClass(classOrProtocol) : NSStringFromProtocol(classOrProtocol);</span>
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Converter for '%@' already registered.&quot;, name];</span>
 <span class="lineNum">      90 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      91 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      92 </span><span class="lineCov">          3 : </span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      92 </span>            : 
 <span class="lineNum">      93 </span>            : 
 <span class="lineNum">      94 </span>            : 
 <span class="lineNum">      95 </span>            : 
@@ -160,7 +160,7 @@
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
     <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.9</a></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
   </table>
   <br>
 
