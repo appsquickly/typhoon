@@ -81,7 +81,7 @@
     <target name="--test.cocoapods">
         <property name="tests.report" value="${reports.dir}/tests/test-results.txt"/>
         <exec executable="xcodebuild" failonerror="false" outputproperty="unit.tests.output">
-            <arg line="-sdk iphonesimulator${module.sdk.version} -workspace ${workspace} -scheme '${tests.ios.scheme.name}' TEST_AFTER_BUILD=YES"/> <!-- TODO: move out of derived data -->
+            <arg line="-workspace ${workspace} -scheme '${tests.ios.scheme.name}' test -destination OS=${module.sdk.version},name=iPad"/> <!-- TODO: move out of derived data -->
         </exec>
     </target>
     
@@ -96,7 +96,7 @@
         <!-- The static library must be explicitly built before attempting to test, as of Xcode 4.6.3. A static library dependency is not built by xcodebuild when building the dependent. -->
         <property name="tests.report" value="${reports.dir}/tests/test-results.txt"/>
         <exec executable="xcodebuild" failonerror="false" outputproperty="unit.tests.output">
-            <arg line="-sdk iphonesimulator${module.sdk.version} -workspace ${workspace} -scheme '${tests.ios.library.scheme.name}' TEST_AFTER_BUILD=YES CONFIGURATION_BUILD_DIR='${ios.simulator.build.dir}' CONFIGURATION_TEMP_DIR='${intermediates.dir}' LIBRARY_SEARCH_PATHS='${ios.simulator.build.dir}'"/>
+            <arg line="-workspace ${workspace} test -scheme '${tests.ios.library.scheme.name}' CONFIGURATION_BUILD_DIR='${ios.simulator.build.dir}' CONFIGURATION_TEMP_DIR='${intermediates.dir}' LIBRARY_SEARCH_PATHS='${ios.simulator.build.dir}' -destination OS=${module.sdk.version},name=iPad"/>
         </exec>
     </target>
     
