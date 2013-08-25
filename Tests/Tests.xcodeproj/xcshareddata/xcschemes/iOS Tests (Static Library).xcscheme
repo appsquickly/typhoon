@@ -8,9 +8,10 @@
             buildForTesting = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BuildableName = "iOS Tests (Static Library)"
+               BuildableName = "iOS Tests (Static Library).octest"
                BlueprintName = "iOS Tests (Static Library)"
-               ReferencedContainer = "container:Tests.xcodeproj">
+               ReferencedContainer = "container:Tests.xcodeproj"
+               BlueprintIdentifier = "4BC648BF17A20AD2007F0463">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -21,9 +22,10 @@
          <TestableReference>
             <BuildableReference
                BuildableIdentifier = "primary"
-               BuildableName = "iOS Tests (Static Library)"
+               BuildableName = "iOS Tests (Static Library).octest"
                BlueprintName = "iOS Tests (Static Library)"
-               ReferencedContainer = "container:Tests.xcodeproj">
+               ReferencedContainer = "container:Tests.xcodeproj"
+               BlueprintIdentifier = "4BC648BF17A20AD2007F0463">
             </BuildableReference>
          </TestableReference>
       </Testables>

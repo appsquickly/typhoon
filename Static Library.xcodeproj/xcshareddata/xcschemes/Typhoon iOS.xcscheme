@@ -7,9 +7,10 @@
             buildForRunning = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BuildableName = "Typhoon-iOS"
+               BuildableName = "libTyphoon-iOS.a"
                BlueprintName = "Typhoon-iOS"
-               ReferencedContainer = "container:Static Library.xcodeproj">
+               ReferencedContainer = "container:Static Library.xcodeproj"
+               BlueprintIdentifier = "4BC648F717A20BD7007F0463">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

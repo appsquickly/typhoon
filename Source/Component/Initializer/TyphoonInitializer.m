@@ -117,7 +117,7 @@
     [self injectParameterAtIndex:[self indexOfParameter:name] withObject:value];
 }
 
-- (void)injectParameterWithObject:(id)value
+- (void)injectWithObject:(id)value
 {
     [self injectParameterAtIndex:[_injectedParameters count] withObject:value];
 }

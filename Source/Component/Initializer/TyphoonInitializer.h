@@ -60,11 +60,13 @@ typedef enum
 
 - (void)injectWithValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredTypeOrNil;
 
+- (void)injectWithObject:(id)value;
+
 - (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition;
 
 - (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonDefinition*)definition;
 
-- (void)injectParameterWithObject:(id)value;
+
 
 
 @end
