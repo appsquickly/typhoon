@@ -269,7 +269,7 @@
             [self setArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue
                     requiredType:[byValue resolveTypeWith:instanceOrClass]];
         }
-        else if (parameter.type == TyphoonParameterInjectedByRawValueType)
+        else if (parameter.type == TyphoonParameterInjectedWithObjectInstance)
         {
             TyphoonParameterInjectedWithObjectInstance* byValue = (TyphoonParameterInjectedWithObjectInstance*) parameter;
             id value = byValue.value;
