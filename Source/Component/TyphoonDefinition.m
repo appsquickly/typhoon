@@ -17,6 +17,7 @@
 #import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonPropertyInjectedAsCollection.h"
+#import "TyphoonPropertyInjectedAsObjectInstance.h"
 
 
 @implementation TyphoonDefinition
@@ -44,14 +45,16 @@
     return [TyphoonDefinition withClass:clazz key:nil initialization:nil properties:properties];
 }
 
-+ (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization properties:(TyphoonDefinitionBlock)properties
++ (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
+    properties:(TyphoonDefinitionBlock)properties
 {
     return [TyphoonDefinition withClass:clazz key:nil initialization:initialization properties:properties];
 }
 
-+ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key initialization:(TyphoonInitializerBlock)initialization properties:(TyphoonDefinitionBlock)properties
++ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key initialization:(TyphoonInitializerBlock)initialization
+    properties:(TyphoonDefinitionBlock)properties
 {
-    
+
     TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key];
     if (initialization)
     {
@@ -117,7 +120,8 @@
 
 - (void)injectProperty:(SEL)selector withValueAsText:(NSString*)textValue
 {
-    [_injectedProperties addObject:[[TyphoonPropertyInjectedWithStringRepresentation alloc] initWithName:NSStringFromSelector(selector) value:textValue]];
+    [_injectedProperties addObject:[[TyphoonPropertyInjectedWithStringRepresentation alloc]
+        initWithName:NSStringFromSelector(selector) value:textValue]];
 }
 
 - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition
@@ -125,10 +129,16 @@
     [self injectProperty:selector withReference:definition.key];
 }
 
+- (void)injectProperty:(SEL)selector withObjectInstance:(id)instance
+{
+    [_injectedProperties addObject:[[TyphoonPropertyInjectedAsObjectInstance alloc]
+        initWithName:NSStringFromSelector(selector) objectInstance:instance]];
+}
+
 - (void)injectProperty:(SEL)withSelector asCollection:(void (^)(TyphoonPropertyInjectedAsCollection*))collectionValues;
 {
-    TyphoonPropertyInjectedAsCollection* propertyInjectedAsCollection =
-            [[TyphoonPropertyInjectedAsCollection alloc] initWithName:NSStringFromSelector(withSelector)];
+    TyphoonPropertyInjectedAsCollection
+        * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:NSStringFromSelector(withSelector)];
 
     if (collectionValues)
     {

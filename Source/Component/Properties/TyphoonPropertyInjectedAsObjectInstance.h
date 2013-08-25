@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-//  JASPER BLUES
-//  Copyright 2012 Jasper Blues
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -11,17 +11,14 @@
 
 
 #import <Foundation/Foundation.h>
-#import "Knight.h"
-#import "TyphoonPropertyInjectionDelegate.h"
+#import "TyphoonInjectedProperty.h"
 
 
-@interface CavalryMan : Knight<TyphoonPropertyInjectionDelegate>
+@interface TyphoonPropertyInjectedAsObjectInstance : NSObject<TyphoonInjectedProperty>
 
-@property (nonatomic) float hitRatio;
+@property (nonatomic, strong, readonly) NSString* name;
+@property (nonatomic, strong, readonly) id objectInstance;
 
-@property (nonatomic, strong) NSArray* propertyInjectedAsInstance;
-
-- (id)initWithQuest:(id<Quest>)quest hitRatio:(float)hitRatio;
-
+- (id)initWithName:(NSString*)name objectInstance:(id)objectInstance;
 
 @end

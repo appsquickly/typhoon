@@ -21,6 +21,8 @@
 #import "Knight.h"
 #import "CircularDependenciesAssembly.h"
 #import "SingletonsChainAssembly.h"
+#import "CavalryMan.h"
+#import "OCLogTemplate.h"
 
 @interface TyphoonBlockComponentFactoryTests : TyphoonSharedComponentFactoryTests
 @end
@@ -45,6 +47,15 @@
     MiddleAgesAssembly* assembly = (MiddleAgesAssembly *)_componentFactory;
     Knight* knight = [assembly knight];
     assertThat(knight, notNilValue());
+}
+
+- (void)test_allows_injecting_properties_with_object_instance
+{
+    MiddleAgesAssembly* assembly = (MiddleAgesAssembly *)_componentFactory;
+    CavalryMan* knight = [assembly yetAnotherKnight];
+    assertThat(knight.propertyInjectedAsInstance, notNilValue());
+
+    LogDebug(@"%@", knight.propertyInjectedAsInstance);
 }
 
 @end

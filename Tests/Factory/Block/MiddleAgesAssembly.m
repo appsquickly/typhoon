@@ -19,6 +19,7 @@
 #import "SwordFactory.h"
 #import "Sword.h"
 #import "TyphoonPropertyInjectedAsCollection.h"
+#import "TyphoonDefinition.h"
 
 
 @implementation MiddleAgesAssembly
@@ -69,7 +70,7 @@
     {
         [definition injectProperty:@selector(hitRatio) withValueAsText:@"13.75"];
         [definition injectProperty:@selector(hasHorseWillTravel) withValueAsText:@"YES"];
-
+        [definition injectProperty:@selector(propertyInjectedAsInstance) withObjectInstance:@[@"foo", @"bar"]];
     }];
 }
 

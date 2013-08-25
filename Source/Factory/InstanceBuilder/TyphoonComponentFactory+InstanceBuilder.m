@@ -11,7 +11,6 @@
 
 
 #import <objc/message.h>
-#import <libxml/SAX.h>
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonParameterInjectedByReference.h"
@@ -32,6 +31,7 @@
 #import "TyphoonParameterInjectedWithObjectInstance.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
+#import "TyphoonPropertyInjectedAsObjectInstance.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
@@ -167,6 +167,12 @@
     {
         id collection = [self buildCollectionFor:(TyphoonPropertyInjectedAsCollection*) property instance:instance];
         [invocation setArgument:&collection atIndex:2];
+    }
+    else if (property.injectionType == TyphoonPropertyInjectionTypeAsObjectInstance)
+    {
+        TyphoonPropertyInjectedAsObjectInstance* byInstance = (TyphoonPropertyInjectedAsObjectInstance*) property;
+        id value = byInstance.objectInstance;
+        [invocation setArgument:&value atIndex:2];
     }
     [invocation invoke];
 }

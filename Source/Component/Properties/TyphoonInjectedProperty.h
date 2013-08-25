@@ -20,6 +20,7 @@ typedef enum
     TyphoonPropertyInjectionTypeByReference,
     TyphoonPropertyInjectionTypeByType,
     TyphoonPropertyInjectionTypeAsStringRepresentation,
+    TyphoonPropertyInjectionTypeAsObjectInstance,
     TyphoonPropertyInjectionTypeAsCollection
 } TyphoonPropertyInjectionType;
 
