@@ -257,19 +257,19 @@
 
     for (id <TyphoonInjectedParameter> parameter in [definition.initializer injectedParameters])
     {
-        if (parameter.type == TyphoonParameterInjectedByReferenceType)
+        if (parameter.type == TyphoonParameterInjectionTypeReference)
         {
             TyphoonParameterInjectedByReference* byReference = (TyphoonParameterInjectedByReference*) parameter;
             id reference = [self componentForKey:byReference.reference];
             [invocation setArgument:&reference atIndex:parameter.index + 2];
         }
-        else if (parameter.type == TyphoonParameterInjectedByValueType)
+        else if (parameter.type == TyphoonParameterInjectionTypeStringRepresentation)
         {
             TyphoonParameterInjectedWithStringRepresentation* byValue = (TyphoonParameterInjectedWithStringRepresentation*) parameter;
             [self setArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue
                     requiredType:[byValue resolveTypeWith:instanceOrClass]];
         }
-        else if (parameter.type == TyphoonParameterInjectedWithObjectInstance)
+        else if (parameter.type == TyphoonParameterInjectionTypeObjectInstance)
         {
             TyphoonParameterInjectedWithObjectInstance* byValue = (TyphoonParameterInjectedWithObjectInstance*) parameter;
             id value = byValue.value;

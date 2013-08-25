@@ -25,7 +25,7 @@
 
 - (TyphoonParameterInjectionType)type
 {
-    return TyphoonParameterInjectedWithObjectInstance;
+    return TyphoonParameterInjectionTypeObjectInstance;
 }
 
 - (void)setInitializer:(TyphoonInitializer*)initializer

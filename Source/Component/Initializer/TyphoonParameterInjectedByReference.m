@@ -36,7 +36,7 @@
 
 - (TyphoonParameterInjectionType)type
 {
-    return TyphoonParameterInjectedByReferenceType;
+    return TyphoonParameterInjectionTypeReference;
 }
 
 - (void)setInitializer:(TyphoonInitializer*)initializer
