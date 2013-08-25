@@ -39,7 +39,7 @@
 
 - (TyphoonPropertyInjectionType)injectionType
 {
-    return TyphoonPropertyInjectionByReferenceType;
+    return TyphoonPropertyInjectionTypeByReference;
 }
 
 

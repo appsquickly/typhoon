@@ -17,10 +17,10 @@
 
 typedef enum
 {
-    TyphoonPropertyInjectionByReferenceType,
-    TyphoonPropertyInjectionByTypeType,
-    TyphoonPropertyInjectionByValueType,
-    TyphoonPropertyInjectionAsCollection
+    TyphoonPropertyInjectionTypeByReference,
+    TyphoonPropertyInjectionTypeByType,
+    TyphoonPropertyInjectionTypeAsStringRepresentation,
+    TyphoonPropertyInjectionTypeAsCollection
 } TyphoonPropertyInjectionType;
 
 @protocol TyphoonInjectedProperty <NSObject>

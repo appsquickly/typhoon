@@ -45,7 +45,7 @@
 
 - (TyphoonPropertyInjectionType)injectionType
 {
-    return TyphoonPropertyInjectionByValueType;
+    return TyphoonPropertyInjectionTypeAsStringRepresentation;
 }
 
 

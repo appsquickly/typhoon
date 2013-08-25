@@ -139,7 +139,7 @@
 {
     NSInvocation* invocation = [self propertySetterInvocationFor:instance property:property];
 
-    if (property.injectionType == TyphoonPropertyInjectionByTypeType)
+    if (property.injectionType == TyphoonPropertyInjectionTypeByType)
     {
         TyphoonDefinition* definition = [self definitionForType:[typeDescriptor classOrProtocol]];
         [self evaluateCircularDependency:definition.key propertyName:property.name instance:instance];
@@ -149,7 +149,7 @@
             [invocation setArgument:&reference atIndex:2];
         }
     }
-    else if (property.injectionType == TyphoonPropertyInjectionByReferenceType)
+    else if (property.injectionType == TyphoonPropertyInjectionTypeByReference)
     {
         TyphoonPropertyInjectedByReference* byReference = (TyphoonPropertyInjectedByReference*) property;
         [self markByReferencePropertyAsCircularDependenceIfCurrentlyResolving:property onInstance:instance];
@@ -158,12 +158,12 @@
             [self configureInvocation:invocation toInjectByReferenceProperty:byReference];
         }
     }
-    else if (property.injectionType == TyphoonPropertyInjectionByValueType)
+    else if (property.injectionType == TyphoonPropertyInjectionTypeAsStringRepresentation)
     {
         TyphoonPropertyInjectedWithStringRepresentation* valueProperty = (TyphoonPropertyInjectedWithStringRepresentation*) property;
         [self setArgumentFor:invocation index:2 textValue:valueProperty.textValue requiredType:typeDescriptor];
     }
-    else if (property.injectionType == TyphoonPropertyInjectionAsCollection)
+    else if (property.injectionType == TyphoonPropertyInjectionTypeAsCollection)
     {
         id collection = [self buildCollectionFor:(TyphoonPropertyInjectedAsCollection*) property instance:instance];
         [invocation setArgument:&collection atIndex:2];
@@ -271,8 +271,8 @@
         }
         else if (parameter.type == TyphoonParameterInjectionTypeObjectInstance)
         {
-            TyphoonParameterInjectedWithObjectInstance* byValue = (TyphoonParameterInjectedWithObjectInstance*) parameter;
-            id value = byValue.value;
+            TyphoonParameterInjectedWithObjectInstance* byInstance = (TyphoonParameterInjectedWithObjectInstance*) parameter;
+            id value = byInstance.value;
             [invocation setArgument:&value atIndex:parameter.index + 2];
         }
     }

@@ -105,7 +105,7 @@
 
 - (TyphoonPropertyInjectionType)injectionType
 {
-    return TyphoonPropertyInjectionAsCollection;
+    return TyphoonPropertyInjectionTypeAsCollection;
 }
 
 /* ====================================================================================================================================== */
