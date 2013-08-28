@@ -17,7 +17,8 @@
 
 - (id)convert:(NSString*)stringValue
 {
-    return [NSURL URLWithString:stringValue];
+    __autoreleasing NSURL* url = [NSURL URLWithString:stringValue];
+    return url;
 }
 
 
