@@ -34,3 +34,5 @@ else
   echo "Not running $COMMAND as source files have not changed."
 fi
 
+exit 0
+
