@@ -21,6 +21,7 @@
 #import "OCLogTemplate.h"
 
 static NSMutableDictionary *resolveStackForKey;
+static NSMutableArray *reservedSelectorsAsStrings;
 
 @implementation TyphoonAssembly
 
@@ -42,6 +43,27 @@ static NSMutableDictionary *resolveStackForKey;
 {
     [super load];
     resolveStackForKey = [[NSMutableDictionary alloc] init];
+    [self reserveSelectors];
+}
+
++ (void)reserveSelectors;
+{
+  reservedSelectorsAsStrings = [[NSMutableArray alloc] init];
+  
+  [self markSelectorReserved:@selector(init)];
+  [self markSelectorReserved:@selector(cachedDefinitionsForMethodName)];
+  [self markSelectorReservedFromString:@".cxx_destruct"];
+  [self markSelectorReserved:@selector(defaultAssembly)];
+}
+
++ (void)markSelectorReserved:(SEL)selector
+{
+  [self markSelectorReservedFromString:NSStringFromSelector(selector)];
+}
+
++ (void)markSelectorReservedFromString:(NSString *)stringFromSelector
+{
+  [reservedSelectorsAsStrings addObject:stringFromSelector];
 }
 
 #pragma mark - Instance Method Resolution
@@ -62,8 +84,7 @@ static NSMutableDictionary *resolveStackForKey;
 
 + (BOOL)selectorReserved:(SEL)selector
 {
-    return selector == @selector(init) || selector == @selector(cachedDefinitionsForMethodName) || selector == NSSelectorFromString(@".cxx_destruct") ||
-    selector == @selector(defaultAssembly);
+  return [reservedSelectorsAsStrings containsObject:NSStringFromSelector(selector)];
 }
 
 + (void)provideDynamicImplementationToConstructDefinitionForSEL:(SEL)sel;
