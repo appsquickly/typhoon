@@ -186,7 +186,7 @@ static NSMutableArray *reservedSelectorsAsStrings;
 + (id)definitionByCallingAssemblyMethodForKey:(NSString *)key me:(TyphoonAssembly *)me
 {
     SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key];
-    id cached = objc_msgSend(me, sel); // the wrappedSEL will call through to the original, unwrapped implementation because of the active swizzling.
+    id cached = objc_msgSend(me, sel); // the advisedSEL will call through to the original, unwrapped implementation because of the active swizzling.
     return cached;
 }
 

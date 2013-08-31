@@ -21,6 +21,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		4B06338B17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */; };
+		4B06338C17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */; };
+		4B06338D17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */; };
 		4B841470179B0E3900916BF5 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B84146F179B0E3900916BF5 /* SenTestingKit.framework */; };
 		4B841472179B0E3900916BF5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841471179B0E3900916BF5 /* UIKit.framework */; };
 		4B841474179B0E3900916BF5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841473179B0E3900916BF5 /* Foundation.framework */; };
@@ -198,6 +201,7 @@
 		159D62E0E7314B4D9C0B9CC1 /* Pods-iOS Tests (Cocoapods).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests (Cocoapods).xcconfig"; path = "Pods/Pods-iOS Tests (Cocoapods).xcconfig"; sourceTree = SOURCE_ROOT; };
 		1AC491FA50E048988BFB5756 /* libPods-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		272E8645AA624C0897EA4CF6 /* Pods-osx.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-osx.xcconfig"; path = "Pods/Pods-osx.xcconfig"; sourceTree = SOURCE_ROOT; };
+		4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblySelectorAdviserTests.m; sourceTree = "<group>"; };
 		4B84146C179B0E3900916BF5 /* iOS Tests (Cocoapods).octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Tests (Cocoapods).octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B84146F179B0E3900916BF5 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		4B841471179B0E3900916BF5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -431,6 +435,7 @@
 				4B8414A8179B0EA600916BF5 /* ExceptionTestAssembly.m */,
 				4B8414A9179B0EA600916BF5 /* MiddleAgesAssembly.h */,
 				4B8414AA179B0EA600916BF5 /* MiddleAgesAssembly.m */,
+				4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */,
 				4B8414AB179B0EA600916BF5 /* TyphoonBlockComponentFactoryTests.m */,
 			);
 			path = Block;
@@ -908,6 +913,7 @@
 				4B84150F179B0EA600916BF5 /* ClassBDependsOnA.m in Sources */,
 				4B841511179B0EA600916BF5 /* ClassCDependsOnDAndE.m in Sources */,
 				4B841513179B0EA600916BF5 /* ClassDDependsOnC.m in Sources */,
+				4B06338B17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */,
 				4B841515179B0EA600916BF5 /* ClassEDependsOnC.m in Sources */,
 				4B841517179B0EA600916BF5 /* Sword.m in Sources */,
 				4B841519179B0EA600916BF5 /* SwordFactory.m in Sources */,
@@ -952,6 +958,7 @@
 				4B841510179B0EA600916BF5 /* ClassBDependsOnA.m in Sources */,
 				4B841512179B0EA600916BF5 /* ClassCDependsOnDAndE.m in Sources */,
 				4B841514179B0EA600916BF5 /* ClassDDependsOnC.m in Sources */,
+				4B06338C17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */,
 				4B841516179B0EA600916BF5 /* ClassEDependsOnC.m in Sources */,
 				4B841518179B0EA600916BF5 /* Sword.m in Sources */,
 				4B84151A179B0EA600916BF5 /* SwordFactory.m in Sources */,
@@ -996,6 +1003,7 @@
 				4BC648D517A20AD2007F0463 /* ClassBDependsOnA.m in Sources */,
 				4BC648D617A20AD2007F0463 /* ClassCDependsOnDAndE.m in Sources */,
 				4BC648D717A20AD2007F0463 /* ClassDDependsOnC.m in Sources */,
+				4B06338D17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */,
 				4BC648D817A20AD2007F0463 /* ClassEDependsOnC.m in Sources */,
 				4BC648D917A20AD2007F0463 /* Sword.m in Sources */,
 				4BC648DA17A20AD2007F0463 /* SwordFactory.m in Sources */,
