@@ -16,5 +16,11 @@ parameterized constructor:
 	- what does inject with reference do?
 		rename with reference to with key.
 
+
+	references:
+		https://github.com/jasperblues/Typhoon/issues/47#issuecomment-23224344
+		http://www.mikeash.com/pyblog/friday-qa-2011-05-06-a-tour-of-mablockclosure.html
+		http://stackoverflow.com/questions/18295758/imp-with-unknown-number-of-parameters
+
 	
 	
