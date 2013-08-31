@@ -138,7 +138,10 @@ static NSMutableArray* swizzleRegistry;
 
 - (BOOL)classNotRootAssemblyClass:(Class)currentClass;
 {
-    return ![NSStringFromClass(currentClass) isEqualToString:NSStringFromClass([TyphoonAssembly class])];
+    NSString *currentClassName = NSStringFromClass(currentClass);
+    NSString *rootAssemblyClassName = NSStringFromClass([TyphoonAssembly class]);
+    
+    return ![currentClassName isEqualToString:rootAssemblyClassName];
 }
 
 - (NSSet*)obtainDefinitionSelectorsInAssemblyClass:(Class)class
