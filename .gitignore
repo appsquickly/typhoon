@@ -22,3 +22,4 @@ DerivedData
 
 # AppCode
 .idea/workspace.xml
+.idea/runConfigurations/
