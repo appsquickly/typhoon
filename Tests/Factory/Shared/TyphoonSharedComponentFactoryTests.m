@@ -209,29 +209,14 @@
 
 /* ====================================================================================================================================== */
 #pragma mark - Circular dependencies on singleton chains
-
-////////////////////////////////////////////////////////////////////////////////
-//
-//  FAILING TESTS
-//
-//  These tests consistently fail with xml assembly, and could fail with block
-//  assembly depending on the order in which singletons are assembled during
-//  TyphoonComponentFactory load method.
-//
-//  In fact, they can be forced to fail just by sorting _registry alphabetically
-//  before instantiating not lazy singletons in load method (see commented code
-//  in TyphoonComponentFactory.m)
-//
-////////////////////////////////////////////////////////////////////////////////
-
 - (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_type
 {
-	SingletonA *singletonA = [_singletonsChainFactory componentForType:[SingletonA class]];
-	SingletonB *singletonB = [_singletonsChainFactory componentForType:[SingletonB class]];
-	NotSingletonA *notSingletonA = [_singletonsChainFactory componentForType:[NotSingletonA class]];
-	assertThat(singletonA.dependencyOnB, is(singletonB));
-	assertThat(singletonB.dependencyOnNotSingletonA.dependencyOnA, is(singletonA));
-	assertThat(notSingletonA.dependencyOnA, is(singletonA));
+	SingletonA *singletonADependsOnBViaProperty = [_singletonsChainFactory componentForType:[SingletonA class]];
+	SingletonB *singletonBDependsOnNotSingletonAViaProperty = [_singletonsChainFactory componentForType:[SingletonB class]];
+	NotSingletonA *notSingletonADependsOnAViaInitializer = [_singletonsChainFactory componentForType:[NotSingletonA class]];
+	assertThat(singletonADependsOnBViaProperty.dependencyOnB, is(singletonBDependsOnNotSingletonAViaProperty));
+	assertThat(singletonBDependsOnNotSingletonAViaProperty.dependencyOnNotSingletonA.dependencyOnA, is(singletonADependsOnBViaProperty));
+	assertThat(notSingletonADependsOnAViaInitializer.dependencyOnA, is(singletonADependsOnBViaProperty));
 }
 
 - (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_reference

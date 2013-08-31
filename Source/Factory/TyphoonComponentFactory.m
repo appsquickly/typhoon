@@ -74,10 +74,6 @@ static TyphoonComponentFactory* defaultFactory;
 				[mutator mutateComponentDefinitionsIfRequired:[self registry]];
 			}];
 
-            // You can sort _registry to force block factory tests to fail
-//			NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"key" ascending:YES];
-//			_registry = [[_registry sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]] mutableCopy];
-
 			// Then, we instanciate the not-lazy singletons.
 			[_registry enumerateObjectsUsingBlock:^(id definition, NSUInteger idx, BOOL *stop) {
 				if (([definition scope] == TyphoonScopeSingleton) && ![definition isLazy]) {
