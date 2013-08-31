@@ -11,7 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 4B9685A417D26E8300E69723 /* Build configuration list for PBXAggregateTarget "pod update" */;
 			buildPhases = (
-				4B9685A717D26E8D00E69723 /* ShellScript */,
+				4B9685A717D26E8D00E69723 /* pod update */,
 			);
 			dependencies = (
 			);
@@ -169,6 +169,30 @@
 		CD65DA1387F74352A0088704 /* libPods-iOS Tests (Cocoapods).a in Frameworks */ = {isa = PBXBuildFile; fileRef = B90D396911F743468FF96BB5 /* libPods-iOS Tests (Cocoapods).a */; };
 		D174EF8C2C6845E69666DC4F /* libPods-osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC491FA50E048988BFB5756 /* libPods-osx.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4B9685A817D275CA00E69723 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B841461179B0E1B00916BF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B9685A117D26E8200E69723;
+			remoteInfo = "pod update";
+		};
+		4B9685AA17D275CD00E69723 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B841461179B0E1B00916BF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B9685A117D26E8200E69723;
+			remoteInfo = "pod update";
+		};
+		4B9685AC17D275D000E69723 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B841461179B0E1B00916BF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B9685A117D26E8200E69723;
+			remoteInfo = "pod update";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		159D62E0E7314B4D9C0B9CC1 /* Pods-iOS Tests (Cocoapods).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests (Cocoapods).xcconfig"; path = "Pods/Pods-iOS Tests (Cocoapods).xcconfig"; sourceTree = SOURCE_ROOT; };
@@ -581,6 +605,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4B9685A917D275CA00E69723 /* PBXTargetDependency */,
 			);
 			name = "iOS Tests (Cocoapods)";
 			productName = "iOS Tests";
@@ -601,6 +626,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4B9685AB17D275CD00E69723 /* PBXTargetDependency */,
 			);
 			name = "OS X Tests (Cocoapods)";
 			productName = "OS X Tests";
@@ -621,6 +647,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4B9685AD17D275D000E69723 /* PBXTargetDependency */,
 			);
 			name = "iOS Tests (Static Library)";
 			productName = "iOS Tests";
@@ -750,13 +777,14 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
-		4B9685A717D26E8D00E69723 /* ShellScript */ = {
+		4B9685A717D26E8D00E69723 /* pod update */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "pod update";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -987,6 +1015,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4B9685A917D275CA00E69723 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B9685A117D26E8200E69723 /* pod update */;
+			targetProxy = 4B9685A817D275CA00E69723 /* PBXContainerItemProxy */;
+		};
+		4B9685AB17D275CD00E69723 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B9685A117D26E8200E69723 /* pod update */;
+			targetProxy = 4B9685AA17D275CD00E69723 /* PBXContainerItemProxy */;
+		};
+		4B9685AD17D275D000E69723 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B9685A117D26E8200E69723 /* pod update */;
+			targetProxy = 4B9685AC17D275D000E69723 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4B841465179B0E1B00916BF5 /* Debug */ = {
@@ -1317,6 +1363,7 @@
 				4B9685A617D26E8300E69723 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4BC648F017A20AD2007F0463 /* Build configuration list for PBXNativeTarget "iOS Tests (Static Library)" */ = {
 			isa = XCConfigurationList;
