@@ -155,6 +155,8 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (id)componentForKey:(NSString*)key
 {
+   NSLog(@"%@: %@", NSStringFromSelector(@selector(componentForKey:)), key);
+  
     if (!key)
         return nil;
     
@@ -169,6 +171,8 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (id)componentForKey:(NSString*)key arguments:(NSArray *)args;
 {
+     NSLog(@"%@: key: '%@' args: '%@'", NSStringFromSelector(@selector(componentForKey:arguments:)), key, args);
+  
     if (!key)
         return nil;
     
@@ -222,7 +226,12 @@ static TyphoonComponentFactory* defaultFactory;
 /* ============================================================ Utility Methods ========================================================= */
 - (NSString*)description
 {
-    NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
+  // <TyphoonComponentFactory (0x4532103): _registry=(
+  //  "Definition: class='UINavigationController'",
+  //  "Definition: class='RootViewController'"
+  // )>
+  
+    NSMutableString* description = [NSMutableString stringWithFormat:@"<%@ (%p):", NSStringFromClass([self class]), self];
     [description appendFormat:@"_registry=%@", _registry];
     [description appendString:@">"];
     return description;
@@ -232,6 +241,8 @@ static TyphoonComponentFactory* defaultFactory;
 /* ============================================================ Private Methods ========================================================= */
 - (id)objectForDefinition:(TyphoonDefinition*)definition
 {
+//  NSLog(@"%@: %@", NSStringFromSelector(@selector(objectForDefinition:)), definition);
+  
     if (definition.scope == TyphoonScopeSingleton)
     {
         return [self singletonForDefinition:definition];
@@ -242,6 +253,8 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (id)objectForDefinition:(TyphoonDefinition*)definition arguments:(NSArray *)args;
 {
+//    NSLog(@"%@: %@, %@", NSStringFromSelector(@selector(objectForDefinition:arguments:)), definition, args);
+  
     if (definition.scope == TyphoonScopeSingleton)
     {
         return [self singletonForDefinition:definition arguments:args];

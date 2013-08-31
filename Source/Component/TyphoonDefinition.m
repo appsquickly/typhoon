@@ -156,7 +156,7 @@
 /* ============================================================ Utility Methods ========================================================= */
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"Definition: class='%@'", NSStringFromClass(_type)];
+    return [NSString stringWithFormat:@"Definition: class='%@' key='%@'", NSStringFromClass(_type), _key];
 }
 
 - (void)dealloc
