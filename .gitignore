@@ -14,6 +14,9 @@ profile
 *.moved-aside
 DerivedData
 
+# Xcode-Dacted
+*.xccheckout
+
 
 .DS_Store
 
