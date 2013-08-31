@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		4B9685A117D26E8200E69723 /* pod update */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4B9685A417D26E8300E69723 /* Build configuration list for PBXAggregateTarget "pod update" */;
+			buildPhases = (
+				4B9685A717D26E8D00E69723 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "pod update";
+			productName = "pod update";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		4B841470179B0E3900916BF5 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B84146F179B0E3900916BF5 /* SenTestingKit.framework */; };
 		4B841472179B0E3900916BF5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841471179B0E3900916BF5 /* UIKit.framework */; };
@@ -620,6 +634,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
+				TargetAttributes = {
+					4B9685A117D26E8200E69723 = {
+						TestTargetID = 4B84146B179B0E3900916BF5;
+					};
+				};
 			};
 			buildConfigurationList = 4B841464179B0E1B00916BF5 /* Build configuration list for PBXProject "Tests" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -633,6 +652,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				4B9685A117D26E8200E69723 /* pod update */,
 				4B84146B179B0E3900916BF5 /* iOS Tests (Cocoapods) */,
 				4B841486179B0E5200916BF5 /* OS X Tests (Cocoapods) */,
 				4BC648BF17A20AD2007F0463 /* iOS Tests (Static Library) */,
@@ -729,6 +749,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		4B9685A717D26E8D00E69723 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "REPO_ROOT=\"${PROJECT_DIR}/..\"\n\"${REPO_ROOT}/Scripts/pod-update.sh\"";
 		};
 		4BC648C017A20AD2007F0463 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1130,6 +1163,20 @@
 			};
 			name = Release;
 		};
+		4B9685A517D26E8300E69723 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4B9685A617D26E8300E69723 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		4BC648F117A20AD2007F0463 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B1C044F0F19E4B448A36BEFB /* Pods-ios.xcconfig */;
@@ -1262,6 +1309,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		4B9685A417D26E8300E69723 /* Build configuration list for PBXAggregateTarget "pod update" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B9685A517D26E8300E69723 /* Debug */,
+				4B9685A617D26E8300E69723 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		4BC648F017A20AD2007F0463 /* Build configuration list for PBXNativeTarget "iOS Tests (Static Library)" */ = {
 			isa = XCConfigurationList;
