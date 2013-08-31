@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Typhoon iOS" type="AppleRunConfiguration" factoryName="Application" SCHEME_NAME="Typhoon iOS" PROJECT_NAME="Static Library" TARGET_NAME="Typhoon-iOS" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+    <envs />
+    <method />
+  </configuration>
+</component>
