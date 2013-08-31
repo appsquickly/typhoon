@@ -17,7 +17,7 @@
 #import "TyphoonJRSwizzle.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
-#import "TyphoonAssemblySelectorWrapper.h"
+#import "TyphoonAssemblySelectorAdviser.h"
 #import "OCLogTemplate.h"
 
 static NSMutableDictionary *resolveStackForKey;
@@ -79,7 +79,7 @@ static NSMutableArray *reservedSelectorsAsStrings;
 
 + (BOOL)shouldProvideDynamicImplementationFor:(SEL)sel;
 {
-    return (![TyphoonAssembly selectorReserved:sel] && [TyphoonAssemblySelectorWrapper selectorIsWrapped:sel]);
+    return (![TyphoonAssembly selectorReserved:sel] && [TyphoonAssemblySelectorAdviser selectorIsAdvised:sel]);
 }
 
 + (BOOL)selectorReserved:(SEL)selector
@@ -97,7 +97,7 @@ static NSMutableArray *reservedSelectorsAsStrings;
 {
     return imp_implementationWithBlock((__bridge id) objc_unretainedPointer((TyphoonDefinition *)^(id me)
        {
-           NSString *key = [TyphoonAssemblySelectorWrapper keyForWrappedSEL:selWithAdvicePrefix];
+           NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selWithAdvicePrefix];
            return [self definitionForKey:key me:me];
        }));
 }
@@ -185,7 +185,7 @@ static NSMutableArray *reservedSelectorsAsStrings;
 
 + (id)definitionByCallingAssemblyMethodForKey:(NSString *)key me:(TyphoonAssembly *)me
 {
-    SEL sel = [TyphoonAssemblySelectorWrapper wrappedSELForKey:key];
+    SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key];
     id cached = objc_msgSend(me, sel); // the wrappedSEL will call through to the original, unwrapped implementation because of the active swizzling.
     return cached;
 }

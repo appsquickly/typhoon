@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonAssemblySelectorWrapper.h"
+#import "TyphoonAssemblySelectorAdviser.h"
 
 
 
@@ -17,27 +17,27 @@ static NSString* const TYPHOON_BEFORE_ADVICE_SUFFIX = @"__typhoonBeforeAdvice";
 
 
 
-@implementation TyphoonAssemblySelectorWrapper
+@implementation TyphoonAssemblySelectorAdviser
 
-+ (SEL)wrappedSELForKey:(NSString *)key;
++ (SEL)advisedSELForKey:(NSString *)key;
 {
     return NSSelectorFromString([key stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
 }
 
-+ (NSString *)keyForWrappedSEL:(SEL)selWithAdvicePrefix;
++ (NSString *)keyForAdvisedSEL:(SEL)selWithAdvicePrefix;
 {
     NSString* name = NSStringFromSelector(selWithAdvicePrefix);
     NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@""];
     return key;
 }
 
-+ (BOOL)selectorIsWrapped:(SEL)sel;
++ (BOOL)selectorIsAdvised:(SEL)sel;
 {
     NSString* name = NSStringFromSelector(sel);
     return [name hasSuffix:TYPHOON_BEFORE_ADVICE_SUFFIX];  // a name will always have this suffix after a TyphoonBlockComponentFactory has been initialized with us as the assembly. Make this clearer. All user facing calls will always go through the dynamic implementation machinery.
 }
 
-+ (SEL)wrappedSELForSEL:(SEL)unwrappedSEL;
++ (SEL)advisedSELForSEL:(SEL)unwrappedSEL;
 {
     return NSSelectorFromString([NSStringFromSelector(unwrappedSEL) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
 }
