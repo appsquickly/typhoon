@@ -1,8 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="iOS Tests (Static Library)" type="OCUnitRunConfiguration" factoryName="OCUnit" SCHEME_NAME="iOS Tests (Static Library)" PROJECT_NAME="Tests" TARGET_NAME="iOS Tests (Static Library)" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE">
-    <envs />
-    <RunnerSettings RunnerId="AppRunner" />
-    <ConfigurationWrapper RunnerId="AppRunner" />
-    <method />
-  </configuration>
-</component>
