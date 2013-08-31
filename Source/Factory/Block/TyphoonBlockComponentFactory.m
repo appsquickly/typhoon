@@ -184,17 +184,32 @@ typedef void(^MethodEnumerationBlock)(Method method);
 {
     @synchronized (self)
     {
-        if (![swizzleRegistry containsObject:[assembly class]])
+        if ([self assemblyMethodsHaveNotYetBeenSwizzled:assembly])
         {
-            [swizzleRegistry addObject:[assembly class]];
-
-            NSSet* definitionSelectors = [self obtainDefinitionSelectors:assembly];
-            [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
-            {
-                [self replaceImplementationOfDefinitionOnAssembly:assembly withDynamicBeforeAdviceImplementation:obj];
-            }];
+            [self swizzleAssemblyMethods:assembly];
         }
     }
+}
+
+- (BOOL)assemblyMethodsHaveNotYetBeenSwizzled:(TyphoonAssembly*)assembly;
+{
+    return ![swizzleRegistry containsObject:[assembly class]];
+}
+
+- (void)swizzleAssemblyMethods:(TyphoonAssembly *)assembly;
+{
+    [self markAssemblyMethodsAsSwizzled:assembly];
+    
+    NSSet* definitionSelectors = [self obtainDefinitionSelectors:assembly];
+    [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
+    {
+        [self replaceImplementationOfDefinitionOnAssembly:assembly withDynamicBeforeAdviceImplementation:obj];
+    }];
+}
+
+- (void)markAssemblyMethodsAsSwizzled:(TyphoonAssembly*)assembly;
+{
+    [swizzleRegistry addObject:[assembly class]];
 }
 
 - (void)replaceImplementationOfDefinitionOnAssembly:(TyphoonAssembly*)assembly withDynamicBeforeAdviceImplementation:(id)obj;
