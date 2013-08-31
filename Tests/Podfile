@@ -14,8 +14,6 @@ target :ios do
   platform :ios, '5.0'
   import_test_pods
   link_with 'iOS Tests (Static Library)'
-
-  
 end
 
 target 'iOS Tests (Cocoapods)' do
