@@ -13,7 +13,7 @@
 
 
 
-static NSString* const TYPHOON_BEFORE_ADVICE_SUFFIX = @"__typhoonBeforeAdvice";
+static NSString* const TYPHOON_BEFORE_ADVICE_PREFIX = @"__typhoonBeforeAdvice__";
 
 
 /**
@@ -23,27 +23,32 @@ static NSString* const TYPHOON_BEFORE_ADVICE_SUFFIX = @"__typhoonBeforeAdvice";
 */
 @implementation TyphoonAssemblySelectorAdviser
 
-+ (SEL)advisedSELForKey:(NSString *)key;
++ (SEL)advisedSELForKey:(NSString*)key
 {
-    return NSSelectorFromString([key stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
+    return NSSelectorFromString([TYPHOON_BEFORE_ADVICE_PREFIX stringByAppendingString:key]);
 }
 
-+ (NSString *)keyForAdvisedSEL:(SEL)selWithAdvicePrefix;
++ (NSString*)keyForAdvisedSEL:(SEL)advisedSEL
 {
-    NSString* name = NSStringFromSelector(selWithAdvicePrefix);
-    NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_SUFFIX withString:@""];
+    NSString* name = NSStringFromSelector(advisedSEL);
+    NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_PREFIX withString:@""];
     return key;
 }
 
-+ (BOOL)selectorIsAdvised:(SEL)sel;
++ (NSString*)keyForSEL:(SEL)sel
 {
-    NSString* name = NSStringFromSelector(sel);
-    return [name hasSuffix:TYPHOON_BEFORE_ADVICE_SUFFIX];  // a name will always have this suffix after a TyphoonBlockComponentFactory has been initialized with us as the assembly. Make this clearer. All user facing calls will always go through the dynamic implementation machinery.
+    return NSStringFromSelector(sel);
 }
 
-+ (SEL)advisedSELForSEL:(SEL)unwrappedSEL;
++ (BOOL)selectorIsAdvised:(SEL)sel
 {
-    return NSSelectorFromString([NSStringFromSelector(unwrappedSEL) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX]);
+    NSString* name = NSStringFromSelector(sel);
+    return [name hasPrefix:TYPHOON_BEFORE_ADVICE_PREFIX];
+}
+
++ (SEL)advisedSELForSEL:(SEL)sel
+{
+    return [self advisedSELForKey:[self keyForSEL:sel]];
 }
 
 @end
