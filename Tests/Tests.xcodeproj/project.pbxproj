@@ -24,6 +24,15 @@
 		4B06338B17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */; };
 		4B06338C17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */; };
 		4B06338D17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */; };
+		4B0633A417D29402009CDBD6 /* InjectionAwareAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A017D29402009CDBD6 /* InjectionAwareAssembly.m */; };
+		4B0633A517D29402009CDBD6 /* InjectionAwareAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A017D29402009CDBD6 /* InjectionAwareAssembly.m */; };
+		4B0633A617D29402009CDBD6 /* InjectionAwareAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A017D29402009CDBD6 /* InjectionAwareAssembly.m */; };
+		4B0633A717D29402009CDBD6 /* InjectionAwareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A217D29402009CDBD6 /* InjectionAwareObject.m */; };
+		4B0633A817D29402009CDBD6 /* InjectionAwareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A217D29402009CDBD6 /* InjectionAwareObject.m */; };
+		4B0633A917D29402009CDBD6 /* InjectionAwareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A217D29402009CDBD6 /* InjectionAwareObject.m */; };
+		4B0633AA17D29402009CDBD6 /* TyphoonInjectionAwareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A317D29402009CDBD6 /* TyphoonInjectionAwareTests.m */; };
+		4B0633AB17D29402009CDBD6 /* TyphoonInjectionAwareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A317D29402009CDBD6 /* TyphoonInjectionAwareTests.m */; };
+		4B0633AC17D29402009CDBD6 /* TyphoonInjectionAwareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A317D29402009CDBD6 /* TyphoonInjectionAwareTests.m */; };
 		4B841470179B0E3900916BF5 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B84146F179B0E3900916BF5 /* SenTestingKit.framework */; };
 		4B841472179B0E3900916BF5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841471179B0E3900916BF5 /* UIKit.framework */; };
 		4B841474179B0E3900916BF5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841473179B0E3900916BF5 /* Foundation.framework */; };
@@ -202,6 +211,11 @@
 		1AC491FA50E048988BFB5756 /* libPods-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		272E8645AA624C0897EA4CF6 /* Pods-osx.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-osx.xcconfig"; path = "Pods/Pods-osx.xcconfig"; sourceTree = SOURCE_ROOT; };
 		4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblySelectorAdviserTests.m; sourceTree = "<group>"; };
+		4B06339F17D29402009CDBD6 /* InjectionAwareAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InjectionAwareAssembly.h; sourceTree = "<group>"; };
+		4B0633A017D29402009CDBD6 /* InjectionAwareAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InjectionAwareAssembly.m; sourceTree = "<group>"; };
+		4B0633A117D29402009CDBD6 /* InjectionAwareObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InjectionAwareObject.h; sourceTree = "<group>"; };
+		4B0633A217D29402009CDBD6 /* InjectionAwareObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InjectionAwareObject.m; sourceTree = "<group>"; };
+		4B0633A317D29402009CDBD6 /* TyphoonInjectionAwareTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonInjectionAwareTests.m; sourceTree = "<group>"; };
 		4B84146C179B0E3900916BF5 /* iOS Tests (Cocoapods).octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Tests (Cocoapods).octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B84146F179B0E3900916BF5 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		4B841471179B0E3900916BF5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -328,6 +342,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B06339E17D29402009CDBD6 /* Injection Aware */ = {
+			isa = PBXGroup;
+			children = (
+				4B06339F17D29402009CDBD6 /* InjectionAwareAssembly.h */,
+				4B0633A017D29402009CDBD6 /* InjectionAwareAssembly.m */,
+				4B0633A117D29402009CDBD6 /* InjectionAwareObject.h */,
+				4B0633A217D29402009CDBD6 /* InjectionAwareObject.m */,
+				4B0633A317D29402009CDBD6 /* TyphoonInjectionAwareTests.m */,
+			);
+			path = "Injection Aware";
+			sourceTree = "<group>";
+		};
 		4B841460179B0E1B00916BF5 = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +413,7 @@
 		4B84149C179B0EA600916BF5 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				4B06339E17D29402009CDBD6 /* Injection Aware */,
 				4B84149D179B0EA600916BF5 /* Properties */,
 				4B8414A2179B0EA600916BF5 /* TyphoonDefinitionTests.m */,
 			);
@@ -668,7 +695,7 @@
 				LastUpgradeCheck = 0460;
 				TargetAttributes = {
 					4B9685A117D26E8200E69723 = {
-						TestTargetID = 4B84146B179B0E3900916BF5 /* iOS Tests (Cocoapods) */;
+						TestTargetID = 4B84146B179B0E3900916BF5;
 					};
 				};
 			};
@@ -915,6 +942,7 @@
 				4B841513179B0EA600916BF5 /* ClassDDependsOnC.m in Sources */,
 				4B06338B17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */,
 				4B841515179B0EA600916BF5 /* ClassEDependsOnC.m in Sources */,
+				4B0633A417D29402009CDBD6 /* InjectionAwareAssembly.m in Sources */,
 				4B841517179B0EA600916BF5 /* Sword.m in Sources */,
 				4B841519179B0EA600916BF5 /* SwordFactory.m in Sources */,
 				4B84151B179B0EA600916BF5 /* Knight.m in Sources */,
@@ -922,9 +950,11 @@
 				4B84152F179B0EA600916BF5 /* TyphoonPrimitiveTypeConverterTests.m in Sources */,
 				4B841531179B0EA600916BF5 /* TyphoonTypeConverterRegistryTests.m in Sources */,
 				4B841533179B0EA600916BF5 /* TyphoonTypeDescriptorTests.m in Sources */,
+				4B0633AA17D29402009CDBD6 /* TyphoonInjectionAwareTests.m in Sources */,
 				4B841535179B0EA600916BF5 /* TyphoonBundleResourceTests.m in Sources */,
 				4BE1AA4F17A5876E00FE2DA1 /* UnsatisfiableClassFDependsOnGInInitializer.m in Sources */,
 				4BE1AA5417A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m in Sources */,
+				4B0633A717D29402009CDBD6 /* InjectionAwareObject.m in Sources */,
 				4EB2190517B4F2C500B901C9 /* SingletonA.m in Sources */,
 				4EB2190817B4F2C500B901C9 /* SingletonB.m in Sources */,
 				4EB2191017B4F30D00B901C9 /* SingletonsChainAssembly.m in Sources */,
@@ -960,6 +990,7 @@
 				4B841514179B0EA600916BF5 /* ClassDDependsOnC.m in Sources */,
 				4B06338C17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */,
 				4B841516179B0EA600916BF5 /* ClassEDependsOnC.m in Sources */,
+				4B0633A517D29402009CDBD6 /* InjectionAwareAssembly.m in Sources */,
 				4B841518179B0EA600916BF5 /* Sword.m in Sources */,
 				4B84151A179B0EA600916BF5 /* SwordFactory.m in Sources */,
 				4B84151C179B0EA600916BF5 /* Knight.m in Sources */,
@@ -967,9 +998,11 @@
 				4B841530179B0EA600916BF5 /* TyphoonPrimitiveTypeConverterTests.m in Sources */,
 				4B841532179B0EA600916BF5 /* TyphoonTypeConverterRegistryTests.m in Sources */,
 				4B841534179B0EA600916BF5 /* TyphoonTypeDescriptorTests.m in Sources */,
+				4B0633AB17D29402009CDBD6 /* TyphoonInjectionAwareTests.m in Sources */,
 				4B841536179B0EA600916BF5 /* TyphoonBundleResourceTests.m in Sources */,
 				4BE1AA5017A5876E00FE2DA1 /* UnsatisfiableClassFDependsOnGInInitializer.m in Sources */,
 				4BE1AA5517A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m in Sources */,
+				4B0633A817D29402009CDBD6 /* InjectionAwareObject.m in Sources */,
 				4EB2190617B4F2C500B901C9 /* SingletonA.m in Sources */,
 				4EB2190917B4F2C500B901C9 /* SingletonB.m in Sources */,
 				4EB2191117B4F30D00B901C9 /* SingletonsChainAssembly.m in Sources */,
@@ -1005,6 +1038,7 @@
 				4BC648D717A20AD2007F0463 /* ClassDDependsOnC.m in Sources */,
 				4B06338D17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */,
 				4BC648D817A20AD2007F0463 /* ClassEDependsOnC.m in Sources */,
+				4B0633A617D29402009CDBD6 /* InjectionAwareAssembly.m in Sources */,
 				4BC648D917A20AD2007F0463 /* Sword.m in Sources */,
 				4BC648DA17A20AD2007F0463 /* SwordFactory.m in Sources */,
 				4BC648DB17A20AD2007F0463 /* Knight.m in Sources */,
@@ -1012,9 +1046,11 @@
 				4BC648DD17A20AD2007F0463 /* TyphoonPrimitiveTypeConverterTests.m in Sources */,
 				4BC648DE17A20AD2007F0463 /* TyphoonTypeConverterRegistryTests.m in Sources */,
 				4BC648DF17A20AD2007F0463 /* TyphoonTypeDescriptorTests.m in Sources */,
+				4B0633AC17D29402009CDBD6 /* TyphoonInjectionAwareTests.m in Sources */,
 				4BC648E017A20AD2007F0463 /* TyphoonBundleResourceTests.m in Sources */,
 				4BE1AA5117A5876E00FE2DA1 /* UnsatisfiableClassFDependsOnGInInitializer.m in Sources */,
 				4BE1AA5617A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m in Sources */,
+				4B0633A917D29402009CDBD6 /* InjectionAwareObject.m in Sources */,
 				4EB2190717B4F2C500B901C9 /* SingletonA.m in Sources */,
 				4EB2190A17B4F2C500B901C9 /* SingletonB.m in Sources */,
 				4EB2191217B4F30D00B901C9 /* SingletonsChainAssembly.m in Sources */,
