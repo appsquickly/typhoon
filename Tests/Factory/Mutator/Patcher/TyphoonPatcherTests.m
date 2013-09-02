@@ -30,10 +30,11 @@
 
 - (void)test_allows_patching_out_a_component_with_a_mock
 {
-    TyphoonComponentFactory* factory = [TyphoonBlockComponentFactory factoryWithAssembly:[MiddleAgesAssembly assembly]];
+    MiddleAgesAssembly* assembly = [MiddleAgesAssembly assembly];
+    TyphoonComponentFactory* factory = [TyphoonBlockComponentFactory factoryWithAssembly:assembly];
 
     TyphoonPatcher* patcher = [[TyphoonPatcher alloc] init];
-    [patcher patchDefinitionWithKey:@"knight" withObject:^id
+    [patcher patchDefinition:[assembly knight] withObject:^id
     {
         Knight* mockKnight = mock([Knight class]);
         [given([mockKnight favoriteDamsels]) willReturn:@[

@@ -13,13 +13,15 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryMutator.h"
 
-typedef id (^objectCreationBlock)();
+typedef id (^ObjectCreationBlock)();
 
 @interface TyphoonPatcher : NSObject <TyphoonComponentFactoryMutator>
 {
     NSMutableDictionary* _patches;
 }
 
-- (void)patchDefinitionWithKey:(NSString*)key withObject:(objectCreationBlock)objectCreationBlock;
+- (void)patchDefinitionWithKey:(NSString*)key withObject:(ObjectCreationBlock)objectCreationBlock;
+
+- (void)patchDefinition:(TyphoonDefinition*)definition withObject:(ObjectCreationBlock)objectCreationBlock;
 
 @end

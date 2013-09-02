@@ -35,10 +35,15 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (void)patchDefinitionWithKey:(NSString*)key withObject:(objectCreationBlock)objectCreationBlock
+- (void)patchDefinitionWithKey:(NSString*)key withObject:(ObjectCreationBlock)objectCreationBlock
 {
     id object = objectCreationBlock();
     [_patches setObject:object forKey:key];
+}
+
+- (void)patchDefinition:(TyphoonDefinition*)definition withObject:(ObjectCreationBlock)objectCreationBlock
+{
+    [self patchDefinitionWithKey:definition.key withObject:objectCreationBlock];
 }
 
 /* ====================================================================================================================================== */
