@@ -39,7 +39,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 @property(nonatomic, strong) TyphoonInitializer* initializer;
 @property(nonatomic) SEL beforePropertyInjection;
 @property(nonatomic) SEL afterPropertyInjection;
-@property(nonatomic, strong, readonly) NSSet* injectedProperties;
+@property(nonatomic, strong) NSSet* injectedProperties;
 @property(nonatomic) TyphoonScope scope;
 @property(nonatomic, strong) TyphoonDefinition* factory;
 

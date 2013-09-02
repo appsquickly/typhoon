@@ -10,12 +10,20 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <Foundation/Foundation.h>
+#import "TyphoonPatchObjectFactory.h"
 
-@protocol TyphoonComponentFactoryMutator
 
-- (NSArray*)newDefinitionsToRegister;
+@implementation TyphoonPatchObjectFactory
 
-- (void)mutateComponentDefinitionsIfRequired:(NSArray*)componentDefinitions;
+- (id)initWithObject:(id)object
+{
+    self = [super init];
+    if (self)
+    {
+        _object = object;
+    }
+
+    return self;
+}
 
 @end

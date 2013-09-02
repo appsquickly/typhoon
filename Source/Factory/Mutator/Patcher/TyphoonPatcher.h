@@ -11,11 +11,15 @@
 
 
 #import <Foundation/Foundation.h>
+#import "TyphoonComponentFactoryMutator.h"
 
-@protocol TyphoonComponentFactoryMutator
+typedef id (^objectCreationBlock)();
 
-- (NSArray*)newDefinitionsToRegister;
+@interface TyphoonPatcher : NSObject <TyphoonComponentFactoryMutator>
+{
+    NSMutableDictionary* _patches;
+}
 
-- (void)mutateComponentDefinitionsIfRequired:(NSArray*)componentDefinitions;
+- (void)patchDefinitionWithKey:(NSString*)key withObject:(objectCreationBlock)objectCreationBlock;
 
 @end

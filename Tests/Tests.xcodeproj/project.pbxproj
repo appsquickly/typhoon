@@ -178,6 +178,9 @@
 		4EB2191517B4F6EB00B901C9 /* SingletonsChainAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4EB2191317B4F6EB00B901C9 /* SingletonsChainAssembly.xml */; };
 		4EB2191617B4F6EB00B901C9 /* SingletonsChainAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4EB2191317B4F6EB00B901C9 /* SingletonsChainAssembly.xml */; };
 		52D870D7DE6E4FB09D059A5C /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B50DFBF255467DA9F7C30F /* libPods-ios.a */; };
+		BA79803EFC77C1B3302F2A2D /* TyphoonPatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79816306D33CA0DD1DE118 /* TyphoonPatcherTests.m */; };
+		BA7983795CF47CB07A5810B0 /* TyphoonPatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79816306D33CA0DD1DE118 /* TyphoonPatcherTests.m */; };
+		BA7989308BE79C6CC6B97898 /* TyphoonPatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79816306D33CA0DD1DE118 /* TyphoonPatcherTests.m */; };
 		CD65DA1387F74352A0088704 /* libPods-iOS Tests (Cocoapods).a in Frameworks */ = {isa = PBXBuildFile; fileRef = B90D396911F743468FF96BB5 /* libPods-iOS Tests (Cocoapods).a */; };
 		D174EF8C2C6845E69666DC4F /* libPods-osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC491FA50E048988BFB5756 /* libPods-osx.a */; };
 /* End PBXBuildFile section */
@@ -302,6 +305,7 @@
 		4EB2191317B4F6EB00B901C9 /* SingletonsChainAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SingletonsChainAssembly.xml; sourceTree = "<group>"; };
 		B1C044F0F19E4B448A36BEFB /* Pods-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.xcconfig"; path = "Pods/Pods-ios.xcconfig"; sourceTree = SOURCE_ROOT; };
 		B90D396911F743468FF96BB5 /* libPods-iOS Tests (Cocoapods).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Tests (Cocoapods).a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA79816306D33CA0DD1DE118 /* TyphoonPatcherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonPatcherTests.m; sourceTree = "<group>"; };
 		F8B50DFBF255467DA9F7C30F /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -472,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				4B8414AD179B0EA600916BF5 /* PropertyConfigurer */,
+				BA798AA0E8A0E473C85773E0 /* Patcher */,
 			);
 			path = Mutator;
 			sourceTree = "<group>";
@@ -618,6 +623,14 @@
 				4E08794617B6762E004B86C9 /* NotSingletonA.m */,
 			);
 			path = SingletonsChain;
+			sourceTree = "<group>";
+		};
+		BA798AA0E8A0E473C85773E0 /* Patcher */ = {
+			isa = PBXGroup;
+			children = (
+				BA79816306D33CA0DD1DE118 /* TyphoonPatcherTests.m */,
+			);
+			path = Patcher;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -959,6 +972,7 @@
 				4EB2190817B4F2C500B901C9 /* SingletonB.m in Sources */,
 				4EB2191017B4F30D00B901C9 /* SingletonsChainAssembly.m in Sources */,
 				4E08794717B6762E004B86C9 /* NotSingletonA.m in Sources */,
+				BA79803EFC77C1B3302F2A2D /* TyphoonPatcherTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1007,6 +1021,7 @@
 				4EB2190917B4F2C500B901C9 /* SingletonB.m in Sources */,
 				4EB2191117B4F30D00B901C9 /* SingletonsChainAssembly.m in Sources */,
 				4E08794817B6762E004B86C9 /* NotSingletonA.m in Sources */,
+				BA7989308BE79C6CC6B97898 /* TyphoonPatcherTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1055,6 +1070,7 @@
 				4EB2190A17B4F2C500B901C9 /* SingletonB.m in Sources */,
 				4EB2191217B4F30D00B901C9 /* SingletonsChainAssembly.m in Sources */,
 				4E08794917B6762E004B86C9 /* NotSingletonA.m in Sources */,
+				BA7983795CF47CB07A5810B0 /* TyphoonPatcherTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1317,6 +1333,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Tests/Pods\"/**";
 				VALID_ARCHS = "armv7 armv7s i386 x86_4";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1364,6 +1381,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Tests/Pods\"/**";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s i386 x86_4";
 				WRAPPER_EXTENSION = octest;

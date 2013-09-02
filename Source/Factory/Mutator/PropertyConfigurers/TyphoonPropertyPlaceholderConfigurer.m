@@ -102,6 +102,11 @@
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods
 
+- (NSArray*)newDefinitionsToRegister
+{
+    return nil;
+}
+
 - (void)mutateComponentDefinitionsIfRequired:(NSArray*)componentDefinitions
 {
     for (TyphoonDefinition* definition in componentDefinitions)

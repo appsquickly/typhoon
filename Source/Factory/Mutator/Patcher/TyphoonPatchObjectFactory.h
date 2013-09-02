@@ -10,12 +10,15 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
+
 #import <Foundation/Foundation.h>
 
-@protocol TyphoonComponentFactoryMutator
 
-- (NSArray*)newDefinitionsToRegister;
+@interface TyphoonPatchObjectFactory : NSObject
 
-- (void)mutateComponentDefinitionsIfRequired:(NSArray*)componentDefinitions;
+@property(nonatomic, strong) id object;
+
+- (id)initWithObject:(id)object;
+
 
 @end
