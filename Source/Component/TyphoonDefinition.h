@@ -44,7 +44,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 @property(nonatomic, strong) TyphoonDefinition* factory;
 
 /**
- * Say if the componant (scoped as a singleton) should be lazily instantiated.
+ * Say if the component (scoped as a singleton) should be lazily instantiated.
  */
 @property(nonatomic, assign, getter = isLazy) BOOL lazy;
 
