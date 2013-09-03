@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46E2E7CA17D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E7C917D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m */; };
+		46E2E7CB17D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E7C917D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m */; };
+		46E2E7CC17D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E7C917D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m */; };
 		4B841470179B0E3900916BF5 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B84146F179B0E3900916BF5 /* SenTestingKit.framework */; };
 		4B841472179B0E3900916BF5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841471179B0E3900916BF5 /* UIKit.framework */; };
 		4B841474179B0E3900916BF5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841473179B0E3900916BF5 /* Foundation.framework */; };
@@ -160,6 +163,7 @@
 		159D62E0E7314B4D9C0B9CC1 /* Pods-iOS Tests (Cocoapods).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests (Cocoapods).xcconfig"; path = "Pods/Pods-iOS Tests (Cocoapods).xcconfig"; sourceTree = SOURCE_ROOT; };
 		1AC491FA50E048988BFB5756 /* libPods-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		272E8645AA624C0897EA4CF6 /* Pods-osx.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-osx.xcconfig"; path = "Pods/Pods-osx.xcconfig"; sourceTree = SOURCE_ROOT; };
+		46E2E7C917D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonParameterInjectedAsCollectionTests.m; sourceTree = "<group>"; };
 		4B84146C179B0E3900916BF5 /* iOS Tests (Cocoapods).octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Tests (Cocoapods).octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B84146F179B0E3900916BF5 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		4B841471179B0E3900916BF5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -286,6 +290,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46E2E7C617D1FCCD007B5C6F /* Initializer */ = {
+			isa = PBXGroup;
+			children = (
+				46E2E7C717D1FCCD007B5C6F /* Collection */,
+			);
+			path = Initializer;
+			sourceTree = "<group>";
+		};
+		46E2E7C717D1FCCD007B5C6F /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				46E2E7C917D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
 		4B841460179B0E1B00916BF5 = {
 			isa = PBXGroup;
 			children = (
@@ -304,7 +324,9 @@
 				B1C044F0F19E4B448A36BEFB /* Pods-ios.xcconfig */,
 				272E8645AA624C0897EA4CF6 /* Pods-osx.xcconfig */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		4B84146D179B0E3900916BF5 /* Products */ = {
 			isa = PBXGroup;
@@ -345,6 +367,7 @@
 		4B84149C179B0EA600916BF5 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				46E2E7C617D1FCCD007B5C6F /* Initializer */,
 				4B84149D179B0EA600916BF5 /* Properties */,
 				4B8414A2179B0EA600916BF5 /* TyphoonDefinitionTests.m */,
 			);
@@ -862,6 +885,7 @@
 				4EB2190817B4F2C500B901C9 /* SingletonB.m in Sources */,
 				4EB2191017B4F30D00B901C9 /* SingletonsChainAssembly.m in Sources */,
 				4E08794717B6762E004B86C9 /* NotSingletonA.m in Sources */,
+				46E2E7CA17D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -906,6 +930,7 @@
 				4EB2190917B4F2C500B901C9 /* SingletonB.m in Sources */,
 				4EB2191117B4F30D00B901C9 /* SingletonsChainAssembly.m in Sources */,
 				4E08794817B6762E004B86C9 /* NotSingletonA.m in Sources */,
+				46E2E7CB17D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,6 +975,7 @@
 				4EB2190A17B4F2C500B901C9 /* SingletonB.m in Sources */,
 				4EB2191217B4F30D00B901C9 /* SingletonsChainAssembly.m in Sources */,
 				4E08794917B6762E004B86C9 /* NotSingletonA.m in Sources */,
+				46E2E7CC17D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

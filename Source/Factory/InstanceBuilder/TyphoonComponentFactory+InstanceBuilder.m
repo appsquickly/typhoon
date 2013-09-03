@@ -32,6 +32,7 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
+#import "TyphoonParameterInjectedAsCollection.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
@@ -281,6 +282,12 @@
             id value = byInstance.value;
             [invocation setArgument:&value atIndex:parameter.index + 2];
         }
+        else if (parameter.type == TyphoonParameterInjectionTypeAsCollection)
+        {
+            TyphoonParameterInjectedAsCollection* asCollection = (TyphoonParameterInjectedAsCollection*) parameter;
+            id collection = [self buildCollectionWithValues:asCollection.values requiredType:asCollection.collectionType];
+            [invocation setArgument:&collection atIndex:parameter.index + 2];
+        }
     }
     [invocation invoke];
     __autoreleasing id <NSObject> returnValue = nil;
@@ -308,9 +315,14 @@
 - (id)buildCollectionFor:(TyphoonPropertyInjectedAsCollection*)propertyInjectedAsCollection
         instance:(id <TyphoonIntrospectiveNSObject>)instance
 {
-    id collection = [self collectionFor:propertyInjectedAsCollection givenInstance:instance];
+    TyphoonCollectionType type = [propertyInjectedAsCollection resolveCollectionTypeWith:instance];
+    return [self buildCollectionWithValues:[propertyInjectedAsCollection values] requiredType:type];
+}
 
-    for (id <TyphoonCollectionValue> value in [propertyInjectedAsCollection values])
+- (id) buildCollectionWithValues:(NSArray *)values requiredType:(TyphoonCollectionType)type {
+    id collection = [self collectionForType:type];
+    
+    for (id <TyphoonCollectionValue> value in values)
     {
         if (value.type == TyphoonCollectionValueTypeByReference)
         {
@@ -327,15 +339,13 @@
             [collection addObject:converted];
         }
     }
-    BOOL isMutable = propertyInjectedAsCollection.injectionType == TyphoonCollectionTypeNSMutableArray ||
-            propertyInjectedAsCollection.injectionType == TyphoonCollectionTypeNSMutableSet;
-    return propertyInjectedAsCollection.injectionType == isMutable ? [collection copy] : collection;
+    
+    BOOL isMutable = (type == TyphoonCollectionTypeNSMutableArray || type == TyphoonCollectionTypeNSMutableSet);
+    return isMutable ? collection : [collection copy];
 }
 
-- (id)collectionFor:(TyphoonPropertyInjectedAsCollection*)propertyInjectedAsCollection
-        givenInstance:(id <TyphoonIntrospectiveNSObject>)instance
+- (id)collectionForType:(TyphoonCollectionType)type
 {
-    TyphoonCollectionType type = [propertyInjectedAsCollection resolveCollectionTypeWith:instance];
     id collection;
     if (type == TyphoonCollectionTypeNSArray || type == TyphoonCollectionTypeNSMutableArray)
     {
@@ -349,10 +359,10 @@
     {
         collection = [[NSMutableSet alloc] init];
     }
-
+    
     return collection;
-}
 
+}
 
 - (TyphoonDefinition*)definitionForType:(id)classOrProtocol
 {
