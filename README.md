@@ -2,7 +2,7 @@
 
 A new dependency injection container for Objective-C. Light-weight, yet full-featured and super-easy to use. 
 
-Build Status: ![Build Status](http://jasperblues.github.io/Typhoon/build-status.png)
+Build Status: <img src="http://jasperblues.github.io/Typhoon/build-status.png"/>
 
 ## Familiar with Dependency Injection?
 
