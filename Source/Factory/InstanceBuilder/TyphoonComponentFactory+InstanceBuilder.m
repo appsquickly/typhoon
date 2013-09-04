@@ -42,7 +42,23 @@
 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
-    __autoreleasing id <TyphoonIntrospectiveNSObject> instance;
+	id instance = [self allocateInstanceWithDefinition:definition];
+
+	[self markCurrentlyResolvingDefinition:definition withInstance:instance];
+
+	instance = [self initializeInstance:instance withDefinition:definition];
+
+	[self resolvePropertyDependenciesOn:instance definition:definition];
+	[self injectAssemblyOnInstanceIfTyphoonAware:instance];
+
+	[self markDoneResolvingDefinition:definition];
+
+	return instance;
+}
+
+- (id)allocateInstanceWithDefinition:(TyphoonDefinition *)definition
+{
+	__autoreleasing id <TyphoonIntrospectiveNSObject> instance;
 
     if (definition.factoryReference)
     {
@@ -57,7 +73,12 @@
         instance = [definition.type alloc];
     }
 
-    if (definition.initializer && definition.initializer.isClassMethod == NO)
+	return instance;
+}
+
+- (id)initializeInstance:(id)instance withDefinition:(TyphoonDefinition *)definition
+{
+	if (definition.initializer && definition.initializer.isClassMethod == NO)
     {
         instance = [self invokeInitializerOn:instance withDefinition:definition];
     }
@@ -66,10 +87,7 @@
         instance = objc_msgSend(instance, @selector(init));
     }
 
-    [self resolvePropertyDependenciesOn:instance definition:definition];
-    [self injectAssemblyOnInstanceIfTyphoonAware:instance];
-    
-    return instance;
+	return instance;
 }
 
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance;
@@ -102,12 +120,8 @@
 #pragma mark - Property Injection
 - (void)resolvePropertyDependenciesOn:(__autoreleasing id)instance definition:(TyphoonDefinition *)definition
 {
-    [self markCurrentlyResolvingDefinition:definition withInstance:instance];
-    
     [self injectPropertyDependenciesOn:instance withDefinition:definition];
     [self injectCircularDependenciesOn:instance];
-    
-    [self markDoneResolvingDefinition:definition];
 }
 
 - (void)markCurrentlyResolvingDefinition:(TyphoonDefinition *)definition withInstance:(__autoreleasing id)instance
