@@ -14,6 +14,8 @@
 
 @protocol TyphoonComponentFactoryMutator
 
+- (NSArray*)newDefinitionsToRegister;
+
 - (void)mutateComponentDefinitionsIfRequired:(NSArray*)componentDefinitions;
 
 @end

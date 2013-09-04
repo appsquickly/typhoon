@@ -32,6 +32,7 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
+#import "TyphoonInjectionAware.h"
 #import "TyphoonParameterInjectedAsCollection.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
@@ -66,8 +67,21 @@
     }
 
     [self resolvePropertyDependenciesOn:instance definition:definition];
+    [self injectAssemblyOnInstanceIfTyphoonAware:instance];
     
     return instance;
+}
+
+- (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance;
+{
+    if ([instance conformsToProtocol:@protocol(TyphoonInjectionAware)]) {
+        [self injectAssemblyOnInstance:instance];
+    }
+}
+
+- (void)injectAssemblyOnInstance:(id <TyphoonInjectionAware>)instance;
+{
+    [instance setAssembly:self];
 }
 
 - (id)buildSingletonWithDefinition:(TyphoonDefinition*)definition

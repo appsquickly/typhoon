@@ -14,8 +14,12 @@ profile
 *.moved-aside
 DerivedData
 
+# Xcode-Dacted
+*.xccheckout
+
 
 .DS_Store
 
 # AppCode
 .idea/workspace.xml
+.idea/runConfigurations/

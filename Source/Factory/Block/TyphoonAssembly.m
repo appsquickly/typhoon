@@ -17,10 +17,11 @@
 #import "TyphoonJRSwizzle.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
-#import "TyphoonAssemblySelectorWrapper.h"
+#import "TyphoonAssemblySelectorAdviser.h"
 #import "OCLogTemplate.h"
 
 static NSMutableDictionary *resolveStackForKey;
+static NSMutableArray *reservedSelectorsAsStrings;
 
 @implementation TyphoonAssembly
 
@@ -42,6 +43,27 @@ static NSMutableDictionary *resolveStackForKey;
 {
     [super load];
     resolveStackForKey = [[NSMutableDictionary alloc] init];
+    [self reserveSelectors];
+}
+
++ (void)reserveSelectors;
+{
+  reservedSelectorsAsStrings = [[NSMutableArray alloc] init];
+  
+  [self markSelectorReserved:@selector(init)];
+  [self markSelectorReserved:@selector(cachedDefinitionsForMethodName)];
+  [self markSelectorReservedFromString:@".cxx_destruct"];
+  [self markSelectorReserved:@selector(defaultAssembly)];
+}
+
++ (void)markSelectorReserved:(SEL)selector
+{
+  [self markSelectorReservedFromString:NSStringFromSelector(selector)];
+}
+
++ (void)markSelectorReservedFromString:(NSString *)stringFromSelector
+{
+  [reservedSelectorsAsStrings addObject:stringFromSelector];
 }
 
 #pragma mark - Instance Method Resolution
@@ -57,13 +79,12 @@ static NSMutableDictionary *resolveStackForKey;
 
 + (BOOL)shouldProvideDynamicImplementationFor:(SEL)sel;
 {
-    return (![TyphoonAssembly selectorReserved:sel] && [TyphoonAssemblySelectorWrapper selectorIsWrapped:sel]);
+    return (![TyphoonAssembly selectorReserved:sel] && [TyphoonAssemblySelectorAdviser selectorIsAdvised:sel]);
 }
 
 + (BOOL)selectorReserved:(SEL)selector
 {
-    return selector == @selector(init) || selector == @selector(cachedDefinitionsForMethodName) || selector == NSSelectorFromString(@".cxx_destruct") ||
-    selector == @selector(defaultAssembly);
+  return [reservedSelectorsAsStrings containsObject:NSStringFromSelector(selector)];
 }
 
 + (void)provideDynamicImplementationToConstructDefinitionForSEL:(SEL)sel;
@@ -76,7 +97,7 @@ static NSMutableDictionary *resolveStackForKey;
 {
     return imp_implementationWithBlock((__bridge id) objc_unretainedPointer((TyphoonDefinition *)^(id me)
        {
-           NSString *key = [TyphoonAssemblySelectorWrapper keyForWrappedSEL:selWithAdvicePrefix];
+           NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selWithAdvicePrefix];
            return [self definitionForKey:key me:me];
        }));
 }
@@ -164,8 +185,8 @@ static NSMutableDictionary *resolveStackForKey;
 
 + (id)definitionByCallingAssemblyMethodForKey:(NSString *)key me:(TyphoonAssembly *)me
 {
-    SEL sel = [TyphoonAssemblySelectorWrapper wrappedSELForKey:key];
-    id cached = objc_msgSend(me, sel); // the wrappedSEL will call through to the original, unwrapped implementation because of the active swizzling.
+    SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key];
+    id cached = objc_msgSend(me, sel); // the advisedSEL will call through to the original, unwrapped implementation because of the active swizzling.
     return cached;
 }
 

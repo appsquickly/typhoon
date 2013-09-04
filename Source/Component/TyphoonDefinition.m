@@ -148,12 +148,6 @@
     [_injectedProperties addObject:propertyInjectedAsCollection];
 }
 
-
-- (NSSet*)injectedProperties
-{
-    return [_injectedProperties copy];
-}
-
 - (void)setInitializer:(TyphoonInitializer*)initializer
 {
     _initializer = initializer;

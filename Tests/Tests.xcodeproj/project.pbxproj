@@ -6,10 +6,36 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		4B9685A117D26E8200E69723 /* pod update */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4B9685A417D26E8300E69723 /* Build configuration list for PBXAggregateTarget "pod update" */;
+			buildPhases = (
+				4B9685A717D26E8D00E69723 /* pod update */,
+			);
+			dependencies = (
+			);
+			name = "pod update";
+			productName = "pod update";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		46E2E7CA17D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E7C917D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m */; };
-		46E2E7CB17D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E7C917D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m */; };
-		46E2E7CC17D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46E2E7C917D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m */; };
+		46877CFA17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46877CF917D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m */; };
+		46877CFB17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46877CF917D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m */; };
+		46877CFC17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46877CF917D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m */; };
+		4B06338B17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */; };
+		4B06338C17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */; };
+		4B06338D17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */; };
+		4B0633A417D29402009CDBD6 /* InjectionAwareAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A017D29402009CDBD6 /* InjectionAwareAssembly.m */; };
+		4B0633A517D29402009CDBD6 /* InjectionAwareAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A017D29402009CDBD6 /* InjectionAwareAssembly.m */; };
+		4B0633A617D29402009CDBD6 /* InjectionAwareAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A017D29402009CDBD6 /* InjectionAwareAssembly.m */; };
+		4B0633A717D29402009CDBD6 /* InjectionAwareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A217D29402009CDBD6 /* InjectionAwareObject.m */; };
+		4B0633A817D29402009CDBD6 /* InjectionAwareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A217D29402009CDBD6 /* InjectionAwareObject.m */; };
+		4B0633A917D29402009CDBD6 /* InjectionAwareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A217D29402009CDBD6 /* InjectionAwareObject.m */; };
+		4B0633AA17D29402009CDBD6 /* TyphoonInjectionAwareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A317D29402009CDBD6 /* TyphoonInjectionAwareTests.m */; };
+		4B0633AB17D29402009CDBD6 /* TyphoonInjectionAwareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A317D29402009CDBD6 /* TyphoonInjectionAwareTests.m */; };
+		4B0633AC17D29402009CDBD6 /* TyphoonInjectionAwareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A317D29402009CDBD6 /* TyphoonInjectionAwareTests.m */; };
 		4B841470179B0E3900916BF5 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B84146F179B0E3900916BF5 /* SenTestingKit.framework */; };
 		4B841472179B0E3900916BF5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841471179B0E3900916BF5 /* UIKit.framework */; };
 		4B841474179B0E3900916BF5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841473179B0E3900916BF5 /* Foundation.framework */; };
@@ -155,15 +181,48 @@
 		4EB2191517B4F6EB00B901C9 /* SingletonsChainAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4EB2191317B4F6EB00B901C9 /* SingletonsChainAssembly.xml */; };
 		4EB2191617B4F6EB00B901C9 /* SingletonsChainAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4EB2191317B4F6EB00B901C9 /* SingletonsChainAssembly.xml */; };
 		52D870D7DE6E4FB09D059A5C /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B50DFBF255467DA9F7C30F /* libPods-ios.a */; };
+		BA79803EFC77C1B3302F2A2D /* TyphoonPatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79816306D33CA0DD1DE118 /* TyphoonPatcherTests.m */; };
+		BA7983795CF47CB07A5810B0 /* TyphoonPatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79816306D33CA0DD1DE118 /* TyphoonPatcherTests.m */; };
+		BA7989308BE79C6CC6B97898 /* TyphoonPatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79816306D33CA0DD1DE118 /* TyphoonPatcherTests.m */; };
 		CD65DA1387F74352A0088704 /* libPods-iOS Tests (Cocoapods).a in Frameworks */ = {isa = PBXBuildFile; fileRef = B90D396911F743468FF96BB5 /* libPods-iOS Tests (Cocoapods).a */; };
 		D174EF8C2C6845E69666DC4F /* libPods-osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC491FA50E048988BFB5756 /* libPods-osx.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4B9685A817D275CA00E69723 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B841461179B0E1B00916BF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B9685A117D26E8200E69723;
+			remoteInfo = "pod update";
+		};
+		4B9685AA17D275CD00E69723 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B841461179B0E1B00916BF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B9685A117D26E8200E69723;
+			remoteInfo = "pod update";
+		};
+		4B9685AC17D275D000E69723 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B841461179B0E1B00916BF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B9685A117D26E8200E69723;
+			remoteInfo = "pod update";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		159D62E0E7314B4D9C0B9CC1 /* Pods-iOS Tests (Cocoapods).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests (Cocoapods).xcconfig"; path = "Pods/Pods-iOS Tests (Cocoapods).xcconfig"; sourceTree = SOURCE_ROOT; };
 		1AC491FA50E048988BFB5756 /* libPods-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		272E8645AA624C0897EA4CF6 /* Pods-osx.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-osx.xcconfig"; path = "Pods/Pods-osx.xcconfig"; sourceTree = SOURCE_ROOT; };
-		46E2E7C917D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonParameterInjectedAsCollectionTests.m; sourceTree = "<group>"; };
+		46877CF917D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonParameterInjectedAsCollectionTests.m; sourceTree = "<group>"; };
+		4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblySelectorAdviserTests.m; sourceTree = "<group>"; };
+		4B06339F17D29402009CDBD6 /* InjectionAwareAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InjectionAwareAssembly.h; sourceTree = "<group>"; };
+		4B0633A017D29402009CDBD6 /* InjectionAwareAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InjectionAwareAssembly.m; sourceTree = "<group>"; };
+		4B0633A117D29402009CDBD6 /* InjectionAwareObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InjectionAwareObject.h; sourceTree = "<group>"; };
+		4B0633A217D29402009CDBD6 /* InjectionAwareObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InjectionAwareObject.m; sourceTree = "<group>"; };
+		4B0633A317D29402009CDBD6 /* TyphoonInjectionAwareTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonInjectionAwareTests.m; sourceTree = "<group>"; };
 		4B84146C179B0E3900916BF5 /* iOS Tests (Cocoapods).octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS Tests (Cocoapods).octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B84146F179B0E3900916BF5 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		4B841471179B0E3900916BF5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -250,6 +309,7 @@
 		4EB2191317B4F6EB00B901C9 /* SingletonsChainAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SingletonsChainAssembly.xml; sourceTree = "<group>"; };
 		B1C044F0F19E4B448A36BEFB /* Pods-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.xcconfig"; path = "Pods/Pods-ios.xcconfig"; sourceTree = SOURCE_ROOT; };
 		B90D396911F743468FF96BB5 /* libPods-iOS Tests (Cocoapods).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Tests (Cocoapods).a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA79816306D33CA0DD1DE118 /* TyphoonPatcherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonPatcherTests.m; sourceTree = "<group>"; };
 		F8B50DFBF255467DA9F7C30F /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -290,20 +350,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		46E2E7C617D1FCCD007B5C6F /* Initializer */ = {
+		46877CF717D70B5900910D6A /* Initializer */ = {
 			isa = PBXGroup;
 			children = (
-				46E2E7C717D1FCCD007B5C6F /* Collection */,
+				46877CF817D70B5900910D6A /* Collection */,
 			);
 			path = Initializer;
 			sourceTree = "<group>";
 		};
-		46E2E7C717D1FCCD007B5C6F /* Collection */ = {
+		46877CF817D70B5900910D6A /* Collection */ = {
 			isa = PBXGroup;
 			children = (
-				46E2E7C917D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m */,
+				46877CF917D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m */,
 			);
 			path = Collection;
+			sourceTree = "<group>";
+		};
+		4B06339E17D29402009CDBD6 /* Injection Aware */ = {
+			isa = PBXGroup;
+			children = (
+				4B06339F17D29402009CDBD6 /* InjectionAwareAssembly.h */,
+				4B0633A017D29402009CDBD6 /* InjectionAwareAssembly.m */,
+				4B0633A117D29402009CDBD6 /* InjectionAwareObject.h */,
+				4B0633A217D29402009CDBD6 /* InjectionAwareObject.m */,
+				4B0633A317D29402009CDBD6 /* TyphoonInjectionAwareTests.m */,
+			);
+			path = "Injection Aware";
 			sourceTree = "<group>";
 		};
 		4B841460179B0E1B00916BF5 = {
@@ -324,9 +396,7 @@
 				B1C044F0F19E4B448A36BEFB /* Pods-ios.xcconfig */,
 				272E8645AA624C0897EA4CF6 /* Pods-osx.xcconfig */,
 			);
-			indentWidth = 4;
 			sourceTree = "<group>";
-			tabWidth = 4;
 		};
 		4B84146D179B0E3900916BF5 /* Products */ = {
 			isa = PBXGroup;
@@ -367,7 +437,8 @@
 		4B84149C179B0EA600916BF5 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				46E2E7C617D1FCCD007B5C6F /* Initializer */,
+				46877CF717D70B5900910D6A /* Initializer */,
+				4B06339E17D29402009CDBD6 /* Injection Aware */,
 				4B84149D179B0EA600916BF5 /* Properties */,
 				4B8414A2179B0EA600916BF5 /* TyphoonDefinitionTests.m */,
 			);
@@ -416,6 +487,7 @@
 				4B8414A8179B0EA600916BF5 /* ExceptionTestAssembly.m */,
 				4B8414A9179B0EA600916BF5 /* MiddleAgesAssembly.h */,
 				4B8414AA179B0EA600916BF5 /* MiddleAgesAssembly.m */,
+				4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */,
 				4B8414AB179B0EA600916BF5 /* TyphoonBlockComponentFactoryTests.m */,
 			);
 			path = Block;
@@ -425,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				4B8414AD179B0EA600916BF5 /* PropertyConfigurer */,
+				BA798AA0E8A0E473C85773E0 /* Patcher */,
 			);
 			path = Mutator;
 			sourceTree = "<group>";
@@ -573,6 +646,14 @@
 			path = SingletonsChain;
 			sourceTree = "<group>";
 		};
+		BA798AA0E8A0E473C85773E0 /* Patcher */ = {
+			isa = PBXGroup;
+			children = (
+				BA79816306D33CA0DD1DE118 /* TyphoonPatcherTests.m */,
+			);
+			path = Patcher;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -590,6 +671,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4B9685A917D275CA00E69723 /* PBXTargetDependency */,
 			);
 			name = "iOS Tests (Cocoapods)";
 			productName = "iOS Tests";
@@ -610,6 +692,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4B9685AB17D275CD00E69723 /* PBXTargetDependency */,
 			);
 			name = "OS X Tests (Cocoapods)";
 			productName = "OS X Tests";
@@ -630,6 +713,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4B9685AD17D275D000E69723 /* PBXTargetDependency */,
 			);
 			name = "iOS Tests (Static Library)";
 			productName = "iOS Tests";
@@ -643,6 +727,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
+				TargetAttributes = {
+					4B9685A117D26E8200E69723 = {
+						TestTargetID = 4B84146B179B0E3900916BF5;
+					};
+				};
 			};
 			buildConfigurationList = 4B841464179B0E1B00916BF5 /* Build configuration list for PBXProject "Tests" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -656,6 +745,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				4B9685A117D26E8200E69723 /* pod update */,
 				4B84146B179B0E3900916BF5 /* iOS Tests (Cocoapods) */,
 				4B841486179B0E5200916BF5 /* OS X Tests (Cocoapods) */,
 				4BC648BF17A20AD2007F0463 /* iOS Tests (Static Library) */,
@@ -752,6 +842,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		4B9685A717D26E8D00E69723 /* pod update */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "pod update";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "REPO_ROOT=\"${PROJECT_DIR}/..\"\n\"${REPO_ROOT}/Scripts/pod-update.sh\"";
 		};
 		4BC648C017A20AD2007F0463 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -870,7 +974,9 @@
 				4B84150F179B0EA600916BF5 /* ClassBDependsOnA.m in Sources */,
 				4B841511179B0EA600916BF5 /* ClassCDependsOnDAndE.m in Sources */,
 				4B841513179B0EA600916BF5 /* ClassDDependsOnC.m in Sources */,
+				4B06338B17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */,
 				4B841515179B0EA600916BF5 /* ClassEDependsOnC.m in Sources */,
+				4B0633A417D29402009CDBD6 /* InjectionAwareAssembly.m in Sources */,
 				4B841517179B0EA600916BF5 /* Sword.m in Sources */,
 				4B841519179B0EA600916BF5 /* SwordFactory.m in Sources */,
 				4B84151B179B0EA600916BF5 /* Knight.m in Sources */,
@@ -878,14 +984,17 @@
 				4B84152F179B0EA600916BF5 /* TyphoonPrimitiveTypeConverterTests.m in Sources */,
 				4B841531179B0EA600916BF5 /* TyphoonTypeConverterRegistryTests.m in Sources */,
 				4B841533179B0EA600916BF5 /* TyphoonTypeDescriptorTests.m in Sources */,
+				4B0633AA17D29402009CDBD6 /* TyphoonInjectionAwareTests.m in Sources */,
 				4B841535179B0EA600916BF5 /* TyphoonBundleResourceTests.m in Sources */,
 				4BE1AA4F17A5876E00FE2DA1 /* UnsatisfiableClassFDependsOnGInInitializer.m in Sources */,
 				4BE1AA5417A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m in Sources */,
+				4B0633A717D29402009CDBD6 /* InjectionAwareObject.m in Sources */,
 				4EB2190517B4F2C500B901C9 /* SingletonA.m in Sources */,
 				4EB2190817B4F2C500B901C9 /* SingletonB.m in Sources */,
 				4EB2191017B4F30D00B901C9 /* SingletonsChainAssembly.m in Sources */,
 				4E08794717B6762E004B86C9 /* NotSingletonA.m in Sources */,
-				46E2E7CA17D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m in Sources */,
+				BA79803EFC77C1B3302F2A2D /* TyphoonPatcherTests.m in Sources */,
+				46877CFA17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -915,7 +1024,9 @@
 				4B841510179B0EA600916BF5 /* ClassBDependsOnA.m in Sources */,
 				4B841512179B0EA600916BF5 /* ClassCDependsOnDAndE.m in Sources */,
 				4B841514179B0EA600916BF5 /* ClassDDependsOnC.m in Sources */,
+				4B06338C17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */,
 				4B841516179B0EA600916BF5 /* ClassEDependsOnC.m in Sources */,
+				4B0633A517D29402009CDBD6 /* InjectionAwareAssembly.m in Sources */,
 				4B841518179B0EA600916BF5 /* Sword.m in Sources */,
 				4B84151A179B0EA600916BF5 /* SwordFactory.m in Sources */,
 				4B84151C179B0EA600916BF5 /* Knight.m in Sources */,
@@ -923,14 +1034,17 @@
 				4B841530179B0EA600916BF5 /* TyphoonPrimitiveTypeConverterTests.m in Sources */,
 				4B841532179B0EA600916BF5 /* TyphoonTypeConverterRegistryTests.m in Sources */,
 				4B841534179B0EA600916BF5 /* TyphoonTypeDescriptorTests.m in Sources */,
+				4B0633AB17D29402009CDBD6 /* TyphoonInjectionAwareTests.m in Sources */,
 				4B841536179B0EA600916BF5 /* TyphoonBundleResourceTests.m in Sources */,
 				4BE1AA5017A5876E00FE2DA1 /* UnsatisfiableClassFDependsOnGInInitializer.m in Sources */,
 				4BE1AA5517A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m in Sources */,
+				4B0633A817D29402009CDBD6 /* InjectionAwareObject.m in Sources */,
 				4EB2190617B4F2C500B901C9 /* SingletonA.m in Sources */,
 				4EB2190917B4F2C500B901C9 /* SingletonB.m in Sources */,
 				4EB2191117B4F30D00B901C9 /* SingletonsChainAssembly.m in Sources */,
 				4E08794817B6762E004B86C9 /* NotSingletonA.m in Sources */,
-				46E2E7CB17D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m in Sources */,
+				BA7989308BE79C6CC6B97898 /* TyphoonPatcherTests.m in Sources */,
+				46877CFB17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -960,7 +1074,9 @@
 				4BC648D517A20AD2007F0463 /* ClassBDependsOnA.m in Sources */,
 				4BC648D617A20AD2007F0463 /* ClassCDependsOnDAndE.m in Sources */,
 				4BC648D717A20AD2007F0463 /* ClassDDependsOnC.m in Sources */,
+				4B06338D17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */,
 				4BC648D817A20AD2007F0463 /* ClassEDependsOnC.m in Sources */,
+				4B0633A617D29402009CDBD6 /* InjectionAwareAssembly.m in Sources */,
 				4BC648D917A20AD2007F0463 /* Sword.m in Sources */,
 				4BC648DA17A20AD2007F0463 /* SwordFactory.m in Sources */,
 				4BC648DB17A20AD2007F0463 /* Knight.m in Sources */,
@@ -968,18 +1084,39 @@
 				4BC648DD17A20AD2007F0463 /* TyphoonPrimitiveTypeConverterTests.m in Sources */,
 				4BC648DE17A20AD2007F0463 /* TyphoonTypeConverterRegistryTests.m in Sources */,
 				4BC648DF17A20AD2007F0463 /* TyphoonTypeDescriptorTests.m in Sources */,
+				4B0633AC17D29402009CDBD6 /* TyphoonInjectionAwareTests.m in Sources */,
 				4BC648E017A20AD2007F0463 /* TyphoonBundleResourceTests.m in Sources */,
 				4BE1AA5117A5876E00FE2DA1 /* UnsatisfiableClassFDependsOnGInInitializer.m in Sources */,
 				4BE1AA5617A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m in Sources */,
+				4B0633A917D29402009CDBD6 /* InjectionAwareObject.m in Sources */,
 				4EB2190717B4F2C500B901C9 /* SingletonA.m in Sources */,
 				4EB2190A17B4F2C500B901C9 /* SingletonB.m in Sources */,
 				4EB2191217B4F30D00B901C9 /* SingletonsChainAssembly.m in Sources */,
 				4E08794917B6762E004B86C9 /* NotSingletonA.m in Sources */,
-				46E2E7CC17D1FCDF007B5C6F /* TyphoonParameterInjectedAsCollectionTests.m in Sources */,
+				BA7983795CF47CB07A5810B0 /* TyphoonPatcherTests.m in Sources */,
+				46877CFC17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4B9685A917D275CA00E69723 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B9685A117D26E8200E69723 /* pod update */;
+			targetProxy = 4B9685A817D275CA00E69723 /* PBXContainerItemProxy */;
+		};
+		4B9685AB17D275CD00E69723 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B9685A117D26E8200E69723 /* pod update */;
+			targetProxy = 4B9685AA17D275CD00E69723 /* PBXContainerItemProxy */;
+		};
+		4B9685AD17D275D000E69723 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B9685A117D26E8200E69723 /* pod update */;
+			targetProxy = 4B9685AC17D275D000E69723 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4B841465179B0E1B00916BF5 /* Debug */ = {
@@ -1156,6 +1293,20 @@
 			};
 			name = Release;
 		};
+		4B9685A517D26E8300E69723 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4B9685A617D26E8300E69723 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		4BC648F117A20AD2007F0463 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B1C044F0F19E4B448A36BEFB /* Pods-ios.xcconfig */;
@@ -1206,6 +1357,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Tests/Pods\"/**";
 				VALID_ARCHS = "armv7 armv7s i386 x86_4";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1253,6 +1405,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Tests/Pods\"/**";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s i386 x86_4";
 				WRAPPER_EXTENSION = octest;
@@ -1285,6 +1438,15 @@
 			buildConfigurations = (
 				4B84149A179B0E5200916BF5 /* Debug */,
 				4B84149B179B0E5200916BF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B9685A417D26E8300E69723 /* Build configuration list for PBXAggregateTarget "pod update" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B9685A517D26E8300E69723 /* Debug */,
+				4B9685A617D26E8300E69723 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

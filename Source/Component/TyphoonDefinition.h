@@ -39,12 +39,12 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 @property(nonatomic, strong) TyphoonInitializer* initializer;
 @property(nonatomic) SEL beforePropertyInjection;
 @property(nonatomic) SEL afterPropertyInjection;
-@property(nonatomic, strong, readonly) NSSet* injectedProperties;
+@property(nonatomic, strong) NSSet* injectedProperties;
 @property(nonatomic) TyphoonScope scope;
 @property(nonatomic, strong) TyphoonDefinition* factory;
 
 /**
- * Say if the componant (scoped as a singleton) should be lazily instantiated.
+ * Say if the component (scoped as a singleton) should be lazily instantiated.
  */
 @property(nonatomic, assign, getter = isLazy) BOOL lazy;
 
