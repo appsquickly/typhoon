@@ -180,13 +180,13 @@ each commit. (If you'd like the script I will share it).
 
 . . . are <a href="http://www.typhoonframework.org/#services">here</a>.
 
-# Authors
+# Core Team
 
 * <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> - <a href="mailto:jasper@appsquick.ly?Subject=Typhoon">jasper@appsquick.ly</a>
+* <a href="https://github.com/rhgills">Robert Gilliam</a>
          
 ### With contributions from: 
 
-* <a href="https://github.com/rhgills">Robert Gilliam</a> : Loads of fixes and enhancements. Big thanks!
 * <a href="https://github.com/BrynCooke">Bryn Cooke</a> : Late injections & story board integration. 
 * <a href="http://www.linkedin.com/in/jeffreydroberts">Jeffrey Roberts</a>, Mobile Software Engineer at 
 <a href="http://www.riotgames.com/">Riot Games</a>, previous contributor to Swiz for ActionScript : Advice, feedback and testing. 
@@ -196,6 +196,8 @@ is not the same as heavy.
 * <a href="http://www.jetbrains.com/">Jetbrains</a>, maker of very cool software development tools : Assistance with AppCode integration. 
 * <a href="http://es.linkedin.com/in/josegonzalezgomez/">José González Gómez</a>, Mobile and cloud developer at OPEN input : Feedback; testing, support for property placeholders in initializers. 
 * ___Your name here!!!!!!!___ 
+
+(If you've sent a pull request and didn't get a mention. . . sorry! Please let us know and we'll correct it). 
 
 Thanks!!!
 
