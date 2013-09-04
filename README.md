@@ -183,7 +183,7 @@ each commit. (If you'd like the script I will share it).
 # Core Team
 
 * <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> - <a href="mailto:jasper@appsquick.ly?Subject=Typhoon">jasper@appsquick.ly</a>
-* <a href="https://github.com/rhgills">Robert Gilliam</a>
+* <a href="https://github.com/rhgills">Robert Gilliam</a> - <a href="mailto:robert@robertgilliam.org?Subject=Typhoon">robert@robertgilliam.org</a>
          
 ### With contributions from: 
 
