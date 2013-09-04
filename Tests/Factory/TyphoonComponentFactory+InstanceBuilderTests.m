@@ -15,7 +15,7 @@
 #import "CampaignQuest.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonPropertyInjectedAsCollection.h"
-
+#import "TyphoonParameterInjectedAsCollection.h"
 
 @interface ComponentDefinition_InstanceBuilderTests : SenTestCase
 @end
@@ -76,6 +76,29 @@
     Knight* knight = [_componentFactory componentForKey:@"knight"];
     assertThatLong(knight.damselsRescued, equalToLongLong(12));
 }
+
+- (void)test_injects_initializer_value_as_collection
+{
+    TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+    TyphoonInitializer
+    * knightInitializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithQuest:favoriteDamsels:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
+    [knightInitializer injectParameterNamed:@"quest" withReference:@"quest"];
+    [knightInitializer injectParameterNamed:@"favoriteDamsels" asCollection:^(TyphoonParameterInjectedAsCollection *asCollection) {
+        [asCollection addItemWithText:@"damsel1" requiredType:[NSString class]];
+        [asCollection addItemWithText:@"damsel2" requiredType:[NSString class]];
+    } requiredType:[NSArray class]];
+    
+    [knightDefinition setInitializer:knightInitializer];
+    
+    TyphoonDefinition* questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
+    [_componentFactory register:questDefinition];
+    
+    [_componentFactory register:knightDefinition];
+    
+    Knight* knight = [_componentFactory componentForKey:@"knight"];
+    assertThatInt([knight.favoriteDamsels count], equalToInt(2));
+}
+
 
 /* ====================================================================================================================================== */
 #pragma mark - Property injection

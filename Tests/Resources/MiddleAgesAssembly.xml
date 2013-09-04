@@ -44,7 +44,20 @@
         </property>
 
     </component>
+    
+    <component class="Knight" key="knithWithCollectionInConstructor">
+        <initializer selector="initWithQuest:favoriteDamsels:">
+            <argument parameterName="quest" ref="quest"/>
+            <argument parameterName="favoriteDamsels">
+                <collection requiredType="NSArray">
+                    <value requiredType="NSString">Mary</value>
+                    <value requiredType="NSString">Jane</value>
+                </collection>
+            </argument>
+        </initializer>
+    </component>
 
+    
 
     <component class="CampaignQuest" key="quest" scope="prototype" before-property-injection="questBeforePropertyInjection"
                after-property-injection="questAfterPropertyInjection">

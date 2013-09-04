@@ -123,6 +123,16 @@
 /* ====================================================================================================================================== */
 #pragma mark initializer injection
 
+- (void)test_injects_collection_in_initializer
+{
+    Knight* knight = [_componentFactory componentForKey:@"knithWithCollectionInConstructor"];
+    NSArray* favoriteDamsels = [knight favoriteDamsels];
+    assertThat(favoriteDamsels, notNilValue());
+    assertThat(favoriteDamsels, hasCountOf(2));
+    NSLog(@"Favorite damsels: %@", favoriteDamsels);
+}
+
+
 - (void)test_raises_exception_for_invalid_selector_name
 {
     TyphoonXmlComponentFactory* factory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"ExceptionTestAssembly.xml"];

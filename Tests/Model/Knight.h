@@ -33,6 +33,8 @@
 
 - (id)initWithQuest:(id <Quest>)quest damselsRescued:(NSUInteger)damselsRescued;
 
+- (id)initWithQuest:(id <Quest>)quest favoriteDamsels:(NSArray*)favoriteDamsels;
+
 - (NSString*)description;
 
 

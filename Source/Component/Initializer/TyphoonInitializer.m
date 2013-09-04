@@ -17,7 +17,7 @@
 #import "TyphoonParameterInjectedWithStringRepresentation.h"
 #import "TyphoonParameterInjectedWithObjectInstance.h"
 #import "TyphoonDefinition.h"
-
+#import "TyphoonParameterInjectedAsCollection.h"
 
 @implementation TyphoonInitializer
 
@@ -72,6 +72,11 @@
     [self injectParameterAtIndex:[self indexOfParameter:name] withValueAsText:text requiredTypeOrNil:classOrProtocol];
 }
 
+- (void)injectParameterNamed:(NSString *)name asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues requiredType:(id)requiredType
+{
+    [self injectParameterAtIndex:[self indexOfParameter:name] asCollection:collectionValues requiredType:requiredType];
+}
+
 - (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass
 {
     if (index != NSUIntegerMax && index < [_parameterNames count])
@@ -122,6 +127,11 @@
     [self injectParameterAtIndex:[_injectedParameters count] withObject:value];
 }
 
+- (void)injectWithCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues requiredType:(id)requiredType
+{
+    [self injectParameterAtIndex:[_injectedParameters count] asCollection:collectionValues requiredType:requiredType];
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Block assembly
 
@@ -130,6 +140,24 @@
     [self injectParameterAtIndex:index1 withReference:definition.key];
 }
 
+-(void)injectParameterAtIndex:(NSUInteger)index
+                 asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues
+                 requiredType:(id)requiredType {
+    
+    TyphoonParameterInjectedAsCollection *parameterInjectedAsCollection =
+    [[TyphoonParameterInjectedAsCollection alloc] initWithParameterIndex:index requiredType:requiredType];
+    
+    if (collectionValues)
+    {
+        __unsafe_unretained TyphoonParameterInjectedAsCollection* weakParameterInjectedAsCollection = parameterInjectedAsCollection;
+        collectionValues(weakParameterInjectedAsCollection);
+    }
+    
+    if (index != NSUIntegerMax && index < [_parameterNames count])
+    {
+        [_injectedParameters addObject:parameterInjectedAsCollection];
+    }
+}
 
 - (void)setSelector:(SEL)selector
 {

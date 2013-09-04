@@ -30,7 +30,6 @@
     if (self)
     {
         _name = name;
-        _values = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -38,21 +37,6 @@
 
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
-
-- (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType
-{
-    [_values addObject:[[TyphoonTypeConvertedCollectionValue alloc] initWithTextValue:text requiredType:requiredType]];
-}
-
-- (void)addItemWithComponentName:(NSString*)componentName
-{
-    [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:componentName]];
-}
-
-- (void)addItemWithDefinition:(TyphoonDefinition*)definition
-{
-    [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:definition.key]];
-}
 
 - (TyphoonCollectionType)resolveCollectionTypeWith:(id<TyphoonIntrospectiveNSObject>)instance;
 {
@@ -87,11 +71,6 @@
     [NSException raise:NSInvalidArgumentException format:@"Property named '%@' on '%@' is neither an NSSet nor NSArray.", _name,
                                                          NSStringFromClass(describedClass)];
     return nil;
-}
-
-- (NSArray*)values
-{
-    return [_values copy];
 }
 
 /* ====================================================================================================================================== */

@@ -19,6 +19,7 @@
 #import "TyphoonInitializer.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonPropertyInjectedAsCollection.h"
+#import "TyphoonParameterInjectedAsCollection.h"
 
 @implementation TyphoonRXMLElement (XmlComponentFactory)
 
@@ -202,6 +203,12 @@
 
     NSString* reference = [child attribute:@"ref"];
     NSString* value = [child attribute:@"value"];
+    TyphoonRXMLElement* collection = [child child:@"collection"];
+    
+    if (collection && (reference ||  value))
+    {
+        [NSException raise:NSInvalidArgumentException format:@"'ref' or 'value' cannot be used on collections."];
+    }
 
     if (reference)
     {
@@ -236,6 +243,51 @@
             [initializer injectParameterAtIndex:[index integerValue] withValueAsText:value requiredTypeOrNil:clazz];
         }
 
+    }
+    else if (collection) {
+        
+        NSString* classAsString = [collection attribute:@"requiredType"];
+        Class clazz;
+        if (classAsString)
+        {
+            clazz = NSClassFromString(classAsString);
+            if (clazz == nil)
+            {
+                [NSException raise:NSInvalidArgumentException format:@"Class '%@' could not be resolved.", classAsString];
+            }
+        }
+        else {
+            [NSException raise:NSInvalidArgumentException format:@"'requiredType' is missing for collection initializer argument."];
+        }
+        
+        void (^asCollectionBlock)(TyphoonParameterInjectedAsCollection *) = ^(TyphoonParameterInjectedAsCollection *parameterAsCollection) {
+            [collection iterate:@"*" usingBlock:^(TyphoonRXMLElement* child)
+             {
+                 if ([[child tag] isEqualToString:@"ref"])
+                 {
+                     [parameterAsCollection addItemWithComponentName:[child text]];
+                 }
+                 else if ([[child tag] isEqualToString:@"value"])
+                 {
+                     Class type = NSClassFromString([child attribute:@"requiredType"]);
+                     if (!type)
+                     {
+                         [NSException raise:NSInvalidArgumentException format:@"Type '%@' could not be resolved.",
+                          [child attribute:@"requiredType"]];
+                     }
+                     [parameterAsCollection addItemWithText:[child text] requiredType:type];
+                 }
+             }];
+        };
+        
+        if (name)
+        {
+            [initializer injectParameterNamed:name asCollection:asCollectionBlock requiredType:clazz];
+        }
+        else if (index)
+        {
+            [initializer injectParameterAtIndex:[index integerValue] asCollection:asCollectionBlock requiredType:clazz];
+        }
     }
 }
 

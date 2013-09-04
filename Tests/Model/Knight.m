@@ -34,6 +34,18 @@
     return self;
 }
 
+- (id)initWithQuest:(id <Quest>)quest favoriteDamsels:(NSArray*)favoriteDamsels;
+{
+    self = [super init];
+    if (self)
+    {
+        _quest = quest;
+        _favoriteDamsels = favoriteDamsels;
+    }
+    return self;
+}
+
+
 /* ========================================================== Interface Methods ========================================================= */
 - (void)setQuest:(CampaignQuest*)quest
 {
