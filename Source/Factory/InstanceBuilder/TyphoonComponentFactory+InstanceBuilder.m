@@ -226,11 +226,6 @@
     }
 }
 
-- (BOOL)propertyIsNotCircular:(id <TyphoonInjectedProperty>)property instance:(id <TyphoonIntrospectiveNSObject>)instance;
-{
-    return ![self propertyIsCircular:property onInstance:instance];
-}
-
 - (BOOL)propertyIsCircular:(id <TyphoonInjectedProperty>)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance;
 {
     return [[instance circularDependentProperties] objectForKey:property.name] != nil;
