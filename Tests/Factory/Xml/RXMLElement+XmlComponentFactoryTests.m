@@ -49,7 +49,7 @@
         }
     }];
 
-    assertThat(componentDefinitions, hasCountOf(9));
+    assertThat(componentDefinitions, hasCountOf(10));
 }
 
 - (void)test_asComponentDefinition_raises_exception_for_invalid_class_name
