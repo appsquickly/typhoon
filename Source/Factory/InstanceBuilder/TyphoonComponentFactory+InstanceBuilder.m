@@ -95,7 +95,12 @@
 
 - (BOOL)alreadyResolvingDefinition:(TyphoonDefinition *)definition
 {
-    return ([_currentlyResolvingReferences valueForKey:definition.key] != nil);
+    return [self alreadyResolvingKey:definition.key];
+}
+
+- (BOOL)alreadyResolvingKey:(NSString *)key
+{
+    return ([_currentlyResolvingReferences valueForKey:key] != nil);
 }
 
 /* ====================================================================================================================================== */
@@ -213,7 +218,7 @@
 - (void)evaluateCircularDependency:(NSString*)componentKey propertyName:(NSString*)propertyName
                           instance:(id <TyphoonIntrospectiveNSObject>)instance;
 {
-    if ([_currentlyResolvingReferences objectForKey:componentKey] != nil)
+    if ([self alreadyResolvingKey:componentKey])
     {
         NSDictionary* circularDependencies = [instance circularDependentProperties];
         [circularDependencies setValue:componentKey forKey:propertyName];
