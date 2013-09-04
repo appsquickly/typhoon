@@ -197,9 +197,9 @@ is not the same as heavy.
 * <a href="http://es.linkedin.com/in/josegonzalezgomez/">José González Gómez</a>, Mobile and cloud developer at OPEN input : Feedback; testing, support for property placeholders in initializers. 
 * ___Your name here!!!!!!!___ 
 
-(If you've sent a pull request and didn't get a mention. . . sorry! Please let us know and we'll correct it). 
+*(If you've sent a pull request and didn't get a mention. . . sorry! Please let us know and we'll correct it).*
 
-Thanks!!!
+****
 
 
 # LICENSE
