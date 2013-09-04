@@ -25,7 +25,8 @@
 
     <target name="bootstrap" depends="
         --make.dirs,
-        --clean"/>
+        --clean,
+        --stamp.build.failing"/>
 
     <target name="clean" depends="--clean"/>
 
@@ -51,7 +52,8 @@
    <target name="__shouldbeprivate__build" depends="
         --test.cocoapods,
         --test.generate.report,
-        --api.report"/>
+        --api.report,
+        --stamp.build.passing"/>
 
      <!-- Building from the command line when using schemes is tricky. Implicit dependencies between targets in different projects are not correctly handled when building with `xcodebuild`.
      We must manually build the 'libTyphoon-iOS.a' dependency of the test target which links against the static library before attempting to build that target. Do not attempt to 
@@ -72,6 +74,14 @@
         <mkdir dir="${temp.dir}/coverage-data"/>
         <mkdir dir="${reports.dir}"/>
         <mkdir dir="${reports.dir}/tests"/>
+    </target>
+
+    <target name="--stamp.build.failing">
+        <copy tofile="${reports.dir}/build-status.png" file="${basedir}/Scripts/build-failed.png"/>
+    </target>
+
+    <target name="--stamp.build.passing">
+        <copy tofile="${reports.dir}/build-status.png" file="${basedir}/Scripts/build-passed.png" overwrite="true"/>
     </target>
 
     <target name="--clean" unless="fast">
@@ -261,8 +271,11 @@
             git branch --set-upstream-to=origin/gh-pages gh-pages
             git pull
             rm -fr ./coverage
-            cp -fr ${reports.dir}/coverage/ ./coverage
+            cp -fr ${reports.dir}/build-status.png ./build-status.png
             git add ./coverage
+            rm -fr ./coverage
+            cp -fr ${reports.dir}/coverage/ ./coverage
+            git add ./build-status.png
             rm -fr ./api
             cp -fr ${reports.dir}/api ./api
             git add api
