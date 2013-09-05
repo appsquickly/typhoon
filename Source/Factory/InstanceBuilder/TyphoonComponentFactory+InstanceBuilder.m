@@ -47,7 +47,6 @@
 	[self markCurrentlyResolvingDefinition:definition withInstance:instance];
 
 	instance = [self initializeInstance:instance withDefinition:definition];
-
 	[self resolvePropertyDependenciesOn:instance definition:definition];
 	[self injectAssemblyOnInstanceIfTyphoonAware:instance];
 
