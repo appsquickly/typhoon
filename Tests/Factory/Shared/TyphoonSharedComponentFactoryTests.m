@@ -246,13 +246,11 @@
 {
 	PrototypeInitInjected *initializerInjected = [_circularDependenciesFactory componentForType:[PrototypeInitInjected class]];
 	PrototypePropertyInjected *propertyInjected = [_circularDependenciesFactory componentForType:[PrototypePropertyInjected class]];
-	// should be expected class, but not same instance (they are prototypes)
-	assertThat(initializerInjected.prototypePropertyInjected, is(instanceOf([PrototypePropertyInjected class])));
+	// should be expected class, but not same instance
+	assertThat(initializerInjected.prototypePropertyInjected, instanceOf([PrototypePropertyInjected class]));
 	assertThat(initializerInjected.prototypePropertyInjected, isNot(propertyInjected));
-	assertThat(propertyInjected.prototypeInitInjected, is(instanceOf([PrototypeInitInjected class])));
+	assertThat(propertyInjected.prototypeInitInjected, instanceOf([PrototypeInitInjected class]));
 	assertThat(propertyInjected.prototypeInitInjected, isNot(initializerInjected));
 }
-
-
 
 @end
