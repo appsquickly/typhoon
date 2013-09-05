@@ -168,6 +168,12 @@
 		4E08794717B6762E004B86C9 /* NotSingletonA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E08794617B6762E004B86C9 /* NotSingletonA.m */; };
 		4E08794817B6762E004B86C9 /* NotSingletonA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E08794617B6762E004B86C9 /* NotSingletonA.m */; };
 		4E08794917B6762E004B86C9 /* NotSingletonA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E08794617B6762E004B86C9 /* NotSingletonA.m */; };
+		4E47A45817D8E1C700F967CA /* PrototypeInitInjected.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E47A45717D8E1C700F967CA /* PrototypeInitInjected.m */; };
+		4E47A45917D8E1C700F967CA /* PrototypeInitInjected.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E47A45717D8E1C700F967CA /* PrototypeInitInjected.m */; };
+		4E47A45A17D8E1C700F967CA /* PrototypeInitInjected.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E47A45717D8E1C700F967CA /* PrototypeInitInjected.m */; };
+		4E47A45D17D8E1DC00F967CA /* PrototypePropertyInjected.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E47A45C17D8E1DC00F967CA /* PrototypePropertyInjected.m */; };
+		4E47A45E17D8E1DC00F967CA /* PrototypePropertyInjected.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E47A45C17D8E1DC00F967CA /* PrototypePropertyInjected.m */; };
+		4E47A45F17D8E1DC00F967CA /* PrototypePropertyInjected.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E47A45C17D8E1DC00F967CA /* PrototypePropertyInjected.m */; };
 		4EB2190517B4F2C500B901C9 /* SingletonA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB218FD17B4F2C500B901C9 /* SingletonA.m */; };
 		4EB2190617B4F2C500B901C9 /* SingletonA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB218FD17B4F2C500B901C9 /* SingletonA.m */; };
 		4EB2190717B4F2C500B901C9 /* SingletonA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB218FD17B4F2C500B901C9 /* SingletonA.m */; };
@@ -300,6 +306,10 @@
 		4BE1AA5317A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsatisfiableClassGDependsOnFInInitializer.m; sourceTree = "<group>"; };
 		4E08794517B6762E004B86C9 /* NotSingletonA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotSingletonA.h; sourceTree = "<group>"; };
 		4E08794617B6762E004B86C9 /* NotSingletonA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotSingletonA.m; sourceTree = "<group>"; };
+		4E47A45617D8E1C700F967CA /* PrototypeInitInjected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrototypeInitInjected.h; sourceTree = "<group>"; };
+		4E47A45717D8E1C700F967CA /* PrototypeInitInjected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrototypeInitInjected.m; sourceTree = "<group>"; };
+		4E47A45B17D8E1DC00F967CA /* PrototypePropertyInjected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrototypePropertyInjected.h; sourceTree = "<group>"; };
+		4E47A45C17D8E1DC00F967CA /* PrototypePropertyInjected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrototypePropertyInjected.m; sourceTree = "<group>"; };
 		4EB218FC17B4F2C500B901C9 /* SingletonA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonA.h; sourceTree = "<group>"; };
 		4EB218FD17B4F2C500B901C9 /* SingletonA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonA.m; sourceTree = "<group>"; };
 		4EB218FE17B4F2C500B901C9 /* SingletonB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonB.h; sourceTree = "<group>"; };
@@ -576,6 +586,10 @@
 				4BE1AA4E17A5876E00FE2DA1 /* UnsatisfiableClassFDependsOnGInInitializer.m */,
 				4BE1AA5217A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.h */,
 				4BE1AA5317A5885300FE2DA1 /* UnsatisfiableClassGDependsOnFInInitializer.m */,
+				4E47A45617D8E1C700F967CA /* PrototypeInitInjected.h */,
+				4E47A45717D8E1C700F967CA /* PrototypeInitInjected.m */,
+				4E47A45B17D8E1DC00F967CA /* PrototypePropertyInjected.h */,
+				4E47A45C17D8E1DC00F967CA /* PrototypePropertyInjected.m */,
 			);
 			path = CircularDependencies;
 			sourceTree = "<group>";
@@ -729,7 +743,7 @@
 				LastUpgradeCheck = 0460;
 				TargetAttributes = {
 					4B9685A117D26E8200E69723 = {
-						TestTargetID = 4B84146B179B0E3900916BF5 /* iOS Tests (Cocoapods) */;
+						TestTargetID = 4B84146B179B0E3900916BF5;
 					};
 				};
 			};
@@ -995,6 +1009,8 @@
 				4E08794717B6762E004B86C9 /* NotSingletonA.m in Sources */,
 				BA79803EFC77C1B3302F2A2D /* TyphoonPatcherTests.m in Sources */,
 				46877CFA17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */,
+				4E47A45817D8E1C700F967CA /* PrototypeInitInjected.m in Sources */,
+				4E47A45D17D8E1DC00F967CA /* PrototypePropertyInjected.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1045,6 +1061,8 @@
 				4E08794817B6762E004B86C9 /* NotSingletonA.m in Sources */,
 				BA7989308BE79C6CC6B97898 /* TyphoonPatcherTests.m in Sources */,
 				46877CFB17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */,
+				4E47A45917D8E1C700F967CA /* PrototypeInitInjected.m in Sources */,
+				4E47A45E17D8E1DC00F967CA /* PrototypePropertyInjected.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1095,6 +1113,8 @@
 				4E08794917B6762E004B86C9 /* NotSingletonA.m in Sources */,
 				BA7983795CF47CB07A5810B0 /* TyphoonPatcherTests.m in Sources */,
 				46877CFC17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */,
+				4E47A45A17D8E1C700F967CA /* PrototypeInitInjected.m in Sources */,
+				4E47A45F17D8E1DC00F967CA /* PrototypePropertyInjected.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

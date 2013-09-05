@@ -31,4 +31,7 @@
 //- (id)unsatisfiableClassFWithCircularDependencyInInitializer;
 //- (id)unsatisfiableClassGWithCircularDependencyInInitializer;
 
+- (id)prototypeInitInjected;
+- (id)prototypePropertyInjected;
+
 @end
