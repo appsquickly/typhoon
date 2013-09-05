@@ -91,7 +91,7 @@
     <target name="--test.cocoapods">
         <property name="tests.report" value="${reports.dir}/tests/test-results.txt"/>
         <exec executable="xcodebuild" failonerror="false" outputproperty="unit.tests.output">
-            <arg line="-workspace ${workspace} -scheme '${tests.ios.scheme.name}' test -destination OS=${module.sdk.version},name=iPad"/> <!-- TODO: move out of derived data -->
+            <arg line="-workspace ${workspace} -scheme '${tests.ios.scheme.name}' test -destination OS=${module.sdk.version},name=iPhone"/> <!-- TODO: move out of derived data -->
         </exec>
     </target>
     
