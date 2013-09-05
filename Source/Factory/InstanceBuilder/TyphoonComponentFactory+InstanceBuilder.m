@@ -74,7 +74,7 @@
 	[self markCurrentlyResolvingDefinition:definition withInstance:instance];
 
 	instance = [self initializerInjectionOn:instance withDefinition:definition];
-	[self propertyInjectionOn:instance definition:definition];
+	[self propertyInjectionOn:instance withDefinition:definition];
 	[self injectAssemblyOnInstanceIfTyphoonAware:instance];
 
 	[self markDoneResolvingDefinition:definition];
@@ -141,7 +141,7 @@
 
 /* ====================================================================================================================================== */
 #pragma mark - Property Injection
-- (void)propertyInjectionOn:(__autoreleasing id)instance definition:(TyphoonDefinition *)definition
+- (void)propertyInjectionOn:(__autoreleasing id)instance withDefinition:(TyphoonDefinition *)definition
 {
     [self injectPropertyDependenciesOn:instance withDefinition:definition];
     [self injectCircularDependenciesOn:instance];
