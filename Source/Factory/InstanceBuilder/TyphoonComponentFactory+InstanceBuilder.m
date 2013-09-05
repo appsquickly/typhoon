@@ -42,23 +42,26 @@
 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
-	id instance = [self allocateInstanceWithDefinition:definition];
+	__autoreleasing id <TyphoonIntrospectiveNSObject> instance;
 
-	[self markCurrentlyResolvingDefinition:definition withInstance:instance];
+	instance = [self allocateInstance:instance withDefinition:definition];
 
-	instance = [self initializeInstance:instance withDefinition:definition];
-	[self resolvePropertyDependenciesOn:instance definition:definition];
-	[self injectAssemblyOnInstanceIfTyphoonAware:instance];
-
-	[self markDoneResolvingDefinition:definition];
+	instance = [self injectInstance:instance withDefinition:definition];
 
 	return instance;
 }
 
-- (id)allocateInstanceWithDefinition:(TyphoonDefinition *)definition
+- (id)buildSingletonWithDefinition:(TyphoonDefinition*)definition
 {
-	__autoreleasing id <TyphoonIntrospectiveNSObject> instance;
+	if ([self alreadyResolvingDefinition:definition])
+	{
+		return [_currentlyResolvingReferences valueForKey:definition.key];
+	}
+	return [self buildInstanceWithDefinition:definition];
+}
 
+- (id)allocateInstance:(id)instance withDefinition:(TyphoonDefinition *)definition
+{
     if (definition.factoryReference)
     {
         instance = [self componentForKey:definition.factoryReference]; // clears currently resolving.
@@ -75,7 +78,20 @@
 	return instance;
 }
 
-- (id)initializeInstance:(id)instance withDefinition:(TyphoonDefinition *)definition
+- (id)injectInstance:(id)instance withDefinition:(TyphoonDefinition *)definition
+{
+	[self markCurrentlyResolvingDefinition:definition withInstance:instance];
+
+	instance = [self initializerInjectionOn:instance withDefinition:definition];
+	[self propertyInjectionOn:instance definition:definition];
+	[self injectAssemblyOnInstanceIfTyphoonAware:instance];
+
+	[self markDoneResolvingDefinition:definition];
+
+	return instance;
+}
+
+- (id)initializerInjectionOn:(id)instance withDefinition:(TyphoonDefinition *)definition
 {
 	if (definition.initializer && definition.initializer.isClassMethod == NO)
     {
@@ -101,26 +117,9 @@
     [instance setAssembly:self];
 }
 
-- (id)buildSingletonWithDefinition:(TyphoonDefinition*)definition
-{
-    if ([self alreadyResolvingDefinition:definition])
-    {
-        return [_currentlyResolvingReferences valueForKey:definition.key];
-    }
-    return [self buildInstanceWithDefinition:definition];
-}
-
 - (BOOL)alreadyResolvingDefinition:(TyphoonDefinition *)definition
 {
     return ([_currentlyResolvingReferences valueForKey:definition.key] != nil);
-}
-
-/* ====================================================================================================================================== */
-#pragma mark - Property Injection
-- (void)resolvePropertyDependenciesOn:(__autoreleasing id)instance definition:(TyphoonDefinition *)definition
-{
-    [self injectPropertyDependenciesOn:instance withDefinition:definition];
-    [self injectCircularDependenciesOn:instance];
 }
 
 - (void)markCurrentlyResolvingDefinition:(TyphoonDefinition *)definition withInstance:(__autoreleasing id)instance
@@ -128,6 +127,19 @@
     NSString *key = definition.key;
     [_currentlyResolvingReferences setValue:instance forKey:key];
     LogTrace(@"Building instance with definition: '%@' as part of definitions pending resolution: '%@'.", definition, _currentlyResolvingReferences);
+}
+
+- (void)markDoneResolvingDefinition:(TyphoonDefinition *)definition;
+{
+    [_currentlyResolvingReferences removeObjectForKey:definition.key];
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Property Injection
+- (void)propertyInjectionOn:(__autoreleasing id)instance definition:(TyphoonDefinition *)definition
+{
+    [self injectPropertyDependenciesOn:instance withDefinition:definition];
+    [self injectCircularDependenciesOn:instance];
 }
 
 - (void)injectPropertyDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
@@ -273,11 +285,6 @@
     {
         objc_msgSend(instance, definition.afterPropertyInjection);
     }
-}
-
-- (void)markDoneResolvingDefinition:(TyphoonDefinition *)definition;
-{
-    [_currentlyResolvingReferences removeObjectForKey:definition.key];
 }
 
 #pragma mark - End Property Injection
