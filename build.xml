@@ -139,7 +139,7 @@
             set -e # fail script if any commands fail
 
             cd ${temp.dir}
-            ocunit2junit ${tests.report}
+            ${scripts.dir}/ocunit2junit ${tests.report}
         </echo>
         <chmod perm="+x" file="${temp.dir}/convert-test-output.sh"/>
         <exec executable="${temp.dir}/convert-test-output.sh" failonerror="true" failifexecutionfails="true"/>

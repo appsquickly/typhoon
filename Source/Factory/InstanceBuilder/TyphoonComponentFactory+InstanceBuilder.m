@@ -119,7 +119,12 @@
 
 - (BOOL)alreadyResolvingDefinition:(TyphoonDefinition *)definition
 {
-    return ([_currentlyResolvingReferences valueForKey:definition.key] != nil);
+    return [self alreadyResolvingKey:definition.key];
+}
+
+- (BOOL)alreadyResolvingKey:(NSString *)key
+{
+    return ([_currentlyResolvingReferences valueForKey:key] != nil);
 }
 
 - (void)markCurrentlyResolvingDefinition:(TyphoonDefinition *)definition withInstance:(__autoreleasing id)instance
@@ -178,25 +183,44 @@
              typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor
 {
     NSInvocation* invocation = [self propertySetterInvocationFor:instance property:property];
+    [self configureInvocationArgument:invocation toInjectProperty:property onInstance:instance typeDescriptor:typeDescriptor];
+    [invocation invoke];
+}
 
+- (NSInvocation*)propertySetterInvocationFor:(id <TyphoonIntrospectiveNSObject>)instance property:(id <TyphoonInjectedProperty>)property
+{
+    SEL pSelector = [instance setterForPropertyWithName:property.name];
+    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*) instance methodSignatureForSelector:pSelector]];
+    [invocation setTarget:instance];
+    [invocation setSelector:pSelector];
+    return invocation;
+}
+
+- (void)configureInvocationArgument:(NSInvocation*)invocation toInjectProperty:(id <TyphoonInjectedProperty>)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor;
+{
     if (property.injectionType == TyphoonPropertyInjectionTypeByType)
     {
         TyphoonDefinition* definition = [self definitionForType:[typeDescriptor classOrProtocol]];
+        
         [self evaluateCircularDependency:definition.key propertyName:property.name instance:instance];
-        if ([[instance circularDependentProperties] objectForKey:property.name] == nil)
-        {
-            id reference = [self componentForKey:definition.key];
-            [invocation setArgument:&reference atIndex:2];
+        if ([self propertyIsCircular:property onInstance:instance]) {
+            return;
         }
+        
+        id reference = [self componentForKey:definition.key];
+        [invocation setArgument:&reference atIndex:2];
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeByReference)
     {
         TyphoonPropertyInjectedByReference* byReference = (TyphoonPropertyInjectedByReference*) property;
-        [self markByReferencePropertyAsCircularDependenceIfCurrentlyResolving:property onInstance:instance];
-        if ([self propertyIsNotCircular:property instance:instance])
-        {
-            [self configureInvocation:invocation toInjectByReferenceProperty:byReference];
+        [self evaluateCircularDependency:byReference.reference propertyName:property.name instance:instance];
+        
+        if ([self propertyIsCircular:property onInstance:instance]) {
+            return;
         }
+        
+        id reference = [self componentForKey:byReference.reference];
+        [invocation setArgument:&reference atIndex:2];
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeAsStringRepresentation)
     {
@@ -214,27 +238,12 @@
         id value = byInstance.objectInstance;
         [invocation setArgument:&value atIndex:2];
     }
-    [invocation invoke];
-}
-
-- (NSInvocation*)propertySetterInvocationFor:(id <TyphoonIntrospectiveNSObject>)instance property:(id <TyphoonInjectedProperty>)property
-{
-    SEL pSelector = [instance setterForPropertyWithName:property.name];
-    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*) instance methodSignatureForSelector:pSelector]];
-    [invocation setTarget:instance];
-    [invocation setSelector:pSelector];
-    return invocation;
-}
-
-- (void)markByReferencePropertyAsCircularDependenceIfCurrentlyResolving:(TyphoonPropertyInjectedByReference *)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance;
-{
-    [self evaluateCircularDependency:property.reference propertyName:property.name instance:instance];
 }
 
 - (void)evaluateCircularDependency:(NSString*)componentKey propertyName:(NSString*)propertyName
                           instance:(id <TyphoonIntrospectiveNSObject>)instance;
 {
-    if ([_currentlyResolvingReferences objectForKey:componentKey] != nil)
+    if ([self alreadyResolvingKey:componentKey])
     {
         NSDictionary* circularDependencies = [instance circularDependentProperties];
         [circularDependencies setValue:componentKey forKey:propertyName];
@@ -242,12 +251,12 @@
     }
 }
 
-- (BOOL)propertyIsNotCircular:(id <TyphoonInjectedProperty>)property instance:(id <TyphoonIntrospectiveNSObject>)instance;
+- (BOOL)propertyIsCircular:(id <TyphoonInjectedProperty>)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance;
 {
-    return [[instance circularDependentProperties] objectForKey:property.name] == nil;
+    return [[instance circularDependentProperties] objectForKey:property.name] != nil;
 }
 
-- (void)configureInvocation:(NSInvocation *)invocation toInjectByReferenceProperty:(TyphoonPropertyInjectedByReference *)byReference;
+- (void)configureInvocation:(NSInvocation*)invocation toInjectByReferenceProperty:(TyphoonPropertyInjectedByReference*)byReference;
 {
     id reference = [self componentForKey:byReference.reference];
     [invocation setArgument:&reference atIndex:2];
