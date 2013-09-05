@@ -15,6 +15,8 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonInitializer.h"
 
+#import "PrototypeInitInjected.h"
+#import "PrototypePropertyInjected.h"
 
 @implementation CircularDependenciesAssembly
 
@@ -77,5 +79,21 @@
 //        [initializer injectWithDefinition:[self unsatisfiableClassFWithCircularDependencyInInitializer]];
 //    }];
 //}
+
+
+- (id)prototypeInitInjected
+{
+	return [TyphoonDefinition withClass:[PrototypeInitInjected class] initialization:^(TyphoonInitializer *initializer) {
+		initializer.selector = @selector(initWithDependency:);
+		[initializer injectWithDefinition:[self prototypePropertyInjected]];
+	}];
+}
+
+- (id)prototypePropertyInjected
+{
+	return [TyphoonDefinition withClass:[PrototypePropertyInjected class] properties:^(TyphoonDefinition *definition) {
+		[definition injectProperty:@selector(prototypeInitInjected) withDefinition:[self prototypeInitInjected]];
+	}];
+}
 
 @end
