@@ -26,6 +26,9 @@
 #import "NotSingletonA.h"
 #import "CircularDependenciesAssembly.h"
 
+#import "PrototypeInitInjected.h"
+#import "PrototypePropertyInjected.h"
+
 @implementation TyphoonSharedComponentFactoryTests
 
 
@@ -237,6 +240,17 @@
 	assertThat(singletonA.dependencyOnB, is(singletonB));
 	assertThat(singletonB.dependencyOnNotSingletonA.dependencyOnA, is(singletonA));
 	assertThat(notSingletonA.dependencyOnA, is(singletonA));
+}
+
+- (void)test_initializer_injected_component_is_correctly_resolved_in_circular_dependency
+{
+	PrototypeInitInjected *initializerInjected = [_circularDependenciesFactory componentForType:[PrototypeInitInjected class]];
+	PrototypePropertyInjected *propertyInjected = [_circularDependenciesFactory componentForType:[PrototypePropertyInjected class]];
+	// should be expected class, but not same instance (they are prototypes)
+	assertThat(initializerInjected.prototypePropertyInjected, is(instanceOf([PrototypePropertyInjected class])));
+	assertThat(initializerInjected.prototypePropertyInjected, isNot(propertyInjected));
+	assertThat(propertyInjected.prototypeInitInjected, is(instanceOf([PrototypeInitInjected class])));
+	assertThat(propertyInjected.prototypeInitInjected, isNot(initializerInjected));
 }
 
 

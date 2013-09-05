@@ -24,5 +24,17 @@
         <property name="dependencyOnC" ref="classC"/>
     </component>
 
+
+	<component class="PrototypeInitInjected" key="prototypeInitInjected" scope="prototype">
+		<initializer selector="initWithDependency:">
+			<argument parameterName="dependency" ref="prototypePropertyInjected"/>
+		</initializer>
+	</component>
+
+	<component class="PrototypePropertyInjected" key="prototypePropertyInjected" scope="prototype">
+        <property name="prototypeInitInjected" ref="prototypeInitInjected"/>
+    </component>
+
+
 </assembly>
 
