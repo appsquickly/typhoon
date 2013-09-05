@@ -51,15 +51,6 @@
 	return instance;
 }
 
-- (id)buildSingletonWithDefinition:(TyphoonDefinition*)definition
-{
-	if ([self alreadyResolvingDefinition:definition])
-	{
-		return [_currentlyResolvingReferences valueForKey:definition.key];
-	}
-	return [self buildInstanceWithDefinition:definition];
-}
-
 - (id)allocateInstance:(id)instance withDefinition:(TyphoonDefinition *)definition
 {
     if (definition.factoryReference)
@@ -91,6 +82,13 @@
 	return instance;
 }
 
+- (void)markCurrentlyResolvingDefinition:(TyphoonDefinition *)definition withInstance:(__autoreleasing id)instance
+{
+    NSString *key = definition.key;
+    [_currentlyResolvingReferences setValue:instance forKey:key];
+    LogTrace(@"Building instance with definition: '%@' as part of definitions pending resolution: '%@'.", definition, _currentlyResolvingReferences);
+}
+
 - (id)initializerInjectionOn:(id)instance withDefinition:(TyphoonDefinition *)definition
 {
 	if (definition.initializer && definition.initializer.isClassMethod == NO)
@@ -117,6 +115,20 @@
     [instance setAssembly:self];
 }
 
+- (void)markDoneResolvingDefinition:(TyphoonDefinition *)definition;
+{
+    [_currentlyResolvingReferences removeObjectForKey:definition.key];
+}
+
+- (id)buildSingletonWithDefinition:(TyphoonDefinition*)definition
+{
+	if ([self alreadyResolvingDefinition:definition])
+	{
+		return [_currentlyResolvingReferences valueForKey:definition.key];
+	}
+	return [self buildInstanceWithDefinition:definition];
+}
+
 - (BOOL)alreadyResolvingDefinition:(TyphoonDefinition *)definition
 {
     return [self alreadyResolvingKey:definition.key];
@@ -125,18 +137,6 @@
 - (BOOL)alreadyResolvingKey:(NSString *)key
 {
     return ([_currentlyResolvingReferences valueForKey:key] != nil);
-}
-
-- (void)markCurrentlyResolvingDefinition:(TyphoonDefinition *)definition withInstance:(__autoreleasing id)instance
-{
-    NSString *key = definition.key;
-    [_currentlyResolvingReferences setValue:instance forKey:key];
-    LogTrace(@"Building instance with definition: '%@' as part of definitions pending resolution: '%@'.", definition, _currentlyResolvingReferences);
-}
-
-- (void)markDoneResolvingDefinition:(TyphoonDefinition *)definition;
-{
-    [_currentlyResolvingReferences removeObjectForKey:definition.key];
 }
 
 /* ====================================================================================================================================== */
