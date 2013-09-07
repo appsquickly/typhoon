@@ -22,6 +22,7 @@
     TyphoonComponentFactory* _exceptionTestFactory;
     TyphoonComponentFactory* _circularDependenciesFactory;
     TyphoonComponentFactory* _singletonsChainFactory;
+    TyphoonComponentFactory* _infrastructureComponentsFactory;
 }
 
 @end

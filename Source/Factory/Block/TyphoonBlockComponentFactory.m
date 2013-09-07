@@ -66,11 +66,8 @@ static NSMutableArray* swizzleRegistry;
     {
         [self applyBeforeAdviceToAssemblyMethods:assembly];
         NSArray* definitions = [self definitionsByPopulatingCache:assembly];
-        for (TyphoonDefinition* definition in definitions)
-        {
-            [self register:definition];
-        }
-    }
+        [self registerDefinitions:definitions];
+     }
     return self;
 }
 

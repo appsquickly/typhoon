@@ -170,6 +170,20 @@
 
 }
 
+#pragma mark - Infrastructure definitions
+
+- (void)test_infratracture_mutator_component_recognized
+{
+  NSArray *mutators = _infrastructureComponentsFactory.mutators;
+  assertThatInt([mutators count], equalToInt(1));
+}
+
+- (void)test_infratracture_componenents_filtered_out
+{
+  assertThatInt([[_infrastructureComponentsFactory registry] count], equalToInt(1));
+}
+
+
 /* ====================================================================================================================================== */
 #pragma mark - Circular dependencies.
 

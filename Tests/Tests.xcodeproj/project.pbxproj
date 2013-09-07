@@ -21,6 +21,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		4656F7AB17DB635700EDDC23 /* InfrastructureComponentsAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 4656F7AA17DB635700EDDC23 /* InfrastructureComponentsAssembly.m */; };
+		4656F7AC17DB635700EDDC23 /* InfrastructureComponentsAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 4656F7AA17DB635700EDDC23 /* InfrastructureComponentsAssembly.m */; };
+		4656F7AD17DB635700EDDC23 /* InfrastructureComponentsAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 4656F7AA17DB635700EDDC23 /* InfrastructureComponentsAssembly.m */; };
+		4656F7AF17DB6D5100EDDC23 /* InfratructureComponentsAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4656F7AE17DB6D5100EDDC23 /* InfratructureComponentsAssembly.xml */; };
+		4656F7B017DB6D5100EDDC23 /* InfratructureComponentsAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4656F7AE17DB6D5100EDDC23 /* InfratructureComponentsAssembly.xml */; };
+		4656F7B117DB6D5100EDDC23 /* InfratructureComponentsAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4656F7AE17DB6D5100EDDC23 /* InfratructureComponentsAssembly.xml */; };
 		46877CFA17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46877CF917D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m */; };
 		46877CFB17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46877CF917D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m */; };
 		46877CFC17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46877CF917D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m */; };
@@ -222,6 +228,9 @@
 		159D62E0E7314B4D9C0B9CC1 /* Pods-iOS Tests (Cocoapods).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests (Cocoapods).xcconfig"; path = "Pods/Pods-iOS Tests (Cocoapods).xcconfig"; sourceTree = SOURCE_ROOT; };
 		1AC491FA50E048988BFB5756 /* libPods-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		272E8645AA624C0897EA4CF6 /* Pods-osx.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-osx.xcconfig"; path = "Pods/Pods-osx.xcconfig"; sourceTree = SOURCE_ROOT; };
+		4656F7A917DB635700EDDC23 /* InfrastructureComponentsAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfrastructureComponentsAssembly.h; sourceTree = "<group>"; };
+		4656F7AA17DB635700EDDC23 /* InfrastructureComponentsAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfrastructureComponentsAssembly.m; sourceTree = "<group>"; };
+		4656F7AE17DB6D5100EDDC23 /* InfratructureComponentsAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InfratructureComponentsAssembly.xml; sourceTree = "<group>"; };
 		46877CF917D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonParameterInjectedAsCollectionTests.m; sourceTree = "<group>"; };
 		4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblySelectorAdviserTests.m; sourceTree = "<group>"; };
 		4B06339F17D29402009CDBD6 /* InjectionAwareAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InjectionAwareAssembly.h; sourceTree = "<group>"; };
@@ -499,6 +508,8 @@
 				4B8414AA179B0EA600916BF5 /* MiddleAgesAssembly.m */,
 				4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */,
 				4B8414AB179B0EA600916BF5 /* TyphoonBlockComponentFactoryTests.m */,
+				4656F7A917DB635700EDDC23 /* InfrastructureComponentsAssembly.h */,
+				4656F7AA17DB635700EDDC23 /* InfrastructureComponentsAssembly.m */,
 			);
 			path = Block;
 			sourceTree = "<group>";
@@ -615,6 +626,7 @@
 				4B8414DB179B0EA600916BF5 /* LazyInitCasesAssembly.xml */,
 				4B8414DC179B0EA600916BF5 /* MiddleAgesAssembly.xml */,
 				4B8414DD179B0EA600916BF5 /* PropertyPlaceholderAssembly.xml */,
+				4656F7AE17DB6D5100EDDC23 /* InfratructureComponentsAssembly.xml */,
 				4B8414DE179B0EA600916BF5 /* SomeProperties.properties */,
 			);
 			path = Resources;
@@ -743,7 +755,7 @@
 				LastUpgradeCheck = 0460;
 				TargetAttributes = {
 					4B9685A117D26E8200E69723 = {
-						TestTargetID = 4B84146B179B0E3900916BF5 /* iOS Tests (Cocoapods) */;
+						TestTargetID = 4B84146B179B0E3900916BF5;
 					};
 				};
 			};
@@ -780,6 +792,7 @@
 				4B841527179B0EA600916BF5 /* PropertyPlaceholderAssembly.xml in Resources */,
 				4B841529179B0EA600916BF5 /* SomeProperties.properties in Resources */,
 				4EB2191417B4F6EB00B901C9 /* SingletonsChainAssembly.xml in Resources */,
+				4656F7AF17DB6D5100EDDC23 /* InfratructureComponentsAssembly.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -795,6 +808,7 @@
 				4B841528179B0EA600916BF5 /* PropertyPlaceholderAssembly.xml in Resources */,
 				4B84152A179B0EA600916BF5 /* SomeProperties.properties in Resources */,
 				4EB2191517B4F6EB00B901C9 /* SingletonsChainAssembly.xml in Resources */,
+				4656F7B017DB6D5100EDDC23 /* InfratructureComponentsAssembly.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -810,6 +824,7 @@
 				4BC648EC17A20AD2007F0463 /* PropertyPlaceholderAssembly.xml in Resources */,
 				4BC648ED17A20AD2007F0463 /* SomeProperties.properties in Resources */,
 				4EB2191617B4F6EB00B901C9 /* SingletonsChainAssembly.xml in Resources */,
+				4656F7B117DB6D5100EDDC23 /* InfratructureComponentsAssembly.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1011,6 +1026,7 @@
 				46877CFA17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */,
 				4E47A45817D8E1C700F967CA /* PrototypeInitInjected.m in Sources */,
 				4E47A45D17D8E1DC00F967CA /* PrototypePropertyInjected.m in Sources */,
+				4656F7AB17DB635700EDDC23 /* InfrastructureComponentsAssembly.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1063,6 +1079,7 @@
 				46877CFB17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */,
 				4E47A45917D8E1C700F967CA /* PrototypeInitInjected.m in Sources */,
 				4E47A45E17D8E1DC00F967CA /* PrototypePropertyInjected.m in Sources */,
+				4656F7AC17DB635700EDDC23 /* InfrastructureComponentsAssembly.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1115,6 +1132,7 @@
 				46877CFC17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */,
 				4E47A45A17D8E1C700F967CA /* PrototypeInitInjected.m in Sources */,
 				4E47A45F17D8E1DC00F967CA /* PrototypePropertyInjected.m in Sources */,
+				4656F7AD17DB635700EDDC23 /* InfrastructureComponentsAssembly.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

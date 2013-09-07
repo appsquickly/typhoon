@@ -40,6 +40,11 @@
 @property (nonatomic, assign, getter = isLoaded) BOOL loaded;
 
 /**
+ * The attached mutators.
+ */
+@property (nonatomic, strong, readonly) NSArray *mutators;
+
+/**
 * Mutate the component definitions with the mutators and
 * build the not-lazy singletons.
 */
@@ -68,6 +73,11 @@
 * Registers a component into the factory. Components can be declared in any order, the container will work out how to resolve them.
 */
 - (void) register:(TyphoonDefinition*)definition;
+
+/**
+ * Registers a collection of components into the factory.
+ */
+- (void)registerDefinitions:(NSArray*)definitions;
 
 /**
 * Returns an an instance of the component matching the supplied class or protocol. For example:

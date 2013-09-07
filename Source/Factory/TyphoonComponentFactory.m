@@ -108,6 +108,16 @@ static TyphoonComponentFactory* defaultFactory;
     }
 }
 
+
+- (void)registerDefinitions:(NSArray *)definitions {
+  
+  NSArray *filteredDefintions = [self filterAndRegisterInfrastructureDefinitions:definitions];
+  for (TyphoonDefinition *definition in filteredDefintions) {
+    [self register:definition];
+  }
+  
+}
+
 - (void)register:(TyphoonDefinition*)definition
 {
     if ([definition.key length] == 0)
@@ -240,6 +250,29 @@ static TyphoonComponentFactory* defaultFactory;
 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
+
+- (BOOL)isInfrastructureDefinition:(TyphoonDefinition *)definition {
+  return [definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryMutator)];
+}
+
+- (void)registerInfrastructureDefinition:(TyphoonDefinition *)definition {
+  if ([definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryMutator)]) {
+    [self attachMutator:[self objectForDefinition:definition]];
+  }
+}
+
+- (NSArray *)filterAndRegisterInfrastructureDefinitions:(NSArray *)definitions {
+  NSMutableArray *filteredDefintions = [[NSMutableArray alloc] initWithArray:definitions];
+  
+  for (TyphoonDefinition *definition in definitions) {
+    if ([self isInfrastructureDefinition:definition]) {
+      [self registerInfrastructureDefinition:definition];
+      [filteredDefintions removeObject:definition];
+    }
+  }
+  
+  return filteredDefintions;
+}
 
 - (id)objectForDefinition:(TyphoonDefinition*)definition
 {

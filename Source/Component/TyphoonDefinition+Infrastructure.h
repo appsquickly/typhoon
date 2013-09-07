@@ -9,25 +9,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "TyphoonDefinition.h"
 
+@class TyphoonPropertyPlaceholderConfigurer;
+@protocol TyphoonResource;
 
-#import <Foundation/Foundation.h>
-#import "TyphoonRXMLElement.h"
+/**
+ Declares short-hand definition factory methods for infrastructure components.
+ */
+@interface TyphoonDefinition (Infrastructure)
 
-@class TyphoonDefinition;
-@protocol TyphoonInjectedProperty;
-@class TyphoonInitializer;
-@protocol TyphoonInjectedParameter;
-
-@interface TyphoonRXMLElement (XmlComponentFactory)
-
-- (BOOL)isComponent;
-
-- (TyphoonDefinition*)asComponentDefinition;
-
-- (id<TyphoonInjectedProperty>)asInjectedProperty;
-
-- (TyphoonInitializer*)asInitializer;
-
++ (TyphoonDefinition*)propertyPlaceholderWithResource:(id<TyphoonResource>)resource;
 
 @end

@@ -51,19 +51,23 @@
 
 - (void)parseComponentDefinitions
 {
+    NSMutableArray *definitions = [[NSMutableArray alloc] init];
+
     for (NSString* resourceName in _resourceNames)
     {
         NSString* xmlString = [[TyphoonBundleResource withName:resourceName] asString];
         TyphoonRXMLElement* element = [TyphoonRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
-
+        
         [element iterate:@"*" usingBlock:^(TyphoonRXMLElement* child)
         {
-            if ([[child tag] isEqualToString:@"component"])
+            if ([child isComponent])
             {
-                [self register:[child asComponentDefinition]];
+                [definitions addObject:[child asComponentDefinition]];
             }
         }];
     }
+  
+    [self registerDefinitions:definitions];
 }
 
 
