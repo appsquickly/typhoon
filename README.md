@@ -133,6 +133,8 @@ ensure that the class is in the required state before and after properties are s
 
 * Flexibility. Supports different approaches of dependency injection for different scenarios - native block-style, auto-wiring macros or Spring-style XML.
 
+* Excellent support for circular dependencies. 
+
 * Lean. It has a very low footprint, so is appropriate for CPU and memory constrained devices. 
 
 
