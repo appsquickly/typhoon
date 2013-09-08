@@ -160,7 +160,7 @@
     TyphoonXmlComponentFactory* factory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"PropertyPlaceholderAssembly.xml"];
     TyphoonPropertyPlaceholderConfigurer* configurer = [TyphoonPropertyPlaceholderConfigurer configurer];
     [configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
-    [factory attachMutator:configurer];
+    [factory attachPostProcessor:configurer];
 
     Knight* knight = [factory componentForKey:@"knight"];
     assertThatUnsignedLongLong(knight.damselsRescued, equalToUnsignedLongLong(12));
@@ -168,6 +168,13 @@
     CavalryMan* anotherKnight = [factory componentForKey:@"anotherKnight"];
     assertThatBool(anotherKnight.hasHorseWillTravel, equalToBool(NO));
 
+}
+
+#pragma mark - Infrastructure definitions
+
+- (void)test_post_processor_component_recognized
+{
+  assertThatInt([_infrastructureComponentsFactory.postProcessors count], equalToInt(1));
 }
 
 /* ====================================================================================================================================== */

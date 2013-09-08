@@ -303,6 +303,13 @@
         </xsd:attribute>
     </xsd:complexType>
 
+    
+    <!-- infrastructure -->
+    
+    <xsd:element name="property-placeholder">
+        <xsd:attribute name="location" type="xsd:string" />
+    </xsd:element>
+    
     <!-- simple internal types -->
     <xsd:simpleType name="defaultable-boolean">
         <xsd:restriction base="xsd:NMTOKEN">

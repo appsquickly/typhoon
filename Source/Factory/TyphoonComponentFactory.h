@@ -12,6 +12,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "TyphoonComponentFactoryPostProcessor.h"
 #import "TyphoonComponentFactoryMutator.h"
 @class TyphoonDefinition;
 
@@ -25,8 +26,9 @@
     NSMutableDictionary* _singletons;
 
     NSMutableDictionary* _currentlyResolvingReferences;
+    NSMutableArray* _postProcessors;
     NSMutableArray* _mutators;
-	BOOL _isLoading;
+    BOOL _isLoading;
 }
 
 /**
@@ -40,7 +42,12 @@
 @property (nonatomic, assign, getter = isLoaded) BOOL loaded;
 
 /**
-* Mutate the component definitions with the mutators and
+ * The attached factory post processors.
+ */
+@property (nonatomic, strong, readonly) NSArray *postProcessors;
+
+/**
+* Mutate the component definitions and
 * build the not-lazy singletons.
 */
 - (void)load;
@@ -88,7 +95,16 @@
 
 - (NSArray*)registry;
 
-- (void)attachMutator:(id<TyphoonComponentFactoryMutator>)mutator;
+/**
+ @deprecated replaced by -attachPostProcessor:
+ */
+- (void)attachMutator:(id<TyphoonComponentFactoryMutator>)mutator __attribute__((deprecated));
+
+/**
+ Attach a TyphoonComponentFactoryPostProcessor to this component factory.
+ @param postProcessor The post-processor to attach.
+ */
+- (void)attachPostProcessor:(id<TyphoonComponentFactoryPostProcessor>)postProcessor;
 
 /**
  * Injects the properties of an object

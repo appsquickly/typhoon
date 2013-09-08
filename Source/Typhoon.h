@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonDefinition.h"
+#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonInitializer.h"
 #import "TyphoonPropertyPlaceholderConfigurer.h"
 #import "TyphoonResource.h"
@@ -18,6 +19,7 @@
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonXmlComponentFactory.h"
 #import "TyphoonComponentFactoryMutator.h"
+#import "TyphoonComponentFactoryPostProcessor.h"
 #import "TyphoonRXMLElement+XmlComponentFactory.h"
 #import "TyphoonRXMLElement.h"
 #import "TyphoonTestUtils.h"

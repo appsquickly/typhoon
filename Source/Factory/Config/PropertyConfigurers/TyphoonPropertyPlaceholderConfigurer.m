@@ -16,7 +16,7 @@
 #import "TyphoonPropertyInjectedWithStringRepresentation.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "OCLogTemplate.h"
-
+#import "TyphoonComponentFactory.h"
 
 @implementation TyphoonPropertyPlaceholderConfigurer
 
@@ -102,20 +102,31 @@
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods
 
-- (NSArray*)newDefinitionsToRegister
-{
-    return nil;
-}
-
-- (void)mutateComponentDefinitionsIfRequired:(NSArray*)componentDefinitions
-{
-    for (TyphoonDefinition* definition in componentDefinitions)
+-(void)postProcessComponentFactory:(TyphoonComponentFactory *)factory {
+    
+    for (TyphoonDefinition* definition in [factory registry])
     {
         for (id <TyphoonComponentInjectedByValue> component in [definition componentsInjectedByValue])
         {
             [self mutateComponentInjectedByValue:component];
         }
     }
+}
+
+- (NSArray *)newDefinitionsToRegister
+{
+  return nil;
+}
+
+-(void)mutateComponentDefinitionsIfRequired:(NSArray *)componentDefinitions
+{
+  for (TyphoonDefinition* definition in componentDefinitions)
+  {
+    for (id <TyphoonComponentInjectedByValue> component in [definition componentsInjectedByValue])
+    {
+      [self mutateComponentInjectedByValue:component];
+    }
+  }
 }
 
 - (void)mutateComponentInjectedByValue:(id <TyphoonComponentInjectedByValue>)component;
