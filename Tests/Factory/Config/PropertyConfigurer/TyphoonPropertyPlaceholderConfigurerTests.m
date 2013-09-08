@@ -43,7 +43,7 @@
     [knightDefinition.initializer injectParameterAtIndex:1 withValueAsText:@"${damsels.rescued}" requiredTypeOrNil:nil];
     [factory register:knightDefinition];
     
-    [_configurer mutateComponentDefinitionsIfRequired:[factory registry]];
+    [_configurer postProcessComponentFactory:factory];
     
     Knight* knight = [factory componentForType:[Knight class]];
     assertThatUnsignedLongLong(knight.damselsRescued, equalToUnsignedLongLong(12));
@@ -57,7 +57,7 @@
     [knightDefinition injectProperty:@selector(damselsRescued) withValueAsText:@"${damsels.rescued}"];
     [factory register:knightDefinition];
 
-    [_configurer mutateComponentDefinitionsIfRequired:[factory registry]];
+    [_configurer postProcessComponentFactory:factory];
 
     Knight* knight = [factory componentForType:[Knight class]];
     assertThatUnsignedLongLong(knight.damselsRescued, equalToUnsignedLongLong(12));

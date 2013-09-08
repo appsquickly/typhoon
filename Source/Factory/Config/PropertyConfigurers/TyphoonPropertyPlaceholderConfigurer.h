@@ -11,12 +11,15 @@
 
 
 #import <Foundation/Foundation.h>
+#import "TyphoonComponentFactoryPostProcessor.h"
 #import "TyphoonComponentFactoryMutator.h"
 
 @protocol TyphoonResource;
 
-
-@interface TyphoonPropertyPlaceholderConfigurer : NSObject <TyphoonComponentFactoryMutator>
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+@interface TyphoonPropertyPlaceholderConfigurer : NSObject <TyphoonComponentFactoryPostProcessor, TyphoonComponentFactoryMutator>
+#pragma clang diagnostic pop
 {
     NSString* _prefix;
     NSString* _suffix;

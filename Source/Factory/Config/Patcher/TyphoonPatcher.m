@@ -15,7 +15,7 @@
 #import "TyphoonInitializer.h"
 #import "OCLogTemplate.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
-
+#import "TyphoonComponentFactory.h"
 
 @implementation TyphoonPatcher
 
@@ -49,7 +49,20 @@
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods
 
-- (NSArray*)newDefinitionsToRegister
+- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
+{
+    for (TyphoonDefinition *newDefinition in [self newDefinitionsToRegister])
+    {
+        [factory register:newDefinition];
+    }
+    
+    for (TyphoonDefinition* definition in [factory registry])
+    {
+        [self patchDefinitionIfNeeded:definition];
+    }
+}
+
+- (NSArray *)newDefinitionsToRegister
 {
     NSMutableArray* newDefinitions = [[NSMutableArray alloc] init];
     for (NSString* key in [_patches allKeys])
@@ -64,18 +77,23 @@
     return [newDefinitions copy];
 }
 
-- (void)mutateComponentDefinitionsIfRequired:(NSArray*)componentDefinitions
+- (void)mutateComponentDefinitionsIfRequired:(NSArray *)componentDefinitions
 {
-    for (TyphoonDefinition* definition in componentDefinitions)
+  for (TyphoonDefinition* definition in componentDefinitions)
+  {
+    [self patchDefinitionIfNeeded:definition];
+  }
+}
+
+- (void)patchDefinitionIfNeeded:(TyphoonDefinition*)definition
+{
+    id patchObject = [_patches objectForKey:definition.key];
+    if (patchObject)
     {
-        id patchObject = [_patches objectForKey:definition.key];
-        if (patchObject)
-        {
-            LogDebug(@"Patching component with key %@ with object %@", definition.key, patchObject);
-            [definition setFactoryReference:[self patchFactoryNameForKey:definition.key]];
-            [definition setInitializer:[[TyphoonInitializer alloc] initWithSelector:@selector(object)]];
-            [definition setInjectedProperties:nil];
-        }
+        LogDebug(@"Patching component with key %@ with object %@", definition.key, patchObject);
+        [definition setFactoryReference:[self patchFactoryNameForKey:definition.key]];
+        [definition setInitializer:[[TyphoonInitializer alloc] initWithSelector:@selector(object)]];
+        [definition setInjectedProperties:nil];
     }
 }
 

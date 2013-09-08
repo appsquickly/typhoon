@@ -21,6 +21,7 @@
 
 @interface TyphoonRXMLElement (XmlComponentFactory)
 
+- (BOOL)isComponent;
 
 - (TyphoonDefinition*)asComponentDefinition;
 

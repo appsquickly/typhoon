@@ -45,7 +45,7 @@
         return mockKnight;
     }];
 
-    [factory attachMutator:patcher];
+    [factory attachPostProcessor:patcher];
 
     Knight* knight = [factory componentForKey:@"knight"];
     LogDebug(@"Damsels: %@", [knight favoriteDamsels]);

@@ -20,33 +20,46 @@
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonPropertyInjectedAsCollection.h"
 #import "TyphoonParameterInjectedAsCollection.h"
+#import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonBundleResource.h"
 
 @implementation TyphoonRXMLElement (XmlComponentFactory)
 
+- (BOOL)isComponent {
+  return [[self tag] isEqualToString:@"component"] || [self isShorthandComponentTag];
+}
+
 - (TyphoonDefinition*)asComponentDefinition
 {
-    [self assertTagName:@"component"];
-    Class clazz = NSClassFromString([self attribute:@"class"]);
-    if (clazz == nil)
+    if ([self isShorthandComponentTag])
     {
-        [NSException raise:NSInvalidArgumentException format:@"Class '%@' can't be resolved.", [self attribute:@"class"]];
+      return [self definitionByEvaluatingShorthandComponentTag];
     }
-	
-    NSString* key = [self attribute:@"key"];
-    NSString* factory = [self attributeOrNilIfEmpty:@"factory-component"];
-	TyphoonScope scope = [self scopeForStringValue:[[self attribute:@"scope"] lowercaseString]];
-	BOOL isLazy = (scope == TyphoonScopeSingleton) && [self attributeAsBool:@"lazy-init"];
-    // Don't throw exception if a lazy init is set to a prototype.
-	// Even if the input is wrong, this won't set the definition
-	// in an unstable statement.
-	
-	TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key factoryComponent:factory];
-    [definition setBeforePropertyInjection:NSSelectorFromString([self attribute:@"before-property-injection"])];
-    [definition setAfterPropertyInjection:NSSelectorFromString([self attribute:@"after-property-injection"])];
-    [definition setLazy:isLazy];
-	[definition setScope:scope];
-    [self parseComponentDefinitionChildren:definition];
-    return definition;
+    else
+    {
+      [self assertTagName:@"component"];
+      Class clazz = NSClassFromString([self attribute:@"class"]);
+      if (clazz == nil)
+      {
+        [NSException raise:NSInvalidArgumentException format:@"Class '%@' can't be resolved.", [self attribute:@"class"]];
+      }
+      
+      NSString* key = [self attribute:@"key"];
+      NSString* factory = [self attributeOrNilIfEmpty:@"factory-component"];
+      TyphoonScope scope = [self scopeForStringValue:[[self attribute:@"scope"] lowercaseString]];
+      BOOL isLazy = (scope == TyphoonScopeSingleton) && [self attributeAsBool:@"lazy-init"];
+      // Don't throw exception if a lazy init is set to a prototype.
+      // Even if the input is wrong, this won't set the definition
+      // in an unstable statement.
+      
+      TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key factoryComponent:factory];
+      [definition setBeforePropertyInjection:NSSelectorFromString([self attribute:@"before-property-injection"])];
+      [definition setAfterPropertyInjection:NSSelectorFromString([self attribute:@"after-property-injection"])];
+      [definition setLazy:isLazy];
+      [definition setScope:scope];
+      [self parseComponentDefinitionChildren:definition];
+      return definition;
+    }
 }
 
 //TODO: Method too long, clean it up.
@@ -140,6 +153,25 @@
 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
+
+- (BOOL)isShorthandComponentTag {
+  return [[self tag] isEqualToString:@"property-placeholder"];
+}
+
+- (TyphoonDefinition*)definitionByEvaluatingShorthandComponentTag
+{
+  TyphoonDefinition *definition = nil;
+  
+  if ([[self tag] isEqualToString:@"property-placeholder"]) {
+    NSString *location = [self attribute:@"location"];
+    if (location == nil) {
+      [NSException raise:NSInvalidArgumentException format:@"%@ is missing 'location' attribute.", [self tag]];
+    }
+    definition = [TyphoonDefinition propertyPlaceholderWithResource:[TyphoonBundleResource withName:location]];
+  }
+  
+  return definition;
+}
 
 - (void)assertTagName:(NSString*)tagName
 {
