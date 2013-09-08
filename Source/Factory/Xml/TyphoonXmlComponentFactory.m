@@ -51,8 +51,6 @@
 
 - (void)parseComponentDefinitions
 {
-    NSMutableArray *definitions = [[NSMutableArray alloc] init];
-
     for (NSString* resourceName in _resourceNames)
     {
         NSString* xmlString = [[TyphoonBundleResource withName:resourceName] asString];
@@ -62,12 +60,10 @@
         {
             if ([child isComponent])
             {
-                [definitions addObject:[child asComponentDefinition]];
+              [self register:[child asComponentDefinition]];
             }
         }];
     }
-  
-    [self registerDefinitions:definitions];
 }
 
 

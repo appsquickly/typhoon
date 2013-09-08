@@ -47,7 +47,9 @@ static TyphoonComponentFactory* defaultFactory;
         _registry = [[NSMutableArray alloc] init];
         _singletons = [[NSMutableDictionary alloc] init];
         _currentlyResolvingReferences = [[NSMutableDictionary alloc] init];
+        _postProcessors = [[NSMutableArray alloc] init];
         _mutators = [[NSMutableArray alloc] init];
+      
     }
     return self;
 }
@@ -69,26 +71,8 @@ static TyphoonComponentFactory* defaultFactory;
         {
             // ensure that the method won't be call recursively.
             _isLoading = YES;
-
-            // First, we call the mutator on every registered definition.
-            [_mutators enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryMutator> mutator, NSUInteger idx, BOOL* stop)
-            {
-                for (TyphoonDefinition* definition in [mutator newDefinitionsToRegister])
-                {
-                    [self register:definition];
-                }
-                [mutator mutateComponentDefinitionsIfRequired:[self registry]];
-            }];
-
-            // Then, we instanciate the not-lazy singletons.
-            [_registry enumerateObjectsUsingBlock:^(id definition, NSUInteger idx, BOOL* stop)
-            {
-                if (([definition scope] == TyphoonScopeSingleton) && ![definition isLazy])
-                {
-                    [self singletonForDefinition:definition];
-                }
-
-            }];
+          
+            [self applyComponentFactoryLoadPostProcessing];
 
             _isLoading = NO;
             [self setLoaded:YES];
@@ -106,16 +90,6 @@ static TyphoonComponentFactory* defaultFactory;
             [self setLoaded:NO];
         }
     }
-}
-
-
-- (void)registerDefinitions:(NSArray *)definitions {
-  
-  NSArray *filteredDefintions = [self filterAndRegisterInfrastructureDefinitions:definitions];
-  for (TyphoonDefinition *definition in filteredDefintions) {
-    [self register:definition];
-  }
-  
 }
 
 - (void)register:(TyphoonDefinition*)definition
@@ -136,10 +110,17 @@ static TyphoonComponentFactory* defaultFactory;
             [definition injectProperty:NSSelectorFromString(autoWired)];
         }
     }
-
-    LogTrace(@"Registering: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
-    [_registry addObject:definition];
-
+    
+    if ([self infrastructureComponentProcessedFromDefinition:definition])
+    {
+      LogTrace(@"Registering Infrastructure component: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
+    }
+    else
+    {
+      LogTrace(@"Registering: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
+      [_registry addObject:definition];
+    }
+    
     // I would handle it via an exception but, in order to keep
     // the contract of the class, I have implemented another
     // strategy: since the not-lazy singletons have to be built once
@@ -147,15 +128,7 @@ static TyphoonComponentFactory* defaultFactory;
     // the register method if the factory is already loaded.
     if ([self isLoaded])
     {
-        [_mutators enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryMutator> mutator, NSUInteger idx, BOOL* stop)
-        {
-            [mutator mutateComponentDefinitionsIfRequired:@[definition]];
-        }];
-
-        if (([definition scope] == TyphoonScopeSingleton) && ![definition isLazy])
-        {
-            [self singletonForDefinition:definition];
-        }
+        [self applyComponentFactoryLoadPostProcessing];
     }
 }
 
@@ -218,10 +191,20 @@ static TyphoonComponentFactory* defaultFactory;
     return [_registry copy];
 }
 
-- (void)attachMutator:(id)mutator
+- (void)attachPostProcessor:(id<TyphoonComponentFactoryPostProcessor>)postProcessor
 {
+    LogTrace(@"Attaching post processor: %@", postProcessor);
+    [_postProcessors addObject:postProcessor];
+}
+
+- (void)attachMutator:(id<TyphoonComponentFactoryMutator>)mutator
+{
+  if ([mutator conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)]) {
+    [self attachPostProcessor:(id<TyphoonComponentFactoryPostProcessor>)mutator];
+  } else {
     LogTrace(@"Attaching mutator: %@", mutator);
     [_mutators addObject:mutator];
+  }
 }
 
 - (void)injectProperties:(id)instance
@@ -251,27 +234,60 @@ static TyphoonComponentFactory* defaultFactory;
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (BOOL)isInfrastructureDefinition:(TyphoonDefinition *)definition {
-  return [definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryMutator)];
+- (BOOL)infrastructureComponentProcessedFromDefinition:(TyphoonDefinition *)definition
+{
+    if ([definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)])
+    {
+        [self attachPostProcessor:[self objectForDefinition:definition]];
+        return YES;
+    }
+    return NO;
 }
 
-- (void)registerInfrastructureDefinition:(TyphoonDefinition *)definition {
-  if ([definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryMutator)]) {
-    [self attachMutator:[self objectForDefinition:definition]];
-  }
-}
-
-- (NSArray *)filterAndRegisterInfrastructureDefinitions:(NSArray *)definitions {
-  NSMutableArray *filteredDefintions = [[NSMutableArray alloc] initWithArray:definitions];
+- (NSArray *)filterInfrastructureComponentsFromDefinitions:(NSArray *)definitions
+{
+  NSMutableArray *processedDefinitions = [[NSMutableArray alloc] initWithArray:definitions];
   
   for (TyphoonDefinition *definition in definitions) {
-    if ([self isInfrastructureDefinition:definition]) {
-      [self registerInfrastructureDefinition:definition];
-      [filteredDefintions removeObject:definition];
+    if ([self infrastructureComponentProcessedFromDefinition:definition])
+    {
+      [processedDefinitions removeObject:definition];
     }
   }
+  return processedDefinitions;
+}
+
+- (void)applyComponentFactoryLoadPostProcessing {
   
-  return filteredDefintions;
+  // First, we call the mutator on every registered definition.
+  // To be removed once mutators are fully replaced by post-processors.
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+  [_mutators enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryMutator> mutator, NSUInteger idx, BOOL* stop)
+   {
+     for (TyphoonDefinition* definition in [mutator newDefinitionsToRegister])
+     {
+       [self register:definition];
+     }
+     [mutator mutateComponentDefinitionsIfRequired:[self registry]];
+   }];
+#pragma clang diagnostic pop
+  
+  // Apply the factory post processors.
+  [_postProcessors enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryPostProcessor> postProcessor, NSUInteger idx, BOOL* stop)
+   {
+     [postProcessor postProcessComponentFactory:self];
+   }];
+  
+  // Then, we instanciate the not-lazy singletons.
+  [_registry enumerateObjectsUsingBlock:^(id definition, NSUInteger idx, BOOL* stop)
+   {
+     if (([definition scope] == TyphoonScopeSingleton) && ![definition isLazy])
+     {
+       [self singletonForDefinition:definition];
+     }
+     
+   }];
 }
 
 - (id)objectForDefinition:(TyphoonDefinition*)definition

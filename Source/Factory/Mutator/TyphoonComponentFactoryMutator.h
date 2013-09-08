@@ -12,7 +12,11 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol TyphoonComponentFactoryMutator
+/**
+ @deprecated Replaced by TyphoonComponentFactoryPostProcessor
+ */
+__attribute__((deprecated))
+@protocol TyphoonComponentFactoryMutator <NSObject>
 
 - (NSArray*)newDefinitionsToRegister;
 

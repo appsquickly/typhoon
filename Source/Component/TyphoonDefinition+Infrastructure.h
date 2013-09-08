@@ -19,6 +19,11 @@
  */
 @interface TyphoonDefinition (Infrastructure)
 
+/**
+ Factory method for a TyphoonPropertyPlaceholderConfigurer.
+ @param resource The resource to load.
+ @return a definition.
+ */
 + (TyphoonDefinition*)propertyPlaceholderWithResource:(id<TyphoonResource>)resource;
 
 @end
