@@ -113,22 +113,6 @@
     }
 }
 
-- (NSArray *)newDefinitionsToRegister
-{
-  return nil;
-}
-
--(void)mutateComponentDefinitionsIfRequired:(NSArray *)componentDefinitions
-{
-  for (TyphoonDefinition* definition in componentDefinitions)
-  {
-    for (id <TyphoonComponentInjectedByValue> component in [definition componentsInjectedByValue])
-    {
-      [self mutateComponentInjectedByValue:component];
-    }
-  }
-}
-
 - (void)mutateComponentInjectedByValue:(id <TyphoonComponentInjectedByValue>)component;
 {
     if ([component.textValue hasPrefix:_prefix] && [component.textValue hasSuffix:_suffix])

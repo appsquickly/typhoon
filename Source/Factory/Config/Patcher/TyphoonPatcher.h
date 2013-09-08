@@ -12,7 +12,6 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryPostProcessor.h"
-#import "TyphoonComponentFactoryMutator.h"
 
 typedef id (^ObjectCreationBlock)();
 
@@ -24,10 +23,7 @@ typedef id (^ObjectCreationBlock)();
 *
 *
 */
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-@interface TyphoonPatcher : NSObject <TyphoonComponentFactoryPostProcessor, TyphoonComponentFactoryMutator>
-#pragma clang diagnostic pop
+@interface TyphoonPatcher : NSObject <TyphoonComponentFactoryPostProcessor>
 {
     NSMutableDictionary* _patches;
 }

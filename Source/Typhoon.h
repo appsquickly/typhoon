@@ -18,7 +18,6 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonXmlComponentFactory.h"
-#import "TyphoonComponentFactoryMutator.h"
 #import "TyphoonComponentFactoryPostProcessor.h"
 #import "TyphoonRXMLElement+XmlComponentFactory.h"
 #import "TyphoonRXMLElement.h"

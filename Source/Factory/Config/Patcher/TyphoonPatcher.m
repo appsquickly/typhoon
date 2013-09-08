@@ -77,14 +77,6 @@
     return [newDefinitions copy];
 }
 
-- (void)mutateComponentDefinitionsIfRequired:(NSArray *)componentDefinitions
-{
-  for (TyphoonDefinition* definition in componentDefinitions)
-  {
-    [self patchDefinitionIfNeeded:definition];
-  }
-}
-
 - (void)patchDefinitionIfNeeded:(TyphoonDefinition*)definition
 {
     id patchObject = [_patches objectForKey:definition.key];

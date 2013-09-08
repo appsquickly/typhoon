@@ -207,17 +207,6 @@ static NSString* const DEFAULT_QUEST = @"quest";
 /* ====================================================================================================================================== */
 #pragma mark - Infrastructure components
 
-- (void)test_mutator_to_post_processor_migration
-{
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-  [_componentFactory attachMutator:[[TyphoonPropertyPlaceholderConfigurer alloc] init]];
-  [_componentFactory attachMutator:[[TyphoonPatcher alloc] init]];
-#pragma clang diagnostic pop
-  
-  assertThatInt([[_componentFactory postProcessors] count], equalToInt(2));
-}
-
 - (void)test_post_processor_registration
 {
   [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorMock class]]];
@@ -297,19 +286,6 @@ static NSString* const DEFAULT_QUEST = @"quest";
 - (void)test_registery_isLoad {
 	[_componentFactory registry];
 	assertThatBool([_componentFactory isLoaded], is(@YES));
-}
-
-- (void)test_load_mutators {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-  id<TyphoonComponentFactoryMutator> mutator = mockProtocol(@protocol(TyphoonComponentFactoryMutator));
-	[_componentFactory attachMutator:mutator];
-#pragma clang diagnostic pop
-
-	[_componentFactory load];
-	[_componentFactory load]; // Should do nothing
-	[verifyCount(mutator, times(1)) mutateComponentDefinitionsIfRequired:[_componentFactory registry]];
-  [verifyCount(mutator, times(1)) newDefinitionsToRegister];  
 }
 
 - (void)test_load_post_processors {

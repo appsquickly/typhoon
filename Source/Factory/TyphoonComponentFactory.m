@@ -48,7 +48,6 @@ static TyphoonComponentFactory* defaultFactory;
         _singletons = [[NSMutableDictionary alloc] init];
         _currentlyResolvingReferences = [[NSMutableDictionary alloc] init];
         _postProcessors = [[NSMutableArray alloc] init];
-        _mutators = [[NSMutableArray alloc] init];
       
     }
     return self;
@@ -197,16 +196,6 @@ static TyphoonComponentFactory* defaultFactory;
     [_postProcessors addObject:postProcessor];
 }
 
-- (void)attachMutator:(id<TyphoonComponentFactoryMutator>)mutator
-{
-  if ([mutator conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)]) {
-    [self attachPostProcessor:(id<TyphoonComponentFactoryPostProcessor>)mutator];
-  } else {
-    LogTrace(@"Attaching mutator: %@", mutator);
-    [_mutators addObject:mutator];
-  }
-}
-
 - (void)injectProperties:(id)instance
 {
     Class class = [instance class];
@@ -245,20 +234,6 @@ static TyphoonComponentFactory* defaultFactory;
 }
 
 - (void)applyComponentFactoryLoadPostProcessing {
-  
-  // First, we call the mutator on every registered definition.
-  // To be removed once mutators are fully replaced by post-processors.
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-  [_mutators enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryMutator> mutator, NSUInteger idx, BOOL* stop)
-   {
-     for (TyphoonDefinition* definition in [mutator newDefinitionsToRegister])
-     {
-       [self register:definition];
-     }
-     [mutator mutateComponentDefinitionsIfRequired:[self registry]];
-   }];
-#pragma clang diagnostic pop
   
   // Apply the factory post processors.
   [_postProcessors enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryPostProcessor> postProcessor, NSUInteger idx, BOOL* stop)

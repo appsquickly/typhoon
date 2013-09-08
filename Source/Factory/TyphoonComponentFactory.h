@@ -13,7 +13,6 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryPostProcessor.h"
-#import "TyphoonComponentFactoryMutator.h"
 @class TyphoonDefinition;
 
 /**
@@ -27,7 +26,6 @@
 
     NSMutableDictionary* _currentlyResolvingReferences;
     NSMutableArray* _postProcessors;
-    NSMutableArray* _mutators;
     BOOL _isLoading;
 }
 
@@ -94,11 +92,6 @@
 - (id)componentForKey:(NSString*)key;
 
 - (NSArray*)registry;
-
-/**
- @deprecated replaced by -attachPostProcessor:
- */
-- (void)attachMutator:(id<TyphoonComponentFactoryMutator>)mutator __attribute__((deprecated));
 
 /**
  Attach a TyphoonComponentFactoryPostProcessor to this component factory.
