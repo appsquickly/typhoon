@@ -18,7 +18,8 @@
 #import "Champion.h"
 #import "AutoWiringKnight.h"
 #import "Harlot.h"
-
+#import "TyphoonComponentFactoryPostProcessorMock.h"
+#import "TyphoonPatcher.h"
 
 static NSString* const DEFAULT_QUEST = @"quest";
 
@@ -204,6 +205,43 @@ static NSString* const DEFAULT_QUEST = @"quest";
 }
 
 /* ====================================================================================================================================== */
+#pragma mark - Infrastructure components
+
+- (void)test_mutator_to_post_processor_migration
+{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+  [_componentFactory attachMutator:[[TyphoonPropertyPlaceholderConfigurer alloc] init]];
+  [_componentFactory attachMutator:[[TyphoonPatcher alloc] init]];
+#pragma clang diagnostic pop
+  
+  assertThatInt([[_componentFactory postProcessors] count], equalToInt(2));
+}
+
+- (void)test_post_processor_registration
+{
+  [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorMock class]]];
+   assertThatInt([[_componentFactory registry] count], equalToInt(0));
+   assertThatInt([[_componentFactory postProcessors] count], equalToInt(1));
+}
+
+- (void)test_post_processors_applied
+{
+  [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorMock class]]];
+  [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorMock class]]];
+  [_componentFactory register:[TyphoonDefinition withClass:[Knight class]]];
+  
+  [_componentFactory load];
+
+  assertThatInt([[_componentFactory postProcessors] count], equalToInt(2));
+  for (TyphoonComponentFactoryPostProcessorMock *mock in _componentFactory.postProcessors) {
+    assertThatBool(mock.postProcessingCalled, equalToBool(YES));
+  }
+  
+}
+
+
+/* ====================================================================================================================================== */
 #pragma mark - Inject properties
 
 - (void)test_injectProperties
@@ -262,12 +300,26 @@ static NSString* const DEFAULT_QUEST = @"quest";
 }
 
 - (void)test_load_mutators {
-	id<TyphoonComponentFactoryMutator> mutator = mockProtocol(@protocol(TyphoonComponentFactoryMutator));
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+  id<TyphoonComponentFactoryMutator> mutator = mockProtocol(@protocol(TyphoonComponentFactoryMutator));
 	[_componentFactory attachMutator:mutator];
+#pragma clang diagnostic pop
+
 	[_componentFactory load];
 	[_componentFactory load]; // Should do nothing
 	[verifyCount(mutator, times(1)) mutateComponentDefinitionsIfRequired:[_componentFactory registry]];
+  [verifyCount(mutator, times(1)) newDefinitionsToRegister];  
 }
+
+- (void)test_load_post_processors {
+	id<TyphoonComponentFactoryPostProcessor> postProcessor = mockProtocol(@protocol(TyphoonComponentFactoryPostProcessor));
+	[_componentFactory attachPostProcessor:postProcessor];
+	[_componentFactory load];
+	[_componentFactory load]; // Should do nothing
+	[verifyCount(postProcessor, times(1)) postProcessComponentFactory:_componentFactory];
+}
+
 
 - (void)test_load_singleton {
 	[_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition *definition) {

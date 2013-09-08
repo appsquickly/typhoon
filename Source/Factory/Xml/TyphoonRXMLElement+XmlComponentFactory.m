@@ -26,14 +26,14 @@
 @implementation TyphoonRXMLElement (XmlComponentFactory)
 
 - (BOOL)isComponent {
-  return [[self tag] isEqualToString:@"component"] || [self isInfrastructureComponent];
+  return [[self tag] isEqualToString:@"component"] || [self isShorthandComponentTag];
 }
 
 - (TyphoonDefinition*)asComponentDefinition
 {
-    if ([self isInfrastructureComponent])
+    if ([self isShorthandComponentTag])
     {
-      return [self asInfrastructureDefinition];
+      return [self definitionByEvaluatingShorthandComponentTag];
     }
     else
     {
@@ -154,11 +154,11 @@
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (BOOL)isInfrastructureComponent {
+- (BOOL)isShorthandComponentTag {
   return [[self tag] isEqualToString:@"property-placeholder"];
 }
 
-- (TyphoonDefinition*)asInfrastructureDefinition
+- (TyphoonDefinition*)definitionByEvaluatingShorthandComponentTag
 {
   TyphoonDefinition *definition = nil;
   

@@ -160,7 +160,7 @@
     TyphoonXmlComponentFactory* factory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"PropertyPlaceholderAssembly.xml"];
     TyphoonPropertyPlaceholderConfigurer* configurer = [TyphoonPropertyPlaceholderConfigurer configurer];
     [configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
-    [factory attachMutator:configurer];
+    [factory attachPostProcessor:configurer];
 
     Knight* knight = [factory componentForKey:@"knight"];
     assertThatUnsignedLongLong(knight.damselsRescued, equalToUnsignedLongLong(12));
@@ -172,17 +172,10 @@
 
 #pragma mark - Infrastructure definitions
 
-- (void)test_infratracture_mutator_component_recognized
+- (void)test_post_processor_component_recognized
 {
-  NSArray *mutators = _infrastructureComponentsFactory.mutators;
-  assertThatInt([mutators count], equalToInt(1));
+  assertThatInt([_infrastructureComponentsFactory.postProcessors count], equalToInt(1));
 }
-
-- (void)test_infratracture_componenents_filtered_out
-{
-  assertThatInt([[_infrastructureComponentsFactory registry] count], equalToInt(1));
-}
-
 
 /* ====================================================================================================================================== */
 #pragma mark - Circular dependencies.

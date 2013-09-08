@@ -17,12 +17,6 @@
 
 @implementation TyphoonDefinition (Infrastructure)
 
-+ (NSString *)generateInfrastructureComponentKey {
-    CFUUIDRef uuid = CFUUIDCreate(NULL);
-    NSString *UUID = CFBridgingRelease(CFUUIDCreateString(NULL, uuid));
-    return UUID;
-}
-
 + (TyphoonDefinition *)propertyPlaceholderWithResource:(id<TyphoonResource>)resource {
   
     TyphoonDefinition *definition = [self withClass:[TyphoonPropertyPlaceholderConfigurer class] initialization:^(TyphoonInitializer *initializer) {
@@ -31,7 +25,7 @@
         [initializer injectWithObject:resource];
         
     }];
-    definition.key = [self generateInfrastructureComponentKey];
+    definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), [resource description]];
     return definition;
 }
 
