@@ -19,18 +19,17 @@
 
 + (BOOL)isAlphaOrSpaces:(NSString*)candidate;
 
-
 + (BOOL)isAlphanumeric:(NSString*)candidate;
 
 + (BOOL)isAlphanumericOrDash:(NSString*)candidate;
 
-
 + (BOOL)isMemberOfCharacterSet:(NSString*)string characterSet:(NSMutableCharacterSet*)characterSet;
+
++ (BOOL)isEmpty:(NSString*)candidate;
 
 + (BOOL)isNotEmpty:(NSString*)candidate;
 
 + (BOOL)isEmailAddress:(NSString*)candidate;
-
 
 + (BOOL)hasMinimumLength:(NSString*)candidate length:(int)length;
 
