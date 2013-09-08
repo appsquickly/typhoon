@@ -192,6 +192,7 @@ static TyphoonComponentFactory* defaultFactory;
 }
 
 - (void)attachPostProcessor:(id<TyphoonComponentFactoryPostProcessor>)postProcessor
+<<<<<<< HEAD
 {
     LogTrace(@"Attaching post processor: %@", postProcessor);
     [_postProcessors addObject:postProcessor];
@@ -199,6 +200,15 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (void)attachMutator:(id<TyphoonComponentFactoryMutator>)mutator
 {
+=======
+{
+    LogTrace(@"Attaching post processor: %@", postProcessor);
+    [_postProcessors addObject:postProcessor];
+}
+
+- (void)attachMutator:(id<TyphoonComponentFactoryMutator>)mutator
+{
+>>>>>>> 1b54d8df50f48c0af0d42e40e511cd0176be6da9
   if ([mutator conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)]) {
     [self attachPostProcessor:(id<TyphoonComponentFactoryPostProcessor>)mutator];
   } else {
