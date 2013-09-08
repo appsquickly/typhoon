@@ -46,23 +46,23 @@
     return ([string rangeOfCharacterFromSet:[characterSet invertedSet]].location != NSNotFound) ? NO : YES;
 }
 
-+ (BOOL)isNotEmpty:(NSString*)candidate
++ (BOOL)isEmpty:(NSString*)candidate
 {
     if ([candidate length] == 0)
     {
-        return NO;
+        return YES;
     }
 
     if (![[candidate stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length])
     {
-        return NO;
+        return YES;
     }
-    return YES;
+    return NO;
 }
 
-+ (BOOL)isEmpty:(NSString*)candidate
++ (BOOL)isNotEmpty:(NSString*)candidate
 {
-    return ![self isNotEmpty:candidate];
+    return ![self isEmpty:candidate];
 }
 
 + (BOOL)isEmailAddress:(NSString*)candidate
