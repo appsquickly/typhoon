@@ -1,0 +1,37 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
+//  All Rights Reserved.
+//
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
+#import <Foundation/Foundation.h>
+
+
+@interface TyphoonStringUtils : NSObject
+
++ (BOOL)isAlpha:(NSString*)candidate;
+
++ (BOOL)isAlphaOrSpaces:(NSString*)candidate;
+
+
++ (BOOL)isAlphanumeric:(NSString*)candidate;
+
++ (BOOL)isAlphanumericOrDash:(NSString*)candidate;
+
+
++ (BOOL)isMemberOfCharacterSet:(NSString*)string characterSet:(NSMutableCharacterSet*)characterSet;
+
++ (BOOL)isNotEmpty:(NSString*)candidate;
+
++ (BOOL)isEmailAddress:(NSString*)candidate;
+
+
++ (BOOL)hasMinimumLength:(NSString*)candidate length:(int)length;
+
+@end
