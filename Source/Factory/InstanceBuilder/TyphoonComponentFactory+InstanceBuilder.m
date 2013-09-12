@@ -34,6 +34,7 @@
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
 #import "TyphoonInjectionAware.h"
 #import "TyphoonParameterInjectedAsCollection.h"
+#import "TyphoonInstanceRegister.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
@@ -85,7 +86,7 @@
 - (void)markCurrentlyResolvingDefinition:(TyphoonDefinition *)definition withInstance:(__autoreleasing id)instance
 {
     NSString *key = definition.key;
-    [_currentlyResolvingReferences setValue:instance forKey:key];
+	[_currentlyResolvingReferences stashInstance:instance forKey:key];
     LogTrace(@"Building instance with definition: '%@' as part of definitions pending resolution: '%@'.", definition, _currentlyResolvingReferences);
 }
 
@@ -117,14 +118,14 @@
 
 - (void)markDoneResolvingDefinition:(TyphoonDefinition *)definition;
 {
-    [_currentlyResolvingReferences removeObjectForKey:definition.key];
+	[_currentlyResolvingReferences unstashInstanceForKey:definition.key];
 }
 
 - (id)buildSingletonWithDefinition:(TyphoonDefinition*)definition
 {
 	if ([self alreadyResolvingDefinition:definition])
 	{
-		return [_currentlyResolvingReferences valueForKey:definition.key];
+		return [_currentlyResolvingReferences peekInstanceForKey:definition.key];
 	}
 	return [self buildInstanceWithDefinition:definition];
 }
@@ -136,7 +137,7 @@
 
 - (BOOL)alreadyResolvingKey:(NSString *)key
 {
-    return ([_currentlyResolvingReferences valueForKey:key] != nil);
+	return [_currentlyResolvingReferences hasInstanceForKey:key];
 }
 
 /* ====================================================================================================================================== */
@@ -276,7 +277,7 @@
             [invocation setTarget:instance];
             [invocation setSelector:pSelector];
             NSString* componentKey = [circularDependentProperties objectForKey:propertyName];
-            id reference = [_currentlyResolvingReferences objectForKey:componentKey];
+            id reference = [_currentlyResolvingReferences peekInstanceForKey:componentKey];
             [invocation setArgument:&reference atIndex:2];
             [invocation invoke];
         }
