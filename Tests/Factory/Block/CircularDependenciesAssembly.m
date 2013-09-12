@@ -18,6 +18,11 @@
 #import "PrototypeInitInjected.h"
 #import "PrototypePropertyInjected.h"
 
+#import "CROSingletonA.h"
+#import "CROSingletonB.h"
+#import "CROPrototypeA.h"
+#import "CROPrototypeB.h"
+
 @implementation CircularDependenciesAssembly
 
 
@@ -93,6 +98,41 @@
 {
 	return [TyphoonDefinition withClass:[PrototypePropertyInjected class] properties:^(TyphoonDefinition *definition) {
 		[definition injectProperty:@selector(prototypeInitInjected) withDefinition:[self prototypeInitInjected]];
+	}];
+}
+
+// Currently Resolving Overwrite
+
+- (id)croSingletonA
+{
+	return [TyphoonDefinition withClass:[CROSingletonA class] properties:^(TyphoonDefinition *definition) {
+		[definition injectProperty:@selector(prototypeB) withDefinition:[self croPrototypeB]];
+		[definition injectProperty:@selector(prototypeA) withDefinition:[self croPrototypeA]];
+		[definition setScope:TyphoonScopeSingleton];
+	}];
+}
+
+- (id)croSingletonB
+{
+	return [TyphoonDefinition withClass:[CROSingletonB class] initialization:^(TyphoonInitializer *initializer) {
+		initializer.selector = @selector(initWithPrototypeB:);
+		[initializer injectWithDefinition:[self croPrototypeB]];
+	}];
+}
+
+- (id)croPrototypeA
+{
+	return [TyphoonDefinition withClass:[CROPrototypeA class] initialization:^(TyphoonInitializer *initializer) {
+		initializer.selector = @selector(initWithCROPrototypeB:);
+		[initializer injectWithDefinition:[self croPrototypeB]];
+	}];
+}
+
+- (id)croPrototypeB
+{
+	return [TyphoonDefinition withClass:[CROPrototypeB class] initialization:^(TyphoonInitializer *initializer) {
+		initializer.selector = @selector(initWithCROSingletonA:);
+		[initializer injectWithDefinition:[self croSingletonA]];
 	}];
 }
 
