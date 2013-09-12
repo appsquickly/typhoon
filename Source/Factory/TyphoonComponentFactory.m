@@ -15,6 +15,7 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
+#import "TyphoonKeyedStackInstanceRegister.h"
 #import "OCLogTemplate.h"
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
@@ -46,7 +47,7 @@ static TyphoonComponentFactory* defaultFactory;
     {
         _registry = [[NSMutableArray alloc] init];
         _singletons = [[NSMutableDictionary alloc] init];
-        _currentlyResolvingReferences = [[NSMutableDictionary alloc] init];
+        _currentlyResolvingReferences = [TyphoonKeyedStackInstanceRegister instanceRegister];
         _postProcessors = [[NSMutableArray alloc] init];
       
     }
