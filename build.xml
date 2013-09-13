@@ -128,7 +128,7 @@
         <loadfile srcfile="${tests.report}" property="tests.failed">
             <filterchain>
                 <filterreader classname="org.apache.tools.ant.filters.LineContains">
-                    <param type="contains" value="FAILURE"/>
+                    <param type="contains" value="** TEST FAILED **"/>
                 </filterreader>
             </filterchain>
         </loadfile>
