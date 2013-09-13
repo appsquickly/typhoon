@@ -2,12 +2,12 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>TyphoonComponentFactoryMutator Protocol Reference</title>
+		<title>TyphoonComponentFactoryPostProcessor Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 840)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">TyphoonComponentFactoryMutator Protocol Reference</h1>
+				<h1 class="hideInXcode">TyphoonComponentFactoryPostProcessor Protocol Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -26,6 +26,8 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
 	
 	
 	
@@ -42,9 +44,7 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/mutateComponentDefinitionsIfRequired:">&nbsp;&nbsp;&nbsp;&nbsp;- mutateComponentDefinitionsIfRequired:</option>
-	
-	<option value="//api/name/newDefinitionsToRegister">&nbsp;&nbsp;&nbsp;&nbsp;- newDefinitionsToRegister</option>
+	<option value="//api/name/postProcessComponentFactory:">&nbsp;&nbsp;&nbsp;&nbsp;- postProcessComponentFactory:</option>
 	
 	
 	
@@ -55,6 +55,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -72,9 +74,7 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/mutateComponentDefinitionsIfRequired:">mutateComponentDefinitionsIfRequired:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/newDefinitionsToRegister">newDefinitionsToRegister</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postProcessComponentFactory:">postProcessComponentFactory:</a></span></li>
 	
 </ul></li>
 
@@ -83,7 +83,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="TyphoonComponentFactoryMutator Protocol Reference" name="top"></a>
+				<a title="TyphoonComponentFactoryPostProcessor Protocol Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -92,18 +92,31 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">TyphoonComponentFactoryMutator Protocol Reference</h1>
+						<h1 class="title title-header">TyphoonComponentFactoryPostProcessor Protocol Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">TyphoonComponentFactoryMutator.h</td>
+	<td class="specification-value">TyphoonComponentFactoryPostProcessor.h</td>
 </tr>
 						</tbody></table></div>
 					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Allows for custom modification of a component factory&rsquo;s definitions.</p>
+
+<p>Component factories can auto-detect <a href="TyphoonComponentFactoryPostProcessor.html">TyphoonComponentFactoryPostProcessor</a> components in their definitions and apply them before any other components get created.</p>
+					</div>
 					
 					
 					
@@ -120,15 +133,8 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/newDefinitionsToRegister">&ndash;&nbsp;newDefinitionsToRegister</a></code>
-		
-	</span>
-	
-	<span class="task-item-suffix">required method</span>
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/mutateComponentDefinitionsIfRequired:">&ndash;&nbsp;mutateComponentDefinitionsIfRequired:</a></code>
-		
+		<code><a href="#//api/name/postProcessComponentFactory:">&ndash;&nbsp;postProcessComponentFactory:</a></code>
+		<span class="tooltip"><p>Post process a component factory after its initialization.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
@@ -150,25 +156,54 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/mutateComponentDefinitionsIfRequired:" title="mutateComponentDefinitionsIfRequired:"></a>
-	<h3 class="subsubtitle method-title">mutateComponentDefinitionsIfRequired:</h3>
+	<a name="//api/name/postProcessComponentFactory:" title="postProcessComponentFactory:"></a>
+	<h3 class="subsubtitle method-title">postProcessComponentFactory:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Post process a component factory after its initialization.</p>
+	</div>		
+	
+    
 
-	<div class="method-subsection method-declaration"><code>- (void)mutateComponentDefinitionsIfRequired:(NSArray *)<em>componentDefinitions</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)postProcessComponentFactory:(TyphoonComponentFactory *)<em>factory</em></code></div>
 
     
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/newDefinitionsToRegister" title="newDefinitionsToRegister"></a>
-	<h3 class="subsubtitle method-title">newDefinitionsToRegister</h3>
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>factory</em></dt>
+			<dd><p>The component factory</p></dd>
+		</dl>
+		
+	</div>
 	
 	
-
-	<div class="method-subsection method-declaration"><code>- (NSArray *)newDefinitionsToRegister</code></div>
-
-    
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Post process a component factory after its initialization.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonComponentFactoryPostProcessor.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>
@@ -184,9 +219,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Jasper_Blues. All rights reserved. (Last updated: 2013-09-04)</span><br />
+						<p><span class="copyright">&copy; 2013 Jasper_Blues. All rights reserved. (Last updated: 2013-09-13)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>

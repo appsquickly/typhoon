@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 840)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -26,6 +26,8 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
 	
 	
 	
@@ -60,6 +62,8 @@
 	
 	
 	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/propertyPlaceholderWithResource:">&nbsp;&nbsp;&nbsp;&nbsp;+ propertyPlaceholderWithResource:</option>
 	
 	<option value="//api/name/withClass:">&nbsp;&nbsp;&nbsp;&nbsp;+ withClass:</option>
 	
@@ -115,10 +119,14 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Infrastructure Methods">Infrastructure Methods</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_InstanceBuilder Methods">InstanceBuilder Methods</a></span></li>
 	
@@ -153,6 +161,8 @@
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/propertyPlaceholderWithResource:">propertyPlaceholderWithResource:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/withClass:">withClass:</a></span></li>
 	
@@ -231,6 +241,14 @@
 </tr>
 						</tbody></table></div>
 					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Declares short-hand definition <a href="#//api/name/factory">factory</a> methods for infrastructure components.</p>
+					</div>
 					
 					
 					
@@ -390,6 +408,21 @@ required <a href="#//api/name/type">type</a>.</p></span>
 	<span class="tooltip">
 		<code><a href="#//api/name/injectProperty:asCollection:">&ndash;&nbsp;injectProperty:asCollection:</a></code>
 		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Infrastructure Methods" name="task_Infrastructure Methods"></a>
+						<h3 class="subsubtitle task-title">Infrastructure Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/propertyPlaceholderWithResource:">+&nbsp;propertyPlaceholderWithResource:</a></code>
+		<span class="tooltip"><p>Factory method for a <a href="../Classes/TyphoonPropertyPlaceholderConfigurer.html">TyphoonPropertyPlaceholderConfigurer</a>.</p></span>
 	</span>
 	
 	
@@ -606,6 +639,62 @@ required <a href="#//api/name/type">type</a>.</p></span>
 					<div class="section section-methods">
 						<a title="Class Methods" name="class_methods"></a>
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/propertyPlaceholderWithResource:" title="propertyPlaceholderWithResource:"></a>
+	<h3 class="subsubtitle method-title">propertyPlaceholderWithResource:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Factory method for a <a href="../Classes/TyphoonPropertyPlaceholderConfigurer.html">TyphoonPropertyPlaceholderConfigurer</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (TyphoonDefinition *)propertyPlaceholderWithResource:(id&lt;TyphoonResource&gt;)<em>resource</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>resource</em></dt>
+			<dd><p>The resource to load.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>a definition.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Factory method for a <a href="../Classes/TyphoonPropertyPlaceholderConfigurer.html">TyphoonPropertyPlaceholderConfigurer</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonDefinition+Infrastructure.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/withClass:" title="withClass:"></a>
@@ -949,9 +1038,9 @@ required <a href="#//api/name/type">type</a>.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Jasper_Blues. All rights reserved. (Last updated: 2013-09-04)</span><br />
+						<p><span class="copyright">&copy; 2013 Jasper_Blues. All rights reserved. (Last updated: 2013-09-13)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>

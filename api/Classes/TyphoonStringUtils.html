@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>TyphoonAssemblySelectorAdviser Class Reference</title>
+		<title>TyphoonStringUtils Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">TyphoonAssemblySelectorAdviser Class Reference</h1>
+				<h1 class="hideInXcode">TyphoonStringUtils Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -40,13 +40,23 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
-	<option value="//api/name/advisedSELForKey:">&nbsp;&nbsp;&nbsp;&nbsp;+ advisedSELForKey:</option>
+	<option value="//api/name/hasMinimumLength:length:">&nbsp;&nbsp;&nbsp;&nbsp;+ hasMinimumLength:length:</option>
 	
-	<option value="//api/name/advisedSELForSEL:">&nbsp;&nbsp;&nbsp;&nbsp;+ advisedSELForSEL:</option>
+	<option value="//api/name/isAlpha:">&nbsp;&nbsp;&nbsp;&nbsp;+ isAlpha:</option>
 	
-	<option value="//api/name/keyForAdvisedSEL:">&nbsp;&nbsp;&nbsp;&nbsp;+ keyForAdvisedSEL:</option>
+	<option value="//api/name/isAlphaOrSpaces:">&nbsp;&nbsp;&nbsp;&nbsp;+ isAlphaOrSpaces:</option>
 	
-	<option value="//api/name/selectorIsAdvised:">&nbsp;&nbsp;&nbsp;&nbsp;+ selectorIsAdvised:</option>
+	<option value="//api/name/isAlphanumeric:">&nbsp;&nbsp;&nbsp;&nbsp;+ isAlphanumeric:</option>
+	
+	<option value="//api/name/isAlphanumericOrDash:">&nbsp;&nbsp;&nbsp;&nbsp;+ isAlphanumericOrDash:</option>
+	
+	<option value="//api/name/isEmailAddress:">&nbsp;&nbsp;&nbsp;&nbsp;+ isEmailAddress:</option>
+	
+	<option value="//api/name/isEmpty:">&nbsp;&nbsp;&nbsp;&nbsp;+ isEmpty:</option>
+	
+	<option value="//api/name/isMemberOfCharacterSet:characterSet:">&nbsp;&nbsp;&nbsp;&nbsp;+ isMemberOfCharacterSet:characterSet:</option>
+	
+	<option value="//api/name/isNotEmpty:">&nbsp;&nbsp;&nbsp;&nbsp;+ isNotEmpty:</option>
 	
 	
 	
@@ -74,13 +84,23 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/advisedSELForKey:">advisedSELForKey:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hasMinimumLength:length:">hasMinimumLength:length:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/advisedSELForSEL:">advisedSELForSEL:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAlpha:">isAlpha:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/keyForAdvisedSEL:">keyForAdvisedSEL:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAlphaOrSpaces:">isAlphaOrSpaces:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/selectorIsAdvised:">selectorIsAdvised:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAlphanumeric:">isAlphanumeric:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAlphanumericOrDash:">isAlphanumericOrDash:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isEmailAddress:">isEmailAddress:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isEmpty:">isEmpty:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isMemberOfCharacterSet:characterSet:">isMemberOfCharacterSet:characterSet:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isNotEmpty:">isNotEmpty:</a></span></li>
 	
 </ul></li>
 
@@ -91,7 +111,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="TyphoonAssemblySelectorAdviser Class Reference" name="top"></a>
+				<a title="TyphoonStringUtils Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -100,7 +120,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">TyphoonAssemblySelectorAdviser Class Reference</h1>
+						<h1 class="title title-header">TyphoonStringUtils Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -111,7 +131,7 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">TyphoonAssemblySelectorAdviser.h</td>
+	<td class="specification-value">TyphoonStringUtils.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -131,28 +151,63 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/advisedSELForKey:">+&nbsp;advisedSELForKey:</a></code>
+		<code><a href="#//api/name/isAlpha:">+&nbsp;isAlpha:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/keyForAdvisedSEL:">+&nbsp;keyForAdvisedSEL:</a></code>
+		<code><a href="#//api/name/isAlphaOrSpaces:">+&nbsp;isAlphaOrSpaces:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/selectorIsAdvised:">+&nbsp;selectorIsAdvised:</a></code>
+		<code><a href="#//api/name/isAlphanumeric:">+&nbsp;isAlphanumeric:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/advisedSELForSEL:">+&nbsp;advisedSELForSEL:</a></code>
+		<code><a href="#//api/name/isAlphanumericOrDash:">+&nbsp;isAlphanumericOrDash:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isMemberOfCharacterSet:characterSet:">+&nbsp;isMemberOfCharacterSet:characterSet:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isEmpty:">+&nbsp;isEmpty:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isNotEmpty:">+&nbsp;isNotEmpty:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isEmailAddress:">+&nbsp;isEmailAddress:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/hasMinimumLength:length:">+&nbsp;hasMinimumLength:length:</a></code>
 		
 	</span>
 	
@@ -173,45 +228,100 @@
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/advisedSELForKey:" title="advisedSELForKey:"></a>
-	<h3 class="subsubtitle method-title">advisedSELForKey:</h3>
+	<a name="//api/name/hasMinimumLength:length:" title="hasMinimumLength:length:"></a>
+	<h3 class="subsubtitle method-title">hasMinimumLength:length:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (SEL)advisedSELForKey:(NSString *)<em>key</em></code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/advisedSELForSEL:" title="advisedSELForSEL:"></a>
-	<h3 class="subsubtitle method-title">advisedSELForSEL:</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>+ (SEL)advisedSELForSEL:(SEL)<em>unwrappedSEL</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (BOOL)hasMinimumLength:(NSString *)<em>candidate</em> length:(int)<em>length</em></code></div>
 
     
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/keyForAdvisedSEL:" title="keyForAdvisedSEL:"></a>
-	<h3 class="subsubtitle method-title">keyForAdvisedSEL:</h3>
+	<a name="//api/name/isAlpha:" title="isAlpha:"></a>
+	<h3 class="subsubtitle method-title">isAlpha:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (NSString *)keyForAdvisedSEL:(SEL)<em>selWithAdvicePrefix</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isAlpha:(NSString *)<em>candidate</em></code></div>
 
     
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/selectorIsAdvised:" title="selectorIsAdvised:"></a>
-	<h3 class="subsubtitle method-title">selectorIsAdvised:</h3>
+	<a name="//api/name/isAlphaOrSpaces:" title="isAlphaOrSpaces:"></a>
+	<h3 class="subsubtitle method-title">isAlphaOrSpaces:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>+ (BOOL)selectorIsAdvised:(SEL)<em>sel</em></code></div>
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isAlphaOrSpaces:(NSString *)<em>candidate</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isAlphanumeric:" title="isAlphanumeric:"></a>
+	<h3 class="subsubtitle method-title">isAlphanumeric:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isAlphanumeric:(NSString *)<em>candidate</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isAlphanumericOrDash:" title="isAlphanumericOrDash:"></a>
+	<h3 class="subsubtitle method-title">isAlphanumericOrDash:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isAlphanumericOrDash:(NSString *)<em>candidate</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isEmailAddress:" title="isEmailAddress:"></a>
+	<h3 class="subsubtitle method-title">isEmailAddress:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isEmailAddress:(NSString *)<em>candidate</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isEmpty:" title="isEmpty:"></a>
+	<h3 class="subsubtitle method-title">isEmpty:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isEmpty:(NSString *)<em>candidate</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isMemberOfCharacterSet:characterSet:" title="isMemberOfCharacterSet:characterSet:"></a>
+	<h3 class="subsubtitle method-title">isMemberOfCharacterSet:characterSet:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isMemberOfCharacterSet:(NSString *)<em>string</em> characterSet:(NSMutableCharacterSet *)<em>characterSet</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isNotEmpty:" title="isNotEmpty:"></a>
+	<h3 class="subsubtitle method-title">isNotEmpty:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isNotEmpty:(NSString *)<em>candidate</em></code></div>
 
     
 </div>

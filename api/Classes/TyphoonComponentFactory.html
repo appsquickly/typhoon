@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 840)" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -42,6 +42,8 @@
 	
 	<option value="//api/name/loaded">&nbsp;&nbsp;&nbsp;&nbsp;loaded</option>
 	
+	<option value="//api/name/postProcessors">&nbsp;&nbsp;&nbsp;&nbsp;postProcessors</option>
+	
 	<option value="//api/name/singletons">&nbsp;&nbsp;&nbsp;&nbsp;singletons</option>
 	
 	
@@ -60,7 +62,7 @@
 	
 	<option value="//api/name/allDefinitionsForType:">&nbsp;&nbsp;&nbsp;&nbsp;- allDefinitionsForType:</option>
 	
-	<option value="//api/name/attachMutator:">&nbsp;&nbsp;&nbsp;&nbsp;- attachMutator:</option>
+	<option value="//api/name/attachPostProcessor:">&nbsp;&nbsp;&nbsp;&nbsp;- attachPostProcessor:</option>
 	
 	<option value="//api/name/buildInstanceWithDefinition:">&nbsp;&nbsp;&nbsp;&nbsp;- buildInstanceWithDefinition:</option>
 	
@@ -114,6 +116,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/loaded">loaded</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/postProcessors">postProcessors</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/singletons">singletons</a></span></li>
 	
 </ul></li>
@@ -134,7 +138,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/allDefinitionsForType:">allDefinitionsForType:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/attachMutator:">attachMutator:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/attachPostProcessor:">attachPostProcessor:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/buildInstanceWithDefinition:">buildInstanceWithDefinition:</a></span></li>
 	
@@ -230,8 +234,15 @@ sub-class like <a href="../Classes/TyphoonXmlComponentFactory.html">TyphoonXmlCo
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/postProcessors">&nbsp;&nbsp;postProcessors</a></code>
+		<span class="tooltip"><p>The attached factory post processors.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/load">&ndash;&nbsp;load</a></code>
-		<span class="tooltip"><p>Mutate the component definitions with the mutators and
+		<span class="tooltip"><p>Mutate the component definitions and
 build the not-lazy <a href="#//api/name/singletons">singletons</a>.</p></span>
 	</span>
 	
@@ -300,8 +311,8 @@ build the not-lazy <a href="#//api/name/singletons">singletons</a>.</p></span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/attachMutator:">&ndash;&nbsp;attachMutator:</a></code>
-		
+		<code><a href="#//api/name/attachPostProcessor:">&ndash;&nbsp;attachPostProcessor:</a></code>
+		<span class="tooltip"><p>Attach a <a href="../Protocols/TyphoonComponentFactoryPostProcessor.html">TyphoonComponentFactoryPostProcessor</a> to this component factory.</p></span>
 	</span>
 	
 	
@@ -393,6 +404,47 @@ build the not-lazy <a href="#//api/name/singletons">singletons</a>.</p></span>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Say if the factory has been loaded.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonComponentFactory.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/postProcessors" title="postProcessors"></a>
+	<h3 class="subsubtitle method-title">postProcessors</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The attached factory post processors.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSArray *postProcessors</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The attached factory post processors.</p>
 	</div>
 	
 	
@@ -530,14 +582,54 @@ build the not-lazy <a href="#//api/name/singletons">singletons</a>.</p></span>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/attachMutator:" title="attachMutator:"></a>
-	<h3 class="subsubtitle method-title">attachMutator:</h3>
+	<a name="//api/name/attachPostProcessor:" title="attachPostProcessor:"></a>
+	<h3 class="subsubtitle method-title">attachPostProcessor:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Attach a <a href="../Protocols/TyphoonComponentFactoryPostProcessor.html">TyphoonComponentFactoryPostProcessor</a> to this component factory.</p>
+	</div>		
+	
+    
 
-	<div class="method-subsection method-declaration"><code>- (void)attachMutator:(id&lt;TyphoonComponentFactoryMutator&gt;)<em>mutator</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)attachPostProcessor:(id&lt;TyphoonComponentFactoryPostProcessor&gt;)<em>postProcessor</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>postProcessor</em></dt>
+			<dd><p>The post-processor to attach.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Attach a <a href="../Protocols/TyphoonComponentFactoryPostProcessor.html">TyphoonComponentFactoryPostProcessor</a> to this component factory.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonComponentFactory.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -698,7 +790,7 @@ build the not-lazy <a href="#//api/name/singletons">singletons</a>.</p></span>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Mutate the component definitions with the mutators and
+		<p>Mutate the component definitions and
 build the not-lazy <a href="#//api/name/singletons">singletons</a>.</p>
 	</div>		
 	
@@ -716,7 +808,7 @@ build the not-lazy <a href="#//api/name/singletons">singletons</a>.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Mutate the component definitions with the mutators and
+		<p>Mutate the component definitions and
 build the not-lazy <a href="#//api/name/singletons">singletons</a>.</p>
 	</div>
 	
@@ -890,9 +982,9 @@ build the not-lazy <a href="#//api/name/singletons">singletons</a>.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Jasper_Blues. All rights reserved. (Last updated: 2013-09-04)</span><br />
+						<p><span class="copyright">&copy; 2013 Jasper_Blues. All rights reserved. (Last updated: 2013-09-13)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>

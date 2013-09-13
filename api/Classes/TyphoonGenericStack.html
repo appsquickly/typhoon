@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>TyphoonInjectedProperty Protocol Reference</title>
+		<title>TyphoonGenericStack Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">TyphoonInjectedProperty Protocol Reference</h1>
+				<h1 class="hideInXcode">TyphoonGenericStack Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -38,13 +38,22 @@
 	
 	
 	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/stack">&nbsp;&nbsp;&nbsp;&nbsp;+ stack</option>
+	
+	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/injectionType">&nbsp;&nbsp;&nbsp;&nbsp;- injectionType</option>
+	<option value="//api/name/isEmpty">&nbsp;&nbsp;&nbsp;&nbsp;- isEmpty</option>
 	
-	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;- name</option>
+	<option value="//api/name/peek">&nbsp;&nbsp;&nbsp;&nbsp;- peek</option>
+	
+	<option value="//api/name/pop">&nbsp;&nbsp;&nbsp;&nbsp;- pop</option>
+	
+	<option value="//api/name/push:">&nbsp;&nbsp;&nbsp;&nbsp;- push:</option>
 	
 	
 	
@@ -68,13 +77,23 @@
 
 
 
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stack">stack</a></span></li>
+	
+</ul></li>
+
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/injectionType">injectionType</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isEmpty">isEmpty</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/peek">peek</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pop">pop</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/push:">push:</a></span></li>
 	
 </ul></li>
 
@@ -83,7 +102,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="TyphoonInjectedProperty Protocol Reference" name="top"></a>
+				<a title="TyphoonGenericStack Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -92,18 +111,18 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">TyphoonInjectedProperty Protocol Reference</h1>
+						<h1 class="title title-header">TyphoonGenericStack Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Conforms to</td>
+	<td class="specification-title">Inherits from</td>
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">TyphoonInjectedProperty.h</td>
+	<td class="specification-value">TyphoonGenericStack.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -123,18 +142,39 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/name">&ndash;&nbsp;name</a></code>
+		<code><a href="#//api/name/stack">+&nbsp;stack</a></code>
 		
 	</span>
 	
-	<span class="task-item-suffix">required method</span>
+	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/injectionType">&ndash;&nbsp;injectionType</a></code>
+		<code><a href="#//api/name/push:">&ndash;&nbsp;push:</a></code>
 		
 	</span>
 	
-	<span class="task-item-suffix">required method</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pop">&ndash;&nbsp;pop</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/peek">&ndash;&nbsp;peek</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isEmpty">&ndash;&nbsp;isEmpty</a></code>
+		
+	</span>
+	
+	
 </li>
 						</ul>
 						
@@ -146,6 +186,23 @@
 					
 					
 					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/stack" title="stack"></a>
+	<h3 class="subsubtitle method-title">stack</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (instancetype)stack</code></div>
+
+    
+</div>
+						
+					</div>
+					
 					
 					
 					<div class="section section-methods">
@@ -153,23 +210,45 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/injectionType" title="injectionType"></a>
-	<h3 class="subsubtitle method-title">injectionType</h3>
+	<a name="//api/name/isEmpty" title="isEmpty"></a>
+	<h3 class="subsubtitle method-title">isEmpty</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (TyphoonPropertyInjectionType)injectionType</code></div>
+	<div class="method-subsection method-declaration"><code>- (BOOL)isEmpty</code></div>
 
     
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/name" title="name"></a>
-	<h3 class="subsubtitle method-title">name</h3>
+	<a name="//api/name/peek" title="peek"></a>
+	<h3 class="subsubtitle method-title">peek</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (NSString *)name</code></div>
+	<div class="method-subsection method-declaration"><code>- (id)peek</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pop" title="pop"></a>
+	<h3 class="subsubtitle method-title">pop</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)pop</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/push:" title="push:"></a>
+	<h3 class="subsubtitle method-title">push:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)push:(id)<em>element</em></code></div>
 
     
 </div>

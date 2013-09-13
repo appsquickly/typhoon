@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>TyphoonInjectedProperty Protocol Reference</title>
+		<title>TyphoonInstanceRegister Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">TyphoonInjectedProperty Protocol Reference</h1>
+				<h1 class="hideInXcode">TyphoonInstanceRegister Protocol Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -38,13 +38,22 @@
 	
 	
 	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/instanceRegister">&nbsp;&nbsp;&nbsp;&nbsp;+ instanceRegister</option>
+	
+	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/injectionType">&nbsp;&nbsp;&nbsp;&nbsp;- injectionType</option>
+	<option value="//api/name/hasInstanceForKey:">&nbsp;&nbsp;&nbsp;&nbsp;- hasInstanceForKey:</option>
 	
-	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;- name</option>
+	<option value="//api/name/peekInstanceForKey:">&nbsp;&nbsp;&nbsp;&nbsp;- peekInstanceForKey:</option>
+	
+	<option value="//api/name/stashInstance:forKey:">&nbsp;&nbsp;&nbsp;&nbsp;- stashInstance:forKey:</option>
+	
+	<option value="//api/name/unstashInstanceForKey:">&nbsp;&nbsp;&nbsp;&nbsp;- unstashInstanceForKey:</option>
 	
 	
 	
@@ -68,13 +77,23 @@
 
 
 
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/instanceRegister">instanceRegister</a></span></li>
+	
+</ul></li>
+
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/injectionType">injectionType</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/hasInstanceForKey:">hasInstanceForKey:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/peekInstanceForKey:">peekInstanceForKey:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stashInstance:forKey:">stashInstance:forKey:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/unstashInstanceForKey:">unstashInstanceForKey:</a></span></li>
 	
 </ul></li>
 
@@ -83,7 +102,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="TyphoonInjectedProperty Protocol Reference" name="top"></a>
+				<a title="TyphoonInstanceRegister Protocol Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -92,7 +111,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">TyphoonInjectedProperty Protocol Reference</h1>
+						<h1 class="title title-header">TyphoonInstanceRegister Protocol Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -103,7 +122,7 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">TyphoonInjectedProperty.h</td>
+	<td class="specification-value">TyphoonInstanceRegister.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -123,14 +142,35 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/name">&ndash;&nbsp;name</a></code>
+		<code><a href="#//api/name/instanceRegister">+&nbsp;instanceRegister</a></code>
 		
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/injectionType">&ndash;&nbsp;injectionType</a></code>
+		<code><a href="#//api/name/stashInstance:forKey:">&ndash;&nbsp;stashInstance:forKey:</a></code>
+		
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/unstashInstanceForKey:">&ndash;&nbsp;unstashInstanceForKey:</a></code>
+		
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/peekInstanceForKey:">&ndash;&nbsp;peekInstanceForKey:</a></code>
+		
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/hasInstanceForKey:">&ndash;&nbsp;hasInstanceForKey:</a></code>
 		
 	</span>
 	
@@ -146,6 +186,23 @@
 					
 					
 					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/instanceRegister" title="instanceRegister"></a>
+	<h3 class="subsubtitle method-title">instanceRegister</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>+ (instancetype)instanceRegister</code></div>
+
+    
+</div>
+						
+					</div>
+					
 					
 					
 					<div class="section section-methods">
@@ -153,23 +210,45 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/injectionType" title="injectionType"></a>
-	<h3 class="subsubtitle method-title">injectionType</h3>
+	<a name="//api/name/hasInstanceForKey:" title="hasInstanceForKey:"></a>
+	<h3 class="subsubtitle method-title">hasInstanceForKey:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (TyphoonPropertyInjectionType)injectionType</code></div>
+	<div class="method-subsection method-declaration"><code>- (BOOL)hasInstanceForKey:(NSString *)<em>key</em></code></div>
 
     
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/name" title="name"></a>
-	<h3 class="subsubtitle method-title">name</h3>
+	<a name="//api/name/peekInstanceForKey:" title="peekInstanceForKey:"></a>
+	<h3 class="subsubtitle method-title">peekInstanceForKey:</h3>
 	
 	
 
-	<div class="method-subsection method-declaration"><code>- (NSString *)name</code></div>
+	<div class="method-subsection method-declaration"><code>- (id)peekInstanceForKey:(NSString *)<em>key</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/stashInstance:forKey:" title="stashInstance:forKey:"></a>
+	<h3 class="subsubtitle method-title">stashInstance:forKey:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)stashInstance:(id)<em>instance</em> forKey:(NSString *)<em>key</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/unstashInstanceForKey:" title="unstashInstanceForKey:"></a>
+	<h3 class="subsubtitle method-title">unstashInstanceForKey:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)unstashInstanceForKey:(NSString *)<em>key</em></code></div>
 
     
 </div>
