@@ -173,11 +173,6 @@ each commit. (If you'd like the script I will share it).
 
 * Look at, and contribute to the <a href="https://github.com/jasperblues/Typhoon/wiki/Roadmap">roadmap</a> here.
 
-##Current Work?
-
-* ***New!!*** Just added support for collections - NSArray and NSSet properties injected by type-converted value or references. . . . docs and dictionaries coming soon. 
-* More <a href="http://www.jetbrains.com/objc/">AppCode IDE</a> integration. (Thanks to Jetbrains for the assistance). 
-* API docs. 
 
 # Frequently Asked Questions
 
