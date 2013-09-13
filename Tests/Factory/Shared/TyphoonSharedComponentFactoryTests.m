@@ -29,6 +29,10 @@
 #import "PrototypeInitInjected.h"
 #import "PrototypePropertyInjected.h"
 
+#import "CROSingletonA.h"
+#import "CROPrototypeA.h"
+#import "CROPrototypeB.h"
+
 @implementation TyphoonSharedComponentFactoryTests
 
 
@@ -259,5 +263,14 @@
 	assertThat(propertyInjected.prototypeInitInjected, instanceOf([PrototypeInitInjected class]));
 	assertThat(propertyInjected.prototypeInitInjected, isNot(initializerInjected));
 }
+
+/* ====================================================================================================================================== */
+#pragma mark - Currently Resolving Overwriting Problem
+- (void)test_currently_resolving_references_dictionary_is_not_overwritten_when_initializing_two_instances_of_prototype_in_the_same_chain
+{
+	CROSingletonA *singletonA = [_circularDependenciesFactory componentForType:[CROSingletonA class]];
+	assertThat(singletonA.prototypeB, isNot(nilValue()));
+}
+
 
 @end

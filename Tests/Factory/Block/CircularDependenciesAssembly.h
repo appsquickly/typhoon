@@ -20,6 +20,11 @@
 #import "UnsatisfiableClassFDependsOnGInInitializer.h"
 #import "UnsatisfiableClassGDependsOnFInInitializer.h"
 
+// Currently Resolving Overwrite
+#import "CROSingletonA.h"
+#import "CROPrototypeA.h"
+#import "CROPrototypeB.h"
+
 @interface CircularDependenciesAssembly : TyphoonAssembly
 
 - (id)classA;
@@ -33,5 +38,10 @@
 
 - (id)prototypeInitInjected;
 - (id)prototypePropertyInjected;
+
+- (id)croSingletonA;
+- (id)croSingletonB;
+- (id)croPrototypeA;
+- (id)croPrototypeB;
 
 @end
