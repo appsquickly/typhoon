@@ -7,7 +7,9 @@ Pod::Spec.new do |spec|
     spec.author       = { 'Jasper Blues, Robert Gilliam & Contributors' => 'jasper@appsquick.ly' }
     spec.source       = { :git => 'https://github.com/jasperblues/Typhoon.git', :tag => spec.version.to_s, :submodules => true }
     spec.source_files = 'Source/**/*.{h,m}'
-    spec.libraries    =  'z', 'xml2'
+	spec.ios.exclude_files = "Source/osx"
+	spec.osx.exclude_files = "Source/ios"
+	spec.libraries    =  'z', 'xml2'
     spec.xcconfig     =  { 'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2' }
     spec.requires_arc = true
 end 

@@ -39,6 +39,8 @@
 		46877CFA17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46877CF917D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m */; };
 		46877CFB17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46877CF917D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m */; };
 		46877CFC17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46877CF917D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m */; };
+		46A14E0C17E42F4E009455D4 /* TyphoonViewControllerNibResolverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A14E0B17E42F4E009455D4 /* TyphoonViewControllerNibResolverTests.m */; };
+		46A14E0D17E42F4E009455D4 /* TyphoonViewControllerNibResolverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A14E0B17E42F4E009455D4 /* TyphoonViewControllerNibResolverTests.m */; };
 		4B06338B17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */; };
 		4B06338C17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */; };
 		4B06338D17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */; };
@@ -251,6 +253,7 @@
 		4656F7DC17DC253A00EDDC23 /* TyphoonComponentFactoryPostProcessorMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonComponentFactoryPostProcessorMock.h; sourceTree = "<group>"; };
 		4656F7DD17DC253A00EDDC23 /* TyphoonComponentFactoryPostProcessorMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonComponentFactoryPostProcessorMock.m; sourceTree = "<group>"; };
 		46877CF917D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonParameterInjectedAsCollectionTests.m; sourceTree = "<group>"; };
+		46A14E0B17E42F4E009455D4 /* TyphoonViewControllerNibResolverTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonViewControllerNibResolverTests.m; sourceTree = "<group>"; };
 		4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblySelectorAdviserTests.m; sourceTree = "<group>"; };
 		4B06339F17D29402009CDBD6 /* InjectionAwareAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InjectionAwareAssembly.h; sourceTree = "<group>"; };
 		4B0633A017D29402009CDBD6 /* InjectionAwareAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InjectionAwareAssembly.m; sourceTree = "<group>"; };
@@ -397,6 +400,7 @@
 		4656F7D117DC244B00EDDC23 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				46A14E0917E42F34009455D4 /* Resolver */,
 				4656F7D217DC244B00EDDC23 /* Patcher */,
 				4656F7D417DC244B00EDDC23 /* PropertyConfigurer */,
 				4656F7DC17DC253A00EDDC23 /* TyphoonComponentFactoryPostProcessorMock.h */,
@@ -437,6 +441,14 @@
 			path = Collection;
 			sourceTree = "<group>";
 		};
+		46A14E0917E42F34009455D4 /* Resolver */ = {
+			isa = PBXGroup;
+			children = (
+				46A14E0B17E42F4E009455D4 /* TyphoonViewControllerNibResolverTests.m */,
+			);
+			path = Resolver;
+			sourceTree = "<group>";
+		};
 		4B06339E17D29402009CDBD6 /* Injection Aware */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,7 +479,9 @@
 				B1C044F0F19E4B448A36BEFB /* Pods-ios.xcconfig */,
 				272E8645AA624C0897EA4CF6 /* Pods-osx.xcconfig */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		4B84146D179B0E3900916BF5 /* Products */ = {
 			isa = PBXGroup;
@@ -798,7 +812,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					4B9685A117D26E8200E69723 = {
-						TestTargetID = 4B84146B179B0E3900916BF5 /* iOS Tests (Cocoapods) */;
+						TestTargetID = 4B84146B179B0E3900916BF5;
 					};
 				};
 			};
@@ -1075,6 +1089,7 @@
 				4EFAF60E17E0D50B00E93ACF /* CROPrototypeA.m in Sources */,
 				4EFAF61317E0D54700E93ACF /* CROPrototypeB.m in Sources */,
 				4EA74DDC17E0FF440004EFC7 /* CROSingletonB.m in Sources */,
+				46A14E0C17E42F4E009455D4 /* TyphoonViewControllerNibResolverTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1191,6 +1206,7 @@
 				4EFAF61017E0D50B00E93ACF /* CROPrototypeA.m in Sources */,
 				4EFAF61517E0D54700E93ACF /* CROPrototypeB.m in Sources */,
 				4EA74DDE17E0FF440004EFC7 /* CROSingletonB.m in Sources */,
+				46A14E0D17E42F4E009455D4 /* TyphoonViewControllerNibResolverTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1316,6 +1332,7 @@
 			baseConfigurationReference = 272E8645AA624C0897EA4CF6 /* Pods-osx.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1358,6 +1375,7 @@
 			baseConfigurationReference = 272E8645AA624C0897EA4CF6 /* Pods-osx.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;

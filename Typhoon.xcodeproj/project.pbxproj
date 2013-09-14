@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46025F3017E3F6A40056A528 /* TyphoonViewControllerNibResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = 46025F2E17E3F6A40056A528 /* TyphoonViewControllerNibResolver.h */; };
+		46025F3117E3F6A40056A528 /* TyphoonViewControllerNibResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 46025F2F17E3F6A40056A528 /* TyphoonViewControllerNibResolver.m */; };
 		4656F7A017DB5B7C00EDDC23 /* TyphoonDefinition+Infrastructure.h in Headers */ = {isa = PBXBuildFile; fileRef = 4656F79E17DB5B7C00EDDC23 /* TyphoonDefinition+Infrastructure.h */; };
 		4656F7A117DB5B7C00EDDC23 /* TyphoonDefinition+Infrastructure.h in Headers */ = {isa = PBXBuildFile; fileRef = 4656F79E17DB5B7C00EDDC23 /* TyphoonDefinition+Infrastructure.h */; };
 		4656F7A217DB5B7C00EDDC23 /* TyphoonDefinition+Infrastructure.m in Sources */ = {isa = PBXBuildFile; fileRef = 4656F79F17DB5B7C00EDDC23 /* TyphoonDefinition+Infrastructure.m */; };
@@ -199,6 +201,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46025F2E17E3F6A40056A528 /* TyphoonViewControllerNibResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TyphoonViewControllerNibResolver.h; path = Source/ios/Factory/Config/Resolver/TyphoonViewControllerNibResolver.h; sourceTree = SOURCE_ROOT; };
+		46025F2F17E3F6A40056A528 /* TyphoonViewControllerNibResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TyphoonViewControllerNibResolver.m; path = Source/ios/Factory/Config/Resolver/TyphoonViewControllerNibResolver.m; sourceTree = SOURCE_ROOT; };
 		4656F79E17DB5B7C00EDDC23 /* TyphoonDefinition+Infrastructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyphoonDefinition+Infrastructure.h"; sourceTree = "<group>"; };
 		4656F79F17DB5B7C00EDDC23 /* TyphoonDefinition+Infrastructure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TyphoonDefinition+Infrastructure.m"; sourceTree = "<group>"; };
 		4656F7BA17DC19E500EDDC23 /* TyphoonComponentFactoryPostProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonComponentFactoryPostProcessor.h; sourceTree = "<group>"; };
@@ -329,9 +333,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46025F2717E3E9590056A528 /* Resolver */ = {
+			isa = PBXGroup;
+			children = (
+				46025F2E17E3F6A40056A528 /* TyphoonViewControllerNibResolver.h */,
+				46025F2F17E3F6A40056A528 /* TyphoonViewControllerNibResolver.m */,
+			);
+			path = Resolver;
+			sourceTree = "<group>";
+		};
 		4656F7B917DC19E400EDDC23 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				46025F2717E3E9590056A528 /* Resolver */,
 				4656F7BD17DC1A2F00EDDC23 /* Patcher */,
 				4656F7C217DC1A2F00EDDC23 /* PropertyConfigurers */,
 				4656F7BA17DC19E500EDDC23 /* TyphoonComponentFactoryPostProcessor.h */,
@@ -681,6 +695,7 @@
 				4BC6493E17A20BD7007F0463 /* TyphoonDefinition+InstanceBuilder.h in Headers */,
 				4BC6493F17A20BD7007F0463 /* TyphoonInitializer+InstanceBuilder.h in Headers */,
 				4BC6494017A20BD7007F0463 /* TyphoonTestUtils.h in Headers */,
+				46025F3017E3F6A40056A528 /* TyphoonViewControllerNibResolver.h in Headers */,
 				4BC6494117A20BD7007F0463 /* TyphoonPropertyInjectedAsCollection.h in Headers */,
 				BA7983EEC1D3BC453902CB30 /* TyphoonPropertyInjectedAsObjectInstance.h in Headers */,
 				46877CE317D70B2200910D6A /* TyphoonArgumentInjectedAsCollection.h in Headers */,
@@ -833,6 +848,7 @@
 				4BC648FA17A20BD7007F0463 /* TyphoonRXMLElement.m in Sources */,
 				4BC648FB17A20BD7007F0463 /* TyphoonXmlComponentFactory.m in Sources */,
 				4BC648FD17A20BD7007F0463 /* TyphoonComponentFactory+InstanceBuilder.m in Sources */,
+				46025F3117E3F6A40056A528 /* TyphoonViewControllerNibResolver.m in Sources */,
 				4BC648FE17A20BD7007F0463 /* TyphoonComponentFactory.m in Sources */,
 				4BC648FF17A20BD7007F0463 /* TyphoonPropertyInjectedByReference.m in Sources */,
 				4B9BD34317A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.m in Sources */,
