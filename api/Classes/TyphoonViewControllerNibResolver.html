@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>TyphoonTypeConvertedCollectionValue Class Reference</title>
+		<title>TyphoonViewControllerNibResolver Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">TyphoonTypeConvertedCollectionValue Class Reference</h1>
+				<h1 class="hideInXcode">TyphoonViewControllerNibResolver Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -26,6 +26,8 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
 	
 	
 	
@@ -36,20 +38,13 @@
 	
 	
 	
-	<option value="properties">Properties</option>
-	
-	<option value="//api/name/requiredType">&nbsp;&nbsp;&nbsp;&nbsp;requiredType</option>
-	
-	<option value="//api/name/textValue">&nbsp;&nbsp;&nbsp;&nbsp;textValue</option>
-	
-	
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/initWithTextValue:requiredType:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithTextValue:requiredType:</option>
+	<option value="//api/name/resolveNibNameForClass:">&nbsp;&nbsp;&nbsp;&nbsp;- resolveNibNameForClass:</option>
 	
 	
 	
@@ -60,6 +55,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -71,21 +68,13 @@
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requiredType">requiredType</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/textValue">textValue</a></span></li>
-	
-</ul></li>
-
 
 
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithTextValue:requiredType:">initWithTextValue:requiredType:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resolveNibNameForClass:">resolveNibNameForClass:</a></span></li>
 	
 </ul></li>
 
@@ -94,7 +83,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="TyphoonTypeConvertedCollectionValue Class Reference" name="top"></a>
+				<a title="TyphoonViewControllerNibResolver Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -103,7 +92,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">TyphoonTypeConvertedCollectionValue Class Reference</h1>
+						<h1 class="title title-header">TyphoonViewControllerNibResolver Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -114,13 +103,22 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Conforms to</td>
-	<td class="specification-value"><a href="../Protocols/TyphoonCollectionValue.html">TyphoonCollectionValue</a></td>
+	<td class="specification-value"><a href="../Protocols/TyphoonComponentFactoryPostProcessor.html">TyphoonComponentFactoryPostProcessor</a></td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">TyphoonTypeConvertedCollectionValue.h</td>
+	<td class="specification-value">TyphoonViewControllerNibResolver.h</td>
 </tr>
 						</tbody></table></div>
 					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Post-Processor that completes the initializer of definitions with type UIViewController.
+If the definition already has a TyphoonIntializer set, the processor will ignore the component.</p>
+					</div>
 					
 					
 					
@@ -137,22 +135,9 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/textValue">&nbsp;&nbsp;textValue</a></code>
-		
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/requiredType">&nbsp;&nbsp;requiredType</a></code>
-		
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithTextValue:requiredType:">&ndash;&nbsp;initWithTextValue:requiredType:</a></code>
-		
+		<code><a href="#//api/name/resolveNibNameForClass:">&ndash;&nbsp;resolveNibNameForClass:</a></code>
+		<span class="tooltip"><p>Resolves the nib name for a view controller class.
+Defaults to the same name as the class by NSStringFromClass.</p></span>
 	</span>
 	
 	
@@ -165,34 +150,6 @@
 					
 					
 					
-					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/requiredType" title="requiredType"></a>
-	<h3 class="subsubtitle method-title">requiredType</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) Class requiredType</code></div>
-
-    
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/textValue" title="textValue"></a>
-	<h3 class="subsubtitle method-title">textValue</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSString *textValue</code></div>
-
-    
-</div>
-						
-					</div>
-					
 					
 					
 					
@@ -202,14 +159,61 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/initWithTextValue:requiredType:" title="initWithTextValue:requiredType:"></a>
-	<h3 class="subsubtitle method-title">initWithTextValue:requiredType:</h3>
+	<a name="//api/name/resolveNibNameForClass:" title="resolveNibNameForClass:"></a>
+	<h3 class="subsubtitle method-title">resolveNibNameForClass:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Resolves the nib name for a view controller class.
+Defaults to the same name as the class by NSStringFromClass.</p>
+	</div>		
+	
+    
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithTextValue:(NSString *)<em>textValue</em> requiredType:(Class)<em>requiredType</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (NSString *)resolveNibNameForClass:(Class)<em>viewControllerClass</em></code></div>
 
     
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>viewControllerClass</em></dt>
+			<dd><p>The class.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The nib name.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Resolves the nib name for a view controller class.
+Defaults to the same name as the class by NSStringFromClass.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonViewControllerNibResolver.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>
