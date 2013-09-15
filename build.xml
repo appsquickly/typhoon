@@ -97,7 +97,7 @@
     
     <target name="__build.library.ios.simulator">
         <exec executable="${xcodebuild}" failonerror="true">
-            <arg line="CONFIGURATION_BUILD_DIR='${ios.simulator.build.dir}' CONFIGURATION_TEMP_DIR='${intermediates.dir}' -configuration Debug ONLY_ACTIVE_ARCH=NO -destination OS=${module.sdk.version},name=iPad -workspace ${workspace} -scheme '${library.ios.scheme}'"/>
+            <arg line="-destination OS=${module.sdk.version},name=iPhone -workspace ${workspace} -scheme '${library.ios.scheme}'"/>
         </exec>
     </target>  
     <property name="ios.simulator.build.dir" value="${target.dir}/ios-simulator"/>

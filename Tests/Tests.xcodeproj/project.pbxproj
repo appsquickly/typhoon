@@ -213,6 +213,8 @@
 		4EFAF61417E0D54700E93ACF /* CROPrototypeB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */; };
 		4EFAF61517E0D54700E93ACF /* CROPrototypeB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */; };
 		52D870D7DE6E4FB09D059A5C /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B50DFBF255467DA9F7C30F /* libPods-ios.a */; };
+		BA7986F83BAB4E7D084B2AAA /* TyphoonUIColorConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7988D3F261F1B68761BEF2 /* TyphoonUIColorConverterTests.m */; };
+		BA79880BD4B4A87C9F041E1A /* TyphoonUIColorConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7988D3F261F1B68761BEF2 /* TyphoonUIColorConverterTests.m */; };
 		CD65DA1387F74352A0088704 /* libPods-iOS Tests (Cocoapods).a in Frameworks */ = {isa = PBXBuildFile; fileRef = B90D396911F743468FF96BB5 /* libPods-iOS Tests (Cocoapods).a */; };
 		D174EF8C2C6845E69666DC4F /* libPods-osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC491FA50E048988BFB5756 /* libPods-osx.a */; };
 /* End PBXBuildFile section */
@@ -357,6 +359,7 @@
 		4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CROPrototypeB.m; sourceTree = "<group>"; };
 		B1C044F0F19E4B448A36BEFB /* Pods-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.xcconfig"; path = "Pods/Pods-ios.xcconfig"; sourceTree = SOURCE_ROOT; };
 		B90D396911F743468FF96BB5 /* libPods-iOS Tests (Cocoapods).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Tests (Cocoapods).a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA7988D3F261F1B68761BEF2 /* TyphoonUIColorConverterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonUIColorConverterTests.m; sourceTree = "<group>"; };
 		F8B50DFBF255467DA9F7C30F /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -689,6 +692,7 @@
 				4B8414E3179B0EA600916BF5 /* TyphoonPrimitiveTypeConverterTests.m */,
 				4B8414E4179B0EA600916BF5 /* TyphoonTypeConverterRegistryTests.m */,
 				4B8414E5179B0EA600916BF5 /* TyphoonTypeDescriptorTests.m */,
+				BA7988D3F261F1B68761BEF2 /* TyphoonUIColorConverterTests.m */,
 			);
 			path = TypeConversion;
 			sourceTree = "<group>";
@@ -812,7 +816,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					4B9685A117D26E8200E69723 = {
-						TestTargetID = 4B84146B179B0E3900916BF5;
+						TestTargetID = 4B84146B179B0E3900916BF5 /* iOS Tests (Cocoapods) */;
 					};
 				};
 			};
@@ -1090,6 +1094,7 @@
 				4EFAF61317E0D54700E93ACF /* CROPrototypeB.m in Sources */,
 				4EA74DDC17E0FF440004EFC7 /* CROSingletonB.m in Sources */,
 				46A14E0C17E42F4E009455D4 /* TyphoonViewControllerNibResolverTests.m in Sources */,
+				BA79880BD4B4A87C9F041E1A /* TyphoonUIColorConverterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1207,6 +1212,7 @@
 				4EFAF61517E0D54700E93ACF /* CROPrototypeB.m in Sources */,
 				4EA74DDE17E0FF440004EFC7 /* CROSingletonB.m in Sources */,
 				46A14E0D17E42F4E009455D4 /* TyphoonViewControllerNibResolverTests.m in Sources */,
+				BA7986F83BAB4E7D084B2AAA /* TyphoonUIColorConverterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1285,8 +1291,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				VALID_ARCHS = "armv7 armv7s i386 x86_4";
+				SDKROOT = iphoneos7.0;
+				VALID_ARCHS = "armv7 armv7s i386 x86_64";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -1320,9 +1326,9 @@
 				INFOPLIST_FILE = "Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.1;
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "armv7 armv7s i386 x86_4";
+				VALID_ARCHS = "armv7 armv7s i386 x86_64";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -1461,7 +1467,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Tests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1469,9 +1475,9 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.1;
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Tests/Pods\"/**";
-				VALID_ARCHS = "armv7 armv7s i386 x86_4";
+				VALID_ARCHS = "armv7 armv7s i386 x86_64";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -1510,17 +1516,17 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Tests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lxml2",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.1;
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Tests/Pods\"/**";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "armv7 armv7s i386 x86_4";
+				VALID_ARCHS = "armv7 armv7s i386 x86_64";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;

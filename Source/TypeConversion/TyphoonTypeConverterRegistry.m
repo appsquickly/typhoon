@@ -17,6 +17,7 @@
 #import "TyphoonPrimitiveTypeConverter.h"
 #import "TyphoonPassThroughTypeConverter.h"
 #import "TyphoonNSURLTypeConverter.h"
+#import "TyphoonUIColorTypeConverter.h"
 
 
 @implementation TyphoonTypeConverterRegistry
@@ -47,9 +48,10 @@
         _typeConverters = [[NSMutableDictionary alloc] init];
         _primitiveTypeConverter = [[TyphoonPrimitiveTypeConverter alloc] init];
 
-        [self register:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:NO] forClassOrProtocol:[NSString class]];
-        [self register:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:YES] forClassOrProtocol:[NSMutableString class]];
-        [self register:[[TyphoonNSURLTypeConverter alloc] init] forClassOrProtocol:[NSURL class]];
+        [self registerSharedConverters];
+        [self registerPlatformConverters];
+
+
     }
     return self;
 }
@@ -91,6 +93,28 @@
 }
 
 
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
+
+- (void)registerSharedConverters
+{
+    [self register:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:NO] forClassOrProtocol:[NSString class]];
+    [self register:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:YES] forClassOrProtocol:[NSMutableString class]];
+    [self register:[[TyphoonNSURLTypeConverter alloc] init] forClassOrProtocol:[NSURL class]];
+}
+
+- (void)registerPlatformConverters
+{
+    #if TARGET_OS_IPHONE
+    {
+        [self register:[[TyphoonUIColorTypeConverter alloc] init] forClassOrProtocol:NSClassFromString(@"UIColor")];
+    }
+    #else
+    {
+
+    }
+    #endif
+}
 
 
 @end
