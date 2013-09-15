@@ -80,7 +80,7 @@ static NSMutableArray* swizzleRegistry;
 - (void)forwardInvocation:(NSInvocation*)invocation
 {
     NSString* componentKey = NSStringFromSelector([invocation selector]);
-    NSLog(@"Component key: %@", componentKey);
+    LogTrace(@"Component key: %@", componentKey);
 
     [invocation setSelector:@selector(componentForKey:)];
     [invocation setArgument:&componentKey atIndex:2];
