@@ -17,7 +17,12 @@
 #import "TyphoonPrimitiveTypeConverter.h"
 #import "TyphoonPassThroughTypeConverter.h"
 #import "TyphoonNSURLTypeConverter.h"
+
+#if TARGET_OS_IPHONE
+
 #import "TyphoonUIColorTypeConverter.h"
+
+#endif
 
 
 @implementation TyphoonTypeConverterRegistry

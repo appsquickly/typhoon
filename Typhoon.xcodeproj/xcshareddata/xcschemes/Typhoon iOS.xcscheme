@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4BC648F717A20BD7007F0463"
-               BuildableName = "libTyphoon-iOS.a"
+               BuildableName = "Typhoon"
                BlueprintName = "Typhoon-iOS"
                ReferencedContainer = "container:Typhoon.xcodeproj">
             </BuildableReference>
