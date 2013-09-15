@@ -44,7 +44,7 @@
     assertThatBool([TyphoonStringUtils isAlphanumeric:@"1234"], equalToBool(YES));
     assertThatBool([TyphoonStringUtils isAlphanumeric:@"abc1234"], equalToBool(YES));
 
-    assertThatBool([TyphoonStringUtils isAlphaOrSpaces:@"abc \t\n"], equalToBool(NO));
+    assertThatBool([TyphoonStringUtils isAlphanumeric:@"abc \t\n"], equalToBool(NO));
 }
 
 - (void)test_isEmpty
