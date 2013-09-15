@@ -24,20 +24,13 @@
 + (BOOL)isAlphaOrSpaces:(NSString*)candidate
 {
     NSMutableCharacterSet* characterSet = [NSMutableCharacterSet letterCharacterSet];
-    [characterSet addCharactersInString:@" "];
+    [characterSet formUnionWithCharacterSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     return [self isMemberOfCharacterSet:candidate characterSet:characterSet];
 }
 
 + (BOOL)isAlphanumeric:(NSString*)candidate
 {
     return [self isMemberOfCharacterSet:candidate characterSet:[NSCharacterSet alphanumericCharacterSet]];
-}
-
-+ (BOOL)isAlphanumericOrDash:(NSString*)candidate
-{
-    NSMutableCharacterSet* characterSet = [NSMutableCharacterSet alphanumericCharacterSet];
-    [characterSet addCharactersInString:@"-_."];
-    return [self isMemberOfCharacterSet:candidate characterSet:characterSet];
 }
 
 
@@ -72,10 +65,5 @@
     return [emailTest evaluateWithObject:candidate];
 }
 
-
-+ (BOOL)hasMinimumLength:(NSString*)candidate length:(int)length
-{
-    return ([candidate length] >= length) ? YES : NO;
-}
 
 @end
