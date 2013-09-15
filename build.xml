@@ -201,8 +201,7 @@
         <echo file="${temp.dir}/geninfo.sh">
             #!/bin/bash
             set -e # fail script if any commands fail
-            source ~/.bash_profile
-            geninfo ${temp.dir}/coverage-data/*.gcno --no-recursion --output-filename \
+            ${gen.info} ${temp.dir}/coverage-data/*.gcno --no-recursion --output-filename \
             ${temp.dir}/${module.name}-temp.info
             #Remove symbols we're not interested in.
             lcov -r ${temp.dir}/${module.name}-temp.info ${framework.symbols} > ${temp.dir}/${module.name}.info
