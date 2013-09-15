@@ -1380,6 +1380,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../\"/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -1416,6 +1417,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../\"/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;

@@ -11,6 +11,7 @@
 
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "TyphoonStringUtils.h"
 
 @interface TyphoonStringUtilsTests : SenTestCase
 
@@ -20,6 +21,12 @@
 
 @implementation TyphoonStringUtilsTests
 
+- (void)test_should_match_alpha_chars
+{
+    assertThatBool([TyphoonStringUtils isAlpha:@"1234"], equalToBool(NO));
+    assertThatBool([TyphoonStringUtils isAlpha:@"abc1234"], equalToBool(NO));
 
+    assertThatBool([TyphoonStringUtils isAlpha:@"abc"], equalToBool(YES));
+}
 
 @end
