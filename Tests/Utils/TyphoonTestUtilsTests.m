@@ -10,6 +10,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <SenTestingKit/SenTestingKit.h>
+#import <Typhoon/TyphoonTestUtils.h>
+#import "OCLogTemplate.h"
 
 @interface TyphoonTestUtilsTests : SenTestCase
 
@@ -19,6 +21,37 @@
 
 - (void)test_should_waitForCondition_to_occur
 {
+
+    __block NSString* willLoadLater = nil;
+    dispatch_async(dispatch_queue_create("fetcher.queue", DISPATCH_QUEUE_CONCURRENT), ^(void)
+    {
+        LogDebug(@"Loading remote data. . . ");
+        [NSThread sleepForTimeInterval:2.7];
+        willLoadLater = @"Foobar!";
+    });
+
+    [TyphoonTestUtils waitForCondition:^BOOL()
+    {
+        typhoon_asynch_condition(willLoadLater != nil);
+    }];
+}
+
+- (void)test_should_throw_an_exception_if_condition_does_not_occur
+{
+
+    NSString* willNeverLoad = nil;
+    @try
+    {
+        [TyphoonTestUtils wait:2 secondsForCondition:^BOOL()
+        {
+            typhoon_asynch_condition(willNeverLoad != nil);
+        } andPerformTests:nil];
+        STFail(@"Should have thrown exception");
+    }
+    @catch (NSException* e)
+    {
+        assertThat([e description], equalTo(@"Condition didn't happen before timeout: 2.000000"));
+    }
 
 
 }
