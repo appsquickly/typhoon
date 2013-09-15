@@ -204,7 +204,7 @@
             ${gen.info} ${temp.dir}/coverage-data/*.gcno --no-recursion --output-filename \
             ${temp.dir}/${module.name}-temp.info
             #Remove symbols we're not interested in.
-            lcov -r ${temp.dir}/${module.name}-temp.info ${framework.symbols} > ${temp.dir}/${module.name}.info
+            ${lcov} -r ${temp.dir}/${module.name}-temp.info ${framework.symbols} > ${temp.dir}/${module.name}.info
         </echo>
         <chmod perm="+x" file="${temp.dir}/geninfo.sh"/>
         <exec executable="${temp.dir}/geninfo.sh" failonerror="true" failifexecutionfails="true"/>
@@ -213,7 +213,7 @@
             #!/bin/bash
             set -e # fail script if any commands fail
             
-            genhtml --no-function-coverage --no-branch-coverage -o ${coverage.reports.dir} \
+            ${gen.html} --no-function-coverage --no-branch-coverage -o ${coverage.reports.dir} \
             --prefix ${basedir} ${temp.dir}/${module.name}.info
         </echo>
         <chmod perm="+x" file="${temp.dir}/genhtml.sh"/>
