@@ -174,9 +174,10 @@ each commit. (If you'd like the script I will share it).
 * Look at, and contribute to the <a href="https://github.com/jasperblues/Typhoon/wiki/Roadmap">roadmap</a> here.
 
 
-# Frequently Asked Questions
+# Got a question? Need some help? 
 
-. . . are <a href="http://www.typhoonframework.org/#services">here</a>.
+We monitor the Typhoon tag on <a href="http://stackoverflow.com/questions/tagged/typhoon?sort=newest&pageSize=15">Stack Overflow</a>.
+
 
 # Core Team
 
