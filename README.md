@@ -176,7 +176,8 @@ each commit. (If you'd like the script I will share it).
 
 # Got a question? Need some help? 
 
-We monitor the Typhoon tag on <a href="http://stackoverflow.com/questions/tagged/typhoon?sort=newest&pageSize=15">Stack Overflow</a>.
+* We monitor the Typhoon tag on <a href="http://stackoverflow.com/questions/tagged/typhoon?sort=newest&pageSize=15">Stack Overflow</a>.
+* Professional consultation is available from key contributors, located in the US, Europe and Asia. 
 
 
 # Core Team
