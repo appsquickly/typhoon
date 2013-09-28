@@ -41,7 +41,10 @@
 - (id)pop
 {
 	id element = [_storage lastObject];
-	[_storage removeLastObject];
+    if ([self isEmpty] == NO)
+    {
+        [_storage removeLastObject];
+    }
 	return element;
 }
 
