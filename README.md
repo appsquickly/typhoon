@@ -1,4 +1,4 @@
-<img src="http://appsquick.dyndns.org:8080/buildStatus/icon?job=Typhoon"/>
+![Build Status](http://appsquick.dyndns.org:8080/buildStatus/icon?job=Typhoon)
 
 # Typhoon! (www.typhoonframework.org) 
 
