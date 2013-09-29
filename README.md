@@ -1,4 +1,4 @@
-[![Build Status](http://appsquick.dyndns.org:8080/buildStatus/icon?job=Typhoon)](http://appsquick.dyndns.org:8080/job/Typhoon/)
+![Build Status](http://appsquick.dyndns.org:8080/buildStatus/icon?job=Typhoon)
 
 # Typhoon! (www.typhoonframework.org) 
 
