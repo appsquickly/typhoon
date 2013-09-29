@@ -1,5 +1,3 @@
-![Build Status](http://appsquick.dyndns.org:8080/job/Typhoon/badge/icon)
-
 # Typhoon! (www.typhoonframework.org) 
 
 A new dependency injection container for Objective-C. Light-weight, yet full-featured and super-easy to use. 
