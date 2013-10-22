@@ -81,7 +81,7 @@
     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
     long long converted = 0;
     [scanner scanLongLong:&converted];
-    return [[NSNumber numberWithLong:converted] unsignedLongValue];
+    return [[NSNumber numberWithLongLong:converted] unsignedLongValue];
 }
 
 - (unsigned long long)convertToUnsignedLongLong:(NSString*)stringValue

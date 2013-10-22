@@ -70,7 +70,7 @@
 
     [NSException raise:NSInvalidArgumentException format:@"Property named '%@' on '%@' is neither an NSSet nor NSArray.", _name,
                                                          NSStringFromClass(describedClass)];
-    return nil;
+    return 0;
 }
 
 /* ====================================================================================================================================== */
