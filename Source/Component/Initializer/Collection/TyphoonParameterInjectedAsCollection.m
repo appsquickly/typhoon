@@ -66,7 +66,7 @@
     
     [NSException raise:NSInvalidArgumentException format:@"Required collection type '%@' is neither an NSSet nor NSArray.",
      NSStringFromClass(clazz)];
-    return nil;
+    return 0;
 }
 
 @end
