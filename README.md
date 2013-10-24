@@ -204,6 +204,14 @@ is not the same as heavy.
 ****
 
 
+# Apps Using Typhoon
+
+In the months since release, there have been scores app built with Typhoon. Here are some of them: 
+
+* ACO Virtual <a href="http://vimeo.com/75451558">iPad controller</a> and <a href="https://itunes.apple.com/au/app/aco-virtual/id623225640?mt=8">companion AR app for iPhone.</a>
+
+
+
 # LICENSE
 
 Apache License, Version 2.0, January 2004, http://www.apache.org/licenses/
