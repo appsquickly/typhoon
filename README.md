@@ -210,7 +210,7 @@ In the months since release, there have been scores app built with Typhoon. Here
 
 * ACO Virtual <a href="http://vimeo.com/75451558">iPad controller</a> and <a href="https://itunes.apple.com/au/app/aco-virtual/id623225640?mt=8">companion AR app for iPhone.</a>
 * <a href="http://itunes.com/apps/GonnaGo">GonnaGo</a> - a social travel app. 
-* <a href="appstore.com/alpify">Alpify</a>
+* <a href="http://appstore.com/alpify">Alpify</a>
 
 
 
