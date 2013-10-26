@@ -41,50 +41,69 @@
     xmlNodePtr node_;
 }
 
-- (id)initFromXMLString:(NSString *)xmlString encoding:(NSStringEncoding)encoding;
-- (id)initFromXMLFile:(NSString *)filename;
-- (id)initFromXMLFile:(NSString *)filename fileExtension:(NSString*)extension;
-- (id)initFromURL:(NSURL *)url;
-- (id)initFromXMLData:(NSData *)data;
+- (id)initFromXMLString:(NSString*)xmlString encoding:(NSStringEncoding)encoding;
+
+- (id)initFromXMLFile:(NSString*)filename;
+
+- (id)initFromXMLFile:(NSString*)filename fileExtension:(NSString*)extension;
+
+- (id)initFromURL:(NSURL*)url;
+
+- (id)initFromXMLData:(NSData*)data;
+
 - (id)initFromXMLNode:(xmlNodePtr)node;
 
-+ (id)elementFromXMLString:(NSString *)xmlString encoding:(NSStringEncoding)encoding;
-+ (id)elementFromXMLFile:(NSString *)filename;
-+ (id)elementFromXMLFilename:(NSString *)filename fileExtension:(NSString *)extension;
-+ (id)elementFromURL:(NSURL *)url;
-+ (id)elementFromXMLData:(NSData *)data;
++ (id)elementFromXMLString:(NSString*)xmlString encoding:(NSStringEncoding)encoding;
+
++ (id)elementFromXMLFile:(NSString*)filename;
+
++ (id)elementFromXMLFilename:(NSString*)filename fileExtension:(NSString*)extension;
+
++ (id)elementFromURL:(NSURL*)url;
+
++ (id)elementFromXMLData:(NSData*)data;
+
 + (id)elementFromXMLNode:(xmlNodePtr)node;
 
-- (NSString *)attribute:(NSString *)attributeName;
-- (NSString *)attribute:(NSString *)attributeName inNamespace:(NSString *)ns;
+- (NSString*)attribute:(NSString*)attributeName;
 
-- (NSInteger)attributeAsInt:(NSString *)attributeName;
-- (NSInteger)attributeAsInt:(NSString *)attributeName inNamespace:(NSString *)ns;
+- (NSString*)attribute:(NSString*)attributeName inNamespace:(NSString*)ns;
 
-- (double)attributeAsDouble:(NSString *)attributeName;
-- (double)attributeAsDouble:(NSString *)attributeName inNamespace:(NSString *)ns;
+- (NSInteger)attributeAsInt:(NSString*)attributeName;
 
-- (BOOL)attributeAsBool:(NSString *)attName;
-- (BOOL)attributeAsBool:(NSString *)attName inNamespace:(NSString *)ns;
+- (NSInteger)attributeAsInt:(NSString*)attributeName inNamespace:(NSString*)ns;
 
-- (TyphoonRXMLElement*)child:(NSString *)tag;
-- (TyphoonRXMLElement*)child:(NSString *)tag inNamespace:(NSString *)ns;
+- (double)attributeAsDouble:(NSString*)attributeName;
 
-- (NSArray *)children:(NSString *)tag;
-- (NSArray *)children:(NSString *)tag inNamespace:(NSString *)ns;
-- (NSArray *)childrenWithRootXPath:(NSString *)xpath;
+- (double)attributeAsDouble:(NSString*)attributeName inNamespace:(NSString*)ns;
 
-- (void)iterate:(NSString *)query usingBlock:(void (^)(TyphoonRXMLElement*))blk;
-- (void)iterateWithRootXPath:(NSString *)xpath usingBlock:(void (^)(TyphoonRXMLElement*))blk;
-- (void)iterateElements:(NSArray *)elements usingBlock:(void (^)(TyphoonRXMLElement*))blk;
+- (BOOL)attributeAsBool:(NSString*)attName;
 
-@property (nonatomic, readonly) NSString *tag;
-@property (nonatomic, readonly) NSString *text;
-@property (nonatomic, readonly) NSInteger textAsInt;
-@property (nonatomic, readonly) double textAsDouble;
-@property (nonatomic, readonly) BOOL isValid;
-@property (nonatomic, assign) TyphoonScope defaultScope;
+- (BOOL)attributeAsBool:(NSString*)attName inNamespace:(NSString*)ns;
+
+- (TyphoonRXMLElement*)child:(NSString*)tag;
+
+- (TyphoonRXMLElement*)child:(NSString*)tag inNamespace:(NSString*)ns;
+
+- (NSArray*)children:(NSString*)tag;
+
+- (NSArray*)children:(NSString*)tag inNamespace:(NSString*)ns;
+
+- (NSArray*)childrenWithRootXPath:(NSString*)xpath;
+
+- (void)iterate:(NSString*)query usingBlock:(void (^)(TyphoonRXMLElement*))blk;
+
+- (void)iterateWithRootXPath:(NSString*)xpath usingBlock:(void (^)(TyphoonRXMLElement*))blk;
+
+- (void)iterateElements:(NSArray*)elements usingBlock:(void (^)(TyphoonRXMLElement*))blk;
+
+@property(nonatomic, readonly) NSString* tag;
+@property(nonatomic, readonly) NSString* text;
+@property(nonatomic, readonly) NSInteger textAsInt;
+@property(nonatomic, readonly) double textAsDouble;
+@property(nonatomic, readonly) BOOL isValid;
+@property(nonatomic, assign) TyphoonScope defaultScope;
 
 @end
 
-typedef void (^TyphoonRXMLBlock)(TyphoonRXMLelement*element);
+typedef void (^TyphoonRXMLBlock)(TyphoonRXMLElement* element);

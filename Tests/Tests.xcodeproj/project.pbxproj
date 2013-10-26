@@ -831,7 +831,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					4B9685A117D26E8200E69723 = {
-						TestTargetID = 4B84146B179B0E3900916BF5;
+						TestTargetID = 4B84146B179B0E3900916BF5 /* iOS Tests (Cocoapods) */;
 					};
 				};
 			};
@@ -1350,7 +1350,7 @@
 				INFOPLIST_FILE = "Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos7.0;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s i386 x86_64";
 				WRAPPER_EXTENSION = octest;
@@ -1501,7 +1501,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos7.0;
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Tests/Pods\"/**";
 				VALID_ARCHS = "armv7 armv7s i386 x86_64";
 				WRAPPER_EXTENSION = octest;
@@ -1549,7 +1549,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos7.0;
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Tests/Pods\"/**";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s i386 x86_64";

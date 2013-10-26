@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 PODS="${PROJECT_DIR}/Pods"
 REPO_ROOT="${PROJECT_DIR}/.."
