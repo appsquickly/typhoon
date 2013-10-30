@@ -208,10 +208,10 @@ is not the same as heavy.
 
 In the months since release, there have been scores app built with Typhoon. Here are some of them: 
 
-* ACO Virtual <a href="http://vimeo.com/75451558">iPad controller</a> and <a href="https://itunes.apple.com/au/app/aco-virtual/id623225640?mt=8">companion AR app for iPhone.</a>
+* ACO Virtual <a href="http://vimeo.com/75451558">iPad controller</a> and <a href="https://itunes.apple.com/au/app/aco-virtual/id623225640?mt=8">companion AR app for iPhone.</a> (This app was recently "featured" in the AppStore). 
 * <a href="http://itunes.com/apps/GonnaGo">GonnaGo</a> - a social travel app. 
 * <a href="http://appstore.com/alpify">Alpify</a> - don't go skiing or snow boarding without it!
-* Many others. . . ***You app here!!!***
+* Many others. . . ***Your app here!!!***
 
 
 
