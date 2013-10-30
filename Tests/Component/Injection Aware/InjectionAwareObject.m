@@ -9,14 +9,14 @@
 #import "InjectionAwareObject.h"
 
 @implementation InjectionAwareObject {
-    id assembly;
+    id factory;
 }
 
-@synthesize assembly;
+@synthesize factory;
 
-- (void)setAssembly:(id)theAssembly
+- (void)setFactory:(id)theFactory
 {
-    assembly = theAssembly;
+    factory = theFactory;
 }
 
 @end

@@ -10,6 +10,6 @@
 
 @protocol TyphoonInjectionAware <NSObject>
 
-- (void)setAssembly:(id)assembly;
+- (void)setFactory:(id)theFactory;
 
 @end

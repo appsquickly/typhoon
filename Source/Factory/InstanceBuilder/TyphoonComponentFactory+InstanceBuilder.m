@@ -113,7 +113,7 @@
 
 - (void)injectAssemblyOnInstance:(id <TyphoonInjectionAware>)instance;
 {
-    [instance setAssembly:self];
+    [instance setFactory:self];
 }
 
 - (void)markDoneResolvingDefinition:(TyphoonDefinition *)definition;

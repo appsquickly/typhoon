@@ -11,6 +11,6 @@
 
 @interface InjectionAwareObject : NSObject <TyphoonInjectionAware>
 
-@property (readonly) id assembly;
+@property (readonly) id factory;
 
 @end

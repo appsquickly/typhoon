@@ -30,7 +30,7 @@
 - (void)test_reference_to_assembly_set_on_injection_aware_object;
 {
     object = [factory injectionAwareObject];
-    assertThat(object.assembly, sameInstance(factory));
+    assertThat(object.factory, sameInstance(factory));
 }
 
 @end
