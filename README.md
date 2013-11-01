@@ -2,6 +2,8 @@
 
 A new dependency injection container for Objective-C. Light-weight, yet full-featured and super-easy to use. 
 
+***New!!!:*** I respond to Sharp5's question 'Is Dependency Injection a virtue in Objective-C' on the <a href="http://www.typhoonframework.org/#services">Typhoon FAQ</a>
+
 
 ## Familiar with Dependency Injection?
 
