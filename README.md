@@ -115,7 +115,7 @@ following:
 * No magic strings - supports IDE refactoring, code-completion and compile-time checking. 
 
 * Promotes full-modularization and encapsulation of configuration details. While the macro-driven approach used in 
-other DI containers can be useful (Typhoon supports these too) the focus is on grouping the application assembly 
+other DI containers can be useful (Typhoon supports these too), the focus is on grouping the application assembly 
 details into a single document, with chapters. 
 
 * Dependencies declared in any order. (The order that makes sense to humans).
