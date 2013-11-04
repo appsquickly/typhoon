@@ -110,7 +110,9 @@ following:
 
 ## Design Goals / Features
 
-* Non-invasive. No macros or XML required - uses a powerful Objective-C run-time approach. Its not necessary to change ***any*** of your classes to use the framework. Can be introduced into legacy applications.
+* Non-invasive. No macros or XML required, while Spring-style XML or Guice-style macros are supported (because they're sometimes useful), the main focus is on a powerful Objective-C run-time approach. 
+
+* Its not necessary to change ***any*** of your classes to use the framework. Can be introduced into legacy applications.
 
 * No magic strings - supports IDE refactoring, code-completion and compile-time checking. 
 
@@ -132,8 +134,6 @@ good compromise between integration testing and pure unit testing. (Biggest test
 
 * Supports both initializer and property injection. In the case of the latter, it has customizable call-backs to 
 ensure that the class is in the required state before and after properties are set. 
-
-* Flexibility. Supports different approaches of dependency injection for different scenarios - native block-style, auto-wiring macros or Spring-style XML.
 
 * Excellent support for circular dependencies, and powerful memory management features. Get the benefits of singleton classes, without the memory overhead. 
 
