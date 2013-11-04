@@ -110,7 +110,7 @@ following:
 
 ## Design Goals / Features
 
-* Non-invasive. No macros or XML required - uses a powerful Objective-C run-time approach. 
+* Non-invasive. No macros or XML required - uses a powerful Objective-C run-time approach. Its not necessary to change ***any*** of your classes to use the framework. Can be introduced into legacy applications.
 
 * No magic strings - supports IDE refactoring, code-completion and compile-time checking. 
 
@@ -129,8 +129,6 @@ details into a single document, with chapters.
 good compromise between integration testing and pure unit testing. (Biggest testing bang-for-your-buck). 
 
 * Supports injection of view controllers and storyboard integration. 
- 
-* Non-invasive. Its not necessary to change ***any*** of your classes to use the framework. Can be introduced into legacy applications. 
 
 * Supports both initializer and property injection. In the case of the latter, it has customizable call-backs to 
 ensure that the class is in the required state before and after properties are set. 
