@@ -130,7 +130,7 @@ details into a single document, with chapters. ***Let your architecture tell a s
 * . . . ability to configure components for use in eg ___Test___ vs ___Production___ scenarios. This faciliates a 
 good compromise between integration testing and pure unit testing. (Biggest testing bang-for-your-buck). 
 
-* Supports ***injection of view controllers** and ***storyboard integration.*** 
+* Supports ***injection of view controllers*** and ***storyboard integration.*** 
 
 * Supports both ***initializer*** and ***property injection***. In the case of the latter, it has customizable call-backs to 
 ensure that the class is in the required state before and after properties are set. 
