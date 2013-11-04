@@ -110,7 +110,7 @@ following:
 
 ## Design Goals / Features
 
-* Non-invasive. ***No macros or XML required***. . . while Spring-style XML or Guice-style macros are supported (because they're sometimes useful), the main focus is on a powerful Objective-C run-time approach. 
+* Non-invasive. ***No macros or XML required***. . . while ***Spring-style XML*** or ***Guice-style macros*** are fully supported (because these ***are*** sometimes useful), the main focus is on a powerful Objective-C run-time approach. 
 
 * Its not necessary to change ***any*** of your classes to use the framework. Can be introduced into legacy applications.
 
