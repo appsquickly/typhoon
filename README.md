@@ -113,14 +113,14 @@ following:
 * Non-invasive. ***No macros or XML required***. . . while ***Spring-style XML*** or ***Guice-style macros*** are fully 
 supported (and sometimes useful), the main focus is on a <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">powerful Objective-C runtime approach.</a> 
 
-* Its not necessary to change ***any*** of your classes to use the framework. Can be introduced into legacy applications.
+* Its not necessary to change ***any*** of your classes to use the framework. ***Can be introduced into legacy applications.***
 
-* No magic strings - supports IDE refactoring, code-completion and compile-time checking. 
+* No magic strings - ***supports IDE refactoring, code-completion and compile-time checking.*** 
 
-* Provides full-modularization and encapsulation of configuration details - grouping the application assembly 
+* Provides ***full-modularization and encapsulation of configuration details*** - grouping the application assembly 
 details into a single document, with chapters. Let your architecture tell a story. 
 
-* Dependencies declared in any order. (The order that makes sense to humans).
+* ***Dependencies declared in any order.*** (The order that makes sense to humans).
 
 * Makes it easy to have multiple configurations of the same base-class or protocol. 
 
@@ -130,16 +130,18 @@ details into a single document, with chapters. Let your architecture tell a stor
 * . . . ability to configure components for use in eg ___Test___ vs ___Production___ scenarios. This faciliates a 
 good compromise between integration testing and pure unit testing. (Biggest testing bang-for-your-buck). 
 
-* Supports injection of view controllers and storyboard integration. 
+* Supports ***injection of view controllers** and ***storyboard integration.*** 
 
-* Supports both initializer and property injection. In the case of the latter, it has customizable call-backs to 
+* Supports both ***initializer*** and ***property injection***. In the case of the latter, it has customizable call-backs to 
 ensure that the class is in the required state before and after properties are set. 
 
-* Excellent support for circular dependencies, and powerful memory management features. Get the benefits of singleton classes, without the memory overhead. 
+* Excellent ***support for circular dependencies.***
 
-* Lean. It has a very low footprint, so is appropriate for CPU and memory constrained devices. 
+* ***Powerful memory management features***. Get the benefits of singleton classes, without the memory overhead. 
 
-* Battle-tested - used in all kinds of Appstore-featured apps. 
+* ***Lean***. It has a very low footprint, so is appropriate for CPU and memory constrained devices. 
+
+* ***Battle-tested*** - used in all kinds of Appstore-featured apps. 
 
 
 # Usage
