@@ -111,7 +111,7 @@ following:
 ## Design Goals / Features
 
 * Non-invasive. ***No macros or XML required***. . . while ***Spring-style XML*** or ***Guice-style macros*** are fully 
-supported (and sometimes useful), the main focus is on a <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">powerful Objective-C run-time approach.</a> 
+supported (and sometimes useful), the main focus is on a <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">powerful Objective-C runtime approach.</a> 
 
 * Its not necessary to change ***any*** of your classes to use the framework. Can be introduced into legacy applications.
 
