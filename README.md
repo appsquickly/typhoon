@@ -110,7 +110,17 @@ following:
 
 ## Design Goals / Features
 
+* Non-invasive. No macros or XML required - uses a powerful Objective-C run-time approach. 
+
+* No magic strings - supports IDE refactoring, code-completion and compile-time checking. 
+
+* Promotes full-modularization and encapsulation of configuration details. While the macro-driven approach used in 
+other DI containers can be useful (Typhoon supports these too) the focus is on grouping the application assembly 
+details into a single document, with chapters. 
+
 * Dependencies declared in any order. (The order that makes sense to humans).
+
+* Makes it easy to have multiple configurations of the same base-class or protocol. 
 
 * Allows both dependency injection (injection of classes defined in the DI context) as well as configuration 
  management (values that get converted to the required type at runtime). Because this allows. . . 
@@ -118,24 +128,20 @@ following:
 * . . . ability to configure components for use in eg ___Test___ vs ___Production___ scenarios. This faciliates a 
 good compromise between integration testing and pure unit testing. (Biggest testing bang-for-your-buck). 
 
-* ***Doesn't get all "meta" on you. Supports auto-wiring "annotations" (macros), for simple cases. When convention-over-configuration doesn't provide a simple answer, it 
-gets straight-to-the-point by defining what depends on what.*** 
-
-* No fragmented qualifier macros, modules, etc. Makes it easy to have multiple configurations of the same base-class or protocol. 
+* Supports injection of view controllers and storyboard integration. 
  
-* Application assembly - the wiring of dependencies and configuration management - is all encapsulated in a 
-convenient document. At the same time this document can be grouped into chapters. Now you know where to look if you need to change something. 
-
-* Non-invasive. Its not necessary to change ***any*** of your classes to use the framework. It does not swizzle your classes, so you can use the same class with or without dependency injection. 
+* Non-invasive. Its not necessary to change ***any*** of your classes to use the framework. Can be introduced into legacy applications. 
 
 * Supports both initializer and property injection. In the case of the latter, it has customizable call-backs to 
 ensure that the class is in the required state before and after properties are set. 
 
 * Flexibility. Supports different approaches of dependency injection for different scenarios - native block-style, auto-wiring macros or Spring-style XML.
 
-* Excellent support for circular dependencies. 
+* Excellent support for circular dependencies, and powerful memory management features. Get the benefits of singleton classes, without the memory overhead. 
 
 * Lean. It has a very low footprint, so is appropriate for CPU and memory constrained devices. 
+
+* Battle-tested - used in all kinds of Appstore-featured apps. 
 
 
 # Usage
