@@ -148,7 +148,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
         NSString* top = [resolveStack objectAtIndex:[resolveStack count] - 1];
         if ([top isEqualToString:bottom])
         {
-            LogInfo(@"Circular dependency detected in definition for key '%@'. Breaking the cycle.", key);
+            LogTrace(@"Circular dependency detected in definition for key '%@'. Breaking the cycle.", key);
             return YES;
         }
     }
