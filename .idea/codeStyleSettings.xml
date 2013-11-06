@@ -4,6 +4,8 @@
     <option name="PER_PROJECT_SETTINGS">
       <value>
         <Objective-C>
+          <option name="METHOD_BRACE_PLACEMENT" value="2" />
+          <option name="FUNCTION_BRACE_PLACEMENT" value="2" />
           <option name="SPACE_BEFORE_POINTER_IN_DECLARATION" value="false" />
           <option name="SPACE_AFTER_POINTER_IN_DECLARATION" value="true" />
         </Objective-C>
