@@ -161,12 +161,16 @@ static TyphoonComponentFactory* defaultFactory;
     }
 
     if ([self notLoaded])
-    {[self load];}
+    {
+        [self load];
+    }
+
     TyphoonDefinition* definition = [self definitionForKey:key];
     if (!definition)
     {
         [NSException raise:NSInvalidArgumentException format:@"No component matching id '%@'.", key];
     }
+
     return [self objectForDefinition:definition];
 }
 
