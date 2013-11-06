@@ -137,7 +137,7 @@ ensure that the class is in the required state before and after properties are s
 
 * Excellent ***support for circular dependencies.***
 
-* ***Powerful memory management features***. Get the benefits of singleton classes, without the memory overhead. 
+* ***Powerful memory management features***. Provides pre-configured objects, without the memory overhead of singletons.
 
 * ***Lean***. It has a very low footprint, so is appropriate for CPU and memory constrained devices. 
 
