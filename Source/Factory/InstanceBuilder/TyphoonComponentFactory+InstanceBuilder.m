@@ -44,11 +44,8 @@
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
 	__autoreleasing id <TyphoonIntrospectiveNSObject> instance;
-
 	instance = [self allocateInstance:instance withDefinition:definition];
-
 	instance = [self injectInstance:instance withDefinition:definition];
-
 	return instance;
 }
 
@@ -56,14 +53,18 @@
 {
     if (definition.factoryReference)
     {
+        // misleading - this is not the instance. this is an instance of a seperate class tnat will create the instance of the class we care about.
+        // consider it an allocator
         instance = [self componentForKey:definition.factoryReference]; // clears currently resolving.
     }
     else if (definition.initializer && definition.initializer.isClassMethod)
     {
+        // this is an instance of the class, needing no more init.
         instance = [self invokeInitializerOn:definition.type withDefinition:definition];
     }
     else
     {
+        // this is an instance, needing later init.
         instance = [definition.type alloc];
     }
 
@@ -98,7 +99,13 @@
     }
     else if (definition.initializer == nil)
     {
-        instance = objc_msgSend(instance, @selector(init));
+        if (definition.parent) {
+            // use the parents initializer, instead.
+            instance = [self initializerInjectionOn:instance withDefinition:definition.parent];
+        }else{
+            // default initializer
+            instance = objc_msgSend(instance, @selector(init));
+        }
     }
 
 	return instance;
@@ -306,7 +313,8 @@
 {
     NSInvocation* invocation = [definition.initializer asInvocationFor:instanceOrClass];
 
-    for (id <TyphoonInjectedParameter> parameter in [definition.initializer injectedParameters])
+    NSArray* injectedParameters = [definition.initializer injectedParameters];
+    for (id <TyphoonInjectedParameter> parameter in injectedParameters)
     {
         if (parameter.type == TyphoonParameterInjectionTypeReference)
         {
