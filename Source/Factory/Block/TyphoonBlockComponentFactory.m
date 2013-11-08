@@ -45,30 +45,45 @@ static NSMutableArray* swizzleRegistry;
 }
 
 
-+ (id)factoryWithAssembly:(TyphoonAssembly*)assembly
++ (instancetype)factoryWithAssembly:(TyphoonAssembly*)assembly
 {
-    return [[[self class] alloc] initWithAssembly:assembly];
+    return [[self alloc] initWithAssemblies:@[assembly]];
+}
+
++ (instancetype)factoryWithAssemblies:(NSArray*)assemblies
+{
+    return [[self alloc] initWithAssemblies:assemblies];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithAssembly:(TyphoonAssembly*)assembly;
+- (instancetype)initWithAssembly:(TyphoonAssembly*)assembly
 {
-    LogTrace(@"Building assembly: %@", NSStringFromClass([assembly class]));
-    if (![assembly isKindOfClass:[TyphoonAssembly class]])
-    {
-        [NSException raise:NSInvalidArgumentException format:@"Class '%@' is not a sub-class of %@", NSStringFromClass([assembly class]),
-                                                             NSStringFromClass([TyphoonAssembly class])];
-    }
+    return [self initWithAssemblies:@[assembly]];
+}
+
+- (instancetype)initWithAssemblies:(NSArray*)assemblies
+{
     self = [super init];
     if (self)
     {
-        [self applyBeforeAdviceToAssemblyMethods:assembly];
-        NSArray* definitions = [self definitionsByPopulatingCache:assembly];
-        for (TyphoonDefinition* definition in definitions)
+        for (TyphoonAssembly* assembly in assemblies)
         {
-            [self register:definition];
+            LogTrace(@"Building assembly: %@", NSStringFromClass([assembly class]));
+            if (![assembly isKindOfClass:[TyphoonAssembly class]])
+            {
+                [NSException raise:NSInvalidArgumentException format:@"Class '%@' is not a sub-class of %@",
+                                                                     NSStringFromClass([assembly class]),
+                                                                     NSStringFromClass([TyphoonAssembly class])];
+            }
+
+            [self applyBeforeAdviceToAssemblyMethods:assembly];
+            NSArray* definitions = [self definitionsByPopulatingCache:assembly];
+            for (TyphoonDefinition* definition in definitions)
+            {
+                [self register:definition];
+            }
         }
     }
     return self;
@@ -138,9 +153,9 @@ static NSMutableArray* swizzleRegistry;
 
 - (BOOL)classNotRootAssemblyClass:(Class)currentClass;
 {
-    NSString *currentClassName = NSStringFromClass(currentClass);
-    NSString *rootAssemblyClassName = NSStringFromClass([TyphoonAssembly class]);
-    
+    NSString* currentClassName = NSStringFromClass(currentClass);
+    NSString* rootAssemblyClassName = NSStringFromClass([TyphoonAssembly class]);
+
     return ![currentClassName isEqualToString:rootAssemblyClassName];
 }
 
@@ -204,10 +219,10 @@ typedef void(^MethodEnumerationBlock)(Method method);
     return ![swizzleRegistry containsObject:[assembly class]];
 }
 
-- (void)swizzleAssemblyMethods:(TyphoonAssembly *)assembly;
+- (void)swizzleAssemblyMethods:(TyphoonAssembly*)assembly;
 {
     [self markAssemblyMethodsAsSwizzled:assembly];
-    
+
     NSSet* definitionSelectors = [self obtainDefinitionSelectors:assembly];
     [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
     {

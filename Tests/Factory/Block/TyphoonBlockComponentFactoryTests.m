@@ -38,28 +38,40 @@
     [configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
     [_componentFactory attachPostProcessor:configurer];
 
-    _exceptionTestFactory = [[TyphoonBlockComponentFactory  alloc] initWithAssembly:[ExceptionTestAssembly assembly]];
+    _exceptionTestFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[ExceptionTestAssembly assembly]];
     _circularDependenciesFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[CircularDependenciesAssembly assembly]];
     _singletonsChainFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[SingletonsChainAssembly assembly]];
     _infrastructureComponentsFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[InfrastructureComponentsAssembly assembly]];
-  
+
 }
 
 - (void)test_resolves_component_using_selector
 {
-    MiddleAgesAssembly* assembly = (MiddleAgesAssembly *)_componentFactory;
+    MiddleAgesAssembly* assembly = (MiddleAgesAssembly*) _componentFactory;
     Knight* knight = [assembly knight];
     assertThat(knight, notNilValue());
 }
 
 - (void)test_allows_injecting_properties_with_object_instance
 {
-    MiddleAgesAssembly* assembly = (MiddleAgesAssembly *)_componentFactory;
+    MiddleAgesAssembly* assembly = (MiddleAgesAssembly*) _componentFactory;
     CavalryMan* knight = [assembly yetAnotherKnight];
     assertThat(knight.propertyInjectedAsInstance, notNilValue());
 
     LogDebug(@"%@", knight.propertyInjectedAsInstance);
 }
+
+- (void)test_allows_initialization_with_a_collection_of_assemblies
+{
+    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
+        [MiddleAgesAssembly assembly],
+        [CircularDependenciesAssembly assembly]
+    ]];
+
+    assertThat([(MiddleAgesAssembly*) factory cavalryMan], notNilValue());
+    assertThat([(CircularDependenciesAssembly*) factory classA], notNilValue());
+}
+
 
 @end
 

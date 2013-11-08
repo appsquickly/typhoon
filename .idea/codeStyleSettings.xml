@@ -34,12 +34,15 @@
             <option name="com.jetbrains.objc.util.OCDeclarationKind" value="DeallocMethod" />
           </class>
         </Objective-C-extensions>
+        <XML>
+          <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
+        </XML>
         <codeStyleSettings language="ObjectiveC">
           <option name="SPACE_AROUND_LOGICAL_OPERATORS" value="false" />
         </codeStyleSettings>
       </value>
     </option>
-    <option name="USE_PER_PROJECT_SETTINGS" value="true" />
+    <option name="PREFERRED_PROJECT_CODE_STYLE" value="Default (1)" />
   </component>
 </project>
 

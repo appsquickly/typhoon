@@ -178,7 +178,7 @@
 
 - (void)test_post_processor_component_recognized
 {
-  assertThatInt([_infrastructureComponentsFactory.postProcessors count], equalToInt(1));
+  assertThatUnsignedLong([_infrastructureComponentsFactory.postProcessors count], equalToInt(1));
 }
 
 /* ====================================================================================================================================== */

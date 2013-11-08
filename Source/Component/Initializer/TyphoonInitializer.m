@@ -61,7 +61,7 @@
 
 - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference
 {
-    if (index != NSUIntegerMax && index < [_parameterNames count])
+    if (index != NSIntegerMax && index < [_parameterNames count])
     {
         [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference]];
     }
@@ -79,7 +79,7 @@
 
 - (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass
 {
-    if (index != NSUIntegerMax && index < [_parameterNames count])
+    if (index != NSIntegerMax && index < [_parameterNames count])
     {
         TyphoonParameterInjectedWithStringRepresentation* parameterInjectedByValue =
                 [[TyphoonParameterInjectedWithStringRepresentation alloc] initWithIndex:index value:text requiredTypeOrNil:requiredClass];
@@ -111,7 +111,7 @@
 
 - (void)injectParameterAtIndex:(NSUInteger)index withObject:(id)value
 {
-    if (index != NSUIntegerMax && index < [_parameterNames count])
+    if (index != NSIntegerMax && index < [_parameterNames count])
     {
         [_injectedParameters addObject:[[TyphoonParameterInjectedWithObjectInstance alloc] initWithParameterIndex:index value:value]];
     }
@@ -153,7 +153,7 @@
         collectionValues(weakParameterInjectedAsCollection);
     }
     
-    if (index != NSUIntegerMax && index < [_parameterNames count])
+    if (index != NSIntegerMax && index < [_parameterNames count])
     {
         [_injectedParameters addObject:parameterInjectedAsCollection];
     }
@@ -180,10 +180,10 @@
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (int)indexOfParameter:(NSString*)name
+- (NSInteger)indexOfParameter:(NSString*)name
 {
-    int parameterIndex = NSUIntegerMax;
-    for (int i = 0; i < [_parameterNames count]; i++)
+    NSInteger parameterIndex = NSIntegerMax;
+    for (NSInteger i = 0; i < [_parameterNames count]; i++)
     {
         NSString* parameterName = [_parameterNames objectAtIndex:i];
         if ([name isEqualToString:parameterName])

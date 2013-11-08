@@ -96,7 +96,7 @@
     [_componentFactory register:knightDefinition];
     
     Knight* knight = [_componentFactory componentForKey:@"knight"];
-    assertThatInt([knight.favoriteDamsels count], equalToInt(2));
+    assertThatUnsignedLong([knight.favoriteDamsels count], equalToUnsignedLong(2));
 }
 
 

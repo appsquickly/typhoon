@@ -209,24 +209,25 @@ static NSString* const DEFAULT_QUEST = @"quest";
 
 - (void)test_post_processor_registration
 {
-  [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorMock class]]];
-   assertThatInt([[_componentFactory registry] count], equalToInt(0));
-   assertThatInt([[_componentFactory postProcessors] count], equalToInt(1));
+    [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorMock class]]];
+    assertThatUnsignedLong([[_componentFactory registry] count], equalToUnsignedLong(0));
+    assertThatUnsignedLong([[_componentFactory postProcessors] count], equalToUnsignedLong(1));
 }
 
 - (void)test_post_processors_applied
 {
-  [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorMock class]]];
-  [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorMock class]]];
-  [_componentFactory register:[TyphoonDefinition withClass:[Knight class]]];
-  
-  [_componentFactory load];
+    [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorMock class]]];
+    [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorMock class]]];
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class]]];
 
-  assertThatInt([[_componentFactory postProcessors] count], equalToInt(2));
-  for (TyphoonComponentFactoryPostProcessorMock *mock in _componentFactory.postProcessors) {
-    assertThatBool(mock.postProcessingCalled, equalToBool(YES));
-  }
-  
+    [_componentFactory load];
+
+    assertThatUnsignedLong([[_componentFactory postProcessors] count], equalToUnsignedLong(2));
+    for (TyphoonComponentFactoryPostProcessorMock* mock in _componentFactory.postProcessors)
+    {
+        assertThatBool(mock.postProcessingCalled, equalToBool(YES));
+    }
+
 }
 
 /* ====================================================================================================================================== */
@@ -239,10 +240,10 @@ static NSString* const DEFAULT_QUEST = @"quest";
         [definition injectProperty:@selector(quest)];
     }]];
     [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
-    
+
     Knight* knight = [[Knight alloc] init];
     [_componentFactory injectProperties:knight];
-    
+
     assertThat(knight.quest, notNilValue());
 
 }
@@ -250,67 +251,75 @@ static NSString* const DEFAULT_QUEST = @"quest";
 - (void)test_injectProperties_subclassing
 {
     [_componentFactory register:[TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
-                                 {
-                                     [definition injectProperty:@selector(quest)];
-                                 }]];
+    {
+        [definition injectProperty:@selector(quest)];
+    }]];
     [_componentFactory register:[TyphoonDefinition withClass:[CavalryMan class] properties:^(TyphoonDefinition* definition)
-                                 {
-                                     [definition injectProperty:@selector(hitRatio) withValueAsText:@"3.0"];
-                                 }]];
+    {
+        [definition injectProperty:@selector(hitRatio) withValueAsText:@"3.0"];
+    }]];
     [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
-    
+
     CavalryMan* cavalryMan = [[CavalryMan alloc] init];
     [_componentFactory injectProperties:cavalryMan];
-    
+
     assertThat(cavalryMan.quest, nilValue());
     assertThatFloat(cavalryMan.hitRatio, equalToFloat(3.0f));
-    
+
     Knight* knight = [[Knight alloc] init];
     [_componentFactory injectProperties:knight];
-    
+
     assertThat(knight.quest, notNilValue());
 }
 
-- (void)test_load_isLoad {
-	[_componentFactory load];
-	assertThatBool([_componentFactory isLoaded], is(@YES));
+- (void)test_load_isLoad
+{
+    [_componentFactory load];
+    assertThatBool([_componentFactory isLoaded], is(@YES));
 }
 
-- (void)test_unload_isLoad {
-	[_componentFactory load];
-	[_componentFactory unload];
-	assertThatBool([_componentFactory isLoaded], is(@NO));
+- (void)test_unload_isLoad
+{
+    [_componentFactory load];
+    [_componentFactory unload];
+    assertThatBool([_componentFactory isLoaded], is(@NO));
 }
 
-- (void)test_registery_isLoad {
-	[_componentFactory registry];
-	assertThatBool([_componentFactory isLoaded], is(@YES));
+- (void)test_registery_isLoad
+{
+    [_componentFactory registry];
+    assertThatBool([_componentFactory isLoaded], is(@YES));
 }
 
-- (void)test_load_post_processors {
-	id<TyphoonComponentFactoryPostProcessor> postProcessor = mockProtocol(@protocol(TyphoonComponentFactoryPostProcessor));
-	[_componentFactory attachPostProcessor:postProcessor];
-	[_componentFactory load];
-	[_componentFactory load]; // Should do nothing
-	[verifyCount(postProcessor, times(1)) postProcessComponentFactory:_componentFactory];
+- (void)test_load_post_processors
+{
+    id <TyphoonComponentFactoryPostProcessor> postProcessor = mockProtocol(@protocol(TyphoonComponentFactoryPostProcessor));
+    [_componentFactory attachPostProcessor:postProcessor];
+    [_componentFactory load];
+    [_componentFactory load]; // Should do nothing
+    [verifyCount(postProcessor, times(1)) postProcessComponentFactory:_componentFactory];
 }
 
 
-- (void)test_load_singleton {
-	[_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition *definition) {
-		[definition setScope:TyphoonScopeSingleton];
-		[definition setLazy:NO];
-	}]];
-	[_componentFactory register:[TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
-		[definition setScope:TyphoonScopeSingleton];
-		[definition setLazy:YES];
+- (void)test_load_singleton
+{
+    [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition* definition)
+    {
+        [definition setScope:TyphoonScopeSingleton];
+        [definition setLazy:NO];
     }]];
-	[_componentFactory register:[TyphoonDefinition withClass:[CavalryMan class] properties:^(TyphoonDefinition *definition) {
-		[definition setScope:TyphoonScopeDefault];
-		[definition setLazy:YES];
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
+    {
+        [definition setScope:TyphoonScopeSingleton];
+        [definition setLazy:YES];
     }]];
-	[_componentFactory load];
-	assertThatUnsignedInteger([[_componentFactory singletons] count], is(@1));
+    [_componentFactory register:[TyphoonDefinition withClass:[CavalryMan class] properties:^(TyphoonDefinition* definition)
+    {
+        [definition setScope:TyphoonScopeDefault];
+        [definition setLazy:YES];
+    }]];
+    [_componentFactory load];
+    assertThatUnsignedInteger([[_componentFactory singletons] count], is(@1));
 }
 
 
