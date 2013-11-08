@@ -217,11 +217,14 @@
 		4EFAF61517E0D54700E93ACF /* CROPrototypeB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */; };
 		52D870D7DE6E4FB09D059A5C /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B50DFBF255467DA9F7C30F /* libPods-ios.a */; };
 		BA79824D0006B0F9E50A41D3 /* TyphoonStringUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79854F29FE8A327A82E8BC /* TyphoonStringUtilsTests.m */; };
+		BA798380AD1E1F4160A4719C /* ExtendedMiddleAgesAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79870B653F1DB13DCE8543 /* ExtendedMiddleAgesAssembly.m */; };
 		BA7986F83BAB4E7D084B2AAA /* TyphoonUIColorConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7988D3F261F1B68761BEF2 /* TyphoonUIColorConverterTests.m */; };
 		BA79872D527DFBB10780B4BE /* TyphoonTestUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798D5A7C58902AB25FCCC9 /* TyphoonTestUtilsTests.m */; };
 		BA7987F45536829F901D8D6E /* TyphoonTestUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798D5A7C58902AB25FCCC9 /* TyphoonTestUtilsTests.m */; };
 		BA79880BD4B4A87C9F041E1A /* TyphoonUIColorConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7988D3F261F1B68761BEF2 /* TyphoonUIColorConverterTests.m */; };
 		BA7989B2482C57289EE056FE /* TyphoonTestUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798D5A7C58902AB25FCCC9 /* TyphoonTestUtilsTests.m */; };
+		BA7989FEB2CB1A63235D9AD2 /* ExtendedMiddleAgesAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79870B653F1DB13DCE8543 /* ExtendedMiddleAgesAssembly.m */; };
+		BA798C0AFB9D472511FB7B43 /* ExtendedMiddleAgesAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79870B653F1DB13DCE8543 /* ExtendedMiddleAgesAssembly.m */; };
 		BA798D9AF84869F576347FCC /* TyphoonStringUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79854F29FE8A327A82E8BC /* TyphoonStringUtilsTests.m */; };
 		BA798EC89A23D4FC0EFB465D /* TyphoonStringUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79854F29FE8A327A82E8BC /* TyphoonStringUtilsTests.m */; };
 		CD65DA1387F74352A0088704 /* libPods-iOS Tests (Cocoapods).a in Frameworks */ = {isa = PBXBuildFile; fileRef = B90D396911F743468FF96BB5 /* libPods-iOS Tests (Cocoapods).a */; };
@@ -369,7 +372,9 @@
 		4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CROPrototypeB.m; sourceTree = "<group>"; };
 		B1C044F0F19E4B448A36BEFB /* Pods-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.xcconfig"; path = "Pods/Pods-ios.xcconfig"; sourceTree = SOURCE_ROOT; };
 		B90D396911F743468FF96BB5 /* libPods-iOS Tests (Cocoapods).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Tests (Cocoapods).a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA79833897B7E0F78B3AF30D /* ExtendedMiddleAgesAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedMiddleAgesAssembly.h; sourceTree = "<group>"; };
 		BA79854F29FE8A327A82E8BC /* TyphoonStringUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonStringUtilsTests.m; sourceTree = "<group>"; };
+		BA79870B653F1DB13DCE8543 /* ExtendedMiddleAgesAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedMiddleAgesAssembly.m; sourceTree = "<group>"; };
 		BA7988D3F261F1B68761BEF2 /* TyphoonUIColorConverterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonUIColorConverterTests.m; sourceTree = "<group>"; };
 		BA798D5A7C58902AB25FCCC9 /* TyphoonTestUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonTestUtilsTests.m; sourceTree = "<group>"; };
 		F8B50DFBF255467DA9F7C30F /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -591,6 +596,8 @@
 				4B8414AB179B0EA600916BF5 /* TyphoonBlockComponentFactoryTests.m */,
 				4656F7A917DB635700EDDC23 /* InfrastructureComponentsAssembly.h */,
 				4656F7AA17DB635700EDDC23 /* InfrastructureComponentsAssembly.m */,
+				BA79870B653F1DB13DCE8543 /* ExtendedMiddleAgesAssembly.m */,
+				BA79833897B7E0F78B3AF30D /* ExtendedMiddleAgesAssembly.h */,
 			);
 			path = Block;
 			sourceTree = "<group>";
@@ -1113,6 +1120,7 @@
 				BA79880BD4B4A87C9F041E1A /* TyphoonUIColorConverterTests.m in Sources */,
 				BA798D9AF84869F576347FCC /* TyphoonStringUtilsTests.m in Sources */,
 				BA79872D527DFBB10780B4BE /* TyphoonTestUtilsTests.m in Sources */,
+				BA798C0AFB9D472511FB7B43 /* ExtendedMiddleAgesAssembly.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1174,6 +1182,7 @@
 				4EA74DDD17E0FF440004EFC7 /* CROSingletonB.m in Sources */,
 				BA79824D0006B0F9E50A41D3 /* TyphoonStringUtilsTests.m in Sources */,
 				BA7987F45536829F901D8D6E /* TyphoonTestUtilsTests.m in Sources */,
+				BA798380AD1E1F4160A4719C /* ExtendedMiddleAgesAssembly.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1237,6 +1246,7 @@
 				BA7986F83BAB4E7D084B2AAA /* TyphoonUIColorConverterTests.m in Sources */,
 				BA798EC89A23D4FC0EFB465D /* TyphoonStringUtilsTests.m in Sources */,
 				BA7989B2482C57289EE056FE /* TyphoonTestUtilsTests.m in Sources */,
+				BA7989FEB2CB1A63235D9AD2 /* ExtendedMiddleAgesAssembly.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

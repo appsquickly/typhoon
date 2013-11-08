@@ -14,7 +14,6 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 #import "TyphoonAssembly.h"
-#import "TyphoonJRSwizzle.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonAssemblySelectorAdviser.h"
@@ -90,7 +89,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
 + (void)provideDynamicImplementationToConstructDefinitionForSEL:(SEL)sel;
 {
     IMP imp = [self implementationToConstructDefinitionForSEL:sel];
-    class_addMethod(self, sel, imp, "@");
+    class_addMethod(self, sel, imp, "@@:");
 }
 
 + (IMP)implementationToConstructDefinitionForSEL:(SEL)selWithAdvicePrefix
@@ -117,7 +116,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
     return cached;
 }
 
-+ (TyphoonDefinition*)cachedDefinitionForKey:(NSString*)key me:(id)me
++ (TyphoonDefinition*)cachedDefinitionForKey:(NSString*)key me:(TyphoonAssembly*)me
 {
     return [[me cachedDefinitionsForMethodName] objectForKey:key];
 }
@@ -197,7 +196,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
     return cached;
 }
 
-+ (void)populateCacheWithDefinition:(TyphoonDefinition*)cached forKey:(NSString*)key me:(id)me
++ (void)populateCacheWithDefinition:(TyphoonDefinition*)cached forKey:(NSString*)key me:(TyphoonAssembly*)me
 {
     if (cached && [cached isKindOfClass:[TyphoonDefinition class]])
     {

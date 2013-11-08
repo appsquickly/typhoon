@@ -24,6 +24,7 @@
 #import "CavalryMan.h"
 #import "OCLogTemplate.h"
 #import "InfrastructureComponentsAssembly.h"
+#import "ExtendedMiddleAgesAssembly.h"
 
 @interface TyphoonBlockComponentFactoryTests : TyphoonSharedComponentFactoryTests
 @end
@@ -65,11 +66,12 @@
 {
     TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
         [MiddleAgesAssembly assembly],
-        [CircularDependenciesAssembly assembly]
+        [ExtendedMiddleAgesAssembly assembly]
     ]];
 
-    assertThat([(MiddleAgesAssembly*) factory cavalryMan], notNilValue());
-    assertThat([(CircularDependenciesAssembly*) factory classA], notNilValue());
+    Knight* knight = [(ExtendedMiddleAgesAssembly*) factory knightWithExternalQuest];
+    LogDebug(@"Knight: %@", knight);
+    assertThat(knight, notNilValue());
 }
 
 
