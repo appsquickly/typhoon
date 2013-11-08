@@ -83,7 +83,15 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 + (BOOL)selectorReserved:(SEL)selector
 {
-    return [reservedSelectorsAsStrings containsObject:NSStringFromSelector(selector)];
+    if ([reservedSelectorsAsStrings containsObject:NSStringFromSelector(selector)])
+    {
+        return YES;
+    }
+    else if ([NSStringFromSelector(selector) hasPrefix:@"set"])
+    {
+        return YES;
+    }
+    return NO;
 }
 
 + (void)provideDynamicImplementationToConstructDefinitionForSEL:(SEL)sel;

@@ -373,6 +373,7 @@
 		B1C044F0F19E4B448A36BEFB /* Pods-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.xcconfig"; path = "Pods/Pods-ios.xcconfig"; sourceTree = SOURCE_ROOT; };
 		B90D396911F743468FF96BB5 /* libPods-iOS Tests (Cocoapods).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Tests (Cocoapods).a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA79833897B7E0F78B3AF30D /* ExtendedMiddleAgesAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendedMiddleAgesAssembly.h; sourceTree = "<group>"; };
+		BA79850B811499A37FBE9BEC /* QuestLocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestLocator.h; sourceTree = "<group>"; };
 		BA79854F29FE8A327A82E8BC /* TyphoonStringUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonStringUtilsTests.m; sourceTree = "<group>"; };
 		BA79870B653F1DB13DCE8543 /* ExtendedMiddleAgesAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendedMiddleAgesAssembly.m; sourceTree = "<group>"; };
 		BA7988D3F261F1B68761BEF2 /* TyphoonUIColorConverterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonUIColorConverterTests.m; sourceTree = "<group>"; };
@@ -598,6 +599,7 @@
 				4656F7AA17DB635700EDDC23 /* InfrastructureComponentsAssembly.m */,
 				BA79870B653F1DB13DCE8543 /* ExtendedMiddleAgesAssembly.m */,
 				BA79833897B7E0F78B3AF30D /* ExtendedMiddleAgesAssembly.h */,
+				BA79850B811499A37FBE9BEC /* QuestLocator.h */,
 			);
 			path = Block;
 			sourceTree = "<group>";

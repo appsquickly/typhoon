@@ -18,21 +18,18 @@
 
 @implementation ExtendedMiddleAgesAssembly
 
-- (id)init
++ (instancetype)assembly
 {
-    self = [super init];
-    if (self)
-    {
-        _middleAgesAssembly = [TyphoonCollaboratingAssemblyProxy proxy];
-    }
-    return self;
+    ExtendedMiddleAgesAssembly* assembly = [super assembly];
+    [assembly setQuestLocator:[TyphoonCollaboratingAssemblyProxy proxy]];
+    return assembly;
 }
 
 - (id)knightWithExternalQuest
 {
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
     {
-        [definition injectProperty:@selector(quest) withDefinition:[_middleAgesAssembly defaultQuest]];
+        [definition injectProperty:@selector(quest) withDefinition:[_questLocator environmentDependentQuest]];
     }];
 }
 
