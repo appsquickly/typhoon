@@ -132,7 +132,7 @@
 
 - (void)test_injects_collection_in_initializer
 {
-    Knight* knight = [_componentFactory componentForKey:@"knithWithCollectionInConstructor"];
+    Knight* knight = [_componentFactory componentForKey:@"knightWithCollectionInConstructor"];
     NSArray* favoriteDamsels = [knight favoriteDamsels];
     assertThat(favoriteDamsels, notNilValue());
     assertThat(favoriteDamsels, hasCountOf(2));

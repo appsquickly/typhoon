@@ -25,7 +25,6 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonAssembly.h"
 
-//TODO: Possibly move this to make explicit
 #import "TyphoonBlockComponentFactory.h"
 
 #import "TyphoonAutowire.h"

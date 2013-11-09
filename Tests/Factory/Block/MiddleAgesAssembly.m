@@ -97,7 +97,7 @@
     }];
 }
 
-- (id)knithWithCollectionInConstructor
+- (id)knightWithCollectionInConstructor
 {
     return [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer* initializer) {
         initializer.selector = @selector(initWithQuest:favoriteDamsels:);

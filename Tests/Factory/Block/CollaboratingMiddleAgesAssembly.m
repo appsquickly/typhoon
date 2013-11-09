@@ -9,18 +9,25 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "ExtendedMiddleAgesAssembly.h"
+#import "CollaboratingMiddleAgesAssembly.h"
+#import "MiddleAgesAssembly.h"
+#import "TyphoonCollaboratingAssemblyProxy.h"
+#import "TyphoonDefinition.h"
 #import "Knight.h"
-#import "TyphoonDefinition+Infrastructure.h"
 
 
-@implementation ExtendedMiddleAgesAssembly
+@implementation CollaboratingMiddleAgesAssembly
 
-- (id)yetAnotherKnight
+- (void)resolveCollaboratingAssemblies
+{
+    [self setQuests:[TyphoonCollaboratingAssemblyProxy proxy]];
+}
+
+- (id)knightWithExternalQuest
 {
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
     {
-    	[definition injectProperty:@selector(damselsRescued) withValueAsText:@"296000"];
+        [definition injectProperty:@selector(quest) withDefinition:[_quests environmentDependentQuest]];
     }];
 }
 

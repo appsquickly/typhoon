@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name         = 'Typhoon'
-    spec.version      = '1.3.6'
+    spec.version      = '1.3.8'
     spec.license      = 'Apache2.0'
     spec.summary      = 'A dependency injection container for Objective-C. Light-weight, yet flexible and full-featured.'
     spec.homepage     = 'http://www.typhoonframework.org'

@@ -24,6 +24,7 @@
 #import "CavalryMan.h"
 #import "OCLogTemplate.h"
 #import "InfrastructureComponentsAssembly.h"
+#import "CollaboratingMiddleAgesAssembly.h"
 #import "ExtendedMiddleAgesAssembly.h"
 
 @interface TyphoonBlockComponentFactoryTests : TyphoonSharedComponentFactoryTests
@@ -66,10 +67,21 @@
 {
     TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
         [MiddleAgesAssembly assembly],
-        [ExtendedMiddleAgesAssembly assembly]
+        [CollaboratingMiddleAgesAssembly assembly]
     ]];
 
-    Knight* knight = [(ExtendedMiddleAgesAssembly*) factory knightWithExternalQuest];
+    Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalQuest];
+    LogDebug(@"Knight: %@", knight);
+    assertThat(knight, notNilValue());
+}
+
+- (void)test_allows_overriding_methods_in_an_assembly
+{
+    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
+        [ExtendedMiddleAgesAssembly assembly],
+    ]];
+
+    Knight* knight = [(ExtendedMiddleAgesAssembly*) factory yetAnotherKnight];
     LogDebug(@"Knight: %@", knight);
     assertThat(knight, notNilValue());
 }

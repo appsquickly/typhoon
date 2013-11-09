@@ -30,7 +30,9 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 + (TyphoonAssembly*)assembly
 {
-    return [[[self class] alloc] init];
+    TyphoonAssembly* assembly = [[self alloc] init];
+    [assembly resolveCollaboratingAssemblies];
+    return assembly;
 }
 
 + (TyphoonAssembly*)defaultAssembly
@@ -52,6 +54,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
     [self markSelectorReserved:@selector(cachedDefinitionsForMethodName)];
     [self markSelectorReservedFromString:@".cxx_destruct"];
     [self markSelectorReserved:@selector(defaultAssembly)];
+    [self markSelectorReserved:@selector(resolveCollaboratingAssemblies)];
 }
 
 + (void)markSelectorReserved:(SEL)selector
@@ -64,7 +67,9 @@ static NSMutableArray* reservedSelectorsAsStrings;
     [reservedSelectorsAsStrings addObject:stringFromSelector];
 }
 
+/* ====================================================================================================================================== */
 #pragma mark - Instance Method Resolution
+
 + (BOOL)resolveInstanceMethod:(SEL)sel
 {
     if ([self shouldProvideDynamicImplementationFor:sel])
@@ -72,7 +77,6 @@ static NSMutableArray* reservedSelectorsAsStrings;
         [self provideDynamicImplementationToConstructDefinitionForSEL:sel];
         return YES;
     }
-
     return [super resolveInstanceMethod:sel];
 }
 
@@ -105,31 +109,12 @@ static NSMutableArray* reservedSelectorsAsStrings;
     return imp_implementationWithBlock((__bridge id) objc_unretainedPointer((TyphoonDefinition*) ^(id me)
     {
         NSString* key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selWithAdvicePrefix];
-        return [self definitionForKey:key me:me];
+        return [self buildAndCacheDefinitionForKey:key me:me];
     }));
 }
 
-+ (TyphoonDefinition*)definitionForKey:(NSString*)key me:(id)me
-{
-    LogTrace(@"Resolving request for definition for key: %@", key);
 
-    TyphoonDefinition* cached = [self cachedDefinitionForKey:key me:me];
-    if (!cached)
-    {
-        LogTrace(@"Definition for key: '%@' is not cached, building...", key);
-        return [self buildDefinitionForKey:key me:me];
-    }
-
-    LogTrace(@"Using cached definition for key '%@.'", key);
-    return cached;
-}
-
-+ (TyphoonDefinition*)cachedDefinitionForKey:(NSString*)key me:(TyphoonAssembly*)me
-{
-    return [[me cachedDefinitionsForMethodName] objectForKey:key];
-}
-
-+ (TyphoonDefinition*)buildDefinitionForKey:(NSString*)key me:(TyphoonAssembly*)me;
++ (TyphoonDefinition*)buildAndCacheDefinitionForKey:(NSString*)key me:(TyphoonAssembly*)me;
 {
     NSMutableArray* resolveStack = [self resolveStackForKey:key];
     [self markCurrentlyResolvingKey:key resolveStack:resolveStack];
@@ -208,10 +193,8 @@ static NSMutableArray* reservedSelectorsAsStrings;
 {
     if (cached && [cached isKindOfClass:[TyphoonDefinition class]])
     {
-        TyphoonDefinition* definition = (TyphoonDefinition*) cached;
-        [self setKey:key onDefinitionIfExistingKeyEmpty:definition];
-
-        [[me cachedDefinitionsForMethodName] setObject:definition forKey:key];
+        [self setKey:key onDefinitionIfExistingKeyEmpty:cached];
+        [[me cachedDefinitionsForMethodName] setObject:cached forKey:key];
     }
 }
 
@@ -247,6 +230,14 @@ static NSMutableArray* reservedSelectorsAsStrings;
 - (void)dealloc
 {
     LogTrace(@"$$$$$$ %@ in dealloc!", [self class]);
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
+
+- (void)resolveCollaboratingAssemblies
+{
+
 }
 
 /* ====================================================================================================================================== */

@@ -10,9 +10,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "MiddleAgesAssembly.h"
 
+@protocol QuestProvider <NSObject>
 
-@interface ExtendedMiddleAgesAssembly : MiddleAgesAssembly
+- (id)environmentDependentQuest;
 
 @end

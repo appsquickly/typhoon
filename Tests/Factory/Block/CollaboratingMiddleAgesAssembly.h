@@ -10,9 +10,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
+#import "TyphoonAssembly.h"
+#import "QuestProvider.h"
 
-@protocol QuestLocator <NSObject>
+@class MiddleAgesAssembly;
 
-- (id)environmentDependentQuest;
+
+@interface CollaboratingMiddleAgesAssembly : TyphoonAssembly
+
+@property (nonatomic, strong, readwrite) id<QuestProvider> quests;
+
+- (id)knightWithExternalQuest;
 
 @end

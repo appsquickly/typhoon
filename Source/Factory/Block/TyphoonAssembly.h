@@ -27,5 +27,10 @@
 */
 + (instancetype)defaultAssembly;
 
+/**
+* Callback to wire any collaborating assemblies to either a hard-coded reference or a proxy that will be resolved at runtime.
+*/
+- (void)resolveCollaboratingAssemblies;
+
 
 @end

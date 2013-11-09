@@ -45,7 +45,7 @@
 
     </component>
     
-    <component class="Knight" key="knithWithCollectionInConstructor">
+    <component class="Knight" key="knightWithCollectionInConstructor">
         <initializer selector="initWithQuest:favoriteDamsels:">
             <argument parameterName="quest" ref="quest"/>
             <argument parameterName="favoriteDamsels">
