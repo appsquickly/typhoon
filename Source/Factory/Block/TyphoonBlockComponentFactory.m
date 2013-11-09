@@ -122,16 +122,20 @@ static NSMutableArray* swizzleRegistry;
 {
     @synchronized (self)
     {
-        NSSet* definitionSelectors = [self obtainDefinitionSelectors:assembly];
-
-        [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
-        {
-            objc_msgSend(assembly, (SEL) [obj pointerValue]);
-        }];
-
-        NSMutableDictionary* dictionary = [assembly cachedDefinitionsForMethodName];
-        return [dictionary allValues];
+        [self populateCacheOnAssembly:assembly];
+        return [[assembly cachedDefinitionsForMethodName] allValues];
     }
+}
+
+- (void)populateCacheOnAssembly:(TyphoonAssembly *)assembly
+{
+    NSSet* definitionSelectors = [self obtainDefinitionSelectors:assembly];
+
+    [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
+    {
+        SEL selector = (SEL) [obj pointerValue];
+        objc_msgSend(assembly, selector);
+    }];
 }
 
 - (NSSet*)obtainDefinitionSelectors:(TyphoonAssembly*)assembly
