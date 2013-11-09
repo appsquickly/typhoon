@@ -13,12 +13,12 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonAssembly.h"
-#import "QuestLocator.h"
+#import "QuestProvider.h"
 
 @class TyphoonDefinition;
 
 
-@interface MiddleAgesAssembly : TyphoonAssembly<QuestLocator>
+@interface MiddleAgesAssembly : TyphoonAssembly<QuestProvider>
 
 - (id)knight;
 

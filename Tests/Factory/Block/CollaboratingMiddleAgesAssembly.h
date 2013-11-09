@@ -11,14 +11,14 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonAssembly.h"
-#import "QuestLocator.h"
+#import "QuestProvider.h"
 
 @class MiddleAgesAssembly;
 
 
 @interface CollaboratingMiddleAgesAssembly : TyphoonAssembly
 
-@property (nonatomic, strong, readwrite) id<QuestLocator> questLocator;
+@property (nonatomic, strong, readwrite) id<QuestProvider> quests;
 
 - (id)knightWithExternalQuest;
 

@@ -21,7 +21,7 @@
 + (instancetype)assembly
 {
     CollaboratingMiddleAgesAssembly* assembly = [super assembly];
-    [assembly setQuestLocator:[TyphoonCollaboratingAssemblyProxy proxy]];
+    [assembly setQuests:[TyphoonCollaboratingAssemblyProxy proxy]];
     return assembly;
 }
 
@@ -29,7 +29,7 @@
 {
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
     {
-        [definition injectProperty:@selector(quest) withDefinition:[_questLocator environmentDependentQuest]];
+        [definition injectProperty:@selector(quest) withDefinition:[_quests environmentDependentQuest]];
     }];
 }
 

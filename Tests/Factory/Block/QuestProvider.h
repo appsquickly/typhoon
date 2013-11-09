@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol QuestLocator <NSObject>
+@protocol QuestProvider <NSObject>
 
 - (id)environmentDependentQuest;
 
