@@ -30,7 +30,9 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 + (TyphoonAssembly*)assembly
 {
-    return [[[self class] alloc] init];
+    TyphoonAssembly* assembly = [[self alloc] init];
+    [assembly resolveCollaboratingAssemblies];
+    return assembly;
 }
 
 + (TyphoonAssembly*)defaultAssembly
@@ -52,6 +54,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
     [self markSelectorReserved:@selector(cachedDefinitionsForMethodName)];
     [self markSelectorReservedFromString:@".cxx_destruct"];
     [self markSelectorReserved:@selector(defaultAssembly)];
+    [self markSelectorReserved:@selector(resolveCollaboratingAssemblies)];
 }
 
 + (void)markSelectorReserved:(SEL)selector
@@ -74,7 +77,6 @@ static NSMutableArray* reservedSelectorsAsStrings;
         [self provideDynamicImplementationToConstructDefinitionForSEL:sel];
         return YES;
     }
-
     return [super resolveInstanceMethod:sel];
 }
 
@@ -228,6 +230,14 @@ static NSMutableArray* reservedSelectorsAsStrings;
 - (void)dealloc
 {
     LogTrace(@"$$$$$$ %@ in dealloc!", [self class]);
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
+
+- (void)resolveCollaboratingAssemblies
+{
+
 }
 
 /* ====================================================================================================================================== */

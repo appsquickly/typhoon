@@ -18,11 +18,9 @@
 
 @implementation CollaboratingMiddleAgesAssembly
 
-+ (instancetype)assembly
+- (void)resolveCollaboratingAssemblies
 {
-    CollaboratingMiddleAgesAssembly* assembly = [super assembly];
-    [assembly setQuests:[TyphoonCollaboratingAssemblyProxy proxy]];
-    return assembly;
+    [self setQuests:[TyphoonCollaboratingAssemblyProxy proxy]];
 }
 
 - (id)knightWithExternalQuest
