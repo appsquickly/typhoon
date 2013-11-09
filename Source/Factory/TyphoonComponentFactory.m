@@ -103,13 +103,8 @@ static TyphoonComponentFactory* defaultFactory;
     {
         [NSException raise:NSInvalidArgumentException format:@"Key '%@' is already registered.", definition.key];
     }
-    if ([definition.type respondsToSelector:@selector(typhoonAutoInjectedProperties)])
-    {
-        for (NSString* autoWired in objc_msgSend(definition.type, @selector(typhoonAutoInjectedProperties)))
-        {
-            [definition injectProperty:NSSelectorFromString(autoWired)];
-        }
-    }
+
+    [self injectAutowiredPropertiesIfNeeded:definition];
     
     if ([self infrastructureComponentProcessedFromDefinition:definition])
     {
@@ -129,6 +124,18 @@ static TyphoonComponentFactory* defaultFactory;
     if ([self isLoaded])
     {
         [self applyComponentFactoryLoadPostProcessing];
+    }
+}
+
+- (void)injectAutowiredPropertiesIfNeeded:(TyphoonDefinition *)definition
+{
+    if ([definition.type respondsToSelector:@selector(typhoonAutoInjectedProperties)])
+    {
+        id autoWiredProperties = objc_msgSend(definition.type, @selector(typhoonAutoInjectedProperties));
+        for (NSString* anAutoWiredProperty in autoWiredProperties)
+        {
+            [definition injectProperty:NSSelectorFromString(anAutoWiredProperty)];
+        }
     }
 }
 
