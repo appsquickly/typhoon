@@ -10,9 +10,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "MiddleAgesAssembly.h"
+#import "TyphoonAssembly.h"
+#import "QuestLocator.h"
+
+@class MiddleAgesAssembly;
 
 
-@interface ExtendedMiddleAgesAssembly : MiddleAgesAssembly
+@interface CollaboratingMiddleAgesAssembly : TyphoonAssembly
+
+@property (nonatomic, strong, readwrite) id<QuestLocator> questLocator;
+
+- (id)knightWithExternalQuest;
 
 @end

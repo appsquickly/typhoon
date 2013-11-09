@@ -10,26 +10,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "ExtendedMiddleAgesAssembly.h"
-#import "MiddleAgesAssembly.h"
-#import "TyphoonCollaboratingAssemblyProxy.h"
-#import "TyphoonDefinition.h"
 #import "Knight.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 
 @implementation ExtendedMiddleAgesAssembly
 
-+ (instancetype)assembly
-{
-    ExtendedMiddleAgesAssembly* assembly = [super assembly];
-    [assembly setQuestLocator:[TyphoonCollaboratingAssemblyProxy proxy]];
-    return assembly;
-}
-
-- (id)knightWithExternalQuest
+- (id)yetAnotherKnight
 {
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
     {
-        [definition injectProperty:@selector(quest) withDefinition:[_questLocator environmentDependentQuest]];
+    	[definition injectProperty:@selector(damselsRescued) withValueAsText:@"296000"];
     }];
 }
 
