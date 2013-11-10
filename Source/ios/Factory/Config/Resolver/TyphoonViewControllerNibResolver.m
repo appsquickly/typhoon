@@ -13,8 +13,6 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonInitializer.h"
-#import "TyphoonInitializer+InstanceBuilder.h"
-#import <UIKit/UIKit.h>
 
 @implementation TyphoonViewControllerNibResolver
 

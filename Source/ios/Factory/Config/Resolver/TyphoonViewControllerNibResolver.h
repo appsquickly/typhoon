@@ -14,7 +14,7 @@
 
 /**
  Post-Processor that completes the initializer of definitions with type UIViewController.
- If the definition already has a TyphoonIntializer set, the processor will ignore the component.
+ If the definition already has a TyphoonInitializer set, the processor will ignore the component.
  */
 @interface TyphoonViewControllerNibResolver : NSObject<TyphoonComponentFactoryPostProcessor>
 
