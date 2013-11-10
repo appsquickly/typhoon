@@ -13,12 +13,13 @@
 
 #import <objc/runtime.h>
 #import <objc/message.h>
-#import <Typhoon/TyphoonDefinition.h>
 #import "TyphoonAssembly.h"
-#import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonJRSwizzle.h"
+#import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import "OCLogTemplate.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 static NSMutableDictionary* resolveStackForSelector;
 static NSMutableArray* reservedSelectorsAsStrings;
@@ -31,9 +32,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 + (TyphoonAssembly*)assembly
 {
-    TyphoonAssembly* assembly = [[self alloc] init];
-    [assembly resolveCollaboratingAssemblies];
-    return assembly;
+    return [[[self class] alloc] init];
 }
 
 + (TyphoonAssembly*)defaultAssembly
@@ -68,9 +67,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
     [reservedSelectorsAsStrings addObject:stringFromSelector];
 }
 
-/* ====================================================================================================================================== */
 #pragma mark - Instance Method Resolution
-
 + (BOOL)resolveInstanceMethod:(SEL)sel
 {
     if ([self shouldProvideDynamicImplementationFor:sel])
@@ -78,6 +75,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
         [self provideDynamicImplementationToConstructDefinitionForSEL:sel];
         return YES;
     }
+
     return [super resolveInstanceMethod:sel];
 }
 
@@ -88,21 +86,13 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 + (BOOL)selectorReserved:(SEL)selector
 {
-    if ([reservedSelectorsAsStrings containsObject:NSStringFromSelector(selector)])
-    {
-        return YES;
-    }
-    else if ([NSStringFromSelector(selector) hasPrefix:@"set"])
-    {
-        return YES;
-    }
-    return NO;
+    return [reservedSelectorsAsStrings containsObject:NSStringFromSelector(selector)];
 }
 
 + (void)provideDynamicImplementationToConstructDefinitionForSEL:(SEL)sel;
 {
     IMP imp = [self implementationToConstructDefinitionForSEL:sel];
-    class_addMethod(self, sel, imp, "@@:");
+    class_addMethod(self, sel, imp, "@");
 }
 
 + (IMP)implementationToConstructDefinitionForSEL:(SEL)selWithAdvicePrefix
@@ -110,12 +100,31 @@ static NSMutableArray* reservedSelectorsAsStrings;
     return imp_implementationWithBlock((__bridge id) objc_unretainedPointer((TyphoonDefinition*) ^(id me)
     {
         NSString* key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selWithAdvicePrefix];
-        return [self buildAndCacheDefinitionForKey:key me:me];
+        return [self definitionForKey:key me:me];
     }));
 }
 
++ (TyphoonDefinition*)definitionForKey:(NSString*)key me:(id)me
+{
+    LogTrace(@"Resolving request for definition for key: %@", key);
 
-+ (TyphoonDefinition*)buildAndCacheDefinitionForKey:(NSString*)key me:(TyphoonAssembly*)me;
+    TyphoonDefinition* cached = [self cachedDefinitionForKey:key me:me];
+    if (!cached)
+    {
+        LogTrace(@"Definition for key: '%@' is not cached, building...", key);
+        return [self buildDefinitionForKey:key me:me];
+    }
+
+    LogTrace(@"Using cached definition for key '%@.'", key);
+    return cached;
+}
+
++ (TyphoonDefinition*)cachedDefinitionForKey:(NSString*)key me:(TyphoonAssembly*)me
+{
+    return [[me cachedDefinitionsForMethodName] objectForKey:key];
+}
+
++ (TyphoonDefinition*)buildDefinitionForKey:(NSString*)key me:(TyphoonAssembly*)me;
 {
     NSMutableArray* resolveStack = [self resolveStackForKey:key];
     [self markCurrentlyResolvingKey:key resolveStack:resolveStack];
@@ -194,8 +203,10 @@ static NSMutableArray* reservedSelectorsAsStrings;
 {
     if (cached && [cached isKindOfClass:[TyphoonDefinition class]])
     {
-        [self setKey:key onDefinitionIfExistingKeyEmpty:cached];
-        [[me cachedDefinitionsForMethodName] setObject:cached forKey:key];
+        TyphoonDefinition* definition = (TyphoonDefinition*) cached;
+        [self setKey:key onDefinitionIfExistingKeyEmpty:definition];
+
+        [[me cachedDefinitionsForMethodName] setObject:definition forKey:key];
     }
 }
 
@@ -231,14 +242,6 @@ static NSMutableArray* reservedSelectorsAsStrings;
 - (void)dealloc
 {
     LogTrace(@"$$$$$$ %@ in dealloc!", [self class]);
-}
-
-/* ====================================================================================================================================== */
-#pragma mark - Interface Methods
-
-- (void)resolveCollaboratingAssemblies
-{
-
 }
 
 /* ====================================================================================================================================== */
