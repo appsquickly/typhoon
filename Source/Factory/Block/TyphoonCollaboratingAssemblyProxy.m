@@ -11,7 +11,7 @@
 
 #import "TyphoonCollaboratingAssemblyProxy.h"
 #import <objc/runtime.h>
-#import "TyphoonDefinition.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 @implementation TyphoonCollaboratingAssemblyProxy
 

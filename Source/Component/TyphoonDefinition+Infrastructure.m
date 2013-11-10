@@ -17,6 +17,15 @@
 
 @implementation TyphoonDefinition (Infrastructure)
 
+/* ====================================================================================================================================== */
+#pragma mark - Class Methods
+
++ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key
+{
+    return [[TyphoonDefinition alloc] initWithClass:clazz key:key];
+}
+
+
 + (TyphoonDefinition *)propertyPlaceholderWithResource:(id<TyphoonResource>)resource {
   
     TyphoonDefinition *definition = [self withClass:[TyphoonPropertyPlaceholderConfigurer class] initialization:^(TyphoonInitializer *initializer) {
@@ -28,5 +37,19 @@
     definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), [resource description]];
     return definition;
 }
+
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
+- (id)initWithClass:(Class)clazz key:(NSString*)key
+{
+    return [self initWithClass:clazz key:key factoryComponent:nil];
+}
+
+- (id)init
+{
+    return [self initWithClass:nil key:nil factoryComponent:nil];
+}
+
 
 @end

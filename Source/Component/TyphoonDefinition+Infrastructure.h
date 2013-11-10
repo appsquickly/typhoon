@@ -19,11 +19,25 @@
  */
 @interface TyphoonDefinition (Infrastructure)
 
+
+/**
+* Returns a definition with the given class and key. In the block-style assembly, keys are auto-generated, however infrastructure components
+* may specify their own key.
+*/
++ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key;
+
+
 /**
  Factory method for a TyphoonPropertyPlaceholderConfigurer.
  @param resource The resource to load.
  @return a definition.
  */
 + (TyphoonDefinition*)propertyPlaceholderWithResource:(id<TyphoonResource>)resource;
+
+
+- (id)initWithClass:(Class)clazz key:(NSString*)key;
+
+- (id)initWithClass:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent;
+
 
 @end

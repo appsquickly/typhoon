@@ -16,6 +16,7 @@
 #import "OCLogTemplate.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonComponentFactory.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 @implementation TyphoonPatcher
 

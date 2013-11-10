@@ -54,20 +54,12 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 
 + (TyphoonDefinition*)withClass:(Class)clazz;
 
-+ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key;
-
 + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization properties:(TyphoonDefinitionBlock)properties;
 
 + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization;
 
 + (TyphoonDefinition*)withClass:(Class)clazz properties:(TyphoonDefinitionBlock)properties;
 
-/* ====================================================================================================================================== */
-#pragma mark Initializers
-
-- (id)initWithClass:(Class)clazz key:(NSString*)key;
-
-- (id)initWithClass:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent;
 
 /* ====================================================================================================================================== */
 #pragma mark Injection

@@ -13,8 +13,9 @@
 
 #import <objc/runtime.h>
 #import <objc/message.h>
+#import <Typhoon/TyphoonDefinition.h>
 #import "TyphoonAssembly.h"
-#import "TyphoonDefinition.h"
+#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import "OCLogTemplate.h"

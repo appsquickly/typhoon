@@ -18,6 +18,7 @@
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonPropertyInjectedAsCollection.h"
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 
 @implementation TyphoonDefinition
@@ -30,10 +31,6 @@
     return [[TyphoonDefinition alloc] initWithClass:clazz key:nil];
 }
 
-+ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key
-{
-    return [[TyphoonDefinition alloc] initWithClass:clazz key:key];
-}
 
 + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
 {
@@ -98,17 +95,6 @@
     }
     return self;
 }
-
-- (id)initWithClass:(Class)clazz key:(NSString*)key
-{
-    return [self initWithClass:clazz key:key factoryComponent:nil];
-}
-
-- (id)init
-{
-    return [self initWithClass:nil key:nil factoryComponent:nil];
-}
-
 
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
