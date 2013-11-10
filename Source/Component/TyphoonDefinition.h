@@ -30,6 +30,9 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 
 @interface TyphoonDefinition : NSObject
 {
+    Class _type;
+    NSString* _key;
+    TyphoonInitializer* _initializer;
     NSMutableSet* _injectedProperties;
     NSString* _factoryReference;
 }

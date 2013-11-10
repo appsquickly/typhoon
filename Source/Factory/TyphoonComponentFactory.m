@@ -129,9 +129,10 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (void)injectAutowiredPropertiesIfNeeded:(TyphoonDefinition *)definition
 {
-    if ([definition.type respondsToSelector:@selector(typhoonAutoInjectedProperties)])
+    SEL autoInjectedProperties = sel_registerName("typhoonAutoInjectedProperties");
+    if ([definition.type respondsToSelector:autoInjectedProperties])
     {
-        id autoWiredProperties = objc_msgSend(definition.type, @selector(typhoonAutoInjectedProperties));
+        id autoWiredProperties = objc_msgSend(definition.type, autoInjectedProperties);
         for (NSString* anAutoWiredProperty in autoWiredProperties)
         {
             [definition injectProperty:NSSelectorFromString(anAutoWiredProperty)];

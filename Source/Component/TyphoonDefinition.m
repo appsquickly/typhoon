@@ -80,23 +80,6 @@
 
 
 /* ====================================================================================================================================== */
-#pragma mark - Initialization & Destruction
-
-- (id)initWithClass:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent
-{
-    self = [super init];
-    if (self)
-    {
-        _type = clazz;
-        _key = [key copy];
-        _factoryReference = [factoryComponent copy];
-        _injectedProperties = [[NSMutableSet alloc] init];
-        [self validateRequiredParametersAreSet];
-    }
-    return self;
-}
-
-/* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
 - (void)injectProperty:(SEL)selector
@@ -153,23 +136,6 @@
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"Definition: class='%@'", NSStringFromClass(_type)];
-}
-
-- (void)dealloc
-{
-    //Null out the __unsafe_unretained property on initializer
-    [_initializer setComponentDefinition:nil];
-}
-
-/* ====================================================================================================================================== */
-#pragma mark - Private Methods
-
-- (void)validateRequiredParametersAreSet
-{
-    if (_type == nil)
-    {
-        [NSException raise:NSInvalidArgumentException format:@"Property 'clazz' is required."];
-    }
 }
 
 

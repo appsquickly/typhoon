@@ -14,6 +14,7 @@
 #import "TyphoonPropertyPlaceholderConfigurer.h"
 #import "TyphoonResource.h"
 #import "TyphoonInitializer.h"
+#import "TyphoonInitializer+InstanceBuilder.h"
 
 @implementation TyphoonDefinition (Infrastructure)
 
@@ -50,6 +51,39 @@
 {
     return [self initWithClass:nil key:nil factoryComponent:nil];
 }
+
+- (id)initWithClass:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent
+{
+    self = [super init];
+    if (self)
+    {
+        _type = clazz;
+        _key = [key copy];
+        _factoryReference = [factoryComponent copy];
+        _injectedProperties = [[NSMutableSet alloc] init];
+        [self validateRequiredParametersAreSet];
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    //Null out the __unsafe_unretained property on initializer
+    [_initializer setComponentDefinition:nil];
+}
+
+
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
+
+- (void)validateRequiredParametersAreSet
+{
+    if (_type == nil)
+    {
+        [NSException raise:NSInvalidArgumentException format:@"Property 'clazz' is required."];
+    }
+}
+
 
 
 @end
