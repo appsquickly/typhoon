@@ -24,7 +24,7 @@ static NSMutableArray* swizzleRegistry;
 
 @interface TyphoonAssembly (BlockFactoryFriend)
 
-+ (BOOL)selectorReserved:(SEL)selector;
++ (BOOL)selectorReservedOrPropertySetter:(SEL)selector;
 
 - (NSMutableDictionary*)cachedDefinitionsForMethodName;
 
@@ -198,7 +198,7 @@ typedef void(^MethodEnumerationBlock)(Method method);
 - (BOOL)method:(Method)method onClassIsNotReserved:(Class)aClass;
 {
     SEL methodSelector = method_getName(method);
-    return ![aClass selectorReserved:methodSelector];
+    return ![aClass selectorReservedOrPropertySetter:methodSelector];
 }
 
 - (void)addDefinitionSelectorForMethod:(Method)method toSet:(NSMutableSet*)definitionSelectors

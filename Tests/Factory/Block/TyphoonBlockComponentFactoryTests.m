@@ -67,7 +67,7 @@
 {
     TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
         [MiddleAgesAssembly assembly],
-        [CollaboratingMiddleAgesAssembly assembly]
+        [CollaboratingMiddleAgesAssembly assembly],
     ]];
 
     Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalQuest];
