@@ -17,6 +17,8 @@
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonKeyedStackInstanceRegister.h"
 #import "OCLogTemplate.h"
+#import "TyphoonDefinitionRegisterer.h"
+#import "TyphoonComponentFactory+TyphoonComponentFactoryFriend.h"
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
 
@@ -94,54 +96,12 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (void)register:(TyphoonDefinition*)definition
 {
-    [self setDefinitionKeyRandomlyIfNeeded:definition];
-
-    if ([self definitionForKey:definition.key])
-    {
-        [NSException raise:NSInvalidArgumentException format:@"Key '%@' is already registered.", definition.key];
-    }
-
-    [self injectAutowiredPropertiesIfNeeded:definition];
-    
-    [self registerDefinition:definition];
+    TyphoonDefinitionRegisterer *registerer = [[TyphoonDefinitionRegisterer alloc] initWithDefinition:definition componentFactory:self];
+    [registerer register];
 
     if ([self isLoaded])
     {
         [self applyComponentFactoryLoadPostProcessing];
-    }
-}
-
-- (void)setDefinitionKeyRandomlyIfNeeded:(TyphoonDefinition *)definition {
-    if ([definition.key length] == 0)
-    {
-        NSString* uuidStr = [[NSProcessInfo processInfo] globallyUniqueString];
-        definition.key = [NSString stringWithFormat:@"%@_%@", NSStringFromClass(definition.type), uuidStr];
-    }
-}
-
-- (void)injectAutowiredPropertiesIfNeeded:(TyphoonDefinition *)definition
-{
-    SEL autoInjectedProperties = sel_registerName("typhoonAutoInjectedProperties");
-    if ([definition.type respondsToSelector:autoInjectedProperties])
-    {
-        id autoWiredProperties = objc_msgSend(definition.type, autoInjectedProperties);
-        for (NSString* anAutoWiredProperty in autoWiredProperties)
-        {
-            [definition injectProperty:NSSelectorFromString(anAutoWiredProperty)];
-        }
-    }
-}
-
-- (void)registerDefinition:(TyphoonDefinition *)definition
-{
-    if ([self definitionIsInfrastructureComponent:definition])
-    {
-        [self registerInfrastructureComponentFromDefinition:definition];
-    }
-    else
-    {
-        LogTrace(@"Registering: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
-        [_registry addObject:definition];
     }
 }
 
@@ -246,21 +206,6 @@ static TyphoonComponentFactory* defaultFactory;
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (BOOL)definitionIsInfrastructureComponent:(TyphoonDefinition *)definition
-{
-    if ([definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)])
-    {
-        return YES;
-    }
-    return NO;
-}
-
-- (void)registerInfrastructureComponentFromDefinition:(TyphoonDefinition *)definition
-{
-    LogTrace(@"Registering Infrastructure component: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
-    [self attachPostProcessor:[self objectForDefinition:definition]];
-}
-
 - (void)applyComponentFactoryLoadPostProcessing {
   
   // Apply the factory post processors.
@@ -280,16 +225,6 @@ static TyphoonComponentFactory* defaultFactory;
    }];
 }
 
-- (id)objectForDefinition:(TyphoonDefinition*)definition
-{
-    if (definition.scope == TyphoonScopeSingleton)
-    {
-        return [self singletonForDefinition:definition];
-    }
-
-    return [self buildInstanceWithDefinition:definition];
-}
-
 - (id)singletonForDefinition:(TyphoonDefinition*)definition
 {
     @synchronized (self)
@@ -304,6 +239,11 @@ static TyphoonComponentFactory* defaultFactory;
     }
 }
 
+@end
+
+
+@implementation TyphoonComponentFactory (TyphoonComponentFactoryFriend)
+
 - (TyphoonDefinition*)definitionForKey:(NSString*)key
 {
     for (TyphoonDefinition* definition in _registry)
@@ -314,6 +254,21 @@ static TyphoonComponentFactory* defaultFactory;
         }
     }
     return nil;
+}
+
+- (id)objectForDefinition:(TyphoonDefinition*)definition
+{
+    if (definition.scope == TyphoonScopeSingleton)
+    {
+        return [self singletonForDefinition:definition];
+    }
+
+    return [self buildInstanceWithDefinition:definition];
+}
+
+- (void)addDefinitionToRegistry:(TyphoonDefinition *)definition
+{
+    [_registry addObject:definition];
 }
 
 @end
