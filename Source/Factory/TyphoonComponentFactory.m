@@ -94,11 +94,8 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (void)register:(TyphoonDefinition*)definition
 {
-    if ([definition.key length] == 0)
-    {
-        NSString* uuidStr = [[NSProcessInfo processInfo] globallyUniqueString];
-        definition.key = [NSString stringWithFormat:@"%@_%@", NSStringFromClass(definition.type), uuidStr];
-    }
+    [self setDefinitionKeyRandomlyIfNeeded:definition];
+
     if ([self definitionForKey:definition.key])
     {
         [NSException raise:NSInvalidArgumentException format:@"Key '%@' is already registered.", definition.key];
@@ -116,6 +113,14 @@ static TyphoonComponentFactory* defaultFactory;
     if ([self isLoaded])
     {
         [self applyComponentFactoryLoadPostProcessing];
+    }
+}
+
+- (void)setDefinitionKeyRandomlyIfNeeded:(TyphoonDefinition *)definition {
+    if ([definition.key length] == 0)
+    {
+        NSString* uuidStr = [[NSProcessInfo processInfo] globallyUniqueString];
+        definition.key = [NSString stringWithFormat:@"%@_%@", NSStringFromClass(definition.type), uuidStr];
     }
 }
 
