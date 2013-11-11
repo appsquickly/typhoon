@@ -83,7 +83,7 @@
     Knight *childKnight = [factoryAssembly childKnightWithOverridenConstructorDependency];
 
     assertThat(childKnight, instanceOf([Knight class]));
-    assertThat(childKnight.quest, instanceOf([CampaignQuest class]));
+    assertThat(childKnight.quest, instanceOf([CampaignQuest class])); // not ErrandQuest, as specified in the parent definition.
 }
 
 - (void)test_child_initializer_overrides_parent_initializer_incompatible_signatures
