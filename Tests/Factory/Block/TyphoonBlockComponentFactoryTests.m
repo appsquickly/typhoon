@@ -66,8 +66,8 @@
 - (void)test_allows_initialization_with_a_collection_of_assemblies
 {
     TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
-        [MiddleAgesAssembly assembly],
-        [CollaboratingMiddleAgesAssembly assembly],
+            [MiddleAgesAssembly assembly],
+            [CollaboratingMiddleAgesAssembly assembly],
     ]];
 
     Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalQuest];
@@ -78,7 +78,7 @@
 - (void)test_allows_overriding_methods_in_an_assembly
 {
     TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
-        [ExtendedMiddleAgesAssembly assembly],
+            [ExtendedMiddleAgesAssembly assembly],
     ]];
 
     Knight* knight = [(ExtendedMiddleAgesAssembly*) factory yetAnotherKnight];

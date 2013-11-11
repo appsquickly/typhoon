@@ -14,9 +14,9 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonCollectionValue.h"
 
-@interface TyphoonByReferenceCollectionValue : NSObject<TyphoonCollectionValue>
+@interface TyphoonByReferenceCollectionValue : NSObject <TyphoonCollectionValue>
 
-@property (nonatomic, strong, readonly) NSString* componentName;
+@property(nonatomic, strong, readonly) NSString* componentName;
 
 - (id)initWithComponentName:(NSString*)componentName;
 

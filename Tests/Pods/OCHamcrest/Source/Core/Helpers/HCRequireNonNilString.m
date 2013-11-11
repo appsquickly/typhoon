@@ -10,12 +10,12 @@
 #import "HCRequireNonNilString.h"
 
 
-void HCRequireNonNilString(NSString *string)
+void HCRequireNonNilString(NSString* string)
 {
     if (string == nil)
     {
         @throw [NSException exceptionWithName:@"NotAString"
-                                       reason:@"Must be non-nil string"
-                                     userInfo:nil];
+                reason:@"Must be non-nil string"
+                userInfo:nil];
     }
 }

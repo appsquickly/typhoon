@@ -10,7 +10,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonArgumentInjectedAsCollection.h"
-#import "TyphoonTypeDescriptor.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonTypeConvertedCollectionValue.h"

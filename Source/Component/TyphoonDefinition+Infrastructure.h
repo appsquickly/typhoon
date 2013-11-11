@@ -32,7 +32,7 @@
  @param resource The resource to load.
  @return a definition.
  */
-+ (TyphoonDefinition*)propertyPlaceholderWithResource:(id<TyphoonResource>)resource;
++ (TyphoonDefinition*)propertyPlaceholderWithResource:(id <TyphoonResource>)resource;
 
 
 - (id)initWithClass:(Class)clazz key:(NSString*)key;

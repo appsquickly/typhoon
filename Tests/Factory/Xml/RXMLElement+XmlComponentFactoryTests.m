@@ -14,7 +14,7 @@
 
 @interface RXMLElement_SpringXmlComponentFactoryTests : SenTestCase
 
-@property (nonatomic, strong) TyphoonRXMLElement *lazyElementTest;
+@property(nonatomic, strong) TyphoonRXMLElement* lazyElementTest;
 
 @end
 
@@ -27,13 +27,14 @@
 {
     NSString* xmlString = [[TyphoonBundleResource withName:@"MiddleAgesAssembly.xml"] asString];
     _element = [TyphoonRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
-	
-	NSString* lasyXmlString = [[TyphoonBundleResource withName:@"LazyInitCasesAssembly.xml"] asString];
-	self.lazyElementTest = [TyphoonRXMLElement elementFromXMLString:lasyXmlString encoding:NSUTF8StringEncoding];
+
+    NSString* lasyXmlString = [[TyphoonBundleResource withName:@"LazyInitCasesAssembly.xml"] asString];
+    self.lazyElementTest = [TyphoonRXMLElement elementFromXMLString:lasyXmlString encoding:NSUTF8StringEncoding];
 }
 
-- (void)tearDown {
-	self.lazyElementTest = nil;
+- (void)tearDown
+{
+    self.lazyElementTest = nil;
 }
 
 - (void)test_asComponentDefinition
@@ -77,55 +78,57 @@
 }
 
 
-- (TyphoonDefinition *)definitionInElement:(TyphoonRXMLElement *)elt forKey:(NSString *)key {
-	NSArray *components = [elt children:@"component"];
-	NSUInteger index = [components indexOfObjectPassingTest:^BOOL(TyphoonRXMLElement *child, NSUInteger idx, BOOL *stop) {
-		return [[child attribute:@"key"] isEqual:key];
-	}];
-	return (index != NSNotFound) ? [[components objectAtIndex:index] asComponentDefinition] : nil;
+- (TyphoonDefinition*)definitionInElement:(TyphoonRXMLElement*)elt forKey:(NSString*)key
+{
+    NSArray* components = [elt children:@"component"];
+    NSUInteger index = [components indexOfObjectPassingTest:^BOOL(TyphoonRXMLElement* child, NSUInteger idx, BOOL* stop)
+    {
+        return [[child attribute:@"key"] isEqual:key];
+    }];
+    return (index != NSNotFound) ? [[components objectAtIndex:index] asComponentDefinition] : nil;
 }
 
 - (void)test_asComponentDefinition_lazyInit_prototype_with_lazy_true
 {
-	TyphoonDefinition *def = [self definitionInElement:[self lazyElementTest] forKey:@"prototype1"];
-	assertThatBool([def isLazy], is(@NO));
+    TyphoonDefinition* def = [self definitionInElement:[self lazyElementTest] forKey:@"prototype1"];
+    assertThatBool([def isLazy], is(@NO));
 }
 
 - (void)test_asComponentDefinition_lazyInit_prototype_with_lazy_false
 {
-	TyphoonDefinition *def = [self definitionInElement:[self lazyElementTest] forKey:@"prototype2"];
-	assertThatBool([def isLazy], is(@NO));
+    TyphoonDefinition* def = [self definitionInElement:[self lazyElementTest] forKey:@"prototype2"];
+    assertThatBool([def isLazy], is(@NO));
 }
 
 - (void)test_asComponentDefinition_lazyInit_singleton_with_lazy_true
 {
-	TyphoonDefinition *def = [self definitionInElement:[self lazyElementTest] forKey:@"lazySingleton1"];
-	assertThatUnsignedInt([def scope], is(@(TyphoonScopeSingleton)));
-	assertThatBool([def isLazy], is(@YES));
+    TyphoonDefinition* def = [self definitionInElement:[self lazyElementTest] forKey:@"lazySingleton1"];
+    assertThatUnsignedInt([def scope], is(@(TyphoonScopeSingleton)));
+    assertThatBool([def isLazy], is(@YES));
 }
 
 - (void)test_asComponentDefinition_lazyInit_singleton_with_lazy_false
 {
-	TyphoonDefinition *def = [self definitionInElement:[self lazyElementTest] forKey:@"singleton1"];
-	assertThatBool([def isLazy], is(@NO));
+    TyphoonDefinition* def = [self definitionInElement:[self lazyElementTest] forKey:@"singleton1"];
+    assertThatBool([def isLazy], is(@NO));
 }
 
 - (void)test_asComponentDefinition_lazyInit_singleton_with_wrong_lazy
 {
-	TyphoonDefinition *def = [self definitionInElement:[self lazyElementTest] forKey:@"singleton2"];
-	assertThatBool([def isLazy], is(@NO));
+    TyphoonDefinition* def = [self definitionInElement:[self lazyElementTest] forKey:@"singleton2"];
+    assertThatBool([def isLazy], is(@NO));
 }
 
 - (void)test_asComponentDefinition_lazyInit_singleton_without_lazy
 {
-	TyphoonDefinition *def = [self definitionInElement:[self lazyElementTest] forKey:@"singleton3"];
-	assertThatBool([def isLazy], is(@NO));
+    TyphoonDefinition* def = [self definitionInElement:[self lazyElementTest] forKey:@"singleton3"];
+    assertThatBool([def isLazy], is(@NO));
 }
 
 - (void)test_asComponentDefinition_lazyInit_singleton_with_lazy_YES
 {
-	TyphoonDefinition *def = [self definitionInElement:[self lazyElementTest] forKey:@"lazySingleton2"];
-	assertThatBool([def isLazy], is(@YES));
+    TyphoonDefinition* def = [self definitionInElement:[self lazyElementTest] forKey:@"lazySingleton2"];
+    assertThatBool([def isLazy], is(@YES));
 }
 
 

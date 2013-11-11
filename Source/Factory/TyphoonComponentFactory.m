@@ -51,7 +51,7 @@ static TyphoonComponentFactory* defaultFactory;
         _singletons = [[NSMutableDictionary alloc] init];
         _currentlyResolvingReferences = [TyphoonKeyedStackInstanceRegister instanceRegister];
         _postProcessors = [[NSMutableArray alloc] init];
-      
+
     }
     return self;
 }
@@ -69,11 +69,11 @@ static TyphoonComponentFactory* defaultFactory;
 {
     @synchronized (self)
     {
-        if (!_isLoading && ![self isLoaded])
+        if (!_isLoading&&![self isLoaded])
         {
             // ensure that the method won't be call recursively.
             _isLoading = YES;
-          
+
             [self applyComponentFactoryLoadPostProcessing];
 
             _isLoading = NO;
@@ -96,7 +96,7 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (void)register:(TyphoonDefinition*)definition
 {
-    TyphoonDefinitionRegisterer *registerer = [[TyphoonDefinitionRegisterer alloc] initWithDefinition:definition componentFactory:self];
+    TyphoonDefinitionRegisterer* registerer = [[TyphoonDefinitionRegisterer alloc] initWithDefinition:definition componentFactory:self];
     [registerer register];
 
     if ([self isLoaded])
@@ -139,7 +139,7 @@ static TyphoonComponentFactory* defaultFactory;
 {
     if (!key)
     {
-            return nil;
+        return nil;
     }
 
     if ([self notLoaded])
@@ -173,7 +173,7 @@ static TyphoonComponentFactory* defaultFactory;
     return [_registry copy];
 }
 
-- (void)attachPostProcessor:(id<TyphoonComponentFactoryPostProcessor>)postProcessor
+- (void)attachPostProcessor:(id <TyphoonComponentFactoryPostProcessor>)postProcessor
 {
     LogTrace(@"Attaching post processor: %@", postProcessor);
     [_postProcessors addObject:postProcessor];
@@ -206,23 +206,24 @@ static TyphoonComponentFactory* defaultFactory;
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (void)applyComponentFactoryLoadPostProcessing {
-  
-  // Apply the factory post processors.
-  [_postProcessors enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryPostProcessor> postProcessor, NSUInteger idx, BOOL* stop)
-   {
-     [postProcessor postProcessComponentFactory:self];
-   }];
-  
-  // Then, we instanciate the not-lazy singletons.
-  [_registry enumerateObjectsUsingBlock:^(id definition, NSUInteger idx, BOOL* stop)
-   {
-     if (([definition scope] == TyphoonScopeSingleton) && ![definition isLazy])
-     {
-       [self singletonForDefinition:definition];
-     }
-     
-   }];
+- (void)applyComponentFactoryLoadPostProcessing
+{
+
+    // Apply the factory post processors.
+    [_postProcessors enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryPostProcessor> postProcessor, NSUInteger idx, BOOL* stop)
+    {
+        [postProcessor postProcessComponentFactory:self];
+    }];
+
+    // Then, we instanciate the not-lazy singletons.
+    [_registry enumerateObjectsUsingBlock:^(id definition, NSUInteger idx, BOOL* stop)
+    {
+        if (([definition scope] == TyphoonScopeSingleton)&&![definition isLazy])
+        {
+            [self singletonForDefinition:definition];
+        }
+
+    }];
 }
 
 - (id)singletonForDefinition:(TyphoonDefinition*)definition
@@ -266,7 +267,7 @@ static TyphoonComponentFactory* defaultFactory;
     return [self buildInstanceWithDefinition:definition];
 }
 
-- (void)addDefinitionToRegistry:(TyphoonDefinition *)definition
+- (void)addDefinitionToRegistry:(TyphoonDefinition*)definition
 {
     [_registry addObject:definition];
 }

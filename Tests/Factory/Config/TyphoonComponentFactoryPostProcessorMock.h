@@ -12,8 +12,8 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryPostProcessor.h"
 
-@interface TyphoonComponentFactoryPostProcessorMock : NSObject<TyphoonComponentFactoryPostProcessor>
+@interface TyphoonComponentFactoryPostProcessorMock : NSObject <TyphoonComponentFactoryPostProcessor>
 
-@property (nonatomic, assign) BOOL postProcessingCalled;
+@property(nonatomic, assign) BOOL postProcessingCalled;
 
 @end

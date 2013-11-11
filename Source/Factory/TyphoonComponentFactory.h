@@ -26,7 +26,7 @@
     NSMutableArray* _registry;
     NSMutableDictionary* _singletons;
 
-    id<TyphoonInstanceRegister> _currentlyResolvingReferences;
+    id <TyphoonInstanceRegister> _currentlyResolvingReferences;
     NSMutableArray* _postProcessors;
     BOOL _isLoading;
 }
@@ -34,17 +34,17 @@
 /**
 * The instantiated singletons.
 */
-@property (nonatomic, strong, readonly) NSArray *singletons;
+@property(nonatomic, strong, readonly) NSArray* singletons;
 
 /**
 * Say if the factory has been loaded.
 */
-@property (nonatomic, assign, getter = isLoaded) BOOL loaded;
+@property(nonatomic, assign, getter = isLoaded) BOOL loaded;
 
 /**
  * The attached factory post processors.
  */
-@property (nonatomic, strong, readonly) NSArray *postProcessors;
+@property(nonatomic, strong, readonly) NSArray* postProcessors;
 
 /**
 * Mutate the component definitions and
@@ -74,7 +74,7 @@
 /**
 * Registers a component into the factory. Components can be declared in any order, the container will work out how to resolve them.
 */
-- (void) register:(TyphoonDefinition*)definition;
+- (void)register:(TyphoonDefinition*)definition;
 
 /**
 * Returns an an instance of the component matching the supplied class or protocol. For example:
@@ -89,7 +89,7 @@
 */
 - (id)componentForType:(id)classOrProtocol;
 
- - (NSArray*)allComponentsForType:(id)classOrProtocol;
+- (NSArray*)allComponentsForType:(id)classOrProtocol;
 
 - (id)componentForKey:(NSString*)key;
 
@@ -99,7 +99,7 @@
  Attach a TyphoonComponentFactoryPostProcessor to this component factory.
  @param postProcessor The post-processor to attach.
  */
-- (void)attachPostProcessor:(id<TyphoonComponentFactoryPostProcessor>)postProcessor;
+- (void)attachPostProcessor:(id <TyphoonComponentFactoryPostProcessor>)postProcessor;
 
 /**
  * Injects the properties of an object

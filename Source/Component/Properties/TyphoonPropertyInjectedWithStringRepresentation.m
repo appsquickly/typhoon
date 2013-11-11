@@ -23,7 +23,6 @@
 @implementation TyphoonPropertyInjectedWithStringRepresentation
 
 
-
 @synthesize textValue = _textValue;
 
 /* ====================================================================================================================================== */

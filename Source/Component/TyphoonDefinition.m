@@ -43,13 +43,13 @@
 }
 
 + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
-    properties:(TyphoonDefinitionBlock)properties
+        properties:(TyphoonDefinitionBlock)properties
 {
     return [TyphoonDefinition withClass:clazz key:nil initialization:initialization properties:properties];
 }
 
 + (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key initialization:(TyphoonInitializerBlock)initialization
-    properties:(TyphoonDefinitionBlock)properties
+        properties:(TyphoonDefinitionBlock)properties
 {
 
     TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key];
@@ -90,7 +90,7 @@
 - (void)injectProperty:(SEL)selector withValueAsText:(NSString*)textValue
 {
     [_injectedProperties addObject:[[TyphoonPropertyInjectedWithStringRepresentation alloc]
-        initWithName:NSStringFromSelector(selector) value:textValue]];
+            initWithName:NSStringFromSelector(selector) value:textValue]];
 }
 
 - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition
@@ -101,13 +101,13 @@
 - (void)injectProperty:(SEL)selector withObjectInstance:(id)instance
 {
     [_injectedProperties addObject:[[TyphoonPropertyInjectedAsObjectInstance alloc]
-        initWithName:NSStringFromSelector(selector) objectInstance:instance]];
+            initWithName:NSStringFromSelector(selector) objectInstance:instance]];
 }
 
 - (void)injectProperty:(SEL)withSelector asCollection:(void (^)(TyphoonPropertyInjectedAsCollection*))collectionValues;
 {
     TyphoonPropertyInjectedAsCollection
-        * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:NSStringFromSelector(withSelector)];
+            * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:NSStringFromSelector(withSelector)];
 
     if (collectionValues)
     {

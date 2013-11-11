@@ -12,8 +12,8 @@
 
 @interface CROPrototypeA : NSObject
 
-@property (nonatomic, strong, readonly) CROPrototypeB *prototypeB;
+@property(nonatomic, strong, readonly) CROPrototypeB* prototypeB;
 
-- (id)initWithCROPrototypeB:(CROPrototypeB *)prototypeB;
+- (id)initWithCROPrototypeB:(CROPrototypeB*)prototypeB;
 
 @end

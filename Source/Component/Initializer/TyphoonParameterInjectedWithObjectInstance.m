@@ -16,9 +16,10 @@
 - (id)initWithParameterIndex:(NSUInteger)index value:(id)value
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _index = index;
-        _value = value;        
+        _value = value;
     }
     return self;
 }

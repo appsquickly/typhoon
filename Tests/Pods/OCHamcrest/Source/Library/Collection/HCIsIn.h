@@ -16,12 +16,13 @@
 }
 
 + (id)isInCollection:(id)aCollection;
+
 - (id)initWithCollection:(id)aCollection;
 
 @end
 
 
-OBJC_EXPORT id<HCMatcher> HC_isIn(id aCollection);
+OBJC_EXPORT id <HCMatcher> HC_isIn(id aCollection);
 
 /**
     isIn(aCollection) -
@@ -38,5 +39,5 @@ OBJC_EXPORT id<HCMatcher> HC_isIn(id aCollection);
     @ingroup collection_matchers
  */
 #ifdef HC_SHORTHAND
-    #define isIn HC_isIn
+#define isIn HC_isIn
 #endif

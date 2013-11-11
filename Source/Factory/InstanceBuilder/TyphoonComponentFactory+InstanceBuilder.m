@@ -58,7 +58,7 @@
     {
         instance = [self componentForKey:definition.factoryReference]; // clears currently resolving.
     }
-    else if (definition.initializer && definition.initializer.isClassMethod)
+    else if (definition.initializer&&definition.initializer.isClassMethod)
     {
         instance = [self invokeInitializerOn:definition.type withDefinition:definition];
     }
@@ -92,7 +92,7 @@
 
 - (id)initializerInjectionOn:(id)instance withDefinition:(TyphoonDefinition*)definition
 {
-    if (definition.initializer && definition.initializer.isClassMethod == NO)
+    if (definition.initializer&&definition.initializer.isClassMethod == NO)
     {
         instance = [self invokeInitializerOn:instance withDefinition:definition];
     }
@@ -159,8 +159,8 @@
         if (typeDescriptor == nil)
         {
             [NSException raise:NSInvalidArgumentException
-                format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",
-                       property.name, [instance class]];
+                    format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",
+                           property.name, [instance class]];
         }
         [self doPropertyInjection:instance property:property typeDescriptor:typeDescriptor];
     }
@@ -182,7 +182,7 @@
 }
 
 - (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(id <TyphoonInjectedProperty>)property
-    typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor
+        typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor
 {
     NSInvocation* invocation = [self propertySetterInvocationFor:instance property:property];
     [self configureInvocationArgument:invocation toInjectProperty:property onInstance:instance typeDescriptor:typeDescriptor];
@@ -199,7 +199,7 @@
 }
 
 - (void)configureInvocationArgument:(NSInvocation*)invocation toInjectProperty:(id <TyphoonInjectedProperty>)property
-    onInstance:(id <TyphoonIntrospectiveNSObject>)instance typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor;
+        onInstance:(id <TyphoonIntrospectiveNSObject>)instance typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor;
 {
     if (property.injectionType == TyphoonPropertyInjectionTypeByType)
     {
@@ -246,7 +246,7 @@
 }
 
 - (void)evaluateCircularDependency:(NSString*)componentKey propertyName:(NSString*)propertyName
-    instance:(id <TyphoonIntrospectiveNSObject>)instance;
+        instance:(id <TyphoonIntrospectiveNSObject>)instance;
 {
     if ([self alreadyResolvingKey:componentKey])
     {
@@ -277,7 +277,7 @@
         {
             SEL pSelector = [instance setterForPropertyWithName:propertyName];
             NSInvocation
-                * invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*) instance methodSignatureForSelector:pSelector]];
+                    * invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*) instance methodSignatureForSelector:pSelector]];
             [invocation setTarget:instance];
             [invocation setSelector:pSelector];
             NSString* componentKey = [circularDependentProperties objectForKey:propertyName];
@@ -322,7 +322,7 @@
         {
             TyphoonParameterInjectedWithStringRepresentation* byValue = (TyphoonParameterInjectedWithStringRepresentation*) parameter;
             [self setArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue
-                requiredType:[byValue resolveTypeWith:instanceOrClass]];
+                    requiredType:[byValue resolveTypeWith:instanceOrClass]];
         }
         else if (parameter.type == TyphoonParameterInjectionTypeObjectInstance)
         {
@@ -345,7 +345,7 @@
 
 /* ====================================================================================================================================== */
 - (void)setArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index1 textValue:(NSString*)textValue
-    requiredType:(TyphoonTypeDescriptor*)requiredType
+        requiredType:(TyphoonTypeDescriptor*)requiredType
 {
     if (requiredType.isPrimitive)
     {
@@ -361,7 +361,7 @@
 }
 
 - (id)buildCollectionFor:(TyphoonPropertyInjectedAsCollection*)propertyInjectedAsCollection
-    instance:(id <TyphoonIntrospectiveNSObject>)instance
+        instance:(id <TyphoonIntrospectiveNSObject>)instance
 {
     TyphoonCollectionType type = [propertyInjectedAsCollection resolveCollectionTypeWith:instance];
     return [self buildCollectionWithValues:[propertyInjectedAsCollection values] requiredType:type];
@@ -389,14 +389,14 @@
         }
     }
 
-    BOOL isMutable = (type == TyphoonCollectionTypeNSMutableArray || type == TyphoonCollectionTypeNSMutableSet);
+    BOOL isMutable = (type == TyphoonCollectionTypeNSMutableArray||type == TyphoonCollectionTypeNSMutableSet);
     return isMutable ? collection : [collection copy];
 }
 
 - (id)collectionForType:(TyphoonCollectionType)type
 {
     id collection;
-    if (type == TyphoonCollectionTypeNSArray || type == TyphoonCollectionTypeNSMutableArray)
+    if (type == TyphoonCollectionTypeNSArray||type == TyphoonCollectionTypeNSMutableArray)
     {
         collection = [[NSMutableArray alloc] init];
     }
@@ -404,7 +404,7 @@
     {
         collection = [[NSCountedSet alloc] init];
     }
-    else if (type == TyphoonCollectionTypeNSSet || type == TyphoonCollectionTypeNSMutableSet)
+    else if (type == TyphoonCollectionTypeNSSet||type == TyphoonCollectionTypeNSMutableSet)
     {
         collection = [[NSMutableSet alloc] init];
     }
@@ -419,7 +419,7 @@
     if ([candidates count] == 0)
     {
         SEL autoInjectedProperties = sel_registerName("typhoonAutoInjectedProperties");
-        if (class_isMetaClass(object_getClass(classOrProtocol)) && [classOrProtocol respondsToSelector:autoInjectedProperties])
+        if (class_isMetaClass(object_getClass(classOrProtocol))&&[classOrProtocol respondsToSelector:autoInjectedProperties])
         {
             LogTrace(@"Class %@ wants auto-wiring. . . registering.", NSStringFromClass(classOrProtocol));
             [self register:[TyphoonDefinition withClass:classOrProtocol]];
@@ -445,7 +445,7 @@
     {
         if (isClass)
         {
-            if (definition.type == classOrProtocol || [definition.type isSubclassOfClass:classOrProtocol])
+            if (definition.type == classOrProtocol||[definition.type isSubclassOfClass:classOrProtocol])
             {
                 [results addObject:definition];
             }

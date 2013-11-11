@@ -10,10 +10,11 @@
 
 @implementation CROPrototypeB
 
-- (id)initWithCROSingletonA:(CROSingletonA *)singletonA
+- (id)initWithCROSingletonA:(CROSingletonA*)singletonA
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _singletonA = singletonA;
     }
     return self;

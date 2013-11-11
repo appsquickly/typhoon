@@ -61,7 +61,7 @@
 
 - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference
 {
-    if (index != NSIntegerMax && index < [_parameterNames count])
+    if (index != NSIntegerMax &&index < [_parameterNames count])
     {
         [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference]];
     }
@@ -72,14 +72,14 @@
     [self injectParameterAtIndex:[self indexOfParameter:name] withValueAsText:text requiredTypeOrNil:classOrProtocol];
 }
 
-- (void)injectParameterNamed:(NSString *)name asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues requiredType:(id)requiredType
+- (void)injectParameterNamed:(NSString*)name asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues requiredType:(id)requiredType
 {
     [self injectParameterAtIndex:[self indexOfParameter:name] asCollection:collectionValues requiredType:requiredType];
 }
 
 - (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass
 {
-    if (index != NSIntegerMax && index < [_parameterNames count])
+    if (index != NSIntegerMax &&index < [_parameterNames count])
     {
         TyphoonParameterInjectedWithStringRepresentation* parameterInjectedByValue =
                 [[TyphoonParameterInjectedWithStringRepresentation alloc] initWithIndex:index value:text requiredTypeOrNil:requiredClass];
@@ -111,7 +111,7 @@
 
 - (void)injectParameterAtIndex:(NSUInteger)index withObject:(id)value
 {
-    if (index != NSIntegerMax && index < [_parameterNames count])
+    if (index != NSIntegerMax &&index < [_parameterNames count])
     {
         [_injectedParameters addObject:[[TyphoonParameterInjectedWithObjectInstance alloc] initWithParameterIndex:index value:value]];
     }
@@ -127,7 +127,7 @@
     [self injectParameterAtIndex:[_injectedParameters count] withObject:value];
 }
 
-- (void)injectWithCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues requiredType:(id)requiredType
+- (void)injectWithCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues requiredType:(id)requiredType
 {
     [self injectParameterAtIndex:[_injectedParameters count] asCollection:collectionValues requiredType:requiredType];
 }
@@ -140,20 +140,21 @@
     [self injectParameterAtIndex:index1 withReference:definition.key];
 }
 
--(void)injectParameterAtIndex:(NSUInteger)index
-                 asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues
-                 requiredType:(id)requiredType {
-    
-    TyphoonParameterInjectedAsCollection *parameterInjectedAsCollection =
-    [[TyphoonParameterInjectedAsCollection alloc] initWithParameterIndex:index requiredType:requiredType];
-    
+- (void)injectParameterAtIndex:(NSUInteger)index
+        asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues
+        requiredType:(id)requiredType
+{
+
+    TyphoonParameterInjectedAsCollection* parameterInjectedAsCollection =
+            [[TyphoonParameterInjectedAsCollection alloc] initWithParameterIndex:index requiredType:requiredType];
+
     if (collectionValues)
     {
         __unsafe_unretained TyphoonParameterInjectedAsCollection* weakParameterInjectedAsCollection = parameterInjectedAsCollection;
         collectionValues(weakParameterInjectedAsCollection);
     }
-    
-    if (index != NSIntegerMax && index < [_parameterNames count])
+
+    if (index != NSIntegerMax &&index < [_parameterNames count])
     {
         [_injectedParameters addObject:parameterInjectedAsCollection];
     }
@@ -194,7 +195,6 @@
     }
     return parameterIndex;
 }
-
 
 
 @end

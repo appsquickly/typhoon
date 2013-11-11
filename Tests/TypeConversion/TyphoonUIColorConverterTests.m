@@ -26,7 +26,7 @@
 - (void)test_converts_string_to_UIColor
 {
     TyphoonTypeDescriptor* descriptor = [self typeForPropertyWithName:@"color"];
-    id<TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
+    id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
     NSString* converted = [converter convert:@"#ffffff"];
     assertThat(converted, notNilValue());
 }

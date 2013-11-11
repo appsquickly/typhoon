@@ -12,7 +12,7 @@
 
 @interface TyphoonDefinitionRegisterer : NSObject
 
-- (id)initWithDefinition:(TyphoonDefinition *)definition componentFactory:(TyphoonComponentFactory *)componentFactory;
+- (id)initWithDefinition:(TyphoonDefinition*)definition componentFactory:(TyphoonComponentFactory*)componentFactory;
 
 - (void)register;
 

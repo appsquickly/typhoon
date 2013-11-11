@@ -127,7 +127,7 @@ static NSMutableArray* swizzleRegistry;
     }
 }
 
-- (void)populateCacheOnAssembly:(TyphoonAssembly *)assembly
+- (void)populateCacheOnAssembly:(TyphoonAssembly*)assembly
 {
     NSSet* definitionSelectors = [self obtainDefinitionSelectors:assembly];
 

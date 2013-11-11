@@ -13,7 +13,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface  TyphoonStringUtils : NSObject
+@interface TyphoonStringUtils : NSObject
 
 + (BOOL)isAlpha:(NSString*)candidate;
 

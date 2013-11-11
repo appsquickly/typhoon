@@ -50,26 +50,26 @@
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessComponentFactory:(TyphoonComponentFactory*)factory
 {
-    for (TyphoonDefinition *newDefinition in [self newDefinitionsToRegister])
+    for (TyphoonDefinition* newDefinition in [self newDefinitionsToRegister])
     {
         [factory register:newDefinition];
     }
-    
+
     for (TyphoonDefinition* definition in [factory registry])
     {
         [self patchDefinitionIfNeeded:definition];
     }
 }
 
-- (NSArray *)newDefinitionsToRegister
+- (NSArray*)newDefinitionsToRegister
 {
     NSMutableArray* newDefinitions = [[NSMutableArray alloc] init];
     for (NSString* key in [_patches allKeys])
     {
         TyphoonDefinition* patchFactory =
-            [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:[self patchFactoryNameForKey:key]];
+                [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:[self patchFactoryNameForKey:key]];
         patchFactory.initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithObject:)];
         [patchFactory.initializer injectWithObject:[_patches objectForKey:key]];
         [newDefinitions addObject:patchFactory];

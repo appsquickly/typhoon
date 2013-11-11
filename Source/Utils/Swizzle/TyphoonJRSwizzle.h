@@ -8,6 +8,7 @@
 @interface NSObject (TyphoonJRSwizzle)
 
 + (BOOL)typhoon_swizzleMethod:(SEL)origSel_ withMethod:(SEL)altSel_ error:(NSError**)error_;
+
 + (BOOL)typhoon_swizzleClassMethod:(SEL)origSel_ withClassMethod:(SEL)altSel_ error:(NSError**)error_;
 
 @end

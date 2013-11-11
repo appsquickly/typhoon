@@ -38,7 +38,7 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (TyphoonCollectionType)resolveCollectionTypeWith:(id<TyphoonIntrospectiveNSObject>)instance;
+- (TyphoonCollectionType)resolveCollectionTypeWith:(id <TyphoonIntrospectiveNSObject>)instance;
 {
     TyphoonTypeDescriptor* descriptor = [TyphoonIntrospectionUtils typeForPropertyWithName:_name inClass:[instance class]];
     Class describedClass = (Class) [descriptor classOrProtocol];

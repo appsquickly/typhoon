@@ -24,8 +24,8 @@ typedef enum
 } TyphoonScope;
 
 typedef void(^TyphoonInitializerBlock)(TyphoonInitializer* initializer);
-typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 
+typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 
 
 @interface TyphoonDefinition : NSObject

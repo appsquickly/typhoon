@@ -25,7 +25,7 @@
     return [_injectedParameters copy];
 }
 
-- (NSArray *)parametersInjectedByValue
+- (NSArray*)parametersInjectedByValue
 {
     NSPredicate* predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary* bindings)
     {

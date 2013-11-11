@@ -16,20 +16,20 @@
 // using an NSInvocation to call -failWithException: without linking in SenTestingKit, we simply
 // pretend it exists on NSObject.
 @interface NSObject (MTExceptionBugHack)
-- (void)failWithException:(NSException *)exception;
+- (void)failWithException:(NSException*)exception;
 @end
 
 
-void MKTFailTest(id testCase, const char *fileName, int lineNumber, NSString *description)
+void MKTFailTest(id testCase, const char* fileName, int lineNumber, NSString* description)
 {
-    NSString *theFileName = @(fileName);
-    NSException *failure = [MKTException failureInFile:theFileName
-                                                atLine:lineNumber
-                                                reason:description];
+    NSString* theFileName = @(fileName);
+    NSException* failure = [MKTException failureInFile:theFileName
+            atLine:lineNumber
+            reason:description];
     [testCase failWithException:failure];
 }
 
-void MKTFailTestLocation(MKTTestLocation testLocation, NSString *description)
+void MKTFailTestLocation(MKTTestLocation testLocation, NSString* description)
 {
     MKTFailTest(testLocation.testCase, testLocation.fileName, testLocation.lineNumber, description);
 }

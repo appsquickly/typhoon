@@ -15,7 +15,7 @@
 
 @implementation CavalryMan
 
-- (id)initWithQuest:(id<Quest>)quest hitRatio:(float)hitRatio;
+- (id)initWithQuest:(id <Quest>)quest hitRatio:(float)hitRatio;
 {
     self = [super init];
     if (self)

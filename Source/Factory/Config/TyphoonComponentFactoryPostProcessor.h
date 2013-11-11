@@ -27,6 +27,6 @@
  Post process a component factory after its initialization.
  @param factory The component factory
  */
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory;
+- (void)postProcessComponentFactory:(TyphoonComponentFactory*)factory;
 
 @end

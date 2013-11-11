@@ -20,7 +20,6 @@
 @implementation TyphoonParameterInjectedWithStringRepresentation
 
 
-
 @synthesize textValue = _textValue;
 
 /* ====================================================================================================================================== */

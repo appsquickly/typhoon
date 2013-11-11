@@ -85,7 +85,7 @@ static NSMutableArray* assemblyProperties;
 
 + (BOOL)shouldProvideDynamicImplementationFor:(SEL)sel;
 {
-    return (![TyphoonAssembly selectorReservedOrPropertySetter:sel] && [TyphoonAssemblySelectorAdviser selectorIsAdvised:sel]);
+    return (![TyphoonAssembly selectorReservedOrPropertySetter:sel]&&[TyphoonAssemblySelectorAdviser selectorIsAdvised:sel]);
 }
 
 + (BOOL)selectorReservedOrPropertySetter:(SEL)selector
@@ -95,7 +95,7 @@ static NSMutableArray* assemblyProperties;
     {
         return YES;
     }
-    else if ([selectorString hasPrefix:@"set"] && [selectorString hasSuffix:@":"])
+    else if ([selectorString hasPrefix:@"set"]&&[selectorString hasSuffix:@":"])
     {
         return YES;
     }
@@ -188,13 +188,13 @@ static NSMutableArray* assemblyProperties;
 {
     SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key];
     id cached = objc_msgSend(me,
-        sel); // the advisedSEL will call through to the original, unwrapped implementation because of the active swizzling.
+            sel); // the advisedSEL will call through to the original, unwrapped implementation because of the active swizzling.
     return cached;
 }
 
 + (void)populateCacheWithDefinition:(TyphoonDefinition*)cached forKey:(NSString*)key me:(TyphoonAssembly*)me
 {
-    if (cached && [cached isKindOfClass:[TyphoonDefinition class]])
+    if (cached&&[cached isKindOfClass:[TyphoonDefinition class]])
     {
         TyphoonDefinition* definition = (TyphoonDefinition*) cached;
         [self setKey:key onDefinitionIfExistingKeyEmpty:definition];

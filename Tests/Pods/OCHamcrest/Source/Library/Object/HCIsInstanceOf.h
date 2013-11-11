@@ -16,12 +16,13 @@
 }
 
 + (id)isInstanceOf:(Class)type;
+
 - (id)initWithType:(Class)type;
 
 @end
 
 
-OBJC_EXPORT id<HCMatcher> HC_instanceOf(Class aClass);
+OBJC_EXPORT id <HCMatcher> HC_instanceOf(Class aClass);
 
 /**
     instanceOf(aClass) -
@@ -41,5 +42,5 @@ OBJC_EXPORT id<HCMatcher> HC_instanceOf(Class aClass);
     @ingroup object_matchers
  */
 #ifdef HC_SHORTHAND
-    #define instanceOf HC_instanceOf
+#define instanceOf HC_instanceOf
 #endif

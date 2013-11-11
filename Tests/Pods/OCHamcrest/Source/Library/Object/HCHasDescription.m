@@ -15,15 +15,15 @@
 
 @implementation HCHasDescription
 
-+ (id)hasDescription:(id<HCMatcher>)descriptionMatcher
++ (id)hasDescription:(id <HCMatcher>)descriptionMatcher
 {
     return [[self alloc] initWithDescription:descriptionMatcher];
 }
 
-- (id)initWithDescription:(id<HCMatcher>)descriptionMatcher
+- (id)initWithDescription:(id <HCMatcher>)descriptionMatcher
 {
-    NSInvocation *anInvocation = [HCInvocationMatcher invocationForSelector:@selector(description)
-                                                                    onClass:[NSObject class]];
+    NSInvocation* anInvocation = [HCInvocationMatcher invocationForSelector:@selector(description)
+            onClass:[NSObject class]];
     self = [super initWithInvocation:anInvocation matching:descriptionMatcher];
     shortMismatchDescription = YES;
     return self;
@@ -34,7 +34,7 @@
 
 #pragma mark -
 
-id<HCMatcher> HC_hasDescription(id match)
+id <HCMatcher> HC_hasDescription(id match)
 {
     return [HCHasDescription hasDescription:HCWrapInMatcher(match)];
 }

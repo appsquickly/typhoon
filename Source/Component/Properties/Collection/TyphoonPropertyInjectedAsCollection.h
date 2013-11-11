@@ -19,7 +19,7 @@
 /**
 * Represents a collection (NSArray, NSSet, c-style array) of items injected by reference, value or type.
 */
-@interface TyphoonPropertyInjectedAsCollection : TyphoonArgumentInjectedAsCollection<TyphoonInjectedProperty>
+@interface TyphoonPropertyInjectedAsCollection : TyphoonArgumentInjectedAsCollection <TyphoonInjectedProperty>
 {
     NSString* _name;
 }
@@ -32,6 +32,6 @@
 * Returns the collection type for the named property on the parameter class. Raises an exception if the property is neither an NSSet nor
 * an NSArray.
 */
-- (TyphoonCollectionType)resolveCollectionTypeWith:(id<TyphoonIntrospectiveNSObject>)instance;
+- (TyphoonCollectionType)resolveCollectionTypeWith:(id <TyphoonIntrospectiveNSObject>)instance;
 
 @end

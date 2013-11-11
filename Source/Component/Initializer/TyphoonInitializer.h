@@ -11,6 +11,7 @@
 
 
 #import <Foundation/Foundation.h>
+
 @class TyphoonDefinition;
 @class TyphoonParameterInjectedAsCollection;
 
@@ -70,13 +71,12 @@ typedef enum
 - (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonDefinition*)definition;
 
 - (void)injectParameterAtIndex:(NSUInteger)index
-                asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues
-                requiredType:(id)requiredType;
+        asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues
+        requiredType:(id)requiredType;
 
-- (void)injectParameterNamed:(NSString *)name
-                asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues
-                requiredType:(id)requiredType;
-
+- (void)injectParameterNamed:(NSString*)name
+        asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues
+        requiredType:(id)requiredType;
 
 
 @end

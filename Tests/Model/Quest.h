@@ -12,7 +12,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Quest<NSObject>
+@protocol Quest <NSObject>
 
 - (NSString*)questName;
 

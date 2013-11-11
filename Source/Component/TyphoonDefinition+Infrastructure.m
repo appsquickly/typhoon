@@ -27,13 +27,15 @@
 }
 
 
-+ (TyphoonDefinition *)propertyPlaceholderWithResource:(id<TyphoonResource>)resource {
-  
-    TyphoonDefinition *definition = [self withClass:[TyphoonPropertyPlaceholderConfigurer class] initialization:^(TyphoonInitializer *initializer) {
-        
++ (TyphoonDefinition*)propertyPlaceholderWithResource:(id <TyphoonResource>)resource
+{
+    TyphoonDefinition
+            * definition = [self withClass:[TyphoonPropertyPlaceholderConfigurer class] initialization:^(TyphoonInitializer* initializer)
+    {
+
         initializer.selector = @selector(configurerWithResource:);
         [initializer injectWithObject:resource];
-        
+
     }];
     definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), [resource description]];
     return definition;
@@ -83,7 +85,6 @@
         [NSException raise:NSInvalidArgumentException format:@"Property 'clazz' is required."];
     }
 }
-
 
 
 @end

@@ -16,7 +16,7 @@
  Post-Processor that completes the initializer of definitions with type UIViewController.
  If the definition already has a TyphoonInitializer set, the processor will ignore the component.
  */
-@interface TyphoonViewControllerNibResolver : NSObject<TyphoonComponentFactoryPostProcessor>
+@interface TyphoonViewControllerNibResolver : NSObject <TyphoonComponentFactoryPostProcessor>
 
 /**
  Resolves the nib name for a view controller class.
@@ -24,6 +24,6 @@
  @param viewControllerClass The class.
  @return The nib name.
  */
-- (NSString *)resolveNibNameForClass:(Class)viewControllerClass;
+- (NSString*)resolveNibNameForClass:(Class)viewControllerClass;
 
 @end

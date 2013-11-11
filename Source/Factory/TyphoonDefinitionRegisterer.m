@@ -11,12 +11,13 @@
 #import <objc/runtime.h>
 #import "OCLogTemplate.h"
 
-@implementation TyphoonDefinitionRegisterer {
-    TyphoonDefinition *_definition;
-    TyphoonComponentFactory *_componentFactory;
+@implementation TyphoonDefinitionRegisterer
+{
+    TyphoonDefinition* _definition;
+    TyphoonComponentFactory* _componentFactory;
 }
 
-- (id)initWithDefinition:(TyphoonDefinition *)aDefinition componentFactory:(TyphoonComponentFactory *)aComponentFactory
+- (id)initWithDefinition:(TyphoonDefinition*)aDefinition componentFactory:(TyphoonComponentFactory*)aComponentFactory
 {
     self = [super init];
     if (self)

@@ -13,6 +13,6 @@
 
 @protocol MKTVerificationMode <NSObject>
 
-- (void)verifyData:(MKTVerificationData *)data;
+- (void)verifyData:(MKTVerificationData*)data;
 
 @end

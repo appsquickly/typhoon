@@ -18,9 +18,9 @@
 
 #pragma mark - Protocol methods
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessComponentFactory:(TyphoonComponentFactory*)factory
 {
-    for (TyphoonDefinition *definition in [factory registry])
+    for (TyphoonDefinition* definition in [factory registry])
     {
         if ([self shouldProcessDefinition:definition])
         {
@@ -31,7 +31,7 @@
 
 #pragma mark - Interface methods
 
-- (NSString *)resolveNibNameForClass:(Class)viewControllerClass
+- (NSString*)resolveNibNameForClass:(Class)viewControllerClass
 {
     return NSStringFromClass(viewControllerClass);
 }
@@ -39,17 +39,17 @@
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (void)processViewControllerDefinition:(TyphoonDefinition *)definition
+- (void)processViewControllerDefinition:(TyphoonDefinition*)definition
 {
-    TyphoonInitializer *initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithNibName:bundle:)];
+    TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithNibName:bundle:)];
     [initializer injectWithValueAsText:[self resolveNibNameForClass:definition.type] requiredTypeOrNil:[NSString class]];
     [initializer injectWithObject:[NSBundle mainBundle]];
     definition.initializer = initializer;
 }
 
-- (BOOL)shouldProcessDefinition:(TyphoonDefinition *)definition
+- (BOOL)shouldProcessDefinition:(TyphoonDefinition*)definition
 {
-    return [definition.type isSubclassOfClass:[UIViewController class]] && definition.initializer == nil;
+    return [definition.type isSubclassOfClass:[UIViewController class]]&&definition.initializer == nil;
 }
 
 @end
