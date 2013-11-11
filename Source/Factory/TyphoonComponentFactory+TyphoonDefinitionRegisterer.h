@@ -7,8 +7,7 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactory.h"
 
-// used by TyphoonDefinitionRegisterer
-@interface TyphoonComponentFactory (TyphoonComponentFactoryFriend)
+@interface TyphoonComponentFactory (TyphoonDefinitionRegisterer)
 
 - (TyphoonDefinition*)definitionForKey:(NSString*)key;
 - (id)objectForDefinition:(TyphoonDefinition*)definition;

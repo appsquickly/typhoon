@@ -7,7 +7,7 @@
 #import "TyphoonDefinitionRegisterer.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
-#import "TyphoonComponentFactory+TyphoonComponentFactoryFriend.h"
+#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import <objc/runtime.h>
 #import "OCLogTemplate.h"
 

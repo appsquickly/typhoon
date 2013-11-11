@@ -18,7 +18,7 @@
 #import "TyphoonKeyedStackInstanceRegister.h"
 #import "OCLogTemplate.h"
 #import "TyphoonDefinitionRegisterer.h"
-#import "TyphoonComponentFactory+TyphoonComponentFactoryFriend.h"
+#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
 
@@ -242,7 +242,7 @@ static TyphoonComponentFactory* defaultFactory;
 @end
 
 
-@implementation TyphoonComponentFactory (TyphoonComponentFactoryFriend)
+@implementation TyphoonComponentFactory (TyphoonDefinitionRegisterer)
 
 - (TyphoonDefinition*)definitionForKey:(NSString*)key
 {
