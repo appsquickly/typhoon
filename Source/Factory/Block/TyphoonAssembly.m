@@ -22,7 +22,6 @@
 
 static NSMutableDictionary* resolveStackForSelector;
 static NSMutableArray* reservedSelectorsAsStrings;
-static NSMutableArray* assemblyProperties;
 
 @implementation TyphoonAssembly
 
