@@ -252,25 +252,5 @@ static NSMutableArray* reservedSelectorsAsStrings;
 }
 
 
-- (NSArray*)cachePropertyNamesForClass:(Class)clazz inArray:(NSMutableArray*)rv
-{
-    unsigned count;
-    objc_property_t* properties = class_copyPropertyList(clazz, &count);
-
-    unsigned i;
-    for (i = 0; i < count; i++)
-    {
-        objc_property_t property = properties[i];
-        NSString* name = [NSString stringWithUTF8String:property_getName(property)];
-        [rv addObject:name];
-    }
-    free(properties);
-    if ([clazz superclass])
-    {
-        [self cachePropertyNamesForClass:[clazz superclass] inArray:rv];
-    }
-
-    return rv;
-}
 
 @end
