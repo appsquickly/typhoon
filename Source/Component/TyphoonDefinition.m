@@ -18,6 +18,7 @@
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonPropertyInjectedAsCollection.h"
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 
 @implementation TyphoonDefinition
@@ -30,10 +31,6 @@
     return [[TyphoonDefinition alloc] initWithClass:clazz key:nil];
 }
 
-+ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key
-{
-    return [[TyphoonDefinition alloc] initWithClass:clazz key:key];
-}
 
 + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
 {
@@ -79,34 +76,6 @@
 + (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key properties:(TyphoonDefinitionBlock)properties
 {
     return [TyphoonDefinition withClass:clazz key:key initialization:nil properties:properties];
-}
-
-
-/* ====================================================================================================================================== */
-#pragma mark - Initialization & Destruction
-
-- (id)initWithClass:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent
-{
-    self = [super init];
-    if (self)
-    {
-        _type = clazz;
-        _key = [key copy];
-        _factoryReference = [factoryComponent copy];
-        _injectedProperties = [[NSMutableSet alloc] init];
-        [self validateRequiredParametersAreSet];
-    }
-    return self;
-}
-
-- (id)initWithClass:(Class)clazz key:(NSString*)key
-{
-    return [self initWithClass:clazz key:key factoryComponent:nil];
-}
-
-- (id)init
-{
-    return [self initWithClass:nil key:nil factoryComponent:nil];
 }
 
 
@@ -167,23 +136,6 @@
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"Definition: class='%@'", NSStringFromClass(_type)];
-}
-
-- (void)dealloc
-{
-    //Null out the __unsafe_unretained property on initializer
-    [_initializer setComponentDefinition:nil];
-}
-
-/* ====================================================================================================================================== */
-#pragma mark - Private Methods
-
-- (void)validateRequiredParametersAreSet
-{
-    if (_type == nil)
-    {
-        [NSException raise:NSInvalidArgumentException format:@"Property 'clazz' is required."];
-    }
 }
 
 

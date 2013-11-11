@@ -13,9 +13,9 @@
 
 
 #import <objc/runtime.h>
+#import <objc/message.h>
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonTypeDescriptor.h"
-
 
 @implementation TyphoonIntrospectionUtils
 
@@ -77,9 +77,10 @@
 NSSet* TyphoonAutoWiredProperties(Class clazz, NSSet* properties)
 {
     Class superClass = class_getSuperclass([clazz class]);
-    if ([superClass respondsToSelector:@selector(typhoonAutoInjectedProperties)])
+    SEL autoInjectedProperties = sel_registerName("typhoonAutoInjectedProperties");
+    if ([superClass respondsToSelector:autoInjectedProperties])
     {
-        NSMutableSet* superAutoWired = [[superClass performSelector:@selector(typhoonAutoInjectedProperties)] mutableCopy];
+        NSMutableSet* superAutoWired = [objc_msgSend(superClass, autoInjectedProperties) mutableCopy];
         [superAutoWired unionSet:properties];
         return superAutoWired;
     }
