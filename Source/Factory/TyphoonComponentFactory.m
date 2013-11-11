@@ -106,15 +106,7 @@ static TyphoonComponentFactory* defaultFactory;
 
     [self injectAutowiredPropertiesIfNeeded:definition];
     
-    if ([self infrastructureComponentProcessedFromDefinition:definition])
-    {
-      LogTrace(@"Registering Infrastructure component: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
-    }
-    else
-    {
-      LogTrace(@"Registering: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
-      [_registry addObject:definition];
-    }
+    [self registerDefinition:definition];
     
     // I would handle it via an exception but, in order to keep
     // the contract of the class, I have implemented another
@@ -136,6 +128,19 @@ static TyphoonComponentFactory* defaultFactory;
         {
             [definition injectProperty:NSSelectorFromString(anAutoWiredProperty)];
         }
+    }
+}
+
+- (void)registerDefinition:(TyphoonDefinition *)definition
+{
+    if ([self definitionIsInfrastructureComponent:definition])
+    {
+        [self registerInfrastructureComponentFromDefinition:definition];
+    }
+    else
+    {
+        LogTrace(@"Registering: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
+        [_registry addObject:definition];
     }
 }
 
@@ -240,14 +245,19 @@ static TyphoonComponentFactory* defaultFactory;
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (BOOL)infrastructureComponentProcessedFromDefinition:(TyphoonDefinition *)definition
+- (BOOL)definitionIsInfrastructureComponent:(TyphoonDefinition *)definition
 {
     if ([definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)])
     {
-        [self attachPostProcessor:[self objectForDefinition:definition]];
         return YES;
     }
     return NO;
+}
+
+- (void)registerInfrastructureComponentFromDefinition:(TyphoonDefinition *)definition
+{
+    LogTrace(@"Registering Infrastructure component: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
+    [self attachPostProcessor:[self objectForDefinition:definition]];
 }
 
 - (void)applyComponentFactoryLoadPostProcessing {
