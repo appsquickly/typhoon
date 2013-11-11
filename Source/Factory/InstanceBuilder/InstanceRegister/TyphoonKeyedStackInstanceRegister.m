@@ -11,9 +11,9 @@
 #import "TyphoonGenericStack.h"
 
 
-@implementation TyphoonKeyedStackInstanceRegister 
+@implementation TyphoonKeyedStackInstanceRegister
 {
-	NSMutableDictionary *_registry;
+    NSMutableDictionary* _registry;
 }
 
 
@@ -21,13 +21,14 @@
 
 + (instancetype)instanceRegister
 {
-	return [[self alloc] init];
+    return [[self alloc] init];
 }
 
 - (id)init
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _registry = [NSMutableDictionary dictionary];
     }
     return self;
@@ -36,43 +37,43 @@
 
 #pragma mark Public API
 
-- (void)stashInstance:(id)instance forKey:(NSString *)key
+- (void)stashInstance:(id)instance forKey:(NSString*)key
 {
-	TyphoonGenericStack *stack = [self stackForKey:key];
-	[stack push:instance];
+    TyphoonGenericStack* stack = [self stackForKey:key];
+    [stack push:instance];
 }
 
-- (id)unstashInstanceForKey:(NSString *)key
+- (id)unstashInstanceForKey:(NSString*)key
 {
-	TyphoonGenericStack *stack = _registry[key];
-	return [stack pop];
+    TyphoonGenericStack* stack = _registry[key];
+    return [stack pop];
 }
 
-- (id)peekInstanceForKey:(NSString *)key
+- (id)peekInstanceForKey:(NSString*)key
 {
-	TyphoonGenericStack *stack = _registry[key];
-	return [stack peek];
+    TyphoonGenericStack* stack = _registry[key];
+    return [stack peek];
 }
 
-- (BOOL)hasInstanceForKey:(NSString *)key
+- (BOOL)hasInstanceForKey:(NSString*)key
 {
-	return ((_registry[key] != nil) && ([_registry[key] isEmpty] == NO));
+    return ((_registry[key] != nil)&&([_registry[key] isEmpty] == NO));
 }
 
 
 #pragma mark Private methods
 
-- (TyphoonGenericStack *)stackForKey:(NSString *)key
+- (TyphoonGenericStack*)stackForKey:(NSString*)key
 {
-	TyphoonGenericStack *stack = _registry[key];
+    TyphoonGenericStack* stack = _registry[key];
 
-	if (!stack)
-	{
-		stack = [TyphoonGenericStack stack];
-		_registry[key] = stack;
-	}
+    if (!stack)
+    {
+        stack = [TyphoonGenericStack stack];
+        _registry[key] = stack;
+    }
 
-	return stack;
+    return stack;
 }
 
 @end

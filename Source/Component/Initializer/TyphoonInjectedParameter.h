@@ -12,6 +12,7 @@
 
 
 #import <Foundation/Foundation.h>
+
 @class TyphoonInitializer;
 
 typedef enum

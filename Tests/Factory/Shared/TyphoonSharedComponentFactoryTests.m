@@ -115,7 +115,7 @@
     @catch (NSException* e)
     {
         assertThat([e description], equalTo(
-            @"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"));
+                @"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"));
     }
 
 }
@@ -152,7 +152,7 @@
     @catch (NSException* e)
     {
         assertThat([e description], equalTo(
-            @"Class method 'stringWithBlingBlaBla' not found on 'NSString'. Did you include the required ':' characters to signify arguments?"));
+                @"Class method 'stringWithBlingBlaBla' not found on 'NSString'. Did you include the required ':' characters to signify arguments?"));
     }
 }
 
@@ -178,7 +178,7 @@
 
 - (void)test_post_processor_component_recognized
 {
-  assertThatUnsignedLong([_infrastructureComponentsFactory.postProcessors count], equalToInt(1));
+    assertThatUnsignedLong([_infrastructureComponentsFactory.postProcessors count], equalToInt(1));
 }
 
 /* ====================================================================================================================================== */
@@ -235,41 +235,41 @@
 #pragma mark - Circular dependencies on singleton chains
 - (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_type
 {
-	SingletonA *singletonADependsOnBViaProperty = [_singletonsChainFactory componentForType:[SingletonA class]];
-	SingletonB *singletonBDependsOnNotSingletonAViaProperty = [_singletonsChainFactory componentForType:[SingletonB class]];
-	NotSingletonA *notSingletonADependsOnAViaInitializer = [_singletonsChainFactory componentForType:[NotSingletonA class]];
-	assertThat(singletonADependsOnBViaProperty.dependencyOnB, is(singletonBDependsOnNotSingletonAViaProperty));
-	assertThat(singletonBDependsOnNotSingletonAViaProperty.dependencyOnNotSingletonA.dependencyOnA, is(singletonADependsOnBViaProperty));
-	assertThat(notSingletonADependsOnAViaInitializer.dependencyOnA, is(singletonADependsOnBViaProperty));
+    SingletonA* singletonADependsOnBViaProperty = [_singletonsChainFactory componentForType:[SingletonA class]];
+    SingletonB* singletonBDependsOnNotSingletonAViaProperty = [_singletonsChainFactory componentForType:[SingletonB class]];
+    NotSingletonA* notSingletonADependsOnAViaInitializer = [_singletonsChainFactory componentForType:[NotSingletonA class]];
+    assertThat(singletonADependsOnBViaProperty.dependencyOnB, is(singletonBDependsOnNotSingletonAViaProperty));
+    assertThat(singletonBDependsOnNotSingletonAViaProperty.dependencyOnNotSingletonA.dependencyOnA, is(singletonADependsOnBViaProperty));
+    assertThat(notSingletonADependsOnAViaInitializer.dependencyOnA, is(singletonADependsOnBViaProperty));
 }
 
 - (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_reference
 {
-	SingletonA *singletonA = [_singletonsChainFactory componentForKey:@"singletonA"];
-	SingletonB *singletonB = [_singletonsChainFactory componentForKey:@"singletonB"];
-	NotSingletonA *notSingletonA = [_singletonsChainFactory componentForKey:@"notSingletonA"];
-	assertThat(singletonA.dependencyOnB, is(singletonB));
-	assertThat(singletonB.dependencyOnNotSingletonA.dependencyOnA, is(singletonA));
-	assertThat(notSingletonA.dependencyOnA, is(singletonA));
+    SingletonA* singletonA = [_singletonsChainFactory componentForKey:@"singletonA"];
+    SingletonB* singletonB = [_singletonsChainFactory componentForKey:@"singletonB"];
+    NotSingletonA* notSingletonA = [_singletonsChainFactory componentForKey:@"notSingletonA"];
+    assertThat(singletonA.dependencyOnB, is(singletonB));
+    assertThat(singletonB.dependencyOnNotSingletonA.dependencyOnA, is(singletonA));
+    assertThat(notSingletonA.dependencyOnA, is(singletonA));
 }
 
 - (void)test_initializer_injected_component_is_correctly_resolved_in_circular_dependency
 {
-	PrototypeInitInjected *initializerInjected = [_circularDependenciesFactory componentForType:[PrototypeInitInjected class]];
-	PrototypePropertyInjected *propertyInjected = [_circularDependenciesFactory componentForType:[PrototypePropertyInjected class]];
-	// should be expected class, but not same instance
-	assertThat(initializerInjected.prototypePropertyInjected, instanceOf([PrototypePropertyInjected class]));
-	assertThat(initializerInjected.prototypePropertyInjected, isNot(propertyInjected));
-	assertThat(propertyInjected.prototypeInitInjected, instanceOf([PrototypeInitInjected class]));
-	assertThat(propertyInjected.prototypeInitInjected, isNot(initializerInjected));
+    PrototypeInitInjected* initializerInjected = [_circularDependenciesFactory componentForType:[PrototypeInitInjected class]];
+    PrototypePropertyInjected* propertyInjected = [_circularDependenciesFactory componentForType:[PrototypePropertyInjected class]];
+    // should be expected class, but not same instance
+    assertThat(initializerInjected.prototypePropertyInjected, instanceOf([PrototypePropertyInjected class]));
+    assertThat(initializerInjected.prototypePropertyInjected, isNot(propertyInjected));
+    assertThat(propertyInjected.prototypeInitInjected, instanceOf([PrototypeInitInjected class]));
+    assertThat(propertyInjected.prototypeInitInjected, isNot(initializerInjected));
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Currently Resolving Overwriting Problem
 - (void)test_currently_resolving_references_dictionary_is_not_overwritten_when_initializing_two_instances_of_prototype_in_the_same_chain
 {
-	CROSingletonA *singletonA = [_circularDependenciesFactory componentForType:[CROSingletonA class]];
-	assertThat(singletonA.prototypeB, isNot(nilValue()));
+    CROSingletonA* singletonA = [_circularDependenciesFactory componentForType:[CROSingletonA class]];
+    assertThat(singletonA.prototypeB, isNot(nilValue()));
 }
 
 

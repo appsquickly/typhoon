@@ -10,7 +10,7 @@
 
 @implementation TyphoonGenericStack
 {
-	NSMutableArray *_storage;
+    NSMutableArray* _storage;
 }
 
 
@@ -18,13 +18,14 @@
 
 + (instancetype)stack
 {
-	return [[self alloc] init];
+    return [[self alloc] init];
 }
 
 - (id)init
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _storage = [NSMutableArray array];
     }
     return self;
@@ -35,27 +36,27 @@
 
 - (void)push:(id)element
 {
-	[_storage addObject:element];
+    [_storage addObject:element];
 }
 
 - (id)pop
 {
-	id element = [_storage lastObject];
+    id element = [_storage lastObject];
     if ([self isEmpty] == NO)
     {
         [_storage removeLastObject];
     }
-	return element;
+    return element;
 }
 
 - (id)peek
 {
-	return [_storage lastObject];
+    return [_storage lastObject];
 }
 
 - (BOOL)isEmpty
 {
-	return ([_storage count] == 0);
+    return ([_storage count] == 0);
 }
 
 @end

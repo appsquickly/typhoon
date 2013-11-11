@@ -12,8 +12,8 @@
 
 @interface NotSingletonA : NSObject
 
-@property (nonatomic, strong) SingletonA *dependencyOnA;
+@property(nonatomic, strong) SingletonA* dependencyOnA;
 
-- (id)initWithSingletonA:(SingletonA *)singletonA;
+- (id)initWithSingletonA:(SingletonA*)singletonA;
 
 @end

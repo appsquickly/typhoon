@@ -32,12 +32,12 @@
     _factoryReference = factoryReference;
 }
 
-- (NSSet *)componentsInjectedByValue;
+- (NSSet*)componentsInjectedByValue;
 {
-    NSMutableSet *set = [[NSMutableSet alloc] init];
+    NSMutableSet* set = [[NSMutableSet alloc] init];
     [set unionSet:[self propertiesInjectedByValue]];
-    
-    NSArray *a = [self.initializer parametersInjectedByValue];
+
+    NSArray* a = [self.initializer parametersInjectedByValue];
     [set unionSet:[NSSet setWithArray:a]];
     return set;
 }

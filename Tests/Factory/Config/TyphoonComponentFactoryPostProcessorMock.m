@@ -13,8 +13,9 @@
 
 @implementation TyphoonComponentFactoryPostProcessorMock
 
--(void)postProcessComponentFactory:(TyphoonComponentFactory *)factory {
-  self.postProcessingCalled = YES;
+- (void)postProcessComponentFactory:(TyphoonComponentFactory*)factory
+{
+    self.postProcessingCalled = YES;
 }
 
 @end

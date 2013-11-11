@@ -14,7 +14,6 @@
 #import <Foundation/Foundation.h>
 
 
-
 @interface TyphoonAssembly : NSObject
 {
     NSMutableDictionary* _cachedDefinitions;

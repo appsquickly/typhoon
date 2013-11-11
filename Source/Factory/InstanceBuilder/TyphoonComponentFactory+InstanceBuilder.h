@@ -14,6 +14,7 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactory.h"
 #import "TyphoonIntrospectiveNSObject.h"
+
 @interface TyphoonComponentFactory (InstanceBuilder)
 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition;

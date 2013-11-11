@@ -8,7 +8,8 @@
 
 #import "InjectionAwareObject.h"
 
-@implementation InjectionAwareObject {
+@implementation InjectionAwareObject
+{
     id factory;
 }
 

@@ -11,11 +11,12 @@
 
 #import "TyphoonParameterInjectedAsCollection.h"
 
-@implementation TyphoonParameterInjectedAsCollection {
+@implementation TyphoonParameterInjectedAsCollection
+{
     Class _requiredType;
 }
 
--(id)initWithParameterIndex:(NSUInteger)index requiredType:(Class)requiredType
+- (id)initWithParameterIndex:(NSUInteger)index requiredType:(Class)requiredType
 {
     self = [super init];
     if (self)
@@ -28,16 +29,17 @@
 
 - (TyphoonParameterInjectionType)type
 {
-  return TyphoonParameterInjectionTypeAsCollection;
+    return TyphoonParameterInjectionTypeAsCollection;
 }
 
--(void)setInitializer:(TyphoonInitializer *)initializer
+- (void)setInitializer:(TyphoonInitializer*)initializer
 {
-  // No-op.
+    // No-op.
 }
 
--(TyphoonCollectionType)collectionType {
-    
+- (TyphoonCollectionType)collectionType
+{
+
     Class clazz = _requiredType;
     if (clazz == nil)
     {
@@ -63,9 +65,9 @@
     {
         return TyphoonCollectionTypeNSSet;
     }
-    
+
     [NSException raise:NSInvalidArgumentException format:@"Required collection type '%@' is neither an NSSet nor NSArray.",
-     NSStringFromClass(clazz)];
+                                                         NSStringFromClass(clazz)];
     return 0;
 }
 

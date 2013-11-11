@@ -14,5 +14,5 @@
 #import "TyphoonTypeConverter.h"
 
 
-@interface TyphoonUIColorTypeConverter : NSObject<TyphoonTypeConverter>
+@interface TyphoonUIColorTypeConverter : NSObject <TyphoonTypeConverter>
 @end

@@ -19,8 +19,8 @@
 */
 @interface TyphoonPropertyInjectedByReference : NSObject <TyphoonInjectedProperty>
 
-@property (nonatomic, strong, readonly) NSString* name;
-@property (nonatomic, strong, readonly) NSString* reference;
+@property(nonatomic, strong, readonly) NSString* name;
+@property(nonatomic, strong, readonly) NSString* reference;
 
 - (id)initWithName:(NSString*)name reference:(NSString*)reference;
 

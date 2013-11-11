@@ -17,6 +17,7 @@
 
 @optional
 - (void)beforePropertiesSet;
+
 - (void)afterPropertiesSet;
 
 @end

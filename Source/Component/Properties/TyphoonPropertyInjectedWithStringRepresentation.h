@@ -23,8 +23,8 @@
 */
 @interface TyphoonPropertyInjectedWithStringRepresentation : NSObject <TyphoonInjectedProperty, TyphoonComponentInjectedByValue>
 
-@property (nonatomic, strong, readonly) NSString* name;
-@property (nonatomic, readonly) TyphoonPropertyInjectionType type;
+@property(nonatomic, strong, readonly) NSString* name;
+@property(nonatomic, readonly) TyphoonPropertyInjectionType type;
 
 
 - (id)initWithName:(NSString*)name value:(NSString*)value;

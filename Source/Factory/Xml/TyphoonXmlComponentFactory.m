@@ -55,12 +55,12 @@
     {
         NSString* xmlString = [[TyphoonBundleResource withName:resourceName] asString];
         TyphoonRXMLElement* element = [TyphoonRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
-        
+
         [element iterate:@"*" usingBlock:^(TyphoonRXMLElement* child)
         {
             if ([child isComponent])
             {
-              [self register:[child asComponentDefinition]];
+                [self register:[child asComponentDefinition]];
             }
         }];
     }

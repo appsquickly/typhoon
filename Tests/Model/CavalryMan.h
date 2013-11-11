@@ -15,13 +15,13 @@
 #import "TyphoonPropertyInjectionDelegate.h"
 
 
-@interface CavalryMan : Knight<TyphoonPropertyInjectionDelegate>
+@interface CavalryMan : Knight <TyphoonPropertyInjectionDelegate>
 
-@property (nonatomic) float hitRatio;
+@property(nonatomic) float hitRatio;
 
-@property (nonatomic, strong) NSArray* propertyInjectedAsInstance;
+@property(nonatomic, strong) NSArray* propertyInjectedAsInstance;
 
-- (id)initWithQuest:(id<Quest>)quest hitRatio:(float)hitRatio;
+- (id)initWithQuest:(id <Quest>)quest hitRatio:(float)hitRatio;
 
 
 @end

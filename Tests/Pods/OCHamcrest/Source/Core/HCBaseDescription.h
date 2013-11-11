@@ -28,6 +28,6 @@
 /**
     Append the string @a str to the description.
  */
-- (void)append:(NSString *)str;
+- (void)append:(NSString*)str;
 
 @end

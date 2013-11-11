@@ -16,10 +16,10 @@
 
 @interface TyphoonParameterInjectedAsCollection : TyphoonArgumentInjectedAsCollection <TyphoonInjectedParameter>
 
-@property (nonatomic, readonly) TyphoonParameterInjectionType type;
-@property (nonatomic, readonly) NSUInteger index;
+@property(nonatomic, readonly) TyphoonParameterInjectionType type;
+@property(nonatomic, readonly) NSUInteger index;
 
-@property (nonatomic, readonly) TyphoonCollectionType collectionType;
+@property(nonatomic, readonly) TyphoonCollectionType collectionType;
 
 - (id)initWithParameterIndex:(NSUInteger)index requiredType:(Class)requiredType;
 

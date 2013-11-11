@@ -18,7 +18,7 @@
 @class TyphoonDefinition;
 
 
-@interface MiddleAgesAssembly : TyphoonAssembly<QuestProvider>
+@interface MiddleAgesAssembly : TyphoonAssembly <QuestProvider>
 
 - (id)knight;
 

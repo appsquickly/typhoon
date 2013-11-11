@@ -14,12 +14,12 @@
 @end
 
 
-
-@implementation TyphoonAssemblySelectorAdviserTests {
+@implementation TyphoonAssemblySelectorAdviserTests
+{
     NSString* key;
     SEL sel;
     SEL advisedSEL;
-    
+
     SEL SELWithArguments;
     SEL advisedSELWithArguments;
 }
@@ -29,7 +29,7 @@
     sel = @selector(uppercaseString);
     key = NSStringFromSelector(sel);
     advisedSEL = [TyphoonAssemblySelectorAdviser advisedSELForSEL:sel];
-    
+
     SELWithArguments = @selector(initWithString:attributes:);
 }
 
@@ -62,26 +62,26 @@
 
 - (void)advisedSELShouldHaveNoArguments;
 {
-    STAssertEquals([self numberOfArgumentsInSelector:advisedSEL], (NSUInteger)0, @"The advised SEL should not have any arguments.");
+    STAssertEquals([self numberOfArgumentsInSelector:advisedSEL], (NSUInteger) 0, @"The advised SEL should not have any arguments.");
 }
 
 - (void)advisedSELWithArgumentsShouldHaveTwoArgumentsAndEndWithAnArgument;
 {
     assertThatUnsignedInteger([self numberOfArgumentsInSelector:advisedSELWithArguments], equalToUnsignedInteger(2));
-    STAssertEquals([self numberOfArgumentsInSelector:advisedSELWithArguments], (NSUInteger)2, @"The wrapped SEL with two arguments should have two arguments.");
+    STAssertEquals([self numberOfArgumentsInSelector:advisedSELWithArguments], (NSUInteger) 2, @"The wrapped SEL with two arguments should have two arguments.");
     STAssertTrue([self selectorEndsWithASemicolon:advisedSELWithArguments], nil);
 }
 
 - (NSUInteger)numberOfArgumentsInSelector:(SEL)selector;
 {
-    NSString *original = NSStringFromSelector(selector);
-    NSString *withArgumentsRemoved = [original stringByReplacingOccurrencesOfString:@":" withString:@""];
+    NSString* original = NSStringFromSelector(selector);
+    NSString* withArgumentsRemoved = [original stringByReplacingOccurrencesOfString:@":" withString:@""];
     return [original length] - [withArgumentsRemoved length];
 }
 
 - (BOOL)selectorEndsWithASemicolon:(SEL)selector;
 {
-    NSString *s = NSStringFromSelector(selector);
+    NSString* s = NSStringFromSelector(selector);
     NSUInteger lastIndex = [s length] - 1;
     return [[s substringFromIndex:lastIndex] isEqualToString:@":"];
 }

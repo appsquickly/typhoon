@@ -38,8 +38,8 @@
     {
         Knight* mockKnight = mock([Knight class]);
         [given([mockKnight favoriteDamsels]) willReturn:@[
-            @"Mary",
-            @"Janezzz"
+                @"Mary",
+                @"Janezzz"
         ]];
 
         return mockKnight;

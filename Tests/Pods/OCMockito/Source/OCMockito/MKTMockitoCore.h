@@ -19,10 +19,10 @@
 
 + (id)sharedCore;
 
-- (MKTOngoingStubbing *)stubAtLocation:(MKTTestLocation)location;
+- (MKTOngoingStubbing*)stubAtLocation:(MKTTestLocation)location;
 
-- (id)verifyMock:(MKTObjectMock *)mock
+- (id)verifyMock:(MKTObjectMock*)mock
         withMode:(id <MKTVerificationMode>)mode
-      atLocation:(MKTTestLocation)location;
+        atLocation:(MKTTestLocation)location;
 
 @end

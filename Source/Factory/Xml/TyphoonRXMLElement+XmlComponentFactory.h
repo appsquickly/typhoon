@@ -25,7 +25,7 @@
 
 - (TyphoonDefinition*)asComponentDefinition;
 
-- (id<TyphoonInjectedProperty>)asInjectedProperty;
+- (id <TyphoonInjectedProperty>)asInjectedProperty;
 
 - (TyphoonInitializer*)asInitializer;
 

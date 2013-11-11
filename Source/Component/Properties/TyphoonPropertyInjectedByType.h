@@ -21,8 +21,8 @@
 */
 @interface TyphoonPropertyInjectedByType : NSObject <TyphoonInjectedProperty>
 
-@property (nonatomic, strong, readonly) NSString* name;
-@property (nonatomic, readonly) TyphoonPropertyInjectionType type;
+@property(nonatomic, strong, readonly) NSString* name;
+@property(nonatomic, readonly) TyphoonPropertyInjectionType type;
 
 - (id)initWithName:(NSString*)name;
 

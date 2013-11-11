@@ -18,9 +18,11 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import "OCLogTemplate.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 static NSMutableDictionary* resolveStackForSelector;
 static NSMutableArray* reservedSelectorsAsStrings;
+static NSMutableArray* assemblyProperties;
 
 @implementation TyphoonAssembly
 
@@ -77,21 +79,23 @@ static NSMutableArray* reservedSelectorsAsStrings;
         [self provideDynamicImplementationToConstructDefinitionForSEL:sel];
         return YES;
     }
+
     return [super resolveInstanceMethod:sel];
 }
 
 + (BOOL)shouldProvideDynamicImplementationFor:(SEL)sel;
 {
-    return (![TyphoonAssembly selectorReserved:sel] && [TyphoonAssemblySelectorAdviser selectorIsAdvised:sel]);
+    return (![TyphoonAssembly selectorReservedOrPropertySetter:sel]&&[TyphoonAssemblySelectorAdviser selectorIsAdvised:sel]);
 }
 
-+ (BOOL)selectorReserved:(SEL)selector
++ (BOOL)selectorReservedOrPropertySetter:(SEL)selector
 {
-    if ([reservedSelectorsAsStrings containsObject:NSStringFromSelector(selector)])
+    NSString* selectorString = NSStringFromSelector(selector);
+    if ([reservedSelectorsAsStrings containsObject:selectorString])
     {
         return YES;
     }
-    else if ([NSStringFromSelector(selector) hasPrefix:@"set"])
+    else if ([selectorString hasPrefix:@"set"]&&[selectorString hasSuffix:@":"])
     {
         return YES;
     }
@@ -101,7 +105,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
 + (void)provideDynamicImplementationToConstructDefinitionForSEL:(SEL)sel;
 {
     IMP imp = [self implementationToConstructDefinitionForSEL:sel];
-    class_addMethod(self, sel, imp, "@@:");
+    class_addMethod(self, sel, imp, "@");
 }
 
 + (IMP)implementationToConstructDefinitionForSEL:(SEL)selWithAdvicePrefix
@@ -113,8 +117,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
     }));
 }
 
-
-+ (TyphoonDefinition*)buildAndCacheDefinitionForKey:(NSString*)key me:(TyphoonAssembly*)me;
++ (TyphoonDefinition*)buildAndCacheDefinitionForKey:(NSString*)key me:(TyphoonAssembly*)me
 {
     NSMutableArray* resolveStack = [self resolveStackForKey:key];
     [self markCurrentlyResolvingKey:key resolveStack:resolveStack];
@@ -185,16 +188,18 @@ static NSMutableArray* reservedSelectorsAsStrings;
 {
     SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key];
     id cached = objc_msgSend(me,
-        sel); // the advisedSEL will call through to the original, unwrapped implementation because of the active swizzling.
+            sel); // the advisedSEL will call through to the original, unwrapped implementation because of the active swizzling.
     return cached;
 }
 
 + (void)populateCacheWithDefinition:(TyphoonDefinition*)cached forKey:(NSString*)key me:(TyphoonAssembly*)me
 {
-    if (cached && [cached isKindOfClass:[TyphoonDefinition class]])
+    if (cached&&[cached isKindOfClass:[TyphoonDefinition class]])
     {
-        [self setKey:key onDefinitionIfExistingKeyEmpty:cached];
-        [[me cachedDefinitionsForMethodName] setObject:cached forKey:key];
+        TyphoonDefinition* definition = (TyphoonDefinition*) cached;
+        [self setKey:key onDefinitionIfExistingKeyEmpty:definition];
+
+        [[me cachedDefinitionsForMethodName] setObject:definition forKey:key];
     }
 }
 
@@ -237,7 +242,6 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 - (void)resolveCollaboratingAssemblies
 {
-
 }
 
 /* ====================================================================================================================================== */
@@ -248,5 +252,26 @@ static NSMutableArray* reservedSelectorsAsStrings;
     return _cachedDefinitions;
 }
 
+
+- (NSArray*)cachePropertyNamesForClass:(Class)clazz inArray:(NSMutableArray*)rv
+{
+    unsigned count;
+    objc_property_t* properties = class_copyPropertyList(clazz, &count);
+
+    unsigned i;
+    for (i = 0; i < count; i++)
+    {
+        objc_property_t property = properties[i];
+        NSString* name = [NSString stringWithUTF8String:property_getName(property)];
+        [rv addObject:name];
+    }
+    free(properties);
+    if ([clazz superclass])
+    {
+        [self cachePropertyNamesForClass:[clazz superclass] inArray:rv];
+    }
+
+    return rv;
+}
 
 @end

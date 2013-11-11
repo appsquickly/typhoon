@@ -12,16 +12,17 @@
 
 @interface HCIsCollectionContaining : HCBaseMatcher
 {
-    id<HCMatcher> elementMatcher;
+    id <HCMatcher> elementMatcher;
 }
 
-+ (id)isCollectionContaining:(id<HCMatcher>)anElementMatcher;
-- (id)initWithMatcher:(id<HCMatcher>)anElementMatcher;
++ (id)isCollectionContaining:(id <HCMatcher>)anElementMatcher;
+
+- (id)initWithMatcher:(id <HCMatcher>)anElementMatcher;
 
 @end
 
 
-OBJC_EXPORT id<HCMatcher> HC_hasItem(id itemMatch);
+OBJC_EXPORT id <HCMatcher> HC_hasItem(id itemMatch);
 
 /**
     hasItem(aMatcher) -
@@ -41,11 +42,11 @@ OBJC_EXPORT id<HCMatcher> HC_hasItem(id itemMatch);
     @ingroup collection_matchers
  */
 #ifdef HC_SHORTHAND
-    #define hasItem HC_hasItem
+#define hasItem HC_hasItem
 #endif
 
 
-OBJC_EXPORT id<HCMatcher> HC_hasItems(id itemMatch, ...) NS_REQUIRES_NIL_TERMINATION;
+OBJC_EXPORT id <HCMatcher> HC_hasItems(id itemMatch, ...) NS_REQUIRES_NIL_TERMINATION;
 
 /**
     hasItems(firstMatcher, ...) -
@@ -65,5 +66,5 @@ OBJC_EXPORT id<HCMatcher> HC_hasItems(id itemMatch, ...) NS_REQUIRES_NIL_TERMINA
     @ingroup collection_matchers
  */
 #ifdef HC_SHORTHAND
-    #define hasItems HC_hasItems
+#define hasItems HC_hasItems
 #endif

@@ -22,19 +22,19 @@
     static NSDictionary* _deucePrimitiveTypesAsStrings;
 
     dispatch_once(&onceToken, ^
-{
-    _deucePrimitiveTypesAsStrings =
-            [[NSDictionary alloc] initWithObjectsAndKeys:@(TyphoonPrimitiveTypeChar), @"c", @(TyphoonPrimitiveTypeInt), @"i",
-                                                         @(TyphoonPrimitiveTypeShort), @"s", @(TyphoonPrimitiveTypeLong), @"l",
-                                                         @(TyphoonPrimitiveTypeLongLong), @"q", @(TyphoonPrimitiveTypeUnsignedChar), @"C",
-                                                         @(TyphoonPrimitiveTypeUnsignedInt), @"I", @(TyphoonPrimitiveTypeUnsignedShort), @"S",
-                                                         @(TyphoonPrimitiveTypeUnsignedLong), @"L",
-                                                         @(TyphoonPrimitiveTypeUnsignedLongLong), @"Q", @(TyphoonPrimitiveTypeFloat), @"f",
-                                                         @(TyphoonPrimitiveTypeDouble), @"d", @(TyphoonPrimitiveTypeBoolean), @"B",
-                                                         @(TyphoonPrimitiveTypeVoid), @"v", @(TyphoonPrimitiveTypeString), @"*",
-                                                         @(TyphoonPrimitiveTypeClass), @"#", @(TyphoonPrimitiveTypeSelector), @":",
-                                                         @(TyphoonPrimitiveTypeUnknown), @"?", nil];
-});
+    {
+        _deucePrimitiveTypesAsStrings =
+                [[NSDictionary alloc] initWithObjectsAndKeys:@(TyphoonPrimitiveTypeChar), @"c", @(TyphoonPrimitiveTypeInt), @"i",
+                                                             @(TyphoonPrimitiveTypeShort), @"s", @(TyphoonPrimitiveTypeLong), @"l",
+                                                             @(TyphoonPrimitiveTypeLongLong), @"q", @(TyphoonPrimitiveTypeUnsignedChar), @"C",
+                                                             @(TyphoonPrimitiveTypeUnsignedInt), @"I", @(TyphoonPrimitiveTypeUnsignedShort), @"S",
+                                                             @(TyphoonPrimitiveTypeUnsignedLong), @"L",
+                                                             @(TyphoonPrimitiveTypeUnsignedLongLong), @"Q", @(TyphoonPrimitiveTypeFloat), @"f",
+                                                             @(TyphoonPrimitiveTypeDouble), @"d", @(TyphoonPrimitiveTypeBoolean), @"B",
+                                                             @(TyphoonPrimitiveTypeVoid), @"v", @(TyphoonPrimitiveTypeString), @"*",
+                                                             @(TyphoonPrimitiveTypeClass), @"#", @(TyphoonPrimitiveTypeSelector), @":",
+                                                             @(TyphoonPrimitiveTypeUnknown), @"?", nil];
+    });
     return _deucePrimitiveTypesAsStrings;
 }
 
@@ -72,7 +72,7 @@
             _isPrimitive = NO;
             typeCode = [typeCode stringByReplacingOccurrencesOfString:@"T@" withString:@""];
             typeCode = [typeCode stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-            if ([typeCode hasPrefix:@"<"] && [typeCode hasSuffix:@">"])
+            if ([typeCode hasPrefix:@"<"]&&[typeCode hasSuffix:@">"])
             {
                 typeCode = [typeCode stringByReplacingOccurrencesOfString:@"<" withString:@""];
                 typeCode = [typeCode stringByReplacingOccurrencesOfString:@">" withString:@""];
@@ -124,11 +124,11 @@
         {
             return [NSString stringWithFormat:@"Type descriptor: id<%@>", NSStringFromProtocol(protocol)];
         }
-        else 
+        else
         {
             return [NSString stringWithFormat:@"Type descriptor: %@", [self classOrProtocol]];
         }
-        
+
     }
 }
 
@@ -145,7 +145,7 @@
 
 - (NSString*)extractArrayInformation:(NSString*)typeCode
 {
-    if ([typeCode hasPrefix:@"["] && [typeCode hasSuffix:@"]"])
+    if ([typeCode hasPrefix:@"["]&&[typeCode hasSuffix:@"]"])
     {
         _isArray = YES;
         typeCode = [[typeCode stringByReplacingOccurrencesOfString:@"[" withString:@""]
@@ -169,7 +169,7 @@
 
 - (NSString*)extractStructureInformation:(NSString*)typeCode
 {
-    if ([typeCode hasPrefix:@"{"] && [typeCode hasSuffix:@"}"])
+    if ([typeCode hasPrefix:@"{"]&&[typeCode hasSuffix:@"}"])
     {
         _isStructure = YES;
         typeCode = [[typeCode stringByReplacingOccurrencesOfString:@"{" withString:@""]

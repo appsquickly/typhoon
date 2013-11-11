@@ -14,8 +14,11 @@
 @interface TyphoonAssemblySelectorAdviser : NSObject
 
 + (SEL)advisedSELForKey:(NSString*)key;
+
 + (NSString*)keyForAdvisedSEL:(SEL)selWithAdvicePrefix;
+
 + (BOOL)selectorIsAdvised:(SEL)sel;
+
 + (SEL)advisedSELForSEL:(SEL)unwrappedSEL;
 
 @end

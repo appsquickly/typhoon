@@ -18,7 +18,7 @@
 
 @interface CollaboratingMiddleAgesAssembly : TyphoonAssembly
 
-@property (nonatomic, strong, readwrite) id<QuestProvider> quests;
+@property(nonatomic, strong, readwrite) id <QuestProvider> quests;
 
 - (id)knightWithExternalQuest;
 

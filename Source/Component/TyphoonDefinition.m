@@ -18,6 +18,7 @@
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonPropertyInjectedAsCollection.h"
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 
 @implementation TyphoonDefinition
@@ -30,10 +31,6 @@
     return [[TyphoonDefinition alloc] initWithClass:clazz key:nil];
 }
 
-+ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key
-{
-    return [[TyphoonDefinition alloc] initWithClass:clazz key:key];
-}
 
 + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
 {
@@ -46,13 +43,13 @@
 }
 
 + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
-    properties:(TyphoonDefinitionBlock)properties
+        properties:(TyphoonDefinitionBlock)properties
 {
     return [TyphoonDefinition withClass:clazz key:nil initialization:initialization properties:properties];
 }
 
 + (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key initialization:(TyphoonInitializerBlock)initialization
-    properties:(TyphoonDefinitionBlock)properties
+        properties:(TyphoonDefinitionBlock)properties
 {
 
     TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key];
@@ -83,34 +80,6 @@
 
 
 /* ====================================================================================================================================== */
-#pragma mark - Initialization & Destruction
-
-- (id)initWithClass:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent
-{
-    self = [super init];
-    if (self)
-    {
-        _type = clazz;
-        _key = [key copy];
-        _factoryReference = [factoryComponent copy];
-        _injectedProperties = [[NSMutableSet alloc] init];
-        [self validateRequiredParametersAreSet];
-    }
-    return self;
-}
-
-- (id)initWithClass:(Class)clazz key:(NSString*)key
-{
-    return [self initWithClass:clazz key:key factoryComponent:nil];
-}
-
-- (id)init
-{
-    return [self initWithClass:nil key:nil factoryComponent:nil];
-}
-
-
-/* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
 - (void)injectProperty:(SEL)selector
@@ -121,7 +90,7 @@
 - (void)injectProperty:(SEL)selector withValueAsText:(NSString*)textValue
 {
     [_injectedProperties addObject:[[TyphoonPropertyInjectedWithStringRepresentation alloc]
-        initWithName:NSStringFromSelector(selector) value:textValue]];
+            initWithName:NSStringFromSelector(selector) value:textValue]];
 }
 
 - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition
@@ -132,13 +101,13 @@
 - (void)injectProperty:(SEL)selector withObjectInstance:(id)instance
 {
     [_injectedProperties addObject:[[TyphoonPropertyInjectedAsObjectInstance alloc]
-        initWithName:NSStringFromSelector(selector) objectInstance:instance]];
+            initWithName:NSStringFromSelector(selector) objectInstance:instance]];
 }
 
 - (void)injectProperty:(SEL)withSelector asCollection:(void (^)(TyphoonPropertyInjectedAsCollection*))collectionValues;
 {
     TyphoonPropertyInjectedAsCollection
-        * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:NSStringFromSelector(withSelector)];
+            * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:NSStringFromSelector(withSelector)];
 
     if (collectionValues)
     {
@@ -167,23 +136,6 @@
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"Definition: class='%@'", NSStringFromClass(_type)];
-}
-
-- (void)dealloc
-{
-    //Null out the __unsafe_unretained property on initializer
-    [_initializer setComponentDefinition:nil];
-}
-
-/* ====================================================================================================================================== */
-#pragma mark - Private Methods
-
-- (void)validateRequiredParametersAreSet
-{
-    if (_type == nil)
-    {
-        [NSException raise:NSInvalidArgumentException format:@"Property 'clazz' is required."];
-    }
 }
 
 

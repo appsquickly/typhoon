@@ -11,7 +11,9 @@
 @interface SingletonsChainAssembly : TyphoonAssembly
 
 - (id)singletonA;
+
 - (id)singletonB;
+
 - (id)notSingletonA;
 
 @end

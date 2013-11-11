@@ -18,7 +18,6 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 
 
-
 @implementation TyphoonUIColorTypeConverter
 
 - (id)convert:(NSString*)stringValue

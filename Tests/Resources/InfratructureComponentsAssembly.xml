@@ -1,12 +1,12 @@
 <assembly xmlns="http://www.typhoonframework.org/schema/assembly"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.typhoonframework.org/schema/assembly
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.typhoonframework.org/schema/assembly
   http://www.typhoonframework.org/schema/assembly.xsd">
-  
-  <property-placeholder location="SomeProperties.properties"/>
-  
-  <component class="Knight" key="knight">
-    <property name="damselsRescued" value="${damsels.rescued}"/>
-  </component>
-  
+
+    <property-placeholder location="SomeProperties.properties"/>
+
+    <component class="Knight" key="knight">
+        <property name="damselsRescued" value="${damsels.rescued}"/>
+    </component>
+
 </assembly>

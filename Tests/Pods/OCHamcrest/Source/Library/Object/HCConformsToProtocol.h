@@ -10,17 +10,19 @@
 
 @interface HCConformsToProtocol : HCBaseMatcher
 {
-    Protocol *theProtocol;
+    Protocol* theProtocol;
 }
 
-+ (id)conformsToProtocol:(Protocol *)protocol;
-- (id)initWithProtocol:(Protocol *)protocol;
++ (id)conformsToProtocol:(Protocol*)protocol;
+
+- (id)initWithProtocol:(Protocol*)protocol;
 
 @end
 
 
-OBJC_EXPORT id<HCMatcher> HC_conformsTo(Protocol *aProtocol);
-OBJC_EXPORT id<HCMatcher> HC_conformsToProtocol(Protocol *aProtocol)    __attribute__((deprecated));
+OBJC_EXPORT id <HCMatcher> HC_conformsTo(Protocol* aProtocol);
+
+OBJC_EXPORT id <HCMatcher> HC_conformsToProtocol(Protocol* aProtocol)    __attribute__((deprecated));
 
 /**
     conformsTo(aProtocol) -
@@ -39,5 +41,5 @@ OBJC_EXPORT id<HCMatcher> HC_conformsToProtocol(Protocol *aProtocol)    __attrib
     @ingroup object_matchers
  */
 #ifdef HC_SHORTHAND
-    #define conformsTo HC_conformsTo
+#define conformsTo HC_conformsTo
 #endif

@@ -24,7 +24,7 @@ static NSMutableArray* swizzleRegistry;
 
 @interface TyphoonAssembly (BlockFactoryFriend)
 
-+ (BOOL)selectorReserved:(SEL)selector;
++ (BOOL)selectorReservedOrPropertySetter:(SEL)selector;
 
 - (NSMutableDictionary*)cachedDefinitionsForMethodName;
 
@@ -122,16 +122,20 @@ static NSMutableArray* swizzleRegistry;
 {
     @synchronized (self)
     {
-        NSSet* definitionSelectors = [self obtainDefinitionSelectors:assembly];
-
-        [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
-        {
-            objc_msgSend(assembly, (SEL) [obj pointerValue]);
-        }];
-
-        NSMutableDictionary* dictionary = [assembly cachedDefinitionsForMethodName];
-        return [dictionary allValues];
+        [self populateCacheOnAssembly:assembly];
+        return [[assembly cachedDefinitionsForMethodName] allValues];
     }
+}
+
+- (void)populateCacheOnAssembly:(TyphoonAssembly*)assembly
+{
+    NSSet* definitionSelectors = [self obtainDefinitionSelectors:assembly];
+
+    [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
+    {
+        SEL selector = (SEL) [obj pointerValue];
+        objc_msgSend(assembly, selector);
+    }];
 }
 
 - (NSSet*)obtainDefinitionSelectors:(TyphoonAssembly*)assembly
@@ -194,7 +198,7 @@ typedef void(^MethodEnumerationBlock)(Method method);
 - (BOOL)method:(Method)method onClassIsNotReserved:(Class)aClass;
 {
     SEL methodSelector = method_getName(method);
-    return ![aClass selectorReserved:methodSelector];
+    return ![aClass selectorReservedOrPropertySetter:methodSelector];
 }
 
 - (void)addDefinitionSelectorForMethod:(Method)method toSet:(NSMutableSet*)definitionSelectors

@@ -53,7 +53,8 @@
 - (void)test_injects_required_initializer_dependencies_with_factory_method
 {
     TyphoonDefinition* urlDefinition = [[TyphoonDefinition alloc] initWithClass:[NSURL class] key:@"url"];
-    TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(URLWithString:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodYes];
+    TyphoonInitializer* initializer = [[TyphoonInitializer alloc]
+            initWithSelector:@selector(URLWithString:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodYes];
     [initializer injectParameterAtIndex:0 withValueAsText:@"http://www.appsquick.ly" requiredTypeOrNil:[NSString class]];
     [urlDefinition setInitializer:initializer];
     [_componentFactory register:urlDefinition];
@@ -67,7 +68,8 @@
 {
     TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     TyphoonInitializer
-            * initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
+            * initializer = [[TyphoonInitializer alloc]
+            initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
     [initializer injectParameterNamed:@"damselsRescued" withValueAsText:@"12" requiredTypeOrNil:nil];
     [knightDefinition setInitializer:initializer];
 
@@ -81,20 +83,22 @@
 {
     TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     TyphoonInitializer
-    * knightInitializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithQuest:favoriteDamsels:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
+            * knightInitializer = [[TyphoonInitializer alloc]
+            initWithSelector:@selector(initWithQuest:favoriteDamsels:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
     [knightInitializer injectParameterNamed:@"quest" withReference:@"quest"];
-    [knightInitializer injectParameterNamed:@"favoriteDamsels" asCollection:^(TyphoonParameterInjectedAsCollection *asCollection) {
+    [knightInitializer injectParameterNamed:@"favoriteDamsels" asCollection:^(TyphoonParameterInjectedAsCollection* asCollection)
+    {
         [asCollection addItemWithText:@"damsel1" requiredType:[NSString class]];
         [asCollection addItemWithText:@"damsel2" requiredType:[NSString class]];
     } requiredType:[NSArray class]];
-    
+
     [knightDefinition setInitializer:knightInitializer];
-    
+
     TyphoonDefinition* questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
     [_componentFactory register:questDefinition];
-    
+
     [_componentFactory register:knightDefinition];
-    
+
     Knight* knight = [_componentFactory componentForKey:@"knight"];
     assertThatUnsignedLong([knight.favoriteDamsels count], equalToUnsignedLong(2));
 }

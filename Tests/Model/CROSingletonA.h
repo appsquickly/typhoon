@@ -14,7 +14,7 @@
 @interface CROSingletonA : NSObject
 
 //  property injection here to break circular CROSingletonA -> CROPrototypeB -> CROSingletonA
-@property (nonatomic, strong) CROPrototypeA *prototypeA;
-@property (nonatomic, strong) CROPrototypeB *prototypeB;
+@property(nonatomic, strong) CROPrototypeA* prototypeA;
+@property(nonatomic, strong) CROPrototypeB* prototypeB;
 
 @end

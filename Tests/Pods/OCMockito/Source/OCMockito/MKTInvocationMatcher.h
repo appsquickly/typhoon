@@ -14,9 +14,11 @@
 @interface MKTInvocationMatcher : NSObject
 
 - (void)setMatcher:(id <HCMatcher>)matcher atIndex:(NSUInteger)argumentIndex;
+
 - (NSUInteger)argumentMatchersCount;
 
-- (void)setExpectedInvocation:(NSInvocation *)expectedInvocation;
-- (BOOL)matches:(NSInvocation *)actual;
+- (void)setExpectedInvocation:(NSInvocation*)expectedInvocation;
+
+- (BOOL)matches:(NSInvocation*)actual;
 
 @end

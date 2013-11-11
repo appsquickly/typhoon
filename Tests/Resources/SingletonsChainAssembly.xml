@@ -11,11 +11,11 @@
         <property name="dependencyOnNotSingletonA" ref="notSingletonA"/>
     </component>
 
-	<component class="NotSingletonA" key="notSingletonA" scope="prototype">
-		<initializer selector="initWithSingletonA:">
-			<argument parameterName="singletonA" ref="singletonA"/>
-		</initializer>
-	</component>
+    <component class="NotSingletonA" key="notSingletonA" scope="prototype">
+        <initializer selector="initWithSingletonA:">
+            <argument parameterName="singletonA" ref="singletonA"/>
+        </initializer>
+    </component>
 
 </assembly>
 

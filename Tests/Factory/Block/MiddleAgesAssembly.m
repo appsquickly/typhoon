@@ -99,15 +99,16 @@
 
 - (id)knightWithCollectionInConstructor
 {
-    return [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer* initializer) {
+    return [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer* initializer)
+    {
         initializer.selector = @selector(initWithQuest:favoriteDamsels:);
         [initializer injectWithDefinition:[self defaultQuest]];
-        [initializer injectWithCollection:^(TyphoonParameterInjectedAsCollection *collection)
-         {
-             [collection addItemWithText:@"Mary" requiredType:[NSString class]];
-             [collection addItemWithText:@"Jane" requiredType:[NSString class]];
-             
-         } requiredType:[NSArray class]];
+        [initializer injectWithCollection:^(TyphoonParameterInjectedAsCollection* collection)
+        {
+            [collection addItemWithText:@"Mary" requiredType:[NSString class]];
+            [collection addItemWithText:@"Jane" requiredType:[NSString class]];
+
+        } requiredType:[NSArray class]];
     }];
 }
 

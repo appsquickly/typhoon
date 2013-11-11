@@ -20,7 +20,7 @@
 {
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
     {
-    	[definition injectProperty:@selector(damselsRescued) withValueAsText:@"296000"];
+        [definition injectProperty:@selector(damselsRescued) withValueAsText:@"296000"];
     }];
 }
 

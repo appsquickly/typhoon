@@ -17,6 +17,8 @@
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonKeyedStackInstanceRegister.h"
 #import "OCLogTemplate.h"
+#import "TyphoonDefinitionRegisterer.h"
+#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
 
@@ -49,7 +51,7 @@ static TyphoonComponentFactory* defaultFactory;
         _singletons = [[NSMutableDictionary alloc] init];
         _currentlyResolvingReferences = [TyphoonKeyedStackInstanceRegister instanceRegister];
         _postProcessors = [[NSMutableArray alloc] init];
-      
+
     }
     return self;
 }
@@ -67,11 +69,11 @@ static TyphoonComponentFactory* defaultFactory;
 {
     @synchronized (self)
     {
-        if (!_isLoading && ![self isLoaded])
+        if (!_isLoading&&![self isLoaded])
         {
             // ensure that the method won't be call recursively.
             _isLoading = YES;
-          
+
             [self applyComponentFactoryLoadPostProcessing];
 
             _isLoading = NO;
@@ -94,38 +96,9 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (void)register:(TyphoonDefinition*)definition
 {
-    if ([definition.key length] == 0)
-    {
-        NSString* uuidStr = [[NSProcessInfo processInfo] globallyUniqueString];
-        definition.key = [NSString stringWithFormat:@"%@_%@", NSStringFromClass(definition.type), uuidStr];
-    }
-    if ([self definitionForKey:definition.key])
-    {
-        [NSException raise:NSInvalidArgumentException format:@"Key '%@' is already registered.", definition.key];
-    }
-    if ([definition.type respondsToSelector:@selector(typhoonAutoInjectedProperties)])
-    {
-        for (NSString* autoWired in objc_msgSend(definition.type, @selector(typhoonAutoInjectedProperties)))
-        {
-            [definition injectProperty:NSSelectorFromString(autoWired)];
-        }
-    }
-    
-    if ([self infrastructureComponentProcessedFromDefinition:definition])
-    {
-      LogTrace(@"Registering Infrastructure component: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
-    }
-    else
-    {
-      LogTrace(@"Registering: %@ with key: %@", NSStringFromClass(definition.type), definition.key);
-      [_registry addObject:definition];
-    }
-    
-    // I would handle it via an exception but, in order to keep
-    // the contract of the class, I have implemented another
-    // strategy: since the not-lazy singletons have to be built once
-    // the factory has been loaded, we build it directly in
-    // the register method if the factory is already loaded.
+    TyphoonDefinitionRegisterer* registerer = [[TyphoonDefinitionRegisterer alloc] initWithDefinition:definition componentFactory:self];
+    [registerer register];
+
     if ([self isLoaded])
     {
         [self applyComponentFactoryLoadPostProcessing];
@@ -166,7 +139,7 @@ static TyphoonComponentFactory* defaultFactory;
 {
     if (!key)
     {
-            return nil;
+        return nil;
     }
 
     if ([self notLoaded])
@@ -200,7 +173,7 @@ static TyphoonComponentFactory* defaultFactory;
     return [_registry copy];
 }
 
-- (void)attachPostProcessor:(id<TyphoonComponentFactoryPostProcessor>)postProcessor
+- (void)attachPostProcessor:(id <TyphoonComponentFactoryPostProcessor>)postProcessor
 {
     LogTrace(@"Attaching post processor: %@", postProcessor);
     [_postProcessors addObject:postProcessor];
@@ -233,43 +206,24 @@ static TyphoonComponentFactory* defaultFactory;
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (BOOL)infrastructureComponentProcessedFromDefinition:(TyphoonDefinition *)definition
+- (void)applyComponentFactoryLoadPostProcessing
 {
-    if ([definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)])
+
+    // Apply the factory post processors.
+    [_postProcessors enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryPostProcessor> postProcessor, NSUInteger idx, BOOL* stop)
     {
-        [self attachPostProcessor:[self objectForDefinition:definition]];
-        return YES;
-    }
-    return NO;
-}
+        [postProcessor postProcessComponentFactory:self];
+    }];
 
-- (void)applyComponentFactoryLoadPostProcessing {
-  
-  // Apply the factory post processors.
-  [_postProcessors enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryPostProcessor> postProcessor, NSUInteger idx, BOOL* stop)
-   {
-     [postProcessor postProcessComponentFactory:self];
-   }];
-  
-  // Then, we instanciate the not-lazy singletons.
-  [_registry enumerateObjectsUsingBlock:^(id definition, NSUInteger idx, BOOL* stop)
-   {
-     if (([definition scope] == TyphoonScopeSingleton) && ![definition isLazy])
-     {
-       [self singletonForDefinition:definition];
-     }
-     
-   }];
-}
-
-- (id)objectForDefinition:(TyphoonDefinition*)definition
-{
-    if (definition.scope == TyphoonScopeSingleton)
+    // Then, we instanciate the not-lazy singletons.
+    [_registry enumerateObjectsUsingBlock:^(id definition, NSUInteger idx, BOOL* stop)
     {
-        return [self singletonForDefinition:definition];
-    }
+        if (([definition scope] == TyphoonScopeSingleton)&&![definition isLazy])
+        {
+            [self singletonForDefinition:definition];
+        }
 
-    return [self buildInstanceWithDefinition:definition];
+    }];
 }
 
 - (id)singletonForDefinition:(TyphoonDefinition*)definition
@@ -286,6 +240,11 @@ static TyphoonComponentFactory* defaultFactory;
     }
 }
 
+@end
+
+
+@implementation TyphoonComponentFactory (TyphoonDefinitionRegisterer)
+
 - (TyphoonDefinition*)definitionForKey:(NSString*)key
 {
     for (TyphoonDefinition* definition in _registry)
@@ -296,6 +255,21 @@ static TyphoonComponentFactory* defaultFactory;
         }
     }
     return nil;
+}
+
+- (id)objectForDefinition:(TyphoonDefinition*)definition
+{
+    if (definition.scope == TyphoonScopeSingleton)
+    {
+        return [self singletonForDefinition:definition];
+    }
+
+    return [self buildInstanceWithDefinition:definition];
+}
+
+- (void)addDefinitionToRegistry:(TyphoonDefinition*)definition
+{
+    [_registry addObject:definition];
 }
 
 @end

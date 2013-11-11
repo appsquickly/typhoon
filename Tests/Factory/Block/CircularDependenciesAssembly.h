@@ -28,20 +28,28 @@
 @interface CircularDependenciesAssembly : TyphoonAssembly
 
 - (id)classA;
+
 - (id)classB;
+
 - (id)classC;
+
 - (id)classD;
+
 - (id)classE;
 
 //- (id)unsatisfiableClassFWithCircularDependencyInInitializer;
 //- (id)unsatisfiableClassGWithCircularDependencyInInitializer;
 
 - (id)prototypeInitInjected;
+
 - (id)prototypePropertyInjected;
 
 - (id)croSingletonA;
+
 - (id)croSingletonB;
+
 - (id)croPrototypeA;
+
 - (id)croPrototypeB;
 
 @end
