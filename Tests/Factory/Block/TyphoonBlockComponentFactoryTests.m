@@ -26,11 +26,16 @@
 #import "InfrastructureComponentsAssembly.h"
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "ExtendedMiddleAgesAssembly.h"
+#import "DefinitionInheritanceAssembly.h"
+#import "CampaignQuest.h"
+#import "Widget.h"
 
 @interface TyphoonBlockComponentFactoryTests : TyphoonSharedComponentFactoryTests
 @end
 
-@implementation TyphoonBlockComponentFactoryTests
+@implementation TyphoonBlockComponentFactoryTests {
+    MiddleAgesAssembly* assembly;
+}
 
 
 - (void)setUp
@@ -39,6 +44,7 @@
     TyphoonPropertyPlaceholderConfigurer* configurer = [[TyphoonPropertyPlaceholderConfigurer alloc] init];
     [configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
     [_componentFactory attachPostProcessor:configurer];
+    assembly = (MiddleAgesAssembly *)_componentFactory;
 
     _exceptionTestFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[ExceptionTestAssembly assembly]];
     _circularDependenciesFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[CircularDependenciesAssembly assembly]];
@@ -86,6 +92,47 @@
     assertThat(knight, notNilValue());
 }
 
+#pragma mark - Definition Inheritance
+
+- (void)test_child_missing_initializer_inherits_parent_initializer_with_parameters
+{
+    DefinitionInheritanceAssembly* factoryAssembly = [self newDefinitionInheritanceFactoryAssembly];
+
+    Knight *childKnight = [factoryAssembly childKnightWithConstructorDependency];
+
+    assertThat(childKnight, instanceOf([Knight class]));
+    assertThat(childKnight.quest, instanceOf([CampaignQuest class]));
+}
+
+- (void)test_child_initializer_overrides_parent_initializer
+{
+    DefinitionInheritanceAssembly* factoryAssembly = [self newDefinitionInheritanceFactoryAssembly];
+
+    Knight *childKnight = [factoryAssembly childKnightWithOverridenConstructorDependency];
+
+    assertThat(childKnight, instanceOf([Knight class]));
+    assertThat(childKnight.quest, instanceOf([CampaignQuest class])); // not ErrandQuest, as specified in the parent definition.
+}
+
+- (void)test_child_initializer_overrides_parent_initializer_incompatible_signatures
+{
+    DefinitionInheritanceAssembly* factoryAssembly = [self newDefinitionInheritanceFactoryAssembly];
+
+    Widget* childWidget = [factoryAssembly childWidgetWithDependencyOnCInheritingFromAandB];
+
+    // want childWidget to be well-formed according to it's definition.
+    assertThat(childWidget, instanceOf([Widget class]));
+    assertThat(childWidget.widgetC, notNilValue());
+    assertThat(childWidget.widgetC.name, equalTo(@"C"));
+}
+
+#pragma mark - Test Utility Methods
+- (DefinitionInheritanceAssembly*)newDefinitionInheritanceFactoryAssembly
+{
+    TyphoonBlockComponentFactory* definitionInheritanceFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[DefinitionInheritanceAssembly assembly]];
+    DefinitionInheritanceAssembly* factoryAssembly = (DefinitionInheritanceAssembly* )definitionInheritanceFactory;
+    return factoryAssembly;
+}
 
 @end
 

@@ -216,6 +216,15 @@
 		4EFAF61417E0D54700E93ACF /* CROPrototypeB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */; };
 		4EFAF61517E0D54700E93ACF /* CROPrototypeB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */; };
 		52D870D7DE6E4FB09D059A5C /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B50DFBF255467DA9F7C30F /* libPods-ios.a */; };
+		75AB507EAF7EB9829C0C60C5 /* Widget.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5D2539493CC97348B566 /* Widget.m */; };
+		75AB514A004B147AC59D8C23 /* DefinitionInheritanceAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5F9A45E27B20DA83B14C /* DefinitionInheritanceAssembly.m */; };
+		75AB5358FDF8574DDA34625D /* ErrandQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5AABD65CAC43879BC428 /* ErrandQuest.m */; };
+		75AB5564135F1DD4F38FE7E3 /* DefinitionInheritanceAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5F9A45E27B20DA83B14C /* DefinitionInheritanceAssembly.m */; };
+		75AB55C8D5B02E582100222D /* ErrandQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5AABD65CAC43879BC428 /* ErrandQuest.m */; };
+		75AB59214CC8EE68422A4E55 /* Widget.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5D2539493CC97348B566 /* Widget.m */; };
+		75AB5C0DFEBEC0E66DB56A59 /* Widget.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5D2539493CC97348B566 /* Widget.m */; };
+		75AB5C9007480EF4EE9A9A4D /* DefinitionInheritanceAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5F9A45E27B20DA83B14C /* DefinitionInheritanceAssembly.m */; };
+		75AB5F3B06BCF48842608B0A /* ErrandQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5AABD65CAC43879BC428 /* ErrandQuest.m */; };
 		BA79824D0006B0F9E50A41D3 /* TyphoonStringUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79854F29FE8A327A82E8BC /* TyphoonStringUtilsTests.m */; };
 		BA798380AD1E1F4160A4719C /* CollaboratingMiddleAgesAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79870B653F1DB13DCE8543 /* CollaboratingMiddleAgesAssembly.m */; };
 		BA7983B770D5EB663A720186 /* ExtendedMiddleAgesAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798863929DB6786A73114C /* ExtendedMiddleAgesAssembly.m */; };
@@ -373,6 +382,12 @@
 		4EFAF60D17E0D50B00E93ACF /* CROPrototypeA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CROPrototypeA.m; sourceTree = "<group>"; };
 		4EFAF61117E0D54700E93ACF /* CROPrototypeB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CROPrototypeB.h; sourceTree = "<group>"; };
 		4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CROPrototypeB.m; sourceTree = "<group>"; };
+		75AB50AE37854D669642EAB6 /* ErrandQuest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrandQuest.h; sourceTree = "<group>"; };
+		75AB5AABD65CAC43879BC428 /* ErrandQuest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrandQuest.m; sourceTree = "<group>"; };
+		75AB5D2539493CC97348B566 /* Widget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Widget.m; sourceTree = "<group>"; };
+		75AB5D3D74DC8B2F6741CF88 /* Widget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Widget.h; sourceTree = "<group>"; };
+		75AB5E9C139792DDCE2AA2D6 /* DefinitionInheritanceAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefinitionInheritanceAssembly.h; sourceTree = "<group>"; };
+		75AB5F9A45E27B20DA83B14C /* DefinitionInheritanceAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefinitionInheritanceAssembly.m; sourceTree = "<group>"; };
 		B1C044F0F19E4B448A36BEFB /* Pods-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.xcconfig"; path = "Pods/Pods-ios.xcconfig"; sourceTree = SOURCE_ROOT; };
 		B90D396911F743468FF96BB5 /* libPods-iOS Tests (Cocoapods).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Tests (Cocoapods).a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA79833897B7E0F78B3AF30D /* CollaboratingMiddleAgesAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollaboratingMiddleAgesAssembly.h; sourceTree = "<group>"; };
@@ -607,6 +622,8 @@
 				BA79850B811499A37FBE9BEC /* QuestProvider.h */,
 				BA798863929DB6786A73114C /* ExtendedMiddleAgesAssembly.m */,
 				BA7986050FFD1CBE5DBED4C4 /* ExtendedMiddleAgesAssembly.h */,
+				75AB5F9A45E27B20DA83B14C /* DefinitionInheritanceAssembly.m */,
+				75AB5E9C139792DDCE2AA2D6 /* DefinitionInheritanceAssembly.h */,
 			);
 			path = Block;
 			sourceTree = "<group>";
@@ -646,6 +663,10 @@
 				4B8414D4179B0EA600916BF5 /* Knight.h */,
 				4B8414D5179B0EA600916BF5 /* Knight.m */,
 				4B8414D6179B0EA600916BF5 /* Quest.h */,
+				75AB5D2539493CC97348B566 /* Widget.m */,
+				75AB50AE37854D669642EAB6 /* ErrandQuest.h */,
+				75AB5AABD65CAC43879BC428 /* ErrandQuest.m */,
+				75AB5D3D74DC8B2F6741CF88 /* Widget.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1131,6 +1152,9 @@
 				BA79872D527DFBB10780B4BE /* TyphoonTestUtilsTests.m in Sources */,
 				BA798C0AFB9D472511FB7B43 /* CollaboratingMiddleAgesAssembly.m in Sources */,
 				BA7983B770D5EB663A720186 /* ExtendedMiddleAgesAssembly.m in Sources */,
+				75AB514A004B147AC59D8C23 /* DefinitionInheritanceAssembly.m in Sources */,
+				75AB59214CC8EE68422A4E55 /* Widget.m in Sources */,
+				75AB5358FDF8574DDA34625D /* ErrandQuest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1194,6 +1218,9 @@
 				BA7987F45536829F901D8D6E /* TyphoonTestUtilsTests.m in Sources */,
 				BA798380AD1E1F4160A4719C /* CollaboratingMiddleAgesAssembly.m in Sources */,
 				BA798860931BDFA632A94FB9 /* ExtendedMiddleAgesAssembly.m in Sources */,
+				75AB5564135F1DD4F38FE7E3 /* DefinitionInheritanceAssembly.m in Sources */,
+				75AB507EAF7EB9829C0C60C5 /* Widget.m in Sources */,
+				75AB55C8D5B02E582100222D /* ErrandQuest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1259,6 +1286,9 @@
 				BA7989B2482C57289EE056FE /* TyphoonTestUtilsTests.m in Sources */,
 				BA7989FEB2CB1A63235D9AD2 /* CollaboratingMiddleAgesAssembly.m in Sources */,
 				BA7983E82AAFE3FE67FC4E6D /* ExtendedMiddleAgesAssembly.m in Sources */,
+				75AB5C9007480EF4EE9A9A4D /* DefinitionInheritanceAssembly.m in Sources */,
+				75AB5C0DFEBEC0E66DB56A59 /* Widget.m in Sources */,
+				75AB5F3B06BCF48842608B0A /* ErrandQuest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

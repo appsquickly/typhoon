@@ -44,11 +44,8 @@
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
     __autoreleasing id <TyphoonIntrospectiveNSObject> instance;
-
     instance = [self allocateInstance:instance withDefinition:definition];
-
     instance = [self injectInstance:instance withDefinition:definition];
-
     return instance;
 }
 
@@ -56,14 +53,18 @@
 {
     if (definition.factoryReference)
     {
+        // misleading - this is not the instance. this is an instance of a seperate class tnat will create the instance of the class we care about.
+        // consider it an allocator
         instance = [self componentForKey:definition.factoryReference]; // clears currently resolving.
     }
     else if (definition.initializer&&definition.initializer.isClassMethod)
     {
-        instance = [self invokeInitializerOn:definition.type withDefinition:definition];
+        // this is an instance of the class, needing no more init.
+        instance = [self invokeInitializer:definition.initializer on:definition.type];
     }
     else
     {
+        // this is an instance, needing later init.
         instance = [definition.type alloc];
     }
 
@@ -94,11 +95,17 @@
 {
     if (definition.initializer&&definition.initializer.isClassMethod == NO)
     {
-        instance = [self invokeInitializerOn:instance withDefinition:definition];
+        instance = [self invokeInitializer:definition.initializer on:instance];
     }
     else if (definition.initializer == nil)
     {
-        instance = objc_msgSend(instance, @selector(init));
+        if (definition.parent) {
+            // use the parents initializer, instead.
+            instance = [self initializerInjectionOn:instance withDefinition:definition.parent];
+        }else{
+            // default initializer
+            instance = objc_msgSend(instance, @selector(init));
+        }
     }
 
     return instance;
@@ -172,7 +179,7 @@
 {
     if ([instance respondsToSelector:@selector(beforePropertiesSet)])
     {
-        [(id <TyphoonPropertyInjectionDelegate>) instance beforePropertiesSet];
+        [(id <TyphoonPropertyInjectionDelegate>)instance beforePropertiesSet];
     }
 
     if ([instance respondsToSelector:definition.beforePropertyInjection])
@@ -306,11 +313,12 @@
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (id)invokeInitializerOn:(id)instanceOrClass withDefinition:(TyphoonDefinition*)definition
+- (id)invokeInitializer:(TyphoonInitializer* )initializer on:(id)instanceOrClass
 {
-    NSInvocation* invocation = [definition.initializer asInvocationFor:instanceOrClass];
+    NSInvocation* invocation = [initializer asInvocationFor:instanceOrClass];
 
-    for (id <TyphoonInjectedParameter> parameter in [definition.initializer injectedParameters])
+    NSArray* injectedParameters = [initializer injectedParameters];
+    for (id <TyphoonInjectedParameter> parameter in injectedParameters)
     {
         if (parameter.type == TyphoonParameterInjectionTypeReference)
         {
