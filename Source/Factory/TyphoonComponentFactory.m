@@ -104,12 +104,7 @@ static TyphoonComponentFactory* defaultFactory;
     [self injectAutowiredPropertiesIfNeeded:definition];
     
     [self registerDefinition:definition];
-    
-    // I would handle it via an exception but, in order to keep
-    // the contract of the class, I have implemented another
-    // strategy: since the not-lazy singletons have to be built once
-    // the factory has been loaded, we build it directly in
-    // the register method if the factory is already loaded.
+
     if ([self isLoaded])
     {
         [self applyComponentFactoryLoadPostProcessing];
