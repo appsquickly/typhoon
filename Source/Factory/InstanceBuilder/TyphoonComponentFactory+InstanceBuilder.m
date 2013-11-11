@@ -60,7 +60,7 @@
     else if (definition.initializer && definition.initializer.isClassMethod)
     {
         // this is an instance of the class, needing no more init.
-        instance = [self invokeInitializerOn:definition.type withDefinition:definition];
+        instance = [self invokeInitializer:definition.initializer on:definition.type];
     }
     else
     {
@@ -95,7 +95,7 @@
 {
 	if (definition.initializer && definition.initializer.isClassMethod == NO)
     {
-        instance = [self invokeInitializerOn:instance withDefinition:definition];
+        instance = [self invokeInitializer:definition.initializer on:instance];
     }
     else if (definition.initializer == nil)
     {
@@ -309,11 +309,11 @@
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (id)invokeInitializerOn:(id)instanceOrClass withDefinition:(TyphoonDefinition*)definition
+- (id)invokeInitializer:(TyphoonInitializer* )initializer on:(id)instanceOrClass
 {
-    NSInvocation* invocation = [definition.initializer asInvocationFor:instanceOrClass];
+    NSInvocation* invocation = [initializer asInvocationFor:instanceOrClass];
 
-    NSArray* injectedParameters = [definition.initializer injectedParameters];
+    NSArray* injectedParameters = [initializer injectedParameters];
     for (id <TyphoonInjectedParameter> parameter in injectedParameters)
     {
         if (parameter.type == TyphoonParameterInjectionTypeReference)
