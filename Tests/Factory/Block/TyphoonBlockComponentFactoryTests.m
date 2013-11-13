@@ -33,10 +33,7 @@
 @interface TyphoonBlockComponentFactoryTests : TyphoonSharedComponentFactoryTests
 @end
 
-@implementation TyphoonBlockComponentFactoryTests {
-    MiddleAgesAssembly* assembly;
-}
-
+@implementation TyphoonBlockComponentFactoryTests
 
 - (void)setUp
 {
@@ -44,7 +41,6 @@
     TyphoonPropertyPlaceholderConfigurer* configurer = [[TyphoonPropertyPlaceholderConfigurer alloc] init];
     [configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
     [_componentFactory attachPostProcessor:configurer];
-    assembly = (MiddleAgesAssembly *)_componentFactory;
 
     _exceptionTestFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[ExceptionTestAssembly assembly]];
     _circularDependenciesFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[CircularDependenciesAssembly assembly]];
