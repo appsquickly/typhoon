@@ -45,7 +45,7 @@
           <option name="BRACE_STYLE" value="2" />
           <option name="CLASS_BRACE_STYLE" value="2" />
           <option name="ELSE_ON_NEW_LINE" value="true" />
-          <option name="SPACE_AROUND_LOGICAL_OPERATORS" value="false" />
+          <option name="SPACE_AFTER_TYPE_CAST" value="false" />
           <option name="METHOD_CALL_CHAIN_WRAP" value="1" />
           <option name="BINARY_OPERATION_WRAP" value="1" />
           <option name="TERNARY_OPERATION_WRAP" value="1" />
