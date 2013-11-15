@@ -115,10 +115,9 @@
     return instance;
 }
 
-- (id)invokeDefaultInitializerOn:(id)instance
+- (BOOL)definitionHasParent:(TyphoonDefinition*)definition
 {
-    id initializedInstance = objc_msgSend(instance, @selector(init));
-    return initializedInstance;
+    return definition.parent || definition.parentRef;
 }
 
 - (TyphoonDefinition*)parentForDefinition:(TyphoonDefinition*)definition
@@ -132,11 +131,11 @@
     }
 }
 
-- (BOOL)definitionHasParent:(TyphoonDefinition*)definition
+- (id)invokeDefaultInitializerOn:(id)instance
 {
-    return definition.parent || definition.parentRef;
+    id initializedInstance = objc_msgSend(instance, @selector(init));
+    return initializedInstance;
 }
-
 
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance;
 {
