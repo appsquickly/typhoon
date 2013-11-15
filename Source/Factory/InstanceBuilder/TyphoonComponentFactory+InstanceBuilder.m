@@ -59,7 +59,7 @@
         // consider it an allocator
         instance = [self componentForKey:definition.factoryReference]; // clears currently resolving.
     }
-    else if (definition.initializer&&definition.initializer.isClassMethod)
+    else if (definition.initializer && definition.initializer.isClassMethod)
     {
         // this is an instance of the class, needing no more init.
         instance = [self invokeInitializer:definition.initializer on:definition.type];
@@ -95,9 +95,13 @@
 
 - (id)initializerInjectionOn:(id)instance withDefinition:(TyphoonDefinition*)definition
 {
-    if (definition.initializer&&definition.initializer.isClassMethod == NO)
+    if (definition.initializer)
     {
-        instance = [self invokeInitializer:definition.initializer on:instance];
+        if (definition.initializer.isClassMethod == NO) {
+            instance = [self invokeInitializer:definition.initializer on:instance];
+        }else{
+            // initializer was already invoked in allocateInstance:withDefinition:
+        }
     }
     else if (definition.initializer == nil)
     {
