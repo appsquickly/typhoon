@@ -18,7 +18,6 @@
 #import "Quest.h"
 #import "Knight.h"
 #import "CampaignQuest.h"
-#import "Widget.h"
 
 @interface TyphoonXmlComponentFactoryTests : TyphoonSharedComponentFactoryTests
 @end
@@ -45,37 +44,6 @@
     assertThat(anotherQuest, notNilValue());
     assertThat(anotherQuest.imageUrl, notNilValue());
     NSLog(@"Another quest: %@", anotherQuest);
-}
-
-#pragma mark - Definition Inheritance
-
-- (void)test_has_parent
-{
-    TyphoonComponentFactory* factory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"DefinitionInheritanceAssembly.xml"];
-    id child = [factory componentForKey:@"child"];
-
-    assertThat(child, notNilValue());
-}
-
-- (void)test_child_missing_initializer_inherits_parent_initializer
-{
-    TyphoonComponentFactory* factory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"DefinitionInheritanceAssembly.xml"];
-    Knight *child = [factory componentForKey:@"childKnightWithConstructorDependency"];
-
-    assertThat(child, instanceOf([Knight class]));
-    assertThat(child.quest, instanceOf([CampaignQuest class]));
-}
-
-- (void)test_child_initializer_overrides_parent_initializer
-{
-    TyphoonComponentFactory* factory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"DefinitionInheritanceAssembly.xml"];
-    Widget *child = [factory componentForKey:@"childWidgetWithDependencyOnCInheritingFromAandB"];
-
-    // want childWidget to be well-formed according to it's definition.
-    assertThat(child, instanceOf([Widget class]));
-    assertThat(child.widgetC, notNilValue());
-    assertThat(child.widgetC.name, equalTo(@"C"));
-
 }
 
 @end
