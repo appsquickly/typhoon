@@ -102,6 +102,13 @@
         </xsd:attribute>
 
         <xsd:attribute name="parent" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation>
+                    <![CDATA[
+                        A reference to a component definition to inherit from.
+                    ]]>
+                </xsd:documentation>
+            </xsd:annotation>
         </xsd:attribute>
 
         <xsd:attribute name="before-property-injection" type="xsd:string">
