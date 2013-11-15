@@ -35,6 +35,8 @@
 #import "TyphoonInjectionAware.h"
 #import "TyphoonParameterInjectedAsCollection.h"
 #import "TyphoonInstanceRegister.h"
+#import "TyphoonDefinitionRegisterer.h"
+#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 

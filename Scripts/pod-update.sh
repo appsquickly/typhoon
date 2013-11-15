@@ -15,8 +15,26 @@ if [ -n "$CHANGED_SOURCE_FILES" ]; then
   RVM="${HOME}/.rvm/bin/rvm"
   if [ ! -x $RVM ]
   then
-    echo "WARNING: RVM not found in ${RVM}. Unable to locate pod to run ${COMMAND}."
-    exit 0
+    echo "WARNING: RVM not found in ${RVM}. Trying to use rbenv..."
+    RBENV="${HOME}/.rbenv"
+     if [ ! -x $RBENV ]
+     then
+      echo "ERROR: rbenv not found in ${RBENV}. Unable to run ${COMMAND}."
+      exit 0 # don't screw up people with neither rbenv or RVM
+    else
+      # RBENV is a go!
+      RBENV_COMMAND="${RBENV}/shims/${COMMAND}"
+      $RBENV_COMMAND
+     if [ $? -eq 0 ]
+    then
+     echo "${COMMAND} succeeded."
+     exit 0
+     else
+       echo "${COMMAND} failed."
+      exit 1
+    fi
+    fi
+    
   fi
 
   RVM_COMMAND="$RVM all in $PROJECT_DIR do $COMMAND"
