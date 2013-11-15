@@ -12,15 +12,16 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "Typhoon.h"
 
-@interface RXMLElement_SpringXmlComponentFactoryTests : SenTestCase
+@interface RXMLElement_XmlComponentFactory_AsComponentDefinitionTests : SenTestCase
 
 @property(nonatomic, strong) TyphoonRXMLElement* lazyElementTest;
 
 @end
 
-@implementation RXMLElement_SpringXmlComponentFactoryTests
+@implementation RXMLElement_XmlComponentFactory_AsComponentDefinitionTests
 {
     TyphoonRXMLElement* _element;
+    TyphoonRXMLElement* _parentElement;
 }
 
 - (void)setUp
@@ -129,6 +130,29 @@
 {
     TyphoonDefinition* def = [self definitionInElement:[self lazyElementTest] forKey:@"lazySingleton2"];
     assertThatBool([def isLazy], is(@YES));
+}
+
+- (void)test_asComponentDefinition_no_parent
+{
+    // TODO: construct the parent test with inline XML/a single resource
+    NSString* parentXmlString = [[TyphoonBundleResource withName:@"ParentCasesAssembly.xml"] asString];
+    _parentElement = [TyphoonRXMLElement elementFromXMLString:parentXmlString encoding:NSUTF8StringEncoding];
+
+    TyphoonDefinition* def = [self definitionInElement:_parentElement forKey:@"withNoParent"];
+    assertThat(def, notNilValue());
+    assertThat([def parentRef], nilValue());
+}
+
+- (void)test_asComponentDefinition_parent
+{
+    NSString* parentXmlString = [[TyphoonBundleResource withName:@"ParentCasesAssembly.xml"] asString];
+    _parentElement = [TyphoonRXMLElement elementFromXMLString:parentXmlString encoding:NSUTF8StringEncoding];
+
+    TyphoonDefinition* def = [self definitionInElement:_parentElement forKey:@"withParent"];
+    assertThat(def, notNilValue());
+
+    NSString *parentRef = [def parentRef];
+    assertThat(parentRef, equalTo(@"parent"));
 }
 
 

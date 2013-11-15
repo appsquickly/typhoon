@@ -99,9 +99,8 @@
     }
     else if (definition.initializer == nil)
     {
-        if (definition.parent) {
-            // use the parents initializer, instead.
-            instance = [self initializerInjectionOn:instance withDefinition:definition.parent];
+        if ([self definitionHasParent:definition]) {
+            instance = [self initializerInjectionOn:instance withDefinition:[self parentForDefinition:definition]];
         }else{
             // default initializer
             instance = objc_msgSend(instance, @selector(init));
@@ -110,6 +109,23 @@
 
     return instance;
 }
+
+- (TyphoonDefinition*)parentForDefinition:(TyphoonDefinition*)definition
+{
+    if (definition.parent) {
+        return definition.parent;
+    }else if (definition.parentRef) {
+        return [self definitionForKey:definition.parentRef];
+    }else{
+        return nil;
+    }
+}
+
+- (BOOL)definitionHasParent:(TyphoonDefinition*)definition
+{
+    return definition.parent || definition.parentRef;
+}
+
 
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance;
 {

@@ -46,6 +46,8 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 @property(nonatomic) TyphoonScope scope;
 @property(nonatomic, strong) TyphoonDefinition* factory;
 @property(nonatomic, strong) TyphoonDefinition* parent;
+@property(nonatomic, strong) NSString* parentRef;
+
 
 /**
  * Say if the component (scoped as a singleton) should be lazily instantiated.
