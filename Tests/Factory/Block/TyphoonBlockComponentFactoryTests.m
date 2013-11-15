@@ -90,27 +90,17 @@
 
 #pragma mark - Definition Inheritance
 
-- (void)test_child_missing_initializer_inherits_parent_initializer_with_parameters
+- (void)test_child_missing_initializer_inherits_parent_initializer
 {
     DefinitionInheritanceAssembly* factoryAssembly = [self newDefinitionInheritanceFactoryAssembly];
 
-    Knight *childKnight = [factoryAssembly childKnightWithConstructorDependency];
+    Knight *childKnight = [(TyphoonBlockComponentFactory*)factoryAssembly componentForKey:@"childKnightWithConstructorDependency"];
 
     assertThat(childKnight, instanceOf([Knight class]));
     assertThat(childKnight.quest, instanceOf([CampaignQuest class]));
 }
 
 - (void)test_child_initializer_overrides_parent_initializer
-{
-    DefinitionInheritanceAssembly* factoryAssembly = [self newDefinitionInheritanceFactoryAssembly];
-
-    Knight *childKnight = [factoryAssembly childKnightWithOverridenConstructorDependency];
-
-    assertThat(childKnight, instanceOf([Knight class]));
-    assertThat(childKnight.quest, instanceOf([CampaignQuest class])); // not ErrandQuest, as specified in the parent definition.
-}
-
-- (void)test_child_initializer_overrides_parent_initializer_incompatible_signatures
 {
     DefinitionInheritanceAssembly* factoryAssembly = [self newDefinitionInheritanceFactoryAssembly];
 
@@ -123,6 +113,7 @@
 }
 
 #pragma mark - Test Utility Methods
+
 - (DefinitionInheritanceAssembly*)newDefinitionInheritanceFactoryAssembly
 {
     TyphoonBlockComponentFactory* definitionInheritanceFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[DefinitionInheritanceAssembly assembly]];
