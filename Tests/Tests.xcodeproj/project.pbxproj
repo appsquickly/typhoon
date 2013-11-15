@@ -237,9 +237,11 @@
 		657096AB183147D600C10DA4 /* PizzaImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 657096AA183147D600C10DA4 /* PizzaImpl.m */; };
 		657096AC183147D600C10DA4 /* PizzaImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 657096AA183147D600C10DA4 /* PizzaImpl.m */; };
 		657096AD183147D600C10DA4 /* PizzaImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 657096AA183147D600C10DA4 /* PizzaImpl.m */; };
+		75AB500AD2436D305C0E1B37 /* TyphoonXMLBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB58BCF87EC527F127BCA0 /* TyphoonXMLBuilder.m */; };
 		75AB5046A1D17196768A721A /* DefinitionInheritanceAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 75AB518FA6E12B0CBF01B9F2 /* DefinitionInheritanceAssembly.xml */; };
 		75AB507EAF7EB9829C0C60C5 /* Widget.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5D2539493CC97348B566 /* Widget.m */; };
 		75AB514A004B147AC59D8C23 /* DefinitionInheritanceAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5F9A45E27B20DA83B14C /* DefinitionInheritanceAssembly.m */; };
+		75AB5157197D6CD701F214A6 /* TyphoonXMLBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB58BCF87EC527F127BCA0 /* TyphoonXMLBuilder.m */; };
 		75AB5233D0F2BE7BD35F21E6 /* SomeResource in Resources */ = {isa = PBXBuildFile; fileRef = 75AB51A490B3C70B90B70509 /* SomeResource */; };
 		75AB524F2957B86EAAF2FA4C /* SomeResource in Resources */ = {isa = PBXBuildFile; fileRef = 75AB51A490B3C70B90B70509 /* SomeResource */; };
 		75AB5358FDF8574DDA34625D /* ErrandQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5AABD65CAC43879BC428 /* ErrandQuest.m */; };
@@ -248,13 +250,11 @@
 		75AB556C969F1825EA08E75E /* DefinitionInheritanceAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 75AB518FA6E12B0CBF01B9F2 /* DefinitionInheritanceAssembly.xml */; };
 		75AB55C8D5B02E582100222D /* ErrandQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5AABD65CAC43879BC428 /* ErrandQuest.m */; };
 		75AB59214CC8EE68422A4E55 /* Widget.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5D2539493CC97348B566 /* Widget.m */; };
-		75AB5A472222F3C89DFC4B74 /* ParentCasesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 75AB5A4515DE8593146F68CA /* ParentCasesAssembly.xml */; };
 		75AB5BFACB0968C880D9BFAD /* DefinitionInheritanceAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 75AB518FA6E12B0CBF01B9F2 /* DefinitionInheritanceAssembly.xml */; };
 		75AB5C0DFEBEC0E66DB56A59 /* Widget.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5D2539493CC97348B566 /* Widget.m */; };
 		75AB5C9007480EF4EE9A9A4D /* DefinitionInheritanceAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5F9A45E27B20DA83B14C /* DefinitionInheritanceAssembly.m */; };
-		75AB5E74D40024D73B400956 /* ParentCasesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 75AB5A4515DE8593146F68CA /* ParentCasesAssembly.xml */; };
-		75AB5EAE5B4CA85F7B1E0375 /* ParentCasesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 75AB5A4515DE8593146F68CA /* ParentCasesAssembly.xml */; };
 		75AB5F3B06BCF48842608B0A /* ErrandQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5AABD65CAC43879BC428 /* ErrandQuest.m */; };
+		75AB5FE1CFE14C6E9CAA87A6 /* TyphoonXMLBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB58BCF87EC527F127BCA0 /* TyphoonXMLBuilder.m */; };
 		BA79824D0006B0F9E50A41D3 /* TyphoonStringUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79854F29FE8A327A82E8BC /* TyphoonStringUtilsTests.m */; };
 		BA798380AD1E1F4160A4719C /* CollaboratingMiddleAgesAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79870B653F1DB13DCE8543 /* CollaboratingMiddleAgesAssembly.m */; };
 		BA7983B770D5EB663A720186 /* ExtendedMiddleAgesAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798863929DB6786A73114C /* ExtendedMiddleAgesAssembly.m */; };
@@ -432,10 +432,11 @@
 		75AB50AE37854D669642EAB6 /* ErrandQuest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrandQuest.h; sourceTree = "<group>"; };
 		75AB518FA6E12B0CBF01B9F2 /* DefinitionInheritanceAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DefinitionInheritanceAssembly.xml; sourceTree = "<group>"; };
 		75AB51A490B3C70B90B70509 /* SomeResource */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SomeResource; sourceTree = "<group>"; };
-		75AB5A4515DE8593146F68CA /* ParentCasesAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ParentCasesAssembly.xml; sourceTree = "<group>"; };
+		75AB58BCF87EC527F127BCA0 /* TyphoonXMLBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonXMLBuilder.m; sourceTree = "<group>"; };
 		75AB5AABD65CAC43879BC428 /* ErrandQuest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrandQuest.m; sourceTree = "<group>"; };
 		75AB5D2539493CC97348B566 /* Widget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Widget.m; sourceTree = "<group>"; };
 		75AB5D3D74DC8B2F6741CF88 /* Widget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Widget.h; sourceTree = "<group>"; };
+		75AB5E3688CFE66E41869C5B /* TyphoonXMLBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonXMLBuilder.h; sourceTree = "<group>"; };
 		75AB5E9C139792DDCE2AA2D6 /* DefinitionInheritanceAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefinitionInheritanceAssembly.h; sourceTree = "<group>"; };
 		75AB5F9A45E27B20DA83B14C /* DefinitionInheritanceAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefinitionInheritanceAssembly.m; sourceTree = "<group>"; };
 		B1C044F0F19E4B448A36BEFB /* Pods-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.xcconfig"; path = "Pods/Pods-ios.xcconfig"; sourceTree = SOURCE_ROOT; };
@@ -693,6 +694,8 @@
 			children = (
 				4B8414B5179B0EA600916BF5 /* RXMLElement+XmlComponentFactory_AsComponentDefinitionTests.m */,
 				4B8414B6179B0EA600916BF5 /* TyphoonXmlComponentFactoryTests.m */,
+				75AB58BCF87EC527F127BCA0 /* TyphoonXMLBuilder.m */,
+				75AB5E3688CFE66E41869C5B /* TyphoonXMLBuilder.h */,
 			);
 			path = Xml;
 			sourceTree = "<group>";
@@ -783,7 +786,6 @@
 				4B8414DE179B0EA600916BF5 /* SomeProperties.properties */,
 				75AB518FA6E12B0CBF01B9F2 /* DefinitionInheritanceAssembly.xml */,
 				75AB51A490B3C70B90B70509 /* SomeResource */,
-				75AB5A4515DE8593146F68CA /* ParentCasesAssembly.xml */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -994,7 +996,6 @@
 				4656F7AF17DB6D5100EDDC23 /* InfratructureComponentsAssembly.xml in Resources */,
 				75AB556C969F1825EA08E75E /* DefinitionInheritanceAssembly.xml in Resources */,
 				75AB53AE7325B44FF5D9BEB1 /* SomeResource in Resources */,
-				75AB5A472222F3C89DFC4B74 /* ParentCasesAssembly.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1013,7 +1014,6 @@
 				4656F7B017DB6D5100EDDC23 /* InfratructureComponentsAssembly.xml in Resources */,
 				75AB5BFACB0968C880D9BFAD /* DefinitionInheritanceAssembly.xml in Resources */,
 				75AB5233D0F2BE7BD35F21E6 /* SomeResource in Resources */,
-				75AB5E74D40024D73B400956 /* ParentCasesAssembly.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1032,7 +1032,6 @@
 				4656F7B117DB6D5100EDDC23 /* InfratructureComponentsAssembly.xml in Resources */,
 				75AB5046A1D17196768A721A /* DefinitionInheritanceAssembly.xml in Resources */,
 				75AB524F2957B86EAAF2FA4C /* SomeResource in Resources */,
-				75AB5EAE5B4CA85F7B1E0375 /* ParentCasesAssembly.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1257,6 +1256,7 @@
 				75AB514A004B147AC59D8C23 /* DefinitionInheritanceAssembly.m in Sources */,
 				75AB59214CC8EE68422A4E55 /* Widget.m in Sources */,
 				75AB5358FDF8574DDA34625D /* ErrandQuest.m in Sources */,
+				75AB500AD2436D305C0E1B37 /* TyphoonXMLBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1330,6 +1330,7 @@
 				75AB5564135F1DD4F38FE7E3 /* DefinitionInheritanceAssembly.m in Sources */,
 				75AB507EAF7EB9829C0C60C5 /* Widget.m in Sources */,
 				75AB55C8D5B02E582100222D /* ErrandQuest.m in Sources */,
+				75AB5FE1CFE14C6E9CAA87A6 /* TyphoonXMLBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1405,6 +1406,7 @@
 				75AB5C9007480EF4EE9A9A4D /* DefinitionInheritanceAssembly.m in Sources */,
 				75AB5C0DFEBEC0E66DB56A59 /* Widget.m in Sources */,
 				75AB5F3B06BCF48842608B0A /* ErrandQuest.m in Sources */,
+				75AB5157197D6CD701F214A6 /* TyphoonXMLBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,7 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "Typhoon.h"
+#import "TyphoonXMLBuilder.h"
 
 @interface RXMLElement_XmlComponentFactory_AsComponentDefinitionTests : SenTestCase
 
@@ -134,26 +135,23 @@
 
 - (void)test_asComponentDefinition_no_parent
 {
-    // TODO: construct the parent test with inline XML/a single resource
-    NSString* parentXmlString = [[TyphoonBundleResource withName:@"ParentCasesAssembly.xml"] asString];
-    _parentElement = [TyphoonRXMLElement elementFromXMLString:parentXmlString encoding:NSUTF8StringEncoding];
+    TyphoonRXMLElement* vanillaDefinitionXML = [[TyphoonXMLBuilder vanillaDefinition] build];
 
-    TyphoonDefinition* def = [self definitionInElement:_parentElement forKey:@"withNoParent"];
+    TyphoonDefinition* def = [vanillaDefinitionXML asComponentDefinition];
+
     assertThat(def, notNilValue());
     assertThat([def parentRef], nilValue());
 }
 
 - (void)test_asComponentDefinition_parent
 {
-    NSString* parentXmlString = [[TyphoonBundleResource withName:@"ParentCasesAssembly.xml"] asString];
-    _parentElement = [TyphoonRXMLElement elementFromXMLString:parentXmlString encoding:NSUTF8StringEncoding];
+    id parentRef = @"parent";
+    TyphoonRXMLElement* childDefinitionXML = [[[TyphoonXMLBuilder vanillaDefinition] withAttribute:@"parent" textValue:parentRef] build];
 
-    TyphoonDefinition* def = [self definitionInElement:_parentElement forKey:@"withParent"];
+    TyphoonDefinition* def = [childDefinitionXML asComponentDefinition];
+
     assertThat(def, notNilValue());
-
-    NSString *parentRef = [def parentRef];
-    assertThat(parentRef, equalTo(@"parent"));
+    assertThat([def parentRef], equalTo(parentRef));
 }
-
 
 @end
