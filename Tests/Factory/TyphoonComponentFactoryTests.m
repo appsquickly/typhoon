@@ -330,7 +330,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
 - (void)test_child_missing_initializer_inherits_parent_initializer_by_definition
 {
     TyphoonDefinition* parentDefinition =
-            [self registerParentDefinitionWithClass:[ClassWithConstructor class] key:nil initializerString:@"parentArgument"];
+            [self registerParentDefinitionWithClass:[ClassWithConstructor class] initializerString:@"parentArgument"];
     TyphoonDefinition* childDefinition = [TyphoonDefinition withClass:[ClassWithConstructor class] properties:^(TyphoonDefinition* definition)
     {
        definition.parent = parentDefinition;
