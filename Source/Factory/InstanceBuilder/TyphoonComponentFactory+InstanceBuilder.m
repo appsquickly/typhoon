@@ -108,12 +108,17 @@
         if ([self definitionHasParent:definition]) {
             instance = [self initializerInjectionOn:instance withDefinition:[self parentForDefinition:definition]];
         }else{
-            // default initializer
-            instance = objc_msgSend(instance, @selector(init));
+            instance = [self invokeDefaultInitializerOn:instance];
         }
     }
 
     return instance;
+}
+
+- (id)invokeDefaultInitializerOn:(id)instance
+{
+    id initializedInstance = objc_msgSend(instance, @selector(init));
+    return initializedInstance;
 }
 
 - (TyphoonDefinition*)parentForDefinition:(TyphoonDefinition*)definition
