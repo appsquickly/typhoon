@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-10-26</td>
+            <td class="headerValue">2013-11-17</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -69,29 +69,30 @@
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            : #import &quot;TyphoonParameterInjectedWithObjectInstance.h&quot;
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">         60 : @implementation TyphoonParameterInjectedWithObjectInstance</span>
+<span class="lineNum">      14 </span><span class="lineCov">         64 : @implementation TyphoonParameterInjectedWithObjectInstance</span>
 <span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span><span class="lineCov">         61 : - (id)initWithParameterIndex:(NSUInteger)index value:(id)value</span>
+<span class="lineNum">      16 </span><span class="lineCov">         65 : - (id)initWithParameterIndex:(NSUInteger)index value:(id)value</span>
 <span class="lineNum">      17 </span>            : {
-<span class="lineNum">      18 </span><span class="lineCov">         61 :     self = [super init];</span>
-<span class="lineNum">      19 </span><span class="lineCov">         61 :     if (self) {</span>
-<span class="lineNum">      20 </span><span class="lineCov">         61 :         _index = index;</span>
-<span class="lineNum">      21 </span><span class="lineCov">         61 :         _value = value;        </span>
-<span class="lineNum">      22 </span><span class="lineCov">         61 :     }</span>
-<span class="lineNum">      23 </span><span class="lineCov">         61 :     return self;</span>
-<span class="lineNum">      24 </span><span class="lineCov">         61 : }</span>
-<span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span><span class="lineCov">        120 : - (TyphoonParameterInjectionType)type</span>
-<span class="lineNum">      27 </span>            : {
-<span class="lineNum">      28 </span><span class="lineCov">        120 :     return TyphoonParameterInjectionTypeObjectInstance;</span>
-<span class="lineNum">      29 </span>            : }
-<span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">         60 : - (void)setInitializer:(TyphoonInitializer*)initializer</span>
-<span class="lineNum">      32 </span>            : {
-<span class="lineNum">      33 </span>            :     //Do nothing.
-<span class="lineNum">      34 </span><span class="lineCov">         60 : }</span>
-<span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span>            : @end
+<span class="lineNum">      18 </span><span class="lineCov">         65 :     self = [super init];</span>
+<span class="lineNum">      19 </span><span class="lineCov">         65 :     if (self)</span>
+<span class="lineNum">      20 </span>            :     {
+<span class="lineNum">      21 </span><span class="lineCov">         65 :         _index = index;</span>
+<span class="lineNum">      22 </span><span class="lineCov">         65 :         _value = value;</span>
+<span class="lineNum">      23 </span><span class="lineCov">         65 :     }</span>
+<span class="lineNum">      24 </span><span class="lineCov">         65 :     return self;</span>
+<span class="lineNum">      25 </span><span class="lineCov">         65 : }</span>
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span><span class="lineCov">        126 : - (TyphoonParameterInjectionType)type</span>
+<span class="lineNum">      28 </span>            : {
+<span class="lineNum">      29 </span><span class="lineCov">        126 :     return TyphoonParameterInjectionTypeObjectInstance;</span>
+<span class="lineNum">      30 </span>            : }
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span><span class="lineCov">         64 : - (void)setInitializer:(TyphoonInitializer*)initializer</span>
+<span class="lineNum">      33 </span>            : {
+<span class="lineNum">      34 </span>            :     //Do nothing.
+<span class="lineNum">      35 </span><span class="lineCov">         64 : }</span>
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : @end
 </pre>
       </td>
     </tr>

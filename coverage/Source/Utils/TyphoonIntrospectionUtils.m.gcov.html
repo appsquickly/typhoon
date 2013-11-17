@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">40</td>
-            <td class="headerCovTableEntry">46</td>
-            <td class="headerCovTableEntryMed">87.0 %</td>
+            <td class="headerCovTableEntry">41</td>
+            <td class="headerCovTableEntry">47</td>
+            <td class="headerCovTableEntryMed">87.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-10-26</td>
+            <td class="headerValue">2013-11-17</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -71,39 +71,39 @@
 <span class="lineNum">      13 </span>            : 
 <span class="lineNum">      14 </span>            : 
 <span class="lineNum">      15 </span>            : #import &lt;objc/runtime.h&gt;
-<span class="lineNum">      16 </span>            : #import &quot;TyphoonIntrospectionUtils.h&quot;
-<span class="lineNum">      17 </span>            : #import &quot;TyphoonTypeDescriptor.h&quot;
-<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      16 </span>            : #import &lt;objc/message.h&gt;
+<span class="lineNum">      17 </span>            : #import &quot;TyphoonIntrospectionUtils.h&quot;
+<span class="lineNum">      18 </span>            : #import &quot;TyphoonTypeDescriptor.h&quot;
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : @implementation TyphoonIntrospectionUtils
 <span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineCov">        194 : + (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName inClass:(Class)clazz</span>
+<span class="lineNum">      22 </span><span class="lineCov">        197 : + (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName inClass:(Class)clazz</span>
 <span class="lineNum">      23 </span>            : {
-<span class="lineNum">      24 </span><span class="lineCov">        194 :     TyphoonTypeDescriptor* typeDescriptor = nil;</span>
-<span class="lineNum">      25 </span><span class="lineCov">        194 :     objc_property_t propertyReflection = class_getProperty(clazz, [propertyName UTF8String]);</span>
-<span class="lineNum">      26 </span><span class="lineCov">        194 :     if (propertyReflection)</span>
+<span class="lineNum">      24 </span><span class="lineCov">        197 :     TyphoonTypeDescriptor* typeDescriptor = nil;</span>
+<span class="lineNum">      25 </span><span class="lineCov">        197 :     objc_property_t propertyReflection = class_getProperty(clazz, [propertyName UTF8String]);</span>
+<span class="lineNum">      26 </span><span class="lineCov">        197 :     if (propertyReflection)</span>
 <span class="lineNum">      27 </span>            :     {
-<span class="lineNum">      28 </span><span class="lineCov">        191 :         const char* attrs = property_getAttributes(propertyReflection);</span>
-<span class="lineNum">      29 </span><span class="lineCov">        191 :         if (attrs == NULL)</span>
+<span class="lineNum">      28 </span><span class="lineCov">        194 :         const char* attrs = property_getAttributes(propertyReflection);</span>
+<span class="lineNum">      29 </span><span class="lineCov">        194 :         if (attrs == NULL)</span>
 <span class="lineNum">      30 </span>            :         {
 <span class="lineNum">      31 </span><span class="lineNoCov">          0 :             return (NULL);</span>
 <span class="lineNum">      32 </span>            :         }
 <span class="lineNum">      33 </span>            : 
 <span class="lineNum">      34 </span>            :         static char buffer[256];
-<span class="lineNum">      35 </span><span class="lineCov">        191 :         const char* e = strchr(attrs, ',');</span>
-<span class="lineNum">      36 </span><span class="lineCov">        191 :         if (e == NULL)</span>
+<span class="lineNum">      35 </span><span class="lineCov">        194 :         const char* e = strchr(attrs, ',');</span>
+<span class="lineNum">      36 </span><span class="lineCov">        194 :         if (e == NULL)</span>
 <span class="lineNum">      37 </span>            :         {
 <span class="lineNum">      38 </span><span class="lineNoCov">          0 :             return (NULL);</span>
 <span class="lineNum">      39 </span>            :         }
 <span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span><span class="lineCov">        191 :         int len = (int) (e - attrs);</span>
-<span class="lineNum">      42 </span><span class="lineCov">        191 :         memcpy( buffer, attrs, len );</span>
-<span class="lineNum">      43 </span><span class="lineCov">        191 :         buffer[len] = '\0';</span>
+<span class="lineNum">      41 </span><span class="lineCov">        194 :         int len = (int) (e - attrs);</span>
+<span class="lineNum">      42 </span><span class="lineCov">        194 :         memcpy( buffer, attrs, len );</span>
+<span class="lineNum">      43 </span><span class="lineCov">        194 :         buffer[len] = '\0';</span>
 <span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span><span class="lineCov">        191 :         typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:[NSString stringWithCString:buffer encoding:NSUTF8StringEncoding]];</span>
-<span class="lineNum">      46 </span><span class="lineCov">        191 :     }</span>
-<span class="lineNum">      47 </span><span class="lineCov">        194 :     return typeDescriptor;</span>
-<span class="lineNum">      48 </span><span class="lineCov">        194 : }</span>
+<span class="lineNum">      45 </span><span class="lineCov">        194 :         typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:[NSString stringWithCString:buffer encoding:NSUTF8StringEncoding]];</span>
+<span class="lineNum">      46 </span><span class="lineCov">        194 :     }</span>
+<span class="lineNum">      47 </span><span class="lineCov">        197 :     return typeDescriptor;</span>
+<span class="lineNum">      48 </span><span class="lineCov">        197 : }</span>
 <span class="lineNum">      49 </span>            : 
 <span class="lineNum">      50 </span>            : 
 <span class="lineNum">      51 </span><span class="lineCov">         16 : + (NSArray*)typeCodesForSelector:(SEL)selector ofClass:(Class)clazz isClassMethod:(BOOL)isClassMethod</span>
@@ -135,27 +135,28 @@
 <span class="lineNum">      77 </span><span class="lineCov">          3 : NSSet* TyphoonAutoWiredProperties(Class clazz, NSSet* properties)</span>
 <span class="lineNum">      78 </span>            : {
 <span class="lineNum">      79 </span><span class="lineCov">          3 :     Class superClass = class_getSuperclass([clazz class]);</span>
-<span class="lineNum">      80 </span><span class="lineCov">          3 :     if ([superClass respondsToSelector:@selector(typhoonAutoInjectedProperties)])</span>
-<span class="lineNum">      81 </span>            :     {
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 :         NSMutableSet* superAutoWired = [[superClass performSelector:@selector(typhoonAutoInjectedProperties)] mutableCopy];</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 :         [superAutoWired unionSet:properties];</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 :         return superAutoWired;</span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      86 </span><span class="lineCov">          3 :     return properties;</span>
-<span class="lineNum">      87 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">      88 </span>            : 
+<span class="lineNum">      80 </span><span class="lineCov">          3 :     SEL autoInjectedProperties = sel_registerName(&quot;typhoonAutoInjectedProperties&quot;);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          3 :     if ([superClass respondsToSelector:autoInjectedProperties])</span>
+<span class="lineNum">      82 </span>            :     {
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :         NSMutableSet* superAutoWired = [objc_msgSend(superClass, autoInjectedProperties) mutableCopy];</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 :         [superAutoWired unionSet:properties];</span>
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 :         return superAutoWired;</span>
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      87 </span><span class="lineCov">          3 :     return properties;</span>
+<span class="lineNum">      88 </span><span class="lineCov">          3 : }</span>
 <span class="lineNum">      89 </span>            : 
-<span class="lineNum">      90 </span><span class="lineCov">          2 : NSString* TyphoonTypeStringFor(id classOrProtocol)</span>
-<span class="lineNum">      91 </span>            : {
-<span class="lineNum">      92 </span><span class="lineCov">          2 :     if (class_isMetaClass(object_getClass(classOrProtocol)))</span>
-<span class="lineNum">      93 </span>            :     {
-<span class="lineNum">      94 </span><span class="lineCov">          1 :         return NSStringFromClass(classOrProtocol);</span>
-<span class="lineNum">      95 </span>            :     }
-<span class="lineNum">      96 </span>            :     else
-<span class="lineNum">      97 </span>            :     {
-<span class="lineNum">      98 </span><span class="lineCov">          1 :         return [NSString stringWithFormat:@&quot;id&lt;%@&gt;&quot;, NSStringFromProtocol(classOrProtocol)];</span>
-<span class="lineNum">      99 </span>            :     }
-<span class="lineNum">     100 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      91 </span><span class="lineCov">          2 : NSString* TyphoonTypeStringFor(id classOrProtocol)</span>
+<span class="lineNum">      92 </span>            : {
+<span class="lineNum">      93 </span><span class="lineCov">          2 :     if (class_isMetaClass(object_getClass(classOrProtocol)))</span>
+<span class="lineNum">      94 </span>            :     {
+<span class="lineNum">      95 </span><span class="lineCov">          1 :         return NSStringFromClass(classOrProtocol);</span>
+<span class="lineNum">      96 </span>            :     }
+<span class="lineNum">      97 </span>            :     else
+<span class="lineNum">      98 </span>            :     {
+<span class="lineNum">      99 </span><span class="lineCov">          1 :         return [NSString stringWithFormat:@&quot;id&lt;%@&gt;&quot;, NSStringFromProtocol(classOrProtocol)];</span>
+<span class="lineNum">     100 </span>            :     }
+<span class="lineNum">     101 </span><span class="lineCov">          2 : }</span>
 </pre>
       </td>
     </tr>

@@ -54,6 +54,10 @@
 	
 	<option value="//api/name/lazy">&nbsp;&nbsp;&nbsp;&nbsp;lazy</option>
 	
+	<option value="//api/name/parent">&nbsp;&nbsp;&nbsp;&nbsp;parent</option>
+	
+	<option value="//api/name/parentRef">&nbsp;&nbsp;&nbsp;&nbsp;parentRef</option>
+	
 	<option value="//api/name/scope">&nbsp;&nbsp;&nbsp;&nbsp;scope</option>
 	
 	<option value="//api/name/type">&nbsp;&nbsp;&nbsp;&nbsp;type</option>
@@ -126,9 +130,9 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_InstanceBuilder Methods">InstanceBuilder Methods</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Infrastructure Methods">Infrastructure Methods</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_InstanceBuilder Methods">InstanceBuilder Methods</a></span></li>
 	
 </ul></li>
 
@@ -151,6 +155,10 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/key">key</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/lazy">lazy</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parent">parent</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/parentRef">parentRef</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/scope">scope</a></span></li>
 	
@@ -321,6 +329,20 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/parent">&nbsp;&nbsp;parent</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/parentRef">&nbsp;&nbsp;parentRef</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/lazy">&nbsp;&nbsp;lazy</a></code>
 		<span class="tooltip"><p>Say if the component (scoped as a singleton) should be lazily instantiated.</p></span>
 	</span>
@@ -329,13 +351,6 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/withClass:">+&nbsp;withClass:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/withClass:key:">+&nbsp;withClass:key:</a></code>
 		
 	</span>
 	
@@ -357,20 +372,6 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/withClass:properties:">+&nbsp;withClass:properties:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithClass:key:">&ndash;&nbsp;initWithClass:key:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithClass:key:factoryComponent:">&ndash;&nbsp;initWithClass:key:factoryComponent:</a></code>
 		
 	</span>
 	
@@ -407,6 +408,43 @@ required <a href="#//api/name/type">type</a>.</p></span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/injectProperty:asCollection:">&ndash;&nbsp;injectProperty:asCollection:</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Infrastructure Methods" name="task_Infrastructure Methods"></a>
+						<h3 class="subsubtitle task-title">Infrastructure Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/withClass:key:">+&nbsp;withClass:key:</a></code>
+		<span class="tooltip"><p>Returns a definition with the given class and <a href="#//api/name/key">key</a>. In the block-style assembly, keys are auto-generated, however infrastructure components
+may specify their own <a href="#//api/name/key">key</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/propertyPlaceholderWithResource:">+&nbsp;propertyPlaceholderWithResource:</a></code>
+		<span class="tooltip"><p>Factory method for a <a href="../Classes/TyphoonPropertyPlaceholderConfigurer.html">TyphoonPropertyPlaceholderConfigurer</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithClass:key:">&ndash;&nbsp;initWithClass:key:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithClass:key:factoryComponent:">&ndash;&nbsp;initWithClass:key:factoryComponent:</a></code>
 		
 	</span>
 	
@@ -472,21 +510,6 @@ required <a href="#//api/name/type">type</a>.</p></span>
 	<span class="tooltip">
 		<code><a href="#//api/name/addInjectedProperty:">&ndash;&nbsp;addInjectedProperty:</a></code>
 		
-	</span>
-	
-	
-</li>
-						</ul>
-						
-						
-						<a title="Infrastructure Methods" name="task_Infrastructure Methods"></a>
-						<h3 class="subsubtitle task-title">Infrastructure Methods</h3>
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/propertyPlaceholderWithResource:">+&nbsp;propertyPlaceholderWithResource:</a></code>
-		<span class="tooltip"><p>Factory method for a <a href="../Classes/TyphoonPropertyPlaceholderConfigurer.html">TyphoonPropertyPlaceholderConfigurer</a>.</p></span>
 	</span>
 	
 	
@@ -608,6 +631,28 @@ required <a href="#//api/name/type">type</a>.</p></span>
 	</div>				
 	
 	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/parent" title="parent"></a>
+	<h3 class="subsubtitle method-title">parent</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) TyphoonDefinition *parent</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/parentRef" title="parentRef"></a>
+	<h3 class="subsubtitle method-title">parentRef</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *parentRef</code></div>
+
+    
 </div>
 						
 						<div class="section-method">
@@ -734,10 +779,42 @@ required <a href="#//api/name/type">type</a>.</p></span>
 	<h3 class="subsubtitle method-title">withClass:key:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a definition with the given class and <a href="#//api/name/key">key</a>. In the block-style assembly, keys are auto-generated, however infrastructure components
+may specify their own <a href="#//api/name/key">key</a>.</p>
+	</div>		
+	
+    
 
 	<div class="method-subsection method-declaration"><code>+ (TyphoonDefinition *)withClass:(Class)<em>clazz</em> key:(NSString *)<em>key</em></code></div>
 
     
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a definition with the given class and <a href="#//api/name/key">key</a>. In the block-style assembly, keys are auto-generated, however infrastructure components
+may specify their own <a href="#//api/name/key">key</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonDefinition+Infrastructure.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -1038,7 +1115,7 @@ required <a href="#//api/name/type">type</a>.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 typhoonframework.org. All rights reserved. (Last updated: 2013-10-26)</span><br />
+						<p><span class="copyright">&copy; 2013 typhoonframework.org. All rights reserved. (Last updated: 2013-11-17)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-10-26</td>
+            <td class="headerValue">2013-11-17</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -84,7 +84,7 @@
 <span class="lineNum">      26 </span>            :     NSMutableArray* _registry;
 <span class="lineNum">      27 </span>            :     NSMutableDictionary* _singletons;
 <span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span>            :     id&lt;TyphoonInstanceRegister&gt; _currentlyResolvingReferences;
+<span class="lineNum">      29 </span>            :     id &lt;TyphoonInstanceRegister&gt; _currentlyResolvingReferences;
 <span class="lineNum">      30 </span>            :     NSMutableArray* _postProcessors;
 <span class="lineNum">      31 </span>            :     BOOL _isLoading;
 <span class="lineNum">      32 </span>            : }
@@ -92,17 +92,17 @@
 <span class="lineNum">      34 </span>            : /**
 <span class="lineNum">      35 </span>            : * The instantiated singletons.
 <span class="lineNum">      36 </span>            : */
-<span class="lineNum">      37 </span>            : @property (nonatomic, strong, readonly) NSArray *singletons;
+<span class="lineNum">      37 </span>            : @property(nonatomic, strong, readonly) NSArray* singletons;
 <span class="lineNum">      38 </span>            : 
 <span class="lineNum">      39 </span>            : /**
 <span class="lineNum">      40 </span>            : * Say if the factory has been loaded.
 <span class="lineNum">      41 </span>            : */
-<span class="lineNum">      42 </span><span class="lineCov">       1497 : @property (nonatomic, assign, getter = isLoaded) BOOL loaded;</span>
+<span class="lineNum">      42 </span><span class="lineCov">       1617 : @property(nonatomic, assign, getter = isLoaded) BOOL loaded;</span>
 <span class="lineNum">      43 </span>            : 
 <span class="lineNum">      44 </span>            : /**
 <span class="lineNum">      45 </span>            :  * The attached factory post processors.
 <span class="lineNum">      46 </span>            :  */
-<span class="lineNum">      47 </span><span class="lineCov">          5 : @property (nonatomic, strong, readonly) NSArray *postProcessors;</span>
+<span class="lineNum">      47 </span><span class="lineCov">          5 : @property(nonatomic, strong, readonly) NSArray* postProcessors;</span>
 <span class="lineNum">      48 </span>            : 
 <span class="lineNum">      49 </span>            : /**
 <span class="lineNum">      50 </span>            : * Mutate the component definitions and
@@ -132,7 +132,7 @@
 <span class="lineNum">      74 </span>            : /**
 <span class="lineNum">      75 </span>            : * Registers a component into the factory. Components can be declared in any order, the container will work out how to resolve them.
 <span class="lineNum">      76 </span>            : */
-<span class="lineNum">      77 </span>            : - (void) register:(TyphoonDefinition*)definition;
+<span class="lineNum">      77 </span>            : - (void)register:(TyphoonDefinition*)definition;
 <span class="lineNum">      78 </span>            : 
 <span class="lineNum">      79 </span>            : /**
 <span class="lineNum">      80 </span>            : * Returns an an instance of the component matching the supplied class or protocol. For example:
@@ -147,7 +147,7 @@
 <span class="lineNum">      89 </span>            : */
 <span class="lineNum">      90 </span>            : - (id)componentForType:(id)classOrProtocol;
 <span class="lineNum">      91 </span>            : 
-<span class="lineNum">      92 </span>            :  - (NSArray*)allComponentsForType:(id)classOrProtocol;
+<span class="lineNum">      92 </span>            : - (NSArray*)allComponentsForType:(id)classOrProtocol;
 <span class="lineNum">      93 </span>            : 
 <span class="lineNum">      94 </span>            : - (id)componentForKey:(NSString*)key;
 <span class="lineNum">      95 </span>            : 
@@ -157,7 +157,7 @@
 <span class="lineNum">      99 </span>            :  Attach a TyphoonComponentFactoryPostProcessor to this component factory.
 <span class="lineNum">     100 </span>            :  @param postProcessor The post-processor to attach.
 <span class="lineNum">     101 </span>            :  */
-<span class="lineNum">     102 </span>            : - (void)attachPostProcessor:(id&lt;TyphoonComponentFactoryPostProcessor&gt;)postProcessor;
+<span class="lineNum">     102 </span>            : - (void)attachPostProcessor:(id &lt;TyphoonComponentFactoryPostProcessor&gt;)postProcessor;
 <span class="lineNum">     103 </span>            : 
 <span class="lineNum">     104 </span>            : /**
 <span class="lineNum">     105 </span>            :  * Injects the properties of an object
