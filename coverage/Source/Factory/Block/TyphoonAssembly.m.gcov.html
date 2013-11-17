@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-11-17</td>
+            <td class="headerValue">2013-11-18</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -165,23 +165,23 @@
 <span class="lineNum">     107 </span><span class="lineCov">         43 :     class_addMethod(self, sel, imp, &quot;@&quot;);</span>
 <span class="lineNum">     108 </span><span class="lineCov">         43 : }</span>
 <span class="lineNum">     109 </span>            : 
-<span class="lineNum">     110 </span><span class="lineCov">       3856 : + (IMP)implementationToConstructDefinitionForSEL:(SEL)selWithAdvicePrefix</span>
+<span class="lineNum">     110 </span><span class="lineCov">       3855 : + (IMP)implementationToConstructDefinitionForSEL:(SEL)selWithAdvicePrefix</span>
 <span class="lineNum">     111 </span>            : {
-<span class="lineNum">     112 </span><span class="lineCov">       7712 :     return imp_implementationWithBlock((__bridge id) objc_unretainedPointer((TyphoonDefinition*) ^(id me)</span>
+<span class="lineNum">     112 </span><span class="lineCov">       7710 :     return imp_implementationWithBlock((__bridge id) objc_unretainedPointer((TyphoonDefinition*) ^(id me)</span>
 <span class="lineNum">     113 </span>            :     {
 <span class="lineNum">     114 </span>            :         NSString* key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selWithAdvicePrefix];
 <span class="lineNum">     115 </span>            :         return [self buildAndCacheDefinitionForKey:key me:me];
 <span class="lineNum">     116 </span>            :     }));
 <span class="lineNum">     117 </span>            : }
 <span class="lineNum">     118 </span>            : 
-<span class="lineNum">     119 </span><span class="lineCov">       3813 : + (TyphoonDefinition*)buildAndCacheDefinitionForKey:(NSString*)key me:(TyphoonAssembly*)me</span>
+<span class="lineNum">     119 </span><span class="lineCov">       3812 : + (TyphoonDefinition*)buildAndCacheDefinitionForKey:(NSString*)key me:(TyphoonAssembly*)me</span>
 <span class="lineNum">     120 </span>            : {
-<span class="lineNum">     121 </span><span class="lineCov">       3813 :     NSMutableArray* resolveStack = [self resolveStackForKey:key];</span>
-<span class="lineNum">     122 </span><span class="lineCov">       3813 :     [self markCurrentlyResolvingKey:key resolveStack:resolveStack];</span>
+<span class="lineNum">     121 </span><span class="lineCov">       3812 :     NSMutableArray* resolveStack = [self resolveStackForKey:key];</span>
+<span class="lineNum">     122 </span><span class="lineCov">       3812 :     [self markCurrentlyResolvingKey:key resolveStack:resolveStack];</span>
 <span class="lineNum">     123 </span>            : 
-<span class="lineNum">     124 </span><span class="lineCov">       3813 :     if ([self dependencyForKey:key involvedInCircularDependencyInResolveStack:resolveStack])</span>
+<span class="lineNum">     124 </span><span class="lineCov">       3812 :     if ([self dependencyForKey:key involvedInCircularDependencyInResolveStack:resolveStack])</span>
 <span class="lineNum">     125 </span>            :     {
-<span class="lineNum">     126 </span><span class="lineCov">       1035 :         return [self definitionToTerminateCircularDependencyForKey:key];</span>
+<span class="lineNum">     126 </span><span class="lineCov">       1034 :         return [self definitionToTerminateCircularDependencyForKey:key];</span>
 <span class="lineNum">     127 </span>            :     }
 <span class="lineNum">     128 </span>            : 
 <span class="lineNum">     129 </span><span class="lineCov">       2778 :     id cached = [self populateCacheWithDefinitionForKey:key me:me];</span>
@@ -190,34 +190,34 @@
 <span class="lineNum">     132 </span>            :     LogTrace(@&quot;Did finish building definition for key: '%@'&quot;, key);
 <span class="lineNum">     133 </span>            : 
 <span class="lineNum">     134 </span><span class="lineCov">       2778 :     return cached;</span>
-<span class="lineNum">     135 </span><span class="lineCov">       6591 : }</span>
+<span class="lineNum">     135 </span><span class="lineCov">       6590 : }</span>
 <span class="lineNum">     136 </span>            : 
-<span class="lineNum">     137 </span><span class="lineCov">       3813 : + (BOOL)dependencyForKey:(NSString*)key involvedInCircularDependencyInResolveStack:(NSArray*)resolveStack;</span>
+<span class="lineNum">     137 </span><span class="lineCov">       3812 : + (BOOL)dependencyForKey:(NSString*)key involvedInCircularDependencyInResolveStack:(NSArray*)resolveStack;</span>
 <span class="lineNum">     138 </span>            : {
-<span class="lineNum">     139 </span><span class="lineCov">       3813 :     if ([resolveStack count] &gt;= 2)</span>
+<span class="lineNum">     139 </span><span class="lineCov">       3812 :     if ([resolveStack count] &gt;= 2)</span>
 <span class="lineNum">     140 </span>            :     {
-<span class="lineNum">     141 </span><span class="lineCov">       1035 :         NSString* bottom = [resolveStack objectAtIndex:0];</span>
-<span class="lineNum">     142 </span><span class="lineCov">       1035 :         NSString* top = [resolveStack objectAtIndex:[resolveStack count] - 1];</span>
-<span class="lineNum">     143 </span><span class="lineCov">       1035 :         if ([top isEqualToString:bottom])</span>
+<span class="lineNum">     141 </span><span class="lineCov">       1034 :         NSString* bottom = [resolveStack objectAtIndex:0];</span>
+<span class="lineNum">     142 </span><span class="lineCov">       1034 :         NSString* top = [resolveStack objectAtIndex:[resolveStack count] - 1];</span>
+<span class="lineNum">     143 </span><span class="lineCov">       1034 :         if ([top isEqualToString:bottom])</span>
 <span class="lineNum">     144 </span>            :         {
 <span class="lineNum">     145 </span>            :             LogTrace(@&quot;Circular dependency detected in definition for key '%@'. Breaking the cycle.&quot;, key);
-<span class="lineNum">     146 </span><span class="lineCov">       1035 :             return YES;</span>
+<span class="lineNum">     146 </span><span class="lineCov">       1034 :             return YES;</span>
 <span class="lineNum">     147 </span>            :         }
-<span class="lineNum">     148 </span><span class="lineCov">       3776 :     }</span>
+<span class="lineNum">     148 </span><span class="lineCov">       3775 :     }</span>
 <span class="lineNum">     149 </span>            : 
-<span class="lineNum">     150 </span><span class="lineCov">       6591 :     return NO;</span>
-<span class="lineNum">     151 </span><span class="lineCov">       3813 : }</span>
+<span class="lineNum">     150 </span><span class="lineCov">       6590 :     return NO;</span>
+<span class="lineNum">     151 </span><span class="lineCov">       3812 : }</span>
 <span class="lineNum">     152 </span>            : 
-<span class="lineNum">     153 </span><span class="lineCov">       1035 : + (TyphoonDefinition*)definitionToTerminateCircularDependencyForKey:(NSString*)key</span>
+<span class="lineNum">     153 </span><span class="lineCov">       1034 : + (TyphoonDefinition*)definitionToTerminateCircularDependencyForKey:(NSString*)key</span>
 <span class="lineNum">     154 </span>            : {
 <span class="lineNum">     155 </span>            :     // we return a 'dummy' definition just to terminate the cycle. This dummy definition will be overwritten by the real one, which will be set further up the stack and will overwrite this one in 'cachedDefinitionsForMethodName'.
-<span class="lineNum">     156 </span><span class="lineCov">       1035 :     return [[TyphoonDefinition alloc] initWithClass:[NSString class] key:key];</span>
-<span class="lineNum">     157 </span><span class="lineCov">       1035 : }</span>
+<span class="lineNum">     156 </span><span class="lineCov">       1034 :     return [[TyphoonDefinition alloc] initWithClass:[NSString class] key:key];</span>
+<span class="lineNum">     157 </span><span class="lineCov">       1034 : }</span>
 <span class="lineNum">     158 </span>            : 
-<span class="lineNum">     159 </span><span class="lineCov">       3813 : + (NSMutableArray*)resolveStackForKey:(NSString*)key</span>
+<span class="lineNum">     159 </span><span class="lineCov">       3812 : + (NSMutableArray*)resolveStackForKey:(NSString*)key</span>
 <span class="lineNum">     160 </span>            : {
-<span class="lineNum">     161 </span><span class="lineCov">       3813 :     NSMutableArray* resolveStack = [resolveStackForSelector objectForKey:key];</span>
-<span class="lineNum">     162 </span><span class="lineCov">       3813 :     if (!resolveStack)</span>
+<span class="lineNum">     161 </span><span class="lineCov">       3812 :     NSMutableArray* resolveStack = [resolveStackForSelector objectForKey:key];</span>
+<span class="lineNum">     162 </span><span class="lineCov">       3812 :     if (!resolveStack)</span>
 <span class="lineNum">     163 </span>            :     {
 <span class="lineNum">     164 </span><span class="lineCov">         31 :         if (!resolveStackForSelector)</span>
 <span class="lineNum">     165 </span>            :         {
@@ -226,13 +226,13 @@
 <span class="lineNum">     168 </span><span class="lineCov">         31 :         resolveStack = [[NSMutableArray alloc] init];</span>
 <span class="lineNum">     169 </span><span class="lineCov">         31 :         [resolveStackForSelector setObject:resolveStack forKey:key];</span>
 <span class="lineNum">     170 </span><span class="lineCov">         31 :     }</span>
-<span class="lineNum">     171 </span><span class="lineCov">       3813 :     return resolveStack;</span>
-<span class="lineNum">     172 </span><span class="lineCov">       3813 : }</span>
+<span class="lineNum">     171 </span><span class="lineCov">       3812 :     return resolveStack;</span>
+<span class="lineNum">     172 </span><span class="lineCov">       3812 : }</span>
 <span class="lineNum">     173 </span>            : 
-<span class="lineNum">     174 </span><span class="lineCov">       3813 : + (void)markCurrentlyResolvingKey:(NSString*)key resolveStack:(NSMutableArray*)resolveStack</span>
+<span class="lineNum">     174 </span><span class="lineCov">       3812 : + (void)markCurrentlyResolvingKey:(NSString*)key resolveStack:(NSMutableArray*)resolveStack</span>
 <span class="lineNum">     175 </span>            : {
-<span class="lineNum">     176 </span><span class="lineCov">       3813 :     [resolveStack addObject:key];</span>
-<span class="lineNum">     177 </span><span class="lineCov">       3813 : }</span>
+<span class="lineNum">     176 </span><span class="lineCov">       3812 :     [resolveStack addObject:key];</span>
+<span class="lineNum">     177 </span><span class="lineCov">       3812 : }</span>
 <span class="lineNum">     178 </span>            : 
 <span class="lineNum">     179 </span><span class="lineCov">       2778 : + (TyphoonDefinition*)populateCacheWithDefinitionForKey:(NSString*)key me:(TyphoonAssembly*)me;</span>
 <span class="lineNum">     180 </span>            : {
@@ -264,8 +264,8 @@
 <span class="lineNum">     206 </span>            : {
 <span class="lineNum">     207 </span><span class="lineCov">       2777 :     if ([definition.key length] == 0)</span>
 <span class="lineNum">     208 </span>            :     {
-<span class="lineNum">     209 </span><span class="lineCov">       2732 :         definition.key = key;</span>
-<span class="lineNum">     210 </span><span class="lineCov">       2732 :     }</span>
+<span class="lineNum">     209 </span><span class="lineCov">       2733 :         definition.key = key;</span>
+<span class="lineNum">     210 </span><span class="lineCov">       2733 :     }</span>
 <span class="lineNum">     211 </span><span class="lineCov">       2777 : }</span>
 <span class="lineNum">     212 </span>            : 
 <span class="lineNum">     213 </span><span class="lineCov">       2778 : + (void)markKeyResolved:(NSString*)key resolveStack:(NSMutableArray*)resolveStack</span>
