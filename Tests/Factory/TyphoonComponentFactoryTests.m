@@ -20,6 +20,9 @@
 #import "Harlot.h"
 #import "TyphoonComponentFactoryPostProcessorMock.h"
 #import "TyphoonPatcher.h"
+#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
+#import "ClassWithConstructor.h"
+
 
 static NSString* const DEFAULT_QUEST = @"quest";
 
@@ -322,5 +325,117 @@ static NSString* const DEFAULT_QUEST = @"quest";
     assertThatUnsignedInteger([[_componentFactory singletons] count], is(@1));
 }
 
+#pragma mark - Definition Inheritance
+
+- (void)test_child_missing_initializer_inherits_parent_initializer_by_definition
+{
+    TyphoonDefinition* parentDefinition =
+            [self registerParentDefinitionWithClass:[ClassWithConstructor class] initializerString:@"parentArgument"];
+    TyphoonDefinition* childDefinition = [TyphoonDefinition withClass:[ClassWithConstructor class] properties:^(TyphoonDefinition* definition)
+    {
+       definition.parent = parentDefinition;
+    }];
+    [_componentFactory register:childDefinition];
+
+    ClassWithConstructor* child = [_componentFactory objectForDefinition:childDefinition];
+
+    assertThat([child string], equalTo(@"parentArgument"));
+}
+
+- (void)test_child_missing_initializer_inherits_parent_initializer_by_ref
+{
+    [self registerParentDefinitionWithClass:[ClassWithConstructor class] key:@"parentRef" initializerString:@"parentArgument"];
+    TyphoonDefinition* childDefinition = [TyphoonDefinition withClass:[ClassWithConstructor class] properties:^(TyphoonDefinition* definition)
+    {
+        definition.parentRef = @"parentRef";
+    }];
+    [_componentFactory register:childDefinition];
+
+    ClassWithConstructor* child = [_componentFactory objectForDefinition:childDefinition];
+
+    assertThat([child string], equalTo(@"parentArgument"));
+}
+
+- (void)test_child_initializer_overrides_parent_initializer_by_definition
+{
+    TyphoonDefinition* parentDefinition =
+            [self registerParentDefinitionWithClass:[ClassWithConstructor class] initializerString:@"parentArgument"];
+    TyphoonDefinition* childDefinition =
+            [self registerChildDefinitionWithClass:[ClassWithConstructor class] parentDefinition:parentDefinition initializerString:@"childArgument"];
+
+    ClassWithConstructor* child = [_componentFactory objectForDefinition:childDefinition];
+
+    assertThat([child string], equalTo(@"childArgument"));
+}
+
+- (void)test_child_initializer_overrides_parent_initializer_by_ref
+{
+    [self registerParentDefinitionWithClass:[ClassWithConstructor class] key:@"parentRef" initializerString:@"parentArgument"];
+    TyphoonDefinition* childDefinition =
+            [self registerChildDefinitionWithClass:[ClassWithConstructor class] parentRef:@"parentRef" initializerString:@"childArgument"];
+
+    ClassWithConstructor* child = [_componentFactory objectForDefinition:childDefinition];
+
+    assertThat([child string], equalTo(@"childArgument"));
+}
+
+#pragma mark - Test Utility Methods
+- (TyphoonDefinition*)registerParentDefinitionWithClass:(Class)pClass initializerString:(NSString*)string
+{
+    TyphoonDefinition* parentDefinition = [TyphoonDefinition withClass:pClass key:nil];
+
+    TyphoonInitializer* initializer = [[TyphoonInitializer alloc] init];
+    initializer.selector = @selector(initWithString:);
+    [initializer injectWithValueAsText:string requiredTypeOrNil:[NSString class]];
+    parentDefinition.initializer = initializer;
+
+    [_componentFactory register:parentDefinition];
+
+    return parentDefinition;
+}
+
+- (TyphoonDefinition*)registerParentDefinitionWithClass:(Class)pClass key:(NSString*)key initializerString:(NSString*)string
+{
+    TyphoonDefinition* parentDefinition = [TyphoonDefinition withClass:pClass key:key];
+
+    TyphoonInitializer* initializer = [[TyphoonInitializer alloc] init];
+    initializer.selector = @selector(initWithString:);
+    [initializer injectWithValueAsText:string requiredTypeOrNil:[NSString class]];
+    parentDefinition.initializer = initializer;
+
+    [_componentFactory register:parentDefinition];
+
+    return parentDefinition;
+}
+
+- (TyphoonDefinition*)registerChildDefinitionWithClass:(Class)pClass parentDefinition:(TyphoonDefinition*)parentDefinition initializerString:(NSString*)string
+{
+    return [self registerChildDefinitionWithClass:pClass parentDefinition:parentDefinition parentRef:nil initializerString:string];
+}
+
+- (TyphoonDefinition*)registerChildDefinitionWithClass:(Class)pClass parentRef:(NSString *)parentRef initializerString:(NSString*)string
+{
+    return [self registerChildDefinitionWithClass:pClass parentDefinition:nil parentRef:parentRef initializerString:string];
+}
+
+- (TyphoonDefinition*)registerChildDefinitionWithClass:(Class)pClass parentDefinition:(TyphoonDefinition*)parentDefinition parentRef:(NSString *)parentRef initializerString:(NSString*)string
+{
+    TyphoonDefinition* childDefinition = [TyphoonDefinition withClass:pClass initialization:^(TyphoonInitializer* initializer) {
+        initializer.selector = @selector(initWithString:);
+
+        [initializer injectWithValueAsText:string requiredTypeOrNil:[NSString class]];
+    } properties:^(TyphoonDefinition* definition)
+    {
+        if (parentDefinition) {
+            definition.parent = parentDefinition;
+        }else if (parentRef) {
+            definition.parentRef = parentRef;
+        }
+
+    }];
+    [_componentFactory register:childDefinition];
+
+    return childDefinition;
+}
 
 @end

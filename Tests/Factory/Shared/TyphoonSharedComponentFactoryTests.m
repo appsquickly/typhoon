@@ -96,15 +96,14 @@
 }
 
 /* ====================================================================================================================================== */
-#pragma mark factory method injection
-
-- (void)test_factory_method_injection
+#pragma mark Class Method Initializer
+- (void)test_class_method_injection
 {
     NSURL* url = [_componentFactory componentForKey:@"serviceUrl"];
     NSLog(@"Here's the url: %@", url);
 }
 
-- (void)test_factory_method_injection_raises_exception_if_required_class_not_set
+- (void)test_class_method_injection_raises_exception_if_required_class_not_set
 {
     @try
     {
@@ -120,12 +119,12 @@
 
 }
 
+#pragma mark Factory Initializer
 - (void)test_returns_component_from_factory_component
 {
     Sword* sword = [_componentFactory componentForKey:@"blueSword"];
     assertThat([sword description], equalTo(@"A bright blue sword with orange pom-poms at the hilt."));
 }
-
 
 /* ====================================================================================================================================== */
 #pragma mark initializer injection

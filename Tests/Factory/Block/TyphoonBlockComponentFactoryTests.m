@@ -26,12 +26,12 @@
 #import "InfrastructureComponentsAssembly.h"
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "ExtendedMiddleAgesAssembly.h"
+#import "CampaignQuest.h"
 
 @interface TyphoonBlockComponentFactoryTests : TyphoonSharedComponentFactoryTests
 @end
 
 @implementation TyphoonBlockComponentFactoryTests
-
 
 - (void)setUp
 {
@@ -85,7 +85,6 @@
     LogDebug(@"Knight: %@", knight);
     assertThat(knight, notNilValue());
 }
-
 
 @end
 

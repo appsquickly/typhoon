@@ -193,6 +193,7 @@ each commit. (If you'd like the script I will share it).
          
 ### With contributions from: 
 
+* <a href="https://github.com/drodriguez">Daniel Rodríguez Troitiño</a> : Factory Providers.
 * <a href="https://github.com/eriksundin">Erik Sundin</a> : Initilizer collections, infrastructure components for post-processors.  
 * <a href="https://github.com/cesteban">César Estébanez Tascón</a> : Circular Dependencies fixes. 
 * <a href="https://github.com/BrynCooke">Bryn Cooke</a> : Late injections & story board integration. 

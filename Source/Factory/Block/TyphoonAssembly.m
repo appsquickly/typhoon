@@ -22,7 +22,6 @@
 
 static NSMutableDictionary* resolveStackForSelector;
 static NSMutableArray* reservedSelectorsAsStrings;
-static NSMutableArray* assemblyProperties;
 
 @implementation TyphoonAssembly
 
@@ -143,7 +142,7 @@ static NSMutableArray* assemblyProperties;
         NSString* top = [resolveStack objectAtIndex:[resolveStack count] - 1];
         if ([top isEqualToString:bottom])
         {
-            LogInfo(@"Circular dependency detected in definition for key '%@'. Breaking the cycle.", key);
+            LogTrace(@"Circular dependency detected in definition for key '%@'. Breaking the cycle.", key);
             return YES;
         }
     }
@@ -253,25 +252,5 @@ static NSMutableArray* assemblyProperties;
 }
 
 
-- (NSArray*)cachePropertyNamesForClass:(Class)clazz inArray:(NSMutableArray*)rv
-{
-    unsigned count;
-    objc_property_t* properties = class_copyPropertyList(clazz, &count);
-
-    unsigned i;
-    for (i = 0; i < count; i++)
-    {
-        objc_property_t property = properties[i];
-        NSString* name = [NSString stringWithUTF8String:property_getName(property)];
-        [rv addObject:name];
-    }
-    free(properties);
-    if ([clazz superclass])
-    {
-        [self cachePropertyNamesForClass:[clazz superclass] inArray:rv];
-    }
-
-    return rv;
-}
 
 @end

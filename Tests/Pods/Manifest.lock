@@ -2,7 +2,7 @@ PODS:
   - OCHamcrest (1.9)
   - OCMockito (0.23):
     - OCHamcrest
-  - Typhoon (1.5.2)
+  - Typhoon (1.5.3)
 
 DEPENDENCIES:
   - OCHamcrest (~> 1.9)
@@ -16,6 +16,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   OCHamcrest: f8393efd5a49d91879be573635d6183effacc0ab
   OCMockito: 01560fd24319b85c223e10f52e2e41fbe2c6d434
-  Typhoon: 05ed6ed9e5f3f2092613786c685e33e7dcf8669b
+  Typhoon: 486a9507a0d7d674e3dc023e77603fefd02aedd3
 
 COCOAPODS: 0.27.1

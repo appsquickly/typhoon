@@ -11,16 +11,18 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "Typhoon.h"
+#import "TyphoonXMLBuilder.h"
 
-@interface RXMLElement_SpringXmlComponentFactoryTests : SenTestCase
+@interface RXMLElement_XmlComponentFactory_AsComponentDefinitionTests : SenTestCase
 
 @property(nonatomic, strong) TyphoonRXMLElement* lazyElementTest;
 
 @end
 
-@implementation RXMLElement_SpringXmlComponentFactoryTests
+@implementation RXMLElement_XmlComponentFactory_AsComponentDefinitionTests
 {
     TyphoonRXMLElement* _element;
+    TyphoonRXMLElement* _parentElement;
 }
 
 - (void)setUp
@@ -131,5 +133,25 @@
     assertThatBool([def isLazy], is(@YES));
 }
 
+- (void)test_asComponentDefinition_no_parent
+{
+    TyphoonRXMLElement* vanillaDefinitionXML = [[TyphoonXMLBuilder vanillaDefinition] build];
+
+    TyphoonDefinition* def = [vanillaDefinitionXML asComponentDefinition];
+
+    assertThat(def, notNilValue());
+    assertThat([def parentRef], nilValue());
+}
+
+- (void)test_asComponentDefinition_parent
+{
+    id parentRef = @"parent";
+    TyphoonRXMLElement* childDefinitionXML = [[[TyphoonXMLBuilder vanillaDefinition] withAttribute:@"parent" textValue:parentRef] build];
+
+    TyphoonDefinition* def = [childDefinitionXML asComponentDefinition];
+
+    assertThat(def, notNilValue());
+    assertThat([def parentRef], equalTo(parentRef));
+}
 
 @end

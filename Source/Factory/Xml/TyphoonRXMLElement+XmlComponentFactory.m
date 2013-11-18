@@ -49,15 +49,15 @@
         NSString* factory = [self attributeOrNilIfEmpty:@"factory-component"];
         TyphoonScope scope = [self scopeForStringValue:[[self attribute:@"scope"] lowercaseString]];
         BOOL isLazy = (scope == TyphoonScopeSingleton)&&[self attributeAsBool:@"lazy-init"];
-        // Don't throw exception if a lazy init is set to a prototype.
-        // Even if the input is wrong, this won't set the definition
-        // in an unstable statement.
+
 
         TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key factoryComponent:factory];
         [definition setBeforePropertyInjection:NSSelectorFromString([self attribute:@"before-property-injection"])];
         [definition setAfterPropertyInjection:NSSelectorFromString([self attribute:@"after-property-injection"])];
         [definition setLazy:isLazy];
         [definition setScope:scope];
+        NSString* parentRef = [self attributeOrNilIfEmpty:@"parent"];
+        [definition setParentRef:parentRef];
         [self parseComponentDefinitionChildren:definition];
         return definition;
     }
@@ -234,7 +234,7 @@
     NSString* name = [child attribute:@"parameterName"];
     NSString* index = [child attribute:@"index"];
 
-    if (name&&index)
+    if (name && index)
     {
         [NSException raise:NSInvalidArgumentException format:@"'parameterName' and 'index' cannot be used together"];
     }
@@ -243,7 +243,7 @@
     NSString* value = [child attribute:@"value"];
     TyphoonRXMLElement* collection = [child child:@"collection"];
 
-    if (collection&&(reference||value))
+    if (collection && (reference || value))
     {
         [NSException raise:NSInvalidArgumentException format:@"'ref' or 'value' cannot be used on collections."];
     }
@@ -258,6 +258,8 @@
         {
             [initializer injectParameterAtIndex:[index integerValue] withReference:reference];
         }
+
+        // TODO: should raise an exception if no name or index specified. is NOT implicit with XML. but it shoudl be - you should not need to specify.
 
     }
     else if (value)
@@ -280,6 +282,8 @@
         {
             [initializer injectParameterAtIndex:[index integerValue] withValueAsText:value requiredTypeOrNil:clazz];
         }
+
+        // TODO: should raise exception instead of silently failing
 
     }
     else if (collection)

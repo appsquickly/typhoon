@@ -35,6 +35,8 @@
 #import "TyphoonInjectionAware.h"
 #import "TyphoonParameterInjectedAsCollection.h"
 #import "TyphoonInstanceRegister.h"
+#import "TyphoonDefinitionRegisterer.h"
+#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
@@ -44,11 +46,8 @@
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
     __autoreleasing id <TyphoonIntrospectiveNSObject> instance;
-
     instance = [self allocateInstance:instance withDefinition:definition];
-
     instance = [self injectInstance:instance withDefinition:definition];
-
     return instance;
 }
 
@@ -56,14 +55,18 @@
 {
     if (definition.factoryReference)
     {
+        // misleading - this is not the instance. this is an instance of a seperate class tnat will create the instance of the class we care about.
+        // consider it an allocator
         instance = [self componentForKey:definition.factoryReference]; // clears currently resolving.
     }
-    else if (definition.initializer&&definition.initializer.isClassMethod)
+    else if (definition.initializer && definition.initializer.isClassMethod)
     {
-        instance = [self invokeInitializerOn:definition.type withDefinition:definition];
+        // this is an instance of the class, needing no more init.
+        instance = [self invokeInitializer:definition.initializer on:definition.type];
     }
     else
     {
+        // this is an instance, needing later init.
         instance = [definition.type alloc];
     }
 
@@ -92,16 +95,46 @@
 
 - (id)initializerInjectionOn:(id)instance withDefinition:(TyphoonDefinition*)definition
 {
-    if (definition.initializer&&definition.initializer.isClassMethod == NO)
+    if (definition.initializer)
     {
-        instance = [self invokeInitializerOn:instance withDefinition:definition];
+        if (definition.initializer.isClassMethod == NO) {
+            instance = [self invokeInitializer:definition.initializer on:instance];
+        }else{
+            // initializer was already invoked in allocateInstance:withDefinition:
+        }
     }
     else if (definition.initializer == nil)
     {
-        instance = objc_msgSend(instance, @selector(init));
+        if ([self definitionHasParent:definition]) {
+            instance = [self initializerInjectionOn:instance withDefinition:[self parentForDefinition:definition]];
+        }else{
+            instance = [self invokeDefaultInitializerOn:instance];
+        }
     }
 
     return instance;
+}
+
+- (BOOL)definitionHasParent:(TyphoonDefinition*)definition
+{
+    return definition.parent || definition.parentRef;
+}
+
+- (TyphoonDefinition*)parentForDefinition:(TyphoonDefinition*)definition
+{
+    if (definition.parent) {
+        return definition.parent;
+    }else if (definition.parentRef) {
+        return [self definitionForKey:definition.parentRef];
+    }else{
+        return nil;
+    }
+}
+
+- (id)invokeDefaultInitializerOn:(id)instance
+{
+    id initializedInstance = objc_msgSend(instance, @selector(init));
+    return initializedInstance;
 }
 
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance;
@@ -172,7 +205,7 @@
 {
     if ([instance respondsToSelector:@selector(beforePropertiesSet)])
     {
-        [(id <TyphoonPropertyInjectionDelegate>) instance beforePropertiesSet];
+        [(id <TyphoonPropertyInjectionDelegate>)instance beforePropertiesSet];
     }
 
     if ([instance respondsToSelector:definition.beforePropertyInjection])
@@ -306,11 +339,12 @@
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (id)invokeInitializerOn:(id)instanceOrClass withDefinition:(TyphoonDefinition*)definition
+- (id)invokeInitializer:(TyphoonInitializer* )initializer on:(id)instanceOrClass
 {
-    NSInvocation* invocation = [definition.initializer asInvocationFor:instanceOrClass];
+    NSInvocation* invocation = [initializer asInvocationFor:instanceOrClass];
 
-    for (id <TyphoonInjectedParameter> parameter in [definition.initializer injectedParameters])
+    NSArray* injectedParameters = [initializer injectedParameters];
+    for (id <TyphoonInjectedParameter> parameter in injectedParameters)
     {
         if (parameter.type == TyphoonParameterInjectionTypeReference)
         {

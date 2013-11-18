@@ -16,6 +16,8 @@
 #import "TyphoonPropertyPlaceholderConfigurer.h"
 #import "TyphoonXmlComponentFactory.h"
 #import "Quest.h"
+#import "Knight.h"
+#import "CampaignQuest.h"
 
 @interface TyphoonXmlComponentFactoryTests : TyphoonSharedComponentFactoryTests
 @end

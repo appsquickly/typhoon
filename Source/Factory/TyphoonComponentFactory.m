@@ -142,17 +142,26 @@ static TyphoonComponentFactory* defaultFactory;
         return nil;
     }
 
-    if ([self notLoaded])
-    {[self load];}
+    [self loadIfNeeded];
+
     TyphoonDefinition* definition = [self definitionForKey:key];
     if (!definition)
     {
         [NSException raise:NSInvalidArgumentException format:@"No component matching id '%@'.", key];
     }
+
     return [self objectForDefinition:definition];
 }
 
-- (BOOL)notLoaded;
+- (void)loadIfNeeded
+{
+    if ([self notLoaded])
+    {
+        [self load];
+    }
+}
+
+- (BOOL)notLoaded
 {
     return ![self isLoaded];
 }
@@ -168,8 +177,8 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (NSArray*)registry
 {
-    if (![self isLoaded])
-    {[self load];}
+    [self loadIfNeeded];
+
     return [_registry copy];
 }
 

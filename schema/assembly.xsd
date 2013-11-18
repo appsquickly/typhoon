@@ -39,7 +39,6 @@
                     <xsd:element ref="component"/>
                     <xsd:any namespace="##other" processContents="strict" minOccurs="0" maxOccurs="unbounded"/>
                 </xsd:choice>
-                <!--<xsd:element ref="assembly" minOccurs="0" maxOccurs="unbounded"/>-->
             </xsd:sequence>
             <xsd:anyAttribute namespace="##other" processContents="lax"/>
         </xsd:complexType>
@@ -77,6 +76,7 @@
 				]]></xsd:documentation>
             </xsd:annotation>
         </xsd:attribute>
+
         <xsd:attribute name="scope">
             <xsd:annotation>
                 <xsd:documentation><![CDATA[
@@ -100,6 +100,17 @@
                 </xsd:restriction>
             </xsd:simpleType>
         </xsd:attribute>
+
+        <xsd:attribute name="parent" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation>
+                    <![CDATA[
+                        A reference to a component definition to inherit from.
+                    ]]>
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+
         <xsd:attribute name="before-property-injection" type="xsd:string">
             <xsd:annotation>
                 <xsd:documentation><![CDATA[

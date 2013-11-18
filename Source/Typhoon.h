@@ -13,6 +13,7 @@
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonInitializer.h"
 #import "TyphoonPropertyPlaceholderConfigurer.h"
+#import "TyphoonFactoryProvider.h"
 #import "TyphoonResource.h"
 #import "TyphoonBundleResource.h"
 #import "TyphoonComponentFactory.h"
