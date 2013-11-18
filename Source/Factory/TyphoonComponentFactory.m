@@ -186,6 +186,9 @@ static TyphoonComponentFactory* defaultFactory;
 {
     LogTrace(@"Attaching post processor: %@", postProcessor);
     [_postProcessors addObject:postProcessor];
+    if ([self isLoaded]) {
+        [self unload];
+    }
 }
 
 - (void)injectProperties:(id)instance
