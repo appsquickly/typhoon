@@ -187,6 +187,7 @@ static TyphoonComponentFactory* defaultFactory;
     LogTrace(@"Attaching post processor: %@", postProcessor);
     [_postProcessors addObject:postProcessor];
     if ([self isLoaded]) {
+        LogDebug(@"Definitions registered, refreshing all singletons");
         [self unload];
     }
 }
