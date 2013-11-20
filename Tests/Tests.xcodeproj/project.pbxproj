@@ -237,6 +237,12 @@
 		75AB500AD2436D305C0E1B37 /* TyphoonXMLBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB58BCF87EC527F127BCA0 /* TyphoonXMLBuilder.m */; };
 		75AB5105A442B91C8829135E /* TyphoonBlockComponentFactory_OverridingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5106A7430A8EF5A6A292 /* TyphoonBlockComponentFactory_OverridingTests.m */; };
 		75AB5157197D6CD701F214A6 /* TyphoonXMLBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB58BCF87EC527F127BCA0 /* TyphoonXMLBuilder.m */; };
+		65FB9412183BD5330038FCA5 /* TyphoonAssistedFactoryMethodInitializerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FB9411183BD5330038FCA5 /* TyphoonAssistedFactoryMethodInitializerTest.m */; };
+		65FB9413183BD5330038FCA5 /* TyphoonAssistedFactoryMethodInitializerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FB9411183BD5330038FCA5 /* TyphoonAssistedFactoryMethodInitializerTest.m */; };
+		65FB9414183BD5330038FCA5 /* TyphoonAssistedFactoryMethodInitializerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FB9411183BD5330038FCA5 /* TyphoonAssistedFactoryMethodInitializerTest.m */; };
+		75AB5046A1D17196768A721A /* DefinitionInheritanceAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 75AB518FA6E12B0CBF01B9F2 /* DefinitionInheritanceAssembly.xml */; };
+		75AB507EAF7EB9829C0C60C5 /* Widget.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5D2539493CC97348B566 /* Widget.m */; };
+		75AB514A004B147AC59D8C23 /* DefinitionInheritanceAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5F9A45E27B20DA83B14C /* DefinitionInheritanceAssembly.m */; };
 		75AB5233D0F2BE7BD35F21E6 /* SomeResource in Resources */ = {isa = PBXBuildFile; fileRef = 75AB51A490B3C70B90B70509 /* SomeResource */; };
 		75AB524F2957B86EAAF2FA4C /* SomeResource in Resources */ = {isa = PBXBuildFile; fileRef = 75AB51A490B3C70B90B70509 /* SomeResource */; };
 		75AB5318F0AF9702FAB20ABC /* TyphoonBlockComponentFactory_CollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5BEC7AD65A916F7BB3A4 /* TyphoonBlockComponentFactory_CollectionTests.m */; };
@@ -428,6 +434,7 @@
 		657096A9183147D600C10DA4 /* PizzaImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PizzaImpl.h; sourceTree = "<group>"; };
 		657096AA183147D600C10DA4 /* PizzaImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PizzaImpl.m; sourceTree = "<group>"; };
 		657096AE1831480700C10DA4 /* PizzaFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PizzaFactory.h; sourceTree = "<group>"; };
+		65FB9411183BD5330038FCA5 /* TyphoonAssistedFactoryMethodInitializerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssistedFactoryMethodInitializerTest.m; sourceTree = "<group>"; };
 		75AB50AE37854D669642EAB6 /* ErrandQuest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrandQuest.h; sourceTree = "<group>"; };
 		75AB5106A7430A8EF5A6A292 /* TyphoonBlockComponentFactory_OverridingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonBlockComponentFactory_OverridingTests.m; sourceTree = "<group>"; };
 		75AB51A490B3C70B90B70509 /* SomeResource */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SomeResource; sourceTree = "<group>"; };
@@ -852,6 +859,7 @@
 				657096901831449000C10DA4 /* TyphoonFactoryProviderTest.m */,
 				6570968C18313F2A00C10DA4 /* TyphoonAssistedFactoryDefinitionTest.m */,
 				6570968818313C3500C10DA4 /* TyphoonAssistedFactoryBaseTest.m */,
+				65FB9411183BD5330038FCA5 /* TyphoonAssistedFactoryMethodInitializerTest.m */,
 			);
 			path = FactoryProvider;
 			sourceTree = "<group>";
@@ -1193,6 +1201,7 @@
 			files = (
 				4B8414E9179B0EA600916BF5 /* ClassWithCollectionProperties.m in Sources */,
 				4B8414EB179B0EA600916BF5 /* TyphoonPropertyInjectedAsCollectionTests.m in Sources */,
+				65FB9412183BD5330038FCA5 /* TyphoonAssistedFactoryMethodInitializerTest.m in Sources */,
 				4B8414ED179B0EA600916BF5 /* TyphoonDefinitionTests.m in Sources */,
 				4B8414EF179B0EA600916BF5 /* CircularDependenciesAssembly.m in Sources */,
 				4B8414F1179B0EA600916BF5 /* ExceptionTestAssembly.m in Sources */,
@@ -1312,6 +1321,7 @@
 				4E08794817B6762E004B86C9 /* NotSingletonA.m in Sources */,
 				657096A51831472300C10DA4 /* PaymentImpl.m in Sources */,
 				657096921831449000C10DA4 /* TyphoonFactoryProviderTest.m in Sources */,
+				65FB9413183BD5330038FCA5 /* TyphoonAssistedFactoryMethodInitializerTest.m in Sources */,
 				46877CFB17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */,
 				4E47A45917D8E1C700F967CA /* PrototypeInitInjected.m in Sources */,
 				4E47A45E17D8E1DC00F967CA /* PrototypePropertyInjected.m in Sources */,
@@ -1345,6 +1355,7 @@
 			files = (
 				4BC648C217A20AD2007F0463 /* ClassWithCollectionProperties.m in Sources */,
 				4BC648C317A20AD2007F0463 /* TyphoonPropertyInjectedAsCollectionTests.m in Sources */,
+				65FB9414183BD5330038FCA5 /* TyphoonAssistedFactoryMethodInitializerTest.m in Sources */,
 				4BC648C417A20AD2007F0463 /* TyphoonDefinitionTests.m in Sources */,
 				4BC648C517A20AD2007F0463 /* CircularDependenciesAssembly.m in Sources */,
 				4BC648C617A20AD2007F0463 /* ExceptionTestAssembly.m in Sources */,

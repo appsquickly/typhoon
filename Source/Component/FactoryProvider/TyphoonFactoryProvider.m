@@ -14,6 +14,7 @@
 #import <objc/runtime.h>
 
 #import "TyphoonAssistedFactoryBase.h"
+#import "TyphoonAssistedFactoryMethodCreator.h"
 
 @implementation TyphoonFactoryProvider
 
@@ -102,31 +103,10 @@ static void AddPropertiesToFactory(Class factoryClass, Protocol *protocol)
 
 static void AddFactoryMethodsToFactory(Class factoryClass, Protocol *protocol, TyphoonAssistedFactoryDefinition *definition)
 {
-    unsigned int methodCount = 0;
-    struct objc_method_description *methodDescriptions = protocol_copyMethodDescriptionList(protocol, YES, YES, &methodCount);
-
-    NSCAssert(methodCount > 0, @"protocol method count must be at least one");
-    [definition enumerateFactoryMethods:^(SEL name, id body) {
-        // Search for the right obcj_method_description
-        struct objc_method_description methodDescription;
-        BOOL found = NO;
-        for (unsigned int idx = 0; idx < methodCount; idx++)
-        {
-            methodDescription = methodDescriptions[idx];
-            if (methodDescription.name == name)
-            {
-                found = YES;
-                break;
-            }
-        }
-        NSCAssert(found, @"protocol doesn't support factory method with name %@", NSStringFromSelector(name));
-
-        // Here the method description is valid
-        IMP methodIMP = imp_implementationWithBlock(body);
-        class_addMethod(factoryClass, methodDescription.name, methodIMP, methodDescription.types);
+    [definition enumerateFactoryMethods:^(id<TyphoonAssistedFactoryMethod> factoryMethod) {
+        [[TyphoonAssistedFactoryMethodCreator creatorFor:factoryMethod]
+         createFromProtocol:protocol inClass:factoryClass];
     }];
-
-    free(methodDescriptions);
 }
 
 static SEL GuessFactoryMethodForProtocol(Protocol *protocol)

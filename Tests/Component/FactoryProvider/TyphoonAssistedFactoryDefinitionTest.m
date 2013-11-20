@@ -12,6 +12,8 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "TyphoonAssistedFactoryDefinition.h"
 
+#import "TyphoonAssistedFactoryMethodBlock.h"
+
 @interface TyphoonAssistedFactoryDefinitionTest : SenTestCase
 @end
 
@@ -57,7 +59,7 @@
 {
   __block int count = 0;
 
-  [factoryDefinition enumerateFactoryMethods:^(SEL name, id body) {
+  [factoryDefinition enumerateFactoryMethods:^(id<TyphoonAssistedFactoryMethod> factoryMethod) {
     count += 1;
   }];
 
@@ -71,7 +73,7 @@
   [factoryDefinition factoryMethod:@selector(wadusWithWadus:andWadus:) body:^{}];
   __block int count = 0;
 
-  [factoryDefinition enumerateFactoryMethods:^(SEL name, id body) {
+  [factoryDefinition enumerateFactoryMethods:^(id<TyphoonAssistedFactoryMethod> factoryMethod) {
     count += 1;
   }];
 
@@ -83,8 +85,8 @@
   SEL selector = @selector(wadusWithWadus:andWadus:);
   [factoryDefinition factoryMethod:selector body:^{}];
 
-  [factoryDefinition enumerateFactoryMethods:^(SEL name, id body) {
-    assertThat(NSStringFromSelector(name), is(@"wadusWithWadus:andWadus:"));
+  [factoryDefinition enumerateFactoryMethods:^(id<TyphoonAssistedFactoryMethod> factoryMethod) {
+    assertThat(NSStringFromSelector(factoryMethod.factoryMethod), is(@"wadusWithWadus:andWadus:"));
   }];
 }
 
@@ -96,8 +98,8 @@
 
   [factoryDefinition factoryMethod:@selector(wadus) body:bodyBlock];
 
-  [factoryDefinition enumerateFactoryMethods:^(SEL name, id body) {
-    assertThat(body, is(bodyBlock));
+  [factoryDefinition enumerateFactoryMethods:^(TyphoonAssistedFactoryMethodBlock *factoryMethod) {
+    assertThat(factoryMethod.bodyBlock, is(bodyBlock));
   }];
 }
 

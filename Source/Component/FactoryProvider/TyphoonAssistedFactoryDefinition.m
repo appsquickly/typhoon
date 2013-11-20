@@ -11,8 +11,10 @@
 
 #import "TyphoonAssistedFactoryDefinition.h"
 
-@implementation TyphoonAssistedFactoryDefinition
+#import "TyphoonAssistedFactoryMethodBlock.h"
+#import "TyphoonAssistedFactoryMethodInitializer.h"
 
+@implementation TyphoonAssistedFactoryDefinition
 {
 	NSMutableArray *_factoryMethods;
 }
@@ -40,14 +42,23 @@
 
 - (void)factoryMethod:(SEL)name body:(id)bodyBlock
 {
-	[_factoryMethods addObject:@[NSStringFromSelector(name), bodyBlock]];
+    TyphoonAssistedFactoryMethodBlock *method = [[TyphoonAssistedFactoryMethodBlock alloc] initWithFactoryMethod:name body:bodyBlock];
+	[_factoryMethods addObject:method];
+}
+
+- (void)factoryMethod:(SEL)name returns:(Class)returnType initialization:(TyphoonAssistedFactoryInitializerBlock)initialization
+{
+    TyphoonAssistedFactoryMethodInitializer *initializer = [[TyphoonAssistedFactoryMethodInitializer alloc] initWithFactoryMethod:name returnType:returnType];
+    initialization(initializer);
+
+    [_factoryMethods addObject:initializer];
 }
 
 - (void)enumerateFactoryMethods:(TyphoonAssistedFactoryMethodsEnumerationBlock)enumerationBlock
 {
-	for (NSArray *factoryMethodPair in _factoryMethods)
+	for (id<TyphoonAssistedFactoryMethod> factoryMethod in _factoryMethods)
 	{
-		enumerationBlock(NSSelectorFromString(factoryMethodPair[0]), factoryMethodPair[1]);
+		enumerationBlock(factoryMethod);
 	}
 }
 

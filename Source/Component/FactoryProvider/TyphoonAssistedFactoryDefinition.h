@@ -11,13 +11,15 @@
 
 #import <Foundation/Foundation.h>
 
+#import "TyphoonAssistedFactoryMethodInitializer.h"
+
 @class TyphoonAssistedFactoryDefinition;
 
 /** Used to configure the TyphoonAssistedFactoryDefinition passed as argument */
 typedef void(^TyphoonAssistedFactoryDefinitionBlock)(TyphoonAssistedFactoryDefinition *definition);
 
 /** Used to enumerate over factory method selectors and their associated body blocks */
-typedef void(^TyphoonAssistedFactoryMethodsEnumerationBlock)(SEL name, id body);
+typedef void(^TyphoonAssistedFactoryMethodsEnumerationBlock)(id<TyphoonAssistedFactoryMethod> factoryMethod);
 
 @interface TyphoonAssistedFactoryDefinition : NSObject
 
@@ -29,6 +31,8 @@ typedef void(^TyphoonAssistedFactoryMethodsEnumerationBlock)(SEL name, id body);
  * and following arguments.
  */
 - (void)factoryMethod:(SEL)name body:(id)bodyBlock;
+
+- (void)factoryMethod:(SEL)name returns:(Class)returnType initialization:(TyphoonAssistedFactoryInitializerBlock)initialization;
 
 #pragma mark - Internal methods
 
