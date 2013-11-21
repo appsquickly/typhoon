@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-11-20</td>
+            <td class="headerValue">2013-11-22</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -88,17 +88,17 @@
 <span class="lineNum">      30 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      31 </span>            : #pragma mark - Class Methods
 <span class="lineNum">      32 </span>            : 
-<span class="lineNum">      33 </span><span class="lineCov">        103 : + (TyphoonTypeConverterRegistry*)shared</span>
+<span class="lineNum">      33 </span><span class="lineCov">        104 : + (TyphoonTypeConverterRegistry*)shared</span>
 <span class="lineNum">      34 </span>            : {
 <span class="lineNum">      35 </span>            :     static dispatch_once_t onceToken;
 <span class="lineNum">      36 </span>            :     static TyphoonTypeConverterRegistry* instance;
 <span class="lineNum">      37 </span>            : 
-<span class="lineNum">      38 </span><span class="lineCov">        104 :     dispatch_once(&amp;onceToken, ^</span>
+<span class="lineNum">      38 </span><span class="lineCov">        105 :     dispatch_once(&amp;onceToken, ^</span>
 <span class="lineNum">      39 </span><span class="lineCov">          1 :     {</span>
 <span class="lineNum">      40 </span><span class="lineCov">          1 :         instance = [[[self class] alloc] init];</span>
 <span class="lineNum">      41 </span><span class="lineCov">          2 :     });</span>
-<span class="lineNum">      42 </span><span class="lineCov">        103 :     return instance;</span>
-<span class="lineNum">      43 </span><span class="lineCov">        103 : }</span>
+<span class="lineNum">      42 </span><span class="lineCov">        104 :     return instance;</span>
+<span class="lineNum">      43 </span><span class="lineCov">        104 : }</span>
 <span class="lineNum">      44 </span>            : 
 <span class="lineNum">      45 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      46 </span>            : #pragma mark - Initialization &amp; Destruction
@@ -136,10 +136,10 @@
 <span class="lineNum">      78 </span><span class="lineCov">         42 :     return converter;</span>
 <span class="lineNum">      79 </span><span class="lineCov">         42 : }</span>
 <span class="lineNum">      80 </span>            : 
-<span class="lineNum">      81 </span><span class="lineCov">         58 : - (TyphoonPrimitiveTypeConverter*)primitiveTypeConverter</span>
+<span class="lineNum">      81 </span><span class="lineCov">         59 : - (TyphoonPrimitiveTypeConverter*)primitiveTypeConverter</span>
 <span class="lineNum">      82 </span>            : {
-<span class="lineNum">      83 </span><span class="lineCov">         58 :     return _primitiveTypeConverter;</span>
-<span class="lineNum">      84 </span><span class="lineCov">         58 : }</span>
+<span class="lineNum">      83 </span><span class="lineCov">         59 :     return _primitiveTypeConverter;</span>
+<span class="lineNum">      84 </span><span class="lineCov">         59 : }</span>
 <span class="lineNum">      85 </span>            : 
 <span class="lineNum">      86 </span><span class="lineCov">          5 : - (void)register:(id &lt;TyphoonTypeConverter&gt;)converter forClassOrProtocol:(id)classOrProtocol;</span>
 <span class="lineNum">      87 </span>            : {
