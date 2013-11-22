@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-11-22</td>
+            <td class="headerValue">2013-11-23</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -79,19 +79,19 @@
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            : @implementation NSObject (TyphoonIntrospectionUtils)
 <span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineCov">        190 : - (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName;</span>
+<span class="lineNum">      24 </span><span class="lineCov">        189 : - (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName;</span>
 <span class="lineNum">      25 </span>            : {
-<span class="lineNum">      26 </span><span class="lineCov">        190 :     return [TyphoonIntrospectionUtils typeForPropertyWithName:propertyName inClass:[self class]];</span>
-<span class="lineNum">      27 </span><span class="lineCov">        190 : }</span>
+<span class="lineNum">      26 </span><span class="lineCov">        189 :     return [TyphoonIntrospectionUtils typeForPropertyWithName:propertyName inClass:[self class]];</span>
+<span class="lineNum">      27 </span><span class="lineCov">        189 : }</span>
 <span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span><span class="lineCov">        187 : - (SEL)setterForPropertyWithName:(NSString*)propertyName</span>
+<span class="lineNum">      29 </span><span class="lineCov">        186 : - (SEL)setterForPropertyWithName:(NSString*)propertyName</span>
 <span class="lineNum">      30 </span>            : {
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">        187 :     NSString* firstLetterUppercase = [[propertyName substringToIndex:1] uppercaseString];</span>
-<span class="lineNum">      33 </span><span class="lineCov">        187 :     NSString* propertyPart = [propertyName stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:firstLetterUppercase];</span>
-<span class="lineNum">      34 </span><span class="lineCov">        187 :     NSString* selectorName = [NSString stringWithFormat:@&quot;set%@:&quot;, propertyPart];</span>
-<span class="lineNum">      35 </span><span class="lineCov">        187 :     SEL selector = NSSelectorFromString(selectorName); //It's crashing here, not the next line.</span>
-<span class="lineNum">      36 </span><span class="lineCov">        187 :     if (![self respondsToSelector:selector])</span>
+<span class="lineNum">      32 </span><span class="lineCov">        186 :     NSString* firstLetterUppercase = [[propertyName substringToIndex:1] uppercaseString];</span>
+<span class="lineNum">      33 </span><span class="lineCov">        186 :     NSString* propertyPart = [propertyName stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:firstLetterUppercase];</span>
+<span class="lineNum">      34 </span><span class="lineCov">        186 :     NSString* selectorName = [NSString stringWithFormat:@&quot;set%@:&quot;, propertyPart];</span>
+<span class="lineNum">      35 </span><span class="lineCov">        186 :     SEL selector = NSSelectorFromString(selectorName); //It's crashing here, not the next line.</span>
+<span class="lineNum">      36 </span><span class="lineCov">        186 :     if (![self respondsToSelector:selector])</span>
 <span class="lineNum">      37 </span>            :     {
 <span class="lineNum">      38 </span><span class="lineCov">          1 :         if ([self respondsToSelector:NSSelectorFromString(propertyName)])</span>
 <span class="lineNum">      39 </span>            :         {
@@ -102,8 +102,8 @@
 <span class="lineNum">      44 </span><span class="lineNoCov">          0 :             [NSException raise:NSInvalidArgumentException format:@&quot;No setter named '%@' on class '%@'.&quot;, selectorName, [self class]];</span>
 <span class="lineNum">      45 </span>            :         }
 <span class="lineNum">      46 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      47 </span><span class="lineCov">        186 :     return selector;</span>
-<span class="lineNum">      48 </span><span class="lineCov">        186 : }</span>
+<span class="lineNum">      47 </span><span class="lineCov">        185 :     return selector;</span>
+<span class="lineNum">      48 </span><span class="lineCov">        185 : }</span>
 <span class="lineNum">      49 </span>            : 
 <span class="lineNum">      50 </span><span class="lineCov">       2892 : - (NSArray*)parameterNamesForSelector:(SEL)selector</span>
 <span class="lineNum">      51 </span>            : {
