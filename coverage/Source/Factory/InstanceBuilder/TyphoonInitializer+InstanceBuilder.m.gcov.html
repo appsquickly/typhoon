@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-11-23</td>
+            <td class="headerValue">2013-11-24</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -119,11 +119,11 @@
 <span class="lineNum">      61 </span><span class="lineCov">        122 : }</span>
 <span class="lineNum">      62 </span>            : 
 <span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span><span class="lineCov">       2607 : - (void)setComponentDefinition:(TyphoonDefinition*)definition</span>
+<span class="lineNum">      64 </span><span class="lineCov">       2605 : - (void)setComponentDefinition:(TyphoonDefinition*)definition</span>
 <span class="lineNum">      65 </span>            : {
-<span class="lineNum">      66 </span><span class="lineCov">       2607 :     _definition = definition;</span>
-<span class="lineNum">      67 </span><span class="lineCov">       2607 :     [self resolveIsClassMethod];</span>
-<span class="lineNum">      68 </span><span class="lineCov">       2607 : }</span>
+<span class="lineNum">      66 </span><span class="lineCov">       2605 :     _definition = definition;</span>
+<span class="lineNum">      67 </span><span class="lineCov">       2605 :     [self resolveIsClassMethod];</span>
+<span class="lineNum">      68 </span><span class="lineCov">       2605 : }</span>
 <span class="lineNum">      69 </span>            : 
 <span class="lineNum">      70 </span><span class="lineNoCov">          0 : - (NSString*)description</span>
 <span class="lineNum">      71 </span>            : {
@@ -138,9 +138,9 @@
 <span class="lineNum">      80 </span>            : 
 <span class="lineNum">      81 </span>            : 
 <span class="lineNum">      82 </span>            : /* ============================================================ Private Methods ========================================================= */
-<span class="lineNum">      83 </span><span class="lineCov">       2971 : - (BOOL)resolveIsClassMethod</span>
+<span class="lineNum">      83 </span><span class="lineCov">       2969 : - (BOOL)resolveIsClassMethod</span>
 <span class="lineNum">      84 </span>            : {
-<span class="lineNum">      85 </span><span class="lineCov">       2971 :     if (_definition.factoryReference)</span>
+<span class="lineNum">      85 </span><span class="lineCov">       2969 :     if (_definition.factoryReference)</span>
 <span class="lineNum">      86 </span>            :     {
 <span class="lineNum">      87 </span><span class="lineCov">         30 :         if (_isClassMethodStrategy == TyphoonComponentInitializerIsClassMethodYes)</span>
 <span class="lineNum">      88 </span>            :         {
@@ -152,20 +152,20 @@
 <span class="lineNum">      94 </span>            :         }
 <span class="lineNum">      95 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      96 </span>            : 
-<span class="lineNum">      97 </span><span class="lineCov">       5912 :     switch (_isClassMethodStrategy)</span>
+<span class="lineNum">      97 </span><span class="lineCov">       5908 :     switch (_isClassMethodStrategy)</span>
 <span class="lineNum">      98 </span>            :     {
 <span class="lineNum">      99 </span>            :         case TyphoonComponentInitializerIsClassMethodNo:
 <span class="lineNum">     100 </span><span class="lineCov">          8 :             return NO;</span>
 <span class="lineNum">     101 </span>            :         case TyphoonComponentInitializerIsClassMethodYes:
 <span class="lineNum">     102 </span><span class="lineCov">         28 :             return YES;</span>
 <span class="lineNum">     103 </span>            :         case TyphoonComponentInitializerIsClassMethodGuess:
-<span class="lineNum">     104 </span><span class="lineCov">       2905 :             return [self selectorDoesNotStartWithInit];</span>
+<span class="lineNum">     104 </span><span class="lineCov">       2903 :             return [self selectorDoesNotStartWithInit];</span>
 <span class="lineNum">     105 </span>            :     }
-<span class="lineNum">     106 </span><span class="lineCov">       2971 : }</span>
+<span class="lineNum">     106 </span><span class="lineCov">       2969 : }</span>
 <span class="lineNum">     107 </span>            : 
-<span class="lineNum">     108 </span><span class="lineCov">       2905 : - (BOOL)selectorDoesNotStartWithInit</span>
+<span class="lineNum">     108 </span><span class="lineCov">       2903 : - (BOOL)selectorDoesNotStartWithInit</span>
 <span class="lineNum">     109 </span>            : {
-<span class="lineNum">     110 </span><span class="lineCov">       2905 :     return ![NSStringFromSelector(_selector) hasPrefix:@&quot;init&quot;];</span>
+<span class="lineNum">     110 </span><span class="lineCov">       2903 :     return ![NSStringFromSelector(_selector) hasPrefix:@&quot;init&quot;];</span>
 <span class="lineNum">     111 </span>            : }
 <span class="lineNum">     112 </span>            : 
 <span class="lineNum">     113 </span>            : @end
