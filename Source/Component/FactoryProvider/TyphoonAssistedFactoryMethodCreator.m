@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonAssistedFactoryMethodCreator.h"
+#import "TyphoonAssistedFactoryMethodCreator+Private.h"
 
 #import "TyphoonAssistedFactoryMethodBlock.h"
 #import "TyphoonAssistedFactoryMethodInitializer.h"
@@ -24,7 +25,7 @@
     if ([factoryMethod isKindOfClass:[TyphoonAssistedFactoryMethodBlock class]]) {
         return [[TyphoonAssistedFactoryMethodBlockCreator alloc]
                 initWithFactoryMethod:factoryMethod];
-    } else if ([factoryMethod isKindOfClass:[TyphoonAssistedFactoryMethodBlock class]]) {
+    } else if ([factoryMethod isKindOfClass:[TyphoonAssistedFactoryMethodInitializer class]]) {
         return [[TyphoonAssistedFactoryMethodInitializerCreator alloc]
                 initWithFactoryMethod:factoryMethod];
     } else {
@@ -50,6 +51,29 @@
             exceptionWithName:NSInternalInconsistencyException
             reason:@"You should not create instances of TyphoonAssistedFactoryMethodCreator directly"
             userInfo:nil];
+}
+
+- (struct objc_method_description)methodDescriptionFor:(SEL)methodName inProtocol:(Protocol *)protocol
+{
+    unsigned int methodCount = 0;
+    struct objc_method_description *methodDescriptions = protocol_copyMethodDescriptionList(protocol, YES, YES, &methodCount);
+
+    // Search for the right obcj_method_description
+    struct objc_method_description methodDescription;
+    BOOL found = NO;
+    for (unsigned int idx = 0; idx < methodCount; idx++)
+    {
+        methodDescription = methodDescriptions[idx];
+        if (methodDescription.name == methodName)
+        {
+            found = YES;
+            break;
+        }
+    }
+    NSCAssert(found, @"protocol doesn't support factory method with name %@", NSStringFromSelector(methodName));
+    free(methodDescriptions);
+
+    return methodDescription;
 }
 
 @end

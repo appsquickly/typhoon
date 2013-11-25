@@ -306,6 +306,7 @@
 		4EF180EC17E1F6100011F4D4 /* TyphoonInstanceRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TyphoonInstanceRegister.h; path = InstanceRegister/TyphoonInstanceRegister.h; sourceTree = "<group>"; };
 		4EF180EF17E1F6180011F4D4 /* TyphoonKeyedStackInstanceRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TyphoonKeyedStackInstanceRegister.h; path = InstanceRegister/TyphoonKeyedStackInstanceRegister.h; sourceTree = "<group>"; };
 		4EF180F017E1F6180011F4D4 /* TyphoonKeyedStackInstanceRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TyphoonKeyedStackInstanceRegister.m; path = InstanceRegister/TyphoonKeyedStackInstanceRegister.m; sourceTree = "<group>"; };
+		6519B390183E5C8800DB0B60 /* TyphoonAssistedFactoryMethodCreator+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TyphoonAssistedFactoryMethodCreator+Private.h"; sourceTree = "<group>"; };
 		6570967518312DC000C10DA4 /* TyphoonFactoryProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonFactoryProvider.h; sourceTree = "<group>"; };
 		6570967618312DC000C10DA4 /* TyphoonFactoryProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonFactoryProvider.m; sourceTree = "<group>"; };
 		6570967B18312EE500C10DA4 /* TyphoonAssistedFactoryDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssistedFactoryDefinition.h; sourceTree = "<group>"; };
@@ -564,6 +565,7 @@
 				65E6F281183918B900CD58F7 /* TyphoonAssistedFactoryParameterInjectedWithArgumentIndex.h */,
 				65E6F282183918B900CD58F7 /* TyphoonAssistedFactoryParameterInjectedWithArgumentIndex.m */,
 				65FB941C183BF2D30038FCA5 /* TyphoonAssistedFactoryMethodCreator.h */,
+				6519B390183E5C8800DB0B60 /* TyphoonAssistedFactoryMethodCreator+Private.h */,
 				65FB941D183BF2D30038FCA5 /* TyphoonAssistedFactoryMethodCreator.m */,
 				65DD3028183D1A6C00FD1134 /* TyphoonAssistedFactoryMethodBlockCreator.h */,
 				65DD3029183D1A6C00FD1134 /* TyphoonAssistedFactoryMethodBlockCreator.m */,
