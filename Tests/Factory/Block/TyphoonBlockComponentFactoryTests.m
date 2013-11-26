@@ -89,6 +89,32 @@
     assertThat(knight.quest, instanceOf([CampaignQuest class]));
 }
 
+- (void)test_allows_initialization_with_a_hardcoded_collection_of_assemblies
+{
+    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
+            [MiddleAgesAssembly assembly],
+            [CollaboratingMiddleAgesAssembly assembly],
+    ]];
+
+    Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalHardcodedQuest];
+    LogDebug(@"Knight: %@", knight);
+    assertThat(knight, notNilValue());
+    assertThat(knight.quest, instanceOf([CampaignQuest class]));
+}
+
+- (void)test_allows_initialization_with_a_hardcoded_collection_of_assemblies_in_any_order
+{
+    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
+            [CollaboratingMiddleAgesAssembly assembly],
+            [MiddleAgesAssembly assembly],
+    ]];
+
+    Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalHardcodedQuest];
+    LogDebug(@"Knight: %@", knight);
+    assertThat(knight, notNilValue());
+    assertThat(knight.quest, instanceOf([CampaignQuest class]));
+}
+
 - (void)test_allows_overriding_methods_in_an_assembly
 {
     TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[

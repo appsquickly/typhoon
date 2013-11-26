@@ -22,4 +22,5 @@
 
 - (id)knightWithExternalQuest;
 
+- (id)knightWithExternalHardcodedQuest;
 @end
