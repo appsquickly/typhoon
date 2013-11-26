@@ -104,7 +104,6 @@
 
 - (void)postProcessComponentFactory:(TyphoonComponentFactory*)factory
 {
-
     for (TyphoonDefinition* definition in [factory registry])
     {
         for (id <TyphoonComponentInjectedByValue> component in [definition componentsInjectedByValue])
@@ -116,7 +115,7 @@
 
 - (void)mutateComponentInjectedByValue:(id <TyphoonComponentInjectedByValue>)component;
 {
-    if ([component.textValue hasPrefix:_prefix]&&[component.textValue hasSuffix:_suffix])
+    if ([component.textValue hasPrefix:_prefix] && [component.textValue hasSuffix:_suffix])
     {
         NSString* key = [component.textValue substringFromIndex:[_prefix length]];
         key = [key substringToIndex:[key length] - [_suffix length]];
