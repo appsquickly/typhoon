@@ -14,6 +14,7 @@
 
 @class TyphoonDefinition;
 @class TyphoonParameterInjectedAsCollection;
+@protocol TyphoonLogger;
 
 typedef enum
 {
@@ -35,6 +36,8 @@ typedef enum
 }
 
 @property(nonatomic) SEL selector;
+
+@property(nonatomic, strong) id <TyphoonLogger> logger;
 
 - (id)initWithSelector:(SEL)initializer;
 

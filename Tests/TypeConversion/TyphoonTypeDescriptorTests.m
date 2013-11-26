@@ -136,6 +136,12 @@ typedef struct
     assertThat([parameterNames objectAtIndex:0], equalTo(@"string"));
 }
 
+- (void)test_parameterNamesForSelector_no_parameters_method
+{
+   NSArray* parameterNames = [self parameterNamesForSelector:@selector(init)];
+   assertThat(parameterNames, empty());
+}
+
 - (void)test_typeCodesForSelectorWithName
 {
     Knight* knight = [[Knight alloc] initWithQuest:nil damselsRescued:0];

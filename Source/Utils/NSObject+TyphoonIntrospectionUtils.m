@@ -15,6 +15,7 @@
 #import <objc/runtime.h>
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonIntrospectionUtils.h"
+#import "NSString+TyphoonAdditions.h"
 
 
 static char const* const CIRCULAR_DEPENDENCIES_KEY = "typhoon.injectLater";
@@ -49,6 +50,10 @@ static char const* const CIRCULAR_DEPENDENCIES_KEY = "typhoon.injectLater";
 
 - (NSArray*)parameterNamesForSelector:(SEL)selector
 {
+    if ([NSStringFromSelector(selector) _typhoon_contains:@":"] == NO) {
+        return @[];
+    }
+
     NSMutableArray* parameterNames = [[NSMutableArray alloc] init];
     NSArray* parameters = [NSStringFromSelector(selector) componentsSeparatedByString:@":"];
     for (int i = 0; i < [parameters count]; i++)
@@ -61,7 +66,7 @@ static char const* const CIRCULAR_DEPENDENCIES_KEY = "typhoon.injectLater";
         if ([parameterName length] > 0)
         {
             parameterName = [parameterName stringByReplacingCharactersInRange:NSMakeRange(0, 1)
-                    withString:[[parameterName substringToIndex:1] lowercaseString]];
+                    withString:[[parameterName substringToIndex:1] lowercaseString]]; // lowercase the first letter
             [parameterNames addObject:parameterName];
         }
     }

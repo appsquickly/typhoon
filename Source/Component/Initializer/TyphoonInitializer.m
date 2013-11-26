@@ -18,6 +18,8 @@
 #import "TyphoonParameterInjectedWithObjectInstance.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonParameterInjectedAsCollection.h"
+#import "TyphoonLogger.h"
+#import "TyphoonOCLogTemplateLogger.h"
 
 @implementation TyphoonInitializer
 
@@ -38,6 +40,8 @@
         _injectedParameters = [[NSMutableArray alloc] init];
         _isClassMethodStrategy = isClassMethod;
         self.selector = initializer;
+
+        self.logger = [[TyphoonOCLogTemplateLogger alloc] init];
     }
     return self;
 }
@@ -119,7 +123,51 @@
 
 - (void)injectParameterNamed:(NSString*)name withObject:(id)value
 {
-    [self injectParameterAtIndex:[self indexOfParameter:name] withObject:value];
+    NSInteger index = [self indexOfParameter:name];
+    if (index == NSIntegerMax) {
+        [self logParameterNotFound:name];
+        return;
+    }
+
+    [self injectParameterAtIndex:index withObject:value];
+}
+
+- (void)logParameterNotFound:(NSString*)name
+{
+    if ([_parameterNames count] > 0) {
+        NSString *failureExplanation = [NSString stringWithFormat:@"Unrecognized parameter name: '%@' for method '%@'.", name, NSStringFromSelector([self selector])];
+        NSString *recoverySuggestion = [self recoverySuggestionForMissingParameter];
+        NSString *message = [NSString stringWithFormat:@"%@ %@", failureExplanation, recoverySuggestion];
+        [self.logger logWarn:message];
+    }else{
+        NSString *failureExplanation = [NSString stringWithFormat:@"Specified a parameter named '%@', but method '%@' takes no parameters.", name, NSStringFromSelector([self selector])];
+        [self.logger logWarn:failureExplanation];
+    }
+}
+
+- (NSString*)recoverySuggestionForMissingParameter
+{
+    if ([_parameterNames count] == 1) {
+        return [NSString stringWithFormat:@"Did you mean '%@'?", _parameterNames[0]];
+    }else if ([_parameterNames count] == 2) {
+         return [NSString stringWithFormat:@"Valid parameter names are '%@' or '%@'.", _parameterNames[0], _parameterNames[1]];
+    }else{
+        NSMutableString* messageBuilder = [NSMutableString stringWithFormat:@"Valid parameter names are"];
+        [_parameterNames enumerateObjectsUsingBlock:^(NSString *aParameterName, NSUInteger idx, BOOL* stop)
+        {
+            BOOL thisIsLastParameter = (idx == [_parameterNames count] - 1);
+            if (thisIsLastParameter) {
+                [messageBuilder appendFormat:@", or '%@'.", aParameterName];
+            }else if (idx == 0) { // first param
+                [messageBuilder appendFormat:@" '%@'", aParameterName];
+            }else{
+                // neither first nor last
+                [messageBuilder appendFormat:@", '%@'", aParameterName];
+            }
+        }];
+
+        return messageBuilder;
+    }
 }
 
 - (void)injectWithObject:(id)value
