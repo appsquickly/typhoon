@@ -231,7 +231,7 @@ static TyphoonComponentFactory* defaultFactory;
     // Then, we instantiate the not-lazy singletons.
     [_registry enumerateObjectsUsingBlock:^(id definition, NSUInteger idx, BOOL* stop)
     {
-        if (([definition scope] == TyphoonScopeSingleton)&&![definition isLazy])
+        if (([definition scope] == TyphoonScopeSingleton) && ![definition isLazy])
         {
             [self singletonForDefinition:definition];
         }
