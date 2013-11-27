@@ -73,7 +73,7 @@ static char const* const CIRCULAR_DEPENDENCIES_KEY = "typhoon.injectLater";
     return [TyphoonIntrospectionUtils typeCodesForSelector:selector ofClass:[self class] isClassMethod:NO];
 }
 
-- (NSMutableDictionary*)typhoon_circularDependentProperties
+- (NSMutableDictionary*)circularDependentProperties
 {
     NSMutableDictionary* circularDependentProperties = objc_getAssociatedObject(self, &CIRCULAR_DEPENDENCIES_KEY);
     if (circularDependentProperties == nil)

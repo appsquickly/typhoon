@@ -19,7 +19,7 @@
 
 @interface NSObject (TyphoonIntrospectionUtils) <TyphoonIntrospectiveNSObject>
 
-@property(nonatomic, strong, readonly) NSMutableDictionary* typhoon_circularDependentProperties;
+@property(nonatomic, strong, readonly) NSMutableDictionary* circularDependentProperties;
 
 /**
 * Returns a Class object or `TyphoonTypeDescriptor` in the case of a primitive type.
