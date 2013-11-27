@@ -44,7 +44,6 @@
     _circularDependenciesFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[CircularDependenciesAssembly assembly]];
     _singletonsChainFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[SingletonsChainAssembly assembly]];
     _infrastructureComponentsFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[InfrastructureComponentsAssembly assembly]];
-
 }
 
 - (void)test_resolves_component_using_selector
@@ -63,60 +62,6 @@
     LogDebug(@"%@", knight.propertyInjectedAsInstance);
 }
 
-- (void)test_allows_initialization_with_a_collection_of_assemblies
-{
-    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
-            [MiddleAgesAssembly assembly],
-            [CollaboratingMiddleAgesAssembly assembly],
-    ]];
-
-    Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalQuest];
-    [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
-}
-
-- (void)test_allows_initialization_with_a_collection_of_assemblies_in_any_order
-{
-    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
-            [CollaboratingMiddleAgesAssembly assembly],
-            [MiddleAgesAssembly assembly]
-    ]];
-
-    Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalQuest];
-    [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
-}
-
-- (void)test_allows_initialization_with_a_hardcoded_collection_of_assemblies
-{
-    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
-            [MiddleAgesAssembly assembly],
-            [CollaboratingMiddleAgesAssembly assembly],
-    ]];
-
-    Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalHardcodedQuest];
-    [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
-}
-
-- (void)test_allows_initialization_with_a_hardcoded_collection_of_assemblies_in_any_order
-{
-    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
-            [CollaboratingMiddleAgesAssembly assembly],
-            [MiddleAgesAssembly assembly],
-    ]];
-
-    Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalHardcodedQuest];
-    [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
-}
-
-- (void)test_allows_overriding_methods_in_an_assembly
-{
-    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
-            [ExtendedMiddleAgesAssembly assembly],
-    ]];
-
-    Knight* knight = [(ExtendedMiddleAgesAssembly*) factory yetAnotherKnight];
-    LogDebug(@"Knight: %@", knight);
-    assertThat(knight, notNilValue());
-}
 
 @end
 
