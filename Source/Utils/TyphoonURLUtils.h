@@ -12,14 +12,9 @@
 
 #import <Foundation/Foundation.h>
 
-@class TyphoonDefinition;
-@class TyphoonComponentFactory;
 
+@interface TyphoonURLUtils : NSObject
 
-@interface TyphoonDefinitionRegisterer : NSObject
-
-- (id)initWithDefinition:(TyphoonDefinition*)definition componentFactory:(TyphoonComponentFactory*)componentFactory;
-
-- (void)register;
++ (NSURL*)URL:(NSURL*)url appendedWithQueryParameters:(NSDictionary*)parameters;
 
 @end
