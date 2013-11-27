@@ -21,6 +21,7 @@
 @interface TyphoonPatcherTests : SenTestCase
 {
     MiddleAgesAssembly* _assembly;
+    TyphoonComponentFactory* _factory;
 }
 
 @end
@@ -28,11 +29,32 @@
 
 @implementation TyphoonPatcherTests
 
+- (void)setUp
+{
+    [super setUp];
+
+    _assembly = [MiddleAgesAssembly assembly];
+    _factory = [TyphoonBlockComponentFactory factoryWithAssembly:_assembly];
+}
+
 - (void)test_allows_patching_out_a_component_with_a_mock
 {
-    MiddleAgesAssembly* assembly = [MiddleAgesAssembly assembly];
-    TyphoonComponentFactory* factory = [TyphoonBlockComponentFactory factoryWithAssembly:assembly];
+    [self applyAPatchToFactory:_factory assembly:_assembly];
 
+    [self assertPatchAppliedToFactory:_factory];
+}
+
+- (void)test_allows_patching_out_a_loaded_component_with_a_mock
+{
+    [_factory componentForKey:@"knight"];
+
+    [self applyAPatchToFactory:_factory assembly:_assembly];
+
+    [self assertPatchAppliedToFactory:_factory];
+}
+
+- (void)applyAPatchToFactory:(TyphoonComponentFactory*)factory assembly:(MiddleAgesAssembly*)assembly
+{
     TyphoonPatcher* patcher = [[TyphoonPatcher alloc] init];
     [patcher patchDefinition:[assembly knight] withObject:^id
     {
@@ -46,36 +68,12 @@
     }];
 
     [factory attachPostProcessor:patcher];
-
-    Knight* knight = [factory componentForKey:@"knight"];
-    LogDebug(@"Damsels: %@", [knight favoriteDamsels]);
-
 }
 
-- (void)test_allows_patching_out_a_loaded_component_with_a_mock
+- (void)assertPatchAppliedToFactory:(TyphoonComponentFactory*)factory
 {
-    MiddleAgesAssembly* assembly = [MiddleAgesAssembly assembly];
-    TyphoonComponentFactory* factory = [TyphoonBlockComponentFactory factoryWithAssembly:assembly];
-    [factory componentForKey:@"knight"];
-    //at this point, patching a loaded factory will not pass.
-    
-    TyphoonPatcher* patcher = [[TyphoonPatcher alloc] init];
-    [patcher patchDefinition:[assembly knight] withObject:^id
-     {
-         Knight* mockKnight = mock([Knight class]);
-         [given([mockKnight favoriteDamsels]) willReturn:@[
-                                                           @"Mary",
-                                                           @"Janezzz"
-                                                           ]];
-         
-         return mockKnight;
-     }];
-    
-    [factory attachPostProcessor:patcher];
-    
     Knight* knight = [factory componentForKey:@"knight"];
     assertThatBool([knight favoriteDamsels].count > 0, is(equalToBool(YES)));
-    LogDebug(@"Damsels: %@", [knight favoriteDamsels]);
-    
 }
+
 @end

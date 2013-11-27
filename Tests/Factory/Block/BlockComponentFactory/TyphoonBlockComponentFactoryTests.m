@@ -71,8 +71,40 @@
     ]];
 
     Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalQuest];
-    LogDebug(@"Knight: %@", knight);
-    assertThat(knight, notNilValue());
+    [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
+}
+
+- (void)test_allows_initialization_with_a_collection_of_assemblies_in_any_order
+{
+    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
+            [CollaboratingMiddleAgesAssembly assembly],
+            [MiddleAgesAssembly assembly]
+    ]];
+
+    Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalQuest];
+    [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
+}
+
+- (void)test_allows_initialization_with_a_hardcoded_collection_of_assemblies
+{
+    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
+            [MiddleAgesAssembly assembly],
+            [CollaboratingMiddleAgesAssembly assembly],
+    ]];
+
+    Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalHardcodedQuest];
+    [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
+}
+
+- (void)test_allows_initialization_with_a_hardcoded_collection_of_assemblies_in_any_order
+{
+    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
+            [CollaboratingMiddleAgesAssembly assembly],
+            [MiddleAgesAssembly assembly],
+    ]];
+
+    Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalHardcodedQuest];
+    [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
 }
 
 - (void)test_allows_overriding_methods_in_an_assembly
