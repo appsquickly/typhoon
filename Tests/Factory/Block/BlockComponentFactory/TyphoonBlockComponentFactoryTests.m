@@ -71,9 +71,7 @@
     ]];
 
     Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalQuest];
-    LogDebug(@"Knight: %@", knight);
-    assertThat(knight, notNilValue());
-    assertThat(knight.quest, instanceOf([CampaignQuest class]));
+    [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
 }
 
 - (void)test_allows_initialization_with_a_collection_of_assemblies_in_any_order
@@ -84,9 +82,7 @@
     ]];
 
     Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalQuest];
-    LogDebug(@"Knight: %@", knight);
-    assertThat(knight, notNilValue());
-    assertThat(knight.quest, instanceOf([CampaignQuest class]));
+    [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
 }
 
 - (void)test_allows_initialization_with_a_hardcoded_collection_of_assemblies
@@ -97,9 +93,7 @@
     ]];
 
     Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalHardcodedQuest];
-    LogDebug(@"Knight: %@", knight);
-    assertThat(knight, notNilValue());
-    assertThat(knight.quest, instanceOf([CampaignQuest class]));
+    [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
 }
 
 - (void)test_allows_initialization_with_a_hardcoded_collection_of_assemblies_in_any_order
@@ -110,9 +104,7 @@
     ]];
 
     Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalHardcodedQuest];
-    LogDebug(@"Knight: %@", knight);
-    assertThat(knight, notNilValue());
-    assertThat(knight.quest, instanceOf([CampaignQuest class]));
+    [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
 }
 
 - (void)test_allows_overriding_methods_in_an_assembly

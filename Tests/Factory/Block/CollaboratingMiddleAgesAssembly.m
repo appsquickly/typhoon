@@ -15,6 +15,7 @@
 #import "TyphoonDefinition.h"
 #import "Knight.h"
 #import "OCLogTemplate.h"
+#import "CampaignQuest.h"
 
 
 @implementation CollaboratingMiddleAgesAssembly
@@ -30,6 +31,12 @@
     {
         [definition injectProperty:@selector(quest) withDefinition:[_quests environmentDependentQuest]];
     }];
+}
+
++ (void)verifyKnightWithExternalQuest:(Knight*)knight
+{
+    assertThat(knight, notNilValue());
+    assertThat(knight.quest, instanceOf([CampaignQuest class]));
 }
 
 - (id)knightWithExternalHardcodedQuest

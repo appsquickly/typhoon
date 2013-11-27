@@ -14,7 +14,7 @@
 #import "QuestProvider.h"
 
 @class MiddleAgesAssembly;
-
+@class Knight;
 
 @interface CollaboratingMiddleAgesAssembly : TyphoonAssembly
 
@@ -22,5 +22,8 @@
 
 - (id)knightWithExternalQuest;
 
++ (void)verifyKnightWithExternalQuest:(Knight*)knight;
+
 - (id)knightWithExternalHardcodedQuest;
+
 @end
