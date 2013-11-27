@@ -62,6 +62,5 @@
     LogDebug(@"%@", knight.propertyInjectedAsInstance);
 }
 
-
 @end
 
