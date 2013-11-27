@@ -1,0 +1,1 @@
+PODS_OSX_TYPHOON_OTHER_LDFLAGS = -all_load -lxml2 -lz
