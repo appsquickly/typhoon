@@ -25,6 +25,7 @@
 #import "TyphoonTestUtils.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonAssembly.h"
+#import "TyphoonCollaboratingAssemblyProxy.h"
 
 #import "TyphoonBlockComponentFactory.h"
 
