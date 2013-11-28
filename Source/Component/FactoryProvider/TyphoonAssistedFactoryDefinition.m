@@ -37,13 +37,13 @@
 
 - (void)configure:(TyphoonAssistedFactoryDefinitionBlock)configurationBlock
 {
-	configurationBlock(self);
+    configurationBlock(self);
 }
 
 - (void)factoryMethod:(SEL)name body:(id)bodyBlock
 {
     TyphoonAssistedFactoryMethodBlock *method = [[TyphoonAssistedFactoryMethodBlock alloc] initWithFactoryMethod:name body:bodyBlock];
-	[_factoryMethods addObject:method];
+    [_factoryMethods addObject:method];
 }
 
 - (void)factoryMethod:(SEL)name returns:(Class)returnType initialization:(TyphoonAssistedFactoryInitializerBlock)initialization
@@ -56,10 +56,10 @@
 
 - (void)enumerateFactoryMethods:(TyphoonAssistedFactoryMethodsEnumerationBlock)enumerationBlock
 {
-	for (id<TyphoonAssistedFactoryMethod> factoryMethod in _factoryMethods)
-	{
-		enumerationBlock(factoryMethod);
-	}
+    for (id<TyphoonAssistedFactoryMethod> factoryMethod in _factoryMethods)
+    {
+      enumerationBlock(factoryMethod);
+    }
 }
 
 @end
