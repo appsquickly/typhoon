@@ -231,6 +231,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		205FE9A11847183B002FC261 /* TyphoonLinkerCategoryBugFix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonLinkerCategoryBugFix.h; sourceTree = "<group>"; };
 		46025F2E17E3F6A40056A528 /* TyphoonViewControllerNibResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TyphoonViewControllerNibResolver.h; path = Source/ios/Factory/Config/Resolver/TyphoonViewControllerNibResolver.h; sourceTree = SOURCE_ROOT; };
 		46025F2F17E3F6A40056A528 /* TyphoonViewControllerNibResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TyphoonViewControllerNibResolver.m; path = Source/ios/Factory/Config/Resolver/TyphoonViewControllerNibResolver.m; sourceTree = SOURCE_ROOT; };
 		4656F79E17DB5B7C00EDDC23 /* TyphoonDefinition+Infrastructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyphoonDefinition+Infrastructure.h"; sourceTree = "<group>"; };
@@ -561,6 +562,7 @@
 				BA798D3E8B5671B34E02B61B /* TyphoonStringUtils.h */,
 				BA7983CA8A82C2C30A59A8FD /* TyphoonURLUtils.m */,
 				BA798414371EC7A9885C0DE2 /* TyphoonURLUtils.h */,
+				205FE9A11847183B002FC261 /* TyphoonLinkerCategoryBugFix.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";

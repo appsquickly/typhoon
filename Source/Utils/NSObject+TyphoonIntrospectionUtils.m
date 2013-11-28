@@ -12,6 +12,9 @@
 
 
 
+#import "TyphoonLinkerCategoryBugFix.h"
+TYPHOON_FIX_CATEGORY_BUG(NSObject_TyphoonIntrospectionUtils)
+
 #import <objc/runtime.h>
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonIntrospectionUtils.h"
