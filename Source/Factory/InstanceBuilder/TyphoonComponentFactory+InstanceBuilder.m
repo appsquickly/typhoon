@@ -10,6 +10,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
+#import "TyphoonLinkerCategoryBugFix.h"
+TYPHOON_FIX_CATEGORY_BUG(TyphoonComponentFactory_InstanceBuilder)
+
 #import <objc/message.h>
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonDefinition.h"

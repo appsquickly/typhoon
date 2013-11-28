@@ -10,6 +10,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
+#import "TyphoonLinkerCategoryBugFix.h"
+TYPHOON_FIX_CATEGORY_BUG(TyphoonDefinition_Infrastructure)
+
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonPropertyPlaceholderConfigurer.h"
 #import "TyphoonResource.h"

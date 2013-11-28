@@ -11,6 +11,9 @@
 
 
 
+#import "TyphoonLinkerCategoryBugFix.h"
+TYPHOON_FIX_CATEGORY_BUG(TyphoonInitializer_InstanceBuilder)
+
 #import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonParameterInjectedWithStringRepresentation.h"
 #import "TyphoonDefinition.h"
