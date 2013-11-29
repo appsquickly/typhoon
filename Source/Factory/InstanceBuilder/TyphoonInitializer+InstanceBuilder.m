@@ -12,7 +12,7 @@
 
 
 #import "TyphoonLinkerCategoryBugFix.h"
-TYPHOON_FIX_CATEGORY_BUG(TyphoonInitializer_InstanceBuilder)
+TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
 #import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonParameterInjectedWithStringRepresentation.h"

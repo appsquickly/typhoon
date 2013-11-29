@@ -18,8 +18,8 @@
  Shamelessly borrowed from Three20 and RestKit
  */
 
-#define TYPHOON_FIX_CATEGORY_BUG(name) \
-@interface TYPHOON_FIX_CATEGORY_BUG_##name : NSObject \
+#define TYPHOON_LINK_CATEGORY(name) \
+@interface TYPHOON_LINK_CATEGORY_##name : NSObject \
 @end \
-@implementation TYPHOON_FIX_CATEGORY_BUG_##name \
+@implementation TYPHOON_LINK_CATEGORY_##name \
 @end

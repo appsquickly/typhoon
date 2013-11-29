@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonLinkerCategoryBugFix.h"
-TYPHOON_FIX_CATEGORY_BUG(TyphoonDefinition_InstanceBuilder)
+TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonPropertyInjectedWithStringRepresentation.h"
