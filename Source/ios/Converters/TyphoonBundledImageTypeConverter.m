@@ -19,7 +19,8 @@
 
 - (id)convert:(NSString*)stringValue
 {
-    return [UIImage imageNamed:stringValue];
+    __autoreleasing UIImage* image = [UIImage imageNamed:stringValue];
+    return image;
 }
 
 
