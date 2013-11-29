@@ -20,10 +20,42 @@
 #import "TyphoonAssistedFactoryCreatorManyFactories.h"
 #import "TyphoonAssistedFactoryMethodCreator.h"
 
+
+SEL TyphoonAssistedFactoryCreatorGuessFactoryMethodForProtocol(Protocol *protocol)
+{
+    // Lets create two sets: the property getters and all the methods (including
+    // those getters). The difference must be only one, and must be our method.
+    NSMutableSet *propertyNames = [NSMutableSet set];
+    NSMutableSet *methodNames = [NSMutableSet set];
+
+    unsigned int methodCount = 0;
+    struct objc_method_description *methodDescriptions = protocol_copyMethodDescriptionList(protocol, YES, YES, &methodCount);
+    for (unsigned int idx = 0; idx < methodCount; idx++)
+    {
+        struct objc_method_description methodDescription = methodDescriptions[idx];
+        [methodNames addObject:NSStringFromSelector(methodDescription.name)];
+    }
+    free(methodDescriptions);
+
+    unsigned int propertiesCount = 0;
+    objc_property_t *properties = protocol_copyPropertyList(protocol, &propertiesCount);
+    for (unsigned int idx = 0; idx < propertiesCount; idx++)
+    {
+        objc_property_t property = properties[idx];
+        [propertyNames addObject:[NSString stringWithCString:property_getName(property) encoding:NSASCIIStringEncoding]];
+    }
+    free(properties);
+
+    [methodNames minusSet:propertyNames];
+    NSString *factoryMethod = [methodNames anyObject];
+
+    return NSSelectorFromString(factoryMethod);
+}
+
+
 @implementation TyphoonAssistedFactoryCreator
 {
 @private
-    Protocol *_protocol;
     TyphoonAssistedFactoryDefinitionProvider _definitionProvider;
 }
 

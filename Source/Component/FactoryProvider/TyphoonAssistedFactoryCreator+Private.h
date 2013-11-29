@@ -13,7 +13,13 @@
 
 typedef TyphoonAssistedFactoryDefinition *(^TyphoonAssistedFactoryDefinitionProvider)(void);
 
+SEL TyphoonAssistedFactoryCreatorGuessFactoryMethodForProtocol(Protocol *protocol);
+
 @interface TyphoonAssistedFactoryCreator ()
+{
+@protected
+    Protocol *_protocol;
+}
 
 - (instancetype)initWithProtocol:(Protocol *)protocol factoryDefinitionProvider:(TyphoonAssistedFactoryDefinitionProvider)definitionProvider;
 
