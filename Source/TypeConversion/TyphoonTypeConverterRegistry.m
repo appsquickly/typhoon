@@ -21,6 +21,7 @@
 #if TARGET_OS_IPHONE
 
 #import "TyphoonUIColorTypeConverter.h"
+#import "TyphoonBundledImageTypeConverter.h"
 
 #endif
 
@@ -113,6 +114,7 @@
 #if TARGET_OS_IPHONE
     {
         [self register:[[TyphoonUIColorTypeConverter alloc] init] forClassOrProtocol:NSClassFromString(@"UIColor")];
+        [self register:[[TyphoonBundledImageTypeConverter alloc] init] forClassOrProtocol:NSClassFromString(@"UIImage")];
     }
 #else
     {
