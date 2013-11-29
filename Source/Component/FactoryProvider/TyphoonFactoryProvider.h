@@ -100,6 +100,10 @@
                        dependencies:(TyphoonDefinitionBlock)dependenciesBlock
                             factory:(id)factoryBlock;
 
++ (TyphoonDefinition *)withProtocol:(Protocol *)protocol
+                       dependencies:(TyphoonDefinitionBlock)dependenciesBlock
+                            returns:(Class)returnType;
+
 /**
  * Creates a factor definition for a given protocol, dependencies and a list of
  * factory methods. The protocol is supposed to have the same number of class
