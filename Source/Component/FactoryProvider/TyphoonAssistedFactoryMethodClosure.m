@@ -12,6 +12,11 @@
 #import "TyphoonAssistedFactoryMethodClosure.h"
 
 #include <ffi.h>
+#include <objc/message.h>
+
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#endif
 
 #import "TyphoonAssistedFactoryMethodInitializer.h"
 #import "TyphoonAssistedFactoryParameterInjectedWithArgumentIndex.h"
@@ -35,7 +40,7 @@ static void FactoryMethodClosure(ffi_cif *cif, void *ret, void **args, void *use
     TyphoonAssistedFactoryMethodClosure *closure = (__bridge TyphoonAssistedFactoryMethodClosure *)userdata;
 
     void **arguments = calloc(closure->_parameters.count + 2, sizeof(void *));
-    NSArray *tempAllocations = [closure prepareArgumentsWithValues:args into:arguments];
+    __unused __attribute__((objc_precise_lifetime)) NSArray *tempAllocations = [closure prepareArgumentsWithValues:args into:arguments];
     ffi_call(&(closure->_initCIF), FFI_FN(objc_msgSend), ret, arguments);
     free(arguments);
     tempAllocations = nil;

@@ -1422,6 +1422,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/Typhoon.pch;
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
@@ -1441,6 +1445,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/Typhoon.pch;
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";

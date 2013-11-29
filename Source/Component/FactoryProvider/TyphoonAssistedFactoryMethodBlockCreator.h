@@ -11,7 +11,7 @@
 
 #import "TyphoonAssistedFactoryMethodCreator.h"
 
-@class TyphoonAssistedFactoryMethodBlock;
+#import "TyphoonAssistedFactoryMethodBlock.h"
 
 
 @interface TyphoonAssistedFactoryMethodBlockCreator : TyphoonAssistedFactoryMethodCreator
