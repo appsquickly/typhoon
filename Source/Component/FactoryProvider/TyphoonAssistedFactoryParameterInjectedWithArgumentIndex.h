@@ -13,11 +13,20 @@
 
 #import "TyphoonAssistedFactoryInjectedParameter.h"
 
+/**
+ * Describes a parameter injected from a factory method argument.
+ *
+ * Users should not use this class directly.
+ */
 @interface TyphoonAssistedFactoryParameterInjectedWithArgumentIndex : NSObject <TyphoonAssistedFactoryInjectedParameter>
 
+/** The parameter index */
 @property (nonatomic, assign, readonly) NSUInteger parameterIndex;
+
+/** The factory method argument index */
 @property (nonatomic, assign, readonly) NSUInteger argumentIndex;
 
+/** Creates a parameter description from the given parameterIndex and argumentIndex */
 - (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex argumentIndex:(NSUInteger)argumentIndex;
 
 @end

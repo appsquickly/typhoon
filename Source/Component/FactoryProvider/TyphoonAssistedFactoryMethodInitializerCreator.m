@@ -15,7 +15,12 @@
 #import "TyphoonAssistedFactoryMethodClosure.h"
 #import "TyphoonAssistedFactoryMethodInitializer.h"
 
-
+/*
+ * The closures must live as long as someone can make a call to the factory
+ * methods. Since the classes are not built and destroyed all the time in the
+ * Cocoa runtime, this cache will store all the closures for all the life of the
+ * application.
+ */
 static NSMutableDictionary *sFactoryMethodClosures = nil;
 
 

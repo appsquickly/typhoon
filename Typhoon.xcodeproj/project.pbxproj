@@ -589,7 +589,7 @@
 				65FB941C183BF2D30038FCA5 /* TyphoonAssistedFactoryMethodCreator.h */,
 				6519B390183E5C8800DB0B60 /* TyphoonAssistedFactoryMethodCreator+Private.h */,
 				65FB941D183BF2D30038FCA5 /* TyphoonAssistedFactoryMethodCreator.m */,
-				65C4DD291848B3CC00BE1996 /* Creator */,
+				65C4DD291848B3CC00BE1996 /* FactoryCreator */,
 				65C4DD271848B37A00BE1996 /* MethodInitializer */,
 				65C4DD281848B39100BE1996 /* MethodBlock */,
 			);
@@ -625,7 +625,7 @@
 			name = MethodBlock;
 			sourceTree = "<group>";
 		};
-		65C4DD291848B3CC00BE1996 /* Creator */ = {
+		65C4DD291848B3CC00BE1996 /* FactoryCreator */ = {
 			isa = PBXGroup;
 			children = (
 				65C4DD2A1848B3EF00BE1996 /* TyphoonAssistedFactoryCreator.h */,
@@ -638,7 +638,7 @@
 				65C4DD3D1848BA8900BE1996 /* TyphoonAssistedFactoryCreatorImplicit.h */,
 				65C4DD3E1848BA8900BE1996 /* TyphoonAssistedFactoryCreatorImplicit.m */,
 			);
-			name = Creator;
+			name = FactoryCreator;
 			sourceTree = "<group>";
 		};
 		6B3F396516ABF854001A601C = {

@@ -11,8 +11,22 @@
 
 #import "TyphoonAssistedFactoryCreator.h"
 
+/**
+ * Creates the full factory class from the given protocol description. The
+ * protocol should only have one instance method, and it should match one of the
+ * initializer of the returnType. See the documentation of
+ * TyphoonFactoryProvider for the rules used to do this matching.
+ *
+ * Users should not use this class directly.
+ */
 @interface TyphoonAssistedFactoryCreatorImplicit : TyphoonAssistedFactoryCreator
 
+/**
+ * Creates a factory creator for the given protocol. It will guess the protocol
+ * instance method to use, and also the initializer in returnType, as well as
+ * the mapping between the factory method arguments, factory properties and
+ * init method arguments.
+ */
 - (instancetype)initWithProtocol:(Protocol *)protocol returns:(Class)returnType;
 
 @end

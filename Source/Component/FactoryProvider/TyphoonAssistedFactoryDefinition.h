@@ -11,15 +11,20 @@
 
 #import <Foundation/Foundation.h>
 
+#import "TyphoonAssistedFactoryMethod.h"
 #import "TyphoonAssistedFactoryMethodInitializer.h"
 
 @class TyphoonAssistedFactoryDefinition;
+
 
 /** Used to configure the TyphoonAssistedFactoryDefinition passed as argument */
 typedef void(^TyphoonAssistedFactoryDefinitionBlock)(TyphoonAssistedFactoryDefinition *definition);
 
 /** Used to enumerate over factory method selectors and their associated body blocks */
 typedef void(^TyphoonAssistedFactoryMethodsEnumerationBlock)(id<TyphoonAssistedFactoryMethod> factoryMethod);
+
+/** Used to configure a TyphoonAssistedFactoryMethod */
+typedef void(^TyphoonAssistedFactoryMethodInitializerBlock)(TyphoonAssistedFactoryMethodInitializer *initializer);
 
 @interface TyphoonAssistedFactoryDefinition : NSObject
 
@@ -32,7 +37,15 @@ typedef void(^TyphoonAssistedFactoryMethodsEnumerationBlock)(id<TyphoonAssistedF
  */
 - (void)factoryMethod:(SEL)name body:(id)bodyBlock;
 
-- (void)factoryMethod:(SEL)name returns:(Class)returnType initialization:(TyphoonAssistedFactoryInitializerBlock)initialization;
+/**
+ * Define a new factory method with the given selector, returning the given type
+ * and using the configured TyphoonAssistedFactoryInitializer. During the
+ * initialization block you should set the selector of the initializer and also
+ * configure each of the parameters of that selector pointing to either one
+ * property, or one of the factory method arguments (referred either by
+ * positional index or name).
+ */
+- (void)factoryMethod:(SEL)name returns:(Class)returnType initialization:(TyphoonAssistedFactoryMethodInitializerBlock)initialization;
 
 #pragma mark - Internal methods
 

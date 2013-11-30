@@ -29,20 +29,20 @@
         return [[TyphoonAssistedFactoryMethodInitializerCreator alloc]
                 initWithFactoryMethod:factoryMethod];
     } else {
-      NSAssert(NO, @"this branch should not be reached");
+      NSAssert(NO, @"Unknown TyphoonAssistedFactoryMethod subclass %@", NSStringFromClass([factoryMethod class]));
       return nil;
     }
 }
 
 - (instancetype)initWithFactoryMethod:(TyphoonAssistedFactoryMethodBlock *)factoryMethod
 {
-  self = [super init];
-  if (self)
-  {
-    _factoryMethod = factoryMethod;
-  }
+    self = [super init];
+    if (self)
+    {
+        _factoryMethod = factoryMethod;
+    }
 
-  return self;
+    return self;
 }
 
 - (void)createFromProtocol:(Protocol *)protocol inClass:(Class)factoryClass

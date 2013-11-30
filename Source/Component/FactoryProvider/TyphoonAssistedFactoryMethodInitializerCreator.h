@@ -11,6 +11,9 @@
 
 #import "TyphoonAssistedFactoryMethodCreator.h"
 
+/**
+ * Creates a method implementation for an initializer description.
+ */
 @interface TyphoonAssistedFactoryMethodInitializerCreator : TyphoonAssistedFactoryMethodCreator
 
 @end

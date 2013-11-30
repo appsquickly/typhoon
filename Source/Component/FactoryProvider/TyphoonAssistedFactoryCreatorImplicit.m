@@ -16,6 +16,7 @@
 
 #import "NSObject+TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
+#import "TyphoonAssistedFactoryMethodInitializer.h"
 
 @implementation TyphoonAssistedFactoryCreatorImplicit
 {
@@ -77,12 +78,6 @@
 
 - (SEL)initializerMethod
 {
-    static dispatch_once_t onceToken;
-    static NSRegularExpression *initSelectorRegex = nil;
-    dispatch_once(&onceToken, ^{
-        initSelectorRegex = [NSRegularExpression regularExpressionWithPattern:@"^init[A-Z]" options:0 error:NULL];
-    });
-
     if (_initMethod == NULL)
     {
         // find candidates: methods in _returnType that starts with init.
@@ -106,7 +101,7 @@
             Method method = methods[idx];
             SEL methodSEL = method_getName(method);
             NSString *methodName = [NSString stringWithUTF8String:sel_getName(methodSEL)];
-            if ([initSelectorRegex numberOfMatchesInString:methodName options:0 range:NSMakeRange(0, methodName.length)])
+            if ([methodName hasPrefix:@"initWith"])
             {
                 NSArray *initParameters = [self parameterNamesForSelector:methodSEL];
 

@@ -180,6 +180,8 @@ static Class EnsureFactoryClass(Protocol *protocol, TyphoonAssistedFactoryDefini
     Class factoryClass = GetExistingFactoryClass(protocol);
     if (!factoryClass)
     {
+        // At this point we need the factory definition, so we can invoke the
+        // block to get it.
         factoryClass = GenerateFactoryClassWithDefinition(protocol, definitionProvider());
     }
 

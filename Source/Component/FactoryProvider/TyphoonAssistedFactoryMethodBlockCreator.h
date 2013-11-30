@@ -11,11 +11,9 @@
 
 #import "TyphoonAssistedFactoryMethodCreator.h"
 
-#import "TyphoonAssistedFactoryMethodBlock.h"
-
-
+/**
+ * Creates a method implementation for an block description.
+ */
 @interface TyphoonAssistedFactoryMethodBlockCreator : TyphoonAssistedFactoryMethodCreator
-
-@property (nonatomic, strong, readonly) TyphoonAssistedFactoryMethodBlock *factoryMethod;
 
 @end

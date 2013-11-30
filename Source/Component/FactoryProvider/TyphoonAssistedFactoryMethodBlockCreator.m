@@ -16,6 +16,14 @@
 
 #import "TyphoonAssistedFactoryMethodBlock.h"
 
+
+@interface TyphoonAssistedFactoryMethodBlockCreator ()
+
+@property (nonatomic, strong) TyphoonAssistedFactoryMethodBlock *factoryMethod;
+
+@end
+
+
 @implementation TyphoonAssistedFactoryMethodBlockCreator
 
 - (void)createFromProtocol:(Protocol *)protocol inClass:(Class)factoryClass

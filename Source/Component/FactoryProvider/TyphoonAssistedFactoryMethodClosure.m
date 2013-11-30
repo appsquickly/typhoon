@@ -22,6 +22,9 @@
 #import "TyphoonAssistedFactoryParameterInjectedWithArgumentIndex.h"
 #import "TyphoonAssistedFactoryParameterInjectedWithProperty.h"
 
+// To understand this code much better:
+// http://www.mikeash.com/pyblog/friday-qa-2011-05-06-a-tour-of-mablockclosure.html
+
 @implementation TyphoonAssistedFactoryMethodClosure
 {
     Class _returnType;
@@ -29,18 +32,35 @@
     NSArray *_parameters;
 
     NSMutableArray *_allocations;
-    ffi_cif _closureCIF;
-    ffi_cif _initCIF;
-    ffi_closure *_closure;
-    void *_closureFptr;
+    ffi_cif _closureCIF;   // Description of the factory method function
+    ffi_cif _initCIF;      // Description of the init method function
+    ffi_closure *_closure; // "IMP" of the factory method function
+    void *_closureFptr;    // Pointer to the "IMP" above
 }
 
+// This is the method that will be called from libffi each time someone
+// invokes the factory method. We have to write the return value into ret. The
+// factory method arguments are in args. userdata, in our case, points back to
+// the TyphoonAssistedFactoyrMethodClosure.
 static void FactoryMethodClosure(ffi_cif *cif, void *ret, void **args, void *userdata)
 {
     TyphoonAssistedFactoryMethodClosure *closure = (__bridge TyphoonAssistedFactoryMethodClosure *)userdata;
 
+    // We need space to store the pointers to the pointers to the init method
+    // arguments. We need two extra for self and _cmd arguments.
     void **arguments = calloc(closure->_parameters.count + 2, sizeof(void *));
+
+    // We also need to retain the values of the properties and the
+    // allocation of the returned instance, and also space for the pointers to
+    // those instances. This pointers must be valid until we return from
+    // ffi_call so we create a temporal NSArray which will contain NSData with
+    // the pointers and the instances.
+    // Since we don't actually use the array, mark it as unused and use
+    // precise lifetime, so no compiler optimize it away.
     __unused __attribute__((objc_precise_lifetime)) NSArray *tempAllocations = [closure prepareArgumentsWithValues:args into:arguments];
+
+    // We are always returning object instances, so I don't think any other
+    // objc_msgSend variant will be used.
     ffi_call(&(closure->_initCIF), FFI_FN(objc_msgSend), ret, arguments);
     free(arguments);
     tempAllocations = nil;
@@ -56,7 +76,6 @@ static const char *SizeAndAlignment(const char *str, NSUInteger *sizep, NSUInteg
         out++;
     return out;
 }
-
 
 static unsigned int ArgCount(const char *str)
 {
@@ -138,35 +157,42 @@ static unsigned int ArgCount(const char *str)
     // Don't use _allocations here, or we will leak memory.
     NSMutableArray *temporalAllocations = [NSMutableArray array];
 
+    // We call alloc "by hand", since the closure will invoke the corresponding
+    // init method over this (half-built) instance.
     id instance = [_returnType alloc];
     [temporalAllocations addObject:instance];
     void **instancePointer = [self temporalAllocate:sizeof(void **) inArray:temporalAllocations];
     *instancePointer = (__bridge void *)instance;
 
-    output[0] = instancePointer;
-    output[1] = &_initSelector;
+    output[0] = instancePointer; // this is self of the init call
+    output[1] = &_initSelector;  // this is _cmd of the init call
 
     for (id<TyphoonAssistedFactoryInjectedParameter> parameter in _parameters) {
+
         // Move to other solution which doesn't involve isKindOf?
         if ([parameter isKindOfClass:[TyphoonAssistedFactoryParameterInjectedWithArgumentIndex class]]) {
             TyphoonAssistedFactoryParameterInjectedWithArgumentIndex *p = parameter;
+
+            // For arguments we use the factory method arguments directly, no
+            // need to allocate anything
             output[[p parameterIndex] + 2] = arguments[[p argumentIndex] + 2];
+
         } else if ([parameter isKindOfClass:[TyphoonAssistedFactoryParameterInjectedWithProperty class]]) {
             TyphoonAssistedFactoryParameterInjectedWithProperty *p = parameter;
 
             // Super-crazy cast...
             id factory = (__bridge id)*(void **)arguments[0];
 
+            // Using valueForKey will try using the property first.
             NSString *selector = [NSString stringWithCString:sel_getName([p property]) encoding:NSASCIIStringEncoding];
             id value = [factory valueForKey:selector];
             [temporalAllocations addObject:value];
-
             void **valuePointer = [self temporalAllocate:sizeof(void **) inArray:temporalAllocations];
             *valuePointer = (__bridge void *)value;
 
             output[[p parameterIndex] + 2] = valuePointer;
         } else {
-            NSAssert(NO, @"Unknown parameter type %s", class_getName([parameter class]));
+            NSAssert(NO, @"Unknown parameter type %@", NSStringFromClass([parameter class]));
         }
     }
 

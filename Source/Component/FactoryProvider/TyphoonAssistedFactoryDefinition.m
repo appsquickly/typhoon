@@ -46,7 +46,7 @@
     [_factoryMethods addObject:method];
 }
 
-- (void)factoryMethod:(SEL)name returns:(Class)returnType initialization:(TyphoonAssistedFactoryInitializerBlock)initialization
+- (void)factoryMethod:(SEL)name returns:(Class)returnType initialization:(TyphoonAssistedFactoryMethodInitializerBlock)initialization
 {
     TyphoonAssistedFactoryMethodInitializer *initializer = [[TyphoonAssistedFactoryMethodInitializer alloc] initWithFactoryMethod:name returnType:returnType];
     initialization(initializer);
