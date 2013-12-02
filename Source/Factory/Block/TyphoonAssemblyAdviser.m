@@ -43,14 +43,14 @@ static NSMutableArray* swizzleRegistry;
 {
     [TyphoonAssemblyAdviser markAssemblyMethodsAsSwizzled:assembly];
 
-    NSSet* definitionSelectors = [self obtainDefinitionSelectors:assembly];
+    NSSet* definitionSelectors = [self definitionSelectors:assembly];
     [definitionSelectors enumerateObjectsUsingBlock:^(NSValue *selectorObj, BOOL* stop)
     {
         [TyphoonAssemblyAdviser replaceImplementationOfDefinitionSelector:selectorObj withDynamicBeforeAdviceImplementationOnAssembly:assembly];
     }];
 }
 
-+ (NSSet*)obtainDefinitionSelectors:(TyphoonAssembly*)assembly
++ (NSSet*)definitionSelectors:(TyphoonAssembly*)assembly
 {
     NSMutableSet* definitionSelectors = [[NSMutableSet alloc] init];
     [self addDefinitionSelectorsForSubclassesOfAssembly:assembly toSet:definitionSelectors];

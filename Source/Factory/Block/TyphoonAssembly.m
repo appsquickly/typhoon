@@ -268,7 +268,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
 - (void)populateCache
 {
     // by calling all definition selectors
-    NSSet* definitionSelectors = [TyphoonAssemblyAdviser obtainDefinitionSelectors:self]; // the Assembly should know what its own definition selectors are.
+    NSSet* definitionSelectors = [TyphoonAssemblyAdviser definitionSelectors:self]; // the Assembly should know what its own definition selectors are.
 
     [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
     {

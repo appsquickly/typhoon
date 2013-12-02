@@ -11,9 +11,11 @@
 
 @interface TyphoonAssemblyAdviser : NSObject
 
+// all these methods want to be on the TyphoonAssembly?
+// or, initWithAssembly?
 + (void)adviseMethods:(TyphoonAssembly*)assembly;
 
-+ (NSSet*)obtainDefinitionSelectors:(TyphoonAssembly*)assembly;
++ (NSSet*)definitionSelectors:(TyphoonAssembly*)assembly;
 
 + (BOOL)assemblyMethodsSwizzled:(TyphoonAssembly*)assembly;
 
