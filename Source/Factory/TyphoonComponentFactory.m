@@ -134,7 +134,7 @@ static TyphoonComponentFactory* defaultFactory;
     return [results copy];
 }
 
-
+// most important?
 - (id)componentForKey:(NSString*)key
 {
     if (!key)

@@ -59,7 +59,7 @@
     CavalryMan* knight = [assembly yetAnotherKnight];
     assertThat(knight.propertyInjectedAsInstance, notNilValue());
 
-    LogDebug(@"%@", knight.propertyInjectedAsInstance);
+    LogTrace(@"%@", knight.propertyInjectedAsInstance);
 }
 
 @end

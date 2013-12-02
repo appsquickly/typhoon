@@ -43,7 +43,6 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 + (void)load
 {
-    [super load];
     [self reserveSelectors];
 }
 

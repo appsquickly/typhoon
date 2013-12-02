@@ -46,7 +46,7 @@ static NSMutableArray* swizzleRegistry;
     NSSet* definitionSelectors = [self obtainDefinitionSelectors:assembly];
     [definitionSelectors enumerateObjectsUsingBlock:^(NSValue *selectorObj, BOOL* stop)
     {
-        [TyphoonAssemblyAdviser replaceImplementationOfDefinitionOnAssembly:assembly withDynamicBeforeAdviceImplementation:selectorObj];
+        [TyphoonAssemblyAdviser replaceImplementationOfDefinitionSelector:selectorObj withDynamicBeforeAdviceImplementationOnAssembly:assembly];
     }];
 }
 
@@ -137,15 +137,11 @@ typedef void(^MethodEnumerationBlock)(Method method);
     [swizzleRegistry addObject:[assembly class]];
 }
 
-+ (void)replaceImplementationOfDefinitionOnAssembly:(TyphoonAssembly*)assembly withDynamicBeforeAdviceImplementation:(NSValue*)obj;
++ (void)replaceImplementationOfDefinitionSelector:(NSValue*)obj withDynamicBeforeAdviceImplementationOnAssembly:(TyphoonAssembly*)assembly
 {
     SEL methodSelector = (SEL) [obj pointerValue];
     SEL swizzled = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector];
     [[assembly class] typhoon_swizzleMethod:methodSelector withMethod:swizzled error:nil];
 }
-
-
-
-
 
 @end

@@ -28,7 +28,7 @@
     ]];
 
     Knight* knight = [(ExtendedMiddleAgesAssembly*) factory yetAnotherKnight];
-    LogDebug(@"Knight: %@", knight);
+    LogTrace(@"Knight: %@", knight);
     assertThat(knight, notNilValue());
 }
 

@@ -27,14 +27,16 @@
     return self;
 }
 
+// TODO: why are these empty implemntations here?
+// try to remove.
 - (void)beforePropertiesSet
 {
-    NSLog(@"#################### CavalryMan before properties set");
+
 }
 
 - (void)afterPropertiesSet
 {
-    NSLog(@"############# CavalryMan after properties set");
+
 }
 
 @end

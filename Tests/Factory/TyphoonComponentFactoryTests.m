@@ -58,8 +58,6 @@ static NSString* const DEFAULT_QUEST = @"quest";
     assertThat(knight, notNilValue());
     assertThat(knight, instanceOf([Knight class]));
     assertThat(knight.quest, notNilValue());
-
-    NSLog(@"Here's the knight: %@", knight);
 }
 
 - (void)test_componentForKey_raises_exception_if_reference_does_not_exist
@@ -134,7 +132,6 @@ static NSString* const DEFAULT_QUEST = @"quest";
     @try
     {
         Knight* knight = [_componentFactory componentForType:[Knight class]];
-        NSLog(@"Here's the knight: %@", knight);
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -145,7 +142,6 @@ static NSString* const DEFAULT_QUEST = @"quest";
     @try
     {
         Knight* knight = [_componentFactory componentForType:[Champion class]];
-        NSLog(@"Here's the knight: %@", knight);
         STFail(@"Should have thrown exception");
     }
     @catch (NSException* e)
@@ -182,8 +178,6 @@ static NSString* const DEFAULT_QUEST = @"quest";
     assertThat(knight, notNilValue());
     assertThat(knight, instanceOf([Knight class]));
     assertThat(knight.quest, notNilValue());
-
-    NSLog(@"Here's the knight: %@", knight);
 }
 
 /* ====================================================================================================================================== */
@@ -203,7 +197,6 @@ static NSString* const DEFAULT_QUEST = @"quest";
 - (void)test_able_to_describe_itself
 {
     NSString* description = [_componentFactory description];
-    NSLog(@"Description: %@", description);
     assertThat(description, equalTo(@"<TyphoonComponentFactory: _registry=(\n)>"));
 }
 

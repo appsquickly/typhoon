@@ -127,7 +127,6 @@
 {
     const char* converted = [_typeConverter convertToCString:@"the quick brown fox"];
     STAssertTrue(strcmp(converted, [@"the quick brown fox" cStringUsingEncoding:NSUTF8StringEncoding]) == 0, nil);
-    NSLog(@"Converted: %s", converted);
 }
 
 

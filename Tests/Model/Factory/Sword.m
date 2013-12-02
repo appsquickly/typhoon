@@ -34,11 +34,4 @@
     return _specification;
 }
 
-
-- (void)dealloc
-{
-    NSLog(@"$$$$$$$$$$$$$$ %@ in dealloc!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", NSStringFromClass([self class]));
-}
-
-
 @end

@@ -35,7 +35,7 @@
 
 + (void)verifyKnightWithExternalQuest:(Knight*)knight
 {
-    LogDebug(@"Knight: %@", knight);
+    LogTrace(@"Knight: %@", knight);
 
     assertThat(knight, notNilValue()); // this needs to call into a SenTestCase, not being self. Perhaps provide when initializing the assembly, and then add a new macro to OCHamcrest?
     assertThat(knight.quest, instanceOf([CampaignQuest class]));

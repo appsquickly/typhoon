@@ -12,6 +12,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "Typhoon.h"
 #import "Knight.h"
+#import "OCLogTemplate.h"
 
 @interface TyphoonPropertyPlaceholderConfigurerTests : SenTestCase
 @end
@@ -31,7 +32,7 @@
 - (void)test_parses_property_name_value_pairs
 {
     NSDictionary* properties = [_configurer properties];
-    NSLog(@"Properties: %@", properties);
+    LogTrace(@"Properties: %@", properties); // TODO: replace with an actual automated test.
 }
 
 - (void)test_mutates_initializer_values

@@ -21,6 +21,6 @@
 
 + (void)markAssemblyMethodsAsSwizzled:(TyphoonAssembly*)assembly;
 
-+ (void)replaceImplementationOfDefinitionOnAssembly:(TyphoonAssembly*)assembly withDynamicBeforeAdviceImplementation:(NSValue*)obj;
++ (void)replaceImplementationOfDefinitionSelector:(NSValue*)obj withDynamicBeforeAdviceImplementationOnAssembly:(TyphoonAssembly*)assembly;
 
 @end
