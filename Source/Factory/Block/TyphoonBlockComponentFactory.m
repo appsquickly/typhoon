@@ -20,12 +20,7 @@
 #import "OCLogTemplate.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import "TyphoonAssemblyAdviser.h"
-
-@interface TyphoonAssembly (BlockFactoryFriend)
-
-- (NSMutableDictionary*)cachedDefinitionsForMethodName;
-
-@end
+#import "TyphoonAssembly+TyphoonBlockFactoryFriend.h"
 
 @implementation TyphoonBlockComponentFactory
 
@@ -57,38 +52,32 @@
         for (TyphoonAssembly* assembly in assemblies)
         {
             LogTrace(@"Building assembly: %@", NSStringFromClass([assembly class]));
+            [self assertIsAssembly:assembly];
 
-            // raise exception if not an Assembly
-            if (![assembly isKindOfClass:[TyphoonAssembly class]]) // not an assembly
-            {
-                // raise a 'not an assembly exception'
-                [NSException raise:NSInvalidArgumentException format:@"Class '%@' is not a sub-class of %@",
-                                                                     NSStringFromClass([assembly class]),
-                                                                     NSStringFromClass([TyphoonAssembly class])];
-            }
-
-            // why do we have to do this?
-            // it:
-            /*
-                Swizzles all definition methods, so that a call to the assembly builds and caches a definition, which is then returned.
-                The complexity is with fully constructing the definition, complete with circular dependencies.
-             */
-
-            // this should be done when an assembly is about to be used, and is done being constructed.
-            // assemblies are static, so why not do this in [Assembly load]?
-            // this works okay, but why not tell the assembly that it is about to be used and have the assmebly deal with advising?
-            // would need to be called whenever any subclass was loaded, too - which means subclass loads need to call super? correct.
-            [TyphoonAssemblyAdviser adviseMethods:assembly];
-
-            // register all assembly definitions
-            NSArray* definitions = [self definitionsByPopulatingCache:assembly];
-            for (TyphoonDefinition* definition in definitions)
-            {
-                [self register:definition];
-            }
+            [assembly prepareForUse];
+            [self registerAllDefinitions:assembly];
         }
     }
     return self;
+}
+
+- (void)assertIsAssembly:(TyphoonAssembly*)assembly
+{
+    if (![assembly isKindOfClass:[TyphoonAssembly class]]) //
+    {
+        [NSException raise:NSInvalidArgumentException format:@"Class '%@' is not a sub-class of %@",
+                                                             NSStringFromClass([assembly class]),
+                                                             NSStringFromClass([TyphoonAssembly class])];
+    }
+}
+
+- (void)registerAllDefinitions:(TyphoonAssembly*)assembly
+{
+    NSArray* definitions = [assembly definitions];
+    for (TyphoonDefinition* definition in definitions)
+    {
+        [self register:definition];
+    }
 }
 
 /* ====================================================================================================================================== */
@@ -120,33 +109,5 @@
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-// replace with:
-//
-// [assembly populateCache];
-// [assembly definitions]; // can we do this without populating cache? make the cache population a side effect?
-- (NSArray*)definitionsByPopulatingCache:(TyphoonAssembly*)assembly
-{
-    @synchronized (self)
-    {
-        [self populateCacheOnAssembly:assembly];
-        return [[assembly cachedDefinitionsForMethodName] allValues];
-    }
-}
-
-// replace with [aseembly populateCache];
-- (void)populateCacheOnAssembly:(TyphoonAssembly*)assembly
-{
-    // by calling all definition selectors
-    // how do we know that this populates the definition cache?
-        // where is the new impl?
-        // in the assembly.
-    NSSet* definitionSelectors = [TyphoonAssemblyAdviser obtainDefinitionSelectors:assembly]; // the Assembly should know what its own definition selectors are.
-
-    [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
-    {
-        SEL selector = (SEL) [obj pointerValue];
-        objc_msgSend(assembly, selector);
-    }];
-}
 
 @end

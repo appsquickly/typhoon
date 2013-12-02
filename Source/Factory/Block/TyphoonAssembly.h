@@ -33,5 +33,4 @@
 */
 - (void)resolveCollaboratingAssemblies;
 
-
 @end

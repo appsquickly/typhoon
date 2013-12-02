@@ -19,6 +19,8 @@
 #import "TyphoonAssemblySelectorAdviser.h"
 #import "OCLogTemplate.h"
 #import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonAssembly+TyphoonBlockFactoryFriend.h"
+#import "TyphoonAssemblyAdviser.h"
 
 static NSMutableDictionary* resolveStackForSelector;
 static NSMutableArray* reservedSelectorsAsStrings;
@@ -242,14 +244,42 @@ static NSMutableArray* reservedSelectorsAsStrings;
 {
 }
 
+
+
+
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
+#pragma mark - TyphoonBlockFactoryFriend
 - (NSMutableDictionary*)cachedDefinitionsForMethodName
 {
     return _cachedDefinitions;
 }
 
+- (NSArray*)definitions
+{
+    @synchronized (self)
+    {
+        [self populateCache];
+        return [[self cachedDefinitionsForMethodName] allValues];
+    }
+}
 
+- (void)populateCache
+{
+    // by calling all definition selectors
+    NSSet* definitionSelectors = [TyphoonAssemblyAdviser obtainDefinitionSelectors:self]; // the Assembly should know what its own definition selectors are.
+
+    [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
+    {
+        SEL selector = (SEL) [obj pointerValue];
+        objc_msgSend(self, selector);
+    }];
+}
+
+- (void)prepareForUse
+{
+    [TyphoonAssemblyAdviser adviseMethods:self];
+}
 
 @end
