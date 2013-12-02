@@ -13,6 +13,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class TyphoonDefinition;
+
 
 @interface TyphoonAssembly : NSObject
 {
