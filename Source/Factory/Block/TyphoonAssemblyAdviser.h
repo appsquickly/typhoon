@@ -13,6 +13,8 @@
 
 + (void)adviseMethods:(TyphoonAssembly*)assembly;
 
++ (NSSet*)obtainDefinitionSelectors:(TyphoonAssembly*)assembly;
+
 + (BOOL)assemblyMethodsSwizzled:(TyphoonAssembly*)assembly;
 
 + (BOOL)assemblyMethodsHaveNotYetBeenSwizzled:(TyphoonAssembly*)assembly;

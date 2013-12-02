@@ -116,105 +116,12 @@
 
 - (void)populateCacheOnAssembly:(TyphoonAssembly*)assembly
 {
-    NSSet* definitionSelectors = [self obtainDefinitionSelectors:assembly];
+    NSSet* definitionSelectors = [TyphoonAssemblyAdviser obtainDefinitionSelectors:assembly];
 
     [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
     {
         SEL selector = (SEL) [obj pointerValue];
         objc_msgSend(assembly, selector);
-    }];
-}
-
-// move all this stuff below to the AssemblyAdviser - all this class should do is simple forwarding.
-- (NSSet*)obtainDefinitionSelectors:(TyphoonAssembly*)assembly
-{
-    NSMutableSet* definitionSelectors = [[NSMutableSet alloc] init];
-    [self addDefinitionSelectorsForSubclassesOfAssembly:assembly toSet:definitionSelectors];
-    return definitionSelectors;
-}
-
-- (void)addDefinitionSelectorsForSubclassesOfAssembly:(TyphoonAssembly*)assembly toSet:(NSMutableSet*)definitionSelectors
-{
-    Class currentClass = [assembly class];
-    while ([[self class] classNotRootAssemblyClass:currentClass])
-    {
-        [definitionSelectors unionSet:[self obtainDefinitionSelectorsInAssemblyClass:currentClass]];
-        currentClass = class_getSuperclass(currentClass);
-    }
-}
-
-+ (BOOL)classNotRootAssemblyClass:(Class)currentClass;
-{
-    NSString* currentClassName = NSStringFromClass(currentClass);
-    NSString* rootAssemblyClassName = NSStringFromClass([TyphoonAssembly class]);
-
-    return ![currentClassName isEqualToString:rootAssemblyClassName];
-}
-
-- (NSSet*)obtainDefinitionSelectorsInAssemblyClass:(Class)class
-{
-    NSMutableSet* definitionSelectors = [[NSMutableSet alloc] init];
-    [self addDefinitionSelectorsInClass:class toSet:definitionSelectors];
-    return definitionSelectors;
-}
-
-- (void)addDefinitionSelectorsInClass:(Class)aClass toSet:(NSMutableSet*)definitionSelectors
-{
-    [self enumerateMethodsInClass:aClass usingBlock:^(Method method)
-    {
-        if ([self method:method onClassIsNotReserved:aClass])
-        {
-            [self addDefinitionSelectorForMethod:method toSet:definitionSelectors];
-        }
-    }];
-}
-
-typedef void(^MethodEnumerationBlock)(Method method);
-
-- (void)enumerateMethodsInClass:(Class)class usingBlock:(MethodEnumerationBlock)block;
-{
-    unsigned int methodCount;
-    Method* methodList = class_copyMethodList(class, &methodCount);
-    for (int i = 0; i < methodCount; i++)
-    {
-        Method method = methodList[i];
-        block(method);
-    }
-    free(methodList);
-}
-
-- (BOOL)method:(Method)method onClassIsNotReserved:(Class)aClass;
-{
-    SEL methodSelector = method_getName(method);
-    return ![aClass selectorReservedOrPropertySetter:methodSelector];
-}
-
-- (void)addDefinitionSelectorForMethod:(Method)method toSet:(NSMutableSet*)definitionSelectors
-{
-    SEL methodSelector = method_getName(method);
-    [definitionSelectors addObject:[NSValue valueWithPointer:methodSelector]];
-}
-
-// entry point, from initWithAssemblies - move next
-- (void)applyBeforeAdviceToAssemblyMethods:(TyphoonAssembly*)assembly
-{
-    @synchronized (self)
-    {
-        if ([TyphoonAssemblyAdviser assemblyMethodsHaveNotYetBeenSwizzled:assembly])
-        {
-            [self swizzleAssemblyMethods:assembly];
-        }
-    }
-}
-
-- (void)swizzleAssemblyMethods:(TyphoonAssembly*)assembly;
-{
-    [TyphoonAssemblyAdviser markAssemblyMethodsAsSwizzled:assembly];
-
-    NSSet* definitionSelectors = [self obtainDefinitionSelectors:assembly];
-    [definitionSelectors enumerateObjectsUsingBlock:^(NSValue *selectorObj, BOOL* stop)
-    {
-        [TyphoonAssemblyAdviser replaceImplementationOfDefinitionOnAssembly:assembly withDynamicBeforeAdviceImplementation:selectorObj];
     }];
 }
 

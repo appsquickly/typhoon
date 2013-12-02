@@ -27,6 +27,4 @@
 
 - (instancetype)initWithAssemblies:(NSArray*)assemblies;
 
-// will probably be moved to TyphoonAssemblyAdviser
-
 @end

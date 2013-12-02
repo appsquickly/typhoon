@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "59EBF97A9A7646B2995F3E9E"
+               BlueprintIdentifier = "B5CA306DBC1941729871061E"
                BuildableName = "libPods-osx-OCHamcrest.a"
                BlueprintName = "Pods-osx-OCHamcrest"
                ReferencedContainer = "container:Pods.xcodeproj">
