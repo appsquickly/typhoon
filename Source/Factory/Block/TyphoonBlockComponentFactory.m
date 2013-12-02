@@ -19,12 +19,9 @@
 #import "TyphoonJRSwizzle.h"
 #import "OCLogTemplate.h"
 #import "TyphoonAssemblySelectorAdviser.h"
-
-static NSMutableArray* swizzleRegistry;
+#import "TyphoonAssemblyAdviser.h"
 
 @interface TyphoonAssembly (BlockFactoryFriend)
-
-+ (BOOL)selectorReservedOrPropertySetter:(SEL)selector;
 
 - (NSMutableDictionary*)cachedDefinitionsForMethodName;
 
@@ -34,17 +31,6 @@ static NSMutableArray* swizzleRegistry;
 
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
-
-+ (void)initialize
-{
-    [super initialize];
-    @synchronized (self)
-    {
-        swizzleRegistry = [[NSMutableArray alloc] init];
-    }
-}
-
-
 + (instancetype)factoryWithAssembly:(TyphoonAssembly*)assembly
 {
     return [[self alloc] initWithAssemblies:@[assembly]];
@@ -78,7 +64,8 @@ static NSMutableArray* swizzleRegistry;
                                                                      NSStringFromClass([TyphoonAssembly class])];
             }
 
-            [self applyBeforeAdviceToAssemblyMethods:assembly];
+            [TyphoonAssemblyAdviser adviseMethods:assembly];
+
             NSArray* definitions = [self definitionsByPopulatingCache:assembly];
             for (TyphoonDefinition* definition in definitions)
             {
@@ -138,6 +125,7 @@ static NSMutableArray* swizzleRegistry;
     }];
 }
 
+// move all this stuff below to the AssemblyAdviser - all this class should do is simple forwarding.
 - (NSSet*)obtainDefinitionSelectors:(TyphoonAssembly*)assembly
 {
     NSMutableSet* definitionSelectors = [[NSMutableSet alloc] init];
@@ -148,14 +136,14 @@ static NSMutableArray* swizzleRegistry;
 - (void)addDefinitionSelectorsForSubclassesOfAssembly:(TyphoonAssembly*)assembly toSet:(NSMutableSet*)definitionSelectors
 {
     Class currentClass = [assembly class];
-    while ([self classNotRootAssemblyClass:currentClass])
+    while ([[self class] classNotRootAssemblyClass:currentClass])
     {
         [definitionSelectors unionSet:[self obtainDefinitionSelectorsInAssemblyClass:currentClass]];
         currentClass = class_getSuperclass(currentClass);
     }
 }
 
-- (BOOL)classNotRootAssemblyClass:(Class)currentClass;
++ (BOOL)classNotRootAssemblyClass:(Class)currentClass;
 {
     NSString* currentClassName = NSStringFromClass(currentClass);
     NSString* rootAssemblyClassName = NSStringFromClass([TyphoonAssembly class]);
@@ -207,43 +195,27 @@ typedef void(^MethodEnumerationBlock)(Method method);
     [definitionSelectors addObject:[NSValue valueWithPointer:methodSelector]];
 }
 
+// entry point, from initWithAssemblies - move next
 - (void)applyBeforeAdviceToAssemblyMethods:(TyphoonAssembly*)assembly
 {
     @synchronized (self)
     {
-        if ([self assemblyMethodsHaveNotYetBeenSwizzled:assembly])
+        if ([TyphoonAssemblyAdviser assemblyMethodsHaveNotYetBeenSwizzled:assembly])
         {
             [self swizzleAssemblyMethods:assembly];
         }
     }
 }
 
-- (BOOL)assemblyMethodsHaveNotYetBeenSwizzled:(TyphoonAssembly*)assembly;
-{
-    return ![swizzleRegistry containsObject:[assembly class]];
-}
-
 - (void)swizzleAssemblyMethods:(TyphoonAssembly*)assembly;
 {
-    [self markAssemblyMethodsAsSwizzled:assembly];
+    [TyphoonAssemblyAdviser markAssemblyMethodsAsSwizzled:assembly];
 
     NSSet* definitionSelectors = [self obtainDefinitionSelectors:assembly];
-    [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
+    [definitionSelectors enumerateObjectsUsingBlock:^(NSValue *selectorObj, BOOL* stop)
     {
-        [self replaceImplementationOfDefinitionOnAssembly:assembly withDynamicBeforeAdviceImplementation:obj];
+        [TyphoonAssemblyAdviser replaceImplementationOfDefinitionOnAssembly:assembly withDynamicBeforeAdviceImplementation:selectorObj];
     }];
-}
-
-- (void)markAssemblyMethodsAsSwizzled:(TyphoonAssembly*)assembly;
-{
-    [swizzleRegistry addObject:[assembly class]];
-}
-
-- (void)replaceImplementationOfDefinitionOnAssembly:(TyphoonAssembly*)assembly withDynamicBeforeAdviceImplementation:(id)obj;
-{
-    SEL methodSelector = (SEL) [obj pointerValue];
-    SEL swizzled = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector];
-    [[assembly class] typhoon_swizzleMethod:methodSelector withMethod:swizzled error:nil];
 }
 
 @end

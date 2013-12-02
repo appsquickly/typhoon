@@ -26,6 +26,8 @@
 */
 + (instancetype)defaultAssembly;
 
++ (BOOL)selectorReservedOrPropertySetter:(SEL)selector;
+
 /**
 * Callback to wire any collaborating assemblies to either a hard-coded reference or a proxy that will be resolved at runtime.
 */
