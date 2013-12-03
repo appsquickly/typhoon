@@ -55,9 +55,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
     reservedSelectorsAsStrings = [[NSMutableArray alloc] init];
 
     [self markSelectorReserved:@selector(init)];
-    [self markSelectorReserved:@selector(cachedDefinitionsForMethodName)];
     [self markSelectorReserved:@selector(definitions)];
-    [self markSelectorReserved:@selector(populateCache)];
     [self markSelectorReserved:@selector(prepareForUse)];
     [self markSelectorReservedFromString:@".cxx_destruct"];
     [self markSelectorReserved:@selector(defaultAssembly)];
