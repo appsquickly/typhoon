@@ -125,7 +125,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
     return imp_implementationWithBlock((__bridge id) objc_unretainedPointer((TyphoonDefinition*) ^(TyphoonAssembly* me)
     {
         NSString* key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selWithAdvicePrefix];
-        return [me->_definitionBuilder builtDefinitionForKey:key assembly:me];
+        return [me->_definitionBuilder builtDefinitionForKey:key];
     }));
 }
 
@@ -138,8 +138,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
     self = [super init];
     if (self)
     {
-        _cachedDefinitions = [[NSMutableDictionary alloc] init];
-        _definitionBuilder = [[TyphoonAssemblyDefinitionBuilder alloc] init];
+        _definitionBuilder = [[TyphoonAssemblyDefinitionBuilder alloc] initWithAssembly:self];
     }
     return self;
 }
@@ -156,39 +155,13 @@ static NSMutableArray* reservedSelectorsAsStrings;
 {
 }
 
-
-
-
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
 #pragma mark - TyphoonBlockFactoryFriend
-- (NSMutableDictionary*)cachedDefinitionsForMethodName
-{
-    return _cachedDefinitions;
-}
-
 - (NSArray*)definitions
 {
-    // ask the DefinitionBuilder!
-
-    @synchronized (self)
-    {
-        [self populateCache];
-        return [[self cachedDefinitionsForMethodName] allValues];
-    }
-}
-
-- (void)populateCache
-{
-    // by calling all definition selectors
-    NSSet* definitionSelectors = [TyphoonAssemblyAdviser definitionSelectors:self]; // the Assembly should know what its own definition selectors are.
-
-    [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
-    {
-        SEL selector = (SEL) [obj pointerValue];
-        objc_msgSend(self, selector);
-    }];
+    return [_definitionBuilder builtDefinitions];
 }
 
 - (void)prepareForUse

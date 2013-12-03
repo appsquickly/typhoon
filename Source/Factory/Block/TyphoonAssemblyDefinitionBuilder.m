@@ -12,13 +12,36 @@
 #import "TyphoonAssembly+TyphoonBlockFactoryFriend.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import <objc/runtime.h>
-
+#import "TyphoonAssemblyAdviser.h"
 
 
 @implementation TyphoonAssemblyDefinitionBuilder
 {
+    TyphoonAssembly* _assembly;
+
     NSMutableDictionary* _resolveStackForSelector;
+    NSMutableDictionary* _cachedDefinitionsForMethodName;
 }
+
+- (instancetype)initWithAssembly:(TyphoonAssembly*)assembly
+{
+    self = [super init];
+    if (self)
+    {
+        _assembly = assembly;
+
+        _resolveStackForSelector = [[NSMutableDictionary alloc] init];
+        _cachedDefinitionsForMethodName = [[NSMutableDictionary alloc] init];
+    }
+
+    return self;
+}
+
++ (instancetype)builderWithAssembly:(TyphoonAssembly*)assembly
+{
+    return [[self alloc] initWithAssembly:assembly];
+}
+
 
 - (id)init
 {
@@ -26,12 +49,35 @@
     if (self)
     {
         _resolveStackForSelector = [[NSMutableDictionary alloc] init];
+        _cachedDefinitionsForMethodName = [[NSMutableDictionary alloc] init];
     }
 
     return self;
 }
 
-- (TyphoonDefinition*)builtDefinitionForKey:(NSString*)key assembly:(TyphoonAssembly*)assembly
+- (NSArray*)builtDefinitions
+{
+    @synchronized (self)
+    {
+        [self populateCache];
+        return [_cachedDefinitionsForMethodName allValues];
+    }
+}
+
+- (void)populateCache
+{
+    // by calling all definition selectors
+    NSSet* definitionSelectors = [TyphoonAssemblyAdviser definitionSelectors:_assembly]; // the Assembly should know what its own definition selectors are.
+
+    [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
+    {
+        SEL selector = (SEL) [obj pointerValue];
+        NSString* key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
+        [self builtDefinitionForKey:key];
+    }];
+}
+
+- (TyphoonDefinition*)builtDefinitionForKey:(NSString*)key
 {
     [self markCurrentlyResolvingKey:key];
 
@@ -40,7 +86,7 @@
         return [self definitionToTerminateCircularDependencyForKey:key];
     }
 
-    id cached = [self populateCacheWithDefinitionForKey:key me:assembly];
+    id cached = [self populateCacheWithDefinitionForKey:key];
     [self markKeyResolved:key];
 
     LogTrace(@"Did finish building definition for key: '%@'", key);
@@ -100,30 +146,30 @@
 }
 
 #pragma mark - Building
-- (TyphoonDefinition*)populateCacheWithDefinitionForKey:(NSString*)key me:(TyphoonAssembly*)me;
+- (TyphoonDefinition*)populateCacheWithDefinitionForKey:(NSString*)key
 {
-    id d = [self definitionByCallingAssemblyMethodForKey:key me:me];
-    [self populateCacheWithDefinition:d forKey:key me:me];
+    id d = [self definitionByCallingAssemblyMethodForKey:key];
+    [self populateCacheWithDefinition:d forKey:key];
     return d;
 }
 
-- (id)definitionByCallingAssemblyMethodForKey:(NSString*)key me:(TyphoonAssembly*)me
+- (id)definitionByCallingAssemblyMethodForKey:(NSString*)key
 {
     SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key];
-    id cached = objc_msgSend(me,
+    id cached = objc_msgSend(_assembly,
             sel); // the advisedSEL will call through to the original, unwrapped implementation because prepareForUse has been called, and all our definition methods have been swizzled.
     // This method will likely call through to other definition methods on the assembly, which will go through the advising machinery because of this swizzling.
     // Therefore, the definitions a definition depends on will be fully constructed before they are needed to construct that definition.
     return cached;
 }
 
-- (void)populateCacheWithDefinition:(TyphoonDefinition*)definition forKey:(NSString*)key me:(TyphoonAssembly*)me
+- (void)populateCacheWithDefinition:(TyphoonDefinition*)definition forKey:(NSString*)key
 {
     if (definition && [definition isKindOfClass:[TyphoonDefinition class]])
     {
         [self setKey:key onDefinitionIfExistingKeyEmpty:definition];
 
-        [[me cachedDefinitionsForMethodName] setObject:definition forKey:key];
+        [_cachedDefinitionsForMethodName setObject:definition forKey:key];
     }
 }
 

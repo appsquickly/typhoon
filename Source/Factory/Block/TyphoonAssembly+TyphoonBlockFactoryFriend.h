@@ -9,9 +9,8 @@
 
 @interface TyphoonAssembly (TyphoonBlockFactoryFriend)
 
-- (NSArray*)definitions;
-- (NSMutableDictionary*)cachedDefinitionsForMethodName;
-
 - (void)prepareForUse;
+
+- (NSArray*)definitions;
 
 @end

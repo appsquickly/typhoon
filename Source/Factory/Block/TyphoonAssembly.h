@@ -17,9 +17,6 @@
 
 
 @interface TyphoonAssembly : NSObject
-{
-    NSMutableDictionary* _cachedDefinitions;
-}
 
 + (instancetype)assembly;
 
