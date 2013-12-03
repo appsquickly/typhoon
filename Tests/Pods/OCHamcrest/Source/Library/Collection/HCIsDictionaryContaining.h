@@ -12,20 +12,20 @@
 
 @interface HCIsDictionaryContaining : HCBaseMatcher
 {
-    id <HCMatcher> keyMatcher;
-    id <HCMatcher> valueMatcher;
+    id<HCMatcher> keyMatcher;
+    id<HCMatcher> valueMatcher;
 }
 
-+ (id)isDictionaryContainingKey:(id <HCMatcher>)aKeyMatcher
-        value:(id <HCMatcher>)aValueMatcher;
++ (id)isDictionaryContainingKey:(id<HCMatcher>)aKeyMatcher
+                          value:(id<HCMatcher>)aValueMatcher;
 
-- (id)initWithKeyMatcher:(id <HCMatcher>)aKeyMatcher
-        valueMatcher:(id <HCMatcher>)aValueMatcher;
+- (id)initWithKeyMatcher:(id<HCMatcher>)aKeyMatcher
+            valueMatcher:(id<HCMatcher>)aValueMatcher;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_hasEntry(id keyMatch, id valueMatch);
+OBJC_EXPORT id<HCMatcher> HC_hasEntry(id keyMatch, id valueMatch);
 
 /**
     hasEntry(keyMatcher, valueMatcher) -
@@ -50,5 +50,5 @@ OBJC_EXPORT id <HCMatcher> HC_hasEntry(id keyMatch, id valueMatch);
     @ingroup collection_matchers
  */
 #ifdef HC_SHORTHAND
-#define hasEntry HC_hasEntry
+    #define hasEntry HC_hasEntry
 #endif

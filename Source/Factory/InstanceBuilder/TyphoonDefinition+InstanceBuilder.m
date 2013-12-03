@@ -9,6 +9,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "TyphoonLinkerCategoryBugFix.h"
+TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
+
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonPropertyInjectedWithStringRepresentation.h"
 #import "TyphoonPropertyInjectedByType.h"

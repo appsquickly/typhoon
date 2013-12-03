@@ -12,17 +12,16 @@
 
 @interface HCIsCollectionOnlyContaining : HCBaseMatcher
 {
-    id <HCMatcher> matcher;
+    id<HCMatcher> matcher;
 }
 
-+ (id)isCollectionOnlyContaining:(id <HCMatcher>)aMatcher;
-
-- (id)initWithMatcher:(id <HCMatcher>)aMatcher;
++ (id)isCollectionOnlyContaining:(id<HCMatcher>)aMatcher;
+- (id)initWithMatcher:(id<HCMatcher>)aMatcher;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_onlyContains(id itemMatch, ...) NS_REQUIRES_NIL_TERMINATION;
+OBJC_EXPORT id<HCMatcher> HC_onlyContains(id itemMatch, ...) NS_REQUIRES_NIL_TERMINATION;
 
 /**
     onlyContains(firstMatcher, ...) -
@@ -49,5 +48,5 @@ OBJC_EXPORT id <HCMatcher> HC_onlyContains(id itemMatch, ...) NS_REQUIRES_NIL_TE
     @ingroup collection_matchers
  */
 #ifdef HC_SHORTHAND
-#define onlyContains HC_onlyContains
+    #define onlyContains HC_onlyContains
 #endif

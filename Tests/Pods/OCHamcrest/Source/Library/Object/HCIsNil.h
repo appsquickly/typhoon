@@ -17,7 +17,7 @@
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_nilValue(void);
+OBJC_EXPORT id<HCMatcher> HC_nilValue(void);
 
 /**
     Matches if object is @c nil.
@@ -28,11 +28,11 @@ OBJC_EXPORT id <HCMatcher> HC_nilValue(void);
     @ingroup object_matchers
  */
 #ifdef HC_SHORTHAND
-#define nilValue() HC_nilValue()
+    #define nilValue() HC_nilValue()
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_notNilValue(void);
+OBJC_EXPORT id<HCMatcher> HC_notNilValue(void);
 
 /**
     Matches if object is not @c nil.
@@ -43,5 +43,5 @@ OBJC_EXPORT id <HCMatcher> HC_notNilValue(void);
     @ingroup object_matchers
  */
 #ifdef HC_SHORTHAND
-#define notNilValue() HC_notNilValue()
+    #define notNilValue() HC_notNilValue()
 #endif

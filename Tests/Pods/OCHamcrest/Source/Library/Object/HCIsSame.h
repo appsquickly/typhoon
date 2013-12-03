@@ -16,13 +16,12 @@
 }
 
 + (id)isSameAs:(id)anObject;
-
 - (id)initSameAs:(id)anObject;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_sameInstance(id object);
+OBJC_EXPORT id<HCMatcher> HC_sameInstance(id object);
 
 /**
     sameInstance(anObject) -
@@ -39,5 +38,5 @@ OBJC_EXPORT id <HCMatcher> HC_sameInstance(id object);
     @ingroup object_matchers
  */
 #ifdef HC_SHORTHAND
-#define sameInstance HC_sameInstance
+    #define sameInstance HC_sameInstance
 #endif

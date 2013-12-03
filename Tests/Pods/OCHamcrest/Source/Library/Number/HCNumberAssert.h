@@ -13,7 +13,7 @@
 
 
 OBJC_EXPORT void HC_assertThatBoolWithLocation(id testCase, BOOL actual,
-        id <HCMatcher> matcher, const char* fileName, int lineNumber);
+        id<HCMatcher> matcher, const char* fileName, int lineNumber);
 
 #define HC_assertThatBool(actual, matcher)  \
     HC_assertThatBoolWithLocation(self, actual, matcher, __FILE__, __LINE__)
@@ -31,14 +31,14 @@ OBJC_EXPORT void HC_assertThatBoolWithLocation(id testCase, BOOL actual,
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-#define assertThatBool HC_assertThatBool
+    #define assertThatBool HC_assertThatBool
 #endif
 
 
 #pragma mark -
 
 OBJC_EXPORT void HC_assertThatCharWithLocation(id testCase, char actual,
-        id <HCMatcher> matcher, const char* fileName, int lineNumber);
+        id<HCMatcher> matcher, const char* fileName, int lineNumber);
 
 #define HC_assertThatChar(actual, matcher)  \
     HC_assertThatCharWithLocation(self, actual, matcher, __FILE__, __LINE__)
@@ -56,14 +56,14 @@ OBJC_EXPORT void HC_assertThatCharWithLocation(id testCase, char actual,
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-#define assertThatChar HC_assertThatChar
+    #define assertThatChar HC_assertThatChar
 #endif
 
 
 #pragma mark -
 
 OBJC_EXPORT void HC_assertThatDoubleWithLocation(id testCase, double actual,
-        id <HCMatcher> matcher, const char* fileName, int lineNumber);
+        id<HCMatcher> matcher, const char* fileName, int lineNumber);
 
 #define HC_assertThatDouble(actual, matcher)  \
     HC_assertThatDoubleWithLocation(self, actual, matcher, __FILE__, __LINE__)
@@ -81,14 +81,14 @@ OBJC_EXPORT void HC_assertThatDoubleWithLocation(id testCase, double actual,
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-#define assertThatDouble HC_assertThatDouble
+    #define assertThatDouble HC_assertThatDouble
 #endif
 
 
 #pragma mark -
 
 OBJC_EXPORT void HC_assertThatFloatWithLocation(id testCase, float actual,
-        id <HCMatcher> matcher, const char* fileName, int lineNumber);
+        id<HCMatcher> matcher, const char* fileName, int lineNumber);
 
 #define HC_assertThatFloat(actual, matcher)  \
     HC_assertThatFloatWithLocation(self, actual, matcher, __FILE__, __LINE__)
@@ -106,14 +106,14 @@ OBJC_EXPORT void HC_assertThatFloatWithLocation(id testCase, float actual,
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-#define assertThatFloat HC_assertThatFloat
+    #define assertThatFloat HC_assertThatFloat
 #endif
 
 
 #pragma mark -
 
 OBJC_EXPORT void HC_assertThatIntWithLocation(id testCase, int actual,
-        id <HCMatcher> matcher, const char* fileName, int lineNumber);
+        id<HCMatcher> matcher, const char* fileName, int lineNumber);
 
 #define HC_assertThatInt(actual, matcher)  \
     HC_assertThatIntWithLocation(self, actual, matcher, __FILE__, __LINE__)
@@ -131,14 +131,14 @@ OBJC_EXPORT void HC_assertThatIntWithLocation(id testCase, int actual,
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-#define assertThatInt HC_assertThatInt
+    #define assertThatInt HC_assertThatInt
 #endif
 
 
 #pragma mark -
 
 OBJC_EXPORT void HC_assertThatLongWithLocation(id testCase, long actual,
-        id <HCMatcher> matcher, const char* fileName, int lineNumber);
+        id<HCMatcher> matcher, const char* fileName, int lineNumber);
 
 #define HC_assertThatLong(actual, matcher)  \
     HC_assertThatLongWithLocation(self, actual, matcher, __FILE__, __LINE__)
@@ -156,14 +156,14 @@ OBJC_EXPORT void HC_assertThatLongWithLocation(id testCase, long actual,
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-#define assertThatLong HC_assertThatLong
+    #define assertThatLong HC_assertThatLong
 #endif
 
 
 #pragma mark -
 
 OBJC_EXPORT void HC_assertThatLongLongWithLocation(id testCase, long long actual,
-        id <HCMatcher> matcher, const char* fileName, int lineNumber);
+        id<HCMatcher> matcher, const char* fileName, int lineNumber);
 
 #define HC_assertThatLongLong(actual, matcher)  \
     HC_assertThatLongLongWithLocation(self, actual, matcher, __FILE__, __LINE__)
@@ -182,14 +182,14 @@ OBJC_EXPORT void HC_assertThatLongLongWithLocation(id testCase, long long actual
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-#define assertThatLongLong HC_assertThatLongLong
+    #define assertThatLongLong HC_assertThatLongLong
 #endif
 
 
 #pragma mark -
 
 OBJC_EXPORT void HC_assertThatShortWithLocation(id testCase, short actual,
-        id <HCMatcher> matcher, const char* fileName, int lineNumber);
+        id<HCMatcher> matcher, const char* fileName, int lineNumber);
 
 #define HC_assertThatShort(actual, matcher)  \
     HC_assertThatShortWithLocation(self, actual, matcher, __FILE__, __LINE__)
@@ -207,14 +207,14 @@ OBJC_EXPORT void HC_assertThatShortWithLocation(id testCase, short actual,
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-#define assertThatShort HC_assertThatShort
+    #define assertThatShort HC_assertThatShort
 #endif
 
 
 #pragma mark -
 
 OBJC_EXPORT void HC_assertThatUnsignedCharWithLocation(id testCase, unsigned char actual,
-        id <HCMatcher> matcher, const char* fileName, int lineNumber);
+        id<HCMatcher> matcher, const char* fileName, int lineNumber);
 
 #define HC_assertThatUnsignedChar(actual, matcher)  \
     HC_assertThatUnsignedCharWithLocation(self, actual, matcher, __FILE__, __LINE__)
@@ -233,14 +233,14 @@ OBJC_EXPORT void HC_assertThatUnsignedCharWithLocation(id testCase, unsigned cha
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-#define assertThatUnsignedChar HC_assertThatUnsignedChar
+    #define assertThatUnsignedChar HC_assertThatUnsignedChar
 #endif
 
 
 #pragma mark -
 
 OBJC_EXPORT void HC_assertThatUnsignedIntWithLocation(id testCase, unsigned int actual,
-        id <HCMatcher> matcher, const char* fileName, int lineNumber);
+        id<HCMatcher> matcher, const char* fileName, int lineNumber);
 
 #define HC_assertThatUnsignedInt(actual, matcher)  \
     HC_assertThatUnsignedIntWithLocation(self, actual, matcher, __FILE__, __LINE__)
@@ -258,14 +258,14 @@ OBJC_EXPORT void HC_assertThatUnsignedIntWithLocation(id testCase, unsigned int 
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-#define assertThatUnsignedInt HC_assertThatUnsignedInt
+    #define assertThatUnsignedInt HC_assertThatUnsignedInt
 #endif
 
 
 #pragma mark -
 
 OBJC_EXPORT void HC_assertThatUnsignedLongWithLocation(id testCase, unsigned long actual,
-        id <HCMatcher> matcher, const char* fileName, int lineNumber);
+        id<HCMatcher> matcher, const char* fileName, int lineNumber);
 
 #define HC_assertThatUnsignedLong(actual, matcher)  \
     HC_assertThatUnsignedLongWithLocation(self, actual, matcher, __FILE__, __LINE__)
@@ -283,14 +283,14 @@ OBJC_EXPORT void HC_assertThatUnsignedLongWithLocation(id testCase, unsigned lon
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-#define assertThatUnsignedLong HC_assertThatUnsignedLong
+    #define assertThatUnsignedLong HC_assertThatUnsignedLong
 #endif
 
 
 #pragma mark -
 
 OBJC_EXPORT void HC_assertThatUnsignedLongLongWithLocation(id testCase, unsigned long long actual,
-        id <HCMatcher> matcher, const char* fileName, int lineNumber);
+        id<HCMatcher> matcher, const char* fileName, int lineNumber);
 
 #define HC_assertThatUnsignedLongLong(actual, matcher)  \
     HC_assertThatUnsignedLongLongWithLocation(self, actual, matcher, __FILE__, __LINE__)
@@ -308,14 +308,14 @@ OBJC_EXPORT void HC_assertThatUnsignedLongLongWithLocation(id testCase, unsigned
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-#define assertThatUnsignedLongLong HC_assertThatUnsignedLongLong
+    #define assertThatUnsignedLongLong HC_assertThatUnsignedLongLong
 #endif
 
 
 #pragma mark -
 
 OBJC_EXPORT void HC_assertThatUnsignedShortWithLocation(id testCase, unsigned short actual,
-        id <HCMatcher> matcher, const char* fileName, int lineNumber);
+        id<HCMatcher> matcher, const char* fileName, int lineNumber);
 
 #define HC_assertThatUnsignedShort(actual, matcher)  \
     HC_assertThatUnsignedShortWithLocation(self, actual, matcher, __FILE__, __LINE__)
@@ -333,14 +333,14 @@ OBJC_EXPORT void HC_assertThatUnsignedShortWithLocation(id testCase, unsigned sh
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-#define assertThatUnsignedShort HC_assertThatUnsignedShort
+    #define assertThatUnsignedShort HC_assertThatUnsignedShort
 #endif
 
 
 #pragma mark -
 
 OBJC_EXPORT void HC_assertThatIntegerWithLocation(id testCase, NSInteger actual,
-        id <HCMatcher> matcher, const char* fileName, int lineNumber);
+        id<HCMatcher> matcher, const char* fileName, int lineNumber);
 
 #define HC_assertThatInteger(actual, matcher)  \
     HC_assertThatIntegerWithLocation(self, actual, matcher, __FILE__, __LINE__)
@@ -358,14 +358,14 @@ OBJC_EXPORT void HC_assertThatIntegerWithLocation(id testCase, NSInteger actual,
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-#define assertThatInteger HC_assertThatInteger
+    #define assertThatInteger HC_assertThatInteger
 #endif
 
 
 #pragma mark -
 
 OBJC_EXPORT void HC_assertThatUnsignedIntegerWithLocation(id testCase, NSUInteger actual,
-        id <HCMatcher> matcher, const char* fileName, int lineNumber);
+        id<HCMatcher> matcher, const char* fileName, int lineNumber);
 
 #define HC_assertThatUnsignedInteger(actual, matcher)  \
     HC_assertThatUnsignedIntegerWithLocation(self, actual, matcher, __FILE__, __LINE__)
@@ -383,5 +383,5 @@ OBJC_EXPORT void HC_assertThatUnsignedIntegerWithLocation(id testCase, NSUIntege
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-#define assertThatUnsignedInteger HC_assertThatUnsignedInteger
+    #define assertThatUnsignedInteger HC_assertThatUnsignedInteger
 #endif

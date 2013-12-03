@@ -12,9 +12,9 @@
 
 @interface HCSubstringMatcher : HCBaseMatcher
 {
-    NSString* substring;
+    NSString *substring;
 }
 
-- (id)initWithSubstring:(NSString*)aString;
+- (id)initWithSubstring:(NSString *)aString;
 
 @end

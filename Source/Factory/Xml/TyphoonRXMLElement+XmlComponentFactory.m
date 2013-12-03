@@ -11,6 +11,9 @@
 
 
 
+#import "TyphoonLinkerCategoryBugFix.h"
+TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
+
 #import "TyphoonRXMLElement+XmlComponentFactory.h"
 #import "TyphoonInjectedProperty.h"
 #import "TyphoonPropertyInjectedByReference.h"
