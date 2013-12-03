@@ -66,15 +66,19 @@
 
 - (void)populateCache
 {
-    // by calling all definition selectors
     NSSet* definitionSelectors = [TyphoonAssemblyAdviser definitionSelectors:_assembly]; // the Assembly should know what its own definition selectors are.
 
     [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
     {
         SEL selector = (SEL) [obj pointerValue];
         NSString* key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
-        [self builtDefinitionForKey:key];
+        [self buildDefinitionForKey:key];
     }];
+}
+
+- (void)buildDefinitionForKey:(NSString*)key
+{
+    [self builtDefinitionForKey:key];
 }
 
 - (TyphoonDefinition*)builtDefinitionForKey:(NSString*)key
@@ -148,13 +152,14 @@
 #pragma mark - Building
 - (TyphoonDefinition*)populateCacheWithDefinitionForKey:(NSString*)key
 {
-    id d = [self definitionByCallingAssemblyMethodForKey:key];
+    id d = [self definitionForKey:key];
     [self populateCacheWithDefinition:d forKey:key];
     return d;
 }
 
-- (id)definitionByCallingAssemblyMethodForKey:(NSString*)key
+- (id)definitionForKey:(NSString*)key
 {
+    // call the user's assembly method to get it.
     SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key];
     id cached = objc_msgSend(_assembly,
             sel); // the advisedSEL will call through to the original, unwrapped implementation because prepareForUse has been called, and all our definition methods have been swizzled.
