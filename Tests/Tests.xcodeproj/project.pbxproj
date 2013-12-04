@@ -41,6 +41,9 @@
 		46877CFC17D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46877CF917D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m */; };
 		46A14E0C17E42F4E009455D4 /* TyphoonViewControllerNibResolverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A14E0B17E42F4E009455D4 /* TyphoonViewControllerNibResolverTests.m */; };
 		46A14E0D17E42F4E009455D4 /* TyphoonViewControllerNibResolverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A14E0B17E42F4E009455D4 /* TyphoonViewControllerNibResolverTests.m */; };
+		46BD2236184F7481008E89E5 /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BD2235184F7481008E89E5 /* NSNullTypeConverter.m */; };
+		46BD2237184F7481008E89E5 /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BD2235184F7481008E89E5 /* NSNullTypeConverter.m */; };
+		46BD2238184F7481008E89E5 /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BD2235184F7481008E89E5 /* NSNullTypeConverter.m */; };
 		4B06338B17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */; };
 		4B06338C17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */; };
 		4B06338D17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */; };
@@ -310,6 +313,8 @@
 		4656F7DD17DC253A00EDDC23 /* TyphoonComponentFactoryPostProcessorMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonComponentFactoryPostProcessorMock.m; sourceTree = "<group>"; };
 		46877CF917D70B5900910D6A /* TyphoonParameterInjectedAsCollectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonParameterInjectedAsCollectionTests.m; sourceTree = "<group>"; };
 		46A14E0B17E42F4E009455D4 /* TyphoonViewControllerNibResolverTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonViewControllerNibResolverTests.m; sourceTree = "<group>"; };
+		46BD2234184F7481008E89E5 /* NSNullTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNullTypeConverter.h; sourceTree = "<group>"; };
+		46BD2235184F7481008E89E5 /* NSNullTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNullTypeConverter.m; sourceTree = "<group>"; };
 		4B06338A17D29240009CDBD6 /* TyphoonAssemblySelectorAdviserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblySelectorAdviserTests.m; sourceTree = "<group>"; };
 		4B06339F17D29402009CDBD6 /* InjectionAwareAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InjectionAwareAssembly.h; sourceTree = "<group>"; };
 		4B0633A017D29402009CDBD6 /* InjectionAwareAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InjectionAwareAssembly.m; sourceTree = "<group>"; };
@@ -794,6 +799,8 @@
 				4B8414E4179B0EA600916BF5 /* TyphoonTypeConverterRegistryTests.m */,
 				4B8414E5179B0EA600916BF5 /* TyphoonTypeDescriptorTests.m */,
 				BA7988D3F261F1B68761BEF2 /* TyphoonUIColorConverterTests.m */,
+				46BD2234184F7481008E89E5 /* NSNullTypeConverter.h */,
+				46BD2235184F7481008E89E5 /* NSNullTypeConverter.m */,
 			);
 			path = TypeConversion;
 			sourceTree = "<group>";
@@ -1222,6 +1229,7 @@
 				4B84151B179B0EA600916BF5 /* Knight.m in Sources */,
 				4B84152D179B0EA600916BF5 /* TyphoonPassthroughTypeConverterTests.m in Sources */,
 				4B84152F179B0EA600916BF5 /* TyphoonPrimitiveTypeConverterTests.m in Sources */,
+				46BD2236184F7481008E89E5 /* NSNullTypeConverter.m in Sources */,
 				4B841531179B0EA600916BF5 /* TyphoonTypeConverterRegistryTests.m in Sources */,
 				4B841533179B0EA600916BF5 /* TyphoonTypeDescriptorTests.m in Sources */,
 				4B0633AA17D29402009CDBD6 /* TyphoonInjectionAwareTests.m in Sources */,
@@ -1323,6 +1331,7 @@
 				4EFAF60F17E0D50B00E93ACF /* CROPrototypeA.m in Sources */,
 				4EFAF61417E0D54700E93ACF /* CROPrototypeB.m in Sources */,
 				65709699183146A800C10DA4 /* CreditServiceImpl.m in Sources */,
+				46BD2237184F7481008E89E5 /* NSNullTypeConverter.m in Sources */,
 				6570968A18313C3500C10DA4 /* TyphoonAssistedFactoryBaseTest.m in Sources */,
 				4E7F059617F6F947005F5DCD /* TyphoonGenericStackTest.m in Sources */,
 				4EA74DDD17E0FF440004EFC7 /* CROSingletonB.m in Sources */,
@@ -1374,6 +1383,7 @@
 				4BC648DB17A20AD2007F0463 /* Knight.m in Sources */,
 				4BC648DC17A20AD2007F0463 /* TyphoonPassthroughTypeConverterTests.m in Sources */,
 				4BC648DD17A20AD2007F0463 /* TyphoonPrimitiveTypeConverterTests.m in Sources */,
+				46BD2238184F7481008E89E5 /* NSNullTypeConverter.m in Sources */,
 				4BC648DE17A20AD2007F0463 /* TyphoonTypeConverterRegistryTests.m in Sources */,
 				4BC648DF17A20AD2007F0463 /* TyphoonTypeDescriptorTests.m in Sources */,
 				4B0633AC17D29402009CDBD6 /* TyphoonInjectionAwareTests.m in Sources */,
