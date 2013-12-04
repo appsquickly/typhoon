@@ -40,7 +40,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
     return assembly;
 }
 
-+ (TyphoonAssembly*)defaultAssembly
++ (instancetype)defaultAssembly
 {
     return (TyphoonAssembly*) [TyphoonComponentFactory defaultFactory];
 }
