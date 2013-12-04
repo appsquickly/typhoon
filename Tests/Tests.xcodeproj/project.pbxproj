@@ -962,7 +962,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					4B9685A117D26E8200E69723 = {
-						TestTargetID = 4B84146B179B0E3900916BF5 /* iOS Tests (Cocoapods) */;
+						TestTargetID = 4B84146B179B0E3900916BF5;
 					};
 				};
 			};

@@ -15,7 +15,6 @@
 #import "TyphoonAssembly.h"
 #import "TyphoonJRSwizzle.h"
 #import <objc/runtime.h>
-#import <OCHamcrest/HCIsInstanceOf.h>
 
 static NSMutableArray* swizzleRegistry;
 
