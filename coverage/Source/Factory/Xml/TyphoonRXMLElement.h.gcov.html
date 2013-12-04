@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Typhoon.info - Source/Factory/Xml/TyphoonRXMLElement.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Source/Factory/Xml</a> - TyphoonRXMLElement.h</td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Typhoon.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2013-12-04</td>
+            <td></td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<span class="lineNum">       1 </span>            : // ================================================================================================
+<span class="lineNum">       2 </span>            : //  TyphoonRXMLElement+XmlComponentFactory.h
+<span class="lineNum">       3 </span>            : //  Fast processing of XML files
+<span class="lineNum">       4 </span>            : //
+<span class="lineNum">       5 </span>            : // ================================================================================================
+<span class="lineNum">       6 </span>            : //  Created by John Blanco on 9/23/11.
+<span class="lineNum">       7 </span>            : //  Version 1.4
+<span class="lineNum">       8 </span>            : //  
+<span class="lineNum">       9 </span>            : //  Copyright (c) 2011 John Blanco
+<span class="lineNum">      10 </span>            : //  
+<span class="lineNum">      11 </span>            : //  Permission is hereby granted, free of charge, to any person obtaining a copy
+<span class="lineNum">      12 </span>            : //  of this software and associated documentation files (the &quot;Software&quot;), to deal
+<span class="lineNum">      13 </span>            : //  in the Software without restriction, including without limitation the rights
+<span class="lineNum">      14 </span>            : //  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+<span class="lineNum">      15 </span>            : //  copies of the Software, and to permit persons to whom the Software is
+<span class="lineNum">      16 </span>            : //  furnished to do so, subject to the following conditions:
+<span class="lineNum">      17 </span>            : //  
+<span class="lineNum">      18 </span>            : //  The above copyright notice and this permission notice shall be included in
+<span class="lineNum">      19 </span>            : //  all copies or substantial portions of the Software.
+<span class="lineNum">      20 </span>            : //  
+<span class="lineNum">      21 </span>            : //  THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+<span class="lineNum">      22 </span>            : //  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+<span class="lineNum">      23 </span>            : //  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+<span class="lineNum">      24 </span>            : //  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+<span class="lineNum">      25 </span>            : //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+<span class="lineNum">      26 </span>            : //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+<span class="lineNum">      27 </span>            : //  THE SOFTWARE.
+<span class="lineNum">      28 </span>            : // ================================================================================================
+<span class="lineNum">      29 </span>            : //
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span>            : #import &lt;Foundation/Foundation.h&gt;
+<span class="lineNum">      32 </span>            : #import &lt;libxml2/libxml/xmlreader.h&gt;
+<span class="lineNum">      33 </span>            : #import &lt;libxml2/libxml/xmlmemory.h&gt;
+<span class="lineNum">      34 </span>            : #import &lt;libxml/xpath.h&gt;
+<span class="lineNum">      35 </span>            : #import &lt;libxml/xpathInternals.h&gt;
+<span class="lineNum">      36 </span>            : #import &quot;TyphoonDefinition.h&quot;
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span>            : @interface TyphoonRXMLElement : NSObject
+<span class="lineNum">      39 </span>            : {
+<span class="lineNum">      40 </span>            :     xmlDocPtr doc_;
+<span class="lineNum">      41 </span>            :     xmlNodePtr node_;
+<span class="lineNum">      42 </span>            : }
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : - (id)initFromXMLString:(NSString*)xmlString encoding:(NSStringEncoding)encoding;
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span>            : - (id)initFromXMLFile:(NSString*)filename;
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span>            : - (id)initFromXMLFile:(NSString*)filename fileExtension:(NSString*)extension;
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span>            : - (id)initFromURL:(NSURL*)url;
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : - (id)initFromXMLData:(NSData*)data;
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span>            : - (id)initFromXMLNode:(xmlNodePtr)node;
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            : + (id)elementFromXMLString:(NSString*)xmlString encoding:(NSStringEncoding)encoding;
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : + (id)elementFromXMLFile:(NSString*)filename;
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span>            : + (id)elementFromXMLFilename:(NSString*)filename fileExtension:(NSString*)extension;
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span>            : + (id)elementFromURL:(NSURL*)url;
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span>            : + (id)elementFromXMLData:(NSData*)data;
+<span class="lineNum">      65 </span>            : 
+<span class="lineNum">      66 </span>            : + (id)elementFromXMLNode:(xmlNodePtr)node;
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            : - (NSString*)attribute:(NSString*)attributeName;
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span>            : - (NSString*)attribute:(NSString*)attributeName inNamespace:(NSString*)ns;
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span>            : - (NSInteger)attributeAsInt:(NSString*)attributeName;
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span>            : - (NSInteger)attributeAsInt:(NSString*)attributeName inNamespace:(NSString*)ns;
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span>            : - (double)attributeAsDouble:(NSString*)attributeName;
+<span class="lineNum">      77 </span>            : 
+<span class="lineNum">      78 </span>            : - (double)attributeAsDouble:(NSString*)attributeName inNamespace:(NSString*)ns;
+<span class="lineNum">      79 </span>            : 
+<span class="lineNum">      80 </span>            : - (BOOL)attributeAsBool:(NSString*)attName;
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span>            : - (BOOL)attributeAsBool:(NSString*)attName inNamespace:(NSString*)ns;
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span>            : - (TyphoonRXMLElement*)child:(NSString*)tag;
+<span class="lineNum">      85 </span>            : 
+<span class="lineNum">      86 </span>            : - (TyphoonRXMLElement*)child:(NSString*)tag inNamespace:(NSString*)ns;
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span>            : - (NSArray*)children:(NSString*)tag;
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span>            : - (NSArray*)children:(NSString*)tag inNamespace:(NSString*)ns;
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span>            : - (NSArray*)childrenWithRootXPath:(NSString*)xpath;
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span>            : - (void)iterate:(NSString*)query usingBlock:(void (^)(TyphoonRXMLElement*))blk;
+<span class="lineNum">      95 </span>            : 
+<span class="lineNum">      96 </span>            : - (void)iterateWithRootXPath:(NSString*)xpath usingBlock:(void (^)(TyphoonRXMLElement*))blk;
+<span class="lineNum">      97 </span>            : 
+<span class="lineNum">      98 </span>            : - (void)iterateElements:(NSArray*)elements usingBlock:(void (^)(TyphoonRXMLElement*))blk;
+<span class="lineNum">      99 </span>            : 
+<span class="lineNum">     100 </span>            : @property(nonatomic, readonly) NSString* tag;
+<span class="lineNum">     101 </span>            : @property(nonatomic, readonly) NSString* text;
+<span class="lineNum">     102 </span>            : @property(nonatomic, readonly) NSInteger textAsInt;
+<span class="lineNum">     103 </span>            : @property(nonatomic, readonly) double textAsDouble;
+<span class="lineNum">     104 </span>            : @property(nonatomic, readonly) BOOL isValid;
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 : @property(nonatomic, assign) TyphoonScope defaultScope;</span>
+<span class="lineNum">     106 </span>            : 
+<span class="lineNum">     107 </span>            : @end
+<span class="lineNum">     108 </span>            : 
+<span class="lineNum">     109 </span>            : typedef void (^TyphoonRXMLBlock)(TyphoonRXMLElement* element);
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
