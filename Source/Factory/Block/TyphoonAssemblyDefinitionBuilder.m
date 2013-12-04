@@ -17,7 +17,7 @@
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonAssembly+TyphoonBlockFactoryFriend.h"
 #import "TyphoonAssemblySelectorAdviser.h"
-#import <objc/runtime.h>
+#import <objc/message.h>
 #import "TyphoonAssemblyAdviser.h"
 
 

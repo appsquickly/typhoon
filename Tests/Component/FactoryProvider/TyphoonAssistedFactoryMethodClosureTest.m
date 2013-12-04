@@ -49,12 +49,20 @@
     struct objc_method_description methodDescription = protocol_getMethodDescription(@protocol(TyphoonAssistedFactoryMethodClosureTestProtocol),
                                                                                      @selector(stringWithString:),
                                                                                      YES, YES);
+    NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
     TyphoonAssistedFactoryMethodClosure *closure = [[TyphoonAssistedFactoryMethodClosure alloc]
                                                     initWithInitializer:initializer
-                                                    methodDescription:methodDescription];
+                                                    methodSignature:methodSignature];
 
-    id (*fn)(id, SEL, NSString *) = (id (*)(id, SEL, NSString *))[closure fptr];
-    NSString *result = fn(self, @selector(stringWithString:), @"test");
+    NSString *testString = @"test";
+    NSInvocation *forwardedInvocation = [NSInvocation invocationWithMethodSignature:methodSignature];
+    [forwardedInvocation setArgument:&testString atIndex:2];
+
+    NSInvocation *invocation = [closure invocationWithFactory:nil forwardedInvocation:forwardedInvocation];
+    [invocation invoke];
+
+    NSString *result = nil;
+    [invocation getReturnValue:&result];
     assertThat(result, equalTo(@"test"));
 }
 
@@ -70,13 +78,23 @@
     struct objc_method_description methodDescription = protocol_getMethodDescription(@protocol(TyphoonAssistedFactoryMethodClosureTestProtocol),
                                                                                      @selector(stringWithEncoding:data:),
                                                                                      YES, YES);
+    NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
     TyphoonAssistedFactoryMethodClosure *closure = [[TyphoonAssistedFactoryMethodClosure alloc]
                                                     initWithInitializer:initializer
-                                                    methodDescription:methodDescription];
+                                                    methodSignature:methodSignature];
 
-    id (*fn)(id, SEL, NSStringEncoding, NSData *) = (id (*)(id, SEL, NSStringEncoding, NSData *))[closure fptr];
+    NSStringEncoding encoding = NSUTF8StringEncoding;
     NSData *data = [@"áéíóú" dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *result = fn(self, @selector(stringWithEncoding:data:), NSUTF8StringEncoding, data);
+
+    NSInvocation *forwardedInvocation = [NSInvocation invocationWithMethodSignature:methodSignature];
+    [forwardedInvocation setArgument:&encoding atIndex:2];
+    [forwardedInvocation setArgument:&data atIndex:3];
+
+    NSInvocation *invocation = [closure invocationWithFactory:nil forwardedInvocation:forwardedInvocation];
+    [invocation invoke];
+
+    NSString *result = nil;
+    [invocation getReturnValue:&result];
     assertThat(result, equalTo(@"áéíóú"));
 }
 
@@ -91,13 +109,20 @@
     struct objc_method_description methodDescription = protocol_getMethodDescription(@protocol(TyphoonAssistedFactoryMethodClosureTestProtocol),
                                                                                      @selector(stringFromProperty),
                                                                                      YES, YES);
+    NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
     TyphoonAssistedFactoryMethodClosure *closure = [[TyphoonAssistedFactoryMethodClosure alloc]
                                                     initWithInitializer:initializer
-                                                    methodDescription:methodDescription];
+                                                    methodSignature:methodSignature];
 
-    id (*fn)(id, SEL) = (id (*)(id, SEL))[closure fptr];
     self.stringProperty = @"testing 123";
-    NSString *result = fn(self, @selector(stringFromProperty));
+
+    NSInvocation *forwardedInvocation = [NSInvocation invocationWithMethodSignature:methodSignature];
+
+    NSInvocation *invocation = [closure invocationWithFactory:self forwardedInvocation:forwardedInvocation];
+    [invocation invoke];
+
+    NSString *result = nil;
+    [invocation getReturnValue:&result];
     assertThat(result, equalTo(@"testing 123"));
 }
 
@@ -113,13 +138,23 @@
     struct objc_method_description methodDescription = protocol_getMethodDescription(@protocol(TyphoonAssistedFactoryMethodClosureTestProtocol),
                                                                                      @selector(stringWithEncoding:),
                                                                                      YES, YES);
+    NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
     TyphoonAssistedFactoryMethodClosure *closure = [[TyphoonAssistedFactoryMethodClosure alloc]
                                                     initWithInitializer:initializer
-                                                    methodDescription:methodDescription];
+                                                    methodSignature:methodSignature];
 
-    id (*fn)(id, SEL, NSStringEncoding) = (id (*)(id, SEL, NSStringEncoding))[closure fptr];
     self.dataProperty = [@"testing 123" dataUsingEncoding:NSASCIIStringEncoding];
-    NSString *result = fn(self, @selector(stringWithEncoding:), NSASCIIStringEncoding);
+
+    NSStringEncoding encoding = NSUTF8StringEncoding;
+
+    NSInvocation *forwardedInvocation = [NSInvocation invocationWithMethodSignature:methodSignature];
+    [forwardedInvocation setArgument:&encoding atIndex:2];
+
+    NSInvocation *invocation = [closure invocationWithFactory:self forwardedInvocation:forwardedInvocation];
+    [invocation invoke];
+
+    NSString *result = nil;
+    [invocation getReturnValue:&result];
     assertThat(result, equalTo(@"testing 123"));
 }
 
@@ -135,11 +170,12 @@
     struct objc_method_description methodDescription = protocol_getMethodDescription(@protocol(TyphoonAssistedFactoryMethodClosureTestProtocol),
                                                                                      @selector(stringWithEncoding:),
                                                                                      YES, YES);
+    NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
 
     @try {
         TyphoonAssistedFactoryMethodClosure *closure = [[TyphoonAssistedFactoryMethodClosure alloc]
                                                         initWithInitializer:initializer
-                                                        methodDescription:methodDescription];
+                                                        methodSignature:methodSignature];
         STFail(@"[TyphoonAssistedFactoryMethodClosure initWithInitializer:methodDescription:] should have failed");
         closure = nil;
     }

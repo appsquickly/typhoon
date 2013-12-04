@@ -13,6 +13,8 @@
 
 /**
  * Creates a method implementation for an initializer description.
+ *
+ * Users should not use this class directly.
  */
 @interface TyphoonAssistedFactoryMethodInitializerCreator : TyphoonAssistedFactoryMethodCreator
 
