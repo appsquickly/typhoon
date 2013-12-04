@@ -10,22 +10,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import "TyphoonBundledImageTypeConverter.h"
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "TyphoonTypeConverter.h"
 
-
-@implementation TyphoonBundledImageTypeConverter
-
-- (id)supportedType
-{
-    return [UIImage class];
-}
-
-- (id)convert:(NSString*)stringValue
-{
-    __autoreleasing UIImage* image = [UIImage imageNamed:stringValue];
-    return image;
-}
-
+/**
+ Converter used for testing.
+ */
+@interface NSNullTypeConverter : NSObject<TyphoonTypeConverter>
 
 @end
