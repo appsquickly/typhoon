@@ -9,23 +9,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "NSNullTypeConverter.h"
 
-#import "TyphoonBundledImageTypeConverter.h"
-#import <UIKit/UIKit.h>
-
-
-@implementation TyphoonBundledImageTypeConverter
+@implementation NSNullTypeConverter
 
 - (id)supportedType
 {
-    return [UIImage class];
+    return [NSNull class];
 }
 
-- (id)convert:(NSString*)stringValue
+- (id)convert:(NSString *)stringValue
 {
-    __autoreleasing UIImage* image = [UIImage imageNamed:stringValue];
-    return image;
+    return [NSNull null];
 }
-
 
 @end

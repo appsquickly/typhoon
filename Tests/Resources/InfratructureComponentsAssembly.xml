@@ -9,4 +9,6 @@
         <property name="damselsRescued" value="${damsels.rescued}"/>
     </component>
 
+    <component class="NSNullTypeConverter" />
+    
 </assembly>

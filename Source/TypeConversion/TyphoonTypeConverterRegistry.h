@@ -42,10 +42,14 @@
 - (TyphoonPrimitiveTypeConverter*)primitiveTypeConverter;
 
 /**
-* Registers a converter for the given type (either a Class object or @protocol. If a converter exists for the type,
-* raises an exception.
-*/
-- (void)register:(id <TyphoonTypeConverter>)converter forClassOrProtocol:(id)classOrProtocol;
+ * Adds a converter to the registry. Raises an exception if the a converter for the same type 
+ * already exists.
+ */
+- (void)register:(id <TyphoonTypeConverter>)converter;
 
+/**
+ * Unregister a type converter.
+ */
+- (void)unregister:(id <TyphoonTypeConverter>)converter;
 
 @end
