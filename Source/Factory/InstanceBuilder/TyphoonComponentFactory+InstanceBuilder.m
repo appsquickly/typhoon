@@ -35,7 +35,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
-#import "TyphoonInjectionAware.h"
+#import "TyphoonComponentFactoryAware.h"
 #import "TyphoonParameterInjectedAsCollection.h"
 #import "TyphoonInstanceRegister.h"
 #import "TyphoonDefinitionRegisterer.h"
@@ -142,13 +142,13 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance;
 {
-    if ([instance conformsToProtocol:@protocol(TyphoonInjectionAware)])
+    if ([instance conformsToProtocol:@protocol(TyphoonComponentFactoryAware)])
     {
         [self injectAssemblyOnInstance:instance];
     }
 }
 
-- (void)injectAssemblyOnInstance:(id <TyphoonInjectionAware>)instance;
+- (void)injectAssemblyOnInstance:(id <TyphoonComponentFactoryAware>)instance;
 {
     [instance setFactory:self];
 }

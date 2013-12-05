@@ -1,5 +1,5 @@
 //
-//  TyphoonInjectionAware.h
+//  TyphoonComponentFactoryAware.h
 //  Static Library
 //
 //  Created by Robert Gilliam on 8/4/13.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol TyphoonInjectionAware <NSObject>
+@protocol TyphoonComponentFactoryAware <NSObject>
 
 - (void)setFactory:(id)theFactory;
 

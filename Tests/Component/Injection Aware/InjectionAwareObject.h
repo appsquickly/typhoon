@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <TyphoonInjectionAware.h>
+#import "TyphoonComponentFactoryAware.h"
 
-@interface InjectionAwareObject : NSObject <TyphoonInjectionAware>
+@interface InjectionAwareObject : NSObject <TyphoonComponentFactoryAware>
 
 @property(readonly) id factory;
 
