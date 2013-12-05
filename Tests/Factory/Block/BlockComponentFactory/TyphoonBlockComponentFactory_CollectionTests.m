@@ -41,9 +41,11 @@
 
     Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalQuest];
     [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
+
+    // this test succeeds if run when MiddleAgesAssembly has previously been registered with a component factory (and its methods swizzled), but fails otherwise (say, if run alone).
+    STFail(@"This test erroneously succeeds when run alongside any other unit tests, but fails when run alone.");
 }
 
-// succeeds OK
 - (void)test_allows_initialization_with_a_hardcoded_collection_of_assemblies
 {
     TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
@@ -55,7 +57,6 @@
     [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
 }
 
-// this test succeeds if run when MiddleAgesAssembly has previously been registered with a component factory (and its methods swizzled), but fails otherwise (say, if run alone).
 - (void)test_allows_initialization_with_a_hardcoded_collection_of_assemblies_in_any_order
 {
     TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
@@ -65,6 +66,9 @@
 
     Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalHardcodedQuest];
     [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
+
+    // this test succeeds if run when MiddleAgesAssembly has previously been registered with a component factory (and its methods swizzled), but fails otherwise (say, if run alone).
+    STFail(@"This test erroneously succeeds when run alongside any other unit tests, but fails when run alone.");
 }
 
 - (void)test_dealloc_does_not_unswizzle
