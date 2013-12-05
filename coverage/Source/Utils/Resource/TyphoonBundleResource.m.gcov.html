@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">22</td>
-            <td class="headerCovTableEntry">27</td>
-            <td class="headerCovTableEntryMed">81.5 %</td>
+            <td class="headerCovTableEntry">25</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntryMed">83.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-12-04</td>
+            <td class="headerValue">2013-12-05</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -71,54 +71,59 @@
 <span class="lineNum">      13 </span>            : #import &quot;TyphoonBundleResource.h&quot;
 <span class="lineNum">      14 </span>            : 
 <span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span><span class="lineCov">        207 : @implementation TyphoonBundleResource</span>
+<span class="lineNum">      16 </span><span class="lineCov">        216 : @implementation TyphoonBundleResource</span>
 <span class="lineNum">      17 </span>            : 
 <span class="lineNum">      18 </span>            : /* =========================================================== Class Methods ============================================================ */
-<span class="lineNum">      19 </span><span class="lineCov">        228 : + (id &lt;TyphoonResource&gt;)withName:(NSString*)name</span>
+<span class="lineNum">      19 </span><span class="lineCov">        237 : + (id &lt;TyphoonResource&gt;)withName:(NSString*)name</span>
 <span class="lineNum">      20 </span>            : {
-<span class="lineNum">      21 </span><span class="lineCov">        228 :     NSString* filePath = [self filePathForName:name];</span>
-<span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineCov">        228 :     if (filePath == nil)</span>
-<span class="lineNum">      24 </span>            :     {
-<span class="lineNum">      25 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Resource named '%@' not in bundle.&quot;, name];</span>
-<span class="lineNum">      26 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span><span class="lineCov">        227 :     return [[[self class] alloc] initWithData:[NSData dataWithContentsOfFile:filePath]];</span>
-<span class="lineNum">      29 </span><span class="lineCov">        227 : }</span>
-<span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">        228 : + (NSString*)filePathForName:(NSString*)name</span>
-<span class="lineNum">      32 </span>            : {
-<span class="lineNum">      33 </span><span class="lineCov">        228 :     return [[NSBundle bundleForClass:[self class]] pathForResource:[name stringByDeletingPathExtension] ofType:[name pathExtension]];</span>
-<span class="lineNum">      34 </span><span class="lineCov">        228 : }</span>
+<span class="lineNum">      21 </span><span class="lineCov">        237 :     return [self withName:name inBundle:[NSBundle bundleForClass:[self class]]];</span>
+<span class="lineNum">      22 </span><span class="lineCov">        237 : }</span>
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span><span class="lineCov">        238 : + (id &lt;TyphoonResource&gt;)withName:(NSString *)name inBundle:(NSBundle *)bundle</span>
+<span class="lineNum">      25 </span>            : {
+<span class="lineNum">      26 </span><span class="lineCov">        238 :     NSString* filePath = [self filePathForName:name inBundle:bundle];</span>
+<span class="lineNum">      27 </span>            :     
+<span class="lineNum">      28 </span><span class="lineCov">        238 :     if (filePath == nil)</span>
+<span class="lineNum">      29 </span>            :     {
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Resource named '%@' not in bundle.&quot;, name];</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      32 </span>            :     
+<span class="lineNum">      33 </span><span class="lineCov">        237 :     return [[[self class] alloc] initWithData:[NSData dataWithContentsOfFile:filePath]];</span>
+<span class="lineNum">      34 </span><span class="lineCov">        237 : }</span>
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span>            : /* ============================================================ Initializers ============================================================ */
-<span class="lineNum">      37 </span><span class="lineCov">        227 : - (id)initWithData:(NSData*)data</span>
-<span class="lineNum">      38 </span>            : {
-<span class="lineNum">      39 </span><span class="lineCov">        227 :     self = [super init];</span>
-<span class="lineNum">      40 </span><span class="lineCov">        227 :     if (self)</span>
-<span class="lineNum">      41 </span>            :     {
-<span class="lineNum">      42 </span><span class="lineCov">        227 :         _data = data;</span>
-<span class="lineNum">      43 </span><span class="lineCov">        227 :     }</span>
-<span class="lineNum">      44 </span><span class="lineCov">        227 :     return self;</span>
-<span class="lineNum">      45 </span><span class="lineCov">        227 : }</span>
-<span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span><span class="lineCov">        207 : - (NSString*)asString</span>
-<span class="lineNum">      48 </span>            : {
-<span class="lineNum">      49 </span><span class="lineCov">        207 :     return [self asStringWithEncoding:NSUTF8StringEncoding];</span>
-<span class="lineNum">      50 </span><span class="lineCov">        207 : }</span>
+<span class="lineNum">      36 </span><span class="lineCov">        238 : + (NSString *)filePathForName:(NSString *)name inBundle:(NSBundle *)bundle</span>
+<span class="lineNum">      37 </span>            : {
+<span class="lineNum">      38 </span><span class="lineCov">        238 :     return [bundle pathForResource:[name stringByDeletingPathExtension] ofType:[name pathExtension]];</span>
+<span class="lineNum">      39 </span><span class="lineCov">        238 : }</span>
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            : /* ============================================================ Initializers ============================================================ */
+<span class="lineNum">      42 </span><span class="lineCov">        237 : - (id)initWithData:(NSData*)data</span>
+<span class="lineNum">      43 </span>            : {
+<span class="lineNum">      44 </span><span class="lineCov">        237 :     self = [super init];</span>
+<span class="lineNum">      45 </span><span class="lineCov">        237 :     if (self)</span>
+<span class="lineNum">      46 </span>            :     {
+<span class="lineNum">      47 </span><span class="lineCov">        237 :         _data = data;</span>
+<span class="lineNum">      48 </span><span class="lineCov">        237 :     }</span>
+<span class="lineNum">      49 </span><span class="lineCov">        237 :     return self;</span>
+<span class="lineNum">      50 </span><span class="lineCov">        237 : }</span>
 <span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span><span class="lineCov">        207 : - (NSString*)asStringWithEncoding:(NSStringEncoding)encoding</span>
+<span class="lineNum">      52 </span><span class="lineCov">        216 : - (NSString*)asString</span>
 <span class="lineNum">      53 </span>            : {
-<span class="lineNum">      54 </span><span class="lineCov">        207 :     return [[NSString alloc] initWithData:_data encoding:encoding];</span>
-<span class="lineNum">      55 </span><span class="lineCov">        207 : }</span>
+<span class="lineNum">      54 </span><span class="lineCov">        216 :     return [self asStringWithEncoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">      55 </span><span class="lineCov">        216 : }</span>
 <span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 : - (NSData*)data</span>
+<span class="lineNum">      57 </span><span class="lineCov">        216 : - (NSString*)asStringWithEncoding:(NSStringEncoding)encoding</span>
 <span class="lineNum">      58 </span>            : {
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 :     return _data;</span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      59 </span><span class="lineCov">        216 :     return [[NSString alloc] initWithData:_data encoding:encoding];</span>
+<span class="lineNum">      60 </span><span class="lineCov">        216 : }</span>
 <span class="lineNum">      61 </span>            : 
-<span class="lineNum">      62 </span>            : 
-<span class="lineNum">      63 </span>            : @end
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 : - (NSData*)data</span>
+<span class="lineNum">      63 </span>            : {
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :     return _data;</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            : @end
 </pre>
       </td>
     </tr>

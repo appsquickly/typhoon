@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-12-04</td>
+            <td class="headerValue">2013-12-05</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -73,39 +73,39 @@
 <span class="lineNum">      15 </span>            : #import &quot;TyphoonTypeConvertedCollectionValue.h&quot;
 <span class="lineNum">      16 </span>            : #import &quot;TyphoonByReferenceCollectionValue.h&quot;
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">         95 : @implementation TyphoonArgumentInjectedAsCollection</span>
+<span class="lineNum">      18 </span><span class="lineCov">         98 : @implementation TyphoonArgumentInjectedAsCollection</span>
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      21 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineCov">        236 : - (id)init</span>
+<span class="lineNum">      23 </span><span class="lineCov">        245 : - (id)init</span>
 <span class="lineNum">      24 </span>            : {
-<span class="lineNum">      25 </span><span class="lineCov">        236 :     self = [super init];</span>
-<span class="lineNum">      26 </span><span class="lineCov">        236 :     if (self)</span>
+<span class="lineNum">      25 </span><span class="lineCov">        245 :     self = [super init];</span>
+<span class="lineNum">      26 </span><span class="lineCov">        245 :     if (self)</span>
 <span class="lineNum">      27 </span>            :     {
-<span class="lineNum">      28 </span><span class="lineCov">        236 :         _values = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      29 </span><span class="lineCov">        236 :     }</span>
-<span class="lineNum">      30 </span><span class="lineCov">        236 :     return self;</span>
-<span class="lineNum">      31 </span><span class="lineCov">        236 : }</span>
+<span class="lineNum">      28 </span><span class="lineCov">        245 :         _values = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      29 </span><span class="lineCov">        245 :     }</span>
+<span class="lineNum">      30 </span><span class="lineCov">        245 :     return self;</span>
+<span class="lineNum">      31 </span><span class="lineCov">        245 : }</span>
 <span class="lineNum">      32 </span>            : 
 <span class="lineNum">      33 </span>            : 
 <span class="lineNum">      34 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      35 </span>            : #pragma mark - Interface Methods
 <span class="lineNum">      36 </span>            : 
-<span class="lineNum">      37 </span><span class="lineCov">        298 : - (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType</span>
+<span class="lineNum">      37 </span><span class="lineCov">        310 : - (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType</span>
 <span class="lineNum">      38 </span>            : {
-<span class="lineNum">      39 </span><span class="lineCov">        298 :     [_values addObject:[[TyphoonTypeConvertedCollectionValue alloc] initWithTextValue:text requiredType:requiredType]];</span>
-<span class="lineNum">      40 </span><span class="lineCov">        298 : }</span>
+<span class="lineNum">      39 </span><span class="lineCov">        310 :     [_values addObject:[[TyphoonTypeConvertedCollectionValue alloc] initWithTextValue:text requiredType:requiredType]];</span>
+<span class="lineNum">      40 </span><span class="lineCov">        310 : }</span>
 <span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span><span class="lineCov">         40 : - (void)addItemWithComponentName:(NSString*)componentName</span>
+<span class="lineNum">      42 </span><span class="lineCov">         42 : - (void)addItemWithComponentName:(NSString*)componentName</span>
 <span class="lineNum">      43 </span>            : {
-<span class="lineNum">      44 </span><span class="lineCov">         40 :     [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:componentName]];</span>
-<span class="lineNum">      45 </span><span class="lineCov">         40 : }</span>
+<span class="lineNum">      44 </span><span class="lineCov">         42 :     [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:componentName]];</span>
+<span class="lineNum">      45 </span><span class="lineCov">         42 : }</span>
 <span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span><span class="lineCov">        108 : - (void)addItemWithDefinition:(TyphoonDefinition*)definition</span>
+<span class="lineNum">      47 </span><span class="lineCov">        112 : - (void)addItemWithDefinition:(TyphoonDefinition*)definition</span>
 <span class="lineNum">      48 </span>            : {
-<span class="lineNum">      49 </span><span class="lineCov">        108 :     [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:definition.key]];</span>
-<span class="lineNum">      50 </span><span class="lineCov">        108 : }</span>
+<span class="lineNum">      49 </span><span class="lineCov">        112 :     [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:definition.key]];</span>
+<span class="lineNum">      50 </span><span class="lineCov">        112 : }</span>
 <span class="lineNum">      51 </span>            : 
 <span class="lineNum">      52 </span><span class="lineCov">         11 : - (NSArray*)values</span>
 <span class="lineNum">      53 </span>            : {

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-12-04</td>
+            <td class="headerValue">2013-12-05</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -77,35 +77,35 @@
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : #pragma mark Initialization
 <span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineCov">        240 : + (instancetype)instanceRegister</span>
+<span class="lineNum">      22 </span><span class="lineCov">        250 : + (instancetype)instanceRegister</span>
 <span class="lineNum">      23 </span>            : {
-<span class="lineNum">      24 </span><span class="lineCov">        240 :     return [[self alloc] init];</span>
-<span class="lineNum">      25 </span><span class="lineCov">        240 : }</span>
+<span class="lineNum">      24 </span><span class="lineCov">        250 :     return [[self alloc] init];</span>
+<span class="lineNum">      25 </span><span class="lineCov">        250 : }</span>
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">        240 : - (id)init</span>
+<span class="lineNum">      27 </span><span class="lineCov">        250 : - (id)init</span>
 <span class="lineNum">      28 </span>            : {
-<span class="lineNum">      29 </span><span class="lineCov">        240 :     self = [super init];</span>
-<span class="lineNum">      30 </span><span class="lineCov">        240 :     if (self)</span>
+<span class="lineNum">      29 </span><span class="lineCov">        250 :     self = [super init];</span>
+<span class="lineNum">      30 </span><span class="lineCov">        250 :     if (self)</span>
 <span class="lineNum">      31 </span>            :     {
-<span class="lineNum">      32 </span><span class="lineCov">        240 :         _registry = [NSMutableDictionary dictionary];</span>
-<span class="lineNum">      33 </span><span class="lineCov">        240 :     }</span>
-<span class="lineNum">      34 </span><span class="lineCov">        240 :     return self;</span>
-<span class="lineNum">      35 </span><span class="lineCov">        240 : }</span>
+<span class="lineNum">      32 </span><span class="lineCov">        250 :         _registry = [NSMutableDictionary dictionary];</span>
+<span class="lineNum">      33 </span><span class="lineCov">        250 :     }</span>
+<span class="lineNum">      34 </span><span class="lineCov">        250 :     return self;</span>
+<span class="lineNum">      35 </span><span class="lineCov">        250 : }</span>
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : 
 <span class="lineNum">      38 </span>            : #pragma mark Public API
 <span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span><span class="lineCov">        281 : - (void)stashInstance:(id)instance forKey:(NSString*)key</span>
+<span class="lineNum">      40 </span><span class="lineCov">        324 : - (void)stashInstance:(id)instance forKey:(NSString*)key</span>
 <span class="lineNum">      41 </span>            : {
-<span class="lineNum">      42 </span><span class="lineCov">        281 :     TyphoonGenericStack* stack = [self stackForKey:key];</span>
-<span class="lineNum">      43 </span><span class="lineCov">        281 :     [stack push:instance];</span>
-<span class="lineNum">      44 </span><span class="lineCov">        281 : }</span>
+<span class="lineNum">      42 </span><span class="lineCov">        324 :     TyphoonGenericStack* stack = [self stackForKey:key];</span>
+<span class="lineNum">      43 </span><span class="lineCov">        324 :     [stack push:instance];</span>
+<span class="lineNum">      44 </span><span class="lineCov">        324 : }</span>
 <span class="lineNum">      45 </span>            : 
-<span class="lineNum">      46 </span><span class="lineCov">        277 : - (id)unstashInstanceForKey:(NSString*)key</span>
+<span class="lineNum">      46 </span><span class="lineCov">        320 : - (id)unstashInstanceForKey:(NSString*)key</span>
 <span class="lineNum">      47 </span>            : {
-<span class="lineNum">      48 </span><span class="lineCov">        277 :     TyphoonGenericStack* stack = _registry[key];</span>
-<span class="lineNum">      49 </span><span class="lineCov">        277 :     return [stack pop];</span>
-<span class="lineNum">      50 </span><span class="lineCov">        277 : }</span>
+<span class="lineNum">      48 </span><span class="lineCov">        320 :     TyphoonGenericStack* stack = _registry[key];</span>
+<span class="lineNum">      49 </span><span class="lineCov">        320 :     return [stack pop];</span>
+<span class="lineNum">      50 </span><span class="lineCov">        320 : }</span>
 <span class="lineNum">      51 </span>            : 
 <span class="lineNum">      52 </span><span class="lineCov">         29 : - (id)peekInstanceForKey:(NSString*)key</span>
 <span class="lineNum">      53 </span>            : {
@@ -115,24 +115,24 @@
 <span class="lineNum">      57 </span>            : 
 <span class="lineNum">      58 </span><span class="lineCov">        149 : - (BOOL)hasInstanceForKey:(NSString*)key</span>
 <span class="lineNum">      59 </span>            : {
-<span class="lineNum">      60 </span><span class="lineCov">        199 :     return ((_registry[key] != nil)&amp;&amp;([_registry[key] isEmpty] == NO));</span>
+<span class="lineNum">      60 </span><span class="lineCov">        201 :     return ((_registry[key] != nil)&amp;&amp;([_registry[key] isEmpty] == NO));</span>
 <span class="lineNum">      61 </span><span class="lineCov">        149 : }</span>
 <span class="lineNum">      62 </span>            : 
 <span class="lineNum">      63 </span>            : 
 <span class="lineNum">      64 </span>            : #pragma mark Private methods
 <span class="lineNum">      65 </span>            : 
-<span class="lineNum">      66 </span><span class="lineCov">        281 : - (TyphoonGenericStack*)stackForKey:(NSString*)key</span>
+<span class="lineNum">      66 </span><span class="lineCov">        324 : - (TyphoonGenericStack*)stackForKey:(NSString*)key</span>
 <span class="lineNum">      67 </span>            : {
-<span class="lineNum">      68 </span><span class="lineCov">        281 :     TyphoonGenericStack* stack = _registry[key];</span>
+<span class="lineNum">      68 </span><span class="lineCov">        324 :     TyphoonGenericStack* stack = _registry[key];</span>
 <span class="lineNum">      69 </span>            : 
-<span class="lineNum">      70 </span><span class="lineCov">        281 :     if (!stack)</span>
+<span class="lineNum">      70 </span><span class="lineCov">        324 :     if (!stack)</span>
 <span class="lineNum">      71 </span>            :     {
-<span class="lineNum">      72 </span><span class="lineCov">        224 :         stack = [TyphoonGenericStack stack];</span>
-<span class="lineNum">      73 </span><span class="lineCov">        224 :         _registry[key] = stack;</span>
-<span class="lineNum">      74 </span><span class="lineCov">        224 :     }</span>
+<span class="lineNum">      72 </span><span class="lineCov">        267 :         stack = [TyphoonGenericStack stack];</span>
+<span class="lineNum">      73 </span><span class="lineCov">        267 :         _registry[key] = stack;</span>
+<span class="lineNum">      74 </span><span class="lineCov">        267 :     }</span>
 <span class="lineNum">      75 </span>            : 
-<span class="lineNum">      76 </span><span class="lineCov">        281 :     return stack;</span>
-<span class="lineNum">      77 </span><span class="lineCov">        281 : }</span>
+<span class="lineNum">      76 </span><span class="lineCov">        324 :     return stack;</span>
+<span class="lineNum">      77 </span><span class="lineCov">        324 : }</span>
 <span class="lineNum">      78 </span>            : 
 <span class="lineNum">      79 </span>            : @end
 </pre>
