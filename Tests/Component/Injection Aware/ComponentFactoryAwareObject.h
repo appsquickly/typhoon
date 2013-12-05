@@ -1,5 +1,5 @@
 //
-//  InjectionAwareObject.h
+//  ComponentFactoryAwareObject.h
 //  Tests
 //
 //  Created by Robert Gilliam on 8/4/13.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryAware.h"
 
-@interface InjectionAwareObject : NSObject <TyphoonComponentFactoryAware>
+@interface ComponentFactoryAwareObject : NSObject <TyphoonComponentFactoryAware>
 
 @property(readonly) id factory;
 

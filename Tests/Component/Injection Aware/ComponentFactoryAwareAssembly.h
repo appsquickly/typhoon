@@ -1,5 +1,5 @@
 //
-//  InjectionAwareAssembly.h
+//  ComponentFactoryAwareAssembly.h
 //  Tests
 //
 //  Created by Robert Gilliam on 8/4/13.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <TyphoonAssembly.h>
 
-@interface InjectionAwareAssembly : TyphoonAssembly
+@interface ComponentFactoryAwareAssembly : TyphoonAssembly
 
 - (id)injectionAwareObject;
 
