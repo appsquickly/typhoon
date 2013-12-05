@@ -38,4 +38,29 @@
             _startDate, (unsigned long)_amount];
 }
 
+// Bogus implementations
+
+- (void)initialize
+{
+}
+
+- (instancetype)initWithCreditService:(id<CreditService>)creditService startDate:(NSDate *)startDate amount:(NSUInteger)amount
+{
+    return nil;
+}
+
+- (instancetype)initWithCreditService:(id<CreditService>)creditService authService:(id<AuthService>)authService startDate:(NSDate *)startDate
+{
+    return nil;
+}
+
+- (instancetype)initWithCreditService:(id<CreditService>)creditService
+                          authService:(id<AuthService>)authService
+                            startDate:(NSDate *)startDate
+                               amount:(NSUInteger)amount
+                         customerName:(NSString *)customerName
+{
+    return nil;
+}
+
 @end

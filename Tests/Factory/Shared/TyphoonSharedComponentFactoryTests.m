@@ -113,8 +113,8 @@
 #pragma mark Class Method Initializer
 - (void)test_class_method_injection
 {
-    // TODO: what do we need to verify about this?
     NSURL* url = [_componentFactory componentForKey:@"serviceUrl"];
+    assertThat(url, isNot(nilValue()));
 }
 
 - (void)test_class_method_injection_raises_exception_if_required_class_not_set
@@ -122,8 +122,8 @@
     @try
     {
         NSURL* url = [_exceptionTestFactory componentForKey:@"anotherServiceUrl"];
-        // TODO: what do we need to verify about this?
         STFail(@"Should have thrown exception");
+        url = nil;
     }
     @catch (NSException* e)
     {
@@ -159,6 +159,7 @@
     {
         NSString* aString = [factory componentForKey:@"aBlaString"];
         STFail(@"Should have thrown exception");
+        aString = nil;
     }
     @catch (NSException* e)
     {

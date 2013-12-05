@@ -132,6 +132,7 @@
     {
         Knight* knight = [_componentFactory buildInstanceWithDefinition:knightDefinition];
         STFail(@"Should have thrown exception");
+        knight = nil;
     }
     @catch (NSException* e)
     {

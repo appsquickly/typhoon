@@ -1,10 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-//  TYPHOON FRAMEWORK
-//  Copyright 2013, Jasper Blues & Contributors
+//  JASPER BLUES
+//  Copyright 2013 Jasper Blues
 //  All Rights Reserved.
 //
-//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  NOTICE: Jasper Blues permits you to use, modify, and distribute this file
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////

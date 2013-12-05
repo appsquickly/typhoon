@@ -33,6 +33,7 @@
 {
     NSDictionary* properties = [_configurer properties];
     LogTrace(@"Properties: %@", properties); // TODO: replace with an actual automated test.
+    properties = nil;
 }
 
 - (void)test_mutates_initializer_values
