@@ -25,6 +25,9 @@
 #import "SingletonB.h"
 #import "NotSingletonA.h"
 #import "CircularDependenciesAssembly.h"
+#import <TyphoonTypeConverter.h>
+#import <TyphoonTypeDescriptor.h>
+#import <TyphoonTypeConverterRegistry.h>
 
 #import "PrototypeInitInjected.h"
 #import "PrototypePropertyInjected.h"
@@ -49,6 +52,19 @@
     {
         LogTrace(@"Abstract test - implemented in sub-classes.");
     }
+}
+
+- (void)tearDown
+{
+    // Unregister NSNull converter picked up in infrastructure components assembly.
+    // Try/catch to make the correct test fail if converterFor: throws an exception because of missing converter.
+    @try
+    {
+        TyphoonTypeDescriptor *nullDescriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:[NSNull class]];
+        id<TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:nullDescriptor];
+        [[TyphoonTypeConverterRegistry shared] unregister:converter];
+    }
+    @catch (NSException *exception) {}
 }
 
 /* ====================================================================================================================================== */
@@ -175,6 +191,13 @@
 - (void)test_post_processor_component_recognized
 {
     assertThatUnsignedLong([_infrastructureComponentsFactory.postProcessors count], equalToInt(1));
+}
+
+- (void)test_type_converter_recognized
+{
+    TyphoonTypeDescriptor *nullDescriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:[NSNull class]];
+    id<TyphoonTypeConverter> nullConverter = [[TyphoonTypeConverterRegistry shared] converterFor:nullDescriptor];
+    assertThat(nullConverter, notNilValue());
 }
 
 /* ====================================================================================================================================== */

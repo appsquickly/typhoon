@@ -19,6 +19,14 @@
 */
 @protocol TyphoonTypeConverter <NSObject>
 
+/**
+ The supported type of the converter. Class or protocol.
+ */
+- (id)supportedType;
+
+/**
+ Converts the given string into the supported type.
+ */
 - (id)convert:(NSString*)stringValue;
 
 @end

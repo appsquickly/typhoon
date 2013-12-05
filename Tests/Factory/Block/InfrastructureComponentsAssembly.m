@@ -12,6 +12,7 @@
 #import "InfrastructureComponentsAssembly.h"
 #import "Typhoon.h"
 #import "Knight.h"
+#import "NSNullTypeConverter.h"
 
 @implementation InfrastructureComponentsAssembly
 
@@ -26,6 +27,11 @@
     {
         [definition injectProperty:@selector(damselsRescued) withValueAsText:@"${damsels.rescued}"];
     }];
+}
+
+- (id)typeConverter
+{
+    return [TyphoonDefinition withClass:[NSNullTypeConverter class]];
 }
 
 @end

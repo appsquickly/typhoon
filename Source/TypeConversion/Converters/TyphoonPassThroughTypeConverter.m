@@ -31,6 +31,18 @@
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods
 
+- (id)supportedType
+{
+    if (_isMutable)
+    {
+        return [NSMutableString class];
+    }
+    else
+    {
+        return [NSString class];
+    }    
+}
+
 - (id)convert:(NSString*)stringValue
 {
     if (_isMutable)

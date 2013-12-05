@@ -20,6 +20,11 @@
 
 @implementation TyphoonUIColorTypeConverter
 
+- (id)supportedType
+{
+    return [UIColor class];
+}
+
 - (id)convert:(NSString*)stringValue
 {
     NSUInteger red, green, blue;
