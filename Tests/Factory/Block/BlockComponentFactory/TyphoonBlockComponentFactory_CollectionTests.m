@@ -43,6 +43,7 @@
     [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
 }
 
+// succeeds OK
 - (void)test_allows_initialization_with_a_hardcoded_collection_of_assemblies
 {
     TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[

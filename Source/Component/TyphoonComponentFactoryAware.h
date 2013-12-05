@@ -11,6 +11,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class TyphoonComponentFactory;
+
 @protocol TyphoonComponentFactoryAware <NSObject>
 
 - (void)setFactory:(TyphoonComponentFactory*)theFactory;
