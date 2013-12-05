@@ -13,6 +13,6 @@
 
 @protocol TyphoonComponentFactoryAware <NSObject>
 
-- (void)setFactory:(id)theFactory;
+- (void)setFactory:(TyphoonComponentFactory*)theFactory;
 
 @end

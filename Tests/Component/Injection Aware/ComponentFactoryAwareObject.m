@@ -18,7 +18,7 @@
 
 @synthesize factory;
 
-- (void)setFactory:(id)theFactory
+- (void)setFactory:(TyphoonComponentFactory*)theFactory
 {
     factory = theFactory;
 }
