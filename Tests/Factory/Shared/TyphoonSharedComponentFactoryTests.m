@@ -25,6 +25,9 @@
 #import "SingletonB.h"
 #import "NotSingletonA.h"
 #import "CircularDependenciesAssembly.h"
+#import <TyphoonTypeConverter.h>
+#import <TyphoonTypeDescriptor.h>
+#import <TyphoonTypeConverterRegistry.h>
 
 #import "PrototypeInitInjected.h"
 #import "PrototypePropertyInjected.h"
@@ -49,6 +52,19 @@
     {
         LogTrace(@"Abstract test - implemented in sub-classes.");
     }
+}
+
+- (void)tearDown
+{
+    // Unregister NSNull converter picked up in infrastructure components assembly.
+    // Try/catch to make the correct test fail if converterFor: throws an exception because of missing converter.
+    @try
+    {
+        TyphoonTypeDescriptor *nullDescriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:[NSNull class]];
+        id<TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:nullDescriptor];
+        [[TyphoonTypeConverterRegistry shared] unregister:converter];
+    }
+    @catch (NSException *exception) {}
 }
 
 /* ====================================================================================================================================== */
@@ -97,8 +113,8 @@
 #pragma mark Class Method Initializer
 - (void)test_class_method_injection
 {
-    // TODO: what do we need to verify about this?
     NSURL* url = [_componentFactory componentForKey:@"serviceUrl"];
+    assertThat(url, isNot(nilValue()));
 }
 
 - (void)test_class_method_injection_raises_exception_if_required_class_not_set
@@ -106,8 +122,8 @@
     @try
     {
         NSURL* url = [_exceptionTestFactory componentForKey:@"anotherServiceUrl"];
-        // TODO: what do we need to verify about this?
         STFail(@"Should have thrown exception");
+        url = nil;
     }
     @catch (NSException* e)
     {
@@ -143,6 +159,7 @@
     {
         NSString* aString = [factory componentForKey:@"aBlaString"];
         STFail(@"Should have thrown exception");
+        aString = nil;
     }
     @catch (NSException* e)
     {
@@ -174,6 +191,13 @@
 - (void)test_post_processor_component_recognized
 {
     assertThatUnsignedLong([_infrastructureComponentsFactory.postProcessors count], equalToInt(1));
+}
+
+- (void)test_type_converter_recognized
+{
+    TyphoonTypeDescriptor *nullDescriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:[NSNull class]];
+    id<TyphoonTypeConverter> nullConverter = [[TyphoonTypeConverterRegistry shared] converterFor:nullDescriptor];
+    assertThat(nullConverter, notNilValue());
 }
 
 /* ====================================================================================================================================== */

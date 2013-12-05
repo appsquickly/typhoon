@@ -84,18 +84,24 @@
     return _primitiveTypeConverter;
 }
 
-- (void)register:(id <TyphoonTypeConverter>)converter forClassOrProtocol:(id)classOrProtocol;
+- (void)register:(id <TyphoonTypeConverter>)converter;
 {
-    if (!([_typeConverters objectForKey:classOrProtocol]))
-    {
-        [_typeConverters setObject:converter forKey:(id <NSCopying>) classOrProtocol];
-    }
-    else
-    {
-        BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
-        NSString* name = isClass ? NSStringFromClass(classOrProtocol) : NSStringFromProtocol(classOrProtocol);
-        [NSException raise:NSInvalidArgumentException format:@"Converter for '%@' already registered.", name];
-    }
+  id classOrProtocol = [converter supportedType];
+  if (!([_typeConverters objectForKey:classOrProtocol]))
+  {
+    [_typeConverters setObject:converter forKey:(id <NSCopying>) classOrProtocol];
+  }
+  else
+  {
+    BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
+    NSString* name = isClass ? NSStringFromClass(classOrProtocol) : NSStringFromProtocol(classOrProtocol);
+    [NSException raise:NSInvalidArgumentException format:@"Converter for '%@' already registered.", name];
+  }
+}
+
+- (void)unregister:(id <TyphoonTypeConverter>)converter
+{
+  [_typeConverters removeObjectForKey:[converter supportedType]];
 }
 
 
@@ -104,17 +110,17 @@
 
 - (void)registerSharedConverters
 {
-    [self register:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:NO] forClassOrProtocol:[NSString class]];
-    [self register:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:YES] forClassOrProtocol:[NSMutableString class]];
-    [self register:[[TyphoonNSURLTypeConverter alloc] init] forClassOrProtocol:[NSURL class]];
+    [self register:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:NO]];
+    [self register:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:YES]];
+    [self register:[[TyphoonNSURLTypeConverter alloc] init]];
 }
 
 - (void)registerPlatformConverters
 {
 #if TARGET_OS_IPHONE
     {
-        [self register:[[TyphoonUIColorTypeConverter alloc] init] forClassOrProtocol:NSClassFromString(@"UIColor")];
-        [self register:[[TyphoonBundledImageTypeConverter alloc] init] forClassOrProtocol:NSClassFromString(@"UIImage")];
+        [self register:[[TyphoonUIColorTypeConverter alloc] init]];
+        [self register:[[TyphoonBundledImageTypeConverter alloc] init]];
     }
 #else
     {

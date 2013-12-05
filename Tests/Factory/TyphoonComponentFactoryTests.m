@@ -133,6 +133,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
     {
         Knight* knight = [_componentFactory componentForType:[Knight class]];
         STFail(@"Should have thrown exception");
+        knight = nil;
     }
     @catch (NSException* e)
     {
@@ -143,6 +144,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
     {
         Knight* knight = [_componentFactory componentForType:[Champion class]];
         STFail(@"Should have thrown exception");
+        knight = nil;
     }
     @catch (NSException* e)
     {
