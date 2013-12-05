@@ -69,31 +69,31 @@
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            : #import &quot;TyphoonAssistedFactoryBase.h&quot;
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">          5 : @implementation TyphoonAssistedFactoryBase</span>
+<span class="lineNum">      14 </span><span class="lineCov">         11 : @implementation TyphoonAssistedFactoryBase</span>
 <span class="lineNum">      15 </span>            : {
 <span class="lineNum">      16 </span>            :     NSMutableDictionary *_injections;
 <span class="lineNum">      17 </span>            : }
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span><span class="lineCov">          9 : - (instancetype)init</span>
+<span class="lineNum">      19 </span><span class="lineCov">         15 : - (instancetype)init</span>
 <span class="lineNum">      20 </span>            : {
-<span class="lineNum">      21 </span><span class="lineCov">          9 :     self = [super init];</span>
-<span class="lineNum">      22 </span><span class="lineCov">          9 :     if (self)</span>
+<span class="lineNum">      21 </span><span class="lineCov">         15 :     self = [super init];</span>
+<span class="lineNum">      22 </span><span class="lineCov">         15 :     if (self)</span>
 <span class="lineNum">      23 </span>            :     {
-<span class="lineNum">      24 </span><span class="lineCov">          9 :         _injections = [[NSMutableDictionary alloc] init];</span>
-<span class="lineNum">      25 </span><span class="lineCov">          9 :     }</span>
+<span class="lineNum">      24 </span><span class="lineCov">         15 :         _injections = [[NSMutableDictionary alloc] init];</span>
+<span class="lineNum">      25 </span><span class="lineCov">         15 :     }</span>
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">          9 :     return self;</span>
-<span class="lineNum">      28 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">      27 </span><span class="lineCov">         15 :     return self;</span>
+<span class="lineNum">      28 </span><span class="lineCov">         15 : }</span>
 <span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span><span class="lineCov">          6 : - (void)setInjectionValue:(id)value forProperty:(NSString *)property</span>
+<span class="lineNum">      30 </span><span class="lineCov">         15 : - (void)setInjectionValue:(id)value forProperty:(NSString *)property</span>
 <span class="lineNum">      31 </span>            : {
-<span class="lineNum">      32 </span><span class="lineCov">          6 :     [_injections setObject:value forKey:property];</span>
-<span class="lineNum">      33 </span><span class="lineCov">          6 : }</span>
+<span class="lineNum">      32 </span><span class="lineCov">         15 :     [_injections setObject:value forKey:property];</span>
+<span class="lineNum">      33 </span><span class="lineCov">         15 : }</span>
 <span class="lineNum">      34 </span>            : 
-<span class="lineNum">      35 </span><span class="lineCov">          7 : - (id)injectionValueForProperty:(NSString *)property</span>
+<span class="lineNum">      35 </span><span class="lineCov">         16 : - (id)injectionValueForProperty:(NSString *)property</span>
 <span class="lineNum">      36 </span>            : {
-<span class="lineNum">      37 </span><span class="lineCov">          7 :     return [_injections objectForKey:property];</span>
-<span class="lineNum">      38 </span><span class="lineCov">          7 : }</span>
+<span class="lineNum">      37 </span><span class="lineCov">         16 :     return [_injections objectForKey:property];</span>
+<span class="lineNum">      38 </span><span class="lineCov">         16 : }</span>
 <span class="lineNum">      39 </span>            : 
 <span class="lineNum">      40 </span><span class="lineNoCov">          0 : - (id)_dummyGetter { return nil; }</span>
 <span class="lineNum">      41 </span><span class="lineNoCov">          0 : - (void)_setDummySetter:(id)value {}</span>

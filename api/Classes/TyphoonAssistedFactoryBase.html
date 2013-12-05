@@ -40,6 +40,13 @@
 	
 	
 	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/_fmc_closureForSelector:">&nbsp;&nbsp;&nbsp;&nbsp;+ _fmc_closureForSelector:</option>
+	
+	<option value="//api/name/_fmc_setClosure:forSelector:">&nbsp;&nbsp;&nbsp;&nbsp;+ _fmc_setClosure:forSelector:</option>
+	
+	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
@@ -68,6 +75,8 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_TyphoonFactoryMethodClosure Methods">TyphoonFactoryMethodClosure Methods</a></span></li>
+	
 </ul></li>
 
 
@@ -75,6 +84,14 @@
 
 
 
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/_fmc_closureForSelector:">_fmc_closureForSelector:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/_fmc_setClosure:forSelector:">_fmc_setClosure:forSelector:</a></span></li>
+	
+</ul></li>
 
 
 
@@ -127,6 +144,15 @@
 						<h2 class="subtitle subtitle-overview">Overview</h2>
 						<p>Internal base class for all Typhoon assisted factories. Users should not use
 this class directly.</p>
+
+<p>Complements TyphoonAssistedFactoryBase to allow methods defined by closures.
+The implementation overrides methodSignatureForSelector and forwardInvocation
+to implement the methods defined by the closures.</p>
+
+<p>Even if this class is &ldquo;internal&rdquo;, the prefixes avoid the possibility of the
+user defining some factory method with the same name.</p>
+
+<p>Users should not use this class directly.</p>
 					</div>
 					
 					
@@ -139,7 +165,7 @@ this class directly.</p>
 						
 						
 						
-						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
 
 						<ul class="task-list">
 							<li>
@@ -173,6 +199,28 @@ this class directly.</p>
 </li>
 						</ul>
 						
+						
+						<a title="TyphoonFactoryMethodClosure Methods" name="task_TyphoonFactoryMethodClosure Methods"></a>
+						<h3 class="subsubtitle task-title">TyphoonFactoryMethodClosure Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_fmc_setClosure:forSelector:">+&nbsp;_fmc_setClosure:forSelector:</a></code>
+		<span class="tooltip"><p>Sets the given closure for the given selector.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_fmc_closureForSelector:">+&nbsp;_fmc_closureForSelector:</a></code>
+		<span class="tooltip"><p>Returns the closure associated with the given selector.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
 					</div>
 					
 					
@@ -180,6 +228,94 @@ this class directly.</p>
 					
 					
 					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/_fmc_closureForSelector:" title="_fmc_closureForSelector:"></a>
+	<h3 class="subsubtitle method-title">_fmc_closureForSelector:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the closure associated with the given selector.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (TyphoonAssistedFactoryMethodClosure *)_fmc_closureForSelector:(SEL)<em>selector</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the closure associated with the given selector.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonAssistedFactoryBase+TyphoonFactoryMethodClosure.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_fmc_setClosure:forSelector:" title="_fmc_setClosure:forSelector:"></a>
+	<h3 class="subsubtitle method-title">_fmc_setClosure:forSelector:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sets the given closure for the given selector.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)_fmc_setClosure:(TyphoonAssistedFactoryMethodClosure *)<em>closure</em> forSelector:(SEL)<em>selector</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sets the given closure for the given selector.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonAssistedFactoryBase+TyphoonFactoryMethodClosure.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
 					
 					
 					

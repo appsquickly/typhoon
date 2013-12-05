@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -66,6 +68,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -135,6 +139,44 @@
 					
 					
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>TyphoonAssembly provides a concise way to declare and encapsulate the architecture of an application in one or more classes that describe
+how components collaborate together.</p>
+
+
+
+
+<p>The [assembly](#//api/name/assembly) serves two purposes. At build-time it returns [TyphoonDefinition](../Classes/TyphoonDefinition.html), while at runtime it returns the actual type
+* defined in the definition:</p>
+
+
+<ul>
+<li>At build time we can define components.</li>
+<li>At run-time we can resolve components using the method name on the interface.</li>
+</ul>
+
+
+<p>Example:</p>
+
+<pre><code>    MyAssemblyType* assembly = (MyAssemblyType*) [TyphoonComponentFactory defaultFactory];
+    //Use the assembly interface instead of a 'magic string'
+    AnalyticsService* service = [assembly analyticsService];
+</code></pre>
+
+<p>The TyphoonAssembly provides:</p>
+
+<ul>
+<li>a way to easily define multiple components of the same class or protocol</li>
+<li>Avoids the use of &ldquo;magic strings&rdquo; for component resolution and wiring</li>
+<li>Allows the use of IDE features like refactoring and code completion.</li>
+</ul>
+
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -163,9 +205,7 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/resolveCollaboratingAssemblies">&ndash;&nbsp;resolveCollaboratingAssemblies</a></code>
-		<span class="tooltip"><p>Subclasses must implement to wire any collaborating assemblies to one of the following:
-a hard-coded reference
-a proxy that will be resolved at runtime.</p></span>
+		<span class="tooltip"><p>Subclasses must implement to wire any collaborating assemblies to one of the following that will be resolved at runtime.</p></span>
 	</span>
 	
 	
@@ -313,9 +353,7 @@ a proxy that will be resolved at runtime.</p></span>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Subclasses must implement to wire any collaborating assemblies to one of the following:
-a hard-coded reference
-a proxy that will be resolved at runtime.</p>
+		<p>Subclasses must implement to wire any collaborating assemblies to one of the following that will be resolved at runtime.</p>
 	</div>		
 	
     
@@ -332,9 +370,7 @@ a proxy that will be resolved at runtime.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Subclasses must implement to wire any collaborating assemblies to one of the following:
-a hard-coded reference
-a proxy that will be resolved at runtime.</p>
+		<p>Subclasses must implement to wire any collaborating assemblies to one of the following that will be resolved at runtime.</p>
 	</div>
 	
 	

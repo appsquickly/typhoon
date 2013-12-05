@@ -55,6 +55,8 @@
 	
 	<option value="//api/name/factoryMethod:body:">&nbsp;&nbsp;&nbsp;&nbsp;- factoryMethod:body:</option>
 	
+	<option value="//api/name/factoryMethod:returns:initialization:">&nbsp;&nbsp;&nbsp;&nbsp;- factoryMethod:returns:initialization:</option>
+	
 	
 	
 </select>
@@ -95,6 +97,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/factoryMethod:body:">factoryMethod:body:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/factoryMethod:returns:initialization:">factoryMethod:returns:initialization:</a></span></li>
+	
 </ul></li>
 
 
@@ -132,7 +136,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Used to enumerate over factory method selectors and their associated body blocks</p>
+						<p>Used to configure a <a href="../Protocols/TyphoonAssistedFactoryMethod.html">TyphoonAssistedFactoryMethod</a></p>
 					</div>
 					
 					
@@ -156,6 +160,18 @@ block. The block should return a value. The arguments of the block are the
 arguments of the factory method in the same order, but the factory itself is
 prefixed as first argument, so the factory method arguments are the second
 and following arguments.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/factoryMethod:returns:initialization:">&ndash;&nbsp;factoryMethod:returns:initialization:</a></code>
+		<span class="tooltip"><p>Define a new factory method with the given selector, returning the given type
+and using the configured TyphoonAssistedFactoryInitializer. During the
+initialization block you should set the selector of the initializer and also
+configure each of the parameters of that selector pointing to either one
+property, or one of the factory method arguments (referred either by
+positional index or name).</p></span>
 	</span>
 	
 	
@@ -371,6 +387,57 @@ block. The block should return a value. The arguments of the block are the
 arguments of the factory method in the same order, but the factory itself is
 prefixed as first argument, so the factory method arguments are the second
 and following arguments.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TyphoonAssistedFactoryDefinition.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/factoryMethod:returns:initialization:" title="factoryMethod:returns:initialization:"></a>
+	<h3 class="subsubtitle method-title">factoryMethod:returns:initialization:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Define a new factory method with the given selector, returning the given type
+and using the configured TyphoonAssistedFactoryInitializer. During the
+initialization block you should set the selector of the initializer and also
+configure each of the parameters of that selector pointing to either one
+property, or one of the factory method arguments (referred either by
+positional index or name).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)factoryMethod:(SEL)<em>name</em> returns:(Class)<em>returnType</em> initialization:(TyphoonAssistedFactoryMethodInitializerBlock)<em>initialization</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Define a new factory method with the given selector, returning the given type
+and using the configured TyphoonAssistedFactoryInitializer. During the
+initialization block you should set the selector of the initializer and also
+configure each of the parameters of that selector pointing to either one
+property, or one of the factory method arguments (referred either by
+positional index or name).</p>
 	</div>
 	
 	
