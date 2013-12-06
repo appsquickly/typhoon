@@ -19,11 +19,8 @@
 * TyphoonAssembly provides a concise way to declare and encapsulate the architecture of an application in one or more classes that describe
 * how components collaborate together.
 *
-* The assembly serves two purposes. At build-time it returns TyphoonDefinition, while at runtime it returns the actual type
-* defined in the definition:
-*
-* - At build time we can define components.
-* - At run-time we can resolve components using the method name on the interface.
+* Besides declaring an application architecture at build-time, the assembly interface serves an additional purpose at runtime: we can
+* resolve components using the method name on the interface.
 *
 * Example:
 *
