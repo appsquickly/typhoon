@@ -35,6 +35,7 @@
         <xsd:complexType>
             <xsd:sequence>
                 <xsd:element ref="description" minOccurs="0"/>
+                <xsd:element ref="property-placeholder" maxOccurs="1"/>
                 <xsd:choice minOccurs="0" maxOccurs="unbounded">
                     <xsd:element ref="component"/>
                     <xsd:any namespace="##other" processContents="strict" minOccurs="0" maxOccurs="unbounded"/>
@@ -318,7 +319,20 @@
     <!-- infrastructure -->
     
     <xsd:element name="property-placeholder">
-        <xsd:attribute name="location" type="xsd:string" />
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[
+	Represents a property place holder that reads configuration from a file in the bundle.
+				]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:attribute name="location" type="xsd:string" use="required">
+                <xsd:annotation>
+                    <xsd:documentation><![CDATA[
+	The location of the properties file. Several files can be provided by separating the names with commas.
+				]]></xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+        </xsd:complexType>
     </xsd:element>
     
     <!-- simple internal types -->

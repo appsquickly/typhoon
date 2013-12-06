@@ -30,24 +30,33 @@
 
 + (TyphoonPropertyPlaceholderConfigurer*)configurerWithResource:(id <TyphoonResource>)resource
 {
-    TyphoonPropertyPlaceholderConfigurer* configurer = [TyphoonPropertyPlaceholderConfigurer configurer];
-    [configurer usePropertyStyleResource:resource];
-    return configurer;
+    return [self configurerWithResourceList:@[resource]];
 }
 
 + (TyphoonPropertyPlaceholderConfigurer*)configurerWithResources:(id <TyphoonResource>)first, ...
 {
-    TyphoonPropertyPlaceholderConfigurer* configurer = [TyphoonPropertyPlaceholderConfigurer configurer];
-    [configurer usePropertyStyleResource:first];
+    NSMutableArray* resources = [[NSMutableArray alloc] init];
+    [resources addObject:first];
 
     va_list resource_list;
     va_start(resource_list, first);
     id <TyphoonResource> resource;
     while ((resource = va_arg( resource_list, id < TyphoonResource >)))
     {
-        [configurer usePropertyStyleResource:resource];
+        [resources addObject:resource];
     }
     va_end(resource_list);
+
+    return [self configurerWithResourceList:resources];
+}
+
++ (TyphoonPropertyPlaceholderConfigurer*)configurerWithResourceList:(NSArray*)resources
+{
+    TyphoonPropertyPlaceholderConfigurer* configurer = [TyphoonPropertyPlaceholderConfigurer configurer];
+    for (id <TyphoonResource> resource in resources)
+    {
+        [configurer usePropertyStyleResource:resource];
+    }
     return configurer;
 }
 

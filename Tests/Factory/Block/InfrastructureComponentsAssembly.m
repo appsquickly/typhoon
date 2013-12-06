@@ -18,7 +18,9 @@
 
 - (id)propertyPlaceHolderConfigurer
 {
-    return [TyphoonDefinition propertyPlaceholderWithResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
+    return [TyphoonDefinition propertyPlaceholderWithResources:
+            @[[TyphoonBundleResource withName:@"SomeProperties.properties"],
+                    [TyphoonBundleResource withName:@"SomeOtherProperties.properties"]]];
 }
 
 - (id)knight
@@ -26,6 +28,7 @@
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
     {
         [definition injectProperty:@selector(damselsRescued) withValueAsText:@"${damsels.rescued}"];
+        [definition injectProperty:@selector(hasHorseWillTravel) withValueAsText:@"${has.horse.will.travel}"];
     }];
 }
 
