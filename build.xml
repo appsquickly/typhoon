@@ -271,11 +271,10 @@
             git checkout gh-pages
             git branch --set-upstream-to=origin/gh-pages gh-pages
             git pull
-            rm -fr ./coverage
             cp -fr ${reports.dir}/build-status.png ./build-status.png
             git add --all --ignore-removal ./coverage
             rm -fr ./coverage
-            cp -fr ${reports.dir}/coverage/ ./coverage
+            rsync -aq ${reports.dir}/coverage/ ./coverage
             git add --all --ignore-removal ./build-status.png
             rm -fr ./api
             cp -fr ${reports.dir}/api ./api
