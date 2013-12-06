@@ -116,7 +116,7 @@
 #nav-tree {
   background-image:url('nav_h.png');
   background-repeat:repeat-x;
-  background-color: #FAFBFA;
+  background-color: #F3F3F3;
   -webkit-overflow-scrolling : touch; /* iOS 5+ */
 }
 
