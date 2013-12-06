@@ -40,7 +40,7 @@
         __shouldbeprivate__coverage,
         --publish.site.dry.run"/>
 
-    <target name="publish" depends="--publish.site.push"/>
+    <target name="publish" depends="--publish.site.dry.run, --publish.site.push"/>
 
 
     <target name="fast">
