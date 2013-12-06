@@ -12,13 +12,11 @@
 
 
 #import <objc/runtime.h>
-#import <objc/message.h>
 #import "TyphoonAssembly.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import "OCLogTemplate.h"
-#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonAssembly+TyphoonBlockFactoryFriend.h"
 #import "TyphoonAssemblyAdviser.h"
 #import "TyphoonAssemblyDefinitionBuilder.h"
