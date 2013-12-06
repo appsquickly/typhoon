@@ -108,9 +108,6 @@ var hierarchy =
       [ "TyphoonUIColorTypeConverter", "interface_typhoon_u_i_color_type_converter.html", null ],
       [ "TyphoonViewControllerNibResolver", "interface_typhoon_view_controller_nib_resolver.html", null ]
     ] ],
-    [ "<PaymentFactory>", "protocol_payment_factory-p.html", null ],
-    [ "<Quest>", "protocol_quest-p.html", null ],
-    [ "<SomeType>", "protocol_some_type-p.html", null ],
     [ "TyphoonAssistedFactoryBase(TyphoonFactoryMethodClosure)", "category_typhoon_assisted_factory_base_07_typhoon_factory_method_closure_08.html", null ],
     [ "TyphoonComponentFactory(InstanceBuilder)", "category_typhoon_component_factory_07_instance_builder_08.html", null ],
     [ "TyphoonDefinition(Infrastructure)", "category_typhoon_definition_07_infrastructure_08.html", null ],

@@ -2,9 +2,6 @@ var annotated =
 [
     [ "NSObject(TyphoonIntrospectionUtils)", "category_n_s_object_07_typhoon_introspection_utils_08.html", "category_n_s_object_07_typhoon_introspection_utils_08" ],
     [ "NSObject(TyphoonJRSwizzle)", "category_n_s_object_07_typhoon_j_r_swizzle_08.html", null ],
-    [ "<PaymentFactory>", "protocol_payment_factory-p.html", null ],
-    [ "<Quest>", "protocol_quest-p.html", null ],
-    [ "<SomeType>", "protocol_some_type-p.html", null ],
     [ "TyphoonArgumentInjectedAsCollection", "interface_typhoon_argument_injected_as_collection.html", "interface_typhoon_argument_injected_as_collection" ],
     [ "TyphoonAssembly", "interface_typhoon_assembly.html", "interface_typhoon_assembly" ],
     [ "TyphoonAssemblySelectorAdviser", "interface_typhoon_assembly_selector_adviser.html", null ],

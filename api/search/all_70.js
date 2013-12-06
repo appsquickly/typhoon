@@ -8,7 +8,6 @@ var searchData=
   ['parentref',['parentRef',['../interface_typhoon_definition.html#a17023516fe9bd4b24fbf632cc67a0243',1,'TyphoonDefinition']]],
   ['patchdefinition_3awithobject_3a',['patchDefinition:withObject:',['../interface_typhoon_patcher.html#a5f2b4e22584b5d04d4f42971ed44f693',1,'TyphoonPatcher']]],
   ['patchdefinitionwithkey_3awithobject_3a',['patchDefinitionWithKey:withObject:',['../interface_typhoon_patcher.html#aba162ef9cefbd4ffac89686ad0f25856',1,'TyphoonPatcher']]],
-  ['paymentfactory_2dp',['PaymentFactory-p',['../protocol_payment_factory-p.html',1,'']]],
   ['peek',['peek',['../interface_typhoon_generic_stack.html#a4a07d729896f1850e1e69429eeee21e4',1,'TyphoonGenericStack']]],
   ['peekinstanceforkey_3a',['peekInstanceForKey:',['../protocol_typhoon_instance_register-p.html#ad3748453c6b09a9681375727a88218ab',1,'TyphoonInstanceRegister-p']]],
   ['pop',['pop',['../interface_typhoon_generic_stack.html#adf16a12f76a96c27ac709806310b0f0d',1,'TyphoonGenericStack']]],

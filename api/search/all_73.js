@@ -13,7 +13,6 @@ var searchData=
   ['setterforpropertywithname_3a',['setterForPropertyWithName:',['../category_n_s_object_07_typhoon_introspection_utils_08.html#a6220a889a3878c1f0258cce8da284e87',1,'NSObject(TyphoonIntrospectionUtils)::setterForPropertyWithName:()'],['../protocol_typhoon_introspective_n_s_object-p.html#a4d2da7ffcf3ae77c55da219d67b14694',1,'TyphoonIntrospectiveNSObject-p::setterForPropertyWithName:()']]],
   ['shared',['shared',['../interface_typhoon_type_converter_registry.html#a193f50912556ea950a0f65bfe25ce922',1,'TyphoonTypeConverterRegistry']]],
   ['singletons',['singletons',['../interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785',1,'TyphoonComponentFactory']]],
-  ['sometype_2dp',['SomeType-p',['../protocol_some_type-p.html',1,'']]],
   ['stack',['stack',['../interface_typhoon_generic_stack.html#ada7b744c131fc7348f069d4dd7f5598a',1,'TyphoonGenericStack']]],
   ['stashinstance_3aforkey_3a',['stashInstance:forKey:',['../protocol_typhoon_instance_register-p.html#ae1af8f440a2e9359bc8fa4818fee5a3f',1,'TyphoonInstanceRegister-p']]],
   ['structuretypename',['structureTypeName',['../interface_typhoon_type_descriptor.html#a51e40b95dc79d9b28a3351efdc5ea7f9',1,'TyphoonTypeDescriptor']]],

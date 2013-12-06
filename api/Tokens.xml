@@ -777,38 +777,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>PaymentFactory</Name>
-      <APILanguage>c</APILanguage>
-      <Type>intf</Type>
-      <Scope>PaymentFactory</Scope>
-    </TokenIdentifier>
-    <Path>protocol_payment_factory-p.html</Path>
-    <Abstract>Provides a factory that combines the convenience method arguments with the assembly-supplied dependen...</Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>Quest</Name>
-      <APILanguage>c</APILanguage>
-      <Type>intf</Type>
-      <Scope>Quest</Scope>
-    </TokenIdentifier>
-    <Path>protocol_quest-p.html</Path>
-    <Abstract>Returns an an instance of the component matching the supplied class or protocol. </Abstract>
-    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>SomeType</Name>
-      <APILanguage>c</APILanguage>
-      <Type>intf</Type>
-      <Scope>SomeType</Scope>
-    </TokenIdentifier>
-    <Path>protocol_some_type-p.html</Path>
-    <Abstract>Returns the type converter for the given type either a Class object or. </Abstract>
-    <DeclaredIn>TyphoonTypeConverterRegistry.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>TyphoonArgumentInjectedAsCollection</Name>
       <APILanguage>c</APILanguage>
       <Type>cl</Type>

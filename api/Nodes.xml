@@ -56,18 +56,6 @@
             </Subnodes>
            </Node>
            <Node>
-            <Name>&lt;PaymentFactory&gt;</Name>
-            <Path>protocol_payment_factory-p.html</Path>
-           </Node>
-           <Node>
-            <Name>&lt;Quest&gt;</Name>
-            <Path>protocol_quest-p.html</Path>
-           </Node>
-           <Node>
-            <Name>&lt;SomeType&gt;</Name>
-            <Path>protocol_some_type-p.html</Path>
-           </Node>
-           <Node>
             <Name>TyphoonArgumentInjectedAsCollection</Name>
             <Path>interface_typhoon_argument_injected_as_collection.html</Path>
             <Subnodes>
@@ -2442,18 +2430,6 @@
               <Path>interface_typhoon_view_controller_nib_resolver.html</Path>
              </Node>
             </Subnodes>
-           </Node>
-           <Node>
-            <Name>&lt;PaymentFactory&gt;</Name>
-            <Path>protocol_payment_factory-p.html</Path>
-           </Node>
-           <Node>
-            <Name>&lt;Quest&gt;</Name>
-            <Path>protocol_quest-p.html</Path>
-           </Node>
-           <Node>
-            <Name>&lt;SomeType&gt;</Name>
-            <Path>protocol_some_type-p.html</Path>
            </Node>
            <Node>
             <Name>TyphoonAssistedFactoryBase(TyphoonFactoryMethodClosure)</Name>
