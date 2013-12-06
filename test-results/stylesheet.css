@@ -11,7 +11,7 @@ table tr td, table tr th {
 table.details tr th{
     font-weight: bold;
     text-align:left;
-    background:#005a92;
+    background:#01414e;
     color: #f0fcec;
 }
 table.details tr td{
@@ -58,7 +58,7 @@ h6 {
 .heading {
    text-align:left;
    background:#ffffff;
-   color: #006dac;
+   color: #01414e;
    font-weight: bold;	
    font-size: 170%;
    margin: 0px; 
