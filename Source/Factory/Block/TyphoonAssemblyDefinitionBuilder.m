@@ -29,6 +29,11 @@
     NSMutableDictionary* _cachedDefinitionsForMethodName;
 }
 
++ (instancetype)builderWithAssembly:(TyphoonAssembly*)assembly
+{
+    return [[self alloc] initWithAssembly:assembly];
+}
+
 - (instancetype)initWithAssembly:(TyphoonAssembly*)assembly
 {
     self = [super init];
@@ -36,24 +41,6 @@
     {
         _assembly = assembly;
 
-        _resolveStackForSelector = [[NSMutableDictionary alloc] init];
-        _cachedDefinitionsForMethodName = [[NSMutableDictionary alloc] init];
-    }
-
-    return self;
-}
-
-+ (instancetype)builderWithAssembly:(TyphoonAssembly*)assembly
-{
-    return [[self alloc] initWithAssembly:assembly];
-}
-
-
-- (id)init
-{
-    self = [super init];
-    if (self)
-    {
         _resolveStackForSelector = [[NSMutableDictionary alloc] init];
         _cachedDefinitionsForMethodName = [[NSMutableDictionary alloc] init];
     }
