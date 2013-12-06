@@ -62,6 +62,7 @@
     <target name="__shouldbeprivate__coverage" depends="
         __build.library.ios.simulator,
         --test.library,
+        --test.generate.report,
         --assemble.coverage.data,
         --coverage.report"/>
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END SHOULD BE PRIVATE TARGETS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -91,7 +92,7 @@
 
     <target name="--test.cocoapods">
         <property name="tests.report" value="${reports.dir}/tests/test-results.txt"/>
-        <exec executable="xcodebuild" failonerror="false" outputproperty="unit.tests.output">
+        <exec executable="xcodebuild" outputproperty="unit.tests.output" failonerror="no" failifexecutionfails="no">
             <!-- TODO: move out of derived data -->
             <arg line="-workspace ${workspace} -scheme '${tests.ios.scheme.name}' test -destination OS=${module.sdk.version},name=iPad"/>
         </exec>
