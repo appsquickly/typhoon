@@ -232,7 +232,8 @@ recommended. For the example above the code will be the following:</p>
     [definition injectProperty:@selector(creditService)];
     [definition injectProperty:@selector(authService)];
   } factories:^(TyphoonAssistedFactoryDefinition *definition) {
-    [definition factoryMethod:@selector(paymentWithStartDate:amount:) returns:[Payment class] initialization:^(TyphoonAssistedFactoryMethodInitializer *initializer) {
+    [definition factoryMethod:@selector(paymentWithStartDate:amount:) returns:[Payment class]
+        initialization:^(TyphoonAssistedFactoryMethodInitializer *initializer) {
 </code></pre>
 
 <p>initializer.selector = @selector(initWithCreditService:authService:startDate:amount:);
