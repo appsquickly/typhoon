@@ -167,7 +167,7 @@ each commit. (If you'd like the script I will share it).
 
 * <a href="http://jasperblues.github.com/Typhoon/api/index.html">API</a>
 * <a href="http://jasperblues.github.com/Typhoon/test-results/index.html">Test Results</a>
-* <a href="http://jasperblues.github.com/Typhoon/coverage/index.html">Coverage Reports</a>
+* <a href="http://jasperblues.github.com/Typhoon/coverage/index.html">Coverage Reports (empty if tests currently failing)</a>
 
 
 
