@@ -18,8 +18,9 @@
 @class TyphoonDefinition;
 
 /**
-* This is the base class for for all spring component factories. Although, it could be used as-is, the intention is to use a
-* sub-class like TyphoonXmlComponentFactory.
+* This is the base class for all component factories. It defines methods for retrieving components from the factory, as well as a low-level
+* API for assembling components from their constituent parts. This low-level API could be used as-is, however its intended to use a higher
+* level abstraction such as TyphoonBlockComponentFactory or TyphoonXmlComponentFactory.
 */
 @interface TyphoonComponentFactory : NSObject
 {

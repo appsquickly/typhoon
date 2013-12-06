@@ -256,10 +256,13 @@
         <!-- Don't leave it lying around -->
         <delete file="${basedir}/docset-installed.txt"/>
 
-        <property name="docs.dir" value="${user.home}/Library/Developer/Shared/Documentation/Docsets"/>
-        <copy todir="${reports.dir}/api">
-            <fileset dir="${docs.dir}/${module.company}.${module.name}.docset/Contents/Resources/Documents"/>
+        <exec executable="doxygen"/>
+
+        <mkdir dir="${reports.dir}/api/images"/>
+        <copy todir="${reports.dir}/api/images">
+            <fileset dir="images"/>
         </copy>
+
     </target>
 
     <target name="--publish.site.dry.run">
