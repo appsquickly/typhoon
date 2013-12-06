@@ -135,7 +135,8 @@
                 </filterreader>
             </filterchain>
         </loadfile>
-        
+
+        <delete dir="${reports.dir}/test-results"/>
         <echo message="Convert test output"/>
         <echo file="${temp.dir}/convert-test-output.sh">
             #!/bin/bash
@@ -157,7 +158,7 @@
             <fileset dir="${scripts.dir}" includes="**/*.png"/>
         </copy>
         
-        <fail if="tests.failed" message="Tests failed. Report is at ${tests.report}"/>   
+        <fail if="tests.failed" message="Tests failed. Report is at ${reports.dir}/test-results"/>
     </target>
 
     <target name="--tests.bundle.install">
