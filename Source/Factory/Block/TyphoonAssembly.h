@@ -16,27 +16,27 @@
 @class TyphoonDefinition;
 
 /**
-<p>TyphoonAssembly provides a concise way to declare and encapsulate the architecture of an application in one or more classes that describe
-how components collaborate together.</p>
-
-<p>The assembly serves two purposes. At build-time it returns TyphoonDefinition, while at runtime it returns the actual type
-* defined in the definition:</p>
-
-- At build time we can define components.
-- At run-time we can resolve components using the method name on the interface.
-
-Example:
-
-        MyAssemblyType* assembly = (MyAssemblyType*) [TyphoonComponentFactory defaultFactory];
-        //Use the assembly interface instead of a 'magic string'
-        AnalyticsService* service = [assembly analyticsService];
-
-The TyphoonAssembly provides:
-
-- a way to easily define multiple components of the same class or protocol
-- Avoids the use of "magic strings" for component resolution and wiring
-- Allows the use of IDE features like refactoring and code completion.
-
+* TyphoonAssembly provides a concise way to declare and encapsulate the architecture of an application in one or more classes that describe
+* how components collaborate together.
+*
+* The assembly serves two purposes. At build-time it returns TyphoonDefinition, while at runtime it returns the actual type
+* defined in the definition:
+*
+* - At build time we can define components.
+* - At run-time we can resolve components using the method name on the interface.
+*
+* Example:
+*
+*           MyAssemblyType* assembly = (MyAssemblyType*) [TyphoonComponentFactory defaultFactory];
+*           //Use the assembly interface instead of a 'magic string'
+*           AnalyticsService* service = [assembly analyticsService];
+*
+* The TyphoonAssembly provides:
+*
+* - a way to easily define multiple components of the same class or protocol
+* - Avoids the use of "magic strings" for component resolution and wiring
+* - Allows the use of IDE features like refactoring and code completion.
+*
 */
 @interface TyphoonAssembly : NSObject
 

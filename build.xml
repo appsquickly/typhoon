@@ -40,6 +40,8 @@
         __shouldbeprivate__coverage,
         --publish.site.dry.run"/>
 
+    <target name="doc" depends = "--api.report"/>
+
     <target name="publish" depends="--stamp.build.failing, --api.report, --publish.site.dry.run, --publish.site.push"/>
 
 
