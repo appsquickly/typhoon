@@ -1,7 +1,15 @@
 /* The standard CSS for doxygen 1.8.5 */
 
-body, table, div, p, dl {
-	font: 400 14px/22px Helvetica,sans-serif;
+
+body { 	
+	background:#FFF url(images/patterns/groovepaper.png) repeat; 
+	font-family: 'Helvetica', sans-serif; 
+	font-weight: 400; font-style: normal; 
+	font-size: 13px; 
+	line-height: 1; 
+	color: #252319; 
+	position: relative; 
+	-webkit-font-smoothing: antialiased; 
 }
 
 /* @group Heading Levels */
@@ -97,6 +105,7 @@ div.qindex, div.navtab{
 div.qindex, div.navpath {
 	width: 100%;
 	line-height: 140%;
+	background-color: #01414e;
 }
 
 div.navtab {
@@ -252,25 +261,6 @@ div.groupText {
 	margin-left: 16px;
 	font-style: italic;
 }
-
-
-
-body { 	background:#FFF url(images/patterns/groovepaper.png) repeat; font-family: 'Ubuntu', sans-serif; font-weight: 400; font-style: normal; font-size: 14px; line-height: 1; color: #252319; position: relative; -webkit-font-smoothing: antialiased; }
-
-div.item
-{
-	background:#FFF url(images/patterns/groovepaper.png) repeat;
-	width: 100%
-	height: 100%
-}
-
-
-div.top
-{
-	background:#FFF url(images/patterns/groovepaper.png) repeat;
-}
-
-
 
 
 div.contents {
@@ -857,12 +847,11 @@ table.fieldtable {
 	font-size: 13px;
 }
 
+
 .navpath ul
 {
 	font-size: 11px;
-	background-image:url('tab_b.png');
-	background-repeat:repeat-x;
-	background-position: 0 -5px;
+	background-color: #01414e;
 	height:30px;
 	line-height:30px;
 	color:#8AC0CB;
@@ -874,6 +863,7 @@ table.fieldtable {
 
 .navpath li
 {
+
 	list-style-type:none;
 	float:left;
 	padding-left:10px;
@@ -945,6 +935,7 @@ div.header
 	background-color: #e2f0f2;
 	margin:  0px;
 	border-bottom: 1px solid #C5E0E5;
+	color: #38372b
 }
 
 div.headertitle

@@ -262,6 +262,7 @@
         <copy todir="${reports.dir}/api/images">
             <fileset dir="images"/>
         </copy>
+        <copy todir="${reports.dir}/api" file="Scripts/navtree.css" overwrite="yes"/>
 
     </target>
 
