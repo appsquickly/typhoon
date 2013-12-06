@@ -208,7 +208,6 @@
 		BA7980F06792726585C8F808 /* TyphoonJRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798BDAEB237C52367719BA /* TyphoonJRSwizzle.m */; };
 		BA798112DDEA33F0FD848B66 /* Typhoon.pch in Headers */ = {isa = PBXBuildFile; fileRef = BA7988D81E615CF122461784 /* Typhoon.pch */; };
 		BA79812D6E6D1FE8B7461311 /* TyphoonNSURLTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79881AB8FEB2F51E42BB94 /* TyphoonNSURLTypeConverter.h */; };
-		BA798147095BA3E576169B16 /* TyphoonViewControllerNibResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79883A7F82CF278FF04B6F /* TyphoonViewControllerNibResolver.m */; };
 		BA79815B423FE0B1ACA3D9A4 /* TyphoonTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798066F287498A7F5B6CB9 /* TyphoonTestUtils.m */; };
 		BA798173C5D4C7590346B9C8 /* TyphoonPropertyInjectedAsCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798C412A56850A9B848048 /* TyphoonPropertyInjectedAsCollection.h */; };
 		BA7981834CD667D7E617BCE4 /* TyphoonPrimitiveTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798B9796F501DBFD50C563 /* TyphoonPrimitiveTypeConverter.h */; };
@@ -265,7 +264,6 @@
 		BA798B291EDCA2E25701D626 /* TyphoonDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798CA3A88193EC0242E6EC /* TyphoonDefinition.h */; };
 		BA798BA0354BE59F37D11D72 /* TyphoonUIColorTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798005B2288840C593DF12 /* TyphoonUIColorTypeConverter.h */; };
 		BA798BB4D9038A4C5E6B8FFF /* TyphoonTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7983E3C21E67A0ABCEB3C4 /* TyphoonTypeConverter.h */; };
-		BA798C061D945F2224C87614 /* TyphoonViewControllerNibResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7989018C546588CE631299 /* TyphoonViewControllerNibResolver.h */; };
 		BA798C1E9F53E2FEEE40F677 /* TyphoonCollaboratingAssemblyProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7989F78CAA3E4FFB59A9F0 /* TyphoonCollaboratingAssemblyProxy.m */; };
 		BA798C2625716A576AD32B0D /* TyphoonPropertyInjectedByType.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798D84E3DDB8ABE3396063 /* TyphoonPropertyInjectedByType.h */; };
 		BA798CC420E311724097700A /* TyphoonParameterInjectedWithStringRepresentation.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79866B01F50CC47F6507CE /* TyphoonParameterInjectedWithStringRepresentation.h */; };
@@ -1010,7 +1008,6 @@
 				65C4DD2D1848B3EF00BE1996 /* TyphoonAssistedFactoryCreator.h in Headers */,
 				BA79812D6E6D1FE8B7461311 /* TyphoonNSURLTypeConverter.h in Headers */,
 				BA798900111A71911F5EEB4B /* TyphoonPassThroughTypeConverter.h in Headers */,
-				BA798C061D945F2224C87614 /* TyphoonViewControllerNibResolver.h in Headers */,
 				65C4DD401848BA8900BE1996 /* TyphoonAssistedFactoryCreatorImplicit.h in Headers */,
 				BA798BA0354BE59F37D11D72 /* TyphoonUIColorTypeConverter.h in Headers */,
 				BA798F71C5319A0E52B8625E /* TyphoonCollaboratingAssemblyProxy.h in Headers */,
@@ -1151,7 +1148,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = Typhoon;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Jasper Blues";
 			};
 			buildConfigurationList = 6B3F396A16ABF854001A601C /* Build configuration list for PBXProject "Typhoon" */;
@@ -1235,7 +1232,6 @@
 				BA798745483DBCAA74A488AF /* TyphoonPrimitiveTypeConverter.m in Sources */,
 				BA798D852DA57FC04EAE9077 /* TyphoonNSURLTypeConverter.m in Sources */,
 				65C4DD421848BA8900BE1996 /* TyphoonAssistedFactoryCreatorImplicit.m in Sources */,
-				BA798147095BA3E576169B16 /* TyphoonViewControllerNibResolver.m in Sources */,
 				BA798FEC1BFDDCDBE3183BD3 /* TyphoonUIColorTypeConverter.m in Sources */,
 				BA798C1E9F53E2FEEE40F677 /* TyphoonCollaboratingAssemblyProxy.m in Sources */,
 				75AB5CE3FE790E6451690B50 /* TyphoonDefinitionRegisterer.m in Sources */,
@@ -1321,7 +1317,6 @@
 		4BC6494617A20BD7007F0463 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1335,7 +1330,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos7.0;
+				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 			};
@@ -1344,7 +1339,6 @@
 		4BC6494717A20BD7007F0463 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1358,7 +1352,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos7.0;
+				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 			};
@@ -1368,7 +1362,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1398,7 +1391,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;

@@ -5,7 +5,7 @@ A new dependency injection container for Objective-C. Light-weight, yet full-fea
 
 ## Familiar with Dependency Injection?
 
-* <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">Read the User Guide</a>.
+* Read the <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a> or <a href="http://jasperblues.github.io/Typhoon/api/index.html">API Docs</a>   
 * <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a> (***Now updated for iOS7!!!!***)
 * <a href="https://github.com/jasperblues/Typhoon#design-goals--features">Check the feature list</a>.
 
