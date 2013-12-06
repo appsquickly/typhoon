@@ -6,6 +6,7 @@
     <path id="headers">
         <fileset dir="${source.main.dir}">
             <include name="**/*.h"/>
+            <exclude name="**/TyphoonLinkerCategoryBugFix.h"/>
         </fileset>
     </path>
     <path id="classes">
