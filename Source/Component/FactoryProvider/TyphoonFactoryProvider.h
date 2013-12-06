@@ -122,8 +122,7 @@
 * 	    [definition injectProperty:@selector(authService)];
 * 	  } factories:^(TyphoonAssistedFactoryDefinition *definition) {
 * 	    [definition factoryMethod:@selector(paymentWithStartDate:amount:) returns:[Payment class]
-* 	        initialization:^(TyphoonAssistedFactoryMethodInitializer *initializer) {
-*
+*     	        initialization:^(TyphoonAssistedFactoryMethodInitializer *initializer) {
 *           initializer.selector = @selector(initWithCreditService:authService:startDate:amount:);
 *           [initializer injectWithProperty:@selector(creditService)];
 *           [initializer injectWithProperty:@selector(authService)];
