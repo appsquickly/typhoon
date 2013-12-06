@@ -274,6 +274,7 @@
             cp -fr ${reports.dir}/build-status.png ./build-status.png
             git add --all --ignore-removal ./coverage
             rm -fr ./coverage
+            mkdir -p ${repots.dir}
             rsync -aq ${reports.dir}/coverage/ ./coverage
             git add --all --ignore-removal ./build-status.png
             rm -fr ./api
