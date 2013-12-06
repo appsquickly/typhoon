@@ -34,6 +34,13 @@
  */
 + (TyphoonDefinition*)propertyPlaceholderWithResource:(id <TyphoonResource>)resource;
 
+/**
+ Factory method for a TyphoonPropertyPlaceholderConfigurer.
+ @param resources An array of TyphoonResource objects.
+ @return a definition.
+ */
++ (TyphoonDefinition*)propertyPlaceholderWithResources:(NSArray* )resources;
+
 
 - (id)initWithClass:(Class)clazz key:(NSString*)key;
 

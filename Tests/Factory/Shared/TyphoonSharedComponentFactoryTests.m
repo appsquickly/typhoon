@@ -193,6 +193,13 @@
     assertThatUnsignedLong([_infrastructureComponentsFactory.postProcessors count], equalToInt(1));
 }
 
+- (void)test_resolves_property_values_from_multiple_files
+{
+    Knight* knight = [_infrastructureComponentsFactory componentForKey:@"knight"];
+    assertThatBool(knight.hasHorseWillTravel, equalToBool(YES));
+    assertThatUnsignedLongLong(knight.damselsRescued, equalToUnsignedLongLong(12));
+}
+
 - (void)test_type_converter_recognized
 {
     TyphoonTypeDescriptor *nullDescriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:[NSNull class]];

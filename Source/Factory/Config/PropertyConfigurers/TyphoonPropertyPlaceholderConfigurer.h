@@ -28,6 +28,8 @@
 
 + (TyphoonPropertyPlaceholderConfigurer*)configurerWithResources:(id <TyphoonResource>)first, ...NS_REQUIRES_NIL_TERMINATION;
 
++ (TyphoonPropertyPlaceholderConfigurer*)configurerWithResourceList:(NSArray*)resources;
+
 - (id)initWithPrefix:(NSString*)prefix suffix:(NSString*)suffix;
 
 - (void)usePropertyStyleResource:(id <TyphoonResource>)resource;
