@@ -448,7 +448,7 @@ table.memberdecls {
 .mdescLeft, .mdescRight,
 .memItemLeft, .memItemRight,
 .memTemplItemLeft, .memTemplItemRight, .memTemplParams {
-	background-color: #F9FCFC;
+	background-color: rgba(0, 0, 0, 0);
 	border: none;
 	margin: 4px;
 	padding: 1px 0 0 8px;
@@ -924,10 +924,8 @@ div.ingroups a
 }
 
 div.header
-{
-        background-image:url('nav_h.png');
-        background-repeat:repeat-x;
-	background-color: #F9FCFC;
+{                
+	background-color: #e2f0f2;
 	margin:  0px;
 	border-bottom: 1px solid #C5E0E5;
 }
