@@ -236,7 +236,7 @@ recommended. For the example above the code will be the following:</p>
         initialization:^(TyphoonAssistedFactoryMethodInitializer *initializer) {
 </code></pre>
 
-<p>initializer.selector = @selector(initWithCreditService:authService:startDate:amount:);
+<p>[initializer setSelector:@selector(initWithCreditService:authService:startDate:amount:)];
 [initializer injectWithProperty:@selector(creditService)];
 [initializer injectWithProperty:@selector(authService)];
 [initializer injectWithArgumentNamed:@&ldquo;startDate&rdquo;];
