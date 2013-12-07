@@ -905,7 +905,7 @@ SOURCE_BROWSER         = NO
 # classes and enums directly into the documentation.
 # The default value is: NO.
 
-INLINE_SOURCES         = NO
+INLINE_SOURCES         = YES
 
 # Setting the STRIP_CODE_COMMENTS tag to YES will instruct doxygen to hide any
 # special comment blocks from generated source code fragments. Normal C, C++ and
