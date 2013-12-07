@@ -1,0 +1,39 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
+//  All Rights Reserved.
+//
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
+//
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+    @mainpage Typhoon
+
+    @section description Description
+
+    This is the API documentation for the <a href="www.typhoonframework.org">Typhoon Framework</a> which is developed on Github <a href="https://github.com/jasperblues">here</a>. The <b>modules</b> section lists the main classes, while the <b>classes</b> section lists all classes. 
+
+	@defgroup Configuration
+
+	Contains classes related to configuration and environment management. 
+
+	@defgroup Definition
+
+	Contains classes related to declaring architectural components and their collaborators.
+
+	@defgroup Factory
+
+	Contains classes related to registering and retrieving component definitions.
+
+	@defgroup Test
+
+	Contains classes related to unit and integration testing.
+
+ 
+ 
+ */
+
+
