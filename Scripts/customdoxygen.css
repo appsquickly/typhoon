@@ -652,6 +652,7 @@ dl.reflist dd {
 
 table.mlabels {
 	border-spacing: 0px;
+	padding-bottom: 1px;
 }
 
 td.mlabels-left {
