@@ -14,7 +14,7 @@
 
     @section description Description
 
-    This is the API documentation for the <a href="www.typhoonframework.org">Typhoon Framework</a> which is developed on Github <a href="https://github.com/jasperblues">here</a>. The <b>modules</b> section lists the main classes, while the <b>classes</b> section lists all classes. 
+    This is the API documentation for the <a href="www.typhoonframework.org">Typhoon Framework</a> which is developed on Github <a href="https://github.com/jasperblues">here</a>. The <b>modules</b> section lists the main classes, while the <b>classes</b> section lists everything.
 
 	@defgroup Configuration
 
