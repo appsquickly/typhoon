@@ -3872,7 +3872,7 @@
       <Scope>TyphoonPatcher</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_patcher.html</Path>
-    <Abstract>TyphoonPatcher is a component factory mutator that allows patching out one or more definitions with a...</Abstract>
+    <Abstract>TyphoonPatcher is a TyphoonComponentFactoryPostProcessor that allows patching out one or more definit...</Abstract>
     <DeclaredIn>TyphoonPatcher.h</DeclaredIn>
   </Token>
   <Token>

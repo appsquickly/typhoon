@@ -20,7 +20,7 @@
 <area shape="rect" id="node27" href="$interface_typhoon_component_factory.html" title="This is the base class for all component factories. " alt="" coords="182,1570,386,1596"/>
 <area shape="rect" id="node30" href="$protocol_typhoon_component_factory_aware-p.html" title="\&lt;TyphoonComponentFactory\lAware\&gt;" alt="" coords="177,1621,391,1662"/>
 <area shape="rect" id="node31" href="$protocol_typhoon_component_factory_post_processor-p.html" title="Allows for custom modification of a component factory&#39;s definitions. " alt="" coords="177,1738,391,1780"/>
-<area shape="rect" id="node32" href="$interface_typhoon_patcher.html" title="TyphoonPatcher is a component factory mutator that allows patching out one or more definitions with a..." alt="" coords="524,1687,655,1714"/>
+<area shape="rect" id="node32" href="$interface_typhoon_patcher.html" title="TyphoonPatcher is a TyphoonComponentFactoryPostProcessor that allows patching out one or more definit..." alt="" coords="524,1687,655,1714"/>
 <area shape="rect" id="node33" href="$interface_typhoon_property_placeholder_configurer.html" title="TyphoonPropertyPlaceholder\lConfigurer" alt="" coords="484,1749,695,1790"/>
 <area shape="rect" id="node34" href="$interface_typhoon_view_controller_nib_resolver.html" title="Post&#45;Processor that completes the initializer of definitions with type UIViewController. " alt="" coords="493,1836,686,1877"/>
 <area shape="rect" id="node35" href="$protocol_typhoon_component_injected_by_value-p.html" title="\&lt;TyphoonComponentInjected\lByValue\&gt;" alt="" coords="175,73,393,114"/>
