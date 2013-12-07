@@ -10,9 +10,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
+#import "TyphoonCollectionValue.h"
 
-@protocol TyphoonComponentInjectedByValue <NSObject>
+/**
+*/
+@interface TyphoonTypeConvertedCollectionValue : NSObject <TyphoonCollectionValue>
 
-@property(nonatomic, strong) NSString* textValue;
+@property(nonatomic, strong, readonly) NSString* textValue;
+@property(nonatomic, strong, readonly) Class requiredType;
+
+- (id)initWithTextValue:(NSString*)textValue requiredType:(Class)requiredType;
+
 
 @end

@@ -11,23 +11,26 @@
 
 
 
-
 #import <Foundation/Foundation.h>
-#import "TyphoonIntrospectiveNSObject.h"
+
+@class TyphoonInitializer;
 
 typedef enum
 {
-    TyphoonPropertyInjectionTypeByReference,
-    TyphoonPropertyInjectionTypeByType,
-    TyphoonPropertyInjectionTypeAsStringRepresentation,
-    TyphoonPropertyInjectionTypeAsObjectInstance,
-    TyphoonPropertyInjectionTypeAsCollection
-} TyphoonPropertyInjectionType;
+    TyphoonParameterInjectionTypeReference,
+    TyphoonParameterInjectionTypeStringRepresentation,
+    TyphoonParameterInjectionTypeObjectInstance,
+    TyphoonParameterInjectionTypeAsCollection
+} TyphoonParameterInjectionType;
 
-@protocol TyphoonInjectedProperty <NSObject>
+/**
+*/
+@protocol TyphoonInjectedParameter <NSObject>
 
-- (NSString*)name;
+- (NSUInteger)index;
 
-- (TyphoonPropertyInjectionType)injectionType;
+- (TyphoonParameterInjectionType)type;
+
+- (void)setInitializer:(TyphoonInitializer*)initializer;
 
 @end

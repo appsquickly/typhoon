@@ -14,6 +14,8 @@
 #import "TyphoonInjectedParameter.h"
 #import "TyphoonArgumentInjectedAsCollection.h"
 
+/**
+*/
 @interface TyphoonParameterInjectedAsCollection : TyphoonArgumentInjectedAsCollection <TyphoonInjectedParameter>
 
 @property(nonatomic, readonly) TyphoonParameterInjectionType type;

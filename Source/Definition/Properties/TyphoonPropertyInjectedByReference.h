@@ -12,23 +12,18 @@
 
 
 #import <Foundation/Foundation.h>
+#import "TyphoonInjectedProperty.h"
 
-@class TyphoonInitializer;
+/**
 
-typedef enum
-{
-    TyphoonParameterInjectionTypeReference,
-    TyphoonParameterInjectionTypeStringRepresentation,
-    TyphoonParameterInjectionTypeObjectInstance,
-    TyphoonParameterInjectionTypeAsCollection
-} TyphoonParameterInjectionType;
+* Represents a property injected by referencing another definition in the container.
+*/
+@interface TyphoonPropertyInjectedByReference : NSObject <TyphoonInjectedProperty>
 
-@protocol TyphoonInjectedParameter <NSObject>
+@property(nonatomic, strong, readonly) NSString* name;
+@property(nonatomic, strong, readonly) NSString* reference;
 
-- (NSUInteger)index;
+- (id)initWithName:(NSString*)name reference:(NSString*)reference;
 
-- (TyphoonParameterInjectionType)type;
-
-- (void)setInitializer:(TyphoonInitializer*)initializer;
 
 @end

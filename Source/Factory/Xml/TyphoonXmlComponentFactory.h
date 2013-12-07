@@ -15,7 +15,9 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactory.h"
 
-
+/**
+* \ingroup Factory
+*/
 @interface TyphoonXmlComponentFactory : TyphoonComponentFactory
 {
     NSMutableArray* _resourceNames;

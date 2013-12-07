@@ -9,16 +9,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
-
 #import <Foundation/Foundation.h>
-#import "TyphoonCollectionValue.h"
 
-@interface TyphoonByReferenceCollectionValue : NSObject <TyphoonCollectionValue>
+typedef enum
+{
+    TyphoonCollectionValueTypeByReference,
+    TyphoonCollectionValueTypeConvertedText
+} TyphoonCollectionValueType;
 
-@property(nonatomic, strong, readonly) NSString* componentName;
+/**
+*/
+@protocol TyphoonCollectionValue <NSObject>
 
-- (id)initWithComponentName:(NSString*)componentName;
-
+- (TyphoonCollectionValueType)type;
 
 @end

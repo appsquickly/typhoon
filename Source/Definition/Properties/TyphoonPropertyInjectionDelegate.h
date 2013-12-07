@@ -9,12 +9,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+
+
 #import <Foundation/Foundation.h>
 
-@class TyphoonComponentFactory;
+/**
+* \ingroup Definition
+*/
+@protocol TyphoonPropertyInjectionDelegate <NSObject>
 
-@protocol TyphoonComponentFactoryAware <NSObject>
+@optional
+- (void)beforePropertiesSet;
 
-- (void)setFactory:(TyphoonComponentFactory*)theFactory;
+- (void)afterPropertiesSet;
 
 @end

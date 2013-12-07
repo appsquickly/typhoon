@@ -9,15 +9,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
-
 #import <Foundation/Foundation.h>
 
-@protocol TyphoonPropertyInjectionDelegate <NSObject>
+/**
+*/
+@protocol TyphoonComponentInjectedByValue <NSObject>
 
-@optional
-- (void)beforePropertiesSet;
-
-- (void)afterPropertiesSet;
+@property(nonatomic, strong) NSString* textValue;
 
 @end

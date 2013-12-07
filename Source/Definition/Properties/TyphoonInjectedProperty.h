@@ -9,16 +9,27 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+
+
+
 #import <Foundation/Foundation.h>
+#import "TyphoonIntrospectiveNSObject.h"
 
 typedef enum
 {
-    TyphoonCollectionValueTypeByReference,
-    TyphoonCollectionValueTypeConvertedText
-} TyphoonCollectionValueType;
+    TyphoonPropertyInjectionTypeByReference,
+    TyphoonPropertyInjectionTypeByType,
+    TyphoonPropertyInjectionTypeAsStringRepresentation,
+    TyphoonPropertyInjectionTypeAsObjectInstance,
+    TyphoonPropertyInjectionTypeAsCollection
+} TyphoonPropertyInjectionType;
 
-@protocol TyphoonCollectionValue <NSObject>
+/**
+*/
+@protocol TyphoonInjectedProperty <NSObject>
 
-- (TyphoonCollectionValueType)type;
+- (NSString*)name;
+
+- (TyphoonPropertyInjectionType)injectionType;
 
 @end

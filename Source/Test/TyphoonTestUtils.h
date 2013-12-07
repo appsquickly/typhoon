@@ -10,19 +10,20 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-
 #import <Foundation/Foundation.h>
-#import "TyphoonInjectedProperty.h"
+
+#define typhoon_asynch_condition(expression) return expression;
 
 /**
-* Represents a property injected by referencing another definition in the container.
+* \ingroup Test
 */
-@interface TyphoonPropertyInjectedByReference : NSObject <TyphoonInjectedProperty>
+@interface TyphoonTestUtils : NSObject
 
-@property(nonatomic, strong, readonly) NSString* name;
-@property(nonatomic, strong, readonly) NSString* reference;
++ (void)waitForCondition:(BOOL (^)())condition;
 
-- (id)initWithName:(NSString*)name reference:(NSString*)reference;
++ (void)waitForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions;
+
++ (void)wait:(NSTimeInterval)seconds secondsForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions;
 
 
 @end

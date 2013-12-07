@@ -15,7 +15,9 @@
 @class TyphoonDefinition;
 @class TyphoonComponentFactory;
 
-
+/** \ingroup Factory
+*
+*/
 @interface TyphoonDefinitionRegisterer : NSObject
 
 - (id)initWithDefinition:(TyphoonDefinition*)definition componentFactory:(TyphoonComponentFactory*)componentFactory;

@@ -16,7 +16,10 @@
 
 @class TyphoonAssembly;
 
-
+/**
+* \ingroup Factory
+*
+*/
 @interface TyphoonBlockComponentFactory : TyphoonComponentFactory
 
 + (instancetype)factoryWithAssembly:(TyphoonAssembly*)assembly;

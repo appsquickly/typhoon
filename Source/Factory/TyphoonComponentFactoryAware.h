@@ -9,20 +9,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
-
-
 #import <Foundation/Foundation.h>
-#import "TyphoonInjectedParameter.h"
 
+/**
+* \ingroup Factory
+*
+*/
+@class TyphoonComponentFactory;
 
-@interface TyphoonParameterInjectedByReference : NSObject <TyphoonInjectedParameter>
+@protocol TyphoonComponentFactoryAware <NSObject>
 
-@property(nonatomic, readonly) NSUInteger index;
-@property(nonatomic, readonly) TyphoonParameterInjectionType type;
-@property(nonatomic, strong, readonly) NSString* reference;
-
-- (id)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString*)reference;
-
+- (void)setFactory:(TyphoonComponentFactory*)theFactory;
 
 @end

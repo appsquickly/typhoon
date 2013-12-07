@@ -16,6 +16,8 @@
 typedef id (^ObjectCreationBlock)();
 
 /**
+* \ingroup Test
+*
 * TyphoonPatcher is a component factory mutator that allows patching out one or more definitions with another object. Integration testing -
 * testing a class along with its collaborators and configuration - can be a very useful practice. However, its is sometimes difficult
 * put the system in the required state. Patcher allows taking a fully assembled system, changing just the part required for the given

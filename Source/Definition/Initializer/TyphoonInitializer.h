@@ -23,6 +23,8 @@ typedef enum
 } TyphoonComponentInitializerIsClassMethod;
 
 /**
+* \ingroup Definition
+*
 * Represents an initializer for a component.
 */
 @interface TyphoonInitializer : NSObject

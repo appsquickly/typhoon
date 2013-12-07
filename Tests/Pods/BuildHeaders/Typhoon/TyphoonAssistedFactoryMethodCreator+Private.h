@@ -1,1 +1,1 @@
-../../../../Source/Component/FactoryProvider/TyphoonAssistedFactoryMethodCreator+Private.h
+../../../../Source/Factory/Provider/TyphoonAssistedFactoryMethodCreator+Private.h

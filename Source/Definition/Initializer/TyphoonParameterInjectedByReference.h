@@ -9,16 +9,21 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+
+
+
 #import <Foundation/Foundation.h>
-#import "TyphoonCollectionValue.h"
+#import "TyphoonInjectedParameter.h"
 
+/**
+*/
+@interface TyphoonParameterInjectedByReference : NSObject <TyphoonInjectedParameter>
 
-@interface TyphoonTypeConvertedCollectionValue : NSObject <TyphoonCollectionValue>
+@property(nonatomic, readonly) NSUInteger index;
+@property(nonatomic, readonly) TyphoonParameterInjectionType type;
+@property(nonatomic, strong, readonly) NSString* reference;
 
-@property(nonatomic, strong, readonly) NSString* textValue;
-@property(nonatomic, strong, readonly) Class requiredType;
-
-- (id)initWithTextValue:(NSString*)textValue requiredType:(Class)requiredType;
+- (id)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString*)reference;
 
 
 @end

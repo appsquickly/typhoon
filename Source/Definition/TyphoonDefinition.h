@@ -27,7 +27,9 @@ typedef void(^TyphoonInitializerBlock)(TyphoonInitializer* initializer);
 
 typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 
-
+/**
+* \ingroup Definition
+*/
 @interface TyphoonDefinition : NSObject
 {
     Class _type;

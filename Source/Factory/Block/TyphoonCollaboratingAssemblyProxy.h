@@ -13,6 +13,8 @@
 #import <Foundation/Foundation.h>
 
 /**
+* \ingroup Factory
+*
 * This class allows using the interface from one assembly within another. This is useful for abstracting out environment dependent
 * components. For example you could say "This class X needs to be injected with something conforming to the Foo protocol. This is a
 * RealFoo, this is a TestFoo. When I'm running X in real life, I want it to get a RealFoo, but when I'm running my integration tests, I

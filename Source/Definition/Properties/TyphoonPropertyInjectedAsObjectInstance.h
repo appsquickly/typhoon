@@ -11,16 +11,15 @@
 
 
 #import <Foundation/Foundation.h>
+#import "TyphoonInjectedProperty.h"
 
-#define typhoon_asynch_condition(expression) return expression;
+/**
+*/
+@interface TyphoonPropertyInjectedAsObjectInstance : NSObject <TyphoonInjectedProperty>
 
-@interface TyphoonTestUtils : NSObject
+@property(nonatomic, strong, readonly) NSString* name;
+@property(nonatomic, strong, readonly) id objectInstance;
 
-+ (void)waitForCondition:(BOOL (^)())condition;
-
-+ (void)waitForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions;
-
-+ (void)wait:(NSTimeInterval)seconds secondsForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions;
-
+- (id)initWithName:(NSString*)name objectInstance:(id)objectInstance;
 
 @end

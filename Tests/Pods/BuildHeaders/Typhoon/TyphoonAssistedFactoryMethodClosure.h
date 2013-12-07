@@ -1,1 +1,1 @@
-../../../../Source/Component/FactoryProvider/TyphoonAssistedFactoryMethodClosure.h
+../../../../Source/Factory/Provider/TyphoonAssistedFactoryMethodClosure.h

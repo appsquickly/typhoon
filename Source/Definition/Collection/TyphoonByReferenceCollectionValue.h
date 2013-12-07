@@ -10,15 +10,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
+
 #import <Foundation/Foundation.h>
-#import "TyphoonInjectedProperty.h"
+#import "TyphoonCollectionValue.h"
 
+/**
+*/
+@interface TyphoonByReferenceCollectionValue : NSObject <TyphoonCollectionValue>
 
-@interface TyphoonPropertyInjectedAsObjectInstance : NSObject <TyphoonInjectedProperty>
+@property(nonatomic, strong, readonly) NSString* componentName;
 
-@property(nonatomic, strong, readonly) NSString* name;
-@property(nonatomic, strong, readonly) id objectInstance;
+- (id)initWithComponentName:(NSString*)componentName;
 
-- (id)initWithName:(NSString*)name objectInstance:(id)objectInstance;
 
 @end

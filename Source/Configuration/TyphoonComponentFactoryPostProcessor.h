@@ -15,6 +15,8 @@
 @class TyphoonComponentFactory;
 
 /**
+* \ingroup Factory
+*
  Allows for custom modification of a component factory's definitions.
  
  Component factories can auto-detect TyphoonComponentFactoryPostProcessor components in their definitions and apply them before any other components get created.
