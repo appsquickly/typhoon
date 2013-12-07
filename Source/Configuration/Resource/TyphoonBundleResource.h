@@ -15,6 +15,8 @@
 #import "TyphoonResource.h"
 
 /**
+* * \ingroup Configuration
+*
 * Represents a resource within the application bundle.
 */
 @interface TyphoonBundleResource : NSObject <TyphoonResource>
