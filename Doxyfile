@@ -1555,7 +1555,7 @@ GENERATE_LATEX         = NO
 # The default directory is: latex.
 # This tag requires that the tag GENERATE_LATEX is set to YES.
 
-LATEX_OUTPUT           = latex
+LATEX_OUTPUT           = /home/jblues/typhoon-docs
 
 # The LATEX_CMD_NAME tag can be used to specify the LaTeX command name to be
 # invoked.
