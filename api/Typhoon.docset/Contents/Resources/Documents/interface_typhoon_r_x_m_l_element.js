@@ -1,5 +1,11 @@
 var interface_typhoon_r_x_m_l_element =
 [
+    [ "defaultScope", "interface_typhoon_r_x_m_l_element.html#aaa5e810cb9bf63bc66cfc4b73a9d3a98", null ],
+    [ "isValid", "interface_typhoon_r_x_m_l_element.html#ad2c0ac3cdbd9e423bfd5a466aba6aaf4", null ],
+    [ "tag", "interface_typhoon_r_x_m_l_element.html#ac93e2e6258dcd14864e09ca85fe4ba5e", null ],
+    [ "text", "interface_typhoon_r_x_m_l_element.html#ab77bd9e8687c78a0d164a2ac77d2b30a", null ],
+    [ "textAsDouble", "interface_typhoon_r_x_m_l_element.html#a994dc0fc067285e0e9616235ee29678f", null ],
+    [ "textAsInt", "interface_typhoon_r_x_m_l_element.html#a9e70b4bbf0fcb5fb713b460dad22d694", null ],
     [ "asComponentDefinition", "interface_typhoon_r_x_m_l_element.html#a4d8762eef5841041e06ff5110936407a", null ],
     [ "asInitializer", "interface_typhoon_r_x_m_l_element.html#ab9fdb93ba597b936325e4e8f2af02276", null ],
     [ "asInjectedProperty", "interface_typhoon_r_x_m_l_element.html#a833cb8fef154df9171b544eaa9970e9e", null ],
@@ -33,11 +39,5 @@ var interface_typhoon_r_x_m_l_element =
     [ "iterateElements:usingBlock:", "interface_typhoon_r_x_m_l_element.html#acf4286115d7e966f14fae9aefc87da97", null ],
     [ "iterateWithRootXPath:usingBlock:", "interface_typhoon_r_x_m_l_element.html#a1988e39f29ecf8154c20c0ebb9e8f69a", null ],
     [ "doc_", "interface_typhoon_r_x_m_l_element.html#aca2fa7a598fdfa1ec127d2a90e705548", null ],
-    [ "node_", "interface_typhoon_r_x_m_l_element.html#a68df9cce0a8b690a1e2be4a824f71dc6", null ],
-    [ "defaultScope", "interface_typhoon_r_x_m_l_element.html#aaa5e810cb9bf63bc66cfc4b73a9d3a98", null ],
-    [ "isValid", "interface_typhoon_r_x_m_l_element.html#ad2c0ac3cdbd9e423bfd5a466aba6aaf4", null ],
-    [ "tag", "interface_typhoon_r_x_m_l_element.html#ac93e2e6258dcd14864e09ca85fe4ba5e", null ],
-    [ "text", "interface_typhoon_r_x_m_l_element.html#ab77bd9e8687c78a0d164a2ac77d2b30a", null ],
-    [ "textAsDouble", "interface_typhoon_r_x_m_l_element.html#a994dc0fc067285e0e9616235ee29678f", null ],
-    [ "textAsInt", "interface_typhoon_r_x_m_l_element.html#a9e70b4bbf0fcb5fb713b460dad22d694", null ]
+    [ "node_", "interface_typhoon_r_x_m_l_element.html#a68df9cce0a8b690a1e2be4a824f71dc6", null ]
 ];

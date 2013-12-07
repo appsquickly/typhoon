@@ -78,7 +78,7 @@ $(document).ready(function(){initNavTree('interface_typhoon_assisted_factory_met
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,9 +89,9 @@ $(document).ready(function(){initNavTree('interface_typhoon_assisted_factory_met
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Instance Methods</a> &#124;
-<a href="#pub-static-methods">Class Methods</a> &#124;
 <a href="#properties">Properties</a> &#124;
+<a href="#pub-static-methods">Class Methods</a> &#124;
+<a href="#pub-methods">Instance Methods</a> &#124;
 <a href="class_typhoon_assisted_factory_method_creator-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">TyphoonAssistedFactoryMethodCreator Class Reference</div>  </div>
@@ -108,6 +108,18 @@ Inheritance diagram for TyphoonAssistedFactoryMethodCreator:</div>
 <area shape="rect" id="node3" href="interface_typhoon_assisted_factory_method_block_creator.html" title="Creates a method implementation for an block description. " alt="" coords="440,5,675,46"/><area shape="rect" id="node4" href="interface_typhoon_assisted_factory_method_initializer_creator.html" title="Creates a method implementation for an initializer description. " alt="" coords="440,70,675,111"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:a9fe6816cc998cebedb074a3ab3a03049"><td class="memItemLeft" align="right" valign="top">id&lt; <a class="el" href="protocol_typhoon_assisted_factory_method-p.html">TyphoonAssistedFactoryMethod</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_assisted_factory_method_creator.html#a9fe6816cc998cebedb074a3ab3a03049">factoryMethod</a></td></tr>
+<tr class="memdesc:a9fe6816cc998cebedb074a3ab3a03049"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recipe for the implementation that will be created.  <a href="#a9fe6816cc998cebedb074a3ab3a03049">More...</a><br/></td></tr>
+<tr class="separator:a9fe6816cc998cebedb074a3ab3a03049"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Class Methods</h2></td></tr>
+<tr class="memitem:af38a22dde0f816089ba4224a4ba0db80"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_assisted_factory_method_creator.html#af38a22dde0f816089ba4224a4ba0db80">creatorFor:</a></td></tr>
+<tr class="memdesc:af38a22dde0f816089ba4224a4ba0db80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the right subclass of <a class="el" href="interface_typhoon_assisted_factory_method_creator.html" title="Creates the implementation for a TyphoonAssistedFactoryMethod. ">TyphoonAssistedFactoryMethodCreator</a> for the given factoryMethod.  <a href="#af38a22dde0f816089ba4224a4ba0db80">More...</a><br/></td></tr>
+<tr class="separator:af38a22dde0f816089ba4224a4ba0db80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
 <tr class="memitem:aa87854a5e2af862d8d0660f9b2af2606"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_assisted_factory_method_creator.html#aa87854a5e2af862d8d0660f9b2af2606">createFromProtocol:inClass:</a></td></tr>
@@ -116,24 +128,35 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a27124ba33f7912d7d6fd42de656518bc"><td class="memItemLeft" align="right" valign="top">(struct objc_method_description)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_assisted_factory_method_creator.html#a27124ba33f7912d7d6fd42de656518bc">methodDescriptionFor:inProtocol:</a><code> [implementation]</code></td></tr>
 <tr class="memdesc:a27124ba33f7912d7d6fd42de656518bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Obj-C method description of the given selector in the given protocol.  <a href="#a27124ba33f7912d7d6fd42de656518bc">More...</a><br/></td></tr>
 <tr class="separator:a27124ba33f7912d7d6fd42de656518bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Class Methods</h2></td></tr>
-<tr class="memitem:af38a22dde0f816089ba4224a4ba0db80"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_assisted_factory_method_creator.html#af38a22dde0f816089ba4224a4ba0db80">creatorFor:</a></td></tr>
-<tr class="memdesc:af38a22dde0f816089ba4224a4ba0db80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the right subclass of <a class="el" href="interface_typhoon_assisted_factory_method_creator.html" title="Creates the implementation for a TyphoonAssistedFactoryMethod. ">TyphoonAssistedFactoryMethodCreator</a> for the given factoryMethod.  <a href="#af38a22dde0f816089ba4224a4ba0db80">More...</a><br/></td></tr>
-<tr class="separator:af38a22dde0f816089ba4224a4ba0db80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
-Properties</h2></td></tr>
-<tr class="memitem:a9fe6816cc998cebedb074a3ab3a03049"><td class="memItemLeft" align="right" valign="top">id&lt; <a class="el" href="protocol_typhoon_assisted_factory_method-p.html">TyphoonAssistedFactoryMethod</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_assisted_factory_method_creator.html#a9fe6816cc998cebedb074a3ab3a03049">factoryMethod</a></td></tr>
-<tr class="memdesc:a9fe6816cc998cebedb074a3ab3a03049"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recipe for the implementation that will be created.  <a href="#a9fe6816cc998cebedb074a3ab3a03049">More...</a><br/></td></tr>
-<tr class="separator:a9fe6816cc998cebedb074a3ab3a03049"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Creates the implementation for a <a class="el" href="protocol_typhoon_assisted_factory_method-p.html">TyphoonAssistedFactoryMethod</a>. </p>
 <p>Abstract class.</p>
 <p>Users should not use this class directly. </p>
-</div><h2 class="groupheader">Method Documentation</h2>
+</div><h2 class="groupheader">Property Documentation</h2>
+<a class="anchor" id="a9fe6816cc998cebedb074a3ab3a03049"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (id&lt;<a class="el" href="protocol_typhoon_assisted_factory_method-p.html">TyphoonAssistedFactoryMethod</a>&gt;) factoryMethod</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Recipe for the implementation that will be created. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Method Documentation</h2>
 <a class="anchor" id="aa87854a5e2af862d8d0660f9b2af2606"></a>
 <div class="memitem">
 <div class="memproto">
@@ -217,29 +240,6 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Property Documentation</h2>
-<a class="anchor" id="a9fe6816cc998cebedb074a3ab3a03049"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (id&lt;<a class="el" href="protocol_typhoon_assisted_factory_method-p.html">TyphoonAssistedFactoryMethod</a>&gt;) factoryMethod</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Recipe for the implementation that will be created. </p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.5-->
@@ -247,7 +247,7 @@ Properties</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="interface_typhoon_assisted_factory_method_creator.html">TyphoonAssistedFactoryMethodCreator</a></li>
-    <li class="footer">Generated on Sat Dec 7 2013 16:53:50 for Typhoon by
+    <li class="footer">Generated on Sat Dec 7 2013 17:46:59 for Typhoon by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

@@ -1,5 +1,8 @@
 var interface_typhoon_component_factory =
 [
+    [ "loaded", "interface_typhoon_component_factory.html#a09b13d5d400d8ca043cc5f1105b8a744", null ],
+    [ "postProcessors", "interface_typhoon_component_factory.html#a86711bf232610da02cba8d969298bb2d", null ],
+    [ "singletons", "interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785", null ],
     [ "allComponentsForType:", "interface_typhoon_component_factory.html#aa41105d05dfffb845a07eae77b4c079a", null ],
     [ "allDefinitionsForType:", "interface_typhoon_component_factory.html#a075c43de552051c26e7d0abf723f992f", null ],
     [ "attachPostProcessor:", "interface_typhoon_component_factory.html#a0727001458325fd7d09b6df2e1252180", null ],
@@ -15,8 +18,5 @@ var interface_typhoon_component_factory =
     [ "makeDefault", "interface_typhoon_component_factory.html#a4ec88fe6f78db210ec6556a68f15fae4", null ],
     [ "register:", "interface_typhoon_component_factory.html#a19f04336bb2706d7947c87ded77a93b9", null ],
     [ "registry", "interface_typhoon_component_factory.html#a70222ded50004270fd8a7150e773c7e8", null ],
-    [ "unload", "interface_typhoon_component_factory.html#a810e359a13f87d375088a78759227692", null ],
-    [ "loaded", "interface_typhoon_component_factory.html#a09b13d5d400d8ca043cc5f1105b8a744", null ],
-    [ "postProcessors", "interface_typhoon_component_factory.html#a86711bf232610da02cba8d969298bb2d", null ],
-    [ "singletons", "interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785", null ]
+    [ "unload", "interface_typhoon_component_factory.html#a810e359a13f87d375088a78759227692", null ]
 ];

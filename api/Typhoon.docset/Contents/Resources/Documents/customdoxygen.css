@@ -528,7 +528,7 @@ table.memberdecls {
 
 .memitem {
 	padding: 0;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 	margin-right: 5px;
         -webkit-transition: box-shadow 0.5s linear;
         -moz-transition: box-shadow 0.5s linear;
