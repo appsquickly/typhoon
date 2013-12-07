@@ -5,22 +5,13 @@
       <Name>Root</Name>
       <Path>index.html</Path>
       <Subnodes>
-       <Node>
-        <Name>Typhoon (www.typhoonframework.org)</Name>
-        <Path>index.html</Path>
         <Subnodes>
          <Node>
-          <Name>Introduction</Name>
+          <Name>Description</Name>
           <Path>index.html</Path>
-          <Anchor>introduction</Anchor>
-         </Node>
-         <Node>
-          <Name>Installation</Name>
-          <Path>index.html</Path>
-          <Anchor>installation</Anchor>
+          <Anchor>description</Anchor>
          </Node>
         </Subnodes>
-       </Node>
        <Node>
         <Name>Modules</Name>
         <Path>modules.html</Path>

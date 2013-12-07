@@ -1,10 +1,6 @@
 var NAVTREE =
 [
   [ "Typhoon", "index.html", [
-    [ "Typhoon (www.typhoonframework.org)", "index.html", [
-      [ "Introduction", "index.html#introduction", null ],
-      [ "Installation", "index.html#installation", null ]
-    ] ],
     [ "Modules", "modules.html", "modules" ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
@@ -34,7 +30,7 @@ var NAVTREEINDEX =
 [
 "_n_s_object_09_typhoon_introspection_utils_8h.html",
 "group___configuration.html",
-"interface_typhoon_property_placeholder_configurer.html#a49cd93e2a40da1c846d048af2e34d80e"
+"interface_typhoon_property_placeholder_configurer.html#a9421e89da51d791316833838d726ebc1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

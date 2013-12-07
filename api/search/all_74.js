@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['typhoon_20_28www_2etyphoonframework_2eorg_29',['Typhoon (www.typhoonframework.org)',['../index.html',1,'']]],
+  ['typhoon',['Typhoon',['../index.html',1,'']]],
   ['tag',['tag',['../interface_typhoon_r_x_m_l_element.html#ac93e2e6258dcd14864e09ca85fe4ba5e',1,'TyphoonRXMLElement']]],
   ['test',['Test',['../group___test.html',1,'']]],
   ['text',['text',['../interface_typhoon_r_x_m_l_element.html#ab77bd9e8687c78a0d164a2ac77d2b30a',1,'TyphoonRXMLElement']]],
