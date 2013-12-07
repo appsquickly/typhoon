@@ -26,7 +26,7 @@ h1.groupheader {
 }
 
 h2.groupheader {
-	border-bottom: 1px solid #88BFCA;
+	border-bottom: 1px solid gray;
 	color: #366F7A;
 	font-size: 150%;
 	font-weight: normal;
@@ -144,6 +144,7 @@ a.qindexHL {
 }
 
 a.el {
+	    	font-family: Courier,Consolas,monospace;
 		font-weight: bold;
 }
 
@@ -467,7 +468,6 @@ table.memberdecls {
 .memItemLeft, .memItemRight,
 .memTemplItemLeft, .memTemplItemRight
 {
-     	font-family: Courier,Consolas,monospace;
 		background-color: rgba(0, 0, 0, 0);
 		border: none;
 		margin: 4px;
@@ -554,9 +554,9 @@ table.memberdecls {
 
 .memproto, dl.reflist dt {
      	font-family: Courier,Consolas,monospace;
-        border-top: 1px solid #A8D1D9;
-        border-left: 1px solid #A8D1D9;
-        border-right: 1px solid #A8D1D9;
+        border-top: 1px solid gray;
+        border-left: 1px solid gray;
+        border-right: 1px solid gray;
         padding: 6px 0px 6px 0px;
         color: #28271c;
         font-weight: bold;
@@ -579,9 +579,9 @@ table.memberdecls {
 }
 
 .memdoc, dl.reflist dd {
-        border-bottom: 1px solid #A8D1D9;      
-        border-left: 1px solid #A8D1D9;      
-        border-right: 1px solid #A8D1D9; 
+        border-bottom: 1px solid gray;      
+        border-left: 1px solid gray;      
+        border-right: 1px solid gray; 
         padding: 6px 10px 2px 10px;
         background-color: #FBFDFD;
         border-top-width: 0;
