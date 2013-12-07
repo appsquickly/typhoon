@@ -1,15 +1,17 @@
 var group___configuration =
 [
     [ "TyphoonPropertyPlaceholderConfigurer", "interface_typhoon_property_placeholder_configurer.html", [
+      [ "configurer", "interface_typhoon_property_placeholder_configurer.html#a3adc6ae943f7bda1eb1ad3b50ba81e25", null ],
+      [ "configurerWithResource:", "interface_typhoon_property_placeholder_configurer.html#a9f629397f37b9b03327b51eeea4ef01b", null ],
+      [ "configurerWithResourceList:", "interface_typhoon_property_placeholder_configurer.html#a3ba1e0fe863eae6c17abf9527c8fb34b", null ],
+      [ "configurerWithResources:", "interface_typhoon_property_placeholder_configurer.html#a3b2ce2b5f914d9bcfd5ce90ec31ae8ca", null ],
       [ "initWithPrefix:suffix:", "interface_typhoon_property_placeholder_configurer.html#a9421e89da51d791316833838d726ebc1", null ],
       [ "properties", "interface_typhoon_property_placeholder_configurer.html#adff30c15c1769b112428286470e2d2c6", null ],
-      [ "usePropertyStyleResource:", "interface_typhoon_property_placeholder_configurer.html#a49cd93e2a40da1c846d048af2e34d80e", null ],
-      [ "_prefix", "interface_typhoon_property_placeholder_configurer.html#a88cec739d3f43a8d358396712f7fe0f0", null ],
-      [ "_properties", "interface_typhoon_property_placeholder_configurer.html#af1683ba2afe8c7704505a306acef72f3", null ],
-      [ "_suffix", "interface_typhoon_property_placeholder_configurer.html#a96af8ebc44101af7b2002918a6e5357b", null ]
+      [ "usePropertyStyleResource:", "interface_typhoon_property_placeholder_configurer.html#a49cd93e2a40da1c846d048af2e34d80e", null ]
     ] ],
     [ "TyphoonBundleResource", "interface_typhoon_bundle_resource.html", [
-      [ "_data", "interface_typhoon_bundle_resource.html#a0b71151060dc5432e692090e8f5b6ba8", null ]
+      [ "withName:", "interface_typhoon_bundle_resource.html#aaa604438fada1faf9566dcc0b7b6182c", null ],
+      [ "withName:inBundle:", "interface_typhoon_bundle_resource.html#a011c6f5a6fccb50b29bb8f33403b3076", null ]
     ] ],
     [ "<TyphoonResource>", "protocol_typhoon_resource-p.html", [
       [ "asString", "protocol_typhoon_resource-p.html#ac116090936d1a74ef0a28772db44f210", null ],

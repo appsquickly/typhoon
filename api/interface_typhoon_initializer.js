@@ -21,11 +21,6 @@ var interface_typhoon_initializer =
     [ "injectWithValueAsText:requiredTypeOrNil:", "interface_typhoon_initializer.html#a0a0f3a9d00a217113ba003adb0b27128", null ],
     [ "parametersInjectedByValue", "interface_typhoon_initializer.html#a1bda47f4c877b889d994025baaf267de", null ],
     [ "setComponentDefinition:", "interface_typhoon_initializer.html#ac54eee9345cb7fb96769aeedfb064280", null ],
-    [ "_definition", "interface_typhoon_initializer.html#a07c13e756b6b9c1869089ee960040179", null ],
-    [ "_injectedParameters", "interface_typhoon_initializer.html#a96ce491476f24d436c7e966844448df7", null ],
-    [ "_isClassMethodStrategy", "interface_typhoon_initializer.html#a5902364f4bb0883592d82e8bdf4aa194", null ],
-    [ "_parameterNames", "interface_typhoon_initializer.html#a50f644844409b89eda1b3a5ce15e9844", null ],
-    [ "_selector", "interface_typhoon_initializer.html#abadb95cfacc02a904d6391c3b5323510", null ],
     [ "isClassMethod", "interface_typhoon_initializer.html#a8d1734dc5c89f93a5a086529ed901279", null ],
     [ "selector", "interface_typhoon_initializer.html#a0afdf647b8c1d9b1e97720142bc2a056", null ]
 ];

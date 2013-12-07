@@ -13,7 +13,7 @@ var files =
     [ "TyphoonAssemblyAdviser.h", "_typhoon_assembly_adviser_8h.html", null ],
     [ "TyphoonAssemblyDefinitionBuilder.h", "_typhoon_assembly_definition_builder_8h.html", null ],
     [ "TyphoonAssemblySelectorAdviser.h", "_typhoon_assembly_selector_adviser_8h.html", [
-      [ "TyphoonAssemblySelectorAdviser", "interface_typhoon_assembly_selector_adviser.html", null ]
+      [ "TyphoonAssemblySelectorAdviser", "interface_typhoon_assembly_selector_adviser.html", "interface_typhoon_assembly_selector_adviser" ]
     ] ],
     [ "TyphoonAssistedFactoryBase+TyphoonFactoryMethodClosure.h", "_typhoon_assisted_factory_base_09_typhoon_factory_method_closure_8h.html", [
       [ "TyphoonAssistedFactoryBase(TyphoonFactoryMethodClosure)", "category_typhoon_assisted_factory_base_07_typhoon_factory_method_closure_08.html", null ]
@@ -113,7 +113,7 @@ var files =
       [ "<TyphoonIntrospectiveNSObject>", "protocol_typhoon_introspective_n_s_object-p.html", "protocol_typhoon_introspective_n_s_object-p" ]
     ] ],
     [ "TyphoonJRSwizzle.h", "_typhoon_j_r_swizzle_8h.html", [
-      [ "NSObject(TyphoonJRSwizzle)", "category_n_s_object_07_typhoon_j_r_swizzle_08.html", null ]
+      [ "NSObject(TyphoonJRSwizzle)", "category_n_s_object_07_typhoon_j_r_swizzle_08.html", "category_n_s_object_07_typhoon_j_r_swizzle_08" ]
     ] ],
     [ "TyphoonKeyedStackInstanceRegister.h", "_typhoon_keyed_stack_instance_register_8h.html", [
       [ "TyphoonKeyedStackInstanceRegister", "interface_typhoon_keyed_stack_instance_register.html", null ]
@@ -168,7 +168,7 @@ var files =
     [ "TyphoonRXMLElement.h", "_typhoon_r_x_m_l_element_8h.html", "_typhoon_r_x_m_l_element_8h" ],
     [ "TyphoonShorthand.h", "_typhoon_shorthand_8h.html", null ],
     [ "TyphoonStringUtils.h", "_typhoon_string_utils_8h.html", [
-      [ "TyphoonStringUtils", "interface_typhoon_string_utils.html", null ]
+      [ "TyphoonStringUtils", "interface_typhoon_string_utils.html", "interface_typhoon_string_utils" ]
     ] ],
     [ "TyphoonTestUtils.h", "_typhoon_test_utils_8h.html", "_typhoon_test_utils_8h" ],
     [ "TyphoonTypeConvertedCollectionValue.h", "_typhoon_type_converted_collection_value_8h.html", [
