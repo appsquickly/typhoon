@@ -5,13 +5,6 @@
       <Name>Root</Name>
       <Path>index.html</Path>
       <Subnodes>
-        <Subnodes>
-         <Node>
-          <Name>Description</Name>
-          <Path>index.html</Path>
-          <Anchor>description</Anchor>
-         </Node>
-        </Subnodes>
        <Node>
         <Name>Modules</Name>
         <Path>modules.html</Path>

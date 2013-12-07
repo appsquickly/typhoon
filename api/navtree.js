@@ -30,7 +30,7 @@ var NAVTREEINDEX =
 [
 "_n_s_object_09_typhoon_introspection_utils_8h.html",
 "globals_eval.html",
-"interface_typhoon_property_injected_by_type.html#af42e0e7b6ebf46efc22599e46038f88f"
+"interface_typhoon_property_injected_with_string_representation.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
