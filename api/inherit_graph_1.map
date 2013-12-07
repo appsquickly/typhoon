@@ -27,7 +27,7 @@
 <area shape="rect" id="node36" href="$interface_typhoon_parameter_injected_with_string_representation.html" title="Represents a parameter injected with a string representation. " alt="" coords="489,49,690,90"/>
 <area shape="rect" id="node37" href="$interface_typhoon_property_injected_with_string_representation.html" title="Represents a property injected with a string representation. " alt="" coords="479,114,699,156"/>
 <area shape="rect" id="node38" href="$interface_typhoon_definition.html" title="TyphoonDefinition" alt="" coords="214,1906,354,1932"/>
-<area shape="rect" id="node39" href="$interface_typhoon_factory_provider.html" title="TyphoonFactoryProvider" alt="" coords="193,1956,375,1983"/>
+<area shape="rect" id="node39" href="$interface_typhoon_factory_provider.html" title="Provides a factory that combines the convenience method arguments with the assembly&#45;supplied dependen..." alt="" coords="193,1956,375,1983"/>
 <area shape="rect" id="node40" href="$interface_typhoon_generic_stack.html" title="TyphoonGenericStack" alt="" coords="201,2007,367,2034"/>
 <area shape="rect" id="node41" href="$interface_typhoon_initializer.html" title="Represents an initializer for a component. " alt="" coords="215,2058,353,2084"/>
 <area shape="rect" id="node42" href="$protocol_typhoon_injected_parameter-p.html" title="\&lt;TyphoonInjectedParameter\&gt;" alt="" coords="175,240,393,267"/>

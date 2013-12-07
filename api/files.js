@@ -67,9 +67,7 @@ var files =
       [ "TyphoonAssistedFactoryParameterInjectedWithProperty", "interface_typhoon_assisted_factory_parameter_injected_with_property.html", "interface_typhoon_assisted_factory_parameter_injected_with_property" ]
     ] ],
     [ "TyphoonAutowire.h", "_typhoon_autowire_8h.html", "_typhoon_autowire_8h" ],
-    [ "TyphoonBlockComponentFactory.h", "_typhoon_block_component_factory_8h.html", [
-      [ "TyphoonBlockComponentFactory", "interface_typhoon_block_component_factory.html", "interface_typhoon_block_component_factory" ]
-    ] ],
+    [ "TyphoonBlockComponentFactory.h", "_typhoon_block_component_factory_8h.html", null ],
     [ "TyphoonBundledImageTypeConverter.h", "_typhoon_bundled_image_type_converter_8h.html", null ],
     [ "TyphoonBundleResource.h", "_typhoon_bundle_resource_8h.html", [
       [ "TyphoonBundleResource", "interface_typhoon_bundle_resource.html", "interface_typhoon_bundle_resource" ]
@@ -83,15 +81,11 @@ var files =
       [ "TyphoonComponentFactory(InstanceBuilder)", "category_typhoon_component_factory_07_instance_builder_08.html", "category_typhoon_component_factory_07_instance_builder_08" ]
     ] ],
     [ "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h", "_typhoon_component_factory_09_typhoon_definition_registerer_8h.html", null ],
-    [ "TyphoonComponentFactory.h", "_typhoon_component_factory_8h.html", [
-      [ "TyphoonComponentFactory", "interface_typhoon_component_factory.html", "interface_typhoon_component_factory" ]
-    ] ],
+    [ "TyphoonComponentFactory.h", "_typhoon_component_factory_8h.html", null ],
     [ "TyphoonComponentFactoryAware.h", "_typhoon_component_factory_aware_8h.html", [
       [ "<TyphoonComponentFactoryAware>", "protocol_typhoon_component_factory_aware-p.html", "protocol_typhoon_component_factory_aware-p" ]
     ] ],
-    [ "TyphoonComponentFactoryPostProcessor.h", "_typhoon_component_factory_post_processor_8h.html", [
-      [ "<TyphoonComponentFactoryPostProcessor>", "protocol_typhoon_component_factory_post_processor-p.html", "protocol_typhoon_component_factory_post_processor-p" ]
-    ] ],
+    [ "TyphoonComponentFactoryPostProcessor.h", "_typhoon_component_factory_post_processor_8h.html", null ],
     [ "TyphoonComponentInjectedByValue.h", "_typhoon_component_injected_by_value_8h.html", [
       [ "<TyphoonComponentInjectedByValue>", "protocol_typhoon_component_injected_by_value-p.html", "protocol_typhoon_component_injected_by_value-p" ]
     ] ],
@@ -103,9 +97,7 @@ var files =
     ] ],
     [ "TyphoonDefinition.h", "_typhoon_definition_8h.html", "_typhoon_definition_8h" ],
     [ "TyphoonDefinitionRegisterer.h", "_typhoon_definition_registerer_8h.html", null ],
-    [ "TyphoonFactoryProvider.h", "_typhoon_factory_provider_8h.html", [
-      [ "TyphoonFactoryProvider", "interface_typhoon_factory_provider.html", null ]
-    ] ],
+    [ "TyphoonFactoryProvider.h", "_typhoon_factory_provider_8h.html", null ],
     [ "TyphoonGenericStack.h", "_typhoon_generic_stack_8h.html", [
       [ "TyphoonGenericStack", "interface_typhoon_generic_stack.html", "interface_typhoon_generic_stack" ]
     ] ],
@@ -169,12 +161,8 @@ var files =
     [ "TyphoonPropertyInjectedWithStringRepresentation.h", "_typhoon_property_injected_with_string_representation_8h.html", [
       [ "TyphoonPropertyInjectedWithStringRepresentation", "interface_typhoon_property_injected_with_string_representation.html", "interface_typhoon_property_injected_with_string_representation" ]
     ] ],
-    [ "TyphoonPropertyInjectionDelegate.h", "_typhoon_property_injection_delegate_8h.html", [
-      [ "<TyphoonPropertyInjectionDelegate>", "protocol_typhoon_property_injection_delegate-p.html", "protocol_typhoon_property_injection_delegate-p" ]
-    ] ],
-    [ "TyphoonPropertyPlaceholderConfigurer.h", "_typhoon_property_placeholder_configurer_8h.html", [
-      [ "TyphoonPropertyPlaceholderConfigurer", "interface_typhoon_property_placeholder_configurer.html", "interface_typhoon_property_placeholder_configurer" ]
-    ] ],
+    [ "TyphoonPropertyInjectionDelegate.h", "_typhoon_property_injection_delegate_8h.html", null ],
+    [ "TyphoonPropertyPlaceholderConfigurer.h", "_typhoon_property_placeholder_configurer_8h.html", null ],
     [ "TyphoonResource.h", "_typhoon_resource_8h.html", [
       [ "<TyphoonResource>", "protocol_typhoon_resource-p.html", "protocol_typhoon_resource-p" ]
     ] ],
@@ -201,10 +189,6 @@ var files =
       [ "TyphoonUIColorTypeConverter", "interface_typhoon_u_i_color_type_converter.html", null ]
     ] ],
     [ "TyphoonURLUtils.h", "_typhoon_u_r_l_utils_8h.html", null ],
-    [ "TyphoonViewControllerNibResolver.h", "_typhoon_view_controller_nib_resolver_8h.html", [
-      [ "TyphoonViewControllerNibResolver", "interface_typhoon_view_controller_nib_resolver.html", "interface_typhoon_view_controller_nib_resolver" ]
-    ] ],
-    [ "TyphoonXmlComponentFactory.h", "_typhoon_xml_component_factory_8h.html", [
-      [ "TyphoonXmlComponentFactory", "interface_typhoon_xml_component_factory.html", "interface_typhoon_xml_component_factory" ]
-    ] ]
+    [ "TyphoonViewControllerNibResolver.h", "_typhoon_view_controller_nib_resolver_8h.html", null ],
+    [ "TyphoonXmlComponentFactory.h", "_typhoon_xml_component_factory_8h.html", null ]
 ];

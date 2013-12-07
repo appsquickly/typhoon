@@ -659,6 +659,38 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>Configuration</Name>
+      <APILanguage>c</APILanguage>
+    </TokenIdentifier>
+    <Path>group___configuration.html</Path>
+    <Abstract>Contains classes related to configuration and environment management. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>Definition</Name>
+      <APILanguage>c</APILanguage>
+    </TokenIdentifier>
+    <Path>group___definition.html</Path>
+    <Abstract>Contains classes related to declaring architectural components and their collaborators. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>Factory</Name>
+      <APILanguage>c</APILanguage>
+    </TokenIdentifier>
+    <Path>group___factory.html</Path>
+    <Abstract>Contains classes related to registering and retrieving component definitions. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>Test</Name>
+      <APILanguage>c</APILanguage>
+    </TokenIdentifier>
+    <Path>group___test.html</Path>
+    <Abstract>Contains classes related to unit and integration testing. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>NSObject(TyphoonIntrospectionUtils)</Name>
       <APILanguage>c</APILanguage>
       <Type>cat</Type>
@@ -3579,6 +3611,7 @@
       <Scope>TyphoonFactoryProvider</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_factory_provider.html</Path>
+    <Abstract>Provides a factory that combines the convenience method arguments with the assembly-supplied dependen...</Abstract>
     <DeclaredIn>TyphoonFactoryProvider.h</DeclaredIn>
   </Token>
   <Token>
@@ -3589,7 +3622,7 @@
       <Scope>TyphoonFactoryProvider</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_factory_provider.html</Path>
-    <Anchor>a4f5768865f0bdd8302383fce7cadd998</Anchor>
+    <Anchor>a85f585a67e0a3bd309d44ad580a7928d</Anchor>
     <Abstract>Creates a factory definition for a given protocol, dependencies and factory block. </Abstract>
     <DeclaredIn>TyphoonFactoryProvider.h</DeclaredIn>
   </Token>
@@ -3601,7 +3634,7 @@
       <Scope>TyphoonFactoryProvider</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_factory_provider.html</Path>
-    <Anchor>a9e6527e8cb3fb335d4d8c6d3d64f41d6</Anchor>
+    <Anchor>a5e5e8ffa843c993940e3cccb1f5660d3</Anchor>
     <Abstract>Creates a factory definition for a given protocol, dependencies, and return type. ...</Abstract>
     <DeclaredIn>TyphoonFactoryProvider.h</DeclaredIn>
   </Token>
@@ -3613,7 +3646,7 @@
       <Scope>TyphoonFactoryProvider</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_factory_provider.html</Path>
-    <Anchor>a8ac7b33cbd1228d5fe4a538b0a4457ae</Anchor>
+    <Anchor>a6ceab7ef446241a2a0d0aa5db842d5a1</Anchor>
     <Abstract>Creates a factor definition for a given protocol, dependencies and a list of factory methods...</Abstract>
     <DeclaredIn>TyphoonFactoryProvider.h</DeclaredIn>
   </Token>

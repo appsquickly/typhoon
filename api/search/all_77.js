@@ -10,7 +10,7 @@ var searchData=
   ['withclass_3aproperties_3a',['withClass:properties:',['../interface_typhoon_definition.html#af465b133fd7f973be3275714d7f5bb50',1,'TyphoonDefinition']]],
   ['withname_3a',['withName:',['../interface_typhoon_bundle_resource.html#aaa604438fada1faf9566dcc0b7b6182c',1,'TyphoonBundleResource']]],
   ['withname_3ainbundle_3a',['withName:inBundle:',['../interface_typhoon_bundle_resource.html#a011c6f5a6fccb50b29bb8f33403b3076',1,'TyphoonBundleResource']]],
-  ['withprotocol_3adependencies_3afactories_3a',['withProtocol:dependencies:factories:',['../interface_typhoon_factory_provider.html#a8ac7b33cbd1228d5fe4a538b0a4457ae',1,'TyphoonFactoryProvider']]],
-  ['withprotocol_3adependencies_3afactory_3a',['withProtocol:dependencies:factory:',['../interface_typhoon_factory_provider.html#a4f5768865f0bdd8302383fce7cadd998',1,'TyphoonFactoryProvider']]],
-  ['withprotocol_3adependencies_3areturns_3a',['withProtocol:dependencies:returns:',['../interface_typhoon_factory_provider.html#a9e6527e8cb3fb335d4d8c6d3d64f41d6',1,'TyphoonFactoryProvider']]]
+  ['withprotocol_3adependencies_3afactories_3a',['withProtocol:dependencies:factories:',['../interface_typhoon_factory_provider.html#a6ceab7ef446241a2a0d0aa5db842d5a1',1,'TyphoonFactoryProvider']]],
+  ['withprotocol_3adependencies_3afactory_3a',['withProtocol:dependencies:factory:',['../interface_typhoon_factory_provider.html#a85f585a67e0a3bd309d44ad580a7928d',1,'TyphoonFactoryProvider']]],
+  ['withprotocol_3adependencies_3areturns_3a',['withProtocol:dependencies:returns:',['../interface_typhoon_factory_provider.html#a5e5e8ffa843c993940e3cccb1f5660d3',1,'TyphoonFactoryProvider']]]
 ];

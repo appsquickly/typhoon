@@ -1,7 +1,7 @@
 var searchData=
 [
   ['scope',['scope',['../interface_typhoon_definition.html#aa4df6569a008392075c9689a73d13729',1,'TyphoonDefinition']]],
-  ['selector',['selector',['../interface_typhoon_assisted_factory_method_initializer.html#ab6098efcf36729bc4c92d311c4234865',1,'TyphoonAssistedFactoryMethodInitializer::selector()'],['../interface_typhoon_initializer.html#a0afdf647b8c1d9b1e97720142bc2a056',1,'TyphoonInitializer::selector()']]],
+  ['selector',['selector',['../interface_typhoon_initializer.html#a0afdf647b8c1d9b1e97720142bc2a056',1,'TyphoonInitializer::selector()'],['../interface_typhoon_assisted_factory_method_initializer.html#ab6098efcf36729bc4c92d311c4234865',1,'TyphoonAssistedFactoryMethodInitializer::selector()']]],
   ['selectorisadvised_3a',['selectorIsAdvised:',['../interface_typhoon_assembly_selector_adviser.html#a3a84226f163361adc8e91ac260835bb5',1,'TyphoonAssemblySelectorAdviser']]],
   ['selectorreservedorpropertysetter_3a',['selectorReservedOrPropertySetter:',['../interface_typhoon_assembly.html#a3e63c6da4faadc027f52c29157f18098',1,'TyphoonAssembly']]],
   ['setcomponentdefinition_3a',['setComponentDefinition:',['../category_typhoon_initializer_07_instance_builder_08.html#ac54eee9345cb7fb96769aeedfb064280',1,'TyphoonInitializer(InstanceBuilder)::setComponentDefinition:()'],['../interface_typhoon_initializer.html#ac54eee9345cb7fb96769aeedfb064280',1,'TyphoonInitializer::setComponentDefinition:()']]],
