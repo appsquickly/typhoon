@@ -659,11 +659,11 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>Configuration</Name>
+      <Name>Factory</Name>
       <APILanguage>c</APILanguage>
     </TokenIdentifier>
-    <Path>group___configuration.html</Path>
-    <Abstract>Contains classes related to configuration and environment management. </Abstract>
+    <Path>group___factory.html</Path>
+    <Abstract>Contains classes related to registering and retrieving component definitions. </Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -675,11 +675,11 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>Factory</Name>
+      <Name>Configuration</Name>
       <APILanguage>c</APILanguage>
     </TokenIdentifier>
-    <Path>group___factory.html</Path>
-    <Abstract>Contains classes related to registering and retrieving component definitions. </Abstract>
+    <Path>group___configuration.html</Path>
+    <Abstract>Contains classes related to configuration and environment management. </Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
