@@ -11,26 +11,14 @@ var NAVTREE =
         [ "Variables", "functions_vars.html", null ],
         [ "Properties", "functions_prop.html", null ]
       ] ]
-    ] ],
-    [ "Files", null, [
-      [ "File List", "files.html", "files" ],
-      [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ],
-        [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", null ]
-      ] ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"_n_s_object_09_typhoon_introspection_utils_8h.html",
-"globals_eval.html",
-"interface_typhoon_property_injected_with_string_representation.html"
+"annotated.html",
+"interface_typhoon_initializer.html#a58c676f630aaa313766a11cd29c0ae0e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

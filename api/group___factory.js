@@ -15,6 +15,9 @@ var group___factory =
       [ "withProtocol:dependencies:returns:", "interface_typhoon_factory_provider.html#a5e5e8ffa843c993940e3cccb1f5660d3", null ]
     ] ],
     [ "TyphoonComponentFactory", "interface_typhoon_component_factory.html", [
+      [ "loaded", "interface_typhoon_component_factory.html#a09b13d5d400d8ca043cc5f1105b8a744", null ],
+      [ "postProcessors", "interface_typhoon_component_factory.html#a86711bf232610da02cba8d969298bb2d", null ],
+      [ "singletons", "interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785", null ],
       [ "allComponentsForType:", "interface_typhoon_component_factory.html#aa41105d05dfffb845a07eae77b4c079a", null ],
       [ "allDefinitionsForType:", "interface_typhoon_component_factory.html#a075c43de552051c26e7d0abf723f992f", null ],
       [ "attachPostProcessor:", "interface_typhoon_component_factory.html#a0727001458325fd7d09b6df2e1252180", null ],
@@ -30,10 +33,7 @@ var group___factory =
       [ "makeDefault", "interface_typhoon_component_factory.html#a4ec88fe6f78db210ec6556a68f15fae4", null ],
       [ "register:", "interface_typhoon_component_factory.html#a19f04336bb2706d7947c87ded77a93b9", null ],
       [ "registry", "interface_typhoon_component_factory.html#a70222ded50004270fd8a7150e773c7e8", null ],
-      [ "unload", "interface_typhoon_component_factory.html#a810e359a13f87d375088a78759227692", null ],
-      [ "loaded", "interface_typhoon_component_factory.html#a09b13d5d400d8ca043cc5f1105b8a744", null ],
-      [ "postProcessors", "interface_typhoon_component_factory.html#a86711bf232610da02cba8d969298bb2d", null ],
-      [ "singletons", "interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785", null ]
+      [ "unload", "interface_typhoon_component_factory.html#a810e359a13f87d375088a78759227692", null ]
     ] ],
     [ "TyphoonXmlComponentFactory", "interface_typhoon_xml_component_factory.html", [
       [ "initWithConfigFileName:", "interface_typhoon_xml_component_factory.html#a1350cb588266b70c29db7f510fa3df8d", null ],

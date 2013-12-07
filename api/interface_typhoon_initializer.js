@@ -1,5 +1,7 @@
 var interface_typhoon_initializer =
 [
+    [ "isClassMethod", "interface_typhoon_initializer.html#a8d1734dc5c89f93a5a086529ed901279", null ],
+    [ "selector", "interface_typhoon_initializer.html#a0afdf647b8c1d9b1e97720142bc2a056", null ],
     [ "asInvocationFor:", "interface_typhoon_initializer.html#a9bf9f1b362d5bef8b29291464d634d6d", null ],
     [ "initWithSelector:", "interface_typhoon_initializer.html#a94b46055f740c394b7319ca5cab283bf", null ],
     [ "initWithSelector:isClassMethodStrategy:", "interface_typhoon_initializer.html#aa08acb18e79e55847353c078225ff5cf", null ],
@@ -20,7 +22,5 @@ var interface_typhoon_initializer =
     [ "injectWithValueAsText:", "interface_typhoon_initializer.html#a6f3e979db9e3edb041e2870794b496fa", null ],
     [ "injectWithValueAsText:requiredTypeOrNil:", "interface_typhoon_initializer.html#a0a0f3a9d00a217113ba003adb0b27128", null ],
     [ "parametersInjectedByValue", "interface_typhoon_initializer.html#a1bda47f4c877b889d994025baaf267de", null ],
-    [ "setComponentDefinition:", "interface_typhoon_initializer.html#ac54eee9345cb7fb96769aeedfb064280", null ],
-    [ "isClassMethod", "interface_typhoon_initializer.html#a8d1734dc5c89f93a5a086529ed901279", null ],
-    [ "selector", "interface_typhoon_initializer.html#a0afdf647b8c1d9b1e97720142bc2a056", null ]
+    [ "setComponentDefinition:", "interface_typhoon_initializer.html#ac54eee9345cb7fb96769aeedfb064280", null ]
 ];
