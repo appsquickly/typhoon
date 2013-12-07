@@ -1,1 +1,1 @@
-../../../../Source/Component/TyphoonDefinition+Infrastructure.h
+../../../../Source/Definition/TyphoonDefinition+Infrastructure.h
