@@ -2479,7 +2479,6 @@
       <Scope>TyphoonBundleResource</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_bundle_resource.html</Path>
-    <Abstract>Represents a resource within the application bundle. </Abstract>
     <DeclaredIn>TyphoonBundleResource.h</DeclaredIn>
   </Token>
   <Token>

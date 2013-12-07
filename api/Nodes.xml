@@ -66,6 +66,38 @@
             </Subnodes>
            </Node>
            <Node>
+            <Name>TyphoonBundleResource</Name>
+            <Path>interface_typhoon_bundle_resource.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>_data</Name>
+              <Path>interface_typhoon_bundle_resource.html</Path>
+              <Anchor>a0b71151060dc5432e692090e8f5b6ba8</Anchor>
+             </Node>
+            </Subnodes>
+           </Node>
+           <Node>
+            <Name>&lt;TyphoonResource&gt;</Name>
+            <Path>protocol_typhoon_resource-p.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>asString</Name>
+              <Path>protocol_typhoon_resource-p.html</Path>
+              <Anchor>ac116090936d1a74ef0a28772db44f210</Anchor>
+             </Node>
+             <Node>
+              <Name>asStringWithEncoding:</Name>
+              <Path>protocol_typhoon_resource-p.html</Path>
+              <Anchor>a5f924b2511acbe7880f226d76cd742f9</Anchor>
+             </Node>
+             <Node>
+              <Name>data</Name>
+              <Path>protocol_typhoon_resource-p.html</Path>
+              <Anchor>a7d63644498c645e5684694b3f44b04b5</Anchor>
+             </Node>
+            </Subnodes>
+           </Node>
+           <Node>
             <Name>TyphoonViewControllerNibResolver</Name>
             <Path>interface_typhoon_view_controller_nib_resolver.html</Path>
             <Subnodes>
@@ -3992,17 +4024,6 @@
             <Name>TyphoonBundleResource.h</Name>
             <Path>_typhoon_bundle_resource_8h.html</Path>
             <Subnodes>
-             <Node>
-              <Name>TyphoonBundleResource</Name>
-              <Path>interface_typhoon_bundle_resource.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>_data</Name>
-                <Path>interface_typhoon_bundle_resource.html</Path>
-                <Anchor>a0b71151060dc5432e692090e8f5b6ba8</Anchor>
-               </Node>
-              </Subnodes>
-             </Node>
             </Subnodes>
            </Node>
            <Node>
@@ -5032,27 +5053,6 @@
             <Name>TyphoonResource.h</Name>
             <Path>_typhoon_resource_8h.html</Path>
             <Subnodes>
-             <Node>
-              <Name>&lt;TyphoonResource&gt;</Name>
-              <Path>protocol_typhoon_resource-p.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>asString</Name>
-                <Path>protocol_typhoon_resource-p.html</Path>
-                <Anchor>ac116090936d1a74ef0a28772db44f210</Anchor>
-               </Node>
-               <Node>
-                <Name>asStringWithEncoding:</Name>
-                <Path>protocol_typhoon_resource-p.html</Path>
-                <Anchor>a5f924b2511acbe7880f226d76cd742f9</Anchor>
-               </Node>
-               <Node>
-                <Name>data</Name>
-                <Path>protocol_typhoon_resource-p.html</Path>
-                <Anchor>a7d63644498c645e5684694b3f44b04b5</Anchor>
-               </Node>
-              </Subnodes>
-             </Node>
             </Subnodes>
            </Node>
            <Node>

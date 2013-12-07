@@ -69,9 +69,7 @@ var files =
     [ "TyphoonAutowire.h", "_typhoon_autowire_8h.html", "_typhoon_autowire_8h" ],
     [ "TyphoonBlockComponentFactory.h", "_typhoon_block_component_factory_8h.html", null ],
     [ "TyphoonBundledImageTypeConverter.h", "_typhoon_bundled_image_type_converter_8h.html", null ],
-    [ "TyphoonBundleResource.h", "_typhoon_bundle_resource_8h.html", [
-      [ "TyphoonBundleResource", "interface_typhoon_bundle_resource.html", "interface_typhoon_bundle_resource" ]
-    ] ],
+    [ "TyphoonBundleResource.h", "_typhoon_bundle_resource_8h.html", null ],
     [ "TyphoonByReferenceCollectionValue.h", "_typhoon_by_reference_collection_value_8h.html", [
       [ "TyphoonByReferenceCollectionValue", "interface_typhoon_by_reference_collection_value.html", "interface_typhoon_by_reference_collection_value" ]
     ] ],
@@ -163,9 +161,7 @@ var files =
     ] ],
     [ "TyphoonPropertyInjectionDelegate.h", "_typhoon_property_injection_delegate_8h.html", null ],
     [ "TyphoonPropertyPlaceholderConfigurer.h", "_typhoon_property_placeholder_configurer_8h.html", null ],
-    [ "TyphoonResource.h", "_typhoon_resource_8h.html", [
-      [ "<TyphoonResource>", "protocol_typhoon_resource-p.html", "protocol_typhoon_resource-p" ]
-    ] ],
+    [ "TyphoonResource.h", "_typhoon_resource_8h.html", null ],
     [ "TyphoonRXMLElement+XmlComponentFactory.h", "_typhoon_r_x_m_l_element_09_xml_component_factory_8h.html", [
       [ "TyphoonRXMLElement(XmlComponentFactory)", "category_typhoon_r_x_m_l_element_07_xml_component_factory_08.html", "category_typhoon_r_x_m_l_element_07_xml_component_factory_08" ]
     ] ],

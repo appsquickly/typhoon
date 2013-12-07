@@ -8,6 +8,14 @@ var group___configuration =
       [ "_properties", "interface_typhoon_property_placeholder_configurer.html#af1683ba2afe8c7704505a306acef72f3", null ],
       [ "_suffix", "interface_typhoon_property_placeholder_configurer.html#a96af8ebc44101af7b2002918a6e5357b", null ]
     ] ],
+    [ "TyphoonBundleResource", "interface_typhoon_bundle_resource.html", [
+      [ "_data", "interface_typhoon_bundle_resource.html#a0b71151060dc5432e692090e8f5b6ba8", null ]
+    ] ],
+    [ "<TyphoonResource>", "protocol_typhoon_resource-p.html", [
+      [ "asString", "protocol_typhoon_resource-p.html#ac116090936d1a74ef0a28772db44f210", null ],
+      [ "asStringWithEncoding:", "protocol_typhoon_resource-p.html#a5f924b2511acbe7880f226d76cd742f9", null ],
+      [ "data", "protocol_typhoon_resource-p.html#a7d63644498c645e5684694b3f44b04b5", null ]
+    ] ],
     [ "TyphoonViewControllerNibResolver", "interface_typhoon_view_controller_nib_resolver.html", [
       [ "resolveNibNameForClass:", "interface_typhoon_view_controller_nib_resolver.html#aa6a0918e3304f1d620a321141b435330", null ]
     ] ]
