@@ -38,6 +38,7 @@
   padding:0px;
   margin:0px;
   outline:none;
+  font-weight: 600; font-style: normal; 
 }
 
 #nav-tree .label {
