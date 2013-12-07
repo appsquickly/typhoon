@@ -144,7 +144,6 @@ a.qindexHL {
 }
 
 a.el {
-     	font-family: Courier,Consolas,monospace;
 		font-weight: bold;
 }
 
@@ -456,7 +455,7 @@ table.memberdecls {
 .memItemLeft
 {
 	    	font-family: Courier,Consolas,monospace;
-		font-size:12px;
+		font-size:13px;
 		background-color: rgba(0, 0, 0, 0);
 		border: none;
 		margin: 4px;
