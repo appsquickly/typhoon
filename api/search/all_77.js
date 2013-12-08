@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['wait_3asecondsforcondition_3aandperformtests_3a',['wait:secondsForCondition:andPerformTests:',['../interface_typhoon_test_utils.html#aa6d52dc07f030445d3c0e9ad0daee9df',1,'TyphoonTestUtils']]],
-  ['waitforcondition_3a',['waitForCondition:',['../interface_typhoon_test_utils.html#af677f6df2e2f0d6d6d1fc9864fb90846',1,'TyphoonTestUtils']]],
-  ['waitforcondition_3aandperformtests_3a',['waitForCondition:andPerformTests:',['../interface_typhoon_test_utils.html#a1868231a1d5af50f6f0500738060df18',1,'TyphoonTestUtils']]],
+  ['wait_3asecondsforcondition_3aandperformtests_3a',['wait:secondsForCondition:andPerformTests:',['../interface_typhoon_test_utils.html#a77d874d8410e5aa6a1f56a4049a44e52',1,'TyphoonTestUtils']]],
+  ['waitforcondition_3a',['waitForCondition:',['../interface_typhoon_test_utils.html#a1d9e1900f5ce91f1156ab33f3de55c84',1,'TyphoonTestUtils']]],
+  ['waitforcondition_3aandperformtests_3a',['waitForCondition:andPerformTests:',['../interface_typhoon_test_utils.html#a62926e9370dabb26116d26c72bf74c87',1,'TyphoonTestUtils']]],
   ['withclass_3a',['withClass:',['../interface_typhoon_definition.html#a1dc966c67bccff5b5b88c9de0ae78689',1,'TyphoonDefinition']]],
   ['withclass_3ainitialization_3a',['withClass:initialization:',['../interface_typhoon_definition.html#abfbc8c21959e41a5fc4bb7282e2ff9e1',1,'TyphoonDefinition']]],
   ['withclass_3ainitialization_3aproperties_3a',['withClass:initialization:properties:',['../interface_typhoon_definition.html#aa9dcfc1049a83acb4490f2d014fed773',1,'TyphoonDefinition']]],

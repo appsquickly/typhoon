@@ -4534,6 +4534,7 @@
       <Scope>TyphoonTestUtils</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_test_utils.html</Path>
+    <Abstract>Provides a utility for performing asynchronous integration tests with Typhoon. </Abstract>
     <DeclaredIn>TyphoonTestUtils.h</DeclaredIn>
   </Token>
   <Token>
@@ -4544,7 +4545,8 @@
       <Scope>TyphoonTestUtils</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_test_utils.html</Path>
-    <Anchor>af677f6df2e2f0d6d6d1fc9864fb90846</Anchor>
+    <Anchor>a1d9e1900f5ce91f1156ab33f3de55c84</Anchor>
+    <Abstract>Waits for a condition to occur. </Abstract>
     <DeclaredIn>TyphoonTestUtils.h</DeclaredIn>
   </Token>
   <Token>
@@ -4555,7 +4557,8 @@
       <Scope>TyphoonTestUtils</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_test_utils.html</Path>
-    <Anchor>a1868231a1d5af50f6f0500738060df18</Anchor>
+    <Anchor>a62926e9370dabb26116d26c72bf74c87</Anchor>
+    <Abstract>Waits for a condition to occur, and performs additional tests. </Abstract>
     <DeclaredIn>TyphoonTestUtils.h</DeclaredIn>
   </Token>
   <Token>
@@ -4566,7 +4569,8 @@
       <Scope>TyphoonTestUtils</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_test_utils.html</Path>
-    <Anchor>aa6d52dc07f030445d3c0e9ad0daee9df</Anchor>
+    <Anchor>a77d874d8410e5aa6a1f56a4049a44e52</Anchor>
+    <Abstract>Waits for a condition to occur, and performs additional tests, also overriding the default timeout wi...</Abstract>
     <DeclaredIn>TyphoonTestUtils.h</DeclaredIn>
   </Token>
   <Token>

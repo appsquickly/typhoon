@@ -47,7 +47,7 @@
 <area shape="rect" id="node57" href="$protocol_typhoon_resource-p.html" title="\&lt;TyphoonResource\&gt;" alt="" coords="205,1316,363,1343"/>
 <area shape="rect" id="node58" href="$interface_typhoon_r_x_m_l_element.html" title="TyphoonRXMLElement" alt="" coords="201,2580,367,2607"/>
 <area shape="rect" id="node59" href="$interface_typhoon_string_utils.html" title="TyphoonStringUtils" alt="" coords="211,2631,357,2658"/>
-<area shape="rect" id="node60" href="$interface_typhoon_test_utils.html" title="TyphoonTestUtils" alt="" coords="215,2682,353,2708"/>
+<area shape="rect" id="node60" href="$interface_typhoon_test_utils.html" title="Provides a utility for performing asynchronous integration tests with Typhoon. " alt="" coords="215,2682,353,2708"/>
 <area shape="rect" id="node61" href="$protocol_typhoon_type_converter-p.html" title="Declares a contract for converting configuration arguments to their required runtime type..." alt="" coords="187,2260,381,2287"/>
 <area shape="rect" id="node62" href="$interface_typhoon_u_i_color_type_converter.html" title="TyphoonUIColorTypeConverter" alt="" coords="477,2351,701,2378"/>
 <area shape="rect" id="node63" href="$interface_typhoon_type_converter_registry.html" title="Registry of type converters, with special treatment for primitives. " alt="" coords="169,2732,399,2759"/>

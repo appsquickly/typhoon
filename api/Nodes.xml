@@ -537,17 +537,17 @@
              <Node>
               <Name>wait:secondsForCondition:andPerformTests:</Name>
               <Path>interface_typhoon_test_utils.html</Path>
-              <Anchor>aa6d52dc07f030445d3c0e9ad0daee9df</Anchor>
+              <Anchor>a77d874d8410e5aa6a1f56a4049a44e52</Anchor>
              </Node>
              <Node>
               <Name>waitForCondition:</Name>
               <Path>interface_typhoon_test_utils.html</Path>
-              <Anchor>af677f6df2e2f0d6d6d1fc9864fb90846</Anchor>
+              <Anchor>a1d9e1900f5ce91f1156ab33f3de55c84</Anchor>
              </Node>
              <Node>
               <Name>waitForCondition:andPerformTests:</Name>
               <Path>interface_typhoon_test_utils.html</Path>
-              <Anchor>a1868231a1d5af50f6f0500738060df18</Anchor>
+              <Anchor>a62926e9370dabb26116d26c72bf74c87</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -2240,17 +2240,17 @@
              <Node>
               <Name>wait:secondsForCondition:andPerformTests:</Name>
               <Path>interface_typhoon_test_utils.html</Path>
-              <Anchor>aa6d52dc07f030445d3c0e9ad0daee9df</Anchor>
+              <Anchor>a77d874d8410e5aa6a1f56a4049a44e52</Anchor>
              </Node>
              <Node>
               <Name>waitForCondition:</Name>
               <Path>interface_typhoon_test_utils.html</Path>
-              <Anchor>af677f6df2e2f0d6d6d1fc9864fb90846</Anchor>
+              <Anchor>a1d9e1900f5ce91f1156ab33f3de55c84</Anchor>
              </Node>
              <Node>
               <Name>waitForCondition:andPerformTests:</Name>
               <Path>interface_typhoon_test_utils.html</Path>
-              <Anchor>a1868231a1d5af50f6f0500738060df18</Anchor>
+              <Anchor>a62926e9370dabb26116d26c72bf74c87</Anchor>
              </Node>
             </Subnodes>
            </Node>

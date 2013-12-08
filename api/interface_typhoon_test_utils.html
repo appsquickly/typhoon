@@ -95,25 +95,32 @@ $(document).ready(function(){initNavTree('interface_typhoon_test_utils.html','')
 <div class="title">TyphoonTestUtils Class Reference<div class="ingroups"><a class="el" href="group___test.html">Test</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Provides a utility for performing asynchronous integration tests with Typhoon.  
+ <a href="interface_typhoon_test_utils.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for TyphoonTestUtils:</div>
 <div class="dyncontent">
 <div class="center"><img src="interface_typhoon_test_utils__inherit__graph.png" border="0" usemap="#_typhoon_test_utils_inherit__map" alt="Inheritance graph"/></div>
-<map name="_typhoon_test_utils_inherit__map" id="_typhoon_test_utils_inherit__map">
-</map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Class Methods</h2></td></tr>
-<tr class="memitem:af677f6df2e2f0d6d6d1fc9864fb90846"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_test_utils.html#af677f6df2e2f0d6d6d1fc9864fb90846">waitForCondition:</a></td></tr>
-<tr class="separator:af677f6df2e2f0d6d6d1fc9864fb90846"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1868231a1d5af50f6f0500738060df18"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_test_utils.html#a1868231a1d5af50f6f0500738060df18">waitForCondition:andPerformTests:</a></td></tr>
-<tr class="separator:a1868231a1d5af50f6f0500738060df18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6d52dc07f030445d3c0e9ad0daee9df"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_test_utils.html#aa6d52dc07f030445d3c0e9ad0daee9df">wait:secondsForCondition:andPerformTests:</a></td></tr>
-<tr class="separator:aa6d52dc07f030445d3c0e9ad0daee9df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d9e1900f5ce91f1156ab33f3de55c84"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_test_utils.html#a1d9e1900f5ce91f1156ab33f3de55c84">waitForCondition:</a></td></tr>
+<tr class="memdesc:a1d9e1900f5ce91f1156ab33f3de55c84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for a condition to occur.  <a href="#a1d9e1900f5ce91f1156ab33f3de55c84">More...</a><br/></td></tr>
+<tr class="separator:a1d9e1900f5ce91f1156ab33f3de55c84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62926e9370dabb26116d26c72bf74c87"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_test_utils.html#a62926e9370dabb26116d26c72bf74c87">waitForCondition:andPerformTests:</a></td></tr>
+<tr class="memdesc:a62926e9370dabb26116d26c72bf74c87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for a condition to occur, and performs additional tests.  <a href="#a62926e9370dabb26116d26c72bf74c87">More...</a><br/></td></tr>
+<tr class="separator:a62926e9370dabb26116d26c72bf74c87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77d874d8410e5aa6a1f56a4049a44e52"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_test_utils.html#a77d874d8410e5aa6a1f56a4049a44e52">wait:secondsForCondition:andPerformTests:</a></td></tr>
+<tr class="memdesc:a77d874d8410e5aa6a1f56a4049a44e52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for a condition to occur, and performs additional tests, also overriding the default timeout with the supplied value.  <a href="#a77d874d8410e5aa6a1f56a4049a44e52">More...</a><br/></td></tr>
+<tr class="separator:a77d874d8410e5aa6a1f56a4049a44e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Method Documentation</h2>
-<a class="anchor" id="aa6d52dc07f030445d3c0e9ad0daee9df"></a>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Provides a utility for performing asynchronous integration tests with Typhoon. </p>
+<p>If a method dispatches on a background thread or queue, and responds via a block or delegate, this class can be used to test the the expected response occurred. </p>
+</div><h2 class="groupheader">Method Documentation</h2>
+<a class="anchor" id="a77d874d8410e5aa6a1f56a4049a44e52"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -122,40 +129,88 @@ Class Methods</h2></td></tr>
           <td></td>
           <td class="paramtype">(NSTimeInterval)&#160;</td>
           <td class="paramname"><em>seconds</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">secondsForCondition:</td>
           <td></td>
+          <td class="paramtype">(TyphoonAsynchConditionBlock)&#160;</td>
+          <td class="paramname"><em>condition</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">andPerformTests:</td>
+          <td></td>
+          <td class="paramtype">(TyphoonTestAssertionsBlock)&#160;</td>
+          <td class="paramname"><em>assertions</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Waits for a condition to occur, and performs additional tests, also overriding the default timeout with the supplied value. </p>
+<h2>Example:</h2>
+<pre class="fragment">       __block BusinessDetails* result = nil;
+       [_client requestBusinessDetailsWithSuccess:^(BusinessDetails* businessDetails)
+       {
+           result = businessDetails;
+       }];
+
+       [TyphoonTestUtils wait:3 secondsForCondition:^BOOL
+       {
+           typhoon_asynch_condition(result != nil);
+       } andPerformTests:^
+       {
+           assertThatBool(businessDetails.goldenEgg, equalToBool:YES);
+       }];</pre> 
 </div>
 </div>
-<a class="anchor" id="af677f6df2e2f0d6d6d1fc9864fb90846"></a>
+<a class="anchor" id="a1d9e1900f5ce91f1156ab33f3de55c84"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">+ (void) waitForCondition: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(TyphoonAsynchConditionBlock)&#160;</td>
+          <td class="paramname"><em>condition</em></td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Waits for a condition to occur. </p>
+<p>The default time-out is seven seconds, which is the current usability standard for remote request round-trips. </p>
+
 </div>
 </div>
-<a class="anchor" id="a1868231a1d5af50f6f0500738060df18"></a>
+<a class="anchor" id="a62926e9370dabb26116d26c72bf74c87"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">+ (void) <a class="el" href="interface_typhoon_test_utils.html#af677f6df2e2f0d6d6d1fc9864fb90846">waitForCondition:</a> </td>
+          <td class="memname">+ (void) <a class="el" href="interface_typhoon_test_utils.html#a1d9e1900f5ce91f1156ab33f3de55c84">waitForCondition:</a> </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(TyphoonAsynchConditionBlock)&#160;</td>
+          <td class="paramname"><em>condition</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">andPerformTests:</td>
           <td></td>
+          <td class="paramtype">(TyphoonTestAssertionsBlock)&#160;</td>
+          <td class="paramname"><em>assertions</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Waits for a condition to occur, and performs additional tests. </p>
 
 </div>
 </div>
@@ -166,7 +221,7 @@ Class Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="interface_typhoon_test_utils.html">TyphoonTestUtils</a></li>
-    <li class="footer">Generated on Sun Dec 8 2013 16:55:44 for Typhoon by
+    <li class="footer">Generated on Sun Dec 8 2013 17:13:01 for Typhoon by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>
