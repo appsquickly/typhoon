@@ -19,7 +19,7 @@
 /**
 * @ingroup Factory
 *
-* TyphoonAssembly provides a concise way to declare and encapsulate the architecture of an application in one or more classes that describe
+* Provides a concise way to declare and encapsulate the architecture of an application in one or more classes that describe
 * how components collaborate together.
 *
 * Besides declaring an application architecture at build-time, the assembly interface serves an additional purpose at runtime: we can

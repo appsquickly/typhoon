@@ -94,6 +94,11 @@
 
 - (NSArray*)allComponentsForType:(id)classOrProtocol;
 
+/**
+* Returns the component matching the given key. For XML-style, this is the key specified as the 'id' attribute. For the block-style, this
+* is the name of the method on the TyphoonAssembly interface, although, for block-style you'd typically use the assembly interface itself
+* for component resolution.
+*/
 - (id)componentForKey:(NSString*)key;
 
 - (NSArray*)registry;
