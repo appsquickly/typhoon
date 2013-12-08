@@ -7,7 +7,7 @@ body {
 	font-weight: 400; font-style: normal; 
 	font-size: 13px; 
 	line-height: 1; 
-	color: #252319; 
+	color: #58595b; 
 	position: relative; 
 	-webkit-font-smoothing: antialiased; 
 }
@@ -175,9 +175,9 @@ pre.fragment {
         margin: 4px 8px 4px 2px;
         overflow: auto;
         word-wrap: break-word;
-        font-size:  9pt;
+        font-size:  11px;
         line-height: 125%;
-        font-family: monospace, fixed;
+	    	font-family: Courier,Consolas,monospace;
         font-size: 105%;
 }
 
