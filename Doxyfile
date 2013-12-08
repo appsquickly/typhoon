@@ -1064,7 +1064,7 @@ HTML_FOOTER            = Scripts/footer.html
 # obsolete.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_STYLESHEET        = Scripts/customdoxygen.css
+HTML_STYLESHEET        = Scripts/typhoon-docs.css
 
 # The HTML_EXTRA_STYLESHEET tag can be used to specify an additional user-
 # defined cascading style sheet that is included after the standard style sheets
