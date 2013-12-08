@@ -16,19 +16,19 @@
 
 	@defgroup Factory
 
-	Contains classes related to registering and retrieving component definitions.
+	Registering and retrieving component definitions.
 
 	@defgroup Definition
 
-	Contains classes related to declaring architectural components and their collaborators.
+	Describing architectural components and their collaborators.
 
 	@defgroup Configuration
 
-	Contains classes related to configuration and environment management. 
+	Configuration and environment management.
 
 	@defgroup Test
 
-	Contains classes related to unit and integration testing.
+	Unit and integration testing utilities.
 
  
  
