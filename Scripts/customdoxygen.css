@@ -27,7 +27,7 @@ h1.groupheader {
 
 h2.groupheader {
 	border-bottom: 1px solid gray;
-	color: #366F7A;
+	color: #e44d26;
 	font-size: 150%;
 	font-weight: normal;
 	margin-top: 1.75em;
@@ -166,8 +166,11 @@ dl.el {
 }
 
 pre.fragment {
-        border: 1px solid #C4CFE5;
-        background-color: #FBFCFD;
+        border-top: 1px solid #808080;
+        border-left: 8px solid #808080;
+        border-right: 1px solid #808080;
+        border-bottom: 1px solid #808080;
+        background-color: #ffffff;
         padding: 4px 6px;
         margin: 4px 8px 4px 2px;
         overflow: auto;
