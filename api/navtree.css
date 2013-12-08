@@ -71,7 +71,7 @@
 
 #nav-tree {
     padding: 0px 0px;
-    background-color: #FAFAFF;
+    background-color: #ffffff;
     font-size: 14px;
     overflow: auto;
 }
@@ -118,7 +118,7 @@
 }
 
 #nav-tree {
-    background: #f7f7f7;
+    background: #ffffff;
     -webkit-overflow-scrolling: touch; /* iOS 5+ */
 }
 
