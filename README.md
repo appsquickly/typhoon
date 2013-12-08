@@ -5,7 +5,7 @@ A new dependency injection container for Objective-C. Light-weight, yet full-fea
 
 ## Familiar with Dependency Injection?
 
-* Read the <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a> or <a href="http://jasperblues.github.io/Typhoon/api/index.html">API Docs</a>   
+* Read the <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>   
 * <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a> (***Now updated for iOS7!!!!***)
 * <a href="https://github.com/jasperblues/Typhoon#design-goals--features">Check the feature list</a>.
 
@@ -165,9 +165,9 @@ And then:
 In the spirit of lean-methodologies, the API and Test Coverage reports below are published by my build server, after 
 each commit. (If you'd like the script I will share it). 
 
-* <a href="http://jasperblues.github.com/Typhoon/api/index.html">API</a>
-* <a href="http://jasperblues.github.com/Typhoon/test-results/index.html">Test Results</a>
-* <a href="http://jasperblues.github.com/Typhoon/coverage/index.html">Coverage Reports (empty if tests currently failing)</a>
+* <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API</a>
+* <a href="http://www.typhoonframework.org/docs/latest/test-results/">Test Results</a>
+* <a href="http://www.typhoonframework.org/docs/latest/coverage">Coverage Reports (empty if tests currently failing)</a>
 
 
 
