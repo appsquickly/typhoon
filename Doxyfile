@@ -791,13 +791,15 @@ EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
 
 # If the value of the INPUT tag contains directories, you can use the
-# EXCLUDE_PATTERNS tag to specify one or more wildcard patterns to exclude
+#
+PATTERNS tag to specify one or more wildcard patterns to exclude
 # certain files from those directories.
 #
 # Note that the wildcards are matched against the file with absolute path, so to
 # exclude all test directories for example use the pattern */test/*
 
-EXCLUDE_PATTERNS       = */Tests/*
+EXCLUDE_PATTERNS       = */Tests/* \
+                        */Internal/*
 
 # The EXCLUDE_SYMBOLS tag can be used to specify one or more symbol names
 # (namespaces, classes, functions, etc.) that should be excluded from the
