@@ -27,7 +27,7 @@ h1.groupheader {
 
 h2.groupheader {
     border-bottom: 1px solid gray;
-    color: #d94924;
+    color: #48494b;
     font-size: 150%;
     font-weight: normal;
     margin-top: 1.75em;
@@ -538,6 +538,7 @@ table.memberdecls {
 }
 
 .memname {
+    color: #48494b;
     font-weight: bold;
     margin-left: 6px;
 }
@@ -614,7 +615,7 @@ dl.reflist dd {
 }
 
 .paramname {
-    color: #28271c;
+    color: #48494b;
     white-space: nowrap;
 }
 
@@ -906,7 +907,7 @@ table.fieldtable {
 
 div.summary {
     float: right;
-    font-size: 8pt;
+    font-size: 10pt;
     padding-right: 5px;
     width: 50%;
     text-align: right;
@@ -917,7 +918,8 @@ div.summary a {
 }
 
 div.ingroups {
-    font-size: 8pt;
+    font-size: 10pt;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
     width: 50%;
     text-align: left;
 }
@@ -927,10 +929,14 @@ div.ingroups a {
 }
 
 div.header {
-    background-color: #e2f0f2;
+    background-color: rgba(0, 0, 0, 0);
     margin: 0px;
-    border-bottom: 1px solid #C5E0E5;
-    color: #38372b
+    border-bottom: 1px solid #808080;
+    color: #58595b;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
 }
 
 div.headertitle {
@@ -1123,7 +1129,7 @@ div.toc li.level4 {
 
 .inherit_header {
     font-weight: bold;
-    color: gray;
+    color: #d94924;
     cursor: pointer;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
