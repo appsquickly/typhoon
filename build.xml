@@ -88,7 +88,7 @@
         <copy tofile="${reports.dir}/build-status.png" file="${basedir}/Scripts/build-failed.png"/>
     </target>
 
-    <target name="--stamp.build.passing">
+    <target name="--stamp.build.passing" unless="tests.failed">
         <copy tofile="${reports.dir}/build-status.png" file="${basedir}/Scripts/build-passed.png" overwrite="true"/>
     </target>
 
