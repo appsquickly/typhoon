@@ -8,13 +8,13 @@
 //
 
 /**
-    @ingroup library Matcher Library
+    @defgroup library Matcher Library
 
     Library of Matcher implementations.
  */
 
 /**
-    @ingroup object_matchers Object Matchers
+    @defgroup object_matchers Object Matchers
 
     Matchers that inspect objects.
 
@@ -29,7 +29,7 @@
 #import <OCHamcrest/HCIsSame.h>
 
 /**
-    @ingroup collection_matchers Collection Matchers
+    @defgroup collection_matchers Collection Matchers
 
     Matchers of collections.
 
@@ -48,7 +48,7 @@
 #import <OCHamcrest/HCIsIn.h>
 
 /**
-    @ingroup number_matchers Number Matchers
+    @defgroup number_matchers Number Matchers
 
     Matchers that perform numeric comparisons.
 
@@ -58,7 +58,7 @@
 #import <OCHamcrest/HCOrderingComparison.h>
 
 /**
-    @ingroup primitive_number_matchers Primitive Number Matchers
+    @defgroup primitive_number_matchers Primitive Number Matchers
 
     Matchers for testing equality against primitive numeric types.
 
@@ -67,7 +67,7 @@
 #import <OCHamcrest/HCIsEqualToNumber.h>
 
 /**
-    @ingroup text_matchers Text Matchers
+    @defgroup text_matchers Text Matchers
 
     Matchers that perform text comparisons.
 
@@ -81,7 +81,7 @@
 #import <OCHamcrest/HCStringStartsWith.h>
 
 /**
-    @ingroup logical_matchers Logical Matchers
+    @defgroup logical_matchers Logical Matchers
 
     Boolean logic using other matchers.
 
@@ -93,7 +93,7 @@
 #import <OCHamcrest/HCIsNot.h>
 
 /**
-    @ingroup decorator_matchers Decorator Matchers
+    @defgroup decorator_matchers Decorator Matchers
 
     Matchers that decorate other matchers for better expression.
 
@@ -103,12 +103,12 @@
 #import <OCHamcrest/HCIs.h>
 
 /**
-    @ingroup integration Unit Test Integration
+    @defgroup integration Unit Test Integration
  */
 #import <OCHamcrest/HCAssertThat.h>
 
 /**
-    @ingroup integration_numeric Unit Tests of Primitive Numbers
+    @defgroup integration_numeric Unit Tests of Primitive Numbers
 
     Unit test integration for primitive numbers.
     
@@ -125,11 +125,11 @@
 #import <OCHamcrest/HCNumberAssert.h>
 
 /**
-    @ingroup core Core API
+    @defgroup core Core API
  */
 
 /**
-    @ingroup helpers Helpers
+    @defgroup helpers Helpers
 
     Utilities for writing Matchers.
 
