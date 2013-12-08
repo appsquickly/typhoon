@@ -87,7 +87,8 @@
 *
 * @code
 
-- (id)paymentFactory {
+- (id)paymentFactory
+{
   return [TyphoonFactoryProvider withProtocol:@protocol(PaymentFactory) dependencies:^(TyphoonDefinition *definition)
   {
     [definition injectProperty:@selector(creditService)];
@@ -115,7 +116,8 @@
 *
 * @code
 
-- (id)paymentFactory {
+- (id)paymentFactory
+{
   return [TyphoonFactoryProvider withProtocol:@protocol(PaymentFactory) dependencies:^(TyphoonDefinition *definition)
   {
     [definition injectProperty:@selector(creditService)];
