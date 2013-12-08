@@ -13,7 +13,7 @@
 <area shape="rect" id="node18" href="$interface_typhoon_assisted_factory_method_initializer.html" title="Describes how a factory method will use an init method, by mapping the factory method arguments and f..." alt="" coords="472,1112,707,1153"/>
 <area shape="rect" id="node19" href="$interface_typhoon_assisted_factory_method_closure.html" title="A closure of a factory method. " alt="" coords="167,1185,401,1226"/>
 <area shape="rect" id="node20" href="$interface_typhoon_assisted_factory_method_creator.html" title="Creates the implementation for a TyphoonAssistedFactoryMethod. " alt="" coords="167,1250,401,1292"/>
-<area shape="rect" id="node23" href="$interface_typhoon_bundle_resource.html" title="TyphoonBundleResource" alt="" coords="498,1338,681,1364"/>
+<area shape="rect" id="node23" href="$interface_typhoon_bundle_resource.html" title="Represents a resource within the application bundle. " alt="" coords="498,1338,681,1364"/>
 <area shape="rect" id="node24" href="$interface_typhoon_by_reference_collection_value.html" title="TyphoonByReferenceCollection\lValue" alt="" coords="477,1414,702,1456"/>
 <area shape="rect" id="node25" href="$protocol_typhoon_collection_value-p.html" title="\&lt;TyphoonCollectionValue\&gt;" alt="" coords="185,1468,383,1495"/>
 <area shape="rect" id="node26" href="$interface_typhoon_type_converted_collection_value.html" title="TyphoonTypeConvertedCollection\lValue" alt="" coords="467,1486,711,1528"/>

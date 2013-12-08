@@ -25,6 +25,32 @@
             </Subnodes>
            </Node>
            <Node>
+            <Name>TyphoonAssembly</Name>
+            <Path>interface_typhoon_assembly.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>assembly</Name>
+              <Path>interface_typhoon_assembly.html</Path>
+              <Anchor>af53fcd1ea8b4e55dda2080a651814c6c</Anchor>
+             </Node>
+             <Node>
+              <Name>defaultAssembly</Name>
+              <Path>interface_typhoon_assembly.html</Path>
+              <Anchor>ac445c91bdd47b3389eadedbf33860512</Anchor>
+             </Node>
+             <Node>
+              <Name>resolveCollaboratingAssemblies</Name>
+              <Path>interface_typhoon_assembly.html</Path>
+              <Anchor>a79828d38519e34c2dd42f06ac5408264</Anchor>
+             </Node>
+             <Node>
+              <Name>selectorReservedOrPropertySetter:</Name>
+              <Path>interface_typhoon_assembly.html</Path>
+              <Anchor>a3e63c6da4faadc027f52c29157f18098</Anchor>
+             </Node>
+            </Subnodes>
+           </Node>
+           <Node>
             <Name>TyphoonBlockComponentFactory</Name>
             <Path>interface_typhoon_block_component_factory.html</Path>
             <Subnodes>

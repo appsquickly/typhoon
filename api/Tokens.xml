@@ -1650,6 +1650,7 @@
       <Scope>TyphoonBundleResource</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_bundle_resource.html</Path>
+    <Abstract>Represents a resource within the application bundle. </Abstract>
     <DeclaredIn>TyphoonBundleResource.h</DeclaredIn>
   </Token>
   <Token>
@@ -2006,6 +2007,7 @@
       <Scope>TyphoonComponentFactory(InstanceBuilder)</Scope>
     </TokenIdentifier>
     <Path>category_typhoon_component_factory_07_instance_builder_08.html</Path>
+    <Abstract>Encapsulates the methods related to assembling an instance using the Objective-C runtime. </Abstract>
     <DeclaredIn>TyphoonComponentFactory+InstanceBuilder.h</DeclaredIn>
   </Token>
   <Token>
