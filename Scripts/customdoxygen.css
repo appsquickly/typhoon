@@ -27,7 +27,7 @@ h1.groupheader {
 
 h2.groupheader {
 	border-bottom: 1px solid gray;
-	color: #e44d26;
+	color: #366F7A;
 	font-size: 150%;
 	font-weight: normal;
 	margin-top: 1.75em;
@@ -35,6 +35,7 @@ h2.groupheader {
 	padding-bottom: 4px;
 	width: 100%;
 }
+
 
 h3.groupheader {
 	font-size: 100%;
