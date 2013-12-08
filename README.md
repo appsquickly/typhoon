@@ -167,7 +167,7 @@ each commit. (If you'd like the script I will share it).
 
 * <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API</a>
 * <a href="http://www.typhoonframework.org/docs/latest/test-results/">Test Results</a>
-* <a href="http://www.typhoonframework.org/docs/latest/coverage">Coverage Reports (empty if tests currently failing)</a>
+* <a href="http://www.typhoonframework.org/docs/latest/coverage">Coverage Reports</a>
 
 
 
