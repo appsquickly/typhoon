@@ -27,7 +27,7 @@ h1.groupheader {
 
 h2.groupheader {
     border-bottom: 1px solid gray;
-    color: #48494b;
+    color: #d94924;
     font-size: 150%;
     font-weight: normal;
     margin-top: 1.75em;
@@ -1129,7 +1129,7 @@ div.toc li.level4 {
 
 .inherit_header {
     font-weight: bold;
-    color: #d94924;
+    color: #48494b;
     cursor: pointer;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
