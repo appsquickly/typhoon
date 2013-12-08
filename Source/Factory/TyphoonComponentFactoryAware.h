@@ -12,7 +12,7 @@
 #import <Foundation/Foundation.h>
 
 /**
-* \ingroup Factory
+* @ingroup Factory
 *
 */
 @class TyphoonComponentFactory;

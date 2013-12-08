@@ -16,7 +16,7 @@
 typedef id (^ObjectCreationBlock)();
 
 /**
-* \ingroup Test
+* @ingroup Test
 *
 * TyphoonPatcher is a TyphoonComponentFactoryPostProcessor that allows patching out one or more definitions with another object. Integration
 * testing - testing a class along with its collaborators and configuration - can be a very useful practice. However, its is sometimes

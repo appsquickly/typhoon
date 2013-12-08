@@ -15,6 +15,10 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonIntrospectiveNSObject.h"
 
+/**
+* Encapsulates the methods related to assembling an instance using the Objective-C runtime. This is an internal category - the methods will
+* not be required for normal use of Typhoon.
+*/
 @interface TyphoonComponentFactory (InstanceBuilder)
 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition;

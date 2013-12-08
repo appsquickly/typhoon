@@ -16,7 +16,7 @@
 #import "TyphoonComponentFactory.h"
 
 /**
-* \ingroup Factory
+* @ingroup Factory
 */
 @interface TyphoonXmlComponentFactory : TyphoonComponentFactory
 {

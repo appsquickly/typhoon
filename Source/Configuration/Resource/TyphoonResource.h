@@ -14,7 +14,7 @@
 #import <Foundation/Foundation.h>
 
 /**
-* \ingroup Configuration
+* @ingroup Configuration
 */
 @protocol TyphoonResource <NSObject>
 

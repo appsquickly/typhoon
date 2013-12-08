@@ -14,7 +14,7 @@
 #import <Foundation/Foundation.h>
 
 /**
-* \ingroup Definition
+* @ingroup Definition
 */
 @protocol TyphoonPropertyInjectionDelegate <NSObject>
 

@@ -23,7 +23,7 @@ typedef enum
 } TyphoonComponentInitializerIsClassMethod;
 
 /**
-* \ingroup Definition
+* @ingroup Definition
 *
 * Represents an initializer for a component.
 */

@@ -15,7 +15,7 @@
 #define typhoon_asynch_condition(expression) return expression;
 
 /**
-* \ingroup Test
+* @ingroup Test
 */
 @interface TyphoonTestUtils : NSObject
 

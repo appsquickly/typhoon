@@ -15,7 +15,7 @@
 #import "TyphoonResource.h"
 
 /**
-* * \ingroup Configuration
+* @ingroup Configuration
 *
 * Represents a resource within the application bundle.
 */

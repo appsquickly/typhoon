@@ -17,6 +17,8 @@
 
 
 /**
+* @ingroup Factory
+*
 * TyphoonAssembly provides a concise way to declare and encapsulate the architecture of an application in one or more classes that describe
 * how components collaborate together.
 *

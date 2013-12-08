@@ -19,7 +19,7 @@
 
 /**
 *
-* \ingroup Factory
+* @ingroup Factory
 *
 * This is the base class for all component factories. It defines methods for retrieving components from the factory, as well as a low-level
 * API for assembling components from their constituent parts. This low-level API could be used as-is, however its intended to use a higher
@@ -51,6 +51,11 @@
 @property(nonatomic, strong, readonly) NSArray* postProcessors;
 
 /**
+* Returns the default component factory, if one has been set. (See makeDefault ).
+*/
++ (id)defaultFactory;
+
+/**
 * Mutate the component definitions and
 * build the not-lazy singletons.
 */
@@ -62,16 +67,10 @@
 - (void)unload;
 
 /**
-* Returns the default component factory, if one has been set. (See makeDefault ).
-*/
-+ (id)defaultFactory;
-
-
-/**
 * Sets a given instance of TyphoonComponentFactory, as the default factory so that it can be retrieved later with:
-
-        [TyphoonComponentFactory defaultFactory];
-
+*
+*       [TyphoonComponentFactory defaultFactory];
+*
 */
 - (void)makeDefault;
 

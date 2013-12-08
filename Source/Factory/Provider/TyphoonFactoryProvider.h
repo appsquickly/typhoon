@@ -15,7 +15,7 @@
 #import "TyphoonAssistedFactoryDefinition.h"
 
 /**
-* \ingroup Factory
+* @ingroup Factory
 *
 * Provides a factory that combines the convenience method arguments with the assembly-supplied dependencies to construct objects.
 *

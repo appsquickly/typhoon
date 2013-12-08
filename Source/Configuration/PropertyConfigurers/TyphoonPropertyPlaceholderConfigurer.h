@@ -16,7 +16,7 @@
 @protocol TyphoonResource;
 
 /**
-* \ingroup Configuration
+* @ingroup Configuration
 */
 @interface TyphoonPropertyPlaceholderConfigurer : NSObject <TyphoonComponentFactoryPostProcessor>
 {
