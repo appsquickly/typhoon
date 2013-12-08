@@ -6,7 +6,7 @@
       <APILanguage>c</APILanguage>
     </TokenIdentifier>
     <Path>group___factory.html</Path>
-    <Abstract>Contains classes related to registering and retrieving component definitions. </Abstract>
+    <Abstract>Registering and retrieving component definitions. </Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -14,7 +14,7 @@
       <APILanguage>c</APILanguage>
     </TokenIdentifier>
     <Path>group___definition.html</Path>
-    <Abstract>Contains classes related to declaring architectural components and their collaborators. </Abstract>
+    <Abstract>Describing architectural components and their collaborators. </Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -22,7 +22,7 @@
       <APILanguage>c</APILanguage>
     </TokenIdentifier>
     <Path>group___configuration.html</Path>
-    <Abstract>Contains classes related to configuration and environment management. </Abstract>
+    <Abstract>Configuration and environment management. </Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -30,7 +30,7 @@
       <APILanguage>c</APILanguage>
     </TokenIdentifier>
     <Path>group___test.html</Path>
-    <Abstract>Contains classes related to unit and integration testing. </Abstract>
+    <Abstract>Unit and integration testing utilities. </Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
