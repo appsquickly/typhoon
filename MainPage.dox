@@ -12,7 +12,10 @@
 /**
     @mainpage Typhoon
 
-    This is the API documentation for the <a href="http://www.typhoonframework.org">Typhoon Framework</a> which is developed on Github <a href="https://github.com/jasperblues">here</a>. The <b>modules</b> section lists the main API classes, while the <b>classes</b> section lists everything.
+    This is the API documentation for the <a href="http://www.typhoonframework.org">Typhoon Framework</a> which is developed on Github
+    <a href="https://github.com/jasperblues">here</a>. The <a href="http://www.typhoonframework.org/docs/latest/api/modules.html"><b>modules</b></a>
+    section lists the main API classes, while the <a href="http://www.typhoonframework.org/docs/latest/api/annotated.html"><b>classes</b></a>
+    section lists everything.
 
 	@defgroup Factory
 
