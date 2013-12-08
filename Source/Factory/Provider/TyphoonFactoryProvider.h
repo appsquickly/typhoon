@@ -88,7 +88,8 @@
 * @code
 
 - (id)paymentFactory {
-  return [TyphoonFactoryProvider withProtocol:@protocol(PaymentFactory) dependencies:^(TyphoonDefinition *definition) {
+  return [TyphoonFactoryProvider withProtocol:@protocol(PaymentFactory) dependencies:^(TyphoonDefinition *definition)
+  {
     [definition injectProperty:@selector(creditService)];
     [definition injectProperty:@selector(authService)];
   } factories:^(TyphoonAssistedFactoryDefinition *definition) {
