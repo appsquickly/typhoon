@@ -43,11 +43,12 @@
 
     <target name="doc" depends = "--api.report"/>
 
-    <target name="publish" depends="--stamp.build.failing, --api.report, --publish.site.dry.run, --publish.site.push"/>
-
-
     <target name="fast">
         <property name="fast" value="yes"/>
+    </target>
+
+    <target name="no-fail-tests">
+        <property name="no-fail-tests" value="yes"/>
     </target>
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END PUBLIC TARGETS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
@@ -56,6 +57,7 @@
    <target name="__shouldbeprivate__build" depends="
         --test.cocoapods,
         --test.generate.report,
+        --test.evaluate,
         --api.report,
         --stamp.build.passing"/>
 
@@ -66,6 +68,7 @@
         __build.library.ios.simulator,
         --test.library,
         --test.generate.report,
+        --test.evaluate,
         --assemble.coverage.data,
         --coverage.report"/>
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END SHOULD BE PRIVATE TARGETS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -160,7 +163,9 @@
         <copy todir="${reports.dir}/test-results">
             <fileset dir="${scripts.dir}" includes="**/*.png"/>
         </copy>
-        
+    </target>
+
+    <target name="test.evaluate" unless="no-fail-tests">
         <fail if="tests.failed" message="Tests failed. Report is at ${reports.dir}/test-results"/>
     </target>
 
