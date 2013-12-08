@@ -213,7 +213,7 @@
       <Scope>TyphoonAssembly</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_assembly.html</Path>
-    <Abstract>TyphoonAssembly provides a concise way to declare and encapsulate the architecture of an application ...</Abstract>
+    <Abstract>Provides a concise way to declare and encapsulate the architecture of an application in one or more c...</Abstract>
     <DeclaredIn>TyphoonAssembly.h</DeclaredIn>
   </Token>
   <Token>
@@ -1517,6 +1517,7 @@
     </TokenIdentifier>
     <Path>interface_typhoon_component_factory.html</Path>
     <Anchor>afbe6d5309ee739db59e4c5d35d2ab377</Anchor>
+    <Abstract>Returns the component matching the given key. </Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>
@@ -1907,6 +1908,7 @@
     </TokenIdentifier>
     <Path>interface_typhoon_component_factory.html</Path>
     <Anchor>afbe6d5309ee739db59e4c5d35d2ab377</Anchor>
+    <Abstract>Returns the component matching the given key. </Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>
@@ -5794,6 +5796,7 @@
     </TokenIdentifier>
     <Path>interface_typhoon_component_factory.html</Path>
     <Anchor>afbe6d5309ee739db59e4c5d35d2ab377</Anchor>
+    <Abstract>Returns the component matching the given key. </Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>
