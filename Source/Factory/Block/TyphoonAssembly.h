@@ -25,7 +25,7 @@
 * Besides declaring an application architecture at build-time, the assembly interface serves an additional purpose at runtime: we can
 * resolve components using the method name on the interface.
 *
-* Example:
+* ## Example:
 *
 *           MyAssemblyType* assembly = (MyAssemblyType*) [TyphoonComponentFactory defaultFactory];
 *           //Use the assembly interface instead of a 'magic string'
