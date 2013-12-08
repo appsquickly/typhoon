@@ -69,14 +69,10 @@ var hierarchy =
         [ "TyphoonPropertyInjectedByType", "interface_typhoon_property_injected_by_type.html", null ],
         [ "TyphoonPropertyInjectedWithStringRepresentation", "interface_typhoon_property_injected_with_string_representation.html", null ]
       ] ],
-      [ "<TyphoonInstanceRegister>", "protocol_typhoon_instance_register-p.html", [
-        [ "TyphoonKeyedStackInstanceRegister", "interface_typhoon_keyed_stack_instance_register.html", null ]
-      ] ],
       [ "TyphoonIntrospectionUtils", "interface_typhoon_introspection_utils.html", null ],
       [ "<TyphoonIntrospectiveNSObject>", "protocol_typhoon_introspective_n_s_object-p.html", [
         [ "NSObject(TyphoonIntrospectionUtils)", "category_n_s_object_07_typhoon_introspection_utils_08.html", null ]
       ] ],
-      [ "TyphoonKeyedStackInstanceRegister", "interface_typhoon_keyed_stack_instance_register.html", null ],
       [ "TyphoonNSURLTypeConverter", "interface_typhoon_n_s_u_r_l_type_converter.html", null ],
       [ "TyphoonParameterInjectedByReference", "interface_typhoon_parameter_injected_by_reference.html", null ],
       [ "TyphoonParameterInjectedWithObjectInstance", "interface_typhoon_parameter_injected_with_object_instance.html", null ],
@@ -109,9 +105,5 @@ var hierarchy =
       [ "TyphoonViewControllerNibResolver", "interface_typhoon_view_controller_nib_resolver.html", null ]
     ] ],
     [ "TyphoonAssistedFactoryBase(TyphoonFactoryMethodClosure)", "category_typhoon_assisted_factory_base_07_typhoon_factory_method_closure_08.html", null ],
-    [ "TyphoonComponentFactory(InstanceBuilder)", "category_typhoon_component_factory_07_instance_builder_08.html", null ],
-    [ "TyphoonDefinition(Infrastructure)", "category_typhoon_definition_07_infrastructure_08.html", null ],
-    [ "TyphoonDefinition(InstanceBuilder)", "category_typhoon_definition_07_instance_builder_08.html", null ],
-    [ "TyphoonInitializer(InstanceBuilder)", "category_typhoon_initializer_07_instance_builder_08.html", null ],
     [ "TyphoonRXMLElement(XmlComponentFactory)", "category_typhoon_r_x_m_l_element_07_xml_component_factory_08.html", null ]
 ];

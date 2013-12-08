@@ -155,16 +155,6 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a79221efd07d15d4043a042e6e41d1a00"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_component_factory.html#a79221efd07d15d4043a042e6e41d1a00">injectProperties:</a></td></tr>
 <tr class="memdesc:a79221efd07d15d4043a042e6e41d1a00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Injects the properties of an object.  <a href="#a79221efd07d15d4043a042e6e41d1a00">More...</a><br/></td></tr>
 <tr class="separator:a79221efd07d15d4043a042e6e41d1a00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac224378f99111a1a6d98dec6a268de9f"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_component_factory.html#ac224378f99111a1a6d98dec6a268de9f">buildInstanceWithDefinition:</a></td></tr>
-<tr class="separator:ac224378f99111a1a6d98dec6a268de9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a501106f369abf74cf014f64fdacb94b4"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_component_factory.html#a501106f369abf74cf014f64fdacb94b4">buildSingletonWithDefinition:</a></td></tr>
-<tr class="separator:a501106f369abf74cf014f64fdacb94b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae54c8bbfc1d20662d19e1a736fd48191"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_component_factory.html#ae54c8bbfc1d20662d19e1a736fd48191">injectPropertyDependenciesOn:withDefinition:</a></td></tr>
-<tr class="separator:ae54c8bbfc1d20662d19e1a736fd48191"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a075c43de552051c26e7d0abf723f992f"><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_component_factory.html#a075c43de552051c26e7d0abf723f992f">allDefinitionsForType:</a></td></tr>
-<tr class="separator:a075c43de552051c26e7d0abf723f992f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ff469d383d8a954cebeb923fd918119"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_component_factory.html#a3ff469d383d8a954cebeb923fd918119">definitionForType:</a></td></tr>
-<tr class="separator:a3ff469d383d8a954cebeb923fd918119"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is the base class for all component factories. </p>
@@ -253,24 +243,6 @@ Instance Methods</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a075c43de552051c26e7d0abf723f992f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (NSArray*) allDefinitionsForType: </td>
-          <td></td>
-          <td class="paramtype">(id)&#160;</td>
-          <td class="paramname"><em>classOrProtocol</em></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Provided by category <a class="el" href="category_typhoon_component_factory_07_instance_builder_08.html#a075c43de552051c26e7d0abf723f992f">TyphoonComponentFactory(InstanceBuilder)</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a0727001458325fd7d09b6df2e1252180"></a>
 <div class="memitem">
 <div class="memproto">
@@ -292,42 +264,6 @@ Instance Methods</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a class="anchor" id="ac224378f99111a1a6d98dec6a268de9f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (id) buildInstanceWithDefinition: </td>
-          <td></td>
-          <td class="paramtype">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td>
-          <td class="paramname"><em>definition</em></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Provided by category <a class="el" href="category_typhoon_component_factory_07_instance_builder_08.html#ac224378f99111a1a6d98dec6a268de9f">TyphoonComponentFactory(InstanceBuilder)</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a501106f369abf74cf014f64fdacb94b4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (id) buildSingletonWithDefinition: </td>
-          <td></td>
-          <td class="paramtype">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td>
-          <td class="paramname"><em>definition</em></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Provided by category <a class="el" href="category_typhoon_component_factory_07_instance_builder_08.html#a501106f369abf74cf014f64fdacb94b4">TyphoonComponentFactory(InstanceBuilder)</a>.</p>
 
 </div>
 </div>
@@ -384,24 +320,6 @@ Instance Methods</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3ff469d383d8a954cebeb923fd918119"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a>*) definitionForType: </td>
-          <td></td>
-          <td class="paramtype">(id)&#160;</td>
-          <td class="paramname"><em>classOrProtocol</em></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Provided by category <a class="el" href="category_typhoon_component_factory_07_instance_builder_08.html#a3ff469d383d8a954cebeb923fd918119">TyphoonComponentFactory(InstanceBuilder)</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a79221efd07d15d4043a042e6e41d1a00"></a>
 <div class="memitem">
 <div class="memproto">
@@ -417,34 +335,6 @@ Instance Methods</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Injects the properties of an object. </p>
-
-</div>
-</div>
-<a class="anchor" id="ae54c8bbfc1d20662d19e1a736fd48191"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (void) injectPropertyDependenciesOn: </td>
-          <td></td>
-          <td class="paramtype">(id&lt; <a class="el" href="protocol_typhoon_introspective_n_s_object-p.html">TyphoonIntrospectiveNSObject</a> &gt;)&#160;</td>
-          <td class="paramname"><em>instance</em></td>
-        </tr>
-        <tr>
-          <td class="paramkey">withDefinition:</td>
-          <td></td>
-          <td class="paramtype">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td>
-          <td class="paramname"><em>definition</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Provided by category <a class="el" href="category_typhoon_component_factory_07_instance_builder_08.html#ae54c8bbfc1d20662d19e1a736fd48191">TyphoonComponentFactory(InstanceBuilder)</a>.</p>
 
 </div>
 </div>
@@ -541,7 +431,7 @@ Instance Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a></li>
-    <li class="footer">Generated on Sun Dec 8 2013 14:46:54 for Typhoon by
+    <li class="footer">Generated on Sun Dec 8 2013 16:55:44 for Typhoon by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

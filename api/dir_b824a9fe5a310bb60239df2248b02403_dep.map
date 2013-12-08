@@ -1,8 +1,7 @@
 <map id="Factory" name="Factory">
-<area shape="rect" id="node2" href="dir_bfcdb984f641157934077fa7de49b134.html" title="Block" alt="" coords="379,63,451,111"/>
-<area shape="rect" id="node3" href="dir_1a31150892d584f0265453229a5fd0d4.html" title="InstanceBuilder" alt="" coords="232,63,355,111"/>
-<area shape="rect" id="node4" href="dir_e6e116bd95f76abeda245266b338f7cd.html" title="Provider" alt="" coords="133,63,208,111"/>
-<area shape="rect" id="node5" href="dir_1b11b5d0438f0668f4ade67e240a47ef.html" title="Xml" alt="" coords="37,63,109,111"/>
-<area shape="rect" id="clust2" href="dir_b824a9fe5a310bb60239df2248b02403.html" alt="" coords="27,52,560,121"/>
-<area shape="rect" id="clust1" href="dir_6a1ba647087cad8c4b535ad70c558114.html" title="Source" alt="" coords="16,16,571,132"/>
+<area shape="rect" id="node2" href="dir_bfcdb984f641157934077fa7de49b134.html" title="Block" alt="" coords="232,63,304,111"/>
+<area shape="rect" id="node3" href="dir_e6e116bd95f76abeda245266b338f7cd.html" title="Provider" alt="" coords="133,63,208,111"/>
+<area shape="rect" id="node4" href="dir_1b11b5d0438f0668f4ade67e240a47ef.html" title="Xml" alt="" coords="37,63,109,111"/>
+<area shape="rect" id="clust2" href="dir_b824a9fe5a310bb60239df2248b02403.html" alt="" coords="27,52,413,121"/>
+<area shape="rect" id="clust1" href="dir_6a1ba647087cad8c4b535ad70c558114.html" title="Source" alt="" coords="16,16,424,132"/>
 </map>

@@ -6,7 +6,6 @@ var searchData=
   ['withclass_3a',['withClass:',['../interface_typhoon_definition.html#a1dc966c67bccff5b5b88c9de0ae78689',1,'TyphoonDefinition']]],
   ['withclass_3ainitialization_3a',['withClass:initialization:',['../interface_typhoon_definition.html#abfbc8c21959e41a5fc4bb7282e2ff9e1',1,'TyphoonDefinition']]],
   ['withclass_3ainitialization_3aproperties_3a',['withClass:initialization:properties:',['../interface_typhoon_definition.html#aa9dcfc1049a83acb4490f2d014fed773',1,'TyphoonDefinition']]],
-  ['withclass_3akey_3a',['withClass:key:',['../category_typhoon_definition_07_infrastructure_08.html#a46db6a622707078156f7eb4796534dd9',1,'TyphoonDefinition(Infrastructure)::withClass:key:()'],['../interface_typhoon_definition.html#a46db6a622707078156f7eb4796534dd9',1,'TyphoonDefinition::withClass:key:()']]],
   ['withclass_3aproperties_3a',['withClass:properties:',['../interface_typhoon_definition.html#af465b133fd7f973be3275714d7f5bb50',1,'TyphoonDefinition']]],
   ['withname_3a',['withName:',['../interface_typhoon_bundle_resource.html#aaa604438fada1faf9566dcc0b7b6182c',1,'TyphoonBundleResource']]],
   ['withname_3ainbundle_3a',['withName:inBundle:',['../interface_typhoon_bundle_resource.html#a011c6f5a6fccb50b29bb8f33403b3076',1,'TyphoonBundleResource']]],

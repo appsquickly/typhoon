@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['addinjectedproperty_3a',['addInjectedProperty:',['../category_typhoon_definition_07_instance_builder_08.html#afe8abbd6066bd37f739c8bf429918cdb',1,'TyphoonDefinition(InstanceBuilder)::addInjectedProperty:()'],['../interface_typhoon_definition.html#afe8abbd6066bd37f739c8bf429918cdb',1,'TyphoonDefinition::addInjectedProperty:()']]],
   ['additemwithcomponentname_3a',['addItemWithComponentName:',['../interface_typhoon_argument_injected_as_collection.html#ac66c05f73ec196358f3ed0219a01549f',1,'TyphoonArgumentInjectedAsCollection']]],
   ['additemwithdefinition_3a',['addItemWithDefinition:',['../interface_typhoon_argument_injected_as_collection.html#a16189b81dfd94f686adb508246d83f29',1,'TyphoonArgumentInjectedAsCollection']]],
   ['additemwithtext_3arequiredtype_3a',['addItemWithText:requiredType:',['../interface_typhoon_argument_injected_as_collection.html#a7dfbde2cf94af819d6d1adbb37e84097',1,'TyphoonArgumentInjectedAsCollection']]],
@@ -9,13 +8,11 @@ var searchData=
   ['afterpropertiesset',['afterPropertiesSet',['../protocol_typhoon_property_injection_delegate-p.html#a2a19ed14a8e14be1ac0fc7e0618c0fd2',1,'TyphoonPropertyInjectionDelegate-p']]],
   ['afterpropertyinjection',['afterPropertyInjection',['../interface_typhoon_definition.html#acdedceeb37048b65edef42e4f9cb4ce1',1,'TyphoonDefinition']]],
   ['allcomponentsfortype_3a',['allComponentsForType:',['../interface_typhoon_component_factory.html#aa41105d05dfffb845a07eae77b4c079a',1,'TyphoonComponentFactory']]],
-  ['alldefinitionsfortype_3a',['allDefinitionsForType:',['../category_typhoon_component_factory_07_instance_builder_08.html#a075c43de552051c26e7d0abf723f992f',1,'TyphoonComponentFactory(InstanceBuilder)::allDefinitionsForType:()'],['../interface_typhoon_component_factory.html#a075c43de552051c26e7d0abf723f992f',1,'TyphoonComponentFactory::allDefinitionsForType:()']]],
   ['argumentindex',['argumentIndex',['../interface_typhoon_assisted_factory_parameter_injected_with_argument_index.html#a64b155f4d3bad0d095e10222f3ce8b9c',1,'TyphoonAssistedFactoryParameterInjectedWithArgumentIndex']]],
   ['arraylength',['arrayLength',['../interface_typhoon_type_descriptor.html#ad541d952528bcaa20827a8e3d87e23c0',1,'TyphoonTypeDescriptor']]],
   ['ascomponentdefinition',['asComponentDefinition',['../category_typhoon_r_x_m_l_element_07_xml_component_factory_08.html#a4d8762eef5841041e06ff5110936407a',1,'TyphoonRXMLElement(XmlComponentFactory)::asComponentDefinition()'],['../interface_typhoon_r_x_m_l_element.html#a4d8762eef5841041e06ff5110936407a',1,'TyphoonRXMLElement::asComponentDefinition()']]],
   ['asinitializer',['asInitializer',['../category_typhoon_r_x_m_l_element_07_xml_component_factory_08.html#ab9fdb93ba597b936325e4e8f2af02276',1,'TyphoonRXMLElement(XmlComponentFactory)::asInitializer()'],['../interface_typhoon_r_x_m_l_element.html#ab9fdb93ba597b936325e4e8f2af02276',1,'TyphoonRXMLElement::asInitializer()']]],
   ['asinjectedproperty',['asInjectedProperty',['../category_typhoon_r_x_m_l_element_07_xml_component_factory_08.html#a833cb8fef154df9171b544eaa9970e9e',1,'TyphoonRXMLElement(XmlComponentFactory)::asInjectedProperty()'],['../interface_typhoon_r_x_m_l_element.html#a833cb8fef154df9171b544eaa9970e9e',1,'TyphoonRXMLElement::asInjectedProperty()']]],
-  ['asinvocationfor_3a',['asInvocationFor:',['../category_typhoon_initializer_07_instance_builder_08.html#a9bf9f1b362d5bef8b29291464d634d6d',1,'TyphoonInitializer(InstanceBuilder)::asInvocationFor:()'],['../interface_typhoon_initializer.html#a9bf9f1b362d5bef8b29291464d634d6d',1,'TyphoonInitializer::asInvocationFor:()']]],
   ['assembly',['assembly',['../interface_typhoon_assembly.html#af53fcd1ea8b4e55dda2080a651814c6c',1,'TyphoonAssembly']]],
   ['asstring',['asString',['../protocol_typhoon_resource-p.html#ac116090936d1a74ef0a28772db44f210',1,'TyphoonResource-p']]],
   ['asstringwithencoding_3a',['asStringWithEncoding:',['../protocol_typhoon_resource-p.html#a5f924b2511acbe7880f226d76cd742f9',1,'TyphoonResource-p']]],
