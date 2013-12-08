@@ -27,9 +27,13 @@
 *
 * ## Example:
 *
-*           MyAssemblyType* assembly = (MyAssemblyType*) [TyphoonComponentFactory defaultFactory];
-*           //Use the assembly interface instead of a 'magic string'
-*           AnalyticsService* service = [assembly analyticsService];
+* @code
+*
+MyAssemblyType* assembly = (MyAssemblyType*) [TyphoonComponentFactory defaultFactory];
+//Use the assembly interface instead of a 'magic string'
+AnalyticsService* service = [assembly analyticsService];
+
+@endcode
 *
 * The TyphoonAssembly provides:
 *

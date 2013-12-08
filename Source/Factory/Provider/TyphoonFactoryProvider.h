@@ -23,53 +23,53 @@
 * provide implementation blocks or initializer descriptions for the body of the class methods. Most of the simplest cases should be covered
 * with no glue code, and the rest of them, with a couple of lines.
 *
-*  ## Example
+* ## Example
 *
-* Imagine you have defined this Payment class with two dependencies that should
-* be injected, and two parameters that must be provided at runtime.
+*  Imagine you have defined this Payment class with two dependencies that should
+*  be injected, and two parameters that must be provided at runtime.
 *
+* @code
+@interface Payment : NSObject
+
+- (instancetype)initWithCreditService:(id<CreditService>)creditService authService:(id<AuthService>)authService startDate:(NSDate *)date
+   amount:(NSUInteger)amount;
+
+@end
+@endcode
 *
-*        \@interface Payment : NSObject
+*  You also define a protocol for the factory of the Payment objects. The factory
+*  must declare the dependencies as readonly properties, and the factory methods
+*  should be the only ones existing.
 *
-*        - (instancetype)initWithCreditService:(id\<CreditService\>)creditService
-*                                  authService:(id\<AuthService\>)authService
-*                                    startDate:(NSDate *)date
-*                                        amount:(NSUInteger)amount;
+* @code
+@protocol PaymentFactory <NSObject>
+
+@property (nonatomic, strong, readonly) id<CreditService> creditService;
+@property (nonatomic, strong, readonly) id<AuthService> authService;
+
++ (Payment *)paymentWithStartDate:(NSDate *)startDate amount:(NSUInteger)amount;
+
+@end
+@endcode
 *
-*        \@end
+*  (It is very important that your properties, which will normally be the
+*  dependencies, are readonly. Do not worry, Typhoon will be able to inject their
+*  values just fine).
 *
+*  Then, in your assembly file, you define the PaymentFactory component using the
+*  TyphoonFactoryProvider as the following code:
 *
-* You also define a protocol for the factory of the Payment objects. The factory
-* must declare the dependencies as readonly properties, and the factory methods
-* should be the only ones existing.
-*
-*
-*        \@protocol PaymentFactory \<NSObject\>
-*
-*        \@property (nonatomic, strong, readonly) id\<CreditService\> creditService;
-*        \@property (nonatomic, strong, readonly) id\<AuthService\> authService;
-*
-*        + (Payment *)paymentWithStartDate:(NSDate *)startDate
-*                                   amount:(NSUInteger)amount;
-*
-*        \@end
-*
-*
-* (It is very important that your properties, which will normally be the
-* dependencies, are readonly. Do not worry, Typhoon will be able to inject their
-* values just fine).
-*
-* Then, in your assembly file, you define the PaymentFactory component using the
-* TyphoonFactoryProvider as the following code:
-*
-*
-*        - (id)paymentFactory {
-*          return [TyphoonFactoryProvider withProtocol:\@protocol(PaymentFactory) dependencies:^(TyphoonDefinition *definition) {
-*            [definition injectProperty:\@selector(creditService)];
-*            [definition injectProperty:\@selector(authService)];
-*          } returns:[Payment class]];
-*        }
-*
+* @code
+
+- (id)paymentFactory {
+  return [TyphoonFactoryProvider withProtocol:@protocol(PaymentFactory) dependencies:^(TyphoonDefinition *definition)
+  {
+    [definition injectProperty:@selector(creditService)];
+    [definition injectProperty:@selector(authService)];
+  } returns:[Payment class]];
+}
+
+@endcode
 *
 * The factory provider will create a new class during runtime to implement the
 * protocol, and create the implementation of the protocol method looking for
@@ -85,21 +85,23 @@
 * provide your own implementation, and make the call to the init method
 * yourself:
 *
+* @code
+
+- (id)paymentFactory {
+  return [TyphoonFactoryProvider withProtocol:@protocol(PaymentFactory) dependencies:^(TyphoonDefinition *definition) {
+    [definition injectProperty:@selector(creditService)];
+    [definition injectProperty:@selector(authService)];
+  } factories:^(TyphoonAssistedFactoryDefinition *definition) {
+    [definition factoryMethod:@selector(paymentWithStartDate:amount:) body:^id (id<PaymentFactory> factory, NSDate *startDate, NSUInteger amount) {
+      return [[Payment alloc] initWithCreditService:factory.creditService authService:factory.authService startDate:startDate amount:amount];
+    }];
+  }];
+}
+
+@endcode
 *
-*        - (id)paymentFactory {
-*          return [TyphoonFactoryProvider withProtocol:\@protocol(PaymentFactory) dependencies:^(TyphoonDefinition *definition) {
-*            [definition injectProperty:\@selector(creditService)];
-*            [definition injectProperty:\@selector(authService)];
-*          } factories:^(TyphoonAssistedFactoryDefinition *definition) {
-*            [definition factoryMethod:\@selector(paymentWithStartDate:amount:) body:^id (id\<PaymentFactory\> factory, NSDate *startDate, NSUInteger amount) {
-*              return [[Payment alloc] initWithCreditService:factory.creditService authService:factory.authService startDate:startDate amount:amount];
-*            }];
-*          }];
-*        }
-*
-*
-* For the factories block you must provide one body block for each class method
-* of your factory protocol. The block used as the body receives the factory
+*  For the factories block you must provide one body block for each class method
+*  of your factory protocol. The block used as the body receives the factory
 * itself as the first argument, so you can use the factory properties, and then
 * the rest of the class method arguments in the second and following positions.
 *
@@ -110,37 +112,46 @@
 * shorter version of the method. For example the equivalent shorter version for
 * the above definition will be the following one:
 *
-*
-*        - (id)paymentFactory {
-*          return [TyphoonFactoryProvider withProtocol:\@protocol(PaymentFactory) dependencies:^(TyphoonDefinition *definition) {
-*            [definition injectProperty:\@selector(creditService)];
-*            [definition injectProperty:\@selector(authService)];
-*          } factory^id (id\<PaymentFactory\> factory, NSDate *startDate, NSUInteger amount) {
-*            return [[Payment alloc] initWithCreditService:factory.creditService authService:factory.authService startDate:startDate amount:amount];
-*          }];
-*        }
-*
+* @code
+
+- (id)paymentFactory {
+  return [TyphoonFactoryProvider withProtocol:@protocol(PaymentFactory) dependencies:^(TyphoonDefinition *definition)
+  {
+    [definition injectProperty:@selector(creditService)];
+    [definition injectProperty:@selector(authService)];
+  } factory^id (id<PaymentFactory> factory, NSDate *startDate, NSUInteger amount)
+  {
+    return [[Payment alloc] initWithCreditService:factory.creditService authService:factory.authService startDate:startDate amount:amount];
+  }];
+}
+
+@endcode
 *
 * There is an alternative way to define the factory methods, but since it
 * involves writing a lot more code than the blocks used above, it is not
 * recommended. For the example above the code will be the following:
 *
-*
-*        - (id)paymentFactory {
-*          return [TyphoonFactoryProvider withProtocol:\@protocol(PaymentFactory) dependencies:^(TyphoonDefinition *definition) {
-*            [definition injectProperty:\@selector(creditService)];
-*            [definition injectProperty:\@selector(authService)];
-*          } factories:^(TyphoonAssistedFactoryDefinition *definition) {
-*            [definition factoryMethod:\@selector(paymentWithStartDate:amount:) returns:[Payment class]
-*                    initialization:^(TyphoonAssistedFactoryMethodInitializer *initializer) {
-*               [initializer setSelector:\@selector(initWithCreditService:authService:startDate:amount:)];
-*               [initializer injectWithProperty:\@selector(creditService)];
-*               [initializer injectWithProperty:\@selector(authService)];
-*               [initializer injectWithArgumentNamed:\@"startDate"];
-*               [initializer injectWithArgumentNamed:\@"amount"];
-*            }];
-*          }];
-*        }
+* @code
+
+- (id)paymentFactory
+{
+  return [TyphoonFactoryProvider withProtocol:@protocol(PaymentFactory) dependencies:^(TyphoonDefinition *definition)
+  {
+    [definition injectProperty:@selector(creditService)];
+    [definition injectProperty:@selector(authService)];
+  } factories:^(TyphoonAssistedFactoryDefinition *definition)
+  {
+    [definition factoryMethod:@selector(paymentWithStartDate:amount:) returns:[Payment class]
+            initialization:^(TyphoonAssistedFactoryMethodInitializer *initializer) {
+        [initializer setSelector:@selector(initWithCreditService:authService:startDate:amount:)];
+        [initializer injectWithProperty:@selector(creditService)];
+        [initializer injectWithProperty:@selector(authService)];
+        [initializer injectWithArgumentNamed:@"startDate"];
+        [initializer injectWithArgumentNamed:@"amount"];
+    }];
+  }];
+}
+@endcode
 *
 *
 * You can also use `injectWithArgumentAtIndex:` if you prefer to refer to the
