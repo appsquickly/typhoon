@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="22d52e92-a55f-43ce-a474-e0e71d4c307c" name="Default" comment="" />
+    <ignored path="Typhoon.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos" />
+  <component name="FavoritesManager">
+    <favorites_list name="Typhoon" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="TyphoonAssembly.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Factory/Block/TyphoonAssembly.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="16" selection-start="811" selection-end="811" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="2610">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TyphoonFactoryProvider.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Factory/Provider/TyphoonFactoryProvider.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="16" selection-start="513" selection-end="513" vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="630">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TyphoonFactoryProvider.h" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Source/Factory/Provider/TyphoonFactoryProvider.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="80" column="1" selection-start="3219" selection-end="3219" vertical-scroll-proportion="0.0" vertical-offset="1053" max-vertical-offset="3105">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TyphoonAssembly.h" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/Pods/Headers/Typhoon/TyphoonAssembly.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="0" selection-start="1106" selection-end="1106" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="960">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Doxyfile" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Doxyfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1076" column="79" selection-start="46129" selection-end="46129" vertical-scroll-proportion="0.668" vertical-offset="15806" max-vertical-offset="34575">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="typhoon-docs.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/typhoon-docs.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="177" column="24" selection-start="2967" selection-end="2967" vertical-scroll-proportion="0.0" vertical-offset="2452" max-vertical-offset="20535">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Source/Factory/TyphoonDefinitionRegisterer.h" />
+        <option value="$PROJECT_DIR$/Source/Factory/Block/TyphoonBlockComponentFactory.h" />
+        <option value="$PROJECT_DIR$/Source/Factory/Block/TyphoonCollaboratingAssemblyProxy.h" />
+        <option value="$PROJECT_DIR$/Source/Factory/Xml/TyphoonXmlComponentFactory.h" />
+        <option value="$PROJECT_DIR$/Source/ios/Factory/Config/Resolver/TyphoonViewControllerNibResolver.h" />
+        <option value="$PROJECT_DIR$/Source/Test/TyphoonTestUtils.h" />
+        <option value="$PROJECT_DIR$/Source/Test/Patcher/TyphoonPatcher.h" />
+        <option value="$PROJECT_DIR$/build.xml" />
+        <option value="$PROJECT_DIR$/Source/Factory/TyphoonComponentFactory.h" />
+        <option value="$PROJECT_DIR$/Scripts/customdoxygen.css" />
+        <option value="$PROJECT_DIR$/Tests/Pods/Headers/Typhoon/TyphoonAssembly.h" />
+        <option value="$PROJECT_DIR$/Tests/Pods/Headers/Typhoon/TyphoonFactoryProvider.h" />
+        <option value="$PROJECT_DIR$/Source/Factory/Provider/TyphoonFactoryProvider.h" />
+        <option value="$PROJECT_DIR$/Scripts/typhoon-docs.css" />
+        <option value="$PROJECT_DIR$/Doxyfile" />
+        <option value="$PROJECT_DIR$/Scripts/navtree.css" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="22" />
+    <option name="width" value="1436" />
+    <option name="height" value="878" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="Cidr.FilesView" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Typhoon" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Typhoon" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Source" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Typhoon" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Source" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Test" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Typhoon" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Source" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Test" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Patcher" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Typhoon" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Source" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Factory" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Typhoon" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Source" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Factory" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Provider" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tests" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tests" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Utils" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tests" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Configuration" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Pods" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Pods" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Products" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Cidr.FilesView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Typhoon" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Typhoon" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Typhoon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Typhoon" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Typhoon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="139" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="141" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="141" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="151" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="939" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="940" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="146" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="143" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FullScreen" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+  </component>
+  <component name="RunManager" selected="Application.Typhoon iOS">
+    <configuration default="true" type="AppleRunConfiguration" factoryName="Application" PROJECT_NAME="Typhoon" TARGET_NAME="Typhoon-OSX" CONFIG_NAME="Debug" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" PROJECT_NAME="Tests" TARGET_NAME="iOS Tests (Cocoapods)" CONFIG_NAME="Debug" PASS_PARENT_ENVS="FALSE" TEST_MODE="SUITE_TEST">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="OCGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS="FALSE" TEST_MODE="SUITE_TEST">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Pods-iOS Tests (Cocoapods)-OCHamcrest" type="AppleRunConfiguration" factoryName="Application" SCHEME_NAME="Pods-iOS Tests (Cocoapods)-OCHamcrest" PROJECT_NAME="Pods" TARGET_NAME="Pods-iOS Tests (Cocoapods)-OCHamcrest" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Pods-iOS Tests (Cocoapods)-OCMockito" type="AppleRunConfiguration" factoryName="Application" SCHEME_NAME="Pods-iOS Tests (Cocoapods)-OCMockito" PROJECT_NAME="Pods" TARGET_NAME="Pods-iOS Tests (Cocoapods)-OCMockito" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Pods-iOS Tests (Cocoapods)-Typhoon" type="AppleRunConfiguration" factoryName="Application" SCHEME_NAME="Pods-iOS Tests (Cocoapods)-Typhoon" PROJECT_NAME="Pods" TARGET_NAME="Pods-iOS Tests (Cocoapods)-Typhoon" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Pods-iOS Tests (Cocoapods)" type="AppleRunConfiguration" factoryName="Application" SCHEME_NAME="Pods-iOS Tests (Cocoapods)" PROJECT_NAME="Pods" TARGET_NAME="Pods-iOS Tests (Cocoapods)" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Pods-ios-OCHamcrest" type="AppleRunConfiguration" factoryName="Application" SCHEME_NAME="Pods-ios-OCHamcrest" PROJECT_NAME="Pods" TARGET_NAME="Pods-ios-OCHamcrest" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Pods-ios-OCMockito" type="AppleRunConfiguration" factoryName="Application" SCHEME_NAME="Pods-ios-OCMockito" PROJECT_NAME="Pods" TARGET_NAME="Pods-ios-OCMockito" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Pods-ios" type="AppleRunConfiguration" factoryName="Application" SCHEME_NAME="Pods-ios" PROJECT_NAME="Pods" TARGET_NAME="Pods-ios" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Pods-osx-OCHamcrest" type="AppleRunConfiguration" factoryName="Application" SCHEME_NAME="Pods-osx-OCHamcrest" PROJECT_NAME="Pods" TARGET_NAME="Pods-osx-OCHamcrest" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Pods-osx-OCMockito" type="AppleRunConfiguration" factoryName="Application" SCHEME_NAME="Pods-osx-OCMockito" PROJECT_NAME="Pods" TARGET_NAME="Pods-osx-OCMockito" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Pods-osx-Typhoon" type="AppleRunConfiguration" factoryName="Application" SCHEME_NAME="Pods-osx-Typhoon" PROJECT_NAME="Pods" TARGET_NAME="Pods-osx-Typhoon" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Pods-osx" type="AppleRunConfiguration" factoryName="Application" SCHEME_NAME="Pods-osx" PROJECT_NAME="Pods" TARGET_NAME="Pods-osx" CONFIG_NAME="Debug" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <method />
+    </configuration>
+    <list size="17">
+      <item index="0" class="java.lang.String" itemvalue="Application.Typhoon iOS" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Typhoon OS X" />
+      <item index="2" class="java.lang.String" itemvalue="XCTest/Kiwi.iOS Tests (Cocoapods)" />
+      <item index="3" class="java.lang.String" itemvalue="XCTest/Kiwi.iOS Tests (Static Library)" />
+      <item index="4" class="java.lang.String" itemvalue="XCTest/Kiwi.OS X Tests (Cocoapods)" />
+      <item index="5" class="java.lang.String" itemvalue="Application.pod update" />
+      <item index="6" class="java.lang.String" itemvalue="Application.Pods-iOS Tests (Cocoapods)-OCHamcrest" />
+      <item index="7" class="java.lang.String" itemvalue="Application.Pods-iOS Tests (Cocoapods)-OCMockito" />
+      <item index="8" class="java.lang.String" itemvalue="Application.Pods-iOS Tests (Cocoapods)-Typhoon" />
+      <item index="9" class="java.lang.String" itemvalue="Application.Pods-iOS Tests (Cocoapods)" />
+      <item index="10" class="java.lang.String" itemvalue="Application.Pods-ios-OCHamcrest" />
+      <item index="11" class="java.lang.String" itemvalue="Application.Pods-ios-OCMockito" />
+      <item index="12" class="java.lang.String" itemvalue="Application.Pods-ios" />
+      <item index="13" class="java.lang.String" itemvalue="Application.Pods-osx-OCHamcrest" />
+      <item index="14" class="java.lang.String" itemvalue="Application.Pods-osx-OCMockito" />
+      <item index="15" class="java.lang.String" itemvalue="Application.Pods-osx-Typhoon" />
+      <item index="16" class="java.lang.String" itemvalue="Application.Pods-osx" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="22d52e92-a55f-43ce-a474-e0e71d4c307c" name="Default" comment="" />
+      <created>1386297662776</created>
+      <updated>1386297662776</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="22" width="1436" height="878" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32908162" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24982308" sideWeight="0.67175573" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32824427" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41326532" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Source/Factory/Xml/TyphoonXmlComponentFactory.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="3" selection-start="499" selection-end="499" vertical-scroll-proportion="0.375" vertical-offset="108" max-vertical-offset="540" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Factory/Block/TyphoonCollaboratingAssemblyProxy.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="3" selection-start="461" selection-end="461" vertical-scroll-proportion="0.4097222" vertical-offset="48" max-vertical-offset="480" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Factory/Block/TyphoonBlockComponentFactory.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="3" selection-start="523" selection-end="523" vertical-scroll-proportion="0.33333334" vertical-offset="141" max-vertical-offset="585" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Factory/TyphoonDefinitionRegisterer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="2" selection-start="519" selection-end="519" vertical-scroll-proportion="0.5138889" vertical-offset="48" max-vertical-offset="495" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Factory/TyphoonComponentFactoryAware.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="3" selection-start="460" selection-end="460" vertical-scroll-proportion="0.44444445" vertical-offset="18" max-vertical-offset="450" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Factory/TyphoonComponentFactory.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="102" column="0" selection-start="3069" selection-end="3069" vertical-scroll-proportion="3.1416838" vertical-offset="0" max-vertical-offset="1845">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Factory/TyphoonComponentFactory.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="16" selection-start="887" selection-end="887" vertical-scroll-proportion="0.0" vertical-offset="281" max-vertical-offset="4395">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="292" column="62" selection-start="13257" selection-end="13257" vertical-scroll-proportion="0.3059548" vertical-offset="4231" max-vertical-offset="5505">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Factory/Block/TyphoonAssembly.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="16" selection-start="811" selection-end="811" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="2610">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Factory/Provider/TyphoonFactoryProvider.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="16" selection-start="513" selection-end="513" vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="630">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/Pods/Headers/Typhoon/TyphoonFactoryProvider.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="37" selection-start="2071" selection-end="2071" vertical-scroll-proportion="0.26078027" vertical-offset="713" max-vertical-offset="3105">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/Pods/Headers/Typhoon/TyphoonAssembly.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="1106" selection-end="1106" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="960">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Source/Factory/Provider/TyphoonFactoryProvider.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="1" selection-start="3219" selection-end="3219" vertical-scroll-proportion="0.0" vertical-offset="1053" max-vertical-offset="3105">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/typhoon-docs.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="177" column="24" selection-start="2967" selection-end="2967" vertical-scroll-proportion="0.0" vertical-offset="2452" max-vertical-offset="20535">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Doxyfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1076" column="79" selection-start="46129" selection-end="46129" vertical-scroll-proportion="0.668" vertical-offset="15806" max-vertical-offset="34575">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+
