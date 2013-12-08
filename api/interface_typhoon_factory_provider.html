@@ -151,7 +151,8 @@ Class Methods</h2></td></tr>
 <p>In the dependencies block you can use any <code>injectProperty:</code> method that you will use for your normal definitions. It is a standard TyphoonDefinitionBlock that get passed directly to the <a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> constructor used internally.</p>
 <p>Sometimes you might need to customize which init method gets used in the factory method, since the heuristic might not work for your classes, or you cannot modify the return type method names. In those cases, you can always provide your own implementation, and make the call to the init method yourself:</p>
 <div class="fragment"><div class="line">- (id)paymentFactory {</div>
-<div class="line">  <span class="keywordflow">return</span> [<a class="code" href="interface_typhoon_factory_provider.html">TyphoonFactoryProvider</a> withProtocol:<span class="keyword">@protocol</span>(PaymentFactory) dependencies:^(<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a> *definition) {</div>
+<div class="line">  <span class="keywordflow">return</span> [<a class="code" href="interface_typhoon_factory_provider.html">TyphoonFactoryProvider</a> withProtocol:<span class="keyword">@protocol</span>(PaymentFactory) dependencies:^(<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a> *definition)</div>
+<div class="line">  {</div>
 <div class="line">    [definition injectProperty:<span class="keyword">@selector</span>(creditService)];</div>
 <div class="line">    [definition injectProperty:<span class="keyword">@selector</span>(authService)];</div>
 <div class="line">  } factories:^(<a class="code" href="interface_typhoon_assisted_factory_definition.html">TyphoonAssistedFactoryDefinition</a> *definition) {</div>
@@ -327,7 +328,7 @@ Class Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="interface_typhoon_factory_provider.html">TyphoonFactoryProvider</a></li>
-    <li class="footer">Generated on Sun Dec 8 2013 20:51:52 for Typhoon by
+    <li class="footer">Generated on Sun Dec 8 2013 21:01:18 for Typhoon by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>
