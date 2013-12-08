@@ -176,10 +176,9 @@ pre.fragment {
         margin: 4px 8px 4px 2px;
         overflow: auto;
         word-wrap: break-word;
-        font-size:  11px;
+        font-size:  12px;
         line-height: 125%;
 	    	font-family: Courier,Consolas,monospace;
-        font-size: 105%;
 }
 
 div.fragment {
