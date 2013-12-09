@@ -193,11 +193,11 @@ And then:
 
 * <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> - <a href="mailto:jasper@appsquick.ly?Subject=Typhoon">jasper@appsquick.ly</a>
 * <a href="https://github.com/rhgills">Robert Gilliam</a> - <a href="mailto:robert@robertgilliam.org?Subject=Typhoon">robert@robertgilliam.org</a>
+* <a href="https://github.com/drodriguez">Daniel Rodríguez Troitiño</a> : Factory Providers.
+* <a href="https://github.com/eriksundin">Erik Sundin</a> : Initilizer collections, infrastructure components for post-processors.  
          
 ### With contributions from: 
 
-* <a href="https://github.com/drodriguez">Daniel Rodríguez Troitiño</a> : Factory Providers.
-* <a href="https://github.com/eriksundin">Erik Sundin</a> : Initilizer collections, infrastructure components for post-processors.  
 * <a href="https://github.com/cesteban">César Estébanez Tascón</a> : Circular Dependencies fixes. 
 * <a href="https://github.com/BrynCooke">Bryn Cooke</a> : Late injections & story board integration. 
 * <a href="http://www.linkedin.com/in/jeffreydroberts">Jeffrey Roberts</a>, Mobile Software Engineer at 
