@@ -31,7 +31,7 @@ h2.groupheader {
     color: #48494b;
     font-size: 150%;
     font-weight: normal;
-    margin-top: 1.75em;
+    margin-top: 3.0em;
     padding-top: 8px;
     padding-bottom: 4px;
     width: 100%;
@@ -433,6 +433,7 @@ hr.footer {
 table.memberdecls {
     border-spacing: 0px;
     padding: 0px;
+    margin-bottom: 3.0em;
 }
 
 .memberdecls td, .fieldtable tr {
