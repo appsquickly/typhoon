@@ -101,7 +101,7 @@
 <span class="lineNum">      43 </span>            : /**
 <span class="lineNum">      44 </span>            : * Say if the factory has been loaded.
 <span class="lineNum">      45 </span>            : */
-<span class="lineNum">      46 </span><span class="lineCov">       1905 : @property(nonatomic, assign, getter = isLoaded) BOOL loaded;</span>
+<span class="lineNum">      46 </span><span class="lineCov">       1907 : @property(nonatomic, assign, getter = isLoaded) BOOL loaded;</span>
 <span class="lineNum">      47 </span>            : 
 <span class="lineNum">      48 </span>            : /**
 <span class="lineNum">      49 </span>            :  * The attached factory post processors.
@@ -113,11 +113,11 @@
 <span class="lineNum">      55 </span>            : * from the Typhoon another class after the container has been set up.
 <span class="lineNum">      56 </span>            : *
 <span class="lineNum">      57 </span>            : * A more desirable approach, if possible - especially for a component that is also registered with the container is to use
-<span class="lineNum">      58 </span>            : * &lt;TyphoonComponentFactoryAware&gt;, which injects the component factory as a dependency on the class that needs it. This latter approach
+<span class="lineNum">      58 </span>            : * TyphoonComponentFactoryAware, which injects the component factory as a dependency on the class that needs it. This latter approach
 <span class="lineNum">      59 </span>            : * simplifies unit testing, in that no special approach to patching out the classes collaborators is required.
 <span class="lineNum">      60 </span>            : *
-<span class="lineNum">      61 </span>            : * @see makeDefault.
-<span class="lineNum">      62 </span>            : * @see &lt;TyphoonComponentFactoryAware&gt;
+<span class="lineNum">      61 </span>            : * @see [TyphoonComponentFactory makeDefault].
+<span class="lineNum">      62 </span>            : * @see TyphoonComponentFactoryAware
 <span class="lineNum">      63 </span>            : *
 <span class="lineNum">      64 </span>            : */
 <span class="lineNum">      65 </span>            : + (id)defaultFactory;
