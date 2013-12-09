@@ -1899,6 +1899,7 @@
       <Scope>TyphoonComponentFactoryAware</Scope>
     </TokenIdentifier>
     <Path>protocol_typhoon_component_factory_aware-p.html</Path>
+    <Abstract>This protocol indicates that a component wishes to be aware of the TyphoonComponentFactory in order t...</Abstract>
     <DeclaredIn>TyphoonComponentFactoryAware.h</DeclaredIn>
   </Token>
   <Token>
@@ -1909,7 +1910,8 @@
       <Scope>TyphoonComponentFactoryAware-p</Scope>
     </TokenIdentifier>
     <Path>protocol_typhoon_component_factory_aware-p.html</Path>
-    <Anchor>afa6e7e3634abc8f4e48bc69f37be629f</Anchor>
+    <Anchor>a87cc9f5101b8b32adbc70b5dd5be7f8e</Anchor>
+    <Abstract>Accepts the TyphoonComponentFactory via setter-injection, allowing the factory to be stored to a prop...</Abstract>
     <DeclaredIn>TyphoonComponentFactoryAware.h</DeclaredIn>
   </Token>
   <Token>
@@ -2186,7 +2188,7 @@
       <Scope>TyphoonFactoryProvider</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_factory_provider.html</Path>
-    <Abstract>Provides a factory that combines the convenience method arguments with the assembly-supplied dependen...</Abstract>
+    <Abstract>Provides a factory that combines the convenience of method arguments with assembly-supplied dependenc...</Abstract>
     <DeclaredIn>TyphoonFactoryProvider.h</DeclaredIn>
   </Token>
   <Token>

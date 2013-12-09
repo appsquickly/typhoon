@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('interface_typhoon_factory_provider.htm
 </div><!--header-->
 <div class="contents">
 
-<p>Provides a factory that combines the convenience method arguments with the assembly-supplied dependencies to construct objects.  
+<p>Provides a factory that combines the convenience of method arguments with assembly-supplied dependencies to construct objects.  
  <a href="interface_typhoon_factory_provider.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for TyphoonFactoryProvider:</div>
@@ -119,7 +119,7 @@ Class Methods</h2></td></tr>
 <tr class="separator:a6ceab7ef446241a2a0d0aa5db842d5a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Provides a factory that combines the convenience method arguments with the assembly-supplied dependencies to construct objects. </p>
+<div class="textblock"><p>Provides a factory that combines the convenience of method arguments with assembly-supplied dependencies to construct objects. </p>
 <p>To create a factory you must define a protocol for the factory, wire its dependencies (defined as readonly properties), and, sometimes, provide implementation blocks or initializer descriptions for the body of the class methods. Most of the simplest cases should be covered with no glue code, and the rest of them, with a couple of lines.</p>
 <h2>Example</h2>
 <p>Imagine you have defined this Payment class with two dependencies that should be injected, and two parameters that must be provided at runtime.</p>
@@ -139,7 +139,7 @@ Class Methods</h2></td></tr>
 <div class="line"></div>
 <div class="line"><span class="keyword">@end</span></div>
 </div><!-- fragment --><p>(It is very important that your properties, which will normally be the dependencies, are readonly. Do not worry, Typhoon will be able to inject their values just fine).</p>
-<p>Then, in your assembly file, you define the PaymentFactory component using the <a class="el" href="interface_typhoon_factory_provider.html" title="Provides a factory that combines the convenience method arguments with the assembly-supplied dependen...">TyphoonFactoryProvider</a> as the following code:</p>
+<p>Then, in your assembly file, you define the PaymentFactory component using the <a class="el" href="interface_typhoon_factory_provider.html" title="Provides a factory that combines the convenience of method arguments with assembly-supplied dependenc...">TyphoonFactoryProvider</a> as the following code:</p>
 <div class="fragment"><div class="line">- (id)paymentFactory {</div>
 <div class="line">  <span class="keywordflow">return</span> [<a class="code" href="interface_typhoon_factory_provider.html">TyphoonFactoryProvider</a> withProtocol:<span class="keyword">@protocol</span>(PaymentFactory) dependencies:^(<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a> *definition)</div>
 <div class="line">  {</div>
@@ -330,7 +330,7 @@ Class Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="interface_typhoon_factory_provider.html">TyphoonFactoryProvider</a></li>
-    <li class="footer">Generated on Mon Dec 9 2013 21:51:19 for Typhoon by
+    <li class="footer">Generated on Mon Dec 9 2013 22:34:15 for Typhoon by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

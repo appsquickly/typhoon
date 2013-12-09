@@ -92,9 +92,12 @@ $(document).ready(function(){initNavTree('protocol_typhoon_component_factory_awa
 <a href="#pub-methods">Instance Methods</a> &#124;
 <a href="protocol_typhoon_component_factory_aware-p-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">&lt;TyphoonComponentFactoryAware&gt; Protocol Reference</div>  </div>
+<div class="title">&lt;TyphoonComponentFactoryAware&gt; Protocol Reference<div class="ingroups"><a class="el" href="group___factory.html">Factory</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This protocol indicates that a component wishes to be aware of the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> in order to resolve another component.  
+ <a href="protocol_typhoon_component_factory_aware-p.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for &lt;TyphoonComponentFactoryAware&gt;:</div>
 <div class="dyncontent">
@@ -105,24 +108,48 @@ Inheritance diagram for &lt;TyphoonComponentFactoryAware&gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:afa6e7e3634abc8f4e48bc69f37be629f"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_typhoon_component_factory_aware-p.html#afa6e7e3634abc8f4e48bc69f37be629f">setFactory:</a></td></tr>
-<tr class="separator:afa6e7e3634abc8f4e48bc69f37be629f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87cc9f5101b8b32adbc70b5dd5be7f8e"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_typhoon_component_factory_aware-p.html#a87cc9f5101b8b32adbc70b5dd5be7f8e">setFactory:</a></td></tr>
+<tr class="memdesc:a87cc9f5101b8b32adbc70b5dd5be7f8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accepts the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> via setter-injection, allowing the factory to be stored to a property or ivar.  <a href="#a87cc9f5101b8b32adbc70b5dd5be7f8e">More...</a><br/></td></tr>
+<tr class="separator:a87cc9f5101b8b32adbc70b5dd5be7f8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Method Documentation</h2>
-<a class="anchor" id="afa6e7e3634abc8f4e48bc69f37be629f"></a>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This protocol indicates that a component wishes to be aware of the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> in order to resolve another component. </p>
+<p>Typically we'd want to inject all the dependencies, however there are some cases where its desirable to load a component from the factory at runtime. One example is view controller transitions where a given view controller has:</p>
+<ul>
+<li>All of the dependencies for its main use-case injected</li>
+<li>Looks up the view controller for a transition from the container. This allows using prototype scope to load one object-graph at a time, thus making efficient use of memory. </li>
+</ul>
+</div><h2 class="groupheader">Method Documentation</h2>
+<a class="anchor" id="a87cc9f5101b8b32adbc70b5dd5be7f8e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">- (void) setFactory: </td>
           <td></td>
-          <td class="paramtype">(<a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> *)&#160;</td>
+          <td class="paramtype">(id)&#160;</td>
           <td class="paramname"><em>theFactory</em></td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>Accepts the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> via setter-injection, allowing the factory to be stored to a property or ivar. </p>
+<p>Note that this method contract uses the type id, which if you're using a block-style assembly allows setting the factory to the <a class="el" href="interface_typhoon_assembly.html" title="Provides a concise way to declare and encapsulate the architecture of an application in one or more c...">TyphoonAssembly</a> sub-class itself without casting. The underlying type is <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a>.</p>
+<h2>Examples:</h2>
+<div class="fragment"><div class="line"><span class="comment">//Using the TyphoonComponentFactory interface</span></div>
+<div class="line">- (void)setFactory:(<a class="code" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a>*)factory</div>
+<div class="line">{</div>
+<div class="line">    _factory = factory;</div>
+<div class="line">    MyAnalyticsService* service = [factory componentForType:[MyAnalyticsService <span class="keyword">class</span>];</div>
+<div class="line">}</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">//Using the an Assembly interface</span></div>
+<div class="line">- (void)setFactory:(MyAssemblyType*)assembly</div>
+<div class="line">{</div>
+<div class="line">    _assembly = assembly;</div>
+<div class="line">    MyAnalyticsService* service = [assembly analyticsService];</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->
@@ -132,7 +159,7 @@ Instance Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="protocol_typhoon_component_factory_aware-p.html">TyphoonComponentFactoryAware</a></li>
-    <li class="footer">Generated on Mon Dec 9 2013 21:51:19 for Typhoon by
+    <li class="footer">Generated on Mon Dec 9 2013 22:34:15 for Typhoon by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

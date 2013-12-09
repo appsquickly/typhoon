@@ -36,6 +36,9 @@ var group___factory =
       [ "registry", "interface_typhoon_component_factory.html#a70222ded50004270fd8a7150e773c7e8", null ],
       [ "unload", "interface_typhoon_component_factory.html#a810e359a13f87d375088a78759227692", null ]
     ] ],
+    [ "<TyphoonComponentFactoryAware>", "protocol_typhoon_component_factory_aware-p.html", [
+      [ "setFactory:", "protocol_typhoon_component_factory_aware-p.html#a87cc9f5101b8b32adbc70b5dd5be7f8e", null ]
+    ] ],
     [ "TyphoonXmlComponentFactory", "interface_typhoon_xml_component_factory.html", [
       [ "initWithConfigFileName:", "interface_typhoon_xml_component_factory.html#a1350cb588266b70c29db7f510fa3df8d", null ],
       [ "initWithConfigFileNames:", "interface_typhoon_xml_component_factory.html#a027c0fbb73a3a9dea085c68d61bc7359", null ]

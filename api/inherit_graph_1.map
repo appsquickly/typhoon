@@ -18,7 +18,7 @@
 <area shape="rect" id="node25" href="$protocol_typhoon_collection_value-p.html" title="\&lt;TyphoonCollectionValue\&gt;" alt="" coords="185,1468,383,1495"/>
 <area shape="rect" id="node26" href="$interface_typhoon_type_converted_collection_value.html" title="TyphoonTypeConvertedCollection\lValue" alt="" coords="467,1492,711,1533"/>
 <area shape="rect" id="node27" href="$interface_typhoon_component_factory.html" title="This is the base class for all component factories. " alt="" coords="182,1570,386,1596"/>
-<area shape="rect" id="node30" href="$protocol_typhoon_component_factory_aware-p.html" title="\&lt;TyphoonComponentFactory\lAware\&gt;" alt="" coords="177,1621,391,1662"/>
+<area shape="rect" id="node30" href="$protocol_typhoon_component_factory_aware-p.html" title="This protocol indicates that a component wishes to be aware of the TyphoonComponentFactory in order t..." alt="" coords="177,1621,391,1662"/>
 <area shape="rect" id="node31" href="$protocol_typhoon_component_factory_post_processor-p.html" title="Allows for custom modification of a component factory&#39;s definitions. " alt="" coords="177,1738,391,1780"/>
 <area shape="rect" id="node32" href="$interface_typhoon_patcher.html" title="TyphoonPatcher is a TyphoonComponentFactoryPostProcessor that allows patching out one or more definit..." alt="" coords="524,1687,655,1714"/>
 <area shape="rect" id="node33" href="$interface_typhoon_property_placeholder_configurer.html" title="TyphoonPropertyPlaceholder\lConfigurer" alt="" coords="484,1760,695,1801"/>
@@ -27,7 +27,7 @@
 <area shape="rect" id="node36" href="$interface_typhoon_parameter_injected_with_string_representation.html" title="Represents a parameter injected with a string representation. " alt="" coords="489,49,690,90"/>
 <area shape="rect" id="node37" href="$interface_typhoon_property_injected_with_string_representation.html" title="Represents a property injected with a string representation. " alt="" coords="479,114,699,156"/>
 <area shape="rect" id="node38" href="$interface_typhoon_definition.html" title="TyphoonDefinition" alt="" coords="214,1906,354,1932"/>
-<area shape="rect" id="node39" href="$interface_typhoon_factory_provider.html" title="Provides a factory that combines the convenience method arguments with the assembly&#45;supplied dependen..." alt="" coords="193,1956,375,1983"/>
+<area shape="rect" id="node39" href="$interface_typhoon_factory_provider.html" title="Provides a factory that combines the convenience of method arguments with assembly&#45;supplied dependenc..." alt="" coords="193,1956,375,1983"/>
 <area shape="rect" id="node40" href="$interface_typhoon_generic_stack.html" title="TyphoonGenericStack" alt="" coords="201,2007,367,2034"/>
 <area shape="rect" id="node41" href="$interface_typhoon_initializer.html" title="Represents an initializer for a component. " alt="" coords="215,2058,353,2084"/>
 <area shape="rect" id="node42" href="$protocol_typhoon_injected_parameter-p.html" title="\&lt;TyphoonInjectedParameter\&gt;" alt="" coords="175,240,393,267"/>
