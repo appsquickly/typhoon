@@ -53,8 +53,8 @@
 }
 @endcode
 
-* Whether the factory is inject as a TyphoonComponentFactory or a TyphoonAssembly sub-class, it can still be casted from one to the other.
-
+* @note Whether the factory is injected as a TyphoonComponentFactory or a TyphoonAssembly sub-class, it can still be casted from one to the
+* other.
 */
 - (void)setFactory:(id)theFactory;
 
