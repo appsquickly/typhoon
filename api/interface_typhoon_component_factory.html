@@ -317,7 +317,10 @@ Instance Methods</h2></td></tr>
 
 <p>Returns the default component factory, if one has been set. </p>
 <dl class="section see"><dt>See Also</dt><dd>[<a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> <a class="el" href="interface_typhoon_component_factory.html#a4ec88fe6f78db210ec6556a68f15fae4" title="Sets a given instance of TyphoonComponentFactory, as the default factory so that it can be retrieved ...">- makeDefault</a>]. This allows resolving components from the Typhoon another class after the container has been set up.</dd></dl>
-<p>A more desirable approach, if possible - especially for a component that is also registered with the container is to use &lt;TyphoonComponentFactoryAware&gt;, which injects the component factory as a dependency on the class that needs it. This latter approach simplifies unit testing. </p>
+<p>A more desirable approach, if possible - especially for a component that is also registered with the container is to use &lt;TyphoonComponentFactoryAware&gt;, which injects the component factory as a dependency on the class that needs it. This latter approach simplifies unit testing, in that no special approach to patching out the classes collaborators is required.</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="interface_typhoon_component_factory.html#a4ec88fe6f78db210ec6556a68f15fae4" title="Sets a given instance of TyphoonComponentFactory, as the default factory so that it can be retrieved ...">- makeDefault</a>. </dd>
+<dd>
+&lt;TyphoonComponentFactoryAware&gt; </dd></dl>
 
 </div>
 </div>
@@ -432,7 +435,7 @@ Instance Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a></li>
-    <li class="footer">Generated on Mon Dec 9 2013 23:30:18 for Typhoon by
+    <li class="footer">Generated on Mon Dec 9 2013 23:44:51 for Typhoon by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>
