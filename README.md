@@ -160,13 +160,14 @@ And then:
 * <a href="https://github.com/jasperblues/Typhoon/wiki/Configuration-Management-&amp;-Testing">Configuration Management & Testing.</a>
 
 # Reports
+![Build Status](http://www.typhoonframework.org/docs/latest/build-status.png?q=123)
 
 * The following reports are published by our build server after each commit. (We use something a little more comprehensive than Travis - if you'd like the scripts, we'd be happy to share). 
 * The current status of the CI build is not related to the tagged releases that we publish and push to CocoaPods. These are stable. 
 * Test Failures typically indicate a bug that has been flagged, but not yet fixed. 
 * By policy we maintain more than 90% test coverage. 
 
-![Build Status](http://www.typhoonframework.org/docs/latest/build-status.png?q=123)
+
 
 * <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API</a>
 * <a href="http://www.typhoonframework.org/docs/latest/test-results/">Test Results</a>
