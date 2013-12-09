@@ -137,19 +137,21 @@ Instance Methods</h2></td></tr>
 <p>Accepts the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> via setter-injection, allowing the factory to be stored to a property or ivar. </p>
 <p>Note that this method contract uses the type id, which if you're using a block-style assembly allows setting the factory to the <a class="el" href="interface_typhoon_assembly.html" title="Provides a concise way to declare and encapsulate the architecture of an application in one or more c...">TyphoonAssembly</a> sub-class itself without casting. The underlying type is <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a>.</p>
 <h2>Examples:</h2>
-<div class="fragment"><div class="line"><span class="comment">//Using the TyphoonComponentFactory interface</span></div>
+<div class="fragment"><div class="line"><span class="comment">//Using the TyphoonComponentFactory interface:</span></div>
 <div class="line">- (void)setFactory:(<a class="code" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a>*)factory</div>
 <div class="line">{</div>
+<div class="line"></div>
 <div class="line">    _factory = factory;</div>
 <div class="line">    MyAnalyticsService* service = [factory componentForType:[MyAnalyticsService <span class="keyword">class</span>];</div>
 <div class="line">}</div>
-</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">//Using the an Assembly interface</span></div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">//Using an Assembly interface</span></div>
 <div class="line">- (void)setFactory:(MyAssemblyType*)assembly</div>
 <div class="line">{</div>
 <div class="line">    _assembly = assembly;</div>
 <div class="line">    MyAnalyticsService* service = [assembly analyticsService];</div>
 <div class="line">}</div>
-</div><!-- fragment --> 
+</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Whether the factory is injected as a <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> or a <a class="el" href="interface_typhoon_assembly.html" title="Provides a concise way to declare and encapsulate the architecture of an application in one or more c...">TyphoonAssembly</a> sub-class, it can still be casted from one to the other. </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->
@@ -159,7 +161,7 @@ Instance Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="protocol_typhoon_component_factory_aware-p.html">TyphoonComponentFactoryAware</a></li>
-    <li class="footer">Generated on Mon Dec 9 2013 22:40:05 for Typhoon by
+    <li class="footer">Generated on Mon Dec 9 2013 23:24:20 for Typhoon by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>
