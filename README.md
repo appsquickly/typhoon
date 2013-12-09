@@ -1,5 +1,4 @@
 # Typhoon! (www.typhoonframework.org) 
-![Build Status](http://www.typhoonframework.org/docs/latest/build-status.png?q=123)
 
 A new dependency injection container for Objective-C. Light-weight, yet full-featured and super-easy to use. 
 
