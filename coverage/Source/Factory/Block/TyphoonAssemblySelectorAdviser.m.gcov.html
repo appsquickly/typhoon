@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-12-09</td>
+            <td class="headerValue">2013-12-10</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -85,12 +85,12 @@
 <span class="lineNum">      27 </span><span class="lineCov">       3390 :     return NSSelectorFromString([TYPHOON_BEFORE_ADVICE_PREFIX stringByAppendingString:key]);</span>
 <span class="lineNum">      28 </span><span class="lineCov">       3390 : }</span>
 <span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span><span class="lineCov">       4285 : + (NSString*)keyForAdvisedSEL:(SEL)advisedSEL</span>
+<span class="lineNum">      30 </span><span class="lineCov">       4282 : + (NSString*)keyForAdvisedSEL:(SEL)advisedSEL</span>
 <span class="lineNum">      31 </span>            : {
-<span class="lineNum">      32 </span><span class="lineCov">       4285 :     NSString* name = NSStringFromSelector(advisedSEL);</span>
-<span class="lineNum">      33 </span><span class="lineCov">       4285 :     NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_PREFIX withString:@&quot;&quot;];</span>
-<span class="lineNum">      34 </span><span class="lineCov">       4285 :     return key;</span>
-<span class="lineNum">      35 </span><span class="lineCov">       4285 : }</span>
+<span class="lineNum">      32 </span><span class="lineCov">       4282 :     NSString* name = NSStringFromSelector(advisedSEL);</span>
+<span class="lineNum">      33 </span><span class="lineCov">       4282 :     NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_PREFIX withString:@&quot;&quot;];</span>
+<span class="lineNum">      34 </span><span class="lineCov">       4282 :     return key;</span>
+<span class="lineNum">      35 </span><span class="lineCov">       4282 : }</span>
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span><span class="lineCov">         62 : + (NSString*)keyForSEL:(SEL)sel</span>
 <span class="lineNum">      38 </span>            : {

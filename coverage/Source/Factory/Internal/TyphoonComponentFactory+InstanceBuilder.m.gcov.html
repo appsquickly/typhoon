@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-12-09</td>
+            <td class="headerValue">2013-12-10</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -216,24 +216,24 @@
 <span class="lineNum">     158 </span><span class="lineCov">        326 :     [_currentlyResolvingReferences unstashInstanceForKey:definition.key];</span>
 <span class="lineNum">     159 </span><span class="lineCov">        326 : }</span>
 <span class="lineNum">     160 </span>            : 
-<span class="lineNum">     161 </span><span class="lineCov">         52 : - (id)buildSingletonWithDefinition:(TyphoonDefinition*)definition</span>
+<span class="lineNum">     161 </span><span class="lineCov">         50 : - (id)buildSingletonWithDefinition:(TyphoonDefinition*)definition</span>
 <span class="lineNum">     162 </span>            : {
-<span class="lineNum">     163 </span><span class="lineCov">         52 :     if ([self alreadyResolvingDefinition:definition])</span>
+<span class="lineNum">     163 </span><span class="lineCov">         50 :     if ([self alreadyResolvingDefinition:definition])</span>
 <span class="lineNum">     164 </span>            :     {
-<span class="lineNum">     165 </span><span class="lineCov">          9 :         return [_currentlyResolvingReferences peekInstanceForKey:definition.key];</span>
+<span class="lineNum">     165 </span><span class="lineCov">          7 :         return [_currentlyResolvingReferences peekInstanceForKey:definition.key];</span>
 <span class="lineNum">     166 </span>            :     }
 <span class="lineNum">     167 </span><span class="lineCov">         43 :     return [self buildInstanceWithDefinition:definition];</span>
-<span class="lineNum">     168 </span><span class="lineCov">         52 : }</span>
+<span class="lineNum">     168 </span><span class="lineCov">         50 : }</span>
 <span class="lineNum">     169 </span>            : 
-<span class="lineNum">     170 </span><span class="lineCov">         52 : - (BOOL)alreadyResolvingDefinition:(TyphoonDefinition*)definition</span>
+<span class="lineNum">     170 </span><span class="lineCov">         50 : - (BOOL)alreadyResolvingDefinition:(TyphoonDefinition*)definition</span>
 <span class="lineNum">     171 </span>            : {
-<span class="lineNum">     172 </span><span class="lineCov">         52 :     return [self alreadyResolvingKey:definition.key];</span>
-<span class="lineNum">     173 </span><span class="lineCov">         52 : }</span>
+<span class="lineNum">     172 </span><span class="lineCov">         50 :     return [self alreadyResolvingKey:definition.key];</span>
+<span class="lineNum">     173 </span><span class="lineCov">         50 : }</span>
 <span class="lineNum">     174 </span>            : 
-<span class="lineNum">     175 </span><span class="lineCov">        151 : - (BOOL)alreadyResolvingKey:(NSString*)key</span>
+<span class="lineNum">     175 </span><span class="lineCov">        149 : - (BOOL)alreadyResolvingKey:(NSString*)key</span>
 <span class="lineNum">     176 </span>            : {
-<span class="lineNum">     177 </span><span class="lineCov">        151 :     return [_currentlyResolvingReferences hasInstanceForKey:key];</span>
-<span class="lineNum">     178 </span><span class="lineCov">        151 : }</span>
+<span class="lineNum">     177 </span><span class="lineCov">        149 :     return [_currentlyResolvingReferences hasInstanceForKey:key];</span>
+<span class="lineNum">     178 </span><span class="lineCov">        149 : }</span>
 <span class="lineNum">     179 </span>            : 
 <span class="lineNum">     180 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     181 </span>            : #pragma mark - Property Injection
@@ -247,17 +247,17 @@
 <span class="lineNum">     189 </span>            : {
 <span class="lineNum">     190 </span><span class="lineCov">        332 :     [self doBeforePropertyInjectionOn:instance withDefinition:definition];</span>
 <span class="lineNum">     191 </span>            : 
-<span class="lineNum">     192 </span><span class="lineCov">        820 :     for (id &lt;TyphoonInjectedProperty&gt; property in [definition injectedProperties])</span>
+<span class="lineNum">     192 </span><span class="lineCov">        823 :     for (id &lt;TyphoonInjectedProperty&gt; property in [definition injectedProperties])</span>
 <span class="lineNum">     193 </span>            :     {
-<span class="lineNum">     194 </span><span class="lineCov">        179 :         TyphoonTypeDescriptor* typeDescriptor = [instance typeForPropertyWithName:property.name];</span>
-<span class="lineNum">     195 </span><span class="lineCov">        179 :         if (typeDescriptor == nil)</span>
+<span class="lineNum">     194 </span><span class="lineCov">        180 :         TyphoonTypeDescriptor* typeDescriptor = [instance typeForPropertyWithName:property.name];</span>
+<span class="lineNum">     195 </span><span class="lineCov">        180 :         if (typeDescriptor == nil)</span>
 <span class="lineNum">     196 </span>            :         {
 <span class="lineNum">     197 </span><span class="lineNoCov">          0 :             [NSException raise:NSInvalidArgumentException</span>
 <span class="lineNum">     198 </span>            :                     format:@&quot;Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.&quot;,
 <span class="lineNum">     199 </span>            :                            property.name, [instance class]];
 <span class="lineNum">     200 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     201 </span><span class="lineCov">        176 :         [self doPropertyInjection:instance property:property typeDescriptor:typeDescriptor];</span>
-<span class="lineNum">     202 </span><span class="lineCov">        808 :     }</span>
+<span class="lineNum">     201 </span><span class="lineCov">        177 :         [self doPropertyInjection:instance property:property typeDescriptor:typeDescriptor];</span>
+<span class="lineNum">     202 </span><span class="lineCov">        811 :     }</span>
 <span class="lineNum">     203 </span>            : 
 <span class="lineNum">     204 </span><span class="lineCov">        329 :     [self doAfterPropertyInjectionOn:instance withDefinition:definition];</span>
 <span class="lineNum">     205 </span><span class="lineCov">        329 : }</span>
@@ -275,27 +275,27 @@
 <span class="lineNum">     217 </span><span class="lineCov">         15 :     }</span>
 <span class="lineNum">     218 </span><span class="lineCov">        332 : }</span>
 <span class="lineNum">     219 </span>            : 
-<span class="lineNum">     220 </span><span class="lineCov">        176 : - (void)doPropertyInjection:(id &lt;TyphoonIntrospectiveNSObject&gt;)instance property:(id &lt;TyphoonInjectedProperty&gt;)property</span>
-<span class="lineNum">     221 </span><span class="lineCov">        176 :         typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor</span>
+<span class="lineNum">     220 </span><span class="lineCov">        177 : - (void)doPropertyInjection:(id &lt;TyphoonIntrospectiveNSObject&gt;)instance property:(id &lt;TyphoonInjectedProperty&gt;)property</span>
+<span class="lineNum">     221 </span><span class="lineCov">        177 :         typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor</span>
 <span class="lineNum">     222 </span>            : {
-<span class="lineNum">     223 </span><span class="lineCov">        176 :     NSInvocation* invocation = [self propertySetterInvocationFor:instance property:property];</span>
-<span class="lineNum">     224 </span><span class="lineCov">        176 :     [self configureInvocationArgument:invocation toInjectProperty:property onInstance:instance typeDescriptor:typeDescriptor];</span>
-<span class="lineNum">     225 </span><span class="lineCov">        176 :     [invocation invoke];</span>
-<span class="lineNum">     226 </span><span class="lineCov">        176 : }</span>
+<span class="lineNum">     223 </span><span class="lineCov">        177 :     NSInvocation* invocation = [self propertySetterInvocationFor:instance property:property];</span>
+<span class="lineNum">     224 </span><span class="lineCov">        177 :     [self configureInvocationArgument:invocation toInjectProperty:property onInstance:instance typeDescriptor:typeDescriptor];</span>
+<span class="lineNum">     225 </span><span class="lineCov">        177 :     [invocation invoke];</span>
+<span class="lineNum">     226 </span><span class="lineCov">        177 : }</span>
 <span class="lineNum">     227 </span>            : 
-<span class="lineNum">     228 </span><span class="lineCov">        176 : - (NSInvocation*)propertySetterInvocationFor:(id &lt;TyphoonIntrospectiveNSObject&gt;)instance property:(id &lt;TyphoonInjectedProperty&gt;)property</span>
+<span class="lineNum">     228 </span><span class="lineCov">        177 : - (NSInvocation*)propertySetterInvocationFor:(id &lt;TyphoonIntrospectiveNSObject&gt;)instance property:(id &lt;TyphoonInjectedProperty&gt;)property</span>
 <span class="lineNum">     229 </span>            : {
-<span class="lineNum">     230 </span><span class="lineCov">        176 :     SEL pSelector = [instance setterForPropertyWithName:property.name];</span>
-<span class="lineNum">     231 </span><span class="lineCov">        176 :     NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*) instance methodSignatureForSelector:pSelector]];</span>
-<span class="lineNum">     232 </span><span class="lineCov">        176 :     [invocation setTarget:instance];</span>
-<span class="lineNum">     233 </span><span class="lineCov">        176 :     [invocation setSelector:pSelector];</span>
-<span class="lineNum">     234 </span><span class="lineCov">        176 :     return invocation;</span>
-<span class="lineNum">     235 </span><span class="lineCov">        176 : }</span>
+<span class="lineNum">     230 </span><span class="lineCov">        177 :     SEL pSelector = [instance setterForPropertyWithName:property.name];</span>
+<span class="lineNum">     231 </span><span class="lineCov">        177 :     NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*) instance methodSignatureForSelector:pSelector]];</span>
+<span class="lineNum">     232 </span><span class="lineCov">        177 :     [invocation setTarget:instance];</span>
+<span class="lineNum">     233 </span><span class="lineCov">        177 :     [invocation setSelector:pSelector];</span>
+<span class="lineNum">     234 </span><span class="lineCov">        177 :     return invocation;</span>
+<span class="lineNum">     235 </span><span class="lineCov">        177 : }</span>
 <span class="lineNum">     236 </span>            : 
-<span class="lineNum">     237 </span><span class="lineCov">        176 : - (void)configureInvocationArgument:(NSInvocation*)invocation toInjectProperty:(id &lt;TyphoonInjectedProperty&gt;)property</span>
-<span class="lineNum">     238 </span><span class="lineCov">        176 :         onInstance:(id &lt;TyphoonIntrospectiveNSObject&gt;)instance typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor;</span>
+<span class="lineNum">     237 </span><span class="lineCov">        177 : - (void)configureInvocationArgument:(NSInvocation*)invocation toInjectProperty:(id &lt;TyphoonInjectedProperty&gt;)property</span>
+<span class="lineNum">     238 </span><span class="lineCov">        177 :         onInstance:(id &lt;TyphoonIntrospectiveNSObject&gt;)instance typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor;</span>
 <span class="lineNum">     239 </span>            : {
-<span class="lineNum">     240 </span><span class="lineCov">        176 :     if (property.injectionType == TyphoonPropertyInjectionTypeByType)</span>
+<span class="lineNum">     240 </span><span class="lineCov">        177 :     if (property.injectionType == TyphoonPropertyInjectionTypeByType)</span>
 <span class="lineNum">     241 </span>            :     {
 <span class="lineNum">     242 </span><span class="lineCov">          4 :         TyphoonDefinition* definition = [self definitionForType:[typeDescriptor classOrProtocol]];</span>
 <span class="lineNum">     243 </span>            : 
@@ -308,24 +308,24 @@
 <span class="lineNum">     250 </span><span class="lineCov">          4 :         id reference = [self componentForKey:definition.key];</span>
 <span class="lineNum">     251 </span><span class="lineCov">          4 :         [invocation setArgument:&amp;reference atIndex:2];</span>
 <span class="lineNum">     252 </span><span class="lineCov">         16 :     }</span>
-<span class="lineNum">     253 </span><span class="lineCov">        172 :     else if (property.injectionType == TyphoonPropertyInjectionTypeByReference)</span>
+<span class="lineNum">     253 </span><span class="lineCov">        173 :     else if (property.injectionType == TyphoonPropertyInjectionTypeByReference)</span>
 <span class="lineNum">     254 </span>            :     {
 <span class="lineNum">     255 </span><span class="lineCov">         95 :         TyphoonPropertyInjectedByReference* byReference = (TyphoonPropertyInjectedByReference*) property;</span>
 <span class="lineNum">     256 </span><span class="lineCov">         95 :         [self evaluateCircularDependency:byReference.reference propertyName:property.name instance:instance];</span>
 <span class="lineNum">     257 </span>            : 
 <span class="lineNum">     258 </span><span class="lineCov">         95 :         if ([self propertyIsCircular:property onInstance:instance])</span>
 <span class="lineNum">     259 </span>            :         {
-<span class="lineNum">     260 </span><span class="lineCov">         20 :             return;</span>
+<span class="lineNum">     260 </span><span class="lineCov">         22 :             return;</span>
 <span class="lineNum">     261 </span>            :         }
 <span class="lineNum">     262 </span>            : 
-<span class="lineNum">     263 </span><span class="lineCov">         75 :         id reference = [self componentForKey:byReference.reference];</span>
-<span class="lineNum">     264 </span><span class="lineCov">         75 :         [invocation setArgument:&amp;reference atIndex:2];</span>
-<span class="lineNum">     265 </span><span class="lineCov">        320 :     }</span>
-<span class="lineNum">     266 </span><span class="lineCov">         77 :     else if (property.injectionType == TyphoonPropertyInjectionTypeAsStringRepresentation)</span>
+<span class="lineNum">     263 </span><span class="lineCov">         73 :         id reference = [self componentForKey:byReference.reference];</span>
+<span class="lineNum">     264 </span><span class="lineCov">         73 :         [invocation setArgument:&amp;reference atIndex:2];</span>
+<span class="lineNum">     265 </span><span class="lineCov">        314 :     }</span>
+<span class="lineNum">     266 </span><span class="lineCov">         78 :     else if (property.injectionType == TyphoonPropertyInjectionTypeAsStringRepresentation)</span>
 <span class="lineNum">     267 </span>            :     {
-<span class="lineNum">     268 </span><span class="lineCov">         67 :         TyphoonPropertyInjectedWithStringRepresentation* valueProperty = (TyphoonPropertyInjectedWithStringRepresentation*) property;</span>
-<span class="lineNum">     269 </span><span class="lineCov">         67 :         [self setArgumentFor:invocation index:2 textValue:valueProperty.textValue requiredType:typeDescriptor];</span>
-<span class="lineNum">     270 </span><span class="lineCov">         67 :     }</span>
+<span class="lineNum">     268 </span><span class="lineCov">         68 :         TyphoonPropertyInjectedWithStringRepresentation* valueProperty = (TyphoonPropertyInjectedWithStringRepresentation*) property;</span>
+<span class="lineNum">     269 </span><span class="lineCov">         68 :         [self setArgumentFor:invocation index:2 textValue:valueProperty.textValue requiredType:typeDescriptor];</span>
+<span class="lineNum">     270 </span><span class="lineCov">         68 :     }</span>
 <span class="lineNum">     271 </span><span class="lineCov">         10 :     else if (property.injectionType == TyphoonPropertyInjectionTypeAsCollection)</span>
 <span class="lineNum">     272 </span>            :     {
 <span class="lineNum">     273 </span><span class="lineCov">          8 :         id collection = [self buildCollectionFor:(TyphoonPropertyInjectedAsCollection*) property instance:instance];</span>
@@ -337,17 +337,17 @@
 <span class="lineNum">     279 </span><span class="lineCov">          2 :         id value = byInstance.objectInstance;</span>
 <span class="lineNum">     280 </span><span class="lineCov">        334 :         [invocation setArgument:&amp;value atIndex:2];</span>
 <span class="lineNum">     281 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">     282 </span><span class="lineCov">        176 : }</span>
+<span class="lineNum">     282 </span><span class="lineCov">        177 : }</span>
 <span class="lineNum">     283 </span>            : 
 <span class="lineNum">     284 </span><span class="lineCov">         99 : - (void)evaluateCircularDependency:(NSString*)componentKey propertyName:(NSString*)propertyName</span>
 <span class="lineNum">     285 </span><span class="lineCov">         99 :         instance:(id &lt;TyphoonIntrospectiveNSObject&gt;)instance;</span>
 <span class="lineNum">     286 </span>            : {
 <span class="lineNum">     287 </span><span class="lineCov">         99 :     if ([self alreadyResolvingKey:componentKey])</span>
 <span class="lineNum">     288 </span>            :     {
-<span class="lineNum">     289 </span><span class="lineCov">         20 :         NSDictionary* circularDependencies = [instance circularDependentProperties];</span>
-<span class="lineNum">     290 </span><span class="lineCov">         20 :         [circularDependencies setValue:componentKey forKey:propertyName];</span>
+<span class="lineNum">     289 </span><span class="lineCov">         22 :         NSDictionary* circularDependencies = [instance circularDependentProperties];</span>
+<span class="lineNum">     290 </span><span class="lineCov">         22 :         [circularDependencies setValue:componentKey forKey:propertyName];</span>
 <span class="lineNum">     291 </span>            :         LogTrace(@&quot;$$$$$$$$$$$$ Circular dependency detected: %@&quot;, [instance circularDependentProperties]);
-<span class="lineNum">     292 </span><span class="lineCov">         20 :     }</span>
+<span class="lineNum">     292 </span><span class="lineCov">         22 :     }</span>
 <span class="lineNum">     293 </span><span class="lineCov">         99 : }</span>
 <span class="lineNum">     294 </span>            : 
 <span class="lineNum">     295 </span><span class="lineCov">         99 : - (BOOL)propertyIsCircular:(id &lt;TyphoonInjectedProperty&gt;)property onInstance:(id &lt;TyphoonIntrospectiveNSObject&gt;)instance;</span>
@@ -364,22 +364,22 @@
 <span class="lineNum">     306 </span><span class="lineCov">        326 : - (void)injectCircularDependenciesOn:(__autoreleasing id &lt;TyphoonIntrospectiveNSObject&gt;)instance</span>
 <span class="lineNum">     307 </span>            : {
 <span class="lineNum">     308 </span><span class="lineCov">        326 :     NSMutableDictionary* circularDependentProperties = [instance circularDependentProperties];</span>
-<span class="lineNum">     309 </span><span class="lineCov">        386 :     for (NSString* propertyName in [circularDependentProperties allKeys])</span>
+<span class="lineNum">     309 </span><span class="lineCov">        392 :     for (NSString* propertyName in [circularDependentProperties allKeys])</span>
 <span class="lineNum">     310 </span>            :     {
-<span class="lineNum">     311 </span><span class="lineCov">         20 :         id propertyValue = objc_msgSend(instance, NSSelectorFromString(propertyName));</span>
-<span class="lineNum">     312 </span><span class="lineCov">         20 :         if (!propertyValue)</span>
+<span class="lineNum">     311 </span><span class="lineCov">         22 :         id propertyValue = objc_msgSend(instance, NSSelectorFromString(propertyName));</span>
+<span class="lineNum">     312 </span><span class="lineCov">         22 :         if (!propertyValue)</span>
 <span class="lineNum">     313 </span>            :         {
-<span class="lineNum">     314 </span><span class="lineCov">         20 :             SEL pSelector = [instance setterForPropertyWithName:propertyName];</span>
+<span class="lineNum">     314 </span><span class="lineCov">         22 :             SEL pSelector = [instance setterForPropertyWithName:propertyName];</span>
 <span class="lineNum">     315 </span>            :             NSInvocation
-<span class="lineNum">     316 </span><span class="lineCov">         20 :                     * invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*) instance methodSignatureForSelector:pSelector]];</span>
-<span class="lineNum">     317 </span><span class="lineCov">         20 :             [invocation setTarget:instance];</span>
-<span class="lineNum">     318 </span><span class="lineCov">         20 :             [invocation setSelector:pSelector];</span>
-<span class="lineNum">     319 </span><span class="lineCov">         20 :             NSString* componentKey = [circularDependentProperties objectForKey:propertyName];</span>
-<span class="lineNum">     320 </span><span class="lineCov">         20 :             id reference = [_currentlyResolvingReferences peekInstanceForKey:componentKey];</span>
-<span class="lineNum">     321 </span><span class="lineCov">         20 :             [invocation setArgument:&amp;reference atIndex:2];</span>
-<span class="lineNum">     322 </span><span class="lineCov">         20 :             [invocation invoke];</span>
-<span class="lineNum">     323 </span><span class="lineCov">         20 :         }</span>
-<span class="lineNum">     324 </span><span class="lineCov">        386 :     }</span>
+<span class="lineNum">     316 </span><span class="lineCov">         22 :                     * invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*) instance methodSignatureForSelector:pSelector]];</span>
+<span class="lineNum">     317 </span><span class="lineCov">         22 :             [invocation setTarget:instance];</span>
+<span class="lineNum">     318 </span><span class="lineCov">         22 :             [invocation setSelector:pSelector];</span>
+<span class="lineNum">     319 </span><span class="lineCov">         22 :             NSString* componentKey = [circularDependentProperties objectForKey:propertyName];</span>
+<span class="lineNum">     320 </span><span class="lineCov">         22 :             id reference = [_currentlyResolvingReferences peekInstanceForKey:componentKey];</span>
+<span class="lineNum">     321 </span><span class="lineCov">         22 :             [invocation setArgument:&amp;reference atIndex:2];</span>
+<span class="lineNum">     322 </span><span class="lineCov">         22 :             [invocation invoke];</span>
+<span class="lineNum">     323 </span><span class="lineCov">         22 :         }</span>
+<span class="lineNum">     324 </span><span class="lineCov">        392 :     }</span>
 <span class="lineNum">     325 </span><span class="lineCov">        326 : }</span>
 <span class="lineNum">     326 </span>            : 
 <span class="lineNum">     327 </span><span class="lineCov">        329 : - (void)doAfterPropertyInjectionOn:(id &lt;TyphoonIntrospectiveNSObject&gt;)instance withDefinition:(TyphoonDefinition*)definition</span>
@@ -439,21 +439,21 @@
 <span class="lineNum">     381 </span><span class="lineCov">        121 : }</span>
 <span class="lineNum">     382 </span>            : 
 <span class="lineNum">     383 </span>            : /* ====================================================================================================================================== */
-<span class="lineNum">     384 </span><span class="lineCov">         90 : - (void)setArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index1 textValue:(NSString*)textValue</span>
-<span class="lineNum">     385 </span><span class="lineCov">         90 :         requiredType:(TyphoonTypeDescriptor*)requiredType</span>
+<span class="lineNum">     384 </span><span class="lineCov">         91 : - (void)setArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index1 textValue:(NSString*)textValue</span>
+<span class="lineNum">     385 </span><span class="lineCov">         91 :         requiredType:(TyphoonTypeDescriptor*)requiredType</span>
 <span class="lineNum">     386 </span>            : {
-<span class="lineNum">     387 </span><span class="lineCov">         90 :     if (requiredType.isPrimitive)</span>
+<span class="lineNum">     387 </span><span class="lineCov">         91 :     if (requiredType.isPrimitive)</span>
 <span class="lineNum">     388 </span>            :     {
-<span class="lineNum">     389 </span><span class="lineCov">         65 :         TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];</span>
-<span class="lineNum">     390 </span><span class="lineCov">         65 :         [converter setPrimitiveArgumentFor:invocation index:index1 textValue:textValue requiredType:requiredType];</span>
-<span class="lineNum">     391 </span><span class="lineCov">         65 :     }</span>
+<span class="lineNum">     389 </span><span class="lineCov">         66 :         TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];</span>
+<span class="lineNum">     390 </span><span class="lineCov">         66 :         [converter setPrimitiveArgumentFor:invocation index:index1 textValue:textValue requiredType:requiredType];</span>
+<span class="lineNum">     391 </span><span class="lineCov">         66 :     }</span>
 <span class="lineNum">     392 </span>            :     else
 <span class="lineNum">     393 </span>            :     {
 <span class="lineNum">     394 </span><span class="lineCov">         25 :         id &lt;TyphoonTypeConverter&gt; converter = [[TyphoonTypeConverterRegistry shared] converterFor:requiredType];</span>
 <span class="lineNum">     395 </span><span class="lineCov">         25 :         id converted = [converter convert:textValue];</span>
 <span class="lineNum">     396 </span><span class="lineCov">         25 :         [invocation setArgument:&amp;converted atIndex:index1];</span>
 <span class="lineNum">     397 </span><span class="lineCov">         25 :     }</span>
-<span class="lineNum">     398 </span><span class="lineCov">         90 : }</span>
+<span class="lineNum">     398 </span><span class="lineCov">         91 : }</span>
 <span class="lineNum">     399 </span>            : 
 <span class="lineNum">     400 </span><span class="lineCov">          8 : - (id)buildCollectionFor:(TyphoonPropertyInjectedAsCollection*)propertyInjectedAsCollection</span>
 <span class="lineNum">     401 </span><span class="lineCov">          8 :         instance:(id &lt;TyphoonIntrospectiveNSObject&gt;)instance</span>
