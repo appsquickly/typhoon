@@ -154,19 +154,20 @@ Class Methods</h2></td></tr>
 
 <p>Waits for a condition to occur, and performs additional tests, also overriding the default timeout with the supplied value. </p>
 <h2>Example:</h2>
-<pre class="fragment">       __block BusinessDetails* result = nil;
-       [_client requestBusinessDetailsWithSuccess:^(BusinessDetails* businessDetails)
-       {
-           result = businessDetails;
-       }];
-
-       [TyphoonTestUtils wait:3 secondsForCondition:^BOOL
-       {
-           typhoon_asynch_condition(result != nil);
-       } andPerformTests:^
-       {
-           assertThatBool(businessDetails.goldenEgg, equalToBool:YES);
-       }];</pre> 
+<div class="fragment"><div class="line">__block BusinessDetails* result = nil;</div>
+<div class="line">[_client requestBusinessDetailsWithSuccess:^(BusinessDetails* businessDetails)</div>
+<div class="line">{</div>
+<div class="line">    result = businessDetails;</div>
+<div class="line">}];</div>
+<div class="line"></div>
+<div class="line">[<a class="code" href="interface_typhoon_test_utils.html">TyphoonTestUtils</a> wait:3 secondsForCondition:^BOOL</div>
+<div class="line">{</div>
+<div class="line">    typhoon_asynch_condition(result != nil);</div>
+<div class="line">} andPerformTests:^</div>
+<div class="line">{</div>
+<div class="line">    assertThatBool(businessDetails.goldenEgg, equalToBool:YES);</div>
+<div class="line">}];</div>
+</div><!-- fragment --> 
 </div>
 </div>
 <a class="anchor" id="a1d9e1900f5ce91f1156ab33f3de55c84"></a>
@@ -223,7 +224,7 @@ Class Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="interface_typhoon_test_utils.html">TyphoonTestUtils</a></li>
-    <li class="footer">Generated on Mon Dec 9 2013 08:45:21 for Typhoon by
+    <li class="footer">Generated on Mon Dec 9 2013 09:12:43 for Typhoon by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>
