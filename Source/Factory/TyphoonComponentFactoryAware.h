@@ -33,19 +33,19 @@
 * itself without casting. The underlying type is TyphoonComponentFactory.
 *
 * ##Examples:
-*
+
 @code
-//Using the TyphoonComponentFactory interface
+//Using the TyphoonComponentFactory interface:
 - (void)setFactory:(TyphoonComponentFactory*)factory
 {
+
     _factory = factory;
     MyAnalyticsService* service = [factory componentForType:[MyAnalyticsService class];
 }
 @endcode
 
-
 @code
-//Using the an Assembly interface
+//Using an Assembly interface
 - (void)setFactory:(MyAssemblyType*)assembly
 {
     _assembly = assembly;
@@ -53,6 +53,7 @@
 }
 @endcode
 
+* Whether the factory is inject as a TyphoonComponentFactory or a TyphoonAssembly sub-class, it can still be casted from one to the other.
 
 */
 - (void)setFactory:(id)theFactory;
