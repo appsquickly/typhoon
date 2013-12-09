@@ -42,21 +42,21 @@ typedef void (^TyphoonTestAssertionsBlock)();
 * Waits for a condition to occur, and performs additional tests, also overriding the default timeout with the supplied value.
 *
 * ##Example:
-*
-*            __block BusinessDetails* result = nil;
-*            [_client requestBusinessDetailsWithSuccess:^(BusinessDetails* businessDetails)
-*            {
-*                result = businessDetails;
-*            }];
-*
-*            [TyphoonTestUtils wait:3 secondsForCondition:^BOOL
-*            {
-*                typhoon_asynch_condition(result != nil);
-*            } andPerformTests:^
-*            {
-*                assertThatBool(businessDetails.goldenEgg, equalToBool:YES);
-*            }];
-*
+* @code
+    __block BusinessDetails* result = nil;
+    [_client requestBusinessDetailsWithSuccess:^(BusinessDetails* businessDetails)
+    {
+        result = businessDetails;
+    }];
+
+    [TyphoonTestUtils wait:3 secondsForCondition:^BOOL
+    {
+        typhoon_asynch_condition(result != nil);
+    } andPerformTests:^
+    {
+        assertThatBool(businessDetails.goldenEgg, equalToBool:YES);
+    }];
+@endcode
 */
 + (void)wait:(NSTimeInterval)seconds secondsForCondition:(TyphoonAsynchConditionBlock)condition
         andPerformTests:(TyphoonTestAssertionsBlock)assertions;
