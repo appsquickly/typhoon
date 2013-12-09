@@ -3,6 +3,7 @@
 body {
     background: #FFF url(images/patterns/groovepaper.png) repeat;
     font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
+    overflow: hidden;
     font-weight: 400;
     font-style: normal;
     font-size: 13px;
