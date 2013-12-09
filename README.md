@@ -162,13 +162,13 @@ And then:
 
 # Reports
 
-In the spirit of lean-methodologies, the API and Test Coverage reports below are published by my build server, after 
-each commit. (If you'd like the script I will share it). 
+The following reports are published by our build server after each commit. (We use something a little more comprehensive than Travis - if you'd like the scripts, we'd be happy to share). 
+
+![Build Status](http://www.typhoonframework.org/docs/latest/build-status.png?q=123)
 
 * <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API</a>
 * <a href="http://www.typhoonframework.org/docs/latest/test-results/">Test Results</a>
 * <a href="http://www.typhoonframework.org/docs/latest/coverage">Coverage Reports</a>
-
 
 
 # Feature Requests and Contributions
