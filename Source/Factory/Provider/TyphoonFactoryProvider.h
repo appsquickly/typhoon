@@ -17,7 +17,7 @@
 /**
 * @ingroup Factory
 *
-* Provides a factory that combines the convenience method arguments with the assembly-supplied dependencies to construct objects.
+* Provides a factory that combines the convenience of method arguments with assembly-supplied dependencies to construct objects.
 *
 * To create a factory you must define a protocol for the factory, wire its dependencies (defined as readonly properties), and, sometimes,
 * provide implementation blocks or initializer descriptions for the body of the class methods. Most of the simplest cases should be covered

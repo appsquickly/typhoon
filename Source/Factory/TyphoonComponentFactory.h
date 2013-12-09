@@ -51,7 +51,12 @@
 @property(nonatomic, strong, readonly) NSArray* postProcessors;
 
 /**
-* Returns the default component factory, if one has been set. (See makeDefault ).
+* Returns the default component factory, if one has been set. @see [TyphoonComponentFactory makeDefault]. This allows resolving components
+* from the Typhoon another class after the container has been set up.
+*
+* A more desirable approach, if possible - especially for a component that is also registered with the container is to use
+* <TyphoonComponentFactoryAware>, which injects the component factory as a dependency on the class that needs it. This latter approach
+* simplifies unit testing.
 */
 + (id)defaultFactory;
 
