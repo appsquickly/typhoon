@@ -1,1 +1,1 @@
-../../../../Source/Component/FactoryProvider/TyphoonAssistedFactoryMethodInitializer.h
+../../../../Source/Factory/Provider/TyphoonAssistedFactoryMethodInitializer.h

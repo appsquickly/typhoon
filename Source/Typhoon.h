@@ -27,9 +27,11 @@
 #import "TyphoonAssembly.h"
 #import "TyphoonCollaboratingAssemblyProxy.h"
 #import "TyphoonPropertyInjectedAsCollection.h"
+#import "TyphoonComponentFactoryAware.h"
 
 #import "TyphoonBlockComponentFactory.h"
 
 #import "TyphoonAutowire.h"
 #import "TyphoonShorthand.h"
+
 

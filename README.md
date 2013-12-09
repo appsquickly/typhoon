@@ -2,10 +2,9 @@
 
 A new dependency injection container for Objective-C. Light-weight, yet full-featured and super-easy to use. 
 
-
 ## Familiar with Dependency Injection?
 
-* Read the <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a> or <a href="http://jasperblues.github.io/Typhoon/api/index.html">API Docs</a>   
+* Read the <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>   
 * <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a> (***Now updated for iOS7!!!!***)
 * <a href="https://github.com/jasperblues/Typhoon#design-goals--features">Check the feature list</a>.
 
@@ -160,15 +159,19 @@ And then:
 
 * <a href="https://github.com/jasperblues/Typhoon/wiki/Configuration-Management-&amp;-Testing">Configuration Management & Testing.</a>
 
-# Reports
+# Reports 
+![Build Status](http://www.typhoonframework.org/docs/latest/build-status.png?q=111)
 
-In the spirit of lean-methodologies, the API and Test Coverage reports below are published by my build server, after 
-each commit. (If you'd like the script I will share it). 
 
-* <a href="http://jasperblues.github.com/Typhoon/api/index.html">API</a>
-* <a href="http://jasperblues.github.com/Typhoon/test-results/index.html">Test Results</a>
-* <a href="http://jasperblues.github.com/Typhoon/coverage/index.html">Coverage Reports (empty if tests currently failing)</a>
+The following reports are published by our build server after each commit. (We use something a little more comprehensive than Travis - if you'd like the scripts, we'd be happy to share). Note that the status of the CI build is not related to tagged releases that are published and pushed to CocoaPods - these are stable. 
 
+Test Failures typically indicate a bug that has been flagged, but not yet fixed. By policy we maintain more than 90% test coverage. 
+
+
+
+* <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API</a>
+* <a href="http://www.typhoonframework.org/docs/latest/test-results/">Test Results</a>
+* <a href="http://www.typhoonframework.org/docs/latest/coverage">Coverage Reports</a>
 
 
 # Feature Requests and Contributions
@@ -190,11 +193,11 @@ each commit. (If you'd like the script I will share it).
 
 * <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> - <a href="mailto:jasper@appsquick.ly?Subject=Typhoon">jasper@appsquick.ly</a>
 * <a href="https://github.com/rhgills">Robert Gilliam</a> - <a href="mailto:robert@robertgilliam.org?Subject=Typhoon">robert@robertgilliam.org</a>
+* <a href="https://github.com/drodriguez">Daniel Rodríguez Troitiño</a> 
+* <a href="https://github.com/eriksundin">Erik Sundin</a> 
          
 ### With contributions from: 
 
-* <a href="https://github.com/drodriguez">Daniel Rodríguez Troitiño</a> : Factory Providers.
-* <a href="https://github.com/eriksundin">Erik Sundin</a> : Initilizer collections, infrastructure components for post-processors.  
 * <a href="https://github.com/cesteban">César Estébanez Tascón</a> : Circular Dependencies fixes. 
 * <a href="https://github.com/BrynCooke">Bryn Cooke</a> : Late injections & story board integration. 
 * <a href="http://www.linkedin.com/in/jeffreydroberts">Jeffrey Roberts</a>, Mobile Software Engineer at 

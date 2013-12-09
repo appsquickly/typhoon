@@ -13,6 +13,8 @@
 #import "TyphoonComponentFactoryPostProcessor.h"
 
 /**
+* @ingroup Configuration
+*
  Post-Processor that completes the initializer of definitions with type UIViewController.
  If the definition already has a TyphoonInitializer set, the processor will ignore the component.
  */

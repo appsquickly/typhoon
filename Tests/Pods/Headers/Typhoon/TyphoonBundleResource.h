@@ -1,1 +1,1 @@
-../../../../Source/Utils/Resource/TyphoonBundleResource.h
+../../../../Source/Configuration/Resource/TyphoonBundleResource.h

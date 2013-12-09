@@ -6,6 +6,7 @@
     <path id="headers">
         <fileset dir="${source.main.dir}">
             <include name="**/*.h"/>
+            <exclude name="**/TyphoonLinkerCategoryBugFix.h"/>
         </fileset>
     </path>
     <path id="classes">
@@ -40,11 +41,14 @@
         __shouldbeprivate__coverage,
         --publish.site.dry.run"/>
 
-    <target name="publish" depends="--stamp.build.failing, --api.report, --publish.site.dry.run, --publish.site.push"/>
-
+    <target name="doc" depends = "--api.report"/>
 
     <target name="fast">
         <property name="fast" value="yes"/>
+    </target>
+
+    <target name="no-fail-tests">
+        <property name="no-fail-tests" value="yes"/>
     </target>
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END PUBLIC TARGETS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
@@ -53,6 +57,7 @@
    <target name="__shouldbeprivate__build" depends="
         --test.cocoapods,
         --test.generate.report,
+        --test.evaluate,
         --api.report,
         --stamp.build.passing"/>
 
@@ -63,6 +68,7 @@
         __build.library.ios.simulator,
         --test.library,
         --test.generate.report,
+        --test.evaluate,
         --assemble.coverage.data,
         --coverage.report"/>
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END SHOULD BE PRIVATE TARGETS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -82,7 +88,7 @@
         <copy tofile="${reports.dir}/build-status.png" file="${basedir}/Scripts/build-failed.png"/>
     </target>
 
-    <target name="--stamp.build.passing">
+    <target name="--stamp.build.passing" unless="tests.failed">
         <copy tofile="${reports.dir}/build-status.png" file="${basedir}/Scripts/build-passed.png" overwrite="true"/>
     </target>
 
@@ -157,7 +163,9 @@
         <copy todir="${reports.dir}/test-results">
             <fileset dir="${scripts.dir}" includes="**/*.png"/>
         </copy>
-        
+    </target>
+
+    <target name="--test.evaluate" unless="no-fail-tests">
         <fail if="tests.failed" message="Tests failed. Report is at ${reports.dir}/test-results"/>
     </target>
 
@@ -205,10 +213,10 @@
         <echo file="${temp.dir}/geninfo.sh">
             #!/bin/bash
             set -e # fail script if any commands fail
-            ${gen.info} ${temp.dir}/coverage-data/*.gcno --no-recursion --output-filename \
+            geninfo ${temp.dir}/coverage-data/*.gcno --no-recursion --output-filename \
             ${temp.dir}/${module.name}-temp.info
             #Remove symbols we're not interested in.
-            ${lcov} -r ${temp.dir}/${module.name}-temp.info ${framework.symbols} > ${temp.dir}/${module.name}.info
+            lcov -r ${temp.dir}/${module.name}-temp.info ${framework.symbols} > ${temp.dir}/${module.name}.info
         </echo>
         <chmod perm="+x" file="${temp.dir}/geninfo.sh"/>
         <exec executable="${temp.dir}/geninfo.sh" failonerror="true" failifexecutionfails="true"/>
@@ -217,7 +225,7 @@
             #!/bin/bash
             set -e # fail script if any commands fail
             
-            ${gen.html} --no-function-coverage --no-branch-coverage -o ${coverage.reports.dir} \
+            genhtml --no-function-coverage --no-branch-coverage -o ${coverage.reports.dir} \
             --prefix ${basedir} ${temp.dir}/${module.name}.info
         </echo>
         <chmod perm="+x" file="${temp.dir}/genhtml.sh"/>
@@ -253,10 +261,15 @@
         <!-- Don't leave it lying around -->
         <delete file="${basedir}/docset-installed.txt"/>
 
-        <property name="docs.dir" value="${user.home}/Library/Developer/Shared/Documentation/Docsets"/>
-        <copy todir="${reports.dir}/api">
-            <fileset dir="${docs.dir}/${module.company}.${module.name}.docset/Contents/Resources/Documents"/>
+        <exec executable="doxygen"/>
+
+        <mkdir dir="${reports.dir}/api/images"/>
+        <copy todir="${reports.dir}/api/images">
+            <fileset dir="images"/>
         </copy>
+        <copy todir="${reports.dir}/api" file="Scripts/navtree.css" overwrite="yes"/>
+        <copy todir="${reports.dir}/api" file="Scripts/doxygen.png" overwrite="yes"/>
+
     </target>
 
     <target name="--publish.site.dry.run">
@@ -274,11 +287,10 @@
             git branch --set-upstream-to=origin/gh-pages gh-pages
             git pull
             cp -fr ${reports.dir}/build-status.png ./build-status.png
-            git add --all --ignore-removal ./coverage
             rm -fr ./coverage
             mkdir -p ${reports.dir}/coverage
             rsync -aq ${reports.dir}/coverage/ ./coverage
-            git add --all --ignore-removal ./build-status.png
+            git add --all --ignore-removal ./coverage
             rm -fr ./api
             cp -fr ${reports.dir}/api ./api
             git add --all --ignore-removal api
