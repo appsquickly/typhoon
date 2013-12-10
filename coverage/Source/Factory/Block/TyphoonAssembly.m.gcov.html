@@ -175,9 +175,9 @@
 <span class="lineNum">     117 </span><span class="lineCov">         45 :     class_addMethod(self, sel, imp, &quot;@&quot;);</span>
 <span class="lineNum">     118 </span><span class="lineCov">         45 : }</span>
 <span class="lineNum">     119 </span>            : 
-<span class="lineNum">     120 </span><span class="lineCov">       2793 : + (IMP)implementationToConstructDefinitionForSEL:(SEL)selWithAdvicePrefix</span>
+<span class="lineNum">     120 </span><span class="lineCov">       2796 : + (IMP)implementationToConstructDefinitionForSEL:(SEL)selWithAdvicePrefix</span>
 <span class="lineNum">     121 </span>            : {
-<span class="lineNum">     122 </span><span class="lineCov">       5541 :     return imp_implementationWithBlock((__bridge id)objc_unretainedPointer((TyphoonDefinition*)^(TyphoonAssembly* me)</span>
+<span class="lineNum">     122 </span><span class="lineCov">       5547 :     return imp_implementationWithBlock((__bridge id)objc_unretainedPointer((TyphoonDefinition*)^(TyphoonAssembly* me)</span>
 <span class="lineNum">     123 </span>            :     {
 <span class="lineNum">     124 </span>            :         NSString* key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selWithAdvicePrefix];
 <span class="lineNum">     125 </span>            :         return [me-&gt;_definitionBuilder builtDefinitionForKey:key];
