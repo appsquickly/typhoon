@@ -18,6 +18,12 @@
 
 static NSMutableArray* swizzleRegistry;
 
+@interface TyphoonAssembly(TyphoonAssemblyAdviser)
+
++ (BOOL)selectorReservedOrPropertySetter:(SEL)selector;
+
+@end
+
 
 @implementation TyphoonAssemblyAdviser
 {

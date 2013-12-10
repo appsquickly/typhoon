@@ -56,7 +56,5 @@ AnalyticsService* service = [assembly analyticsService];
 */
 - (void)resolveCollaboratingAssemblies;
 
-// TyphoonAssemblyAdviser (should be Friend category)
-+ (BOOL)selectorReservedOrPropertySetter:(SEL)selector;
 
 @end
