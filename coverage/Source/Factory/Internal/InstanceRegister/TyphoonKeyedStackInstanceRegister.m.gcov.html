@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">34</td>
-            <td class="headerCovTableEntry">34</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -69,7 +69,7 @@
 <span class="lineNum">      11 </span>            : #import &quot;TyphoonGenericStack.h&quot;
 <span class="lineNum">      12 </span>            : 
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">         12 : @implementation TyphoonKeyedStackInstanceRegister</span>
+<span class="lineNum">      14 </span><span class="lineNoCov">          0 : @implementation TyphoonKeyedStackInstanceRegister</span>
 <span class="lineNum">      15 </span>            : {
 <span class="lineNum">      16 </span>            :     NSMutableDictionary* _registry;
 <span class="lineNum">      17 </span>            : }
@@ -77,62 +77,62 @@
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : #pragma mark Initialization
 <span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineCov">        260 : + (instancetype)instanceRegister</span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 : + (instancetype)instanceRegister</span>
 <span class="lineNum">      23 </span>            : {
-<span class="lineNum">      24 </span><span class="lineCov">        260 :     return [[self alloc] init];</span>
-<span class="lineNum">      25 </span><span class="lineCov">        260 : }</span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 :     return [[self alloc] init];</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">        260 : - (id)init</span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 : - (id)init</span>
 <span class="lineNum">      28 </span>            : {
-<span class="lineNum">      29 </span><span class="lineCov">        260 :     self = [super init];</span>
-<span class="lineNum">      30 </span><span class="lineCov">        260 :     if (self)</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :     self = [super init];</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :     if (self)</span>
 <span class="lineNum">      31 </span>            :     {
-<span class="lineNum">      32 </span><span class="lineCov">        260 :         _registry = [NSMutableDictionary dictionary];</span>
-<span class="lineNum">      33 </span><span class="lineCov">        260 :     }</span>
-<span class="lineNum">      34 </span><span class="lineCov">        260 :     return self;</span>
-<span class="lineNum">      35 </span><span class="lineCov">        260 : }</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :         _registry = [NSMutableDictionary dictionary];</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : 
 <span class="lineNum">      38 </span>            : #pragma mark Public API
 <span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span><span class="lineCov">        330 : - (void)stashInstance:(id)instance forKey:(NSString*)key</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : - (void)stashInstance:(id)instance forKey:(NSString*)key</span>
 <span class="lineNum">      41 </span>            : {
-<span class="lineNum">      42 </span><span class="lineCov">        330 :     TyphoonGenericStack* stack = [self stackForKey:key];</span>
-<span class="lineNum">      43 </span><span class="lineCov">        330 :     [stack push:instance];</span>
-<span class="lineNum">      44 </span><span class="lineCov">        330 : }</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     TyphoonGenericStack* stack = [self stackForKey:key];</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     [stack push:instance];</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      45 </span>            : 
-<span class="lineNum">      46 </span><span class="lineCov">        326 : - (id)unstashInstanceForKey:(NSString*)key</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : - (id)unstashInstanceForKey:(NSString*)key</span>
 <span class="lineNum">      47 </span>            : {
-<span class="lineNum">      48 </span><span class="lineCov">        326 :     TyphoonGenericStack* stack = _registry[key];</span>
-<span class="lineNum">      49 </span><span class="lineCov">        326 :     return [stack pop];</span>
-<span class="lineNum">      50 </span><span class="lineCov">        326 : }</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :     TyphoonGenericStack* stack = _registry[key];</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     return [stack pop];</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span><span class="lineCov">         29 : - (id)peekInstanceForKey:(NSString*)key</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : - (id)peekInstanceForKey:(NSString*)key</span>
 <span class="lineNum">      53 </span>            : {
-<span class="lineNum">      54 </span><span class="lineCov">         29 :     TyphoonGenericStack* stack = _registry[key];</span>
-<span class="lineNum">      55 </span><span class="lineCov">         29 :     return [stack peek];</span>
-<span class="lineNum">      56 </span><span class="lineCov">         29 : }</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     TyphoonGenericStack* stack = _registry[key];</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     return [stack peek];</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      57 </span>            : 
-<span class="lineNum">      58 </span><span class="lineCov">        149 : - (BOOL)hasInstanceForKey:(NSString*)key</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : - (BOOL)hasInstanceForKey:(NSString*)key</span>
 <span class="lineNum">      59 </span>            : {
-<span class="lineNum">      60 </span><span class="lineCov">        199 :     return ((_registry[key] != nil)&amp;&amp;([_registry[key] isEmpty] == NO));</span>
-<span class="lineNum">      61 </span><span class="lineCov">        149 : }</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :     return ((_registry[key] != nil)&amp;&amp;([_registry[key] isEmpty] == NO));</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      62 </span>            : 
 <span class="lineNum">      63 </span>            : 
 <span class="lineNum">      64 </span>            : #pragma mark Private methods
 <span class="lineNum">      65 </span>            : 
-<span class="lineNum">      66 </span><span class="lineCov">        330 : - (TyphoonGenericStack*)stackForKey:(NSString*)key</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 : - (TyphoonGenericStack*)stackForKey:(NSString*)key</span>
 <span class="lineNum">      67 </span>            : {
-<span class="lineNum">      68 </span><span class="lineCov">        330 :     TyphoonGenericStack* stack = _registry[key];</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :     TyphoonGenericStack* stack = _registry[key];</span>
 <span class="lineNum">      69 </span>            : 
-<span class="lineNum">      70 </span><span class="lineCov">        330 :     if (!stack)</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :     if (!stack)</span>
 <span class="lineNum">      71 </span>            :     {
-<span class="lineNum">      72 </span><span class="lineCov">        273 :         stack = [TyphoonGenericStack stack];</span>
-<span class="lineNum">      73 </span><span class="lineCov">        273 :         _registry[key] = stack;</span>
-<span class="lineNum">      74 </span><span class="lineCov">        273 :     }</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :         stack = [TyphoonGenericStack stack];</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :         _registry[key] = stack;</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      75 </span>            : 
-<span class="lineNum">      76 </span><span class="lineCov">        330 :     return stack;</span>
-<span class="lineNum">      77 </span><span class="lineCov">        330 : }</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 :     return stack;</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      78 </span>            : 
 <span class="lineNum">      79 </span>            : @end
 </pre>

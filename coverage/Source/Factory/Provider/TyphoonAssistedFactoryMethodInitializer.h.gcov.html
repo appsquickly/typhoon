@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -80,13 +80,13 @@
 <span class="lineNum">      22 </span>            : @interface TyphoonAssistedFactoryMethodInitializer : NSObject &lt;TyphoonAssistedFactoryMethod&gt;
 <span class="lineNum">      23 </span>            : 
 <span class="lineNum">      24 </span>            : /** The init method name. Should be an instance method in the returnType. */
-<span class="lineNum">      25 </span><span class="lineCov">         31 : @property (nonatomic, assign) SEL selector;</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : @property (nonatomic, assign) SEL selector;</span>
 <span class="lineNum">      26 </span>            : 
 <span class="lineNum">      27 </span>            : /** The factory method name */
-<span class="lineNum">      28 </span><span class="lineCov">         21 : @property (nonatomic, assign, readonly) SEL factoryMethod;</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 : @property (nonatomic, assign, readonly) SEL factoryMethod;</span>
 <span class="lineNum">      29 </span>            : 
 <span class="lineNum">      30 </span>            : /** Type of the returned instance from the factory method */
-<span class="lineNum">      31 </span><span class="lineCov">         30 : @property (nonatomic, assign, readonly) Class returnType;</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 : @property (nonatomic, assign, readonly) Class returnType;</span>
 <span class="lineNum">      32 </span>            : 
 <span class="lineNum">      33 </span>            : /**
 <span class="lineNum">      34 </span>            :  * The parameters definitions, sorted by parameter index.
