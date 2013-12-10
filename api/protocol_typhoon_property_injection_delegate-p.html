@@ -92,9 +92,12 @@ $(document).ready(function(){initNavTree('protocol_typhoon_property_injection_de
 <a href="#pub-methods">Instance Methods</a> &#124;
 <a href="protocol_typhoon_property_injection_delegate-p-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">&lt;TyphoonPropertyInjectionDelegate&gt; Protocol Reference<div class="ingroups"><a class="el" href="group___definition.html">Definition</a></div></div>  </div>
+<div class="title">&lt;TyphoonPropertyInjectionDelegate&gt; Protocol Reference<div class="ingroups"><a class="el" href="group___factory.html">Factory</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Typhoon components can implement this protocol to participate in property-injection life-cycle events.  
+ <a href="protocol_typhoon_property_injection_delegate-p.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for &lt;TyphoonPropertyInjectionDelegate&gt;:</div>
 <div class="dyncontent">
@@ -110,7 +113,14 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a2a19ed14a8e14be1ac0fc7e0618c0fd2"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_typhoon_property_injection_delegate-p.html#a2a19ed14a8e14be1ac0fc7e0618c0fd2">afterPropertiesSet</a></td></tr>
 <tr class="separator:a2a19ed14a8e14be1ac0fc7e0618c0fd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Method Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Typhoon components can implement this protocol to participate in property-injection life-cycle events. </p>
+<p>This gives some of the benefits of initializer-injection - the ability to provide before / after validation - while still allowing the flexibility of property injection.</p>
+<dl class="section note"><dt>Note</dt><dd>If you don't wish to implement this protocol on your class, you can also define custom callback selectors on <a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a>.</dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="interface_typhoon_definition.html#ab686236371546c16eddc6a43b5616de4">TyphoonDefinition.beforePropertyInjection</a> </dd>
+<dd>
+<a class="el" href="interface_typhoon_definition.html#acdedceeb37048b65edef42e4f9cb4ce1">TyphoonDefinition.afterPropertyInjection</a> </dd></dl>
+</div><h2 class="groupheader">Method Documentation</h2>
 <a class="anchor" id="a2a19ed14a8e14be1ac0fc7e0618c0fd2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -164,7 +174,7 @@ Instance Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="protocol_typhoon_property_injection_delegate-p.html">TyphoonPropertyInjectionDelegate</a></li>
-    <li class="footer">Generated on Tue Dec 10 2013 08:54:28 for Typhoon by
+    <li class="footer">Generated on Tue Dec 10 2013 09:24:13 for Typhoon by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

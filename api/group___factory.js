@@ -39,6 +39,10 @@ var group___factory =
     [ "<TyphoonComponentFactoryAware>", "protocol_typhoon_component_factory_aware-p.html", [
       [ "setFactory:", "protocol_typhoon_component_factory_aware-p.html#a87cc9f5101b8b32adbc70b5dd5be7f8e", null ]
     ] ],
+    [ "<TyphoonPropertyInjectionDelegate>", "protocol_typhoon_property_injection_delegate-p.html", [
+      [ "afterPropertiesSet", "protocol_typhoon_property_injection_delegate-p.html#a2a19ed14a8e14be1ac0fc7e0618c0fd2", null ],
+      [ "beforePropertiesSet", "protocol_typhoon_property_injection_delegate-p.html#a3281e62a53e9c25d89e35e3d0e5ef934", null ]
+    ] ],
     [ "TyphoonXmlComponentFactory", "interface_typhoon_xml_component_factory.html", [
       [ "initWithConfigFileName:", "interface_typhoon_xml_component_factory.html#a1350cb588266b70c29db7f510fa3df8d", null ],
       [ "initWithConfigFileNames:", "interface_typhoon_xml_component_factory.html#a027c0fbb73a3a9dea085c68d61bc7359", null ]

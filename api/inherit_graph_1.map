@@ -43,7 +43,7 @@
 <area shape="rect" id="node53" href="$interface_typhoon_pass_through_type_converter.html" title="A &#39;type converter&#39; for NSString and NSMutableString. " alt="" coords="459,2300,720,2327"/>
 <area shape="rect" id="node54" href="$interface_typhoon_patch_object_factory.html" title="TyphoonPatchObjectFactory" alt="" coords="178,2412,390,2439"/>
 <area shape="rect" id="node55" href="$interface_typhoon_primitive_type_converter.html" title="TyphoonPrimitiveTypeConverter" alt="" coords="168,2463,400,2490"/>
-<area shape="rect" id="node56" href="$protocol_typhoon_property_injection_delegate-p.html" title="\&lt;TyphoonPropertyInjection\lDelegate\&gt;" alt="" coords="183,2514,385,2556"/>
+<area shape="rect" id="node56" href="$protocol_typhoon_property_injection_delegate-p.html" title="Typhoon components can implement this protocol to participate in property&#45;injection life&#45;cycle events..." alt="" coords="183,2514,385,2556"/>
 <area shape="rect" id="node57" href="$protocol_typhoon_resource-p.html" title="\&lt;TyphoonResource\&gt;" alt="" coords="205,1316,363,1343"/>
 <area shape="rect" id="node58" href="$interface_typhoon_r_x_m_l_element.html" title="TyphoonRXMLElement" alt="" coords="201,2580,367,2607"/>
 <area shape="rect" id="node59" href="$interface_typhoon_string_utils.html" title="TyphoonStringUtils" alt="" coords="211,2631,357,2658"/>

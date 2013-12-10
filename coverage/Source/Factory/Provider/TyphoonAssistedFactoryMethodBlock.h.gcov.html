@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -76,10 +76,10 @@
 <span class="lineNum">      18 </span>            : @interface TyphoonAssistedFactoryMethodBlock : NSObject &lt;TyphoonAssistedFactoryMethod&gt;
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : /** The factory method name */
-<span class="lineNum">      21 </span><span class="lineCov">         15 : @property (nonatomic, assign, readonly) SEL factoryMethod;</span>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 : @property (nonatomic, assign, readonly) SEL factoryMethod;</span>
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : /** The factory method implementation block */
-<span class="lineNum">      24 </span><span class="lineCov">         15 : @property (nonatomic, strong, readonly) id bodyBlock;</span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 : @property (nonatomic, strong, readonly) id bodyBlock;</span>
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : /** Creates a method description from the given factoryMethod and bodyBlock */
 <span class="lineNum">      27 </span>            : - (instancetype)initWithFactoryMethod:(SEL)factoryMethod body:(id)bodyBlock;

@@ -3778,6 +3778,7 @@
       <Scope>TyphoonPropertyInjectionDelegate</Scope>
     </TokenIdentifier>
     <Path>protocol_typhoon_property_injection_delegate-p.html</Path>
+    <Abstract>Typhoon components can implement this protocol to participate in property-injection life-cycle events...</Abstract>
     <DeclaredIn>TyphoonPropertyInjectionDelegate.h</DeclaredIn>
   </Token>
   <Token>

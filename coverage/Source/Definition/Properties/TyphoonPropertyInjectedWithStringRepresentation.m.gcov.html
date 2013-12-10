@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">11</td>
-            <td class="headerCovTableEntry">11</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -78,7 +78,7 @@
 <span class="lineNum">      20 </span>            : *
 <span class="lineNum">      21 </span>            : * @see TyphoonPropertyPlaceholderConfigurer
 <span class="lineNum">      22 </span>            : */
-<span class="lineNum">      23 </span><span class="lineCov">        321 : @implementation TyphoonPropertyInjectedWithStringRepresentation</span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : @implementation TyphoonPropertyInjectedWithStringRepresentation</span>
 <span class="lineNum">      24 </span>            : 
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : @synthesize textValue = _textValue;
@@ -86,23 +86,23 @@
 <span class="lineNum">      28 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      29 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">        659 : - (id)initWithName:(NSString*)name value:(NSString*)value</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 : - (id)initWithName:(NSString*)name value:(NSString*)value</span>
 <span class="lineNum">      32 </span>            : {
-<span class="lineNum">      33 </span><span class="lineCov">        659 :     self = [super init];</span>
-<span class="lineNum">      34 </span><span class="lineCov">        659 :     if (self)</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     self = [super init];</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :     if (self)</span>
 <span class="lineNum">      35 </span>            :     {
-<span class="lineNum">      36 </span><span class="lineCov">        659 :         _name = name;</span>
-<span class="lineNum">      37 </span><span class="lineCov">        659 :         _textValue = value;</span>
-<span class="lineNum">      38 </span><span class="lineCov">        659 :     }</span>
-<span class="lineNum">      39 </span><span class="lineCov">        659 :     return self;</span>
-<span class="lineNum">      40 </span><span class="lineCov">        659 : }</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :         _name = name;</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :         _textValue = value;</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      41 </span>            : 
 <span class="lineNum">      42 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      43 </span>            : #pragma mark - Protocol Methods
 <span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span><span class="lineCov">        201 : - (TyphoonPropertyInjectionType)injectionType</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : - (TyphoonPropertyInjectionType)injectionType</span>
 <span class="lineNum">      46 </span>            : {
-<span class="lineNum">      47 </span><span class="lineCov">        201 :     return TyphoonPropertyInjectionTypeAsStringRepresentation;</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :     return TyphoonPropertyInjectionTypeAsStringRepresentation;</span>
 <span class="lineNum">      48 </span>            : }
 <span class="lineNum">      49 </span>            : 
 <span class="lineNum">      50 </span>            : 

@@ -20,10 +20,6 @@ var group___definition =
       [ "injectWithValueAsText:", "interface_typhoon_initializer.html#a6f3e979db9e3edb041e2870794b496fa", null ],
       [ "injectWithValueAsText:requiredTypeOrNil:", "interface_typhoon_initializer.html#a0a0f3a9d00a217113ba003adb0b27128", null ]
     ] ],
-    [ "<TyphoonPropertyInjectionDelegate>", "protocol_typhoon_property_injection_delegate-p.html", [
-      [ "afterPropertiesSet", "protocol_typhoon_property_injection_delegate-p.html#a2a19ed14a8e14be1ac0fc7e0618c0fd2", null ],
-      [ "beforePropertiesSet", "protocol_typhoon_property_injection_delegate-p.html#a3281e62a53e9c25d89e35e3d0e5ef934", null ]
-    ] ],
     [ "TyphoonDefinition", "interface_typhoon_definition.html", [
       [ "afterPropertyInjection", "interface_typhoon_definition.html#acdedceeb37048b65edef42e4f9cb4ce1", null ],
       [ "beforePropertyInjection", "interface_typhoon_definition.html#ab686236371546c16eddc6a43b5616de4", null ],
