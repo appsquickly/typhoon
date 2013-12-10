@@ -918,17 +918,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>selectorReservedOrPropertySetter:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonAssembly</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_assembly.html</Path>
-    <Anchor>a3e63c6da4faadc027f52c29157f18098</Anchor>
-    <DeclaredIn>TyphoonAssembly.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>resolveCollaboratingAssemblies</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>

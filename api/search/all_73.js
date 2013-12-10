@@ -3,7 +3,6 @@ var searchData=
   ['scope',['scope',['../interface_typhoon_definition.html#aa4df6569a008392075c9689a73d13729',1,'TyphoonDefinition']]],
   ['selector',['selector',['../interface_typhoon_initializer.html#a0afdf647b8c1d9b1e97720142bc2a056',1,'TyphoonInitializer::selector()'],['../interface_typhoon_assisted_factory_method_initializer.html#ab6098efcf36729bc4c92d311c4234865',1,'TyphoonAssistedFactoryMethodInitializer::selector()']]],
   ['selectorisadvised_3a',['selectorIsAdvised:',['../interface_typhoon_assembly_selector_adviser.html#a3a84226f163361adc8e91ac260835bb5',1,'TyphoonAssemblySelectorAdviser']]],
-  ['selectorreservedorpropertysetter_3a',['selectorReservedOrPropertySetter:',['../interface_typhoon_assembly.html#a3e63c6da4faadc027f52c29157f18098',1,'TyphoonAssembly']]],
   ['setfactory_3a',['setFactory:',['../protocol_typhoon_component_factory_aware-p.html#a87cc9f5101b8b32adbc70b5dd5be7f8e',1,'TyphoonComponentFactoryAware-p']]],
   ['setinitializer_3a',['setInitializer:',['../protocol_typhoon_injected_parameter-p.html#a827aeb953af7774e9493660b2868d494',1,'TyphoonInjectedParameter-p']]],
   ['setinjectionvalue_3aforproperty_3a',['setInjectionValue:forProperty:',['../interface_typhoon_assisted_factory_base.html#a24c30ba55095af99f998b9d2b020cf56',1,'TyphoonAssistedFactoryBase']]],

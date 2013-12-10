@@ -1,6 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"interface_typhoon_string_utils.html#a2477c8f65cb8bc973019489ad5330146":[1,0,57,4],
 "interface_typhoon_string_utils.html#a314c331e7af05b3118ee17d6093866e3":[1,0,57,2],
 "interface_typhoon_string_utils.html#a4a8dfea7013110741f99da56d04e33b7":[1,0,57,6],
 "interface_typhoon_string_utils.html#a83ee753cbf2bf04785a7f5186a5046e9":[1,0,57,0],
