@@ -38,6 +38,6 @@ var searchData=
   ['typhoonpropertyinjectiontypeasstringrepresentation',['TyphoonPropertyInjectionTypeAsStringRepresentation',['../_typhoon_injected_property_8h.html#ae866698cae5bafbde2d355877b5f236fab7d046328cf52619c195f4255e3f78df',1,'TyphoonInjectedProperty.h']]],
   ['typhoonpropertyinjectiontypebyreference',['TyphoonPropertyInjectionTypeByReference',['../_typhoon_injected_property_8h.html#ae866698cae5bafbde2d355877b5f236fabdf258567701778ea35ffa7fa0875f01',1,'TyphoonInjectedProperty.h']]],
   ['typhoonpropertyinjectiontypebytype',['TyphoonPropertyInjectionTypeByType',['../_typhoon_injected_property_8h.html#ae866698cae5bafbde2d355877b5f236fa037567a3be23debd303de030e136c2b1',1,'TyphoonInjectedProperty.h']]],
-  ['typhoonscopedefault',['TyphoonScopeDefault',['../_typhoon_definition_8h.html#a6e7c49074062029ada1d93e0feef6c4ca0ff0c60aeaa530c206d159099b3b53fe',1,'TyphoonDefinition.h']]],
-  ['typhoonscopesingleton',['TyphoonScopeSingleton',['../_typhoon_definition_8h.html#a6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb',1,'TyphoonDefinition.h']]]
+  ['typhoonscopedefault',['TyphoonScopeDefault',['../group___definition.html#gga6e7c49074062029ada1d93e0feef6c4ca0ff0c60aeaa530c206d159099b3b53fe',1,'TyphoonDefinition.h']]],
+  ['typhoonscopesingleton',['TyphoonScopeSingleton',['../group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb',1,'TyphoonDefinition.h']]]
 ];

@@ -424,6 +424,23 @@
              </Node>
             </Subnodes>
            </Node>
+           <Node>
+            <Name>TyphoonScope</Name>
+            <Path>group___definition.html</Path>
+            <Anchor>ga6e7c49074062029ada1d93e0feef6c4c</Anchor>
+            <Subnodes>
+             <Node>
+              <Name>TyphoonScopeDefault</Name>
+              <Path>group___definition.html</Path>
+              <Anchor>gga6e7c49074062029ada1d93e0feef6c4ca0ff0c60aeaa530c206d159099b3b53fe</Anchor>
+             </Node>
+             <Node>
+              <Name>TyphoonScopeSingleton</Name>
+              <Path>group___definition.html</Path>
+              <Anchor>gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb</Anchor>
+             </Node>
+            </Subnodes>
+           </Node>
           </Subnodes>
          </Node>
          <Node>
@@ -3859,17 +3876,17 @@
              <Node>
               <Name>TyphoonScope</Name>
               <Path>_typhoon_definition_8h.html</Path>
-              <Anchor>a6e7c49074062029ada1d93e0feef6c4c</Anchor>
+              <Anchor>ga6e7c49074062029ada1d93e0feef6c4c</Anchor>
               <Subnodes>
                <Node>
                 <Name>TyphoonScopeDefault</Name>
                 <Path>_typhoon_definition_8h.html</Path>
-                <Anchor>a6e7c49074062029ada1d93e0feef6c4ca0ff0c60aeaa530c206d159099b3b53fe</Anchor>
+                <Anchor>gga6e7c49074062029ada1d93e0feef6c4ca0ff0c60aeaa530c206d159099b3b53fe</Anchor>
                </Node>
                <Node>
                 <Name>TyphoonScopeSingleton</Name>
                 <Path>_typhoon_definition_8h.html</Path>
-                <Anchor>a6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb</Anchor>
+                <Anchor>gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb</Anchor>
                </Node>
               </Subnodes>
              </Node>

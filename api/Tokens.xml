@@ -279,26 +279,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>TyphoonScopeDefault</Name>
-      <APILanguage>c</APILanguage>
-      <Type>econst</Type>
-    </TokenIdentifier>
-    <Path>_typhoon_definition_8h.html</Path>
-    <Anchor>a6e7c49074062029ada1d93e0feef6c4ca0ff0c60aeaa530c206d159099b3b53fe</Anchor>
-    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>TyphoonScopeSingleton</Name>
-      <APILanguage>c</APILanguage>
-      <Type>econst</Type>
-    </TokenIdentifier>
-    <Path>_typhoon_definition_8h.html</Path>
-    <Anchor>a6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb</Anchor>
-    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>TyphoonComponentInitializerIsClassMethodGuess</Name>
       <APILanguage>c</APILanguage>
       <Type>econst</Type>
@@ -692,6 +672,26 @@
     </TokenIdentifier>
     <Path>group___definition.html</Path>
     <Abstract>Describing architectural components and their collaborators. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>TyphoonScopeDefault</Name>
+      <APILanguage>c</APILanguage>
+      <Type>econst</Type>
+    </TokenIdentifier>
+    <Path>group___definition.html</Path>
+    <Anchor>gga6e7c49074062029ada1d93e0feef6c4ca0ff0c60aeaa530c206d159099b3b53fe</Anchor>
+    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>TyphoonScopeSingleton</Name>
+      <APILanguage>c</APILanguage>
+      <Type>econst</Type>
+    </TokenIdentifier>
+    <Path>group___definition.html</Path>
+    <Anchor>gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb</Anchor>
+    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>

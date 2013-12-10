@@ -41,5 +41,9 @@ var group___definition =
       [ "withClass:initialization:", "interface_typhoon_definition.html#abfbc8c21959e41a5fc4bb7282e2ff9e1", null ],
       [ "withClass:initialization:properties:", "interface_typhoon_definition.html#aa9dcfc1049a83acb4490f2d014fed773", null ],
       [ "withClass:properties:", "interface_typhoon_definition.html#af465b133fd7f973be3275714d7f5bb50", null ]
+    ] ],
+    [ "TyphoonScope", "group___definition.html#ga6e7c49074062029ada1d93e0feef6c4c", [
+      [ "TyphoonScopeDefault", "group___definition.html#gga6e7c49074062029ada1d93e0feef6c4ca0ff0c60aeaa530c206d159099b3b53fe", null ],
+      [ "TyphoonScopeSingleton", "group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb", null ]
     ] ]
 ];
