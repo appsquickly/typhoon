@@ -160,7 +160,7 @@ And then:
 * <a href="https://github.com/jasperblues/Typhoon/wiki/Configuration-Management-&amp;-Testing">Configuration Management & Testing.</a>
 
 # Reports 
-![Build Status](http://www.typhoonframework.org/docs/latest/build-status/build-status.png)
+![Build Status](http://www.typhoonframework.org/docs/latest/build-status/build-status.png?q=zz)
 
 
 The following reports are published by our build server after each commit. (We use something a little more comprehensive than Travis - if you'd like the scripts, we'd be happy to share). Note that the status of the CI build is not related to tagged releases that are published and pushed to CocoaPods - these are stable. 
