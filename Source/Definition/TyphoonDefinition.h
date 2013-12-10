@@ -17,11 +17,21 @@
 @protocol TyphoonInjectedProperty;
 @class TyphoonPropertyInjectedAsCollection;
 
+/**
+* Describes the lifecycle of a Typhoon component.
+*
+* - TyphoonScopeDefault means that a new component is created for each time it is referenced in a collaborator, or retrieved from the
+* factory.
+*
+* - TyphoonScopeSingleton creates a shared instance.
+*
+*/
 typedef enum
 {
     TyphoonScopeDefault,
     TyphoonScopeSingleton
 } TyphoonScope;
+
 
 typedef void(^TyphoonInitializerBlock)(TyphoonInitializer* initializer);
 
