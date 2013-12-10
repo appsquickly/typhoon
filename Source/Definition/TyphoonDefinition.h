@@ -18,6 +18,7 @@
 @class TyphoonPropertyInjectedAsCollection;
 
 /**
+* @ingroup Definition
 * Describes the lifecycle of a Typhoon component.
 *
 * - TyphoonScopeDefault means that a new component is created for each time it is referenced in a collaborator, or retrieved from the
