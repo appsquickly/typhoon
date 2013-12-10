@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -120,12 +120,12 @@
 <span class="lineNum">      62 </span>            : 
 <span class="lineNum">      63 </span>            : DISPATCH_INLINE DISPATCH_ALWAYS_INLINE DISPATCH_NONNULL_ALL DISPATCH_NOTHROW
 <span class="lineNum">      64 </span>            : void
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 : _dispatch_once(dispatch_once_t *predicate, dispatch_block_t block)</span>
+<span class="lineNum">      65 </span><span class="lineCov">        328 : _dispatch_once(dispatch_once_t *predicate, dispatch_block_t block)</span>
 <span class="lineNum">      66 </span>            : {
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 :         if (DISPATCH_EXPECT(*predicate, ~0l) != ~0l) {</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 :                 dispatch_once(predicate, block);</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      67 </span><span class="lineCov">        328 :         if (DISPATCH_EXPECT(*predicate, ~0l) != ~0l) {</span>
+<span class="lineNum">      68 </span><span class="lineCov">          3 :                 dispatch_once(predicate, block);</span>
+<span class="lineNum">      69 </span><span class="lineCov">          3 :         }</span>
+<span class="lineNum">      70 </span><span class="lineCov">        328 : }</span>
 <span class="lineNum">      71 </span>            : #undef dispatch_once
 <span class="lineNum">      72 </span>            : #define dispatch_once _dispatch_once
 <span class="lineNum">      73 </span>            : #endif

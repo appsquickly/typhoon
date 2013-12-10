@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">43</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">43</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -77,73 +77,73 @@
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : @implementation TyphoonAssistedFactoryBase (TyphoonFactoryMethodClosure)
 <span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineNoCov">          0 : + (void)_fmc_setClosure:(TyphoonAssistedFactoryMethodClosure *)closure forSelector:(SEL)selector</span>
+<span class="lineNum">      22 </span><span class="lineCov">         10 : + (void)_fmc_setClosure:(TyphoonAssistedFactoryMethodClosure *)closure forSelector:(SEL)selector</span>
 <span class="lineNum">      23 </span>            : {
-<span class="lineNum">      24 </span><span class="lineNoCov">          0 :     NSMutableDictionary *closures = [self _fmc_closures];</span>
-<span class="lineNum">      25 </span><span class="lineNoCov">          0 :     @synchronized(closures)</span>
+<span class="lineNum">      24 </span><span class="lineCov">         10 :     NSMutableDictionary *closures = [self _fmc_closures];</span>
+<span class="lineNum">      25 </span><span class="lineCov">         10 :     @synchronized(closures)</span>
 <span class="lineNum">      26 </span>            :     {
-<span class="lineNum">      27 </span><span class="lineNoCov">          0 :         closures[NSStringFromSelector(selector)] = closure;</span>
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      27 </span><span class="lineCov">         30 :         closures[NSStringFromSelector(selector)] = closure;</span>
+<span class="lineNum">      28 </span><span class="lineCov">         10 :     }</span>
+<span class="lineNum">      29 </span><span class="lineCov">         10 : }</span>
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 : + (TyphoonAssistedFactoryMethodClosure *)_fmc_closureForSelector:(SEL)selector</span>
+<span class="lineNum">      31 </span><span class="lineCov">          4 : + (TyphoonAssistedFactoryMethodClosure *)_fmc_closureForSelector:(SEL)selector</span>
 <span class="lineNum">      32 </span>            : {
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     NSMutableDictionary *closures = [self _fmc_closures];</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 :     @synchronized(closures)</span>
+<span class="lineNum">      33 </span><span class="lineCov">          4 :     NSMutableDictionary *closures = [self _fmc_closures];</span>
+<span class="lineNum">      34 </span><span class="lineCov">          4 :     @synchronized(closures)</span>
 <span class="lineNum">      35 </span>            :     {
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 :         return closures[NSStringFromSelector(selector)];</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      36 </span><span class="lineCov">         12 :         return closures[NSStringFromSelector(selector)];</span>
+<span class="lineNum">      37 </span><span class="lineCov">          4 :     }</span>
+<span class="lineNum">      38 </span><span class="lineCov">          4 : }</span>
 <span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : + (NSMutableDictionary *)_fmc_closures</span>
+<span class="lineNum">      40 </span><span class="lineCov">         14 : + (NSMutableDictionary *)_fmc_closures</span>
 <span class="lineNum">      41 </span>            : {
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     NSMutableDictionary *closures = objc_getAssociatedObject(self, sFactoryMethodClosures);</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     if (!closures)</span>
+<span class="lineNum">      42 </span><span class="lineCov">         14 :     NSMutableDictionary *closures = objc_getAssociatedObject(self, sFactoryMethodClosures);</span>
+<span class="lineNum">      43 </span><span class="lineCov">         14 :     if (!closures)</span>
 <span class="lineNum">      44 </span>            :     {
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 :         @synchronized(self)</span>
+<span class="lineNum">      45 </span><span class="lineCov">         10 :         @synchronized(self)</span>
 <span class="lineNum">      46 </span>            :         {
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 :             closures = objc_getAssociatedObject(self, sFactoryMethodClosures);</span>
+<span class="lineNum">      47 </span><span class="lineCov">         20 :             closures = objc_getAssociatedObject(self, sFactoryMethodClosures);</span>
 <span class="lineNum">      48 </span>            :             // yes, I know, double-checked locking
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 :             if (!closures)</span>
+<span class="lineNum">      49 </span><span class="lineCov">         10 :             if (!closures)</span>
 <span class="lineNum">      50 </span>            :             {
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 :                 closures = [NSMutableDictionary dictionary];</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 :                 objc_setAssociatedObject(self, sFactoryMethodClosures, closures, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 :             }</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      51 </span><span class="lineCov">         20 :                 closures = [NSMutableDictionary dictionary];</span>
+<span class="lineNum">      52 </span><span class="lineCov">         10 :                 objc_setAssociatedObject(self, sFactoryMethodClosures, closures, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</span>
+<span class="lineNum">      53 </span><span class="lineCov">         10 :             }</span>
+<span class="lineNum">      54 </span><span class="lineCov">         10 :         }</span>
+<span class="lineNum">      55 </span><span class="lineCov">         10 :     }</span>
 <span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 :     return closures;</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      57 </span><span class="lineCov">         14 :     return closures;</span>
+<span class="lineNum">      58 </span><span class="lineCov">         14 : }</span>
 <span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 : - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector</span>
+<span class="lineNum">      60 </span><span class="lineCov">          2 : - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector</span>
 <span class="lineNum">      61 </span>            : {
 <span class="lineNum">      62 </span>            :     // Return the method signature of the real object, or find the method
 <span class="lineNum">      63 </span>            :     // signature from the corresponding factory method closure.
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 :     NSMethodSignature *signature = [super methodSignatureForSelector:aSelector];</span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 :     if (!signature)</span>
+<span class="lineNum">      64 </span><span class="lineCov">          2 :     NSMethodSignature *signature = [super methodSignatureForSelector:aSelector];</span>
+<span class="lineNum">      65 </span><span class="lineCov">          2 :     if (!signature)</span>
 <span class="lineNum">      66 </span>            :     {
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 :         TyphoonAssistedFactoryMethodClosure *closure = [[self class] _fmc_closureForSelector:aSelector];</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 :         signature = closure.methodSignature;</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      67 </span><span class="lineCov">          2 :         TyphoonAssistedFactoryMethodClosure *closure = [[self class] _fmc_closureForSelector:aSelector];</span>
+<span class="lineNum">      68 </span><span class="lineCov">          2 :         signature = closure.methodSignature;</span>
+<span class="lineNum">      69 </span><span class="lineCov">          2 :     }</span>
 <span class="lineNum">      70 </span>            : 
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 :     return signature;</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      71 </span><span class="lineCov">          2 :     return signature;</span>
+<span class="lineNum">      72 </span><span class="lineCov">          2 : }</span>
 <span class="lineNum">      73 </span>            : 
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 : - (void)forwardInvocation:(NSInvocation *)anInvocation</span>
+<span class="lineNum">      74 </span><span class="lineCov">          2 : - (void)forwardInvocation:(NSInvocation *)anInvocation</span>
 <span class="lineNum">      75 </span>            : {
 <span class="lineNum">      76 </span>            :     // Find the factory method closure related to this invocation selector, and
 <span class="lineNum">      77 </span>            :     // create a new invocation from it, using the arguments of this invocation.
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 :     TyphoonAssistedFactoryMethodClosure *closure = [[self class] _fmc_closureForSelector:anInvocation.selector];</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 :     NSInvocation *closureInvocation = [closure invocationWithFactory:self forwardedInvocation:anInvocation];</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 :     [closureInvocation invoke];</span>
+<span class="lineNum">      78 </span><span class="lineCov">          2 :     TyphoonAssistedFactoryMethodClosure *closure = [[self class] _fmc_closureForSelector:anInvocation.selector];</span>
+<span class="lineNum">      79 </span><span class="lineCov">          2 :     NSInvocation *closureInvocation = [closure invocationWithFactory:self forwardedInvocation:anInvocation];</span>
+<span class="lineNum">      80 </span><span class="lineCov">          2 :     [closureInvocation invoke];</span>
 <span class="lineNum">      81 </span>            : 
 <span class="lineNum">      82 </span>            :     // Finally, copy the return value from one invocation to another.
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 :     NSUInteger methodReturnLength = [closure.methodSignature methodReturnLength];</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 :     void *returnValue = malloc(methodReturnLength);</span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 :     [closureInvocation getReturnValue:returnValue];</span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 :     [anInvocation setReturnValue:returnValue];</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 :     free(returnValue);</span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      83 </span><span class="lineCov">          2 :     NSUInteger methodReturnLength = [closure.methodSignature methodReturnLength];</span>
+<span class="lineNum">      84 </span><span class="lineCov">          2 :     void *returnValue = malloc(methodReturnLength);</span>
+<span class="lineNum">      85 </span><span class="lineCov">          2 :     [closureInvocation getReturnValue:returnValue];</span>
+<span class="lineNum">      86 </span><span class="lineCov">          2 :     [anInvocation setReturnValue:returnValue];</span>
+<span class="lineNum">      87 </span><span class="lineCov">          2 :     free(returnValue);</span>
+<span class="lineNum">      88 </span><span class="lineCov">          2 : }</span>
 <span class="lineNum">      89 </span>            : 
 <span class="lineNum">      90 </span>            : @end
 </pre>

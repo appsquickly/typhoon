@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">64</td>
             <td class="headerCovTableEntry">69</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryHi">92.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -76,121 +76,121 @@
 <span class="lineNum">      18 </span>            : #import &quot;OCLogTemplate.h&quot;
 <span class="lineNum">      19 </span>            : #import &quot;TyphoonComponentFactory.h&quot;
 <span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span><span class="lineNoCov">          0 : @implementation TyphoonPropertyPlaceholderConfigurer</span>
+<span class="lineNum">      21 </span><span class="lineCov">          2 : @implementation TyphoonPropertyPlaceholderConfigurer</span>
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      24 </span>            : #pragma mark - Class Methods
 <span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span><span class="lineNoCov">          0 : + (TyphoonPropertyPlaceholderConfigurer*)configurer</span>
+<span class="lineNum">      26 </span><span class="lineCov">         48 : + (TyphoonPropertyPlaceholderConfigurer*)configurer</span>
 <span class="lineNum">      27 </span>            : {
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     return [[[self class] alloc] init];</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      28 </span><span class="lineCov">         48 :     return [[[self class] alloc] init];</span>
+<span class="lineNum">      29 </span><span class="lineCov">         48 : }</span>
 <span class="lineNum">      30 </span>            : 
 <span class="lineNum">      31 </span><span class="lineNoCov">          0 : + (TyphoonPropertyPlaceholderConfigurer*)configurerWithResource:(id &lt;TyphoonResource&gt;)resource</span>
 <span class="lineNum">      32 </span>            : {
 <span class="lineNum">      33 </span><span class="lineNoCov">          0 :     return [self configurerWithResourceList:@[resource]];</span>
 <span class="lineNum">      34 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : + (TyphoonPropertyPlaceholderConfigurer*)configurerWithResources:(id &lt;TyphoonResource&gt;)first, ...</span>
+<span class="lineNum">      36 </span><span class="lineCov">          3 : + (TyphoonPropertyPlaceholderConfigurer*)configurerWithResources:(id &lt;TyphoonResource&gt;)first, ...</span>
 <span class="lineNum">      37 </span>            : {
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 :     NSMutableArray* resources = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     [resources addObject:first];</span>
+<span class="lineNum">      38 </span><span class="lineCov">          3 :     NSMutableArray* resources = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      39 </span><span class="lineCov">          3 :     [resources addObject:first];</span>
 <span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     va_list resource_list;</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     va_start(resource_list, first);</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     id &lt;TyphoonResource&gt; resource;</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     while ((resource = va_arg( resource_list, id &lt; TyphoonResource &gt;)))</span>
+<span class="lineNum">      41 </span><span class="lineCov">          3 :     va_list resource_list;</span>
+<span class="lineNum">      42 </span><span class="lineCov">          3 :     va_start(resource_list, first);</span>
+<span class="lineNum">      43 </span><span class="lineCov">          3 :     id &lt;TyphoonResource&gt; resource;</span>
+<span class="lineNum">      44 </span><span class="lineCov">          6 :     while ((resource = va_arg( resource_list, id &lt; TyphoonResource &gt;)))</span>
 <span class="lineNum">      45 </span>            :     {
 <span class="lineNum">      46 </span><span class="lineNoCov">          0 :         [resources addObject:resource];</span>
 <span class="lineNum">      47 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 :     va_end(resource_list);</span>
+<span class="lineNum">      48 </span><span class="lineCov">          3 :     va_end(resource_list);</span>
 <span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :     return [self configurerWithResourceList:resources];</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      50 </span><span class="lineCov">          3 :     return [self configurerWithResourceList:resources];</span>
+<span class="lineNum">      51 </span><span class="lineCov">          3 : }</span>
 <span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : + (TyphoonPropertyPlaceholderConfigurer*)configurerWithResourceList:(NSArray*)resources</span>
+<span class="lineNum">      53 </span><span class="lineCov">         46 : + (TyphoonPropertyPlaceholderConfigurer*)configurerWithResourceList:(NSArray*)resources</span>
 <span class="lineNum">      54 </span>            : {
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     TyphoonPropertyPlaceholderConfigurer* configurer = [TyphoonPropertyPlaceholderConfigurer configurer];</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 :     for (id &lt;TyphoonResource&gt; resource in resources)</span>
+<span class="lineNum">      55 </span><span class="lineCov">         46 :     TyphoonPropertyPlaceholderConfigurer* configurer = [TyphoonPropertyPlaceholderConfigurer configurer];</span>
+<span class="lineNum">      56 </span><span class="lineCov">        270 :     for (id &lt;TyphoonResource&gt; resource in resources)</span>
 <span class="lineNum">      57 </span>            :     {
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 :         [configurer usePropertyStyleResource:resource];</span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 :     return configurer;</span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      58 </span><span class="lineCov">         89 :         [configurer usePropertyStyleResource:resource];</span>
+<span class="lineNum">      59 </span><span class="lineCov">        270 :     }</span>
+<span class="lineNum">      60 </span><span class="lineCov">         46 :     return configurer;</span>
+<span class="lineNum">      61 </span><span class="lineCov">         46 : }</span>
 <span class="lineNum">      62 </span>            : 
 <span class="lineNum">      63 </span>            : 
 <span class="lineNum">      64 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      65 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      66 </span>            : 
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 : - (id)initWithPrefix:(NSString*)prefix suffix:(NSString*)suffix</span>
+<span class="lineNum">      67 </span><span class="lineCov">         91 : - (id)initWithPrefix:(NSString*)prefix suffix:(NSString*)suffix</span>
 <span class="lineNum">      68 </span>            : {
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 :     self = [super init];</span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 :     if (self)</span>
+<span class="lineNum">      69 </span><span class="lineCov">         91 :     self = [super init];</span>
+<span class="lineNum">      70 </span><span class="lineCov">         91 :     if (self)</span>
 <span class="lineNum">      71 </span>            :     {
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 :         _prefix = prefix;</span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 :         _suffix = suffix;</span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 :         _properties = [[NSMutableDictionary alloc] init];</span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 :     return self;</span>
-<span class="lineNum">      77 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      72 </span><span class="lineCov">         91 :         _prefix = prefix;</span>
+<span class="lineNum">      73 </span><span class="lineCov">         91 :         _suffix = suffix;</span>
+<span class="lineNum">      74 </span><span class="lineCov">         91 :         _properties = [[NSMutableDictionary alloc] init];</span>
+<span class="lineNum">      75 </span><span class="lineCov">         91 :     }</span>
+<span class="lineNum">      76 </span><span class="lineCov">         91 :     return self;</span>
+<span class="lineNum">      77 </span><span class="lineCov">         91 : }</span>
 <span class="lineNum">      78 </span>            : 
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : - (id)init</span>
+<span class="lineNum">      79 </span><span class="lineCov">         91 : - (id)init</span>
 <span class="lineNum">      80 </span>            : {
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 :     return [self initWithPrefix:@&quot;${&quot; suffix:@&quot;}&quot;];</span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      81 </span><span class="lineCov">         91 :     return [self initWithPrefix:@&quot;${&quot; suffix:@&quot;}&quot;];</span>
+<span class="lineNum">      82 </span><span class="lineCov">         91 : }</span>
 <span class="lineNum">      83 </span>            : 
 <span class="lineNum">      84 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      85 </span>            : #pragma mark - Interface Methods
 <span class="lineNum">      86 </span>            : 
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 : - (void)usePropertyStyleResource:(id &lt;TyphoonResource&gt;)resource</span>
+<span class="lineNum">      87 </span><span class="lineCov">        134 : - (void)usePropertyStyleResource:(id &lt;TyphoonResource&gt;)resource</span>
 <span class="lineNum">      88 </span>            : {
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 :     NSArray* lines = [[resource asString] componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];</span>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 :     for (NSString* line in lines)</span>
+<span class="lineNum">      89 </span><span class="lineCov">        134 :     NSArray* lines = [[resource asString] componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];</span>
+<span class="lineNum">      90 </span><span class="lineCov">        900 :     for (NSString* line in lines)</span>
 <span class="lineNum">      91 </span>            :     {
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 :         if (![line hasPrefix:@&quot;#&quot;])</span>
+<span class="lineNum">      92 </span><span class="lineCov">        316 :         if (![line hasPrefix:@&quot;#&quot;])</span>
 <span class="lineNum">      93 </span>            :         {
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 :             NSRange range = [line rangeOfString:@&quot;=&quot;];</span>
-<span class="lineNum">      95 </span><span class="lineNoCov">          0 :             if (range.location != NSNotFound)</span>
+<span class="lineNum">      94 </span><span class="lineCov">        316 :             NSRange range = [line rangeOfString:@&quot;=&quot;];</span>
+<span class="lineNum">      95 </span><span class="lineCov">        316 :             if (range.location != NSNotFound)</span>
 <span class="lineNum">      96 </span>            :             {
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 :                 NSString* property = [line substringToIndex:range.location];</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 :                 NSString* value = [line substringFromIndex:range.location + range.length];</span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 :                 [_properties setObject:value forKey:property];</span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 :             }</span>
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      97 </span><span class="lineCov">        225 :                 NSString* property = [line substringToIndex:range.location];</span>
+<span class="lineNum">      98 </span><span class="lineCov">        225 :                 NSString* value = [line substringFromIndex:range.location + range.length];</span>
+<span class="lineNum">      99 </span><span class="lineCov">        225 :                 [_properties setObject:value forKey:property];</span>
+<span class="lineNum">     100 </span><span class="lineCov">        225 :             }</span>
+<span class="lineNum">     101 </span><span class="lineCov">        316 :         }</span>
+<span class="lineNum">     102 </span><span class="lineCov">        900 :     }</span>
+<span class="lineNum">     103 </span><span class="lineCov">        134 : }</span>
 <span class="lineNum">     104 </span>            : 
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 : - (NSDictionary*)properties</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 : - (NSDictionary*)properties</span>
 <span class="lineNum">     106 </span>            : {
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 :     return [_properties copy];</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :     return [_properties copy];</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">     109 </span>            : 
 <span class="lineNum">     110 </span>            : 
 <span class="lineNum">     111 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     112 </span>            : #pragma mark - Protocol Methods
 <span class="lineNum">     113 </span>            : 
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 : - (void)postProcessComponentFactory:(TyphoonComponentFactory*)factory</span>
+<span class="lineNum">     114 </span><span class="lineCov">         23 : - (void)postProcessComponentFactory:(TyphoonComponentFactory*)factory</span>
 <span class="lineNum">     115 </span>            : {
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 :     for (TyphoonDefinition* definition in [factory registry])</span>
+<span class="lineNum">     116 </span><span class="lineCov">        420 :     for (TyphoonDefinition* definition in [factory registry])</span>
 <span class="lineNum">     117 </span>            :     {
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 :         for (id &lt;TyphoonComponentInjectedByValue&gt; component in [definition componentsInjectedByValue])</span>
+<span class="lineNum">     118 </span><span class="lineCov">        613 :         for (id &lt;TyphoonComponentInjectedByValue&gt; component in [definition componentsInjectedByValue])</span>
 <span class="lineNum">     119 </span>            :         {
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 :             [self mutateComponentInjectedByValue:component];</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     120 </span><span class="lineCov">        154 :             [self mutateComponentInjectedByValue:component];</span>
+<span class="lineNum">     121 </span><span class="lineCov">        613 :         }</span>
+<span class="lineNum">     122 </span><span class="lineCov">        420 :     }</span>
+<span class="lineNum">     123 </span><span class="lineCov">         23 : }</span>
 <span class="lineNum">     124 </span>            : 
-<span class="lineNum">     125 </span><span class="lineNoCov">          0 : - (void)mutateComponentInjectedByValue:(id &lt;TyphoonComponentInjectedByValue&gt;)component;</span>
+<span class="lineNum">     125 </span><span class="lineCov">        154 : - (void)mutateComponentInjectedByValue:(id &lt;TyphoonComponentInjectedByValue&gt;)component;</span>
 <span class="lineNum">     126 </span>            : {
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 :     if ([component.textValue hasPrefix:_prefix] &amp;&amp; [component.textValue hasSuffix:_suffix])</span>
+<span class="lineNum">     127 </span><span class="lineCov">        164 :     if ([component.textValue hasPrefix:_prefix] &amp;&amp; [component.textValue hasSuffix:_suffix])</span>
 <span class="lineNum">     128 </span>            :     {
-<span class="lineNum">     129 </span><span class="lineNoCov">          0 :         NSString* key = [component.textValue substringFromIndex:[_prefix length]];</span>
-<span class="lineNum">     130 </span><span class="lineNoCov">          0 :         key = [key substringToIndex:[key length] - [_suffix length]];</span>
-<span class="lineNum">     131 </span><span class="lineNoCov">          0 :         NSString* value = [_properties valueForKey:key];</span>
+<span class="lineNum">     129 </span><span class="lineCov">         10 :         NSString* key = [component.textValue substringFromIndex:[_prefix length]];</span>
+<span class="lineNum">     130 </span><span class="lineCov">         10 :         key = [key substringToIndex:[key length] - [_suffix length]];</span>
+<span class="lineNum">     131 </span><span class="lineCov">         10 :         NSString* value = [_properties valueForKey:key];</span>
 <span class="lineNum">     132 </span>            :         LogTrace(@&quot;Setting property '%@' to value '%@'&quot;, key, value);
-<span class="lineNum">     133 </span><span class="lineNoCov">          0 :         component.textValue = value;</span>
-<span class="lineNum">     134 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     135 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     133 </span><span class="lineCov">         10 :         component.textValue = value;</span>
+<span class="lineNum">     134 </span><span class="lineCov">         10 :     }</span>
+<span class="lineNum">     135 </span><span class="lineCov">        154 : }</span>
 <span class="lineNum">     136 </span>            : 
 <span class="lineNum">     137 </span>            : @end
 </pre>
