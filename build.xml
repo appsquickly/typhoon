@@ -85,11 +85,12 @@
     </target>
 
     <target name="--stamp.build.failing">
-        <copy tofile="${reports.dir}/build-status.png" file="${basedir}/Scripts/build-failed.png"/>
+        <mkdir dir = "${reports.dir}/build-status"/>
+        <copy tofile="${reports.dir}/build-status/build-status.png" file="${basedir}/Scripts/build-failed.png"/>
     </target>
 
     <target name="--stamp.build.passing" unless="tests.failed">
-        <copy tofile="${reports.dir}/build-status.png" file="${basedir}/Scripts/build-passed.png" overwrite="true"/>
+        <copy tofile="${reports.dir}/build-status/build-status.png" file="${basedir}/Scripts/build-passed.png" overwrite="true"/>
     </target>
 
     <target name="--clean" unless="fast">
@@ -286,7 +287,7 @@
             git checkout gh-pages
             git branch --set-upstream-to=origin/gh-pages gh-pages
             git pull
-            cp -fr ${reports.dir}/build-status.png ./build-status.png
+            cp -fr ${reports.dir}/build-status/build-status.png ./build-status/build-status.png
             rm -fr ./coverage
             mkdir -p ${reports.dir}/coverage
             rsync -aq ${reports.dir}/coverage/ ./coverage
