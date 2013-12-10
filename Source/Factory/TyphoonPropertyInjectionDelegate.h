@@ -14,7 +14,16 @@
 #import <Foundation/Foundation.h>
 
 /**
-* @ingroup Definition
+* @ingroup Factory
+*
+* Typhoon components can implement this protocol to participate in property-injection life-cycle events. This gives some of the benefits
+* of initializer-injection - the ability to provide before / after validation - while still allowing the flexibility of property injection.
+*
+* @note If you don't wish to implement this protocol on your class, you can also define custom callback selectors on TyphoonDefinition.
+*
+* @see TyphoonDefinition.beforePropertyInjection
+* @see TyphoonDefinition.afterPropertyInjection
+*
 */
 @protocol TyphoonPropertyInjectionDelegate <NSObject>
 
