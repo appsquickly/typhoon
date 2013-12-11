@@ -1,8 +1,5 @@
 var group___factory =
 [
-    [ "<TyphoonComponentFactoryPostProcessor>", "protocol_typhoon_component_factory_post_processor-p.html", [
-      [ "postProcessComponentFactory:", "protocol_typhoon_component_factory_post_processor-p.html#ab64811c01a873e3a727f017543b29223", null ]
-    ] ],
     [ "TyphoonAssembly", "interface_typhoon_assembly.html", [
       [ "assembly", "interface_typhoon_assembly.html#af53fcd1ea8b4e55dda2080a651814c6c", null ],
       [ "defaultAssembly", "interface_typhoon_assembly.html#ac445c91bdd47b3389eadedbf33860512", null ],
@@ -13,11 +10,6 @@ var group___factory =
       [ "factoryWithAssembly:", "interface_typhoon_block_component_factory.html#a9e2ab09d88c263e6e5bf8836f6d94505", null ],
       [ "initWithAssemblies:", "interface_typhoon_block_component_factory.html#ad5cb028cb96e2fba2f5fada71e293b4b", null ],
       [ "initWithAssembly:", "interface_typhoon_block_component_factory.html#abc71fbb89384e587b2c584b76bd14a3f", null ]
-    ] ],
-    [ "TyphoonFactoryProvider", "interface_typhoon_factory_provider.html", [
-      [ "withProtocol:dependencies:factories:", "interface_typhoon_factory_provider.html#a6ceab7ef446241a2a0d0aa5db842d5a1", null ],
-      [ "withProtocol:dependencies:factory:", "interface_typhoon_factory_provider.html#a85f585a67e0a3bd309d44ad580a7928d", null ],
-      [ "withProtocol:dependencies:returns:", "interface_typhoon_factory_provider.html#a5e5e8ffa843c993940e3cccb1f5660d3", null ]
     ] ],
     [ "TyphoonComponentFactory", "interface_typhoon_component_factory.html", [
       [ "loaded", "interface_typhoon_component_factory.html#a09b13d5d400d8ca043cc5f1105b8a744", null ],
@@ -37,6 +29,14 @@ var group___factory =
     ] ],
     [ "<TyphoonComponentFactoryAware>", "protocol_typhoon_component_factory_aware-p.html", [
       [ "setFactory:", "protocol_typhoon_component_factory_aware-p.html#a87cc9f5101b8b32adbc70b5dd5be7f8e", null ]
+    ] ],
+    [ "<TyphoonComponentFactoryPostProcessor>", "protocol_typhoon_component_factory_post_processor-p.html", [
+      [ "postProcessComponentFactory:", "protocol_typhoon_component_factory_post_processor-p.html#ab64811c01a873e3a727f017543b29223", null ]
+    ] ],
+    [ "TyphoonFactoryProvider", "interface_typhoon_factory_provider.html", [
+      [ "withProtocol:dependencies:factories:", "interface_typhoon_factory_provider.html#a6ceab7ef446241a2a0d0aa5db842d5a1", null ],
+      [ "withProtocol:dependencies:factory:", "interface_typhoon_factory_provider.html#a85f585a67e0a3bd309d44ad580a7928d", null ],
+      [ "withProtocol:dependencies:returns:", "interface_typhoon_factory_provider.html#a5e5e8ffa843c993940e3cccb1f5660d3", null ]
     ] ],
     [ "<TyphoonPropertyInjectionDelegate>", "protocol_typhoon_property_injection_delegate-p.html", [
       [ "afterPropertiesSet", "protocol_typhoon_property_injection_delegate-p.html#a2a19ed14a8e14be1ac0fc7e0618c0fd2", null ],
