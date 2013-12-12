@@ -116,7 +116,7 @@ supported (and sometimes useful), the main focus is on a <a href="https://github
 
 * No magic strings - ***supports IDE refactoring, code-completion and compile-time checking.*** 
 
-* Provides ***full-modularization and encapsulation of configuration details*** - grouping the application assembly 
+* Provides ***full-modularization and encapsulation of configuration*** - grouping the application assembly 
 details into a single document, with chapters. ***Let your architecture tell a story.*** 
 
 * ***Dependencies declared in any order.*** (The order that makes sense to humans).
