@@ -2296,7 +2296,7 @@
     </TokenIdentifier>
     <Path>protocol_typhoon_resource-p.html</Path>
     <Anchor>ac116090936d1a74ef0a28772db44f210</Anchor>
-    <Abstract>Returns the resource with the given name, as an NSString. </Abstract>
+    <Abstract>Returns the resource with the given name, as an NSString using NSUTF8String encoding. </Abstract>
     <DeclaredIn>TyphoonResource.h</DeclaredIn>
   </Token>
   <Token>
@@ -2308,6 +2308,7 @@
     </TokenIdentifier>
     <Path>protocol_typhoon_resource-p.html</Path>
     <Anchor>a5f924b2511acbe7880f226d76cd742f9</Anchor>
+    <Abstract>Returns the resource with the given name, using the specified encoding. </Abstract>
     <DeclaredIn>TyphoonResource.h</DeclaredIn>
   </Token>
   <Token>
@@ -2319,6 +2320,7 @@
     </TokenIdentifier>
     <Path>protocol_typhoon_resource-p.html</Path>
     <Anchor>a7d63644498c645e5684694b3f44b04b5</Anchor>
+    <Abstract>Returns the resource as data. </Abstract>
     <DeclaredIn>TyphoonResource.h</DeclaredIn>
   </Token>
   <Token>
@@ -4587,7 +4589,7 @@
     </TokenIdentifier>
     <Path>protocol_typhoon_resource-p.html</Path>
     <Anchor>ac116090936d1a74ef0a28772db44f210</Anchor>
-    <Abstract>Returns the resource with the given name, as an NSString. </Abstract>
+    <Abstract>Returns the resource with the given name, as an NSString using NSUTF8String encoding. </Abstract>
     <DeclaredIn>TyphoonResource.h</DeclaredIn>
   </Token>
   <Token>
@@ -4599,6 +4601,7 @@
     </TokenIdentifier>
     <Path>protocol_typhoon_resource-p.html</Path>
     <Anchor>a5f924b2511acbe7880f226d76cd742f9</Anchor>
+    <Abstract>Returns the resource with the given name, using the specified encoding. </Abstract>
     <DeclaredIn>TyphoonResource.h</DeclaredIn>
   </Token>
   <Token>
@@ -4610,6 +4613,7 @@
     </TokenIdentifier>
     <Path>protocol_typhoon_resource-p.html</Path>
     <Anchor>a7d63644498c645e5684694b3f44b04b5</Anchor>
+    <Abstract>Returns the resource as data. </Abstract>
     <DeclaredIn>TyphoonResource.h</DeclaredIn>
   </Token>
   <Token>
