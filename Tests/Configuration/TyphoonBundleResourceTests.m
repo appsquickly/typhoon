@@ -32,6 +32,13 @@
     assertThat(resourceString, notNilValue());
 }
 
+- (void)test_returns_bundle_resource_as_data
+{
+    id <TyphoonResource> resource = [TyphoonBundleResource withName:@"SomeResource"];
+    NSData* data = [resource data];
+    assertThat(data, notNilValue());
+}
+
 - (void)test_raises_exception_for_invalid_resource_name
 {
     @try

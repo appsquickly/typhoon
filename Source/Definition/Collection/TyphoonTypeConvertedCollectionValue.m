@@ -33,16 +33,5 @@
     return TyphoonCollectionValueTypeConvertedText;
 }
 
-/* ====================================================================================================================================== */
-#pragma mark - Utility Methods
-
-- (NSString*)description
-{
-    NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
-    [description appendFormat:@"self.textValue=%@", self.textValue];
-    [description appendFormat:@", self.requiredType=%@", self.requiredType];
-    [description appendString:@">"];
-    return description;
-}
 
 @end
