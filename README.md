@@ -4,9 +4,9 @@ A new dependency injection container for Objective-C. Light-weight, yet full-fea
 
 ## Familiar with Dependency Injection?
 
-* Read the <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>   
-* <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a> (***Now updated for iOS7!!!!***)
-* <a href="https://github.com/jasperblues/Typhoon#design-goals--features">Check the feature list</a>.
+* Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>
+* <a href="https://github.com/typhoon-framework/Typhoon-example">Try the sample application</a> (***Now updated for iOS7!!!!***)
+* <a href="https://github.com/typhoon-framework/Typhoon#design-goals--features">Check the feature list</a>.
 
 otherwise. . . 
 
@@ -110,7 +110,7 @@ following:
 ## Design Goals / Features
 
 * Non-invasive. ***No macros or XML required***. . . while ***Spring-style XML*** or ***Guice-style macros*** are fully 
-supported (and sometimes useful), the main focus is on a <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">powerful Objective-C runtime approach.</a> 
+supported (and sometimes useful), the main focus is on a <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">powerful Objective-C runtime approach.</a>
 
 * Its not necessary to change ***any*** of your classes to use the framework. ***Can be introduced into legacy applications.***
 
@@ -145,19 +145,19 @@ ensure that the class is in the required state before and after properties are s
 
 # Usage
 
-* <a href="https://github.com/jasperblues/Typhoon-example">Play with the sample application</a>.
+* <a href="https://github.com/typhoon-framework/Typhoon-example">Play with the sample application</a>.
 
 And then:
 
-* <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">Assembling Components with Blocks (recommended) </a> ___or___ <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-in-XML">Assembling Components in XML</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">Assembling Components with Blocks (recommended) </a> ___or___ <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-in-XML">Assembling Components in XML</a>
 
-* <a href="https://github.com/jasperblues/Typhoon/wiki/Autowiring">Autowiring</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Autowiring">Autowiring</a>
 
-* <a href="https://github.com/jasperblues/Typhoon/wiki/Using-Assembled-Components">Using Assembled Components</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Using-Assembled-Components">Using Assembled Components</a>
 
-* <a href="https://github.com/jasperblues/Typhoon/wiki/Incorporating">Incorporating the framework into your project.</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Incorporating">Incorporating the framework into your project.</a>
 
-* <a href="https://github.com/jasperblues/Typhoon/wiki/Configuration-Management-&amp;-Testing">Configuration Management & Testing.</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Configuration-Management-&amp;-Testing">Configuration Management & Testing.</a>
 
 # Reports 
 ![Build Status](http://www.typhoonframework.org/docs/latest/build-status/build-status.png?q=zz)
@@ -178,9 +178,9 @@ Test Failures typically indicate a bug that has been flagged, but not yet fixed.
 
 . . . are very welcome. 
 
-* <a href="https://github.com/jasperblues/Typhoon/wiki/Contribution-Guide">Contribution Guide.</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">Contribution Guide.</a>
 
-* Look at, and contribute to the <a href="https://github.com/jasperblues/Typhoon/wiki/Roadmap">roadmap</a> here.
+* Look at, and contribute to the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Roadmap">roadmap</a> here.
 
 
 # Got a question? Need some help? 

@@ -15,8 +15,8 @@
 #import "TyphoonAssembly.h"
 #import "TyphoonJRSwizzle.h"
 #import <objc/runtime.h>
-#import <Typhoon/OCLogTemplate.h>
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
+#import "OCLogTemplate.h"
 
 static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 
