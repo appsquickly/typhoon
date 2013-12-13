@@ -22,7 +22,9 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
 @implementation TyphoonInitializer (InstanceBuilder)
 
-/* ========================================================== Interface Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
 - (NSArray*)injectedParameters
 {
     return [_injectedParameters copy];
@@ -70,19 +72,15 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     [self resolveIsClassMethod];
 }
 
-- (NSString*)description
-{
-    return [NSString stringWithFormat:@"Initializer: %@, isFactoryMethod? %@, parameters: %@", NSStringFromSelector(_selector),
-                                      self.isClassMethod ? @"YES" : @"NO", _injectedParameters];
-}
-
 - (BOOL)isClassMethod
 {
     return [self resolveIsClassMethod];
 }
 
 
-/* ============================================================ Private Methods ========================================================= */
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
+
 - (BOOL)resolveIsClassMethod
 {
     if (_definition.factoryReference)
@@ -105,6 +103,8 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
             return YES;
         case TyphoonComponentInitializerIsClassMethodGuess:
             return [self selectorDoesNotStartWithInit];
+        default:
+            return NO;
     }
 }
 

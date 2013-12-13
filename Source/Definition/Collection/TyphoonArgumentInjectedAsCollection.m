@@ -54,15 +54,4 @@
     return [_values copy];
 }
 
-/* ====================================================================================================================================== */
-#pragma mark - Utility Methods
-
-- (NSString*)description
-{
-    NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
-    [description appendFormat:@", _values=%@", _values];
-    [description appendString:@">"];
-    return description;
-}
-
 @end
