@@ -1,10 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  TyphoonKeyedStackInstanceRegsiter.m
-//  Typhoon
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
+//  All Rights Reserved.
 //
-//  Created by Cesar Estebanez Tascon on 12/09/13.
-//  Copyright (c) 2013 Jasper Blues. All rights reserved.
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
 //
+////////////////////////////////////////////////////////////////////////////////
+
+
 
 #import "TyphoonKeyedStackInstanceRegister.h"
 

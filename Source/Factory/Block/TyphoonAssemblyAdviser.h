@@ -17,18 +17,15 @@
 
 @interface TyphoonAssemblyAdviser : NSObject
 
-// all these methods want to be on the TyphoonAssembly?
-// or, initWithAssembly?
 + (void)adviseMethods:(TyphoonAssembly*)assembly;
++ (void)undoAdviseMethods:(TyphoonAssembly*)assembly;
 
-+ (NSSet*)definitionSelectors:(TyphoonAssembly*)assembly;
++ (NSSet*)definitionSelectorsForAssembly:(TyphoonAssembly*)assembly;
 
 + (BOOL)assemblyMethodsSwizzled:(TyphoonAssembly*)assembly;
-
 + (BOOL)assemblyMethodsHaveNotYetBeenSwizzled:(TyphoonAssembly*)assembly;
++ (BOOL)assemblyMethodsSwizzledOnClass:(Class)class;
 
-+ (void)markAssemblyMethodsAsSwizzled:(TyphoonAssembly*)assembly;
-
-+ (void)replaceImplementationOfDefinitionSelector:(NSValue*)obj withDynamicBeforeAdviceImplementationOnAssembly:(TyphoonAssembly*)assembly;
++ (void)swapImplementationOfDefinitionSelector:(NSValue*)obj withDynamicBeforeAdviceImplementationOnAssembly:(TyphoonAssembly*)assembly;
 
 @end

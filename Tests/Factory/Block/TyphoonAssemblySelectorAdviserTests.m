@@ -33,33 +33,35 @@
     SELWithArguments = @selector(initWithString:attributes:);
 }
 
-- (void)test_selector_with_no_arguments_valid_after_transformation;
+#pragma mark - Tests
+- (void)test_selector_with_no_arguments_valid_after_transformation
 {
     [self advisedSELShouldHaveNoArguments];
 }
 
-- (void)test_recognizes_advised;
+- (void)test_recognizes_advised
 {
     STAssertFalse([TyphoonAssemblySelectorAdviser selectorIsAdvised:sel], nil);
     STAssertTrue([TyphoonAssemblySelectorAdviser selectorIsAdvised:advisedSEL], nil);
 }
 
-- (void)test_key_is_selector_as_string;
+- (void)test_key_is_selector_as_string
 {
     assertThat([TyphoonAssemblySelectorAdviser keyForAdvisedSEL:advisedSEL], equalTo(key));
 }
 
-- (void)test_advised_SEL_for_key;
+- (void)test_advised_SEL_for_key
 {
     STAssertEquals([TyphoonAssemblySelectorAdviser advisedSELForKey:key], advisedSEL, nil);
 }
 
-- (void)test_selector_with_arguments_preserves_arguments;
+- (void)test_selector_with_arguments_preserves_arguments
 {
     advisedSELWithArguments = [TyphoonAssemblySelectorAdviser advisedSELForSEL:SELWithArguments];
     [self advisedSELWithArgumentsShouldHaveTwoArgumentsAndEndWithAnArgument];
 }
 
+#pragma mark - Helper Methods
 - (void)advisedSELShouldHaveNoArguments;
 {
     STAssertEquals([self numberOfArgumentsInSelector:advisedSEL], (NSUInteger) 0, @"The advised SEL should not have any arguments.");

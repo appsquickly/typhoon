@@ -32,58 +32,25 @@
     [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
 }
 
-- (void)test_inconsistently_allows_initialization_with_a_collection_of_assemblies_in_any_order
+- (void)test_allows_initialization_with_a_collection_of_assemblies_in_any_order
 {
-    // This test is flickering.
-    // It succeeds if run when MiddleAgesAssembly has previously been registered with a component factory (and its methods swizzled), but fails otherwise (say, if run alone).
-    // This will be changed to always succeed, see: https://github.com/jasperblues/Typhoon/issues/107
-
     TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
             [CollaboratingMiddleAgesAssembly assembly],
             [MiddleAgesAssembly assembly]
     ]];
 
     Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalQuest];
-    //[CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
-
-    //STFail(@"This test erroneously succeeds when run alongside any other unit tests, but fails when run alone.");
-}
-
-- (void)test_allows_initialization_with_a_hardcoded_collection_of_assemblies
-{
-    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
-            [MiddleAgesAssembly assembly],
-            [CollaboratingMiddleAgesAssembly assembly],
-    ]];
-
-    Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalHardcodedQuest];
     [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
 }
 
-- (void)test_inconsistently_allows_initialization_with_a_hardcoded_collection_of_assemblies_in_any_order
-{
-    // This test is flickering.
-    // It succeeds if run when MiddleAgesAssembly has previously been registered with a component factory (and its methods swizzled), but fails otherwise (say, if run alone).
-    // This will be changed to always succeed, see: https://github.com/jasperblues/Typhoon/issues/107
-
-    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
-            [CollaboratingMiddleAgesAssembly assembly],
-            [MiddleAgesAssembly assembly],
-    ]];
-
-    Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalHardcodedQuest];
-    //[CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
-
-    //STFail(@"This test erroneously succeeds when run alongside any other unit tests, but fails when run alone.");
-}
-
-- (void)test_dealloc_does_not_unswizzle
+- (void)test_dealloc_unswizzles
 {
     MiddleAgesAssembly* assembly = [MiddleAgesAssembly assembly];
     TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[assembly]];
     factory = nil;
+    assembly = nil;
 
-    STAssertTrue([TyphoonAssemblyAdviser assemblyMethodsSwizzled:assembly], nil);
+    STAssertFalse([TyphoonAssemblyAdviser assemblyMethodsSwizzledOnClass:[MiddleAgesAssembly class]], nil);
 }
 
 @end

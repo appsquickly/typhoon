@@ -13,10 +13,11 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonAssembly.h"
 
-@interface TyphoonAssembly (TyphoonBlockFactoryFriend)
+@interface TyphoonAssembly (TyphoonAssemblyFriend)
 
 - (void)prepareForUse;
-
 - (NSArray*)definitions;
+
+@property (readonly) NSSet *definitionSelectors;
 
 @end
