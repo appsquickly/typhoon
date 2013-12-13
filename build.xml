@@ -280,8 +280,8 @@
 
             cd ${basedir}
             cp -fr ${basedir}/schema ${reports.dir}
-            git remote add origin git@github.com:jasperblues/Typhoon.git || true # allow `remote add` to fail without failing script
-            git remote set-url origin git@github.com:jasperblues/Typhoon.git
+            git remote add origin `git remote -v` || true # allow `remote add` to fail without failing script
+            git remote set-url origin `git remote -v`
             git fetch origin gh-pages:gh-pages
             git fetch origin gh-pages
             git checkout gh-pages
