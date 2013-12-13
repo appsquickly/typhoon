@@ -3205,8 +3205,8 @@
             </Subnodes>
            </Node>
            <Node>
-            <Name>TyphoonAssembly+TyphoonBlockFactoryFriend.h</Name>
-            <Path>_typhoon_assembly_09_typhoon_block_factory_friend_8h.html</Path>
+            <Name>TyphoonAssembly+TyphoonAssemblyFriend.h</Name>
+            <Path>_typhoon_assembly_09_typhoon_assembly_friend_8h.html</Path>
            </Node>
            <Node>
             <Name>TyphoonAssembly.h</Name>
@@ -3775,6 +3775,10 @@
               </Subnodes>
              </Node>
             </Subnodes>
+           </Node>
+           <Node>
+            <Name>TyphoonCircularDependencyTerminator.h</Name>
+            <Path>_typhoon_circular_dependency_terminator_8h.html</Path>
            </Node>
            <Node>
             <Name>TyphoonCollaboratingAssemblyProxy.h</Name>

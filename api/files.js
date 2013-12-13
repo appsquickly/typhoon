@@ -6,7 +6,7 @@ var files =
     [ "OCLogTemplate.h", "_o_c_log_template_8h.html", "_o_c_log_template_8h" ],
     [ "Typhoon.h", "_typhoon_8h.html", null ],
     [ "TyphoonArgumentInjectedAsCollection.h", "_typhoon_argument_injected_as_collection_8h.html", "_typhoon_argument_injected_as_collection_8h" ],
-    [ "TyphoonAssembly+TyphoonBlockFactoryFriend.h", "_typhoon_assembly_09_typhoon_block_factory_friend_8h.html", null ],
+    [ "TyphoonAssembly+TyphoonAssemblyFriend.h", "_typhoon_assembly_09_typhoon_assembly_friend_8h.html", null ],
     [ "TyphoonAssembly.h", "_typhoon_assembly_8h.html", null ],
     [ "TyphoonAssemblyAdviser.h", "_typhoon_assembly_adviser_8h.html", null ],
     [ "TyphoonAssemblyDefinitionBuilder.h", "_typhoon_assembly_definition_builder_8h.html", null ],
@@ -71,6 +71,7 @@ var files =
     [ "TyphoonByReferenceCollectionValue.h", "_typhoon_by_reference_collection_value_8h.html", [
       [ "TyphoonByReferenceCollectionValue", "interface_typhoon_by_reference_collection_value.html", "interface_typhoon_by_reference_collection_value" ]
     ] ],
+    [ "TyphoonCircularDependencyTerminator.h", "_typhoon_circular_dependency_terminator_8h.html", null ],
     [ "TyphoonCollaboratingAssemblyProxy.h", "_typhoon_collaborating_assembly_proxy_8h.html", null ],
     [ "TyphoonCollectionValue.h", "_typhoon_collection_value_8h.html", "_typhoon_collection_value_8h" ],
     [ "TyphoonComponentFactory.h", "_typhoon_component_factory_8h.html", null ],

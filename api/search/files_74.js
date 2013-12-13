@@ -2,7 +2,7 @@ var searchData=
 [
   ['typhoon_2eh',['Typhoon.h',['../_typhoon_8h.html',1,'']]],
   ['typhoonargumentinjectedascollection_2eh',['TyphoonArgumentInjectedAsCollection.h',['../_typhoon_argument_injected_as_collection_8h.html',1,'']]],
-  ['typhoonassembly_2btyphoonblockfactoryfriend_2eh',['TyphoonAssembly+TyphoonBlockFactoryFriend.h',['../_typhoon_assembly_09_typhoon_block_factory_friend_8h.html',1,'']]],
+  ['typhoonassembly_2btyphoonassemblyfriend_2eh',['TyphoonAssembly+TyphoonAssemblyFriend.h',['../_typhoon_assembly_09_typhoon_assembly_friend_8h.html',1,'']]],
   ['typhoonassembly_2eh',['TyphoonAssembly.h',['../_typhoon_assembly_8h.html',1,'']]],
   ['typhoonassemblyadviser_2eh',['TyphoonAssemblyAdviser.h',['../_typhoon_assembly_adviser_8h.html',1,'']]],
   ['typhoonassemblydefinitionbuilder_2eh',['TyphoonAssemblyDefinitionBuilder.h',['../_typhoon_assembly_definition_builder_8h.html',1,'']]],
@@ -31,6 +31,7 @@ var searchData=
   ['typhoonbundledimagetypeconverter_2eh',['TyphoonBundledImageTypeConverter.h',['../_typhoon_bundled_image_type_converter_8h.html',1,'']]],
   ['typhoonbundleresource_2eh',['TyphoonBundleResource.h',['../_typhoon_bundle_resource_8h.html',1,'']]],
   ['typhoonbyreferencecollectionvalue_2eh',['TyphoonByReferenceCollectionValue.h',['../_typhoon_by_reference_collection_value_8h.html',1,'']]],
+  ['typhooncirculardependencyterminator_2eh',['TyphoonCircularDependencyTerminator.h',['../_typhoon_circular_dependency_terminator_8h.html',1,'']]],
   ['typhooncollaboratingassemblyproxy_2eh',['TyphoonCollaboratingAssemblyProxy.h',['../_typhoon_collaborating_assembly_proxy_8h.html',1,'']]],
   ['typhooncollectionvalue_2eh',['TyphoonCollectionValue.h',['../_typhoon_collection_value_8h.html',1,'']]],
   ['typhooncomponentfactory_2eh',['TyphoonComponentFactory.h',['../_typhoon_component_factory_8h.html',1,'']]],
