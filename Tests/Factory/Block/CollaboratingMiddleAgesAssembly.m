@@ -48,12 +48,4 @@
     //assertThat(knight.quest, instanceOf([CampaignQuest class]));
 }
 
-- (id)knightWithExternalHardcodedQuest
-{
-    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
-    {
-        [definition injectProperty:@selector(quest) withDefinition:[[MiddleAgesAssembly assembly] environmentDependentQuest]]; // not revealed as problem because other tests running?
-    }];
-}
-
 @end

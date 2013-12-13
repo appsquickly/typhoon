@@ -17,11 +17,17 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import "OCLogTemplate.h"
-#import "TyphoonAssembly+TyphoonBlockFactoryFriend.h"
+#import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblyAdviser.h"
 #import "TyphoonAssemblyDefinitionBuilder.h"
 
 static NSMutableArray* reservedSelectorsAsStrings;
+
+@interface TyphoonAssembly()
+
+@property (readwrite) NSSet *definitionSelectors;
+
+@end
 
 @implementation TyphoonAssembly
 {
@@ -143,6 +149,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
 - (void)dealloc
 {
     LogTrace(@"$$$$$$ %@ in dealloc!", [self class]);
+    [TyphoonAssemblyAdviser undoAdviseMethods:self];
 }
 
 /* ====================================================================================================================================== */
@@ -163,6 +170,8 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 - (void)prepareForUse
 {
+    self.definitionSelectors = [TyphoonAssemblyAdviser definitionSelectorsForAssembly:self];
+
     [TyphoonAssemblyAdviser adviseMethods:self];
 }
 

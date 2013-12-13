@@ -56,5 +56,4 @@ AnalyticsService* service = [assembly analyticsService];
 */
 - (void)resolveCollaboratingAssemblies;
 
-
 @end

@@ -16,7 +16,7 @@
 #import "TyphoonAssembly.h"
 #import "TyphoonDefinition.h"
 #import "OCLogTemplate.h"
-#import "TyphoonAssembly+TyphoonBlockFactoryFriend.h"
+#import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 
 @implementation TyphoonBlockComponentFactory
 
@@ -100,10 +100,5 @@
         return [[self class] instanceMethodSignatureForSelector:@selector(componentForKey:)];
     }
 }
-
-
-/* ====================================================================================================================================== */
-#pragma mark - Private Methods
-
 
 @end

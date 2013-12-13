@@ -15,16 +15,15 @@
 #import "TyphoonDefinition.h"
 #import "OCLogTemplate.h"
 #import "TyphoonDefinition+Infrastructure.h"
-#import "TyphoonAssembly+TyphoonBlockFactoryFriend.h"
+#import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import <objc/message.h>
 #import "TyphoonAssemblyAdviser.h"
+#import "TyphoonCircularDependencyTerminator.h"
 
 
 @implementation TyphoonAssemblyDefinitionBuilder
 {
-    TyphoonAssembly* _assembly;
-
     NSMutableDictionary* _resolveStackForSelector;
     NSMutableDictionary* _cachedDefinitionsForMethodName;
 }
@@ -59,9 +58,7 @@
 
 - (void)populateCache
 {
-    NSSet* definitionSelectors = [TyphoonAssemblyAdviser definitionSelectors:_assembly]; // the Assembly should know what its own definition selectors are.
-
-    [definitionSelectors enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
+    [[self.assembly definitionSelectors] enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
     {
         SEL selector = (SEL) [obj pointerValue];
         NSString* key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
@@ -129,7 +126,7 @@
 - (TyphoonDefinition*)definitionToTerminateCircularDependencyForKey:(NSString*)key
 {
     // we return a 'dummy' definition just to terminate the cycle. This dummy definition will be overwritten by the real one in the cache, which will be set further up the stack and will overwrite this one in 'cachedDefinitionsForMethodName'.
-    return [[TyphoonDefinition alloc] initWithClass:[NSString class] key:key];
+    return [[TyphoonDefinition alloc] initWithClass:[TyphoonCircularDependencyTerminator class] key:key];
 }
 
 - (void)markKeyResolved:(NSString*)key
@@ -154,7 +151,7 @@
 {
     // call the user's assembly method to get it.
     SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key];
-    id cached = objc_msgSend(_assembly,
+    id cached = objc_msgSend(self.assembly,
             sel); // the advisedSEL will call through to the original, unwrapped implementation because prepareForUse has been called, and all our definition methods have been swizzled.
     // This method will likely call through to other definition methods on the assembly, which will go through the advising machinery because of this swizzling.
     // Therefore, the definitions a definition depends on will be fully constructed before they are needed to construct that definition.

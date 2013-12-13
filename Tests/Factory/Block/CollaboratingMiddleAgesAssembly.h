@@ -24,6 +24,4 @@
 
 + (void)verifyKnightWithExternalQuest:(Knight*)knight;
 
-- (id)knightWithExternalHardcodedQuest;
-
 @end

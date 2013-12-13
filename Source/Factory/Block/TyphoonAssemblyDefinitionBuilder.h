@@ -19,12 +19,11 @@
 @interface TyphoonAssemblyDefinitionBuilder : NSObject
 
 + (instancetype)builderWithAssembly:(TyphoonAssembly*)assembly;
-
 - (instancetype)initWithAssembly:(TyphoonAssembly*)assembly;
 
-
 - (NSArray*)builtDefinitions;
-
 - (TyphoonDefinition*)builtDefinitionForKey:(NSString*)key;
+
+@property (readonly, weak) TyphoonAssembly* assembly;
 
 @end
