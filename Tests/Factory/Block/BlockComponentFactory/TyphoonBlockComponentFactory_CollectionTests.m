@@ -43,14 +43,14 @@
     [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
 }
 
-- (void)test_dealloc_unswizzles
+- (void)test_dealloc_cleans_up_method_advising
 {
     MiddleAgesAssembly* assembly = [MiddleAgesAssembly assembly];
     TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[assembly]];
     factory = nil;
     assembly = nil;
 
-    STAssertFalse([TyphoonAssemblyAdviser assemblyMethodsSwizzledOnClass:[MiddleAgesAssembly class]], nil);
+    STAssertFalse([TyphoonAssemblyAdviser assemblyClassIsAdvised:[MiddleAgesAssembly class]], nil);
 }
 
 @end

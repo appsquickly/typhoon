@@ -19,13 +19,8 @@
 
 + (void)adviseMethods:(TyphoonAssembly*)assembly;
 + (void)undoAdviseMethods:(TyphoonAssembly*)assembly;
++ (BOOL)assemblyClassIsAdvised:(Class)class;
 
 + (NSSet*)definitionSelectorsForAssembly:(TyphoonAssembly*)assembly;
-
-+ (BOOL)assemblyMethodsSwizzled:(TyphoonAssembly*)assembly;
-+ (BOOL)assemblyMethodsHaveNotYetBeenSwizzled:(TyphoonAssembly*)assembly;
-+ (BOOL)assemblyMethodsSwizzledOnClass:(Class)class;
-
-+ (void)swapImplementationOfDefinitionSelector:(NSValue*)obj withDynamicBeforeAdviceImplementationOnAssembly:(TyphoonAssembly*)assembly;
 
 @end

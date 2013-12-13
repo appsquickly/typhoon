@@ -16,14 +16,9 @@
 #import "TyphoonJRSwizzle.h"
 #import <objc/runtime.h>
 #import <Typhoon/OCLogTemplate.h>
+#import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 
 static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
-
-@interface TyphoonAssembly(TyphoonAssemblyAdviser)
-
-+ (BOOL)selectorReservedOrPropertySetter:(SEL)selector;
-
-@end
 
 
 @implementation TyphoonAssemblyAdviser
@@ -40,11 +35,12 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
     }
 }
 
+#pragma mark - Advising
 + (void)adviseMethods:(TyphoonAssembly*)assembly
 {
     @synchronized (self)
     {
-        if ([TyphoonAssemblyAdviser assemblyMethodsHaveNotYetBeenSwizzled:assembly])
+        if ([TyphoonAssemblyAdviser assemblyIsNotAdvised:assembly])
         {
             [self swizzleAssemblyMethods:assembly];
         }
@@ -55,7 +51,7 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 {
     @synchronized (self)
     {
-        if ([TyphoonAssemblyAdviser assemblyMethodsSwizzled:assembly])
+        if ([TyphoonAssemblyAdviser assemblyIsAdvised:assembly])
         {
             [self unswizzleAssemblyMethods:assembly];
         }
@@ -71,7 +67,7 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 
     [self swizzleDefinitionSelectors:swizzledSelectors onAssembly:assembly];
 
-    [self markAssemblyMethodsAsNotSwizzled:assembly];
+    [self markAssemblyMethodsAsNoLongerAdvised:assembly];
 }
 
 + (NSString*)humanReadableDescriptionForSelectorObjects:(NSSet*)selectors
@@ -94,7 +90,7 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 
     [self swizzleDefinitionSelectors:definitionSelectors onAssembly:assembly];
 
-    [self markAssemblyMethods:definitionSelectors asSwizzled:assembly];
+    [self markAssemblyMethods:definitionSelectors asAdvised:assembly];
 }
 
 + (void)swizzleDefinitionSelectors:(NSSet*)definitionSelectors onAssembly:(TyphoonAssembly*)assembly
@@ -124,7 +120,7 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
     }
 }
 
-// DefinitionSelectorEnumerator
+#pragma mark - Definition Selector Enumerator
 + (NSSet*)definitionSelectorsForAssembly:(TyphoonAssembly*)assembly
 {
     NSMutableSet* definitionSelectors = [[NSMutableSet alloc] init];
@@ -182,8 +178,6 @@ typedef void(^MethodEnumerationBlock)(Method method);
 
 + (BOOL)method:(Method)method onClassIsNotReserved:(Class)aClass
 {
-    // aClass must be a subclass of TyphoonAssembly
-
     SEL methodSelector = method_getName(method);
     return ![aClass selectorReservedOrPropertySetter:methodSelector];
 }
@@ -202,28 +196,28 @@ typedef void(^MethodEnumerationBlock)(Method method);
     [definitionSelectors addObject:[NSValue valueWithPointer:methodSelector]];
 }
 
-// SwizzleRegistry
-+ (BOOL)assemblyMethodsHaveNotYetBeenSwizzled:(TyphoonAssembly*)assembly;
+#pragma mark - Advising Registry
++ (BOOL)assemblyIsNotAdvised:(TyphoonAssembly*)assembly;
 {
-    return ![self assemblyMethodsSwizzled:assembly];
+    return ![self assemblyIsAdvised:assembly];
 }
 
-+ (BOOL)assemblyMethodsSwizzled:(TyphoonAssembly*)assembly
++ (BOOL)assemblyIsAdvised:(TyphoonAssembly*)assembly
 {
-    return [self assemblyMethodsSwizzledOnClass:[assembly class]];
+    return [self assemblyClassIsAdvised:[assembly class]];
 }
 
-+ (BOOL)assemblyMethodsSwizzledOnClass:(Class)class
++ (BOOL)assemblyClassIsAdvised:(Class)class
 {
     return [[swizzledDefinitionsByAssemblyClass allKeys] containsObject:class];
 }
 
-+ (void)markAssemblyMethods:(NSSet*)definitionSelectors asSwizzled:(TyphoonAssembly*)assembly;
++ (void)markAssemblyMethods:(NSSet*)definitionSelectors asAdvised:(TyphoonAssembly*)assembly;
 {
     [swizzledDefinitionsByAssemblyClass setObject:definitionSelectors forKey:[assembly class]];
 }
 
-+ (void)markAssemblyMethodsAsNotSwizzled:(TyphoonAssembly*)assembly;
++ (void)markAssemblyMethodsAsNoLongerAdvised:(TyphoonAssembly*)assembly;
 {
     [swizzledDefinitionsByAssemblyClass removeObjectForKey:[assembly class]];
 }

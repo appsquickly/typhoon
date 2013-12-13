@@ -15,6 +15,8 @@
 
 @interface TyphoonAssembly (TyphoonAssemblyFriend)
 
++ (BOOL)selectorReservedOrPropertySetter:(SEL)selector;
+
 - (void)prepareForUse;
 - (NSArray*)definitions;
 

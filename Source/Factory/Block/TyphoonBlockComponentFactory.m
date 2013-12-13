@@ -47,14 +47,19 @@
     {
         for (TyphoonAssembly* assembly in assemblies)
         {
-            LogTrace(@"Building assembly: %@", NSStringFromClass([assembly class]));
-            [self assertIsAssembly:assembly];
-
-            [assembly prepareForUse];
-            [self registerAllDefinitions:assembly];
+            [self buildAssembly:assembly];
         }
     }
     return self;
+}
+
+- (void)buildAssembly:(TyphoonAssembly*)assembly
+{
+    LogTrace(@"Building assembly: %@", NSStringFromClass([assembly class]));
+    [self assertIsAssembly:assembly];
+
+    [assembly prepareForUse];
+    [self registerAllDefinitions:assembly];
 }
 
 - (void)assertIsAssembly:(TyphoonAssembly*)assembly
