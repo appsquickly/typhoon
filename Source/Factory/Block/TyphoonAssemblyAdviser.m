@@ -28,7 +28,6 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 
 + (void)initialize
 {
-    [super initialize];
     @synchronized (self)
     {
         swizzledDefinitionsByAssemblyClass = [[NSMutableDictionary alloc] init];
