@@ -1,2 +1,3 @@
 *.pbxproj binary merge=union
-*.[hm] filter=typhoonheader
+Source/*.[hm] filter=typhoonheader
+Tests/*.[hm] filter=typhoonheader
