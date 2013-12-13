@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">131</td>
-            <td class="headerCovTableEntry">147</td>
-            <td class="headerCovTableEntryMed">89.1 %</td>
+            <td class="headerCovTableEntry">130</td>
+            <td class="headerCovTableEntry">146</td>
+            <td class="headerCovTableEntryMed">89.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -244,7 +244,7 @@
 <span class="lineNum">     186 </span>            :     LogTrace(@&quot;Attaching post processor: %@&quot;, postProcessor);
 <span class="lineNum">     187 </span><span class="lineCov">         94 :     [_postProcessors addObject:postProcessor];</span>
 <span class="lineNum">     188 </span><span class="lineCov">         94 :     if ([self isLoaded]) {</span>
-<span class="lineNum">     189 </span><span class="lineCov">          1 :         LogDebug(@&quot;Definitions registered, refreshing all singletons.&quot;);</span>
+<span class="lineNum">     189 </span>            :         LogDebug(@&quot;Definitions registered, refreshing all singletons.&quot;);
 <span class="lineNum">     190 </span><span class="lineCov">          1 :         [self unload];</span>
 <span class="lineNum">     191 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">     192 </span><span class="lineCov">         94 : }</span>
@@ -317,13 +317,13 @@
 <span class="lineNum">     259 </span>            : 
 <span class="lineNum">     260 </span><span class="lineCov">       1573 : - (TyphoonDefinition*)definitionForKey:(NSString*)key</span>
 <span class="lineNum">     261 </span>            : {
-<span class="lineNum">     262 </span><span class="lineCov">      14237 :     for (TyphoonDefinition* definition in _registry)</span>
+<span class="lineNum">     262 </span><span class="lineCov">      14341 :     for (TyphoonDefinition* definition in _registry)</span>
 <span class="lineNum">     263 </span>            :     {
-<span class="lineNum">     264 </span><span class="lineCov">       5694 :         if ([definition.key isEqualToString:key])</span>
+<span class="lineNum">     264 </span><span class="lineCov">       5757 :         if ([definition.key isEqualToString:key])</span>
 <span class="lineNum">     265 </span>            :         {
 <span class="lineNum">     266 </span><span class="lineCov">        196 :             return definition;</span>
 <span class="lineNum">     267 </span>            :         }
-<span class="lineNum">     268 </span><span class="lineCov">      17780 :     }</span>
+<span class="lineNum">     268 </span><span class="lineCov">      17884 :     }</span>
 <span class="lineNum">     269 </span><span class="lineCov">       1377 :     return nil;</span>
 <span class="lineNum">     270 </span><span class="lineCov">       1573 : }</span>
 <span class="lineNum">     271 </span>            : 

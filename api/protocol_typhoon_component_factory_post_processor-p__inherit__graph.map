@@ -1,5 +1,5 @@
 <map id="&lt;TyphoonComponentFactoryPostProcessor&gt;" name="&lt;TyphoonComponentFactoryPostProcessor&gt;">
-<area shape="rect" id="node3" href="$interface_typhoon_patcher.html" title="TyphoonPatcher is a TyphoonComponentFactoryPostProcessor that allows patching out one or more definit..." alt="" coords="459,5,589,32"/>
-<area shape="rect" id="node4" href="$interface_typhoon_property_placeholder_configurer.html" title="TyphoonPropertyPlaceholder\lConfigurer" alt="" coords="419,57,629,98"/>
-<area shape="rect" id="node5" href="$interface_typhoon_view_controller_nib_resolver.html" title="Post&#45;Processor that completes the initializer of definitions with type UIViewController. " alt="" coords="427,122,621,163"/>
+<area shape="rect" id="node3" href="$interface_typhoon_patcher.html" title="TyphoonPatcher is a TyphoonComponentFactoryPostProcessor that allows patching out one or more definit..." alt="" coords="454,5,578,35"/>
+<area shape="rect" id="node4" href="$interface_typhoon_property_placeholder_configurer.html" title="TyphoonPropertyPlaceholder\lConfigurer" alt="" coords="413,59,619,109"/>
+<area shape="rect" id="node5" href="$interface_typhoon_view_controller_nib_resolver.html" title="Post&#45;Processor that completes the initializer of definitions with type UIViewController. " alt="" coords="419,132,613,182"/>
 </map>
