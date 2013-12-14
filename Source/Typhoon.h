@@ -22,7 +22,6 @@
 #import "TyphoonComponentFactoryPostProcessor.h"
 #import "TyphoonRXMLElement+XmlComponentFactory.h"
 #import "TyphoonRXMLElement.h"
-#import "TyphoonTestUtils.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonAssembly.h"
 #import "TyphoonCollaboratingAssemblyProxy.h"
