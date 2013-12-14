@@ -16,6 +16,7 @@
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonPropertyInjectedAsCollection.h"
 #import "TyphoonParameterInjectedAsCollection.h"
+#import "PrimitiveMan.h"
 
 @interface ComponentDefinition_InstanceBuilderTests : SenTestCase
 @end
@@ -101,6 +102,64 @@
     assertThatUnsignedLong([knight.favoriteDamsels count], equalToUnsignedLong(2));
 }
 
+- (void)test_inject_initializer_values_as_primitives
+{
+    TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:[PrimitiveMan class] key:@"primitive"];
+    TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(
+                                                                                             initWithIntValue:
+                                                                                             unsignedIntValue:
+                                                                                             shortValue:
+                                                                                             unsignedShortValue:
+                                                                                             longValue:
+                                                                                             unsignedLongValue:
+                                                                                             longLongValue:
+                                                                                             unsignedLongLongValue:
+                                                                                             unsignedCharValue:
+                                                                                             floatValue:
+                                                                                             doubleValue:
+                                                                                             boolValue:
+                                                                                             integerValue:
+                                                                                             unsignedIntegerValue:
+                                                                                             classValue:
+                                                                                             selectorValue:)];
+    [initializer injectWithInt:1];
+    [initializer injectWithUnsignedInt:2];
+    [initializer injectWithShort:3];
+    [initializer injectWithUnsignedShort:4];
+    [initializer injectWithLong:5];
+    [initializer injectWithUnsignedLong:6];
+    [initializer injectWithLongLong:7];
+    [initializer injectWithUnsignedLongLong:8];
+    [initializer injectWithUnsignedChar:9];
+    [initializer injectWithFloat:10.0];
+    [initializer injectWithDouble:11.0];
+    [initializer injectWithBool:YES];
+    [initializer injectWithInteger:NSIntegerMax];
+    [initializer injectWithUnsignedInteger:NSUIntegerMax];
+    [initializer injectWithClass:[self class]];
+    [initializer injectWithSelector:@selector(selectorValue)];
+
+    [definition setInitializer:initializer];
+
+    [_componentFactory register:definition];
+    PrimitiveMan* primitiveMan = [_componentFactory componentForKey:@"primitive"];
+    assertThatInt(primitiveMan.intValue, equalToInt(1));
+    assertThatUnsignedInt(primitiveMan.unsignedIntValue, equalToUnsignedInt(2));
+    assertThatShort(primitiveMan.shortValue, equalToShort(3));
+    assertThatUnsignedShort(primitiveMan.unsignedShortValue, equalToUnsignedShort(4));
+    assertThatLong(primitiveMan.longValue, equalToLong(5));
+    assertThatUnsignedLong(primitiveMan.unsignedLongValue, equalToUnsignedLong(6));
+    assertThatLongLong(primitiveMan.longLongValue, equalToLongLong(7));
+    assertThatUnsignedLongLong(primitiveMan.unsignedLongLongValue, equalToUnsignedLongLong(8));
+    assertThatUnsignedChar(primitiveMan.unsignedCharValue, equalToUnsignedChar(9));
+    assertThatFloat(primitiveMan.floatValue, equalToFloat(10.0));
+    assertThatDouble(primitiveMan.doubleValue, equalToDouble(11.0));
+    assertThatBool(primitiveMan.boolValue, equalToBool(YES));
+    assertThatInteger(primitiveMan.integerValue, equalToInteger(NSIntegerMax));
+    assertThatUnsignedInteger(primitiveMan.unsignedIntegerValue, equalToUnsignedInteger(NSUIntegerMax));
+    assertThat(NSStringFromClass(primitiveMan.classValue), equalTo(NSStringFromClass([self class])));
+    assertThat(NSStringFromSelector(primitiveMan.selectorValue), equalTo(NSStringFromSelector(@selector(selectorValue))));
+}
 
 /* ====================================================================================================================================== */
 #pragma mark - Property injection
@@ -149,6 +208,46 @@
 
     Knight* knight = [_componentFactory componentForKey:@"knight"];
     assertThatLong(knight.damselsRescued, equalToLongLong(12));
+}
+
+- (void)test_inject_property_value_as_primitives
+{
+    TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:[PrimitiveMan class] key:@"primitive"];
+    [definition injectProperty:@selector(intValue) withInt:1];
+    [definition injectProperty:@selector(unsignedIntValue) withUnsignedInt:2];
+    [definition injectProperty:@selector(shortValue) withShort:3];
+    [definition injectProperty:@selector(unsignedShortValue) withUnsignedShort:4];
+    [definition injectProperty:@selector(longValue) withLong:5];
+    [definition injectProperty:@selector(unsignedLongValue) withUnsignedLong:6];
+    [definition injectProperty:@selector(longLongValue) withLongLong:7];
+    [definition injectProperty:@selector(unsignedLongLongValue) withUnsignedLongLong:8];
+    [definition injectProperty:@selector(unsignedCharValue) withUnsignedChar:9];
+    [definition injectProperty:@selector(floatValue) withFloat:10.101010];
+    [definition injectProperty:@selector(doubleValue) withDouble:11.111111];
+    [definition injectProperty:@selector(boolValue) withBool:YES];
+    [definition injectProperty:@selector(integerValue) withInteger:NSIntegerMax];
+    [definition injectProperty:@selector(unsignedIntegerValue) withUnsignedInteger:NSUIntegerMax];
+    [definition injectProperty:@selector(classValue) withClass:[self class]];
+    [definition injectProperty:@selector(selectorValue) withSelector:@selector(selectorValue)];
+    
+    [_componentFactory register:definition];
+    PrimitiveMan* primitiveMan = [_componentFactory componentForKey:@"primitive"];
+    assertThatInt(primitiveMan.intValue, equalToInt(1));
+    assertThatUnsignedInt(primitiveMan.unsignedIntValue, equalToUnsignedInt(2));
+    assertThatShort(primitiveMan.shortValue, equalToShort(3));
+    assertThatUnsignedShort(primitiveMan.unsignedShortValue, equalToUnsignedShort(4));
+    assertThatLong(primitiveMan.longValue, equalToLong(5));
+    assertThatUnsignedLong(primitiveMan.unsignedLongValue, equalToUnsignedLong(6));
+    assertThatLongLong(primitiveMan.longLongValue, equalToLongLong(7));
+    assertThatUnsignedLongLong(primitiveMan.unsignedLongLongValue, equalToUnsignedLongLong(8));
+    assertThatUnsignedChar(primitiveMan.unsignedCharValue, equalToUnsignedChar(9));
+    assertThatFloat(primitiveMan.floatValue, equalToFloat(10.101010));
+    assertThatDouble(primitiveMan.doubleValue, equalToDouble(11.111111));
+    assertThatBool(primitiveMan.boolValue, equalToBool(YES));
+    assertThatInteger(primitiveMan.integerValue, equalToInteger(NSIntegerMax));
+    assertThatUnsignedInteger(primitiveMan.unsignedIntegerValue, equalToUnsignedInteger(NSUIntegerMax));
+    assertThat(NSStringFromClass(primitiveMan.classValue), equalTo(NSStringFromClass([self class])));
+    assertThat(NSStringFromSelector(primitiveMan.selectorValue), equalTo(NSStringFromSelector(@selector(selectorValue))));
 }
 
 
