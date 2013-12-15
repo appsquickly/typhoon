@@ -12,6 +12,7 @@
 
 
 #import "TyphoonWrappedSelector.h"
+#import <objc/runtime.h>
 
 @interface TyphoonWrappedSelector()
 
@@ -55,5 +56,25 @@
     [description appendString:@">"];
     return description;
 }
+
+- (BOOL)isEqual:(id)other
+{
+    if (other == self)
+    {
+            return YES;
+    }
+    if (!other || ![[other class] isEqual:[self class]])
+    {
+            return NO;
+    }
+
+    return [self isEqualToWrappedSelector:(TyphoonWrappedSelector*)other];
+}
+
+- (BOOL)isEqualToWrappedSelector:(TyphoonWrappedSelector*)wrappedSelector
+{
+    return sel_isEqual(self.selector, wrappedSelector.selector);
+}
+
 
 @end

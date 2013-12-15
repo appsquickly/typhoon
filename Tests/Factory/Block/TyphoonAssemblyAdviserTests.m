@@ -38,6 +38,11 @@
 
 @implementation TestAssembly(TyphoonAssemblyAdviserTests)
 
++ (void)initialize
+{
+    [self markSelectorReserved:@selector(addDefinitionMethodNamed:)];
+}
+
 - (void)addDefinitionMethodNamed:(NSString*)methodName
 {
     IMP imp = imp_implementationWithBlock(^{});
@@ -68,30 +73,24 @@
 
 - (void)testEnumeratesDefinitionSelectors_EmptyAssembly
 {
-    TyphoonAssembly *assembly = [[TyphoonAssembly alloc] init];
+    TestAssembly *assembly = [[TestAssembly alloc] init];
     TyphoonAssemblyAdviser* adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
     NSSet *selectors = [adviser enumerateDefinitionSelectors];
     assertThat(selectors, empty());
 }
 
-//- (void)testEnumeratesDefinitionSelectors_Assembly
-//{
-//    TestAssembly *assembly = [[TestAssembly alloc] init];
-//    [assembly addDefinitionMethodNamed:@"aDefinitionMethod"];
-//
-//    TyphoonAssemblyAdviser* adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
-//
-//    NSSet *selectors = [adviser enumerateDefinitionSelectors];
-//    TyphoonWrappedSelector *wrappedSEL = [TyphoonWrappedSelector wrappedSelectorWithName:@"aDefinitionMethod"];
-//
-//    // <TyphoonWrappedSelector: 0x00000 SEL named: 'aDefinitionMethod'>
-//    // Expected a collection containing items matching (<Pointer value of SEL named 'aDefinitionMethod'>), but was <{(
-//    // description!
-//    // replace NSValue with an abstraction.
-//    // TyphoonWrappedSelector
-//
-//    assertThat(selectors, onlyContains(wrappedSEL, nil));
-//}
+- (void)testEnumeratesDefinitionSelectors_Assembly
+{
+    TestAssembly *assembly = [[TestAssembly alloc] init];
+    [assembly addDefinitionMethodNamed:@"aDefinitionMethod"];
+
+    TyphoonAssemblyAdviser* adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
+
+    NSSet *selectors = [adviser enumerateDefinitionSelectors];
+    TyphoonWrappedSelector *wrappedSEL = [TyphoonWrappedSelector wrappedSelectorWithName:@"aDefinitionMethod"];
+
+    assertThat(selectors, onlyContains(wrappedSEL, nil));
+}
 
 @end
