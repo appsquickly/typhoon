@@ -1,4 +1,4 @@
 <map id="TyphoonArgumentInjectedAsCollection" name="TyphoonArgumentInjectedAsCollection">
-<area shape="rect" id="node3" href="$interface_typhoon_parameter_injected_as_collection.html" title="TyphoonParameterInjected\lAsCollection" alt="" coords="4,184,197,234"/>
-<area shape="rect" id="node4" href="$interface_typhoon_property_injected_as_collection.html" title="Represents a collection (NSArray, NSSet, c&#45;style array) of items injected by reference, value or type. " alt="" coords="222,184,420,234"/>
+<area shape="rect" id="node3" href="$interface_typhoon_parameter_injected_as_collection.html" title="TyphoonParameterInjected\lAsCollection" alt="" coords="5,171,187,213"/>
+<area shape="rect" id="node4" href="$interface_typhoon_property_injected_as_collection.html" title="Represents a collection (NSArray, NSSet, c&#45;style array) of items injected by reference, value or type. " alt="" coords="212,171,399,213"/>
 </map>

@@ -287,14 +287,94 @@
               <Anchor>ad90121e442e43e82f4d79339df5f34a1</Anchor>
              </Node>
              <Node>
+              <Name>injectProperty:withBool:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>aa853f2f8a26b63808bd84441c206b9d2</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withClass:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a7f9d3fcbf3eaa3d5a0176d51c0ec1682</Anchor>
+             </Node>
+             <Node>
               <Name>injectProperty:withDefinition:</Name>
               <Path>interface_typhoon_definition.html</Path>
               <Anchor>ae3a05d32921968a3914635c471d26ad2</Anchor>
              </Node>
              <Node>
+              <Name>injectProperty:withDouble:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>abf23a9229f7b96ea0f35c3ecff6201ec</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withFloat:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a587f91718c954757f03e8539ace3bdd3</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withInt:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>adc26630fc2832620629ec3278f499649</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withInteger:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a3eb0ca7d2f62498d08015c10232e24f2</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withLong:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a5908499c6e6eda633a976a59b2f9219e</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withLongLong:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>aa7c57259ca263015325642b5ecd8e367</Anchor>
+             </Node>
+             <Node>
               <Name>injectProperty:withObjectInstance:</Name>
               <Path>interface_typhoon_definition.html</Path>
               <Anchor>aa3923dc7027298584f7b3f06af847963</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withSelector:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>aac09eb63fca8541f096122f80bbd8107</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withShort:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a5475d99b0c4877485d6e8a0574e0da0d</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withUnsignedChar:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a5bbbc0794fab81c586139db95e0e51fa</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withUnsignedInt:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>ac5468bdb2390aa56bc0b9dcc17ae17bd</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withUnsignedInteger:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a387a15f6822cb0ed8898f8d665d37df1</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withUnsignedLong:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a93ff51678182d8e7b8520bd834d8af31</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withUnsignedLongLong:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a088efa0079dcc4e338fbb814e5a9b3c4</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withUnsignedShort:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a7bf11a781affe3ebdde3749ff2267cd8</Anchor>
              </Node>
              <Node>
               <Name>injectProperty:withValueAsText:</Name>
@@ -350,7 +430,7 @@
              <Node>
               <Name>injectParameterAtIndex:withDefinition:</Name>
               <Path>interface_typhoon_initializer.html</Path>
-              <Anchor>ac004d9e5e083368b1081ceb846987efb</Anchor>
+              <Anchor>abf530d781c0c0f0267e7670d6faf5b55</Anchor>
              </Node>
              <Node>
               <Name>injectParameterAtIndex:withObject:</Name>
@@ -393,6 +473,16 @@
               <Anchor>a2d9e96a017904facd086a865d28bb6b5</Anchor>
              </Node>
              <Node>
+              <Name>injectWithBool:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>ad8754b0941d0b1c171baab1839dc7d71</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithClass:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>ad3d0406ed1b31f22d3a6962d47b65860</Anchor>
+             </Node>
+             <Node>
               <Name>injectWithCollection:requiredType:</Name>
               <Path>interface_typhoon_initializer.html</Path>
               <Anchor>a5fb1c50fd69a0a5c90162cc0d546f137</Anchor>
@@ -403,9 +493,79 @@
               <Anchor>a6d16d742d75be63ee8f6dd91af3cbb69</Anchor>
              </Node>
              <Node>
+              <Name>injectWithDouble:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>a2fdb8554cb015f60eff5b4d16b104645</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithFloat:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>a91d8c1de4e98f3e1515aa20443e302d7</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithInt:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>a67111f2087d4d23b38d5816904232c66</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithInteger:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>a06e06b76ca321bb2e285ad3e0570e851</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithLong:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>aa554bb2ff65d69261829b7e28320a193</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithLongLong:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>a0c640c3d696b36f5262b5313a6c97324</Anchor>
+             </Node>
+             <Node>
               <Name>injectWithObject:</Name>
               <Path>interface_typhoon_initializer.html</Path>
               <Anchor>a7bf06e77cb0a5a67cd9cc084950ddecb</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithSelector:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>ac8b3acdf1171e122df76c01a063182f9</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithShort:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>a647be5edcd1d8d974e98a30675451ca3</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithUnsignedChar:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>a5d2bc35e9f65d7b7ec6d5367ff7372a3</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithUnsignedInt:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>acb9a9355572064ea2692a6b20f06b3cd</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithUnsignedInteger:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>aec2d8d7ce6079af1810e6130201c7444</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithUnsignedLong:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>a282a8c72de9fc1899c8f269b98272c9d</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithUnsignedLongLong:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>ae11a450446462f128846e75bb9602ca0</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithUnsignedShort:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>aeb638e2aa2f77dd3a850d02084e48731</Anchor>
              </Node>
              <Node>
               <Name>injectWithValueAsText:</Name>
@@ -1295,14 +1455,94 @@
               <Anchor>ad90121e442e43e82f4d79339df5f34a1</Anchor>
              </Node>
              <Node>
+              <Name>injectProperty:withBool:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>aa853f2f8a26b63808bd84441c206b9d2</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withClass:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a7f9d3fcbf3eaa3d5a0176d51c0ec1682</Anchor>
+             </Node>
+             <Node>
               <Name>injectProperty:withDefinition:</Name>
               <Path>interface_typhoon_definition.html</Path>
               <Anchor>ae3a05d32921968a3914635c471d26ad2</Anchor>
              </Node>
              <Node>
+              <Name>injectProperty:withDouble:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>abf23a9229f7b96ea0f35c3ecff6201ec</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withFloat:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a587f91718c954757f03e8539ace3bdd3</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withInt:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>adc26630fc2832620629ec3278f499649</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withInteger:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a3eb0ca7d2f62498d08015c10232e24f2</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withLong:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a5908499c6e6eda633a976a59b2f9219e</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withLongLong:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>aa7c57259ca263015325642b5ecd8e367</Anchor>
+             </Node>
+             <Node>
               <Name>injectProperty:withObjectInstance:</Name>
               <Path>interface_typhoon_definition.html</Path>
               <Anchor>aa3923dc7027298584f7b3f06af847963</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withSelector:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>aac09eb63fca8541f096122f80bbd8107</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withShort:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a5475d99b0c4877485d6e8a0574e0da0d</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withUnsignedChar:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a5bbbc0794fab81c586139db95e0e51fa</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withUnsignedInt:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>ac5468bdb2390aa56bc0b9dcc17ae17bd</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withUnsignedInteger:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a387a15f6822cb0ed8898f8d665d37df1</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withUnsignedLong:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a93ff51678182d8e7b8520bd834d8af31</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withUnsignedLongLong:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a088efa0079dcc4e338fbb814e5a9b3c4</Anchor>
+             </Node>
+             <Node>
+              <Name>injectProperty:withUnsignedShort:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a7bf11a781affe3ebdde3749ff2267cd8</Anchor>
              </Node>
              <Node>
               <Name>injectProperty:withValueAsText:</Name>
@@ -1410,7 +1650,7 @@
              <Node>
               <Name>injectParameterAtIndex:withDefinition:</Name>
               <Path>interface_typhoon_initializer.html</Path>
-              <Anchor>ac004d9e5e083368b1081ceb846987efb</Anchor>
+              <Anchor>abf530d781c0c0f0267e7670d6faf5b55</Anchor>
              </Node>
              <Node>
               <Name>injectParameterAtIndex:withObject:</Name>
@@ -1453,6 +1693,16 @@
               <Anchor>a2d9e96a017904facd086a865d28bb6b5</Anchor>
              </Node>
              <Node>
+              <Name>injectWithBool:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>ad8754b0941d0b1c171baab1839dc7d71</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithClass:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>ad3d0406ed1b31f22d3a6962d47b65860</Anchor>
+             </Node>
+             <Node>
               <Name>injectWithCollection:requiredType:</Name>
               <Path>interface_typhoon_initializer.html</Path>
               <Anchor>a5fb1c50fd69a0a5c90162cc0d546f137</Anchor>
@@ -1463,9 +1713,79 @@
               <Anchor>a6d16d742d75be63ee8f6dd91af3cbb69</Anchor>
              </Node>
              <Node>
+              <Name>injectWithDouble:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>a2fdb8554cb015f60eff5b4d16b104645</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithFloat:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>a91d8c1de4e98f3e1515aa20443e302d7</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithInt:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>a67111f2087d4d23b38d5816904232c66</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithInteger:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>a06e06b76ca321bb2e285ad3e0570e851</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithLong:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>aa554bb2ff65d69261829b7e28320a193</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithLongLong:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>a0c640c3d696b36f5262b5313a6c97324</Anchor>
+             </Node>
+             <Node>
               <Name>injectWithObject:</Name>
               <Path>interface_typhoon_initializer.html</Path>
               <Anchor>a7bf06e77cb0a5a67cd9cc084950ddecb</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithSelector:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>ac8b3acdf1171e122df76c01a063182f9</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithShort:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>a647be5edcd1d8d974e98a30675451ca3</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithUnsignedChar:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>a5d2bc35e9f65d7b7ec6d5367ff7372a3</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithUnsignedInt:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>acb9a9355572064ea2692a6b20f06b3cd</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithUnsignedInteger:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>aec2d8d7ce6079af1810e6130201c7444</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithUnsignedLong:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>a282a8c72de9fc1899c8f269b98272c9d</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithUnsignedLongLong:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>ae11a450446462f128846e75bb9602ca0</Anchor>
+             </Node>
+             <Node>
+              <Name>injectWithUnsignedShort:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>aeb638e2aa2f77dd3a850d02084e48731</Anchor>
              </Node>
              <Node>
               <Name>injectWithValueAsText:</Name>
