@@ -63,7 +63,7 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 
 - (NSSet*)enumerateDefinitionSelectors
 {
-    return nil;
+    return [[self class] definitionSelectorsForAssembly:self.assembly];
 }
 
 + (void)undoAdviseMethods:(TyphoonAssembly*)assembly

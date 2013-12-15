@@ -17,9 +17,10 @@
 
 @interface TyphoonAssemblyAdviser : NSObject
 
-+ (void)adviseMethods:(TyphoonAssembly*)assembly;
-
 - (id)initWithAssembly:(TyphoonAssembly*)assembly;
+- (NSSet*)enumerateDefinitionSelectors;
+
++ (void)adviseMethods:(TyphoonAssembly*)assembly;
 
 + (void)undoAdviseMethods:(TyphoonAssembly*)assembly;
 
