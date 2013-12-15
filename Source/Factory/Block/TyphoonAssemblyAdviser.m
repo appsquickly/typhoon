@@ -17,6 +17,7 @@
 #import <objc/runtime.h>
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "OCLogTemplate.h"
+#import "TyphoonWrappedSelector.h"
 
 static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 
@@ -92,9 +93,9 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 + (NSString*)humanReadableDescriptionForSelectorObjects:(NSSet*)selectors
 {
     NSMutableSet* selectorStrings = [[NSMutableSet alloc] initWithCapacity:selectors.count];
-    [selectors enumerateObjectsUsingBlock:^(NSValue*  obj, BOOL* stop)
+    [selectors enumerateObjectsUsingBlock:^(TyphoonWrappedSelector* wrappedSelector, BOOL* stop)
     {
-        SEL sel = [obj pointerValue];
+        SEL sel = [wrappedSelector selector];
         NSString *string = NSStringFromSelector(sel);
         [selectorStrings addObject:string];
     }];
@@ -120,14 +121,14 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
     }];
 }
 
-+ (void)swapImplementationOfDefinitionSelector:(NSValue*)obj withDynamicBeforeAdviceImplementationOnAssembly:(TyphoonAssembly*)assembly
++ (void)swapImplementationOfDefinitionSelector:(TyphoonWrappedSelector*)wrappedSelector withDynamicBeforeAdviceImplementationOnAssembly:(TyphoonAssembly*)assembly
 {
-    return [self swapImplementationOfDefinitionSelector:obj withDynamicBeforeAdviceImplementationOnAssemblyClass:[assembly class]];
+    return [self swapImplementationOfDefinitionSelector:wrappedSelector withDynamicBeforeAdviceImplementationOnAssemblyClass:[assembly class]];
 }
 
-+ (void)swapImplementationOfDefinitionSelector:(NSValue*)obj withDynamicBeforeAdviceImplementationOnAssemblyClass:(Class)assemblyClass
++ (void)swapImplementationOfDefinitionSelector:(TyphoonWrappedSelector*)wrappedSEL withDynamicBeforeAdviceImplementationOnAssemblyClass:(Class)assemblyClass
 {
-    SEL methodSelector = (SEL) [obj pointerValue];
+    SEL methodSelector = [wrappedSEL selector];
     SEL swizzled = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector];
 
     NSError* err;
@@ -212,7 +213,8 @@ typedef void(^MethodEnumerationBlock)(Method method);
 + (void)addDefinitionSelectorForMethod:(Method)method toSet:(NSMutableSet*)definitionSelectors
 {
     SEL methodSelector = method_getName(method);
-    [definitionSelectors addObject:[NSValue valueWithPointer:methodSelector]];
+    TyphoonWrappedSelector* wrappedSEL = [TyphoonWrappedSelector wrappedSelectorWithSelector:methodSelector];
+    [definitionSelectors addObject:wrappedSEL];
 }
 
 #pragma mark - Advising Registry

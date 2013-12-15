@@ -7,8 +7,6 @@
 
 @interface TyphoonWrappedSelector()
 
-@property (readonly) SEL selector;
-
 @end
 
 
@@ -24,9 +22,19 @@
 
 - (id)initWithName:(NSString*)string
 {
+    return [self initWithSelector:NSSelectorFromString(string)];
+}
+
++ (TyphoonWrappedSelector*)wrappedSelectorWithSelector:(SEL)pSelector
+{
+    return [[self alloc] initWithSelector:pSelector];
+}
+
+- (id)initWithSelector:(SEL)pSelector
+{
     self = [super init];
     if (self) {
-        _selector = NSSelectorFromString(string);
+        _selector = pSelector;
     }
     return self;
 }

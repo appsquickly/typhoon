@@ -11,4 +11,11 @@
 + (TyphoonWrappedSelector*)withName:(NSString*)string;
 
 - (id)initWithName:(NSString*)string;
+
++ (TyphoonWrappedSelector*)wrappedSelectorWithSelector:(SEL)pSelector;
+
+- (id)initWithSelector:(SEL)pSelector;
+
+@property (readonly) SEL selector;
+
 @end
