@@ -23,8 +23,6 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 
 @interface TyphoonAssemblyAdviser()
 
-@property (readonly) TyphoonAssembly* assembly;
-
 @end
 
 

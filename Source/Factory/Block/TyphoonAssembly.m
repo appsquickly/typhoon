@@ -144,7 +144,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
     if (self)
     {
         _definitionBuilder = [[TyphoonAssemblyDefinitionBuilder alloc] initWithAssembly:self];
-        _adviser = [[TyphoonAssemblyAdviser alloc] init];
+        _adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:self];
     }
     return self;
 }
@@ -173,8 +173,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 - (void)prepareForUse
 {
-//    self.definitionSelectors = [self.adviser enumerateDefinitionSelectors];
-    self.definitionSelectors = [TyphoonAssemblyAdviser definitionSelectorsForAssembly:self];
+    self.definitionSelectors = [self.adviser enumerateDefinitionSelectors];
 
     [TyphoonAssemblyAdviser adviseMethods:self];
 }

@@ -50,12 +50,6 @@
 
 }
 
-- (void)testInit
-{
-    TyphoonAssemblyAdviser* adviser = [[TyphoonAssemblyAdviser alloc] init];
-
-}
-
 - (void)testEnumeratesDefinitionSelectors_EmptyAssembly
 {
     EmptyTestAssembly *assembly = [[EmptyTestAssembly alloc] init];
