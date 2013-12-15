@@ -50,7 +50,7 @@
     }
     @catch (NSException* e)
     {
-        assertThat([e description], equalTo(@"Condition didn't happen before timeout: 2.000000"));
+        assertThat([e description], equalTo(@"Condition didn't happen before timeout: 0.100000"));
     }
 
 
