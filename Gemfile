@@ -1,3 +1,12 @@
 source "https://rubygems.org"
 
-gem 'cocoapods'
+group :development do
+  gem 'cocoapods'
+
+  gem 'terminal-notifier-guard'
+  gem 'guard'
+  gem 'guard-shell'
+  gem 'guard-bundler'
+  gem 'xcpretty'
+end
+
