@@ -66,7 +66,7 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 - (void)swizzleAssemblyMethods
 {
     NSSet* definitionSelectors = [self enumerateDefinitionSelectors];
-    LogTrace(@"About to swizzle the following definition selectors: %@.", definitionSelectors);
+    NSLog(@"About to swizzle the following definition selectors: %@.", definitionSelectors);
 
     [self swizzleDefinitionSelectors:definitionSelectors];
 
@@ -95,17 +95,6 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
     }
 }
 
-+ (void)adviseMethods:(TyphoonAssembly*)assembly
-{
-    @synchronized (self)
-    {
-        if ([TyphoonAssemblyAdviser assemblyIsNotAdvised:assembly])
-        {
-            [self swizzleAssemblyMethods:assembly];
-        }
-    }
-}
-
 + (void)undoAdviseMethods:(TyphoonAssembly*)assembly
 {
     @synchronized (self)
@@ -121,22 +110,11 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 {
     NSSet *swizzledSelectors = [swizzledDefinitionsByAssemblyClass objectForKey:[assembly class]];
 
-    LogTrace(@"Unswizzling the following selectors: '%@' on assembly: '%@'.", swizzledSelectors, assembly);
+    NSLog(@"Unswizzling the following selectors: '%@' on assembly: '%@'.", swizzledSelectors, assembly);
 
     [self swizzleDefinitionSelectors:swizzledSelectors onAssembly:assembly];
 
     [self markAssemblyMethodsAsNoLongerAdvised:assembly];
-}
-
-+ (void)swizzleAssemblyMethods:(TyphoonAssembly*)assembly
-{
-    TyphoonAssemblyAdviser* adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
-    NSSet* definitionSelectors = [adviser enumerateDefinitionSelectors];
-    LogTrace(@"About to swizzle the following definition selectors: %@.", definitionSelectors);
-
-    [self swizzleDefinitionSelectors:definitionSelectors onAssembly:assembly];
-
-    [self markAssemblyMethods:definitionSelectors asAdvised:assembly];
 }
 
 + (void)swizzleDefinitionSelectors:(NSSet*)definitionSelectors onAssembly:(TyphoonAssembly*)assembly
@@ -256,6 +234,8 @@ typedef void(^MethodEnumerationBlock)(Method method);
 
 + (BOOL)assemblyClassIsAdvised:(Class)class
 {
+    NSLog(@"Checking if assemby class is advised: '%@'.", NSStringFromClass(class));
+
     return [[swizzledDefinitionsByAssemblyClass allKeys] containsObject:class];
 }
 

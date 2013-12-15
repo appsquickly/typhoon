@@ -19,7 +19,6 @@
 
 @interface TyphoonAssemblyAdviser : NSObject
 
-+ (void)adviseMethods:(TyphoonAssembly*)assembly;
 + (void)undoAdviseMethods:(TyphoonAssembly*)assembly;
 + (BOOL)assemblyClassIsAdvised:(Class)class;
 
