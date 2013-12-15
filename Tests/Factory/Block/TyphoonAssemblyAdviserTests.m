@@ -18,10 +18,10 @@
 #import "TyphoonWrappedSelector.h"
 
 
-@interface TestAssembly : TyphoonAssembly
+@interface EmptyTestAssembly : TyphoonAssembly
 @end
 
-@implementation TestAssembly
+@implementation EmptyTestAssembly
 @end
 
 
@@ -30,27 +30,18 @@
 
 
 
-@interface TestAssembly(TyphoonAssemblyAdviserTests)
-
-- (void)addDefinitionMethodNamed:(NSString *)methodName;
-
+@interface TestAssemblyWithMethod : EmptyTestAssembly
 @end
 
-@implementation TestAssembly(TyphoonAssemblyAdviserTests)
+@implementation TestAssemblyWithMethod
 
-+ (void)initialize
+- (void)aDefinitionMethod
 {
-    [self markSelectorReserved:@selector(addDefinitionMethodNamed:)];
-}
 
-- (void)addDefinitionMethodNamed:(NSString*)methodName
-{
-    IMP imp = imp_implementationWithBlock(^{});
-
-    class_addMethod([self class], NSSelectorFromString(methodName), imp, "v@:");
 }
 
 @end
+
 
 
 
@@ -65,15 +56,9 @@
 
 }
 
-- (void)testInitWithAssembly
-{
-    TyphoonAssembly *assembly = [[TyphoonAssembly alloc] init];
-    TyphoonAssemblyAdviser* adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
-}
-
 - (void)testEnumeratesDefinitionSelectors_EmptyAssembly
 {
-    TestAssembly *assembly = [[TestAssembly alloc] init];
+    EmptyTestAssembly *assembly = [[EmptyTestAssembly alloc] init];
     TyphoonAssemblyAdviser* adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
     NSSet *selectors = [adviser enumerateDefinitionSelectors];
@@ -82,9 +67,7 @@
 
 - (void)testEnumeratesDefinitionSelectors_Assembly
 {
-    TestAssembly *assembly = [[TestAssembly alloc] init];
-    [assembly addDefinitionMethodNamed:@"aDefinitionMethod"];
-
+    TestAssemblyWithMethod *assembly = [[TestAssemblyWithMethod alloc] init];
     TyphoonAssemblyAdviser* adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
     NSSet *selectors = [adviser enumerateDefinitionSelectors];
