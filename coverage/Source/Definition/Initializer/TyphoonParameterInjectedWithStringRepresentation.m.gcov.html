@@ -75,7 +75,7 @@
 <span class="lineNum">      17 </span>            : #import &quot;TyphoonIntrospectionUtils.h&quot;
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span><span class="lineCov">         47 : @implementation TyphoonParameterInjectedWithStringRepresentation</span>
+<span class="lineNum">      20 </span><span class="lineCov">         43 : @implementation TyphoonParameterInjectedWithStringRepresentation</span>
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : @synthesize textValue = _textValue;
@@ -83,17 +83,17 @@
 <span class="lineNum">      25 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      26 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span><span class="lineCov">        271 : - (id)initWithIndex:(NSUInteger)index value:(NSString*)value requiredTypeOrNil:(Class)requiredTypeOrNil</span>
+<span class="lineNum">      28 </span><span class="lineCov">        267 : - (id)initWithIndex:(NSUInteger)index value:(NSString*)value requiredTypeOrNil:(Class)requiredTypeOrNil</span>
 <span class="lineNum">      29 </span>            : {
-<span class="lineNum">      30 </span><span class="lineCov">        271 :     self = [super init];</span>
-<span class="lineNum">      31 </span><span class="lineCov">        271 :     if (self)</span>
+<span class="lineNum">      30 </span><span class="lineCov">        267 :     self = [super init];</span>
+<span class="lineNum">      31 </span><span class="lineCov">        267 :     if (self)</span>
 <span class="lineNum">      32 </span>            :     {
-<span class="lineNum">      33 </span><span class="lineCov">        271 :         _index = index;</span>
-<span class="lineNum">      34 </span><span class="lineCov">        271 :         _textValue = value;</span>
-<span class="lineNum">      35 </span><span class="lineCov">        271 :         _requiredType = requiredTypeOrNil;</span>
-<span class="lineNum">      36 </span><span class="lineCov">        271 :     }</span>
-<span class="lineNum">      37 </span><span class="lineCov">        271 :     return self;</span>
-<span class="lineNum">      38 </span><span class="lineCov">        271 : }</span>
+<span class="lineNum">      33 </span><span class="lineCov">        267 :         _index = index;</span>
+<span class="lineNum">      34 </span><span class="lineCov">        267 :         _textValue = value;</span>
+<span class="lineNum">      35 </span><span class="lineCov">        267 :         _requiredType = requiredTypeOrNil;</span>
+<span class="lineNum">      36 </span><span class="lineCov">        267 :     }</span>
+<span class="lineNum">      37 </span><span class="lineCov">        267 :     return self;</span>
+<span class="lineNum">      38 </span><span class="lineCov">        267 : }</span>
 <span class="lineNum">      39 </span>            : 
 <span class="lineNum">      40 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      41 </span>            : #pragma mark - Interface Methods
@@ -136,10 +136,10 @@
 <span class="lineNum">      78 </span><span class="lineCov">         82 :     return TyphoonParameterInjectionTypeStringRepresentation;</span>
 <span class="lineNum">      79 </span>            : }
 <span class="lineNum">      80 </span>            : 
-<span class="lineNum">      81 </span><span class="lineCov">        318 : - (void)setInitializer:(TyphoonInitializer*)initializer</span>
+<span class="lineNum">      81 </span><span class="lineCov">        310 : - (void)setInitializer:(TyphoonInitializer*)initializer</span>
 <span class="lineNum">      82 </span>            : {
-<span class="lineNum">      83 </span><span class="lineCov">        318 :     _initializer = initializer;</span>
-<span class="lineNum">      84 </span><span class="lineCov">        318 : }</span>
+<span class="lineNum">      83 </span><span class="lineCov">        310 :     _initializer = initializer;</span>
+<span class="lineNum">      84 </span><span class="lineCov">        310 : }</span>
 <span class="lineNum">      85 </span>            : 
 <span class="lineNum">      86 </span>            : 
 <span class="lineNum">      87 </span>            : @end

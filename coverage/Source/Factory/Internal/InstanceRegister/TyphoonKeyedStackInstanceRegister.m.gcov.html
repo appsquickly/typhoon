@@ -74,7 +74,7 @@
 <span class="lineNum">      16 </span>            : #import &quot;TyphoonGenericStack.h&quot;
 <span class="lineNum">      17 </span>            : 
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span><span class="lineCov">         10 : @implementation TyphoonKeyedStackInstanceRegister</span>
+<span class="lineNum">      19 </span><span class="lineCov">          9 : @implementation TyphoonKeyedStackInstanceRegister</span>
 <span class="lineNum">      20 </span>            : {
 <span class="lineNum">      21 </span>            :     NSMutableDictionary* _registry;
 <span class="lineNum">      22 </span>            : }
@@ -82,20 +82,20 @@
 <span class="lineNum">      24 </span>            : 
 <span class="lineNum">      25 </span>            : #pragma mark Initialization
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">        260 : + (instancetype)instanceRegister</span>
+<span class="lineNum">      27 </span><span class="lineCov">        259 : + (instancetype)instanceRegister</span>
 <span class="lineNum">      28 </span>            : {
-<span class="lineNum">      29 </span><span class="lineCov">        260 :     return [[self alloc] init];</span>
-<span class="lineNum">      30 </span><span class="lineCov">        260 : }</span>
+<span class="lineNum">      29 </span><span class="lineCov">        259 :     return [[self alloc] init];</span>
+<span class="lineNum">      30 </span><span class="lineCov">        259 : }</span>
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">        260 : - (id)init</span>
+<span class="lineNum">      32 </span><span class="lineCov">        259 : - (id)init</span>
 <span class="lineNum">      33 </span>            : {
-<span class="lineNum">      34 </span><span class="lineCov">        260 :     self = [super init];</span>
-<span class="lineNum">      35 </span><span class="lineCov">        260 :     if (self)</span>
+<span class="lineNum">      34 </span><span class="lineCov">        259 :     self = [super init];</span>
+<span class="lineNum">      35 </span><span class="lineCov">        259 :     if (self)</span>
 <span class="lineNum">      36 </span>            :     {
-<span class="lineNum">      37 </span><span class="lineCov">        260 :         _registry = [NSMutableDictionary dictionary];</span>
-<span class="lineNum">      38 </span><span class="lineCov">        260 :     }</span>
-<span class="lineNum">      39 </span><span class="lineCov">        260 :     return self;</span>
-<span class="lineNum">      40 </span><span class="lineCov">        260 : }</span>
+<span class="lineNum">      37 </span><span class="lineCov">        259 :         _registry = [NSMutableDictionary dictionary];</span>
+<span class="lineNum">      38 </span><span class="lineCov">        259 :     }</span>
+<span class="lineNum">      39 </span><span class="lineCov">        259 :     return self;</span>
+<span class="lineNum">      40 </span><span class="lineCov">        259 : }</span>
 <span class="lineNum">      41 </span>            : 
 <span class="lineNum">      42 </span>            : 
 <span class="lineNum">      43 </span>            : #pragma mark Public API
@@ -120,7 +120,7 @@
 <span class="lineNum">      62 </span>            : 
 <span class="lineNum">      63 </span><span class="lineCov">        145 : - (BOOL)hasInstanceForKey:(NSString*)key</span>
 <span class="lineNum">      64 </span>            : {
-<span class="lineNum">      65 </span><span class="lineCov">        194 :     return ((_registry[key] != nil)&amp;&amp;([_registry[key] isEmpty] == NO));</span>
+<span class="lineNum">      65 </span><span class="lineCov">        197 :     return ((_registry[key] != nil)&amp;&amp;([_registry[key] isEmpty] == NO));</span>
 <span class="lineNum">      66 </span><span class="lineCov">        145 : }</span>
 <span class="lineNum">      67 </span>            : 
 <span class="lineNum">      68 </span>            : 

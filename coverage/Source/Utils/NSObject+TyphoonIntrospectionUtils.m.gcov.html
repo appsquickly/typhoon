@@ -108,26 +108,26 @@
 <span class="lineNum">      50 </span><span class="lineCov">        211 :     return selector;</span>
 <span class="lineNum">      51 </span><span class="lineCov">        211 : }</span>
 <span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span><span class="lineCov">       1632 : - (NSArray*)parameterNamesForSelector:(SEL)selector</span>
+<span class="lineNum">      53 </span><span class="lineCov">       1618 : - (NSArray*)parameterNamesForSelector:(SEL)selector</span>
 <span class="lineNum">      54 </span>            : {
-<span class="lineNum">      55 </span><span class="lineCov">       1632 :     NSMutableArray* parameterNames = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      56 </span><span class="lineCov">       1632 :     NSArray* parameters = [NSStringFromSelector(selector) componentsSeparatedByString:@&quot;:&quot;];</span>
-<span class="lineNum">      57 </span><span class="lineCov">       9146 :     for (int i = 0; i &lt; [parameters count]; i++)</span>
+<span class="lineNum">      55 </span><span class="lineCov">       1618 :     NSMutableArray* parameterNames = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      56 </span><span class="lineCov">       1618 :     NSArray* parameters = [NSStringFromSelector(selector) componentsSeparatedByString:@&quot;:&quot;];</span>
+<span class="lineNum">      57 </span><span class="lineCov">       9070 :     for (int i = 0; i &lt; [parameters count]; i++)</span>
 <span class="lineNum">      58 </span>            :     {
-<span class="lineNum">      59 </span><span class="lineCov">       2941 :         NSString* parameterName = [parameters objectAtIndex:i];</span>
-<span class="lineNum">      60 </span><span class="lineCov">       2941 :         if (i == 0)</span>
+<span class="lineNum">      59 </span><span class="lineCov">       2917 :         NSString* parameterName = [parameters objectAtIndex:i];</span>
+<span class="lineNum">      60 </span><span class="lineCov">       2917 :         if (i == 0)</span>
 <span class="lineNum">      61 </span>            :         {
-<span class="lineNum">      62 </span><span class="lineCov">       1632 :             parameterName = [[parameterName componentsSeparatedByString:@&quot;With&quot;] lastObject];</span>
-<span class="lineNum">      63 </span><span class="lineCov">       1632 :         }</span>
-<span class="lineNum">      64 </span><span class="lineCov">       2941 :         if ([parameterName length] &gt; 0)</span>
+<span class="lineNum">      62 </span><span class="lineCov">       1618 :             parameterName = [[parameterName componentsSeparatedByString:@&quot;With&quot;] lastObject];</span>
+<span class="lineNum">      63 </span><span class="lineCov">       1618 :         }</span>
+<span class="lineNum">      64 </span><span class="lineCov">       2917 :         if ([parameterName length] &gt; 0)</span>
 <span class="lineNum">      65 </span>            :         {
-<span class="lineNum">      66 </span><span class="lineCov">       1958 :             parameterName = [parameterName stringByReplacingCharactersInRange:NSMakeRange(0, 1)</span>
+<span class="lineNum">      66 </span><span class="lineCov">       1941 :             parameterName = [parameterName stringByReplacingCharactersInRange:NSMakeRange(0, 1)</span>
 <span class="lineNum">      67 </span>            :                     withString:[[parameterName substringToIndex:1] lowercaseString]];
-<span class="lineNum">      68 </span><span class="lineCov">       1958 :             [parameterNames addObject:parameterName];</span>
-<span class="lineNum">      69 </span><span class="lineCov">       1958 :         }</span>
-<span class="lineNum">      70 </span><span class="lineCov">       2941 :     }</span>
-<span class="lineNum">      71 </span><span class="lineCov">       1632 :     return [parameterNames copy];</span>
-<span class="lineNum">      72 </span><span class="lineCov">       1632 : }</span>
+<span class="lineNum">      68 </span><span class="lineCov">       1941 :             [parameterNames addObject:parameterName];</span>
+<span class="lineNum">      69 </span><span class="lineCov">       1941 :         }</span>
+<span class="lineNum">      70 </span><span class="lineCov">       2917 :     }</span>
+<span class="lineNum">      71 </span><span class="lineCov">       1618 :     return [parameterNames copy];</span>
+<span class="lineNum">      72 </span><span class="lineCov">       1618 : }</span>
 <span class="lineNum">      73 </span>            : 
 <span class="lineNum">      74 </span><span class="lineCov">          1 : - (NSArray*)typeCodesForSelector:(SEL)selector</span>
 <span class="lineNum">      75 </span>            : {

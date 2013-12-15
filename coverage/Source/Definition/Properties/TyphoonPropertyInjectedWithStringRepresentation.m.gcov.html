@@ -78,7 +78,7 @@
 <span class="lineNum">      20 </span>            : *
 <span class="lineNum">      21 </span>            : * @see TyphoonPropertyPlaceholderConfigurer
 <span class="lineNum">      22 </span>            : */
-<span class="lineNum">      23 </span><span class="lineCov">         91 : @implementation TyphoonPropertyInjectedWithStringRepresentation</span>
+<span class="lineNum">      23 </span><span class="lineCov">         84 : @implementation TyphoonPropertyInjectedWithStringRepresentation</span>
 <span class="lineNum">      24 </span>            : 
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : @synthesize textValue = _textValue;
@@ -86,16 +86,16 @@
 <span class="lineNum">      28 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      29 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">        420 : - (id)initWithName:(NSString*)name value:(NSString*)value</span>
+<span class="lineNum">      31 </span><span class="lineCov">        413 : - (id)initWithName:(NSString*)name value:(NSString*)value</span>
 <span class="lineNum">      32 </span>            : {
-<span class="lineNum">      33 </span><span class="lineCov">        420 :     self = [super init];</span>
-<span class="lineNum">      34 </span><span class="lineCov">        420 :     if (self)</span>
+<span class="lineNum">      33 </span><span class="lineCov">        413 :     self = [super init];</span>
+<span class="lineNum">      34 </span><span class="lineCov">        413 :     if (self)</span>
 <span class="lineNum">      35 </span>            :     {
-<span class="lineNum">      36 </span><span class="lineCov">        420 :         _name = name;</span>
-<span class="lineNum">      37 </span><span class="lineCov">        420 :         _textValue = value;</span>
-<span class="lineNum">      38 </span><span class="lineCov">        420 :     }</span>
-<span class="lineNum">      39 </span><span class="lineCov">        420 :     return self;</span>
-<span class="lineNum">      40 </span><span class="lineCov">        420 : }</span>
+<span class="lineNum">      36 </span><span class="lineCov">        413 :         _name = name;</span>
+<span class="lineNum">      37 </span><span class="lineCov">        413 :         _textValue = value;</span>
+<span class="lineNum">      38 </span><span class="lineCov">        413 :     }</span>
+<span class="lineNum">      39 </span><span class="lineCov">        413 :     return self;</span>
+<span class="lineNum">      40 </span><span class="lineCov">        413 : }</span>
 <span class="lineNum">      41 </span>            : 
 <span class="lineNum">      42 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      43 </span>            : #pragma mark - Protocol Methods
