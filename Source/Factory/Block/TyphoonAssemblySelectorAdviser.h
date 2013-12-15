@@ -21,4 +21,5 @@
 
 + (SEL)advisedSELForSEL:(SEL)unwrappedSEL;
 
++ (NSString*)advisedNameForName:(NSString*)string;
 @end

@@ -54,4 +54,8 @@ static NSString* const TYPHOON_BEFORE_ADVICE_PREFIX = @"__typhoonBeforeAdvice__"
     return [self advisedSELForKey:[self keyForSEL:sel]];
 }
 
++ (NSString*)advisedNameForName:(NSString*)string
+{
+    return NSStringFromSelector([self advisedSELForKey:string]);
+}
 @end

@@ -175,6 +175,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
 {
     self.definitionSelectors = [self.adviser enumerateDefinitionSelectors];
 
+//    [self.adviser adviseAssembly];
     [TyphoonAssemblyAdviser adviseMethods:self];
 }
 

@@ -18,6 +18,7 @@
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "OCLogTemplate.h"
 #import "TyphoonWrappedSelector.h"
+#import "TyphoonJRMethodSwizzler.h"
 
 static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 
@@ -44,11 +45,56 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
     self = [super init];
     if (self) {
         _assembly = assembly;
+
+        _swizzler = [[TyphoonJRMethodSwizzler alloc] init];
     }
     return self;
 }
 
 #pragma mark - Advising
+- (void)adviseAssembly
+{
+    @synchronized (self)
+    {
+        if ([TyphoonAssemblyAdviser assemblyIsNotAdvised:self.assembly])
+        {
+            [self swizzleAssemblyMethods];
+        }
+    }
+}
+
+- (void)swizzleAssemblyMethods
+{
+    NSSet* definitionSelectors = [self enumerateDefinitionSelectors];
+    LogTrace(@"About to swizzle the following definition selectors: %@.", definitionSelectors);
+
+    [self swizzleDefinitionSelectors:definitionSelectors];
+
+    [[self class] markAssemblyMethods:definitionSelectors asAdvised:self.assembly];
+}
+
+- (void)swizzleDefinitionSelectors:(NSSet*)definitionSelectors
+{
+    [definitionSelectors enumerateObjectsUsingBlock:^(NSValue *selectorObj, BOOL* stop)
+    {
+        [self swapImplementationOfDefinitionSelectorWithAdvisedImplementation:selectorObj];
+    }];
+}
+
+- (void)swapImplementationOfDefinitionSelectorWithAdvisedImplementation:(TyphoonWrappedSelector*)wrappedSEL
+{
+    SEL methodSelector = [wrappedSEL selector];
+    SEL swizzled = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector];
+
+    NSError* err;
+    BOOL success = [self.swizzler swizzleMethod:methodSelector withMethod:swizzled onClass:[self.assembly class] error:&err];
+    if (!success) {
+        LogError(@"Failed to swizzle method '%@' on class '%@' with method '%@'.", NSStringFromSelector(methodSelector), NSStringFromClass([self.assembly class]), NSStringFromSelector(swizzled));
+        LogError(@"'%@'", err);
+        [NSException raise:NSInternalInconsistencyException format:@"Failed to swizzle method, everything is broken!"];
+    }
+}
+
 + (void)adviseMethods:(TyphoonAssembly*)assembly
 {
     @synchronized (self)

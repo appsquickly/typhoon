@@ -13,10 +13,12 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <objc/runtime.h>
+#import "TyphoonAssemblySelectorAdviser.h"
 #import "TyphoonAssemblyAdviser.h"
 #import "TyphoonAssembly.h"
 #import "TyphoonWrappedSelector.h"
-
+#import "TyphoonTestMethodSwizzler.h"
+#import "TyphoonJRMethodSwizzler.h"
 
 
 @interface EmptyTestAssembly : TyphoonAssembly
@@ -68,6 +70,28 @@
     TyphoonWrappedSelector *wrappedSEL = [TyphoonWrappedSelector wrappedSelectorWithName:@"aDefinitionMethod"];
 
     assertThat(selectors, onlyContains(wrappedSEL, nil));
+}
+
+- (void)testAdvisesAssembly
+{
+    TestAssemblyWithMethod *assembly = [[TestAssemblyWithMethod alloc] init];
+    TyphoonAssemblyAdviser* adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
+
+    TyphoonTestMethodSwizzler* swizzler = [[TyphoonTestMethodSwizzler alloc] init];
+    adviser.swizzler = swizzler;
+
+    [adviser adviseAssembly];
+
+    NSString *advisedName = [TyphoonAssemblySelectorAdviser advisedNameForName:@"aDefinitionMethod"];
+    [swizzler assertExchangedImplementationsFor:@"aDefinitionMethod" with:advisedName onClass:[assembly class]];
+}
+
+- (void)testConfiguresItselfWithARealSwizzler
+{
+    TestAssemblyWithMethod *assembly = [[TestAssemblyWithMethod alloc] init];
+    TyphoonAssemblyAdviser* adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
+
+    assertThat([adviser swizzler], instanceOf([TyphoonJRMethodSwizzler class]));
 }
 
 @end
