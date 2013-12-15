@@ -27,6 +27,8 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 @property (readwrite) NSSet *definitionSelectors;
 
+@property (readonly) TyphoonAssemblyAdviser* adviser;
+
 @end
 
 @implementation TyphoonAssembly
@@ -142,6 +144,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
     if (self)
     {
         _definitionBuilder = [[TyphoonAssemblyDefinitionBuilder alloc] initWithAssembly:self];
+        _adviser = [[TyphoonAssemblyAdviser alloc] init];
     }
     return self;
 }
@@ -170,6 +173,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 - (void)prepareForUse
 {
+//    self.definitionSelectors = [self.adviser enumerateDefinitionSelectors];
     self.definitionSelectors = [TyphoonAssemblyAdviser definitionSelectorsForAssembly:self];
 
     [TyphoonAssemblyAdviser adviseMethods:self];

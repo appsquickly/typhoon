@@ -18,7 +18,11 @@
 @interface TyphoonAssemblyAdviser : NSObject
 
 + (void)adviseMethods:(TyphoonAssembly*)assembly;
+
+- (id)initWithAssembly:(TyphoonAssembly*)assembly;
+
 + (void)undoAdviseMethods:(TyphoonAssembly*)assembly;
+
 + (BOOL)assemblyClassIsAdvised:(Class)class;
 
 + (NSSet*)definitionSelectorsForAssembly:(TyphoonAssembly*)assembly;

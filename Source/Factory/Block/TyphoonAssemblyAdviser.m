@@ -20,6 +20,12 @@
 
 static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 
+@interface TyphoonAssemblyAdviser()
+
+@property (readonly) TyphoonAssembly* assembly;
+
+@end
+
 
 @implementation TyphoonAssemblyAdviser
 {
@@ -34,6 +40,15 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
     }
 }
 
+- (id)initWithAssembly:(TyphoonAssembly*)assembly
+{
+    self = [super init];
+    if (self) {
+        _assembly = assembly;
+    }
+    return self;
+}
+
 #pragma mark - Advising
 + (void)adviseMethods:(TyphoonAssembly*)assembly
 {
@@ -44,6 +59,11 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
             [self swizzleAssemblyMethods:assembly];
         }
     }
+}
+
+- (NSSet*)enumerateDefinitionSelectors
+{
+    return nil;
 }
 
 + (void)undoAdviseMethods:(TyphoonAssembly*)assembly
