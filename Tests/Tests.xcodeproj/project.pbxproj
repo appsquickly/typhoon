@@ -50,7 +50,6 @@
 		4B841474179B0E3900916BF5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841473179B0E3900916BF5 /* Foundation.framework */; };
 		4B841488179B0E5200916BF5 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B84146F179B0E3900916BF5 /* SenTestingKit.framework */; };
 		4B84148A179B0E5200916BF5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841489179B0E5200916BF5 /* Cocoa.framework */; };
-		4B8414E9179B0EA600916BF5 /* ClassWithCollectionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B84149F179B0EA600916BF5 /* ClassWithCollectionProperties.m */; };
 		4B8414EA179B0EA600916BF5 /* ClassWithCollectionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B84149F179B0EA600916BF5 /* ClassWithCollectionProperties.m */; };
 		4B8414EB179B0EA600916BF5 /* TyphoonPropertyInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8414A1179B0EA600916BF5 /* TyphoonPropertyInjectedAsCollectionTests.m */; };
 		4B8414EC179B0EA600916BF5 /* TyphoonPropertyInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8414A1179B0EA600916BF5 /* TyphoonPropertyInjectedAsCollectionTests.m */; };
@@ -267,6 +266,7 @@
 		BA798380AD1E1F4160A4719C /* CollaboratingMiddleAgesAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79870B653F1DB13DCE8543 /* CollaboratingMiddleAgesAssembly.m */; };
 		BA7983B770D5EB663A720186 /* ExtendedMiddleAgesAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798863929DB6786A73114C /* ExtendedMiddleAgesAssembly.m */; };
 		BA7983E82AAFE3FE67FC4E6D /* ExtendedMiddleAgesAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798863929DB6786A73114C /* ExtendedMiddleAgesAssembly.m */; };
+		BA79845EC5D349A5B9BC37E9 /* TyphoonTestUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798A7BDF4CF779DFEB0F2E /* TyphoonTestUtilsTests.m */; };
 		BA7984C81B7B6D8D2E33A3FE /* VATestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7981CF6D5E560D84727EF9 /* VATestObserver.m */; };
 		BA7985DADDFF93F3411829B7 /* TyphoonPatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7981F193E4701C2604BA5B /* TyphoonPatcherTests.m */; };
 		BA798601A0620F70FEB22F49 /* TyphoonComponentFactoryPostProcessorMock.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7981CAD5CC6E3952B1E1EA /* TyphoonComponentFactoryPostProcessorMock.m */; };
@@ -276,6 +276,7 @@
 		BA79880BD4B4A87C9F041E1A /* TyphoonUIColorConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7988D3F261F1B68761BEF2 /* TyphoonUIColorConverterTests.m */; };
 		BA798860931BDFA632A94FB9 /* ExtendedMiddleAgesAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798863929DB6786A73114C /* ExtendedMiddleAgesAssembly.m */; };
 		BA798908C8A296FD5FCD31A7 /* TyphoonBundleResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798B8F5CE2C9292F9F740F /* TyphoonBundleResourceTests.m */; };
+		BA7989B9C62F95712CB63910 /* TyphoonTestUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798A7BDF4CF779DFEB0F2E /* TyphoonTestUtilsTests.m */; };
 		BA7989CD73040A430989B5C1 /* TyphoonComponentFactoryPostProcessorMock.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7981CAD5CC6E3952B1E1EA /* TyphoonComponentFactoryPostProcessorMock.m */; };
 		BA7989DFDD90A18B1EBE1E0F /* TyphoonPatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7981F193E4701C2604BA5B /* TyphoonPatcherTests.m */; };
 		BA7989FEB2CB1A63235D9AD2 /* CollaboratingMiddleAgesAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79870B653F1DB13DCE8543 /* CollaboratingMiddleAgesAssembly.m */; };
@@ -284,6 +285,7 @@
 		BA798C878348D43289781407 /* TyphoonComponentDefinition+InstanceBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7989092E6BC5E4F610F8F6 /* TyphoonComponentDefinition+InstanceBuilderTests.m */; };
 		BA798D9AF84869F576347FCC /* TyphoonStringUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79854F29FE8A327A82E8BC /* TyphoonStringUtilsTests.m */; };
 		BA798E077CA7C28EB0EB2EF4 /* TyphoonPatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7981F193E4701C2604BA5B /* TyphoonPatcherTests.m */; };
+		BA798E8608AC9675243D0799 /* TyphoonTestUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798A7BDF4CF779DFEB0F2E /* TyphoonTestUtilsTests.m */; };
 		BA798EC89A23D4FC0EFB465D /* TyphoonStringUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79854F29FE8A327A82E8BC /* TyphoonStringUtilsTests.m */; };
 		BA798EE809EEDC8B00D40EB1 /* TyphoonPropertyPlaceholderConfigurerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798F08B41D2D34902BF572 /* TyphoonPropertyPlaceholderConfigurerTests.m */; };
 		CAE261437295B90C18E78C61 /* SomeOtherProperties.properties in Resources */ = {isa = PBXBuildFile; fileRef = CAE1370C5429F92760CB0390 /* SomeOtherProperties.properties */; };
@@ -473,6 +475,7 @@
 		BA7988D3F261F1B68761BEF2 /* TyphoonUIColorConverterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonUIColorConverterTests.m; sourceTree = "<group>"; };
 		BA7989092E6BC5E4F610F8F6 /* TyphoonComponentDefinition+InstanceBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TyphoonComponentDefinition+InstanceBuilderTests.m"; sourceTree = "<group>"; };
 		BA798A00CDD237162160A379 /* VATestObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VATestObserver.h; sourceTree = "<group>"; };
+		BA798A7BDF4CF779DFEB0F2E /* TyphoonTestUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonTestUtilsTests.m; sourceTree = "<group>"; };
 		BA798B8F5CE2C9292F9F740F /* TyphoonBundleResourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonBundleResourceTests.m; sourceTree = "<group>"; };
 		BA798D4E3084C51B7ACB6DC9 /* TyphoonViewControllerNibResolverTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonViewControllerNibResolverTests.m; sourceTree = "<group>"; };
 		BA798F08B41D2D34902BF572 /* TyphoonPropertyPlaceholderConfigurerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonPropertyPlaceholderConfigurerTests.m; sourceTree = "<group>"; };
@@ -909,6 +912,14 @@
 			path = Patcher;
 			sourceTree = "<group>";
 		};
+		BA7986D09A569C01348B123C /* TestUtils */ = {
+			isa = PBXGroup;
+			children = (
+				BA798A7BDF4CF779DFEB0F2E /* TyphoonTestUtilsTests.m */,
+			);
+			path = TestUtils;
+			sourceTree = "<group>";
+		};
 		BA7989AFB2BFADF018F63463 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
@@ -929,6 +940,7 @@
 			isa = PBXGroup;
 			children = (
 				BA7986AACF3DD9EC171FDF24 /* Patcher */,
+				BA7986D09A569C01348B123C /* TestUtils */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -1248,7 +1260,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B8414E9179B0EA600916BF5 /* ClassWithCollectionProperties.m in Sources */,
 				4B8414EB179B0EA600916BF5 /* TyphoonPropertyInjectedAsCollectionTests.m in Sources */,
 				65FB9412183BD5330038FCA5 /* TyphoonAssistedFactoryMethodInitializerTest.m in Sources */,
 				656A57661848DD020081F72B /* TyphoonFactoryProviderTestHelper.m in Sources */,
@@ -1324,6 +1335,7 @@
 				BA7981389DA42F04313E85EF /* TyphoonBundleResourceTests.m in Sources */,
 				BA79816E8927B83FA26ECCCA /* TyphoonComponentDefinition+InstanceBuilderTests.m in Sources */,
 				BA7984C81B7B6D8D2E33A3FE /* VATestObserver.m in Sources */,
+				BA79845EC5D349A5B9BC37E9 /* TyphoonTestUtilsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1404,6 +1416,7 @@
 				BA798E077CA7C28EB0EB2EF4 /* TyphoonPatcherTests.m in Sources */,
 				BA798908C8A296FD5FCD31A7 /* TyphoonBundleResourceTests.m in Sources */,
 				BA798C878348D43289781407 /* TyphoonComponentDefinition+InstanceBuilderTests.m in Sources */,
+				BA7989B9C62F95712CB63910 /* TyphoonTestUtilsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1487,6 +1500,7 @@
 				BA7987F78E61D362F5BA8F8E /* TyphoonBundleResourceTests.m in Sources */,
 				BA798ADB826C820212365F2F /* TyphoonComponentDefinition+InstanceBuilderTests.m in Sources */,
 				BA798122C0D3CF30F25BBE05 /* VATestObserver.m in Sources */,
+				BA798E8608AC9675243D0799 /* TyphoonTestUtilsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1566,6 +1580,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../\"/**";
 				VALID_ARCHS = "armv7 armv7s i386 x86_64";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -1601,6 +1616,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../\"/**";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s i386 x86_64";
 				WRAPPER_EXTENSION = octest;
