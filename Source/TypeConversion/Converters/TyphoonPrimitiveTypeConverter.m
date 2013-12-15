@@ -63,9 +63,9 @@
 - (unsigned int)convertToUnsignedInt:(NSString*)stringValue
 {
     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    int converted = 0;
-    [scanner scanInt:&converted];
-    return [[NSNumber numberWithInt:converted] unsignedIntValue];
+    long long converted = 0;
+    [scanner scanLongLong:&converted];
+    return [[NSNumber numberWithLongLong:converted] unsignedIntValue];
 }
 
 - (unsigned short)convertToUnsignedShort:(NSString*)stringValue
@@ -157,6 +157,11 @@
         int converted = [self convertToInt:textValue];
         [invocation setArgument:&converted atIndex:index];
     }
+    else if (requiredType.primitiveType == TyphoonPrimitiveTypeShort)
+    {
+        short converted = [self convertToShort:textValue];
+        [invocation setArgument:&converted atIndex:index];
+    }
     else if (requiredType.primitiveType == TyphoonPrimitiveTypeLong)
     {
         long converted = [self convertToLong:textValue];
@@ -186,6 +191,11 @@
     {
         unsigned int converted = [self convertToUnsignedInt:textValue];
         [invocation setArgument:&converted atIndex:index];
+    }
+    else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedShort)
+    {
+      unsigned short converted = [self convertToUnsignedShort:textValue];
+      [invocation setArgument:&converted atIndex:index];
     }
     else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedLong)
     {
