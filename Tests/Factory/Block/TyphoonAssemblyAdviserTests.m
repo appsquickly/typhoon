@@ -83,7 +83,7 @@
 //    TyphoonAssemblyAdviser* adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 //
 //    NSSet *selectors = [adviser enumerateDefinitionSelectors];
-//    TyphoonWrappedSelector *wrappedSEL = [TyphoonWrappedSelector withName:@"aDefinitionMethod"];
+//    TyphoonWrappedSelector *wrappedSEL = [TyphoonWrappedSelector wrappedSelectorWithName:@"aDefinitionMethod"];
 //
 //    // <TyphoonWrappedSelector: 0x00000 SEL named: 'aDefinitionMethod'>
 //    // Expected a collection containing items matching (<Pointer value of SEL named 'aDefinitionMethod'>), but was <{(

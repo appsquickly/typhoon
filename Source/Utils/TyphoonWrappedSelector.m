@@ -1,7 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-// Created by Robert Gilliam on 12/14/13.
-// Copyright (c) 2013 Jasper Blues. All rights reserved.
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
+//  All Rights Reserved.
 //
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
 
 #import "TyphoonWrappedSelector.h"
 
@@ -15,19 +23,19 @@
 
 }
 
-+ (TyphoonWrappedSelector*)withName:(NSString*)string
++ (TyphoonWrappedSelector*)wrappedSelectorWithName:(NSString*)string
 {
     return [[self alloc] initWithName:string];
-}
-
-- (id)initWithName:(NSString*)string
-{
-    return [self initWithSelector:NSSelectorFromString(string)];
 }
 
 + (TyphoonWrappedSelector*)wrappedSelectorWithSelector:(SEL)pSelector
 {
     return [[self alloc] initWithSelector:pSelector];
+}
+
+- (id)initWithName:(NSString*)string
+{
+    return [self initWithSelector:NSSelectorFromString(string)];
 }
 
 - (id)initWithSelector:(SEL)pSelector
