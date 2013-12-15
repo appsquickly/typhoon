@@ -60,11 +60,6 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
     }
 }
 
-- (NSSet*)enumerateDefinitionSelectors
-{
-    return [[self class] definitionSelectorsForAssembly:self.assembly];
-}
-
 + (void)undoAdviseMethods:(TyphoonAssembly*)assembly
 {
     @synchronized (self)
@@ -89,7 +84,8 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 
 + (void)swizzleAssemblyMethods:(TyphoonAssembly*)assembly
 {
-    NSSet* definitionSelectors = [self definitionSelectorsForAssembly:assembly];
+    TyphoonAssemblyAdviser* adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
+    NSSet* definitionSelectors = [adviser enumerateDefinitionSelectors];
     LogTrace(@"About to swizzle the following definition selectors: %@.", definitionSelectors);
 
     [self swizzleDefinitionSelectors:definitionSelectors onAssembly:assembly];
@@ -125,16 +121,16 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 }
 
 #pragma mark - Definition Selector Enumerator
-+ (NSSet*)definitionSelectorsForAssembly:(TyphoonAssembly*)assembly
+- (NSSet*)enumerateDefinitionSelectors
 {
     NSMutableSet* definitionSelectors = [[NSMutableSet alloc] init];
-    [self addDefinitionSelectorsForSubclassesOfAssembly:assembly toSet:definitionSelectors];
+    [self addDefinitionSelectorsForSubclassesOfAssemblyToSet:definitionSelectors];
     return definitionSelectors;
 }
 
-+ (void)addDefinitionSelectorsForSubclassesOfAssembly:(TyphoonAssembly*)assembly toSet:(NSMutableSet*)definitionSelectors
+- (void)addDefinitionSelectorsForSubclassesOfAssemblyToSet:(NSMutableSet*)definitionSelectors
 {
-    Class currentClass = [assembly class];
+    Class currentClass = [self.assembly class];
     while ([self classNotRootAssemblyClass:currentClass])
     {
         [definitionSelectors unionSet:[self obtainDefinitionSelectorsInAssemblyClass:currentClass]];
@@ -142,14 +138,22 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
     }
 }
 
-+ (NSSet*)obtainDefinitionSelectorsInAssemblyClass:(Class)pClass
+- (BOOL)classNotRootAssemblyClass:(Class)class
+{
+    NSString* currentClassName = NSStringFromClass(class);
+    NSString* rootAssemblyClassName = NSStringFromClass([TyphoonAssembly class]);
+
+    return ![currentClassName isEqualToString:rootAssemblyClassName];
+}
+
+- (NSSet*)obtainDefinitionSelectorsInAssemblyClass:(Class)pClass
 {
     NSMutableSet* definitionSelectors = [[NSMutableSet alloc] init];
     [self addDefinitionSelectorsInClass:pClass toSet:definitionSelectors];
     return definitionSelectors;
 }
 
-+ (void)addDefinitionSelectorsInClass:(Class)aClass toSet:(NSMutableSet*)definitionSelectors
+- (void)addDefinitionSelectorsInClass:(Class)aClass toSet:(NSMutableSet*)definitionSelectors
 {
     [self enumerateMethodsInClass:aClass usingBlock:^(Method method)
     {
@@ -160,15 +164,9 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
     }];
 }
 
-+ (BOOL)method:(Method)pMethod onClassIsNotAdvised:(Class)advised
-{
-    SEL sel = method_getName(pMethod);
-    return ![TyphoonAssemblySelectorAdviser selectorIsAdvised:sel];
-}
-
 typedef void(^MethodEnumerationBlock)(Method method);
 
-+ (void)enumerateMethodsInClass:(Class)class usingBlock:(MethodEnumerationBlock)block;
+- (void)enumerateMethodsInClass:(Class)class usingBlock:(MethodEnumerationBlock)block;
 {
     unsigned int methodCount;
     Method* methodList = class_copyMethodList(class, &methodCount);
@@ -180,21 +178,19 @@ typedef void(^MethodEnumerationBlock)(Method method);
     free(methodList);
 }
 
-+ (BOOL)method:(Method)method onClassIsNotReserved:(Class)aClass
+- (BOOL)method:(Method)method onClassIsNotReserved:(Class)aClass
 {
     SEL methodSelector = method_getName(method);
     return ![aClass selectorReservedOrPropertySetter:methodSelector];
 }
 
-+ (BOOL)classNotRootAssemblyClass:(Class)currentClass;
+- (BOOL)method:(Method)pMethod onClassIsNotAdvised:(Class)advised
 {
-    NSString* currentClassName = NSStringFromClass(currentClass);
-    NSString* rootAssemblyClassName = NSStringFromClass([TyphoonAssembly class]);
-
-    return ![currentClassName isEqualToString:rootAssemblyClassName];
+    SEL sel = method_getName(pMethod);
+    return ![TyphoonAssemblySelectorAdviser selectorIsAdvised:sel];
 }
 
-+ (void)addDefinitionSelectorForMethod:(Method)method toSet:(NSMutableSet*)definitionSelectors
+- (void)addDefinitionSelectorForMethod:(Method)method toSet:(NSMutableSet*)definitionSelectors
 {
     SEL methodSelector = method_getName(method);
     TyphoonWrappedSelector* wrappedSEL = [TyphoonWrappedSelector wrappedSelectorWithSelector:methodSelector];

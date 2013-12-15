@@ -20,7 +20,6 @@
 + (void)adviseMethods:(TyphoonAssembly*)assembly;
 + (void)undoAdviseMethods:(TyphoonAssembly*)assembly;
 + (BOOL)assemblyClassIsAdvised:(Class)class;
-+ (NSSet*)definitionSelectorsForAssembly:(TyphoonAssembly*)assembly;
 
 - (id)initWithAssembly:(TyphoonAssembly*)assembly;
 - (NSSet*)enumerateDefinitionSelectors;
