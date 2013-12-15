@@ -82,31 +82,17 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 {
     NSSet *swizzledSelectors = [swizzledDefinitionsByAssemblyClass objectForKey:[assembly class]];
 
-    NSString *desc = [self humanReadableDescriptionForSelectorObjects:swizzledSelectors];
-    LogTrace(@"Unswizzling the following selectors: '%@' on assembly: '%@'.", desc, assembly);
+    LogTrace(@"Unswizzling the following selectors: '%@' on assembly: '%@'.", swizzledSelectors, assembly);
 
     [self swizzleDefinitionSelectors:swizzledSelectors onAssembly:assembly];
 
     [self markAssemblyMethodsAsNoLongerAdvised:assembly];
 }
 
-+ (NSString*)humanReadableDescriptionForSelectorObjects:(NSSet*)selectors
-{
-    NSMutableSet* selectorStrings = [[NSMutableSet alloc] initWithCapacity:selectors.count];
-    [selectors enumerateObjectsUsingBlock:^(TyphoonWrappedSelector* wrappedSelector, BOOL* stop)
-    {
-        SEL sel = [wrappedSelector selector];
-        NSString *string = NSStringFromSelector(sel);
-        [selectorStrings addObject:string];
-    }];
-
-    return [selectorStrings description];
-}
-
 + (void)swizzleAssemblyMethods:(TyphoonAssembly*)assembly
 {
     NSSet* definitionSelectors = [self definitionSelectorsForAssembly:assembly];
-    LogTrace(@"About to swizzle the following methods: %@.", [self humanReadableDescriptionForSelectorObjects:definitionSelectors]);
+    LogTrace(@"About to swizzle the following definition selectors: %@.", definitionSelectors);
 
     [self swizzleDefinitionSelectors:definitionSelectors onAssembly:assembly];
 
