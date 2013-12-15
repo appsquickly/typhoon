@@ -164,12 +164,12 @@
 
 - (void)injectProperty:(SEL)selector withFloat:(float)floatValue
 {
-    [self injectProperty:selector withValueAsText:[@(floatValue) stringValue]];
+    [self injectProperty:selector withValueAsText:[NSString stringWithFormat:@"%f", floatValue]];
 }
 
 - (void)injectProperty:(SEL)selector withDouble:(double)doubleValue
 {
-    [self injectProperty:selector withValueAsText:[@(doubleValue) stringValue]];
+    [self injectProperty:selector withValueAsText:[NSString stringWithFormat:@"%f", doubleValue]];
 }
 
 - (void)injectProperty:(SEL)selector withBool:(BOOL)boolValue

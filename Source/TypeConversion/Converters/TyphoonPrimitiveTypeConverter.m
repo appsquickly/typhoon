@@ -87,9 +87,9 @@
 - (unsigned long long)convertToUnsignedLongLong:(NSString*)stringValue
 {
     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    long long converted = 0;
-    [scanner scanLongLong:&converted];
-    return [[NSNumber numberWithLongLong:converted] unsignedLongValue];
+    unsigned long long converted = 0;
+    [scanner scanUnsignedLongLong:&converted];
+    return [[NSNumber numberWithUnsignedLongLong:converted] unsignedLongLongValue];
 }
 
 - (float)convertToFloat:(NSString*)stringValue
@@ -97,7 +97,7 @@
     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
     float converted = 0;
     [scanner scanFloat:&converted];
-    return converted;
+    return [[NSNumber numberWithFloat:converted] floatValue];
 }
 
 - (double)convertToDouble:(NSString*)stringValue
@@ -105,7 +105,7 @@
     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
     double converted = 0;
     [scanner scanDouble:&converted];
-    return converted;
+    return [[NSNumber numberWithDouble:converted] doubleValue];
 }
 
 - (BOOL)convertToBoolean:(NSString*)stringValue

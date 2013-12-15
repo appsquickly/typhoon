@@ -122,17 +122,17 @@
                                                                                              unsignedIntegerValue:
                                                                                              classValue:
                                                                                              selectorValue:)];
-    [initializer injectWithInt:1];
-    [initializer injectWithUnsignedInt:2];
-    [initializer injectWithShort:3];
-    [initializer injectWithUnsignedShort:4];
-    [initializer injectWithLong:5];
-    [initializer injectWithUnsignedLong:6];
-    [initializer injectWithLongLong:7];
-    [initializer injectWithUnsignedLongLong:8];
-    [initializer injectWithUnsignedChar:9];
-    [initializer injectWithFloat:10.0];
-    [initializer injectWithDouble:11.0];
+    [initializer injectWithInt:INT_MAX];
+    [initializer injectWithUnsignedInt:UINT_MAX];
+    [initializer injectWithShort:SHRT_MAX];
+    [initializer injectWithUnsignedShort:USHRT_MAX];
+    [initializer injectWithLong:LONG_MAX];
+    [initializer injectWithUnsignedLong:ULONG_MAX];
+    [initializer injectWithLongLong:LONG_LONG_MAX];
+    [initializer injectWithUnsignedLongLong:ULONG_LONG_MAX];
+    [initializer injectWithUnsignedChar:UCHAR_MAX];
+    [initializer injectWithFloat:FLT_MAX];
+    [initializer injectWithDouble:DBL_MAX];
     [initializer injectWithBool:YES];
     [initializer injectWithInteger:NSIntegerMax];
     [initializer injectWithUnsignedInteger:NSUIntegerMax];
@@ -143,20 +143,20 @@
 
     [_componentFactory register:definition];
     PrimitiveMan* primitiveMan = [_componentFactory componentForKey:@"primitive"];
-    assertThatInt(primitiveMan.intValue, equalToInt(1));
-    assertThatUnsignedInt(primitiveMan.unsignedIntValue, equalToUnsignedInt(2));
-    assertThatShort(primitiveMan.shortValue, equalToShort(3));
-    assertThatUnsignedShort(primitiveMan.unsignedShortValue, equalToUnsignedShort(4));
-    assertThatLong(primitiveMan.longValue, equalToLong(5));
-    assertThatUnsignedLong(primitiveMan.unsignedLongValue, equalToUnsignedLong(6));
-    assertThatLongLong(primitiveMan.longLongValue, equalToLongLong(7));
-    assertThatUnsignedLongLong(primitiveMan.unsignedLongLongValue, equalToUnsignedLongLong(8));
-    assertThatUnsignedChar(primitiveMan.unsignedCharValue, equalToUnsignedChar(9));
-    assertThatFloat(primitiveMan.floatValue, equalToFloat(10.0));
-    assertThatDouble(primitiveMan.doubleValue, equalToDouble(11.0));
+    assertThatInt(primitiveMan.intValue, equalToInt(INT_MAX));
+    assertThatUnsignedInt(primitiveMan.unsignedIntValue, equalToUnsignedInt(UINT_MAX));
+    assertThatShort(primitiveMan.shortValue, equalToShort(SHRT_MAX));
+    assertThatUnsignedShort(primitiveMan.unsignedShortValue, equalToUnsignedShort(USHRT_MAX));
+    assertThatLong(primitiveMan.longValue, equalToLong(LONG_MAX));
+    assertThatUnsignedLong(primitiveMan.unsignedLongValue, equalToUnsignedLong(ULONG_MAX));
+    assertThatLongLong(primitiveMan.longLongValue, equalToLongLong(LONG_LONG_MAX));
+    assertThatUnsignedLongLong(primitiveMan.unsignedLongLongValue, equalToUnsignedLongLong(ULONG_LONG_MAX));
+    assertThatUnsignedChar(primitiveMan.unsignedCharValue, equalToUnsignedChar(UCHAR_MAX));
+    assertThatFloat(primitiveMan.floatValue, equalToFloat(FLT_MAX));
+    assertThatDouble(primitiveMan.doubleValue, equalToDouble(DBL_MAX));
     assertThatBool(primitiveMan.boolValue, equalToBool(YES));
     assertThatInteger(primitiveMan.integerValue, equalToInteger(NSIntegerMax));
- //   assertThatUnsignedInteger(primitiveMan.unsignedIntegerValue, equalToUnsignedInteger(NSUIntegerMax));
+    assertThatUnsignedInteger(primitiveMan.unsignedIntegerValue, equalToUnsignedInteger(NSUIntegerMax));
     assertThat(NSStringFromClass(primitiveMan.classValue), equalTo(NSStringFromClass([self class])));
     assertThat(NSStringFromSelector(primitiveMan.selectorValue), equalTo(NSStringFromSelector(@selector(selectorValue))));
 }
@@ -213,17 +213,17 @@
 - (void)test_inject_property_value_as_primitives
 {
     TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:[PrimitiveMan class] key:@"primitive"];
-    [definition injectProperty:@selector(intValue) withInt:1];
-    [definition injectProperty:@selector(unsignedIntValue) withUnsignedInt:2];
-    [definition injectProperty:@selector(shortValue) withShort:3];
-    [definition injectProperty:@selector(unsignedShortValue) withUnsignedShort:4];
-    [definition injectProperty:@selector(longValue) withLong:5];
-    [definition injectProperty:@selector(unsignedLongValue) withUnsignedLong:6];
-    [definition injectProperty:@selector(longLongValue) withLongLong:7];
-    [definition injectProperty:@selector(unsignedLongLongValue) withUnsignedLongLong:8];
-    [definition injectProperty:@selector(unsignedCharValue) withUnsignedChar:9];
-    [definition injectProperty:@selector(floatValue) withFloat:10.101010];
-    [definition injectProperty:@selector(doubleValue) withDouble:11.111111];
+    [definition injectProperty:@selector(intValue) withInt:INT_MAX];
+    [definition injectProperty:@selector(unsignedIntValue) withUnsignedInt:UINT_MAX];
+    [definition injectProperty:@selector(shortValue) withShort:SHRT_MAX];
+    [definition injectProperty:@selector(unsignedShortValue) withUnsignedShort:USHRT_MAX];
+    [definition injectProperty:@selector(longValue) withLong:LONG_MAX];
+    [definition injectProperty:@selector(unsignedLongValue) withUnsignedLong:ULONG_MAX];
+    [definition injectProperty:@selector(longLongValue) withLongLong:LONG_LONG_MAX];
+    [definition injectProperty:@selector(unsignedLongLongValue) withUnsignedLongLong:ULONG_LONG_MAX];
+    [definition injectProperty:@selector(unsignedCharValue) withUnsignedChar:UCHAR_MAX];
+    [definition injectProperty:@selector(floatValue) withFloat:FLT_MAX];
+    [definition injectProperty:@selector(doubleValue) withDouble:DBL_MAX];
     [definition injectProperty:@selector(boolValue) withBool:YES];
     [definition injectProperty:@selector(integerValue) withInteger:NSIntegerMax];
     [definition injectProperty:@selector(unsignedIntegerValue) withUnsignedInteger:NSUIntegerMax];
@@ -232,20 +232,20 @@
     
     [_componentFactory register:definition];
     PrimitiveMan* primitiveMan = [_componentFactory componentForKey:@"primitive"];
-    assertThatInt(primitiveMan.intValue, equalToInt(1));
-    assertThatUnsignedInt(primitiveMan.unsignedIntValue, equalToUnsignedInt(2));
-    assertThatShort(primitiveMan.shortValue, equalToShort(3));
-    assertThatUnsignedShort(primitiveMan.unsignedShortValue, equalToUnsignedShort(4));
-    assertThatLong(primitiveMan.longValue, equalToLong(5));
-    assertThatUnsignedLong(primitiveMan.unsignedLongValue, equalToUnsignedLong(6));
-    assertThatLongLong(primitiveMan.longLongValue, equalToLongLong(7));
-    assertThatUnsignedLongLong(primitiveMan.unsignedLongLongValue, equalToUnsignedLongLong(8));
-    assertThatUnsignedChar(primitiveMan.unsignedCharValue, equalToUnsignedChar(9));
-    assertThatFloat(primitiveMan.floatValue, equalToFloat(10.101010));
-    assertThatDouble(primitiveMan.doubleValue, equalToDouble(11.111111));
+    assertThatInt(primitiveMan.intValue, equalToInt(INT_MAX));
+    assertThatUnsignedInt(primitiveMan.unsignedIntValue, equalToUnsignedInt(UINT_MAX));
+    assertThatShort(primitiveMan.shortValue, equalToShort(SHRT_MAX));
+    assertThatUnsignedShort(primitiveMan.unsignedShortValue, equalToUnsignedShort(USHRT_MAX));
+    assertThatLong(primitiveMan.longValue, equalToLong(LONG_MAX));
+    assertThatUnsignedLong(primitiveMan.unsignedLongValue, equalToUnsignedLong(ULONG_MAX));
+    assertThatLongLong(primitiveMan.longLongValue, equalToLongLong(LONG_LONG_MAX));
+    assertThatUnsignedLongLong(primitiveMan.unsignedLongLongValue, equalToUnsignedLongLong(ULONG_LONG_MAX));
+    assertThatUnsignedChar(primitiveMan.unsignedCharValue, equalToUnsignedChar(UCHAR_MAX));
+    assertThatFloat(primitiveMan.floatValue, equalToFloat(FLT_MAX));
+    assertThatDouble(primitiveMan.doubleValue, equalToDouble(DBL_MAX));
     assertThatBool(primitiveMan.boolValue, equalToBool(YES));
     assertThatInteger(primitiveMan.integerValue, equalToInteger(NSIntegerMax));
-//    assertThatUnsignedInteger(primitiveMan.unsignedIntegerValue, equalToUnsignedInteger(NSUIntegerMax));
+    assertThatUnsignedInteger(primitiveMan.unsignedIntegerValue, equalToUnsignedInteger(NSUIntegerMax));
     assertThat(NSStringFromClass(primitiveMan.classValue), equalTo(NSStringFromClass([self class])));
     assertThat(NSStringFromSelector(primitiveMan.selectorValue), equalTo(NSStringFromSelector(@selector(selectorValue))));
 }

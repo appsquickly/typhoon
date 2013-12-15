@@ -179,12 +179,12 @@
 
 - (void)injectWithFloat:(float)floatValue
 {
-    [self injectWithValueAsText:[@(floatValue) stringValue]];
+    [self injectWithValueAsText:[NSString stringWithFormat:@"%f", floatValue]];
 }
 
 - (void)injectWithDouble:(double)doubleValue
 {
-    [self injectWithValueAsText:[@(doubleValue) stringValue]];
+    [self injectWithValueAsText:[NSString stringWithFormat:@"%f", doubleValue]];
 }
 
 - (void)injectWithBool:(BOOL)boolValue
