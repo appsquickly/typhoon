@@ -14,7 +14,7 @@ profile
 *.moved-aside
 DerivedData
 
-Tests/Pods/Pods.xcodeproj/project.pbxproj
+Tests/Pods/
 
 # Xcode-Dacted
 *.xccheckout
