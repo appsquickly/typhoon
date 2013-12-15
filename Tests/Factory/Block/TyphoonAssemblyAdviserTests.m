@@ -49,22 +49,24 @@
 
 @implementation TyphoonAssemblyAdviserTests
 {
+    TyphoonAssemblyAdviser* adviser;
 
+    TyphoonAssembly *assembly;
 }
 
 - (void)testEnumeratesDefinitionSelectors_EmptyAssembly
 {
-    EmptyTestAssembly *assembly = [[EmptyTestAssembly alloc] init];
-    TyphoonAssemblyAdviser* adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
+    assembly = [[EmptyTestAssembly alloc] init];
+    adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
     NSSet *selectors = [adviser enumerateDefinitionSelectors];
     assertThat(selectors, empty());
 }
 
-- (void)testEnumeratesDefinitionSelectors_Assembly
+- (void)testEnumeratesDefinitionSelectors_NonAssembly
 {
-    TestAssemblyWithMethod *assembly = [[TestAssemblyWithMethod alloc] init];
-    TyphoonAssemblyAdviser* adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
+    assembly = [[TestAssemblyWithMethod alloc] init];
+    adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
     NSSet *selectors = [adviser enumerateDefinitionSelectors];
     TyphoonWrappedSelector *wrappedSEL = [TyphoonWrappedSelector wrappedSelectorWithName:@"aDefinitionMethod"];
@@ -74,8 +76,8 @@
 
 - (void)testAdvisesAssembly
 {
-    TestAssemblyWithMethod *assembly = [[TestAssemblyWithMethod alloc] init];
-    TyphoonAssemblyAdviser* adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
+    assembly = [[TestAssemblyWithMethod alloc] init];
+    adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
     TyphoonTestMethodSwizzler* swizzler = [[TyphoonTestMethodSwizzler alloc] init];
     adviser.swizzler = swizzler;
@@ -88,8 +90,8 @@
 
 - (void)testConfiguresItselfWithARealSwizzler
 {
-    TestAssemblyWithMethod *assembly = [[TestAssemblyWithMethod alloc] init];
-    TyphoonAssemblyAdviser* adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
+    assembly = [[TestAssemblyWithMethod alloc] init];
+    adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
     assertThat([adviser swizzler], instanceOf([TyphoonJRMethodSwizzler class]));
 }
