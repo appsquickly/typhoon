@@ -18,14 +18,11 @@
 #import "TyphoonWrappedSelector.h"
 
 
+
 @interface EmptyTestAssembly : TyphoonAssembly
 @end
 
 @implementation EmptyTestAssembly
-@end
-
-
-@interface TyphoonAssemblyAdviserTests : SenTestCase
 @end
 
 
@@ -43,6 +40,9 @@
 @end
 
 
+
+@interface TyphoonAssemblyAdviserTests : SenTestCase
+@end
 
 
 @implementation TyphoonAssemblyAdviserTests
