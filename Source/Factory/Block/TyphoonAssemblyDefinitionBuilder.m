@@ -18,7 +18,6 @@
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import <objc/message.h>
-#import "TyphoonAssemblyAdviser.h"
 #import "TyphoonCircularDependencyTerminator.h"
 
 
