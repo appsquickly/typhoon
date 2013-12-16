@@ -55,6 +55,7 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SHOULD BE PRIVATE (but have dependencies on other targets) ~~~~~~~~~~~~~~~~~ -->
    <target name="__shouldbeprivate__build" depends="
+       --podspec.lint,
         --test.cocoapods,
         --test.generate.report,
         --test.evaluate,
@@ -100,6 +101,12 @@
         </exec>
         <exec executable="git">
             <arg line = "submodule update"/>
+        </exec>
+    </target>
+
+    <target name="--podspec.lint">
+        <exec executable="pod" failifexecutionfails="yes" failonerror="yes">
+            <arg line="spec lint Typhoon.podspec"/>
         </exec>
     </target>
 
