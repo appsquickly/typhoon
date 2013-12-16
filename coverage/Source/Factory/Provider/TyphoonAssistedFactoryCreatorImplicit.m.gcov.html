@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-12-15</td>
+            <td class="headerValue">2013-12-16</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -174,14 +174,14 @@
 <span class="lineNum">     116 </span><span class="lineCov">         16 :                 unsigned int numberOfArguments = method_getNumberOfArguments(method) - 2;</span>
 <span class="lineNum">     117 </span><span class="lineCov">         16 :                 if (coveredInitParameters.count &gt;= numberOfArguments)</span>
 <span class="lineNum">     118 </span>            :                 {
-<span class="lineNum">     119 </span><span class="lineCov">         20 :                     if (bestCandidateScore1 &lt; commonArguments.count ||</span>
+<span class="lineNum">     119 </span><span class="lineCov">         24 :                     if (bestCandidateScore1 &lt; commonArguments.count ||</span>
 <span class="lineNum">     120 </span>            :                         (bestCandidateScore1 == commonArguments.count &amp;&amp;
 <span class="lineNum">     121 </span>            :                          bestCandidateScore2 &lt; commonProperties.count))
 <span class="lineNum">     122 </span>            :                     {
-<span class="lineNum">     123 </span><span class="lineCov">         12 :                         bestCandidate = methodSEL;</span>
-<span class="lineNum">     124 </span><span class="lineCov">         12 :                         bestCandidateScore1 = commonArguments.count;</span>
-<span class="lineNum">     125 </span><span class="lineCov">         12 :                         bestCandidateScore2 = commonProperties.count;</span>
-<span class="lineNum">     126 </span><span class="lineCov">         12 :                     }</span>
+<span class="lineNum">     123 </span><span class="lineCov">          4 :                         bestCandidate = methodSEL;</span>
+<span class="lineNum">     124 </span><span class="lineCov">          4 :                         bestCandidateScore1 = commonArguments.count;</span>
+<span class="lineNum">     125 </span><span class="lineCov">          4 :                         bestCandidateScore2 = commonProperties.count;</span>
+<span class="lineNum">     126 </span><span class="lineCov">          4 :                     }</span>
 <span class="lineNum">     127 </span><span class="lineCov">         12 :                 }</span>
 <span class="lineNum">     128 </span><span class="lineCov">         16 :             }</span>
 <span class="lineNum">     129 </span><span class="lineCov">         44 :         }</span>

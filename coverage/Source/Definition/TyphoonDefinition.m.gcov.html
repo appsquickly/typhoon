@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-12-15</td>
+            <td class="headerValue">2013-12-16</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -79,7 +79,7 @@
 <span class="lineNum">      21 </span>            : #import &quot;TyphoonDefinition+Infrastructure.h&quot;
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineCov">       1486 : @implementation TyphoonDefinition</span>
+<span class="lineNum">      24 </span><span class="lineCov">       1462 : @implementation TyphoonDefinition</span>
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      27 </span>            : #pragma mark - Class Methods
@@ -222,12 +222,12 @@
 <span class="lineNum">     164 </span>            : 
 <span class="lineNum">     165 </span><span class="lineCov">          1 : - (void)injectProperty:(SEL)selector withFloat:(float)floatValue</span>
 <span class="lineNum">     166 </span>            : {
-<span class="lineNum">     167 </span><span class="lineCov">          1 :     [self injectProperty:selector withValueAsText:[@(floatValue) stringValue]];</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :     [self injectProperty:selector withValueAsText:[NSString stringWithFormat:@&quot;%f&quot;, floatValue]];</span>
 <span class="lineNum">     168 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">     169 </span>            : 
 <span class="lineNum">     170 </span><span class="lineCov">          1 : - (void)injectProperty:(SEL)selector withDouble:(double)doubleValue</span>
 <span class="lineNum">     171 </span>            : {
-<span class="lineNum">     172 </span><span class="lineCov">          1 :     [self injectProperty:selector withValueAsText:[@(doubleValue) stringValue]];</span>
+<span class="lineNum">     172 </span><span class="lineCov">          1 :     [self injectProperty:selector withValueAsText:[NSString stringWithFormat:@&quot;%f&quot;, doubleValue]];</span>
 <span class="lineNum">     173 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">     174 </span>            : 
 <span class="lineNum">     175 </span><span class="lineCov">          1 : - (void)injectProperty:(SEL)selector withBool:(BOOL)boolValue</span>

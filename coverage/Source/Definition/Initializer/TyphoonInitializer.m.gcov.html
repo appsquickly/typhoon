@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-12-15</td>
+            <td class="headerValue">2013-12-16</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -237,12 +237,12 @@
 <span class="lineNum">     179 </span>            : 
 <span class="lineNum">     180 </span><span class="lineCov">          1 : - (void)injectWithFloat:(float)floatValue</span>
 <span class="lineNum">     181 </span>            : {
-<span class="lineNum">     182 </span><span class="lineCov">          1 :     [self injectWithValueAsText:[@(floatValue) stringValue]];</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 :     [self injectWithValueAsText:[NSString stringWithFormat:@&quot;%f&quot;, floatValue]];</span>
 <span class="lineNum">     183 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">     184 </span>            : 
 <span class="lineNum">     185 </span><span class="lineCov">          1 : - (void)injectWithDouble:(double)doubleValue</span>
 <span class="lineNum">     186 </span>            : {
-<span class="lineNum">     187 </span><span class="lineCov">          1 :     [self injectWithValueAsText:[@(doubleValue) stringValue]];</span>
+<span class="lineNum">     187 </span><span class="lineCov">          1 :     [self injectWithValueAsText:[NSString stringWithFormat:@&quot;%f&quot;, doubleValue]];</span>
 <span class="lineNum">     188 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">     189 </span>            : 
 <span class="lineNum">     190 </span><span class="lineCov">          1 : - (void)injectWithBool:(BOOL)boolValue</span>

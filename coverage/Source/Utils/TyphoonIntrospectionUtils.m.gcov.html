@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-12-15</td>
+            <td class="headerValue">2013-12-16</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -77,58 +77,58 @@
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : @implementation TyphoonIntrospectionUtils
 <span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineCov">        229 : + (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName inClass:(Class)clazz</span>
+<span class="lineNum">      22 </span><span class="lineCov">        227 : + (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName inClass:(Class)clazz</span>
 <span class="lineNum">      23 </span>            : {
-<span class="lineNum">      24 </span><span class="lineCov">        229 :     TyphoonTypeDescriptor* typeDescriptor = nil;</span>
-<span class="lineNum">      25 </span><span class="lineCov">        229 :     objc_property_t propertyReflection = class_getProperty(clazz, [propertyName UTF8String]);</span>
-<span class="lineNum">      26 </span><span class="lineCov">        229 :     if (propertyReflection)</span>
+<span class="lineNum">      24 </span><span class="lineCov">        227 :     TyphoonTypeDescriptor* typeDescriptor = nil;</span>
+<span class="lineNum">      25 </span><span class="lineCov">        227 :     objc_property_t propertyReflection = class_getProperty(clazz, [propertyName UTF8String]);</span>
+<span class="lineNum">      26 </span><span class="lineCov">        227 :     if (propertyReflection)</span>
 <span class="lineNum">      27 </span>            :     {
-<span class="lineNum">      28 </span><span class="lineCov">        226 :         const char* attrs = property_getAttributes(propertyReflection);</span>
-<span class="lineNum">      29 </span><span class="lineCov">        226 :         if (attrs == NULL)</span>
+<span class="lineNum">      28 </span><span class="lineCov">        224 :         const char* attrs = property_getAttributes(propertyReflection);</span>
+<span class="lineNum">      29 </span><span class="lineCov">        224 :         if (attrs == NULL)</span>
 <span class="lineNum">      30 </span>            :         {
 <span class="lineNum">      31 </span><span class="lineNoCov">          0 :             return (NULL);</span>
 <span class="lineNum">      32 </span>            :         }
 <span class="lineNum">      33 </span>            : 
 <span class="lineNum">      34 </span>            :         static char buffer[256];
-<span class="lineNum">      35 </span><span class="lineCov">        226 :         const char* e = strchr(attrs, ',');</span>
-<span class="lineNum">      36 </span><span class="lineCov">        226 :         if (e == NULL)</span>
+<span class="lineNum">      35 </span><span class="lineCov">        224 :         const char* e = strchr(attrs, ',');</span>
+<span class="lineNum">      36 </span><span class="lineCov">        224 :         if (e == NULL)</span>
 <span class="lineNum">      37 </span>            :         {
 <span class="lineNum">      38 </span><span class="lineNoCov">          0 :             return (NULL);</span>
 <span class="lineNum">      39 </span>            :         }
 <span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span><span class="lineCov">        226 :         int len = (int) (e - attrs);</span>
-<span class="lineNum">      42 </span><span class="lineCov">        226 :         memcpy( buffer, attrs, len );</span>
-<span class="lineNum">      43 </span><span class="lineCov">        226 :         buffer[len] = '\0';</span>
+<span class="lineNum">      41 </span><span class="lineCov">        224 :         int len = (int) (e - attrs);</span>
+<span class="lineNum">      42 </span><span class="lineCov">        224 :         memcpy( buffer, attrs, len );</span>
+<span class="lineNum">      43 </span><span class="lineCov">        224 :         buffer[len] = '\0';</span>
 <span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span><span class="lineCov">        226 :         typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:[NSString stringWithCString:buffer encoding:NSUTF8StringEncoding]];</span>
-<span class="lineNum">      46 </span><span class="lineCov">        226 :     }</span>
-<span class="lineNum">      47 </span><span class="lineCov">        229 :     return typeDescriptor;</span>
-<span class="lineNum">      48 </span><span class="lineCov">        229 : }</span>
+<span class="lineNum">      45 </span><span class="lineCov">        224 :         typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:[NSString stringWithCString:buffer encoding:NSUTF8StringEncoding]];</span>
+<span class="lineNum">      46 </span><span class="lineCov">        224 :     }</span>
+<span class="lineNum">      47 </span><span class="lineCov">        227 :     return typeDescriptor;</span>
+<span class="lineNum">      48 </span><span class="lineCov">        227 : }</span>
 <span class="lineNum">      49 </span>            : 
 <span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span><span class="lineCov">         32 : + (NSArray*)typeCodesForSelector:(SEL)selector ofClass:(Class)clazz isClassMethod:(BOOL)isClassMethod</span>
+<span class="lineNum">      51 </span><span class="lineCov">         24 : + (NSArray*)typeCodesForSelector:(SEL)selector ofClass:(Class)clazz isClassMethod:(BOOL)isClassMethod</span>
 <span class="lineNum">      52 </span>            : {
-<span class="lineNum">      53 </span><span class="lineCov">         32 :     NSMutableArray* typeCodes = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      53 </span><span class="lineCov">         24 :     NSMutableArray* typeCodes = [[NSMutableArray alloc] init];</span>
 <span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span><span class="lineCov">         32 :     Method method;</span>
-<span class="lineNum">      56 </span><span class="lineCov">         32 :     if (isClassMethod)</span>
+<span class="lineNum">      55 </span><span class="lineCov">         24 :     Method method;</span>
+<span class="lineNum">      56 </span><span class="lineCov">         24 :     if (isClassMethod)</span>
 <span class="lineNum">      57 </span>            :     {
 <span class="lineNum">      58 </span><span class="lineCov">          2 :         method = class_getClassMethod(clazz, selector);</span>
 <span class="lineNum">      59 </span><span class="lineCov">          2 :     }</span>
 <span class="lineNum">      60 </span>            :     else
 <span class="lineNum">      61 </span>            :     {
-<span class="lineNum">      62 </span><span class="lineCov">         30 :         method = class_getInstanceMethod(clazz, selector);</span>
+<span class="lineNum">      62 </span><span class="lineCov">         22 :         method = class_getInstanceMethod(clazz, selector);</span>
 <span class="lineNum">      63 </span>            :     }
-<span class="lineNum">      64 </span><span class="lineCov">         32 :     unsigned int argumentCount = method_getNumberOfArguments(method);</span>
+<span class="lineNum">      64 </span><span class="lineCov">         24 :     unsigned int argumentCount = method_getNumberOfArguments(method);</span>
 <span class="lineNum">      65 </span>            : 
-<span class="lineNum">      66 </span><span class="lineCov">        636 :     for (int i = 2; i &lt; argumentCount; i++)</span>
+<span class="lineNum">      66 </span><span class="lineCov">        364 :     for (int i = 2; i &lt; argumentCount; i++)</span>
 <span class="lineNum">      67 </span>            :     {
-<span class="lineNum">      68 </span><span class="lineCov">        286 :         char typeInfo[100];</span>
-<span class="lineNum">      69 </span><span class="lineCov">        286 :         method_getArgumentType(method, i, typeInfo, 100);</span>
-<span class="lineNum">      70 </span><span class="lineCov">        286 :         [typeCodes addObject:[NSString stringWithUTF8String:typeInfo]];</span>
-<span class="lineNum">      71 </span><span class="lineCov">        286 :     }</span>
-<span class="lineNum">      72 </span><span class="lineCov">         32 :     return [typeCodes copy];</span>
-<span class="lineNum">      73 </span><span class="lineCov">         32 : }</span>
+<span class="lineNum">      68 </span><span class="lineCov">        158 :         char typeInfo[100];</span>
+<span class="lineNum">      69 </span><span class="lineCov">        158 :         method_getArgumentType(method, i, typeInfo, 100);</span>
+<span class="lineNum">      70 </span><span class="lineCov">        158 :         [typeCodes addObject:[NSString stringWithUTF8String:typeInfo]];</span>
+<span class="lineNum">      71 </span><span class="lineCov">        158 :     }</span>
+<span class="lineNum">      72 </span><span class="lineCov">         24 :     return [typeCodes copy];</span>
+<span class="lineNum">      73 </span><span class="lineCov">         24 : }</span>
 <span class="lineNum">      74 </span>            : 
 <span class="lineNum">      75 </span>            : @end
 <span class="lineNum">      76 </span>            : 
