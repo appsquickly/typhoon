@@ -1181,7 +1181,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Jasper Blues";
 			};
-			buildConfigurationList = 6B3F396A16ABF854001A601C /* Build configuration list for PBXProject "Typhoon" */;
+			buildConfigurationList = 6B3F396A16ABF854001A601C /* Build configuration list for PBXProject "a.Typhoon" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1497,7 +1497,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B3F396A16ABF854001A601C /* Build configuration list for PBXProject "Typhoon" */ = {
+		6B3F396A16ABF854001A601C /* Build configuration list for PBXProject "a.Typhoon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6B3F397D16ABF854001A601C /* Debug */,
