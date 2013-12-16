@@ -629,7 +629,6 @@
 				46877CF717D70B5900910D6A /* Initializer */,
 				4B06339E17D29402009CDBD6 /* Injection Aware */,
 				4B84149D179B0EA600916BF5 /* Properties */,
-				6570968718313B2C00C10DA4 /* FactoryProvider */,
 				4B8414A2179B0EA600916BF5 /* TyphoonDefinitionTests.m */,
 			);
 			path = Definition;
@@ -656,6 +655,7 @@
 		4B8414A3179B0EA600916BF5 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
+				65FE013A185F741400C0785C /* Provider */,
 				4B8414A4179B0EA600916BF5 /* Block */,
 				4B8414AF179B0EA600916BF5 /* Shared */,
 				4B8414B3179B0EA600916BF5 /* TyphoonComponentFactoryTests.m */,
@@ -856,24 +856,6 @@
 			name = CurrentlyResolvingOverwrite;
 			sourceTree = "<group>";
 		};
-		6570968718313B2C00C10DA4 /* FactoryProvider */ = {
-			isa = PBXGroup;
-			children = (
-				657096941831464A00C10DA4 /* Fixtures */,
-				657096901831449000C10DA4 /* TyphoonFactoryProviderTest.m */,
-				656A57691848DD260081F72B /* TyphoonFactoryProviderTestHelper.h */,
-				656A57651848DD020081F72B /* TyphoonFactoryProviderTestHelper.m */,
-				656A57611848DCB60081F72B /* TyphoonAssistedFactoryCreatorOneFactoryTest.m */,
-				656A576A1848E0B70081F72B /* TyphoonAssistedFactoryCreatorManyFactoriesTest.m */,
-				656A576E184901010081F72B /* TyphoonAssistedFactoryCreatorImplicitTest.m */,
-				6570968C18313F2A00C10DA4 /* TyphoonAssistedFactoryDefinitionTest.m */,
-				6570968818313C3500C10DA4 /* TyphoonAssistedFactoryBaseTest.m */,
-				65FB9411183BD5330038FCA5 /* TyphoonAssistedFactoryMethodInitializerTest.m */,
-				65DD3034183D352300FD1134 /* TyphoonAssistedFactoryMethodClosureTest.m */,
-			);
-			path = FactoryProvider;
-			sourceTree = "<group>";
-		};
 		657096941831464A00C10DA4 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
@@ -893,6 +875,24 @@
 				657096AA183147D600C10DA4 /* PizzaImpl.m */,
 			);
 			name = Fixtures;
+			sourceTree = "<group>";
+		};
+		65FE013A185F741400C0785C /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				657096941831464A00C10DA4 /* Fixtures */,
+				657096901831449000C10DA4 /* TyphoonFactoryProviderTest.m */,
+				656A57691848DD260081F72B /* TyphoonFactoryProviderTestHelper.h */,
+				656A57651848DD020081F72B /* TyphoonFactoryProviderTestHelper.m */,
+				656A57611848DCB60081F72B /* TyphoonAssistedFactoryCreatorOneFactoryTest.m */,
+				656A576A1848E0B70081F72B /* TyphoonAssistedFactoryCreatorManyFactoriesTest.m */,
+				656A576E184901010081F72B /* TyphoonAssistedFactoryCreatorImplicitTest.m */,
+				6570968C18313F2A00C10DA4 /* TyphoonAssistedFactoryDefinitionTest.m */,
+				6570968818313C3500C10DA4 /* TyphoonAssistedFactoryBaseTest.m */,
+				65FB9411183BD5330038FCA5 /* TyphoonAssistedFactoryMethodInitializerTest.m */,
+				65DD3034183D352300FD1134 /* TyphoonAssistedFactoryMethodClosureTest.m */,
+			);
+			path = Provider;
 			sourceTree = "<group>";
 		};
 		75AB58D5B5D433266AE2B4C4 /* BlockComponentFactory */ = {
