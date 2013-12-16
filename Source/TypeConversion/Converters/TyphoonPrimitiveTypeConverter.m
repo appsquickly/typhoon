@@ -86,10 +86,7 @@
 
 - (unsigned long long)convertToUnsignedLongLong:(NSString*)stringValue
 {
-    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    unsigned long long converted = 0;
-    [scanner scanUnsignedLongLong:&converted];
-    return [[NSNumber numberWithUnsignedLongLong:converted] unsignedLongLongValue];
+    return strtoull([stringValue UTF8String], NULL, 0);
 }
 
 - (float)convertToFloat:(NSString*)stringValue
