@@ -59,7 +59,7 @@ static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
 
 + (void)unswizzleAssemblyMethods:(TyphoonAssembly*)assembly
 {
-    NSSet* swizzledSelectors = [swizzledDefinitionsByAssemblyClass objectForKey:[assembly class]];
+    NSSet* swizzledSelectors = [swizzledDefinitionsByAssemblyClass objectForKey:NSStringFromClass([assembly class])];
 
     LogTrace(@"Unswizzling the following selectors: '%@' on assembly: '%@'.", [self humanReadableDescriptionForSelectorObjects:swizzledSelectors], assembly);
 
@@ -208,7 +208,7 @@ typedef void(^MethodEnumerationBlock)(Method method);
 
 + (BOOL)assemblyClassIsAdvised:(Class)class
 {
-    return [[swizzledDefinitionsByAssemblyClass allKeys] containsObject:class];
+    return [[swizzledDefinitionsByAssemblyClass allKeys] containsObject:NSStringFromClass(class)];
 }
 
 + (void)markAssemblyMethods:(NSSet*)definitionSelectors asAdvised:(TyphoonAssembly*)assembly;
@@ -218,7 +218,7 @@ typedef void(^MethodEnumerationBlock)(Method method);
 
 + (void)markAssemblyMethodsAsNoLongerAdvised:(TyphoonAssembly*)assembly;
 {
-    [swizzledDefinitionsByAssemblyClass removeObjectForKey:[assembly class]];
+    [swizzledDefinitionsByAssemblyClass removeObjectForKey:NSStringFromClass([assembly class])];
 }
 
 @end

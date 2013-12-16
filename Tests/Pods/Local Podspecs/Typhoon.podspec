@@ -1,11 +1,11 @@
 Pod::Spec.new do |spec|
     spec.name         = 'Typhoon'
-    spec.version      = '1.6.3'
+    spec.version      = '1.6.4'
     spec.license      = 'Apache2.0'
     spec.summary      = 'A dependency injection container for Objective-C. Light-weight, yet flexible and full-featured.'
     spec.homepage     = 'http://www.typhoonframework.org'
     spec.author       = { 'Jasper Blues, Robert Gilliam & Contributors' => 'jasper@appsquick.ly' }
-    spec.source       = { :git => 'https://github.com/typhoon-framework', :tag => spec.version.to_s, :submodules => true }
+    spec.source       = { :git => 'https://github.com/typhoon-framework/Typhoon.git', :tag => spec.version.to_s, :submodules => true }
     spec.source_files = 'Source/**/*.{h,m}'
 	spec.ios.exclude_files = "Source/osx"
 	spec.osx.exclude_files = "Source/ios"

@@ -321,6 +321,13 @@
 			remoteGlobalIDString = 4B9685A117D26E8200E69723;
 			remoteInfo = "pod update";
 		};
+		6B4EC5F7185F08F000A5D51F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B841461179B0E1B00916BF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B84146B179B0E3900916BF5;
+			remoteInfo = "iOS Tests (Cocoapods)";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -1020,6 +1027,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6B4EC5F8185F08F000A5D51F /* PBXTargetDependency */,
 				4B9685AD17D275D000E69723 /* PBXTargetDependency */,
 			);
 			name = "iOS Tests (Static Library)";
@@ -1040,7 +1048,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4B841464179B0E1B00916BF5 /* Build configuration list for PBXProject "b.Tests" */;
+			buildConfigurationList = 4B841464179B0E1B00916BF5 /* Build configuration list for PBXProject "Tests" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1534,6 +1542,11 @@
 			target = 4B9685A117D26E8200E69723 /* pod update */;
 			targetProxy = 4B9685AC17D275D000E69723 /* PBXContainerItemProxy */;
 		};
+		6B4EC5F8185F08F000A5D51F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B84146B179B0E3900916BF5 /* iOS Tests (Cocoapods) */;
+			targetProxy = 6B4EC5F7185F08F000A5D51F /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -1836,7 +1849,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4B841464179B0E1B00916BF5 /* Build configuration list for PBXProject "b.Tests" */ = {
+		4B841464179B0E1B00916BF5 /* Build configuration list for PBXProject "Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4B841465179B0E1B00916BF5 /* Debug */,

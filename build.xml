@@ -55,10 +55,10 @@
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SHOULD BE PRIVATE (but have dependencies on other targets) ~~~~~~~~~~~~~~~~~ -->
    <target name="__shouldbeprivate__build" depends="
-       --podspec.lint,
         --test.cocoapods,
         --test.generate.report,
         --test.evaluate,
+        --podspec.lint,
         --api.report,
         --stamp.build.passing"/>
 
