@@ -174,6 +174,26 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>TyphoonAssistedFactoryCreatorMethodEnumeration</Name>
+      <APILanguage>c</APILanguage>
+      <Type>tdef</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_assisted_factory_creator_09_private_8h.html</Path>
+    <Anchor>ab8f4b3c3133dde06cf83c1f7c72c0b7a</Anchor>
+    <DeclaredIn>TyphoonAssistedFactoryCreator+Private.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>TyphoonAssistedFactoryCreatorPropertyEnumeration</Name>
+      <APILanguage>c</APILanguage>
+      <Type>tdef</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_assisted_factory_creator_09_private_8h.html</Path>
+    <Anchor>aba02243943a888ee6b6f6abe0f8b5c05</Anchor>
+    <DeclaredIn>TyphoonAssistedFactoryCreator+Private.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>TyphoonAssistedFactoryDefinitionProvider</Name>
       <APILanguage>c</APILanguage>
       <Type>tdef</Type>
@@ -181,6 +201,39 @@
     <Path>_typhoon_assisted_factory_creator_09_private_8h.html</Path>
     <Anchor>a55c76259c43b832e050d4ace2046ef49</Anchor>
     <Abstract>Lazily returns a TyphoonAssistedFactoryDefinition. </Abstract>
+    <DeclaredIn>TyphoonAssistedFactoryCreator+Private.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>TyphoonAssistedFactoryCreatorForEachMethodInClass</Name>
+      <APILanguage>c</APILanguage>
+      <Type>func</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_assisted_factory_creator_09_private_8h.html</Path>
+    <Anchor>a64f2dfe8a796fae0bf262d6a1f2b9b2a</Anchor>
+    <Abstract>Enumerates over all the methods in a class. </Abstract>
+    <DeclaredIn>TyphoonAssistedFactoryCreator+Private.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>TyphoonAssistedFactoryCreatorForEachMethodInProtocol</Name>
+      <APILanguage>c</APILanguage>
+      <Type>func</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_assisted_factory_creator_09_private_8h.html</Path>
+    <Anchor>a305dd98fe4b6e4dc860064c8f63e10b1</Anchor>
+    <Abstract>Enumerates over all the methods in a protocol. </Abstract>
+    <DeclaredIn>TyphoonAssistedFactoryCreator+Private.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>TyphoonAssistedFactoryCreatorForEachPropertyInProtocol</Name>
+      <APILanguage>c</APILanguage>
+      <Type>func</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_assisted_factory_creator_09_private_8h.html</Path>
+    <Anchor>a1b68fb10098fddaefd1db7e1f8dfcb57</Anchor>
+    <Abstract>Enumerates over all the properties in a protocol. </Abstract>
     <DeclaredIn>TyphoonAssistedFactoryCreator+Private.h</DeclaredIn>
   </Token>
   <Token>

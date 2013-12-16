@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2013-12-16</td>
+            <td class="headerValue">2013-12-17</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -84,14 +84,14 @@
 <span class="lineNum">      26 </span>            : 
 <span class="lineNum">      27 </span>            : @implementation TyphoonAssistedFactoryMethodInitializerCreator
 <span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span><span class="lineCov">         10 : - (void)createFromProtocol:(Protocol *)protocol inClass:(Class)factoryClass</span>
+<span class="lineNum">      29 </span><span class="lineCov">         14 : - (void)createFromProtocol:(Protocol *)protocol inClass:(Class)factoryClass</span>
 <span class="lineNum">      30 </span>            : {
-<span class="lineNum">      31 </span><span class="lineCov">         10 :     struct objc_method_description methodDescription = [self methodDescriptionFor:self.factoryMethod.factoryMethod inProtocol:protocol];</span>
-<span class="lineNum">      32 </span><span class="lineCov">         10 :     NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];</span>
+<span class="lineNum">      31 </span><span class="lineCov">         14 :     struct objc_method_description methodDescription = [self methodDescriptionFor:self.factoryMethod.factoryMethod inProtocol:protocol];</span>
+<span class="lineNum">      32 </span><span class="lineCov">         14 :     NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];</span>
 <span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span><span class="lineCov">         10 :     TyphoonAssistedFactoryMethodClosure *closure = [[TyphoonAssistedFactoryMethodClosure alloc] initWithInitializer:self.factoryMethod methodSignature:methodSignature];</span>
-<span class="lineNum">      35 </span><span class="lineCov">         10 :     [factoryClass _fmc_setClosure:closure forSelector:self.factoryMethod.factoryMethod];</span>
-<span class="lineNum">      36 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">      34 </span><span class="lineCov">         14 :     TyphoonAssistedFactoryMethodClosure *closure = [[TyphoonAssistedFactoryMethodClosure alloc] initWithInitializer:self.factoryMethod methodSignature:methodSignature];</span>
+<span class="lineNum">      35 </span><span class="lineCov">         14 :     [factoryClass _fmc_setClosure:closure forSelector:self.factoryMethod.factoryMethod];</span>
+<span class="lineNum">      36 </span><span class="lineCov">         14 : }</span>
 <span class="lineNum">      37 </span>            : 
 <span class="lineNum">      38 </span>            : @end
 </pre>
