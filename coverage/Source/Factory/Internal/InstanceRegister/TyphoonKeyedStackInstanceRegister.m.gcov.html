@@ -106,11 +106,11 @@
 <span class="lineNum">      48 </span><span class="lineCov">        326 :     [stack push:instance];</span>
 <span class="lineNum">      49 </span><span class="lineCov">        326 : }</span>
 <span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span><span class="lineCov">        320 : - (id)unstashInstanceForKey:(NSString*)key</span>
+<span class="lineNum">      51 </span><span class="lineCov">        322 : - (id)unstashInstanceForKey:(NSString*)key</span>
 <span class="lineNum">      52 </span>            : {
-<span class="lineNum">      53 </span><span class="lineCov">        320 :     TyphoonGenericStack* stack = _registry[key];</span>
-<span class="lineNum">      54 </span><span class="lineCov">        320 :     return [stack pop];</span>
-<span class="lineNum">      55 </span><span class="lineCov">        320 : }</span>
+<span class="lineNum">      53 </span><span class="lineCov">        322 :     TyphoonGenericStack* stack = _registry[key];</span>
+<span class="lineNum">      54 </span><span class="lineCov">        322 :     return [stack pop];</span>
+<span class="lineNum">      55 </span><span class="lineCov">        322 : }</span>
 <span class="lineNum">      56 </span>            : 
 <span class="lineNum">      57 </span><span class="lineCov">         29 : - (id)peekInstanceForKey:(NSString*)key</span>
 <span class="lineNum">      58 </span>            : {
@@ -120,7 +120,7 @@
 <span class="lineNum">      62 </span>            : 
 <span class="lineNum">      63 </span><span class="lineCov">        145 : - (BOOL)hasInstanceForKey:(NSString*)key</span>
 <span class="lineNum">      64 </span>            : {
-<span class="lineNum">      65 </span><span class="lineCov">        194 :     return ((_registry[key] != nil)&amp;&amp;([_registry[key] isEmpty] == NO));</span>
+<span class="lineNum">      65 </span><span class="lineCov">        197 :     return ((_registry[key] != nil)&amp;&amp;([_registry[key] isEmpty] == NO));</span>
 <span class="lineNum">      66 </span><span class="lineCov">        145 : }</span>
 <span class="lineNum">      67 </span>            : 
 <span class="lineNum">      68 </span>            : 

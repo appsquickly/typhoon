@@ -97,24 +97,24 @@
 <span class="lineNum">      39 </span><span class="lineCov">        328 :     [_storage addObject:element];</span>
 <span class="lineNum">      40 </span><span class="lineCov">        328 : }</span>
 <span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span><span class="lineCov">        323 : - (id)pop</span>
+<span class="lineNum">      42 </span><span class="lineCov">        325 : - (id)pop</span>
 <span class="lineNum">      43 </span>            : {
-<span class="lineNum">      44 </span><span class="lineCov">        323 :     id element = [_storage lastObject];</span>
-<span class="lineNum">      45 </span><span class="lineCov">        323 :     if ([self isEmpty] == NO)</span>
+<span class="lineNum">      44 </span><span class="lineCov">        325 :     id element = [_storage lastObject];</span>
+<span class="lineNum">      45 </span><span class="lineCov">        325 :     if ([self isEmpty] == NO)</span>
 <span class="lineNum">      46 </span>            :     {
-<span class="lineNum">      47 </span><span class="lineCov">        322 :         [_storage removeLastObject];</span>
-<span class="lineNum">      48 </span><span class="lineCov">        322 :     }</span>
-<span class="lineNum">      49 </span><span class="lineCov">        323 :     return element;</span>
-<span class="lineNum">      50 </span><span class="lineCov">        323 : }</span>
+<span class="lineNum">      47 </span><span class="lineCov">        324 :         [_storage removeLastObject];</span>
+<span class="lineNum">      48 </span><span class="lineCov">        324 :     }</span>
+<span class="lineNum">      49 </span><span class="lineCov">        325 :     return element;</span>
+<span class="lineNum">      50 </span><span class="lineCov">        325 : }</span>
 <span class="lineNum">      51 </span>            : 
 <span class="lineNum">      52 </span><span class="lineCov">         29 : - (id)peek</span>
 <span class="lineNum">      53 </span>            : {
 <span class="lineNum">      54 </span><span class="lineCov">         29 :     return [_storage lastObject];</span>
 <span class="lineNum">      55 </span><span class="lineCov">         29 : }</span>
 <span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span><span class="lineCov">        373 : - (BOOL)isEmpty</span>
+<span class="lineNum">      57 </span><span class="lineCov">        378 : - (BOOL)isEmpty</span>
 <span class="lineNum">      58 </span>            : {
-<span class="lineNum">      59 </span><span class="lineCov">        373 :     return ([_storage count] == 0);</span>
+<span class="lineNum">      59 </span><span class="lineCov">        378 :     return ([_storage count] == 0);</span>
 <span class="lineNum">      60 </span>            : }
 <span class="lineNum">      61 </span>            : 
 <span class="lineNum">      62 </span>            : @end
