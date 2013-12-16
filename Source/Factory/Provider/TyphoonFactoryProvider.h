@@ -102,8 +102,8 @@
 
 @endcode
 *
-*  For the factories block you must provide one body block for each class method
-*  of your factory protocol. The block used as the body receives the factory
+* For the factories block you must provide one body block for each class method
+* of your factory protocol. The block used as the body receives the factory
 * itself as the first argument, so you can use the factory properties, and then
 * the rest of the class method arguments in the second and following positions.
 *
@@ -174,13 +174,15 @@
         factory:(id)factoryBlock;
 
 /**
- * Creates a factory definition for a given protocol, dependencies, and return type. The protocol is supposed to only have one factory
- * method, otherwise this method will fail during runtime.
+ * Creates a factory definition for a given protocol, dependencies, and return type. The protocol can have any number of instance
+ * methods, but each one should match one of the initializers.
  *
  * The factory method will invoke one of the initializer methods of the returnType. To determine which initializer method will be used, the
  * atoms of the factory method and the init method will be matched, filling up missing parameters with the properties present in the
- * protocol. Ties will be resolved choosing the init method with most factory method argument used, and the arbitrarily. If no valid init
- * method is found, the invocation will fail during runtime.
+ * protocol. Ties will be resolved choosing the init method with most factory method arguments used. This scoring system will also be used
+ * in case two factory methods can be used with one initializer: the one with highest number of arguments and less properties will match
+ * the initializer, and the other one will need to match another initializer. If no valid init method is found, the invocation
+ * will fail during runtime.
  *
  * For this method to work the names of the factory methods and the init method should follow some common rules:
  *
@@ -201,8 +203,13 @@
  * - personNamed:age:gender:
  *
  * If your init method or your factory method could not follow the rules (or you don't want them to follow the rules) you should use one of
- * the other methods and provide the implementation block yourself.
-*/
+ * the other methods of this class and provide the implementation block yourself.
+ *
+ * Typhoon will try to match as good as it can the init method with the factory methods, but sometimes the automatic matching might fail, or
+ * might not provide the desidered pair. Again, you are free to use any other method from this class and perform the matching manually. If
+ * you want to debug the matching performed by Typhoon, enable LOGGING_LEVEL_TRACE in your build, and look in your console output for lines
+ * like "Factory Provider: found candidate: [YourProtocol yourFactoryMethodWithFoo:] --> [YourReturnType initWithFoo:]".
+ */
 + (TyphoonDefinition*)withProtocol:(Protocol*)protocol dependencies:(TyphoonDefinitionBlock)dependenciesBlock returns:(Class)returnType;
 
 /**

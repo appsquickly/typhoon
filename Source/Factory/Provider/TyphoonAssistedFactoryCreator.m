@@ -12,8 +12,6 @@
 #import "TyphoonAssistedFactoryCreator.h"
 #import "TyphoonAssistedFactoryCreator+Private.h"
 
-#include <objc/runtime.h>
-
 #import "TyphoonAssistedFactoryBase.h"
 #import "TyphoonAssistedFactoryCreatorImplicit.h"
 #import "TyphoonAssistedFactoryCreatorOneFactory.h"
@@ -28,23 +26,13 @@ SEL TyphoonAssistedFactoryCreatorGuessFactoryMethodForProtocol(Protocol* protoco
     NSMutableSet* propertyNames = [NSMutableSet set];
     NSMutableSet* methodNames = [NSMutableSet set];
 
-    unsigned int methodCount = 0;
-    struct objc_method_description* methodDescriptions = protocol_copyMethodDescriptionList(protocol, YES, YES, &methodCount);
-    for (unsigned int idx = 0; idx < methodCount; idx++)
-    {
-        struct objc_method_description methodDescription = methodDescriptions[idx];
+    TyphoonAssistedFactoryCreatorForEachMethodInProtocol(protocol, ^(struct objc_method_description methodDescription) {
         [methodNames addObject:NSStringFromSelector(methodDescription.name)];
-    }
-    free(methodDescriptions);
+    });
 
-    unsigned int propertiesCount = 0;
-    objc_property_t* properties = protocol_copyPropertyList(protocol, &propertiesCount);
-    for (unsigned int idx = 0; idx < propertiesCount; idx++)
-    {
-        objc_property_t property = properties[idx];
+    TyphoonAssistedFactoryCreatorForEachPropertyInProtocol(protocol, ^(objc_property_t property) {
         [propertyNames addObject:[NSString stringWithCString:property_getName(property) encoding:NSASCIIStringEncoding]];
-    }
-    free(properties);
+    });
 
     [methodNames minusSet:propertyNames];
     NSString* factoryMethod = [methodNames anyObject];
@@ -52,6 +40,42 @@ SEL TyphoonAssistedFactoryCreatorGuessFactoryMethodForProtocol(Protocol* protoco
     return NSSelectorFromString(factoryMethod);
 }
 
+void TyphoonAssistedFactoryCreatorForEachMethodInProtocol(Protocol *protocol, TyphoonAssistedFactoryCreatorMethodEnumeration enumerationBlock)
+{
+    unsigned int methodCount = 0;
+    struct objc_method_description* methodDescriptions = protocol_copyMethodDescriptionList(protocol, YES, YES, &methodCount);
+    for (unsigned int idx = 0; idx < methodCount; idx++)
+    {
+        struct objc_method_description methodDescription = methodDescriptions[idx];
+        enumerationBlock(methodDescription);
+    }
+    free(methodDescriptions);
+}
+
+void TyphoonAssistedFactoryCreatorForEachPropertyInProtocol(Protocol *protocol, TyphoonAssistedFactoryCreatorPropertyEnumeration enumerationBlock)
+{
+    unsigned int propertiesCount = 0;
+    objc_property_t* properties = protocol_copyPropertyList(protocol, &propertiesCount);
+    for (unsigned int idx = 0; idx < propertiesCount; idx++)
+    {
+        objc_property_t property = properties[idx];
+        enumerationBlock(property);
+    }
+    free(properties);
+}
+
+void TyphoonAssistedFactoryCreatorForEachMethodInClass(Class klass, TyphoonAssistedFactoryCreatorMethodEnumeration enumerationBlock)
+{
+    unsigned int methodCount = 0;
+    Method *methods = class_copyMethodList(klass, &methodCount);
+    for (unsigned int idx = 0; idx < methodCount; idx++)
+    {
+        Method method = methods[idx];
+        struct objc_method_description *methodDescription = method_getDescription(method);
+        enumerationBlock(*methodDescription);
+    }
+    free(methods);
+}
 
 @implementation TyphoonAssistedFactoryCreator
 {
