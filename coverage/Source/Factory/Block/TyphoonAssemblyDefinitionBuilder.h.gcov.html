@@ -77,14 +77,16 @@
 <span class="lineNum">      19 </span>            : @interface TyphoonAssemblyDefinitionBuilder : NSObject
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span>            : + (instancetype)builderWithAssembly:(TyphoonAssembly*)assembly;
-<span class="lineNum">      22 </span>            : - (instancetype)initWithAssembly:(TyphoonAssembly*)assembly;
-<span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span>            : - (NSArray*)builtDefinitions;
-<span class="lineNum">      25 </span>            : - (TyphoonDefinition*)builtDefinitionForKey:(NSString*)key;
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span>            : - (instancetype)initWithAssembly:(TyphoonAssembly*)assembly;
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span>            : - (NSArray*)builtDefinitions;
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">       1710 : @property (readonly, weak) TyphoonAssembly* assembly;</span>
+<span class="lineNum">      27 </span>            : - (TyphoonDefinition*)builtDefinitionForKey:(NSString*)key;
 <span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span>            : @end
+<span class="lineNum">      29 </span><span class="lineCov">       1710 : @property(readonly, unsafe_unretained) TyphoonAssembly* assembly;</span>
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span>            : @end
 </pre>
       </td>
     </tr>
