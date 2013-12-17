@@ -3,7 +3,7 @@
 PODS="${PROJECT_DIR}/Pods"
 REPO_ROOT="${PROJECT_DIR}/.."
 SOURCE="${REPO_ROOT}/Source"
-CHANGED_SOURCE_FILES="$(find "$SOURCE" \! -path "*xcuserdata*" \! -path "*.git" -newer "$PODS/")"
+CHANGED_SOURCE_FILES="$(find "$SOURCE" \! -path "*xcuserdata*" \! -path "*.git" -newerBm "$PODS/")"
 COMMAND="pod update"
 
 if [ -n "$CHANGED_SOURCE_FILES" ]; then
