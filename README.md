@@ -216,7 +216,7 @@ is not the same as heavy.
 
 # Apps Using Typhoon
 
-In the months since release, there have been scores app built with Typhoon. Here are some of them: 
+Here's a few apps built with Typhoon:
 
 * Mod Productions' ACO Virtual <a href="http://vimeo.com/75451558">iPad controller</a> and <a href="https://itunes.apple.com/au/app/aco-virtual/id623225640?mt=8">companion AR app.</a> (Awarded ***AppStore Best New Apps***). 
 * <a href="http://itunes.com/apps/GonnaGo">GonnaGo</a> - a social travel app. 
