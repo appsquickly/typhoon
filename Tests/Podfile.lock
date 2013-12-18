@@ -16,6 +16,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   OCHamcrest: f8393efd5a49d91879be573635d6183effacc0ab
   OCMockito: 01560fd24319b85c223e10f52e2e41fbe2c6d434
-  Typhoon: e4b8a74b1bf87bad6fcaa05074afee3d9a5a4ebd
+  Typhoon: c3b35ad15ac0afc3dee2634c0ac88ca801f14d84
 
 COCOAPODS: 0.28.0

@@ -111,35 +111,51 @@
     </target>
 
     <target name="--test.cocoapods">
-        <property name="tests.report" value="${reports.dir}/tests/test-results.txt"/>
-        <exec executable="xcodebuild" outputproperty="unit.tests.output" failonerror="no" failifexecutionfails="no">
-            <!-- TODO: move out of derived data -->
-            <arg line="-workspace ${workspace} -scheme '${tests.ios.scheme.name}' test -destination OS=${module.sdk.version},name=iPad"/>
-        </exec>
+        <mkdir dir="${reports.dir}/tests"/>
+        <echo file="${temp.dir}/runTests.sh">
+            #!/bin/sh
+            xcodebuild -workspace ${module.name}.xcworkspace test -scheme ${library.ios.name} \
+            -destination OS=${module.sdk.version},name=iPad -destination-timeout=10 -configuration Debug > ${reports.dir}/tests/test-results.txt
+            xcpretty -c ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
+        </echo>
+        <chmod perm="+x" file="${temp.dir}/runTests.sh"/>
+        <exec executable="${temp.dir}/runTests.sh" failonerror="true" failifexecutionfails="true"/>
+        <loadfile property="pretty-test-output" srcFile="${reports.dir}/tests/test-results-pretty.txt"/>
     </target>
     
     <target name="__build.library.ios.simulator">
-        <exec executable="${xcodebuild}" failonerror="true">
-            <arg line="-destination OS=${module.sdk.version},name=iPhone -workspace ${workspace} -scheme '${library.ios.scheme}'"/>
-        </exec>
-    </target>  
+        <echo file="${temp.dir}/runTests.sh">
+            #!/bin/sh
+            xcodebuild -destination OS=${module.sdk.version},name=iPhone -workspace ${workspace} -scheme '${library.ios.scheme}' \
+            -destination-timeout=10 -configuration Debug > ${reports.dir}/tests/test-results.txt
+            xcpretty -c ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
+        </echo>
+        <chmod perm="+x" file="${temp.dir}/runTests.sh"/>
+        <exec executable="${temp.dir}/runTests.sh" failonerror="true" failifexecutionfails="true"/>
+        <loadfile property="pretty-test-output" srcFile="${reports.dir}/tests/test-results-pretty.txt"/>
+    </target>
+
     <property name="ios.simulator.build.dir" value="${target.dir}/ios-simulator"/>
 
     <target name="--test.library">
         <!-- The static library must be explicitly built before attempting to test, as of Xcode 4.6.3. A static library dependency is not built by xcodebuild when building the dependent. -->
-        <property name="tests.report" value="${reports.dir}/tests/test-results.txt"/>
-        <exec executable="xcodebuild" failonerror="false" outputproperty="unit.tests.output">
-            <arg line="-workspace ${workspace} test -scheme '${tests.ios.library.scheme.name}' CONFIGURATION_BUILD_DIR='${ios.simulator.build.dir}' CONFIGURATION_TEMP_DIR='${intermediates.dir}' LIBRARY_SEARCH_PATHS='${ios.simulator.build.dir}' -destination OS=${module.sdk.version},name=iPad"/>
-        </exec>
+
+        <echo file="${temp.dir}/runTests.sh">
+            #!/bin/sh
+            xcodebuild -workspace ${workspace} test -scheme '${tests.ios.library.scheme.name}' \
+            CONFIGURATION_BUILD_DIR='${ios.simulator.build.dir}' CONFIGURATION_TEMP_DIR='${intermediates.dir}' \
+            LIBRARY_SEARCH_PATHS='${ios.simulator.build.dir}' -destination OS=${module.sdk.version},name=iPad \
+            -destination-timeout=10 -configuration Debug > ${reports.dir}/tests/test-results.txt
+            xcpretty -c ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
+        </echo>
+        <chmod perm="+x" file="${temp.dir}/runTests.sh"/>
+        <exec executable="${temp.dir}/runTests.sh" failonerror="true" failifexecutionfails="true"/>
+        <loadfile property="pretty-test-output" srcFile="${reports.dir}/tests/test-results-pretty.txt"/>
     </target>
     
     <target name="--test.generate.report">
-        <!-- Write report to disk -->
-        <echo file="${tests.report}" message="${unit.tests.output}"/>
-        <!-- Print report to console -->
-        <echo message="${unit.tests.output}"/>
-        
-        <loadfile srcfile="${tests.report}" property="tests.error">
+        <echo>${pretty-test-output}</echo>
+        <loadfile srcfile="${reports.dir}/tests/test-results.txt" property="tests.error">
             <filterchain>
                 <filterreader classname="org.apache.tools.ant.filters.LineContains">
                     <param type="contains" value="BUILD FAILED"/>
@@ -148,7 +164,7 @@
         </loadfile>
         <fail if="tests.error" message="Tests failed to build."/>
         
-        <loadfile srcfile="${tests.report}" property="tests.failed">
+        <loadfile srcfile="${reports.dir}/tests/test-results.txt" property="tests.failed">
             <filterchain>
                 <filterreader classname="org.apache.tools.ant.filters.LineContains">
                     <param type="contains" value="** TEST FAILED **"/>
@@ -156,14 +172,13 @@
             </filterchain>
         </loadfile>
 
-        <delete dir="${reports.dir}/test-results"/>
         <echo message="Convert test output"/>
         <echo file="${temp.dir}/convert-test-output.sh">
             #!/bin/bash
             set -e # fail script if any commands fail
 
             cd ${temp.dir}
-            ${scripts.dir}/ocunit2junit ${tests.report}
+            ${scripts.dir}/ocunit2junit ${reports.dir}/tests/test-results.txt > ${temp.dir}/junit-parser.txt
         </echo>
         <chmod perm="+x" file="${temp.dir}/convert-test-output.sh"/>
         <exec executable="${temp.dir}/convert-test-output.sh" failonerror="true" failifexecutionfails="true"/>

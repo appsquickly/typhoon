@@ -13,11 +13,9 @@
 #import <UIKit/UIKit.h>
 
 
-static id mainSuite = nil;
+
 
 @implementation VATestObserver
-
-
 
 extern void __gcov_flush(void);
 
