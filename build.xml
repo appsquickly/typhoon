@@ -116,7 +116,7 @@
             #!/bin/sh
             xcodebuild -workspace ${module.name}.xcworkspace test -scheme ${library.ios.name} \
             -destination OS=${module.sdk.version},name=iPad -destination-timeout=10 -configuration Debug > ${reports.dir}/tests/test-results.txt
-            xcpretty -c ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
+            xcpretty -${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
         </echo>
         <chmod perm="+x" file="${temp.dir}/runTests.sh"/>
         <exec executable="${temp.dir}/runTests.sh" failonerror="true" failifexecutionfails="true"/>
@@ -128,7 +128,7 @@
             #!/bin/sh
             xcodebuild -destination OS=${module.sdk.version},name=iPhone -workspace ${workspace} -scheme '${library.ios.scheme}' \
             -destination-timeout=10 -configuration Debug > ${reports.dir}/tests/test-results.txt
-            xcpretty -c ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
+            xcpretty ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
         </echo>
         <chmod perm="+x" file="${temp.dir}/runTests.sh"/>
         <exec executable="${temp.dir}/runTests.sh" failonerror="true" failifexecutionfails="true"/>
@@ -146,7 +146,7 @@
             CONFIGURATION_BUILD_DIR='${ios.simulator.build.dir}' CONFIGURATION_TEMP_DIR='${intermediates.dir}' \
             LIBRARY_SEARCH_PATHS='${ios.simulator.build.dir}' -destination OS=${module.sdk.version},name=iPad \
             -destination-timeout=10 -configuration Debug > ${reports.dir}/tests/test-results.txt
-            xcpretty -c ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
+            xcpretty ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
         </echo>
         <chmod perm="+x" file="${temp.dir}/runTests.sh"/>
         <exec executable="${temp.dir}/runTests.sh" failonerror="true" failifexecutionfails="true"/>
