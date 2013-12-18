@@ -1,13 +1,11 @@
 #!/bin/bash
 
 SCRIPTS_DIR="$(cd $(dirname "$0") && pwd)"
-TESTS_DIR="${SCRIPTS_DIR}/../Tests"
-PROJECT_DIR="${PROJECT_DIR:-${TESTS_DIR}}" # set if not already set by Xcode as part of build process.
-
-PODS="${PROJECT_DIR}/Pods"
-REPO_ROOT="${PROJECT_DIR}/.."
+REPO_ROOT="${SCRIPTS_DIR}/.."
+TESTS_DIR="${REPO_ROOT}/Tests"
+PODS="${TESTS_DIR}/Pods"
 SOURCE="${REPO_ROOT}/Source"
-CHANGED_SOURCE_FILES="$(find "$SOURCE" \! -path "*xcuserdata*" \! -path "*.git" -newerBm "$PODS/")"
+
 CHECKSUM="$(find "$SOURCE" \! -path "*xcuserdata*" \! -path "*.git" | openssl sha1)"
 CHECKSUM_FILE="${REPO_ROOT}/.scripts/pod-update-checksum.txt"
 LAST_CHECKSUM="$(cat "$CHECKSUM_FILE")"
@@ -52,7 +50,7 @@ if [ "$LAST_CHECKSUM" != "$CHECKSUM" ]; then
     
   fi
 
-  RVM_COMMAND="$RVM all in $PROJECT_DIR do $COMMAND"
+  RVM_COMMAND="$RVM all in $TESTS_DIR do $COMMAND"
   echo "Running ${RVM_COMMAND}"
   $RVM_COMMAND
 
