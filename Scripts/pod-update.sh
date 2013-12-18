@@ -1,16 +1,30 @@
 #!/bin/bash
 
+SCRIPTS_DIR="$(cd $(dirname "$0") && pwd)"
+TESTS_DIR="${SCRIPTS_DIR}/../Tests"
+PROJECT_DIR="${PROJECT_DIR:-${TESTS_DIR}}" # set if not already set by Xcode as part of build process.
+
 PODS="${PROJECT_DIR}/Pods"
 REPO_ROOT="${PROJECT_DIR}/.."
 SOURCE="${REPO_ROOT}/Source"
 CHANGED_SOURCE_FILES="$(find "$SOURCE" \! -path "*xcuserdata*" \! -path "*.git" -newerBm "$PODS/")"
+CHECKSUM="$(find "$SOURCE" \! -path "*xcuserdata*" \! -path "*.git" | openssl sha1)"
+CHECKSUM_FILE="${REPO_ROOT}/.scripts/pod-update-checksum.txt"
+LAST_CHECKSUM="$(cat "$CHECKSUM_FILE")"
 COMMAND="pod update"
 
-if [ -n "$CHANGED_SOURCE_FILES" ]; then
-  echo "Running ${COMMAND}..."
-  echo "Because of changed source files:"
-  echo "$CHANGED_SOURCE_FILES"
-  echo -e "\n"
+cd "$TESTS_DIR"
+
+update_checksum() 
+{
+  echo "$CHECKSUM" > "$CHECKSUM_FILE"
+}
+
+# echo "LAST_CHECKSUM is: $LAST_CHECKSUM"
+# echo "CURRENT CHECKSUM is: $CHECKSUM"
+
+if [ "$LAST_CHECKSUM" != "$CHECKSUM" ]; then
+  echo "Running ${COMMAND}, as source files have changed!"
 
   RVM="${HOME}/.rvm/bin/rvm"
   if [ ! -x $RVM ]
@@ -28,6 +42,7 @@ if [ -n "$CHANGED_SOURCE_FILES" ]; then
      if [ $? -eq 0 ]
     then
      echo "${COMMAND} succeeded."
+     update_checksum
      exit 0
      else
        echo "${COMMAND} failed."
@@ -44,6 +59,7 @@ if [ -n "$CHANGED_SOURCE_FILES" ]; then
   if [ $? -eq 0 ]
   then
     echo "${COMMAND} succeeded."
+    update_checksum
   else
     echo "${COMMAND} failed."
     exit 1
@@ -51,6 +67,7 @@ if [ -n "$CHANGED_SOURCE_FILES" ]; then
 else
   echo "Not running $COMMAND as source files have not changed."
 fi
+
 
 exit 0
 
