@@ -114,7 +114,7 @@
         <mkdir dir="${reports.dir}/tests"/>
         <echo file="${temp.dir}/runTests.sh">
             #!/bin/sh
-            xcodebuild -workspace ${module.name}.xcworkspace test -scheme ${library.ios.name} \
+            xcodebuild -workspace ${module.name}.xcworkspace test -scheme ${library.ios.name} CONFIGURATION_TEMP_DIR='${intermediates.dir}' \
             -destination OS=${module.sdk.version},name=iPad -destination-timeout=10 -configuration Debug > ${reports.dir}/tests/test-results.txt
             xcpretty ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
         </echo>
