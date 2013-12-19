@@ -316,7 +316,7 @@
             set -e # fail script if any commands fail
 
             cd ${basedir}
-            find Tests/ -type f -exec git update-index --assume-unchanged '{}' \; >> ${temp.dir}/index.out 2>&;1
+            find Tests/ -type f -exec git update-index --assume-unchanged '{}' \; &> ${temp.dir}/index.out
             cp -fr ${basedir}/schema ${reports.dir}
             git remote add origin git@github.com:typhoon-framework/Typhoon.git || true # allow `remote add` to fail without failing script
             git remote set-url origin git@github.com:typhoon-framework/Typhoon.git
