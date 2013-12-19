@@ -337,7 +337,7 @@
             cp -fr ${reports.dir}/schema ./schema
         </echo>
         <chmod perm="+x" file="${dry.run.site.script}"/>
-        <exec executable="${dry.run.site.script}" failonerror="true" failifexecutionfails="true">
+        <exec executable="${dry.run.site.script}" failonerror="true" failifexecutionfails="true" outputproperty="publish.out" errorproperty="error.out">
             <env key="PATH" value="${tools.paths}"/>
         </exec>
     </target>
