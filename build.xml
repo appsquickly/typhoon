@@ -126,7 +126,7 @@
     <target name="__build.library.ios.simulator">
         <echo file="${temp.dir}/runTests.sh">
             #!/bin/sh
-            xcodebuild -destination OS=${module.sdk.version},name=iPhone -workspace ${workspace} -scheme '${library.ios.scheme}' \
+            xcodebuild -destination OS=${module.sdk.version},name=iPhone -workspace ${workspace} -scheme '${library.ios.name}' \
             -destination-timeout=10 -configuration Debug > ${reports.dir}/tests/test-results.txt
             xcpretty ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
         </echo>
@@ -142,7 +142,7 @@
 
         <echo file="${temp.dir}/runTests.sh">
             #!/bin/sh
-            xcodebuild -workspace ${workspace} test -scheme '${tests.ios.library.scheme.name}' \
+            xcodebuild -workspace ${workspace} test -scheme '${library.ios.name}' \
             CONFIGURATION_BUILD_DIR='${ios.simulator.build.dir}' CONFIGURATION_TEMP_DIR='${intermediates.dir}' \
             LIBRARY_SEARCH_PATHS='${ios.simulator.build.dir}' -destination OS=${module.sdk.version},name=iPad \
             -destination-timeout=10 -configuration Debug > ${reports.dir}/tests/test-results.txt
@@ -359,10 +359,10 @@
     <property name="library.ios.built.product.name" value="lib${library.ios.name}.a"/>
     <target name="--library.ios.build.universal">
         <exec executable="${xcodebuild}" failonerror="true">
-            <arg line="CONFIGURATION_BUILD_DIR='${temp.dir}/simulator' CONFIGURATION_TEMP_DIR='${intermediates.dir}/simulator' -configuration Debug ONLY_ACTIVE_ARCH=NO -sdk iphonesimulator${module.sdk.version} -arch i386 -workspace ${workspace} -scheme '${library.ios.scheme}'"/>
+            <arg line="CONFIGURATION_BUILD_DIR='${temp.dir}/simulator' CONFIGURATION_TEMP_DIR='${intermediates.dir}/simulator' -configuration Debug ONLY_ACTIVE_ARCH=NO -sdk iphonesimulator${module.sdk.version} -arch i386 -workspace ${workspace} -scheme '${library.ios.name}'"/>
         </exec>
         <exec executable="${xcodebuild}" failonerror="true">
-            <arg line="CONFIGURATION_BUILD_DIR='${temp.dir}/device' CONFIGURATION_TEMP_DIR='${intermediates.dir}/device' -configuration Debug ONLY_ACTIVE_ARCH=NO -sdk iphoneos${module.sdk.version} -arch armv7 -workspace ${workspace} -scheme '${library.ios.scheme}'"/>
+            <arg line="CONFIGURATION_BUILD_DIR='${temp.dir}/device' CONFIGURATION_TEMP_DIR='${intermediates.dir}/device' -configuration Debug ONLY_ACTIVE_ARCH=NO -sdk iphoneos${module.sdk.version} -arch armv7 -workspace ${workspace} -scheme '${library.ios.name}'"/>
         </exec>
 
         <echo file="${temp.dir}/lipo.sh">
@@ -391,7 +391,7 @@
     <property name="library.osx.built.product.name" value="lib${library.osx.name}.a"/>
     <target name="--library.build.osx">
         <exec executable="xcodebuild" failonerror="true">
-            <arg line="CONFIGURATION_BUILD_DIR='${temp.dir}/osx' CONFIGURATION_TEMP_DIR='${intermediates.dir}/osx' -workspace ${workspace} -scheme ${library.osx.scheme} -sdk macosx${module.osx.sdk.version}"/>
+            <arg line="CONFIGURATION_BUILD_DIR='${temp.dir}/osx' CONFIGURATION_TEMP_DIR='${intermediates.dir}/osx' -workspace ${workspace} -scheme ${library.osx.name} -sdk macosx${module.osx.sdk.version}"/>
         </exec>
 
         <copy todir="${target.dir}/osx/${library.osx.built.product.name}">
