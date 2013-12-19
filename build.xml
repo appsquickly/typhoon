@@ -67,7 +67,7 @@
      generate code coverage by linking the library test target to the universal library; this doesn't work. -->
     <target name="__shouldbeprivate__coverage" depends="
         __build.library.ios.simulator,
-        --test.library,
+        --test.cocoapods,
         --test.generate.report,
         --test.evaluate,
         --assemble.coverage.data,
