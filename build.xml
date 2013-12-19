@@ -58,8 +58,8 @@
         --test.cocoapods,
         --test.generate.report,
         --test.evaluate,
-        --podspec.lint,
         --api.report,
+        --podspec.lint,
         --stamp.build.passing"/>
 
      <!-- Building from the command line when using schemes is tricky. Implicit dependencies between targets in different projects are not correctly handled when building with `xcodebuild`.
@@ -217,7 +217,7 @@
                 </chainedmapper>
             </mapper>
         </pathconvert>
-        <echo message="Coverage info files: ${gcno.list}"/>
+
         <copy todir="${temp.dir}/coverage-data" flatten="true">
             <fileset dir="${objects.normal.root}" includes="${gcno.list}"/>
         </copy>
@@ -229,7 +229,10 @@
                 </chainedmapper>
             </mapper>
         </pathconvert>
-        <echo message="Coverage data files: ${gcda.list}"/>
+
+        <!--<echo message="Coverage info files: ${gcno.list}"/>-->
+        <!--<echo message="Coverage data files: ${gcda.list}"/>-->
+        <!---->
         <copy todir="${temp.dir}/coverage-data" flatten="true">
             <fileset dir="${objects.normal.root}" includes="${gcda.list}"/>
         </copy>
@@ -248,7 +251,7 @@
             lcov -r ${temp.dir}/${module.name}-temp.info ${framework.symbols} > ${temp.dir}/${module.name}.info
         </echo>
         <chmod perm="+x" file="${temp.dir}/geninfo.sh"/>
-        <exec executable="${temp.dir}/geninfo.sh" failonerror="true" failifexecutionfails="true"/>
+        <exec executable="${temp.dir}/geninfo.sh" failonerror="true" failifexecutionfails="true" outputproperty="geninfo.out" errorproperty="geninfo.error"/>
 
         <echo file="${temp.dir}/genhtml.sh">
             #!/bin/bash
@@ -258,9 +261,13 @@
             --prefix ${basedir} ${temp.dir}/${module.name}.info
         </echo>
         <chmod perm="+x" file="${temp.dir}/genhtml.sh"/>
-        <exec executable="${temp.dir}/genhtml.sh" failonerror="true" failifexecutionfails="true"/>
+        <exec executable="${temp.dir}/genhtml.sh" failonerror="true" failifexecutionfails="true" outputproperty="genhtml.out" errorproperty="genhtml.error"/>
+
+        <exec executable="lcov">
+            <arg line="--summary ./build/temp/${module.name}.info"/>
+        </exec>
+
     </target>
-    <property name="framework.symbols" value="UIGeometry.h CGGeometry.h NSRange.h once.h"/>
 
 
     <target name="--api.report">
@@ -274,9 +281,10 @@
         <pathconvert pathsep=" " property="doc.files.list" refid="headers">
             <map from='${source.main.dir}' to='"${source.main.dir}"'/>
         </pathconvert>
-        <echo message="Documenting: ${doc.files.list}"/>
 
-        <exec executable="appledoc">
+        <!--<echo message="Documenting: ${doc.files.list}"/>-->
+
+        <exec executable="appledoc" outputproperty="appledoc.out" errorproperty="appledoc.error">
             <env key="PATH" value="${tools.paths}"/>
             <arg line="--project-name=${module.name}"/>
             <arg line="--project-company=${module.company}"/>
@@ -290,7 +298,7 @@
         <!-- Don't leave it lying around -->
         <delete file="${basedir}/docset-installed.txt"/>
 
-        <exec executable="doxygen"/>
+        <exec executable="doxygen" outputproperty="doxygen.out" errorproperty="doxygen.error"/>
 
         <mkdir dir="${reports.dir}/api/images"/>
         <copy todir="${reports.dir}/api/images">
