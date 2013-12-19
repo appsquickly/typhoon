@@ -329,12 +329,12 @@
             rsync -aq ${reports.dir}/coverage/ ./coverage
             git add --all --ignore-removal ./coverage
             rm -fr ./api
-            rsync -aq -fr ${reports.dir}/api ./api
+            rsync -aq ${reports.dir}/api ./api
             git add --all --ignore-removal api
             rm -fr ./test-results
-            rsync -aq -fr ${reports.dir}/test-results/ ./test-results
+            rsync -aq ${reports.dir}/test-results/ ./test-results
             git add --all --ignore-removal ./test-results
-            rsync -aq -fr ${reports.dir}/schema ./schema
+            rsync -aq ${reports.dir}/schema ./schema
         </echo>
         <chmod perm="+x" file="${dry.run.site.script}"/>
         <exec executable="${dry.run.site.script}" failonerror="true" failifexecutionfails="true">
