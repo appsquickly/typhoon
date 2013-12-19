@@ -334,7 +334,7 @@
             cp -fr ${reports.dir}/api ./api
             git add --all --ignore-removal api
             rm -fr ./test-results
-            cp -fr${reports.dir}/test-results/ ./test-results
+            cp -fr ${reports.dir}/test-results/ ./test-results
             git add --all --ignore-removal ./test-results
             cp -fr ${reports.dir}/schema ./schema
             ]]>
