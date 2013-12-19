@@ -328,15 +328,15 @@
             cp -fr ${reports.dir}/build-status/build-status.png ./build-status/build-status.png
             rm -fr ./coverage
             mkdir -p ${reports.dir}/coverage
-            rsync -aq ${reports.dir}/coverage/ ./coverage
+            cp -fr ${reports.dir}/coverage/ ./coverage
             git add --all --ignore-removal ./coverage
             rm -fr ./api
-            rsync -aq ${reports.dir}/api ./api
+            cp -fr ${reports.dir}/api ./api
             git add --all --ignore-removal api
             rm -fr ./test-results
-            rsync -aq ${reports.dir}/test-results/ ./test-results
+            cp -fr${reports.dir}/test-results/ ./test-results
             git add --all --ignore-removal ./test-results
-            rsync -aq ${reports.dir}/schema ./schema
+            cp -fr ${reports.dir}/schema ./schema
             ]]>
         </echo>
         <chmod perm="+x" file="${dry.run.site.script}"/>
