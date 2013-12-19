@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">144</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">145</td>
-            <td class="headerCovTableEntryHi">99.3 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -80,13 +80,13 @@
 <span class="lineNum">      22 </span>            : static NSString *const kScoreKey = @&quot;kScoreKey&quot;;
 <span class="lineNum">      23 </span>            : 
 <span class="lineNum">      24 </span>            : @interface TyphoonAssistedFactoryCreatorImplicitMethod : NSObject
-<span class="lineNum">      25 </span><span class="lineCov">         74 : @property (nonatomic, assign) SEL methodName;</span>
-<span class="lineNum">      26 </span><span class="lineCov">        177 : @property (nonatomic, copy) NSArray *methodParameterNames;</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : @property (nonatomic, assign) SEL methodName;</span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 : @property (nonatomic, copy) NSArray *methodParameterNames;</span>
 <span class="lineNum">      27 </span>            : @end
 <span class="lineNum">      28 </span>            : 
 <span class="lineNum">      29 </span>            : @interface TyphoonAssistedFactoryCreatorImplicitFactoryMethod : TyphoonAssistedFactoryCreatorImplicitMethod
-<span class="lineNum">      30 </span><span class="lineCov">         26 : @property (nonatomic, copy) NSArray *preferredInitializers;</span>
-<span class="lineNum">      31 </span><span class="lineCov">         32 : @property (nonatomic, strong) TyphoonAssistedFactoryCreatorImplicitMethod *selectedInitializer;</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 : @property (nonatomic, copy) NSArray *preferredInitializers;</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 : @property (nonatomic, strong) TyphoonAssistedFactoryCreatorImplicitMethod *selectedInitializer;</span>
 <span class="lineNum">      32 </span>            : @end
 <span class="lineNum">      33 </span>            : 
 <span class="lineNum">      34 </span><span class="lineNoCov">          0 : @implementation TyphoonAssistedFactoryCreatorImplicit</span>
@@ -97,124 +97,124 @@
 <span class="lineNum">      39 </span>            :     Class _returnType;
 <span class="lineNum">      40 </span>            : }
 <span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span><span class="lineCov">         10 : - (instancetype)initWithProtocol:(Protocol *)protocol returns:(Class)returnType</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : - (instancetype)initWithProtocol:(Protocol *)protocol returns:(Class)returnType</span>
 <span class="lineNum">      43 </span>            : {
-<span class="lineNum">      44 </span><span class="lineCov">         10 :     return [super initWithProtocol:protocol factoryDefinitionProvider:^{</span>
-<span class="lineNum">      45 </span><span class="lineCov">          5 :         _returnType = returnType;</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     return [super initWithProtocol:protocol factoryDefinitionProvider:^{</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :         _returnType = returnType;</span>
 <span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span><span class="lineCov">          5 :         NSArray *factoryMethods = [self protocolFactoryMethods];</span>
-<span class="lineNum">      48 </span><span class="lineCov">          5 :         NSArray *initializerMethods = [self returnTypeInitializerMethods];</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :         NSArray *factoryMethods = [self protocolFactoryMethods];</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :         NSArray *initializerMethods = [self returnTypeInitializerMethods];</span>
 <span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span><span class="lineCov">         26 :         for (id factoryMethod in factoryMethods) {</span>
-<span class="lineNum">      51 </span><span class="lineCov">          8 :             [self calculatePreferredInitializersFor:factoryMethod withInitializers:initializerMethods];</span>
-<span class="lineNum">      52 </span><span class="lineCov">         26 :         }</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :         for (id factoryMethod in factoryMethods) {</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :             [self calculatePreferredInitializersFor:factoryMethod withInitializers:initializerMethods];</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :         }</span>
 <span class="lineNum">      53 </span>            : 
-<span class="lineNum">      54 </span><span class="lineCov">          5 :         [self matchFactoryMethods:factoryMethods withInitializers:initializerMethods];</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :         [self matchFactoryMethods:factoryMethods withInitializers:initializerMethods];</span>
 <span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span><span class="lineCov">          5 :         TyphoonAssistedFactoryDefinition *factoryDefinition = [[TyphoonAssistedFactoryDefinition alloc] init];</span>
-<span class="lineNum">      57 </span><span class="lineCov">         34 :         for (TyphoonAssistedFactoryCreatorImplicitFactoryMethod *method in factoryMethods)</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :         TyphoonAssistedFactoryDefinition *factoryDefinition = [[TyphoonAssistedFactoryDefinition alloc] init];</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :         for (TyphoonAssistedFactoryCreatorImplicitFactoryMethod *method in factoryMethods)</span>
 <span class="lineNum">      58 </span>            :         {
 <span class="lineNum">      59 </span>            :             // Simple arrays will suffice... but being &quot;maps from this to that&quot;, I
 <span class="lineNum">      60 </span>            :             // find dictionaries more semantic.
-<span class="lineNum">      61 </span><span class="lineCov">         16 :             NSDictionary *argumentParameters = [self findMappingsFrom:method.selectedInitializer.methodParameterNames</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :             NSDictionary *argumentParameters = [self findMappingsFrom:method.selectedInitializer.methodParameterNames</span>
 <span class="lineNum">      62 </span>            :                                                                    to:method.methodParameterNames
-<span class="lineNum">      63 </span><span class="lineCov">          8 :                                                                except:nil];</span>
-<span class="lineNum">      64 </span><span class="lineCov">         16 :             NSDictionary *propertyParameters = [self findMappingsFrom:method.selectedInitializer.methodParameterNames</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :                                                                except:nil];</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :             NSDictionary *propertyParameters = [self findMappingsFrom:method.selectedInitializer.methodParameterNames</span>
 <span class="lineNum">      65 </span>            :                                                                    to:[self protocolPropertyNames]
-<span class="lineNum">      66 </span><span class="lineCov">          8 :                                                                except:method.methodParameterNames];</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :                                                                except:method.methodParameterNames];</span>
 <span class="lineNum">      67 </span>            : 
-<span class="lineNum">      68 </span><span class="lineCov">         44 :             [factoryDefinition factoryMethod:method.methodName returns:returnType initialization:^(TyphoonAssistedFactoryMethodInitializer *initializer) {</span>
-<span class="lineNum">      69 </span><span class="lineCov">          8 :                 initializer.selector = method.selectedInitializer.methodName;</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :             [factoryDefinition factoryMethod:method.methodName returns:returnType initialization:^(TyphoonAssistedFactoryMethodInitializer *initializer) {</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :                 initializer.selector = method.selectedInitializer.methodName;</span>
 <span class="lineNum">      70 </span>            : 
-<span class="lineNum">      71 </span><span class="lineCov">         22 :                 [propertyParameters enumerateKeysAndObjectsUsingBlock:^(NSString *parameterName, NSString *propertyName, BOOL *stop) {</span>
-<span class="lineNum">      72 </span><span class="lineCov">         14 :                     [initializer injectParameterNamed:parameterName withProperty:sel_getUid([propertyName UTF8String])];</span>
-<span class="lineNum">      73 </span><span class="lineCov">         14 :                 }];</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 :                 [propertyParameters enumerateKeysAndObjectsUsingBlock:^(NSString *parameterName, NSString *propertyName, BOOL *stop) {</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :                     [initializer injectParameterNamed:parameterName withProperty:sel_getUid([propertyName UTF8String])];</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :                 }];</span>
 <span class="lineNum">      74 </span>            : 
-<span class="lineNum">      75 </span><span class="lineCov">         22 :                 [argumentParameters enumerateKeysAndObjectsUsingBlock:^(NSString *parameterName, NSString *argumentName, BOOL *stop) {</span>
-<span class="lineNum">      76 </span><span class="lineCov">         14 :                     [initializer injectParameterNamed:parameterName withArgumentNamed:argumentName];</span>
-<span class="lineNum">      77 </span><span class="lineCov">         14 :                 }];</span>
-<span class="lineNum">      78 </span><span class="lineCov">          8 :             }];</span>
-<span class="lineNum">      79 </span><span class="lineCov">         26 :         }</span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 :                 [argumentParameters enumerateKeysAndObjectsUsingBlock:^(NSString *parameterName, NSString *argumentName, BOOL *stop) {</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 :                     [initializer injectParameterNamed:parameterName withArgumentNamed:argumentName];</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 :                 }];</span>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 :             }];</span>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 :         }</span>
 <span class="lineNum">      80 </span>            : 
-<span class="lineNum">      81 </span><span class="lineCov">          5 :         return factoryDefinition;</span>
-<span class="lineNum">      82 </span><span class="lineCov">         15 :     }];</span>
-<span class="lineNum">      83 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 :         return factoryDefinition;</span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      84 </span>            : 
-<span class="lineNum">      85 </span><span class="lineCov">          5 : - (NSArray *)protocolFactoryMethods</span>
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 : - (NSArray *)protocolFactoryMethods</span>
 <span class="lineNum">      86 </span>            : {
-<span class="lineNum">      87 </span><span class="lineCov">         15 :     NSMutableSet *propertyNames = [NSMutableSet set];</span>
-<span class="lineNum">      88 </span><span class="lineCov">         23 :     NSMutableSet *methodNames = [NSMutableSet set];</span>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 :     NSMutableSet *propertyNames = [NSMutableSet set];</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 :     NSMutableSet *methodNames = [NSMutableSet set];</span>
 <span class="lineNum">      89 </span>            : 
-<span class="lineNum">      90 </span><span class="lineCov">         23 :     TyphoonAssistedFactoryCreatorForEachMethodInProtocol(_protocol, ^(struct objc_method_description methodDescription) {</span>
-<span class="lineNum">      91 </span><span class="lineCov">         18 :         [methodNames addObject:NSStringFromSelector(methodDescription.name)];</span>
-<span class="lineNum">      92 </span><span class="lineCov">         18 :     });</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :     TyphoonAssistedFactoryCreatorForEachMethodInProtocol(_protocol, ^(struct objc_method_description methodDescription) {</span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 :         [methodNames addObject:NSStringFromSelector(methodDescription.name)];</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">      93 </span>            : 
-<span class="lineNum">      94 </span><span class="lineCov">         15 :     TyphoonAssistedFactoryCreatorForEachPropertyInProtocol(_protocol, ^(objc_property_t property) {</span>
-<span class="lineNum">      95 </span><span class="lineCov">         10 :         [propertyNames addObject:[NSString stringWithCString:property_getName(property) encoding:NSASCIIStringEncoding]];</span>
-<span class="lineNum">      96 </span><span class="lineCov">         10 :     });</span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :     TyphoonAssistedFactoryCreatorForEachPropertyInProtocol(_protocol, ^(objc_property_t property) {</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :         [propertyNames addObject:[NSString stringWithCString:property_getName(property) encoding:NSASCIIStringEncoding]];</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">      97 </span>            : 
-<span class="lineNum">      98 </span><span class="lineCov">          5 :     [methodNames minusSet:propertyNames];</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :     [methodNames minusSet:propertyNames];</span>
 <span class="lineNum">      99 </span>            : 
-<span class="lineNum">     100 </span><span class="lineCov">          5 :     NSMutableArray *factoryMethods = [NSMutableArray arrayWithCapacity:methodNames.count];</span>
-<span class="lineNum">     101 </span><span class="lineCov">         26 :     for (NSString *methodName in methodNames)</span>
+<span class="lineNum">     100 </span><span class="lineNoCov">          0 :     NSMutableArray *factoryMethods = [NSMutableArray arrayWithCapacity:methodNames.count];</span>
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 :     for (NSString *methodName in methodNames)</span>
 <span class="lineNum">     102 </span>            :     {
-<span class="lineNum">     103 </span><span class="lineCov">          8 :         TyphoonAssistedFactoryCreatorImplicitFactoryMethod *method = [[TyphoonAssistedFactoryCreatorImplicitFactoryMethod alloc] init];</span>
-<span class="lineNum">     104 </span><span class="lineCov">          8 :         method.methodName = NSSelectorFromString(methodName);</span>
-<span class="lineNum">     105 </span><span class="lineCov">          8 :         method.methodParameterNames = [self parameterNamesForSelector:method.methodName];</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 :         TyphoonAssistedFactoryCreatorImplicitFactoryMethod *method = [[TyphoonAssistedFactoryCreatorImplicitFactoryMethod alloc] init];</span>
+<span class="lineNum">     104 </span><span class="lineNoCov">          0 :         method.methodName = NSSelectorFromString(methodName);</span>
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :         method.methodParameterNames = [self parameterNamesForSelector:method.methodName];</span>
 <span class="lineNum">     106 </span>            : 
-<span class="lineNum">     107 </span><span class="lineCov">          8 :         [factoryMethods addObject:method];</span>
-<span class="lineNum">     108 </span><span class="lineCov">         26 :     }</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 :         [factoryMethods addObject:method];</span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     109 </span>            : 
-<span class="lineNum">     110 </span><span class="lineCov">          5 :     return [factoryMethods copy];</span>
-<span class="lineNum">     111 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 :     return [factoryMethods copy];</span>
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     112 </span>            : 
-<span class="lineNum">     113 </span><span class="lineCov">          5 : - (NSArray *)returnTypeInitializerMethods</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 : - (NSArray *)returnTypeInitializerMethods</span>
 <span class="lineNum">     114 </span>            : {
-<span class="lineNum">     115 </span><span class="lineCov">         55 :     NSMutableArray *initializerMethods = [NSMutableArray array];</span>
-<span class="lineNum">     116 </span><span class="lineCov">         55 :     TyphoonAssistedFactoryCreatorForEachMethodInClass(_returnType, ^(struct objc_method_description methodDescription) {</span>
-<span class="lineNum">     117 </span><span class="lineCov">         50 :         if ([NSStringFromSelector(methodDescription.name) hasPrefix:@&quot;initWith&quot;])</span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 :     NSMutableArray *initializerMethods = [NSMutableArray array];</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :     TyphoonAssistedFactoryCreatorForEachMethodInClass(_returnType, ^(struct objc_method_description methodDescription) {</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 :         if ([NSStringFromSelector(methodDescription.name) hasPrefix:@&quot;initWith&quot;])</span>
 <span class="lineNum">     118 </span>            :         {
-<span class="lineNum">     119 </span><span class="lineCov">         21 :             TyphoonAssistedFactoryCreatorImplicitMethod *method = [[TyphoonAssistedFactoryCreatorImplicitMethod alloc] init];</span>
-<span class="lineNum">     120 </span><span class="lineCov">         21 :             method.methodName = methodDescription.name;</span>
-<span class="lineNum">     121 </span><span class="lineCov">         21 :             method.methodParameterNames = [self parameterNamesForSelector:method.methodName];</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :             TyphoonAssistedFactoryCreatorImplicitMethod *method = [[TyphoonAssistedFactoryCreatorImplicitMethod alloc] init];</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 :             method.methodName = methodDescription.name;</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 :             method.methodParameterNames = [self parameterNamesForSelector:method.methodName];</span>
 <span class="lineNum">     122 </span>            : 
-<span class="lineNum">     123 </span><span class="lineCov">         21 :             [initializerMethods addObject:method];</span>
-<span class="lineNum">     124 </span><span class="lineCov">         21 :         }</span>
-<span class="lineNum">     125 </span><span class="lineCov">        100 :     });</span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 :             [initializerMethods addObject:method];</span>
+<span class="lineNum">     124 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     125 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">     126 </span>            : 
-<span class="lineNum">     127 </span><span class="lineCov">          5 :     return [initializerMethods copy];</span>
-<span class="lineNum">     128 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :     return [initializerMethods copy];</span>
+<span class="lineNum">     128 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     129 </span>            : 
-<span class="lineNum">     130 </span><span class="lineCov">          8 : - (void)calculatePreferredInitializersFor:(TyphoonAssistedFactoryCreatorImplicitFactoryMethod *)factoryMethod withInitializers:(NSArray *)initializerMethods</span>
+<span class="lineNum">     130 </span><span class="lineNoCov">          0 : - (void)calculatePreferredInitializersFor:(TyphoonAssistedFactoryCreatorImplicitFactoryMethod *)factoryMethod withInitializers:(NSArray *)initializerMethods</span>
 <span class="lineNum">     131 </span>            : {
-<span class="lineNum">     132 </span><span class="lineCov">          8 :     NSSet *factoryMethodParameters = [NSSet setWithArray:factoryMethod.methodParameterNames];</span>
-<span class="lineNum">     133 </span><span class="lineCov">          8 :     NSSet *protocolPropertyNames = [NSSet setWithArray:[self protocolPropertyNames]];</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 :     NSSet *factoryMethodParameters = [NSSet setWithArray:factoryMethod.methodParameterNames];</span>
+<span class="lineNum">     133 </span><span class="lineNoCov">          0 :     NSSet *protocolPropertyNames = [NSSet setWithArray:[self protocolPropertyNames]];</span>
 <span class="lineNum">     134 </span>            : 
-<span class="lineNum">     135 </span><span class="lineCov">          8 :     NSMutableArray *preferredInitializers = [NSMutableArray array];</span>
-<span class="lineNum">     136 </span><span class="lineCov">         88 :     for (TyphoonAssistedFactoryCreatorImplicitMethod *method in initializerMethods) {</span>
-<span class="lineNum">     137 </span><span class="lineCov">         36 :         NSMutableSet *commonArguments = [NSMutableSet setWithArray:method.methodParameterNames];</span>
-<span class="lineNum">     138 </span><span class="lineCov">         36 :         [commonArguments intersectSet:factoryMethodParameters];</span>
+<span class="lineNum">     135 </span><span class="lineNoCov">          0 :     NSMutableArray *preferredInitializers = [NSMutableArray array];</span>
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 :     for (TyphoonAssistedFactoryCreatorImplicitMethod *method in initializerMethods) {</span>
+<span class="lineNum">     137 </span><span class="lineNoCov">          0 :         NSMutableSet *commonArguments = [NSMutableSet setWithArray:method.methodParameterNames];</span>
+<span class="lineNum">     138 </span><span class="lineNoCov">          0 :         [commonArguments intersectSet:factoryMethodParameters];</span>
 <span class="lineNum">     139 </span>            : 
-<span class="lineNum">     140 </span><span class="lineCov">         36 :         NSMutableSet *commonProperties = [NSMutableSet setWithArray:method.methodParameterNames];</span>
-<span class="lineNum">     141 </span><span class="lineCov">         36 :         [commonProperties intersectSet:protocolPropertyNames];</span>
+<span class="lineNum">     140 </span><span class="lineNoCov">          0 :         NSMutableSet *commonProperties = [NSMutableSet setWithArray:method.methodParameterNames];</span>
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 :         [commonProperties intersectSet:protocolPropertyNames];</span>
 <span class="lineNum">     142 </span>            : 
-<span class="lineNum">     143 </span><span class="lineCov">         36 :         NSSet *coveredInitParameters = [commonArguments setByAddingObjectsFromSet:commonProperties];</span>
-<span class="lineNum">     144 </span><span class="lineCov">         36 :         NSUInteger numberOfArguments = method.methodParameterNames.count;</span>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 :         NSSet *coveredInitParameters = [commonArguments setByAddingObjectsFromSet:commonProperties];</span>
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :         NSUInteger numberOfArguments = method.methodParameterNames.count;</span>
 <span class="lineNum">     145 </span>            : 
-<span class="lineNum">     146 </span><span class="lineCov">         36 :         if (coveredInitParameters.count &gt;= numberOfArguments)</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :         if (coveredInitParameters.count &gt;= numberOfArguments)</span>
 <span class="lineNum">     147 </span>            :         {
 <span class="lineNum">     148 </span>            :             // If you have more than 100 arguments in your initializer... better
 <span class="lineNum">     149 </span>            :             // go back to the drawing board.
-<span class="lineNum">     150 </span><span class="lineCov">         23 :             [preferredInitializers addObject:@{kMethodKey: method,</span>
+<span class="lineNum">     150 </span><span class="lineNoCov">          0 :             [preferredInitializers addObject:@{kMethodKey: method,</span>
 <span class="lineNum">     151 </span>            :                                                kScoreKey: @(commonArguments.count * 100 + commonProperties.count)}];
-<span class="lineNum">     152 </span><span class="lineCov">         23 :         }</span>
-<span class="lineNum">     153 </span><span class="lineCov">         88 :     }</span>
+<span class="lineNum">     152 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     153 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     154 </span>            : 
-<span class="lineNum">     155 </span><span class="lineCov">          8 :     [preferredInitializers sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:kScoreKey ascending:NO]]];</span>
-<span class="lineNum">     156 </span><span class="lineCov">          8 :     factoryMethod.preferredInitializers = preferredInitializers;</span>
-<span class="lineNum">     157 </span><span class="lineCov">          8 : }</span>
+<span class="lineNum">     155 </span><span class="lineNoCov">          0 :     [preferredInitializers sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:kScoreKey ascending:NO]]];</span>
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 :     factoryMethod.preferredInitializers = preferredInitializers;</span>
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     158 </span>            : 
-<span class="lineNum">     159 </span><span class="lineCov">          5 : - (void)matchFactoryMethods:(NSArray *)factoryMethods withInitializers:(NSArray *)initializers</span>
+<span class="lineNum">     159 </span><span class="lineNoCov">          0 : - (void)matchFactoryMethods:(NSArray *)factoryMethods withInitializers:(NSArray *)initializers</span>
 <span class="lineNum">     160 </span>            : {
 <span class="lineNum">     161 </span>            :     // This method matches the factory method to the best initializer.
 <span class="lineNum">     162 </span>            :     // You can find all the information at http://en.wikipedia.org/wiki/Stable_marriage_problem
@@ -229,57 +229,57 @@
 <span class="lineNum">     171 </span>            :     // At the end all the factory methods should be matched with the best
 <span class="lineNum">     172 </span>            :     // initializer (not all the initializers needs to be matched).
 <span class="lineNum">     173 </span>            : 
-<span class="lineNum">     174 </span><span class="lineCov">          5 :     NSRange factoryMethodRange = NSMakeRange(0, factoryMethods.count);</span>
-<span class="lineNum">     175 </span><span class="lineCov">          5 :     NSMutableIndexSet *freeFactoryMethods = [NSMutableIndexSet indexSetWithIndexesInRange:factoryMethodRange];</span>
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 :     NSRange factoryMethodRange = NSMakeRange(0, factoryMethods.count);</span>
+<span class="lineNum">     175 </span><span class="lineNoCov">          0 :     NSMutableIndexSet *freeFactoryMethods = [NSMutableIndexSet indexSetWithIndexesInRange:factoryMethodRange];</span>
 <span class="lineNum">     176 </span>            :     // A NSMapTable will make this easier, but it is only supported from 10.5/6.0
-<span class="lineNum">     177 </span><span class="lineCov">          5 :     NSMutableDictionary *initializerCandidates = [NSMutableDictionary dictionaryWithCapacity:initializers.count];</span>
-<span class="lineNum">     178 </span><span class="lineCov">          5 :     NSMutableDictionary *initializerCandidatesInfo = [NSMutableDictionary dictionaryWithCapacity:initializers.count];</span>
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 :     NSMutableDictionary *initializerCandidates = [NSMutableDictionary dictionaryWithCapacity:initializers.count];</span>
+<span class="lineNum">     178 </span><span class="lineNoCov">          0 :     NSMutableDictionary *initializerCandidatesInfo = [NSMutableDictionary dictionaryWithCapacity:initializers.count];</span>
 <span class="lineNum">     179 </span>            : 
-<span class="lineNum">     180 </span><span class="lineCov">          5 :     NSMutableArray *factoryMethodsMaxProposalIndices = [NSMutableArray arrayWithCapacity:factoryMethods.count];</span>
-<span class="lineNum">     181 </span><span class="lineCov">         34 :     for (NSUInteger idx = 0; idx &lt; factoryMethods.count; idx++) factoryMethodsMaxProposalIndices[idx] = @0;</span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :     NSMutableArray *factoryMethodsMaxProposalIndices = [NSMutableArray arrayWithCapacity:factoryMethods.count];</span>
+<span class="lineNum">     181 </span><span class="lineNoCov">          0 :     for (NSUInteger idx = 0; idx &lt; factoryMethods.count; idx++) factoryMethodsMaxProposalIndices[idx] = @0;</span>
 <span class="lineNum">     182 </span>            : 
-<span class="lineNum">     183 </span><span class="lineCov">         19 :     while ([freeFactoryMethods intersectsIndexesInRange:factoryMethodRange])</span>
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 :     while ([freeFactoryMethods intersectsIndexesInRange:factoryMethodRange])</span>
 <span class="lineNum">     184 </span>            :     {
-<span class="lineNum">     185 </span><span class="lineCov">          9 :         NSUInteger factoryMethodIndex = [freeFactoryMethods firstIndex];</span>
-<span class="lineNum">     186 </span><span class="lineCov">          9 :         TyphoonAssistedFactoryCreatorImplicitFactoryMethod *factoryMethod = factoryMethods[factoryMethodIndex];</span>
-<span class="lineNum">     187 </span><span class="lineCov">          9 :         NSNumber *factoryMethodMaxProposalIndex = factoryMethodsMaxProposalIndices[factoryMethodIndex];</span>
-<span class="lineNum">     188 </span><span class="lineCov">          9 :         factoryMethodsMaxProposalIndices[factoryMethodIndex] = @([factoryMethodMaxProposalIndex unsignedIntegerValue] + 1);</span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 :         NSUInteger factoryMethodIndex = [freeFactoryMethods firstIndex];</span>
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 :         TyphoonAssistedFactoryCreatorImplicitFactoryMethod *factoryMethod = factoryMethods[factoryMethodIndex];</span>
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 :         NSNumber *factoryMethodMaxProposalIndex = factoryMethodsMaxProposalIndices[factoryMethodIndex];</span>
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 :         factoryMethodsMaxProposalIndices[factoryMethodIndex] = @([factoryMethodMaxProposalIndex unsignedIntegerValue] + 1);</span>
 <span class="lineNum">     189 </span>            : 
-<span class="lineNum">     190 </span><span class="lineCov">         36 :         NSAssert([factoryMethodMaxProposalIndex unsignedIntegerValue] &lt; factoryMethod.preferredInitializers.count,</span>
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 :         NSAssert([factoryMethodMaxProposalIndex unsignedIntegerValue] &lt; factoryMethod.preferredInitializers.count,</span>
 <span class="lineNum">     191 </span>            :                  @&quot;Could not find suitable candidate init for [%s %s] in %s&quot;,
 <span class="lineNum">     192 </span>            :                  protocol_getName(_protocol),
 <span class="lineNum">     193 </span>            :                  sel_getName(factoryMethod.methodName),
 <span class="lineNum">     194 </span>            :                  class_getName(_returnType));
 <span class="lineNum">     195 </span>            : 
-<span class="lineNum">     196 </span><span class="lineCov">          9 :         NSDictionary *preferredInitializer = factoryMethod.preferredInitializers[[factoryMethodMaxProposalIndex unsignedIntegerValue]];</span>
-<span class="lineNum">     197 </span><span class="lineCov">          9 :         TyphoonAssistedFactoryCreatorImplicitMethod *initializer = preferredInitializer[kMethodKey];</span>
-<span class="lineNum">     198 </span><span class="lineCov">          9 :         NSUInteger initializerIndex = [initializers indexOfObject:initializer];</span>
-<span class="lineNum">     199 </span><span class="lineCov">          9 :         NSNumber *candidateIndex = initializerCandidates[@(initializerIndex)];</span>
-<span class="lineNum">     200 </span><span class="lineCov">          9 :         if (!candidateIndex)</span>
+<span class="lineNum">     196 </span><span class="lineNoCov">          0 :         NSDictionary *preferredInitializer = factoryMethod.preferredInitializers[[factoryMethodMaxProposalIndex unsignedIntegerValue]];</span>
+<span class="lineNum">     197 </span><span class="lineNoCov">          0 :         TyphoonAssistedFactoryCreatorImplicitMethod *initializer = preferredInitializer[kMethodKey];</span>
+<span class="lineNum">     198 </span><span class="lineNoCov">          0 :         NSUInteger initializerIndex = [initializers indexOfObject:initializer];</span>
+<span class="lineNum">     199 </span><span class="lineNoCov">          0 :         NSNumber *candidateIndex = initializerCandidates[@(initializerIndex)];</span>
+<span class="lineNum">     200 </span><span class="lineNoCov">          0 :         if (!candidateIndex)</span>
 <span class="lineNum">     201 </span>            :         {
-<span class="lineNum">     202 </span><span class="lineCov">          8 :             initializerCandidates[@(initializerIndex)] = @(factoryMethodIndex);</span>
-<span class="lineNum">     203 </span><span class="lineCov">          8 :             initializerCandidatesInfo[@(initializerIndex)] = preferredInitializer;</span>
-<span class="lineNum">     204 </span><span class="lineCov">          8 :             [freeFactoryMethods removeIndex:factoryMethodIndex];</span>
-<span class="lineNum">     205 </span><span class="lineCov">          8 :         }</span>
+<span class="lineNum">     202 </span><span class="lineNoCov">          0 :             initializerCandidates[@(initializerIndex)] = @(factoryMethodIndex);</span>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 :             initializerCandidatesInfo[@(initializerIndex)] = preferredInitializer;</span>
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 :             [freeFactoryMethods removeIndex:factoryMethodIndex];</span>
+<span class="lineNum">     205 </span><span class="lineNoCov">          0 :         }</span>
 <span class="lineNum">     206 </span>            :         else
 <span class="lineNum">     207 </span>            :         {
-<span class="lineNum">     208 </span><span class="lineCov">          1 :             NSDictionary *previousPreferredInitializer = initializerCandidatesInfo[@(initializerIndex)];</span>
+<span class="lineNum">     208 </span><span class="lineNoCov">          0 :             NSDictionary *previousPreferredInitializer = initializerCandidatesInfo[@(initializerIndex)];</span>
 <span class="lineNum">     209 </span>            : 
-<span class="lineNum">     210 </span><span class="lineCov">          1 :             if ([preferredInitializer[kScoreKey] integerValue] &gt; [previousPreferredInitializer[kScoreKey] integerValue])</span>
+<span class="lineNum">     210 </span><span class="lineNoCov">          0 :             if ([preferredInitializer[kScoreKey] integerValue] &gt; [previousPreferredInitializer[kScoreKey] integerValue])</span>
 <span class="lineNum">     211 </span>            :             {
-<span class="lineNum">     212 </span><span class="lineCov">          1 :                 [freeFactoryMethods addIndex:[candidateIndex unsignedIntegerValue]];</span>
-<span class="lineNum">     213 </span><span class="lineCov">          1 :                 initializerCandidates[@(initializerIndex)] = @(factoryMethodIndex);</span>
-<span class="lineNum">     214 </span><span class="lineCov">          1 :                 initializerCandidatesInfo[@(initializerIndex)] = preferredInitializer;</span>
-<span class="lineNum">     215 </span><span class="lineCov">          1 :                 [freeFactoryMethods removeIndex:factoryMethodIndex];</span>
-<span class="lineNum">     216 </span><span class="lineCov">          1 :             }</span>
-<span class="lineNum">     217 </span><span class="lineCov">          1 :         }</span>
-<span class="lineNum">     218 </span><span class="lineCov">          9 :     }</span>
+<span class="lineNum">     212 </span><span class="lineNoCov">          0 :                 [freeFactoryMethods addIndex:[candidateIndex unsignedIntegerValue]];</span>
+<span class="lineNum">     213 </span><span class="lineNoCov">          0 :                 initializerCandidates[@(initializerIndex)] = @(factoryMethodIndex);</span>
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 :                 initializerCandidatesInfo[@(initializerIndex)] = preferredInitializer;</span>
+<span class="lineNum">     215 </span><span class="lineNoCov">          0 :                 [freeFactoryMethods removeIndex:factoryMethodIndex];</span>
+<span class="lineNum">     216 </span><span class="lineNoCov">          0 :             }</span>
+<span class="lineNum">     217 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     218 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     219 </span>            : 
-<span class="lineNum">     220 </span><span class="lineCov">         26 :     for (NSNumber *initializerIndex in initializerCandidates)</span>
+<span class="lineNum">     220 </span><span class="lineNoCov">          0 :     for (NSNumber *initializerIndex in initializerCandidates)</span>
 <span class="lineNum">     221 </span>            :     {
-<span class="lineNum">     222 </span><span class="lineCov">          8 :         NSNumber *factoryMethodIndex = initializerCandidates[initializerIndex];</span>
-<span class="lineNum">     223 </span><span class="lineCov">          8 :         TyphoonAssistedFactoryCreatorImplicitMethod *initializer = initializers[[initializerIndex unsignedIntegerValue]];</span>
-<span class="lineNum">     224 </span><span class="lineCov">          8 :         TyphoonAssistedFactoryCreatorImplicitFactoryMethod *factoryMethod = factoryMethods[[factoryMethodIndex unsignedIntegerValue]];</span>
+<span class="lineNum">     222 </span><span class="lineNoCov">          0 :         NSNumber *factoryMethodIndex = initializerCandidates[initializerIndex];</span>
+<span class="lineNum">     223 </span><span class="lineNoCov">          0 :         TyphoonAssistedFactoryCreatorImplicitMethod *initializer = initializers[[initializerIndex unsignedIntegerValue]];</span>
+<span class="lineNum">     224 </span><span class="lineNoCov">          0 :         TyphoonAssistedFactoryCreatorImplicitFactoryMethod *factoryMethod = factoryMethods[[factoryMethodIndex unsignedIntegerValue]];</span>
 <span class="lineNum">     225 </span>            : 
 <span class="lineNum">     226 </span>            :         LogTrace(@&quot;Factory Provider: found candidate: [%s %s] --&gt; [%s %s]&quot;,
 <span class="lineNum">     227 </span>            :                  protocol_getName(_protocol),
@@ -287,50 +287,50 @@
 <span class="lineNum">     229 </span>            :                  class_getName(_returnType),
 <span class="lineNum">     230 </span>            :                  sel_getName(initializer.methodName));
 <span class="lineNum">     231 </span>            : 
-<span class="lineNum">     232 </span><span class="lineCov">          8 :         factoryMethod.selectedInitializer = initializer;</span>
-<span class="lineNum">     233 </span><span class="lineCov">         26 :     }</span>
-<span class="lineNum">     234 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">     232 </span><span class="lineNoCov">          0 :         factoryMethod.selectedInitializer = initializer;</span>
+<span class="lineNum">     233 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     234 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     235 </span>            : 
-<span class="lineNum">     236 </span><span class="lineCov">         16 : - (NSArray *)protocolPropertyNames</span>
+<span class="lineNum">     236 </span><span class="lineNoCov">          0 : - (NSArray *)protocolPropertyNames</span>
 <span class="lineNum">     237 </span>            : {
-<span class="lineNum">     238 </span><span class="lineCov">         16 :     if (_procotolPropertyNames == nil)</span>
+<span class="lineNum">     238 </span><span class="lineNoCov">          0 :     if (_procotolPropertyNames == nil)</span>
 <span class="lineNum">     239 </span>            :     {
-<span class="lineNum">     240 </span><span class="lineCov">          5 :         unsigned int count= 0;</span>
-<span class="lineNum">     241 </span><span class="lineCov">          5 :         objc_property_t *properties = protocol_copyPropertyList(_protocol, &amp;count);</span>
-<span class="lineNum">     242 </span><span class="lineCov">          5 :         NSMutableArray *names = [NSMutableArray arrayWithCapacity:count];</span>
+<span class="lineNum">     240 </span><span class="lineNoCov">          0 :         unsigned int count= 0;</span>
+<span class="lineNum">     241 </span><span class="lineNoCov">          0 :         objc_property_t *properties = protocol_copyPropertyList(_protocol, &amp;count);</span>
+<span class="lineNum">     242 </span><span class="lineNoCov">          0 :         NSMutableArray *names = [NSMutableArray arrayWithCapacity:count];</span>
 <span class="lineNum">     243 </span>            : 
-<span class="lineNum">     244 </span><span class="lineCov">         30 :         for (unsigned int idx = 0; idx &lt; count; idx++) {</span>
-<span class="lineNum">     245 </span><span class="lineCov">         10 :             [names addObject:[NSString stringWithUTF8String:property_getName(properties[idx])]];</span>
-<span class="lineNum">     246 </span><span class="lineCov">         10 :         }</span>
-<span class="lineNum">     247 </span><span class="lineCov">          5 :         free(properties);</span>
+<span class="lineNum">     244 </span><span class="lineNoCov">          0 :         for (unsigned int idx = 0; idx &lt; count; idx++) {</span>
+<span class="lineNum">     245 </span><span class="lineNoCov">          0 :             [names addObject:[NSString stringWithUTF8String:property_getName(properties[idx])]];</span>
+<span class="lineNum">     246 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     247 </span><span class="lineNoCov">          0 :         free(properties);</span>
 <span class="lineNum">     248 </span>            : 
-<span class="lineNum">     249 </span><span class="lineCov">          5 :         _procotolPropertyNames = [names copy];</span>
-<span class="lineNum">     250 </span><span class="lineCov">          5 :     }</span>
+<span class="lineNum">     249 </span><span class="lineNoCov">          0 :         _procotolPropertyNames = [names copy];</span>
+<span class="lineNum">     250 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     251 </span>            : 
-<span class="lineNum">     252 </span><span class="lineCov">         16 :     return _procotolPropertyNames;</span>
-<span class="lineNum">     253 </span><span class="lineCov">         16 : }</span>
+<span class="lineNum">     252 </span><span class="lineNoCov">          0 :     return _procotolPropertyNames;</span>
+<span class="lineNum">     253 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     254 </span>            : 
-<span class="lineNum">     255 </span><span class="lineCov">         16 : - (NSDictionary *)findMappingsFrom:(NSArray *)fromNames to:(NSArray *)toNames except:(NSArray *)exceptNamesOrNil</span>
+<span class="lineNum">     255 </span><span class="lineNoCov">          0 : - (NSDictionary *)findMappingsFrom:(NSArray *)fromNames to:(NSArray *)toNames except:(NSArray *)exceptNamesOrNil</span>
 <span class="lineNum">     256 </span>            : {
-<span class="lineNum">     257 </span><span class="lineCov">         16 :     NSMutableDictionary *mappings = [NSMutableDictionary dictionary];</span>
-<span class="lineNum">     258 </span><span class="lineCov">         56 :     exceptNamesOrNil = exceptNamesOrNil ?: [NSArray array];</span>
+<span class="lineNum">     257 </span><span class="lineNoCov">          0 :     NSMutableDictionary *mappings = [NSMutableDictionary dictionary];</span>
+<span class="lineNum">     258 </span><span class="lineNoCov">          0 :     exceptNamesOrNil = exceptNamesOrNil ?: [NSArray array];</span>
 <span class="lineNum">     259 </span>            : 
-<span class="lineNum">     260 </span><span class="lineCov">        144 :     for (NSString *name in fromNames) {</span>
-<span class="lineNum">     261 </span><span class="lineCov">         85 :         if ([toNames containsObject:name] &amp;&amp; ![exceptNamesOrNil containsObject:name])</span>
+<span class="lineNum">     260 </span><span class="lineNoCov">          0 :     for (NSString *name in fromNames) {</span>
+<span class="lineNum">     261 </span><span class="lineNoCov">          0 :         if ([toNames containsObject:name] &amp;&amp; ![exceptNamesOrNil containsObject:name])</span>
 <span class="lineNum">     262 </span>            :         {
-<span class="lineNum">     263 </span><span class="lineCov">         28 :             mappings[name] = name;</span>
-<span class="lineNum">     264 </span><span class="lineCov">         28 :         }</span>
-<span class="lineNum">     265 </span><span class="lineCov">        144 :     }</span>
+<span class="lineNum">     263 </span><span class="lineNoCov">          0 :             mappings[name] = name;</span>
+<span class="lineNum">     264 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     265 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     266 </span>            : 
-<span class="lineNum">     267 </span><span class="lineCov">         16 :     return mappings;</span>
-<span class="lineNum">     268 </span><span class="lineCov">         16 : }</span>
+<span class="lineNum">     267 </span><span class="lineNoCov">          0 :     return mappings;</span>
+<span class="lineNum">     268 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     269 </span>            : 
 <span class="lineNum">     270 </span>            : @end
 <span class="lineNum">     271 </span>            : 
-<span class="lineNum">     272 </span><span class="lineCov">         29 : @implementation TyphoonAssistedFactoryCreatorImplicitMethod</span>
+<span class="lineNum">     272 </span><span class="lineNoCov">          0 : @implementation TyphoonAssistedFactoryCreatorImplicitMethod</span>
 <span class="lineNum">     273 </span>            : @end
 <span class="lineNum">     274 </span>            : 
-<span class="lineNum">     275 </span><span class="lineCov">          8 : @implementation TyphoonAssistedFactoryCreatorImplicitFactoryMethod</span>
+<span class="lineNum">     275 </span><span class="lineNoCov">          0 : @implementation TyphoonAssistedFactoryCreatorImplicitFactoryMethod</span>
 <span class="lineNum">     276 </span>            : @end
 <span class="lineNum">     277 </span>            : 
 </pre>

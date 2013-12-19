@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -78,18 +78,18 @@
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span>            : @implementation TyphoonUIColorTypeConverter
 <span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineCov">          1 : - (id)supportedType</span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : - (id)supportedType</span>
 <span class="lineNum">      24 </span>            : {
-<span class="lineNum">      25 </span><span class="lineCov">          1 :     return [UIColor class];</span>
-<span class="lineNum">      26 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 :     return [UIColor class];</span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span><span class="lineCov">          1 : - (id)convert:(NSString*)stringValue</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 : - (id)convert:(NSString*)stringValue</span>
 <span class="lineNum">      29 </span>            : {
-<span class="lineNum">      30 </span><span class="lineCov">          1 :     NSUInteger red, green, blue;</span>
-<span class="lineNum">      31 </span><span class="lineCov">          1 :     sscanf([stringValue UTF8String], &quot;#%02X%02X%02X&quot;, &amp;red, &amp;green, &amp;blue);</span>
-<span class="lineNum">      32 </span><span class="lineCov">          1 :     __autoreleasing UIColor* color = [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:1];</span>
-<span class="lineNum">      33 </span><span class="lineCov">          1 :     return color;</span>
-<span class="lineNum">      34 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :     NSUInteger red, green, blue;</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     sscanf([stringValue UTF8String], &quot;#%02X%02X%02X&quot;, &amp;red, &amp;green, &amp;blue);</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :     __autoreleasing UIColor* color = [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:1];</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     return color;</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      35 </span>            : 
 <span class="lineNum">      36 </span>            : @end
 </pre>

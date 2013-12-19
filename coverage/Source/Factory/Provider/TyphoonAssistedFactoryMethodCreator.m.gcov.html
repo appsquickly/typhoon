@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">29</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">34</td>
-            <td class="headerCovTableEntryMed">85.3 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -76,32 +76,32 @@
 <span class="lineNum">      18 </span>            : #import &quot;TyphoonAssistedFactoryMethodInitializerCreator.h&quot;
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span><span class="lineCov">         28 : @implementation TyphoonAssistedFactoryMethodCreator</span>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 : @implementation TyphoonAssistedFactoryMethodCreator</span>
 <span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineCov">         28 : + (instancetype)creatorFor:(id&lt;TyphoonAssistedFactoryMethod&gt;)factoryMethod</span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : + (instancetype)creatorFor:(id&lt;TyphoonAssistedFactoryMethod&gt;)factoryMethod</span>
 <span class="lineNum">      24 </span>            : {
-<span class="lineNum">      25 </span><span class="lineCov">         28 :     if ([factoryMethod isKindOfClass:[TyphoonAssistedFactoryMethodBlock class]]) {</span>
-<span class="lineNum">      26 </span><span class="lineCov">         14 :         return [[TyphoonAssistedFactoryMethodBlockCreator alloc]</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 :     if ([factoryMethod isKindOfClass:[TyphoonAssistedFactoryMethodBlock class]]) {</span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 :         return [[TyphoonAssistedFactoryMethodBlockCreator alloc]</span>
 <span class="lineNum">      27 </span>            :                 initWithFactoryMethod:factoryMethod];
-<span class="lineNum">      28 </span><span class="lineCov">         14 :     } else if ([factoryMethod isKindOfClass:[TyphoonAssistedFactoryMethodInitializer class]]) {</span>
-<span class="lineNum">      29 </span><span class="lineCov">         14 :         return [[TyphoonAssistedFactoryMethodInitializerCreator alloc]</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     } else if ([factoryMethod isKindOfClass:[TyphoonAssistedFactoryMethodInitializer class]]) {</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :         return [[TyphoonAssistedFactoryMethodInitializerCreator alloc]</span>
 <span class="lineNum">      30 </span>            :                 initWithFactoryMethod:factoryMethod];
 <span class="lineNum">      31 </span>            :     } else {
 <span class="lineNum">      32 </span><span class="lineNoCov">          0 :       NSAssert(NO, @&quot;Unknown TyphoonAssistedFactoryMethod subclass %@&quot;, NSStringFromClass([factoryMethod class]));</span>
 <span class="lineNum">      33 </span><span class="lineNoCov">          0 :       return nil;</span>
 <span class="lineNum">      34 </span>            :     }
-<span class="lineNum">      35 </span><span class="lineCov">         28 : }</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      36 </span>            : 
-<span class="lineNum">      37 </span><span class="lineCov">         28 : - (instancetype)initWithFactoryMethod:(TyphoonAssistedFactoryMethodBlock *)factoryMethod</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : - (instancetype)initWithFactoryMethod:(TyphoonAssistedFactoryMethodBlock *)factoryMethod</span>
 <span class="lineNum">      38 </span>            : {
-<span class="lineNum">      39 </span><span class="lineCov">         28 :     self = [super init];</span>
-<span class="lineNum">      40 </span><span class="lineCov">         28 :     if (self)</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     self = [super init];</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 :     if (self)</span>
 <span class="lineNum">      41 </span>            :     {
-<span class="lineNum">      42 </span><span class="lineCov">         28 :         _factoryMethod = factoryMethod;</span>
-<span class="lineNum">      43 </span><span class="lineCov">         28 :     }</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :         _factoryMethod = factoryMethod;</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span><span class="lineCov">         28 :     return self;</span>
-<span class="lineNum">      46 </span><span class="lineCov">         28 : }</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      47 </span>            : 
 <span class="lineNum">      48 </span><span class="lineNoCov">          0 : - (void)createFromProtocol:(Protocol *)protocol inClass:(Class)factoryClass</span>
 <span class="lineNum">      49 </span>            : {
@@ -111,28 +111,28 @@
 <span class="lineNum">      53 </span>            :             userInfo:nil];
 <span class="lineNum">      54 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span><span class="lineCov">         28 : - (struct objc_method_description)methodDescriptionFor:(SEL)methodName inProtocol:(Protocol *)protocol</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : - (struct objc_method_description)methodDescriptionFor:(SEL)methodName inProtocol:(Protocol *)protocol</span>
 <span class="lineNum">      57 </span>            : {
-<span class="lineNum">      58 </span><span class="lineCov">         28 :     unsigned int methodCount = 0;</span>
-<span class="lineNum">      59 </span><span class="lineCov">         28 :     struct objc_method_description *methodDescriptions = protocol_copyMethodDescriptionList(protocol, YES, YES, &amp;methodCount);</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :     unsigned int methodCount = 0;</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :     struct objc_method_description *methodDescriptions = protocol_copyMethodDescriptionList(protocol, YES, YES, &amp;methodCount);</span>
 <span class="lineNum">      60 </span>            : 
 <span class="lineNum">      61 </span>            :     // Search for the right obcj_method_description
-<span class="lineNum">      62 </span><span class="lineCov">         28 :     struct objc_method_description methodDescription;</span>
-<span class="lineNum">      63 </span><span class="lineCov">         28 :     BOOL found = NO;</span>
-<span class="lineNum">      64 </span><span class="lineCov">         92 :     for (unsigned int idx = 0; idx &lt; methodCount; idx++)</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :     struct objc_method_description methodDescription;</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :     BOOL found = NO;</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :     for (unsigned int idx = 0; idx &lt; methodCount; idx++)</span>
 <span class="lineNum">      65 </span>            :     {
-<span class="lineNum">      66 </span><span class="lineCov">         46 :         methodDescription = methodDescriptions[idx];</span>
-<span class="lineNum">      67 </span><span class="lineCov">         46 :         if (methodDescription.name == methodName)</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :         methodDescription = methodDescriptions[idx];</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :         if (methodDescription.name == methodName)</span>
 <span class="lineNum">      68 </span>            :         {
-<span class="lineNum">      69 </span><span class="lineCov">         28 :             found = YES;</span>
-<span class="lineNum">      70 </span><span class="lineCov">         28 :             break;</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :             found = YES;</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :             break;</span>
 <span class="lineNum">      71 </span>            :         }
-<span class="lineNum">      72 </span><span class="lineCov">         18 :     }</span>
-<span class="lineNum">      73 </span><span class="lineCov">        112 :     NSCAssert(found, @&quot;protocol doesn't support factory method with name %@&quot;, NSStringFromSelector(methodName));</span>
-<span class="lineNum">      74 </span><span class="lineCov">         28 :     free(methodDescriptions);</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :     NSCAssert(found, @&quot;protocol doesn't support factory method with name %@&quot;, NSStringFromSelector(methodName));</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :     free(methodDescriptions);</span>
 <span class="lineNum">      75 </span>            : 
-<span class="lineNum">      76 </span><span class="lineCov">         28 :     return methodDescription;</span>
-<span class="lineNum">      77 </span><span class="lineCov">         28 : }</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 :     return methodDescription;</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      78 </span>            : 
 <span class="lineNum">      79 </span>            : @end
 </pre>

@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">29</td>
-            <td class="headerCovTableEntry">29</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -74,54 +74,54 @@
 <span class="lineNum">      16 </span>            : @implementation TyphoonStringUtils
 <span class="lineNum">      17 </span>            : 
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span><span class="lineCov">          3 : + (BOOL)isAlpha:(NSString*)candidate</span>
+<span class="lineNum">      19 </span><span class="lineNoCov">          0 : + (BOOL)isAlpha:(NSString*)candidate</span>
 <span class="lineNum">      20 </span>            : {
-<span class="lineNum">      21 </span><span class="lineCov">          3 :     return [self isMemberOfCharacterSet:candidate characterSet:[NSCharacterSet letterCharacterSet]];</span>
-<span class="lineNum">      22 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 :     return [self isMemberOfCharacterSet:candidate characterSet:[NSCharacterSet letterCharacterSet]];</span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineCov">          4 : + (BOOL)isAlphaOrSpaces:(NSString*)candidate</span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 : + (BOOL)isAlphaOrSpaces:(NSString*)candidate</span>
 <span class="lineNum">      25 </span>            : {
-<span class="lineNum">      26 </span><span class="lineCov">          4 :     NSMutableCharacterSet* characterSet = [NSMutableCharacterSet letterCharacterSet];</span>
-<span class="lineNum">      27 </span><span class="lineCov">          4 :     [characterSet formUnionWithCharacterSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];</span>
-<span class="lineNum">      28 </span><span class="lineCov">          4 :     return [self isMemberOfCharacterSet:candidate characterSet:characterSet];</span>
-<span class="lineNum">      29 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 :     NSMutableCharacterSet* characterSet = [NSMutableCharacterSet letterCharacterSet];</span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 :     [characterSet formUnionWithCharacterSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     return [self isMemberOfCharacterSet:candidate characterSet:characterSet];</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">          3 : + (BOOL)isAlphanumeric:(NSString*)candidate</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 : + (BOOL)isAlphanumeric:(NSString*)candidate</span>
 <span class="lineNum">      32 </span>            : {
-<span class="lineNum">      33 </span><span class="lineCov">          3 :     return [self isMemberOfCharacterSet:candidate characterSet:[NSCharacterSet alphanumericCharacterSet]];</span>
-<span class="lineNum">      34 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     return [self isMemberOfCharacterSet:candidate characterSet:[NSCharacterSet alphanumericCharacterSet]];</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      35 </span>            : 
 <span class="lineNum">      36 </span>            : 
-<span class="lineNum">      37 </span><span class="lineCov">         10 : + (BOOL)isMemberOfCharacterSet:(NSString*)string characterSet:(NSMutableCharacterSet*)characterSet</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : + (BOOL)isMemberOfCharacterSet:(NSString*)string characterSet:(NSMutableCharacterSet*)characterSet</span>
 <span class="lineNum">      38 </span>            : {
-<span class="lineNum">      39 </span><span class="lineCov">         10 :     return ([string rangeOfCharacterFromSet:[characterSet invertedSet]].location != NSNotFound) ? NO : YES;</span>
-<span class="lineNum">      40 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     return ([string rangeOfCharacterFromSet:[characterSet invertedSet]].location != NSNotFound) ? NO : YES;</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span><span class="lineCov">          6 : + (BOOL)isEmpty:(NSString*)candidate</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : + (BOOL)isEmpty:(NSString*)candidate</span>
 <span class="lineNum">      43 </span>            : {
-<span class="lineNum">      44 </span><span class="lineCov">          6 :     if ([candidate length] == 0)</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     if ([candidate length] == 0)</span>
 <span class="lineNum">      45 </span>            :     {
-<span class="lineNum">      46 </span><span class="lineCov">          2 :         return YES;</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :         return YES;</span>
 <span class="lineNum">      47 </span>            :     }
 <span class="lineNum">      48 </span>            : 
-<span class="lineNum">      49 </span><span class="lineCov">          4 :     if (![[candidate stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length])</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     if (![[candidate stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length])</span>
 <span class="lineNum">      50 </span>            :     {
-<span class="lineNum">      51 </span><span class="lineCov">          2 :         return YES;</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :         return YES;</span>
 <span class="lineNum">      52 </span>            :     }
-<span class="lineNum">      53 </span><span class="lineCov">          8 :     return NO;</span>
-<span class="lineNum">      54 </span><span class="lineCov">          6 : }</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :     return NO;</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span><span class="lineCov">          3 : + (BOOL)isNotEmpty:(NSString*)candidate</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : + (BOOL)isNotEmpty:(NSString*)candidate</span>
 <span class="lineNum">      57 </span>            : {
-<span class="lineNum">      58 </span><span class="lineCov">          3 :     return ![self isEmpty:candidate];</span>
-<span class="lineNum">      59 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :     return ![self isEmpty:candidate];</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      60 </span>            : 
-<span class="lineNum">      61 </span><span class="lineCov">          3 : + (BOOL)isEmailAddress:(NSString*)candidate</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 : + (BOOL)isEmailAddress:(NSString*)candidate</span>
 <span class="lineNum">      62 </span>            : {
-<span class="lineNum">      63 </span><span class="lineCov">          3 :     NSString* emailRegex = @&quot;[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}&quot;;</span>
-<span class="lineNum">      64 </span><span class="lineCov">          3 :     NSPredicate* emailTest = [NSPredicate predicateWithFormat:@&quot;SELF MATCHES %@&quot;, emailRegex];</span>
-<span class="lineNum">      65 </span><span class="lineCov">          3 :     return [emailTest evaluateWithObject:candidate];</span>
-<span class="lineNum">      66 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :     NSString* emailRegex = @&quot;[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}&quot;;</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :     NSPredicate* emailTest = [NSPredicate predicateWithFormat:@&quot;SELF MATCHES %@&quot;, emailRegex];</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :     return [emailTest evaluateWithObject:candidate];</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      67 </span>            : 
 <span class="lineNum">      68 </span>            : 
 <span class="lineNum">      69 </span>            : @end
