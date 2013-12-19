@@ -315,7 +315,7 @@
             set -e # fail script if any commands fail
 
             cd ${basedir}
-            find Tests/ -type f -exec git update-index --assume-unchanged '{}' \;
+            find Tests/ -type f -exec git update-index --assume-unchanged '{}' \; > ${temp.dir}/index.out
             cp -fr ${basedir}/schema ${reports.dir}
             git remote add origin git@github.com:typhoon-framework/Typhoon.git || true # allow `remote add` to fail without failing script
             git remote set-url origin git@github.com:typhoon-framework/Typhoon.git
@@ -352,7 +352,7 @@
             find Tests -type f -exec git update-index --no-assume-unchanged '{}' \;
         </echo>
         <chmod perm="+x" file="${push.site.script}"/>
-        <exec executable="${push.site.script}" failonerror="true" failifexecutionfails="true">
+        <exec executable="${push.site.script}" failonerror="true" failifexecutionfails="true" outputproperty="push.out" errorproperty="push.error">
             <env key="PATH" value="${tools.paths}"/>
         </exec>
     </target>
