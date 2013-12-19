@@ -18,7 +18,6 @@ DerivedData
 # Xcode-Dacted
 *.xccheckout
 
-Tests/Pods
 
 
 .DS_Store
