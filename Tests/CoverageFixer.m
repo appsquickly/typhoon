@@ -9,19 +9,22 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "VATestObserver.h"
+
 #import <UIKit/UIKit.h>
+#import <SenTestingKit/SenTestingKit.h>
 
+@interface CoverageFixer : SenTestLog
+@end
 
-
-
-@implementation VATestObserver
+@implementation CoverageFixer
 
 extern void __gcov_flush(void);
 
-- (void)applicationWillTerminate:(UIApplication*)application
+
++ (void)testSuiteDidStop:(NSNotification*)aNotification
 {
     __gcov_flush();
+    [super testSuiteDidStop:aNotification];
 }
 
 @end
