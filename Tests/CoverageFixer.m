@@ -10,7 +10,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <UIKit/UIKit.h>
 #import <SenTestingKit/SenTestingKit.h>
 
 @interface CoverageFixer : SenTestLog
