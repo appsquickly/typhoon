@@ -627,8 +627,8 @@
 				BA7983CA8A82C2C30A59A8FD /* TyphoonURLUtils.m */,
 				BA798414371EC7A9885C0DE2 /* TyphoonURLUtils.h */,
 				205FE9A11847183B002FC261 /* TyphoonLinkerCategoryBugFix.h */,
-				75AB5B4C9C4A2D4C5A6D590C /* TyphoonWrappedSelector.m */,
-				75AB54DCC3FA105569D397D6 /* TyphoonWrappedSelector.h */,
+				75AB5B4C9C4A2D4C5A6D590C,
+				75AB54DCC3FA105569D397D6,
 			);
 			path = Utils;
 			sourceTree = "<group>";

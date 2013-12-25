@@ -1,17 +1,25 @@
 #!/bin/bash
 
+## Used to derive configuration used by script ##
 SCRIPTS_DIR="$(cd $(dirname "$0") && pwd)"
 REPO_ROOT="${SCRIPTS_DIR}/.."
 TESTS_DIR="${REPO_ROOT}/Tests"
-PODS="${TESTS_DIR}/Pods"
+
+## Configuration used by script ##
 SOURCE="${REPO_ROOT}/Source"
+SCRIPTS_DATA_DIR="${REPO_ROOT}/.scripts"
+PODS="${TESTS_DIR}/Pods"
+
+## Begin script ##
+mkdir -p "$SCRIPTS_DATA_DIR"
+mkdir -p "$PODS"
 
 CHECKSUM="$(find "$SOURCE" \! -path "*xcuserdata*" \! -path "*.git" | openssl sha1)"
-CHECKSUM_FILE="${REPO_ROOT}/.scripts/pod-update-checksum.txt"
+CHECKSUM_FILE="${SCRIPTS_DATA_DIR}/pod-update-checksum.txt"
 LAST_CHECKSUM="$(cat "$CHECKSUM_FILE")"
 COMMAND="pod update"
 
-cd "$TESTS_DIR"
+cd "$PODS/.."
 
 update_checksum() 
 {
@@ -50,7 +58,7 @@ if [ "$LAST_CHECKSUM" != "$CHECKSUM" ]; then
     
   fi
 
-  RVM_COMMAND="$RVM all in $TESTS_DIR do $COMMAND"
+  RVM_COMMAND="$RVM all in ${PODS}/.. do $COMMAND"
   echo "Running ${RVM_COMMAND}"
   $RVM_COMMAND
 
@@ -68,4 +76,3 @@ fi
 
 
 exit 0
-
