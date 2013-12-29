@@ -51,7 +51,14 @@
 - (id)unstashInstanceForKey:(NSString*)key
 {
     TyphoonGenericStack* stack = _registry[key];
-    return [stack pop];
+    id instance = [stack pop];
+
+    if ([stack isEmpty])
+    {
+        [_registry removeObjectForKey:key];
+    }
+
+    return instance;
 }
 
 - (id)peekInstanceForKey:(NSString*)key
@@ -62,7 +69,7 @@
 
 - (BOOL)hasInstanceForKey:(NSString*)key
 {
-    return ((_registry[key] != nil)&&([_registry[key] isEmpty] == NO));
+    return ((_registry[key] != nil) && ([_registry[key] isEmpty] == NO));
 }
 
 

@@ -11,9 +11,11 @@
 
 
 #import "TyphoonLinkerCategoryBugFix.h"
+
 TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 #import <objc/message.h>
+#import <CoreData/CoreData.h>
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonParameterInjectedByReference.h"
@@ -37,8 +39,6 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
 #import "TyphoonComponentFactoryAware.h"
 #import "TyphoonParameterInjectedAsCollection.h"
-#import "TyphoonInstanceRegister.h"
-#import "TyphoonDefinitionRegisterer.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
@@ -73,8 +73,12 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         instance = [definition.type alloc];
     }
 
+
+    [self handleSpecialCaseForNSManagedObjectModel:instance];
+
     return instance;
 }
+
 
 - (id)injectInstance:(id)instance withDefinition:(TyphoonDefinition*)definition
 {
@@ -100,17 +104,23 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 {
     if (definition.initializer)
     {
-        if (definition.initializer.isClassMethod == NO) {
+        if (definition.initializer.isClassMethod == NO)
+        {
             instance = [self invokeInitializer:definition.initializer on:instance];
-        }else{
+        }
+        else
+        {
             // initializer was already invoked in allocateInstance:withDefinition:
         }
     }
     else if (definition.initializer == nil)
     {
-        if ([self definitionHasParent:definition]) {
+        if ([self definitionHasParent:definition])
+        {
             instance = [self initializerInjectionOn:instance withDefinition:[self parentForDefinition:definition]];
-        }else{
+        }
+        else
+        {
             instance = [self invokeDefaultInitializerOn:instance];
         }
     }
@@ -125,11 +135,16 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (TyphoonDefinition*)parentForDefinition:(TyphoonDefinition*)definition
 {
-    if (definition.parent) {
+    if (definition.parent)
+    {
         return definition.parent;
-    }else if (definition.parentRef) {
+    }
+    else if (definition.parentRef)
+    {
         return [self definitionForKey:definition.parentRef];
-    }else{
+    }
+    else
+    {
         return nil;
     }
 }
@@ -228,7 +243,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 - (NSInvocation*)propertySetterInvocationFor:(id <TyphoonIntrospectiveNSObject>)instance property:(id <TyphoonInjectedProperty>)property
 {
     SEL pSelector = [instance setterForPropertyWithName:property.name];
-    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*) instance methodSignatureForSelector:pSelector]];
+    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*)instance methodSignatureForSelector:pSelector]];
     [invocation setTarget:instance];
     [invocation setSelector:pSelector];
     return invocation;
@@ -252,7 +267,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeByReference)
     {
-        TyphoonPropertyInjectedByReference* byReference = (TyphoonPropertyInjectedByReference*) property;
+        TyphoonPropertyInjectedByReference* byReference = (TyphoonPropertyInjectedByReference*)property;
         [self evaluateCircularDependency:byReference.reference propertyName:property.name instance:instance];
 
         if ([self propertyIsCircular:property onInstance:instance])
@@ -265,17 +280,17 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeAsStringRepresentation)
     {
-        TyphoonPropertyInjectedWithStringRepresentation* valueProperty = (TyphoonPropertyInjectedWithStringRepresentation*) property;
+        TyphoonPropertyInjectedWithStringRepresentation* valueProperty = (TyphoonPropertyInjectedWithStringRepresentation*)property;
         [self setArgumentFor:invocation index:2 textValue:valueProperty.textValue requiredType:typeDescriptor];
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeAsCollection)
     {
-        id collection = [self buildCollectionFor:(TyphoonPropertyInjectedAsCollection*) property instance:instance];
+        id collection = [self buildCollectionFor:(TyphoonPropertyInjectedAsCollection*)property instance:instance];
         [invocation setArgument:&collection atIndex:2];
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeAsObjectInstance)
     {
-        TyphoonPropertyInjectedAsObjectInstance* byInstance = (TyphoonPropertyInjectedAsObjectInstance*) property;
+        TyphoonPropertyInjectedAsObjectInstance* byInstance = (TyphoonPropertyInjectedAsObjectInstance*)property;
         id value = byInstance.objectInstance;
         [invocation setArgument:&value atIndex:2];
     }
@@ -288,7 +303,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     {
         NSDictionary* circularDependencies = [instance circularDependentProperties];
         [circularDependencies setValue:componentKey forKey:propertyName];
-        LogTrace(@"$$$$$$$$$$$$ Circular dependency detected: %@", [instance circularDependentProperties]);
+        LogTrace(@"Circular dependency detected: %@", [instance circularDependentProperties]);
     }
 }
 
@@ -313,7 +328,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         {
             SEL pSelector = [instance setterForPropertyWithName:propertyName];
             NSInvocation
-                    * invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*) instance methodSignatureForSelector:pSelector]];
+                    * invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*)instance methodSignatureForSelector:pSelector]];
             [invocation setTarget:instance];
             [invocation setSelector:pSelector];
             NSString* componentKey = [circularDependentProperties objectForKey:propertyName];
@@ -328,7 +343,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 {
     if ([instance respondsToSelector:@selector(afterPropertiesSet)])
     {
-        [(id <TyphoonPropertyInjectionDelegate>) instance afterPropertiesSet];
+        [(id <TyphoonPropertyInjectionDelegate>)instance afterPropertiesSet];
     }
 
     if ([instance respondsToSelector:definition.afterPropertyInjection])
@@ -342,7 +357,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (id)invokeInitializer:(TyphoonInitializer* )initializer on:(id)instanceOrClass
+- (id)invokeInitializer:(TyphoonInitializer*)initializer on:(id)instanceOrClass
 {
     NSInvocation* invocation = [initializer asInvocationFor:instanceOrClass];
 
@@ -351,25 +366,25 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     {
         if (parameter.type == TyphoonParameterInjectionTypeReference)
         {
-            TyphoonParameterInjectedByReference* byReference = (TyphoonParameterInjectedByReference*) parameter;
+            TyphoonParameterInjectedByReference* byReference = (TyphoonParameterInjectedByReference*)parameter;
             id reference = [self componentForKey:byReference.reference];
             [invocation setArgument:&reference atIndex:parameter.index + 2];
         }
         else if (parameter.type == TyphoonParameterInjectionTypeStringRepresentation)
         {
-            TyphoonParameterInjectedWithStringRepresentation* byValue = (TyphoonParameterInjectedWithStringRepresentation*) parameter;
+            TyphoonParameterInjectedWithStringRepresentation* byValue = (TyphoonParameterInjectedWithStringRepresentation*)parameter;
             [self setArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue
                     requiredType:[byValue resolveTypeWith:instanceOrClass]];
         }
         else if (parameter.type == TyphoonParameterInjectionTypeObjectInstance)
         {
-            TyphoonParameterInjectedWithObjectInstance* byInstance = (TyphoonParameterInjectedWithObjectInstance*) parameter;
+            TyphoonParameterInjectedWithObjectInstance* byInstance = (TyphoonParameterInjectedWithObjectInstance*)parameter;
             id value = byInstance.value;
             [invocation setArgument:&value atIndex:parameter.index + 2];
         }
         else if (parameter.type == TyphoonParameterInjectionTypeAsCollection)
         {
-            TyphoonParameterInjectedAsCollection* asCollection = (TyphoonParameterInjectedAsCollection*) parameter;
+            TyphoonParameterInjectedAsCollection* asCollection = (TyphoonParameterInjectedAsCollection*)parameter;
             id collection = [self buildCollectionWithValues:asCollection.values requiredType:asCollection.collectionType];
             [invocation setArgument:&collection atIndex:parameter.index + 2];
         }
@@ -412,13 +427,13 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     {
         if (value.type == TyphoonCollectionValueTypeByReference)
         {
-            TyphoonByReferenceCollectionValue* byReferenceValue = (TyphoonByReferenceCollectionValue*) value;
+            TyphoonByReferenceCollectionValue* byReferenceValue = (TyphoonByReferenceCollectionValue*)value;
             id reference = [self componentForKey:byReferenceValue.componentName];
             [collection addObject:reference];
         }
         else if (value.type == TyphoonCollectionValueTypeConvertedText)
         {
-            TyphoonTypeConvertedCollectionValue* typeConvertedValue = (TyphoonTypeConvertedCollectionValue*) value;
+            TyphoonTypeConvertedCollectionValue* typeConvertedValue = (TyphoonTypeConvertedCollectionValue*)value;
             TyphoonTypeDescriptor* descriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:typeConvertedValue.requiredType];
             id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
             id converted = [converter convert:typeConvertedValue.textValue];
@@ -426,14 +441,14 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         }
     }
 
-    BOOL isMutable = (type == TyphoonCollectionTypeNSMutableArray||type == TyphoonCollectionTypeNSMutableSet);
+    BOOL isMutable = (type == TyphoonCollectionTypeNSMutableArray || type == TyphoonCollectionTypeNSMutableSet);
     return isMutable ? collection : [collection copy];
 }
 
 - (id)collectionForType:(TyphoonCollectionType)type
 {
     id collection;
-    if (type == TyphoonCollectionTypeNSArray||type == TyphoonCollectionTypeNSMutableArray)
+    if (type == TyphoonCollectionTypeNSArray || type == TyphoonCollectionTypeNSMutableArray)
     {
         collection = [[NSMutableArray alloc] init];
     }
@@ -441,7 +456,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     {
         collection = [[NSCountedSet alloc] init];
     }
-    else if (type == TyphoonCollectionTypeNSSet||type == TyphoonCollectionTypeNSMutableSet)
+    else if (type == TyphoonCollectionTypeNSSet || type == TyphoonCollectionTypeNSMutableSet)
     {
         collection = [[NSMutableSet alloc] init];
     }
@@ -456,7 +471,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     if ([candidates count] == 0)
     {
         SEL autoInjectedProperties = sel_registerName("typhoonAutoInjectedProperties");
-        if (class_isMetaClass(object_getClass(classOrProtocol))&&[classOrProtocol respondsToSelector:autoInjectedProperties])
+        if (class_isMetaClass(object_getClass(classOrProtocol)) && [classOrProtocol respondsToSelector:autoInjectedProperties])
         {
             LogTrace(@"Class %@ wants auto-wiring. . . registering.", NSStringFromClass(classOrProtocol));
             [self register:[TyphoonDefinition withClass:classOrProtocol]];
@@ -482,7 +497,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     {
         if (isClass)
         {
-            if (definition.type == classOrProtocol||[definition.type isSubclassOfClass:classOrProtocol])
+            if (definition.type == classOrProtocol || [definition.type isSubclassOfClass:classOrProtocol])
             {
                 [results addObject:definition];
             }
@@ -496,6 +511,21 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         }
     }
     return [results copy];
+}
+
+/**
+* TODO: Generic fix for any object that returns a new instance from init, after alloc.
+* NSManagedObjectModelReturns a different pointer from init than from alloc, Typhoon+ARC is not currently picking this up.
+*/
+- (void)handleSpecialCaseForNSManagedObjectModel:(id)instance
+{
+    if ([instance isKindOfClass:[NSManagedObjectModel class]])
+    {
+        int retainCount = objc_msgSend(instance, NSSelectorFromString(@"retainCount"));
+        LogInfo("FixMe: Ensuring NSManagedObjectModel is not over-released. Current retain count: %i", retainCount);
+        objc_msgSend(instance, NSSelectorFromString(@"retain"));
+
+    }
 }
 
 
