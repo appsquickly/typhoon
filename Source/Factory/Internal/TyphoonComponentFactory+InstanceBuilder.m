@@ -359,6 +359,8 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (id)invokeInitializer:(TyphoonInitializer*)initializer on:(id)instanceOrClass
 {
+    NSString* oldPointerValue = [NSString stringWithFormat:@"%p", instanceOrClass];
+
     NSInvocation* invocation = [initializer asInvocationFor:instanceOrClass];
 
     NSArray* injectedParameters = [initializer injectedParameters];
@@ -392,6 +394,14 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     [invocation invoke];
     __autoreleasing id <NSObject> returnValue = nil;
     [invocation getReturnValue:&returnValue];
+
+    NSString* newPointerValue = [NSString stringWithFormat:@"%p", returnValue];
+    if (!([oldPointerValue isEqualToString:newPointerValue]))
+    {
+        LogInfo(@"Class %@'s alloc'd pointer value has changed after init. . . this can cause problems in ARC. Old value: %@, new value: %@",
+        NSStringFromClass([returnValue class]), oldPointerValue, newPointerValue);
+    }
+
     return returnValue;
 }
 
@@ -521,8 +531,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 {
     if ([instance isKindOfClass:[NSManagedObjectModel class]])
     {
-        int retainCount = objc_msgSend(instance, NSSelectorFromString(@"retainCount"));
-        LogInfo("FixMe: Ensuring NSManagedObjectModel is not over-released. Current retain count: %i", retainCount);
+        LogInfo("FixMe: Ensuring NSManagedObjectModel is not over-released.");
         objc_msgSend(instance, NSSelectorFromString(@"retain"));
 
     }
