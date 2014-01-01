@@ -63,9 +63,9 @@
 - (unsigned int)convertToUnsignedInt:(NSString*)stringValue
 {
     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    int converted = 0;
-    [scanner scanInt:&converted];
-    return [[NSNumber numberWithInt:converted] unsignedIntValue];
+    long long converted = 0;
+    [scanner scanLongLong:&converted];
+    return [[NSNumber numberWithLongLong:converted] unsignedIntValue];
 }
 
 - (unsigned short)convertToUnsignedShort:(NSString*)stringValue
@@ -86,10 +86,7 @@
 
 - (unsigned long long)convertToUnsignedLongLong:(NSString*)stringValue
 {
-    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    long long converted = 0;
-    [scanner scanLongLong:&converted];
-    return [[NSNumber numberWithLongLong:converted] unsignedLongValue];
+    return strtoull([stringValue UTF8String], NULL, 0);
 }
 
 - (float)convertToFloat:(NSString*)stringValue
@@ -97,7 +94,7 @@
     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
     float converted = 0;
     [scanner scanFloat:&converted];
-    return converted;
+    return [[NSNumber numberWithFloat:converted] floatValue];
 }
 
 - (double)convertToDouble:(NSString*)stringValue
@@ -105,7 +102,7 @@
     NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
     double converted = 0;
     [scanner scanDouble:&converted];
-    return converted;
+    return [[NSNumber numberWithDouble:converted] doubleValue];
 }
 
 - (BOOL)convertToBoolean:(NSString*)stringValue
@@ -157,6 +154,11 @@
         int converted = [self convertToInt:textValue];
         [invocation setArgument:&converted atIndex:index];
     }
+    else if (requiredType.primitiveType == TyphoonPrimitiveTypeShort)
+    {
+        short converted = [self convertToShort:textValue];
+        [invocation setArgument:&converted atIndex:index];
+    }
     else if (requiredType.primitiveType == TyphoonPrimitiveTypeLong)
     {
         long converted = [self convertToLong:textValue];
@@ -186,6 +188,11 @@
     {
         unsigned int converted = [self convertToUnsignedInt:textValue];
         [invocation setArgument:&converted atIndex:index];
+    }
+    else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedShort)
+    {
+      unsigned short converted = [self convertToUnsignedShort:textValue];
+      [invocation setArgument:&converted atIndex:index];
     }
     else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedLong)
     {

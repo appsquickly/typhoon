@@ -51,7 +51,7 @@
         [_exchangedPairsForClass setObject:exchangedPairs forKey:NSStringFromClass(pClass)];
     }
 
-    NSMutableArray* exchanged = @[[TyphoonWrappedSelector wrappedSelectorWithSelector:selA], [TyphoonWrappedSelector wrappedSelectorWithSelector:selB]];
+    NSArray* exchanged = @[[TyphoonWrappedSelector wrappedSelectorWithSelector:selA], [TyphoonWrappedSelector wrappedSelectorWithSelector:selB]];
     [exchangedPairs addObject:exchanged];
     return YES;
 }

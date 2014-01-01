@@ -13,9 +13,9 @@
 
 /**
  * Creates the full factory class from the given protocol description. The
- * protocol should only have one instance method, and it should match one of the
- * initializer of the returnType. See the documentation of
- * TyphoonFactoryProvider for the rules used to do this matching.
+ * protocol instance methods should match one of the initializers of the
+ * returnType. See the documentation of TyphoonFactoryProvider for the rules
+ * used to do this matching.
  *
  * Users should not use this class directly.
  */

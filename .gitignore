@@ -14,10 +14,10 @@ profile
 *.moved-aside
 DerivedData
 
-Tests/Pods/Pods.xcodeproj/project.pbxproj
 
 # Xcode-Dacted
 *.xccheckout
+
 
 
 .DS_Store

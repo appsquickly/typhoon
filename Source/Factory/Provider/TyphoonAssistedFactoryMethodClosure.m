@@ -58,7 +58,7 @@
     NSMutableArray *allocations = [NSMutableArray array];
 
     id instance = [_returnType alloc];
-    [allocations addObject:instance];
+    if (instance) [allocations addObject:instance];
     invocation.target = instance;
 
     invocation.selector = _initSelector;
@@ -83,7 +83,7 @@
             // Using valueForKey will try using the property first.
             NSString *selector = [NSString stringWithCString:sel_getName([p property]) encoding:NSASCIIStringEncoding];
             id value = [factory valueForKey:selector];
-            [allocations addObject:value];
+            if (value) [allocations addObject:value];
 
             [invocation setArgument:&value atIndex:[p parameterIndex] + 2];
         } else {

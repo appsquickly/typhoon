@@ -191,7 +191,7 @@ Test Failures typically indicate a bug that has been flagged, but not yet fixed.
 
 # Core Team
 
-* <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> - <a href="mailto:jasper@appsquick.ly?Subject=Typhoon">jasper@appsquick.ly</a>
+* <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> (Instigator and Project Lead) - <a href="mailto:jasper@appsquick.ly?Subject=Typhoon">jasper@appsquick.ly</a>  
 * <a href="https://github.com/rhgills">Robert Gilliam</a> - <a href="mailto:robert@robertgilliam.org?Subject=Typhoon">robert@robertgilliam.org</a>
 * <a href="https://github.com/drodriguez">Daniel Rodríguez Troitiño</a> 
 * <a href="https://github.com/eriksundin">Erik Sundin</a> 
@@ -216,7 +216,7 @@ is not the same as heavy.
 
 # Apps Using Typhoon
 
-In the months since release, there have been scores app built with Typhoon. Here are some of them: 
+Here's a few apps built with Typhoon:
 
 * Mod Productions' ACO Virtual <a href="http://vimeo.com/75451558">iPad controller</a> and <a href="https://itunes.apple.com/au/app/aco-virtual/id623225640?mt=8">companion AR app.</a> (Awarded ***AppStore Best New Apps***). 
 * <a href="http://itunes.com/apps/GonnaGo">GonnaGo</a> - a social travel app. 
