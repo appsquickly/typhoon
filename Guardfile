@@ -1,13 +1,14 @@
 require 'guard/plugin'
 require 'shellwords'
 
-# A sample Guardfile
-# More info at https://github.com/guard/guard#readme
+# README:
+# `guard -g tests` to run unit tests whenever a source file changes.
+# `guard -g misc` for git status, bundle install whenever the Gemfile changes, and more.
 
 module ::Guard
 	class XCTest < ::Guard::Plugin
 		def _setup
-			scheme = "OS X Tests (Cocoapods)"
+			scheme = "OS X Tests"
 			xcodebuild_test_cmd = "xcodebuild -workspace Typhoon.xcworkspace/ -scheme '#{scheme}' test"
 			@rspec_test_task = "#{xcodebuild_test_cmd} | xcpretty -tc"
 			@simple_test_task = "#{xcodebuild_test_cmd} | xcpretty -sc"
