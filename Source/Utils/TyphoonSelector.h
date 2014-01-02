@@ -14,13 +14,13 @@
 #import <Foundation/Foundation.h>
 
 
-@interface TyphoonWrappedSelector : NSObject
+@interface TyphoonSelector : NSObject
 
-+ (TyphoonWrappedSelector*)wrappedSelectorWithName:(NSString*)string;
-+ (TyphoonWrappedSelector*)wrappedSelectorWithSelector:(SEL)pSelector;
++ (TyphoonSelector*)selectorWithName:(NSString*)string;
++ (TyphoonSelector*)selectorWithSEL:(SEL)pSelector;
 
 - (id)initWithName:(NSString*)string;
-- (id)initWithSelector:(SEL)pSelector;
+- (id)initWithSEL:(SEL)pSelector;
 
 @property (readonly) SEL selector;
 

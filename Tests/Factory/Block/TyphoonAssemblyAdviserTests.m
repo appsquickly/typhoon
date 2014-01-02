@@ -16,7 +16,7 @@
 #import "TyphoonAssemblySelectorAdviser.h"
 #import "TyphoonAssemblyAdviser.h"
 #import "TyphoonAssembly.h"
-#import "TyphoonWrappedSelector.h"
+#import "TyphoonSelector.h"
 #import "TyphoonTestMethodSwizzler.h"
 #import "TyphoonJRMethodSwizzler.h"
 
@@ -63,15 +63,15 @@
     assertThat(selectors, empty());
 }
 
-- (void)testEnumeratesDefinitionSelectors_NonAssembly
+- (void)testEnumeratesDefinitionSelectors_AssemblyWithMethod
 {
     assembly = [[TestAssemblyWithMethod alloc] init];
     adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
     NSSet *selectors = [adviser enumerateDefinitionSelectors];
-    TyphoonWrappedSelector *wrappedSEL = [TyphoonWrappedSelector wrappedSelectorWithName:@"aDefinitionMethod"];
+    TyphoonSelector*theSelector = [TyphoonSelector selectorWithName:@"aDefinitionMethod"];
 
-    assertThat(selectors, onlyContains(wrappedSEL, nil));
+    assertThat(selectors, onlyContains(theSelector, nil));
 }
 
 - (void)testAdvisesAssembly

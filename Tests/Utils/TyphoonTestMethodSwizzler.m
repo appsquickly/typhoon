@@ -1,9 +1,18 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-// Created by Robert Gilliam on 12/14/13.
+//  TYPHOON FRAMEWORK
+//  Copyright 2014, Jasper Blues & Contributors
+//  All Rights Reserved.
 //
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
 
 #import "TyphoonTestMethodSwizzler.h"
-#import "TyphoonWrappedSelector.h"
+#import "TyphoonSelector.h"
 
 
 @implementation TyphoonTestMethodSwizzler
@@ -25,8 +34,8 @@
 - (void)assertExchangedImplementationsFor:(NSString*)methodA with:(NSString*)methodB onClass:(Class)pClass
 {
     __block BOOL matched = NO;
-    TyphoonWrappedSelector* wrappedMethodA = [TyphoonWrappedSelector wrappedSelectorWithName:methodA];
-    TyphoonWrappedSelector* wrappedMethodB = [TyphoonWrappedSelector wrappedSelectorWithName:methodB];
+    TyphoonSelector* wrappedMethodA = [TyphoonSelector selectorWithName:methodA];
+    TyphoonSelector* wrappedMethodB = [TyphoonSelector selectorWithName:methodB];
 
     NSMutableArray* exchangedPairs = [_exchangedPairsForClass objectForKey:NSStringFromClass(pClass)];
     [exchangedPairs enumerateObjectsUsingBlock:^(NSArray* exchanged, NSUInteger idx, BOOL* stop)
@@ -38,7 +47,6 @@
     }];
 
     if (!matched) {
-        // Expected methodA: to be exchanged with methodB:, but exchanged pairs were: ()
         [NSException raise:NSInternalInconsistencyException format:@"Expected '%@' to be exchanged with '%@' on class '%@', but exchanged pairs for that class were '%@'.", methodA, methodB, NSStringFromClass(pClass), exchangedPairs];
     }
 }
@@ -51,7 +59,7 @@
         [_exchangedPairsForClass setObject:exchangedPairs forKey:NSStringFromClass(pClass)];
     }
 
-    NSArray* exchanged = @[[TyphoonWrappedSelector wrappedSelectorWithSelector:selA], [TyphoonWrappedSelector wrappedSelectorWithSelector:selB]];
+    NSArray* exchanged = @[[TyphoonSelector selectorWithSEL:selA], [TyphoonSelector selectorWithSEL:selB]];
     [exchangedPairs addObject:exchanged];
     return YES;
 }

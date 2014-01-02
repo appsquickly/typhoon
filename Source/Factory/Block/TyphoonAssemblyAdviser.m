@@ -17,7 +17,7 @@
 #import <objc/runtime.h>
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "OCLogTemplate.h"
-#import "TyphoonWrappedSelector.h"
+#import "TyphoonSelector.h"
 #import "TyphoonJRMethodSwizzler.h"
 
 static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
@@ -66,10 +66,7 @@ static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
 - (void)swizzleAssemblyMethods
 {
     NSSet* definitionSelectors = [self enumerateDefinitionSelectors];
-    NSLog(@"About to swizzle the following definition selectors: %@.", definitionSelectors);
-
     [self swizzleDefinitionSelectors:definitionSelectors];
-
     [[self class] markAssemblyMethods:definitionSelectors asAdvised:self.assembly];
 }
 
@@ -81,7 +78,7 @@ static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
     }];
 }
 
-- (void)swapImplementationOfDefinitionSelectorWithAdvisedImplementation:(TyphoonWrappedSelector*)wrappedSEL
+- (void)swapImplementationOfDefinitionSelectorWithAdvisedImplementation:(TyphoonSelector*)wrappedSEL
 {
     SEL methodSelector = [wrappedSEL selector];
     SEL swizzled = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector];
@@ -142,18 +139,18 @@ static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
 
 + (void)swizzleDefinitionSelectors:(NSSet*)definitionSelectors onAssembly:(TyphoonAssembly*)assembly
 {
-    [definitionSelectors enumerateObjectsUsingBlock:^(TyphoonWrappedSelector* selectorObj, BOOL* stop)
+    [definitionSelectors enumerateObjectsUsingBlock:^(TyphoonSelector* selectorObj, BOOL* stop)
     {
         [self swapImplementationOfDefinitionSelector:selectorObj withDynamicBeforeAdviceImplementationOnAssembly:assembly];
     }];
 }
 
-+ (void)swapImplementationOfDefinitionSelector:(TyphoonWrappedSelector*)wrappedSelector withDynamicBeforeAdviceImplementationOnAssembly:(TyphoonAssembly*)assembly
++ (void)swapImplementationOfDefinitionSelector:(TyphoonSelector*)wrappedSelector withDynamicBeforeAdviceImplementationOnAssembly:(TyphoonAssembly*)assembly
 {
     return [self swapImplementationOfDefinitionSelector:wrappedSelector withDynamicBeforeAdviceImplementationOnAssemblyClass:[assembly class]];
 }
 
-+ (void)swapImplementationOfDefinitionSelector:(TyphoonWrappedSelector*)wrappedSEL withDynamicBeforeAdviceImplementationOnAssemblyClass:(Class)assemblyClass
++ (void)swapImplementationOfDefinitionSelector:(TyphoonSelector*)wrappedSEL withDynamicBeforeAdviceImplementationOnAssemblyClass:(Class)assemblyClass
 {
     SEL methodSelector = [wrappedSEL selector];
     SEL swizzled = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector];
@@ -241,7 +238,7 @@ typedef void(^MethodEnumerationBlock)(Method method);
 - (void)addDefinitionSelectorForMethod:(Method)method toSet:(NSMutableSet*)definitionSelectors
 {
     SEL methodSelector = method_getName(method);
-    TyphoonWrappedSelector* wrappedSEL = [TyphoonWrappedSelector wrappedSelectorWithSelector:methodSelector];
+    TyphoonSelector* wrappedSEL = [TyphoonSelector selectorWithSEL:methodSelector];
     [definitionSelectors addObject:wrappedSEL];
 }
 
@@ -258,8 +255,6 @@ typedef void(^MethodEnumerationBlock)(Method method);
 
 + (BOOL)assemblyClassIsAdvised:(Class)class
 {
-    NSLog(@"Checking if assemby class is advised: '%@'.", NSStringFromClass(class));
-
     return [[swizzledDefinitionsByAssemblyClass allKeys] containsObject:NSStringFromClass(class)];
 }
 

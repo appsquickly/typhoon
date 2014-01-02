@@ -19,7 +19,7 @@
 #import "TyphoonAssemblySelectorAdviser.h"
 #import <objc/message.h>
 #import "TyphoonCircularDependencyTerminator.h"
-#import "TyphoonWrappedSelector.h"
+#import "TyphoonSelector.h"
 
 
 @implementation TyphoonAssemblyDefinitionBuilder
@@ -58,7 +58,7 @@
 
 - (void)populateCache
 {
-    [[self.assembly definitionSelectors] enumerateObjectsUsingBlock:^(TyphoonWrappedSelector* wrappedSEL, BOOL* stop)
+    [[self.assembly definitionSelectors] enumerateObjectsUsingBlock:^(TyphoonSelector* wrappedSEL, BOOL* stop)
     {
         SEL selector = [wrappedSEL selector];
         NSString* key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
