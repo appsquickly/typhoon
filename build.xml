@@ -322,6 +322,7 @@
             git remote set-url origin git@github.com:typhoon-framework/Typhoon.git
             git fetch origin gh-pages:gh-pages
             git fetch origin gh-pages
+            git stash
             git checkout gh-pages
             git branch --set-upstream-to=origin/gh-pages gh-pages
             git pull
