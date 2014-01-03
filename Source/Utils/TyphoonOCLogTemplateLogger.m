@@ -12,9 +12,9 @@
 
 }
 
-- (void)logWarn:(NSString*)message
+- (void)logError:(NSString*)message
 {
-    LogInfo(@"%@", message);
+    LogError(@"%@", message);
 }
 
 @end

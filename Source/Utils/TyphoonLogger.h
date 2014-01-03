@@ -7,6 +7,6 @@
 
 @protocol TyphoonLogger <NSObject>
 
-- (void)logWarn:(NSString *)message;
+- (void)logError:(NSString *)message;
 
 @end

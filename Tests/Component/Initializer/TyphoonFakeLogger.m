@@ -12,7 +12,7 @@
     SenTestCase* _testCase;
 }
 
-- (void)logWarn:(NSString*)message
+- (void)logError:(NSString*)message
 {
     _lastReceivedMessage = message;
 }

@@ -53,7 +53,7 @@ static char const* const CIRCULAR_DEPENDENCIES_KEY = "typhoon.injectLater";
 
 - (NSArray*)parameterNamesForSelector:(SEL)selector
 {
-    if ([NSStringFromSelector(selector) _typhoon_contains:@":"] == NO) {
+    if (![NSStringFromSelector(selector) _typhoon_contains:@":"]) {
         return @[];
     }
 
@@ -68,12 +68,17 @@ static char const* const CIRCULAR_DEPENDENCIES_KEY = "typhoon.injectLater";
         }
         if ([parameterName length] > 0)
         {
-            parameterName = [parameterName stringByReplacingCharactersInRange:NSMakeRange(0, 1)
-                    withString:[[parameterName substringToIndex:1] lowercaseString]]; // lowercase the first letter
+            parameterName = [self stringByLowerCasingFirstLetter:parameterName];
             [parameterNames addObject:parameterName];
         }
     }
     return [parameterNames copy];
+}
+
+- (NSString*)stringByLowerCasingFirstLetter:(NSString*)name
+{
+    return [name stringByReplacingCharactersInRange:NSMakeRange(0, 1)
+            withString:[[name substringToIndex:1] lowercaseString]];
 }
 
 - (NSArray*)typeCodesForSelector:(SEL)selector
