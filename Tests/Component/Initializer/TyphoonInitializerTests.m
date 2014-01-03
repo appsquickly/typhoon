@@ -55,8 +55,7 @@
     initializer = [self newInitializerWithSelector:@selector(init)];
     [initializer injectParameterNamed:@"aParameter" withObject:@"anObject"];
 
-    assertThat([logger lastReceivedMessage], equalTo(@"Specified a parameter named 'aParameter', but method 'init' takes no parameters."));
-    //[logger shouldHaveLogged:@"Specified a parameter named 'aParameter', but method 'init' takes no parameters."];
+    [logger shouldHaveLogged:@"Specified a parameter named 'aParameter', but method 'init' takes no parameters."];
 }
 
 - (TyphoonInitializer*)newInitializerWithSelector:(SEL)aSelector

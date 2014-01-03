@@ -48,22 +48,8 @@ typedef enum
 
 - (id)initWithSelector:(SEL)initializer isClassMethodStrategy:(TyphoonComponentInitializerIsClassMethod)isClassMethod;
 
-- (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference;
-
-- (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference;
-
-- (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol;
-
-- (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass;
-
-- (void)injectParameterAtIndex:(NSUInteger)index withObject:(id)value;
-
-- (void)injectParameterNamed:(NSString*)name withObject:(id)value;
-
-
 /* ====================================================================================================================================== */
-#pragma mark - Block assembly
-
+#pragma mark - inject
 /**
 * Injects with the given definition.
 */
@@ -172,11 +158,27 @@ typedef enum
 */
 - (void)injectWithSelector:(SEL)selectorValue;
 
+#pragma mark - injectParameterNamed:
+- (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference;
+
+- (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol;
+
+- (void)injectParameterNamed:(NSString*)name withObject:(id)value;
+
 /**
 * Injects the parameter matched by the given name with the given definition.
 */
 - (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition;
 
+/**
+* Injects the parameter matched by the given name as a collection of the given requiredType.
+*/
+- (void)injectParameterNamed:(NSString*)name
+        asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues
+        requiredType:(id)requiredType;
+
+
+#pragma mark - injectParameterAtIndex
 /**
 * Injects the parameter at the given index with the given definition.
 */
@@ -189,12 +191,11 @@ typedef enum
         asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues
         requiredType:(id)requiredType;
 
-/**
-* Injects the parameter matched by the given name as a collection of the given requiredType.
-*/
-- (void)injectParameterNamed:(NSString*)name
-        asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues
-        requiredType:(id)requiredType;
 
+- (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference;
+
+- (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass;
+
+- (void)injectParameterAtIndex:(NSUInteger)index withObject:(id)value;
 
 @end

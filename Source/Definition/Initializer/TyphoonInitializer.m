@@ -57,12 +57,58 @@
 #pragma mark - Interface Methods
 
 
-- (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference
+#pragma mark - injectParameterNamed
+- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition;
 {
-    [self injectParameterAtIndex:[self indexOfParameter:name] withReference:reference];
+    [self injectParameterNamed:name withReference:definition.key];
 }
 
+- (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference
+{
+    [self injectParameterNamed:name success:^(NSInteger index)
+    {
+        [self injectParameterAtIndex:index withReference:reference];
+    }];
+}
 
+- (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol
+{
+    [self injectParameterNamed:name success:^(NSInteger index)
+    {
+        [self injectParameterAtIndex:index withValueAsText:text requiredTypeOrNil:classOrProtocol];
+    }];
+}
+
+- (void)injectParameterNamed:(NSString*)name asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues requiredType:(id)requiredType
+{
+    [self injectParameterNamed:name success:^(NSInteger index)
+    {
+        [self injectParameterAtIndex:index asCollection:collectionValues requiredType:requiredType];
+    }];
+}
+
+- (void)injectParameterNamed:(NSString*)name withObject:(id)value
+{
+    [self injectParameterNamed:name success:^(NSInteger index)
+    {
+        [self injectParameterAtIndex:index withObject:value];
+    }];
+}
+
+- (void)injectParameterNamed:(NSString*)name success:(void (^)(NSInteger))success
+{
+    NSInteger index = [self indexOfParameter:name];
+    if (index == NSIntegerMax) {
+        [self logParameterNotFound:name];
+        return;
+    }
+
+    if (success) {
+        success(index);
+    }
+}
+
+#pragma mark injectParameterAtIndex:
 - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference
 {
     if (index != NSIntegerMax &&index < [_parameterNames count])
@@ -70,17 +116,6 @@
         [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference]];
     }
 }
-
-- (void)injectParameterNamed:(NSString*)name withValueAsText:(NSString*)text requiredTypeOrNil:(id)classOrProtocol
-{
-    [self injectParameterAtIndex:[self indexOfParameter:name] withValueAsText:text requiredTypeOrNil:classOrProtocol];
-}
-
-- (void)injectParameterNamed:(NSString*)name asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues requiredType:(id)requiredType
-{
-    [self injectParameterAtIndex:[self indexOfParameter:name] asCollection:collectionValues requiredType:requiredType];
-}
-
 - (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass
 {
     if (index != NSIntegerMax &&index < [_parameterNames count])
@@ -93,10 +128,7 @@
 }
 
 /* ====================================================================================================================================== */
-- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition;
-{
-    [self injectParameterNamed:name withReference:definition.key];
-}
+
 
 - (void)injectWithDefinition:(TyphoonDefinition*)definition;
 {
@@ -121,16 +153,7 @@
     }
 }
 
-- (void)injectParameterNamed:(NSString*)name withObject:(id)value
-{
-    NSInteger index = [self indexOfParameter:name];
-    if (index == NSIntegerMax) {
-        [self logParameterNotFound:name];
-        return;
-    }
 
-    [self injectParameterAtIndex:index withObject:value];
-}
 
 - (void)logParameterNotFound:(NSString*)name
 {
