@@ -1,5 +1,10 @@
 var NAVTREEINDEX2 =
 {
+"interface_typhoon_r_x_m_l_element.html#a052ea6c08744dbae0cb6fb90422c3ecd":[1,0,55,34],
+"interface_typhoon_r_x_m_l_element.html#a09c074d2abcd8984ca017aa9df2e97a0":[1,0,55,25],
+"interface_typhoon_r_x_m_l_element.html#a10d5b4352d66dd5ed0f69416a3eec54b":[1,0,55,24],
+"interface_typhoon_r_x_m_l_element.html#a1988e39f29ecf8154c20c0ebb9e8f69a":[1,0,55,37],
+"interface_typhoon_r_x_m_l_element.html#a1ff402d9849e9e35676fb6fa87fd34d9":[1,0,55,33],
 "interface_typhoon_r_x_m_l_element.html#a236d6bc15825f2c9d105ddfa701d45d5":[1,0,55,21],
 "interface_typhoon_r_x_m_l_element.html#a2425ac2e907357b2b49fec29d53cf72e":[1,0,55,18],
 "interface_typhoon_r_x_m_l_element.html#a279934489d0502f9201ea17e1465bc53":[1,0,55,9],

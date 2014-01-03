@@ -28,6 +28,11 @@
               <Anchor>ac445c91bdd47b3389eadedbf33860512</Anchor>
              </Node>
              <Node>
+              <Name>markSelectorReserved:</Name>
+              <Path>interface_typhoon_assembly.html</Path>
+              <Anchor>a37d04b8e0418f5f1aff9a0c3b9745c26</Anchor>
+             </Node>
+             <Node>
               <Name>resolveCollaboratingAssemblies</Name>
               <Path>interface_typhoon_assembly.html</Path>
               <Anchor>a79828d38519e34c2dd42f06ac5408264</Anchor>
@@ -839,6 +844,11 @@
               <Anchor>ac445c91bdd47b3389eadedbf33860512</Anchor>
              </Node>
              <Node>
+              <Name>markSelectorReserved:</Name>
+              <Path>interface_typhoon_assembly.html</Path>
+              <Anchor>a37d04b8e0418f5f1aff9a0c3b9745c26</Anchor>
+             </Node>
+             <Node>
               <Name>resolveCollaboratingAssemblies</Name>
               <Path>interface_typhoon_assembly.html</Path>
               <Anchor>a79828d38519e34c2dd42f06ac5408264</Anchor>
@@ -849,6 +859,11 @@
             <Name>TyphoonAssemblySelectorAdviser</Name>
             <Path>interface_typhoon_assembly_selector_adviser.html</Path>
             <Subnodes>
+             <Node>
+              <Name>advisedNameForName:</Name>
+              <Path>interface_typhoon_assembly_selector_adviser.html</Path>
+              <Anchor>af9e69e1f964ce6b3fc63531aa9c0f7ba</Anchor>
+             </Node>
              <Node>
               <Name>advisedSELForKey:</Name>
               <Path>interface_typhoon_assembly_selector_adviser.html</Path>
@@ -3551,6 +3566,11 @@
               <Path>interface_typhoon_assembly_selector_adviser.html</Path>
               <Subnodes>
                <Node>
+                <Name>advisedNameForName:</Name>
+                <Path>interface_typhoon_assembly_selector_adviser.html</Path>
+                <Anchor>af9e69e1f964ce6b3fc63531aa9c0f7ba</Anchor>
+               </Node>
+               <Node>
                 <Name>advisedSELForKey:</Name>
                 <Path>interface_typhoon_assembly_selector_adviser.html</Path>
                 <Anchor>a3ede39fd2e0f284444e65db3589a63d0</Anchor>
@@ -4474,6 +4494,10 @@
             </Subnodes>
            </Node>
            <Node>
+            <Name>TyphoonJRMethodSwizzler.h</Name>
+            <Path>_typhoon_j_r_method_swizzler_8h.html</Path>
+           </Node>
+           <Node>
             <Name>TyphoonJRSwizzle.h</Name>
             <Path>_typhoon_j_r_swizzle_8h.html</Path>
             <Subnodes>
@@ -4498,6 +4522,10 @@
            <Node>
             <Name>TyphoonLinkerCategoryBugFix.h</Name>
             <Path>_typhoon_linker_category_bug_fix_8h.html</Path>
+           </Node>
+           <Node>
+            <Name>TyphoonMethodSwizzler.h</Name>
+            <Path>_typhoon_method_swizzler_8h.html</Path>
            </Node>
            <Node>
             <Name>TyphoonNSURLTypeConverter.h</Name>
@@ -5185,6 +5213,10 @@
               <Anchor>a10d5a0a968a41bd7edf76c8bb187b874</Anchor>
              </Node>
             </Subnodes>
+           </Node>
+           <Node>
+            <Name>TyphoonSelector.h</Name>
+            <Path>_typhoon_selector_8h.html</Path>
            </Node>
            <Node>
             <Name>TyphoonShorthand.h</Name>

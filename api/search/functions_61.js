@@ -3,6 +3,7 @@ var searchData=
   ['additemwithcomponentname_3a',['addItemWithComponentName:',['../interface_typhoon_argument_injected_as_collection.html#ac66c05f73ec196358f3ed0219a01549f',1,'TyphoonArgumentInjectedAsCollection']]],
   ['additemwithdefinition_3a',['addItemWithDefinition:',['../interface_typhoon_argument_injected_as_collection.html#a16189b81dfd94f686adb508246d83f29',1,'TyphoonArgumentInjectedAsCollection']]],
   ['additemwithtext_3arequiredtype_3a',['addItemWithText:requiredType:',['../interface_typhoon_argument_injected_as_collection.html#a7dfbde2cf94af819d6d1adbb37e84097',1,'TyphoonArgumentInjectedAsCollection']]],
+  ['advisednameforname_3a',['advisedNameForName:',['../interface_typhoon_assembly_selector_adviser.html#af9e69e1f964ce6b3fc63531aa9c0f7ba',1,'TyphoonAssemblySelectorAdviser']]],
   ['advisedselforkey_3a',['advisedSELForKey:',['../interface_typhoon_assembly_selector_adviser.html#a3ede39fd2e0f284444e65db3589a63d0',1,'TyphoonAssemblySelectorAdviser']]],
   ['advisedselforsel_3a',['advisedSELForSEL:',['../interface_typhoon_assembly_selector_adviser.html#a4e446ce199146df21c1b292b04856e29',1,'TyphoonAssemblySelectorAdviser']]],
   ['afterpropertiesset',['afterPropertiesSet',['../protocol_typhoon_property_injection_delegate-p.html#a2a19ed14a8e14be1ac0fc7e0618c0fd2',1,'TyphoonPropertyInjectionDelegate-p']]],

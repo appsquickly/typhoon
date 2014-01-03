@@ -971,6 +971,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>markSelectorReserved:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonAssembly</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_assembly.html</Path>
+    <Anchor>a37d04b8e0418f5f1aff9a0c3b9745c26</Anchor>
+    <DeclaredIn>TyphoonAssembly.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>resolveCollaboratingAssemblies</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -989,6 +1000,17 @@
       <Scope>TyphoonAssemblySelectorAdviser</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_assembly_selector_adviser.html</Path>
+    <DeclaredIn>TyphoonAssemblySelectorAdviser.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>advisedNameForName:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonAssemblySelectorAdviser</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_assembly_selector_adviser.html</Path>
+    <Anchor>af9e69e1f964ce6b3fc63531aa9c0f7ba</Anchor>
     <DeclaredIn>TyphoonAssemblySelectorAdviser.h</DeclaredIn>
   </Token>
   <Token>

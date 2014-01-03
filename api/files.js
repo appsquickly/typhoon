@@ -93,10 +93,12 @@ var files =
     [ "TyphoonIntrospectiveNSObject.h", "_typhoon_introspective_n_s_object_8h.html", [
       [ "<TyphoonIntrospectiveNSObject>", "protocol_typhoon_introspective_n_s_object-p.html", "protocol_typhoon_introspective_n_s_object-p" ]
     ] ],
+    [ "TyphoonJRMethodSwizzler.h", "_typhoon_j_r_method_swizzler_8h.html", null ],
     [ "TyphoonJRSwizzle.h", "_typhoon_j_r_swizzle_8h.html", [
       [ "NSObject(TyphoonJRSwizzle)", "category_n_s_object_07_typhoon_j_r_swizzle_08.html", "category_n_s_object_07_typhoon_j_r_swizzle_08" ]
     ] ],
     [ "TyphoonLinkerCategoryBugFix.h", "_typhoon_linker_category_bug_fix_8h.html", null ],
+    [ "TyphoonMethodSwizzler.h", "_typhoon_method_swizzler_8h.html", null ],
     [ "TyphoonNSURLTypeConverter.h", "_typhoon_n_s_u_r_l_type_converter_8h.html", [
       [ "TyphoonNSURLTypeConverter", "interface_typhoon_n_s_u_r_l_type_converter.html", null ]
     ] ],
@@ -144,6 +146,7 @@ var files =
       [ "TyphoonRXMLElement(XmlComponentFactory)", "category_typhoon_r_x_m_l_element_07_xml_component_factory_08.html", "category_typhoon_r_x_m_l_element_07_xml_component_factory_08" ]
     ] ],
     [ "TyphoonRXMLElement.h", "_typhoon_r_x_m_l_element_8h.html", "_typhoon_r_x_m_l_element_8h" ],
+    [ "TyphoonSelector.h", "_typhoon_selector_8h.html", null ],
     [ "TyphoonShorthand.h", "_typhoon_shorthand_8h.html", null ],
     [ "TyphoonStringUtils.h", "_typhoon_string_utils_8h.html", [
       [ "TyphoonStringUtils", "interface_typhoon_string_utils.html", "interface_typhoon_string_utils" ]

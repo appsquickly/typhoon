@@ -1,5 +1,6 @@
 var interface_typhoon_assembly_selector_adviser =
 [
+    [ "advisedNameForName:", "interface_typhoon_assembly_selector_adviser.html#af9e69e1f964ce6b3fc63531aa9c0f7ba", null ],
     [ "advisedSELForKey:", "interface_typhoon_assembly_selector_adviser.html#a3ede39fd2e0f284444e65db3589a63d0", null ],
     [ "advisedSELForSEL:", "interface_typhoon_assembly_selector_adviser.html#a4e446ce199146df21c1b292b04856e29", null ],
     [ "keyForAdvisedSEL:", "interface_typhoon_assembly_selector_adviser.html#a96f680e51cf51ec039571f62669dd1c7", null ],
