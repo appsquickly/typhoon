@@ -12,6 +12,7 @@
 #import "TyphoonCollaboratingAssemblyProxy.h"
 #import <objc/runtime.h>
 #import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonAssemblySelectorAdviser.h"
 
 @implementation TyphoonCollaboratingAssemblyProxy
 
@@ -42,7 +43,7 @@
     return imp_implementationWithBlock((__bridge id) objc_unretainedPointer((TyphoonDefinition*) ^(id me)
     {
         //Since we're resolving a reference to another component, all we need to provide here is the definition's key.
-        NSString* key = NSStringFromSelector(selector);
+        NSString* key = [TyphoonAssemblySelectorAdviser keyForSEL:selector];
         TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:[TyphoonCollaboratingAssemblyProxy class] key:key];
         return definition;
     }));
