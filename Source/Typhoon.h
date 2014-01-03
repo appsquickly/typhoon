@@ -22,12 +22,15 @@
 #import "TyphoonComponentFactoryPostProcessor.h"
 #import "TyphoonRXMLElement+XmlComponentFactory.h"
 #import "TyphoonRXMLElement.h"
-#import "TyphoonTestUtils.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonAssembly.h"
+#import "TyphoonCollaboratingAssemblyProxy.h"
+#import "TyphoonPropertyInjectedAsCollection.h"
+#import "TyphoonComponentFactoryAware.h"
 
 #import "TyphoonBlockComponentFactory.h"
 
 #import "TyphoonAutowire.h"
 #import "TyphoonShorthand.h"
+
 

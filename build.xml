@@ -6,6 +6,7 @@
     <path id="headers">
         <fileset dir="${source.main.dir}">
             <include name="**/*.h"/>
+            <exclude name="**/TyphoonLinkerCategoryBugFix.h"/>
         </fileset>
     </path>
     <path id="classes">
@@ -40,10 +41,14 @@
         __shouldbeprivate__coverage,
         --publish.site.dry.run"/>
 
-
+    <target name="doc" depends = "--api.report"/>
 
     <target name="fast">
         <property name="fast" value="yes"/>
+    </target>
+
+    <target name="no-fail-tests">
+        <property name="no-fail-tests" value="yes"/>
     </target>
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END PUBLIC TARGETS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
@@ -52,7 +57,9 @@
    <target name="__shouldbeprivate__build" depends="
         --test.cocoapods,
         --test.generate.report,
+        --test.evaluate,
         --api.report,
+        --podspec.lint,
         --stamp.build.passing"/>
 
      <!-- Building from the command line when using schemes is tricky. Implicit dependencies between targets in different projects are not correctly handled when building with `xcodebuild`.
@@ -60,7 +67,9 @@
      generate code coverage by linking the library test target to the universal library; this doesn't work. -->
     <target name="__shouldbeprivate__coverage" depends="
         __build.library.ios.simulator,
-        --test.library,
+        --test.cocoapods,
+        --test.generate.report,
+        --test.evaluate,
         --assemble.coverage.data,
         --coverage.report"/>
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END SHOULD BE PRIVATE TARGETS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -77,47 +86,76 @@
     </target>
 
     <target name="--stamp.build.failing">
-        <copy tofile="${reports.dir}/build-status.png" file="${basedir}/Scripts/build-failed.png"/>
+        <mkdir dir = "${reports.dir}/build-status"/>
+        <copy tofile="${reports.dir}/build-status/build-status.png" file="${basedir}/Scripts/build-failed.png"/>
     </target>
 
-    <target name="--stamp.build.passing">
-        <copy tofile="${reports.dir}/build-status.png" file="${basedir}/Scripts/build-passed.png" overwrite="true"/>
+    <target name="--stamp.build.passing" unless="tests.failed">
+        <copy tofile="${reports.dir}/build-status/build-status.png" file="${basedir}/Scripts/build-passed.png" overwrite="true"/>
     </target>
 
     <target name="--clean" unless="fast">
         <delete dir="${target.dir}"/>
+        <exec executable="git">
+            <arg line = "submodule init"/>
+        </exec>
+        <exec executable="git">
+            <arg line = "submodule update"/>
+        </exec>
+    </target>
+
+    <target name="--podspec.lint">
+        <exec executable="pod" failifexecutionfails="yes" failonerror="yes">
+            <arg line="spec lint Typhoon.podspec"/>
+        </exec>
     </target>
 
     <target name="--test.cocoapods">
-        <property name="tests.report" value="${reports.dir}/tests/test-results.txt"/>
-        <exec executable="xcodebuild" failonerror="false" outputproperty="unit.tests.output">
-            <!-- TODO: move out of derived data -->
-            <arg line="-workspace ${workspace} -scheme '${tests.ios.scheme.name}' test -destination OS=${module.sdk.version},name=iPad"/>
-        </exec>
+        <mkdir dir="${reports.dir}/tests"/>
+        <echo file="${temp.dir}/runTests.sh">
+            #!/bin/sh
+            xcodebuild -workspace ${module.name}.xcworkspace test -scheme ${library.ios.name} CONFIGURATION_TEMP_DIR='${intermediates.dir}' \
+            -destination OS=${module.sdk.version},name=iPad -destination-timeout=10 -configuration Debug > ${reports.dir}/tests/test-results.txt
+            xcpretty ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
+        </echo>
+        <chmod perm="+x" file="${temp.dir}/runTests.sh"/>
+        <exec executable="${temp.dir}/runTests.sh" failonerror="true" failifexecutionfails="true"/>
+        <loadfile property="pretty-test-output" srcFile="${reports.dir}/tests/test-results-pretty.txt"/>
     </target>
     
     <target name="__build.library.ios.simulator">
-        <exec executable="${xcodebuild}" failonerror="true">
-            <arg line="-destination OS=${module.sdk.version},name=iPhone -workspace ${workspace} -scheme '${library.ios.scheme}'"/>
-        </exec>
-    </target>  
+        <echo file="${temp.dir}/runTests.sh">
+            #!/bin/sh
+            xcodebuild -destination OS=${module.sdk.version},name=iPhone -workspace ${workspace} -scheme '${library.ios.name}' \
+            -destination-timeout=10 -configuration Debug > ${reports.dir}/tests/test-results.txt
+            xcpretty ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
+        </echo>
+        <chmod perm="+x" file="${temp.dir}/runTests.sh"/>
+        <exec executable="${temp.dir}/runTests.sh" failonerror="true" failifexecutionfails="true"/>
+        <loadfile property="pretty-test-output" srcFile="${reports.dir}/tests/test-results-pretty.txt"/>
+    </target>
+
     <property name="ios.simulator.build.dir" value="${target.dir}/ios-simulator"/>
 
     <target name="--test.library">
         <!-- The static library must be explicitly built before attempting to test, as of Xcode 4.6.3. A static library dependency is not built by xcodebuild when building the dependent. -->
-        <property name="tests.report" value="${reports.dir}/tests/test-results.txt"/>
-        <exec executable="xcodebuild" failonerror="false" outputproperty="unit.tests.output">
-            <arg line="-workspace ${workspace} test -scheme '${tests.ios.library.scheme.name}' CONFIGURATION_BUILD_DIR='${ios.simulator.build.dir}' CONFIGURATION_TEMP_DIR='${intermediates.dir}' LIBRARY_SEARCH_PATHS='${ios.simulator.build.dir}' -destination OS=${module.sdk.version},name=iPad"/>
-        </exec>
+
+        <echo file="${temp.dir}/runTests.sh">
+            #!/bin/sh
+            xcodebuild -workspace ${workspace} test -scheme '${library.ios.name}' \
+            CONFIGURATION_BUILD_DIR='${ios.simulator.build.dir}' CONFIGURATION_TEMP_DIR='${intermediates.dir}' \
+            LIBRARY_SEARCH_PATHS='${ios.simulator.build.dir}' -destination OS=${module.sdk.version},name=iPad \
+            -destination-timeout=10 -configuration Debug > ${reports.dir}/tests/test-results.txt
+            xcpretty ${reports.dir}/tests/test-results.txt > ${reports.dir}/tests/test-results-pretty.txt
+        </echo>
+        <chmod perm="+x" file="${temp.dir}/runTests.sh"/>
+        <exec executable="${temp.dir}/runTests.sh" failonerror="true" failifexecutionfails="true"/>
+        <loadfile property="pretty-test-output" srcFile="${reports.dir}/tests/test-results-pretty.txt"/>
     </target>
     
     <target name="--test.generate.report">
-        <!-- Write report to disk -->
-        <echo file="${tests.report}" message="${unit.tests.output}"/>
-        <!-- Print report to console -->
-        <echo message="${unit.tests.output}"/>
-        
-        <loadfile srcfile="${tests.report}" property="tests.error">
+        <echo>${pretty-test-output}</echo>
+        <loadfile srcfile="${reports.dir}/tests/test-results.txt" property="tests.error">
             <filterchain>
                 <filterreader classname="org.apache.tools.ant.filters.LineContains">
                     <param type="contains" value="BUILD FAILED"/>
@@ -126,21 +164,21 @@
         </loadfile>
         <fail if="tests.error" message="Tests failed to build."/>
         
-        <loadfile srcfile="${tests.report}" property="tests.failed">
+        <loadfile srcfile="${reports.dir}/tests/test-results.txt" property="tests.failed">
             <filterchain>
                 <filterreader classname="org.apache.tools.ant.filters.LineContains">
                     <param type="contains" value="** TEST FAILED **"/>
                 </filterreader>
             </filterchain>
         </loadfile>
-        
+
         <echo message="Convert test output"/>
         <echo file="${temp.dir}/convert-test-output.sh">
             #!/bin/bash
             set -e # fail script if any commands fail
 
             cd ${temp.dir}
-            ${scripts.dir}/ocunit2junit ${tests.report}
+            ${scripts.dir}/ocunit2junit ${reports.dir}/tests/test-results.txt > ${temp.dir}/junit-parser.txt
         </echo>
         <chmod perm="+x" file="${temp.dir}/convert-test-output.sh"/>
         <exec executable="${temp.dir}/convert-test-output.sh" failonerror="true" failifexecutionfails="true"/>
@@ -154,8 +192,10 @@
         <copy todir="${reports.dir}/test-results">
             <fileset dir="${scripts.dir}" includes="**/*.png"/>
         </copy>
-        
-        <fail if="tests.failed" message="Tests failed. Report is at ${tests.report}"/>   
+    </target>
+
+    <target name="--test.evaluate" unless="no-fail-tests">
+        <fail if="tests.failed" message="Tests failed. Report is at ${reports.dir}/test-results"/>
     </target>
 
     <target name="--tests.bundle.install">
@@ -177,7 +217,7 @@
                 </chainedmapper>
             </mapper>
         </pathconvert>
-        <echo message="Coverage info files: ${gcno.list}"/>
+
         <copy todir="${temp.dir}/coverage-data" flatten="true">
             <fileset dir="${objects.normal.root}" includes="${gcno.list}"/>
         </copy>
@@ -189,7 +229,10 @@
                 </chainedmapper>
             </mapper>
         </pathconvert>
-        <echo message="Coverage data files: ${gcda.list}"/>
+
+        <!--<echo message="Coverage info files: ${gcno.list}"/>-->
+        <!--<echo message="Coverage data files: ${gcda.list}"/>-->
+        <!---->
         <copy todir="${temp.dir}/coverage-data" flatten="true">
             <fileset dir="${objects.normal.root}" includes="${gcda.list}"/>
         </copy>
@@ -202,25 +245,29 @@
         <echo file="${temp.dir}/geninfo.sh">
             #!/bin/bash
             set -e # fail script if any commands fail
-            ${gen.info} ${temp.dir}/coverage-data/*.gcno --no-recursion --output-filename \
+            geninfo ${temp.dir}/coverage-data/*.gcno --no-recursion --output-filename \
             ${temp.dir}/${module.name}-temp.info
             #Remove symbols we're not interested in.
-            ${lcov} -r ${temp.dir}/${module.name}-temp.info ${framework.symbols} > ${temp.dir}/${module.name}.info
+            lcov -r ${temp.dir}/${module.name}-temp.info ${framework.symbols} > ${temp.dir}/${module.name}.info
         </echo>
         <chmod perm="+x" file="${temp.dir}/geninfo.sh"/>
-        <exec executable="${temp.dir}/geninfo.sh" failonerror="true" failifexecutionfails="true"/>
+        <exec executable="${temp.dir}/geninfo.sh" failonerror="true" failifexecutionfails="true" outputproperty="geninfo.out" errorproperty="geninfo.error"/>
 
         <echo file="${temp.dir}/genhtml.sh">
             #!/bin/bash
             set -e # fail script if any commands fail
             
-            ${gen.html} --no-function-coverage --no-branch-coverage -o ${coverage.reports.dir} \
+            genhtml --no-function-coverage --no-branch-coverage -o ${coverage.reports.dir} \
             --prefix ${basedir} ${temp.dir}/${module.name}.info
         </echo>
         <chmod perm="+x" file="${temp.dir}/genhtml.sh"/>
-        <exec executable="${temp.dir}/genhtml.sh" failonerror="true" failifexecutionfails="true"/>
+        <exec executable="${temp.dir}/genhtml.sh" failonerror="true" failifexecutionfails="true" outputproperty="genhtml.out" errorproperty="genhtml.error"/>
+
+        <exec executable="lcov">
+            <arg line="--summary ./build/temp/${module.name}.info"/>
+        </exec>
+
     </target>
-    <property name="framework.symbols" value="UIGeometry.h CGGeometry.h NSRange.h once.h"/>
 
 
     <target name="--api.report">
@@ -234,9 +281,10 @@
         <pathconvert pathsep=" " property="doc.files.list" refid="headers">
             <map from='${source.main.dir}' to='"${source.main.dir}"'/>
         </pathconvert>
-        <echo message="Documenting: ${doc.files.list}"/>
 
-        <exec executable="appledoc">
+        <!--<echo message="Documenting: ${doc.files.list}"/>-->
+
+        <exec executable="appledoc" outputproperty="appledoc.out" errorproperty="appledoc.error">
             <env key="PATH" value="${tools.paths}"/>
             <arg line="--project-name=${module.name}"/>
             <arg line="--project-company=${module.company}"/>
@@ -250,32 +298,38 @@
         <!-- Don't leave it lying around -->
         <delete file="${basedir}/docset-installed.txt"/>
 
-        <property name="docs.dir" value="${user.home}/Library/Developer/Shared/Documentation/Docsets"/>
-        <copy todir="${reports.dir}/api">
-            <fileset dir="${docs.dir}/${module.company}.${module.name}.docset/Contents/Resources/Documents"/>
+        <exec executable="doxygen" outputproperty="doxygen.out" errorproperty="doxygen.error"/>
+
+        <mkdir dir="${reports.dir}/api/images"/>
+        <copy todir="${reports.dir}/api/images">
+            <fileset dir="images"/>
         </copy>
+        <copy todir="${reports.dir}/api" file="Scripts/navtree.css" overwrite="yes"/>
+        <copy todir="${reports.dir}/api" file="Scripts/doxygen.png" overwrite="yes"/>
+
     </target>
 
     <target name="--publish.site.dry.run">
         <echo file="${dry.run.site.script}">
+            <![CDATA[
             #!/bin/bash
             set -e # fail script if any commands fail
 
             cd ${basedir}
+            find Tests/ -type f -exec git update-index --assume-unchanged '{}' \; &> ${temp.dir}/index.out
             cp -fr ${basedir}/schema ${reports.dir}
-            git remote add origin git@github.com:jasperblues/Typhoon.git || true # allow `remote add` to fail without failing script
-            git remote set-url origin git@github.com:jasperblues/Typhoon.git
+            git remote add origin git@github.com:typhoon-framework/Typhoon.git || true # allow `remote add` to fail without failing script
+            git remote set-url origin git@github.com:typhoon-framework/Typhoon.git
             git fetch origin gh-pages:gh-pages
             git fetch origin gh-pages
             git checkout gh-pages
             git branch --set-upstream-to=origin/gh-pages gh-pages
             git pull
+            cp -fr ${reports.dir}/build-status/build-status.png ./build-status/build-status.png
             rm -fr ./coverage
-            cp -fr ${reports.dir}/build-status.png ./build-status.png
-            git add --all --ignore-removal ./coverage
-            rm -fr ./coverage
+            mkdir -p ${reports.dir}/coverage
             cp -fr ${reports.dir}/coverage/ ./coverage
-            git add --all --ignore-removal ./build-status.png
+            git add --all --ignore-removal ./coverage
             rm -fr ./api
             cp -fr ${reports.dir}/api ./api
             git add --all --ignore-removal api
@@ -283,6 +337,7 @@
             cp -fr ${reports.dir}/test-results/ ./test-results
             git add --all --ignore-removal ./test-results
             cp -fr ${reports.dir}/schema ./schema
+            ]]>
         </echo>
         <chmod perm="+x" file="${dry.run.site.script}"/>
         <exec executable="${dry.run.site.script}" failonerror="true" failifexecutionfails="true">
@@ -296,9 +351,10 @@
             git commit -a -m "publish reports to gh-pages"
             git push -u origin gh-pages
             git checkout master
+            find Tests -type f -exec git update-index --no-assume-unchanged '{}' \;
         </echo>
         <chmod perm="+x" file="${push.site.script}"/>
-        <exec executable="${push.site.script}" failonerror="true" failifexecutionfails="true">
+        <exec executable="${push.site.script}" failonerror="true" failifexecutionfails="true" outputproperty="push.out" errorproperty="push.error">
             <env key="PATH" value="${tools.paths}"/>
         </exec>
     </target>
@@ -307,10 +363,10 @@
     <property name="library.ios.built.product.name" value="lib${library.ios.name}.a"/>
     <target name="--library.ios.build.universal">
         <exec executable="${xcodebuild}" failonerror="true">
-            <arg line="CONFIGURATION_BUILD_DIR='${temp.dir}/simulator' CONFIGURATION_TEMP_DIR='${intermediates.dir}/simulator' -configuration Debug ONLY_ACTIVE_ARCH=NO -sdk iphonesimulator${module.sdk.version} -arch i386 -workspace ${workspace} -scheme '${library.ios.scheme}'"/>
+            <arg line="CONFIGURATION_BUILD_DIR='${temp.dir}/simulator' CONFIGURATION_TEMP_DIR='${intermediates.dir}/simulator' -configuration Debug ONLY_ACTIVE_ARCH=NO -sdk iphonesimulator${module.sdk.version} -arch i386 -workspace ${workspace} -scheme '${library.ios.name}'"/>
         </exec>
         <exec executable="${xcodebuild}" failonerror="true">
-            <arg line="CONFIGURATION_BUILD_DIR='${temp.dir}/device' CONFIGURATION_TEMP_DIR='${intermediates.dir}/device' -configuration Debug ONLY_ACTIVE_ARCH=NO -sdk iphoneos${module.sdk.version} -arch armv7 -workspace ${workspace} -scheme '${library.ios.scheme}'"/>
+            <arg line="CONFIGURATION_BUILD_DIR='${temp.dir}/device' CONFIGURATION_TEMP_DIR='${intermediates.dir}/device' -configuration Debug ONLY_ACTIVE_ARCH=NO -sdk iphoneos${module.sdk.version} -arch armv7 -workspace ${workspace} -scheme '${library.ios.name}'"/>
         </exec>
 
         <echo file="${temp.dir}/lipo.sh">
@@ -339,7 +395,7 @@
     <property name="library.osx.built.product.name" value="lib${library.osx.name}.a"/>
     <target name="--library.build.osx">
         <exec executable="xcodebuild" failonerror="true">
-            <arg line="CONFIGURATION_BUILD_DIR='${temp.dir}/osx' CONFIGURATION_TEMP_DIR='${intermediates.dir}/osx' -workspace ${workspace} -scheme ${library.osx.scheme} -sdk macosx${module.osx.sdk.version}"/>
+            <arg line="CONFIGURATION_BUILD_DIR='${temp.dir}/osx' CONFIGURATION_TEMP_DIR='${intermediates.dir}/osx' -workspace ${workspace} -scheme ${library.osx.name} -sdk macosx${module.osx.sdk.version}"/>
         </exec>
 
         <copy todir="${target.dir}/osx/${library.osx.built.product.name}">

@@ -24,6 +24,10 @@ static NSString* const TYPHOON_BEFORE_ADVICE_PREFIX = @"__typhoonBeforeAdvice__"
 
 + (SEL)advisedSELForKey:(NSString*)key
 {
+    if ([key hasPrefix:TYPHOON_BEFORE_ADVICE_PREFIX]) {
+        [NSException raise:NSInternalInconsistencyException format:@"Don't pass an advised key into a method expecting an unadvised key."];
+    }
+
     return NSSelectorFromString([TYPHOON_BEFORE_ADVICE_PREFIX stringByAppendingString:key]);
 }
 
@@ -50,4 +54,8 @@ static NSString* const TYPHOON_BEFORE_ADVICE_PREFIX = @"__typhoonBeforeAdvice__"
     return [self advisedSELForKey:[self keyForSEL:sel]];
 }
 
++ (NSString*)advisedNameForName:(NSString*)string
+{
+    return NSStringFromSelector([self advisedSELForKey:string]);
+}
 @end

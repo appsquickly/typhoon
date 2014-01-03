@@ -59,7 +59,8 @@
 
     [xmlString appendString:@"></component>"];
 
-    NSLog(@"Generating XML element from string: '%@'.", xmlString);
+    // DDLogDebug(@"Generating XML element from string: '%@'.", xmlString);
+    // TODO: uncomment when we have per-file log levels.
     TyphoonRXMLElement* element = [TyphoonRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
     return element;
 }

@@ -16,8 +16,7 @@
 
 @interface MKTMockAwareVerificationMode : NSObject <MKTVerificationMode>
 
-+ (id)verificationWithMock:(MKTObjectMock*)mock mode:(id <MKTVerificationMode>)mode;
-
-- (id)initWithMock:(MKTObjectMock*)mock mode:(id <MKTVerificationMode>)mode;
++ (id)verificationWithMock:(MKTObjectMock *)mock mode:(id <MKTVerificationMode>)mode;
+- (id)initWithMock:(MKTObjectMock *)mock mode:(id <MKTVerificationMode>)mode;
 
 @end

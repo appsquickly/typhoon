@@ -43,7 +43,6 @@
     id<Quest> anotherQuest = [_componentFactory componentForKey:@"anotherQuest"];
     assertThat(anotherQuest, notNilValue());
     assertThat(anotherQuest.imageUrl, notNilValue());
-    NSLog(@"Another quest: %@", anotherQuest);
 }
 
 @end

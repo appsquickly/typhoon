@@ -13,13 +13,12 @@
 @interface HCIsEmptyCollection : HCHasCount
 
 + (id)isEmptyCollection;
-
 - (id)init;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_empty(void);
+OBJC_EXPORT id<HCMatcher> HC_empty(void);
 
 /**
     Matches empty collection.

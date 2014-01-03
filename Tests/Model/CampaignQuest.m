@@ -10,8 +10,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import "CampaignQuest.h"
 #import "Typhoon.h"
+#import "CampaignQuest.h"
+#import "OCLogTemplate.h"
 
 
 @implementation CampaignQuest
@@ -34,13 +35,13 @@
 
 - (void)questBeforePropertyInjection
 {
-    NSLog(@"###### My dependencies have not yet been injected. Here's what I look like: %@", [self description]);
+    LogTrace(@"###### My dependencies have not yet been injected. Here's what I look like: %@", [self description]);
 }
 
 
 - (void)questAfterPropertyInjection
 {
-    NSLog(@"$$$$$$$$$$$$$$$$$ My dependencies have been injected. And I know look like this: %@", [self description]);
+    LogTrace(@"$$$$$$$$$$$$$$$$$ My dependencies have been injected. And I know look like this: %@", [self description]);
 }
 
 - (NSString*)description

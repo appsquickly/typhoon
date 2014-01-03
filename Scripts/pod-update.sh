@@ -1,16 +1,36 @@
 #!/bin/bash
 
-PODS="${PROJECT_DIR}/Pods"
-REPO_ROOT="${PROJECT_DIR}/.."
+## Used to derive configuration used by script ##
+SCRIPTS_DIR="$(cd $(dirname "$0") && pwd)"
+REPO_ROOT="${SCRIPTS_DIR}/.."
+TESTS_DIR="${REPO_ROOT}/Tests"
+
+## Configuration used by script ##
 SOURCE="${REPO_ROOT}/Source"
-CHANGED_SOURCE_FILES="$(find "$SOURCE" \! -path "*xcuserdata*" \! -path "*.git" -newer "$PODS/")"
+SCRIPTS_DATA_DIR="${REPO_ROOT}/.scripts"
+PODS="${TESTS_DIR}/Pods"
+
+## Begin script ##
+mkdir -p "$SCRIPTS_DATA_DIR"
+mkdir -p "$PODS"
+
+CHECKSUM="$(find "$SOURCE" \! -path "*xcuserdata*" \! -path "*.git" | openssl sha1)"
+CHECKSUM_FILE="${SCRIPTS_DATA_DIR}/pod-update-checksum.txt"
+LAST_CHECKSUM="$(cat "$CHECKSUM_FILE")"
 COMMAND="pod update"
 
-if [ -n "$CHANGED_SOURCE_FILES" ]; then
-  echo "Running ${COMMAND}..."
-  echo "Because of changed source files:"
-  echo "$CHANGED_SOURCE_FILES"
-  echo -e "\n"
+cd "$PODS/.."
+
+update_checksum() 
+{
+  echo "$CHECKSUM" > "$CHECKSUM_FILE"
+}
+
+# echo "LAST_CHECKSUM is: $LAST_CHECKSUM"
+# echo "CURRENT CHECKSUM is: $CHECKSUM"
+
+if [ "$LAST_CHECKSUM" != "$CHECKSUM" ]; then
+  echo "Running ${COMMAND}, as source files have changed!"
 
   RVM="${HOME}/.rvm/bin/rvm"
   if [ ! -x $RVM ]
@@ -28,6 +48,7 @@ if [ -n "$CHANGED_SOURCE_FILES" ]; then
      if [ $? -eq 0 ]
     then
      echo "${COMMAND} succeeded."
+     update_checksum
      exit 0
      else
        echo "${COMMAND} failed."
@@ -37,13 +58,14 @@ if [ -n "$CHANGED_SOURCE_FILES" ]; then
     
   fi
 
-  RVM_COMMAND="$RVM all in $PROJECT_DIR do $COMMAND"
+  RVM_COMMAND="$RVM all in ${PODS}/.. do $COMMAND"
   echo "Running ${RVM_COMMAND}"
   $RVM_COMMAND
 
   if [ $? -eq 0 ]
   then
     echo "${COMMAND} succeeded."
+    update_checksum
   else
     echo "${COMMAND} failed."
     exit 1
@@ -52,5 +74,5 @@ else
   echo "Not running $COMMAND as source files have not changed."
 fi
 
-exit 0
 
+exit 0

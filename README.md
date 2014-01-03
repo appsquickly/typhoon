@@ -2,12 +2,11 @@
 
 A new dependency injection container for Objective-C. Light-weight, yet full-featured and super-easy to use. 
 
-
 ## Familiar with Dependency Injection?
 
-* <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">Read the User Guide</a>.
-* <a href="https://github.com/jasperblues/Typhoon-example">Try the sample application</a>.
-* <a href="https://github.com/jasperblues/Typhoon#design-goals--features">Check the feature list</a>.
+* Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>
+* <a href="https://github.com/typhoon-framework/Typhoon-example">Try the sample application</a> (***Now updated for iOS7!!!!***)
+* <a href="https://github.com/typhoon-framework/Typhoon#design-goals--features">Check the feature list</a>.
 
 otherwise. . . 
 
@@ -111,13 +110,13 @@ following:
 ## Design Goals / Features
 
 * Non-invasive. ***No macros or XML required***. . . while ***Spring-style XML*** or ***Guice-style macros*** are fully 
-supported (and sometimes useful), the main focus is on a <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">powerful Objective-C runtime approach.</a> 
+supported (and sometimes useful), the main focus is on a <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">powerful Objective-C runtime approach.</a>
 
 * Its not necessary to change ***any*** of your classes to use the framework. ***Can be introduced into legacy applications.***
 
 * No magic strings - ***supports IDE refactoring, code-completion and compile-time checking.*** 
 
-* Provides ***full-modularization and encapsulation of configuration details*** - grouping the application assembly 
+* Provides ***full-modularization and encapsulation of configuration*** - grouping the application assembly 
 details into a single document, with chapters. ***Let your architecture tell a story.*** 
 
 * ***Dependencies declared in any order.*** (The order that makes sense to humans).
@@ -146,38 +145,42 @@ ensure that the class is in the required state before and after properties are s
 
 # Usage
 
-* <a href="https://github.com/jasperblues/Typhoon-example">Play with the sample application</a>.
+* <a href="https://github.com/typhoon-framework/Typhoon-example">Play with the sample application</a>.
 
 And then:
 
-* <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-with-Blocks">Assembling Components with Blocks (recommended) </a> ___or___ <a href="https://github.com/jasperblues/Typhoon/wiki/Assembling-Components-in-XML">Assembling Components in XML</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">Assembling Components with Blocks (recommended) </a> ___or___ <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-in-XML">Assembling Components in XML</a>
 
-* <a href="https://github.com/jasperblues/Typhoon/wiki/Autowiring">Autowiring</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Autowiring">Autowiring</a>
 
-* <a href="https://github.com/jasperblues/Typhoon/wiki/Using-Assembled-Components">Using Assembled Components</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Using-Assembled-Components">Using Assembled Components</a>
 
-* <a href="https://github.com/jasperblues/Typhoon/wiki/Incorporating">Incorporating the framework into your project.</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Incorporating">Incorporating the framework into your project.</a>
 
-* <a href="https://github.com/jasperblues/Typhoon/wiki/Configuration-Management-&amp;-Testing">Configuration Management & Testing.</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Configuration-Management-&amp;-Testing">Configuration Management & Testing.</a>
 
-# Reports
+# Reports 
+![Build Status](http://www.typhoonframework.org/docs/latest/build-status/build-status.png?q=zz)
 
-In the spirit of lean-methodologies, the API and Test Coverage reports below are published by my build server, after 
-each commit. (If you'd like the script I will share it). 
 
-* <a href="http://jasperblues.github.com/Typhoon/api/index.html">API</a>
-* <a href="http://jasperblues.github.com/Typhoon/test-results/index.html">Test Results</a>
-* <a href="http://jasperblues.github.com/Typhoon/coverage/index.html">Coverage Reports</a>
+The following reports are published by our build server after each commit. (We use something a little more comprehensive than Travis - if you'd like the scripts, we'd be happy to share). Note that the status of the CI build is not related to tagged releases that are published and pushed to CocoaPods - these are stable. 
 
+Test Failures typically indicate a bug that has been flagged, but not yet fixed. By policy we maintain more than 90% test coverage. 
+
+
+
+* <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API</a>
+* <a href="http://www.typhoonframework.org/docs/latest/test-results/">Test Results</a>
+* <a href="http://www.typhoonframework.org/docs/latest/coverage">Coverage Reports</a>
 
 
 # Feature Requests and Contributions
 
 . . . are very welcome. 
 
-* <a href="https://github.com/jasperblues/Typhoon/wiki/Contribution-Guide">Contribution Guide.</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">Contribution Guide.</a>
 
-* Look at, and contribute to the <a href="https://github.com/jasperblues/Typhoon/wiki/Roadmap">roadmap</a> here.
+* Look at, and contribute to the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Roadmap">roadmap</a> here.
 
 
 # Got a question? Need some help? 
@@ -188,13 +191,13 @@ each commit. (If you'd like the script I will share it).
 
 # Core Team
 
-* <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> - <a href="mailto:jasper@appsquick.ly?Subject=Typhoon">jasper@appsquick.ly</a>
+* <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> (Instigator and Project Lead) - <a href="mailto:jasper@appsquick.ly?Subject=Typhoon">jasper@appsquick.ly</a>  
 * <a href="https://github.com/rhgills">Robert Gilliam</a> - <a href="mailto:robert@robertgilliam.org?Subject=Typhoon">robert@robertgilliam.org</a>
+* <a href="https://github.com/drodriguez">Daniel Rodríguez Troitiño</a> 
+* <a href="https://github.com/eriksundin">Erik Sundin</a> 
          
 ### With contributions from: 
 
-* <a href="https://github.com/drodriguez">Daniel Rodríguez Troitiño</a> : Factory Providers.
-* <a href="https://github.com/eriksundin">Erik Sundin</a> : Initilizer collections, infrastructure components for post-processors.  
 * <a href="https://github.com/cesteban">César Estébanez Tascón</a> : Circular Dependencies fixes. 
 * <a href="https://github.com/BrynCooke">Bryn Cooke</a> : Late injections & story board integration. 
 * <a href="http://www.linkedin.com/in/jeffreydroberts">Jeffrey Roberts</a>, Mobile Software Engineer at 
@@ -213,7 +216,7 @@ is not the same as heavy.
 
 # Apps Using Typhoon
 
-In the months since release, there have been scores app built with Typhoon. Here are some of them: 
+Here's a few apps built with Typhoon:
 
 * Mod Productions' ACO Virtual <a href="http://vimeo.com/75451558">iPad controller</a> and <a href="https://itunes.apple.com/au/app/aco-virtual/id623225640?mt=8">companion AR app.</a> (Awarded ***AppStore Best New Apps***). 
 * <a href="http://itunes.com/apps/GonnaGo">GonnaGo</a> - a social travel app. 

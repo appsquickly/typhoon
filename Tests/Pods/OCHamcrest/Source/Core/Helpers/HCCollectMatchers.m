@@ -12,16 +12,16 @@
 #import "HCWrapInMatcher.h"
 
 
-NSMutableArray* HCCollectMatchers(id item, va_list args)
+NSMutableArray *HCCollectMatchers(id item, va_list args)
 {
-    NSMutableArray* matcherList = [NSMutableArray arrayWithObject:HCWrapInMatcher(item)];
-
+    NSMutableArray *matcherList = [NSMutableArray arrayWithObject:HCWrapInMatcher(item)];
+    
     item = va_arg(args, id);
     while (item != nil)
     {
         [matcherList addObject:HCWrapInMatcher(item)];
         item = va_arg(args, id);
     }
-
+    
     return matcherList;
 }

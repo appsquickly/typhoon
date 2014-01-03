@@ -47,7 +47,6 @@
         if ([[child tag] isEqualToString:@"component"])
         {
             TyphoonDefinition* definition = [child asComponentDefinition];
-            NSLog(@"Here's the component definition: %@", definition);
             [componentDefinitions addObject:definition];
         }
     }];
@@ -65,8 +64,9 @@
         {
             if ([[child tag] isEqualToString:@"component"])
             {
+
                 TyphoonDefinition* definition = [child asComponentDefinition];
-                NSLog(@"Definition: %@", definition); //suppress unused variable warning
+                NSLog(@"Definition: %@", definition); //suppress unused variable warning. TODO: replace with a warning suppressing pragma.
                 STFail(@"Should have thrown exception");
             }
         }];

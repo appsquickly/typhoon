@@ -12,17 +12,16 @@
 
 @interface HCIsCollectionContainingInAnyOrder : HCBaseMatcher
 {
-    NSMutableArray* matchers;
+    NSMutableArray *matchers;
 }
 
-+ (id)isCollectionContainingInAnyOrder:(NSMutableArray*)itemMatchers;
-
-- (id)initWithMatchers:(NSMutableArray*)itemMatchers;
++ (id)isCollectionContainingInAnyOrder:(NSMutableArray *)itemMatchers;
+- (id)initWithMatchers:(NSMutableArray *)itemMatchers;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_containsInAnyOrder(id itemMatch, ...) NS_REQUIRES_NIL_TERMINATION;
+OBJC_EXPORT id<HCMatcher> HC_containsInAnyOrder(id itemMatch, ...) NS_REQUIRES_NIL_TERMINATION;
 
 /**
     containsInAnyOrder(firstMatcher, ...) -

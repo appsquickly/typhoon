@@ -25,9 +25,14 @@
 #import "SingletonB.h"
 #import "NotSingletonA.h"
 #import "CircularDependenciesAssembly.h"
+#import <TyphoonTypeConverter.h>
+#import <TyphoonTypeDescriptor.h>
+#import <TyphoonTypeConverterRegistry.h>
 
 #import "PrototypeInitInjected.h"
 #import "PrototypePropertyInjected.h"
+
+#import "OCLogTemplate.h"
 
 #import "CROSingletonA.h"
 #import "CROPrototypeA.h"
@@ -45,8 +50,21 @@
     }
     else
     {
-        NSLog(@"Abstract test - implemented in sub-classes.");
+        LogTrace(@"Abstract test - implemented in sub-classes.");
     }
+}
+
+- (void)tearDown
+{
+    // Unregister NSNull converter picked up in infrastructure components assembly.
+    // Try/catch to make the correct test fail if converterFor: throws an exception because of missing converter.
+    @try
+    {
+        TyphoonTypeDescriptor *nullDescriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:[NSNull class]];
+        id<TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:nullDescriptor];
+        [[TyphoonTypeConverterRegistry shared] unregister:converter];
+    }
+    @catch (NSException *exception) {}
 }
 
 /* ====================================================================================================================================== */
@@ -65,13 +83,11 @@
 - (void)test_mixed_initializer_and_property_injection
 {
     CavalryMan* anotherKnight = [_componentFactory componentForKey:@"anotherKnight"];
-    NSLog(@"Here's another knight: %@", anotherKnight);
     assertThat(anotherKnight.quest, notNilValue());
     assertThatBool(anotherKnight.hasHorseWillTravel, equalToBool(YES));
     assertThatFloat(anotherKnight.hitRatio, equalToFloat(13.75));
 
     CavalryMan* yetAnotherKnight = [_componentFactory componentForKey:@"yetAnotherKnight"];
-    NSLog(@"Here's yet another knight: %@", yetAnotherKnight);
     assertThat(yetAnotherKnight.quest, notNilValue());
     assertThatBool(yetAnotherKnight.hasHorseWillTravel, equalToBool(YES));
     assertThatFloat(yetAnotherKnight.hitRatio, equalToFloat(13.75));
@@ -83,7 +99,6 @@
     NSArray* favoriteDamsels = [knight favoriteDamsels];
     assertThat(favoriteDamsels, notNilValue());
     assertThat(favoriteDamsels, hasCountOf(2));
-    NSLog(@"Favorite damsels: %@", favoriteDamsels);
 }
 
 - (void)test_injects_collection_of_referenced_components_into_set
@@ -92,7 +107,6 @@
     NSSet* friends = [knight friends];
     assertThat(friends, notNilValue());
     assertThat(friends, hasCountOf(2));
-    NSLog(@"Friends: %@", friends);
 }
 
 /* ====================================================================================================================================== */
@@ -100,7 +114,7 @@
 - (void)test_class_method_injection
 {
     NSURL* url = [_componentFactory componentForKey:@"serviceUrl"];
-    NSLog(@"Here's the url: %@", url);
+    assertThat(url, isNot(nilValue()));
 }
 
 - (void)test_class_method_injection_raises_exception_if_required_class_not_set
@@ -108,8 +122,8 @@
     @try
     {
         NSURL* url = [_exceptionTestFactory componentForKey:@"anotherServiceUrl"];
-        NSLog(@"Here's the url: %@", url);
         STFail(@"Should have thrown exception");
+        url = nil;
     }
     @catch (NSException* e)
     {
@@ -135,7 +149,6 @@
     NSArray* favoriteDamsels = [knight favoriteDamsels];
     assertThat(favoriteDamsels, notNilValue());
     assertThat(favoriteDamsels, hasCountOf(2));
-    NSLog(@"Favorite damsels: %@", favoriteDamsels);
 }
 
 
@@ -145,8 +158,8 @@
     @try
     {
         NSString* aString = [factory componentForKey:@"aBlaString"];
-        NSLog(@"A string: %@", aString); //Suppress unused var compiler warning.
         STFail(@"Should have thrown exception");
+        aString = nil;
     }
     @catch (NSException* e)
     {
@@ -180,19 +193,31 @@
     assertThatUnsignedLong([_infrastructureComponentsFactory.postProcessors count], equalToInt(1));
 }
 
+- (void)test_resolves_property_values_from_multiple_files
+{
+    Knight* knight = [_infrastructureComponentsFactory componentForKey:@"knight"];
+    assertThatBool(knight.hasHorseWillTravel, equalToBool(YES));
+    assertThatUnsignedLongLong(knight.damselsRescued, equalToUnsignedLongLong(12));
+}
+
+- (void)test_type_converter_recognized
+{
+    TyphoonTypeDescriptor *nullDescriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:[NSNull class]];
+    id<TyphoonTypeConverter> nullConverter = [[TyphoonTypeConverterRegistry shared] converterFor:nullDescriptor];
+    assertThat(nullConverter, notNilValue());
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Circular dependencies.
 
 - (void)test_resolves_circular_dependencies_for_property_injected_by_reference
 {
     ClassADependsOnB* classA = [_circularDependenciesFactory componentForKey:@"classA"];
-    NSLog(@"Dependency on B: %@", classA.dependencyOnB);
     assertThat(classA.dependencyOnB, notNilValue());
     assertThat(classA, equalTo(classA.dependencyOnB.dependencyOnA));
     assertThat([classA.dependencyOnB class], equalTo([ClassBDependsOnA class]));
 
     ClassBDependsOnA* classB = [_circularDependenciesFactory componentForKey:@"classB"];
-    NSLog(@"Dependency on A: %@", classB.dependencyOnA);
     assertThat(classB.dependencyOnA, notNilValue());
     assertThat(classB, equalTo(classB.dependencyOnA.dependencyOnB));
     assertThat([classB.dependencyOnA class], equalTo([ClassADependsOnB class]));
@@ -202,13 +227,11 @@
 - (void)test_resolves_circular_dependencies_for_property_injected_by_type
 {
     ClassADependsOnB* classA = [_circularDependenciesFactory componentForType:[ClassADependsOnB class]];
-    NSLog(@"Dependency on B: %@", classA.dependencyOnB);
     assertThat(classA.dependencyOnB, notNilValue());
     assertThat(classA, equalTo(classA.dependencyOnB.dependencyOnA));
     assertThat([classA.dependencyOnB class], equalTo([ClassBDependsOnA class]));
 
     ClassBDependsOnA* classB = [_circularDependenciesFactory componentForType:[ClassBDependsOnA class]];
-    NSLog(@"Dependency on A: %@", classB.dependencyOnA);
     assertThat(classB.dependencyOnA, notNilValue());
     assertThat(classB, equalTo(classB.dependencyOnA.dependencyOnB));
     assertThat([classB.dependencyOnA class], equalTo([ClassADependsOnB class]));

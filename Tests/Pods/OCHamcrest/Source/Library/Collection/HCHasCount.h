@@ -12,17 +12,16 @@
 
 @interface HCHasCount : HCBaseMatcher
 {
-    id <HCMatcher> countMatcher;
+    id<HCMatcher> countMatcher;
 }
 
-+ (id)hasCount:(id <HCMatcher>)matcher;
-
-- (id)initWithCount:(id <HCMatcher>)matcher;
++ (id)hasCount:(id<HCMatcher>)matcher;
+- (id)initWithCount:(id<HCMatcher>)matcher;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_hasCount(id <HCMatcher> matcher);
+OBJC_EXPORT id<HCMatcher> HC_hasCount(id<HCMatcher> matcher);
 
 /**
     hasCount(aMatcher) -
@@ -43,7 +42,7 @@ OBJC_EXPORT id <HCMatcher> HC_hasCount(id <HCMatcher> matcher);
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_hasCountOf(NSUInteger count);
+OBJC_EXPORT id<HCMatcher> HC_hasCountOf(NSUInteger count);
 
 /**
     hasCountOf(value) -

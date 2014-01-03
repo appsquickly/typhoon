@@ -149,7 +149,7 @@
     <head>
         <title><xsl:value-of select="$TITLE"/></title>
     </head>
-    <frameset cols="30%,70%">
+    <frameset cols="20%,80%">
         <frame src="allclasses-frame.html" name="classListFrame"/>
         <frame src="overview-summary.html" name="classFrame"/>
         <noframes>
@@ -176,7 +176,7 @@ table tr td, table tr th {
 table.details tr th{
     font-weight: bold;
     text-align:left;
-    background:#005a92;
+    background:#01414e;
     color: #f0fcec;
 }
 table.details tr td{
@@ -223,7 +223,7 @@ h6 {
 .heading {
    text-align:left;
    background:#ffffff;
-   color: #006dac;
+   color: #01414e;
    font-weight: bold;	
    font-size: 170%;
    margin: 0px; 
@@ -719,7 +719,11 @@ h6 {
     <tr>
 	 <td width="2px"/>
 	 <th width="90%" class="heading"><xsl:value-of select="$TITLE"/></th>
-	 <th width="10%" text-align="left" class="heading">	     
+	 <th width="10%" text-align="left" class="heading">
+	      <img>
+		<xsl:attribute name="src"><xsl:if test="not($package.name = 'unnamed package')"><xsl:call-template name="path"><xsl:with-param name="path" select="$package.name"/></xsl:call-template>tests-logo.png</xsl:if></xsl:attribute>
+		<xsl:attribute name="border">0</xsl:attribute>
+	      </img>
 	</th>
     </tr>
     </table>		

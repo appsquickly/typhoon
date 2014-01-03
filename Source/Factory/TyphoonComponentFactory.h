@@ -18,8 +18,12 @@
 @class TyphoonDefinition;
 
 /**
-* This is the base class for for all spring component factories. Although, it could be used as-is, the intention is to use a
-* sub-class like TyphoonXmlComponentFactory.
+*
+* @ingroup Factory
+*
+* This is the base class for all component factories. It defines methods for retrieving components from the factory, as well as a low-level
+* API for assembling components from their constituent parts. This low-level API could be used as-is, however its intended to use a higher
+* level abstraction such as TyphoonBlockComponentFactory or TyphoonXmlComponentFactory.
 */
 @interface TyphoonComponentFactory : NSObject
 {
@@ -47,6 +51,20 @@
 @property(nonatomic, strong, readonly) NSArray* postProcessors;
 
 /**
+* Returns the default component factory, if one has been set. @see [TyphoonComponentFactory makeDefault]. This allows resolving components
+* from the Typhoon another class after the container has been set up.
+*
+* A more desirable approach, if possible - especially for a component that is also registered with the container is to use
+* TyphoonComponentFactoryAware, which injects the component factory as a dependency on the class that needs it. This latter approach
+* simplifies unit testing, in that no special approach to patching out the classes collaborators is required.
+*
+* @see [TyphoonComponentFactory makeDefault].
+* @see TyphoonComponentFactoryAware
+*
+*/
++ (id)defaultFactory;
+
+/**
 * Mutate the component definitions and
 * build the not-lazy singletons.
 */
@@ -58,16 +76,10 @@
 - (void)unload;
 
 /**
-* Returns the default component factory, if one has been set. (See makeDefault ).
-*/
-+ (id)defaultFactory;
-
-
-/**
 * Sets a given instance of TyphoonComponentFactory, as the default factory so that it can be retrieved later with:
-
-        [TyphoonComponentFactory defaultFactory];
-
+*
+*       [TyphoonComponentFactory defaultFactory];
+*
 */
 - (void)makeDefault;
 
@@ -91,6 +103,11 @@
 
 - (NSArray*)allComponentsForType:(id)classOrProtocol;
 
+/**
+* Returns the component matching the given key. For XML-style, this is the key specified as the 'id' attribute. For the block-style, this
+* is the name of the method on the TyphoonAssembly interface, although, for block-style you'd typically use the assembly interface itself
+* for component resolution.
+*/
 - (id)componentForKey:(NSString*)key;
 
 - (NSArray*)registry;

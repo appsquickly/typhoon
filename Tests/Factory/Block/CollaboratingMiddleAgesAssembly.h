@@ -14,12 +14,14 @@
 #import "QuestProvider.h"
 
 @class MiddleAgesAssembly;
-
+@class Knight;
 
 @interface CollaboratingMiddleAgesAssembly : TyphoonAssembly
 
 @property(nonatomic, strong, readwrite) id <QuestProvider> quests;
 
 - (id)knightWithExternalQuest;
+
++ (void)verifyKnightWithExternalQuest:(Knight*)knight;
 
 @end

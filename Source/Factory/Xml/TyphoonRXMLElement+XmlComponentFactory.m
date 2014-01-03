@@ -11,6 +11,9 @@
 
 
 
+#import "TyphoonLinkerCategoryBugFix.h"
+TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
+
 #import "TyphoonRXMLElement+XmlComponentFactory.h"
 #import "TyphoonInjectedProperty.h"
 #import "TyphoonPropertyInjectedByReference.h"
@@ -171,7 +174,16 @@
         {
             [NSException raise:NSInvalidArgumentException format:@"%@ is missing 'location' attribute.", [self tag]];
         }
-        definition = [TyphoonDefinition propertyPlaceholderWithResource:[TyphoonBundleResource withName:location]];
+
+        NSArray* locations = [location componentsSeparatedByString:@","];
+        NSMutableArray* resources = [[NSMutableArray alloc] initWithCapacity:[locations count]];
+        for (NSString* location in locations)
+        {
+            NSString* trimmedLocation = [location stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            [resources addObject:[TyphoonBundleResource withName:trimmedLocation]];
+        }
+
+        definition = [TyphoonDefinition propertyPlaceholderWithResources:resources];
     }
 
     return definition;

@@ -1,1 +1,1 @@
-../../../../Source/Component/TyphoonComponentInjectedByValue.h
+../../../../Source/Definition/TyphoonComponentInjectedByValue.h

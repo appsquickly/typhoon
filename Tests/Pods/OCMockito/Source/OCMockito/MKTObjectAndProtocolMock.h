@@ -14,8 +14,7 @@
  */
 @interface MKTObjectAndProtocolMock : MKTProtocolMock
 
-+ (id)mockForClass:(Class)aClass protocol:(Protocol*)protocol;
-
-- (id)initWithClass:(Class)aClass protocol:(Protocol*)protocol;
++ (id)mockForClass:(Class)aClass protocol:(Protocol *)protocol;
+- (id)initWithClass:(Class)aClass protocol:(Protocol *)protocol;
 
 @end

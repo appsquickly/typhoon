@@ -12,14 +12,13 @@
 
 @interface HCHasDescription : HCInvocationMatcher
 
-+ (id)hasDescription:(id <HCMatcher>)descriptionMatcher;
-
-- (id)initWithDescription:(id <HCMatcher>)descriptionMatcher;
++ (id)hasDescription:(id<HCMatcher>)descriptionMatcher;
+- (id)initWithDescription:(id<HCMatcher>)descriptionMatcher;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_hasDescription(id match);
+OBJC_EXPORT id<HCMatcher> HC_hasDescription(id match);
 
 /**
     hasDescription(aMatcher) -

@@ -1,13 +1,22 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-// Created by Robert Gilliam on 11/10/13.
-// Copyright (c) 2013 Jasper Blues. All rights reserved.
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
+//  All Rights Reserved.
 //
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
+//
+////////////////////////////////////////////////////////////////////////////////
+
 
 
 #import "TyphoonDefinitionRegisterer.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
+#import "TyphoonTypeConverter.h"
+#import "TyphoonTypeConverterRegistry.h"
 #import <objc/message.h>
 #import "OCLogTemplate.h"
 
@@ -85,7 +94,8 @@
 
 - (BOOL)definitionIsInfrastructureComponent
 {
-    if ([_definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)])
+    if ([_definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)] ||
+        [_definition.type conformsToProtocol:@protocol(TyphoonTypeConverter)])
     {
         return YES;
     }
@@ -95,7 +105,16 @@
 - (void)registerInfrastructureComponentFromDefinition
 {
     LogTrace(@"Registering Infrastructure component: %@ with key: %@", NSStringFromClass(_definition.type), _definition.key);
-    [_componentFactory attachPostProcessor:[_componentFactory objectForDefinition:_definition]];
+    
+    id infrastructureComponent = [_componentFactory objectForDefinition:_definition];
+    if ([_definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)])
+    {
+        [_componentFactory attachPostProcessor:infrastructureComponent];
+    }
+    else if ([_definition.type conformsToProtocol:@protocol(TyphoonTypeConverter)])
+    {
+        [[TyphoonTypeConverterRegistry shared] register:infrastructureComponent];
+    }
 }
 
 

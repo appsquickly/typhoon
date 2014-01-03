@@ -1,3 +1,3 @@
 [submodule "Source/Vendor/OCLogTemplate"]
 	path = Source/Vendor/OCLogTemplate
-	url = https://github.com/jasperblues/OCLogTemplate
+	url = https://github.com/typhoon-framework/OCLogTemplate.git

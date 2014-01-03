@@ -16,13 +16,12 @@
 }
 
 + (id)isEqualTo:(id)anObject;
-
 - (id)initEqualTo:(id)anObject;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalTo(id object);
+OBJC_EXPORT id<HCMatcher> HC_equalTo(id object);
 
 /**
     equalTo(anObject) -
@@ -41,5 +40,5 @@ OBJC_EXPORT id <HCMatcher> HC_equalTo(id object);
     @ingroup object_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalTo HC_equalTo
+    #define equalTo HC_equalTo
 #endif

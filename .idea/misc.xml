@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectKey">
-    <option name="state" value="https://github.com/jasperblues/Typhoon" />
+    <option name="state" value="git@github.com:typhoon-framework/Typhoon.git" />
+  </component>
+  <component name="ProjectResources">
+    <resource url="http://www.typhoonframework.org/schema/assembly" location="$PROJECT_DIR$/schema/assembly.xsd" />
   </component>
   <component name="ProjectRootManager" version="2" />
 </project>

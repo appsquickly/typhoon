@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby -wKU
+
+# To use this script, add the following keys to your local config.
+# git config filter.typhoonheader.smudge 'cat'
+# git config filter.typhoonheader.clean '`git rev-parse --git-dir`/../scripts/typhoonheader'
+
+TYPHOON_HEADER = File.open(File.join(File.dirname($0), '..', 'Copyright-Header.txt')).read
+
+XCODE_HEADER = Regexp.new(<<EOS)
+\\A//
+//  .*
+//  .*
+//
+//  Created by .* on \\d\\d/\\d\\d/\\d\\d\\.
+//  Copyright \\(c\\) \\d{4} .*\\. All rights reserved\\.
+//
+EOS
+
+input = STDIN.read
+output = STDOUT
+
+if input.start_with? TYPHOON_HEADER
+  output.write input
+elsif XCODE_HEADER.match(input)
+  output.puts TYPHOON_HEADER
+  output.write input.gsub(XCODE_HEADER, '')
+else
+  output.puts TYPHOON_HEADER
+  output.write input
+end

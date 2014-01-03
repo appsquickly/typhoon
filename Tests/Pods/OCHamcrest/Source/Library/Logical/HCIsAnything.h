@@ -12,21 +12,19 @@
 
 @interface HCIsAnything : HCBaseMatcher
 {
-    NSString* description;
+    NSString *description;
 }
 
 + (id)isAnything;
-
-+ (id)isAnythingWithDescription:(NSString*)aDescription;
++ (id)isAnythingWithDescription:(NSString *)aDescription;
 
 - (id)init;
-
-- (id)initWithDescription:(NSString*)aDescription;
+- (id)initWithDescription:(NSString *)aDescription;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_anything(void);
+OBJC_EXPORT id<HCMatcher> HC_anything(void);
 
 /**
     Matches anything.
@@ -40,11 +38,11 @@ OBJC_EXPORT id <HCMatcher> HC_anything(void);
     @ingroup logical_matchers
  */
 #ifdef HC_SHORTHAND
-#define anything() HC_anything()
+    #define anything() HC_anything()
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_anythingWithDescription(NSString* aDescription);
+OBJC_EXPORT id<HCMatcher> HC_anythingWithDescription(NSString *aDescription);
 
 /**
     anythingWithDescription(description) -
@@ -61,5 +59,5 @@ OBJC_EXPORT id <HCMatcher> HC_anythingWithDescription(NSString* aDescription);
     @ingroup logical_matchers
  */
 #ifdef HC_SHORTHAND
-#define anythingWithDescription HC_anythingWithDescription
+    #define anythingWithDescription HC_anythingWithDescription
 #endif

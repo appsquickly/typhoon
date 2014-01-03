@@ -67,7 +67,7 @@
     #define mockObjectAndProtocol(aClass, aProtocol) MKTMockObjectAndProtocol(aClass, aProtocol)
 #endif
 
-OBJC_EXPORT MKTOngoingStubbing* MKTGivenWithLocation(id testCase, const char* fileName, int lineNumber, ...);
+OBJC_EXPORT MKTOngoingStubbing *MKTGivenWithLocation(id testCase, const char *fileName, int lineNumber, ...);
 
 
 #define MKTGiven(methodCall) MKTGivenWithLocation(self, __FILE__, __LINE__, methodCall)
@@ -90,7 +90,7 @@ OBJC_EXPORT MKTOngoingStubbing* MKTGivenWithLocation(id testCase, const char* fi
 #endif
 
 
-OBJC_EXPORT id MKTVerifyWithLocation(id mock, id testCase, const char* fileName, int lineNumber);
+OBJC_EXPORT id MKTVerifyWithLocation(id mock, id testCase, const char *fileName, int lineNumber);
 
 #define MKTVerify(mock) MKTVerifyWithLocation(mock, self, __FILE__, __LINE__)
 
@@ -121,7 +121,7 @@ verifyCount(mockObject, times(1))
 #endif
 
 
-OBJC_EXPORT id MKTVerifyCountWithLocation(id mock, id mode, id testCase, const char* fileName, int lineNumber);
+OBJC_EXPORT id MKTVerifyCountWithLocation(id mock, id mode, id testCase, const char *fileName, int lineNumber);
 
 #define MKTVerifyCount(mock, mode) MKTVerifyCountWithLocation(mock, mode, self, __FILE__, __LINE__)
 
