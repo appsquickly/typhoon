@@ -21,6 +21,7 @@
 #import "TyphoonBlockComponentFactory.h"
 
 
+
 @implementation TyphoonAssemblyValidator
 {
     TyphoonDefinition *_currentDefinition;
@@ -100,3 +101,6 @@
 }
 
 @end
+
+
+NSString const * TyphoonAssemblyInvalidException = @"TyphoonAssemblyInvalidException";

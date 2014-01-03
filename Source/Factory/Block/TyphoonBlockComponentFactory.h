@@ -33,4 +33,3 @@
 @end
 
 
-extern NSString const *TyphoonAssemblyInvalidException;

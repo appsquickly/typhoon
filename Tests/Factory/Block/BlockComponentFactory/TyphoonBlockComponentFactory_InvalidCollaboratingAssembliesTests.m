@@ -15,6 +15,7 @@
 #import "TyphoonBlockComponentFactory.h"
 #import "InvalidCollaboratingAssembly.h"
 #import "InvalidCollaboratingAssembly_Initializer.h"
+#import "TyphoonAssemblyValidator.h"
 
 @interface TyphoonBlockComponentFactory_InvalidCollaboratingAssembliesTests : SenTestCase
 @end

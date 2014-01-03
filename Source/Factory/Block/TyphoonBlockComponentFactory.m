@@ -26,7 +26,7 @@
 #import "TyphoonInjectedByReference.h"
 #import "TyphoonAssemblyValidator.h"
 
-NSString const * TyphoonAssemblyInvalidException = @"TyphoonAssemblyInvalidException";
+
 
 @implementation TyphoonBlockComponentFactory
 

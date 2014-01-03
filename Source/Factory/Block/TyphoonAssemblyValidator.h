@@ -25,3 +25,6 @@
 - (void)validate;
 
 @end
+
+
+extern NSString const *TyphoonAssemblyInvalidException;
