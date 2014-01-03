@@ -413,6 +413,11 @@
             <Path>interface_typhoon_initializer.html</Path>
             <Subnodes>
              <Node>
+              <Name>logger</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>aac264252f2eda91709421e0cd03f955c</Anchor>
+             </Node>
+             <Node>
               <Name>selector</Name>
               <Path>interface_typhoon_initializer.html</Path>
               <Anchor>a0afdf647b8c1d9b1e97720142bc2a056</Anchor>
@@ -1642,6 +1647,11 @@
             <Name>TyphoonInitializer</Name>
             <Path>interface_typhoon_initializer.html</Path>
             <Subnodes>
+             <Node>
+              <Name>logger</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>aac264252f2eda91709421e0cd03f955c</Anchor>
+             </Node>
              <Node>
               <Name>selector</Name>
               <Path>interface_typhoon_initializer.html</Path>
@@ -3406,6 +3416,10 @@
             </Subnodes>
            </Node>
            <Node>
+            <Name>NSString+TyphoonAdditions.h</Name>
+            <Path>_n_s_string_09_typhoon_additions_8h.html</Path>
+           </Node>
+           <Node>
             <Name>OCLogTemplate.h</Name>
             <Path>_o_c_log_template_8h.html</Path>
             <Subnodes>
@@ -4524,6 +4538,10 @@
             <Path>_typhoon_linker_category_bug_fix_8h.html</Path>
            </Node>
            <Node>
+            <Name>TyphoonLogger.h</Name>
+            <Path>_typhoon_logger_8h.html</Path>
+           </Node>
+           <Node>
             <Name>TyphoonMethodSwizzler.h</Name>
             <Path>_typhoon_method_swizzler_8h.html</Path>
            </Node>
@@ -4536,6 +4554,10 @@
               <Path>interface_typhoon_n_s_u_r_l_type_converter.html</Path>
              </Node>
             </Subnodes>
+           </Node>
+           <Node>
+            <Name>TyphoonOCLogTemplateLogger.h</Name>
+            <Path>_typhoon_o_c_log_template_logger_8h.html</Path>
            </Node>
            <Node>
             <Name>TyphoonParameterInjectedAsCollection.h</Name>

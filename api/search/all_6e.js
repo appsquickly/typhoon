@@ -4,5 +4,6 @@ var searchData=
   ['node_5f',['node_',['../interface_typhoon_r_x_m_l_element.html#a68df9cce0a8b690a1e2be4a824f71dc6',1,'TyphoonRXMLElement']]],
   ['nsobject_28typhoonintrospectionutils_29',['NSObject(TyphoonIntrospectionUtils)',['../category_n_s_object_07_typhoon_introspection_utils_08.html',1,'']]],
   ['nsobject_28typhoonjrswizzle_29',['NSObject(TyphoonJRSwizzle)',['../category_n_s_object_07_typhoon_j_r_swizzle_08.html',1,'']]],
-  ['nsobject_2btyphoonintrospectionutils_2eh',['NSObject+TyphoonIntrospectionUtils.h',['../_n_s_object_09_typhoon_introspection_utils_8h.html',1,'']]]
+  ['nsobject_2btyphoonintrospectionutils_2eh',['NSObject+TyphoonIntrospectionUtils.h',['../_n_s_object_09_typhoon_introspection_utils_8h.html',1,'']]],
+  ['nsstring_2btyphoonadditions_2eh',['NSString+TyphoonAdditions.h',['../_n_s_string_09_typhoon_additions_8h.html',1,'']]]
 ];

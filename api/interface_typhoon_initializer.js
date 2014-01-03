@@ -1,5 +1,6 @@
 var interface_typhoon_initializer =
 [
+    [ "logger", "interface_typhoon_initializer.html#aac264252f2eda91709421e0cd03f955c", null ],
     [ "selector", "interface_typhoon_initializer.html#a0afdf647b8c1d9b1e97720142bc2a056", null ],
     [ "initWithSelector:", "interface_typhoon_initializer.html#a94b46055f740c394b7319ca5cab283bf", null ],
     [ "initWithSelector:isClassMethodStrategy:", "interface_typhoon_initializer.html#aa08acb18e79e55847353c078225ff5cf", null ],

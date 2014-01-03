@@ -3,6 +3,7 @@ var files =
     [ "NSObject+TyphoonIntrospectionUtils.h", "_n_s_object_09_typhoon_introspection_utils_8h.html", [
       [ "NSObject(TyphoonIntrospectionUtils)", "category_n_s_object_07_typhoon_introspection_utils_08.html", "category_n_s_object_07_typhoon_introspection_utils_08" ]
     ] ],
+    [ "NSString+TyphoonAdditions.h", "_n_s_string_09_typhoon_additions_8h.html", null ],
     [ "OCLogTemplate.h", "_o_c_log_template_8h.html", "_o_c_log_template_8h" ],
     [ "Typhoon.h", "_typhoon_8h.html", null ],
     [ "TyphoonArgumentInjectedAsCollection.h", "_typhoon_argument_injected_as_collection_8h.html", "_typhoon_argument_injected_as_collection_8h" ],
@@ -98,10 +99,12 @@ var files =
       [ "NSObject(TyphoonJRSwizzle)", "category_n_s_object_07_typhoon_j_r_swizzle_08.html", "category_n_s_object_07_typhoon_j_r_swizzle_08" ]
     ] ],
     [ "TyphoonLinkerCategoryBugFix.h", "_typhoon_linker_category_bug_fix_8h.html", null ],
+    [ "TyphoonLogger.h", "_typhoon_logger_8h.html", null ],
     [ "TyphoonMethodSwizzler.h", "_typhoon_method_swizzler_8h.html", null ],
     [ "TyphoonNSURLTypeConverter.h", "_typhoon_n_s_u_r_l_type_converter_8h.html", [
       [ "TyphoonNSURLTypeConverter", "interface_typhoon_n_s_u_r_l_type_converter.html", null ]
     ] ],
+    [ "TyphoonOCLogTemplateLogger.h", "_typhoon_o_c_log_template_logger_8h.html", null ],
     [ "TyphoonParameterInjectedAsCollection.h", "_typhoon_parameter_injected_as_collection_8h.html", [
       [ "TyphoonParameterInjectedAsCollection", "interface_typhoon_parameter_injected_as_collection.html", "interface_typhoon_parameter_injected_as_collection" ]
     ] ],

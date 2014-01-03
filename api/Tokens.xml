@@ -3242,6 +3242,16 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>logger</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonInitializer</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_initializer.html</Path>
+    <Anchor>aac264252f2eda91709421e0cd03f955c</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>selector</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
