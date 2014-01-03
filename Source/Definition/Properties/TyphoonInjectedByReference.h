@@ -10,8 +10,8 @@
 @interface TyphoonInjectedByReference : TyphoonInjected
 
 @property(nonatomic, strong, readonly) NSString* reference;
-@property(nonatomic, readonly) BOOL fromCollaboratingAssemblyProxy;
+@property(nonatomic, readonly) BOOL proxied;
 
-- (instancetype)initWithReference:(NSString *)reference fromCollaboratingAssemblyProxy:(BOOL)fromCollaboratingAssemblyProxy;
+- (instancetype)initWithReference:(NSString *)reference isProxied:(BOOL)proxied;
 
 @end

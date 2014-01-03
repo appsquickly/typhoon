@@ -192,7 +192,7 @@ typedef enum
         requiredType:(id)requiredType;
 
 - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString *)reference;
-- (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString *)reference fromCollaboratingAssemblyProxy:(BOOL)fromCollaboratingAssemblyProxy;
+- (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString *)reference isProxied:(BOOL)fromCollaboratingAssemblyProxy;
 
 - (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass;
 

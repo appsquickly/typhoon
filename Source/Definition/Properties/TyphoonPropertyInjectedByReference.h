@@ -24,6 +24,6 @@
 @property(nonatomic, strong, readonly) NSString* name;
 
 - (instancetype)initWithName:(NSString*)name reference:(NSString*)reference;
-- (instancetype)initWithName:(NSString *)name reference:(NSString *)reference fromCollaboratingAssemblyProxy:(BOOL)fromCollaboratingAssemblyProxy;
+- (instancetype)initWithName:(NSString *)name reference:(NSString *)reference isProxied:(BOOL)proxied;
 
 @end

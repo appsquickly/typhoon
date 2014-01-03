@@ -92,7 +92,7 @@
 }
 
 - (BOOL)injectedIsFromCollaboratingAssemblyProxy:(TyphoonInjectedByReference *)reference {
-    return reference.fromCollaboratingAssemblyProxy;
+    return reference.proxied;
 }
 
 - (void)onInjectionOnDifferentAssemblyWithDefinitionNamed:(NSObject *)object injectionType:(NSString *)type

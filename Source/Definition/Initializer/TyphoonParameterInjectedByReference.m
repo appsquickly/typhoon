@@ -22,11 +22,11 @@
 
 - (id)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString*)reference
 {
-    return [self initWithParameterIndex:parameterIndex reference:reference fromCollaboratingAssemblyProxy:NO];
+    return [self initWithParameterIndex:parameterIndex reference:reference isProxied:NO];
 }
 
-- (instancetype)initWithParameterIndex:(NSUInteger)index reference:(NSString *)reference fromCollaboratingAssemblyProxy:(BOOL)fromCollaboratingAssemblyProxy {
-    self = [super initWithReference:reference fromCollaboratingAssemblyProxy:fromCollaboratingAssemblyProxy];
+- (instancetype)initWithParameterIndex:(NSUInteger)index reference:(NSString *)reference isProxied:(BOOL)proxied {
+    self = [super initWithReference:reference isProxied:proxied];
     if (self)
     {
         _index = index;

@@ -11,12 +11,12 @@
 
 }
 
-- (instancetype)initWithReference:(NSString *)reference fromCollaboratingAssemblyProxy:(BOOL)fromCollaboratingAssemblyProxy {
+- (instancetype)initWithReference:(NSString *)reference isProxied:(BOOL)proxied {
     self = [super init];
     if (self)
     {
         _reference = reference;
-        _fromCollaboratingAssemblyProxy = fromCollaboratingAssemblyProxy;
+        _proxied = proxied;
     }
 
     return self;

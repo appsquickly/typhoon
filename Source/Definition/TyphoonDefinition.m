@@ -97,8 +97,7 @@
 
 - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition
 {
-    BOOL fromCollaboratingAssemblyProxy = [TyphoonCollaboratingAssemblyProxy definitionIsProxyDefinition:definition];
-    [self injectProperty:selector withReference:definition.key fromCollaboratingAssemblyProxy:fromCollaboratingAssemblyProxy];
+    [self injectProperty:selector withReference:definition.key isProxied:[TyphoonCollaboratingAssemblyProxy definitionIsProxyDefinition:definition]];
 }
 
 - (void)injectProperty:(SEL)selector withObjectInstance:(id)instance

@@ -25,11 +25,11 @@
 
 - (id)initWithName:(NSString*)name reference:(NSString*)reference
 {
-    return [self initWithName:name reference:reference fromCollaboratingAssemblyProxy:NO];
+    return [self initWithName:name reference:reference isProxied:NO];
 }
 
-- (instancetype)initWithName:(NSString *)name reference:(NSString *)reference fromCollaboratingAssemblyProxy:(BOOL)fromCollaboratingAssemblyProxy {
-    self = [super initWithReference:reference fromCollaboratingAssemblyProxy:fromCollaboratingAssemblyProxy];
+- (instancetype)initWithName:(NSString *)name reference:(NSString *)reference isProxied:(BOOL)proxied {
+    self = [super initWithReference:reference isProxied:proxied];
     if (self)
     {
         _name = name;

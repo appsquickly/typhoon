@@ -155,17 +155,19 @@
 }
 
 #pragma mark injectParameterAtIndex:
-- (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString *)reference fromCollaboratingAssemblyProxy:(BOOL)fromCollaboratingAssemblyProxy {
+- (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString *)reference isProxied:(BOOL)proxied {
     if (index != NSIntegerMax &&index < [_parameterNames count])
     {
-        [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference fromCollaboratingAssemblyProxy:fromCollaboratingAssemblyProxy]];
+        [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc]
+                initWithParameterIndex:index reference:reference isProxied:proxied]];
     }
 }
 
 - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString *)reference {
     if (index != NSIntegerMax &&index < [_parameterNames count])
     {
-        [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference fromCollaboratingAssemblyProxy:NO]];
+        [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc]
+                initWithParameterIndex:index reference:reference isProxied:NO]];
     }
 }
 
@@ -301,7 +303,7 @@
 
 - (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonDefinition*)definition
 {
-    [self injectParameterAtIndex:index withReference:definition.key fromCollaboratingAssemblyProxy:[TyphoonCollaboratingAssemblyProxy definitionIsProxyDefinition:definition]];
+    [self injectParameterAtIndex:index withReference:definition.key isProxied:[TyphoonCollaboratingAssemblyProxy definitionIsProxyDefinition:definition]];
 }
 
 - (void)injectParameterAtIndex:(NSUInteger)index

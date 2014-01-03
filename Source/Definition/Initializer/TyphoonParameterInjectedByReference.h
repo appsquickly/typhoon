@@ -24,7 +24,7 @@
 @property(nonatomic, readonly) TyphoonParameterInjectionType type;
 
 - (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString*)reference;
-- (instancetype)initWithParameterIndex:(NSUInteger)index reference:(NSString *)reference fromCollaboratingAssemblyProxy:(BOOL)fromCollaboratingAssemblyProxy;
+- (instancetype)initWithParameterIndex:(NSUInteger)index reference:(NSString *)reference isProxied:(BOOL)proxied;
 
 
 @end
