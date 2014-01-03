@@ -51,6 +51,12 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
             initWithName:NSStringFromSelector(selector) reference:reference]];
 }
 
+- (void)injectProperty:(SEL)selector withReference:(NSString*)reference fromCollaboratingAssemblyProxy:(BOOL)fromCollaboratingAssemblyProxy
+{
+    [_injectedProperties addObject:[[TyphoonPropertyInjectedByReference alloc]
+            initWithName:NSStringFromSelector(selector) reference:reference fromCollaboratingAssemblyProxy:fromCollaboratingAssemblyProxy]];
+}
+
 - (NSSet*)propertiesInjectedByValue
 {
     return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedWithStringRepresentation class]];

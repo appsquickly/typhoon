@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  TYPHOON FRAMEWORK
-//  Copyright 2013, Jasper Blues & Contributors
+//  Copyright 2014, Jasper Blues & Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -10,17 +10,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
+
 #import <Foundation/Foundation.h>
-#import "TyphoonAssembly.h"
+#import <Typhoon/TyphoonAssembly.h>
 
-@interface TyphoonAssembly (TyphoonAssemblyFriend)
 
-+ (BOOL)selectorReservedOrPropertySetter:(SEL)selector;
+@interface InvalidCollaboratingAssembly : TyphoonAssembly
 
-- (void)prepareForUse;
-- (NSArray*)definitions;
-- (TyphoonDefinition*)definitionForKey:(NSString*)key;
-
-@property (readonly) NSSet *definitionSelectors;
+- (id)knightWithExternalQuest;
 
 @end

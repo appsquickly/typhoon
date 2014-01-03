@@ -22,8 +22,12 @@
 
 @property(nonatomic, strong, readonly) NSString* name;
 @property(nonatomic, strong, readonly) NSString* reference;
+@property(nonatomic, readonly) BOOL fromCollaboratingAssemblyProxy;
 
 - (id)initWithName:(NSString*)name reference:(NSString*)reference;
+
+- (instancetype)initWithName:(NSString *)name reference:(NSString *)reference fromCollaboratingAssemblyProxy:(BOOL)fromCollaboratingAssemblyProxy;
++ (instancetype)referenceWithName:(NSString *)name reference:(NSString *)reference fromCollaboratingAssemblyProxy:(BOOL)fromCollaboratingAssemblyProxy;
 
 
 @end

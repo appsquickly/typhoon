@@ -171,6 +171,18 @@ static NSMutableArray* reservedSelectorsAsStrings;
     return [_definitionBuilder builtDefinitions];
 }
 
+- (TyphoonDefinition*)definitionForKey:(NSString*)key
+{
+    for (TyphoonDefinition* definition in [self definitions])
+    {
+        if ([definition.key isEqualToString:key])
+        {
+            return definition;
+        }
+    }
+    return nil;
+}
+
 - (void)prepareForUse
 {
     self.definitionSelectors = [self.adviser enumerateDefinitionSelectors];

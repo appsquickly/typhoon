@@ -31,3 +31,6 @@
 - (instancetype)initWithAssemblies:(NSArray*)assemblies;
 
 @end
+
+
+extern NSString const *TyphoonAssemblyInvalidException;
