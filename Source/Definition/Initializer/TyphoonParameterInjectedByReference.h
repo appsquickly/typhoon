@@ -22,8 +22,13 @@
 @property(nonatomic, readonly) NSUInteger index;
 @property(nonatomic, readonly) TyphoonParameterInjectionType type;
 @property(nonatomic, strong, readonly) NSString* reference;
+@property(nonatomic, readonly) BOOL fromCollaboratingAssemblyProxy;
 
 - (id)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString*)reference;
+
+- (instancetype)initWithParameterIndex:(NSUInteger)index reference:(NSString *)reference fromCollaboratingAssemblyProxy:(BOOL)fromCollaboratingAssemblyProxy;
+
++ (instancetype)referenceWithIndex:(NSUInteger)index reference:(NSString *)reference fromCollaboratingAssemblyProxy:(BOOL)fromCollaboratingAssemblyProxy;
 
 
 @end

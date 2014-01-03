@@ -11,6 +11,7 @@
 
 
 
+#import <Typhoon/TyphoonCollaboratingAssemblyProxy.h>
 #import "TyphoonInitializer.h"
 #import "TyphoonParameterInjectedByReference.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
@@ -67,7 +68,7 @@
 {
     [self injectParameterNamed:name success:^(NSInteger index)
     {
-        [self injectParameterAtIndex:index withReference:reference];
+        [self injectParameterAtIndex:index withReference:reference fromCollaboratingAssemblyProxy:NO ];
     }];
 }
 
@@ -154,11 +155,10 @@
 }
 
 #pragma mark injectParameterAtIndex:
-- (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference
-{
+- (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString *)reference fromCollaboratingAssemblyProxy:(BOOL)fromCollaboratingAssemblyProxy {
     if (index != NSIntegerMax &&index < [_parameterNames count])
     {
-        [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference]];
+        [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference fromCollaboratingAssemblyProxy:fromCollaboratingAssemblyProxy]];
     }
 }
 - (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass
@@ -293,7 +293,7 @@
 
 - (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonDefinition*)definition
 {
-    [self injectParameterAtIndex:index1 withReference:definition.key];
+    [self injectParameterAtIndex:index1 withReference:definition.key fromCollaboratingAssemblyProxy:definition.type == [TyphoonCollaboratingAssemblyProxy class]];
 }
 
 - (void)injectParameterAtIndex:(NSUInteger)index

@@ -264,9 +264,12 @@
 		75AB589C5495BDA584D85353 /* TyphoonAssemblyAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5DFD1312598D60881E9D /* TyphoonAssemblyAdviserTests.m */; };
 		75AB58AEB7266F30A2BCA95D /* TyphoonTestMethodSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5AF13A0C6960E99FAAD6 /* TyphoonTestMethodSwizzler.m */; };
 		75AB594FFB18B9EDC6A5F456 /* TyphoonAssemblyAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5DFD1312598D60881E9D /* TyphoonAssemblyAdviserTests.m */; };
+		75AB59896B0767C488965ABE /* InvalidCollaboratingAssembly_Initializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5D173B9988660AC47A84 /* InvalidCollaboratingAssembly_Initializer.m */; };
 		75AB59FA0850F12E70FF6FED /* ClassWithConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB57167D2468CBE686FFB4 /* ClassWithConstructor.m */; };
 		75AB5A3942EC509956CBF433 /* TyphoonBlockComponentFactory_CollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5BEC7AD65A916F7BB3A4 /* TyphoonBlockComponentFactory_CollectionTests.m */; };
+		75AB5A67B3B63599AADD0243 /* InvalidCollaboratingAssembly_Initializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5D173B9988660AC47A84 /* InvalidCollaboratingAssembly_Initializer.m */; };
 		75AB5AA0EB02DD1521B8C11B /* TyphoonBlockComponentFactory_CollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5BEC7AD65A916F7BB3A4 /* TyphoonBlockComponentFactory_CollectionTests.m */; };
+		75AB5BB1EB0D008D12B7398C /* InvalidCollaboratingAssembly_Initializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5D173B9988660AC47A84 /* InvalidCollaboratingAssembly_Initializer.m */; };
 		75AB5BFA65DD3425E54F4692 /* TyphoonFakeLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5A95775B4E5C8356BB0C /* TyphoonFakeLogger.m */; };
 		75AB5C1F443EB50CA917E587 /* InvalidCollaboratingAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5663291C06765BB0EFC5 /* InvalidCollaboratingAssembly.m */; };
 		75AB5CC31504CE8D3B7092FC /* TyphoonTestMethodSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5AF13A0C6960E99FAAD6 /* TyphoonTestMethodSwizzler.m */; };
@@ -495,6 +498,7 @@
 		75AB5106A7430A8EF5A6A292 /* TyphoonBlockComponentFactory_OverridingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonBlockComponentFactory_OverridingTests.m; sourceTree = "<group>"; };
 		75AB51A490B3C70B90B70509 /* SomeResource */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SomeResource; sourceTree = "<group>"; };
 		75AB5286A84793B6B45E3A08 /* TyphoonBlockComponentFactory_InvalidCollaboratingAssembliesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonBlockComponentFactory_InvalidCollaboratingAssembliesTests.m; sourceTree = "<group>"; };
+		75AB53D5256057E74D3415F3 /* InvalidCollaboratingAssembly_Initializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvalidCollaboratingAssembly_Initializer.h; sourceTree = "<group>"; };
 		75AB554CA36957CB4533799C /* InvalidCollaboratingAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvalidCollaboratingAssembly.h; sourceTree = "<group>"; };
 		75AB55CE0D48666BB5DCBA34 /* ClassWithConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassWithConstructor.h; sourceTree = "<group>"; };
 		75AB5663291C06765BB0EFC5 /* InvalidCollaboratingAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvalidCollaboratingAssembly.m; sourceTree = "<group>"; };
@@ -507,6 +511,7 @@
 		75AB5AF13A0C6960E99FAAD6 /* TyphoonTestMethodSwizzler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonTestMethodSwizzler.m; sourceTree = "<group>"; };
 		75AB5BEC7AD65A916F7BB3A4 /* TyphoonBlockComponentFactory_CollectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonBlockComponentFactory_CollectionTests.m; sourceTree = "<group>"; };
 		75AB5BF1A64523976ACB3EC9 /* TyphoonBlockComponentFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonBlockComponentFactoryTests.m; sourceTree = "<group>"; };
+		75AB5D173B9988660AC47A84 /* InvalidCollaboratingAssembly_Initializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvalidCollaboratingAssembly_Initializer.m; sourceTree = "<group>"; };
 		75AB5DFD1312598D60881E9D /* TyphoonAssemblyAdviserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblyAdviserTests.m; sourceTree = "<group>"; };
 		75AB5E3688CFE66E41869C5B /* TyphoonXMLBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonXMLBuilder.h; sourceTree = "<group>"; };
 		75AB5EE356B3D0CE72380C22 /* TyphoonTestMethodSwizzler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonTestMethodSwizzler.h; sourceTree = "<group>"; };
@@ -941,6 +946,8 @@
 				75AB5286A84793B6B45E3A08 /* TyphoonBlockComponentFactory_InvalidCollaboratingAssembliesTests.m */,
 				75AB5663291C06765BB0EFC5 /* InvalidCollaboratingAssembly.m */,
 				75AB554CA36957CB4533799C /* InvalidCollaboratingAssembly.h */,
+				75AB5D173B9988660AC47A84 /* InvalidCollaboratingAssembly_Initializer.m */,
+				75AB53D5256057E74D3415F3 /* InvalidCollaboratingAssembly_Initializer.h */,
 			);
 			path = BlockComponentFactory;
 			sourceTree = "<group>";
@@ -1419,6 +1426,7 @@
 				75AB5EF221B71E717BB14196 /* TyphoonInitializerTests.m in Sources */,
 				75AB509E57B02873FA8FA4FA /* TyphoonBlockComponentFactory_InvalidCollaboratingAssembliesTests.m in Sources */,
 				75AB572BB151F2951995C3AF /* InvalidCollaboratingAssembly.m in Sources */,
+				75AB5BB1EB0D008D12B7398C /* InvalidCollaboratingAssembly_Initializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1508,6 +1516,7 @@
 				75AB551655A156BEAFA40853 /* TyphoonInitializerTests.m in Sources */,
 				75AB51EE4C8EBC34AEB3ECD3 /* TyphoonBlockComponentFactory_InvalidCollaboratingAssembliesTests.m in Sources */,
 				75AB56EB1C4A7565C016E5B4 /* InvalidCollaboratingAssembly.m in Sources */,
+				75AB5A67B3B63599AADD0243 /* InvalidCollaboratingAssembly_Initializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1600,6 +1609,7 @@
 				75AB5D59890D9F4DFF48EE63 /* TyphoonInitializerTests.m in Sources */,
 				75AB5E14781FA2CB8F6C29EA /* TyphoonBlockComponentFactory_InvalidCollaboratingAssembliesTests.m in Sources */,
 				75AB5C1F443EB50CA917E587 /* InvalidCollaboratingAssembly.m in Sources */,
+				75AB59896B0767C488965ABE /* InvalidCollaboratingAssembly_Initializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

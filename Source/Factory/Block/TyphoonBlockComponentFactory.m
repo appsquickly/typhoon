@@ -97,6 +97,15 @@ NSString const * TyphoonAssemblyInvalidException = @"TyphoonAssemblyInvalidExcep
 //            }
 //        }
 
+        TyphoonInitializer *initializer = [definition initializer];
+        for (id <TyphoonInjectedParameter> parameter in initializer.injectedParameters) {
+            if (parameter.type == TyphoonParameterInjectionTypeReference) {
+                if ([self parameter:(TyphoonParameterInjectedByReference *)parameter isFromDifferentAssemblyThan:assembly]) {
+                    [self onInitializerInjectionWithDefinitionNamed:definition.key fromDifferentAssemblyDetected:assembly];// throw exception!
+                }
+            }
+        }
+
         // check for property injection problems
         for (id <TyphoonInjectedProperty> property in definition.injectedProperties) {
             if (property.injectionType == TyphoonPropertyInjectionTypeByReference) {
@@ -108,8 +117,26 @@ NSString const * TyphoonAssemblyInvalidException = @"TyphoonAssemblyInvalidExcep
     }
 }
 
+- (void)onInitializerInjectionWithDefinitionNamed:(NSString *)key fromDifferentAssemblyDetected:(TyphoonAssembly *)detected {
+    [NSException raise:TyphoonAssemblyInvalidException format:@"The definition '%@' on assembly '%@' attempts to perform initializer injection with an instance of a different assembly.\nUse a collaborating assembly proxy instead.", key, NSStringFromClass([detected class])];
+}
+
+- (BOOL)parameter:(TyphoonParameterInjectedByReference *)parameter isFromDifferentAssemblyThan:(TyphoonAssembly *)assembly {
+    BOOL fromSameAssembly = [self parameterIsFromCollaboratingAssemblyProxy:parameter] || [self parameterIsOnAssemblyItself:parameter currentAssembly:assembly];
+
+    return !fromSameAssembly;
+}
+
+- (BOOL)parameterIsOnAssemblyItself:(TyphoonParameterInjectedByReference *)reference currentAssembly:(TyphoonAssembly *)assembly {
+    return [assembly definitionForKey:reference.reference] != nil;
+}
+
+- (BOOL)parameterIsFromCollaboratingAssemblyProxy:(TyphoonParameterInjectedByReference *)reference {
+    return reference.fromCollaboratingAssemblyProxy;
+}
+
 - (BOOL)property:(TyphoonPropertyInjectedByReference *)property isFromDifferentAssemblyThan:(TyphoonAssembly *)assembly {
-    BOOL fromSameAssembly = [self propertyIsFromCollaboratingAssemblyProxy:(TyphoonPropertyInjectedByReference *)property] || [self propertyIsOnAssemblyItself:(TyphoonPropertyInjectedByReference *)property currentAssembly:assembly];
+    BOOL fromSameAssembly = [self propertyIsFromCollaboratingAssemblyProxy:property] || [self propertyIsOnAssemblyItself:property currentAssembly:assembly];
 
     return !fromSameAssembly;
 }

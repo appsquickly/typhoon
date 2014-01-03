@@ -14,6 +14,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "TyphoonBlockComponentFactory.h"
 #import "InvalidCollaboratingAssembly.h"
+#import "InvalidCollaboratingAssembly_Initializer.h"
 
 @interface TyphoonBlockComponentFactory_InvalidCollaboratingAssembliesTests : SenTestCase
 @end
@@ -42,7 +43,7 @@
         STFail(@"Should have thrown an exception when directly using another assembly in a definition.");
     }@catch (NSException *exception) {
         assertThat([exception name], equalTo(TyphoonAssemblyInvalidException));
-        assertThat([exception reason], equalTo(@"The definition 'knightWithExternalQuest' on assembly 'InvalidCollaboratingAssembly' attempts to perform initializer injection with an instance of a different assembly.\nUse a collaborating assembly proxy instead."));
+        assertThat([exception reason], equalTo(@"The definition 'knightWithExternalQuest' on assembly 'InvalidCollaboratingAssembly_Initializer' attempts to perform initializer injection with an instance of a different assembly.\nUse a collaborating assembly proxy instead."));
     }
 }
 
