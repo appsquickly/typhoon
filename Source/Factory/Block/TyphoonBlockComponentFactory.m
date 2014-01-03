@@ -23,6 +23,7 @@
 #import "TyphoonInjectedParameter.h"
 #import "TyphoonParameterInjectedByReference.h"
 #import "TyphoonPropertyInjectedByReference.h"
+#import "TyphoonInjectedByReference.h"
 
 NSString const * TyphoonAssemblyInvalidException = @"TyphoonAssemblyInvalidException";
 
@@ -67,93 +68,79 @@ NSString const * TyphoonAssemblyInvalidException = @"TyphoonAssemblyInvalidExcep
     [self assertIsAssembly:assembly];
 
     [assembly prepareForUse];
-    [self registerAllDefinitions:assembly];
+
+//    TyphoonAssemblyValidator *validator = [[TyphoonAssemblyValidator alloc] initWithAssembly:assembly];
+//    [validator assertDefinitionsDoNotDirectlyCallOtherAssemblies];
     [self verifyDefinitionsDoNotDirectlyCallOtherAssemblies:assembly];
+    [self registerAllDefinitions:assembly];
 }
 
+#pragma mark - verifyDefinitionsDoNotDirectlyCallOtherAssemblies
 - (void)verifyDefinitionsDoNotDirectlyCallOtherAssemblies:(TyphoonAssembly *)assembly
 {
-    // all injected initializers and properties must have a key that is either:
-    // on a definition that is a TyphoonCollaboratingAssemblyProxy
-    // on that assembly itself
-
     for (TyphoonDefinition* definition in [assembly definitions]) {
-        // initializer:
-//        TyphoonInitializer *initializer = [definition initializer];
-//        for (id <TyphoonInjectedParameter> parameter in initializer.injectedParameters) {
-//            // if it has a key...
-//            if (parameter.type == TyphoonParameterInjectionTypeReference) {
-//                if ([parameterIsFromCollaboartingAssemblyProxy:(TyphoonParameterInjectedByReference *)parameter]) {
-//                    // OK
-//                }else if ([parameterIsOnAssemblyItself:(TyphoonParameterInjectedByReference *)parameter]) {
-//                    // OK
-//                }else{
-//                    // NOT okay! Must be on a different assembly!
-//                    [self onInitializerInjectionWithDefinitionFromDifferentAssemblyDetected]; // throw exception!
-//                }
-//
-//                NSString *key = [(TyphoonParameterInjectedByReference *)parameter reference];
-//
-//            }
-//        }
+        [self verifyDefinition:definition doesNotDirectlyCallAssemblyOtherThanAssembly:assembly];
+    }
+}
 
-        TyphoonInitializer *initializer = [definition initializer];
-        for (id <TyphoonInjectedParameter> parameter in initializer.injectedParameters) {
-            if (parameter.type == TyphoonParameterInjectionTypeReference) {
-                if ([self parameter:(TyphoonParameterInjectedByReference *)parameter isFromDifferentAssemblyThan:assembly]) {
-                    [self onInitializerInjectionWithDefinitionNamed:definition.key fromDifferentAssemblyDetected:assembly];// throw exception!
-                }
-            }
-        }
+- (void)verifyDefinition:(TyphoonDefinition *)definition doesNotDirectlyCallAssemblyOtherThanAssembly:(TyphoonAssembly *)assembly
+{
+    [self verifyDefinition:definition doesNotPerformInitializerInjectionOnAssembliesOtherThanAssembly:assembly];
+    [self verifyDefinition:definition doesNotPerformPropertyInjectionOnAssembliesOtherThanAssembly:assembly];
+}
 
-        // check for property injection problems
-        for (id <TyphoonInjectedProperty> property in definition.injectedProperties) {
-            if (property.injectionType == TyphoonPropertyInjectionTypeByReference) {
-                if ([self property:(TyphoonPropertyInjectedByReference *)property isFromDifferentAssemblyThan:assembly]) {
-                   [self onPropertyInjectionWithDefinitionNamed:definition.key fromDifferentAssemblyDetected:assembly];// throw exception!
-                }
+- (void)verifyDefinition:(TyphoonDefinition *)definition doesNotPerformInitializerInjectionOnAssembliesOtherThanAssembly:(TyphoonAssembly *)assembly
+{
+    id <NSFastEnumeration> injectees = [[definition initializer] injectedParameters];
+
+    [self                           verifyDefinition:definition
+doesNotPerformInjectionOnAssembliesOtherThanAssembly:assembly
+                                           injectees:injectees
+                                       injectionType:@"initializer"];
+}
+
+- (void)verifyDefinition:(TyphoonDefinition *)definition doesNotPerformPropertyInjectionOnAssembliesOtherThanAssembly:(TyphoonAssembly *)assembly
+{
+    id <NSFastEnumeration> injectees = definition.injectedProperties;
+
+    [self                           verifyDefinition:definition
+doesNotPerformInjectionOnAssembliesOtherThanAssembly:assembly
+                                           injectees:injectees
+                                       injectionType:@"property"];
+}
+
+- (void)verifyDefinition:(TyphoonDefinition *)definition doesNotPerformInjectionOnAssembliesOtherThanAssembly:(TyphoonAssembly *)assembly injectees:(id <NSFastEnumeration>)injectees injectionType:(NSString *)injectionType
+{
+    for (TyphoonInjected *injected in injectees) {
+        if ([injected isByReference]) {
+            if ([self injected:(TyphoonInjectedByReference *)injected isFromDifferentAssemblyThanAssembly:assembly]) {
+                [self onInjectionWithDefinitionNamed:definition.key fromDifferentAssemblyThanAssembly:assembly injectionType:injectionType];
             }
         }
     }
 }
 
-- (void)onInitializerInjectionWithDefinitionNamed:(NSString *)key fromDifferentAssemblyDetected:(TyphoonAssembly *)detected {
-    [NSException raise:TyphoonAssemblyInvalidException format:@"The definition '%@' on assembly '%@' attempts to perform initializer injection with an instance of a different assembly.\nUse a collaborating assembly proxy instead.", key, NSStringFromClass([detected class])];
-}
-
-- (BOOL)parameter:(TyphoonParameterInjectedByReference *)parameter isFromDifferentAssemblyThan:(TyphoonAssembly *)assembly {
-    BOOL fromSameAssembly = [self parameterIsFromCollaboratingAssemblyProxy:parameter] || [self parameterIsOnAssemblyItself:parameter currentAssembly:assembly];
+- (BOOL)injected:(TyphoonInjectedByReference *)injected isFromDifferentAssemblyThanAssembly:(TyphoonAssembly *)assembly {
+    BOOL fromSameAssembly = [self injectedIsFromCollaboratingAssemblyProxy:injected] ||
+            [self injectedIsOnAssemblyItself:injected currentAssembly:assembly];
 
     return !fromSameAssembly;
 }
 
-- (BOOL)parameterIsOnAssemblyItself:(TyphoonParameterInjectedByReference *)reference currentAssembly:(TyphoonAssembly *)assembly {
+- (BOOL)injectedIsOnAssemblyItself:(TyphoonInjectedByReference *)reference currentAssembly:(TyphoonAssembly *)assembly {
     return [assembly definitionForKey:reference.reference] != nil;
 }
 
-- (BOOL)parameterIsFromCollaboratingAssemblyProxy:(TyphoonParameterInjectedByReference *)reference {
+- (BOOL)injectedIsFromCollaboratingAssemblyProxy:(TyphoonInjectedByReference *)reference {
     return reference.fromCollaboratingAssemblyProxy;
 }
 
-- (BOOL)property:(TyphoonPropertyInjectedByReference *)property isFromDifferentAssemblyThan:(TyphoonAssembly *)assembly {
-    BOOL fromSameAssembly = [self propertyIsFromCollaboratingAssemblyProxy:property] || [self propertyIsOnAssemblyItself:property currentAssembly:assembly];
-
-    return !fromSameAssembly;
-}
-
-- (void)onPropertyInjectionWithDefinitionNamed:(NSObject *)key fromDifferentAssemblyDetected:(TyphoonAssembly *)assembly
+- (void)onInjectionWithDefinitionNamed:(NSObject *)object fromDifferentAssemblyThanAssembly:(TyphoonAssembly *)assembly injectionType:(NSString *)type
 {
-    [NSException raise:TyphoonAssemblyInvalidException format:@"The definition '%@' on assembly '%@' attempts to perform property injection with an instance of a different assembly.\nUse a collaborating assembly proxy instead.", key, NSStringFromClass([assembly class])];
+    [NSException raise:TyphoonAssemblyInvalidException format:@"The definition '%@' on assembly '%@' attempts to perform %@ injection with an instance of a different assembly.\nUse a collaborating assembly proxy instead.", object, NSStringFromClass([assembly class]), type];
 }
 
-- (BOOL)propertyIsOnAssemblyItself:(TyphoonPropertyInjectedByReference *)reference currentAssembly:(TyphoonAssembly *)currentAssembly {
-    return [currentAssembly definitionForKey:reference.reference] != nil;
-}
-
-- (BOOL)propertyIsFromCollaboratingAssemblyProxy:(TyphoonPropertyInjectedByReference *)reference {
-    return reference.fromCollaboratingAssemblyProxy;
-}
-
+#pragma mark - Rest of Initialization
 - (void)assertIsAssembly:(TyphoonAssembly*)assembly
 {
     if (![assembly isKindOfClass:[TyphoonAssembly class]]) //

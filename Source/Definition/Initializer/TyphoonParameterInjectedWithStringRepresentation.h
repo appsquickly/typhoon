@@ -15,6 +15,7 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonInjectedParameter.h"
 #import "TyphoonComponentInjectedByValue.h"
+#import "TyphoonInjected.h"
 
 @class TyphoonTypeDescriptor;
 
@@ -25,7 +26,7 @@
 * @see TyphoonPropertyPlaceholderConfigurer
 *
 */
-@interface TyphoonParameterInjectedWithStringRepresentation : NSObject <TyphoonInjectedParameter, TyphoonComponentInjectedByValue>
+@interface TyphoonParameterInjectedWithStringRepresentation : TyphoonInjected <TyphoonInjectedParameter, TyphoonComponentInjectedByValue>
 {
     __unsafe_unretained TyphoonInitializer* _initializer;
 }

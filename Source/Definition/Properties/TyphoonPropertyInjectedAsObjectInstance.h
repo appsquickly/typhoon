@@ -12,10 +12,11 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonInjectedProperty.h"
+#import "TyphoonInjected.h"
 
 /**
 */
-@interface TyphoonPropertyInjectedAsObjectInstance : NSObject <TyphoonInjectedProperty>
+@interface TyphoonPropertyInjectedAsObjectInstance : TyphoonInjected <TyphoonInjectedProperty>
 
 @property(nonatomic, strong, readonly) NSString* name;
 @property(nonatomic, strong, readonly) id objectInstance;

@@ -40,6 +40,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonComponentFactoryAware.h"
 #import "TyphoonParameterInjectedAsCollection.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
+#import "TyphoonInjectedByReference.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 

@@ -12,6 +12,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonInjectedProperty.h"
+#import "TyphoonInjected.h"
 #import "TyphoonComponentInjectedByValue.h"
 
 /**
@@ -21,7 +22,7 @@
 * @see TyphoonPropertyPlaceholderConfigurer
 *
 */
-@interface TyphoonPropertyInjectedWithStringRepresentation : NSObject <TyphoonInjectedProperty, TyphoonComponentInjectedByValue>
+@interface TyphoonPropertyInjectedWithStringRepresentation : TyphoonInjected <TyphoonInjectedProperty, TyphoonComponentInjectedByValue>
 
 @property(nonatomic, strong, readonly) NSString* name;
 @property(nonatomic, readonly) TyphoonPropertyInjectionType type;

@@ -25,31 +25,18 @@
 
 - (id)initWithName:(NSString*)name reference:(NSString*)reference
 {
-    self = [super init];
-    if (self)
-    {
-        _name = name;
-        _reference = reference;
-    }
-    return self;
+    return [self initWithName:name reference:reference fromCollaboratingAssemblyProxy:NO];
 }
 
 - (instancetype)initWithName:(NSString *)name reference:(NSString *)reference fromCollaboratingAssemblyProxy:(BOOL)fromCollaboratingAssemblyProxy {
-    self = [super init];
+    self = [super initWithReference:reference fromCollaboratingAssemblyProxy:fromCollaboratingAssemblyProxy];
     if (self)
     {
         _name = name;
-        _reference = reference;
-        _fromCollaboratingAssemblyProxy = fromCollaboratingAssemblyProxy;
     }
 
     return self;
 }
-
-+ (instancetype)referenceWithName:(NSString *)name reference:(NSString *)reference fromCollaboratingAssemblyProxy:(BOOL)fromCollaboratingAssemblyProxy {
-    return [[self alloc] initWithName:name reference:reference fromCollaboratingAssemblyProxy:fromCollaboratingAssemblyProxy];
-}
-
 
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods
