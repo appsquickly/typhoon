@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <Typhoon/TyphoonCollaboratingAssemblyProxy.h>
+
 #import "TyphoonInitializer.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonPropertyInjectedByType.h"
@@ -20,6 +20,7 @@
 #import "TyphoonPropertyInjectedAsCollection.h"
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
 #import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonCollaboratingAssemblyProxy.h"
 
 
 @implementation TyphoonDefinition
@@ -96,7 +97,7 @@
 
 - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition
 {
-    BOOL fromCollaboratingAssemblyProxy = (definition.type == [TyphoonCollaboratingAssemblyProxy class]);
+    BOOL fromCollaboratingAssemblyProxy = [TyphoonCollaboratingAssemblyProxy definitionIsProxyDefinition:definition];
     [self injectProperty:selector withReference:definition.key fromCollaboratingAssemblyProxy:fromCollaboratingAssemblyProxy];
 }
 

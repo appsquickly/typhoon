@@ -12,6 +12,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class TyphoonDefinition;
+
 /**
 * @ingroup Factory
 *
@@ -23,5 +25,7 @@
 @interface TyphoonCollaboratingAssemblyProxy : NSObject
 
 + (id)proxy;
+
++ (BOOL)definitionIsProxyDefinition:(TyphoonDefinition *)definition;
 
 @end

@@ -299,9 +299,9 @@
 /* ====================================================================================================================================== */
 #pragma mark - Block assembly
 
-- (void)injectParameterAtIndex:(NSUInteger)index1 withDefinition:(TyphoonDefinition*)definition
+- (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonDefinition*)definition
 {
-    [self injectParameterAtIndex:index1 withReference:definition.key fromCollaboratingAssemblyProxy:definition.type == [TyphoonCollaboratingAssemblyProxy class]];
+    [self injectParameterAtIndex:index withReference:definition.key fromCollaboratingAssemblyProxy:[TyphoonCollaboratingAssemblyProxy definitionIsProxyDefinition:definition]];
 }
 
 - (void)injectParameterAtIndex:(NSUInteger)index
