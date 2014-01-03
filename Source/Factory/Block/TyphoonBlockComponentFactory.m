@@ -12,18 +12,14 @@
 
 
 #import <objc/runtime.h>
-#import <Typhoon/TyphoonInitializer+InstanceBuilder.h>
-#import <Typhoon/TyphoonCollaboratingAssemblyProxy.h>
+#import "Typhoon/TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonBlockComponentFactory.h"
 #import "TyphoonAssembly.h"
 #import "TyphoonDefinition.h"
 #import "OCLogTemplate.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
-#import "TyphoonInitializer.h"
 #import "TyphoonInjectedParameter.h"
 #import "TyphoonParameterInjectedByReference.h"
-#import "TyphoonPropertyInjectedByReference.h"
-#import "TyphoonInjectedByReference.h"
 #import "TyphoonAssemblyValidator.h"
 
 
