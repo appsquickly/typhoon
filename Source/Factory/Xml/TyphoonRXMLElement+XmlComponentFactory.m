@@ -268,7 +268,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
         }
         else if (index)
         {
-            [initializer injectParameterAtIndex:[index integerValue] withReference:reference fromCollaboratingAssemblyProxy:NO ];
+            [initializer injectParameterAtIndex:[index integerValue] withReference:reference];
         }
 
         // TODO: should raise an exception if no name or index specified. is NOT implicit with XML. but it shoudl be - you should not need to specify.

@@ -68,7 +68,7 @@
 {
     [self injectParameterNamed:name success:^(NSInteger index)
     {
-        [self injectParameterAtIndex:index withReference:reference fromCollaboratingAssemblyProxy:NO ];
+        [self injectParameterAtIndex:index withReference:reference];
     }];
 }
 
@@ -161,6 +161,14 @@
         [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference fromCollaboratingAssemblyProxy:fromCollaboratingAssemblyProxy]];
     }
 }
+
+- (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString *)reference {
+    if (index != NSIntegerMax &&index < [_parameterNames count])
+    {
+        [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference fromCollaboratingAssemblyProxy:NO]];
+    }
+}
+
 - (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass
 {
     if (index != NSIntegerMax &&index < [_parameterNames count])
