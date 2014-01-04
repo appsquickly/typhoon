@@ -453,6 +453,11 @@
               <Anchor>a4a2990d4fbbb8ac01132b91aa3ea5555</Anchor>
              </Node>
              <Node>
+              <Name>injectParameterAtIndex:withReference:isProxied:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>aa014f7e919784075dc598d25057f3615</Anchor>
+             </Node>
+             <Node>
               <Name>injectParameterAtIndex:withValueAsText:requiredTypeOrNil:</Name>
               <Path>interface_typhoon_initializer.html</Path>
               <Anchor>a66ea934b01c3ec49074817c169dfab87</Anchor>
@@ -885,9 +890,35 @@
               <Anchor>a96f680e51cf51ec039571f62669dd1c7</Anchor>
              </Node>
              <Node>
+              <Name>keyForSEL:</Name>
+              <Path>interface_typhoon_assembly_selector_adviser.html</Path>
+              <Anchor>a1a0a1d5feca42dd6e8a695ed562e6f76</Anchor>
+             </Node>
+             <Node>
               <Name>selectorIsAdvised:</Name>
               <Path>interface_typhoon_assembly_selector_adviser.html</Path>
               <Anchor>a3a84226f163361adc8e91ac260835bb5</Anchor>
+             </Node>
+            </Subnodes>
+           </Node>
+           <Node>
+            <Name>TyphoonAssemblyValidator</Name>
+            <Path>interface_typhoon_assembly_validator.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>assembly</Name>
+              <Path>interface_typhoon_assembly_validator.html</Path>
+              <Anchor>aeac2aa705551f45e6bd1f7c7c4d515a6</Anchor>
+             </Node>
+             <Node>
+              <Name>initWithAssembly:</Name>
+              <Path>interface_typhoon_assembly_validator.html</Path>
+              <Anchor>af058aea68168177fabbf4ab2de4e83df</Anchor>
+             </Node>
+             <Node>
+              <Name>validate</Name>
+              <Path>interface_typhoon_assembly_validator.html</Path>
+              <Anchor>a3f6ded76e6a79906890c7c929c478406</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -1688,6 +1719,11 @@
               <Anchor>a4a2990d4fbbb8ac01132b91aa3ea5555</Anchor>
              </Node>
              <Node>
+              <Name>injectParameterAtIndex:withReference:isProxied:</Name>
+              <Path>interface_typhoon_initializer.html</Path>
+              <Anchor>aa014f7e919784075dc598d25057f3615</Anchor>
+             </Node>
+             <Node>
               <Name>injectParameterAtIndex:withValueAsText:requiredTypeOrNil:</Name>
               <Path>interface_typhoon_initializer.html</Path>
               <Anchor>a66ea934b01c3ec49074817c169dfab87</Anchor>
@@ -1938,11 +1974,6 @@
               <Anchor>a9c0fa9ee6d28f103d4e6687ecae3b50b</Anchor>
              </Node>
              <Node>
-              <Name>reference</Name>
-              <Path>interface_typhoon_parameter_injected_by_reference.html</Path>
-              <Anchor>a8d2c2ffacea8d4d229f8be01e903e686</Anchor>
-             </Node>
-             <Node>
               <Name>type</Name>
               <Path>interface_typhoon_parameter_injected_by_reference.html</Path>
               <Anchor>a337b1e1d18b01629da7e1deb88545049</Anchor>
@@ -1950,7 +1981,12 @@
              <Node>
               <Name>initWithParameterIndex:reference:</Name>
               <Path>interface_typhoon_parameter_injected_by_reference.html</Path>
-              <Anchor>a4a0bb9a3f0b8fe6beab2758428c03ccd</Anchor>
+              <Anchor>afbca4ff05697cc18bfec7dd7d279983a</Anchor>
+             </Node>
+             <Node>
+              <Name>initWithParameterIndex:reference:isProxied:</Name>
+              <Path>interface_typhoon_parameter_injected_by_reference.html</Path>
+              <Anchor>a113dca3c0bbff0676f6557f8503b837d</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -2192,14 +2228,14 @@
               <Anchor>aae1b85d7db405dcf6f08863cc1bf8d22</Anchor>
              </Node>
              <Node>
-              <Name>reference</Name>
-              <Path>interface_typhoon_property_injected_by_reference.html</Path>
-              <Anchor>a3b4a64e6b05b7da3395a9e8935410d0a</Anchor>
-             </Node>
-             <Node>
               <Name>initWithName:reference:</Name>
               <Path>interface_typhoon_property_injected_by_reference.html</Path>
-              <Anchor>a451993a91f303fbf9f19eea5a09c853e</Anchor>
+              <Anchor>ac2643737ffad963f9c0f587e12b85293</Anchor>
+             </Node>
+             <Node>
+              <Name>initWithName:reference:isProxied:</Name>
+              <Path>interface_typhoon_property_injected_by_reference.html</Path>
+              <Anchor>a4e3c8289d1165ce91ad38110a077b5ca</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -2802,26 +2838,16 @@
             <Path></Path>
             <Subnodes>
              <Node>
-              <Name>TyphoonArgumentInjectedAsCollection</Name>
-              <Path>interface_typhoon_argument_injected_as_collection.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>TyphoonParameterInjectedAsCollection</Name>
-                <Path>interface_typhoon_parameter_injected_as_collection.html</Path>
-               </Node>
-               <Node>
-                <Name>TyphoonPropertyInjectedAsCollection</Name>
-                <Path>interface_typhoon_property_injected_as_collection.html</Path>
-               </Node>
-              </Subnodes>
-             </Node>
-             <Node>
               <Name>TyphoonAssembly</Name>
               <Path>interface_typhoon_assembly.html</Path>
              </Node>
              <Node>
               <Name>TyphoonAssemblySelectorAdviser</Name>
               <Path>interface_typhoon_assembly_selector_adviser.html</Path>
+             </Node>
+             <Node>
+              <Name>TyphoonAssemblyValidator</Name>
+              <Path>interface_typhoon_assembly_validator.html</Path>
              </Node>
              <Node>
               <Name>TyphoonAssistedFactoryBase</Name>
@@ -3066,18 +3092,6 @@
               <Path>interface_typhoon_n_s_u_r_l_type_converter.html</Path>
              </Node>
              <Node>
-              <Name>TyphoonParameterInjectedByReference</Name>
-              <Path>interface_typhoon_parameter_injected_by_reference.html</Path>
-             </Node>
-             <Node>
-              <Name>TyphoonParameterInjectedWithObjectInstance</Name>
-              <Path>interface_typhoon_parameter_injected_with_object_instance.html</Path>
-             </Node>
-             <Node>
-              <Name>TyphoonParameterInjectedWithStringRepresentation</Name>
-              <Path>interface_typhoon_parameter_injected_with_string_representation.html</Path>
-             </Node>
-             <Node>
               <Name>TyphoonPassThroughTypeConverter</Name>
               <Path>interface_typhoon_pass_through_type_converter.html</Path>
              </Node>
@@ -3092,22 +3106,6 @@
              <Node>
               <Name>TyphoonPrimitiveTypeConverter</Name>
               <Path>interface_typhoon_primitive_type_converter.html</Path>
-             </Node>
-             <Node>
-              <Name>TyphoonPropertyInjectedAsObjectInstance</Name>
-              <Path>interface_typhoon_property_injected_as_object_instance.html</Path>
-             </Node>
-             <Node>
-              <Name>TyphoonPropertyInjectedByReference</Name>
-              <Path>interface_typhoon_property_injected_by_reference.html</Path>
-             </Node>
-             <Node>
-              <Name>TyphoonPropertyInjectedByType</Name>
-              <Path>interface_typhoon_property_injected_by_type.html</Path>
-             </Node>
-             <Node>
-              <Name>TyphoonPropertyInjectedWithStringRepresentation</Name>
-              <Path>interface_typhoon_property_injected_with_string_representation.html</Path>
              </Node>
              <Node>
               <Name>&lt;TyphoonPropertyInjectionDelegate&gt;</Name>
@@ -3182,6 +3180,60 @@
            <Node>
             <Name>TyphoonAssistedFactoryBase(TyphoonFactoryMethodClosure)</Name>
             <Path>category_typhoon_assisted_factory_base_07_typhoon_factory_method_closure_08.html</Path>
+           </Node>
+           <Node>
+            <Name>TyphoonInjected</Name>
+            <Path></Path>
+            <Subnodes>
+             <Node>
+              <Name>TyphoonArgumentInjectedAsCollection</Name>
+              <Path>interface_typhoon_argument_injected_as_collection.html</Path>
+              <Subnodes>
+               <Node>
+                <Name>TyphoonParameterInjectedAsCollection</Name>
+                <Path>interface_typhoon_parameter_injected_as_collection.html</Path>
+               </Node>
+               <Node>
+                <Name>TyphoonPropertyInjectedAsCollection</Name>
+                <Path>interface_typhoon_property_injected_as_collection.html</Path>
+               </Node>
+              </Subnodes>
+             </Node>
+             <Node>
+              <Name>TyphoonParameterInjectedWithObjectInstance</Name>
+              <Path>interface_typhoon_parameter_injected_with_object_instance.html</Path>
+             </Node>
+             <Node>
+              <Name>TyphoonParameterInjectedWithStringRepresentation</Name>
+              <Path>interface_typhoon_parameter_injected_with_string_representation.html</Path>
+             </Node>
+             <Node>
+              <Name>TyphoonPropertyInjectedAsObjectInstance</Name>
+              <Path>interface_typhoon_property_injected_as_object_instance.html</Path>
+             </Node>
+             <Node>
+              <Name>TyphoonPropertyInjectedByType</Name>
+              <Path>interface_typhoon_property_injected_by_type.html</Path>
+             </Node>
+             <Node>
+              <Name>TyphoonPropertyInjectedWithStringRepresentation</Name>
+              <Path>interface_typhoon_property_injected_with_string_representation.html</Path>
+             </Node>
+            </Subnodes>
+           </Node>
+           <Node>
+            <Name>TyphoonInjectedByReference</Name>
+            <Path></Path>
+            <Subnodes>
+             <Node>
+              <Name>TyphoonParameterInjectedByReference</Name>
+              <Path>interface_typhoon_parameter_injected_by_reference.html</Path>
+             </Node>
+             <Node>
+              <Name>TyphoonPropertyInjectedByReference</Name>
+              <Path>interface_typhoon_property_injected_by_reference.html</Path>
+             </Node>
+            </Subnodes>
            </Node>
            <Node>
             <Name>TyphoonRXMLElement(XmlComponentFactory)</Name>
@@ -3600,11 +3652,48 @@
                 <Anchor>a96f680e51cf51ec039571f62669dd1c7</Anchor>
                </Node>
                <Node>
+                <Name>keyForSEL:</Name>
+                <Path>interface_typhoon_assembly_selector_adviser.html</Path>
+                <Anchor>a1a0a1d5feca42dd6e8a695ed562e6f76</Anchor>
+               </Node>
+               <Node>
                 <Name>selectorIsAdvised:</Name>
                 <Path>interface_typhoon_assembly_selector_adviser.html</Path>
                 <Anchor>a3a84226f163361adc8e91ac260835bb5</Anchor>
                </Node>
               </Subnodes>
+             </Node>
+            </Subnodes>
+           </Node>
+           <Node>
+            <Name>TyphoonAssemblyValidator.h</Name>
+            <Path>_typhoon_assembly_validator_8h.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>TyphoonAssemblyValidator</Name>
+              <Path>interface_typhoon_assembly_validator.html</Path>
+              <Subnodes>
+               <Node>
+                <Name>assembly</Name>
+                <Path>interface_typhoon_assembly_validator.html</Path>
+                <Anchor>aeac2aa705551f45e6bd1f7c7c4d515a6</Anchor>
+               </Node>
+               <Node>
+                <Name>initWithAssembly:</Name>
+                <Path>interface_typhoon_assembly_validator.html</Path>
+                <Anchor>af058aea68168177fabbf4ab2de4e83df</Anchor>
+               </Node>
+               <Node>
+                <Name>validate</Name>
+                <Path>interface_typhoon_assembly_validator.html</Path>
+                <Anchor>a3f6ded76e6a79906890c7c929c478406</Anchor>
+               </Node>
+              </Subnodes>
+             </Node>
+             <Node>
+              <Name>TyphoonAssemblyInvalidException</Name>
+              <Path>_typhoon_assembly_validator_8h.html</Path>
+              <Anchor>a846415ad714e37e0cfcd44def3169f7a</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -4341,6 +4430,14 @@
             </Subnodes>
            </Node>
            <Node>
+            <Name>TyphoonInjected.h</Name>
+            <Path>_typhoon_injected_8h.html</Path>
+           </Node>
+           <Node>
+            <Name>TyphoonInjectedByReference.h</Name>
+            <Path>_typhoon_injected_by_reference_8h.html</Path>
+           </Node>
+           <Node>
             <Name>TyphoonInjectedParameter.h</Name>
             <Path>_typhoon_injected_parameter_8h.html</Path>
             <Subnodes>
@@ -4605,11 +4702,6 @@
                 <Anchor>a9c0fa9ee6d28f103d4e6687ecae3b50b</Anchor>
                </Node>
                <Node>
-                <Name>reference</Name>
-                <Path>interface_typhoon_parameter_injected_by_reference.html</Path>
-                <Anchor>a8d2c2ffacea8d4d229f8be01e903e686</Anchor>
-               </Node>
-               <Node>
                 <Name>type</Name>
                 <Path>interface_typhoon_parameter_injected_by_reference.html</Path>
                 <Anchor>a337b1e1d18b01629da7e1deb88545049</Anchor>
@@ -4617,7 +4709,12 @@
                <Node>
                 <Name>initWithParameterIndex:reference:</Name>
                 <Path>interface_typhoon_parameter_injected_by_reference.html</Path>
-                <Anchor>a4a0bb9a3f0b8fe6beab2758428c03ccd</Anchor>
+                <Anchor>afbca4ff05697cc18bfec7dd7d279983a</Anchor>
+               </Node>
+               <Node>
+                <Name>initWithParameterIndex:reference:isProxied:</Name>
+                <Path>interface_typhoon_parameter_injected_by_reference.html</Path>
+                <Anchor>a113dca3c0bbff0676f6557f8503b837d</Anchor>
                </Node>
               </Subnodes>
              </Node>
@@ -4902,14 +4999,14 @@
                 <Anchor>aae1b85d7db405dcf6f08863cc1bf8d22</Anchor>
                </Node>
                <Node>
-                <Name>reference</Name>
-                <Path>interface_typhoon_property_injected_by_reference.html</Path>
-                <Anchor>a3b4a64e6b05b7da3395a9e8935410d0a</Anchor>
-               </Node>
-               <Node>
                 <Name>initWithName:reference:</Name>
                 <Path>interface_typhoon_property_injected_by_reference.html</Path>
-                <Anchor>a451993a91f303fbf9f19eea5a09c853e</Anchor>
+                <Anchor>ac2643737ffad963f9c0f587e12b85293</Anchor>
+               </Node>
+               <Node>
+                <Name>initWithName:reference:isProxied:</Name>
+                <Path>interface_typhoon_property_injected_by_reference.html</Path>
+                <Anchor>a4e3c8289d1165ce91ad38110a077b5ca</Anchor>
                </Node>
               </Subnodes>
              </Node>
@@ -5616,6 +5713,10 @@
            <Node>
             <Name>Functions</Name>
             <Path>globals_func.html</Path>
+           </Node>
+           <Node>
+            <Name>Variables</Name>
+            <Path>globals_vars.html</Path>
            </Node>
            <Node>
             <Name>Typedefs</Name>

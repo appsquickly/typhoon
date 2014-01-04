@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -71,18 +71,18 @@
 <span class="lineNum">      13 </span>            : 
 <span class="lineNum">      14 </span>            : #import &lt;Foundation/Foundation.h&gt;
 <span class="lineNum">      15 </span>            : #import &quot;TyphoonInjectedProperty.h&quot;
-<span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span>            : /**
-<span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span>            : * Represents a property injected by referencing another definition in the container.
-<span class="lineNum">      20 </span>            : */
-<span class="lineNum">      21 </span>            : @interface TyphoonPropertyInjectedByReference : NSObject &lt;TyphoonInjectedProperty&gt;
-<span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineCov">        374 : @property(nonatomic, strong, readonly) NSString* name;</span>
-<span class="lineNum">      24 </span><span class="lineCov">        162 : @property(nonatomic, strong, readonly) NSString* reference;</span>
+<span class="lineNum">      16 </span>            : #import &quot;TyphoonInjectedByReference.h&quot;
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : /**
+<span class="lineNum">      19 </span>            : 
+<span class="lineNum">      20 </span>            : * Represents a property injected by referencing another definition in the container.
+<span class="lineNum">      21 </span>            : */
+<span class="lineNum">      22 </span>            : @interface TyphoonPropertyInjectedByReference : TyphoonInjectedByReference &lt;TyphoonInjectedProperty&gt;
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 : @property(nonatomic, strong, readonly) NSString* name;</span>
 <span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span>            : - (id)initWithName:(NSString*)name reference:(NSString*)reference;
-<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      26 </span>            : - (instancetype)initWithName:(NSString*)name reference:(NSString*)reference;
+<span class="lineNum">      27 </span>            : - (instancetype)initWithName:(NSString *)name reference:(NSString *)reference isProxied:(BOOL)proxied;
 <span class="lineNum">      28 </span>            : 
 <span class="lineNum">      29 </span>            : @end
 </pre>

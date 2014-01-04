@@ -14,6 +14,7 @@ var files =
     [ "TyphoonAssemblySelectorAdviser.h", "_typhoon_assembly_selector_adviser_8h.html", [
       [ "TyphoonAssemblySelectorAdviser", "interface_typhoon_assembly_selector_adviser.html", "interface_typhoon_assembly_selector_adviser" ]
     ] ],
+    [ "TyphoonAssemblyValidator.h", "_typhoon_assembly_validator_8h.html", "_typhoon_assembly_validator_8h" ],
     [ "TyphoonAssistedFactoryBase+TyphoonFactoryMethodClosure.h", "_typhoon_assisted_factory_base_09_typhoon_factory_method_closure_8h.html", [
       [ "TyphoonAssistedFactoryBase(TyphoonFactoryMethodClosure)", "category_typhoon_assisted_factory_base_07_typhoon_factory_method_closure_08.html", null ]
     ] ],
@@ -88,6 +89,8 @@ var files =
       [ "TyphoonGenericStack", "interface_typhoon_generic_stack.html", "interface_typhoon_generic_stack" ]
     ] ],
     [ "TyphoonInitializer.h", "_typhoon_initializer_8h.html", "_typhoon_initializer_8h" ],
+    [ "TyphoonInjected.h", "_typhoon_injected_8h.html", null ],
+    [ "TyphoonInjectedByReference.h", "_typhoon_injected_by_reference_8h.html", null ],
     [ "TyphoonInjectedParameter.h", "_typhoon_injected_parameter_8h.html", "_typhoon_injected_parameter_8h" ],
     [ "TyphoonInjectedProperty.h", "_typhoon_injected_property_8h.html", "_typhoon_injected_property_8h" ],
     [ "TyphoonIntrospectionUtils.h", "_typhoon_introspection_utils_8h.html", "_typhoon_introspection_utils_8h" ],
