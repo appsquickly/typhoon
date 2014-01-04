@@ -27,4 +27,4 @@
 @end
 
 
-extern NSString const *TyphoonAssemblyInvalidException;
+extern NSString * const TyphoonAssemblyInvalidException;

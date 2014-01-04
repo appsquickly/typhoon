@@ -103,4 +103,4 @@
 @end
 
 
-NSString const * TyphoonAssemblyInvalidException = @"TyphoonAssemblyInvalidException";
+NSString * const TyphoonAssemblyInvalidException = @"TyphoonAssemblyInvalidException";
