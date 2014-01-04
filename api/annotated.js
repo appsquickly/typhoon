@@ -5,7 +5,6 @@ var annotated =
     [ "TyphoonArgumentInjectedAsCollection", "interface_typhoon_argument_injected_as_collection.html", "interface_typhoon_argument_injected_as_collection" ],
     [ "TyphoonAssembly", "interface_typhoon_assembly.html", "interface_typhoon_assembly" ],
     [ "TyphoonAssemblySelectorAdviser", "interface_typhoon_assembly_selector_adviser.html", "interface_typhoon_assembly_selector_adviser" ],
-    [ "TyphoonAssemblyValidator", "interface_typhoon_assembly_validator.html", "interface_typhoon_assembly_validator" ],
     [ "TyphoonAssistedFactoryBase", "interface_typhoon_assisted_factory_base.html", "interface_typhoon_assisted_factory_base" ],
     [ "TyphoonAssistedFactoryBase(TyphoonFactoryMethodClosure)", "category_typhoon_assisted_factory_base_07_typhoon_factory_method_closure_08.html", null ],
     [ "TyphoonAssistedFactoryCreator", "interface_typhoon_assisted_factory_creator.html", "interface_typhoon_assisted_factory_creator" ],

@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">1</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -72,20 +72,19 @@
 <span class="lineNum">      14 </span>            : 
 <span class="lineNum">      15 </span>            : #import &lt;Foundation/Foundation.h&gt;
 <span class="lineNum">      16 </span>            : #import &quot;TyphoonInjectedParameter.h&quot;
-<span class="lineNum">      17 </span>            : #import &quot;TyphoonInjectedByReference.h&quot;
-<span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span>            : /**
-<span class="lineNum">      20 </span>            : */
-<span class="lineNum">      21 </span>            : @interface TyphoonParameterInjectedByReference : TyphoonInjectedByReference &lt;TyphoonInjectedParameter&gt;
-<span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineNoCov">          0 : @property(nonatomic, readonly) NSUInteger index;</span>
-<span class="lineNum">      24 </span>            : @property(nonatomic, readonly) TyphoonParameterInjectionType type;
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : /**
+<span class="lineNum">      19 </span>            : */
+<span class="lineNum">      20 </span>            : @interface TyphoonParameterInjectedByReference : NSObject &lt;TyphoonInjectedParameter&gt;
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span><span class="lineCov">         52 : @property(nonatomic, readonly) NSUInteger index;</span>
+<span class="lineNum">      23 </span>            : @property(nonatomic, readonly) TyphoonParameterInjectionType type;
+<span class="lineNum">      24 </span><span class="lineCov">         53 : @property(nonatomic, strong, readonly) NSString* reference;</span>
 <span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span>            : - (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString*)reference;
-<span class="lineNum">      27 </span>            : - (instancetype)initWithParameterIndex:(NSUInteger)index reference:(NSString *)reference isProxied:(BOOL)proxied;
+<span class="lineNum">      26 </span>            : - (id)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString*)reference;
+<span class="lineNum">      27 </span>            : 
 <span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span>            : @end
+<span class="lineNum">      29 </span>            : @end
 </pre>
       </td>
     </tr>
