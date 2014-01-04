@@ -3,6 +3,7 @@ var searchData=
   ['typhoonargumentinjectedascollection',['TyphoonArgumentInjectedAsCollection',['../interface_typhoon_argument_injected_as_collection.html',1,'']]],
   ['typhoonassembly',['TyphoonAssembly',['../interface_typhoon_assembly.html',1,'']]],
   ['typhoonassemblyselectoradviser',['TyphoonAssemblySelectorAdviser',['../interface_typhoon_assembly_selector_adviser.html',1,'']]],
+  ['typhoonassemblyvalidator',['TyphoonAssemblyValidator',['../interface_typhoon_assembly_validator.html',1,'']]],
   ['typhoonassistedfactorybase',['TyphoonAssistedFactoryBase',['../interface_typhoon_assisted_factory_base.html',1,'']]],
   ['typhoonassistedfactorybase_28typhoonfactorymethodclosure_29',['TyphoonAssistedFactoryBase(TyphoonFactoryMethodClosure)',['../category_typhoon_assisted_factory_base_07_typhoon_factory_method_closure_08.html',1,'']]],
   ['typhoonassistedfactorycreator',['TyphoonAssistedFactoryCreator',['../interface_typhoon_assisted_factory_creator.html',1,'']]],

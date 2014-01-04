@@ -8,6 +8,7 @@ var searchData=
   ['log_5fformat_5fwith_5flocation',['LOG_FORMAT_WITH_LOCATION',['../_o_c_log_template_8h.html#ac16b85f6ee6756f2ace96b1d4c62bc5d',1,'OCLogTemplate.h']]],
   ['logdebug',['LogDebug',['../_o_c_log_template_8h.html#af347100a11f303535485cc3acbf3e6b0',1,'OCLogTemplate.h']]],
   ['logerror',['LogError',['../_o_c_log_template_8h.html#a611dbbfa5c2f148b7190b97a12835b5e',1,'OCLogTemplate.h']]],
+  ['logger',['logger',['../interface_typhoon_initializer.html#aac264252f2eda91709421e0cd03f955c',1,'TyphoonInitializer']]],
   ['logging_5finclude_5fcode_5flocation',['LOGGING_INCLUDE_CODE_LOCATION',['../_o_c_log_template_8h.html#a4d60a6f7a8c5736f93036fe7c66dca43',1,'OCLogTemplate.h']]],
   ['logging_5flevel_5fdebug',['LOGGING_LEVEL_DEBUG',['../_o_c_log_template_8h.html#a61b18e93a485bb3e7a3e1f429eaec40a',1,'OCLogTemplate.h']]],
   ['logging_5flevel_5ferror',['LOGGING_LEVEL_ERROR',['../_o_c_log_template_8h.html#af90fd7b008b1a0715ad38493eb5149d2',1,'OCLogTemplate.h']]],

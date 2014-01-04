@@ -39,6 +39,7 @@ var group___definition =
       [ "withClass:properties:", "interface_typhoon_definition.html#af465b133fd7f973be3275714d7f5bb50", null ]
     ] ],
     [ "TyphoonInitializer", "interface_typhoon_initializer.html", [
+      [ "logger", "interface_typhoon_initializer.html#aac264252f2eda91709421e0cd03f955c", null ],
       [ "selector", "interface_typhoon_initializer.html#a0afdf647b8c1d9b1e97720142bc2a056", null ],
       [ "initWithSelector:", "interface_typhoon_initializer.html#a94b46055f740c394b7319ca5cab283bf", null ],
       [ "initWithSelector:isClassMethodStrategy:", "interface_typhoon_initializer.html#aa08acb18e79e55847353c078225ff5cf", null ],
@@ -46,6 +47,7 @@ var group___definition =
       [ "injectParameterAtIndex:withDefinition:", "interface_typhoon_initializer.html#abf530d781c0c0f0267e7670d6faf5b55", null ],
       [ "injectParameterAtIndex:withObject:", "interface_typhoon_initializer.html#a33ee0217015511597cc1194c55a7a082", null ],
       [ "injectParameterAtIndex:withReference:", "interface_typhoon_initializer.html#a4a2990d4fbbb8ac01132b91aa3ea5555", null ],
+      [ "injectParameterAtIndex:withReference:isProxied:", "interface_typhoon_initializer.html#aa014f7e919784075dc598d25057f3615", null ],
       [ "injectParameterAtIndex:withValueAsText:requiredTypeOrNil:", "interface_typhoon_initializer.html#a66ea934b01c3ec49074817c169dfab87", null ],
       [ "injectParameterNamed:asCollection:requiredType:", "interface_typhoon_initializer.html#afa9502f5ad9c86450f2ac7bb0e531cc1", null ],
       [ "injectParameterNamed:withDefinition:", "interface_typhoon_initializer.html#ac8a49b9d9d9beafa638a23fa1b9caec2", null ],

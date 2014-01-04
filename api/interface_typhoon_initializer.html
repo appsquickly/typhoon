@@ -109,6 +109,8 @@ Inheritance diagram for TyphoonInitializer:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:aac264252f2eda91709421e0cd03f955c"><td class="memItemLeft" align="right" valign="top">id&lt; TyphoonLogger &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_initializer.html#aac264252f2eda91709421e0cd03f955c">logger</a></td></tr>
+<tr class="separator:aac264252f2eda91709421e0cd03f955c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0afdf647b8c1d9b1e97720142bc2a056"><td class="memItemLeft" align="right" valign="top">SEL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_initializer.html#a0afdf647b8c1d9b1e97720142bc2a056">selector</a></td></tr>
 <tr class="memdesc:a0afdf647b8c1d9b1e97720142bc2a056"><td class="mdescLeft">&#160;</td><td class="mdescRight">The selector used to initialize the component.  <a href="#a0afdf647b8c1d9b1e97720142bc2a056">More...</a><br/></td></tr>
 <tr class="separator:a0afdf647b8c1d9b1e97720142bc2a056"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -129,6 +131,8 @@ Instance Methods</h2></td></tr>
 <tr class="separator:a33ee0217015511597cc1194c55a7a082"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a2990d4fbbb8ac01132b91aa3ea5555"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_initializer.html#a4a2990d4fbbb8ac01132b91aa3ea5555">injectParameterAtIndex:withReference:</a></td></tr>
 <tr class="separator:a4a2990d4fbbb8ac01132b91aa3ea5555"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa014f7e919784075dc598d25057f3615"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_initializer.html#aa014f7e919784075dc598d25057f3615">injectParameterAtIndex:withReference:isProxied:</a></td></tr>
+<tr class="separator:aa014f7e919784075dc598d25057f3615"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66ea934b01c3ec49074817c169dfab87"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_initializer.html#a66ea934b01c3ec49074817c169dfab87">injectParameterAtIndex:withValueAsText:requiredTypeOrNil:</a></td></tr>
 <tr class="separator:a66ea934b01c3ec49074817c169dfab87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa9502f5ad9c86450f2ac7bb0e531cc1"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_initializer.html#afa9502f5ad9c86450f2ac7bb0e531cc1">injectParameterNamed:asCollection:requiredType:</a></td></tr>
@@ -210,6 +214,26 @@ Instance Methods</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents an initializer for a component. </p>
 </div><h2 class="groupheader">Property Documentation</h2>
+<a class="anchor" id="aac264252f2eda91709421e0cd03f955c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (id&lt;TyphoonLogger&gt;) logger</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a0afdf647b8c1d9b1e97720142bc2a056"></a>
 <div class="memitem">
 <div class="memproto">
@@ -378,6 +402,38 @@ Instance Methods</h2></td></tr>
           <td></td>
           <td class="paramtype">(NSString *)&#160;</td>
           <td class="paramname"><em>reference</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa014f7e919784075dc598d25057f3615"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) injectParameterAtIndex: </td>
+          <td></td>
+          <td class="paramtype">(NSUInteger)&#160;</td>
+          <td class="paramname"><em>index</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">withReference:</td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>reference</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">isProxied:</td>
+          <td></td>
+          <td class="paramtype">(BOOL)&#160;</td>
+          <td class="paramname"><em>fromCollaboratingAssemblyProxy</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -975,7 +1031,7 @@ Instance Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="interface_typhoon_initializer.html">TyphoonInitializer</a></li>
-    <li class="footer">Generated on Sat Jan 4 2014 09:27:43 for Typhoon by
+    <li class="footer">Generated on Sat Jan 4 2014 10:56:12 for Typhoon by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">20</td>
-            <td class="headerCovTableEntry">20</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -73,44 +73,44 @@
 <span class="lineNum">      15 </span>            : #import &quot;TyphoonTypeConvertedCollectionValue.h&quot;
 <span class="lineNum">      16 </span>            : #import &quot;TyphoonByReferenceCollectionValue.h&quot;
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">         23 : @implementation TyphoonArgumentInjectedAsCollection</span>
+<span class="lineNum">      18 </span><span class="lineNoCov">          0 : @implementation TyphoonArgumentInjectedAsCollection</span>
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      21 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineCov">        161 : - (id)init</span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : - (id)init</span>
 <span class="lineNum">      24 </span>            : {
-<span class="lineNum">      25 </span><span class="lineCov">        161 :     self = [super init];</span>
-<span class="lineNum">      26 </span><span class="lineCov">        161 :     if (self)</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 :     self = [super init];</span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 :     if (self)</span>
 <span class="lineNum">      27 </span>            :     {
-<span class="lineNum">      28 </span><span class="lineCov">        161 :         _values = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      29 </span><span class="lineCov">        161 :     }</span>
-<span class="lineNum">      30 </span><span class="lineCov">        161 :     return self;</span>
-<span class="lineNum">      31 </span><span class="lineCov">        161 : }</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :         _values = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      32 </span>            : 
 <span class="lineNum">      33 </span>            : 
 <span class="lineNum">      34 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      35 </span>            : #pragma mark - Interface Methods
 <span class="lineNum">      36 </span>            : 
-<span class="lineNum">      37 </span><span class="lineCov">        198 : - (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : - (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType</span>
 <span class="lineNum">      38 </span>            : {
-<span class="lineNum">      39 </span><span class="lineCov">        198 :     [_values addObject:[[TyphoonTypeConvertedCollectionValue alloc] initWithTextValue:text requiredType:requiredType]];</span>
-<span class="lineNum">      40 </span><span class="lineCov">        198 : }</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     [_values addObject:[[TyphoonTypeConvertedCollectionValue alloc] initWithTextValue:text requiredType:requiredType]];</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span><span class="lineCov">         44 : - (void)addItemWithComponentName:(NSString*)componentName</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : - (void)addItemWithComponentName:(NSString*)componentName</span>
 <span class="lineNum">      43 </span>            : {
-<span class="lineNum">      44 </span><span class="lineCov">         44 :     [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:componentName]];</span>
-<span class="lineNum">      45 </span><span class="lineCov">         44 : }</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:componentName]];</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span><span class="lineCov">         54 : - (void)addItemWithDefinition:(TyphoonDefinition*)definition</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : - (void)addItemWithDefinition:(TyphoonDefinition*)definition</span>
 <span class="lineNum">      48 </span>            : {
-<span class="lineNum">      49 </span><span class="lineCov">         54 :     [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:definition.key]];</span>
-<span class="lineNum">      50 </span><span class="lineCov">         54 : }</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:definition.key]];</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span><span class="lineCov">         11 : - (NSArray*)values</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 : - (NSArray*)values</span>
 <span class="lineNum">      53 </span>            : {
-<span class="lineNum">      54 </span><span class="lineCov">         11 :     return [_values copy];</span>
-<span class="lineNum">      55 </span><span class="lineCov">         11 : }</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     return [_values copy];</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      56 </span>            : 
 <span class="lineNum">      57 </span>            : @end
 </pre>

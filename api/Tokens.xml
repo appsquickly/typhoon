@@ -174,6 +174,16 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>TyphoonAssemblyInvalidException</Name>
+      <APILanguage>c</APILanguage>
+      <Type>data</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_assembly_validator_8h.html</Path>
+    <Anchor>abcd4de9c85e24e2508854c6c917fc01f</Anchor>
+    <DeclaredIn>TyphoonAssemblyValidator.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>TyphoonAssistedFactoryCreatorMethodEnumeration</Name>
       <APILanguage>c</APILanguage>
       <Type>tdef</Type>
@@ -1048,6 +1058,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>keyForSEL:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonAssemblySelectorAdviser</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_assembly_selector_adviser.html</Path>
+    <Anchor>a1a0a1d5feca42dd6e8a695ed562e6f76</Anchor>
+    <DeclaredIn>TyphoonAssemblySelectorAdviser.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>selectorIsAdvised:</Name>
       <APILanguage>occ</APILanguage>
       <Type>clm</Type>
@@ -1056,6 +1077,48 @@
     <Path>interface_typhoon_assembly_selector_adviser.html</Path>
     <Anchor>a3a84226f163361adc8e91ac260835bb5</Anchor>
     <DeclaredIn>TyphoonAssemblySelectorAdviser.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>TyphoonAssemblyValidator</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+      <Scope>TyphoonAssemblyValidator</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_assembly_validator.html</Path>
+    <DeclaredIn>TyphoonAssemblyValidator.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>assembly</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonAssemblyValidator</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_assembly_validator.html</Path>
+    <Anchor>aeac2aa705551f45e6bd1f7c7c4d515a6</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithAssembly:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonAssemblyValidator</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_assembly_validator.html</Path>
+    <Anchor>af058aea68168177fabbf4ab2de4e83df</Anchor>
+    <DeclaredIn>TyphoonAssemblyValidator.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>validate</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonAssemblyValidator</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_assembly_validator.html</Path>
+    <Anchor>a3f6ded76e6a79906890c7c929c478406</Anchor>
+    <DeclaredIn>TyphoonAssemblyValidator.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -3242,6 +3305,16 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>logger</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonInitializer</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_initializer.html</Path>
+    <Anchor>aac264252f2eda91709421e0cd03f955c</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>selector</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
@@ -3317,6 +3390,17 @@
     </TokenIdentifier>
     <Path>interface_typhoon_initializer.html</Path>
     <Anchor>a4a2990d4fbbb8ac01132b91aa3ea5555</Anchor>
+    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>injectParameterAtIndex:withReference:isProxied:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonInitializer</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_initializer.html</Path>
+    <Anchor>aa014f7e919784075dc598d25057f3615</Anchor>
     <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
   </Token>
   <Token>
@@ -3972,16 +4056,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>reference</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonParameterInjectedByReference</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_parameter_injected_by_reference.html</Path>
-    <Anchor>a8d2c2ffacea8d4d229f8be01e903e686</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>type</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
@@ -3998,7 +4072,18 @@
       <Scope>TyphoonParameterInjectedByReference</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_parameter_injected_by_reference.html</Path>
-    <Anchor>a4a0bb9a3f0b8fe6beab2758428c03ccd</Anchor>
+    <Anchor>afbca4ff05697cc18bfec7dd7d279983a</Anchor>
+    <DeclaredIn>TyphoonParameterInjectedByReference.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithParameterIndex:reference:isProxied:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonParameterInjectedByReference</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_parameter_injected_by_reference.html</Path>
+    <Anchor>a113dca3c0bbff0676f6557f8503b837d</Anchor>
     <DeclaredIn>TyphoonParameterInjectedByReference.h</DeclaredIn>
   </Token>
   <Token>
@@ -4730,23 +4815,24 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>reference</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonPropertyInjectedByReference</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_property_injected_by_reference.html</Path>
-    <Anchor>a3b4a64e6b05b7da3395a9e8935410d0a</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>initWithName:reference:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
       <Scope>TyphoonPropertyInjectedByReference</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_property_injected_by_reference.html</Path>
-    <Anchor>a451993a91f303fbf9f19eea5a09c853e</Anchor>
+    <Anchor>ac2643737ffad963f9c0f587e12b85293</Anchor>
+    <DeclaredIn>TyphoonPropertyInjectedByReference.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithName:reference:isProxied:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonPropertyInjectedByReference</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_property_injected_by_reference.html</Path>
+    <Anchor>a4e3c8289d1165ce91ad38110a077b5ca</Anchor>
     <DeclaredIn>TyphoonPropertyInjectedByReference.h</DeclaredIn>
   </Token>
   <Token>

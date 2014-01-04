@@ -1,6 +1,6 @@
 <map id="&lt;TyphoonInjectedParameter&gt;" name="&lt;TyphoonInjectedParameter&gt;">
-<area shape="rect" id="node3" href="$interface_typhoon_parameter_injected_as_collection.html" title="TyphoonParameterInjected\lAsCollection" alt="" coords="398,5,581,46"/>
-<area shape="rect" id="node4" href="$interface_typhoon_parameter_injected_by_reference.html" title="TyphoonParameterInjected\lByReference" alt="" coords="398,70,581,111"/>
-<area shape="rect" id="node5" href="$interface_typhoon_parameter_injected_with_object_instance.html" title="Represents a parameter injected with an instance of an object &#45; something constructed outside of the ..." alt="" coords="398,135,581,177"/>
-<area shape="rect" id="node6" href="$interface_typhoon_parameter_injected_with_string_representation.html" title="Represents a parameter injected with a string representation. " alt="" coords="398,201,581,242"/>
+<area shape="rect" id="node3" href="$interface_typhoon_parameter_injected_as_collection.html" title="TyphoonParameterInjected\lAsCollection" alt="" coords="425,5,626,46"/>
+<area shape="rect" id="node4" href="$interface_typhoon_parameter_injected_by_reference.html" title="TyphoonParameterInjected\lByReference" alt="" coords="425,70,626,111"/>
+<area shape="rect" id="node5" href="$interface_typhoon_parameter_injected_with_object_instance.html" title="Represents a parameter injected with an instance of an object &#45; something constructed outside of the ..." alt="" coords="425,135,626,177"/>
+<area shape="rect" id="node6" href="$interface_typhoon_parameter_injected_with_string_representation.html" title="Represents a parameter injected with a string representation. " alt="" coords="425,201,626,242"/>
 </map>
