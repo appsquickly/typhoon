@@ -164,8 +164,6 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
-
-#pragma mark - TyphoonBlockFactoryFriend
 - (NSArray*)definitions
 {
     return [_definitionBuilder builtDefinitions];
