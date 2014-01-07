@@ -66,6 +66,7 @@ static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
 - (void)swizzleAssemblyMethods
 {
     NSSet* definitionSelectors = [self enumerateDefinitionSelectors];
+    LogTrace(@"About to swizzle the following methods: %@.", [self humanReadableDescriptionForSelectorObjects:definitionSelectors]);
     [self swizzleDefinitionSelectors:definitionSelectors];
     [[self class] markAssemblyMethods:definitionSelectors asAdvised:self.assembly];
 }
@@ -81,15 +82,20 @@ static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
 - (void)swapImplementationOfDefinitionSelectorWithAdvisedImplementation:(TyphoonSelector*)wrappedSEL
 {
     SEL methodSelector = [wrappedSEL selector];
-    SEL swizzled = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector];
+    SEL advisedSelector = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector];
 
     NSError* err;
-    BOOL success = [self.swizzler swizzleMethod:methodSelector withMethod:swizzled onClass:[self.assembly class] error:&err];
+    BOOL success = [self.swizzler swizzleMethod:methodSelector withMethod:advisedSelector onClass:[self.assembly class] error:&err];
     if (!success) {
-        LogError(@"Failed to swizzle method '%@' on class '%@' with method '%@'.", NSStringFromSelector(methodSelector), NSStringFromClass([self.assembly class]), NSStringFromSelector(swizzled));
-        LogError(@"'%@'", err);
-        [NSException raise:NSInternalInconsistencyException format:@"Failed to swizzle method, everything is broken!"];
+        [self onFailureToSwizzleDefinitionSelector:methodSelector withAdvisedSelector:advisedSelector error:err];
     }
+}
+
+- (void)onFailureToSwizzleDefinitionSelector:(SEL)methodSelector withAdvisedSelector:(SEL)swizzled error:(NSError*)err
+{
+    LogError(@"Failed to swizzle method '%@' on class '%@' with method '%@'.", NSStringFromSelector(methodSelector), NSStringFromClass([self.assembly class]), NSStringFromSelector(swizzled));
+    LogError(@"'%@'", err);
+    [NSException raise:NSInternalInconsistencyException format:@"Failed to swizzle method, everything is broken!"];
 }
 
 + (void)undoAdviseMethods:(TyphoonAssembly*)assembly
@@ -125,16 +131,6 @@ static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
     }];
 
     return [selectorStrings description];
-}
-
-+ (void)swizzleAssemblyMethods:(TyphoonAssembly*)assembly
-{
-    NSSet* definitionSelectors = [assembly definitionSelectors];
-    LogTrace(@"About to swizzle the following methods: %@.", [self humanReadableDescriptionForSelectorObjects:definitionSelectors]);
-
-    [self swizzleDefinitionSelectors:definitionSelectors onAssembly:assembly];
-
-    [self markAssemblyMethods:definitionSelectors asAdvised:assembly];
 }
 
 + (void)swizzleDefinitionSelectors:(NSSet*)definitionSelectors onAssembly:(TyphoonAssembly*)assembly

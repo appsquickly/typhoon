@@ -23,6 +23,7 @@
 + (BOOL)assemblyClassIsAdvised:(Class)class;
 
 - (id)initWithAssembly:(TyphoonAssembly*)assembly;
+
 - (void)adviseAssembly;
 - (NSSet*)enumerateDefinitionSelectors;
 

@@ -81,7 +81,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 /* ====================================================================================================================================== */
 #pragma mark - Instance Method Resolution
-// handle definition method calls, mapping [self definitionA] to [self builtDefinitionForKey:@"definitionA"]
+// handle definition method calls, mapping [self definitionA] to [self->_definitionBuilder builtDefinitionForKey:@"definitionA"]
 + (BOOL)resolveInstanceMethod:(SEL)sel
 {
     if ([self shouldProvideDynamicImplementationFor:sel])
@@ -95,22 +95,23 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 + (BOOL)shouldProvideDynamicImplementationFor:(SEL)sel;
 {
-    return (![TyphoonAssembly selectorReservedOrPropertySetter:sel] && [TyphoonAssemblySelectorAdviser selectorIsAdvised:sel]);
+    return ([self selectorCorrespondsToDefinitionMethod:sel] && [TyphoonAssemblySelectorAdviser selectorIsAdvised:sel]);
+}
+
++ (BOOL)selectorCorrespondsToDefinitionMethod:(SEL)sel
+{
+    return ![self selectorReservedOrPropertySetter:sel];
 }
 
 + (BOOL)selectorReservedOrPropertySetter:(SEL)selector
 {
-    NSString* selectorString = NSStringFromSelector(selector);
-    if ([reservedSelectorsAsStrings containsObject:selectorString])
-    {
-        return YES;
-    }
-    else if ([self selectorIsPropertySetter:selector])
-    {
-        return YES;
-    }
+    return [self selectorIsReserved:selector] || [self selectorIsPropertySetter:selector];
+}
 
-    return NO;
++ (BOOL)selectorIsReserved:(SEL)selector
+{
+    NSString* selectorString = NSStringFromSelector(selector);
+    return [reservedSelectorsAsStrings containsObject:selectorString];
 }
 
 + (BOOL)selectorIsPropertySetter:(SEL)selector
@@ -151,7 +152,6 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 - (void)dealloc
 {
-    LogTrace(@"$$$$$$ %@ in dealloc!", [self class]);
     [TyphoonAssemblyAdviser undoAdviseMethods:self];
 }
 
