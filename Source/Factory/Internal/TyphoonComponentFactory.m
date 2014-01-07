@@ -74,7 +74,7 @@ static TyphoonComponentFactory* defaultFactory;
             // ensure that the method won't be call recursively.
             _isLoading = YES;
 
-            [self applyComponentFactoryLoadPostProcessing];
+            [self _load];
 
             _isLoading = NO;
             [self setLoaded:YES];
@@ -101,7 +101,7 @@ static TyphoonComponentFactory* defaultFactory;
 
     if ([self isLoaded])
     {
-        [self applyComponentFactoryLoadPostProcessing];
+        [self _load];
     }
 }
 
@@ -218,23 +218,28 @@ static TyphoonComponentFactory* defaultFactory;
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (void)applyComponentFactoryLoadPostProcessing
+- (void)_load
 {
+    [self applyPostProcessors];
+    [self instantiateEagerSingletons];
+}
 
-    // Apply the factory post processors.
+- (void)applyPostProcessors
+{
     [_postProcessors enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryPostProcessor> postProcessor, NSUInteger idx, BOOL* stop)
     {
         [postProcessor postProcessComponentFactory:self];
     }];
+}
 
-    // Then, we instantiate the not-lazy singletons.
+- (void)instantiateEagerSingletons
+{
     [_registry enumerateObjectsUsingBlock:^(id definition, NSUInteger idx, BOOL* stop)
     {
         if (([definition scope] == TyphoonScopeSingleton) && ![definition isLazy])
         {
             [self singletonForDefinition:definition];
         }
-
     }];
 }
 
