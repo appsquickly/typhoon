@@ -27,7 +27,8 @@
     TyphoonDefinition *_currentDefinition;
 }
 
-- (instancetype)initWithAssembly:(TyphoonAssembly *)assembly {
+- (instancetype)initWithAssembly:(TyphoonAssembly *)assembly
+{
     self = [super init];
     if (self)
     {
@@ -50,12 +51,14 @@
     }
 }
 
-- (void)verifyCurrentDefinition {
+- (void)verifyCurrentDefinition
+{
     [self verifyInitializerInjectionNotPerformedOnOtherAssembliesByCurrentDefinition];
     [self verifyPropertyInjectionNotPerformedOnOtherAssembliesByCurrentDefinition];
 }
 
-- (void)verifyPropertyInjectionNotPerformedOnOtherAssembliesByCurrentDefinition {
+- (void)verifyPropertyInjectionNotPerformedOnOtherAssembliesByCurrentDefinition
+{
     id <NSFastEnumeration> injectees = _currentDefinition.injectedProperties;
 
     [self verifyCurrentDefinitionWithInjectees:injectees injectionType:@"property"];
@@ -87,11 +90,13 @@
     return !fromSameAssembly;
 }
 
-- (BOOL)injectedIsOnAssemblyItself:(TyphoonInjectedByReference *)reference {
+- (BOOL)injectedIsOnAssemblyItself:(TyphoonInjectedByReference *)reference
+{
     return [_assembly definitionForKey:reference.reference] != nil;
 }
 
-- (BOOL)injectedIsFromCollaboratingAssemblyProxy:(TyphoonInjectedByReference *)reference {
+- (BOOL)injectedIsFromCollaboratingAssemblyProxy:(TyphoonInjectedByReference *)reference
+{
     return reference.proxied;
 }
 
