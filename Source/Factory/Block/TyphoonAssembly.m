@@ -43,7 +43,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
 + (TyphoonAssembly*)assembly
 {
     TyphoonAssembly* assembly = [[self alloc] init];
-    [assembly resolveCollaboratingAssemblies];
+    [assembly resolveCollaboratingAssemblies]; // set all properties of type TyphoonAssembly to TyphoonCollaboratingAssemblyProxy
     return assembly;
 }
 

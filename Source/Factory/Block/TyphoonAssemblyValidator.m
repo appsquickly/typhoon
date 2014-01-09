@@ -19,7 +19,7 @@
 #import "TyphoonInjected.h"
 #import "TyphoonInjectedByReference.h"
 #import "TyphoonBlockComponentFactory.h"
-
+#import "TyphoonPropertyInjectedByReference.h"
 
 
 @implementation TyphoonAssemblyValidator
@@ -76,7 +76,11 @@
     for (TyphoonInjected *injected in injectees) {
         if ([injected isByReference]) {
             if ([self injectedIsFromDifferentAssembly:(TyphoonInjectedByReference *)injected]) {
-                [self onInjectionOnDifferentAssemblyWithDefinitionNamed:_currentDefinition.key injectionType:type];
+                if ([type isEqualToString:@"initializer"]) {
+                    [self onInjectionOnDifferentAssemblyWithDefinitionNamed:_currentDefinition.key injectionType:type];
+                }else{
+                    [self onInjectionOnDifferentAssemblyWithDefinitionNamed:_currentDefinition.key property:(TyphoonPropertyInjectedByReference*)injected];
+                }
             }
         }
     }
@@ -100,9 +104,25 @@
     return reference.proxied;
 }
 
+- (void)onInjectionOnDifferentAssemblyWithDefinitionNamed:(NSString*)definitionName property:(TyphoonPropertyInjectedByReference *)property
+{
+    NSString *propertyName = [property name];
+    NSString *assemblyName = NSStringFromClass([_assembly class]);
+
+    [NSException raise:TyphoonAssemblyInvalidException format:@"Unable to find a definition to supply the '%@' property of the definition '%@' on assembly '%@'.\nDouble check to make sure you're not attempting to perform property injection with an instance of a different assembly directly and are instead using a property as a proxy for the collaborating assembly.", propertyName, definitionName, assemblyName];
+}
+
 - (void)onInjectionOnDifferentAssemblyWithDefinitionNamed:(NSObject *)object injectionType:(NSString *)type
 {
-    [NSException raise:TyphoonAssemblyInvalidException format:@"The definition '%@' on assembly '%@' attempts to perform %@ injection with an instance of a different assembly.\nUse a collaborating assembly proxy instead.", object, NSStringFromClass([_assembly class]), type];
+    NSString *propertyName = @"propertyName";
+    NSString *definitionName = (id)object;
+    NSString *assemblyName = NSStringFromClass([_assembly class]);
+
+    if ([type isEqualToString:@"property"]) {
+        [NSException raise:TyphoonAssemblyInvalidException format:@"Unable to find a definition to supply the '%@' property of the definition '%@' on assembly '%@'.\nDouble check to make sure you're not attempting to perform property injection with an instance of a different assembly directly and are instead using a property as a proxy for the collaborating assembly.", propertyName, definitionName, assemblyName];
+    }else{
+        [NSException raise:TyphoonAssemblyInvalidException format:@"The definition '%@' on assembly '%@' attempts to perform %@ injection with an instance of a different assembly.\nUse a collaborating assembly proxy instead.", object, NSStringFromClass([_assembly class]), type];
+    }
 }
 
 @end
