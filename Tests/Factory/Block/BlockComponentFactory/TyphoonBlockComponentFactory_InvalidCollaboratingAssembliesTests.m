@@ -33,7 +33,7 @@
         STFail(@"Should have thrown an exception when directly using another assembly in a definition.");
     }@catch (NSException *exception) {
         assertThat([exception name], equalTo(TyphoonAssemblyInvalidException));
-        assertThat([exception reason], equalTo(@"Unable to find a definition to supply the 'quest' property of the definition 'knightWithExternalQuest' on assembly 'InvalidCollaboratingAssembly'.\nDouble check to make sure you're not attempting to perform property injection with an instance of a different assembly directly and are instead using a property as a proxy for the collaborating assembly."));
+        assertThat([exception reason], equalTo(@"Unable to find a definition to supply the 'quest' property of the 'knightWithExternalQuest' on the 'InvalidCollaboratingAssembly'.\nDouble check to make sure you're not attempting to perform injection with an instance of a different assembly directly and are instead using a property as a proxy for the collaborating assembly."));
     }
 }
 
@@ -44,7 +44,7 @@
         STFail(@"Should have thrown an exception when directly using another assembly in a definition.");
     }@catch (NSException *exception) {
         assertThat([exception name], equalTo(TyphoonAssemblyInvalidException));
-        assertThat([exception reason], equalTo(@"The definition 'knightWithExternalQuest' on assembly 'InvalidCollaboratingAssembly_Initializer' attempts to perform initializer injection with an instance of a different assembly.\nUse a collaborating assembly proxy instead."));
+        assertThat([exception reason], equalTo(@"Unable to find a definition to supply the 1st initializer parameter of the 'knightWithExternalQuest' on the 'InvalidCollaboratingAssembly_Initializer'.\nDouble check to make sure you're not attempting to perform injection with an instance of a different assembly directly and are instead using a property as a proxy for the collaborating assembly."));
     }
 }
 
