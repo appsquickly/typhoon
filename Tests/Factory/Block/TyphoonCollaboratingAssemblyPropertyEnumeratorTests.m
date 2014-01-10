@@ -15,6 +15,7 @@
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "ExtendedMiddleAgesAssembly.h"
 #import "ExtendedSimpleAssembly.h"
+#import "TyphoonCollaboratingAssemblyPropertyEnumeratorTests_AssemblyWithProperty.h"
 
 @interface TyphoonCollaboratingAssemblyPropertyEnumeratorTests : SenTestCase
 @end
@@ -26,7 +27,7 @@
 
 }
 
-- (void)test_assembly_property
+- (void)test_assembly_property_implements_protocol
 {
     TyphoonCollaboratingAssemblyPropertyEnumerator* enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:[CollaboratingMiddleAgesAssembly assembly]];
     assertThat([enumerator collaboratingAssemblyProperties], onlyContains(@"quests", nil));
@@ -36,6 +37,12 @@
 {
     TyphoonCollaboratingAssemblyPropertyEnumerator* enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:[ExtendedSimpleAssembly assembly]];
     assertThat([enumerator collaboratingAssemblyProperties], containsInAnyOrder(@"assemblyA", @"assemblyB", nil));
+}
+
+- (void)test_excludes_non_assembly_types
+{
+    TyphoonCollaboratingAssemblyPropertyEnumerator* enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:[AssemblyWithProperty assembly]];
+    assertThat([enumerator collaboratingAssemblyProperties], onlyContains(@"assembly", nil));
 }
 
 @end

@@ -41,10 +41,6 @@ AnalyticsService* service = [assembly analyticsService];
 * - Avoids the use of "magic strings" for component resolution and wiring
 * - Allows the use of IDE features like refactoring and code completion.
 *
-* @warning
-* The use of properties on an Assembly for any means other than collaborating assemblies is currently unsupported. Any user set property
-* values may be overwritten.
-*
 */
 @interface TyphoonAssembly : NSObject
 

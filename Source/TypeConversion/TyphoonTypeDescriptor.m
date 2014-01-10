@@ -78,6 +78,16 @@
                 typeCode = [typeCode stringByReplacingOccurrencesOfString:@">" withString:@""];
                 _protocol = NSProtocolFromString(typeCode);
             }
+            else if ([typeCode hasSuffix:@">"])
+            {
+                NSArray* components = [typeCode componentsSeparatedByString:@"<"];
+                NSString *protocol =
+                        [components[1] stringByReplacingOccurrencesOfString:@">" withString:@""];
+                NSString *class = components[0];
+
+                _protocol = NSProtocolFromString(protocol);
+                _typeBeingDescribed = NSClassFromString(class);
+            }
             else
             {
                 _typeBeingDescribed = NSClassFromString(typeCode);
@@ -120,7 +130,12 @@
     else
     {
         Protocol* protocol = [self protocol];
-        if (protocol)
+        if (protocol && [self typeBeingDescribed])
+        {
+            return [NSString stringWithFormat:@"Type descriptor: %@<%@>", NSStringFromClass([self typeBeingDescribed]),
+            NSStringFromProtocol(protocol)];
+        }
+        else if (protocol)
         {
             return [NSString stringWithFormat:@"Type descriptor: id<%@>", NSStringFromProtocol(protocol)];
         }

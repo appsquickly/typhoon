@@ -14,6 +14,9 @@
 #import "TyphoonCollaboratingAssemblyPropertyEnumerator.h"
 #import "TyphoonAssembly.h"
 #import <objc/runtime.h>
+#import <Typhoon/TyphoonTypeDescriptor.h>
+#import <Typhoon/TyphoonIntrospectionUtils.h>
+#import <Typhoon/TyphoonCollaboratingAssemblyProxy.h>
 
 @implementation TyphoonCollaboratingAssemblyPropertyEnumerator
 {
@@ -40,13 +43,23 @@
         objc_property_t * properties = class_copyPropertyList(class, &count);
         for (int propertyIndex = 0; propertyIndex < count; propertyIndex++) {
             objc_property_t aProperty = properties[propertyIndex];
-            [propertyNames addObject:[self propertyNameForProperty:aProperty]];
+
+            NSString *propertyName = [self propertyNameForProperty:aProperty];
+            if ([self propertyForName:propertyName isCollaboratingAssemblyPropertyOnClass:class]) {
+                [propertyNames addObject:propertyName];
+            }
         }
 
         class = class_getSuperclass(class);
     }
 
     return propertyNames;
+}
+
+- (BOOL)propertyForName:(NSString*)propertyName isCollaboratingAssemblyPropertyOnClass:(Class)class
+{
+    TyphoonTypeDescriptor* type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyName inClass:class];
+    return type.typeBeingDescribed == [TyphoonAssembly class];
 }
 
 - (BOOL)classNotRootAssemblyClass:(Class)class

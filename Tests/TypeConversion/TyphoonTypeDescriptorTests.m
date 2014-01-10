@@ -26,6 +26,7 @@ typedef struct
 @property BOOL aBoolProperty;
 @property NSURL* anNSURLProperty;
 @property id<Quest> aQuestProperty;
+@property NSObject <Quest>* anObjectQuestProperty;
 
 @property(nonatomic, readonly) char charProperty;
 @property(nonatomic, readonly) int intProperty;
@@ -73,6 +74,18 @@ typedef struct
     NSString* description = [descriptor description];
     assertThat(description, equalTo(@"Type descriptor: id<Quest>"));
 }
+
+- (void)test_type_description_class_and_protocol
+{
+    TyphoonTypeDescriptor* descriptor = [self typeForPropertyWithName:@"anObjectQuestProperty"];
+    assertThatBool([descriptor isPrimitive], equalToBool(NO));
+    assertThat([descriptor protocol], equalTo(@protocol(Quest)));
+    assertThat([descriptor typeBeingDescribed], equalTo([NSObject class]));
+
+    NSString* description = [descriptor description];
+    assertThat(description, equalTo(@"Type descriptor: NSObject<Quest>"));
+}
+
 
 - (void)test_typeForPropertyWithName_char
 {
