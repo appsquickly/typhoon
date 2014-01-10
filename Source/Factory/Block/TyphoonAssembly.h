@@ -53,9 +53,4 @@ AnalyticsService* service = [assembly analyticsService];
 
 + (void)markSelectorReserved:(SEL)selector;
 
-/**
-* Subclasses must implement to wire any collaborating assemblies to one of the following that will be resolved at runtime.
-*/
-- (void)resolveCollaboratingAssemblies;
-
 @end
