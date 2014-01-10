@@ -74,6 +74,7 @@ var files =
       [ "TyphoonByReferenceCollectionValue", "interface_typhoon_by_reference_collection_value.html", "interface_typhoon_by_reference_collection_value" ]
     ] ],
     [ "TyphoonCircularDependencyTerminator.h", "_typhoon_circular_dependency_terminator_8h.html", null ],
+    [ "TyphoonCollaboratingAssemblyPropertyEnumerator.h", "_typhoon_collaborating_assembly_property_enumerator_8h.html", null ],
     [ "TyphoonCollaboratingAssemblyProxy.h", "_typhoon_collaborating_assembly_proxy_8h.html", null ],
     [ "TyphoonCollectionValue.h", "_typhoon_collection_value_8h.html", "_typhoon_collection_value_8h" ],
     [ "TyphoonComponentFactory.h", "_typhoon_component_factory_8h.html", null ],
@@ -104,6 +105,7 @@ var files =
     [ "TyphoonLinkerCategoryBugFix.h", "_typhoon_linker_category_bug_fix_8h.html", null ],
     [ "TyphoonLogger.h", "_typhoon_logger_8h.html", null ],
     [ "TyphoonMethodSwizzler.h", "_typhoon_method_swizzler_8h.html", null ],
+    [ "TyphoonMiscUtils.h", "_typhoon_misc_utils_8h.html", null ],
     [ "TyphoonNSURLTypeConverter.h", "_typhoon_n_s_u_r_l_type_converter_8h.html", [
       [ "TyphoonNSURLTypeConverter", "interface_typhoon_n_s_u_r_l_type_converter.html", null ]
     ] ],

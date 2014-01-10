@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"interface_typhoon_property_injected_by_type.html#a12afcf5f3447fc925e1bc142fea0ac6a":[1,0,51,0],
 "interface_typhoon_property_injected_by_type.html#aad174231eaa0ddd78895f6afb05e8834":[1,0,51,1],
 "interface_typhoon_property_injected_by_type.html#af42e0e7b6ebf46efc22599e46038f88f":[1,0,51,2],
 "interface_typhoon_property_injected_with_string_representation.html":[1,0,52],

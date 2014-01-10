@@ -1,8 +1,9 @@
 var NAVTREEINDEX1 =
 {
+"interface_typhoon_argument_injected_as_collection.html#a7dfbde2cf94af819d6d1adbb37e84097":[1,0,2,2],
+"interface_typhoon_argument_injected_as_collection.html#ac66c05f73ec196358f3ed0219a01549f":[1,0,2,0],
 "interface_typhoon_assembly.html":[0,0,0],
 "interface_typhoon_assembly.html#a37d04b8e0418f5f1aff9a0c3b9745c26":[0,0,0,2],
-"interface_typhoon_assembly.html#a79828d38519e34c2dd42f06ac5408264":[0,0,0,3],
 "interface_typhoon_assembly.html#ac445c91bdd47b3389eadedbf33860512":[0,0,0,1],
 "interface_typhoon_assembly.html#af53fcd1ea8b4e55dda2080a651814c6c":[0,0,0,0],
 "interface_typhoon_assembly_selector_adviser.html":[1,0,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "interface_typhoon_property_injected_by_reference.html#a4e3c8289d1165ce91ad38110a077b5ca":[1,0,50,2],
 "interface_typhoon_property_injected_by_reference.html#aae1b85d7db405dcf6f08863cc1bf8d22":[1,0,50,0],
 "interface_typhoon_property_injected_by_reference.html#ac2643737ffad963f9c0f587e12b85293":[1,0,50,1],
-"interface_typhoon_property_injected_by_type.html":[1,0,51],
-"interface_typhoon_property_injected_by_type.html#a12afcf5f3447fc925e1bc142fea0ac6a":[1,0,51,0]
+"interface_typhoon_property_injected_by_type.html":[1,0,51]
 };

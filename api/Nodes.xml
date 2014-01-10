@@ -32,11 +32,6 @@
               <Path>interface_typhoon_assembly.html</Path>
               <Anchor>a37d04b8e0418f5f1aff9a0c3b9745c26</Anchor>
              </Node>
-             <Node>
-              <Name>resolveCollaboratingAssemblies</Name>
-              <Path>interface_typhoon_assembly.html</Path>
-              <Anchor>a79828d38519e34c2dd42f06ac5408264</Anchor>
-             </Node>
             </Subnodes>
            </Node>
            <Node>
@@ -857,11 +852,6 @@
               <Name>markSelectorReserved:</Name>
               <Path>interface_typhoon_assembly.html</Path>
               <Anchor>a37d04b8e0418f5f1aff9a0c3b9745c26</Anchor>
-             </Node>
-             <Node>
-              <Name>resolveCollaboratingAssemblies</Name>
-              <Path>interface_typhoon_assembly.html</Path>
-              <Anchor>a79828d38519e34c2dd42f06ac5408264</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -4249,6 +4239,10 @@
             <Path>_typhoon_circular_dependency_terminator_8h.html</Path>
            </Node>
            <Node>
+            <Name>TyphoonCollaboratingAssemblyPropertyEnumerator.h</Name>
+            <Path>_typhoon_collaborating_assembly_property_enumerator_8h.html</Path>
+           </Node>
+           <Node>
             <Name>TyphoonCollaboratingAssemblyProxy.h</Name>
             <Path>_typhoon_collaborating_assembly_proxy_8h.html</Path>
            </Node>
@@ -4641,6 +4635,10 @@
            <Node>
             <Name>TyphoonMethodSwizzler.h</Name>
             <Path>_typhoon_method_swizzler_8h.html</Path>
+           </Node>
+           <Node>
+            <Name>TyphoonMiscUtils.h</Name>
+            <Path>_typhoon_misc_utils_8h.html</Path>
            </Node>
            <Node>
             <Name>TyphoonNSURLTypeConverter.h</Name>

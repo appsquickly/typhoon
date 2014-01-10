@@ -32,7 +32,7 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">152</td>
+            <td class="headerCovTableEntry">149</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
@@ -239,90 +239,87 @@
 <span class="lineNum">     181 </span>            : 
 <span class="lineNum">     182 </span><span class="lineNoCov">          0 : - (BOOL)classNotRootAssemblyClass:(Class)class</span>
 <span class="lineNum">     183 </span>            : {
-<span class="lineNum">     184 </span><span class="lineNoCov">          0 :     NSString* currentClassName = NSStringFromClass(class);</span>
-<span class="lineNum">     185 </span><span class="lineNoCov">          0 :     NSString* rootAssemblyClassName = NSStringFromClass([TyphoonAssembly class]);</span>
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :     return class != [TyphoonAssembly class];</span>
+<span class="lineNum">     185 </span>            : }
 <span class="lineNum">     186 </span>            : 
-<span class="lineNum">     187 </span><span class="lineNoCov">          0 :     return ![currentClassName isEqualToString:rootAssemblyClassName];</span>
-<span class="lineNum">     188 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     189 </span>            : 
-<span class="lineNum">     190 </span><span class="lineNoCov">          0 : - (NSSet*)obtainDefinitionSelectorsInAssemblyClass:(Class)pClass</span>
-<span class="lineNum">     191 </span>            : {
-<span class="lineNum">     192 </span><span class="lineNoCov">          0 :     NSMutableSet* definitionSelectors = [[NSMutableSet alloc] init];</span>
-<span class="lineNum">     193 </span><span class="lineNoCov">          0 :     [self addDefinitionSelectorsInClass:pClass toSet:definitionSelectors];</span>
-<span class="lineNum">     194 </span><span class="lineNoCov">          0 :     return definitionSelectors;</span>
-<span class="lineNum">     195 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     196 </span>            : 
-<span class="lineNum">     197 </span><span class="lineNoCov">          0 : - (void)addDefinitionSelectorsInClass:(Class)aClass toSet:(NSMutableSet*)definitionSelectors</span>
-<span class="lineNum">     198 </span>            : {
-<span class="lineNum">     199 </span><span class="lineNoCov">          0 :     [self enumerateMethodsInClass:aClass usingBlock:^(Method method)</span>
-<span class="lineNum">     200 </span><span class="lineNoCov">          0 :     {</span>
-<span class="lineNum">     201 </span><span class="lineNoCov">          0 :         if ([self method:method onClassIsNotReserved:aClass] &amp;&amp; [self method:method onClassIsNotAdvised:aClass])</span>
-<span class="lineNum">     202 </span>            :         {
-<span class="lineNum">     203 </span><span class="lineNoCov">          0 :             [self addDefinitionSelectorForMethod:method toSet:definitionSelectors];</span>
-<span class="lineNum">     204 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     205 </span><span class="lineNoCov">          0 :     }];</span>
-<span class="lineNum">     206 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     207 </span>            : 
-<span class="lineNum">     208 </span>            : typedef void(^MethodEnumerationBlock)(Method method);
-<span class="lineNum">     209 </span>            : 
-<span class="lineNum">     210 </span><span class="lineNoCov">          0 : - (void)enumerateMethodsInClass:(Class)class usingBlock:(MethodEnumerationBlock)block;</span>
-<span class="lineNum">     211 </span>            : {
-<span class="lineNum">     212 </span><span class="lineNoCov">          0 :     unsigned int methodCount;</span>
-<span class="lineNum">     213 </span><span class="lineNoCov">          0 :     Method* methodList = class_copyMethodList(class, &amp;methodCount);</span>
-<span class="lineNum">     214 </span><span class="lineNoCov">          0 :     for (int i = 0; i &lt; methodCount; i++)</span>
-<span class="lineNum">     215 </span>            :     {
-<span class="lineNum">     216 </span><span class="lineNoCov">          0 :         Method method = methodList[i];</span>
-<span class="lineNum">     217 </span><span class="lineNoCov">          0 :         block(method);</span>
-<span class="lineNum">     218 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     219 </span><span class="lineNoCov">          0 :     free(methodList);</span>
-<span class="lineNum">     220 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     221 </span>            : 
-<span class="lineNum">     222 </span><span class="lineNoCov">          0 : - (BOOL)method:(Method)method onClassIsNotReserved:(Class)aClass</span>
-<span class="lineNum">     223 </span>            : {
-<span class="lineNum">     224 </span><span class="lineNoCov">          0 :     SEL methodSelector = method_getName(method);</span>
-<span class="lineNum">     225 </span><span class="lineNoCov">          0 :     return ![aClass selectorReservedOrPropertySetter:methodSelector];</span>
-<span class="lineNum">     226 </span>            : }
-<span class="lineNum">     227 </span>            : 
-<span class="lineNum">     228 </span><span class="lineNoCov">          0 : - (BOOL)method:(Method)pMethod onClassIsNotAdvised:(Class)advised</span>
-<span class="lineNum">     229 </span>            : {
-<span class="lineNum">     230 </span><span class="lineNoCov">          0 :     SEL sel = method_getName(pMethod);</span>
-<span class="lineNum">     231 </span><span class="lineNoCov">          0 :     return ![TyphoonAssemblySelectorAdviser selectorIsAdvised:sel];</span>
-<span class="lineNum">     232 </span>            : }
-<span class="lineNum">     233 </span>            : 
-<span class="lineNum">     234 </span><span class="lineNoCov">          0 : - (void)addDefinitionSelectorForMethod:(Method)method toSet:(NSMutableSet*)definitionSelectors</span>
-<span class="lineNum">     235 </span>            : {
-<span class="lineNum">     236 </span><span class="lineNoCov">          0 :     SEL methodSelector = method_getName(method);</span>
-<span class="lineNum">     237 </span><span class="lineNoCov">          0 :     TyphoonSelector* wrappedSEL = [TyphoonSelector selectorWithSEL:methodSelector];</span>
-<span class="lineNum">     238 </span><span class="lineNoCov">          0 :     [definitionSelectors addObject:wrappedSEL];</span>
-<span class="lineNum">     239 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     240 </span>            : 
-<span class="lineNum">     241 </span>            : #pragma mark - Advising Registry
-<span class="lineNum">     242 </span><span class="lineNoCov">          0 : + (BOOL)assemblyIsNotAdvised:(TyphoonAssembly*)assembly;</span>
-<span class="lineNum">     243 </span>            : {
-<span class="lineNum">     244 </span><span class="lineNoCov">          0 :     return ![self assemblyIsAdvised:assembly];</span>
-<span class="lineNum">     245 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     246 </span>            : 
-<span class="lineNum">     247 </span><span class="lineNoCov">          0 : + (BOOL)assemblyIsAdvised:(TyphoonAssembly*)assembly</span>
-<span class="lineNum">     248 </span>            : {
-<span class="lineNum">     249 </span><span class="lineNoCov">          0 :     return [self assemblyClassIsAdvised:[assembly class]];</span>
-<span class="lineNum">     250 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     251 </span>            : 
-<span class="lineNum">     252 </span><span class="lineNoCov">          0 : + (BOOL)assemblyClassIsAdvised:(Class)class</span>
-<span class="lineNum">     253 </span>            : {
-<span class="lineNum">     254 </span><span class="lineNoCov">          0 :     return [[swizzledDefinitionsByAssemblyClass allKeys] containsObject:NSStringFromClass(class)];</span>
-<span class="lineNum">     255 </span>            : }
-<span class="lineNum">     256 </span>            : 
-<span class="lineNum">     257 </span><span class="lineNoCov">          0 : + (void)markAssemblyMethods:(NSSet*)definitionSelectors asAdvised:(TyphoonAssembly*)assembly;</span>
-<span class="lineNum">     258 </span>            : {
-<span class="lineNum">     259 </span><span class="lineNoCov">          0 :     [swizzledDefinitionsByAssemblyClass setObject:definitionSelectors forKey:NSStringFromClass([assembly class])];</span>
-<span class="lineNum">     260 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     261 </span>            : 
-<span class="lineNum">     262 </span><span class="lineNoCov">          0 : + (void)markAssemblyMethodsAsNoLongerAdvised:(TyphoonAssembly*)assembly;</span>
-<span class="lineNum">     263 </span>            : {
-<span class="lineNum">     264 </span><span class="lineNoCov">          0 :     [swizzledDefinitionsByAssemblyClass removeObjectForKey:NSStringFromClass([assembly class])];</span>
-<span class="lineNum">     265 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     266 </span>            : 
-<span class="lineNum">     267 </span>            : @end
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 : - (NSSet*)obtainDefinitionSelectorsInAssemblyClass:(Class)pClass</span>
+<span class="lineNum">     188 </span>            : {
+<span class="lineNum">     189 </span><span class="lineNoCov">          0 :     NSMutableSet* definitionSelectors = [[NSMutableSet alloc] init];</span>
+<span class="lineNum">     190 </span><span class="lineNoCov">          0 :     [self addDefinitionSelectorsInClass:pClass toSet:definitionSelectors];</span>
+<span class="lineNum">     191 </span><span class="lineNoCov">          0 :     return definitionSelectors;</span>
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     193 </span>            : 
+<span class="lineNum">     194 </span><span class="lineNoCov">          0 : - (void)addDefinitionSelectorsInClass:(Class)aClass toSet:(NSMutableSet*)definitionSelectors</span>
+<span class="lineNum">     195 </span>            : {
+<span class="lineNum">     196 </span><span class="lineNoCov">          0 :     [self enumerateMethodsInClass:aClass usingBlock:^(Method method)</span>
+<span class="lineNum">     197 </span><span class="lineNoCov">          0 :     {</span>
+<span class="lineNum">     198 </span><span class="lineNoCov">          0 :         if ([self method:method onClassIsNotReserved:aClass] &amp;&amp; [self method:method onClassIsNotAdvised:aClass])</span>
+<span class="lineNum">     199 </span>            :         {
+<span class="lineNum">     200 </span><span class="lineNoCov">          0 :             [self addDefinitionSelectorForMethod:method toSet:definitionSelectors];</span>
+<span class="lineNum">     201 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     202 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     204 </span>            : 
+<span class="lineNum">     205 </span>            : typedef void(^MethodEnumerationBlock)(Method method);
+<span class="lineNum">     206 </span>            : 
+<span class="lineNum">     207 </span><span class="lineNoCov">          0 : - (void)enumerateMethodsInClass:(Class)class usingBlock:(MethodEnumerationBlock)block;</span>
+<span class="lineNum">     208 </span>            : {
+<span class="lineNum">     209 </span><span class="lineNoCov">          0 :     unsigned int methodCount;</span>
+<span class="lineNum">     210 </span><span class="lineNoCov">          0 :     Method* methodList = class_copyMethodList(class, &amp;methodCount);</span>
+<span class="lineNum">     211 </span><span class="lineNoCov">          0 :     for (int i = 0; i &lt; methodCount; i++)</span>
+<span class="lineNum">     212 </span>            :     {
+<span class="lineNum">     213 </span><span class="lineNoCov">          0 :         Method method = methodList[i];</span>
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 :         block(method);</span>
+<span class="lineNum">     215 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     216 </span><span class="lineNoCov">          0 :     free(methodList);</span>
+<span class="lineNum">     217 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     218 </span>            : 
+<span class="lineNum">     219 </span><span class="lineNoCov">          0 : - (BOOL)method:(Method)method onClassIsNotReserved:(Class)aClass</span>
+<span class="lineNum">     220 </span>            : {
+<span class="lineNum">     221 </span><span class="lineNoCov">          0 :     SEL methodSelector = method_getName(method);</span>
+<span class="lineNum">     222 </span><span class="lineNoCov">          0 :     return ![aClass selectorReservedOrPropertySetter:methodSelector];</span>
+<span class="lineNum">     223 </span>            : }
+<span class="lineNum">     224 </span>            : 
+<span class="lineNum">     225 </span><span class="lineNoCov">          0 : - (BOOL)method:(Method)pMethod onClassIsNotAdvised:(Class)advised</span>
+<span class="lineNum">     226 </span>            : {
+<span class="lineNum">     227 </span><span class="lineNoCov">          0 :     SEL sel = method_getName(pMethod);</span>
+<span class="lineNum">     228 </span><span class="lineNoCov">          0 :     return ![TyphoonAssemblySelectorAdviser selectorIsAdvised:sel];</span>
+<span class="lineNum">     229 </span>            : }
+<span class="lineNum">     230 </span>            : 
+<span class="lineNum">     231 </span><span class="lineNoCov">          0 : - (void)addDefinitionSelectorForMethod:(Method)method toSet:(NSMutableSet*)definitionSelectors</span>
+<span class="lineNum">     232 </span>            : {
+<span class="lineNum">     233 </span><span class="lineNoCov">          0 :     SEL methodSelector = method_getName(method);</span>
+<span class="lineNum">     234 </span><span class="lineNoCov">          0 :     TyphoonSelector* wrappedSEL = [TyphoonSelector selectorWithSEL:methodSelector];</span>
+<span class="lineNum">     235 </span><span class="lineNoCov">          0 :     [definitionSelectors addObject:wrappedSEL];</span>
+<span class="lineNum">     236 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     237 </span>            : 
+<span class="lineNum">     238 </span>            : #pragma mark - Advising Registry
+<span class="lineNum">     239 </span><span class="lineNoCov">          0 : + (BOOL)assemblyIsNotAdvised:(TyphoonAssembly*)assembly;</span>
+<span class="lineNum">     240 </span>            : {
+<span class="lineNum">     241 </span><span class="lineNoCov">          0 :     return ![self assemblyIsAdvised:assembly];</span>
+<span class="lineNum">     242 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     243 </span>            : 
+<span class="lineNum">     244 </span><span class="lineNoCov">          0 : + (BOOL)assemblyIsAdvised:(TyphoonAssembly*)assembly</span>
+<span class="lineNum">     245 </span>            : {
+<span class="lineNum">     246 </span><span class="lineNoCov">          0 :     return [self assemblyClassIsAdvised:[assembly class]];</span>
+<span class="lineNum">     247 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     248 </span>            : 
+<span class="lineNum">     249 </span><span class="lineNoCov">          0 : + (BOOL)assemblyClassIsAdvised:(Class)class</span>
+<span class="lineNum">     250 </span>            : {
+<span class="lineNum">     251 </span><span class="lineNoCov">          0 :     return [[swizzledDefinitionsByAssemblyClass allKeys] containsObject:NSStringFromClass(class)];</span>
+<span class="lineNum">     252 </span>            : }
+<span class="lineNum">     253 </span>            : 
+<span class="lineNum">     254 </span><span class="lineNoCov">          0 : + (void)markAssemblyMethods:(NSSet*)definitionSelectors asAdvised:(TyphoonAssembly*)assembly;</span>
+<span class="lineNum">     255 </span>            : {
+<span class="lineNum">     256 </span><span class="lineNoCov">          0 :     [swizzledDefinitionsByAssemblyClass setObject:definitionSelectors forKey:NSStringFromClass([assembly class])];</span>
+<span class="lineNum">     257 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     258 </span>            : 
+<span class="lineNum">     259 </span><span class="lineNoCov">          0 : + (void)markAssemblyMethodsAsNoLongerAdvised:(TyphoonAssembly*)assembly;</span>
+<span class="lineNum">     260 </span>            : {
+<span class="lineNum">     261 </span><span class="lineNoCov">          0 :     [swizzledDefinitionsByAssemblyClass removeObjectForKey:NSStringFromClass([assembly class])];</span>
+<span class="lineNum">     262 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     263 </span>            : 
+<span class="lineNum">     264 </span>            : @end
 </pre>
       </td>
     </tr>

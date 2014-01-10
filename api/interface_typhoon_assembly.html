@@ -90,7 +90,6 @@ $(document).ready(function(){initNavTree('interface_typhoon_assembly.html','');}
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Class Methods</a> &#124;
-<a href="#pub-methods">Instance Methods</a> &#124;
 <a href="class_typhoon_assembly-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">TyphoonAssembly Class Reference<div class="ingroups"><a class="el" href="group___factory.html">Factory</a></div></div>  </div>
@@ -116,12 +115,6 @@ Class Methods</h2></td></tr>
 <tr class="separator:ac445c91bdd47b3389eadedbf33860512"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37d04b8e0418f5f1aff9a0c3b9745c26"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_assembly.html#a37d04b8e0418f5f1aff9a0c3b9745c26">markSelectorReserved:</a></td></tr>
 <tr class="separator:a37d04b8e0418f5f1aff9a0c3b9745c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Instance Methods</h2></td></tr>
-<tr class="memitem:a79828d38519e34c2dd42f06ac5408264"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_assembly.html#a79828d38519e34c2dd42f06ac5408264">resolveCollaboratingAssemblies</a></td></tr>
-<tr class="memdesc:a79828d38519e34c2dd42f06ac5408264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subclasses must implement to wire any collaborating assemblies to one of the following that will be resolved at runtime.  <a href="#a79828d38519e34c2dd42f06ac5408264">More...</a><br/></td></tr>
-<tr class="separator:a79828d38519e34c2dd42f06ac5408264"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides a concise way to declare and encapsulate the architecture of an application in one or more classes that describe how components collaborate together. </p>
@@ -134,8 +127,9 @@ Instance Methods</h2></td></tr>
 <ul>
 <li>a way to easily define multiple components of the same class or protocol</li>
 <li>Avoids the use of "magic strings" for component resolution and wiring</li>
-<li>Allows the use of IDE features like refactoring and code completion. </li>
+<li>Allows the use of IDE features like refactoring and code completion.</li>
 </ul>
+<dl class="section warning"><dt>Warning</dt><dd>The use of properties on an Assembly for any means other than collaborating assemblies is currently unsupported. Any user set property values may be overwritten. </dd></dl>
 </div><h2 class="groupheader">Method Documentation</h2>
 <a class="anchor" id="af53fcd1ea8b4e55dda2080a651814c6c"></a>
 <div class="memitem">
@@ -185,23 +179,6 @@ Instance Methods</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a79828d38519e34c2dd42f06ac5408264"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (void) resolveCollaboratingAssemblies </td>
-          <td></td>
-          <td class="paramname"></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Subclasses must implement to wire any collaborating assemblies to one of the following that will be resolved at runtime. </p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.5-->
@@ -209,7 +186,7 @@ Instance Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="interface_typhoon_assembly.html">TyphoonAssembly</a></li>
-    <li class="footer">Generated on Fri Jan 10 2014 06:28:17 for Typhoon by
+    <li class="footer">Generated on Fri Jan 10 2014 12:09:28 for Typhoon by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

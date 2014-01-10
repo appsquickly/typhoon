@@ -992,18 +992,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>resolveCollaboratingAssemblies</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonAssembly</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_assembly.html</Path>
-    <Anchor>a79828d38519e34c2dd42f06ac5408264</Anchor>
-    <Abstract>Subclasses must implement to wire any collaborating assemblies to one of the following that will be r...</Abstract>
-    <DeclaredIn>TyphoonAssembly.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>TyphoonAssemblySelectorAdviser</Name>
       <APILanguage>c</APILanguage>
       <Type>cl</Type>
