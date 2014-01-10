@@ -54,7 +54,6 @@
     return class != [TyphoonAssembly class];
 }
 
-
 - (id)propertyNameForProperty:(objc_property_t)aProperty
 {
     const char *cPropertyName = property_getName(aProperty);
