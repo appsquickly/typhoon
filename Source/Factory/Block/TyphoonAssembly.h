@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  TYPHOON FRAMEWORK
-//  Copyright 2013, Jasper Blues & Contributors
+//  Copyright 2014, Jasper Blues & Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -40,6 +40,10 @@ AnalyticsService* service = [assembly analyticsService];
 * - a way to easily define multiple components of the same class or protocol
 * - Avoids the use of "magic strings" for component resolution and wiring
 * - Allows the use of IDE features like refactoring and code completion.
+*
+* @warning
+* The use of properties on an Assembly for any means other than collaborating assemblies is currently unsupported. Any user set property
+* values may be overwritten.
 *
 */
 @interface TyphoonAssembly : NSObject
