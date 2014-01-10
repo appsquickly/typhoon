@@ -13,6 +13,8 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "TyphoonCollaboratingAssemblyPropertyEnumerator.h"
 #import "CollaboratingMiddleAgesAssembly.h"
+#import "ExtendedMiddleAgesAssembly.h"
+#import "ExtendedSimpleAssembly.h"
 
 @interface TyphoonCollaboratingAssemblyPropertyEnumeratorTests : SenTestCase
 @end
@@ -28,6 +30,12 @@
 {
     TyphoonCollaboratingAssemblyPropertyEnumerator* enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:[CollaboratingMiddleAgesAssembly assembly]];
     assertThat([enumerator collaboratingAssemblyProperties], onlyContains(@"quests", nil));
+}
+
+- (void)testEnumeratesPropertiesIncludingSuperclasses
+{
+    TyphoonCollaboratingAssemblyPropertyEnumerator* enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:[ExtendedSimpleAssembly assembly]];
+    assertThat([enumerator collaboratingAssemblyProperties], containsInAnyOrder(@"assemblyA", @"assemblyB", nil));
 }
 
 @end

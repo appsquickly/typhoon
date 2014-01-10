@@ -33,15 +33,30 @@
 {
     NSMutableSet *propertyNames = [[NSMutableSet alloc] init];
 
-    unsigned int count = 0;
-    objc_property_t * properties = class_copyPropertyList([_assembly class], &count);
-    for (int propertyIndex = 0; propertyIndex < count; propertyIndex++) {
-        objc_property_t aProperty = properties[propertyIndex];
-        [propertyNames addObject:[self propertyNameForProperty:aProperty]];
+    Class class = [self.assembly class];
+    while ([self classNotRootAssemblyClass:class])
+    {
+        unsigned int count = 0;
+        objc_property_t * properties = class_copyPropertyList(class, &count);
+        for (int propertyIndex = 0; propertyIndex < count; propertyIndex++) {
+            objc_property_t aProperty = properties[propertyIndex];
+            [propertyNames addObject:[self propertyNameForProperty:aProperty]];
+        }
+
+        class = class_getSuperclass(class);
     }
 
     return propertyNames;
 }
+
+- (BOOL)classNotRootAssemblyClass:(Class)class
+{
+    NSString* currentClassName = NSStringFromClass(class);
+    NSString* rootAssemblyClassName = NSStringFromClass([TyphoonAssembly class]);
+
+    return ![currentClassName isEqualToString:rootAssemblyClassName];
+}
+
 
 - (id)propertyNameForProperty:(objc_property_t)aProperty
 {
