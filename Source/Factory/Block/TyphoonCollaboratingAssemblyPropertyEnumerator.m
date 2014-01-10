@@ -14,9 +14,8 @@
 #import "TyphoonCollaboratingAssemblyPropertyEnumerator.h"
 #import "TyphoonAssembly.h"
 #import <objc/runtime.h>
-#import <Typhoon/TyphoonTypeDescriptor.h>
-#import <Typhoon/TyphoonIntrospectionUtils.h>
-#import <Typhoon/TyphoonCollaboratingAssemblyProxy.h>
+#import "TyphoonTypeDescriptor.h"
+#import "TyphoonIntrospectionUtils.h"
 
 @implementation TyphoonCollaboratingAssemblyPropertyEnumerator
 {
