@@ -181,10 +181,7 @@ static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
 
 - (BOOL)classNotRootAssemblyClass:(Class)class
 {
-    NSString* currentClassName = NSStringFromClass(class);
-    NSString* rootAssemblyClassName = NSStringFromClass([TyphoonAssembly class]);
-
-    return ![currentClassName isEqualToString:rootAssemblyClassName];
+    return class != [TyphoonAssembly class];
 }
 
 - (NSSet*)obtainDefinitionSelectorsInAssemblyClass:(Class)pClass

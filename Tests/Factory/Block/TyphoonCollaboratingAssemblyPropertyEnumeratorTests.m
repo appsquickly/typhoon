@@ -28,6 +28,8 @@
 
 - (void)testEnumeratesProperties
 {
+    //[assembly setCollaboratingProperty:@"quests"];
+
     TyphoonCollaboratingAssemblyPropertyEnumerator* enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:[CollaboratingMiddleAgesAssembly assembly]];
     assertThat([enumerator collaboratingAssemblyProperties], onlyContains(@"quests", nil));
 }
