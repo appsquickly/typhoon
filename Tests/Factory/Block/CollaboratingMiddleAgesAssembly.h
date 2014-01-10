@@ -18,12 +18,13 @@
 @class MiddleAgesAssembly;
 @class Knight;
 
+
 @interface CollaboratingMiddleAgesAssembly : TyphoonAssembly
 
-@property(nonatomic, strong, readwrite) id <QuestProvider> quests;
++ (void)verifyKnightWithExternalQuest:(Knight*)knight;
 
 - (id)knightWithExternalQuest;
 
-+ (void)verifyKnightWithExternalQuest:(Knight*)knight;
+@property(nonatomic, strong, readwrite) TyphoonAssembly <QuestProvider>* quests;
 
 @end

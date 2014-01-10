@@ -26,13 +26,13 @@
 
 }
 
-- (void)testEnumeratesProperties
+- (void)test_assembly_property
 {
     TyphoonCollaboratingAssemblyPropertyEnumerator* enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:[CollaboratingMiddleAgesAssembly assembly]];
     assertThat([enumerator collaboratingAssemblyProperties], onlyContains(@"quests", nil));
 }
 
-- (void)testEnumeratesPropertiesIncludingSuperclasses
+- (void)test_assembly_properties_include_superclasses
 {
     TyphoonCollaboratingAssemblyPropertyEnumerator* enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:[ExtendedSimpleAssembly assembly]];
     assertThat([enumerator collaboratingAssemblyProperties], containsInAnyOrder(@"assemblyA", @"assemblyB", nil));
