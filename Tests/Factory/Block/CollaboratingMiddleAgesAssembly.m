@@ -22,11 +22,6 @@
 
 @implementation CollaboratingMiddleAgesAssembly
 
-- (void)resolveCollaboratingAssemblies
-{
-    [self setQuests:[TyphoonCollaboratingAssemblyProxy proxy]];
-}
-
 - (id)knightWithExternalQuest
 {
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)

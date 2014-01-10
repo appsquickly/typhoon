@@ -20,6 +20,8 @@
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblyAdviser.h"
 #import "TyphoonAssemblyDefinitionBuilder.h"
+#import "TyphoonCollaboratingAssemblyPropertyEnumerator.h"
+#import "TyphoonCollaboratingAssemblyProxy.h"
 
 static NSMutableArray* reservedSelectorsAsStrings;
 
@@ -43,7 +45,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
 + (TyphoonAssembly*)assembly
 {
     TyphoonAssembly* assembly = [[self alloc] init];
-    [assembly resolveCollaboratingAssemblies]; // set all properties of type TyphoonAssembly to TyphoonCollaboratingAssemblyProxy
+    [assembly resolveCollaboratingAssemblies];
     return assembly;
 }
 
@@ -160,6 +162,17 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 - (void)resolveCollaboratingAssemblies
 {
+    TyphoonCollaboratingAssemblyPropertyEnumerator* enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc]
+            initWithAssembly:self];
+
+    for (NSString *propertyName in enumerator.collaboratingAssemblyProperties) {
+        [self setCollaboratingAssemblyProxyOnPropertyNamed:propertyName];
+    }
+}
+
+- (void)setCollaboratingAssemblyProxyOnPropertyNamed:(NSString*)name
+{
+    [self setValue:[TyphoonCollaboratingAssemblyProxy proxy] forKey:name];
 }
 
 /* ====================================================================================================================================== */

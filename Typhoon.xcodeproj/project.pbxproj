@@ -96,6 +96,7 @@
 		4EF180F417E1F6180011F4D4 /* TyphoonKeyedStackInstanceRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF180F017E1F6180011F4D4 /* TyphoonKeyedStackInstanceRegister.m */; };
 		6B3F39C216ABFAC3001A601C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B3F399816ABF8E5001A601C /* Cocoa.framework */; };
 		75AB5031BDCB0923E6159217 /* TyphoonJRMethodSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AB553D3C9C1F54E45A1E1A /* TyphoonJRMethodSwizzler.h */; };
+		75AB50967CF3CE290B2C1FB1 /* TyphoonCollaboratingAssemblyPropertyEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5CF91B17D154574BA8AA /* TyphoonCollaboratingAssemblyPropertyEnumerator.m */; };
 		75AB5277B7FBB908260E3171 /* TyphoonMiscUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB52C636E294DB64B44C94 /* TyphoonMiscUtils.m */; };
 		75AB52873F3F9FDD20808528 /* TyphoonOCLogTemplateLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB59A4BC663B4130933F96 /* TyphoonOCLogTemplateLogger.m */; };
 		75AB52D57825E7687312B5A3 /* TyphoonAssemblyDefinitionBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AB530D594A02321813F646 /* TyphoonAssemblyDefinitionBuilder.h */; };
@@ -119,11 +120,13 @@
 		75AB5806C272343196707DD2 /* TyphoonAssemblyValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AB56C692E8A3057B5D215E /* TyphoonAssemblyValidator.h */; };
 		75AB5823C28CEB722B8D3531 /* TyphoonOCLogTemplateLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AB526BDFBFEC0AD86654E2 /* TyphoonOCLogTemplateLogger.h */; };
 		75AB588ADCB8D0A5CDB86309 /* TyphoonMiscUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AB52D6B617E87D6B457F36 /* TyphoonMiscUtils.h */; };
+		75AB588F9EDBF85C78BD09A1 /* TyphoonCollaboratingAssemblyPropertyEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AB5E023088EC27DBFA5120 /* TyphoonCollaboratingAssemblyPropertyEnumerator.h */; };
 		75AB58AB5F9721683E58B0D2 /* TyphoonJRMethodSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB509B53CC04E7EE54EC01 /* TyphoonJRMethodSwizzler.m */; };
 		75AB58E3BD95A61607090B10 /* TyphoonOCLogTemplateLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AB526BDFBFEC0AD86654E2 /* TyphoonOCLogTemplateLogger.h */; };
 		75AB5921CEA2DAFD8FC95022 /* TyphoonJRMethodSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AB553D3C9C1F54E45A1E1A /* TyphoonJRMethodSwizzler.h */; };
 		75AB59546BF6BAF05F3C023D /* TyphoonAssembly+TyphoonAssemblyFriend.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AB5F65C317A6CF61736CB1 /* TyphoonAssembly+TyphoonAssemblyFriend.h */; };
 		75AB599DF372901A2810DA7D /* TyphoonInjectedByReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AB53395FCFFCEF069FDCBE /* TyphoonInjectedByReference.h */; };
+		75AB59B0916A069A14CE058D /* TyphoonCollaboratingAssemblyPropertyEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5CF91B17D154574BA8AA /* TyphoonCollaboratingAssemblyPropertyEnumerator.m */; };
 		75AB59E1C148AA0D312AA819 /* TyphoonInjectedByReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5976B017EB3C25D8A357 /* TyphoonInjectedByReference.m */; };
 		75AB5A15113179167C7B5D49 /* TyphoonDefinitionRegisterer.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AB5622319F71FB5D11B005 /* TyphoonDefinitionRegisterer.h */; };
 		75AB5A5BCFAFF2F34BE057B1 /* TyphoonAssemblyDefinitionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5FFB79202C1A866F2B15 /* TyphoonAssemblyDefinitionBuilder.m */; };
@@ -139,6 +142,7 @@
 		75AB5C334CEC9F0104368CF5 /* TyphoonAssemblyAdviser.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5ADC1F9651389ECB89A9 /* TyphoonAssemblyAdviser.m */; };
 		75AB5CE3FE790E6451690B50 /* TyphoonDefinitionRegisterer.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB596E7ACCCA9D39B9168B /* TyphoonDefinitionRegisterer.m */; };
 		75AB5D2FEAE2EE88DCADFAB9 /* TyphoonAssemblyAdviser.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AB55ED678151796D2E04C0 /* TyphoonAssemblyAdviser.h */; };
+		75AB5D36D79859390079C6F7 /* TyphoonCollaboratingAssemblyPropertyEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AB5E023088EC27DBFA5120 /* TyphoonCollaboratingAssemblyPropertyEnumerator.h */; };
 		75AB5D436BE144603681EFDA /* TyphoonLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AB544FC9A584B085AA8691 /* TyphoonLogger.h */; };
 		75AB5DA7F4D40AEEEBD51C00 /* TyphoonCircularDependencyTerminator.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB536B994C326C0CB5E780 /* TyphoonCircularDependencyTerminator.m */; };
 		75AB5DD4C64FCEF25D1CD7EE /* TyphoonLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AB544FC9A584B085AA8691 /* TyphoonLogger.h */; };
@@ -391,7 +395,9 @@
 		75AB5AAF531EC2B67D4489DB /* TyphoonAssemblyValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblyValidator.m; sourceTree = "<group>"; };
 		75AB5ADC1F9651389ECB89A9 /* TyphoonAssemblyAdviser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblyAdviser.m; sourceTree = "<group>"; };
 		75AB5C1C53836F331FB62C72 /* NSString+TyphoonAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TyphoonAdditions.h"; sourceTree = "<group>"; };
+		75AB5CF91B17D154574BA8AA /* TyphoonCollaboratingAssemblyPropertyEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonCollaboratingAssemblyPropertyEnumerator.m; sourceTree = "<group>"; };
 		75AB5D671DB070CB3AE5E0EA /* TyphoonInjected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonInjected.h; sourceTree = "<group>"; };
+		75AB5E023088EC27DBFA5120 /* TyphoonCollaboratingAssemblyPropertyEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonCollaboratingAssemblyPropertyEnumerator.h; sourceTree = "<group>"; };
 		75AB5E8CBF2F48DF70E17AC7 /* TyphoonInjected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonInjected.m; sourceTree = "<group>"; };
 		75AB5F65C317A6CF61736CB1 /* TyphoonAssembly+TyphoonAssemblyFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyphoonAssembly+TyphoonAssemblyFriend.h"; sourceTree = "<group>"; };
 		75AB5FFB79202C1A866F2B15 /* TyphoonAssemblyDefinitionBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblyDefinitionBuilder.m; sourceTree = "<group>"; };
@@ -803,6 +809,8 @@
 				75AB52F3093514E517EDD726 /* TyphoonCircularDependencyTerminator.h */,
 				75AB5AAF531EC2B67D4489DB /* TyphoonAssemblyValidator.m */,
 				75AB56C692E8A3057B5D215E /* TyphoonAssemblyValidator.h */,
+				75AB5CF91B17D154574BA8AA /* TyphoonCollaboratingAssemblyPropertyEnumerator.m */,
+				75AB5E023088EC27DBFA5120 /* TyphoonCollaboratingAssemblyPropertyEnumerator.h */,
 			);
 			path = Block;
 			sourceTree = "<group>";
@@ -1133,6 +1141,7 @@
 				75AB5B7B4CF88C7FA635EC02 /* TyphoonInjected.h in Headers */,
 				75AB5806C272343196707DD2 /* TyphoonAssemblyValidator.h in Headers */,
 				75AB588ADCB8D0A5CDB86309 /* TyphoonMiscUtils.h in Headers */,
+				75AB5D36D79859390079C6F7 /* TyphoonCollaboratingAssemblyPropertyEnumerator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1228,6 +1237,7 @@
 				75AB54FB03AB269A3D492946 /* TyphoonInjected.h in Headers */,
 				75AB55DD8F33EAA4C8BEBBEC /* TyphoonAssemblyValidator.h in Headers */,
 				75AB5697B7EAC7FF114376F6 /* TyphoonMiscUtils.h in Headers */,
+				75AB588F9EDBF85C78BD09A1 /* TyphoonCollaboratingAssemblyPropertyEnumerator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1375,6 +1385,7 @@
 				75AB571548EB9A379FC2A7B5 /* TyphoonInjected.m in Sources */,
 				75AB5F386F767916567A65F2 /* TyphoonAssemblyValidator.m in Sources */,
 				75AB5B40A2F3E060D75A6526 /* TyphoonMiscUtils.m in Sources */,
+				75AB59B0916A069A14CE058D /* TyphoonCollaboratingAssemblyPropertyEnumerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1453,6 +1464,7 @@
 				75AB55A36DF2C565DB566F0C /* TyphoonInjected.m in Sources */,
 				75AB5C1E074F32A9C97C49A9 /* TyphoonAssemblyValidator.m in Sources */,
 				75AB5277B7FBB908260E3171 /* TyphoonMiscUtils.m in Sources */,
+				75AB50967CF3CE290B2C1FB1 /* TyphoonCollaboratingAssemblyPropertyEnumerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

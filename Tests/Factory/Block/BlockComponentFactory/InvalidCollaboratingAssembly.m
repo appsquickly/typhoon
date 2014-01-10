@@ -29,6 +29,4 @@
     }];
 }
 
-// seperate assembly to check that we have an invalid definition in the initializer.
-
 @end
