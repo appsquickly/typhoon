@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - Typhoon.info - Source/Definition/Properties/TyphoonPropertyInjectedByReference.h</title>
+  <title>LCOV - Typhoon.info - Source/Factory/Provider/TyphoonAssistedFactoryParameterInjectedWithProperty.h</title>
   <link rel="stylesheet" type="text/css" href="../../../gcov.css">
 </head>
 
@@ -19,7 +19,7 @@
         <table cellpadding=1 border=0 width="100%">
           <tr>
             <td width="10%" class="headerItem">Current view:</td>
-            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Source/Definition/Properties</a> - TyphoonPropertyInjectedByReference.h</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Source/Factory/Provider</a> - TyphoonAssistedFactoryParameterInjectedWithProperty.h</td>
             <td width="5%"></td>
             <td width="15%"></td>
             <td width="10%" class="headerCovTableHead">Hit</td>
@@ -32,7 +32,7 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">2</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
@@ -67,24 +67,27 @@
 <span class="lineNum">       9 </span>            : //
 <span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">      11 </span>            : 
-<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      12 </span>            : #import &lt;Foundation/Foundation.h&gt;
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span>            : #import &lt;Foundation/Foundation.h&gt;
-<span class="lineNum">      15 </span>            : #import &quot;TyphoonInjectedProperty.h&quot;
-<span class="lineNum">      16 </span>            : #import &quot;TyphoonInjectedByReference.h&quot;
-<span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span>            : /**
-<span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span>            : * Represents a property injected by referencing another definition in the container.
-<span class="lineNum">      21 </span>            : */
-<span class="lineNum">      22 </span>            : @interface TyphoonPropertyInjectedByReference : TyphoonInjectedByReference &lt;TyphoonInjectedProperty&gt;
-<span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineNoCov">          0 : @property(nonatomic, strong, readonly) NSString* name;</span>
+<span class="lineNum">      14 </span>            : #import &quot;TyphoonAssistedFactoryInjectedParameter.h&quot;
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span>            : /**
+<span class="lineNum">      17 </span>            :  * Describes a parameter injected with a factory property.
+<span class="lineNum">      18 </span>            :  *
+<span class="lineNum">      19 </span>            :  * Users should not use this class directly.
+<span class="lineNum">      20 </span>            :  */
+<span class="lineNum">      21 </span>            : @interface TyphoonAssistedFactoryParameterInjectedWithProperty : NSObject &lt;TyphoonAssistedFactoryInjectedParameter&gt;
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span>            : /** The parameter index */
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 : @property (nonatomic, assign, readonly) NSUInteger parameterIndex;</span>
 <span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span>            : - (instancetype)initWithName:(NSString*)name reference:(NSString*)reference;
-<span class="lineNum">      27 </span>            : - (instancetype)initWithName:(NSString *)name reference:(NSString *)reference isProxied:(BOOL)proxied;
+<span class="lineNum">      26 </span>            : /** The property name */
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 : @property (nonatomic, assign, readonly) SEL property;</span>
 <span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span>            : @end
+<span class="lineNum">      29 </span>            : /** Creates a parameter description for the given parameterIndex and property */
+<span class="lineNum">      30 </span>            : - (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex property:(SEL)property;
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            : @end
 </pre>
       </td>
     </tr>
