@@ -32,7 +32,7 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">149</td>
+            <td class="headerCovTableEntry">145</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
@@ -90,7 +90,7 @@
 <span class="lineNum">      32 </span>            : 
 <span class="lineNum">      33 </span>            : }
 <span class="lineNum">      34 </span>            : 
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 : + (void)initialize</span>
+<span class="lineNum">      35 </span>            : + (void)initialize
 <span class="lineNum">      36 </span>            : {
 <span class="lineNum">      37 </span><span class="lineNoCov">          0 :     @synchronized (self)</span>
 <span class="lineNum">      38 </span>            :     {
@@ -110,7 +110,7 @@
 <span class="lineNum">      52 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      53 </span>            : 
 <span class="lineNum">      54 </span>            : #pragma mark - Advising
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 : - (void)adviseAssembly</span>
+<span class="lineNum">      55 </span>            : - (void)adviseAssembly
 <span class="lineNum">      56 </span>            : {
 <span class="lineNum">      57 </span><span class="lineNoCov">          0 :     @synchronized (self)</span>
 <span class="lineNum">      58 </span>            :     {
@@ -121,7 +121,7 @@
 <span class="lineNum">      63 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      64 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      65 </span>            : 
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 : - (void)swizzleAssemblyMethods</span>
+<span class="lineNum">      66 </span>            : - (void)swizzleAssemblyMethods
 <span class="lineNum">      67 </span>            : {
 <span class="lineNum">      68 </span><span class="lineNoCov">          0 :     NSSet* definitionSelectors = [self enumerateDefinitionSelectors];</span>
 <span class="lineNum">      69 </span>            :     LogTrace(@&quot;About to swizzle the following methods: %@.&quot;, [self humanReadableDescriptionForSelectorObjects:definitionSelectors]);
@@ -220,7 +220,7 @@
 <span class="lineNum">     162 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     163 </span>            : 
 <span class="lineNum">     164 </span>            : #pragma mark - Definition Selector Enumerator
-<span class="lineNum">     165 </span><span class="lineNoCov">          0 : - (NSSet*)enumerateDefinitionSelectors</span>
+<span class="lineNum">     165 </span>            : - (NSSet*)enumerateDefinitionSelectors
 <span class="lineNum">     166 </span>            : {
 <span class="lineNum">     167 </span><span class="lineNoCov">          0 :     NSMutableSet* definitionSelectors = [[NSMutableSet alloc] init];</span>
 <span class="lineNum">     168 </span><span class="lineNoCov">          0 :     [self addDefinitionSelectorsForSubclassesOfAssemblyToSet:definitionSelectors];</span>

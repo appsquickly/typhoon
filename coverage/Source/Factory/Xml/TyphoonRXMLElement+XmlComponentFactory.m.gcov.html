@@ -32,7 +32,7 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">215</td>
+            <td class="headerCovTableEntry">209</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
@@ -86,12 +86,12 @@
 <span class="lineNum">      28 </span>            : 
 <span class="lineNum">      29 </span>            : @implementation TyphoonRXMLElement (XmlComponentFactory)
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 : - (BOOL)isComponent</span>
+<span class="lineNum">      31 </span>            : - (BOOL)isComponent
 <span class="lineNum">      32 </span>            : {
 <span class="lineNum">      33 </span><span class="lineNoCov">          0 :     return [[self tag] isEqualToString:@&quot;component&quot;]||[self isShorthandComponentTag];</span>
 <span class="lineNum">      34 </span>            : }
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : - (TyphoonDefinition*)asComponentDefinition</span>
+<span class="lineNum">      36 </span>            : - (TyphoonDefinition*)asComponentDefinition
 <span class="lineNum">      37 </span>            : {
 <span class="lineNum">      38 </span><span class="lineNoCov">          0 :     if ([self isShorthandComponentTag])</span>
 <span class="lineNum">      39 </span>            :     {
@@ -125,7 +125,7 @@
 <span class="lineNum">      67 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      68 </span>            : 
 <span class="lineNum">      69 </span>            : //TODO: Method too long, clean it up.
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 : - (id &lt;TyphoonInjectedProperty&gt;)asInjectedProperty</span>
+<span class="lineNum">      70 </span>            : - (id &lt;TyphoonInjectedProperty&gt;)asInjectedProperty
 <span class="lineNum">      71 </span>            : {
 <span class="lineNum">      72 </span><span class="lineNoCov">          0 :     [self assertTagName:@&quot;property&quot;];</span>
 <span class="lineNum">      73 </span>            : 
@@ -188,7 +188,7 @@
 <span class="lineNum">     130 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     131 </span>            : 
 <span class="lineNum">     132 </span>            : 
-<span class="lineNum">     133 </span><span class="lineNoCov">          0 : - (TyphoonInitializer*)asInitializer</span>
+<span class="lineNum">     133 </span>            : - (TyphoonInitializer*)asInitializer
 <span class="lineNum">     134 </span>            : {
 <span class="lineNum">     135 </span><span class="lineNoCov">          0 :     [self assertTagName:@&quot;initializer&quot;];</span>
 <span class="lineNum">     136 </span><span class="lineNoCov">          0 :     SEL selector = NSSelectorFromString([self attribute:@&quot;selector&quot;]);</span>
@@ -216,12 +216,12 @@
 <span class="lineNum">     158 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     159 </span>            : #pragma mark - Private Methods
 <span class="lineNum">     160 </span>            : 
-<span class="lineNum">     161 </span><span class="lineNoCov">          0 : - (BOOL)isShorthandComponentTag</span>
+<span class="lineNum">     161 </span>            : - (BOOL)isShorthandComponentTag
 <span class="lineNum">     162 </span>            : {
 <span class="lineNum">     163 </span><span class="lineNoCov">          0 :     return [[self tag] isEqualToString:@&quot;property-placeholder&quot;];</span>
 <span class="lineNum">     164 </span>            : }
 <span class="lineNum">     165 </span>            : 
-<span class="lineNum">     166 </span><span class="lineNoCov">          0 : - (TyphoonDefinition*)definitionByEvaluatingShorthandComponentTag</span>
+<span class="lineNum">     166 </span>            : - (TyphoonDefinition*)definitionByEvaluatingShorthandComponentTag
 <span class="lineNum">     167 </span>            : {
 <span class="lineNum">     168 </span><span class="lineNoCov">          0 :     TyphoonDefinition* definition = nil;</span>
 <span class="lineNum">     169 </span>            : 

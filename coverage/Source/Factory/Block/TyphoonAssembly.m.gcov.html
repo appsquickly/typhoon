@@ -32,7 +32,7 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">91</td>
+            <td class="headerCovTableEntry">81</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
@@ -100,24 +100,24 @@
 <span class="lineNum">      42 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      43 </span>            : #pragma mark - Class Methods
 <span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 : + (TyphoonAssembly*)assembly</span>
+<span class="lineNum">      45 </span>            : + (TyphoonAssembly*)assembly
 <span class="lineNum">      46 </span>            : {
 <span class="lineNum">      47 </span><span class="lineNoCov">          0 :     TyphoonAssembly* assembly = [[self alloc] init];</span>
 <span class="lineNum">      48 </span><span class="lineNoCov">          0 :     [assembly resolveCollaboratingAssemblies];</span>
 <span class="lineNum">      49 </span><span class="lineNoCov">          0 :     return assembly;</span>
 <span class="lineNum">      50 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : + (instancetype)defaultAssembly</span>
+<span class="lineNum">      52 </span>            : + (instancetype)defaultAssembly
 <span class="lineNum">      53 </span>            : {
 <span class="lineNum">      54 </span><span class="lineNoCov">          0 :     return (TyphoonAssembly*)[TyphoonComponentFactory defaultFactory];</span>
 <span class="lineNum">      55 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 : + (void)load</span>
+<span class="lineNum">      57 </span>            : + (void)load
 <span class="lineNum">      58 </span>            : {
 <span class="lineNum">      59 </span><span class="lineNoCov">          0 :     [self reserveSelectors];</span>
 <span class="lineNum">      60 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      61 </span>            : 
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 : + (void)reserveSelectors;</span>
+<span class="lineNum">      62 </span>            : + (void)reserveSelectors;
 <span class="lineNum">      63 </span>            : {
 <span class="lineNum">      64 </span><span class="lineNoCov">          0 :     reservedSelectorsAsStrings = [[NSMutableArray alloc] init];</span>
 <span class="lineNum">      65 </span>            : 
@@ -199,7 +199,7 @@
 <span class="lineNum">     141 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     142 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">     143 </span>            : 
-<span class="lineNum">     144 </span><span class="lineNoCov">          0 : - (id)init</span>
+<span class="lineNum">     144 </span>            : - (id)init
 <span class="lineNum">     145 </span>            : {
 <span class="lineNum">     146 </span><span class="lineNoCov">          0 :     self = [super init];</span>
 <span class="lineNum">     147 </span><span class="lineNoCov">          0 :     if (self)</span>
@@ -210,7 +210,7 @@
 <span class="lineNum">     152 </span><span class="lineNoCov">          0 :     return self;</span>
 <span class="lineNum">     153 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     154 </span>            : 
-<span class="lineNum">     155 </span><span class="lineNoCov">          0 : - (void)dealloc</span>
+<span class="lineNum">     155 </span>            : - (void)dealloc
 <span class="lineNum">     156 </span>            : {
 <span class="lineNum">     157 </span><span class="lineNoCov">          0 :     [TyphoonAssemblyAdviser undoAdviseMethods:self];</span>
 <span class="lineNum">     158 </span><span class="lineNoCov">          0 : }</span>
@@ -218,10 +218,10 @@
 <span class="lineNum">     160 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     161 </span>            : #pragma mark - Interface Methods
 <span class="lineNum">     162 </span>            : 
-<span class="lineNum">     163 </span><span class="lineNoCov">          0 : - (void)resolveCollaboratingAssemblies</span>
+<span class="lineNum">     163 </span>            : - (void)resolveCollaboratingAssemblies
 <span class="lineNum">     164 </span>            : {
 <span class="lineNum">     165 </span><span class="lineNoCov">          0 :     TyphoonCollaboratingAssemblyPropertyEnumerator* enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc]</span>
-<span class="lineNum">     166 </span><span class="lineNoCov">          0 :             initWithAssembly:self];</span>
+<span class="lineNum">     166 </span>            :             initWithAssembly:self];
 <span class="lineNum">     167 </span>            : 
 <span class="lineNum">     168 </span><span class="lineNoCov">          0 :     for (NSString *propertyName in enumerator.collaboratingAssemblyProperties) {</span>
 <span class="lineNum">     169 </span><span class="lineNoCov">          0 :         [self setCollaboratingAssemblyProxyOnPropertyNamed:propertyName];</span>
@@ -235,7 +235,7 @@
 <span class="lineNum">     177 </span>            : 
 <span class="lineNum">     178 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     179 </span>            : #pragma mark - Private Methods
-<span class="lineNum">     180 </span><span class="lineNoCov">          0 : - (NSArray*)definitions</span>
+<span class="lineNum">     180 </span>            : - (NSArray*)definitions
 <span class="lineNum">     181 </span>            : {
 <span class="lineNum">     182 </span><span class="lineNoCov">          0 :     return [_definitionBuilder builtDefinitions];</span>
 <span class="lineNum">     183 </span><span class="lineNoCov">          0 : }</span>
@@ -252,7 +252,7 @@
 <span class="lineNum">     194 </span><span class="lineNoCov">          0 :     return nil;</span>
 <span class="lineNum">     195 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     196 </span>            : 
-<span class="lineNum">     197 </span><span class="lineNoCov">          0 : - (void)prepareForUse</span>
+<span class="lineNum">     197 </span>            : - (void)prepareForUse
 <span class="lineNum">     198 </span>            : {
 <span class="lineNum">     199 </span><span class="lineNoCov">          0 :     self.definitionSelectors = [self.adviser enumerateDefinitionSelectors];</span>
 <span class="lineNum">     200 </span>            : 

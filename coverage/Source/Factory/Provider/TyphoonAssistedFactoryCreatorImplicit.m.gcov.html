@@ -32,7 +32,7 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">145</td>
+            <td class="headerCovTableEntry">140</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
@@ -118,10 +118,10 @@
 <span class="lineNum">      60 </span>            :             // find dictionaries more semantic.
 <span class="lineNum">      61 </span><span class="lineNoCov">          0 :             NSDictionary *argumentParameters = [self findMappingsFrom:method.selectedInitializer.methodParameterNames</span>
 <span class="lineNum">      62 </span>            :                                                                    to:method.methodParameterNames
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 :                                                                except:nil];</span>
+<span class="lineNum">      63 </span>            :                                                                except:nil];
 <span class="lineNum">      64 </span><span class="lineNoCov">          0 :             NSDictionary *propertyParameters = [self findMappingsFrom:method.selectedInitializer.methodParameterNames</span>
 <span class="lineNum">      65 </span>            :                                                                    to:[self protocolPropertyNames]
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 :                                                                except:method.methodParameterNames];</span>
+<span class="lineNum">      66 </span>            :                                                                except:method.methodParameterNames];
 <span class="lineNum">      67 </span>            : 
 <span class="lineNum">      68 </span><span class="lineNoCov">          0 :             [factoryDefinition factoryMethod:method.methodName returns:returnType initialization:^(TyphoonAssistedFactoryMethodInitializer *initializer) {</span>
 <span class="lineNum">      69 </span><span class="lineNoCov">          0 :                 initializer.selector = method.selectedInitializer.methodName;</span>
@@ -140,7 +140,7 @@
 <span class="lineNum">      82 </span><span class="lineNoCov">          0 :     }];</span>
 <span class="lineNum">      83 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      84 </span>            : 
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 : - (NSArray *)protocolFactoryMethods</span>
+<span class="lineNum">      85 </span>            : - (NSArray *)protocolFactoryMethods
 <span class="lineNum">      86 </span>            : {
 <span class="lineNum">      87 </span><span class="lineNoCov">          0 :     NSMutableSet *propertyNames = [NSMutableSet set];</span>
 <span class="lineNum">      88 </span><span class="lineNoCov">          0 :     NSMutableSet *methodNames = [NSMutableSet set];</span>
@@ -168,7 +168,7 @@
 <span class="lineNum">     110 </span><span class="lineNoCov">          0 :     return [factoryMethods copy];</span>
 <span class="lineNum">     111 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     112 </span>            : 
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 : - (NSArray *)returnTypeInitializerMethods</span>
+<span class="lineNum">     113 </span>            : - (NSArray *)returnTypeInitializerMethods
 <span class="lineNum">     114 </span>            : {
 <span class="lineNum">     115 </span><span class="lineNoCov">          0 :     NSMutableArray *initializerMethods = [NSMutableArray array];</span>
 <span class="lineNum">     116 </span><span class="lineNoCov">          0 :     TyphoonAssistedFactoryCreatorForEachMethodInClass(_returnType, ^(struct objc_method_description methodDescription) {</span>
@@ -291,7 +291,7 @@
 <span class="lineNum">     233 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     234 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     235 </span>            : 
-<span class="lineNum">     236 </span><span class="lineNoCov">          0 : - (NSArray *)protocolPropertyNames</span>
+<span class="lineNum">     236 </span>            : - (NSArray *)protocolPropertyNames
 <span class="lineNum">     237 </span>            : {
 <span class="lineNum">     238 </span><span class="lineNoCov">          0 :     if (_procotolPropertyNames == nil)</span>
 <span class="lineNum">     239 </span>            :     {

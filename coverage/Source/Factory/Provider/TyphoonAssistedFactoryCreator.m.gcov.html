@@ -32,7 +32,7 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">155</td>
+            <td class="headerCovTableEntry">152</td>
             <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
@@ -192,7 +192,7 @@
 <span class="lineNum">     134 </span><span class="lineNoCov">          0 :     NSString* name = [NSString stringWithCString:cName encoding:NSASCIIStringEncoding];</span>
 <span class="lineNum">     135 </span><span class="lineNoCov">          0 :     NSString* setterName = [NSString stringWithFormat:@&quot;set%@%@:&quot;,</span>
 <span class="lineNum">     136 </span>            :                                                       [[name substringToIndex:1] uppercaseString],
-<span class="lineNum">     137 </span><span class="lineNoCov">          0 :                                                       [name substringFromIndex:1]];</span>
+<span class="lineNum">     137 </span>            :                                                       [name substringFromIndex:1]];
 <span class="lineNum">     138 </span><span class="lineNoCov">          0 :     SEL setterSEL = sel_registerName([setterName cStringUsingEncoding:NSASCIIStringEncoding]);</span>
 <span class="lineNum">     139 </span>            : 
 <span class="lineNum">     140 </span><span class="lineNoCov">          0 :     IMP setterIMP = imp_implementationWithBlock(^(TyphoonAssistedFactoryBase* _self, id value)</span>
@@ -271,7 +271,7 @@
 <span class="lineNum">     213 </span><span class="lineNoCov">          0 :     return factoryClass;</span>
 <span class="lineNum">     214 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     215 </span>            : 
-<span class="lineNum">     216 </span><span class="lineNoCov">          0 : + (void)initialize</span>
+<span class="lineNum">     216 </span>            : + (void)initialize
 <span class="lineNum">     217 </span>            : {
 <span class="lineNum">     218 </span><span class="lineNoCov">          0 :     if (self == [TyphoonAssistedFactoryCreator class])</span>
 <span class="lineNum">     219 </span>            :     {
@@ -306,7 +306,7 @@
 <span class="lineNum">     248 </span><span class="lineNoCov">          0 :     return self;</span>
 <span class="lineNum">     249 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     250 </span>            : 
-<span class="lineNum">     251 </span><span class="lineNoCov">          0 : - (Class)factoryClass</span>
+<span class="lineNum">     251 </span>            : - (Class)factoryClass
 <span class="lineNum">     252 </span>            : {
 <span class="lineNum">     253 </span><span class="lineNoCov">          0 :     __block Class factoryClass = nil;</span>
 <span class="lineNum">     254 </span><span class="lineNoCov">          0 :     dispatch_sync(sQueue, ^</span>
