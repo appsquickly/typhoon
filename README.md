@@ -191,7 +191,7 @@ Test Failures typically indicate a bug that has been flagged, but not yet fixed.
 | I need help because | So here's what I'll do |
 | :---------- | :------ | 
 I'm not sure how to do [xyz]  | Typhoon users and contributors monitor the Typhoon tag on <a href="http://stackoverflow.com/questions/tagged/typhoon?sort=newest&pageSize=15">Stack Overflow</a>. Chances are your question can be answered there. 
-This looks like a bug | Please raise a GitHub issue 
+This looks like a bug | Please raise a <a href="https://github.com/typhoon-framework/Typhoon/issues">GitHub issue</a>
 I'll take all the help I can get | Professional consultation is available from key contributors. Please get in touch if you'd like this, and we'll connect you with the nearest available consultant 
 
 
