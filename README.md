@@ -1,4 +1,6 @@
 # Typhoon! (www.typhoonframework.org) 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/typhoon-framework/typhoon/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
 
 A new dependency injection container for Objective-C. Light-weight, yet full-featured and super-easy to use. 
 
@@ -239,5 +241,4 @@ Apache License, Version 2.0, January 2004, http://www.apache.org/licenses/
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/0e47e2f2028b2badfc88e13f95914938 "githalytics.com")](http://githalytics.com/jasperblues/Typhoon)
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/typhoon-framework/typhoon/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
