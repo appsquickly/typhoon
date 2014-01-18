@@ -17,11 +17,12 @@
 
 @implementation CoverageFixer
 
-extern void __gcov_flush(void);
+
 
 
 + (void)testSuiteDidStop:(NSNotification*)aNotification
 {
+    extern void __gcov_flush(void);
     __gcov_flush();
     [super testSuiteDidStop:aNotification];
 }

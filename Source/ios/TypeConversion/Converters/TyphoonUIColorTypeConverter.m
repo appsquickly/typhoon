@@ -27,8 +27,16 @@
 
 - (id)convert:(NSString*)stringValue
 {
+    NSString* hexString =
+        [[stringValue stringByReplacingOccurrencesOfString:@"#" withString:@""] stringByReplacingOccurrencesOfString:@"0x" withString:@""];
+    if (![hexString length] == 6)
+    {
+        [NSException raise:NSInvalidArgumentException format:@"%@ requires a six digit hex string.", NSStringFromClass([self class])];
+
+    }
+
     NSUInteger red, green, blue;
-    sscanf([stringValue UTF8String], "#%02X%02X%02X", &red, &green, &blue);
+    sscanf([hexString UTF8String], "%02X%02X%02X", &red, &green, &blue);
     __autoreleasing UIColor* color = [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:1];
     return color;
 }

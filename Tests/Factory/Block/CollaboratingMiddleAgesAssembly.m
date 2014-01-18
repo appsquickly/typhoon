@@ -12,8 +12,6 @@
 
 
 #import "CollaboratingMiddleAgesAssembly.h"
-#import "MiddleAgesAssembly.h"
-#import "TyphoonCollaboratingAssemblyProxy.h"
 #import "TyphoonDefinition.h"
 #import "Knight.h"
 #import "OCLogTemplate.h"
