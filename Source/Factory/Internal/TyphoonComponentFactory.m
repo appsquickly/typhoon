@@ -105,7 +105,7 @@ static TyphoonComponentFactory* defaultFactory;
     }
 }
 
-- (id)objectForKeyedSubscript:(id)key
+- (id)componentForKeyedSubscript:(id)key
 {
     if ([key isKindOfClass:[NSString class]])
     {
