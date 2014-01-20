@@ -77,8 +77,7 @@
 
 /**
 * Sets a given instance of TyphoonComponentFactory, as the default factory so that it can be retrieved later with:
-*
-*       [TyphoonComponentFactory defaultFactory];
+* [TyphoonComponentFactory defaultFactory];
 *
 */
 - (void)makeDefault;
@@ -90,20 +89,25 @@
 
 /**
 * Returns an an instance of the component matching the supplied class or protocol. For example:
-
-        [factory objectForType:[Knight class]];
-        [factory objectForType:@protocol(Quest)];
-
+@code
+[factory objectForType:[Knight class]];
+[factory objectForType:@protocol(Quest)];
+@endcode
+*
 * @exception NSInvalidArgumentException When no singletons or prototypes match the requested type.
 * @exception NSInvalidArgumentException When when more than one singleton or prototype matches the requested type.
 *
-* @warning componentForType with a protocol argument (eg componentForType:@protocol(StoreFront) ) is not currently supported in
-* Objective-C++.
+* @warning componentForType with a protocol argument is not currently supported in Objective-C++.
 *
-* @See: allComponentsForType:
+* @see: allComponentsForType:
 */
 - (id)componentForType:(id)classOrProtocol;
 
+/**
+* Returns an array objects matching the given type.
+*
+* @see componentForType
+*/
 - (NSArray*)allComponentsForType:(id)classOrProtocol;
 
 /**
