@@ -97,6 +97,9 @@
 * @exception NSInvalidArgumentException When no singletons or prototypes match the requested type.
 * @exception NSInvalidArgumentException When when more than one singleton or prototype matches the requested type.
 *
+* @warning componentForType with a protocol argument (eg componentForType:@protocol(StoreFront) ) is not currently supported in
+* Objective-C++.
+*
 * @See: allComponentsForType:
 */
 - (id)componentForType:(id)classOrProtocol;
