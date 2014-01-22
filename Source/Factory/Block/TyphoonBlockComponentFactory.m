@@ -12,7 +12,7 @@
 
 
 #import <objc/runtime.h>
-#import "Typhoon/TyphoonInitializer+InstanceBuilder.h"
+#import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonBlockComponentFactory.h"
 #import "TyphoonAssembly.h"
 #import "TyphoonDefinition.h"
