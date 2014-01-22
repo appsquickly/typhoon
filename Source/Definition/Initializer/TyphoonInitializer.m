@@ -11,7 +11,7 @@
 
 
 
-#import <Typhoon/TyphoonCollaboratingAssemblyProxy.h>
+#import "TyphoonCollaboratingAssemblyProxy.h"
 #import "TyphoonInitializer.h"
 #import "TyphoonParameterInjectedByReference.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
