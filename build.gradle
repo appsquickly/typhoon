@@ -1,0 +1,33 @@
+import xcode.test.XcodeTestTask
+import xcode.test.platform.*
+import xcode.test.report.*
+import xcode.test.suite.*
+
+buildscript {
+    repositories {
+        mavenCentral()
+        ivy {
+            url uri('http://www.appsquick.ly/xcode-gradle/ivyrepo/')
+        }
+    }
+    dependencies {
+        classpath group: 'jblues', name: 'xcode-gradle', version: '1.0-SNAPSHOT'
+    }
+}
+
+
+task test(type: XcodeTestTask) {
+
+    runWith new XcodeWorkspaceTestSuite(
+            workspace: 'Typhoon.xcworkspace',
+            scheme:'iOS-Typhoon'
+    )
+
+	platform new iOSSimulatorTestPlatform(
+            sdkVersion: '6.1'
+    )
+
+
+	outputDir 'build'
+}
+
