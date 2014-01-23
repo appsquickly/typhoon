@@ -188,7 +188,7 @@ Test Failures typically indicate a bug that has been flagged, but not yet fixed.
 # Got a question? Need some help? 
 
 
-| I need help because | So here's what I'll do |
+| I need help because | Action |
 | :---------- | :------ | 
 I'm not sure how to do [xyz]  | Typhoon users and contributors monitor the Typhoon tag on <a href="http://stackoverflow.com/questions/tagged/typhoon?sort=newest&pageSize=15">Stack Overflow</a>. Chances are your question can be answered there. 
 This looks like a bug | Please raise a <a href="https://github.com/typhoon-framework/Typhoon/issues">GitHub issue</a>
