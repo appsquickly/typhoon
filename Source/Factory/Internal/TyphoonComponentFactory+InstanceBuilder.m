@@ -21,6 +21,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonParameterInjectedByReference.h"
 #import "TyphoonInitializer.h"
 #import "TyphoonPropertyInjectedByReference.h"
+#import "TyphoonPropertyInjectedByFactoryReference.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonTypeConverterRegistry.h"
 #import "TyphoonPropertyInjectedWithStringRepresentation.h"
@@ -278,6 +279,25 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
         id reference = [self componentForKey:byReference.reference];
         [invocation setArgument:&reference atIndex:2];
+    }
+    else if (property.injectionType == TyphoonPropertyInjectionTypeByFactoryReference)
+    {
+        TyphoonPropertyInjectedByFactoryReference* byReference = (TyphoonPropertyInjectedByFactoryReference *)property;
+        [self evaluateCircularDependency:byReference.reference propertyName:property.name instance:instance];
+        
+        if ([self propertyIsCircular:property onInstance:instance])
+        {
+            return;
+        }
+        NSString *propertyName = byReference.name;
+        id factoryReference = [self componentForKey:byReference.reference];
+        id injectedValue = [factoryReference valueForKeyPath:byReference.keyPath];
+        
+        /* Changing invocation from set<PropertyName>: to setValue:forKey:PropertyName, 
+         * because 'setValue:forKey:' mechanism is more clever and handles scalar types */
+        [invocation setArgument:&injectedValue atIndex:2];
+        [invocation setArgument:&propertyName atIndex:3];
+        [invocation setSelector:@selector(setValue:forKey:)];
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeAsStringRepresentation)
     {
