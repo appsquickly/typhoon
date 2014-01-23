@@ -24,7 +24,7 @@ task test(type: XcodeTestTask) {
     )
 
 	platform new iOSSimulatorTestPlatform(
-            sdkVersion: '6.1'
+            sdkVersion: '7.0'
     )
 
 
