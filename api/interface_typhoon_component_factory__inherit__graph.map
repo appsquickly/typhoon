@@ -1,4 +1,4 @@
 <map id="TyphoonComponentFactory" name="TyphoonComponentFactory">
-<area shape="rect" id="node3" href="$interface_typhoon_block_component_factory.html" title="TyphoonBlockComponentFactory" alt="" coords="5,155,243,181"/>
-<area shape="rect" id="node4" href="$interface_typhoon_xml_component_factory.html" title="TyphoonXmlComponentFactory" alt="" coords="268,155,495,181"/>
+<area shape="rect" id="node3" href="$interface_typhoon_block_component_factory.html" title="TyphoonBlockComponentFactory" alt="" coords="5,155,224,181"/>
+<area shape="rect" id="node4" href="$interface_typhoon_xml_component_factory.html" title="TyphoonXmlComponentFactory" alt="" coords="249,155,460,181"/>
 </map>

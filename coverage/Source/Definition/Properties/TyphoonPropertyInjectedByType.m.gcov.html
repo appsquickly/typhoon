@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntryHi">90.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-01-14</td>
+            <td class="headerValue">2014-01-23</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -78,22 +78,22 @@
 <span class="lineNum">      20 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      21 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineNoCov">          0 : - (id)initWithName:(NSString*)name</span>
+<span class="lineNum">      23 </span><span class="lineCov">          4 : - (id)initWithName:(NSString*)name</span>
 <span class="lineNum">      24 </span>            : {
-<span class="lineNum">      25 </span><span class="lineNoCov">          0 :     self = [super init];</span>
-<span class="lineNum">      26 </span><span class="lineNoCov">          0 :     if (self)</span>
+<span class="lineNum">      25 </span><span class="lineCov">          4 :     self = [super init];</span>
+<span class="lineNum">      26 </span><span class="lineCov">          4 :     if (self)</span>
 <span class="lineNum">      27 </span>            :     {
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 :         _name = name;</span>
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 :     return self;</span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      28 </span><span class="lineCov">          4 :         _name = name;</span>
+<span class="lineNum">      29 </span><span class="lineCov">          4 :     }</span>
+<span class="lineNum">      30 </span><span class="lineCov">          4 :     return self;</span>
+<span class="lineNum">      31 </span><span class="lineCov">          4 : }</span>
 <span class="lineNum">      32 </span>            : 
 <span class="lineNum">      33 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      34 </span>            : #pragma mark - Protocol Methods
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span>            : - (TyphoonPropertyInjectionType)injectionType
+<span class="lineNum">      36 </span><span class="lineCov">          4 : - (TyphoonPropertyInjectionType)injectionType</span>
 <span class="lineNum">      37 </span>            : {
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 :     return TyphoonPropertyInjectionTypeByType;</span>
+<span class="lineNum">      38 </span><span class="lineCov">          4 :     return TyphoonPropertyInjectionTypeByType;</span>
 <span class="lineNum">      39 </span>            : }
 <span class="lineNum">      40 </span>            : 
 <span class="lineNum">      41 </span>            : 

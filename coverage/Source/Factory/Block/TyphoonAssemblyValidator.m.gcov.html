@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
-            <td class="headerCovTableEntry">56</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">48</td>
+            <td class="headerCovTableEntry">62</td>
+            <td class="headerCovTableEntryMed">77.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-01-14</td>
+            <td class="headerValue">2014-01-23</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -83,87 +83,87 @@
 <span class="lineNum">      25 </span>            : #import &quot;TyphoonMiscUtils.h&quot;
 <span class="lineNum">      26 </span>            : 
 <span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 : @implementation TyphoonAssemblyValidator</span>
+<span class="lineNum">      28 </span><span class="lineCov">        118 : @implementation TyphoonAssemblyValidator</span>
 <span class="lineNum">      29 </span>            : {
 <span class="lineNum">      30 </span>            :     TyphoonDefinition *_currentDefinition;
 <span class="lineNum">      31 </span>            : }
 <span class="lineNum">      32 </span>            : 
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 : - (instancetype)initWithAssembly:(TyphoonAssembly *)assembly</span>
+<span class="lineNum">      33 </span><span class="lineCov">        120 : - (instancetype)initWithAssembly:(TyphoonAssembly *)assembly</span>
 <span class="lineNum">      34 </span>            : {
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 :     self = [super init];</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 :     if (self)</span>
+<span class="lineNum">      35 </span><span class="lineCov">        120 :     self = [super init];</span>
+<span class="lineNum">      36 </span><span class="lineCov">        120 :     if (self)</span>
 <span class="lineNum">      37 </span>            :     {
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 :         _assembly = assembly;</span>
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      38 </span><span class="lineCov">        120 :         _assembly = assembly;</span>
+<span class="lineNum">      39 </span><span class="lineCov">        120 :     }</span>
 <span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     return self;</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      41 </span><span class="lineCov">        120 :     return self;</span>
+<span class="lineNum">      42 </span><span class="lineCov">        120 : }</span>
 <span class="lineNum">      43 </span>            : 
-<span class="lineNum">      44 </span>            : - (void)validate
+<span class="lineNum">      44 </span><span class="lineCov">        118 : - (void)validate</span>
 <span class="lineNum">      45 </span>            : {
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 :     [self verifyDefinitionsDoNotDirectlyCallOtherAssemblies];</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      46 </span><span class="lineCov">        118 :     [self verifyDefinitionsDoNotDirectlyCallOtherAssemblies];</span>
+<span class="lineNum">      47 </span><span class="lineCov">        118 : }</span>
 <span class="lineNum">      48 </span>            : 
-<span class="lineNum">      49 </span>            : - (void)verifyDefinitionsDoNotDirectlyCallOtherAssemblies;
+<span class="lineNum">      49 </span><span class="lineCov">        120 : - (void)verifyDefinitionsDoNotDirectlyCallOtherAssemblies;</span>
 <span class="lineNum">      50 </span>            : {
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 :     for (TyphoonDefinition* definition in [self.assembly definitions]) {</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 :         _currentDefinition = definition;</span>
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 :         [self verifyCurrentDefinition];</span>
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      51 </span><span class="lineCov">       1678 :     for (TyphoonDefinition* definition in [self.assembly definitions]) {</span>
+<span class="lineNum">      52 </span><span class="lineCov">        718 :         _currentDefinition = definition;</span>
+<span class="lineNum">      53 </span><span class="lineCov">        718 :         [self verifyCurrentDefinition];</span>
+<span class="lineNum">      54 </span><span class="lineCov">       1672 :     }</span>
+<span class="lineNum">      55 </span><span class="lineCov">        118 : }</span>
 <span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span>            : - (void)verifyCurrentDefinition
+<span class="lineNum">      57 </span><span class="lineCov">        718 : - (void)verifyCurrentDefinition</span>
 <span class="lineNum">      58 </span>            : {
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 :     [self verifyInitializerInjectionNotPerformedOnOtherAssembliesByCurrentDefinition];</span>
-<span class="lineNum">      60 </span><span class="lineNoCov">          0 :     [self verifyPropertyInjectionNotPerformedOnOtherAssembliesByCurrentDefinition];</span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      59 </span><span class="lineCov">        718 :     [self verifyInitializerInjectionNotPerformedOnOtherAssembliesByCurrentDefinition];</span>
+<span class="lineNum">      60 </span><span class="lineCov">        718 :     [self verifyPropertyInjectionNotPerformedOnOtherAssembliesByCurrentDefinition];</span>
+<span class="lineNum">      61 </span><span class="lineCov">        718 : }</span>
 <span class="lineNum">      62 </span>            : 
-<span class="lineNum">      63 </span>            : - (void)verifyPropertyInjectionNotPerformedOnOtherAssembliesByCurrentDefinition
+<span class="lineNum">      63 </span><span class="lineCov">        718 : - (void)verifyPropertyInjectionNotPerformedOnOtherAssembliesByCurrentDefinition</span>
 <span class="lineNum">      64 </span>            : {
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 :     id &lt;NSFastEnumeration&gt; injectees = _currentDefinition.injectedProperties;</span>
+<span class="lineNum">      65 </span><span class="lineCov">        718 :     id &lt;NSFastEnumeration&gt; injectees = _currentDefinition.injectedProperties;</span>
 <span class="lineNum">      66 </span>            : 
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 :     [self verifyCurrentDefinitionWithInjectees:injectees injectionType:@&quot;property&quot;];</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      67 </span><span class="lineCov">        718 :     [self verifyCurrentDefinitionWithInjectees:injectees injectionType:@&quot;property&quot;];</span>
+<span class="lineNum">      68 </span><span class="lineCov">        718 : }</span>
 <span class="lineNum">      69 </span>            : 
-<span class="lineNum">      70 </span>            : - (void)verifyInitializerInjectionNotPerformedOnOtherAssembliesByCurrentDefinition
+<span class="lineNum">      70 </span><span class="lineCov">        719 : - (void)verifyInitializerInjectionNotPerformedOnOtherAssembliesByCurrentDefinition</span>
 <span class="lineNum">      71 </span>            : {
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 :     id &lt;NSFastEnumeration&gt; injectees = [[_currentDefinition initializer] injectedParameters];</span>
+<span class="lineNum">      72 </span><span class="lineCov">        719 :     id &lt;NSFastEnumeration&gt; injectees = [[_currentDefinition initializer] injectedParameters];</span>
 <span class="lineNum">      73 </span>            : 
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 :     [self verifyCurrentDefinitionWithInjectees:injectees injectionType:@&quot;initializer&quot;];</span>
-<span class="lineNum">      75 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      74 </span><span class="lineCov">        719 :     [self verifyCurrentDefinitionWithInjectees:injectees injectionType:@&quot;initializer&quot;];</span>
+<span class="lineNum">      75 </span><span class="lineCov">        719 : }</span>
 <span class="lineNum">      76 </span>            : 
-<span class="lineNum">      77 </span><span class="lineNoCov">          0 : - (void)verifyCurrentDefinitionWithInjectees:(id &lt;NSFastEnumeration&gt;)injectees injectionType:(NSString *)type</span>
+<span class="lineNum">      77 </span><span class="lineCov">       1439 : - (void)verifyCurrentDefinitionWithInjectees:(id &lt;NSFastEnumeration&gt;)injectees injectionType:(NSString *)type</span>
 <span class="lineNum">      78 </span>            : {
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 :     for (TyphoonInjected *injected in injectees) {</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 :         if ([injected isByReference]) {</span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 :             if ([self injectedIsFromDifferentAssembly:(TyphoonInjectedByReference *)injected]) {</span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 :                 if ([type isEqualToString:@&quot;initializer&quot;]) {</span>
+<span class="lineNum">      79 </span><span class="lineCov">       3964 :     for (TyphoonInjected *injected in injectees) {</span>
+<span class="lineNum">      80 </span><span class="lineCov">        926 :         if ([injected isByReference]) {</span>
+<span class="lineNum">      81 </span><span class="lineCov">        517 :             if ([self injectedIsFromDifferentAssembly:(TyphoonInjectedByReference *)injected]) {</span>
+<span class="lineNum">      82 </span><span class="lineCov">          2 :                 if ([type isEqualToString:@&quot;initializer&quot;]) {</span>
 <span class="lineNum">      83 </span><span class="lineNoCov">          0 :                     [self onInjectionOnDifferentAssemblyWithDefinitionNamed:_currentDefinition.key parameter:(TyphoonParameterInjectedByReference*)injected];</span>
 <span class="lineNum">      84 </span><span class="lineNoCov">          0 :                 }else{</span>
 <span class="lineNum">      85 </span><span class="lineNoCov">          0 :                     [self onInjectionOnDifferentAssemblyWithDefinitionNamed:_currentDefinition.key property:(TyphoonPropertyInjectedByReference*)injected];</span>
 <span class="lineNum">      86 </span>            :                 }
 <span class="lineNum">      87 </span><span class="lineNoCov">          0 :             }</span>
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      88 </span><span class="lineCov">        515 :         }</span>
+<span class="lineNum">      89 </span><span class="lineCov">       3956 :     }</span>
+<span class="lineNum">      90 </span><span class="lineCov">       1437 : }</span>
 <span class="lineNum">      91 </span>            : 
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 : - (BOOL)injectedIsFromDifferentAssembly:(TyphoonInjectedByReference *)injected</span>
+<span class="lineNum">      92 </span><span class="lineCov">        517 : - (BOOL)injectedIsFromDifferentAssembly:(TyphoonInjectedByReference *)injected</span>
 <span class="lineNum">      93 </span>            : {
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 :     BOOL fromSameAssembly = [self injectedIsFromCollaboratingAssemblyProxy:injected] ||</span>
-<span class="lineNum">      95 </span>            :             [self injectedIsOnAssemblyItself:injected];
+<span class="lineNum">      94 </span><span class="lineCov">        517 :     BOOL fromSameAssembly = [self injectedIsFromCollaboratingAssemblyProxy:injected] ||</span>
+<span class="lineNum">      95 </span><span class="lineCov">       1549 :             [self injectedIsOnAssemblyItself:injected];</span>
 <span class="lineNum">      96 </span>            : 
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 :     return !fromSameAssembly;</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      97 </span><span class="lineCov">        517 :     return !fromSameAssembly;</span>
+<span class="lineNum">      98 </span><span class="lineCov">        517 : }</span>
 <span class="lineNum">      99 </span>            : 
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 : - (BOOL)injectedIsOnAssemblyItself:(TyphoonInjectedByReference *)reference</span>
+<span class="lineNum">     100 </span><span class="lineCov">        515 : - (BOOL)injectedIsOnAssemblyItself:(TyphoonInjectedByReference *)reference</span>
 <span class="lineNum">     101 </span>            : {
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 :     return [_assembly definitionForKey:reference.reference] != nil;</span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     102 </span><span class="lineCov">        515 :     return [_assembly definitionForKey:reference.reference] != nil;</span>
+<span class="lineNum">     103 </span><span class="lineCov">        515 : }</span>
 <span class="lineNum">     104 </span>            : 
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 : - (BOOL)injectedIsFromCollaboratingAssemblyProxy:(TyphoonInjectedByReference *)reference</span>
+<span class="lineNum">     105 </span><span class="lineCov">        517 : - (BOOL)injectedIsFromCollaboratingAssemblyProxy:(TyphoonInjectedByReference *)reference</span>
 <span class="lineNum">     106 </span>            : {
-<span class="lineNum">     107 </span><span class="lineNoCov">          0 :     return reference.proxied;</span>
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     107 </span><span class="lineCov">        517 :     return reference.proxied;</span>
+<span class="lineNum">     108 </span><span class="lineCov">        517 : }</span>
 <span class="lineNum">     109 </span>            : 
 <span class="lineNum">     110 </span><span class="lineNoCov">          0 : - (void)onInjectionOnDifferentAssemblyWithDefinitionNamed:(NSString*)definitionName property:(TyphoonPropertyInjectedByReference *)property</span>
 <span class="lineNum">     111 </span>            : {
