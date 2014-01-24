@@ -19,6 +19,7 @@
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonPropertyInjectedAsCollection.h"
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
+#import "TyphoonPropertyInjectedByFactoryReference.h"
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonCollaboratingAssemblyProxy.h"
 
@@ -80,6 +81,14 @@
     return [TyphoonDefinition withClass:clazz key:key initialization:nil properties:properties];
 }
 
++ (TyphoonDefinition*)withClass:(Class)clazz factory:(TyphoonDefinition *)_definition selector:(SEL)selector
+{
+    return [TyphoonDefinition withClass:clazz initialization:^(TyphoonInitializer *initializer) {
+        [initializer setSelector:selector];
+    } properties:^(TyphoonDefinition *definition) {
+        [definition setFactory:_definition];
+    }];
+}
 
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
@@ -98,6 +107,18 @@
 - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition
 {
     [self injectProperty:selector withReference:definition.key isProxied:[TyphoonCollaboratingAssemblyProxy definitionIsProxyDefinition:definition]];
+}
+
+- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition selector:(SEL)factorySelector
+{
+    [_injectedProperties addObject:[[TyphoonPropertyInjectedByFactoryReference alloc]
+            initWithName:NSStringFromSelector(selector) reference:definition.key keyPath:NSStringFromSelector(factorySelector)]];
+}
+
+- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition keyPath:(NSString *)keyPath
+{
+    [_injectedProperties addObject:[[TyphoonPropertyInjectedByFactoryReference alloc]
+            initWithName:NSStringFromSelector(selector) reference:definition.key keyPath:keyPath]];
 }
 
 - (void)injectProperty:(SEL)selector withObjectInstance:(id)instance
