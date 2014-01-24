@@ -81,12 +81,12 @@
     return [TyphoonDefinition withClass:clazz key:key initialization:nil properties:properties];
 }
 
-+ (TyphoonDefinition*)withClass:(Class)clazz factory:(TyphoonDefinition *)definition selector:(SEL)selector
++ (TyphoonDefinition*)withClass:(Class)clazz factory:(TyphoonDefinition *)_definition selector:(SEL)selector
 {
     return [TyphoonDefinition withClass:clazz initialization:^(TyphoonInitializer *initializer) {
         [initializer setSelector:selector];
     } properties:^(TyphoonDefinition *definition) {
-        [definition setFactory:definition];
+        [definition setFactory:_definition];
     }];
 }
 

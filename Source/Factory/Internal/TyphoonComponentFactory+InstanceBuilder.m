@@ -237,8 +237,9 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 - (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(id <TyphoonInjectedProperty>)property
         typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor
 {
+    /* FIXME: change invocation to KVC for all injects */
     NSInvocation* invocation = [self propertySetterInvocationFor:instance property:property];
-    [self configureInvocationArgument:invocation toInjectProperty:property onInstance:instance typeDescriptor:typeDescriptor];
+    invocation = [self configureInvocationArgument:invocation toInjectProperty:property onInstance:instance typeDescriptor:typeDescriptor];
     [invocation invoke];
 }
 
@@ -251,7 +252,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     return invocation;
 }
 
-- (void)configureInvocationArgument:(NSInvocation*)invocation toInjectProperty:(id <TyphoonInjectedProperty>)property
+- (NSInvocation *)configureInvocationArgument:(NSInvocation*)invocation toInjectProperty:(id <TyphoonInjectedProperty>)property
         onInstance:(id <TyphoonIntrospectiveNSObject>)instance typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor;
 {
     if (property.injectionType == TyphoonPropertyInjectionTypeByType)
@@ -261,7 +262,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         [self evaluateCircularDependency:definition.key propertyName:property.name instance:instance];
         if ([self propertyIsCircular:property onInstance:instance])
         {
-            return;
+            return invocation;
         }
 
         id reference = [self componentForKey:definition.key];
@@ -274,7 +275,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
         if ([self propertyIsCircular:property onInstance:instance])
         {
-            return;
+            return invocation;
         }
 
         id reference = [self componentForKey:byReference.reference];
@@ -287,7 +288,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         
         if ([self propertyIsCircular:property onInstance:instance])
         {
-            return;
+            return invocation;
         }
         NSString *propertyName = byReference.name;
         id factoryReference = [self componentForKey:byReference.reference];
@@ -295,9 +296,12 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         
         /* Changing invocation from set<PropertyName>: to setValue:forKey:PropertyName, 
          * because 'setValue:forKey:' mechanism is more clever and handles scalar types */
+        SEL kvcSelector = @selector(setValue:forKey:);
+        invocation = [NSInvocation invocationWithMethodSignature:[(NSObject *)instance methodSignatureForSelector:kvcSelector]];
+        [invocation setSelector:kvcSelector];
+        [invocation setTarget:instance];
         [invocation setArgument:&injectedValue atIndex:2];
         [invocation setArgument:&propertyName atIndex:3];
-        [invocation setSelector:@selector(setValue:forKey:)];
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeAsStringRepresentation)
     {
@@ -315,6 +319,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         id value = byInstance.objectInstance;
         [invocation setArgument:&value atIndex:2];
     }
+    return invocation;
 }
 
 - (void)evaluateCircularDependency:(NSString*)componentKey propertyName:(NSString*)propertyName

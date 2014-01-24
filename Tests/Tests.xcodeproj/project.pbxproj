@@ -336,6 +336,9 @@
 		CAEDC7A4F6804D310052F633 /* SomeOtherProperties.properties in Resources */ = {isa = PBXBuildFile; fileRef = CAE1370C5429F92760CB0390 /* SomeOtherProperties.properties */; };
 		CAEE3865245D95F01C38E748 /* PrimitiveMan.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEA8AED5BCF8660B3CF23AF /* PrimitiveMan.m */; };
 		CAEE50BA12C347B06D7A9A77 /* PrimitiveMan.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEA8AED5BCF8660B3CF23AF /* PrimitiveMan.m */; };
+		FA3046EC18924995007E3BA4 /* PropertyInjectionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3046EB18924995007E3BA4 /* PropertyInjectionsTests.m */; };
+		FA3046ED1892499F007E3BA4 /* PropertyInjectionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3046EB18924995007E3BA4 /* PropertyInjectionsTests.m */; };
+		FA3046EE189249A0007E3BA4 /* PropertyInjectionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3046EB18924995007E3BA4 /* PropertyInjectionsTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -556,6 +559,7 @@
 		CAEA8AED5BCF8660B3CF23AF /* PrimitiveMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveMan.m; sourceTree = "<group>"; };
 		CAEB463B70EA0EFD7796673B /* PrimitiveMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveMan.h; sourceTree = "<group>"; };
 		F8B50DFBF255467DA9F7C30F /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA3046EB18924995007E3BA4 /* PropertyInjectionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyInjectionsTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -704,6 +708,7 @@
 				4B84149E179B0EA600916BF5 /* ClassWithCollectionProperties.h */,
 				4B84149F179B0EA600916BF5 /* ClassWithCollectionProperties.m */,
 				4B8414A0179B0EA600916BF5 /* Collection */,
+				FA3046EB18924995007E3BA4 /* PropertyInjectionsTests.m */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -1379,6 +1384,7 @@
 				4B8414F9179B0EA600916BF5 /* TyphoonSharedComponentFactoryTests.m in Sources */,
 				657096AB183147D600C10DA4 /* PizzaImpl.m in Sources */,
 				4E7F059517F6F947005F5DCD /* TyphoonGenericStackTest.m in Sources */,
+				FA3046EC18924995007E3BA4 /* PropertyInjectionsTests.m in Sources */,
 				4B8414FD179B0EA600916BF5 /* TyphoonComponentFactoryTests.m in Sources */,
 				4B8414FF179B0EA600916BF5 /* RXMLElement+XmlComponentFactory_AsComponentDefinitionTests.m in Sources */,
 				4B841501179B0EA600916BF5 /* TyphoonXmlComponentFactoryTests.m in Sources */,
@@ -1528,6 +1534,7 @@
 				4E7F059617F6F947005F5DCD /* TyphoonGenericStackTest.m in Sources */,
 				4EA74DDD17E0FF440004EFC7 /* CROSingletonB.m in Sources */,
 				BA79824D0006B0F9E50A41D3 /* TyphoonStringUtilsTests.m in Sources */,
+				FA3046ED1892499F007E3BA4 /* PropertyInjectionsTests.m in Sources */,
 				656A57631848DCB60081F72B /* TyphoonAssistedFactoryCreatorOneFactoryTest.m in Sources */,
 				BA798380AD1E1F4160A4719C /* CollaboratingMiddleAgesAssembly.m in Sources */,
 				BA798860931BDFA632A94FB9 /* ExtendedMiddleAgesAssembly.m in Sources */,
@@ -1572,6 +1579,7 @@
 				4BC648C717A20AD2007F0463 /* MiddleAgesAssembly.m in Sources */,
 				4BC648CA17A20AD2007F0463 /* TyphoonSharedComponentFactoryTests.m in Sources */,
 				657096AD183147D600C10DA4 /* PizzaImpl.m in Sources */,
+				FA3046EE189249A0007E3BA4 /* PropertyInjectionsTests.m in Sources */,
 				4E7F059717F6F947005F5DCD /* TyphoonGenericStackTest.m in Sources */,
 				4BC648CC17A20AD2007F0463 /* TyphoonComponentFactoryTests.m in Sources */,
 				4BC648CD17A20AD2007F0463 /* RXMLElement+XmlComponentFactory_AsComponentDefinitionTests.m in Sources */,
