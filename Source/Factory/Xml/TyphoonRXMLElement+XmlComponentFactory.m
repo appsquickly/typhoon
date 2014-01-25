@@ -15,7 +15,7 @@
 TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 
 #import "TyphoonRXMLElement+XmlComponentFactory.h"
-#import "TyphoonInjectedProperty.h"
+#import "TyphoonAbstractInjectedProperty.h"
 #import "TyphoonPropertyInjectedByReference.h"
 #import "TyphoonPropertyInjectedWithStringRepresentation.h"
 #import "TyphoonPropertyInjectedByType.h"
@@ -60,14 +60,17 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
         [definition setLazy:isLazy];
         [definition setScope:scope];
         NSString* parentRef = [self attributeOrNilIfEmpty:@"parent"];
-        [definition setParentRef:parentRef];
+        if (parentRef)
+        {
+            [definition setParent:[TyphoonDefinition withClass:[TyphoonDefinition class] key:parentRef]];
+        }
         [self parseComponentDefinitionChildren:definition];
         return definition;
     }
 }
 
 //TODO: Method too long, clean it up.
-- (id <TyphoonInjectedProperty>)asInjectedProperty
+- (TyphoonAbstractInjectedProperty*)asInjectedProperty
 {
     [self assertTagName:@"property"];
 
@@ -81,7 +84,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
         [NSException raise:NSInvalidArgumentException format:@"'ref' and 'value' attributes cannot be used with 'collection'"];
     }
 
-    id <TyphoonInjectedProperty> injectedProperty = nil;
+    TyphoonAbstractInjectedProperty* injectedProperty = nil;
     if (referenceName&&value)
     {
         [NSException raise:NSInvalidArgumentException format:@"Ambigous - both reference and value attributes are set. Can only be one."];
@@ -271,7 +274,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
             [initializer injectParameterAtIndex:[index integerValue] withReference:reference];
         }
 
-        // TODO: should raise an exception if no name or index specified. is NOT implicit with XML. but it shoudl be - you should not need to specify.
+        // TODO: should raise an exception if no name or index specified. is NOT implicit with XML. but it should be - you should not need to specify.
 
     }
     else if (value)

@@ -9,13 +9,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonArgumentInjectedAsCollection.h"
+#import "TyphoonInjectedAsCollection.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonTypeConvertedCollectionValue.h"
 #import "TyphoonByReferenceCollectionValue.h"
 
-@implementation TyphoonArgumentInjectedAsCollection
+@implementation TyphoonInjectedAsCollection
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction

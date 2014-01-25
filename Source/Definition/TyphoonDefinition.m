@@ -21,7 +21,6 @@
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
 #import "TyphoonPropertyInjectedByFactoryReference.h"
 #import "TyphoonDefinition+Infrastructure.h"
-#import "TyphoonCollaboratingAssemblyProxy.h"
 
 
 @implementation TyphoonDefinition
@@ -81,11 +80,13 @@
     return [TyphoonDefinition withClass:clazz key:key initialization:nil properties:properties];
 }
 
-+ (TyphoonDefinition*)withClass:(Class)clazz factory:(TyphoonDefinition *)_definition selector:(SEL)selector
++ (TyphoonDefinition*)withClass:(Class)clazz factory:(TyphoonDefinition*)_definition selector:(SEL)selector
 {
-    return [TyphoonDefinition withClass:clazz initialization:^(TyphoonInitializer *initializer) {
+    return [TyphoonDefinition withClass:clazz initialization:^(TyphoonInitializer* initializer)
+    {
         [initializer setSelector:selector];
-    } properties:^(TyphoonDefinition *definition) {
+    } properties:^(TyphoonDefinition* definition)
+    {
         [definition setFactory:_definition];
     }];
 }
@@ -115,7 +116,7 @@
             initWithName:NSStringFromSelector(selector) reference:definition.key keyPath:NSStringFromSelector(factorySelector)]];
 }
 
-- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition keyPath:(NSString *)keyPath
+- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition keyPath:(NSString*)keyPath
 {
     [_injectedProperties addObject:[[TyphoonPropertyInjectedByFactoryReference alloc]
             initWithName:NSStringFromSelector(selector) reference:definition.key keyPath:keyPath]];
@@ -142,12 +143,12 @@
 
 - (void)injectProperty:(SEL)selector withInt:(int)intValue
 {
-   [self injectProperty:selector withValueAsText:[@(intValue) stringValue]];
+    [self injectProperty:selector withValueAsText:[@(intValue) stringValue]];
 }
 
 - (void)injectProperty:(SEL)selector withUnsignedInt:(unsigned int)unsignedIntValue
 {
-  [self injectProperty:selector withValueAsText:[@(unsignedIntValue) stringValue]];
+    [self injectProperty:selector withValueAsText:[@(unsignedIntValue) stringValue]];
 }
 
 - (void)injectProperty:(SEL)selector withShort:(short)shortValue
@@ -157,7 +158,7 @@
 
 - (void)injectProperty:(SEL)selector withUnsignedShort:(unsigned short)unsignedIntShort
 {
-  [self injectProperty:selector withValueAsText:[@(unsignedIntShort) stringValue]];
+    [self injectProperty:selector withValueAsText:[@(unsignedIntShort) stringValue]];
 }
 
 - (void)injectProperty:(SEL)selector withLong:(long)longValue
@@ -167,7 +168,7 @@
 
 - (void)injectProperty:(SEL)selector withUnsignedLong:(unsigned long)unsignedLongValue
 {
-  [self injectProperty:selector withValueAsText:[@(unsignedLongValue) stringValue]];
+    [self injectProperty:selector withValueAsText:[@(unsignedLongValue) stringValue]];
 }
 
 - (void)injectProperty:(SEL)selector withLongLong:(long long)longLongValue
@@ -177,7 +178,7 @@
 
 - (void)injectProperty:(SEL)selector withUnsignedLongLong:(unsigned long long)unsignedLongLongValue
 {
-  [self injectProperty:selector withValueAsText:[@(unsignedLongLongValue) stringValue]];
+    [self injectProperty:selector withValueAsText:[@(unsignedLongLongValue) stringValue]];
 }
 
 - (void)injectProperty:(SEL)selector withUnsignedChar:(unsigned char)unsignedCharValue
@@ -232,6 +233,26 @@
     [self setFactoryReference:_factory.key];
 }
 
+- (NSSet*)injectedProperties
+{
+    NSMutableSet* parentProperties = [_parent injectedProperties] ? [[_parent injectedProperties] mutableCopy] : [NSMutableSet set];
+
+    NSMutableArray* overriddenProperties = [NSMutableArray array];
+    [parentProperties enumerateObjectsUsingBlock:^(id obj, BOOL* stop)
+    {
+        if ([_injectedProperties containsObject:obj])
+        {
+            [overriddenProperties addObject:obj];
+        }
+    }];
+
+    for (TyphoonAbstractInjectedProperty* overriddenProperty in overriddenProperties)
+    {
+        [parentProperties removeObject:overriddenProperty];
+    }
+
+    return [[parentProperties setByAddingObjectsFromSet:_injectedProperties] copy];
+}
 
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods

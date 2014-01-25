@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "TyphoonInjected.h"
+#import "TyphoonAbstractInjectedProperty.h"
 
 @class TyphoonDefinition;
 @protocol TyphoonIntrospectiveNSObject;
@@ -28,7 +28,7 @@ typedef enum
  * Base class for injected collection arguments.
  * Represents a collection (NSArray, NSSet, c-style array) of items injected by reference, value or type.
  */
-@interface TyphoonArgumentInjectedAsCollection : TyphoonInjected
+@interface TyphoonInjectedAsCollection : TyphoonAbstractInjectedProperty
 {
     NSMutableArray* _values;
 }

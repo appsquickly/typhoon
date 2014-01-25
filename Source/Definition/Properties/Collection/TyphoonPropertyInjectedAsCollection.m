@@ -13,9 +13,7 @@
 #import "TyphoonPropertyInjectedAsCollection.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonIntrospectionUtils.h"
-#import "TyphoonDefinition.h"
 #import "TyphoonTypeConvertedCollectionValue.h"
-#import "TyphoonByReferenceCollectionValue.h"
 
 
 @implementation TyphoonPropertyInjectedAsCollection
@@ -73,14 +71,6 @@
     return 0;
 }
 
-/* ====================================================================================================================================== */
-#pragma mark - Protocol Methods
-#pragma mark - <TyphoonInjectedProperty>
-
-- (NSString*)name
-{
-    return _name;
-}
 
 - (TyphoonPropertyInjectionType)injectionType
 {

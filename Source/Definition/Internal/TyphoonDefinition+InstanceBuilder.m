@@ -17,6 +17,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 #import "TyphoonPropertyInjectedByType.h"
 #import "TyphoonPropertyInjectedByReference.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
+#import "TyphoonAbstractInjectedProperty.h"
 
 @implementation TyphoonDefinition (InstanceBuilder)
 
@@ -67,7 +68,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByReference class]];
 }
 
-- (void)addInjectedProperty:(id <TyphoonInjectedProperty>)property
+- (void)addInjectedProperty:(TyphoonAbstractInjectedProperty*)property
 {
     [_injectedProperties addObject:property];
 }

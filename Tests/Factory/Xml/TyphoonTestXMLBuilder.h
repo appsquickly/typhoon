@@ -6,11 +6,11 @@
 #import <Foundation/Foundation.h>
 
 
-@interface TyphoonXMLBuilder : NSObject
+@interface TyphoonTestXMLBuilder : NSObject
 
-+ (TyphoonXMLBuilder*)vanillaDefinition;
++ (TyphoonTestXMLBuilder*)vanillaDefinition;
 
-- (TyphoonXMLBuilder*)withAttribute:(NSString*)string textValue:(NSString*)value;
+- (TyphoonTestXMLBuilder*)withAttribute:(NSString*)string textValue:(NSString*)value;
 - (TyphoonRXMLElement*)build;
 
 @property(nonatomic, readonly) NSString* class;

@@ -11,7 +11,7 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "Typhoon.h"
-#import "TyphoonXMLBuilder.h"
+#import "TyphoonTestXMLBuilder.h"
 
 @interface RXMLElement_XmlComponentFactory_AsComponentDefinitionTests : SenTestCase
 
@@ -135,23 +135,23 @@
 
 - (void)test_asComponentDefinition_no_parent
 {
-    TyphoonRXMLElement* vanillaDefinitionXML = [[TyphoonXMLBuilder vanillaDefinition] build];
+    TyphoonRXMLElement* vanillaDefinitionXML = [[TyphoonTestXMLBuilder vanillaDefinition] build];
 
     TyphoonDefinition* def = [vanillaDefinitionXML asComponentDefinition];
 
     assertThat(def, notNilValue());
-    assertThat([def parentRef], nilValue());
+    assertThat([def parent], nilValue());
 }
 
 - (void)test_asComponentDefinition_parent
 {
     id parentRef = @"parent";
-    TyphoonRXMLElement* childDefinitionXML = [[[TyphoonXMLBuilder vanillaDefinition] withAttribute:@"parent" textValue:parentRef] build];
+    TyphoonRXMLElement* childDefinitionXML = [[[TyphoonTestXMLBuilder vanillaDefinition] withAttribute:@"parent" textValue:parentRef] build];
 
     TyphoonDefinition* def = [childDefinitionXML asComponentDefinition];
 
     assertThat(def, notNilValue());
-    assertThat([def parentRef], equalTo(parentRef));
+    assertThat([def parent], notNilValue());
 }
 
 @end

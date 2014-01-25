@@ -26,11 +26,16 @@ typedef enum
 } TyphoonPropertyInjectionType;
 
 /**
+* Provides a contract for typhoon injected properties (name, injectionType) as well as defines the notion of equality, based on name.
 */
-@protocol TyphoonInjectedProperty <NSObject>
+@interface TyphoonAbstractInjectedProperty : NSObject
+{
+    NSString* _name;
+    TyphoonPropertyInjectionType _injectionType;
+}
 
-- (NSString*)name;
+@property (nonatomic, strong) NSString* name;
+@property (nonatomic) TyphoonPropertyInjectionType injectionType;
 
-- (TyphoonPropertyInjectionType)injectionType;
 
 @end

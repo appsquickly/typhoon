@@ -4,9 +4,9 @@
 
 
 #import <Typhoon/TyphoonRXMLElement.h>
-#import "TyphoonXMLBuilder.h"
+#import "TyphoonTestXMLBuilder.h"
 
-@interface TyphoonXMLBuilder()
+@interface TyphoonTestXMLBuilder ()
 
 @property(nonatomic, readwrite) NSString* class;
 @property(nonatomic, readwrite) NSString* key;
@@ -14,14 +14,14 @@
 
 @end
 
-@implementation TyphoonXMLBuilder
+@implementation TyphoonTestXMLBuilder
 {
 
 }
 
-+ (TyphoonXMLBuilder*)vanillaDefinition
++ (TyphoonTestXMLBuilder*)vanillaDefinition
 {
-    TyphoonXMLBuilder* builder = [[TyphoonXMLBuilder alloc] init];
+    TyphoonTestXMLBuilder* builder = [[TyphoonTestXMLBuilder alloc] init];
     builder.class = @"NSObject";
     builder.key = @"vanilla";
     return builder;
@@ -38,7 +38,7 @@
     return self;
 }
 
-- (TyphoonXMLBuilder*)withAttribute:(NSString*)string textValue:(NSString*)textValue
+- (TyphoonTestXMLBuilder*)withAttribute:(NSString*)string textValue:(NSString*)textValue
 {
     [self.attributes setObject:textValue forKey:string];
     return self;
@@ -59,7 +59,7 @@
 
     [xmlString appendString:@"></component>"];
 
-    // DDLogDebug(@"Generating XML element from string: '%@'.", xmlString);
+    NSLog(@"Generating XML element from string: '%@'.", xmlString);
     // TODO: uncomment when we have per-file log levels.
     TyphoonRXMLElement* element = [TyphoonRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
     return element;

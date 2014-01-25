@@ -11,18 +11,16 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonInjectedProperty.h"
-#import "TyphoonArgumentInjectedAsCollection.h"
+#import "TyphoonAbstractInjectedProperty.h"
+#import "TyphoonInjectedAsCollection.h"
 
 @class TyphoonDefinition;
 
 /**
 * Represents a collection (NSArray, NSSet, c-style array) of items injected by reference, value or type.
 */
-@interface TyphoonPropertyInjectedAsCollection : TyphoonArgumentInjectedAsCollection <TyphoonInjectedProperty>
-{
-    NSString* _name;
-}
+@interface TyphoonPropertyInjectedAsCollection : TyphoonInjectedAsCollection
+
 
 @property(nonatomic, strong, readonly) NSString* name;
 

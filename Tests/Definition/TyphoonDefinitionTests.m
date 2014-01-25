@@ -16,6 +16,7 @@
 #import "AutoWiringKnight.h"
 #import "AutoWiringSubClassedKnight.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonPropertyInjectedWithStringRepresentation.h"
 
 
 @interface TyphoonDefinitionTests : SenTestCase
@@ -100,6 +101,52 @@
     [definition injectProperty:@selector(dd) withReference:@"someReference"];
 
     assertThatUnsignedLongLong([[definition propertiesInjectedByReference] count], equalToUnsignedLongLong(1));
+}
+
+
+/* ====================================================================================================================================== */
+#pragma mark - Definition inheritance
+
+- (void)test_inherits_all_parent_properties
+{
+    TyphoonDefinition* longLostAncestor = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
+    {
+        [definition injectProperty:@selector(hasHorseWillTravel) withBool:NO];
+    }];
+
+    TyphoonDefinition* parent = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
+    {
+        [definition injectProperty:@selector(damselsRescued) withInteger:12];
+        [definition setParent:longLostAncestor];
+    }];
+
+    TyphoonDefinition* child = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
+    {
+        [definition injectProperty:@selector(foobar) withValueAsText:@"foobar!"];
+        [definition setParent:parent];
+    }];
+
+    assertThat([child injectedProperties], hasCountOf(3));
+}
+
+
+- (void)test_child_properties_override_parent_properties
+{
+    TyphoonDefinition* parent = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
+    {
+        [definition injectProperty:@selector(damselsRescued) withInteger:12];
+    }];
+
+    TyphoonDefinition* child = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
+    {
+        [definition injectProperty:@selector(damselsRescued) withInteger:346];
+        [definition setParent:parent];
+    }];
+
+    assertThat([child injectedProperties], hasCountOf(1));
+
+    TyphoonPropertyInjectedWithStringRepresentation* property = [[child injectedProperties] anyObject];
+    assertThat(property.textValue, equalTo(@"346"));
 }
 
 /* ====================================================================================================================================== */

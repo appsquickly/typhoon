@@ -15,9 +15,9 @@
 #import "TyphoonRXMLElement.h"
 
 @class TyphoonDefinition;
-@protocol TyphoonInjectedProperty;
 @class TyphoonInitializer;
 @protocol TyphoonInjectedParameter;
+@class TyphoonAbstractInjectedProperty;
 
 @interface TyphoonRXMLElement (XmlComponentFactory)
 
@@ -25,7 +25,7 @@
 
 - (TyphoonDefinition*)asComponentDefinition;
 
-- (id <TyphoonInjectedProperty>)asInjectedProperty;
+- (TyphoonAbstractInjectedProperty*)asInjectedProperty;
 
 - (TyphoonInitializer*)asInitializer;
 

@@ -40,7 +40,6 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
 #import "TyphoonComponentFactoryAware.h"
 #import "TyphoonParameterInjectedAsCollection.h"
-#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "TyphoonComponentPostProcessor.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
@@ -62,8 +61,8 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 {
     if (definition.factoryReference)
     {
-        // misleading - this is not the instance. this is an instance of a seperate class tnat will create the instance of the class we care about.
-        // consider it an allocator
+        // misleading - this is not the instance. this is an instance of a separate class that will create the instance of the class we care
+        // about.
         instance = [self componentForKey:definition.factoryReference]; // clears currently resolving.
     }
     else if (definition.initializer && definition.initializer.isClassMethod)
@@ -76,7 +75,6 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         // this is an instance, needing later init.
         instance = [definition.type alloc];
     }
-
 
     [self handleSpecialCaseForNSManagedObjectModel:instance];
 
@@ -131,38 +129,10 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     }
     else if (definition.initializer == nil)
     {
-        if ([self definitionHasParent:definition])
-        {
-            instance = [self initializerInjectionOn:instance withDefinition:[self parentForDefinition:definition]];
-        }
-        else
-        {
-            instance = [self invokeDefaultInitializerOn:instance];
-        }
+        instance = [self invokeDefaultInitializerOn:instance];
     }
 
     return instance;
-}
-
-- (BOOL)definitionHasParent:(TyphoonDefinition*)definition
-{
-    return definition.parent || definition.parentRef;
-}
-
-- (TyphoonDefinition*)parentForDefinition:(TyphoonDefinition*)definition
-{
-    if (definition.parent)
-    {
-        return definition.parent;
-    }
-    else if (definition.parentRef)
-    {
-        return [self definitionForKey:definition.parentRef];
-    }
-    else
-    {
-        return nil;
-    }
 }
 
 - (id)invokeDefaultInitializerOn:(id)instance
@@ -221,7 +191,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 {
     [self doBeforePropertyInjectionOn:instance withDefinition:definition];
 
-    for (id <TyphoonInjectedProperty> property in [definition injectedProperties])
+    for (TyphoonAbstractInjectedProperty* property in [definition injectedProperties])
     {
         TyphoonTypeDescriptor* typeDescriptor = [instance typeForPropertyWithName:property.name];
         if (typeDescriptor == nil)
@@ -249,7 +219,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     }
 }
 
-- (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(id <TyphoonInjectedProperty>)property
+- (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(TyphoonAbstractInjectedProperty* )property
         typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor
 {
     /* FIXME: change invocation to KVC for all injects */
@@ -258,7 +228,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     [invocation invoke];
 }
 
-- (NSInvocation*)propertySetterInvocationFor:(id <TyphoonIntrospectiveNSObject>)instance property:(id <TyphoonInjectedProperty>)property
+- (NSInvocation*)propertySetterInvocationFor:(id <TyphoonIntrospectiveNSObject>)instance property:(TyphoonAbstractInjectedProperty*)property
 {
     SEL pSelector = [instance setterForPropertyWithName:property.name];
     NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*)instance methodSignatureForSelector:pSelector]];
@@ -267,7 +237,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     return invocation;
 }
 
-- (NSInvocation *)configureInvocationArgument:(NSInvocation*)invocation toInjectProperty:(id <TyphoonInjectedProperty>)property
+- (NSInvocation*)configureInvocationArgument:(NSInvocation*)invocation toInjectProperty:(TyphoonAbstractInjectedProperty*)property
         onInstance:(id <TyphoonIntrospectiveNSObject>)instance typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor;
 {
     if (property.injectionType == TyphoonPropertyInjectionTypeByType)
@@ -298,21 +268,21 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeByFactoryReference)
     {
-        TyphoonPropertyInjectedByFactoryReference* byReference = (TyphoonPropertyInjectedByFactoryReference *)property;
+        TyphoonPropertyInjectedByFactoryReference* byReference = (TyphoonPropertyInjectedByFactoryReference*)property;
         [self evaluateCircularDependency:byReference.reference propertyName:property.name instance:instance];
-        
+
         if ([self propertyIsCircular:property onInstance:instance])
         {
             return invocation;
         }
-        NSString *propertyName = byReference.name;
+        NSString* propertyName = byReference.name;
         id factoryReference = [self componentForKey:byReference.reference];
         id injectedValue = [factoryReference valueForKeyPath:byReference.keyPath];
-        
+
         /* Changing invocation from set<PropertyName>: to setValue:forKey:PropertyName, 
          * because 'setValue:forKey:' mechanism is more clever and handles scalar types */
         SEL kvcSelector = @selector(setValue:forKey:);
-        invocation = [NSInvocation invocationWithMethodSignature:[(NSObject *)instance methodSignatureForSelector:kvcSelector]];
+        invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*)instance methodSignatureForSelector:kvcSelector]];
         [invocation setSelector:kvcSelector];
         [invocation setTarget:instance];
         [invocation setArgument:&injectedValue atIndex:2];
@@ -348,7 +318,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     }
 }
 
-- (BOOL)propertyIsCircular:(id <TyphoonInjectedProperty>)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance;
+- (BOOL)propertyIsCircular:(TyphoonAbstractInjectedProperty*)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance;
 {
     return [[instance circularDependentProperties] objectForKey:property.name] != nil;
 }

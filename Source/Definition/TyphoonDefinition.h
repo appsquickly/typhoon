@@ -14,7 +14,6 @@
 
 @class TyphoonInitializer;
 @class TyphoonDefinition;
-@protocol TyphoonInjectedProperty;
 @class TyphoonPropertyInjectedAsCollection;
 
 /**
@@ -59,7 +58,6 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 @property(nonatomic) TyphoonScope scope;
 @property(nonatomic, strong) TyphoonDefinition* factory;
 @property(nonatomic, strong) TyphoonDefinition* parent;
-@property(nonatomic, strong) NSString* parentRef;
 
 
 /**

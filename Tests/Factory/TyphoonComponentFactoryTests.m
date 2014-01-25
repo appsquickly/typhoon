@@ -364,9 +364,10 @@ static NSString* const DEFAULT_QUEST = @"quest";
 {
     TyphoonDefinition* parentDefinition =
             [self registerParentDefinitionWithClass:[ClassWithConstructor class] initializerString:@"parentArgument"];
-    TyphoonDefinition* childDefinition = [TyphoonDefinition withClass:[ClassWithConstructor class] properties:^(TyphoonDefinition* definition)
+    TyphoonDefinition
+            * childDefinition = [TyphoonDefinition withClass:[ClassWithConstructor class] properties:^(TyphoonDefinition* definition)
     {
-       definition.parent = parentDefinition;
+        definition.parent = parentDefinition;
     }];
     [_componentFactory register:childDefinition];
 
@@ -378,9 +379,10 @@ static NSString* const DEFAULT_QUEST = @"quest";
 - (void)test_child_missing_initializer_inherits_parent_initializer_by_ref
 {
     [self registerParentDefinitionWithClass:[ClassWithConstructor class] key:@"parentRef" initializerString:@"parentArgument"];
-    TyphoonDefinition* childDefinition = [TyphoonDefinition withClass:[ClassWithConstructor class] properties:^(TyphoonDefinition* definition)
+    TyphoonDefinition
+            * childDefinition = [TyphoonDefinition withClass:[ClassWithConstructor class] properties:^(TyphoonDefinition* definition)
     {
-        definition.parentRef = @"parentRef";
+        definition.parent = [TyphoonDefinition withClass:[TyphoonDefinition class] key:@"parentRef"];
     }];
     [_componentFactory register:childDefinition];
 
@@ -446,23 +448,27 @@ static NSString* const DEFAULT_QUEST = @"quest";
     return [self registerChildDefinitionWithClass:pClass parentDefinition:parentDefinition parentRef:nil initializerString:string];
 }
 
-- (TyphoonDefinition*)registerChildDefinitionWithClass:(Class)pClass parentRef:(NSString *)parentRef initializerString:(NSString*)string
+- (TyphoonDefinition*)registerChildDefinitionWithClass:(Class)pClass parentRef:(NSString*)parentRef initializerString:(NSString*)string
 {
     return [self registerChildDefinitionWithClass:pClass parentDefinition:nil parentRef:parentRef initializerString:string];
 }
 
-- (TyphoonDefinition*)registerChildDefinitionWithClass:(Class)pClass parentDefinition:(TyphoonDefinition*)parentDefinition parentRef:(NSString *)parentRef initializerString:(NSString*)string
+- (TyphoonDefinition*)registerChildDefinitionWithClass:(Class)pClass parentDefinition:(TyphoonDefinition*)parentDefinition parentRef:(NSString*)parentRef initializerString:(NSString*)string
 {
-    TyphoonDefinition* childDefinition = [TyphoonDefinition withClass:pClass initialization:^(TyphoonInitializer* initializer) {
+    TyphoonDefinition* childDefinition = [TyphoonDefinition withClass:pClass initialization:^(TyphoonInitializer* initializer)
+    {
         initializer.selector = @selector(initWithString:);
 
         [initializer injectWithValueAsText:string requiredTypeOrNil:[NSString class]];
     } properties:^(TyphoonDefinition* definition)
     {
-        if (parentDefinition) {
+        if (parentDefinition)
+        {
             definition.parent = parentDefinition;
-        }else if (parentRef) {
-            definition.parentRef = parentRef;
+        }
+        else if (parentRef)
+        {
+            definition.parent = [TyphoonDefinition withClass:[TyphoonDefinition class] key:parentRef];
         }
 
     }];
