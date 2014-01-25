@@ -196,8 +196,9 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 - (void)prepareForUse
 {
-    self.definitionSelectors = [self.adviser enumerateDefinitionSelectors];
 
+
+    self.definitionSelectors = [self.adviser enumerateDefinitionSelectors];
     [self.adviser adviseAssembly];
 }
 

@@ -16,7 +16,8 @@
 #import <Typhoon/TyphoonBlockComponentFactory.h>
 #import "MiddleAgesAssembly.h"
 #import "CollaboratingMiddleAgesAssembly.h"
-#import "TyphoonAssemblyAdviser.h"
+#import "Knight.h"
+#import "CampaignQuest.h"
 
 
 @interface TyphoonBlockComponentFactory_CollectionTests : SenTestCase
@@ -36,7 +37,8 @@
     ]];
 
     Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalQuest];
-    [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
+    assertThat(knight, notNilValue());
+    assertThatBool([knight.quest isKindOfClass:[CampaignQuest class]], equalToBool(YES));
 }
 
 - (void)test_allows_initialization_with_a_collection_of_assemblies_in_any_order
@@ -47,18 +49,10 @@
     ]];
 
     Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalQuest];
-    [CollaboratingMiddleAgesAssembly verifyKnightWithExternalQuest:knight];
+    assertThat(knight, notNilValue());
+    assertThatBool([knight.quest isKindOfClass:[CampaignQuest class]], equalToBool(YES));
 }
 
-// Can't accurately test this here because with ARC we can't control whether the factory and assembly are deallocated before or after we check!
-//- (void)test_dealloc_cleans_up_method_advising
-//{
-//    MiddleAgesAssembly* assembly = [MiddleAgesAssembly assembly];
-//    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[assembly]];
-//    factory = nil;
-//    assembly = nil;
-//
-//    STAssertFalse([TyphoonAssemblyAdviser assemblyClassIsAdvised:[MiddleAgesAssembly class]], nil);
-//}
+
 
 @end
