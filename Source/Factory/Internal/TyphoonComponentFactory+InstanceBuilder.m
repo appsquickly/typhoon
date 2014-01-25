@@ -196,6 +196,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 /* ====================================================================================================================================== */
 #pragma mark - Property Injection
+
 - (void)propertyInjectionOn:(__autoreleasing id)instance withDefinition:(TyphoonDefinition*)definition
 {
     [self injectPropertyDependenciesOn:instance withDefinition:definition];
@@ -540,8 +541,9 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 }
 
 /**
-* TODO: Generic fix for any object that returns a new instance from init, after alloc.
+* FIXME:
 * NSManagedObjectModelReturns a different pointer from init than from alloc, Typhoon+ARC is not currently picking this up.
+* Other classes that do this (and work fine with Typhoon) : Class clusters, eg NSString, NSArray, NSURL
 */
 - (void)handleSpecialCaseForNSManagedObjectModel:(id)instance
 {
