@@ -20,7 +20,6 @@
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonInjectedParameter.h"
 #import "TyphoonParameterInjectedByReference.h"
-#import "TyphoonAssemblyValidator.h"
 
 
 
@@ -65,9 +64,6 @@
     [self assertIsAssembly:assembly];
 
     [assembly prepareForUse];
-
-    TyphoonAssemblyValidator *validator = [[TyphoonAssemblyValidator alloc] initWithAssembly:assembly];
-    [validator validate];
 
     [self registerAllDefinitions:assembly];
 }

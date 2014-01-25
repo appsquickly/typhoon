@@ -49,9 +49,5 @@
     }));
 }
 
-+ (BOOL)definitionIsProxyDefinition:(TyphoonDefinition *)definition
-{
-    return definition.type == [TyphoonCollaboratingAssemblyProxy class];
-}
 
 @end

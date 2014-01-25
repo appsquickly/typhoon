@@ -1,10 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  TyphoonPropertyInjectedByFactoryReference.m
-//  Typhoon
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
+//  All Rights Reserved.
 //
-//  Created by Aleksey Garbarev on 23.01.14.
-//  Copyright (c) 2014 Jasper Blues. All rights reserved.
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
 //
+////////////////////////////////////////////////////////////////////////////////
+
 
 #import "TyphoonPropertyInjectedByFactoryReference.h"
 
@@ -13,14 +17,9 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (instancetype)initWithName:(NSString*)name reference:(NSString*)reference keyPath:(NSString *)keyPath
+- (instancetype)initWithName:(NSString *)name reference:(NSString *)reference keyPath:(NSString *)keyPath
 {
-    return [self initWithName:name reference:reference keyPath:keyPath isProxied:NO];
-}
-
-- (instancetype)initWithName:(NSString *)name reference:(NSString *)reference keyPath:(NSString *)keyPath isProxied:(BOOL)proxied
-{
-    self = [super initWithName:name reference:reference isProxied:proxied];
+    self = [super initWithName:name reference:reference];
     if (self) {
         _keyPath = keyPath;
     }

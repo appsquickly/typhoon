@@ -311,7 +311,7 @@
 
 - (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonDefinition*)definition
 {
-    [self injectParameterAtIndex:index withReference:definition.key isProxied:[TyphoonCollaboratingAssemblyProxy definitionIsProxyDefinition:definition]];
+    [self injectParameterAtIndex:index withReference:definition.key];
 }
 
 - (void)injectParameterAtIndex:(NSUInteger)index

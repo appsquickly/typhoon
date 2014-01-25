@@ -106,7 +106,7 @@
 
 - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition
 {
-    [self injectProperty:selector withReference:definition.key isProxied:[TyphoonCollaboratingAssemblyProxy definitionIsProxyDefinition:definition]];
+    [self injectProperty:selector withReference:definition.key];
 }
 
 - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition selector:(SEL)factorySelector

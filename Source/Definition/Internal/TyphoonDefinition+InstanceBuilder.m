@@ -45,16 +45,11 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     return set;
 }
 
-- (void)injectProperty:(SEL)selector withReference:(NSString*)reference
+
+- (void)injectProperty:(SEL)selector withReference:(NSString *)reference
 {
     [_injectedProperties addObject:[[TyphoonPropertyInjectedByReference alloc]
             initWithName:NSStringFromSelector(selector) reference:reference]];
-}
-
-- (void)injectProperty:(SEL)selector withReference:(NSString *)reference isProxied:(BOOL)proxied
-{
-    [_injectedProperties addObject:[[TyphoonPropertyInjectedByReference alloc]
-            initWithName:NSStringFromSelector(selector) reference:reference isProxied:proxied]];
 }
 
 - (NSSet*)propertiesInjectedByValue

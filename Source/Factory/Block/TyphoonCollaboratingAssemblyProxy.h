@@ -26,6 +26,5 @@
 
 + (id)proxy;
 
-+ (BOOL)definitionIsProxyDefinition:(TyphoonDefinition *)definition;
 
 @end

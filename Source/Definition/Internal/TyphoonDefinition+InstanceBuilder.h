@@ -22,7 +22,6 @@
 - (NSSet*)componentsInjectedByValue;
 
 - (void)injectProperty:(SEL)withSelector withReference:(NSString*)reference;
-- (void)injectProperty:(SEL)selector withReference:(NSString *)reference isProxied:(BOOL)proxied;
 
 - (NSSet*)propertiesInjectedByValue;
 

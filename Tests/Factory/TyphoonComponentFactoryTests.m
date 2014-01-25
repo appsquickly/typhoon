@@ -49,7 +49,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
     [_componentFactory register:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer* initializer)
     {
         initializer.selector = @selector(initWithQuest:);
-        [initializer injectParameterAtIndex:0 withReference:DEFAULT_QUEST isProxied:NO ];
+        [initializer injectParameterAtIndex:0 withReference:DEFAULT_QUEST];
     }]];
 
     [_componentFactory register:[TyphoonDefinition withClass:[CampaignQuest class] key:DEFAULT_QUEST]];
@@ -66,7 +66,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
     [_componentFactory register:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer* initializer)
     {
         initializer.selector = @selector(initWithQuest:);
-        [initializer injectParameterAtIndex:0 withReference:DEFAULT_QUEST isProxied:NO ];
+        [initializer injectParameterAtIndex:0 withReference:DEFAULT_QUEST];
     } properties:^(TyphoonDefinition* definition)
     {
         definition.key = @"knight";
