@@ -19,6 +19,7 @@
 #import "OCLogTemplate.h"
 #import "TyphoonDefinitionRegisterer.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
+#import "TyphoonOrdered.h"
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
 
@@ -51,7 +52,7 @@ static TyphoonComponentFactory* defaultFactory;
         _singletons = [[NSMutableDictionary alloc] init];
         _currentlyResolvingReferences = [TyphoonKeyedStackInstanceRegister instanceRegister];
         _postProcessors = [[NSMutableArray alloc] init];
-
+        _componentPostProcessors = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -220,8 +221,33 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (void)_load
 {
+    [self preparePostProcessors];
     [self applyPostProcessors];
     [self instantiateEagerSingletons];
+}
+
+- (NSArray*)orderedArray:(NSMutableArray*)array
+{
+    return [array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2)
+    {
+        NSInteger firstObjectOrder = TyphoonOrderLowestPriority;
+        NSInteger secondObjectOrder = TyphoonOrderLowestPriority;
+        if ([obj1 conformsToProtocol:@protocol(TyphoonOrdered)])
+        {
+            firstObjectOrder = [obj1 order];
+        }
+        if ([obj2 conformsToProtocol:@protocol(TyphoonOrdered)])
+        {
+            secondObjectOrder = [obj2 order];
+        }
+        return [@(firstObjectOrder) compare:@(secondObjectOrder)];
+    }];
+}
+
+- (void)preparePostProcessors
+{
+    _postProcessors = [[self orderedArray:_postProcessors] mutableCopy];
+    _componentPostProcessors = [[self orderedArray:_componentPostProcessors] mutableCopy];
 }
 
 - (void)applyPostProcessors
@@ -287,6 +313,11 @@ static TyphoonComponentFactory* defaultFactory;
 - (void)addDefinitionToRegistry:(TyphoonDefinition*)definition
 {
     [_registry addObject:definition];
+}
+
+- (void)addComponentPostProcessor:(id <TyphoonComponentFactoryPostProcessor>)postProcessor
+{
+    [_componentPostProcessors addObject:postProcessor];
 }
 
 @end
