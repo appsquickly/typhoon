@@ -70,7 +70,7 @@ static TyphoonComponentFactory* defaultFactory;
 {
     @synchronized (self)
     {
-        if (!_isLoading&&![self isLoaded])
+        if (!_isLoading && ![self isLoaded])
         {
             // ensure that the method won't be call recursively.
             _isLoading = YES;
@@ -186,7 +186,8 @@ static TyphoonComponentFactory* defaultFactory;
 {
     LogTrace(@"Attaching post processor: %@", postProcessor);
     [_postProcessors addObject:postProcessor];
-    if ([self isLoaded]) {
+    if ([self isLoaded])
+    {
         LogDebug(@"Definitions registered, refreshing all singletons.");
         [self unload];
     }
@@ -221,6 +222,7 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (void)_load
 {
+    [self hydrateParentReferences];
     [self preparePostProcessors];
     [self applyPostProcessors];
     [self instantiateEagerSingletons];
@@ -241,6 +243,22 @@ static TyphoonComponentFactory* defaultFactory;
             secondObjectOrder = [obj2 order];
         }
         return [@(firstObjectOrder) compare:@(secondObjectOrder)];
+    }];
+}
+
+
+/**
+* Sets the full-definition for any parent definitions that have been provided by key-only.
+*/
+- (void)hydrateParentReferences
+{
+    [_registry enumerateObjectsUsingBlock:^(TyphoonDefinition* definition, NSUInteger idx, BOOL* stop)
+    {
+        if (definition.parent)
+        {
+            TyphoonDefinition* parentDefinition = [self definitionForKey:definition.parent.key];
+            [definition setParent:parentDefinition];
+        }
     }];
 }
 

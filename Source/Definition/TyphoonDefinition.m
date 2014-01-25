@@ -233,6 +233,19 @@
     [self setFactoryReference:_factory.key];
 }
 
+/* ====================================================================================================================================== */
+#pragma mark - Overridden Methods
+
+- (TyphoonInitializer* )initializer
+{
+    if (!_initializer)
+    {
+        return _parent.initializer;
+    }
+    return _initializer;
+}
+
+
 - (NSSet*)injectedProperties
 {
     NSMutableSet* parentProperties = [_parent injectedProperties] ? [[_parent injectedProperties] mutableCopy] : [NSMutableSet set];

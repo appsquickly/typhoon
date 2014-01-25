@@ -376,21 +376,6 @@ static NSString* const DEFAULT_QUEST = @"quest";
     assertThat([child string], equalTo(@"parentArgument"));
 }
 
-- (void)test_child_missing_initializer_inherits_parent_initializer_by_ref
-{
-    [self registerParentDefinitionWithClass:[ClassWithConstructor class] key:@"parentRef" initializerString:@"parentArgument"];
-    TyphoonDefinition
-            * childDefinition = [TyphoonDefinition withClass:[ClassWithConstructor class] properties:^(TyphoonDefinition* definition)
-    {
-        definition.parent = [TyphoonDefinition withClass:[TyphoonDefinition class] key:@"parentRef"];
-    }];
-    [_componentFactory register:childDefinition];
-
-    ClassWithConstructor* child = [_componentFactory objectForDefinition:childDefinition];
-
-    assertThat([child string], equalTo(@"parentArgument"));
-}
-
 - (void)test_child_initializer_overrides_parent_initializer_by_definition
 {
     TyphoonDefinition* parentDefinition =
