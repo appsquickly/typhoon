@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Typhoon.xcodeproj">
+      location = "group:A-Typhoon.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Tests/Tests.xcodeproj">

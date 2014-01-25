@@ -1,22 +1,27 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-// Created by Robert Gilliam on 1/3/14.
-// Copyright (c) 2014 Jasper Blues. All rights reserved.
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
+//  All Rights Reserved.
 //
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
+//
+////////////////////////////////////////////////////////////////////////////////
+
 
 #import "TyphoonInjectedByReference.h"
 
 
 @implementation TyphoonInjectedByReference
+
+
+- (instancetype)initWithReference:(NSString*)reference
 {
-
-}
-
-- (instancetype)initWithReference:(NSString *)reference isProxied:(BOOL)proxied {
     self = [super init];
     if (self)
     {
         _reference = reference;
-        _proxied = proxied;
     }
 
     return self;

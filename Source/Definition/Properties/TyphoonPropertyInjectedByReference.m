@@ -10,26 +10,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-
-
 #import "TyphoonPropertyInjectedByReference.h"
 
 
 @implementation TyphoonPropertyInjectedByReference
-{
-
-}
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithName:(NSString*)name reference:(NSString*)reference
+- (instancetype)initWithName:(NSString*)name reference:(NSString*)reference
 {
-    return [self initWithName:name reference:reference isProxied:NO];
-}
-
-- (instancetype)initWithName:(NSString *)name reference:(NSString *)reference isProxied:(BOOL)proxied {
-    self = [super initWithReference:reference isProxied:proxied];
+    self = [super initWithReference:reference];
     if (self)
     {
         _name = name;

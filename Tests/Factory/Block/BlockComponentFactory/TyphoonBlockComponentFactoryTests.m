@@ -24,9 +24,6 @@
 #import "CavalryMan.h"
 #import "OCLogTemplate.h"
 #import "InfrastructureComponentsAssembly.h"
-#import "CollaboratingMiddleAgesAssembly.h"
-#import "ExtendedMiddleAgesAssembly.h"
-#import "CampaignQuest.h"
 
 @interface TyphoonBlockComponentFactoryTests : TyphoonSharedComponentFactoryTests
 @end

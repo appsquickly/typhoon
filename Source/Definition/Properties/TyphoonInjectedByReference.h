@@ -10,8 +10,7 @@
 @interface TyphoonInjectedByReference : TyphoonInjected
 
 @property(nonatomic, strong, readonly) NSString* reference;
-@property(nonatomic, readonly) BOOL proxied;
 
-- (instancetype)initWithReference:(NSString *)reference isProxied:(BOOL)proxied;
+- (instancetype)initWithReference:(NSString *)reference;
 
 @end

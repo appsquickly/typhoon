@@ -20,18 +20,13 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString*)reference
+- (instancetype)initWithParameterIndex:(NSUInteger)index reference:(NSString*)reference
 {
-    return [self initWithParameterIndex:parameterIndex reference:reference isProxied:NO];
-}
-
-- (instancetype)initWithParameterIndex:(NSUInteger)index reference:(NSString *)reference isProxied:(BOOL)proxied {
-    self = [super initWithReference:reference isProxied:proxied];
+    self = [super initWithReference:reference];
     if (self)
     {
         _index = index;
     }
-
     return self;
 }
 
