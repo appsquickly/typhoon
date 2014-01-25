@@ -20,8 +20,6 @@
 */
 @interface TyphoonPropertyInjectedByReference : TyphoonInjectedByReference
 
-@property(nonatomic, strong, readonly) NSString* name;
-
 - (instancetype)initWithName:(NSString*)name reference:(NSString*)reference;
 
 @end

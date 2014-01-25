@@ -27,9 +27,4 @@
     return self;
 }
 
-- (BOOL)isByReference
-{
-    return YES;
-}
-
 @end
