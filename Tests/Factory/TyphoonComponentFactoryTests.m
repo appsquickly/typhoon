@@ -22,6 +22,7 @@
 #import "TyphoonPatcher.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "ClassWithConstructor.h"
+#import "TyphoonComponentPostProcessorMock.h"
 
 
 static NSString* const DEFAULT_QUEST = @"quest";
@@ -225,7 +226,44 @@ static NSString* const DEFAULT_QUEST = @"quest";
     {
         assertThatBool(mock.postProcessingCalled, equalToBool(YES));
     }
+}
 
+- (void)test_component_post_processor_registration
+{
+    [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentPostProcessorMock class]]];
+    assertThatUnsignedLong([[_componentFactory registry] count], equalToUnsignedLong(0));
+    assertThatUnsignedLong([[_componentFactory componentPostProcessors] count], equalToUnsignedLong(1));
+}
+
+- (void)test_component_post_processors_applied_in_order
+{
+    TyphoonComponentPostProcessorMock* processor1 = [[TyphoonComponentPostProcessorMock alloc] initWithOrder:INT_MAX];
+    TyphoonComponentPostProcessorMock* processor2 = [[TyphoonComponentPostProcessorMock alloc] initWithOrder:0];
+    TyphoonComponentPostProcessorMock* processor3 = [[TyphoonComponentPostProcessorMock alloc] initWithOrder:INT_MIN];
+    [_componentFactory addComponentPostProcessor:processor1];
+    [_componentFactory addComponentPostProcessor:processor2];
+    [_componentFactory addComponentPostProcessor:processor3];
+    [_componentFactory register:[TyphoonDefinition withClass:[Knight class]]];
+
+    __block NSMutableArray* orderedApplied = [[NSMutableArray alloc] initWithCapacity:3];
+    [processor1 setPostProcessBlock:^id(id o)
+    {
+        [orderedApplied addObject:@1];
+        return o;
+    }];
+    [processor2 setPostProcessBlock:^id(id o)
+    {
+        [orderedApplied addObject:@2];
+        return o;
+    }];
+    [processor3 setPostProcessBlock:^id(id o)
+    {
+        [orderedApplied addObject:@3];
+        return o;
+    }];
+
+    Knight* knight = [_componentFactory componentForType:[Knight class]];
+    assertThat(orderedApplied, equalTo(@[@3, @2, @1]));
 }
 
 /* ====================================================================================================================================== */

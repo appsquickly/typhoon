@@ -19,6 +19,7 @@
 #import "TyphoonTypeConverterRegistry.h"
 #import <objc/message.h>
 #import "OCLogTemplate.h"
+#import "TyphoonComponentPostProcessor.h"
 
 @implementation TyphoonDefinitionRegisterer
 {
@@ -95,6 +96,7 @@
 - (BOOL)definitionIsInfrastructureComponent
 {
     if ([_definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)] ||
+        [_definition.type conformsToProtocol:@protocol(TyphoonComponentPostProcessor)] ||
         [_definition.type conformsToProtocol:@protocol(TyphoonTypeConverter)])
     {
         return YES;
@@ -110,6 +112,10 @@
     if ([_definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)])
     {
         [_componentFactory attachPostProcessor:infrastructureComponent];
+    }
+    else if ([_definition.type conformsToProtocol:@protocol(TyphoonComponentPostProcessor)])
+    {
+        [_componentFactory addComponentPostProcessor:infrastructureComponent];
     }
     else if ([_definition.type conformsToProtocol:@protocol(TyphoonTypeConverter)])
     {

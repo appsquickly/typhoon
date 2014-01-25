@@ -41,7 +41,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonComponentFactoryAware.h"
 #import "TyphoonParameterInjectedAsCollection.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
-#import "TyphoonInjectedByReference.h"
+#import "TyphoonComponentPostProcessor.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
@@ -53,6 +53,8 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     __autoreleasing id <TyphoonIntrospectiveNSObject> instance;
     instance = [self allocateInstance:instance withDefinition:definition];
     instance = [self injectInstance:instance withDefinition:definition];
+    instance = [self postProcessInstance:instance];
+
     return instance;
 }
 
@@ -92,6 +94,18 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
     [self markDoneResolvingDefinition:definition];
 
+    return instance;
+}
+
+- (id)postProcessInstance:(id)instance
+{
+    if (![instance conformsToProtocol:@protocol(TyphoonComponentPostProcessor)])
+    {
+        for (id <TyphoonComponentPostProcessor> postProcessor in _componentPostProcessors)
+        {
+            instance = [postProcessor postProcessComponent:instance];
+        }
+    }
     return instance;
 }
 

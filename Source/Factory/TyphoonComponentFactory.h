@@ -32,6 +32,7 @@
 
     id <TyphoonInstanceRegister> _currentlyResolvingReferences;
     NSMutableArray* _postProcessors;
+    NSMutableArray* _componentPostProcessors;
     BOOL _isLoading;
 }
 
@@ -49,6 +50,12 @@
  * The attached factory post processors.
  */
 @property(nonatomic, strong, readonly) NSArray* postProcessors;
+
+/**
+ * The attached component post processors.
+ */
+@property(nonatomic, strong, readonly) NSArray* componentPostProcessors;
+
 
 /**
 * Returns the default component factory, if one has been set. @see [TyphoonComponentFactory makeDefault]. This allows resolving components
