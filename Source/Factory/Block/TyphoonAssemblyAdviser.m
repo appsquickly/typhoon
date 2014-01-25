@@ -66,7 +66,7 @@ static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
 - (void)swizzleAssemblyMethods
 {
     NSSet* definitionSelectors = [self enumerateDefinitionSelectors];
-    LogTrace(@"About to swizzle the following methods: %@.", [self humanReadableDescriptionForSelectorObjects:definitionSelectors]);
+    LogTrace(@"About to swizzle the following methods: %@.", definitionSelectors);
     [self swizzleDefinitionSelectors:definitionSelectors];
     [[self class] markAssemblyMethods:definitionSelectors asAdvised:self.assembly];
 }
