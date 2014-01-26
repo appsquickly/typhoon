@@ -282,34 +282,20 @@ static TyphoonComponentFactory* defaultFactory;
     {
         if (([definition scope] == TyphoonScopeSingleton) && ![definition isLazy])
         {
-            [self singletonForDefinition:definition];
+            [self sharedInstanceForDefinition:definition fromPool:_singletons];
         }
     }];
 }
 
-- (id)singletonForDefinition:(TyphoonDefinition*)definition
+- (id)sharedInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(NSMutableDictionary*)pool
 {
     @synchronized (self)
     {
-        id instance = [_singletons objectForKey:definition.key];
+        id instance = [pool objectForKey:definition.key];
         if (instance == nil)
         {
             instance = [self buildSharedInstanceForDefinition:definition];
-            [_singletons setObject:instance forKey:definition.key];
-        }
-        return instance;
-    }
-}
-
-- (id)objectGraphSharedInstanceForDefinition:(TyphoonDefinition*)definition
-{
-    @synchronized (self)
-    {
-        id instance = [_objectGraphSharedInstances objectForKey:definition.key];
-        if (instance == nil)
-        {
-            instance = [self buildSharedInstanceForDefinition:definition];
-            [_objectGraphSharedInstances setObject:instance forKey:definition.key];
+            [pool setObject:instance forKey:definition.key];
         }
         return instance;
     }
@@ -337,11 +323,11 @@ static TyphoonComponentFactory* defaultFactory;
     id instance = nil;
     if (definition.scope == TyphoonScopeSingleton)
     {
-        instance = [self singletonForDefinition:definition];
+        instance = [self sharedInstanceForDefinition:definition fromPool:_singletons];
     }
     else if (definition.scope == TyphoonScopeObjectGraph)
     {
-        instance = [self objectGraphSharedInstanceForDefinition:definition];
+        instance = [self sharedInstanceForDefinition:definition fromPool:_objectGraphSharedInstances];
     }
     else
     {
@@ -352,9 +338,7 @@ static TyphoonComponentFactory* defaultFactory;
     {
         [_objectGraphSharedInstances removeAllObjects];
     }
-
     return instance;
-
 }
 
 - (void)addDefinitionToRegistry:(TyphoonDefinition*)definition
