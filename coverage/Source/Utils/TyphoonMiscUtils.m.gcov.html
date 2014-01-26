@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-01-23</td>
+            <td class="headerValue">2014-01-26</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -75,17 +75,17 @@
 <span class="lineNum">      17 </span><span class="lineCov">          1 :     ordinalsThroughThree = @[@&quot;th&quot;, @&quot;st&quot;, @&quot;nd&quot;, @&quot;rd&quot;];</span>
 <span class="lineNum">      18 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span><span class="lineCov">         27 : + (NSString*)ordinalForIndex:(NSUInteger)index</span>
+<span class="lineNum">      20 </span><span class="lineCov">         26 : + (NSString*)ordinalForIndex:(NSUInteger)index</span>
 <span class="lineNum">      21 </span>            : {
-<span class="lineNum">      22 </span><span class="lineCov">         27 :     NSUInteger lastDigit = index % 10;</span>
-<span class="lineNum">      23 </span><span class="lineCov">         49 :     if (index &gt; 3 &amp;&amp; index &lt; 20) {</span>
+<span class="lineNum">      22 </span><span class="lineCov">         26 :     NSUInteger lastDigit = index % 10;</span>
+<span class="lineNum">      23 </span><span class="lineCov">         48 :     if (index &gt; 3 &amp;&amp; index &lt; 20) {</span>
 <span class="lineNum">      24 </span><span class="lineCov">         16 :         return [NSString stringWithFormat:@&quot;%lu%@&quot;, index, @&quot;th&quot;];</span>
-<span class="lineNum">      25 </span><span class="lineCov">         11 :     }else if (lastDigit &lt;= 3) {</span>
-<span class="lineNum">      26 </span><span class="lineCov">         10 :         return [NSString stringWithFormat:@&quot;%lu%@&quot;, index, ordinalsThroughThree[lastDigit]];</span>
+<span class="lineNum">      25 </span><span class="lineCov">         10 :     }else if (lastDigit &lt;= 3) {</span>
+<span class="lineNum">      26 </span><span class="lineCov">          9 :         return [NSString stringWithFormat:@&quot;%lu%@&quot;, index, ordinalsThroughThree[lastDigit]];</span>
 <span class="lineNum">      27 </span>            :     }else{
 <span class="lineNum">      28 </span><span class="lineCov">          1 :         return [NSString stringWithFormat:@&quot;%lu%@&quot;, index, @&quot;th&quot;];</span>
 <span class="lineNum">      29 </span>            :     }
-<span class="lineNum">      30 </span><span class="lineCov">         27 : }</span>
+<span class="lineNum">      30 </span><span class="lineCov">         26 : }</span>
 <span class="lineNum">      31 </span>            : @end
 </pre>
       </td>

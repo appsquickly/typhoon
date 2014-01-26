@@ -4,6 +4,7 @@ var searchData=
   ['waitforcondition_3a',['waitForCondition:',['../interface_typhoon_test_utils.html#a1d9e1900f5ce91f1156ab33f3de55c84',1,'TyphoonTestUtils']]],
   ['waitforcondition_3aandperformtests_3a',['waitForCondition:andPerformTests:',['../interface_typhoon_test_utils.html#a62926e9370dabb26116d26c72bf74c87',1,'TyphoonTestUtils']]],
   ['withclass_3a',['withClass:',['../interface_typhoon_definition.html#a1dc966c67bccff5b5b88c9de0ae78689',1,'TyphoonDefinition']]],
+  ['withclass_3afactory_3aselector_3a',['withClass:factory:selector:',['../interface_typhoon_definition.html#a7d9fc2a2ba59e206f6fe09c3c1d92b5f',1,'TyphoonDefinition']]],
   ['withclass_3ainitialization_3a',['withClass:initialization:',['../interface_typhoon_definition.html#abfbc8c21959e41a5fc4bb7282e2ff9e1',1,'TyphoonDefinition']]],
   ['withclass_3ainitialization_3aproperties_3a',['withClass:initialization:properties:',['../interface_typhoon_definition.html#aa9dcfc1049a83acb4490f2d014fed773',1,'TyphoonDefinition']]],
   ['withclass_3aproperties_3a',['withClass:properties:',['../interface_typhoon_definition.html#af465b133fd7f973be3275714d7f5bb50',1,'TyphoonDefinition']]],

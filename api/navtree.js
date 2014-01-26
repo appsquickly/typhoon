@@ -17,7 +17,6 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
@@ -30,8 +29,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_n_s_object_09_typhoon_introspection_utils_8h.html",
-"interface_typhoon_argument_injected_as_collection.html#a7dfbde2cf94af819d6d1adbb37e84097",
-"interface_typhoon_property_injected_by_type.html#a12afcf5f3447fc925e1bc142fea0ac6a"
+"interface_typhoon_abstract_injected_property.html#a9dc3476c9a4353935d78f1f9717ffeec",
+"interface_typhoon_property_placeholder_configurer.html#a3adc6ae943f7bda1eb1ad3b50ba81e25"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

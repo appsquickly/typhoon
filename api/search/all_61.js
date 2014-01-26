@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['additemwithcomponentname_3a',['addItemWithComponentName:',['../interface_typhoon_argument_injected_as_collection.html#ac66c05f73ec196358f3ed0219a01549f',1,'TyphoonArgumentInjectedAsCollection']]],
-  ['additemwithdefinition_3a',['addItemWithDefinition:',['../interface_typhoon_argument_injected_as_collection.html#a16189b81dfd94f686adb508246d83f29',1,'TyphoonArgumentInjectedAsCollection']]],
-  ['additemwithtext_3arequiredtype_3a',['addItemWithText:requiredType:',['../interface_typhoon_argument_injected_as_collection.html#a7dfbde2cf94af819d6d1adbb37e84097',1,'TyphoonArgumentInjectedAsCollection']]],
+  ['abstract',['abstract',['../interface_typhoon_definition.html#a06ab7dc77ee2f386d87ea3fe75f18693',1,'TyphoonDefinition']]],
+  ['additemwithcomponentname_3a',['addItemWithComponentName:',['../interface_typhoon_injected_as_collection.html#acf9c4650305f68a6c7670814dd4b5f7f',1,'TyphoonInjectedAsCollection']]],
+  ['additemwithdefinition_3a',['addItemWithDefinition:',['../interface_typhoon_injected_as_collection.html#a76f94cd399a7697e21c5457d64e25550',1,'TyphoonInjectedAsCollection']]],
+  ['additemwithtext_3arequiredtype_3a',['addItemWithText:requiredType:',['../interface_typhoon_injected_as_collection.html#aa9a8475892664b4623972fd9a7d53a18',1,'TyphoonInjectedAsCollection']]],
   ['advisednameforname_3a',['advisedNameForName:',['../interface_typhoon_assembly_selector_adviser.html#af9e69e1f964ce6b3fc63531aa9c0f7ba',1,'TyphoonAssemblySelectorAdviser']]],
   ['advisedselforkey_3a',['advisedSELForKey:',['../interface_typhoon_assembly_selector_adviser.html#a3ede39fd2e0f284444e65db3589a63d0',1,'TyphoonAssemblySelectorAdviser']]],
   ['advisedselforsel_3a',['advisedSELForSEL:',['../interface_typhoon_assembly_selector_adviser.html#a4e446ce199146df21c1b292b04856e29',1,'TyphoonAssemblySelectorAdviser']]],
@@ -13,8 +14,8 @@ var searchData=
   ['arraylength',['arrayLength',['../interface_typhoon_type_descriptor.html#ad541d952528bcaa20827a8e3d87e23c0',1,'TyphoonTypeDescriptor']]],
   ['ascomponentdefinition',['asComponentDefinition',['../category_typhoon_r_x_m_l_element_07_xml_component_factory_08.html#a4d8762eef5841041e06ff5110936407a',1,'TyphoonRXMLElement(XmlComponentFactory)::asComponentDefinition()'],['../interface_typhoon_r_x_m_l_element.html#a4d8762eef5841041e06ff5110936407a',1,'TyphoonRXMLElement::asComponentDefinition()']]],
   ['asinitializer',['asInitializer',['../category_typhoon_r_x_m_l_element_07_xml_component_factory_08.html#ab9fdb93ba597b936325e4e8f2af02276',1,'TyphoonRXMLElement(XmlComponentFactory)::asInitializer()'],['../interface_typhoon_r_x_m_l_element.html#ab9fdb93ba597b936325e4e8f2af02276',1,'TyphoonRXMLElement::asInitializer()']]],
-  ['asinjectedproperty',['asInjectedProperty',['../category_typhoon_r_x_m_l_element_07_xml_component_factory_08.html#a833cb8fef154df9171b544eaa9970e9e',1,'TyphoonRXMLElement(XmlComponentFactory)::asInjectedProperty()'],['../interface_typhoon_r_x_m_l_element.html#a833cb8fef154df9171b544eaa9970e9e',1,'TyphoonRXMLElement::asInjectedProperty()']]],
-  ['assembly',['assembly',['../interface_typhoon_assembly_validator.html#aeac2aa705551f45e6bd1f7c7c4d515a6',1,'TyphoonAssemblyValidator::assembly()'],['../interface_typhoon_assembly.html#af53fcd1ea8b4e55dda2080a651814c6c',1,'TyphoonAssembly::assembly()']]],
+  ['asinjectedproperty',['asInjectedProperty',['../category_typhoon_r_x_m_l_element_07_xml_component_factory_08.html#aa08bc6405c62a59afbe26491ade9b54e',1,'TyphoonRXMLElement(XmlComponentFactory)::asInjectedProperty()'],['../interface_typhoon_r_x_m_l_element.html#aa08bc6405c62a59afbe26491ade9b54e',1,'TyphoonRXMLElement::asInjectedProperty()']]],
+  ['assembly',['assembly',['../interface_typhoon_assembly.html#af53fcd1ea8b4e55dda2080a651814c6c',1,'TyphoonAssembly']]],
   ['asstring',['asString',['../protocol_typhoon_resource-p.html#ac116090936d1a74ef0a28772db44f210',1,'TyphoonResource-p']]],
   ['asstringwithencoding_3a',['asStringWithEncoding:',['../protocol_typhoon_resource-p.html#a5f924b2511acbe7880f226d76cd742f9',1,'TyphoonResource-p']]],
   ['attachpostprocessor_3a',['attachPostProcessor:',['../interface_typhoon_component_factory.html#a0727001458325fd7d09b6df2e1252180',1,'TyphoonComponentFactory']]],

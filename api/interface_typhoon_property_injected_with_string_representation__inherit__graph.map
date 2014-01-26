@@ -1,4 +1,4 @@
 <map id="TyphoonPropertyInjectedWithStringRepresentation" name="TyphoonPropertyInjectedWithStringRepresentation">
-<area shape="rect" id="node3" href="$protocol_typhoon_injected_property-p.html" title="\&lt;TyphoonInjectedProperty\&gt;" alt="" coords="149,88,336,115"/>
-<area shape="rect" id="node5" href="$protocol_typhoon_component_injected_by_value-p.html" title="\&lt;TyphoonComponentInjected\lByValue\&gt;" alt="" coords="360,81,557,122"/>
+<area shape="rect" id="node2" href="$interface_typhoon_abstract_injected_property.html" title="Provides a contract for typhoon injected properties (name, injectionType) as well as defines the noti..." alt="" coords="5,88,224,115"/>
+<area shape="rect" id="node4" href="$protocol_typhoon_component_injected_by_value-p.html" title="\&lt;TyphoonComponentInjected\lByValue\&gt;" alt="" coords="249,81,447,122"/>
 </map>

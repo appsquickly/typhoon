@@ -11,6 +11,7 @@ var searchData=
   ['componentforkey_3a',['componentForKey:',['../interface_typhoon_component_factory.html#afbe6d5309ee739db59e4c5d35d2ab377',1,'TyphoonComponentFactory']]],
   ['componentfortype_3a',['componentForType:',['../interface_typhoon_component_factory.html#a8beff23e8b71b958b551ad173ef0feb5',1,'TyphoonComponentFactory']]],
   ['componentname',['componentName',['../interface_typhoon_by_reference_collection_value.html#a12af86c95764367bef6e7146b8540499',1,'TyphoonByReferenceCollectionValue']]],
+  ['componentpostprocessors',['componentPostProcessors',['../interface_typhoon_component_factory.html#a9c88f88b59f7607416373f761d97b23c',1,'TyphoonComponentFactory']]],
   ['configuration',['Configuration',['../group___configuration.html',1,'']]],
   ['configure_3a',['configure:',['../interface_typhoon_assisted_factory_definition.html#a3ce6224c7709c2cc7de057c269f156b3',1,'TyphoonAssistedFactoryDefinition']]],
   ['configurer',['configurer',['../interface_typhoon_property_placeholder_configurer.html#a3adc6ae943f7bda1eb1ad3b50ba81e25',1,'TyphoonPropertyPlaceholderConfigurer']]],

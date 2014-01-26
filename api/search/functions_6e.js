@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['name',['name',['../protocol_typhoon_injected_property-p.html#a7b288ed542111f4b03b5a17d58c9deac',1,'TyphoonInjectedProperty-p']]]
+  ['ns_5fenum',['NS_ENUM',['../_typhoon_ordered_8h.html#a8bade92ed408c906ce4cb24b6ecdb5cf',1,'TyphoonOrdered.h']]]
 ];

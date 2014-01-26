@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">11</td>
-            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntry">8</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-01-23</td>
+            <td class="headerValue">2014-01-26</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -56,34 +56,34 @@
       <td>
 <pre class="sourceHeading">          Line data    Source code</pre>
 <pre class="source">
-<span class="lineNum">       1 </span>            : //
-<span class="lineNum">       2 </span>            : // Created by Robert Gilliam on 1/3/14.
-<span class="lineNum">       3 </span>            : // Copyright (c) 2014 Jasper Blues. All rights reserved.
-<span class="lineNum">       4 </span>            : //
-<span class="lineNum">       5 </span>            : 
-<span class="lineNum">       6 </span>            : #import &quot;TyphoonInjectedByReference.h&quot;
-<span class="lineNum">       7 </span>            : 
-<span class="lineNum">       8 </span>            : 
-<span class="lineNum">       9 </span><span class="lineCov">      14760 : @implementation TyphoonInjectedByReference</span>
-<span class="lineNum">      10 </span>            : {
+<span class="lineNum">       1 </span>            : ////////////////////////////////////////////////////////////////////////////////
+<span class="lineNum">       2 </span>            : //
+<span class="lineNum">       3 </span>            : //  TYPHOON FRAMEWORK
+<span class="lineNum">       4 </span>            : //  Copyright 2013, Jasper Blues &amp; Contributors
+<span class="lineNum">       5 </span>            : //  All Rights Reserved.
+<span class="lineNum">       6 </span>            : //
+<span class="lineNum">       7 </span>            : //  NOTICE: The authors permit you to use, modify, and distribute this file
+<span class="lineNum">       8 </span>            : //  in accordance with the terms of the license agreement accompanying it.
+<span class="lineNum">       9 </span>            : //
+<span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
 <span class="lineNum">      11 </span>            : 
-<span class="lineNum">      12 </span>            : }
-<span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">      15648 : - (instancetype)initWithReference:(NSString *)reference isProxied:(BOOL)proxied {</span>
-<span class="lineNum">      15 </span><span class="lineCov">      15648 :     self = [super init];</span>
-<span class="lineNum">      16 </span><span class="lineCov">      15648 :     if (self)</span>
-<span class="lineNum">      17 </span>            :     {
-<span class="lineNum">      18 </span><span class="lineCov">      15648 :         _reference = reference;</span>
-<span class="lineNum">      19 </span><span class="lineCov">      15648 :         _proxied = proxied;</span>
-<span class="lineNum">      20 </span><span class="lineCov">      15648 :     }</span>
-<span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineCov">      15648 :     return self;</span>
-<span class="lineNum">      23 </span><span class="lineCov">      15648 : }</span>
-<span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span><span class="lineCov">        517 : - (BOOL)isByReference</span>
-<span class="lineNum">      26 </span>            : {
-<span class="lineNum">      27 </span><span class="lineCov">        517 :     return YES;</span>
-<span class="lineNum">      28 </span>            : }
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span>            : #import &quot;TyphoonInjectedByReference.h&quot;
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span><span class="lineCov">        769 : @implementation TyphoonInjectedByReference</span>
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span><span class="lineCov">       1659 : - (instancetype)initWithReference:(NSString*)reference</span>
+<span class="lineNum">      20 </span>            : {
+<span class="lineNum">      21 </span><span class="lineCov">       1659 :     self = [super init];</span>
+<span class="lineNum">      22 </span><span class="lineCov">       1659 :     if (self)</span>
+<span class="lineNum">      23 </span>            :     {
+<span class="lineNum">      24 </span><span class="lineCov">       1659 :         _reference = reference;</span>
+<span class="lineNum">      25 </span><span class="lineCov">       1659 :     }</span>
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span><span class="lineCov">       1659 :     return self;</span>
+<span class="lineNum">      28 </span><span class="lineCov">       1659 : }</span>
 <span class="lineNum">      29 </span>            : 
 <span class="lineNum">      30 </span>            : @end
 </pre>

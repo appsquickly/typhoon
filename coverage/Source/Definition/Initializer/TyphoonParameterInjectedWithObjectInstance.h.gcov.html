@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-01-23</td>
+            <td class="headerValue">2014-01-26</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -69,21 +69,20 @@
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            : #import &lt;Foundation/Foundation.h&gt;
 <span class="lineNum">      13 </span>            : #import &quot;TyphoonInjectedParameter.h&quot;
-<span class="lineNum">      14 </span>            : #import &quot;TyphoonInjected.h&quot;
-<span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span>            : /**
-<span class="lineNum">      17 </span>            : * Represents a parameter injected with an instance of an object - something constructed outside of the container.
-<span class="lineNum">      18 </span>            : */
-<span class="lineNum">      19 </span>            : @interface TyphoonParameterInjectedWithObjectInstance : TyphoonInjected &lt;TyphoonInjectedParameter&gt;
-<span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span><span class="lineCov">         45 : @property(nonatomic, readonly) NSUInteger index;</span>
-<span class="lineNum">      22 </span>            : @property(nonatomic, readonly) TyphoonParameterInjectionType type;
-<span class="lineNum">      23 </span><span class="lineCov">         45 : @property(nonatomic, strong, readonly) id value;</span>
-<span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span>            : - (id)initWithParameterIndex:(NSUInteger)index value:(id)value;
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span>            : /**
+<span class="lineNum">      16 </span>            : * Represents a parameter injected with an instance of an object - something constructed outside of the container.
+<span class="lineNum">      17 </span>            : */
+<span class="lineNum">      18 </span>            : @interface TyphoonParameterInjectedWithObjectInstance : NSObject &lt;TyphoonInjectedParameter&gt;
+<span class="lineNum">      19 </span>            : 
+<span class="lineNum">      20 </span><span class="lineCov">         45 : @property(nonatomic, readonly) NSUInteger index;</span>
+<span class="lineNum">      21 </span>            : @property(nonatomic, readonly) TyphoonParameterInjectionType type;
+<span class="lineNum">      22 </span><span class="lineCov">         45 : @property(nonatomic, strong, readonly) id value;</span>
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span>            : - (id)initWithParameterIndex:(NSUInteger)index value:(id)value;
+<span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span>            : @end
+<span class="lineNum">      27 </span>            : @end
 </pre>
       </td>
     </tr>

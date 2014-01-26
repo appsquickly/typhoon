@@ -10,7 +10,6 @@ var searchData=
   ['setterforpropertywithname_3a',['setterForPropertyWithName:',['../category_n_s_object_07_typhoon_introspection_utils_08.html#a6220a889a3878c1f0258cce8da284e87',1,'NSObject(TyphoonIntrospectionUtils)::setterForPropertyWithName:()'],['../protocol_typhoon_introspective_n_s_object-p.html#a4d2da7ffcf3ae77c55da219d67b14694',1,'TyphoonIntrospectiveNSObject-p::setterForPropertyWithName:()']]],
   ['shared',['shared',['../interface_typhoon_type_converter_registry.html#a193f50912556ea950a0f65bfe25ce922',1,'TyphoonTypeConverterRegistry']]],
   ['singletons',['singletons',['../interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785',1,'TyphoonComponentFactory']]],
-  ['stack',['stack',['../interface_typhoon_generic_stack.html#ada7b744c131fc7348f069d4dd7f5598a',1,'TyphoonGenericStack']]],
   ['structuretypename',['structureTypeName',['../interface_typhoon_type_descriptor.html#a51e40b95dc79d9b28a3351efdc5ea7f9',1,'TyphoonTypeDescriptor']]],
   ['supportedtype',['supportedType',['../protocol_typhoon_type_converter-p.html#a1b703751b03e4411f6652857248fff68',1,'TyphoonTypeConverter-p']]]
 ];

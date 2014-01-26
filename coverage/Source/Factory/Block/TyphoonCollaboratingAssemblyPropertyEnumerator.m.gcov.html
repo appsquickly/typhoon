@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-01-23</td>
+            <td class="headerValue">2014-01-26</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -75,30 +75,30 @@
 <span class="lineNum">      17 </span>            : #import &quot;TyphoonTypeDescriptor.h&quot;
 <span class="lineNum">      18 </span>            : #import &quot;TyphoonIntrospectionUtils.h&quot;
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span><span class="lineCov">        130 : @implementation TyphoonCollaboratingAssemblyPropertyEnumerator</span>
+<span class="lineNum">      20 </span><span class="lineCov">        129 : @implementation TyphoonCollaboratingAssemblyPropertyEnumerator</span>
 <span class="lineNum">      21 </span>            : {
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : }
 <span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span><span class="lineCov">        130 : - (id)initWithAssembly:(TyphoonAssembly*)assembly</span>
+<span class="lineNum">      25 </span><span class="lineCov">        129 : - (id)initWithAssembly:(TyphoonAssembly*)assembly</span>
 <span class="lineNum">      26 </span>            : {
-<span class="lineNum">      27 </span><span class="lineCov">        130 :     self = [super init];</span>
-<span class="lineNum">      28 </span><span class="lineCov">        130 :     if (self) {</span>
-<span class="lineNum">      29 </span><span class="lineCov">        130 :         _assembly = assembly;</span>
-<span class="lineNum">      30 </span><span class="lineCov">        130 :     }</span>
-<span class="lineNum">      31 </span><span class="lineCov">        130 :     return self;</span>
-<span class="lineNum">      32 </span><span class="lineCov">        130 : }</span>
+<span class="lineNum">      27 </span><span class="lineCov">        129 :     self = [super init];</span>
+<span class="lineNum">      28 </span><span class="lineCov">        129 :     if (self) {</span>
+<span class="lineNum">      29 </span><span class="lineCov">        129 :         _assembly = assembly;</span>
+<span class="lineNum">      30 </span><span class="lineCov">        129 :     }</span>
+<span class="lineNum">      31 </span><span class="lineCov">        129 :     return self;</span>
+<span class="lineNum">      32 </span><span class="lineCov">        129 : }</span>
 <span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span><span class="lineCov">        130 : - (NSSet *)collaboratingAssemblyProperties</span>
+<span class="lineNum">      34 </span><span class="lineCov">        129 : - (NSSet *)collaboratingAssemblyProperties</span>
 <span class="lineNum">      35 </span>            : {
-<span class="lineNum">      36 </span><span class="lineCov">        130 :     NSMutableSet *propertyNames = [[NSMutableSet alloc] init];</span>
+<span class="lineNum">      36 </span><span class="lineCov">        129 :     NSMutableSet *propertyNames = [[NSMutableSet alloc] init];</span>
 <span class="lineNum">      37 </span>            : 
-<span class="lineNum">      38 </span><span class="lineCov">        130 :     Class class = [self.assembly class];</span>
-<span class="lineNum">      39 </span><span class="lineCov">        393 :     while ([self classNotRootAssemblyClass:class])</span>
+<span class="lineNum">      38 </span><span class="lineCov">        129 :     Class class = [self.assembly class];</span>
+<span class="lineNum">      39 </span><span class="lineCov">        390 :     while ([self classNotRootAssemblyClass:class])</span>
 <span class="lineNum">      40 </span>            :     {
-<span class="lineNum">      41 </span><span class="lineCov">        133 :         unsigned int count = 0;</span>
-<span class="lineNum">      42 </span><span class="lineCov">        133 :         objc_property_t * properties = class_copyPropertyList(class, &amp;count);</span>
-<span class="lineNum">      43 </span><span class="lineCov">        290 :         for (int propertyIndex = 0; propertyIndex &lt; count; propertyIndex++) {</span>
+<span class="lineNum">      41 </span><span class="lineCov">        132 :         unsigned int count = 0;</span>
+<span class="lineNum">      42 </span><span class="lineCov">        132 :         objc_property_t * properties = class_copyPropertyList(class, &amp;count);</span>
+<span class="lineNum">      43 </span><span class="lineCov">        288 :         for (int propertyIndex = 0; propertyIndex &lt; count; propertyIndex++) {</span>
 <span class="lineNum">      44 </span><span class="lineCov">         12 :             objc_property_t aProperty = properties[propertyIndex];</span>
 <span class="lineNum">      45 </span>            : 
 <span class="lineNum">      46 </span><span class="lineCov">         12 :             NSString *propertyName = [self propertyNameForProperty:aProperty];</span>
@@ -107,11 +107,11 @@
 <span class="lineNum">      49 </span><span class="lineCov">         10 :             }</span>
 <span class="lineNum">      50 </span><span class="lineCov">         12 :         }</span>
 <span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span><span class="lineCov">        133 :         class = class_getSuperclass(class);</span>
-<span class="lineNum">      53 </span><span class="lineCov">        133 :     }</span>
+<span class="lineNum">      52 </span><span class="lineCov">        132 :         class = class_getSuperclass(class);</span>
+<span class="lineNum">      53 </span><span class="lineCov">        132 :     }</span>
 <span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span><span class="lineCov">        130 :     return propertyNames;</span>
-<span class="lineNum">      56 </span><span class="lineCov">        130 : }</span>
+<span class="lineNum">      55 </span><span class="lineCov">        129 :     return propertyNames;</span>
+<span class="lineNum">      56 </span><span class="lineCov">        129 : }</span>
 <span class="lineNum">      57 </span>            : 
 <span class="lineNum">      58 </span><span class="lineCov">         12 : - (BOOL)propertyForName:(NSString*)propertyName isCollaboratingAssemblyPropertyOnClass:(Class)class</span>
 <span class="lineNum">      59 </span>            : {
@@ -119,9 +119,9 @@
 <span class="lineNum">      61 </span><span class="lineCov">         12 :     return type.typeBeingDescribed == [TyphoonAssembly class];</span>
 <span class="lineNum">      62 </span><span class="lineCov">         12 : }</span>
 <span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span><span class="lineCov">        263 : - (BOOL)classNotRootAssemblyClass:(Class)class</span>
+<span class="lineNum">      64 </span><span class="lineCov">        261 : - (BOOL)classNotRootAssemblyClass:(Class)class</span>
 <span class="lineNum">      65 </span>            : {
-<span class="lineNum">      66 </span><span class="lineCov">        263 :     return class != [TyphoonAssembly class];</span>
+<span class="lineNum">      66 </span><span class="lineCov">        261 :     return class != [TyphoonAssembly class];</span>
 <span class="lineNum">      67 </span>            : }
 <span class="lineNum">      68 </span>            : 
 <span class="lineNum">      69 </span><span class="lineCov">         12 : - (id)propertyNameForProperty:(objc_property_t)aProperty</span>

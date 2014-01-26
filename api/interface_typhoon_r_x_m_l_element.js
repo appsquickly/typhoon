@@ -8,7 +8,7 @@ var interface_typhoon_r_x_m_l_element =
     [ "textAsInt", "interface_typhoon_r_x_m_l_element.html#a9e70b4bbf0fcb5fb713b460dad22d694", null ],
     [ "asComponentDefinition", "interface_typhoon_r_x_m_l_element.html#a4d8762eef5841041e06ff5110936407a", null ],
     [ "asInitializer", "interface_typhoon_r_x_m_l_element.html#ab9fdb93ba597b936325e4e8f2af02276", null ],
-    [ "asInjectedProperty", "interface_typhoon_r_x_m_l_element.html#a833cb8fef154df9171b544eaa9970e9e", null ],
+    [ "asInjectedProperty", "interface_typhoon_r_x_m_l_element.html#aa08bc6405c62a59afbe26491ade9b54e", null ],
     [ "attribute:", "interface_typhoon_r_x_m_l_element.html#a279934489d0502f9201ea17e1465bc53", null ],
     [ "attribute:inNamespace:", "interface_typhoon_r_x_m_l_element.html#a85b19ac2220f3999114a0d3e0eba8072", null ],
     [ "attributeAsBool:", "interface_typhoon_r_x_m_l_element.html#a7b2db6bc663d463da414af2718249436", null ],

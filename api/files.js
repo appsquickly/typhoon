@@ -6,7 +6,7 @@ var files =
     [ "NSString+TyphoonAdditions.h", "_n_s_string_09_typhoon_additions_8h.html", null ],
     [ "OCLogTemplate.h", "_o_c_log_template_8h.html", "_o_c_log_template_8h" ],
     [ "Typhoon.h", "_typhoon_8h.html", null ],
-    [ "TyphoonArgumentInjectedAsCollection.h", "_typhoon_argument_injected_as_collection_8h.html", "_typhoon_argument_injected_as_collection_8h" ],
+    [ "TyphoonAbstractInjectedProperty.h", "_typhoon_abstract_injected_property_8h.html", "_typhoon_abstract_injected_property_8h" ],
     [ "TyphoonAssembly+TyphoonAssemblyFriend.h", "_typhoon_assembly_09_typhoon_assembly_friend_8h.html", null ],
     [ "TyphoonAssembly.h", "_typhoon_assembly_8h.html", null ],
     [ "TyphoonAssemblyAdviser.h", "_typhoon_assembly_adviser_8h.html", null ],
@@ -14,7 +14,6 @@ var files =
     [ "TyphoonAssemblySelectorAdviser.h", "_typhoon_assembly_selector_adviser_8h.html", [
       [ "TyphoonAssemblySelectorAdviser", "interface_typhoon_assembly_selector_adviser.html", "interface_typhoon_assembly_selector_adviser" ]
     ] ],
-    [ "TyphoonAssemblyValidator.h", "_typhoon_assembly_validator_8h.html", "_typhoon_assembly_validator_8h" ],
     [ "TyphoonAssistedFactoryBase+TyphoonFactoryMethodClosure.h", "_typhoon_assisted_factory_base_09_typhoon_factory_method_closure_8h.html", [
       [ "TyphoonAssistedFactoryBase(TyphoonFactoryMethodClosure)", "category_typhoon_assisted_factory_base_07_typhoon_factory_method_closure_08.html", null ]
     ] ],
@@ -83,17 +82,14 @@ var files =
     [ "TyphoonComponentInjectedByValue.h", "_typhoon_component_injected_by_value_8h.html", [
       [ "<TyphoonComponentInjectedByValue>", "protocol_typhoon_component_injected_by_value-p.html", "protocol_typhoon_component_injected_by_value-p" ]
     ] ],
+    [ "TyphoonComponentPostProcessor.h", "_typhoon_component_post_processor_8h.html", null ],
     [ "TyphoonDefinition.h", "_typhoon_definition_8h.html", "_typhoon_definition_8h" ],
     [ "TyphoonDefinitionRegisterer.h", "_typhoon_definition_registerer_8h.html", null ],
     [ "TyphoonFactoryProvider.h", "_typhoon_factory_provider_8h.html", null ],
-    [ "TyphoonGenericStack.h", "_typhoon_generic_stack_8h.html", [
-      [ "TyphoonGenericStack", "interface_typhoon_generic_stack.html", "interface_typhoon_generic_stack" ]
-    ] ],
     [ "TyphoonInitializer.h", "_typhoon_initializer_8h.html", "_typhoon_initializer_8h" ],
-    [ "TyphoonInjected.h", "_typhoon_injected_8h.html", null ],
+    [ "TyphoonInjectedAsCollection.h", "_typhoon_injected_as_collection_8h.html", "_typhoon_injected_as_collection_8h" ],
     [ "TyphoonInjectedByReference.h", "_typhoon_injected_by_reference_8h.html", null ],
     [ "TyphoonInjectedParameter.h", "_typhoon_injected_parameter_8h.html", "_typhoon_injected_parameter_8h" ],
-    [ "TyphoonInjectedProperty.h", "_typhoon_injected_property_8h.html", "_typhoon_injected_property_8h" ],
     [ "TyphoonIntrospectionUtils.h", "_typhoon_introspection_utils_8h.html", "_typhoon_introspection_utils_8h" ],
     [ "TyphoonIntrospectiveNSObject.h", "_typhoon_introspective_n_s_object_8h.html", [
       [ "<TyphoonIntrospectiveNSObject>", "protocol_typhoon_introspective_n_s_object-p.html", "protocol_typhoon_introspective_n_s_object-p" ]
@@ -110,6 +106,7 @@ var files =
       [ "TyphoonNSURLTypeConverter", "interface_typhoon_n_s_u_r_l_type_converter.html", null ]
     ] ],
     [ "TyphoonOCLogTemplateLogger.h", "_typhoon_o_c_log_template_logger_8h.html", null ],
+    [ "TyphoonOrdered.h", "_typhoon_ordered_8h.html", "_typhoon_ordered_8h" ],
     [ "TyphoonParameterInjectedAsCollection.h", "_typhoon_parameter_injected_as_collection_8h.html", [
       [ "TyphoonParameterInjectedAsCollection", "interface_typhoon_parameter_injected_as_collection.html", "interface_typhoon_parameter_injected_as_collection" ]
     ] ],
@@ -137,6 +134,9 @@ var files =
     ] ],
     [ "TyphoonPropertyInjectedAsObjectInstance.h", "_typhoon_property_injected_as_object_instance_8h.html", [
       [ "TyphoonPropertyInjectedAsObjectInstance", "interface_typhoon_property_injected_as_object_instance.html", "interface_typhoon_property_injected_as_object_instance" ]
+    ] ],
+    [ "TyphoonPropertyInjectedByFactoryReference.h", "_typhoon_property_injected_by_factory_reference_8h.html", [
+      [ "TyphoonPropertyInjectedByFactoryReference", "interface_typhoon_property_injected_by_factory_reference.html", "interface_typhoon_property_injected_by_factory_reference" ]
     ] ],
     [ "TyphoonPropertyInjectedByReference.h", "_typhoon_property_injected_by_reference_8h.html", [
       [ "TyphoonPropertyInjectedByReference", "interface_typhoon_property_injected_by_reference.html", "interface_typhoon_property_injected_by_reference" ]

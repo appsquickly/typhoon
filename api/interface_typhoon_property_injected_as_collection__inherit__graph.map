@@ -1,4 +1,4 @@
 <map id="TyphoonPropertyInjectedAsCollection" name="TyphoonPropertyInjectedAsCollection">
-<area shape="rect" id="node2" href="$interface_typhoon_argument_injected_as_collection.html" title="Base class for injected collection arguments. " alt="" coords="5,81,197,122"/>
-<area shape="rect" id="node4" href="$protocol_typhoon_injected_property-p.html" title="\&lt;TyphoonInjectedProperty\&gt;" alt="" coords="223,88,409,115"/>
+<area shape="rect" id="node2" href="$interface_typhoon_injected_as_collection.html" title="Base class for injected collection arguments. " alt="" coords="17,155,212,181"/>
+<area shape="rect" id="node3" href="$interface_typhoon_abstract_injected_property.html" title="Provides a contract for typhoon injected properties (name, injectionType) as well as defines the noti..." alt="" coords="5,80,224,107"/>
 </map>

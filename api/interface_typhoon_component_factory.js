@@ -1,5 +1,6 @@
 var interface_typhoon_component_factory =
 [
+    [ "componentPostProcessors", "interface_typhoon_component_factory.html#a9c88f88b59f7607416373f761d97b23c", null ],
     [ "loaded", "interface_typhoon_component_factory.html#a09b13d5d400d8ca043cc5f1105b8a744", null ],
     [ "postProcessors", "interface_typhoon_component_factory.html#a86711bf232610da02cba8d969298bb2d", null ],
     [ "singletons", "interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785", null ],
