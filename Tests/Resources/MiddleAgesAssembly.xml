@@ -10,6 +10,7 @@
         Dependencies can be declared in any order - Typhoon will work out how to resolve them.
     </description>
 
+
     <component class="Knight" key="knight">
         <property name="quest" ref="quest">
             <description>

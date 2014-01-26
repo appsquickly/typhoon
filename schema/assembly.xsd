@@ -326,7 +326,7 @@
 				]]></xsd:documentation>
         </xsd:annotation>
         <xsd:complexType>
-            <xsd:attribute name="location" type="xsd:string" use="required">
+            <xsd:attribute name="location" type="xsd:string" use="optional">
                 <xsd:annotation>
                     <xsd:documentation><![CDATA[
 	The location of the properties file. Several files can be provided by separating the names with commas.

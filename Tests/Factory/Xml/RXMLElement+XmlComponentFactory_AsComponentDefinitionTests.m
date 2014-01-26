@@ -109,6 +109,13 @@
     assertThatBool([def isLazy], is(@YES));
 }
 
+- (void)test_asComponentDefinition_lazyInit_object_graph
+{
+    TyphoonDefinition* def = [self definitionInElement:[self lazyElementTest] forKey:@"lazySingleton1"];
+    assertThatUnsignedInt([def scope], is(@(TyphoonScopeSingleton)));
+    assertThatBool([def isLazy], is(@YES));
+}
+
 - (void)test_asComponentDefinition_lazyInit_singleton_with_lazy_false
 {
     TyphoonDefinition* def = [self definitionInElement:[self lazyElementTest] forKey:@"singleton1"];
