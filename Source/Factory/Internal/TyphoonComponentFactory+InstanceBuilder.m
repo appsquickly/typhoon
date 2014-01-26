@@ -49,6 +49,10 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
+    if (definition.abstract)
+    {
+        [NSException raise:NSInvalidArgumentException format:@"Attempt to instantiate abstract definition: %@", definition];
+    }
     __autoreleasing id <TyphoonIntrospectiveNSObject> instance;
     instance = [self allocateInstance:instance withDefinition:definition];
     instance = [self injectInstance:instance withDefinition:definition];

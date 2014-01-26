@@ -19,7 +19,6 @@
 #import "AutoWiringKnight.h"
 #import "Harlot.h"
 #import "TyphoonComponentFactoryPostProcessorMock.h"
-#import "TyphoonPatcher.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "ClassWithConstructor.h"
 #import "TyphoonComponentPostProcessorMock.h"
@@ -358,8 +357,10 @@ static NSString* const DEFAULT_QUEST = @"quest";
     assertThatUnsignedInteger([[_componentFactory singletons] count], is(@1));
 }
 
+/* ====================================================================================================================================== */
 #pragma mark - Definition Inheritance
 
+//TODO: Move this test to TyphoonDefinitionTests
 - (void)test_child_missing_initializer_inherits_parent_initializer_by_definition
 {
     TyphoonDefinition* parentDefinition =
@@ -376,6 +377,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
     assertThat([child string], equalTo(@"parentArgument"));
 }
 
+//TODO: Move this test to TyphoonDefinitionTests
 - (void)test_child_initializer_overrides_parent_initializer_by_definition
 {
     TyphoonDefinition* parentDefinition =
@@ -388,6 +390,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
     assertThat([child string], equalTo(@"childArgument"));
 }
 
+//TODO: Move this test to TyphoonDefinitionTests
 - (void)test_child_initializer_overrides_parent_initializer_by_ref
 {
     [self registerParentDefinitionWithClass:[ClassWithConstructor class] key:@"parentRef" initializerString:@"parentArgument"];
@@ -399,7 +402,31 @@ static NSString* const DEFAULT_QUEST = @"quest";
     assertThat([child string], equalTo(@"childArgument"));
 }
 
+
+- (void)test_prevents_instantiation_of_abstract_definition
+{
+    TyphoonDefinition* definition = [TyphoonDefinition withClass:[NSURL class] properties:^(TyphoonDefinition* definition)
+    {
+        definition.key = @"anAbstractDefinition";
+        definition.abstract = YES;
+    }];
+
+    [_componentFactory register:definition];
+
+    @try
+    {
+        NSURL* url = [_componentFactory componentForKey:@"anAbstractDefinition"];
+        STFail(@"Should've thrown exception");
+    }
+    @catch (NSException* e)
+    {
+        assertThat([e description], equalTo(@"Attempt to instantiate abstract definition: Definition: class='NSURL', key='anAbstractDefinition'"));
+    }
+}
+
+/* ====================================================================================================================================== */
 #pragma mark - Test Utility Methods
+
 - (TyphoonDefinition*)registerParentDefinitionWithClass:(Class)pClass initializerString:(NSString*)string
 {
     TyphoonDefinition* parentDefinition = [TyphoonDefinition withClass:pClass key:nil];
@@ -461,5 +488,6 @@ static NSString* const DEFAULT_QUEST = @"quest";
 
     return childDefinition;
 }
+
 
 @end
