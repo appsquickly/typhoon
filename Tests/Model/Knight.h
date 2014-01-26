@@ -14,6 +14,7 @@
 #import <Foundation/Foundation.h>
 
 @class CampaignQuest;
+@class Fort;
 
 #import "Quest.h"
 
@@ -27,6 +28,7 @@
 @property(nonatomic, strong, readonly) id <Quest> readOnlyQuest;
 @property(nonatomic, strong) NSArray* favoriteDamsels;
 @property(nonatomic, strong) NSSet* friends;
+@property(nonatomic, strong) Fort* homeFort;
 
 
 - (id)initWithQuest:(id <Quest>)quest;

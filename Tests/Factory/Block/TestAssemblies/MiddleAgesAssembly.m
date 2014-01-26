@@ -30,7 +30,7 @@
     {
         [definition injectProperty:@selector(quest) withDefinition:[self defaultQuest]];
         [definition injectProperty:@selector(damselsRescued) withValueAsText:@"12"];
-        [definition setScope:TyphoonScopeDefault];
+        [definition setScope:TyphoonScopeObjectGraph];
     }];
 }
 

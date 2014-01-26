@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-//  JASPER BLUES
-//  Copyright 2012 Jasper Blues
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -11,19 +11,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "Quest.h"
 
-@class Fort;
 
-@interface CampaignQuest : NSObject <Quest>
-
-@property(nonatomic, strong) NSURL* imageUrl;
-@property(nonatomic, strong) Fort* fort;
-
-- (id)initWithImageUrl:(NSURL*)imageUrl;
-
-- (void)questBeforePropertyInjection;
-
-- (void)questAfterPropertyInjection;
-
+@interface Fort : NSObject
 @end

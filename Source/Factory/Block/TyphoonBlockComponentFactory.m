@@ -18,21 +18,19 @@
 #import "TyphoonDefinition.h"
 #import "OCLogTemplate.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
-#import "TyphoonInjectedParameter.h"
-#import "TyphoonParameterInjectedByReference.h"
-
 
 
 @implementation TyphoonBlockComponentFactory
 
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
-+ (instancetype)factoryWithAssembly:(TyphoonAssembly*)assembly
+
++ (id)factoryWithAssembly:(TyphoonAssembly*)assembly
 {
     return [[self alloc] initWithAssemblies:@[assembly]];
 }
 
-+ (instancetype)factoryWithAssemblies:(NSArray*)assemblies
++ (id)factoryWithAssemblies:(NSArray*)assemblies
 {
     return [[self alloc] initWithAssemblies:assemblies];
 }
@@ -86,6 +84,8 @@
         [self register:definition];
     }
 }
+
+
 
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods

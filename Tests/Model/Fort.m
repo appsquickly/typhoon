@@ -10,26 +10,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
+#import "Fort.h"
 
-#import <Foundation/Foundation.h>
-#import "TyphoonComponentFactory.h"
 
-@class TyphoonAssembly;
+@implementation Fort
+{
 
-/**
-* @ingroup Factory
-*
-*/
-@interface TyphoonBlockComponentFactory : TyphoonComponentFactory
-
-+ (id)factoryWithAssembly:(TyphoonAssembly*)assembly;
-
-+ (id)factoryWithAssemblies:(NSArray*)assemblies;
-
-- (instancetype)initWithAssembly:(TyphoonAssembly*)assembly;
-
-- (instancetype)initWithAssemblies:(NSArray*)assemblies;
-
+}
 @end
-
-

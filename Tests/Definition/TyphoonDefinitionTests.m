@@ -17,6 +17,7 @@
 #import "AutoWiringSubClassedKnight.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonPropertyInjectedWithStringRepresentation.h"
+#import "TyphoonDefinition.h"
 
 
 @interface TyphoonDefinitionTests : SenTestCase
@@ -165,6 +166,8 @@
     assertThat(autoWired, hasItem(@"quest"));
     assertThat(autoWired, hasItem(@"foobar"));
 }
+
+
 
 @end
 

@@ -211,7 +211,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 
     // Here, we don't follow the Spring's implementation :
     // the "default" scope is the prototype.
-    TyphoonScope result = TyphoonScopeDefault;
+    TyphoonScope result = TyphoonScopeObjectGraph;
     if ([scope isEqualToString:@"singleton"])
     {
         result = TyphoonScopeSingleton;

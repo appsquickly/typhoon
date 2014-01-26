@@ -19,17 +19,19 @@
 /**
 * @ingroup Definition
 * Describes the lifecycle of a Typhoon component.
-*
-* - TyphoonScopeDefault means that a new component is created for each time it is referenced in a collaborator, or retrieved from the
-* factory.
-*
+
+* - TyphoonScopeObjectGraph (default) means that a new non-retained component is created when resolved from the factory, and any
+* dependencies declared during resolution of the object graph will be shared.
+* - TyphoonScopePrototype means that a new component is created for each time it is referenced in a collaborator, or retrieved
+* from the factory.
 * - TyphoonScopeSingleton creates a shared instance.
 *
 */
 typedef enum
 {
-    TyphoonScopeDefault,
-    TyphoonScopeSingleton
+    TyphoonScopeObjectGraph =   1 << 0,
+    TyphoonScopePrototype =     1 << 1,
+    TyphoonScopeSingleton =     1 << 2,
 } TyphoonScope;
 
 
@@ -47,6 +49,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
     TyphoonInitializer* _initializer;
     NSMutableSet* _injectedProperties;
     NSString* _factoryReference;
+    TyphoonScope _scope;
 }
 
 @property(nonatomic, readonly) Class type;
@@ -77,7 +80,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 
 + (TyphoonDefinition*)withClass:(Class)clazz properties:(TyphoonDefinitionBlock)properties;
 
-+ (TyphoonDefinition*)withClass:(Class)clazz factory:(TyphoonDefinition *)definition selector:(SEL)selector;
++ (TyphoonDefinition*)withClass:(Class)clazz factory:(TyphoonDefinition*)definition selector:(SEL)selector;
 
 /* ====================================================================================================================================== */
 #pragma mark Injection
@@ -100,7 +103,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 /**
  * Injects property with result of invocation valueForKeyPath with given keyPath on factoryDefinition.
  */
-- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)factoryDefinition keyPath:(NSString *)keyPath;
+- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)factoryDefinition keyPath:(NSString*)keyPath;
 
 /**
 * Injects property with the given object instance.

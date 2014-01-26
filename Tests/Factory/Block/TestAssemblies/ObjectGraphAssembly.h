@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-//  JASPER BLUES
-//  Copyright 2012 Jasper Blues
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -11,19 +11,15 @@
 
 
 #import <Foundation/Foundation.h>
-#import "Quest.h"
+#import "TyphoonAssembly.h"
 
-@class Fort;
 
-@interface CampaignQuest : NSObject <Quest>
+@interface ObjectGraphAssembly : TyphoonAssembly
 
-@property(nonatomic, strong) NSURL* imageUrl;
-@property(nonatomic, strong) Fort* fort;
+- (id)objectGraphKnight;
 
-- (id)initWithImageUrl:(NSURL*)imageUrl;
+- (id)objectGraphQuest;
 
-- (void)questBeforePropertyInjection;
-
-- (void)questAfterPropertyInjection;
+- (id)prototypeKnight;
 
 @end

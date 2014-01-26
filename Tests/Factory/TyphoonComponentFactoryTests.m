@@ -169,7 +169,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
     [_componentFactory register:[TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
     {
         [definition injectProperty:@selector(quest)];
-        [definition setScope:TyphoonScopeDefault];
+        [definition setScope:TyphoonScopeObjectGraph];
         [definition setKey:@"knight"];
     }]];
 
@@ -350,7 +350,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
     }]];
     [_componentFactory register:[TyphoonDefinition withClass:[CavalryMan class] properties:^(TyphoonDefinition* definition)
     {
-        [definition setScope:TyphoonScopeDefault];
+        [definition setScope:TyphoonScopeObjectGraph];
         [definition setLazy:YES];
     }]];
     [_componentFactory load];
