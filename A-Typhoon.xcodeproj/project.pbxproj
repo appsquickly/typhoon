@@ -330,6 +330,10 @@
 		CAE1B659E914D978F5BBD8B3 /* TyphoonOrdered.h in Headers */ = {isa = PBXBuildFile; fileRef = CAE505328C031EAF918E3BC6 /* TyphoonOrdered.h */; };
 		CAE3A5E5099F311D72D7049F /* TyphoonComponentPostProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = CAEF00E64F8B33A34E7E7E0D /* TyphoonComponentPostProcessor.h */; };
 		CAEB994CDD731EB80C38F293 /* TyphoonOrdered.h in Headers */ = {isa = PBXBuildFile; fileRef = CAE505328C031EAF918E3BC6 /* TyphoonOrdered.h */; };
+		FA7A961A1895370900053EAE /* NSObject+PropertyInjection.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7A96181895370900053EAE /* NSObject+PropertyInjection.h */; };
+		FA7A961B1895370900053EAE /* NSObject+PropertyInjection.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7A96181895370900053EAE /* NSObject+PropertyInjection.h */; };
+		FA7A961C1895370900053EAE /* NSObject+PropertyInjection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7A96191895370900053EAE /* NSObject+PropertyInjection.m */; };
+		FA7A961D1895370900053EAE /* NSObject+PropertyInjection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7A96191895370900053EAE /* NSObject+PropertyInjection.m */; };
 		FAD826981891513C009D9A27 /* TyphoonPropertyInjectedByFactoryReference.h in Headers */ = {isa = PBXBuildFile; fileRef = FAD826961891513C009D9A27 /* TyphoonPropertyInjectedByFactoryReference.h */; };
 		FAD826991891513C009D9A27 /* TyphoonPropertyInjectedByFactoryReference.h in Headers */ = {isa = PBXBuildFile; fileRef = FAD826961891513C009D9A27 /* TyphoonPropertyInjectedByFactoryReference.h */; };
 		FAD8269A1891513C009D9A27 /* TyphoonPropertyInjectedByFactoryReference.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD826971891513C009D9A27 /* TyphoonPropertyInjectedByFactoryReference.m */; };
@@ -520,6 +524,8 @@
 		BA798FEB8B4BF76B9D0717DF /* TyphoonPropertyInjectedByReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonPropertyInjectedByReference.h; sourceTree = "<group>"; };
 		CAE505328C031EAF918E3BC6 /* TyphoonOrdered.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonOrdered.h; sourceTree = "<group>"; };
 		CAEF00E64F8B33A34E7E7E0D /* TyphoonComponentPostProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonComponentPostProcessor.h; sourceTree = "<group>"; };
+		FA7A96181895370900053EAE /* NSObject+PropertyInjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PropertyInjection.h"; sourceTree = "<group>"; };
+		FA7A96191895370900053EAE /* NSObject+PropertyInjection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PropertyInjection.m"; sourceTree = "<group>"; };
 		FAD826961891513C009D9A27 /* TyphoonPropertyInjectedByFactoryReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonPropertyInjectedByFactoryReference.h; sourceTree = "<group>"; };
 		FAD826971891513C009D9A27 /* TyphoonPropertyInjectedByFactoryReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonPropertyInjectedByFactoryReference.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -687,6 +693,8 @@
 		BA7981FC365AD3068E13838F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FA7A96181895370900053EAE /* NSObject+PropertyInjection.h */,
+				FA7A96191895370900053EAE /* NSObject+PropertyInjection.m */,
 				BA798479971ACE88BD0EEBDF /* NSObject+TyphoonIntrospectionUtils.h */,
 				BA798263556BF9A8D3735540 /* NSObject+TyphoonIntrospectionUtils.m */,
 				BA7989B103528037045BF026 /* TyphoonIntrospectionUtils.h */,
@@ -747,8 +755,8 @@
 				BA798B3CB0EE595B87ED5B1C /* TyphoonPropertyInjectedWithStringRepresentation.h */,
 				BA7987DD059001676C6BDD67 /* TyphoonPropertyInjectedWithStringRepresentation.m */,
 				BA79859D1AD01A8AE50F93EB /* Collection */,
-				BA7982DC8D265392FF599296 /* TyphoonPropertyInjectedAsObjectInstance.m */,
 				BA79858678A68D219C7B0F9A /* TyphoonPropertyInjectedAsObjectInstance.h */,
+				BA7982DC8D265392FF599296 /* TyphoonPropertyInjectedAsObjectInstance.m */,
 				75AB5976B017EB3C25D8A357 /* TyphoonInjectedByReference.m */,
 				75AB53395FCFFCEF069FDCBE /* TyphoonInjectedByReference.h */,
 				BA798EC38BD60A8EFFA77F7D /* TyphoonAbstractInjectedProperty.m */,
@@ -879,10 +887,10 @@
 			isa = PBXGroup;
 			children = (
 				BA798B9796F501DBFD50C563 /* TyphoonPrimitiveTypeConverter.h */,
-				BA79837B0F703441BFC231B3 /* TyphoonPassThroughTypeConverter.m */,
-				BA79881AB8FEB2F51E42BB94 /* TyphoonNSURLTypeConverter.h */,
 				BA79860517B1CB594E12178B /* TyphoonPrimitiveTypeConverter.m */,
 				BA798B597F1E0DE4005E7D12 /* TyphoonPassThroughTypeConverter.h */,
+				BA79837B0F703441BFC231B3 /* TyphoonPassThroughTypeConverter.m */,
+				BA79881AB8FEB2F51E42BB94 /* TyphoonNSURLTypeConverter.h */,
 				BA7983B3D902D43E2EF858D0 /* TyphoonNSURLTypeConverter.m */,
 			);
 			path = Converters;
@@ -1075,6 +1083,7 @@
 				75AB535896063F5C883565AD /* TyphoonComponentFactory+TyphoonDefinitionRegisterer.h in Headers */,
 				75AB5EE7CFD2D23B90F4C3A6 /* NSString+TyphoonAdditions.h in Headers */,
 				75AB5D2FEAE2EE88DCADFAB9 /* TyphoonAssemblyAdviser.h in Headers */,
+				FA7A961B1895370900053EAE /* NSObject+PropertyInjection.h in Headers */,
 				75AB59546BF6BAF05F3C023D /* TyphoonAssembly+TyphoonAssemblyFriend.h in Headers */,
 				75AB52D57825E7687312B5A3 /* TyphoonAssemblyDefinitionBuilder.h in Headers */,
 				BA7984FE7AAC3984D8BFE7F8 /* TyphoonURLUtils.h in Headers */,
@@ -1131,6 +1140,7 @@
 				BA798A8812579A95065326A4 /* TyphoonRXMLElement+XmlComponentFactory.h in Headers */,
 				BA798A0D8F6CE3D38773C960 /* TyphoonRXMLElement.h in Headers */,
 				BA798DA01100FCD8AA272792 /* TyphoonXmlComponentFactory.h in Headers */,
+				FA7A961A1895370900053EAE /* NSObject+PropertyInjection.h in Headers */,
 				4B9BD34017A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.h in Headers */,
 				BA798FAC7F3BC5B63B3576EC /* TyphoonComponentFactory+InstanceBuilder.h in Headers */,
 				BA7983A5AB140D6C97FCD503 /* TyphoonComponentFactory.h in Headers */,
@@ -1341,6 +1351,7 @@
 				BA798808965820B6A7FA9D7C /* TyphoonAssistedFactoryParameterInjectedWithProperty.m in Sources */,
 				BA7983291972FCAEB6A0F2AD /* TyphoonAssistedFactoryParameterInjectedWithArgumentIndex.m in Sources */,
 				BA798CFBC3AD39EA7981FE24 /* TyphoonAssistedFactoryMethodInitializerCreator.m in Sources */,
+				FA7A961D1895370900053EAE /* NSObject+PropertyInjection.m in Sources */,
 				BA798F90FEC1C4F61DB99D6E /* TyphoonAssistedFactoryMethodClosure.m in Sources */,
 				BA79888B0D2AB76A2ABDDB0B /* TyphoonAssistedFactoryBase+TyphoonFactoryMethodClosure.m in Sources */,
 				BA798166B307526560F59BD4 /* TyphoonAssistedFactoryMethodBlock.m in Sources */,
@@ -1395,6 +1406,7 @@
 				BA7989AECA7E0892DF83BBCD /* TyphoonPropertyInjectedAsObjectInstance.m in Sources */,
 				46877CE417D70B2200910D6A /* TyphoonInjectedAsCollection.m in Sources */,
 				46877CE817D70B2200910D6A /* TyphoonByReferenceCollectionValue.m in Sources */,
+				FA7A961C1895370900053EAE /* NSObject+PropertyInjection.m in Sources */,
 				46877CEE17D70B2200910D6A /* TyphoonTypeConvertedCollectionValue.m in Sources */,
 				46877CF517D70B3100910D6A /* TyphoonParameterInjectedAsCollection.m in Sources */,
 				BA79872DF8877EAE77B40A1C /* TyphoonStringUtils.m in Sources */,
@@ -1461,7 +1473,7 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Source/Typhoon.pch;
+				GCC_PREFIX_HEADER = "Source/A-Typhoon.pch";
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = NO;
@@ -1483,7 +1495,7 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Source/Typhoon.pch;
+				GCC_PREFIX_HEADER = "Source/A-Typhoon.pch";
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = NO;

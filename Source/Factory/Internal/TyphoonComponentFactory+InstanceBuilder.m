@@ -43,6 +43,9 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonComponentPostProcessor.h"
 #import "TyphoonComponentSolvingStack.h"
 #import "TyphoonStackItem.h"
+#import "NSObject+PropertyInjection.h"
+
+#define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type)[NSException raise:NSInvalidArgumentException format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",property.name, [instance class]]
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
@@ -177,14 +180,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
     for (TyphoonAbstractInjectedProperty* property in [definition injectedProperties])
     {
-        TyphoonTypeDescriptor* typeDescriptor = [instance typeForPropertyWithName:property.name];
-        if (typeDescriptor == nil)
-        {
-            [NSException raise:NSInvalidArgumentException
-                    format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",
-                           property.name, [instance class]];
-        }
-        [self doPropertyInjection:instance property:property typeDescriptor:typeDescriptor];
+        [self doPropertyInjection:instance property:property];
     }
 
     [self doAfterPropertyInjectionOn:instance withDefinition:definition];
@@ -204,91 +200,69 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 }
 
 - (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(TyphoonAbstractInjectedProperty*)property
-        typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor
 {
-    /* FIXME: change invocation to KVC for all injects */
-    NSInvocation* invocation = [self propertySetterInvocationFor:instance property:property];
-    invocation = [self configureInvocationArgument:invocation toInjectProperty:property onInstance:instance typeDescriptor:typeDescriptor];
-    [invocation invoke];
+    id valueToInject = [self valueToInjectProperty:property onInstance:instance];
+    if (valueToInject) {
+        [(NSObject *)instance injectValue:valueToInject forPropertyName:property.name];
+    }
 }
 
-- (NSInvocation*)propertySetterInvocationFor:(id <TyphoonIntrospectiveNSObject>)instance property:(TyphoonAbstractInjectedProperty*)property
+- (id) valueToInjectProperty:(TyphoonAbstractInjectedProperty *)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance
 {
-    SEL pSelector = [instance setterForPropertyWithName:property.name];
-    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*)instance methodSignatureForSelector:pSelector]];
-    [invocation setTarget:instance];
-    [invocation setSelector:pSelector];
-    return invocation;
-}
-
-- (NSInvocation*)configureInvocationArgument:(NSInvocation*)invocation toInjectProperty:(TyphoonAbstractInjectedProperty*)property
-        onInstance:(id <TyphoonIntrospectiveNSObject>)instance typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor;
-{
+    id valueToInject = nil;
+    
     if (property.injectionType == TyphoonPropertyInjectionTypeByType)
     {
-        TyphoonDefinition* definition = [self definitionForType:[typeDescriptor classOrProtocol]];
-
+        TyphoonTypeDescriptor *typeDescriptor = [instance typeForPropertyWithName:property.name];
+        AssertTypeDescriptionForPropertyOnInstance(typeDescriptor, property, instance);
+        
+        TyphoonDefinition *definition = [self definitionForType:[typeDescriptor classOrProtocol]];
+        
         [self evaluateCircularDependency:definition.key propertyName:property.name instance:instance];
-        if ([self propertyIsCircular:property onInstance:instance])
+        if (![self propertyIsCircular:property onInstance:instance])
         {
-            return invocation;
+            valueToInject = [self componentForKey:definition.key];
         }
-
-        id reference = [self componentForKey:definition.key];
-        [invocation setArgument:&reference atIndex:2];
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeByReference)
     {
         TyphoonPropertyInjectedByReference* byReference = (TyphoonPropertyInjectedByReference*)property;
         [self evaluateCircularDependency:byReference.reference propertyName:property.name instance:instance];
-
-        if ([self propertyIsCircular:property onInstance:instance])
+        
+        if (![self propertyIsCircular:property onInstance:instance])
         {
-            return invocation;
+            valueToInject = [self componentForKey:byReference.reference];
         }
-
-        id reference = [self componentForKey:byReference.reference];
-        [invocation setArgument:&reference atIndex:2];
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeByFactoryReference)
     {
         TyphoonPropertyInjectedByFactoryReference* byReference = (TyphoonPropertyInjectedByFactoryReference*)property;
         [self evaluateCircularDependency:byReference.reference propertyName:property.name instance:instance];
-
-        if ([self propertyIsCircular:property onInstance:instance])
+        
+        if (![self propertyIsCircular:property onInstance:instance])
         {
-            return invocation;
+            id factoryReference = [self componentForKey:byReference.reference];
+            valueToInject = [factoryReference valueForKeyPath:byReference.keyPath];
         }
-        NSString* propertyName = byReference.name;
-        id factoryReference = [self componentForKey:byReference.reference];
-        id injectedValue = [factoryReference valueForKeyPath:byReference.keyPath];
-
-        /* Changing invocation from set<PropertyName>: to setValue:forKey:PropertyName, 
-         * because 'setValue:forKey:' mechanism is more clever and handles scalar types */
-        SEL kvcSelector = @selector(setValue:forKey:);
-        invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*)instance methodSignatureForSelector:kvcSelector]];
-        [invocation setSelector:kvcSelector];
-        [invocation setTarget:instance];
-        [invocation setArgument:&injectedValue atIndex:2];
-        [invocation setArgument:&propertyName atIndex:3];
-    }
-    else if (property.injectionType == TyphoonPropertyInjectionTypeAsStringRepresentation)
-    {
-        TyphoonPropertyInjectedWithStringRepresentation* valueProperty = (TyphoonPropertyInjectedWithStringRepresentation*)property;
-        [self setArgumentFor:invocation index:2 textValue:valueProperty.textValue requiredType:typeDescriptor];
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeAsCollection)
     {
-        id collection = [self buildCollectionFor:(TyphoonPropertyInjectedAsCollection*)property instance:instance];
-        [invocation setArgument:&collection atIndex:2];
+        valueToInject = [self buildCollectionFor:(TyphoonPropertyInjectedAsCollection*)property instance:instance];
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeAsObjectInstance)
     {
-        TyphoonPropertyInjectedAsObjectInstance* byInstance = (TyphoonPropertyInjectedAsObjectInstance*)property;
-        id value = byInstance.objectInstance;
-        [invocation setArgument:&value atIndex:2];
+        valueToInject = ((TyphoonPropertyInjectedAsObjectInstance*)property).objectInstance;
     }
-    return invocation;
+    else if (property.injectionType == TyphoonPropertyInjectionTypeAsStringRepresentation)
+    {
+        TyphoonTypeDescriptor *typeDescriptor = [instance typeForPropertyWithName:property.name];
+        AssertTypeDescriptionForPropertyOnInstance(typeDescriptor, property, instance);
+        
+        TyphoonPropertyInjectedWithStringRepresentation *valueProperty = (TyphoonPropertyInjectedWithStringRepresentation*)property;
+        valueToInject = [self valueFromTextValue:valueProperty.textValue requiredType:typeDescriptor];
+    }
+    
+    return valueToInject;
 }
 
 - (void)evaluateCircularDependency:(NSString*)componentKey propertyName:(NSString*)propertyName
@@ -307,29 +281,17 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     return [[instance circularDependentProperties] objectForKey:property.name] != nil;
 }
 
-- (void)configureInvocation:(NSInvocation*)invocation toInjectByReferenceProperty:(TyphoonPropertyInjectedByReference*)byReference;
-{
-    id reference = [self componentForKey:byReference.reference];
-    [invocation setArgument:&reference atIndex:2];
-}
-
 - (void)injectCircularDependenciesOn:(__autoreleasing id <TyphoonIntrospectiveNSObject>)instance
 {
     NSMutableDictionary* circularDependentProperties = [instance circularDependentProperties];
     for (NSString* propertyName in [circularDependentProperties allKeys])
     {
-        id propertyValue = objc_msgSend(instance, NSSelectorFromString(propertyName));
+        id propertyValue = [(NSObject *)instance valueForKey:propertyName];
         if (!propertyValue)
         {
-            SEL pSelector = [instance setterForPropertyWithName:propertyName];
-            NSInvocation
-                    * invocation = [NSInvocation invocationWithMethodSignature:[(NSObject*)instance methodSignatureForSelector:pSelector]];
-            [invocation setTarget:instance];
-            [invocation setSelector:pSelector];
-            NSString* componentKey = [circularDependentProperties objectForKey:propertyName];
+            NSString *componentKey = [circularDependentProperties objectForKey:propertyName];
             id reference = [_currentlyResolvingReferences itemForKey:componentKey].instance;
-            [invocation setArgument:&reference atIndex:2];
-            [invocation invoke];
+            [(NSObject *)instance setValue:reference forKey:propertyName];
         }
     }
 }
@@ -391,7 +353,25 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 }
 
 /* ====================================================================================================================================== */
-- (void)setArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index1 textValue:(NSString*)textValue
+
+
+- (id) valueFromTextValue:(NSString *)textValue requiredType:(TyphoonTypeDescriptor*)requiredType
+{
+    id value = nil;
+    
+    if (requiredType.isPrimitive) {
+        TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
+        value = [converter valueFromText:textValue withType:requiredType];
+    }
+    else {
+        id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:requiredType];
+        value = [converter convert:textValue];
+    }
+    
+    return value;
+}
+
+- (void) setArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index1 textValue:(NSString*)textValue
         requiredType:(TyphoonTypeDescriptor*)requiredType
 {
     if (requiredType.isPrimitive)

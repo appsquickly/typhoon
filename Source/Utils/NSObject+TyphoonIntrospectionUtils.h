@@ -26,8 +26,6 @@
 */
 - (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName;
 
-- (SEL)setterForPropertyWithName:(NSString*)propertyName;
-
 - (NSArray*)parameterNamesForSelector:(SEL)selector;
 
 - (NSArray*)typeCodesForSelector:(SEL)selector;

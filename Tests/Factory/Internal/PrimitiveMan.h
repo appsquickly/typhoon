@@ -45,6 +45,7 @@
 @property (nonatomic, assign) BOOL boolValue;
 @property (nonatomic, assign) Class classValue;
 @property (nonatomic, assign) SEL selectorValue;
+@property (nonatomic, assign) char *cString;
 @property (nonatomic, assign) NSInteger integerValue;
 @property (nonatomic, assign) NSUInteger unsignedIntegerValue;
 

@@ -30,27 +30,6 @@ static char const* const CIRCULAR_DEPENDENCIES_KEY = "typhoon.injectLater";
     return [TyphoonIntrospectionUtils typeForPropertyWithName:propertyName inClass:[self class]];
 }
 
-- (SEL)setterForPropertyWithName:(NSString*)propertyName
-{
-
-    NSString* firstLetterUppercase = [[propertyName substringToIndex:1] uppercaseString];
-    NSString* propertyPart = [propertyName stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:firstLetterUppercase];
-    NSString* selectorName = [NSString stringWithFormat:@"set%@:", propertyPart];
-    SEL selector = NSSelectorFromString(selectorName); //It's crashing here, not the next line.
-    if (![self respondsToSelector:selector])
-    {
-        if ([self respondsToSelector:NSSelectorFromString(propertyName)])
-        {
-            [NSException raise:NSInvalidArgumentException format:@"Property '%@' of class '%@' is readonly.", propertyName, [self class]];
-        }
-        else
-        {
-            [NSException raise:NSInvalidArgumentException format:@"No setter named '%@' on class '%@'.", selectorName, [self class]];
-        }
-    }
-    return selector;
-}
-
 - (NSArray*)parameterNamesForSelector:(SEL)selector
 {
     if (![NSStringFromSelector(selector) _typhoon_contains:@":"]) {

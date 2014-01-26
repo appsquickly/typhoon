@@ -150,82 +150,82 @@
 
 - (void)injectProperty:(SEL)selector withInt:(int)intValue
 {
-    [self injectProperty:selector withValueAsText:[@(intValue) stringValue]];
+    [self injectProperty:selector withObjectInstance:@(intValue)];
 }
 
 - (void)injectProperty:(SEL)selector withUnsignedInt:(unsigned int)unsignedIntValue
 {
-    [self injectProperty:selector withValueAsText:[@(unsignedIntValue) stringValue]];
+    [self injectProperty:selector withObjectInstance:@(unsignedIntValue)];
 }
 
 - (void)injectProperty:(SEL)selector withShort:(short)shortValue
 {
-    [self injectProperty:selector withValueAsText:[@(shortValue) stringValue]];
+    [self injectProperty:selector withObjectInstance:@(shortValue)];
 }
 
 - (void)injectProperty:(SEL)selector withUnsignedShort:(unsigned short)unsignedIntShort
 {
-    [self injectProperty:selector withValueAsText:[@(unsignedIntShort) stringValue]];
+    [self injectProperty:selector withObjectInstance:@(unsignedIntShort)];
 }
 
 - (void)injectProperty:(SEL)selector withLong:(long)longValue
 {
-    [self injectProperty:selector withValueAsText:[@(longValue) stringValue]];
+    [self injectProperty:selector withObjectInstance:@(longValue)];
 }
 
 - (void)injectProperty:(SEL)selector withUnsignedLong:(unsigned long)unsignedLongValue
 {
-    [self injectProperty:selector withValueAsText:[@(unsignedLongValue) stringValue]];
+    [self injectProperty:selector withObjectInstance:@(unsignedLongValue)];
 }
 
 - (void)injectProperty:(SEL)selector withLongLong:(long long)longLongValue
 {
-    [self injectProperty:selector withValueAsText:[@(longLongValue) stringValue]];
+    [self injectProperty:selector withObjectInstance:@(longLongValue)];
 }
 
 - (void)injectProperty:(SEL)selector withUnsignedLongLong:(unsigned long long)unsignedLongLongValue
 {
-    [self injectProperty:selector withValueAsText:[@(unsignedLongLongValue) stringValue]];
+    [self injectProperty:selector withObjectInstance:@(unsignedLongLongValue)];
 }
 
 - (void)injectProperty:(SEL)selector withUnsignedChar:(unsigned char)unsignedCharValue
 {
-    [self injectProperty:selector withValueAsText:[@(unsignedCharValue) stringValue]];
+    [self injectProperty:selector withObjectInstance:@(unsignedCharValue)];
 }
 
 - (void)injectProperty:(SEL)selector withFloat:(float)floatValue
 {
-    [self injectProperty:selector withValueAsText:[NSString stringWithFormat:@"%f", floatValue]];
+    [self injectProperty:selector withObjectInstance:@(floatValue)];
 }
 
 - (void)injectProperty:(SEL)selector withDouble:(double)doubleValue
 {
-    [self injectProperty:selector withValueAsText:[NSString stringWithFormat:@"%f", doubleValue]];
+    [self injectProperty:selector withObjectInstance:@(doubleValue)];
 }
 
 - (void)injectProperty:(SEL)selector withBool:(BOOL)boolValue
 {
-    [self injectProperty:selector withValueAsText:[@(boolValue) stringValue]];
+    [self injectProperty:selector withObjectInstance:@(boolValue)];
 }
 
 - (void)injectProperty:(SEL)selector withInteger:(NSInteger)integerValue
 {
-    [self injectProperty:selector withValueAsText:[@(integerValue) stringValue]];
+    [self injectProperty:selector withObjectInstance:@(integerValue)];
 }
 
 - (void)injectProperty:(SEL)selector withUnsignedInteger:(NSUInteger)unsignedIntegerValue
 {
-    [self injectProperty:selector withValueAsText:[@(unsignedIntegerValue) stringValue]];
+    [self injectProperty:selector withObjectInstance:@(unsignedIntegerValue)];
 }
 
 - (void)injectProperty:(SEL)selector withClass:(Class)classValue
 {
-    [self injectProperty:selector withValueAsText:NSStringFromClass(classValue)];
+    [self injectProperty:selector withObjectInstance:classValue];
 }
 
 - (void)injectProperty:(SEL)selector withSelector:(SEL)selectorValue
 {
-    [self injectProperty:selector withValueAsText:NSStringFromSelector(selectorValue)];
+    [self injectProperty:selector withObjectInstance:[NSValue valueWithBytes:&selectorValue objCType:@encode(SEL)]];
 }
 
 - (void)setInitializer:(TyphoonInitializer*)initializer
