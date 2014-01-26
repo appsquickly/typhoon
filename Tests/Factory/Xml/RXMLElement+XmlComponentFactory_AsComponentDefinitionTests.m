@@ -30,7 +30,7 @@
     NSString* xmlString = [[TyphoonBundleResource withName:@"MiddleAgesAssembly.xml"] asString];
     _element = [TyphoonRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
 
-    NSString* lasyXmlString = [[TyphoonBundleResource withName:@"LazyInitCasesAssembly.xml"] asString];
+    NSString* lasyXmlString = [[TyphoonBundleResource withName:@"XmlParsingCasesAssembly.xml"] asString];
     self.lazyElementTest = [TyphoonRXMLElement elementFromXMLString:lasyXmlString encoding:NSUTF8StringEncoding];
 }
 
@@ -135,6 +135,12 @@
 }
 
 - (void)test_asComponentDefinition_lazyInit_singleton_with_lazy_YES
+{
+    TyphoonDefinition* def = [self definitionInElement:[self lazyElementTest] forKey:@"defaultScope1"];
+    assertThatUnsignedInteger([def scope], equalToUnsignedInteger(TyphoonScopeObjectGraph));
+}
+
+- (void)test_asComponentDefinition_default_scope
 {
     TyphoonDefinition* def = [self definitionInElement:[self lazyElementTest] forKey:@"lazySingleton2"];
     assertThatBool([def isLazy], is(@YES));

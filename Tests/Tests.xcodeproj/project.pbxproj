@@ -89,8 +89,8 @@
 		4B841520179B0EA600916BF5 /* CircularDependenciesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414D9179B0EA600916BF5 /* CircularDependenciesAssembly.xml */; };
 		4B841521179B0EA600916BF5 /* ExceptionTestAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DA179B0EA600916BF5 /* ExceptionTestAssembly.xml */; };
 		4B841522179B0EA600916BF5 /* ExceptionTestAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DA179B0EA600916BF5 /* ExceptionTestAssembly.xml */; };
-		4B841523179B0EA600916BF5 /* LazyInitCasesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DB179B0EA600916BF5 /* LazyInitCasesAssembly.xml */; };
-		4B841524179B0EA600916BF5 /* LazyInitCasesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DB179B0EA600916BF5 /* LazyInitCasesAssembly.xml */; };
+		4B841523179B0EA600916BF5 /* XmlParsingCasesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DB179B0EA600916BF5 /* XmlParsingCasesAssembly.xml */; };
+		4B841524179B0EA600916BF5 /* XmlParsingCasesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DB179B0EA600916BF5 /* XmlParsingCasesAssembly.xml */; };
 		4B841525179B0EA600916BF5 /* MiddleAgesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DC179B0EA600916BF5 /* MiddleAgesAssembly.xml */; };
 		4B841526179B0EA600916BF5 /* MiddleAgesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DC179B0EA600916BF5 /* MiddleAgesAssembly.xml */; };
 		4B841527179B0EA600916BF5 /* PropertyPlaceholderAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DD179B0EA600916BF5 /* PropertyPlaceholderAssembly.xml */; };
@@ -135,7 +135,7 @@
 		4BC648E717A20AD2007F0463 /* AssemblyWithInvalidClassName.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414D8179B0EA600916BF5 /* AssemblyWithInvalidClassName.xml */; };
 		4BC648E817A20AD2007F0463 /* CircularDependenciesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414D9179B0EA600916BF5 /* CircularDependenciesAssembly.xml */; };
 		4BC648E917A20AD2007F0463 /* ExceptionTestAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DA179B0EA600916BF5 /* ExceptionTestAssembly.xml */; };
-		4BC648EA17A20AD2007F0463 /* LazyInitCasesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DB179B0EA600916BF5 /* LazyInitCasesAssembly.xml */; };
+		4BC648EA17A20AD2007F0463 /* XmlParsingCasesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DB179B0EA600916BF5 /* XmlParsingCasesAssembly.xml */; };
 		4BC648EB17A20AD2007F0463 /* MiddleAgesAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DC179B0EA600916BF5 /* MiddleAgesAssembly.xml */; };
 		4BC648EC17A20AD2007F0463 /* PropertyPlaceholderAssembly.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DD179B0EA600916BF5 /* PropertyPlaceholderAssembly.xml */; };
 		4BC648ED17A20AD2007F0463 /* SomeProperties.properties in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DE179B0EA600916BF5 /* SomeProperties.properties */; };
@@ -432,7 +432,7 @@
 		4B8414D8179B0EA600916BF5 /* AssemblyWithInvalidClassName.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = AssemblyWithInvalidClassName.xml; sourceTree = "<group>"; };
 		4B8414D9179B0EA600916BF5 /* CircularDependenciesAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CircularDependenciesAssembly.xml; sourceTree = "<group>"; };
 		4B8414DA179B0EA600916BF5 /* ExceptionTestAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ExceptionTestAssembly.xml; sourceTree = "<group>"; };
-		4B8414DB179B0EA600916BF5 /* LazyInitCasesAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LazyInitCasesAssembly.xml; sourceTree = "<group>"; };
+		4B8414DB179B0EA600916BF5 /* XmlParsingCasesAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = XmlParsingCasesAssembly.xml; sourceTree = "<group>"; };
 		4B8414DC179B0EA600916BF5 /* MiddleAgesAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MiddleAgesAssembly.xml; sourceTree = "<group>"; };
 		4B8414DD179B0EA600916BF5 /* PropertyPlaceholderAssembly.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PropertyPlaceholderAssembly.xml; sourceTree = "<group>"; };
 		4B8414DE179B0EA600916BF5 /* SomeProperties.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SomeProperties.properties; sourceTree = "<group>"; };
@@ -843,7 +843,7 @@
 				4B8414D9179B0EA600916BF5 /* CircularDependenciesAssembly.xml */,
 				4EB2191317B4F6EB00B901C9 /* SingletonsChainAssembly.xml */,
 				4B8414DA179B0EA600916BF5 /* ExceptionTestAssembly.xml */,
-				4B8414DB179B0EA600916BF5 /* LazyInitCasesAssembly.xml */,
+				4B8414DB179B0EA600916BF5 /* XmlParsingCasesAssembly.xml */,
 				4B8414DC179B0EA600916BF5 /* MiddleAgesAssembly.xml */,
 				4B8414DD179B0EA600916BF5 /* PropertyPlaceholderAssembly.xml */,
 				4656F7AE17DB6D5100EDDC23 /* InfratructureComponentsAssembly.xml */,
@@ -1171,7 +1171,7 @@
 				4B84151D179B0EA600916BF5 /* AssemblyWithInvalidClassName.xml in Resources */,
 				4B84151F179B0EA600916BF5 /* CircularDependenciesAssembly.xml in Resources */,
 				4B841521179B0EA600916BF5 /* ExceptionTestAssembly.xml in Resources */,
-				4B841523179B0EA600916BF5 /* LazyInitCasesAssembly.xml in Resources */,
+				4B841523179B0EA600916BF5 /* XmlParsingCasesAssembly.xml in Resources */,
 				4B841525179B0EA600916BF5 /* MiddleAgesAssembly.xml in Resources */,
 				4B841527179B0EA600916BF5 /* PropertyPlaceholderAssembly.xml in Resources */,
 				4B841529179B0EA600916BF5 /* SomeProperties.properties in Resources */,
@@ -1189,7 +1189,7 @@
 				4B84151E179B0EA600916BF5 /* AssemblyWithInvalidClassName.xml in Resources */,
 				4B841520179B0EA600916BF5 /* CircularDependenciesAssembly.xml in Resources */,
 				4B841522179B0EA600916BF5 /* ExceptionTestAssembly.xml in Resources */,
-				4B841524179B0EA600916BF5 /* LazyInitCasesAssembly.xml in Resources */,
+				4B841524179B0EA600916BF5 /* XmlParsingCasesAssembly.xml in Resources */,
 				4B841526179B0EA600916BF5 /* MiddleAgesAssembly.xml in Resources */,
 				4B841528179B0EA600916BF5 /* PropertyPlaceholderAssembly.xml in Resources */,
 				4B84152A179B0EA600916BF5 /* SomeProperties.properties in Resources */,
@@ -1207,7 +1207,7 @@
 				4BC648E717A20AD2007F0463 /* AssemblyWithInvalidClassName.xml in Resources */,
 				4BC648E817A20AD2007F0463 /* CircularDependenciesAssembly.xml in Resources */,
 				4BC648E917A20AD2007F0463 /* ExceptionTestAssembly.xml in Resources */,
-				4BC648EA17A20AD2007F0463 /* LazyInitCasesAssembly.xml in Resources */,
+				4BC648EA17A20AD2007F0463 /* XmlParsingCasesAssembly.xml in Resources */,
 				4BC648EB17A20AD2007F0463 /* MiddleAgesAssembly.xml in Resources */,
 				4BC648EC17A20AD2007F0463 /* PropertyPlaceholderAssembly.xml in Resources */,
 				4BC648ED17A20AD2007F0463 /* SomeProperties.properties in Resources */,

@@ -5,10 +5,11 @@
 	
     <description>
         Enumerate all cases for the lazy-init attribute.
-		Please, use this convension:
+		Please, use this convention:
+        - if the component is default, set a key that contains 'default'
 		- if the component is a prototype, set a key that contains 'prototype';
 		- if the component is a singleton, set a key that contains 'singleton';
-		- if the component is a lasy singleton, set a key that contains 'lazySingleton';
+		- if the component is a lazy singleton, set a key that contains 'lazySingleton';
     </description>
 	
     <component class="Knight" key="prototype1" lazy-init="true">
@@ -54,5 +55,11 @@
 			Singleton and lasy. Should be interpreted as a lasy singleton.
 		</description>
 	</component>
+
+    <component class="Knight" key="defaultScope1" lazy-init="NO" scope="default">
+        <description>
+            Singleton and lasy. Should be interpreted as a lasy singleton.
+        </description>
+    </component>
 	
 </assembly>

@@ -35,7 +35,7 @@
         <xsd:complexType>
             <xsd:sequence>
                 <xsd:element ref="description" minOccurs="0"/>
-                <xsd:element ref="property-placeholder" maxOccurs="1"/>
+                <xsd:element ref="property-placeholder" minOccurs="0" maxOccurs="1"/>
                 <xsd:choice minOccurs="0" maxOccurs="unbounded">
                     <xsd:element ref="component"/>
                     <xsd:any namespace="##other" processContents="strict" minOccurs="0" maxOccurs="unbounded"/>
@@ -99,6 +99,22 @@
                     <xsd:enumeration value="default"/>
                     <xsd:enumeration value="singleton"/>
                     <xsd:enumeration value="prototype"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+
+        <xsd:attribute name="lazy-init">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+
+				]]></xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:NMTOKEN">
+                    <xsd:enumeration value="true"/>
+                    <xsd:enumeration value="false"/>
+                    <xsd:enumeration value="YES"/>
+                    <xsd:enumeration value="NO"/>
                 </xsd:restriction>
             </xsd:simpleType>
         </xsd:attribute>
@@ -326,7 +342,7 @@
 				]]></xsd:documentation>
         </xsd:annotation>
         <xsd:complexType>
-            <xsd:attribute name="location" type="xsd:string" use="optional">
+            <xsd:attribute name="location" type="xsd:string" use="required">
                 <xsd:annotation>
                     <xsd:documentation><![CDATA[
 	The location of the properties file. Several files can be provided by separating the names with commas.
