@@ -22,66 +22,42 @@
 
 - (int)convertToInt:(NSString*)stringValue
 {
-    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    int converted = 0;
-    [scanner scanInt:&converted];
-    return converted;
+    return [stringValue intValue];
 }
 
 - (short)convertToShort:(NSString*)stringValue
 {
-    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    int converted = 0;
-    [scanner scanInt:&converted];
-    return [[NSNumber numberWithInt:converted] shortValue];
+    return (short) [stringValue intValue];
 }
 
 - (long)convertToLong:(NSString*)stringValue
 {
-    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    long long converted = 0;
-    [scanner scanLongLong:&converted];
-    return [[NSNumber numberWithLongLong:converted] longValue];
+    return (long)[stringValue longLongValue];
 }
 
 - (long long)convertToLongLong:(NSString*)stringValue
 {
-    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    long long converted = 0;
-    [scanner scanLongLong:&converted];
-    return converted;
+    return [stringValue longLongValue];
 }
 
 - (unsigned char)convertToUnsignedChar:(NSString*)stringValue
 {
-    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    int converted = 0;
-    [scanner scanInt:&converted];
-    return (unsigned char) converted;
+    return (unsigned char)[stringValue intValue];
 }
 
 - (unsigned int)convertToUnsignedInt:(NSString*)stringValue
 {
-    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    long long converted = 0;
-    [scanner scanLongLong:&converted];
-    return [[NSNumber numberWithLongLong:converted] unsignedIntValue];
+    return (unsigned int)[stringValue longLongValue];
 }
 
 - (unsigned short)convertToUnsignedShort:(NSString*)stringValue
 {
-    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    int converted = 0;
-    [scanner scanInt:&converted];
-    return [[NSNumber numberWithInt:converted] unsignedShortValue];
+    return (unsigned short)[stringValue intValue];
 }
 
 - (unsigned long)convertToUnsignedLong:(NSString*)stringValue
 {
-    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    long long converted = 0;
-    [scanner scanLongLong:&converted];
-    return [[NSNumber numberWithLongLong:converted] unsignedLongValue];
+    return (unsigned long)[stringValue longLongValue];
 }
 
 - (unsigned long long)convertToUnsignedLongLong:(NSString*)stringValue
@@ -91,18 +67,12 @@
 
 - (float)convertToFloat:(NSString*)stringValue
 {
-    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    float converted = 0;
-    [scanner scanFloat:&converted];
-    return [[NSNumber numberWithFloat:converted] floatValue];
+    return [stringValue floatValue];
 }
 
 - (double)convertToDouble:(NSString*)stringValue
 {
-    NSScanner* scanner = [[NSScanner alloc] initWithString:stringValue];
-    double converted = 0;
-    [scanner scanDouble:&converted];
-    return [[NSNumber numberWithDouble:converted] doubleValue];
+    return [stringValue doubleValue];
 }
 
 - (BOOL)convertToBoolean:(NSString*)stringValue
@@ -126,6 +96,71 @@
 }
 
 /* ====================================================================================================================================== */
+- (id) valueFromText:(NSString *)textValue withType:(TyphoonTypeDescriptor *)requiredType
+{
+    id value = nil;
+    
+    switch (requiredType.primitiveType) {
+        case TyphoonPrimitiveTypeBoolean:
+            value = [NSNumber numberWithBool:[self convertToBoolean:textValue]];
+            break;
+        case TyphoonPrimitiveTypeChar:
+            value = [NSNumber numberWithChar:[self convertToBoolean:textValue]];
+            break;
+        case TyphoonPrimitiveTypeDouble:
+            value = [NSNumber numberWithDouble:[self convertToDouble:textValue]];
+            break;
+        case TyphoonPrimitiveTypeFloat:
+            value = [NSNumber numberWithFloat:[self convertToFloat:textValue]];
+            break;
+        case TyphoonPrimitiveTypeInt:
+            value = [NSNumber numberWithInt:[self convertToInt:textValue]];
+            break;
+        case TyphoonPrimitiveTypeShort:
+            value = [NSNumber numberWithShort:[self convertToShort:textValue]];
+            break;
+        case TyphoonPrimitiveTypeLong:
+            value = [NSNumber numberWithLong:[self convertToLong:textValue]];
+            break;
+        case TyphoonPrimitiveTypeLongLong:
+            value = [NSNumber numberWithLongLong:[self convertToLongLong:textValue]];
+            break;
+        case TyphoonPrimitiveTypeUnsignedChar:
+            value = [NSNumber numberWithUnsignedChar:[self convertToUnsignedChar:textValue]];
+            break;
+        case TyphoonPrimitiveTypeUnsignedShort:
+            value = [NSNumber numberWithUnsignedShort:[self convertToUnsignedShort:textValue]];
+            break;
+        case TyphoonPrimitiveTypeBitField:
+        case TyphoonPrimitiveTypeUnsignedInt:
+            value = [NSNumber numberWithUnsignedInt:[self convertToUnsignedInt:textValue]];
+            break;
+        case TyphoonPrimitiveTypeUnsignedLong:
+            value = [NSNumber numberWithUnsignedLong:[self convertToUnsignedLong:textValue]];
+            break;
+        case TyphoonPrimitiveTypeUnsignedLongLong:
+            value = [NSNumber numberWithUnsignedLongLong:[self convertToUnsignedLongLong:textValue]];
+            break;
+        case TyphoonPrimitiveTypeClass:
+            value = [self convertToClass:textValue];
+            break;
+        case TyphoonPrimitiveTypeSelector: {
+            SEL selector = [self convertToSelector:textValue];
+            value = [NSValue valueWithBytes:&selector objCType:@encode(SEL)];
+            break;
+        }
+        case TyphoonPrimitiveTypeString: {
+            const char *cString = [self convertToCString:textValue];
+            value = [NSValue valueWithBytes:&cString objCType:@encode(const char *)];
+            break;
+        }
+        default:
+            [NSException raise:NSInvalidArgumentException format:@"Type for %@ is not supported.", requiredType];
+            break;
+    }
+    return value;
+}
+
 - (void)setPrimitiveArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index textValue:(NSString*)textValue
         requiredType:(TyphoonTypeDescriptor*)requiredType
 {

@@ -18,7 +18,7 @@
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonPropertyInjectedWithStringRepresentation.h"
 #import "TyphoonDefinition.h"
-
+#import "TyphoonPropertyInjectedAsObjectInstance.h"
 
 @interface TyphoonDefinitionTests : SenTestCase
 @end
@@ -146,8 +146,8 @@
 
     assertThat([child injectedProperties], hasCountOf(1));
 
-    TyphoonPropertyInjectedWithStringRepresentation* property = [[child injectedProperties] anyObject];
-    assertThat(property.textValue, equalTo(@"346"));
+    TyphoonPropertyInjectedAsObjectInstance* property = [[child injectedProperties] anyObject];
+    assertThatInt([property.objectInstance integerValue], equalToInt(346));
 }
 
 

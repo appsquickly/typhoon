@@ -195,8 +195,7 @@
     }
     @catch (NSException* e)
     {
-        assertThat([e description], equalTo(
-                @"Tried to inject property 'propertyThatDoesNotExist' on object of type 'Knight', but the instance has no setter for this property."));
+        assertThat(e.name, equalTo(@"NSUnknownKeyException"));
     }
 }
 
@@ -229,6 +228,7 @@
     [definition injectProperty:@selector(unsignedIntegerValue) withUnsignedInteger:NSUIntegerMax];
     [definition injectProperty:@selector(classValue) withClass:[self class]];
     [definition injectProperty:@selector(selectorValue) withSelector:@selector(selectorValue)];
+    [definition injectProperty:@selector(cString) withValueAsText:@"cStringText"];
     
     [_componentFactory register:definition];
     PrimitiveMan* primitiveMan = [_componentFactory componentForKey:@"primitive"];
@@ -248,18 +248,19 @@
     assertThatUnsignedInteger(primitiveMan.unsignedIntegerValue, equalToUnsignedInteger(NSUIntegerMax));
     assertThat(NSStringFromClass(primitiveMan.classValue), equalTo(NSStringFromClass([self class])));
     assertThat(NSStringFromSelector(primitiveMan.selectorValue), equalTo(NSStringFromSelector(@selector(selectorValue))));
+    assertThatInt(strcmp(primitiveMan.cString, "cStringText"), equalToInt(0));
 }
 
 
 /* ====================================================================================================================================== */
 #pragma mark - Property injection error handling
 
-- (void)test_raises_exception_if_property_has_no_setter
+- (void) test_raises_exception_if_property_has_no_setter
 {
     @try
     {
         TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-        [knightDefinition injectProperty:@selector(propertyDoesNotExist) withReference:@"quest"];
+        [knightDefinition injectProperty:@selector(propertyDoesNotExist) withObjectInstance:@"fooString"];
         [_componentFactory register:knightDefinition];
 
         Knight* knight = [_componentFactory componentForKey:@"knight"];
@@ -268,31 +269,12 @@
     }
     @catch (NSException* e)
     {
-        assertThat([e description], equalTo(
-                @"Tried to inject property 'propertyDoesNotExist' on object of type 'Knight', but the instance has no setter for this property."));
+        assertThat(e.name, equalTo(@"NSUnknownKeyException"));
     }
 
 }
 
-- (void)test_raises_exception_if_property_is_readonly
-{
-    @try
-    {
-        TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-        [knightDefinition injectProperty:@selector(readOnlyQuest) withReference:@"quest"];
-        [_componentFactory register:knightDefinition];
-
-        TyphoonDefinition* questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
-        [_componentFactory register:questDefinition];
-
-        Knight* knight = [_componentFactory componentForKey:@"knight"];
-        NSLog(@"Knight: %@", knight); //suppress unused warning.
-        STFail(@"Should have thrown exception");
-    }
-    @catch (NSException* e)
-    {
-        assertThat([e description], equalTo(@"Property 'readOnlyQuest' of class 'Knight' is readonly."));
-    }
-}
+/* test_raises_exception_if_property_is_readonly removed, since KVC can set values for read-only properties
+ * http://stackoverflow.com/questions/1502708/why-does-a-readonly-property-still-allow-writing-with-kvc  */
 
 @end

@@ -55,6 +55,11 @@ NSString *currentFooString;
 
 - (void) setUp
 {
+    [self updateFactory];
+}
+
+- (void) updateFactory
+{
     factory = [TyphoonBlockComponentFactory factoryWithAssembly:[ClassWithKnightSettingsAssembly assembly]];
 }
 
@@ -91,12 +96,11 @@ NSString *currentFooString;
 {
     Knight *knight = [Knight new];
     
-    NSString *testString = @"Hello Knights";
-    currentFooString = [testString copy];
+    currentFooString = @"Hello Knights";
     currentDamselsRescued = 24;
     currentHasHorseWillTravel = YES;
+    [self updateFactory];
     
-    factory = [TyphoonBlockComponentFactory factoryWithAssembly:[ClassWithKnightSettingsAssembly assembly]];
     TyphoonDefinition *settings = [factory definitionForType:[ClassWithKnightSettings class]];
     
     TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
@@ -106,9 +110,27 @@ NSString *currentFooString;
     }];
     [factory injectPropertyDependenciesOn:(id)knight withDefinition:knightDefinition];
     
-    assertThat(knight.foobar, equalTo([testString copy]));
+    assertThat(knight.foobar, equalTo(@"Hello Knights"));
     assertThatInteger(knight.damselsRescued, equalToInteger(24));
     assertThatBool(knight.hasHorseWillTravel, equalToBool(YES));
+}
+
+- (void) test_inject_factorydefinition_keyPath
+{
+    Knight *knight = [Knight new];
+    
+    NSString *testString = @"Hello";
+    currentFooString = [testString copy];
+    
+    factory = [TyphoonBlockComponentFactory factoryWithAssembly:[ClassWithKnightSettingsAssembly assembly]];
+    TyphoonDefinition *settings = [factory definitionForType:[ClassWithKnightSettings class]];
+
+    TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(foobar) withDefinition:settings keyPath:@"fooString.uppercaseString"];
+    }];
+    [factory injectPropertyDependenciesOn:(id)knight withDefinition:knightDefinition];
+    
+    assertThat(knight.foobar, equalTo(@"HELLO"));
 }
 
 

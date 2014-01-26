@@ -9,15 +9,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
 #import <Foundation/Foundation.h>
 
-@class TyphoonTypeDescriptor;
+@interface NSObject (PropertyInjection)
 
-@protocol TyphoonIntrospectiveNSObject <NSObject>
-
-@property(nonatomic, strong, readonly) NSMutableDictionary* circularDependentProperties;
-
-- (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName;
+- (void) injectValue:(id)value forPropertyName:(NSString *)propertyName;
 
 @end
