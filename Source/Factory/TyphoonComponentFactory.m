@@ -320,24 +320,31 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (id)objectForDefinition:(TyphoonDefinition*)definition
 {
+    if (definition.abstract)
+    {
+        [NSException raise:NSInvalidArgumentException format:@"Attempt to instantiate abstract definition: %@", definition];
+    }
+
     id instance = nil;
-    if (definition.scope == TyphoonScopeSingleton)
+    switch (definition.scope)
     {
-        instance = [self sharedInstanceForDefinition:definition fromPool:_singletons];
-    }
-    else if (definition.scope == TyphoonScopeObjectGraph)
-    {
-        instance = [self sharedInstanceForDefinition:definition fromPool:_objectGraphSharedInstances];
-    }
-    else
-    {
-        instance = [self buildInstanceWithDefinition:definition];
+        case TyphoonScopeSingleton:
+            instance = [self sharedInstanceForDefinition:definition fromPool:_singletons];
+            break;
+        case TyphoonScopeObjectGraph:
+            instance = [self sharedInstanceForDefinition:definition fromPool:_objectGraphSharedInstances];
+            break;
+        case TyphoonScopePrototype:
+        default:
+            instance = [self buildInstanceWithDefinition:definition];
+            break;
     }
 
     if ([_currentlyResolvingReferences isEmpty])
     {
         [_objectGraphSharedInstances removeAllObjects];
     }
+
     return instance;
 }
 
