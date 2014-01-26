@@ -42,6 +42,7 @@
     TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     knightDefinition.initializer = [[TyphoonInitializer alloc] init];
     knightDefinition.initializer.selector = @selector(initWithQuest:damselsRescued:);
+    [knightDefinition.initializer injectParameterAtIndex:0 withObject:nil];
     [knightDefinition.initializer injectParameterAtIndex:1 withValueAsText:@"${damsels.rescued}" requiredTypeOrNil:nil];
     [factory register:knightDefinition];
     

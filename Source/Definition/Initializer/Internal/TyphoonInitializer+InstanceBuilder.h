@@ -17,8 +17,6 @@
 
 @property(nonatomic, readonly) BOOL isClassMethod;
 
-- (NSArray*)injectedParameters;
-
 - (NSArray*)parametersInjectedByValue;
 
 - (NSInvocation*)asInvocationFor:(id)classOrInstance;

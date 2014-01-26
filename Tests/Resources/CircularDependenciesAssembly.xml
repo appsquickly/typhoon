@@ -36,20 +36,20 @@
     </component>
 
 
-	<component class="CROSingletonA" key="croSingletonA" scope="singleton">
-        <property name="prototypeA" ref="croPrototypeA"/>
-        <property name="prototypeB" ref="croPrototypeB"/>
+	<component class="CROSingletonA" key="CROSingletonA" scope="singleton">
+        <property name="prototypeA" ref="CROPrototypeA"/>
+        <property name="prototypeB" ref="CROPrototypeB"/>
     </component>
 
-    <component class="CROPrototypeA" key="croPrototypeA" scope="prototype">
+    <component class="CROPrototypeA" key="CROPrototypeA" scope="prototype">
 		<initializer selector="initWithCROPrototypeB:">
-			<argument parameterName="croPrototypeB" ref="croPrototypeB"/>
+			<argument parameterName="cROPrototypeB" ref="CROPrototypeB"/>
 		</initializer>
     </component>
 
-    <component class="CROPrototypeB" key="croPrototypeB" scope="prototype">
+    <component class="CROPrototypeB" key="CROPrototypeB" scope="prototype">
 		<initializer selector="initWithCROSingletonA:">
-			<argument parameterName="croSingletonA" ref="croSingletonA"/>
+			<argument parameterName="cROSingletonA" ref="CROSingletonA"/>
 		</initializer>
     </component>
 

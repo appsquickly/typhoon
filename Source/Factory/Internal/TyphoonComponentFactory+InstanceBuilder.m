@@ -57,7 +57,6 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     [_currentlyResolvingReferences push:[TyphoonStackItem itemWithDefinition:definition instance:instance]];
     instance = [self injectInstance:instance withDefinition:definition];
     instance = [self postProcessInstance:instance];
-
     [_currentlyResolvingReferences pop];
 
     return instance;

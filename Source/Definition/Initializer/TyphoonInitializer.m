@@ -19,8 +19,6 @@
 #import "TyphoonParameterInjectedWithObjectInstance.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonParameterInjectedAsCollection.h"
-#import "TyphoonLogger.h"
-#import "TyphoonOCLogTemplateLogger.h"
 
 @implementation TyphoonInitializer
 
@@ -41,8 +39,6 @@
         _injectedParameters = [[NSMutableArray alloc] init];
         _isClassMethodStrategy = isClassMethod;
         self.selector = initializer;
-
-        self.logger = [[TyphoonOCLogTemplateLogger alloc] init];
     }
     return self;
 }
@@ -52,10 +48,23 @@
     return [self initWithSelector:@selector(init) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodGuess];
 }
 
-
+- (void)dealloc
+{
+    for (id <TyphoonInjectedParameter> parameter in _injectedParameters)
+    {
+        //Null out the __unsafe_unretained pointer back to self.
+        [parameter setInitializer:nil];
+    }
+}
 
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
+
+- (NSArray*)injectedParameters
+{
+    return [_injectedParameters copy];
+}
+
 #pragma mark - injectParameterNamed
 
 - (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition;
@@ -100,8 +109,7 @@
     NSInteger index = [self indexOfParameter:name];
     if (index == NSIntegerMax)
     {
-        [self logParameterNotFound:name];
-        return;
+        [NSException raise:NSInvalidArgumentException format:[self parameterNotFoundErrorMessageWithParameterNamed:name]];
     }
 
     if (success)
@@ -110,10 +118,6 @@
     }
 }
 
-- (void)logParameterNotFound:(NSString*)name
-{
-    [self.logger logError:[self parameterNotFoundErrorMessageWithParameterNamed:name]];
-}
 
 - (NSString*)parameterNotFoundErrorMessageWithParameterNamed:(NSString*)name
 {
@@ -340,17 +344,6 @@
     _parameterNames = [self parameterNamesForSelector:_selector];
 }
 
-/* ====================================================================================================================================== */
-#pragma mark - Utility Methods
-
-- (void)dealloc
-{
-    for (id <TyphoonInjectedParameter> parameter in _injectedParameters)
-    {
-        //Null out the __unsafe_unretained pointer back to self.
-        [parameter setInitializer:nil];
-    }
-}
 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods

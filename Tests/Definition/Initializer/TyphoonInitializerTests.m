@@ -10,10 +10,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <Foundation/Foundation.h>
-#import <SenTestingKit/SenTestingKit.h>
 #import <Typhoon/TyphoonInitializer.h>
-#import "TyphoonFakeLogger.h"
+#import <SenTestingKit/SenTestingKit.h>
 
 
 @interface TyphoonInitializerTests : SenTestCase
@@ -22,53 +20,77 @@
 
 @implementation TyphoonInitializerTests
 {
-    TyphoonFakeLogger* logger;
-    TyphoonInitializer *initializer;
+    TyphoonInitializer* _initializer;
 }
 
-- (void)setUp
-{
-    [super setUp];
-
-    logger = [[TyphoonFakeLogger alloc] initWithTestCase:self];
-}
 
 - (void)test_single_parameter_method_incorrect_parameter_name_warns
 {
-    initializer = [self newInitializerWithSelector:@selector(initWithString:)];
-    [initializer injectParameterNamed:@"strnig" withObject:@"a string"];
+    @try
+    {
+        _initializer = [self newInitializerWithSelector:@selector(initWithString:)];
+        [_initializer injectParameterNamed:@"strnig" withObject:@"a string"];
+        STFail(@"Should've thrown exception");
+    }
+    @catch (NSException* e)
+    {
+        assertThat([e description], equalTo(@"Unrecognized parameter name: 'strnig' for method 'initWithString:'. Did you mean 'string'?"));
+    }
 
-    [logger shouldHaveLogged:@"Unrecognized parameter name: 'strnig' for method 'initWithString:'. Did you mean 'string'?"];
 }
 
 - (void)test_two_parameter_method_incorrect_parameter_name_warns
 {
-    initializer = [self newInitializerWithSelector:@selector(initWithClass:key:)];
-    [initializer injectParameterNamed:@"keyy" withObject:@"a key"];
+    @try
+    {
+        _initializer = [self newInitializerWithSelector:@selector(initWithClass:key:)];
+        [_initializer injectParameterNamed:@"keyy" withObject:@"a key"];
+        STFail(@"Should've thrown exception");
+    }
+    @catch (NSException* e)
+    {
+        assertThat([e description], equalTo(@"Unrecognized parameter name: 'keyy' for method 'initWithClass:key:'. Valid parameter names are 'class' or 'key'."));
+    }
 
-    [logger shouldHaveLogged:@"Unrecognized parameter name: 'keyy' for method 'initWithClass:key:'. Valid parameter names are 'class' or 'key'."];
 }
 
 - (void)test_multiple_parameter_method_incorrect_parameter_name_warns
 {
-    initializer = [self newInitializerWithSelector:@selector(initWithContentsOfURL:options:error:)];
-    [initializer injectParameterNamed:@"path" withObject:@"a parameter that isn't there"];
+    @try
+    {
+        _initializer = [self newInitializerWithSelector:@selector(initWithContentsOfURL:options:error:)];
+        [_initializer injectParameterNamed:@"path" withObject:@"a parameter that isn't there"];
+        STFail(@"Should've thrown exception");
+    }
+    @catch (NSException* e)
+    {
+        assertThat([e description], equalTo(@"Unrecognized parameter name: 'path' for method 'initWithContentsOfURL:options:error:'. Valid parameter names are 'contentsOfURL', 'options', or 'error'."));
+    }
 
-    [logger shouldHaveLogged:@"Unrecognized parameter name: 'path' for method 'initWithContentsOfURL:options:error:'. Valid parameter names are 'contentsOfURL', 'options', or 'error'."];
+
 }
 
 - (void)test_no_parameter_method_parameter_name_specified
 {
-    initializer = [self newInitializerWithSelector:@selector(init)];
-    [initializer injectParameterNamed:@"aParameter" withObject:@"anObject"];
+    @try
+    {
+        _initializer = [self newInitializerWithSelector:@selector(init)];
+        [_initializer injectParameterNamed:@"aParameter" withObject:@"anObject"];
+        STFail(@"Should've thrown exception");
+    }
+    @catch (NSException* e)
+    {
+        assertThat([e description], equalTo(@"Specified a parameter named 'aParameter', but method 'init' takes no parameters."));
+    }
 
-    [logger shouldHaveLogged:@"Specified a parameter named 'aParameter', but method 'init' takes no parameters."];
 }
+
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
 
 - (TyphoonInitializer*)newInitializerWithSelector:(SEL)aSelector
 {
     TyphoonInitializer* anInitializer = [[TyphoonInitializer alloc] initWithSelector:aSelector];
-    anInitializer.logger = logger;
     return anInitializer;
 }
 

@@ -14,11 +14,11 @@
         </initializer>
     </component>
 
-    <component class="NSString" key="aBlaString">
-        <initializer selector="stringWithBlingBlaBla">
-            <argument parameterName="specification" value="blue"/>
-        </initializer>
-    </component>
+    <!--<component class="NSString" key="aBlaString">-->
+        <!--<initializer selector="stringWithBlingBlaBla:">-->
+            <!--<argument parameterName="specification" value="blue"/>-->
+        <!--</initializer>-->
+    <!--</component>-->
 
 
 </assembly>

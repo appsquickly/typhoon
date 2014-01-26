@@ -23,12 +23,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 @implementation TyphoonInitializer (InstanceBuilder)
 
 /* ====================================================================================================================================== */
-#pragma mark - Initialization & Destruction
-
-- (NSArray*)injectedParameters
-{
-    return [_injectedParameters copy];
-}
+#pragma mark - Interface Methods
 
 - (NSArray*)parametersInjectedByValue
 {

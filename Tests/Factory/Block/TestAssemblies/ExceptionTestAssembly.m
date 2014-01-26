@@ -27,14 +27,14 @@
     }];
 }
 
-- (id)aBlaString
-{
-    return [TyphoonDefinition withClass:[NSString class] initialization:^(TyphoonInitializer* initializer)
-    {
-        initializer.selector = @selector(stringWithBlaBla:);
-        [initializer injectParameterNamed:@"specification" withValueAsText:@"blue" requiredTypeOrNil:nil];
-    }];
-}
+//- (id)aBlaString
+//{
+//    return [TyphoonDefinition withClass:[NSString class] initialization:^(TyphoonInitializer* initializer)
+//    {
+//        initializer.selector = @selector(stringWithBlaBla:);
+//        [initializer injectParameterNamed:@"specification" withValueAsText:@"blue" requiredTypeOrNil:nil];
+//    }];
+//}
 
 
 @end

@@ -42,11 +42,13 @@ typedef enum
 */
 @property(nonatomic) SEL selector;
 
-@property(nonatomic, strong) id <TyphoonLogger> logger;
+@property(nonatomic, readonly) NSArray* parameterNames;
 
 - (id)initWithSelector:(SEL)initializer;
 
 - (id)initWithSelector:(SEL)initializer isClassMethodStrategy:(TyphoonComponentInitializerIsClassMethod)isClassMethod;
+
+- (NSArray*)injectedParameters;
 
 /* ====================================================================================================================================== */
 #pragma mark - inject

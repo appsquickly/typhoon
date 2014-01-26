@@ -152,22 +152,6 @@
 }
 
 
-- (void)test_raises_exception_for_invalid_selector_name
-{
-    TyphoonXmlComponentFactory* factory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"ExceptionTestAssembly.xml"];
-    @try
-    {
-        NSString* aString = [factory componentForKey:@"aBlaString"];
-        STFail(@"Should have thrown exception");
-        aString = nil;
-    }
-    @catch (NSException* e)
-    {
-        assertThat([e description], equalTo(
-                @"Class method 'stringWithBlingBlaBla' not found on 'NSString'. Did you include the required ':' characters to signify arguments?"));
-    }
-}
-
 /* ====================================================================================================================================== */
 #pragma mark Property-based configuration
 

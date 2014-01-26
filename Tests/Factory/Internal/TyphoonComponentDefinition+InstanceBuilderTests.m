@@ -69,6 +69,7 @@
     TyphoonInitializer
             * initializer = [[TyphoonInitializer alloc]
             initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
+    [initializer injectParameterNamed:@"quest" withObject:nil];
     [initializer injectParameterNamed:@"damselsRescued" withValueAsText:@"12" requiredTypeOrNil:nil];
     [knightDefinition setInitializer:initializer];
 
