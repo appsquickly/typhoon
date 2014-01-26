@@ -12,8 +12,7 @@
 
 
 #import "TyphoonKeyedStackInstanceRegister.h"
-
-#import "TyphoonGenericStack.h"
+#import "TyphoonComponentSolvingStack.h"
 
 
 @implementation TyphoonKeyedStackInstanceRegister
@@ -44,13 +43,13 @@
 
 - (void)stashInstance:(id)instance forKey:(NSString*)key
 {
-    TyphoonGenericStack* stack = [self stackForKey:key];
+    TyphoonComponentSolvingStack* stack = [self stackForKey:key];
     [stack push:instance];
 }
 
 - (id)unstashInstanceForKey:(NSString*)key
 {
-    TyphoonGenericStack* stack = _registry[key];
+    TyphoonComponentSolvingStack* stack = _registry[key];
     id instance = [stack pop];
 
     if ([stack isEmpty])
@@ -63,7 +62,7 @@
 
 - (id)peekInstanceForKey:(NSString*)key
 {
-    TyphoonGenericStack* stack = _registry[key];
+    TyphoonComponentSolvingStack* stack = _registry[key];
     return [stack peek];
 }
 
@@ -75,13 +74,13 @@
 
 #pragma mark Private methods
 
-- (TyphoonGenericStack*)stackForKey:(NSString*)key
+- (TyphoonComponentSolvingStack*)stackForKey:(NSString*)key
 {
-    TyphoonGenericStack* stack = _registry[key];
+    TyphoonComponentSolvingStack* stack = _registry[key];
 
     if (!stack)
     {
-        stack = [TyphoonGenericStack stack];
+        stack = [TyphoonComponentSolvingStack stack];
         _registry[key] = stack;
     }
 

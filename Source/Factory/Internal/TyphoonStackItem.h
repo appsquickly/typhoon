@@ -9,12 +9,26 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+
 #import <Foundation/Foundation.h>
 
-@class PrototypeInitInjected;
+@class TyphoonDefinition;
 
-@interface PrototypePropertyInjected : NSObject
 
-@property(nonatomic, strong) PrototypeInitInjected* prototypeInitInjected;
+@interface TyphoonStackItem : NSObject
+
+@property(nonatomic, strong, readonly) TyphoonDefinition* definition;
+@property(nonatomic, strong, readonly) id instance;
+
+
++ (instancetype)itemWithDefinition:(TyphoonDefinition*)definition instance:(id)instance;
+
+- (BOOL)isEqual:(id)other;
+
+- (BOOL)isEqualToItem:(TyphoonStackItem*)item;
+
+- (NSUInteger)hash;
+
+
 
 @end

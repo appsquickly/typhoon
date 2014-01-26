@@ -351,7 +351,6 @@ static NSString* const DEFAULT_QUEST = @"quest";
     [_componentFactory register:[TyphoonDefinition withClass:[CavalryMan class] properties:^(TyphoonDefinition* definition)
     {
         [definition setScope:TyphoonScopeObjectGraph];
-        [definition setLazy:YES];
     }]];
     [_componentFactory load];
     assertThatUnsignedInteger([[_componentFactory singletons] count], is(@1));

@@ -21,6 +21,7 @@
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
 #import "TyphoonPropertyInjectedByFactoryReference.h"
 #import "TyphoonDefinition+Infrastructure.h"
+#import "OCLogTemplate.h"
 
 
 @implementation TyphoonDefinition
@@ -67,6 +68,12 @@
         __unsafe_unretained TyphoonDefinition* weakDefinition = definition;
         properties(weakDefinition);
     }
+    if (definition.lazy && definition.scope != TyphoonScopeSingleton)
+    {
+        [NSException raise:NSInvalidArgumentException format:
+                @"The lazy attribute is only applicable to singleton scoped definitions, but is set for definition: %@ ", definition];
+    }
+
     return definition;
 }
 
@@ -236,7 +243,7 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (TyphoonInitializer* )initializer
+- (TyphoonInitializer*)initializer
 {
     if (!_initializer)
     {

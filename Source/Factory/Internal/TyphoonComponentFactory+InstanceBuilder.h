@@ -23,7 +23,7 @@
 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition;
 
-- (id)buildSingletonWithDefinition:(TyphoonDefinition*)definition;
+- (id)buildSharedInstanceForDefinition:(TyphoonDefinition*)definition;
 
 - (void)injectPropertyDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition;
 

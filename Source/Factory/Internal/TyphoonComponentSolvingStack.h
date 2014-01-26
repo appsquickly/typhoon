@@ -11,10 +11,20 @@
 
 #import <Foundation/Foundation.h>
 
-@class PrototypeInitInjected;
+@class TyphoonStackItem;
 
-@interface PrototypePropertyInjected : NSObject
+@interface TyphoonComponentSolvingStack : NSObject
 
-@property(nonatomic, strong) PrototypeInitInjected* prototypeInitInjected;
++ (instancetype)stack;
+
+- (void)push:(TyphoonStackItem*)stackItem;
+
+- (TyphoonStackItem*)pop;
+
+- (TyphoonStackItem*)peek;
+
+- (TyphoonStackItem*)itemForKey:(NSString*)key;
+
+- (BOOL)isEmpty;
 
 @end

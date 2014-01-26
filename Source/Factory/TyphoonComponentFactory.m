@@ -11,15 +11,14 @@
 
 
 #import <objc/runtime.h>
-#import <objc/message.h>
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
-#import "TyphoonKeyedStackInstanceRegister.h"
 #import "OCLogTemplate.h"
 #import "TyphoonDefinitionRegisterer.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "TyphoonOrdered.h"
+#import "TyphoonComponentSolvingStack.h"
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
 
@@ -50,7 +49,8 @@ static TyphoonComponentFactory* defaultFactory;
     {
         _registry = [[NSMutableArray alloc] init];
         _singletons = [[NSMutableDictionary alloc] init];
-        _currentlyResolvingReferences = [TyphoonKeyedStackInstanceRegister instanceRegister];
+        _objectGraphSharedInstances = [[NSMutableDictionary alloc] init];
+        _currentlyResolvingReferences = [TyphoonComponentSolvingStack stack];
         _postProcessors = [[NSMutableArray alloc] init];
         _componentPostProcessors = [[NSMutableArray alloc] init];
     }
@@ -294,9 +294,30 @@ static TyphoonComponentFactory* defaultFactory;
         id instance = [_singletons objectForKey:definition.key];
         if (instance == nil)
         {
-            instance = [self buildSingletonWithDefinition:definition];
+            instance = [self buildSharedInstanceForDefinition:definition];
             [_singletons setObject:instance forKey:definition.key];
         }
+        return instance;
+    }
+}
+
+- (id)objectGraphSharedInstanceForDefinition:(TyphoonDefinition*)definition
+{
+    @synchronized (self)
+    {
+        id instance = [_objectGraphSharedInstances objectForKey:definition.key];
+        if (instance == nil)
+        {
+            instance = [self buildSharedInstanceForDefinition:definition];
+            [_objectGraphSharedInstances setObject:instance forKey:definition.key];
+        }
+
+        if ([_currentlyResolvingReferences isEmpty])
+        {
+            LogDebug(@"Returning top level item from graph: %@", definition);
+            [_objectGraphSharedInstances removeAllObjects];
+        }
+
         return instance;
     }
 }
@@ -324,7 +345,10 @@ static TyphoonComponentFactory* defaultFactory;
     {
         return [self singletonForDefinition:definition];
     }
-
+    else if (definition.scope == TyphoonScopeObjectGraph)
+    {
+        return [self objectGraphSharedInstanceForDefinition:definition];
+    }
     return [self buildInstanceWithDefinition:definition];
 }
 

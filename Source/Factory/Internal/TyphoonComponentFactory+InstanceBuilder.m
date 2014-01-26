@@ -41,6 +41,8 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonComponentFactoryAware.h"
 #import "TyphoonParameterInjectedAsCollection.h"
 #import "TyphoonComponentPostProcessor.h"
+#import "TyphoonComponentSolvingStack.h"
+#import "TyphoonStackItem.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
@@ -53,10 +55,15 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     {
         [NSException raise:NSInvalidArgumentException format:@"Attempt to instantiate abstract definition: %@", definition];
     }
+
     __autoreleasing id <TyphoonIntrospectiveNSObject> instance;
     instance = [self allocateInstance:instance withDefinition:definition];
+
+    [_currentlyResolvingReferences push:[TyphoonStackItem itemWithDefinition:definition instance:instance]];
     instance = [self injectInstance:instance withDefinition:definition];
     instance = [self postProcessInstance:instance];
+
+    [_currentlyResolvingReferences pop];
 
     return instance;
 }
@@ -88,14 +95,9 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (id)injectInstance:(id)instance withDefinition:(TyphoonDefinition*)definition
 {
-    [self markCurrentlyResolvingDefinition:definition withInstance:instance];
-
     instance = [self initializerInjectionOn:instance withDefinition:definition];
     [self propertyInjectionOn:instance withDefinition:definition];
     [self injectAssemblyOnInstanceIfTyphoonAware:instance];
-
-    [self markDoneResolvingDefinition:definition];
-
     return instance;
 }
 
@@ -109,13 +111,6 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         }
     }
     return instance;
-}
-
-- (void)markCurrentlyResolvingDefinition:(TyphoonDefinition*)definition withInstance:(__autoreleasing id)instance
-{
-    NSString* key = definition.key;
-    [_currentlyResolvingReferences stashInstance:instance forKey:key];
-    LogTrace(@"Building instance with definition: '%@' as part of definitions pending resolution: '%@'.", definition, _currentlyResolvingReferences);
 }
 
 - (id)initializerInjectionOn:(id)instance withDefinition:(TyphoonDefinition*)definition
@@ -158,28 +153,19 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     [instance setFactory:self];
 }
 
-- (void)markDoneResolvingDefinition:(TyphoonDefinition*)definition;
+- (id)buildSharedInstanceForDefinition:(TyphoonDefinition*)definition
 {
-    [_currentlyResolvingReferences unstashInstanceForKey:definition.key];
-}
-
-- (id)buildSingletonWithDefinition:(TyphoonDefinition*)definition
-{
-    if ([self alreadyResolvingDefinition:definition])
+    if ([self alreadyResolvingKey:definition.key])
     {
-        return [_currentlyResolvingReferences peekInstanceForKey:definition.key];
+        return [_currentlyResolvingReferences itemForKey:definition.key].instance;
     }
     return [self buildInstanceWithDefinition:definition];
 }
 
-- (BOOL)alreadyResolvingDefinition:(TyphoonDefinition*)definition
-{
-    return [self alreadyResolvingKey:definition.key];
-}
 
 - (BOOL)alreadyResolvingKey:(NSString*)key
 {
-    return [_currentlyResolvingReferences hasInstanceForKey:key];
+    return [_currentlyResolvingReferences itemForKey:key] != nil;
 }
 
 /* ====================================================================================================================================== */
@@ -223,7 +209,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     }
 }
 
-- (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(TyphoonAbstractInjectedProperty* )property
+- (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(TyphoonAbstractInjectedProperty*)property
         typeDescriptor:(TyphoonTypeDescriptor*)typeDescriptor
 {
     /* FIXME: change invocation to KVC for all injects */
@@ -347,7 +333,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
             [invocation setTarget:instance];
             [invocation setSelector:pSelector];
             NSString* componentKey = [circularDependentProperties objectForKey:propertyName];
-            id reference = [_currentlyResolvingReferences peekInstanceForKey:componentKey];
+            id reference = [_currentlyResolvingReferences itemForKey:componentKey].instance;
             [invocation setArgument:&reference atIndex:2];
             [invocation invoke];
         }

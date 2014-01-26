@@ -12,7 +12,7 @@
           <option name="METHOD_CALL_ARGUMENTS_ALIGN_BY_COLONS" value="false" />
           <option name="SPACE_BEFORE_POINTER_IN_DECLARATION" value="false" />
           <option name="SPACE_AFTER_POINTER_IN_DECLARATION" value="true" />
-          <option name="GENERATE_CLASS_CONSTRUCTOR" value="false" />
+          <option name="USE_SETTERS_IN_CONSTRUCTOR" value="false" />
         </Objective-C>
         <Objective-C-extensions>
           <option name="GENERATE_INSTANCE_VARIABLES_FOR_PROPERTIES" value="ASK" />

@@ -46,17 +46,28 @@
 
 - (id)prototypeKnight
 {
-    return nil;
+    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
+    {
+        [definition injectProperty:@selector(homeFort) withDefinition:[self prototypeFort]];
+        [definition injectProperty:@selector(quest) withDefinition:[self prototypeQuest]];
+    }];
 }
 
-- (id)prototypeCastle
+- (id)prototypeFort
 {
-    return nil;
+    return [TyphoonDefinition withClass:[Fort class] properties:^(TyphoonDefinition* definition)
+    {
+        [definition setScope:TyphoonScopePrototype];
+    }];
 }
 
 - (id)prototypeQuest
 {
-    return nil;
+    return [TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition* definition)
+    {
+        [definition injectProperty:@selector(fort) withDefinition:[self prototypeFort]];
+        [definition setScope:TyphoonScopePrototype];
+    }];
 }
 
 @end

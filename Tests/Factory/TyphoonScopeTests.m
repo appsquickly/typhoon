@@ -16,7 +16,6 @@
 #import "Knight.h"
 #import "CampaignQuest.h"
 #import "Fort.h"
-#import "OCLogTemplate.h"
 
 @interface TyphoonScopeTests : SenTestCase
 {
@@ -34,15 +33,15 @@
 }
 
 
-//- (void)test_object_graph_assembly
-//{
-//    Knight* knight = [_assembly objectGraphKnight];
-//    CampaignQuest* quest = [_assembly objectGraphQuest];
-//
-//    LogDebug(@"Knight's fort: %@", knight.homeFort);
-//    LogDebug(@"Quest's fort: %@", quest.fort);
-//
-//    assertThatBool(knight.homeFort == quest.fort, equalToBool(YES));
-//}
+- (void)test_object_graph_scope
+{
+    Knight* objectGraphKnight = [_assembly objectGraphKnight];
+    CampaignQuest* quest = objectGraphKnight.quest;
+    assertThatBool(objectGraphKnight.homeFort == quest.fort, equalToBool(YES));
+
+    Knight* prototypeKnight = [_assembly prototypeKnight];
+    CampaignQuest* prototypeQuest = prototypeKnight.quest;
+    assertThatBool(prototypeKnight.homeFort == prototypeQuest.fort, equalToBool(NO));
+}
 
 @end

@@ -13,9 +13,9 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryPostProcessor.h"
-#import "TyphoonInstanceRegister.h"
 
 @class TyphoonDefinition;
+@class TyphoonComponentSolvingStack;
 
 /**
 *
@@ -29,8 +29,9 @@
 {
     NSMutableArray* _registry;
     NSMutableDictionary* _singletons;
+    NSMutableDictionary* _objectGraphSharedInstances;
 
-    id <TyphoonInstanceRegister> _currentlyResolvingReferences;
+    TyphoonComponentSolvingStack* _currentlyResolvingReferences;
     NSMutableArray* _postProcessors;
     NSMutableArray* _componentPostProcessors;
     BOOL _isLoading;

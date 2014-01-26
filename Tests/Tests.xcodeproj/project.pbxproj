@@ -155,9 +155,6 @@
 		4E47A45D17D8E1DC00F967CA /* PrototypePropertyInjected.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E47A45C17D8E1DC00F967CA /* PrototypePropertyInjected.m */; };
 		4E47A45E17D8E1DC00F967CA /* PrototypePropertyInjected.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E47A45C17D8E1DC00F967CA /* PrototypePropertyInjected.m */; };
 		4E47A45F17D8E1DC00F967CA /* PrototypePropertyInjected.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E47A45C17D8E1DC00F967CA /* PrototypePropertyInjected.m */; };
-		4E7F059517F6F947005F5DCD /* TyphoonGenericStackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F059417F6F947005F5DCD /* TyphoonGenericStackTest.m */; };
-		4E7F059617F6F947005F5DCD /* TyphoonGenericStackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F059417F6F947005F5DCD /* TyphoonGenericStackTest.m */; };
-		4E7F059717F6F947005F5DCD /* TyphoonGenericStackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F059417F6F947005F5DCD /* TyphoonGenericStackTest.m */; };
 		4EA74DDC17E0FF440004EFC7 /* CROSingletonB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA74DDB17E0FF440004EFC7 /* CROSingletonB.m */; };
 		4EA74DDD17E0FF440004EFC7 /* CROSingletonB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA74DDB17E0FF440004EFC7 /* CROSingletonB.m */; };
 		4EA74DDE17E0FF440004EFC7 /* CROSingletonB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA74DDB17E0FF440004EFC7 /* CROSingletonB.m */; };
@@ -457,7 +454,6 @@
 		4E47A45717D8E1C700F967CA /* PrototypeInitInjected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrototypeInitInjected.m; sourceTree = "<group>"; };
 		4E47A45B17D8E1DC00F967CA /* PrototypePropertyInjected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrototypePropertyInjected.h; sourceTree = "<group>"; };
 		4E47A45C17D8E1DC00F967CA /* PrototypePropertyInjected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrototypePropertyInjected.m; sourceTree = "<group>"; };
-		4E7F059417F6F947005F5DCD /* TyphoonGenericStackTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonGenericStackTest.m; sourceTree = "<group>"; };
 		4EA74DDA17E0FF440004EFC7 /* CROSingletonB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CROSingletonB.h; sourceTree = "<group>"; };
 		4EA74DDB17E0FF440004EFC7 /* CROSingletonB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CROSingletonB.m; sourceTree = "<group>"; };
 		4EB218FC17B4F2C500B901C9 /* SingletonA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonA.h; sourceTree = "<group>"; };
@@ -875,7 +871,6 @@
 		4B8414E6179B0EA600916BF5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				4E7F059417F6F947005F5DCD /* TyphoonGenericStackTest.m */,
 				BA79854F29FE8A327A82E8BC /* TyphoonStringUtilsTests.m */,
 				75AB5AF13A0C6960E99FAAD6 /* TyphoonTestMethodSwizzler.m */,
 				75AB5EE356B3D0CE72380C22 /* TyphoonTestMethodSwizzler.h */,
@@ -1382,7 +1377,6 @@
 				4B8414ED179B0EA600916BF5 /* TyphoonDefinitionTests.m in Sources */,
 				4B8414F9179B0EA600916BF5 /* TyphoonSharedComponentFactoryTests.m in Sources */,
 				657096AB183147D600C10DA4 /* PizzaImpl.m in Sources */,
-				4E7F059517F6F947005F5DCD /* TyphoonGenericStackTest.m in Sources */,
 				FA3046EC18924995007E3BA4 /* PropertyInjectionsTests.m in Sources */,
 				4B8414FD179B0EA600916BF5 /* TyphoonComponentFactoryTests.m in Sources */,
 				4B8414FF179B0EA600916BF5 /* RXMLElement+XmlComponentFactory_AsComponentDefinitionTests.m in Sources */,
@@ -1531,7 +1525,6 @@
 				65DD3036183D352300FD1134 /* TyphoonAssistedFactoryMethodClosureTest.m in Sources */,
 				46BD2237184F7481008E89E5 /* NSNullTypeConverter.m in Sources */,
 				6570968A18313C3500C10DA4 /* TyphoonAssistedFactoryBaseTest.m in Sources */,
-				4E7F059617F6F947005F5DCD /* TyphoonGenericStackTest.m in Sources */,
 				4EA74DDD17E0FF440004EFC7 /* CROSingletonB.m in Sources */,
 				BA79824D0006B0F9E50A41D3 /* TyphoonStringUtilsTests.m in Sources */,
 				FA3046ED1892499F007E3BA4 /* PropertyInjectionsTests.m in Sources */,
@@ -1587,7 +1580,6 @@
 				4BC648CA17A20AD2007F0463 /* TyphoonSharedComponentFactoryTests.m in Sources */,
 				657096AD183147D600C10DA4 /* PizzaImpl.m in Sources */,
 				FA3046EE189249A0007E3BA4 /* PropertyInjectionsTests.m in Sources */,
-				4E7F059717F6F947005F5DCD /* TyphoonGenericStackTest.m in Sources */,
 				4BC648CC17A20AD2007F0463 /* TyphoonComponentFactoryTests.m in Sources */,
 				4BC648CD17A20AD2007F0463 /* RXMLElement+XmlComponentFactory_AsComponentDefinitionTests.m in Sources */,
 				4BC648CE17A20AD2007F0463 /* TyphoonXmlComponentFactoryTests.m in Sources */,

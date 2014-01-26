@@ -69,6 +69,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     {
         _type = clazz;
         _key = [key copy];
+        _scope = TyphoonScopeObjectGraph;
         _factoryReference = [factoryComponent copy];
         _injectedProperties = [[NSMutableSet alloc] init];
         [self validateRequiredParametersAreSet];
