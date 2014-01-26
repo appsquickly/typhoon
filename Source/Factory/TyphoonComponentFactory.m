@@ -311,13 +311,6 @@ static TyphoonComponentFactory* defaultFactory;
             instance = [self buildSharedInstanceForDefinition:definition];
             [_objectGraphSharedInstances setObject:instance forKey:definition.key];
         }
-
-        if ([_currentlyResolvingReferences isEmpty])
-        {
-            LogDebug(@"Returning top level item from graph: %@", definition);
-            [_objectGraphSharedInstances removeAllObjects];
-        }
-
         return instance;
     }
 }
@@ -341,15 +334,27 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (id)objectForDefinition:(TyphoonDefinition*)definition
 {
+    id instance = nil;
     if (definition.scope == TyphoonScopeSingleton)
     {
-        return [self singletonForDefinition:definition];
+        instance = [self singletonForDefinition:definition];
     }
     else if (definition.scope == TyphoonScopeObjectGraph)
     {
-        return [self objectGraphSharedInstanceForDefinition:definition];
+        instance = [self objectGraphSharedInstanceForDefinition:definition];
     }
-    return [self buildInstanceWithDefinition:definition];
+    else
+    {
+        instance = [self buildInstanceWithDefinition:definition];
+    }
+
+    if ([_currentlyResolvingReferences isEmpty])
+    {
+        [_objectGraphSharedInstances removeAllObjects];
+    }
+
+    return instance;
+
 }
 
 - (void)addDefinitionToRegistry:(TyphoonDefinition*)definition
