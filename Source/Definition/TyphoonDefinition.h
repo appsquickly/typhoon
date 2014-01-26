@@ -54,7 +54,6 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 @property(nonatomic, strong) TyphoonInitializer* initializer;
 @property(nonatomic) SEL beforePropertyInjection;
 @property(nonatomic) SEL afterPropertyInjection;
-@property(nonatomic, strong) NSSet* injectedProperties;
 @property(nonatomic) TyphoonScope scope;
 @property(nonatomic, strong) TyphoonDefinition* factory;
 @property(nonatomic, strong) TyphoonDefinition* parent;
@@ -199,5 +198,8 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 * Injects property as selector.
 */
 - (void)injectProperty:(SEL)selector withSelector:(SEL)selectorValue;
+
+
+- (NSSet*)injectedProperties;
 
 @end

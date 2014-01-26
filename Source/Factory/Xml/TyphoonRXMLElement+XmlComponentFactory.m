@@ -25,6 +25,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 #import "TyphoonParameterInjectedAsCollection.h"
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonBundleResource.h"
+#import "TyphoonReferenceDefinition.h"
 
 @implementation TyphoonRXMLElement (XmlComponentFactory)
 
@@ -62,7 +63,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
         NSString* parentRef = [self attributeOrNilIfEmpty:@"parent"];
         if (parentRef)
         {
-            [definition setParent:[TyphoonDefinition withClass:[TyphoonDefinition class] key:parentRef]];
+            [definition setParent:[TyphoonReferenceDefinition definitionReferringToComponent:parentRef]];
         }
         [self parseComponentDefinitionChildren:definition];
         return definition;

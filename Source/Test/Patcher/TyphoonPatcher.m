@@ -86,7 +86,7 @@
         LogDebug(@"Patching component with key %@ with object %@", definition.key, patchObject);
         [definition setFactoryReference:[self patchFactoryNameForKey:definition.key]];
         [definition setInitializer:[[TyphoonInitializer alloc] initWithSelector:@selector(object)]];
-        [definition setInjectedProperties:nil];
+        [definition setValue:nil forKey:@"injectedProperties"];
     }
 }
 
