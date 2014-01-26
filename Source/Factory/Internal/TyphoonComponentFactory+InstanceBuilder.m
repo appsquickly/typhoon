@@ -202,22 +202,23 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 - (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(TyphoonAbstractInjectedProperty*)property
 {
     id valueToInject = [self valueToInjectProperty:property onInstance:instance];
-    if (valueToInject) {
-        [(NSObject *)instance injectValue:valueToInject forPropertyName:property.name];
+    if (valueToInject)
+    {
+        [(NSObject*)instance injectValue:valueToInject forPropertyName:property.name];
     }
 }
 
-- (id) valueToInjectProperty:(TyphoonAbstractInjectedProperty *)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance
+- (id)valueToInjectProperty:(TyphoonAbstractInjectedProperty*)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance
 {
     id valueToInject = nil;
-    
+
     if (property.injectionType == TyphoonPropertyInjectionTypeByType)
     {
-        TyphoonTypeDescriptor *typeDescriptor = [instance typeForPropertyWithName:property.name];
+        TyphoonTypeDescriptor* typeDescriptor = [instance typeForPropertyWithName:property.name];
         AssertTypeDescriptionForPropertyOnInstance(typeDescriptor, property, instance);
-        
-        TyphoonDefinition *definition = [self definitionForType:[typeDescriptor classOrProtocol]];
-        
+
+        TyphoonDefinition* definition = [self definitionForType:[typeDescriptor classOrProtocol]];
+
         [self evaluateCircularDependency:definition.key propertyName:property.name instance:instance];
         if (![self propertyIsCircular:property onInstance:instance])
         {
@@ -228,7 +229,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     {
         TyphoonPropertyInjectedByReference* byReference = (TyphoonPropertyInjectedByReference*)property;
         [self evaluateCircularDependency:byReference.reference propertyName:property.name instance:instance];
-        
+
         if (![self propertyIsCircular:property onInstance:instance])
         {
             valueToInject = [self componentForKey:byReference.reference];
@@ -238,7 +239,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     {
         TyphoonPropertyInjectedByFactoryReference* byReference = (TyphoonPropertyInjectedByFactoryReference*)property;
         [self evaluateCircularDependency:byReference.reference propertyName:property.name instance:instance];
-        
+
         if (![self propertyIsCircular:property onInstance:instance])
         {
             id factoryReference = [self componentForKey:byReference.reference];
@@ -255,13 +256,13 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeAsStringRepresentation)
     {
-        TyphoonTypeDescriptor *typeDescriptor = [instance typeForPropertyWithName:property.name];
+        TyphoonTypeDescriptor* typeDescriptor = [instance typeForPropertyWithName:property.name];
         AssertTypeDescriptionForPropertyOnInstance(typeDescriptor, property, instance);
-        
-        TyphoonPropertyInjectedWithStringRepresentation *valueProperty = (TyphoonPropertyInjectedWithStringRepresentation*)property;
+
+        TyphoonPropertyInjectedWithStringRepresentation* valueProperty = (TyphoonPropertyInjectedWithStringRepresentation*)property;
         valueToInject = [self valueFromTextValue:valueProperty.textValue requiredType:typeDescriptor];
     }
-    
+
     return valueToInject;
 }
 
@@ -286,12 +287,12 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     NSMutableDictionary* circularDependentProperties = [instance circularDependentProperties];
     for (NSString* propertyName in [circularDependentProperties allKeys])
     {
-        id propertyValue = [(NSObject *)instance valueForKey:propertyName];
+        id propertyValue = [(NSObject*)instance valueForKey:propertyName];
         if (!propertyValue)
         {
-            NSString *componentKey = [circularDependentProperties objectForKey:propertyName];
+            NSString* componentKey = [circularDependentProperties objectForKey:propertyName];
             id reference = [_currentlyResolvingReferences itemForKey:componentKey].instance;
-            [(NSObject *)instance setValue:reference forKey:propertyName];
+            [(NSObject*)instance setValue:reference forKey:propertyName];
         }
     }
 }
@@ -355,23 +356,25 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 /* ====================================================================================================================================== */
 
 
-- (id) valueFromTextValue:(NSString *)textValue requiredType:(TyphoonTypeDescriptor*)requiredType
+- (id)valueFromTextValue:(NSString*)textValue requiredType:(TyphoonTypeDescriptor*)requiredType
 {
     id value = nil;
-    
-    if (requiredType.isPrimitive) {
+
+    if (requiredType.isPrimitive)
+    {
         TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
         value = [converter valueFromText:textValue withType:requiredType];
     }
-    else {
+    else
+    {
         id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:requiredType];
         value = [converter convert:textValue];
     }
-    
+
     return value;
 }
 
-- (void) setArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index1 textValue:(NSString*)textValue
+- (void)setArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index1 textValue:(NSString*)textValue
         requiredType:(TyphoonTypeDescriptor*)requiredType
 {
     if (requiredType.isPrimitive)

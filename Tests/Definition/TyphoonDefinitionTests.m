@@ -112,12 +112,12 @@
 {
     TyphoonDefinition* longLostAncestor = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
     {
-        [definition injectProperty:@selector(hasHorseWillTravel) withBool:NO];
+        [definition injectProperty:@selector(hasHorseWillTravel) withObjectInstance:@(YES)];
     }];
 
     TyphoonDefinition* parent = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
     {
-        [definition injectProperty:@selector(damselsRescued) withInteger:12];
+        [definition injectProperty:@selector(damselsRescued) withObjectInstance:@(12)];
         [definition setParent:longLostAncestor];
     }];
 
@@ -135,12 +135,12 @@
 {
     TyphoonDefinition* parent = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
     {
-        [definition injectProperty:@selector(damselsRescued) withInteger:12];
+        [definition injectProperty:@selector(damselsRescued) withObjectInstance:@(12)];
     }];
 
     TyphoonDefinition* child = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
     {
-        [definition injectProperty:@selector(damselsRescued) withInteger:346];
+        [definition injectProperty:@selector(damselsRescued) withObjectInstance:@(346)];
         [definition setParent:parent];
     }];
 

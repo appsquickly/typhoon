@@ -213,24 +213,23 @@
 - (void)test_inject_property_value_as_primitives
 {
     TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:[PrimitiveMan class] key:@"primitive"];
-    [definition injectProperty:@selector(intValue) withInt:INT_MAX];
-    [definition injectProperty:@selector(unsignedIntValue) withUnsignedInt:UINT_MAX];
-    [definition injectProperty:@selector(shortValue) withShort:SHRT_MAX];
-    [definition injectProperty:@selector(unsignedShortValue) withUnsignedShort:USHRT_MAX];
-    [definition injectProperty:@selector(longValue) withLong:LONG_MAX];
-    [definition injectProperty:@selector(unsignedLongValue) withUnsignedLong:ULONG_MAX];
-    [definition injectProperty:@selector(longLongValue) withLongLong:LONG_LONG_MAX];
-    [definition injectProperty:@selector(unsignedLongLongValue) withUnsignedLongLong:ULONG_LONG_MAX];
-    [definition injectProperty:@selector(unsignedCharValue) withUnsignedChar:UCHAR_MAX];
-    [definition injectProperty:@selector(floatValue) withFloat:FLT_MAX];
-    [definition injectProperty:@selector(doubleValue) withDouble:DBL_MAX];
-    [definition injectProperty:@selector(boolValue) withBool:YES];
-    [definition injectProperty:@selector(integerValue) withInteger:NSIntegerMax];
-    [definition injectProperty:@selector(unsignedIntegerValue) withUnsignedInteger:NSUIntegerMax];
-    [definition injectProperty:@selector(classValue) withClass:[self class]];
-    [definition injectProperty:@selector(selectorValue) withSelector:@selector(selectorValue)];
+    [definition injectProperty:@selector(intValue) withObjectInstance:@(INT_MAX)];
+    [definition injectProperty:@selector(unsignedIntValue) withObjectInstance:@(UINT_MAX)];
+    [definition injectProperty:@selector(shortValue) withObjectInstance:@(SHRT_MAX)];
+    [definition injectProperty:@selector(unsignedShortValue) withObjectInstance:@(USHRT_MAX)];
+    [definition injectProperty:@selector(longValue) withObjectInstance:@(LONG_MAX)];
+    [definition injectProperty:@selector(unsignedLongValue) withObjectInstance:@(ULONG_MAX)];
+    [definition injectProperty:@selector(longLongValue) withObjectInstance:@(LONG_LONG_MAX)];
+    [definition injectProperty:@selector(unsignedLongLongValue) withObjectInstance:@(ULONG_LONG_MAX)];
+    [definition injectProperty:@selector(unsignedCharValue) withObjectInstance:@(UCHAR_MAX)];
+    [definition injectProperty:@selector(floatValue) withObjectInstance:@(FLT_MAX)];
+    [definition injectProperty:@selector(doubleValue) withObjectInstance:@(DBL_MAX)];
+    [definition injectProperty:@selector(boolValue) withObjectInstance:@(YES)];
+    [definition injectProperty:@selector(integerValue) withObjectInstance:@(NSIntegerMax)];
+    [definition injectProperty:@selector(unsignedIntegerValue) withObjectInstance:@(NSUIntegerMax)];
+    [definition injectProperty:@selector(classValue) withObjectInstance:[self class]];
     [definition injectProperty:@selector(cString) withValueAsText:@"cStringText"];
-    
+
     [_componentFactory register:definition];
     PrimitiveMan* primitiveMan = [_componentFactory componentForKey:@"primitive"];
     assertThatInt(primitiveMan.intValue, equalToInt(INT_MAX));
@@ -248,7 +247,6 @@
     assertThatInteger(primitiveMan.integerValue, equalToInteger(NSIntegerMax));
     assertThatUnsignedInteger(primitiveMan.unsignedIntegerValue, equalToUnsignedInteger(NSUIntegerMax));
     assertThat(NSStringFromClass(primitiveMan.classValue), equalTo(NSStringFromClass([self class])));
-    assertThat(NSStringFromSelector(primitiveMan.selectorValue), equalTo(NSStringFromSelector(@selector(selectorValue))));
     assertThatInt(strcmp(primitiveMan.cString, "cStringText"), equalToInt(0));
 }
 
