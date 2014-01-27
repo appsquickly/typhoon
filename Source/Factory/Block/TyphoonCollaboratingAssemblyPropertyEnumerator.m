@@ -25,26 +25,29 @@
 - (id)initWithAssembly:(TyphoonAssembly*)assembly
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _assembly = assembly;
     }
     return self;
 }
 
-- (NSSet *)collaboratingAssemblyProperties
+- (NSSet*)collaboratingAssemblyProperties
 {
-    NSMutableSet *propertyNames = [[NSMutableSet alloc] init];
+    NSMutableSet* propertyNames = [[NSMutableSet alloc] init];
 
     Class class = [self.assembly class];
     while ([self classNotRootAssemblyClass:class])
     {
         unsigned int count = 0;
-        objc_property_t * properties = class_copyPropertyList(class, &count);
-        for (int propertyIndex = 0; propertyIndex < count; propertyIndex++) {
+        objc_property_t* properties = class_copyPropertyList(class, &count);
+        for (int propertyIndex = 0; propertyIndex < count; propertyIndex++)
+        {
             objc_property_t aProperty = properties[propertyIndex];
 
-            NSString *propertyName = [self propertyNameForProperty:aProperty];
-            if ([self propertyForName:propertyName isCollaboratingAssemblyPropertyOnClass:class]) {
+            NSString* propertyName = [self propertyNameForProperty:aProperty];
+            if ([self propertyForName:propertyName isCollaboratingAssemblyPropertyOnClass:class])
+            {
                 [propertyNames addObject:propertyName];
             }
         }
@@ -58,7 +61,7 @@
 - (BOOL)propertyForName:(NSString*)propertyName isCollaboratingAssemblyPropertyOnClass:(Class)class
 {
     TyphoonTypeDescriptor* type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyName inClass:class];
-    return type.typeBeingDescribed == [TyphoonAssembly class];
+    return [type.typeBeingDescribed isSubclassOfClass:[TyphoonAssembly class]];
 }
 
 - (BOOL)classNotRootAssemblyClass:(Class)class
@@ -68,7 +71,7 @@
 
 - (id)propertyNameForProperty:(objc_property_t)aProperty
 {
-    const char *cPropertyName = property_getName(aProperty);
+    const char* cPropertyName = property_getName(aProperty);
     return [NSString stringWithCString:cPropertyName encoding:NSUTF8StringEncoding];
 }
 
