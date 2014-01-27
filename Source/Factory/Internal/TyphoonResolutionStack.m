@@ -51,10 +51,6 @@
     {
         [NSException raise:NSInvalidArgumentException format:@"Not a TyphoonStackItem: %@", stackItem];
     }
-    if ([self itemForKey:stackItem.definition.key])
-    {
-        return;
-    }
     [_storage addObject:stackItem];
 }
 
@@ -75,7 +71,7 @@
 
 - (TyphoonStackItem*)itemForKey:(NSString*)key
 {
-    for (TyphoonStackItem* item in _storage)
+    for (TyphoonStackItem* item in [_storage reverseObjectEnumerator])
     {
         if ([item.definition.key isEqualToString:key])
         {
