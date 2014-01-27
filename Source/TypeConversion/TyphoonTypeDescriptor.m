@@ -14,28 +14,37 @@
 #import <objc/runtime.h>
 #import "TyphoonTypeDescriptor.h"
 
-@implementation NSDictionary (DeucePrimitiveType)
+@implementation NSDictionary (TyphoonPrimitiveType)
 
-+ (NSDictionary*)dictionaryWithDeucePrimitiveTypesAsStrings
++ (NSDictionary*)dictionaryWithTyphoonPrimitiveTypesAsStrings
 {
     static dispatch_once_t onceToken;
-    static NSDictionary* _deucePrimitiveTypesAsStrings;
+    static NSDictionary* _typhoonPrimitiveTypesAsStrings;
 
     dispatch_once(&onceToken, ^
     {
-        _deucePrimitiveTypesAsStrings =
-                [[NSDictionary alloc] initWithObjectsAndKeys:@(TyphoonPrimitiveTypeChar), @"c", @(TyphoonPrimitiveTypeInt), @"i",
-                                                             @(TyphoonPrimitiveTypeShort), @"s", @(TyphoonPrimitiveTypeLong), @"l",
-                                                             @(TyphoonPrimitiveTypeLongLong), @"q", @(TyphoonPrimitiveTypeUnsignedChar), @"C",
-                                                             @(TyphoonPrimitiveTypeUnsignedInt), @"I", @(TyphoonPrimitiveTypeUnsignedShort), @"S",
-                                                             @(TyphoonPrimitiveTypeUnsignedLong), @"L",
-                                                             @(TyphoonPrimitiveTypeUnsignedLongLong), @"Q", @(TyphoonPrimitiveTypeFloat), @"f",
-                                                             @(TyphoonPrimitiveTypeDouble), @"d", @(TyphoonPrimitiveTypeBoolean), @"B",
-                                                             @(TyphoonPrimitiveTypeVoid), @"v", @(TyphoonPrimitiveTypeString), @"*",
-                                                             @(TyphoonPrimitiveTypeClass), @"#", @(TyphoonPrimitiveTypeSelector), @":",
-                                                             @(TyphoonPrimitiveTypeUnknown), @"?", nil];
+        _typhoonPrimitiveTypesAsStrings = @{
+                @"c" : @(TyphoonPrimitiveTypeChar),
+                @"i" : @(TyphoonPrimitiveTypeInt),
+                @"s" : @(TyphoonPrimitiveTypeShort),
+                @"l" : @(TyphoonPrimitiveTypeLong),
+                @"q" : @(TyphoonPrimitiveTypeLongLong),
+                @"C" : @(TyphoonPrimitiveTypeUnsignedChar),
+                @"I" : @(TyphoonPrimitiveTypeUnsignedInt),
+                @"S" : @(TyphoonPrimitiveTypeUnsignedShort),
+                @"L" : @(TyphoonPrimitiveTypeUnsignedLong),
+                @"Q" : @(TyphoonPrimitiveTypeUnsignedLongLong),
+                @"f" : @(TyphoonPrimitiveTypeFloat),
+                @"d" : @(TyphoonPrimitiveTypeDouble),
+                @"B" : @(TyphoonPrimitiveTypeBoolean),
+                @"v" : @(TyphoonPrimitiveTypeVoid),
+                @"*" : @(TyphoonPrimitiveTypeString),
+                @"#" : @(TyphoonPrimitiveTypeClass),
+                @":" : @(TyphoonPrimitiveTypeSelector),
+                @"?" : @(TyphoonPrimitiveTypeUnknown)
+        };
     });
-    return _deucePrimitiveTypesAsStrings;
+    return _typhoonPrimitiveTypesAsStrings;
 }
 
 @end
@@ -72,7 +81,7 @@
             _isPrimitive = NO;
             typeCode = [typeCode stringByReplacingOccurrencesOfString:@"T@" withString:@""];
             typeCode = [typeCode stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-            if ([typeCode hasPrefix:@"<"]&&[typeCode hasSuffix:@">"])
+            if ([typeCode hasPrefix:@"<"] && [typeCode hasSuffix:@">"])
             {
                 typeCode = [typeCode stringByReplacingOccurrencesOfString:@"<" withString:@""];
                 typeCode = [typeCode stringByReplacingOccurrencesOfString:@">" withString:@""];
@@ -81,9 +90,9 @@
             else if ([typeCode hasSuffix:@">"])
             {
                 NSArray* components = [typeCode componentsSeparatedByString:@"<"];
-                NSString *protocol =
+                NSString* protocol =
                         [components[1] stringByReplacingOccurrencesOfString:@">" withString:@""];
-                NSString *class = components[0];
+                NSString* class = components[0];
 
                 _protocol = NSProtocolFromString(protocol);
                 _typeBeingDescribed = NSClassFromString(class);
@@ -133,7 +142,7 @@
         if (protocol && [self typeBeingDescribed])
         {
             return [NSString stringWithFormat:@"Type descriptor: %@<%@>", NSStringFromClass([self typeBeingDescribed]),
-            NSStringFromProtocol(protocol)];
+                                              NSStringFromProtocol(protocol)];
         }
         else if (protocol)
         {
@@ -160,7 +169,7 @@
 
 - (NSString*)extractArrayInformation:(NSString*)typeCode
 {
-    if ([typeCode hasPrefix:@"["]&&[typeCode hasSuffix:@"]"])
+    if ([typeCode hasPrefix:@"["] && [typeCode hasSuffix:@"]"])
     {
         _isArray = YES;
         typeCode = [[typeCode stringByReplacingOccurrencesOfString:@"[" withString:@""]
@@ -184,7 +193,7 @@
 
 - (NSString*)extractStructureInformation:(NSString*)typeCode
 {
-    if ([typeCode hasPrefix:@"{"]&&[typeCode hasSuffix:@"}"])
+    if ([typeCode hasPrefix:@"{"] && [typeCode hasSuffix:@"}"])
     {
         _isStructure = YES;
         typeCode = [[typeCode stringByReplacingOccurrencesOfString:@"{" withString:@""]
@@ -196,7 +205,7 @@
 
 - (TyphoonPrimitiveType)typeFromTypeCode:(NSString*)typeCode
 {
-    return (TyphoonPrimitiveType) [[[NSDictionary dictionaryWithDeucePrimitiveTypesAsStrings] objectForKey:typeCode] intValue];
+    return (TyphoonPrimitiveType)[[[NSDictionary dictionaryWithTyphoonPrimitiveTypesAsStrings] objectForKey:typeCode] intValue];
 }
 
 @end
