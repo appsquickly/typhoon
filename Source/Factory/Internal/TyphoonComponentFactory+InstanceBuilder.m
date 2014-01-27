@@ -58,14 +58,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     __autoreleasing id <TyphoonIntrospectiveNSObject> instance = [self allocateInstance:instance withDefinition:definition];
     [_currentlyResolvingReferences push:[TyphoonStackItem itemWithDefinition:definition instance:instance]];
     instance = [self injectInstance:instance withDefinition:definition];
-    [_currentlyResolvingReferences push:[TyphoonStackItem itemWithDefinition:definition instance:instance]];
     instance = [self postProcessInstance:instance];
-    [_currentlyResolvingReferences push:[TyphoonStackItem itemWithDefinition:definition instance:instance]];
-
     [_currentlyResolvingReferences pop];
-    [_currentlyResolvingReferences pop];
-    [_currentlyResolvingReferences pop];
-
     return instance;
 }
 
@@ -97,8 +91,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 - (id)injectInstance:(id)instance withDefinition:(TyphoonDefinition*)definition
 {
     instance = [self initializerInjectionOn:instance withDefinition:definition];
-    [self propertyInjectionOn:instance withDefinition:definition];
-    [self injectAssemblyOnInstanceIfTyphoonAware:instance];
+    [self injectPropertyDependenciesOn:instance withDefinition:definition];
     return instance;
 }
 
@@ -172,13 +165,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 /* ====================================================================================================================================== */
 #pragma mark - Property Injection
 
-- (void)propertyInjectionOn:(__autoreleasing id)instance withDefinition:(TyphoonDefinition*)definition
-{
-    [self injectPropertyDependenciesOn:instance withDefinition:definition];
-    [self injectCircularDependenciesOn:instance];
-}
-
-- (void)injectPropertyDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
+- (void)injectPropertyDependenciesOn:(__autoreleasing id)instance withDefinition:(TyphoonDefinition*)definition
 {
     [self doBeforePropertyInjectionOn:instance withDefinition:definition];
 
@@ -187,8 +174,12 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         [self doPropertyInjection:instance property:property];
     }
 
+    [self injectAssemblyOnInstanceIfTyphoonAware:instance];
+    [self injectCircularDependenciesOn:instance];
+
     [self doAfterPropertyInjectionOn:instance withDefinition:definition];
 }
+
 
 - (void)doBeforePropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
 {

@@ -25,7 +25,7 @@
 
 - (id)buildSharedInstanceForDefinition:(TyphoonDefinition*)definition;
 
-- (void)injectPropertyDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition;
+- (void)injectPropertyDependenciesOn:(__autoreleasing id)instance withDefinition:(TyphoonDefinition*)definition;
 
 - (NSArray*)allDefinitionsForType:(id)classOrProtocol;
 
