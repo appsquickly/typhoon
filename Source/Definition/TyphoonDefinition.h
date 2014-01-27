@@ -64,9 +64,9 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 @property(nonatomic, strong) NSString* key;
 
 /**
-* Describes the initializer - selector name and arguments that will be used to instantiate this component.
+* Describes the initializer, ie the selector and arguments that will be used to instantiate this component.
 *
-* @note An initializer can be an instance method, a class method, or even a reference to another component's method (see factory property).
+* An initializer can be an instance method, a class method, or even a reference to another component's method (see factory property).
 *
 * @see factory
 */
