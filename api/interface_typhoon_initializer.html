@@ -109,8 +109,8 @@ Inheritance diagram for TyphoonInitializer:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:aac264252f2eda91709421e0cd03f955c"><td class="memItemLeft" align="right" valign="top">id&lt; TyphoonLogger &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_initializer.html#aac264252f2eda91709421e0cd03f955c">logger</a></td></tr>
-<tr class="separator:aac264252f2eda91709421e0cd03f955c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf66b68f95b82b9b454ea30824ac64c7"><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_initializer.html#aaf66b68f95b82b9b454ea30824ac64c7">parameterNames</a></td></tr>
+<tr class="separator:aaf66b68f95b82b9b454ea30824ac64c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0afdf647b8c1d9b1e97720142bc2a056"><td class="memItemLeft" align="right" valign="top">SEL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_initializer.html#a0afdf647b8c1d9b1e97720142bc2a056">selector</a></td></tr>
 <tr class="memdesc:a0afdf647b8c1d9b1e97720142bc2a056"><td class="mdescLeft">&#160;</td><td class="mdescRight">The selector used to initialize the component.  <a href="#a0afdf647b8c1d9b1e97720142bc2a056">More...</a><br/></td></tr>
 <tr class="separator:a0afdf647b8c1d9b1e97720142bc2a056"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,6 +121,8 @@ Instance Methods</h2></td></tr>
 <tr class="separator:a94b46055f740c394b7319ca5cab283bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa08acb18e79e55847353c078225ff5cf"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_initializer.html#aa08acb18e79e55847353c078225ff5cf">initWithSelector:isClassMethodStrategy:</a></td></tr>
 <tr class="separator:aa08acb18e79e55847353c078225ff5cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a424c30cb2f167f428fb682933b7e623d"><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_initializer.html#a424c30cb2f167f428fb682933b7e623d">injectedParameters</a></td></tr>
+<tr class="separator:a424c30cb2f167f428fb682933b7e623d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58c676f630aaa313766a11cd29c0ae0e"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_initializer.html#a58c676f630aaa313766a11cd29c0ae0e">injectParameterAtIndex:asCollection:requiredType:</a></td></tr>
 <tr class="memdesc:a58c676f630aaa313766a11cd29c0ae0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Injects the parameter at the given index as a collection of the given requiredType.  <a href="#a58c676f630aaa313766a11cd29c0ae0e">More...</a><br/></td></tr>
 <tr class="separator:a58c676f630aaa313766a11cd29c0ae0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,9 +177,9 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a0c640c3d696b36f5262b5313a6c97324"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_initializer.html#a0c640c3d696b36f5262b5313a6c97324">injectWithLongLong:</a></td></tr>
 <tr class="memdesc:a0c640c3d696b36f5262b5313a6c97324"><td class="mdescLeft">&#160;</td><td class="mdescRight">Injects with a long long.  <a href="#a0c640c3d696b36f5262b5313a6c97324">More...</a><br/></td></tr>
 <tr class="separator:a0c640c3d696b36f5262b5313a6c97324"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7bf06e77cb0a5a67cd9cc084950ddecb"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_initializer.html#a7bf06e77cb0a5a67cd9cc084950ddecb">injectWithObject:</a></td></tr>
-<tr class="memdesc:a7bf06e77cb0a5a67cd9cc084950ddecb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Injects with an object instance.  <a href="#a7bf06e77cb0a5a67cd9cc084950ddecb">More...</a><br/></td></tr>
-<tr class="separator:a7bf06e77cb0a5a67cd9cc084950ddecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae895216a5c640843770864e74f4d0710"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_initializer.html#ae895216a5c640843770864e74f4d0710">injectWithObjectInstance:</a></td></tr>
+<tr class="memdesc:ae895216a5c640843770864e74f4d0710"><td class="mdescLeft">&#160;</td><td class="mdescRight">Injects with an object instance.  <a href="#ae895216a5c640843770864e74f4d0710">More...</a><br/></td></tr>
+<tr class="separator:ae895216a5c640843770864e74f4d0710"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8b3acdf1171e122df76c01a063182f9"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_initializer.html#ac8b3acdf1171e122df76c01a063182f9">injectWithSelector:</a></td></tr>
 <tr class="memdesc:ac8b3acdf1171e122df76c01a063182f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Injects with a selector.  <a href="#ac8b3acdf1171e122df76c01a063182f9">More...</a><br/></td></tr>
 <tr class="separator:ac8b3acdf1171e122df76c01a063182f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -211,8 +213,20 @@ Instance Methods</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents an initializer for a component. </p>
+<h2>Initializer style injection has the following advantages:</h2>
+<ul>
+<li>Presents a clear contract to put the instance in the required state before use.</li>
+<li>No custom lifecycle methods (before/after property injection) are required.</li>
+</ul>
+<h2>Initializer injection has the following drawbacks:</h2>
+<ul>
+<li>Not suitable for classes with a very large number of dependencies - a very large initializer method will create poor readability.</li>
+<li>Auto-boxed primitives can't be used.</li>
+<li>No type introspection for objects injected with a text representation.</li>
+</ul>
+<p>Its generally recommended to use initializer-style injection, unless the above drawbacks will manifest. </p>
 </div><h2 class="groupheader">Property Documentation</h2>
-<a class="anchor" id="aac264252f2eda91709421e0cd03f955c"></a>
+<a class="anchor" id="aaf66b68f95b82b9b454ea30824ac64c7"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -220,12 +234,12 @@ Instance Methods</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">- (id&lt;TyphoonLogger&gt;) logger</td>
+          <td class="memname">- (NSArray*) parameterNames</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">assign</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -291,6 +305,21 @@ Instance Methods</h2></td></tr>
           <td></td>
           <td></td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a424c30cb2f167f428fb682933b7e623d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (NSArray*) injectedParameters </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -779,12 +808,12 @@ Instance Methods</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a7bf06e77cb0a5a67cd9cc084950ddecb"></a>
+<a class="anchor" id="ae895216a5c640843770864e74f4d0710"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (void) injectWithObject: </td>
+          <td class="memname">- (void) injectWithObjectInstance: </td>
           <td></td>
           <td class="paramtype">(id)&#160;</td>
           <td class="paramname"><em>value</em></td>
@@ -997,7 +1026,7 @@ Instance Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="interface_typhoon_initializer.html">TyphoonInitializer</a></li>
-    <li class="footer">Generated on Sun Jan 26 2014 18:14:19 for Typhoon by
+    <li class="footer">Generated on Mon Jan 27 2014 11:27:51 for Typhoon by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

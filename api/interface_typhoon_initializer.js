@@ -1,9 +1,10 @@
 var interface_typhoon_initializer =
 [
-    [ "logger", "interface_typhoon_initializer.html#aac264252f2eda91709421e0cd03f955c", null ],
+    [ "parameterNames", "interface_typhoon_initializer.html#aaf66b68f95b82b9b454ea30824ac64c7", null ],
     [ "selector", "interface_typhoon_initializer.html#a0afdf647b8c1d9b1e97720142bc2a056", null ],
     [ "initWithSelector:", "interface_typhoon_initializer.html#a94b46055f740c394b7319ca5cab283bf", null ],
     [ "initWithSelector:isClassMethodStrategy:", "interface_typhoon_initializer.html#aa08acb18e79e55847353c078225ff5cf", null ],
+    [ "injectedParameters", "interface_typhoon_initializer.html#a424c30cb2f167f428fb682933b7e623d", null ],
     [ "injectParameterAtIndex:asCollection:requiredType:", "interface_typhoon_initializer.html#a58c676f630aaa313766a11cd29c0ae0e", null ],
     [ "injectParameterAtIndex:withDefinition:", "interface_typhoon_initializer.html#abf530d781c0c0f0267e7670d6faf5b55", null ],
     [ "injectParameterAtIndex:withObject:", "interface_typhoon_initializer.html#a33ee0217015511597cc1194c55a7a082", null ],
@@ -24,7 +25,7 @@ var interface_typhoon_initializer =
     [ "injectWithInteger:", "interface_typhoon_initializer.html#a06e06b76ca321bb2e285ad3e0570e851", null ],
     [ "injectWithLong:", "interface_typhoon_initializer.html#aa554bb2ff65d69261829b7e28320a193", null ],
     [ "injectWithLongLong:", "interface_typhoon_initializer.html#a0c640c3d696b36f5262b5313a6c97324", null ],
-    [ "injectWithObject:", "interface_typhoon_initializer.html#a7bf06e77cb0a5a67cd9cc084950ddecb", null ],
+    [ "injectWithObjectInstance:", "interface_typhoon_initializer.html#ae895216a5c640843770864e74f4d0710", null ],
     [ "injectWithSelector:", "interface_typhoon_initializer.html#ac8b3acdf1171e122df76c01a063182f9", null ],
     [ "injectWithShort:", "interface_typhoon_initializer.html#a647be5edcd1d8d974e98a30675451ca3", null ],
     [ "injectWithUnsignedChar:", "interface_typhoon_initializer.html#a5d2bc35e9f65d7b7ec6d5367ff7372a3", null ],

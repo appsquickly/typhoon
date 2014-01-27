@@ -1,5 +1,6 @@
 var annotated =
 [
+    [ "NSObject(PropertyInjection)", "category_n_s_object_07_property_injection_08.html", "category_n_s_object_07_property_injection_08" ],
     [ "NSObject(TyphoonIntrospectionUtils)", "category_n_s_object_07_typhoon_introspection_utils_08.html", "category_n_s_object_07_typhoon_introspection_utils_08" ],
     [ "NSObject(TyphoonJRSwizzle)", "category_n_s_object_07_typhoon_j_r_swizzle_08.html", "category_n_s_object_07_typhoon_j_r_swizzle_08" ],
     [ "TyphoonAbstractInjectedProperty", "interface_typhoon_abstract_injected_property.html", "interface_typhoon_abstract_injected_property" ],

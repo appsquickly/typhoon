@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "NSObject(PropertyInjection)", "category_n_s_object_07_property_injection_08.html", null ],
     [ "NSObject(TyphoonJRSwizzle)", "category_n_s_object_07_typhoon_j_r_swizzle_08.html", null ],
     [ "<NSObject>", null, [
       [ "TyphoonAbstractInjectedProperty", "interface_typhoon_abstract_injected_property.html", [
