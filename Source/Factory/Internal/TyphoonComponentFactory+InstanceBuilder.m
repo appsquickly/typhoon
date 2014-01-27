@@ -180,7 +180,6 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     [self doAfterPropertyInjectionOn:instance withDefinition:definition];
 }
 
-
 - (void)doBeforePropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
 {
     if ([instance respondsToSelector:@selector(beforePropertiesSet)])
@@ -331,7 +330,13 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         {
             TyphoonParameterInjectedWithObjectInstance* byInstance = (TyphoonParameterInjectedWithObjectInstance*)parameter;
             id value = byInstance.value;
-            [invocation setArgument:&value atIndex:parameter.index + 2];
+            BOOL isValuesIsWrapper = [value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSValue class]];
+
+            if (isValuesIsWrapper && [byInstance isPrimitiveParameterFor:instanceOrClass]) {
+                [self setPrimitiveArgumentForInvocation:invocation index:parameter.index + 2 fromValue:value];
+            } else {
+                [invocation setArgument:&value atIndex:parameter.index + 2];
+            }
         }
         else if (parameter.type == TyphoonParameterInjectionTypeAsCollection)
         {
@@ -365,6 +370,12 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 
     return value;
+}
+
+- (void)setPrimitiveArgumentForInvocation:(NSInvocation *)invocation index:(NSUInteger)index fromValue:(id)value
+{
+    TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
+    [converter setPrimitiveArgumentFor:invocation index:index fromValue:value];
 }
 
 - (void)setArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index1 textValue:(NSString*)textValue

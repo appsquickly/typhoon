@@ -50,7 +50,10 @@
 - (void)setPrimitiveArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index textValue:(NSString*)textValue
         requiredType:(TyphoonTypeDescriptor*)requiredType;
 
-/** Returns NSNumber of NSValue from textValue */
+/** @param value NSNumber or NSValue */
+- (void)setPrimitiveArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index fromValue:(id)value;
+
+/** @return NSNumber of NSValue from textValue */
 - (id) valueFromText:(NSString *)textValue withType:(TyphoonTypeDescriptor *)typeDescription;
 
 @end

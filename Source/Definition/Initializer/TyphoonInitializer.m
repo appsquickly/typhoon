@@ -216,7 +216,9 @@
 {
     if (index != NSIntegerMax && index < [_parameterNames count])
     {
-        [_injectedParameters addObject:[[TyphoonParameterInjectedWithObjectInstance alloc] initWithParameterIndex:index value:value]];
+        TyphoonParameterInjectedWithObjectInstance* param = [[TyphoonParameterInjectedWithObjectInstance alloc] initWithParameterIndex:index value:value];
+        [param setInitializer:self];
+        [_injectedParameters addObject:param];
     }
 }
 
@@ -228,86 +230,6 @@
 - (void)injectWithCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues requiredType:(id)requiredType
 {
     [self injectParameterAtIndex:[_injectedParameters count] asCollection:collectionValues requiredType:requiredType];
-}
-
-- (void)injectWithInt:(int)intValue
-{
-    [self injectWithValueAsText:[@(intValue) stringValue]];
-}
-
-- (void)injectWithUnsignedInt:(unsigned int)unsignedIntValue
-{
-    [self injectWithValueAsText:[@(unsignedIntValue) stringValue]];
-}
-
-- (void)injectWithShort:(short)shortValue
-{
-    [self injectWithValueAsText:[@(shortValue) stringValue]];
-}
-
-- (void)injectWithUnsignedShort:(unsigned short)unsignedShortValue
-{
-    [self injectWithValueAsText:[@(unsignedShortValue) stringValue]];
-}
-
-- (void)injectWithLong:(long)longValue
-{
-    [self injectWithValueAsText:[@(longValue) stringValue]];
-}
-
-- (void)injectWithUnsignedLong:(unsigned long)unsignedLongValue
-{
-    [self injectWithValueAsText:[@(unsignedLongValue) stringValue]];
-}
-
-- (void)injectWithLongLong:(long long)longLongValue
-{
-    [self injectWithValueAsText:[@(longLongValue) stringValue]];
-}
-
-- (void)injectWithUnsignedLongLong:(unsigned long long)unsignedLongLongValue
-{
-    [self injectWithValueAsText:[@(unsignedLongLongValue) stringValue]];
-}
-
-- (void)injectWithUnsignedChar:(unsigned char)unsignedCharValue
-{
-    [self injectWithValueAsText:[@(unsignedCharValue) stringValue]];
-}
-
-- (void)injectWithFloat:(float)floatValue
-{
-    [self injectWithValueAsText:[NSString stringWithFormat:@"%f", floatValue]];
-}
-
-- (void)injectWithDouble:(double)doubleValue
-{
-    [self injectWithValueAsText:[NSString stringWithFormat:@"%f", doubleValue]];
-}
-
-- (void)injectWithBool:(BOOL)boolValue
-{
-    [self injectWithValueAsText:[@(boolValue) stringValue]];
-}
-
-- (void)injectWithInteger:(NSInteger)integerValue
-{
-    [self injectWithValueAsText:[@(integerValue) stringValue]];
-}
-
-- (void)injectWithUnsignedInteger:(NSUInteger)unsignedIntegerValue
-{
-    [self injectWithValueAsText:[@(unsignedIntegerValue) stringValue]];
-}
-
-- (void)injectWithClass:(Class)classValue
-{
-    [self injectWithValueAsText:NSStringFromClass(classValue)];
-}
-
-- (void)injectWithSelector:(SEL)selectorValue
-{
-    [self injectWithValueAsText:NSStringFromSelector(selectorValue)];
 }
 
 /* ====================================================================================================================================== */

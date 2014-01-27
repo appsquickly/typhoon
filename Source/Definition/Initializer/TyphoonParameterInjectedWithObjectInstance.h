@@ -23,5 +23,6 @@
 
 - (id)initWithParameterIndex:(NSUInteger)index value:(id)value;
 
+- (BOOL) isPrimitiveParameterFor:(id)classOrInstance;
 
 @end

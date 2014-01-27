@@ -33,6 +33,11 @@
   unsignedIntegerValue:(NSUInteger)unsignedIntegerValue
             classValue:(Class)classValue
          selectorValue:(SEL)selectorValue
+               cstring:(char *)cString
+                cgRect:(CGRect)cgRect
+          pointerValue:(void *)pointer
+        unknownPointer:(PrimitiveManStruct *)unknownPointer
+    pointerInsideValue:(NSValue *)pointerInsideValue
 {
     self = [super init];
     if (self)
@@ -53,6 +58,11 @@
         _unsignedIntegerValue = unsignedIntegerValue;
         _classValue = classValue;
         _selectorValue = selectorValue;
+        _cString = cString;
+        _cgRect = cgRect;
+        _pointer = pointer;
+        _unknownPointer = unknownPointer;
+        _pointerInsideValue = pointerInsideValue;
     }
     return self;
 }

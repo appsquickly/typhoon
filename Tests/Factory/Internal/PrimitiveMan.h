@@ -34,7 +34,13 @@ typedef struct {
           integerValue:(NSInteger)integerValue
   unsignedIntegerValue:(NSUInteger)unsignedIntegerValue
             classValue:(Class)classValue
-         selectorValue:(SEL)selectorValue;
+         selectorValue:(SEL)selectorValue
+               cstring:(char *)cString
+                cgRect:(CGRect)cgRect
+          pointerValue:(void *)pointer
+        unknownPointer:(PrimitiveManStruct *)unknownPointer
+    pointerInsideValue:(NSValue *)pointerInsideValue;
+
 
 @property (nonatomic, assign) int intValue;
 @property (nonatomic, assign) short shortValue;

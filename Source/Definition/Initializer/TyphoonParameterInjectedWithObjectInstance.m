@@ -10,8 +10,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonParameterInjectedWithObjectInstance.h"
+#import "TyphoonInitializer.h"
+#import "TyphoonIntrospectionUtils.h"
+#import <objc/runtime.h>
 
-@implementation TyphoonParameterInjectedWithObjectInstance
+@implementation TyphoonParameterInjectedWithObjectInstance {
+    __weak TyphoonInitializer* _initializer;
+}
 
 - (id)initWithParameterIndex:(NSUInteger)index value:(id)value
 {
@@ -31,7 +36,21 @@
 
 - (void)setInitializer:(TyphoonInitializer*)initializer
 {
-    //Do nothing.
+    _initializer = initializer;
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
+
+- (BOOL) isPrimitiveParameterFor:(id)classOrInstance
+{
+    BOOL isClass = class_isMetaClass(object_getClass(classOrInstance));
+    
+    Class class = isClass ? classOrInstance : [classOrInstance class];
+    
+    NSArray* typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:_initializer.selector ofClass:class isClassMethod:isClass];
+    
+    return ![[typeCodes objectAtIndex:_index] isEqualToString:@"@"];
 }
 
 @end

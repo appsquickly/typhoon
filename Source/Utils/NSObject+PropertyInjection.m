@@ -11,15 +11,10 @@
 
 #import "NSObject+PropertyInjection.h"
 #import "TyphoonTypeDescriptor.h"
+#import "TyphoonStringUtils.h"
 #import <objc/message.h>
 
 @implementation NSObject (PropertyInjection)
-
-- (BOOL) isValue:(NSValue *)value withObjcType:(const char *)type
-{
-    const char *valueType = [value objCType];
-    return valueType == type || strcmp(valueType, type) == 0;
-}
 
 - (SEL) setterForPropertyName:(NSString *)propertyName
 {
@@ -29,29 +24,14 @@
     return NSSelectorFromString(selectorName);
 }
 
-
-- (BOOL) isKvcSupportUnboxingForValue:(id)value
+- (BOOL) isPointerValue:(id)value
 {
-    BOOL isUnsupportedType = NO;
-    
-    int count = 3;
-    const char* unsupportedTypes[3] = {@encode(SEL), @encode(const char *), @encode(void *)};
-    
-    for (int i = 0; i < count; i++) {
-        if ([self isValue:value withObjcType:unsupportedTypes[i]]) {
-            isUnsupportedType = YES;
-            break;
-        }
-    }
-    
-    return !isUnsupportedType;
+    return CStringEquals([value objCType], @encode(void *));
 }
 
 - (void) injectValue:(id)value forPropertyName:(NSString *)propertyName withType:(TyphoonTypeDescriptor *)type
-{
-    BOOL shouldInjectByKVC = YES;
-    
-    if (type.isPrimitive && [value isKindOfClass:[NSValue class]] && ![self isKvcSupportUnboxingForValue:value]) {
+{    
+    if (type.isPrimitive && [value isKindOfClass:[NSValue class]] && [self isPointerValue:value]) {
         [self injectValue:value asPointerForPropertyName:propertyName];
     } else {
         [self setValue:value forKey:propertyName];

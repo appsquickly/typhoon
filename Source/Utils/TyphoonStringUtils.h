@@ -30,3 +30,5 @@
 + (BOOL)isMemberOfCharacterSet:(NSString*)string characterSet:(NSMutableCharacterSet*)characterSet;
 
 @end
+
+#define CStringEquals(stringA, stringB) (stringA == stringB || strcmp(stringA, stringB) == 0)
