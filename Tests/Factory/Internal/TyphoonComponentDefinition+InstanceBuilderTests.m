@@ -110,8 +110,27 @@
     primitiveStruct->fieldB = LONG_MAX;
     
     TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:[PrimitiveMan class] key:@"primitive"];
-    TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(
-                                                                                             initWithIntValue:unsignedIntValue:shortValue:unsignedShortValue:longValue:unsignedLongValue:longLongValue:unsignedLongLongValue:unsignedCharValue:floatValue:doubleValue:boolValue:integerValue:unsignedIntegerValue:classValue:selectorValue:cstring:cgRect:pointerValue:unknownPointer:pointerInsideValue:)];
+    TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithIntValue:
+                                                                                             unsignedIntValue:
+                                                                                             shortValue:
+                                                                                             unsignedShortValue:
+                                                                                             longValue:
+                                                                                             unsignedLongValue:
+                                                                                             longLongValue:
+                                                                                             unsignedLongLongValue:
+                                                                                             unsignedCharValue:
+                                                                                             floatValue:
+                                                                                             doubleValue:
+                                                                                             boolValue:
+                                                                                             integerValue:
+                                                                                             unsignedIntegerValue:
+                                                                                             classValue:
+                                                                                             selectorValue:
+                                                                                             cstring:
+                                                                                             nsRange:
+                                                                                             pointerValue:
+                                                                                             unknownPointer:
+                                                                                             pointerInsideValue:)];
     [initializer injectWithObjectInstance:@(INT_MAX)];
     [initializer injectWithObjectInstance:@(UINT_MAX)];
     [initializer injectWithObjectInstance:@(SHRT_MAX)];
@@ -129,7 +148,7 @@
     [initializer injectWithObjectInstance:[self class]];
     [initializer injectWithObjectInstance:[NSValue valueWithPointer:@selector(selectorValue)]];
     [initializer injectWithValueAsText:@"Hello String!"];
-    [initializer injectWithObjectInstance:[NSValue valueWithCGRect:CGRectMake(10, 20, 30, 40)]];
+    [initializer injectWithObjectInstance:[NSValue valueWithRange:NSMakeRange(10, 20)]];
     [initializer injectWithObjectInstance:[NSValue valueWithPointer:primitiveStruct]];
     [initializer injectWithObjectInstance:[NSValue valueWithPointer:primitiveStruct]];
     [initializer injectWithObjectInstance:[NSValue valueWithPointer:primitiveStruct]];
@@ -156,8 +175,7 @@
     assertThat(NSStringFromClass(primitiveMan.classValue), equalTo(NSStringFromClass([self class])));
     assertThat(NSStringFromSelector(primitiveMan.selectorValue), equalTo(NSStringFromSelector(@selector(selectorValue))));
     assertThatInt(strcmp(primitiveMan.cString, "Hello String!"), equalToInt(0));
-    assertThatBool(CGRectEqualToRect(primitiveMan.cgRect, CGRectMake(10, 20, 30, 40)), equalToBool(YES));
-    //Pointers
+    assertThatBool(NSEqualRanges(primitiveMan.nsRange, NSMakeRange(10, 20)), equalToBool(YES));
     assertThatBool(primitiveMan.pointer == primitiveStruct, equalToBool(YES));
     assertThatInt(primitiveMan.unknownPointer->fieldA, equalToInt(INT_MAX));
     assertThatLong(primitiveMan.unknownPointer->fieldB, equalToLong(LONG_MAX));
@@ -238,7 +256,7 @@
     [definition injectProperty:@selector(classValue) withObjectInstance:[self class]];
     [definition injectProperty:@selector(cString) withValueAsText:@"cStringText"];
     [definition injectProperty:@selector(selectorValue) withObjectInstance:[NSValue valueWithPointer:@selector(selectorValue)]];
-    [definition injectProperty:@selector(cgRect) withObjectInstance:[NSValue valueWithCGRect:CGRectMake(10, 15, 20, 30)]];
+    [definition injectProperty:@selector(nsRange) withObjectInstance:[NSValue valueWithRange:NSMakeRange(10, 20)]];
     [definition injectProperty:@selector(pointer) withObjectInstance:[NSValue valueWithPointer:&primitiveStruct]];
     [definition injectProperty:@selector(pointerInsideValue) withObjectInstance:[NSValue valueWithPointer:&primitiveStruct]];
     [definition injectProperty:@selector(unknownPointer) withObjectInstance:[NSValue valueWithPointer:primitiveStruct]];
@@ -263,7 +281,7 @@
     assertThat(NSStringFromClass(primitiveMan.classValue), equalTo(NSStringFromClass([self class])));
     assertThat(NSStringFromSelector(primitiveMan.selectorValue), equalTo(NSStringFromSelector(@selector(selectorValue))));
     assertThatInt(strcmp(primitiveMan.cString, "cStringText"), equalToInt(0));
-    assertThatBool(CGRectEqualToRect(primitiveMan.cgRect, CGRectMake(10, 15, 20, 30)), equalToBool(YES));
+    assertThatBool(NSEqualRanges(primitiveMan.nsRange, NSMakeRange(10, 20)), equalToBool(YES));
     assertThatInt(primitiveMan.unknownPointer->fieldA, equalToInt(INT_MAX));
     assertThatInt(primitiveMan.unknownPointer->fieldB, equalToInt(LONG_MAX));
     assertThatBool(primitiveMan.pointer == &primitiveStruct, equalToBool(YES));

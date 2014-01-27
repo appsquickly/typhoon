@@ -34,7 +34,7 @@
             classValue:(Class)classValue
          selectorValue:(SEL)selectorValue
                cstring:(char *)cString
-                cgRect:(CGRect)cgRect
+               nsRange:(NSRange)nsRange
           pointerValue:(void *)pointer
         unknownPointer:(PrimitiveManStruct *)unknownPointer
     pointerInsideValue:(NSValue *)pointerInsideValue
@@ -59,7 +59,7 @@
         _classValue = classValue;
         _selectorValue = selectorValue;
         _cString = cString;
-        _cgRect = cgRect;
+        _nsRange = nsRange;
         _pointer = pointer;
         _unknownPointer = unknownPointer;
         _pointerInsideValue = pointerInsideValue;

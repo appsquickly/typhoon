@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+
 
 typedef struct {
     int fieldA;
@@ -36,7 +36,7 @@ typedef struct {
             classValue:(Class)classValue
          selectorValue:(SEL)selectorValue
                cstring:(char *)cString
-                cgRect:(CGRect)cgRect
+               nsRange:(NSRange)nsRange
           pointerValue:(void *)pointer
         unknownPointer:(PrimitiveManStruct *)unknownPointer
     pointerInsideValue:(NSValue *)pointerInsideValue;
@@ -59,7 +59,7 @@ typedef struct {
 @property (nonatomic, assign) char *cString;
 @property (nonatomic, assign) NSInteger integerValue;
 @property (nonatomic, assign) NSUInteger unsignedIntegerValue;
-@property (nonatomic, assign) CGRect cgRect;
+@property (nonatomic, assign) NSRange nsRange;
 @property (nonatomic, assign) void *pointer;
 @property (nonatomic, assign) PrimitiveManStruct *unknownPointer;
 @property (nonatomic, assign) NSValue *pointerInsideValue;
