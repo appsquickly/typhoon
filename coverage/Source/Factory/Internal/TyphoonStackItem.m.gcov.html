@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-01-26</td>
+            <td class="headerValue">2014-01-27</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -73,24 +73,24 @@
 <span class="lineNum">      15 </span>            : #import &quot;TyphoonDefinition.h&quot;
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">        304 : @implementation TyphoonStackItem</span>
+<span class="lineNum">      18 </span><span class="lineCov">        318 : @implementation TyphoonStackItem</span>
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span><span class="lineCov">        308 : + (instancetype)itemWithDefinition:(TyphoonDefinition*)definition instance:(id)instance</span>
+<span class="lineNum">      20 </span><span class="lineCov">        321 : + (instancetype)itemWithDefinition:(TyphoonDefinition*)definition instance:(id)instance</span>
 <span class="lineNum">      21 </span>            : {
-<span class="lineNum">      22 </span><span class="lineCov">        308 :     return [[self alloc] initWithDefinition:definition instance:instance];</span>
-<span class="lineNum">      23 </span><span class="lineCov">        308 : }</span>
+<span class="lineNum">      22 </span><span class="lineCov">        321 :     return [[self alloc] initWithDefinition:definition instance:instance];</span>
+<span class="lineNum">      23 </span><span class="lineCov">        321 : }</span>
 <span class="lineNum">      24 </span>            : 
 <span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span><span class="lineCov">        308 : - (instancetype)initWithDefinition:(TyphoonDefinition*)definition instance:(id)instance</span>
+<span class="lineNum">      26 </span><span class="lineCov">        321 : - (instancetype)initWithDefinition:(TyphoonDefinition*)definition instance:(id)instance</span>
 <span class="lineNum">      27 </span>            : {
-<span class="lineNum">      28 </span><span class="lineCov">        308 :     self = [super init];</span>
-<span class="lineNum">      29 </span><span class="lineCov">        308 :     if (self)</span>
+<span class="lineNum">      28 </span><span class="lineCov">        321 :     self = [super init];</span>
+<span class="lineNum">      29 </span><span class="lineCov">        321 :     if (self)</span>
 <span class="lineNum">      30 </span>            :     {
-<span class="lineNum">      31 </span><span class="lineCov">        308 :         _definition = definition;</span>
-<span class="lineNum">      32 </span><span class="lineCov">        308 :         _instance = instance;</span>
-<span class="lineNum">      33 </span><span class="lineCov">        308 :     }</span>
-<span class="lineNum">      34 </span><span class="lineCov">        308 :     return self;</span>
-<span class="lineNum">      35 </span><span class="lineCov">        308 : }</span>
+<span class="lineNum">      31 </span><span class="lineCov">        321 :         _definition = definition;</span>
+<span class="lineNum">      32 </span><span class="lineCov">        321 :         _instance = instance;</span>
+<span class="lineNum">      33 </span><span class="lineCov">        321 :     }</span>
+<span class="lineNum">      34 </span><span class="lineCov">        321 :     return self;</span>
+<span class="lineNum">      35 </span><span class="lineCov">        321 : }</span>
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span><span class="lineNoCov">          0 : - (NSString*)description</span>
 <span class="lineNum">      38 </span>            : {

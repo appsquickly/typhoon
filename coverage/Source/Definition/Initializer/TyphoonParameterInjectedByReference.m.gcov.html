@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-01-26</td>
+            <td class="headerValue">2014-01-27</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -78,28 +78,28 @@
 <span class="lineNum">      20 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      21 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineCov">        600 : - (instancetype)initWithParameterIndex:(NSUInteger)index reference:(NSString*)reference</span>
+<span class="lineNum">      23 </span><span class="lineCov">        614 : - (instancetype)initWithParameterIndex:(NSUInteger)index reference:(NSString*)reference</span>
 <span class="lineNum">      24 </span>            : {
-<span class="lineNum">      25 </span><span class="lineCov">        600 :     self = [super initWithReference:reference];</span>
-<span class="lineNum">      26 </span><span class="lineCov">        600 :     if (self)</span>
+<span class="lineNum">      25 </span><span class="lineCov">        614 :     self = [super initWithReference:reference];</span>
+<span class="lineNum">      26 </span><span class="lineCov">        614 :     if (self)</span>
 <span class="lineNum">      27 </span>            :     {
-<span class="lineNum">      28 </span><span class="lineCov">        600 :         _index = index;</span>
-<span class="lineNum">      29 </span><span class="lineCov">        600 :     }</span>
-<span class="lineNum">      30 </span><span class="lineCov">        600 :     return self;</span>
-<span class="lineNum">      31 </span><span class="lineCov">        600 : }</span>
+<span class="lineNum">      28 </span><span class="lineCov">        614 :         _index = index;</span>
+<span class="lineNum">      29 </span><span class="lineCov">        614 :     }</span>
+<span class="lineNum">      30 </span><span class="lineCov">        614 :     return self;</span>
+<span class="lineNum">      31 </span><span class="lineCov">        614 : }</span>
 <span class="lineNum">      32 </span>            : 
 <span class="lineNum">      33 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      34 </span>            : #pragma mark - Protocol Methods
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span><span class="lineCov">         44 : - (TyphoonParameterInjectionType)type</span>
+<span class="lineNum">      36 </span><span class="lineCov">         63 : - (TyphoonParameterInjectionType)type</span>
 <span class="lineNum">      37 </span>            : {
-<span class="lineNum">      38 </span><span class="lineCov">         44 :     return TyphoonParameterInjectionTypeReference;</span>
+<span class="lineNum">      38 </span><span class="lineCov">         63 :     return TyphoonParameterInjectionTypeReference;</span>
 <span class="lineNum">      39 </span>            : }
 <span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span><span class="lineCov">        262 : - (void)setInitializer:(TyphoonInitializer*)initializer</span>
+<span class="lineNum">      41 </span><span class="lineCov">        251 : - (void)setInitializer:(TyphoonInitializer*)initializer</span>
 <span class="lineNum">      42 </span>            : {
 <span class="lineNum">      43 </span>            :     //Do nothing.
-<span class="lineNum">      44 </span><span class="lineCov">        262 : }</span>
+<span class="lineNum">      44 </span><span class="lineCov">        251 : }</span>
 <span class="lineNum">      45 </span>            : 
 <span class="lineNum">      46 </span>            : @end
 </pre>

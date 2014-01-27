@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-01-26</td>
+            <td class="headerValue">2014-01-27</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -110,161 +110,210 @@
 <span class="lineNum">      52 </span>            :     TyphoonScope _scope;
 <span class="lineNum">      53 </span>            : }
 <span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span><span class="lineCov">       6243 : @property(nonatomic, readonly) Class type;</span>
-<span class="lineNum">      56 </span><span class="lineCov">      14715 : @property(nonatomic, strong) NSString* key;</span>
-<span class="lineNum">      57 </span>            : @property(nonatomic, strong) TyphoonInitializer* initializer;
-<span class="lineNum">      58 </span><span class="lineCov">        915 : @property(nonatomic) SEL beforePropertyInjection;</span>
-<span class="lineNum">      59 </span><span class="lineCov">        912 : @property(nonatomic) SEL afterPropertyInjection;</span>
-<span class="lineNum">      60 </span><span class="lineCov">       2044 : @property(nonatomic) TyphoonScope scope;</span>
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 : @property(nonatomic, strong) TyphoonDefinition* factory;</span>
-<span class="lineNum">      62 </span><span class="lineCov">        435 : @property(nonatomic, strong) TyphoonDefinition* parent;</span>
-<span class="lineNum">      63 </span><span class="lineCov">        314 : @property(nonatomic) BOOL abstract;</span>
-<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      55 </span><span class="lineCov">       5834 : @property(nonatomic, readonly) Class type;</span>
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            : /**
+<span class="lineNum">      58 </span>            : * The key of the component. A key is useful when multiple configuration of the same class or protocol are desired - for example
+<span class="lineNum">      59 </span>            : * MasterCardPaymentClient and VisaPaymentClient.
+<span class="lineNum">      60 </span>            : *
+<span class="lineNum">      61 </span>            : * If using the TyphoonBlockComponentFactory style of assembly, the key is automatically generated based on the selector name of the
+<span class="lineNum">      62 </span>            : * component, thus avoiding &quot;magic strings&quot; and providing better integration with IDE refactoring tools.
+<span class="lineNum">      63 </span>            : */
+<span class="lineNum">      64 </span><span class="lineCov">      13673 : @property(nonatomic, strong) NSString* key;</span>
 <span class="lineNum">      65 </span>            : 
 <span class="lineNum">      66 </span>            : /**
-<span class="lineNum">      67 </span>            :  * Say if the component (scoped as a singleton) should be lazily instantiated.
-<span class="lineNum">      68 </span>            :  */
-<span class="lineNum">      69 </span><span class="lineCov">       1951 : @property(nonatomic, assign, getter = isLazy) BOOL lazy;</span>
-<span class="lineNum">      70 </span>            : 
-<span class="lineNum">      71 </span>            : 
-<span class="lineNum">      72 </span>            : /* ====================================================================================================================================== */
-<span class="lineNum">      73 </span>            : #pragma mark Factory methods
+<span class="lineNum">      67 </span>            : * Describes the initializer, ie the selector and arguments that will be used to instantiate this component.
+<span class="lineNum">      68 </span>            : *
+<span class="lineNum">      69 </span>            : * An initializer can be an instance method, a class method, or even a reference to another component's method (see factory property).
+<span class="lineNum">      70 </span>            : *
+<span class="lineNum">      71 </span>            : * @see factory
+<span class="lineNum">      72 </span>            : */
+<span class="lineNum">      73 </span>            : @property(nonatomic, strong) TyphoonInitializer* initializer;
 <span class="lineNum">      74 </span>            : 
-<span class="lineNum">      75 </span>            : + (TyphoonDefinition*)withClass:(Class)clazz;
-<span class="lineNum">      76 </span>            : 
-<span class="lineNum">      77 </span>            : + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization properties:(TyphoonDefinitionBlock)properties;
-<span class="lineNum">      78 </span>            : 
-<span class="lineNum">      79 </span>            : + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization;
-<span class="lineNum">      80 </span>            : 
-<span class="lineNum">      81 </span>            : + (TyphoonDefinition*)withClass:(Class)clazz properties:(TyphoonDefinitionBlock)properties;
-<span class="lineNum">      82 </span>            : 
-<span class="lineNum">      83 </span>            : + (TyphoonDefinition*)withClass:(Class)clazz factory:(TyphoonDefinition*)definition selector:(SEL)selector;
-<span class="lineNum">      84 </span>            : 
-<span class="lineNum">      85 </span>            : /* ====================================================================================================================================== */
-<span class="lineNum">      86 </span>            : #pragma mark Injection
-<span class="lineNum">      87 </span>            : 
-<span class="lineNum">      88 </span>            : /**
-<span class="lineNum">      89 </span>            : * Injects property with a component from the container that matches the type (class or protocol) of the property.
+<span class="lineNum">      75 </span>            : /**
+<span class="lineNum">      76 </span>            : * A custom callback method that is invoked before property injection occurs. Use this method as an alternative to
+<span class="lineNum">      77 </span>            : * TyphoonPropertyInjectionDelegate if the component being instantiated is a 3rd party library, or if a direct dependency on Typhoon is not
+<span class="lineNum">      78 </span>            : * desired.
+<span class="lineNum">      79 </span>            : *
+<span class="lineNum">      80 </span>            : * @see TyphoonPropertyInjectionDelegate
+<span class="lineNum">      81 </span>            : */
+<span class="lineNum">      82 </span><span class="lineCov">        887 : @property(nonatomic) SEL beforePropertyInjection;</span>
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span>            : /**
+<span class="lineNum">      85 </span>            : * A custom callback method that is invoked after property injection occurs. Use this method as an alternative to
+<span class="lineNum">      86 </span>            : * TyphoonPropertyInjectionDelegate if the component being instantiated is a 3rd party library, or if a direct dependency on Typhoon is not
+<span class="lineNum">      87 </span>            : * desired.
+<span class="lineNum">      88 </span>            : *
+<span class="lineNum">      89 </span>            : * @see TyphoonPropertyInjectionDelegate
 <span class="lineNum">      90 </span>            : */
-<span class="lineNum">      91 </span>            : - (void)injectProperty:(SEL)withSelector;
+<span class="lineNum">      91 </span><span class="lineCov">        885 : @property(nonatomic) SEL afterPropertyInjection;</span>
 <span class="lineNum">      92 </span>            : 
 <span class="lineNum">      93 </span>            : /**
-<span class="lineNum">      94 </span>            : * Injects property with the given definition.
+<span class="lineNum">      94 </span>            : * The scope of the component, default being TyphoonScopeObjectGraph.
 <span class="lineNum">      95 </span>            : */
-<span class="lineNum">      96 </span>            : - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition;
+<span class="lineNum">      96 </span><span class="lineCov">       1688 : @property(nonatomic) TyphoonScope scope;</span>
 <span class="lineNum">      97 </span>            : 
-<span class="lineNum">      98 </span>            : /**
-<span class="lineNum">      99 </span>            :  * Injects property with result of invocation factorySelector on factoryDefinition.
-<span class="lineNum">     100 </span>            :  */
-<span class="lineNum">     101 </span>            : - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)factoryDefinition selector:(SEL)factorySelector;
-<span class="lineNum">     102 </span>            : 
-<span class="lineNum">     103 </span>            : /**
-<span class="lineNum">     104 </span>            :  * Injects property with result of invocation valueForKeyPath with given keyPath on factoryDefinition.
-<span class="lineNum">     105 </span>            :  */
-<span class="lineNum">     106 </span>            : - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)factoryDefinition keyPath:(NSString*)keyPath;
-<span class="lineNum">     107 </span>            : 
-<span class="lineNum">     108 </span>            : /**
-<span class="lineNum">     109 </span>            : * Injects property with the given object instance.
-<span class="lineNum">     110 </span>            : */
-<span class="lineNum">     111 </span>            : - (void)injectProperty:(SEL)selector withObjectInstance:(id)instance;
-<span class="lineNum">     112 </span>            : 
-<span class="lineNum">     113 </span>            : /**
-<span class="lineNum">     114 </span>            : * Injects property with the value represented by the given text. The text will be used to create an instance of a class matching the
-<span class="lineNum">     115 </span>            : * required type.
-<span class="lineNum">     116 </span>            : *
-<span class="lineNum">     117 </span>            : * @see TyphoonTypeConverterRegistry for details on declaring your own type converters.
-<span class="lineNum">     118 </span>            : */
-<span class="lineNum">     119 </span>            : - (void)injectProperty:(SEL)withSelector withValueAsText:(NSString*)textValue;
-<span class="lineNum">     120 </span>            : 
-<span class="lineNum">     121 </span>            : /**
-<span class="lineNum">     122 </span>            : * Injects property as a collection.
-<span class="lineNum">     123 </span>            : */
-<span class="lineNum">     124 </span>            : - (void)injectProperty:(SEL)withSelector asCollection:(void (^)(TyphoonPropertyInjectedAsCollection*))collectionValues;
-<span class="lineNum">     125 </span>            : 
-<span class="lineNum">     126 </span>            : /**
-<span class="lineNum">     127 </span>            : * Injects property as int.
-<span class="lineNum">     128 </span>            : */
-<span class="lineNum">     129 </span>            : - (void)injectProperty:(SEL)selector withInt:(int)intValue;
-<span class="lineNum">     130 </span>            : 
-<span class="lineNum">     131 </span>            : /**
-<span class="lineNum">     132 </span>            :  * Injects property as unsigned int.
-<span class="lineNum">     133 </span>            :  */
-<span class="lineNum">     134 </span>            : - (void)injectProperty:(SEL)selector withUnsignedInt:(unsigned int)unsignedIntValue;
-<span class="lineNum">     135 </span>            : 
-<span class="lineNum">     136 </span>            : /**
-<span class="lineNum">     137 </span>            : * Injects property as short.
-<span class="lineNum">     138 </span>            : */
-<span class="lineNum">     139 </span>            : - (void)injectProperty:(SEL)selector withShort:(short)shortValue;
-<span class="lineNum">     140 </span>            : 
-<span class="lineNum">     141 </span>            : /**
-<span class="lineNum">     142 </span>            :  * Injects property as unsigned short.
-<span class="lineNum">     143 </span>            :  */
-<span class="lineNum">     144 </span>            : - (void)injectProperty:(SEL)selector withUnsignedShort:(unsigned short)unsignedShortValue;
-<span class="lineNum">     145 </span>            : 
-<span class="lineNum">     146 </span>            : /**
-<span class="lineNum">     147 </span>            : * Injects property as long.
-<span class="lineNum">     148 </span>            : */
-<span class="lineNum">     149 </span>            : - (void)injectProperty:(SEL)selector withLong:(long)longValue;
+<span class="lineNum">      98 </span>            : 
+<span class="lineNum">      99 </span>            : /**
+<span class="lineNum">     100 </span>            : * A component that will produce an instance (with or without parameters) of this component. For example:
+<span class="lineNum">     101 </span>            : *
+<span class="lineNum">     102 </span>            : @code
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span>            : - (id)sqliteManager
+<span class="lineNum">     105 </span>            : {
+<span class="lineNum">     106 </span>            :     return [TyphoonDefinition withClass:[VBSqliteManager class] initialization:^(TyphoonInitializer* initializer)
+<span class="lineNum">     107 </span>            :     {
+<span class="lineNum">     108 </span>            :         initializer.selector = @selector(initWithDatabaseName:);
+<span class="lineNum">     109 </span>            :         [initializer injectWithObject:@&quot;app_database_v2.sqlite&quot;];
+<span class="lineNum">     110 </span>            :     } properties:^(TyphoonDefinition* definition)
+<span class="lineNum">     111 </span>            :     {
+<span class="lineNum">     112 </span>            :         definition.scope = TyphoonScopeSingleton;
+<span class="lineNum">     113 </span>            :     }];
+<span class="lineNum">     114 </span>            : }
+<span class="lineNum">     115 </span>            : 
+<span class="lineNum">     116 </span>            : - (id)databaseQueue
+<span class="lineNum">     117 </span>            : {
+<span class="lineNum">     118 </span>            :     return [TyphoonDefinition withClass:[FMDatabaseQueue class] initialization:^(TyphoonInitializer* initializer)
+<span class="lineNum">     119 </span>            :     {
+<span class="lineNum">     120 </span>            :         initializer.selector = @selector(queue);
+<span class="lineNum">     121 </span>            :     } properties:^(TyphoonDefinition* definition)
+<span class="lineNum">     122 </span>            :     {
+<span class="lineNum">     123 </span>            :         definition.factory = [self sqliteManager];
+<span class="lineNum">     124 </span>            :     }];
+<span class="lineNum">     125 </span>            : }
+<span class="lineNum">     126 </span>            : @endcode
+<span class="lineNum">     127 </span>            : *
+<span class="lineNum">     128 </span>            : * @note If the factory method takes arguments, these are provided in the initializer block, just like a regular initializer method.
+<span class="lineNum">     129 </span>            : *
+<span class="lineNum">     130 </span>            : * @see injectProperty:withDefinition:selector: An alternative short-hand approach for no-args instances.
+<span class="lineNum">     131 </span>            : * @see injectProperty:withDefinition:keyPath: An alternative short-hand approach for no-args instances.
+<span class="lineNum">     132 </span>            : * @see TyphoonFactoryProvider - For creating factories where the configuration arguments are not known until runtime.
+<span class="lineNum">     133 </span>            : *
+<span class="lineNum">     134 </span>            : *
+<span class="lineNum">     135 </span>            : */
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 : @property(nonatomic, strong) TyphoonDefinition* factory;</span>
+<span class="lineNum">     137 </span>            : 
+<span class="lineNum">     138 </span>            : /**
+<span class="lineNum">     139 </span>            : * A parent component. When parent is defined the initializer and/or properties from a definition are inherited, unless overridden. Example:
+<span class="lineNum">     140 </span>            : *
+<span class="lineNum">     141 </span>            : @code
+<span class="lineNum">     142 </span>            : 
+<span class="lineNum">     143 </span>            : - (id)signUpClient
+<span class="lineNum">     144 </span>            : {
+<span class="lineNum">     145 </span>            :     return [TyphoonDefinition withClass:[SignUpClientDefaultImpl class] properties:^(TyphoonDefinition* definition)
+<span class="lineNum">     146 </span>            :     {
+<span class="lineNum">     147 </span>            :         definition.parent = [self abstractClient];
+<span class="lineNum">     148 </span>            :     }];
+<span class="lineNum">     149 </span>            : }
 <span class="lineNum">     150 </span>            : 
-<span class="lineNum">     151 </span>            : /**
-<span class="lineNum">     152 </span>            :  * Injects property as unsigned long.
-<span class="lineNum">     153 </span>            :  */
-<span class="lineNum">     154 </span>            : - (void)injectProperty:(SEL)selector withUnsignedLong:(unsigned long)unsignedLongValue;
-<span class="lineNum">     155 </span>            : 
-<span class="lineNum">     156 </span>            : /**
-<span class="lineNum">     157 </span>            : * Injects property as long long.
-<span class="lineNum">     158 </span>            : */
-<span class="lineNum">     159 </span>            : - (void)injectProperty:(SEL)selector withLongLong:(long long)longLongValue;
+<span class="lineNum">     151 </span>            : - (id)storeClient
+<span class="lineNum">     152 </span>            : {
+<span class="lineNum">     153 </span>            :     return [TyphoonDefinition withClass:[StoreClientDefaultImpl class] properties:^(TyphoonDefinition* definition)
+<span class="lineNum">     154 </span>            :     {
+<span class="lineNum">     155 </span>            :         definition.parent = [self abstractClient];
+<span class="lineNum">     156 </span>            :         [definition injectProperty:@selector(storeDao) withDefinition:[_persistenceComponents storeDao]];
+<span class="lineNum">     157 </span>            :         [definition injectProperty:@selector(couponDao) withDefinition:[_persistenceComponents couponDao]];
+<span class="lineNum">     158 </span>            :     }];
+<span class="lineNum">     159 </span>            : }
 <span class="lineNum">     160 </span>            : 
-<span class="lineNum">     161 </span>            : /**
-<span class="lineNum">     162 </span>            :  * Injects property as unsigned long long.
-<span class="lineNum">     163 </span>            :  */
-<span class="lineNum">     164 </span>            : - (void)injectProperty:(SEL)selector withUnsignedLongLong:(unsigned long long)unsignedLongLongValue;
-<span class="lineNum">     165 </span>            : 
-<span class="lineNum">     166 </span>            : /**
-<span class="lineNum">     167 </span>            : * Injects property as unsigned char.
-<span class="lineNum">     168 </span>            : */
-<span class="lineNum">     169 </span>            : - (void)injectProperty:(SEL)selector withUnsignedChar:(unsigned char)unsignedCharValue;
-<span class="lineNum">     170 </span>            : 
-<span class="lineNum">     171 </span>            : /**
-<span class="lineNum">     172 </span>            : * Injects property as float.
-<span class="lineNum">     173 </span>            : */
-<span class="lineNum">     174 </span>            : - (void)injectProperty:(SEL)selector withFloat:(float)floatValue;
-<span class="lineNum">     175 </span>            : 
-<span class="lineNum">     176 </span>            : /**
-<span class="lineNum">     177 </span>            : * Injects property as double.
-<span class="lineNum">     178 </span>            : */
-<span class="lineNum">     179 </span>            : - (void)injectProperty:(SEL)selector withDouble:(double)doubleValue;
-<span class="lineNum">     180 </span>            : 
-<span class="lineNum">     181 </span>            : /**
-<span class="lineNum">     182 </span>            : * Injects property as boolean.
-<span class="lineNum">     183 </span>            : */
-<span class="lineNum">     184 </span>            : - (void)injectProperty:(SEL)selector withBool:(BOOL)boolValue;
-<span class="lineNum">     185 </span>            : 
-<span class="lineNum">     186 </span>            : /**
-<span class="lineNum">     187 </span>            :  * Injects property as integeger.
-<span class="lineNum">     188 </span>            :  */
-<span class="lineNum">     189 </span>            : - (void)injectProperty:(SEL)selector withInteger:(NSInteger)integerValue;
-<span class="lineNum">     190 </span>            : 
-<span class="lineNum">     191 </span>            : /**
-<span class="lineNum">     192 </span>            :  * Injects property as unsigned integer.
-<span class="lineNum">     193 </span>            :  */
-<span class="lineNum">     194 </span>            : - (void)injectProperty:(SEL)selector withUnsignedInteger:(NSUInteger)unsignedIntegerValue;
-<span class="lineNum">     195 </span>            : 
-<span class="lineNum">     196 </span>            : /**
-<span class="lineNum">     197 </span>            : * Injects property as class.
-<span class="lineNum">     198 </span>            : */
-<span class="lineNum">     199 </span>            : - (void)injectProperty:(SEL)selector withClass:(Class)classValue;
+<span class="lineNum">     161 </span>            : - (id)abstractClient
+<span class="lineNum">     162 </span>            : {
+<span class="lineNum">     163 </span>            :     return [TyphoonDefinition withClass:[ClientBase class] properties:^(TyphoonDefinition* definition)
+<span class="lineNum">     164 </span>            :     {
+<span class="lineNum">     165 </span>            :         [definition injectProperty:@selector(serviceUrl) withValueAsText:@&quot;${client.serviceUrl}&quot;];
+<span class="lineNum">     166 </span>            :         [definition injectProperty:@selector(networkMonitor) withDefinition:[self internetMonitor]];
+<span class="lineNum">     167 </span>            :         [definition injectProperty:@selector(allowInvalidSSLCertificates) withValueAsText:@&quot;${client.allowInvalidSSLCertificates}&quot;];
+<span class="lineNum">     168 </span>            :         [definition injectProperty:@selector(logRequests) withValueAsText:@&quot;${client.logRequests}&quot;];
+<span class="lineNum">     169 </span>            :         [definition injectProperty:@selector(logResponses) withValueAsText:@&quot;${client.logResponses}&quot;];
+<span class="lineNum">     170 </span>            :     }];
+<span class="lineNum">     171 </span>            : }
+<span class="lineNum">     172 </span>            : 
+<span class="lineNum">     173 </span>            : @endcode
+<span class="lineNum">     174 </span>            : *
+<span class="lineNum">     175 </span>            : * @see abstract
+<span class="lineNum">     176 </span>            : *
+<span class="lineNum">     177 </span>            : */
+<span class="lineNum">     178 </span><span class="lineCov">        429 : @property(nonatomic, strong) TyphoonDefinition* parent;</span>
+<span class="lineNum">     179 </span>            : 
+<span class="lineNum">     180 </span>            : /**
+<span class="lineNum">     181 </span>            : * If set, designates that a component can not be instantiated directly.
+<span class="lineNum">     182 </span>            : *
+<span class="lineNum">     183 </span>            : * @see parent
+<span class="lineNum">     184 </span>            : */
+<span class="lineNum">     185 </span><span class="lineCov">        335 : @property(nonatomic) BOOL abstract;</span>
+<span class="lineNum">     186 </span>            : 
+<span class="lineNum">     187 </span>            : 
+<span class="lineNum">     188 </span>            : /**
+<span class="lineNum">     189 </span>            :  * Say if the component (scoped as a singleton) should be lazily instantiated.
+<span class="lineNum">     190 </span>            :  */
+<span class="lineNum">     191 </span><span class="lineCov">       1828 : @property(nonatomic, assign, getter = isLazy) BOOL lazy;</span>
+<span class="lineNum">     192 </span>            : 
+<span class="lineNum">     193 </span>            : 
+<span class="lineNum">     194 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">     195 </span>            : #pragma mark Factory methods
+<span class="lineNum">     196 </span>            : 
+<span class="lineNum">     197 </span>            : + (TyphoonDefinition*)withClass:(Class)clazz;
+<span class="lineNum">     198 </span>            : 
+<span class="lineNum">     199 </span>            : + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization properties:(TyphoonDefinitionBlock)properties;
 <span class="lineNum">     200 </span>            : 
-<span class="lineNum">     201 </span>            : /**
-<span class="lineNum">     202 </span>            : * Injects property as selector.
-<span class="lineNum">     203 </span>            : */
-<span class="lineNum">     204 </span>            : - (void)injectProperty:(SEL)selector withSelector:(SEL)selectorValue;
-<span class="lineNum">     205 </span>            : 
+<span class="lineNum">     201 </span>            : + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization;
+<span class="lineNum">     202 </span>            : 
+<span class="lineNum">     203 </span>            : + (TyphoonDefinition*)withClass:(Class)clazz properties:(TyphoonDefinitionBlock)properties;
+<span class="lineNum">     204 </span>            : 
+<span class="lineNum">     205 </span>            : + (TyphoonDefinition*)withClass:(Class)clazz factory:(TyphoonDefinition*)definition selector:(SEL)selector;
 <span class="lineNum">     206 </span>            : 
-<span class="lineNum">     207 </span>            : - (NSSet*)injectedProperties;
-<span class="lineNum">     208 </span>            : 
-<span class="lineNum">     209 </span>            : @end
+<span class="lineNum">     207 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">     208 </span>            : #pragma mark Injection
+<span class="lineNum">     209 </span>            : 
+<span class="lineNum">     210 </span>            : /**
+<span class="lineNum">     211 </span>            : * Injects property with a component from the container that matches the type (class or protocol) of the property.
+<span class="lineNum">     212 </span>            : */
+<span class="lineNum">     213 </span>            : - (void)injectProperty:(SEL)withSelector;
+<span class="lineNum">     214 </span>            : 
+<span class="lineNum">     215 </span>            : /**
+<span class="lineNum">     216 </span>            : * Injects property with the given definition.
+<span class="lineNum">     217 </span>            : */
+<span class="lineNum">     218 </span>            : - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition;
+<span class="lineNum">     219 </span>            : 
+<span class="lineNum">     220 </span>            : /**
+<span class="lineNum">     221 </span>            :  * Injects property with result of invocation factorySelector on factoryDefinition.
+<span class="lineNum">     222 </span>            :  */
+<span class="lineNum">     223 </span>            : - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)factoryDefinition selector:(SEL)factorySelector;
+<span class="lineNum">     224 </span>            : 
+<span class="lineNum">     225 </span>            : /**
+<span class="lineNum">     226 </span>            :  * Injects property with result of invocation valueForKeyPath with given keyPath on factoryDefinition.
+<span class="lineNum">     227 </span>            :  */
+<span class="lineNum">     228 </span>            : - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)factoryDefinition keyPath:(NSString*)keyPath;
+<span class="lineNum">     229 </span>            : 
+<span class="lineNum">     230 </span>            : /**
+<span class="lineNum">     231 </span>            : * Injects property with the given object instance. Auto-boxing can be used to injected primitive types, for example:
+<span class="lineNum">     232 </span>            : *
+<span class="lineNum">     233 </span>            : @code
+<span class="lineNum">     234 </span>            : 
+<span class="lineNum">     235 </span>            : [definition injectProperty:@selector(boolValue) withObjectInstance:@(YES)];
+<span class="lineNum">     236 </span>            : 
+<span class="lineNum">     237 </span>            : @endcode
+<span class="lineNum">     238 </span>            : */
+<span class="lineNum">     239 </span>            : - (void)injectProperty:(SEL)selector withObjectInstance:(id)instance;
+<span class="lineNum">     240 </span>            : 
+<span class="lineNum">     241 </span>            : /**
+<span class="lineNum">     242 </span>            : * Injects property with the value represented by the given text. The text will be used to create an instance of a class matching the
+<span class="lineNum">     243 </span>            : * required type.
+<span class="lineNum">     244 </span>            : *
+<span class="lineNum">     245 </span>            : * @see TyphoonTypeConverterRegistry for details on declaring your own type converters.
+<span class="lineNum">     246 </span>            : */
+<span class="lineNum">     247 </span>            : - (void)injectProperty:(SEL)withSelector withValueAsText:(NSString*)textValue;
+<span class="lineNum">     248 </span>            : 
+<span class="lineNum">     249 </span>            : 
+<span class="lineNum">     250 </span>            : /**
+<span class="lineNum">     251 </span>            : * Injects property as a collection.
+<span class="lineNum">     252 </span>            : */
+<span class="lineNum">     253 </span>            : - (void)injectProperty:(SEL)withSelector asCollection:(void (^)(TyphoonPropertyInjectedAsCollection*))collectionValues;
+<span class="lineNum">     254 </span>            : 
+<span class="lineNum">     255 </span>            : 
+<span class="lineNum">     256 </span>            : - (NSSet*)injectedProperties;
+<span class="lineNum">     257 </span>            : 
+<span class="lineNum">     258 </span>            : @end
 </pre>
       </td>
     </tr>

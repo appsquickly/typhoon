@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-01-26</td>
+            <td class="headerValue">2014-01-27</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -84,15 +84,15 @@
 <span class="lineNum">      26 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      27 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span><span class="lineCov">       1571 : - (NSString*)factoryReference</span>
+<span class="lineNum">      29 </span><span class="lineCov">       1513 : - (NSString*)factoryReference</span>
 <span class="lineNum">      30 </span>            : {
-<span class="lineNum">      31 </span><span class="lineCov">       1571 :     return _factoryReference;</span>
-<span class="lineNum">      32 </span><span class="lineCov">       1571 : }</span>
+<span class="lineNum">      31 </span><span class="lineCov">       1513 :     return _factoryReference;</span>
+<span class="lineNum">      32 </span><span class="lineCov">       1513 : }</span>
 <span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span><span class="lineCov">         29 : - (void)setFactoryReference:(NSString*)factoryReference;</span>
+<span class="lineNum">      34 </span><span class="lineCov">         28 : - (void)setFactoryReference:(NSString*)factoryReference;</span>
 <span class="lineNum">      35 </span>            : {
-<span class="lineNum">      36 </span><span class="lineCov">         29 :     _factoryReference = factoryReference;</span>
-<span class="lineNum">      37 </span><span class="lineCov">         29 : }</span>
+<span class="lineNum">      36 </span><span class="lineCov">         28 :     _factoryReference = factoryReference;</span>
+<span class="lineNum">      37 </span><span class="lineCov">         28 : }</span>
 <span class="lineNum">      38 </span>            : 
 <span class="lineNum">      39 </span><span class="lineCov">        187 : - (NSSet*)componentsInjectedByValue;</span>
 <span class="lineNum">      40 </span>            : {
@@ -105,11 +105,11 @@
 <span class="lineNum">      47 </span><span class="lineCov">        187 : }</span>
 <span class="lineNum">      48 </span>            : 
 <span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span><span class="lineCov">        803 : - (void)injectProperty:(SEL)selector withReference:(NSString *)reference</span>
+<span class="lineNum">      50 </span><span class="lineCov">        766 : - (void)injectProperty:(SEL)selector withReference:(NSString *)reference</span>
 <span class="lineNum">      51 </span>            : {
-<span class="lineNum">      52 </span><span class="lineCov">        803 :     [_injectedProperties addObject:[[TyphoonPropertyInjectedByReference alloc]</span>
-<span class="lineNum">      53 </span><span class="lineCov">        803 :             initWithName:NSStringFromSelector(selector) reference:reference]];</span>
-<span class="lineNum">      54 </span><span class="lineCov">        803 : }</span>
+<span class="lineNum">      52 </span><span class="lineCov">        766 :     [_injectedProperties addObject:[[TyphoonPropertyInjectedByReference alloc]</span>
+<span class="lineNum">      53 </span><span class="lineCov">        766 :             initWithName:NSStringFromSelector(selector) reference:reference]];</span>
+<span class="lineNum">      54 </span><span class="lineCov">        766 : }</span>
 <span class="lineNum">      55 </span>            : 
 <span class="lineNum">      56 </span><span class="lineCov">        188 : - (NSSet*)propertiesInjectedByValue</span>
 <span class="lineNum">      57 </span>            : {
@@ -126,10 +126,10 @@
 <span class="lineNum">      68 </span><span class="lineCov">          1 :     return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByReference class]];</span>
 <span class="lineNum">      69 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      70 </span>            : 
-<span class="lineNum">      71 </span><span class="lineCov">        453 : - (void)addInjectedProperty:(TyphoonAbstractInjectedProperty*)property</span>
+<span class="lineNum">      71 </span><span class="lineCov">        432 : - (void)addInjectedProperty:(TyphoonAbstractInjectedProperty*)property</span>
 <span class="lineNum">      72 </span>            : {
-<span class="lineNum">      73 </span><span class="lineCov">        453 :     [_injectedProperties addObject:property];</span>
-<span class="lineNum">      74 </span><span class="lineCov">        453 : }</span>
+<span class="lineNum">      73 </span><span class="lineCov">        432 :     [_injectedProperties addObject:property];</span>
+<span class="lineNum">      74 </span><span class="lineCov">        432 : }</span>
 <span class="lineNum">      75 </span>            : 
 <span class="lineNum">      76 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      77 </span>            : #pragma mark - Private Methods

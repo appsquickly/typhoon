@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-01-26</td>
+            <td class="headerValue">2014-01-27</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -129,7 +129,7 @@
 <span class="lineNum">      71 </span><span class="lineCov">          2 :         TyphoonDefinition* patchFactory =</span>
 <span class="lineNum">      72 </span><span class="lineCov">          2 :                 [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:[self patchFactoryNameForKey:key]];</span>
 <span class="lineNum">      73 </span><span class="lineCov">          2 :         patchFactory.initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithObject:)];</span>
-<span class="lineNum">      74 </span><span class="lineCov">          2 :         [patchFactory.initializer injectWithObject:[_patches objectForKey:key]];</span>
+<span class="lineNum">      74 </span><span class="lineCov">          2 :         [patchFactory.initializer injectWithObjectInstance:[_patches objectForKey:key]];</span>
 <span class="lineNum">      75 </span><span class="lineCov">          2 :         [newDefinitions addObject:patchFactory];</span>
 <span class="lineNum">      76 </span><span class="lineCov">          8 :     }</span>
 <span class="lineNum">      77 </span><span class="lineCov">          2 :     LogDebug(@&quot;New definitions to register: %@&quot;, newDefinitions);</span>
