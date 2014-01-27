@@ -10,9 +10,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
+@class TyphoonTypeDescriptor;
 
 @interface NSObject (PropertyInjection)
 
-- (void) injectValue:(id)value forPropertyName:(NSString *)propertyName;
+- (void) injectValue:(id)value forPropertyName:(NSString *)propertyName withType:(TyphoonTypeDescriptor *)type;
 
 @end

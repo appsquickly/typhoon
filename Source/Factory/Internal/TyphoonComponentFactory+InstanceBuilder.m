@@ -45,7 +45,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonStackItem.h"
 #import "NSObject+PropertyInjection.h"
 
-#define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type)[NSException raise:NSInvalidArgumentException \
+#define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type)[NSException raise:@"NSUnknownKeyException" \
 format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",property.name, [instance class]]
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
@@ -196,23 +196,24 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 - (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(TyphoonAbstractInjectedProperty*)property
 {
-    id valueToInject = [self valueToInjectProperty:property onInstance:instance];
+    TyphoonTypeDescriptor* propertyType = [instance typeForPropertyWithName:property.name];
+    AssertTypeDescriptionForPropertyOnInstance(propertyType, property, instance);
+    
+    id valueToInject = [self valueToInjectProperty:property withType:propertyType onInstance:instance];
+    
     if (valueToInject)
     {
-        [(NSObject*)instance injectValue:valueToInject forPropertyName:property.name];
+        [(NSObject*)instance injectValue:valueToInject forPropertyName:property.name withType:propertyType];
     }
 }
 
-- (id)valueToInjectProperty:(TyphoonAbstractInjectedProperty*)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance
+- (id)valueToInjectProperty:(TyphoonAbstractInjectedProperty*)property withType:(TyphoonTypeDescriptor*)type onInstance:(id <TyphoonIntrospectiveNSObject>)instance
 {
     id valueToInject = nil;
 
     if (property.injectionType == TyphoonPropertyInjectionTypeByType)
     {
-        TyphoonTypeDescriptor* typeDescriptor = [instance typeForPropertyWithName:property.name];
-        AssertTypeDescriptionForPropertyOnInstance(typeDescriptor, property, instance);
-
-        TyphoonDefinition* definition = [self definitionForType:[typeDescriptor classOrProtocol]];
+        TyphoonDefinition* definition = [self definitionForType:[type classOrProtocol]];
 
         [self evaluateCircularDependency:definition.key propertyName:property.name instance:instance];
         if (![self propertyIsCircular:property onInstance:instance])
@@ -251,11 +252,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeAsStringRepresentation)
     {
-        TyphoonTypeDescriptor* typeDescriptor = [instance typeForPropertyWithName:property.name];
-        AssertTypeDescriptionForPropertyOnInstance(typeDescriptor, property, instance);
-
         TyphoonPropertyInjectedWithStringRepresentation* valueProperty = (TyphoonPropertyInjectedWithStringRepresentation*)property;
-        valueToInject = [self valueFromTextValue:valueProperty.textValue requiredType:typeDescriptor];
+        valueToInject = [self valueFromTextValue:valueProperty.textValue requiredType:type];
     }
 
     return valueToInject;

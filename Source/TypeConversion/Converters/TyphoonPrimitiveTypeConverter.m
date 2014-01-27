@@ -154,9 +154,17 @@
             value = [NSValue valueWithBytes:&cString objCType:@encode(const char *)];
             break;
         }
-        default:
-            [NSException raise:NSInvalidArgumentException format:@"Type for %@ is not supported.", requiredType];
+        case TyphoonPrimitiveTypeUnknown:
+        case TyphoonPrimitiveTypeVoid: {
+            /* Inject all pointer to void and unknown pointers just like void pointers */
+            if (requiredType.isPointer) {
+                void *pointer = [self convertToInt:textValue];
+                value = [NSValue valueWithBytes:pointer objCType:@encode(void *)];
+            } else {
+                [NSException raise:NSInvalidArgumentException format:@"Type for %@ is not supported.", requiredType];
+            }
             break;
+        }
     }
     return value;
 }

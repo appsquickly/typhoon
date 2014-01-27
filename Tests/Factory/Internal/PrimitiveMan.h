@@ -10,7 +10,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
+typedef struct {
+    int fieldA;
+    long fieldB;
+} PrimitiveManStruct;
 
 @interface PrimitiveMan : NSObject
 
@@ -48,5 +53,9 @@
 @property (nonatomic, assign) char *cString;
 @property (nonatomic, assign) NSInteger integerValue;
 @property (nonatomic, assign) NSUInteger unsignedIntegerValue;
+@property (nonatomic, assign) CGRect cgRect;
+@property (nonatomic, assign) void *pointer;
+@property (nonatomic, assign) PrimitiveManStruct *unknownPointer;
+@property (nonatomic, assign) NSValue *pointerInsideValue;
 
 @end
