@@ -23,7 +23,7 @@
 
 - (TyphoonStackItem*)peek;
 
-- (TyphoonStackItem*)itemForKey:(NSString*)key;
+- (TyphoonStackItem*)peekWithKey:(NSString*)key;
 
 - (BOOL)isEmpty;
 

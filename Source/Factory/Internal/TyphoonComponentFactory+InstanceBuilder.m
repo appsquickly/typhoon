@@ -151,7 +151,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 {
     if ([self alreadyResolvingKey:definition.key])
     {
-        return [_currentlyResolvingReferences itemForKey:definition.key].instance;
+        return [_currentlyResolvingReferences peekWithKey:definition.key].instance;
     }
     return [self buildInstanceWithDefinition:definition];
 }
@@ -159,7 +159,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 - (BOOL)alreadyResolvingKey:(NSString*)key
 {
-    return [_currentlyResolvingReferences itemForKey:key] != nil;
+    return [_currentlyResolvingReferences peekWithKey:key] != nil;
 }
 
 /* ====================================================================================================================================== */
@@ -286,7 +286,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         if (!propertyValue)
         {
             NSString* componentKey = [circularDependentProperties objectForKey:propertyName];
-            id reference = [_currentlyResolvingReferences itemForKey:componentKey].instance;
+            id reference = [_currentlyResolvingReferences peekWithKey:componentKey].instance;
             [(NSObject*)instance setValue:reference forKey:propertyName];
         }
     }

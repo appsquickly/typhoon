@@ -69,7 +69,7 @@
     return [_storage lastObject];
 }
 
-- (TyphoonStackItem*)itemForKey:(NSString*)key
+- (TyphoonStackItem*)peekWithKey:(NSString*)key
 {
     for (TyphoonStackItem* item in [_storage reverseObjectEnumerator])
     {
