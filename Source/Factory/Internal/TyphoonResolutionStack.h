@@ -13,7 +13,7 @@
 
 @class TyphoonStackItem;
 
-@interface TyphoonComponentSolvingStack : NSObject
+@interface TyphoonResolutionStack : NSObject
 
 + (instancetype)stack;
 

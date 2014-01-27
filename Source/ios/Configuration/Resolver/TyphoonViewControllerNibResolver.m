@@ -43,7 +43,7 @@
 {
     TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithNibName:bundle:)];
     [initializer injectWithValueAsText:[self resolveNibNameForClass:definition.type] requiredTypeOrNil:[NSString class]];
-    [initializer injectWithObject:[NSBundle mainBundle]];
+    [initializer injectWithObjectInstance:[NSBundle mainBundle]];
     definition.initializer = initializer;
 }
 

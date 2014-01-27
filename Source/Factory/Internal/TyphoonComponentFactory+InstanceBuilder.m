@@ -41,11 +41,12 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonComponentFactoryAware.h"
 #import "TyphoonParameterInjectedAsCollection.h"
 #import "TyphoonComponentPostProcessor.h"
-#import "TyphoonComponentSolvingStack.h"
+#import "TyphoonResolutionStack.h"
 #import "TyphoonStackItem.h"
 #import "NSObject+PropertyInjection.h"
 
-#define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type)[NSException raise:NSInvalidArgumentException format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",property.name, [instance class]]
+#define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type)[NSException raise:NSInvalidArgumentException \
+format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",property.name, [instance class]]
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 

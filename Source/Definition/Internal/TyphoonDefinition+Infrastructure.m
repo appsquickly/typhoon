@@ -42,7 +42,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     {
 
         initializer.selector = @selector(configurerWithResourceList:);
-        [initializer injectWithObject:resources];
+        [initializer injectWithObjectInstance:resources];
 
     }];
     definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), [[resources firstObject] description]];

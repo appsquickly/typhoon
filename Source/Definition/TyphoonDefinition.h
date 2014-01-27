@@ -53,13 +53,135 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 }
 
 @property(nonatomic, readonly) Class type;
+
+/**
+* The key of the component. A key is useful when multiple configuration of the same class or protocol are desired - for example
+* MasterCardPaymentClient and VisaPaymentClient.
+*
+* If using the TyphoonBlockComponentFactory style of assembly, the key is automatically generated based on the selector name of the
+* component, thus avoiding "magic strings" and providing better integration with IDE refactoring tools.
+*/
 @property(nonatomic, strong) NSString* key;
+
+/**
+* Describes the initializer - selector name and arguments that will be used to instantiate this component.
+*
+* @note An initializer can be an instance method, a class method, or even a reference to another component's method (see factory property).
+*
+* @see factory
+*/
 @property(nonatomic, strong) TyphoonInitializer* initializer;
+
+/**
+* A custom callback method that is invoked before property injection occurs. Use this method as an alternative to
+* TyphoonPropertyInjectionDelegate if the component being instantiated is a 3rd party library, or if a direct dependency on Typhoon is not
+* desired.
+*
+* @see TyphoonPropertyInjectionDelegate
+*/
 @property(nonatomic) SEL beforePropertyInjection;
+
+/**
+* A custom callback method that is invoked after property injection occurs. Use this method as an alternative to
+* TyphoonPropertyInjectionDelegate if the component being instantiated is a 3rd party library, or if a direct dependency on Typhoon is not
+* desired.
+*
+* @see TyphoonPropertyInjectionDelegate
+*/
 @property(nonatomic) SEL afterPropertyInjection;
+
+/**
+* The scope of the component, default being TyphoonScopeObjectGraph.
+*/
 @property(nonatomic) TyphoonScope scope;
+
+
+/**
+* A component that will produce an instance (with or without parameters) of this component. For example:
+*
+@code
+
+- (id)sqliteManager
+{
+    return [TyphoonDefinition withClass:[VBSqliteManager class] initialization:^(TyphoonInitializer* initializer)
+    {
+        initializer.selector = @selector(initWithDatabaseName:);
+        [initializer injectWithObject:@"app_database_v2.sqlite"];
+    } properties:^(TyphoonDefinition* definition)
+    {
+        definition.scope = TyphoonScopeSingleton;
+    }];
+}
+
+- (id)databaseQueue
+{
+    return [TyphoonDefinition withClass:[FMDatabaseQueue class] initialization:^(TyphoonInitializer* initializer)
+    {
+        initializer.selector = @selector(queue);
+    } properties:^(TyphoonDefinition* definition)
+    {
+        definition.factory = [self sqliteManager];
+    }];
+}
+@endcode
+*
+* @note If the factory method takes arguments, these are provided in the initializer block, just like a regular initializer method.
+*
+* @see injectProperty:withDefinition:selector: An alternative short-hand approach for no-args instances.
+* @see injectProperty:withDefinition:keyPath: An alternative short-hand approach for no-args instances.
+* @see TyphoonFactoryProvider - For creating factories where the configuration arguments are not known until runtime.
+*
+*
+*/
 @property(nonatomic, strong) TyphoonDefinition* factory;
+
+/**
+* A parent component. When parent is defined the initializer and/or properties from a definition are inherited, unless overridden. Example:
+*
+@code
+
+- (id)signUpClient
+{
+    return [TyphoonDefinition withClass:[SignUpClientDefaultImpl class] properties:^(TyphoonDefinition* definition)
+    {
+        definition.parent = [self abstractClient];
+    }];
+}
+
+- (id)storeClient
+{
+    return [TyphoonDefinition withClass:[StoreClientDefaultImpl class] properties:^(TyphoonDefinition* definition)
+    {
+        definition.parent = [self abstractClient];
+        [definition injectProperty:@selector(storeDao) withDefinition:[_persistenceComponents storeDao]];
+        [definition injectProperty:@selector(couponDao) withDefinition:[_persistenceComponents couponDao]];
+    }];
+}
+
+- (id)abstractClient
+{
+    return [TyphoonDefinition withClass:[ClientBase class] properties:^(TyphoonDefinition* definition)
+    {
+        [definition injectProperty:@selector(serviceUrl) withValueAsText:@"${client.serviceUrl}"];
+        [definition injectProperty:@selector(networkMonitor) withDefinition:[self internetMonitor]];
+        [definition injectProperty:@selector(allowInvalidSSLCertificates) withValueAsText:@"${client.allowInvalidSSLCertificates}"];
+        [definition injectProperty:@selector(logRequests) withValueAsText:@"${client.logRequests}"];
+        [definition injectProperty:@selector(logResponses) withValueAsText:@"${client.logResponses}"];
+    }];
+}
+
+@endcode
+*
+* @see abstract
+*
+*/
 @property(nonatomic, strong) TyphoonDefinition* parent;
+
+/**
+* If set, designates that a component can not be instantiated directly.
+*
+* @see parent
+*/
 @property(nonatomic) BOOL abstract;
 
 
@@ -106,7 +228,13 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)factoryDefinition keyPath:(NSString*)keyPath;
 
 /**
-* Injects property with the given object instance.
+* Injects property with the given object instance. Auto-boxing can be used to injected primitive types, for example:
+*
+@code
+
+[definition injectProperty:@selector(boolValue) withObjectInstance:@(YES)];
+
+@endcode
 */
 - (void)injectProperty:(SEL)selector withObjectInstance:(id)instance;
 

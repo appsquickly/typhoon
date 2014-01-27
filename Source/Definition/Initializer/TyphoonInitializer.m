@@ -220,7 +220,7 @@
     }
 }
 
-- (void)injectWithObject:(id)value
+- (void)injectWithObjectInstance:(id)value;
 {
     [self injectParameterAtIndex:[_injectedParameters count] withObject:value];
 }

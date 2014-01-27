@@ -18,7 +18,7 @@
 #import "TyphoonDefinitionRegisterer.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "TyphoonOrdered.h"
-#import "TyphoonComponentSolvingStack.h"
+#import "TyphoonResolutionStack.h"
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
 
@@ -50,7 +50,7 @@ static TyphoonComponentFactory* defaultFactory;
         _registry = [[NSMutableArray alloc] init];
         _singletons = [[NSMutableDictionary alloc] init];
         _objectGraphSharedInstances = [[NSMutableDictionary alloc] init];
-        _currentlyResolvingReferences = [TyphoonComponentSolvingStack stack];
+        _currentlyResolvingReferences = [TyphoonResolutionStack stack];
         _postProcessors = [[NSMutableArray alloc] init];
         _componentPostProcessors = [[NSMutableArray alloc] init];
     }

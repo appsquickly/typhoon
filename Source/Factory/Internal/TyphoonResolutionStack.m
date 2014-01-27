@@ -10,12 +10,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import "TyphoonComponentSolvingStack.h"
+#import "TyphoonResolutionStack.h"
 #import "TyphoonStackItem.h"
 #import "TyphoonDefinition.h"
-#import "OCLogTemplate.h"
 
-@implementation TyphoonComponentSolvingStack
+@implementation TyphoonResolutionStack
 {
     NSMutableArray* _storage;
 }
@@ -54,7 +53,6 @@
     }
     if ([self itemForKey:stackItem.definition.key])
     {
-        LogDebug(@"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ already in!!!!!!!!!!");
         return;
     }
     [_storage addObject:stackItem];
