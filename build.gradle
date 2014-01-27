@@ -20,7 +20,7 @@ task test(type: XcodeTestTask) {
 
     runWith new XcodeWorkspaceTestSuite(
             workspace: 'Typhoon.xcworkspace',
-            scheme:'iOS-Typhoon'
+            scheme:'iOS-Tests'
     )
 
 	platform new iOSSimulatorTestPlatform(
