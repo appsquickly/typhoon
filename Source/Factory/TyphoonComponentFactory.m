@@ -19,6 +19,7 @@
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "TyphoonOrdered.h"
 #import "TyphoonResolutionStack.h"
+#import "TyphoonParentReferenceHydratingPostProcessor.h"
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
 
@@ -53,6 +54,7 @@ static TyphoonComponentFactory* defaultFactory;
         _currentlyResolvingReferences = [TyphoonResolutionStack stack];
         _postProcessors = [[NSMutableArray alloc] init];
         _componentPostProcessors = [[NSMutableArray alloc] init];
+        [self attachPostProcessor:[[TyphoonParentReferenceHydratingPostProcessor alloc] init]];
     }
     return self;
 }
@@ -222,7 +224,6 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (void)_load
 {
-    [self hydrateParentReferences];
     [self preparePostProcessors];
     [self applyPostProcessors];
     [self instantiateEagerSingletons];
@@ -246,21 +247,6 @@ static TyphoonComponentFactory* defaultFactory;
     }];
 }
 
-
-/**
-* Sets the full-definition for any parent definitions that have been provided by key-only.
-*/
-- (void)hydrateParentReferences
-{
-    [_registry enumerateObjectsUsingBlock:^(TyphoonDefinition* definition, NSUInteger idx, BOOL* stop)
-    {
-        if (definition.parent)
-        {
-            TyphoonDefinition* parentDefinition = [self definitionForKey:definition.parent.key];
-            [definition setParent:parentDefinition];
-        }
-    }];
-}
 
 - (void)preparePostProcessors
 {

@@ -60,11 +60,12 @@
     // Try/catch to make the correct test fail if converterFor: throws an exception because of missing converter.
     @try
     {
-        TyphoonTypeDescriptor *nullDescriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:[NSNull class]];
-        id<TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:nullDescriptor];
+        TyphoonTypeDescriptor* nullDescriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:[NSNull class]];
+        id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:nullDescriptor];
         [[TyphoonTypeConverterRegistry shared] unregister:converter];
     }
-    @catch (NSException *exception) {}
+    @catch (NSException* exception)
+    {}
 }
 
 /* ====================================================================================================================================== */
@@ -174,7 +175,7 @@
 
 - (void)test_post_processor_component_recognized
 {
-    assertThatUnsignedLong([_infrastructureComponentsFactory.postProcessors count], equalToInt(1));
+    assertThatUnsignedLong([_infrastructureComponentsFactory.postProcessors count], equalToInt(2)); //Attached + internal processors
 }
 
 - (void)test_resolves_property_values_from_multiple_files
@@ -186,8 +187,8 @@
 
 - (void)test_type_converter_recognized
 {
-    TyphoonTypeDescriptor *nullDescriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:[NSNull class]];
-    id<TyphoonTypeConverter> nullConverter = [[TyphoonTypeConverterRegistry shared] converterFor:nullDescriptor];
+    TyphoonTypeDescriptor* nullDescriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:[NSNull class]];
+    id <TyphoonTypeConverter> nullConverter = [[TyphoonTypeConverterRegistry shared] converterFor:nullDescriptor];
     assertThat(nullConverter, notNilValue());
 }
 

@@ -209,7 +209,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
 {
     [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorMock class]]];
     assertThatUnsignedLong([[_componentFactory registry] count], equalToUnsignedLong(0));
-    assertThatUnsignedLong([[_componentFactory postProcessors] count], equalToUnsignedLong(1));
+    assertThatUnsignedLong([[_componentFactory postProcessors] count], equalToUnsignedLong(2)); //Attached + internal processors
 }
 
 - (void)test_post_processors_applied
@@ -220,10 +220,13 @@ static NSString* const DEFAULT_QUEST = @"quest";
 
     [_componentFactory load];
 
-    assertThatUnsignedLong([[_componentFactory postProcessors] count], equalToUnsignedLong(2));
+    assertThatUnsignedLong([[_componentFactory postProcessors] count], equalToUnsignedLong(3)); //Attached + internal processors
     for (TyphoonComponentFactoryPostProcessorMock* mock in _componentFactory.postProcessors)
     {
-        assertThatBool(mock.postProcessingCalled, equalToBool(YES));
+        if ([mock isKindOfClass:[TyphoonComponentFactoryPostProcessorMock class]])
+        {
+            assertThatBool(mock.postProcessingCalled, equalToBool(YES));
+        }
     }
 }
 

@@ -197,6 +197,7 @@
 		BA79847EB9D7645F2DBE79EA /* TyphoonAssistedFactoryCreator.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798A15B345ACC999B3F98C /* TyphoonAssistedFactoryCreator.h */; };
 		BA7984BBE5CC2BEB9E15BB8B /* TyphoonDefinition+InstanceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798D287001AE0E60A38B3C /* TyphoonDefinition+InstanceBuilder.m */; };
 		BA7984C038C3E4C8284710D3 /* TyphoonDefinition+InstanceBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7988245EE2B4928CB5084A /* TyphoonDefinition+InstanceBuilder.h */; };
+		BA7984FC182683B6DA08DB6F /* TyphoonParentReferenceHydratingPostProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E9C35F725B504C22F74 /* TyphoonParentReferenceHydratingPostProcessor.m */; };
 		BA7984FE7AAC3984D8BFE7F8 /* TyphoonURLUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798414371EC7A9885C0DE2 /* TyphoonURLUtils.h */; };
 		BA798520440B17DB1AA9D6A6 /* TyphoonTypeConverterRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798DAAE13D2354A9CFD5E1 /* TyphoonTypeConverterRegistry.h */; };
 		BA798526D89FF6FBADDAFF24 /* TyphoonAssistedFactoryMethodCreator.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79835D5208A90F0FA7AB4A /* TyphoonAssistedFactoryMethodCreator.h */; };
@@ -208,6 +209,7 @@
 		BA79859A696638880299894C /* TyphoonAssistedFactoryBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798CB5CAC2E65EC14F9BB7 /* TyphoonAssistedFactoryBase.m */; };
 		BA79859BA58DCC1114144703 /* TyphoonAssistedFactoryMethodInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798D28664C02D91B12FE25 /* TyphoonAssistedFactoryMethodInitializer.m */; };
 		BA7985AEBF215FDCAD8E596A /* TyphoonAssistedFactoryMethodInitializer.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7983FF7CD42C90C8271670 /* TyphoonAssistedFactoryMethodInitializer.h */; };
+		BA7985B5DA487D945D8B0373 /* TyphoonParentReferenceHydratingPostProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7988CB0A04D544852FC120 /* TyphoonParentReferenceHydratingPostProcessor.h */; };
 		BA7985B6D9D2593F1AA717C4 /* TyphoonAssistedFactoryBase+TyphoonFactoryMethodClosure.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7988121D739939C9D5814D /* TyphoonAssistedFactoryBase+TyphoonFactoryMethodClosure.h */; };
 		BA7985BEB149B8CFBEF2D641 /* TyphoonAssistedFactoryMethodBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798A717F7E3F1E8910C5F7 /* TyphoonAssistedFactoryMethodBlock.h */; };
 		BA7985C15C0DBDA609ECB4A2 /* TyphoonInitializer+InstanceBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7983AE48FC83A325488609 /* TyphoonInitializer+InstanceBuilder.h */; };
@@ -218,6 +220,7 @@
 		BA798614161FD41D1F0AD3CB /* TyphoonPrimitiveTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798B9796F501DBFD50C563 /* TyphoonPrimitiveTypeConverter.h */; };
 		BA7986149A3BA0CF794B9C2A /* TyphoonPropertyPlaceholderConfigurer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7986F5550A87B611F2F376 /* TyphoonPropertyPlaceholderConfigurer.m */; };
 		BA798619A135767B6EA0D984 /* TyphoonAssistedFactoryBase.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79819A73FFA79C270217BD /* TyphoonAssistedFactoryBase.h */; };
+		BA79864216DDAED9AD0FBC11 /* TyphoonParentReferenceHydratingPostProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7988CB0A04D544852FC120 /* TyphoonParentReferenceHydratingPostProcessor.h */; };
 		BA79866D6D1A8FD607CF6F4E /* TyphoonDefinition+InstanceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798D287001AE0E60A38B3C /* TyphoonDefinition+InstanceBuilder.m */; };
 		BA79869E6884D3F82DFD7F95 /* TyphoonTypeDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798DE01D62ABB44B05EDC5 /* TyphoonTypeDescriptor.h */; };
 		BA7986B83924351349C6E421 /* TyphoonAssistedFactoryBase+TyphoonFactoryMethodClosure.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7988121D739939C9D5814D /* TyphoonAssistedFactoryBase+TyphoonFactoryMethodClosure.h */; };
@@ -301,6 +304,7 @@
 		BA798D852DA57FC04EAE9077 /* TyphoonNSURLTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7983B3D902D43E2EF858D0 /* TyphoonNSURLTypeConverter.m */; };
 		BA798DA01100FCD8AA272792 /* TyphoonXmlComponentFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7987602D56180375A9A626 /* TyphoonXmlComponentFactory.h */; };
 		BA798DA773591E3FFA4A5279 /* TyphoonAssistedFactoryMethodInitializerCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798F466A6F4D27253710ED /* TyphoonAssistedFactoryMethodInitializerCreator.m */; };
+		BA798DC1CBBC24F842E373C5 /* TyphoonParentReferenceHydratingPostProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E9C35F725B504C22F74 /* TyphoonParentReferenceHydratingPostProcessor.m */; };
 		BA798DDA5C9A9981E70B07AD /* TyphoonURLUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798414371EC7A9885C0DE2 /* TyphoonURLUtils.h */; };
 		BA798DFF7B2C8B84F995D7B6 /* TyphoonPassThroughTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79837B0F703441BFC231B3 /* TyphoonPassThroughTypeConverter.m */; };
 		BA798E325A228AB609809DD0 /* TyphoonAssistedFactoryParameterInjectedWithProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798DA58BC6995A0F59A098 /* TyphoonAssistedFactoryParameterInjectedWithProperty.h */; };
@@ -455,6 +459,7 @@
 		BA79882A81566B59CD4717ED /* TyphoonRXMLElement+XmlComponentFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TyphoonRXMLElement+XmlComponentFactory.m"; sourceTree = "<group>"; };
 		BA798884528183BF4E362CE6 /* TyphoonPatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonPatcher.m; sourceTree = "<group>"; };
 		BA7988CA4AED043D8C1CAB1C /* TyphoonStringUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonStringUtils.m; sourceTree = "<group>"; };
+		BA7988CB0A04D544852FC120 /* TyphoonParentReferenceHydratingPostProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonParentReferenceHydratingPostProcessor.h; sourceTree = "<group>"; };
 		BA7988D81E615CF122461784 /* A-Typhoon.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "A-Typhoon.pch"; sourceTree = "<group>"; };
 		BA7988EFBC64418EB9DD8329 /* TyphoonComponentFactoryPostProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonComponentFactoryPostProcessor.h; sourceTree = "<group>"; };
 		BA79890C0F10164E6B504106 /* TyphoonAutowire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAutowire.h; sourceTree = "<group>"; };
@@ -509,6 +514,7 @@
 		BA798E5F7CAF1D68FD9BC79A /* TyphoonResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonResource.h; sourceTree = "<group>"; };
 		BA798E8BA9484892C0095130 /* TyphoonAssistedFactoryMethodInitializerCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssistedFactoryMethodInitializerCreator.h; sourceTree = "<group>"; };
 		BA798E9231E17758ACF21ABA /* TyphoonAssistedFactoryMethodBlockCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssistedFactoryMethodBlockCreator.h; sourceTree = "<group>"; };
+		BA798E9C35F725B504C22F74 /* TyphoonParentReferenceHydratingPostProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonParentReferenceHydratingPostProcessor.m; sourceTree = "<group>"; };
 		BA798EC38BD60A8EFFA77F7D /* TyphoonAbstractInjectedProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAbstractInjectedProperty.m; sourceTree = "<group>"; };
 		BA798ECCA2A8FF669E2FF8D8 /* TyphoonAssistedFactoryCreatorOneFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssistedFactoryCreatorOneFactory.h; sourceTree = "<group>"; };
 		BA798EE3D6CA66E3FA457299 /* TyphoonAssistedFactoryMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssistedFactoryMethod.h; sourceTree = "<group>"; };
@@ -739,6 +745,8 @@
 				BA798FC918C219BF4F199085 /* TyphoonResolutionStack.h */,
 				BA7981BE9FC036F9CB30E1F9 /* TyphoonStackItem.m */,
 				BA798AA10B9FA9B3D53146C0 /* TyphoonStackItem.h */,
+				BA798E9C35F725B504C22F74 /* TyphoonParentReferenceHydratingPostProcessor.m */,
+				BA7988CB0A04D544852FC120 /* TyphoonParentReferenceHydratingPostProcessor.h */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -1130,6 +1138,7 @@
 				BA7980676C5509967BAF2DE8 /* TyphoonReferenceDefinition.h in Headers */,
 				BA79802FFA34522E412787BB /* TyphoonResolutionStack.h in Headers */,
 				BA7983002D68D3416ADB20F4 /* TyphoonStackItem.h in Headers */,
+				BA79864216DDAED9AD0FBC11 /* TyphoonParentReferenceHydratingPostProcessor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1226,6 +1235,7 @@
 				BA79829413D5CE967628E3FE /* TyphoonReferenceDefinition.h in Headers */,
 				BA79829D84D45DFCBED0FCB0 /* TyphoonResolutionStack.h in Headers */,
 				BA7983CD1A640EEAF4B6E855 /* TyphoonStackItem.h in Headers */,
+				BA7985B5DA487D945D8B0373 /* TyphoonParentReferenceHydratingPostProcessor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1375,6 +1385,7 @@
 				BA798A4271C823D2B2DA3789 /* TyphoonResolutionStack.m in Sources */,
 				BA7987CFF9D2DFCA029D69D3 /* TyphoonStackItem.m in Sources */,
 				BA79806497C5C59697474FC8 /* TyphoonComponentFactory.m in Sources */,
+				BA798DC1CBBC24F842E373C5 /* TyphoonParentReferenceHydratingPostProcessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1455,6 +1466,7 @@
 				BA7989EA98121D503FAA7608 /* TyphoonResolutionStack.m in Sources */,
 				BA7981F1CAC3C59D8C7BE0DF /* TyphoonStackItem.m in Sources */,
 				BA79874BF022AA847BFE4733 /* TyphoonComponentFactory.m in Sources */,
+				BA7984FC182683B6DA08DB6F /* TyphoonParentReferenceHydratingPostProcessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
