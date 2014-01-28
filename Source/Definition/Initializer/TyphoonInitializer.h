@@ -36,7 +36,7 @@ typedef enum
 * ##Initializer injection has the following drawbacks:
 *
 * - Not suitable for classes with a very large number of dependencies - a very large initializer method will create poor readability.
-* - Auto-boxed primitives can't be used.
+* - Auto-injection by type is not supported.
 * - No type introspection for objects injected with a text representation.
 *
 * Its generally recommended to use initializer-style injection, unless the above drawbacks will manifest.
