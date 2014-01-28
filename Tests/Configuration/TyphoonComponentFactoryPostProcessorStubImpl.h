@@ -9,13 +9,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonComponentFactoryPostProcessorMock.h"
+#import <Foundation/Foundation.h>
+#import "TyphoonComponentFactoryPostProcessor.h"
 
-@implementation TyphoonComponentFactoryPostProcessorMock
+@interface TyphoonComponentFactoryPostProcessorStubImpl : NSObject <TyphoonComponentFactoryPostProcessor>
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory*)factory
-{
-    self.postProcessingCalled = YES;
-}
+@property(nonatomic, assign) BOOL postProcessingCalled;
 
 @end
