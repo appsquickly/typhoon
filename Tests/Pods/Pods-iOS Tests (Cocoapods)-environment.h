@@ -21,6 +21,6 @@
 // Typhoon
 #define COCOAPODS_POD_AVAILABLE_Typhoon
 #define COCOAPODS_VERSION_MAJOR_Typhoon 1
-#define COCOAPODS_VERSION_MINOR_Typhoon 6
-#define COCOAPODS_VERSION_PATCH_Typhoon 8
+#define COCOAPODS_VERSION_MINOR_Typhoon 7
+#define COCOAPODS_VERSION_PATCH_Typhoon 1
 

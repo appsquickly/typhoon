@@ -10,11 +10,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import "TyphoonResolutionStack.h"
-#import "TyphoonStackItem.h"
-#import "TyphoonDefinition.h"
+#import "TyphoonCallStack.h"
+#import "TyphoonStackElement.h"
 
-@implementation TyphoonResolutionStack
+@implementation TyphoonCallStack
 {
     NSMutableArray* _storage;
 }
@@ -45,16 +44,16 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (void)push:(TyphoonStackItem*)stackItem
+- (void)push:(TyphoonStackElement*)stackItem
 {
-    if (![stackItem isKindOfClass:[TyphoonStackItem class]])
+    if (![stackItem isKindOfClass:[TyphoonStackElement class]])
     {
         [NSException raise:NSInvalidArgumentException format:@"Not a TyphoonStackItem: %@", stackItem];
     }
     [_storage addObject:stackItem];
 }
 
-- (TyphoonStackItem*)pop
+- (TyphoonStackElement*)pop
 {
     id element = [_storage lastObject];
     if ([self isEmpty] == NO)
@@ -64,14 +63,14 @@
     return element;
 }
 
-- (TyphoonStackItem*)peek
+- (TyphoonStackElement*)peek
 {
     return [_storage lastObject];
 }
 
-- (TyphoonStackItem*)peekWithKey:(NSString*)key
+- (TyphoonStackElement*)peekForKey:(NSString*)key
 {
-    for (TyphoonStackItem* item in [_storage reverseObjectEnumerator])
+    for (TyphoonStackElement* item in [_storage reverseObjectEnumerator])
     {
         if ([item.key isEqualToString:key])
         {

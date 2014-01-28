@@ -18,7 +18,7 @@
 #import "TyphoonDefinitionRegisterer.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "TyphoonOrdered.h"
-#import "TyphoonResolutionStack.h"
+#import "TyphoonCallStack.h"
 #import "TyphoonParentReferenceHydratingPostProcessor.h"
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
@@ -51,7 +51,7 @@ static TyphoonComponentFactory* defaultFactory;
         _registry = [[NSMutableArray alloc] init];
         _singletons = [[NSMutableDictionary alloc] init];
         _objectGraphSharedInstances = [[NSMutableDictionary alloc] init];
-        _currentlyResolvingReferences = [TyphoonResolutionStack stack];
+        _stack = [TyphoonCallStack stack];
         _postProcessors = [[NSMutableArray alloc] init];
         _componentPostProcessors = [[NSMutableArray alloc] init];
         [self attachPostProcessor:[[TyphoonParentReferenceHydratingPostProcessor alloc] init]];
@@ -326,7 +326,7 @@ static TyphoonComponentFactory* defaultFactory;
             break;
     }
 
-    if ([_currentlyResolvingReferences isEmpty])
+    if ([_stack isEmpty])
     {
         [_objectGraphSharedInstances removeAllObjects];
     }

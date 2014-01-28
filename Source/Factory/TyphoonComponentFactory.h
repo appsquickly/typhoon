@@ -15,7 +15,7 @@
 #import "TyphoonComponentFactoryPostProcessor.h"
 
 @class TyphoonDefinition;
-@class TyphoonResolutionStack;
+@class TyphoonCallStack;
 
 /**
 *
@@ -31,7 +31,7 @@
     NSMutableDictionary* _singletons;
     NSMutableDictionary* _objectGraphSharedInstances;
 
-    TyphoonResolutionStack* _currentlyResolvingReferences;
+    TyphoonCallStack* _stack;
     NSMutableArray* _postProcessors;
     NSMutableArray* _componentPostProcessors;
     BOOL _isLoading;

@@ -41,8 +41,8 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonComponentFactoryAware.h"
 #import "TyphoonParameterInjectedAsCollection.h"
 #import "TyphoonComponentPostProcessor.h"
-#import "TyphoonResolutionStack.h"
-#import "TyphoonStackItem.h"
+#import "TyphoonCallStack.h"
+#import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
 
 #define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type)[NSException raise:@"NSUnknownKeyException" \
@@ -56,10 +56,10 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
     __autoreleasing id <TyphoonIntrospectiveNSObject> instance = [self allocateInstance:instance withDefinition:definition];
-    [_currentlyResolvingReferences push:[TyphoonStackItem itemWithKey:definition.key instance:instance]];
+    [_stack push:[TyphoonStackElement itemWithKey:definition.key instance:instance]];
     instance = [self injectInstance:instance withDefinition:definition];
     instance = [self postProcessInstance:instance];
-    [_currentlyResolvingReferences pop];
+    [_stack pop];
     return instance;
 }
 
@@ -91,7 +91,9 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 - (id)injectInstance:(id)instance withDefinition:(TyphoonDefinition*)definition
 {
     instance = [self initializerInjectionOn:instance withDefinition:definition];
+    [_stack push:[TyphoonStackElement itemWithKey:definition.key instance:instance]];
     [self injectPropertyDependenciesOn:instance withDefinition:definition];
+    [_stack pop];
     return instance;
 }
 
@@ -151,7 +153,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 {
     if ([self alreadyResolvingKey:definition.key])
     {
-        return [_currentlyResolvingReferences peekWithKey:definition.key].instance;
+        return [_stack peekForKey:definition.key].instance;
     }
     return [self buildInstanceWithDefinition:definition];
 }
@@ -159,7 +161,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 - (BOOL)alreadyResolvingKey:(NSString*)key
 {
-    return [_currentlyResolvingReferences peekWithKey:key] != nil;
+    return [_stack peekForKey:key] != nil;
 }
 
 /* ====================================================================================================================================== */
@@ -283,7 +285,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         if (!propertyValue)
         {
             NSString* componentKey = [circularDependentProperties objectForKey:propertyName];
-            id reference = [_currentlyResolvingReferences peekWithKey:componentKey].instance;
+            id reference = [_stack peekForKey:componentKey].instance;
             [(NSObject*)instance setValue:reference forKey:propertyName];
         }
     }

@@ -9,22 +9,21 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+
 #import <Foundation/Foundation.h>
 
-@class TyphoonStackItem;
+@class TyphoonDefinition;
 
-@interface TyphoonResolutionStack : NSObject
 
-+ (instancetype)stack;
+@interface TyphoonStackElement : NSObject
 
-- (void)push:(TyphoonStackItem*)stackItem;
+@property(nonatomic, strong, readonly) NSString* key;
+@property(nonatomic, strong, readonly) id instance;
 
-- (TyphoonStackItem*)pop;
 
-- (TyphoonStackItem*)peek;
++ (instancetype)itemWithKey:(NSString*)key instance:(id)instance;
 
-- (TyphoonStackItem*)peekWithKey:(NSString*)key;
+- (NSString*)description;
 
-- (BOOL)isEmpty;
 
 @end

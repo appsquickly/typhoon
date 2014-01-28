@@ -11,10 +11,10 @@
 
 
 
-#import "TyphoonStackItem.h"
+#import "TyphoonStackElement.h"
 
 
-@implementation TyphoonStackItem
+@implementation TyphoonStackElement
 
 + (instancetype)itemWithKey:(NSString*)key instance:(id)instance;
 {
