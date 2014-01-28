@@ -21,6 +21,9 @@
 #import "TyphoonCallStack.h"
 #import "TyphoonParentReferenceHydratingPostProcessor.h"
 #import "TyphoonComponentPostProcessor.h"
+#import "TyphoonWeekComponentsPool.h"
+
+typedef id(^TyphoonInstanceBuildBlock)(TyphoonDefinition* definition);
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
 
@@ -50,12 +53,14 @@ static TyphoonComponentFactory* defaultFactory;
     if (self)
     {
         _registry = [[NSMutableArray alloc] init];
-        _singletons = [[NSMutableDictionary alloc] init];
-        _objectGraphSharedInstances = [[NSMutableDictionary alloc] init];
+        _singletons = (id<TyphoonComponentsPool>)[[NSMutableDictionary alloc] init];
+        _weakSingletons = [TyphoonWeekComponentsPool new];
+        _objectGraphSharedInstances = (id<TyphoonComponentsPool>)[[NSMutableDictionary alloc] init];
         _stack = [TyphoonCallStack stack];
         _factoryPostProcessors = [[NSMutableArray alloc] init];
         _componentPostProcessors = [[NSMutableArray alloc] init];
         [self attachPostProcessor:[[TyphoonParentReferenceHydratingPostProcessor alloc] init]];
+        
     }
     return self;
 }
@@ -66,7 +71,7 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (NSArray*)singletons
 {
-    return [_singletons copy];
+    return [[_singletons allValues] copy];
 }
 
 - (void)load
@@ -274,18 +279,33 @@ static TyphoonComponentFactory* defaultFactory;
     }];
 }
 
-- (id)sharedInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(NSMutableDictionary*)pool
+- (id)instanceForDefinition:(TyphoonDefinition*)definition fromPool:(id<TyphoonComponentsPool>)pool buildBlock:(TyphoonInstanceBuildBlock)buildBlock
 {
+    NSParameterAssert(buildBlock);
     @synchronized (self)
     {
         id instance = [pool objectForKey:definition.key];
         if (instance == nil)
         {
-            instance = [self buildSharedInstanceForDefinition:definition];
+            instance = buildBlock(definition);
             [pool setObject:instance forKey:definition.key];
         }
         return instance;
     }
+}
+
+- (id) sharedObjectGraphInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id<TyphoonComponentsPool>)pool
+{
+    return [self instanceForDefinition:definition fromPool:pool buildBlock:^id(TyphoonDefinition *definition) {
+        return [self buildSharedInstanceForDefinition:definition];
+    }];
+}
+
+- (id) sharedInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id<TyphoonComponentsPool>)pool
+{
+    return [self instanceForDefinition:definition fromPool:pool buildBlock:^id(TyphoonDefinition *definition) {
+        return [self buildInstanceWithDefinition:definition];
+    }];
 }
 
 @end
@@ -316,13 +336,16 @@ static TyphoonComponentFactory* defaultFactory;
     switch (definition.scope)
     {
         case TyphoonScopeSingleton:
-            instance = [self sharedInstanceForDefinition:definition fromPool:_singletons];
+            instance = [self sharedObjectGraphInstanceForDefinition:definition fromPool:_singletons];
+            break;
+        case TyphoonScopeWeakSingleton:
+            instance = [self sharedInstanceForDefinition:definition fromPool:_weakSingletons];
             break;
         case TyphoonScopeObjectGraph:
-            instance = [self sharedInstanceForDefinition:definition fromPool:_objectGraphSharedInstances];
+            instance = [self sharedObjectGraphInstanceForDefinition:definition fromPool:_objectGraphSharedInstances];
             break;
-        case TyphoonScopePrototype:
         default:
+        case TyphoonScopePrototype:
             instance = [self buildInstanceWithDefinition:definition];
             break;
     }

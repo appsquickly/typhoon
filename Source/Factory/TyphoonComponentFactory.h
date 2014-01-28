@@ -13,6 +13,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryPostProcessor.h"
+#import "TyphoonComponentsPool.h"
 
 @class TyphoonDefinition;
 @class TyphoonCallStack;
@@ -28,9 +29,10 @@
 @interface TyphoonComponentFactory : NSObject
 {
     NSMutableArray* _registry;
-    NSMutableDictionary* _singletons;
-    NSMutableDictionary* _objectGraphSharedInstances;
-
+    id<TyphoonComponentsPool> _singletons;
+    id<TyphoonComponentsPool> _objectGraphSharedInstances;
+    id<TyphoonComponentsPool> _weakSingletons;
+    
     TyphoonCallStack* _stack;
     NSMutableArray* _factoryPostProcessors;
     NSMutableArray* _componentPostProcessors;

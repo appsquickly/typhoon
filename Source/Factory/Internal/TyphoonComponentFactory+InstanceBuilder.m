@@ -55,7 +55,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
-    __autoreleasing id <TyphoonIntrospectiveNSObject> instance = [self allocateInstance:instance withDefinition:definition];
+    __autoreleasing id <TyphoonIntrospectiveNSObject> instance = [self allocateInstanceWithDefinition:definition];
     [_stack push:[TyphoonStackElement itemWithKey:definition.key instance:instance]];
     instance = [self injectInstance:instance withDefinition:definition];
     instance = [self postProcessInstance:instance];
@@ -63,8 +63,10 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     return instance;
 }
 
-- (id)allocateInstance:(id)instance withDefinition:(TyphoonDefinition*)definition
+- (id)allocateInstanceWithDefinition:(TyphoonDefinition*)definition
 {
+    id instance = nil;
+    
     if (definition.factoryReference)
     {
         // misleading - this is not the instance. this is an instance of a separate class that will create the instance of the class we care
@@ -79,6 +81,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     else
     {
         // this is an instance, needing later init.
+        /* FIXME: sending init on another line than alloc is wrong, see apple docs */
         instance = [definition.type alloc];
     }
 

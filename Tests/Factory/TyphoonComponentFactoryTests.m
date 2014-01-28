@@ -359,6 +359,42 @@ static NSString* const DEFAULT_QUEST = @"quest";
     assertThatUnsignedInteger([[_componentFactory singletons] count], is(@1));
 }
 
+- (void)test_load_weakSingleton
+{
+    TyphoonComponentFactory *localFactory = [[TyphoonComponentFactory alloc] init];
+    NSString *key = @"WeakSingleton";
+    [localFactory register:[TyphoonDefinition withClass:[NSMutableString class] properties:^(TyphoonDefinition* definition)
+                                 {
+                                     [definition setKey:key];
+                                     [definition setScope:TyphoonScopeWeakSingleton];
+                                 }]];
+    [localFactory load];
+    
+    NSMutableString *requestedString, *requestedString2;
+    
+    @autoreleasepool {
+        requestedString = [localFactory componentForKey:key];
+//        requestedString2 = [localFactory componentForKey:key];
+//        assertThat(requestedString, equalTo(requestedString2));
+//        [requestedString setString:@"Text!"];
+    }
+    
+    __weak NSMutableString *weakString = requestedString2;
+    __unsafe_unretained NSMutableString *unsafeString = requestedString2;
+    
+    requestedString = nil;
+    requestedString2 = nil;
+    
+    assertThat(weakString, equalTo(nil));
+
+    @autoreleasepool {
+        requestedString = [localFactory componentForKey:key];
+    }
+
+    STAssertTrue(unsafeString != requestedString, @"%p == %p",unsafeString, requestedString);
+
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Definition Inheritance
 

@@ -14,6 +14,7 @@
 #import "TyphoonStringUtils.h"
 #import <objc/message.h>
 
+
 @implementation NSObject (PropertyInjection)
 
 - (SEL) setterForPropertyName:(NSString *)propertyName
@@ -35,6 +36,9 @@
         [self injectValue:value asPointerForPropertyName:propertyName];
     } else {
         [self setValue:value forKey:propertyName];
+#if !__has_feature(objc_arc)
+#error Arc feature required!
+#endif
     }
 }
 

@@ -29,9 +29,10 @@
 */
 typedef enum
 {
-    TyphoonScopeObjectGraph =   1 << 0,
-    TyphoonScopePrototype =     1 << 1,
-    TyphoonScopeSingleton =     1 << 2,
+    TyphoonScopeObjectGraph   = 1 << 0,
+    TyphoonScopePrototype     = 1 << 1,
+    TyphoonScopeSingleton     = 1 << 2,
+    TyphoonScopeWeakSingleton = 1 << 3
 } TyphoonScope;
 
 
