@@ -23,12 +23,5 @@
 
 + (instancetype)itemWithDefinition:(TyphoonDefinition*)definition instance:(id)instance;
 
-- (BOOL)isEqual:(id)other;
-
-- (BOOL)isEqualToItem:(TyphoonStackItem*)item;
-
-- (NSUInteger)hash;
-
-
 
 @end
