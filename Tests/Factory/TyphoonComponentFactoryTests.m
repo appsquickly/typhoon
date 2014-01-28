@@ -363,20 +363,22 @@ static NSString* const DEFAULT_QUEST = @"quest";
 {
     TyphoonComponentFactory *localFactory = [[TyphoonComponentFactory alloc] init];
     NSString *key = @"WeakSingleton";
-    [localFactory register:[TyphoonDefinition withClass:[NSMutableString class] properties:^(TyphoonDefinition* definition)
-                                 {
-                                     [definition setKey:key];
-                                     [definition setScope:TyphoonScopeWeakSingleton];
-                                 }]];
+    [localFactory register:[TyphoonDefinition withClass:[NSMutableString class] initialization:^(TyphoonInitializer *initializer) {
+        [initializer setSelector:@selector(new)];
+    } properties:^(TyphoonDefinition* definition) {
+        [definition setKey:key];
+        [definition setScope:TyphoonScopeWeakSingleton];
+    }]];
+    
     [localFactory load];
     
     NSMutableString *requestedString, *requestedString2;
     
     @autoreleasepool {
         requestedString = [localFactory componentForKey:key];
-//        requestedString2 = [localFactory componentForKey:key];
-//        assertThat(requestedString, equalTo(requestedString2));
-//        [requestedString setString:@"Text!"];
+        requestedString2 = [localFactory componentForKey:key];
+        assertThat(requestedString, equalTo(requestedString2));
+        [requestedString setString:@"Text!"];
     }
     
     __weak NSMutableString *weakString = requestedString2;

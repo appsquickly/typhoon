@@ -279,7 +279,7 @@ static TyphoonComponentFactory* defaultFactory;
     }];
 }
 
-- (id)instanceForDefinition:(TyphoonDefinition*)definition fromPool:(id<TyphoonComponentsPool>)pool buildBlock:(TyphoonInstanceBuildBlock)buildBlock
+- (id)instanceForDefinition:(TyphoonDefinition*)definition fromPool:(id<TyphoonComponentsPool>)pool buildBlock:(TyphoonInstanceBuildBlock)buildBlock NS_RETURNS_RETAINED
 {
     NSParameterAssert(buildBlock);
     @synchronized (self)
@@ -288,23 +288,39 @@ static TyphoonComponentFactory* defaultFactory;
         if (instance == nil)
         {
             instance = buildBlock(definition);
+            NSLog(@"1. instance = <%@>",instance);
             [pool setObject:instance forKey:definition.key];
+            NSLog(@"2. instance = <%@>",instance);
         }
+        NSLog(@"3. instance = <%@>",instance);
         return instance;
     }
 }
 
-- (id) sharedObjectGraphInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id<TyphoonComponentsPool>)pool
+- (id) sharedObjectGraphInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id<TyphoonComponentsPool>)pool NS_RETURNS_RETAINED
 {
-    return [self instanceForDefinition:definition fromPool:pool buildBlock:^id(TyphoonDefinition *definition) {
-        return [self buildSharedInstanceForDefinition:definition];
-    }];
+    @synchronized (self)
+    {
+        id instance = [pool objectForKey:definition.key];
+        if (instance == nil)
+        {
+            @autoreleasepool {
+            instance = [self newSharedInstanceForDefinition:definition];
+            }
+
+            NSLog(@"1. instance = <%@> (%d)",instance, (int)[instance performSelector:NSSelectorFromString(@"retainCount")]);
+            [pool setObject:instance forKey:definition.key];
+            NSLog(@"2. instance = <%@> (%d)",instance, (int)[instance performSelector:NSSelectorFromString(@"retainCount")]);
+        }
+        NSLog(@"3. instance = <%@> (%d)",instance, (int)[instance performSelector:NSSelectorFromString(@"retainCount")]);
+        return instance;
+    }
 }
 
-- (id) sharedInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id<TyphoonComponentsPool>)pool
+- (id) sharedInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id<TyphoonComponentsPool>)pool NS_RETURNS_RETAINED
 {
     return [self instanceForDefinition:definition fromPool:pool buildBlock:^id(TyphoonDefinition *definition) {
-        return [self buildInstanceWithDefinition:definition];
+        return [self newInstanceWithDefinition:definition];
     }];
 }
 
@@ -346,7 +362,7 @@ static TyphoonComponentFactory* defaultFactory;
             break;
         default:
         case TyphoonScopePrototype:
-            instance = [self buildInstanceWithDefinition:definition];
+            instance = [self newInstanceWithDefinition:definition];
             break;
     }
 

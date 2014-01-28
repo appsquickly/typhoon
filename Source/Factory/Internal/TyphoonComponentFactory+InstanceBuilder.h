@@ -21,9 +21,9 @@
 */
 @interface TyphoonComponentFactory (InstanceBuilder)
 
-- (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition;
+- (id)newInstanceWithDefinition:(TyphoonDefinition*)definition;
 
-- (id)buildSharedInstanceForDefinition:(TyphoonDefinition*)definition;
+- (id)newSharedInstanceForDefinition:(TyphoonDefinition*)definition;
 
 - (void)injectPropertyDependenciesOn:(__autoreleasing id)instance withDefinition:(TyphoonDefinition*)definition;
 
