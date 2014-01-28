@@ -32,7 +32,7 @@
     NSMutableDictionary* _objectGraphSharedInstances;
 
     TyphoonCallStack* _stack;
-    NSMutableArray* _postProcessors;
+    NSMutableArray* _factoryPostProcessors;
     NSMutableArray* _componentPostProcessors;
     BOOL _isLoading;
 }
@@ -50,7 +50,7 @@
 /**
  * The attached factory post processors.
  */
-@property(nonatomic, strong, readonly) NSArray* postProcessors;
+@property(nonatomic, strong, readonly) NSArray* factoryPostProcessors;
 
 /**
  * The attached component post processors.

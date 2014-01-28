@@ -14,6 +14,8 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactory.h"
 
+@protocol TyphoonComponentPostProcessor;
+
 @interface TyphoonComponentFactory (TyphoonDefinitionRegisterer)
 
 - (TyphoonDefinition*)definitionForKey:(NSString*)key;
@@ -22,6 +24,6 @@
 
 - (void)addDefinitionToRegistry:(TyphoonDefinition*)definition;
 
-- (void)addComponentPostProcessor:(id<TyphoonComponentFactoryPostProcessor>)postProcessor;
+- (void)addComponentPostProcessor:(id <TyphoonComponentPostProcessor>)postProcessor;
 
 @end

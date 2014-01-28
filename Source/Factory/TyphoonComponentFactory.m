@@ -20,6 +20,7 @@
 #import "TyphoonOrdered.h"
 #import "TyphoonCallStack.h"
 #import "TyphoonParentReferenceHydratingPostProcessor.h"
+#import "TyphoonComponentPostProcessor.h"
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
 
@@ -52,7 +53,7 @@ static TyphoonComponentFactory* defaultFactory;
         _singletons = [[NSMutableDictionary alloc] init];
         _objectGraphSharedInstances = [[NSMutableDictionary alloc] init];
         _stack = [TyphoonCallStack stack];
-        _postProcessors = [[NSMutableArray alloc] init];
+        _factoryPostProcessors = [[NSMutableArray alloc] init];
         _componentPostProcessors = [[NSMutableArray alloc] init];
         [self attachPostProcessor:[[TyphoonParentReferenceHydratingPostProcessor alloc] init]];
     }
@@ -187,7 +188,7 @@ static TyphoonComponentFactory* defaultFactory;
 - (void)attachPostProcessor:(id <TyphoonComponentFactoryPostProcessor>)postProcessor
 {
     LogTrace(@"Attaching post processor: %@", postProcessor);
-    [_postProcessors addObject:postProcessor];
+    [_factoryPostProcessors addObject:postProcessor];
     if ([self isLoaded])
     {
         LogDebug(@"Definitions registered, refreshing all singletons.");
@@ -250,13 +251,13 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (void)preparePostProcessors
 {
-    _postProcessors = [[self orderedArray:_postProcessors] mutableCopy];
+    _factoryPostProcessors = [[self orderedArray:_factoryPostProcessors] mutableCopy];
     _componentPostProcessors = [[self orderedArray:_componentPostProcessors] mutableCopy];
 }
 
 - (void)applyPostProcessors
 {
-    [_postProcessors enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryPostProcessor> postProcessor, NSUInteger idx, BOOL* stop)
+    [_factoryPostProcessors enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryPostProcessor> postProcessor, NSUInteger idx, BOOL* stop)
     {
         [postProcessor postProcessComponentFactory:self];
     }];
@@ -339,7 +340,7 @@ static TyphoonComponentFactory* defaultFactory;
     [_registry addObject:definition];
 }
 
-- (void)addComponentPostProcessor:(id <TyphoonComponentFactoryPostProcessor>)postProcessor
+- (void)addComponentPostProcessor:(id <TyphoonComponentPostProcessor>)postProcessor
 {
     [_componentPostProcessors addObject:postProcessor];
 }

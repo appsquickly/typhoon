@@ -18,7 +18,7 @@
 #import "Champion.h"
 #import "AutoWiringKnight.h"
 #import "Harlot.h"
-#import "TyphoonComponentFactoryPostProcessorMock.h"
+#import "TyphoonComponentFactoryPostProcessorStubImpl.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "ClassWithConstructor.h"
 #import "TyphoonComponentPostProcessorMock.h"
@@ -207,25 +207,25 @@ static NSString* const DEFAULT_QUEST = @"quest";
 
 - (void)test_post_processor_registration
 {
-    [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorMock class]]];
+    [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorStubImpl class]]];
     assertThatUnsignedLong([[_componentFactory registry] count], equalToUnsignedLong(0));
-    assertThatUnsignedLong([[_componentFactory postProcessors] count], equalToUnsignedLong(2)); //Attached + internal processors
+    assertThatUnsignedLong([[_componentFactory factoryPostProcessors] count], equalToUnsignedLong(2)); //Attached + internal processors
 }
 
 - (void)test_post_processors_applied
 {
-    [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorMock class]]];
-    [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorMock class]]];
+    [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorStubImpl class]]];
+    [_componentFactory register:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorStubImpl class]]];
     [_componentFactory register:[TyphoonDefinition withClass:[Knight class]]];
 
     [_componentFactory load];
 
-    assertThatUnsignedLong([[_componentFactory postProcessors] count], equalToUnsignedLong(3)); //Attached + internal processors
-    for (TyphoonComponentFactoryPostProcessorMock* mock in _componentFactory.postProcessors)
+    assertThatUnsignedLong([[_componentFactory factoryPostProcessors] count], equalToUnsignedLong(3)); //Attached + internal processors
+    for (TyphoonComponentFactoryPostProcessorStubImpl* stub in _componentFactory.factoryPostProcessors)
     {
-        if ([mock isKindOfClass:[TyphoonComponentFactoryPostProcessorMock class]])
+        if ([stub isKindOfClass:[TyphoonComponentFactoryPostProcessorStubImpl class]])
         {
-            assertThatBool(mock.postProcessingCalled, equalToBool(YES));
+            assertThatBool(stub.postProcessingCalled, equalToBool(YES));
         }
     }
 }

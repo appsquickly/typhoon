@@ -175,7 +175,7 @@
 
 - (void)test_post_processor_component_recognized
 {
-    assertThatUnsignedLong([_infrastructureComponentsFactory.postProcessors count], equalToInt(2)); //Attached + internal processors
+    assertThatUnsignedLong([_infrastructureComponentsFactory.factoryPostProcessors count], equalToInt(2)); //Attached + internal processors
 }
 
 - (void)test_resolves_property_values_from_multiple_files
