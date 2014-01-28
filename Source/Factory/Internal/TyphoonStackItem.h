@@ -17,11 +17,13 @@
 
 @interface TyphoonStackItem : NSObject
 
-@property(nonatomic, strong, readonly) TyphoonDefinition* definition;
+@property(nonatomic, strong, readonly) NSString* key;
 @property(nonatomic, strong, readonly) id instance;
 
 
-+ (instancetype)itemWithDefinition:(TyphoonDefinition*)definition instance:(id)instance;
++ (instancetype)itemWithKey:(NSString*)key instance:(id)instance;
+
+- (NSString*)description;
 
 
 @end

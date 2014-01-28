@@ -73,7 +73,7 @@
 {
     for (TyphoonStackItem* item in [_storage reverseObjectEnumerator])
     {
-        if ([item.definition.key isEqualToString:key])
+        if ([item.key isEqualToString:key])
         {
             return item;
         }

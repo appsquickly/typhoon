@@ -12,23 +12,22 @@
 
 
 #import "TyphoonStackItem.h"
-#import "TyphoonDefinition.h"
 
 
 @implementation TyphoonStackItem
 
-+ (instancetype)itemWithDefinition:(TyphoonDefinition*)definition instance:(id)instance
++ (instancetype)itemWithKey:(NSString*)key instance:(id)instance;
 {
-    return [[self alloc] initWithDefinition:definition instance:instance];
+    return [[self alloc] initWithKey:key instance:instance];
 }
 
 
-- (instancetype)initWithDefinition:(TyphoonDefinition*)definition instance:(id)instance
+- (instancetype)initWithKey:(NSString*)key instance:(id)instance
 {
     self = [super init];
     if (self)
     {
-        _definition = definition;
+        _key = key;
         _instance = instance;
     }
     return self;
@@ -37,9 +36,11 @@
 - (NSString*)description
 {
     NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
-    [description appendFormat:@"key=%@", self.definition.key];
+    [description appendFormat:@"self.key=%@", self.key];
+    [description appendFormat:@", self.instance=%@", self.instance];
     [description appendString:@">"];
     return description;
 }
+
 
 @end

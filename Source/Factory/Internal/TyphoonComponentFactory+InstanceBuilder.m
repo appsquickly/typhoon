@@ -56,7 +56,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
     __autoreleasing id <TyphoonIntrospectiveNSObject> instance = [self allocateInstance:instance withDefinition:definition];
-    [_currentlyResolvingReferences push:[TyphoonStackItem itemWithDefinition:definition instance:instance]];
+    [_currentlyResolvingReferences push:[TyphoonStackItem itemWithKey:definition.key instance:instance]];
     instance = [self injectInstance:instance withDefinition:definition];
     instance = [self postProcessInstance:instance];
     [_currentlyResolvingReferences pop];
