@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-01-27</td>
+            <td class="headerValue">2014-01-28</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -131,23 +131,23 @@
 <span class="lineNum">      73 </span>            : 
 <span class="lineNum">      74 </span><span class="lineCov">        118 : - (void)swizzleDefinitionSelectors:(NSSet*)definitionSelectors</span>
 <span class="lineNum">      75 </span>            : {
-<span class="lineNum">      76 </span><span class="lineCov">        788 :     [definitionSelectors enumerateObjectsUsingBlock:^(NSValue *selectorObj, BOOL* stop)</span>
-<span class="lineNum">      77 </span><span class="lineCov">        670 :     {</span>
-<span class="lineNum">      78 </span><span class="lineCov">        670 :         [self swapImplementationOfDefinitionSelectorWithAdvisedImplementation:selectorObj];</span>
-<span class="lineNum">      79 </span><span class="lineCov">       1340 :     }];</span>
+<span class="lineNum">      76 </span><span class="lineCov">        787 :     [definitionSelectors enumerateObjectsUsingBlock:^(NSValue *selectorObj, BOOL* stop)</span>
+<span class="lineNum">      77 </span><span class="lineCov">        669 :     {</span>
+<span class="lineNum">      78 </span><span class="lineCov">        669 :         [self swapImplementationOfDefinitionSelectorWithAdvisedImplementation:selectorObj];</span>
+<span class="lineNum">      79 </span><span class="lineCov">       1338 :     }];</span>
 <span class="lineNum">      80 </span><span class="lineCov">        118 : }</span>
 <span class="lineNum">      81 </span>            : 
-<span class="lineNum">      82 </span><span class="lineCov">        670 : - (void)swapImplementationOfDefinitionSelectorWithAdvisedImplementation:(TyphoonSelector*)wrappedSEL</span>
+<span class="lineNum">      82 </span><span class="lineCov">        669 : - (void)swapImplementationOfDefinitionSelectorWithAdvisedImplementation:(TyphoonSelector*)wrappedSEL</span>
 <span class="lineNum">      83 </span>            : {
-<span class="lineNum">      84 </span><span class="lineCov">        670 :     SEL methodSelector = [wrappedSEL selector];</span>
-<span class="lineNum">      85 </span><span class="lineCov">        670 :     SEL advisedSelector = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector];</span>
+<span class="lineNum">      84 </span><span class="lineCov">        669 :     SEL methodSelector = [wrappedSEL selector];</span>
+<span class="lineNum">      85 </span><span class="lineCov">        669 :     SEL advisedSelector = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector];</span>
 <span class="lineNum">      86 </span>            : 
-<span class="lineNum">      87 </span><span class="lineCov">        670 :     NSError* err;</span>
-<span class="lineNum">      88 </span><span class="lineCov">        670 :     BOOL success = [self.swizzler swizzleMethod:methodSelector withMethod:advisedSelector onClass:[self.assembly class] error:&amp;err];</span>
-<span class="lineNum">      89 </span><span class="lineCov">        670 :     if (!success) {</span>
+<span class="lineNum">      87 </span><span class="lineCov">        669 :     NSError* err;</span>
+<span class="lineNum">      88 </span><span class="lineCov">        669 :     BOOL success = [self.swizzler swizzleMethod:methodSelector withMethod:advisedSelector onClass:[self.assembly class] error:&amp;err];</span>
+<span class="lineNum">      89 </span><span class="lineCov">        669 :     if (!success) {</span>
 <span class="lineNum">      90 </span><span class="lineNoCov">          0 :         [self onFailureToSwizzleDefinitionSelector:methodSelector withAdvisedSelector:advisedSelector error:err];</span>
 <span class="lineNum">      91 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      92 </span><span class="lineCov">        670 : }</span>
+<span class="lineNum">      92 </span><span class="lineCov">        669 : }</span>
 <span class="lineNum">      93 </span>            : 
 <span class="lineNum">      94 </span><span class="lineNoCov">          0 : - (void)onFailureToSwizzleDefinitionSelector:(SEL)methodSelector withAdvisedSelector:(SEL)swizzled error:(NSError*)err</span>
 <span class="lineNum">      95 </span>            : {
@@ -191,33 +191,33 @@
 <span class="lineNum">     133 </span><span class="lineNoCov">          0 :     return [selectorStrings description];</span>
 <span class="lineNum">     134 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     135 </span>            : 
-<span class="lineNum">     136 </span><span class="lineCov">        774 : + (void)swizzleDefinitionSelectors:(NSSet*)definitionSelectors onAssembly:(TyphoonAssembly*)assembly</span>
+<span class="lineNum">     136 </span><span class="lineCov">        773 : + (void)swizzleDefinitionSelectors:(NSSet*)definitionSelectors onAssembly:(TyphoonAssembly*)assembly</span>
 <span class="lineNum">     137 </span>            : {
-<span class="lineNum">     138 </span><span class="lineCov">        774 :     [definitionSelectors enumerateObjectsUsingBlock:^(TyphoonSelector* selectorObj, BOOL* stop)</span>
-<span class="lineNum">     139 </span><span class="lineCov">        658 :     {</span>
-<span class="lineNum">     140 </span><span class="lineCov">        658 :         [self swapImplementationOfDefinitionSelector:selectorObj withDynamicBeforeAdviceImplementationOnAssembly:assembly];</span>
-<span class="lineNum">     141 </span><span class="lineCov">       1316 :     }];</span>
+<span class="lineNum">     138 </span><span class="lineCov">        773 :     [definitionSelectors enumerateObjectsUsingBlock:^(TyphoonSelector* selectorObj, BOOL* stop)</span>
+<span class="lineNum">     139 </span><span class="lineCov">        657 :     {</span>
+<span class="lineNum">     140 </span><span class="lineCov">        657 :         [self swapImplementationOfDefinitionSelector:selectorObj withDynamicBeforeAdviceImplementationOnAssembly:assembly];</span>
+<span class="lineNum">     141 </span><span class="lineCov">       1314 :     }];</span>
 <span class="lineNum">     142 </span><span class="lineCov">        116 : }</span>
 <span class="lineNum">     143 </span>            : 
-<span class="lineNum">     144 </span><span class="lineCov">        658 : + (void)swapImplementationOfDefinitionSelector:(TyphoonSelector*)wrappedSelector withDynamicBeforeAdviceImplementationOnAssembly:(TyphoonAssembly*)assembly</span>
+<span class="lineNum">     144 </span><span class="lineCov">        657 : + (void)swapImplementationOfDefinitionSelector:(TyphoonSelector*)wrappedSelector withDynamicBeforeAdviceImplementationOnAssembly:(TyphoonAssembly*)assembly</span>
 <span class="lineNum">     145 </span>            : {
-<span class="lineNum">     146 </span><span class="lineCov">        658 :     return [self swapImplementationOfDefinitionSelector:wrappedSelector withDynamicBeforeAdviceImplementationOnAssemblyClass:[assembly class]];</span>
-<span class="lineNum">     147 </span><span class="lineCov">        658 : }</span>
+<span class="lineNum">     146 </span><span class="lineCov">        657 :     return [self swapImplementationOfDefinitionSelector:wrappedSelector withDynamicBeforeAdviceImplementationOnAssemblyClass:[assembly class]];</span>
+<span class="lineNum">     147 </span><span class="lineCov">        657 : }</span>
 <span class="lineNum">     148 </span>            : 
-<span class="lineNum">     149 </span><span class="lineCov">        658 : + (void)swapImplementationOfDefinitionSelector:(TyphoonSelector*)wrappedSEL withDynamicBeforeAdviceImplementationOnAssemblyClass:(Class)assemblyClass</span>
+<span class="lineNum">     149 </span><span class="lineCov">        657 : + (void)swapImplementationOfDefinitionSelector:(TyphoonSelector*)wrappedSEL withDynamicBeforeAdviceImplementationOnAssemblyClass:(Class)assemblyClass</span>
 <span class="lineNum">     150 </span>            : {
-<span class="lineNum">     151 </span><span class="lineCov">        658 :     SEL methodSelector = [wrappedSEL selector];</span>
-<span class="lineNum">     152 </span><span class="lineCov">        658 :     SEL swizzled = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector];</span>
+<span class="lineNum">     151 </span><span class="lineCov">        657 :     SEL methodSelector = [wrappedSEL selector];</span>
+<span class="lineNum">     152 </span><span class="lineCov">        657 :     SEL swizzled = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector];</span>
 <span class="lineNum">     153 </span>            : 
-<span class="lineNum">     154 </span><span class="lineCov">        658 :     NSError* err;</span>
-<span class="lineNum">     155 </span><span class="lineCov">        658 :     BOOL success = [assemblyClass typhoon_swizzleMethod:methodSelector withMethod:swizzled error:&amp;err];</span>
-<span class="lineNum">     156 </span><span class="lineCov">        658 :     if (!success)</span>
+<span class="lineNum">     154 </span><span class="lineCov">        657 :     NSError* err;</span>
+<span class="lineNum">     155 </span><span class="lineCov">        657 :     BOOL success = [assemblyClass typhoon_swizzleMethod:methodSelector withMethod:swizzled error:&amp;err];</span>
+<span class="lineNum">     156 </span><span class="lineCov">        657 :     if (!success)</span>
 <span class="lineNum">     157 </span>            :     {
 <span class="lineNum">     158 </span><span class="lineNoCov">          0 :         LogError(@&quot;Failed to swizzle method '%@' on class '%@' with method '%@'.&quot;, NSStringFromSelector(methodSelector), NSStringFromClass(assemblyClass), NSStringFromSelector(swizzled));</span>
 <span class="lineNum">     159 </span><span class="lineNoCov">          0 :         LogError(@&quot;'%@'&quot;, err);</span>
 <span class="lineNum">     160 </span><span class="lineNoCov">          0 :         [NSException raise:NSInternalInconsistencyException format:@&quot;Failed to swizzle method, everything is broken!&quot;];</span>
 <span class="lineNum">     161 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     162 </span><span class="lineCov">        658 : }</span>
+<span class="lineNum">     162 </span><span class="lineCov">        657 : }</span>
 <span class="lineNum">     163 </span>            : 
 <span class="lineNum">     164 </span>            : #pragma mark - Definition Selector Enumerator
 <span class="lineNum">     165 </span><span class="lineCov">        240 : - (NSSet*)enumerateDefinitionSelectors</span>

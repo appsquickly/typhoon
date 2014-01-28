@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-01-27</td>
+            <td class="headerValue">2014-01-28</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -110,48 +110,48 @@
 <span class="lineNum">      52 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      53 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span><span class="lineCov">       2056 : - (id)initWithClass:(Class)clazz key:(NSString*)key</span>
+<span class="lineNum">      55 </span><span class="lineCov">       2057 : - (id)initWithClass:(Class)clazz key:(NSString*)key</span>
 <span class="lineNum">      56 </span>            : {
-<span class="lineNum">      57 </span><span class="lineCov">       2056 :     return [self initWithClass:clazz key:key factoryComponent:nil];</span>
-<span class="lineNum">      58 </span><span class="lineCov">       2056 : }</span>
+<span class="lineNum">      57 </span><span class="lineCov">       2057 :     return [self initWithClass:clazz key:key factoryComponent:nil];</span>
+<span class="lineNum">      58 </span><span class="lineCov">       2057 : }</span>
 <span class="lineNum">      59 </span>            : 
 <span class="lineNum">      60 </span><span class="lineNoCov">          0 : - (id)init</span>
 <span class="lineNum">      61 </span>            : {
 <span class="lineNum">      62 </span><span class="lineNoCov">          0 :     return [self initWithClass:nil key:nil factoryComponent:nil];</span>
 <span class="lineNum">      63 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span><span class="lineCov">       2603 : - (id)initWithClass:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent</span>
+<span class="lineNum">      65 </span><span class="lineCov">       2604 : - (id)initWithClass:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent</span>
 <span class="lineNum">      66 </span>            : {
-<span class="lineNum">      67 </span><span class="lineCov">       2603 :     self = [super init];</span>
-<span class="lineNum">      68 </span><span class="lineCov">       2603 :     if (self)</span>
+<span class="lineNum">      67 </span><span class="lineCov">       2604 :     self = [super init];</span>
+<span class="lineNum">      68 </span><span class="lineCov">       2604 :     if (self)</span>
 <span class="lineNum">      69 </span>            :     {
-<span class="lineNum">      70 </span><span class="lineCov">       2601 :         _type = clazz;</span>
-<span class="lineNum">      71 </span><span class="lineCov">       2601 :         _key = [key copy];</span>
-<span class="lineNum">      72 </span><span class="lineCov">       2601 :         _scope = TyphoonScopeObjectGraph;</span>
-<span class="lineNum">      73 </span><span class="lineCov">       2601 :         _factoryReference = [factoryComponent copy];</span>
-<span class="lineNum">      74 </span><span class="lineCov">       2601 :         _injectedProperties = [[NSMutableSet alloc] init];</span>
-<span class="lineNum">      75 </span><span class="lineCov">       2601 :         [self validateRequiredParametersAreSet];</span>
-<span class="lineNum">      76 </span><span class="lineCov">       2601 :     }</span>
-<span class="lineNum">      77 </span><span class="lineCov">       2601 :     return self;</span>
-<span class="lineNum">      78 </span><span class="lineCov">       2601 : }</span>
+<span class="lineNum">      70 </span><span class="lineCov">       2602 :         _type = clazz;</span>
+<span class="lineNum">      71 </span><span class="lineCov">       2602 :         _key = [key copy];</span>
+<span class="lineNum">      72 </span><span class="lineCov">       2602 :         _scope = TyphoonScopeObjectGraph;</span>
+<span class="lineNum">      73 </span><span class="lineCov">       2602 :         _factoryReference = [factoryComponent copy];</span>
+<span class="lineNum">      74 </span><span class="lineCov">       2602 :         _injectedProperties = [[NSMutableSet alloc] init];</span>
+<span class="lineNum">      75 </span><span class="lineCov">       2602 :         [self validateRequiredParametersAreSet];</span>
+<span class="lineNum">      76 </span><span class="lineCov">       2602 :     }</span>
+<span class="lineNum">      77 </span><span class="lineCov">       2602 :     return self;</span>
+<span class="lineNum">      78 </span><span class="lineCov">       2602 : }</span>
 <span class="lineNum">      79 </span>            : 
-<span class="lineNum">      80 </span><span class="lineCov">       1430 : - (void)dealloc</span>
+<span class="lineNum">      80 </span><span class="lineCov">       1440 : - (void)dealloc</span>
 <span class="lineNum">      81 </span>            : {
 <span class="lineNum">      82 </span>            :     //Null out the __unsafe_unretained property on initializer
-<span class="lineNum">      83 </span><span class="lineCov">       1430 :     [_initializer setComponentDefinition:nil];</span>
-<span class="lineNum">      84 </span><span class="lineCov">       1430 : }</span>
+<span class="lineNum">      83 </span><span class="lineCov">       1440 :     [_initializer setComponentDefinition:nil];</span>
+<span class="lineNum">      84 </span><span class="lineCov">       1440 : }</span>
 <span class="lineNum">      85 </span>            : 
 <span class="lineNum">      86 </span>            : 
 <span class="lineNum">      87 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      88 </span>            : #pragma mark - Private Methods
 <span class="lineNum">      89 </span>            : 
-<span class="lineNum">      90 </span><span class="lineCov">       2603 : - (void)validateRequiredParametersAreSet</span>
+<span class="lineNum">      90 </span><span class="lineCov">       2604 : - (void)validateRequiredParametersAreSet</span>
 <span class="lineNum">      91 </span>            : {
-<span class="lineNum">      92 </span><span class="lineCov">       2603 :     if (_type == nil)</span>
+<span class="lineNum">      92 </span><span class="lineCov">       2604 :     if (_type == nil)</span>
 <span class="lineNum">      93 </span>            :     {
 <span class="lineNum">      94 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Property 'clazz' is required.&quot;];</span>
 <span class="lineNum">      95 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      96 </span><span class="lineCov">       2601 : }</span>
+<span class="lineNum">      96 </span><span class="lineCov">       2602 : }</span>
 <span class="lineNum">      97 </span>            : 
 <span class="lineNum">      98 </span>            : 
 <span class="lineNum">      99 </span>            : @end

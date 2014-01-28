@@ -805,13 +805,13 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>injectValue:forPropertyName:</Name>
+      <Name>injectValue:forPropertyName:withType:</Name>
       <APILanguage>occ</APILanguage>
       <Type>func</Type>
       <Scope>NSObject(PropertyInjection)</Scope>
     </TokenIdentifier>
     <Path>category_n_s_object_07_property_injection_08.html</Path>
-    <Anchor>abbda464e6565cd2b6a702caa29a3819a</Anchor>
+    <Anchor>a9b6e7da264ffb88ee69de5488ed2b596</Anchor>
     <DeclaredIn>NSObject+PropertyInjection.h</DeclaredIn>
   </Token>
   <Token>
@@ -3239,30 +3239,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>injectWithBool:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInitializer</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_initializer.html</Path>
-    <Anchor>ad8754b0941d0b1c171baab1839dc7d71</Anchor>
-    <Abstract>Injects with a boolean. </Abstract>
-    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>injectWithClass:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInitializer</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_initializer.html</Path>
-    <Anchor>ad3d0406ed1b31f22d3a6962d47b65860</Anchor>
-    <Abstract>Injects with a class. </Abstract>
-    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>injectWithCollection:requiredType:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -3287,78 +3263,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>injectWithDouble:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInitializer</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_initializer.html</Path>
-    <Anchor>a2fdb8554cb015f60eff5b4d16b104645</Anchor>
-    <Abstract>Injects with a double. </Abstract>
-    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>injectWithFloat:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInitializer</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_initializer.html</Path>
-    <Anchor>a91d8c1de4e98f3e1515aa20443e302d7</Anchor>
-    <Abstract>Injects with a float. </Abstract>
-    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>injectWithInt:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInitializer</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_initializer.html</Path>
-    <Anchor>a67111f2087d4d23b38d5816904232c66</Anchor>
-    <Abstract>Injects with an int. </Abstract>
-    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>injectWithInteger:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInitializer</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_initializer.html</Path>
-    <Anchor>a06e06b76ca321bb2e285ad3e0570e851</Anchor>
-    <Abstract>Injects with an integer. </Abstract>
-    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>injectWithLong:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInitializer</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_initializer.html</Path>
-    <Anchor>aa554bb2ff65d69261829b7e28320a193</Anchor>
-    <Abstract>Injects with a long. </Abstract>
-    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>injectWithLongLong:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInitializer</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_initializer.html</Path>
-    <Anchor>a0c640c3d696b36f5262b5313a6c97324</Anchor>
-    <Abstract>Injects with a long long. </Abstract>
-    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>injectWithObjectInstance:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -3367,102 +3271,6 @@
     <Path>interface_typhoon_initializer.html</Path>
     <Anchor>ae895216a5c640843770864e74f4d0710</Anchor>
     <Abstract>Injects with an object instance. </Abstract>
-    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>injectWithSelector:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInitializer</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_initializer.html</Path>
-    <Anchor>ac8b3acdf1171e122df76c01a063182f9</Anchor>
-    <Abstract>Injects with a selector. </Abstract>
-    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>injectWithShort:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInitializer</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_initializer.html</Path>
-    <Anchor>a647be5edcd1d8d974e98a30675451ca3</Anchor>
-    <Abstract>Injects with a short. </Abstract>
-    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>injectWithUnsignedChar:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInitializer</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_initializer.html</Path>
-    <Anchor>a5d2bc35e9f65d7b7ec6d5367ff7372a3</Anchor>
-    <Abstract>Injects with an unsigned char. </Abstract>
-    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>injectWithUnsignedInt:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInitializer</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_initializer.html</Path>
-    <Anchor>acb9a9355572064ea2692a6b20f06b3cd</Anchor>
-    <Abstract>Injects with an unsigned int. </Abstract>
-    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>injectWithUnsignedInteger:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInitializer</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_initializer.html</Path>
-    <Anchor>aec2d8d7ce6079af1810e6130201c7444</Anchor>
-    <Abstract>Injects with an unsigned integer. </Abstract>
-    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>injectWithUnsignedLong:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInitializer</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_initializer.html</Path>
-    <Anchor>a282a8c72de9fc1899c8f269b98272c9d</Anchor>
-    <Abstract>Injects with an unsigned long. </Abstract>
-    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>injectWithUnsignedLongLong:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInitializer</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_initializer.html</Path>
-    <Anchor>ae11a450446462f128846e75bb9602ca0</Anchor>
-    <Abstract>Injects with an unsigned long long. </Abstract>
-    <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>injectWithUnsignedShort:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInitializer</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_initializer.html</Path>
-    <Anchor>aeb638e2aa2f77dd3a850d02084e48731</Anchor>
-    <Abstract>Injects with an unsigned short. </Abstract>
     <DeclaredIn>TyphoonInitializer.h</DeclaredIn>
   </Token>
   <Token>
@@ -3980,6 +3788,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>isPrimitiveParameterFor:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonParameterInjectedWithObjectInstance</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_parameter_injected_with_object_instance.html</Path>
+    <Anchor>ad9b2f29609472182bddf57b67341053d</Anchor>
+    <DeclaredIn>TyphoonParameterInjectedWithObjectInstance.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>index</Name>
       <APILanguage>occ</APILanguage>
       <Type>intfm</Type>
@@ -4417,6 +4236,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>setPrimitiveArgumentFor:index:fromValue:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonPrimitiveTypeConverter</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_primitive_type_converter.html</Path>
+    <Anchor>a4d62941ed9011ee9aeea242afaa62ed6</Anchor>
+    <DeclaredIn>TyphoonPrimitiveTypeConverter.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>setPrimitiveArgumentFor:index:textValue:requiredType:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -4435,7 +4265,6 @@
     </TokenIdentifier>
     <Path>interface_typhoon_primitive_type_converter.html</Path>
     <Anchor>a6b4fa72355f8b6efcf5c7088d10b25fa</Anchor>
-    <Abstract>Returns NSNumber of NSValue from textValue. </Abstract>
     <DeclaredIn>TyphoonPrimitiveTypeConverter.h</DeclaredIn>
   </Token>
   <Token>

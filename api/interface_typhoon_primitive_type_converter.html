@@ -135,10 +135,11 @@ Instance Methods</h2></td></tr>
 <tr class="separator:abef6773abe05a2d553e3aa2cac99e19b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a154126c107209fd7bf5a5fd77e9c0d88"><td class="memItemLeft" align="right" valign="top">(unsigned short)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_primitive_type_converter.html#a154126c107209fd7bf5a5fd77e9c0d88">convertToUnsignedShort:</a></td></tr>
 <tr class="separator:a154126c107209fd7bf5a5fd77e9c0d88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d62941ed9011ee9aeea242afaa62ed6"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_primitive_type_converter.html#a4d62941ed9011ee9aeea242afaa62ed6">setPrimitiveArgumentFor:index:fromValue:</a></td></tr>
+<tr class="separator:a4d62941ed9011ee9aeea242afaa62ed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad73d3e3e68756022c0ba5b221f14b3ff"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_primitive_type_converter.html#ad73d3e3e68756022c0ba5b221f14b3ff">setPrimitiveArgumentFor:index:textValue:requiredType:</a></td></tr>
 <tr class="separator:ad73d3e3e68756022c0ba5b221f14b3ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b4fa72355f8b6efcf5c7088d10b25fa"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_primitive_type_converter.html#a6b4fa72355f8b6efcf5c7088d10b25fa">valueFromText:withType:</a></td></tr>
-<tr class="memdesc:a6b4fa72355f8b6efcf5c7088d10b25fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns NSNumber of NSValue from textValue.  <a href="#a6b4fa72355f8b6efcf5c7088d10b25fa">More...</a><br/></td></tr>
 <tr class="separator:a6b4fa72355f8b6efcf5c7088d10b25fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Method Documentation</h2>
@@ -382,6 +383,44 @@ Instance Methods</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a4d62941ed9011ee9aeea242afaa62ed6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) setPrimitiveArgumentFor: </td>
+          <td></td>
+          <td class="paramtype">(NSInvocation *)&#160;</td>
+          <td class="paramname"><em>invocation</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">index:</td>
+          <td></td>
+          <td class="paramtype">(NSUInteger)&#160;</td>
+          <td class="paramname"><em>index</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">fromValue:</td>
+          <td></td>
+          <td class="paramtype">(id)&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>NSNumber or NSValue </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ad73d3e3e68756022c0ba5b221f14b3ff"></a>
 <div class="memitem">
 <div class="memproto">
@@ -443,8 +482,7 @@ Instance Methods</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Returns NSNumber of NSValue from textValue. </p>
+<dl class="section return"><dt>Returns</dt><dd>NSNumber of NSValue from textValue </dd></dl>
 
 </div>
 </div>
@@ -455,7 +493,7 @@ Instance Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="interface_typhoon_primitive_type_converter.html">TyphoonPrimitiveTypeConverter</a></li>
-    <li class="footer">Generated on Mon Jan 27 2014 22:48:30 for Typhoon by
+    <li class="footer">Generated on Tue Jan 28 2014 10:02:53 for Typhoon by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

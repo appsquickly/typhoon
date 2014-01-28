@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-01-27</td>
+            <td class="headerValue">2014-01-28</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -186,9 +186,9 @@
 <span class="lineNum">     128 </span><span class="lineCov">         39 :     class_addMethod(self, sel, imp, &quot;@&quot;);</span>
 <span class="lineNum">     129 </span><span class="lineCov">         39 : }</span>
 <span class="lineNum">     130 </span>            : 
-<span class="lineNum">     131 </span><span class="lineCov">       1324 : + (IMP)implementationToConstructDefinitionForSEL:(SEL)selWithAdvicePrefix</span>
+<span class="lineNum">     131 </span><span class="lineCov">       1323 : + (IMP)implementationToConstructDefinitionForSEL:(SEL)selWithAdvicePrefix</span>
 <span class="lineNum">     132 </span>            : {
-<span class="lineNum">     133 </span><span class="lineCov">       2609 :     return imp_implementationWithBlock((__bridge id)objc_unretainedPointer((TyphoonDefinition*)^(TyphoonAssembly* me)</span>
+<span class="lineNum">     133 </span><span class="lineCov">       2607 :     return imp_implementationWithBlock((__bridge id)objc_unretainedPointer((TyphoonDefinition*)^(TyphoonAssembly* me)</span>
 <span class="lineNum">     134 </span>            :     {
 <span class="lineNum">     135 </span>            :         NSString* key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selWithAdvicePrefix];
 <span class="lineNum">     136 </span>            :         return [me-&gt;_definitionBuilder builtDefinitionForKey:key];

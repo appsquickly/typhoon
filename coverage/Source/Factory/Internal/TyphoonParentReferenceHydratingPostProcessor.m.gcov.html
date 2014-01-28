@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-01-27</td>
+            <td class="headerValue">2014-01-28</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -76,16 +76,16 @@
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span>            : @implementation TyphoonParentReferenceHydratingPostProcessor
 <span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span><span class="lineCov">        496 : - (void)postProcessComponentFactory:(TyphoonComponentFactory*)factory</span>
+<span class="lineNum">      21 </span><span class="lineCov">        495 : - (void)postProcessComponentFactory:(TyphoonComponentFactory*)factory</span>
 <span class="lineNum">      22 </span>            : {
-<span class="lineNum">      23 </span><span class="lineCov">        496 :     [factory.registry enumerateObjectsUsingBlock:^(TyphoonDefinition* definition, NSUInteger idx, BOOL* stop)</span>
-<span class="lineNum">      24 </span><span class="lineCov">        420 :     {</span>
-<span class="lineNum">      25 </span><span class="lineCov">        420 :         if (definition.parent)</span>
+<span class="lineNum">      23 </span><span class="lineCov">        495 :     [factory.registry enumerateObjectsUsingBlock:^(TyphoonDefinition* definition, NSUInteger idx, BOOL* stop)</span>
+<span class="lineNum">      24 </span><span class="lineCov">        419 :     {</span>
+<span class="lineNum">      25 </span><span class="lineCov">        419 :         if (definition.parent)</span>
 <span class="lineNum">      26 </span>            :         {
 <span class="lineNum">      27 </span><span class="lineNoCov">          0 :             TyphoonDefinition* parentDefinition = [factory definitionForKey:definition.parent.key];</span>
 <span class="lineNum">      28 </span><span class="lineNoCov">          0 :             [definition setParent:parentDefinition];</span>
 <span class="lineNum">      29 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">      30 </span><span class="lineCov">        420 :     }];</span>
+<span class="lineNum">      30 </span><span class="lineCov">        419 :     }];</span>
 <span class="lineNum">      31 </span><span class="lineCov">         76 : }</span>
 <span class="lineNum">      32 </span>            : 
 <span class="lineNum">      33 </span>            : 
