@@ -21,9 +21,9 @@
 */
 @interface TyphoonComponentFactory (InstanceBuilder)
 
-- (id)newInstanceWithDefinition:(TyphoonDefinition*)definition;
+- (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition NS_RETURNS_RETAINED;
 
-- (id)newSharedInstanceForDefinition:(TyphoonDefinition*)definition;
+- (id)buildSharedInstanceForDefinition:(TyphoonDefinition*)definition NS_RETURNS_RETAINED;
 
 - (void)injectPropertyDependenciesOn:(__autoreleasing id)instance withDefinition:(TyphoonDefinition*)definition;
 

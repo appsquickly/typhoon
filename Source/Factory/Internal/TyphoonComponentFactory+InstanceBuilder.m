@@ -45,6 +45,8 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
 
+#import <objc/runtime.h>
+
 #define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type)[NSException raise:@"NSUnknownKeyException" \
 format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",property.name, [instance class]]
 
@@ -53,23 +55,20 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)newInstanceWithDefinition:(TyphoonDefinition*)definition
+- (id) buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
-    id <TyphoonIntrospectiveNSObject> instance = nil;
-
-    instance = [self newInitializedInstanceWithDefinition:definition];
+    id <TyphoonIntrospectiveNSObject> instance = [self newInstanceWithDefinition:definition];
     [_stack push:[TyphoonStackElement itemWithKey:definition.key instance:instance]];
     [self injectPropertyDependenciesOn:instance withDefinition:definition];
-    [_stack pop];
-    
     instance = [self postProcessInstance:instance];
+    [_stack pop];
 
     return instance;
 }
 
-- (id) newInitializedInstanceWithDefinition:(TyphoonDefinition*)definition NS_RETURNS_RETAINED
+- (id) newInstanceWithDefinition:(TyphoonDefinition*)definition
 {
-    id instance = nil;
+     id instance = nil;
     
     if (definition.factoryReference)
     {
@@ -79,23 +78,20 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
     else
     {
-        /* Sending init later after alloc is wrong, see http://www.foldr.org/~michaelw/objective-c/ObjectiveC/5RunTime/Allocation__tialization.html
-         * It is reason to refactor */
+        /* Sending init later after alloc is dangerous and was reason of few bugs,
+         * It was a reason to refactor */
         
+        id target = definition.initializer.isClassMethod ? definition.type : [definition.type alloc];
+        
+        void *initializedObjectPointer = NULL;
+    
         NSInvocation *invocation = [self invocationToInitDefinition:definition];
-
-        if (definition.initializer && definition.initializer.isClassMethod) {
-            [invocation setTarget:definition.type];
-        } else {
-            [invocation setTarget:[definition.type alloc]];
-        }
+        [invocation invokeWithTarget:target];
+        [invocation getReturnValue:&initializedObjectPointer];
         
-        [invocation invoke];
-        [invocation getReturnValue:&instance];
+        instance = (__bridge id) initializedObjectPointer;
     }
     
-    
-
     [self handleSpecialCaseForNSManagedObjectModel:instance];
 
     return instance;
@@ -162,13 +158,13 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     [instance setFactory:self];
 }
 
-- (id)newSharedInstanceForDefinition:(TyphoonDefinition*)definition
+- (id)buildSharedInstanceForDefinition:(TyphoonDefinition*)definition
 {
     if ([self alreadyResolvingKey:definition.key])
     {
         return [_stack peekForKey:definition.key].instance;
     }
-    return [self newInstanceWithDefinition:definition];
+    return [self buildInstanceWithDefinition:definition];
 }
 
 
@@ -180,7 +176,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 /* ====================================================================================================================================== */
 #pragma mark - Property Injection
 
-- (void)injectPropertyDependenciesOn:(id)instance withDefinition:(TyphoonDefinition*)definition
+- (void)injectPropertyDependenciesOn:(__autoreleasing id)instance withDefinition:(TyphoonDefinition*)definition
 {
     [self doBeforePropertyInjectionOn:instance withDefinition:definition];
 
@@ -289,7 +285,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     return [[instance circularDependentProperties] objectForKey:property.name] != nil;
 }
 
-- (void)injectCircularDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance
+- (void)injectCircularDependenciesOn:(__autoreleasing id <TyphoonIntrospectiveNSObject>)instance
 {
     NSMutableDictionary* circularDependentProperties = [instance circularDependentProperties];
     for (NSString* propertyName in [circularDependentProperties allKeys])

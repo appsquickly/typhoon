@@ -758,12 +758,12 @@
 				BA798CB709B2750980CFFC62 /* TyphoonComponentFactory+InstanceBuilder.h */,
 				BA798518E11F23A1021A6528 /* TyphoonComponentFactory+InstanceBuilder.m */,
 				BA79899ED482BE5A9D176ED6 /* TyphoonComponentFactory+TyphoonDefinitionRegisterer.h */,
-				BA79897F17DB88BEA7549100 /* TyphoonCallStack.m */,
 				BA798FC918C219BF4F199085 /* TyphoonCallStack.h */,
-				BA7981BE9FC036F9CB30E1F9 /* TyphoonStackElement.m */,
+				BA79897F17DB88BEA7549100 /* TyphoonCallStack.m */,
 				BA798AA10B9FA9B3D53146C0 /* TyphoonStackElement.h */,
-				BA798E9C35F725B504C22F74 /* TyphoonParentReferenceHydratingPostProcessor.m */,
+				BA7981BE9FC036F9CB30E1F9 /* TyphoonStackElement.m */,
 				BA7988CB0A04D544852FC120 /* TyphoonParentReferenceHydratingPostProcessor.h */,
+				BA798E9C35F725B504C22F74 /* TyphoonParentReferenceHydratingPostProcessor.m */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
