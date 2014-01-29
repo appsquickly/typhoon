@@ -55,22 +55,8 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     {
         invocation = [NSInvocation invocationWithMethodSignature:[[classOrInstance class] instanceMethodSignatureForSelector:_selector]];
     }
-    [invocation setTarget:classOrInstance];
     [invocation setSelector:_selector];
     return invocation;
-}
-
-- (NSMethodSignature *) methodSignatureForClass:(Class)clazz
-{
-    NSMethodSignature *signature = nil;
-    
-    if (self.isClassMethod) {
-        signature = [clazz methodSignatureForSelector:_selector];
-    } else {
-        signature = [clazz instanceMethodSignatureForSelector:_selector];
-    }
-    
-    return signature;
 }
 
 

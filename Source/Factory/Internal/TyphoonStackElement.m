@@ -14,30 +14,59 @@
 #import "TyphoonStackElement.h"
 
 
-@implementation TyphoonStackElement
+@implementation TyphoonStackElement {
+    NSMutableSet *completeBlocks;
+}
 
-+ (instancetype)itemWithKey:(NSString*)key instance:(id)instance;
++ (instancetype)itemWithKey:(NSString*)key
 {
-    return [[self alloc] initWithKey:key instance:instance];
+    return [[self alloc] initWithKey:key];
 }
 
 
-- (instancetype)initWithKey:(NSString*)key instance:(id)instance
+- (instancetype)initWithKey:(NSString*)key
 {
     self = [super init];
     if (self)
     {
         _key = key;
-        _instance = instance;
+        completeBlocks = [NSMutableSet new];
     }
     return self;
+}
+
+- (BOOL) isInitializingInstance
+{
+    return _instance == nil;
+}
+
+- (void) addInstanceCompleteBlock:(TyphoonInstanceCompleteBlock)completeBlock
+{
+    NSParameterAssert(completeBlock);
+    
+    if ([self isInitializingInstance]) {
+        [completeBlocks addObject:completeBlock];
+    } else {
+        completeBlock(_instance);
+    }
+    
+}
+
+- (void) takeInstance:(id)instance
+{
+    _instance = instance;
+    
+    for (TyphoonInstanceCompleteBlock completeBlock in completeBlocks) {
+        completeBlock(instance);
+    }
+    [completeBlocks removeAllObjects];
 }
 
 - (NSString*)description
 {
     NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
     [description appendFormat:@"self.key=%@", self.key];
-    [description appendFormat:@", self.instance=%@", self.instance];
+    [description appendFormat:@", completeBlocksCount=%d", [completeBlocks count]];
     [description appendString:@">"];
     return description;
 }

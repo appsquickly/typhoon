@@ -69,24 +69,6 @@
     }
 }
 
-- (TyphoonTypeDescriptor*)resolveTypeWith:(Class)clazz isClassMethod:(BOOL)isClassMethod
-{
-    if (_requiredType)
-    {
-        return [TyphoonTypeDescriptor descriptorWithClassOrProtocol:_requiredType];
-    }
-    else
-    {
-        NSArray* typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:_initializer.selector ofClass:clazz isClassMethod:isClassMethod];
-        
-        if ([[typeCodes objectAtIndex:_index] isEqualToString:@"@"])
-        {
-            [NSException raise:NSInvalidArgumentException
-                        format:@"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"];
-        }
-        return [TyphoonTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:_index]];
-    }
-}
 
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods

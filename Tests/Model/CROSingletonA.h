@@ -17,4 +17,6 @@
 @property(nonatomic, strong) CROPrototypeA* prototypeA;
 @property(nonatomic, strong) CROPrototypeB* prototypeB;
 
+- (id) initWithPrototypeB:(id)b;
+
 @end

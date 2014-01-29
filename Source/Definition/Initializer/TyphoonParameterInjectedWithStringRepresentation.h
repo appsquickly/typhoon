@@ -43,7 +43,4 @@
 */
 - (TyphoonTypeDescriptor*)resolveTypeWith:(id)classOrInstance;
 
-- (TyphoonTypeDescriptor*)resolveTypeWith:(Class)clazz isClassMethod:(BOOL)isClassMethod;
-
-
 @end

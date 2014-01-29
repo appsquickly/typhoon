@@ -14,16 +14,21 @@
 
 @class TyphoonDefinition;
 
+typedef void(^TyphoonInstanceCompleteBlock)(id instance);
+
 
 @interface TyphoonStackElement : NSObject
 
 @property(nonatomic, strong, readonly) NSString* key;
 @property(nonatomic, strong, readonly) id instance;
 
-
-+ (instancetype)itemWithKey:(NSString*)key instance:(id)instance;
++ (instancetype)itemWithKey:(NSString*)key;
 
 - (NSString*)description;
 
+- (BOOL) isInitializingInstance;
+- (void) addInstanceCompleteBlock:(TyphoonInstanceCompleteBlock)completeBlock;
+
+- (void) takeInstance:(id)instance;
 
 @end

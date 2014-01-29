@@ -10,4 +10,13 @@
 
 @implementation CROSingletonA
 
+- (id) initWithPrototypeB:(id)b
+{
+    self = [super init];
+    if (self) {
+        self.prototypeB = b;
+    }
+    return self;
+}
+
 @end

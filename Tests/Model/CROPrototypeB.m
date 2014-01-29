@@ -20,4 +20,13 @@
     return self;
 }
 
+- (id)initWithCROPrototypeA:(CROPrototypeA *)prototypeA
+{
+    self = [super init];
+    if (self) {
+        _prototypeA = prototypeA;
+    }
+    return self;
+}
+
 @end

@@ -294,14 +294,14 @@ static TyphoonComponentFactory* defaultFactory;
     }
 }
 
-- (id) sharedObjectGraphInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id<TyphoonComponentsPool>)pool NS_RETURNS_RETAINED
+- (id) sharedObjectGraphInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id<TyphoonComponentsPool>)pool
 {
     return [self instanceForDefinition:definition fromPool:pool buildBlock:^id(TyphoonDefinition *definition) {
         return [self buildSharedInstanceForDefinition:definition];
     }];
 }
 
-- (id) sharedInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id<TyphoonComponentsPool>)pool NS_RETURNS_RETAINED
+- (id) sharedInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id<TyphoonComponentsPool>)pool
 {
     return [self instanceForDefinition:definition fromPool:pool buildBlock:^id(TyphoonDefinition *definition) {
         return [self buildInstanceWithDefinition:definition];

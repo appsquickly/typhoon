@@ -42,9 +42,13 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (BOOL) isPrimitiveParameterForClass:(Class)aClass isClassMethod:(BOOL)isClassMethod
-{    
-    NSArray* typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:_initializer.selector ofClass:aClass isClassMethod:isClassMethod];
+- (BOOL) isPrimitiveParameterFor:(id)classOrInstance
+{
+    BOOL isClass = class_isMetaClass(object_getClass(classOrInstance));
+    
+    Class class = isClass ? classOrInstance : [classOrInstance class];
+    
+    NSArray* typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:_initializer.selector ofClass:class isClassMethod:isClass];
     
     return ![[typeCodes objectAtIndex:_index] isEqualToString:@"@"];
 }

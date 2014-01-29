@@ -143,4 +143,28 @@
     }];
 }
 
+// Incorrect circular dependency
+
+- (id)incorrectPrototypeB
+{
+    return [TyphoonDefinition withClass:[CROPrototypeB class] initialization:^(TyphoonInitializer *initializer) {
+        initializer.selector = @selector(initWithCROPrototypeA:);
+        [initializer injectWithDefinition:[self incorrectPrototypeA]];
+    } properties:^(TyphoonDefinition *definition) {
+        definition.key = @"incorrectPrototypeB";
+        definition.scope = TyphoonScopePrototype;
+    }];
+}
+
+- (id)incorrectPrototypeA
+{
+    return [TyphoonDefinition withClass:[CROPrototypeA class] initialization:^(TyphoonInitializer* initializer){
+        initializer.selector = @selector(initWithCROPrototypeB:);
+        [initializer injectWithDefinition:[self incorrectPrototypeB]];
+    } properties:^(TyphoonDefinition *definition) {
+        definition.key = @"incorrectPrototypeA";
+        definition.scope = TyphoonScopePrototype;
+    }];
+}
+
 @end

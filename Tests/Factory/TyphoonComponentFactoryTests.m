@@ -363,38 +363,39 @@ static NSString* const DEFAULT_QUEST = @"quest";
 {
     TyphoonComponentFactory *localFactory = [[TyphoonComponentFactory alloc] init];
     NSString *key = @"WeakSingleton";
-    [localFactory register:[TyphoonDefinition withClass:[NSMutableString class] initialization:^(TyphoonInitializer *initializer) {
-        [initializer setSelector:@selector(new)];
-    } properties:^(TyphoonDefinition* definition) {
-        [definition setKey:key];
-        [definition setScope:TyphoonScopeWeakSingleton];
-    }]];
-    
+    [localFactory register:[TyphoonDefinition withClass:[NSMutableIndexSet class] properties:^(TyphoonDefinition* definition)
+                            {
+                                [definition setKey:key];
+                                [definition setScope:TyphoonScopeWeakSingleton];
+                            }]];
     [localFactory load];
     
-    NSMutableString *requestedString, *requestedString2;
+    NSMutableIndexSet *indexSet1, *indexSet2;
+    __weak NSMutableIndexSet *weakRef;
+    __unsafe_unretained NSMutableIndexSet *unsafeRef;
     
     @autoreleasepool {
-        requestedString = [localFactory componentForKey:key];
-        requestedString2 = [localFactory componentForKey:key];
-        assertThat(requestedString, equalTo(requestedString2));
-        [requestedString setString:@"Text!"];
+        indexSet1 = [localFactory componentForKey:key];
+        indexSet2 = [localFactory componentForKey:key];
+        assertThat(indexSet1, equalTo(indexSet2));
+        
     }
+    [indexSet1 addIndex:5];
     
-    __weak NSMutableString *weakString = requestedString2;
-    __unsafe_unretained NSMutableString *unsafeString = requestedString2;
+    weakRef = indexSet2;
+    unsafeRef = indexSet2;
     
-    requestedString = nil;
-    requestedString2 = nil;
+    indexSet1 = nil;
+    indexSet2 = nil;
     
-    assertThat(weakString, equalTo(nil));
-
+    assertThat(weakRef, equalTo(nil));
+    
     @autoreleasepool {
-        requestedString = [localFactory componentForKey:key];
+        indexSet1 = [localFactory componentForKey:key];
     }
-
-    STAssertTrue(unsafeString != requestedString, @"%p == %p",unsafeString, requestedString);
-
+    
+    STAssertTrue(unsafeRef != indexSet1, @"%p == %p",unsafeRef, indexSet1);
+    STAssertTrue([indexSet1 firstIndex] != 5, nil);
 }
 
 /* ====================================================================================================================================== */

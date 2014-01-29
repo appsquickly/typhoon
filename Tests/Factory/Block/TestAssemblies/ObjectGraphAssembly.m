@@ -50,6 +50,7 @@
     {
         [definition injectProperty:@selector(homeFort) withDefinition:[self prototypeFort]];
         [definition injectProperty:@selector(quest) withDefinition:[self prototypeQuest]];
+        [definition setScope:TyphoonScopePrototype];
     }];
 }
 

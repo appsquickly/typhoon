@@ -45,66 +45,63 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
 
-#import <objc/runtime.h>
-
 #define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type)[NSException raise:@"NSUnknownKeyException" \
 format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",property.name, [instance class]]
+
+#define RaiseInitCircualrException(definitionKey) [NSException raise:@"CircularInitializerDependence" format:@"The object for key %@ is currently initializing, but was specified as init dependency in another object",definitionKey]
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id) buildInstanceWithDefinition:(TyphoonDefinition*)definition
+- (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
-    id <TyphoonIntrospectiveNSObject> instance = [self newInstanceWithDefinition:definition];
-    [_stack push:[TyphoonStackElement itemWithKey:definition.key instance:instance]];
+    TyphoonStackElement *stackElement = [TyphoonStackElement itemWithKey:definition.key];
+    [_stack push:stackElement];
+    
+    id instance = [self newInstanceWithDefinition:definition];
+    
+    [stackElement takeInstance:instance];
+    
     [self injectPropertyDependenciesOn:instance withDefinition:definition];
+    
     instance = [self postProcessInstance:instance];
     [_stack pop];
-
+    
     return instance;
 }
 
 - (id) newInstanceWithDefinition:(TyphoonDefinition*)definition
 {
-     id instance = nil;
+    id initTarget = nil;
     
     if (definition.factoryReference)
     {
         // misleading - this is not the instance. this is an instance of a separate class that will create the instance of the class we care
         // about.
-        instance = [self componentForKey:definition.factoryReference]; // clears currently resolving.
+        initTarget = [self componentForKey:definition.factoryReference]; // clears currently resolving.
     }
-    else
-    {
-        /* Sending init later after alloc is dangerous and was reason of few bugs,
-         * It was a reason to refactor */
-        
-        id target = definition.initializer.isClassMethod ? definition.type : [definition.type alloc];
-        
-        void *initializedObjectPointer = NULL;
-    
-        NSInvocation *invocation = [self invocationToInitDefinition:definition];
-        [invocation invokeWithTarget:target];
-        [invocation getReturnValue:&initializedObjectPointer];
-        
-        instance = (__bridge id) initializedObjectPointer;
+    else if (definition.initializer.isClassMethod) {
+        initTarget = definition.type;
+    }
+    else {
+        initTarget = [definition.type alloc];
     }
     
+    void *resultPointer;
+    
+    NSInvocation *invocation = [self invocationToInit:initTarget withDefinition:definition];
+    [invocation invokeWithTarget:initTarget];
+    [invocation getReturnValue:&resultPointer];
+    
+    id instance = (__bridge id) resultPointer;
+    
+    /* Check this case again. I think this problem might be fixed now */
     [self handleSpecialCaseForNSManagedObjectModel:instance];
 
     return instance;
 }
-
-//- (id)injectInstance:(id)instance withDefinition:(TyphoonDefinition*)definition UNAVAILABLE_ATTRIBUTE
-//{
-//    instance = [self initializerInjectionOn:instance withDefinition:definition];
-//    [_stack push:[TyphoonStackElement itemWithKey:definition.key instance:instance]];
-//    [self injectPropertyDependenciesOn:instance withDefinition:definition];
-//    [_stack pop];
-//    return instance;
-//}
 
 - (id)postProcessInstance:(id)instance
 {
@@ -118,31 +115,23 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     return instance;
 }
 
-//- (id)initializerInjectionOn:(id)instance withDefinition:(TyphoonDefinition*)definition UNAVAILABLE_ATTRIBUTE
-//{
-//    if (definition.initializer)
-//    {
-//        if (definition.initializer.isClassMethod == NO)
-//        {
-//            instance = [self invokeInitializer:definition.initializer on:instance];
-//        }
-//        else
-//        {
-//            // initializer was already invoked in allocateInstance:withDefinition:
-//        }
-//    }
-//    else if (definition.initializer == nil)
-//    {
-//        instance = [self invokeDefaultInitializerOn:instance];
-//    }
-//
-//    return instance;
-//}
-
-- (id)invokeDefaultInitializerOn:(id)instance
+- (NSInvocation *) invocationToInit:(id)instanceOrClass withDefinition:(TyphoonDefinition *)definition
 {
-    id initializedInstance = objc_msgSend(instance, @selector(init));
-    return initializedInstance;
+    NSInvocation *invocation = nil;
+    if (definition.initializer) {
+        invocation = [self invocationToInit:instanceOrClass withInitializer:definition.initializer];
+    } else {
+        invocation = [self defaultInvocationToInit:instanceOrClass];
+    }
+    return invocation;
+}
+
+- (NSInvocation *) defaultInvocationToInit:(id)instance
+{
+    NSMethodSignature *methodSignature = [instance methodSignatureForSelector:@selector(init)];
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
+    [invocation setSelector:@selector(init)];
+    return invocation;
 }
 
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance;
@@ -162,6 +151,11 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 {
     if ([self alreadyResolvingKey:definition.key])
     {
+        TyphoonStackElement *stackElement = [_stack peekForKey:definition.key];
+        if ([stackElement isInitializingInstance]) {
+            RaiseInitCircualrException(definition.key);
+        }
+        
         return [_stack peekForKey:definition.key].instance;
     }
     return [self buildInstanceWithDefinition:definition];
@@ -176,7 +170,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 /* ====================================================================================================================================== */
 #pragma mark - Property Injection
 
-- (void)injectPropertyDependenciesOn:(__autoreleasing id)instance withDefinition:(TyphoonDefinition*)definition
+- (void)injectPropertyDependenciesOn:(id)instance withDefinition:(TyphoonDefinition*)definition
 {
     [self doBeforePropertyInjectionOn:instance withDefinition:definition];
 
@@ -285,7 +279,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     return [[instance circularDependentProperties] objectForKey:property.name] != nil;
 }
 
-- (void)injectCircularDependenciesOn:(__autoreleasing id <TyphoonIntrospectiveNSObject>)instance
+- (void)injectCircularDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance
 {
     NSMutableDictionary* circularDependentProperties = [instance circularDependentProperties];
     for (NSString* propertyName in [circularDependentProperties allKeys])
@@ -294,8 +288,10 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         if (!propertyValue)
         {
             NSString* componentKey = [circularDependentProperties objectForKey:propertyName];
-            id reference = [_stack peekForKey:componentKey].instance;
-            [(NSObject*)instance setValue:reference forKey:propertyName];
+            [[_stack peekForKey:componentKey] addInstanceCompleteBlock:^(id reference) {
+                [(NSObject*)instance setValue:reference forKey:propertyName];
+            }];
+            
         }
     }
 }
@@ -318,61 +314,37 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (NSInvocation *) invocationToInitDefinition:(TyphoonDefinition *)definition
+- (NSInvocation *) invocationToInit:(id)instanceOrClass withInitializer:(TyphoonInitializer*)initializer
 {
-    NSInvocation *invocation = nil;
-    
-    if (definition.initializer) {
-        invocation = [self invocationForInitializer:definition.initializer withClass:definition.type];
-    } else {
-        invocation = [self defaultInitInvocation];
-    }
-    
-    return invocation;
-}
+    NSInvocation* invocation = [initializer asInvocationFor:instanceOrClass];
 
-- (NSInvocation *) defaultInitInvocation
-{
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[NSObject instanceMethodSignatureForSelector:@selector(init)]];
-    [invocation setSelector:@selector(init)];
-    return invocation;
-}
-
-- (NSInvocation *) invocationForInitializer:(TyphoonInitializer *)initializer withClass:(Class)class
-{
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[initializer methodSignatureForClass:class]];
-
-    [self configureInvocation:invocation forClass:class withParametersFromInitializer:initializer];
-    
-    [invocation setSelector:initializer.selector];
-    
-    return invocation;
-}
-
-- (void) configureInvocation:(NSInvocation *)invocation forClass:(Class)clazz withParametersFromInitializer:(TyphoonInitializer *)initializer
-{
-    for (id <TyphoonInjectedParameter> parameter in [initializer injectedParameters])
+    NSArray* injectedParameters = [initializer injectedParameters];
+    for (id <TyphoonInjectedParameter> parameter in injectedParameters)
     {
         if (parameter.type == TyphoonParameterInjectionTypeReference)
         {
             TyphoonParameterInjectedByReference* byReference = (TyphoonParameterInjectedByReference*)parameter;
+
+            if ([[_stack peekForKey:byReference.reference] isInitializingInstance]) {
+                RaiseInitCircualrException(byReference.reference);
+            }
+            
             id reference = [self componentForKey:byReference.reference];
             [invocation setArgument:&reference atIndex:parameter.index + 2];
         }
         else if (parameter.type == TyphoonParameterInjectionTypeStringRepresentation)
         {
             TyphoonParameterInjectedWithStringRepresentation* byValue = (TyphoonParameterInjectedWithStringRepresentation*)parameter;
-            TyphoonTypeDescriptor *type = [byValue resolveTypeWith:clazz isClassMethod:initializer.isClassMethod];
-            
-            [self setArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue requiredType:type];
+            [self setArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue
+                    requiredType:[byValue resolveTypeWith:instanceOrClass]];
         }
         else if (parameter.type == TyphoonParameterInjectionTypeObjectInstance)
         {
             TyphoonParameterInjectedWithObjectInstance* byInstance = (TyphoonParameterInjectedWithObjectInstance*)parameter;
             id value = byInstance.value;
             BOOL isValuesIsWrapper = [value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSValue class]];
-            
-            if (isValuesIsWrapper && [byInstance isPrimitiveParameterForClass:clazz isClassMethod:initializer.isClassMethod]) {
+
+            if (isValuesIsWrapper && [byInstance isPrimitiveParameterFor:instanceOrClass]) {
                 [self setPrimitiveArgumentForInvocation:invocation index:parameter.index + 2 fromValue:value];
             } else {
                 [invocation setArgument:&value atIndex:parameter.index + 2];
@@ -385,51 +357,9 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
             [invocation setArgument:&collection atIndex:parameter.index + 2];
         }
     }
-}
 
-//- (id)invokeInitializer:(TyphoonInitializer*)initializer on:(id)instanceOrClass UNAVAILABLE_ATTRIBUTE
-//{
-//    NSInvocation* invocation = [initializer asInvocationFor:instanceOrClass];
-//
-//    NSArray* injectedParameters = [initializer injectedParameters];
-//    for (id <TyphoonInjectedParameter> parameter in injectedParameters)
-//    {
-//        if (parameter.type == TyphoonParameterInjectionTypeReference)
-//        {
-//            TyphoonParameterInjectedByReference* byReference = (TyphoonParameterInjectedByReference*)parameter;
-//            id reference = [self componentForKey:byReference.reference];
-//            [invocation setArgument:&reference atIndex:parameter.index + 2];
-//        }
-//        else if (parameter.type == TyphoonParameterInjectionTypeStringRepresentation)
-//        {
-//            TyphoonParameterInjectedWithStringRepresentation* byValue = (TyphoonParameterInjectedWithStringRepresentation*)parameter;
-//            [self setArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue
-//                    requiredType:[byValue resolveTypeWith:instanceOrClass]];
-//        }
-//        else if (parameter.type == TyphoonParameterInjectionTypeObjectInstance)
-//        {
-//            TyphoonParameterInjectedWithObjectInstance* byInstance = (TyphoonParameterInjectedWithObjectInstance*)parameter;
-//            id value = byInstance.value;
-//            BOOL isValuesIsWrapper = [value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSValue class]];
-//
-//            if (isValuesIsWrapper && [byInstance isPrimitiveParameterFor:instanceOrClass]) {
-//                [self setPrimitiveArgumentForInvocation:invocation index:parameter.index + 2 fromValue:value];
-//            } else {
-//                [invocation setArgument:&value atIndex:parameter.index + 2];
-//            }
-//        }
-//        else if (parameter.type == TyphoonParameterInjectionTypeAsCollection)
-//        {
-//            TyphoonParameterInjectedAsCollection* asCollection = (TyphoonParameterInjectedAsCollection*)parameter;
-//            id collection = [self buildCollectionWithValues:asCollection.values requiredType:asCollection.collectionType];
-//            [invocation setArgument:&collection atIndex:parameter.index + 2];
-//        }
-//    }
-//    [invocation invoke];
-//    __autoreleasing id <NSObject> returnValue = nil;
-//    [invocation getReturnValue:&returnValue];
-//    return returnValue;
-//}
+    return invocation;
+}
 
 /* ====================================================================================================================================== */
 

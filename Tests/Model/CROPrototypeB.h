@@ -9,11 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @class CROSingletonA;
+@class CROPrototypeA;
 
 @interface CROPrototypeB : NSObject
 
 @property(nonatomic, strong, readonly) CROSingletonA* singletonA;
+@property(nonatomic, strong, readonly) CROPrototypeA* prototypeA;
 
 - (id)initWithCROSingletonA:(CROSingletonA*)singletonA;
+
+- (id)initWithCROPrototypeA:(CROPrototypeA *)prototypeA;
 
 @end

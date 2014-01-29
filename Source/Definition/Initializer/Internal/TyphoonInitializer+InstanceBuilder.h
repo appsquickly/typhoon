@@ -21,8 +21,6 @@
 
 - (NSInvocation*)asInvocationFor:(id)classOrInstance;
 
-- (NSMethodSignature *) methodSignatureForClass:(Class)clazz;
-
 - (void)setComponentDefinition:(TyphoonDefinition*)definition;
 
 

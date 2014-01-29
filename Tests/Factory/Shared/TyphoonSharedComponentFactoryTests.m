@@ -277,7 +277,22 @@
 {
     CROSingletonA* singletonA = [_circularDependenciesFactory componentForType:[CROSingletonA class]];
     assertThat(singletonA.prototypeB, isNot(nilValue()));
+    assertThat(singletonA.prototypeA, isNot(nilValue()));
 }
 
+
+- (void)test_exception_when_initializer_dependency_chain
+{
+    @try {
+        [_circularDependenciesFactory componentForKey:@"incorrectPrototypeB"];
+        STFail(@"Should have thrown exception");
+    }
+    @catch (NSException *exception) {
+        assertThat([exception name], equalTo(@"CircularInitializerDependence"));
+    }
+
+
+    
+}
 
 @end
