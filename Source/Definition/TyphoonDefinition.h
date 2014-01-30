@@ -25,6 +25,8 @@
 * - TyphoonScopePrototype means that a new component is created for each time it is referenced in a collaborator, or retrieved
 * from the factory.
 * - TyphoonScopeSingleton creates a shared instance.
+* - TyphoonScopeWeakSingleton creates an instance that will be shared across all components. However as soon as the instance is not being
+* used it will be deallocated.
 *
 */
 typedef enum
