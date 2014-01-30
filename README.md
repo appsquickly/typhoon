@@ -202,6 +202,7 @@ I'll take all the help I can get | Professional consultation is available from k
 * <a href="https://github.com/rhgills">Robert Gilliam</a> - <a href="mailto:robert@robertgilliam.org?Subject=Typhoon">robert@robertgilliam.org</a>
 * <a href="https://github.com/drodriguez">Daniel Rodríguez Troitiño</a> 
 * <a href="https://github.com/eriksundin">Erik Sundin</a> 
+* <a href="https://github.com/alexgarbarev">Aleksey Garbarev</a>
          
 ### With contributions from: 
 
