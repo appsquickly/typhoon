@@ -16,9 +16,10 @@
 
 
 @interface TyphoonPatchObjectFactory : NSObject
+{
+    id _patchObject;
+}
 
-
-@property(nonatomic, copy, readonly) TyphoonPatchObjectCreationBlock creationBlock;
 
 - (instancetype)initWithCreationBlock:(TyphoonPatchObjectCreationBlock)creationBlock;
 

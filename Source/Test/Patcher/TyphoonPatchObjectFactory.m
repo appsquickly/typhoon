@@ -11,7 +11,6 @@
 
 
 #import "TyphoonPatchObjectFactory.h"
-#import "TyphoonPatcher.h"
 
 
 @implementation TyphoonPatchObjectFactory
@@ -27,7 +26,7 @@
     if (self)
     {
         NSAssert(creationBlock != nil, @"Creation block can't be nil");
-        _creationBlock = creationBlock;
+        _patchObject = creationBlock();
     }
 
     return self;
@@ -38,7 +37,7 @@
 
 - (id)patchObject
 {
-    return _creationBlock();
+    return _patchObject;
 }
 
 

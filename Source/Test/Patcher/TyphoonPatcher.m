@@ -17,6 +17,9 @@
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
+
+static NSString* const TYPHOON_PATCHER_SUFFIX = @"$$$patcher";
 
 @implementation TyphoonPatcher
 
@@ -53,6 +56,8 @@
 {
     for (TyphoonDefinition* newDefinition in [self newDefinitionsToRegister])
     {
+        TyphoonDefinition* patchedDefinition = [factory definitionForKey:[self definitionKeyForPatchFactoryKey:newDefinition.key]];
+        [newDefinition setScope:patchedDefinition.scope];
         [factory register:newDefinition];
     }
 
@@ -68,7 +73,7 @@
     for (NSString* key in [_patches allKeys])
     {
         TyphoonDefinition* patchFactory =
-                [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:[self patchFactoryNameForKey:key]];
+                [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:[self patchFactoryKeyForDefinitionKey:key]];
         patchFactory.initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithCreationBlock:)];
         [patchFactory.initializer injectWithObjectInstance:[_patches objectForKey:key]];
         [newDefinitions addObject:patchFactory];
@@ -82,7 +87,7 @@
     if (patchObject)
     {
         LogDebug(@"Patching component with key: '%@'", definition.key);
-        [definition setFactoryReference:[self patchFactoryNameForKey:definition.key]];
+        [definition setFactoryReference:[self patchFactoryKeyForDefinitionKey:definition.key]];
         [definition setInitializer:[[TyphoonInitializer alloc] initWithSelector:@selector(patchObject)]];
         [definition setValue:nil forKey:@"injectedProperties"];
     }
@@ -91,9 +96,15 @@
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (NSString*)patchFactoryNameForKey:(NSString*)key
+- (NSString*)patchFactoryKeyForDefinitionKey:(NSString*)key
 {
-    return [NSString stringWithFormat:@"%@$$$patcher", key];
+    return [NSString stringWithFormat:TYPHOON_PATCHER_SUFFIX, key];
+}
+
+- (NSString*)definitionKeyForPatchFactoryKey:(NSString*)key
+{
+    return [key substringToIndex:[key length] - [TYPHOON_PATCHER_SUFFIX length]];
+
 }
 
 
