@@ -584,12 +584,12 @@
              <Node>
               <Name>patchDefinition:withObject:</Name>
               <Path>interface_typhoon_patcher.html</Path>
-              <Anchor>a5f2b4e22584b5d04d4f42971ed44f693</Anchor>
+              <Anchor>a958a23e25a16c2a9d8abfbab1cab0786</Anchor>
              </Node>
              <Node>
               <Name>patchDefinitionWithKey:withObject:</Name>
               <Path>interface_typhoon_patcher.html</Path>
-              <Anchor>aba162ef9cefbd4ffac89686ad0f25856</Anchor>
+              <Anchor>a81cd00d79350a44cc9aa10794377e94c</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -1776,12 +1776,12 @@
              <Node>
               <Name>patchDefinition:withObject:</Name>
               <Path>interface_typhoon_patcher.html</Path>
-              <Anchor>a5f2b4e22584b5d04d4f42971ed44f693</Anchor>
+              <Anchor>a958a23e25a16c2a9d8abfbab1cab0786</Anchor>
              </Node>
              <Node>
               <Name>patchDefinitionWithKey:withObject:</Name>
               <Path>interface_typhoon_patcher.html</Path>
-              <Anchor>aba162ef9cefbd4ffac89686ad0f25856</Anchor>
+              <Anchor>a81cd00d79350a44cc9aa10794377e94c</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -1790,14 +1790,14 @@
             <Path>interface_typhoon_patch_object_factory.html</Path>
             <Subnodes>
              <Node>
-              <Name>object</Name>
+              <Name>initWithCreationBlock:</Name>
               <Path>interface_typhoon_patch_object_factory.html</Path>
-              <Anchor>a724e92708d6e4b22813c7d3da3cc2d86</Anchor>
+              <Anchor>ab716f752a999d77c8418db7e4afb230e</Anchor>
              </Node>
              <Node>
-              <Name>initWithObject:</Name>
+              <Name>patchObject</Name>
               <Path>interface_typhoon_patch_object_factory.html</Path>
-              <Anchor>a6146138c32cba30247394a5800094509</Anchor>
+              <Anchor>a93f80e3e93038ac2ee934513fc880a23</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -4529,9 +4529,9 @@
             <Path>_typhoon_patcher_8h.html</Path>
             <Subnodes>
              <Node>
-              <Name>ObjectCreationBlock</Name>
+              <Name>TyphoonPatchObjectCreationBlock</Name>
               <Path>_typhoon_patcher_8h.html</Path>
-              <Anchor>a8cad668d40c9e53e19e76cf8062e4922</Anchor>
+              <Anchor>a3c49196dec575d5726ed3af899232c26</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -4544,14 +4544,14 @@
               <Path>interface_typhoon_patch_object_factory.html</Path>
               <Subnodes>
                <Node>
-                <Name>object</Name>
+                <Name>initWithCreationBlock:</Name>
                 <Path>interface_typhoon_patch_object_factory.html</Path>
-                <Anchor>a724e92708d6e4b22813c7d3da3cc2d86</Anchor>
+                <Anchor>ab716f752a999d77c8418db7e4afb230e</Anchor>
                </Node>
                <Node>
-                <Name>initWithObject:</Name>
+                <Name>patchObject</Name>
                 <Path>interface_typhoon_patch_object_factory.html</Path>
-                <Anchor>a6146138c32cba30247394a5800094509</Anchor>
+                <Anchor>a93f80e3e93038ac2ee934513fc880a23</Anchor>
                </Node>
               </Subnodes>
              </Node>

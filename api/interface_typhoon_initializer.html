@@ -629,11 +629,13 @@ Instance Methods</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Injects with an object instance. </p>
-<p>If object is NSNumber of NSValue and argument type is scalar, pointer or NSValue-supported struct, then value will be automatically unwrapped (Like KeyValueCoding does). </p>
+<p>If object is NSNumber or NSValue and argument type is scalar, pointer or NSValue-supported struct, then value will be automatically unwrapped (Like KeyValueCoding does). </p>
 <div class="fragment"><div class="line">[initializer injectWithObjectInstance:@(YES)];</div>
 <div class="line">[initializer injectWithObjectInstance:@(1.43f)];</div>
 <div class="line">[initializer injectWithObjectInstance:[NSValue valueWithCGRect:defaultFrame]];</div>
 <div class="line">[initializer injectWithObjectInstance:[NSValue valueWithPointer:<span class="keyword">@selector</span>(selectorValue)]];</div>
+</div><!-- fragment --><p>To inject a class object:</p>
+<div class="fragment"><div class="line">[initializer injectWithObjectInstance:[SomeObject <span class="keyword">class</span>]];</div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -693,7 +695,7 @@ Instance Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="interface_typhoon_initializer.html">TyphoonInitializer</a></li>
-    <li class="footer">Generated on Thu Jan 30 2014 11:46:02 for Typhoon by
+    <li class="footer">Generated on Thu Jan 30 2014 19:07:13 for Typhoon by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

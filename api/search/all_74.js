@@ -156,6 +156,7 @@ var searchData=
   ['typhoonpassthroughtypeconverter_2eh',['TyphoonPassThroughTypeConverter.h',['../_typhoon_pass_through_type_converter_8h.html',1,'']]],
   ['typhoonpatcher',['TyphoonPatcher',['../interface_typhoon_patcher.html',1,'']]],
   ['typhoonpatcher_2eh',['TyphoonPatcher.h',['../_typhoon_patcher_8h.html',1,'']]],
+  ['typhoonpatchobjectcreationblock',['TyphoonPatchObjectCreationBlock',['../_typhoon_patcher_8h.html#a3c49196dec575d5726ed3af899232c26',1,'TyphoonPatcher.h']]],
   ['typhoonpatchobjectfactory',['TyphoonPatchObjectFactory',['../interface_typhoon_patch_object_factory.html',1,'']]],
   ['typhoonpatchobjectfactory_2eh',['TyphoonPatchObjectFactory.h',['../_typhoon_patch_object_factory_8h.html',1,'']]],
   ['typhoonprimitivetype',['TyphoonPrimitiveType',['../_typhoon_type_descriptor_8h.html#ab1691370e2945f3d15a1002c601817cf',1,'TyphoonTypeDescriptor.h']]],

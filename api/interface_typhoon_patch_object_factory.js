@@ -1,5 +1,5 @@
 var interface_typhoon_patch_object_factory =
 [
-    [ "object", "interface_typhoon_patch_object_factory.html#a724e92708d6e4b22813c7d3da3cc2d86", null ],
-    [ "initWithObject:", "interface_typhoon_patch_object_factory.html#a6146138c32cba30247394a5800094509", null ]
+    [ "initWithCreationBlock:", "interface_typhoon_patch_object_factory.html#ab716f752a999d77c8418db7e4afb230e", null ],
+    [ "patchObject", "interface_typhoon_patch_object_factory.html#a93f80e3e93038ac2ee934513fc880a23", null ]
 ];

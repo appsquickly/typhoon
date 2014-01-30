@@ -127,7 +127,7 @@ var NAVTREEINDEX0 =
 "_typhoon_pass_through_type_converter_8h.html":[2,0,66],
 "_typhoon_patch_object_factory_8h.html":[2,0,68],
 "_typhoon_patcher_8h.html":[2,0,67],
-"_typhoon_patcher_8h.html#a8cad668d40c9e53e19e76cf8062e4922":[2,0,67,0],
+"_typhoon_patcher_8h.html#a3c49196dec575d5726ed3af899232c26":[2,0,67,0],
 "_typhoon_primitive_type_converter_8h.html":[2,0,69],
 "_typhoon_property_injected_as_collection_8h.html":[2,0,70],
 "_typhoon_property_injected_as_object_instance_8h.html":[2,0,71],

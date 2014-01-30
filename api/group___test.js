@@ -1,8 +1,8 @@
 var group___test =
 [
     [ "TyphoonPatcher", "interface_typhoon_patcher.html", [
-      [ "patchDefinition:withObject:", "interface_typhoon_patcher.html#a5f2b4e22584b5d04d4f42971ed44f693", null ],
-      [ "patchDefinitionWithKey:withObject:", "interface_typhoon_patcher.html#aba162ef9cefbd4ffac89686ad0f25856", null ]
+      [ "patchDefinition:withObject:", "interface_typhoon_patcher.html#a958a23e25a16c2a9d8abfbab1cab0786", null ],
+      [ "patchDefinitionWithKey:withObject:", "interface_typhoon_patcher.html#a81cd00d79350a44cc9aa10794377e94c", null ]
     ] ],
     [ "TyphoonTestUtils", "interface_typhoon_test_utils.html", [
       [ "wait:secondsForCondition:andPerformTests:", "interface_typhoon_test_utils.html#a77d874d8410e5aa6a1f56a4049a44e52", null ],
