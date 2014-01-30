@@ -765,6 +765,10 @@
 		F9A0D707FAF041C3A6D38A36 /* Pods-OS X Tests (Cocoapods)-OCMockito-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 122971A0837C4521A45BA089 /* Pods-OS X Tests (Cocoapods)-OCMockito-dummy.m */; };
 		F9CE4CD29A8E458DA16E846D /* HCIsEqual.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D6B4A7C8BBA4D13BBF047E1 /* HCIsEqual.h */; };
 		F9E9244988704455B57E9387 /* HCSubstringMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 18AC502910B346BB893A2EFA /* HCSubstringMatcher.h */; };
+		FA186058189ADB5C00A99E4A /* TyphoonInvocation.h in Headers */ = {isa = PBXBuildFile; fileRef = FA186056189ADB5C00A99E4A /* TyphoonInvocation.h */; };
+		FA186059189ADB5C00A99E4A /* TyphoonInvocation.h in Headers */ = {isa = PBXBuildFile; fileRef = FA186056189ADB5C00A99E4A /* TyphoonInvocation.h */; };
+		FA18605A189ADB5C00A99E4A /* TyphoonInvocation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA186057189ADB5C00A99E4A /* TyphoonInvocation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-checker"; }; };
+		FA18605B189ADB5C00A99E4A /* TyphoonInvocation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA186057189ADB5C00A99E4A /* TyphoonInvocation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-checker"; }; };
 		FA3550241C4A4E508FD2E99F /* HCAllOf.h in Headers */ = {isa = PBXBuildFile; fileRef = 4621700824E74D46ABDCD399 /* HCAllOf.h */; };
 		FA888E23B83140198FEFB6B7 /* MKTInvocationContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9965CD5A92FB41F298EFBE0D /* MKTInvocationContainer.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-checker"; }; };
 		FA99165718983394000AC4B5 /* NSObject+DeallocNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = FA99165518983394000AC4B5 /* NSObject+DeallocNotification.h */; };
@@ -1241,6 +1245,8 @@
 		F69876D9DE7C48DBAB1BD1DD /* OCMockito.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMockito.h; path = Source/OCMockito/OCMockito.h; sourceTree = "<group>"; };
 		F90F53D13C6F4738B7E3DF0C /* TyphoonTypeConverterRegistry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TyphoonTypeConverterRegistry.h; path = Source/TypeConversion/TyphoonTypeConverterRegistry.h; sourceTree = "<group>"; };
 		F985E0D1ADD54E0B8EF7BD59 /* HCIsCollectionContainingInOrder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HCIsCollectionContainingInOrder.m; path = Source/Library/Collection/HCIsCollectionContainingInOrder.m; sourceTree = "<group>"; };
+		FA186056189ADB5C00A99E4A /* TyphoonInvocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TyphoonInvocation.h; path = "Source/Utils/non-arc/TyphoonInvocation.h"; sourceTree = "<group>"; };
+		FA186057189ADB5C00A99E4A /* TyphoonInvocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TyphoonInvocation.m; path = "Source/Utils/non-arc/TyphoonInvocation.m"; sourceTree = "<group>"; };
 		FA99165518983394000AC4B5 /* NSObject+DeallocNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+DeallocNotification.h"; path = "Source/Utils/NSObject+DeallocNotification.h"; sourceTree = "<group>"; };
 		FA99165618983394000AC4B5 /* NSObject+DeallocNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+DeallocNotification.m"; path = "Source/Utils/NSObject+DeallocNotification.m"; sourceTree = "<group>"; };
 		FA99166D18983CE6000AC4B5 /* TyphoonComponentsPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TyphoonComponentsPool.h; path = Source/Factory/Pool/TyphoonComponentsPool.h; sourceTree = "<group>"; };
@@ -1590,6 +1596,8 @@
 				FA99165618983394000AC4B5 /* NSObject+DeallocNotification.m */,
 				9333A056C8964BFDBFA75DEC /* NSString+TyphoonAdditions.h */,
 				6B5F7D6D69504435A6F18E75 /* NSString+TyphoonAdditions.m */,
+				FA186056189ADB5C00A99E4A /* TyphoonInvocation.h */,
+				FA186057189ADB5C00A99E4A /* TyphoonInvocation.m */,
 				305990C72EB8456FB027722C /* OCLogTemplate.h */,
 				2A7AC46FA9AF4C2E98EF8F3C /* Typhoon.h */,
 				7733810C76DC40B69001807C /* TyphoonAbstractInjectedProperty.h */,
@@ -2088,6 +2096,7 @@
 				FA99165718983394000AC4B5 /* NSObject+DeallocNotification.h in Headers */,
 				F04E0877AE7345F593D51E12 /* TyphoonComponentFactory+InstanceBuilder.h in Headers */,
 				807F921BF09940329A71CD9F /* TyphoonComponentFactory+TyphoonDefinitionRegisterer.h in Headers */,
+				FA186058189ADB5C00A99E4A /* TyphoonInvocation.h in Headers */,
 				399306A40DB34A70B93180AC /* TyphoonComponentFactory.h in Headers */,
 				D0A51693CCBF4BE287E07CAE /* TyphoonComponentFactoryAware.h in Headers */,
 				00F5EA4358C744C7AD18524F /* TyphoonComponentFactoryPostProcessor.h in Headers */,
@@ -2208,6 +2217,7 @@
 				69220C10D7114F409FDE9FE3 /* TyphoonDefinitionRegisterer.h in Headers */,
 				A96919DCE79F4D65BCA08854 /* TyphoonFactoryProvider.h in Headers */,
 				9E166DF9414D4F098EE6284F /* TyphoonInitializer+InstanceBuilder.h in Headers */,
+				FA186059189ADB5C00A99E4A /* TyphoonInvocation.h in Headers */,
 				F0ACDA3BCE874DF6A45B7D40 /* TyphoonInitializer.h in Headers */,
 				B39104CEF32E4EAC995AB132 /* TyphoonInjectedAsCollection.h in Headers */,
 				F8E549C491AA45AE91E7224C /* TyphoonInjectedByReference.h in Headers */,
@@ -2636,6 +2646,7 @@
 				CCFEFADB29C84FA99F4FEBD3 /* TyphoonBlockComponentFactory.m in Sources */,
 				FA99167418983CE6000AC4B5 /* TyphoonWeekComponentsPool.m in Sources */,
 				917BA26BCAC64DF7B9F60C29 /* TyphoonBundleResource.m in Sources */,
+				FA18605A189ADB5C00A99E4A /* TyphoonInvocation.m in Sources */,
 				00BCF67744AF4434ADA37949 /* TyphoonByReferenceCollectionValue.m in Sources */,
 				2E999DD924FB4A539471473A /* TyphoonCallStack.m in Sources */,
 				130F10B1593C4B1CBAC640A0 /* TyphoonCircularDependencyTerminator.m in Sources */,
@@ -2777,6 +2788,7 @@
 				FA99167518983CE6000AC4B5 /* TyphoonWeekComponentsPool.m in Sources */,
 				8BE015B3652C49FDB7E43607 /* NSString+TyphoonAdditions.m in Sources */,
 				3CB89CF079E941F3932862AA /* Pods-iOS Tests (Cocoapods)-Typhoon-dummy.m in Sources */,
+				FA18605B189ADB5C00A99E4A /* TyphoonInvocation.m in Sources */,
 				556C3DA3AE144842AE508E2D /* TyphoonAbstractInjectedProperty.m in Sources */,
 				AB7B21D88F7B47C8BA8250CA /* TyphoonAssembly.m in Sources */,
 				DCCF506D9AF64E8DA65B3486 /* TyphoonAssemblyAdviser.m in Sources */,

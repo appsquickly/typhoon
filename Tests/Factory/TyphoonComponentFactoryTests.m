@@ -363,39 +363,39 @@ static NSString* const DEFAULT_QUEST = @"quest";
 {
     TyphoonComponentFactory *localFactory = [[TyphoonComponentFactory alloc] init];
     NSString *key = @"WeakSingleton";
-    [localFactory register:[TyphoonDefinition withClass:[NSMutableIndexSet class] properties:^(TyphoonDefinition* definition)
+    
+    [localFactory register:[TyphoonDefinition withClass:[NSMutableString class] properties:^(TyphoonDefinition* definition)
                             {
                                 [definition setKey:key];
                                 [definition setScope:TyphoonScopeWeakSingleton];
                             }]];
     [localFactory load];
     
-    NSMutableIndexSet *indexSet1, *indexSet2;
-    __weak NSMutableIndexSet *weakRef;
-    __unsafe_unretained NSMutableIndexSet *unsafeRef;
+    NSMutableString *object1, *object2;
+    __weak NSMutableString *weakRef;
+    __unsafe_unretained NSMutableString *unsafeRef;
     
     @autoreleasepool {
-        indexSet1 = [localFactory componentForKey:key];
-        indexSet2 = [localFactory componentForKey:key];
-        assertThat(indexSet1, equalTo(indexSet2));
+        object1 = [localFactory componentForKey:key];
+        object2 = [localFactory componentForKey:key];
+        assertThat(object1, equalTo(object2));
         
+        [object1 appendString:@"Hello"];
     }
-    [indexSet1 addIndex:5];
     
-    weakRef = indexSet2;
-    unsafeRef = indexSet2;
+    weakRef = object2;
+    unsafeRef = object2;
     
-    indexSet1 = nil;
-    indexSet2 = nil;
+    object1 = nil;
+    object2 = nil;
     
     assertThat(weakRef, equalTo(nil));
     
     @autoreleasepool {
-        indexSet1 = [localFactory componentForKey:key];
+        object1 = [localFactory componentForKey:key];
     }
     
-    STAssertTrue(unsafeRef != indexSet1, @"%p == %p",unsafeRef, indexSet1);
-    STAssertTrue([indexSet1 firstIndex] != 5, nil);
+    STAssertTrue([object1 rangeOfString:@"Hello"].location == NSNotFound, nil);
 }
 
 /* ====================================================================================================================================== */

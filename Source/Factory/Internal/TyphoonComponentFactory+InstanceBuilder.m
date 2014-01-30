@@ -44,6 +44,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonCallStack.h"
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
+#import "TyphoonInvocation.h"
 
 #define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type)[NSException raise:@"NSUnknownKeyException" \
 format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",property.name, [instance class]]
@@ -88,17 +89,16 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     else {
         initTarget = [definition.type alloc];
     }
-    
-    /* Check this case again. I think this problem might be fixed now */
-    [self handleSpecialCaseForNSManagedObjectModel:initTarget];
 
-    void *resultPointer;
+    id instance = nil;
     
     NSInvocation *invocation = [self invocationToInit:initTarget withDefinition:definition];
-    [invocation invokeWithTarget:initTarget];
-    [invocation getReturnValue:&resultPointer];
     
-    id instance = (__bridge id) resultPointer;
+    if (definition.factoryReference || [definition.initializer isClassMethod]) {
+        instance = [invocation resultOfInvokingOnInstance:initTarget];
+    } else {
+        instance = [invocation resultOfInvokingOnAllocationForClass:definition.type];
+    }
     
     return instance;
 }
@@ -504,21 +504,5 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
     return [results copy];
 }
-
-/**
-* FIXME:
-* NSManagedObjectModelReturns a different pointer from init than from alloc, Typhoon+ARC is not currently picking this up.
-* Other classes that do this (and work fine with Typhoon) : Class clusters, eg NSString, NSArray, NSURL
-*/
-- (void)handleSpecialCaseForNSManagedObjectModel:(id)instance
-{
-    if ([instance isKindOfClass:[NSManagedObjectModel class]])
-    {
-        LogInfo("FixMe: Ensuring NSManagedObjectModel is not over-released.");
-        objc_msgSend(instance, NSSelectorFromString(@"retain"));
-
-    }
-}
-
 
 @end
