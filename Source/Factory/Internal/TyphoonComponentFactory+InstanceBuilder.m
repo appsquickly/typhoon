@@ -89,6 +89,9 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         initTarget = [definition.type alloc];
     }
     
+    /* Check this case again. I think this problem might be fixed now */
+    [self handleSpecialCaseForNSManagedObjectModel:initTarget];
+
     void *resultPointer;
     
     NSInvocation *invocation = [self invocationToInit:initTarget withDefinition:definition];
@@ -97,9 +100,6 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     
     id instance = (__bridge id) resultPointer;
     
-    /* Check this case again. I think this problem might be fixed now */
-    [self handleSpecialCaseForNSManagedObjectModel:instance];
-
     return instance;
 }
 
