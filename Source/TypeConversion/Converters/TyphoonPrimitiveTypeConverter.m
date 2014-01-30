@@ -18,6 +18,10 @@
 #import <UIKit/UIKit.h>
 #endif
 
+#if TARGET_OS_MAC
+#import <QuartzCore/QuartzCore.h>
+#endif
+
 @implementation TyphoonPrimitiveTypeConverter
 
 
