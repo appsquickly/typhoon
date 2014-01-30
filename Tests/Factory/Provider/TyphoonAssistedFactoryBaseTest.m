@@ -12,6 +12,8 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "TyphoonAssistedFactoryBase.h"
 
+#import "TyphoonAbstractInjectedProperty.h"
+
 @interface TyphoonAssistedFactoryBaseTest : SenTestCase
 @end
 
@@ -32,8 +34,11 @@
 
 - (void)test_injection_value_should_return_injected_value
 {
-    id value = [[NSObject alloc] init];
-    [assistedFactory setInjectionValue:value forProperty:@"property"];
+    TyphoonPropertyInjectionLazyValue value = ^id{ return nil; };
+
+    id mockProperty = mock([TyphoonAbstractInjectedProperty class]);
+    [given([mockProperty name]) willReturn:@"property"];
+    [assistedFactory shouldInjectProperty:mockProperty withType:nil lazyValue:value];
 
     assertThat([assistedFactory injectionValueForProperty:@"property"], is(equalTo(value)));
 }

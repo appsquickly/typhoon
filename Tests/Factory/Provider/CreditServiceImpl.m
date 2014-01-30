@@ -11,6 +11,19 @@
 
 #import "CreditServiceImpl.h"
 
+static NSUInteger sInstanceCounter = 0;
+
 @implementation CreditServiceImpl
+
++ (NSUInteger)instanceCounter
+{
+    return sInstanceCounter;
+}
+
+- (id)init
+{
+    sInstanceCounter += 1;
+    return [super init];
+}
 
 @end

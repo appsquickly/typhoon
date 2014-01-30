@@ -11,14 +11,13 @@
 
 #import <Foundation/Foundation.h>
 
+#import "TyphoonPropertyInjectionInternalDelegate.h"
+
 /**
  * Internal base class for all Typhoon assisted factories. Users should not use
  * this class directly.
  */
-@interface TyphoonAssistedFactoryBase : NSObject
-
-/** Used internally by the setters of the properties in the subclasses */
-- (void)setInjectionValue:(id)value forProperty:(NSString *)property;
+@interface TyphoonAssistedFactoryBase : NSObject <TyphoonPropertyInjectionInternalDelegate>
 
 /** Used internally by the getters of the properties in the subclasses */
 - (id)injectionValueForProperty:(NSString *)property;

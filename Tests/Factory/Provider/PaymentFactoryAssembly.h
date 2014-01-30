@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  TYPHOON FRAMEWORK
-//  Copyright 2013, Jasper Blues & Contributors
+//  Copyright 2014, Jasper Blues & Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -9,11 +9,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <Foundation/Foundation.h>
-#import "CreditService.h"
 
-@interface CreditServiceImpl : NSObject <CreditService>
+#import "Typhoon.h"
 
-+ (NSUInteger)instanceCounter;
+@interface PaymentFactoryAssembly : TyphoonAssembly
+
+- (id)authService;
+
+- (id)creditService;
+
+- (id)paymentFactory;
 
 @end

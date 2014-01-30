@@ -80,9 +80,7 @@
     id<PaymentFactory> factory = [[klass alloc] init];
 
     assertThatBool([factory respondsToSelector:@selector(creditService)], is(equalToBool(YES)));
-    assertThatBool([factory respondsToSelector:@selector(setCreditService:)], is(equalToBool(YES)));
     assertThatBool([factory respondsToSelector:@selector(authService)], is(equalToBool(YES)));
-    assertThatBool([factory respondsToSelector:@selector(setAuthService:)], is(equalToBool(YES)));
 }
 
 - (void)test_factory_should_implement_properties

@@ -14,4 +14,6 @@
 
 @interface AuthServiceImpl : NSObject <AuthService>
 
++ (NSUInteger)instanceCounter;
+
 @end

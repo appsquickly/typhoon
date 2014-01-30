@@ -11,6 +11,19 @@
 
 #import "AuthServiceImpl.h"
 
+static NSUInteger sInstanceCounter = 0;
+
 @implementation AuthServiceImpl
+
++ (NSUInteger)instanceCounter
+{
+    return sInstanceCounter;
+}
+
+- (id)init
+{
+    sInstanceCounter += 1;
+    return [super init];
+}
 
 @end

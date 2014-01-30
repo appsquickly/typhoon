@@ -177,6 +177,9 @@
 		4EFAF61417E0D54700E93ACF /* CROPrototypeB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */; };
 		4EFAF61517E0D54700E93ACF /* CROPrototypeB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */; };
 		60A23DF66842404BA2052F31 /* libPods-iOS Tests (Cocoapods).a in Frameworks */ = {isa = PBXBuildFile; fileRef = B90D396911F743468FF96BB5 /* libPods-iOS Tests (Cocoapods).a */; };
+		65123367189AD55300C21E63 /* PaymentFactoryAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 65123366189AD55300C21E63 /* PaymentFactoryAssembly.m */; };
+		65123368189AD55300C21E63 /* PaymentFactoryAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 65123366189AD55300C21E63 /* PaymentFactoryAssembly.m */; };
+		65123369189AD55300C21E63 /* PaymentFactoryAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 65123366189AD55300C21E63 /* PaymentFactoryAssembly.m */; };
 		656A57621848DCB60081F72B /* TyphoonAssistedFactoryCreatorOneFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 656A57611848DCB60081F72B /* TyphoonAssistedFactoryCreatorOneFactoryTest.m */; };
 		656A57631848DCB60081F72B /* TyphoonAssistedFactoryCreatorOneFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 656A57611848DCB60081F72B /* TyphoonAssistedFactoryCreatorOneFactoryTest.m */; };
 		656A57641848DCB60081F72B /* TyphoonAssistedFactoryCreatorOneFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 656A57611848DCB60081F72B /* TyphoonAssistedFactoryCreatorOneFactoryTest.m */; };
@@ -467,6 +470,8 @@
 		4EFAF60D17E0D50B00E93ACF /* CROPrototypeA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CROPrototypeA.m; sourceTree = "<group>"; };
 		4EFAF61117E0D54700E93ACF /* CROPrototypeB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CROPrototypeB.h; sourceTree = "<group>"; };
 		4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CROPrototypeB.m; sourceTree = "<group>"; };
+		65123365189AD55300C21E63 /* PaymentFactoryAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentFactoryAssembly.h; sourceTree = "<group>"; };
+		65123366189AD55300C21E63 /* PaymentFactoryAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentFactoryAssembly.m; sourceTree = "<group>"; };
 		656A57611848DCB60081F72B /* TyphoonAssistedFactoryCreatorOneFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssistedFactoryCreatorOneFactoryTest.m; sourceTree = "<group>"; };
 		656A57651848DD020081F72B /* TyphoonFactoryProviderTestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonFactoryProviderTestHelper.m; sourceTree = "<group>"; };
 		656A57691848DD260081F72B /* TyphoonFactoryProviderTestHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonFactoryProviderTestHelper.h; sourceTree = "<group>"; };
@@ -926,6 +931,8 @@
 				65FE013B185F787C00C0785C /* PersonFactory.h */,
 				65FE013C185F7F3000C0785C /* Person.h */,
 				65FE013D185F7F3000C0785C /* Person.m */,
+				65123365189AD55300C21E63 /* PaymentFactoryAssembly.h */,
+				65123366189AD55300C21E63 /* PaymentFactoryAssembly.m */,
 			);
 			name = Fixtures;
 			sourceTree = "<group>";
@@ -1433,6 +1440,7 @@
 				4EFAF61317E0D54700E93ACF /* CROPrototypeB.m in Sources */,
 				4EA74DDC17E0FF440004EFC7 /* CROSingletonB.m in Sources */,
 				BA79880BD4B4A87C9F041E1A /* TyphoonUIColorConverterTests.m in Sources */,
+				65123367189AD55300C21E63 /* PaymentFactoryAssembly.m in Sources */,
 				BA798D9AF84869F576347FCC /* TyphoonStringUtilsTests.m in Sources */,
 				6570968918313C3500C10DA4 /* TyphoonAssistedFactoryBaseTest.m in Sources */,
 				75AB500AD2436D305C0E1B37 /* TyphoonTestXMLBuilder.m in Sources */,
@@ -1547,6 +1555,7 @@
 				BA798908C8A296FD5FCD31A7 /* TyphoonBundleResourceTests.m in Sources */,
 				BA798C878348D43289781407 /* TyphoonComponentDefinition+InstanceBuilderTests.m in Sources */,
 				BA7989B9C62F95712CB63910 /* TyphoonTestUtilsTests.m in Sources */,
+				65123368189AD55300C21E63 /* PaymentFactoryAssembly.m in Sources */,
 				CAEE50BA12C347B06D7A9A77 /* PrimitiveMan.m in Sources */,
 				75AB5133B0D948DF521F1D61 /* TyphoonAssemblyAdviserTests.m in Sources */,
 				75AB51DE498D6CE325B20A43 /* TyphoonTestMethodSwizzler.m in Sources */,
@@ -1634,6 +1643,7 @@
 				6570969A183146A800C10DA4 /* CreditServiceImpl.m in Sources */,
 				4EFAF61517E0D54700E93ACF /* CROPrototypeB.m in Sources */,
 				4EA74DDE17E0FF440004EFC7 /* CROSingletonB.m in Sources */,
+				65123369189AD55300C21E63 /* PaymentFactoryAssembly.m in Sources */,
 				BA7986F83BAB4E7D084B2AAA /* TyphoonUIColorConverterTests.m in Sources */,
 				BA798EC89A23D4FC0EFB465D /* TyphoonStringUtilsTests.m in Sources */,
 				6570968B18313C3500C10DA4 /* TyphoonAssistedFactoryBaseTest.m in Sources */,
