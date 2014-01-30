@@ -53,14 +53,14 @@ static TyphoonComponentFactory* defaultFactory;
     if (self)
     {
         _registry = [[NSMutableArray alloc] init];
-        _singletons = (id<TyphoonComponentsPool>)[[NSMutableDictionary alloc] init];
+        _singletons = (id <TyphoonComponentsPool>)[[NSMutableDictionary alloc] init];
         _weakSingletons = [TyphoonWeekComponentsPool new];
-        _objectGraphSharedInstances = (id<TyphoonComponentsPool>)[[NSMutableDictionary alloc] init];
+        _objectGraphSharedInstances = (id <TyphoonComponentsPool>)[[NSMutableDictionary alloc] init];
         _stack = [TyphoonCallStack stack];
         _factoryPostProcessors = [[NSMutableArray alloc] init];
         _componentPostProcessors = [[NSMutableArray alloc] init];
         [self attachPostProcessor:[[TyphoonParentReferenceHydratingPostProcessor alloc] init]];
-        
+
     }
     return self;
 }
@@ -279,7 +279,8 @@ static TyphoonComponentFactory* defaultFactory;
     }];
 }
 
-- (id)instanceForDefinition:(TyphoonDefinition*)definition fromPool:(id<TyphoonComponentsPool>)pool buildBlock:(TyphoonInstanceBuildBlock)buildBlock
+- (id)instanceForDefinition:(TyphoonDefinition*)definition fromPool:(id <TyphoonComponentsPool>)pool
+        buildBlock:(TyphoonInstanceBuildBlock)buildBlock
 {
     NSParameterAssert(buildBlock);
     @synchronized (self)
@@ -294,16 +295,18 @@ static TyphoonComponentFactory* defaultFactory;
     }
 }
 
-- (id) sharedObjectGraphInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id<TyphoonComponentsPool>)pool
+- (id)sharedObjectGraphInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id <TyphoonComponentsPool>)pool
 {
-    return [self instanceForDefinition:definition fromPool:pool buildBlock:^id(TyphoonDefinition *definition) {
+    return [self instanceForDefinition:definition fromPool:pool buildBlock:^id(TyphoonDefinition* definition)
+    {
         return [self buildSharedInstanceForDefinition:definition];
     }];
 }
 
-- (id) sharedInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id<TyphoonComponentsPool>)pool
+- (id)sharedInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id <TyphoonComponentsPool>)pool
 {
-    return [self instanceForDefinition:definition fromPool:pool buildBlock:^id(TyphoonDefinition *definition) {
+    return [self instanceForDefinition:definition fromPool:pool buildBlock:^id(TyphoonDefinition* definition)
+    {
         return [self buildInstanceWithDefinition:definition];
     }];
 }
