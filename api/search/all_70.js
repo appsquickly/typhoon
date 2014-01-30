@@ -8,7 +8,6 @@ var searchData=
   ['patchdefinition_3awithobject_3a',['patchDefinition:withObject:',['../interface_typhoon_patcher.html#a5f2b4e22584b5d04d4f42971ed44f693',1,'TyphoonPatcher']]],
   ['patchdefinitionwithkey_3awithobject_3a',['patchDefinitionWithKey:withObject:',['../interface_typhoon_patcher.html#aba162ef9cefbd4ffac89686ad0f25856',1,'TyphoonPatcher']]],
   ['postprocesscomponentfactory_3a',['postProcessComponentFactory:',['../protocol_typhoon_component_factory_post_processor-p.html#ab64811c01a873e3a727f017543b29223',1,'TyphoonComponentFactoryPostProcessor-p']]],
-  ['postprocessors',['postProcessors',['../interface_typhoon_component_factory.html#a86711bf232610da02cba8d969298bb2d',1,'TyphoonComponentFactory']]],
   ['primitivetype',['primitiveType',['../interface_typhoon_type_descriptor.html#aa79452cdaecc4ee661930c7c3e59888b',1,'TyphoonTypeDescriptor']]],
   ['primitivetypeconverter',['primitiveTypeConverter',['../interface_typhoon_type_converter_registry.html#abe8d4f327a34450b31762b4ce9284fd6',1,'TyphoonTypeConverterRegistry']]],
   ['properties',['properties',['../interface_typhoon_property_placeholder_configurer.html#adff30c15c1769b112428286470e2d2c6',1,'TyphoonPropertyPlaceholderConfigurer']]],

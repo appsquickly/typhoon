@@ -1,5 +1,6 @@
 var annotated =
 [
+    [ "NSObject(DeallocNotification)", "category_n_s_object_07_dealloc_notification_08.html", "category_n_s_object_07_dealloc_notification_08" ],
     [ "NSObject(PropertyInjection)", "category_n_s_object_07_property_injection_08.html", "category_n_s_object_07_property_injection_08" ],
     [ "NSObject(TyphoonIntrospectionUtils)", "category_n_s_object_07_typhoon_introspection_utils_08.html", "category_n_s_object_07_typhoon_introspection_utils_08" ],
     [ "NSObject(TyphoonJRSwizzle)", "category_n_s_object_07_typhoon_j_r_swizzle_08.html", "category_n_s_object_07_typhoon_j_r_swizzle_08" ],
@@ -31,6 +32,7 @@ var annotated =
     [ "<TyphoonComponentFactoryAware>", "protocol_typhoon_component_factory_aware-p.html", "protocol_typhoon_component_factory_aware-p" ],
     [ "<TyphoonComponentFactoryPostProcessor>", "protocol_typhoon_component_factory_post_processor-p.html", "protocol_typhoon_component_factory_post_processor-p" ],
     [ "<TyphoonComponentInjectedByValue>", "protocol_typhoon_component_injected_by_value-p.html", "protocol_typhoon_component_injected_by_value-p" ],
+    [ "<TyphoonComponentsPool>", "protocol_typhoon_components_pool-p.html", "protocol_typhoon_components_pool-p" ],
     [ "TyphoonDefinition", "interface_typhoon_definition.html", "interface_typhoon_definition" ],
     [ "TyphoonFactoryProvider", "interface_typhoon_factory_provider.html", "interface_typhoon_factory_provider" ],
     [ "TyphoonInitializer", "interface_typhoon_initializer.html", "interface_typhoon_initializer" ],
@@ -66,5 +68,6 @@ var annotated =
     [ "TyphoonTypeDescriptor", "interface_typhoon_type_descriptor.html", "interface_typhoon_type_descriptor" ],
     [ "TyphoonUIColorTypeConverter", "interface_typhoon_u_i_color_type_converter.html", null ],
     [ "TyphoonViewControllerNibResolver", "interface_typhoon_view_controller_nib_resolver.html", "interface_typhoon_view_controller_nib_resolver" ],
+    [ "TyphoonWeekComponentsPool", "interface_typhoon_week_components_pool.html", null ],
     [ "TyphoonXmlComponentFactory", "interface_typhoon_xml_component_factory.html", "interface_typhoon_xml_component_factory" ]
 ];

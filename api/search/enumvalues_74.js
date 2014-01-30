@@ -41,5 +41,6 @@ var searchData=
   ['typhoonpropertyinjectiontypebytype',['TyphoonPropertyInjectionTypeByType',['../_typhoon_abstract_injected_property_8h.html#ae866698cae5bafbde2d355877b5f236fa037567a3be23debd303de030e136c2b1',1,'TyphoonAbstractInjectedProperty.h']]],
   ['typhoonscopeobjectgraph',['TyphoonScopeObjectGraph',['../group___definition.html#gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e',1,'TyphoonDefinition.h']]],
   ['typhoonscopeprototype',['TyphoonScopePrototype',['../group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a',1,'TyphoonDefinition.h']]],
-  ['typhoonscopesingleton',['TyphoonScopeSingleton',['../group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb',1,'TyphoonDefinition.h']]]
+  ['typhoonscopesingleton',['TyphoonScopeSingleton',['../group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb',1,'TyphoonDefinition.h']]],
+  ['typhoonscopeweaksingleton',['TyphoonScopeWeakSingleton',['../group___definition.html#gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda',1,'TyphoonDefinition.h']]]
 ];

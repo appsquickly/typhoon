@@ -111,6 +111,8 @@ var searchData=
   ['typhooncomponentinjectedbyvalue_2dp',['TyphoonComponentInjectedByValue-p',['../protocol_typhoon_component_injected_by_value-p.html',1,'']]],
   ['typhooncomponentinjectedbyvalue_2eh',['TyphoonComponentInjectedByValue.h',['../_typhoon_component_injected_by_value_8h.html',1,'']]],
   ['typhooncomponentpostprocessor_2eh',['TyphoonComponentPostProcessor.h',['../_typhoon_component_post_processor_8h.html',1,'']]],
+  ['typhooncomponentspool_2dp',['TyphoonComponentsPool-p',['../protocol_typhoon_components_pool-p.html',1,'']]],
+  ['typhooncomponentspool_2eh',['TyphoonComponentsPool.h',['../_typhoon_components_pool_8h.html',1,'']]],
   ['typhoondefinition',['TyphoonDefinition',['../interface_typhoon_definition.html',1,'']]],
   ['typhoondefinition_2eh',['TyphoonDefinition.h',['../_typhoon_definition_8h.html',1,'']]],
   ['typhoondefinitionblock',['TyphoonDefinitionBlock',['../_typhoon_definition_8h.html#aabd9ec47d6585742e7a1533f7114ced9',1,'TyphoonDefinition.h']]],
@@ -212,6 +214,7 @@ var searchData=
   ['typhoonscopeobjectgraph',['TyphoonScopeObjectGraph',['../group___definition.html#gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e',1,'TyphoonDefinition.h']]],
   ['typhoonscopeprototype',['TyphoonScopePrototype',['../group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a',1,'TyphoonDefinition.h']]],
   ['typhoonscopesingleton',['TyphoonScopeSingleton',['../group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb',1,'TyphoonDefinition.h']]],
+  ['typhoonscopeweaksingleton',['TyphoonScopeWeakSingleton',['../group___definition.html#gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda',1,'TyphoonDefinition.h']]],
   ['typhoonselector_2eh',['TyphoonSelector.h',['../_typhoon_selector_8h.html',1,'']]],
   ['typhoonshorthand_2eh',['TyphoonShorthand.h',['../_typhoon_shorthand_8h.html',1,'']]],
   ['typhoonstringutils',['TyphoonStringUtils',['../interface_typhoon_string_utils.html',1,'']]],
@@ -233,6 +236,8 @@ var searchData=
   ['typhoonurlutils_2eh',['TyphoonURLUtils.h',['../_typhoon_u_r_l_utils_8h.html',1,'']]],
   ['typhoonviewcontrollernibresolver',['TyphoonViewControllerNibResolver',['../interface_typhoon_view_controller_nib_resolver.html',1,'']]],
   ['typhoonviewcontrollernibresolver_2eh',['TyphoonViewControllerNibResolver.h',['../_typhoon_view_controller_nib_resolver_8h.html',1,'']]],
+  ['typhoonweekcomponentspool',['TyphoonWeekComponentsPool',['../interface_typhoon_week_components_pool.html',1,'']]],
+  ['typhoonweekcomponentspool_2eh',['TyphoonWeekComponentsPool.h',['../_typhoon_week_components_pool_8h.html',1,'']]],
   ['typhoonxmlcomponentfactory',['TyphoonXmlComponentFactory',['../interface_typhoon_xml_component_factory.html',1,'']]],
   ['typhoonxmlcomponentfactory_2eh',['TyphoonXmlComponentFactory.h',['../_typhoon_xml_component_factory_8h.html',1,'']]]
 ];

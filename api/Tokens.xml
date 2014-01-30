@@ -779,6 +779,16 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>TyphoonScopeWeakSingleton</Name>
+      <APILanguage>c</APILanguage>
+      <Type>econst</Type>
+    </TokenIdentifier>
+    <Path>group___definition.html</Path>
+    <Anchor>gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda</Anchor>
+    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>Configuration</Name>
       <APILanguage>c</APILanguage>
     </TokenIdentifier>
@@ -792,6 +802,38 @@
     </TokenIdentifier>
     <Path>group___test.html</Path>
     <Abstract>Unit and integration testing utilities. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>NSObject(DeallocNotification)</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cat</Type>
+      <Scope>NSObject(DeallocNotification)</Scope>
+    </TokenIdentifier>
+    <Path>category_n_s_object_07_dealloc_notification_08.html</Path>
+    <DeclaredIn>NSObject+DeallocNotification.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>removeDeallocNotification</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>func</Type>
+      <Scope>NSObject(DeallocNotification)</Scope>
+    </TokenIdentifier>
+    <Path>category_n_s_object_07_dealloc_notification_08.html</Path>
+    <Anchor>a64bdfa3f8693f43ff58eaa93117b5681</Anchor>
+    <DeclaredIn>NSObject+DeallocNotification.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>setDeallocNotificationInBlock:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>func</Type>
+      <Scope>NSObject(DeallocNotification)</Scope>
+    </TokenIdentifier>
+    <Path>category_n_s_object_07_dealloc_notification_08.html</Path>
+    <Anchor>a2859ee082d6a3638451f9a8fb633d2eb</Anchor>
+    <DeclaredIn>NSObject+DeallocNotification.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -2327,6 +2369,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>factoryPostProcessors</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonComponentFactory</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_component_factory.html</Path>
+    <Anchor>a8eec64c832482a1e025b80d2cd16a5f3</Anchor>
+    <Abstract>The attached factory post processors. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>loaded</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
@@ -2335,17 +2388,6 @@
     <Path>interface_typhoon_component_factory.html</Path>
     <Anchor>a09b13d5d400d8ca043cc5f1105b8a744</Anchor>
     <Abstract>Say if the factory has been loaded. </Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>postProcessors</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a86711bf232610da02cba8d969298bb2d</Anchor>
-    <Abstract>The attached factory post processors. </Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -2514,6 +2556,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>factoryPostProcessors</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonComponentFactory</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_component_factory.html</Path>
+    <Anchor>a8eec64c832482a1e025b80d2cd16a5f3</Anchor>
+    <Abstract>The attached factory post processors. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>loaded</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
@@ -2522,17 +2575,6 @@
     <Path>interface_typhoon_component_factory.html</Path>
     <Anchor>a09b13d5d400d8ca043cc5f1105b8a744</Anchor>
     <Abstract>Say if the factory has been loaded. </Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>postProcessors</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a86711bf232610da02cba8d969298bb2d</Anchor>
-    <Abstract>The attached factory post processors. </Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -2741,6 +2783,61 @@
     </TokenIdentifier>
     <Path>protocol_typhoon_component_injected_by_value-p.html</Path>
     <Anchor>acc2b6e48384fab5eb6747269f0fa60ac</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>TyphoonComponentsPool</Name>
+      <APILanguage>c</APILanguage>
+      <Type>intf</Type>
+      <Scope>TyphoonComponentsPool</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_components_pool-p.html</Path>
+    <Abstract>Methods from NSMutableDictionary which used in componentsPool. </Abstract>
+    <DeclaredIn>TyphoonComponentsPool.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>allValues</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentsPool-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_components_pool-p.html</Path>
+    <Anchor>a32d9bab32dbac6a3667c5b2880ca7c5c</Anchor>
+    <DeclaredIn>TyphoonComponentsPool.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>objectForKey:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentsPool-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_components_pool-p.html</Path>
+    <Anchor>a3c995ad487058227f63a58c080cd4043</Anchor>
+    <DeclaredIn>TyphoonComponentsPool.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>removeAllObjects</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentsPool-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_components_pool-p.html</Path>
+    <Anchor>a464b845d53cc2d9f6d3d42bb60d5e414</Anchor>
+    <DeclaredIn>TyphoonComponentsPool.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>setObject:forKey:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentsPool-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_components_pool-p.html</Path>
+    <Anchor>a831c005126140764088073dec638f17c</Anchor>
+    <DeclaredIn>TyphoonComponentsPool.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -5773,6 +5870,60 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>TyphoonWeekComponentsPool</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+      <Scope>TyphoonWeekComponentsPool</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_week_components_pool.html</Path>
+    <DeclaredIn>TyphoonWeekComponentsPool.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>allValues</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentsPool-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_components_pool-p.html</Path>
+    <Anchor>a32d9bab32dbac6a3667c5b2880ca7c5c</Anchor>
+    <DeclaredIn>TyphoonComponentsPool.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>objectForKey:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentsPool-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_components_pool-p.html</Path>
+    <Anchor>a3c995ad487058227f63a58c080cd4043</Anchor>
+    <DeclaredIn>TyphoonComponentsPool.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>removeAllObjects</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentsPool-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_components_pool-p.html</Path>
+    <Anchor>a464b845d53cc2d9f6d3d42bb60d5e414</Anchor>
+    <DeclaredIn>TyphoonComponentsPool.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>setObject:forKey:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentsPool-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_components_pool-p.html</Path>
+    <Anchor>a831c005126140764088073dec638f17c</Anchor>
+    <DeclaredIn>TyphoonComponentsPool.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>TyphoonXmlComponentFactory</Name>
       <APILanguage>c</APILanguage>
       <Type>cl</Type>
@@ -5935,6 +6086,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>factoryPostProcessors</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonComponentFactory</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_component_factory.html</Path>
+    <Anchor>a8eec64c832482a1e025b80d2cd16a5f3</Anchor>
+    <Abstract>The attached factory post processors. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>loaded</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
@@ -5943,17 +6105,6 @@
     <Path>interface_typhoon_component_factory.html</Path>
     <Anchor>a09b13d5d400d8ca043cc5f1105b8a744</Anchor>
     <Abstract>Say if the factory has been loaded. </Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>postProcessors</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a86711bf232610da02cba8d969298bb2d</Anchor>
-    <Abstract>The attached factory post processors. </Abstract>
   </Token>
   <Token>
     <TokenIdentifier>

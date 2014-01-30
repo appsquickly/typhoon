@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "NSObject(DeallocNotification)", "category_n_s_object_07_dealloc_notification_08.html", null ],
     [ "NSObject(PropertyInjection)", "category_n_s_object_07_property_injection_08.html", null ],
     [ "NSObject(TyphoonJRSwizzle)", "category_n_s_object_07_typhoon_j_r_swizzle_08.html", null ],
     [ "<NSObject>", null, [
@@ -58,6 +59,9 @@ var hierarchy =
         [ "TyphoonParameterInjectedWithStringRepresentation", "interface_typhoon_parameter_injected_with_string_representation.html", null ],
         [ "TyphoonPropertyInjectedWithStringRepresentation", "interface_typhoon_property_injected_with_string_representation.html", null ]
       ] ],
+      [ "<TyphoonComponentsPool>", "protocol_typhoon_components_pool-p.html", [
+        [ "TyphoonWeekComponentsPool", "interface_typhoon_week_components_pool.html", null ]
+      ] ],
       [ "TyphoonDefinition", "interface_typhoon_definition.html", null ],
       [ "TyphoonFactoryProvider", "interface_typhoon_factory_provider.html", null ],
       [ "TyphoonInitializer", "interface_typhoon_initializer.html", null ],
@@ -95,7 +99,8 @@ var hierarchy =
       [ "TyphoonTypeConverterRegistry", "interface_typhoon_type_converter_registry.html", null ],
       [ "TyphoonTypeDescriptor", "interface_typhoon_type_descriptor.html", null ],
       [ "TyphoonUIColorTypeConverter", "interface_typhoon_u_i_color_type_converter.html", null ],
-      [ "TyphoonViewControllerNibResolver", "interface_typhoon_view_controller_nib_resolver.html", null ]
+      [ "TyphoonViewControllerNibResolver", "interface_typhoon_view_controller_nib_resolver.html", null ],
+      [ "TyphoonWeekComponentsPool", "interface_typhoon_week_components_pool.html", null ]
     ] ],
     [ "TyphoonAssistedFactoryBase(TyphoonFactoryMethodClosure)", "category_typhoon_assisted_factory_base_07_typhoon_factory_method_closure_08.html", null ],
     [ "TyphoonInjectedByReference", null, [

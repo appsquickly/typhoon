@@ -28,6 +28,7 @@ var searchData=
   ['typhooncomponentfactoryaware_2dp',['TyphoonComponentFactoryAware-p',['../protocol_typhoon_component_factory_aware-p.html',1,'']]],
   ['typhooncomponentfactorypostprocessor_2dp',['TyphoonComponentFactoryPostProcessor-p',['../protocol_typhoon_component_factory_post_processor-p.html',1,'']]],
   ['typhooncomponentinjectedbyvalue_2dp',['TyphoonComponentInjectedByValue-p',['../protocol_typhoon_component_injected_by_value-p.html',1,'']]],
+  ['typhooncomponentspool_2dp',['TyphoonComponentsPool-p',['../protocol_typhoon_components_pool-p.html',1,'']]],
   ['typhoondefinition',['TyphoonDefinition',['../interface_typhoon_definition.html',1,'']]],
   ['typhoonfactoryprovider',['TyphoonFactoryProvider',['../interface_typhoon_factory_provider.html',1,'']]],
   ['typhooninitializer',['TyphoonInitializer',['../interface_typhoon_initializer.html',1,'']]],
@@ -63,5 +64,6 @@ var searchData=
   ['typhoontypedescriptor',['TyphoonTypeDescriptor',['../interface_typhoon_type_descriptor.html',1,'']]],
   ['typhoonuicolortypeconverter',['TyphoonUIColorTypeConverter',['../interface_typhoon_u_i_color_type_converter.html',1,'']]],
   ['typhoonviewcontrollernibresolver',['TyphoonViewControllerNibResolver',['../interface_typhoon_view_controller_nib_resolver.html',1,'']]],
+  ['typhoonweekcomponentspool',['TyphoonWeekComponentsPool',['../interface_typhoon_week_components_pool.html',1,'']]],
   ['typhoonxmlcomponentfactory',['TyphoonXmlComponentFactory',['../interface_typhoon_xml_component_factory.html',1,'']]]
 ];

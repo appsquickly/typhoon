@@ -13,8 +13,8 @@ var group___factory =
     ] ],
     [ "TyphoonComponentFactory", "interface_typhoon_component_factory.html", [
       [ "componentPostProcessors", "interface_typhoon_component_factory.html#a9c88f88b59f7607416373f761d97b23c", null ],
+      [ "factoryPostProcessors", "interface_typhoon_component_factory.html#a8eec64c832482a1e025b80d2cd16a5f3", null ],
       [ "loaded", "interface_typhoon_component_factory.html#a09b13d5d400d8ca043cc5f1105b8a744", null ],
-      [ "postProcessors", "interface_typhoon_component_factory.html#a86711bf232610da02cba8d969298bb2d", null ],
       [ "singletons", "interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785", null ],
       [ "allComponentsForType:", "interface_typhoon_component_factory.html#aa41105d05dfffb845a07eae77b4c079a", null ],
       [ "attachPostProcessor:", "interface_typhoon_component_factory.html#a0727001458325fd7d09b6df2e1252180", null ],

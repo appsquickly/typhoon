@@ -1,5 +1,8 @@
 var files =
 [
+    [ "NSObject+DeallocNotification.h", "_n_s_object_09_dealloc_notification_8h.html", [
+      [ "NSObject(DeallocNotification)", "category_n_s_object_07_dealloc_notification_08.html", "category_n_s_object_07_dealloc_notification_08" ]
+    ] ],
     [ "NSObject+PropertyInjection.h", "_n_s_object_09_property_injection_8h.html", [
       [ "NSObject(PropertyInjection)", "category_n_s_object_07_property_injection_08.html", "category_n_s_object_07_property_injection_08" ]
     ] ],
@@ -86,6 +89,9 @@ var files =
       [ "<TyphoonComponentInjectedByValue>", "protocol_typhoon_component_injected_by_value-p.html", "protocol_typhoon_component_injected_by_value-p" ]
     ] ],
     [ "TyphoonComponentPostProcessor.h", "_typhoon_component_post_processor_8h.html", null ],
+    [ "TyphoonComponentsPool.h", "_typhoon_components_pool_8h.html", [
+      [ "<TyphoonComponentsPool>", "protocol_typhoon_components_pool-p.html", "protocol_typhoon_components_pool-p" ]
+    ] ],
     [ "TyphoonDefinition.h", "_typhoon_definition_8h.html", "_typhoon_definition_8h" ],
     [ "TyphoonDefinitionRegisterer.h", "_typhoon_definition_registerer_8h.html", null ],
     [ "TyphoonFactoryProvider.h", "_typhoon_factory_provider_8h.html", null ],
@@ -176,5 +182,8 @@ var files =
     ] ],
     [ "TyphoonURLUtils.h", "_typhoon_u_r_l_utils_8h.html", null ],
     [ "TyphoonViewControllerNibResolver.h", "_typhoon_view_controller_nib_resolver_8h.html", null ],
+    [ "TyphoonWeekComponentsPool.h", "_typhoon_week_components_pool_8h.html", [
+      [ "TyphoonWeekComponentsPool", "interface_typhoon_week_components_pool.html", null ]
+    ] ],
     [ "TyphoonXmlComponentFactory.h", "_typhoon_xml_component_factory_8h.html", null ]
 ];

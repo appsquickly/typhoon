@@ -70,14 +70,14 @@
               <Anchor>a9c88f88b59f7607416373f761d97b23c</Anchor>
              </Node>
              <Node>
+              <Name>factoryPostProcessors</Name>
+              <Path>interface_typhoon_component_factory.html</Path>
+              <Anchor>a8eec64c832482a1e025b80d2cd16a5f3</Anchor>
+             </Node>
+             <Node>
               <Name>loaded</Name>
               <Path>interface_typhoon_component_factory.html</Path>
               <Anchor>a09b13d5d400d8ca043cc5f1105b8a744</Anchor>
-             </Node>
-             <Node>
-              <Name>postProcessors</Name>
-              <Path>interface_typhoon_component_factory.html</Path>
-              <Anchor>a86711bf232610da02cba8d969298bb2d</Anchor>
              </Node>
              <Node>
               <Name>singletons</Name>
@@ -469,6 +469,11 @@
               <Path>group___definition.html</Path>
               <Anchor>gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb</Anchor>
              </Node>
+             <Node>
+              <Name>TyphoonScopeWeakSingleton</Name>
+              <Path>group___definition.html</Path>
+              <Anchor>gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda</Anchor>
+             </Node>
             </Subnodes>
            </Node>
           </Subnodes>
@@ -621,6 +626,22 @@
           <Name>Class List</Name>
           <Path>annotated.html</Path>
           <Subnodes>
+           <Node>
+            <Name>NSObject(DeallocNotification)</Name>
+            <Path>category_n_s_object_07_dealloc_notification_08.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>removeDeallocNotification</Name>
+              <Path>category_n_s_object_07_dealloc_notification_08.html</Path>
+              <Anchor>a64bdfa3f8693f43ff58eaa93117b5681</Anchor>
+             </Node>
+             <Node>
+              <Name>setDeallocNotificationInBlock:</Name>
+              <Path>category_n_s_object_07_dealloc_notification_08.html</Path>
+              <Anchor>a2859ee082d6a3638451f9a8fb633d2eb</Anchor>
+             </Node>
+            </Subnodes>
+           </Node>
            <Node>
             <Name>NSObject(PropertyInjection)</Name>
             <Path>category_n_s_object_07_property_injection_08.html</Path>
@@ -1167,14 +1188,14 @@
               <Anchor>a9c88f88b59f7607416373f761d97b23c</Anchor>
              </Node>
              <Node>
+              <Name>factoryPostProcessors</Name>
+              <Path>interface_typhoon_component_factory.html</Path>
+              <Anchor>a8eec64c832482a1e025b80d2cd16a5f3</Anchor>
+             </Node>
+             <Node>
               <Name>loaded</Name>
               <Path>interface_typhoon_component_factory.html</Path>
               <Anchor>a09b13d5d400d8ca043cc5f1105b8a744</Anchor>
-             </Node>
-             <Node>
-              <Name>postProcessors</Name>
-              <Path>interface_typhoon_component_factory.html</Path>
-              <Anchor>a86711bf232610da02cba8d969298bb2d</Anchor>
              </Node>
              <Node>
               <Name>singletons</Name>
@@ -1268,6 +1289,32 @@
               <Name>textValue</Name>
               <Path>protocol_typhoon_component_injected_by_value-p.html</Path>
               <Anchor>acc2b6e48384fab5eb6747269f0fa60ac</Anchor>
+             </Node>
+            </Subnodes>
+           </Node>
+           <Node>
+            <Name>&lt;TyphoonComponentsPool&gt;</Name>
+            <Path>protocol_typhoon_components_pool-p.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>allValues</Name>
+              <Path>protocol_typhoon_components_pool-p.html</Path>
+              <Anchor>a32d9bab32dbac6a3667c5b2880ca7c5c</Anchor>
+             </Node>
+             <Node>
+              <Name>objectForKey:</Name>
+              <Path>protocol_typhoon_components_pool-p.html</Path>
+              <Anchor>a3c995ad487058227f63a58c080cd4043</Anchor>
+             </Node>
+             <Node>
+              <Name>removeAllObjects</Name>
+              <Path>protocol_typhoon_components_pool-p.html</Path>
+              <Anchor>a464b845d53cc2d9f6d3d42bb60d5e414</Anchor>
+             </Node>
+             <Node>
+              <Name>setObject:forKey:</Name>
+              <Path>protocol_typhoon_components_pool-p.html</Path>
+              <Anchor>a831c005126140764088073dec638f17c</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -2463,6 +2510,10 @@
             </Subnodes>
            </Node>
            <Node>
+            <Name>TyphoonWeekComponentsPool</Name>
+            <Path>interface_typhoon_week_components_pool.html</Path>
+           </Node>
+           <Node>
             <Name>TyphoonXmlComponentFactory</Name>
             <Path>interface_typhoon_xml_component_factory.html</Path>
             <Subnodes>
@@ -2484,6 +2535,10 @@
           <Name>Class Hierarchy</Name>
           <Path>hierarchy.html</Path>
           <Subnodes>
+           <Node>
+            <Name>NSObject(DeallocNotification)</Name>
+            <Path>category_n_s_object_07_dealloc_notification_08.html</Path>
+           </Node>
            <Node>
             <Name>NSObject(PropertyInjection)</Name>
             <Path>category_n_s_object_07_property_injection_08.html</Path>
@@ -2697,6 +2752,16 @@
               </Subnodes>
              </Node>
              <Node>
+              <Name>&lt;TyphoonComponentsPool&gt;</Name>
+              <Path>protocol_typhoon_components_pool-p.html</Path>
+              <Subnodes>
+               <Node>
+                <Name>TyphoonWeekComponentsPool</Name>
+                <Path>interface_typhoon_week_components_pool.html</Path>
+               </Node>
+              </Subnodes>
+             </Node>
+             <Node>
               <Name>TyphoonDefinition</Name>
               <Path>interface_typhoon_definition.html</Path>
              </Node>
@@ -2839,6 +2904,10 @@
              <Node>
               <Name>TyphoonViewControllerNibResolver</Name>
               <Path>interface_typhoon_view_controller_nib_resolver.html</Path>
+             </Node>
+             <Node>
+              <Name>TyphoonWeekComponentsPool</Name>
+              <Path>interface_typhoon_week_components_pool.html</Path>
              </Node>
             </Subnodes>
            </Node>
@@ -3003,6 +3072,10 @@
               <Path>functions_func_0x6d.html</Path>
              </Node>
              <Node>
+              <Name>o</Name>
+              <Path>functions_func_0x6f.html</Path>
+             </Node>
+             <Node>
               <Name>p</Name>
               <Path>functions_func_0x70.html</Path>
              </Node>
@@ -3052,6 +3125,28 @@
           <Name>File List</Name>
           <Path>files.html</Path>
           <Subnodes>
+           <Node>
+            <Name>NSObject+DeallocNotification.h</Name>
+            <Path>_n_s_object_09_dealloc_notification_8h.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>NSObject(DeallocNotification)</Name>
+              <Path>category_n_s_object_07_dealloc_notification_08.html</Path>
+              <Subnodes>
+               <Node>
+                <Name>removeDeallocNotification</Name>
+                <Path>category_n_s_object_07_dealloc_notification_08.html</Path>
+                <Anchor>a64bdfa3f8693f43ff58eaa93117b5681</Anchor>
+               </Node>
+               <Node>
+                <Name>setDeallocNotificationInBlock:</Name>
+                <Path>category_n_s_object_07_dealloc_notification_08.html</Path>
+                <Anchor>a2859ee082d6a3638451f9a8fb633d2eb</Anchor>
+               </Node>
+              </Subnodes>
+             </Node>
+            </Subnodes>
+           </Node>
            <Node>
             <Name>NSObject+PropertyInjection.h</Name>
             <Path>_n_s_object_09_property_injection_8h.html</Path>
@@ -3932,6 +4027,38 @@
             <Path>_typhoon_component_post_processor_8h.html</Path>
            </Node>
            <Node>
+            <Name>TyphoonComponentsPool.h</Name>
+            <Path>_typhoon_components_pool_8h.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>&lt;TyphoonComponentsPool&gt;</Name>
+              <Path>protocol_typhoon_components_pool-p.html</Path>
+              <Subnodes>
+               <Node>
+                <Name>allValues</Name>
+                <Path>protocol_typhoon_components_pool-p.html</Path>
+                <Anchor>a32d9bab32dbac6a3667c5b2880ca7c5c</Anchor>
+               </Node>
+               <Node>
+                <Name>objectForKey:</Name>
+                <Path>protocol_typhoon_components_pool-p.html</Path>
+                <Anchor>a3c995ad487058227f63a58c080cd4043</Anchor>
+               </Node>
+               <Node>
+                <Name>removeAllObjects</Name>
+                <Path>protocol_typhoon_components_pool-p.html</Path>
+                <Anchor>a464b845d53cc2d9f6d3d42bb60d5e414</Anchor>
+               </Node>
+               <Node>
+                <Name>setObject:forKey:</Name>
+                <Path>protocol_typhoon_components_pool-p.html</Path>
+                <Anchor>a831c005126140764088073dec638f17c</Anchor>
+               </Node>
+              </Subnodes>
+             </Node>
+            </Subnodes>
+           </Node>
+           <Node>
             <Name>TyphoonDefinition.h</Name>
             <Path>_typhoon_definition_8h.html</Path>
             <Subnodes>
@@ -3964,6 +4091,11 @@
                 <Name>TyphoonScopeSingleton</Name>
                 <Path>_typhoon_definition_8h.html</Path>
                 <Anchor>gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb</Anchor>
+               </Node>
+               <Node>
+                <Name>TyphoonScopeWeakSingleton</Name>
+                <Path>_typhoon_definition_8h.html</Path>
+                <Anchor>gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda</Anchor>
                </Node>
               </Subnodes>
              </Node>
@@ -5275,6 +5407,16 @@
             <Name>TyphoonViewControllerNibResolver.h</Name>
             <Path>_typhoon_view_controller_nib_resolver_8h.html</Path>
             <Subnodes>
+            </Subnodes>
+           </Node>
+           <Node>
+            <Name>TyphoonWeekComponentsPool.h</Name>
+            <Path>_typhoon_week_components_pool_8h.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>TyphoonWeekComponentsPool</Name>
+              <Path>interface_typhoon_week_components_pool.html</Path>
+             </Node>
             </Subnodes>
            </Node>
            <Node>
