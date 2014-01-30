@@ -279,36 +279,18 @@ static TyphoonComponentFactory* defaultFactory;
     }];
 }
 
-- (id)instanceForDefinition:(TyphoonDefinition*)definition fromPool:(id <TyphoonComponentsPool>)pool
-        buildBlock:(TyphoonInstanceBuildBlock)buildBlock
+- (id)sharedInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id <TyphoonComponentsPool>)pool
 {
-    NSParameterAssert(buildBlock);
     @synchronized (self)
     {
         id instance = [pool objectForKey:definition.key];
         if (instance == nil)
         {
-            instance = buildBlock(definition);
+            instance = [self buildSharedInstanceForDefinition:definition];
             [pool setObject:instance forKey:definition.key];
         }
         return instance;
     }
-}
-
-- (id)sharedObjectGraphInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id <TyphoonComponentsPool>)pool
-{
-    return [self instanceForDefinition:definition fromPool:pool buildBlock:^id(TyphoonDefinition* definition)
-    {
-        return [self buildSharedInstanceForDefinition:definition];
-    }];
-}
-
-- (id)sharedInstanceForDefinition:(TyphoonDefinition*)definition fromPool:(id <TyphoonComponentsPool>)pool
-{
-    return [self instanceForDefinition:definition fromPool:pool buildBlock:^id(TyphoonDefinition* definition)
-    {
-        return [self buildInstanceWithDefinition:definition];
-    }];
 }
 
 @end
@@ -339,13 +321,13 @@ static TyphoonComponentFactory* defaultFactory;
     switch (definition.scope)
     {
         case TyphoonScopeSingleton:
-            instance = [self sharedObjectGraphInstanceForDefinition:definition fromPool:_singletons];
+            instance = [self sharedInstanceForDefinition:definition fromPool:_singletons];
             break;
         case TyphoonScopeWeakSingleton:
             instance = [self sharedInstanceForDefinition:definition fromPool:_weakSingletons];
             break;
         case TyphoonScopeObjectGraph:
-            instance = [self sharedObjectGraphInstanceForDefinition:definition fromPool:_objectGraphSharedInstances];
+            instance = [self sharedInstanceForDefinition:definition fromPool:_objectGraphSharedInstances];
             break;
         default:
         case TyphoonScopePrototype:
