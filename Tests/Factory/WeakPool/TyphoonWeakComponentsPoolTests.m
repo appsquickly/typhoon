@@ -7,7 +7,7 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "TyphoonWeekComponentsPool.h"
+#import "TyphoonWeakComponentsPool.h"
 
 @interface TyphoonWeakComponentsPoolTests : SenTestCase
 
@@ -21,7 +21,7 @@
     NSObject *objectA = [NSObject new];
     NSObject *objectB = [NSObject new];
     
-    TyphoonWeekComponentsPool *pool = [TyphoonWeekComponentsPool new];
+    TyphoonWeakComponentsPool *pool = [TyphoonWeakComponentsPool new];
     
     [pool setObject:objectA forKey:@"objectA"];
     [pool setObject:objectB forKey:@"objectB"];

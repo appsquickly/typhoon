@@ -12,6 +12,6 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentsPool.h"
 
-@interface TyphoonWeekComponentsPool : NSObject <TyphoonComponentsPool>
+@interface TyphoonWeakComponentsPool : NSObject <TyphoonComponentsPool>
 
 @end

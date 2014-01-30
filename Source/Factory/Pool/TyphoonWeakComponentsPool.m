@@ -9,10 +9,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonWeekComponentsPool.h"
+#import "TyphoonWeakComponentsPool.h"
 #import "NSObject+DeallocNotification.h"
 
-@implementation TyphoonWeekComponentsPool
+@implementation TyphoonWeakComponentsPool
 {
     NSMutableDictionary* dictionaryWithUnretainedObjects;
 }

@@ -12,7 +12,7 @@
 
 #import <Foundation/Foundation.h>
 
-/** Methods from NSMutableDictionary which used in componentsPool. Created to maintain custom TyphoonWeekComponentsPool */
+/** Methods from NSMutableDictionary which used in componentsPool. Created to maintain custom TyphoonWeakComponentsPool */
 
 @protocol TyphoonComponentsPool <NSObject>
 
