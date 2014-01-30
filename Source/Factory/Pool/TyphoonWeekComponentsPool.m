@@ -1,53 +1,59 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  TyphoonWeekComponentsPool.m
-//  A-Typhoon
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
+//  All Rights Reserved.
 //
-//  Created by Aleksey Garbarev on 29.01.14.
-//  Copyright (c) 2014 Jasper Blues. All rights reserved.
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
 //
+////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonWeekComponentsPool.h"
 #import "NSObject+DeallocNotification.h"
 
-@implementation TyphoonWeekComponentsPool {
-    NSMutableDictionary *dictionaryWithUnretainedObjects;
+@implementation TyphoonWeekComponentsPool
+{
+    NSMutableDictionary* dictionaryWithUnretainedObjects;
 }
 
 - (id)init
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         CFDictionaryValueCallBacks callbacks = {0, NULL, NULL, NULL, NULL};
         dictionaryWithUnretainedObjects = (__bridge_transfer id)CFDictionaryCreateMutable(NULL,
-                                                                0,
-                                                                &kCFTypeDictionaryKeyCallBacks,
-                                                                &callbacks);
+                0,
+                &kCFTypeDictionaryKeyCallBacks,
+                &callbacks);
     }
     return self;
 }
 
-- (void) setObject:(id)object forKey:(id<NSCopying>)aKey
+- (void)setObject:(id)object forKey:(id <NSCopying>)aKey
 {
     __weak typeof (dictionaryWithUnretainedObjects) weakDict = dictionaryWithUnretainedObjects;
-    
-    [object setDeallocNotificationInBlock:^{
+
+    [object setDeallocNotificationInBlock:^
+    {
         [weakDict removeObjectForKey:aKey];
     }];
-    
+
     [dictionaryWithUnretainedObjects setObject:object forKey:aKey];
 }
 
-- (id) objectForKey:(id<NSCopying>)aKey
+- (id)objectForKey:(id <NSCopying>)aKey
 {
     return [dictionaryWithUnretainedObjects objectForKey:aKey];
 }
 
-- (NSArray *) allValues
+- (NSArray*)allValues
 {
     return [dictionaryWithUnretainedObjects allValues];
 }
 
-- (void) removeAllObjects
+- (void)removeAllObjects
 {
     [dictionaryWithUnretainedObjects removeAllObjects];
 }
