@@ -17,6 +17,9 @@
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
+
+static NSString* const TYPHOON_PATCHER_SUFFIX = @"$$$patcher";
 
 @implementation TyphoonPatcher
 
@@ -36,13 +39,12 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (void)patchDefinitionWithKey:(NSString*)key withObject:(ObjectCreationBlock)objectCreationBlock
+- (void)patchDefinitionWithKey:(NSString*)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock
 {
-    id object = objectCreationBlock();
-    [_patches setObject:object forKey:key];
+    [_patches setObject:objectCreationBlock forKey:key];
 }
 
-- (void)patchDefinition:(TyphoonDefinition*)definition withObject:(ObjectCreationBlock)objectCreationBlock
+- (void)patchDefinition:(TyphoonDefinition*)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock
 {
     [self patchDefinitionWithKey:definition.key withObject:objectCreationBlock];
 }
@@ -54,6 +56,8 @@
 {
     for (TyphoonDefinition* newDefinition in [self newDefinitionsToRegister])
     {
+        TyphoonDefinition* patchedDefinition = [factory definitionForKey:[self definitionKeyForPatchFactoryKey:newDefinition.key]];
+        [newDefinition setScope:patchedDefinition.scope];
         [factory register:newDefinition];
     }
 
@@ -69,12 +73,11 @@
     for (NSString* key in [_patches allKeys])
     {
         TyphoonDefinition* patchFactory =
-                [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:[self patchFactoryNameForKey:key]];
-        patchFactory.initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithObject:)];
+                [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:[self patchFactoryKeyForDefinitionKey:key]];
+        patchFactory.initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithCreationBlock:)];
         [patchFactory.initializer injectWithObjectInstance:[_patches objectForKey:key]];
         [newDefinitions addObject:patchFactory];
     }
-    LogDebug(@"New definitions to register: %@", newDefinitions);
     return [newDefinitions copy];
 }
 
@@ -83,9 +86,9 @@
     id patchObject = [_patches objectForKey:definition.key];
     if (patchObject)
     {
-        LogDebug(@"Patching component with key %@ with object %@", definition.key, patchObject);
-        [definition setFactoryReference:[self patchFactoryNameForKey:definition.key]];
-        [definition setInitializer:[[TyphoonInitializer alloc] initWithSelector:@selector(object)]];
+        LogDebug(@"Patching component with key: '%@'", definition.key);
+        [definition setFactoryReference:[self patchFactoryKeyForDefinitionKey:definition.key]];
+        [definition setInitializer:[[TyphoonInitializer alloc] initWithSelector:@selector(patchObject)]];
         [definition setValue:nil forKey:@"injectedProperties"];
     }
 }
@@ -93,9 +96,15 @@
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (NSString*)patchFactoryNameForKey:(NSString*)key
+- (NSString*)patchFactoryKeyForDefinitionKey:(NSString*)key
 {
-    return [NSString stringWithFormat:@"%@$$$patcher", key];
+    return [NSString stringWithFormat:@"%@%@", key, TYPHOON_PATCHER_SUFFIX];
+}
+
+- (NSString*)definitionKeyForPatchFactoryKey:(NSString*)key
+{
+    return [key substringToIndex:[key length] - [TYPHOON_PATCHER_SUFFIX length]];
+
 }
 
 

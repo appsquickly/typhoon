@@ -73,7 +73,7 @@ static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
 
 - (void)swizzleDefinitionSelectors:(NSSet*)definitionSelectors
 {
-    [definitionSelectors enumerateObjectsUsingBlock:^(NSValue *selectorObj, BOOL* stop)
+    [definitionSelectors enumerateObjectsUsingBlock:^(TyphoonSelector *selectorObj, BOOL* stop)
     {
         [self swapImplementationOfDefinitionSelectorWithAdvisedImplementation:selectorObj];
     }];

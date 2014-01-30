@@ -15,15 +15,30 @@
 
 @implementation TyphoonPatchObjectFactory
 
-- (id)initWithObject:(id)object
+
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
+
+
+- (instancetype)initWithCreationBlock:(TyphoonPatchObjectCreationBlock)creationBlock
 {
     self = [super init];
     if (self)
     {
-        _object = object;
+        NSAssert(creationBlock != nil, @"Creation block can't be nil");
+        _patchObject = creationBlock();
     }
 
     return self;
 }
+
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
+
+- (id)patchObject
+{
+    return _patchObject;
+}
+
 
 @end

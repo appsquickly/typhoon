@@ -86,7 +86,7 @@ typedef enum
 
 /**
 * Injects with an object instance. 
-* If object is NSNumber of NSValue and argument type is scalar, pointer or NSValue-supported struct, then value will be automatically unwrapped
+* If object is NSNumber or NSValue and argument type is scalar, pointer or NSValue-supported struct, then value will be automatically unwrapped
  * (Like KeyValueCoding does).
 @code
  [initializer injectWithObjectInstance:@(YES)];
@@ -94,6 +94,13 @@ typedef enum
  [initializer injectWithObjectInstance:[NSValue valueWithCGRect:defaultFrame]];
  [initializer injectWithObjectInstance:[NSValue valueWithPointer:@selector(selectorValue)]];
 @endcode
+
+To inject a class object:
+
+@code
+[initializer injectWithObjectInstance:[SomeObject class]];
+@endcode
+
 */
 - (void)injectWithObjectInstance:(id)value;
 

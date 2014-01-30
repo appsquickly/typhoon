@@ -109,7 +109,7 @@
     NSInteger index = [self indexOfParameter:name];
     if (index == NSIntegerMax)
     {
-        [NSException raise:NSInvalidArgumentException format:[self parameterNotFoundErrorMessageWithParameterNamed:name]];
+        [NSException raise:NSInvalidArgumentException format:@"%@", [self parameterNotFoundErrorMessageWithParameterNamed:name]];
     }
 
     if (success)

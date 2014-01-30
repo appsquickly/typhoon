@@ -66,7 +66,7 @@
 {
     NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
     [description appendFormat:@"self.key=%@", self.key];
-    [description appendFormat:@", completeBlocksCount=%d", [completeBlocks count]];
+    [description appendFormat:@", completeBlocksCount=%lu", (unsigned long)[completeBlocks count]];
     [description appendString:@">"];
     return description;
 }

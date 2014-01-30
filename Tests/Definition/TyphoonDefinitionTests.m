@@ -147,7 +147,7 @@
     assertThat([child injectedProperties], hasCountOf(1));
 
     TyphoonPropertyInjectedAsObjectInstance* property = [[child injectedProperties] anyObject];
-    assertThatInt([property.objectInstance integerValue], equalToInt(346));
+    assertThatInteger([property.objectInstance integerValue], equalToInteger(346));
 }
 
 

@@ -21,7 +21,7 @@
 #import "TyphoonCallStack.h"
 #import "TyphoonParentReferenceHydratingPostProcessor.h"
 #import "TyphoonComponentPostProcessor.h"
-#import "TyphoonWeekComponentsPool.h"
+#import "TyphoonWeakComponentsPool.h"
 
 typedef id(^TyphoonInstanceBuildBlock)(TyphoonDefinition* definition);
 
@@ -54,7 +54,7 @@ static TyphoonComponentFactory* defaultFactory;
     {
         _registry = [[NSMutableArray alloc] init];
         _singletons = (id <TyphoonComponentsPool>)[[NSMutableDictionary alloc] init];
-        _weakSingletons = [TyphoonWeekComponentsPool new];
+        _weakSingletons = [TyphoonWeakComponentsPool new];
         _objectGraphSharedInstances = (id <TyphoonComponentsPool>)[[NSMutableDictionary alloc] init];
         _stack = [TyphoonCallStack stack];
         _factoryPostProcessors = [[NSMutableArray alloc] init];

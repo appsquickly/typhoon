@@ -283,7 +283,7 @@
     assertThatInt(strcmp(primitiveMan.cString, "cStringText"), equalToInt(0));
     assertThatBool(NSEqualRanges(primitiveMan.nsRange, NSMakeRange(10, 20)), equalToBool(YES));
     assertThatInt(primitiveMan.unknownPointer->fieldA, equalToInt(INT_MAX));
-    assertThatInt(primitiveMan.unknownPointer->fieldB, equalToInt(LONG_MAX));
+    assertThatLong(primitiveMan.unknownPointer->fieldB, equalToLong(LONG_MAX));
     assertThatBool(primitiveMan.pointer == &primitiveStruct, equalToBool(YES));
     assertThat(primitiveMan.pointerInsideValue, equalTo([NSValue valueWithPointer:&primitiveStruct]));
     

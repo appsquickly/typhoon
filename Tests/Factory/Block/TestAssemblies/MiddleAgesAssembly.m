@@ -18,8 +18,6 @@
 #import "CavalryMan.h"
 #import "SwordFactory.h"
 #import "Sword.h"
-#import "TyphoonPropertyInjectedAsCollection.h"
-#import "TyphoonDefinition.h"
 #import "TyphoonParameterInjectedAsCollection.h"
 
 @implementation MiddleAgesAssembly
