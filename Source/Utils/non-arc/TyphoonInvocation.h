@@ -1,10 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  TyphoonInvocation.h
-//  Pods
+// TYPHOON FRAMEWORK
+// Copyright 2014, Jasper Blues & Contributors
+// All Rights Reserved.
 //
-//  Created by Aleksey Garbarev on 30.01.14.
+// NOTICE: The authors permit you to use, modify, and distribute this file
+// in accordance with the terms of the license agreement accompanying it.
 //
-//
+////////////////////////////////////////////////////////////////////////////////
+
 
 #import <Foundation/Foundation.h>
 
