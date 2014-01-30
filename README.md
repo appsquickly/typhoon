@@ -198,7 +198,7 @@ I'll take all the help I can get | Professional consultation is available from k
 
 # Core Team
 
-* <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778">Jasper Blues</a> (Founder / Project Lead) - <a href="mailto:jasper@appsquick.ly?Subject=Typhoon">jasper@appsquick.ly</a>  
+* <a href="https://github.com/jasperblues">Jasper Blues</a> (Founder / Project Lead) - <a href="mailto:jasper@appsquick.ly?Subject=Typhoon">jasper@appsquick.ly</a>  
 * <a href="https://github.com/rhgills">Robert Gilliam</a> - <a href="mailto:robert@robertgilliam.org?Subject=Typhoon">robert@robertgilliam.org</a>
 * <a href="https://github.com/drodriguez">Daniel Rodríguez Troitiño</a> 
 * <a href="https://github.com/eriksundin">Erik Sundin</a> 
