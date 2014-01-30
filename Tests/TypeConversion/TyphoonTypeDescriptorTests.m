@@ -41,16 +41,22 @@ typedef struct
 
 - (void)test_type_description_primitive
 {
+    // Depending on the platform, bools are encoded either as chars or as bool
+    // both are 1 byte, and with 1 byte padding.
+    // iOS 64 bits is the one needing this "template", so we don't hardcode the
+    // expected description below.
+    TyphoonTypeDescriptor* boolDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:[NSString stringWithCString:@encode(BOOL) encoding:NSASCIIStringEncoding]];
+
     TyphoonTypeDescriptor* descriptor = [self typeForPropertyWithName:@"aBoolProperty"];
     assertThatBool([descriptor isPrimitive], equalToBool(YES));
     assertThat([descriptor typeBeingDescribed], nilValue());
     assertThat([descriptor protocol], nilValue());
     assertThatBool([descriptor isArray], equalToBool(NO));
     assertThatInt([descriptor arrayLength], equalToInt(0));
+    assertThatInt(descriptor.primitiveType, equalToInt(boolDescriptor.primitiveType));
 
     NSString* description = [descriptor description];
-    // assertThat(description, equalTo(@"Type descriptor for primitive: 1"));
-    // fails when running on iOS 64 bit simulator
+    assertThat(description, equalTo([boolDescriptor description]));
 }
 
 - (void)test_type_description_class
