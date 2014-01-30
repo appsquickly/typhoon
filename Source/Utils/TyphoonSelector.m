@@ -51,8 +51,7 @@
 - (NSString*)description
 {
     // <TyphoonSelector: 0x00000 SEL named: 'aDefinitionMethod'>
-    NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: 0x%x SEL named: '%@'", NSStringFromClass([self class]), self, NSStringFromSelector(self.selector)];
-    [description appendString:@">"];
+    NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: %p SEL named: '%@'>", NSStringFromClass([self class]), self, NSStringFromSelector(self.selector)];
     return description;
 }
 

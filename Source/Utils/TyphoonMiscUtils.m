@@ -21,11 +21,11 @@ static NSArray * ordinalsThroughThree;
 {
     NSUInteger lastDigit = index % 10;
     if (index > 3 && index < 20) {
-        return [NSString stringWithFormat:@"%lu%@", index, @"th"];
+        return [NSString stringWithFormat:@"%lu%@", (unsigned long)index, @"th"];
     }else if (lastDigit <= 3) {
-        return [NSString stringWithFormat:@"%lu%@", index, ordinalsThroughThree[lastDigit]];
+        return [NSString stringWithFormat:@"%lu%@", (unsigned long)index, ordinalsThroughThree[lastDigit]];
     }else{
-        return [NSString stringWithFormat:@"%lu%@", index, @"th"];
+        return [NSString stringWithFormat:@"%lu%@", (unsigned long)index, @"th"];
     }
 }
 @end

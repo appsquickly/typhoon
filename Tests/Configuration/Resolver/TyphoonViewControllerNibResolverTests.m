@@ -42,7 +42,7 @@
     
     assertThat(definition.initializer, notNilValue());
     assertThat(NSStringFromSelector(definition.initializer.selector), equalTo(NSStringFromSelector(@selector(initWithNibName:bundle:))));
-    assertThatInt([[definition.initializer injectedParameters] count], equalToInt(2));
+    assertThatUnsignedInteger([[definition.initializer injectedParameters] count], equalToUnsignedInteger(2));
 
 }
 

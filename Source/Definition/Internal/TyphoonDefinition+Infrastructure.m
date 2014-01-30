@@ -24,18 +24,18 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 
-+ (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key
++ (instancetype)withClass:(Class)clazz key:(NSString*)key
 {
     return [[TyphoonDefinition alloc] initWithClass:clazz key:key];
 }
 
 
-+ (TyphoonDefinition*)propertyPlaceholderWithResource:(id <TyphoonResource>)resource
++ (instancetype)propertyPlaceholderWithResource:(id <TyphoonResource>)resource
 {
     return [self propertyPlaceholderWithResources:@[resource]];
 }
 
-+ (TyphoonDefinition*)propertyPlaceholderWithResources:(NSArray*)resources
++ (instancetype)propertyPlaceholderWithResources:(NSArray*)resources
 {
     TyphoonDefinition
             * definition = [self withClass:[TyphoonPropertyPlaceholderConfigurer class] initialization:^(TyphoonInitializer* initializer)

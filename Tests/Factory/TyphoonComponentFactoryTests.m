@@ -264,7 +264,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
         return o;
     }];
 
-    Knight* knight = [_componentFactory componentForType:[Knight class]];
+    __unused Knight* knight = [_componentFactory componentForType:[Knight class]];
     assertThat(orderedApplied, equalTo(@[@3, @2, @1]));
 }
 
@@ -456,7 +456,7 @@ static NSString* const DEFAULT_QUEST = @"quest";
 
     @try
     {
-        NSURL* url = [_componentFactory componentForKey:@"anAbstractDefinition"];
+        __unused NSURL* url = [_componentFactory componentForKey:@"anAbstractDefinition"];
         STFail(@"Should've thrown exception");
     }
     @catch (NSException* e)
