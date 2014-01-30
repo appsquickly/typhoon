@@ -98,7 +98,7 @@ static NSString* const TYPHOON_PATCHER_SUFFIX = @"$$$patcher";
 
 - (NSString*)patchFactoryKeyForDefinitionKey:(NSString*)key
 {
-    return [NSString stringWithFormat:TYPHOON_PATCHER_SUFFIX, key];
+    return [NSString stringWithFormat:@"%@%@", key, TYPHOON_PATCHER_SUFFIX];
 }
 
 - (NSString*)definitionKeyForPatchFactoryKey:(NSString*)key

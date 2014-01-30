@@ -17,6 +17,7 @@
 #import "TyphoonPatcher.h"
 #import "Knight.h"
 #import "OCLogTemplate.h"
+#import "CavalryMan.h"
 
 @interface TyphoonPatcherTests : SenTestCase
 {
@@ -49,8 +50,19 @@
     [_factory componentForKey:@"knight"];
 
     [self applyAPatchToFactory:_factory assembly:_assembly];
-
     [self assertPatchAppliedToFactory:_factory];
+}
+
+
+- (void)test_honours_the_scope_of_patched_definition
+{
+    [self applyAPatchToFactory:_factory assembly:_assembly];
+    [self assertPatchAppliedToFactory:_factory];
+
+    assertThatBool([_factory componentForKey:@"knight"] == [_factory componentForKey:@"knight"], equalToBool(NO));
+    assertThatBool([_factory componentForKey:@"cavalryMan"] == [_factory componentForKey:@"cavalryMan"], equalToBool(YES));
+
+
 }
 
 - (void)applyAPatchToFactory:(TyphoonComponentFactory*)factory assembly:(MiddleAgesAssembly*)assembly
@@ -65,6 +77,19 @@
         ]];
 
         return mockKnight;
+    }];
+
+    [patcher patchDefinition:[assembly cavalryMan] withObject:^id
+    {
+        CavalryMan* cavalryMan = mock([CavalryMan class]);
+        [given ([cavalryMan favoriteDamsels]) willReturn:@[
+                @"Leonid",
+                @"Bob",
+                @"Chuck",
+                @"BigDave",
+        ]];
+
+        return cavalryMan;
     }];
 
     [factory attachPostProcessor:patcher];
