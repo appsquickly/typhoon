@@ -26,6 +26,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonTypeConverterRegistry.h"
 #import "TyphoonPropertyInjectedWithStringRepresentation.h"
 #import "TyphoonPropertyInjectionDelegate.h"
+#import "TyphoonPropertyInjectionInternalDelegate.h"
 #import "TyphoonParameterInjectedWithStringRepresentation.h"
 #import "TyphoonPrimitiveTypeConverter.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
@@ -212,11 +213,20 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     TyphoonTypeDescriptor* propertyType = [instance typeForPropertyWithName:property.name];
     AssertTypeDescriptionForPropertyOnInstance(propertyType, property, instance);
 
-    id valueToInject = [self valueToInjectProperty:property withType:propertyType onInstance:instance];
+    TyphoonPropertyInjectionLazyValue lazyValue = ^id {
+        return [self valueToInjectProperty:property withType:propertyType onInstance:instance];
+    };
 
-    if (valueToInject)
+    if (![instance respondsToSelector:@selector(shouldInjectProperty:withType:lazyValue:)] ||
+        [(id <TyphoonPropertyInjectionInternalDelegate>)instance
+         shouldInjectProperty:property withType:propertyType lazyValue:lazyValue])
     {
-        [(NSObject*)instance injectValue:valueToInject forPropertyName:property.name withType:propertyType];
+        id valueToInject = lazyValue();
+
+        if (valueToInject)
+        {
+            [(NSObject*)instance injectValue:valueToInject forPropertyName:property.name withType:propertyType];
+        }
     }
 }
 

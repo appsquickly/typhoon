@@ -83,6 +83,8 @@
 		4BC6493C17A20BD7007F0463 /* TyphoonAutowire.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79890C0F10164E6B504106 /* TyphoonAutowire.h */; };
 		4BC6493D17A20BD7007F0463 /* TyphoonShorthand.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79844939DE1F872B92FEFB /* TyphoonShorthand.h */; };
 		4BC6494117A20BD7007F0463 /* TyphoonPropertyInjectedAsCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798C412A56850A9B848048 /* TyphoonPropertyInjectedAsCollection.h */; };
+		65123363189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 65123362189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h */; };
+		65123364189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 65123362189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h */; };
 		6B3F39C216ABFAC3001A601C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B3F399816ABF8E5001A601C /* Cocoa.framework */; };
 		75AB5031BDCB0923E6159217 /* TyphoonJRMethodSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AB553D3C9C1F54E45A1E1A /* TyphoonJRMethodSwizzler.h */; };
 		75AB50967CF3CE290B2C1FB1 /* TyphoonCollaboratingAssemblyPropertyEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5CF91B17D154574BA8AA /* TyphoonCollaboratingAssemblyPropertyEnumerator.m */; };
@@ -381,6 +383,7 @@
 		4BED3D6117A85010006D262C /* OCLogTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCLogTemplate.h; sourceTree = "<group>"; };
 		4BED3D6217A85010006D262C /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		4BED3D6317A853E6006D262C /* TyphoonComponentInjectedByValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonComponentInjectedByValue.h; sourceTree = "<group>"; };
+		65123362189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonPropertyInjectionInternalDelegate.h; sourceTree = "<group>"; };
 		6B3F397416ABF854001A601C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6B3F399616ABF8E5001A601C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		6B3F399816ABF8E5001A601C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
@@ -772,6 +775,7 @@
 				BA7988CB0A04D544852FC120 /* TyphoonParentReferenceHydratingPostProcessor.h */,
 				BA7984BB06E68993AA3D516C /* NSInvocation+TyphoonUtils.h */,
 				BA798C0D7B619637FD78FB10 /* NSInvocation+TyphoonUtils.m */,
+				65123362189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -1164,6 +1168,7 @@
 				BA798D52B7828228B7903139 /* TyphoonDefinition+InstanceBuilder.h in Headers */,
 				BA798F7F0F1E29B0B29945FF /* TyphoonComponentFactory+TyphoonDefinitionRegisterer.h in Headers */,
 				BA798F2AFADB186C1D4AA044 /* TyphoonPropertyInjectionDelegate.h in Headers */,
+				65123364189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h in Headers */,
 				75AB5A950044CB54D8BF433B /* TyphoonCircularDependencyTerminator.h in Headers */,
 				75AB5ABAD3CAD2BEAA15EB6C /* TyphoonMethodSwizzler.h in Headers */,
 				75AB5031BDCB0923E6159217 /* TyphoonJRMethodSwizzler.h in Headers */,
@@ -1259,6 +1264,7 @@
 				BA798865167C8EF3FD354FDA /* TyphoonPropertyPlaceholderConfigurer.h in Headers */,
 				BA7980D98259FADB057607B0 /* TyphoonComponentFactoryPostProcessor.h in Headers */,
 				BA798469C58E7EA4EFA26AE1 /* TyphoonBundleResource.h in Headers */,
+				65123363189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h in Headers */,
 				BA798CC4B00CB4AFE83F28A8 /* TyphoonResource.h in Headers */,
 				BA798B302D77DE4B95258820 /* TyphoonDefinition+Infrastructure.h in Headers */,
 				BA7989B851CA8B4837661F13 /* TyphoonInitializer+InstanceBuilder.h in Headers */,
