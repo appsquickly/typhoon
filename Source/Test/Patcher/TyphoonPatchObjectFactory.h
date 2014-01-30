@@ -12,13 +12,17 @@
 
 
 #import <Foundation/Foundation.h>
+#import "TyphoonPatcher.h"
 
 
 @interface TyphoonPatchObjectFactory : NSObject
 
-@property(nonatomic, strong) id object;
 
-- (id)initWithObject:(id)object;
+@property(nonatomic, copy, readonly) TyphoonPatchObjectCreationBlock creationBlock;
+
+- (instancetype)initWithCreationBlock:(TyphoonPatchObjectCreationBlock)creationBlock;
+
+- (id)patchObject;
 
 
 @end

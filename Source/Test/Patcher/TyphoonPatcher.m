@@ -36,13 +36,12 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (void)patchDefinitionWithKey:(NSString*)key withObject:(ObjectCreationBlock)objectCreationBlock
+- (void)patchDefinitionWithKey:(NSString*)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock
 {
-    id object = objectCreationBlock();
-    [_patches setObject:object forKey:key];
+    [_patches setObject:objectCreationBlock forKey:key];
 }
 
-- (void)patchDefinition:(TyphoonDefinition*)definition withObject:(ObjectCreationBlock)objectCreationBlock
+- (void)patchDefinition:(TyphoonDefinition*)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock
 {
     [self patchDefinitionWithKey:definition.key withObject:objectCreationBlock];
 }
@@ -70,11 +69,10 @@
     {
         TyphoonDefinition* patchFactory =
                 [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:[self patchFactoryNameForKey:key]];
-        patchFactory.initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithObject:)];
+        patchFactory.initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithCreationBlock:)];
         [patchFactory.initializer injectWithObjectInstance:[_patches objectForKey:key]];
         [newDefinitions addObject:patchFactory];
     }
-    LogDebug(@"New definitions to register: %@", newDefinitions);
     return [newDefinitions copy];
 }
 
@@ -83,9 +81,9 @@
     id patchObject = [_patches objectForKey:definition.key];
     if (patchObject)
     {
-        LogDebug(@"Patching component with key %@ with object %@", definition.key, patchObject);
+        LogDebug(@"Patching component with key: '%@'", definition.key);
         [definition setFactoryReference:[self patchFactoryNameForKey:definition.key]];
-        [definition setInitializer:[[TyphoonInitializer alloc] initWithSelector:@selector(object)]];
+        [definition setInitializer:[[TyphoonInitializer alloc] initWithSelector:@selector(patchObject)]];
         [definition setValue:nil forKey:@"injectedProperties"];
     }
 }

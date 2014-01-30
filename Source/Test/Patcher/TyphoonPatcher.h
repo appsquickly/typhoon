@@ -12,8 +12,9 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryPostProcessor.h"
+@class TyphoonDefinition;
 
-typedef id (^ObjectCreationBlock)();
+typedef id (^TyphoonPatchObjectCreationBlock)();
 
 /**
 * @ingroup Test
@@ -28,8 +29,8 @@ typedef id (^ObjectCreationBlock)();
     NSMutableDictionary* _patches;
 }
 
-- (void)patchDefinitionWithKey:(NSString*)key withObject:(ObjectCreationBlock)objectCreationBlock;
+- (void)patchDefinitionWithKey:(NSString*)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock;
 
-- (void)patchDefinition:(TyphoonDefinition*)definition withObject:(ObjectCreationBlock)objectCreationBlock;
+- (void)patchDefinition:(TyphoonDefinition*)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock;
 
 @end
