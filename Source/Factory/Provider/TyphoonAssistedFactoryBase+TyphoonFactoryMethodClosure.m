@@ -14,6 +14,7 @@
 #include <objc/runtime.h>
 
 #import "TyphoonAssistedFactoryMethodClosure.h"
+#import "TyphoonComponentFactory+InstanceBuilder.h"
 
 static const void *sFactoryMethodClosures = &sFactoryMethodClosures;
 
@@ -83,6 +84,9 @@ static const void *sFactoryMethodClosures = &sFactoryMethodClosures;
     NSUInteger methodReturnLength = [closure.methodSignature methodReturnLength];
     void *returnValue = malloc(methodReturnLength);
     [closureInvocation getReturnValue:returnValue];
+
+    [self.componentFactory injectAssemblyOnInstanceIfTyphoonAware:*(__unsafe_unretained id *)returnValue];
+
     [anInvocation setReturnValue:returnValue];
     free(returnValue);
 }

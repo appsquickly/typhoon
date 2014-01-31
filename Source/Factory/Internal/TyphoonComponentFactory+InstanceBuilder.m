@@ -122,7 +122,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 }
 
-- (void)injectAssemblyOnInstance:(id <TyphoonComponentFactoryAware>)instance;
+- (void)injectAssemblyOnInstance:(id <TyphoonComponentFactoryAware>)instance
 {
     [instance setFactory:self];
 }

@@ -11,7 +11,9 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Payment <NSObject>
+#import "Typhoon.h"
+
+@protocol Payment <TyphoonComponentFactoryAware, NSObject>
 
 @property (nonatomic, strong, readonly) id<CreditService> creditService;
 @property (nonatomic, strong, readonly) id<AuthService> authService;

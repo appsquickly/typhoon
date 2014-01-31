@@ -13,6 +13,7 @@
 #import "TyphoonAssistedFactoryBase.h"
 
 #import "TyphoonAbstractInjectedProperty.h"
+#import "TyphoonComponentFactory.h"
 
 @interface TyphoonAssistedFactoryBaseTest : SenTestCase
 @end
@@ -51,6 +52,14 @@
 - (void)test_should_respond_to_setDummySetter
 {
     assertThatBool([assistedFactory respondsToSelector:@selector(_setDummySetter:)], is(equalToBool(YES)));
+}
+
+- (void)test_should_conform_to_TyphoonComponentFactoryAware
+{
+    id mockFactory = mock([TyphoonComponentFactory class]);
+
+    [assistedFactory setFactory:mockFactory];
+    assertThat(assistedFactory.componentFactory, is(equalTo(mockFactory)));
 }
 
 @end

@@ -137,24 +137,4 @@
     assertThat(injectedPropertyNames, hasItems(equalTo(@"creditService"), equalTo(@"authService"), nil));
 }
 
-- (void)test_dependencies_are_built_lazily
-{
-    NSUInteger authServiceInstanceCounter = [AuthServiceImpl instanceCounter];
-    NSUInteger creditServiceInstanceCounter = [CreditServiceImpl instanceCounter];
-
-    TyphoonBlockComponentFactory* componentFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[PaymentFactoryAssembly assembly]];
-    PaymentFactoryAssembly* assembly = (PaymentFactoryAssembly*) componentFactory;
-
-    id<PaymentFactory> factory = [assembly paymentFactory];
-
-    assertThatUnsignedInteger([AuthServiceImpl instanceCounter], is(equalToUnsignedInteger(authServiceInstanceCounter)));
-    assertThatUnsignedInteger([CreditServiceImpl instanceCounter], is(equalToUnsignedInteger(creditServiceInstanceCounter)));
-
-    // No need for the return value.
-    [factory paymentWithStartDate:[NSDate date] amount:123];
-
-    assertThatUnsignedInteger([AuthServiceImpl instanceCounter], is(equalToUnsignedInteger(authServiceInstanceCounter + 1)));
-    assertThatUnsignedInteger([CreditServiceImpl instanceCounter], is(equalToUnsignedInteger(creditServiceInstanceCounter + 1)));
-}
-
 @end

@@ -177,6 +177,9 @@
 		4EFAF61417E0D54700E93ACF /* CROPrototypeB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */; };
 		4EFAF61517E0D54700E93ACF /* CROPrototypeB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */; };
 		60A23DF66842404BA2052F31 /* libPods-iOS Tests (Cocoapods).a in Frameworks */ = {isa = PBXBuildFile; fileRef = B90D396911F743468FF96BB5 /* libPods-iOS Tests (Cocoapods).a */; };
+		6511E7E2189C12D800DB8E8B /* TyphoonFactoryProviderIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6511E7E1189C12D800DB8E8B /* TyphoonFactoryProviderIntegrationTest.m */; };
+		6511E7E3189C12D800DB8E8B /* TyphoonFactoryProviderIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6511E7E1189C12D800DB8E8B /* TyphoonFactoryProviderIntegrationTest.m */; };
+		6511E7E4189C12D800DB8E8B /* TyphoonFactoryProviderIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6511E7E1189C12D800DB8E8B /* TyphoonFactoryProviderIntegrationTest.m */; };
 		65123367189AD55300C21E63 /* PaymentFactoryAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 65123366189AD55300C21E63 /* PaymentFactoryAssembly.m */; };
 		65123368189AD55300C21E63 /* PaymentFactoryAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 65123366189AD55300C21E63 /* PaymentFactoryAssembly.m */; };
 		65123369189AD55300C21E63 /* PaymentFactoryAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 65123366189AD55300C21E63 /* PaymentFactoryAssembly.m */; };
@@ -470,6 +473,7 @@
 		4EFAF60D17E0D50B00E93ACF /* CROPrototypeA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CROPrototypeA.m; sourceTree = "<group>"; };
 		4EFAF61117E0D54700E93ACF /* CROPrototypeB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CROPrototypeB.h; sourceTree = "<group>"; };
 		4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CROPrototypeB.m; sourceTree = "<group>"; };
+		6511E7E1189C12D800DB8E8B /* TyphoonFactoryProviderIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonFactoryProviderIntegrationTest.m; sourceTree = "<group>"; };
 		65123365189AD55300C21E63 /* PaymentFactoryAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentFactoryAssembly.h; sourceTree = "<group>"; };
 		65123366189AD55300C21E63 /* PaymentFactoryAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentFactoryAssembly.m; sourceTree = "<group>"; };
 		656A57611848DCB60081F72B /* TyphoonAssistedFactoryCreatorOneFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssistedFactoryCreatorOneFactoryTest.m; sourceTree = "<group>"; };
@@ -942,6 +946,7 @@
 			children = (
 				657096941831464A00C10DA4 /* Fixtures */,
 				657096901831449000C10DA4 /* TyphoonFactoryProviderTest.m */,
+				6511E7E1189C12D800DB8E8B /* TyphoonFactoryProviderIntegrationTest.m */,
 				656A57691848DD260081F72B /* TyphoonFactoryProviderTestHelper.h */,
 				656A57651848DD020081F72B /* TyphoonFactoryProviderTestHelper.m */,
 				656A57611848DCB60081F72B /* TyphoonAssistedFactoryCreatorOneFactoryTest.m */,
@@ -1412,6 +1417,7 @@
 				4B841519179B0EA600916BF5 /* SwordFactory.m in Sources */,
 				FA99165C18983621000AC4B5 /* TyphoonObjectDeallocCallbackTests.m in Sources */,
 				4B84151B179B0EA600916BF5 /* Knight.m in Sources */,
+				6511E7E2189C12D800DB8E8B /* TyphoonFactoryProviderIntegrationTest.m in Sources */,
 				4B84152D179B0EA600916BF5 /* TyphoonPassthroughTypeConverterTests.m in Sources */,
 				4B84152F179B0EA600916BF5 /* TyphoonPrimitiveTypeConverterTests.m in Sources */,
 				46BD2236184F7481008E89E5 /* NSNullTypeConverter.m in Sources */,
@@ -1579,6 +1585,7 @@
 				BA798948941EE6E7B0746C60 /* MiddleAgesAssembly.m in Sources */,
 				BA7988B2B8BD792CF0A1F9A9 /* ObjectGraphAssembly.m in Sources */,
 				BA7982D26573611B9AE7E201 /* TyphoonScopeTests.m in Sources */,
+				6511E7E3189C12D800DB8E8B /* TyphoonFactoryProviderIntegrationTest.m in Sources */,
 				BA7984BC277B2DAD4C374FD6 /* Fort.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1615,6 +1622,7 @@
 				4BC648D917A20AD2007F0463 /* Sword.m in Sources */,
 				FA99165E18983703000AC4B5 /* TyphoonObjectDeallocCallbackTests.m in Sources */,
 				4BC648DA17A20AD2007F0463 /* SwordFactory.m in Sources */,
+				6511E7E4189C12D800DB8E8B /* TyphoonFactoryProviderIntegrationTest.m in Sources */,
 				4BC648DB17A20AD2007F0463 /* Knight.m in Sources */,
 				4BC648DC17A20AD2007F0463 /* TyphoonPassthroughTypeConverterTests.m in Sources */,
 				4BC648DD17A20AD2007F0463 /* TyphoonPrimitiveTypeConverterTests.m in Sources */,

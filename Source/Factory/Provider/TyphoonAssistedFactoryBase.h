@@ -11,13 +11,20 @@
 
 #import <Foundation/Foundation.h>
 
+#import "TyphoonComponentFactoryAware.h"
 #import "TyphoonPropertyInjectionInternalDelegate.h"
 
 /**
  * Internal base class for all Typhoon assisted factories. Users should not use
  * this class directly.
  */
-@interface TyphoonAssistedFactoryBase : NSObject <TyphoonPropertyInjectionInternalDelegate>
+@interface TyphoonAssistedFactoryBase : NSObject <TyphoonComponentFactoryAware, TyphoonPropertyInjectionInternalDelegate>
+
+/**
+ * Part of TyphoonComponentFactoryAware. Renamed to componentFactory to not
+ * have code like factory.factory at some point.
+ */
+@property (nonatomic, strong, setter = setFactory:) id componentFactory;
 
 /** Used internally by the getters of the properties in the subclasses */
 - (id)injectionValueForProperty:(NSString *)property;
