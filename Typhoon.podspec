@@ -18,7 +18,7 @@ Pod::Spec.new do |spec|
 
   non_arc_files = 'Source/Factory/Internal/NSInvocation+TyphoonUtils.m'
   spec.requires_arc = true
-  spec.exclude=non_arc_files
+  spec.exclude_files=non_arc_files
   spec.subspec 'no-arc' do |sna|
     sna.requires_arc = false
     sna.source_files = non_arc_files
