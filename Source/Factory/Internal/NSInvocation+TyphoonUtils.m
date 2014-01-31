@@ -43,7 +43,6 @@
     id allocatedSpace = [aClass alloc];
     id instance = [self resultOfInvokingOn:allocatedSpace];
     [instance release];
-    NSAssert([instance retainCount] == 1, @"RetainCount here must me 1 (not %lu)", (unsigned long)[instance retainCount]);
     return instance;
 }
 
