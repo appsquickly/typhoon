@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = 'Typhoon'
-  spec.version = '1.7.4'
+  spec.version = '1.7.5'
   spec.license = 'Apache2.0'
   spec.summary = 'A dependency injection container for Objective-C. Light-weight, yet flexible and full-featured.'
   spec.homepage = 'http://www.typhoonframework.org'
@@ -15,8 +15,8 @@ Pod::Spec.new do |spec|
 
   spec.source_files = 'Source/**/*.{h,m}'
   non_arc_files = 'Source/Factory/Internal/NSInvocation+TyphoonUtils.m'
-  spec.ios.exclude_files = "Source/osx", non_arc_files
-  spec.osx.exclude_files = "Source/ios", non_arc_files
+  spec.ios.exclude_files = 'Source/osx', non_arc_files
+  spec.osx.exclude_files = 'Source/ios', non_arc_files
 
   spec.requires_arc = true
   spec.subspec 'no-arc' do |sna|
