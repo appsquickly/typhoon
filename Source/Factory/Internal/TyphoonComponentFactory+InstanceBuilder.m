@@ -44,7 +44,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonCallStack.h"
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
-#import "TyphoonInvocation.h"
+#import "NSInvocation+TyphoonUtils.h"
 
 #define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type)[NSException raise:@"NSUnknownKeyException" \
 format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",property.name, [instance class]]
@@ -58,48 +58,53 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
-    TyphoonStackElement *stackElement = [TyphoonStackElement itemWithKey:definition.key];
+    TyphoonStackElement* stackElement = [TyphoonStackElement itemWithKey:definition.key];
     [_stack push:stackElement];
-    
+
     id instance = [self newInstanceWithDefinition:definition];
-    
+
     [stackElement takeInstance:instance];
-    
+
     [self injectPropertyDependenciesOn:instance withDefinition:definition];
-    
+
     instance = [self postProcessInstance:instance];
     [_stack pop];
-    
+
     return instance;
 }
 
-- (id) newInstanceWithDefinition:(TyphoonDefinition*)definition
+- (id)newInstanceWithDefinition:(TyphoonDefinition*)definition
 {
     id initTarget = nil;
-    
+
     if (definition.factoryReference)
     {
         // misleading - this is not the instance. this is an instance of a separate class that will create the instance of the class we care
         // about.
         initTarget = [self componentForKey:definition.factoryReference]; // clears currently resolving.
     }
-    else if (definition.initializer.isClassMethod) {
+    else if (definition.initializer.isClassMethod)
+    {
         initTarget = definition.type;
     }
-    else {
+    else
+    {
         initTarget = [definition.type alloc];
     }
 
     id instance = nil;
-    
-    NSInvocation *invocation = [self invocationToInit:initTarget withDefinition:definition];
-    
-    if (definition.factoryReference || [definition.initializer isClassMethod]) {
+
+    NSInvocation* invocation = [self invocationToInit:initTarget withDefinition:definition];
+
+    if (definition.factoryReference || [definition.initializer isClassMethod])
+    {
         instance = [invocation resultOfInvokingOnInstance:initTarget];
-    } else {
+    }
+    else
+    {
         instance = [invocation resultOfInvokingOnAllocationForClass:definition.type];
     }
-    
+
     return instance;
 }
 
@@ -115,21 +120,24 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     return instance;
 }
 
-- (NSInvocation *) invocationToInit:(id)instanceOrClass withDefinition:(TyphoonDefinition *)definition
+- (NSInvocation*)invocationToInit:(id)instanceOrClass withDefinition:(TyphoonDefinition*)definition
 {
-    NSInvocation *invocation = nil;
-    if (definition.initializer) {
+    NSInvocation* invocation = nil;
+    if (definition.initializer)
+    {
         invocation = [self invocationToInit:instanceOrClass withInitializer:definition.initializer];
-    } else {
+    }
+    else
+    {
         invocation = [self defaultInvocationToInit:instanceOrClass];
     }
     return invocation;
 }
 
-- (NSInvocation *) defaultInvocationToInit:(id)instance
+- (NSInvocation*)defaultInvocationToInit:(id)instance
 {
-    NSMethodSignature *methodSignature = [instance methodSignatureForSelector:@selector(init)];
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
+    NSMethodSignature* methodSignature = [instance methodSignatureForSelector:@selector(init)];
+    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
     [invocation setSelector:@selector(init)];
     return invocation;
 }
@@ -151,11 +159,12 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 {
     if ([self alreadyResolvingKey:definition.key])
     {
-        TyphoonStackElement *stackElement = [_stack peekForKey:definition.key];
-        if ([stackElement isInitializingInstance]) {
+        TyphoonStackElement* stackElement = [_stack peekForKey:definition.key];
+        if ([stackElement isInitializingInstance])
+        {
             RaiseInitCircualrException(definition.key);
         }
-        
+
         return [_stack peekForKey:definition.key].instance;
     }
     return [self buildInstanceWithDefinition:definition];
@@ -202,9 +211,9 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 {
     TyphoonTypeDescriptor* propertyType = [instance typeForPropertyWithName:property.name];
     AssertTypeDescriptionForPropertyOnInstance(propertyType, property, instance);
-    
+
     id valueToInject = [self valueToInjectProperty:property withType:propertyType onInstance:instance];
-    
+
     if (valueToInject)
     {
         [(NSObject*)instance injectValue:valueToInject forPropertyName:property.name withType:propertyType];
@@ -288,10 +297,11 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         if (!propertyValue)
         {
             NSString* componentKey = [circularDependentProperties objectForKey:propertyName];
-            [[_stack peekForKey:componentKey] addInstanceCompleteBlock:^(id reference) {
+            [[_stack peekForKey:componentKey] addInstanceCompleteBlock:^(id reference)
+            {
                 [(NSObject*)instance setValue:reference forKey:propertyName];
             }];
-            
+
         }
     }
 }
@@ -314,7 +324,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (NSInvocation *) invocationToInit:(id)instanceOrClass withInitializer:(TyphoonInitializer*)initializer
+- (NSInvocation*)invocationToInit:(id)instanceOrClass withInitializer:(TyphoonInitializer*)initializer
 {
     NSInvocation* invocation = [initializer asInvocationFor:instanceOrClass];
 
@@ -325,10 +335,11 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         {
             TyphoonParameterInjectedByReference* byReference = (TyphoonParameterInjectedByReference*)parameter;
 
-            if ([[_stack peekForKey:byReference.reference] isInitializingInstance]) {
+            if ([[_stack peekForKey:byReference.reference] isInitializingInstance])
+            {
                 RaiseInitCircualrException(byReference.reference);
             }
-            
+
             id reference = [self componentForKey:byReference.reference];
             [invocation setArgument:&reference atIndex:parameter.index + 2];
         }
@@ -344,9 +355,12 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
             id value = byInstance.value;
             BOOL isValuesIsWrapper = [value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSValue class]];
 
-            if (isValuesIsWrapper && [byInstance isPrimitiveParameterFor:instanceOrClass]) {
+            if (isValuesIsWrapper && [byInstance isPrimitiveParameterFor:instanceOrClass])
+            {
                 [self setPrimitiveArgumentForInvocation:invocation index:parameter.index + 2 fromValue:value];
-            } else {
+            }
+            else
+            {
                 [invocation setArgument:&value atIndex:parameter.index + 2];
             }
         }
@@ -382,7 +396,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     return value;
 }
 
-- (void)setPrimitiveArgumentForInvocation:(NSInvocation *)invocation index:(NSUInteger)index fromValue:(id)value
+- (void)setPrimitiveArgumentForInvocation:(NSInvocation*)invocation index:(NSUInteger)index fromValue:(id)value
 {
     TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
     [converter setPrimitiveArgumentFor:invocation index:index fromValue:value];

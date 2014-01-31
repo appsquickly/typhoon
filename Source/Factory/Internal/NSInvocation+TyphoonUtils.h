@@ -12,7 +12,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSInvocation (TyphoonInvocation)
+@interface NSInvocation (TyphoonUtils)
 
 - (id) resultOfInvokingOnInstance:(id)instance NS_RETURNS_RETAINED;
 

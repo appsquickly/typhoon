@@ -15,7 +15,15 @@ Pod::Spec.new do |spec|
   spec.osx.exclude_files = "Source/ios"
   spec.libraries = 'z', 'xml2'
   spec.xcconfig = {'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2'}
+
+  non_arc_files = 'Source/Factory/Internal/NSInvocation+TyphoonUtils.m'
   spec.requires_arc = true
+  spec.exclude=non_arc_files
+  spec.subspec 'no-arc' do |sna|
+    sna.requires_arc = false
+    sna.source_files = non_arc_files
+  end
+
 
   spec.documentation_url = 'http://www.typhoonframework.org/docs/latest/api/'
 end 
