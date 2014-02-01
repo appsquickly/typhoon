@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonAssistedFactoryMethodClosure.h"
+#import "TyphoonAssistedFactoryMethodInitializerClosure.h"
 
 #include <objc/message.h>
 
@@ -22,13 +22,15 @@
 #import "TyphoonAssistedFactoryParameterInjectedWithProperty.h"
 
 
-@implementation TyphoonAssistedFactoryMethodClosure
+@implementation TyphoonAssistedFactoryMethodInitializerClosure
 {
     Class _returnType;
     SEL _initSelector;
     NSArray *_parameters;
     NSMethodSignature *_closedMethodSignature;
 }
+
+@synthesize methodSignature = _methodSignature;
 
 - (instancetype)initWithInitializer:(TyphoonAssistedFactoryMethodInitializer *)initializer methodSignature:(NSMethodSignature *)methodSignature
 {

@@ -20,7 +20,7 @@ static const void *sFactoryMethodClosures = &sFactoryMethodClosures;
 
 @implementation TyphoonAssistedFactoryBase (TyphoonFactoryMethodClosure)
 
-+ (void)_fmc_setClosure:(TyphoonAssistedFactoryMethodClosure *)closure forSelector:(SEL)selector
++ (void)_fmc_setClosure:(id<TyphoonAssistedFactoryMethodClosure>)closure forSelector:(SEL)selector
 {
     NSMutableDictionary *closures = [self _fmc_closures];
     @synchronized(closures)
@@ -29,7 +29,7 @@ static const void *sFactoryMethodClosures = &sFactoryMethodClosures;
     }
 }
 
-+ (TyphoonAssistedFactoryMethodClosure *)_fmc_closureForSelector:(SEL)selector
++ (id<TyphoonAssistedFactoryMethodClosure>)_fmc_closureForSelector:(SEL)selector
 {
     NSMutableDictionary *closures = [self _fmc_closures];
     @synchronized(closures)
@@ -65,7 +65,7 @@ static const void *sFactoryMethodClosures = &sFactoryMethodClosures;
     NSMethodSignature *signature = [super methodSignatureForSelector:aSelector];
     if (!signature)
     {
-        TyphoonAssistedFactoryMethodClosure *closure = [[self class] _fmc_closureForSelector:aSelector];
+        id<TyphoonAssistedFactoryMethodClosure> closure = [[self class] _fmc_closureForSelector:aSelector];
         signature = closure.methodSignature;
     }
 
@@ -76,7 +76,7 @@ static const void *sFactoryMethodClosures = &sFactoryMethodClosures;
 {
     // Find the factory method closure related to this invocation selector, and
     // create a new invocation from it, using the arguments of this invocation.
-    TyphoonAssistedFactoryMethodClosure *closure = [[self class] _fmc_closureForSelector:anInvocation.selector];
+    id<TyphoonAssistedFactoryMethodClosure> closure = [[self class] _fmc_closureForSelector:anInvocation.selector];
     NSInvocation *closureInvocation = [closure invocationWithFactory:self forwardedInvocation:anInvocation];
     [closureInvocation invoke];
 

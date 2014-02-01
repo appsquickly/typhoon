@@ -18,6 +18,8 @@
 #import "PaymentFactory.h"
 #import "PaymentFactoryAssembly.h"
 #import "PaymentImpl.h"
+#import "PizzaFactory.h"
+#import "PizzaImpl.h"
 
 @interface TyphoonFactoryProviderIntegrationTest : SenTestCase
 @end
@@ -59,13 +61,22 @@
     assertThat(cf, is(equalTo(componentFactory)));
 }
 
-- (void)test_assisted_factory_injects_component_factory_in_object_instances
+- (void)test_assisted_initializer_factory_injects_component_factory_in_object_instances
 {
     id<PaymentFactory> factory = [assembly paymentFactory];
 
     PaymentImpl* payment = [factory paymentWithStartDate:[NSDate date] amount:456];
 
     assertThat(payment.factory, is(equalTo(componentFactory)));
+}
+
+- (void)test_assisted_block_factory_injects_component_factory_in_object_instances
+{
+    id<PizzaFactory> factory = [assembly pizzaFactory];
+
+    PizzaImpl* pizza = [factory largePizzaWithIngredients:@[@"bacon", @"cheese"]];
+
+    assertThat(pizza.factory, is(equalTo(componentFactory)));
 }
 
 @end

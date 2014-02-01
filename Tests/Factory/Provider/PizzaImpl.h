@@ -10,10 +10,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
+
 #import "CreditService.h"
 #import "Pizza.h"
 
 @interface PizzaImpl : NSObject <Pizza>
+
+@property (nonatomic, strong) id factory;
 
 - (instancetype)initWithCreditService:(id<CreditService>)creditService
                                radius:(double)radius

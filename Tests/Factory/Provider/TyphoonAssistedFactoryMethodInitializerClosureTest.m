@@ -10,14 +10,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "TyphoonAssistedFactoryMethodClosure.h"
+#import "TyphoonAssistedFactoryMethodInitializerClosure.h"
 #import "TyphoonAssistedFactoryMethodInitializer.h"
 
 #include <objc/runtime.h>
 #include <objc/message.h>
 
 
-@protocol TyphoonAssistedFactoryMethodClosureTestProtocol <NSObject>
+@protocol TyphoonAssistedFactoryMethodInitializerClosureTestProtocol <NSObject>
 
 - (NSString *)stringWithString:(NSString *)string;
 
@@ -29,14 +29,14 @@
 
 @end
 
-@interface TyphoonAssistedFactoryMethodClosureTest : SenTestCase
+@interface TyphoonAssistedFactoryMethodInitializerClosureTest : SenTestCase
 
 @property (nonatomic, copy) NSString *stringProperty;
 @property (nonatomic, copy) NSData *dataProperty;
 
 @end
 
-@implementation TyphoonAssistedFactoryMethodClosureTest
+@implementation TyphoonAssistedFactoryMethodInitializerClosureTest
 
 - (void)test_closure_should_invoke_initializer_from_one_parameter
 {
@@ -46,11 +46,11 @@
     initializer.selector = @selector(initWithString:);
     [initializer injectParameterAtIndex:0 withArgumentAtIndex:0];
 
-    struct objc_method_description methodDescription = protocol_getMethodDescription(@protocol(TyphoonAssistedFactoryMethodClosureTestProtocol),
+    struct objc_method_description methodDescription = protocol_getMethodDescription(@protocol(TyphoonAssistedFactoryMethodInitializerClosureTestProtocol),
                                                                                      @selector(stringWithString:),
                                                                                      YES, YES);
     NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
-    TyphoonAssistedFactoryMethodClosure *closure = [[TyphoonAssistedFactoryMethodClosure alloc]
+    TyphoonAssistedFactoryMethodInitializerClosure *closure = [[TyphoonAssistedFactoryMethodInitializerClosure alloc]
                                                     initWithInitializer:initializer
                                                     methodSignature:methodSignature];
 
@@ -75,11 +75,11 @@
     [initializer injectParameterAtIndex:0 withArgumentAtIndex:1];
     [initializer injectParameterAtIndex:1 withArgumentAtIndex:0];
 
-    struct objc_method_description methodDescription = protocol_getMethodDescription(@protocol(TyphoonAssistedFactoryMethodClosureTestProtocol),
+    struct objc_method_description methodDescription = protocol_getMethodDescription(@protocol(TyphoonAssistedFactoryMethodInitializerClosureTestProtocol),
                                                                                      @selector(stringWithEncoding:data:),
                                                                                      YES, YES);
     NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
-    TyphoonAssistedFactoryMethodClosure *closure = [[TyphoonAssistedFactoryMethodClosure alloc]
+    TyphoonAssistedFactoryMethodInitializerClosure *closure = [[TyphoonAssistedFactoryMethodInitializerClosure alloc]
                                                     initWithInitializer:initializer
                                                     methodSignature:methodSignature];
 
@@ -106,11 +106,11 @@
     initializer.selector = @selector(initWithString:);
     [initializer injectParameterAtIndex:0 withProperty:@selector(stringProperty)];
 
-    struct objc_method_description methodDescription = protocol_getMethodDescription(@protocol(TyphoonAssistedFactoryMethodClosureTestProtocol),
+    struct objc_method_description methodDescription = protocol_getMethodDescription(@protocol(TyphoonAssistedFactoryMethodInitializerClosureTestProtocol),
                                                                                      @selector(stringFromProperty),
                                                                                      YES, YES);
     NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
-    TyphoonAssistedFactoryMethodClosure *closure = [[TyphoonAssistedFactoryMethodClosure alloc]
+    TyphoonAssistedFactoryMethodInitializerClosure *closure = [[TyphoonAssistedFactoryMethodInitializerClosure alloc]
                                                     initWithInitializer:initializer
                                                     methodSignature:methodSignature];
 
@@ -135,11 +135,11 @@
     [initializer injectParameterAtIndex:0 withProperty:@selector(dataProperty)];
     [initializer injectParameterAtIndex:1 withArgumentAtIndex:0];
 
-    struct objc_method_description methodDescription = protocol_getMethodDescription(@protocol(TyphoonAssistedFactoryMethodClosureTestProtocol),
+    struct objc_method_description methodDescription = protocol_getMethodDescription(@protocol(TyphoonAssistedFactoryMethodInitializerClosureTestProtocol),
                                                                                      @selector(stringWithEncoding:),
                                                                                      YES, YES);
     NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
-    TyphoonAssistedFactoryMethodClosure *closure = [[TyphoonAssistedFactoryMethodClosure alloc]
+    TyphoonAssistedFactoryMethodInitializerClosure *closure = [[TyphoonAssistedFactoryMethodInitializerClosure alloc]
                                                     initWithInitializer:initializer
                                                     methodSignature:methodSignature];
 
@@ -167,13 +167,13 @@
     [initializer injectParameterAtIndex:0 withProperty:@selector(dataProperty)];
     // Second parameter is missing
 
-    struct objc_method_description methodDescription = protocol_getMethodDescription(@protocol(TyphoonAssistedFactoryMethodClosureTestProtocol),
+    struct objc_method_description methodDescription = protocol_getMethodDescription(@protocol(TyphoonAssistedFactoryMethodInitializerClosureTestProtocol),
                                                                                      @selector(stringWithEncoding:),
                                                                                      YES, YES);
     NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
 
     @try {
-        TyphoonAssistedFactoryMethodClosure *closure = [[TyphoonAssistedFactoryMethodClosure alloc]
+        TyphoonAssistedFactoryMethodInitializerClosure *closure = [[TyphoonAssistedFactoryMethodInitializerClosure alloc]
                                                         initWithInitializer:initializer
                                                         methodSignature:methodSignature];
         STFail(@"[TyphoonAssistedFactoryMethodClosure initWithInitializer:methodDescription:] should have failed");

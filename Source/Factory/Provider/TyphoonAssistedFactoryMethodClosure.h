@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  TYPHOON FRAMEWORK
-//  Copyright 2013, Jasper Blues & Contributors
+//  Copyright 2014, Jasper Blues & Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -11,34 +11,17 @@
 
 #import <Foundation/Foundation.h>
 
-#include <objc/runtime.h>
+@protocol TyphoonAssistedFactoryMethodClosure <NSObject>
 
-
-@class TyphoonAssistedFactoryMethodInitializer;
-
-/**
- * A closure of a factory method. Internally this object stores a description of
- * both the factory method and the init method. Each time you invoke the
- * factory method (through forwardInvocation) the mapping described in the method
- * initializer will be performed, and the call will be forwarded.
- *
- * Users should not use this class directly.
- */
-@interface TyphoonAssistedFactoryMethodClosure : NSObject
-
-@property (nonatomic, retain, readonly) NSMethodSignature *methodSignature;
+@property (nonatomic, strong, readonly) NSMethodSignature *methodSignature;
 
 /**
- * Creates a new closure from the description of the initializer, for the
- * factory method described by methodSignature.
- */
-- (instancetype)initWithInitializer:(TyphoonAssistedFactoryMethodInitializer *)initializer methodSignature:(NSMethodSignature *)methodSignature;
-
-/**
- * Returns an invocation filled with the right target instance, the right init
- * selector and the arguments according to the initializer parameters, using
- * factory to find the property values, and forwardedInvocation to find the
- * arguments to the factory method.
+ * Returns an invocation filled with the right target instance, the right
+ * selector and the arguments according to the specifics of one of the types
+ * following this protocol. For blocks, this method will simply copy the
+ * forwardedInvocation arguments into the new invocation, for initializers, the
+ * type will take the initializer parameters, using factory to find the property
+ * values, and forwardedInvocation to find the arguments to the factory method.
  */
 - (NSInvocation *)invocationWithFactory:(id)factory forwardedInvocation:(NSInvocation *)anInvocation;
 

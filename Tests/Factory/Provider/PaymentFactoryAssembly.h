@@ -20,4 +20,6 @@
 
 - (id)paymentFactory;
 
+- (id)pizzaFactory;
+
 @end

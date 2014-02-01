@@ -11,7 +11,9 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Pizza <NSObject>
+#import "Typhoon.h"
+
+@protocol Pizza <TyphoonComponentFactoryAware, NSObject>
 
 @property (nonatomic, strong, readonly) id<CreditService> creditService;
 @property (nonatomic, assign, readonly) double radius;

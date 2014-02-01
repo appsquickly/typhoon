@@ -11,7 +11,7 @@
 
 #import "TyphoonAssistedFactoryBase.h"
 
-@class TyphoonAssistedFactoryMethodClosure;
+@protocol TyphoonAssistedFactoryMethodClosure;
 
 /**
  * Complements TyphoonAssistedFactoryBase to allow methods defined by closures.
@@ -28,11 +28,11 @@
 /**
  * Sets the given closure for the given selector.
  */
-+ (void)_fmc_setClosure:(TyphoonAssistedFactoryMethodClosure *)closure forSelector:(SEL)selector;
++ (void)_fmc_setClosure:(id<TyphoonAssistedFactoryMethodClosure>)closure forSelector:(SEL)selector;
 
 /**
  * Returns the closure associated with the given selector.
  */
-+ (TyphoonAssistedFactoryMethodClosure *)_fmc_closureForSelector:(SEL)selector;
++ (id<TyphoonAssistedFactoryMethodClosure>)_fmc_closureForSelector:(SEL)selector;
 
 @end
