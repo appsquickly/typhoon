@@ -16,5 +16,6 @@
 
 - (id) resultOfInvokingOnInstance:(id)instance NS_RETURNS_RETAINED;
 
+- (id) resultOfInvokingOnAllocationForClass:(Class)aClass NS_RETURNS_RETAINED;
 
 @end

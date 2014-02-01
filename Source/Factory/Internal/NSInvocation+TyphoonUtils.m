@@ -18,13 +18,13 @@
 
 @implementation NSInvocation (TyphoonUtils)
 
-- (id)resultOfInvokingOnInstance:(id)instance
+- (id)resultOfInvokingOn:(id)instanceOrClass
 {
     id returnValue = nil;
 
     @autoreleasepool
     {
-        [self invokeWithTarget:instance];
+        [self invokeWithTarget:instanceOrClass];
 
         [self getReturnValue:&returnValue];
         [returnValue retain];
@@ -33,7 +33,18 @@
     return returnValue;
 }
 
+- (id)resultOfInvokingOnInstance:(id)instance
+{
+    return [self resultOfInvokingOn:instance];
+}
 
+- (id)resultOfInvokingOnAllocationForClass:(Class)aClass
+{
+    id allocatedSpace = [aClass alloc];
+    id instance = [self resultOfInvokingOn:allocatedSpace];
+    [instance release];
+    return instance;
+}
 
 
 @end
