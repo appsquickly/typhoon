@@ -102,7 +102,8 @@ format:@"The object for key %@ is currently initializing, but was specified as i
     }
     else
     {
-        instance = [invocation resultOfInvokingOnInstance:definition.type];
+
+        instance = [invocation resultOfInvokingOnInstance:initTarget];
     }
 
     return instance;
