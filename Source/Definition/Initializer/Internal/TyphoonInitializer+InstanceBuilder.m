@@ -12,6 +12,7 @@
 
 
 #import "TyphoonLinkerCategoryBugFix.h"
+
 TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
 #import "TyphoonInitializer+InstanceBuilder.h"
@@ -35,25 +36,26 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
 }
 
-- (NSInvocation*)asInvocationFor:(id)classOrInstance
+- (NSInvocation*)newInvocation
 {
-    if (![classOrInstance respondsToSelector:_selector])
+    Class clazz = [_definition type];
+
+    if ([clazz respondsToSelector:_selector] == NO && [clazz instancesRespondToSelector:_selector] == NO)
     {
         NSString* typeType = self.isClassMethod ? @"Class" : @"Instance";
-        NSString* typeName = self.isClassMethod ? NSStringFromClass(classOrInstance) : NSStringFromClass([classOrInstance class]);
         [NSException raise:NSInvalidArgumentException
-                format:@"%@ method '%@' not found on '%@'. Did you include the required ':' characters to signify arguments?", typeType,
-                       NSStringFromSelector(_selector), typeName];
+            format:@"%@ method '%@' not found on '%@'. Did you include the required ':' characters to signify arguments?", typeType,
+                   NSStringFromSelector(_selector), NSStringFromClass(clazz)];
     }
 
     NSInvocation* invocation;
     if (self.isClassMethod)
     {
-        invocation = [NSInvocation invocationWithMethodSignature:[classOrInstance methodSignatureForSelector:_selector]];
+        invocation = [NSInvocation invocationWithMethodSignature:[clazz methodSignatureForSelector:_selector]];
     }
     else
     {
-        invocation = [NSInvocation invocationWithMethodSignature:[[classOrInstance class] instanceMethodSignatureForSelector:_selector]];
+        invocation = [NSInvocation invocationWithMethodSignature:[clazz instanceMethodSignatureForSelector:_selector]];
     }
     [invocation setSelector:_selector];
     return invocation;
@@ -81,7 +83,8 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     {
         if (_isClassMethodStrategy == TyphoonComponentInitializerIsClassMethodYes)
         {
-            [NSException raise:NSInvalidArgumentException format:@"'is-class-method' can't be 'TyphoonComponentInitializerIsClassMethodYes' when factory-component is used!"];
+            [NSException raise:NSInvalidArgumentException
+                format:@"'is-class-method' can't be 'TyphoonComponentInitializerIsClassMethodYes' when factory-component is used!"];
         }
         else
         {

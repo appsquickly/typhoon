@@ -337,7 +337,7 @@ format:@"The object for key %@ is currently initializing, but was specified as i
 
 - (NSInvocation*)invocationToInit:(id)instanceOrClass withInitializer:(TyphoonInitializer*)initializer
 {
-    NSInvocation* invocation = [initializer asInvocationFor:instanceOrClass];
+    NSInvocation* invocation = [initializer newInvocation];
 
     NSArray* injectedParameters = [initializer injectedParameters];
     for (id <TyphoonInjectedParameter> parameter in injectedParameters)

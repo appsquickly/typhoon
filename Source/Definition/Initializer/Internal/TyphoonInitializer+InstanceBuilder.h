@@ -19,7 +19,7 @@
 
 - (NSArray*)parametersInjectedByValue;
 
-- (NSInvocation*)asInvocationFor:(id)classOrInstance;
+- (NSInvocation*)newInvocation;
 
 - (void)setComponentDefinition:(TyphoonDefinition*)definition;
 
