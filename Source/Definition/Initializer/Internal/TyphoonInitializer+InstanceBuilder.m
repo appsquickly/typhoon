@@ -114,6 +114,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     return ![NSStringFromSelector(_selector) hasPrefix:@"init"];
 }
 
+//FIXME: replace parameter.type == with polymorphism
 - (void)configureInvocation:(NSInvocation*)invocation withFactory:(TyphoonComponentFactory*)factory
 {
     NSArray* injectedParameters = [self injectedParameters];
@@ -122,9 +123,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
         if (parameter.type == TyphoonParameterInjectionTypeReference)
         {
             TyphoonParameterInjectedByReference* byReference = (TyphoonParameterInjectedByReference*) parameter;
-
-            [[factory stack] peekForKey:byReference.reference]; //Raises circular dependencies exception if already initing.
-
+            [[factory stack] peekForKey:byReference.reference]; //Raises circular dependencies exception if already initializing.
             id reference = [factory componentForKey:byReference.reference];
             [invocation setArgument:&reference atIndex:parameter.index + 2];
         }

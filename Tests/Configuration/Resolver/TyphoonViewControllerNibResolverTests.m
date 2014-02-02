@@ -49,14 +49,14 @@
 - (void)test_skips_view_controller_with_initializer
 {
     TyphoonDefinition *definition = [TyphoonDefinition withClass:[UIViewController class]];
-    TyphoonInitializer *initializer = [[TyphoonInitializer alloc] init];
+    TyphoonInitializer *initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithFoobar:)];
     definition.initializer = initializer;
     
     TyphoonComponentFactory *factory = mock([TyphoonComponentFactory class]);
     [given([factory registry]) willReturn:@[definition]];
     
     [_nibResolver postProcessComponentFactory:factory];
-    assertThat(NSStringFromSelector(initializer.selector), equalTo(NSStringFromSelector(@selector(init))));
+    assertThat(NSStringFromSelector(initializer.selector), equalTo(NSStringFromSelector(@selector(initWithFoobar:))));
     assertThat(definition.initializer, equalTo(initializer));
 }
 
