@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonLinkerCategoryBugFix.h"
+
 TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 
 #import "TyphoonDefinition+InstanceBuilder.h"
@@ -25,6 +26,12 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
+
+- (void)setType:(Class)type
+{
+    _type = type;
+}
+
 
 - (NSString*)factoryReference
 {
@@ -47,10 +54,10 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 }
 
 
-- (void)injectProperty:(SEL)selector withReference:(NSString *)reference
+- (void)injectProperty:(SEL)selector withReference:(NSString*)reference
 {
     [_injectedProperties addObject:[[TyphoonPropertyInjectedByReference alloc]
-            initWithName:NSStringFromSelector(selector) reference:reference]];
+        initWithName:NSStringFromSelector(selector) reference:reference]];
 }
 
 - (NSSet*)propertiesInjectedByValue

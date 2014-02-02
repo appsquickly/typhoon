@@ -41,6 +41,6 @@
 * - requiredType is set
 * - The parameter is an object type. (If the parameter is an object type, classOrProtocol must be set explicitly).
 */
-- (TyphoonTypeDescriptor*)resolveTypeWith:(id)classOrInstance;
+- (TyphoonTypeDescriptor*)resolveType;
 
 @end

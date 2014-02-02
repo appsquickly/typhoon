@@ -15,6 +15,8 @@
 #import "TyphoonInitializer.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonIntrospectionUtils.h"
+#import "TyphoonInitializer+InstanceBuilder.h"
+#import "TyphoonDefinition.h"
 
 
 @implementation TyphoonParameterInjectedWithStringRepresentation
@@ -40,7 +42,7 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (TyphoonTypeDescriptor*)resolveTypeWith:(id)classOrInstance
+- (TyphoonTypeDescriptor*)resolveType
 {
     if (_requiredType)
     {
@@ -48,22 +50,15 @@
     }
     else
     {
-        BOOL isClass = class_isMetaClass(object_getClass(classOrInstance));
-        Class clazz;
-        if (isClass)
-        {
-            clazz = classOrInstance;
-        }
-        else
-        {
-            clazz = [classOrInstance class];
-        }
+        BOOL isClass = [_initializer isClassMethod];
+        Class clazz = [_initializer.definition type];
         NSArray* typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:_initializer.selector ofClass:clazz isClassMethod:isClass];
 
         if ([[typeCodes objectAtIndex:_index] isEqualToString:@"@"])
         {
             [NSException raise:NSInvalidArgumentException
-                    format:@"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"];
+                format:@"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. "
+                    "Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"];
         }
         return [TyphoonTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:_index]];
     }

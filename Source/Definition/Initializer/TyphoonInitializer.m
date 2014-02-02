@@ -60,6 +60,11 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
+- (TyphoonDefinition*)definition
+{
+    return _definition;
+}
+
 - (NSArray*)injectedParameters
 {
     return [_injectedParameters copy];

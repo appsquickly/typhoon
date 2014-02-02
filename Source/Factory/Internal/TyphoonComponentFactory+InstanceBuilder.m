@@ -81,9 +81,8 @@ format:@"The object for key %@ is currently initializing, but was specified as i
 
     if (definition.factoryReference)
     {
-        // misleading - this is not the instance. this is an instance of a separate class that will create the instance of the class we care
-        // about.
-        initTarget = [self componentForKey:definition.factoryReference]; // clears currently resolving.
+        initTarget = [self componentForKey:definition.factoryReference];
+        [definition setType:[initTarget class]];
     }
     else if (definition.initializer.isClassMethod)
     {
@@ -200,7 +199,7 @@ format:@"The object for key %@ is currently initializing, but was specified as i
 {
     if ([instance respondsToSelector:@selector(beforePropertiesSet)])
     {
-        [(id <TyphoonPropertyInjectionDelegate>)instance beforePropertiesSet];
+        [(id <TyphoonPropertyInjectionDelegate>) instance beforePropertiesSet];
     }
 
     if ([instance respondsToSelector:definition.beforePropertyInjection])
@@ -214,24 +213,25 @@ format:@"The object for key %@ is currently initializing, but was specified as i
     TyphoonTypeDescriptor* propertyType = [instance typeForPropertyWithName:property.name];
     AssertTypeDescriptionForPropertyOnInstance(propertyType, property, instance);
 
-    TyphoonPropertyInjectionLazyValue lazyValue = ^id {
+    TyphoonPropertyInjectionLazyValue lazyValue = ^id
+    {
         return [self valueToInjectProperty:property withType:propertyType onInstance:instance];
     };
 
     if (![instance respondsToSelector:@selector(shouldInjectProperty:withType:lazyValue:)] ||
-        [(id <TyphoonPropertyInjectionInternalDelegate>)instance
-         shouldInjectProperty:property withType:propertyType lazyValue:lazyValue])
+        [(id <TyphoonPropertyInjectionInternalDelegate>) instance shouldInjectProperty:property withType:propertyType lazyValue:lazyValue])
     {
         id valueToInject = lazyValue();
 
         if (valueToInject)
         {
-            [(NSObject*)instance injectValue:valueToInject forPropertyName:property.name withType:propertyType];
+            [(NSObject*) instance injectValue:valueToInject forPropertyName:property.name withType:propertyType];
         }
     }
 }
 
-- (id)valueToInjectProperty:(TyphoonAbstractInjectedProperty*)property withType:(TyphoonTypeDescriptor*)type onInstance:(id <TyphoonIntrospectiveNSObject>)instance
+- (id)valueToInjectProperty:(TyphoonAbstractInjectedProperty*)property withType:(TyphoonTypeDescriptor*)type
+    onInstance:(id <TyphoonIntrospectiveNSObject>)instance
 {
     id valueToInject = nil;
 
@@ -247,7 +247,7 @@ format:@"The object for key %@ is currently initializing, but was specified as i
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeByReference)
     {
-        TyphoonPropertyInjectedByReference* byReference = (TyphoonPropertyInjectedByReference*)property;
+        TyphoonPropertyInjectedByReference* byReference = (TyphoonPropertyInjectedByReference*) property;
         [self evaluateCircularDependency:byReference.reference propertyName:property.name instance:instance];
 
         if (![self propertyIsCircular:property onInstance:instance])
@@ -257,7 +257,7 @@ format:@"The object for key %@ is currently initializing, but was specified as i
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeByFactoryReference)
     {
-        TyphoonPropertyInjectedByFactoryReference* byReference = (TyphoonPropertyInjectedByFactoryReference*)property;
+        TyphoonPropertyInjectedByFactoryReference* byReference = (TyphoonPropertyInjectedByFactoryReference*) property;
         [self evaluateCircularDependency:byReference.reference propertyName:property.name instance:instance];
 
         if (![self propertyIsCircular:property onInstance:instance])
@@ -268,15 +268,15 @@ format:@"The object for key %@ is currently initializing, but was specified as i
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeAsCollection)
     {
-        valueToInject = [self buildCollectionFor:(TyphoonPropertyInjectedAsCollection*)property instance:instance];
+        valueToInject = [self buildCollectionFor:(TyphoonPropertyInjectedAsCollection*) property instance:instance];
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeAsObjectInstance)
     {
-        valueToInject = ((TyphoonPropertyInjectedAsObjectInstance*)property).objectInstance;
+        valueToInject = ((TyphoonPropertyInjectedAsObjectInstance*) property).objectInstance;
     }
     else if (property.injectionType == TyphoonPropertyInjectionTypeAsStringRepresentation)
     {
-        TyphoonPropertyInjectedWithStringRepresentation* valueProperty = (TyphoonPropertyInjectedWithStringRepresentation*)property;
+        TyphoonPropertyInjectedWithStringRepresentation* valueProperty = (TyphoonPropertyInjectedWithStringRepresentation*) property;
         valueToInject = [self valueFromTextValue:valueProperty.textValue requiredType:type];
     }
 
@@ -284,7 +284,7 @@ format:@"The object for key %@ is currently initializing, but was specified as i
 }
 
 - (void)evaluateCircularDependency:(NSString*)componentKey propertyName:(NSString*)propertyName
-        instance:(id <TyphoonIntrospectiveNSObject>)instance;
+    instance:(id <TyphoonIntrospectiveNSObject>)instance;
 {
     if ([self alreadyResolvingKey:componentKey])
     {
@@ -304,13 +304,13 @@ format:@"The object for key %@ is currently initializing, but was specified as i
     NSMutableDictionary* circularDependentProperties = [instance circularDependentProperties];
     for (NSString* propertyName in [circularDependentProperties allKeys])
     {
-        id propertyValue = [(NSObject*)instance valueForKey:propertyName];
+        id propertyValue = [(NSObject*) instance valueForKey:propertyName];
         if (!propertyValue)
         {
             NSString* componentKey = [circularDependentProperties objectForKey:propertyName];
             [[_stack peekForKey:componentKey] addInstanceCompleteBlock:^(id reference)
             {
-                [(NSObject*)instance setValue:reference forKey:propertyName];
+                [(NSObject*) instance setValue:reference forKey:propertyName];
             }];
 
         }
@@ -321,7 +321,7 @@ format:@"The object for key %@ is currently initializing, but was specified as i
 {
     if ([instance respondsToSelector:@selector(afterPropertiesSet)])
     {
-        [(id <TyphoonPropertyInjectionDelegate>)instance afterPropertiesSet];
+        [(id <TyphoonPropertyInjectionDelegate>) instance afterPropertiesSet];
     }
 
     if ([instance respondsToSelector:definition.afterPropertyInjection])
@@ -344,7 +344,7 @@ format:@"The object for key %@ is currently initializing, but was specified as i
     {
         if (parameter.type == TyphoonParameterInjectionTypeReference)
         {
-            TyphoonParameterInjectedByReference* byReference = (TyphoonParameterInjectedByReference*)parameter;
+            TyphoonParameterInjectedByReference* byReference = (TyphoonParameterInjectedByReference*) parameter;
 
             if ([[_stack peekForKey:byReference.reference] isInitializingInstance])
             {
@@ -356,13 +356,12 @@ format:@"The object for key %@ is currently initializing, but was specified as i
         }
         else if (parameter.type == TyphoonParameterInjectionTypeStringRepresentation)
         {
-            TyphoonParameterInjectedWithStringRepresentation* byValue = (TyphoonParameterInjectedWithStringRepresentation*)parameter;
-            [self setArgumentFor:invocation index:byValue.index + 2 textValue:byValue.textValue
-                    requiredType:[byValue resolveTypeWith:instanceOrClass]];
+            TyphoonParameterInjectedWithStringRepresentation* byString = (TyphoonParameterInjectedWithStringRepresentation*) parameter;
+            [self setArgumentFor:invocation index:byString.index + 2 textValue:byString.textValue requiredType:[byString resolveType]];
         }
         else if (parameter.type == TyphoonParameterInjectionTypeObjectInstance)
         {
-            TyphoonParameterInjectedWithObjectInstance* byInstance = (TyphoonParameterInjectedWithObjectInstance*)parameter;
+            TyphoonParameterInjectedWithObjectInstance* byInstance = (TyphoonParameterInjectedWithObjectInstance*) parameter;
             id value = byInstance.value;
             BOOL isValuesIsWrapper = [value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSValue class]];
 
@@ -377,7 +376,7 @@ format:@"The object for key %@ is currently initializing, but was specified as i
         }
         else if (parameter.type == TyphoonParameterInjectionTypeAsCollection)
         {
-            TyphoonParameterInjectedAsCollection* asCollection = (TyphoonParameterInjectedAsCollection*)parameter;
+            TyphoonParameterInjectedAsCollection* asCollection = (TyphoonParameterInjectedAsCollection*) parameter;
             id collection = [self buildCollectionWithValues:asCollection.values requiredType:asCollection.collectionType];
             [invocation setArgument:&collection atIndex:parameter.index + 2];
         }
@@ -414,7 +413,7 @@ format:@"The object for key %@ is currently initializing, but was specified as i
 }
 
 - (void)setArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index1 textValue:(NSString*)textValue
-        requiredType:(TyphoonTypeDescriptor*)requiredType
+    requiredType:(TyphoonTypeDescriptor*)requiredType
 {
     if (requiredType.isPrimitive)
     {
@@ -430,7 +429,7 @@ format:@"The object for key %@ is currently initializing, but was specified as i
 }
 
 - (id)buildCollectionFor:(TyphoonPropertyInjectedAsCollection*)propertyInjectedAsCollection
-        instance:(id <TyphoonIntrospectiveNSObject>)instance
+    instance:(id <TyphoonIntrospectiveNSObject>)instance
 {
     TyphoonCollectionType type = [propertyInjectedAsCollection resolveCollectionTypeWith:instance];
     return [self buildCollectionWithValues:[propertyInjectedAsCollection values] requiredType:type];
@@ -444,13 +443,13 @@ format:@"The object for key %@ is currently initializing, but was specified as i
     {
         if (value.type == TyphoonCollectionValueTypeByReference)
         {
-            TyphoonByReferenceCollectionValue* byReferenceValue = (TyphoonByReferenceCollectionValue*)value;
+            TyphoonByReferenceCollectionValue* byReferenceValue = (TyphoonByReferenceCollectionValue*) value;
             id reference = [self componentForKey:byReferenceValue.componentName];
             [collection addObject:reference];
         }
         else if (value.type == TyphoonCollectionValueTypeConvertedText)
         {
-            TyphoonTypeConvertedCollectionValue* typeConvertedValue = (TyphoonTypeConvertedCollectionValue*)value;
+            TyphoonTypeConvertedCollectionValue* typeConvertedValue = (TyphoonTypeConvertedCollectionValue*) value;
             TyphoonTypeDescriptor* descriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:typeConvertedValue.requiredType];
             id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
             id converted = [converter convert:typeConvertedValue.textValue];

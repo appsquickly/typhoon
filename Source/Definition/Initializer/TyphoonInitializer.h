@@ -62,6 +62,8 @@ typedef enum
 
 - (id)initWithSelector:(SEL)initializer isClassMethodStrategy:(TyphoonComponentInitializerIsClassMethod)isClassMethod;
 
+- (TyphoonDefinition*)definition;
+
 - (NSArray*)injectedParameters;
 
 /* ====================================================================================================================================== */
