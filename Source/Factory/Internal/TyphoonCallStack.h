@@ -25,6 +25,8 @@
 
 - (TyphoonStackElement*)peekForKey:(NSString*)key;
 
+- (BOOL)isResolvingKey:(NSString*)key;
+
 - (BOOL)isEmpty;
 
 @end

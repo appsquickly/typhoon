@@ -80,6 +80,11 @@
     return nil;
 }
 
+- (BOOL)isResolvingKey:(NSString*)key
+{
+    return [self peekForKey:key] != nil;
+}
+
 
 - (BOOL)isEmpty
 {

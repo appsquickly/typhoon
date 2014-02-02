@@ -12,13 +12,12 @@
 
 
 #import "TyphoonLinkerCategoryBugFix.h"
-
-TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
-
 #import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonParameterInjectedWithStringRepresentation.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
+
+TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
 
 @implementation TyphoonInitializer (InstanceBuilder)
@@ -109,5 +108,6 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 {
     return ![NSStringFromSelector(_selector) hasPrefix:@"init"];
 }
+
 
 @end

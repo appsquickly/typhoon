@@ -21,6 +21,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonParameterInjectedByReference.h"
 #import "TyphoonInitializer.h"
 #import "TyphoonPropertyInjectedByReference.h"
+#import "TyphoonCallStack.h"
 #import "TyphoonPropertyInjectedByFactoryReference.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonTypeConverterRegistry.h"
@@ -53,10 +54,13 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 #define RaiseInitCircualrException(definitionKey) [NSException raise:@"CircularInitializerDependence" \
 format:@"The object for key %@ is currently initializing, but was specified as init dependency in another object",definitionKey]
 
+
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
-/* ====================================================================================================================================== */
-#pragma mark - Initialization & Destruction
+- (TyphoonCallStack*)stack
+{
+    return _stack;
+}
 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
@@ -154,23 +158,16 @@ format:@"The object for key %@ is currently initializing, but was specified as i
 
 - (id)buildSharedInstanceForDefinition:(TyphoonDefinition*)definition
 {
-    if ([self alreadyResolvingKey:definition.key])
+    TyphoonStackElement* stackElement = [_stack peekForKey:definition.key];
+    if (stackElement)
     {
-        TyphoonStackElement* stackElement = [_stack peekForKey:definition.key];
         if ([stackElement isInitializingInstance])
         {
             RaiseInitCircualrException(definition.key);
         }
-
-        return [_stack peekForKey:definition.key].instance;
+        return stackElement.instance;
     }
     return [self buildInstanceWithDefinition:definition];
-}
-
-
-- (BOOL)alreadyResolvingKey:(NSString*)key
-{
-    return [_stack peekForKey:key] != nil;
 }
 
 /* ====================================================================================================================================== */
@@ -282,7 +279,7 @@ format:@"The object for key %@ is currently initializing, but was specified as i
 - (void)evaluateCircularDependency:(NSString*)componentKey propertyName:(NSString*)propertyName
     instance:(id <TyphoonIntrospectiveNSObject>)instance;
 {
-    if ([self alreadyResolvingKey:componentKey])
+    if ([_stack isResolvingKey:componentKey])
     {
         NSDictionary* circularDependencies = [instance circularDependentProperties];
         [circularDependencies setValue:componentKey forKey:propertyName];
