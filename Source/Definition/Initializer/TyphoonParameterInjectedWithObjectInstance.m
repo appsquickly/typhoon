@@ -12,6 +12,8 @@
 #import "TyphoonParameterInjectedWithObjectInstance.h"
 #import "TyphoonInitializer.h"
 #import "TyphoonIntrospectionUtils.h"
+#import "TyphoonInitializer+InstanceBuilder.h"
+#import "TyphoonDefinition.h"
 #import <objc/runtime.h>
 
 @implementation TyphoonParameterInjectedWithObjectInstance {
@@ -42,11 +44,10 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (BOOL) isPrimitiveParameterFor:(id)classOrInstance
+- (BOOL) isPrimitiveParameter
 {
-    BOOL isClass = class_isMetaClass(object_getClass(classOrInstance));
-    
-    Class class = isClass ? classOrInstance : [classOrInstance class];
+    BOOL isClass = [_initializer isClassMethod];
+    Class class = [_initializer.definition type];
     
     NSArray* typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:_initializer.selector ofClass:class isClassMethod:isClass];
     

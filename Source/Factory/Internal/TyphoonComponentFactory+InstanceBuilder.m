@@ -365,7 +365,7 @@ format:@"The object for key %@ is currently initializing, but was specified as i
             id value = byInstance.value;
             BOOL isValuesIsWrapper = [value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSValue class]];
 
-            if (isValuesIsWrapper && [byInstance isPrimitiveParameterFor:instanceOrClass])
+            if (isValuesIsWrapper && [byInstance isPrimitiveParameter])
             {
                 [self setPrimitiveArgumentForInvocation:invocation index:parameter.index + 2 fromValue:value];
             }
