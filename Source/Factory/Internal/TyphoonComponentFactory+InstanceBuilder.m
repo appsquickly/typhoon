@@ -51,7 +51,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type) [NSException raise:@"NSUnknownKeyException" \
 format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",property.name, [instance class]]
 
-#define RaiseInitCircualrException(definitionKey) [NSException raise:@"CircularInitializerDependence" \
+#define RaiseInitCircularException(definitionKey) [NSException raise:@"CircularInitializerDependence" \
 format:@"The object for key %@ is currently initializing, but was specified as init dependency in another object",definitionKey]
 
 
@@ -163,7 +163,7 @@ format:@"The object for key %@ is currently initializing, but was specified as i
     {
         if ([stackElement isInitializingInstance])
         {
-            RaiseInitCircualrException(definition.key);
+            RaiseInitCircularException(definition.key);
         }
         return stackElement.instance;
     }
@@ -341,7 +341,7 @@ format:@"The object for key %@ is currently initializing, but was specified as i
 
             if ([[_stack peekForKey:byReference.reference] isInitializingInstance])
             {
-                RaiseInitCircualrException(byReference.reference);
+                RaiseInitCircularException(byReference.reference);
             }
 
             id reference = [self componentForKey:byReference.reference];
