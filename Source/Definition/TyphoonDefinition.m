@@ -45,13 +45,13 @@
 }
 
 + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
-        properties:(TyphoonDefinitionBlock)properties
+    properties:(TyphoonDefinitionBlock)properties
 {
     return [TyphoonDefinition withClass:clazz key:nil initialization:initialization properties:properties];
 }
 
 + (TyphoonDefinition*)withClass:(Class)clazz key:(NSString*)key initialization:(TyphoonInitializerBlock)initialization
-        properties:(TyphoonDefinitionBlock)properties
+    properties:(TyphoonDefinitionBlock)properties
 {
 
     TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key];
@@ -69,8 +69,8 @@
     }
     if (definition.lazy && definition.scope != TyphoonScopeSingleton)
     {
-        [NSException raise:NSInvalidArgumentException format:
-                @"The lazy attribute is only applicable to singleton scoped definitions, but is set for definition: %@ ", definition];
+        [NSException raise:NSInvalidArgumentException
+            format:@"The lazy attribute is only applicable to singleton scoped definitions, but is set for definition: %@ ", definition];
     }
 
     return definition;
@@ -108,7 +108,7 @@
 - (void)injectProperty:(SEL)selector withValueAsText:(NSString*)textValue
 {
     [_injectedProperties addObject:[[TyphoonPropertyInjectedWithStringRepresentation alloc]
-            initWithName:NSStringFromSelector(selector) value:textValue]];
+        initWithName:NSStringFromSelector(selector) value:textValue]];
 }
 
 - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition
@@ -119,25 +119,25 @@
 - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition selector:(SEL)factorySelector
 {
     [_injectedProperties addObject:[[TyphoonPropertyInjectedByFactoryReference alloc]
-            initWithName:NSStringFromSelector(selector) reference:definition.key keyPath:NSStringFromSelector(factorySelector)]];
+        initWithName:NSStringFromSelector(selector) reference:definition.key keyPath:NSStringFromSelector(factorySelector)]];
 }
 
 - (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition keyPath:(NSString*)keyPath
 {
     [_injectedProperties addObject:[[TyphoonPropertyInjectedByFactoryReference alloc]
-            initWithName:NSStringFromSelector(selector) reference:definition.key keyPath:keyPath]];
+        initWithName:NSStringFromSelector(selector) reference:definition.key keyPath:keyPath]];
 }
 
 - (void)injectProperty:(SEL)selector withObjectInstance:(id)instance
 {
     [_injectedProperties addObject:[[TyphoonPropertyInjectedAsObjectInstance alloc]
-            initWithName:NSStringFromSelector(selector) objectInstance:instance]];
+        initWithName:NSStringFromSelector(selector) objectInstance:instance]];
 }
 
 - (void)injectProperty:(SEL)withSelector asCollection:(void (^)(TyphoonPropertyInjectedAsCollection*))collectionValues;
 {
     TyphoonPropertyInjectedAsCollection
-            * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:NSStringFromSelector(withSelector)];
+        * propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:NSStringFromSelector(withSelector)];
 
     if (collectionValues)
     {
@@ -150,7 +150,7 @@
 - (void)setInitializer:(TyphoonInitializer*)initializer
 {
     _initializer = initializer;
-    [_initializer setComponentDefinition:self];
+    [_initializer setDefinition:self];
 }
 
 - (void)setFactory:(TyphoonDefinition*)factory
@@ -166,7 +166,18 @@
 {
     if (!_initializer)
     {
-        return _parent.initializer;
+        TyphoonInitializer* parentInitializer = _parent.initializer;
+        if (parentInitializer)
+        {
+            return parentInitializer;
+        }
+        else
+        {
+            TyphoonInitializer* initializer = [[TyphoonInitializer alloc]
+                initWithSelector:@selector(init) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
+            [initializer setDefinition:self];
+            return initializer;
+        }
     }
     return _initializer;
 }

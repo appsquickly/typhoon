@@ -80,7 +80,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 - (void)dealloc
 {
     //Null out the __unsafe_unretained property on initializer
-    [_initializer setComponentDefinition:nil];
+    [_initializer setDefinition:nil];
 }
 
 

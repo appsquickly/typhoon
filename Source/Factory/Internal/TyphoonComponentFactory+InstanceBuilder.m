@@ -43,6 +43,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
 #import "NSInvocation+TyphoonUtils.h"
+#import "TyphoonInitializer+InstanceBuilder.h"
 
 #define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type) [NSException raise:@"NSUnknownKeyException" \
 format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",property.name, [instance class]]
@@ -88,7 +89,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
     id instance = nil;
 
-    NSInvocation* invocation = [self invocationToInitDefinition:definition];
+    NSInvocation* invocation = [definition.initializer newInvocationInFactory:self];
 
     if (definition.factoryReference || [definition.initializer isClassMethod])
     {
@@ -112,20 +113,6 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         }
     }
     return instance;
-}
-
-- (NSInvocation*)invocationToInitDefinition:(TyphoonDefinition*)definition
-{
-    NSInvocation* invocation = nil;
-    if (definition.initializer)
-    {
-        invocation = [definition.initializer newInvocationInFactory:self];
-    }
-    else
-    {
-        invocation = [self defaultInvocationToInit:definition.type];
-    }
-    return invocation;
 }
 
 - (NSInvocation*)defaultInvocationToInit:(Class)clazz

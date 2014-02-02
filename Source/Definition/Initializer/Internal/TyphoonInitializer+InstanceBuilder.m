@@ -66,7 +66,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 }
 
 
-- (void)setComponentDefinition:(TyphoonDefinition*)definition
+- (void)setDefinition:(TyphoonDefinition*)definition
 {
     _definition = definition;
     [self resolveIsClassMethod];

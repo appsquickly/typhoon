@@ -23,7 +23,7 @@
 
 - (NSInvocation*)newInvocationInFactory:(TyphoonComponentFactory*)factory;
 
-- (void)setComponentDefinition:(TyphoonDefinition*)definition;
+- (void)setDefinition:(TyphoonDefinition*)definition;
 
 
 @end

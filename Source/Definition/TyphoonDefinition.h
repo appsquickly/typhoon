@@ -71,6 +71,8 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 *
 * An initializer can be an instance method, a class method, or even a reference to another component's method (see factory property).
 *
+* If no explicit initializer has been set, returns a default initializer representing the init method.
+*
 * @see factory
 */
 @property(nonatomic, strong) TyphoonInitializer* initializer;
