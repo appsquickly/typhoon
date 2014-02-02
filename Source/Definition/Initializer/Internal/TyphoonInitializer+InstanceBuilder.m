@@ -16,6 +16,16 @@
 #import "TyphoonParameterInjectedWithStringRepresentation.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonComponentFactory.h"
+#import "TyphoonParameterInjectedAsCollection.h"
+#import "TyphoonParameterInjectedWithObjectInstance.h"
+#import "TyphoonParameterInjectedByReference.h"
+#import "TyphoonComponentFactory+InstanceBuilder.h"
+#import "TyphoonCallStack.h"
+#import "TyphoonTypeConverter.h"
+#import "TyphoonTypeConverterRegistry.h"
+#import "TyphoonPrimitiveTypeConverter.h"
+#import "TyphoonTypeDescriptor.h"
 
 TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
@@ -35,7 +45,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
 }
 
-- (NSInvocation*)newInvocation
+- (NSInvocation*)newInvocationInFactory:(TyphoonComponentFactory*)factory
 {
     Class clazz = [_definition type];
 
@@ -47,16 +57,11 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
                    NSStringFromSelector(_selector), NSStringFromClass(clazz)];
     }
 
-    NSInvocation* invocation;
-    if (self.isClassMethod)
-    {
-        invocation = [NSInvocation invocationWithMethodSignature:[clazz methodSignatureForSelector:_selector]];
-    }
-    else
-    {
-        invocation = [NSInvocation invocationWithMethodSignature:[clazz instanceMethodSignatureForSelector:_selector]];
-    }
+    NSMethodSignature* signature =
+        self.isClassMethod ? [clazz methodSignatureForSelector:_selector] : [clazz instanceMethodSignatureForSelector:_selector];
+    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:signature];
     [invocation setSelector:_selector];
+    [self configureInvocation:invocation withFactory:factory];
     return invocation;
 }
 
@@ -109,5 +114,71 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     return ![NSStringFromSelector(_selector) hasPrefix:@"init"];
 }
 
+- (void)configureInvocation:(NSInvocation*)invocation withFactory:(TyphoonComponentFactory*)factory
+{
+    NSArray* injectedParameters = [self injectedParameters];
+    for (id <TyphoonInjectedParameter> parameter in injectedParameters)
+    {
+        if (parameter.type == TyphoonParameterInjectionTypeReference)
+        {
+            TyphoonParameterInjectedByReference* byReference = (TyphoonParameterInjectedByReference*) parameter;
+
+            [[factory stack] peekForKey:byReference.reference]; //Raises circular dependencies exception if already initing.
+
+            id reference = [factory componentForKey:byReference.reference];
+            [invocation setArgument:&reference atIndex:parameter.index + 2];
+        }
+        else if (parameter.type == TyphoonParameterInjectionTypeStringRepresentation)
+        {
+            TyphoonParameterInjectedWithStringRepresentation* byString = (TyphoonParameterInjectedWithStringRepresentation*) parameter;
+            [self setArgumentFor:invocation index:byString.index + 2 textValue:byString.textValue requiredType:[byString resolveType]];
+        }
+        else if (parameter.type == TyphoonParameterInjectionTypeObjectInstance)
+        {
+            TyphoonParameterInjectedWithObjectInstance* byInstance = (TyphoonParameterInjectedWithObjectInstance*) parameter;
+            id value = byInstance.value;
+            BOOL isValuesIsWrapper = [value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSValue class]];
+
+            if (isValuesIsWrapper && [byInstance isPrimitiveParameter])
+            {
+                [self setPrimitiveArgumentForInvocation:invocation index:parameter.index + 2 fromValue:value];
+            }
+            else
+            {
+                [invocation setArgument:&value atIndex:parameter.index + 2];
+            }
+        }
+        else if (parameter.type == TyphoonParameterInjectionTypeAsCollection)
+        {
+            TyphoonParameterInjectedAsCollection* asCollection = (TyphoonParameterInjectedAsCollection*) parameter;
+
+            //FIXME: This shouldn't be a concern of the TyphoonComponentFactory, but of the collection type.
+            id collection = [factory buildCollectionWithValues:asCollection.values requiredType:asCollection.collectionType];
+            [invocation setArgument:&collection atIndex:parameter.index + 2];
+        }
+    }
+}
+
+- (void)setPrimitiveArgumentForInvocation:(NSInvocation*)invocation index:(NSUInteger)index fromValue:(id)value
+{
+    TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
+    [converter setPrimitiveArgumentFor:invocation index:index fromValue:value];
+}
+
+- (void)setArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index1 textValue:(NSString*)textValue
+    requiredType:(TyphoonTypeDescriptor*)requiredType
+{
+    if (requiredType.isPrimitive)
+    {
+        TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
+        [converter setPrimitiveArgumentFor:invocation index:index1 textValue:textValue requiredType:requiredType];
+    }
+    else
+    {
+        id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:requiredType];
+        id converted = [converter convert:textValue];
+        [invocation setArgument:&converted atIndex:index1];
+    }
+}
 
 @end

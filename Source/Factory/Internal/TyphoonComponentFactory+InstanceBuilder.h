@@ -14,6 +14,7 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactory.h"
 #import "TyphoonIntrospectiveNSObject.h"
+#import "TyphoonInjectedAsCollection.h"
 
 @class TyphoonCallStack;
 
@@ -34,5 +35,8 @@
 - (NSArray*)allDefinitionsForType:(id)classOrProtocol;
 
 - (TyphoonDefinition*)definitionForType:(id)classOrProtocol;
+
+//FIXME: This shouldn't be a concern of the factory, but of the collection injected initializer or property.
+- (id)buildCollectionWithValues:(NSArray*)values requiredType:(TyphoonCollectionType)type;
 
 @end
