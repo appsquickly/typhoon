@@ -129,7 +129,7 @@
     @catch (NSException* e)
     {
         assertThat([e description], equalTo(
-                @"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"));
+            @"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"));
     }
 
 }
@@ -260,15 +260,27 @@
     assertThat(notSingletonA.dependencyOnA, is(singletonA));
 }
 
-- (void)test_initializer_injected_component_is_correctly_resolved_in_circular_dependency
+- (void)test_initializer_injected_component_raises_exception_for_circular_dependency
 {
-    PrototypeInitInjected* initializerInjected = [_circularDependenciesFactory componentForType:[PrototypeInitInjected class]];
-    PrototypePropertyInjected* propertyInjected = [_circularDependenciesFactory componentForType:[PrototypePropertyInjected class]];
-    // should be expected class, but not same instance
-    assertThat(initializerInjected.prototypePropertyInjected, instanceOf([PrototypePropertyInjected class]));
-    assertThat(initializerInjected.prototypePropertyInjected, isNot(propertyInjected));
-    assertThat(propertyInjected.prototypeInitInjected, instanceOf([PrototypeInitInjected class]));
-    assertThat(propertyInjected.prototypeInitInjected, isNot(initializerInjected));
+    @try
+    {
+        PrototypeInitInjected* initializerInjected = [_circularDependenciesFactory componentForType:[PrototypeInitInjected class]];
+        STFail(@"Should've raised exception");
+    }
+    @catch (NSException* e)
+    {
+        assertThat([e description], equalTo(
+            @"The object for key prototypeInitInjected is currently initializing, but was specified as init dependency in another object"));
+    }
+
+    //FIXME: Old test: We were leaning towards supporting circular deps in initializers. . decision?
+//    PrototypeInitInjected* initializerInjected = [_circularDependenciesFactory componentForType:[PrototypeInitInjected class]];
+//    PrototypePropertyInjected* propertyInjected = [_circularDependenciesFactory componentForType:[PrototypePropertyInjected class]];
+//    // should be expected class, but not same instance
+//    assertThat(initializerInjected.prototypePropertyInjected, instanceOf([PrototypePropertyInjected class]));
+//    assertThat(initializerInjected.prototypePropertyInjected, isNot(propertyInjected));
+//    assertThat(propertyInjected.prototypeInitInjected, instanceOf([PrototypeInitInjected class]));
+//    assertThat(propertyInjected.prototypeInitInjected, isNot(initializerInjected));
 }
 
 /* ====================================================================================================================================== */
@@ -283,16 +295,17 @@
 
 - (void)test_exception_when_initializer_dependency_chain
 {
-    @try {
+    @try
+    {
         [_circularDependenciesFactory componentForKey:@"incorrectPrototypeB"];
         STFail(@"Should have thrown exception");
     }
-    @catch (NSException *exception) {
+    @catch (NSException* exception)
+    {
         assertThat([exception name], equalTo(@"CircularInitializerDependence"));
     }
 
 
-    
 }
 
 @end

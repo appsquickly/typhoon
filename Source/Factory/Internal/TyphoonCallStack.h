@@ -21,12 +21,14 @@
 
 - (TyphoonStackElement*)pop;
 
-- (TyphoonStackElement*)peek;
-
+/**
+* Peeks for the given key. If the key represents an instance undergoing initializer injection, raises a circular init exception.
+*/
 - (TyphoonStackElement*)peekForKey:(NSString*)key;
 
 - (BOOL)isResolvingKey:(NSString*)key;
 
 - (BOOL)isEmpty;
+
 
 @end

@@ -13,6 +13,7 @@
 #import "TyphoonCallStack.h"
 #import "TyphoonStackElement.h"
 
+
 @implementation TyphoonCallStack
 {
     NSMutableArray* _storage;
@@ -63,10 +64,7 @@
     return element;
 }
 
-- (TyphoonStackElement*)peek
-{
-    return [_storage lastObject];
-}
+
 
 - (TyphoonStackElement*)peekForKey:(NSString*)key
 {
@@ -74,21 +72,27 @@
     {
         if ([item.key isEqualToString:key])
         {
+            if ([item isInitializingInstance])
+            {
+                [NSException raise:@"CircularInitializerDependence"
+                    format:@"The object for key %@ is currently initializing, but was specified as init dependency in another object",
+                           item.key];
+            }
             return item;
         }
     }
     return nil;
 }
 
-- (BOOL)isResolvingKey:(NSString*)key
-{
-    return [self peekForKey:key] != nil;
-}
-
 
 - (BOOL)isEmpty
 {
     return ([_storage count] == 0);
+}
+
+- (BOOL)isResolvingKey:(NSString*)key
+{
+    return [self peekForKey:key] != nil;
 }
 
 @end

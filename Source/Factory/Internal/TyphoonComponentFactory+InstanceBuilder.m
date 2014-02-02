@@ -43,16 +43,12 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonComponentFactoryAware.h"
 #import "TyphoonParameterInjectedAsCollection.h"
 #import "TyphoonComponentPostProcessor.h"
-#import "TyphoonCallStack.h"
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
 #import "NSInvocation+TyphoonUtils.h"
 
 #define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type) [NSException raise:@"NSUnknownKeyException" \
 format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",property.name, [instance class]]
-
-#define RaiseInitCircularException(definitionKey) [NSException raise:@"CircularInitializerDependence" \
-format:@"The object for key %@ is currently initializing, but was specified as init dependency in another object",definitionKey]
 
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
@@ -161,10 +157,6 @@ format:@"The object for key %@ is currently initializing, but was specified as i
     TyphoonStackElement* stackElement = [_stack peekForKey:definition.key];
     if (stackElement)
     {
-        if ([stackElement isInitializingInstance])
-        {
-            RaiseInitCircularException(definition.key);
-        }
         return stackElement.instance;
     }
     return [self buildInstanceWithDefinition:definition];
@@ -339,10 +331,7 @@ format:@"The object for key %@ is currently initializing, but was specified as i
         {
             TyphoonParameterInjectedByReference* byReference = (TyphoonParameterInjectedByReference*) parameter;
 
-            if ([[_stack peekForKey:byReference.reference] isInitializingInstance])
-            {
-                RaiseInitCircularException(byReference.reference);
-            }
+            [_stack peekForKey:byReference.reference]; //Raises circular dependencies exception if already initing.
 
             id reference = [self componentForKey:byReference.reference];
             [invocation setArgument:&reference atIndex:parameter.index + 2];
