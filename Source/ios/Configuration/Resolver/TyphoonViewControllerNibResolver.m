@@ -49,7 +49,7 @@
 
 - (BOOL)shouldProcessDefinition:(TyphoonDefinition*)definition
 {
-    return [definition.type isSubclassOfClass:[UIViewController class]]&&definition.initializer.selector == @selector(init);
+    return [definition.type isSubclassOfClass:[UIViewController class]] && definition.initializer.generated;
 }
 
 @end

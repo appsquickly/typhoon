@@ -173,10 +173,8 @@
         }
         else
         {
-            TyphoonInitializer* initializer = [[TyphoonInitializer alloc]
-                initWithSelector:@selector(init) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
-            [initializer setDefinition:self];
-            return initializer;
+            [self setInitializer:[[TyphoonInitializer alloc] init]];
+            [self.initializer setValue:@(YES) forKey:@"generated"];
         }
     }
     return _initializer;
