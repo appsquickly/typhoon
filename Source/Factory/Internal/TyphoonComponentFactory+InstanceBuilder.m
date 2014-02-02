@@ -88,14 +88,10 @@ format:@"The object for key %@ is currently initializing, but was specified as i
     {
         initTarget = definition.type;
     }
-    else
-    {
-        initTarget = [definition.type alloc];
-    }
 
     id instance = nil;
 
-    NSInvocation* invocation = [self invocationToInit:initTarget withDefinition:definition];
+    NSInvocation* invocation = [self invocationToInitDefinition:definition];
 
     if (definition.factoryReference || [definition.initializer isClassMethod])
     {
@@ -121,23 +117,23 @@ format:@"The object for key %@ is currently initializing, but was specified as i
     return instance;
 }
 
-- (NSInvocation*)invocationToInit:(id)instanceOrClass withDefinition:(TyphoonDefinition*)definition
+- (NSInvocation*)invocationToInitDefinition:(TyphoonDefinition*)definition
 {
     NSInvocation* invocation = nil;
     if (definition.initializer)
     {
-        invocation = [self invocationToInit:instanceOrClass withInitializer:definition.initializer];
+        invocation = [self invocationToInitInitializer:definition.initializer];
     }
     else
     {
-        invocation = [self defaultInvocationToInit:instanceOrClass];
+        invocation = [self defaultInvocationToInit:definition.type];
     }
     return invocation;
 }
 
-- (NSInvocation*)defaultInvocationToInit:(id)instance
+- (NSInvocation*)defaultInvocationToInit:(Class)clazz
 {
-    NSMethodSignature* methodSignature = [instance methodSignatureForSelector:@selector(init)];
+    NSMethodSignature* methodSignature = [clazz instanceMethodSignatureForSelector:@selector(init)];
     NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
     [invocation setSelector:@selector(init)];
     return invocation;
@@ -335,7 +331,7 @@ format:@"The object for key %@ is currently initializing, but was specified as i
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (NSInvocation*)invocationToInit:(id)instanceOrClass withInitializer:(TyphoonInitializer*)initializer
+- (NSInvocation*)invocationToInitInitializer:(TyphoonInitializer*)initializer
 {
     NSInvocation* invocation = [initializer newInvocation];
 
