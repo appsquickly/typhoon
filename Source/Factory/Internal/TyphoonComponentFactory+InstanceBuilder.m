@@ -15,7 +15,6 @@
 TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 #import <objc/message.h>
-#import <CoreData/CoreData.h>
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonParameterInjectedByReference.h"
@@ -113,14 +112,6 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         }
     }
     return instance;
-}
-
-- (NSInvocation*)defaultInvocationToInit:(Class)clazz
-{
-    NSMethodSignature* methodSignature = [clazz instanceMethodSignatureForSelector:@selector(init)];
-    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
-    [invocation setSelector:@selector(init)];
-    return invocation;
 }
 
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance;
@@ -303,8 +294,6 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
-
-/* ====================================================================================================================================== */
 
 
 - (id)valueFromTextValue:(NSString*)textValue requiredType:(TyphoonTypeDescriptor*)requiredType
