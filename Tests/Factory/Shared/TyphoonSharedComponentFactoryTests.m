@@ -260,27 +260,15 @@
     assertThat(notSingletonA.dependencyOnA, is(singletonA));
 }
 
-- (void)test_initializer_injected_component_raises_exception_for_circular_dependency
+- (void)test_initializer_injected_component_is_correctly_resolved_in_circular_dependency
 {
-    @try
-    {
-        PrototypeInitInjected* initializerInjected = [_circularDependenciesFactory componentForType:[PrototypeInitInjected class]];
-        STFail(@"Should've raised exception");
-    }
-    @catch (NSException* e)
-    {
-        assertThat([e description], equalTo(
-            @"The object for key prototypeInitInjected is currently initializing, but was specified as init dependency in another object"));
-    }
-
-    //FIXME: Old test: We were leaning towards supporting circular deps in initializers. . decision?
-//    PrototypeInitInjected* initializerInjected = [_circularDependenciesFactory componentForType:[PrototypeInitInjected class]];
-//    PrototypePropertyInjected* propertyInjected = [_circularDependenciesFactory componentForType:[PrototypePropertyInjected class]];
-//    // should be expected class, but not same instance
-//    assertThat(initializerInjected.prototypePropertyInjected, instanceOf([PrototypePropertyInjected class]));
-//    assertThat(initializerInjected.prototypePropertyInjected, isNot(propertyInjected));
-//    assertThat(propertyInjected.prototypeInitInjected, instanceOf([PrototypeInitInjected class]));
-//    assertThat(propertyInjected.prototypeInitInjected, isNot(initializerInjected));
+    PrototypeInitInjected* initializerInjected = [_circularDependenciesFactory componentForType:[PrototypeInitInjected class]];
+    PrototypePropertyInjected* propertyInjected = [_circularDependenciesFactory componentForType:[PrototypePropertyInjected class]];
+    // should be expected class, but not same instance
+    assertThat(initializerInjected.prototypePropertyInjected, instanceOf([PrototypePropertyInjected class]));
+    assertThat(initializerInjected.prototypePropertyInjected, isNot(propertyInjected));
+    assertThat(propertyInjected.prototypeInitInjected, instanceOf([PrototypeInitInjected class]));
+    assertThat(propertyInjected.prototypeInitInjected, isNot(initializerInjected));
 }
 
 /* ====================================================================================================================================== */

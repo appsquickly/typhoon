@@ -123,7 +123,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
         if (parameter.type == TyphoonParameterInjectionTypeReference)
         {
             TyphoonParameterInjectedByReference* byReference = (TyphoonParameterInjectedByReference*) parameter;
-            [[factory stack] peekForKey:byReference.reference]; //Raises circular dependencies exception if already initializing.
+            [[factory stack] peekInstanceForKey:byReference.reference]; //Raises circular dependencies exception if already initializing.
             id reference = [factory componentForKey:byReference.reference];
             [invocation setArgument:&reference atIndex:parameter.index + 2];
         }

@@ -129,10 +129,10 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 - (id)buildSharedInstanceForDefinition:(TyphoonDefinition*)definition
 {
-    TyphoonStackElement* stackElement = [_stack peekForKey:definition.key];
-    if (stackElement)
+    id instance = [_stack peekInstanceForKey:definition.key];
+    if (instance)
     {
-        return stackElement.instance;
+        return instance;
     }
     return [self buildInstanceWithDefinition:definition];
 }

@@ -72,16 +72,23 @@
     {
         if ([item.key isEqualToString:key])
         {
-            if ([item isInitializingInstance])
-            {
-                [NSException raise:@"CircularInitializerDependence"
-                    format:@"The object for key %@ is currently initializing, but was specified as init dependency in another object",
-                           item.key];
-            }
             return item;
         }
     }
     return nil;
+}
+
+- (id)peekInstanceForKey:(NSString*)key
+{
+    TyphoonStackElement* stackElement = [self peekForKey:key];
+   
+    if ([stackElement isInitializingInstance]) {
+        [NSException raise:@"CircularInitializerDependence"
+                    format:@"The object for key %@ is currently initializing, but was specified as init dependency in another object",
+         stackElement.key];
+    }
+    
+    return stackElement.instance;
 }
 
 
