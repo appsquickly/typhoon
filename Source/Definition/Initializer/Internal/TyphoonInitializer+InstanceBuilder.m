@@ -26,6 +26,7 @@
 #import "TyphoonTypeConverterRegistry.h"
 #import "TyphoonPrimitiveTypeConverter.h"
 #import "TyphoonTypeDescriptor.h"
+#import "NSValue+InvocationConfigure.h"
 
 TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
@@ -140,7 +141,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
             if (isValuesIsWrapper && [byInstance isPrimitiveParameter])
             {
-                [self setPrimitiveArgumentForInvocation:invocation index:parameter.index + 2 fromValue:value];
+                [value setAsArgumentForInvocation:invocation atIndex:parameter.index + 2];
             }
             else
             {
@@ -156,12 +157,6 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
             [invocation setArgument:&collection atIndex:parameter.index + 2];
         }
     }
-}
-
-- (void)setPrimitiveArgumentForInvocation:(NSInvocation*)invocation index:(NSUInteger)index fromValue:(id)value
-{
-    TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
-    [converter setPrimitiveArgumentFor:invocation index:index fromValue:value];
 }
 
 - (void)setArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index1 textValue:(NSString*)textValue
