@@ -348,6 +348,12 @@
 		CAEDC7A4F6804D310052F633 /* SomeOtherProperties.properties in Resources */ = {isa = PBXBuildFile; fileRef = CAE1370C5429F92760CB0390 /* SomeOtherProperties.properties */; };
 		CAEE3865245D95F01C38E748 /* PrimitiveMan.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEA8AED5BCF8660B3CF23AF /* PrimitiveMan.m */; };
 		CAEE50BA12C347B06D7A9A77 /* PrimitiveMan.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEA8AED5BCF8660B3CF23AF /* PrimitiveMan.m */; };
+		FA1D04C018A0134A008586E0 /* TyphoonInvocationUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1D04BF18A0134A008586E0 /* TyphoonInvocationUtilsTests.m */; };
+		FA1D04C118A01350008586E0 /* TyphoonInvocationUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1D04BF18A0134A008586E0 /* TyphoonInvocationUtilsTests.m */; };
+		FA1D04C218A01350008586E0 /* TyphoonInvocationUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1D04BF18A0134A008586E0 /* TyphoonInvocationUtilsTests.m */; };
+		FA1D04C518A01385008586E0 /* TyphoonInvocationUtilsTestObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1D04C418A01385008586E0 /* TyphoonInvocationUtilsTestObjects.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		FA1D04C618A01385008586E0 /* TyphoonInvocationUtilsTestObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1D04C418A01385008586E0 /* TyphoonInvocationUtilsTestObjects.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		FA1D04C718A01385008586E0 /* TyphoonInvocationUtilsTestObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1D04C418A01385008586E0 /* TyphoonInvocationUtilsTestObjects.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FA3046EC18924995007E3BA4 /* PropertyInjectionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3046EB18924995007E3BA4 /* PropertyInjectionsTests.m */; };
 		FA3046ED1892499F007E3BA4 /* PropertyInjectionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3046EB18924995007E3BA4 /* PropertyInjectionsTests.m */; };
 		FA3046EE189249A0007E3BA4 /* PropertyInjectionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3046EB18924995007E3BA4 /* PropertyInjectionsTests.m */; };
@@ -570,6 +576,9 @@
 		CAEA8AED5BCF8660B3CF23AF /* PrimitiveMan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimitiveMan.m; sourceTree = "<group>"; };
 		CAEB463B70EA0EFD7796673B /* PrimitiveMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimitiveMan.h; sourceTree = "<group>"; };
 		F8B50DFBF255467DA9F7C30F /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA1D04BF18A0134A008586E0 /* TyphoonInvocationUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonInvocationUtilsTests.m; sourceTree = "<group>"; };
+		FA1D04C318A01385008586E0 /* TyphoonInvocationUtilsTestObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonInvocationUtilsTestObjects.h; sourceTree = "<group>"; };
+		FA1D04C418A01385008586E0 /* TyphoonInvocationUtilsTestObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonInvocationUtilsTestObjects.m; sourceTree = "<group>"; };
 		FA3046EB18924995007E3BA4 /* PropertyInjectionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyInjectionsTests.m; sourceTree = "<group>"; };
 		FA99165B18983621000AC4B5 /* TyphoonObjectDeallocCallbackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonObjectDeallocCallbackTests.m; sourceTree = "<group>"; };
 		FA99167718983D56000AC4B5 /* TyphoonWeakComponentsPoolTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonWeakComponentsPoolTests.m; sourceTree = "<group>"; };
@@ -887,6 +896,9 @@
 				75AB5EE356B3D0CE72380C22 /* TyphoonTestMethodSwizzler.h */,
 				75AB5EA9F8C4BE6B7C1C63E6 /* TyphoonMiscUtilsTests.m */,
 				FA99165B18983621000AC4B5 /* TyphoonObjectDeallocCallbackTests.m */,
+				FA1D04C318A01385008586E0 /* TyphoonInvocationUtilsTestObjects.h */,
+				FA1D04C418A01385008586E0 /* TyphoonInvocationUtilsTestObjects.m */,
+				FA1D04BF18A0134A008586E0 /* TyphoonInvocationUtilsTests.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1402,7 +1414,9 @@
 				657096AB183147D600C10DA4 /* PizzaImpl.m in Sources */,
 				FA3046EC18924995007E3BA4 /* PropertyInjectionsTests.m in Sources */,
 				4B8414FD179B0EA600916BF5 /* TyphoonComponentFactoryTests.m in Sources */,
+				FA1D04C518A01385008586E0 /* TyphoonInvocationUtilsTestObjects.m in Sources */,
 				4B8414FF179B0EA600916BF5 /* RXMLElement+XmlComponentFactory_AsComponentDefinitionTests.m in Sources */,
+				FA1D04C018A0134A008586E0 /* TyphoonInvocationUtilsTests.m in Sources */,
 				4B841501179B0EA600916BF5 /* TyphoonXmlComponentFactoryTests.m in Sources */,
 				4B841503179B0EA600916BF5 /* AutoWiringKnight.m in Sources */,
 				4B841505179B0EA600916BF5 /* AutoWiringSubClassedKnight.m in Sources */,
@@ -1522,6 +1536,7 @@
 				4B841516179B0EA600916BF5 /* ClassEDependsOnC.m in Sources */,
 				4B0633A517D29402009CDBD6 /* ComponentFactoryAwareAssembly.m in Sources */,
 				4B841518179B0EA600916BF5 /* Sword.m in Sources */,
+				FA1D04C618A01385008586E0 /* TyphoonInvocationUtilsTestObjects.m in Sources */,
 				4B84151A179B0EA600916BF5 /* SwordFactory.m in Sources */,
 				4B84151C179B0EA600916BF5 /* Knight.m in Sources */,
 				4B84152E179B0EA600916BF5 /* TyphoonPassthroughTypeConverterTests.m in Sources */,
@@ -1538,6 +1553,7 @@
 				4EB2190917B4F2C500B901C9 /* SingletonB.m in Sources */,
 				657096AC183147D600C10DA4 /* PizzaImpl.m in Sources */,
 				4E08794817B6762E004B86C9 /* NotSingletonA.m in Sources */,
+				FA1D04C118A01350008586E0 /* TyphoonInvocationUtilsTests.m in Sources */,
 				656A57671848DD020081F72B /* TyphoonFactoryProviderTestHelper.m in Sources */,
 				657096A51831472300C10DA4 /* PaymentImpl.m in Sources */,
 				657096921831449000C10DA4 /* TyphoonFactoryProviderTest.m in Sources */,
@@ -1609,7 +1625,9 @@
 				4BC648CA17A20AD2007F0463 /* TyphoonSharedComponentFactoryTests.m in Sources */,
 				657096AD183147D600C10DA4 /* PizzaImpl.m in Sources */,
 				FA3046EE189249A0007E3BA4 /* PropertyInjectionsTests.m in Sources */,
+				FA1D04C718A01385008586E0 /* TyphoonInvocationUtilsTestObjects.m in Sources */,
 				4BC648CC17A20AD2007F0463 /* TyphoonComponentFactoryTests.m in Sources */,
+				FA1D04C218A01350008586E0 /* TyphoonInvocationUtilsTests.m in Sources */,
 				4BC648CD17A20AD2007F0463 /* RXMLElement+XmlComponentFactory_AsComponentDefinitionTests.m in Sources */,
 				4BC648CE17A20AD2007F0463 /* TyphoonXmlComponentFactoryTests.m in Sources */,
 				4BC648CF17A20AD2007F0463 /* AutoWiringKnight.m in Sources */,
