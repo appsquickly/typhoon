@@ -192,7 +192,7 @@ Test Failures typically indicate a bug that has been flagged, but not yet fixed.
 | :---------- | :------ | 
 I'm not sure how to do [xyz]  | Typhoon users and contributors monitor the Typhoon tag on <a href="http://stackoverflow.com/questions/tagged/typhoon?sort=newest&pageSize=15">Stack Overflow</a>. Chances are your question can be answered there. 
 This looks like a bug | Please raise a <a href="https://github.com/typhoon-framework/Typhoon/issues">GitHub issue</a>
-I'll take all the help I can get | While Typhoon is free, open-source and volunteer based, if you're interested in professional consultation or support we do maintain a list of experts and companies that can provide consultation. Get in touch with us, and we'll do our best to connect you. 
+I'll take all the help I can get | While Typhoon is free, open-source and volunteer based, if you're interested in professional consultation/support we do maintain a list of experts and companies that can provide consultation. Get in touch with us, and we'll do our best to connect you. 
 
 
 
