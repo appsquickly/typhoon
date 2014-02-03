@@ -92,11 +92,11 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
     if (definition.factoryReference || [definition.initializer isClassMethod])
     {
-        instance = [invocation resultOfInvokingOnInstance:initTarget];
+        instance = [invocation typhoon_resultOfInvokingOnInstance:initTarget];
     }
     else
     {
-        instance = [invocation resultOfInvokingOnAllocationForClass:definition.type];
+        instance = [invocation typhoon_resultOfInvokingOnAllocationForClass:definition.type];
     }
 
     return instance;

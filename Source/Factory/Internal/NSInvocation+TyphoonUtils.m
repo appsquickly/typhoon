@@ -18,7 +18,7 @@
 
 @implementation NSInvocation (TyphoonUtils)
 
-- (id)resultOfInvokingOn:(id)instanceOrClass
+- (id)typhoon_resultOfInvokingOn:(id)instanceOrClass
 {
     id returnValue = nil;
 
@@ -33,15 +33,15 @@
     return returnValue;
 }
 
-- (id)resultOfInvokingOnInstance:(id)instance
+- (id)typhoon_resultOfInvokingOnInstance:(id)instance
 {
-    return [self resultOfInvokingOn:instance];
+    return [self typhoon_resultOfInvokingOn:instance];
 }
 
-- (id)resultOfInvokingOnAllocationForClass:(Class)aClass
+- (id)typhoon_resultOfInvokingOnAllocationForClass:(Class)aClass
 {
     id allocatedSpace = [aClass alloc];
-    id instance = [self resultOfInvokingOn:allocatedSpace];
+    id instance = [self typhoon_resultOfInvokingOn:allocatedSpace];
     [instance release];
     return instance;
 }
