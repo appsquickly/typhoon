@@ -21,19 +21,19 @@
     return [self withName:name inBundle:[NSBundle bundleForClass:[self class]]];
 }
 
-+ (id <TyphoonResource>)withName:(NSString *)name inBundle:(NSBundle *)bundle
++ (id <TyphoonResource>)withName:(NSString*)name inBundle:(NSBundle*)bundle
 {
     NSString* filePath = [self filePathForName:name inBundle:bundle];
-    
+
     if (filePath == nil)
     {
         [NSException raise:NSInvalidArgumentException format:@"Resource named '%@' not in bundle.", name];
     }
-    
+
     return [[[self class] alloc] initWithData:[NSData dataWithContentsOfFile:filePath]];
 }
 
-+ (NSString *)filePathForName:(NSString *)name inBundle:(NSBundle *)bundle
++ (NSString*)filePathForName:(NSString*)name inBundle:(NSBundle*)bundle
 {
     return [bundle pathForResource:[name stringByDeletingPathExtension] ofType:[name pathExtension]];
 }

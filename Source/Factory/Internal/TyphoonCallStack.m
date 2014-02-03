@@ -65,7 +65,6 @@
 }
 
 
-
 - (TyphoonStackElement*)peekForKey:(NSString*)key
 {
     for (TyphoonStackElement* item in [_storage reverseObjectEnumerator])
@@ -81,13 +80,14 @@
 - (id)peekInstanceForKey:(NSString*)key
 {
     TyphoonStackElement* stackElement = [self peekForKey:key];
-   
-    if ([stackElement isInitializingInstance]) {
+
+    if ([stackElement isInitializingInstance])
+    {
         [NSException raise:@"CircularInitializerDependence"
-                    format:@"The object for key %@ is currently initializing, but was specified as init dependency in another object",
-         stackElement.key];
+            format:@"The object for key %@ is currently initializing, but was specified as init dependency in another object",
+                   stackElement.key];
     }
-    
+
     return stackElement.instance;
 }
 

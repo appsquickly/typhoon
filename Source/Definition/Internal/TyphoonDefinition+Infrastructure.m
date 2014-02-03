@@ -11,6 +11,7 @@
 
 
 #import "TyphoonLinkerCategoryBugFix.h"
+
 TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 #import "TyphoonDefinition+Infrastructure.h"
@@ -38,7 +39,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 + (instancetype)propertyPlaceholderWithResources:(NSArray*)resources
 {
     TyphoonDefinition
-            * definition = [self withClass:[TyphoonPropertyPlaceholderConfigurer class] initialization:^(TyphoonInitializer* initializer)
+        * definition = [self withClass:[TyphoonPropertyPlaceholderConfigurer class] initialization:^(TyphoonInitializer* initializer)
     {
 
         initializer.selector = @selector(configurerWithResourceList:);

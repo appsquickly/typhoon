@@ -9,14 +9,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "NSInvocation+TyphoonUtils.h"
+#import "NSInvocation+TCFInstanceBuilder.h"
 
 #if __has_feature(objc_arc)
 #error You have to disable ARC for this file
 #endif
 
 
-@implementation NSInvocation (TyphoonUtils)
+@implementation NSInvocation (TCFInstanceBuilder)
 
 - (id)typhoon_resultOfInvokingOn:(id)instanceOrClass
 {
@@ -24,19 +24,21 @@
 
     NSUInteger retainCountBeforeAutorelease;
     NSUInteger retainCountAfterAutorelease;
-    
-    @autoreleasepool {
+
+    @autoreleasepool
+    {
         [self invokeWithTarget:instanceOrClass];
         [self getReturnValue:&returnValue];
         [returnValue retain];
         retainCountBeforeAutorelease = [returnValue retainCount];
     }
     retainCountAfterAutorelease = [returnValue retainCount];
-    
+
     /* if retainCount is not chanaged after draining autorelease pool, 
      * that means that object returned as invocation result strongly retained
      * then release to ballance retain before pool draining */
-    if (retainCountBeforeAutorelease == retainCountAfterAutorelease) {
+    if (retainCountBeforeAutorelease == retainCountAfterAutorelease)
+    {
         [returnValue release];
     }
 

@@ -12,6 +12,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryPostProcessor.h"
+
 @class TyphoonDefinition;
 
 typedef id (^TyphoonPatchObjectCreationBlock)();

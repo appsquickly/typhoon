@@ -15,19 +15,20 @@
 
 @implementation TyphoonFactoryProvider
 
-+ (TyphoonDefinition *)withProtocol:(Protocol *)protocol dependencies:(TyphoonDefinitionBlock)dependenciesBlock factory:(id)factoryBlock
++ (TyphoonDefinition*)withProtocol:(Protocol*)protocol dependencies:(TyphoonDefinitionBlock)dependenciesBlock factory:(id)factoryBlock
 {
     Class factoryClass = [[TyphoonAssistedFactoryCreator creatorWithProtocol:protocol factoryBlock:factoryBlock] factoryClass];
     return [TyphoonDefinition withClass:factoryClass properties:dependenciesBlock];
 }
 
-+ (TyphoonDefinition *)withProtocol:(Protocol *)protocol dependencies:(TyphoonDefinitionBlock)dependenciesBlock returns:(Class)returnType
++ (TyphoonDefinition*)withProtocol:(Protocol*)protocol dependencies:(TyphoonDefinitionBlock)dependenciesBlock returns:(Class)returnType
 {
     Class factoryClass = [[TyphoonAssistedFactoryCreator creatorWithProtocol:protocol returns:returnType] factoryClass];
     return [TyphoonDefinition withClass:factoryClass properties:dependenciesBlock];
 }
 
-+ (TyphoonDefinition *)withProtocol:(Protocol *)protocol dependencies:(TyphoonDefinitionBlock)dependenciesBlock factories:(TyphoonAssistedFactoryDefinitionBlock)definitionBlock
++ (TyphoonDefinition*)withProtocol:(Protocol*)protocol dependencies:(TyphoonDefinitionBlock)dependenciesBlock
+    factories:(TyphoonAssistedFactoryDefinitionBlock)definitionBlock
 {
     Class factoryClass = [[TyphoonAssistedFactoryCreator creatorWithProtocol:protocol factories:definitionBlock] factoryClass];
     return [TyphoonDefinition withClass:factoryClass properties:dependenciesBlock];

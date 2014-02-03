@@ -24,10 +24,10 @@
  * Part of TyphoonComponentFactoryAware. Renamed to componentFactory to not
  * have code like factory.factory at some point.
  */
-@property (nonatomic, strong, setter = setFactory:) id componentFactory;
+@property(nonatomic, strong, setter = setFactory:) id componentFactory;
 
 /** Used internally by the getters of the properties in the subclasses */
-- (id)injectionValueForProperty:(NSString *)property;
+- (id)injectionValueForProperty:(NSString*)property;
 
 /** Used to get the type encoding during the construction of subclasses */
 - (id)_dummyGetter;

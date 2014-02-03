@@ -23,10 +23,8 @@
     if (self)
     {
         CFDictionaryValueCallBacks callbacks = {0, NULL, NULL, NULL, NULL};
-        dictionaryWithUnretainedObjects = (__bridge_transfer id)CFDictionaryCreateMutable(NULL,
-                0,
-                &kCFTypeDictionaryKeyCallBacks,
-                &callbacks);
+        dictionaryWithUnretainedObjects =
+            (__bridge_transfer id) CFDictionaryCreateMutable(NULL, 0, &kCFTypeDictionaryKeyCallBacks, &callbacks);
     }
     return self;
 }

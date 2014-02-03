@@ -42,7 +42,7 @@
         memcpy( buffer, attrs, len );
         buffer[len] = '\0';
 
-        NSString *typeCode = [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
+        NSString* typeCode = [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
         typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:typeCode];
     }
     return typeDescriptor;

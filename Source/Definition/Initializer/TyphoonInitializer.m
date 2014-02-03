@@ -93,7 +93,8 @@
     }];
 }
 
-- (void)injectParameterNamed:(NSString*)name asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues requiredType:(id)requiredType
+- (void)injectParameterNamed:(NSString*)name asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues
+    requiredType:(id)requiredType
 {
     [self injectParameterNamed:name success:^(NSInteger index)
     {
@@ -128,11 +129,12 @@
 {
     if ([_parameterNames count] == 0)
     {
-        return [NSString stringWithFormat:@"Specified a parameter named '%@', but method '%@' takes no parameters.", name, NSStringFromSelector([self selector])];
+        return [NSString stringWithFormat:@"Specified a parameter named '%@', but method '%@' takes no parameters.", name,
+                                          NSStringFromSelector([self selector])];
     }
 
     NSString* failureExplanation =
-            [NSString stringWithFormat:@"Unrecognized parameter name: '%@' for method '%@'.", name, NSStringFromSelector([self selector])];
+        [NSString stringWithFormat:@"Unrecognized parameter name: '%@' for method '%@'.", name, NSStringFromSelector([self selector])];
     NSString* recoverySuggestion = [self recoverySuggestionForMissingParameter];
     return [NSString stringWithFormat:@"%@ %@", failureExplanation, recoverySuggestion];
 }
@@ -183,8 +185,7 @@
 {
     if (index != NSIntegerMax && index < [_parameterNames count])
     {
-        [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc]
-                initWithParameterIndex:index reference:reference]];
+        [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference]];
     }
 }
 
@@ -193,7 +194,7 @@
     if (index != NSIntegerMax && index < [_parameterNames count])
     {
         TyphoonParameterInjectedWithStringRepresentation* parameterInjectedByValue =
-                [[TyphoonParameterInjectedWithStringRepresentation alloc] initWithIndex:index value:text requiredTypeOrNil:requiredClass];
+            [[TyphoonParameterInjectedWithStringRepresentation alloc] initWithIndex:index value:text requiredTypeOrNil:requiredClass];
         [parameterInjectedByValue setInitializer:self];
         [_injectedParameters addObject:parameterInjectedByValue];
     }
@@ -221,7 +222,8 @@
 {
     if (index != NSIntegerMax && index < [_parameterNames count])
     {
-        TyphoonParameterInjectedWithObjectInstance* param = [[TyphoonParameterInjectedWithObjectInstance alloc] initWithParameterIndex:index value:value];
+        TyphoonParameterInjectedWithObjectInstance
+            * param = [[TyphoonParameterInjectedWithObjectInstance alloc] initWithParameterIndex:index value:value];
         [param setInitializer:self];
         [_injectedParameters addObject:param];
     }
@@ -245,13 +247,12 @@
     [self injectParameterAtIndex:index withReference:definition.key];
 }
 
-- (void)injectParameterAtIndex:(NSUInteger)index
-        asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues
-        requiredType:(id)requiredType
+- (void)injectParameterAtIndex:(NSUInteger)index asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues
+    requiredType:(id)requiredType
 {
 
     TyphoonParameterInjectedAsCollection* parameterInjectedAsCollection =
-            [[TyphoonParameterInjectedAsCollection alloc] initWithParameterIndex:index requiredType:requiredType];
+        [[TyphoonParameterInjectedAsCollection alloc] initWithParameterIndex:index requiredType:requiredType];
 
     if (collectionValues)
     {

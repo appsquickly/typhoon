@@ -254,8 +254,8 @@
 
 - (NSString*)attribute:(NSString*)attName inNamespace:(NSString*)ns
 {
-    const unsigned char* attCStr =
-            xmlGetNsProp(node_, (const xmlChar*) [attName cStringUsingEncoding:NSUTF8StringEncoding], (const xmlChar*) [ns cStringUsingEncoding:NSUTF8StringEncoding]);
+    const unsigned char* attCStr = xmlGetNsProp(node_, (const xmlChar*) [attName cStringUsingEncoding:NSUTF8StringEncoding],
+        (const xmlChar*) [ns cStringUsingEncoding:NSUTF8StringEncoding]);
 
     if (attCStr)
     {
@@ -323,7 +323,7 @@
         {
             cur = cur->children;
 
-            while (cur != nil &&cur->type != XML_ELEMENT_NODE)
+            while (cur != nil && cur->type != XML_ELEMENT_NODE)
             {
                 cur = cur->next;
             }
@@ -333,7 +333,7 @@
             cur = cur->children;
             while (cur != nil)
             {
-                if (cur->type == XML_ELEMENT_NODE&&!xmlStrcmp(cur->name, tagC))
+                if (cur->type == XML_ELEMENT_NODE && !xmlStrcmp(cur->name, tagC))
                 {
                     break;
                 }
@@ -371,7 +371,7 @@
         {
             cur = cur->children;
 
-            while (cur != nil &&cur->type != XML_ELEMENT_NODE&&!xmlStrcmp(cur->ns->href, namespaceC))
+            while (cur != nil && cur->type != XML_ELEMENT_NODE && !xmlStrcmp(cur->ns->href, namespaceC))
             {
                 cur = cur->next;
             }
@@ -381,7 +381,7 @@
             cur = cur->children;
             while (cur != nil)
             {
-                if (cur->type == XML_ELEMENT_NODE&&!xmlStrcmp(cur->name, tagC)&&!xmlStrcmp(cur->ns->href, namespaceC))
+                if (cur->type == XML_ELEMENT_NODE && !xmlStrcmp(cur->name, tagC) && !xmlStrcmp(cur->ns->href, namespaceC))
                 {
                     break;
                 }
@@ -412,7 +412,7 @@
 
     while (cur != nil)
     {
-        if (cur->type == XML_ELEMENT_NODE&&!xmlStrcmp(cur->name, tagC))
+        if (cur->type == XML_ELEMENT_NODE && !xmlStrcmp(cur->name, tagC))
         {
             [children addObject:[TyphoonRXMLElement elementFromXMLNode:cur]];
         }
@@ -432,7 +432,7 @@
 
     while (cur != nil)
     {
-        if (cur->type == XML_ELEMENT_NODE&&!xmlStrcmp(cur->name, tagC)&&!xmlStrcmp(cur->ns->href, namespaceC))
+        if (cur->type == XML_ELEMENT_NODE && !xmlStrcmp(cur->name, tagC) && !xmlStrcmp(cur->ns->href, namespaceC))
         {
             [children addObject:[TyphoonRXMLElement elementFromXMLNode:cur]];
         }
@@ -520,7 +520,7 @@
                     {
                         TyphoonRXMLElement* element = [TyphoonRXMLElement elementFromXMLNode:cur];
                         NSString* restOfQuery =
-                                [[components subarrayWithRange:NSMakeRange(i + 1, components.count - i - 1)] componentsJoinedByString:@"."];
+                            [[components subarrayWithRange:NSMakeRange(i + 1, components.count - i - 1)] componentsJoinedByString:@"."];
                         [element iterate:restOfQuery usingBlock:blk];
                     }
 
@@ -536,7 +536,7 @@
             cur = cur->children;
             while (cur != nil)
             {
-                if (cur->type == XML_ELEMENT_NODE&&!xmlStrcmp(cur->name, tagNameC))
+                if (cur->type == XML_ELEMENT_NODE && !xmlStrcmp(cur->name, tagNameC))
                 {
                     break;
                 }
@@ -574,7 +574,7 @@
 
                 while ((cur = cur->next))
                 {
-                    if (cur->type == XML_ELEMENT_NODE&&!xmlStrcmp(cur->name, tagNameC))
+                    if (cur->type == XML_ELEMENT_NODE && !xmlStrcmp(cur->name, tagNameC))
                     {
                         break;
                     }

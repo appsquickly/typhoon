@@ -18,9 +18,11 @@
 + (BOOL)selectorReservedOrPropertySetter:(SEL)selector;
 
 - (void)prepareForUse;
+
 - (NSArray*)definitions;
+
 - (TyphoonDefinition*)definitionForKey:(NSString*)key;
 
-@property (readonly) NSSet *definitionSelectors;
+@property(readonly) NSSet* definitionSelectors;
 
 @end

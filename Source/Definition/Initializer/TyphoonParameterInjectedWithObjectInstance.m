@@ -16,7 +16,8 @@
 #import "TyphoonDefinition.h"
 #import <objc/runtime.h>
 
-@implementation TyphoonParameterInjectedWithObjectInstance {
+@implementation TyphoonParameterInjectedWithObjectInstance
+{
     __weak TyphoonInitializer* _initializer;
 }
 
@@ -44,13 +45,13 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (BOOL) isPrimitiveParameter
+- (BOOL)isPrimitiveParameter
 {
     BOOL isClass = [_initializer isClassMethod];
     Class class = [_initializer.definition type];
-    
+
     NSArray* typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:_initializer.selector ofClass:class isClassMethod:isClass];
-    
+
     return ![[typeCodes objectAtIndex:_index] isEqualToString:@"@"];
 }
 

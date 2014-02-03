@@ -107,7 +107,7 @@
             <xsd:annotation>
                 <xsd:documentation><![CDATA[
 
-				]]></xsd:documentation>
+                        ]]></xsd:documentation>
             </xsd:annotation>
             <xsd:simpleType>
                 <xsd:restriction base="xsd:NMTOKEN">
@@ -332,9 +332,9 @@
         </xsd:attribute>
     </xsd:complexType>
 
-    
+
     <!-- infrastructure -->
-    
+
     <xsd:element name="property-placeholder">
         <xsd:annotation>
             <xsd:documentation><![CDATA[
@@ -351,7 +351,7 @@
             </xsd:attribute>
         </xsd:complexType>
     </xsd:element>
-    
+
     <!-- simple internal types -->
     <xsd:simpleType name="defaultable-boolean">
         <xsd:restriction base="xsd:NMTOKEN">

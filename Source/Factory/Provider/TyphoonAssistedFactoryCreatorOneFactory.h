@@ -24,6 +24,6 @@
  * Creates a given factory creator for the given protocol and using factoryBlock
  * as the implementation of the only instance method of the protocol.
  */
-- (instancetype)initWithProtocol:(Protocol *)protocol factoryBlock:(id)factoryBlock;
+- (instancetype)initWithProtocol:(Protocol*)protocol factoryBlock:(id)factoryBlock;
 
 @end

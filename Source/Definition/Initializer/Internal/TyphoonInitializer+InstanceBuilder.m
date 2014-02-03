@@ -26,7 +26,7 @@
 #import "TyphoonTypeConverterRegistry.h"
 #import "TyphoonPrimitiveTypeConverter.h"
 #import "TyphoonTypeDescriptor.h"
-#import "NSValue+InvocationConfigure.h"
+#import "NSValue+TCFInstanceBuilder.h"
 
 TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
@@ -141,7 +141,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
             if (isValuesIsWrapper && [byInstance isPrimitiveParameter])
             {
-                [value setAsArgumentForInvocation:invocation atIndex:parameter.index + 2];
+                [value typhoon_setAsArgumentForInvocation:invocation atIndex:parameter.index + 2];
             }
             else
             {

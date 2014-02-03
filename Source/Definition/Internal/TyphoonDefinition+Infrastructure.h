@@ -39,7 +39,7 @@
  @param resources An array of TyphoonResource objects.
  @return a definition.
  */
-+ (instancetype)propertyPlaceholderWithResources:(NSArray* )resources;
++ (instancetype)propertyPlaceholderWithResources:(NSArray*)resources;
 
 
 - (id)initWithClass:(Class)clazz key:(NSString*)key;

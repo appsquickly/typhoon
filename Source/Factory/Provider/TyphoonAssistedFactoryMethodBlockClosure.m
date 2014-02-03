@@ -15,7 +15,7 @@
 
 @synthesize methodSignature = _methodSignature;
 
-- (instancetype)initWithSelector:(SEL)selector methodSignature:(NSMethodSignature *)methodSignature
+- (instancetype)initWithSelector:(SEL)selector methodSignature:(NSMethodSignature*)methodSignature
 {
     self = [super init];
     if (self)
@@ -30,18 +30,19 @@
     return self;
 }
 
-- (NSInvocation *)invocationWithFactory:(id)factory forwardedInvocation:(NSInvocation *)anInvocation
+- (NSInvocation*)invocationWithFactory:(id)factory forwardedInvocation:(NSInvocation*)anInvocation
 {
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:_methodSignature];
+    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:_methodSignature];
     invocation.target = factory;
     invocation.selector = _selector;
 
     NSUInteger numberOfArguments = [_methodSignature numberOfArguments];
-    for (NSUInteger idx = 2; idx < numberOfArguments; idx++) {
+    for (NSUInteger idx = 2; idx < numberOfArguments; idx++)
+    {
         NSUInteger argumentSize = 0;
         NSGetSizeAndAlignment([_methodSignature getArgumentTypeAtIndex:idx], &argumentSize, NULL);
 
-        void *argument = malloc(argumentSize);
+        void* argument = malloc(argumentSize);
         [anInvocation getArgument:argument atIndex:idx];
         [invocation setArgument:argument atIndex:idx];
         free(argument);

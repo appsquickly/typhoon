@@ -13,12 +13,13 @@
 
 
 #import "TyphoonLinkerCategoryBugFix.h"
+
 TYPHOON_LINK_CATEGORY(NSObject_TyphoonIntrospectionUtils)
 
 #import <objc/runtime.h>
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonIntrospectionUtils.h"
-#import "NSString+TyphoonAdditions.h"
+#import "TyphoonStringUtils.h"
 
 
 static char const* const CIRCULAR_DEPENDENCIES_KEY = "typhoon.injectLater";
@@ -32,7 +33,8 @@ static char const* const CIRCULAR_DEPENDENCIES_KEY = "typhoon.injectLater";
 
 - (NSArray*)parameterNamesForSelector:(SEL)selector
 {
-    if (![NSStringFromSelector(selector) _typhoon_contains:@":"]) {
+    if (![TyphoonStringUtils string:NSStringFromSelector(selector) containsString:@":"])
+    {
         return @[];
     }
 
@@ -56,8 +58,7 @@ static char const* const CIRCULAR_DEPENDENCIES_KEY = "typhoon.injectLater";
 
 - (NSString*)stringByLowerCasingFirstLetter:(NSString*)name
 {
-    return [name stringByReplacingCharactersInRange:NSMakeRange(0, 1)
-            withString:[[name substringToIndex:1] lowercaseString]];
+    return [name stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[[name substringToIndex:1] lowercaseString]];
 }
 
 - (NSArray*)typeCodesForSelector:(SEL)selector

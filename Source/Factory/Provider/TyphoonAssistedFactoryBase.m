@@ -15,7 +15,7 @@
 
 @implementation TyphoonAssistedFactoryBase
 {
-    NSMutableDictionary *_injections;
+    NSMutableDictionary* _injections;
 }
 
 - (instancetype)init
@@ -29,15 +29,22 @@
     return self;
 }
 
-- (id)injectionValueForProperty:(NSString *)property
+- (id)injectionValueForProperty:(NSString*)property
 {
     return [_injections objectForKey:property];
 }
 
-- (id)_dummyGetter { return nil; }
-- (void)_setDummySetter:(id)value {}
+- (id)_dummyGetter
+{
+    return nil;
+}
 
-- (BOOL)shouldInjectProperty:(TyphoonAbstractInjectedProperty*)property withType:(TyphoonTypeDescriptor*)type lazyValue:(TyphoonPropertyInjectionLazyValue)lazyValue
+- (void)_setDummySetter:(id)value
+{
+}
+
+- (BOOL)shouldInjectProperty:(TyphoonAbstractInjectedProperty*)property withType:(TyphoonTypeDescriptor*)type
+    lazyValue:(TyphoonPropertyInjectionLazyValue)lazyValue
 {
     [_injections setObject:lazyValue forKey:property.name];
     return NO;

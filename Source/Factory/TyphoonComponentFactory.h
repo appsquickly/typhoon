@@ -29,10 +29,10 @@
 @interface TyphoonComponentFactory : NSObject
 {
     NSMutableArray* _registry;
-    id<TyphoonComponentsPool> _singletons;
-    id<TyphoonComponentsPool> _objectGraphSharedInstances;
-    id<TyphoonComponentsPool> _weakSingletons;
-    
+    id <TyphoonComponentsPool> _singletons;
+    id <TyphoonComponentsPool> _objectGraphSharedInstances;
+    id <TyphoonComponentsPool> _weakSingletons;
+
     TyphoonCallStack* _stack;
     NSMutableArray* _factoryPostProcessors;
     NSMutableArray* _componentPostProcessors;

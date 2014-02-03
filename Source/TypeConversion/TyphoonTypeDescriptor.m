@@ -24,24 +24,24 @@
     dispatch_once(&onceToken, ^
     {
         _typhoonPrimitiveTypesAsStrings = @{
-                @"c" : @(TyphoonPrimitiveTypeChar),
-                @"i" : @(TyphoonPrimitiveTypeInt),
-                @"s" : @(TyphoonPrimitiveTypeShort),
-                @"l" : @(TyphoonPrimitiveTypeLong),
-                @"q" : @(TyphoonPrimitiveTypeLongLong),
-                @"C" : @(TyphoonPrimitiveTypeUnsignedChar),
-                @"I" : @(TyphoonPrimitiveTypeUnsignedInt),
-                @"S" : @(TyphoonPrimitiveTypeUnsignedShort),
-                @"L" : @(TyphoonPrimitiveTypeUnsignedLong),
-                @"Q" : @(TyphoonPrimitiveTypeUnsignedLongLong),
-                @"f" : @(TyphoonPrimitiveTypeFloat),
-                @"d" : @(TyphoonPrimitiveTypeDouble),
-                @"B" : @(TyphoonPrimitiveTypeBoolean),
-                @"v" : @(TyphoonPrimitiveTypeVoid),
-                @"*" : @(TyphoonPrimitiveTypeString),
-                @"#" : @(TyphoonPrimitiveTypeClass),
-                @":" : @(TyphoonPrimitiveTypeSelector),
-                @"?" : @(TyphoonPrimitiveTypeUnknown)
+            @"c" : @(TyphoonPrimitiveTypeChar),
+            @"i" : @(TyphoonPrimitiveTypeInt),
+            @"s" : @(TyphoonPrimitiveTypeShort),
+            @"l" : @(TyphoonPrimitiveTypeLong),
+            @"q" : @(TyphoonPrimitiveTypeLongLong),
+            @"C" : @(TyphoonPrimitiveTypeUnsignedChar),
+            @"I" : @(TyphoonPrimitiveTypeUnsignedInt),
+            @"S" : @(TyphoonPrimitiveTypeUnsignedShort),
+            @"L" : @(TyphoonPrimitiveTypeUnsignedLong),
+            @"Q" : @(TyphoonPrimitiveTypeUnsignedLongLong),
+            @"f" : @(TyphoonPrimitiveTypeFloat),
+            @"d" : @(TyphoonPrimitiveTypeDouble),
+            @"B" : @(TyphoonPrimitiveTypeBoolean),
+            @"v" : @(TyphoonPrimitiveTypeVoid),
+            @"*" : @(TyphoonPrimitiveTypeString),
+            @"#" : @(TyphoonPrimitiveTypeClass),
+            @":" : @(TyphoonPrimitiveTypeSelector),
+            @"?" : @(TyphoonPrimitiveTypeUnknown)
         };
     });
     return _typhoonPrimitiveTypesAsStrings;
@@ -90,8 +90,7 @@
             else if ([typeCode hasSuffix:@">"])
             {
                 NSArray* components = [typeCode componentsSeparatedByString:@"<"];
-                NSString* protocol =
-                        [components[1] stringByReplacingOccurrencesOfString:@">" withString:@""];
+                NSString* protocol = [components[1] stringByReplacingOccurrencesOfString:@">" withString:@""];
                 NSString* class = components[0];
 
                 _protocol = NSProtocolFromString(protocol);
@@ -172,8 +171,8 @@
     if ([typeCode hasPrefix:@"["] && [typeCode hasSuffix:@"]"])
     {
         _isArray = YES;
-        typeCode = [[typeCode stringByReplacingOccurrencesOfString:@"[" withString:@""]
-                stringByReplacingOccurrencesOfString:@"]" withString:@""];
+        typeCode =
+            [[typeCode stringByReplacingOccurrencesOfString:@"[" withString:@""] stringByReplacingOccurrencesOfString:@"]" withString:@""];
         NSScanner* scanner = [[NSScanner alloc] initWithString:typeCode];
         [scanner scanInt:&_arrayLength];
         typeCode = [typeCode stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
@@ -196,8 +195,8 @@
     if ([typeCode hasPrefix:@"{"] && [typeCode hasSuffix:@"}"])
     {
         _isStructure = YES;
-        typeCode = [[typeCode stringByReplacingOccurrencesOfString:@"{" withString:@""]
-                stringByReplacingOccurrencesOfString:@"}" withString:@""];
+        typeCode =
+            [[typeCode stringByReplacingOccurrencesOfString:@"{" withString:@""] stringByReplacingOccurrencesOfString:@"}" withString:@""];
         _structureTypeName = [typeCode copy];
     }
     return typeCode;
@@ -205,7 +204,7 @@
 
 - (TyphoonPrimitiveType)typeFromTypeCode:(NSString*)typeCode
 {
-    return (TyphoonPrimitiveType)[[[NSDictionary dictionaryWithTyphoonPrimitiveTypesAsStrings] objectForKey:typeCode] intValue];
+    return (TyphoonPrimitiveType) [[[NSDictionary dictionaryWithTyphoonPrimitiveTypesAsStrings] objectForKey:typeCode] intValue];
 }
 
 @end

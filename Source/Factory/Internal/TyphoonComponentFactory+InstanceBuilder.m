@@ -41,7 +41,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonComponentPostProcessor.h"
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
-#import "NSInvocation+TyphoonUtils.h"
+#import "NSInvocation+TCFInstanceBuilder.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
 
 #define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type) [NSException raise:@"NSUnknownKeyException" \

@@ -17,11 +17,13 @@
 @interface TyphoonSelector : NSObject
 
 + (TyphoonSelector*)selectorWithName:(NSString*)string;
+
 + (TyphoonSelector*)selectorWithSEL:(SEL)pSelector;
 
 - (id)initWithName:(NSString*)string;
+
 - (id)initWithSEL:(SEL)pSelector;
 
-@property (readonly) SEL selector;
+@property(readonly) SEL selector;
 
 @end

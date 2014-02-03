@@ -13,7 +13,7 @@
 - (id)initWithF:(UnsatisfiableClassFDependsOnGInInitializer *)dependencyOnF;
 {
     self = [super init];
-    if (!self) return nil;
+    if (!self){ return nil;}
     
     
     

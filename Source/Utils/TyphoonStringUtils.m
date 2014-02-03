@@ -65,5 +65,10 @@
     return [emailTest evaluateWithObject:candidate];
 }
 
++ (BOOL)string:(NSString*)string containsString:(NSString*)contains
+{
+    return [string rangeOfString:contains].location != NSNotFound;
+}
+
 
 @end

@@ -16,12 +16,13 @@
 
 @implementation TyphoonAssistedFactoryCreatorOneFactory
 
-- (instancetype)initWithProtocol:(Protocol *)protocol factoryBlock:(id)factoryBlock
+- (instancetype)initWithProtocol:(Protocol*)protocol factoryBlock:(id)factoryBlock
 {
-    return [super initWithProtocol:protocol factoryDefinitionProvider:^{
+    return [super initWithProtocol:protocol factoryDefinitionProvider:^
+    {
         SEL factoryMethod = TyphoonAssistedFactoryCreatorGuessFactoryMethodForProtocol(protocol);
 
-        TyphoonAssistedFactoryDefinition *factoryDefinition = [[TyphoonAssistedFactoryDefinition alloc] init];
+        TyphoonAssistedFactoryDefinition* factoryDefinition = [[TyphoonAssistedFactoryDefinition alloc] init];
         [factoryDefinition factoryMethod:factoryMethod body:factoryBlock];
 
         return factoryDefinition;
