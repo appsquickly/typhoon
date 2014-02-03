@@ -1,10 +1,13 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  NSObject+DeallocNotification.m
-//  A-Typhoon
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
+//  All Rights Reserved.
 //
-//  Created by Aleksey Garbarev on 29.01.14.
-//  Copyright (c) 2014 Jasper Blues. All rights reserved.
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
 //
+////////////////////////////////////////////////////////////////////////////////
 
 #import "NSObject+DeallocNotification.h"
 #import <objc/runtime.h>
@@ -55,19 +58,30 @@
 
 @implementation NSObject (DeallocNotifier)
 
-static const char *kDeallocNotifierKey;
+static const char *kTyphoonDefaultDeallocNotifierKey = "kTyphoonDefaultDeallocNotifierKey";
 
 - (void) setDeallocNotificationInBlock:(dispatch_block_t)block
 {
-    DeallocCallbackObject *deallocNotifier = [[DeallocCallbackObject alloc] initWithDeallocCallback:block];
-    objc_setAssociatedObject(self, &kDeallocNotifierKey, deallocNotifier, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self setDeallocNotificationWithKey:kTyphoonDefaultDeallocNotifierKey andBlock:block];
 }
 
 - (void) removeDeallocNotification
 {
-    DeallocCallbackObject *deallocNotifier = objc_getAssociatedObject(self, &kDeallocNotifierKey);
-    [deallocNotifier removeCallback];
-    objc_setAssociatedObject(self, &kDeallocNotifierKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self removeDeallocNotificationForKey:kTyphoonDefaultDeallocNotifierKey];
 }
+
+- (void) setDeallocNotificationWithKey:(const char *)key andBlock:(dispatch_block_t)block
+{
+    DeallocCallbackObject *deallocNotifier = [[DeallocCallbackObject alloc] initWithDeallocCallback:block];
+    objc_setAssociatedObject(self, key, deallocNotifier, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (void) removeDeallocNotificationForKey:(const char *)key
+{
+    DeallocCallbackObject *deallocNotifier = objc_getAssociatedObject(self, key);
+    [deallocNotifier removeCallback];
+    objc_setAssociatedObject(self, key, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 
 @end
