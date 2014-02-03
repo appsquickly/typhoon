@@ -210,9 +210,6 @@ I'll take all the help I can get | Professional consultation is available from k
 * <a href="https://github.com/BrynCooke">Bryn Cooke</a> : Late injections & story board integration. 
 * <a href="http://www.linkedin.com/in/jeffreydroberts">Jeffrey Roberts</a>, Mobile Software Engineer at 
 <a href="http://www.riotgames.com/">Riot Games</a>, previous contributor to Swiz for ActionScript : Advice, feedback and testing. 
-* John Blanco of Rapture in Venice, LLC : contributed his 
-<a href="https://github.com/ZaBlanc/RaptureXML">lean and elegant XML library</a>. A great example that full-featured
-is not the same as heavy. 
 * <a href="http://www.jetbrains.com/">Jetbrains</a>, maker of very cool software development tools : Assistance with AppCode integration. 
 * <a href="http://es.linkedin.com/in/josegonzalezgomez/">José González Gómez</a>, Mobile and cloud developer at OPEN input : Feedback; testing, support for property placeholders in initializers. 
 * ___Your name here!!!!!!!___ 
