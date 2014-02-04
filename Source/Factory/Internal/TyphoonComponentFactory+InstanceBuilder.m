@@ -76,10 +76,9 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 {
     id initTarget = nil;
 
-    if (definition.factoryReference)
+    if (definition.factory)
     {
-        initTarget = [self componentForKey:definition.factoryReference];
-        [definition setType:[initTarget class]];
+        initTarget = [self componentForKey:definition.factory.key];
     }
     else if (definition.initializer.isClassMethod)
     {
@@ -90,7 +89,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
     NSInvocation* invocation = [definition.initializer newInvocationInFactory:self];
 
-    if (definition.factoryReference || [definition.initializer isClassMethod])
+    if (definition.factory || [definition.initializer isClassMethod])
     {
         instance = [invocation typhoon_resultOfInvokingOnInstance:initTarget];
     }

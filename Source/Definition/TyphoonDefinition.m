@@ -153,12 +153,6 @@
     [_initializer setDefinition:self];
 }
 
-- (void)setFactory:(TyphoonDefinition*)factory
-{
-    _factory = factory;
-    [self setFactoryReference:_factory.key];
-}
-
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 

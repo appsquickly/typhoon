@@ -49,7 +49,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
 - (NSInvocation*)newInvocationInFactory:(TyphoonComponentFactory*)factory
 {
-    Class clazz = [_definition type];
+    Class clazz = _definition.factory ? _definition.factory.type : _definition.type;
 
     if ([clazz respondsToSelector:_selector] == NO && [clazz instancesRespondToSelector:_selector] == NO)
     {
@@ -85,7 +85,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
 - (BOOL)resolveIsClassMethod
 {
-    if (_definition.factoryReference)
+    if (_definition.factory)
     {
         if (_isClassMethodStrategy == TyphoonComponentInitializerIsClassMethodYes)
         {

@@ -51,8 +51,8 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
     NSString* _key;
     TyphoonInitializer* _initializer;
     NSMutableSet* _injectedProperties;
-    NSString* _factoryReference;
     TyphoonScope _scope;
+    TyphoonDefinition* _factory;
 }
 
 @property(nonatomic, readonly) Class type;

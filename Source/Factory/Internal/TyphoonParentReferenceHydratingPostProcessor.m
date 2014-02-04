@@ -27,6 +27,11 @@
             TyphoonDefinition* parentDefinition = [factory definitionForKey:definition.parent.key];
             [definition setParent:parentDefinition];
         }
+        if (definition.factory)
+        {
+            TyphoonDefinition* factoryDefinition = [factory definitionForKey:definition.factory.key];
+            [definition setFactory:factoryDefinition];
+        }
     }];
 }
 

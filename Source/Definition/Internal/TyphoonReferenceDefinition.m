@@ -18,7 +18,7 @@
 
 + (instancetype)definitionReferringToComponent:(NSString*)key
 {
-    return [super withClass:[NSObject class] key:key];
+    return [[TyphoonDefinition alloc] initWithClass:[NSObject class] key:key];
 }
 
 

@@ -32,17 +32,6 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     _type = type;
 }
 
-
-- (NSString*)factoryReference
-{
-    return _factoryReference;
-}
-
-- (void)setFactoryReference:(NSString*)factoryReference;
-{
-    _factoryReference = factoryReference;
-}
-
 - (NSSet*)componentsInjectedByValue;
 {
     NSMutableSet* set = [[NSMutableSet alloc] init];

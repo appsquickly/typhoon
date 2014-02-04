@@ -19,10 +19,6 @@
 
 - (void)setType:(Class)type;
 
-- (NSString*)factoryReference;
-
-- (void)setFactoryReference:(NSString*)factoryReference;
-
 - (NSSet*)componentsInjectedByValue;
 
 - (void)injectProperty:(SEL)withSelector withReference:(NSString*)reference;

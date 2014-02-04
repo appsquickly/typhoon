@@ -19,6 +19,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 #import "TyphoonResource.h"
 #import "TyphoonInitializer.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
+#import "TyphoonReferenceDefinition.h"
 
 @implementation TyphoonDefinition (Infrastructure)
 
@@ -71,8 +72,11 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
         _type = clazz;
         _key = [key copy];
         _scope = TyphoonScopeObjectGraph;
-        _factoryReference = [factoryComponent copy];
         _injectedProperties = [[NSMutableSet alloc] init];
+        if (factoryComponent)
+        {
+            _factory = [TyphoonReferenceDefinition definitionReferringToComponent:factoryComponent];
+        }
         [self validateRequiredParametersAreSet];
     }
     return self;
