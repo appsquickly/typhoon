@@ -17,6 +17,6 @@
 
 @property(nonatomic, strong, readonly) NSString* reference;
 
-- (instancetype)initWithReference:(NSString *)reference;
+- (instancetype)initWithReference:(NSString*)reference;
 
 @end

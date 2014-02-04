@@ -13,7 +13,7 @@
 - (id)initWithG:(UnsatisfiableClassGDependsOnFInInitializer *)dependencyOnG;
 {
     self = [super init];
-    if (!self) return nil;
+    if (!self){ return nil;}
     
 
     

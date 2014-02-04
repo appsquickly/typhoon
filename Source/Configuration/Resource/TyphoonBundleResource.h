@@ -26,7 +26,8 @@
 
 
 + (id <TyphoonResource>)withName:(NSString*)name;
-+ (id <TyphoonResource>)withName:(NSString *)name inBundle:(NSBundle *)bundle;
+
++ (id <TyphoonResource>)withName:(NSString*)name inBundle:(NSBundle*)bundle;
 
 
 @end

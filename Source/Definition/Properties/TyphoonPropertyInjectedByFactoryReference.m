@@ -17,10 +17,11 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (instancetype)initWithName:(NSString *)name reference:(NSString *)reference keyPath:(NSString *)keyPath
+- (instancetype)initWithName:(NSString*)name reference:(NSString*)reference keyPath:(NSString*)keyPath
 {
     self = [super initWithName:name reference:reference];
-    if (self) {
+    if (self)
+    {
         _keyPath = keyPath;
     }
     return self;

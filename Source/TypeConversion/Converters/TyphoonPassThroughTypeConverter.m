@@ -40,7 +40,7 @@
     else
     {
         return [NSString class];
-    }    
+    }
 }
 
 - (id)convert:(NSString*)stringValue

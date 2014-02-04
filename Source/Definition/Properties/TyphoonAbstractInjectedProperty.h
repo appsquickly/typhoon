@@ -34,8 +34,8 @@ typedef enum
     TyphoonPropertyInjectionType _injectionType;
 }
 
-@property (nonatomic, strong) NSString* name;
-@property (nonatomic) TyphoonPropertyInjectionType injectionType;
+@property(nonatomic, strong) NSString* name;
+@property(nonatomic) TyphoonPropertyInjectionType injectionType;
 
 
 @end

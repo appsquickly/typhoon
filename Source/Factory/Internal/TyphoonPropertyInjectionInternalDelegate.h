@@ -21,6 +21,7 @@ typedef id (^TyphoonPropertyInjectionLazyValue)(void);
 
 @optional
 
-- (BOOL)shouldInjectProperty:(TyphoonAbstractInjectedProperty*)property withType:(TyphoonTypeDescriptor*)type lazyValue:(TyphoonPropertyInjectionLazyValue)lazyValue;
+- (BOOL)shouldInjectProperty:(TyphoonAbstractInjectedProperty*)property withType:(TyphoonTypeDescriptor*)type
+    lazyValue:(TyphoonPropertyInjectionLazyValue)lazyValue;
 
 @end

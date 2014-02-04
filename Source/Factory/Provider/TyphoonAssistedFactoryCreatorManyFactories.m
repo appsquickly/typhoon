@@ -14,10 +14,11 @@
 
 @implementation TyphoonAssistedFactoryCreatorManyFactories
 
-- (instancetype)initWithProtocol:(Protocol *)protocol factories:(TyphoonAssistedFactoryDefinitionBlock)definitionBlock
+- (instancetype)initWithProtocol:(Protocol*)protocol factories:(TyphoonAssistedFactoryDefinitionBlock)definitionBlock
 {
-    return [super initWithProtocol:protocol factoryDefinitionProvider:^{
-        TyphoonAssistedFactoryDefinition *factoryDefinition = [[TyphoonAssistedFactoryDefinition alloc] init];
+    return [super initWithProtocol:protocol factoryDefinitionProvider:^
+    {
+        TyphoonAssistedFactoryDefinition* factoryDefinition = [[TyphoonAssistedFactoryDefinition alloc] init];
         [factoryDefinition configure:definitionBlock];
 
         return factoryDefinition;

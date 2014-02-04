@@ -34,7 +34,7 @@
   * Objects returned by methods from this category are retained, so you responsable to release,  
   * or ARC will do it for you gracefully
  */
-@interface NSInvocation (TyphoonUtils)
+@interface NSInvocation (TCFInstanceBuilder)
 
 /** Return result of invoking self on provided instance. Note that result is retained */
 - (id)typhoon_resultOfInvokingOnInstance:(id)instance NS_RETURNS_RETAINED;

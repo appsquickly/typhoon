@@ -16,7 +16,7 @@
 /**
  * Lazily returns a TyphoonAssistedFactoryDefinition.
  */
-typedef TyphoonAssistedFactoryDefinition *(^TyphoonAssistedFactoryDefinitionProvider)(void);
+typedef TyphoonAssistedFactoryDefinition* (^TyphoonAssistedFactoryDefinitionProvider)(void);
 
 /**
  * @see TyphoonAssistedFactoryCreatorForEachMethodInProtocol
@@ -34,7 +34,7 @@ typedef void (^TyphoonAssistedFactoryCreatorPropertyEnumeration)(objc_property_t
  * The protocol should only have one instance method, beside its property
  * getters. Otherwise this method behaviour is undefined.
  */
-SEL TyphoonAssistedFactoryCreatorGuessFactoryMethodForProtocol(Protocol *protocol);
+SEL TyphoonAssistedFactoryCreatorGuessFactoryMethodForProtocol(Protocol* protocol);
 
 /**
  * Enumerates over all the methods in a class.
@@ -44,24 +44,26 @@ void TyphoonAssistedFactoryCreatorForEachMethodInClass(Class klass, TyphoonAssis
 /**
  * Enumerates over all the methods in a protocol.
  */
-void TyphoonAssistedFactoryCreatorForEachMethodInProtocol(Protocol *protocol, TyphoonAssistedFactoryCreatorMethodEnumeration enumerationBlock);
+void TyphoonAssistedFactoryCreatorForEachMethodInProtocol
+    (Protocol* protocol, TyphoonAssistedFactoryCreatorMethodEnumeration enumerationBlock);
 
 /**
  * Enumerates over all the properties in a protocol.
  */
-void TyphoonAssistedFactoryCreatorForEachPropertyInProtocol(Protocol *protocol, TyphoonAssistedFactoryCreatorPropertyEnumeration enumerationBlock);
+void TyphoonAssistedFactoryCreatorForEachPropertyInProtocol
+    (Protocol* protocol, TyphoonAssistedFactoryCreatorPropertyEnumeration enumerationBlock);
 
 
 @interface TyphoonAssistedFactoryCreator ()
 {
 @protected
-    Protocol *_protocol;
+    Protocol* _protocol;
 }
 
 /**
  * Creates a new factory creator for the given protocol and the given lazy
  * factory definition.
  */
-- (instancetype)initWithProtocol:(Protocol *)protocol factoryDefinitionProvider:(TyphoonAssistedFactoryDefinitionProvider)definitionProvider;
+- (instancetype)initWithProtocol:(Protocol*)protocol factoryDefinitionProvider:(TyphoonAssistedFactoryDefinitionProvider)definitionProvider;
 
 @end

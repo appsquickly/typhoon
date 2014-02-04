@@ -25,11 +25,11 @@
 
 static NSMutableArray* reservedSelectorsAsStrings;
 
-@interface TyphoonAssembly()
+@interface TyphoonAssembly ()
 
-@property (readwrite) NSSet *definitionSelectors;
+@property(readwrite) NSSet* definitionSelectors;
 
-@property (readonly) TyphoonAssemblyAdviser* adviser;
+@property(readonly) TyphoonAssemblyAdviser* adviser;
 
 @end
 
@@ -51,7 +51,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 + (instancetype)defaultAssembly
 {
-    return (TyphoonAssembly*)[TyphoonComponentFactory defaultFactory];
+    return (TyphoonAssembly*) [TyphoonComponentFactory defaultFactory];
 }
 
 + (void)load
@@ -130,7 +130,7 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 + (IMP)implementationToConstructDefinitionForSEL:(SEL)selWithAdvicePrefix
 {
-    return imp_implementationWithBlock((__bridge id)objc_unretainedPointer((TyphoonDefinition*)^(TyphoonAssembly* me)
+    return imp_implementationWithBlock((__bridge id) objc_unretainedPointer((TyphoonDefinition*) ^(TyphoonAssembly* me)
     {
         NSString* key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selWithAdvicePrefix];
         return [me->_definitionBuilder builtDefinitionForKey:key];
@@ -162,10 +162,11 @@ static NSMutableArray* reservedSelectorsAsStrings;
 
 - (void)resolveCollaboratingAssemblies
 {
-    TyphoonCollaboratingAssemblyPropertyEnumerator* enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc]
-            initWithAssembly:self];
+    TyphoonCollaboratingAssemblyPropertyEnumerator
+        * enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:self];
 
-    for (NSString *propertyName in enumerator.collaboratingAssemblyProperties) {
+    for (NSString* propertyName in enumerator.collaboratingAssemblyProperties)
+    {
         [self setCollaboratingAssemblyProxyOnPropertyNamed:propertyName];
     }
 }

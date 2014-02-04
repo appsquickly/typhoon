@@ -32,7 +32,7 @@
 
 - (long)convertToLong:(NSString*)stringValue
 {
-    return (long)[stringValue longLongValue];
+    return (long) [stringValue longLongValue];
 }
 
 - (long long)convertToLongLong:(NSString*)stringValue
@@ -42,22 +42,22 @@
 
 - (unsigned char)convertToUnsignedChar:(NSString*)stringValue
 {
-    return (unsigned char)[stringValue intValue];
+    return (unsigned char) [stringValue intValue];
 }
 
 - (unsigned int)convertToUnsignedInt:(NSString*)stringValue
 {
-    return (unsigned int)[stringValue longLongValue];
+    return (unsigned int) [stringValue longLongValue];
 }
 
 - (unsigned short)convertToUnsignedShort:(NSString*)stringValue
 {
-    return (unsigned short)[stringValue intValue];
+    return (unsigned short) [stringValue intValue];
 }
 
 - (unsigned long)convertToUnsignedLong:(NSString*)stringValue
 {
-    return (unsigned long)[stringValue longLongValue];
+    return (unsigned long) [stringValue longLongValue];
 }
 
 - (unsigned long long)convertToUnsignedLongLong:(NSString*)stringValue
@@ -96,11 +96,12 @@
 }
 
 /* ====================================================================================================================================== */
-- (id) valueFromText:(NSString *)textValue withType:(TyphoonTypeDescriptor *)requiredType
+- (id)valueFromText:(NSString*)textValue withType:(TyphoonTypeDescriptor*)requiredType
 {
     id value = nil;
-    
-    switch (requiredType.primitiveType) {
+
+    switch (requiredType.primitiveType)
+    {
         case TyphoonPrimitiveTypeBoolean:
             value = [NSNumber numberWithBool:[self convertToBoolean:textValue]];
             break;
@@ -149,12 +150,16 @@
             value = [NSValue valueWithPointer:[self convertToSelector:textValue]];
             break;
         case TyphoonPrimitiveTypeUnknown:
-        case TyphoonPrimitiveTypeVoid: {
+        case TyphoonPrimitiveTypeVoid:
+        {
             /* Inject all pointers to void and unknown pointers just like void pointers */
-            if (requiredType.isPointer) {
-                void *pointer = [self convertToInt:textValue];
+            if (requiredType.isPointer)
+            {
+                void* pointer = [self convertToInt:textValue];
                 value = [NSValue valueWithPointer:pointer];
-            } else {
+            }
+            else
+            {
                 [NSException raise:NSInvalidArgumentException format:@"Type for %@ is not supported.", requiredType];
             }
             break;
@@ -164,9 +169,9 @@
 }
 
 - (void)setPrimitiveArgumentFor:(NSInvocation*)invocation index:(NSUInteger)index textValue:(NSString*)textValue
-        requiredType:(TyphoonTypeDescriptor*)requiredType
+    requiredType:(TyphoonTypeDescriptor*)requiredType
 {
-    if (requiredType.primitiveType == TyphoonPrimitiveTypeBoolean||requiredType.primitiveType == TyphoonPrimitiveTypeChar)
+    if (requiredType.primitiveType == TyphoonPrimitiveTypeBoolean || requiredType.primitiveType == TyphoonPrimitiveTypeChar)
     {
         BOOL converted = [self convertToBoolean:textValue];
         [invocation setArgument:&converted atIndex:index];
@@ -228,8 +233,8 @@
     }
     else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedShort)
     {
-      unsigned short converted = [self convertToUnsignedShort:textValue];
-      [invocation setArgument:&converted atIndex:index];
+        unsigned short converted = [self convertToUnsignedShort:textValue];
+        [invocation setArgument:&converted atIndex:index];
     }
     else if (requiredType.primitiveType == TyphoonPrimitiveTypeUnsignedLong)
     {

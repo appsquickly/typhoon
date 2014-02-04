@@ -9,53 +9,63 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "NSValue+InvocationConfigure.h"
+#import "NSValue+TCFInstanceBuilder.h"
 #import "TyphoonStringUtils.h"
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+
 #endif
 
 #if TARGET_OS_MAC
 #import <QuartzCore/QuartzCore.h>
+
 #endif
 
-@implementation NSValue (InvocationConfigure)
+@implementation NSValue (TCFInstanceBuilder)
 
-- (void)setAsArgumentForInvocation:(NSInvocation*)invocation atIndex:(NSUInteger)index
+- (void)typhoon_setAsArgumentForInvocation:(NSInvocation*)invocation atIndex:(NSUInteger)index
 {
-    const char *type = [self objCType];
-    
-    if (CStringEquals(type, @encode(void *))) {
+    const char* type = [self objCType];
+
+    if (CStringEquals(type, @encode(void*)))
+    {
         void* converted = [self pointerValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(NSRange))) {
+    else if (CStringEquals(type, @encode(NSRange)))
+    {
         NSRange converted = [self rangeValue];
         [invocation setArgument:&converted atIndex:index];
     }
 #if TARGET_OS_IPHONE
-    else if (CStringEquals(type, @encode(CGPoint))) {
+    else if (CStringEquals(type, @encode(CGPoint)))
+    {
         CGPoint converted = [self CGPointValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(CGRect))) {
+    else if (CStringEquals(type, @encode(CGRect)))
+    {
         CGRect converted = [self CGRectValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(CGSize))) {
+    else if (CStringEquals(type, @encode(CGSize)))
+    {
         CGSize converted = [self CGSizeValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(CGAffineTransform))) {
+    else if (CStringEquals(type, @encode(CGAffineTransform)))
+    {
         CGAffineTransform converted = [self CGAffineTransformValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(UIEdgeInsets))) {
+    else if (CStringEquals(type, @encode(UIEdgeInsets)))
+    {
         UIEdgeInsets converted = [self UIEdgeInsetsValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(UIOffset))) {
+    else if (CStringEquals(type, @encode(UIOffset)))
+    {
         UIOffset converted = [self UIOffsetValue];
         [invocation setArgument:&converted atIndex:index];
     }
@@ -77,7 +87,8 @@
         [invocation setArgument:&converted atIndex:index];
     }
 #endif
-    else {
+    else
+    {
         [NSException raise:@"InvalidValueType" format:@"Type '%s' is not supported.", type];
     }
 }
@@ -86,62 +97,77 @@
 
 @implementation NSNumber (InvocationConfigure)
 
-- (void)setAsArgumentForInvocation:(NSInvocation*)invocation atIndex:(NSUInteger)index
+- (void)typhoon_setAsArgumentForInvocation:(NSInvocation*)invocation atIndex:(NSUInteger)index
 {
-    const char *type = [self objCType];
-    
-    if (CStringEquals(type, @encode(int))) {
+    const char* type = [self objCType];
+
+    if (CStringEquals(type, @encode(int)))
+    {
         int converted = [self intValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(unsigned int))) {
+    else if (CStringEquals(type, @encode(unsigned int)))
+    {
         unsigned int converted = [self unsignedIntValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(char))) {
+    else if (CStringEquals(type, @encode(char)))
+    {
         char converted = [self charValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(unsigned char))) {
+    else if (CStringEquals(type, @encode(unsigned char)))
+    {
         unsigned char converted = [self unsignedCharValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(bool))) {
+    else if (CStringEquals(type, @encode(bool)))
+    {
         bool converted = [self boolValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(short))) {
+    else if (CStringEquals(type, @encode(short)))
+    {
         short converted = [self shortValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(unsigned short))) {
+    else if (CStringEquals(type, @encode(unsigned short)))
+    {
         unsigned short converted = [self unsignedShortValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(float))) {
+    else if (CStringEquals(type, @encode(float)))
+    {
         float converted = [self floatValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(double))) {
+    else if (CStringEquals(type, @encode(double)))
+    {
         double converted = [self doubleValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(long))) {
+    else if (CStringEquals(type, @encode(long)))
+    {
         long converted = [self longValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(unsigned long))) {
+    else if (CStringEquals(type, @encode(unsigned long)))
+    {
         unsigned long converted = [self unsignedLongValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(long long))) {
+    else if (CStringEquals(type, @encode(long long)))
+    {
         long long converted = [self longLongValue];
         [invocation setArgument:&converted atIndex:index];
     }
-    else if (CStringEquals(type, @encode(unsigned long long))) {
+    else if (CStringEquals(type, @encode(unsigned long long)))
+    {
         unsigned long long converted = [self unsignedLongLongValue];
         [invocation setArgument:&converted atIndex:index];
-    } else {
+    }
+    else
+    {
         [NSException raise:@"InvalidNumberType" format:@"Type '%s' is not supported.", type];
     }
 }

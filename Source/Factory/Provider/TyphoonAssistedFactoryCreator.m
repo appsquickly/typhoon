@@ -27,11 +27,13 @@ SEL TyphoonAssistedFactoryCreatorGuessFactoryMethodForProtocol(Protocol* protoco
     NSMutableSet* propertyNames = [NSMutableSet set];
     NSMutableSet* methodNames = [NSMutableSet set];
 
-    TyphoonAssistedFactoryCreatorForEachMethodInProtocol(protocol, ^(struct objc_method_description methodDescription) {
+    TyphoonAssistedFactoryCreatorForEachMethodInProtocol(protocol, ^(struct objc_method_description methodDescription)
+    {
         [methodNames addObject:NSStringFromSelector(methodDescription.name)];
     });
 
-    TyphoonAssistedFactoryCreatorForEachPropertyInProtocol(protocol, ^(objc_property_t property) {
+    TyphoonAssistedFactoryCreatorForEachPropertyInProtocol(protocol, ^(objc_property_t property)
+    {
         [propertyNames addObject:[NSString stringWithCString:property_getName(property) encoding:NSASCIIStringEncoding]];
     });
 
@@ -41,7 +43,8 @@ SEL TyphoonAssistedFactoryCreatorGuessFactoryMethodForProtocol(Protocol* protoco
     return NSSelectorFromString(factoryMethod);
 }
 
-void TyphoonAssistedFactoryCreatorForEachMethodInProtocol(Protocol *protocol, TyphoonAssistedFactoryCreatorMethodEnumeration enumerationBlock)
+void TyphoonAssistedFactoryCreatorForEachMethodInProtocol(Protocol* protocol,
+    TyphoonAssistedFactoryCreatorMethodEnumeration enumerationBlock)
 {
     unsigned int methodCount = 0;
     struct objc_method_description* methodDescriptions = protocol_copyMethodDescriptionList(protocol, YES, YES, &methodCount);
@@ -53,7 +56,8 @@ void TyphoonAssistedFactoryCreatorForEachMethodInProtocol(Protocol *protocol, Ty
     free(methodDescriptions);
 }
 
-void TyphoonAssistedFactoryCreatorForEachPropertyInProtocol(Protocol *protocol, TyphoonAssistedFactoryCreatorPropertyEnumeration enumerationBlock)
+void TyphoonAssistedFactoryCreatorForEachPropertyInProtocol(Protocol* protocol,
+    TyphoonAssistedFactoryCreatorPropertyEnumeration enumerationBlock)
 {
     unsigned int propertiesCount = 0;
     objc_property_t* properties = protocol_copyPropertyList(protocol, &propertiesCount);
@@ -68,11 +72,11 @@ void TyphoonAssistedFactoryCreatorForEachPropertyInProtocol(Protocol *protocol, 
 void TyphoonAssistedFactoryCreatorForEachMethodInClass(Class klass, TyphoonAssistedFactoryCreatorMethodEnumeration enumerationBlock)
 {
     unsigned int methodCount = 0;
-    Method *methods = class_copyMethodList(klass, &methodCount);
+    Method* methods = class_copyMethodList(klass, &methodCount);
     for (unsigned int idx = 0; idx < methodCount; idx++)
     {
         Method method = methods[idx];
-        struct objc_method_description *methodDescription = method_getDescription(method);
+        struct objc_method_description* methodDescription = method_getDescription(method);
         enumerationBlock(*methodDescription);
     }
     free(methods);
@@ -87,8 +91,7 @@ static dispatch_queue_t sQueue;
 
 static NSString* GetFactoryClassName(Protocol* protocol)
 {
-    return [NSString stringWithFormat:@"%s__TyphoonAssistedFactoryImpl",
-                                      protocol_getName(protocol)];
+    return [NSString stringWithFormat:@"%s__TyphoonAssistedFactoryImpl", protocol_getName(protocol)];
 }
 
 static void AssertValidProtocolForFactory(Protocol* protocol, TyphoonAssistedFactoryDefinition* factoryDefinition)
@@ -103,9 +106,9 @@ static void AssertValidProtocolForFactory(Protocol* protocol, TyphoonAssistedFac
 
     // The readonly properties are returned also as their getter methods, so we
     // need to remove those to check that there are only n factory methods left.
-    NSCAssert(methodCount - propertiesCount == [factoryDefinition countOfFactoryMethods],
-    @"protocol factory method count (%u) differs from factory defintion method count (%lu)",
-    methodCount - propertiesCount, (unsigned long)[factoryDefinition countOfFactoryMethods]);
+    NSCAssert(methodCount - propertiesCount ==
+        [factoryDefinition countOfFactoryMethods], @"protocol factory method count (%u) differs from factory defintion method count (%lu)",
+    methodCount - propertiesCount, (unsigned long) [factoryDefinition countOfFactoryMethods]);
 }
 
 static void AddPropertyGetter(Class factoryClass, objc_property_t property)
@@ -124,11 +127,11 @@ static void AddPropertyGetter(Class factoryClass, objc_property_t property)
     {
         Ivar ivar = class_getInstanceVariable([_self class], [name UTF8String]);
         id value = object_getIvar(_self, ivar);
-        @synchronized(_self)
+        @synchronized (_self)
         {
             if (!value)
             {
-                value = ((TyphoonPropertyInjectionLazyValue)[_self injectionValueForProperty:name])();
+                value = ((TyphoonPropertyInjectionLazyValue) [_self injectionValueForProperty:name])();
                 object_setIvar(_self, ivar, value);
             }
         }
@@ -162,8 +165,7 @@ static void AddFactoryMethodsToFactory(Class factoryClass, Protocol* protocol, T
 {
     [definition enumerateFactoryMethods:^(id <TyphoonAssistedFactoryMethod> factoryMethod)
     {
-        [[TyphoonAssistedFactoryMethodCreator creatorFor:factoryMethod]
-                createFromProtocol:protocol inClass:factoryClass];
+        [[TyphoonAssistedFactoryMethodCreator creatorFor:factoryMethod] createFromProtocol:protocol inClass:factoryClass];
     }];
 }
 

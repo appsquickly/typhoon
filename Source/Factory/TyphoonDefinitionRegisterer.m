@@ -44,8 +44,9 @@
 {
     if ([[_definition.initializer parameterNames] count] != [[_definition.initializer injectedParameters] count])
     {
-        [NSException raise:NSInvalidArgumentException format:
-                @"Supplied parameters does not match number of parameters in initializer. Inject with null if necessary. Defintion: %@", _definition];
+        [NSException raise:NSInvalidArgumentException
+            format:@"Supplied parameters does not match number of parameters in initializer. Inject with null if necessary. Defintion: %@",
+                   _definition];
     }
 
     [self setDefinitionKeyRandomlyIfNeeded];
@@ -103,8 +104,8 @@
 - (BOOL)definitionIsInfrastructureComponent
 {
     if ([_definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)] ||
-            [_definition.type conformsToProtocol:@protocol(TyphoonComponentPostProcessor)] ||
-            [_definition.type conformsToProtocol:@protocol(TyphoonTypeConverter)])
+        [_definition.type conformsToProtocol:@protocol(TyphoonComponentPostProcessor)] ||
+        [_definition.type conformsToProtocol:@protocol(TyphoonTypeConverter)])
     {
         return YES;
     }

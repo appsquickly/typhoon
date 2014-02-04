@@ -13,5 +13,5 @@
 #import "TyphoonTypeConverter.h"
 
 
-@interface TyphoonBundledImageTypeConverter : NSObject<TyphoonTypeConverter>
+@interface TyphoonBundledImageTypeConverter : NSObject <TyphoonTypeConverter>
 @end

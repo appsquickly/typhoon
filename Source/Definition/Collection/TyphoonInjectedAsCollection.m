@@ -41,12 +41,12 @@
 
 - (void)addItemWithComponentName:(NSString*)componentName
 {
-    [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:componentName]];
+    [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentKey:componentName]];
 }
 
 - (void)addItemWithDefinition:(TyphoonDefinition*)definition
 {
-    [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentName:definition.key]];
+    [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentKey:definition.key]];
 }
 
 - (NSArray*)values

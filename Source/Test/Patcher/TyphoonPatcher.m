@@ -73,7 +73,7 @@ static NSString* const TYPHOON_PATCHER_SUFFIX = @"$$$patcher";
     for (NSString* key in [_patches allKeys])
     {
         TyphoonDefinition* patchFactory =
-                [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:[self patchFactoryKeyForDefinitionKey:key]];
+            [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:[self patchFactoryKeyForDefinitionKey:key]];
         patchFactory.initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithCreationBlock:)];
         [patchFactory.initializer injectWithObjectInstance:[_patches objectForKey:key]];
         [newDefinitions addObject:patchFactory];

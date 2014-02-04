@@ -204,11 +204,15 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 
 - (TyphoonScope)scopeForStringValue:(NSString*)scope
 {
-    NSArray* acceptedScopes = @[@"default", @"prototype", @"singleton"];
+    NSArray* acceptedScopes = @[
+        @"default",
+        @"prototype",
+        @"singleton"
+    ];
     if (([scope length] > 0) && (![acceptedScopes containsObject:scope]))
     {
-        [NSException raise:NSInvalidArgumentException format:
-                @"Scope was '%@', but can only be one of ['default', 'prototype', 'singleton'", scope];
+        [NSException raise:NSInvalidArgumentException format:@"Scope was '%@', but can only be one of ['default', 'prototype', 'singleton'",
+                                                             scope];
     }
 
     // Here, we don't follow the Spring's implementation : the "default" scope is the TyphoonScopeObjectGraph.

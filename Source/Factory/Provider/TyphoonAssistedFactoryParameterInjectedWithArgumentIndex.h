@@ -21,10 +21,10 @@
 @interface TyphoonAssistedFactoryParameterInjectedWithArgumentIndex : NSObject <TyphoonAssistedFactoryInjectedParameter>
 
 /** The parameter index */
-@property (nonatomic, assign, readonly) NSUInteger parameterIndex;
+@property(nonatomic, assign, readonly) NSUInteger parameterIndex;
 
 /** The factory method argument index */
-@property (nonatomic, assign, readonly) NSUInteger argumentIndex;
+@property(nonatomic, assign, readonly) NSUInteger argumentIndex;
 
 /** Creates a parameter description from the given parameterIndex and argumentIndex */
 - (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex argumentIndex:(NSUInteger)argumentIndex;

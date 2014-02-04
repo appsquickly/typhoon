@@ -29,6 +29,8 @@
 
 + (BOOL)isMemberOfCharacterSet:(NSString*)string characterSet:(NSMutableCharacterSet*)characterSet;
 
++ (BOOL)string:(NSString*)string containsString:(NSString*)contains;
+
 @end
 
 #define CStringEquals(stringA, stringB) (stringA == stringB || strcmp(stringA, stringB) == 0)

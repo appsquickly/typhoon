@@ -1,65 +1,65 @@
 <assembly xmlns="http://www.typhoonframework.org/schema/assembly"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.typhoonframework.org/schema/assembly
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.typhoonframework.org/schema/assembly
 	http://www.typhoonframework.org/schema/assembly.xsd">
-	
+
     <description>
         Enumerate all cases for the lazy-init attribute.
-		Please, use this convention:
+        Please, use this convention:
         - if the component is default, set a key that contains 'default'
-		- if the component is a prototype, set a key that contains 'prototype';
-		- if the component is a singleton, set a key that contains 'singleton';
-		- if the component is a lazy singleton, set a key that contains 'lazySingleton';
+        - if the component is a prototype, set a key that contains 'prototype';
+        - if the component is a singleton, set a key that contains 'singleton';
+        - if the component is a lazy singleton, set a key that contains 'lazySingleton';
     </description>
-	
+
     <component class="Knight" key="prototype1" lazy-init="true">
-		<description>
-			Prototype and lazy. Should be interpreted as a prototype.
-		</description>
-	</component>
-	
-	<component class="Knight" key="prototype2" lazy-init="false">
-		<description>
-			Prototype and not lazy. Should be interpreted as a prototype.
-		</description>
-	</component>
-	
-	<component class="Knight" key="lazySingleton1" lazy-init="true" scope="singleton">
-		<description>
-			Singleton and lazy. Should be interpreted as a lazy singleton.
-		</description>
-	</component>
-	
-	<component class="Knight" key="singleton1" lazy-init="false" scope="singleton">
-		<description>
-			Singleton and not lazy. Should be interpreted as singleton.
-		</description>
-	</component>
-	
-	<component class="Knight" key="singleton2" lazy-init="Wr0ngValue" scope="singleton">
-		<description>
-			Singleton and not bad value for the lazy-init. Should be interpreted
-			as singleton.
-		</description>
-	</component>
-	
-	<component class="Knight" key="singleton3" scope="singleton">
-		<description>
-			Singleton and no value for lazy-init. Should be interpreted
-			as singleton.
-		</description>
-	</component>
-	
-	<component class="Knight" key="lazySingleton2" lazy-init="YES" scope="singleton">
-		<description>
-			Singleton and lasy. Should be interpreted as a lasy singleton.
-		</description>
-	</component>
+        <description>
+            Prototype and lazy. Should be interpreted as a prototype.
+        </description>
+    </component>
+
+    <component class="Knight" key="prototype2" lazy-init="false">
+        <description>
+            Prototype and not lazy. Should be interpreted as a prototype.
+        </description>
+    </component>
+
+    <component class="Knight" key="lazySingleton1" lazy-init="true" scope="singleton">
+        <description>
+            Singleton and lazy. Should be interpreted as a lazy singleton.
+        </description>
+    </component>
+
+    <component class="Knight" key="singleton1" lazy-init="false" scope="singleton">
+        <description>
+            Singleton and not lazy. Should be interpreted as singleton.
+        </description>
+    </component>
+
+    <component class="Knight" key="singleton2" lazy-init="Wr0ngValue" scope="singleton">
+        <description>
+            Singleton and not bad value for the lazy-init. Should be interpreted
+            as singleton.
+        </description>
+    </component>
+
+    <component class="Knight" key="singleton3" scope="singleton">
+        <description>
+            Singleton and no value for lazy-init. Should be interpreted
+            as singleton.
+        </description>
+    </component>
+
+    <component class="Knight" key="lazySingleton2" lazy-init="YES" scope="singleton">
+        <description>
+            Singleton and lasy. Should be interpreted as a lasy singleton.
+        </description>
+    </component>
 
     <component class="Knight" key="defaultScope1" lazy-init="NO" scope="default">
         <description>
             Singleton and lasy. Should be interpreted as a lasy singleton.
         </description>
     </component>
-	
+
 </assembly>

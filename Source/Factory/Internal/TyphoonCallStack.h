@@ -26,7 +26,7 @@
 /**
  * Peeks instance for the given key. If the key represents an instance undergoing initializer injection, raises a circular init exception.
  */
-- (id)peekInstanceForKey:(NSString *)key;
+- (id)peekInstanceForKey:(NSString*)key;
 
 - (BOOL)isResolvingKey:(NSString*)key;
 

@@ -152,7 +152,7 @@
     // call the user's assembly method to get it.
     SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key];
     id cached = objc_msgSend(self.assembly,
-            sel); // the advisedSEL will call through to the original, unwrapped implementation because prepareForUse has been called, and all our definition methods have been swizzled.
+        sel); // the advisedSEL will call through to the original, unwrapped implementation because prepareForUse has been called, and all our definition methods have been swizzled.
     // This method will likely call through to other definition methods on the assembly, which will go through the advising machinery because of this swizzling.
     // Therefore, the definitions a definition depends on will be fully constructed before they are needed to construct that definition.
     return cached;

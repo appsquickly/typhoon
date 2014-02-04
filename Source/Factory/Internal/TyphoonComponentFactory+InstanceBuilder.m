@@ -41,7 +41,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonComponentPostProcessor.h"
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
-#import "NSInvocation+TyphoonUtils.h"
+#import "NSInvocation+TCFInstanceBuilder.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
 
 #define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type) [NSException raise:@"NSUnknownKeyException" \
@@ -332,7 +332,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         if (value.type == TyphoonCollectionValueTypeByReference)
         {
             TyphoonByReferenceCollectionValue* byReferenceValue = (TyphoonByReferenceCollectionValue*) value;
-            id reference = [self componentForKey:byReferenceValue.componentName];
+            id reference = [self componentForKey:byReferenceValue.componentKey];
             [collection addObject:reference];
         }
         else if (value.type == TyphoonCollectionValueTypeConvertedText)

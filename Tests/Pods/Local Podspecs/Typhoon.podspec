@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = 'Typhoon'
-  spec.version = '1.7.5'
+  spec.version = '1.7.7'
   spec.license = 'Apache2.0'
   spec.summary = 'A dependency injection container for Objective-C. Light-weight, yet flexible and full-featured.'
   spec.homepage = 'http://www.typhoonframework.org'
@@ -14,7 +14,7 @@ Pod::Spec.new do |spec|
   spec.xcconfig = {'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2'}
 
   spec.source_files = 'Source/**/*.{h,m}'
-  non_arc_files = 'Source/Factory/Internal/NSInvocation+TyphoonUtils.{h,m}'
+  non_arc_files = 'Source/Factory/Internal/NSInvocation+TCFInstanceBuilder.{h,m}'
   spec.ios.exclude_files = 'Source/osx', non_arc_files
   spec.osx.exclude_files = 'Source/ios', non_arc_files
 

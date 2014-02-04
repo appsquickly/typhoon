@@ -25,45 +25,45 @@
     </component>
 
 
-	<component class="PrototypeInitInjected" key="prototypeInitInjected" scope="prototype">
-		<initializer selector="initWithDependency:">
-			<argument parameterName="dependency" ref="prototypePropertyInjected"/>
-		</initializer>
-	</component>
+    <component class="PrototypeInitInjected" key="prototypeInitInjected" scope="prototype">
+        <initializer selector="initWithDependency:">
+            <argument parameterName="dependency" ref="prototypePropertyInjected"/>
+        </initializer>
+    </component>
 
-	<component class="PrototypePropertyInjected" key="prototypePropertyInjected" scope="prototype">
+    <component class="PrototypePropertyInjected" key="prototypePropertyInjected" scope="prototype">
         <property name="prototypeInitInjected" ref="prototypeInitInjected"/>
     </component>
 
 
-	<component class="CROSingletonA" key="CROSingletonA" scope="singleton">
+    <component class="CROSingletonA" key="CROSingletonA" scope="singleton">
         <property name="prototypeA" ref="CROPrototypeA"/>
         <property name="prototypeB" ref="CROPrototypeB"/>
     </component>
 
     <component class="CROPrototypeA" key="CROPrototypeA" scope="prototype">
-		<initializer selector="initWithCROPrototypeB:">
-			<argument parameterName="cROPrototypeB" ref="CROPrototypeB"/>
-		</initializer>
+        <initializer selector="initWithCROPrototypeB:">
+            <argument parameterName="cROPrototypeB" ref="CROPrototypeB"/>
+        </initializer>
     </component>
 
     <component class="CROPrototypeB" key="CROPrototypeB" scope="prototype">
-		<initializer selector="initWithCROSingletonA:">
-			<argument parameterName="cROSingletonA" ref="CROSingletonA"/>
-		</initializer>
+        <initializer selector="initWithCROSingletonA:">
+            <argument parameterName="cROSingletonA" ref="CROSingletonA"/>
+        </initializer>
     </component>
-    
-    
+
+
     <component class="CROPrototypeA" key="incorrectPrototypeA" scope="prototype">
-		<initializer selector="initWithCROPrototypeB:">
-			<argument parameterName="cROPrototypeB" ref="incorrectPrototypeB"/>
-		</initializer>
+        <initializer selector="initWithCROPrototypeB:">
+            <argument parameterName="cROPrototypeB" ref="incorrectPrototypeB"/>
+        </initializer>
     </component>
-    
+
     <component class="CROPrototypeB" key="incorrectPrototypeB" scope="prototype">
-		<initializer selector="initWithCROPrototypeA:">
-			<argument parameterName="cROPrototypeA" ref="incorrectPrototypeA"/>
-		</initializer>
+        <initializer selector="initWithCROPrototypeA:">
+            <argument parameterName="cROPrototypeA" ref="incorrectPrototypeA"/>
+        </initializer>
     </component>
 
 

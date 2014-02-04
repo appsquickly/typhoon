@@ -10,6 +10,6 @@
 
 @protocol TyphoonAssistedFactoryMethod <NSObject>
 
-@property (nonatomic, assign, readonly) SEL factoryMethod;
+@property(nonatomic, assign, readonly) SEL factoryMethod;
 
 @end

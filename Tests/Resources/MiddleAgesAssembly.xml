@@ -45,7 +45,7 @@
         </property>
 
     </component>
-    
+
     <component class="Knight" key="knightWithCollectionInConstructor">
         <initializer selector="initWithQuest:favoriteDamsels:">
             <argument parameterName="quest" ref="quest"/>
@@ -58,7 +58,6 @@
         </initializer>
     </component>
 
-    
 
     <component class="CampaignQuest" key="quest" scope="prototype" before-property-injection="questBeforePropertyInjection"
                after-property-injection="questAfterPropertyInjection">

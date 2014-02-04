@@ -13,6 +13,6 @@
 
 @protocol TyphoonAssistedFactoryInjectedParameter <NSObject>
 
-@property (nonatomic, assign, readonly) NSUInteger parameterIndex;
+@property(nonatomic, assign, readonly) NSUInteger parameterIndex;
 
 @end

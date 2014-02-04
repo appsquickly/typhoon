@@ -86,22 +86,22 @@
 
 - (void)register:(id <TyphoonTypeConverter>)converter;
 {
-  id classOrProtocol = [converter supportedType];
-  if (!([_typeConverters objectForKey:classOrProtocol]))
-  {
-    [_typeConverters setObject:converter forKey:(id <NSCopying>) classOrProtocol];
-  }
-  else
-  {
-    BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
-    NSString* name = isClass ? NSStringFromClass(classOrProtocol) : NSStringFromProtocol(classOrProtocol);
-    [NSException raise:NSInvalidArgumentException format:@"Converter for '%@' already registered.", name];
-  }
+    id classOrProtocol = [converter supportedType];
+    if (!([_typeConverters objectForKey:classOrProtocol]))
+    {
+        [_typeConverters setObject:converter forKey:(id <NSCopying>) classOrProtocol];
+    }
+    else
+    {
+        BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
+        NSString* name = isClass ? NSStringFromClass(classOrProtocol) : NSStringFromProtocol(classOrProtocol);
+        [NSException raise:NSInvalidArgumentException format:@"Converter for '%@' already registered.", name];
+    }
 }
 
 - (void)unregister:(id <TyphoonTypeConverter>)converter
 {
-  [_typeConverters removeObjectForKey:[converter supportedType]];
+    [_typeConverters removeObjectForKey:[converter supportedType]];
 }
 
 

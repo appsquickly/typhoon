@@ -28,11 +28,11 @@
 /**
  * Sets the given closure for the given selector.
  */
-+ (void)_fmc_setClosure:(id<TyphoonAssistedFactoryMethodClosure>)closure forSelector:(SEL)selector;
++ (void)_fmc_setClosure:(id <TyphoonAssistedFactoryMethodClosure>)closure forSelector:(SEL)selector;
 
 /**
  * Returns the closure associated with the given selector.
  */
-+ (id<TyphoonAssistedFactoryMethodClosure>)_fmc_closureForSelector:(SEL)selector;
++ (id <TyphoonAssistedFactoryMethodClosure>)_fmc_closureForSelector:(SEL)selector;
 
 @end

@@ -26,9 +26,10 @@ typedef void(^TyphoonInstanceCompleteBlock)(id instance);
 
 - (NSString*)description;
 
-- (BOOL) isInitializingInstance;
-- (void) addInstanceCompleteBlock:(TyphoonInstanceCompleteBlock)completeBlock;
+- (BOOL)isInitializingInstance;
 
-- (void) takeInstance:(id)instance;
+- (void)addInstanceCompleteBlock:(TyphoonInstanceCompleteBlock)completeBlock;
+
+- (void)takeInstance:(id)instance;
 
 @end

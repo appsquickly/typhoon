@@ -17,7 +17,7 @@
 
 + (NSString*)keyForAdvisedSEL:(SEL)selWithAdvicePrefix;
 
-+ (NSString *)keyForSEL:(SEL)sel;
++ (NSString*)keyForSEL:(SEL)sel;
 
 + (BOOL)selectorIsAdvised:(SEL)sel;
 

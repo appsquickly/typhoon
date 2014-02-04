@@ -31,9 +31,9 @@
 */
 typedef enum
 {
-    TyphoonScopeObjectGraph   = 1 << 0,
-    TyphoonScopePrototype     = 1 << 1,
-    TyphoonScopeSingleton     = 1 << 2,
+    TyphoonScopeObjectGraph = 1 << 0,
+    TyphoonScopePrototype = 1 << 1,
+    TyphoonScopeSingleton = 1 << 2,
     TyphoonScopeWeakSingleton = 1 << 3
 } TyphoonScope;
 
@@ -201,7 +201,8 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 
 + (TyphoonDefinition*)withClass:(Class)clazz;
 
-+ (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization properties:(TyphoonDefinitionBlock)properties;
++ (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
+    properties:(TyphoonDefinitionBlock)properties;
 
 + (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization;
 

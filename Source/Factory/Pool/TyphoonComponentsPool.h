@@ -16,11 +16,12 @@
 
 @protocol TyphoonComponentsPool <NSObject>
 
-- (void) setObject:(id)object forKey:(id<NSCopying>)aKey;
-- (id) objectForKey:(id<NSCopying>)aKey;
+- (void)setObject:(id)object forKey:(id <NSCopying>)aKey;
 
-- (NSArray *) allValues;
+- (id)objectForKey:(id <NSCopying>)aKey;
 
-- (void) removeAllObjects;
+- (NSArray*)allValues;
+
+- (void)removeAllObjects;
 
 @end

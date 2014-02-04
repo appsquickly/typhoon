@@ -53,9 +53,9 @@ static TyphoonComponentFactory* defaultFactory;
     if (self)
     {
         _registry = [[NSMutableArray alloc] init];
-        _singletons = (id <TyphoonComponentsPool>)[[NSMutableDictionary alloc] init];
+        _singletons = (id <TyphoonComponentsPool>) [[NSMutableDictionary alloc] init];
         _weakSingletons = [TyphoonWeakComponentsPool new];
-        _objectGraphSharedInstances = (id <TyphoonComponentsPool>)[[NSMutableDictionary alloc] init];
+        _objectGraphSharedInstances = (id <TyphoonComponentsPool>) [[NSMutableDictionary alloc] init];
         _stack = [TyphoonCallStack stack];
         _factoryPostProcessors = [[NSMutableArray alloc] init];
         _componentPostProcessors = [[NSMutableArray alloc] init];
@@ -262,7 +262,8 @@ static TyphoonComponentFactory* defaultFactory;
 
 - (void)applyPostProcessors
 {
-    [_factoryPostProcessors enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryPostProcessor> postProcessor, NSUInteger idx, BOOL* stop)
+    [_factoryPostProcessors enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryPostProcessor> postProcessor, NSUInteger idx,
+        BOOL* stop)
     {
         [postProcessor postProcessComponentFactory:self];
     }];

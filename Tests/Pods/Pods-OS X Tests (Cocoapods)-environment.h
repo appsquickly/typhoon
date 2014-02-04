@@ -22,11 +22,11 @@
 #define COCOAPODS_POD_AVAILABLE_Typhoon
 #define COCOAPODS_VERSION_MAJOR_Typhoon 1
 #define COCOAPODS_VERSION_MINOR_Typhoon 7
-#define COCOAPODS_VERSION_PATCH_Typhoon 5
+#define COCOAPODS_VERSION_PATCH_Typhoon 7
 
 // Typhoon/no-arc
 #define COCOAPODS_POD_AVAILABLE_Typhoon_no_arc
 #define COCOAPODS_VERSION_MAJOR_Typhoon_no_arc 1
 #define COCOAPODS_VERSION_MINOR_Typhoon_no_arc 7
-#define COCOAPODS_VERSION_PATCH_Typhoon_no_arc 5
+#define COCOAPODS_VERSION_PATCH_Typhoon_no_arc 7
 

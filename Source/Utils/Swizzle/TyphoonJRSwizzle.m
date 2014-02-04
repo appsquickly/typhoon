@@ -55,14 +55,8 @@
         return NO;
     }
 
-    class_addMethod(self,
-            origSel_,
-            class_getMethodImplementation(self, origSel_),
-            method_getTypeEncoding(origMethod));
-    class_addMethod(self,
-            altSel_,
-            class_getMethodImplementation(self, altSel_),
-            method_getTypeEncoding(altMethod));
+    class_addMethod(self, origSel_, class_getMethodImplementation(self, origSel_), method_getTypeEncoding(origMethod));
+    class_addMethod(self, altSel_, class_getMethodImplementation(self, altSel_), method_getTypeEncoding(altMethod));
 
     method_exchangeImplementations(class_getInstanceMethod(self, origSel_), class_getInstanceMethod(self, altSel_));
     return YES;

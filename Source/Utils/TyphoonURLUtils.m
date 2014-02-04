@@ -37,9 +37,9 @@
 
 + (NSString*)URLEscapeString:(NSString*)rawString
 {
-    CFStringRef originalStringRef = (__bridge_retained CFStringRef)rawString;
+    CFStringRef originalStringRef = (__bridge_retained CFStringRef) rawString;
     NSString* encoded =
-            (__bridge_transfer NSString*)CFURLCreateStringByAddingPercentEscapes(NULL, originalStringRef, NULL, NULL, kCFStringEncodingUTF8);
+        (__bridge_transfer NSString*) CFURLCreateStringByAddingPercentEscapes(NULL, originalStringRef, NULL, NULL, kCFStringEncodingUTF8);
     CFRelease(originalStringRef);
     return encoded;
 }

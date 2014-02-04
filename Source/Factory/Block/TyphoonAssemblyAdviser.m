@@ -22,7 +22,7 @@
 
 static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
 
-@interface TyphoonAssemblyAdviser()
+@interface TyphoonAssemblyAdviser ()
 
 @end
 
@@ -43,7 +43,8 @@ static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
 - (id)initWithAssembly:(TyphoonAssembly*)assembly
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _assembly = assembly;
 
         _swizzler = [[TyphoonJRMethodSwizzler alloc] init];
@@ -73,7 +74,7 @@ static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
 
 - (void)swizzleDefinitionSelectors:(NSSet*)definitionSelectors
 {
-    [definitionSelectors enumerateObjectsUsingBlock:^(TyphoonSelector *selectorObj, BOOL* stop)
+    [definitionSelectors enumerateObjectsUsingBlock:^(TyphoonSelector* selectorObj, BOOL* stop)
     {
         [self swapImplementationOfDefinitionSelectorWithAdvisedImplementation:selectorObj];
     }];
@@ -86,14 +87,16 @@ static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
 
     NSError* err;
     BOOL success = [self.swizzler swizzleMethod:methodSelector withMethod:advisedSelector onClass:[self.assembly class] error:&err];
-    if (!success) {
+    if (!success)
+    {
         [self onFailureToSwizzleDefinitionSelector:methodSelector withAdvisedSelector:advisedSelector error:err];
     }
 }
 
 - (void)onFailureToSwizzleDefinitionSelector:(SEL)methodSelector withAdvisedSelector:(SEL)swizzled error:(NSError*)err
 {
-    LogError(@"Failed to swizzle method '%@' on class '%@' with method '%@'.", NSStringFromSelector(methodSelector), NSStringFromClass([self.assembly class]), NSStringFromSelector(swizzled));
+    LogError(@"Failed to swizzle method '%@' on class '%@' with method '%@'.", NSStringFromSelector(methodSelector), NSStringFromClass(
+        [self.assembly class]), NSStringFromSelector(swizzled));
     LogError(@"'%@'", err);
     [NSException raise:NSInternalInconsistencyException format:@"Failed to swizzle method, everything is broken!"];
 }
@@ -141,12 +144,15 @@ static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
     }];
 }
 
-+ (void)swapImplementationOfDefinitionSelector:(TyphoonSelector*)wrappedSelector withDynamicBeforeAdviceImplementationOnAssembly:(TyphoonAssembly*)assembly
++ (void)swapImplementationOfDefinitionSelector:(TyphoonSelector*)wrappedSelector
+    withDynamicBeforeAdviceImplementationOnAssembly:(TyphoonAssembly*)assembly
 {
-    return [self swapImplementationOfDefinitionSelector:wrappedSelector withDynamicBeforeAdviceImplementationOnAssemblyClass:[assembly class]];
+    return [self swapImplementationOfDefinitionSelector:wrappedSelector
+        withDynamicBeforeAdviceImplementationOnAssemblyClass:[assembly class]];
 }
 
-+ (void)swapImplementationOfDefinitionSelector:(TyphoonSelector*)wrappedSEL withDynamicBeforeAdviceImplementationOnAssemblyClass:(Class)assemblyClass
++ (void)swapImplementationOfDefinitionSelector:(TyphoonSelector*)wrappedSEL
+    withDynamicBeforeAdviceImplementationOnAssemblyClass:(Class)assemblyClass
 {
     SEL methodSelector = [wrappedSEL selector];
     SEL swizzled = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector];
@@ -155,7 +161,8 @@ static NSMutableDictionary* swizzledDefinitionsByAssemblyClass;
     BOOL success = [assemblyClass typhoon_swizzleMethod:methodSelector withMethod:swizzled error:&err];
     if (!success)
     {
-        LogError(@"Failed to swizzle method '%@' on class '%@' with method '%@'.", NSStringFromSelector(methodSelector), NSStringFromClass(assemblyClass), NSStringFromSelector(swizzled));
+        LogError(@"Failed to swizzle method '%@' on class '%@' with method '%@'.", NSStringFromSelector(methodSelector), NSStringFromClass(
+            assemblyClass), NSStringFromSelector(swizzled));
         LogError(@"'%@'", err);
         [NSException raise:NSInternalInconsistencyException format:@"Failed to swizzle method, everything is broken!"];
     }

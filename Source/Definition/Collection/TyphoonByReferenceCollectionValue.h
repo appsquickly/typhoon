@@ -18,9 +18,9 @@
 */
 @interface TyphoonByReferenceCollectionValue : NSObject <TyphoonCollectionValue>
 
-@property(nonatomic, strong, readonly) NSString* componentName;
+@property(nonatomic, strong, readonly) NSString* componentKey;
 
-- (id)initWithComponentName:(NSString*)componentName;
+- (id)initWithComponentKey:(NSString*)componentKey;
 
 
 @end

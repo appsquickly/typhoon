@@ -14,8 +14,9 @@
 #import "TyphoonStackElement.h"
 
 
-@implementation TyphoonStackElement {
-    NSMutableSet *completeBlocks;
+@implementation TyphoonStackElement
+{
+    NSMutableSet* completeBlocks;
 }
 
 + (instancetype)itemWithKey:(NSString*)key
@@ -35,28 +36,32 @@
     return self;
 }
 
-- (BOOL) isInitializingInstance
+- (BOOL)isInitializingInstance
 {
     return _instance == nil;
 }
 
-- (void) addInstanceCompleteBlock:(TyphoonInstanceCompleteBlock)completeBlock
+- (void)addInstanceCompleteBlock:(TyphoonInstanceCompleteBlock)completeBlock
 {
     NSParameterAssert(completeBlock);
-    
-    if ([self isInitializingInstance]) {
+
+    if ([self isInitializingInstance])
+    {
         [completeBlocks addObject:completeBlock];
-    } else {
+    }
+    else
+    {
         completeBlock(_instance);
     }
-    
+
 }
 
-- (void) takeInstance:(id)instance
+- (void)takeInstance:(id)instance
 {
     _instance = instance;
-    
-    for (TyphoonInstanceCompleteBlock completeBlock in completeBlocks) {
+
+    for (TyphoonInstanceCompleteBlock completeBlock in completeBlocks)
+    {
         completeBlock(instance);
     }
     [completeBlocks removeAllObjects];
@@ -66,7 +71,7 @@
 {
     NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
     [description appendFormat:@"self.key=%@", self.key];
-    [description appendFormat:@", completeBlocksCount=%lu", (unsigned long)[completeBlocks count]];
+    [description appendFormat:@", completeBlocksCount=%lu", (unsigned long) [completeBlocks count]];
     [description appendString:@">"];
     return description;
 }

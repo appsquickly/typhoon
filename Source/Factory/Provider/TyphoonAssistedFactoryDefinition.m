@@ -16,7 +16,7 @@
 
 @implementation TyphoonAssistedFactoryDefinition
 {
-	NSMutableArray *_factoryMethods;
+    NSMutableArray* _factoryMethods;
 }
 
 - (instancetype)init
@@ -32,7 +32,7 @@
 
 - (NSUInteger)countOfFactoryMethods
 {
-	return [_factoryMethods count];
+    return [_factoryMethods count];
 }
 
 - (void)configure:(TyphoonAssistedFactoryDefinitionBlock)configurationBlock
@@ -42,13 +42,14 @@
 
 - (void)factoryMethod:(SEL)name body:(id)bodyBlock
 {
-    TyphoonAssistedFactoryMethodBlock *method = [[TyphoonAssistedFactoryMethodBlock alloc] initWithFactoryMethod:name body:bodyBlock];
+    TyphoonAssistedFactoryMethodBlock* method = [[TyphoonAssistedFactoryMethodBlock alloc] initWithFactoryMethod:name body:bodyBlock];
     [_factoryMethods addObject:method];
 }
 
 - (void)factoryMethod:(SEL)name returns:(Class)returnType initialization:(TyphoonAssistedFactoryMethodInitializerBlock)initialization
 {
-    TyphoonAssistedFactoryMethodInitializer *initializer = [[TyphoonAssistedFactoryMethodInitializer alloc] initWithFactoryMethod:name returnType:returnType];
+    TyphoonAssistedFactoryMethodInitializer
+        * initializer = [[TyphoonAssistedFactoryMethodInitializer alloc] initWithFactoryMethod:name returnType:returnType];
     initialization(initializer);
 
     [_factoryMethods addObject:initializer];
@@ -56,9 +57,9 @@
 
 - (void)enumerateFactoryMethods:(TyphoonAssistedFactoryMethodsEnumerationBlock)enumerationBlock
 {
-    for (id<TyphoonAssistedFactoryMethod> factoryMethod in _factoryMethods)
+    for (id <TyphoonAssistedFactoryMethod> factoryMethod in _factoryMethods)
     {
-      enumerationBlock(factoryMethod);
+        enumerationBlock(factoryMethod);
     }
 }
 

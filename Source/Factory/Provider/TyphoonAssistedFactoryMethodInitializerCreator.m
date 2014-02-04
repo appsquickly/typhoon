@@ -19,19 +19,20 @@
 
 @interface TyphoonAssistedFactoryMethodInitializerCreator ()
 
-@property (nonatomic, strong) TyphoonAssistedFactoryMethodInitializer *factoryMethod;
+@property(nonatomic, strong) TyphoonAssistedFactoryMethodInitializer* factoryMethod;
 
 @end
 
 
 @implementation TyphoonAssistedFactoryMethodInitializerCreator
 
-- (void)createFromProtocol:(Protocol *)protocol inClass:(Class)factoryClass
+- (void)createFromProtocol:(Protocol*)protocol inClass:(Class)factoryClass
 {
     struct objc_method_description methodDescription = [self methodDescriptionFor:self.factoryMethod.factoryMethod inProtocol:protocol];
-    NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
+    NSMethodSignature* methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
 
-    TyphoonAssistedFactoryMethodInitializerClosure *closure = [[TyphoonAssistedFactoryMethodInitializerClosure alloc] initWithInitializer:self.factoryMethod methodSignature:methodSignature];
+    TyphoonAssistedFactoryMethodInitializerClosure* closure =
+        [[TyphoonAssistedFactoryMethodInitializerClosure alloc] initWithInitializer:self.factoryMethod methodSignature:methodSignature];
     [factoryClass _fmc_setClosure:closure forSelector:self.factoryMethod.factoryMethod];
 }
 

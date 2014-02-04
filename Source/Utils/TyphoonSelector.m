@@ -42,7 +42,8 @@
 - (id)initWithSEL:(SEL)aSelector
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _selector = aSelector;
     }
     return self;
@@ -51,7 +52,8 @@
 - (NSString*)description
 {
     // <TyphoonSelector: 0x00000 SEL named: 'aDefinitionMethod'>
-    NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: %p SEL named: '%@'>", NSStringFromClass([self class]), self, NSStringFromSelector(self.selector)];
+    NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: %p SEL named: '%@'>", NSStringFromClass([self class]), self,
+                                                                     NSStringFromSelector(self.selector)];
     return description;
 }
 
@@ -59,14 +61,14 @@
 {
     if (other == self)
     {
-            return YES;
+        return YES;
     }
     if (!other || ![[other class] isEqual:[self class]])
     {
-            return NO;
+        return NO;
     }
 
-    return [self isEqualToSelector:(TyphoonSelector*)other];
+    return [self isEqualToSelector:(TyphoonSelector*) other];
 }
 
 - (BOOL)isEqualToSelector:(TyphoonSelector*)wrappedSelector
