@@ -14,6 +14,7 @@
 #import "TyphoonInvocationUtilsTestObjects.h"
 #import "NSInvocation+TCFInstanceBuilder.h"
 #import <objc/message.h>
+#import "ClassWithConstructor.h"
 
 #define retainCount(a) ((int)objc_msgSend(a, NSSelectorFromString(@"retainCount")))
 
@@ -78,14 +79,24 @@
     assertThatInt(retainCount(object), equalToInt(1));
 }
 
+- (void)test_arc_object_returns_retained_on_not_new_or_init_method
+{
+    Class clazz = [ClassWithConstructor class];
+    
+    NSInvocation *invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(constructorWithString:) class:clazz];
+    NSString *param = @"123";
+    [invocation setArgument:&param atIndex:2];
+    
+    ClassWithConstructor *object = [invocation typhoon_resultOfInvokingOnInstance:clazz];
+    
+    assertThatInt(retainCount(object), equalToInt(1));
+}
+
 - (void) test_retained_and_autoreleased_class_method_initializers
 {
     NSInvocation *invocation;
     NSMutableArray *array = nil;
     ObjectNewAutorelease *arcobject = nil;
-
-
-    // Daniel, check this cases - uncomment and ARC will crash app
     
     //Crashes (because returns autoreleased):
     

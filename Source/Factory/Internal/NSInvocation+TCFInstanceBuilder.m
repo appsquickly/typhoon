@@ -18,26 +18,33 @@
 
 @implementation NSInvocation (TCFInstanceBuilder)
 
+/** Returns YES if selector returns retained instance (not autoreleased) */
+static BOOL IsSelectorReturnsRetained(SEL selector)
+{
+    NSString *selectorString = NSStringFromSelector(selector);
+    
+    return [selectorString hasPrefix:@"init"] ||
+    [selectorString hasPrefix:@"new"] ||
+    [selectorString hasPrefix:@"copy"] ||
+    [selectorString hasPrefix:@"mutableCopy"];
+}
+
 - (id)typhoon_resultOfInvokingOn:(id)instanceOrClass
 {
     id returnValue = nil;
-
-    NSUInteger retainCountBeforeAutorelease;
-    NSUInteger retainCountAfterAutorelease;
-
+    
+    BOOL isReturnsRetained;
+    
     @autoreleasepool
     {
+        isReturnsRetained = IsSelectorReturnsRetained([self selector]);
         [self invokeWithTarget:instanceOrClass];
         [self getReturnValue:&returnValue];
-        [returnValue retain];
-        retainCountBeforeAutorelease = [returnValue retainCount];
+        [returnValue retain]; /* Retain to take ownership on autoreleased object */
     }
-    retainCountAfterAutorelease = [returnValue retainCount];
 
-    /* if retainCount is not chanaged after draining autorelease pool, 
-     * that means that object returned as invocation result strongly retained
-     * then release to ballance retain before pool draining */
-    if (retainCountBeforeAutorelease == retainCountAfterAutorelease)
+    /* Balance retain above if object is not autoreleased */
+    if (isReturnsRetained)
     {
         [returnValue release];
     }
