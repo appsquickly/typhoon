@@ -49,9 +49,17 @@
     Class clazz = [ObjectNewRetained class];
     NSInvocation *invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(newObject) class:clazz];
     
-    ObjectInitRetained *object = [invocation typhoon_resultOfInvokingOnInstance:clazz];
+    ObjectNewRetained *object = [invocation typhoon_resultOfInvokingOnInstance:clazz];
     
     assertThatInt(retainCount(object), equalToInt(1));
+    
+    invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(newObject) class:clazz];
+    ObjectNewRetained *arcobject = nil;
+    [invocation setTarget:clazz];
+    [invocation invoke];
+    [invocation getReturnValue:&arcobject];
+    
+    assertThatInt(retainCount(arcobject), equalToInt(1));
 }
 
 - (void) test_object_new_autorelease
@@ -59,9 +67,62 @@
     Class clazz = [ObjectNewAutorelease class];
     NSInvocation *invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(object) class:clazz];
     
-    ObjectInitRetained *object = [invocation typhoon_resultOfInvokingOnInstance:clazz];
+    ObjectNewAutorelease *object = [invocation typhoon_resultOfInvokingOnInstance:clazz];
     
     assertThatInt(retainCount(object), equalToInt(1));
+}
+
+- (void) test_retained_and_autoreleased_class_method_initializers
+{
+    NSInvocation *invocation;
+    NSMutableArray *array = nil;
+    ObjectNewAutorelease *arcobject = nil;
+
+
+    // Daniel, check this cases - uncomment and ARC will crash app
+    
+    //Crashes (because returns autoreleased):
+    
+    //    invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(object) class:[ObjectNewAutorelease class]];
+    //    [invocation setTarget:[ObjectNewAutorelease class]];
+    //    [invocation invoke];
+    //    [invocation getReturnValue:&arcobject];
+    //
+    //    assertThatInt(retainCount(arcobject), equalToInt(1));
+    
+    // Not crashes:
+    invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(object) class:[ObjectNewAutorelease class]];
+    arcobject = [invocation typhoon_resultOfInvokingOnInstance:[ObjectNewAutorelease class]];
+    
+    assertThatInt(retainCount(arcobject), equalToInt(1));
+    
+    // Crashes (because returns autoreleased):
+    
+    //    invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(arrayWithCapacity:) class:[NSMutableArray class]];
+    //    int capacity = 10;
+    //    [invocation setArgument:&capacity atIndex:2];
+    //    [invocation setTarget:[NSMutableArray class]];
+    //    [invocation invoke];
+    //    [invocation getReturnValue:&array];
+    //
+    //    assertThatInt(retainCount(array), equalToInt(1));
+    
+    // Not crashes:
+    invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(arrayWithCapacity:) class:[NSMutableArray class]];
+    int capacity = 10;
+    [invocation setArgument:&capacity atIndex:2];
+    array = [invocation typhoon_resultOfInvokingOnInstance:[NSMutableArray class]];
+
+    assertThatInt(retainCount(array), equalToInt(1));
+    
+    // That would work because returns retained
+    invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(new) class:[NSMutableArray class]];
+    [invocation setTarget:[NSMutableArray class]];
+    [invocation invoke];
+    [invocation getReturnValue:&array];
+    
+    assertThatInt(retainCount(array), equalToInt(1));
+    
 }
 
 - (void) test_cluster_release
