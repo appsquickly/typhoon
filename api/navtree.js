@@ -29,8 +29,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_n_s_object_09_dealloc_notification_8h.html",
-"group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb",
-"interface_typhoon_r_x_m_l_element.html#a4d8762eef5841041e06ff5110936407a"
+"group___configuration.html",
+"interface_typhoon_r_x_m_l_element.html#a2425ac2e907357b2b49fec29d53cf72e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

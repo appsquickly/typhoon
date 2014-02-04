@@ -9,7 +9,6 @@ var files =
     [ "NSObject+TyphoonIntrospectionUtils.h", "_n_s_object_09_typhoon_introspection_utils_8h.html", [
       [ "NSObject(TyphoonIntrospectionUtils)", "category_n_s_object_07_typhoon_introspection_utils_08.html", "category_n_s_object_07_typhoon_introspection_utils_08" ]
     ] ],
-    [ "NSString+TyphoonAdditions.h", "_n_s_string_09_typhoon_additions_8h.html", null ],
     [ "OCLogTemplate.h", "_o_c_log_template_8h.html", "_o_c_log_template_8h" ],
     [ "Typhoon.h", "_typhoon_8h.html", null ],
     [ "TyphoonAbstractInjectedProperty.h", "_typhoon_abstract_injected_property_8h.html", "_typhoon_abstract_injected_property_8h" ],
@@ -49,11 +48,14 @@ var files =
     [ "TyphoonAssistedFactoryMethodBlock.h", "_typhoon_assisted_factory_method_block_8h.html", [
       [ "TyphoonAssistedFactoryMethodBlock", "interface_typhoon_assisted_factory_method_block.html", "interface_typhoon_assisted_factory_method_block" ]
     ] ],
+    [ "TyphoonAssistedFactoryMethodBlockClosure.h", "_typhoon_assisted_factory_method_block_closure_8h.html", [
+      [ "TyphoonAssistedFactoryMethodBlockClosure", "interface_typhoon_assisted_factory_method_block_closure.html", "interface_typhoon_assisted_factory_method_block_closure" ]
+    ] ],
     [ "TyphoonAssistedFactoryMethodBlockCreator.h", "_typhoon_assisted_factory_method_block_creator_8h.html", [
       [ "TyphoonAssistedFactoryMethodBlockCreator", "interface_typhoon_assisted_factory_method_block_creator.html", null ]
     ] ],
     [ "TyphoonAssistedFactoryMethodClosure.h", "_typhoon_assisted_factory_method_closure_8h.html", [
-      [ "TyphoonAssistedFactoryMethodClosure", "interface_typhoon_assisted_factory_method_closure.html", "interface_typhoon_assisted_factory_method_closure" ]
+      [ "<TyphoonAssistedFactoryMethodClosure>", "protocol_typhoon_assisted_factory_method_closure-p.html", "protocol_typhoon_assisted_factory_method_closure-p" ]
     ] ],
     [ "TyphoonAssistedFactoryMethodCreator+Private.h", "_typhoon_assisted_factory_method_creator_09_private_8h.html", null ],
     [ "TyphoonAssistedFactoryMethodCreator.h", "_typhoon_assisted_factory_method_creator_8h.html", [
@@ -61,6 +63,9 @@ var files =
     ] ],
     [ "TyphoonAssistedFactoryMethodInitializer.h", "_typhoon_assisted_factory_method_initializer_8h.html", [
       [ "TyphoonAssistedFactoryMethodInitializer", "interface_typhoon_assisted_factory_method_initializer.html", "interface_typhoon_assisted_factory_method_initializer" ]
+    ] ],
+    [ "TyphoonAssistedFactoryMethodInitializerClosure.h", "_typhoon_assisted_factory_method_initializer_closure_8h.html", [
+      [ "TyphoonAssistedFactoryMethodInitializerClosure", "interface_typhoon_assisted_factory_method_initializer_closure.html", "interface_typhoon_assisted_factory_method_initializer_closure" ]
     ] ],
     [ "TyphoonAssistedFactoryMethodInitializerCreator.h", "_typhoon_assisted_factory_method_initializer_creator_8h.html", [
       [ "TyphoonAssistedFactoryMethodInitializerCreator", "interface_typhoon_assisted_factory_method_initializer_creator.html", null ]
@@ -182,8 +187,8 @@ var files =
     ] ],
     [ "TyphoonURLUtils.h", "_typhoon_u_r_l_utils_8h.html", null ],
     [ "TyphoonViewControllerNibResolver.h", "_typhoon_view_controller_nib_resolver_8h.html", null ],
-    [ "TyphoonWeekComponentsPool.h", "_typhoon_week_components_pool_8h.html", [
-      [ "TyphoonWeekComponentsPool", "interface_typhoon_week_components_pool.html", null ]
+    [ "TyphoonWeakComponentsPool.h", "_typhoon_weak_components_pool_8h.html", [
+      [ "TyphoonWeakComponentsPool", "interface_typhoon_weak_components_pool.html", null ]
     ] ],
     [ "TyphoonXmlComponentFactory.h", "_typhoon_xml_component_factory_8h.html", null ]
 ];

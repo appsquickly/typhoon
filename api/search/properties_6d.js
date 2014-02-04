@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['methodsignature',['methodSignature',['../interface_typhoon_assisted_factory_method_closure.html#ad265315d1fbebfa5791452634f63fb14',1,'TyphoonAssistedFactoryMethodClosure']]]
+  ['methodsignature',['methodSignature',['../protocol_typhoon_assisted_factory_method_closure-p.html#ab5cd28b4a97bc4c1e656b6f54686ef20',1,'TyphoonAssistedFactoryMethodClosure-p']]]
 ];

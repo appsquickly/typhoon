@@ -18,11 +18,13 @@ var searchData=
   ['typhoonassistedfactoryinjectedparameter_2eh',['TyphoonAssistedFactoryInjectedParameter.h',['../_typhoon_assisted_factory_injected_parameter_8h.html',1,'']]],
   ['typhoonassistedfactorymethod_2eh',['TyphoonAssistedFactoryMethod.h',['../_typhoon_assisted_factory_method_8h.html',1,'']]],
   ['typhoonassistedfactorymethodblock_2eh',['TyphoonAssistedFactoryMethodBlock.h',['../_typhoon_assisted_factory_method_block_8h.html',1,'']]],
+  ['typhoonassistedfactorymethodblockclosure_2eh',['TyphoonAssistedFactoryMethodBlockClosure.h',['../_typhoon_assisted_factory_method_block_closure_8h.html',1,'']]],
   ['typhoonassistedfactorymethodblockcreator_2eh',['TyphoonAssistedFactoryMethodBlockCreator.h',['../_typhoon_assisted_factory_method_block_creator_8h.html',1,'']]],
   ['typhoonassistedfactorymethodclosure_2eh',['TyphoonAssistedFactoryMethodClosure.h',['../_typhoon_assisted_factory_method_closure_8h.html',1,'']]],
   ['typhoonassistedfactorymethodcreator_2bprivate_2eh',['TyphoonAssistedFactoryMethodCreator+Private.h',['../_typhoon_assisted_factory_method_creator_09_private_8h.html',1,'']]],
   ['typhoonassistedfactorymethodcreator_2eh',['TyphoonAssistedFactoryMethodCreator.h',['../_typhoon_assisted_factory_method_creator_8h.html',1,'']]],
   ['typhoonassistedfactorymethodinitializer_2eh',['TyphoonAssistedFactoryMethodInitializer.h',['../_typhoon_assisted_factory_method_initializer_8h.html',1,'']]],
+  ['typhoonassistedfactorymethodinitializerclosure_2eh',['TyphoonAssistedFactoryMethodInitializerClosure.h',['../_typhoon_assisted_factory_method_initializer_closure_8h.html',1,'']]],
   ['typhoonassistedfactorymethodinitializercreator_2eh',['TyphoonAssistedFactoryMethodInitializerCreator.h',['../_typhoon_assisted_factory_method_initializer_creator_8h.html',1,'']]],
   ['typhoonassistedfactoryparameterinjectedwithargumentindex_2eh',['TyphoonAssistedFactoryParameterInjectedWithArgumentIndex.h',['../_typhoon_assisted_factory_parameter_injected_with_argument_index_8h.html',1,'']]],
   ['typhoonassistedfactoryparameterinjectedwithproperty_2eh',['TyphoonAssistedFactoryParameterInjectedWithProperty.h',['../_typhoon_assisted_factory_parameter_injected_with_property_8h.html',1,'']]],
@@ -87,6 +89,6 @@ var searchData=
   ['typhoonuicolortypeconverter_2eh',['TyphoonUIColorTypeConverter.h',['../_typhoon_u_i_color_type_converter_8h.html',1,'']]],
   ['typhoonurlutils_2eh',['TyphoonURLUtils.h',['../_typhoon_u_r_l_utils_8h.html',1,'']]],
   ['typhoonviewcontrollernibresolver_2eh',['TyphoonViewControllerNibResolver.h',['../_typhoon_view_controller_nib_resolver_8h.html',1,'']]],
-  ['typhoonweekcomponentspool_2eh',['TyphoonWeekComponentsPool.h',['../_typhoon_week_components_pool_8h.html',1,'']]],
+  ['typhoonweakcomponentspool_2eh',['TyphoonWeakComponentsPool.h',['../_typhoon_weak_components_pool_8h.html',1,'']]],
   ['typhoonxmlcomponentfactory_2eh',['TyphoonXmlComponentFactory.h',['../_typhoon_xml_component_factory_8h.html',1,'']]]
 ];

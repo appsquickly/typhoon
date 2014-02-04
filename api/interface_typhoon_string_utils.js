@@ -6,5 +6,6 @@ var interface_typhoon_string_utils =
     [ "isEmailAddress:", "interface_typhoon_string_utils.html#a994c2ac4c642149971e5e6fc71ba1961", null ],
     [ "isEmpty:", "interface_typhoon_string_utils.html#a2477c8f65cb8bc973019489ad5330146", null ],
     [ "isMemberOfCharacterSet:characterSet:", "interface_typhoon_string_utils.html#a08f81c8099ae222c7999617b0f82ab9c", null ],
-    [ "isNotEmpty:", "interface_typhoon_string_utils.html#a4a8dfea7013110741f99da56d04e33b7", null ]
+    [ "isNotEmpty:", "interface_typhoon_string_utils.html#a4a8dfea7013110741f99da56d04e33b7", null ],
+    [ "string:containsString:", "interface_typhoon_string_utils.html#a1f6f8cb521a088d0846b90dac980acbe", null ]
 ];

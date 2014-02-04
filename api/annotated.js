@@ -17,10 +17,12 @@ var annotated =
     [ "<TyphoonAssistedFactoryInjectedParameter>", "protocol_typhoon_assisted_factory_injected_parameter-p.html", "protocol_typhoon_assisted_factory_injected_parameter-p" ],
     [ "<TyphoonAssistedFactoryMethod>", "protocol_typhoon_assisted_factory_method-p.html", "protocol_typhoon_assisted_factory_method-p" ],
     [ "TyphoonAssistedFactoryMethodBlock", "interface_typhoon_assisted_factory_method_block.html", "interface_typhoon_assisted_factory_method_block" ],
+    [ "TyphoonAssistedFactoryMethodBlockClosure", "interface_typhoon_assisted_factory_method_block_closure.html", "interface_typhoon_assisted_factory_method_block_closure" ],
     [ "TyphoonAssistedFactoryMethodBlockCreator", "interface_typhoon_assisted_factory_method_block_creator.html", null ],
-    [ "TyphoonAssistedFactoryMethodClosure", "interface_typhoon_assisted_factory_method_closure.html", "interface_typhoon_assisted_factory_method_closure" ],
+    [ "<TyphoonAssistedFactoryMethodClosure>", "protocol_typhoon_assisted_factory_method_closure-p.html", "protocol_typhoon_assisted_factory_method_closure-p" ],
     [ "TyphoonAssistedFactoryMethodCreator", "interface_typhoon_assisted_factory_method_creator.html", "interface_typhoon_assisted_factory_method_creator" ],
     [ "TyphoonAssistedFactoryMethodInitializer", "interface_typhoon_assisted_factory_method_initializer.html", "interface_typhoon_assisted_factory_method_initializer" ],
+    [ "TyphoonAssistedFactoryMethodInitializerClosure", "interface_typhoon_assisted_factory_method_initializer_closure.html", "interface_typhoon_assisted_factory_method_initializer_closure" ],
     [ "TyphoonAssistedFactoryMethodInitializerCreator", "interface_typhoon_assisted_factory_method_initializer_creator.html", null ],
     [ "TyphoonAssistedFactoryParameterInjectedWithArgumentIndex", "interface_typhoon_assisted_factory_parameter_injected_with_argument_index.html", "interface_typhoon_assisted_factory_parameter_injected_with_argument_index" ],
     [ "TyphoonAssistedFactoryParameterInjectedWithProperty", "interface_typhoon_assisted_factory_parameter_injected_with_property.html", "interface_typhoon_assisted_factory_parameter_injected_with_property" ],
@@ -68,6 +70,6 @@ var annotated =
     [ "TyphoonTypeDescriptor", "interface_typhoon_type_descriptor.html", "interface_typhoon_type_descriptor" ],
     [ "TyphoonUIColorTypeConverter", "interface_typhoon_u_i_color_type_converter.html", null ],
     [ "TyphoonViewControllerNibResolver", "interface_typhoon_view_controller_nib_resolver.html", "interface_typhoon_view_controller_nib_resolver" ],
-    [ "TyphoonWeekComponentsPool", "interface_typhoon_week_components_pool.html", null ],
+    [ "TyphoonWeakComponentsPool", "interface_typhoon_weak_components_pool.html", null ],
     [ "TyphoonXmlComponentFactory", "interface_typhoon_xml_component_factory.html", "interface_typhoon_xml_component_factory" ]
 ];

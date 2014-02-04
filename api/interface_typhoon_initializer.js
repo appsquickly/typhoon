@@ -1,7 +1,9 @@
 var interface_typhoon_initializer =
 [
+    [ "generated", "interface_typhoon_initializer.html#a5c7c70ce618e65752840c302fa7dabed", null ],
     [ "parameterNames", "interface_typhoon_initializer.html#aaf66b68f95b82b9b454ea30824ac64c7", null ],
     [ "selector", "interface_typhoon_initializer.html#a0afdf647b8c1d9b1e97720142bc2a056", null ],
+    [ "definition", "interface_typhoon_initializer.html#aa438d5dfcd3ef50448186d39b5bee30e", null ],
     [ "initWithSelector:", "interface_typhoon_initializer.html#a94b46055f740c394b7319ca5cab283bf", null ],
     [ "initWithSelector:isClassMethodStrategy:", "interface_typhoon_initializer.html#aa08acb18e79e55847353c078225ff5cf", null ],
     [ "injectedParameters", "interface_typhoon_initializer.html#a424c30cb2f167f428fb682933b7e623d", null ],

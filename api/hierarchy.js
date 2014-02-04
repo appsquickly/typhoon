@@ -31,12 +31,17 @@ var hierarchy =
         [ "TyphoonAssistedFactoryMethodInitializer", "interface_typhoon_assisted_factory_method_initializer.html", null ]
       ] ],
       [ "TyphoonAssistedFactoryMethodBlock", "interface_typhoon_assisted_factory_method_block.html", null ],
-      [ "TyphoonAssistedFactoryMethodClosure", "interface_typhoon_assisted_factory_method_closure.html", null ],
+      [ "TyphoonAssistedFactoryMethodBlockClosure", "interface_typhoon_assisted_factory_method_block_closure.html", null ],
+      [ "<TyphoonAssistedFactoryMethodClosure>", "protocol_typhoon_assisted_factory_method_closure-p.html", [
+        [ "TyphoonAssistedFactoryMethodBlockClosure", "interface_typhoon_assisted_factory_method_block_closure.html", null ],
+        [ "TyphoonAssistedFactoryMethodInitializerClosure", "interface_typhoon_assisted_factory_method_initializer_closure.html", null ]
+      ] ],
       [ "TyphoonAssistedFactoryMethodCreator", "interface_typhoon_assisted_factory_method_creator.html", [
         [ "TyphoonAssistedFactoryMethodBlockCreator", "interface_typhoon_assisted_factory_method_block_creator.html", null ],
         [ "TyphoonAssistedFactoryMethodInitializerCreator", "interface_typhoon_assisted_factory_method_initializer_creator.html", null ]
       ] ],
       [ "TyphoonAssistedFactoryMethodInitializer", "interface_typhoon_assisted_factory_method_initializer.html", null ],
+      [ "TyphoonAssistedFactoryMethodInitializerClosure", "interface_typhoon_assisted_factory_method_initializer_closure.html", null ],
       [ "TyphoonAssistedFactoryParameterInjectedWithArgumentIndex", "interface_typhoon_assisted_factory_parameter_injected_with_argument_index.html", null ],
       [ "TyphoonAssistedFactoryParameterInjectedWithProperty", "interface_typhoon_assisted_factory_parameter_injected_with_property.html", null ],
       [ "TyphoonBundleResource", "interface_typhoon_bundle_resource.html", null ],
@@ -49,7 +54,9 @@ var hierarchy =
         [ "TyphoonBlockComponentFactory", "interface_typhoon_block_component_factory.html", null ],
         [ "TyphoonXmlComponentFactory", "interface_typhoon_xml_component_factory.html", null ]
       ] ],
-      [ "<TyphoonComponentFactoryAware>", "protocol_typhoon_component_factory_aware-p.html", null ],
+      [ "<TyphoonComponentFactoryAware>", "protocol_typhoon_component_factory_aware-p.html", [
+        [ "TyphoonAssistedFactoryBase", "interface_typhoon_assisted_factory_base.html", null ]
+      ] ],
       [ "<TyphoonComponentFactoryPostProcessor>", "protocol_typhoon_component_factory_post_processor-p.html", [
         [ "TyphoonPatcher", "interface_typhoon_patcher.html", null ],
         [ "TyphoonPropertyPlaceholderConfigurer", "interface_typhoon_property_placeholder_configurer.html", null ],
@@ -60,7 +67,7 @@ var hierarchy =
         [ "TyphoonPropertyInjectedWithStringRepresentation", "interface_typhoon_property_injected_with_string_representation.html", null ]
       ] ],
       [ "<TyphoonComponentsPool>", "protocol_typhoon_components_pool-p.html", [
-        [ "TyphoonWeekComponentsPool", "interface_typhoon_week_components_pool.html", null ]
+        [ "TyphoonWeakComponentsPool", "interface_typhoon_weak_components_pool.html", null ]
       ] ],
       [ "TyphoonDefinition", "interface_typhoon_definition.html", null ],
       [ "TyphoonFactoryProvider", "interface_typhoon_factory_provider.html", null ],
@@ -100,7 +107,7 @@ var hierarchy =
       [ "TyphoonTypeDescriptor", "interface_typhoon_type_descriptor.html", null ],
       [ "TyphoonUIColorTypeConverter", "interface_typhoon_u_i_color_type_converter.html", null ],
       [ "TyphoonViewControllerNibResolver", "interface_typhoon_view_controller_nib_resolver.html", null ],
-      [ "TyphoonWeekComponentsPool", "interface_typhoon_week_components_pool.html", null ]
+      [ "TyphoonWeakComponentsPool", "interface_typhoon_weak_components_pool.html", null ]
     ] ],
     [ "TyphoonAssistedFactoryBase(TyphoonFactoryMethodClosure)", "category_typhoon_assisted_factory_base_07_typhoon_factory_method_closure_08.html", null ],
     [ "TyphoonInjectedByReference", null, [
@@ -108,6 +115,9 @@ var hierarchy =
       [ "TyphoonPropertyInjectedByReference", "interface_typhoon_property_injected_by_reference.html", [
         [ "TyphoonPropertyInjectedByFactoryReference", "interface_typhoon_property_injected_by_factory_reference.html", null ]
       ] ]
+    ] ],
+    [ "<TyphoonPropertyInjectionInternalDelegate>", null, [
+      [ "TyphoonAssistedFactoryBase", "interface_typhoon_assisted_factory_base.html", null ]
     ] ],
     [ "TyphoonRXMLElement(XmlComponentFactory)", "category_typhoon_r_x_m_l_element_07_xml_component_factory_08.html", null ]
 ];

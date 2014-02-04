@@ -15,7 +15,6 @@ var interface_typhoon_primitive_type_converter =
     [ "convertToUnsignedLong:", "interface_typhoon_primitive_type_converter.html#a7d1afdc164773bdd5fae00e7beabd0cf", null ],
     [ "convertToUnsignedLongLong:", "interface_typhoon_primitive_type_converter.html#abef6773abe05a2d553e3aa2cac99e19b", null ],
     [ "convertToUnsignedShort:", "interface_typhoon_primitive_type_converter.html#a154126c107209fd7bf5a5fd77e9c0d88", null ],
-    [ "setPrimitiveArgumentFor:index:fromValue:", "interface_typhoon_primitive_type_converter.html#a4d62941ed9011ee9aeea242afaa62ed6", null ],
     [ "setPrimitiveArgumentFor:index:textValue:requiredType:", "interface_typhoon_primitive_type_converter.html#ad73d3e3e68756022c0ba5b221f14b3ff", null ],
     [ "valueFromText:withType:", "interface_typhoon_primitive_type_converter.html#a6b4fa72355f8b6efcf5c7088d10b25fa", null ]
 ];
