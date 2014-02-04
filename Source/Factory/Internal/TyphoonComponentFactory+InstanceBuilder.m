@@ -332,7 +332,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         if (value.type == TyphoonCollectionValueTypeByReference)
         {
             TyphoonByReferenceCollectionValue* byReferenceValue = (TyphoonByReferenceCollectionValue*) value;
-            id reference = [self componentForKey:byReferenceValue.componentName];
+            id reference = [self componentForKey:byReferenceValue.componentKey];
             [collection addObject:reference];
         }
         else if (value.type == TyphoonCollectionValueTypeConvertedText)

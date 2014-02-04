@@ -18,12 +18,12 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithComponentName:(NSString*)componentName
+- (id)initWithComponentKey:(NSString*)componentKey
 {
     self = [super init];
     if (self)
     {
-        _componentName = componentName;
+        _componentKey = componentKey;
     }
     return self;
 }
