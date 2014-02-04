@@ -129,7 +129,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 - (id)buildSharedInstanceForDefinition:(TyphoonDefinition*)definition
 {
-    id instance = [_stack peekInstanceForKey:definition.key];
+    id instance = [_stack peekForKey:definition.key].instance;
     if (instance)
     {
         return instance;

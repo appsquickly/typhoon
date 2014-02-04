@@ -77,21 +77,6 @@
     return nil;
 }
 
-- (id)peekInstanceForKey:(NSString*)key
-{
-    TyphoonStackElement* stackElement = [self peekForKey:key];
-
-    if ([stackElement isInitializingInstance])
-    {
-        [NSException raise:@"CircularInitializerDependence"
-            format:@"The object for key %@ is currently initializing, but was specified as init dependency in another object",
-                   stackElement.key];
-    }
-
-    return stackElement.instance;
-}
-
-
 - (BOOL)isEmpty
 {
     return ([_storage count] == 0);

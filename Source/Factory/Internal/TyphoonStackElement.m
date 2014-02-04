@@ -17,6 +17,7 @@
 @implementation TyphoonStackElement
 {
     NSMutableSet* completeBlocks;
+    id _instance;
 }
 
 + (instancetype)itemWithKey:(NSString*)key
@@ -39,6 +40,17 @@
 - (BOOL)isInitializingInstance
 {
     return _instance == nil;
+}
+
+- (id)instance
+{
+    if ([self isInitializingInstance])
+    {
+        [NSException raise:@"CircularInitializerDependence"
+                    format:@"The object for key %@ is currently initializing, but was specified as init dependency in another object",
+         self.key];
+    }
+    return _instance;
 }
 
 - (void)addInstanceCompleteBlock:(TyphoonInstanceCompleteBlock)completeBlock
