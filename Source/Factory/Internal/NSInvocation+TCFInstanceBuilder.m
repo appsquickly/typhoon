@@ -19,7 +19,7 @@
 @implementation NSInvocation (TCFInstanceBuilder)
 
 /** Returns YES if selector returns retained instance (not autoreleased) */
-static BOOL IsSelectorReturnsRetained(SEL selector)
+static BOOL typhoon_IsSelectorReturnsRetained(SEL selector)
 {
     NSString *selectorString = NSStringFromSelector(selector);
     
@@ -37,7 +37,7 @@ static BOOL IsSelectorReturnsRetained(SEL selector)
     
     @autoreleasepool
     {
-        isReturnsRetained = IsSelectorReturnsRetained([self selector]);
+        isReturnsRetained = typhoon_IsSelectorReturnsRetained([self selector]);
         [self invokeWithTarget:instanceOrClass];
         [self getReturnValue:&returnValue];
         [returnValue retain]; /* Retain to take ownership on autoreleased object */
