@@ -1,5 +1,5 @@
 # Typhoon! (www.typhoonframework.org) 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/typhoon-framework/typhoon/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/typhoon-framework/Typhoon/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 
 A new dependency injection container for Objective-C. Light-weight, yet full-featured and super-easy to use. 
