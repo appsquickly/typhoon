@@ -207,7 +207,8 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
     NSArray* acceptedScopes = @[
         @"default",
         @"prototype",
-        @"singleton"
+        @"singleton",
+        @"weakSingleton"
     ];
     if (([scope length] > 0) && (![acceptedScopes containsObject:scope]))
     {
@@ -224,6 +225,10 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
     else if ([scope isEqualToString:@"prototype"])
     {
         result = TyphoonScopePrototype;
+    }
+    else if ([scope isEqualToString:@"weakSingleton"])
+    {
+        result = TyphoonScopeWeakSingleton;
     }
 
     return result;

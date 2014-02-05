@@ -98,6 +98,7 @@
                 <xsd:restriction base="xsd:NMTOKEN">
                     <xsd:enumeration value="default"/>
                     <xsd:enumeration value="singleton"/>
+                    <xsd:enumeration value="weakSingleton"/>
                     <xsd:enumeration value="prototype"/>
                 </xsd:restriction>
             </xsd:simpleType>
