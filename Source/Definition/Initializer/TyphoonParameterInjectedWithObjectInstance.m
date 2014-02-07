@@ -14,6 +14,8 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonDefinition.h"
+#import "TyphoonComponentFactory.h"
+#import "NSValue+TCFInstanceBuilder.h"
 
 @implementation TyphoonParameterInjectedWithObjectInstance
 
@@ -28,16 +30,6 @@
     return self;
 }
 
-- (TyphoonParameterInjectionType)type
-{
-    return TyphoonParameterInjectionTypeObjectInstance;
-}
-
-- (void)setInitializer:(TyphoonInitializer*)initializer
-{
-    _initializer = initializer;
-}
-
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
@@ -50,5 +42,29 @@
 
     return ![[typeCodes objectAtIndex:_index] isEqualToString:@"@"];
 }
+
+/* ====================================================================================================================================== */
+#pragma mark - Overridden Methods
+
+- (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation
+{
+    id value = self.value;
+    BOOL isValuesIsWrapper = [value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSValue class]];
+
+    if (isValuesIsWrapper && [self isPrimitiveParameter])
+    {
+        [value typhoon_setAsArgumentForInvocation:invocation atIndex:_index + 2];
+    }
+    else
+    {
+        [invocation setArgument:&value atIndex:_index + 2];
+    }
+}
+
+- (TyphoonParameterInjectionType)type
+{
+    return TyphoonParameterInjectionTypeObjectInstance;
+}
+
 
 @end

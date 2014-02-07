@@ -12,6 +12,10 @@
 
 
 #import "TyphoonParameterInjectedByReference.h"
+#import "TyphoonComponentFactory.h"
+#import "TyphoonComponentFactory+InstanceBuilder.h"
+#import "TyphoonCallStack.h"
+#import "TyphoonStackElement.h"
 
 
 @implementation TyphoonParameterInjectedByReference
@@ -38,6 +42,12 @@
     return TyphoonParameterInjectionTypeReference;
 }
 
+- (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation
+{
+    [[[factory stack] peekForKey:_reference] instance]; //Raises circular dependencies exception if already initializing.
+    id reference = [factory componentForKey:_reference];
+    [invocation setArgument:&reference atIndex:_index + 2];
+}
 
 
 @end

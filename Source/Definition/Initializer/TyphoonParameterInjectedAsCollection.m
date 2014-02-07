@@ -11,6 +11,8 @@
 
 #import "TyphoonParameterInjectedAsCollection.h"
 #import "TyphoonDefinition.h"
+#import "TyphoonComponentFactory.h"
+#import "TyphoonComponentFactory+InstanceBuilder.h"
 
 @implementation TyphoonParameterInjectedAsCollection
 {
@@ -97,6 +99,13 @@
 
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
+
+- (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation
+{
+    id collection = [factory buildCollectionWithValues:self.values requiredType:self.collectionType];
+    [invocation setArgument:&collection atIndex:_index + 2];
+}
+
 
 - (TyphoonParameterInjectionType)type
 {

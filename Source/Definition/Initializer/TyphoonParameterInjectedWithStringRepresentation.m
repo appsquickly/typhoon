@@ -17,6 +17,9 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonDefinition.h"
+#import "TyphoonComponentFactory.h"
+#import "TyphoonPrimitiveTypeConverter.h"
+#import "TyphoonTypeConverterRegistry.h"
 
 
 @implementation TyphoonParameterInjectedWithStringRepresentation
@@ -66,16 +69,28 @@
 
 
 /* ====================================================================================================================================== */
-#pragma mark - Protocol Methods
+#pragma mark - Overridden Methods
+
+- (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation
+{
+    TyphoonTypeDescriptor* requiredType = [self resolveType];
+    if (requiredType.isPrimitive)
+    {
+        TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
+        [converter setPrimitiveArgumentFor:invocation index:_index + 2 textValue:_textValue requiredType:requiredType];
+    }
+    else
+    {
+        id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:requiredType];
+        id converted = [converter convert:_textValue];
+        [invocation setArgument:&converted atIndex:_index + 2];
+    }
+}
+
 
 - (TyphoonParameterInjectionType)type
 {
     return TyphoonParameterInjectionTypeStringRepresentation;
-}
-
-- (void)setInitializer:(TyphoonInitializer*)initializer
-{
-    _initializer = initializer;
 }
 
 

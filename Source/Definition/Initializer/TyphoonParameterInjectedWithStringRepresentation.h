@@ -28,7 +28,6 @@
 @interface TyphoonParameterInjectedWithStringRepresentation : TyphoonAbstractInjectedParameter <TyphoonInjectedWithStringRepresentation>
 
 
-@property(nonatomic, readonly) TyphoonParameterInjectionType type;
 @property(nonatomic, strong, readonly) Class requiredType;
 
 - (id)initWithIndex:(NSUInteger)index value:(NSString*)value requiredTypeOrNil:(Class)requiredTypeOrNil;

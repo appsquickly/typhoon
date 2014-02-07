@@ -12,6 +12,7 @@
 #import <Foundation/Foundation.h>
 
 @class TyphoonInitializer;
+@class TyphoonComponentFactory;
 
 typedef enum
 {
@@ -33,5 +34,7 @@ typedef enum
 
 - (TyphoonParameterInjectionType)type;
 
+
+- (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation;
 
 @end

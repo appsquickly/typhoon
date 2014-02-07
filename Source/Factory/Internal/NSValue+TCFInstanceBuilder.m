@@ -95,7 +95,7 @@
 
 @end
 
-@implementation NSNumber (InvocationConfigure)
+@implementation NSNumber (TCFInstanceBuilder)
 
 - (void)typhoon_setAsArgumentForInvocation:(NSInvocation*)invocation atIndex:(NSUInteger)index
 {
