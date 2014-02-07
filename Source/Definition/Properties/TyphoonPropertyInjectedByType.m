@@ -12,6 +12,10 @@
 
 
 #import "TyphoonPropertyInjectedByType.h"
+#import "TyphoonComponentFactory.h"
+#import "TyphoonTypeDescriptor.h"
+#import "TyphoonComponentFactory+InstanceBuilder.h"
+#import "TyphoonDefinition.h"
 
 
 @implementation TyphoonPropertyInjectedByType
@@ -31,7 +35,21 @@
 }
 
 /* ====================================================================================================================================== */
-#pragma mark - Protocol Methods
+#pragma mark - Overridden Methods
+
+- (id)withFactory:(TyphoonComponentFactory*)factory computeValueToInjectOnInstance:(id)instance
+{
+    TyphoonTypeDescriptor* type = [instance typeForPropertyWithName:self.name];
+    TyphoonDefinition* definition = [factory definitionForType:[type classOrProtocol]];
+
+    [factory evaluateCircularDependency:definition.key propertyName:self.name instance:instance];
+    if (![factory propertyIsCircular:self onInstance:instance])
+    {
+        return [factory componentForKey:definition.key];
+    }
+    return nil;
+}
+
 
 - (TyphoonPropertyInjectionType)injectionType
 {

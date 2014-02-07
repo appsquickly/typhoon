@@ -11,8 +11,11 @@
 
 
 
-
 #import "TyphoonPropertyInjectedWithStringRepresentation.h"
+#import "TyphoonComponentFactory.h"
+#import "TyphoonTypeDescriptor.h"
+#import "TyphoonPrimitiveTypeConverter.h"
+#import "TyphoonTypeConverterRegistry.h"
 
 /**
 * Represents a property injected with a string representation. The type converter system will convert the representation to an instance of
@@ -40,12 +43,31 @@
 }
 
 /* ====================================================================================================================================== */
-#pragma mark - Protocol Methods
+#pragma mark - Overridden Methods
+
+- (id)withFactory:(TyphoonComponentFactory*)factory computeValueToInjectOnInstance:(id)instance
+{
+    TyphoonTypeDescriptor* type = [instance typeForPropertyWithName:self.name];
+    id value = nil;
+
+    if (type.isPrimitive)
+    {
+        TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
+        value = [converter valueFromText:self.textValue withType:type];
+    }
+    else
+    {
+        id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:type];
+        value = [converter convert:self.textValue];
+    }
+
+    return value;
+}
+
 
 - (TyphoonPropertyInjectionType)injectionType
 {
     return TyphoonPropertyInjectionTypeAsStringRepresentation;
 }
-
 
 @end

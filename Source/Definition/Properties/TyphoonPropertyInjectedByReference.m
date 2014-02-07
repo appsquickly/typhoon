@@ -11,6 +11,8 @@
 
 
 #import "TyphoonPropertyInjectedByReference.h"
+#import "TyphoonComponentFactory.h"
+#import "TyphoonComponentFactory+InstanceBuilder.h"
 
 
 @implementation TyphoonPropertyInjectedByReference
@@ -30,7 +32,19 @@
 }
 
 /* ====================================================================================================================================== */
-#pragma mark - Protocol Methods
+#pragma mark - Overridden Methods
+
+- (id)withFactory:(TyphoonComponentFactory*)factory computeValueToInjectOnInstance:(id)instance
+{
+    [factory evaluateCircularDependency:self.reference propertyName:self.name instance:instance];
+
+    if (![factory propertyIsCircular:self onInstance:instance])
+    {
+        return [factory componentForKey:self.reference];
+    }
+    return nil;
+}
+
 
 - (TyphoonPropertyInjectionType)injectionType
 {

@@ -15,6 +15,8 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonInjectedAsCollectionImpl.h"
 #import "TyphoonDefinition.h"
+#import "TyphoonComponentFactory.h"
+#import "TyphoonComponentFactory+InstanceBuilder.h"
 
 
 @implementation TyphoonPropertyInjectedAsCollection
@@ -99,6 +101,14 @@
     return 0;
 }
 
+/* ====================================================================================================================================== */
+#pragma mark - Overridden Methods
+
+- (id)withFactory:(TyphoonComponentFactory*)factory computeValueToInjectOnInstance:(id)instance
+{
+    TyphoonCollectionType type = [self resolveCollectionTypeWith:instance];
+    return [factory buildCollectionWithValues:[self values] requiredType:type];
+}
 
 - (TyphoonPropertyInjectionType)injectionType
 {

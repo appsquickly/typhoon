@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonAbstractInjectedProperty.h"
+#import "TyphoonComponentFactory.h"
 
 @implementation TyphoonAbstractInjectedProperty
 
@@ -19,6 +20,16 @@
     [NSException raise:NSInternalInconsistencyException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
     return 0;
 }
+
+- (id)withFactory:(TyphoonComponentFactory*)factory computeValueToInjectOnInstance:(id)instance
+{
+    [NSException raise:NSInternalInconsistencyException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
+    return nil;
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Overridden Methods
+
 
 - (BOOL)isEqual:(id)other
 {

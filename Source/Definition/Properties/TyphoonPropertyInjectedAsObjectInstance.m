@@ -11,6 +11,7 @@
 
 
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
+#import "TyphoonComponentFactory.h"
 
 
 @implementation TyphoonPropertyInjectedAsObjectInstance
@@ -30,11 +31,16 @@
 }
 
 /* ====================================================================================================================================== */
-#pragma mark - Protocol Methods
+#pragma mark - Overridden Methods
 
 - (TyphoonPropertyInjectionType)injectionType
 {
     return TyphoonPropertyInjectionTypeAsObjectInstance;
+}
+
+- (id)withFactory:(TyphoonComponentFactory*)factory computeValueToInjectOnInstance:(id)instance
+{
+    return _objectInstance;
 }
 
 

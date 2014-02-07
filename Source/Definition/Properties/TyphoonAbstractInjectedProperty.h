@@ -15,6 +15,8 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonIntrospectiveNSObject.h"
 
+@class TyphoonComponentFactory;
+
 typedef enum
 {
     TyphoonPropertyInjectionTypeByReference,
@@ -36,6 +38,8 @@ typedef enum
 
 @property(nonatomic, strong) NSString* name;
 @property(nonatomic) TyphoonPropertyInjectionType injectionType;
+
+- (id)withFactory:(TyphoonComponentFactory*)factory computeValueToInjectOnInstance:(id)instance;
 
 
 @end

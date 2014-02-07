@@ -17,32 +17,25 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import <objc/message.h>
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonDefinition.h"
-#import "TyphoonParameterInjectedByReference.h"
 #import "TyphoonInitializer.h"
 #import "TyphoonPropertyInjectedByReference.h"
 #import "TyphoonCallStack.h"
-#import "TyphoonPropertyInjectedByFactoryReference.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonTypeConverterRegistry.h"
-#import "TyphoonPropertyInjectedWithStringRepresentation.h"
 #import "TyphoonPropertyInjectionDelegate.h"
 #import "TyphoonPropertyInjectionInternalDelegate.h"
 #import "TyphoonPrimitiveTypeConverter.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
-#import "TyphoonDefinition+InstanceBuilder.h"
-#import "TyphoonPropertyInjectedAsCollection.h"
 #import "TyphoonCollectionValue.h"
 #import "TyphoonByReferenceCollectionValue.h"
 #import "TyphoonTypeConvertedCollectionValue.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
-#import "TyphoonPropertyInjectedAsObjectInstance.h"
 #import "TyphoonComponentFactoryAware.h"
 #import "TyphoonComponentPostProcessor.h"
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
 #import "NSInvocation+TCFInstanceBuilder.h"
-#import "TyphoonInitializer+InstanceBuilder.h"
 
 #define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type) [NSException raise:@"NSUnknownKeyException" \
 format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",property.name, [instance class]]
@@ -174,7 +167,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
     TyphoonPropertyInjectionLazyValue lazyValue = ^id
     {
-        return [self valueToInjectProperty:property withType:propertyType onInstance:instance];
+        return [property withFactory:self computeValueToInjectOnInstance:instance];
     };
 
     if (![instance respondsToSelector:@selector(shouldInjectProperty:withType:lazyValue:)] ||
@@ -189,58 +182,6 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 }
 
-- (id)valueToInjectProperty:(TyphoonAbstractInjectedProperty*)property withType:(TyphoonTypeDescriptor*)type
-    onInstance:(id <TyphoonIntrospectiveNSObject>)instance
-{
-    id valueToInject = nil;
-
-    if (property.injectionType == TyphoonPropertyInjectionTypeByType)
-    {
-        TyphoonDefinition* definition = [self definitionForType:[type classOrProtocol]];
-
-        [self evaluateCircularDependency:definition.key propertyName:property.name instance:instance];
-        if (![self propertyIsCircular:property onInstance:instance])
-        {
-            valueToInject = [self componentForKey:definition.key];
-        }
-    }
-    else if (property.injectionType == TyphoonPropertyInjectionTypeByReference)
-    {
-        TyphoonPropertyInjectedByReference* byReference = (TyphoonPropertyInjectedByReference*) property;
-        [self evaluateCircularDependency:byReference.reference propertyName:property.name instance:instance];
-
-        if (![self propertyIsCircular:property onInstance:instance])
-        {
-            valueToInject = [self componentForKey:byReference.reference];
-        }
-    }
-    else if (property.injectionType == TyphoonPropertyInjectionTypeByFactoryReference)
-    {
-        TyphoonPropertyInjectedByFactoryReference* byReference = (TyphoonPropertyInjectedByFactoryReference*) property;
-        [self evaluateCircularDependency:byReference.reference propertyName:property.name instance:instance];
-
-        if (![self propertyIsCircular:property onInstance:instance])
-        {
-            id factoryReference = [self componentForKey:byReference.reference];
-            valueToInject = [factoryReference valueForKeyPath:byReference.keyPath];
-        }
-    }
-    else if (property.injectionType == TyphoonPropertyInjectionTypeAsCollection)
-    {
-        valueToInject = [self buildCollectionFor:(TyphoonPropertyInjectedAsCollection*) property instance:instance];
-    }
-    else if (property.injectionType == TyphoonPropertyInjectionTypeAsObjectInstance)
-    {
-        valueToInject = ((TyphoonPropertyInjectedAsObjectInstance*) property).objectInstance;
-    }
-    else if (property.injectionType == TyphoonPropertyInjectionTypeAsStringRepresentation)
-    {
-        TyphoonPropertyInjectedWithStringRepresentation* valueProperty = (TyphoonPropertyInjectedWithStringRepresentation*) property;
-        valueToInject = [self valueFromTextValue:valueProperty.textValue requiredType:type];
-    }
-
-    return valueToInject;
-}
 
 - (void)evaluateCircularDependency:(NSString*)componentKey propertyName:(NSString*)propertyName
     instance:(id <TyphoonIntrospectiveNSObject>)instance;
@@ -294,32 +235,6 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-
-- (id)valueFromTextValue:(NSString*)textValue requiredType:(TyphoonTypeDescriptor*)requiredType
-{
-    id value = nil;
-
-    if (requiredType.isPrimitive)
-    {
-        TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
-        value = [converter valueFromText:textValue withType:requiredType];
-    }
-    else
-    {
-        id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:requiredType];
-        value = [converter convert:textValue];
-    }
-
-    return value;
-}
-
-//FIXME: Move this off the TyphoonComponentFactory, making onto the class representing a initializer or property being injected with a collection
-- (id)buildCollectionFor:(TyphoonPropertyInjectedAsCollection*)propertyInjectedAsCollection
-    instance:(id <TyphoonIntrospectiveNSObject>)instance
-{
-    TyphoonCollectionType type = [propertyInjectedAsCollection resolveCollectionTypeWith:instance];
-    return [self buildCollectionWithValues:[propertyInjectedAsCollection values] requiredType:type];
-}
 
 //FIXME: Move this off the TyphoonComponentFactory, making onto the class representing a initializer or property being injected with a collection
 - (id)buildCollectionWithValues:(NSArray*)values requiredType:(TyphoonCollectionType)type
