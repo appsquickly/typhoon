@@ -71,8 +71,8 @@ NSString *currentFooString;
         [definition injectProperty:@selector(damselsRescued) withObjectInstance:@(30)];
         [definition injectProperty:@selector(hasHorseWillTravel) withObjectInstance:@(YES)];
     }];
-    
-    [factory injectPropertyDependenciesOn:(id)knight withDefinition:knightDefinition];
+
+    [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition];
     
     assertThatInteger(knight.damselsRescued, equalToInteger(30));
     assertThatBool(knight.hasHorseWillTravel, equalToBool(YES));
@@ -87,7 +87,7 @@ NSString *currentFooString;
     TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(foobar) withObjectInstance:testString];
     }];
-    [factory injectPropertyDependenciesOn:(id)knight withDefinition:knightDefinition];
+    [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition];
     
     assertThat(knight.foobar, equalTo([testString copy]));
 }
@@ -108,7 +108,7 @@ NSString *currentFooString;
         [definition injectProperty:@selector(hasHorseWillTravel) withDefinition:settings selector:@selector(hasHorseWillTravel)];
         [definition injectProperty:@selector(foobar) withDefinition:settings selector:@selector(fooString)];
     }];
-    [factory injectPropertyDependenciesOn:(id)knight withDefinition:knightDefinition];
+    [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition];
     
     assertThat(knight.foobar, equalTo(@"Hello Knights"));
     assertThatInteger(knight.damselsRescued, equalToInteger(24));
@@ -128,7 +128,7 @@ NSString *currentFooString;
     TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(foobar) withDefinition:settings keyPath:@"fooString.uppercaseString"];
     }];
-    [factory injectPropertyDependenciesOn:(id)knight withDefinition:knightDefinition];
+    [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition];
     
     assertThat(knight.foobar, equalTo(@"HELLO"));
 }

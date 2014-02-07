@@ -23,7 +23,6 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonPropertyInjectionDelegate.h"
 #import "TyphoonPropertyInjectionInternalDelegate.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
-#import "TyphoonCollectionValue.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
 #import "TyphoonComponentFactoryAware.h"
@@ -52,7 +51,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
     [stackElement takeInstance:instance];
 
-    [self injectPropertyDependenciesOn:instance withDefinition:definition];
+    [self doPropertyInjectionEventsOn:instance withDefinition:definition];
 
     instance = [self postProcessInstance:instance];
     [_stack pop];
@@ -127,7 +126,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 /* ====================================================================================================================================== */
 #pragma mark - Property Injection
 
-- (void)injectPropertyDependenciesOn:(id)instance withDefinition:(TyphoonDefinition*)definition
+- (void)doPropertyInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition*)definition
 {
     [self doBeforePropertyInjectionOn:instance withDefinition:definition];
 

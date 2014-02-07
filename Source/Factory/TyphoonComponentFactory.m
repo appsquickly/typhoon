@@ -208,7 +208,7 @@ static TyphoonComponentFactory* defaultFactory;
     {
         if (definition.type == class)
         {
-            [self injectPropertyDependenciesOn:instance withDefinition:definition];
+            [self doPropertyInjectionEventsOn:instance withDefinition:definition];
         }
     }
 }

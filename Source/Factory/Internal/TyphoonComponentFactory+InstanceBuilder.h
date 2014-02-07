@@ -30,7 +30,7 @@
 
 - (id)buildSharedInstanceForDefinition:(TyphoonDefinition*)definition;
 
-- (void)injectPropertyDependenciesOn:(__autoreleasing id)instance withDefinition:(TyphoonDefinition*)definition;
+- (void)doPropertyInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition*)definition;
 
 - (NSArray*)allDefinitionsForType:(id)classOrProtocol;
 
