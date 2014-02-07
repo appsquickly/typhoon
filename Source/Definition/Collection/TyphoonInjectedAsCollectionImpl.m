@@ -9,13 +9,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonInjectedAsCollection.h"
+#import "TyphoonInjectedAsCollectionImpl.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonTypeConvertedCollectionValue.h"
 #import "TyphoonByReferenceCollectionValue.h"
 
-@implementation TyphoonInjectedAsCollection
+@implementation TyphoonInjectedAsCollectionImpl
+{
+    NSMutableArray* _values;
+}
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction

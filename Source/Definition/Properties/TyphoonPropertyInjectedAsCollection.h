@@ -19,7 +19,7 @@
 /**
 * Represents a collection (NSArray, NSSet, c-style array) of items injected by reference, value or type.
 */
-@interface TyphoonPropertyInjectedAsCollection : TyphoonInjectedAsCollection
+@interface TyphoonPropertyInjectedAsCollection : TyphoonAbstractInjectedProperty<TyphoonInjectedAsCollection>
 
 
 @property(nonatomic, strong, readonly) NSString* name;

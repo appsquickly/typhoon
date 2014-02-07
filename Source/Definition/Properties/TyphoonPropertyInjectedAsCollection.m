@@ -13,10 +13,14 @@
 #import "TyphoonPropertyInjectedAsCollection.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonIntrospectionUtils.h"
-#import "TyphoonTypeConvertedCollectionValue.h"
+#import "TyphoonInjectedAsCollectionImpl.h"
+#import "TyphoonDefinition.h"
 
 
 @implementation TyphoonPropertyInjectedAsCollection
+{
+    TyphoonInjectedAsCollectionImpl* _collection;
+}
 
 
 /* ====================================================================================================================================== */
@@ -28,8 +32,32 @@
     if (self)
     {
         _name = name;
+        _collection = [[TyphoonInjectedAsCollectionImpl alloc] init];
     }
     return self;
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Protocol Methods
+
+- (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType
+{
+    [_collection addItemWithText:text requiredType:requiredType];
+}
+
+- (void)addItemWithComponentName:(NSString*)componentName
+{
+    [_collection addItemWithComponentName:componentName];
+}
+
+- (void)addItemWithDefinition:(TyphoonDefinition*)definition
+{
+    [_collection addItemWithDefinition:definition];
+}
+
+- (NSArray*)values
+{
+    return [_collection values];
 }
 
 

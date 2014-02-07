@@ -10,11 +10,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonParameterInjectedAsCollection.h"
+#import "TyphoonDefinition.h"
 
 @implementation TyphoonParameterInjectedAsCollection
 {
     Class _requiredType;
+    TyphoonInjectedAsCollectionImpl* _collection;
 }
+
+/* ====================================================================================================================================== */
+#pragma mark - Initialization & Destruction
 
 - (id)initWithParameterIndex:(NSUInteger)index requiredType:(Class)requiredType
 {
@@ -23,19 +28,37 @@
     {
         _index = index;
         _requiredType = requiredType;
+        _collection = [[TyphoonInjectedAsCollectionImpl alloc] init];
     }
     return self;
 }
 
-- (TyphoonParameterInjectionType)type
+
+/* ====================================================================================================================================== */
+#pragma mark - Protocol Methods
+
+- (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType
 {
-    return TyphoonParameterInjectionTypeAsCollection;
+    [_collection addItemWithText:text requiredType:requiredType];
 }
 
-- (void)setInitializer:(TyphoonInitializer*)initializer
+- (void)addItemWithComponentName:(NSString*)componentName
 {
-    // No-op.
+    [_collection addItemWithComponentName:componentName];
 }
+
+- (void)addItemWithDefinition:(TyphoonDefinition*)definition
+{
+    [_collection addItemWithDefinition:definition];
+}
+
+- (NSArray*)values
+{
+    return [_collection values];
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
 
 - (TyphoonCollectionType)collectionType
 {
@@ -70,5 +93,15 @@
                                                          NSStringFromClass(clazz)];
     return 0;
 }
+
+
+/* ====================================================================================================================================== */
+#pragma mark - Overridden Methods
+
+- (TyphoonParameterInjectionType)type
+{
+    return TyphoonParameterInjectionTypeAsCollection;
+}
+
 
 @end

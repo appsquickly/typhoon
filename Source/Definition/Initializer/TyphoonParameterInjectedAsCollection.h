@@ -11,12 +11,12 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonInjectedAsCollection.h"
+#import "TyphoonInjectedAsCollectionImpl.h"
 #import "TyphoonAbstractInjectedParameter.h"
 
 /**
 */
-@interface TyphoonParameterInjectedAsCollection : TyphoonInjectedAsCollection
+@interface TyphoonParameterInjectedAsCollection : TyphoonAbstractInjectedParameter<TyphoonInjectedAsCollection>
 
 @property(nonatomic, readonly) TyphoonParameterInjectionType type;
 @property(nonatomic, readonly) NSUInteger index;

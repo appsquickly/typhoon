@@ -1,19 +1,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-//  TYPHOON FRAMEWORK
-//  Copyright 2013, Jasper Blues & Contributors
+//  Copyright 2014 ibipit
 //  All Rights Reserved.
 //
-//  NOTICE: The authors permit you to use, modify, and distribute this file
-//  in accordance with the terms of the license agreement accompanying it.
+//  NOTICE: This software is the proprietary information of ibipit
+//  Use is subject to license terms.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+
 #import <Foundation/Foundation.h>
-#import "TyphoonAbstractInjectedProperty.h"
 
 @class TyphoonDefinition;
-@protocol TyphoonIntrospectiveNSObject;
 
 typedef enum
 {
@@ -24,14 +22,7 @@ typedef enum
     TyphoonCollectionTypeNSCountedSet
 } TyphoonCollectionType;
 
-/**
- * Base class for injected collection arguments.
- * Represents a collection (NSArray, NSSet, c-style array) of items injected by reference, value or type.
- */
-@interface TyphoonInjectedAsCollection : TyphoonAbstractInjectedProperty
-{
-    NSMutableArray* _values;
-}
+@protocol TyphoonInjectedAsCollection <NSObject>
 
 - (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType;
 
