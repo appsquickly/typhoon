@@ -14,6 +14,7 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonTypeConvertedCollectionValue.h"
 #import "TyphoonByReferenceCollectionValue.h"
+#import "TyphoonComponentFactory.h"
 
 @implementation TyphoonInjectedAsCollectionImpl
 {
@@ -56,5 +57,42 @@
 {
     return [_values copy];
 }
+
+- (id)withFactory:(TyphoonComponentFactory*)factory newInstanceOfType:(TyphoonCollectionType)type
+{
+    id collection = [self newCollectionForType:type];
+
+    for (id <TyphoonCollectionValue> value in self.values)
+    {
+        [collection addObject:[value resolveWithFactory:factory]];
+    }
+
+    BOOL isMutable = (type == TyphoonCollectionTypeNSMutableArray || type == TyphoonCollectionTypeNSMutableSet);
+    return isMutable ? collection : [collection copy];
+}
+
+
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
+
+- (id)newCollectionForType:(TyphoonCollectionType)type
+{
+    id collection;
+    if (type == TyphoonCollectionTypeNSArray || type == TyphoonCollectionTypeNSMutableArray)
+    {
+        collection = [[NSMutableArray alloc] init];
+    }
+    else if (type == TyphoonCollectionTypeNSCountedSet)
+    {
+        collection = [[NSCountedSet alloc] init];
+    }
+    else if (type == TyphoonCollectionTypeNSSet || type == TyphoonCollectionTypeNSMutableSet)
+    {
+        collection = [[NSMutableSet alloc] init];
+    }
+
+    return collection;
+}
+
 
 @end

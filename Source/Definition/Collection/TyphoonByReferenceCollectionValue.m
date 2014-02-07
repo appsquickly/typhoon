@@ -11,6 +11,7 @@
 
 
 #import "TyphoonByReferenceCollectionValue.h"
+#import "TyphoonComponentFactory.h"
 
 
 @implementation TyphoonByReferenceCollectionValue
@@ -33,5 +34,11 @@
 {
     return TyphoonCollectionValueTypeByReference;
 }
+
+- (id)resolveWithFactory:(TyphoonComponentFactory*)factory
+{
+    return [factory componentForKey:self.componentKey];
+}
+
 
 @end

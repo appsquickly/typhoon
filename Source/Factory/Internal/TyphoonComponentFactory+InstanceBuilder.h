@@ -38,9 +38,6 @@
 
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance;
 
-//FIXME: This shouldn't be a concern of the factory, but of the collection injected initializer or property.
-- (id)buildCollectionWithValues:(NSArray*)values requiredType:(TyphoonCollectionType)type;
-
 - (void)evaluateCircularDependency:(NSString*)componentKey propertyName:(NSString*)propertyName
     instance:(id <TyphoonIntrospectiveNSObject>)instance;
 

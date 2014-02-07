@@ -32,4 +32,6 @@ typedef enum
 
 - (NSArray*)values;
 
+- (id)withFactory:(TyphoonComponentFactory*)factory newInstanceOfType:(TyphoonCollectionType)type;
+
 @end

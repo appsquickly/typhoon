@@ -12,7 +12,6 @@
 #import "TyphoonParameterInjectedAsCollection.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
-#import "TyphoonComponentFactory+InstanceBuilder.h"
 
 @implementation TyphoonParameterInjectedAsCollection
 {
@@ -59,6 +58,12 @@
     return [_collection values];
 }
 
+- (id)withFactory:(TyphoonComponentFactory*)factory newInstanceOfType:(TyphoonCollectionType)type
+{
+    return [_collection withFactory:factory newInstanceOfType:type];
+}
+
+
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
@@ -102,12 +107,9 @@
 
 - (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation
 {
-    id collection = [factory buildCollectionWithValues:self.values requiredType:self.collectionType];
+    id collection = [self withFactory:factory newInstanceOfType:self.collectionType];
     [invocation setArgument:&collection atIndex:_index + 2];
 }
-
-
-
 
 
 @end

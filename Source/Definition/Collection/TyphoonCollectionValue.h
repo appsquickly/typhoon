@@ -11,6 +11,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class TyphoonComponentFactory;
+
 typedef enum
 {
     TyphoonCollectionValueTypeByReference,
@@ -22,5 +24,7 @@ typedef enum
 @protocol TyphoonCollectionValue <NSObject>
 
 - (TyphoonCollectionValueType)type;
+
+- (id)resolveWithFactory:(TyphoonComponentFactory*)factory;
 
 @end

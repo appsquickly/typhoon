@@ -10,6 +10,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonTypeConvertedCollectionValue.h"
+#import "TyphoonComponentFactory.h"
+#import "TyphoonTypeDescriptor.h"
+#import "TyphoonTypeConverter.h"
+#import "TyphoonTypeConverterRegistry.h"
 
 
 @implementation TyphoonTypeConvertedCollectionValue
@@ -31,6 +35,14 @@
 - (TyphoonCollectionValueType)type
 {
     return TyphoonCollectionValueTypeConvertedText;
+}
+
+- (id)resolveWithFactory:(TyphoonComponentFactory*)factory
+{
+    TyphoonTypeDescriptor* descriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:self.requiredType];
+    id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
+    id converted = [converter convert:self.textValue];
+    return converted;
 }
 
 

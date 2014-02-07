@@ -18,17 +18,12 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonInitializer.h"
-#import "TyphoonPropertyInjectedByReference.h"
 #import "TyphoonCallStack.h"
 #import "TyphoonTypeDescriptor.h"
-#import "TyphoonTypeConverterRegistry.h"
 #import "TyphoonPropertyInjectionDelegate.h"
 #import "TyphoonPropertyInjectionInternalDelegate.h"
-#import "TyphoonPrimitiveTypeConverter.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonCollectionValue.h"
-#import "TyphoonByReferenceCollectionValue.h"
-#import "TyphoonTypeConvertedCollectionValue.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
 #import "TyphoonComponentFactoryAware.h"
@@ -212,7 +207,6 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
             {
                 [(NSObject*) instance setValue:reference forKey:propertyName];
             }];
-
         }
     }
 }
@@ -234,54 +228,6 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
-
-
-//FIXME: Move this off the TyphoonComponentFactory, making onto the class representing a initializer or property being injected with a collection
-- (id)buildCollectionWithValues:(NSArray*)values requiredType:(TyphoonCollectionType)type
-{
-    id collection = [self collectionForType:type];
-
-    for (id <TyphoonCollectionValue> value in values)
-    {
-        if (value.type == TyphoonCollectionValueTypeByReference)
-        {
-            TyphoonByReferenceCollectionValue* byReferenceValue = (TyphoonByReferenceCollectionValue*) value;
-            id reference = [self componentForKey:byReferenceValue.componentKey];
-            [collection addObject:reference];
-        }
-        else if (value.type == TyphoonCollectionValueTypeConvertedText)
-        {
-            TyphoonTypeConvertedCollectionValue* typeConvertedValue = (TyphoonTypeConvertedCollectionValue*) value;
-            TyphoonTypeDescriptor* descriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:typeConvertedValue.requiredType];
-            id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
-            id converted = [converter convert:typeConvertedValue.textValue];
-            [collection addObject:converted];
-        }
-    }
-
-    BOOL isMutable = (type == TyphoonCollectionTypeNSMutableArray || type == TyphoonCollectionTypeNSMutableSet);
-    return isMutable ? collection : [collection copy];
-}
-
-- (id)collectionForType:(TyphoonCollectionType)type
-{
-    id collection;
-    if (type == TyphoonCollectionTypeNSArray || type == TyphoonCollectionTypeNSMutableArray)
-    {
-        collection = [[NSMutableArray alloc] init];
-    }
-    else if (type == TyphoonCollectionTypeNSCountedSet)
-    {
-        collection = [[NSCountedSet alloc] init];
-    }
-    else if (type == TyphoonCollectionTypeNSSet || type == TyphoonCollectionTypeNSMutableSet)
-    {
-        collection = [[NSMutableSet alloc] init];
-    }
-
-    return collection;
-
-}
 
 - (TyphoonDefinition*)definitionForType:(id)classOrProtocol
 {

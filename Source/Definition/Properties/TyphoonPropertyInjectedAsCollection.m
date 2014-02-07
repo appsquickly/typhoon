@@ -62,6 +62,11 @@
     return [_collection values];
 }
 
+- (id)withFactory:(TyphoonComponentFactory*)factory newInstanceOfType:(TyphoonCollectionType)type
+{
+    return [_collection withFactory:factory newInstanceOfType:type];
+}
+
 
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
@@ -107,7 +112,8 @@
 - (id)withFactory:(TyphoonComponentFactory*)factory computeValueToInjectOnInstance:(id)instance
 {
     TyphoonCollectionType type = [self resolveCollectionTypeWith:instance];
-    return [factory buildCollectionWithValues:[self values] requiredType:type];
+    id collection = [self withFactory:factory newInstanceOfType:type];
+    return collection;
 }
 
 
