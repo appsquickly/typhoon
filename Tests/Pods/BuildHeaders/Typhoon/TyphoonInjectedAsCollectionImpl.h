@@ -1,0 +1,1 @@
+../../../../Source/Definition/Collection/TyphoonInjectedAsCollectionImpl.h
