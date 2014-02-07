@@ -14,12 +14,8 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonDefinition.h"
-#import <objc/runtime.h>
 
 @implementation TyphoonParameterInjectedWithObjectInstance
-{
-    __weak TyphoonInitializer* _initializer;
-}
 
 - (id)initWithParameterIndex:(NSUInteger)index value:(id)value
 {

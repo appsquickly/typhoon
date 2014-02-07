@@ -50,7 +50,7 @@
 
 - (void)dealloc
 {
-    for (id <TyphoonInjectedParameter> parameter in _injectedParameters)
+    for (TyphoonAbstractInjectedParameter* parameter in _injectedParameters)
     {
         //Null out the __unsafe_unretained pointer back to self.
         [parameter setInitializer:nil];

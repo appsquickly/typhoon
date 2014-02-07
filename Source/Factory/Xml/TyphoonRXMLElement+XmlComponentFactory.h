@@ -16,7 +16,6 @@
 
 @class TyphoonDefinition;
 @class TyphoonInitializer;
-@protocol TyphoonInjectedParameter;
 @class TyphoonAbstractInjectedProperty;
 
 @interface TyphoonRXMLElement (XmlComponentFactory)

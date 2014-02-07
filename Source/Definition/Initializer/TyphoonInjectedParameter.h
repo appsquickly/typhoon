@@ -15,22 +15,10 @@
 
 @class TyphoonInitializer;
 
-typedef enum
-{
-    TyphoonParameterInjectionTypeReference,
-    TyphoonParameterInjectionTypeStringRepresentation,
-    TyphoonParameterInjectionTypeObjectInstance,
-    TyphoonParameterInjectionTypeAsCollection
-} TyphoonParameterInjectionType;
 
-/**
-*/
-@protocol TyphoonInjectedParameter <NSObject>
 
-- (NSUInteger)index;
 
-- (TyphoonParameterInjectionType)type;
 
-- (void)setInitializer:(TyphoonInitializer*)initializer;
+
 
 @end

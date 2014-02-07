@@ -12,13 +12,15 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonInjectedByReference.h"
+#import "TyphoonAbstractInjectedProperty.h"
 
 /**
 
 * Represents a property injected by referencing another definition in the container.
 */
-@interface TyphoonPropertyInjectedByReference : TyphoonInjectedByReference
+@interface TyphoonPropertyInjectedByReference : TyphoonAbstractInjectedProperty
+
+@property(nonatomic, strong, readonly) NSString* reference;
 
 - (instancetype)initWithName:(NSString*)name reference:(NSString*)reference;
 

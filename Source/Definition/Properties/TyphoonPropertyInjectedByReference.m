@@ -20,12 +20,12 @@
 
 - (instancetype)initWithName:(NSString*)name reference:(NSString*)reference
 {
-    self = [super initWithReference:reference];
+    self = [super init];
     if (self)
     {
         _name = name;
+        _reference = reference;
     }
-
     return self;
 }
 

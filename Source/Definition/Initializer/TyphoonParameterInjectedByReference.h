@@ -13,15 +13,13 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonInjectedParameter.h"
-#import "TyphoonInjectedByReference.h"
+#import "TyphoonAbstractInjectedParameter.h"
 
 /**
 */
-@interface TyphoonParameterInjectedByReference : TyphoonInjectedByReference <TyphoonInjectedParameter>
+@interface TyphoonParameterInjectedByReference : TyphoonAbstractInjectedParameter
 
-@property(nonatomic, readonly) NSUInteger index;
-@property(nonatomic, readonly) TyphoonParameterInjectionType type;
+@property(nonatomic, strong, readonly) NSString* reference;
 
 - (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString*)reference;
 

@@ -120,7 +120,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 - (void)configureInvocation:(NSInvocation*)invocation withFactory:(TyphoonComponentFactory*)factory
 {
     NSArray* injectedParameters = [self injectedParameters];
-    for (id <TyphoonInjectedParameter> parameter in injectedParameters)
+    for (TyphoonAbstractInjectedParameter*  parameter in injectedParameters)
     {
         if (parameter.type == TyphoonParameterInjectionTypeReference)
         {

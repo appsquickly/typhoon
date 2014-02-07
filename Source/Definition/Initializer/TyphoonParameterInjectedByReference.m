@@ -12,7 +12,6 @@
 
 
 #import "TyphoonParameterInjectedByReference.h"
-#import "TyphoonInitializer.h"
 
 
 @implementation TyphoonParameterInjectedByReference
@@ -22,25 +21,23 @@
 
 - (instancetype)initWithParameterIndex:(NSUInteger)index reference:(NSString*)reference
 {
-    self = [super initWithReference:reference];
+    self = [super init];
     if (self)
     {
         _index = index;
+        _reference = reference;
     }
     return self;
 }
 
 /* ====================================================================================================================================== */
-#pragma mark - Protocol Methods
+#pragma mark - Overridden Methods
 
 - (TyphoonParameterInjectionType)type
 {
     return TyphoonParameterInjectionTypeReference;
 }
 
-- (void)setInitializer:(TyphoonInitializer*)initializer
-{
-    //Do nothing.
-}
+
 
 @end

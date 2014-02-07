@@ -115,14 +115,14 @@
 {
     for (TyphoonDefinition* definition in [factory registry])
     {
-        for (id <TyphoonComponentInjectedByValue> component in [definition componentsInjectedByValue])
+        for (id <TyphoonInjectedWithStringRepresentation> component in [definition componentsInjectedByValue])
         {
             [self mutateComponentInjectedByValue:component];
         }
     }
 }
 
-- (void)mutateComponentInjectedByValue:(id <TyphoonComponentInjectedByValue>)component;
+- (void)mutateComponentInjectedByValue:(id <TyphoonInjectedWithStringRepresentation>)component;
 {
     if ([component.textValue hasPrefix:_prefix] && [component.textValue hasSuffix:_suffix])
     {

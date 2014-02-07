@@ -13,8 +13,8 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonInjectedParameter.h"
-#import "TyphoonComponentInjectedByValue.h"
+#import "TyphoonInjectedWithStringRepresentation.h"
+#import "TyphoonAbstractInjectedParameter.h"
 
 @class TyphoonTypeDescriptor;
 
@@ -25,12 +25,9 @@
 * @see TyphoonPropertyPlaceholderConfigurer
 *
 */
-@interface TyphoonParameterInjectedWithStringRepresentation : NSObject <TyphoonInjectedParameter, TyphoonComponentInjectedByValue>
-{
-    __unsafe_unretained TyphoonInitializer* _initializer;
-}
+@interface TyphoonParameterInjectedWithStringRepresentation : TyphoonAbstractInjectedParameter <TyphoonInjectedWithStringRepresentation>
 
-@property(nonatomic, readonly) NSUInteger index;
+
 @property(nonatomic, readonly) TyphoonParameterInjectionType type;
 @property(nonatomic, strong, readonly) Class requiredType;
 

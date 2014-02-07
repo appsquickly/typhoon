@@ -10,15 +10,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "TyphoonInjectedParameter.h"
+#import "TyphoonAbstractInjectedParameter.h"
 
 /**
 * Represents a parameter injected with an instance of an object - something constructed outside of the container.
 */
-@interface TyphoonParameterInjectedWithObjectInstance : NSObject <TyphoonInjectedParameter>
+@interface TyphoonParameterInjectedWithObjectInstance : TyphoonAbstractInjectedParameter
 
-@property(nonatomic, readonly) NSUInteger index;
-@property(nonatomic, readonly) TyphoonParameterInjectionType type;
 @property(nonatomic, strong, readonly) id value;
 
 - (id)initWithParameterIndex:(NSUInteger)index value:(id)value;

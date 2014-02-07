@@ -16,7 +16,7 @@
 
 - (TyphoonPropertyInjectionType)injectionType
 {
-    [NSException raise:NSInvalidArgumentException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
+    [NSException raise:NSInternalInconsistencyException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
     return 0;
 }
 

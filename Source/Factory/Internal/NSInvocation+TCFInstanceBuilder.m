@@ -21,20 +21,20 @@
 /** Returns YES if selector returns retained instance (not autoreleased) */
 static BOOL typhoon_IsSelectorReturnsRetained(SEL selector)
 {
-    NSString *selectorString = NSStringFromSelector(selector);
-    
-    return [selectorString hasPrefix:@"init"] ||
-    [selectorString hasPrefix:@"new"] ||
-    [selectorString hasPrefix:@"copy"] ||
-    [selectorString hasPrefix:@"mutableCopy"];
+    NSString* selectorString = NSStringFromSelector(selector);
+
+    return [selectorString hasPrefix:@"init"]
+        || [selectorString hasPrefix:@"new"]
+        || [selectorString hasPrefix:@"copy"]
+        || [selectorString hasPrefix:@"mutableCopy"];
 }
 
 - (id)typhoon_resultOfInvokingOn:(id)instanceOrClass
 {
     id returnValue = nil;
-    
+
     BOOL isReturnsRetained;
-    
+
     @autoreleasepool
     {
         isReturnsRetained = typhoon_IsSelectorReturnsRetained([self selector]);
