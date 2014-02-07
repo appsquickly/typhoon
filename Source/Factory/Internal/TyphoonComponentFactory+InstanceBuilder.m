@@ -44,10 +44,10 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
 {
-    TyphoonStackElement* stackElement = [TyphoonStackElement itemWithKey:definition.key];
+    TyphoonStackElement* stackElement = [TyphoonStackElement elementWithKey:definition.key];
     [_stack push:stackElement];
 
-    id instance = [self newInstanceWithDefinition:definition];
+    id instance = [self initializeInstanceWithDefinition:definition];
 
     [stackElement takeInstance:instance];
 
@@ -59,7 +59,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     return instance;
 }
 
-- (id)newInstanceWithDefinition:(TyphoonDefinition*)definition
+- (id)initializeInstanceWithDefinition:(TyphoonDefinition*)definition
 {
     id initTarget = nil;
 

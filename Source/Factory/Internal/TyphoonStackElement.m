@@ -20,7 +20,7 @@
     id _instance;
 }
 
-+ (instancetype)itemWithKey:(NSString*)key
++ (instancetype)elementWithKey:(NSString*)key
 {
     return [[self alloc] initWithKey:key];
 }
