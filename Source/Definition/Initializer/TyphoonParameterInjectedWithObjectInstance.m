@@ -61,10 +61,7 @@
     }
 }
 
-- (TyphoonParameterInjectionType)type
-{
-    return TyphoonParameterInjectionTypeObjectInstance;
-}
+
 
 
 @end

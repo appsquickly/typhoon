@@ -88,10 +88,7 @@
 }
 
 
-- (TyphoonParameterInjectionType)type
-{
-    return TyphoonParameterInjectionTypeStringRepresentation;
-}
+
 
 
 @end

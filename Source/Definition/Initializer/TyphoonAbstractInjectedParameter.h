@@ -14,13 +14,6 @@
 @class TyphoonInitializer;
 @class TyphoonComponentFactory;
 
-typedef enum
-{
-    TyphoonParameterInjectionTypeReference,
-    TyphoonParameterInjectionTypeStringRepresentation,
-    TyphoonParameterInjectionTypeObjectInstance,
-    TyphoonParameterInjectionTypeAsCollection
-} TyphoonParameterInjectionType;
 
 @interface TyphoonAbstractInjectedParameter : NSObject
 {
@@ -30,9 +23,6 @@ typedef enum
 
 @property(nonatomic, readonly) NSUInteger index;
 @property (nonatomic, unsafe_unretained) TyphoonInitializer* initializer;
-
-
-- (TyphoonParameterInjectionType)type;
 
 
 - (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation;

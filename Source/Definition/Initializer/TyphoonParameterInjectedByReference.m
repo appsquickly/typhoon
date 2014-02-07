@@ -37,11 +37,6 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (TyphoonParameterInjectionType)type
-{
-    return TyphoonParameterInjectionTypeReference;
-}
-
 - (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation
 {
     [[[factory stack] peekForKey:_reference] instance]; //Raises circular dependencies exception if already initializing.

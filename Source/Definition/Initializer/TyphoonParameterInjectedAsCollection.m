@@ -107,10 +107,7 @@
 }
 
 
-- (TyphoonParameterInjectionType)type
-{
-    return TyphoonParameterInjectionTypeAsCollection;
-}
+
 
 
 @end

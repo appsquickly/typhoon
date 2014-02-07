@@ -22,8 +22,6 @@
 @interface TyphoonPropertyInjectedAsCollection : TyphoonAbstractInjectedProperty<TyphoonInjectedAsCollection>
 
 
-@property(nonatomic, strong, readonly) NSString* name;
-
 - (id)initWithName:(NSString*)name;
 
 /**

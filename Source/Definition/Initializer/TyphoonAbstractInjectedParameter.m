@@ -15,11 +15,7 @@
 
 @implementation TyphoonAbstractInjectedParameter
 
-- (TyphoonParameterInjectionType)type
-{
-    [NSException raise:NSInternalInconsistencyException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
-    return 0;
-}
+
 
 - (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation
 {
