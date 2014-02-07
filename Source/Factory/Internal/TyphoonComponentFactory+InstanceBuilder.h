@@ -14,7 +14,7 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactory.h"
 #import "TyphoonIntrospectiveNSObject.h"
-#import "TyphoonInjectedAsCollectionImpl.h"
+#import "TyphoonInjectedAsCollection.h"
 
 @class TyphoonCallStack;
 

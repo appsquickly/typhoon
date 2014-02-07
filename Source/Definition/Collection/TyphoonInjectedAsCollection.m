@@ -9,14 +9,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonInjectedAsCollectionImpl.h"
+#import "TyphoonInjectedAsCollection.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonTypeConvertedCollectionValue.h"
 #import "TyphoonByReferenceCollectionValue.h"
 #import "TyphoonComponentFactory.h"
 
-@implementation TyphoonInjectedAsCollectionImpl
+@implementation TyphoonInjectedAsCollection
 {
     NSMutableArray* _values;
 }

@@ -11,15 +11,22 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonInjectedAsCollectionImpl.h"
+#import "TyphoonInjectedAsCollection.h"
 #import "TyphoonAbstractInjectedParameter.h"
 
 /**
 */
-@interface TyphoonParameterInjectedAsCollection : TyphoonAbstractInjectedParameter<TyphoonInjectedAsCollection>
+@interface TyphoonParameterInjectedAsCollection : TyphoonAbstractInjectedParameter
 
 @property(nonatomic, readonly) TyphoonCollectionType collectionType;
 
 - (id)initWithParameterIndex:(NSUInteger)index requiredType:(Class)requiredType;
+
+- (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType;
+
+- (void)addItemWithComponentName:(NSString*)componentName;
+
+- (void)addItemWithDefinition:(TyphoonDefinition*)definition;
+
 
 @end

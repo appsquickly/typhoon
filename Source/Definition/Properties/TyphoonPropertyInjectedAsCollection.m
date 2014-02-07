@@ -13,15 +13,13 @@
 #import "TyphoonPropertyInjectedAsCollection.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonIntrospectionUtils.h"
-#import "TyphoonInjectedAsCollectionImpl.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
-#import "TyphoonComponentFactory+InstanceBuilder.h"
 
 
 @implementation TyphoonPropertyInjectedAsCollection
 {
-    TyphoonInjectedAsCollectionImpl* _collection;
+    TyphoonInjectedAsCollection* _collection;
 }
 
 
@@ -34,13 +32,13 @@
     if (self)
     {
         _name = name;
-        _collection = [[TyphoonInjectedAsCollectionImpl alloc] init];
+        _collection = [[TyphoonInjectedAsCollection alloc] init];
     }
     return self;
 }
 
 /* ====================================================================================================================================== */
-#pragma mark - Protocol Methods
+#pragma mark - Interface Methods
 
 - (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType
 {
@@ -57,19 +55,6 @@
     [_collection addItemWithDefinition:definition];
 }
 
-- (NSArray*)values
-{
-    return [_collection values];
-}
-
-- (id)withFactory:(TyphoonComponentFactory*)factory newInstanceOfType:(TyphoonCollectionType)type
-{
-    return [_collection withFactory:factory newInstanceOfType:type];
-}
-
-
-/* ====================================================================================================================================== */
-#pragma mark - Interface Methods
 
 - (TyphoonCollectionType)resolveCollectionTypeWith:(id <TyphoonIntrospectiveNSObject>)instance;
 {
@@ -112,8 +97,7 @@
 - (id)withFactory:(TyphoonComponentFactory*)factory computeValueToInjectOnInstance:(id)instance
 {
     TyphoonCollectionType type = [self resolveCollectionTypeWith:instance];
-    id collection = [self withFactory:factory newInstanceOfType:type];
-    return collection;
+    return [_collection withFactory:factory newInstanceOfType:type];
 }
 
 

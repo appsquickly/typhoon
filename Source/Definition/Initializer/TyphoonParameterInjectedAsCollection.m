@@ -16,7 +16,7 @@
 @implementation TyphoonParameterInjectedAsCollection
 {
     Class _requiredType;
-    TyphoonInjectedAsCollectionImpl* _collection;
+    TyphoonInjectedAsCollection* _collection;
 }
 
 /* ====================================================================================================================================== */
@@ -29,7 +29,7 @@
     {
         _index = index;
         _requiredType = requiredType;
-        _collection = [[TyphoonInjectedAsCollectionImpl alloc] init];
+        _collection = [[TyphoonInjectedAsCollection alloc] init];
     }
     return self;
 }
@@ -51,16 +51,6 @@
 - (void)addItemWithDefinition:(TyphoonDefinition*)definition
 {
     [_collection addItemWithDefinition:definition];
-}
-
-- (NSArray*)values
-{
-    return [_collection values];
-}
-
-- (id)withFactory:(TyphoonComponentFactory*)factory newInstanceOfType:(TyphoonCollectionType)type
-{
-    return [_collection withFactory:factory newInstanceOfType:type];
 }
 
 
@@ -107,7 +97,7 @@
 
 - (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation
 {
-    id collection = [self withFactory:factory newInstanceOfType:self.collectionType];
+    id collection = [_collection withFactory:factory newInstanceOfType:self.collectionType];
     [invocation setArgument:&collection atIndex:_index + 2];
 }
 

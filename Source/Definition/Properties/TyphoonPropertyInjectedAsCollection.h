@@ -19,7 +19,7 @@
 /**
 * Represents a collection (NSArray, NSSet, c-style array) of items injected by reference, value or type.
 */
-@interface TyphoonPropertyInjectedAsCollection : TyphoonAbstractInjectedProperty<TyphoonInjectedAsCollection>
+@interface TyphoonPropertyInjectedAsCollection : TyphoonAbstractInjectedProperty
 
 
 - (id)initWithName:(NSString*)name;
@@ -29,5 +29,13 @@
 * an NSArray.
 */
 - (TyphoonCollectionType)resolveCollectionTypeWith:(id <TyphoonIntrospectiveNSObject>)instance;
+
+
+- (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType;
+
+- (void)addItemWithComponentName:(NSString*)componentName;
+
+- (void)addItemWithDefinition:(TyphoonDefinition*)definition;
+
 
 @end
