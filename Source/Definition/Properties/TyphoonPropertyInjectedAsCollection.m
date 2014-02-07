@@ -110,10 +110,6 @@
     return [factory buildCollectionWithValues:[self values] requiredType:type];
 }
 
-- (TyphoonPropertyInjectionType)injectionType
-{
-    return TyphoonPropertyInjectionTypeAsCollection;
-}
 
 
 @end

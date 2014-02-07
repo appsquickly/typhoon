@@ -33,11 +33,6 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (TyphoonPropertyInjectionType)injectionType
-{
-    return TyphoonPropertyInjectionTypeAsObjectInstance;
-}
-
 - (id)withFactory:(TyphoonComponentFactory*)factory computeValueToInjectOnInstance:(id)instance
 {
     return _objectInstance;

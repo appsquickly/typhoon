@@ -46,10 +46,4 @@
 }
 
 
-- (TyphoonPropertyInjectionType)injectionType
-{
-    return TyphoonPropertyInjectionTypeByReference;
-}
-
-
 @end

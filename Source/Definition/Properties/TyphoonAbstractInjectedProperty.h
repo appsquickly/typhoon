@@ -17,27 +17,15 @@
 
 @class TyphoonComponentFactory;
 
-typedef enum
-{
-    TyphoonPropertyInjectionTypeByReference,
-    TyphoonPropertyInjectionTypeByFactoryReference,
-    TyphoonPropertyInjectionTypeByType,
-    TyphoonPropertyInjectionTypeAsStringRepresentation,
-    TyphoonPropertyInjectionTypeAsObjectInstance,
-    TyphoonPropertyInjectionTypeAsCollection
-} TyphoonPropertyInjectionType;
-
 /**
 * Provides a contract for typhoon injected properties (name, injectionType) as well as defines the notion of equality, based on name.
 */
 @interface TyphoonAbstractInjectedProperty : NSObject
 {
     NSString* _name;
-    TyphoonPropertyInjectionType _injectionType;
 }
 
 @property(nonatomic, strong) NSString* name;
-@property(nonatomic) TyphoonPropertyInjectionType injectionType;
 
 - (id)withFactory:(TyphoonComponentFactory*)factory computeValueToInjectOnInstance:(id)instance;
 

@@ -32,11 +32,6 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (TyphoonPropertyInjectionType)injectionType
-{
-    return TyphoonPropertyInjectionTypeByFactoryReference;
-}
-
 - (id)withFactory:(TyphoonComponentFactory*)factory computeValueToInjectOnInstance:(id)instance
 {
     [factory evaluateCircularDependency:self.reference propertyName:self.name instance:instance];

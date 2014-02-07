@@ -64,10 +64,4 @@
     return value;
 }
 
-
-- (TyphoonPropertyInjectionType)injectionType
-{
-    return TyphoonPropertyInjectionTypeAsStringRepresentation;
-}
-
 @end
