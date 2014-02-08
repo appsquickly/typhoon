@@ -93,10 +93,9 @@
 
 - (id)copyWithZone:(NSZone*)zone
 {
-//    return [[TyphoonParameterInjectedWithObjectInstance alloc] initWithParameterIndex:_index value:_value];
-    return nil;
+    return [[TyphoonParameterInjectedWithStringRepresentation alloc]
+        initWithIndex:self.index value:self.textValue requiredTypeOrNil:self.requiredType];
 }
-
 
 
 @end

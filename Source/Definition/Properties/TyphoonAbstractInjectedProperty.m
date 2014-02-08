@@ -21,6 +21,13 @@
     return nil;
 }
 
+
+- (id)copyWithZone:(NSZone*)zone
+{
+    [NSException raise:NSInternalInconsistencyException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
+    return nil;
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
@@ -60,5 +67,6 @@
 {
     return [self.name hash];
 }
+
 
 @end

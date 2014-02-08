@@ -16,12 +16,13 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
 
+@interface TyphoonPropertyInjectedAsCollection()
+
+@property (nonatomic, strong, readwrite) TyphoonInjectedAsCollection* collection;
+
+@end
 
 @implementation TyphoonPropertyInjectedAsCollection
-{
-    TyphoonInjectedAsCollection* _collection;
-}
-
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
@@ -113,7 +114,9 @@
 
 - (id)copyWithZone:(NSZone*)zone
 {
-    return nil;
+    TyphoonPropertyInjectedAsCollection* copy = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:[_name copy]];
+    [copy setValue:[_collection copy] forKey:@"collection"];
+    return copy;
 }
 
 
