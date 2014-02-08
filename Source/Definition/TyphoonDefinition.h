@@ -22,13 +22,17 @@
 
 * <strong>TyphoonScopeObjectGraph</strong>
 * (default) means that a new non-retained component is created when resolved from the factory, and any dependencies declared during
-* resolution of the object graph will be shared.
+* resolution of the object graph will be shared. For example, let's both a view controller and a view reference a component called
+* 'validator' - using the object-graph scope, this validator will be shared between the view and controller. However, unlike a singleton,
+* it is not retained by Typhoon, so will be released when there are no more strong references holding it.
 *
 * <strong>TyphoonScopePrototype</strong>
 * means that a new component is created for each time it is referenced in a collaborator, or retrieved from the factory.
 *
 * <strong>TyphoonScopeSingleton</strong>
-* creates a shared instance.
+* creates a shared instance. When the DI pattern is applied in a server-side environment, this tends to be the default scope, as the backend
+* could service any use-case at a given time. However in the case of mobile and desktop applications, we typically service one use-case at a
+* time, and furthermore we have more limited system-resources. Therefore singleton should be used more sparingly in these environments.
 *
 * <strong>TyphoonScopeWeakSingleton</strong>
 * creates an instance that will be shared across all components. However as soon as the instance is not being used it will be deallocated.
