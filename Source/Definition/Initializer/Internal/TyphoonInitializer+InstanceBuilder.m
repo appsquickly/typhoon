@@ -38,21 +38,18 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 - (NSInvocation*)newInvocationInFactory:(TyphoonComponentFactory*)factory
 {
     Class clazz = _definition.factory ? _definition.factory.type : _definition.type;
-    [self assertValidSelectorGiven:clazz];
 
-    NSMethodSignature* signature =
-        self.isClassMethod ? [clazz methodSignatureForSelector:_selector] : [clazz instanceMethodSignatureForSelector:_selector];
+    NSMethodSignature* signature = [self methodSignatureWithTarget:clazz];
     NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:signature];
     [invocation setSelector:_selector];
 
-    for (TyphoonAbstractInjectedParameter*  parameter in [self injectedParameters])
+    for (TyphoonAbstractInjectedParameter* parameter in [self injectedParameters])
     {
         [parameter withFactory:factory setArgumentOnInvocation:invocation];
     }
 
     return invocation;
 }
-
 
 - (void)setDefinition:(TyphoonDefinition*)definition
 {
@@ -102,15 +99,26 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     return ![NSStringFromSelector(_selector) hasPrefix:@"init"];
 }
 
-- (void)assertValidSelectorGiven:(Class)clazz
+
+- (NSMethodSignature*)methodSignatureWithTarget:(Class)clazz
 {
-    if ([clazz respondsToSelector:_selector] == NO && [clazz instancesRespondToSelector:_selector] == NO)
+    if (![self isValidForTarget:clazz])
     {
         NSString* typeType = self.isClassMethod ? @"Class" : @"Instance";
         [NSException raise:NSInvalidArgumentException
             format:@"%@ method '%@' not found on '%@'. Did you include the required ':' characters to signify arguments?", typeType,
                    NSStringFromSelector(_selector), NSStringFromClass(clazz)];
     }
+
+    NSMethodSignature* signature =
+        self.isClassMethod ? [clazz methodSignatureForSelector:_selector] : [clazz instanceMethodSignatureForSelector:_selector];
+    return signature;
+}
+
+- (BOOL)isValidForTarget:(Class)clazz
+{
+    return ([self isClassMethod] && [clazz respondsToSelector:_selector]) ||
+        (![self isClassMethod] && [clazz instancesRespondToSelector:_selector]);
 }
 
 @end
