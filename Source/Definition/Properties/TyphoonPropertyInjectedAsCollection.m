@@ -97,7 +97,7 @@
 - (id)withFactory:(TyphoonComponentFactory*)factory computeValueToInjectOnInstance:(id)instance
 {
     TyphoonCollectionType type = [self resolveCollectionTypeWith:instance];
-    return [_collection withFactory:factory newInstanceOfType:type];
+    return [_collection withFactory:factory newCollectionOfType:type];
 }
 
 

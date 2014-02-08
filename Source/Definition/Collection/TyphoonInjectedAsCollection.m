@@ -58,7 +58,7 @@
     return [_values copy];
 }
 
-- (id)withFactory:(TyphoonComponentFactory*)factory newInstanceOfType:(TyphoonCollectionType)type
+- (id)withFactory:(TyphoonComponentFactory*)factory newCollectionOfType:(TyphoonCollectionType)type
 {
     id collection = [self newCollectionForType:type];
 

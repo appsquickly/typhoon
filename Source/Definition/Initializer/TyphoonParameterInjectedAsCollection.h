@@ -16,7 +16,7 @@
 
 /**
 */
-@interface TyphoonParameterInjectedAsCollection : TyphoonAbstractInjectedParameter
+@interface TyphoonParameterInjectedAsCollection : TyphoonAbstractInjectedParameter<TyphoonInjectedAsCollection>
 
 @property(nonatomic, readonly) TyphoonCollectionType collectionType;
 

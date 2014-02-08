@@ -16,6 +16,18 @@
 @class TyphoonDefinition;
 @protocol TyphoonIntrospectiveNSObject;
 
+
+
+@protocol TyphoonInjectedAsCollection
+
+- (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType;
+
+- (void)addItemWithComponentName:(NSString*)componentName;
+
+- (void)addItemWithDefinition:(TyphoonDefinition*)definition;
+
+@end
+
 typedef enum
 {
     TyphoonCollectionTypeNSArray,
@@ -28,7 +40,7 @@ typedef enum
 /**
  * Represents a collection (NSArray, NSSet, c-style array) of items injected by reference, value or type.
  */
-@interface TyphoonInjectedAsCollection : NSObject
+@interface TyphoonInjectedAsCollection : NSObject<TyphoonInjectedAsCollection>
 
 - (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType;
 
@@ -38,7 +50,7 @@ typedef enum
 
 - (NSArray*)values;
 
-- (id)withFactory:(TyphoonComponentFactory*)factory newInstanceOfType:(TyphoonCollectionType)type;
+- (id)withFactory:(TyphoonComponentFactory*)factory newCollectionOfType:(TyphoonCollectionType)type;
 
 
 @end

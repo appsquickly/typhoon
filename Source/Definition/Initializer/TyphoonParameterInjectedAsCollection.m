@@ -97,7 +97,7 @@
 
 - (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation
 {
-    id collection = [_collection withFactory:factory newInstanceOfType:self.collectionType];
+    id collection = [_collection withFactory:factory newCollectionOfType:self.collectionType];
     [invocation setArgument:&collection atIndex:_index + 2];
 }
 
