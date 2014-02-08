@@ -30,6 +30,7 @@
 */
 - (TyphoonCollectionType)resolveCollectionTypeWith:(id <TyphoonIntrospectiveNSObject>)instance;
 
+#pragma mark - <TyphoonInjectedAsCollection> trait
 
 - (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType;
 

@@ -30,14 +30,20 @@
 }
 
 
-- (TyphoonCollectionValueType)type
-{
-    return TyphoonCollectionValueTypeByReference;
-}
+/* ====================================================================================================================================== */
+#pragma mark - Protocol Methods
 
 - (id)resolveWithFactory:(TyphoonComponentFactory*)factory
 {
     return [factory componentForKey:self.componentKey];
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
+- (id)copyWithZone:(NSZone*)zone
+{
+    return [[TyphoonByReferenceCollectionValue alloc] initWithComponentKey:_componentKey];
 }
 
 

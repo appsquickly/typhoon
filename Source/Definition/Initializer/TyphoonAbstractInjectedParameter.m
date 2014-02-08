@@ -15,7 +15,11 @@
 
 @implementation TyphoonAbstractInjectedParameter
 
-
+- (id)copyWithZone:(NSZone*)zone
+{
+    [NSException raise:NSInternalInconsistencyException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
+    return nil;
+}
 
 - (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation
 {

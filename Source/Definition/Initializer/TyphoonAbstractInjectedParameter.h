@@ -15,7 +15,7 @@
 @class TyphoonComponentFactory;
 
 
-@interface TyphoonAbstractInjectedParameter : NSObject
+@interface TyphoonAbstractInjectedParameter : NSObject<NSCopying>
 {
     NSUInteger _index;
     __unsafe_unretained TyphoonInitializer* _initializer;

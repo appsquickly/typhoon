@@ -22,11 +22,13 @@
 
 - (id)initWithParameterIndex:(NSUInteger)index requiredType:(Class)requiredType;
 
+
+#pragma mark - <TyphoonInjectedAsCollection> trait
+
 - (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType;
 
 - (void)addItemWithComponentName:(NSString*)componentName;
 
 - (void)addItemWithDefinition:(TyphoonDefinition*)definition;
-
 
 @end

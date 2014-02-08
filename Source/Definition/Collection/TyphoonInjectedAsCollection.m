@@ -58,6 +58,12 @@
     return [_values copy];
 }
 
+- (void)addValue:(id <TyphoonCollectionValue>)value
+{
+    [_values addObject:value];
+}
+
+
 - (id)withFactory:(TyphoonComponentFactory*)factory newCollectionOfType:(TyphoonCollectionType)type
 {
     id collection = [self newCollectionForType:type];
@@ -71,6 +77,18 @@
     return isMutable ? collection : [collection copy];
 }
 
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
+- (id)copyWithZone:(NSZone*)zone
+{
+    TyphoonInjectedAsCollection* copy = [[TyphoonInjectedAsCollection alloc] init];
+    for (id<TyphoonCollectionValue> value in _values)
+    {
+        [copy addValue:value];
+    }
+    return copy;
+}
 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods

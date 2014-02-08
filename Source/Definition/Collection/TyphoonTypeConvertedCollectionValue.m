@@ -32,10 +32,8 @@
     return self;
 }
 
-- (TyphoonCollectionValueType)type
-{
-    return TyphoonCollectionValueTypeConvertedText;
-}
+/* ====================================================================================================================================== */
+#pragma mark - Protocol Methods
 
 - (id)resolveWithFactory:(TyphoonComponentFactory*)factory
 {
@@ -43,6 +41,14 @@
     id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
     id converted = [converter convert:self.textValue];
     return converted;
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
+- (id)copyWithZone:(NSZone*)zone
+{
+    return [[TyphoonTypeConvertedCollectionValue alloc] initWithTextValue:_textValue requiredType:_requiredType];
 }
 
 

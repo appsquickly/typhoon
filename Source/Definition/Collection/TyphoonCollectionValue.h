@@ -13,17 +13,9 @@
 
 @class TyphoonComponentFactory;
 
-typedef enum
-{
-    TyphoonCollectionValueTypeByReference,
-    TyphoonCollectionValueTypeConvertedText
-} TyphoonCollectionValueType;
-
 /**
 */
-@protocol TyphoonCollectionValue <NSObject>
-
-- (TyphoonCollectionValueType)type;
+@protocol TyphoonCollectionValue <NSObject, NSCopying>
 
 - (id)resolveWithFactory:(TyphoonComponentFactory*)factory;
 

@@ -14,7 +14,6 @@
 
 @class TyphoonDefinition;
 @class TyphoonParameterInjectedAsCollection;
-@protocol TyphoonLogger;
 
 typedef enum
 {
