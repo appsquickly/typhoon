@@ -1,15 +1,26 @@
 var hierarchy =
 [
+    [ "<NSCopying>", null, [
+      [ "<TyphoonCollectionValue>", "protocol_typhoon_collection_value-p.html", [
+        [ "TyphoonByReferenceCollectionValue", "interface_typhoon_by_reference_collection_value.html", null ],
+        [ "TyphoonTypeConvertedCollectionValue", "interface_typhoon_type_converted_collection_value.html", null ]
+      ] ],
+      [ "<TyphoonInjectedAsCollection>", "protocol_typhoon_injected_as_collection-p.html", [
+        [ "TyphoonInjectedAsCollection", "interface_typhoon_injected_as_collection.html", null ],
+        [ "TyphoonParameterInjectedAsCollection", "interface_typhoon_parameter_injected_as_collection.html", null ],
+        [ "TyphoonPropertyInjectedAsCollection", "interface_typhoon_property_injected_as_collection.html", null ]
+      ] ]
+    ] ],
     [ "NSObject(DeallocNotification)", "category_n_s_object_07_dealloc_notification_08.html", null ],
     [ "NSObject(PropertyInjection)", "category_n_s_object_07_property_injection_08.html", null ],
     [ "NSObject(TyphoonJRSwizzle)", "category_n_s_object_07_typhoon_j_r_swizzle_08.html", null ],
     [ "<NSObject>", null, [
       [ "TyphoonAbstractInjectedProperty", "interface_typhoon_abstract_injected_property.html", [
-        [ "TyphoonInjectedAsCollection", "interface_typhoon_injected_as_collection.html", [
-          [ "TyphoonParameterInjectedAsCollection", "interface_typhoon_parameter_injected_as_collection.html", null ],
-          [ "TyphoonPropertyInjectedAsCollection", "interface_typhoon_property_injected_as_collection.html", null ]
-        ] ],
+        [ "TyphoonPropertyInjectedAsCollection", "interface_typhoon_property_injected_as_collection.html", null ],
         [ "TyphoonPropertyInjectedAsObjectInstance", "interface_typhoon_property_injected_as_object_instance.html", null ],
+        [ "TyphoonPropertyInjectedByReference", "interface_typhoon_property_injected_by_reference.html", [
+          [ "TyphoonPropertyInjectedByFactoryReference", "interface_typhoon_property_injected_by_factory_reference.html", null ]
+        ] ],
         [ "TyphoonPropertyInjectedByType", "interface_typhoon_property_injected_by_type.html", null ],
         [ "TyphoonPropertyInjectedWithStringRepresentation", "interface_typhoon_property_injected_with_string_representation.html", null ]
       ] ],
@@ -46,10 +57,7 @@ var hierarchy =
       [ "TyphoonAssistedFactoryParameterInjectedWithProperty", "interface_typhoon_assisted_factory_parameter_injected_with_property.html", null ],
       [ "TyphoonBundleResource", "interface_typhoon_bundle_resource.html", null ],
       [ "TyphoonByReferenceCollectionValue", "interface_typhoon_by_reference_collection_value.html", null ],
-      [ "<TyphoonCollectionValue>", "protocol_typhoon_collection_value-p.html", [
-        [ "TyphoonByReferenceCollectionValue", "interface_typhoon_by_reference_collection_value.html", null ],
-        [ "TyphoonTypeConvertedCollectionValue", "interface_typhoon_type_converted_collection_value.html", null ]
-      ] ],
+      [ "<TyphoonCollectionValue>", "protocol_typhoon_collection_value-p.html", null ],
       [ "TyphoonComponentFactory", "interface_typhoon_component_factory.html", [
         [ "TyphoonBlockComponentFactory", "interface_typhoon_block_component_factory.html", null ],
         [ "TyphoonXmlComponentFactory", "interface_typhoon_xml_component_factory.html", null ]
@@ -62,29 +70,22 @@ var hierarchy =
         [ "TyphoonPropertyPlaceholderConfigurer", "interface_typhoon_property_placeholder_configurer.html", null ],
         [ "TyphoonViewControllerNibResolver", "interface_typhoon_view_controller_nib_resolver.html", null ]
       ] ],
-      [ "<TyphoonComponentInjectedByValue>", "protocol_typhoon_component_injected_by_value-p.html", [
-        [ "TyphoonParameterInjectedWithStringRepresentation", "interface_typhoon_parameter_injected_with_string_representation.html", null ],
-        [ "TyphoonPropertyInjectedWithStringRepresentation", "interface_typhoon_property_injected_with_string_representation.html", null ]
-      ] ],
       [ "<TyphoonComponentsPool>", "protocol_typhoon_components_pool-p.html", [
         [ "TyphoonWeakComponentsPool", "interface_typhoon_weak_components_pool.html", null ]
       ] ],
       [ "TyphoonDefinition", "interface_typhoon_definition.html", null ],
       [ "TyphoonFactoryProvider", "interface_typhoon_factory_provider.html", null ],
       [ "TyphoonInitializer", "interface_typhoon_initializer.html", null ],
-      [ "<TyphoonInjectedParameter>", "protocol_typhoon_injected_parameter-p.html", [
-        [ "TyphoonParameterInjectedAsCollection", "interface_typhoon_parameter_injected_as_collection.html", null ],
-        [ "TyphoonParameterInjectedByReference", "interface_typhoon_parameter_injected_by_reference.html", null ],
-        [ "TyphoonParameterInjectedWithObjectInstance", "interface_typhoon_parameter_injected_with_object_instance.html", null ],
-        [ "TyphoonParameterInjectedWithStringRepresentation", "interface_typhoon_parameter_injected_with_string_representation.html", null ]
+      [ "TyphoonInjectedAsCollection", "interface_typhoon_injected_as_collection.html", null ],
+      [ "<TyphoonInjectedWithStringRepresentation>", "protocol_typhoon_injected_with_string_representation-p.html", [
+        [ "TyphoonParameterInjectedWithStringRepresentation", "interface_typhoon_parameter_injected_with_string_representation.html", null ],
+        [ "TyphoonPropertyInjectedWithStringRepresentation", "interface_typhoon_property_injected_with_string_representation.html", null ]
       ] ],
       [ "TyphoonIntrospectionUtils", "interface_typhoon_introspection_utils.html", null ],
       [ "<TyphoonIntrospectiveNSObject>", "protocol_typhoon_introspective_n_s_object-p.html", [
         [ "NSObject(TyphoonIntrospectionUtils)", "category_n_s_object_07_typhoon_introspection_utils_08.html", null ]
       ] ],
       [ "TyphoonNSURLTypeConverter", "interface_typhoon_n_s_u_r_l_type_converter.html", null ],
-      [ "TyphoonParameterInjectedWithObjectInstance", "interface_typhoon_parameter_injected_with_object_instance.html", null ],
-      [ "TyphoonParameterInjectedWithStringRepresentation", "interface_typhoon_parameter_injected_with_string_representation.html", null ],
       [ "TyphoonPassThroughTypeConverter", "interface_typhoon_pass_through_type_converter.html", null ],
       [ "TyphoonPatcher", "interface_typhoon_patcher.html", null ],
       [ "TyphoonPatchObjectFactory", "interface_typhoon_patch_object_factory.html", null ],
@@ -109,13 +110,13 @@ var hierarchy =
       [ "TyphoonViewControllerNibResolver", "interface_typhoon_view_controller_nib_resolver.html", null ],
       [ "TyphoonWeakComponentsPool", "interface_typhoon_weak_components_pool.html", null ]
     ] ],
-    [ "TyphoonAssistedFactoryBase(TyphoonFactoryMethodClosure)", "category_typhoon_assisted_factory_base_07_typhoon_factory_method_closure_08.html", null ],
-    [ "TyphoonInjectedByReference", null, [
+    [ "TyphoonAbstractInjectedParameter", null, [
+      [ "TyphoonParameterInjectedAsCollection", "interface_typhoon_parameter_injected_as_collection.html", null ],
       [ "TyphoonParameterInjectedByReference", "interface_typhoon_parameter_injected_by_reference.html", null ],
-      [ "TyphoonPropertyInjectedByReference", "interface_typhoon_property_injected_by_reference.html", [
-        [ "TyphoonPropertyInjectedByFactoryReference", "interface_typhoon_property_injected_by_factory_reference.html", null ]
-      ] ]
+      [ "TyphoonParameterInjectedWithObjectInstance", "interface_typhoon_parameter_injected_with_object_instance.html", null ],
+      [ "TyphoonParameterInjectedWithStringRepresentation", "interface_typhoon_parameter_injected_with_string_representation.html", null ]
     ] ],
+    [ "TyphoonAssistedFactoryBase(TyphoonFactoryMethodClosure)", "category_typhoon_assisted_factory_base_07_typhoon_factory_method_closure_08.html", null ],
     [ "<TyphoonPropertyInjectionInternalDelegate>", null, [
       [ "TyphoonAssistedFactoryBase", "interface_typhoon_assisted_factory_base.html", null ]
     ] ],

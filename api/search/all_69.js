@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['index',['index',['../interface_typhoon_parameter_injected_as_collection.html#a163717d517227a59dce72f0b50e73902',1,'TyphoonParameterInjectedAsCollection::index()'],['../interface_typhoon_parameter_injected_by_reference.html#a9c0fa9ee6d28f103d4e6687ecae3b50b',1,'TyphoonParameterInjectedByReference::index()'],['../interface_typhoon_parameter_injected_with_object_instance.html#a6274ddfe32340dec026be352b14a4e7b',1,'TyphoonParameterInjectedWithObjectInstance::index()'],['../interface_typhoon_parameter_injected_with_string_representation.html#af589bc5986b82b4d51559fdc5acd8d81',1,'TyphoonParameterInjectedWithStringRepresentation::index()'],['../protocol_typhoon_injected_parameter-p.html#a8770809ff5211dd11141a576eadf657a',1,'TyphoonInjectedParameter-p::index()']]],
   ['initfromurl_3a',['initFromURL:',['../interface_typhoon_r_x_m_l_element.html#ae8c430758b52a5bb267155b72090dc54',1,'TyphoonRXMLElement']]],
   ['initfromxmldata_3a',['initFromXMLData:',['../interface_typhoon_r_x_m_l_element.html#a4598839c85295661253a0a17a7b4c075',1,'TyphoonRXMLElement']]],
   ['initfromxmlfile_3a',['initFromXMLFile:',['../interface_typhoon_r_x_m_l_element.html#acfdecaec3ddbb545f6940a44856a17cd',1,'TyphoonRXMLElement']]],
@@ -41,7 +40,6 @@ var searchData=
   ['initwithtypecode_3a',['initWithTypeCode:',['../interface_typhoon_type_descriptor.html#abeb253dff8861986d28c83bc2f73fb8d',1,'TyphoonTypeDescriptor']]],
   ['injectedparameters',['injectedParameters',['../interface_typhoon_initializer.html#a424c30cb2f167f428fb682933b7e623d',1,'TyphoonInitializer']]],
   ['injectedproperties',['injectedProperties',['../interface_typhoon_definition.html#abf96f7913e0d027e5603092528839790',1,'TyphoonDefinition']]],
-  ['injectiontype',['injectionType',['../interface_typhoon_abstract_injected_property.html#a9dc3476c9a4353935d78f1f9717ffeec',1,'TyphoonAbstractInjectedProperty']]],
   ['injectionvalueforproperty_3a',['injectionValueForProperty:',['../interface_typhoon_assisted_factory_base.html#ace576aa1cbdff72a8212cf32de00603f',1,'TyphoonAssistedFactoryBase']]],
   ['injectparameteratindex_3aascollection_3arequiredtype_3a',['injectParameterAtIndex:asCollection:requiredType:',['../interface_typhoon_initializer.html#a58c676f630aaa313766a11cd29c0ae0e',1,'TyphoonInitializer']]],
   ['injectparameteratindex_3awithargumentatindex_3a',['injectParameterAtIndex:withArgumentAtIndex:',['../interface_typhoon_assisted_factory_method_initializer.html#a444e4ac443037a7e081ad55265125f14',1,'TyphoonAssistedFactoryMethodInitializer']]],

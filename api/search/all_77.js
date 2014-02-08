@@ -8,6 +8,8 @@ var searchData=
   ['withclass_3ainitialization_3a',['withClass:initialization:',['../interface_typhoon_definition.html#abfbc8c21959e41a5fc4bb7282e2ff9e1',1,'TyphoonDefinition']]],
   ['withclass_3ainitialization_3aproperties_3a',['withClass:initialization:properties:',['../interface_typhoon_definition.html#aa9dcfc1049a83acb4490f2d014fed773',1,'TyphoonDefinition']]],
   ['withclass_3aproperties_3a',['withClass:properties:',['../interface_typhoon_definition.html#af465b133fd7f973be3275714d7f5bb50',1,'TyphoonDefinition']]],
+  ['withfactory_3acomputevaluetoinjectoninstance_3a',['withFactory:computeValueToInjectOnInstance:',['../interface_typhoon_abstract_injected_property.html#a87cccb248f43fe0d02e486f80684acee',1,'TyphoonAbstractInjectedProperty']]],
+  ['withfactory_3anewcollectionoftype_3a',['withFactory:newCollectionOfType:',['../interface_typhoon_injected_as_collection.html#a4a19b39cd1894840d5682ba38a0d3834',1,'TyphoonInjectedAsCollection']]],
   ['withname_3a',['withName:',['../interface_typhoon_bundle_resource.html#aaa604438fada1faf9566dcc0b7b6182c',1,'TyphoonBundleResource']]],
   ['withname_3ainbundle_3a',['withName:inBundle:',['../interface_typhoon_bundle_resource.html#a011c6f5a6fccb50b29bb8f33403b3076',1,'TyphoonBundleResource']]],
   ['withprotocol_3adependencies_3afactories_3a',['withProtocol:dependencies:factories:',['../interface_typhoon_factory_provider.html#a6ceab7ef446241a2a0d0aa5db842d5a1',1,'TyphoonFactoryProvider']]],

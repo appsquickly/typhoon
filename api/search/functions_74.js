@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['type',['type',['../protocol_typhoon_collection_value-p.html#aadc6b8127fdaa5972ea3393ff3ca7ff1',1,'TyphoonCollectionValue-p::type()'],['../protocol_typhoon_injected_parameter-p.html#af3049ac9f8aeb48bf1d89c82992d849c',1,'TyphoonInjectedParameter-p::type()']]],
   ['typecodesforselector_3a',['typeCodesForSelector:',['../category_n_s_object_07_typhoon_introspection_utils_08.html#a822b09c591a242296e5364199da5d092',1,'NSObject(TyphoonIntrospectionUtils)']]],
   ['typecodesforselector_3aofclass_3aisclassmethod_3a',['typeCodesForSelector:ofClass:isClassMethod:',['../interface_typhoon_introspection_utils.html#a8bb6cf36cbda69e20aa87a7b5af6a518',1,'TyphoonIntrospectionUtils']]],
   ['typecodesforselector_3aonclass_3a',['typeCodesForSelector:onClass:',['../category_n_s_object_07_typhoon_introspection_utils_08.html#ab831e1bfdbef5a457de3f901b4318764',1,'NSObject(TyphoonIntrospectionUtils)']]],

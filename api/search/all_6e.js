@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name',['name',['../interface_typhoon_property_injected_as_collection.html#a6b4debace1242e32ad4af3d97aba5ef3',1,'TyphoonPropertyInjectedAsCollection::name()'],['../interface_typhoon_abstract_injected_property.html#a8ba47b6044da4c1b683000e342f85508',1,'TyphoonAbstractInjectedProperty::name()']]],
+  ['name',['name',['../interface_typhoon_abstract_injected_property.html#a8ba47b6044da4c1b683000e342f85508',1,'TyphoonAbstractInjectedProperty']]],
   ['node_5f',['node_',['../interface_typhoon_r_x_m_l_element.html#a68df9cce0a8b690a1e2be4a824f71dc6',1,'TyphoonRXMLElement']]],
   ['ns_5fenum',['NS_ENUM',['../_typhoon_ordered_8h.html#a8bade92ed408c906ce4cb24b6ecdb5cf',1,'TyphoonOrdered.h']]],
   ['nsobject_28deallocnotification_29',['NSObject(DeallocNotification)',['../category_n_s_object_07_dealloc_notification_08.html',1,'']]],

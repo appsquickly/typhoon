@@ -1,6 +1,7 @@
 var _typhoon_injected_as_collection_8h =
 [
     [ "TyphoonInjectedAsCollection", "interface_typhoon_injected_as_collection.html", "interface_typhoon_injected_as_collection" ],
+    [ "<TyphoonInjectedAsCollection>", "protocol_typhoon_injected_as_collection-p.html", "protocol_typhoon_injected_as_collection-p" ],
     [ "TyphoonCollectionType", "_typhoon_injected_as_collection_8h.html#aa7ff8865467a34fd6c11154fb9c39355", [
       [ "TyphoonCollectionTypeNSArray", "_typhoon_injected_as_collection_8h.html#aa7ff8865467a34fd6c11154fb9c39355a0310024ca5e28d8c6c74b083d6d88050", null ],
       [ "TyphoonCollectionTypeNSMutableArray", "_typhoon_injected_as_collection_8h.html#aa7ff8865467a34fd6c11154fb9c39355a8770b972b21f0cba529252c82da76354", null ],

@@ -131,12 +131,10 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Describes the lifecycle of a Typhoon component. </p>
-<ul>
-<li>TyphoonScopeObjectGraph (default) means that a new non-retained component is created when resolved from the factory, and any dependencies declared during resolution of the object graph will be shared.</li>
-<li>TyphoonScopePrototype means that a new component is created for each time it is referenced in a collaborator, or retrieved from the factory.</li>
-<li>TyphoonScopeSingleton creates a shared instance.</li>
-<li>TyphoonScopeWeakSingleton creates an instance that will be shared across all components. However as soon as the instance is not being used it will be deallocated. </li>
-</ul>
+<p><b>TyphoonScopeObjectGraph</b> (default) means that a new non-retained component is created when resolved from the factory, and any dependencies declared during resolution of the object graph will be shared.</p>
+<p><b>TyphoonScopePrototype</b> means that a new component is created for each time it is referenced in a collaborator, or retrieved from the factory.</p>
+<p><b>TyphoonScopeSingleton</b> creates a shared instance.</p>
+<p><b>TyphoonScopeWeakSingleton</b> creates an instance that will be shared across all components. However as soon as the instance is not being used it will be deallocated. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e"></a>TyphoonScopeObjectGraph</em>&nbsp;</td><td class="fielddoc">
 </td></tr>
@@ -147,17 +145,17 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda"></a>TyphoonScopeWeakSingleton</em>&nbsp;</td><td class="fielddoc">
 </td></tr>
 </table>
-<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e">TyphoonScopeObjectGraph</a> = 1 &lt;&lt; 0,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a">TyphoonScopePrototype</a> = 1 &lt;&lt; 1,</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb">TyphoonScopeSingleton</a> = 1 &lt;&lt; 2,</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda">TyphoonScopeWeakSingleton</a> = 1 &lt;&lt; 3</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;} <a class="code" href="group___definition.html#ga6e7c49074062029ada1d93e0feef6c4c">TyphoonScope</a>;</div>
-<div class="ttc" id="group___definition_html_ga6e7c49074062029ada1d93e0feef6c4c"><div class="ttname"><a href="group___definition.html#ga6e7c49074062029ada1d93e0feef6c4c">TyphoonScope</a></div><div class="ttdeci">TyphoonScope</div><div class="ttdoc">Describes the lifecycle of a Typhoon component. </div><div class="ttdef"><b>Definition:</b> TyphoonDefinition.h:32</div></div>
-<div class="ttc" id="group___definition_html_gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a"><div class="ttname"><a href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a">TyphoonScopePrototype</a></div><div class="ttdef"><b>Definition:</b> TyphoonDefinition.h:35</div></div>
-<div class="ttc" id="group___definition_html_gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda"><div class="ttname"><a href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda">TyphoonScopeWeakSingleton</a></div><div class="ttdef"><b>Definition:</b> TyphoonDefinition.h:37</div></div>
-<div class="ttc" id="group___definition_html_gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e"><div class="ttname"><a href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e">TyphoonScopeObjectGraph</a></div><div class="ttdef"><b>Definition:</b> TyphoonDefinition.h:34</div></div>
-<div class="ttc" id="group___definition_html_gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb"><div class="ttname"><a href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb">TyphoonScopeSingleton</a></div><div class="ttdef"><b>Definition:</b> TyphoonDefinition.h:36</div></div>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e">TyphoonScopeObjectGraph</a> = 1 &lt;&lt; 0,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a">TyphoonScopePrototype</a> = 1 &lt;&lt; 1,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb">TyphoonScopeSingleton</a> = 1 &lt;&lt; 2,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda">TyphoonScopeWeakSingleton</a> = 1 &lt;&lt; 3</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;} <a class="code" href="group___definition.html#ga6e7c49074062029ada1d93e0feef6c4c">TyphoonScope</a>;</div>
+<div class="ttc" id="group___definition_html_ga6e7c49074062029ada1d93e0feef6c4c"><div class="ttname"><a href="group___definition.html#ga6e7c49074062029ada1d93e0feef6c4c">TyphoonScope</a></div><div class="ttdeci">TyphoonScope</div><div class="ttdoc">Describes the lifecycle of a Typhoon component. </div><div class="ttdef"><b>Definition:</b> TyphoonDefinition.h:37</div></div>
+<div class="ttc" id="group___definition_html_gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a"><div class="ttname"><a href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a">TyphoonScopePrototype</a></div><div class="ttdef"><b>Definition:</b> TyphoonDefinition.h:40</div></div>
+<div class="ttc" id="group___definition_html_gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda"><div class="ttname"><a href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda">TyphoonScopeWeakSingleton</a></div><div class="ttdef"><b>Definition:</b> TyphoonDefinition.h:42</div></div>
+<div class="ttc" id="group___definition_html_gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e"><div class="ttname"><a href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e">TyphoonScopeObjectGraph</a></div><div class="ttdef"><b>Definition:</b> TyphoonDefinition.h:39</div></div>
+<div class="ttc" id="group___definition_html_gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb"><div class="ttname"><a href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb">TyphoonScopeSingleton</a></div><div class="ttdef"><b>Definition:</b> TyphoonDefinition.h:41</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -167,7 +165,7 @@ Enumerations</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
-        <li class="footer">Generated on Tue Feb 4 2014 22:39:22 for Typhoon by
+        <li class="footer">Generated on Sat Feb 8 2014 13:30:45 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5
         </li>

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['index',['index',['../protocol_typhoon_injected_parameter-p.html#a8770809ff5211dd11141a576eadf657a',1,'TyphoonInjectedParameter-p']]],
   ['initfromurl_3a',['initFromURL:',['../interface_typhoon_r_x_m_l_element.html#ae8c430758b52a5bb267155b72090dc54',1,'TyphoonRXMLElement']]],
   ['initfromxmldata_3a',['initFromXMLData:',['../interface_typhoon_r_x_m_l_element.html#a4598839c85295661253a0a17a7b4c075',1,'TyphoonRXMLElement']]],
   ['initfromxmlfile_3a',['initFromXMLFile:',['../interface_typhoon_r_x_m_l_element.html#acfdecaec3ddbb545f6940a44856a17cd',1,'TyphoonRXMLElement']]],

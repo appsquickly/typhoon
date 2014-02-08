@@ -1,5 +1,3 @@
 <map id="TyphoonInjectedAsCollection" name="TyphoonInjectedAsCollection">
-<area shape="rect" id="node4" href="$interface_typhoon_parameter_injected_as_collection.html" title="TyphoonParameterInjected\lAsCollection" alt="" coords="5,230,187,271"/>
-<area shape="rect" id="node5" href="$interface_typhoon_property_injected_as_collection.html" title="Represents a collection (NSArray, NSSet, c&#45;style array) of items injected by reference, value or type. " alt="" coords="212,230,399,271"/>
-<area shape="rect" id="node2" href="$interface_typhoon_abstract_injected_property.html" title="Provides a contract for typhoon injected properties (name, injectionType) as well as defines the noti..." alt="" coords="90,80,309,107"/>
+<area shape="rect" id="node3" href="$protocol_typhoon_injected_as_collection-p.html" title="\&lt;TyphoonInjectedAsCollection\&gt;" alt="" coords="124,80,335,107"/>
 </map>
