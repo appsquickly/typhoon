@@ -37,6 +37,9 @@
 
 - (id)initWithQuest:(id <Quest>)quest favoriteDamsels:(NSArray*)favoriteDamsels;
 
+- (id)initWithDamselsRescued:(NSUInteger)damselsRescued foo:(id)foobar;
+
+
 - (NSString*)description;
 
 

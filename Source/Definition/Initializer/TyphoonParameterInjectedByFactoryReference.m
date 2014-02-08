@@ -43,10 +43,13 @@
     [[[factory stack] peekForKey:_factoryReference] instance]; //Raises circular dependencies exception if already initializing.
     NSObject* factoryComponent = [factory componentForKey:_factoryReference];
     id valueToInject = [factoryComponent valueForKeyPath:_keyPath];
-    [invocation setArgument:&valueToInject atIndex:_index + 2];
+    
+    [self setObject:valueToInject forInvocation:invocation];
 }
 
 /* ====================================================================================================================================== */
+
+
 #pragma mark - Utility Methods
 
 - (id)copyWithZone:(NSZone*)zone

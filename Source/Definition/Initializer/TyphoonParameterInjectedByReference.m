@@ -41,7 +41,8 @@
 {
     [[[factory stack] peekForKey:_reference] instance]; //Raises circular dependencies exception if already initializing.
     id reference = [factory componentForKey:_reference];
-    [invocation setArgument:&reference atIndex:_index + 2];
+
+    [self setObject:reference forInvocation:invocation];
 }
 
 /* ====================================================================================================================================== */
