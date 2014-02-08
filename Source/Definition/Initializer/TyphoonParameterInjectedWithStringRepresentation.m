@@ -88,6 +88,13 @@
 }
 
 
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
+- (id)copyWithZone:(NSZone*)zone
+{
+    return [[TyphoonParameterInjectedWithObjectInstance alloc] initWithParameterIndex:_index value:_value];
+}
 
 
 

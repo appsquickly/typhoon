@@ -44,5 +44,13 @@
     [invocation setArgument:&reference atIndex:_index + 2];
 }
 
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
+- (id)copyWithZone:(NSZone*)zone
+{
+    return [[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:_index reference:[_reference copy]];
+}
+
 
 @end

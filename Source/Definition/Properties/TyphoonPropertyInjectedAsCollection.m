@@ -38,7 +38,8 @@
 }
 
 /* ====================================================================================================================================== */
-#pragma mark - Interface Methods
+#pragma mark - Protocol Methods
+#pragma mark - <TyphoonInjectedAsCollection>
 
 - (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType
 {
@@ -55,6 +56,13 @@
     [_collection addItemWithDefinition:definition];
 }
 
+- (void)addValue:(id <TyphoonCollectionValue>)value
+{
+    [_collection addValue:value];
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Interface Methods
 
 - (TyphoonCollectionType)resolveCollectionTypeWith:(id <TyphoonIntrospectiveNSObject>)instance;
 {
@@ -100,6 +108,13 @@
     return [_collection withFactory:factory newCollectionOfType:type];
 }
 
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
+- (id)copyWithZone:(NSZone*)zone
+{
+    return nil;
+}
 
 
 @end

@@ -61,7 +61,16 @@
     }
 }
 
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
 
+/**
+* Returns a copy. Does not copy the value, but returns a reference to it.
+*/
+- (id)copyWithZone:(NSZone*)zone
+{
+    return [[TyphoonParameterInjectedWithObjectInstance alloc] initWithParameterIndex:_index value:_value];
+}
 
 
 @end

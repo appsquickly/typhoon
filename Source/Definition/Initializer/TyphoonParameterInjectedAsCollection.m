@@ -13,11 +13,14 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
 
+@interface TyphoonParameterInjectedAsCollection ()
+
+@property(nonatomic, readwrite) Class requiredType;
+@property(nonatomic, strong, readwrite) TyphoonInjectedAsCollection* collection;
+
+@end
+
 @implementation TyphoonParameterInjectedAsCollection
-{
-    Class _requiredType;
-    TyphoonInjectedAsCollection* _collection;
-}
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
@@ -37,6 +40,7 @@
 
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods
+#pragma mark - <TyphoonInjectedAsCollection>
 
 - (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType
 {
@@ -53,9 +57,21 @@
     [_collection addItemWithDefinition:definition];
 }
 
+- (void)addValue:(id <TyphoonCollectionValue>)value
+{
+    [_collection addValue:value];
+}
+
 
 /* ====================================================================================================================================== */
-#pragma mark - Interface Methods
+#pragma mark - Overridden Methods
+
+- (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation
+{
+    id collection = [_collection withFactory:factory newCollectionOfType:self.collectionType];
+    [invocation setArgument:&collection atIndex:_index + 2];
+}
+
 
 - (TyphoonCollectionType)collectionType
 {
@@ -91,14 +107,15 @@
     return 0;
 }
 
-
 /* ====================================================================================================================================== */
-#pragma mark - Overridden Methods
+#pragma mark - Utility Methods
 
-- (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation
+- (id)copyWithZone:(NSZone*)zone
 {
-    id collection = [_collection withFactory:factory newCollectionOfType:self.collectionType];
-    [invocation setArgument:&collection atIndex:_index + 2];
+    TyphoonParameterInjectedAsCollection
+        * copy = [[TyphoonParameterInjectedAsCollection alloc] initWithParameterIndex:_index requiredType:_requiredType];
+    [copy setValue:[_collection copy] forKey:@"collection"];
+    return copy;
 }
 
 

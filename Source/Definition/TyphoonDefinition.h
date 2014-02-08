@@ -20,13 +20,18 @@
 * @ingroup Definition
 * Describes the lifecycle of a Typhoon component.
 
-* - TyphoonScopeObjectGraph (default) means that a new non-retained component is created when resolved from the factory, and any
-* dependencies declared during resolution of the object graph will be shared.
-* - TyphoonScopePrototype means that a new component is created for each time it is referenced in a collaborator, or retrieved
-* from the factory.
-* - TyphoonScopeSingleton creates a shared instance.
-* - TyphoonScopeWeakSingleton creates an instance that will be shared across all components. However as soon as the instance is not being
-* used it will be deallocated.
+* <strong>TyphoonScopeObjectGraph</strong>
+* (default) means that a new non-retained component is created when resolved from the factory, and any dependencies declared during
+* resolution of the object graph will be shared.
+*
+* <strong>TyphoonScopePrototype</strong>
+* means that a new component is created for each time it is referenced in a collaborator, or retrieved from the factory.
+*
+* <strong>TyphoonScopeSingleton</strong>
+* creates a shared instance.
+*
+* <strong>TyphoonScopeWeakSingleton</strong>
+* creates an instance that will be shared across all components. However as soon as the instance is not being used it will be deallocated.
 *
 */
 typedef enum
