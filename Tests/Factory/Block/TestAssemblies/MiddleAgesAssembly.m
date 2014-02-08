@@ -27,7 +27,7 @@
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
     {
         [definition injectProperty:@selector(quest) withDefinition:[self defaultQuest]];
-        [definition injectProperty:@selector(damselsRescued) withValueAsText:@"12"];
+        [definition injectProperty:@selector(damselsRescued) withDefinition:[self cavalryMan] selector:@selector(damselsRescued)];
         [definition setScope:TyphoonScopeObjectGraph];
     }];
 }

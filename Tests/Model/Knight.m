@@ -45,6 +45,17 @@
     return self;
 }
 
+- (id)initWithDamselsRescued:(NSUInteger)damselsRescued foo:(id)foobar
+{
+    self = [super init];
+    if (self)
+    {
+        _damselsRescued = damselsRescued;
+        _foobar = foobar;
+        
+    }
+    return self;
+}
 
 /* ========================================================== Interface Methods ========================================================= */
 - (void)setQuest:(CampaignQuest*)quest

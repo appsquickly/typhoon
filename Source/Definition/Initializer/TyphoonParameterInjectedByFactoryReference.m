@@ -11,25 +11,26 @@
 
 
 
-#import "TyphoonParameterInjectedByReference.h"
+#import "TyphoonParameterInjectedByFactoryReference.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonCallStack.h"
 #import "TyphoonStackElement.h"
 
 
-@implementation TyphoonParameterInjectedByReference
+@implementation TyphoonParameterInjectedByFactoryReference
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (instancetype)initWithParameterIndex:(NSUInteger)index reference:(NSString*)reference
+- (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex factoryReference:(NSString *)reference keyPath:(NSString *)keyPath
 {
     self = [super init];
     if (self)
     {
-        _index = index;
-        _reference = reference;
+        _index = parameterIndex;
+        _factoryReference = reference;
+        _keyPath = keyPath;
     }
     return self;
 }
@@ -39,18 +40,21 @@
 
 - (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation
 {
-    [[[factory stack] peekForKey:_reference] instance]; //Raises circular dependencies exception if already initializing.
-    id reference = [factory componentForKey:_reference];
-
-    [self setObject:reference forInvocation:invocation];
+    [[[factory stack] peekForKey:_factoryReference] instance]; //Raises circular dependencies exception if already initializing.
+    NSObject* factoryComponent = [factory componentForKey:_factoryReference];
+    id valueToInject = [factoryComponent valueForKeyPath:_keyPath];
+    
+    [self setObject:valueToInject forInvocation:invocation];
 }
 
 /* ====================================================================================================================================== */
+
+
 #pragma mark - Utility Methods
 
 - (id)copyWithZone:(NSZone*)zone
 {
-    return [[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:_index reference:[_reference copy]];
+    return [[TyphoonParameterInjectedByFactoryReference alloc] initWithParameterIndex:_index factoryReference:[_factoryReference copy] keyPath:[_keyPath copy]];
 }
 
 

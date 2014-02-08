@@ -14,6 +14,7 @@
 #import "TyphoonCollaboratingAssemblyProxy.h"
 #import "TyphoonInitializer.h"
 #import "TyphoonParameterInjectedByReference.h"
+#import "TyphoonParameterInjectedByFactoryReference.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
 #import "TyphoonParameterInjectedWithStringRepresentation.h"
 #import "TyphoonParameterInjectedWithObjectInstance.h"
@@ -48,15 +49,6 @@
     return [self initWithSelector:@selector(init) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodGuess];
 }
 
-- (void)dealloc
-{
-    for (TyphoonAbstractInjectedParameter* parameter in _injectedParameters)
-    {
-        //Null out the __unsafe_unretained pointer back to self.
-        [parameter setInitializer:nil];
-    }
-}
-
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
@@ -70,11 +62,45 @@
     return [_injectedParameters copy];
 }
 
+#pragma mark - manipulations with _injectedParameters
+
+- (void)addParameter:(TyphoonAbstractInjectedParameter *)parameter
+{
+    parameter.initializer = self;
+    [_injectedParameters addObject:parameter];
+}
+
+- (BOOL)canAddParameterAtIndex:(NSUInteger)index
+{
+    return index < [_parameterNames count];
+}
+
+- (NSUInteger)indexToAddParameter
+{
+    return [_injectedParameters count];
+}
+
 #pragma mark - injectParameterNamed
 
 - (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition;
 {
     [self injectParameterNamed:name withReference:definition.key];
+}
+
+- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)factoryDefinition selector:(SEL)selector
+{
+    [self injectParameterNamed:name success:^(NSInteger index)
+    {
+        [self injectParameterAtIndex:index withDefinition:factoryDefinition selector:selector];
+    }];
+}
+
+- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)factoryDefinition keyPath:(NSString*)keyPath
+{
+    [self injectParameterNamed:name success:^(NSInteger index)
+    {
+         [self injectParameterAtIndex:index withDefinition:factoryDefinition keyPath:keyPath];
+    }];
 }
 
 - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference
@@ -113,7 +139,7 @@
 - (void)injectParameterNamed:(NSString*)name success:(void (^)(NSInteger))success
 {
     NSInteger index = [self indexOfParameter:name];
-    if (index == NSIntegerMax)
+    if (index == NSNotFound)
     {
         [NSException raise:NSInvalidArgumentException format:@"%@", [self parameterNotFoundErrorMessageWithParameterNamed:name]];
     }
@@ -180,23 +206,27 @@
 
 #pragma mark injectParameterAtIndex:
 
-
 - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString*)reference
 {
-    if (index != NSIntegerMax && index < [_parameterNames count])
+    if ([self canAddParameterAtIndex:index])
     {
-        [_injectedParameters addObject:[[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference]];
+        [self addParameter:[[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference]];
+    }
+}
+
+- (void)injectParameterAtIndex:(NSUInteger)index withFactoryReference:(NSString*)reference keyPath:(NSString *)keyPath
+{
+    if ([self canAddParameterAtIndex:index])
+    {
+        [self addParameter:[[TyphoonParameterInjectedByFactoryReference alloc] initWithParameterIndex:index factoryReference:reference keyPath:keyPath]];
     }
 }
 
 - (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass
 {
-    if (index != NSIntegerMax && index < [_parameterNames count])
+    if ([self canAddParameterAtIndex:index])
     {
-        TyphoonParameterInjectedWithStringRepresentation* parameterInjectedByValue =
-            [[TyphoonParameterInjectedWithStringRepresentation alloc] initWithIndex:index value:text requiredTypeOrNil:requiredClass];
-        [parameterInjectedByValue setInitializer:self];
-        [_injectedParameters addObject:parameterInjectedByValue];
+        [self addParameter:[[TyphoonParameterInjectedWithStringRepresentation alloc] initWithIndex:index value:text requiredTypeOrNil:requiredClass]];
     }
 }
 
@@ -205,7 +235,19 @@
 
 - (void)injectWithDefinition:(TyphoonDefinition*)definition;
 {
-    [self injectParameterAtIndex:[_injectedParameters count] withDefinition:definition];
+    [self injectParameterAtIndex:[self indexToAddParameter] withDefinition:definition];
+}
+
+
+- (void)injectWithDefinition:(TyphoonDefinition *)factoryDefinition selector:(SEL)selector
+{
+
+    [self injectParameterAtIndex:[self indexToAddParameter] withDefinition:factoryDefinition selector:selector];
+}
+
+- (void)injectWithDefinition:(TyphoonDefinition *)factoryDefinition keyPath:(NSString *)keyPath
+{
+    [self injectParameterAtIndex:[self indexToAddParameter] withDefinition:factoryDefinition keyPath:keyPath];
 }
 
 - (void)injectWithValueAsText:(NSString*)text
@@ -215,28 +257,25 @@
 
 - (void)injectWithValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredTypeOrNil
 {
-    [self injectParameterAtIndex:[_injectedParameters count] withValueAsText:text requiredTypeOrNil:requiredTypeOrNil];
+    [self injectParameterAtIndex:[self indexToAddParameter] withValueAsText:text requiredTypeOrNil:requiredTypeOrNil];
 }
 
 - (void)injectParameterAtIndex:(NSUInteger)index withObject:(id)value
 {
-    if (index != NSIntegerMax && index < [_parameterNames count])
+    if ([self canAddParameterAtIndex:index])
     {
-        TyphoonParameterInjectedWithObjectInstance
-            * param = [[TyphoonParameterInjectedWithObjectInstance alloc] initWithParameterIndex:index value:value];
-        [param setInitializer:self];
-        [_injectedParameters addObject:param];
+        [self addParameter:[[TyphoonParameterInjectedWithObjectInstance alloc] initWithParameterIndex:index value:value]];
     }
 }
 
 - (void)injectWithObjectInstance:(id)value;
 {
-    [self injectParameterAtIndex:[_injectedParameters count] withObject:value];
+    [self injectParameterAtIndex:[self indexToAddParameter] withObject:value];
 }
 
 - (void)injectWithCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues requiredType:(id)requiredType
 {
-    [self injectParameterAtIndex:[_injectedParameters count] asCollection:collectionValues requiredType:requiredType];
+    [self injectParameterAtIndex:[self indexToAddParameter] asCollection:collectionValues requiredType:requiredType];
 }
 
 /* ====================================================================================================================================== */
@@ -245,6 +284,16 @@
 - (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonDefinition*)definition
 {
     [self injectParameterAtIndex:index withReference:definition.key];
+}
+
+- (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonDefinition*)factoryDefinition keyPath:(NSString*)keyPath
+{
+    [self injectParameterAtIndex:index withFactoryReference:factoryDefinition.key keyPath:keyPath];
+}
+
+- (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonDefinition*)factoryDefinition selector:(SEL)selector
+{
+    [self injectParameterAtIndex:index withFactoryReference:factoryDefinition.key keyPath:NSStringFromSelector(selector)];
 }
 
 - (void)injectParameterAtIndex:(NSUInteger)index asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues
@@ -260,9 +309,9 @@
         collectionValues(weakParameterInjectedAsCollection);
     }
 
-    if (index != NSIntegerMax && index < [_parameterNames count])
+    if ([self canAddParameterAtIndex:index])
     {
-        [_injectedParameters addObject:parameterInjectedAsCollection];
+        [self addParameter:parameterInjectedAsCollection];
     }
 }
 
@@ -278,7 +327,7 @@
 
 - (NSInteger)indexOfParameter:(NSString*)name
 {
-    NSInteger parameterIndex = NSIntegerMax;
+    NSInteger parameterIndex = NSNotFound;
     for (NSInteger i = 0; i < [_parameterNames count]; i++)
     {
         NSString* parameterName = [_parameterNames objectAtIndex:i];

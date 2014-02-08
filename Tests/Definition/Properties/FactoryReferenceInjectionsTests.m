@@ -32,7 +32,7 @@ NSString *currentFooString;
 @end
 @implementation ClassWithKnightSettingsAssembly
 
-- (id) knighSettings
+- (id) knightSettings
 {
     return [TyphoonDefinition withClass:[ClassWithKnightSettings class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) withObjectInstance:@(currentDamselsRescued)];
@@ -44,12 +44,12 @@ NSString *currentFooString;
 @end
 
 
-@interface PropertyInjectionsTests : SenTestCase
+@interface FactoryReferenceInjectionsTests : SenTestCase
 
 @end
 
 
-@implementation PropertyInjectionsTests {
+@implementation FactoryReferenceInjectionsTests {
     TyphoonComponentFactory *factory;
 }
 
@@ -121,8 +121,8 @@ NSString *currentFooString;
     
     NSString *testString = @"Hello";
     currentFooString = [testString copy];
-    
-    factory = [TyphoonBlockComponentFactory factoryWithAssembly:[ClassWithKnightSettingsAssembly assembly]];
+    [self updateFactory];
+
     TyphoonDefinition *settings = [factory definitionForType:[ClassWithKnightSettings class]];
 
     TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
@@ -133,6 +133,29 @@ NSString *currentFooString;
     assertThat(knight.foobar, equalTo(@"HELLO"));
 }
 
+
+- (void) test_inject_factorydefinition_on_init
+{
+    currentDamselsRescued = 32;
+    currentFooString =  @"Hello";
+    [self updateFactory];
+    
+    TyphoonDefinition *settings = [factory definitionForType:[ClassWithKnightSettings class]];
+    
+    TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
+        [initializer setSelector:@selector(initWithDamselsRescued:foo:)];
+        [initializer injectWithDefinition:settings selector:@selector(damselsRescued)];
+        [initializer injectWithDefinition:settings keyPath:@"fooString.uppercaseString"];
+    }];
+    
+    [factory register:knightDefinition];
+    
+    Knight *knight = [factory componentForType:[Knight class]];
+
+    assertThatInteger(knight.damselsRescued, equalToInteger(32));
+    assertThat(knight.foobar, equalTo(@"HELLO"));
+
+}
 
 
 @end
