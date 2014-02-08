@@ -14,6 +14,7 @@
 #import "TyphoonCollaboratingAssemblyProxy.h"
 #import "TyphoonInitializer.h"
 #import "TyphoonParameterInjectedByReference.h"
+#import "TyphoonParameterInjectedByFactoryReference.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
 #import "TyphoonParameterInjectedWithStringRepresentation.h"
 #import "TyphoonParameterInjectedWithObjectInstance.h"
@@ -75,6 +76,22 @@
 - (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition;
 {
     [self injectParameterNamed:name withReference:definition.key];
+}
+
+- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)factoryDefinition selector:(SEL)selector
+{
+    [self injectParameterNamed:name success:^(NSInteger index)
+    {
+        [self injectParameterAtIndex:index withDefinition:factoryDefinition selector:selector];
+    }];
+}
+
+- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)factoryDefinition keyPath:(NSString*)keyPath
+{
+    [self injectParameterNamed:name success:^(NSInteger index)
+    {
+         [self injectParameterAtIndex:index withDefinition:factoryDefinition keyPath:keyPath];
+    }];
 }
 
 - (void)injectParameterNamed:(NSString*)name withReference:(NSString*)reference
@@ -189,6 +206,14 @@
     }
 }
 
+- (void)injectParameterAtIndex:(NSUInteger)index withFactoryReference:(NSString*)reference keyPath:(NSString *)keyPath
+{
+    if (index != NSIntegerMax && index < [_parameterNames count])
+    {
+        [_injectedParameters addObject:[[TyphoonParameterInjectedByFactoryReference alloc] initWithParameterIndex:index factoryReference:reference keyPath:keyPath]];
+    }
+}
+
 - (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString*)text requiredTypeOrNil:(id)requiredClass
 {
     if (index != NSIntegerMax && index < [_parameterNames count])
@@ -206,6 +231,17 @@
 - (void)injectWithDefinition:(TyphoonDefinition*)definition;
 {
     [self injectParameterAtIndex:[_injectedParameters count] withDefinition:definition];
+}
+
+
+- (void)injectWithDefinition:(TyphoonDefinition *)factoryDefinition selector:(SEL)selector
+{
+    [self injectParameterAtIndex:[_injectedParameters count] withDefinition:factoryDefinition selector:selector];
+}
+
+- (void)injectWithDefinition:(TyphoonDefinition *)factoryDefinition keyPath:(NSString *)keyPath
+{
+    [self injectParameterAtIndex:[_injectedParameters count] withDefinition:factoryDefinition keyPath:keyPath];
 }
 
 - (void)injectWithValueAsText:(NSString*)text
@@ -245,6 +281,16 @@
 - (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonDefinition*)definition
 {
     [self injectParameterAtIndex:index withReference:definition.key];
+}
+
+- (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonDefinition*)factoryDefinition keyPath:(NSString*)keyPath
+{
+    [self injectParameterAtIndex:index withFactoryReference:factoryDefinition.key keyPath:keyPath];
+}
+
+- (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonDefinition*)factoryDefinition selector:(SEL)selector
+{
+    [self injectParameterAtIndex:index withFactoryReference:factoryDefinition.key keyPath:NSStringFromSelector(selector)];
 }
 
 - (void)injectParameterAtIndex:(NSUInteger)index asCollection:(void (^)(TyphoonParameterInjectedAsCollection*))collectionValues

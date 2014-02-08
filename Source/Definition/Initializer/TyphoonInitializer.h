@@ -78,6 +78,10 @@ typedef enum
 */
 - (void)injectWithDefinition:(TyphoonDefinition*)definition;
 
+/* Injects result of invocation 'selector'/'keyPath' on 'factoryDefinition' instance */
+- (void)injectWithDefinition:(TyphoonDefinition *)factoryDefinition selector:(SEL)selector;
+- (void)injectWithDefinition:(TyphoonDefinition *)factoryDefinition keyPath:(NSString*)keyPath;
+
 /**
 * Injects with the value represented by the given text. The text will be used to create an instance of a class matching the
 * required type.
@@ -128,6 +132,9 @@ To inject a class object:
 * Injects the parameter matched by the given name with the given definition.
 */
 - (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)definition;
+
+- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)factoryDefinition selector:(SEL)selector;
+- (void)injectParameterNamed:(NSString*)name withDefinition:(TyphoonDefinition*)factoryDefinition keyPath:(NSString*)keyPath;
 
 /**
 * Injects the parameter matched by the given name as a collection of the given requiredType.
