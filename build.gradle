@@ -29,7 +29,7 @@ task test(type: XcodeTestTask) {
 
 	coverageReport new CoverageReportConfig(
             directories: ['Source'],
-            excludeSymbols: ['CGGeometry.h', 'TyphoonRXMLElement.m', 'TyphoonJRSwizzle.m']
+            excludeSymbols: ['TyphoonRXMLElement.m', 'TyphoonJRSwizzle.m', 'NSRange.h', 'once.h']
     )
 
 	outputDir 'build'
