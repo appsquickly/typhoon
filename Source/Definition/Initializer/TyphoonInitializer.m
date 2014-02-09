@@ -265,6 +265,18 @@
     _parameterNames = [self parameterNamesForSelector:_selector];
 }
 
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
+- (id)copyWithZone:(NSZone *)zone {
+
+    TyphoonInitializer *copy = [[TyphoonInitializer alloc] initWithSelector:_selector isClassMethodStrategy:_isClassMethodStrategy];
+    for (TyphoonAbstractInjectedParameter *parameter in _injectedParameters) {
+        [copy addParameter:[parameter copy]];
+    }
+    return copy;
+}
+
 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods

@@ -173,5 +173,15 @@
     return [NSString stringWithFormat:@"Definition: class='%@', key='%@'", NSStringFromClass(_type), _key];
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+
+    TyphoonDefinition *copy = [[TyphoonDefinition alloc] initWithClass:_type key:[_key copy] factoryComponent:_factory.key];
+    [copy setInitializer:[self.initializer copy]];
+    for (TyphoonAbstractInjectedProperty *property in _injectedProperties) {
+        [copy addInjectedProperty:[property copy]];
+    }
+    return copy;
+}
+
 
 @end
