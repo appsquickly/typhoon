@@ -165,15 +165,16 @@ And then:
 ![Build Status](http://www.typhoonframework.org/docs/latest/build-status/build-status.png?q=zz)
 
 
-The following reports are published by our build server after each commit. (We use something a little more comprehensive than Travis - if you'd like the scripts, we'd be happy to share). Note that the status of the CI build is not related to tagged releases that are published and pushed to CocoaPods - these are stable. 
+The following reports are published by our build server after each commit. Note that the status of the CI build is not related to tagged releases that are published and pushed to CocoaPods - these are stable. 
 
 Test Failures typically indicate a bug that has been flagged, but not yet fixed. By policy we maintain more than 90% test coverage. 
 
 
-
 * <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API</a>
-* <a href="http://www.typhoonframework.org/docs/latest/test-results/">Test Results</a>
-* <a href="http://www.typhoonframework.org/docs/latest/coverage">Coverage Reports</a>
+* <a href="http://appsquick.dyndns.org:8085/artifact/TPN-TC/JOB1/build-latest/reports/test-results/index.html">Test Results</a>
+* <a href="http://appsquick.dyndns.org:8085/artifact/TPN-TC/JOB1/build-latest/reports/coverage/index.html">Coverage Reports</a>
+
+(These reports are hosted on a temporary server until we fully complete moving our build-system to Gradle)
 
 
 # Feature Requests and Contributions
