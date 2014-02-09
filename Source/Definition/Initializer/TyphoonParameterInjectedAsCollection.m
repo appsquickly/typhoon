@@ -88,7 +88,8 @@
         return TyphoonCollectionTypeNSSet;
     }
 
-    [NSException raise:NSInvalidArgumentException format:@"Required collection type '%@' is neither an NSSet nor NSArray.", NSStringFromClass(clazz)];
+    [NSException raise:NSInvalidArgumentException format:@"Required collection type '%@' is neither an NSSet nor NSArray.",
+                                                         NSStringFromClass(clazz)];
     return 0;
 }
 

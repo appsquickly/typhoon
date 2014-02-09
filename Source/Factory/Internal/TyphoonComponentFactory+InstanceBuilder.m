@@ -42,6 +42,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 }
 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition *)definition {
+
     TyphoonStackElement *stackElement = [TyphoonStackElement elementWithKey:definition.key];
     [_stack push:stackElement];
 
@@ -90,7 +91,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     return instance;
 }
 
-- (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance; {
+- (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance {
+
     if ([instance conformsToProtocol:@protocol(TyphoonComponentFactoryAware)]) {
         [self injectAssemblyOnInstance:instance];
     }
@@ -143,7 +145,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     };
 
     if (![instance respondsToSelector:@selector(shouldInjectProperty:withType:lazyValue:)] ||
-        [(id <TyphoonPropertyInjectionInternalDelegate>) instance shouldInjectProperty:property withType:propertyType lazyValue:lazyValue]) {
+        [(id <TyphoonPropertyInjectionInternalDelegate>) instance shouldInjectProperty:property withType:propertyType
+            lazyValue:lazyValue]) {
         id valueToInject = lazyValue();
 
         if (valueToInject) {
@@ -153,7 +156,9 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 }
 
 
-- (void)evaluateCircularDependency:(NSString *)componentKey propertyName:(NSString *)propertyName instance:(id <TyphoonIntrospectiveNSObject>)instance; {
+- (void)evaluateCircularDependency:(NSString *)componentKey propertyName:(NSString *)propertyName
+    instance:(id <TyphoonIntrospectiveNSObject>)instance {
+
     if ([_stack isResolvingKey:componentKey]) {
         NSDictionary *circularDependencies = [instance circularDependentProperties];
         [circularDependencies setValue:componentKey forKey:propertyName];
@@ -161,7 +166,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 }
 
-- (BOOL)propertyIsCircular:(TyphoonAbstractInjectedProperty *)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance; {
+- (BOOL)propertyIsCircular:(TyphoonAbstractInjectedProperty *)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance {
     return [[instance circularDependentProperties] objectForKey:property.name] != nil;
 }
 
@@ -195,14 +200,17 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 - (TyphoonDefinition *)definitionForType:(id)classOrProtocol {
     NSArray *candidates = [self allDefinitionsForType:classOrProtocol];
+
     if ([candidates count] == 0) {
+
         SEL autoInjectedProperties = sel_registerName("typhoonAutoInjectedProperties");
         if (class_isMetaClass(object_getClass(classOrProtocol)) && [classOrProtocol respondsToSelector:autoInjectedProperties]) {
             LogTrace(@"Class %@ wants auto-wiring. . . registering.", NSStringFromClass(classOrProtocol));
             [self register:[TyphoonDefinition withClass:classOrProtocol]];
             return [self definitionForType:classOrProtocol];
         }
-        [NSException raise:NSInvalidArgumentException format:@"No components defined which satisify type: '%@'", TyphoonTypeStringFor(classOrProtocol)];
+        [NSException raise:NSInvalidArgumentException format:@"No components defined which satisify type: '%@'",
+                                                             TyphoonTypeStringFor(classOrProtocol)];
     }
     if ([candidates count] > 1) {
         [NSException raise:NSInvalidArgumentException format:@"More than one component is defined satisfying type: '%@'", classOrProtocol];
@@ -212,6 +220,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 
 - (NSArray *)allDefinitionsForType:(id)classOrProtocol {
+
     NSMutableArray *results = [[NSMutableArray alloc] init];
     BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
 

@@ -32,7 +32,8 @@
 
 @synthesize methodSignature = _methodSignature;
 
-- (instancetype)initWithInitializer:(TyphoonAssistedFactoryMethodInitializer *)initializer methodSignature:(NSMethodSignature *)methodSignature {
+- (instancetype)initWithInitializer:(TyphoonAssistedFactoryMethodInitializer *)initializer
+    methodSignature:(NSMethodSignature *)methodSignature {
     self = [super init];
     if (self) {
         NSParameterAssert(initializer.returnType);

@@ -121,11 +121,14 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
     }];
 }
 
-+ (void)swapImplementationOfDefinitionSelector:(TyphoonSelector *)wrappedSelector withDynamicBeforeAdviceImplementationOnAssembly:(TyphoonAssembly *)assembly {
-    return [self swapImplementationOfDefinitionSelector:wrappedSelector withDynamicBeforeAdviceImplementationOnAssemblyClass:[assembly class]];
++ (void)swapImplementationOfDefinitionSelector:(TyphoonSelector *)wrappedSelector
+    withDynamicBeforeAdviceImplementationOnAssembly:(TyphoonAssembly *)assembly {
+    return [self swapImplementationOfDefinitionSelector:wrappedSelector
+        withDynamicBeforeAdviceImplementationOnAssemblyClass:[assembly class]];
 }
 
-+ (void)swapImplementationOfDefinitionSelector:(TyphoonSelector *)wrappedSEL withDynamicBeforeAdviceImplementationOnAssemblyClass:(Class)assemblyClass {
++ (void)swapImplementationOfDefinitionSelector:(TyphoonSelector *)wrappedSEL
+    withDynamicBeforeAdviceImplementationOnAssemblyClass:(Class)assemblyClass {
     SEL methodSelector = [wrappedSEL selector];
     SEL swizzled = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector];
 

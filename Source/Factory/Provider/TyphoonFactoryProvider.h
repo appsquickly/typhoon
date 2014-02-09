@@ -214,6 +214,7 @@
  * Creates a factor definition for a given protocol, dependencies and a list of factory methods. The protocol is supposed to have the same
  * number of class methods, and with the same selectors as defined in the factories block, otherwise this method will fail during runtime.
 */
-+ (TyphoonDefinition *)withProtocol:(Protocol *)protocol dependencies:(TyphoonDefinitionBlock)dependenciesBlock factories:(TyphoonAssistedFactoryDefinitionBlock)definitionBlock;
++ (TyphoonDefinition *)withProtocol:(Protocol *)protocol dependencies:(TyphoonDefinitionBlock)dependenciesBlock
+    factories:(TyphoonAssistedFactoryDefinitionBlock)definitionBlock;
 
 @end

@@ -101,7 +101,8 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
             else if ([[child tag] isEqualToString:@"value"]) {
                 Class type = NSClassFromString([child attribute:@"requiredType"]);
                 if (!type) {
-                    [NSException raise:NSInvalidArgumentException format:@"Type '%@' could not be resolved.", [child attribute:@"requiredType"]];
+                    [NSException raise:NSInvalidArgumentException format:@"Type '%@' could not be resolved.",
+                                                                         [child attribute:@"requiredType"]];
                 }
                 [property addItemWithText:[child text] requiredType:type];
             }
@@ -179,7 +180,8 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
         @"weakSingleton"
     ];
     if (([scope length] > 0) && (![acceptedScopes containsObject:scope])) {
-        [NSException raise:NSInvalidArgumentException format:@"Scope was '%@', but can only be one of ['default', 'prototype', 'singleton'", scope];
+        [NSException raise:NSInvalidArgumentException format:@"Scope was '%@', but can only be one of ['default', 'prototype', 'singleton'",
+                                                             scope];
     }
 
     // Here, we don't follow the Spring's implementation : the "default" scope is the TyphoonScopeObjectGraph.
@@ -210,7 +212,8 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
             // do nothing
         }
         else {
-            [NSException raise:NSInvalidArgumentException format:@"The tag '%@' can't be used as part of a component definition.", [child tag]];
+            [NSException raise:NSInvalidArgumentException format:@"The tag '%@' can't be used as part of a component definition.",
+                                                                 [child tag]];
         }
     }];
 }
@@ -283,7 +286,8 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
                 else if ([[child tag] isEqualToString:@"value"]) {
                     Class type = NSClassFromString([child attribute:@"requiredType"]);
                     if (!type) {
-                        [NSException raise:NSInvalidArgumentException format:@"Type '%@' could not be resolved.", [child attribute:@"requiredType"]];
+                        [NSException raise:NSInvalidArgumentException format:@"Type '%@' could not be resolved.",
+                                                                             [child attribute:@"requiredType"]];
                     }
                     [parameterAsCollection addItemWithText:[child text] requiredType:type];
                 }

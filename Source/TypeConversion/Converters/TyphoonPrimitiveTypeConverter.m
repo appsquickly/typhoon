@@ -148,7 +148,8 @@
     return value;
 }
 
-- (void)setPrimitiveArgumentFor:(NSInvocation *)invocation index:(NSUInteger)index textValue:(NSString *)textValue requiredType:(TyphoonTypeDescriptor *)requiredType {
+- (void)setPrimitiveArgumentFor:(NSInvocation *)invocation index:(NSUInteger)index textValue:(NSString *)textValue
+    requiredType:(TyphoonTypeDescriptor *)requiredType {
     if (requiredType.primitiveType == TyphoonPrimitiveTypeBoolean || requiredType.primitiveType == TyphoonPrimitiveTypeChar) {
         BOOL converted = [self convertToBoolean:textValue];
         [invocation setArgument:&converted atIndex:index];

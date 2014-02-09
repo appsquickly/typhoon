@@ -101,7 +101,8 @@
     }];
 }
 
-- (void)injectParameterNamed:(NSString *)name asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues requiredType:(id)requiredType {
+- (void)injectParameterNamed:(NSString *)name asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues
+    requiredType:(id)requiredType {
     [self injectParameterNamed:name success:^(NSInteger index) {
         [self injectParameterAtIndex:index asCollection:collectionValues requiredType:requiredType];
     }];
@@ -127,7 +128,8 @@
 
 - (NSString *)parameterNotFoundErrorMessageWithParameterNamed:(NSString *)name {
     if ([_parameterNames count] == 0) {
-        return [NSString stringWithFormat:@"Specified a parameter named '%@', but method '%@' takes no parameters.", name, NSStringFromSelector([self selector])];
+        return [NSString stringWithFormat:@"Specified a parameter named '%@', but method '%@' takes no parameters.", name,
+                                          NSStringFromSelector([self selector])];
     }
 
     NSString *failureExplanation =
@@ -242,7 +244,8 @@
     [self injectParameterAtIndex:index withFactoryReference:factoryDefinition.key keyPath:NSStringFromSelector(selector)];
 }
 
-- (void)injectParameterAtIndex:(NSUInteger)index asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues requiredType:(id)requiredType {
+- (void)injectParameterAtIndex:(NSUInteger)index asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues
+    requiredType:(id)requiredType {
 
     TyphoonParameterInjectedAsCollection *parameterInjectedAsCollection =
         [[TyphoonParameterInjectedAsCollection alloc] initWithParameterIndex:index requiredType:requiredType];

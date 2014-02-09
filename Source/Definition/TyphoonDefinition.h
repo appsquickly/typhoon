@@ -208,7 +208,8 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
 + (TyphoonDefinition *)withClass:(Class)clazz;
 
-+ (TyphoonDefinition *)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization properties:(TyphoonDefinitionBlock)properties;
++ (TyphoonDefinition *)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
+    properties:(TyphoonDefinitionBlock)properties;
 
 + (TyphoonDefinition *)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization;
 

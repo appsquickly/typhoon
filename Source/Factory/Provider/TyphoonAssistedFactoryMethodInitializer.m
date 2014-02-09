@@ -48,11 +48,12 @@
 }
 
 - (NSArray *)parameters {
-    return [self.injectedParameters sortedArrayWithOptions:0 usingComparator:^NSComparisonResult(id <TyphoonAssistedFactoryInjectedParameter> p1, id <TyphoonAssistedFactoryInjectedParameter> p2) {
-        if (p1.parameterIndex < p2.parameterIndex) {return NSOrderedAscending;}
-        if (p1.parameterIndex > p2.parameterIndex) {return NSOrderedDescending;}
-        return NSOrderedSame;
-    }];
+    return [self.injectedParameters sortedArrayWithOptions:0
+        usingComparator:^NSComparisonResult(id <TyphoonAssistedFactoryInjectedParameter> p1, id <TyphoonAssistedFactoryInjectedParameter> p2) {
+            if (p1.parameterIndex < p2.parameterIndex) {return NSOrderedAscending;}
+            if (p1.parameterIndex > p2.parameterIndex) {return NSOrderedDescending;}
+            return NSOrderedSame;
+        }];
 }
 
 #pragma mark - Configuration methods

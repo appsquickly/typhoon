@@ -53,8 +53,9 @@
         NSArray *typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:_initializer.selector ofClass:clazz isClassMethod:isClass];
 
         if ([[typeCodes objectAtIndex:_index] isEqualToString:@"@"]) {
-            [NSException raise:NSInvalidArgumentException format:@"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. "
-                "Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"];
+            [NSException raise:NSInvalidArgumentException
+                format:@"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. "
+                    "Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"];
         }
         return [TyphoonTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:_index]];
     }

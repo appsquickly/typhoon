@@ -63,7 +63,8 @@
     TyphoonTypeDescriptor *descriptor = [TyphoonIntrospectionUtils typeForPropertyWithName:_name inClass:[instance class]];
     Class describedClass = (Class) [descriptor classOrProtocol];
     if (describedClass == nil) {
-        [NSException raise:NSInvalidArgumentException format:@"Property named '%@' does not exist on class '%@'.", _name, NSStringFromClass([instance class])];
+        [NSException raise:NSInvalidArgumentException format:@"Property named '%@' does not exist on class '%@'.", _name,
+                                                             NSStringFromClass([instance class])];
     }
     if ([describedClass isSubclassOfClass:[NSMutableArray class]]) {
         return TyphoonCollectionTypeNSMutableArray;
@@ -81,7 +82,8 @@
         return TyphoonCollectionTypeNSSet;
     }
 
-    [NSException raise:NSInvalidArgumentException format:@"Property named '%@' on '%@' is neither an NSSet nor NSArray.", _name, NSStringFromClass(describedClass)];
+    [NSException raise:NSInvalidArgumentException format:@"Property named '%@' on '%@' is neither an NSSet nor NSArray.", _name,
+                                                         NSStringFromClass(describedClass)];
     return 0;
 }
 

@@ -66,7 +66,8 @@
 
     id <TyphoonTypeConverter> converter = [_typeConverters objectForKey:[typeDescriptor classOrProtocol]];
     if (!converter) {
-        [NSException raise:NSInvalidArgumentException format:@"No type converter registered for type: '%@'.", [typeDescriptor classOrProtocol]];
+        [NSException raise:NSInvalidArgumentException format:@"No type converter registered for type: '%@'.",
+                                                             [typeDescriptor classOrProtocol]];
 
     }
     return converter;

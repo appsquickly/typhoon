@@ -198,7 +198,8 @@ static Class EnsureFactoryClass(Protocol *protocol, TyphoonAssistedFactoryDefini
     return [[TyphoonAssistedFactoryCreatorManyFactories alloc] initWithProtocol:protocol factories:definitionblock];
 }
 
-- (instancetype)initWithProtocol:(Protocol *)protocol factoryDefinitionProvider:(TyphoonAssistedFactoryDefinitionProvider)definitionProvider {
+- (instancetype)initWithProtocol:(Protocol *)protocol
+    factoryDefinitionProvider:(TyphoonAssistedFactoryDefinitionProvider)definitionProvider {
     self = [super init];
     if (self) {
         _protocol = protocol;

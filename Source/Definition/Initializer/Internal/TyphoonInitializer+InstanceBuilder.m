@@ -63,7 +63,8 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 - (BOOL)resolveIsClassMethod {
     if (_definition.factory) {
         if (_isClassMethodStrategy == TyphoonComponentInitializerIsClassMethodYes) {
-            [NSException raise:NSInvalidArgumentException format:@"'is-class-method' can't be 'TyphoonComponentInitializerIsClassMethodYes' when factory-component is used!"];
+            [NSException raise:NSInvalidArgumentException
+                format:@"'is-class-method' can't be 'TyphoonComponentInitializerIsClassMethodYes' when factory-component is used!"];
         }
         else {
             return NO;
@@ -90,7 +91,9 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 - (NSMethodSignature *)methodSignatureWithTarget:(Class)clazz {
     if (![self isValidForTarget:clazz]) {
         NSString *typeType = self.isClassMethod ? @"Class" : @"Instance";
-        [NSException raise:NSInvalidArgumentException format:@"%@ method '%@' not found on '%@'. Did you include the required ':' characters to signify arguments?", typeType, NSStringFromSelector(_selector), NSStringFromClass(clazz)];
+        [NSException raise:NSInvalidArgumentException
+            format:@"%@ method '%@' not found on '%@'. Did you include the required ':' characters to signify arguments?", typeType,
+                   NSStringFromSelector(_selector), NSStringFromClass(clazz)];
     }
 
     NSMethodSignature *signature =

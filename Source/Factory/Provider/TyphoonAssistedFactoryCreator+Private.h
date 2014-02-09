@@ -63,6 +63,7 @@ void TyphoonAssistedFactoryCreatorForEachPropertyInProtocol
  * Creates a new factory creator for the given protocol and the given lazy
  * factory definition.
  */
-- (instancetype)initWithProtocol:(Protocol *)protocol factoryDefinitionProvider:(TyphoonAssistedFactoryDefinitionProvider)definitionProvider;
+- (instancetype)initWithProtocol:(Protocol *)protocol
+    factoryDefinitionProvider:(TyphoonAssistedFactoryDefinitionProvider)definitionProvider;
 
 @end

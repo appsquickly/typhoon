@@ -58,19 +58,21 @@ static NSString *const kScoreKey = @"kScoreKey";
             NSDictionary *argumentParameters =
                 [self findMappingsFrom:method.selectedInitializer.methodParameterNames to:method.methodParameterNames except:nil];
             NSDictionary *propertyParameters =
-                [self findMappingsFrom:method.selectedInitializer.methodParameterNames to:[self protocolPropertyNames] except:method.methodParameterNames];
+                [self findMappingsFrom:method.selectedInitializer.methodParameterNames to:[self protocolPropertyNames]
+                    except:method.methodParameterNames];
 
-            [factoryDefinition factoryMethod:method.methodName returns:returnType initialization:^(TyphoonAssistedFactoryMethodInitializer *initializer) {
-                initializer.selector = method.selectedInitializer.methodName;
+            [factoryDefinition factoryMethod:method.methodName returns:returnType
+                initialization:^(TyphoonAssistedFactoryMethodInitializer *initializer) {
+                    initializer.selector = method.selectedInitializer.methodName;
 
-                [propertyParameters enumerateKeysAndObjectsUsingBlock:^(NSString *parameterName, NSString *propertyName, BOOL *stop) {
-                    [initializer injectParameterNamed:parameterName withProperty:sel_getUid([propertyName UTF8String])];
+                    [propertyParameters enumerateKeysAndObjectsUsingBlock:^(NSString *parameterName, NSString *propertyName, BOOL *stop) {
+                        [initializer injectParameterNamed:parameterName withProperty:sel_getUid([propertyName UTF8String])];
+                    }];
+
+                    [argumentParameters enumerateKeysAndObjectsUsingBlock:^(NSString *parameterName, NSString *argumentName, BOOL *stop) {
+                        [initializer injectParameterNamed:parameterName withArgumentNamed:argumentName];
+                    }];
                 }];
-
-                [argumentParameters enumerateKeysAndObjectsUsingBlock:^(NSString *parameterName, NSString *argumentName, BOOL *stop) {
-                    [initializer injectParameterNamed:parameterName withArgumentNamed:argumentName];
-                }];
-            }];
         }
 
         return factoryDefinition;
@@ -118,7 +120,8 @@ static NSString *const kScoreKey = @"kScoreKey";
     return [initializerMethods copy];
 }
 
-- (void)calculatePreferredInitializersFor:(TyphoonAssistedFactoryCreatorImplicitFactoryMethod *)factoryMethod withInitializers:(NSArray *)initializerMethods {
+- (void)calculatePreferredInitializersFor:(TyphoonAssistedFactoryCreatorImplicitFactoryMethod *)factoryMethod
+    withInitializers:(NSArray *)initializerMethods {
     NSSet *factoryMethodParameters = [NSSet setWithArray:factoryMethod.methodParameterNames];
     NSSet *protocolPropertyNames = [NSSet setWithArray:[self protocolPropertyNames]];
 

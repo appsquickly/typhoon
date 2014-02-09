@@ -41,11 +41,13 @@
     return [TyphoonDefinition withClass:clazz key:nil initialization:nil properties:properties];
 }
 
-+ (TyphoonDefinition *)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization properties:(TyphoonDefinitionBlock)properties {
++ (TyphoonDefinition *)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
+    properties:(TyphoonDefinitionBlock)properties {
     return [TyphoonDefinition withClass:clazz key:nil initialization:initialization properties:properties];
 }
 
-+ (TyphoonDefinition *)withClass:(Class)clazz key:(NSString *)key initialization:(TyphoonInitializerBlock)initialization properties:(TyphoonDefinitionBlock)properties {
++ (TyphoonDefinition *)withClass:(Class)clazz key:(NSString *)key initialization:(TyphoonInitializerBlock)initialization
+    properties:(TyphoonDefinitionBlock)properties {
 
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key];
     if (initialization) {
@@ -59,7 +61,8 @@
         properties(weakDefinition);
     }
     if (definition.lazy && definition.scope != TyphoonScopeSingleton) {
-        [NSException raise:NSInvalidArgumentException format:@"The lazy attribute is only applicable to singleton scoped definitions, but is set for definition: %@ ", definition];
+        [NSException raise:NSInvalidArgumentException
+            format:@"The lazy attribute is only applicable to singleton scoped definitions, but is set for definition: %@ ", definition];
     }
 
     return definition;

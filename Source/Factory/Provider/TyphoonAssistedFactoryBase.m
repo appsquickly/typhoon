@@ -37,7 +37,8 @@
 - (void)_setDummySetter:(id)value {
 }
 
-- (BOOL)shouldInjectProperty:(TyphoonAbstractInjectedProperty *)property withType:(TyphoonTypeDescriptor *)type lazyValue:(TyphoonPropertyInjectionLazyValue)lazyValue {
+- (BOOL)shouldInjectProperty:(TyphoonAbstractInjectedProperty *)property withType:(TyphoonTypeDescriptor *)type
+    lazyValue:(TyphoonPropertyInjectionLazyValue)lazyValue {
     [_injections setObject:lazyValue forKey:property.name];
     return NO;
 }

@@ -25,7 +25,8 @@
     return [TyphoonDefinition withClass:factoryClass properties:dependenciesBlock];
 }
 
-+ (TyphoonDefinition *)withProtocol:(Protocol *)protocol dependencies:(TyphoonDefinitionBlock)dependenciesBlock factories:(TyphoonAssistedFactoryDefinitionBlock)definitionBlock {
++ (TyphoonDefinition *)withProtocol:(Protocol *)protocol dependencies:(TyphoonDefinitionBlock)dependenciesBlock
+    factories:(TyphoonAssistedFactoryDefinitionBlock)definitionBlock {
     Class factoryClass = [[TyphoonAssistedFactoryCreator creatorWithProtocol:protocol factories:definitionBlock] factoryClass];
     return [TyphoonDefinition withClass:factoryClass properties:dependenciesBlock];
 }

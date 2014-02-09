@@ -62,7 +62,8 @@
 - (void)assertIsAssembly:(TyphoonAssembly *)assembly {
     if (![assembly isKindOfClass:[TyphoonAssembly class]]) //
     {
-        [NSException raise:NSInvalidArgumentException format:@"Class '%@' is not a sub-class of %@", NSStringFromClass([assembly class]), NSStringFromClass([TyphoonAssembly class])];
+        [NSException raise:NSInvalidArgumentException format:@"Class '%@' is not a sub-class of %@", NSStringFromClass([assembly class]),
+                                                             NSStringFromClass([TyphoonAssembly class])];
     }
 }
 

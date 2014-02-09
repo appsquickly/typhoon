@@ -43,7 +43,8 @@
 }
 
 - (void)createFromProtocol:(Protocol *)protocol inClass:(Class)factoryClass {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"You should not create instances of TyphoonAssistedFactoryMethodCreator directly" userInfo:nil];
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+        reason:@"You should not create instances of TyphoonAssistedFactoryMethodCreator directly" userInfo:nil];
 }
 
 - (struct objc_method_description)methodDescriptionFor:(SEL)methodName inProtocol:(Protocol *)protocol {

@@ -139,7 +139,8 @@ To inject a class object:
 /**
 * Injects the parameter matched by the given name as a collection of the given requiredType.
 */
-- (void)injectParameterNamed:(NSString *)name asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues requiredType:(id)requiredType;
+- (void)injectParameterNamed:(NSString *)name asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues
+    requiredType:(id)requiredType;
 
 
 #pragma mark - injectParameterAtIndex
@@ -151,7 +152,8 @@ To inject a class object:
 /**
 * Injects the parameter at the given index as a collection of the given requiredType.
 */
-- (void)injectParameterAtIndex:(NSUInteger)index asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues requiredType:(id)requiredType;
+- (void)injectParameterAtIndex:(NSUInteger)index asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues
+    requiredType:(id)requiredType;
 
 - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString *)reference;
 

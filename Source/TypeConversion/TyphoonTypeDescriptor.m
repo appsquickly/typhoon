@@ -121,7 +121,8 @@
     else {
         Protocol *protocol = [self protocol];
         if (protocol && [self typeBeingDescribed]) {
-            return [NSString stringWithFormat:@"Type descriptor: %@<%@>", NSStringFromClass([self typeBeingDescribed]), NSStringFromProtocol(protocol)];
+            return [NSString stringWithFormat:@"Type descriptor: %@<%@>", NSStringFromClass([self typeBeingDescribed]),
+                                              NSStringFromProtocol(protocol)];
         }
         else if (protocol) {
             return [NSString stringWithFormat:@"Type descriptor: id<%@>", NSStringFromProtocol(protocol)];
