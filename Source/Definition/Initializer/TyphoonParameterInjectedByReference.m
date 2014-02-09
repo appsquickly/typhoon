@@ -23,11 +23,9 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (instancetype)initWithParameterIndex:(NSUInteger)index reference:(NSString*)reference
-{
+- (instancetype)initWithParameterIndex:(NSUInteger)index reference:(NSString *)reference {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _index = index;
         _reference = reference;
     }
@@ -37,8 +35,7 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation
-{
+- (void)withFactory:(TyphoonComponentFactory *)factory setArgumentOnInvocation:(NSInvocation *)invocation {
     [[[factory stack] peekForKey:_reference] instance]; //Raises circular dependencies exception if already initializing.
     id reference = [factory componentForKey:_reference];
 
@@ -48,8 +45,7 @@
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
-- (id)copyWithZone:(NSZone*)zone
-{
+- (id)copyWithZone:(NSZone *)zone {
     return [[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:_index reference:[_reference copy]];
 }
 

@@ -19,6 +19,6 @@
  * Returns the Obj-C method description of the given selector in the given
  * protocol.
  */
-- (struct objc_method_description)methodDescriptionFor:(SEL)methodName inProtocol:(Protocol*)protocol;
+- (struct objc_method_description)methodDescriptionFor:(SEL)methodName inProtocol:(Protocol *)protocol;
 
 @end

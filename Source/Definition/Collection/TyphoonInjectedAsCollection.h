@@ -18,20 +18,19 @@
 @protocol TyphoonCollectionValue;
 
 
-@protocol TyphoonInjectedAsCollection<NSCopying>
+@protocol TyphoonInjectedAsCollection <NSCopying>
 
-- (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType;
+- (void)addItemWithText:(NSString *)text requiredType:(Class)requiredType;
 
-- (void)addItemWithComponentName:(NSString*)componentName;
+- (void)addItemWithComponentName:(NSString *)componentName;
 
-- (void)addItemWithDefinition:(TyphoonDefinition*)definition;
+- (void)addItemWithDefinition:(TyphoonDefinition *)definition;
 
-- (void)addValue:(id<TyphoonCollectionValue>)value;
+- (void)addValue:(id <TyphoonCollectionValue>)value;
 
 @end
 
-typedef enum
-{
+typedef enum {
     TyphoonCollectionTypeNSArray,
     TyphoonCollectionTypeNSMutableArray,
     TyphoonCollectionTypeNSSet,
@@ -42,11 +41,11 @@ typedef enum
 /**
  * Represents a collection (NSArray, NSSet, c-style array) of items injected by reference, value or type.
  */
-@interface TyphoonInjectedAsCollection : NSObject<TyphoonInjectedAsCollection>
+@interface TyphoonInjectedAsCollection : NSObject <TyphoonInjectedAsCollection>
 
-- (NSArray*)values;
+- (NSArray *)values;
 
-- (id)withFactory:(TyphoonComponentFactory*)factory newCollectionOfType:(TyphoonCollectionType)type;
+- (id)withFactory:(TyphoonComponentFactory *)factory newCollectionOfType:(TyphoonCollectionType)type;
 
 
 @end

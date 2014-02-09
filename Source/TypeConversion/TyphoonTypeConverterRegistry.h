@@ -20,26 +20,25 @@
 /**
 * Registry of type converters, with special treatment for primitives.
 */
-@interface TyphoonTypeConverterRegistry : NSObject
-{
-    TyphoonPrimitiveTypeConverter* _primitiveTypeConverter;
-    NSMutableDictionary* _typeConverters;
+@interface TyphoonTypeConverterRegistry : NSObject {
+    TyphoonPrimitiveTypeConverter *_primitiveTypeConverter;
+    NSMutableDictionary *_typeConverters;
 }
 
 /**
 * Returns the shard/default registry instance used by the container.
 */
-+ (TyphoonTypeConverterRegistry*)shared;
++ (TyphoonTypeConverterRegistry *)shared;
 
 /**
 * Returns the type converter for the given type either a Class object or @protocol(SomeType).
 */
-- (id <TyphoonTypeConverter>)converterFor:(TyphoonTypeDescriptor*)typeDescriptor;
+- (id <TyphoonTypeConverter>)converterFor:(TyphoonTypeDescriptor *)typeDescriptor;
 
 /**
 * Returns the type converter for primitives - BOOLS, ints, floats, etc.
 */
-- (TyphoonPrimitiveTypeConverter*)primitiveTypeConverter;
+- (TyphoonPrimitiveTypeConverter *)primitiveTypeConverter;
 
 /**
  * Adds a converter to the registry. Raises an exception if the a converter for the same type 

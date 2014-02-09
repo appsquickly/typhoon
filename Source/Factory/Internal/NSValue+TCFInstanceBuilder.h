@@ -13,7 +13,7 @@
 
 @interface NSValue (TCFInstanceBuilder)
 
-- (void)typhoon_setAsArgumentForInvocation:(NSInvocation*)invocation atIndex:(NSUInteger)index;
+- (void)typhoon_setAsArgumentForInvocation:(NSInvocation *)invocation atIndex:(NSUInteger)index;
 
 @end
 
@@ -21,6 +21,6 @@
 /* Since NSNumber is subclass of NSValue, this category lives in same file */
 @interface NSNumber (TCFInstanceBuilder)
 
-- (void)typhoon_setAsArgumentForInvocation:(NSInvocation*)invocation atIndex:(NSUInteger)index;
+- (void)typhoon_setAsArgumentForInvocation:(NSInvocation *)invocation atIndex:(NSUInteger)index;
 
 @end

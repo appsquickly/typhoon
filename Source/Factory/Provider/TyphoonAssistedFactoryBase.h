@@ -27,7 +27,7 @@
 @property(nonatomic, strong, setter = setFactory:) id componentFactory;
 
 /** Used internally by the getters of the properties in the subclasses */
-- (id)injectionValueForProperty:(NSString*)property;
+- (id)injectionValueForProperty:(NSString *)property;
 
 /** Used to get the type encoding during the construction of subclasses */
 - (id)_dummyGetter;

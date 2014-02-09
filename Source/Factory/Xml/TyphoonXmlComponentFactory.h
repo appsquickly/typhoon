@@ -18,13 +18,12 @@
 /**
 * @ingroup Factory
 */
-@interface TyphoonXmlComponentFactory : TyphoonComponentFactory
-{
-    NSMutableArray* _resourceNames;
+@interface TyphoonXmlComponentFactory : TyphoonComponentFactory {
+    NSMutableArray *_resourceNames;
 }
 
-- (id)initWithConfigFileName:(NSString*)configFileName;
+- (id)initWithConfigFileName:(NSString *)configFileName;
 
-- (id)initWithConfigFileNames:(NSString*)configFileNames, ...NS_REQUIRES_NIL_TERMINATION;
+- (id)initWithConfigFileNames:(NSString *)configFileNames, ...NS_REQUIRES_NIL_TERMINATION;
 
 @end

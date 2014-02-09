@@ -36,6 +36,6 @@
  * the given factoryClass. The factory class should be allocated, but not yet
  * registered.
  */
-- (void)createFromProtocol:(Protocol*)protocol inClass:(Class)factoryClass;
+- (void)createFromProtocol:(Protocol *)protocol inClass:(Class)factoryClass;
 
 @end

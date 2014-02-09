@@ -27,6 +27,6 @@
  * the mapping between the factory method arguments, factory properties and
  * init method arguments.
  */
-- (instancetype)initWithProtocol:(Protocol*)protocol returns:(Class)returnType;
+- (instancetype)initWithProtocol:(Protocol *)protocol returns:(Class)returnType;
 
 @end

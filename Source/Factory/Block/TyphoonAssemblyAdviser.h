@@ -18,17 +18,17 @@
 
 @interface TyphoonAssemblyAdviser : NSObject
 
-+ (void)undoAdviseMethods:(TyphoonAssembly*)assembly;
++ (void)undoAdviseMethods:(TyphoonAssembly *)assembly;
 
 + (BOOL)assemblyClassIsAdvised:(Class)class;
 
-- (id)initWithAssembly:(TyphoonAssembly*)assembly;
+- (id)initWithAssembly:(TyphoonAssembly *)assembly;
 
 - (void)adviseAssembly;
 
-- (NSSet*)enumerateDefinitionSelectors;
+- (NSSet *)enumerateDefinitionSelectors;
 
-@property(readonly, weak) TyphoonAssembly* assembly;
+@property(readonly, weak) TyphoonAssembly *assembly;
 @property(nonatomic, strong) id <TyphoonMethodSwizzler> swizzler;
 
 @end

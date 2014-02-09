@@ -16,19 +16,16 @@
 #import "TyphoonByReferenceCollectionValue.h"
 #import "TyphoonComponentFactory.h"
 
-@implementation TyphoonInjectedAsCollection
-{
-    NSMutableArray* _values;
+@implementation TyphoonInjectedAsCollection {
+    NSMutableArray *_values;
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)init
-{
+- (id)init {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _values = [[NSMutableArray alloc] init];
     }
     return self;
@@ -38,38 +35,31 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType
-{
+- (void)addItemWithText:(NSString *)text requiredType:(Class)requiredType {
     [_values addObject:[[TyphoonTypeConvertedCollectionValue alloc] initWithTextValue:text requiredType:requiredType]];
 }
 
-- (void)addItemWithComponentName:(NSString*)componentName
-{
+- (void)addItemWithComponentName:(NSString *)componentName {
     [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentKey:componentName]];
 }
 
-- (void)addItemWithDefinition:(TyphoonDefinition*)definition
-{
+- (void)addItemWithDefinition:(TyphoonDefinition *)definition {
     [_values addObject:[[TyphoonByReferenceCollectionValue alloc] initWithComponentKey:definition.key]];
 }
 
-- (NSArray*)values
-{
+- (NSArray *)values {
     return [_values copy];
 }
 
-- (void)addValue:(id <TyphoonCollectionValue>)value
-{
+- (void)addValue:(id <TyphoonCollectionValue>)value {
     [_values addObject:value];
 }
 
 
-- (id)withFactory:(TyphoonComponentFactory*)factory newCollectionOfType:(TyphoonCollectionType)type
-{
+- (id)withFactory:(TyphoonComponentFactory *)factory newCollectionOfType:(TyphoonCollectionType)type {
     id collection = [self newCollectionForType:type];
 
-    for (id <TyphoonCollectionValue> value in self.values)
-    {
+    for (id <TyphoonCollectionValue> value in self.values) {
         [collection addObject:[value resolveWithFactory:factory]];
     }
 
@@ -80,11 +70,9 @@
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
-- (id)copyWithZone:(NSZone*)zone
-{
-    TyphoonInjectedAsCollection* copy = [[TyphoonInjectedAsCollection alloc] init];
-    for (id<TyphoonCollectionValue> value in _values)
-    {
+- (id)copyWithZone:(NSZone *)zone {
+    TyphoonInjectedAsCollection *copy = [[TyphoonInjectedAsCollection alloc] init];
+    for (id <TyphoonCollectionValue> value in _values) {
         [copy addValue:value];
     }
     return copy;
@@ -93,19 +81,15 @@
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (id)newCollectionForType:(TyphoonCollectionType)type
-{
+- (id)newCollectionForType:(TyphoonCollectionType)type {
     id collection;
-    if (type == TyphoonCollectionTypeNSArray || type == TyphoonCollectionTypeNSMutableArray)
-    {
+    if (type == TyphoonCollectionTypeNSArray || type == TyphoonCollectionTypeNSMutableArray) {
         collection = [[NSMutableArray alloc] init];
     }
-    else if (type == TyphoonCollectionTypeNSCountedSet)
-    {
+    else if (type == TyphoonCollectionTypeNSCountedSet) {
         collection = [[NSCountedSet alloc] init];
     }
-    else if (type == TyphoonCollectionTypeNSSet || type == TyphoonCollectionTypeNSMutableSet)
-    {
+    else if (type == TyphoonCollectionTypeNSSet || type == TyphoonCollectionTypeNSMutableSet) {
         collection = [[NSMutableSet alloc] init];
     }
 

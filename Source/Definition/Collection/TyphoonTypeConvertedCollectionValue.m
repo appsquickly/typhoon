@@ -21,11 +21,9 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithTextValue:(NSString*)textValue requiredType:(Class)requiredType
-{
+- (id)initWithTextValue:(NSString *)textValue requiredType:(Class)requiredType {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _textValue = textValue;
         _requiredType = requiredType;
     }
@@ -35,9 +33,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods
 
-- (id)resolveWithFactory:(TyphoonComponentFactory*)factory
-{
-    TyphoonTypeDescriptor* descriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:self.requiredType];
+- (id)resolveWithFactory:(TyphoonComponentFactory *)factory {
+    TyphoonTypeDescriptor *descriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:self.requiredType];
     id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
     id converted = [converter convert:self.textValue];
     return converted;
@@ -46,8 +43,7 @@
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
-- (id)copyWithZone:(NSZone*)zone
-{
+- (id)copyWithZone:(NSZone *)zone {
     return [[TyphoonTypeConvertedCollectionValue alloc] initWithTextValue:_textValue requiredType:_requiredType];
 }
 

@@ -58,8 +58,7 @@ typedef void (^TyphoonTestAssertionsBlock)();
     }];
 @endcode
 */
-+ (void)wait:(NSTimeInterval)seconds secondsForCondition:(TyphoonAsynchConditionBlock)condition
-    andPerformTests:(TyphoonTestAssertionsBlock)assertions;
++ (void)wait:(NSTimeInterval)seconds secondsForCondition:(TyphoonAsynchConditionBlock)condition andPerformTests:(TyphoonTestAssertionsBlock)assertions;
 
 
 @end

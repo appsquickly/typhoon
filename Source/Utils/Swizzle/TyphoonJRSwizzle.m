@@ -30,12 +30,10 @@
 
 @implementation NSObject (TyphoonJRSwizzle)
 
-+ (BOOL)typhoon_swizzleMethod:(SEL)origSel_ withMethod:(SEL)altSel_ error:(NSError**)error_
-{
++ (BOOL)typhoon_swizzleMethod:(SEL)origSel_ withMethod:(SEL)altSel_ error:(NSError **)error_ {
 #if OBJC_API_VERSION >= 2
     Method origMethod = class_getInstanceMethod(self, origSel_);
-    if (!origMethod)
-    {
+    if (!origMethod) {
 #if TARGET_OS_IPHONE
         SetNSError(error_, @"original method %@ not found for class %@", NSStringFromSelector(origSel_), [self class]);
 #else
@@ -45,8 +43,7 @@
     }
 
     Method altMethod = class_getInstanceMethod(self, altSel_);
-    if (!altMethod)
-    {
+    if (!altMethod) {
 #if TARGET_OS_IPHONE
         SetNSError(error_, @"alternate method %@ not found for class %@", NSStringFromSelector(altSel_), [self class]);
 #else
@@ -125,8 +122,7 @@
 #endif
 }
 
-+ (BOOL)typhoon_swizzleClassMethod:(SEL)origSel_ withClassMethod:(SEL)altSel_ error:(NSError**)error_
-{
++ (BOOL)typhoon_swizzleClassMethod:(SEL)origSel_ withClassMethod:(SEL)altSel_ error:(NSError **)error_ {
     return [GetClass((id) self) typhoon_swizzleMethod:origSel_ withMethod:altSel_ error:error_];
 }
 

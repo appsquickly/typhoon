@@ -17,12 +17,12 @@
 
 + (instancetype)instanceRegister;
 
-- (void)stashInstance:(id)instance forKey:(NSString*)key;
+- (void)stashInstance:(id)instance forKey:(NSString *)key;
 
-- (id)unstashInstanceForKey:(NSString*)key;
+- (id)unstashInstanceForKey:(NSString *)key;
 
-- (id)peekInstanceForKey:(NSString*)key;
+- (id)peekInstanceForKey:(NSString *)key;
 
-- (BOOL)hasInstanceForKey:(NSString*)key;
+- (BOOL)hasInstanceForKey:(NSString *)key;
 
 @end

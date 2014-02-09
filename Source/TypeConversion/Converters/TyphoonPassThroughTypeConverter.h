@@ -16,8 +16,7 @@
 /**
 * A 'type converter' for NSString and NSMutableString.
 */
-@interface TyphoonPassThroughTypeConverter : NSObject <TyphoonTypeConverter>
-{
+@interface TyphoonPassThroughTypeConverter : NSObject <TyphoonTypeConverter> {
     BOOL _isMutable;
 }
 

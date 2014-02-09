@@ -26,23 +26,22 @@
 * API for assembling components from their constituent parts. This low-level API could be used as-is, however its intended to use a higher
 * level abstraction such as TyphoonBlockComponentFactory or TyphoonXmlComponentFactory.
 */
-@interface TyphoonComponentFactory : NSObject
-{
-    NSMutableArray* _registry;
+@interface TyphoonComponentFactory : NSObject {
+    NSMutableArray *_registry;
     id <TyphoonComponentsPool> _singletons;
     id <TyphoonComponentsPool> _objectGraphSharedInstances;
     id <TyphoonComponentsPool> _weakSingletons;
 
-    TyphoonCallStack* _stack;
-    NSMutableArray* _factoryPostProcessors;
-    NSMutableArray* _componentPostProcessors;
+    TyphoonCallStack *_stack;
+    NSMutableArray *_factoryPostProcessors;
+    NSMutableArray *_componentPostProcessors;
     BOOL _isLoading;
 }
 
 /**
 * The instantiated singletons.
 */
-@property(nonatomic, strong, readonly) NSArray* singletons;
+@property(nonatomic, strong, readonly) NSArray *singletons;
 
 /**
 * Say if the factory has been loaded.
@@ -52,12 +51,12 @@
 /**
  * The attached factory post processors.
  */
-@property(nonatomic, strong, readonly) NSArray* factoryPostProcessors;
+@property(nonatomic, strong, readonly) NSArray *factoryPostProcessors;
 
 /**
  * The attached component post processors.
  */
-@property(nonatomic, strong, readonly) NSArray* componentPostProcessors;
+@property(nonatomic, strong, readonly) NSArray *componentPostProcessors;
 
 
 /**
@@ -95,7 +94,7 @@
 /**
 * Registers a component into the factory. Components can be declared in any order, the container will work out how to resolve them.
 */
-- (void)register:(TyphoonDefinition*)definition;
+- (void)register:(TyphoonDefinition *)definition;
 
 /**
 * Returns an an instance of the component matching the supplied class or protocol. For example:
@@ -118,16 +117,16 @@
 *
 * @see componentForType
 */
-- (NSArray*)allComponentsForType:(id)classOrProtocol;
+- (NSArray *)allComponentsForType:(id)classOrProtocol;
 
 /**
 * Returns the component matching the given key. For XML-style, this is the key specified as the 'id' attribute. For the block-style, this
 * is the name of the method on the TyphoonAssembly interface, although, for block-style you'd typically use the assembly interface itself
 * for component resolution.
 */
-- (id)componentForKey:(NSString*)key;
+- (id)componentForKey:(NSString *)key;
 
-- (NSArray*)registry;
+- (NSArray *)registry;
 
 /**
  Attach a TyphoonComponentFactoryPostProcessor to this component factory.

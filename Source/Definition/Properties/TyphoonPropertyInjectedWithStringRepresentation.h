@@ -23,7 +23,7 @@
 */
 @interface TyphoonPropertyInjectedWithStringRepresentation : TyphoonAbstractInjectedProperty <TyphoonInjectedWithStringRepresentation>
 
-- (id)initWithName:(NSString*)name value:(NSString*)value;
+- (id)initWithName:(NSString *)name value:(NSString *)value;
 
 
 @end

@@ -22,11 +22,11 @@
 
 - (BOOL)isComponent;
 
-- (TyphoonDefinition*)asComponentDefinition;
+- (TyphoonDefinition *)asComponentDefinition;
 
-- (TyphoonAbstractInjectedProperty*)asInjectedProperty;
+- (TyphoonAbstractInjectedProperty *)asInjectedProperty;
 
-- (TyphoonInitializer*)asInitializer;
+- (TyphoonInitializer *)asInitializer;
 
 
 @end

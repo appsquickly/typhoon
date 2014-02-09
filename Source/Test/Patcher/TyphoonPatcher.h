@@ -25,13 +25,12 @@ typedef id (^TyphoonPatchObjectCreationBlock)();
 * difficult put the system in the required state. Patcher allows taking a fully assembled system, changing just the part required for the
 * given test scenario.
 */
-@interface TyphoonPatcher : NSObject <TyphoonComponentFactoryPostProcessor>
-{
-    NSMutableDictionary* _patches;
+@interface TyphoonPatcher : NSObject <TyphoonComponentFactoryPostProcessor> {
+    NSMutableDictionary *_patches;
 }
 
-- (void)patchDefinitionWithKey:(NSString*)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock;
+- (void)patchDefinitionWithKey:(NSString *)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock;
 
-- (void)patchDefinition:(TyphoonDefinition*)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock;
+- (void)patchDefinition:(TyphoonDefinition *)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock;
 
 @end

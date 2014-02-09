@@ -17,10 +17,10 @@
 
 @interface TyphoonCollaboratingAssemblyPropertyEnumerator : NSObject
 
-- (id)initWithAssembly:(TyphoonAssembly*)assembly;
+- (id)initWithAssembly:(TyphoonAssembly *)assembly;
 
-- (NSSet*)collaboratingAssemblyProperties;
+- (NSSet *)collaboratingAssemblyProperties;
 
-@property(readonly) TyphoonAssembly* assembly;
+@property(readonly) TyphoonAssembly *assembly;
 
 @end

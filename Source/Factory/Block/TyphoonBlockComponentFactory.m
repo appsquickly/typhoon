@@ -25,39 +25,32 @@
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 
-+ (id)factoryWithAssembly:(TyphoonAssembly*)assembly
-{
++ (id)factoryWithAssembly:(TyphoonAssembly *)assembly {
     return [[self alloc] initWithAssemblies:@[assembly]];
 }
 
-+ (id)factoryWithAssemblies:(NSArray*)assemblies
-{
++ (id)factoryWithAssemblies:(NSArray *)assemblies {
     return [[self alloc] initWithAssemblies:assemblies];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (instancetype)initWithAssembly:(TyphoonAssembly*)assembly
-{
+- (instancetype)initWithAssembly:(TyphoonAssembly *)assembly {
     return [self initWithAssemblies:@[assembly]];
 }
 
-- (instancetype)initWithAssemblies:(NSArray*)assemblies
-{
+- (instancetype)initWithAssemblies:(NSArray *)assemblies {
     self = [super init];
-    if (self)
-    {
-        for (TyphoonAssembly* assembly in assemblies)
-        {
+    if (self) {
+        for (TyphoonAssembly *assembly in assemblies) {
             [self buildAssembly:assembly];
         }
     }
     return self;
 }
 
-- (void)buildAssembly:(TyphoonAssembly*)assembly
-{
+- (void)buildAssembly:(TyphoonAssembly *)assembly {
     LogTrace(@"Building assembly: %@", NSStringFromClass([assembly class]));
     [self assertIsAssembly:assembly];
 
@@ -66,20 +59,16 @@
     [self registerAllDefinitions:assembly];
 }
 
-- (void)assertIsAssembly:(TyphoonAssembly*)assembly
-{
+- (void)assertIsAssembly:(TyphoonAssembly *)assembly {
     if (![assembly isKindOfClass:[TyphoonAssembly class]]) //
     {
-        [NSException raise:NSInvalidArgumentException format:@"Class '%@' is not a sub-class of %@", NSStringFromClass([assembly class]),
-                                                             NSStringFromClass([TyphoonAssembly class])];
+        [NSException raise:NSInvalidArgumentException format:@"Class '%@' is not a sub-class of %@", NSStringFromClass([assembly class]), NSStringFromClass([TyphoonAssembly class])];
     }
 }
 
-- (void)registerAllDefinitions:(TyphoonAssembly*)assembly
-{
-    NSArray* definitions = [assembly definitions];
-    for (TyphoonDefinition* definition in definitions)
-    {
+- (void)registerAllDefinitions:(TyphoonAssembly *)assembly {
+    NSArray *definitions = [assembly definitions];
+    for (TyphoonDefinition *definition in definitions) {
         [self register:definition];
     }
 }
@@ -89,9 +78,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (void)forwardInvocation:(NSInvocation*)invocation
-{
-    NSString* componentKey = NSStringFromSelector([invocation selector]);
+- (void)forwardInvocation:(NSInvocation *)invocation {
+    NSString *componentKey = NSStringFromSelector([invocation selector]);
     LogTrace(@"Component key: %@", componentKey);
 
     [invocation setSelector:@selector(componentForKey:)];
@@ -99,14 +87,11 @@
     [invocation invoke];
 }
 
-- (NSMethodSignature*)methodSignatureForSelector:(SEL)aSelector
-{
-    if ([self respondsToSelector:aSelector])
-    {
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
+    if ([self respondsToSelector:aSelector]) {
         return [[self class] instanceMethodSignatureForSelector:aSelector];
     }
-    else
-    {
+    else {
         return [[self class] instanceMethodSignatureForSelector:@selector(componentForKey:)];
     }
 }

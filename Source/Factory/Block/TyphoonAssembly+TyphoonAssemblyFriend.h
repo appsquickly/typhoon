@@ -19,10 +19,10 @@
 
 - (void)prepareForUse;
 
-- (NSArray*)definitions;
+- (NSArray *)definitions;
 
-- (TyphoonDefinition*)definitionForKey:(NSString*)key;
+- (TyphoonDefinition *)definitionForKey:(NSString *)key;
 
-@property(readonly) NSSet* definitionSelectors;
+@property(readonly) NSSet *definitionSelectors;
 
 @end

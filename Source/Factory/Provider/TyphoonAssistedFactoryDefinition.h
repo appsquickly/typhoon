@@ -18,13 +18,13 @@
 
 
 /** Used to configure the TyphoonAssistedFactoryDefinition passed as argument */
-typedef void(^TyphoonAssistedFactoryDefinitionBlock)(TyphoonAssistedFactoryDefinition* definition);
+typedef void(^TyphoonAssistedFactoryDefinitionBlock)(TyphoonAssistedFactoryDefinition *definition);
 
 /** Used to enumerate over factory method selectors and their associated body blocks */
 typedef void(^TyphoonAssistedFactoryMethodsEnumerationBlock)(id <TyphoonAssistedFactoryMethod> factoryMethod);
 
 /** Used to configure a TyphoonAssistedFactoryMethod */
-typedef void(^TyphoonAssistedFactoryMethodInitializerBlock)(TyphoonAssistedFactoryMethodInitializer* initializer);
+typedef void(^TyphoonAssistedFactoryMethodInitializerBlock)(TyphoonAssistedFactoryMethodInitializer *initializer);
 
 @interface TyphoonAssistedFactoryDefinition : NSObject
 

@@ -16,6 +16,6 @@
 
 @interface TyphoonReferenceDefinition : TyphoonDefinition
 
-+ (instancetype)definitionReferringToComponent:(NSString*)key;
++ (instancetype)definitionReferringToComponent:(NSString *)key;
 
 @end

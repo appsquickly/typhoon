@@ -31,11 +31,9 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithName:(NSString*)name value:(NSString*)value
-{
+- (id)initWithName:(NSString *)name value:(NSString *)value {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _name = name;
         _textValue = value;
     }
@@ -45,18 +43,15 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (id)withFactory:(TyphoonComponentFactory*)factory computeValueToInjectOnInstance:(id)instance
-{
-    TyphoonTypeDescriptor* type = [instance typeForPropertyWithName:self.name];
+- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance {
+    TyphoonTypeDescriptor *type = [instance typeForPropertyWithName:self.name];
     id value = nil;
 
-    if (type.isPrimitive)
-    {
-        TyphoonPrimitiveTypeConverter* converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
+    if (type.isPrimitive) {
+        TyphoonPrimitiveTypeConverter *converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
         value = [converter valueFromText:self.textValue withType:type];
     }
-    else
-    {
+    else {
         id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:type];
         value = [converter convert:self.textValue];
     }

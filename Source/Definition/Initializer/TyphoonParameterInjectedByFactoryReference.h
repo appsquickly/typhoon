@@ -19,9 +19,9 @@
 */
 @interface TyphoonParameterInjectedByFactoryReference : TyphoonAbstractInjectedParameter
 
-@property(nonatomic, strong, readonly) NSString* factoryReference;
-@property(nonatomic, strong, readonly) NSString* keyPath;
+@property(nonatomic, strong, readonly) NSString *factoryReference;
+@property(nonatomic, strong, readonly) NSString *keyPath;
 
-- (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex factoryReference:(NSString*)reference keyPath:(NSString*)keyPath;
+- (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex factoryReference:(NSString *)reference keyPath:(NSString *)keyPath;
 
 @end

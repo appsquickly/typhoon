@@ -21,11 +21,9 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)init
-{
+- (id)init {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _patches = [[NSMutableDictionary alloc] init];
     }
     return self;
@@ -34,28 +32,23 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (void)patchDefinitionWithKey:(NSString*)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock
-{
+- (void)patchDefinitionWithKey:(NSString *)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock {
     [_patches setObject:objectCreationBlock forKey:key];
 }
 
-- (void)patchDefinition:(TyphoonDefinition*)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock
-{
+- (void)patchDefinition:(TyphoonDefinition *)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock {
     [self patchDefinitionWithKey:definition.key withObject:objectCreationBlock];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory*)factory
-{
-    for (TyphoonDefinition* definition in [factory registry])
-    {
+- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory {
+    for (TyphoonDefinition *definition in [factory registry]) {
         id patchObject = [_patches objectForKey:definition.key];
-        if (patchObject)
-        {
-            NSString* patcherKey = [NSString stringWithFormat:@"%@%@", definition.key, @"$$$patcher"];
-            TyphoonDefinition* patchFactory = [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:patcherKey];
+        if (patchObject) {
+            NSString *patcherKey = [NSString stringWithFormat:@"%@%@", definition.key, @"$$$patcher"];
+            TyphoonDefinition *patchFactory = [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:patcherKey];
             patchFactory.initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithCreationBlock:)];
             [patchFactory.initializer injectWithObjectInstance:patchObject];
             [patchFactory setScope:definition.scope];

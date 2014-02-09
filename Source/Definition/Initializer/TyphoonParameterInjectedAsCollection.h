@@ -16,7 +16,7 @@
 
 /**
 */
-@interface TyphoonParameterInjectedAsCollection : TyphoonAbstractInjectedParameter<TyphoonInjectedAsCollection>
+@interface TyphoonParameterInjectedAsCollection : TyphoonAbstractInjectedParameter <TyphoonInjectedAsCollection>
 
 @property(nonatomic, readonly) TyphoonCollectionType collectionType;
 
@@ -25,10 +25,10 @@
 
 #pragma mark - <TyphoonInjectedAsCollection> trait
 
-- (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType;
+- (void)addItemWithText:(NSString *)text requiredType:(Class)requiredType;
 
-- (void)addItemWithComponentName:(NSString*)componentName;
+- (void)addItemWithComponentName:(NSString *)componentName;
 
-- (void)addItemWithDefinition:(TyphoonDefinition*)definition;
+- (void)addItemWithDefinition:(TyphoonDefinition *)definition;
 
 @end

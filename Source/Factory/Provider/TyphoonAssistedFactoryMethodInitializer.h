@@ -34,7 +34,7 @@
  * The parameters definitions, sorted by parameter index.
  * Users should not use this property directly.
  */
-@property(nonatomic, copy, readonly) NSArray* parameters;
+@property(nonatomic, copy, readonly) NSArray *parameters;
 
 /**
  * Creates a description for the given factoryMethod that will return an
@@ -52,7 +52,7 @@
 /**
  * Inject the given property as given named parameter.
  */
-- (void)injectParameterNamed:(NSString*)parameterName withProperty:(SEL)property;
+- (void)injectParameterNamed:(NSString *)parameterName withProperty:(SEL)property;
 
 /**
  * Inject the given property as given positional parameter.
@@ -67,7 +67,7 @@
 /**
  * Inject the positional factory method argument as the given named parameter.
  */
-- (void)injectParameterNamed:(NSString*)parameterName withArgumentAtIndex:(NSUInteger)argumentIndex;
+- (void)injectParameterNamed:(NSString *)parameterName withArgumentAtIndex:(NSUInteger)argumentIndex;
 
 /**
  * Inject the positional factory method argument as the given positional parameter.
@@ -77,17 +77,17 @@
 /**
  * Inject the named factory method argument as next parameter.
  */
-- (void)injectWithArgumentNamed:(NSString*)argumentName;
+- (void)injectWithArgumentNamed:(NSString *)argumentName;
 
 /**
  * Inject the named factory method argument as the given named parameter.
  */
-- (void)injectParameterNamed:(NSString*)parameterName withArgumentNamed:(NSString*)argumentName;
+- (void)injectParameterNamed:(NSString *)parameterName withArgumentNamed:(NSString *)argumentName;
 
 /**
  * Inject the named factory method argument as the given positional parameter.
  */
-- (void)injectParameterAtIndex:(NSUInteger)parameterIndex withArgumentNamed:(NSString*)argumentName;
+- (void)injectParameterAtIndex:(NSUInteger)parameterIndex withArgumentNamed:(NSString *)argumentName;
 
 #pragma mark - Query methods
 

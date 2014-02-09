@@ -20,14 +20,13 @@
 /**
 * Provides a contract for typhoon injected properties (name, injectionType) as well as defines the notion of equality, based on name.
 */
-@interface TyphoonAbstractInjectedProperty : NSObject<NSCopying>
-{
-    NSString* _name;
+@interface TyphoonAbstractInjectedProperty : NSObject <NSCopying> {
+    NSString *_name;
 }
 
-@property(nonatomic, strong) NSString* name;
+@property(nonatomic, strong) NSString *name;
 
-- (id)withFactory:(TyphoonComponentFactory*)factory computeValueToInjectOnInstance:(id)instance;
+- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance;
 
 
 @end

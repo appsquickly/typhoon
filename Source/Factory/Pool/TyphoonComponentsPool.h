@@ -20,7 +20,7 @@
 
 - (id)objectForKey:(id <NSCopying>)aKey;
 
-- (NSArray*)allValues;
+- (NSArray *)allValues;
 
 - (void)removeAllObjects;
 

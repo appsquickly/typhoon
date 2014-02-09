@@ -24,11 +24,9 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithName:(NSString*)name
-{
+- (id)initWithName:(NSString *)name {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _name = name;
     }
     return self;
@@ -37,18 +35,22 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (id)withFactory:(TyphoonComponentFactory*)factory computeValueToInjectOnInstance:(id)instance
-{
-    TyphoonTypeDescriptor* type = [instance typeForPropertyWithName:self.name];
-    TyphoonDefinition* definition = [factory definitionForType:[type classOrProtocol]];
+- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance {
+    TyphoonTypeDescriptor *type = [instance typeForPropertyWithName:self.name];
+    TyphoonDefinition *definition = [factory definitionForType:[type classOrProtocol]];
 
     [factory evaluateCircularDependency:definition.key propertyName:self.name instance:instance];
-    if (![factory propertyIsCircular:self onInstance:instance])
-    {
+    if (![factory propertyIsCircular:self onInstance:instance]) {
         return [factory componentForKey:definition.key];
     }
     return nil;
 }
 
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
+- (id)copyWithZone:(NSZone *)zone {
+    return [[TyphoonPropertyInjectedByType alloc] initWithName:[self.name copy]];
+}
 
 @end

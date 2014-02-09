@@ -15,6 +15,6 @@
 
 @interface TyphoonURLUtils : NSObject
 
-+ (NSURL*)URL:(NSURL*)url appendedWithQueryParameters:(NSDictionary*)parameters;
++ (NSURL *)URL:(NSURL *)url appendedWithQueryParameters:(NSDictionary *)parameters;
 
 @end

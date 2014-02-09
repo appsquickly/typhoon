@@ -18,8 +18,8 @@
 
 - (void)removeDeallocNotification;
 
-- (void)setDeallocNotificationWithKey:(const char*)key andBlock:(dispatch_block_t)block;
+- (void)setDeallocNotificationWithKey:(const char *)key andBlock:(dispatch_block_t)block;
 
-- (void)removeDeallocNotificationForKey:(const char*)key;
+- (void)removeDeallocNotificationForKey:(const char *)key;
 
 @end

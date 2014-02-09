@@ -12,7 +12,7 @@
 #import "TyphoonAssemblySelectorAdviser.h"
 
 
-static NSString* const TYPHOON_BEFORE_ADVICE_PREFIX = @"__typhoonBeforeAdvice__";
+static NSString *const TYPHOON_BEFORE_ADVICE_PREFIX = @"__typhoonBeforeAdvice__";
 
 
 /**
@@ -22,41 +22,34 @@ static NSString* const TYPHOON_BEFORE_ADVICE_PREFIX = @"__typhoonBeforeAdvice__"
 */
 @implementation TyphoonAssemblySelectorAdviser
 
-+ (SEL)advisedSELForKey:(NSString*)key
-{
-    if ([key hasPrefix:TYPHOON_BEFORE_ADVICE_PREFIX])
-    {
++ (SEL)advisedSELForKey:(NSString *)key {
+    if ([key hasPrefix:TYPHOON_BEFORE_ADVICE_PREFIX]) {
         [NSException raise:NSInternalInconsistencyException format:@"Don't pass an advised key into a method expecting an unadvised key."];
     }
 
     return NSSelectorFromString([TYPHOON_BEFORE_ADVICE_PREFIX stringByAppendingString:key]);
 }
 
-+ (NSString*)keyForAdvisedSEL:(SEL)advisedSEL
-{
-    NSString* name = NSStringFromSelector(advisedSEL);
-    NSString* key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_PREFIX withString:@""];
++ (NSString *)keyForAdvisedSEL:(SEL)advisedSEL {
+    NSString *name = NSStringFromSelector(advisedSEL);
+    NSString *key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_PREFIX withString:@""];
     return key;
 }
 
-+ (NSString*)keyForSEL:(SEL)sel
-{
++ (NSString *)keyForSEL:(SEL)sel {
     return NSStringFromSelector(sel);
 }
 
-+ (BOOL)selectorIsAdvised:(SEL)sel
-{
-    NSString* name = NSStringFromSelector(sel);
++ (BOOL)selectorIsAdvised:(SEL)sel {
+    NSString *name = NSStringFromSelector(sel);
     return [name hasPrefix:TYPHOON_BEFORE_ADVICE_PREFIX];
 }
 
-+ (SEL)advisedSELForSEL:(SEL)sel
-{
++ (SEL)advisedSELForSEL:(SEL)sel {
     return [self advisedSELForKey:[self keyForSEL:sel]];
 }
 
-+ (NSString*)advisedNameForName:(NSString*)string
-{
++ (NSString *)advisedNameForName:(NSString *)string {
     return NSStringFromSelector([self advisedSELForKey:string]);
 }
 @end

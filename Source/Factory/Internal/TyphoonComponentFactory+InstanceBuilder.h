@@ -24,23 +24,22 @@
 */
 @interface TyphoonComponentFactory (InstanceBuilder)
 
-- (TyphoonCallStack*)stack;
+- (TyphoonCallStack *)stack;
 
-- (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition;
+- (id)buildInstanceWithDefinition:(TyphoonDefinition *)definition;
 
-- (id)buildSharedInstanceForDefinition:(TyphoonDefinition*)definition;
+- (id)buildSharedInstanceForDefinition:(TyphoonDefinition *)definition;
 
-- (void)doPropertyInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition*)definition;
+- (void)doPropertyInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition;
 
-- (NSArray*)allDefinitionsForType:(id)classOrProtocol;
+- (NSArray *)allDefinitionsForType:(id)classOrProtocol;
 
-- (TyphoonDefinition*)definitionForType:(id)classOrProtocol;
+- (TyphoonDefinition *)definitionForType:(id)classOrProtocol;
 
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance;
 
-- (void)evaluateCircularDependency:(NSString*)componentKey propertyName:(NSString*)propertyName
-    instance:(id <TyphoonIntrospectiveNSObject>)instance;
+- (void)evaluateCircularDependency:(NSString *)componentKey propertyName:(NSString *)propertyName instance:(id <TyphoonIntrospectiveNSObject>)instance;
 
-- (BOOL)propertyIsCircular:(TyphoonAbstractInjectedProperty*)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance;
+- (BOOL)propertyIsCircular:(TyphoonAbstractInjectedProperty *)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance;
 
 @end

@@ -16,11 +16,11 @@
 
 @interface TyphoonSelector : NSObject
 
-+ (TyphoonSelector*)selectorWithName:(NSString*)string;
++ (TyphoonSelector *)selectorWithName:(NSString *)string;
 
-+ (TyphoonSelector*)selectorWithSEL:(SEL)pSelector;
++ (TyphoonSelector *)selectorWithSEL:(SEL)pSelector;
 
-- (id)initWithName:(NSString*)string;
+- (id)initWithName:(NSString *)string;
 
 - (id)initWithSEL:(SEL)pSelector;
 

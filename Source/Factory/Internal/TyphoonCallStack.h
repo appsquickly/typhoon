@@ -17,13 +17,13 @@
 
 + (instancetype)stack;
 
-- (void)push:(TyphoonStackElement*)stackItem;
+- (void)push:(TyphoonStackElement *)stackItem;
 
-- (TyphoonStackElement*)pop;
+- (TyphoonStackElement *)pop;
 
-- (TyphoonStackElement*)peekForKey:(NSString*)key;
+- (TyphoonStackElement *)peekForKey:(NSString *)key;
 
-- (BOOL)isResolvingKey:(NSString*)key;
+- (BOOL)isResolvingKey:(NSString *)key;
 
 - (BOOL)isEmpty;
 

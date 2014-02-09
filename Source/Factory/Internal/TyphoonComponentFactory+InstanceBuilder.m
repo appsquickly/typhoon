@@ -37,14 +37,12 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
-- (TyphoonCallStack*)stack
-{
+- (TyphoonCallStack *)stack {
     return _stack;
 }
 
-- (id)buildInstanceWithDefinition:(TyphoonDefinition*)definition
-{
-    TyphoonStackElement* stackElement = [TyphoonStackElement elementWithKey:definition.key];
+- (id)buildInstanceWithDefinition:(TyphoonDefinition *)definition {
+    TyphoonStackElement *stackElement = [TyphoonStackElement elementWithKey:definition.key];
     [_stack push:stackElement];
 
     id instance = [self initializeInstanceWithDefinition:definition];
@@ -59,65 +57,52 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     return instance;
 }
 
-- (id)initializeInstanceWithDefinition:(TyphoonDefinition*)definition
-{
+- (id)initializeInstanceWithDefinition:(TyphoonDefinition *)definition {
     id initTarget = nil;
 
-    if (definition.factory)
-    {
+    if (definition.factory) {
         initTarget = [self componentForKey:definition.factory.key];
     }
-    else if (definition.initializer.isClassMethod)
-    {
+    else if (definition.initializer.isClassMethod) {
         initTarget = definition.type;
     }
 
     id instance = nil;
 
-    NSInvocation* invocation = [definition.initializer newInvocationInFactory:self];
+    NSInvocation *invocation = [definition.initializer newInvocationInFactory:self];
 
-    if (definition.factory || [definition.initializer isClassMethod])
-    {
+    if (definition.factory || [definition.initializer isClassMethod]) {
         instance = [invocation typhoon_resultOfInvokingOnInstance:initTarget];
     }
-    else
-    {
+    else {
         instance = [invocation typhoon_resultOfInvokingOnAllocationForClass:definition.type];
     }
 
     return instance;
 }
 
-- (id)postProcessInstance:(id)instance
-{
-    if (![instance conformsToProtocol:@protocol(TyphoonComponentPostProcessor)])
-    {
-        for (id <TyphoonComponentPostProcessor> postProcessor in _componentPostProcessors)
-        {
+- (id)postProcessInstance:(id)instance {
+    if (![instance conformsToProtocol:@protocol(TyphoonComponentPostProcessor)]) {
+        for (id <TyphoonComponentPostProcessor> postProcessor in _componentPostProcessors) {
             instance = [postProcessor postProcessComponent:instance];
         }
     }
     return instance;
 }
 
-- (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance;
-{
-    if ([instance conformsToProtocol:@protocol(TyphoonComponentFactoryAware)])
-    {
+- (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance; {
+    if ([instance conformsToProtocol:@protocol(TyphoonComponentFactoryAware)]) {
         [self injectAssemblyOnInstance:instance];
     }
 }
 
-- (void)injectAssemblyOnInstance:(id <TyphoonComponentFactoryAware>)instance
-{
+- (void)injectAssemblyOnInstance:(id <TyphoonComponentFactoryAware>)instance {
     [instance setFactory:self];
 }
 
-- (id)buildSharedInstanceForDefinition:(TyphoonDefinition*)definition
-{
+- (id)buildSharedInstanceForDefinition:(TyphoonDefinition *)definition {
     id instance = [_stack peekForKey:definition.key].instance;
-    if (instance)
-    {
+    if (instance) {
         return instance;
     }
     return [self buildInstanceWithDefinition:definition];
@@ -126,12 +111,10 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 /* ====================================================================================================================================== */
 #pragma mark - Property Injection
 
-- (void)doPropertyInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition*)definition
-{
+- (void)doPropertyInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition {
     [self doBeforePropertyInjectionOn:instance withDefinition:definition];
 
-    for (TyphoonAbstractInjectedProperty* property in [definition injectedProperties])
-    {
+    for (TyphoonAbstractInjectedProperty *property in [definition injectedProperties]) {
         [self doPropertyInjection:instance property:property];
     }
 
@@ -141,84 +124,66 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     [self doAfterPropertyInjectionOn:instance withDefinition:definition];
 }
 
-- (void)doBeforePropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
-{
-    if ([instance respondsToSelector:@selector(beforePropertiesSet)])
-    {
+- (void)doBeforePropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition *)definition {
+    if ([instance respondsToSelector:@selector(beforePropertiesSet)]) {
         [(id <TyphoonPropertyInjectionDelegate>) instance beforePropertiesSet];
     }
 
-    if ([instance respondsToSelector:definition.beforePropertyInjection])
-    {
+    if ([instance respondsToSelector:definition.beforePropertyInjection]) {
         objc_msgSend(instance, definition.beforePropertyInjection);
     }
 }
 
-- (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(TyphoonAbstractInjectedProperty*)property
-{
-    TyphoonTypeDescriptor* propertyType = [instance typeForPropertyWithName:property.name];
+- (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(TyphoonAbstractInjectedProperty *)property {
+    TyphoonTypeDescriptor *propertyType = [instance typeForPropertyWithName:property.name];
     AssertTypeDescriptionForPropertyOnInstance(propertyType, property, instance);
 
-    TyphoonPropertyInjectionLazyValue lazyValue = ^id
-    {
+    TyphoonPropertyInjectionLazyValue lazyValue = ^id {
         return [property withFactory:self computeValueToInjectOnInstance:instance];
     };
 
     if (![instance respondsToSelector:@selector(shouldInjectProperty:withType:lazyValue:)] ||
-        [(id <TyphoonPropertyInjectionInternalDelegate>) instance shouldInjectProperty:property withType:propertyType lazyValue:lazyValue])
-    {
+        [(id <TyphoonPropertyInjectionInternalDelegate>) instance shouldInjectProperty:property withType:propertyType lazyValue:lazyValue]) {
         id valueToInject = lazyValue();
 
-        if (valueToInject)
-        {
-            [(NSObject*) instance injectValue:valueToInject forPropertyName:property.name withType:propertyType];
+        if (valueToInject) {
+            [(NSObject *) instance injectValue:valueToInject forPropertyName:property.name withType:propertyType];
         }
     }
 }
 
 
-- (void)evaluateCircularDependency:(NSString*)componentKey propertyName:(NSString*)propertyName
-    instance:(id <TyphoonIntrospectiveNSObject>)instance;
-{
-    if ([_stack isResolvingKey:componentKey])
-    {
-        NSDictionary* circularDependencies = [instance circularDependentProperties];
+- (void)evaluateCircularDependency:(NSString *)componentKey propertyName:(NSString *)propertyName instance:(id <TyphoonIntrospectiveNSObject>)instance; {
+    if ([_stack isResolvingKey:componentKey]) {
+        NSDictionary *circularDependencies = [instance circularDependentProperties];
         [circularDependencies setValue:componentKey forKey:propertyName];
         LogTrace(@"Circular dependency detected: %@", [instance circularDependentProperties]);
     }
 }
 
-- (BOOL)propertyIsCircular:(TyphoonAbstractInjectedProperty*)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance;
-{
+- (BOOL)propertyIsCircular:(TyphoonAbstractInjectedProperty *)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance; {
     return [[instance circularDependentProperties] objectForKey:property.name] != nil;
 }
 
-- (void)injectCircularDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance
-{
-    NSMutableDictionary* circularDependentProperties = [instance circularDependentProperties];
-    for (NSString* propertyName in [circularDependentProperties allKeys])
-    {
-        id propertyValue = [(NSObject*) instance valueForKey:propertyName];
-        if (!propertyValue)
-        {
-            NSString* componentKey = [circularDependentProperties objectForKey:propertyName];
-            [[_stack peekForKey:componentKey] addInstanceCompleteBlock:^(id reference)
-            {
-                [(NSObject*) instance setValue:reference forKey:propertyName];
+- (void)injectCircularDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance {
+    NSMutableDictionary *circularDependentProperties = [instance circularDependentProperties];
+    for (NSString *propertyName in [circularDependentProperties allKeys]) {
+        id propertyValue = [(NSObject *) instance valueForKey:propertyName];
+        if (!propertyValue) {
+            NSString *componentKey = [circularDependentProperties objectForKey:propertyName];
+            [[_stack peekForKey:componentKey] addInstanceCompleteBlock:^(id reference) {
+                [(NSObject *) instance setValue:reference forKey:propertyName];
             }];
         }
     }
 }
 
-- (void)doAfterPropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition*)definition
-{
-    if ([instance respondsToSelector:@selector(afterPropertiesSet)])
-    {
+- (void)doAfterPropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition *)definition {
+    if ([instance respondsToSelector:@selector(afterPropertiesSet)]) {
         [(id <TyphoonPropertyInjectionDelegate>) instance afterPropertiesSet];
     }
 
-    if ([instance respondsToSelector:definition.afterPropertyInjection])
-    {
+    if ([instance respondsToSelector:definition.afterPropertyInjection]) {
         objc_msgSend(instance, definition.afterPropertyInjection);
     }
 }
@@ -228,47 +193,36 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (TyphoonDefinition*)definitionForType:(id)classOrProtocol
-{
-    NSArray* candidates = [self allDefinitionsForType:classOrProtocol];
-    if ([candidates count] == 0)
-    {
+- (TyphoonDefinition *)definitionForType:(id)classOrProtocol {
+    NSArray *candidates = [self allDefinitionsForType:classOrProtocol];
+    if ([candidates count] == 0) {
         SEL autoInjectedProperties = sel_registerName("typhoonAutoInjectedProperties");
-        if (class_isMetaClass(object_getClass(classOrProtocol)) && [classOrProtocol respondsToSelector:autoInjectedProperties])
-        {
+        if (class_isMetaClass(object_getClass(classOrProtocol)) && [classOrProtocol respondsToSelector:autoInjectedProperties]) {
             LogTrace(@"Class %@ wants auto-wiring. . . registering.", NSStringFromClass(classOrProtocol));
             [self register:[TyphoonDefinition withClass:classOrProtocol]];
             return [self definitionForType:classOrProtocol];
         }
-        [NSException raise:NSInvalidArgumentException format:@"No components defined which satisify type: '%@'",
-                                                             TyphoonTypeStringFor(classOrProtocol)];
+        [NSException raise:NSInvalidArgumentException format:@"No components defined which satisify type: '%@'", TyphoonTypeStringFor(classOrProtocol)];
     }
-    if ([candidates count] > 1)
-    {
+    if ([candidates count] > 1) {
         [NSException raise:NSInvalidArgumentException format:@"More than one component is defined satisfying type: '%@'", classOrProtocol];
     }
     return [candidates objectAtIndex:0];
 }
 
 
-- (NSArray*)allDefinitionsForType:(id)classOrProtocol
-{
-    NSMutableArray* results = [[NSMutableArray alloc] init];
+- (NSArray *)allDefinitionsForType:(id)classOrProtocol {
+    NSMutableArray *results = [[NSMutableArray alloc] init];
     BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
 
-    for (TyphoonDefinition* definition in _registry)
-    {
-        if (isClass)
-        {
-            if (definition.type == classOrProtocol || [definition.type isSubclassOfClass:classOrProtocol])
-            {
+    for (TyphoonDefinition *definition in _registry) {
+        if (isClass) {
+            if (definition.type == classOrProtocol || [definition.type isSubclassOfClass:classOrProtocol]) {
                 [results addObject:definition];
             }
         }
-        else
-        {
-            if ([definition.type conformsToProtocol:classOrProtocol])
-            {
+        else {
+            if ([definition.type conformsToProtocol:classOrProtocol]) {
                 [results addObject:definition];
             }
         }

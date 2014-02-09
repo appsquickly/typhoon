@@ -30,7 +30,6 @@
  * Creates a new closure from the description of the initializer, for the
  * factory method described by methodSignature.
  */
-- (instancetype)initWithInitializer:(TyphoonAssistedFactoryMethodInitializer*)initializer
-    methodSignature:(NSMethodSignature*)methodSignature;
+- (instancetype)initWithInitializer:(TyphoonAssistedFactoryMethodInitializer *)initializer methodSignature:(NSMethodSignature *)methodSignature;
 
 @end

@@ -27,6 +27,6 @@
 /**
  Converts the given string into the supported type.
  */
-- (id)convert:(NSString*)stringValue;
+- (id)convert:(NSString *)stringValue;
 
 @end

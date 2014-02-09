@@ -30,13 +30,13 @@
 
 @property(nonatomic, strong, readonly) Class requiredType;
 
-- (id)initWithIndex:(NSUInteger)index value:(NSString*)value requiredTypeOrNil:(Class)requiredTypeOrNil;
+- (id)initWithIndex:(NSUInteger)index value:(NSString *)value requiredTypeOrNil:(Class)requiredTypeOrNil;
 
 /**
 * If the parameter is a primitive type, resolves the type descriptor. Throws an exception if either:
 * - requiredType is set
 * - The parameter is an object type. (If the parameter is an object type, classOrProtocol must be set explicitly).
 */
-- (TyphoonTypeDescriptor*)resolveType;
+- (TyphoonTypeDescriptor *)resolveType;
 
 @end

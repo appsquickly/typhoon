@@ -19,40 +19,34 @@
 
 @implementation TyphoonAbstractInjectedParameter
 
-- (id)copyWithZone:(NSZone*)zone
-{
+- (id)copyWithZone:(NSZone *)zone {
     [NSException raise:NSInternalInconsistencyException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
     return nil;
 }
 
-- (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation
-{
+- (void)withFactory:(TyphoonComponentFactory *)factory setArgumentOnInvocation:(NSInvocation *)invocation {
     [NSException raise:NSInternalInconsistencyException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (BOOL)isPrimitiveParameter
-{
+- (BOOL)isPrimitiveParameter {
     BOOL isClass = [_initializer isClassMethod];
     Class class = [_initializer.definition type];
-    
-    NSArray* typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:_initializer.selector ofClass:class isClassMethod:isClass];
-    
+
+    NSArray *typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:_initializer.selector ofClass:class isClassMethod:isClass];
+
     return ![[typeCodes objectAtIndex:_index] isEqualToString:@"@"];
 }
 
-- (void)setObject:(id)object forInvocation:(NSInvocation *)invocation
-{
+- (void)setObject:(id)object forInvocation:(NSInvocation *)invocation {
     BOOL isObjectIsWrapper = [object isKindOfClass:[NSNumber class]] || [object isKindOfClass:[NSValue class]];
-    
-    if (isObjectIsWrapper && [self isPrimitiveParameter])
-    {
+
+    if (isObjectIsWrapper && [self isPrimitiveParameter]) {
         [object typhoon_setAsArgumentForInvocation:invocation atIndex:_index + 2];
     }
-    else
-    {
+    else {
         [invocation setArgument:&object atIndex:_index + 2];
     }
 }

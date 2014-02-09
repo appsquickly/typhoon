@@ -38,8 +38,7 @@
 * creates an instance that will be shared across all components. However as soon as the instance is not being used it will be deallocated.
 *
 */
-typedef enum
-{
+typedef enum {
     TyphoonScopeObjectGraph = 1 << 0,
     TyphoonScopePrototype = 1 << 1,
     TyphoonScopeSingleton = 1 << 2,
@@ -47,21 +46,20 @@ typedef enum
 } TyphoonScope;
 
 
-typedef void(^TyphoonInitializerBlock)(TyphoonInitializer* initializer);
+typedef void(^TyphoonInitializerBlock)(TyphoonInitializer *initializer);
 
-typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
+typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
 /**
 * @ingroup Definition
 */
-@interface TyphoonDefinition : NSObject
-{
+@interface TyphoonDefinition : NSObject {
     Class _type;
-    NSString* _key;
-    TyphoonInitializer* _initializer;
-    NSMutableSet* _injectedProperties;
+    NSString *_key;
+    TyphoonInitializer *_initializer;
+    NSMutableSet *_injectedProperties;
     TyphoonScope _scope;
-    TyphoonDefinition* _factory;
+    TyphoonDefinition *_factory;
 }
 
 @property(nonatomic, readonly) Class type;
@@ -73,7 +71,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 * If using the TyphoonBlockComponentFactory style of assembly, the key is automatically generated based on the selector name of the
 * component, thus avoiding "magic strings" and providing better integration with IDE refactoring tools.
 */
-@property(nonatomic, strong) NSString* key;
+@property(nonatomic, strong) NSString *key;
 
 /**
 * Describes the initializer, ie the selector and arguments that will be used to instantiate this component.
@@ -84,7 +82,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 *
 * @see factory
 */
-@property(nonatomic, strong) TyphoonInitializer* initializer;
+@property(nonatomic, strong) TyphoonInitializer *initializer;
 
 /**
 * A custom callback method that is invoked before property injection occurs. Use this method as an alternative to
@@ -147,7 +145,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 *
 *
 */
-@property(nonatomic, strong) TyphoonDefinition* factory;
+@property(nonatomic, strong) TyphoonDefinition *factory;
 
 /**
 * A parent component. When parent is defined the initializer and/or properties from a definition are inherited, unless overridden. Example:
@@ -189,7 +187,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 * @see abstract
 *
 */
-@property(nonatomic, strong) TyphoonDefinition* parent;
+@property(nonatomic, strong) TyphoonDefinition *parent;
 
 /**
 * If set, designates that a component can not be instantiated directly.
@@ -208,16 +206,15 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 /* ====================================================================================================================================== */
 #pragma mark Factory methods
 
-+ (TyphoonDefinition*)withClass:(Class)clazz;
++ (TyphoonDefinition *)withClass:(Class)clazz;
 
-+ (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
-    properties:(TyphoonDefinitionBlock)properties;
++ (TyphoonDefinition *)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization properties:(TyphoonDefinitionBlock)properties;
 
-+ (TyphoonDefinition*)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization;
++ (TyphoonDefinition *)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization;
 
-+ (TyphoonDefinition*)withClass:(Class)clazz properties:(TyphoonDefinitionBlock)properties;
++ (TyphoonDefinition *)withClass:(Class)clazz properties:(TyphoonDefinitionBlock)properties;
 
-+ (TyphoonDefinition*)withClass:(Class)clazz factory:(TyphoonDefinition*)definition selector:(SEL)selector;
++ (TyphoonDefinition *)withClass:(Class)clazz factory:(TyphoonDefinition *)definition selector:(SEL)selector;
 
 /* ====================================================================================================================================== */
 #pragma mark Injection
@@ -230,17 +227,17 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 /**
 * Injects property with the given definition.
 */
-- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)definition;
+- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition *)definition;
 
 /**
  * Injects property with result of invocation factorySelector on factoryDefinition.
  */
-- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)factoryDefinition selector:(SEL)factorySelector;
+- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition *)factoryDefinition selector:(SEL)factorySelector;
 
 /**
  * Injects property with result of invocation valueForKeyPath with given keyPath on factoryDefinition.
  */
-- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition*)factoryDefinition keyPath:(NSString*)keyPath;
+- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition *)factoryDefinition keyPath:(NSString *)keyPath;
 
 /**
 * Injects property with the given object instance. Auto-boxing can be used to injected primitive types, for example:
@@ -259,15 +256,15 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition* definition);
 *
 * @see TyphoonTypeConverterRegistry for details on declaring your own type converters.
 */
-- (void)injectProperty:(SEL)withSelector withValueAsText:(NSString*)textValue;
+- (void)injectProperty:(SEL)withSelector withValueAsText:(NSString *)textValue;
 
 
 /**
 * Injects property as a collection.
 */
-- (void)injectProperty:(SEL)withSelector asCollection:(void (^)(TyphoonPropertyInjectedAsCollection*))collectionValues;
+- (void)injectProperty:(SEL)withSelector asCollection:(void (^)(TyphoonPropertyInjectedAsCollection *))collectionValues;
 
 
-- (NSSet*)injectedProperties;
+- (NSSet *)injectedProperties;
 
 @end

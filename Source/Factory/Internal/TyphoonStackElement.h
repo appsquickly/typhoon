@@ -19,12 +19,14 @@ typedef void(^TyphoonInstanceCompleteBlock)(id instance);
 
 @interface TyphoonStackElement : NSObject
 
-@property(nonatomic, strong, readonly) NSString* key;
-@property(nonatomic, strong, readonly) id instance; /* Raises a circular init exception if instance in initializing state. */
+@property(nonatomic, strong, readonly) NSString *key;
+@property(nonatomic, strong, readonly) id instance;
 
-+ (instancetype)elementWithKey:(NSString*)key;
+/* Raises a circular init exception if instance in initializing state. */
 
-- (NSString*)description;
++ (instancetype)elementWithKey:(NSString *)key;
+
+- (NSString *)description;
 
 - (BOOL)isInitializingInstance;
 

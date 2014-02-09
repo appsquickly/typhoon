@@ -26,7 +26,7 @@
  * method in the returnType. If no match could be found, an error will happen
  * during runtime when calling factoryClass.
  */
-+ (instancetype)creatorWithProtocol:(Protocol*)protocol returns:(Class)returnType;
++ (instancetype)creatorWithProtocol:(Protocol *)protocol returns:(Class)returnType;
 
 /**
  * Returns a creator that will use the protocol as a template for the new class.
@@ -37,7 +37,7 @@
  * and following arguments. If no factory method could be found, or several are
  * found, an error will happen during runtime when calling factoryClass.
  */
-+ (instancetype)creatorWithProtocol:(Protocol*)protocol factoryBlock:(id)factoryBlock;
++ (instancetype)creatorWithProtocol:(Protocol *)protocol factoryBlock:(id)factoryBlock;
 
 /**
  * Returns a creator that will use the protocol as a template for the new class,
@@ -46,7 +46,7 @@
  * definitions, or more than necessary are found inside the block, an error
  * will happen during runtime when calling factoryClass.
  */
-+ (instancetype)creatorWithProtocol:(Protocol*)protocol factories:(TyphoonAssistedFactoryDefinitionBlock)definitionblock;
++ (instancetype)creatorWithProtocol:(Protocol *)protocol factories:(TyphoonAssistedFactoryDefinitionBlock)definitionblock;
 
 /**
  * The Class of the factory created. If something was wrongly configured, this

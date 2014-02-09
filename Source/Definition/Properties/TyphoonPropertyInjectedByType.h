@@ -21,7 +21,7 @@
 */
 @interface TyphoonPropertyInjectedByType : TyphoonAbstractInjectedProperty
 
-- (id)initWithName:(NSString*)name;
+- (id)initWithName:(NSString *)name;
 
 
 @end

@@ -26,22 +26,18 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 
-+ (instancetype)withClass:(Class)clazz key:(NSString*)key
-{
++ (instancetype)withClass:(Class)clazz key:(NSString *)key {
     return [[TyphoonDefinition alloc] initWithClass:clazz key:key];
 }
 
 
-+ (instancetype)propertyPlaceholderWithResource:(id <TyphoonResource>)resource
-{
++ (instancetype)propertyPlaceholderWithResource:(id <TyphoonResource>)resource {
     return [self propertyPlaceholderWithResources:@[resource]];
 }
 
-+ (instancetype)propertyPlaceholderWithResources:(NSArray*)resources
-{
++ (instancetype)propertyPlaceholderWithResources:(NSArray *)resources {
     TyphoonDefinition
-        * definition = [self withClass:[TyphoonPropertyPlaceholderConfigurer class] initialization:^(TyphoonInitializer* initializer)
-    {
+        *definition = [self withClass:[TyphoonPropertyPlaceholderConfigurer class] initialization:^(TyphoonInitializer *initializer) {
 
         initializer.selector = @selector(configurerWithResourceList:);
         [initializer injectWithObjectInstance:resources];
@@ -54,27 +50,22 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithClass:(Class)clazz key:(NSString*)key
-{
+- (id)initWithClass:(Class)clazz key:(NSString *)key {
     return [self initWithClass:clazz key:key factoryComponent:nil];
 }
 
-- (id)init
-{
+- (id)init {
     return [self initWithClass:nil key:nil factoryComponent:nil];
 }
 
-- (id)initWithClass:(Class)clazz key:(NSString*)key factoryComponent:(NSString*)factoryComponent
-{
+- (id)initWithClass:(Class)clazz key:(NSString *)key factoryComponent:(NSString *)factoryComponent {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _type = clazz;
         _key = [key copy];
         _scope = TyphoonScopeObjectGraph;
         _injectedProperties = [[NSMutableSet alloc] init];
-        if (factoryComponent)
-        {
+        if (factoryComponent) {
             _factory = [TyphoonReferenceDefinition definitionReferringToComponent:factoryComponent];
         }
         [self validateRequiredParametersAreSet];
@@ -82,8 +73,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     //Null out the __unsafe_unretained property on initializer
     [_initializer setDefinition:nil];
 }
@@ -92,10 +82,8 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (void)validateRequiredParametersAreSet
-{
-    if (_type == nil)
-    {
+- (void)validateRequiredParametersAreSet {
+    if (_type == nil) {
         [NSException raise:NSInvalidArgumentException format:@"Property 'clazz' is required."];
     }
 }

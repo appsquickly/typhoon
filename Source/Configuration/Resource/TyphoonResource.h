@@ -21,17 +21,17 @@
 /**
 * Returns the resource with the given name, as an NSString using NSUTF8String encoding.
 */
-- (NSString*)asString;
+- (NSString *)asString;
 
 /**
 * Returns the resource with the given name, using the specified encoding.
 */
-- (NSString*)asStringWithEncoding:(NSStringEncoding)encoding;
+- (NSString *)asStringWithEncoding:(NSStringEncoding)encoding;
 
 /**
 * Returns the resource as data.
 */
-- (NSData*)data;
+- (NSData *)data;
 
 
 @end

@@ -19,9 +19,9 @@
 */
 @interface TyphoonParameterInjectedByReference : TyphoonAbstractInjectedParameter
 
-@property(nonatomic, strong, readonly) NSString* reference;
+@property(nonatomic, strong, readonly) NSString *reference;
 
-- (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString*)reference;
+- (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex reference:(NSString *)reference;
 
 
 @end

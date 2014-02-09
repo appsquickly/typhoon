@@ -18,11 +18,11 @@
 
 @interface TyphoonComponentFactory (TyphoonDefinitionRegisterer)
 
-- (TyphoonDefinition*)definitionForKey:(NSString*)key;
+- (TyphoonDefinition *)definitionForKey:(NSString *)key;
 
-- (id)objectForDefinition:(TyphoonDefinition*)definition;
+- (id)objectForDefinition:(TyphoonDefinition *)definition;
 
-- (void)addDefinitionToRegistry:(TyphoonDefinition*)definition;
+- (void)addDefinitionToRegistry:(TyphoonDefinition *)definition;
 
 - (void)addComponentPostProcessor:(id <TyphoonComponentPostProcessor>)postProcessor;
 

@@ -16,14 +16,12 @@
 
 @implementation TyphoonBundledImageTypeConverter
 
-- (id)supportedType
-{
+- (id)supportedType {
     return [UIImage class];
 }
 
-- (id)convert:(NSString*)stringValue
-{
-    __autoreleasing UIImage* image = [UIImage imageNamed:stringValue];
+- (id)convert:(NSString *)stringValue {
+    __autoreleasing UIImage *image = [UIImage imageNamed:stringValue];
     return image;
 }
 

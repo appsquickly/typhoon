@@ -13,15 +13,15 @@
 
 @interface TyphoonAssemblySelectorAdviser : NSObject
 
-+ (SEL)advisedSELForKey:(NSString*)key;
++ (SEL)advisedSELForKey:(NSString *)key;
 
-+ (NSString*)keyForAdvisedSEL:(SEL)selWithAdvicePrefix;
++ (NSString *)keyForAdvisedSEL:(SEL)selWithAdvicePrefix;
 
-+ (NSString*)keyForSEL:(SEL)sel;
++ (NSString *)keyForSEL:(SEL)sel;
 
 + (BOOL)selectorIsAdvised:(SEL)sel;
 
 + (SEL)advisedSELForSEL:(SEL)unwrappedSEL;
 
-+ (NSString*)advisedNameForName:(NSString*)string;
++ (NSString *)advisedNameForName:(NSString *)string;
 @end

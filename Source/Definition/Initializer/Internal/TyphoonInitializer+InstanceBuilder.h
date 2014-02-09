@@ -19,11 +19,11 @@
 
 @property(nonatomic, readonly) BOOL isClassMethod;
 
-- (NSArray*)parametersInjectedByValue;
+- (NSArray *)parametersInjectedByValue;
 
-- (NSInvocation*)newInvocationInFactory:(TyphoonComponentFactory*)factory;
+- (NSInvocation *)newInvocationInFactory:(TyphoonComponentFactory *)factory;
 
-- (void)setDefinition:(TyphoonDefinition*)definition;
+- (void)setDefinition:(TyphoonDefinition *)definition;
 
 
 @end

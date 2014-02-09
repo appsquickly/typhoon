@@ -13,7 +13,7 @@
 
 @protocol TyphoonAssistedFactoryMethodClosure <NSObject>
 
-@property(nonatomic, strong, readonly) NSMethodSignature* methodSignature;
+@property(nonatomic, strong, readonly) NSMethodSignature *methodSignature;
 
 /**
  * Returns an invocation filled with the right target instance, the right
@@ -23,6 +23,6 @@
  * type will take the initializer parameters, using factory to find the property
  * values, and forwardedInvocation to find the arguments to the factory method.
  */
-- (NSInvocation*)invocationWithFactory:(id)factory forwardedInvocation:(NSInvocation*)anInvocation;
+- (NSInvocation *)invocationWithFactory:(id)factory forwardedInvocation:(NSInvocation *)anInvocation;
 
 @end

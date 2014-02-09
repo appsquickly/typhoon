@@ -24,6 +24,6 @@
  * Creates a factory creator for the given protocol and using definitionBlock
  * as the recipe for the instance methods in the protocol.
  */
-- (instancetype)initWithProtocol:(Protocol*)protocol factories:(TyphoonAssistedFactoryDefinitionBlock)definitionBlock;
+- (instancetype)initWithProtocol:(Protocol *)protocol factories:(TyphoonAssistedFactoryDefinitionBlock)definitionBlock;
 
 @end

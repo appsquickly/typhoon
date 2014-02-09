@@ -19,18 +19,18 @@
 
 @interface NSObject (TyphoonIntrospectionUtils) <TyphoonIntrospectiveNSObject>
 
-@property(nonatomic, strong, readonly) NSMutableDictionary* circularDependentProperties;
+@property(nonatomic, strong, readonly) NSMutableDictionary *circularDependentProperties;
 
 /**
 * Returns a Class object or `TyphoonTypeDescriptor` in the case of a primitive type.
 */
-- (TyphoonTypeDescriptor*)typeForPropertyWithName:(NSString*)propertyName;
+- (TyphoonTypeDescriptor *)typeForPropertyWithName:(NSString *)propertyName;
 
-- (NSArray*)parameterNamesForSelector:(SEL)selector;
+- (NSArray *)parameterNamesForSelector:(SEL)selector;
 
-- (NSArray*)typeCodesForSelector:(SEL)selector;
+- (NSArray *)typeCodesForSelector:(SEL)selector;
 
-- (NSArray*)typeCodesForSelector:(SEL)selector onClass:(Class)class;
+- (NSArray *)typeCodesForSelector:(SEL)selector onClass:(Class)class;
 
 
 @end

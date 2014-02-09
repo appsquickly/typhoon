@@ -19,24 +19,19 @@
 @implementation NSInvocation (TCFInstanceBuilder)
 
 /** Returns YES if selector returns retained instance (not autoreleased) */
-static BOOL typhoon_IsSelectorReturnsRetained(SEL selector)
-{
-    NSString* selectorString = NSStringFromSelector(selector);
+static BOOL typhoon_IsSelectorReturnsRetained(SEL selector) {
+    NSString *selectorString = NSStringFromSelector(selector);
 
-    return [selectorString hasPrefix:@"init"]
-        || [selectorString hasPrefix:@"new"]
-        || [selectorString hasPrefix:@"copy"]
-        || [selectorString hasPrefix:@"mutableCopy"];
+    return [selectorString hasPrefix:@"init"] || [selectorString hasPrefix:@"new"] || [selectorString hasPrefix:@"copy"] ||
+        [selectorString hasPrefix:@"mutableCopy"];
 }
 
-- (id)typhoon_resultOfInvokingOn:(id)instanceOrClass
-{
+- (id)typhoon_resultOfInvokingOn:(id)instanceOrClass {
     id returnValue = nil;
 
     BOOL isReturnsRetained;
 
-    @autoreleasepool
-    {
+    @autoreleasepool {
         isReturnsRetained = typhoon_IsSelectorReturnsRetained([self selector]);
         [self invokeWithTarget:instanceOrClass];
         [self getReturnValue:&returnValue];
@@ -44,21 +39,18 @@ static BOOL typhoon_IsSelectorReturnsRetained(SEL selector)
     }
 
     /* Balance retain above if object is not autoreleased */
-    if (isReturnsRetained)
-    {
+    if (isReturnsRetained) {
         [returnValue release];
     }
 
     return returnValue;
 }
 
-- (id)typhoon_resultOfInvokingOnInstance:(id)instance
-{
+- (id)typhoon_resultOfInvokingOnInstance:(id)instance {
     return [self typhoon_resultOfInvokingOn:instance];
 }
 
-- (id)typhoon_resultOfInvokingOnAllocationForClass:(Class)aClass
-{
+- (id)typhoon_resultOfInvokingOnAllocationForClass:(Class)aClass {
     /* To static analyser warning:
      * 'firstlyCreatedInstance' is not leak. There is two cases:
      *   1) instance is firstlyCreatedInstance (have same pointer) - then we returning this as retained result

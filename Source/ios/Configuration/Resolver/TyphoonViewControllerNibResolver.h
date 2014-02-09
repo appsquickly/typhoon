@@ -26,6 +26,6 @@
  @param viewControllerClass The class.
  @return The nib name.
  */
-- (NSString*)resolveNibNameForClass:(Class)viewControllerClass;
+- (NSString *)resolveNibNameForClass:(Class)viewControllerClass;
 
 @end

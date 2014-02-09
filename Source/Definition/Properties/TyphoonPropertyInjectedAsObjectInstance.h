@@ -19,6 +19,6 @@
 
 @property(nonatomic, strong, readonly) id objectInstance;
 
-- (id)initWithName:(NSString*)name objectInstance:(id)objectInstance;
+- (id)initWithName:(NSString *)name objectInstance:(id)objectInstance;
 
 @end

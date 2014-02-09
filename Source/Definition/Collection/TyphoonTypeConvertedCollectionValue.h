@@ -16,10 +16,10 @@
 */
 @interface TyphoonTypeConvertedCollectionValue : NSObject <TyphoonCollectionValue>
 
-@property(nonatomic, strong, readonly) NSString* textValue;
+@property(nonatomic, strong, readonly) NSString *textValue;
 @property(nonatomic, strong, readonly) Class requiredType;
 
-- (id)initWithTextValue:(NSString*)textValue requiredType:(Class)requiredType;
+- (id)initWithTextValue:(NSString *)textValue requiredType:(Class)requiredType;
 
 
 @end

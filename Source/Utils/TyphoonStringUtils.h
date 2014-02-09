@@ -15,21 +15,21 @@
 
 @interface TyphoonStringUtils : NSObject
 
-+ (BOOL)isAlpha:(NSString*)candidate;
++ (BOOL)isAlpha:(NSString *)candidate;
 
-+ (BOOL)isAlphaOrSpaces:(NSString*)candidate;
++ (BOOL)isAlphaOrSpaces:(NSString *)candidate;
 
-+ (BOOL)isAlphanumeric:(NSString*)candidate;
++ (BOOL)isAlphanumeric:(NSString *)candidate;
 
-+ (BOOL)isEmpty:(NSString*)candidate;
++ (BOOL)isEmpty:(NSString *)candidate;
 
-+ (BOOL)isNotEmpty:(NSString*)candidate;
++ (BOOL)isNotEmpty:(NSString *)candidate;
 
-+ (BOOL)isEmailAddress:(NSString*)candidate;
++ (BOOL)isEmailAddress:(NSString *)candidate;
 
-+ (BOOL)isMemberOfCharacterSet:(NSString*)string characterSet:(NSMutableCharacterSet*)characterSet;
++ (BOOL)isMemberOfCharacterSet:(NSString *)string characterSet:(NSMutableCharacterSet *)characterSet;
 
-+ (BOOL)string:(NSString*)string containsString:(NSString*)contains;
++ (BOOL)string:(NSString *)string containsString:(NSString *)contains;
 
 @end
 

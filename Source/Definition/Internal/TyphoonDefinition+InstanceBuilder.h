@@ -19,16 +19,16 @@
 
 - (void)setType:(Class)type;
 
-- (NSSet*)componentsInjectedByValue;
+- (NSSet *)componentsInjectedByValue;
 
-- (void)injectProperty:(SEL)withSelector withReference:(NSString*)reference;
+- (void)injectProperty:(SEL)withSelector withReference:(NSString *)reference;
 
-- (NSSet*)propertiesInjectedByValue;
+- (NSSet *)propertiesInjectedByValue;
 
-- (NSSet*)propertiesInjectedByType;
+- (NSSet *)propertiesInjectedByType;
 
-- (NSSet*)propertiesInjectedByReference;
+- (NSSet *)propertiesInjectedByReference;
 
-- (void)addInjectedProperty:(TyphoonAbstractInjectedProperty*)property;
+- (void)addInjectedProperty:(TyphoonAbstractInjectedProperty *)property;
 
 @end

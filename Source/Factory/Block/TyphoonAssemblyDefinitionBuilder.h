@@ -18,14 +18,14 @@
 
 @interface TyphoonAssemblyDefinitionBuilder : NSObject
 
-+ (instancetype)builderWithAssembly:(TyphoonAssembly*)assembly;
++ (instancetype)builderWithAssembly:(TyphoonAssembly *)assembly;
 
-- (instancetype)initWithAssembly:(TyphoonAssembly*)assembly;
+- (instancetype)initWithAssembly:(TyphoonAssembly *)assembly;
 
-- (NSArray*)builtDefinitions;
+- (NSArray *)builtDefinitions;
 
-- (TyphoonDefinition*)builtDefinitionForKey:(NSString*)key;
+- (TyphoonDefinition *)builtDefinitionForKey:(NSString *)key;
 
-@property(readonly, unsafe_unretained) TyphoonAssembly* assembly;
+@property(readonly, unsafe_unretained) TyphoonAssembly *assembly;
 
 @end

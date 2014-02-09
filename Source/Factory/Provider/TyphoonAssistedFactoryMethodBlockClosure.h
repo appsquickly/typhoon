@@ -27,6 +27,6 @@
  * Creates a new closure pointing to the given selector, for the factory method
  * described by methodSignature.
  */
-- (instancetype)initWithSelector:(SEL)selector methodSignature:(NSMethodSignature*)methodSignature;
+- (instancetype)initWithSelector:(SEL)selector methodSignature:(NSMethodSignature *)methodSignature;
 
 @end

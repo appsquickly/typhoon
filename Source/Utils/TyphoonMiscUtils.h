@@ -8,6 +8,6 @@
 
 @interface TyphoonMiscUtils : NSObject
 
-+ (NSString*)ordinalForIndex:(NSUInteger)index;
++ (NSString *)ordinalForIndex:(NSUInteger)index;
 
 @end

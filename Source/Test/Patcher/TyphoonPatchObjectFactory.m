@@ -20,11 +20,9 @@
 #pragma mark - Initialization & Destruction
 
 
-- (instancetype)initWithCreationBlock:(TyphoonPatchObjectCreationBlock)creationBlock
-{
+- (instancetype)initWithCreationBlock:(TyphoonPatchObjectCreationBlock)creationBlock {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         NSAssert(creationBlock != nil, @"Creation block can't be nil");
         _patchObject = creationBlock();
     }
@@ -35,8 +33,7 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (id)patchObject
-{
+- (id)patchObject {
     return _patchObject;
 }
 

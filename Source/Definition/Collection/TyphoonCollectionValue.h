@@ -17,6 +17,6 @@
 */
 @protocol TyphoonCollectionValue <NSObject, NSCopying>
 
-- (id)resolveWithFactory:(TyphoonComponentFactory*)factory;
+- (id)resolveWithFactory:(TyphoonComponentFactory *)factory;
 
 @end

@@ -23,11 +23,9 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex factoryReference:(NSString *)reference keyPath:(NSString *)keyPath
-{
+- (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex factoryReference:(NSString *)reference keyPath:(NSString *)keyPath {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _index = parameterIndex;
         _factoryReference = reference;
         _keyPath = keyPath;
@@ -38,12 +36,11 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation
-{
+- (void)withFactory:(TyphoonComponentFactory *)factory setArgumentOnInvocation:(NSInvocation *)invocation {
     [[[factory stack] peekForKey:_factoryReference] instance]; //Raises circular dependencies exception if already initializing.
-    NSObject* factoryComponent = [factory componentForKey:_factoryReference];
+    NSObject *factoryComponent = [factory componentForKey:_factoryReference];
     id valueToInject = [factoryComponent valueForKeyPath:_keyPath];
-    
+
     [self setObject:valueToInject forInvocation:invocation];
 }
 
@@ -52,9 +49,9 @@
 
 #pragma mark - Utility Methods
 
-- (id)copyWithZone:(NSZone*)zone
-{
-    return [[TyphoonParameterInjectedByFactoryReference alloc] initWithParameterIndex:_index factoryReference:[_factoryReference copy] keyPath:[_keyPath copy]];
+- (id)copyWithZone:(NSZone *)zone {
+    return [[TyphoonParameterInjectedByFactoryReference alloc]
+        initWithParameterIndex:_index factoryReference:[_factoryReference copy] keyPath:[_keyPath copy]];
 }
 
 

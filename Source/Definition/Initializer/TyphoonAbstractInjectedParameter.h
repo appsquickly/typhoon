@@ -15,17 +15,16 @@
 @class TyphoonComponentFactory;
 
 
-@interface TyphoonAbstractInjectedParameter : NSObject<NSCopying>
-{
+@interface TyphoonAbstractInjectedParameter : NSObject <NSCopying> {
     NSUInteger _index;
-    __weak TyphoonInitializer* _initializer;
+    __weak TyphoonInitializer *_initializer;
 }
 
 @property(nonatomic, readonly) NSUInteger index;
-@property (nonatomic, weak) TyphoonInitializer* initializer;
+@property(nonatomic, weak) TyphoonInitializer *initializer;
 
 
-- (void)withFactory:(TyphoonComponentFactory*)factory setArgumentOnInvocation:(NSInvocation*)invocation;
+- (void)withFactory:(TyphoonComponentFactory *)factory setArgumentOnInvocation:(NSInvocation *)invocation;
 
 
 - (BOOL)isPrimitiveParameter;

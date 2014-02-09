@@ -23,22 +23,18 @@
 #import "TyphoonAssistedFactoryParameterInjectedWithProperty.h"
 
 
-@implementation TyphoonAssistedFactoryMethodInitializerClosure
-{
+@implementation TyphoonAssistedFactoryMethodInitializerClosure {
     Class _returnType;
     SEL _initSelector;
-    NSArray* _parameters;
-    NSMethodSignature* _closedMethodSignature;
+    NSArray *_parameters;
+    NSMethodSignature *_closedMethodSignature;
 }
 
 @synthesize methodSignature = _methodSignature;
 
-- (instancetype)initWithInitializer:(TyphoonAssistedFactoryMethodInitializer*)initializer
-    methodSignature:(NSMethodSignature*)methodSignature
-{
+- (instancetype)initWithInitializer:(TyphoonAssistedFactoryMethodInitializer *)initializer methodSignature:(NSMethodSignature *)methodSignature {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         NSParameterAssert(initializer.returnType);
         NSParameterAssert(initializer.selector);
         NSParameterAssert(methodSignature);
@@ -50,55 +46,47 @@
         _closedMethodSignature = [_returnType instanceMethodSignatureForSelector:_initSelector];
 
         NSUInteger count = _closedMethodSignature.numberOfArguments - 2;
-        NSAssert([self validateInitializerParameterCount:count], @"parameter map for %s do not fill all %lu parameters", sel_getName(
-            _initSelector), (unsigned long) count);
+        NSAssert([self validateInitializerParameterCount:count], @"parameter map for %s do not fill all %lu parameters", sel_getName(_initSelector), (unsigned long) count);
     }
 
     return self;
 }
 
-- (NSInvocation*)invocationWithFactory:(id)factory forwardedInvocation:(NSInvocation*)anInvocation
-{
-    NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:_closedMethodSignature];
-    NSMutableArray* allocations = [NSMutableArray array];
+- (NSInvocation *)invocationWithFactory:(id)factory forwardedInvocation:(NSInvocation *)anInvocation {
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:_closedMethodSignature];
+    NSMutableArray *allocations = [NSMutableArray array];
 
     id instance = [_returnType alloc];
-    if (instance)
-    {[allocations addObject:instance];}
+    if (instance) {[allocations addObject:instance];}
     invocation.target = instance;
 
     invocation.selector = _initSelector;
 
-    for (id <TyphoonAssistedFactoryInjectedParameter> parameter in _parameters)
-    {
+    for (id <TyphoonAssistedFactoryInjectedParameter> parameter in _parameters) {
 
         // Move to other solution which doesn't involve isKindOf?
-        if ([parameter isKindOfClass:[TyphoonAssistedFactoryParameterInjectedWithArgumentIndex class]])
-        {
-            TyphoonAssistedFactoryParameterInjectedWithArgumentIndex* p = parameter;
+        if ([parameter isKindOfClass:[TyphoonAssistedFactoryParameterInjectedWithArgumentIndex class]]) {
+            TyphoonAssistedFactoryParameterInjectedWithArgumentIndex *p = parameter;
 
             NSUInteger argumentSize = 0;
             NSGetSizeAndAlignment([_methodSignature getArgumentTypeAtIndex:[p argumentIndex] + 2], &argumentSize, NULL);
-            void* argument = malloc(argumentSize);
+            void *argument = malloc(argumentSize);
             [anInvocation getArgument:argument atIndex:[p argumentIndex] + 2];
             [invocation setArgument:argument atIndex:[p parameterIndex] + 2];
             free(argument);
 
         }
-        else if ([parameter isKindOfClass:[TyphoonAssistedFactoryParameterInjectedWithProperty class]])
-        {
-            TyphoonAssistedFactoryParameterInjectedWithProperty* p = parameter;
+        else if ([parameter isKindOfClass:[TyphoonAssistedFactoryParameterInjectedWithProperty class]]) {
+            TyphoonAssistedFactoryParameterInjectedWithProperty *p = parameter;
 
             // Using valueForKey will try using the property first.
-            NSString* selector = [NSString stringWithCString:sel_getName([p property]) encoding:NSASCIIStringEncoding];
+            NSString *selector = [NSString stringWithCString:sel_getName([p property]) encoding:NSASCIIStringEncoding];
             id value = [factory valueForKey:selector];
-            if (value)
-            {[allocations addObject:value];}
+            if (value) {[allocations addObject:value];}
 
             [invocation setArgument:&value atIndex:[p parameterIndex] + 2];
         }
-        else
-        {
+        else {
             NSAssert(NO, @"Unknown parameter type %@", NSStringFromClass([parameter class]));
         }
     }
@@ -109,12 +97,10 @@
     return invocation;
 }
 
-- (BOOL)validateInitializerParameterCount:(NSUInteger)count
-{
-    NSMutableIndexSet* parameters = [NSMutableIndexSet indexSet];
+- (BOOL)validateInitializerParameterCount:(NSUInteger)count {
+    NSMutableIndexSet *parameters = [NSMutableIndexSet indexSet];
 
-    for (id <TyphoonAssistedFactoryInjectedParameter> parameter in _parameters)
-    {
+    for (id <TyphoonAssistedFactoryInjectedParameter> parameter in _parameters) {
         [parameters addIndex:[parameter parameterIndex]];
     }
 

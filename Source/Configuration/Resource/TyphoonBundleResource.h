@@ -19,15 +19,14 @@
 *
 * Represents a resource within the application bundle.
 */
-@interface TyphoonBundleResource : NSObject <TyphoonResource>
-{
-    NSData* _data;
+@interface TyphoonBundleResource : NSObject <TyphoonResource> {
+    NSData *_data;
 }
 
 
-+ (id <TyphoonResource>)withName:(NSString*)name;
++ (id <TyphoonResource>)withName:(NSString *)name;
 
-+ (id <TyphoonResource>)withName:(NSString*)name inBundle:(NSBundle*)bundle;
++ (id <TyphoonResource>)withName:(NSString *)name inBundle:(NSBundle *)bundle;
 
 
 @end

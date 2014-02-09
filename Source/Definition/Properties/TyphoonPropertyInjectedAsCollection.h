@@ -19,10 +19,10 @@
 /**
 * Represents a collection (NSArray, NSSet, c-style array) of items injected by reference, value or type.
 */
-@interface TyphoonPropertyInjectedAsCollection : TyphoonAbstractInjectedProperty<TyphoonInjectedAsCollection>
+@interface TyphoonPropertyInjectedAsCollection : TyphoonAbstractInjectedProperty <TyphoonInjectedAsCollection>
 
 
-- (id)initWithName:(NSString*)name;
+- (id)initWithName:(NSString *)name;
 
 /**
 * Returns the collection type for the named property on the parameter class. Raises an exception if the property is neither an NSSet nor
@@ -32,11 +32,11 @@
 
 #pragma mark - <TyphoonInjectedAsCollection> trait
 
-- (void)addItemWithText:(NSString*)text requiredType:(Class)requiredType;
+- (void)addItemWithText:(NSString *)text requiredType:(Class)requiredType;
 
-- (void)addItemWithComponentName:(NSString*)componentName;
+- (void)addItemWithComponentName:(NSString *)componentName;
 
-- (void)addItemWithDefinition:(TyphoonDefinition*)definition;
+- (void)addItemWithDefinition:(TyphoonDefinition *)definition;
 
 
 @end

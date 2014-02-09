@@ -15,6 +15,6 @@
 */
 @protocol TyphoonInjectedWithStringRepresentation <NSObject>
 
-@property(nonatomic, strong) NSString* textValue;
+@property(nonatomic, strong) NSString *textValue;
 
 @end
