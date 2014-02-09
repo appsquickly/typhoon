@@ -24,9 +24,13 @@ task test(type: XcodeTestTask) {
     )
 
 	platform new iOSSimulatorTestPlatform(
-            sdkVersion: '7.0'
+            sdkVersion: '6.1'
     )
 
+	coverageReport new CoverageReportConfig(
+            directories: ['Source'],
+            excludeSymbols: ['CGGeometry.h', 'TyphoonRXMLElement.m', 'TyphoonJRSwizzle.m']
+    )
 
 	outputDir 'build'
 }

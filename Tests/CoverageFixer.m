@@ -18,8 +18,6 @@
 @implementation CoverageFixer
 
 
-
-
 + (void)testSuiteDidStop:(NSNotification*)aNotification
 {
     extern void __gcov_flush(void);

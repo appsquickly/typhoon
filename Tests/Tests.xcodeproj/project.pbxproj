@@ -316,6 +316,7 @@
 		BA7989B57AD5BE95AD3E616E /* MiddleAgesAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798A4C4466A90E5E9479DD /* MiddleAgesAssembly.m */; };
 		BA7989B9C62F95712CB63910 /* TyphoonTestUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798A7BDF4CF779DFEB0F2E /* TyphoonTestUtilsTests.m */; };
 		BA7989CD73040A430989B5C1 /* TyphoonComponentFactoryPostProcessorStubImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7981CAD5CC6E3952B1E1EA /* TyphoonComponentFactoryPostProcessorStubImpl.m */; };
+		BA7989D4E3C6EACCBC66B8D2 /* CoverageFixer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7981CF6D5E560D84727EF9 /* CoverageFixer.m */; };
 		BA7989DFDD90A18B1EBE1E0F /* TyphoonPatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7981F193E4701C2604BA5B /* TyphoonPatcherTests.m */; };
 		BA798A5B8557DA9B5F914B66 /* CircularDependenciesAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79849EB1F762E5A4FF1196 /* CircularDependenciesAssembly.m */; };
 		BA798ABC0D96B2D9DA692D31 /* ObjectGraphAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79894B5FAFD229DB3682E0 /* ObjectGraphAssembly.m */; };
@@ -1610,6 +1611,7 @@
 				BA7982D26573611B9AE7E201 /* TyphoonScopeTests.m in Sources */,
 				6511E7E3189C12D800DB8E8B /* TyphoonFactoryProviderIntegrationTest.m in Sources */,
 				BA7984BC277B2DAD4C374FD6 /* Fort.m in Sources */,
+				BA7989D4E3C6EACCBC66B8D2 /* CoverageFixer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

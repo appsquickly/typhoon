@@ -59,4 +59,12 @@
     return value;
 }
 
+/* ====================================================================================================================================== */
+#pragma mark - Utility Methods
+
+- (id)copyWithZone:(NSZone *)zone {
+    return [[TyphoonPropertyInjectedWithStringRepresentation alloc] initWithName:[self.name copy] value:[self.textValue copy]];
+}
+
+
 @end
