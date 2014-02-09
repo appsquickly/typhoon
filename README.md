@@ -165,7 +165,7 @@ And then:
 ![Build Status](http://www.typhoonframework.org/docs/latest/build-status/build-status.png?q=zz)
 
 
-The following reports are published by our build server after each commit. (We use something a little more comprehensive than Travis - if you'd like the scripts, we'd be happy to share). Note that the status of the CI build is not related to tagged releases that are published and pushed to CocoaPods - these are stable. 
+The following reports are published by our build server after each commit. Note that the status of the CI build is not related to tagged releases that are published and pushed to CocoaPods - these are stable. 
 
 Test Failures typically indicate a bug that has been flagged, but not yet fixed. By policy we maintain more than 90% test coverage. 
 
