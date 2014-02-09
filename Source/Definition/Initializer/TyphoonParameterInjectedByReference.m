@@ -36,8 +36,8 @@
 #pragma mark - Overridden Methods
 
 - (void)withFactory:(TyphoonComponentFactory *)factory setArgumentOnInvocation:(NSInvocation *)invocation {
-    [[[factory stack] peekForKey:_reference] instance]; //Raises circular dependencies exception if already initializing.
-    id reference = [factory componentForKey:_reference];
+    [[[factory stack] peekForKey:self.reference] instance]; //Raises circular dependencies exception if already initializing.
+    id reference = [factory componentForKey:self.reference];
 
     [self setObject:reference forInvocation:invocation];
 }
@@ -46,7 +46,7 @@
 #pragma mark - Utility Methods
 
 - (id)copyWithZone:(NSZone *)zone {
-    return [[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:_index reference:[_reference copy]];
+    return [[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:self.index reference:[self.reference copy]];
 }
 
 

@@ -56,6 +56,10 @@
     [_collection addValue:value];
 }
 
+- (NSArray *)values {
+    return [_collection values];
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 

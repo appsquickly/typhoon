@@ -13,39 +13,39 @@
 #import "NSObject+DeallocNotification.h"
 
 @implementation TyphoonWeakComponentsPool {
-    NSMutableDictionary *dictionaryWithUnretainedObjects;
+    NSMutableDictionary *dictionaryWithNonRetainedObjects;
 }
 
 - (id)init {
     self = [super init];
     if (self) {
         CFDictionaryValueCallBacks callbacks = {0, NULL, NULL, NULL, NULL};
-        dictionaryWithUnretainedObjects =
+        dictionaryWithNonRetainedObjects =
             (__bridge_transfer id) CFDictionaryCreateMutable(NULL, 0, &kCFTypeDictionaryKeyCallBacks, &callbacks);
     }
     return self;
 }
 
 - (void)setObject:(id)object forKey:(id <NSCopying>)aKey {
-    __weak typeof (dictionaryWithUnretainedObjects) weakDict = dictionaryWithUnretainedObjects;
+    __weak typeof (dictionaryWithNonRetainedObjects) weakDict = dictionaryWithNonRetainedObjects;
 
     [object setDeallocNotificationInBlock:^{
         [weakDict removeObjectForKey:aKey];
     }];
 
-    [dictionaryWithUnretainedObjects setObject:object forKey:aKey];
+    [dictionaryWithNonRetainedObjects setObject:object forKey:aKey];
 }
 
 - (id)objectForKey:(id <NSCopying>)aKey {
-    return [dictionaryWithUnretainedObjects objectForKey:aKey];
+    return [dictionaryWithNonRetainedObjects objectForKey:aKey];
 }
 
 - (NSArray *)allValues {
-    return [dictionaryWithUnretainedObjects allValues];
+    return [dictionaryWithNonRetainedObjects allValues];
 }
 
 - (void)removeAllObjects {
-    [dictionaryWithUnretainedObjects removeAllObjects];
+    [dictionaryWithNonRetainedObjects removeAllObjects];
 }
 
 @end

@@ -38,5 +38,7 @@
 
 - (void)addItemWithDefinition:(TyphoonDefinition *)definition;
 
+- (NSArray *)values;
+
 
 @end
