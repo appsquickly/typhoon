@@ -126,7 +126,7 @@
     
     // Not crashes:
     invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(arrayWithCapacity:) class:[NSMutableArray class]];
-    int capacity = 10;
+    NSUInteger capacity = 10;
     [invocation setArgument:&capacity atIndex:2];
     array = [invocation typhoon_resultOfInvokingOnInstance:[NSMutableArray class]];
 
