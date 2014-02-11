@@ -31,15 +31,18 @@
 
 @end
 
+#define TYPHOON_TEST_VALUE 65
 
 @implementation TyphoonPrimitiveTypeConverterTests
 {
     TyphoonPrimitiveTypeConverter* _typeConverter;
+    NSString *_testNumberString;
 }
 
 - (void)setUp
 {
     _typeConverter = [[TyphoonPrimitiveTypeConverter alloc] init];
+    _testNumberString = [NSString stringWithFormat:@"%@", @(TYPHOON_TEST_VALUE)];
 }
 
 - (void)test_converts_to_bool
@@ -61,54 +64,73 @@
 
     converted = [_typeConverter convertToBoolean:@"0"];
     assertThatBool(converted, equalToBool(NO));
+    
+    NSNumber *number = [_typeConverter valueFromText:@"true" withType:[TyphoonTypeDescriptor descriptorWithEncodedType:@encode(BOOL)]];
+    assertThat(number, equalTo(@YES));
 }
 
 - (void)test_converts_to_short
 {
-    short converted = [_typeConverter convertToShort:@"1245"];
-    assertThatShort(converted, equalToShort(1245));
+    short converted = [_typeConverter convertToShort:_testNumberString];
+    assertThatShort(converted, equalToShort(TYPHOON_TEST_VALUE));
+    
+    [self verifyNumberFromTestNumberStringWithType:@encode(short)];
 }
 
 - (void)test_converts_to_long
 {
-    long converted = [_typeConverter convertToLong:@"1245"];
-    assertThatLong(converted, equalToLong(1245));
+    long converted = [_typeConverter convertToLong:_testNumberString];
+    assertThatLong(converted, equalToLong(TYPHOON_TEST_VALUE));
+    
+    [self verifyNumberFromTestNumberStringWithType:@encode(long)];
 }
 
-- (void)test_converts_to_NSInteger
+- (void)test_converts_to_long_long
 {
-    NSInteger converted = [_typeConverter convertToLongLong:@"1245"];
-    assertThatLongLong(converted, equalToLongLong(1245));
+    long long converted = [_typeConverter convertToLongLong:_testNumberString];
+    assertThatLongLong(converted, equalToLongLong(TYPHOON_TEST_VALUE));
+    
+    [self verifyNumberFromTestNumberStringWithType:@encode(long long)];
 }
 
 - (void)test_converts_to_unsigned_char
 {
     unsigned char converted = [_typeConverter convertToUnsignedChar:@"65"];
     assertThatUnsignedChar(converted, equalToUnsignedChar(65));
+    
+    [self verifyNumberFromTestNumberStringWithType:@encode(unsigned char)];
 }
 
 - (void)test_converts_to_unsigned_int
 {
     unsigned int converted = [_typeConverter convertToUnsignedInt:@"123"];
     assertThatUnsignedInt(converted, equalToUnsignedChar(123));
+    
+    [self verifyNumberFromTestNumberStringWithType:@encode(unsigned int)];
 }
 
 - (void)test_converts_to_unsigned_short
 {
     unsigned short converted = [_typeConverter convertToUnsignedShort:@"123"];
     assertThatUnsignedShort(converted, equalToUnsignedShort(123));
+    
+    [self verifyNumberFromTestNumberStringWithType:@encode(unsigned short)];
 }
 
 - (void)test_converts_to_unsigned_long
 {
     unsigned long converted = [_typeConverter convertToUnsignedLong:@"123"];
     assertThatUnsignedLong(converted, equalToUnsignedLong(123));
+    
+    [self verifyNumberFromTestNumberStringWithType:@encode(unsigned long)];
 }
 
-- (void)test_converts_to_unsigned_double
+- (void)test_converts_to_double
 {
     double converted = [_typeConverter convertToDouble:@"3.14159628"];
     assertThatDouble(converted, equalToDouble(3.14159628));
+    
+    [self verifyNumberFromTestNumberStringWithType:@encode(double)];
 }
 
 - (void)test_converts_to_selector
@@ -271,6 +293,18 @@
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"36" requiredType:descriptor];
     unsigned int expected = 36;
     [verify(mockInvocation) setArgument:&expected atIndex:2];
+}
+
+#pragma mark - Helpers
+- (void)verifyNumberFromTestNumberStringWithType:(char *)type
+{
+    NSNumber *number = [self valueFromTestNumberStringWithType:type];
+    assertThat(number, equalTo(@(TYPHOON_TEST_VALUE)));
+}
+
+- (id)valueFromTestNumberStringWithType:(char *)type
+{
+    return [_typeConverter valueFromText:_testNumberString withType:[TyphoonTypeDescriptor descriptorWithEncodedType:type]];
 }
 
 

@@ -79,6 +79,8 @@ typedef enum {
 
 @property(nonatomic, strong, readonly) NSString *structureTypeName;
 
++ (TyphoonTypeDescriptor *)descriptorWithEncodedType:(char *)encodedType;
+
 + (TyphoonTypeDescriptor *)descriptorWithTypeCode:(NSString *)typeCode;
 
 + (TyphoonTypeDescriptor *)descriptorWithClassOrProtocol:(id)classOrProtocol;
