@@ -148,6 +148,40 @@
     assertThatUnsignedLongLong(converted, equalToUnsignedLongLong(0));
 }
 
+#pragma mark - valueForText:withType:
+- (void)test_pointer_type
+{
+    NSString *typeCode = [NSString stringWithCString:@encode(void *) encoding:NSUTF8StringEncoding];
+    TyphoonTypeDescriptor *pointerType = [[TyphoonTypeDescriptor alloc] initWithTypeCode:typeCode];
+    
+    id valueOrNumber = [_typeConverter valueFromText:@"123456" withType:pointerType];
+    
+    void *pointer = [valueOrNumber pointerValue];
+    STAssertEquals(pointer, (void *)123456, nil);
+}
+
+- (void)test_unknown_pointer_type
+{
+    TyphoonTypeDescriptor *unknownPointerType = [[TyphoonTypeDescriptor alloc] initWithTypeCode:@"^?"];
+    
+    id valueOrNumber = [_typeConverter valueFromText:@"123456" withType:unknownPointerType];
+    
+    void *pointer = [valueOrNumber pointerValue];
+    STAssertEquals(pointer, (void *)123456, nil);
+}
+
+- (void)test_unknown_type
+{
+    TyphoonTypeDescriptor *unknownType = [[TyphoonTypeDescriptor alloc] initWithTypeCode:@"?"];
+    
+    @try {
+        [_typeConverter valueFromText:@"123456" withType:unknownType];
+        STFail(@"Attempting to create a value from a non-pointer of unknown type should raise an exception.");
+    }
+    @catch (NSException *exception) {
+    }
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Invocations
 
