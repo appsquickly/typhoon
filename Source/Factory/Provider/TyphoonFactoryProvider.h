@@ -122,7 +122,7 @@
   {
     [definition injectProperty:@selector(creditService)];
     [definition injectProperty:@selector(authService)];
-  } factory^id (id<PaymentFactory> factory, NSDate *startDate, NSUInteger amount)
+  } factory:^id (id<PaymentFactory> factory, NSDate *startDate, NSUInteger amount)
   {
     return [[Payment alloc] initWithCreditService:factory.creditService authService:factory.authService startDate:startDate amount:amount];
   }];
