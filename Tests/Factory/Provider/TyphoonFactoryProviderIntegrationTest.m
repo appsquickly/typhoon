@@ -79,4 +79,39 @@
     assertThat(pizza.factory, is(equalTo(componentFactory)));
 }
 
+- (void)test_assisted_factory_doesnt_blow_up_when_calling_one_of_the_methods
+{
+    @autoreleasepool {
+        id<PaymentFactory> factory1;
+
+        @autoreleasepool {
+            factory1 = [assembly paymentFactory];
+
+            id<Payment> payment1 = [factory1 paymentWithStartDate:[NSDate date] amount:123];
+
+            assertThat(payment1, is(notNilValue()));
+        }
+
+        id<Payment> payment2 = [factory1 paymentWithStartDate:[NSDate date] amount:456];
+
+        assertThat(payment2, is(notNilValue()));
+    }
+
+    @autoreleasepool {
+        id<PizzaFactory> factory2;
+
+        @autoreleasepool {
+            factory2 = [assembly pizzaFactory];
+
+            id<Pizza> pizza1 = [factory2 pizzaWithRadius:789.123 ingredients:@[@"Cheese", @"Ham"]];
+
+            assertThat(pizza1, is(notNilValue()));
+        }
+
+        id<Pizza> pizza2 = [factory2 largePizzaWithIngredients:@[@"Bacon"]];
+
+        assertThat(pizza2, is(notNilValue()));
+    }
+}
+
 @end

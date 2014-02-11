@@ -44,6 +44,27 @@
     assertThat([assistedFactory injectionValueForProperty:@"property"], is(equalTo(value)));
 }
 
+- (void)test_dependency_value_should_return_value_previously_set
+{
+    id value = [[NSObject alloc] init];
+
+    [assistedFactory setDependencyValue:value forProperty:@"property"];
+
+    assertThat([assistedFactory dependencyValueForProperty:@"property"], is(equalTo(value)));
+}
+
+- (void)test_dependency_value_should_return_value_returned_from_injected_value
+{
+    id value = [[NSObject alloc] init];
+    TyphoonPropertyInjectionLazyValue lazyValue = ^id{ return value; };
+
+    id mockProperty = mock([TyphoonAbstractInjectedProperty class]);
+    [given([mockProperty name]) willReturn:@"property"];
+    [assistedFactory shouldInjectProperty:mockProperty withType:nil lazyValue:lazyValue];
+
+    assertThat([assistedFactory dependencyValueForProperty:@"property"], is(equalTo(value)));
+}
+
 - (void)test_should_respond_to_dummyGetter
 {
     assertThatBool([assistedFactory respondsToSelector:@selector(_dummyGetter)], is(equalToBool(YES)));

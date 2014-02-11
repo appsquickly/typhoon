@@ -106,20 +106,30 @@ static void AddPropertyGetter(Class factoryClass, objc_property_t property) {
     NSString *name = [NSString stringWithCString:cName encoding:NSASCIIStringEncoding];
     SEL getterSEL = sel_registerName(cName);
 
-    class_addIvar(factoryClass, cName, sizeof(id), log2(sizeof(id)), @encode(id));
-
     IMP getterIMP = imp_implementationWithBlock(^id(TyphoonAssistedFactoryBase *_self) {
-        Ivar ivar = class_getInstanceVariable([_self class], [name UTF8String]);
-        id value = object_getIvar(_self, ivar);
-        @synchronized (_self) {
-            if (!value) {
-                value = ((TyphoonPropertyInjectionLazyValue) [_self injectionValueForProperty:name])();
-                object_setIvar(_self, ivar, value);
-            }
-        }
-        return value;
+        return [_self dependencyValueForProperty:name];
     });
     class_addMethod(factoryClass, getterSEL, getterIMP, method_getTypeEncoding(getter));
+}
+
+static void AddPropertySetter(Class factoryClass, objc_property_t property)
+{
+    // This dummy will give us the type encodings of the properties.
+    // Only object properties are supported.
+    Method setter = class_getInstanceMethod([TyphoonAssistedFactoryBase class], @selector(_setDummySetter:));
+
+    const char* cName = property_getName(property);
+    NSString* name = [NSString stringWithCString:cName encoding:NSASCIIStringEncoding];
+    NSString* setterName = [NSString stringWithFormat:@"set%@%@:",
+                                                      [[name substringToIndex:1] uppercaseString],
+                                                      [name substringFromIndex:1]];
+    SEL setterSEL = sel_registerName([setterName cStringUsingEncoding:NSASCIIStringEncoding]);
+
+    IMP setterIMP = imp_implementationWithBlock(^(TyphoonAssistedFactoryBase* _self, id value)
+    {
+        [_self setDependencyValue:value forProperty:name];
+    });
+    class_addMethod(factoryClass, setterSEL, setterIMP, method_getTypeEncoding(setter));
 }
 
 static void AddProperty(Class factoryClass, objc_property_t property) {
@@ -135,6 +145,7 @@ static void AddPropertiesToFactory(Class factoryClass, Protocol *protocol) {
     for (unsigned int idx = 0; idx < propertiesCount; idx++) {
         objc_property_t property = properties[idx];
         AddPropertyGetter(factoryClass, property);
+        AddPropertySetter(factoryClass, property);
         AddProperty(factoryClass, property);
     }
     free(properties);
