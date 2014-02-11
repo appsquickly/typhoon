@@ -19,11 +19,35 @@
 @implementation NSInvocation (TCFInstanceBuilder)
 
 /** Returns YES if selector returns retained instance (not autoreleased) */
-static BOOL typhoon_IsSelectorReturnsRetained(SEL selector) {
-    NSString *selectorString = NSStringFromSelector(selector);
+static BOOL typhoon_IsSelectorReturnsRetained(SEL selector)
+{
+    // According to http://clang.llvm.org/docs/AutomaticReferenceCounting.html#method-families
+    // for a selector to be in a given family, the selector must start with the
+    // family name, ignoring underscore prefixes, and followed by a character
+    // other than a lowercase letter.
+    // Otherwise methods like [MYRhyme initialRhyme] or [Player newbieWithName:]
+    // will match incorrectly.
+    static NSRegularExpression *methodFamily = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSError *error = nil;
+        methodFamily = [[NSRegularExpression alloc] initWithPattern:@"^_*(init|new|copy|mutableCopy)($|[^a-z])"
+                                                            options:0
+                                                              error:error];
 
-    return [selectorString hasPrefix:@"init"] || [selectorString hasPrefix:@"new"] || [selectorString hasPrefix:@"copy"] ||
-        [selectorString hasPrefix:@"mutableCopy"];
+        if (!methodFamily) {
+            @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                           reason:[error localizedDescription]
+                                         userInfo:[error userInfo]];
+        }
+    });
+
+    NSString *selectorString = NSStringFromSelector(selector);
+    NSUInteger numberOfMatches = [methodFamily numberOfMatchesInString:selectorString
+                                                               options:NSMatchingAnchored
+                                                                 range:NSMakeRange(0, selectorString.length)];
+
+    return numberOfMatches != 0;
 }
 
 - (id)typhoon_resultOfInvokingOn:(id)instanceOrClass {
