@@ -20,8 +20,8 @@
 #import "TyphoonPropertyInjectedAsCollection.h"
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
 #import "TyphoonPropertyInjectedByFactoryReference.h"
+#import "TyphoonPropertyInjectedByComponentFactory.h"
 #import "TyphoonDefinition+Infrastructure.h"
-
 
 @implementation TyphoonDefinition
 
@@ -124,6 +124,11 @@
         collectionValues(weakPropertyInjectedAsCollection);
     }
     [_injectedProperties addObject:propertyInjectedAsCollection];
+}
+
+- (void)injectPropertyWithComponentFactory:(SEL)selector {
+    TyphoonPropertyInjectedByComponentFactory *propertyInjection = [[TyphoonPropertyInjectedByComponentFactory alloc] initWithName:NSStringFromSelector(selector)];
+    [_injectedProperties addObject:propertyInjection];
 }
 
 - (void)setInitializer:(TyphoonInitializer *)initializer {

@@ -16,4 +16,12 @@
 
 - (id)injectionAwareObject;
 
+- (id)injectionByProperty;
+
+- (id)injectionByInitialization;
+
+- (id)injectionByPropertyAssemblyType;
+
+- (id)injectionByPropertyFactoryType;
+
 @end

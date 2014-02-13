@@ -9,27 +9,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "ComponentFactoryAwareObject.h"
+#import "TyphoonAbstractInjectedProperty.h"
 
-@implementation ComponentFactoryAwareObject
-{
-    id factory;
-}
+@interface TyphoonPropertyInjectedByComponentFactory : TyphoonAbstractInjectedProperty
 
-@synthesize factory;
-
-- (void)setFactory:(TyphoonComponentFactory*)theFactory
-{
-    factory = theFactory;
-}
-
-- (id) initWithComponentFactory:(TyphoonComponentFactory *)_factory
-{
-    self = [super init];
-    if (self) {
-        self.factory = _factory;
-    }
-    return self;
-}
+- (instancetype) initWithName:(NSString *)name;
 
 @end

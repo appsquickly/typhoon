@@ -20,6 +20,7 @@
 #import "TyphoonParameterInjectedWithObjectInstance.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonParameterInjectedAsCollection.h"
+#import "TyphoonParameterInjectedByComponentFactory.h"
 
 @implementation TyphoonInitializer
 
@@ -114,6 +115,12 @@
     }];
 }
 
+- (void)injectWithComponentFactoryAsName:(NSString *)name {
+    [self injectParameterNamed:name success:^(NSInteger index) {
+        [self injectWithComponentFactoryAtIndex:index];
+    }];
+}
+
 - (void)injectParameterNamed:(NSString *)name success:(void (^)(NSInteger))success {
     NSInteger index = [self indexOfParameter:name];
     if (index == NSNotFound) {
@@ -169,6 +176,13 @@
 }
 
 #pragma mark injectParameterAtIndex:
+
+- (void)injectWithComponentFactoryAtIndex:(NSUInteger)index {
+    if ([self canAddParameterAtIndex:index]) {
+        [self addParameter:[[TyphoonParameterInjectedByComponentFactory alloc] initWithParameterIndex:index]];
+    }
+}
+
 
 - (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString *)reference {
     if ([self canAddParameterAtIndex:index]) {
@@ -227,6 +241,10 @@
 
 - (void)injectWithCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues requiredType:(id)requiredType {
     [self injectParameterAtIndex:[self indexToAddParameter] asCollection:collectionValues requiredType:requiredType];
+}
+
+- (void)injectWithComponentFactory {
+    [self injectWithComponentFactoryAtIndex:[self indexToAddParameter]];
 }
 
 /* ====================================================================================================================================== */

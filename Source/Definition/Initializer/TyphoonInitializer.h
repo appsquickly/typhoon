@@ -119,6 +119,10 @@ To inject a class object:
 */
 - (void)injectWithCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues requiredType:(id)requiredType;
 
+/**
+ * Injects TyphoonComponentFactory
+ */
+- (void)injectWithComponentFactory;
 
 #pragma mark - injectParameterNamed:
 - (void)injectParameterNamed:(NSString *)name withReference:(NSString *)reference;
@@ -142,6 +146,7 @@ To inject a class object:
 - (void)injectParameterNamed:(NSString *)name asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues
     requiredType:(id)requiredType;
 
+- (void)injectWithComponentFactoryAsName:(NSString *)name;
 
 #pragma mark - injectParameterAtIndex
 /**
@@ -160,5 +165,7 @@ To inject a class object:
 - (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString *)text requiredTypeOrNil:(id)requiredClass;
 
 - (void)injectParameterAtIndex:(NSUInteger)index withObject:(id)value;
+
+- (void)injectWithComponentFactoryAtIndex:(NSUInteger)index;
 
 @end

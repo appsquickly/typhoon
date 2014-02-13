@@ -12,8 +12,16 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryAware.h"
 
+#import "TyphoonComponentFactory.h"
+#import "ComponentFactoryAwareAssembly.h"
+
 @interface ComponentFactoryAwareObject : NSObject <TyphoonComponentFactoryAware>
 
 @property(readonly) id factory;
+
+@property(nonatomic, strong) ComponentFactoryAwareAssembly *assembly;
+@property(nonatomic, strong) TyphoonComponentFactory *componentFactory;
+
+- (id) initWithComponentFactory:(TyphoonComponentFactory *)factory;
 
 @end

@@ -37,4 +37,29 @@
     assertThat(object.factory, sameInstance(factory));
 }
 
+- (void)test_factory_injection_by_property
+{
+    object = [factory injectionByProperty];
+    assertThat(object.factory, sameInstance(factory));
+}
+
+- (void)test_factory_injection_by_initialization
+{
+    object = [factory injectionByProperty];
+    assertThat(object.factory, sameInstance(factory));
+}
+
+- (void)test_factory_injection_by_property_assembly_type
+{
+    object = [factory injectionByPropertyAssemblyType];
+    assertThat(object.factory, sameInstance(factory));
+}
+
+- (void)test_factory_injection_by_property_factory_type
+{
+    object = [factory injectionByPropertyFactoryType];
+    assertThat(object.factory, sameInstance(factory));
+}
+
+
 @end
