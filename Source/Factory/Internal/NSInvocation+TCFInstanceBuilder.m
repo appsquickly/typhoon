@@ -33,7 +33,7 @@ static BOOL typhoon_IsSelectorReturnsRetained(SEL selector)
         NSError *error = nil;
         methodFamily = [[NSRegularExpression alloc] initWithPattern:@"^_*(init|new|copy|mutableCopy)($|[^a-z])"
                                                             options:0
-                                                              error:error];
+                                                              error:&error];
 
         if (!methodFamily) {
             @throw [NSException exceptionWithName:NSInternalInconsistencyException
