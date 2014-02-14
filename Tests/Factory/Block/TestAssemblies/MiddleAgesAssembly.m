@@ -22,87 +22,72 @@
 
 @implementation MiddleAgesAssembly
 
-- (id)knight
-{
-    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)knight {
+    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest) withDefinition:[self defaultQuest]];
         [definition injectProperty:@selector(damselsRescued) withDefinition:[self cavalryMan] selector:@selector(damselsRescued)];
         [definition setScope:TyphoonScopeObjectGraph];
     }];
 }
 
-- (id)cavalryMan
-{
-    return [TyphoonDefinition withClass:[CavalryMan class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)cavalryMan {
+    return [TyphoonDefinition withClass:[CavalryMan class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest) withDefinition:[self defaultQuest]];
         [definition injectProperty:@selector(damselsRescued) withValueAsText:@"12"];
         definition.scope = TyphoonScopeSingleton;
     }];
 }
 
-- (id)anotherKnight
-{
-    return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer* initializer)
-    {
+- (id)anotherKnight {
+    return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:hitRatio:);
         [initializer injectWithDefinition:[self defaultQuest]];
         [initializer injectWithValueAsText:@"13.75"];
 
-    } properties:^(TyphoonDefinition* definition)
-    {
+    } properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(hasHorseWillTravel) withValueAsText:@"YES"];
 
     }];
 }
 
-- (id)yetAnotherKnight
-{
-    return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer* initializer)
-    {
+- (id)yetAnotherKnight {
+    return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:);
         [initializer injectWithDefinition:[self defaultQuest]];
 
-    } properties:^(TyphoonDefinition* definition)
-    {
+    } properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(hitRatio) withValueAsText:@"13.75"];
         [definition injectProperty:@selector(hasHorseWillTravel) withValueAsText:@"YES"];
-        [definition injectProperty:@selector(propertyInjectedAsInstance) withObjectInstance:@[@"foo", @"bar"]];
+        [definition injectProperty:@selector(propertyInjectedAsInstance) withObjectInstance:@[
+            @"foo",
+            @"bar"
+        ]];
     }];
 }
 
-- (id)knightWithCollections
-{
-    return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer* initializer)
-    {
+- (id)knightWithCollections {
+    return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:);
         [initializer injectWithDefinition:[self defaultQuest]];
 
-    } properties:^(TyphoonDefinition* definition)
-    {
-        [definition injectProperty:@selector(favoriteDamsels) asCollection:^(TyphoonPropertyInjectedAsCollection* collection)
-        {
+    } properties:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(favoriteDamsels) asCollection:^(TyphoonPropertyInjectedAsCollection *collection) {
             [collection addItemWithText:@"Mary" requiredType:[NSString class]];
             [collection addItemWithText:@"Mary" requiredType:[NSString class]];
         }];
 
-        [definition injectProperty:@selector(friends) asCollection:^(TyphoonPropertyInjectedAsCollection* collection)
-        {
+        [definition injectProperty:@selector(friends) asCollection:^(TyphoonPropertyInjectedAsCollection *collection) {
             [collection addItemWithDefinition:[self knight]];
             [collection addItemWithDefinition:[self anotherKnight]];
         }];
     }];
 }
 
-- (id)knightWithCollectionInConstructor
-{
-    return [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer* initializer)
-    {
+- (id)knightWithCollectionInConstructor {
+    return [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:favoriteDamsels:);
         [initializer injectWithDefinition:[self defaultQuest]];
-        [initializer injectWithCollection:^(TyphoonParameterInjectedAsCollection* collection)
-        {
+        [initializer injectWithCollection:^(TyphoonParameterInjectedAsCollection *collection) {
             [collection addItemWithText:@"Mary" requiredType:[NSString class]];
             [collection addItemWithText:@"Jane" requiredType:[NSString class]];
 
@@ -110,38 +95,30 @@
     }];
 }
 
-- (id)defaultQuest
-{
+- (id)defaultQuest {
     return [TyphoonDefinition withClass:[CampaignQuest class]];
 }
 
-- (id)environmentDependentQuest
-{
+- (id)environmentDependentQuest {
     return [TyphoonDefinition withClass:[CampaignQuest class]];
 }
 
-- (id)serviceUrl;
-{
-    return [TyphoonDefinition withClass:[NSURL class] initialization:^(TyphoonInitializer* initializer)
-    {
+- (id)serviceUrl; {
+    return [TyphoonDefinition withClass:[NSURL class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(URLWithString:);
         [initializer injectParameterNamed:@"string" withValueAsText:@"http://dev.foobar.com/service/" requiredTypeOrNil:[NSString class]];
     }];
 }
 
-- (id)swordFactory
-{
+- (id)swordFactory {
     return [TyphoonDefinition withClass:[SwordFactory class]];
 }
 
-- (id)blueSword
-{
-    return [TyphoonDefinition withClass:[Sword class] initialization:^(TyphoonInitializer* initializer)
-    {
+- (id)blueSword {
+    return [TyphoonDefinition withClass:[Sword class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(swordWithSpecification:);
         [initializer injectParameterNamed:@"specification" withValueAsText:@"blue" requiredTypeOrNil:[NSString class]];
-    } properties:^(TyphoonDefinition* definition)
-    {
+    } properties:^(TyphoonDefinition *definition) {
         definition.factory = [self swordFactory];
     }];
 }

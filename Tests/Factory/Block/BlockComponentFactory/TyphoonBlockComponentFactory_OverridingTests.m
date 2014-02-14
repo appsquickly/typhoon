@@ -23,18 +23,16 @@
 @end
 
 
-@implementation TyphoonBlockComponentFactory_OverridingTests
-{
+@implementation TyphoonBlockComponentFactory_OverridingTests {
 
 }
 
-- (void)test_allows_overriding_methods_in_an_assembly
-{
-    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
-            [ExtendedMiddleAgesAssembly assembly],
+- (void)test_allows_overriding_methods_in_an_assembly {
+    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
+        [ExtendedMiddleAgesAssembly assembly],
     ]];
 
-    Knight* knight = [(ExtendedMiddleAgesAssembly*)factory yetAnotherKnight];
+    Knight *knight = [(ExtendedMiddleAgesAssembly *) factory yetAnotherKnight];
     LogTrace(@"Knight: %@", knight);
     assertThat(knight, notNilValue());
 }

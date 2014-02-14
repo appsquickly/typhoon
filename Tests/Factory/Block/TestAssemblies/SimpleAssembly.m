@@ -6,8 +6,7 @@
 #import "SimpleAssembly.h"
 
 
-@implementation SimpleAssembly
-{
+@implementation SimpleAssembly {
 
 }
 

@@ -12,7 +12,7 @@
 
 @interface PrototypeInitInjected : NSObject
 
-@property (nonatomic, strong, readonly) PrototypePropertyInjected *prototypePropertyInjected;
+@property(nonatomic, strong, readonly) PrototypePropertyInjected *prototypePropertyInjected;
 
 - (id)initWithDependency:(PrototypePropertyInjected *)prototypePropertyInjected;
 

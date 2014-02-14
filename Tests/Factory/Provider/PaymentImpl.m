@@ -18,11 +18,10 @@
 @synthesize startDate = _startDate;
 @synthesize amount = _amount;
 
-- (instancetype)initWithCreditService:(id<CreditService>)creditService authService:(id<AuthService>)authService startDate:(NSDate *)startDate amount:(NSUInteger)amount
-{
+- (instancetype)initWithCreditService:(id <CreditService>)creditService authService:(id <AuthService>)authService
+    startDate:(NSDate *)startDate amount:(NSUInteger)amount {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _creditService = creditService;
         _authService = authService;
         _startDate = startDate;
@@ -31,35 +30,26 @@
     return self;
 }
 
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"<%@:%p startDate:%@ amount:%lu>",
-            [self class], self,
-            _startDate, (unsigned long)_amount];
+- (NSString *)description {
+    return [NSString stringWithFormat:@"<%@:%p startDate:%@ amount:%lu>", [self class], self, _startDate, (unsigned long) _amount];
 }
 
 // Bogus implementations
 
-- (void)initialize
-{
+- (void)initialize {
 }
 
-- (instancetype)initWithCreditService:(id<CreditService>)creditService startDate:(NSDate *)startDate amount:(NSUInteger)amount
-{
+- (instancetype)initWithCreditService:(id <CreditService>)creditService startDate:(NSDate *)startDate amount:(NSUInteger)amount {
     return nil;
 }
 
-- (instancetype)initWithCreditService:(id<CreditService>)creditService authService:(id<AuthService>)authService startDate:(NSDate *)startDate
-{
+- (instancetype)initWithCreditService:(id <CreditService>)creditService authService:(id <AuthService>)authService
+    startDate:(NSDate *)startDate {
     return nil;
 }
 
-- (instancetype)initWithCreditService:(id<CreditService>)creditService
-                          authService:(id<AuthService>)authService
-                            startDate:(NSDate *)startDate
-                               amount:(NSUInteger)amount
-                         customerName:(NSString *)customerName
-{
+- (instancetype)initWithCreditService:(id <CreditService>)creditService authService:(id <AuthService>)authService
+    startDate:(NSDate *)startDate amount:(NSUInteger)amount customerName:(NSString *)customerName {
     return nil;
 }
 

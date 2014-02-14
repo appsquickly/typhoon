@@ -18,57 +18,48 @@
 @implementation Knight
 
 /* ============================================================ Initializers ============================================================ */
-- (id)initWithQuest:(id <Quest>)quest
-{
+- (id)initWithQuest:(id <Quest>)quest {
     return [self initWithQuest:quest damselsRescued:0];
 }
 
-- (id)initWithQuest:(id <Quest>)quest damselsRescued:(NSUInteger)damselsRescued
-{
+- (id)initWithQuest:(id <Quest>)quest damselsRescued:(NSUInteger)damselsRescued {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _quest = quest;
         _damselsRescued = damselsRescued;
     }
     return self;
 }
 
-- (id)initWithQuest:(id <Quest>)quest favoriteDamsels:(NSArray*)favoriteDamsels;
-{
+- (id)initWithQuest:(id <Quest>)quest favoriteDamsels:(NSArray *)favoriteDamsels; {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _quest = quest;
         _favoriteDamsels = favoriteDamsels;
     }
     return self;
 }
 
-- (id)initWithDamselsRescued:(NSUInteger)damselsRescued foo:(id)foobar
-{
+- (id)initWithDamselsRescued:(NSUInteger)damselsRescued foo:(id)foobar {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _damselsRescued = damselsRescued;
         _foobar = foobar;
-        
+
     }
     return self;
 }
 
 /* ========================================================== Interface Methods ========================================================= */
-- (void)setQuest:(CampaignQuest*)quest
-{
+- (void)setQuest:(CampaignQuest *)quest {
     _quest = quest;
 }
 
-- (NSString*)description
-{
-    NSMutableString* description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
+- (NSString *)description {
+    NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
     [description appendFormat:@"self.quest=%@", self.quest];
     [description appendFormat:@", self.foobar=%@", self.foobar];
-    [description appendFormat:@", self.damselsRescued=%lu", (unsigned long)self.damselsRescued];
+    [description appendFormat:@", self.damselsRescued=%lu", (unsigned long) self.damselsRescued];
     [description appendString:@">"];
     return description;
 }

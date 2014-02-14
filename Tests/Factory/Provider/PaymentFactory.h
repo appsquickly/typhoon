@@ -16,9 +16,9 @@
 
 @protocol PaymentFactory <NSObject>
 
-@property (nonatomic, strong, readonly) id<CreditService> creditService;
-@property (nonatomic, strong, readonly) id<AuthService> authService;
+@property(nonatomic, strong, readonly) id <CreditService> creditService;
+@property(nonatomic, strong, readonly) id <AuthService> authService;
 
-- (id<Payment>)paymentWithStartDate:(NSDate *)startDate amount:(NSUInteger)amount;
+- (id <Payment>)paymentWithStartDate:(NSDate *)startDate amount:(NSUInteger)amount;
 
 @end

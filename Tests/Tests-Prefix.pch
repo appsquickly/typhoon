@@ -3,21 +3,24 @@
 //
 
 #ifdef __OBJC__
-    #import <Foundation/Foundation.h>
 
-    #if __IPHONE_OS_VERSION_MIN_REQUIRED
-    
-    #else
+#import <Foundation/Foundation.h>
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+
+#else
         #import <Cocoa/Cocoa.h>
     #endif
 #endif
 
 
 #define HC_SHORTHAND
+
 #import <OCHamcrest/OCHamcrest.h>
 
 #define typhoon_shorthand
 
 #define MOCKITO_SHORTHAND
+
 #import <OCMockito/OCMockito.h>
 

@@ -13,13 +13,9 @@
 
 @implementation Person
 
-- (instancetype)initWithCreditService:(id<CreditService>)creditService
-                          authService:(id<AuthService>)authService
-                            firstName:(NSString *)firstName
-                             lastName:(NSString *)lastName
-{
-    if (self = [super init])
-    {
+- (instancetype)initWithCreditService:(id <CreditService>)creditService authService:(id <AuthService>)authService
+    firstName:(NSString *)firstName lastName:(NSString *)lastName {
+    if (self = [super init]) {
         _usedInitializer = _cmd;
     }
 
@@ -27,46 +23,34 @@
 }
 
 
-- (instancetype)initWithCreditService:(id<CreditService>)creditService
-                          authService:(id<AuthService>)authService
-                            firstName:(NSString *)firstName
-{
-    if (self = [super init])
-    {
+- (instancetype)initWithCreditService:(id <CreditService>)creditService authService:(id <AuthService>)authService
+    firstName:(NSString *)firstName {
+    if (self = [super init]) {
         _usedInitializer = _cmd;
     }
 
     return self;
 }
 
-- (instancetype)initWithCreditService:(id<CreditService>)creditService
-                            firstName:(NSString *)firstName
-{
-    if (self = [super init])
-    {
+- (instancetype)initWithCreditService:(id <CreditService>)creditService firstName:(NSString *)firstName {
+    if (self = [super init]) {
         _usedInitializer = _cmd;
     }
 
     return self;
 }
 
-- (instancetype)initWithCreditService:(id<CreditService>)creditService
-                          authService:(id<AuthService>)authService
-                             lastName:(NSString *)lastName
-{
-    if (self = [super init])
-    {
+- (instancetype)initWithCreditService:(id <CreditService>)creditService authService:(id <AuthService>)authService
+    lastName:(NSString *)lastName {
+    if (self = [super init]) {
         _usedInitializer = _cmd;
     }
 
     return self;
 }
 
-- (instancetype)initWithCreditService:(id<CreditService>)creditService
-                             lastName:(NSString *)lastName
-{
-    if (self = [super init])
-    {
+- (instancetype)initWithCreditService:(id <CreditService>)creditService lastName:(NSString *)lastName {
+    if (self = [super init]) {
         _usedInitializer = _cmd;
     }
 

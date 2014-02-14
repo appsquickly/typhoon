@@ -10,18 +10,18 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCStringContainsInOrder : HCBaseMatcher
-{
+@interface HCStringContainsInOrder : HCBaseMatcher {
     NSArray *substrings;
 }
 
 + (id)containsInOrder:(NSArray *)substringList;
+
 - (id)initWithSubstrings:(NSArray *)substringList;
 
 @end
 
 
-OBJC_EXPORT id<HCMatcher> HC_stringContainsInOrder(NSString *substring, ...) NS_REQUIRES_NIL_TERMINATION;
+OBJC_EXPORT id <HCMatcher> HC_stringContainsInOrder(NSString *substring, ...) NS_REQUIRES_NIL_TERMINATION;
 
 /**
     stringContainsInOrder(firstString, ...) -

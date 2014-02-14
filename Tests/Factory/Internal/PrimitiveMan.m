@@ -12,36 +12,19 @@
 #import "PrimitiveMan.h"
 
 
-@implementation PrimitiveMan
-{
+@implementation PrimitiveMan {
 
 }
 
-- (id)initWithIntValue:(int)intValue
-      unsignedIntValue:(unsigned int)unsignedIntValue
-            shortValue:(short)shortValue
-    unsignedShortValue:(unsigned short)unsignedShortValue
-             longValue:(long)longValue
-     unsignedLongValue:(unsigned long)unsignedLongValue
-         longLongValue:(long long)longLongValue
- unsignedLongLongValue:(unsigned long long)unsignedLongLongValue
-     unsignedCharValue:(unsigned char)unsignedCharValue
-            floatValue:(float)floatValue
-           doubleValue:(double)doubleValue
-             boolValue:(BOOL)boolValue
-          integerValue:(NSInteger)integerValue
-  unsignedIntegerValue:(NSUInteger)unsignedIntegerValue
-            classValue:(Class)classValue
-         selectorValue:(SEL)selectorValue
-               cstring:(char *)cString
-               nsRange:(NSRange)nsRange
-          pointerValue:(void *)pointer
-        unknownPointer:(PrimitiveManStruct *)unknownPointer
-    pointerInsideValue:(NSValue *)pointerInsideValue
-{
+- (id)initWithIntValue:(int)intValue unsignedIntValue:(unsigned int)unsignedIntValue shortValue:(short)shortValue
+    unsignedShortValue:(unsigned short)unsignedShortValue longValue:(long)longValue unsignedLongValue:(unsigned long)unsignedLongValue
+    longLongValue:(long long)longLongValue unsignedLongLongValue:(unsigned long long)unsignedLongLongValue
+    unsignedCharValue:(unsigned char)unsignedCharValue floatValue:(float)floatValue doubleValue:(double)doubleValue
+    boolValue:(BOOL)boolValue integerValue:(NSInteger)integerValue unsignedIntegerValue:(NSUInteger)unsignedIntegerValue
+    classValue:(Class)classValue selectorValue:(SEL)selectorValue cstring:(char *)cString nsRange:(NSRange)nsRange
+    pointerValue:(void *)pointer unknownPointer:(PrimitiveManStruct *)unknownPointer pointerInsideValue:(NSValue *)pointerInsideValue {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _intValue = intValue;
         _unsignedIntValue = unsignedIntValue;
         _shortValue = shortValue;

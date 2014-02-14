@@ -15,6 +15,6 @@
 
 @interface PrototypePropertyInjected : NSObject
 
-@property(nonatomic, strong) PrototypeInitInjected* prototypeInitInjected;
+@property(nonatomic, strong) PrototypeInitInjected *prototypeInitInjected;
 
 @end

@@ -10,22 +10,19 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsDictionaryContaining : HCBaseMatcher
-{
-    id<HCMatcher> keyMatcher;
-    id<HCMatcher> valueMatcher;
+@interface HCIsDictionaryContaining : HCBaseMatcher {
+    id <HCMatcher> keyMatcher;
+    id <HCMatcher> valueMatcher;
 }
 
-+ (id)isDictionaryContainingKey:(id<HCMatcher>)aKeyMatcher
-                          value:(id<HCMatcher>)aValueMatcher;
++ (id)isDictionaryContainingKey:(id <HCMatcher>)aKeyMatcher value:(id <HCMatcher>)aValueMatcher;
 
-- (id)initWithKeyMatcher:(id<HCMatcher>)aKeyMatcher
-            valueMatcher:(id<HCMatcher>)aValueMatcher;
+- (id)initWithKeyMatcher:(id <HCMatcher>)aKeyMatcher valueMatcher:(id <HCMatcher>)aValueMatcher;
 
 @end
 
 
-OBJC_EXPORT id<HCMatcher> HC_hasEntry(id keyMatch, id valueMatch);
+OBJC_EXPORT id <HCMatcher> HC_hasEntry(id keyMatch, id valueMatch);
 
 /**
     hasEntry(keyMatcher, valueMatcher) -

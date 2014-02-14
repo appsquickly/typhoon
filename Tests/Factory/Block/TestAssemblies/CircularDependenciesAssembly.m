@@ -23,43 +23,33 @@
 @implementation CircularDependenciesAssembly
 
 
-- (id)classA
-{
-    return [TyphoonDefinition withClass:[ClassADependsOnB class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)classA {
+    return [TyphoonDefinition withClass:[ClassADependsOnB class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnB) withDefinition:[self classB]];
     }];
 }
 
-- (id)classB
-{
-    return [TyphoonDefinition withClass:[ClassBDependsOnA class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)classB {
+    return [TyphoonDefinition withClass:[ClassBDependsOnA class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnA) withDefinition:[self classA]];
     }];
 }
 
-- (id)classC;
-{
-    return [TyphoonDefinition withClass:[ClassCDependsOnDAndE class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)classC; {
+    return [TyphoonDefinition withClass:[ClassCDependsOnDAndE class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnD) withDefinition:[self classD]];
         [definition injectProperty:@selector(dependencyOnE) withDefinition:[self classE]];
     }];
 }
 
-- (id)classD;
-{
-    return [TyphoonDefinition withClass:[ClassDDependsOnC class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)classD; {
+    return [TyphoonDefinition withClass:[ClassDDependsOnC class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnC) withDefinition:[self classC]];
     }];
 }
 
-- (id)classE;
-{
-    return [TyphoonDefinition withClass:[ClassEDependsOnC class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)classE; {
+    return [TyphoonDefinition withClass:[ClassEDependsOnC class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnC) withDefinition:[self classC]];
     }];
 }
@@ -83,22 +73,17 @@
 //}
 
 
-- (id)prototypeInitInjected
-{
-    return [TyphoonDefinition withClass:[PrototypeInitInjected class] initialization:^(TyphoonInitializer* initializer)
-    {
+- (id)prototypeInitInjected {
+    return [TyphoonDefinition withClass:[PrototypeInitInjected class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithDependency:);
         [initializer injectWithDefinition:[self prototypePropertyInjected]];
-    } properties:^(TyphoonDefinition* definition)
-    {
+    } properties:^(TyphoonDefinition *definition) {
         [definition setScope:TyphoonScopePrototype];
     }];
 }
 
-- (id)prototypePropertyInjected
-{
-    return [TyphoonDefinition withClass:[PrototypePropertyInjected class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)prototypePropertyInjected {
+    return [TyphoonDefinition withClass:[PrototypePropertyInjected class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(prototypeInitInjected) withDefinition:[self prototypeInitInjected]];
         [definition setScope:TyphoonScopePrototype];
     }];
@@ -106,38 +91,30 @@
 
 // Currently Resolving Overwrite
 
-- (id)croSingletonA
-{
-    return [TyphoonDefinition withClass:[CROSingletonA class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)croSingletonA {
+    return [TyphoonDefinition withClass:[CROSingletonA class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(prototypeB) withDefinition:[self croPrototypeB]];
         [definition injectProperty:@selector(prototypeA) withDefinition:[self croPrototypeA]];
         [definition setScope:TyphoonScopeSingleton];
     }];
 }
 
-- (id)croSingletonB
-{
-    return [TyphoonDefinition withClass:[CROSingletonB class] initialization:^(TyphoonInitializer* initializer)
-    {
+- (id)croSingletonB {
+    return [TyphoonDefinition withClass:[CROSingletonB class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithPrototypeB:);
         [initializer injectWithDefinition:[self croPrototypeB]];
     }];
 }
 
-- (id)croPrototypeA
-{
-    return [TyphoonDefinition withClass:[CROPrototypeA class] initialization:^(TyphoonInitializer* initializer)
-    {
+- (id)croPrototypeA {
+    return [TyphoonDefinition withClass:[CROPrototypeA class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithCROPrototypeB:);
         [initializer injectWithDefinition:[self croPrototypeB]];
     }];
 }
 
-- (id)croPrototypeB
-{
-    return [TyphoonDefinition withClass:[CROPrototypeB class] initialization:^(TyphoonInitializer* initializer)
-    {
+- (id)croPrototypeB {
+    return [TyphoonDefinition withClass:[CROPrototypeB class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithCROSingletonA:);
         [initializer injectWithDefinition:[self croSingletonA]];
     }];
@@ -145,8 +122,7 @@
 
 // Incorrect circular dependency
 
-- (id)incorrectPrototypeB
-{
+- (id)incorrectPrototypeB {
     return [TyphoonDefinition withClass:[CROPrototypeB class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithCROPrototypeA:);
         [initializer injectWithDefinition:[self incorrectPrototypeA]];
@@ -156,9 +132,8 @@
     }];
 }
 
-- (id)incorrectPrototypeA
-{
-    return [TyphoonDefinition withClass:[CROPrototypeA class] initialization:^(TyphoonInitializer* initializer){
+- (id)incorrectPrototypeA {
+    return [TyphoonDefinition withClass:[CROPrototypeA class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithCROPrototypeB:);
         [initializer injectWithDefinition:[self incorrectPrototypeB]];
     } properties:^(TyphoonDefinition *definition) {

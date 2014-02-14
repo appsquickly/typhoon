@@ -15,11 +15,9 @@
 
 @implementation CavalryMan
 
-- (id)initWithQuest:(id <Quest>)quest hitRatio:(float)hitRatio;
-{
+- (id)initWithQuest:(id <Quest>)quest hitRatio:(float)hitRatio; {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         self.quest = quest;
         _hitRatio = hitRatio;
     }
@@ -29,13 +27,11 @@
 
 // TODO: why are these empty implemntations here?
 // try to remove.
-- (void)beforePropertiesSet
-{
+- (void)beforePropertiesSet {
 
 }
 
-- (void)afterPropertiesSet
-{
+- (void)afterPropertiesSet {
 
 }
 

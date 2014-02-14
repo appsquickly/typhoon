@@ -15,35 +15,33 @@
 
 @implementation TyphoonObjectDeallocCallbackTests
 
-- (void)test_callback
-{
+- (void)test_callback {
     NSObject *object = [NSObject new];
-    
+
     __block BOOL notificationCalled = NO;
-    
+
     [object setDeallocNotificationInBlock:^{
         notificationCalled = YES;
     }];
-    
+
     object = nil;
-    
+
     assertThatBool(notificationCalled, equalToBool(YES));
 }
 
-- (void)test_callback_removing
-{
+- (void)test_callback_removing {
     NSObject *object = [NSObject new];
-    
+
     __block BOOL notificationCalled = NO;
-    
+
     [object setDeallocNotificationInBlock:^{
         notificationCalled = YES;
     }];
-    
+
     [object removeDeallocNotification];
-    
+
     object = nil;
-    
+
     assertThatBool(notificationCalled, equalToBool(NO));
 }
 

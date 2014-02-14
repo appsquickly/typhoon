@@ -8,12 +8,13 @@
 
 @interface TyphoonTestXMLBuilder : NSObject
 
-+ (TyphoonTestXMLBuilder*)vanillaDefinition;
++ (TyphoonTestXMLBuilder *)vanillaDefinition;
 
-- (TyphoonTestXMLBuilder*)withAttribute:(NSString*)string textValue:(NSString*)value;
-- (TyphoonRXMLElement*)build;
+- (TyphoonTestXMLBuilder *)withAttribute:(NSString *)string textValue:(NSString *)value;
 
-@property(nonatomic, readonly) NSString* class;
-@property(nonatomic, readonly) NSString* key;
+- (TyphoonRXMLElement *)build;
+
+@property(nonatomic, readonly) NSString *class;
+@property(nonatomic, readonly) NSString *key;
 
 @end

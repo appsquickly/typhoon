@@ -17,7 +17,7 @@
 @end
 
 
-OBJC_EXPORT id<HCMatcher> HC_containsString(NSString *aSubstring);
+OBJC_EXPORT id <HCMatcher> HC_containsString(NSString *aSubstring);
 
 /**
     containsString(aString) -
@@ -41,5 +41,5 @@ OBJC_EXPORT id<HCMatcher> HC_containsString(NSString *aSubstring);
     @ingroup text_matchers
  */
 #ifdef HC_SHORTHAND
-    #define containsString HC_containsString
+#define containsString HC_containsString
 #endif

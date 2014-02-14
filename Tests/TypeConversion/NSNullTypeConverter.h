@@ -16,6 +16,6 @@
 /**
  Converter used for testing.
  */
-@interface NSNullTypeConverter : NSObject<TyphoonTypeConverter>
+@interface NSNullTypeConverter : NSObject <TyphoonTypeConverter>
 
 @end

@@ -28,34 +28,29 @@
 @end
 
 
-
 @interface TestAssemblyWithMethod : EmptyTestAssembly
 @end
 
 @implementation TestAssemblyWithMethod
 
-- (void)aDefinitionMethod
-{
+- (void)aDefinitionMethod {
 
 }
 
 @end
-
 
 
 @interface TyphoonAssemblyAdviserTests : SenTestCase
 @end
 
 
-@implementation TyphoonAssemblyAdviserTests
-{
-    TyphoonAssemblyAdviser* adviser;
+@implementation TyphoonAssemblyAdviserTests {
+    TyphoonAssemblyAdviser *adviser;
 
     TyphoonAssembly *assembly;
 }
 
-- (void)testEnumeratesDefinitionSelectors_EmptyAssembly
-{
+- (void)testEnumeratesDefinitionSelectors_EmptyAssembly {
     assembly = [[EmptyTestAssembly alloc] init];
     adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
@@ -63,23 +58,21 @@
     assertThat(selectors, empty());
 }
 
-- (void)testEnumeratesDefinitionSelectors_AssemblyWithMethod
-{
+- (void)testEnumeratesDefinitionSelectors_AssemblyWithMethod {
     assembly = [[TestAssemblyWithMethod alloc] init];
     adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
     NSSet *selectors = [adviser enumerateDefinitionSelectors];
-    TyphoonSelector*theSelector = [TyphoonSelector selectorWithName:@"aDefinitionMethod"];
+    TyphoonSelector *theSelector = [TyphoonSelector selectorWithName:@"aDefinitionMethod"];
 
     assertThat(selectors, onlyContains(theSelector, nil));
 }
 
-- (void)testAdvisesAssembly
-{
+- (void)testAdvisesAssembly {
     assembly = [[TestAssemblyWithMethod alloc] init];
     adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
-    TyphoonTestMethodSwizzler* swizzler = [[TyphoonTestMethodSwizzler alloc] init];
+    TyphoonTestMethodSwizzler *swizzler = [[TyphoonTestMethodSwizzler alloc] init];
     adviser.swizzler = swizzler;
 
     [adviser adviseAssembly];
@@ -88,8 +81,7 @@
     [swizzler assertExchangedImplementationsFor:@"aDefinitionMethod" with:advisedName onClass:[assembly class]];
 }
 
-- (void)testConfiguresItselfWithARealSwizzler
-{
+- (void)testConfiguresItselfWithARealSwizzler {
     assembly = [[TestAssemblyWithMethod alloc] init];
     adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 

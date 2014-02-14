@@ -12,6 +12,6 @@
 
 @interface SingletonB : NSObject
 
-@property(nonatomic, strong) NotSingletonA* dependencyOnNotSingletonA;
+@property(nonatomic, strong) NotSingletonA *dependencyOnNotSingletonA;
 
 @end

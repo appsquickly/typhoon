@@ -16,15 +16,12 @@
 #import "Knight.h"
 #import "TyphoonDefinition.h"
 
-@implementation InvalidCollaboratingAssembly
-{
+@implementation InvalidCollaboratingAssembly {
 
 }
 
-- (id)knightWithExternalQuest
-{
-    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)knightWithExternalQuest {
+    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest) withDefinition:[[MiddleAgesAssembly assembly] environmentDependentQuest]];
     }];
 }

@@ -10,8 +10,7 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCSubstringMatcher : HCBaseMatcher
-{
+@interface HCSubstringMatcher : HCBaseMatcher {
     NSString *substring;
 }
 

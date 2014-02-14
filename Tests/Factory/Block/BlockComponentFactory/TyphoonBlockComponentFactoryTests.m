@@ -30,10 +30,9 @@
 
 @implementation TyphoonBlockComponentFactoryTests
 
-- (void)setUp
-{
+- (void)setUp {
     _componentFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[MiddleAgesAssembly assembly]];
-    TyphoonPropertyPlaceholderConfigurer* configurer = [[TyphoonPropertyPlaceholderConfigurer alloc] init];
+    TyphoonPropertyPlaceholderConfigurer *configurer = [[TyphoonPropertyPlaceholderConfigurer alloc] init];
     [configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
     [_componentFactory attachPostProcessor:configurer];
 
@@ -43,17 +42,15 @@
     _infrastructureComponentsFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[InfrastructureComponentsAssembly assembly]];
 }
 
-- (void)test_resolves_component_using_selector
-{
-    MiddleAgesAssembly* assembly = (MiddleAgesAssembly*) _componentFactory;
-    Knight* knight = [assembly knight];
+- (void)test_resolves_component_using_selector {
+    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *) _componentFactory;
+    Knight *knight = [assembly knight];
     assertThat(knight, notNilValue());
 }
 
-- (void)test_allows_injecting_properties_with_object_instance
-{
-    MiddleAgesAssembly* assembly = (MiddleAgesAssembly*) _componentFactory;
-    CavalryMan* knight = [assembly yetAnotherKnight];
+- (void)test_allows_injecting_properties_with_object_instance {
+    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *) _componentFactory;
+    CavalryMan *knight = [assembly yetAnotherKnight];
     assertThat(knight.propertyInjectedAsInstance, notNilValue());
 
     LogTrace(@"%@", knight.propertyInjectedAsInstance);

@@ -8,9 +8,9 @@
 
 @interface ClassWithConstructor : NSObject
 
-+ (instancetype)constructorWithString:(NSString*)string;
++ (instancetype)constructorWithString:(NSString *)string;
 
-- (instancetype)initWithString:(NSString*)string;
+- (instancetype)initWithString:(NSString *)string;
 
 @property(readonly, nonatomic) NSString *string;
 

@@ -20,52 +20,41 @@
 
 @implementation ObjectGraphAssembly
 
-- (id)objectGraphKnight
-{
-    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)objectGraphKnight {
+    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(homeFort) withDefinition:[self objectGraphFort]];
         [definition injectProperty:@selector(quest) withDefinition:[self objectGraphQuest]];
     }];
 }
 
-- (id)objectGraphFort
-{
+- (id)objectGraphFort {
     return [TyphoonDefinition withClass:[Fort class]];
 }
 
-- (id)objectGraphQuest
-{
-    return [TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)objectGraphQuest {
+    return [TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(fort) withDefinition:[self objectGraphFort]];
     }];
 }
 
 /* ====================================================================================================================================== */
 
-- (id)prototypeKnight
-{
-    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)prototypeKnight {
+    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(homeFort) withDefinition:[self prototypeFort]];
         [definition injectProperty:@selector(quest) withDefinition:[self prototypeQuest]];
         [definition setScope:TyphoonScopePrototype];
     }];
 }
 
-- (id)prototypeFort
-{
-    return [TyphoonDefinition withClass:[Fort class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)prototypeFort {
+    return [TyphoonDefinition withClass:[Fort class] properties:^(TyphoonDefinition *definition) {
         [definition setScope:TyphoonScopePrototype];
     }];
 }
 
-- (id)prototypeQuest
-{
-    return [TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)prototypeQuest {
+    return [TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(fort) withDefinition:[self prototypeFort]];
         [definition setScope:TyphoonScopePrototype];
     }];

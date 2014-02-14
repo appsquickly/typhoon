@@ -13,6 +13,6 @@
 
 @interface TyphoonPropertyInjectedByComponentFactory : TyphoonAbstractInjectedProperty
 
-- (instancetype) initWithName:(NSString *)name;
+- (instancetype)initWithName:(NSString *)name;
 
 @end

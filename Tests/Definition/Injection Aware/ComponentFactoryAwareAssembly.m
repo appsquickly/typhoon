@@ -16,35 +16,30 @@
 
 @implementation ComponentFactoryAwareAssembly
 
-- (id)injectionAwareObject;
-{
+- (id)injectionAwareObject; {
     return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class]];
 }
 
-- (id)injectionByProperty
-{
+- (id)injectionByProperty {
     return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] properties:^(TyphoonDefinition *definition) {
         [definition injectPropertyWithComponentFactory:@selector(componentFactory)];
     }];
 }
 
-- (id)injectionByInitialization
-{
+- (id)injectionByInitialization {
     return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithComponentFactory);
         [initializer injectWithComponentFactory];
     }];
 }
 
-- (id)injectionByPropertyAssemblyType
-{
+- (id)injectionByPropertyAssemblyType {
     return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(assembly)];
     }];
 }
 
-- (id)injectionByPropertyFactoryType
-{
+- (id)injectionByPropertyFactoryType {
     return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(componentFactory)];
     }];

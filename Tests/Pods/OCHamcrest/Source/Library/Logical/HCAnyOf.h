@@ -10,18 +10,18 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCAnyOf : HCBaseMatcher
-{
+@interface HCAnyOf : HCBaseMatcher {
     NSArray *matchers;
 }
 
 + (id)anyOf:(NSArray *)theMatchers;
+
 - (id)initWithMatchers:(NSArray *)theMatchers;
 
 @end
 
 
-OBJC_EXPORT id<HCMatcher> HC_anyOf(id match, ...) NS_REQUIRES_NIL_TERMINATION;
+OBJC_EXPORT id <HCMatcher> HC_anyOf(id match, ...) NS_REQUIRES_NIL_TERMINATION;
 
 /**
     anyOf(firstMatcher, ...) -
@@ -41,5 +41,5 @@ OBJC_EXPORT id<HCMatcher> HC_anyOf(id match, ...) NS_REQUIRES_NIL_TERMINATION;
     @ingroup logical_matchers
  */
 #ifdef HC_SHORTHAND
-    #define anyOf HC_anyOf
+#define anyOf HC_anyOf
 #endif

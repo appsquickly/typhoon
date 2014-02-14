@@ -17,11 +17,11 @@
 @interface Sword : NSObject
 
 
-@property(nonatomic, strong, readonly) NSString* specification;
+@property(nonatomic, strong, readonly) NSString *specification;
 
-- (id)initWithSpecification:(NSString*)specification;
+- (id)initWithSpecification:(NSString *)specification;
 
-- (NSString*)description;
+- (NSString *)description;
 
 
 @end

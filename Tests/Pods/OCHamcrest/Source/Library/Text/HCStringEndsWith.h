@@ -17,7 +17,7 @@
 @end
 
 
-OBJC_EXPORT id<HCMatcher> HC_endsWith(NSString *aSubstring);
+OBJC_EXPORT id <HCMatcher> HC_endsWith(NSString *aSubstring);
 
 /**
     endsWith(aString) -

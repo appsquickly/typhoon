@@ -16,6 +16,6 @@
 
 @interface TyphoonTestMethodSwizzler : NSObject <TyphoonMethodSwizzler>
 
-- (void)assertExchangedImplementationsFor:(NSString*)methodA with:(NSString*)methodB onClass:(Class)pClass;
+- (void)assertExchangedImplementationsFor:(NSString *)methodA with:(NSString *)methodB onClass:(Class)pClass;
 
 @end

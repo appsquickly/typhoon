@@ -15,9 +15,9 @@
 
 @protocol Payment <TyphoonComponentFactoryAware, NSObject>
 
-@property (nonatomic, strong, readonly) id<CreditService> creditService;
-@property (nonatomic, strong, readonly) id<AuthService> authService;
-@property (nonatomic, strong, readonly) NSDate *startDate;
-@property (nonatomic, assign, readonly) NSUInteger amount;
+@property(nonatomic, strong, readonly) id <CreditService> creditService;
+@property(nonatomic, strong, readonly) id <AuthService> authService;
+@property(nonatomic, strong, readonly) NSDate *startDate;
+@property(nonatomic, assign, readonly) NSUInteger amount;
 
 @end

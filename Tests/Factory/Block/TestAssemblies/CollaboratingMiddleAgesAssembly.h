@@ -23,6 +23,6 @@
 
 - (id)knightWithExternalQuest;
 
-@property(nonatomic, strong, readwrite) TyphoonAssembly <QuestProvider>* quests;
+@property(nonatomic, strong, readwrite) TyphoonAssembly <QuestProvider> *quests;
 
 @end

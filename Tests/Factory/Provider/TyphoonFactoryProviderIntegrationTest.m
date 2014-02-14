@@ -24,24 +24,21 @@
 @interface TyphoonFactoryProviderIntegrationTest : SenTestCase
 @end
 
-@implementation TyphoonFactoryProviderIntegrationTest
-{
-    TyphoonBlockComponentFactory* componentFactory;
-    PaymentFactoryAssembly* assembly;
+@implementation TyphoonFactoryProviderIntegrationTest {
+    TyphoonBlockComponentFactory *componentFactory;
+    PaymentFactoryAssembly *assembly;
 }
 
-- (void)setUp
-{
+- (void)setUp {
     componentFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[PaymentFactoryAssembly assembly]];
-    assembly = (PaymentFactoryAssembly*) componentFactory;
+    assembly = (PaymentFactoryAssembly *) componentFactory;
 }
 
-- (void)test_dependencies_are_built_lazily
-{
+- (void)test_dependencies_are_built_lazily {
     NSUInteger authServiceInstanceCounter = [AuthServiceImpl instanceCounter];
     NSUInteger creditServiceInstanceCounter = [CreditServiceImpl instanceCounter];
 
-    id<PaymentFactory> factory = [assembly paymentFactory];
+    id <PaymentFactory> factory = [assembly paymentFactory];
 
     assertThatUnsignedInteger([AuthServiceImpl instanceCounter], is(equalToUnsignedInteger(authServiceInstanceCounter)));
     assertThatUnsignedInteger([CreditServiceImpl instanceCounter], is(equalToUnsignedInteger(creditServiceInstanceCounter)));
@@ -53,62 +50,64 @@
     assertThatUnsignedInteger([CreditServiceImpl instanceCounter], is(equalToUnsignedInteger(creditServiceInstanceCounter + 1)));
 }
 
-- (void)test_assisted_factory_is_TyphoonComponentFactoryAware
-{
-    NSObject<PaymentFactory>* factory = [assembly paymentFactory];
+- (void)test_assisted_factory_is_TyphoonComponentFactoryAware {
+    NSObject <PaymentFactory> *factory = [assembly paymentFactory];
 
     id cf = [factory valueForKey:@"componentFactory"];
     assertThat(cf, is(equalTo(componentFactory)));
 }
 
-- (void)test_assisted_initializer_factory_injects_component_factory_in_object_instances
-{
-    id<PaymentFactory> factory = [assembly paymentFactory];
+- (void)test_assisted_initializer_factory_injects_component_factory_in_object_instances {
+    id <PaymentFactory> factory = [assembly paymentFactory];
 
-    PaymentImpl* payment = [factory paymentWithStartDate:[NSDate date] amount:456];
+    PaymentImpl *payment = [factory paymentWithStartDate:[NSDate date] amount:456];
 
     assertThat(payment.factory, is(equalTo(componentFactory)));
 }
 
-- (void)test_assisted_block_factory_injects_component_factory_in_object_instances
-{
-    id<PizzaFactory> factory = [assembly pizzaFactory];
+- (void)test_assisted_block_factory_injects_component_factory_in_object_instances {
+    id <PizzaFactory> factory = [assembly pizzaFactory];
 
-    PizzaImpl* pizza = [factory largePizzaWithIngredients:@[@"bacon", @"cheese"]];
+    PizzaImpl *pizza = [factory largePizzaWithIngredients:@[
+        @"bacon",
+        @"cheese"
+    ]];
 
     assertThat(pizza.factory, is(equalTo(componentFactory)));
 }
 
-- (void)test_assisted_factory_doesnt_blow_up_when_calling_one_of_the_methods
-{
+- (void)test_assisted_factory_doesnt_blow_up_when_calling_one_of_the_methods {
     @autoreleasepool {
-        id<PaymentFactory> factory1;
+        id <PaymentFactory> factory1;
 
         @autoreleasepool {
             factory1 = [assembly paymentFactory];
 
-            id<Payment> payment1 = [factory1 paymentWithStartDate:[NSDate date] amount:123];
+            id <Payment> payment1 = [factory1 paymentWithStartDate:[NSDate date] amount:123];
 
             assertThat(payment1, is(notNilValue()));
         }
 
-        id<Payment> payment2 = [factory1 paymentWithStartDate:[NSDate date] amount:456];
+        id <Payment> payment2 = [factory1 paymentWithStartDate:[NSDate date] amount:456];
 
         assertThat(payment2, is(notNilValue()));
     }
 
     @autoreleasepool {
-        id<PizzaFactory> factory2;
+        id <PizzaFactory> factory2;
 
         @autoreleasepool {
             factory2 = [assembly pizzaFactory];
 
-            id<Pizza> pizza1 = [factory2 pizzaWithRadius:789.123 ingredients:@[@"Cheese", @"Ham"]];
+            id <Pizza> pizza1 = [factory2 pizzaWithRadius:789.123 ingredients:@[
+                @"Cheese",
+                @"Ham"
+            ]];
 
             assertThat(pizza1, is(notNilValue()));
         }
 
-        id<Pizza> pizza2 = [factory2 largePizzaWithIngredients:@[@"Bacon"]];
+        id <Pizza> pizza2 = [factory2 largePizzaWithIngredients:@[@"Bacon"]];
 
         assertThat(pizza2, is(notNilValue()));
     }

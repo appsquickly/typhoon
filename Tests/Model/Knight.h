@@ -26,21 +26,21 @@
 @property(nonatomic) NSUInteger damselsRescued;
 @property(nonatomic) BOOL hasHorseWillTravel;
 @property(nonatomic, strong, readonly) id <Quest> readOnlyQuest;
-@property(nonatomic, strong) NSArray* favoriteDamsels;
-@property(nonatomic, strong) NSSet* friends;
-@property(nonatomic, strong) Fort* homeFort;
+@property(nonatomic, strong) NSArray *favoriteDamsels;
+@property(nonatomic, strong) NSSet *friends;
+@property(nonatomic, strong) Fort *homeFort;
 
 
 - (id)initWithQuest:(id <Quest>)quest;
 
 - (id)initWithQuest:(id <Quest>)quest damselsRescued:(NSUInteger)damselsRescued;
 
-- (id)initWithQuest:(id <Quest>)quest favoriteDamsels:(NSArray*)favoriteDamsels;
+- (id)initWithQuest:(id <Quest>)quest favoriteDamsels:(NSArray *)favoriteDamsels;
 
 - (id)initWithDamselsRescued:(NSUInteger)damselsRescued foo:(id)foobar;
 
 
-- (NSString*)description;
+- (NSString *)description;
 
 
 @end

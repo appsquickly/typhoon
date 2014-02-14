@@ -6,8 +6,7 @@
 #import "ExtendedSimpleAssembly.h"
 
 
-@implementation ExtendedSimpleAssembly
-{
+@implementation ExtendedSimpleAssembly {
 
 }
 

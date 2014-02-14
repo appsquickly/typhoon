@@ -19,7 +19,7 @@
 
 @interface ClassCDependsOnDAndE : NSObject
 
-@property(nonatomic, strong) ClassDDependsOnC* dependencyOnD;
-@property(nonatomic, strong) ClassEDependsOnC* dependencyOnE;
+@property(nonatomic, strong) ClassDDependsOnC *dependencyOnD;
+@property(nonatomic, strong) ClassEDependsOnC *dependencyOnE;
 
 @end

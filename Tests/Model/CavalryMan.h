@@ -19,7 +19,7 @@
 
 @property(nonatomic) float hitRatio;
 
-@property(nonatomic, strong) NSArray* propertyInjectedAsInstance;
+@property(nonatomic, strong) NSArray *propertyInjectedAsInstance;
 
 - (id)initWithQuest:(id <Quest>)quest hitRatio:(float)hitRatio;
 

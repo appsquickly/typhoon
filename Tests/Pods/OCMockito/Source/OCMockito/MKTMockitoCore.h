@@ -21,8 +21,6 @@
 
 - (MKTOngoingStubbing *)stubAtLocation:(MKTTestLocation)location;
 
-- (id)verifyMock:(MKTObjectMock *)mock
-        withMode:(id <MKTVerificationMode>)mode
-      atLocation:(MKTTestLocation)location;
+- (id)verifyMock:(MKTObjectMock *)mock withMode:(id <MKTVerificationMode>)mode atLocation:(MKTTestLocation)location;
 
 @end

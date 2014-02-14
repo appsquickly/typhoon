@@ -16,10 +16,8 @@
 
 @interface PizzaImpl : NSObject <Pizza>
 
-@property (nonatomic, strong) id factory;
+@property(nonatomic, strong) id factory;
 
-- (instancetype)initWithCreditService:(id<CreditService>)creditService
-                               radius:(double)radius
-                          ingredients:(NSArray *)ingredients;
+- (instancetype)initWithCreditService:(id <CreditService>)creditService radius:(double)radius ingredients:(NSArray *)ingredients;
 
 @end

@@ -14,22 +14,24 @@
 
 @interface ObjectNewRetained : NSObject
 
-+ (instancetype) newObject;
++ (instancetype)newObject;
 
 @end
 
 
 @interface ObjectNewAutorelease : NSObject
 
-+ (instancetype) object;
++ (instancetype)object;
 
 @end
 
 @interface ObjectInitCluster : NSObject
 
-- (instancetype) initOldRelease;
-- (instancetype) initOldAutorelease;
-- (instancetype) initReturnNil;
+- (instancetype)initOldRelease;
+
+- (instancetype)initOldAutorelease;
+
+- (instancetype)initReturnNil;
 
 @end
 

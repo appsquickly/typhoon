@@ -14,11 +14,11 @@
 
 @interface ClassWithCollectionProperties : NSObject
 
-@property(nonatomic, strong) NSArray* arrayCollection;
-@property(nonatomic, strong) NSMutableArray* mutableArrayCollection;
-@property(nonatomic, strong) NSSet* setCollection;
-@property(nonatomic, strong) NSMutableSet* mutableSetCollection;
-@property(nonatomic, strong) NSString* notACollection;
+@property(nonatomic, strong) NSArray *arrayCollection;
+@property(nonatomic, strong) NSMutableArray *mutableArrayCollection;
+@property(nonatomic, strong) NSSet *setCollection;
+@property(nonatomic, strong) NSMutableSet *mutableSetCollection;
+@property(nonatomic, strong) NSString *notACollection;
 
 
 @end

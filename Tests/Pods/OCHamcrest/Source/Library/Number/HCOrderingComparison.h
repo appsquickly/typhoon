@@ -10,28 +10,23 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCOrderingComparison : HCBaseMatcher
-{
+@interface HCOrderingComparison : HCBaseMatcher {
     id expected;
     NSComparisonResult minCompare;
     NSComparisonResult maxCompare;
     NSString *comparisonDescription;
 }
 
-+ (id)compare:(id)expectedValue
-   minCompare:(NSComparisonResult)min
-   maxCompare:(NSComparisonResult)max
-   comparisonDescription:(NSString *)comparisonDescription;
++ (id)compare:(id)expectedValue minCompare:(NSComparisonResult)min maxCompare:(NSComparisonResult)max
+    comparisonDescription:(NSString *)comparisonDescription;
 
-- (id)initComparing:(id)expectedValue
-         minCompare:(NSComparisonResult)min
-         maxCompare:(NSComparisonResult)max
-         comparisonDescription:(NSString *)comparisonDescription;
+- (id)initComparing:(id)expectedValue minCompare:(NSComparisonResult)min maxCompare:(NSComparisonResult)max
+    comparisonDescription:(NSString *)comparisonDescription;
 
 @end
 
 
-OBJC_EXPORT id<HCMatcher> HC_greaterThan(id expected);
+OBJC_EXPORT id <HCMatcher> HC_greaterThan(id expected);
 
 /**
     greaterThan(aNumber) -
@@ -52,7 +47,7 @@ OBJC_EXPORT id<HCMatcher> HC_greaterThan(id expected);
 #endif
 
 
-OBJC_EXPORT id<HCMatcher> HC_greaterThanOrEqualTo(id expected);
+OBJC_EXPORT id <HCMatcher> HC_greaterThanOrEqualTo(id expected);
 
 /**
     greaterThanOrEqualTo(aNumber) -
@@ -73,7 +68,7 @@ OBJC_EXPORT id<HCMatcher> HC_greaterThanOrEqualTo(id expected);
 #endif
 
 
-OBJC_EXPORT id<HCMatcher> HC_lessThan(id expected);
+OBJC_EXPORT id <HCMatcher> HC_lessThan(id expected);
 
 /**
     lessThan(aNumber) -
@@ -94,7 +89,7 @@ OBJC_EXPORT id<HCMatcher> HC_lessThan(id expected);
 #endif
 
 
-OBJC_EXPORT id<HCMatcher> HC_lessThanOrEqualTo(id expected);
+OBJC_EXPORT id <HCMatcher> HC_lessThanOrEqualTo(id expected);
 
 /**
     lessThanOrEqualTo(aNumber) -

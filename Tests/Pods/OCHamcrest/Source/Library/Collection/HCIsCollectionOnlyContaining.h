@@ -10,18 +10,18 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsCollectionOnlyContaining : HCBaseMatcher
-{
-    id<HCMatcher> matcher;
+@interface HCIsCollectionOnlyContaining : HCBaseMatcher {
+    id <HCMatcher> matcher;
 }
 
-+ (id)isCollectionOnlyContaining:(id<HCMatcher>)aMatcher;
-- (id)initWithMatcher:(id<HCMatcher>)aMatcher;
++ (id)isCollectionOnlyContaining:(id <HCMatcher>)aMatcher;
+
+- (id)initWithMatcher:(id <HCMatcher>)aMatcher;
 
 @end
 
 
-OBJC_EXPORT id<HCMatcher> HC_onlyContains(id itemMatch, ...) NS_REQUIRES_NIL_TERMINATION;
+OBJC_EXPORT id <HCMatcher> HC_onlyContains(id itemMatch, ...) NS_REQUIRES_NIL_TERMINATION;
 
 /**
     onlyContains(firstMatcher, ...) -

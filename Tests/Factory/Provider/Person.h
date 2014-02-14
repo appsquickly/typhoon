@@ -16,28 +16,22 @@
 
 @interface Person : NSObject
 
-@property (nonatomic, assign, readonly) SEL usedInitializer;
+@property(nonatomic, assign, readonly) SEL usedInitializer;
 
-- (instancetype)initWithCreditService:(id<CreditService>)creditService
-                          authService:(id<AuthService>)authService
-                            firstName:(NSString *)firstName
-                             lastName:(NSString *)lastName;
+- (instancetype)initWithCreditService:(id <CreditService>)creditService authService:(id <AuthService>)authService
+    firstName:(NSString *)firstName lastName:(NSString *)lastName;
 
 
-- (instancetype)initWithCreditService:(id<CreditService>)creditService
-                          authService:(id<AuthService>)authService
-                            firstName:(NSString *)firstName;
+- (instancetype)initWithCreditService:(id <CreditService>)creditService authService:(id <AuthService>)authService
+    firstName:(NSString *)firstName;
 
 // This initializer will be discarded in favor of the one above
-- (instancetype)initWithCreditService:(id<CreditService>)creditService
-                            firstName:(NSString *)firstName;
+- (instancetype)initWithCreditService:(id <CreditService>)creditService firstName:(NSString *)firstName;
 
 
-- (instancetype)initWithCreditService:(id<CreditService>)creditService
-                          authService:(id<AuthService>)authService
-                             lastName:(NSString *)lastName;
+- (instancetype)initWithCreditService:(id <CreditService>)creditService authService:(id <AuthService>)authService
+    lastName:(NSString *)lastName;
 
-- (instancetype)initWithCreditService:(id<CreditService>)creditService
-                             lastName:(NSString *)lastName;
+- (instancetype)initWithCreditService:(id <CreditService>)creditService lastName:(NSString *)lastName;
 
 @end

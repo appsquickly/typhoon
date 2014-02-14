@@ -22,6 +22,6 @@
 @property(nonatomic, strong) ComponentFactoryAwareAssembly *assembly;
 @property(nonatomic, strong) TyphoonComponentFactory *componentFactory;
 
-- (id) initWithComponentFactory:(TyphoonComponentFactory *)factory;
+- (id)initWithComponentFactory:(TyphoonComponentFactory *)factory;
 
 @end

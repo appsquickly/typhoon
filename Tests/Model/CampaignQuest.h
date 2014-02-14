@@ -17,10 +17,10 @@
 
 @interface CampaignQuest : NSObject <Quest>
 
-@property(nonatomic, strong) NSURL* imageUrl;
-@property(nonatomic, strong) Fort* fort;
+@property(nonatomic, strong) NSURL *imageUrl;
+@property(nonatomic, strong) Fort *fort;
 
-- (id)initWithImageUrl:(NSURL*)imageUrl;
+- (id)initWithImageUrl:(NSURL *)imageUrl;
 
 - (void)questBeforePropertyInjection;
 

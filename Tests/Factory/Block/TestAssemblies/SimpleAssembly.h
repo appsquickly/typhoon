@@ -8,6 +8,6 @@
 
 @interface SimpleAssembly : TyphoonAssembly
 
-@property TyphoonAssembly* assemblyA;
+@property TyphoonAssembly *assemblyA;
 
 @end

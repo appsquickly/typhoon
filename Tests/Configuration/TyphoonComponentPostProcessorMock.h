@@ -19,6 +19,6 @@ typedef id (^PostProcessBlock)(id);
 
 - (id)initWithOrder:(NSInteger)order;
 
-@property (nonatomic, copy) PostProcessBlock postProcessBlock;
+@property(nonatomic, copy) PostProcessBlock postProcessBlock;
 
 @end

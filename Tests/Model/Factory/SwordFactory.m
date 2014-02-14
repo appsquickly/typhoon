@@ -17,14 +17,11 @@
 
 @implementation SwordFactory
 
-- (Sword*)swordWithSpecification:(NSString*)swordSpecs
-{
-    if ([swordSpecs isEqualToString:@"blue"])
-    {
+- (Sword *)swordWithSpecification:(NSString *)swordSpecs {
+    if ([swordSpecs isEqualToString:@"blue"]) {
         return [[Sword alloc] initWithSpecification:@"A bright blue sword with orange pom-poms at the hilt."];
     }
-    else
-    {
+    else {
         NSLog(@"Out of stock. Returning regular sword");
         return [[Sword alloc] initWithSpecification:@"Yer typical run-o-the-mill rusty sword."];
     }

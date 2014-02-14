@@ -16,12 +16,10 @@
 
 @interface PaymentImpl : NSObject <Payment>
 
-@property (nonatomic, strong) id factory;
+@property(nonatomic, strong) id factory;
 
-- (instancetype)initWithCreditService:(id<CreditService>)creditService
-                          authService:(id<AuthService>)authService
-                            startDate:(NSDate *)startDate
-                               amount:(NSUInteger)amount;
+- (instancetype)initWithCreditService:(id <CreditService>)creditService authService:(id <AuthService>)authService
+    startDate:(NSDate *)startDate amount:(NSUInteger)amount;
 
 // This methods are to check some parts of the implementation
 
@@ -29,16 +27,14 @@
 - (void)initialize;
 
 // Doesn't use as many properties as the main one.
-- (instancetype)initWithCreditService:(id<CreditService>)creditService startDate:(NSDate *)startDate amount:(NSUInteger)amount;
+- (instancetype)initWithCreditService:(id <CreditService>)creditService startDate:(NSDate *)startDate amount:(NSUInteger)amount;
 
 // Doesn't use as many arguments as the main one.
-- (instancetype)initWithCreditService:(id<CreditService>)creditService authService:(id<AuthService>)authService startDate:(NSDate *)startDate;
+- (instancetype)initWithCreditService:(id <CreditService>)creditService authService:(id <AuthService>)authService
+    startDate:(NSDate *)startDate;
 
 // Has one argument the factory cannot fullfil
-- (instancetype)initWithCreditService:(id<CreditService>)creditService
-                          authService:(id<AuthService>)authService
-                            startDate:(NSDate *)startDate
-                               amount:(NSUInteger)amount
-                         customerName:(NSString *)customerName;
+- (instancetype)initWithCreditService:(id <CreditService>)creditService authService:(id <AuthService>)authService
+    startDate:(NSDate *)startDate amount:(NSUInteger)amount customerName:(NSString *)customerName;
 
 @end

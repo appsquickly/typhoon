@@ -15,24 +15,20 @@
 
 @implementation HCIsEmptyCollection
 
-+ (id)isEmptyCollection
-{
++ (id)isEmptyCollection {
     return [[self alloc] init];
 }
 
-- (id)init
-{
+- (id)init {
     self = [super initWithCount:HC_equalToUnsignedInteger(0)];
     return self;
 }
 
-- (void)describeMismatchOf:(id)item to:(id<HCDescription>)mismatchDescription
-{
+- (void)describeMismatchOf:(id)item to:(id <HCDescription>)mismatchDescription {
     [[mismatchDescription appendText:@"was "] appendDescriptionOf:item];
 }
 
-- (void)describeTo:(id<HCDescription>)description
-{
+- (void)describeTo:(id <HCDescription>)description {
     [description appendText:@"empty collection"];
 }
 
@@ -41,7 +37,6 @@
 
 #pragma mark -
 
-OBJC_EXPORT id<HCMatcher> HC_empty()
-{
+OBJC_EXPORT id <HCMatcher> HC_empty() {
     return [HCIsEmptyCollection isEmptyCollection];
 }

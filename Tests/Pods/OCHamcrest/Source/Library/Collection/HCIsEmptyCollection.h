@@ -13,12 +13,13 @@
 @interface HCIsEmptyCollection : HCHasCount
 
 + (id)isEmptyCollection;
+
 - (id)init;
 
 @end
 
 
-OBJC_EXPORT id<HCMatcher> HC_empty(void);
+OBJC_EXPORT id <HCMatcher> HC_empty(void);
 
 /**
     Matches empty collection.
@@ -32,5 +33,5 @@ OBJC_EXPORT id<HCMatcher> HC_empty(void);
     @ingroup collection_matchers
  */
 #ifdef HC_SHORTHAND
-    #define empty() HC_empty()
+#define empty() HC_empty()
 #endif

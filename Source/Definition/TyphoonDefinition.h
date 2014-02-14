@@ -53,7 +53,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 /**
 * @ingroup Definition
 */
-@interface TyphoonDefinition : NSObject<NSCopying> {
+@interface TyphoonDefinition : NSObject <NSCopying> {
     Class _type;
     NSString *_key;
     TyphoonInitializer *_initializer;

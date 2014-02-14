@@ -24,35 +24,31 @@
 @end
 
 
-@implementation TyphoonBlockComponentFactory_CollectionTests
-{
+@implementation TyphoonBlockComponentFactory_CollectionTests {
 
 }
 
-- (void)test_allows_initialization_with_a_collection_of_assemblies
-{
-    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
-            [MiddleAgesAssembly assembly],
-            [CollaboratingMiddleAgesAssembly assembly],
+- (void)test_allows_initialization_with_a_collection_of_assemblies {
+    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
+        [MiddleAgesAssembly assembly],
+        [CollaboratingMiddleAgesAssembly assembly],
     ]];
 
-    Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalQuest];
+    Knight *knight = [(CollaboratingMiddleAgesAssembly *) factory knightWithExternalQuest];
     assertThat(knight, notNilValue());
     assertThatBool([knight.quest isKindOfClass:[CampaignQuest class]], equalToBool(YES));
 }
 
-- (void)test_allows_initialization_with_a_collection_of_assemblies_in_any_order
-{
-    TyphoonComponentFactory* factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
-            [CollaboratingMiddleAgesAssembly assembly],
-            [MiddleAgesAssembly assembly]
+- (void)test_allows_initialization_with_a_collection_of_assemblies_in_any_order {
+    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
+        [CollaboratingMiddleAgesAssembly assembly],
+        [MiddleAgesAssembly assembly]
     ]];
 
-    Knight* knight = [(CollaboratingMiddleAgesAssembly*) factory knightWithExternalQuest];
+    Knight *knight = [(CollaboratingMiddleAgesAssembly *) factory knightWithExternalQuest];
     assertThat(knight, notNilValue());
     assertThatBool([knight.quest isKindOfClass:[CampaignQuest class]], equalToBool(YES));
 }
-
 
 
 @end

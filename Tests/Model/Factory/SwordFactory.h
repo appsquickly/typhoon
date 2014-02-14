@@ -19,6 +19,6 @@
 @interface SwordFactory : NSObject
 
 
-- (Sword*)swordWithSpecification:(NSString*)swordSpecs;
+- (Sword *)swordWithSpecification:(NSString *)swordSpecs;
 
 @end

@@ -16,24 +16,21 @@
 
 @implementation InfrastructureComponentsAssembly
 
-- (id)propertyPlaceHolderConfigurer
-{
-    return [TyphoonDefinition propertyPlaceholderWithResources:
-            @[[TyphoonBundleResource withName:@"SomeProperties.properties"],
-                    [TyphoonBundleResource withName:@"SomeOtherProperties.properties"]]];
+- (id)propertyPlaceHolderConfigurer {
+    return [TyphoonDefinition propertyPlaceholderWithResources:@[
+        [TyphoonBundleResource withName:@"SomeProperties.properties"],
+        [TyphoonBundleResource withName:@"SomeOtherProperties.properties"]
+    ]];
 }
 
-- (id)knight
-{
-    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)knight {
+    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) withValueAsText:@"${damsels.rescued}"];
         [definition injectProperty:@selector(hasHorseWillTravel) withValueAsText:@"${has.horse.will.travel}"];
     }];
 }
 
-- (id)typeConverter
-{
+- (id)typeConverter {
     return [TyphoonDefinition withClass:[NSNullTypeConverter class]];
 }
 

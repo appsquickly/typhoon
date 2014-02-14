@@ -17,30 +17,27 @@
 #import "CampaignQuest.h"
 #import "Fort.h"
 
-@interface TyphoonScopeTests : SenTestCase
-{
-    ObjectGraphAssembly* _assembly;
+@interface TyphoonScopeTests : SenTestCase {
+    ObjectGraphAssembly *_assembly;
 }
 
 @end
 
 @implementation TyphoonScopeTests
 
-- (void)setUp
-{
-    TyphoonBlockComponentFactory* factory = [TyphoonBlockComponentFactory factoryWithAssembly:[ObjectGraphAssembly assembly]];
-    _assembly = (ObjectGraphAssembly*)factory;
+- (void)setUp {
+    TyphoonBlockComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssembly:[ObjectGraphAssembly assembly]];
+    _assembly = (ObjectGraphAssembly *) factory;
 }
 
 
-- (void)test_object_graph_scope
-{
-    Knight* objectGraphKnight = [_assembly objectGraphKnight];
-    CampaignQuest* quest = objectGraphKnight.quest;
+- (void)test_object_graph_scope {
+    Knight *objectGraphKnight = [_assembly objectGraphKnight];
+    CampaignQuest *quest = objectGraphKnight.quest;
     assertThatBool(objectGraphKnight.homeFort == quest.fort, equalToBool(YES));
 
-    Knight* prototypeKnight = [_assembly prototypeKnight];
-    CampaignQuest* prototypeQuest = prototypeKnight.quest;
+    Knight *prototypeKnight = [_assembly prototypeKnight];
+    CampaignQuest *prototypeQuest = prototypeKnight.quest;
     assertThatBool(prototypeKnight.homeFort == prototypeQuest.fort, equalToBool(NO));
 }
 

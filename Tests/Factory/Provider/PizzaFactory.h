@@ -17,12 +17,12 @@
 
 @property(nonatomic, strong, readonly) id <CreditService> creditService;
 
-- (id <Pizza>)pizzaWithRadius:(double)radius ingredients:(NSArray*)ingredients;
+- (id <Pizza>)pizzaWithRadius:(double)radius ingredients:(NSArray *)ingredients;
 
-- (id <Pizza>)smallPizzaWithIngredients:(NSArray*)ingredients;
+- (id <Pizza>)smallPizzaWithIngredients:(NSArray *)ingredients;
 
-- (id <Pizza>)mediumPizzaWithIngredients:(NSArray*)ingredients;
+- (id <Pizza>)mediumPizzaWithIngredients:(NSArray *)ingredients;
 
-- (id <Pizza>)largePizzaWithIngredients:(NSArray*)ingredients;
+- (id <Pizza>)largePizzaWithIngredients:(NSArray *)ingredients;
 
 @end

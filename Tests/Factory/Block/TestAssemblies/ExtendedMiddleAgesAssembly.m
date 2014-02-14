@@ -16,10 +16,8 @@
 
 @implementation ExtendedMiddleAgesAssembly
 
-- (id)yetAnotherKnight
-{
-    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)yetAnotherKnight {
+    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) withValueAsText:@"296000"];
     }];
 }

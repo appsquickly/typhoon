@@ -10,19 +10,19 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsCloseTo : HCBaseMatcher
-{
+@interface HCIsCloseTo : HCBaseMatcher {
     double value;
     double delta;
 }
 
 + (id)isCloseTo:(double)aValue within:(double)aDelta;
+
 - (id)initWithValue:(double)aValue delta:(double)aDelta;
 
 @end
 
 
-OBJC_EXPORT id<HCMatcher> HC_closeTo(double aValue, double aDelta);
+OBJC_EXPORT id <HCMatcher> HC_closeTo(double aValue, double aDelta);
 
 /**
     closeTo(aValue, aDelta) -

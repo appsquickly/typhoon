@@ -30,10 +30,10 @@ NSString *currentFooString;
 
 @interface ClassWithKnightSettingsAssembly : TyphoonAssembly
 @end
+
 @implementation ClassWithKnightSettingsAssembly
 
-- (id) knightSettings
-{
+- (id)knightSettings {
     return [TyphoonDefinition withClass:[ClassWithKnightSettings class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) withObjectInstance:@(currentDamselsRescued)];
         [definition injectProperty:@selector(hasHorseWillTravel) withObjectInstance:@(currentHasHorseWillTravel)];
@@ -53,72 +53,66 @@ NSString *currentFooString;
     TyphoonComponentFactory *factory;
 }
 
-- (void) setUp
-{
+- (void)setUp {
     [self updateFactory];
 }
 
-- (void) updateFactory
-{
+- (void)updateFactory {
     factory = [TyphoonBlockComponentFactory factoryWithAssembly:[ClassWithKnightSettingsAssembly assembly]];
 }
 
-- (void) test_inject_int_bool
-{
+- (void)test_inject_int_bool {
     Knight *knight = [Knight new];
-    
+
     TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) withObjectInstance:@(30)];
         [definition injectProperty:@selector(hasHorseWillTravel) withObjectInstance:@(YES)];
     }];
 
     [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition];
-    
+
     assertThatInteger(knight.damselsRescued, equalToInteger(30));
     assertThatBool(knight.hasHorseWillTravel, equalToBool(YES));
 }
 
-- (void) test_inject_object
-{
+- (void)test_inject_object {
     Knight *knight = [Knight new];
-    
+
     NSString *testString = @"Hello Knights";
-    
+
     TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(foobar) withObjectInstance:testString];
     }];
     [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition];
-    
+
     assertThat(knight.foobar, equalTo([testString copy]));
 }
 
-- (void) test_inject_factorydefinition_selector
-{
+- (void)test_inject_factorydefinition_selector {
     Knight *knight = [Knight new];
-    
+
     currentFooString = @"Hello Knights";
     currentDamselsRescued = 24;
     currentHasHorseWillTravel = YES;
     [self updateFactory];
-    
+
     TyphoonDefinition *settings = [factory definitionForType:[ClassWithKnightSettings class]];
-    
+
     TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) withDefinition:settings selector:@selector(damselsRescued)];
         [definition injectProperty:@selector(hasHorseWillTravel) withDefinition:settings selector:@selector(hasHorseWillTravel)];
         [definition injectProperty:@selector(foobar) withDefinition:settings selector:@selector(fooString)];
     }];
     [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition];
-    
+
     assertThat(knight.foobar, equalTo(@"Hello Knights"));
     assertThatInteger(knight.damselsRescued, equalToInteger(24));
     assertThatBool(knight.hasHorseWillTravel, equalToBool(YES));
 }
 
-- (void) test_inject_factorydefinition_keyPath
-{
+- (void)test_inject_factorydefinition_keyPath {
     Knight *knight = [Knight new];
-    
+
     NSString *testString = @"Hello";
     currentFooString = [testString copy];
     [self updateFactory];
@@ -129,27 +123,26 @@ NSString *currentFooString;
         [definition injectProperty:@selector(foobar) withDefinition:settings keyPath:@"fooString.uppercaseString"];
     }];
     [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition];
-    
+
     assertThat(knight.foobar, equalTo(@"HELLO"));
 }
 
 
-- (void) test_inject_factorydefinition_on_init
-{
+- (void)test_inject_factorydefinition_on_init {
     currentDamselsRescued = 32;
-    currentFooString =  @"Hello";
+    currentFooString = @"Hello";
     [self updateFactory];
-    
+
     TyphoonDefinition *settings = [factory definitionForType:[ClassWithKnightSettings class]];
-    
+
     TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         [initializer setSelector:@selector(initWithDamselsRescued:foo:)];
         [initializer injectWithDefinition:settings selector:@selector(damselsRescued)];
         [initializer injectWithDefinition:settings keyPath:@"fooString.uppercaseString"];
     }];
-    
+
     [factory register:knightDefinition];
-    
+
     Knight *knight = [factory componentForType:[Knight class]];
 
     assertThatInteger(knight.damselsRescued, equalToInteger(32));

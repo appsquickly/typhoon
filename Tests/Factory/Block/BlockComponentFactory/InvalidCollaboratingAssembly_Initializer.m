@@ -17,15 +17,12 @@
 #import "CavalryMan.h"
 #import "TyphoonInitializer.h"
 
-@implementation InvalidCollaboratingAssembly_Initializer
-{
+@implementation InvalidCollaboratingAssembly_Initializer {
 
 }
 
-- (id)knightWithExternalQuest
-{
-    return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer* initializer)
-    {
+- (id)knightWithExternalQuest {
+    return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:);
         [initializer injectWithDefinition:[[MiddleAgesAssembly assembly] environmentDependentQuest]];
 

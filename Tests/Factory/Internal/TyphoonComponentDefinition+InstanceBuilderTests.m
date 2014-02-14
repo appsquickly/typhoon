@@ -21,116 +21,106 @@
 @interface ComponentDefinition_InstanceBuilderTests : SenTestCase
 @end
 
-@implementation ComponentDefinition_InstanceBuilderTests
-{
-    TyphoonComponentFactory* _componentFactory;
+@implementation ComponentDefinition_InstanceBuilderTests {
+    TyphoonComponentFactory *_componentFactory;
 }
 
-- (void)setUp
-{
+- (void)setUp {
     _componentFactory = [[TyphoonComponentFactory alloc] init];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Initializer injection
 
-- (void)test_injects_required_initializer_dependencies
-{
-    TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    TyphoonInitializer* knightInitializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithQuest:)];
+- (void)test_injects_required_initializer_dependencies {
+    TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+    TyphoonInitializer *knightInitializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithQuest:)];
     [knightInitializer injectParameterNamed:@"quest" withReference:@"quest"];
     [knightDefinition setInitializer:knightInitializer];
     [_componentFactory register:knightDefinition];
 
-    TyphoonDefinition* questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
+    TyphoonDefinition *questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
     [_componentFactory register:questDefinition];
 
-    Knight* knight = [_componentFactory buildInstanceWithDefinition:knightDefinition];
+    Knight *knight = [_componentFactory buildInstanceWithDefinition:knightDefinition];
     assertThat(knight, notNilValue());
     assertThat(knight.quest, notNilValue());
 }
 
-- (void)test_injects_required_initializer_dependencies_with_factory_method
-{
-    TyphoonDefinition* urlDefinition = [[TyphoonDefinition alloc] initWithClass:[NSURL class] key:@"url"];
-    TyphoonInitializer* initializer = [[TyphoonInitializer alloc]
-            initWithSelector:@selector(URLWithString:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodYes];
+- (void)test_injects_required_initializer_dependencies_with_factory_method {
+    TyphoonDefinition *urlDefinition = [[TyphoonDefinition alloc] initWithClass:[NSURL class] key:@"url"];
+    TyphoonInitializer *initializer = [[TyphoonInitializer alloc]
+        initWithSelector:@selector(URLWithString:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodYes];
     [initializer injectParameterAtIndex:0 withValueAsText:@"http://www.appsquick.ly" requiredTypeOrNil:[NSString class]];
     [urlDefinition setInitializer:initializer];
     [_componentFactory register:urlDefinition];
 
-    NSURL* url = [_componentFactory buildInstanceWithDefinition:urlDefinition];
+    NSURL *url = [_componentFactory buildInstanceWithDefinition:urlDefinition];
     assertThat(url, notNilValue());
 }
 
-- (void)test_injects_initializer_value_as_long
-{
-    TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    TyphoonInitializer
-            * initializer = [[TyphoonInitializer alloc]
-            initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
+- (void)test_injects_initializer_value_as_long {
+    TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+    TyphoonInitializer *initializer = [[TyphoonInitializer alloc]
+        initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
     [initializer injectParameterNamed:@"quest" withObject:nil];
     [initializer injectParameterNamed:@"damselsRescued" withValueAsText:@"12" requiredTypeOrNil:nil];
     [knightDefinition setInitializer:initializer];
 
     [_componentFactory register:knightDefinition];
 
-    Knight* knight = [_componentFactory componentForKey:@"knight"];
+    Knight *knight = [_componentFactory componentForKey:@"knight"];
     assertThatLong(knight.damselsRescued, equalToLongLong(12));
 }
 
-- (void)test_injects_initializer_value_as_collection
-{
-    TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    TyphoonInitializer
-            * knightInitializer = [[TyphoonInitializer alloc]
-            initWithSelector:@selector(initWithQuest:favoriteDamsels:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
+- (void)test_injects_initializer_value_as_collection {
+    TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+    TyphoonInitializer *knightInitializer = [[TyphoonInitializer alloc]
+        initWithSelector:@selector(initWithQuest:favoriteDamsels:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
     [knightInitializer injectParameterNamed:@"quest" withReference:@"quest"];
-    [knightInitializer injectParameterNamed:@"favoriteDamsels" asCollection:^(TyphoonParameterInjectedAsCollection* asCollection)
-    {
+    [knightInitializer injectParameterNamed:@"favoriteDamsels" asCollection:^(TyphoonParameterInjectedAsCollection *asCollection) {
         [asCollection addItemWithText:@"damsel1" requiredType:[NSString class]];
         [asCollection addItemWithText:@"damsel2" requiredType:[NSString class]];
     } requiredType:[NSArray class]];
 
     [knightDefinition setInitializer:knightInitializer];
 
-    TyphoonDefinition* questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
+    TyphoonDefinition *questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
     [_componentFactory register:questDefinition];
 
     [_componentFactory register:knightDefinition];
 
-    Knight* knight = [_componentFactory componentForKey:@"knight"];
+    Knight *knight = [_componentFactory componentForKey:@"knight"];
     assertThatUnsignedLong([knight.favoriteDamsels count], equalToUnsignedLong(2));
 }
 
-- (void)test_inject_initializer_values_as_primitives
-{
+- (void)test_inject_initializer_values_as_primitives {
     PrimitiveManStruct *primitiveStruct = malloc(sizeof(PrimitiveManStruct));
     primitiveStruct->fieldA = INT_MAX;
     primitiveStruct->fieldB = LONG_MAX;
-    
-    TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:[PrimitiveMan class] key:@"primitive"];
-    TyphoonInitializer* initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithIntValue:
-                                                                                             unsignedIntValue:
-                                                                                             shortValue:
-                                                                                             unsignedShortValue:
-                                                                                             longValue:
-                                                                                             unsignedLongValue:
-                                                                                             longLongValue:
-                                                                                             unsignedLongLongValue:
-                                                                                             unsignedCharValue:
-                                                                                             floatValue:
-                                                                                             doubleValue:
-                                                                                             boolValue:
-                                                                                             integerValue:
-                                                                                             unsignedIntegerValue:
-                                                                                             classValue:
-                                                                                             selectorValue:
-                                                                                             cstring:
-                                                                                             nsRange:
-                                                                                             pointerValue:
-                                                                                             unknownPointer:
-                                                                                             pointerInsideValue:)];
+
+    TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[PrimitiveMan class] key:@"primitive"];
+    TyphoonInitializer *initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithIntValue:
+        unsignedIntValue:
+        shortValue:
+        unsignedShortValue:
+        longValue:
+        unsignedLongValue:
+        longLongValue:
+        unsignedLongLongValue:
+        unsignedCharValue:
+        floatValue:
+        doubleValue:
+        boolValue:
+        integerValue:
+        unsignedIntegerValue:
+        classValue:
+        selectorValue:
+        cstring:
+        nsRange:
+        pointerValue:
+        unknownPointer:
+        pointerInsideValue:)];
     [initializer injectWithObjectInstance:@(INT_MAX)];
     [initializer injectWithObjectInstance:@(UINT_MAX)];
     [initializer injectWithObjectInstance:@(SHRT_MAX)];
@@ -157,7 +147,7 @@
     [definition setInitializer:initializer];
 
     [_componentFactory register:definition];
-    PrimitiveMan* primitiveMan = [_componentFactory componentForKey:@"primitive"];
+    PrimitiveMan *primitiveMan = [_componentFactory componentForKey:@"primitive"];
     assertThatInt(primitiveMan.intValue, equalToInt(INT_MAX));
     assertThatUnsignedInt(primitiveMan.unsignedIntValue, equalToUnsignedInt(UINT_MAX));
     assertThatShort(primitiveMan.shortValue, equalToShort(SHRT_MAX));
@@ -180,65 +170,59 @@
     assertThatInt(primitiveMan.unknownPointer->fieldA, equalToInt(INT_MAX));
     assertThatLong(primitiveMan.unknownPointer->fieldB, equalToLong(LONG_MAX));
     assertThat(primitiveMan.pointerInsideValue, equalTo([NSValue valueWithPointer:primitiveStruct]));
-    
+
     free(primitiveStruct);
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Property injection
 
-- (void)test_injects_required_property_dependencies
-{
-    TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+- (void)test_injects_required_property_dependencies {
+    TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     [knightDefinition injectProperty:@selector(quest) withReference:@"quest"];
     [_componentFactory register:knightDefinition];
 
-    TyphoonDefinition* questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
+    TyphoonDefinition *questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
     [_componentFactory register:questDefinition];
 
-    Knight* knight = [_componentFactory buildInstanceWithDefinition:knightDefinition];
+    Knight *knight = [_componentFactory buildInstanceWithDefinition:knightDefinition];
     assertThat(knight, notNilValue());
     assertThat(knight.quest, notNilValue());
 }
 
-- (void)test_raises_exception_if_property_setter_does_not_exist
-{
-    TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+- (void)test_raises_exception_if_property_setter_does_not_exist {
+    TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     [knightDefinition injectProperty:@selector(propertyThatDoesNotExist) withReference:@"quest"];
     [_componentFactory register:knightDefinition];
 
-    TyphoonDefinition* questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
+    TyphoonDefinition *questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
     [_componentFactory register:questDefinition];
 
-    @try
-    {
-        Knight* knight = [_componentFactory buildInstanceWithDefinition:knightDefinition];
+    @try {
+        Knight *knight = [_componentFactory buildInstanceWithDefinition:knightDefinition];
         STFail(@"Should have thrown exception");
         knight = nil;
     }
-    @catch (NSException* e)
-    {
+    @catch (NSException *e) {
         assertThat(e.name, equalTo(@"NSUnknownKeyException"));
     }
 }
 
-- (void)test_injects_property_value_as_long
-{
-    TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+- (void)test_injects_property_value_as_long {
+    TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     [knightDefinition injectProperty:@selector(damselsRescued) withValueAsText:@"12"];
     [_componentFactory register:knightDefinition];
 
-    Knight* knight = [_componentFactory componentForKey:@"knight"];
+    Knight *knight = [_componentFactory componentForKey:@"knight"];
     assertThatLong(knight.damselsRescued, equalToLongLong(12));
 }
 
-- (void)test_inject_property_value_as_primitives
-{
+- (void)test_inject_property_value_as_primitives {
     PrimitiveManStruct *primitiveStruct = malloc(sizeof(PrimitiveManStruct));
     primitiveStruct->fieldA = INT_MAX;
     primitiveStruct->fieldB = LONG_MAX;
-    
-    TyphoonDefinition* definition = [[TyphoonDefinition alloc] initWithClass:[PrimitiveMan class] key:@"primitive"];
+
+    TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[PrimitiveMan class] key:@"primitive"];
     [definition injectProperty:@selector(intValue) withObjectInstance:@(INT_MAX)];
     [definition injectProperty:@selector(unsignedIntValue) withObjectInstance:@(UINT_MAX)];
     [definition injectProperty:@selector(shortValue) withObjectInstance:@(SHRT_MAX)];
@@ -260,10 +244,10 @@
     [definition injectProperty:@selector(pointer) withObjectInstance:[NSValue valueWithPointer:&primitiveStruct]];
     [definition injectProperty:@selector(pointerInsideValue) withObjectInstance:[NSValue valueWithPointer:&primitiveStruct]];
     [definition injectProperty:@selector(unknownPointer) withObjectInstance:[NSValue valueWithPointer:primitiveStruct]];
-    
-    
+
+
     [_componentFactory register:definition];
-    PrimitiveMan* primitiveMan = [_componentFactory componentForKey:@"primitive"];
+    PrimitiveMan *primitiveMan = [_componentFactory componentForKey:@"primitive"];
     assertThatInt(primitiveMan.intValue, equalToInt(INT_MAX));
     assertThatUnsignedInt(primitiveMan.unsignedIntValue, equalToUnsignedInt(UINT_MAX));
     assertThatShort(primitiveMan.shortValue, equalToShort(SHRT_MAX));
@@ -286,7 +270,7 @@
     assertThatLong(primitiveMan.unknownPointer->fieldB, equalToLong(LONG_MAX));
     assertThatBool(primitiveMan.pointer == &primitiveStruct, equalToBool(YES));
     assertThat(primitiveMan.pointerInsideValue, equalTo([NSValue valueWithPointer:&primitiveStruct]));
-    
+
     primitiveMan.unknownPointer = NULL;
     free(primitiveStruct);
 }
@@ -295,20 +279,17 @@
 /* ====================================================================================================================================== */
 #pragma mark - Property injection error handling
 
-- (void) test_raises_exception_if_property_has_no_setter
-{
-    @try
-    {
-        TyphoonDefinition* knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
+- (void)test_raises_exception_if_property_has_no_setter {
+    @try {
+        TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
         [knightDefinition injectProperty:@selector(propertyDoesNotExist) withObjectInstance:@"fooString"];
         [_componentFactory register:knightDefinition];
 
-        Knight* knight = [_componentFactory componentForKey:@"knight"];
+        Knight *knight = [_componentFactory componentForKey:@"knight"];
         NSLog(@"Knight: %@", knight); //Suppress unused warning.
         STFail(@"Should have thrown exception");
     }
-    @catch (NSException* e)
-    {
+    @catch (NSException *e) {
         assertThat(e.name, equalTo(@"NSUnknownKeyException"));
     }
 

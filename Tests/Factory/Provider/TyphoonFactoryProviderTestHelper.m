@@ -13,8 +13,7 @@
 
 #include <objc/runtime.h>
 
-Protocol *protocol_clone(Protocol *original)
-{
+Protocol *protocol_clone(Protocol *original) {
     static int counter = 0;
 
     NSString *protocolName = [NSString stringWithFormat:@"%s%d", protocol_getName(original), counter++];
@@ -22,19 +21,22 @@ Protocol *protocol_clone(Protocol *original)
 
     unsigned int count = 0;
     struct objc_method_description *methods = protocol_copyMethodDescriptionList(original, YES, YES, &count);
-    for (unsigned int idx = 0; idx < count; idx++){ protocol_addMethodDescription(protocol, methods[idx].name, methods[idx].types, YES, YES);}
+    for (unsigned int idx = 0; idx < count;
+         idx++) {protocol_addMethodDescription(protocol, methods[idx].name, methods[idx].types, YES, YES);}
     free(methods);
 
     methods = protocol_copyMethodDescriptionList(original, YES, NO, &count);
-    for (unsigned int idx = 0; idx < count; idx++){ protocol_addMethodDescription(protocol, methods[idx].name, methods[idx].types, YES, NO);}
+    for (unsigned int idx = 0; idx < count;
+         idx++) {protocol_addMethodDescription(protocol, methods[idx].name, methods[idx].types, YES, NO);}
     free(methods);
 
     methods = protocol_copyMethodDescriptionList(original, NO, YES, &count);
-    for (unsigned int idx = 0; idx < count; idx++){ protocol_addMethodDescription(protocol, methods[idx].name, methods[idx].types, NO, YES);}
+    for (unsigned int idx = 0; idx < count;
+         idx++) {protocol_addMethodDescription(protocol, methods[idx].name, methods[idx].types, NO, YES);}
     free(methods);
 
     methods = protocol_copyMethodDescriptionList(original, NO, NO, &count);
-    for (unsigned int idx = 0; idx < count; idx++){ protocol_addMethodDescription(protocol, methods[idx].name, methods[idx].types, NO, NO);}
+    for (unsigned int idx = 0; idx < count; idx++) {protocol_addMethodDescription(protocol, methods[idx].name, methods[idx].types, NO, NO);}
     free(methods);
 
     objc_property_t *properties = protocol_copyPropertyList(original, &count);
@@ -51,7 +53,7 @@ Protocol *protocol_clone(Protocol *original)
     free(properties);
 
     Protocol *__unsafe_unretained *protocols = protocol_copyProtocolList(original, &count);
-    for (unsigned int idx = 0; idx < count; idx++){ protocol_addProtocol(protocol, protocols[idx]);}
+    for (unsigned int idx = 0; idx < count; idx++) {protocol_addProtocol(protocol, protocols[idx]);}
     free(protocols);
 
     objc_registerProtocol(protocol);

@@ -5,8 +5,7 @@
 #import "TyphoonCollaboratingAssemblyPropertyEnumeratorTests_AssemblyWithProperty.h"
 
 
-@implementation AssemblyWithProperty
-{
+@implementation AssemblyWithProperty {
 
 }
 @end

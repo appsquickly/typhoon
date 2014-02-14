@@ -10,11 +10,9 @@
 
 @implementation CROPrototypeA
 
-- (id)initWithCROPrototypeB:(CROPrototypeB*)prototypeB
-{
+- (id)initWithCROPrototypeB:(CROPrototypeB *)prototypeB {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _prototypeB = prototypeB;
     }
     return self;

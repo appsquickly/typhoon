@@ -19,29 +19,24 @@
 @end
 
 
-
-@implementation TyphoonMiscUtilsTests
-{
+@implementation TyphoonMiscUtilsTests {
 
 }
 
-- (void)testLessThanFour
-{
+- (void)testLessThanFour {
     [self expectOrdinal:@"0th" forIndex:0];
     [self expectOrdinal:@"1st" forIndex:1];
     [self expectOrdinal:@"2nd" forIndex:2];
     [self expectOrdinal:@"3rd" forIndex:3];
 }
 
-- (void)testFourThroughTwenty_Th
-{
+- (void)testFourThroughTwenty_Th {
     for (int i = 4; i <= 20; i++) {
         [self expectOrdinal:[NSString stringWithFormat:@"%ith", i] forIndex:i];
     }
 }
 
-- (void)testLastDigitLessThanFour
-{
+- (void)testLastDigitLessThanFour {
     [self expectOrdinal:@"20th" forIndex:20];
     [self expectOrdinal:@"21st" forIndex:21];
     [self expectOrdinal:@"22nd" forIndex:22];
@@ -49,8 +44,7 @@
     [self expectOrdinal:@"24th" forIndex:24];
 }
 
-- (void)expectOrdinal:(NSString*)string forIndex:(int)index
-{
+- (void)expectOrdinal:(NSString *)string forIndex:(int)index {
     assertThat([TyphoonMiscUtils ordinalForIndex:index], equalTo(string));
 }
 

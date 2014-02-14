@@ -7,7 +7,6 @@
 //
 
 
-static inline BOOL MKTTypeEncodingIsObjectOrClass(const char *type)
-{
+static inline BOOL MKTTypeEncodingIsObjectOrClass(const char *type) {
     return strcmp(type, @encode(id)) == 0 || strcmp(type, @encode(Class)) == 0;
 }

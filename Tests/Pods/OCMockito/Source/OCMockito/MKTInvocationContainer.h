@@ -14,12 +14,16 @@
 
 @interface MKTInvocationContainer : NSObject
 
-@property (nonatomic, readonly) NSMutableArray *registeredInvocations;
+@property(nonatomic, readonly) NSMutableArray *registeredInvocations;
 
 - (id)initWithMockingProgress:(MKTMockingProgress *)mockingProgress;
+
 - (void)setInvocationForPotentialStubbing:(NSInvocation *)invocation;
+
 - (void)setMatcher:(id <HCMatcher>)matcher atIndex:(NSUInteger)argumentIndex;
+
 - (void)addAnswer:(id)answer;
+
 - (id)findAnswerFor:(NSInvocation *)invocation;
 
 @end

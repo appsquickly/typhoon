@@ -15,8 +15,8 @@
 
 @protocol Pizza <TyphoonComponentFactoryAware, NSObject>
 
-@property (nonatomic, strong, readonly) id<CreditService> creditService;
-@property (nonatomic, assign, readonly) double radius;
-@property (nonatomic, copy, readonly) NSArray *ingredients;
+@property(nonatomic, strong, readonly) id <CreditService> creditService;
+@property(nonatomic, assign, readonly) double radius;
+@property(nonatomic, copy, readonly) NSArray *ingredients;
 
 @end

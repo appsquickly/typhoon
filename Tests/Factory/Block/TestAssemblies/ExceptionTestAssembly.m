@@ -18,10 +18,8 @@
 
 @implementation ExceptionTestAssembly
 
-- (id)anotherServiceUrl
-{
-    return [TyphoonDefinition withClass:[NSURL class] initialization:^(TyphoonInitializer* initializer)
-    {
+- (id)anotherServiceUrl {
+    return [TyphoonDefinition withClass:[NSURL class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(URLWithString:);
         [initializer injectParameterNamed:@"string" withValueAsText:@"http://dev.foobar.com/service/" requiredTypeOrNil:nil];
     }];

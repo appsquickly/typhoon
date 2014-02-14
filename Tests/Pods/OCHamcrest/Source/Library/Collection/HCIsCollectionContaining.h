@@ -10,18 +10,18 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsCollectionContaining : HCBaseMatcher
-{
-    id<HCMatcher> elementMatcher;
+@interface HCIsCollectionContaining : HCBaseMatcher {
+    id <HCMatcher> elementMatcher;
 }
 
-+ (id)isCollectionContaining:(id<HCMatcher>)anElementMatcher;
-- (id)initWithMatcher:(id<HCMatcher>)anElementMatcher;
++ (id)isCollectionContaining:(id <HCMatcher>)anElementMatcher;
+
+- (id)initWithMatcher:(id <HCMatcher>)anElementMatcher;
 
 @end
 
 
-OBJC_EXPORT id<HCMatcher> HC_hasItem(id itemMatch);
+OBJC_EXPORT id <HCMatcher> HC_hasItem(id itemMatch);
 
 /**
     hasItem(aMatcher) -
@@ -45,7 +45,7 @@ OBJC_EXPORT id<HCMatcher> HC_hasItem(id itemMatch);
 #endif
 
 
-OBJC_EXPORT id<HCMatcher> HC_hasItems(id itemMatch, ...) NS_REQUIRES_NIL_TERMINATION;
+OBJC_EXPORT id <HCMatcher> HC_hasItems(id itemMatch, ...) NS_REQUIRES_NIL_TERMINATION;
 
 /**
     hasItems(firstMatcher, ...) -

@@ -10,18 +10,18 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsCollectionContainingInOrder : HCBaseMatcher
-{
+@interface HCIsCollectionContainingInOrder : HCBaseMatcher {
     NSArray *matchers;
 }
 
 + (id)isCollectionContainingInOrder:(NSArray *)itemMatchers;
+
 - (id)initWithMatchers:(NSArray *)itemMatchers;
 
 @end
 
 
-OBJC_EXPORT id<HCMatcher> HC_contains(id itemMatch, ...) NS_REQUIRES_NIL_TERMINATION;
+OBJC_EXPORT id <HCMatcher> HC_contains(id itemMatch, ...) NS_REQUIRES_NIL_TERMINATION;
 
 /**
     contains(firstMatcher, ...) -

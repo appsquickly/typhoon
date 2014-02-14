@@ -10,22 +10,19 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsDictionaryContainingEntries : HCBaseMatcher
-{
+@interface HCIsDictionaryContainingEntries : HCBaseMatcher {
     NSArray *keys;
     NSArray *valueMatchers;
 }
 
-+ (id)isDictionaryContainingKeys:(NSArray *)theKeys
-                   valueMatchers:(NSArray *)theValueMatchers;
++ (id)isDictionaryContainingKeys:(NSArray *)theKeys valueMatchers:(NSArray *)theValueMatchers;
 
-- (id)initWithKeys:(NSArray *)theKeys
-     valueMatchers:(NSArray *)theValueMatchers;
+- (id)initWithKeys:(NSArray *)theKeys valueMatchers:(NSArray *)theValueMatchers;
 
 @end
 
 
-OBJC_EXPORT id<HCMatcher> HC_hasEntries(id keysAndValueMatch, ...) NS_REQUIRES_NIL_TERMINATION;
+OBJC_EXPORT id <HCMatcher> HC_hasEntries(id keysAndValueMatch, ...) NS_REQUIRES_NIL_TERMINATION;
 
 /**
     hasEntries(firstKey, valueMatcher, ...) -
@@ -49,5 +46,5 @@ OBJC_EXPORT id<HCMatcher> HC_hasEntries(id keysAndValueMatch, ...) NS_REQUIRES_N
     @ingroup collection_matchers
  */
 #ifdef HC_SHORTHAND
-    #define hasEntries HC_hasEntries
+#define hasEntries HC_hasEntries
 #endif

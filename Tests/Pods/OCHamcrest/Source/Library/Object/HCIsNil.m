@@ -15,18 +15,15 @@
 
 @implementation HCIsNil
 
-+ (id)isNil
-{
++ (id)isNil {
     return [[self alloc] init];
 }
 
-- (BOOL)matches:(id)item
-{
+- (BOOL)matches:(id)item {
     return item == nil;
 }
 
-- (void)describeTo:(id<HCDescription>)description
-{
+- (void)describeTo:(id <HCDescription>)description {
     [description appendText:@"nil"];
 }
 
@@ -35,12 +32,10 @@
 
 #pragma mark -
 
-id<HCMatcher> HC_nilValue()
-{
+id <HCMatcher> HC_nilValue() {
     return [HCIsNil isNil];
 }
 
-id<HCMatcher> HC_notNilValue()
-{
+id <HCMatcher> HC_notNilValue() {
     return HC_isNot([HCIsNil isNil]);
 }

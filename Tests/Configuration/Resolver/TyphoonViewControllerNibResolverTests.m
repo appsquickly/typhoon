@@ -18,8 +18,7 @@
 #import <TyphoonInitializer.h>
 #import <TyphoonInitializer+InstanceBuilder.h>
 
-@interface TyphoonViewControllerNibResolverTests : SenTestCase
-{   
+@interface TyphoonViewControllerNibResolverTests : SenTestCase {
     TyphoonViewControllerNibResolver *_nibResolver;
 }
 
@@ -32,37 +31,34 @@
     _nibResolver = [[TyphoonViewControllerNibResolver alloc] init];
 }
 
-- (void)test_process_view_controller_without_initializer
-{
+- (void)test_process_view_controller_without_initializer {
     TyphoonDefinition *definition = [TyphoonDefinition withClass:[UIViewController class]];
     TyphoonComponentFactory *factory = mock([TyphoonComponentFactory class]);
     [given([factory registry]) willReturn:@[definition]];
-    
+
     [_nibResolver postProcessComponentFactory:factory];
-    
+
     assertThat(definition.initializer, notNilValue());
     assertThat(NSStringFromSelector(definition.initializer.selector), equalTo(NSStringFromSelector(@selector(initWithNibName:bundle:))));
     assertThatUnsignedInteger([[definition.initializer injectedParameters] count], equalToUnsignedInteger(2));
 
 }
 
-- (void)test_skips_view_controller_with_initializer
-{
+- (void)test_skips_view_controller_with_initializer {
     TyphoonDefinition *definition = [TyphoonDefinition withClass:[UIViewController class]];
     TyphoonInitializer *initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithFoobar:)];
     definition.initializer = initializer;
-    
+
     TyphoonComponentFactory *factory = mock([TyphoonComponentFactory class]);
     [given([factory registry]) willReturn:@[definition]];
-    
+
     [_nibResolver postProcessComponentFactory:factory];
     assertThat(NSStringFromSelector(initializer.selector), equalTo(NSStringFromSelector(@selector(initWithFoobar:))));
     assertThat(definition.initializer, equalTo(initializer));
 }
 
 
-- (void)test_resolves_nib_name_from_class
-{
+- (void)test_resolves_nib_name_from_class {
     Class clazz = [UIViewController class];
     NSString *nibName = [_nibResolver resolveNibNameForClass:clazz];
     assertThat(nibName, equalTo(NSStringFromClass(clazz)));

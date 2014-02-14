@@ -12,6 +12,6 @@
 
 @interface UnsatisfiableClassGDependsOnFInInitializer : NSObject
 
-- (id)initWithF:(UnsatisfiableClassFDependsOnGInInitializer*)dependencyOnF;
+- (id)initWithF:(UnsatisfiableClassFDependsOnGInInitializer *)dependencyOnF;
 
 @end

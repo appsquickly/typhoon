@@ -14,10 +14,10 @@
 
 @protocol Quest <NSObject>
 
-- (NSString*)questName;
+- (NSString *)questName;
 
-- (NSURL*)imageUrl;
+- (NSURL *)imageUrl;
 
-- (void)setImageUrl:(NSURL*)imageUrl;
+- (void)setImageUrl:(NSURL *)imageUrl;
 
 @end

@@ -16,15 +16,15 @@
 
 @protocol PersonFactory <NSObject>
 
-@property (nonatomic, strong, readonly) id<CreditService> creditService;
-@property (nonatomic, strong, readonly) id<AuthService> authService;
+@property(nonatomic, strong, readonly) id <CreditService> creditService;
+@property(nonatomic, strong, readonly) id <AuthService> authService;
 
 - (Person *)personWithFirstName:(NSString *)firstName lastName:(NSString *)lastName;
 
 - (Person *)personWithFirstName:(NSString *)firstName;
 
 // This factory method will use the initializer with 3 parameters
-- (Person *)personWithLastName:(NSString *)lastName authService:(id<AuthService>)authService;
+- (Person *)personWithLastName:(NSString *)lastName authService:(id <AuthService>)authService;
 
 // Because this one fills less parameters with its own parameter will use the
 // one with two parameters

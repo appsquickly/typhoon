@@ -10,13 +10,11 @@
 
 @implementation UnsatisfiableClassGDependsOnFInInitializer
 
-- (id)initWithF:(UnsatisfiableClassFDependsOnGInInitializer *)dependencyOnF;
-{
+- (id)initWithF:(UnsatisfiableClassFDependsOnGInInitializer *)dependencyOnF; {
     self = [super init];
-    if (!self){ return nil;}
-    
-    
-    
+    if (!self) {return nil;}
+
+
     return self;
 }
 

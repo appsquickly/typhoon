@@ -20,10 +20,8 @@
 
 @implementation CollaboratingMiddleAgesAssembly
 
-- (id)knightWithExternalQuest
-{
-    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition* definition)
-    {
+- (id)knightWithExternalQuest {
+    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest) withDefinition:[_quests environmentDependentQuest]];
     }];
 }

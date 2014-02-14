@@ -18,6 +18,6 @@
 
 @interface ClassBDependsOnA : NSObject
 
-@property(nonatomic, strong) ClassADependsOnB* dependencyOnA;
+@property(nonatomic, strong) ClassADependsOnB *dependencyOnA;
 
 @end
