@@ -17,6 +17,8 @@
 #import <Typhoon/OCLogTemplate.h>
 #import "ExtendedMiddleAgesAssembly.h"
 #import "Knight.h"
+#import "CollaboratingMiddleAgesAssembly.h"
+#import "CampaignQuest.h"
 
 
 @interface TyphoonBlockComponentFactory_OverridingTests : SenTestCase
@@ -36,6 +38,19 @@
     Knight *knight = [(ExtendedMiddleAgesAssembly *) factory yetAnotherKnight];
     LogTrace(@"Knight: %@", knight);
     assertThat(knight, notNilValue());
+}
+
+- (void)test_allows_overriding_methods_in_a_collaborating_assembly
+{
+    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
+        [ExtendedMiddleAgesAssembly assembly],
+        [CollaboratingMiddleAgesAssembly assembly],
+    ]];
+
+    Knight *knight = [(CollaboratingMiddleAgesAssembly *) factory knightWithExternalQuest];
+    assertThat(knight, notNilValue());
+    assertThatBool([knight.quest isKindOfClass:[CampaignQuest class]], equalToBool(YES));
+    assertThat(knight.quest.imageUrl, equalTo([NSURL URLWithString:@"www.foobar.com/quest"]));
 }
 
 
