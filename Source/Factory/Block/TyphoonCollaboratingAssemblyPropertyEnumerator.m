@@ -17,7 +17,8 @@
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonIntrospectionUtils.h"
 
-@implementation TyphoonCollaboratingAssemblyPropertyEnumerator {
+@implementation TyphoonCollaboratingAssemblyPropertyEnumerator
+{
 
 }
 

@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsDictionaryContainingEntries : HCBaseMatcher {
+@interface HCIsDictionaryContainingEntries : HCBaseMatcher
+{
     NSArray *keys;
     NSArray *valueMatchers;
 }

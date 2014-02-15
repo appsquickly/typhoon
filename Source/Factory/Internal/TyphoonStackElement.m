@@ -14,7 +14,8 @@
 #import "TyphoonStackElement.h"
 
 
-@implementation TyphoonStackElement {
+@implementation TyphoonStackElement
+{
     NSMutableSet *completeBlocks;
     id _instance;
 }

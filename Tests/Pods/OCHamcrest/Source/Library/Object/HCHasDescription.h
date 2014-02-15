@@ -41,5 +41,5 @@ OBJC_EXPORT id <HCMatcher> HC_hasDescription(id match);
     @ingroup object_matchers
  */
 #ifdef HC_SHORTHAND
-    #define hasDescription HC_hasDescription
+#define hasDescription HC_hasDescription
 #endif

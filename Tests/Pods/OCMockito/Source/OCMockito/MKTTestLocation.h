@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 
-typedef struct {
+typedef struct
+{
     __unsafe_unretained id testCase;
     const char *fileName;
     int lineNumber;

@@ -16,7 +16,8 @@
 #import "ClassEDependsOnC.h"
 
 
-@implementation ClassCDependsOnDAndE {
+@implementation ClassCDependsOnDAndE
+{
 
 }
 @end

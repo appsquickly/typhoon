@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCHasCount : HCBaseMatcher {
+@interface HCHasCount : HCBaseMatcher
+{
     id <HCMatcher> countMatcher;
 }
 
@@ -38,7 +39,7 @@ OBJC_EXPORT id <HCMatcher> HC_hasCount(id <HCMatcher> matcher);
     @ingroup collection_matchers
  */
 #ifdef HC_SHORTHAND
-    #define hasCount HC_hasCount
+#define hasCount HC_hasCount
 #endif
 
 
@@ -59,5 +60,5 @@ OBJC_EXPORT id <HCMatcher> HC_hasCountOf(NSUInteger count);
     @ingroup collection_matchers
  */
 #ifdef HC_SHORTHAND
-    #define hasCountOf HC_hasCountOf
+#define hasCountOf HC_hasCountOf
 #endif

@@ -20,7 +20,8 @@
 /**
 * Provides a contract for typhoon injected properties (name, injectionType) as well as defines the notion of equality, based on name.
 */
-@interface TyphoonAbstractInjectedProperty : NSObject <NSCopying> {
+@interface TyphoonAbstractInjectedProperty : NSObject <NSCopying>
+{
     NSString *_name;
 }
 

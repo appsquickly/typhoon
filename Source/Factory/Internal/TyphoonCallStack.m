@@ -14,7 +14,8 @@
 #import "TyphoonStackElement.h"
 
 
-@implementation TyphoonCallStack {
+@implementation TyphoonCallStack
+{
     NSMutableArray *_storage;
 }
 

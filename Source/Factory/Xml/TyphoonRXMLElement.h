@@ -35,7 +35,8 @@
 #import <libxml/xpathInternals.h>
 #import "TyphoonDefinition.h"
 
-@interface TyphoonRXMLElement : NSObject {
+@interface TyphoonRXMLElement : NSObject
+{
     xmlDocPtr doc_;
     xmlNodePtr node_;
 }

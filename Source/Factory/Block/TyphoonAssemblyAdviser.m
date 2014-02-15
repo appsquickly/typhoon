@@ -27,7 +27,8 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 @end
 
 
-@implementation TyphoonAssemblyAdviser {
+@implementation TyphoonAssemblyAdviser
+{
 
 }
 

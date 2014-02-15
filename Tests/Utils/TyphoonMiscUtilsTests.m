@@ -19,7 +19,8 @@
 @end
 
 
-@implementation TyphoonMiscUtilsTests {
+@implementation TyphoonMiscUtilsTests
+{
 
 }
 

@@ -15,7 +15,8 @@
 #import "TyphoonPatcher.h"
 
 
-@interface TyphoonPatchObjectFactory : NSObject {
+@interface TyphoonPatchObjectFactory : NSObject
+{
     id _patchObject;
 }
 

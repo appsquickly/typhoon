@@ -12,7 +12,8 @@
 #import "PrimitiveMan.h"
 
 
-@implementation PrimitiveMan {
+@implementation PrimitiveMan
+{
 
 }
 

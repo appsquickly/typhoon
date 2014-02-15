@@ -9,7 +9,8 @@
 
 #ifdef __cplusplus
 
-namespace hamcrest {
+namespace hamcrest
+{
 
 /**
     Boxes a scalar value in an NSNumber, specialized per type.

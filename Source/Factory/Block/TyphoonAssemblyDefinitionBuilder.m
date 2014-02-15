@@ -22,7 +22,8 @@
 #import "TyphoonSelector.h"
 
 
-@implementation TyphoonAssemblyDefinitionBuilder {
+@implementation TyphoonAssemblyDefinitionBuilder
+{
     NSMutableDictionary *_resolveStackForSelector;
     NSMutableDictionary *_cachedDefinitionsForMethodName;
 }

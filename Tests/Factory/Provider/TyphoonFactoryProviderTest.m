@@ -28,7 +28,8 @@
 @interface TyphoonFactoryProviderTest : SenTestCase
 @end
 
-@implementation TyphoonFactoryProviderTest {
+@implementation TyphoonFactoryProviderTest
+{
     Protocol *_paymentFactoryProtocol;
     TyphoonDefinition *_paymentFactoryDefinition;
 

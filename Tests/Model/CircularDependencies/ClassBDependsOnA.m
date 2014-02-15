@@ -15,7 +15,8 @@
 #import "ClassADependsOnB.h"
 
 
-@implementation ClassBDependsOnA {
+@implementation ClassBDependsOnA
+{
 
 }
 @end

@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsEqualIgnoringCase : HCBaseMatcher {
+@interface HCIsEqualIgnoringCase : HCBaseMatcher
+{
     NSString *string;
 }
 

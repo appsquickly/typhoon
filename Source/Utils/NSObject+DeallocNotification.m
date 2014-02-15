@@ -27,7 +27,8 @@
 
 @end
 
-@implementation DeallocCallbackObject {
+@implementation DeallocCallbackObject
+{
     dispatch_block_t callback;
 }
 

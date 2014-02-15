@@ -19,7 +19,8 @@
 @end
 
 
-@implementation TyphoonComponentFactoryAwareTests {
+@implementation TyphoonComponentFactoryAwareTests
+{
     ComponentFactoryAwareObject *object;
     ComponentFactoryAwareAssembly *factory;
 }

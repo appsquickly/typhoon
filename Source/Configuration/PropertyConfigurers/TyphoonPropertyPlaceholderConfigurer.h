@@ -18,7 +18,8 @@
 /**
 * @ingroup Configuration
 */
-@interface TyphoonPropertyPlaceholderConfigurer : NSObject <TyphoonComponentFactoryPostProcessor> {
+@interface TyphoonPropertyPlaceholderConfigurer : NSObject <TyphoonComponentFactoryPostProcessor>
+{
     NSString *_prefix;
     NSString *_suffix;
     NSMutableDictionary *_properties;

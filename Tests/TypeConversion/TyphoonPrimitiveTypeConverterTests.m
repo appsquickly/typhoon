@@ -33,7 +33,8 @@
 
 #define TYPHOON_TEST_VALUE 65
 
-@implementation TyphoonPrimitiveTypeConverterTests {
+@implementation TyphoonPrimitiveTypeConverterTests
+{
     TyphoonPrimitiveTypeConverter *_typeConverter;
     NSString *_testNumberString;
 }

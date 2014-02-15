@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsDictionaryContaining : HCBaseMatcher {
+@interface HCIsDictionaryContaining : HCBaseMatcher
+{
     id <HCMatcher> keyMatcher;
     id <HCMatcher> valueMatcher;
 }

@@ -29,7 +29,8 @@
 
 @end
 
-@implementation TyphoonAssistedFactoryMethodBlockClosureTest {
+@implementation TyphoonAssistedFactoryMethodBlockClosureTest
+{
     NSMethodSignature *methodSignature;
     NSInvocation *forwardedInvocation;
 

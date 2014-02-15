@@ -37,5 +37,5 @@ OBJC_EXPORT void HC_assertThatWithLocation(id testCase, id actual, id <HCMatcher
     @ingroup integration
  */
 #ifdef HC_SHORTHAND
-    #define assertThat HC_assertThat
+#define assertThat HC_assertThat
 #endif

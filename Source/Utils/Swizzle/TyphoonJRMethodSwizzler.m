@@ -15,7 +15,8 @@
 #import "TyphoonJRSwizzle.h"
 
 
-@implementation TyphoonJRMethodSwizzler {
+@implementation TyphoonJRMethodSwizzler
+{
 
 }
 

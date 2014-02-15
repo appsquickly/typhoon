@@ -41,5 +41,5 @@ OBJC_EXPORT id <HCMatcher> HC_endsWith(NSString *aSubstring);
     @ingroup text_matchers
  */
 #ifdef HC_SHORTHAND
-    #define endsWith HC_endsWith
+#define endsWith HC_endsWith
 #endif

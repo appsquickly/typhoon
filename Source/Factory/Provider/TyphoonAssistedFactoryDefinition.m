@@ -14,7 +14,8 @@
 #import "TyphoonAssistedFactoryMethodBlock.h"
 #import "TyphoonAssistedFactoryMethodInitializer.h"
 
-@implementation TyphoonAssistedFactoryDefinition {
+@implementation TyphoonAssistedFactoryDefinition
+{
     NSMutableArray *_factoryMethods;
 }
 

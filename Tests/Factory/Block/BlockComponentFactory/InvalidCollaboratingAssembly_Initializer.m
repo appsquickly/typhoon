@@ -17,7 +17,8 @@
 #import "CavalryMan.h"
 #import "TyphoonInitializer.h"
 
-@implementation InvalidCollaboratingAssembly_Initializer {
+@implementation InvalidCollaboratingAssembly_Initializer
+{
 
 }
 

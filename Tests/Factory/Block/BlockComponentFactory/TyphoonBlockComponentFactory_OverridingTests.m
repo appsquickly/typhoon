@@ -23,7 +23,8 @@
 @end
 
 
-@implementation TyphoonBlockComponentFactory_OverridingTests {
+@implementation TyphoonBlockComponentFactory_OverridingTests
+{
 
 }
 

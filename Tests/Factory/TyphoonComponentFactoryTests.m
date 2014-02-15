@@ -29,7 +29,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
 @interface TyphoonComponentFactoryTests : SenTestCase
 @end
 
-@implementation TyphoonComponentFactoryTests {
+@implementation TyphoonComponentFactoryTests
+{
     TyphoonComponentFactory *_componentFactory;
 }
 

@@ -127,7 +127,8 @@
 }
 
 - (void)injectPropertyWithComponentFactory:(SEL)selector {
-    TyphoonPropertyInjectedByComponentFactory *propertyInjection = [[TyphoonPropertyInjectedByComponentFactory alloc] initWithName:NSStringFromSelector(selector)];
+    TyphoonPropertyInjectedByComponentFactory
+        *propertyInjection = [[TyphoonPropertyInjectedByComponentFactory alloc] initWithName:NSStringFromSelector(selector)];
     [_injectedProperties addObject:propertyInjection];
 }
 

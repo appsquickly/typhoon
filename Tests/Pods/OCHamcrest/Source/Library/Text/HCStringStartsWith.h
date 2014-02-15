@@ -41,5 +41,5 @@ OBJC_EXPORT id <HCMatcher> HC_startsWith(NSString *aSubstring);
     @ingroup text_matchers
  */
 #ifdef HC_SHORTHAND
-    #define startsWith HC_startsWith
+#define startsWith HC_startsWith
 #endif

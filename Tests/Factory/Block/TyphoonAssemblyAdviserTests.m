@@ -44,7 +44,8 @@
 @end
 
 
-@implementation TyphoonAssemblyAdviserTests {
+@implementation TyphoonAssemblyAdviserTests
+{
     TyphoonAssemblyAdviser *adviser;
 
     TyphoonAssembly *assembly;

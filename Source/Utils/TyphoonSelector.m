@@ -19,7 +19,8 @@
 @end
 
 
-@implementation TyphoonSelector {
+@implementation TyphoonSelector
+{
 
 }
 

@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCStringContainsInOrder : HCBaseMatcher {
+@interface HCStringContainsInOrder : HCBaseMatcher
+{
     NSArray *substrings;
 }
 

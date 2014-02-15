@@ -31,7 +31,8 @@ static NSString *const kScoreKey = @"kScoreKey";
 @property(nonatomic, strong) TyphoonAssistedFactoryCreatorImplicitMethod *selectedInitializer;
 @end
 
-@implementation TyphoonAssistedFactoryCreatorImplicit {
+@implementation TyphoonAssistedFactoryCreatorImplicit
+{
 @private
     NSArray *_procotolPropertyNames;
 

@@ -15,7 +15,8 @@
 @class TyphoonDefinition;
 @class TyphoonParameterInjectedAsCollection;
 
-typedef enum {
+typedef enum
+{
     TyphoonComponentInitializerIsClassMethodGuess,
     TyphoonComponentInitializerIsClassMethodYes,
     TyphoonComponentInitializerIsClassMethodNo
@@ -40,7 +41,8 @@ typedef enum {
 * Its generally recommended to use initializer-style injection, unless the above drawbacks will manifest.
 *
 */
-@interface TyphoonInitializer : NSObject <NSCopying> {
+@interface TyphoonInitializer : NSObject <NSCopying>
+{
     NSMutableArray *_injectedParameters;
     NSArray *_parameterNames;
     __unsafe_unretained TyphoonDefinition *_definition;

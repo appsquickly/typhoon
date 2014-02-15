@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCOrderingComparison : HCBaseMatcher {
+@interface HCOrderingComparison : HCBaseMatcher
+{
     id expected;
     NSComparisonResult minCompare;
     NSComparisonResult maxCompare;

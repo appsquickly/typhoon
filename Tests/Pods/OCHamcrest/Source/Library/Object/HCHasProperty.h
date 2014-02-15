@@ -8,7 +8,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCHasProperty : HCBaseMatcher {
+@interface HCHasProperty : HCBaseMatcher
+{
     NSString *propertyName;
     id <HCMatcher> valueMatcher;
 }

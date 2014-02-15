@@ -18,7 +18,8 @@
 @interface TyphoonAssistedFactoryInitializerTest : SenTestCase
 @end
 
-@implementation TyphoonAssistedFactoryInitializerTest {
+@implementation TyphoonAssistedFactoryInitializerTest
+{
     SEL _factoryMethod;
     SEL _initializerMethod;
     TyphoonAssistedFactoryMethodInitializer *_initializer;

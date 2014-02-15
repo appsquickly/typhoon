@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsCollectionContainingInAnyOrder : HCBaseMatcher {
+@interface HCIsCollectionContainingInAnyOrder : HCBaseMatcher
+{
     NSMutableArray *matchers;
 }
 
@@ -43,5 +44,5 @@ OBJC_EXPORT id <HCMatcher> HC_containsInAnyOrder(id itemMatch, ...) NS_REQUIRES_
     @ingroup collection_matchers
  */
 #ifdef HC_SHORTHAND
-    #define containsInAnyOrder HC_containsInAnyOrder
+#define containsInAnyOrder HC_containsInAnyOrder
 #endif

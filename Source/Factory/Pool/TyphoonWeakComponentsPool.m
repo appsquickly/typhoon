@@ -12,7 +12,8 @@
 #import "TyphoonWeakComponentsPool.h"
 #import "NSObject+DeallocNotification.h"
 
-@implementation TyphoonWeakComponentsPool {
+@implementation TyphoonWeakComponentsPool
+{
     NSMutableDictionary *dictionaryWithNonRetainedObjects;
 }
 

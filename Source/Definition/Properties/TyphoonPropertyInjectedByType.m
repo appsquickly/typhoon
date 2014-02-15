@@ -41,14 +41,15 @@
 
     if ([self isComponentFactoryType:type]) {
         value = factory;
-    } else {
+    }
+    else {
         TyphoonDefinition *definition = [factory definitionForType:[type classOrProtocol]];
         [factory evaluateCircularDependency:definition.key propertyName:self.name instance:instance];
         if (![factory propertyIsCircular:self onInstance:instance]) {
             value = [factory componentForKey:definition.key];
         }
     }
-    
+
     return value;
 }
 
@@ -61,11 +62,12 @@
 
 - (BOOL)isComponentFactoryType:(TyphoonTypeDescriptor *)type {
     BOOL isFactoryClass = NO;
-    
+
     if (type.typeBeingDescribed) {
-        isFactoryClass = [type.typeBeingDescribed isSubclassOfClass:[TyphoonComponentFactory class]] || [type.typeBeingDescribed isSubclassOfClass:[TyphoonAssembly class]];
+        isFactoryClass = [type.typeBeingDescribed isSubclassOfClass:[TyphoonComponentFactory class]] ||
+            [type.typeBeingDescribed isSubclassOfClass:[TyphoonAssembly class]];
     }
-    
+
     return isFactoryClass;
 }
 

@@ -13,7 +13,8 @@
 #import "Champion.h"
 
 
-@implementation Champion {
+@implementation Champion
+{
 
 }
 @end

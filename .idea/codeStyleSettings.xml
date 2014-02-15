@@ -17,6 +17,7 @@
         </option>
         <option name="RIGHT_MARGIN" value="140" />
         <Objective-C>
+          <option name="NAMESPACE_BRACE_PLACEMENT" value="2" />
           <option name="METHOD_PARAMETERS_WRAP" value="1" />
           <option name="METHOD_PARAMETERS_ALIGN_BY_COLONS" value="false" />
           <option name="METHOD_CALL_ARGUMENTS_WRAP" value="1" />
@@ -52,6 +53,7 @@
         </XML>
         <codeStyleSettings language="ObjectiveC">
           <option name="KEEP_LINE_BREAKS" value="false" />
+          <option name="CLASS_BRACE_STYLE" value="2" />
           <option name="ELSE_ON_NEW_LINE" value="true" />
           <option name="CATCH_ON_NEW_LINE" value="true" />
           <option name="FINALLY_ON_NEW_LINE" value="true" />

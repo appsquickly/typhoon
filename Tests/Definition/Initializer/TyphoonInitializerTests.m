@@ -18,7 +18,8 @@
 @end
 
 
-@implementation TyphoonInitializerTests {
+@implementation TyphoonInitializerTests
+{
     TyphoonInitializer *_initializer;
 }
 

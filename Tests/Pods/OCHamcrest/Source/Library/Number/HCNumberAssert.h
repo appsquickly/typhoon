@@ -30,7 +30,7 @@ OBJC_EXPORT void HC_assertThatBoolWithLocation(id testCase, BOOL actual, id <HCM
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-    #define assertThatBool HC_assertThatBool
+#define assertThatBool HC_assertThatBool
 #endif
 
 
@@ -54,7 +54,7 @@ OBJC_EXPORT void HC_assertThatCharWithLocation(id testCase, char actual, id <HCM
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-    #define assertThatChar HC_assertThatChar
+#define assertThatChar HC_assertThatChar
 #endif
 
 
@@ -78,7 +78,7 @@ OBJC_EXPORT void HC_assertThatDoubleWithLocation(id testCase, double actual, id 
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-    #define assertThatDouble HC_assertThatDouble
+#define assertThatDouble HC_assertThatDouble
 #endif
 
 
@@ -102,7 +102,7 @@ OBJC_EXPORT void HC_assertThatFloatWithLocation(id testCase, float actual, id <H
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-    #define assertThatFloat HC_assertThatFloat
+#define assertThatFloat HC_assertThatFloat
 #endif
 
 
@@ -126,7 +126,7 @@ OBJC_EXPORT void HC_assertThatIntWithLocation(id testCase, int actual, id <HCMat
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-    #define assertThatInt HC_assertThatInt
+#define assertThatInt HC_assertThatInt
 #endif
 
 
@@ -150,7 +150,7 @@ OBJC_EXPORT void HC_assertThatLongWithLocation(id testCase, long actual, id <HCM
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-    #define assertThatLong HC_assertThatLong
+#define assertThatLong HC_assertThatLong
 #endif
 
 
@@ -176,7 +176,7 @@ OBJC_EXPORT void
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-    #define assertThatLongLong HC_assertThatLongLong
+#define assertThatLongLong HC_assertThatLongLong
 #endif
 
 
@@ -200,7 +200,7 @@ OBJC_EXPORT void HC_assertThatShortWithLocation(id testCase, short actual, id <H
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-    #define assertThatShort HC_assertThatShort
+#define assertThatShort HC_assertThatShort
 #endif
 
 
@@ -226,7 +226,7 @@ OBJC_EXPORT void
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-    #define assertThatUnsignedChar HC_assertThatUnsignedChar
+#define assertThatUnsignedChar HC_assertThatUnsignedChar
 #endif
 
 
@@ -251,7 +251,7 @@ OBJC_EXPORT void
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-    #define assertThatUnsignedInt HC_assertThatUnsignedInt
+#define assertThatUnsignedInt HC_assertThatUnsignedInt
 #endif
 
 
@@ -276,7 +276,7 @@ OBJC_EXPORT void
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-    #define assertThatUnsignedLong HC_assertThatUnsignedLong
+#define assertThatUnsignedLong HC_assertThatUnsignedLong
 #endif
 
 
@@ -301,7 +301,7 @@ OBJC_EXPORT void HC_assertThatUnsignedLongLongWithLocation
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-    #define assertThatUnsignedLongLong HC_assertThatUnsignedLongLong
+#define assertThatUnsignedLongLong HC_assertThatUnsignedLongLong
 #endif
 
 
@@ -326,7 +326,7 @@ OBJC_EXPORT void HC_assertThatUnsignedShortWithLocation
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-    #define assertThatUnsignedShort HC_assertThatUnsignedShort
+#define assertThatUnsignedShort HC_assertThatUnsignedShort
 #endif
 
 
@@ -351,7 +351,7 @@ OBJC_EXPORT void
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-    #define assertThatInteger HC_assertThatInteger
+#define assertThatInteger HC_assertThatInteger
 #endif
 
 
@@ -376,5 +376,5 @@ OBJC_EXPORT void
     @ingroup integration_numeric
  */
 #ifdef HC_SHORTHAND
-    #define assertThatUnsignedInteger HC_assertThatUnsignedInteger
+#define assertThatUnsignedInteger HC_assertThatUnsignedInteger
 #endif

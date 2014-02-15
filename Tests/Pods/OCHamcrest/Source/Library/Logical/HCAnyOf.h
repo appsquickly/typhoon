@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCAnyOf : HCBaseMatcher {
+@interface HCAnyOf : HCBaseMatcher
+{
     NSArray *matchers;
 }
 

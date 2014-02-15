@@ -18,7 +18,8 @@
 /**
 * @ingroup Factory
 */
-@interface TyphoonXmlComponentFactory : TyphoonComponentFactory {
+@interface TyphoonXmlComponentFactory : TyphoonComponentFactory
+{
     NSMutableArray *_resourceNames;
 }
 

@@ -18,7 +18,8 @@
 @interface TyphoonAssistedFactoryBaseTest : SenTestCase
 @end
 
-@implementation TyphoonAssistedFactoryBaseTest {
+@implementation TyphoonAssistedFactoryBaseTest
+{
     TyphoonAssistedFactoryBase *assistedFactory;
 }
 

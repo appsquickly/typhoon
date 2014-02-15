@@ -15,7 +15,8 @@
 @class TyphoonComponentFactory;
 
 
-@interface TyphoonAbstractInjectedParameter : NSObject <NSCopying> {
+@interface TyphoonAbstractInjectedParameter : NSObject <NSCopying>
+{
     NSUInteger _index;
     __weak TyphoonInitializer *_initializer;
 }

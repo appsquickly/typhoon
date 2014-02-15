@@ -19,7 +19,8 @@
 #import "OCLogTemplate.h"
 #import "CavalryMan.h"
 
-@interface TyphoonPatcherTests : SenTestCase {
+@interface TyphoonPatcherTests : SenTestCase
+{
     MiddleAgesAssembly *_assembly;
     TyphoonComponentFactory *_factory;
 }

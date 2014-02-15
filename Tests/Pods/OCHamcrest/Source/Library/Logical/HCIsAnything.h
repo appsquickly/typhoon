@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsAnything : HCBaseMatcher {
+@interface HCIsAnything : HCBaseMatcher
+{
     NSString *description;
 }
 

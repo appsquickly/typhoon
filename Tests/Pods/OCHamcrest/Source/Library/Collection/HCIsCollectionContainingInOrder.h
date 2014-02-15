@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsCollectionContainingInOrder : HCBaseMatcher {
+@interface HCIsCollectionContainingInOrder : HCBaseMatcher
+{
     NSArray *matchers;
 }
 

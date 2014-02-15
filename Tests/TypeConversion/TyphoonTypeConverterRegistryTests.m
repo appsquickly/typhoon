@@ -23,7 +23,8 @@
 
 @end
 
-@implementation TyphoonTypeConverterRegistryTests {
+@implementation TyphoonTypeConverterRegistryTests
+{
     TyphoonTypeConverterRegistry *_registry;
 }
 

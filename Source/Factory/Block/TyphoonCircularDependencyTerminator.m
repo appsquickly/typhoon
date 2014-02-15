@@ -14,7 +14,8 @@
 #import "TyphoonCircularDependencyTerminator.h"
 
 
-@implementation TyphoonCircularDependencyTerminator {
+@implementation TyphoonCircularDependencyTerminator
+{
 
 }
 @end

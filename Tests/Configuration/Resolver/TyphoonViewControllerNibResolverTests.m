@@ -18,7 +18,8 @@
 #import <TyphoonInitializer.h>
 #import <TyphoonInitializer+InstanceBuilder.h>
 
-@interface TyphoonViewControllerNibResolverTests : SenTestCase {
+@interface TyphoonViewControllerNibResolverTests : SenTestCase
+{
     TyphoonViewControllerNibResolver *_nibResolver;
 }
 

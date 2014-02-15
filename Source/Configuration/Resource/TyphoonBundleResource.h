@@ -19,7 +19,8 @@
 *
 * Represents a resource within the application bundle.
 */
-@interface TyphoonBundleResource : NSObject <TyphoonResource> {
+@interface TyphoonBundleResource : NSObject <TyphoonResource>
+{
     NSData *_data;
 }
 

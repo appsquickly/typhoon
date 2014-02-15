@@ -11,7 +11,8 @@
 
 #import "ComponentFactoryAwareObject.h"
 
-@implementation ComponentFactoryAwareObject {
+@implementation ComponentFactoryAwareObject
+{
     id factory;
 }
 

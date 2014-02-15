@@ -54,7 +54,8 @@ void TyphoonAssistedFactoryCreatorForEachPropertyInProtocol
     (Protocol *protocol, TyphoonAssistedFactoryCreatorPropertyEnumeration enumerationBlock);
 
 
-@interface TyphoonAssistedFactoryCreator () {
+@interface TyphoonAssistedFactoryCreator ()
+{
 @protected
     Protocol *_protocol;
 }

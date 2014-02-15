@@ -12,7 +12,8 @@
 #import "TyphoonComponentPostProcessorMock.h"
 
 
-@implementation TyphoonComponentPostProcessorMock {
+@implementation TyphoonComponentPostProcessorMock
+{
     NSInteger _order;
 }
 

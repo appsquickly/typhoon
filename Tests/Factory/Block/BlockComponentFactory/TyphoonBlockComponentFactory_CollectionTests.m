@@ -24,7 +24,8 @@
 @end
 
 
-@implementation TyphoonBlockComponentFactory_CollectionTests {
+@implementation TyphoonBlockComponentFactory_CollectionTests
+{
 
 }
 

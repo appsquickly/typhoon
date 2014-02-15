@@ -24,7 +24,8 @@
 @interface TyphoonFactoryProviderIntegrationTest : SenTestCase
 @end
 
-@implementation TyphoonFactoryProviderIntegrationTest {
+@implementation TyphoonFactoryProviderIntegrationTest
+{
     TyphoonBlockComponentFactory *componentFactory;
     PaymentFactoryAssembly *assembly;
 }

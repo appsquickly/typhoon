@@ -22,7 +22,8 @@
 #import "TyphoonComponentPostProcessor.h"
 #import "TyphoonInitializer.h"
 
-@implementation TyphoonDefinitionRegisterer {
+@implementation TyphoonDefinitionRegisterer
+{
     TyphoonDefinition *_definition;
     TyphoonComponentFactory *_componentFactory;
 }

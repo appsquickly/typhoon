@@ -29,7 +29,8 @@
 @interface TyphoonAssistedFactoryCreatorManyFactoriesTest : SenTestCase
 @end
 
-@implementation TyphoonAssistedFactoryCreatorManyFactoriesTest {
+@implementation TyphoonAssistedFactoryCreatorManyFactoriesTest
+{
     Protocol *_pizzaFactoryProtocol;
     Protocol *_paymentFactoryProtocol;
     Class _pizzaFactoryClass;

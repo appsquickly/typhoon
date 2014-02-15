@@ -21,7 +21,8 @@
 @interface ComponentDefinition_InstanceBuilderTests : SenTestCase
 @end
 
-@implementation ComponentDefinition_InstanceBuilderTests {
+@implementation ComponentDefinition_InstanceBuilderTests
+{
     TyphoonComponentFactory *_componentFactory;
 }
 

@@ -26,7 +26,8 @@
 * API for assembling components from their constituent parts. This low-level API could be used as-is, however its intended to use a higher
 * level abstraction such as TyphoonBlockComponentFactory or TyphoonXmlComponentFactory.
 */
-@interface TyphoonComponentFactory : NSObject {
+@interface TyphoonComponentFactory : NSObject
+{
     NSMutableArray *_registry;
     id <TyphoonComponentsPool> _singletons;
     id <TyphoonComponentsPool> _objectGraphSharedInstances;

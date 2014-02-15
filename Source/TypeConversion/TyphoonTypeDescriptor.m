@@ -52,8 +52,7 @@
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 
-+ (TyphoonTypeDescriptor *)descriptorWithEncodedType:(char *)encodedType
-{
++ (TyphoonTypeDescriptor *)descriptorWithEncodedType:(char *)encodedType {
     return [[[self class] alloc] initWithTypeCode:[NSString stringWithCString:encodedType encoding:NSUTF8StringEncoding]];
 }
 

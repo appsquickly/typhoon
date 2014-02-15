@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsInstanceOf : HCBaseMatcher {
+@interface HCIsInstanceOf : HCBaseMatcher
+{
     Class theClass;
 }
 

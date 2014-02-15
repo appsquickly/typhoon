@@ -49,7 +49,8 @@ NSString *currentFooString;
 @end
 
 
-@implementation FactoryReferenceInjectionsTests {
+@implementation FactoryReferenceInjectionsTests
+{
     TyphoonComponentFactory *factory;
 }
 

@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsCollectionOnlyContaining : HCBaseMatcher {
+@interface HCIsCollectionOnlyContaining : HCBaseMatcher
+{
     id <HCMatcher> matcher;
 }
 

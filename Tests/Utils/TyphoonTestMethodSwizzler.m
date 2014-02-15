@@ -15,7 +15,8 @@
 #import "TyphoonSelector.h"
 
 
-@implementation TyphoonTestMethodSwizzler {
+@implementation TyphoonTestMethodSwizzler
+{
     NSMutableDictionary *_exchangedPairsForClass;
 }
 

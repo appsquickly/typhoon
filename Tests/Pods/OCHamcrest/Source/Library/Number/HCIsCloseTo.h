@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsCloseTo : HCBaseMatcher {
+@interface HCIsCloseTo : HCBaseMatcher
+{
     double value;
     double delta;
 }
@@ -43,5 +44,5 @@ OBJC_EXPORT id <HCMatcher> HC_closeTo(double aValue, double aDelta);
     @ingroup number_matchers
  */
 #ifdef HC_SHORTHAND
-    #define closeTo HC_closeTo
+#define closeTo HC_closeTo
 #endif

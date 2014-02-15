@@ -12,7 +12,8 @@
 #import <Foundation/Foundation.h>
 
 
-typedef struct {
+typedef struct
+{
     int fieldA;
     long fieldB;
 } PrimitiveManStruct;

@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsEqualIgnoringWhiteSpace : HCBaseMatcher {
+@interface HCIsEqualIgnoringWhiteSpace : HCBaseMatcher
+{
     NSString *originalString;
     NSString *strippedString;
 }

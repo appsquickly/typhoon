@@ -17,7 +17,8 @@
 
     @ingroup core
  */
-@interface HCStringDescription : HCBaseDescription {
+@interface HCStringDescription : HCBaseDescription
+{
     NSMutableString *accumulator;
 }
 

@@ -17,7 +17,8 @@
 #import "CampaignQuest.h"
 #import "Fort.h"
 
-@interface TyphoonScopeTests : SenTestCase {
+@interface TyphoonScopeTests : SenTestCase
+{
     ObjectGraphAssembly *_assembly;
 }
 

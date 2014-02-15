@@ -19,7 +19,8 @@
 
 @end
 
-@implementation RXMLElement_XmlComponentFactory_AsComponentDefinitionTests {
+@implementation RXMLElement_XmlComponentFactory_AsComponentDefinitionTests
+{
     TyphoonRXMLElement *_element;
     TyphoonRXMLElement *_parentElement;
 }

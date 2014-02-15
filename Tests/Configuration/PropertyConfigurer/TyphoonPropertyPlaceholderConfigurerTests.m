@@ -17,7 +17,8 @@
 @interface TyphoonPropertyPlaceholderConfigurerTests : SenTestCase
 @end
 
-@implementation TyphoonPropertyPlaceholderConfigurerTests {
+@implementation TyphoonPropertyPlaceholderConfigurerTests
+{
     TyphoonPropertyPlaceholderConfigurer *_configurer;
 }
 

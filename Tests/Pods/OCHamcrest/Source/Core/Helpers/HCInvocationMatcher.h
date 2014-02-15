@@ -17,7 +17,8 @@
 
     @ingroup helpers
  */
-@interface HCInvocationMatcher : HCBaseMatcher {
+@interface HCInvocationMatcher : HCBaseMatcher
+{
     NSInvocation *invocation;
     id <HCMatcher> subMatcher;
     BOOL shortMismatchDescription;

@@ -21,7 +21,8 @@
 @end
 
 
-@implementation TyphoonCollaboratingAssemblyPropertyEnumeratorTests {
+@implementation TyphoonCollaboratingAssemblyPropertyEnumeratorTests
+{
 
 }
 

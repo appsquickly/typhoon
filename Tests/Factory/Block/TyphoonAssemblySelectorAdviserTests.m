@@ -14,7 +14,8 @@
 @end
 
 
-@implementation TyphoonAssemblySelectorAdviserTests {
+@implementation TyphoonAssemblySelectorAdviserTests
+{
     NSString *key;
     SEL sel;
     SEL advisedSEL;

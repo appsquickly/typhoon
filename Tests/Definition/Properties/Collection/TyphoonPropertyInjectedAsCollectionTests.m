@@ -13,7 +13,8 @@
 #import "ClassWithCollectionProperties.h"
 #import "TyphoonPropertyInjectedAsCollection.h"
 
-@interface TyphoonPropertyInjectedAsCollectionTests : SenTestCase {
+@interface TyphoonPropertyInjectedAsCollectionTests : SenTestCase
+{
     ClassWithCollectionProperties *_classWithCollectionProperties;
 }
 

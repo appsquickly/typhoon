@@ -30,7 +30,8 @@
 
 @end
 
-typedef enum {
+typedef enum
+{
     TyphoonCollectionTypeNSArray,
     TyphoonCollectionTypeNSMutableArray,
     TyphoonCollectionTypeNSSet,

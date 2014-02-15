@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsNot : HCBaseMatcher {
+@interface HCIsNot : HCBaseMatcher
+{
     id <HCMatcher> matcher;
 }
 
@@ -43,5 +44,5 @@ OBJC_EXPORT id <HCMatcher> HC_isNot(id aMatcher);
     @ingroup logical_matchers
  */
 #ifdef HC_SHORTHAND
-    #define isNot HC_isNot
+#define isNot HC_isNot
 #endif

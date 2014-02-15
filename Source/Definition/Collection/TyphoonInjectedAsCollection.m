@@ -16,7 +16,8 @@
 #import "TyphoonByReferenceCollectionValue.h"
 #import "TyphoonComponentFactory.h"
 
-@implementation TyphoonInjectedAsCollection {
+@implementation TyphoonInjectedAsCollection
+{
     NSMutableArray *_values;
 }
 

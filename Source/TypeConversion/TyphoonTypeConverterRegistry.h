@@ -20,7 +20,8 @@
 /**
 * Registry of type converters, with special treatment for primitives.
 */
-@interface TyphoonTypeConverterRegistry : NSObject {
+@interface TyphoonTypeConverterRegistry : NSObject
+{
     TyphoonPrimitiveTypeConverter *_primitiveTypeConverter;
     NSMutableDictionary *_typeConverters;
 }

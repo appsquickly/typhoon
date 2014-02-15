@@ -8,7 +8,8 @@
 
 #import "TyphoonAssistedFactoryMethodBlockClosure.h"
 
-@implementation TyphoonAssistedFactoryMethodBlockClosure {
+@implementation TyphoonAssistedFactoryMethodBlockClosure
+{
     SEL _selector;
 }
 

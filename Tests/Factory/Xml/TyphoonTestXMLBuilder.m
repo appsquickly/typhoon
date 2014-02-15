@@ -14,7 +14,8 @@
 
 @end
 
-@implementation TyphoonTestXMLBuilder {
+@implementation TyphoonTestXMLBuilder
+{
 
 }
 

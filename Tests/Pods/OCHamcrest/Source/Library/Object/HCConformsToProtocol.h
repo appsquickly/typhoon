@@ -8,7 +8,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCConformsToProtocol : HCBaseMatcher {
+@interface HCConformsToProtocol : HCBaseMatcher
+{
     Protocol *theProtocol;
 }
 
@@ -40,5 +41,5 @@ OBJC_EXPORT id <HCMatcher> HC_conformsToProtocol(Protocol *aProtocol)    __attri
     @ingroup object_matchers
  */
 #ifdef HC_SHORTHAND
-    #define conformsTo HC_conformsTo
+#define conformsTo HC_conformsTo
 #endif

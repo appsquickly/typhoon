@@ -15,7 +15,8 @@
 #import "Quest.h"
 #import "Knight.h"
 
-typedef struct {
+typedef struct
+{
     int foo;
     char bar[255];
 } SomeStructType;

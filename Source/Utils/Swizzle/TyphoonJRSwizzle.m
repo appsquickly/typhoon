@@ -10,7 +10,9 @@
 #import <objc/message.h>
 
 #else
-	#import <objc/objc-class.h>
+
+#import <objc/objc-class.h>
+
 #endif
 
 #define SetNSErrorFor(FUNC, ERROR_VAR, FORMAT,...)    \
@@ -37,7 +39,7 @@
 #if TARGET_OS_IPHONE
         SetNSError(error_, @"original method %@ not found for class %@", NSStringFromSelector(origSel_), [self class]);
 #else
-		SetNSError(error_, @"original method %@ not found for class %@", NSStringFromSelector(origSel_), [self className]);
+        SetNSError(error_, @"original method %@ not found for class %@", NSStringFromSelector(origSel_), [self className]);
 #endif
         return NO;
     }
@@ -47,7 +49,7 @@
 #if TARGET_OS_IPHONE
         SetNSError(error_, @"alternate method %@ not found for class %@", NSStringFromSelector(altSel_), [self class]);
 #else
-		SetNSError(error_, @"alternate method %@ not found for class %@", NSStringFromSelector(altSel_), [self className]);
+        SetNSError(error_, @"alternate method %@ not found for class %@", NSStringFromSelector(altSel_), [self className]);
 #endif
         return NO;
     }

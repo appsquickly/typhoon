@@ -33,7 +33,8 @@ static NSMutableArray *reservedSelectorsAsStrings;
 
 @end
 
-@implementation TyphoonAssembly {
+@implementation TyphoonAssembly
+{
     TyphoonAssemblyDefinitionBuilder *_definitionBuilder;
 }
 

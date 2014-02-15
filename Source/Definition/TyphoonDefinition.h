@@ -38,7 +38,8 @@
 * creates an instance that will be shared across all components. However as soon as the instance is not being used it will be deallocated.
 *
 */
-typedef enum {
+typedef enum
+{
     TyphoonScopeObjectGraph = 1 << 0,
     TyphoonScopePrototype = 1 << 1,
     TyphoonScopeSingleton = 1 << 2,
@@ -53,7 +54,8 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 /**
 * @ingroup Definition
 */
-@interface TyphoonDefinition : NSObject <NSCopying> {
+@interface TyphoonDefinition : NSObject <NSCopying>
+{
     Class _type;
     NSString *_key;
     TyphoonInitializer *_initializer;

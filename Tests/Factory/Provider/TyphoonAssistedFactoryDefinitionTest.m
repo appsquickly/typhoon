@@ -17,7 +17,8 @@
 @interface TyphoonAssistedFactoryDefinitionTest : SenTestCase
 @end
 
-@implementation TyphoonAssistedFactoryDefinitionTest {
+@implementation TyphoonAssistedFactoryDefinitionTest
+{
     TyphoonAssistedFactoryDefinition *factoryDefinition;
 }
 

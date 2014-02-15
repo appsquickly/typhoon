@@ -13,7 +13,8 @@
 #import "Fort.h"
 
 
-@implementation Fort {
+@implementation Fort
+{
 
 }
 @end

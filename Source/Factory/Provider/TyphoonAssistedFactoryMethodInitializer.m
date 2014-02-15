@@ -21,7 +21,8 @@
 
 @end
 
-@implementation TyphoonAssistedFactoryMethodInitializer {
+@implementation TyphoonAssistedFactoryMethodInitializer
+{
 @private
     NSArray *_parameterNames;
     NSArray *_argumentNames;

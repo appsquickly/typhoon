@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCDescribedAs : HCBaseMatcher {
+@interface HCDescribedAs : HCBaseMatcher
+{
     NSString *descriptionTemplate;
     id <HCMatcher> matcher;
     NSArray *values;
@@ -41,5 +42,5 @@ OBJC_EXPORT id <HCMatcher> HC_describedAs(NSString *description, id <HCMatcher> 
     @ingroup decorator_matchers
  */
 #ifdef HC_SHORTHAND
-    #define describedAs HC_describedAs
+#define describedAs HC_describedAs
 #endif

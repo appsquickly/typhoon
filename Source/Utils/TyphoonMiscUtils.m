@@ -6,7 +6,8 @@
 #import "TyphoonMiscUtils.h"
 
 
-@implementation TyphoonMiscUtils {
+@implementation TyphoonMiscUtils
+{
 
 }
 

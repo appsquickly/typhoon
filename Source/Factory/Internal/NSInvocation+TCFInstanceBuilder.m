@@ -19,8 +19,7 @@
 @implementation NSInvocation (TCFInstanceBuilder)
 
 /** Returns YES if selector returns retained instance (not autoreleased) */
-static BOOL typhoon_IsSelectorReturnsRetained(SEL selector)
-{
+static BOOL typhoon_IsSelectorReturnsRetained(SEL selector) {
     // According to http://clang.llvm.org/docs/AutomaticReferenceCounting.html#method-families
     // for a selector to be in a given family, the selector must start with the
     // family name, ignoring underscore prefixes, and followed by a character
@@ -31,21 +30,17 @@ static BOOL typhoon_IsSelectorReturnsRetained(SEL selector)
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSError *error = nil;
-        methodFamily = [[NSRegularExpression alloc] initWithPattern:@"^_*(init|new|copy|mutableCopy)($|[^a-z])"
-                                                            options:0
-                                                              error:&error];
+        methodFamily = [[NSRegularExpression alloc] initWithPattern:@"^_*(init|new|copy|mutableCopy)($|[^a-z])" options:0 error:&error];
 
         if (!methodFamily) {
-            @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                           reason:[error localizedDescription]
-                                         userInfo:[error userInfo]];
+            @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[error localizedDescription]
+                userInfo:[error userInfo]];
         }
     });
 
     NSString *selectorString = NSStringFromSelector(selector);
-    NSUInteger numberOfMatches = [methodFamily numberOfMatchesInString:selectorString
-                                                               options:NSMatchingAnchored
-                                                                 range:NSMakeRange(0, selectorString.length)];
+    NSUInteger numberOfMatches =
+        [methodFamily numberOfMatchesInString:selectorString options:NSMatchingAnchored range:NSMakeRange(0, selectorString.length)];
 
     return numberOfMatches != 0;
 }

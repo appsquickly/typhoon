@@ -12,7 +12,8 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
+typedef enum
+{
     TyphoonPrimitiveTypeUnknown,
     TyphoonPrimitiveTypeChar,
     TyphoonPrimitiveTypeInt,

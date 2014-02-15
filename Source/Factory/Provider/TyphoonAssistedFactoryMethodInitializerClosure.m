@@ -23,7 +23,8 @@
 #import "TyphoonAssistedFactoryParameterInjectedWithProperty.h"
 
 
-@implementation TyphoonAssistedFactoryMethodInitializerClosure {
+@implementation TyphoonAssistedFactoryMethodInitializerClosure
+{
     Class _returnType;
     SEL _initSelector;
     NSArray *_parameters;

@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsSame : HCBaseMatcher {
+@interface HCIsSame : HCBaseMatcher
+{
     id object;
 }
 
@@ -38,5 +39,5 @@ OBJC_EXPORT id <HCMatcher> HC_sameInstance(id object);
     @ingroup object_matchers
  */
 #ifdef HC_SHORTHAND
-    #define sameInstance HC_sameInstance
+#define sameInstance HC_sameInstance
 #endif

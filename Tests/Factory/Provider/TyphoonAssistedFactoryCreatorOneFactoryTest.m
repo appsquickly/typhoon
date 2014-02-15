@@ -27,7 +27,8 @@
 @interface TyphoonAssistedFactoryCreatorOneFactoryTest : SenTestCase
 @end
 
-@implementation TyphoonAssistedFactoryCreatorOneFactoryTest {
+@implementation TyphoonAssistedFactoryCreatorOneFactoryTest
+{
     Protocol *_paymentFactoryProtocol;
     Class _paymentFactoryClass;
 

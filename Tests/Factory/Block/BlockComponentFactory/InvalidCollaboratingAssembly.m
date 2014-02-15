@@ -16,7 +16,8 @@
 #import "Knight.h"
 #import "TyphoonDefinition.h"
 
-@implementation InvalidCollaboratingAssembly {
+@implementation InvalidCollaboratingAssembly
+{
 
 }
 

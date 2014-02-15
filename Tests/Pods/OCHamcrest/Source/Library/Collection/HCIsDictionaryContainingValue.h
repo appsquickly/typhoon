@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsDictionaryContainingValue : HCBaseMatcher {
+@interface HCIsDictionaryContainingValue : HCBaseMatcher
+{
     id <HCMatcher> valueMatcher;
 }
 
@@ -45,5 +46,5 @@ OBJC_EXPORT id <HCMatcher> HC_hasValue(id valueMatch);
     @ingroup collection_matchers
  */
 #ifdef HC_SHORTHAND
-    #define hasValue HC_hasValue
+#define hasValue HC_hasValue
 #endif

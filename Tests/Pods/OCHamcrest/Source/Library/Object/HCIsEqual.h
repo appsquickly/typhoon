@@ -10,7 +10,8 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-@interface HCIsEqual : HCBaseMatcher {
+@interface HCIsEqual : HCBaseMatcher
+{
     id object;
 }
 

@@ -19,8 +19,7 @@
     NSMutableDictionary *_values;
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         _injections = [[NSMutableDictionary alloc] init];
@@ -30,14 +29,12 @@
     return self;
 }
 
-- (id)injectionValueForProperty:(NSString *)property
-{
+- (id)injectionValueForProperty:(NSString *)property {
     return [_injections objectForKey:property];
 }
 
-- (id)dependencyValueForProperty:(NSString *)property
-{
-    @synchronized(self) {
+- (id)dependencyValueForProperty:(NSString *)property {
+    @synchronized (self) {
         id value = [_values objectForKey:property];
 
         if (!value) {
@@ -49,26 +46,21 @@
     }
 }
 
-- (void)setDependencyValue:(id)value forProperty:(NSString *)property
-{
-    @synchronized(self) {
+- (void)setDependencyValue:(id)value forProperty:(NSString *)property {
+    @synchronized (self) {
         [_values setObject:value forKey:property];
     }
 }
 
-- (id)_dummyGetter
-{
+- (id)_dummyGetter {
     return nil;
 }
 
-- (void)_setDummySetter:(id)value
-{
+- (void)_setDummySetter:(id)value {
 }
 
-- (BOOL)shouldInjectProperty:(TyphoonAbstractInjectedProperty *)property
-                    withType:(TyphoonTypeDescriptor *)type
-                   lazyValue:(TyphoonPropertyInjectionLazyValue)lazyValue
-{
+- (BOOL)shouldInjectProperty:(TyphoonAbstractInjectedProperty *)property withType:(TyphoonTypeDescriptor *)type
+    lazyValue:(TyphoonPropertyInjectionLazyValue)lazyValue {
     [_injections setObject:lazyValue forKey:property.name];
     return NO;
 }
