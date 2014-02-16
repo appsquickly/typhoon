@@ -168,7 +168,11 @@
 
 - (void)test_post_processor_component_recognized
 {
-    assertThatUnsignedLong([_infrastructureComponentsFactory.factoryPostProcessors count], equalToInt(2)); //Attached + internal processors
+    NSUInteger internalProcessors = 2;
+    if ([_infrastructureComponentsFactory isKindOfClass:[TyphoonBlockComponentFactory class]]) {
+        internalProcessors += 1;
+    }
+    assertThatUnsignedLong([_infrastructureComponentsFactory.factoryPostProcessors count], equalToInt(1 + internalProcessors)); //Attached + internal processors
 }
 
 - (void)test_resolves_property_values_from_multiple_files

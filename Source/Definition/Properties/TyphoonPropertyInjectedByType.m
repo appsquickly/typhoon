@@ -39,17 +39,13 @@
 - (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance
 {
     id value = nil;
+    
     TyphoonTypeDescriptor *type = [instance typeForPropertyWithName:self.name];
-
-    if ([self isComponentFactoryType:type]) {
-        value = factory;
-    }
-    else {
-        TyphoonDefinition *definition = [factory definitionForType:[type classOrProtocol]];
-        [factory evaluateCircularDependency:definition.key propertyName:self.name instance:instance];
-        if (![factory propertyIsCircular:self onInstance:instance]) {
-            value = [factory componentForKey:definition.key];
-        }
+    TyphoonDefinition *definition = [factory definitionForType:[type classOrProtocol]];
+    
+    [factory evaluateCircularDependency:definition.key propertyName:self.name instance:instance];
+    if (![factory propertyIsCircular:self onInstance:instance]) {
+        value = [factory componentForKey:definition.key];
     }
 
     return value;
@@ -61,18 +57,6 @@
 - (id)copyWithZone:(NSZone *)zone
 {
     return [[TyphoonPropertyInjectedByType alloc] initWithName:[self.name copy]];
-}
-
-- (BOOL)isComponentFactoryType:(TyphoonTypeDescriptor *)type
-{
-    BOOL isFactoryClass = NO;
-
-    if (type.typeBeingDescribed) {
-        isFactoryClass = [type.typeBeingDescribed isSubclassOfClass:[TyphoonComponentFactory class]] ||
-            [type.typeBeingDescribed isSubclassOfClass:[TyphoonAssembly class]];
-    }
-
-    return isFactoryClass;
 }
 
 @end
