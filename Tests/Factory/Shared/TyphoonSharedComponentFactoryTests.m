@@ -59,7 +59,7 @@
     @try {
         TyphoonTypeDescriptor *nullDescriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:[NSNull class]];
         id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:nullDescriptor];
-        [[TyphoonTypeConverterRegistry shared] unregister:converter];
+        [[TyphoonTypeConverterRegistry shared] unregisterTypeConverter:converter];
     }
     @catch (NSException *exception) {}
 }
