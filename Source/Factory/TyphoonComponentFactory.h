@@ -95,7 +95,7 @@
 /**
 * Registers a component into the factory. Components can be declared in any order, the container will work out how to resolve them.
 */
-- (void)register:(TyphoonDefinition *)definition;
+- (void)registerDefinition:(TyphoonDefinition *)definition;
 
 /**
 * Returns an an instance of the component matching the supplied class or protocol. For example:

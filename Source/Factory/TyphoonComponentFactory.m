@@ -93,7 +93,7 @@ static TyphoonComponentFactory *defaultFactory;
     }
 }
 
-- (void)register:(TyphoonDefinition *)definition {
+- (void)registerDefinition:(TyphoonDefinition *)definition {
     TyphoonDefinitionRegisterer *registerer = [[TyphoonDefinitionRegisterer alloc] initWithDefinition:definition componentFactory:self];
     [registerer register];
 

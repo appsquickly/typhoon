@@ -206,7 +206,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         SEL autoInjectedProperties = sel_registerName("typhoonAutoInjectedProperties");
         if (class_isMetaClass(object_getClass(classOrProtocol)) && [classOrProtocol respondsToSelector:autoInjectedProperties]) {
             LogTrace(@"Class %@ wants auto-wiring. . . registering.", NSStringFromClass(classOrProtocol));
-            [self register:[TyphoonDefinition withClass:classOrProtocol]];
+            [self registerDefinition:[TyphoonDefinition withClass:classOrProtocol]];
             return [self definitionForType:classOrProtocol];
         }
         [NSException raise:NSInvalidArgumentException format:@"No components defined which satisify type: '%@'",

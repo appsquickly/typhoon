@@ -52,7 +52,7 @@
 
         [element iterate:@"*" usingBlock:^(TyphoonRXMLElement *child) {
             if ([child isComponent]) {
-                [self register:[child asComponentDefinition]];
+                [self registerDefinition:[child asComponentDefinition]];
             }
         }];
     }

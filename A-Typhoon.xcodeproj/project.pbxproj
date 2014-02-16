@@ -830,10 +830,10 @@
 		BA7984DEE39286F762905EFA /* Block */ = {
 			isa = PBXGroup;
 			children = (
-				BA7984002D3A4775329743B4 /* TyphoonBlockComponentFactory.m */,
 				BA7981B0A8AB21B6A5B628EE /* TyphoonBlockComponentFactory.h */,
-				BA798D912CB8052A1A8B131F /* TyphoonAssembly.m */,
+				BA7984002D3A4775329743B4 /* TyphoonBlockComponentFactory.m */,
 				BA798F0B0FA574136DA6A52A /* TyphoonAssembly.h */,
+				BA798D912CB8052A1A8B131F /* TyphoonAssembly.m */,
 				4B9BD33E17A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.h */,
 				4B9BD33F17A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.m */,
 				BA7989F78CAA3E4FFB59A9F0 /* TyphoonCollaboratingAssemblyProxy.m */,

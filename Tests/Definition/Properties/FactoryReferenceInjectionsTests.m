@@ -142,7 +142,7 @@ NSString *currentFooString;
         [initializer injectWithDefinition:settings keyPath:@"fooString.uppercaseString"];
     }];
 
-    [factory register:knightDefinition];
+    [factory registerDefinition:knightDefinition];
 
     Knight *knight = [factory componentForType:[Knight class]];
 

@@ -70,7 +70,7 @@
 - (void)registerAllDefinitions:(TyphoonAssembly *)assembly {
     NSArray *definitions = [assembly definitions];
     for (TyphoonDefinition *definition in definitions) {
-        [self register:definition];
+        [self registerDefinition:definition];
     }
 }
 

@@ -57,7 +57,7 @@
             [definition setInitializer:[[TyphoonInitializer alloc] initWithSelector:@selector(patchObject)]];
             [definition setValue:nil forKey:@"injectedProperties"];
 
-            [factory register:patchFactory];
+            [factory registerDefinition:patchFactory];
         }
     }
 }
