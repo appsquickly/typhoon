@@ -30,12 +30,14 @@
     PaymentFactoryAssembly *assembly;
 }
 
-- (void)setUp {
+- (void)setUp
+{
     componentFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[PaymentFactoryAssembly assembly]];
     assembly = (PaymentFactoryAssembly *) componentFactory;
 }
 
-- (void)test_dependencies_are_built_lazily {
+- (void)test_dependencies_are_built_lazily
+{
     NSUInteger authServiceInstanceCounter = [AuthServiceImpl instanceCounter];
     NSUInteger creditServiceInstanceCounter = [CreditServiceImpl instanceCounter];
 
@@ -51,14 +53,16 @@
     assertThatUnsignedInteger([CreditServiceImpl instanceCounter], is(equalToUnsignedInteger(creditServiceInstanceCounter + 1)));
 }
 
-- (void)test_assisted_factory_is_TyphoonComponentFactoryAware {
+- (void)test_assisted_factory_is_TyphoonComponentFactoryAware
+{
     NSObject <PaymentFactory> *factory = [assembly paymentFactory];
 
     id cf = [factory valueForKey:@"componentFactory"];
     assertThat(cf, is(equalTo(componentFactory)));
 }
 
-- (void)test_assisted_initializer_factory_injects_component_factory_in_object_instances {
+- (void)test_assisted_initializer_factory_injects_component_factory_in_object_instances
+{
     id <PaymentFactory> factory = [assembly paymentFactory];
 
     PaymentImpl *payment = [factory paymentWithStartDate:[NSDate date] amount:456];
@@ -66,7 +70,8 @@
     assertThat(payment.factory, is(equalTo(componentFactory)));
 }
 
-- (void)test_assisted_block_factory_injects_component_factory_in_object_instances {
+- (void)test_assisted_block_factory_injects_component_factory_in_object_instances
+{
     id <PizzaFactory> factory = [assembly pizzaFactory];
 
     PizzaImpl *pizza = [factory largePizzaWithIngredients:@[
@@ -77,7 +82,8 @@
     assertThat(pizza.factory, is(equalTo(componentFactory)));
 }
 
-- (void)test_assisted_factory_doesnt_blow_up_when_calling_one_of_the_methods {
+- (void)test_assisted_factory_doesnt_blow_up_when_calling_one_of_the_methods
+{
     @autoreleasepool {
         id <PaymentFactory> factory1;
 

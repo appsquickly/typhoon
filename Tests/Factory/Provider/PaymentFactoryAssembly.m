@@ -21,22 +21,26 @@
 
 @implementation PaymentFactoryAssembly
 
-- (id)authService {
+- (id)authService
+{
     return [TyphoonDefinition withClass:[AuthServiceImpl class]];
 }
 
-- (id)creditService {
+- (id)creditService
+{
     return [TyphoonDefinition withClass:[CreditServiceImpl class]];
 }
 
-- (id)paymentFactory {
+- (id)paymentFactory
+{
     return [TyphoonFactoryProvider withProtocol:@protocol(PaymentFactory) dependencies:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(authService)];
         [definition injectProperty:@selector(creditService)];
     } returns:[PaymentImpl class]];
 }
 
-- (id)pizzaFactory {
+- (id)pizzaFactory
+{
     return [TyphoonFactoryProvider withProtocol:@protocol(PizzaFactory) dependencies:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(creditService)];
     } factories:^(TyphoonAssistedFactoryDefinition *definition) {

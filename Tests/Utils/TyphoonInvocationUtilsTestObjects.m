@@ -10,7 +10,8 @@
 
 @implementation ObjectInitRetained
 
-- (instancetype)init {
+- (instancetype)init
+{
     return [super init];
 }
 
@@ -18,7 +19,8 @@
 
 @implementation ObjectNewRetained
 
-+ (instancetype)newObject; {
++ (instancetype)newObject;
+{
     ObjectNewRetained *object = [[ObjectNewRetained alloc] init];
     return object;
 }
@@ -27,7 +29,8 @@
 
 @implementation ObjectNewAutorelease
 
-+ (instancetype)object {
++ (instancetype)object
+{
     ObjectNewAutorelease *object = [[ObjectNewAutorelease alloc] init];
     return [object autorelease];
 }
@@ -37,7 +40,8 @@
 
 @implementation ObjectInitCluster
 
-- (instancetype)initOldRelease {
+- (instancetype)initOldRelease
+{
     [self release];
 
     self = [[ObjectInitCluster alloc] init];
@@ -46,7 +50,8 @@
 }
 
 
-- (instancetype)initOldAutorelease {
+- (instancetype)initOldAutorelease
+{
     [self autorelease];
 
     self = [[ObjectInitCluster alloc] init];
@@ -54,7 +59,8 @@
     return self;
 }
 
-- (instancetype)initReturnNil {
+- (instancetype)initReturnNil
+{
     [self release];
 
     return nil;

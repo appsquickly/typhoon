@@ -48,5 +48,5 @@ OBJC_EXPORT id <HCMatcher> HC_hasEntry(id keyMatch, id valueMatch);
     @ingroup collection_matchers
  */
 #ifdef HC_SHORTHAND
-    #define hasEntry HC_hasEntry
+#define hasEntry HC_hasEntry
 #endif

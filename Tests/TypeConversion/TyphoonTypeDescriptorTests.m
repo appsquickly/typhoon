@@ -39,7 +39,8 @@ typedef struct
 
 @implementation TyphoonTypeDescriptorTests
 
-- (void)test_type_description_primitive {
+- (void)test_type_description_primitive
+{
     // Depending on the platform, bools are encoded either as chars or as bool
     // both are 1 byte, and with 1 byte padding.
     // iOS 64 bits is the one needing this "template", so we don't hardcode the
@@ -59,7 +60,8 @@ typedef struct
     assertThat(description, equalTo([boolDescriptor description]));
 }
 
-- (void)test_type_description_class {
+- (void)test_type_description_class
+{
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"anNSURLProperty"];
     assertThatBool([descriptor isPrimitive], equalToBool(NO));
     assertThat([descriptor typeBeingDescribed], equalTo([NSURL class]));
@@ -69,7 +71,8 @@ typedef struct
     assertThat(description, equalTo(@"Type descriptor: NSURL"));
 }
 
-- (void)test_type_description_protocol {
+- (void)test_type_description_protocol
+{
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"aQuestProperty"];
     assertThatBool([descriptor isPrimitive], equalToBool(NO));
     assertThat([descriptor typeBeingDescribed], nilValue());
@@ -79,7 +82,8 @@ typedef struct
     assertThat(description, equalTo(@"Type descriptor: id<Quest>"));
 }
 
-- (void)test_type_description_class_and_protocol {
+- (void)test_type_description_class_and_protocol
+{
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"anObjectQuestProperty"];
     assertThatBool([descriptor isPrimitive], equalToBool(NO));
     assertThat([descriptor protocol], equalTo(@protocol(Quest)));
@@ -90,39 +94,45 @@ typedef struct
 }
 
 
-- (void)test_typeForPropertyWithName_char {
+- (void)test_typeForPropertyWithName_char
+{
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"charProperty"];
     assertThatBool(descriptor.isPrimitive, equalToBool(YES));
     assertThatInt(descriptor.primitiveType, equalToInt(TyphoonPrimitiveTypeChar));
 }
 
-- (void)test_typeForPropertyWithName_int {
+- (void)test_typeForPropertyWithName_int
+{
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"intProperty"];
     assertThatBool(descriptor.isPrimitive, equalToBool(YES));
     assertThatBool(descriptor.isPointer, equalToBool(NO));
     assertThatInt(descriptor.primitiveType, equalToInt(TyphoonPrimitiveTypeInt));
 }
 
-- (void)test_typeForPropertyWithName_short {
+- (void)test_typeForPropertyWithName_short
+{
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"shortProperty"];
     assertThatBool(descriptor.isPrimitive, equalToBool(YES));
     assertThatBool(descriptor.isPointer, equalToBool(NO));
     assertThatInt(descriptor.primitiveType, equalToInt(TyphoonPrimitiveTypeShort));
 }
 
-- (void)test_typeForPropertyWithName_long {
+- (void)test_typeForPropertyWithName_long
+{
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"longProperty"];
     assertThatBool(descriptor.isPrimitive, equalToBool(YES));
     assertThatBool(descriptor.isPointer, equalToBool(NO));
 }
 
-- (void)test_typeForPropertyWithName_pointerToLongLong {
+- (void)test_typeForPropertyWithName_pointerToLongLong
+{
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"pointerToLongLongProperty"];
     assertThatBool(descriptor.isPrimitive, equalToBool(YES));
     assertThatBool(descriptor.isPointer, equalToBool(YES));
 }
 
-- (void)test_typeForPropertyWithName_struct {
+- (void)test_typeForPropertyWithName_struct
+{
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"structProperty"];
     assertThatBool(descriptor.isPrimitive, equalToBool(YES));
     assertThatBool(descriptor.isPointer, equalToBool(NO));
@@ -130,25 +140,29 @@ typedef struct
     assertThat(descriptor.structureTypeName, equalTo(@"?=i[255c]"));
 }
 
-- (void)test_parameterNamesForSelector_init_method {
+- (void)test_parameterNamesForSelector_init_method
+{
     NSArray *parameterNames = [self parameterNamesForSelector:@selector(initWithNibName:bundle:)];
     assertThat(parameterNames, hasCountOf(2));
     assertThat([parameterNames objectAtIndex:0], equalTo(@"nibName"));
     assertThat([parameterNames objectAtIndex:1], equalTo(@"bundle"));
 }
 
-- (void)test_parameterNamesForSelector_factory_method {
+- (void)test_parameterNamesForSelector_factory_method
+{
     NSArray *parameterNames = [self parameterNamesForSelector:@selector(URLWithString:)];
     assertThat(parameterNames, hasCountOf(1));
     assertThat([parameterNames objectAtIndex:0], equalTo(@"string"));
 }
 
-- (void)test_parameterNamesForSelector_no_parameters_method {
+- (void)test_parameterNamesForSelector_no_parameters_method
+{
     NSArray *parameterNames = [self parameterNamesForSelector:@selector(init)];
     assertThat(parameterNames, empty());
 }
 
-- (void)test_typeCodesForSelectorWithName {
+- (void)test_typeCodesForSelectorWithName
+{
     Knight *knight = [[Knight alloc] initWithQuest:nil damselsRescued:0];
     NSArray *typeCodes = [knight typeCodesForSelector:@selector(initWithQuest:damselsRescued:)];
 

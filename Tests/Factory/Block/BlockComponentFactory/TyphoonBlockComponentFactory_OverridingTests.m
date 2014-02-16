@@ -30,7 +30,8 @@
 
 }
 
-- (void)test_allows_overriding_methods_in_an_assembly {
+- (void)test_allows_overriding_methods_in_an_assembly
+{
     TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
         [ExtendedMiddleAgesAssembly assembly],
     ]];

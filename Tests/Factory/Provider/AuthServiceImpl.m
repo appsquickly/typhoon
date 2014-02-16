@@ -15,11 +15,13 @@ static NSUInteger sInstanceCounter = 0;
 
 @implementation AuthServiceImpl
 
-+ (NSUInteger)instanceCounter {
++ (NSUInteger)instanceCounter
+{
     return sInstanceCounter;
 }
 
-- (id)init {
+- (id)init
+{
     sInstanceCounter += 1;
     return [super init];
 }

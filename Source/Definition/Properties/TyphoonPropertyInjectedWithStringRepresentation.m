@@ -31,7 +31,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithName:(NSString *)name value:(NSString *)value {
+- (id)initWithName:(NSString *)name value:(NSString *)value
+{
     self = [super init];
     if (self) {
         _name = name;
@@ -43,7 +44,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance {
+- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance
+{
     TyphoonTypeDescriptor *type = [instance typeForPropertyWithName:self.name];
     id value = nil;
 
@@ -62,7 +64,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone
+{
     return [[TyphoonPropertyInjectedWithStringRepresentation alloc] initWithName:[self.name copy] value:[self.textValue copy]];
 }
 

@@ -46,5 +46,5 @@ OBJC_EXPORT id <HCMatcher> HC_hasProperty(NSString *name, id valueMatch);
     @ingroup object_matchers
  */
 #ifdef HC_SHORTHAND
-    #define hasProperty HC_hasProperty
+#define hasProperty HC_hasProperty
 #endif

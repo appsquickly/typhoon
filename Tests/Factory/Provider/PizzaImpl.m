@@ -17,7 +17,8 @@
 @synthesize radius = _radius;
 @synthesize ingredients = _ingredients;
 
-- (instancetype)initWithCreditService:(id <CreditService>)creditService radius:(double)radius ingredients:(NSArray *)ingredients {
+- (instancetype)initWithCreditService:(id <CreditService>)creditService radius:(double)radius ingredients:(NSArray *)ingredients
+{
     self = [super init];
     if (self) {
         _creditService = creditService;
@@ -27,7 +28,8 @@
     return self;
 }
 
-- (NSString *)description {
+- (NSString *)description
+{
     return [NSString stringWithFormat:@"<%@:%p radius:%f ingredients:%lu>", [self class], self, _radius,
                                       (unsigned long) [_ingredients count]];
 }

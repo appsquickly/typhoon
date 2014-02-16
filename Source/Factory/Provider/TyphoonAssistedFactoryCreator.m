@@ -189,26 +189,30 @@ static Class EnsureFactoryClass(Protocol *protocol, TyphoonAssistedFactoryDefini
     return factoryClass;
 }
 
-+ (void)initialize {
++ (void)initialize
+{
     if (self == [TyphoonAssistedFactoryCreator class]) {
         sQueue = dispatch_queue_create("org.typhoonframework.TyphoonAssistedFactoryCreator", DISPATCH_QUEUE_SERIAL);
     }
 }
 
-+ (instancetype)creatorWithProtocol:(Protocol *)protocol returns:(Class)returnType {
++ (instancetype)creatorWithProtocol:(Protocol *)protocol returns:(Class)returnType
+{
     return [[TyphoonAssistedFactoryCreatorImplicit alloc] initWithProtocol:protocol returns:returnType];
 }
 
-+ (instancetype)creatorWithProtocol:(Protocol *)protocol factoryBlock:(id)factoryBlock {
++ (instancetype)creatorWithProtocol:(Protocol *)protocol factoryBlock:(id)factoryBlock
+{
     return [[TyphoonAssistedFactoryCreatorOneFactory alloc] initWithProtocol:protocol factoryBlock:factoryBlock];
 }
 
-+ (instancetype)creatorWithProtocol:(Protocol *)protocol factories:(TyphoonAssistedFactoryDefinitionBlock)definitionblock {
++ (instancetype)creatorWithProtocol:(Protocol *)protocol factories:(TyphoonAssistedFactoryDefinitionBlock)definitionblock
+{
     return [[TyphoonAssistedFactoryCreatorManyFactories alloc] initWithProtocol:protocol factories:definitionblock];
 }
 
-- (instancetype)initWithProtocol:(Protocol *)protocol
-    factoryDefinitionProvider:(TyphoonAssistedFactoryDefinitionProvider)definitionProvider {
+- (instancetype)initWithProtocol:(Protocol *)protocol factoryDefinitionProvider:(TyphoonAssistedFactoryDefinitionProvider)definitionProvider
+{
     self = [super init];
     if (self) {
         _protocol = protocol;
@@ -218,7 +222,8 @@ static Class EnsureFactoryClass(Protocol *protocol, TyphoonAssistedFactoryDefini
     return self;
 }
 
-- (Class)factoryClass {
+- (Class)factoryClass
+{
     __block Class factoryClass = nil;
     dispatch_sync(sQueue, ^{
         factoryClass = EnsureFactoryClass(_protocol, _definitionProvider);

@@ -15,11 +15,13 @@
     id <MKTVerificationMode> _mode;
 }
 
-+ (id)verificationWithMock:(MKTObjectMock *)mock mode:(id <MKTVerificationMode>)mode {
++ (id)verificationWithMock:(MKTObjectMock *)mock mode:(id <MKTVerificationMode>)mode
+{
     return [[[self alloc] initWithMock:mock mode:mode] autorelease];
 }
 
-- (id)initWithMock:(MKTObjectMock *)mock mode:(id <MKTVerificationMode>)mode {
+- (id)initWithMock:(MKTObjectMock *)mock mode:(id <MKTVerificationMode>)mode
+{
     self = [super init];
     if (self) {
         _mock = [mock retain];
@@ -28,7 +30,8 @@
     return self;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [_mock release];
     [_mode release];
     [super dealloc];
@@ -37,7 +40,8 @@
 
 #pragma mark MKTVerificationMode
 
-- (void)verifyData:(MKTVerificationData *)data {
+- (void)verifyData:(MKTVerificationData *)data
+{
     [_mode verifyData:data];
 }
 

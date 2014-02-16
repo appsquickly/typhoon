@@ -18,7 +18,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithIsMutable:(BOOL)isMutable {
+- (id)initWithIsMutable:(BOOL)isMutable
+{
     self = [super init];
     if (self) {
         _isMutable = isMutable;
@@ -29,7 +30,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods
 
-- (id)supportedType {
+- (id)supportedType
+{
     if (_isMutable) {
         return [NSMutableString class];
     }
@@ -38,7 +40,8 @@
     }
 }
 
-- (id)convert:(NSString *)stringValue {
+- (id)convert:(NSString *)stringValue
+{
     if (_isMutable) {
         return [NSMutableString stringWithString:stringValue];
     }

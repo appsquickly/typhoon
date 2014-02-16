@@ -19,7 +19,8 @@
 
 @implementation TyphoonParameterInjectedWithObjectInstance
 
-- (id)initWithParameterIndex:(NSUInteger)index value:(id)value {
+- (id)initWithParameterIndex:(NSUInteger)index value:(id)value
+{
     self = [super init];
     if (self) {
         _index = index;
@@ -31,7 +32,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (void)withFactory:(TyphoonComponentFactory *)factory setArgumentOnInvocation:(NSInvocation *)invocation {
+- (void)withFactory:(TyphoonComponentFactory *)factory setArgumentOnInvocation:(NSInvocation *)invocation
+{
     [self setObject:self.value forInvocation:invocation];
 }
 
@@ -41,7 +43,8 @@
 /**
 * Returns a copy. Does not copy the value, but returns a reference to it.
 */
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone
+{
     return [[TyphoonParameterInjectedWithObjectInstance alloc] initWithParameterIndex:_index value:_value];
 }
 

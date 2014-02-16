@@ -20,11 +20,13 @@
 
 @implementation TyphoonUIColorTypeConverter
 
-- (id)supportedType {
+- (id)supportedType
+{
     return [UIColor class];
 }
 
-- (id)convert:(NSString *)stringValue {
+- (id)convert:(NSString *)stringValue
+{
     NSString *hexString =
         [[stringValue stringByReplacingOccurrencesOfString:@"#" withString:@""] stringByReplacingOccurrencesOfString:@"0x" withString:@""];
     if (![hexString length] == 6) {

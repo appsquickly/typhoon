@@ -24,7 +24,8 @@
 }
 
 
-- (void)test_single_parameter_method_incorrect_parameter_name_warns {
+- (void)test_single_parameter_method_incorrect_parameter_name_warns
+{
     @try {
         _initializer = [self newInitializerWithSelector:@selector(initWithString:)];
         [_initializer injectParameterNamed:@"strnig" withObject:@"a string"];
@@ -36,7 +37,8 @@
 
 }
 
-- (void)test_two_parameter_method_incorrect_parameter_name_warns {
+- (void)test_two_parameter_method_incorrect_parameter_name_warns
+{
     @try {
         _initializer = [self newInitializerWithSelector:@selector(initWithClass:key:)];
         [_initializer injectParameterNamed:@"keyy" withObject:@"a key"];
@@ -48,7 +50,8 @@
 
 }
 
-- (void)test_multiple_parameter_method_incorrect_parameter_name_warns {
+- (void)test_multiple_parameter_method_incorrect_parameter_name_warns
+{
     @try {
         _initializer = [self newInitializerWithSelector:@selector(initWithContentsOfURL:options:error:)];
         [_initializer injectParameterNamed:@"path" withObject:@"a parameter that isn't there"];
@@ -61,7 +64,8 @@
 
 }
 
-- (void)test_no_parameter_method_parameter_name_specified {
+- (void)test_no_parameter_method_parameter_name_specified
+{
     @try {
         _initializer = [self newInitializerWithSelector:@selector(init)];
         [_initializer injectParameterNamed:@"aParameter" withObject:@"anObject"];
@@ -76,7 +80,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
-- (TyphoonInitializer *)newInitializerWithSelector:(SEL)aSelector {
+- (TyphoonInitializer *)newInitializerWithSelector:(SEL)aSelector
+{
     TyphoonInitializer *anInitializer = [[TyphoonInitializer alloc] initWithSelector:aSelector];
     return anInitializer;
 }

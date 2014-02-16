@@ -41,7 +41,8 @@
 @implementation TyphoonSharedComponentFactoryTests
 
 
-- (void)invokeTest {
+- (void)invokeTest
+{
     BOOL abstractTest = [self isMemberOfClass:[TyphoonSharedComponentFactoryTests class]];
     if (!abstractTest) {
         [super invokeTest];
@@ -51,7 +52,8 @@
     }
 }
 
-- (void)tearDown {
+- (void)tearDown
+{
     // Unregister NSNull converter picked up in infrastructure components assembly.
     // Try/catch to make the correct test fail if converterFor: throws an exception because of missing converter.
     @try {
@@ -65,7 +67,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Property Injection
 
-- (void)test_injects_properties_by_reference_and_by_value {
+- (void)test_injects_properties_by_reference_and_by_value
+{
     Knight *knight = [_componentFactory componentForKey:@"knight"];
 
     assertThat(knight, notNilValue());
@@ -74,7 +77,8 @@
     assertThatUnsignedLongLong(knight.damselsRescued, equalToUnsignedLongLong(12));
 }
 
-- (void)test_mixed_initializer_and_property_injection {
+- (void)test_mixed_initializer_and_property_injection
+{
     CavalryMan *anotherKnight = [_componentFactory componentForKey:@"anotherKnight"];
     assertThat(anotherKnight.quest, notNilValue());
     assertThatBool(anotherKnight.hasHorseWillTravel, equalToBool(YES));
@@ -86,14 +90,16 @@
     assertThatFloat(yetAnotherKnight.hitRatio, equalToFloat(13.75));
 }
 
-- (void)test_injects_type_converted_array_collection {
+- (void)test_injects_type_converted_array_collection
+{
     Knight *knight = [_componentFactory componentForKey:@"knightWithCollections"];
     NSArray *favoriteDamsels = [knight favoriteDamsels];
     assertThat(favoriteDamsels, notNilValue());
     assertThat(favoriteDamsels, hasCountOf(2));
 }
 
-- (void)test_injects_collection_of_referenced_components_into_set {
+- (void)test_injects_collection_of_referenced_components_into_set
+{
     Knight *knight = [_componentFactory componentForKey:@"knightWithCollections"];
     NSSet *friends = [knight friends];
     assertThat(friends, notNilValue());
@@ -102,12 +108,14 @@
 
 /* ====================================================================================================================================== */
 #pragma mark Class Method Initializer
-- (void)test_class_method_injection {
+- (void)test_class_method_injection
+{
     NSURL *url = [_componentFactory componentForKey:@"serviceUrl"];
     assertThat(url, isNot(nilValue()));
 }
 
-- (void)test_class_method_injection_raises_exception_if_required_class_not_set {
+- (void)test_class_method_injection_raises_exception_if_required_class_not_set
+{
     @try {
         NSURL *url = [_exceptionTestFactory componentForKey:@"anotherServiceUrl"];
         STFail(@"Should have thrown exception");
@@ -120,7 +128,8 @@
 }
 
 #pragma mark Factory Initializer
-- (void)test_returns_component_from_factory_component {
+- (void)test_returns_component_from_factory_component
+{
     Sword *sword = [_componentFactory componentForKey:@"blueSword"];
     assertThat([sword description], equalTo(@"A bright blue sword with orange pom-poms at the hilt."));
 }
@@ -128,7 +137,8 @@
 /* ====================================================================================================================================== */
 #pragma mark initializer injection
 
-- (void)test_injects_collection_in_initializer {
+- (void)test_injects_collection_in_initializer
+{
     Knight *knight = [_componentFactory componentForKey:@"knightWithCollectionInConstructor"];
     NSArray *favoriteDamsels = [knight favoriteDamsels];
     assertThat(favoriteDamsels, notNilValue());
@@ -139,7 +149,8 @@
 /* ====================================================================================================================================== */
 #pragma mark Property-based configuration
 
-- (void)test_resolves_property_values {
+- (void)test_resolves_property_values
+{
     TyphoonXmlComponentFactory *factory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"PropertyPlaceholderAssembly.xml"];
     TyphoonPropertyPlaceholderConfigurer *configurer = [TyphoonPropertyPlaceholderConfigurer configurer];
     [configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
@@ -155,17 +166,20 @@
 
 #pragma mark - Infrastructure definitions
 
-- (void)test_post_processor_component_recognized {
+- (void)test_post_processor_component_recognized
+{
     assertThatUnsignedLong([_infrastructureComponentsFactory.factoryPostProcessors count], equalToInt(2)); //Attached + internal processors
 }
 
-- (void)test_resolves_property_values_from_multiple_files {
+- (void)test_resolves_property_values_from_multiple_files
+{
     Knight *knight = [_infrastructureComponentsFactory componentForKey:@"knight"];
     assertThatBool(knight.hasHorseWillTravel, equalToBool(YES));
     assertThatUnsignedLongLong(knight.damselsRescued, equalToUnsignedLongLong(12));
 }
 
-- (void)test_type_converter_recognized {
+- (void)test_type_converter_recognized
+{
     TyphoonTypeDescriptor *nullDescriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:[NSNull class]];
     id <TyphoonTypeConverter> nullConverter = [[TyphoonTypeConverterRegistry shared] converterFor:nullDescriptor];
     assertThat(nullConverter, notNilValue());
@@ -174,7 +188,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Circular dependencies.
 
-- (void)test_resolves_circular_dependencies_for_property_injected_by_reference {
+- (void)test_resolves_circular_dependencies_for_property_injected_by_reference
+{
     ClassADependsOnB *classA = [_circularDependenciesFactory componentForKey:@"classA"];
     assertThat(classA.dependencyOnB, notNilValue());
     assertThat(classA, equalTo(classA.dependencyOnB.dependencyOnA));
@@ -187,7 +202,8 @@
 
 }
 
-- (void)test_resolves_circular_dependencies_for_property_injected_by_type {
+- (void)test_resolves_circular_dependencies_for_property_injected_by_type
+{
     ClassADependsOnB *classA = [_circularDependenciesFactory componentForType:[ClassADependsOnB class]];
     assertThat(classA.dependencyOnB, notNilValue());
     assertThat(classA, equalTo(classA.dependencyOnB.dependencyOnA));
@@ -199,7 +215,8 @@
     assertThat([classB.dependencyOnA class], equalTo([ClassADependsOnB class]));
 }
 
-- (void)test_resolves_two_circular_dependencies_for_property_injected_by_reference {
+- (void)test_resolves_two_circular_dependencies_for_property_injected_by_reference
+{
     ClassCDependsOnDAndE *classC = [_circularDependenciesFactory componentForKey:@"classC"];
     assertThat(classC.dependencyOnD, notNilValue());
     assertThat(classC.dependencyOnE, notNilValue());
@@ -216,7 +233,8 @@
 
 /* ====================================================================================================================================== */
 #pragma mark - Circular dependencies on singleton chains
-- (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_type {
+- (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_type
+{
     SingletonA *singletonADependsOnBViaProperty = [_singletonsChainFactory componentForType:[SingletonA class]];
     SingletonB *singletonBDependsOnNotSingletonAViaProperty = [_singletonsChainFactory componentForType:[SingletonB class]];
     NotSingletonA *notSingletonADependsOnAViaInitializer = [_singletonsChainFactory componentForType:[NotSingletonA class]];
@@ -225,7 +243,8 @@
     assertThat(notSingletonADependsOnAViaInitializer.dependencyOnA, is(singletonADependsOnBViaProperty));
 }
 
-- (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_reference {
+- (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_reference
+{
     SingletonA *singletonA = [_singletonsChainFactory componentForKey:@"singletonA"];
     SingletonB *singletonB = [_singletonsChainFactory componentForKey:@"singletonB"];
     NotSingletonA *notSingletonA = [_singletonsChainFactory componentForKey:@"notSingletonA"];
@@ -234,7 +253,8 @@
     assertThat(notSingletonA.dependencyOnA, is(singletonA));
 }
 
-- (void)test_initializer_injected_component_is_correctly_resolved_in_circular_dependency {
+- (void)test_initializer_injected_component_is_correctly_resolved_in_circular_dependency
+{
     PrototypeInitInjected *initializerInjected = [_circularDependenciesFactory componentForType:[PrototypeInitInjected class]];
     PrototypePropertyInjected *propertyInjected = [_circularDependenciesFactory componentForType:[PrototypePropertyInjected class]];
     // should be expected class, but not same instance
@@ -246,14 +266,16 @@
 
 /* ====================================================================================================================================== */
 #pragma mark - Currently Resolving Overwriting Problem
-- (void)test_currently_resolving_references_dictionary_is_not_overwritten_when_initializing_two_instances_of_prototype_in_the_same_chain {
+- (void)test_currently_resolving_references_dictionary_is_not_overwritten_when_initializing_two_instances_of_prototype_in_the_same_chain
+{
     CROSingletonA *singletonA = [_circularDependenciesFactory componentForType:[CROSingletonA class]];
     assertThat(singletonA.prototypeB, isNot(nilValue()));
     assertThat(singletonA.prototypeA, isNot(nilValue()));
 }
 
 
-- (void)test_exception_when_initializer_dependency_chain {
+- (void)test_exception_when_initializer_dependency_chain
+{
     @try {
         [_circularDependenciesFactory componentForKey:@"incorrectPrototypeB"];
         STFail(@"Should have thrown exception");

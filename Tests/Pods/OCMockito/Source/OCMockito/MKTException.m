@@ -11,7 +11,8 @@
 
 @implementation MKTException
 
-+ (NSException *)failureInFile:(NSString *)fileName atLine:(int)lineNumber reason:(NSString *)reason {
++ (NSException *)failureInFile:(NSString *)fileName atLine:(int)lineNumber reason:(NSString *)reason
+{
     NSDictionary *userInfo = @{
         @"SenTestFilenameKey" : fileName,
         @"SenTestLineNumberKey" : @(lineNumber)

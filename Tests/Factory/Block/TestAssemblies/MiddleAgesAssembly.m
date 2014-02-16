@@ -22,7 +22,8 @@
 
 @implementation MiddleAgesAssembly
 
-- (id)knight {
+- (id)knight
+{
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest) withDefinition:[self defaultQuest]];
         [definition injectProperty:@selector(damselsRescued) withDefinition:[self cavalryMan] selector:@selector(damselsRescued)];
@@ -30,7 +31,8 @@
     }];
 }
 
-- (id)cavalryMan {
+- (id)cavalryMan
+{
     return [TyphoonDefinition withClass:[CavalryMan class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest) withDefinition:[self defaultQuest]];
         [definition injectProperty:@selector(damselsRescued) withValueAsText:@"12"];
@@ -38,7 +40,8 @@
     }];
 }
 
-- (id)anotherKnight {
+- (id)anotherKnight
+{
     return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:hitRatio:);
         [initializer injectWithDefinition:[self defaultQuest]];
@@ -50,7 +53,8 @@
     }];
 }
 
-- (id)yetAnotherKnight {
+- (id)yetAnotherKnight
+{
     return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:);
         [initializer injectWithDefinition:[self defaultQuest]];
@@ -65,7 +69,8 @@
     }];
 }
 
-- (id)knightWithCollections {
+- (id)knightWithCollections
+{
     return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:);
         [initializer injectWithDefinition:[self defaultQuest]];
@@ -83,7 +88,8 @@
     }];
 }
 
-- (id)knightWithCollectionInConstructor {
+- (id)knightWithCollectionInConstructor
+{
     return [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:favoriteDamsels:);
         [initializer injectWithDefinition:[self defaultQuest]];
@@ -95,26 +101,31 @@
     }];
 }
 
-- (id)defaultQuest {
+- (id)defaultQuest
+{
     return [TyphoonDefinition withClass:[CampaignQuest class]];
 }
 
-- (id)environmentDependentQuest {
+- (id)environmentDependentQuest
+{
     return [TyphoonDefinition withClass:[CampaignQuest class]];
 }
 
-- (id)serviceUrl; {
+- (id)serviceUrl;
+{
     return [TyphoonDefinition withClass:[NSURL class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(URLWithString:);
         [initializer injectParameterNamed:@"string" withValueAsText:@"http://dev.foobar.com/service/" requiredTypeOrNil:[NSString class]];
     }];
 }
 
-- (id)swordFactory {
+- (id)swordFactory
+{
     return [TyphoonDefinition withClass:[SwordFactory class]];
 }
 
-- (id)blueSword {
+- (id)blueSword
+{
     return [TyphoonDefinition withClass:[Sword class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(swordWithSpecification:);
         [initializer injectParameterNamed:@"specification" withValueAsText:@"blue" requiredTypeOrNil:[NSString class]];

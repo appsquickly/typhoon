@@ -19,7 +19,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (instancetype)initWithName:(NSString *)name reference:(NSString *)reference keyPath:(NSString *)keyPath {
+- (instancetype)initWithName:(NSString *)name reference:(NSString *)reference keyPath:(NSString *)keyPath
+{
     self = [super initWithName:name reference:reference];
     if (self) {
         _keyPath = keyPath;
@@ -30,7 +31,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance {
+- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance
+{
     [factory evaluateCircularDependency:self.reference propertyName:self.name instance:instance];
 
     if (![factory propertyIsCircular:self onInstance:instance]) {
@@ -43,7 +45,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone
+{
     return [[TyphoonPropertyInjectedByFactoryReference alloc]
         initWithName:[self.name copy] reference:[self.reference copy] keyPath:[self.keyPath copy]];
 }

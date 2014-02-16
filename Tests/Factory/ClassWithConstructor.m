@@ -8,11 +8,13 @@
 
 @implementation ClassWithConstructor
 
-+ (instancetype)constructorWithString:(NSString *)string {
++ (instancetype)constructorWithString:(NSString *)string
+{
     return [[self alloc] initWithString:string];
 }
 
-- (instancetype)initWithString:(NSString *)string {
+- (instancetype)initWithString:(NSString *)string
+{
     self = [super init];
     if (self) {
         _string = string;

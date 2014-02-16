@@ -13,7 +13,8 @@
 
 static NSArray *ordinalsThroughThree;
 
-+ (void)initialize {
++ (void)initialize
+{
     ordinalsThroughThree = @[
         @"th",
         @"st",
@@ -22,7 +23,8 @@ static NSArray *ordinalsThroughThree;
     ];
 }
 
-+ (NSString *)ordinalForIndex:(NSUInteger)index {
++ (NSString *)ordinalForIndex:(NSUInteger)index
+{
     NSUInteger lastDigit = index % 10;
     if (index > 3 && index < 20) {
         return [NSString stringWithFormat:@"%lu%@", (unsigned long) index, @"th"];

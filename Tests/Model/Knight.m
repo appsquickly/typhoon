@@ -18,11 +18,13 @@
 @implementation Knight
 
 /* ============================================================ Initializers ============================================================ */
-- (id)initWithQuest:(id <Quest>)quest {
+- (id)initWithQuest:(id <Quest>)quest
+{
     return [self initWithQuest:quest damselsRescued:0];
 }
 
-- (id)initWithQuest:(id <Quest>)quest damselsRescued:(NSUInteger)damselsRescued {
+- (id)initWithQuest:(id <Quest>)quest damselsRescued:(NSUInteger)damselsRescued
+{
     self = [super init];
     if (self) {
         _quest = quest;
@@ -31,7 +33,8 @@
     return self;
 }
 
-- (id)initWithQuest:(id <Quest>)quest favoriteDamsels:(NSArray *)favoriteDamsels; {
+- (id)initWithQuest:(id <Quest>)quest favoriteDamsels:(NSArray *)favoriteDamsels;
+{
     self = [super init];
     if (self) {
         _quest = quest;
@@ -40,7 +43,8 @@
     return self;
 }
 
-- (id)initWithDamselsRescued:(NSUInteger)damselsRescued foo:(id)foobar {
+- (id)initWithDamselsRescued:(NSUInteger)damselsRescued foo:(id)foobar
+{
     self = [super init];
     if (self) {
         _damselsRescued = damselsRescued;
@@ -51,11 +55,13 @@
 }
 
 /* ========================================================== Interface Methods ========================================================= */
-- (void)setQuest:(CampaignQuest *)quest {
+- (void)setQuest:(CampaignQuest *)quest
+{
     _quest = quest;
 }
 
-- (NSString *)description {
+- (NSString *)description
+{
     NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
     [description appendFormat:@"self.quest=%@", self.quest];
     [description appendFormat:@", self.foobar=%@", self.foobar];

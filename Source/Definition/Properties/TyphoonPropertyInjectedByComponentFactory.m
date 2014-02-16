@@ -16,7 +16,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization
 
-- (instancetype)initWithName:(NSString *)name {
+- (instancetype)initWithName:(NSString *)name
+{
     self = [super init];
     if (self) {
         _name = name;
@@ -27,7 +28,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overrides
 
-- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance {
+- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance
+{
     return factory;
 }
 

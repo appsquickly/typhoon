@@ -15,13 +15,15 @@
 @implementation TyphoonAbstractInjectedProperty
 
 
-- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance {
+- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance
+{
     [NSException raise:NSInternalInconsistencyException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
     return nil;
 }
 
 
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone
+{
     [NSException raise:NSInternalInconsistencyException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
     return nil;
 }
@@ -30,7 +32,8 @@
 #pragma mark - Overridden Methods
 
 
-- (BOOL)isEqual:(id)other {
+- (BOOL)isEqual:(id)other
+{
     if (other == self) {
         return YES;
     }
@@ -41,7 +44,8 @@
     return [self isEqualToBase:other];
 }
 
-- (BOOL)isEqualToBase:(TyphoonAbstractInjectedProperty *)base {
+- (BOOL)isEqualToBase:(TyphoonAbstractInjectedProperty *)base
+{
     if (self == base) {
         return YES;
     }
@@ -54,7 +58,8 @@
     return YES;
 }
 
-- (NSUInteger)hash {
+- (NSUInteger)hash
+{
     return [self.name hash];
 }
 

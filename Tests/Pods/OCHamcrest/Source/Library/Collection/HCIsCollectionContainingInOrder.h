@@ -42,5 +42,5 @@ OBJC_EXPORT id <HCMatcher> HC_contains(id itemMatch, ...) NS_REQUIRES_NIL_TERMIN
     @ingroup collection_matchers
  */
 #ifdef HC_SHORTHAND
-    #define contains HC_contains
+#define contains HC_contains
 #endif

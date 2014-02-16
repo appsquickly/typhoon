@@ -19,7 +19,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithComponentKey:(NSString *)componentKey {
+- (id)initWithComponentKey:(NSString *)componentKey
+{
     self = [super init];
     if (self) {
         _componentKey = componentKey;
@@ -31,14 +32,16 @@
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods
 
-- (id)resolveWithFactory:(TyphoonComponentFactory *)factory {
+- (id)resolveWithFactory:(TyphoonComponentFactory *)factory
+{
     return [factory componentForKey:self.componentKey];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone
+{
     return [[TyphoonByReferenceCollectionValue alloc] initWithComponentKey:_componentKey];
 }
 

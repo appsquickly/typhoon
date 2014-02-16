@@ -15,7 +15,8 @@
 
 #pragma mark - Initializers & dealloc
 
-- (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex argumentIndex:(NSUInteger)argumentIndex {
+- (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex argumentIndex:(NSUInteger)argumentIndex
+{
     self = [super init];
     if (self) {
         _parameterIndex = parameterIndex;

@@ -20,21 +20,24 @@ static const void *sFactoryMethodClosures = &sFactoryMethodClosures;
 
 @implementation TyphoonAssistedFactoryBase (TyphoonFactoryMethodClosure)
 
-+ (void)_fmc_setClosure:(id <TyphoonAssistedFactoryMethodClosure>)closure forSelector:(SEL)selector {
++ (void)_fmc_setClosure:(id <TyphoonAssistedFactoryMethodClosure>)closure forSelector:(SEL)selector
+{
     NSMutableDictionary *closures = [self _fmc_closures];
     @synchronized (closures) {
         closures[NSStringFromSelector(selector)] = closure;
     }
 }
 
-+ (id <TyphoonAssistedFactoryMethodClosure>)_fmc_closureForSelector:(SEL)selector {
++ (id <TyphoonAssistedFactoryMethodClosure>)_fmc_closureForSelector:(SEL)selector
+{
     NSMutableDictionary *closures = [self _fmc_closures];
     @synchronized (closures) {
         return closures[NSStringFromSelector(selector)];
     }
 }
 
-+ (NSMutableDictionary *)_fmc_closures {
++ (NSMutableDictionary *)_fmc_closures
+{
     NSMutableDictionary *closures = objc_getAssociatedObject(self, sFactoryMethodClosures);
     if (!closures) {
         @synchronized (self) {
@@ -50,7 +53,8 @@ static const void *sFactoryMethodClosures = &sFactoryMethodClosures;
     return closures;
 }
 
-- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
+{
     // Return the method signature of the real object, or find the method
     // signature from the corresponding factory method closure.
     NSMethodSignature *signature = [super methodSignatureForSelector:aSelector];
@@ -62,7 +66,8 @@ static const void *sFactoryMethodClosures = &sFactoryMethodClosures;
     return signature;
 }
 
-- (void)forwardInvocation:(NSInvocation *)anInvocation {
+- (void)forwardInvocation:(NSInvocation *)anInvocation
+{
     // Find the factory method closure related to this invocation selector, and
     // create a new invocation from it, using the arguments of this invocation.
     id <TyphoonAssistedFactoryMethodClosure> closure = [[self class] _fmc_closureForSelector:anInvocation.selector];

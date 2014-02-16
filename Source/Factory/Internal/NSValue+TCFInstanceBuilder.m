@@ -24,7 +24,8 @@
 
 @implementation NSValue (TCFInstanceBuilder)
 
-- (void)typhoon_setAsArgumentForInvocation:(NSInvocation *)invocation atIndex:(NSUInteger)index {
+- (void)typhoon_setAsArgumentForInvocation:(NSInvocation *)invocation atIndex:(NSUInteger)index
+{
     const char *type = [self objCType];
 
     if (CStringEquals(type, @encode(void *))) {
@@ -87,7 +88,8 @@
 
 @implementation NSNumber (TCFInstanceBuilder)
 
-- (void)typhoon_setAsArgumentForInvocation:(NSInvocation *)invocation atIndex:(NSUInteger)index {
+- (void)typhoon_setAsArgumentForInvocation:(NSInvocation *)invocation atIndex:(NSUInteger)index
+{
     const char *type = [self objCType];
 
     if (CStringEquals(type, @encode(int))) {

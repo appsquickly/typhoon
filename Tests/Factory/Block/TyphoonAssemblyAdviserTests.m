@@ -33,7 +33,8 @@
 
 @implementation TestAssemblyWithMethod
 
-- (void)aDefinitionMethod {
+- (void)aDefinitionMethod
+{
 
 }
 
@@ -51,7 +52,8 @@
     TyphoonAssembly *assembly;
 }
 
-- (void)testEnumeratesDefinitionSelectors_EmptyAssembly {
+- (void)testEnumeratesDefinitionSelectors_EmptyAssembly
+{
     assembly = [[EmptyTestAssembly alloc] init];
     adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
@@ -59,7 +61,8 @@
     assertThat(selectors, empty());
 }
 
-- (void)testEnumeratesDefinitionSelectors_AssemblyWithMethod {
+- (void)testEnumeratesDefinitionSelectors_AssemblyWithMethod
+{
     assembly = [[TestAssemblyWithMethod alloc] init];
     adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
@@ -69,7 +72,8 @@
     assertThat(selectors, onlyContains(theSelector, nil));
 }
 
-- (void)testAdvisesAssembly {
+- (void)testAdvisesAssembly
+{
     assembly = [[TestAssemblyWithMethod alloc] init];
     adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
@@ -82,7 +86,8 @@
     [swizzler assertExchangedImplementationsFor:@"aDefinitionMethod" with:advisedName onClass:[assembly class]];
 }
 
-- (void)testConfiguresItselfWithARealSwizzler {
+- (void)testConfiguresItselfWithARealSwizzler
+{
     assembly = [[TestAssemblyWithMethod alloc] init];
     adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 

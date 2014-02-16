@@ -19,14 +19,16 @@
 
 }
 
-+ (TyphoonTestXMLBuilder *)vanillaDefinition {
++ (TyphoonTestXMLBuilder *)vanillaDefinition
+{
     TyphoonTestXMLBuilder *builder = [[TyphoonTestXMLBuilder alloc] init];
     builder.class = @"NSObject";
     builder.key = @"vanilla";
     return builder;
 }
 
-- (id)init {
+- (id)init
+{
     self = [super init];
     if (self) {
         self.attributes = [[NSMutableDictionary alloc] init];
@@ -35,12 +37,14 @@
     return self;
 }
 
-- (TyphoonTestXMLBuilder *)withAttribute:(NSString *)string textValue:(NSString *)textValue {
+- (TyphoonTestXMLBuilder *)withAttribute:(NSString *)string textValue:(NSString *)textValue
+{
     [self.attributes setObject:textValue forKey:string];
     return self;
 }
 
-- (TyphoonRXMLElement *)build {
+- (TyphoonRXMLElement *)build
+{
     NSMutableString *xmlString = [[NSMutableString alloc] init];
     [xmlString appendString:@"<component"];
 

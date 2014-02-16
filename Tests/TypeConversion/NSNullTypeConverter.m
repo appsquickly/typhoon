@@ -13,11 +13,13 @@
 
 @implementation NSNullTypeConverter
 
-- (id)supportedType {
+- (id)supportedType
+{
     return [NSNull class];
 }
 
-- (id)convert:(NSString *)stringValue {
+- (id)convert:(NSString *)stringValue
+{
     return [NSNull null];
 }
 

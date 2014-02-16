@@ -41,12 +41,14 @@
     Class _personFactoryClass;
 }
 
-- (void)setUp {
+- (void)setUp
+{
     _creditService = (id <CreditService>) [[NSObject alloc] init];
     _authService = (id <AuthService>) [[NSObject alloc] init];
 }
 
-- (Protocol *)paymentFactoryProtocol {
+- (Protocol *)paymentFactoryProtocol
+{
     if (!_paymentFactoryProtocol) {
         _paymentFactoryProtocol = protocol_clone(@protocol(PaymentFactory));
     }
@@ -54,7 +56,8 @@
     return _paymentFactoryProtocol;
 }
 
-- (Class)paymentFactoryClass {
+- (Class)paymentFactoryClass
+{
     if (!_paymentFactoryClass) {
         _paymentFactoryClass =
             [[[TyphoonAssistedFactoryCreatorImplicit alloc] initWithProtocol:[self paymentFactoryProtocol] returns:[PaymentImpl class]]
@@ -64,7 +67,8 @@
     return _paymentFactoryClass;
 }
 
-- (Protocol *)personFactoryProtocol {
+- (Protocol *)personFactoryProtocol
+{
     if (!_personFactoryProtocol) {
         _personFactoryProtocol = protocol_clone(@protocol(PersonFactory));
     }
@@ -72,7 +76,8 @@
     return _personFactoryProtocol;
 }
 
-- (Class)personFactoryClass {
+- (Class)personFactoryClass
+{
     if (!_personFactoryClass) {
         _personFactoryClass =
             [[[TyphoonAssistedFactoryCreatorImplicit alloc] initWithProtocol:[self personFactoryProtocol] returns:[Person class]]
@@ -82,7 +87,8 @@
     return _personFactoryClass;
 }
 
-- (void)test_factory_class_should_implement_protocol {
+- (void)test_factory_class_should_implement_protocol
+{
     Class klass = [self paymentFactoryClass];
 
     assertThatBool(class_conformsToProtocol(klass, [self paymentFactoryProtocol]), is(equalToBool(YES)));
@@ -91,7 +97,8 @@
     assertThat(superklass, is([TyphoonAssistedFactoryBase class]));
 }
 
-- (void)test_factory_should_respond_to_properties {
+- (void)test_factory_should_respond_to_properties
+{
     Class klass = [self paymentFactoryClass];
     id <PaymentFactory> factory = [[klass alloc] init];
 
@@ -99,7 +106,8 @@
     assertThatBool([factory respondsToSelector:@selector(authService)], is(equalToBool(YES)));
 }
 
-- (void)test_factory_should_implement_properties {
+- (void)test_factory_should_implement_properties
+{
     Class klass = [self paymentFactoryClass];
     id <PaymentFactory> factory = [[klass alloc] init];
 
@@ -109,7 +117,8 @@
     assertThat(factory.authService, is(_authService));
 }
 
-- (void)test_factory_should_invoke_correct_initializers {
+- (void)test_factory_should_invoke_correct_initializers
+{
     Class klass = [self paymentFactoryClass];
     id <PaymentFactory> factory = [[klass alloc] init];
 
@@ -125,7 +134,8 @@
     assertThatInteger(payment.amount, is(equalToInteger(456)));
 }
 
-- (void)test_multi_factory_should_invoke_correct_initializers {
+- (void)test_multi_factory_should_invoke_correct_initializers
+{
     Class klass = [self personFactoryClass];
     id <PersonFactory> factory = [[klass alloc] init];
 

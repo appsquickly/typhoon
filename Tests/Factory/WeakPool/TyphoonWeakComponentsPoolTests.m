@@ -16,7 +16,8 @@
 @implementation TyphoonWeakComponentsPoolTests
 
 
-- (void)test_weak_reference {
+- (void)test_weak_reference
+{
     NSObject *objectA = [NSObject new];
     NSObject *objectB = [NSObject new];
 

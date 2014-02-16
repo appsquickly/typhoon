@@ -39,12 +39,14 @@
     NSString *_testNumberString;
 }
 
-- (void)setUp {
+- (void)setUp
+{
     _typeConverter = [[TyphoonPrimitiveTypeConverter alloc] init];
     _testNumberString = [NSString stringWithFormat:@"%@", @(TYPHOON_TEST_VALUE)];
 }
 
-- (void)test_converts_to_bool {
+- (void)test_converts_to_bool
+{
     BOOL converted = [_typeConverter convertToBoolean:@"true"];
     assertThatBool(converted, equalToBool(YES));
 
@@ -67,79 +69,91 @@
     assertThat(number, equalTo(@YES));
 }
 
-- (void)test_converts_to_short {
+- (void)test_converts_to_short
+{
     short converted = [_typeConverter convertToShort:_testNumberString];
     assertThatShort(converted, equalToShort(TYPHOON_TEST_VALUE));
 
     [self verifyNumberFromTestNumberStringWithType:@encode(short)];
 }
 
-- (void)test_converts_to_long {
+- (void)test_converts_to_long
+{
     long converted = [_typeConverter convertToLong:_testNumberString];
     assertThatLong(converted, equalToLong(TYPHOON_TEST_VALUE));
 
     [self verifyNumberFromTestNumberStringWithType:@encode(long)];
 }
 
-- (void)test_converts_to_long_long {
+- (void)test_converts_to_long_long
+{
     long long converted = [_typeConverter convertToLongLong:_testNumberString];
     assertThatLongLong(converted, equalToLongLong(TYPHOON_TEST_VALUE));
 
     [self verifyNumberFromTestNumberStringWithType:@encode(long long)];
 }
 
-- (void)test_converts_to_unsigned_char {
+- (void)test_converts_to_unsigned_char
+{
     unsigned char converted = [_typeConverter convertToUnsignedChar:@"65"];
     assertThatUnsignedChar(converted, equalToUnsignedChar(65));
 
     [self verifyNumberFromTestNumberStringWithType:@encode(unsigned char)];
 }
 
-- (void)test_converts_to_unsigned_int {
+- (void)test_converts_to_unsigned_int
+{
     unsigned int converted = [_typeConverter convertToUnsignedInt:@"123"];
     assertThatUnsignedInt(converted, equalToUnsignedChar(123));
 
     [self verifyNumberFromTestNumberStringWithType:@encode(unsigned int)];
 }
 
-- (void)test_converts_to_unsigned_short {
+- (void)test_converts_to_unsigned_short
+{
     unsigned short converted = [_typeConverter convertToUnsignedShort:@"123"];
     assertThatUnsignedShort(converted, equalToUnsignedShort(123));
 
     [self verifyNumberFromTestNumberStringWithType:@encode(unsigned short)];
 }
 
-- (void)test_converts_to_unsigned_long {
+- (void)test_converts_to_unsigned_long
+{
     unsigned long converted = [_typeConverter convertToUnsignedLong:@"123"];
     assertThatUnsignedLong(converted, equalToUnsignedLong(123));
 
     [self verifyNumberFromTestNumberStringWithType:@encode(unsigned long)];
 }
 
-- (void)test_converts_to_double {
+- (void)test_converts_to_double
+{
     double converted = [_typeConverter convertToDouble:@"3.14159628"];
     assertThatDouble(converted, equalToDouble(3.14159628));
 
     [self verifyNumberFromTestNumberStringWithType:@encode(double)];
 }
 
-- (void)test_converts_to_selector {
+- (void)test_converts_to_selector
+{
     SEL converted = [_typeConverter convertToSelector:@"initWithQuest:"];
     STAssertEquals(converted, @selector(initWithQuest:), nil, nil);
 }
 
-- (void)test_converts_to_class {
+- (void)test_converts_to_class
+{
     Class converted = [_typeConverter convertToClass:@"NSString"];
     STAssertTrue(converted == [NSString class], nil);
 }
 
-- (void)test_converts_to_c_string {
+- (void)test_converts_to_c_string
+{
     const char *converted = [_typeConverter convertToCString:@"the quick brown fox"];
     STAssertTrue(strcmp(converted, [@"the quick brown fox" cStringUsingEncoding:NSUTF8StringEncoding]) == 0, nil);
 }
 
 
-- (void)test_converts_to_int {
+- (void)test_converts_to_int
+{
     int converted = [_typeConverter convertToInt:@"123"];
     assertThatInt(converted, equalToInt(123));
 
@@ -147,7 +161,8 @@
     assertThatInt(converted, equalToInt(0));
 }
 
-- (void)test_converts_to_NSUInteger {
+- (void)test_converts_to_NSUInteger
+{
     NSUInteger converted = [_typeConverter convertToUnsignedLongLong:@"123"];
     assertThatUnsignedLongLong(converted, equalToUnsignedLongLong(123));
 
@@ -156,7 +171,8 @@
 }
 
 #pragma mark - valueForText:withType:
-- (void)test_pointer_type {
+- (void)test_pointer_type
+{
     NSString *typeCode = [NSString stringWithCString:@encode(void *) encoding:NSUTF8StringEncoding];
     TyphoonTypeDescriptor *pointerType = [[TyphoonTypeDescriptor alloc] initWithTypeCode:typeCode];
 
@@ -166,7 +182,8 @@
     STAssertEquals(pointer, (void *) 123456, nil);
 }
 
-- (void)test_unknown_pointer_type {
+- (void)test_unknown_pointer_type
+{
     TyphoonTypeDescriptor *unknownPointerType = [[TyphoonTypeDescriptor alloc] initWithTypeCode:@"^?"];
 
     id valueOrNumber = [_typeConverter valueFromText:@"123456" withType:unknownPointerType];
@@ -175,7 +192,8 @@
     STAssertEquals(pointer, (void *) 123456, nil);
 }
 
-- (void)test_unknown_type {
+- (void)test_unknown_type
+{
     TyphoonTypeDescriptor *unknownType = [[TyphoonTypeDescriptor alloc] initWithTypeCode:@"?"];
 
     @try {
@@ -189,21 +207,24 @@
 /* ====================================================================================================================================== */
 #pragma mark - Invocations
 
-- (void)test_set_argument_bool {
+- (void)test_set_argument_bool
+{
     NSInvocation *mockInvocation = mock([NSInvocation class]);
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"boolProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"true" requiredType:descriptor];
     [verify(mockInvocation) setArgument:(void *) YES atIndex:2];
 }
 
-- (void)test_set_argument_class {
+- (void)test_set_argument_class
+{
     NSInvocation *mockInvocation = mock([NSInvocation class]);
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"classProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"Knight" requiredType:descriptor];
     [verify(mockInvocation) setArgument:(__bridge void *) [NSString class] atIndex:2];
 }
 
-- (void)test_set_argument_double {
+- (void)test_set_argument_double
+{
     NSInvocation *mockInvocation = mock([NSInvocation class]);
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"doubleProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"12.75" requiredType:descriptor];
@@ -211,7 +232,8 @@
     [verify(mockInvocation) setArgument:&expected atIndex:2];
 }
 
-- (void)test_set_argument_int {
+- (void)test_set_argument_int
+{
     NSInvocation *mockInvocation = mock([NSInvocation class]);
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"intProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"12" requiredType:descriptor];
@@ -219,7 +241,8 @@
     [verify(mockInvocation) setArgument:&expected atIndex:2];
 }
 
-- (void)test_set_argument_long {
+- (void)test_set_argument_long
+{
     NSInvocation *mockInvocation = mock([NSInvocation class]);
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"longProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"12" requiredType:descriptor];
@@ -227,7 +250,8 @@
     [verify(mockInvocation) setArgument:&expected atIndex:2];
 }
 
-- (void)test_set_argument_selector {
+- (void)test_set_argument_selector
+{
     NSInvocation *mockInvocation = mock([NSInvocation class]);
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"selectorProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"initWithQuest:" requiredType:descriptor];
@@ -235,7 +259,8 @@
     [verify(mockInvocation) setArgument:&expected atIndex:2];
 }
 
-- (void)test_set_argument_c_string {
+- (void)test_set_argument_c_string
+{
     NSInvocation *mockInvocation = mock([NSInvocation class]);
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"cStringProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"initWithQuest:" requiredType:descriptor];
@@ -243,7 +268,8 @@
     [verify(mockInvocation) setArgument:&expected atIndex:2];
 }
 
-- (void)test_set_argument_unsigned_char {
+- (void)test_set_argument_unsigned_char
+{
     NSInvocation *mockInvocation = mock([NSInvocation class]);
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"unsignedCharProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"65" requiredType:descriptor];
@@ -251,7 +277,8 @@
     [verify(mockInvocation) setArgument:&expected atIndex:2];
 }
 
-- (void)test_set_argument_unsigned_long_long {
+- (void)test_set_argument_unsigned_long_long
+{
     NSInvocation *mockInvocation = mock([NSInvocation class]);
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"unsignedLongLongProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"36" requiredType:descriptor];
@@ -259,7 +286,8 @@
     [verify(mockInvocation) setArgument:&expected atIndex:2];
 }
 
-- (void)test_set_argument_unsigned_int {
+- (void)test_set_argument_unsigned_int
+{
     NSInvocation *mockInvocation = mock([NSInvocation class]);
     TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"unsignedIntProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"36" requiredType:descriptor];
@@ -268,12 +296,14 @@
 }
 
 #pragma mark - Helpers
-- (void)verifyNumberFromTestNumberStringWithType:(char *)type {
+- (void)verifyNumberFromTestNumberStringWithType:(char *)type
+{
     NSNumber *number = [self valueFromTestNumberStringWithType:type];
     assertThat(number, equalTo(@(TYPHOON_TEST_VALUE)));
 }
 
-- (id)valueFromTestNumberStringWithType:(char *)type {
+- (id)valueFromTestNumberStringWithType:(char *)type
+{
     return [_typeConverter valueFromText:_testNumberString withType:[TyphoonTypeDescriptor descriptorWithEncodedType:type]];
 }
 

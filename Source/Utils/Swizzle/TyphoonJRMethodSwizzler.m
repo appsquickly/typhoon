@@ -20,7 +20,8 @@
 
 }
 
-- (BOOL)swizzleMethod:(SEL)selA withMethod:(SEL)selB onClass:(Class)pClass error:(NSError **)error {
+- (BOOL)swizzleMethod:(SEL)selA withMethod:(SEL)selB onClass:(Class)pClass error:(NSError **)error
+{
     return [pClass typhoon_swizzleMethod:selA withMethod:selB error:error];
 }
 

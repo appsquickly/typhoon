@@ -20,68 +20,84 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (int)convertToInt:(NSString *)stringValue {
+- (int)convertToInt:(NSString *)stringValue
+{
     return [stringValue intValue];
 }
 
-- (short)convertToShort:(NSString *)stringValue {
+- (short)convertToShort:(NSString *)stringValue
+{
     return (short) [stringValue intValue];
 }
 
-- (long)convertToLong:(NSString *)stringValue {
+- (long)convertToLong:(NSString *)stringValue
+{
     return (long) [stringValue longLongValue];
 }
 
-- (long long)convertToLongLong:(NSString *)stringValue {
+- (long long)convertToLongLong:(NSString *)stringValue
+{
     return [stringValue longLongValue];
 }
 
-- (unsigned char)convertToUnsignedChar:(NSString *)stringValue {
+- (unsigned char)convertToUnsignedChar:(NSString *)stringValue
+{
     return (unsigned char) [stringValue intValue];
 }
 
-- (unsigned int)convertToUnsignedInt:(NSString *)stringValue {
+- (unsigned int)convertToUnsignedInt:(NSString *)stringValue
+{
     return (unsigned int) [stringValue longLongValue];
 }
 
-- (unsigned short)convertToUnsignedShort:(NSString *)stringValue {
+- (unsigned short)convertToUnsignedShort:(NSString *)stringValue
+{
     return (unsigned short) [stringValue intValue];
 }
 
-- (unsigned long)convertToUnsignedLong:(NSString *)stringValue {
+- (unsigned long)convertToUnsignedLong:(NSString *)stringValue
+{
     return (unsigned long) [stringValue longLongValue];
 }
 
-- (unsigned long long)convertToUnsignedLongLong:(NSString *)stringValue {
+- (unsigned long long)convertToUnsignedLongLong:(NSString *)stringValue
+{
     return strtoull([stringValue UTF8String], NULL, 0);
 }
 
-- (float)convertToFloat:(NSString *)stringValue {
+- (float)convertToFloat:(NSString *)stringValue
+{
     return [stringValue floatValue];
 }
 
-- (double)convertToDouble:(NSString *)stringValue {
+- (double)convertToDouble:(NSString *)stringValue
+{
     return [stringValue doubleValue];
 }
 
-- (BOOL)convertToBoolean:(NSString *)stringValue {
+- (BOOL)convertToBoolean:(NSString *)stringValue
+{
     return [stringValue boolValue];
 }
 
-- (const char *)convertToCString:(NSString *)stringValue {
+- (const char *)convertToCString:(NSString *)stringValue
+{
     return [stringValue cStringUsingEncoding:NSUTF8StringEncoding];
 }
 
-- (Class)convertToClass:(NSString *)stringValue {
+- (Class)convertToClass:(NSString *)stringValue
+{
     return NSClassFromString(stringValue);
 }
 
-- (SEL)convertToSelector:(NSString *)stringValue {
+- (SEL)convertToSelector:(NSString *)stringValue
+{
     return NSSelectorFromString(stringValue);
 }
 
 /* ====================================================================================================================================== */
-- (id)valueFromText:(NSString *)textValue withType:(TyphoonTypeDescriptor *)requiredType {
+- (id)valueFromText:(NSString *)textValue withType:(TyphoonTypeDescriptor *)requiredType
+{
     id value = nil;
 
     switch (requiredType.primitiveType) {
@@ -149,7 +165,8 @@
 }
 
 - (void)setPrimitiveArgumentFor:(NSInvocation *)invocation index:(NSUInteger)index textValue:(NSString *)textValue
-    requiredType:(TyphoonTypeDescriptor *)requiredType {
+    requiredType:(TyphoonTypeDescriptor *)requiredType
+{
     if (requiredType.primitiveType == TyphoonPrimitiveTypeBoolean || requiredType.primitiveType == TyphoonPrimitiveTypeChar) {
         BOOL converted = [self convertToBoolean:textValue];
         [invocation setArgument:&converted atIndex:index];

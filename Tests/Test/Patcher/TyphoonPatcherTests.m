@@ -30,20 +30,23 @@
 
 @implementation TyphoonPatcherTests
 
-- (void)setUp {
+- (void)setUp
+{
     [super setUp];
 
     _assembly = [MiddleAgesAssembly assembly];
     _factory = [TyphoonBlockComponentFactory factoryWithAssembly:_assembly];
 }
 
-- (void)test_allows_patching_out_a_component_with_a_mock {
+- (void)test_allows_patching_out_a_component_with_a_mock
+{
     [self applyAPatchToFactory:_factory assembly:_assembly];
 
     [self assertPatchAppliedToFactory:_factory];
 }
 
-- (void)test_allows_patching_out_a_loaded_component_with_a_mock {
+- (void)test_allows_patching_out_a_loaded_component_with_a_mock
+{
     [_factory componentForKey:@"knight"];
 
     [self applyAPatchToFactory:_factory assembly:_assembly];
@@ -51,7 +54,8 @@
 }
 
 
-- (void)test_honours_the_scope_of_patched_definition {
+- (void)test_honours_the_scope_of_patched_definition
+{
     [self applyAPatchToFactory:_factory assembly:_assembly];
     [self assertPatchAppliedToFactory:_factory];
 
@@ -61,7 +65,8 @@
 
 }
 
-- (void)applyAPatchToFactory:(TyphoonComponentFactory *)factory assembly:(MiddleAgesAssembly *)assembly {
+- (void)applyAPatchToFactory:(TyphoonComponentFactory *)factory assembly:(MiddleAgesAssembly *)assembly
+{
     TyphoonPatcher *patcher = [[TyphoonPatcher alloc] init];
     [patcher patchDefinition:[assembly knight] withObject:^id {
         Knight *mockKnight = mock([Knight class]);
@@ -88,7 +93,8 @@
     [factory attachPostProcessor:patcher];
 }
 
-- (void)assertPatchAppliedToFactory:(TyphoonComponentFactory *)factory {
+- (void)assertPatchAppliedToFactory:(TyphoonComponentFactory *)factory
+{
     Knight *knight = [factory componentForKey:@"knight"];
     assertThatBool([knight favoriteDamsels].count > 0, is(equalToBool(YES)));
 }

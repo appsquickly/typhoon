@@ -15,7 +15,8 @@
 
 @synthesize methodSignature = _methodSignature;
 
-- (instancetype)initWithSelector:(SEL)selector methodSignature:(NSMethodSignature *)methodSignature {
+- (instancetype)initWithSelector:(SEL)selector methodSignature:(NSMethodSignature *)methodSignature
+{
     self = [super init];
     if (self) {
         NSParameterAssert(selector);
@@ -28,7 +29,8 @@
     return self;
 }
 
-- (NSInvocation *)invocationWithFactory:(id)factory forwardedInvocation:(NSInvocation *)anInvocation {
+- (NSInvocation *)invocationWithFactory:(id)factory forwardedInvocation:(NSInvocation *)anInvocation
+{
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:_methodSignature];
     invocation.target = factory;
     invocation.selector = _selector;

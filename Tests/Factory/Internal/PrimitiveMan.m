@@ -23,7 +23,8 @@
     unsignedCharValue:(unsigned char)unsignedCharValue floatValue:(float)floatValue doubleValue:(double)doubleValue
     boolValue:(BOOL)boolValue integerValue:(NSInteger)integerValue unsignedIntegerValue:(NSUInteger)unsignedIntegerValue
     classValue:(Class)classValue selectorValue:(SEL)selectorValue cstring:(char *)cString nsRange:(NSRange)nsRange
-    pointerValue:(void *)pointer unknownPointer:(PrimitiveManStruct *)unknownPointer pointerInsideValue:(NSValue *)pointerInsideValue {
+    pointerValue:(void *)pointer unknownPointer:(PrimitiveManStruct *)unknownPointer pointerInsideValue:(NSValue *)pointerInsideValue
+{
     self = [super init];
     if (self) {
         _intValue = intValue;

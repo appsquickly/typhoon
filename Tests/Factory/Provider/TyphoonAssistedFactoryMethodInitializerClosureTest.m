@@ -38,7 +38,8 @@
 
 @implementation TyphoonAssistedFactoryMethodInitializerClosureTest
 
-- (void)test_closure_should_invoke_initializer_from_one_parameter {
+- (void)test_closure_should_invoke_initializer_from_one_parameter
+{
     TyphoonAssistedFactoryMethodInitializer *initializer =
         [[TyphoonAssistedFactoryMethodInitializer alloc] initWithFactoryMethod:@selector(stringWithString:) returnType:[NSString class]];
     initializer.selector = @selector(initWithString:);
@@ -62,7 +63,8 @@
     assertThat(result, equalTo(@"test"));
 }
 
-- (void)test_closure_should_invoke_initializer_from_several_parameter {
+- (void)test_closure_should_invoke_initializer_from_several_parameter
+{
     TyphoonAssistedFactoryMethodInitializer *initializer = [[TyphoonAssistedFactoryMethodInitializer alloc]
         initWithFactoryMethod:@selector(stringWithEncoding:data:) returnType:[NSString class]];
     initializer.selector = @selector(initWithData:encoding:);
@@ -90,7 +92,8 @@
     assertThat(result, equalTo(@"áéíóú"));
 }
 
-- (void)test_closure_should_invoke_initializer_from_one_property {
+- (void)test_closure_should_invoke_initializer_from_one_property
+{
     TyphoonAssistedFactoryMethodInitializer *initializer =
         [[TyphoonAssistedFactoryMethodInitializer alloc] initWithFactoryMethod:@selector(stringFromProperty) returnType:[NSString class]];
     initializer.selector = @selector(initWithString:);
@@ -114,7 +117,8 @@
     assertThat(result, equalTo(@"testing 123"));
 }
 
-- (void)test_closure_should_invoke_initializer_from_mixed_property_and_parameter {
+- (void)test_closure_should_invoke_initializer_from_mixed_property_and_parameter
+{
     TyphoonAssistedFactoryMethodInitializer *initializer =
         [[TyphoonAssistedFactoryMethodInitializer alloc] initWithFactoryMethod:@selector(stringWithEncoding:) returnType:[NSString class]];
     initializer.selector = @selector(initWithData:encoding:);
@@ -142,7 +146,8 @@
     assertThat(result, equalTo(@"testing 123"));
 }
 
-- (void)test_closure_should_fail_if_not_provided_with_enought_parameters {
+- (void)test_closure_should_fail_if_not_provided_with_enought_parameters
+{
     TyphoonAssistedFactoryMethodInitializer *initializer =
         [[TyphoonAssistedFactoryMethodInitializer alloc] initWithFactoryMethod:@selector(stringWithEncoding:) returnType:[NSString class]];
     initializer.selector = @selector(initWithData:encoding:);

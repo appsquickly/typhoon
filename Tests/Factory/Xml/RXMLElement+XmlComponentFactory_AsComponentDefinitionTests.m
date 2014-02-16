@@ -25,7 +25,8 @@
     TyphoonRXMLElement *_parentElement;
 }
 
-- (void)setUp {
+- (void)setUp
+{
     NSString *xmlString = [[TyphoonBundleResource withName:@"MiddleAgesAssembly.xml"] asString];
     _element = [TyphoonRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
 
@@ -33,11 +34,13 @@
     self.lazyElementTest = [TyphoonRXMLElement elementFromXMLString:lasyXmlString encoding:NSUTF8StringEncoding];
 }
 
-- (void)tearDown {
+- (void)tearDown
+{
     self.lazyElementTest = nil;
 }
 
-- (void)test_asComponentDefinition {
+- (void)test_asComponentDefinition
+{
     NSMutableArray *componentDefinitions = [[NSMutableArray alloc] init];
     [_element iterate:@"*" usingBlock:^(TyphoonRXMLElement *child) {
         if ([[child tag] isEqualToString:@"component"]) {
@@ -49,7 +52,8 @@
     assertThat(componentDefinitions, hasCountOf(10));
 }
 
-- (void)test_asComponentDefinition_raises_exception_for_invalid_class_name {
+- (void)test_asComponentDefinition_raises_exception_for_invalid_class_name
+{
     @try {
         NSString *xmlString = [[TyphoonBundleResource withName:@"AssemblyWithInvalidClassName.xml"] asString];
         _element = [TyphoonRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];
@@ -70,7 +74,8 @@
 }
 
 
-- (TyphoonDefinition *)definitionInElement:(TyphoonRXMLElement *)elt forKey:(NSString *)key {
+- (TyphoonDefinition *)definitionInElement:(TyphoonRXMLElement *)elt forKey:(NSString *)key
+{
     NSArray *components = [elt children:@"component"];
     NSUInteger index = [components indexOfObjectPassingTest:^BOOL(TyphoonRXMLElement *child, NSUInteger idx, BOOL *stop) {
         return [[child attribute:@"key"] isEqual:key];
@@ -78,54 +83,64 @@
     return (index != NSNotFound) ? [[components objectAtIndex:index] asComponentDefinition] : nil;
 }
 
-- (void)test_asComponentDefinition_lazyInit_prototype_with_lazy_true {
+- (void)test_asComponentDefinition_lazyInit_prototype_with_lazy_true
+{
     TyphoonDefinition *def = [self definitionInElement:[self lazyElementTest] forKey:@"prototype1"];
     assertThatBool([def isLazy], is(@NO));
 }
 
-- (void)test_asComponentDefinition_lazyInit_prototype_with_lazy_false {
+- (void)test_asComponentDefinition_lazyInit_prototype_with_lazy_false
+{
     TyphoonDefinition *def = [self definitionInElement:[self lazyElementTest] forKey:@"prototype2"];
     assertThatBool([def isLazy], is(@NO));
 }
 
-- (void)test_asComponentDefinition_lazyInit_singleton_with_lazy_true {
+- (void)test_asComponentDefinition_lazyInit_singleton_with_lazy_true
+{
     TyphoonDefinition *def = [self definitionInElement:[self lazyElementTest] forKey:@"lazySingleton1"];
     assertThatUnsignedInt([def scope], is(@(TyphoonScopeSingleton)));
     assertThatBool([def isLazy], is(@YES));
 }
 
-- (void)test_asComponentDefinition_lazyInit_object_graph {
+- (void)test_asComponentDefinition_lazyInit_object_graph
+{
     TyphoonDefinition *def = [self definitionInElement:[self lazyElementTest] forKey:@"lazySingleton1"];
     assertThatUnsignedInt([def scope], is(@(TyphoonScopeSingleton)));
     assertThatBool([def isLazy], is(@YES));
 }
 
-- (void)test_asComponentDefinition_lazyInit_singleton_with_lazy_false {
+- (void)test_asComponentDefinition_lazyInit_singleton_with_lazy_false
+{
     TyphoonDefinition *def = [self definitionInElement:[self lazyElementTest] forKey:@"singleton1"];
     assertThatBool([def isLazy], is(@NO));
 }
 
-- (void)test_asComponentDefinition_lazyInit_singleton_with_wrong_lazy {
+- (void)test_asComponentDefinition_lazyInit_singleton_with_wrong_lazy
+{
     TyphoonDefinition *def = [self definitionInElement:[self lazyElementTest] forKey:@"singleton2"];
     assertThatBool([def isLazy], is(@NO));
 }
 
-- (void)test_asComponentDefinition_lazyInit_singleton_without_lazy {
+- (void)test_asComponentDefinition_lazyInit_singleton_without_lazy
+{
     TyphoonDefinition *def = [self definitionInElement:[self lazyElementTest] forKey:@"singleton3"];
     assertThatBool([def isLazy], is(@NO));
 }
 
-- (void)test_asComponentDefinition_lazyInit_singleton_with_lazy_YES {
+- (void)test_asComponentDefinition_lazyInit_singleton_with_lazy_YES
+{
     TyphoonDefinition *def = [self definitionInElement:[self lazyElementTest] forKey:@"defaultScope1"];
     assertThatUnsignedInteger([def scope], equalToUnsignedInteger(TyphoonScopeObjectGraph));
 }
 
-- (void)test_asComponentDefinition_default_scope {
+- (void)test_asComponentDefinition_default_scope
+{
     TyphoonDefinition *def = [self definitionInElement:[self lazyElementTest] forKey:@"lazySingleton2"];
     assertThatBool([def isLazy], is(@YES));
 }
 
-- (void)test_asComponentDefinition_no_parent {
+- (void)test_asComponentDefinition_no_parent
+{
     TyphoonRXMLElement *vanillaDefinitionXML = [[TyphoonTestXMLBuilder vanillaDefinition] build];
 
     TyphoonDefinition *def = [vanillaDefinitionXML asComponentDefinition];
@@ -134,7 +149,8 @@
     assertThat([def parent], nilValue());
 }
 
-- (void)test_asComponentDefinition_parent {
+- (void)test_asComponentDefinition_parent
+{
     id parentRef = @"parent";
     TyphoonRXMLElement
         *childDefinitionXML = [[[TyphoonTestXMLBuilder vanillaDefinition] withAttribute:@"parent" textValue:parentRef] build];

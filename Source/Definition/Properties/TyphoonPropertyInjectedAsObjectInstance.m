@@ -19,7 +19,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithName:(NSString *)name objectInstance:(id)objectInstance {
+- (id)initWithName:(NSString *)name objectInstance:(id)objectInstance
+{
     self = [super init];
     if (self) {
         _name = name;
@@ -31,7 +32,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance {
+- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance
+{
     return _objectInstance;
 }
 
@@ -41,7 +43,8 @@
 /**
 * Returns a copied property, referring to the same object as the original.
 */
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone
+{
     return [[TyphoonPropertyInjectedAsObjectInstance alloc] initWithName:[_name copy] objectInstance:_objectInstance];
 }
 

@@ -38,7 +38,8 @@
     NSUInteger testNumber;
 }
 
-- (void)setUp {
+- (void)setUp
+{
     struct objc_method_description methodDescription =
         protocol_getMethodDescription(@protocol(TyphoonAssistedFactoryMethodBlockClosureTestProtocol), @selector(originalFactoryMethodWithParameter1:parameter2:), YES, YES);
     methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
@@ -50,7 +51,8 @@
     [forwardedInvocation setArgument:&testNumber atIndex:3];
 }
 
-- (void)test_closure_should_fill_invocation_with_given_factory {
+- (void)test_closure_should_fill_invocation_with_given_factory
+{
     TyphoonAssistedFactoryMethodBlockClosure *closure = [[TyphoonAssistedFactoryMethodBlockClosure alloc]
         initWithSelector:@selector(typhoon_interceptable_originalFactoryMethodWithParameter1:parameter2:) methodSignature:methodSignature];
 
@@ -61,7 +63,8 @@
     assertThat(invocation.target, equalTo(factory));
 }
 
-- (void)test_closure_should_fill_invocation_with_given_selector {
+- (void)test_closure_should_fill_invocation_with_given_selector
+{
     TyphoonAssistedFactoryMethodBlockClosure *closure = [[TyphoonAssistedFactoryMethodBlockClosure alloc]
         initWithSelector:@selector(typhoon_interceptable_originalFactoryMethodWithParameter1:parameter2:) methodSignature:methodSignature];
 
@@ -73,7 +76,8 @@
         @selector(typhoon_interceptable_originalFactoryMethodWithParameter1:parameter2:), equalToBool(YES));
 }
 
-- (void)test_closure_should_copy_arguments_directly {
+- (void)test_closure_should_copy_arguments_directly
+{
     TyphoonAssistedFactoryMethodBlockClosure *closure = [[TyphoonAssistedFactoryMethodBlockClosure alloc]
         initWithSelector:@selector(typhoon_interceptable_originalFactoryMethodWithParameter1:parameter2:) methodSignature:methodSignature];
 

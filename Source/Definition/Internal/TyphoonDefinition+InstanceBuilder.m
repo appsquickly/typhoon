@@ -27,11 +27,13 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (void)setType:(Class)type {
+- (void)setType:(Class)type
+{
     _type = type;
 }
 
-- (NSSet *)componentsInjectedByValue; {
+- (NSSet *)componentsInjectedByValue;
+{
     NSMutableSet *set = [[NSMutableSet alloc] init];
     [set unionSet:[self propertiesInjectedByValue]];
 
@@ -41,31 +43,37 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 }
 
 
-- (void)injectProperty:(SEL)selector withReference:(NSString *)reference {
+- (void)injectProperty:(SEL)selector withReference:(NSString *)reference
+{
     [_injectedProperties addObject:[[TyphoonPropertyInjectedByReference alloc]
         initWithName:NSStringFromSelector(selector) reference:reference]];
 }
 
-- (NSSet *)propertiesInjectedByValue {
+- (NSSet *)propertiesInjectedByValue
+{
     return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedWithStringRepresentation class]];
 }
 
-- (NSSet *)propertiesInjectedByType {
+- (NSSet *)propertiesInjectedByType
+{
     return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByType class]];
 }
 
-- (NSSet *)propertiesInjectedByReference {
+- (NSSet *)propertiesInjectedByReference
+{
     return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByReference class]];
 }
 
-- (void)addInjectedProperty:(TyphoonAbstractInjectedProperty *)property {
+- (void)addInjectedProperty:(TyphoonAbstractInjectedProperty *)property
+{
     [_injectedProperties addObject:property];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (NSSet *)injectedPropertiesWithKind:(Class)clazz {
+- (NSSet *)injectedPropertiesWithKind:(Class)clazz
+{
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject isKindOfClass:clazz];
     }];

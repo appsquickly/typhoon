@@ -20,12 +20,14 @@
     id _instance;
 }
 
-+ (instancetype)elementWithKey:(NSString *)key {
++ (instancetype)elementWithKey:(NSString *)key
+{
     return [[self alloc] initWithKey:key];
 }
 
 
-- (instancetype)initWithKey:(NSString *)key {
+- (instancetype)initWithKey:(NSString *)key
+{
     self = [super init];
     if (self) {
         _key = key;
@@ -34,11 +36,13 @@
     return self;
 }
 
-- (BOOL)isInitializingInstance {
+- (BOOL)isInitializingInstance
+{
     return _instance == nil;
 }
 
-- (id)instance {
+- (id)instance
+{
     if ([self isInitializingInstance]) {
         [NSException raise:@"CircularInitializerDependence"
             format:@"The object for key %@ is currently initializing, but was specified as init dependency in another object", self.key];
@@ -46,7 +50,8 @@
     return _instance;
 }
 
-- (void)addInstanceCompleteBlock:(TyphoonInstanceCompleteBlock)completeBlock {
+- (void)addInstanceCompleteBlock:(TyphoonInstanceCompleteBlock)completeBlock
+{
     NSParameterAssert(completeBlock);
 
     if ([self isInitializingInstance]) {
@@ -58,7 +63,8 @@
 
 }
 
-- (void)takeInstance:(id)instance {
+- (void)takeInstance:(id)instance
+{
     _instance = instance;
 
     for (TyphoonInstanceCompleteBlock completeBlock in completeBlocks) {
@@ -67,7 +73,8 @@
     [completeBlocks removeAllObjects];
 }
 
-- (NSString *)description {
+- (NSString *)description
+{
     NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
     [description appendFormat:@"self.key=%@", self.key];
     [description appendFormat:@", completeBlocksCount=%lu", (unsigned long) [completeBlocks count]];

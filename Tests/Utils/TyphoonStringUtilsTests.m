@@ -22,14 +22,16 @@
 
 @implementation TyphoonStringUtilsTests
 
-- (void)test_isAlpha {
+- (void)test_isAlpha
+{
     assertThatBool([TyphoonStringUtils isAlpha:@"1234"], equalToBool(NO));
     assertThatBool([TyphoonStringUtils isAlpha:@"abc1234"], equalToBool(NO));
 
     assertThatBool([TyphoonStringUtils isAlpha:@"abc"], equalToBool(YES));
 }
 
-- (void)test_isAlphaOrSpaces {
+- (void)test_isAlphaOrSpaces
+{
     assertThatBool([TyphoonStringUtils isAlphaOrSpaces:@"1234"], equalToBool(NO));
     assertThatBool([TyphoonStringUtils isAlphaOrSpaces:@"abc1234"], equalToBool(NO));
 
@@ -37,26 +39,30 @@
     assertThatBool([TyphoonStringUtils isAlphaOrSpaces:@"abc \t\n"], equalToBool(YES));
 }
 
-- (void)test_isAlphaNumeric {
+- (void)test_isAlphaNumeric
+{
     assertThatBool([TyphoonStringUtils isAlphanumeric:@"1234"], equalToBool(YES));
     assertThatBool([TyphoonStringUtils isAlphanumeric:@"abc1234"], equalToBool(YES));
 
     assertThatBool([TyphoonStringUtils isAlphanumeric:@"abc \t\n"], equalToBool(NO));
 }
 
-- (void)test_isEmpty {
+- (void)test_isEmpty
+{
     assertThatBool([TyphoonStringUtils isEmpty:@""], equalToBool(YES));
     assertThatBool([TyphoonStringUtils isEmpty:@"1234"], equalToBool(NO));
     assertThatBool([TyphoonStringUtils isEmpty:@" \t\n"], equalToBool(YES));
 }
 
-- (void)test_isNotEmpty {
+- (void)test_isNotEmpty
+{
     assertThatBool([TyphoonStringUtils isNotEmpty:@""], equalToBool(NO));
     assertThatBool([TyphoonStringUtils isNotEmpty:@"1234"], equalToBool(YES));
     assertThatBool([TyphoonStringUtils isNotEmpty:@" \t\n"], equalToBool(NO));
 }
 
-- (void)test_isEmailAddress {
+- (void)test_isEmailAddress
+{
     assertThatBool([TyphoonStringUtils isEmailAddress:@"asdf"], equalToBool(NO));
     assertThatBool([TyphoonStringUtils isEmailAddress:@"asd@"], equalToBool(NO));
     assertThatBool([TyphoonStringUtils isEmailAddress:@"asdf@foobar.com"], equalToBool(YES));

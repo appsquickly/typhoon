@@ -10,7 +10,8 @@
 
 @implementation NotSingletonA
 
-- (id)initWithSingletonA:(SingletonA *)singletonA {
+- (id)initWithSingletonA:(SingletonA *)singletonA
+{
     self = [super init];
     if (self) {
         _dependencyOnA = singletonA;

@@ -34,7 +34,8 @@
 @synthesize methodSignature = _methodSignature;
 
 - (instancetype)initWithInitializer:(TyphoonAssistedFactoryMethodInitializer *)initializer
-    methodSignature:(NSMethodSignature *)methodSignature {
+    methodSignature:(NSMethodSignature *)methodSignature
+{
     self = [super init];
     if (self) {
         NSParameterAssert(initializer.returnType);
@@ -54,7 +55,8 @@
     return self;
 }
 
-- (NSInvocation *)invocationWithFactory:(id)factory forwardedInvocation:(NSInvocation *)anInvocation {
+- (NSInvocation *)invocationWithFactory:(id)factory forwardedInvocation:(NSInvocation *)anInvocation
+{
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:_closedMethodSignature];
     NSMutableArray *allocations = [NSMutableArray array];
 
@@ -99,7 +101,8 @@
     return invocation;
 }
 
-- (BOOL)validateInitializerParameterCount:(NSUInteger)count {
+- (BOOL)validateInitializerParameterCount:(NSUInteger)count
+{
     NSMutableIndexSet *parameters = [NSMutableIndexSet indexSet];
 
     for (id <TyphoonAssistedFactoryInjectedParameter> parameter in _parameters) {

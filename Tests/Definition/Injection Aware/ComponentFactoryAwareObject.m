@@ -18,11 +18,13 @@
 
 @synthesize factory;
 
-- (void)setFactory:(TyphoonComponentFactory *)theFactory {
+- (void)setFactory:(TyphoonComponentFactory *)theFactory
+{
     factory = theFactory;
 }
 
-- (id)initWithComponentFactory:(TyphoonComponentFactory *)_factory {
+- (id)initWithComponentFactory:(TyphoonComponentFactory *)_factory
+{
     self = [super init];
     if (self) {
         self.factory = _factory;

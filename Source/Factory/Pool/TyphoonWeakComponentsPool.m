@@ -17,7 +17,8 @@
     NSMutableDictionary *dictionaryWithNonRetainedObjects;
 }
 
-- (id)init {
+- (id)init
+{
     self = [super init];
     if (self) {
         CFDictionaryValueCallBacks callbacks = {0, NULL, NULL, NULL, NULL};
@@ -27,7 +28,8 @@
     return self;
 }
 
-- (void)setObject:(id)object forKey:(id <NSCopying>)aKey {
+- (void)setObject:(id)object forKey:(id <NSCopying>)aKey
+{
     __weak typeof (dictionaryWithNonRetainedObjects) weakDict = dictionaryWithNonRetainedObjects;
 
     [object setDeallocNotificationInBlock:^{
@@ -37,15 +39,18 @@
     [dictionaryWithNonRetainedObjects setObject:object forKey:aKey];
 }
 
-- (id)objectForKey:(id <NSCopying>)aKey {
+- (id)objectForKey:(id <NSCopying>)aKey
+{
     return [dictionaryWithNonRetainedObjects objectForKey:aKey];
 }
 
-- (NSArray *)allValues {
+- (NSArray *)allValues
+{
     return [dictionaryWithNonRetainedObjects allValues];
 }
 
-- (void)removeAllObjects {
+- (void)removeAllObjects
+{
     [dictionaryWithNonRetainedObjects removeAllObjects];
 }
 

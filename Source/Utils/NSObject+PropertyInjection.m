@@ -16,18 +16,21 @@
 
 @implementation NSObject (PropertyInjection)
 
-- (SEL)setterForPropertyName:(NSString *)propertyName {
+- (SEL)setterForPropertyName:(NSString *)propertyName
+{
     NSString *firstLetterUppercase = [[propertyName substringToIndex:1] uppercaseString];
     NSString *propertyPart = [propertyName stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:firstLetterUppercase];
     NSString *selectorName = [NSString stringWithFormat:@"set%@:", propertyPart];
     return NSSelectorFromString(selectorName);
 }
 
-- (BOOL)isPointerValue:(id)value {
+- (BOOL)isPointerValue:(id)value
+{
     return CStringEquals([value objCType], @encode(void *));
 }
 
-- (void)injectValue:(id)value forPropertyName:(NSString *)propertyName withType:(TyphoonTypeDescriptor *)type {
+- (void)injectValue:(id)value forPropertyName:(NSString *)propertyName withType:(TyphoonTypeDescriptor *)type
+{
     if (type.isPrimitive && [value isKindOfClass:[NSValue class]] && [self isPointerValue:value]) {
         [self injectValue:value asPointerForPropertyName:propertyName];
     }
@@ -36,7 +39,8 @@
     }
 }
 
-- (void)injectValue:(NSValue *)value asPointerForPropertyName:(NSString *)propertyName {
+- (void)injectValue:(NSValue *)value asPointerForPropertyName:(NSString *)propertyName
+{
     SEL setterSelector = [self setterForPropertyName:propertyName];
 
     void *pointer;

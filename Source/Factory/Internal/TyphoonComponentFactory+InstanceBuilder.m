@@ -37,11 +37,13 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
-- (TyphoonCallStack *)stack {
+- (TyphoonCallStack *)stack
+{
     return _stack;
 }
 
-- (id)buildInstanceWithDefinition:(TyphoonDefinition *)definition {
+- (id)buildInstanceWithDefinition:(TyphoonDefinition *)definition
+{
 
     TyphoonStackElement *stackElement = [TyphoonStackElement elementWithKey:definition.key];
     [_stack push:stackElement];
@@ -58,7 +60,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     return instance;
 }
 
-- (id)initializeInstanceWithDefinition:(TyphoonDefinition *)definition {
+- (id)initializeInstanceWithDefinition:(TyphoonDefinition *)definition
+{
     id initTarget = nil;
 
     if (definition.factory) {
@@ -82,7 +85,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     return instance;
 }
 
-- (id)postProcessInstance:(id)instance {
+- (id)postProcessInstance:(id)instance
+{
     if (![instance conformsToProtocol:@protocol(TyphoonComponentPostProcessor)]) {
         for (id <TyphoonComponentPostProcessor> postProcessor in _componentPostProcessors) {
             instance = [postProcessor postProcessComponent:instance];
@@ -91,18 +95,21 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     return instance;
 }
 
-- (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance {
+- (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance
+{
 
     if ([instance conformsToProtocol:@protocol(TyphoonComponentFactoryAware)]) {
         [self injectAssemblyOnInstance:instance];
     }
 }
 
-- (void)injectAssemblyOnInstance:(id <TyphoonComponentFactoryAware>)instance {
+- (void)injectAssemblyOnInstance:(id <TyphoonComponentFactoryAware>)instance
+{
     [instance setFactory:self];
 }
 
-- (id)buildSharedInstanceForDefinition:(TyphoonDefinition *)definition {
+- (id)buildSharedInstanceForDefinition:(TyphoonDefinition *)definition
+{
     id instance = [_stack peekForKey:definition.key].instance;
     if (instance) {
         return instance;
@@ -113,7 +120,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 /* ====================================================================================================================================== */
 #pragma mark - Property Injection
 
-- (void)doPropertyInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition {
+- (void)doPropertyInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition
+{
     [self doBeforePropertyInjectionOn:instance withDefinition:definition];
 
     for (TyphoonAbstractInjectedProperty *property in [definition injectedProperties]) {
@@ -126,7 +134,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     [self doAfterPropertyInjectionOn:instance withDefinition:definition];
 }
 
-- (void)doBeforePropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition *)definition {
+- (void)doBeforePropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition *)definition
+{
     if ([instance respondsToSelector:@selector(beforePropertiesSet)]) {
         [(id <TyphoonPropertyInjectionDelegate>) instance beforePropertiesSet];
     }
@@ -136,7 +145,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 }
 
-- (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(TyphoonAbstractInjectedProperty *)property {
+- (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(TyphoonAbstractInjectedProperty *)property
+{
     TyphoonTypeDescriptor *propertyType = [instance typeForPropertyWithName:property.name];
     AssertTypeDescriptionForPropertyOnInstance(propertyType, property, instance);
 
@@ -157,7 +167,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 
 - (void)evaluateCircularDependency:(NSString *)componentKey propertyName:(NSString *)propertyName
-    instance:(id <TyphoonIntrospectiveNSObject>)instance {
+    instance:(id <TyphoonIntrospectiveNSObject>)instance
+{
 
     if ([_stack isResolvingKey:componentKey]) {
         NSDictionary *circularDependencies = [instance circularDependentProperties];
@@ -166,11 +177,13 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 }
 
-- (BOOL)propertyIsCircular:(TyphoonAbstractInjectedProperty *)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance {
+- (BOOL)propertyIsCircular:(TyphoonAbstractInjectedProperty *)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance
+{
     return [[instance circularDependentProperties] objectForKey:property.name] != nil;
 }
 
-- (void)injectCircularDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance {
+- (void)injectCircularDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance
+{
     NSMutableDictionary *circularDependentProperties = [instance circularDependentProperties];
     for (NSString *propertyName in [circularDependentProperties allKeys]) {
         id propertyValue = [(NSObject *) instance valueForKey:propertyName];
@@ -183,7 +196,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 }
 
-- (void)doAfterPropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition *)definition {
+- (void)doAfterPropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition *)definition
+{
     if ([instance respondsToSelector:@selector(afterPropertiesSet)]) {
         [(id <TyphoonPropertyInjectionDelegate>) instance afterPropertiesSet];
     }
@@ -198,7 +212,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (TyphoonDefinition *)definitionForType:(id)classOrProtocol {
+- (TyphoonDefinition *)definitionForType:(id)classOrProtocol
+{
     NSArray *candidates = [self allDefinitionsForType:classOrProtocol];
 
     if ([candidates count] == 0) {
@@ -219,7 +234,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 }
 
 
-- (NSArray *)allDefinitionsForType:(id)classOrProtocol {
+- (NSArray *)allDefinitionsForType:(id)classOrProtocol
+{
 
     NSMutableArray *results = [[NSMutableArray alloc] init];
     BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));

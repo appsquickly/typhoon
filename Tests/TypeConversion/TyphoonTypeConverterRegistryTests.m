@@ -28,11 +28,13 @@
     TyphoonTypeConverterRegistry *_registry;
 }
 
-- (void)setUp {
+- (void)setUp
+{
     _registry = [TyphoonTypeConverterRegistry shared];
 }
 
-- (void)test_raises_exception_when_converter_class_not_registered {
+- (void)test_raises_exception_when_converter_class_not_registered
+{
     TyphoonTypeDescriptor *typeDescriptor = [self typeForPropertyWithName:@"data"];
 
     @try {
@@ -45,7 +47,8 @@
     }
 }
 
-- (void)test_raises_exception_when_converter_registered_more_than_once {
+- (void)test_raises_exception_when_converter_registered_more_than_once
+{
     @try {
         TyphoonNSURLTypeConverter *converter = [[TyphoonNSURLTypeConverter alloc] init];
         [_registry register:converter];

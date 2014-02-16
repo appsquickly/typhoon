@@ -28,7 +28,8 @@
     TyphoonComponentFactory *_componentFactory;
 }
 
-- (id)initWithDefinition:(TyphoonDefinition *)aDefinition componentFactory:(TyphoonComponentFactory *)aComponentFactory {
+- (id)initWithDefinition:(TyphoonDefinition *)aDefinition componentFactory:(TyphoonComponentFactory *)aComponentFactory
+{
     self = [super init];
     if (self) {
         _definition = aDefinition;
@@ -38,7 +39,8 @@
     return self;
 }
 
-- (void)register {
+- (void)register
+{
     if ([[_definition.initializer parameterNames] count] != [[_definition.initializer injectedParameters] count]) {
         [NSException raise:NSInvalidArgumentException
             format:@"Supplied parameters does not match number of parameters in initializer. Inject with null if necessary. Defintion: %@",
@@ -56,18 +58,21 @@
     [self registerDefinitionWithFactory];
 }
 
-- (void)setDefinitionKeyRandomlyIfNeeded {
+- (void)setDefinitionKeyRandomlyIfNeeded
+{
     if ([_definition.key length] == 0) {
         NSString *uuidStr = [[NSProcessInfo processInfo] globallyUniqueString];
         _definition.key = [NSString stringWithFormat:@"%@_%@", NSStringFromClass(_definition.type), uuidStr];
     }
 }
 
-- (BOOL)definitionAlreadyRegistered {
+- (BOOL)definitionAlreadyRegistered
+{
     return [_componentFactory definitionForKey:_definition.key] != nil;
 }
 
-- (void)injectAutowiredPropertiesIfNeeded {
+- (void)injectAutowiredPropertiesIfNeeded
+{
     SEL autoInjectedProperties = sel_registerName("typhoonAutoInjectedProperties");
     if ([_definition.type respondsToSelector:autoInjectedProperties]) {
         id autoWiredProperties = objc_msgSend(_definition.type, autoInjectedProperties);
@@ -77,7 +82,8 @@
     }
 }
 
-- (void)registerDefinitionWithFactory {
+- (void)registerDefinitionWithFactory
+{
     if ([self definitionIsInfrastructureComponent]) {
         [self registerInfrastructureComponentFromDefinition];
     }
@@ -87,7 +93,8 @@
     }
 }
 
-- (BOOL)definitionIsInfrastructureComponent {
+- (BOOL)definitionIsInfrastructureComponent
+{
     if ([_definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)] ||
         [_definition.type conformsToProtocol:@protocol(TyphoonComponentPostProcessor)] ||
         [_definition.type conformsToProtocol:@protocol(TyphoonTypeConverter)]) {
@@ -96,7 +103,8 @@
     return NO;
 }
 
-- (void)registerInfrastructureComponentFromDefinition {
+- (void)registerInfrastructureComponentFromDefinition
+{
     LogTrace(@"Registering Infrastructure component: %@ with key: %@", NSStringFromClass(_definition.type), _definition.key);
 
     id infrastructureComponent = [_componentFactory objectForDefinition:_definition];

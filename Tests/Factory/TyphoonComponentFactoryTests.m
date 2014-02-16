@@ -34,14 +34,16 @@ static NSString *const DEFAULT_QUEST = @"quest";
     TyphoonComponentFactory *_componentFactory;
 }
 
-- (void)setUp {
+- (void)setUp
+{
     _componentFactory = [[TyphoonComponentFactory alloc] init];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Dependencies resolved by reference
 
-- (void)test_componentForKey_returns_with_initializer_dependencies_injected {
+- (void)test_componentForKey_returns_with_initializer_dependencies_injected
+{
 
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:);
@@ -57,7 +59,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
     assertThat(knight.quest, notNilValue());
 }
 
-- (void)test_componentForKey_raises_exception_if_reference_does_not_exist {
+- (void)test_componentForKey_raises_exception_if_reference_does_not_exist
+{
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:);
         [initializer injectParameterAtIndex:0 withReference:DEFAULT_QUEST];
@@ -75,7 +78,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
     }
 }
 
-- (void)test_componentForKey_returns_nil_for_nil_argument {
+- (void)test_componentForKey_returns_nil_for_nil_argument
+{
     id value = [_componentFactory componentForKey:nil];
     assertThat(value, nilValue());
 }
@@ -83,7 +87,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
 /* ====================================================================================================================================== */
 #pragma mark - Dependencies resolved by type
 
-- (void)test_allComponentsForType {
+- (void)test_allComponentsForType
+{
 
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         [initializer setSelector:@selector(initWithQuest:)];
@@ -100,7 +105,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
     assertThat([_componentFactory allComponentsForType:@protocol(NSObject)], hasCountOf(3));
 }
 
-- (void)test_componentForType {
+- (void)test_componentForType
+{
 
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         [initializer setSelector:@selector(initWithQuest:)];
@@ -142,7 +148,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
     }
 }
 
-- (void)test_componentForKey_returns_with_property_dependencies_resolved_by_type {
+- (void)test_componentForKey_returns_with_property_dependencies_resolved_by_type
+{
 
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest)];
@@ -162,7 +169,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
 /* ====================================================================================================================================== */
 #pragma mark - Auto-wiring
 
-- (void)test_autoWires {
+- (void)test_autoWires
+{
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class]]];
 
     Knight *knight = [_componentFactory componentForType:[AutoWiringKnight class]];
@@ -172,7 +180,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
 /* ====================================================================================================================================== */
 #pragma mark - Description
 
-- (void)test_able_to_describe_itself {
+- (void)test_able_to_describe_itself
+{
     NSString *description = [_componentFactory description];
     assertThat(description, equalTo(@"<TyphoonComponentFactory: _registry=(\n)>"));
 }
@@ -180,13 +189,15 @@ static NSString *const DEFAULT_QUEST = @"quest";
 /* ====================================================================================================================================== */
 #pragma mark - Infrastructure components
 
-- (void)test_post_processor_registration {
+- (void)test_post_processor_registration
+{
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorStubImpl class]]];
     assertThatUnsignedLong([[_componentFactory registry] count], equalToUnsignedLong(0));
     assertThatUnsignedLong([[_componentFactory factoryPostProcessors] count], equalToUnsignedLong(2)); //Attached + internal processors
 }
 
-- (void)test_post_processors_applied {
+- (void)test_post_processors_applied
+{
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorStubImpl class]]];
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorStubImpl class]]];
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class]]];
@@ -201,13 +212,15 @@ static NSString *const DEFAULT_QUEST = @"quest";
     }
 }
 
-- (void)test_component_post_processor_registration {
+- (void)test_component_post_processor_registration
+{
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[TyphoonComponentPostProcessorMock class]]];
     assertThatUnsignedLong([[_componentFactory registry] count], equalToUnsignedLong(0));
     assertThatUnsignedLong([[_componentFactory componentPostProcessors] count], equalToUnsignedLong(1));
 }
 
-- (void)test_component_post_processors_applied_in_order {
+- (void)test_component_post_processors_applied_in_order
+{
     TyphoonComponentPostProcessorMock *processor1 = [[TyphoonComponentPostProcessorMock alloc] initWithOrder:INT_MAX];
     TyphoonComponentPostProcessorMock *processor2 = [[TyphoonComponentPostProcessorMock alloc] initWithOrder:0];
     TyphoonComponentPostProcessorMock *processor3 = [[TyphoonComponentPostProcessorMock alloc] initWithOrder:INT_MIN];
@@ -241,7 +254,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
 /* ====================================================================================================================================== */
 #pragma mark - Inject properties
 
-- (void)test_injectProperties {
+- (void)test_injectProperties
+{
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest)];
     }]];
@@ -254,7 +268,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
 }
 
-- (void)test_injectProperties_subclassing {
+- (void)test_injectProperties_subclassing
+{
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest)];
     }]];
@@ -275,23 +290,27 @@ static NSString *const DEFAULT_QUEST = @"quest";
     assertThat(knight.quest, notNilValue());
 }
 
-- (void)test_load_isLoad {
+- (void)test_load_isLoad
+{
     [_componentFactory load];
     assertThatBool([_componentFactory isLoaded], is(@YES));
 }
 
-- (void)test_unload_isLoad {
+- (void)test_unload_isLoad
+{
     [_componentFactory load];
     [_componentFactory unload];
     assertThatBool([_componentFactory isLoaded], is(@NO));
 }
 
-- (void)test_registery_isLoad {
+- (void)test_registery_isLoad
+{
     [_componentFactory registry];
     assertThatBool([_componentFactory isLoaded], is(@YES));
 }
 
-- (void)test_load_post_processors {
+- (void)test_load_post_processors
+{
     id <TyphoonComponentFactoryPostProcessor> postProcessor = mockProtocol(@protocol(TyphoonComponentFactoryPostProcessor));
     [_componentFactory attachPostProcessor:postProcessor];
     [_componentFactory load];
@@ -300,7 +319,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
 }
 
 
-- (void)test_load_singleton {
+- (void)test_load_singleton
+{
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition *definition) {
         [definition setScope:TyphoonScopeSingleton];
         [definition setLazy:NO];
@@ -316,7 +336,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
     assertThatUnsignedInteger([[_componentFactory singletons] count], is(@1));
 }
 
-- (void)test_load_weakSingleton {
+- (void)test_load_weakSingleton
+{
     TyphoonComponentFactory *localFactory = [[TyphoonComponentFactory alloc] init];
     NSString *key = @"WeakSingleton";
 
@@ -357,7 +378,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
 #pragma mark - Definition Inheritance
 
 //TODO: Move this test to TyphoonDefinitionTests
-- (void)test_child_missing_initializer_inherits_parent_initializer_by_definition {
+- (void)test_child_missing_initializer_inherits_parent_initializer_by_definition
+{
     TyphoonDefinition
         *parentDefinition = [self registerParentDefinitionWithClass:[ClassWithConstructor class] initializerString:@"parentArgument"];
     TyphoonDefinition
@@ -372,7 +394,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
 }
 
 //TODO: Move this test to TyphoonDefinitionTests
-- (void)test_child_initializer_overrides_parent_initializer_by_definition {
+- (void)test_child_initializer_overrides_parent_initializer_by_definition
+{
     TyphoonDefinition
         *parentDefinition = [self registerParentDefinitionWithClass:[ClassWithConstructor class] initializerString:@"parentArgument"];
     TyphoonDefinition *childDefinition =
@@ -385,7 +408,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
 }
 
 //TODO: Move this test to TyphoonDefinitionTests
-- (void)test_child_initializer_overrides_parent_initializer_by_ref {
+- (void)test_child_initializer_overrides_parent_initializer_by_ref
+{
     [self registerParentDefinitionWithClass:[ClassWithConstructor class] key:@"parentRef" initializerString:@"parentArgument"];
     TyphoonDefinition *childDefinition =
         [self registerChildDefinitionWithClass:[ClassWithConstructor class] parentRef:@"parentRef" initializerString:@"childArgument"];
@@ -396,7 +420,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
 }
 
 
-- (void)test_prevents_instantiation_of_abstract_definition {
+- (void)test_prevents_instantiation_of_abstract_definition
+{
     TyphoonDefinition *definition = [TyphoonDefinition withClass:[NSURL class] properties:^(TyphoonDefinition *definition) {
         definition.key = @"anAbstractDefinition";
         definition.abstract = YES;
@@ -416,7 +441,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
 /* ====================================================================================================================================== */
 #pragma mark - Test Utility Methods
 
-- (TyphoonDefinition *)registerParentDefinitionWithClass:(Class)pClass initializerString:(NSString *)string {
+- (TyphoonDefinition *)registerParentDefinitionWithClass:(Class)pClass initializerString:(NSString *)string
+{
     TyphoonDefinition *parentDefinition = [TyphoonDefinition withClass:pClass key:nil];
 
     TyphoonInitializer *initializer = [[TyphoonInitializer alloc] init];
@@ -429,7 +455,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
     return parentDefinition;
 }
 
-- (TyphoonDefinition *)registerParentDefinitionWithClass:(Class)pClass key:(NSString *)key initializerString:(NSString *)string {
+- (TyphoonDefinition *)registerParentDefinitionWithClass:(Class)pClass key:(NSString *)key initializerString:(NSString *)string
+{
     TyphoonDefinition *parentDefinition = [TyphoonDefinition withClass:pClass key:key];
 
     TyphoonInitializer *initializer = [[TyphoonInitializer alloc] init];
@@ -443,16 +470,19 @@ static NSString *const DEFAULT_QUEST = @"quest";
 }
 
 - (TyphoonDefinition *)registerChildDefinitionWithClass:(Class)pClass parentDefinition:(TyphoonDefinition *)parentDefinition
-    initializerString:(NSString *)string {
+    initializerString:(NSString *)string
+{
     return [self registerChildDefinitionWithClass:pClass parentDefinition:parentDefinition parentRef:nil initializerString:string];
 }
 
-- (TyphoonDefinition *)registerChildDefinitionWithClass:(Class)pClass parentRef:(NSString *)parentRef initializerString:(NSString *)string {
+- (TyphoonDefinition *)registerChildDefinitionWithClass:(Class)pClass parentRef:(NSString *)parentRef initializerString:(NSString *)string
+{
     return [self registerChildDefinitionWithClass:pClass parentDefinition:nil parentRef:parentRef initializerString:string];
 }
 
 - (TyphoonDefinition *)registerChildDefinitionWithClass:(Class)pClass parentDefinition:(TyphoonDefinition *)parentDefinition
-    parentRef:(NSString *)parentRef initializerString:(NSString *)string {
+    parentRef:(NSString *)parentRef initializerString:(NSString *)string
+{
     TyphoonDefinition *childDefinition = [TyphoonDefinition withClass:pClass initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithString:);
 

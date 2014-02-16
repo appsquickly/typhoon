@@ -44,7 +44,8 @@
 
 @implementation TyphoonRXMLElement
 
-- (id)initFromXMLString:(NSString *)xmlString encoding:(NSStringEncoding)encoding {
+- (id)initFromXMLString:(NSString *)xmlString encoding:(NSStringEncoding)encoding
+{
     if ((self = [super init])) {
         NSData *data = [xmlString dataUsingEncoding:encoding];
 
@@ -63,7 +64,8 @@
     return self;
 }
 
-- (id)initFromXMLFile:(NSString *)filename {
+- (id)initFromXMLFile:(NSString *)filename
+{
     if ((self = [super init])) {
         NSString *fullPath = [[[NSBundle bundleForClass:self.class] bundlePath] stringByAppendingPathComponent:filename];
         NSData *data = [NSData dataWithContentsOfFile:fullPath];
@@ -83,7 +85,8 @@
     return self;
 }
 
-- (id)initFromXMLFile:(NSString *)filename fileExtension:(NSString *)extension {
+- (id)initFromXMLFile:(NSString *)filename fileExtension:(NSString *)extension
+{
     if ((self = [super init])) {
         NSString *fullPath = [[NSBundle bundleForClass:[self class]] pathForResource:filename ofType:extension];
         NSData *data = [NSData dataWithContentsOfFile:fullPath];
@@ -103,7 +106,8 @@
     return self;
 }
 
-- (id)initFromURL:(NSURL *)url {
+- (id)initFromURL:(NSURL *)url
+{
     if ((self = [super init])) {
         NSData *data = [NSData dataWithContentsOfURL:url];
 
@@ -122,7 +126,8 @@
     return self;
 }
 
-- (id)initFromXMLData:(NSData *)data {
+- (id)initFromXMLData:(NSData *)data
+{
     if ((self = [super init])) {
         doc_ = xmlReadMemory([data bytes], (int) [data length], "", nil, XML_PARSE_RECOVER);
 
@@ -139,7 +144,8 @@
     return self;
 }
 
-- (id)initFromXMLNode:(xmlNodePtr)node {
+- (id)initFromXMLNode:(xmlNodePtr)node
+{
     if ((self = [super init])) {
         doc_ = nil;
         node_ = node;
@@ -148,46 +154,56 @@
     return self;
 }
 
-+ (id)elementFromXMLString:(NSString *)attributeXML_ encoding:(NSStringEncoding)encoding {
++ (id)elementFromXMLString:(NSString *)attributeXML_ encoding:(NSStringEncoding)encoding
+{
     return SAFE_ARC_AUTORELEASE([[TyphoonRXMLElement alloc] initFromXMLString:attributeXML_ encoding:encoding]);
 }
 
-+ (id)elementFromXMLFile:(NSString *)filename {
++ (id)elementFromXMLFile:(NSString *)filename
+{
     return SAFE_ARC_AUTORELEASE([[TyphoonRXMLElement alloc] initFromXMLFile:filename]);
 }
 
-+ (id)elementFromXMLFilename:(NSString *)filename fileExtension:(NSString *)extension {
++ (id)elementFromXMLFilename:(NSString *)filename fileExtension:(NSString *)extension
+{
     return SAFE_ARC_AUTORELEASE([[TyphoonRXMLElement alloc] initFromXMLFile:filename fileExtension:extension]);
 }
 
-+ (id)elementFromURL:(NSURL *)url {
++ (id)elementFromURL:(NSURL *)url
+{
     return SAFE_ARC_AUTORELEASE([[TyphoonRXMLElement alloc] initFromURL:url]);
 }
 
-+ (id)elementFromXMLData:(NSData *)data {
++ (id)elementFromXMLData:(NSData *)data
+{
     return SAFE_ARC_AUTORELEASE([[TyphoonRXMLElement alloc] initFromXMLData:data]);
 }
 
-+ (id)elementFromXMLNode:(xmlNodePtr)node {
++ (id)elementFromXMLNode:(xmlNodePtr)node
+{
     return SAFE_ARC_AUTORELEASE([[TyphoonRXMLElement alloc] initFromXMLNode:node]);
 }
 
-- (NSString *)description {
+- (NSString *)description
+{
     return [self text];
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     if (doc_ != nil) {xmlFreeDoc(doc_);}
     SAFE_ARC_SUPER_DEALLOC();
 }
 
 #pragma mark -
 
-- (NSString *)tag {
+- (NSString *)tag
+{
     return [NSString stringWithUTF8String:(const char *) node_->name];
 }
 
-- (NSString *)text {
+- (NSString *)text
+{
     xmlChar *key = xmlNodeGetContent(node_);
     NSString *text = (key ? [NSString stringWithUTF8String:(const char *) key] : @"");
     xmlFree(key);
@@ -195,15 +211,18 @@
     return text;
 }
 
-- (NSInteger)textAsInt {
+- (NSInteger)textAsInt
+{
     return [self.text intValue];
 }
 
-- (double)textAsDouble {
+- (double)textAsDouble
+{
     return [self.text doubleValue];
 }
 
-- (NSString *)attribute:(NSString *)attName {
+- (NSString *)attribute:(NSString *)attName
+{
     NSString *ret = nil;
     const unsigned char *attCStr = xmlGetProp(node_, (const xmlChar *) [attName cStringUsingEncoding:NSUTF8StringEncoding]);
 
@@ -215,7 +234,8 @@
     return ret;
 }
 
-- (NSString *)attribute:(NSString *)attName inNamespace:(NSString *)ns {
+- (NSString *)attribute:(NSString *)attName inNamespace:(NSString *)ns
+{
     const unsigned char *attCStr =
         xmlGetNsProp(node_, (const xmlChar *) [attName cStringUsingEncoding:NSUTF8StringEncoding], (const xmlChar *) [ns cStringUsingEncoding:NSUTF8StringEncoding]);
 
@@ -226,23 +246,28 @@
     return nil;
 }
 
-- (NSInteger)attributeAsInt:(NSString *)attName {
+- (NSInteger)attributeAsInt:(NSString *)attName
+{
     return [[self attribute:attName] intValue];
 }
 
-- (NSInteger)attributeAsInt:(NSString *)attName inNamespace:(NSString *)ns {
+- (NSInteger)attributeAsInt:(NSString *)attName inNamespace:(NSString *)ns
+{
     return [[self attribute:attName inNamespace:ns] intValue];
 }
 
-- (double)attributeAsDouble:(NSString *)attName {
+- (double)attributeAsDouble:(NSString *)attName
+{
     return [[self attribute:attName] doubleValue];
 }
 
-- (double)attributeAsDouble:(NSString *)attName inNamespace:(NSString *)ns {
+- (double)attributeAsDouble:(NSString *)attName inNamespace:(NSString *)ns
+{
     return [[self attribute:attName inNamespace:ns] doubleValue];
 }
 
-- (BOOL)attributeAsBool:(NSString *)attName {
+- (BOOL)attributeAsBool:(NSString *)attName
+{
     // if the string value is different from true or yes, we considere it as NO.
     BOOL result = NO;
     result |= [[[self attribute:attName] lowercaseString] isEqual:@"true"];
@@ -250,20 +275,23 @@
     return result;
 }
 
-- (BOOL)attributeAsBool:(NSString *)attName inNamespace:(NSString *)ns {
+- (BOOL)attributeAsBool:(NSString *)attName inNamespace:(NSString *)ns
+{
     BOOL result = NO;
     result |= [[[self attribute:attName inNamespace:ns] lowercaseString] isEqual:@"true"];
     result |= [[[self attribute:attName inNamespace:ns] lowercaseString] isEqual:@"yes"];
     return result;
 }
 
-- (BOOL)isValid {
+- (BOOL)isValid
+{
     return (doc_ != nil);
 }
 
 #pragma mark -
 
-- (TyphoonRXMLElement *)child:(NSString *)tag {
+- (TyphoonRXMLElement *)child:(NSString *)tag
+{
     NSArray *components = [tag componentsSeparatedByString:@"."];
     xmlNodePtr cur = node_;
 
@@ -301,7 +329,8 @@
     return nil;
 }
 
-- (TyphoonRXMLElement *)child:(NSString *)tag inNamespace:(NSString *)ns {
+- (TyphoonRXMLElement *)child:(NSString *)tag inNamespace:(NSString *)ns
+{
     NSArray *components = [tag componentsSeparatedByString:@"."];
     xmlNodePtr cur = node_;
     const xmlChar *namespaceC = (const xmlChar *) [ns cStringUsingEncoding:NSUTF8StringEncoding];
@@ -340,7 +369,8 @@
     return nil;
 }
 
-- (NSArray *)children:(NSString *)tag {
+- (NSArray *)children:(NSString *)tag
+{
     const xmlChar *tagC = (const xmlChar *) [tag cStringUsingEncoding:NSUTF8StringEncoding];
     NSMutableArray *children = [NSMutableArray array];
     xmlNodePtr cur = node_->children;
@@ -356,7 +386,8 @@
     return SAFE_ARC_AUTORELEASE([children copy]);
 }
 
-- (NSArray *)children:(NSString *)tag inNamespace:(NSString *)ns {
+- (NSArray *)children:(NSString *)tag inNamespace:(NSString *)ns
+{
     const xmlChar *tagC = (const xmlChar *) [tag cStringUsingEncoding:NSUTF8StringEncoding];
     const xmlChar *namespaceC = (const xmlChar *) [ns cStringUsingEncoding:NSUTF8StringEncoding];
     NSMutableArray *children = [NSMutableArray array];
@@ -373,7 +404,8 @@
     return SAFE_ARC_AUTORELEASE([children copy]);
 }
 
-- (NSArray *)childrenWithRootXPath:(NSString *)xpath {
+- (NSArray *)childrenWithRootXPath:(NSString *)xpath
+{
     // check for a query
     if (!xpath) {
         return [NSArray array];
@@ -413,7 +445,8 @@
 
 #pragma mark -
 
-- (void)iterate:(NSString *)query usingBlock:(void (^)(TyphoonRXMLElement *))blk {
+- (void)iterate:(NSString *)query usingBlock:(void (^)(TyphoonRXMLElement *))blk
+{
     // check for a query
     if (!query) {
         return;
@@ -489,12 +522,14 @@
     }
 }
 
-- (void)iterateWithRootXPath:(NSString *)xpath usingBlock:(void (^)(TyphoonRXMLElement *))blk {
+- (void)iterateWithRootXPath:(NSString *)xpath usingBlock:(void (^)(TyphoonRXMLElement *))blk
+{
     NSArray *children = [self childrenWithRootXPath:xpath];
     [self iterateElements:children usingBlock:blk];
 }
 
-- (void)iterateElements:(NSArray *)elements usingBlock:(void (^)(TyphoonRXMLElement *))blk {
+- (void)iterateElements:(NSArray *)elements usingBlock:(void (^)(TyphoonRXMLElement *))blk
+{
     for (TyphoonRXMLElement *iElement in elements) {
         blk(iElement);
     }

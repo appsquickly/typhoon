@@ -23,32 +23,37 @@
 @implementation CircularDependenciesAssembly
 
 
-- (id)classA {
+- (id)classA
+{
     return [TyphoonDefinition withClass:[ClassADependsOnB class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnB) withDefinition:[self classB]];
     }];
 }
 
-- (id)classB {
+- (id)classB
+{
     return [TyphoonDefinition withClass:[ClassBDependsOnA class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnA) withDefinition:[self classA]];
     }];
 }
 
-- (id)classC; {
+- (id)classC;
+{
     return [TyphoonDefinition withClass:[ClassCDependsOnDAndE class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnD) withDefinition:[self classD]];
         [definition injectProperty:@selector(dependencyOnE) withDefinition:[self classE]];
     }];
 }
 
-- (id)classD; {
+- (id)classD;
+{
     return [TyphoonDefinition withClass:[ClassDDependsOnC class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnC) withDefinition:[self classC]];
     }];
 }
 
-- (id)classE; {
+- (id)classE;
+{
     return [TyphoonDefinition withClass:[ClassEDependsOnC class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnC) withDefinition:[self classC]];
     }];
@@ -73,7 +78,8 @@
 //}
 
 
-- (id)prototypeInitInjected {
+- (id)prototypeInitInjected
+{
     return [TyphoonDefinition withClass:[PrototypeInitInjected class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithDependency:);
         [initializer injectWithDefinition:[self prototypePropertyInjected]];
@@ -82,7 +88,8 @@
     }];
 }
 
-- (id)prototypePropertyInjected {
+- (id)prototypePropertyInjected
+{
     return [TyphoonDefinition withClass:[PrototypePropertyInjected class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(prototypeInitInjected) withDefinition:[self prototypeInitInjected]];
         [definition setScope:TyphoonScopePrototype];
@@ -91,7 +98,8 @@
 
 // Currently Resolving Overwrite
 
-- (id)croSingletonA {
+- (id)croSingletonA
+{
     return [TyphoonDefinition withClass:[CROSingletonA class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(prototypeB) withDefinition:[self croPrototypeB]];
         [definition injectProperty:@selector(prototypeA) withDefinition:[self croPrototypeA]];
@@ -99,21 +107,24 @@
     }];
 }
 
-- (id)croSingletonB {
+- (id)croSingletonB
+{
     return [TyphoonDefinition withClass:[CROSingletonB class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithPrototypeB:);
         [initializer injectWithDefinition:[self croPrototypeB]];
     }];
 }
 
-- (id)croPrototypeA {
+- (id)croPrototypeA
+{
     return [TyphoonDefinition withClass:[CROPrototypeA class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithCROPrototypeB:);
         [initializer injectWithDefinition:[self croPrototypeB]];
     }];
 }
 
-- (id)croPrototypeB {
+- (id)croPrototypeB
+{
     return [TyphoonDefinition withClass:[CROPrototypeB class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithCROSingletonA:);
         [initializer injectWithDefinition:[self croSingletonA]];
@@ -122,7 +133,8 @@
 
 // Incorrect circular dependency
 
-- (id)incorrectPrototypeB {
+- (id)incorrectPrototypeB
+{
     return [TyphoonDefinition withClass:[CROPrototypeB class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithCROPrototypeA:);
         [initializer injectWithDefinition:[self incorrectPrototypeA]];
@@ -132,7 +144,8 @@
     }];
 }
 
-- (id)incorrectPrototypeA {
+- (id)incorrectPrototypeA
+{
     return [TyphoonDefinition withClass:[CROPrototypeA class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithCROPrototypeB:);
         [initializer injectWithDefinition:[self incorrectPrototypeB]];

@@ -19,7 +19,8 @@
 
 @implementation TyphoonIntrospectionUtils
 
-+ (TyphoonTypeDescriptor *)typeForPropertyWithName:(NSString *)propertyName inClass:(Class)clazz {
++ (TyphoonTypeDescriptor *)typeForPropertyWithName:(NSString *)propertyName inClass:(Class)clazz
+{
     TyphoonTypeDescriptor *typeDescriptor = nil;
     objc_property_t propertyReflection = class_getProperty(clazz, [propertyName UTF8String]);
     if (propertyReflection) {
@@ -45,7 +46,8 @@
 }
 
 
-+ (NSArray *)typeCodesForSelector:(SEL)selector ofClass:(Class)clazz isClassMethod:(BOOL)isClassMethod {
++ (NSArray *)typeCodesForSelector:(SEL)selector ofClass:(Class)clazz isClassMethod:(BOOL)isClassMethod
+{
     NSMutableArray *typeCodes = [[NSMutableArray alloc] init];
 
     Method method;

@@ -19,7 +19,8 @@
 @synthesize amount = _amount;
 
 - (instancetype)initWithCreditService:(id <CreditService>)creditService authService:(id <AuthService>)authService
-    startDate:(NSDate *)startDate amount:(NSUInteger)amount {
+    startDate:(NSDate *)startDate amount:(NSUInteger)amount
+{
     self = [super init];
     if (self) {
         _creditService = creditService;
@@ -30,26 +31,31 @@
     return self;
 }
 
-- (NSString *)description {
+- (NSString *)description
+{
     return [NSString stringWithFormat:@"<%@:%p startDate:%@ amount:%lu>", [self class], self, _startDate, (unsigned long) _amount];
 }
 
 // Bogus implementations
 
-- (void)initialize {
+- (void)initialize
+{
 }
 
-- (instancetype)initWithCreditService:(id <CreditService>)creditService startDate:(NSDate *)startDate amount:(NSUInteger)amount {
+- (instancetype)initWithCreditService:(id <CreditService>)creditService startDate:(NSDate *)startDate amount:(NSUInteger)amount
+{
     return nil;
 }
 
 - (instancetype)initWithCreditService:(id <CreditService>)creditService authService:(id <AuthService>)authService
-    startDate:(NSDate *)startDate {
+    startDate:(NSDate *)startDate
+{
     return nil;
 }
 
 - (instancetype)initWithCreditService:(id <CreditService>)creditService authService:(id <AuthService>)authService
-    startDate:(NSDate *)startDate amount:(NSUInteger)amount customerName:(NSString *)customerName {
+    startDate:(NSDate *)startDate amount:(NSUInteger)amount customerName:(NSString *)customerName
+{
     return nil;
 }
 

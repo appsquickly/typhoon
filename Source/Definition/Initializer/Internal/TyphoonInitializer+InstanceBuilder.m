@@ -25,7 +25,8 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (NSArray *)parametersInjectedByValue {
+- (NSArray *)parametersInjectedByValue
+{
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return [evaluatedObject isKindOfClass:[TyphoonParameterInjectedWithStringRepresentation class]];
     }];
@@ -33,7 +34,8 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
 }
 
-- (NSInvocation *)newInvocationInFactory:(TyphoonComponentFactory *)factory {
+- (NSInvocation *)newInvocationInFactory:(TyphoonComponentFactory *)factory
+{
     Class clazz = _definition.factory ? _definition.factory.type : _definition.type;
 
     NSMethodSignature *signature = [self methodSignatureWithTarget:clazz];
@@ -47,12 +49,14 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     return invocation;
 }
 
-- (void)setDefinition:(TyphoonDefinition *)definition {
+- (void)setDefinition:(TyphoonDefinition *)definition
+{
     _definition = definition;
     [self resolveIsClassMethod];
 }
 
-- (BOOL)isClassMethod {
+- (BOOL)isClassMethod
+{
     return [self resolveIsClassMethod];
 }
 
@@ -60,7 +64,8 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (BOOL)resolveIsClassMethod {
+- (BOOL)resolveIsClassMethod
+{
     if (_definition.factory) {
         if (_isClassMethodStrategy == TyphoonComponentInitializerIsClassMethodYes) {
             [NSException raise:NSInvalidArgumentException
@@ -83,12 +88,14 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     }
 }
 
-- (BOOL)selectorDoesNotStartWithInit {
+- (BOOL)selectorDoesNotStartWithInit
+{
     return ![NSStringFromSelector(_selector) hasPrefix:@"init"];
 }
 
 
-- (NSMethodSignature *)methodSignatureWithTarget:(Class)clazz {
+- (NSMethodSignature *)methodSignatureWithTarget:(Class)clazz
+{
     if (![self isValidForTarget:clazz]) {
         NSString *typeType = self.isClassMethod ? @"Class" : @"Instance";
         [NSException raise:NSInvalidArgumentException
@@ -101,7 +108,8 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     return signature;
 }
 
-- (BOOL)isValidForTarget:(Class)clazz {
+- (BOOL)isValidForTarget:(Class)clazz
+{
     return ([self isClassMethod] && [clazz respondsToSelector:_selector]) ||
         (![self isClassMethod] && [clazz instancesRespondToSelector:_selector]);
 }

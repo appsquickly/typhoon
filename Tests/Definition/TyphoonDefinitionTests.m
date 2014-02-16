@@ -27,26 +27,30 @@
 
 @implementation TyphoonDefinitionTests
 
-- (void)setUp {
+- (void)setUp
+{
     [super setUp];
 
     // Set-up code here.
 }
 
-- (void)tearDown {
+- (void)tearDown
+{
     // Tear-down code here.
 
     [super tearDown];
 }
 
-- (void)test_allows_initialization_with_class_and_key_parameters {
+- (void)test_allows_initialization_with_class_and_key_parameters
+{
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
 
     assertThat(definition.key, equalTo(@"knight"));
     assertThat(definition.type, equalTo([Knight class]));
 }
 
-- (void)test_prevents_initialization_without_supplying_required_parameters {
+- (void)test_prevents_initialization_without_supplying_required_parameters
+{
     @try {
         TyphoonDefinition *definition = [[TyphoonDefinition alloc] init];
         NSLog(@"Def: %@", definition);
@@ -69,7 +73,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Describing
 
-- (void)test_enumerates_properties_injected_by_value {
+- (void)test_enumerates_properties_injected_by_value
+{
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
 
     //by value
@@ -82,7 +87,8 @@
     assertThatUnsignedLongLong([[definition propertiesInjectedByValue] count], equalToUnsignedLongLong(2));
 }
 
-- (void)test_enumerates_properties_injected_by_reference {
+- (void)test_enumerates_properties_injected_by_reference
+{
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
 
     //by value
@@ -99,7 +105,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Definition inheritance
 
-- (void)test_inherits_all_parent_properties {
+- (void)test_inherits_all_parent_properties
+{
     TyphoonDefinition *longLostAncestor = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(hasHorseWillTravel) withObjectInstance:@(YES)];
     }];
@@ -118,7 +125,8 @@
 }
 
 
-- (void)test_child_properties_override_parent_properties {
+- (void)test_child_properties_override_parent_properties
+{
     TyphoonDefinition *parent = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) withObjectInstance:@(12)];
     }];
@@ -139,7 +147,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Auto-wiring
 
-- (void)test_autoWired_properties {
+- (void)test_autoWired_properties
+{
     NSSet *autoWired = objc_msgSend([AutoWiringKnight class], @selector(typhoonAutoInjectedProperties));
     assertThatUnsignedLongLong([autoWired count], equalToUnsignedLongLong(1));
     assertThat(autoWired, hasItem(@"quest"));
@@ -154,7 +163,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Copying
 
-- (void)test_performs_copy {
+- (void)test_performs_copy
+{
 
     TyphoonDefinition *definition = [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:damselsRescued:);

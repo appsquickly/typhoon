@@ -23,14 +23,16 @@
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 
-+ (instancetype)stack {
++ (instancetype)stack
+{
     return [[self alloc] init];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)init {
+- (id)init
+{
     self = [super init];
     if (self) {
         _storage = [NSMutableArray array];
@@ -42,14 +44,16 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (void)push:(TyphoonStackElement *)stackItem {
+- (void)push:(TyphoonStackElement *)stackItem
+{
     if (![stackItem isKindOfClass:[TyphoonStackElement class]]) {
         [NSException raise:NSInvalidArgumentException format:@"Not a TyphoonStackItem: %@", stackItem];
     }
     [_storage addObject:stackItem];
 }
 
-- (TyphoonStackElement *)pop {
+- (TyphoonStackElement *)pop
+{
     id element = [_storage lastObject];
     if ([self isEmpty] == NO) {
         [_storage removeLastObject];
@@ -58,7 +62,8 @@
 }
 
 
-- (TyphoonStackElement *)peekForKey:(NSString *)key {
+- (TyphoonStackElement *)peekForKey:(NSString *)key
+{
     for (TyphoonStackElement *item in [_storage reverseObjectEnumerator]) {
         if ([item.key isEqualToString:key]) {
             return item;
@@ -67,11 +72,13 @@
     return nil;
 }
 
-- (BOOL)isEmpty {
+- (BOOL)isEmpty
+{
     return ([_storage count] == 0);
 }
 
-- (BOOL)isResolvingKey:(NSString *)key {
+- (BOOL)isResolvingKey:(NSString *)key
+{
     return [self peekForKey:key] != nil;
 }
 

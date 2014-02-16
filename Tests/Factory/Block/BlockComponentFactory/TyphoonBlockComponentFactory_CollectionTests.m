@@ -29,7 +29,8 @@
 
 }
 
-- (void)test_allows_initialization_with_a_collection_of_assemblies {
+- (void)test_allows_initialization_with_a_collection_of_assemblies
+{
     TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
         [MiddleAgesAssembly assembly],
         [CollaboratingMiddleAgesAssembly assembly],
@@ -40,7 +41,8 @@
     assertThatBool([knight.quest isKindOfClass:[CampaignQuest class]], equalToBool(YES));
 }
 
-- (void)test_allows_initialization_with_a_collection_of_assemblies_in_any_order {
+- (void)test_allows_initialization_with_a_collection_of_assemblies_in_any_order
+{
     TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
         [CollaboratingMiddleAgesAssembly assembly],
         [MiddleAgesAssembly assembly]

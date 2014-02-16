@@ -39,7 +39,8 @@ static NSString *const kScoreKey = @"kScoreKey";
     Class _returnType;
 }
 
-- (instancetype)initWithProtocol:(Protocol *)protocol returns:(Class)returnType {
+- (instancetype)initWithProtocol:(Protocol *)protocol returns:(Class)returnType
+{
     return [super initWithProtocol:protocol factoryDefinitionProvider:^{
         _returnType = returnType;
 
@@ -80,7 +81,8 @@ static NSString *const kScoreKey = @"kScoreKey";
     }];
 }
 
-- (NSArray *)protocolFactoryMethods {
+- (NSArray *)protocolFactoryMethods
+{
     NSMutableSet *propertyNames = [NSMutableSet set];
     NSMutableSet *methodNames = [NSMutableSet set];
 
@@ -106,7 +108,8 @@ static NSString *const kScoreKey = @"kScoreKey";
     return [factoryMethods copy];
 }
 
-- (NSArray *)returnTypeInitializerMethods {
+- (NSArray *)returnTypeInitializerMethods
+{
     NSMutableArray *initializerMethods = [NSMutableArray array];
     TyphoonAssistedFactoryCreatorForEachMethodInClass(_returnType, ^(struct objc_method_description methodDescription) {
         if ([NSStringFromSelector(methodDescription.name) hasPrefix:@"initWith"]) {
@@ -122,7 +125,8 @@ static NSString *const kScoreKey = @"kScoreKey";
 }
 
 - (void)calculatePreferredInitializersFor:(TyphoonAssistedFactoryCreatorImplicitFactoryMethod *)factoryMethod
-    withInitializers:(NSArray *)initializerMethods {
+    withInitializers:(NSArray *)initializerMethods
+{
     NSSet *factoryMethodParameters = [NSSet setWithArray:factoryMethod.methodParameterNames];
     NSSet *protocolPropertyNames = [NSSet setWithArray:[self protocolPropertyNames]];
 
@@ -151,7 +155,8 @@ static NSString *const kScoreKey = @"kScoreKey";
     factoryMethod.preferredInitializers = preferredInitializers;
 }
 
-- (void)matchFactoryMethods:(NSArray *)factoryMethods withInitializers:(NSArray *)initializers {
+- (void)matchFactoryMethods:(NSArray *)factoryMethods withInitializers:(NSArray *)initializers
+{
     // This method matches the factory method to the best initializer.
     // You can find all the information at http://en.wikipedia.org/wiki/Stable_marriage_problem
     // Basically, it goes like this:
@@ -215,7 +220,8 @@ static NSString *const kScoreKey = @"kScoreKey";
     }
 }
 
-- (NSArray *)protocolPropertyNames {
+- (NSArray *)protocolPropertyNames
+{
     if (_procotolPropertyNames == nil) {
         unsigned int count = 0;
         objc_property_t *properties = protocol_copyPropertyList(_protocol, &count);
@@ -232,7 +238,8 @@ static NSString *const kScoreKey = @"kScoreKey";
     return _procotolPropertyNames;
 }
 
-- (NSDictionary *)findMappingsFrom:(NSArray *)fromNames to:(NSArray *)toNames except:(NSArray *)exceptNamesOrNil {
+- (NSDictionary *)findMappingsFrom:(NSArray *)fromNames to:(NSArray *)toNames except:(NSArray *)exceptNamesOrNil
+{
     NSMutableDictionary *mappings = [NSMutableDictionary dictionary];
     exceptNamesOrNil = exceptNamesOrNil ?: [NSArray array];
 

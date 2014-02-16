@@ -15,11 +15,13 @@
 
 @implementation TyphoonNSURLTypeConverter
 
-- (id)supportedType {
+- (id)supportedType
+{
     return [NSURL class];
 }
 
-- (id)convert:(NSString *)stringValue {
+- (id)convert:(NSString *)stringValue
+{
     __autoreleasing NSURL *url = [NSURL URLWithString:stringValue];
     return url;
 }

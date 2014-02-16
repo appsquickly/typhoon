@@ -20,7 +20,8 @@
     NSMutableDictionary *_exchangedPairsForClass;
 }
 
-- (id)init {
+- (id)init
+{
     self = [super init];
     if (self) {
         _exchangedPairsForClass = [[NSMutableDictionary alloc] init];
@@ -29,7 +30,8 @@
     return self;
 }
 
-- (void)assertExchangedImplementationsFor:(NSString *)methodA with:(NSString *)methodB onClass:(Class)pClass {
+- (void)assertExchangedImplementationsFor:(NSString *)methodA with:(NSString *)methodB onClass:(Class)pClass
+{
     __block BOOL matched = NO;
     TyphoonSelector *wrappedMethodA = [TyphoonSelector selectorWithName:methodA];
     TyphoonSelector *wrappedMethodB = [TyphoonSelector selectorWithName:methodB];
@@ -49,7 +51,8 @@
     }
 }
 
-- (BOOL)swizzleMethod:(SEL)selA withMethod:(SEL)selB onClass:(Class)pClass error:(NSError **)error {
+- (BOOL)swizzleMethod:(SEL)selA withMethod:(SEL)selB onClass:(Class)pClass error:(NSError **)error
+{
     NSMutableArray *exchangedPairs = [_exchangedPairsForClass objectForKey:NSStringFromClass(pClass)];
     if (!exchangedPairs) {
         exchangedPairs = [[NSMutableArray alloc] init];

@@ -17,7 +17,8 @@
 @implementation Sword
 
 /* ============================================================ Initializers ============================================================ */
-- (id)initWithSpecification:(NSString *)specification {
+- (id)initWithSpecification:(NSString *)specification
+{
     self = [super init];
     if (self) {
         _specification = specification;
@@ -27,7 +28,8 @@
 }
 
 
-- (NSString *)description {
+- (NSString *)description
+{
     return _specification;
 }
 

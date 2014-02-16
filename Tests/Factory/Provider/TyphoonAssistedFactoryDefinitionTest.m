@@ -22,28 +22,33 @@
     TyphoonAssistedFactoryDefinition *factoryDefinition;
 }
 
-- (void)setUp {
+- (void)setUp
+{
     factoryDefinition = [[TyphoonAssistedFactoryDefinition alloc] init];
 }
 
-- (void)test_configure_should_inject_factory_itself_as_argument {
+- (void)test_configure_should_inject_factory_itself_as_argument
+{
     [factoryDefinition configure:^(TyphoonAssistedFactoryDefinition *definition) {
         assertThat(definition, is(equalTo(factoryDefinition)));
     }];
 }
 
-- (void)test_countOfFactoryMethods_should_return_zero_for_no_methods {
+- (void)test_countOfFactoryMethods_should_return_zero_for_no_methods
+{
     assertThatInteger(factoryDefinition.countOfFactoryMethods, is(equalToInteger(0)));
 }
 
-- (void)test_countOfFactoryMethod_should_return_one_for_just_one_method {
+- (void)test_countOfFactoryMethod_should_return_one_for_just_one_method
+{
     [factoryDefinition factoryMethod:@selector(wadus) body:^{
     }];
 
     assertThatInteger(factoryDefinition.countOfFactoryMethods, is(equalToInteger(1)));
 }
 
-- (void)test_countOfFactoryMethod_should_return_the_number_of_factory_methods {
+- (void)test_countOfFactoryMethod_should_return_the_number_of_factory_methods
+{
     [factoryDefinition factoryMethod:@selector(wadus) body:^{
     }];
     [factoryDefinition factoryMethod:@selector(wadusWithWadus:) body:^{
@@ -54,7 +59,8 @@
     assertThatInteger(factoryDefinition.countOfFactoryMethods, is(equalToInteger(3)));
 }
 
-- (void)test_enumerateFactoryMethods_should_invoke_block_for_no_methods {
+- (void)test_enumerateFactoryMethods_should_invoke_block_for_no_methods
+{
     __block int count = 0;
 
     [factoryDefinition enumerateFactoryMethods:^(id <TyphoonAssistedFactoryMethod> factoryMethod) {
@@ -64,7 +70,8 @@
     assertThatInt(count, is(equalToInt(0)));
 }
 
-- (void)test_enumerateFactoryMethods_should_invoke_block_for_number_of_factory_methods {
+- (void)test_enumerateFactoryMethods_should_invoke_block_for_number_of_factory_methods
+{
     [factoryDefinition factoryMethod:@selector(wadus) body:^{
     }];
     [factoryDefinition factoryMethod:@selector(wadusWithWadus:) body:^{
@@ -80,7 +87,8 @@
     assertThatInt(count, is(equalToInt(3)));
 }
 
-- (void)test_enumerateFactoryMethods_should_invoke_block_with_configured_selector {
+- (void)test_enumerateFactoryMethods_should_invoke_block_with_configured_selector
+{
     SEL selector = @selector(wadusWithWadus:andWadus:);
     [factoryDefinition factoryMethod:selector body:^{
     }];
@@ -90,7 +98,8 @@
     }];
 }
 
-- (void)test_enumerateFactoryMethods_should_invoke_block_with_configured_body {
+- (void)test_enumerateFactoryMethods_should_invoke_block_with_configured_body
+{
     id (^bodyBlock)(id) = ^id(id factory) {
         return nil;
     };

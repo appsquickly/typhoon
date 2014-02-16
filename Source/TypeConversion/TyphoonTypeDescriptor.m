@@ -16,7 +16,8 @@
 
 @implementation NSDictionary (TyphoonPrimitiveType)
 
-+ (NSDictionary *)dictionaryWithTyphoonPrimitiveTypesAsStrings {
++ (NSDictionary *)dictionaryWithTyphoonPrimitiveTypesAsStrings
+{
     static dispatch_once_t onceToken;
     static NSDictionary *_typhoonPrimitiveTypesAsStrings;
 
@@ -52,15 +53,18 @@
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 
-+ (TyphoonTypeDescriptor *)descriptorWithEncodedType:(char *)encodedType {
++ (TyphoonTypeDescriptor *)descriptorWithEncodedType:(char *)encodedType
+{
     return [[[self class] alloc] initWithTypeCode:[NSString stringWithCString:encodedType encoding:NSUTF8StringEncoding]];
 }
 
-+ (TyphoonTypeDescriptor *)descriptorWithTypeCode:(NSString *)typeCode {
++ (TyphoonTypeDescriptor *)descriptorWithTypeCode:(NSString *)typeCode
+{
     return [[[self class] alloc] initWithTypeCode:typeCode];
 }
 
-+ (TyphoonTypeDescriptor *)descriptorWithClassOrProtocol:(id)classOrProtocol; {
++ (TyphoonTypeDescriptor *)descriptorWithClassOrProtocol:(id)classOrProtocol;
+{
     if (class_isMetaClass(object_getClass(classOrProtocol))) {
         return [self descriptorWithTypeCode:[NSString stringWithFormat:@"T@%@", NSStringFromClass(classOrProtocol)]];
     }
@@ -70,7 +74,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithTypeCode:(NSString *)typeCode {
+- (id)initWithTypeCode:(NSString *)typeCode
+{
     self = [super init];
     if (self) {
         if ([typeCode hasPrefix:@"T@"]) {
@@ -106,7 +111,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (id)classOrProtocol {
+- (id)classOrProtocol
+{
     if (_typeBeingDescribed) {
         return _typeBeingDescribed;
     }
@@ -118,7 +124,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
-- (NSString *)description {
+- (NSString *)description
+{
     if (_isPrimitive) {
         return [NSString stringWithFormat:@"Type descriptor for primitive: %i", _primitiveType];
     }
@@ -141,14 +148,16 @@
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (void)parsePrimitiveType:(NSString *)typeCode {
+- (void)parsePrimitiveType:(NSString *)typeCode
+{
     typeCode = [self extractArrayInformation:typeCode];
     typeCode = [self extractPointerInformation:typeCode];
     typeCode = [self extractStructureInformation:typeCode];
     _primitiveType = [self typeFromTypeCode:typeCode];
 }
 
-- (NSString *)extractArrayInformation:(NSString *)typeCode {
+- (NSString *)extractArrayInformation:(NSString *)typeCode
+{
     if ([typeCode hasPrefix:@"["] && [typeCode hasSuffix:@"]"]) {
         _isArray = YES;
         typeCode =
@@ -160,7 +169,8 @@
     return typeCode;
 }
 
-- (NSString *)extractPointerInformation:(NSString *)typeCode {
+- (NSString *)extractPointerInformation:(NSString *)typeCode
+{
     if ([typeCode hasPrefix:@"^"]) {
         _isPointer = YES;
         typeCode = [typeCode stringByReplacingOccurrencesOfString:@"^" withString:@""];
@@ -168,7 +178,8 @@
     return typeCode;
 }
 
-- (NSString *)extractStructureInformation:(NSString *)typeCode {
+- (NSString *)extractStructureInformation:(NSString *)typeCode
+{
     if ([typeCode hasPrefix:@"{"] && [typeCode hasSuffix:@"}"]) {
         _isStructure = YES;
         typeCode =
@@ -178,7 +189,8 @@
     return typeCode;
 }
 
-- (TyphoonPrimitiveType)typeFromTypeCode:(NSString *)typeCode {
+- (TyphoonPrimitiveType)typeFromTypeCode:(NSString *)typeCode
+{
     return (TyphoonPrimitiveType) [[[NSDictionary dictionaryWithTyphoonPrimitiveTypesAsStrings] objectForKey:typeCode] intValue];
 }
 

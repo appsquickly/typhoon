@@ -18,13 +18,15 @@
 
 @implementation ExtendedMiddleAgesAssembly
 
-- (id)yetAnotherKnight {
+- (id)yetAnotherKnight
+{
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) withValueAsText:@"296000"];
     }];
 }
 
-- (id)environmentDependentQuest {
+- (id)environmentDependentQuest
+{
     return [TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(imageUrl) withValueAsText:@"www.foobar.com/quest"];
     }];

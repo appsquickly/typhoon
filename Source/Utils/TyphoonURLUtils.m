@@ -14,7 +14,8 @@
 
 @implementation TyphoonURLUtils
 
-+ (NSURL *)URL:(NSURL *)url appendedWithQueryParameters:(NSDictionary *)parameters {
++ (NSURL *)URL:(NSURL *)url appendedWithQueryParameters:(NSDictionary *)parameters
+{
     NSMutableString *urlString = [[NSMutableString alloc] initWithString:[url absoluteString]];
 
     for (id key in parameters) {
@@ -31,7 +32,8 @@
     return [NSURL URLWithString:urlString];
 }
 
-+ (NSString *)URLEscapeString:(NSString *)rawString {
++ (NSString *)URLEscapeString:(NSString *)rawString
+{
     CFStringRef originalStringRef = (__bridge_retained CFStringRef) rawString;
     NSString *encoded =
         (__bridge_transfer NSString *) CFURLCreateStringByAddingPercentEscapes(NULL, originalStringRef, NULL, NULL, kCFStringEncodingUTF8);

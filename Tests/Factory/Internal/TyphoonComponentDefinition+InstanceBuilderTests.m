@@ -26,14 +26,16 @@
     TyphoonComponentFactory *_componentFactory;
 }
 
-- (void)setUp {
+- (void)setUp
+{
     _componentFactory = [[TyphoonComponentFactory alloc] init];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Initializer injection
 
-- (void)test_injects_required_initializer_dependencies {
+- (void)test_injects_required_initializer_dependencies
+{
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     TyphoonInitializer *knightInitializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithQuest:)];
     [knightInitializer injectParameterNamed:@"quest" withReference:@"quest"];
@@ -48,7 +50,8 @@
     assertThat(knight.quest, notNilValue());
 }
 
-- (void)test_injects_required_initializer_dependencies_with_factory_method {
+- (void)test_injects_required_initializer_dependencies_with_factory_method
+{
     TyphoonDefinition *urlDefinition = [[TyphoonDefinition alloc] initWithClass:[NSURL class] key:@"url"];
     TyphoonInitializer *initializer = [[TyphoonInitializer alloc]
         initWithSelector:@selector(URLWithString:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodYes];
@@ -60,7 +63,8 @@
     assertThat(url, notNilValue());
 }
 
-- (void)test_injects_initializer_value_as_long {
+- (void)test_injects_initializer_value_as_long
+{
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     TyphoonInitializer *initializer = [[TyphoonInitializer alloc]
         initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
@@ -74,7 +78,8 @@
     assertThatLong(knight.damselsRescued, equalToLongLong(12));
 }
 
-- (void)test_injects_initializer_value_as_collection {
+- (void)test_injects_initializer_value_as_collection
+{
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     TyphoonInitializer *knightInitializer = [[TyphoonInitializer alloc]
         initWithSelector:@selector(initWithQuest:favoriteDamsels:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
@@ -95,7 +100,8 @@
     assertThatUnsignedLong([knight.favoriteDamsels count], equalToUnsignedLong(2));
 }
 
-- (void)test_inject_initializer_values_as_primitives {
+- (void)test_inject_initializer_values_as_primitives
+{
     PrimitiveManStruct *primitiveStruct = malloc(sizeof(PrimitiveManStruct));
     primitiveStruct->fieldA = INT_MAX;
     primitiveStruct->fieldB = LONG_MAX;
@@ -178,7 +184,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Property injection
 
-- (void)test_injects_required_property_dependencies {
+- (void)test_injects_required_property_dependencies
+{
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     [knightDefinition injectProperty:@selector(quest) withReference:@"quest"];
     [_componentFactory registerDefinition:knightDefinition];
@@ -191,7 +198,8 @@
     assertThat(knight.quest, notNilValue());
 }
 
-- (void)test_raises_exception_if_property_setter_does_not_exist {
+- (void)test_raises_exception_if_property_setter_does_not_exist
+{
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     [knightDefinition injectProperty:@selector(propertyThatDoesNotExist) withReference:@"quest"];
     [_componentFactory registerDefinition:knightDefinition];
@@ -209,7 +217,8 @@
     }
 }
 
-- (void)test_injects_property_value_as_long {
+- (void)test_injects_property_value_as_long
+{
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     [knightDefinition injectProperty:@selector(damselsRescued) withValueAsText:@"12"];
     [_componentFactory registerDefinition:knightDefinition];
@@ -218,7 +227,8 @@
     assertThatLong(knight.damselsRescued, equalToLongLong(12));
 }
 
-- (void)test_inject_property_value_as_primitives {
+- (void)test_inject_property_value_as_primitives
+{
     PrimitiveManStruct *primitiveStruct = malloc(sizeof(PrimitiveManStruct));
     primitiveStruct->fieldA = INT_MAX;
     primitiveStruct->fieldB = LONG_MAX;
@@ -280,7 +290,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Property injection error handling
 
-- (void)test_raises_exception_if_property_has_no_setter {
+- (void)test_raises_exception_if_property_has_no_setter
+{
     @try {
         TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
         [knightDefinition injectProperty:@selector(propertyDoesNotExist) withObjectInstance:@"fooString"];

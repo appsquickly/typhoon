@@ -47,5 +47,5 @@ OBJC_EXPORT id <HCMatcher> HC_equalToIgnoringWhiteSpace(NSString *aString);
     @ingroup text_matchers
  */
 #ifdef HC_SHORTHAND
-    #define equalToIgnoringWhiteSpace HC_equalToIgnoringWhiteSpace
+#define equalToIgnoringWhiteSpace HC_equalToIgnoringWhiteSpace
 #endif

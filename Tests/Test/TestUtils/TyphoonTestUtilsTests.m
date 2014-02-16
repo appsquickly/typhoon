@@ -19,7 +19,8 @@
 
 @implementation TyphoonTestUtilsTests
 
-- (void)test_should_waitForCondition_to_occur {
+- (void)test_should_waitForCondition_to_occur
+{
 
     __block NSString *willLoadLater = nil;
     dispatch_async(dispatch_queue_create("fetcher.queue", DISPATCH_QUEUE_CONCURRENT), ^(void) {
@@ -33,7 +34,8 @@
     }];
 }
 
-- (void)test_should_throw_an_exception_if_condition_does_not_occur {
+- (void)test_should_throw_an_exception_if_condition_does_not_occur
+{
 
     NSString *willNeverLoad = nil;
     @try {

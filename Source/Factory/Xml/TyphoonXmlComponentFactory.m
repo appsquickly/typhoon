@@ -20,11 +20,13 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithConfigFileName:(NSString *)configFileName {
+- (id)initWithConfigFileName:(NSString *)configFileName
+{
     return [self initWithConfigFileNames:configFileName, nil];
 }
 
-- (id)initWithConfigFileNames:(NSString *)configFileName, ... {
+- (id)initWithConfigFileNames:(NSString *)configFileName, ...
+{
     self = [super init];
     if (self) {
         va_list xml_list;
@@ -45,7 +47,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (void)parseComponentDefinitions {
+- (void)parseComponentDefinitions
+{
     for (NSString *resourceName in _resourceNames) {
         NSString *xmlString = [[TyphoonBundleResource withName:resourceName] asString];
         TyphoonRXMLElement *element = [TyphoonRXMLElement elementFromXMLString:xmlString encoding:NSUTF8StringEncoding];

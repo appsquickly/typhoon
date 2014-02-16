@@ -30,7 +30,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithIndex:(NSUInteger)index value:(NSString *)value requiredTypeOrNil:(Class)requiredTypeOrNil {
+- (id)initWithIndex:(NSUInteger)index value:(NSString *)value requiredTypeOrNil:(Class)requiredTypeOrNil
+{
     self = [super init];
     if (self) {
         _index = index;
@@ -43,7 +44,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (TyphoonTypeDescriptor *)resolveType {
+- (TyphoonTypeDescriptor *)resolveType
+{
     if (_requiredType) {
         return [TyphoonTypeDescriptor descriptorWithClassOrProtocol:_requiredType];
     }
@@ -65,7 +67,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (void)withFactory:(TyphoonComponentFactory *)factory setArgumentOnInvocation:(NSInvocation *)invocation {
+- (void)withFactory:(TyphoonComponentFactory *)factory setArgumentOnInvocation:(NSInvocation *)invocation
+{
     TyphoonTypeDescriptor *requiredType = [self resolveType];
     if (requiredType.isPrimitive) {
         TyphoonPrimitiveTypeConverter *converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
@@ -82,7 +85,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone
+{
     return [[TyphoonParameterInjectedWithStringRepresentation alloc]
         initWithIndex:self.index value:self.textValue requiredTypeOrNil:self.requiredType];
 }

@@ -22,7 +22,8 @@
 
 }
 
-- (id)initWithAssembly:(TyphoonAssembly *)assembly {
+- (id)initWithAssembly:(TyphoonAssembly *)assembly
+{
     self = [super init];
     if (self) {
         _assembly = assembly;
@@ -30,7 +31,8 @@
     return self;
 }
 
-- (NSSet *)collaboratingAssemblyProperties {
+- (NSSet *)collaboratingAssemblyProperties
+{
     NSMutableSet *propertyNames = [[NSMutableSet alloc] init];
 
     Class class = [self.assembly class];
@@ -52,16 +54,19 @@
     return propertyNames;
 }
 
-- (BOOL)propertyForName:(NSString *)propertyName isCollaboratingAssemblyPropertyOnClass:(Class)class {
+- (BOOL)propertyForName:(NSString *)propertyName isCollaboratingAssemblyPropertyOnClass:(Class)class
+{
     TyphoonTypeDescriptor *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyName inClass:class];
     return [type.typeBeingDescribed isSubclassOfClass:[TyphoonAssembly class]];
 }
 
-- (BOOL)classNotRootAssemblyClass:(Class)class {
+- (BOOL)classNotRootAssemblyClass:(Class)class
+{
     return class != [TyphoonAssembly class];
 }
 
-- (id)propertyNameForProperty:(objc_property_t)aProperty {
+- (id)propertyNameForProperty:(objc_property_t)aProperty
+{
     const char *cPropertyName = property_getName(aProperty);
     return [NSString stringWithCString:cPropertyName encoding:NSUTF8StringEncoding];
 }

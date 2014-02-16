@@ -15,7 +15,8 @@
 
 #pragma mark - Initializers & deallocs
 
-- (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex property:(SEL)property {
+- (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex property:(SEL)property
+{
     self = [super init];
     if (self) {
         _parameterIndex = parameterIndex;

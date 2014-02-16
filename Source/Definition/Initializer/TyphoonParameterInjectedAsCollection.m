@@ -25,7 +25,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithParameterIndex:(NSUInteger)index requiredType:(Class)requiredType {
+- (id)initWithParameterIndex:(NSUInteger)index requiredType:(Class)requiredType
+{
     self = [super init];
     if (self) {
         _index = index;
@@ -40,19 +41,23 @@
 #pragma mark - Protocol Methods
 #pragma mark - <TyphoonInjectedAsCollection>
 
-- (void)addItemWithText:(NSString *)text requiredType:(Class)requiredType {
+- (void)addItemWithText:(NSString *)text requiredType:(Class)requiredType
+{
     [_collection addItemWithText:text requiredType:requiredType];
 }
 
-- (void)addItemWithComponentName:(NSString *)componentName {
+- (void)addItemWithComponentName:(NSString *)componentName
+{
     [_collection addItemWithComponentName:componentName];
 }
 
-- (void)addItemWithDefinition:(TyphoonDefinition *)definition {
+- (void)addItemWithDefinition:(TyphoonDefinition *)definition
+{
     [_collection addItemWithDefinition:definition];
 }
 
-- (void)addValue:(id <TyphoonCollectionValue>)value {
+- (void)addValue:(id <TyphoonCollectionValue>)value
+{
     [_collection addValue:value];
 }
 
@@ -60,13 +65,15 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (void)withFactory:(TyphoonComponentFactory *)factory setArgumentOnInvocation:(NSInvocation *)invocation {
+- (void)withFactory:(TyphoonComponentFactory *)factory setArgumentOnInvocation:(NSInvocation *)invocation
+{
     id collection = [_collection withFactory:factory newCollectionOfType:self.collectionType];
     [invocation setArgument:&collection atIndex:_index + 2];
 }
 
 
-- (TyphoonCollectionType)collectionType {
+- (TyphoonCollectionType)collectionType
+{
 
     Class clazz = _requiredType;
     if (clazz == nil) {
@@ -96,7 +103,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone
+{
     TyphoonParameterInjectedAsCollection
         *copy = [[TyphoonParameterInjectedAsCollection alloc] initWithParameterIndex:_index requiredType:_requiredType];
     [copy setValue:[_collection copy] forKey:@"collection"];

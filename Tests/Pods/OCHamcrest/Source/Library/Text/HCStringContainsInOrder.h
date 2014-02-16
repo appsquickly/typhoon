@@ -47,5 +47,5 @@ OBJC_EXPORT id <HCMatcher> HC_stringContainsInOrder(NSString *substring, ...) NS
     @ingroup text_matchers
  */
 #ifdef HC_SHORTHAND
-    #define stringContainsInOrder HC_stringContainsInOrder
+#define stringContainsInOrder HC_stringContainsInOrder
 #endif

@@ -25,22 +25,26 @@
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 
-+ (id)factoryWithAssembly:(TyphoonAssembly *)assembly {
++ (id)factoryWithAssembly:(TyphoonAssembly *)assembly
+{
     return [[self alloc] initWithAssemblies:@[assembly]];
 }
 
-+ (id)factoryWithAssemblies:(NSArray *)assemblies {
++ (id)factoryWithAssemblies:(NSArray *)assemblies
+{
     return [[self alloc] initWithAssemblies:assemblies];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (instancetype)initWithAssembly:(TyphoonAssembly *)assembly {
+- (instancetype)initWithAssembly:(TyphoonAssembly *)assembly
+{
     return [self initWithAssemblies:@[assembly]];
 }
 
-- (instancetype)initWithAssemblies:(NSArray *)assemblies {
+- (instancetype)initWithAssemblies:(NSArray *)assemblies
+{
     self = [super init];
     if (self) {
         for (TyphoonAssembly *assembly in assemblies) {
@@ -50,7 +54,8 @@
     return self;
 }
 
-- (void)buildAssembly:(TyphoonAssembly *)assembly {
+- (void)buildAssembly:(TyphoonAssembly *)assembly
+{
     LogTrace(@"Building assembly: %@", NSStringFromClass([assembly class]));
     [self assertIsAssembly:assembly];
 
@@ -59,7 +64,8 @@
     [self registerAllDefinitions:assembly];
 }
 
-- (void)assertIsAssembly:(TyphoonAssembly *)assembly {
+- (void)assertIsAssembly:(TyphoonAssembly *)assembly
+{
     if (![assembly isKindOfClass:[TyphoonAssembly class]]) //
     {
         [NSException raise:NSInvalidArgumentException format:@"Class '%@' is not a sub-class of %@", NSStringFromClass([assembly class]),
@@ -67,7 +73,8 @@
     }
 }
 
-- (void)registerAllDefinitions:(TyphoonAssembly *)assembly {
+- (void)registerAllDefinitions:(TyphoonAssembly *)assembly
+{
     NSArray *definitions = [assembly definitions];
     for (TyphoonDefinition *definition in definitions) {
         [self registerDefinition:definition];
@@ -79,7 +86,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (void)forwardInvocation:(NSInvocation *)invocation {
+- (void)forwardInvocation:(NSInvocation *)invocation
+{
     NSString *componentKey = NSStringFromSelector([invocation selector]);
     LogTrace(@"Component key: %@", componentKey);
 
@@ -88,7 +96,8 @@
     [invocation invoke];
 }
 
-- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
+{
     if ([self respondsToSelector:aSelector]) {
         return [[self class] instanceMethodSignatureForSelector:aSelector];
     }

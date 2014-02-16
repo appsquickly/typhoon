@@ -33,7 +33,8 @@ NSString *currentFooString;
 
 @implementation ClassWithKnightSettingsAssembly
 
-- (id)knightSettings {
+- (id)knightSettings
+{
     return [TyphoonDefinition withClass:[ClassWithKnightSettings class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) withObjectInstance:@(currentDamselsRescued)];
         [definition injectProperty:@selector(hasHorseWillTravel) withObjectInstance:@(currentHasHorseWillTravel)];
@@ -54,15 +55,18 @@ NSString *currentFooString;
     TyphoonComponentFactory *factory;
 }
 
-- (void)setUp {
+- (void)setUp
+{
     [self updateFactory];
 }
 
-- (void)updateFactory {
+- (void)updateFactory
+{
     factory = [TyphoonBlockComponentFactory factoryWithAssembly:[ClassWithKnightSettingsAssembly assembly]];
 }
 
-- (void)test_inject_int_bool {
+- (void)test_inject_int_bool
+{
     Knight *knight = [Knight new];
 
     TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
@@ -76,7 +80,8 @@ NSString *currentFooString;
     assertThatBool(knight.hasHorseWillTravel, equalToBool(YES));
 }
 
-- (void)test_inject_object {
+- (void)test_inject_object
+{
     Knight *knight = [Knight new];
 
     NSString *testString = @"Hello Knights";
@@ -89,7 +94,8 @@ NSString *currentFooString;
     assertThat(knight.foobar, equalTo([testString copy]));
 }
 
-- (void)test_inject_factorydefinition_selector {
+- (void)test_inject_factorydefinition_selector
+{
     Knight *knight = [Knight new];
 
     currentFooString = @"Hello Knights";
@@ -111,7 +117,8 @@ NSString *currentFooString;
     assertThatBool(knight.hasHorseWillTravel, equalToBool(YES));
 }
 
-- (void)test_inject_factorydefinition_keyPath {
+- (void)test_inject_factorydefinition_keyPath
+{
     Knight *knight = [Knight new];
 
     NSString *testString = @"Hello";
@@ -129,7 +136,8 @@ NSString *currentFooString;
 }
 
 
-- (void)test_inject_factorydefinition_on_init {
+- (void)test_inject_factorydefinition_on_init
+{
     currentDamselsRescued = 32;
     currentFooString = @"Hello";
     [self updateFactory];

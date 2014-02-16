@@ -17,7 +17,8 @@
 
 @implementation SwordFactory
 
-- (Sword *)swordWithSpecification:(NSString *)swordSpecs {
+- (Sword *)swordWithSpecification:(NSString *)swordSpecs
+{
     if ([swordSpecs isEqualToString:@"blue"]) {
         return [[Sword alloc] initWithSpecification:@"A bright blue sword with orange pom-poms at the hilt."];
     }

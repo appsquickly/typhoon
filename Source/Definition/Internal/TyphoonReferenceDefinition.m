@@ -16,7 +16,8 @@
 
 @implementation TyphoonReferenceDefinition
 
-+ (instancetype)definitionReferringToComponent:(NSString *)key {
++ (instancetype)definitionReferringToComponent:(NSString *)key
+{
     return [[self alloc] initWithClass:[NSObject class] key:key];
 }
 

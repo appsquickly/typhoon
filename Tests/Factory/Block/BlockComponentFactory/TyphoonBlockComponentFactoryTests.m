@@ -30,7 +30,8 @@
 
 @implementation TyphoonBlockComponentFactoryTests
 
-- (void)setUp {
+- (void)setUp
+{
     _componentFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[MiddleAgesAssembly assembly]];
     TyphoonPropertyPlaceholderConfigurer *configurer = [[TyphoonPropertyPlaceholderConfigurer alloc] init];
     [configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
@@ -42,13 +43,15 @@
     _infrastructureComponentsFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[InfrastructureComponentsAssembly assembly]];
 }
 
-- (void)test_resolves_component_using_selector {
+- (void)test_resolves_component_using_selector
+{
     MiddleAgesAssembly *assembly = (MiddleAgesAssembly *) _componentFactory;
     Knight *knight = [assembly knight];
     assertThat(knight, notNilValue());
 }
 
-- (void)test_allows_injecting_properties_with_object_instance {
+- (void)test_allows_injecting_properties_with_object_instance
+{
     MiddleAgesAssembly *assembly = (MiddleAgesAssembly *) _componentFactory;
     CavalryMan *knight = [assembly yetAnotherKnight];
     assertThat(knight.propertyInjectedAsInstance, notNilValue());

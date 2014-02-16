@@ -26,13 +26,15 @@
 
 @implementation TyphoonScopeTests
 
-- (void)setUp {
+- (void)setUp
+{
     TyphoonBlockComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssembly:[ObjectGraphAssembly assembly]];
     _assembly = (ObjectGraphAssembly *) factory;
 }
 
 
-- (void)test_object_graph_scope {
+- (void)test_object_graph_scope
+{
     Knight *objectGraphKnight = [_assembly objectGraphKnight];
     CampaignQuest *quest = objectGraphKnight.quest;
     assertThatBool(objectGraphKnight.homeFort == quest.fort, equalToBool(YES));

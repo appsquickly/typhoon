@@ -27,7 +27,8 @@
 
 @implementation TyphoonAssistedFactoryMethodBlockCreator
 
-- (void)createFromProtocol:(Protocol *)protocol inClass:(Class)factoryClass {
+- (void)createFromProtocol:(Protocol *)protocol inClass:(Class)factoryClass
+{
     struct objc_method_description methodDescription = [self methodDescriptionFor:self.factoryMethod.factoryMethod inProtocol:protocol];
     NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
 

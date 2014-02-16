@@ -28,11 +28,13 @@
     NSMutableDictionary *_cachedDefinitionsForMethodName;
 }
 
-+ (instancetype)builderWithAssembly:(TyphoonAssembly *)assembly {
++ (instancetype)builderWithAssembly:(TyphoonAssembly *)assembly
+{
     return [[self alloc] initWithAssembly:assembly];
 }
 
-- (instancetype)initWithAssembly:(TyphoonAssembly *)assembly {
+- (instancetype)initWithAssembly:(TyphoonAssembly *)assembly
+{
     self = [super init];
     if (self) {
         _assembly = assembly;
@@ -44,14 +46,16 @@
     return self;
 }
 
-- (NSArray *)builtDefinitions {
+- (NSArray *)builtDefinitions
+{
     @synchronized (self) {
         [self populateCache];
         return [_cachedDefinitionsForMethodName allValues];
     }
 }
 
-- (void)populateCache {
+- (void)populateCache
+{
     [[self.assembly definitionSelectors] enumerateObjectsUsingBlock:^(TyphoonSelector *wrappedSEL, BOOL *stop) {
         SEL selector = [wrappedSEL selector];
         NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
@@ -59,11 +63,13 @@
     }];
 }
 
-- (void)buildDefinitionForKey:(NSString *)key {
+- (void)buildDefinitionForKey:(NSString *)key
+{
     [self builtDefinitionForKey:key];
 }
 
-- (TyphoonDefinition *)builtDefinitionForKey:(NSString *)key {
+- (TyphoonDefinition *)builtDefinitionForKey:(NSString *)key
+{
     [self markCurrentlyResolvingKey:key];
 
     if ([self keyInvolvedInCircularDependency:key]) {
@@ -79,7 +85,8 @@
 }
 
 #pragma mark - Circular Dependencies
-- (NSMutableArray *)resolveStackForKey:(NSString *)key {
+- (NSMutableArray *)resolveStackForKey:(NSString *)key
+{
     NSMutableArray *resolveStack = [_resolveStackForSelector objectForKey:key];
     if (!resolveStack) {
         resolveStack = [[NSMutableArray alloc] init];
@@ -89,11 +96,13 @@
     return resolveStack;
 }
 
-- (void)markCurrentlyResolvingKey:(NSString *)key {
+- (void)markCurrentlyResolvingKey:(NSString *)key
+{
     [[self resolveStackForKey:key] addObject:key];
 }
 
-- (BOOL)keyInvolvedInCircularDependency:(NSString *)key {
+- (BOOL)keyInvolvedInCircularDependency:(NSString *)key
+{
     NSMutableArray *resolveStack = [self resolveStackForKey:key];
     if ([resolveStack count] >= 2) {
         NSString *bottom = [resolveStack objectAtIndex:0];
@@ -107,12 +116,14 @@
     return NO;
 }
 
-- (TyphoonDefinition *)definitionToTerminateCircularDependencyForKey:(NSString *)key {
+- (TyphoonDefinition *)definitionToTerminateCircularDependencyForKey:(NSString *)key
+{
     // we return a 'dummy' definition just to terminate the cycle. This dummy definition will be overwritten by the real one in the cache, which will be set further up the stack and will overwrite this one in 'cachedDefinitionsForMethodName'.
     return [[TyphoonDefinition alloc] initWithClass:[TyphoonCircularDependencyTerminator class] key:key];
 }
 
-- (void)markKeyResolved:(NSString *)key {
+- (void)markKeyResolved:(NSString *)key
+{
     NSMutableArray *resolveStack = [self resolveStackForKey:key];
 
     if (resolveStack.count) {
@@ -121,13 +132,15 @@
 }
 
 #pragma mark - Building
-- (TyphoonDefinition *)populateCacheWithDefinitionForKey:(NSString *)key {
+- (TyphoonDefinition *)populateCacheWithDefinitionForKey:(NSString *)key
+{
     id d = [self definitionForKey:key];
     [self populateCacheWithDefinition:d forKey:key];
     return d;
 }
 
-- (id)definitionForKey:(NSString *)key {
+- (id)definitionForKey:(NSString *)key
+{
     // call the user's assembly method to get it.
     SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key];
     id cached =
@@ -137,7 +150,8 @@
     return cached;
 }
 
-- (void)populateCacheWithDefinition:(TyphoonDefinition *)definition forKey:(NSString *)key {
+- (void)populateCacheWithDefinition:(TyphoonDefinition *)definition forKey:(NSString *)key
+{
     if (definition && [definition isKindOfClass:[TyphoonDefinition class]]) {
         [self setKey:key onDefinitionIfExistingKeyEmpty:definition];
 
@@ -145,7 +159,8 @@
     }
 }
 
-- (void)setKey:(NSString *)key onDefinitionIfExistingKeyEmpty:(TyphoonDefinition *)definition {
+- (void)setKey:(NSString *)key onDefinitionIfExistingKeyEmpty:(TyphoonDefinition *)definition
+{
     if ([definition.key length] == 0) {
         definition.key = key;
     }

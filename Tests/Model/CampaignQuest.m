@@ -17,7 +17,8 @@
 
 @implementation CampaignQuest
 
-- (id)initWithImageUrl:(NSURL *)imageUrl {
+- (id)initWithImageUrl:(NSURL *)imageUrl
+{
     self = [super init];
     if (self) {
         _imageUrl = imageUrl;
@@ -26,20 +27,24 @@
     return self;
 }
 
-- (NSString *)questName {
+- (NSString *)questName
+{
     return @"Campaign Quest";
 }
 
-- (void)questBeforePropertyInjection {
+- (void)questBeforePropertyInjection
+{
     LogTrace(@"###### My dependencies have not yet been injected. Here's what I look like: %@", [self description]);
 }
 
 
-- (void)questAfterPropertyInjection {
+- (void)questAfterPropertyInjection
+{
     LogTrace(@"$$$$$$$$$$$$$$$$$ My dependencies have been injected. And I know look like this: %@", [self description]);
 }
 
-- (NSString *)description {
+- (NSString *)description
+{
     NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
     [description appendFormat:@"self.imageUrl=%@", self.imageUrl];
     [description appendString:@">"];

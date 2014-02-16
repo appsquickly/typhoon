@@ -17,7 +17,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization
 
-- (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex {
+- (instancetype)initWithParameterIndex:(NSUInteger)parameterIndex
+{
     self = [super init];
     if (self) {
         _index = parameterIndex;
@@ -28,11 +29,13 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overrides
 
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone
+{
     return [[TyphoonParameterInjectedByComponentFactory alloc] initWithParameterIndex:_index];
 }
 
-- (void)withFactory:(TyphoonComponentFactory *)factory setArgumentOnInvocation:(NSInvocation *)invocation {
+- (void)withFactory:(TyphoonComponentFactory *)factory setArgumentOnInvocation:(NSInvocation *)invocation
+{
     [self setObject:factory forInvocation:invocation];
 }
 

@@ -30,11 +30,13 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 
 @implementation TyphoonRXMLElement (XmlComponentFactory)
 
-- (BOOL)isComponent {
+- (BOOL)isComponent
+{
     return [[self tag] isEqualToString:@"component"] || [self isShorthandComponentTag];
 }
 
-- (TyphoonDefinition *)asComponentDefinition {
+- (TyphoonDefinition *)asComponentDefinition
+{
     if ([self isShorthandComponentTag]) {
         return [self definitionByEvaluatingShorthandComponentTag];
     }
@@ -66,7 +68,8 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 }
 
 //TODO: Method too long, clean it up.
-- (TyphoonAbstractInjectedProperty *)asInjectedProperty {
+- (TyphoonAbstractInjectedProperty *)asInjectedProperty
+{
     [self assertTagName:@"property"];
 
     NSString *propertyName = [self attribute:@"name"];
@@ -117,7 +120,8 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 }
 
 
-- (TyphoonInitializer *)asInitializer {
+- (TyphoonInitializer *)asInitializer
+{
     [self assertTagName:@"initializer"];
     SEL selector = NSSelectorFromString([self attribute:@"selector"]);
     TyphoonComponentInitializerIsClassMethod isClassMethod = [self handleIsClassMethod:[self attribute:@"is-class-method"]];
@@ -140,11 +144,13 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
-- (BOOL)isShorthandComponentTag {
+- (BOOL)isShorthandComponentTag
+{
     return [[self tag] isEqualToString:@"property-placeholder"];
 }
 
-- (TyphoonDefinition *)definitionByEvaluatingShorthandComponentTag {
+- (TyphoonDefinition *)definitionByEvaluatingShorthandComponentTag
+{
     TyphoonDefinition *definition = nil;
 
     if ([[self tag] isEqualToString:@"property-placeholder"]) {
@@ -166,13 +172,15 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
     return definition;
 }
 
-- (void)assertTagName:(NSString *)tagName {
+- (void)assertTagName:(NSString *)tagName
+{
     if (![self.tag isEqualToString:tagName]) {
         [NSException raise:NSInvalidArgumentException format:@"Element is not a '%@'.", tagName];
     }
 }
 
-- (TyphoonScope)scopeForStringValue:(NSString *)scope {
+- (TyphoonScope)scopeForStringValue:(NSString *)scope
+{
     NSArray *acceptedScopes = @[
         @"default",
         @"prototype",
@@ -200,7 +208,8 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 }
 
 
-- (void)parseComponentDefinitionChildren:(TyphoonDefinition *)componentDefinition {
+- (void)parseComponentDefinitionChildren:(TyphoonDefinition *)componentDefinition
+{
     [self iterate:@"*" usingBlock:^(TyphoonRXMLElement *child) {
         if ([[child tag] isEqualToString:@"property"]) {
             [componentDefinition addInjectedProperty:[child asInjectedProperty]];
@@ -218,7 +227,8 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
     }];
 }
 
-- (void)setArgumentOnInitializer:(TyphoonInitializer *)initializer withChildTag:(TyphoonRXMLElement *)child {
+- (void)setArgumentOnInitializer:(TyphoonInitializer *)initializer withChildTag:(TyphoonRXMLElement *)child
+{
     NSString *name = [child attribute:@"parameterName"];
     NSString *index = [child attribute:@"index"];
 
@@ -303,7 +313,8 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
     }
 }
 
-- (TyphoonComponentInitializerIsClassMethod)handleIsClassMethod:(NSString *)isClassMethodString {
+- (TyphoonComponentInitializerIsClassMethod)handleIsClassMethod:(NSString *)isClassMethodString
+{
     if ([[isClassMethodString lowercaseString] isEqualToString:@"yes"] || [[isClassMethodString lowercaseString] isEqualToString:@"true"]) {
         return TyphoonComponentInitializerIsClassMethodYes;
     }
@@ -316,7 +327,8 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
     }
 }
 
-- (NSString *)attributeOrNilIfEmpty:(NSString *)attributeName {
+- (NSString *)attributeOrNilIfEmpty:(NSString *)attributeName
+{
     NSString *attribute = [self attribute:attributeName];
     if ([attribute length] > 0) {
         return attribute;

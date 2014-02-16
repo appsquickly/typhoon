@@ -20,7 +20,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (instancetype)initWithName:(NSString *)name reference:(NSString *)reference {
+- (instancetype)initWithName:(NSString *)name reference:(NSString *)reference
+{
     self = [super init];
     if (self) {
         _name = name;
@@ -32,7 +33,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance {
+- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance
+{
     [factory evaluateCircularDependency:self.reference propertyName:self.name instance:instance];
 
     if (![factory propertyIsCircular:self onInstance:instance]) {
@@ -44,7 +46,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone
+{
     return [[TyphoonPropertyInjectedByReference alloc] initWithName:[self.name copy] reference:[self.reference copy]];
 }
 

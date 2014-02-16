@@ -21,7 +21,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)init {
+- (id)init
+{
     self = [super init];
     if (self) {
         _patches = [[NSMutableDictionary alloc] init];
@@ -32,18 +33,21 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (void)patchDefinitionWithKey:(NSString *)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock {
+- (void)patchDefinitionWithKey:(NSString *)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock
+{
     [_patches setObject:objectCreationBlock forKey:key];
 }
 
-- (void)patchDefinition:(TyphoonDefinition *)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock {
+- (void)patchDefinition:(TyphoonDefinition *)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock
+{
     [self patchDefinitionWithKey:definition.key withObject:objectCreationBlock];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory {
+- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
+{
     for (TyphoonDefinition *definition in [factory registry]) {
         id patchObject = [_patches objectForKey:definition.key];
         if (patchObject) {

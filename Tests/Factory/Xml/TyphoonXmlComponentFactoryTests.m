@@ -24,7 +24,8 @@
 
 @implementation TyphoonXmlComponentFactoryTests
 
-- (void)setUp {
+- (void)setUp
+{
     _componentFactory = [[TyphoonXmlComponentFactory alloc] initWithConfigFileName:@"MiddleAgesAssembly.xml"];
     TyphoonPropertyPlaceholderConfigurer *configurer = [[TyphoonPropertyPlaceholderConfigurer alloc] init];
     [configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
@@ -37,7 +38,8 @@
 
 }
 
-- (void)test_injects_initializer_by_value {
+- (void)test_injects_initializer_by_value
+{
     id <Quest> anotherQuest = [_componentFactory componentForKey:@"anotherQuest"];
     assertThat(anotherQuest, notNilValue());
     assertThat(anotherQuest.imageUrl, notNilValue());

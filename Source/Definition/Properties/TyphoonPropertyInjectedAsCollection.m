@@ -27,7 +27,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithName:(NSString *)name {
+- (id)initWithName:(NSString *)name
+{
     self = [super init];
     if (self) {
         _name = name;
@@ -40,30 +41,36 @@
 #pragma mark - Protocol Methods
 #pragma mark - <TyphoonInjectedAsCollection>
 
-- (void)addItemWithText:(NSString *)text requiredType:(Class)requiredType {
+- (void)addItemWithText:(NSString *)text requiredType:(Class)requiredType
+{
     [_collection addItemWithText:text requiredType:requiredType];
 }
 
-- (void)addItemWithComponentName:(NSString *)componentName {
+- (void)addItemWithComponentName:(NSString *)componentName
+{
     [_collection addItemWithComponentName:componentName];
 }
 
-- (void)addItemWithDefinition:(TyphoonDefinition *)definition {
+- (void)addItemWithDefinition:(TyphoonDefinition *)definition
+{
     [_collection addItemWithDefinition:definition];
 }
 
-- (void)addValue:(id <TyphoonCollectionValue>)value {
+- (void)addValue:(id <TyphoonCollectionValue>)value
+{
     [_collection addValue:value];
 }
 
-- (NSArray *)values {
+- (NSArray *)values
+{
     return [_collection values];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (TyphoonCollectionType)resolveCollectionTypeWith:(id <TyphoonIntrospectiveNSObject>)instance; {
+- (TyphoonCollectionType)resolveCollectionTypeWith:(id <TyphoonIntrospectiveNSObject>)instance;
+{
     TyphoonTypeDescriptor *descriptor = [TyphoonIntrospectionUtils typeForPropertyWithName:_name inClass:[instance class]];
     Class describedClass = (Class) [descriptor classOrProtocol];
     if (describedClass == nil) {
@@ -94,7 +101,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance {
+- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance
+{
     TyphoonCollectionType type = [self resolveCollectionTypeWith:instance];
     return [_collection withFactory:factory newCollectionOfType:type];
 }
@@ -102,7 +110,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone
+{
     TyphoonPropertyInjectedAsCollection *copy = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:[_name copy]];
     [copy setValue:[_collection copy] forKey:@"collection"];
     return copy;

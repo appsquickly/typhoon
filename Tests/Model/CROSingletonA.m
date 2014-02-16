@@ -10,7 +10,8 @@
 
 @implementation CROSingletonA
 
-- (id)initWithPrototypeB:(id)b {
+- (id)initWithPrototypeB:(id)b
+{
     self = [super init];
     if (self) {
         self.prototypeB = b;

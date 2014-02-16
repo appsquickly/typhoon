@@ -23,15 +23,18 @@
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 
-+ (TyphoonPropertyPlaceholderConfigurer *)configurer {
++ (TyphoonPropertyPlaceholderConfigurer *)configurer
+{
     return [[[self class] alloc] init];
 }
 
-+ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResource:(id <TyphoonResource>)resource {
++ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResource:(id <TyphoonResource>)resource
+{
     return [self configurerWithResourceList:@[resource]];
 }
 
-+ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResources:(id <TyphoonResource>)first, ... {
++ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResources:(id <TyphoonResource>)first, ...
+{
     NSMutableArray *resources = [[NSMutableArray alloc] init];
     [resources addObject:first];
 
@@ -46,7 +49,8 @@
     return [self configurerWithResourceList:resources];
 }
 
-+ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResourceList:(NSArray *)resources {
++ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResourceList:(NSArray *)resources
+{
     TyphoonPropertyPlaceholderConfigurer *configurer = [TyphoonPropertyPlaceholderConfigurer configurer];
     for (id <TyphoonResource> resource in resources) {
         [configurer usePropertyStyleResource:resource];
@@ -58,7 +62,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithPrefix:(NSString *)prefix suffix:(NSString *)suffix {
+- (id)initWithPrefix:(NSString *)prefix suffix:(NSString *)suffix
+{
     self = [super init];
     if (self) {
         _prefix = prefix;
@@ -68,14 +73,16 @@
     return self;
 }
 
-- (id)init {
+- (id)init
+{
     return [self initWithPrefix:@"${" suffix:@"}"];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (void)usePropertyStyleResource:(id <TyphoonResource>)resource {
+- (void)usePropertyStyleResource:(id <TyphoonResource>)resource
+{
     NSArray *lines = [[resource asString] componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     for (NSString *line in lines) {
         if (![line hasPrefix:@"#"]) {
@@ -89,7 +96,8 @@
     }
 }
 
-- (NSDictionary *)properties {
+- (NSDictionary *)properties
+{
     return [_properties copy];
 }
 
@@ -97,7 +105,8 @@
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory {
+- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
+{
     for (TyphoonDefinition *definition in [factory registry]) {
         for (id <TyphoonInjectedWithStringRepresentation> component in [definition componentsInjectedByValue]) {
             [self mutateComponentInjectedByValue:component];
@@ -105,7 +114,8 @@
     }
 }
 
-- (void)mutateComponentInjectedByValue:(id <TyphoonInjectedWithStringRepresentation>)component; {
+- (void)mutateComponentInjectedByValue:(id <TyphoonInjectedWithStringRepresentation>)component;
+{
     if ([component.textValue hasPrefix:_prefix] && [component.textValue hasSuffix:_suffix]) {
         NSString *key = [component.textValue substringFromIndex:[_prefix length]];
         key = [key substringToIndex:[key length] - [_suffix length]];

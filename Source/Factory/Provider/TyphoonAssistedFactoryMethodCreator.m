@@ -20,7 +20,8 @@
 
 @implementation TyphoonAssistedFactoryMethodCreator
 
-+ (instancetype)creatorFor:(id <TyphoonAssistedFactoryMethod>)factoryMethod {
++ (instancetype)creatorFor:(id <TyphoonAssistedFactoryMethod>)factoryMethod
+{
     if ([factoryMethod isKindOfClass:[TyphoonAssistedFactoryMethodBlock class]]) {
         return [[TyphoonAssistedFactoryMethodBlockCreator alloc] initWithFactoryMethod:factoryMethod];
     }
@@ -33,7 +34,8 @@
     }
 }
 
-- (instancetype)initWithFactoryMethod:(TyphoonAssistedFactoryMethodBlock *)factoryMethod {
+- (instancetype)initWithFactoryMethod:(TyphoonAssistedFactoryMethodBlock *)factoryMethod
+{
     self = [super init];
     if (self) {
         _factoryMethod = factoryMethod;
@@ -42,12 +44,14 @@
     return self;
 }
 
-- (void)createFromProtocol:(Protocol *)protocol inClass:(Class)factoryClass {
+- (void)createFromProtocol:(Protocol *)protocol inClass:(Class)factoryClass
+{
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
         reason:@"You should not create instances of TyphoonAssistedFactoryMethodCreator directly" userInfo:nil];
 }
 
-- (struct objc_method_description)methodDescriptionFor:(SEL)methodName inProtocol:(Protocol *)protocol {
+- (struct objc_method_description)methodDescriptionFor:(SEL)methodName inProtocol:(Protocol *)protocol
+{
     unsigned int methodCount = 0;
     struct objc_method_description *methodDescriptions = protocol_copyMethodDescriptionList(protocol, YES, YES, &methodCount);
 

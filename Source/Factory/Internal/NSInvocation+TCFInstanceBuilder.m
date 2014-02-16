@@ -45,7 +45,8 @@ static BOOL typhoon_IsSelectorReturnsRetained(SEL selector) {
     return numberOfMatches != 0;
 }
 
-- (id)typhoon_resultOfInvokingOn:(id)instanceOrClass {
+- (id)typhoon_resultOfInvokingOn:(id)instanceOrClass
+{
     id returnValue = nil;
 
     BOOL isReturnsRetained;
@@ -65,11 +66,13 @@ static BOOL typhoon_IsSelectorReturnsRetained(SEL selector) {
     return returnValue;
 }
 
-- (id)typhoon_resultOfInvokingOnInstance:(id)instance {
+- (id)typhoon_resultOfInvokingOnInstance:(id)instance
+{
     return [self typhoon_resultOfInvokingOn:instance];
 }
 
-- (id)typhoon_resultOfInvokingOnAllocationForClass:(Class)aClass {
+- (id)typhoon_resultOfInvokingOnAllocationForClass:(Class)aClass
+{
     /* To static analyser warning:
      * 'firstlyCreatedInstance' is not leak. There is two cases:
      *   1) instance is firstlyCreatedInstance (have same pointer) - then we returning this as retained result
