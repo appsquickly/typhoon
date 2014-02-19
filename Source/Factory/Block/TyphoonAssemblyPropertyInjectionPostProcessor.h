@@ -13,6 +13,9 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonFactoryPropertyInjectionPostProcessor.h"
 
+/**
+ * Replaces property injections by-type with injectuins by-componentFactory when property type subclass of TyphoonAssembly
+ */
 @interface TyphoonAssemblyPropertyInjectionPostProcessor : TyphoonFactoryPropertyInjectionPostProcessor
 
 @end

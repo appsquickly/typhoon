@@ -1,16 +1,22 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  TyphoonFactoryPropertyInjectionPostProcessor.h
-//  A-Typhoon
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
+//  All Rights Reserved.
 //
-//  Created by Aleksey Garbarev on 16.02.14.
-//  Copyright (c) 2014 Jasper Blues. All rights reserved.
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
 //
+////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryPostProcessor.h"
 #import "TyphoonPropertyInjectedByType.h"
 #import "TyphoonDefinition.h"
 
+/**
+ * Replaces property injections by-type with injectuins by-componentFactory when property type subclass of TyphoonComponentFactory
+ */
 @interface TyphoonFactoryPropertyInjectionPostProcessor : NSObject <TyphoonComponentFactoryPostProcessor>
 
 /* Method to override in subclasses */
