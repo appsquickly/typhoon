@@ -37,8 +37,9 @@
 - (id)initWithCount:(NSUInteger)expectedNumberOfInvocations
 {
     self = [super init];
-    if (self)
-        expectedCount = expectedNumberOfInvocations;
+    if (self) {
+            expectedCount = expectedNumberOfInvocations;
+    }
     return self;
 }
 
@@ -48,17 +49,17 @@
 - (void)verifyData:(MKTVerificationData *)data
 {
     NSUInteger matchingCount = 0;
-    for (NSInvocation *invocation in [[data invocations] registeredInvocations])
-    {
-        if ([[data wanted] matches:invocation])
-            ++matchingCount;
+    for (NSInvocation *invocation in [[data invocations] registeredInvocations]) {
+        if ([[data wanted] matches:invocation]) {
+                    ++matchingCount;
+        }
     }
-    
-    if (matchingCount != expectedCount)
-    {
+
+    if (matchingCount != expectedCount) {
         NSString *plural = (expectedCount == 1) ? @"" : @"s";
-        NSString *description = [NSString stringWithFormat:@"Expected %u matching invocation%@, but received %u",
-                                 (unsigned)expectedCount, plural, (unsigned)matchingCount];
+        NSString *description =
+            [NSString stringWithFormat:@"Expected %u matching invocation%@, but received %u", (unsigned) expectedCount, plural,
+                                       (unsigned) matchingCount];
         MKTFailTestLocation([data testLocation], description);
     }
 }

@@ -22,29 +22,30 @@
 - (id)initEqualTo:(id)anObject
 {
     self = [super init];
-    if (self)
-        object = anObject;
+    if (self) {
+            object = anObject;
+    }
     return self;
 }
 
 - (BOOL)matches:(id)item
 {
-    if (item == nil)
-        return object == nil;
-    else
-        return [item isEqual:object];
+    if (item == nil) {
+            return object == nil;
+        }
+    else {
+            return [item isEqual:object];
+    }
 }
 
-- (void)describeTo:(id<HCDescription>)description
+- (void)describeTo:(id <HCDescription>)description
 {
-    if ([object conformsToProtocol:@protocol(HCMatcher)])
-    {
-        [[[description appendText:@"<"]
-                       appendDescriptionOf:object]
-                       appendText:@">"];
+    if ([object conformsToProtocol:@protocol(HCMatcher)]) {
+        [[[description appendText:@"<"] appendDescriptionOf:object] appendText:@">"];
     }
-    else
-        [description appendDescriptionOf:object];
+    else {
+            [description appendDescriptionOf:object];
+    }
 }
 
 @end
@@ -52,7 +53,6 @@
 
 #pragma mark -
 
-id<HCMatcher> HC_equalTo(id object)
-{
+id <HCMatcher> HC_equalTo(id object) {
     return [HCIsEqual isEqualTo:object];
 }

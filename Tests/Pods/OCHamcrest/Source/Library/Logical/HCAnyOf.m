@@ -23,20 +23,23 @@
 - (id)initWithMatchers:(NSArray *)theMatchers
 {
     self = [super init];
-    if (self)
-        matchers = theMatchers;
+    if (self) {
+            matchers = theMatchers;
+    }
     return self;
 }
 
 - (BOOL)matches:(id)item
 {
-    for (id<HCMatcher> oneMatcher in matchers)
-        if ([oneMatcher matches:item])
-            return YES;
+    for (id <HCMatcher> oneMatcher in matchers) {
+            if ([oneMatcher matches:item]) {
+                return YES;
+            }
+    }
     return NO;
 }
 
-- (void)describeTo:(id<HCDescription>)description
+- (void)describeTo:(id <HCDescription>)description
 {
     [description appendList:matchers start:@"(" separator:@" or " end:@")"];
 }
@@ -46,12 +49,11 @@
 
 #pragma mark -
 
-id<HCMatcher> HC_anyOf(id match, ...)
-{
+id <HCMatcher> HC_anyOf(id match, ...) {
     va_list args;
     va_start(args, match);
     NSArray *matcherList = HCCollectMatchers(match, args);
     va_end(args);
-    
+
     return [HCAnyOf anyOf:matcherList];
 }

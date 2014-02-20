@@ -23,19 +23,17 @@
 - (id)initWithSubstring:(NSString *)aString
 {
     HCRequireNonNilObject(aString);
-    
+
     self = [super init];
-    if (self)
-        substring = [aString copy];
+    if (self) {
+            substring = [aString copy];
+    }
     return self;
 }
 
-- (void)describeTo:(id<HCDescription>)description
+- (void)describeTo:(id <HCDescription>)description
 {
-    [[[[description appendText:@"a string "]
-                    appendText:[self relationship]]
-                    appendText:@" "]
-                    appendDescriptionOf:substring];
+    [[[[description appendText:@"a string "] appendText:[self relationship]] appendText:@" "] appendDescriptionOf:substring];
 }
 
 @end

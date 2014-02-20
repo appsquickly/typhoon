@@ -21,9 +21,10 @@
 
 - (BOOL)matches:(id)item
 {
-    if (![item respondsToSelector:@selector(hasPrefix:)])
-        return NO;
-    
+    if (![item respondsToSelector:@selector(hasPrefix:)]) {
+            return NO;
+    }
+
     return [item hasPrefix:substring];
 }
 
@@ -37,7 +38,6 @@
 
 #pragma mark -
 
-id<HCMatcher> HC_startsWith(NSString *aString)
-{
+id <HCMatcher> HC_startsWith(NSString *aString) {
     return [HCStringStartsWith stringStartsWith:aString];
 }

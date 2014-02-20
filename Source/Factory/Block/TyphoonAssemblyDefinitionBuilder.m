@@ -118,7 +118,8 @@
 
 - (TyphoonDefinition *)definitionToTerminateCircularDependencyForKey:(NSString *)key
 {
-    // we return a 'dummy' definition just to terminate the cycle. This dummy definition will be overwritten by the real one in the cache, which will be set further up the stack and will overwrite this one in 'cachedDefinitionsForMethodName'.
+    // we return a 'dummy' definition just to terminate the cycle. This dummy definition will be overwritten by the real one in the cache,
+    // which will be set further up the stack and will overwrite this one in 'cachedDefinitionsForMethodName'.
     return [[TyphoonDefinition alloc] initWithClass:[TyphoonCircularDependencyTerminator class] key:key];
 }
 

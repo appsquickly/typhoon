@@ -14,38 +14,34 @@
 #import <ctype.h>
 
 
-static void removeTrailingSpace(NSMutableString *string)
-{
+static void removeTrailingSpace(NSMutableString *string) {
     NSUInteger length = [string length];
-    if (length > 0)
-    {
+    if (length > 0) {
         NSUInteger charIndex = length - 1;
-        if (isspace([string characterAtIndex:charIndex]))
-            [string deleteCharactersInRange:NSMakeRange(charIndex, 1)];
+        if (isspace([string characterAtIndex:charIndex])) {
+                    [string deleteCharactersInRange:NSMakeRange(charIndex, 1)];
+        }
     }
 }
 
-static NSMutableString *stripSpace(NSString *string)
-{
+static NSMutableString *stripSpace(NSString *string) {
     NSUInteger length = [string length];
     NSMutableString *result = [NSMutableString stringWithCapacity:length];
     bool lastWasSpace = true;
-    for (NSUInteger charIndex = 0; charIndex < length; ++charIndex)
-    {
+    for (NSUInteger charIndex = 0; charIndex < length; ++charIndex) {
         unichar character = [string characterAtIndex:charIndex];
-        if (isspace(character))
-        {
-            if (!lastWasSpace)
-                [result appendString:@" "];
+        if (isspace(character)) {
+            if (!lastWasSpace) {
+                            [result appendString:@" "];
+            }
             lastWasSpace = true;
         }
-        else
-        {
+        else {
             [result appendFormat:@"%C", character];
             lastWasSpace = false;
         }
     }
-        
+
     removeTrailingSpace(result);
     return result;
 }
@@ -63,10 +59,9 @@ static NSMutableString *stripSpace(NSString *string)
 - (id)initWithString:(NSString *)aString
 {
     HCRequireNonNilObject(aString);
-    
+
     self = [super init];
-    if (self)
-    {
+    if (self) {
         originalString = [aString copy];
         strippedString = stripSpace(aString);
     }
@@ -75,16 +70,16 @@ static NSMutableString *stripSpace(NSString *string)
 
 - (BOOL)matches:(id)item
 {
-    if (![item isKindOfClass:[NSString class]])
-        return NO;
-    
+    if (![item isKindOfClass:[NSString class]]) {
+            return NO;
+    }
+
     return [strippedString isEqualToString:stripSpace(item)];
 }
 
-- (void)describeTo:(id<HCDescription>)description
+- (void)describeTo:(id <HCDescription>)description
 {
-    [[description appendDescriptionOf:originalString]
-                  appendText:@" ignoring whitespace"];
+    [[description appendDescriptionOf:originalString] appendText:@" ignoring whitespace"];
 }
 
 @end
@@ -92,7 +87,6 @@ static NSMutableString *stripSpace(NSString *string)
 
 #pragma mark -
 
-id<HCMatcher> HC_equalToIgnoringWhiteSpace(NSString *aString)
-{
+id <HCMatcher> HC_equalToIgnoringWhiteSpace(NSString *aString) {
     return [HCIsEqualIgnoringWhiteSpace isEqualIgnoringWhiteSpace:aString];
 }

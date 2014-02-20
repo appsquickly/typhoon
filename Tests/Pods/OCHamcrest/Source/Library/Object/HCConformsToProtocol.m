@@ -21,10 +21,11 @@
 - (id)initWithProtocol:(Protocol *)aProtocol
 {
     HCRequireNonNilObject(aProtocol);
-    
+
     self = [super init];
-    if (self)
-        theProtocol = aProtocol;
+    if (self) {
+            theProtocol = aProtocol;
+    }
     return self;
 }
 
@@ -33,10 +34,9 @@
     return [item conformsToProtocol:theProtocol];
 }
 
-- (void)describeTo:(id<HCDescription>)description
+- (void)describeTo:(id <HCDescription>)description
 {
-    [[description appendText:@"an object that conforms to "]
-                  appendText:NSStringFromProtocol(theProtocol)];
+    [[description appendText:@"an object that conforms to "] appendText:NSStringFromProtocol(theProtocol)];
 }
 
 @end
@@ -44,12 +44,10 @@
 
 #pragma mark -
 
-id<HCMatcher> HC_conformsTo(Protocol *aProtocol)
-{
+id <HCMatcher> HC_conformsTo(Protocol *aProtocol) {
     return [HCConformsToProtocol conformsToProtocol:aProtocol];
 }
 
-id<HCMatcher> HC_conformsToProtocol(Protocol *aProtocol)
-{
+id <HCMatcher> HC_conformsToProtocol(Protocol *aProtocol) {
     return HC_conformsTo(aProtocol);
 }

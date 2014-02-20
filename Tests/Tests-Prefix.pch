@@ -9,8 +9,10 @@
 #if __IPHONE_OS_VERSION_MIN_REQUIRED
 
 #else
-        #import <Cocoa/Cocoa.h>
-    #endif
+
+#import <Cocoa/Cocoa.h>
+
+#endif
 #endif
 
 
