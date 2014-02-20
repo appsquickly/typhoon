@@ -31,4 +31,6 @@
 
 - (void)addInjectedProperty:(TyphoonAbstractInjectedProperty *)property;
 
+- (void)removeInjectedProperty:(TyphoonAbstractInjectedProperty *)property;
+
 @end

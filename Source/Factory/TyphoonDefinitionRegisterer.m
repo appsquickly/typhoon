@@ -115,7 +115,7 @@
         [_componentFactory addComponentPostProcessor:infrastructureComponent];
     }
     else if ([_definition.type conformsToProtocol:@protocol(TyphoonTypeConverter)]) {
-        [[TyphoonTypeConverterRegistry shared] register:infrastructureComponent];
+        [[TyphoonTypeConverterRegistry shared] registerTypeConverter:infrastructureComponent];
     }
 }
 

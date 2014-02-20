@@ -20,6 +20,7 @@
 #import "TyphoonOrdered.h"
 #import "TyphoonCallStack.h"
 #import "TyphoonParentReferenceHydratingPostProcessor.h"
+#import "TyphoonFactoryPropertyInjectionPostProcessor.h"
 #import "TyphoonComponentPostProcessor.h"
 #import "TyphoonWeakComponentsPool.h"
 
@@ -59,6 +60,7 @@ static TyphoonComponentFactory *defaultFactory;
         _factoryPostProcessors = [[NSMutableArray alloc] init];
         _componentPostProcessors = [[NSMutableArray alloc] init];
         [self attachPostProcessor:[[TyphoonParentReferenceHydratingPostProcessor alloc] init]];
+        [self attachPostProcessor:[[TyphoonFactoryPropertyInjectionPostProcessor alloc] init]];
 
     }
     return self;

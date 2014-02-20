@@ -45,11 +45,11 @@
  * Adds a converter to the registry. Raises an exception if the a converter for the same type 
  * already exists.
  */
-- (void)register:(id <TyphoonTypeConverter>)converter;
+- (void)registerTypeConverter:(id <TyphoonTypeConverter>)converter;
 
 /**
  * Unregister a type converter.
  */
-- (void)unregister:(id <TyphoonTypeConverter>)converter;
+- (void)unregisterTypeConverter:(id <TyphoonTypeConverter>)converter;
 
 @end

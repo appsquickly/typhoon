@@ -69,6 +69,11 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     [_injectedProperties addObject:property];
 }
 
+- (void)removeInjectedProperty:(TyphoonAbstractInjectedProperty *)property
+{
+    [_injectedProperties removeObject:property];
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 

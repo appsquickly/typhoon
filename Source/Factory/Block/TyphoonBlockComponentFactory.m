@@ -18,7 +18,7 @@
 #import "TyphoonDefinition.h"
 #import "OCLogTemplate.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
-
+#import "TyphoonAssemblyPropertyInjectionPostProcessor.h"
 
 @implementation TyphoonBlockComponentFactory
 
@@ -47,6 +47,7 @@
 {
     self = [super init];
     if (self) {
+        [self attachPostProcessor:[TyphoonAssemblyPropertyInjectionPostProcessor new]];
         for (TyphoonAssembly *assembly in assemblies) {
             [self buildAssembly:assembly];
         }

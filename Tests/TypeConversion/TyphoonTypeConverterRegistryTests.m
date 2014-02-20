@@ -51,7 +51,7 @@
 {
     @try {
         TyphoonNSURLTypeConverter *converter = [[TyphoonNSURLTypeConverter alloc] init];
-        [_registry register:converter];
+        [_registry registerTypeConverter    :converter];
         STFail(@"SHould have thrown exception");
     }
     @catch (NSException *e) {

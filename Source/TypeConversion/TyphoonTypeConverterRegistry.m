@@ -81,7 +81,7 @@
     return _primitiveTypeConverter;
 }
 
-- (void)register:(id <TyphoonTypeConverter>)converter;
+- (void)registerTypeConverter:(id <TyphoonTypeConverter>)converter;
 {
     id classOrProtocol = [converter supportedType];
     if (!([_typeConverters objectForKey:classOrProtocol])) {
@@ -94,7 +94,7 @@
     }
 }
 
-- (void)unregister:(id <TyphoonTypeConverter>)converter
+- (void)unregisterTypeConverter:(id <TyphoonTypeConverter>)converter
 {
     [_typeConverters removeObjectForKey:[converter supportedType]];
 }
@@ -105,17 +105,17 @@
 
 - (void)registerSharedConverters
 {
-    [self register:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:NO]];
-    [self register:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:YES]];
-    [self register:[[TyphoonNSURLTypeConverter alloc] init]];
+    [self registerTypeConverter:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:NO]];
+    [self registerTypeConverter:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:YES]];
+    [self registerTypeConverter:[[TyphoonNSURLTypeConverter alloc] init]];
 }
 
 - (void)registerPlatformConverters
 {
 #if TARGET_OS_IPHONE
     {
-        [self register:[[TyphoonUIColorTypeConverter alloc] init]];
-        [self register:[[TyphoonBundledImageTypeConverter alloc] init]];
+        [self registerTypeConverter:[[TyphoonUIColorTypeConverter alloc] init]];
+        [self registerTypeConverter:[[TyphoonBundledImageTypeConverter alloc] init]];
     }
 #else
     {
