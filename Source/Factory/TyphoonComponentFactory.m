@@ -190,6 +190,7 @@ static TyphoonComponentFactory *defaultFactory;
 
 - (void)injectProperties:(id)instance
 {
+    if (![self isLoaded]) {[self load];}
     Class class = [instance class];
     for (TyphoonDefinition *definition in _registry) {
         if (definition.type == class) {
