@@ -13,6 +13,14 @@
 
 #import "TyphoonTypeConverter.h"
 
-
+/**
+* A type converter for UIColor.
+*
+* The formats supported are:
+* Hexadecimal, #RRGGBB or #AARRGGBB
+* Css-style, rgb(r,g,b) or rgba(r,g,b,a)
+*
+*/
 @interface TyphoonUIColorTypeConverter : NSObject <TyphoonTypeConverter>
+
 @end
