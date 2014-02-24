@@ -352,6 +352,8 @@
 		FA1E2C3418B0BD8500744771 /* TyphoonFactoryPropertyInjectionPostProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = FA1E2C3118B0BD8500744771 /* TyphoonFactoryPropertyInjectionPostProcessor.h */; };
 		FA1E2C3518B0BD8500744771 /* TyphoonFactoryPropertyInjectionPostProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1E2C3218B0BD8500744771 /* TyphoonFactoryPropertyInjectionPostProcessor.m */; };
 		FA1E2C3618B0BD8500744771 /* TyphoonFactoryPropertyInjectionPostProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1E2C3218B0BD8500744771 /* TyphoonFactoryPropertyInjectionPostProcessor.m */; };
+		FA381FB418BBB95C0094BBFA /* TyphoonStoryboard.h in Headers */ = {isa = PBXBuildFile; fileRef = FA381FB218BBB95C0094BBFA /* TyphoonStoryboard.h */; };
+		FA381FB518BBB95C0094BBFA /* TyphoonStoryboard.m in Sources */ = {isa = PBXBuildFile; fileRef = FA381FB318BBB95C0094BBFA /* TyphoonStoryboard.m */; };
 		FA7A961A1895370900053EAE /* NSObject+PropertyInjection.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7A96181895370900053EAE /* NSObject+PropertyInjection.h */; };
 		FA7A961B1895370900053EAE /* NSObject+PropertyInjection.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7A96181895370900053EAE /* NSObject+PropertyInjection.h */; };
 		FA7A961C1895370900053EAE /* NSObject+PropertyInjection.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7A96191895370900053EAE /* NSObject+PropertyInjection.m */; };
@@ -575,6 +577,8 @@
 		FA1E2C2C18B0B0DF00744771 /* TyphoonAssemblyPropertyInjectionPostProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblyPropertyInjectionPostProcessor.m; sourceTree = "<group>"; };
 		FA1E2C3118B0BD8500744771 /* TyphoonFactoryPropertyInjectionPostProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonFactoryPropertyInjectionPostProcessor.h; sourceTree = "<group>"; };
 		FA1E2C3218B0BD8500744771 /* TyphoonFactoryPropertyInjectionPostProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonFactoryPropertyInjectionPostProcessor.m; sourceTree = "<group>"; };
+		FA381FB218BBB95C0094BBFA /* TyphoonStoryboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonStoryboard.h; sourceTree = "<group>"; };
+		FA381FB318BBB95C0094BBFA /* TyphoonStoryboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonStoryboard.m; sourceTree = "<group>"; };
 		FA7A96181895370900053EAE /* NSObject+PropertyInjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PropertyInjection.h"; sourceTree = "<group>"; };
 		FA7A96191895370900053EAE /* NSObject+PropertyInjection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PropertyInjection.m"; sourceTree = "<group>"; };
 		FA8AA3F118AD4055001B88CE /* TyphoonPropertyInjectedByComponentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonPropertyInjectedByComponentFactory.h; sourceTree = "<group>"; };
@@ -728,6 +732,7 @@
 		BA79809BD126B307EFF68239 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				FA381FB118BBB9450094BBFA /* Storyboard */,
 				466CC659185D589600742220 /* Configuration */,
 				466CC65D185D589600742220 /* TypeConversion */,
 			);
@@ -1106,6 +1111,15 @@
 			name = PostProcessors;
 			sourceTree = "<group>";
 		};
+		FA381FB118BBB9450094BBFA /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				FA381FB218BBB95C0094BBFA /* TyphoonStoryboard.h */,
+				FA381FB318BBB95C0094BBFA /* TyphoonStoryboard.m */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		FA99165F189838F9000AC4B5 /* Pool */ = {
 			isa = PBXGroup;
 			children = (
@@ -1138,6 +1152,7 @@
 				FA9916621898390E000AC4B5 /* TyphoonComponentsPool.h in Headers */,
 				466CC667185D589600742220 /* TyphoonUIColorTypeConverter.h in Headers */,
 				4BC6492917A20BD7007F0463 /* TyphoonParameterInjectedByReference.h in Headers */,
+				FA381FB418BBB95C0094BBFA /* TyphoonStoryboard.h in Headers */,
 				4BC6492A17A20BD7007F0463 /* TyphoonParameterInjectedWithStringRepresentation.h in Headers */,
 				FAD826991891513C009D9A27 /* TyphoonPropertyInjectedByFactoryReference.h in Headers */,
 				4BC6492B17A20BD7007F0463 /* TyphoonDefinition.h in Headers */,
@@ -1405,6 +1420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA381FB518BBB95C0094BBFA /* TyphoonStoryboard.m in Sources */,
 				4BC648F917A20BD7007F0463 /* TyphoonRXMLElement+XmlComponentFactory.m in Sources */,
 				4BC648FA17A20BD7007F0463 /* TyphoonRXMLElement.m in Sources */,
 				4BC648FB17A20BD7007F0463 /* TyphoonXmlComponentFactory.m in Sources */,

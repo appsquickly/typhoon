@@ -358,6 +358,12 @@
 		FA3046EC18924995007E3BA4 /* FactoryReferenceInjectionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3046EB18924995007E3BA4 /* FactoryReferenceInjectionsTests.m */; };
 		FA3046ED1892499F007E3BA4 /* FactoryReferenceInjectionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3046EB18924995007E3BA4 /* FactoryReferenceInjectionsTests.m */; };
 		FA3046EE189249A0007E3BA4 /* FactoryReferenceInjectionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3046EB18924995007E3BA4 /* FactoryReferenceInjectionsTests.m */; };
+		FA381FBA18BBC3E40094BBFA /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA381FB918BBC3E40094BBFA /* Storyboard.storyboard */; };
+		FA381FBC18BBC4030094BBFA /* StoryboardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA381FBB18BBC4030094BBFA /* StoryboardTests.m */; };
+		FA381FBF18BBC4430094BBFA /* StoryboardViewControllerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = FA381FBE18BBC4430094BBFA /* StoryboardViewControllerAssembly.m */; };
+		FA381FC018BBC6700094BBFA /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA381FB918BBC3E40094BBFA /* Storyboard.storyboard */; };
+		FA381FC118BBC6700094BBFA /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA381FB918BBC3E40094BBFA /* Storyboard.storyboard */; };
+		FA381FC418BBC9850094BBFA /* UniqueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA381FC318BBC9850094BBFA /* UniqueViewController.m */; };
 		FA99165C18983621000AC4B5 /* TyphoonObjectDeallocCallbackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA99165B18983621000AC4B5 /* TyphoonObjectDeallocCallbackTests.m */; };
 		FA99165D189836FC000AC4B5 /* TyphoonObjectDeallocCallbackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA99165B18983621000AC4B5 /* TyphoonObjectDeallocCallbackTests.m */; };
 		FA99165E18983703000AC4B5 /* TyphoonObjectDeallocCallbackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA99165B18983621000AC4B5 /* TyphoonObjectDeallocCallbackTests.m */; };
@@ -581,6 +587,12 @@
 		FA1D04C318A01385008586E0 /* TyphoonInvocationUtilsTestObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonInvocationUtilsTestObjects.h; sourceTree = "<group>"; };
 		FA1D04C418A01385008586E0 /* TyphoonInvocationUtilsTestObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonInvocationUtilsTestObjects.m; sourceTree = "<group>"; };
 		FA3046EB18924995007E3BA4 /* FactoryReferenceInjectionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FactoryReferenceInjectionsTests.m; path = Properties/FactoryReferenceInjectionsTests.m; sourceTree = "<group>"; };
+		FA381FB918BBC3E40094BBFA /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		FA381FBB18BBC4030094BBFA /* StoryboardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardTests.m; sourceTree = "<group>"; };
+		FA381FBD18BBC4430094BBFA /* StoryboardViewControllerAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardViewControllerAssembly.h; sourceTree = "<group>"; };
+		FA381FBE18BBC4430094BBFA /* StoryboardViewControllerAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardViewControllerAssembly.m; sourceTree = "<group>"; };
+		FA381FC218BBC9850094BBFA /* UniqueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniqueViewController.h; sourceTree = "<group>"; };
+		FA381FC318BBC9850094BBFA /* UniqueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniqueViewController.m; sourceTree = "<group>"; };
 		FA99165B18983621000AC4B5 /* TyphoonObjectDeallocCallbackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonObjectDeallocCallbackTests.m; sourceTree = "<group>"; };
 		FA99167718983D56000AC4B5 /* TyphoonWeakComponentsPoolTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonWeakComponentsPoolTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -648,6 +660,7 @@
 				4B84149C179B0EA600916BF5 /* Definition */,
 				4B8414A3179B0EA600916BF5 /* Factory */,
 				4B8414B7179B0EA600916BF5 /* Harlot.h */,
+				FA381FB818BBC3D40094BBFA /* Storyboard */,
 				4B8414B8179B0EA600916BF5 /* Model */,
 				4B8414D7179B0EA600916BF5 /* Resources */,
 				4B8414DF179B0EA600916BF5 /* Tests-Info.plist */,
@@ -1093,6 +1106,20 @@
 			path = Resolver;
 			sourceTree = "<group>";
 		};
+		FA381FB818BBC3D40094BBFA /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				FA381FB918BBC3E40094BBFA /* Storyboard.storyboard */,
+				FA381FBB18BBC4030094BBFA /* StoryboardTests.m */,
+				FA381FBD18BBC4430094BBFA /* StoryboardViewControllerAssembly.h */,
+				FA381FBE18BBC4430094BBFA /* StoryboardViewControllerAssembly.m */,
+				FA381FC218BBC9850094BBFA /* UniqueViewController.h */,
+				FA381FC318BBC9850094BBFA /* UniqueViewController.m */,
+			);
+			name = Storyboard;
+			path = Definition/Storyboard;
+			sourceTree = "<group>";
+		};
 		FA99167618983D25000AC4B5 /* WeakPool */ = {
 			isa = PBXGroup;
 			children = (
@@ -1209,6 +1236,7 @@
 				4B841521179B0EA600916BF5 /* ExceptionTestAssembly.xml in Resources */,
 				4B841523179B0EA600916BF5 /* XmlParsingCasesAssembly.xml in Resources */,
 				4B841525179B0EA600916BF5 /* MiddleAgesAssembly.xml in Resources */,
+				FA381FBA18BBC3E40094BBFA /* Storyboard.storyboard in Resources */,
 				4B841527179B0EA600916BF5 /* PropertyPlaceholderAssembly.xml in Resources */,
 				4B841529179B0EA600916BF5 /* SomeProperties.properties in Resources */,
 				4EB2191417B4F6EB00B901C9 /* SingletonsChainAssembly.xml in Resources */,
@@ -1227,6 +1255,7 @@
 				4B841522179B0EA600916BF5 /* ExceptionTestAssembly.xml in Resources */,
 				4B841524179B0EA600916BF5 /* XmlParsingCasesAssembly.xml in Resources */,
 				4B841526179B0EA600916BF5 /* MiddleAgesAssembly.xml in Resources */,
+				FA381FC018BBC6700094BBFA /* Storyboard.storyboard in Resources */,
 				4B841528179B0EA600916BF5 /* PropertyPlaceholderAssembly.xml in Resources */,
 				4B84152A179B0EA600916BF5 /* SomeProperties.properties in Resources */,
 				4EB2191517B4F6EB00B901C9 /* SingletonsChainAssembly.xml in Resources */,
@@ -1245,6 +1274,7 @@
 				4BC648E917A20AD2007F0463 /* ExceptionTestAssembly.xml in Resources */,
 				4BC648EA17A20AD2007F0463 /* XmlParsingCasesAssembly.xml in Resources */,
 				4BC648EB17A20AD2007F0463 /* MiddleAgesAssembly.xml in Resources */,
+				FA381FC118BBC6700094BBFA /* Storyboard.storyboard in Resources */,
 				4BC648EC17A20AD2007F0463 /* PropertyPlaceholderAssembly.xml in Resources */,
 				4BC648ED17A20AD2007F0463 /* SomeProperties.properties in Resources */,
 				4EB2191617B4F6EB00B901C9 /* SingletonsChainAssembly.xml in Resources */,
@@ -1420,6 +1450,7 @@
 				FA1D04C018A0134A008586E0 /* TyphoonInvocationUtilsTests.m in Sources */,
 				4B841501179B0EA600916BF5 /* TyphoonXmlComponentFactoryTests.m in Sources */,
 				4B841503179B0EA600916BF5 /* AutoWiringKnight.m in Sources */,
+				FA381FBF18BBC4430094BBFA /* StoryboardViewControllerAssembly.m in Sources */,
 				4B841505179B0EA600916BF5 /* AutoWiringSubClassedKnight.m in Sources */,
 				4B841507179B0EA600916BF5 /* CampaignQuest.m in Sources */,
 				4B841509179B0EA600916BF5 /* CavalryMan.m in Sources */,
@@ -1442,6 +1473,7 @@
 				4B84152F179B0EA600916BF5 /* TyphoonPrimitiveTypeConverterTests.m in Sources */,
 				46BD2236184F7481008E89E5 /* NSNullTypeConverter.m in Sources */,
 				4B841531179B0EA600916BF5 /* TyphoonTypeConverterRegistryTests.m in Sources */,
+				FA381FC418BBC9850094BBFA /* UniqueViewController.m in Sources */,
 				4B841533179B0EA600916BF5 /* TyphoonTypeDescriptorTests.m in Sources */,
 				4B0633AA17D29402009CDBD6 /* TyphoonComponentFactoryAwareTests.m in Sources */,
 				4BE1AA4F17A5876E00FE2DA1 /* UnsatisfiableClassFDependsOnGInInitializer.m in Sources */,
@@ -1490,6 +1522,7 @@
 				75AB572BB151F2951995C3AF /* InvalidCollaboratingAssembly.m in Sources */,
 				75AB5BB1EB0D008D12B7398C /* InvalidCollaboratingAssembly_Initializer.m in Sources */,
 				75AB59326F4F31EE0620EB14 /* TyphoonMiscUtilsTests.m in Sources */,
+				FA381FBC18BBC4030094BBFA /* StoryboardTests.m in Sources */,
 				75AB565A5EADD1EDC7525EBB /* TyphoonCollaboratingAssemblyPropertyEnumeratorTests.m in Sources */,
 				75AB5E3BBB07021C773A20C5 /* TyphoonCollaboratingAssemblyPropertyEnumeratorTests_AssemblyWithProperty.m in Sources */,
 				CAECD0B2FA59C0E4895A5B87 /* TyphoonComponentPostProcessorMock.m in Sources */,

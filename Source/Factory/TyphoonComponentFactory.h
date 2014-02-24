@@ -140,4 +140,9 @@
  */
 - (void)injectProperties:(id)instance;
 
+/**
+ * Injects the properties of an object, descripted in definition
+ */
+- (void)injectProperties:(id)instance withDefinition:(SEL)selector;
+
 @end

@@ -199,6 +199,17 @@ static TyphoonComponentFactory *defaultFactory;
     }
 }
 
+- (void)injectProperties:(id)instance withDefinition:(SEL)selector
+{
+    if (![self isLoaded]) {[self load];}
+    TyphoonDefinition *definition = [self definitionForKey:NSStringFromSelector(selector)];
+    if (definition) {
+        [self doPropertyInjectionEventsOn:instance withDefinition:definition];
+    } else {
+        [NSException raise:NSInvalidArgumentException format:@"Can't find definition for specified selector %@",NSStringFromSelector(selector)];
+    }
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
