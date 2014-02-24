@@ -56,6 +56,11 @@
     return description;
 }
 
+- (NSUInteger)hash
+{
+    return (NSUInteger)self.selector;
+}
+
 - (BOOL)isEqual:(id)other
 {
     if (other == self) {
