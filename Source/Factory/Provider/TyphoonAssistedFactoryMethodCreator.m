@@ -65,6 +65,7 @@
             break;
         }
     }
+#pragma unused(found)
     NSCAssert(found, @"protocol doesn't support factory method with name %@", NSStringFromSelector(methodName));
     free(methodDescriptions);
 
