@@ -212,6 +212,7 @@ I'll take all the help I can get | While Typhoon is free, open-source and volunt
 <a href="http://www.riotgames.com/">Riot Games</a>, previous contributor to Swiz for ActionScript : Advice, feedback and testing. 
 * <a href="http://www.jetbrains.com/">Jetbrains</a>, maker of very cool software development tools : Assistance with AppCode integration. 
 * <a href="http://es.linkedin.com/in/josegonzalezgomez/">José González Gómez</a>, Mobile and cloud developer at OPEN input : Feedback; testing, support for property placeholders in initializers. 
+* <a href="https://github.com/sergiou87">Sergio Padrino Recio</a> : Performance improvements.
 * ___Your name here!!!!!!!___ 
 
 *(If you've sent a pull request and didn't get a mention. . . sorry! Please let us know and we'll correct it).*
