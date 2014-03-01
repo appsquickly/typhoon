@@ -135,9 +135,20 @@
 #pragma mark - Building
 - (TyphoonDefinition *)populateCacheWithDefinitionForKey:(NSString *)key
 {
-    id d = [self definitionForKey:key];
-    [self populateCacheWithDefinition:d forKey:key];
+    id d = [self cachedDefinitionForKey:key];
+    
+    if (!d)
+    {
+        d = [self definitionForKey:key];
+        [self populateCacheWithDefinition:d forKey:key];
+    }
+    
     return d;
+}
+
+- (id)cachedDefinitionForKey:(NSString *)key
+{
+    return _cachedDefinitionsForMethodName[key];
 }
 
 - (id)definitionForKey:(NSString *)key
