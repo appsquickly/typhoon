@@ -152,7 +152,7 @@
         case TyphoonPrimitiveTypeVoid: {
             /* Inject all pointers to void and unknown pointers just like void pointers */
             if (requiredType.isPointer) {
-                void *pointer = [self convertToInt:textValue];
+                void *pointer = (void *)[self convertToInt:textValue];
                 value = [NSValue valueWithPointer:pointer];
             }
             else {

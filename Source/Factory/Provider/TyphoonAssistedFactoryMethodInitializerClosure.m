@@ -48,7 +48,9 @@
         _methodSignature = methodSignature;
         _closedMethodSignature = [_returnType instanceMethodSignatureForSelector:_initSelector];
 
+#ifdef DEBUG
         NSUInteger count = _closedMethodSignature.numberOfArguments - 2;
+#endif
         NSAssert([self validateInitializerParameterCount:count], @"parameter map for %s do not fill all %lu parameters", sel_getName(_initSelector), (unsigned long) count);
     }
 
