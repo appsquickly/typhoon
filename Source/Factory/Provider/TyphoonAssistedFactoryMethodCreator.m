@@ -40,35 +40,58 @@
     if (self) {
         _factoryMethod = factoryMethod;
     }
-
+    
     return self;
 }
 
 - (void)createFromProtocol:(Protocol *)protocol inClass:(Class)factoryClass
 {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
-        reason:@"You should not create instances of TyphoonAssistedFactoryMethodCreator directly" userInfo:nil];
+                                   reason:@"You should not create instances of TyphoonAssistedFactoryMethodCreator directly" userInfo:nil];
 }
 
-- (struct objc_method_description)methodDescriptionFor:(SEL)methodName inProtocol:(Protocol *)protocol
+- (BOOL)methodDescriptionFor:(SEL)methodName inProtocol:(Protocol *)protocol methodDescription:(struct objc_method_description *)methodDescription
 {
     unsigned int methodCount = 0;
+    
     struct objc_method_description *methodDescriptions = protocol_copyMethodDescriptionList(protocol, YES, YES, &methodCount);
-
-    // Search for the right obcj_method_description
-    struct objc_method_description methodDescription;
     BOOL found = NO;
     for (unsigned int idx = 0; idx < methodCount; idx++) {
-        methodDescription = methodDescriptions[idx];
-        if (methodDescription.name == methodName) {
+        *methodDescription = methodDescriptions[idx];
+        if (methodDescription->name == methodName) {
             found = YES;
             break;
         }
     }
-#pragma unused(found)
-    NSCAssert(found, @"protocol doesn't support factory method with name %@", NSStringFromSelector(methodName));
     free(methodDescriptions);
+    
+    return found;
+}
 
+- (struct objc_method_description)methodDescriptionFor:(SEL)methodName inProtocol:(Protocol *)protocol
+{
+    // Search for the right obcj_method_description
+    struct objc_method_description methodDescription;
+    BOOL found = [self methodDescriptionFor:methodName inProtocol:protocol methodDescription:&methodDescription];
+    
+    if (!found) {
+        unsigned int protocolCount = 0;
+        
+        __unsafe_unretained Protocol **protocols = protocol_copyProtocolList(protocol, &protocolCount);
+        for (int i = 0; i < protocolCount; i++) {
+            Protocol *nestedProtocol = protocols[i];
+            if (nestedProtocol != @protocol(NSObject)) {
+                found = [self methodDescriptionFor:methodName inProtocol:nestedProtocol methodDescription:&methodDescription];
+                if (found) {
+                    break;
+                }
+            }
+        }
+        free(protocols);
+    }
+    
+    NSCAssert(found, @"protocol doesn't support factory method with name %@", NSStringFromSelector(methodName));
+    
     return methodDescription;
 }
 
