@@ -36,7 +36,7 @@
 - (BOOL)isPrimitiveParameter
 {
     BOOL isClass = [_initializer isClassMethod];
-    Class class = [_initializer.definition type];
+    Class class = _initializer.definition.factory ? _initializer.definition.factory.type : _initializer.definition.type;
 
     NSArray *typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:_initializer.selector ofClass:class isClassMethod:isClass];
 
