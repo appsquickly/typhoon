@@ -49,7 +49,6 @@ void TyphoonAssistedFactoryCreatorForEachMethodInProtocol(Protocol *protocol, Ty
             TyphoonAssistedFactoryCreatorForEachMethodInProtocol(nestedProtocol, enumerationBlock);
         }
     }
-    
     free(protocols);
     
     unsigned int methodCount = 0;
@@ -70,6 +69,7 @@ void TyphoonAssistedFactoryCreatorForEachPropertyInProtocol(Protocol *protocol, 
             TyphoonAssistedFactoryCreatorForEachPropertyInProtocol(nestedProtocol, enumerationBlock);
         }
     }
+    free(protocols);
     
     unsigned int propertiesCount = 0;
     objc_property_t *properties = protocol_copyPropertyList(protocol, &propertiesCount);

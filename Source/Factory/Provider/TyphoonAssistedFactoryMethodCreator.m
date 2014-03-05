@@ -50,7 +50,7 @@
                                    reason:@"You should not create instances of TyphoonAssistedFactoryMethodCreator directly" userInfo:nil];
 }
 
-- (BOOL)methodDescriptionFor:(SEL)methodName inProtocol:(Protocol *)protocol methodDescription:(struct objc_method_description *)methodDescription
+- (BOOL)methodDescription:(struct objc_method_description *)methodDescription forMethodName:(SEL)methodName inProtocol:(Protocol *)protocol
 {
     unsigned int methodCount = 0;
     
@@ -72,7 +72,7 @@
 {
     // Search for the right obcj_method_description
     struct objc_method_description methodDescription;
-    BOOL found = [self methodDescriptionFor:methodName inProtocol:protocol methodDescription:&methodDescription];
+    BOOL found = [self methodDescription:&methodDescription forMethodName:methodName inProtocol:protocol];
     
     if (!found) {
         unsigned int protocolCount = 0;
@@ -81,7 +81,7 @@
         for (int i = 0; i < protocolCount; i++) {
             Protocol *nestedProtocol = protocols[i];
             if (nestedProtocol != @protocol(NSObject)) {
-                found = [self methodDescriptionFor:methodName inProtocol:nestedProtocol methodDescription:&methodDescription];
+                found = [self methodDescription:&methodDescription forMethodName:methodName inProtocol:nestedProtocol];
                 if (found) {
                     break;
                 }
