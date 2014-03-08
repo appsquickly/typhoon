@@ -47,7 +47,7 @@ static const char *kTyphoonKey;
 
 + (TyphoonStoryboard *)storyboardWithName:(NSString *)name bundle:(NSBundle *)storyboardBundleOrNil
 {
-    return [super storyboardWithName:name bundle:storyboardBundleOrNil];
+    return (TyphoonStoryboard *)[super storyboardWithName:name bundle:storyboardBundleOrNil];
 }
 
 + (TyphoonStoryboard *)storyboardWithName:(NSString *)name factory:(TyphoonComponentFactory *)factory bundle:(NSBundle *)bundleOrNil
