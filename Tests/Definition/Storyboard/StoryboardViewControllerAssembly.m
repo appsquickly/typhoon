@@ -13,6 +13,13 @@
 
 @implementation StoryboardViewControllerAssembly
 
+- (id) initialViewController
+{
+    return [TyphoonDefinition withClass:[UIViewController class] properties:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(title) withObjectInstance:@"Initial"];
+    }];
+}
+
 - (id) firstViewController
 {
     return [TyphoonDefinition withClass:[UIViewController class] properties:^(TyphoonDefinition *definition) {
