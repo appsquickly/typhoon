@@ -95,6 +95,11 @@
     return NSSelectorFromString(stringValue);
 }
 
+- (void *)convertToPointer:(NSString *)stringValue
+{
+    return [stringValue integerValue];
+}
+
 /* ====================================================================================================================================== */
 - (id)valueFromText:(NSString *)textValue withType:(TyphoonTypeDescriptor *)requiredType
 {
@@ -152,7 +157,7 @@
         case TyphoonPrimitiveTypeVoid: {
             /* Inject all pointers to void and unknown pointers just like void pointers */
             if (requiredType.isPointer) {
-                void *pointer = (void *) [self convertToLong:textValue];
+                void *pointer = [self convertToPointer:textValue];
                 value = [NSValue valueWithPointer:pointer];
             }
             else {

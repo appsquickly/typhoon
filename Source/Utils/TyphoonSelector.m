@@ -21,7 +21,7 @@
 
 @implementation TyphoonSelector
 {
-
+    NSUInteger _hash;
 }
 
 + (TyphoonSelector *)selectorWithName:(NSString *)aName
@@ -44,6 +44,7 @@
     self = [super init];
     if (self) {
         _selector = aSelector;
+        _hash = [[NSValue valueWithBytes:&_selector objCType:@encode(SEL)] hash];
     }
     return self;
 }
@@ -58,7 +59,7 @@
 
 - (NSUInteger)hash
 {
-    return (NSUInteger) sel_getName(self.selector);
+    return _hash;
 }
 
 - (BOOL)isEqual:(id)other
