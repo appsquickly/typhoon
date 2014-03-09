@@ -46,15 +46,6 @@
     assertThat([assistedFactory injectionValueForProperty:@"property"], is(equalTo(value)));
 }
 
-- (void)test_dependency_value_should_return_value_previously_set
-{
-    id value = [[NSObject alloc] init];
-
-    [assistedFactory setDependencyValue:value forProperty:@"property"];
-
-    assertThat([assistedFactory dependencyValueForProperty:@"property"], is(equalTo(value)));
-}
-
 - (void)test_dependency_value_should_return_value_returned_from_injected_value
 {
     id value = [[NSObject alloc] init];
@@ -72,11 +63,6 @@
 - (void)test_should_respond_to_dummyGetter
 {
     assertThatBool([assistedFactory respondsToSelector:@selector(_dummyGetter)], is(equalToBool(YES)));
-}
-
-- (void)test_should_respond_to_setDummySetter
-{
-    assertThatBool([assistedFactory respondsToSelector:@selector(_setDummySetter:)], is(equalToBool(YES)));
 }
 
 - (void)test_should_conform_to_TyphoonComponentFactoryAware

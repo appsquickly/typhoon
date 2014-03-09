@@ -131,8 +131,15 @@
     Class klass = [self paymentFactoryClass];
     id <PaymentFactory> factory = [[klass alloc] init];
 
-    [(NSObject *) factory setValue:_creditService forKey:@"creditService"];
-    [(NSObject *) factory setValue:_authService forKey:@"authService"];
+    id mockCreditServiceInjectedProperty = mock([TyphoonAbstractInjectedProperty class]);
+    [given([mockCreditServiceInjectedProperty name]) willReturn:@"creditService"];
+
+    id mockAuthServiceInjectedProperty = mock([TyphoonAbstractInjectedProperty class]);
+    [given([mockAuthServiceInjectedProperty name]) willReturn:@"authService"];
+
+    [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockCreditServiceInjectedProperty withType:nil lazyValue:^{ return _creditService; }];
+    [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockAuthServiceInjectedProperty withType:nil lazyValue:^{ return _authService; }];
+
     assertThat(factory.creditService, is(_creditService));
     assertThat(factory.authService, is(_authService));
 }
@@ -142,7 +149,10 @@
     Class klass = [self pizzaFactoryClass];
     id <PizzaFactory> factory = [[klass alloc] init];
 
-    [(NSObject *) factory setValue:_creditService forKey:@"creditService"];
+    id mockCreditServiceInjectedProperty = mock([TyphoonAbstractInjectedProperty class]);
+    [given([mockCreditServiceInjectedProperty name]) willReturn:@"creditService"];
+
+    [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockCreditServiceInjectedProperty withType:nil lazyValue:^{ return _creditService; }];
 
     id <Pizza> pizza = [factory pizzaWithRadius:123.0 ingredients:@[
         @"1",
@@ -159,7 +169,10 @@
     Class klass = [self pizzaFactoryClass];
     id <PizzaFactory> factory = [[klass alloc] init];
 
-    [(NSObject *) factory setValue:_creditService forKey:@"creditService"];
+    id mockCreditServiceInjectedProperty = mock([TyphoonAbstractInjectedProperty class]);
+    [given([mockCreditServiceInjectedProperty name]) willReturn:@"creditService"];
+
+    [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockCreditServiceInjectedProperty withType:nil lazyValue:^{ return _creditService; }];
 
     id <Pizza> pizza = [factory smallPizzaWithIngredients:@[
         @"3",
@@ -176,8 +189,14 @@
     Class klass = [self paymentFactoryClass];
     id <PaymentFactory> factory = [[klass alloc] init];
 
-    [(NSObject *) factory setValue:_creditService forKey:@"creditService"];
-    [(NSObject *) factory setValue:_authService forKey:@"authService"];
+    id mockCreditServiceInjectedProperty = mock([TyphoonAbstractInjectedProperty class]);
+    [given([mockCreditServiceInjectedProperty name]) willReturn:@"creditService"];
+
+    id mockAuthServiceInjectedProperty = mock([TyphoonAbstractInjectedProperty class]);
+    [given([mockAuthServiceInjectedProperty name]) willReturn:@"authService"];
+
+    [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockCreditServiceInjectedProperty withType:nil lazyValue:^{ return _creditService; }];
+    [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockAuthServiceInjectedProperty withType:nil lazyValue:^{ return _authService; }];
 
     NSDate *now = [NSDate date];
     id <Payment> payment = [factory paymentWithStartDate:now amount:456];

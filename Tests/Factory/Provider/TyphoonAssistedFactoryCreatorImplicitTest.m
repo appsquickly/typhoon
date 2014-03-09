@@ -22,6 +22,7 @@
 #import "PaymentImpl.h"
 #import "Person.h"
 #import "PersonFactory.h"
+#import "TyphoonAbstractInjectedProperty.h"
 #import "TyphoonAssistedFactoryBase.h"
 #import "TyphoonDefinition.h"
 
@@ -111,8 +112,15 @@
     Class klass = [self paymentFactoryClass];
     id <PaymentFactory> factory = [[klass alloc] init];
 
-    [(NSObject *) factory setValue:_creditService forKey:@"creditService"];
-    [(NSObject *) factory setValue:_authService forKey:@"authService"];
+    id mockCreditServiceInjectedProperty = mock([TyphoonAbstractInjectedProperty class]);
+    [given([mockCreditServiceInjectedProperty name]) willReturn:@"creditService"];
+
+    id mockAuthServiceInjectedProperty = mock([TyphoonAbstractInjectedProperty class]);
+    [given([mockAuthServiceInjectedProperty name]) willReturn:@"authService"];
+
+    [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockCreditServiceInjectedProperty withType:nil lazyValue:^{ return _creditService; }];
+    [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockAuthServiceInjectedProperty withType:nil lazyValue:^{ return _authService; }];
+
     assertThat(factory.creditService, is(_creditService));
     assertThat(factory.authService, is(_authService));
 }
@@ -122,8 +130,14 @@
     Class klass = [self paymentFactoryClass];
     id <PaymentFactory> factory = [[klass alloc] init];
 
-    [(NSObject *) factory setValue:_creditService forKey:@"creditService"];
-    [(NSObject *) factory setValue:_authService forKey:@"authService"];
+    id mockCreditServiceInjectedProperty = mock([TyphoonAbstractInjectedProperty class]);
+    [given([mockCreditServiceInjectedProperty name]) willReturn:@"creditService"];
+
+    id mockAuthServiceInjectedProperty = mock([TyphoonAbstractInjectedProperty class]);
+    [given([mockAuthServiceInjectedProperty name]) willReturn:@"authService"];
+
+    [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockCreditServiceInjectedProperty withType:nil lazyValue:^{ return _creditService; }];
+    [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockAuthServiceInjectedProperty withType:nil lazyValue:^{ return _authService; }];
 
     NSDate *now = [NSDate date];
     id <Payment> payment = [factory paymentWithStartDate:now amount:456];
@@ -139,8 +153,14 @@
     Class klass = [self personFactoryClass];
     id <PersonFactory> factory = [[klass alloc] init];
 
-    [(NSObject *) factory setValue:_creditService forKey:@"creditService"];
-    [(NSObject *) factory setValue:_authService forKey:@"authService"];
+    id mockCreditServiceInjectedProperty = mock([TyphoonAbstractInjectedProperty class]);
+    [given([mockCreditServiceInjectedProperty name]) willReturn:@"creditService"];
+
+    id mockAuthServiceInjectedProperty = mock([TyphoonAbstractInjectedProperty class]);
+    [given([mockAuthServiceInjectedProperty name]) willReturn:@"authService"];
+
+    [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockCreditServiceInjectedProperty withType:nil lazyValue:^{ return _creditService; }];
+    [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockAuthServiceInjectedProperty withType:nil lazyValue:^{ return _authService; }];
 
     Person *p1 = [factory personWithFirstName:@"foo" lastName:@"bar"];
     assertThatBool(p1.usedInitializer == @selector(initWithCreditService:authService:firstName:lastName:), is(equalToBool(YES)));

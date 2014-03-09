@@ -43,8 +43,9 @@
 
     id <PaymentFactory> factory = [assembly paymentFactory];
 
-    assertThatUnsignedInteger([AuthServiceImpl instanceCounter], is(equalToUnsignedInteger(authServiceInstanceCounter)));
     assertThatUnsignedInteger([CreditServiceImpl instanceCounter], is(equalToUnsignedInteger(creditServiceInstanceCounter)));
+
+    assertThatUnsignedInteger([AuthServiceImpl instanceCounter], is(equalToUnsignedInteger(authServiceInstanceCounter)));
 
     // No need for the return value.
     [factory paymentWithStartDate:[NSDate date] amount:123];
@@ -118,6 +119,17 @@
 
         assertThat(pizza2, is(notNilValue()));
     }
+}
+
+- (void)test_assisted_factory_honors_prototype_and_singleton_scopes
+{
+    id <PaymentFactory> factory = [assembly paymentFactory];
+
+    PaymentImpl *payment1 = [factory paymentWithStartDate:[NSDate date] amount:456];
+    PaymentImpl *payment2 = [factory paymentWithStartDate:[NSDate date] amount:789];
+
+    assertThat(payment1.authService, is(equalTo(payment2.authService)));
+    assertThat(payment1.creditService, isNot(equalTo(payment2.creditService)));
 }
 
 @end

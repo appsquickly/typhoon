@@ -32,13 +32,7 @@
 /** Used internally by the getters of the properties in the subclasses */
 - (id)dependencyValueForProperty:(NSString *)property;
 
-/** Used internally by the setters of the properties in the subclasses */
-- (void)setDependencyValue:(id)value forProperty:(NSString *)property;
-
 /** Used to get the type encoding during the construction of subclasses */
 - (id)_dummyGetter;
-
-/** Used to get the type encoding during the construction of subclasses */
-- (void)_setDummySetter:(id)value;
 
 @end

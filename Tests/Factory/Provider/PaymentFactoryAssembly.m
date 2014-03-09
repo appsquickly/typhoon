@@ -23,7 +23,10 @@
 
 - (id)authService
 {
-    return [TyphoonDefinition withClass:[AuthServiceImpl class]];
+    return [TyphoonDefinition withClass:[AuthServiceImpl class] properties:^(TyphoonDefinition *definition) {
+        definition.scope = TyphoonScopeSingleton;
+        definition.lazy = YES;
+    }];
 }
 
 - (id)creditService

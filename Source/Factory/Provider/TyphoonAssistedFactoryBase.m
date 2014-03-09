@@ -15,7 +15,6 @@
 @implementation TyphoonAssistedFactoryBase
 {
     NSMutableDictionary *_injections;
-    NSMutableDictionary *_values;
 }
 
 - (instancetype)init
@@ -23,7 +22,6 @@
     self = [super init];
     if (self) {
         _injections = [[NSMutableDictionary alloc] init];
-        _values = [[NSMutableDictionary alloc] init];
     }
 
     return self;
@@ -37,21 +35,7 @@
 - (id)dependencyValueForProperty:(NSString *)property
 {
     @synchronized (self) {
-        id value = [_values objectForKey:property];
-
-        if (!value) {
-            value = ((TyphoonPropertyInjectionLazyValue) [self injectionValueForProperty:property])();
-            [_values setObject:value forKey:property];
-        }
-
-        return value;
-    }
-}
-
-- (void)setDependencyValue:(id)value forProperty:(NSString *)property
-{
-    @synchronized (self) {
-        [_values setObject:value forKey:property];
+        return ((TyphoonPropertyInjectionLazyValue) [self injectionValueForProperty:property])();
     }
 }
 
@@ -60,12 +44,7 @@
     return nil;
 }
 
-- (void)_setDummySetter:(id)value
-{
-}
-
-- (BOOL)shouldInjectProperty:(id <TyphoonPropertyInjection>)property withType:(TyphoonTypeDescriptor *)type
-    lazyValue:(TyphoonPropertyInjectionLazyValue)lazyValue
+- (BOOL)shouldInjectProperty:(id <TyphoonPropertyInjection>)property withType:(TyphoonTypeDescriptor *)type lazyValue:(TyphoonPropertyInjectionLazyValue)lazyValue
 {
     [_injections setObject:lazyValue forKey:property.propertyName];
     return NO;
