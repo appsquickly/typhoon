@@ -13,13 +13,41 @@
 
 @interface TyphoonDefinition (ExperimentalAPI)
 
+#pragma mark - Adding injection to definition
+
+/** 
+ * Shorthand for _injectProperty:with: with InjectionByType() injection
+ */
 - (void)_injectProperty:(SEL)selector;
+
+/**
+ * Injects property for gived selector with injection, where injection can be
+ * - obtained from Injection* functions
+ * - another definition
+ * - assembly or collaboration assembly reference (TyphoonComponentFactory will be injected)
+ */
 - (void)_injectProperty:(SEL)selector with:(id)injection;
 
+
+#pragma mark - Making injections from definition
+
+/**
+ * Returns injection which can be used in _injectProperty:with: method
+ * This method will injects result of factorySelector invocation
+ * @param factorySelector selector to invoke on resolved definition
+ */
 - (id)_injectionFromSelector:(SEL)factorySelector;
+
+/**
+ * Returns injection which can be used in _injectProperty:with: method
+ * This method will injects valueForKeyPath: with given keyPath
+ * @param keyPath path used as argument while calling valueForKeyPath: on resolved definition
+ */
 - (id)_injectionFromKeyPath:(NSString *)keyPath;
 
 @end
 
-id InjectionFromStringRepresentation(NSString *string);
-id InjectionFromCollection(void (^collection)(TyphoonPropertyInjectedAsCollection *collectionBuilder));
+id InjectionByType(void);
+id InjectionWithObject(id object);
+id InjectionWithObjectFromString(NSString *string);
+id InjectionWithCollection(void (^collection)(TyphoonPropertyInjectedAsCollection *collectionBuilder));

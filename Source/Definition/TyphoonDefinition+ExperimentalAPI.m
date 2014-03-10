@@ -38,13 +38,13 @@
         [self _injectProperty:selector with:[injection customObjectInjection]];
     }
     else {
-        [self _injectProperty:selector with:[self injectionWithObjectInstance:injection]];
+        [self _injectProperty:selector with:InjectionWithObject(injection)];
     }
 }
 
 - (void)_injectProperty:(SEL)selector
 {
-    [self _injectProperty:selector with:[self injectionByType]];
+    [self _injectProperty:selector with:InjectionByType()];
 }
 
 #pragma mark - Injections
@@ -57,16 +57,6 @@
 - (id)_injectionFromKeyPath:(NSString *)keyPath
 {
     return [[TyphoonPropertyInjectedByFactoryReference alloc] initWithName:nil reference:self.key keyPath:keyPath];
-}
-
-- (id)injectionByType
-{
-    return [[TyphoonPropertyInjectedByType alloc] init];
-}
-
-- (id)injectionWithObjectInstance:(id)objectInstance
-{
-    return [[TyphoonPropertyInjectedAsObjectInstance alloc] initWithName:nil objectInstance:objectInstance];
 }
 
 #pragma mark - TyphoonObjectWithCustomInjection
@@ -108,12 +98,22 @@
 
 /////////////////////////////////// Injection making functions /////////////////////////////////////////////////////////////////////////
 
-id InjectionFromStringRepresentation(NSString *string)
+id InjectionWithObject(id object)
+{
+    return [[TyphoonPropertyInjectedAsObjectInstance alloc] initWithName:nil objectInstance:object];
+}
+
+id InjectionByType(void)
+{
+    return [[TyphoonPropertyInjectedByType alloc] init];
+}
+
+id InjectionWithObjectFromString(NSString *string)
 {
     return [[TyphoonPropertyInjectedWithStringRepresentation alloc] initWithName:nil value:string];
 }
 
-id InjectionFromCollection(void (^collection)(TyphoonPropertyInjectedAsCollection *collectionBuilder))
+id InjectionWithCollection(void (^collection)(TyphoonPropertyInjectedAsCollection *collectionBuilder))
 {
     TyphoonPropertyInjectedAsCollection *propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:nil];
     
