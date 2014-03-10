@@ -65,10 +65,10 @@
 
 - (void)buildDefinitionForKey:(NSString *)key
 {
-    [self builtDefinitionForKey:key];
+    [self builtDefinitionForKey:key args:nil];
 }
 
-- (TyphoonDefinition *)builtDefinitionForKey:(NSString *)key
+- (TyphoonDefinition *)builtDefinitionForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args
 {
     [self markCurrentlyResolvingKey:key];
 
@@ -79,6 +79,11 @@
     id cached = [self populateCacheWithDefinitionForKey:key];
     [self markKeyResolved:key];
 
+    if ([cached isKindOfClass:[TyphoonDefinition class]]) {
+        /* Set current runtime args to know passed arguments when build definition */
+        ((TyphoonDefinition *)cached)->_currentRuntimeArgs = args;
+    }
+    
     LogTrace(@"Did finish building definition for key: '%@'", key);
 
     return cached;

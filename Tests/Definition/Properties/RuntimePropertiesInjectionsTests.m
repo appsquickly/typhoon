@@ -10,6 +10,7 @@
 #import "Typhoon.h"
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
+#import "Quest.h"
 
 @interface RuntimePropertiesInjectionsTests : SenTestCase
 
@@ -32,5 +33,19 @@
     assertThatInt(knight.damselsRescued, equalToInt(6));
     assertThat(knight.foobar, equalTo(@"foobar"));
 }
+
+- (void)test_runtime_knight_quest
+{
+    Knight *knight = [factory knightWithRuntimeDamselsRescued:@3 runtimeQuestUrl:[NSURL URLWithString:@"http://google.com"]];
+    assertThat([knight.quest imageUrl], equalTo([NSURL URLWithString:@"http://google.com"]));
+    assertThatInt(knight.damselsRescued, equalToInt(3));
+}
+
+- (void)test_predefined_quest
+{
+    Knight *knight = [factory knightWithDefinedQuestUrl];
+    assertThat([knight.quest imageUrl], equalTo([NSURL URLWithString:@"http://example.com"]));
+}
+
 
 @end

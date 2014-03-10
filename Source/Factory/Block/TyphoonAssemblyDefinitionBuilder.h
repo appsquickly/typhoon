@@ -14,7 +14,7 @@
 
 @class TyphoonAssembly;
 @class TyphoonDefinition;
-
+@class TyphoonRuntimeArguments;
 
 @interface TyphoonAssemblyDefinitionBuilder : NSObject
 
@@ -24,7 +24,7 @@
 
 - (NSArray *)builtDefinitions;
 
-- (TyphoonDefinition *)builtDefinitionForKey:(NSString *)key;
+- (TyphoonDefinition *)builtDefinitionForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args;
 
 @property(readonly, unsafe_unretained) TyphoonAssembly *assembly;
 

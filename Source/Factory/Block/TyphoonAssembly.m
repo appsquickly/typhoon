@@ -22,6 +22,7 @@
 #import "TyphoonAssemblyDefinitionBuilder.h"
 #import "TyphoonCollaboratingAssemblyPropertyEnumerator.h"
 #import "TyphoonCollaboratingAssemblyProxy.h"
+#import "TyphoonRuntimeArguments.h"
 
 static NSMutableArray *reservedSelectorsAsStrings;
 
@@ -123,18 +124,20 @@ static NSMutableArray *reservedSelectorsAsStrings;
 
 + (void)provideDynamicImplementationToConstructDefinitionForSEL:(SEL)sel;
 {
-    IMP imp = [self implementationToConstructDefinitionForSEL:sel];
+    IMP imp = &ImplementationToConstructDefinitionAndCatchArguments;
     class_addMethod(self, sel, imp, "@");
 }
 
-+ (IMP)implementationToConstructDefinitionForSEL:(SEL)selWithAdvicePrefix
+static id ImplementationToConstructDefinitionAndCatchArguments(TyphoonAssembly *me, SEL selector, ...)
 {
-    return imp_implementationWithBlock((__bridge id) objc_unretainedPointer((TyphoonDefinition *) ^(TyphoonAssembly *me) {
-        NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selWithAdvicePrefix];
-        return [me->_definitionBuilder builtDefinitionForKey:key];
-    }));
+    va_list list;
+    va_start(list, selector);
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromVAList:list selector:selector];
+    va_end(list);
+    
+    NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
+    return [me->_definitionBuilder builtDefinitionForKey:key args:args];
 }
-
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
@@ -191,10 +194,9 @@ static NSMutableArray *reservedSelectorsAsStrings;
 
 - (void)prepareForUse
 {
-
-
     self.definitionSelectors = [self.adviser enumerateDefinitionSelectors];
     [self.adviser adviseAssembly];
 }
+
 
 @end

@@ -20,6 +20,8 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 #import "TyphoonInitializer.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonReferenceDefinition.h"
+#import "TyphoonAbstractInjectedProperty.h"
+#import "TyphoonPropertyInjectedWithRuntimeArg.h"
 
 @implementation TyphoonDefinition (Infrastructure)
 
@@ -94,6 +96,20 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     if (_type == nil) {
         [NSException raise:NSInvalidArgumentException format:@"Property 'clazz' is required."];
     }
+}
+
+- (BOOL) hasRuntimeInjections
+{
+    BOOL hasRuntimeInjections = NO;
+    
+    for (TyphoonAbstractInjectedProperty *injection in [self injectedProperties]) {
+        if ([injection isKindOfClass:[TyphoonPropertyInjectedWithRuntimeArg class]]) {
+            hasRuntimeInjections = YES;
+            break;
+        }
+    }
+    
+    return hasRuntimeInjections;
 }
 
 

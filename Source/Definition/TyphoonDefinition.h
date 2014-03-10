@@ -16,6 +16,8 @@
 @class TyphoonDefinition;
 @class TyphoonPropertyInjectedAsCollection;
 
+@class TyphoonRuntimeArguments;
+
 /**
 * @ingroup Definition
 * Describes the lifecycle of a Typhoon component.
@@ -62,6 +64,8 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
     NSMutableSet *_injectedProperties;
     TyphoonScope _scope;
     TyphoonDefinition *_factory;
+@public
+    TyphoonRuntimeArguments *_currentRuntimeArgs;
 }
 
 @property(nonatomic, readonly) Class type;

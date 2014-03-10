@@ -144,4 +144,31 @@
     }];
 }
 
+- (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeQuestUrl:(NSURL *)url
+{
+    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+        id quest = [self questWithRuntimeUrl:InjectionWithRuntimeArgumentAtIndex(1)];
+        [definition _injectProperty:@selector(quest) with:quest];
+        [definition _injectProperty:@selector(damselsRescued) with:InjectionWithRuntimeArgumentAtIndex(0)];
+        definition.scope = TyphoonScopePrototype;
+    }];
+}
+
+- (id)knightWithDefinedQuestUrl
+{
+    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+        id quest = [self questWithRuntimeUrl:[NSURL URLWithString:@"http://example.com"]];
+        [definition _injectProperty:@selector(quest) with:quest];
+    }];
+}
+
+- (id)questWithRuntimeUrl:(NSURL *)url
+{
+    return [TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition *definition) {
+        [definition _injectProperty:@selector(imageUrl) with:InjectionWithRuntimeArgumentAtIndex(0)];
+        definition.scope = TyphoonScopePrototype;
+    }];
+}
+
+
 @end

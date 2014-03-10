@@ -36,4 +36,10 @@
 
 - (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeFoobar:(NSObject *)runtimeObject;
 
+- (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeQuestUrl:(NSURL *)url;
+
+- (id)knightWithDefinedQuestUrl;
+
+- (id)questWithRuntimeUrl:(NSURL *)url;
+
 @end

@@ -41,6 +41,7 @@
  */
 + (instancetype)propertyPlaceholderWithResources:(NSArray *)resources;
 
+- (BOOL) hasRuntimeInjections;
 
 - (id)initWithClass:(Class)clazz key:(NSString *)key;
 

@@ -9,12 +9,11 @@
 #import "TyphoonRuntimeArguments.h"
 
 @implementation TyphoonRuntimeArguments {
-    NSMutableArray *args;
-    NSMethodSignature *signature;
-    SEL selector;
+    NSMutableArray *arguments;
 }
 
-+ (NSUInteger) numberOfArgumentsInSelector:(SEL)selector
+/* Counting ':' because methodSignature always for 'componentForKey:args:' selector */
++ (NSUInteger)numberOfArgumentsInSelector:(SEL)selector
 {
     NSString *string = NSStringFromSelector(selector);
     uint count = 0;
@@ -25,42 +24,65 @@
     return count;
 }
 
-+ (instancetype) argumentsFromInvocation:(NSInvocation *)invocation
++ (instancetype)argumentsFromInvocation:(NSInvocation *)invocation
 {
-    NSUInteger argc = [self numberOfArgumentsInSelector:[invocation selector]];
-    if (argc == 0) {
+    NSUInteger count = [self numberOfArgumentsInSelector:[invocation selector]];
+    if (count == 0) {
         return nil;
     }
+    NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:count];
     
-    return [[self alloc] initWithInvocation:invocation];
+    for (int i = 0; i < count; i++) {
+        void *argument;
+        [invocation getArgument:&argument atIndex:i+2];
+        [args addObject:(__bridge id)argument];
+    }
+    
+    return [[self alloc] initWithArguments:args];
 }
 
-- (id) initWithInvocation:(NSInvocation *)invocation
++ (instancetype)argumentsFromVAList:(va_list)list selector:(SEL)selector
 {
-    /* Counting ':' because methodSignature always for 'componentForKey:args:' selector */
-    NSUInteger argc = [[self class] numberOfArgumentsInSelector:[invocation selector]];
-    if (argc == 0) {
+    NSUInteger count = [self numberOfArgumentsInSelector:selector];
+    if (count == 0) {
         return nil;
     }
     
+    NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:count];
+    for (int i = 0; i < count; i++) {
+        [args addObject:va_arg(list, id)];
+    }
+    return [[self alloc] initWithArguments:args];
+}
+
+- (id)initWithArguments:(NSMutableArray *)array
+{
     self = [super init];
     if (self) {
-        args = [[NSMutableArray alloc] initWithCapacity:0];
-        for (int i = 0; i < argc; i++) {
-            void *argument;
-            [invocation getArgument:&argument atIndex:i+2];
-            [args addObject:(__bridge id)argument];
-        }
-        selector = [invocation selector];
-        signature = [invocation methodSignature];
-
+        arguments = array;
     }
     return self;
 }
 
-- (id) argumentValueAtIndex:(NSUInteger)index
+- (id)argumentValueAtIndex:(NSUInteger)index
 {
-    return args[index];
+    return arguments[index];
 }
 
+- (void)replaceArgumentAtIndex:(NSUInteger)index withArgument:(id)argument
+{
+    [arguments replaceObjectAtIndex:index withObject:argument];
+}
+
+- (NSUInteger)indexOfArgumentWithKind:(Class)clazz
+{
+    return [arguments indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        BOOL found = NO;
+        if ([obj isKindOfClass:clazz]) {
+            *stop = YES;
+            found = YES;
+        }
+        return found;
+    }];
+}
 @end

@@ -13,7 +13,7 @@
 #import "TyphoonPropertyInjectedByReference.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
-
+#import "TyphoonPropertyInjectedWithRuntimeArg.h"
 
 @implementation TyphoonPropertyInjectedByReference
 
@@ -37,10 +37,27 @@
 {
     [factory evaluateCircularDependency:self.reference propertyName:self.name instance:instance];
 
+    [self replaceArgsReferencesInBuildArgs:self.assemblyBuildArgs withRuntimeArgs:args];
+    
     if (![factory propertyIsCircular:self onInstance:instance]) {
-        return [factory componentForKey:self.reference];
+        return [factory componentForKey:self.reference args:self.assemblyBuildArgs];
     }
     return nil;
+}
+
+- (void) replaceArgsReferencesInBuildArgs:(TyphoonRuntimeArguments *)definitionCallArgs withRuntimeArgs:(TyphoonRuntimeArguments *)runtimeArgs
+{
+    if (definitionCallArgs && runtimeArgs) {
+        
+        NSUInteger indexToReplace;
+        Class argumentInjectionClass = [TyphoonPropertyInjectedWithRuntimeArg class];
+        
+        while ((indexToReplace = [definitionCallArgs indexOfArgumentWithKind:argumentInjectionClass]) != NSNotFound) {
+            TyphoonPropertyInjectedWithRuntimeArg *runtimeArgPlaceholder = [definitionCallArgs argumentValueAtIndex:indexToReplace];
+            id runtimeValue = [runtimeArgs argumentValueAtIndex:runtimeArgPlaceholder.index];
+            [definitionCallArgs replaceArgumentAtIndex:indexToReplace withArgument:runtimeValue];
+        }
+    }
 }
 
 /* ====================================================================================================================================== */

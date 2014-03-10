@@ -27,6 +27,10 @@
 
 @end
 
+@interface TyphoonDefinition (ExperimentalAPI) <TyphoonObjectWithCustomInjection>
+
+@end
+
 
 @implementation TyphoonDefinition (ExperimentalAPI)
 
@@ -65,7 +69,9 @@
 
 - (id)customObjectInjection
 {
-    return [[TyphoonPropertyInjectedByReference alloc] initWithName:nil reference:self.key];
+    TyphoonPropertyInjectedByReference *injection = [[TyphoonPropertyInjectedByReference alloc] initWithName:nil reference:self.key];
+    injection.assemblyBuildArgs = self->_currentRuntimeArgs;
+    return injection;
 }
 
 @end

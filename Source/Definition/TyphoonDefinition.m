@@ -69,6 +69,12 @@
         [NSException raise:NSInvalidArgumentException
             format:@"The lazy attribute is only applicable to singleton scoped definitions, but is set for definition: %@ ", definition];
     }
+    
+    if ([definition hasRuntimeInjections] && definition.scope != TyphoonScopePrototype) {
+        [NSException raise:NSInvalidArgumentException
+                    format:@"The runtime arguments injections are only applicable to prototype scoped definitions, but is set for definition: %@ ", definition];
+
+    }
 
     return definition;
 }

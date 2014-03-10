@@ -13,6 +13,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonAbstractInjectedProperty.h"
+#import "TyphoonRuntimeArguments.h"
 
 /**
 
@@ -21,6 +22,7 @@
 @interface TyphoonPropertyInjectedByReference : TyphoonAbstractInjectedProperty
 
 @property(nonatomic, strong, readonly) NSString *reference;
+@property(nonatomic, strong) TyphoonRuntimeArguments *assemblyBuildArgs;
 
 - (instancetype)initWithName:(NSString *)name reference:(NSString *)reference;
 
