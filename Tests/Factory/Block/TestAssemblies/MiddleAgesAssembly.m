@@ -19,6 +19,7 @@
 #import "SwordFactory.h"
 #import "Sword.h"
 #import "TyphoonParameterInjectedAsCollection.h"
+#import "TyphoonDefinition+ExperimentalAPI.h"
 
 @implementation MiddleAgesAssembly
 
@@ -133,5 +134,13 @@
         definition.factory = [self swordFactory];
     }];
 }
+
+//- (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeFoobar:(NSObject *)runtimeObject
+//{
+//    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+//        [definition _injectProperty:@selector(damselsRescued) with:@5];
+//        [definition _injectProperty:@selector(foobar) with:@"foo"];
+//    }];
+//}
 
 @end

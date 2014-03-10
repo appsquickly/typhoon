@@ -34,4 +34,6 @@
 
 - (id)serviceUrl;
 
+- (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeFoobar:(NSObject *)runtimeObject;
+
 @end
