@@ -135,12 +135,12 @@
     }];
 }
 
-//- (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeFoobar:(NSObject *)runtimeObject
-//{
-//    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
-//        [definition _injectProperty:@selector(damselsRescued) with:@5];
-//        [definition _injectProperty:@selector(foobar) with:@"foo"];
-//    }];
-//}
+- (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeFoobar:(NSObject *)runtimeObject
+{
+    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+        [definition _injectProperty:@selector(damselsRescued) with:@5];
+        [definition _injectProperty:@selector(foobar) with:@"foo"];
+    }];
+}
 
 @end
