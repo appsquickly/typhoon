@@ -53,3 +53,4 @@ id TyphoonInjectionByType(void);
 id TyphoonInjectionWithObject(id object);
 id TyphoonInjectionWithObjectFromString(NSString *string);
 id TyphoonInjectionWithCollection(void (^collection)(TyphoonPropertyInjectedAsCollection *collectionBuilder));
+id TyphoonInjectionWithComponentFactory(void);

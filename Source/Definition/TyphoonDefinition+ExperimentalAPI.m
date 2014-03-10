@@ -78,7 +78,7 @@
 
 - (id)customObjectInjection
 {
-    return [[TyphoonPropertyInjectedByComponentFactory alloc] init];
+    return TyphoonInjectionWithComponentFactory();
 }
 
 @end
@@ -92,7 +92,7 @@
 
 - (id)customObjectInjection
 {
-    return [[TyphoonPropertyInjectedByComponentFactory alloc] init];
+    return TyphoonInjectionWithComponentFactory();
 }
 
 @end
@@ -123,6 +123,11 @@ id TyphoonInjectionWithCollection(void (^collection)(TyphoonPropertyInjectedAsCo
         collection(weakPropertyInjectedAsCollection);
     }
     return propertyInjectedAsCollection;
+}
+
+id TyphoonInjectionWithComponentFactory(void)
+{
+    return [[TyphoonPropertyInjectedByComponentFactory alloc] init];
 }
 
 

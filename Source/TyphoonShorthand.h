@@ -39,4 +39,9 @@ static __inline__ id InjectionWithObjectFromString(NSString *string)
     return TyphoonInjectionWithObjectFromString(string);
 }
 
+static __inline__ id InjectionWithComponentFactory(void)
+{
+    return TyphoonInjectionWithComponentFactory();
+}
+
 #endif
