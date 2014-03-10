@@ -155,11 +155,40 @@
 {
     // call the user's assembly method to get it.
     SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key];
+    
+    // Using signature of original (not-adviced) method because they are same and signature
+    // of method created at runtime are wrong
+    NSMethodSignature *signature = [self.assembly methodSignatureForSelector:NSSelectorFromString(key)];
+    
     id cached =
-        objc_msgSend(self.assembly, sel); // the advisedSEL will call through to the original, unwrapped implementation because prepareForUse has been called, and all our definition methods have been swizzled.
+        objc_msgSend_nullArguments(self.assembly, sel, signature); // the advisedSEL will call through to the original, unwrapped implementation because prepareForUse has been called, and all our definition methods have been swizzled.
     // This method will likely call through to other definition methods on the assembly, which will go through the advising machinery because of this swizzling.
     // Therefore, the definitions a definition depends on will be fully constructed before they are needed to construct that definition.
     return cached;
+}
+
++ (uint)occurrencesOfCharacter:(unichar)character inString:(NSString *)string
+{
+    uint count = 0;
+    for (int i = 0; i < string.length; i++) {
+        if ([string characterAtIndex:i] == character)
+            count++;
+    }
+    return count;
+}
+
+static id objc_msgSend_nullArguments(id target, SEL selector, NSMethodSignature *signature)
+{
+    if (signature.numberOfArguments > 2) {
+        void *result;
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+        [invocation setSelector:selector];
+        [invocation invokeWithTarget:target];
+        [invocation getReturnValue:&result];
+        return (__bridge id)result;
+    } else {
+        return objc_msgSend(target, selector);
+    }
 }
 
 - (void)populateCacheWithDefinition:(TyphoonDefinition *)definition forKey:(NSString *)key

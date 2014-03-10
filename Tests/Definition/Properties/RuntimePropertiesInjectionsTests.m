@@ -28,9 +28,9 @@
 
 - (void)test_runtime_arguments
 {
-//    Knight *knight = [factory knightWithRuntimeDamselsRescued:@6 runtimeFoobar:@"foobar"];
-//    assertThatInt(knight.damselsRescued, equalToInt(6));
-//    assertThat(knight.foobar, equalTo(@"foobar"));
+    Knight *knight = [factory knightWithRuntimeDamselsRescued:@6 runtimeFoobar:@"foobar"];
+    assertThatInt(knight.damselsRescued, equalToInt(6));
+    assertThat(knight.foobar, equalTo(@"foobar"));
 }
 
 @end
