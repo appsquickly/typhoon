@@ -18,6 +18,7 @@
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
 #import "TyphoonPropertyInjectedByFactoryReference.h"
 #import "TyphoonPropertyInjectedByComponentFactory.h"
+#import "TyphoonPropertyInjectedWithRuntimeArg.h"
 #import "TyphoonShorthand.h"
 
 @protocol TyphoonObjectWithCustomInjection <NSObject>
@@ -128,6 +129,11 @@ id TyphoonInjectionWithCollection(void (^collection)(TyphoonPropertyInjectedAsCo
 id TyphoonInjectionWithComponentFactory(void)
 {
     return [[TyphoonPropertyInjectedByComponentFactory alloc] init];
+}
+
+id TyphoonInjectionWithRuntimeArgumentAtIndex(NSInteger argumentIndex)
+{
+    return [[TyphoonPropertyInjectedWithRuntimeArg alloc] initWithArgumentIndex:argumentIndex];
 }
 
 

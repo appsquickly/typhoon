@@ -13,6 +13,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactory.h"
+#import "TyphoonRuntimeArguments.h"
 
 @protocol TyphoonComponentPostProcessor;
 
@@ -21,6 +22,7 @@
 - (TyphoonDefinition *)definitionForKey:(NSString *)key;
 
 - (id)objectForDefinition:(TyphoonDefinition *)definition;
+- (id)objectForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args;
 
 - (void)addDefinitionToRegistry:(TyphoonDefinition *)definition;
 

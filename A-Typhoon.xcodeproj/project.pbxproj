@@ -376,6 +376,14 @@
 		FA99166618983986000AC4B5 /* TyphoonWeakComponentsPool.h in Headers */ = {isa = PBXBuildFile; fileRef = FA99166318983986000AC4B5 /* TyphoonWeakComponentsPool.h */; };
 		FA99166718983986000AC4B5 /* TyphoonWeakComponentsPool.m in Sources */ = {isa = PBXBuildFile; fileRef = FA99166418983986000AC4B5 /* TyphoonWeakComponentsPool.m */; };
 		FA99166818983986000AC4B5 /* TyphoonWeakComponentsPool.m in Sources */ = {isa = PBXBuildFile; fileRef = FA99166418983986000AC4B5 /* TyphoonWeakComponentsPool.m */; };
+		FAC0B8CF18CDEC66000F0AD0 /* TyphoonRuntimeArguments.h in Headers */ = {isa = PBXBuildFile; fileRef = FAC0B8CD18CDEC66000F0AD0 /* TyphoonRuntimeArguments.h */; };
+		FAC0B8D018CDEC66000F0AD0 /* TyphoonRuntimeArguments.h in Headers */ = {isa = PBXBuildFile; fileRef = FAC0B8CD18CDEC66000F0AD0 /* TyphoonRuntimeArguments.h */; };
+		FAC0B8D118CDEC66000F0AD0 /* TyphoonRuntimeArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC0B8CE18CDEC66000F0AD0 /* TyphoonRuntimeArguments.m */; };
+		FAC0B8D218CDEC66000F0AD0 /* TyphoonRuntimeArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC0B8CE18CDEC66000F0AD0 /* TyphoonRuntimeArguments.m */; };
+		FAC0B8D518CDF98C000F0AD0 /* TyphoonPropertyInjectedWithRuntimeArg.h in Headers */ = {isa = PBXBuildFile; fileRef = FAC0B8D318CDF98C000F0AD0 /* TyphoonPropertyInjectedWithRuntimeArg.h */; };
+		FAC0B8D618CDF98C000F0AD0 /* TyphoonPropertyInjectedWithRuntimeArg.h in Headers */ = {isa = PBXBuildFile; fileRef = FAC0B8D318CDF98C000F0AD0 /* TyphoonPropertyInjectedWithRuntimeArg.h */; };
+		FAC0B8D718CDF98C000F0AD0 /* TyphoonPropertyInjectedWithRuntimeArg.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC0B8D418CDF98C000F0AD0 /* TyphoonPropertyInjectedWithRuntimeArg.m */; };
+		FAC0B8D818CDF98C000F0AD0 /* TyphoonPropertyInjectedWithRuntimeArg.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC0B8D418CDF98C000F0AD0 /* TyphoonPropertyInjectedWithRuntimeArg.m */; };
 		FACBAAB918A60F4F006E493A /* TyphoonParameterInjectedByFactoryReference.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAAB718A60F4F006E493A /* TyphoonParameterInjectedByFactoryReference.h */; };
 		FACBAABA18A60F4F006E493A /* TyphoonParameterInjectedByFactoryReference.h in Headers */ = {isa = PBXBuildFile; fileRef = FACBAAB718A60F4F006E493A /* TyphoonParameterInjectedByFactoryReference.h */; };
 		FACBAABB18A60F4F006E493A /* TyphoonParameterInjectedByFactoryReference.m in Sources */ = {isa = PBXBuildFile; fileRef = FACBAAB818A60F4F006E493A /* TyphoonParameterInjectedByFactoryReference.m */; };
@@ -596,6 +604,10 @@
 		FA9916601898390E000AC4B5 /* TyphoonComponentsPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonComponentsPool.h; sourceTree = "<group>"; };
 		FA99166318983986000AC4B5 /* TyphoonWeakComponentsPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonWeakComponentsPool.h; sourceTree = "<group>"; };
 		FA99166418983986000AC4B5 /* TyphoonWeakComponentsPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonWeakComponentsPool.m; sourceTree = "<group>"; };
+		FAC0B8CD18CDEC66000F0AD0 /* TyphoonRuntimeArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonRuntimeArguments.h; sourceTree = "<group>"; };
+		FAC0B8CE18CDEC66000F0AD0 /* TyphoonRuntimeArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonRuntimeArguments.m; sourceTree = "<group>"; };
+		FAC0B8D318CDF98C000F0AD0 /* TyphoonPropertyInjectedWithRuntimeArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonPropertyInjectedWithRuntimeArg.h; sourceTree = "<group>"; };
+		FAC0B8D418CDF98C000F0AD0 /* TyphoonPropertyInjectedWithRuntimeArg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonPropertyInjectedWithRuntimeArg.m; sourceTree = "<group>"; };
 		FACBAAB718A60F4F006E493A /* TyphoonParameterInjectedByFactoryReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonParameterInjectedByFactoryReference.h; sourceTree = "<group>"; };
 		FACBAAB818A60F4F006E493A /* TyphoonParameterInjectedByFactoryReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonParameterInjectedByFactoryReference.m; sourceTree = "<group>"; };
 		FAD826961891513C009D9A27 /* TyphoonPropertyInjectedByFactoryReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonPropertyInjectedByFactoryReference.h; sourceTree = "<group>"; };
@@ -832,6 +844,8 @@
 				BA798AC05A2B92665E780091 /* TyphoonPropertyInjectedAsCollection.h */,
 				FA8AA3F118AD4055001B88CE /* TyphoonPropertyInjectedByComponentFactory.h */,
 				FA8AA3F218AD4055001B88CE /* TyphoonPropertyInjectedByComponentFactory.m */,
+				FAC0B8D318CDF98C000F0AD0 /* TyphoonPropertyInjectedWithRuntimeArg.h */,
+				FAC0B8D418CDF98C000F0AD0 /* TyphoonPropertyInjectedWithRuntimeArg.m */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -871,6 +885,8 @@
 				75AB5E023088EC27DBFA5120 /* TyphoonCollaboratingAssemblyPropertyEnumerator.h */,
 				FA1E2C2B18B0B0DF00744771 /* TyphoonAssemblyPropertyInjectionPostProcessor.h */,
 				FA1E2C2C18B0B0DF00744771 /* TyphoonAssemblyPropertyInjectionPostProcessor.m */,
+				FAC0B8CD18CDEC66000F0AD0 /* TyphoonRuntimeArguments.h */,
+				FAC0B8CE18CDEC66000F0AD0 /* TyphoonRuntimeArguments.m */,
 			);
 			path = Block;
 			sourceTree = "<group>";
@@ -1181,6 +1197,7 @@
 				46877CE317D70B2200910D6A /* TyphoonInjectedAsCollection.h in Headers */,
 				46877CE717D70B2200910D6A /* TyphoonByReferenceCollectionValue.h in Headers */,
 				46877CEB17D70B2200910D6A /* TyphoonCollectionValue.h in Headers */,
+				FAC0B8D618CDF98C000F0AD0 /* TyphoonPropertyInjectedWithRuntimeArg.h in Headers */,
 				46877CED17D70B2200910D6A /* TyphoonTypeConvertedCollectionValue.h in Headers */,
 				6596DADD189D7E0C00B30708 /* TyphoonAssistedFactoryMethodClosure.h in Headers */,
 				BA798614161FD41D1F0AD3CB /* TyphoonPrimitiveTypeConverter.h in Headers */,
@@ -1195,6 +1212,7 @@
 				75AB52D57825E7687312B5A3 /* TyphoonAssemblyDefinitionBuilder.h in Headers */,
 				BA7984FE7AAC3984D8BFE7F8 /* TyphoonURLUtils.h in Headers */,
 				BA798F968D8B5D578D3569D4 /* TyphoonPatcher.h in Headers */,
+				FAC0B8D018CDEC66000F0AD0 /* TyphoonRuntimeArguments.h in Headers */,
 				BA798B3A9A4135A5FD9832CB /* TyphoonPatchObjectFactory.h in Headers */,
 				466CC663185D589600742220 /* TyphoonViewControllerNibResolver.h in Headers */,
 				BA798A9B68E03A6359A9C174 /* TyphoonFactoryProvider.h in Headers */,
@@ -1266,6 +1284,7 @@
 				BA798FAC7F3BC5B63B3576EC /* TyphoonComponentFactory+InstanceBuilder.h in Headers */,
 				BA7983A5AB140D6C97FCD503 /* TyphoonComponentFactory.h in Headers */,
 				BA798925FDAC1BC6E2937A2C /* TyphoonPropertyInjectedByReference.h in Headers */,
+				FAC0B8D518CDF98C000F0AD0 /* TyphoonPropertyInjectedWithRuntimeArg.h in Headers */,
 				BA798C2625716A576AD32B0D /* TyphoonPropertyInjectedByType.h in Headers */,
 				FA9916611898390E000AC4B5 /* TyphoonComponentsPool.h in Headers */,
 				BA79827EEB8CA87219EE5DC1 /* TyphoonPropertyInjectedWithStringRepresentation.h in Headers */,
@@ -1351,6 +1370,7 @@
 				BA79829D84D45DFCBED0FCB0 /* TyphoonCallStack.h in Headers */,
 				BA7983CD1A640EEAF4B6E855 /* TyphoonStackElement.h in Headers */,
 				FACBAAB918A60F4F006E493A /* TyphoonParameterInjectedByFactoryReference.h in Headers */,
+				FAC0B8CF18CDEC66000F0AD0 /* TyphoonRuntimeArguments.h in Headers */,
 				BA7985B5DA487D945D8B0373 /* TyphoonParentReferenceHydratingPostProcessor.h in Headers */,
 				BA79878C68DC6BF827B2951B /* NSInvocation+TCFInstanceBuilder.h in Headers */,
 				BA7987FF4509A08545B354C0 /* NSValue+TCFInstanceBuilder.h in Headers */,
@@ -1437,6 +1457,7 @@
 				4BC648FD17A20BD7007F0463 /* TyphoonComponentFactory+InstanceBuilder.m in Sources */,
 				4BC648FF17A20BD7007F0463 /* TyphoonPropertyInjectedByReference.m in Sources */,
 				4B9BD34317A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.m in Sources */,
+				FAC0B8D218CDEC66000F0AD0 /* TyphoonRuntimeArguments.m in Sources */,
 				4BC6490017A20BD7007F0463 /* TyphoonPropertyInjectedByType.m in Sources */,
 				4BC6490117A20BD7007F0463 /* TyphoonPropertyInjectedWithStringRepresentation.m in Sources */,
 				4BC6490217A20BD7007F0463 /* TyphoonInitializer.m in Sources */,
@@ -1501,6 +1522,7 @@
 				466CC668185D589600742220 /* TyphoonUIColorTypeConverter.m in Sources */,
 				AA6F528318739DF1002EC14A /* TyphoonSelector.m in Sources */,
 				75AB5DA7F4D40AEEEBD51C00 /* TyphoonCircularDependencyTerminator.m in Sources */,
+				FAC0B8D818CDF98C000F0AD0 /* TyphoonPropertyInjectedWithRuntimeArg.m in Sources */,
 				75AB58AB5F9721683E58B0D2 /* TyphoonJRMethodSwizzler.m in Sources */,
 				BA798CD0D96ED62FAE21D384 /* TyphoonTestUtils.m in Sources */,
 				75AB5B40A2F3E060D75A6526 /* TyphoonMiscUtils.m in Sources */,
@@ -1581,6 +1603,7 @@
 				AA6F528218739DF1002EC14A /* TyphoonSelector.m in Sources */,
 				BA79883A1C7ACBA7B8850015 /* TyphoonAssistedFactoryParameterInjectedWithArgumentIndex.m in Sources */,
 				BA798DA773591E3FFA4A5279 /* TyphoonAssistedFactoryMethodInitializerCreator.m in Sources */,
+				FAC0B8D118CDEC66000F0AD0 /* TyphoonRuntimeArguments.m in Sources */,
 				BA798978BEEF4B05FEA952C6 /* TyphoonAssistedFactoryMethodInitializerClosure.m in Sources */,
 				BA798EF6BCE3D0015B8ECA93 /* TyphoonAssistedFactoryBase+TyphoonFactoryMethodClosure.m in Sources */,
 				BA798FA44AB6E6073FDC9CAA /* TyphoonAssistedFactoryMethodBlock.m in Sources */,
@@ -1607,6 +1630,7 @@
 				BA79856A1C1DBB588E701FF4 /* NSValue+TCFInstanceBuilder.m in Sources */,
 				BA798C345BD399FD7B3619E2 /* TyphoonAbstractInjectedParameter.m in Sources */,
 				BA798DD428BEAE6560EE08F2 /* TyphoonParameterInjectedAsCollection.m in Sources */,
+				FAC0B8D718CDF98C000F0AD0 /* TyphoonPropertyInjectedWithRuntimeArg.m in Sources */,
 				BA798A4926EB4A40251FB6E0 /* TyphoonPropertyInjectedAsCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -101,7 +101,7 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance
+- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance args:(TyphoonRuntimeArguments *)args
 {
     TyphoonCollectionType type = [self resolveCollectionTypeWith:instance];
     return [_collection withFactory:factory newCollectionOfType:type];

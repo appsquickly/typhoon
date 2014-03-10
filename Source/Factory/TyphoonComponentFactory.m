@@ -121,7 +121,7 @@ static TyphoonComponentFactory *defaultFactory;
 - (id)componentForType:(id)classOrProtocol
 {
     if (![self isLoaded]) {[self load];}
-    return [self objectForDefinition:[self definitionForType:classOrProtocol]];
+    return [self objectForDefinition:[self definitionForType:classOrProtocol] args:nil];
 }
 
 - (NSArray *)allComponentsForType:(id)classOrProtocol
@@ -130,12 +130,17 @@ static TyphoonComponentFactory *defaultFactory;
     NSMutableArray *results = [[NSMutableArray alloc] init];
     NSArray *definitions = [self allDefinitionsForType:classOrProtocol];
     for (TyphoonDefinition *definition in definitions) {
-        [results addObject:[self objectForDefinition:definition]];
+        [results addObject:[self objectForDefinition:definition args:nil]];
     }
     return [results copy];
 }
 
 - (id)componentForKey:(NSString *)key
+{
+    return [self componentForKey:key args:nil];
+}
+
+- (id)componentForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args
 {
     if (!key) {
         return nil;
@@ -148,7 +153,7 @@ static TyphoonComponentFactory *defaultFactory;
         [NSException raise:NSInvalidArgumentException format:@"No component matching id '%@'.", key];
     }
 
-    return [self objectForDefinition:definition];
+    return [self objectForDefinition:definition args:args];
 }
 
 - (void)loadIfNeeded
@@ -194,7 +199,7 @@ static TyphoonComponentFactory *defaultFactory;
     Class class = [instance class];
     for (TyphoonDefinition *definition in _registry) {
         if (definition.type == class) {
-            [self doPropertyInjectionEventsOn:instance withDefinition:definition];
+            [self doPropertyInjectionEventsOn:instance withDefinition:definition args:nil];
         }
     }
 }
@@ -204,7 +209,7 @@ static TyphoonComponentFactory *defaultFactory;
     if (![self isLoaded]) {[self load];}
     TyphoonDefinition *definition = [self definitionForKey:NSStringFromSelector(selector)];
     if (definition) {
-        [self doPropertyInjectionEventsOn:instance withDefinition:definition];
+        [self doPropertyInjectionEventsOn:instance withDefinition:definition args:nil];
     } else {
         [NSException raise:NSInvalidArgumentException format:@"Can't find definition for specified selector %@",NSStringFromSelector(selector)];
     }
@@ -299,6 +304,11 @@ static TyphoonComponentFactory *defaultFactory;
 
 - (id)objectForDefinition:(TyphoonDefinition *)definition
 {
+    return [self objectForDefinition:definition args:nil];
+}
+
+- (id)objectForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
+{
     if (definition.abstract) {
         [NSException raise:NSInvalidArgumentException format:@"Attempt to instantiate abstract definition: %@", definition];
     }
@@ -316,7 +326,7 @@ static TyphoonComponentFactory *defaultFactory;
             break;
         default:
         case TyphoonScopePrototype:
-            instance = [self buildInstanceWithDefinition:definition];
+            instance = [self buildInstanceWithDefinition:definition args:args];
             break;
     }
 

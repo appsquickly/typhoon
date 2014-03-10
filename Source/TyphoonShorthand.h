@@ -44,4 +44,9 @@ static __inline__ id InjectionWithComponentFactory(void)
     return TyphoonInjectionWithComponentFactory();
 }
 
+static __inline__ id InjectionWithRuntimeArgumentAtIndex(NSUInteger argumentIndex)
+{
+    return TyphoonInjectionWithRuntimeArgumentAtIndex(argumentIndex);
+}
+
 #endif

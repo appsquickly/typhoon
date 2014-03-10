@@ -138,8 +138,9 @@
 - (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeFoobar:(NSObject *)runtimeObject
 {
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
-        [definition _injectProperty:@selector(damselsRescued) with:@5];
-        [definition _injectProperty:@selector(foobar) with:@"foo"];
+        [definition _injectProperty:@selector(damselsRescued) with:InjectionWithRuntimeArgumentAtIndex(0)];
+        [definition _injectProperty:@selector(foobar) with:InjectionWithRuntimeArgumentAtIndex(1)];
+        definition.scope = TyphoonScopePrototype;
     }];
 }
 

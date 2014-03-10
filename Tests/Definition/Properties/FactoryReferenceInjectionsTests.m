@@ -74,7 +74,7 @@ NSString *currentFooString;
         [definition injectProperty:@selector(hasHorseWillTravel) withObjectInstance:@(YES)];
     }];
 
-    [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition];
+    [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition args:nil];
 
     assertThatInteger(knight.damselsRescued, equalToInteger(30));
     assertThatBool(knight.hasHorseWillTravel, equalToBool(YES));
@@ -89,7 +89,7 @@ NSString *currentFooString;
     TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(foobar) withObjectInstance:testString];
     }];
-    [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition];
+    [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition args:nil];
 
     assertThat(knight.foobar, equalTo([testString copy]));
 }
@@ -110,7 +110,7 @@ NSString *currentFooString;
         [definition injectProperty:@selector(hasHorseWillTravel) withDefinition:settings selector:@selector(hasHorseWillTravel)];
         [definition injectProperty:@selector(foobar) withDefinition:settings selector:@selector(fooString)];
     }];
-    [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition];
+    [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition args:nil];
 
     assertThat(knight.foobar, equalTo(@"Hello Knights"));
     assertThatInteger(knight.damselsRescued, equalToInteger(24));
@@ -130,7 +130,7 @@ NSString *currentFooString;
     TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(foobar) withDefinition:settings keyPath:@"fooString.uppercaseString"];
     }];
-    [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition];
+    [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition args:nil];
 
     assertThat(knight.foobar, equalTo(@"HELLO"));
 }

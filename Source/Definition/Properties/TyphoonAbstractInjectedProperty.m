@@ -15,7 +15,7 @@
 @implementation TyphoonAbstractInjectedProperty
 
 
-- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance
+- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance args:(TyphoonRuntimeArguments *)args
 {
     [NSException raise:NSInternalInconsistencyException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
     return nil;

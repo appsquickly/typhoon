@@ -45,7 +45,7 @@
     TyphoonDefinition *questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
     [_componentFactory registerDefinition:questDefinition];
 
-    Knight *knight = [_componentFactory buildInstanceWithDefinition:knightDefinition];
+    Knight *knight = [_componentFactory buildInstanceWithDefinition:knightDefinition args:nil];
     assertThat(knight, notNilValue());
     assertThat(knight.quest, notNilValue());
 }
@@ -59,7 +59,7 @@
     [urlDefinition setInitializer:initializer];
     [_componentFactory registerDefinition:urlDefinition];
 
-    NSURL *url = [_componentFactory buildInstanceWithDefinition:urlDefinition];
+    NSURL *url = [_componentFactory buildInstanceWithDefinition:urlDefinition args:nil];
     assertThat(url, notNilValue());
 }
 
@@ -193,7 +193,7 @@
     TyphoonDefinition *questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
     [_componentFactory registerDefinition:questDefinition];
 
-    Knight *knight = [_componentFactory buildInstanceWithDefinition:knightDefinition];
+    Knight *knight = [_componentFactory buildInstanceWithDefinition:knightDefinition args:nil];
     assertThat(knight, notNilValue());
     assertThat(knight.quest, notNilValue());
 }
@@ -208,7 +208,7 @@
     [_componentFactory registerDefinition:questDefinition];
 
     @try {
-        Knight *knight = [_componentFactory buildInstanceWithDefinition:knightDefinition];
+        Knight *knight = [_componentFactory buildInstanceWithDefinition:knightDefinition args:nil];
         STFail(@"Should have thrown exception");
         knight = nil;
     }

@@ -19,6 +19,14 @@
 #import "OCLogTemplate.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblyPropertyInjectionPostProcessor.h"
+#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
+
+@interface TyphoonComponentFactory (Private)
+
+- (TyphoonDefinition *)definitionForKey:(NSString *)key;
+- (void)loadIfNeeded;
+
+@end
 
 @implementation TyphoonBlockComponentFactory
 
@@ -92,8 +100,11 @@
     NSString *componentKey = NSStringFromSelector([invocation selector]);
     LogTrace(@"Component key: %@", componentKey);
 
-    [invocation setSelector:@selector(componentForKey:)];
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:invocation];
+    [invocation setSelector:@selector(componentForKey:args:)];
     [invocation setArgument:&componentKey atIndex:2];
+    [invocation setArgument:&args atIndex:3];
+
     [invocation invoke];
 }
 
@@ -103,7 +114,7 @@
         return [[self class] instanceMethodSignatureForSelector:aSelector];
     }
     else {
-        return [[self class] instanceMethodSignatureForSelector:@selector(componentForKey:)];
+        return [[self class] instanceMethodSignatureForSelector:@selector(componentForKey:args:)];
     }
 }
 

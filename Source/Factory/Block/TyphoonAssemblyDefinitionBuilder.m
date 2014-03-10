@@ -167,16 +167,6 @@
     return cached;
 }
 
-+ (uint)occurrencesOfCharacter:(unichar)character inString:(NSString *)string
-{
-    uint count = 0;
-    for (int i = 0; i < string.length; i++) {
-        if ([string characterAtIndex:i] == character)
-            count++;
-    }
-    return count;
-}
-
 static id objc_msgSend_nullArguments(id target, SEL selector, NSMethodSignature *signature)
 {
     if (signature.numberOfArguments > 2) {

@@ -14,6 +14,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonIntrospectiveNSObject.h"
+#import "TyphoonRuntimeArguments.h"
 
 @class TyphoonComponentFactory;
 
@@ -27,7 +28,7 @@
 
 @property(nonatomic, strong) NSString *name;
 
-- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance;
+- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance args:(TyphoonRuntimeArguments *)args;
 
 
 @end

@@ -15,6 +15,7 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonIntrospectiveNSObject.h"
 #import "TyphoonInjectedAsCollection.h"
+#import "TyphoonRuntimeArguments.h"
 
 @class TyphoonCallStack;
 
@@ -26,11 +27,11 @@
 
 - (TyphoonCallStack *)stack;
 
-- (id)buildInstanceWithDefinition:(TyphoonDefinition *)definition;
+- (id)buildInstanceWithDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args;
 
 - (id)buildSharedInstanceForDefinition:(TyphoonDefinition *)definition;
 
-- (void)doPropertyInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition;
+- (void)doPropertyInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args;
 
 - (NSArray *)allDefinitionsForType:(id)classOrProtocol;
 

@@ -42,7 +42,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     return _stack;
 }
 
-- (id)buildInstanceWithDefinition:(TyphoonDefinition *)definition
+- (id)buildInstanceWithDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
 
     TyphoonStackElement *stackElement = [TyphoonStackElement elementWithKey:definition.key];
@@ -52,7 +52,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
     [stackElement takeInstance:instance];
 
-    [self doPropertyInjectionEventsOn:instance withDefinition:definition];
+    [self doPropertyInjectionEventsOn:instance withDefinition:definition args:args];
 
     instance = [self postProcessInstance:instance];
     [_stack pop];
@@ -114,18 +114,18 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     if (instance) {
         return instance;
     }
-    return [self buildInstanceWithDefinition:definition];
+    return [self buildInstanceWithDefinition:definition args:nil];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Property Injection
 
-- (void)doPropertyInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition
+- (void)doPropertyInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
     [self doBeforePropertyInjectionOn:instance withDefinition:definition];
 
     for (TyphoonAbstractInjectedProperty *property in [definition injectedProperties]) {
-        [self doPropertyInjection:instance property:property];
+        [self doPropertyInjection:instance property:property args:args];
     }
 
     [self injectAssemblyOnInstanceIfTyphoonAware:instance];
@@ -145,13 +145,13 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 }
 
-- (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(TyphoonAbstractInjectedProperty *)property
+- (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(TyphoonAbstractInjectedProperty *)property args:(TyphoonRuntimeArguments *)args
 {
     TyphoonTypeDescriptor *propertyType = [instance typeForPropertyWithName:property.name];
     AssertTypeDescriptionForPropertyOnInstance(propertyType, property, instance);
 
     TyphoonPropertyInjectionLazyValue lazyValue = ^id {
-        return [property withFactory:self computeValueToInjectOnInstance:instance];
+        return [property withFactory:self computeValueToInjectOnInstance:instance args:args];
     };
 
     if (![instance respondsToSelector:@selector(shouldInjectProperty:withType:lazyValue:)] ||

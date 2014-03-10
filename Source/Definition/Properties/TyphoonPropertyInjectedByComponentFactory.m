@@ -28,7 +28,7 @@
 /* ====================================================================================================================================== */
 #pragma mark - Overrides
 
-- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance
+- (id)withFactory:(TyphoonComponentFactory *)factory computeValueToInjectOnInstance:(id)instance args:(TyphoonRuntimeArguments *)args
 {
     return factory;
 }
