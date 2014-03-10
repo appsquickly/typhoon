@@ -57,17 +57,6 @@ static const char *kTyphoonKey;
     return storyboard;
 }
 
-- (id)instantiateInitialViewController
-{
-    NSAssert(self.factory, @"TyphoonStoryboard's factory property can't be nil!");
-    
-    id viewController = [super instantiateInitialViewController];
-    
-    [self injectPropertiesForViewController:viewController];
-    
-    return viewController;
-}
-
 - (id)instantiateViewControllerWithIdentifier:(NSString *)identifier
 {
     NSAssert(self.factory, @"TyphoonStoryboard's factory property can't be nil!");
