@@ -9,6 +9,8 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "TyphoonDefinition+ExperimentalAPI.h"
+
 #ifdef typhoon_shorthand
 
 #define autoWire typhoon_autoWire
@@ -17,5 +19,24 @@
 
 #define Prototype TyphoonComponentLifecyclePrototype
 
-#endif
+static __inline__ id InjectionWithCollection(void (^collection)(TyphoonPropertyInjectedAsCollection *collectionBuilder))
+{
+    return TyphoonInjectionWithCollection(collection);
+}
 
+static __inline__ id InjectionWithObject(id object)
+{
+    return TyphoonInjectionWithObject(object);
+}
+
+static __inline__ id InjectionByType(void)
+{
+    return TyphoonInjectionByType();
+}
+
+static __inline__ id InjectionWithObjectFromString(NSString *string)
+{
+    return TyphoonInjectionWithObjectFromString(string);
+}
+
+#endif

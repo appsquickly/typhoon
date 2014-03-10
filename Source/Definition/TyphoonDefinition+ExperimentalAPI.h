@@ -47,7 +47,9 @@
 
 @end
 
-id InjectionByType(void);
-id InjectionWithObject(id object);
-id InjectionWithObjectFromString(NSString *string);
-id InjectionWithCollection(void (^collection)(TyphoonPropertyInjectedAsCollection *collectionBuilder));
+#pragma mark - Making injections functions
+
+id TyphoonInjectionByType(void);
+id TyphoonInjectionWithObject(id object);
+id TyphoonInjectionWithObjectFromString(NSString *string);
+id TyphoonInjectionWithCollection(void (^collection)(TyphoonPropertyInjectedAsCollection *collectionBuilder));

@@ -18,6 +18,7 @@
 #import "TyphoonPropertyInjectedAsObjectInstance.h"
 #import "TyphoonPropertyInjectedByFactoryReference.h"
 #import "TyphoonPropertyInjectedByComponentFactory.h"
+#import "TyphoonShorthand.h"
 
 @protocol TyphoonObjectWithCustomInjection <NSObject>
 
@@ -38,13 +39,13 @@
         [self _injectProperty:selector with:[injection customObjectInjection]];
     }
     else {
-        [self _injectProperty:selector with:InjectionWithObject(injection)];
+        [self _injectProperty:selector with:TyphoonInjectionWithObject(injection)];
     }
 }
 
 - (void)_injectProperty:(SEL)selector
-{
-    [self _injectProperty:selector with:InjectionByType()];
+{    
+    [self _injectProperty:selector with:TyphoonInjectionByType()];
 }
 
 #pragma mark - Injections
@@ -98,22 +99,22 @@
 
 /////////////////////////////////// Injection making functions /////////////////////////////////////////////////////////////////////////
 
-id InjectionWithObject(id object)
+id TyphoonInjectionWithObject(id object)
 {
     return [[TyphoonPropertyInjectedAsObjectInstance alloc] initWithName:nil objectInstance:object];
 }
 
-id InjectionByType(void)
+id TyphoonInjectionByType(void)
 {
     return [[TyphoonPropertyInjectedByType alloc] init];
 }
 
-id InjectionWithObjectFromString(NSString *string)
+id TyphoonInjectionWithObjectFromString(NSString *string)
 {
     return [[TyphoonPropertyInjectedWithStringRepresentation alloc] initWithName:nil value:string];
 }
 
-id InjectionWithCollection(void (^collection)(TyphoonPropertyInjectedAsCollection *collectionBuilder))
+id TyphoonInjectionWithCollection(void (^collection)(TyphoonPropertyInjectedAsCollection *collectionBuilder))
 {
     TyphoonPropertyInjectedAsCollection *propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:nil];
     
