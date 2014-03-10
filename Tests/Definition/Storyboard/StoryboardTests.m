@@ -29,6 +29,12 @@
     storyboard = [TyphoonStoryboard storyboardWithName:@"Storyboard" factory:factory bundle:bundle];
 }
 
+- (void)test_initial
+{
+    UIViewController *controller = [storyboard instantiateInitialViewController];
+    STAssertEqualObjects(controller.title, @"Initial", nil);
+}
+
 - (void)test_first
 {
     UIViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"first"];
