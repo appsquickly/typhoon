@@ -186,7 +186,7 @@
 - (void)test_injects_required_property_dependencies
 {
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    [knightDefinition injectProperty:@selector(quest) withReference:@"quest"];
+    [knightDefinition injectProperty:@selector(quest) with:InjectionWithReference(@"quest")];
     [_componentFactory registerDefinition:knightDefinition];
 
     TyphoonDefinition *questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
@@ -200,7 +200,7 @@
 - (void)test_raises_exception_if_property_setter_does_not_exist
 {
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    [knightDefinition injectProperty:@selector(propertyThatDoesNotExist) withReference:@"quest"];
+    [knightDefinition injectProperty:@selector(propertyThatDoesNotExist) with:InjectionWithReference(@"quest")];
     [_componentFactory registerDefinition:knightDefinition];
 
     TyphoonDefinition *questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
@@ -219,7 +219,7 @@
 - (void)test_injects_property_value_as_long
 {
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    [knightDefinition injectProperty:@selector(damselsRescued) withValueAsText:@"12"];
+    [knightDefinition injectProperty:@selector(damselsRescued) with:InjectionWithObjectFromString(@"12")];
     [_componentFactory registerDefinition:knightDefinition];
 
     Knight *knight = [_componentFactory componentForKey:@"knight"];
@@ -233,27 +233,27 @@
     primitiveStruct->fieldB = LONG_MAX;
 
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[PrimitiveMan class] key:@"primitive"];
-    [definition injectProperty:@selector(intValue) withObjectInstance:@(INT_MAX)];
-    [definition injectProperty:@selector(unsignedIntValue) withObjectInstance:@(UINT_MAX)];
-    [definition injectProperty:@selector(shortValue) withObjectInstance:@(SHRT_MAX)];
-    [definition injectProperty:@selector(unsignedShortValue) withObjectInstance:@(USHRT_MAX)];
-    [definition injectProperty:@selector(longValue) withObjectInstance:@(LONG_MAX)];
-    [definition injectProperty:@selector(unsignedLongValue) withObjectInstance:@(ULONG_MAX)];
-    [definition injectProperty:@selector(longLongValue) withObjectInstance:@(LONG_LONG_MAX)];
-    [definition injectProperty:@selector(unsignedLongLongValue) withObjectInstance:@(ULONG_LONG_MAX)];
-    [definition injectProperty:@selector(unsignedCharValue) withObjectInstance:@(UCHAR_MAX)];
-    [definition injectProperty:@selector(floatValue) withObjectInstance:@(FLT_MAX)];
-    [definition injectProperty:@selector(doubleValue) withObjectInstance:@(DBL_MAX)];
-    [definition injectProperty:@selector(boolValue) withObjectInstance:@(YES)];
-    [definition injectProperty:@selector(integerValue) withObjectInstance:@(NSIntegerMax)];
-    [definition injectProperty:@selector(unsignedIntegerValue) withObjectInstance:@(NSUIntegerMax)];
-    [definition injectProperty:@selector(classValue) withObjectInstance:[self class]];
-    [definition injectProperty:@selector(cString) withValueAsText:@"cStringText"];
-    [definition injectProperty:@selector(selectorValue) withObjectInstance:[NSValue valueWithPointer:@selector(selectorValue)]];
-    [definition injectProperty:@selector(nsRange) withObjectInstance:[NSValue valueWithRange:NSMakeRange(10, 20)]];
-    [definition injectProperty:@selector(pointer) withObjectInstance:[NSValue valueWithPointer:&primitiveStruct]];
-    [definition injectProperty:@selector(pointerInsideValue) withObjectInstance:[NSValue valueWithPointer:&primitiveStruct]];
-    [definition injectProperty:@selector(unknownPointer) withObjectInstance:[NSValue valueWithPointer:primitiveStruct]];
+    [definition injectProperty:@selector(intValue) with:@(INT_MAX)];
+    [definition injectProperty:@selector(unsignedIntValue) with:@(UINT_MAX)];
+    [definition injectProperty:@selector(shortValue) with:@(SHRT_MAX)];
+    [definition injectProperty:@selector(unsignedShortValue) with:@(USHRT_MAX)];
+    [definition injectProperty:@selector(longValue) with:@(LONG_MAX)];
+    [definition injectProperty:@selector(unsignedLongValue) with:@(ULONG_MAX)];
+    [definition injectProperty:@selector(longLongValue) with:@(LONG_LONG_MAX)];
+    [definition injectProperty:@selector(unsignedLongLongValue) with:@(ULONG_LONG_MAX)];
+    [definition injectProperty:@selector(unsignedCharValue) with:@(UCHAR_MAX)];
+    [definition injectProperty:@selector(floatValue) with:@(FLT_MAX)];
+    [definition injectProperty:@selector(doubleValue) with:@(DBL_MAX)];
+    [definition injectProperty:@selector(boolValue) with:@(YES)];
+    [definition injectProperty:@selector(integerValue) with:@(NSIntegerMax)];
+    [definition injectProperty:@selector(unsignedIntegerValue) with:@(NSUIntegerMax)];
+    [definition injectProperty:@selector(classValue) with:[self class]];
+    [definition injectProperty:@selector(cString) with:InjectionWithObjectFromString(@"cStringText")];
+    [definition injectProperty:@selector(selectorValue) with:[NSValue valueWithPointer:@selector(selectorValue)]];
+    [definition injectProperty:@selector(nsRange) with:[NSValue valueWithRange:NSMakeRange(10, 20)]];
+    [definition injectProperty:@selector(pointer) with:[NSValue valueWithPointer:&primitiveStruct]];
+    [definition injectProperty:@selector(pointerInsideValue) with:[NSValue valueWithPointer:&primitiveStruct]];
+    [definition injectProperty:@selector(unknownPointer) with:[NSValue valueWithPointer:primitiveStruct]];
 
 
     [_componentFactory registerDefinition:definition];
@@ -293,7 +293,7 @@
 {
     @try {
         TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-        [knightDefinition injectProperty:@selector(propertyDoesNotExist) withObjectInstance:@"fooString"];
+        [knightDefinition injectProperty:@selector(propertyDoesNotExist) with:@"fooString"];
         [_componentFactory registerDefinition:knightDefinition];
 
         Knight *knight = [_componentFactory componentForKey:@"knight"];

@@ -19,6 +19,7 @@
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "CampaignQuest.h"
 #import "TyphoonReferenceDefinition.h"
+#import "TyphoonInjectionByObjectInstance.h"
 
 @interface TyphoonDefinitionTests : SenTestCase
 @end
@@ -77,11 +78,11 @@
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
 
     //by value
-    [definition injectProperty:@selector(foobar) withValueAsText:@"zzz"];
-    [definition injectProperty:@selector(rapunzal) withValueAsText:@"ttt"];
+    [definition injectProperty:@selector(foobar) with:InjectionWithObjectFromString(@"zzz")];
+    [definition injectProperty:@selector(rapunzal) with:InjectionWithObjectFromString(@"ttt")];
 
     //by reference
-    [definition injectProperty:@selector(dd) withReference:@"someReference"];
+    [definition injectProperty:@selector(dd) with:InjectionWithReference(@"someReference")];
 
     assertThatUnsignedLongLong([[definition propertiesInjectedByValue] count], equalToUnsignedLongLong(2));
 }
@@ -91,11 +92,11 @@
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
 
     //by value
-    [definition injectProperty:@selector(foobar) withValueAsText:@"zzz"];
-    [definition injectProperty:@selector(rapunzal) withValueAsText:@"ttt"];
+    [definition injectProperty:@selector(foobar) with:InjectionWithObjectFromString(@"zzz")];
+    [definition injectProperty:@selector(rapunzal) with:InjectionWithObjectFromString(@"ttt")];
 
     //by reference
-    [definition injectProperty:@selector(dd) withReference:@"someReference"];
+    [definition injectProperty:@selector(dd) with:InjectionWithReference(@"someReference")];
 
     assertThatUnsignedLongLong([[definition propertiesInjectedByReference] count], equalToUnsignedLongLong(1));
 }
@@ -107,16 +108,16 @@
 - (void)test_inherits_all_parent_properties
 {
     TyphoonDefinition *longLostAncestor = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(hasHorseWillTravel) withObjectInstance:@(YES)];
+        [definition injectProperty:@selector(hasHorseWillTravel) with:@(YES)];
     }];
 
     TyphoonDefinition *parent = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(damselsRescued) withObjectInstance:@(12)];
+        [definition injectProperty:@selector(damselsRescued) with:@(12)];
         [definition setParent:longLostAncestor];
     }];
 
     TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(foobar) withValueAsText:@"foobar!"];
+        [definition injectProperty:@selector(foobar) with:InjectionWithObjectFromString(@"foobar!")];
         [definition setParent:parent];
     }];
 
@@ -127,17 +128,17 @@
 - (void)test_child_properties_override_parent_properties
 {
     TyphoonDefinition *parent = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(damselsRescued) withObjectInstance:@(12)];
+        [definition injectProperty:@selector(damselsRescued) with:@(12)];
     }];
 
     TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(damselsRescued) withObjectInstance:@(346)];
+        [definition injectProperty:@selector(damselsRescued) with:@(346)];
         [definition setParent:parent];
     }];
 
     assertThat([child injectedProperties], hasCountOf(1));
 
-    TyphoonPropertyInjectedAsObjectInstance *property = [[child injectedProperties] anyObject];
+    TyphoonInjectionByObjectInstance *property = [[child injectedProperties] anyObject];
     assertThatInteger([property.objectInstance integerValue], equalToInteger(346));
 }
 
@@ -170,13 +171,13 @@
         [initializer injectWithDefinition:nil];
         [initializer injectWithObjectInstance:@(12)];
     } properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(favoriteDamsels) asCollection:^(TyphoonPropertyInjectedAsCollection *collection) {
-            [collection addItemWithDefinition:[TyphoonReferenceDefinition definitionReferringToComponent:@"mary"]];
-            [collection addItemWithDefinition:[TyphoonReferenceDefinition definitionReferringToComponent:@"mary"]];
-        }];
-        [definition injectProperty:@selector(friends) asCollection:^(TyphoonPropertyInjectedAsCollection *collection) {
-            [collection addItemWithText:@"Bob" requiredType:[NSString class]];
-        }];
+        [definition injectProperty:@selector(favoriteDamsels) with:InjectionWithCollection(^(id<TyphoonInjectedAsCollection> collectionBuilder) {
+            [collectionBuilder addItemWithDefinition:[TyphoonReferenceDefinition definitionReferringToComponent:@"mary"]];
+            [collectionBuilder addItemWithDefinition:[TyphoonReferenceDefinition definitionReferringToComponent:@"mary"]];
+        })];
+        [definition injectProperty:@selector(friends) with:InjectionWithCollection(^(id<TyphoonInjectedAsCollection> collectionBuilder) {
+            [collectionBuilder addItemWithText:@"Bob" requiredType:[NSString class]];
+        })];
     }];
 
     TyphoonDefinition *copy = [definition copy];
@@ -187,7 +188,7 @@
     assertThat(copy.initializer.injectedParameters, hasCountOf(2));
     assertThat(copy.injectedProperties, hasCountOf(2));
 
-    TyphoonPropertyInjectedAsCollection *collection = [[[copy injectedProperties] allObjects] objectAtIndex:0];
+    TyphoonInjectionByCollection *collection = [[[copy injectedProperties] allObjects] objectAtIndex:0];
     assertThat([collection values], hasCountOf(2));
 
     LogDebug(@"Values: %@", [collection values]);

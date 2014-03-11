@@ -23,8 +23,8 @@
 - (id)objectGraphKnight
 {
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(homeFort) withDefinition:[self objectGraphFort]];
-        [definition injectProperty:@selector(quest) withDefinition:[self objectGraphQuest]];
+        [definition injectProperty:@selector(homeFort) with:[self objectGraphFort]];
+        [definition injectProperty:@selector(quest) with:[self objectGraphQuest]];
     }];
 }
 
@@ -36,7 +36,7 @@
 - (id)objectGraphQuest
 {
     return [TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(fort) withDefinition:[self objectGraphFort]];
+        [definition injectProperty:@selector(fort) with:[self objectGraphFort]];
     }];
 }
 
@@ -45,8 +45,8 @@
 - (id)prototypeKnight
 {
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(homeFort) withDefinition:[self prototypeFort]];
-        [definition injectProperty:@selector(quest) withDefinition:[self prototypeQuest]];
+        [definition injectProperty:@selector(homeFort) with:[self prototypeFort]];
+        [definition injectProperty:@selector(quest) with:[self prototypeQuest]];
         [definition setScope:TyphoonScopePrototype];
     }];
 }
@@ -61,7 +61,7 @@
 - (id)prototypeQuest
 {
     return [TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(fort) withDefinition:[self prototypeFort]];
+        [definition injectProperty:@selector(fort) with:[self prototypeFort]];
         [definition setScope:TyphoonScopePrototype];
     }];
 }

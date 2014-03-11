@@ -24,7 +24,7 @@
 - (id)injectionByProperty
 {
     return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] properties:^(TyphoonDefinition *definition) {
-        [definition injectPropertyWithComponentFactory:@selector(componentFactory)];
+        [definition injectProperty:@selector(componentFactory) with:self];
     }];
 }
 

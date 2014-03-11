@@ -57,7 +57,7 @@
 {
     TyphoonComponentFactory *factory = [[TyphoonComponentFactory alloc] init];
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    [knightDefinition injectProperty:@selector(damselsRescued) withValueAsText:@"${damsels.rescued}"];
+    [knightDefinition injectProperty:@selector(damselsRescued) with:InjectionWithObjectFromString(@"${damsels.rescued}")];
     [factory registerDefinition:knightDefinition];
 
     [_configurer postProcessComponentFactory:factory];

@@ -13,6 +13,7 @@
 #import "Typhoon.h"
 #import "Knight.h"
 #import "NSNullTypeConverter.h"
+#import "TyphoonInjections.h"
 
 @implementation InfrastructureComponentsAssembly
 
@@ -27,8 +28,8 @@
 - (id)knight
 {
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(damselsRescued) withValueAsText:@"${damsels.rescued}"];
-        [definition injectProperty:@selector(hasHorseWillTravel) withValueAsText:@"${has.horse.will.travel}"];
+        [definition injectProperty:@selector(damselsRescued) with:InjectionWithObjectFromString(@"${damsels.rescued}")];
+        [definition injectProperty:@selector(hasHorseWillTravel) with:InjectionWithObjectFromString(@"${has.horse.will.travel}")];
     }];
 }
 

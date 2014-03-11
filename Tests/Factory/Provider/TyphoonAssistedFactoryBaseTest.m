@@ -12,7 +12,6 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "TyphoonAssistedFactoryBase.h"
 
-#import "TyphoonAbstractInjectedProperty.h"
 #import "TyphoonComponentFactory.h"
 
 @interface TyphoonAssistedFactoryBaseTest : SenTestCase
@@ -39,8 +38,8 @@
         return nil;
     };
 
-    id mockProperty = mock([TyphoonAbstractInjectedProperty class]);
-    [given([mockProperty name]) willReturn:@"property"];
+    id mockProperty = mock([TyphoonAbstractInjection class]);
+    [given([mockProperty propertyName]) willReturn:@"property"];
     [assistedFactory shouldInjectProperty:mockProperty withType:nil lazyValue:value];
 
     assertThat([assistedFactory injectionValueForProperty:@"property"], is(equalTo(value)));
@@ -62,8 +61,8 @@
         return value;
     };
 
-    id mockProperty = mock([TyphoonAbstractInjectedProperty class]);
-    [given([mockProperty name]) willReturn:@"property"];
+    id mockProperty = mock([TyphoonAbstractInjection class]);
+    [given([mockProperty propertyName]) willReturn:@"property"];
     [assistedFactory shouldInjectProperty:mockProperty withType:nil lazyValue:lazyValue];
 
     assertThat([assistedFactory dependencyValueForProperty:@"property"], is(equalTo(value)));

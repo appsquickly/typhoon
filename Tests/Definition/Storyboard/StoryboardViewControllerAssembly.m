@@ -16,28 +16,28 @@
 - (id) initialViewController
 {
     return [TyphoonDefinition withClass:[UIViewController class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(title) withObjectInstance:@"Initial"];
+        [definition injectProperty:@selector(title) with:@"Initial"];
     }];
 }
 
 - (id) firstViewController
 {
     return [TyphoonDefinition withClass:[UIViewController class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(title) withObjectInstance:@"First"];
+        [definition injectProperty:@selector(title) with:@"First"];
     }];
 }
 
 - (id) secondViewController
 {
     return [TyphoonDefinition withClass:[UIViewController class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(title) withObjectInstance:@"Second"];
+        [definition injectProperty:@selector(title) with:@"Second"];
     }];
 }
 
 - (id) uniqueViewController
 {
     return [TyphoonDefinition withClass:[UniqueViewController class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(title) withObjectInstance:@"Unique"];
+        [definition injectProperty:@selector(title) with:@"Unique"];
     }];
 }
 

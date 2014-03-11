@@ -274,7 +274,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
         [definition injectProperty:@selector(quest)];
     }]];
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CavalryMan class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(hitRatio) withValueAsText:@"3.0"];
+        [definition injectProperty:@selector(hitRatio) with:InjectionWithObjectFromString(@"3.0")];
     }]];
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
 

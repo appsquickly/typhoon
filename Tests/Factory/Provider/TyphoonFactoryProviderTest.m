@@ -57,8 +57,8 @@
     if (!_paymentFactoryDefinition) {
         _paymentFactoryDefinition =
             [TyphoonFactoryProvider withProtocol:[self paymentFactoryProtocol] dependencies:^(TyphoonDefinition *definition) {
-                [definition injectProperty:@selector(creditService) withObjectInstance:_creditService];
-                [definition injectProperty:@selector(authService) withObjectInstance:_authService];
+                [definition injectProperty:@selector(creditService) with:_creditService];
+                [definition injectProperty:@selector(authService) with:_authService];
             } factory:^id(id <PaymentFactory> factory, NSDate *startDate, NSUInteger amount) {
                 return [[PaymentImpl alloc]
                     initWithCreditService:factory.creditService authService:factory.authService startDate:startDate amount:amount];
@@ -73,8 +73,8 @@
     if (!_paymentFactoryDefinition) {
         _paymentFactoryDefinition =
             [TyphoonFactoryProvider withProtocol:[self paymentFactoryProtocol] dependencies:^(TyphoonDefinition *definition) {
-                [definition injectProperty:@selector(creditService) withObjectInstance:_creditService];
-                [definition injectProperty:@selector(authService) withObjectInstance:_authService];
+                [definition injectProperty:@selector(creditService) with:_creditService];
+                [definition injectProperty:@selector(authService) with:_authService];
             } factories:^(TyphoonAssistedFactoryDefinition *definition) {
                 [definition factoryMethod:@selector(paymentWithStartDate:amount:) returns:[PaymentImpl class]
                     initialization:^(TyphoonAssistedFactoryMethodInitializer *initializer) {
@@ -107,7 +107,7 @@
 
     NSMutableArray *injectedPropertyNames = [NSMutableArray array];
     [injectedProperties enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-        [injectedPropertyNames addObject:[obj name]];
+        [injectedPropertyNames addObject:[obj propertyName]];
     }];
 
     assertThat(injectedPropertyNames, hasCountOf(2));
@@ -131,7 +131,7 @@
 
     NSMutableArray *injectedPropertyNames = [NSMutableArray array];
     [injectedProperties enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-        [injectedPropertyNames addObject:[obj name]];
+        [injectedPropertyNames addObject:[obj propertyName]];
     }];
 
     assertThat(injectedPropertyNames, hasCountOf(2));

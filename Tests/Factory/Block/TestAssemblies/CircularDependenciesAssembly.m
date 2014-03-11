@@ -26,36 +26,36 @@
 - (id)classA
 {
     return [TyphoonDefinition withClass:[ClassADependsOnB class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(dependencyOnB) withDefinition:[self classB]];
+        [definition injectProperty:@selector(dependencyOnB) with:[self classB]];
     }];
 }
 
 - (id)classB
 {
     return [TyphoonDefinition withClass:[ClassBDependsOnA class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(dependencyOnA) withDefinition:[self classA]];
+        [definition injectProperty:@selector(dependencyOnA) with:[self classA]];
     }];
 }
 
 - (id)classC;
 {
     return [TyphoonDefinition withClass:[ClassCDependsOnDAndE class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(dependencyOnD) withDefinition:[self classD]];
-        [definition injectProperty:@selector(dependencyOnE) withDefinition:[self classE]];
+        [definition injectProperty:@selector(dependencyOnD) with:[self classD]];
+        [definition injectProperty:@selector(dependencyOnE) with:[self classE]];
     }];
 }
 
 - (id)classD;
 {
     return [TyphoonDefinition withClass:[ClassDDependsOnC class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(dependencyOnC) withDefinition:[self classC]];
+        [definition injectProperty:@selector(dependencyOnC) with:[self classC]];
     }];
 }
 
 - (id)classE;
 {
     return [TyphoonDefinition withClass:[ClassEDependsOnC class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(dependencyOnC) withDefinition:[self classC]];
+        [definition injectProperty:@selector(dependencyOnC) with:[self classC]];
     }];
 }
 
@@ -91,7 +91,7 @@
 - (id)prototypePropertyInjected
 {
     return [TyphoonDefinition withClass:[PrototypePropertyInjected class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(prototypeInitInjected) withDefinition:[self prototypeInitInjected]];
+        [definition injectProperty:@selector(prototypeInitInjected) with:[self prototypeInitInjected]];
         [definition setScope:TyphoonScopePrototype];
     }];
 }
@@ -101,8 +101,8 @@
 - (id)croSingletonA
 {
     return [TyphoonDefinition withClass:[CROSingletonA class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(prototypeB) withDefinition:[self croPrototypeB]];
-        [definition injectProperty:@selector(prototypeA) withDefinition:[self croPrototypeA]];
+        [definition injectProperty:@selector(prototypeB) with:[self croPrototypeB]];
+        [definition injectProperty:@selector(prototypeA) with:[self croPrototypeA]];
         [definition setScope:TyphoonScopeSingleton];
     }];
 }

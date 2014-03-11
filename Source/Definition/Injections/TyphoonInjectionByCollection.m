@@ -26,13 +26,18 @@
     self = [super init];
     if (self) {
         _requiredType = requiredType;
+        self.collection = [[TyphoonInjectedAsCollection alloc] init];
     }
     return self;
 }
 
 - (instancetype)init
 {
-    return [super init];
+    self = [super init];
+    if (self) {
+        self.collection = [[TyphoonInjectedAsCollection alloc] init];
+    }
+    return self;
 }
 
 #pragma mark - <TyphoonInjectedAsCollection>

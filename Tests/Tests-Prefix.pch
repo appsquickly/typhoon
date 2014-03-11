@@ -13,6 +13,14 @@
 #import <Cocoa/Cocoa.h>
 
 #endif
+
+#import "TyphoonInjectionsObjects.h"
+
+static __inline__ id InjectionWithReference(NSString *reference)
+{
+    return [[TyphoonInjectionByReference alloc] initWithReference:reference args:nil];
+}
+
 #endif
 
 
