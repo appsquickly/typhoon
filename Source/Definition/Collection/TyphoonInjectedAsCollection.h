@@ -10,10 +10,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "TyphoonAbstractInjectedProperty.h"
 #import "TyphoonInjectedAsCollection.h"
 
 @class TyphoonDefinition;
+@class TyphoonComponentFactory;
 @protocol TyphoonIntrospectiveNSObject;
 @protocol TyphoonCollectionValue;
 
@@ -32,6 +32,7 @@
 
 typedef NS_ENUM(NSInteger, TyphoonCollectionType)
 {
+    TyphoonCollectionTypeUnknown,
     TyphoonCollectionTypeNSArray,
     TyphoonCollectionTypeNSMutableArray,
     TyphoonCollectionTypeNSSet,

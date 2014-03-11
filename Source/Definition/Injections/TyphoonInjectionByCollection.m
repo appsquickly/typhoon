@@ -11,6 +11,7 @@
 #import "TyphoonInjectedAsCollection.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonTypeDescriptor.h"
+#import "TyphoonIntrospectiveNSObject.h"
 
 @interface TyphoonInjectionByCollection ()
 
@@ -27,6 +28,11 @@
         _requiredType = requiredType;
     }
     return self;
+}
+
+- (instancetype)init
+{
+    return [super init];
 }
 
 #pragma mark - <TyphoonInjectedAsCollection>
@@ -86,14 +92,14 @@
     else if ([collectionClass isSubclassOfClass:[NSSet class]]) {
         return TyphoonCollectionTypeNSSet;
     }
-    return NSNotFound;
+    return TyphoonCollectionTypeUnknown;
 }
 
 - (TyphoonCollectionType)collectionTypeForPropertyInjectionOnInstance:(id<TyphoonIntrospectiveNSObject>)instance
 {
     Class collectionClass = [self collectionClassForPropertyInjectionOnInstance:instance];
     TyphoonCollectionType type = [self resolveCollectionTypeWithClass:collectionClass];
-    if (type == NSNotFound) {
+    if (type == TyphoonCollectionTypeUnknown) {
         [NSException raise:NSInvalidArgumentException format:@"Property named '%@' on '%@' is neither an NSSet nor NSArray.", self.propertyName,
          NSStringFromClass(collectionClass)];
     }
@@ -106,7 +112,7 @@
         [NSException raise:NSInvalidArgumentException format:@"Required type is missing on injected collection parameter!"];
     }
     TyphoonCollectionType type = [self resolveCollectionTypeWithClass:self.requiredType];
-    if (type == NSNotFound) {
+    if (type == TyphoonCollectionTypeUnknown) {
         [NSException raise:NSInvalidArgumentException format:@"Required collection type '%@' is neither an NSSet nor NSArray.",
          NSStringFromClass(self.requiredType)];
     }

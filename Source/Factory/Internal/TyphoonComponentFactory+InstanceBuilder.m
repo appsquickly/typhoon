@@ -30,9 +30,10 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
 #import "NSInvocation+TCFInstanceBuilder.h"
+#import "TyphoonInjectionsObjects.h"
 
 #define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type) [NSException raise:@"NSUnknownKeyException" \
-format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",property.name, [instance class]]
+format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",property.propertyName, [instance class]]
 
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
@@ -124,7 +125,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 {
     [self doBeforePropertyInjectionOn:instance withDefinition:definition];
 
-    for (TyphoonAbstractInjectedProperty *property in [definition injectedProperties]) {
+    for (id<TyphoonPropertyInjection> property in [definition injectedProperties]) {
         [self doPropertyInjection:instance property:property args:args];
     }
 
@@ -145,13 +146,13 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 }
 
-- (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(TyphoonAbstractInjectedProperty *)property args:(TyphoonRuntimeArguments *)args
+- (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(id<TyphoonPropertyInjection>)property args:(TyphoonRuntimeArguments *)args
 {
-    TyphoonTypeDescriptor *propertyType = [instance typeForPropertyWithName:property.name];
+    TyphoonTypeDescriptor *propertyType = [instance typeForPropertyWithName:property.propertyName];
     AssertTypeDescriptionForPropertyOnInstance(propertyType, property, instance);
 
     TyphoonPropertyInjectionLazyValue lazyValue = ^id {
-        return [property withFactory:self computeValueToInjectOnInstance:instance args:args];
+        return [property valueToInjectPropertyOnInstance:instance withFactory:self args:args];
     };
 
     if (![instance respondsToSelector:@selector(shouldInjectProperty:withType:lazyValue:)] ||
@@ -160,7 +161,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         id valueToInject = lazyValue();
 
         if (valueToInject) {
-            [(NSObject *) instance injectValue:valueToInject forPropertyName:property.name withType:propertyType];
+            [(NSObject *) instance injectValue:valueToInject forPropertyName:property.propertyName withType:propertyType];
         }
     }
 }

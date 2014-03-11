@@ -17,7 +17,6 @@
 #import "AutoWiringKnight.h"
 #import "AutoWiringSubClassedKnight.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
-#import "TyphoonPropertyInjectedAsObjectInstance.h"
 #import "CampaignQuest.h"
 #import "TyphoonReferenceDefinition.h"
 

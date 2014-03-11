@@ -8,7 +8,6 @@
 
 #import "TyphoonInjectionByFactoryReference.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
-#import "TyphoonPropertyInjectedWithRuntimeArg.h"
 #import "TyphoonCallStack.h"
 #import "TyphoonStackElement.h"
 

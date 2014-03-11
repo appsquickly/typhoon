@@ -14,11 +14,8 @@
 TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 
 #import "TyphoonDefinition+InstanceBuilder.h"
-#import "TyphoonPropertyInjectedWithStringRepresentation.h"
-#import "TyphoonPropertyInjectedByType.h"
-#import "TyphoonPropertyInjectedByReference.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
-#import "TyphoonAbstractInjectedProperty.h"
+#import "TyphoonInjectionsObjects.h"
 
 @implementation TyphoonDefinition (InstanceBuilder)
 
@@ -42,34 +39,32 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     return set;
 }
 
-
-- (void)injectProperty:(SEL)selector withReference:(NSString *)reference
-{
-    [_injectedProperties addObject:[[TyphoonPropertyInjectedByReference alloc]
-        initWithName:NSStringFromSelector(selector) reference:reference]];
-}
-
 - (NSSet *)propertiesInjectedByValue
 {
-    return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedWithStringRepresentation class]];
+    return [self injectedPropertiesWithKind:[TyphoonInjectionByObjectFromString class]];
 }
 
 - (NSSet *)propertiesInjectedByType
 {
-    return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByType class]];
+    return [self injectedPropertiesWithKind:[TyphoonInjectionByType class]];
 }
 
 - (NSSet *)propertiesInjectedByReference
 {
-    return [self injectedPropertiesWithKind:[TyphoonPropertyInjectedByReference class]];
+    return [self injectedPropertiesWithKind:[TyphoonInjectionByReference class]];
 }
 
-- (void)addInjectedProperty:(TyphoonAbstractInjectedProperty *)property
+- (NSSet *)propertiesInjectedByRuntimeArgument
+{
+    return [self injectedPropertiesWithKind:[TyphoonInjectionByRuntimeArgument class]];
+}
+
+- (void)addInjectedProperty:(id<TyphoonPropertyInjection>)property
 {
     [_injectedProperties addObject:property];
 }
 
-- (void)removeInjectedProperty:(TyphoonAbstractInjectedProperty *)property
+- (void)removeInjectedProperty:(id<TyphoonPropertyInjection>)property
 {
     [_injectedProperties removeObject:property];
 }

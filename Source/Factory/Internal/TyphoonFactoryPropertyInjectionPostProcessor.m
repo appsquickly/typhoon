@@ -13,11 +13,10 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
-#import "TyphoonPropertyInjectedByType.h"
+#import "TyphoonInjectionsObjects.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonAssembly.h"
-#import "TyphoonPropertyInjectedByComponentFactory.h"
 
 @implementation TyphoonFactoryPropertyInjectionPostProcessor
 
@@ -27,7 +26,7 @@
 - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
 {
     for (TyphoonDefinition *definition in [factory registry]) {
-        for (TyphoonPropertyInjectedByType *typeInjection in [definition propertiesInjectedByType]) {
+        for (TyphoonInjectionByType *typeInjection in [definition propertiesInjectedByType]) {
             if ([self shouldReplaceInjectionByType:typeInjection withFactoryInjectionInDefinition:definition]) {
                 [self replaceTypePropertyInjection:typeInjection withFactoryInjectionInDefinition:definition];
             }
@@ -38,11 +37,11 @@
 /* ====================================================================================================================================== */
 #pragma mark - Instance Methods
 
-- (BOOL) shouldReplaceInjectionByType:(TyphoonPropertyInjectedByType *)propertyInjection withFactoryInjectionInDefinition:(TyphoonDefinition *)definition
+- (BOOL) shouldReplaceInjectionByType:(TyphoonInjectionByType *)propertyInjection withFactoryInjectionInDefinition:(TyphoonDefinition *)definition
 {
     BOOL isFactoryClass = NO;
     
-    TyphoonTypeDescriptor *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyInjection.name inClass:definition.type];
+    TyphoonTypeDescriptor *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyInjection.propertyName inClass:definition.type];
     
     if (type.typeBeingDescribed) {
         isFactoryClass = [type.typeBeingDescribed isSubclassOfClass:[TyphoonComponentFactory class]];
@@ -51,11 +50,13 @@
     return isFactoryClass;
 }
 
-- (void) replaceTypePropertyInjection:(TyphoonPropertyInjectedByType *)typeInjection withFactoryInjectionInDefinition:(TyphoonDefinition *)definition
+- (void) replaceTypePropertyInjection:(TyphoonInjectionByType *)typeInjection withFactoryInjectionInDefinition:(TyphoonDefinition *)definition
 {
-    NSString *name = typeInjection.name;
+    NSString *name = typeInjection.propertyName;
     [definition removeInjectedProperty:typeInjection];
-    [definition addInjectedProperty:[[TyphoonPropertyInjectedByComponentFactory alloc] initWithName:name]];
+    TyphoonInjectionByComponentFactory *newInjection = [[TyphoonInjectionByComponentFactory alloc] init];
+    [newInjection setPropertyName:name];
+    [definition addInjectedProperty:newInjection];
 }
 
 @end

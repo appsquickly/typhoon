@@ -23,10 +23,12 @@
 #import "TyphoonCollaboratingAssemblyPropertyEnumerator.h"
 #import "TyphoonCollaboratingAssemblyProxy.h"
 #import "TyphoonRuntimeArguments.h"
+#import "TyphoonObjectWithCustomInjection.h"
+#import "TyphoonInjectionByComponentFactory.h"
 
 static NSMutableArray *reservedSelectorsAsStrings;
 
-@interface TyphoonAssembly ()
+@interface TyphoonAssembly () <TyphoonObjectWithCustomInjection>
 
 @property(readwrite) NSSet *definitionSelectors;
 
@@ -155,6 +157,14 @@ static id ImplementationToConstructDefinitionAndCatchArguments(TyphoonAssembly *
 - (void)dealloc
 {
     [TyphoonAssemblyAdviser undoAdviseMethods:self];
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - <TyphoonObjectWithCustomInjection>
+
+- (id<TyphoonPropertyInjection,TyphoonParameterInjection>)typhoonCustomObjectInjection
+{
+    return [[TyphoonInjectionByComponentFactory alloc] init];
 }
 
 /* ====================================================================================================================================== */

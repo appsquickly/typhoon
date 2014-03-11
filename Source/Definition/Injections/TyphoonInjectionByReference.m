@@ -8,7 +8,7 @@
 
 #import "TyphoonInjectionByReference.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
-#import "TyphoonPropertyInjectedWithRuntimeArg.h"
+#import "TyphoonInjectionByRuntimeArgument.h"
 #import "TyphoonCallStack.h"
 #import "TyphoonStackElement.h"
 
@@ -56,15 +56,15 @@
 {
     TyphoonRuntimeArguments *result = referenceArgs;
 
-    Class runtimeArgInjectionClass = [TyphoonPropertyInjectedWithRuntimeArg class];
+    Class runtimeArgInjectionClass = [TyphoonInjectionByRuntimeArgument class];
     BOOL hasRuntimeArgumentReferences = [referenceArgs indexOfArgumentWithKind:runtimeArgInjectionClass] != NSNotFound;
     
     if (referenceArgs && runtimeArgs && hasRuntimeArgumentReferences) {
         result = [referenceArgs copy];
         NSUInteger indexToReplace;
         while ((indexToReplace = [result indexOfArgumentWithKind:runtimeArgInjectionClass]) != NSNotFound) {
-            TyphoonPropertyInjectedWithRuntimeArg *runtimeArgPlaceholder = [result argumentValueAtIndex:indexToReplace];
-            id runtimeValue = [runtimeArgs argumentValueAtIndex:runtimeArgPlaceholder.index];
+            TyphoonInjectionByRuntimeArgument *runtimeArgPlaceholder = [result argumentValueAtIndex:indexToReplace];
+            id runtimeValue = [runtimeArgs argumentValueAtIndex:runtimeArgPlaceholder.runtimeArgumentIndex];
             [result replaceArgumentAtIndex:indexToReplace withArgument:runtimeValue];
         }
     }

@@ -13,15 +13,20 @@
 
 #import "TyphoonInitializer.h"
 #import "TyphoonDefinition.h"
-#import "TyphoonPropertyInjectedByType.h"
-#import "TyphoonPropertyInjectedWithStringRepresentation.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
-#import "TyphoonPropertyInjectedAsCollection.h"
-#import "TyphoonPropertyInjectedAsObjectInstance.h"
-#import "TyphoonPropertyInjectedByFactoryReference.h"
-#import "TyphoonPropertyInjectedByComponentFactory.h"
 #import "TyphoonDefinition+Infrastructure.h"
+
+#import "TyphoonPropertyInjection.h"
+#import "TyphoonObjectWithCustomInjection.h"
+#import "TyphoonInjectionByObjectInstance.h"
+#import "TyphoonInjectionByType.h"
+#import "TyphoonInjectionByReference.h"
+#import "TyphoonInjectionByFactoryReference.h"
+
+@interface TyphoonDefinition () <TyphoonObjectWithCustomInjection>
+
+@end
 
 @implementation TyphoonDefinition
 
@@ -32,7 +37,6 @@
 {
     return [[TyphoonDefinition alloc] initWithClass:clazz key:nil];
 }
-
 
 + (TyphoonDefinition *)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
 {
@@ -70,7 +74,7 @@
             format:@"The lazy attribute is only applicable to singleton scoped definitions, but is set for definition: %@ ", definition];
     }
     
-    if ([definition hasRuntimeInjections] && definition.scope != TyphoonScopePrototype) {
+    if ([[definition propertiesInjectedByRuntimeArgument] count] > 0 && definition.scope != TyphoonScopePrototype) {
         [NSException raise:NSInvalidArgumentException
                     format:@"The runtime arguments injections are only applicable to prototype scoped definitions, but is set for definition: %@ ", definition];
 
@@ -99,65 +103,52 @@
 }
 
 /* ====================================================================================================================================== */
+#pragma mark - TyphoonObjectWithCustomInjection
+
+- (id)typhoonCustomObjectInjection
+{
+    return [[TyphoonInjectionByReference alloc] initWithReference:self.key args:self.currentRuntimeArguments];
+}
+
+/* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
 - (void)injectProperty:(SEL)selector
 {
-    [_injectedProperties addObject:[[TyphoonPropertyInjectedByType alloc] initWithName:NSStringFromSelector(selector)]];
+    [self injectProperty:selector with:[[TyphoonInjectionByType alloc] init]];
 }
 
-- (void)injectProperty:(SEL)selector withValueAsText:(NSString *)textValue
+- (void)injectProperty:(SEL)selector with:(id)injection
 {
-    [_injectedProperties addObject:[[TyphoonPropertyInjectedWithStringRepresentation alloc]
-        initWithName:NSStringFromSelector(selector) value:textValue]];
-}
-
-- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition *)definition
-{
-    [self injectProperty:selector withReference:definition.key];
-}
-
-- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition *)definition selector:(SEL)factorySelector
-{
-    [_injectedProperties addObject:[[TyphoonPropertyInjectedByFactoryReference alloc]
-        initWithName:NSStringFromSelector(selector) reference:definition.key keyPath:NSStringFromSelector(factorySelector)]];
-}
-
-- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition *)definition keyPath:(NSString *)keyPath
-{
-    [_injectedProperties addObject:[[TyphoonPropertyInjectedByFactoryReference alloc]
-        initWithName:NSStringFromSelector(selector) reference:definition.key keyPath:keyPath]];
-}
-
-- (void)injectProperty:(SEL)selector withObjectInstance:(id)instance
-{
-    [_injectedProperties addObject:[[TyphoonPropertyInjectedAsObjectInstance alloc]
-        initWithName:NSStringFromSelector(selector) objectInstance:instance]];
-}
-
-- (void)injectProperty:(SEL)withSelector asCollection:(void (^)(TyphoonPropertyInjectedAsCollection *))collectionValues;
-{
-    TyphoonPropertyInjectedAsCollection
-        *propertyInjectedAsCollection = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:NSStringFromSelector(withSelector)];
-
-    if (collectionValues) {
-        __unsafe_unretained TyphoonPropertyInjectedAsCollection *weakPropertyInjectedAsCollection = propertyInjectedAsCollection;
-        collectionValues(weakPropertyInjectedAsCollection);
+    if ([injection conformsToProtocol:@protocol(TyphoonPropertyInjection)]) {
+        [injection setPropertyName:NSStringFromSelector(selector)];
+        [_injectedProperties addObject:injection];
     }
-    [_injectedProperties addObject:propertyInjectedAsCollection];
-}
-
-- (void)injectPropertyWithComponentFactory:(SEL)selector
-{
-    TyphoonPropertyInjectedByComponentFactory
-        *propertyInjection = [[TyphoonPropertyInjectedByComponentFactory alloc] initWithName:NSStringFromSelector(selector)];
-    [_injectedProperties addObject:propertyInjection];
+    else if ([injection conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)]) {
+        [self injectProperty:selector with:[injection typhoonCustomObjectInjection]];
+    }
+    else {
+        [self injectProperty:selector with:[[TyphoonInjectionByObjectInstance alloc] initWithObjectInstance:injection]];
+    }
 }
 
 - (void)setInitializer:(TyphoonInitializer *)initializer
 {
     _initializer = initializer;
     [_initializer setDefinition:self];
+}
+
+/* ====================================================================================================================================== */
+#pragma mark - Making injections
+
+- (id)injectionFromSelector:(SEL)factorySelector
+{
+    return [self injectionFromKeyPath:NSStringFromSelector(factorySelector)];
+}
+
+- (id)injectionFromKeyPath:(NSString *)keyPath
+{
+    return [[TyphoonInjectionByFactoryReference alloc] initWithReference:self.key args:self.currentRuntimeArguments keyPath:keyPath];
 }
 
 /* ====================================================================================================================================== */
@@ -178,7 +169,6 @@
     return _initializer;
 }
 
-
 - (NSSet *)injectedProperties
 {
     NSMutableSet *parentProperties = [_parent injectedProperties] ? [[_parent injectedProperties] mutableCopy] : [NSMutableSet set];
@@ -190,7 +180,7 @@
         }
     }];
 
-    for (TyphoonAbstractInjectedProperty *overriddenProperty in overriddenProperties) {
+    for (id<TyphoonPropertyInjection> overriddenProperty in overriddenProperties) {
         [parentProperties removeObject:overriddenProperty];
     }
 
@@ -207,11 +197,10 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-
     TyphoonDefinition *copy = [[TyphoonDefinition alloc] initWithClass:_type key:[_key copy] factoryComponent:_factory.key];
     [copy setInitializer:[self.initializer copy]];
-    for (TyphoonAbstractInjectedProperty *property in _injectedProperties) {
-        [copy addInjectedProperty:[property copy]];
+    for (id<TyphoonPropertyInjection> property in _injectedProperties) {
+        [copy addInjectedProperty:[property copyWithZone:NSDefaultMallocZone()]];
     }
     return copy;
 }

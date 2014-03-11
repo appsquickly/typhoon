@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryPostProcessor.h"
-#import "TyphoonPropertyInjectedByType.h"
+#import "TyphoonInjectionByType.h"
 #import "TyphoonDefinition.h"
 
 /**
@@ -20,6 +20,6 @@
 @interface TyphoonFactoryPropertyInjectionPostProcessor : NSObject <TyphoonComponentFactoryPostProcessor>
 
 /* Method to override in subclasses */
-- (BOOL) shouldReplaceInjectionByType:(TyphoonPropertyInjectedByType *)propertyInjection withFactoryInjectionInDefinition:(TyphoonDefinition *)definition;
+- (BOOL) shouldReplaceInjectionByType:(TyphoonInjectionByType *)propertyInjection withFactoryInjectionInDefinition:(TyphoonDefinition *)definition;
 
 @end

@@ -15,7 +15,7 @@
 
 - (void)setParameterIndex:(NSUInteger)index withInitializer:(TyphoonInitializer *)initializer
 {
-    NSAssert(self.type != TyphoonInjectionTypeProperty, @"Trying to redefine injection with type %d",self.type);
+    NSAssert(self.type != TyphoonInjectionTypeProperty, @"Trying to redefine injection with type %d",(int)self.type);
     _parameterIndex = index;
     _initializer = initializer;
     _type = TyphoonInjectionTypeParameter;
@@ -23,9 +23,18 @@
 
 - (void)setPropertyName:(NSString *)name
 {
-    NSAssert(self.type != TyphoonInjectionTypeProperty, @"Trying to redefine injection with type %d",self.type);
+    NSAssert(self.type != TyphoonInjectionTypeProperty, @"Trying to redefine injection with type %d",(int)self.type);
     _propertyName = name;
     _type = TyphoonInjectionTypeProperty;
+}
+
+- (NSUInteger)hash
+{
+    if (self.type == TyphoonInjectionTypeProperty) {
+        return [self.propertyName hash];
+    } else {
+        return [super hash];
+    }
 }
 
 #pragma mark - Methods to override

@@ -13,7 +13,7 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonDefinition.h"
 
-@class TyphoonAbstractInjectedProperty;
+@protocol TyphoonPropertyInjection;
 
 @interface TyphoonDefinition (InstanceBuilder)
 
@@ -21,16 +21,16 @@
 
 - (NSSet *)componentsInjectedByValue;
 
-- (void)injectProperty:(SEL)withSelector withReference:(NSString *)reference;
-
 - (NSSet *)propertiesInjectedByValue;
 
 - (NSSet *)propertiesInjectedByType;
 
 - (NSSet *)propertiesInjectedByReference;
 
-- (void)addInjectedProperty:(TyphoonAbstractInjectedProperty *)property;
+- (NSSet *)propertiesInjectedByRuntimeArgument;
 
-- (void)removeInjectedProperty:(TyphoonAbstractInjectedProperty *)property;
+- (void)addInjectedProperty:(id<TyphoonPropertyInjection>)property;
+
+- (void)removeInjectedProperty:(id<TyphoonPropertyInjection>)property;
 
 @end

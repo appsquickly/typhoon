@@ -13,7 +13,7 @@
 #import "TyphoonPropertyPlaceholderConfigurer.h"
 #import "TyphoonResource.h"
 #import "TyphoonDefinition.h"
-#import "TyphoonPropertyInjectedWithStringRepresentation.h"
+#import "TyphoonInjectionByObjectFromString.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "OCLogTemplate.h"
 #import "TyphoonComponentFactory.h"

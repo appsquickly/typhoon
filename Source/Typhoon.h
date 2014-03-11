@@ -25,7 +25,7 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonAssembly.h"
 #import "TyphoonCollaboratingAssemblyProxy.h"
-#import "TyphoonPropertyInjectedAsCollection.h"
+#import "TyphoonInjections.h"
 #import "TyphoonComponentFactoryAware.h"
 
 #import "TyphoonBlockComponentFactory.h"

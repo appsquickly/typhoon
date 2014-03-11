@@ -39,6 +39,10 @@
     Knight *knight = [factory knightWithRuntimeDamselsRescued:@3 runtimeQuestUrl:[NSURL URLWithString:@"http://google.com"]];
     assertThat([knight.quest imageUrl], equalTo([NSURL URLWithString:@"http://google.com"]));
     assertThatInt(knight.damselsRescued, equalToInt(3));
+    
+    knight = [factory knightWithRuntimeDamselsRescued:@2 runtimeQuestUrl:[NSURL URLWithString:@"http://apple.com"]];
+    assertThat([knight.quest imageUrl], equalTo([NSURL URLWithString:@"http://apple.com"]));
+    assertThatInt(knight.damselsRescued, equalToInt(2));
 }
 
 - (void)test_predefined_quest

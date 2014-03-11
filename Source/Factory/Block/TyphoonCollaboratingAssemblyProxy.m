@@ -14,6 +14,12 @@
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import "TyphoonReferenceDefinition.h"
+#import "TyphoonObjectWithCustomInjection.h"
+#import "TyphoonInjectionByComponentFactory.h"
+
+@interface TyphoonCollaboratingAssemblyProxy () <TyphoonObjectWithCustomInjection>
+
+@end
 
 @implementation TyphoonCollaboratingAssemblyProxy
 
@@ -45,5 +51,12 @@
     }));
 }
 
+/* ====================================================================================================================================== */
+#pragma mark - <TyphoonObjectWithCustomInjection>
+
+- (id<TyphoonPropertyInjection,TyphoonParameterInjection>)typhoonCustomObjectInjection
+{
+    return [[TyphoonInjectionByComponentFactory alloc] init];
+}
 
 @end

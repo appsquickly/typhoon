@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonDefinition+ExperimentalAPI.h"
+#import "TyphoonInjections.h"
 
 #ifdef typhoon_shorthand
 
@@ -19,19 +19,14 @@
 
 #define Prototype TyphoonComponentLifecyclePrototype
 
-static __inline__ id InjectionWithCollection(void (^collection)(TyphoonPropertyInjectedAsCollection *collectionBuilder))
+static __inline__ id InjectionWithCollection(void (^collection)(id<TyphoonInjectedAsCollection> collectionBuilder))
 {
     return TyphoonInjectionWithCollection(collection);
 }
 
-static __inline__ id InjectionWithObject(id object)
+static __inline__ id InjectionWithCollectionAndType(Class collectionClass, void (^collection)(id<TyphoonInjectedAsCollection> collectionBuilder))
 {
-    return TyphoonInjectionWithObject(object);
-}
-
-static __inline__ id InjectionByType(void)
-{
-    return TyphoonInjectionByType();
+    return TyphoonInjectionWithCollectionAndType(collectionClass, collection);
 }
 
 static __inline__ id InjectionWithObjectFromString(NSString *string)
@@ -39,9 +34,9 @@ static __inline__ id InjectionWithObjectFromString(NSString *string)
     return TyphoonInjectionWithObjectFromString(string);
 }
 
-static __inline__ id InjectionWithComponentFactory(void)
+static __inline__ id InjectionWithObjectFromStringWithType(NSString *string, Class objectClass)
 {
-    return TyphoonInjectionWithComponentFactory();
+    return TyphoonInjectionWithObjectFromStringWithType(string, objectClass);
 }
 
 static __inline__ id InjectionWithRuntimeArgumentAtIndex(NSUInteger argumentIndex)

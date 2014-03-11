@@ -19,13 +19,13 @@
  */
 @interface TyphoonDefinition (Infrastructure)
 
+@property (nonatomic, strong) TyphoonRuntimeArguments *currentRuntimeArguments;
 
 /**
 * Returns a definition with the given class and key. In the block-style assembly, keys are auto-generated, however infrastructure components
 * may specify their own key.
 */
 + (instancetype)withClass:(Class)clazz key:(NSString *)key;
-
 
 /**
  Factory method for a TyphoonPropertyPlaceholderConfigurer.
@@ -40,8 +40,6 @@
  @return a definition.
  */
 + (instancetype)propertyPlaceholderWithResources:(NSArray *)resources;
-
-- (BOOL) hasRuntimeInjections;
 
 - (id)initWithClass:(Class)clazz key:(NSString *)key;
 

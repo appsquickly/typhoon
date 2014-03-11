@@ -14,7 +14,6 @@
 #import "Knight.h"
 #import "CampaignQuest.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
-#import "TyphoonPropertyInjectedAsCollection.h"
 #import "TyphoonParameterInjectedAsCollection.h"
 #import "PrimitiveMan.h"
 

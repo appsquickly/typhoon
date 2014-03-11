@@ -16,17 +16,13 @@
 TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 
 #import "TyphoonRXMLElement+XmlComponentFactory.h"
-#import "TyphoonAbstractInjectedProperty.h"
-#import "TyphoonPropertyInjectedByReference.h"
-#import "TyphoonPropertyInjectedWithStringRepresentation.h"
-#import "TyphoonPropertyInjectedByType.h"
 #import "TyphoonInitializer.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
-#import "TyphoonPropertyInjectedAsCollection.h"
 #import "TyphoonParameterInjectedAsCollection.h"
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonBundleResource.h"
 #import "TyphoonReferenceDefinition.h"
+#import "TyphoonInjectionsObjects.h"
 
 @implementation TyphoonRXMLElement (XmlComponentFactory)
 
@@ -68,7 +64,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 }
 
 //TODO: Method too long, clean it up.
-- (TyphoonAbstractInjectedProperty *)asInjectedProperty
+- (id<TyphoonPropertyInjection>)asInjectedProperty
 {
     [self assertTagName:@"property"];
 
@@ -81,7 +77,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
         [NSException raise:NSInvalidArgumentException format:@"'ref' and 'value' attributes cannot be used with 'collection'"];
     }
 
-    TyphoonAbstractInjectedProperty *injectedProperty = nil;
+    TyphoonAbstractInjection *injectedProperty = nil;
     if (referenceName && value) {
         [NSException raise:NSInvalidArgumentException format:@"Ambigous - both reference and value attributes are set. Can only be one."];
     }
@@ -90,13 +86,13 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
     }
 
     else if ([referenceName length] > 0) {
-        injectedProperty = [[TyphoonPropertyInjectedByReference alloc] initWithName:propertyName reference:referenceName];
+        injectedProperty = [[TyphoonInjectionByReference alloc] initWithReference:referenceName args:nil];
     }
     else if (value) {
-        injectedProperty = [[TyphoonPropertyInjectedWithStringRepresentation alloc] initWithName:propertyName value:value];
+        injectedProperty = [[TyphoonInjectionByObjectFromString alloc] initWithString:value];
     }
     else if (collection) {
-        TyphoonPropertyInjectedAsCollection *property = [[TyphoonPropertyInjectedAsCollection alloc] initWithName:propertyName];
+        TyphoonInjectionByCollection *property = [[TyphoonInjectionByCollection alloc] init];
         [collection iterate:@"*" usingBlock:^(TyphoonRXMLElement *child) {
             if ([[child tag] isEqualToString:@"ref"]) {
                 [property addItemWithComponentName:[child text]];
@@ -114,8 +110,11 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
         injectedProperty = property;
     }
     else {
-        injectedProperty = [[TyphoonPropertyInjectedByType alloc] initWithName:propertyName];
+        injectedProperty = [[TyphoonInjectionByType alloc] init];
     }
+    
+    [injectedProperty setPropertyName:propertyName];
+    
     return injectedProperty;
 }
 

@@ -10,8 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonAssistedFactoryBase.h"
-
-#import "TyphoonAbstractInjectedProperty.h"
+#import "TyphoonPropertyInjection.h"
 
 @implementation TyphoonAssistedFactoryBase
 {
@@ -65,10 +64,10 @@
 {
 }
 
-- (BOOL)shouldInjectProperty:(TyphoonAbstractInjectedProperty *)property withType:(TyphoonTypeDescriptor *)type
+- (BOOL)shouldInjectProperty:(id<TyphoonPropertyInjection>)property withType:(TyphoonTypeDescriptor *)type
     lazyValue:(TyphoonPropertyInjectionLazyValue)lazyValue
 {
-    [_injections setObject:lazyValue forKey:property.name];
+    [_injections setObject:lazyValue forKey:property.propertyName];
     return NO;
 }
 

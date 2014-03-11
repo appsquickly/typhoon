@@ -81,7 +81,7 @@
 
     if ([cached isKindOfClass:[TyphoonDefinition class]]) {
         /* Set current runtime args to know passed arguments when build definition */
-        ((TyphoonDefinition *)cached)->_currentRuntimeArgs = args;
+        ((TyphoonDefinition *)cached).currentRuntimeArguments = args;
     }
     
     LogTrace(@"Did finish building definition for key: '%@'", key);

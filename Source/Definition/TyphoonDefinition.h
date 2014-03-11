@@ -12,10 +12,10 @@
 
 #import <Foundation/Foundation.h>
 
+#import "TyphoonInjections.h"
+
 @class TyphoonInitializer;
 @class TyphoonDefinition;
-@class TyphoonPropertyInjectedAsCollection;
-
 @class TyphoonRuntimeArguments;
 
 /**
@@ -64,8 +64,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
     NSMutableSet *_injectedProperties;
     TyphoonScope _scope;
     TyphoonDefinition *_factory;
-@public
-    TyphoonRuntimeArguments *_currentRuntimeArgs;
+    TyphoonRuntimeArguments *_currentRuntimeArguments;
 }
 
 @property(nonatomic, readonly) Class type;
@@ -232,50 +231,29 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 - (void)injectProperty:(SEL)withSelector;
 
 /**
-* Injects property with the given definition.
-*/
-- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition *)definition;
-
-/**
- * Injects property with result of invocation factorySelector on factoryDefinition.
+ * Injects property for gived selector with injection, where injection can be
+ * - obtained from Injection* functions
+ * - another definition
+ * - assembly or collaboration assembly reference (TyphoonComponentFactory will be injected)
+ * - object instance
  */
-- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition *)factoryDefinition selector:(SEL)factorySelector;
+- (void)injectProperty:(SEL)selector with:(id)injection;
+
+#pragma mark Making injections from definition
 
 /**
- * Injects property with result of invocation valueForKeyPath with given keyPath on factoryDefinition.
+ * Returns injection which can be used in injectProperty:with: method
+ * This method will injects result of factorySelector invocation
+ * @param factorySelector selector to invoke on resolved definition
  */
-- (void)injectProperty:(SEL)selector withDefinition:(TyphoonDefinition *)factoryDefinition keyPath:(NSString *)keyPath;
+- (id)injectionFromSelector:(SEL)factorySelector;
 
 /**
-* Injects property with the given object instance. Auto-boxing can be used to injected primitive types, for example:
-*
-@code
-
-[definition injectProperty:@selector(boolValue) withObjectInstance:@(YES)];
-
-@endcode
-*/
-- (void)injectProperty:(SEL)selector withObjectInstance:(id)instance;
-
-/**
- * Injects property with TyphoonComponentFactory
+ * Returns injection which can be used in injectProperty:with: method
+ * This method will injects valueForKeyPath: with given keyPath
+ * @param keyPath path used as argument while calling valueForKeyPath: on resolved definition
  */
-- (void)injectPropertyWithComponentFactory:(SEL)selector;
-
-/**
-* Injects property with the value represented by the given text. The text will be used to create an instance of a class matching the
-* required type.
-*
-* @see TyphoonTypeConverterRegistry for details on declaring your own type converters.
-*/
-- (void)injectProperty:(SEL)withSelector withValueAsText:(NSString *)textValue;
-
-
-/**
-* Injects property as a collection.
-*/
-- (void)injectProperty:(SEL)withSelector asCollection:(void (^)(TyphoonPropertyInjectedAsCollection *))collectionValues;
-
+- (id)injectionFromKeyPath:(NSString *)keyPath;
 
 - (NSSet *)injectedProperties;
 

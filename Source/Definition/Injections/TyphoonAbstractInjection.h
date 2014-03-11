@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger, TyphoonInjectionType) {
     TyphoonInjectionTypeParameter
 };
 
-@interface TyphoonAbstractInjection : NSObject <TyphoonParameterInjection, TyphoonPropertyInjection, NSCopying>
+@interface TyphoonAbstractInjection : NSObject <TyphoonParameterInjection, TyphoonPropertyInjection>
 
 @property (nonatomic, readonly) TyphoonInjectionType type;
 
