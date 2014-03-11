@@ -85,4 +85,10 @@
         return found;
     }];
 }
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    return [[TyphoonRuntimeArguments alloc] initWithArguments:[arguments mutableCopy]];
+}
+
 @end

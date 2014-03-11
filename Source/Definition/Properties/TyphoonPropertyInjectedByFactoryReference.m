@@ -35,7 +35,7 @@
 {
     [factory evaluateCircularDependency:self.reference propertyName:self.name instance:instance];
 
-    if (![factory propertyIsCircular:self onInstance:instance]) {
+    if (![factory isCircularPropertyWithName:self.name onInstance:instance]) {
         id factoryReference = [factory componentForKey:self.reference];
         return [factoryReference valueForKeyPath:self.keyPath];
     }

@@ -25,5 +25,6 @@
 
 - (void)setDefinition:(TyphoonDefinition *)definition;
 
+- (BOOL)isPrimitiveParameterAtIndex:(NSUInteger)index;
 
 @end

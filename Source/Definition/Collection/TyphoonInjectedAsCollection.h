@@ -30,14 +30,14 @@
 
 @end
 
-typedef enum
+typedef NS_ENUM(NSInteger, TyphoonCollectionType)
 {
     TyphoonCollectionTypeNSArray,
     TyphoonCollectionTypeNSMutableArray,
     TyphoonCollectionTypeNSSet,
     TyphoonCollectionTypeNSMutableSet,
     TyphoonCollectionTypeNSCountedSet
-} TyphoonCollectionType;
+};
 
 /**
  * Represents a collection (NSArray, NSSet, c-style array) of items injected by reference, value or type.

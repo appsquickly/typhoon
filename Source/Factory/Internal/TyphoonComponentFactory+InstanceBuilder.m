@@ -177,9 +177,9 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 }
 
-- (BOOL)propertyIsCircular:(TyphoonAbstractInjectedProperty *)property onInstance:(id <TyphoonIntrospectiveNSObject>)instance
+- (BOOL)isCircularPropertyWithName:(NSString *)name onInstance:(id <TyphoonIntrospectiveNSObject>)instance
 {
-    return [[instance circularDependentProperties] objectForKey:property.name] != nil;
+    return [[instance circularDependentProperties] objectForKey:name] != nil;
 }
 
 - (void)injectCircularDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance

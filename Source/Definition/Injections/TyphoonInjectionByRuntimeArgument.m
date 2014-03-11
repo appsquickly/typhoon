@@ -1,0 +1,43 @@
+//
+//  TyphoonInjectionByRuntimeArgument.m
+//  A-Typhoon
+//
+//  Created by Aleksey Garbarev on 12.03.14.
+//  Copyright (c) 2014 Jasper Blues. All rights reserved.
+//
+
+#import "TyphoonInjectionByRuntimeArgument.h"
+#import "TyphoonRuntimeArguments.h"
+
+@implementation TyphoonInjectionByRuntimeArgument
+
+- (instancetype)initWithArgumentIndex:(NSUInteger)index
+{
+    self = [super init];
+    if (self) {
+        _runtimeArgumentIndex = index;
+    }
+    return self;
+}
+
+#pragma mark - Overrides
+
+- (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+{
+    return [args argumentValueAtIndex:self.runtimeArgumentIndex];
+}
+
+- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+{
+    id runtimeArgument = [args argumentValueAtIndex:self.runtimeArgumentIndex];
+    [self setObject:runtimeArgument forInvocation:invocation];
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    TyphoonInjectionByRuntimeArgument *copied = [[TyphoonInjectionByRuntimeArgument alloc] initWithArgumentIndex:self.runtimeArgumentIndex];
+    [self copyBaseProperiesTo:copied];
+    return copied;
+}
+
+@end

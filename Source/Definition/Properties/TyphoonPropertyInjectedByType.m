@@ -44,7 +44,7 @@
     TyphoonDefinition *definition = [factory definitionForType:[type classOrProtocol]];
     
     [factory evaluateCircularDependency:definition.key propertyName:self.name instance:instance];
-    if (![factory propertyIsCircular:self onInstance:instance]) {
+    if (![factory isCircularPropertyWithName:self.name onInstance:instance]) {
         value = [factory componentForKey:definition.key];
     }
 

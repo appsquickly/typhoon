@@ -39,7 +39,7 @@
 
     [self replaceArgsReferencesInBuildArgs:self.assemblyBuildArgs withRuntimeArgs:args];
     
-    if (![factory propertyIsCircular:self onInstance:instance]) {
+    if (![factory isCircularPropertyWithName:self.name onInstance:instance]) {
         return [factory componentForKey:self.reference args:self.assemblyBuildArgs];
     }
     return nil;

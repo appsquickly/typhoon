@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TyphoonRuntimeArguments : NSObject
+@interface TyphoonRuntimeArguments : NSObject <NSCopying>
 
 + (instancetype)argumentsFromInvocation:(NSInvocation *)invocation;
 + (instancetype)argumentsFromVAList:(va_list)list selector:(SEL)selector;

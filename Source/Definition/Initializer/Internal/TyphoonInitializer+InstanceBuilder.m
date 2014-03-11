@@ -16,6 +16,7 @@
 #import "TyphoonParameterInjectedWithStringRepresentation.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
+#import "TyphoonIntrospectionUtils.h"
 
 TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
@@ -60,6 +61,15 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     return [self resolveIsClassMethod];
 }
 
+- (BOOL)isPrimitiveParameterAtIndex:(NSUInteger)index
+{
+    BOOL isClass = [self isClassMethod];
+    Class class = self.definition.factory ? self.definition.factory.type : self.definition.type;
+    
+    NSArray *typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:self.selector ofClass:class isClassMethod:isClass];
+    
+    return ![[typeCodes objectAtIndex:index] isEqualToString:@"@"];
+}
 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods

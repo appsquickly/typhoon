@@ -23,5 +23,4 @@
 
 - (id)initWithName:(NSString *)name;
 
-
 @end
