@@ -11,6 +11,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "TyphoonInjections.h"
 
 @class TyphoonDefinition;
 @class TyphoonParameterInjectedAsCollection;
@@ -73,101 +74,11 @@ typedef enum
 
 /* ====================================================================================================================================== */
 #pragma mark - inject
-/**
-* Injects with the given definition.
-*/
-- (void)injectWithDefinition:(TyphoonDefinition *)definition;
 
-/* Injects result of invocation 'selector'/'keyPath' on 'factoryDefinition' instance */
-- (void)injectWithDefinition:(TyphoonDefinition *)factoryDefinition selector:(SEL)selector;
 
-- (void)injectWithDefinition:(TyphoonDefinition *)factoryDefinition keyPath:(NSString *)keyPath;
+- (void)injectParameterWith:(id)injection;
 
-/**
-* Injects with the value represented by the given text. The text will be used to create an instance of a class matching the
-* required type.
-*
-* @see TyphoonTypeConverterRegistry for details on declaring your own type converters.
-*/
-- (void)injectWithValueAsText:(NSString *)text;
+- (void)injectParameter:(NSString *)parameterName with:(id)injection;
 
-/**
-* Injects with the value represented by the given text. The text will be used to create an instance of the given requiredType.
-*/
-- (void)injectWithValueAsText:(NSString *)text requiredTypeOrNil:(id)requiredTypeOrNil;
-
-/**
-* Injects with an object instance. 
-* If object is NSNumber or NSValue and argument type is scalar, pointer or NSValue-supported struct, then value will be automatically unwrapped
- * (Like KeyValueCoding does).
-@code
- [initializer injectWithObjectInstance:@(YES)];
- [initializer injectWithObjectInstance:@(1.43f)];
- [initializer injectWithObjectInstance:[NSValue valueWithCGRect:defaultFrame]];
- [initializer injectWithObjectInstance:[NSValue valueWithPointer:@selector(selectorValue)]];
-@endcode
-
-To inject a class object:
-
-@code
-[initializer injectWithObjectInstance:[SomeObject class]];
-@endcode
-
-*/
-- (void)injectWithObjectInstance:(id)value;
-
-/**
-* Injects with a collection of the given type.
-*/
-- (void)injectWithCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues requiredType:(id)requiredType;
-
-/**
- * Injects TyphoonComponentFactory
- */
-- (void)injectWithComponentFactory;
-
-#pragma mark - injectParameterNamed:
-- (void)injectParameterNamed:(NSString *)name withReference:(NSString *)reference;
-
-- (void)injectParameterNamed:(NSString *)name withValueAsText:(NSString *)text requiredTypeOrNil:(id)classOrProtocol;
-
-- (void)injectParameterNamed:(NSString *)name withObject:(id)value;
-
-/**
-* Injects the parameter matched by the given name with the given definition.
-*/
-- (void)injectParameterNamed:(NSString *)name withDefinition:(TyphoonDefinition *)definition;
-
-- (void)injectParameterNamed:(NSString *)name withDefinition:(TyphoonDefinition *)factoryDefinition selector:(SEL)selector;
-
-- (void)injectParameterNamed:(NSString *)name withDefinition:(TyphoonDefinition *)factoryDefinition keyPath:(NSString *)keyPath;
-
-/**
-* Injects the parameter matched by the given name as a collection of the given requiredType.
-*/
-- (void)injectParameterNamed:(NSString *)name asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues
-    requiredType:(id)requiredType;
-
-- (void)injectWithComponentFactoryAsName:(NSString *)name;
-
-#pragma mark - injectParameterAtIndex
-/**
-* Injects the parameter at the given index with the given definition.
-*/
-- (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonDefinition *)definition;
-
-/**
-* Injects the parameter at the given index as a collection of the given requiredType.
-*/
-- (void)injectParameterAtIndex:(NSUInteger)index asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues
-    requiredType:(id)requiredType;
-
-- (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString *)reference;
-
-- (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString *)text requiredTypeOrNil:(id)requiredClass;
-
-- (void)injectParameterAtIndex:(NSUInteger)index withObject:(id)value;
-
-- (void)injectWithComponentFactoryAtIndex:(NSUInteger)index;
 
 @end

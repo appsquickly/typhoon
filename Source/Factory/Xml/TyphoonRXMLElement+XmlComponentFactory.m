@@ -18,11 +18,15 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 #import "TyphoonRXMLElement+XmlComponentFactory.h"
 #import "TyphoonInitializer.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
-#import "TyphoonParameterInjectedAsCollection.h"
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonBundleResource.h"
 #import "TyphoonReferenceDefinition.h"
 #import "TyphoonInjectionsObjects.h"
+#import "TyphoonInjections.h"
+
+@interface TyphoonInitializer (Private)
+- (void)injectParameterAtIndex:(NSUInteger)index with:(id)injection;
+@end
 
 @implementation TyphoonRXMLElement (XmlComponentFactory)
 
@@ -245,10 +249,10 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 
     if (reference) {
         if (name) {
-            [initializer injectParameterNamed:name withReference:reference];
+            [initializer injectParameter:name with:InjectionWithReference(reference)];
         }
         else if (index) {
-            [initializer injectParameterAtIndex:[index integerValue] withReference:reference];
+            [initializer injectParameterAtIndex:[index integerValue] with:InjectionWithReference(reference)];
         }
 
         // TODO: should raise an exception if no name or index specified. is NOT implicit with XML. but it should be - you should not need to specify.
@@ -264,10 +268,10 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
             }
         }
         if (name) {
-            [initializer injectParameterNamed:name withValueAsText:value requiredTypeOrNil:clazz];
+            [initializer injectParameter:name with:TyphoonInjectionWithObjectFromStringWithType(value, clazz)];
         }
         else if (index) {
-            [initializer injectParameterAtIndex:[index integerValue] withValueAsText:value requiredTypeOrNil:clazz];
+            [initializer injectParameterAtIndex:[index integerValue] with:TyphoonInjectionWithObjectFromStringWithType(value, clazz)];
         }
 
         // TODO: should raise exception instead of silently failing
@@ -287,7 +291,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
             [NSException raise:NSInvalidArgumentException format:@"'requiredType' is missing for collection initializer argument."];
         }
 
-        void (^asCollectionBlock)(TyphoonParameterInjectedAsCollection *) = ^(TyphoonParameterInjectedAsCollection *parameterAsCollection) {
+        void (^asCollectionBlock)(id<TyphoonInjectedAsCollection>) = ^(id<TyphoonInjectedAsCollection> parameterAsCollection) {
             [collection iterate:@"*" usingBlock:^(TyphoonRXMLElement *child) {
                 if ([[child tag] isEqualToString:@"ref"]) {
                     [parameterAsCollection addItemWithComponentName:[child text]];
@@ -304,10 +308,10 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
         };
 
         if (name) {
-            [initializer injectParameterNamed:name asCollection:asCollectionBlock requiredType:clazz];
+            [initializer injectParameter:name with:TyphoonInjectionWithCollectionAndType(clazz, asCollectionBlock)];
         }
         else if (index) {
-            [initializer injectParameterAtIndex:[index integerValue] asCollection:asCollectionBlock requiredType:clazz];
+            [initializer injectParameterAtIndex:[index integerValue] with:TyphoonInjectionWithCollectionAndType(clazz, asCollectionBlock)];
         }
     }
 }
@@ -333,6 +337,12 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
         return attribute;
     }
     return nil;
+}
+
+
+static id InjectionWithReference(NSString *reference)
+{
+    return [[TyphoonInjectionByReference alloc] initWithReference:reference args:nil];
 }
 
 @end

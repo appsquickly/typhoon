@@ -13,14 +13,12 @@
 
 #import "TyphoonCollaboratingAssemblyProxy.h"
 #import "TyphoonInitializer.h"
-#import "TyphoonParameterInjectedByReference.h"
-#import "TyphoonParameterInjectedByFactoryReference.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
-#import "TyphoonParameterInjectedWithStringRepresentation.h"
-#import "TyphoonParameterInjectedWithObjectInstance.h"
 #import "TyphoonDefinition.h"
-#import "TyphoonParameterInjectedAsCollection.h"
-#import "TyphoonParameterInjectedByComponentFactory.h"
+
+#import "TyphoonParameterInjection.h"
+#import "TyphoonObjectWithCustomInjection.h"
+#import "TyphoonInjectionByObjectInstance.h"
 
 @implementation TyphoonInitializer
 
@@ -64,10 +62,9 @@
 
 #pragma mark - manipulations with _injectedParameters
 
-- (void)addParameter:(TyphoonAbstractInjectedParameter *)parameter
+- (void)addParameterInjection:(id<TyphoonParameterInjection>)injection
 {
-    parameter.initializer = self;
-    [_injectedParameters addObject:parameter];
+    [_injectedParameters addObject:injection];
 }
 
 - (BOOL)canAddParameterAtIndex:(NSUInteger)index
@@ -80,62 +77,38 @@
     return [_injectedParameters count];
 }
 
-#pragma mark - injectParameterNamed
+#pragma mark - Injections
 
-- (void)injectParameterNamed:(NSString *)name withDefinition:(TyphoonDefinition *)definition;
+- (void)injectParameterAtIndex:(NSUInteger)index with:(id)injection
 {
-    [self injectParameterNamed:name withReference:definition.key];
+    if ([self canAddParameterAtIndex:index]) {
+        if ([injection conformsToProtocol:@protocol(TyphoonParameterInjection)]) {
+            [injection setParameterIndex:index withInitializer:self];
+            [self addParameterInjection:injection];
+        }
+        else if ([injection conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)]) {
+            [self injectParameterAtIndex:index with:[injection typhoonCustomObjectInjection]];
+        }
+        else {
+            [self injectParameterAtIndex:index with:[[TyphoonInjectionByObjectInstance alloc] initWithObjectInstance:injection]];
+        }
+    }
 }
 
-- (void)injectParameterNamed:(NSString *)name withDefinition:(TyphoonDefinition *)factoryDefinition selector:(SEL)selector
+- (void)injectParameterWith:(id)injection
 {
-    [self injectParameterNamed:name success:^(NSInteger index) {
-        [self injectParameterAtIndex:index withDefinition:factoryDefinition selector:selector];
+    [self injectParameterAtIndex:[self indexToAddParameter] with:injection];
+}
+
+- (void)injectParameter:(NSString *)parameterName with:(id)injection
+{
+    [self injectParameterNamed:parameterName success:^(NSInteger index) {
+        [self injectParameterAtIndex:index with:injection];
     }];
 }
 
-- (void)injectParameterNamed:(NSString *)name withDefinition:(TyphoonDefinition *)factoryDefinition keyPath:(NSString *)keyPath
-{
-    [self injectParameterNamed:name success:^(NSInteger index) {
-        [self injectParameterAtIndex:index withDefinition:factoryDefinition keyPath:keyPath];
-    }];
-}
-
-- (void)injectParameterNamed:(NSString *)name withReference:(NSString *)reference
-{
-    [self injectParameterNamed:name success:^(NSInteger index) {
-        [self injectParameterAtIndex:index withReference:reference];
-    }];
-}
-
-- (void)injectParameterNamed:(NSString *)name withValueAsText:(NSString *)text requiredTypeOrNil:(id)classOrProtocol
-{
-    [self injectParameterNamed:name success:^(NSInteger index) {
-        [self injectParameterAtIndex:index withValueAsText:text requiredTypeOrNil:classOrProtocol];
-    }];
-}
-
-- (void)injectParameterNamed:(NSString *)name asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues
-    requiredType:(id)requiredType
-{
-    [self injectParameterNamed:name success:^(NSInteger index) {
-        [self injectParameterAtIndex:index asCollection:collectionValues requiredType:requiredType];
-    }];
-}
-
-- (void)injectParameterNamed:(NSString *)name withObject:(id)value
-{
-    [self injectParameterNamed:name success:^(NSInteger index) {
-        [self injectParameterAtIndex:index withObject:value];
-    }];
-}
-
-- (void)injectWithComponentFactoryAsName:(NSString *)name
-{
-    [self injectParameterNamed:name success:^(NSInteger index) {
-        [self injectWithComponentFactoryAtIndex:index];
-    }];
-}
+//============================================================================================================================================
+#pragma mark - Parameters names
 
 - (void)injectParameterNamed:(NSString *)name success:(void (^)(NSInteger))success
 {
@@ -148,7 +121,6 @@
         success(index);
     }
 }
-
 
 - (NSString *)parameterNotFoundErrorMessageWithParameterNamed:(NSString *)name
 {
@@ -195,126 +167,6 @@
     return [NSString stringWithString:messageBuilder];
 }
 
-#pragma mark injectParameterAtIndex:
-
-- (void)injectWithComponentFactoryAtIndex:(NSUInteger)index
-{
-    if ([self canAddParameterAtIndex:index]) {
-        [self addParameter:[[TyphoonParameterInjectedByComponentFactory alloc] initWithParameterIndex:index]];
-    }
-}
-
-
-- (void)injectParameterAtIndex:(NSUInteger)index withReference:(NSString *)reference
-{
-    if ([self canAddParameterAtIndex:index]) {
-        [self addParameter:[[TyphoonParameterInjectedByReference alloc] initWithParameterIndex:index reference:reference]];
-    }
-}
-
-- (void)injectParameterAtIndex:(NSUInteger)index withFactoryReference:(NSString *)reference keyPath:(NSString *)keyPath
-{
-    if ([self canAddParameterAtIndex:index]) {
-        [self addParameter:[[TyphoonParameterInjectedByFactoryReference alloc]
-            initWithParameterIndex:index factoryReference:reference keyPath:keyPath]];
-    }
-}
-
-- (void)injectParameterAtIndex:(NSUInteger)index withValueAsText:(NSString *)text requiredTypeOrNil:(id)requiredClass
-{
-    if ([self canAddParameterAtIndex:index]) {
-        [self addParameter:[[TyphoonParameterInjectedWithStringRepresentation alloc]
-            initWithIndex:index value:text requiredTypeOrNil:requiredClass]];
-    }
-}
-
-/* ====================================================================================================================================== */
-
-
-- (void)injectWithDefinition:(TyphoonDefinition *)definition;
-{
-    [self injectParameterAtIndex:[self indexToAddParameter] withDefinition:definition];
-}
-
-
-- (void)injectWithDefinition:(TyphoonDefinition *)factoryDefinition selector:(SEL)selector
-{
-
-    [self injectParameterAtIndex:[self indexToAddParameter] withDefinition:factoryDefinition selector:selector];
-}
-
-- (void)injectWithDefinition:(TyphoonDefinition *)factoryDefinition keyPath:(NSString *)keyPath
-{
-    [self injectParameterAtIndex:[self indexToAddParameter] withDefinition:factoryDefinition keyPath:keyPath];
-}
-
-- (void)injectWithValueAsText:(NSString *)text
-{
-    [self injectWithValueAsText:text requiredTypeOrNil:nil];
-}
-
-- (void)injectWithValueAsText:(NSString *)text requiredTypeOrNil:(id)requiredTypeOrNil
-{
-    [self injectParameterAtIndex:[self indexToAddParameter] withValueAsText:text requiredTypeOrNil:requiredTypeOrNil];
-}
-
-- (void)injectParameterAtIndex:(NSUInteger)index withObject:(id)value
-{
-    if ([self canAddParameterAtIndex:index]) {
-        [self addParameter:[[TyphoonParameterInjectedWithObjectInstance alloc] initWithParameterIndex:index value:value]];
-    }
-}
-
-- (void)injectWithObjectInstance:(id)value;
-{
-    [self injectParameterAtIndex:[self indexToAddParameter] withObject:value];
-}
-
-- (void)injectWithCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues requiredType:(id)requiredType
-{
-    [self injectParameterAtIndex:[self indexToAddParameter] asCollection:collectionValues requiredType:requiredType];
-}
-
-- (void)injectWithComponentFactory
-{
-    [self injectWithComponentFactoryAtIndex:[self indexToAddParameter]];
-}
-
-/* ====================================================================================================================================== */
-#pragma mark - Block assembly
-
-- (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonDefinition *)definition
-{
-    [self injectParameterAtIndex:index withReference:definition.key];
-}
-
-- (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonDefinition *)factoryDefinition keyPath:(NSString *)keyPath
-{
-    [self injectParameterAtIndex:index withFactoryReference:factoryDefinition.key keyPath:keyPath];
-}
-
-- (void)injectParameterAtIndex:(NSUInteger)index withDefinition:(TyphoonDefinition *)factoryDefinition selector:(SEL)selector
-{
-    [self injectParameterAtIndex:index withFactoryReference:factoryDefinition.key keyPath:NSStringFromSelector(selector)];
-}
-
-- (void)injectParameterAtIndex:(NSUInteger)index asCollection:(void (^)(TyphoonParameterInjectedAsCollection *))collectionValues
-    requiredType:(id)requiredType
-{
-
-    TyphoonParameterInjectedAsCollection *parameterInjectedAsCollection =
-        [[TyphoonParameterInjectedAsCollection alloc] initWithParameterIndex:index requiredType:requiredType];
-
-    if (collectionValues) {
-        __unsafe_unretained TyphoonParameterInjectedAsCollection *weakParameterInjectedAsCollection = parameterInjectedAsCollection;
-        collectionValues(weakParameterInjectedAsCollection);
-    }
-
-    if ([self canAddParameterAtIndex:index]) {
-        [self addParameter:parameterInjectedAsCollection];
-    }
-}
-
 - (void)setSelector:(SEL)selector
 {
     _selector = selector;
@@ -326,10 +178,9 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-
     TyphoonInitializer *copy = [[TyphoonInitializer alloc] initWithSelector:_selector isClassMethodStrategy:_isClassMethodStrategy];
-    for (TyphoonAbstractInjectedParameter *parameter in _injectedParameters) {
-        [copy addParameter:[parameter copy]];
+    for (id<TyphoonParameterInjection> parameter in _injectedParameters) {
+        [copy addParameterInjection:[parameter copyWithZone:NSDefaultMallocZone()]];
     }
     return copy;
 }

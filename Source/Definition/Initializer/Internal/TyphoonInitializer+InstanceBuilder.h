@@ -14,6 +14,7 @@
 #import "TyphoonInitializer.h"
 
 @class TyphoonComponentFactory;
+@class TyphoonRuntimeArguments;
 
 @interface TyphoonInitializer (InstanceBuilder)
 
@@ -21,7 +22,7 @@
 
 - (NSArray *)parametersInjectedByValue;
 
-- (NSInvocation *)newInvocationInFactory:(TyphoonComponentFactory *)factory;
+- (NSInvocation *)newInvocationInFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args;
 
 - (void)setDefinition:(TyphoonDefinition *)definition;
 

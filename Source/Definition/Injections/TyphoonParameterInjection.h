@@ -10,7 +10,7 @@
 @class TyphoonRuntimeArguments;
 @class TyphoonInitializer;
 
-@protocol TyphoonParameterInjection <NSObject>
+@protocol TyphoonParameterInjection <NSObject, NSCopying>
 
 - (void)setParameterIndex:(NSUInteger)index withInitializer:(TyphoonInitializer *)initializer;
 

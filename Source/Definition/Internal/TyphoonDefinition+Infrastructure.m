@@ -54,7 +54,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
         *definition = [self withClass:[TyphoonPropertyPlaceholderConfigurer class] initialization:^(TyphoonInitializer *initializer) {
 
         initializer.selector = @selector(configurerWithResourceList:);
-        [initializer injectWithObjectInstance:resources];
+        [initializer injectParameterWith:resources];
 
     }];
     definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), [[resources firstObject] description]];

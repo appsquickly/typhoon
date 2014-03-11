@@ -54,7 +54,7 @@
             NSString *patcherKey = [NSString stringWithFormat:@"%@%@", definition.key, @"$$$patcher"];
             TyphoonDefinition *patchFactory = [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:patcherKey];
             patchFactory.initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithCreationBlock:)];
-            [patchFactory.initializer injectWithObjectInstance:patchObject];
+            [patchFactory.initializer injectParameterWith:patchObject];
             [patchFactory setScope:definition.scope];
 
             [definition setFactory:patchFactory];

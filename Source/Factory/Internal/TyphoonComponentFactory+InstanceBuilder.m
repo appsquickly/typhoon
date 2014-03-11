@@ -49,7 +49,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     TyphoonStackElement *stackElement = [TyphoonStackElement elementWithKey:definition.key];
     [_stack push:stackElement];
 
-    id instance = [self initializeInstanceWithDefinition:definition];
+    id instance = [self initializeInstanceWithDefinition:definition args:args];
 
     [stackElement takeInstance:instance];
 
@@ -61,7 +61,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     return instance;
 }
 
-- (id)initializeInstanceWithDefinition:(TyphoonDefinition *)definition
+- (id)initializeInstanceWithDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
     id initTarget = nil;
 
@@ -74,7 +74,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
     id instance = nil;
 
-    NSInvocation *invocation = [definition.initializer newInvocationInFactory:self];
+    NSInvocation *invocation = [definition.initializer newInvocationInFactory:self args:args];
 
     if (definition.factory || [definition.initializer isClassMethod]) {
         instance = [invocation typhoon_resultOfInvokingOnInstance:initTarget];

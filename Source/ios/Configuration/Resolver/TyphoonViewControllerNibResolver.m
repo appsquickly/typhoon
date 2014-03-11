@@ -40,8 +40,8 @@
 - (void)processViewControllerDefinition:(TyphoonDefinition *)definition
 {
     TyphoonInitializer *initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithNibName:bundle:)];
-    [initializer injectWithValueAsText:[self resolveNibNameForClass:definition.type] requiredTypeOrNil:[NSString class]];
-    [initializer injectWithObjectInstance:[NSBundle mainBundle]];
+    [initializer injectParameterWith:[self resolveNibNameForClass:definition.type]];
+    [initializer injectParameterWith:[NSBundle mainBundle]];
     definition.initializer = initializer;
 }
 

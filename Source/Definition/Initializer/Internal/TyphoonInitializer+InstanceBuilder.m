@@ -13,10 +13,10 @@
 
 #import "TyphoonLinkerCategoryBugFix.h"
 #import "TyphoonInitializer+InstanceBuilder.h"
-#import "TyphoonParameterInjectedWithStringRepresentation.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonIntrospectionUtils.h"
+#import "TyphoonInjectionByObjectFromString.h"
 
 TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
@@ -29,13 +29,13 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 - (NSArray *)parametersInjectedByValue
 {
     NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject isKindOfClass:[TyphoonParameterInjectedWithStringRepresentation class]];
+        return [evaluatedObject isKindOfClass:[TyphoonInjectionByObjectFromString class]];
     }];
     return [_injectedParameters filteredArrayUsingPredicate:predicate];
 
 }
 
-- (NSInvocation *)newInvocationInFactory:(TyphoonComponentFactory *)factory
+- (NSInvocation *)newInvocationInFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
 {
     Class clazz = _definition.factory ? _definition.factory.type : _definition.type;
 
@@ -43,8 +43,8 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
     [invocation setSelector:_selector];
 
-    for (TyphoonAbstractInjectedParameter *parameter in [self injectedParameters]) {
-        [parameter withFactory:factory setArgumentOnInvocation:invocation];
+    for (id<TyphoonParameterInjection> parameter in [self injectedParameters]) {
+        [parameter setArgumentOnInvocation:invocation withFactory:factory args:args];
     }
 
     return invocation;
