@@ -14,7 +14,7 @@
 #import "ExceptionTestAssembly.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonInitializer.h"
-
+#import "TyphoonShorthand.h"
 
 @implementation ExceptionTestAssembly
 
@@ -22,7 +22,7 @@
 {
     return [TyphoonDefinition withClass:[NSURL class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(URLWithString:);
-        [initializer injectParameterNamed:@"string" withValueAsText:@"http://dev.foobar.com/service/" requiredTypeOrNil:nil];
+        [initializer injectParameter:@"string" with:InjectionWithObjectFromString(@"http://dev.foobar.com/service/")];
     }];
 }
 

@@ -14,7 +14,6 @@
 #import "Knight.h"
 #import "CampaignQuest.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
-#import "TyphoonParameterInjectedAsCollection.h"
 #import "PrimitiveMan.h"
 
 @interface ComponentDefinition_InstanceBuilderTests : SenTestCase
@@ -37,7 +36,7 @@
 {
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     TyphoonInitializer *knightInitializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithQuest:)];
-    [knightInitializer injectParameterNamed:@"quest" withReference:@"quest"];
+    [knightInitializer injectParameter:@"quest" with:InjectionWithReference(@"quest")];
     [knightDefinition setInitializer:knightInitializer];
     [_componentFactory registerDefinition:knightDefinition];
 
@@ -54,7 +53,7 @@
     TyphoonDefinition *urlDefinition = [[TyphoonDefinition alloc] initWithClass:[NSURL class] key:@"url"];
     TyphoonInitializer *initializer = [[TyphoonInitializer alloc]
         initWithSelector:@selector(URLWithString:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodYes];
-    [initializer injectParameterAtIndex:0 withValueAsText:@"http://www.appsquick.ly" requiredTypeOrNil:[NSString class]];
+    [initializer injectParameterWith:InjectionWithObjectFromStringWithType(@"http://www.appsquick.ly", [NSString class])];
     [urlDefinition setInitializer:initializer];
     [_componentFactory registerDefinition:urlDefinition];
 
@@ -67,8 +66,8 @@
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     TyphoonInitializer *initializer = [[TyphoonInitializer alloc]
         initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
-    [initializer injectParameterNamed:@"quest" withObject:nil];
-    [initializer injectParameterNamed:@"damselsRescued" withValueAsText:@"12" requiredTypeOrNil:nil];
+    [initializer injectParameter:@"quest" with:nil];
+    [initializer injectParameter:@"damselsRescued" with:InjectionWithObjectFromString(@"12")];
     [knightDefinition setInitializer:initializer];
 
     [_componentFactory registerDefinition:knightDefinition];
@@ -82,11 +81,11 @@
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     TyphoonInitializer *knightInitializer = [[TyphoonInitializer alloc]
         initWithSelector:@selector(initWithQuest:favoriteDamsels:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
-    [knightInitializer injectParameterNamed:@"quest" withReference:@"quest"];
-    [knightInitializer injectParameterNamed:@"favoriteDamsels" asCollection:^(TyphoonParameterInjectedAsCollection *asCollection) {
+    [knightInitializer injectParameter:@"quest" with:InjectionWithReference(@"quest")];
+    [knightInitializer injectParameter:@"favoriteDamsels" with:InjectionWithCollectionAndType([NSArray class], ^(id<TyphoonInjectedAsCollection> asCollection) {
         [asCollection addItemWithText:@"damsel1" requiredType:[NSString class]];
         [asCollection addItemWithText:@"damsel2" requiredType:[NSString class]];
-    } requiredType:[NSArray class]];
+    })];
 
     [knightDefinition setInitializer:knightInitializer];
 
@@ -127,27 +126,27 @@
         pointerValue:
         unknownPointer:
         pointerInsideValue:)];
-    [initializer injectWithObjectInstance:@(INT_MAX)];
-    [initializer injectWithObjectInstance:@(UINT_MAX)];
-    [initializer injectWithObjectInstance:@(SHRT_MAX)];
-    [initializer injectWithObjectInstance:@(USHRT_MAX)];
-    [initializer injectWithObjectInstance:@(LONG_MAX)];
-    [initializer injectWithObjectInstance:@(ULONG_MAX)];
-    [initializer injectWithObjectInstance:@(LONG_LONG_MAX)];
-    [initializer injectWithObjectInstance:@(ULONG_LONG_MAX)];
-    [initializer injectWithObjectInstance:@(UCHAR_MAX)];
-    [initializer injectWithObjectInstance:@(FLT_MAX)];
-    [initializer injectWithObjectInstance:@(DBL_MAX)];
-    [initializer injectWithObjectInstance:@YES];
-    [initializer injectWithObjectInstance:@(NSIntegerMax)];
-    [initializer injectWithObjectInstance:@(NSUIntegerMax)];
-    [initializer injectWithObjectInstance:[self class]];
-    [initializer injectWithObjectInstance:[NSValue valueWithPointer:@selector(selectorValue)]];
-    [initializer injectWithValueAsText:@"Hello String!"];
-    [initializer injectWithObjectInstance:[NSValue valueWithRange:NSMakeRange(10, 20)]];
-    [initializer injectWithObjectInstance:[NSValue valueWithPointer:primitiveStruct]];
-    [initializer injectWithObjectInstance:[NSValue valueWithPointer:primitiveStruct]];
-    [initializer injectWithObjectInstance:[NSValue valueWithPointer:primitiveStruct]];
+    [initializer injectParameterWith:@(INT_MAX)];
+    [initializer injectParameterWith:@(UINT_MAX)];
+    [initializer injectParameterWith:@(SHRT_MAX)];
+    [initializer injectParameterWith:@(USHRT_MAX)];
+    [initializer injectParameterWith:@(LONG_MAX)];
+    [initializer injectParameterWith:@(ULONG_MAX)];
+    [initializer injectParameterWith:@(LONG_LONG_MAX)];
+    [initializer injectParameterWith:@(ULONG_LONG_MAX)];
+    [initializer injectParameterWith:@(UCHAR_MAX)];
+    [initializer injectParameterWith:@(FLT_MAX)];
+    [initializer injectParameterWith:@(DBL_MAX)];
+    [initializer injectParameterWith:@YES];
+    [initializer injectParameterWith:@(NSIntegerMax)];
+    [initializer injectParameterWith:@(NSUIntegerMax)];
+    [initializer injectParameterWith:[self class]];
+    [initializer injectParameterWith:[NSValue valueWithPointer:@selector(selectorValue)]];
+    [initializer injectParameterWith:InjectionWithObjectFromString(@"Hello String!")];
+    [initializer injectParameterWith:[NSValue valueWithRange:NSMakeRange(10, 20)]];
+    [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
+    [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
+    [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
 
 
     [definition setInitializer:initializer];

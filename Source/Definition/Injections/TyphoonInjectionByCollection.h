@@ -21,6 +21,7 @@
  * an NSArray.
  */
 - (TyphoonCollectionType)collectionTypeForPropertyInjectionOnInstance:(id)instance;
+- (TyphoonCollectionType)collectionTypeForParameterInjection;
 
 #pragma mark - <TyphoonInjectedAsCollection> trait
 

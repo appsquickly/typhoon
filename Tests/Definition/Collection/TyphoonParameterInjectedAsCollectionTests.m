@@ -10,7 +10,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <SenTestingKit/SenTestingKit.h>
-#import <TyphoonParameterInjectedAsCollection.h>
 #import <OCHamcrest.h>
 
 @interface TyphoonParameterInjectedAsCollectionTests : SenTestCase
@@ -21,12 +20,14 @@
 
 #pragma mark - Convenience methods
 
-- (TyphoonParameterInjectedAsCollection *)parameterWithIndex:(NSUInteger)index type:(id)type
+- (TyphoonInjectionByCollection *)parameterWithIndex:(NSUInteger)index type:(id)type
 {
-    return [[TyphoonParameterInjectedAsCollection alloc] initWithParameterIndex:index requiredType:type];
+    TyphoonInjectionByCollection *param = [[TyphoonInjectionByCollection alloc] initWithRequiredType:type];
+    [param setParameterIndex:index withInitializer:nil];
+    return param;
 }
 
-- (TyphoonParameterInjectedAsCollection *)parameterWithType:(id)type
+- (TyphoonInjectionByCollection *)parameterWithType:(id)type
 {
     return [self parameterWithIndex:0 type:type];
 }
@@ -35,49 +36,49 @@
 
 - (void)test_should_resolve_array_from_required_type
 {
-    TyphoonParameterInjectedAsCollection *parameterInjectedAsCollection = [self parameterWithType:[NSArray class]];
+    TyphoonInjectionByCollection *parameterInjectedAsCollection = [self parameterWithType:[NSArray class]];
 
-    assertThatInt([parameterInjectedAsCollection collectionType], equalToInt(TyphoonCollectionTypeNSArray));
+    assertThatInt([parameterInjectedAsCollection collectionTypeForParameterInjection], equalToInt(TyphoonCollectionTypeNSArray));
 }
 
 - (void)test_should_resolve_mutable_array_from_required_type
 {
-    TyphoonParameterInjectedAsCollection *parameterInjectedAsCollection = [self parameterWithType:[NSMutableArray class]];
+    TyphoonInjectionByCollection *parameterInjectedAsCollection = [self parameterWithType:[NSMutableArray class]];
 
-    assertThatInt([parameterInjectedAsCollection collectionType], equalToInt(TyphoonCollectionTypeNSMutableArray));
+    assertThatInt([parameterInjectedAsCollection collectionTypeForParameterInjection], equalToInt(TyphoonCollectionTypeNSMutableArray));
 }
 
 #pragma mark - Sets
 
 - (void)test_should_resolve_set_from_required_type
 {
-    TyphoonParameterInjectedAsCollection *parameterInjectedAsCollection = [self parameterWithType:[NSSet class]];
+    TyphoonInjectionByCollection *parameterInjectedAsCollection = [self parameterWithType:[NSSet class]];
 
-    assertThatInt([parameterInjectedAsCollection collectionType], equalToInt(TyphoonCollectionTypeNSSet));
+    assertThatInt([parameterInjectedAsCollection collectionTypeForParameterInjection], equalToInt(TyphoonCollectionTypeNSSet));
 }
 
 - (void)test_should_resolve_mutable_set_from_required_type
 {
-    TyphoonParameterInjectedAsCollection *parameterInjectedAsCollection = [self parameterWithType:[NSMutableSet class]];
+    TyphoonInjectionByCollection *parameterInjectedAsCollection = [self parameterWithType:[NSMutableSet class]];
 
-    assertThatInt([parameterInjectedAsCollection collectionType], equalToInt(TyphoonCollectionTypeNSMutableSet));
+    assertThatInt([parameterInjectedAsCollection collectionTypeForParameterInjection], equalToInt(TyphoonCollectionTypeNSMutableSet));
 }
 
 - (void)test_should_resolve_counted_set_from_required_type
 {
-    TyphoonParameterInjectedAsCollection *parameterInjectedAsCollection = [self parameterWithType:[NSCountedSet class]];
+    TyphoonInjectionByCollection *parameterInjectedAsCollection = [self parameterWithType:[NSCountedSet class]];
 
-    assertThatInt([parameterInjectedAsCollection collectionType], equalToInt(TyphoonCollectionTypeNSCountedSet));
+    assertThatInt([parameterInjectedAsCollection collectionTypeForParameterInjection], equalToInt(TyphoonCollectionTypeNSCountedSet));
 }
 
 #pragma mark - Exception handling
 
 - (void)test_should_raise_exception_if_required_type_is_nil
 {
-    TyphoonParameterInjectedAsCollection *parameterInjectedAsCollection = [self parameterWithType:nil];
+    TyphoonInjectionByCollection *parameterInjectedAsCollection = [self parameterWithType:nil];
 
     @try {
-        [parameterInjectedAsCollection collectionType];
+        [parameterInjectedAsCollection collectionTypeForParameterInjection];
         STFail(@"Should have thrown exception");
     }
     @catch (NSException *exception) {
@@ -87,10 +88,10 @@
 
 - (void)test_should_raise_exception_if_required_type_is_not_a_collection
 {
-    TyphoonParameterInjectedAsCollection *parameterInjectedAsCollection = [self parameterWithType:[NSString class]];
+    TyphoonInjectionByCollection *parameterInjectedAsCollection = [self parameterWithType:[NSString class]];
 
     @try {
-        [parameterInjectedAsCollection collectionType];
+        [parameterInjectedAsCollection collectionTypeForParameterInjection];
         STFail(@"Should have thrown exception");
     }
     @catch (NSException *exception) {

@@ -82,7 +82,7 @@
 {
     return [TyphoonDefinition withClass:[PrototypeInitInjected class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithDependency:);
-        [initializer injectWithDefinition:[self prototypePropertyInjected]];
+        [initializer injectParameterWith:[self prototypePropertyInjected]];
     } properties:^(TyphoonDefinition *definition) {
         [definition setScope:TyphoonScopePrototype];
     }];
@@ -111,7 +111,7 @@
 {
     return [TyphoonDefinition withClass:[CROSingletonB class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithPrototypeB:);
-        [initializer injectWithDefinition:[self croPrototypeB]];
+        [initializer injectParameterWith:[self croPrototypeB]];
     }];
 }
 
@@ -119,7 +119,7 @@
 {
     return [TyphoonDefinition withClass:[CROPrototypeA class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithCROPrototypeB:);
-        [initializer injectWithDefinition:[self croPrototypeB]];
+        [initializer injectParameterWith:[self croPrototypeB]];
     }];
 }
 
@@ -127,7 +127,7 @@
 {
     return [TyphoonDefinition withClass:[CROPrototypeB class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithCROSingletonA:);
-        [initializer injectWithDefinition:[self croSingletonA]];
+        [initializer injectParameterWith:[self croSingletonA]];
     }];
 }
 
@@ -137,7 +137,7 @@
 {
     return [TyphoonDefinition withClass:[CROPrototypeB class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithCROPrototypeA:);
-        [initializer injectWithDefinition:[self incorrectPrototypeA]];
+        [initializer injectParameterWith:[self incorrectPrototypeA]];
     } properties:^(TyphoonDefinition *definition) {
         definition.key = @"incorrectPrototypeB";
         definition.scope = TyphoonScopePrototype;
@@ -148,7 +148,7 @@
 {
     return [TyphoonDefinition withClass:[CROPrototypeA class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithCROPrototypeB:);
-        [initializer injectWithDefinition:[self incorrectPrototypeB]];
+        [initializer injectParameterWith:[self incorrectPrototypeB]];
     } properties:^(TyphoonDefinition *definition) {
         definition.key = @"incorrectPrototypeA";
         definition.scope = TyphoonScopePrototype;

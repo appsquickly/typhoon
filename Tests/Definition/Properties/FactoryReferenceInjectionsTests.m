@@ -146,8 +146,8 @@ NSString *currentFooString;
 
     TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         [initializer setSelector:@selector(initWithDamselsRescued:foo:)];
-        [initializer injectWithDefinition:settings selector:@selector(damselsRescued)];
-        [initializer injectWithDefinition:settings keyPath:@"fooString.uppercaseString"];
+        [initializer injectParameterWith:[settings injectionFromSelector:@selector(damselsRescued)]];
+        [initializer injectParameterWith:[settings injectionFromKeyPath:@"fooString.uppercaseString"]];
     }];
 
     [factory registerDefinition:knightDefinition];

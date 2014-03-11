@@ -168,8 +168,8 @@
 
     TyphoonDefinition *definition = [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:damselsRescued:);
-        [initializer injectWithDefinition:nil];
-        [initializer injectWithObjectInstance:@(12)];
+        [initializer injectParameterWith:nil];
+        [initializer injectParameterWith:@(12)];
     } properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(favoriteDamsels) with:InjectionWithCollection(^(id<TyphoonInjectedAsCollection> collectionBuilder) {
             [collectionBuilder addItemWithDefinition:[TyphoonReferenceDefinition definitionReferringToComponent:@"mary"]];

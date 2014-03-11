@@ -47,7 +47,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:);
-        [initializer injectParameterAtIndex:0 withReference:DEFAULT_QUEST];
+        [initializer injectParameterWith:InjectionWithReference(DEFAULT_QUEST)];
     }]];
 
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class] key:DEFAULT_QUEST]];
@@ -63,7 +63,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 {
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:);
-        [initializer injectParameterAtIndex:0 withReference:DEFAULT_QUEST];
+        [initializer injectParameterWith:InjectionWithReference(DEFAULT_QUEST)];
     } properties:^(TyphoonDefinition *definition) {
         definition.key = @"knight";
     }]];
@@ -92,7 +92,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         [initializer setSelector:@selector(initWithQuest:)];
-        [initializer injectParameterNamed:@"quest" withReference:@"quest"];
+        [initializer injectParameter:@"quest" with:InjectionWithReference(@"quest")];
     } properties:^(TyphoonDefinition *definition) {
         definition.key = @"knight";
     }]];
@@ -110,7 +110,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         [initializer setSelector:@selector(initWithQuest:)];
-        [initializer injectParameterNamed:@"quest" withReference:@"quest"];
+        [initializer injectParameter:@"quest" with:InjectionWithReference(@"quest")];
     } properties:^(TyphoonDefinition *definition) {
         definition.key = @"knight";
     }]];
@@ -447,7 +447,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     TyphoonInitializer *initializer = [[TyphoonInitializer alloc] init];
     initializer.selector = @selector(initWithString:);
-    [initializer injectWithValueAsText:string requiredTypeOrNil:[NSString class]];
+    [initializer injectParameterWith:InjectionWithObjectFromStringWithType(string, [NSString class])];
     parentDefinition.initializer = initializer;
 
     [_componentFactory registerDefinition:parentDefinition];
@@ -461,7 +461,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     TyphoonInitializer *initializer = [[TyphoonInitializer alloc] init];
     initializer.selector = @selector(initWithString:);
-    [initializer injectWithValueAsText:string requiredTypeOrNil:[NSString class]];
+    [initializer injectParameterWith:InjectionWithObjectFromStringWithType(string, [NSString class])];
     parentDefinition.initializer = initializer;
 
     [_componentFactory registerDefinition:parentDefinition];
@@ -486,7 +486,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     TyphoonDefinition *childDefinition = [TyphoonDefinition withClass:pClass initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithString:);
 
-        [initializer injectWithValueAsText:string requiredTypeOrNil:[NSString class]];
+        [initializer injectParameterWith:InjectionWithObjectFromStringWithType(string, [NSString class])];
     } properties:^(TyphoonDefinition *definition) {
         if (parentDefinition) {
             definition.parent = parentDefinition;

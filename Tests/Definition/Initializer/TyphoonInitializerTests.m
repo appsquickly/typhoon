@@ -28,7 +28,7 @@
 {
     @try {
         _initializer = [self newInitializerWithSelector:@selector(initWithString:)];
-        [_initializer injectParameterNamed:@"strnig" withObject:@"a string"];
+        [_initializer injectParameter:@"strnig" with:@"a string"];
         STFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
@@ -41,7 +41,7 @@
 {
     @try {
         _initializer = [self newInitializerWithSelector:@selector(initWithClass:key:)];
-        [_initializer injectParameterNamed:@"keyy" withObject:@"a key"];
+        [_initializer injectParameter:@"keyy" with:@"a key"];
         STFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
@@ -54,7 +54,7 @@
 {
     @try {
         _initializer = [self newInitializerWithSelector:@selector(initWithContentsOfURL:options:error:)];
-        [_initializer injectParameterNamed:@"path" withObject:@"a parameter that isn't there"];
+        [_initializer injectParameter:@"path" with:@"a parameter that isn't there"];
         STFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
@@ -68,7 +68,7 @@
 {
     @try {
         _initializer = [self newInitializerWithSelector:@selector(init)];
-        [_initializer injectParameterNamed:@"aParameter" withObject:@"anObject"];
+        [_initializer injectParameter:@"aParameter" with:@"anObject"];
         STFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {

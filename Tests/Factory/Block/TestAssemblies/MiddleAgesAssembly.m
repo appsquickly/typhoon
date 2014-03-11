@@ -18,7 +18,6 @@
 #import "CavalryMan.h"
 #import "SwordFactory.h"
 #import "Sword.h"
-#import "TyphoonParameterInjectedAsCollection.h"
 
 @implementation MiddleAgesAssembly
 
@@ -44,8 +43,8 @@
 {
     return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:hitRatio:);
-        [initializer injectWithDefinition:[self defaultQuest]];
-        [initializer injectWithValueAsText:@"13.75"];
+        [initializer injectParameterWith:[self defaultQuest]];
+        [initializer injectParameterWith:InjectionWithObjectFromString(@"13.75")];
 
     } properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(hasHorseWillTravel) with:InjectionWithObjectFromString(@"YES")];
@@ -57,7 +56,7 @@
 {
     return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:);
-        [initializer injectWithDefinition:[self defaultQuest]];
+        [initializer injectParameterWith:[self defaultQuest]];
 
     } properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(hitRatio) with:InjectionWithObjectFromString(@"13.75")];
@@ -73,7 +72,7 @@
 {
     return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:);
-        [initializer injectWithDefinition:[self defaultQuest]];
+        [initializer injectParameterWith:[self defaultQuest]];
 
     } properties:^(TyphoonDefinition *definition) {
 
@@ -93,12 +92,11 @@
 {
     return [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:favoriteDamsels:);
-        [initializer injectWithDefinition:[self defaultQuest]];
-        [initializer injectWithCollection:^(TyphoonParameterInjectedAsCollection *collection) {
+        [initializer injectParameterWith:[self defaultQuest]];
+        [initializer injectParameterWith:InjectionWithCollectionAndType([NSArray class], ^(id<TyphoonInjectedAsCollection> collection) {
             [collection addItemWithText:@"Mary" requiredType:[NSString class]];
             [collection addItemWithText:@"Jane" requiredType:[NSString class]];
-
-        } requiredType:[NSArray class]];
+        })];
     }];
 }
 
@@ -116,7 +114,7 @@
 {
     return [TyphoonDefinition withClass:[NSURL class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(URLWithString:);
-        [initializer injectParameterNamed:@"string" withValueAsText:@"http://dev.foobar.com/service/" requiredTypeOrNil:[NSString class]];
+        [initializer injectParameter:@"string" with:InjectionWithObjectFromStringWithType(@"http://dev.foobar.com/service/", [NSString class])];
     }];
 }
 
@@ -129,7 +127,7 @@
 {
     return [TyphoonDefinition withClass:[Sword class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(swordWithSpecification:);
-        [initializer injectParameterNamed:@"specification" withValueAsText:@"blue" requiredTypeOrNil:[NSString class]];
+        [initializer injectParameter:@"specification" with:InjectionWithObjectFromStringWithType(@"blue", [NSString class])];
     } properties:^(TyphoonDefinition *definition) {
         definition.factory = [self swordFactory];
     }];

@@ -32,7 +32,7 @@
 {
     return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithComponentFactory);
-        [initializer injectWithComponentFactory];
+        [initializer injectParameterWith:self];
     }];
 }
 
