@@ -7,142 +7,114 @@
 //
 
 #import "TyphoonInjectionByCollection.h"
-#import "TyphoonCollectionValue.h"
-#import "TyphoonInjectedAsCollection.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonIntrospectiveNSObject.h"
 
+#import "TyphoonObjectWithCustomInjection.h"
+#import "TyphoonInjections.h"
+#import "TyphoonPropertyInjection.h"
+
 @interface TyphoonInjectionByCollection ()
 
-@property (nonatomic, strong) TyphoonInjectedAsCollection *collection;
+@property (nonatomic, strong) id<TyphoonCollection> collectionWithInjections;
+@property (nonatomic) Class requiredClass;
 
 @end
 
 @implementation TyphoonInjectionByCollection
 
-- (instancetype)initWithRequiredType:(Class)requiredType
++ (Class) collectionMutableClassFromClass:(Class)collectionClass
+{
+    Class result;
+    
+    if (collectionClass == [NSArray class]) {
+        result = [NSMutableArray class];
+    } else if (collectionClass == [NSSet class]) {
+        result = [NSMutableSet class];
+    } else if (collectionClass == [NSOrderedSet class]) {
+        result = [NSMutableOrderedSet class];
+    } else {
+        result = collectionClass;
+    }
+    
+    return result;
+}
+
+- (instancetype)initWithCollection:(id)collection requiredClass:(Class)collectionClass
+{
+    self.requiredClass = collectionClass;
+
+    return [self initWithCollection:collection];
+}
+
+- (instancetype)initWithCollection:(id<TyphoonCollection>)collection
 {
     self = [super init];
     if (self) {
-        _requiredType = requiredType;
-        self.collection = [[TyphoonInjectedAsCollection alloc] init];
+        Class mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:[collection class]];
+
+        self.collectionWithInjections = [[mutableClass alloc] initWithCapacity:[collection count]];
+        
+        for (id object in collection) {
+            
+            id injection = nil;
+            
+            if ([object conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)]) {
+                injection = [object typhoonCustomObjectInjection];
+            } else if ([object conformsToProtocol:@protocol(TyphoonPropertyInjection)]) {
+                injection = object;
+            } else {
+                injection = TyphoonInjectionWithObject(object);
+            }
+            
+            [self.collectionWithInjections addObject:injection];
+            
+        }
     }
     return self;
 }
 
-- (instancetype)init
+- (id<TyphoonCollection>)collectionWithClass:(Class)collectionClass withResolvedInjectionsWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
 {
-    self = [super init];
-    if (self) {
-        self.collection = [[TyphoonInjectedAsCollection alloc] init];
+    Class mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:collectionClass];
+    id<TyphoonCollection> result = [[[mutableClass class] alloc] initWithCapacity:[self.collectionWithInjections count]];
+    
+    for (id<TyphoonPropertyInjection>injection in self.collectionWithInjections) {
+        id value = [injection valueToInjectPropertyOnInstance:nil withFactory:factory args:args];
+        [result addObject:value];
     }
-    return self;
-}
-
-#pragma mark - <TyphoonInjectedAsCollection>
-
-- (void)addItemWithText:(NSString *)text requiredType:(Class)requiredType
-{
-    [_collection addItemWithText:text requiredType:requiredType];
-}
-
-- (void)addItemWithComponentName:(NSString *)componentName
-{
-    [_collection addItemWithComponentName:componentName];
-}
-
-- (void)addItemWithDefinition:(TyphoonDefinition *)definition
-{
-    [_collection addItemWithDefinition:definition];
-}
-
-- (void)addValue:(id <TyphoonCollectionValue>)value
-{
-    [_collection addValue:value];
-}
-
-- (NSArray *)values
-{
-    return [_collection values];
-}
-
-#pragma mark - Instance methods
-
-- (Class)collectionClassForPropertyInjectionOnInstance:(id<TyphoonIntrospectiveNSObject>)instance
-{
-    TyphoonTypeDescriptor *descriptor = [TyphoonIntrospectionUtils typeForPropertyWithName:self.propertyName inClass:[instance class]];
-    Class describedClass = (Class) [descriptor classOrProtocol];
-    if (describedClass == nil) {
-        [NSException raise:NSInvalidArgumentException format:@"Property named '%@' does not exist on class '%@'.", self.propertyName,
-         NSStringFromClass([instance class])];
-    }
-    return describedClass;
-}
-
-- (TyphoonCollectionType)resolveCollectionTypeWithClass:(Class)collectionClass;
-{
-    if ([collectionClass isSubclassOfClass:[NSMutableArray class]]) {
-        return TyphoonCollectionTypeNSMutableArray;
-    }
-    else if ([collectionClass isSubclassOfClass:[NSArray class]]) {
-        return TyphoonCollectionTypeNSArray;
-    }
-    else if ([collectionClass isSubclassOfClass:[NSCountedSet class]]) {
-        return TyphoonCollectionTypeNSCountedSet;
-    }
-    else if ([collectionClass isSubclassOfClass:[NSMutableSet class]]) {
-        return TyphoonCollectionTypeNSMutableSet;
-    }
-    else if ([collectionClass isSubclassOfClass:[NSSet class]]) {
-        return TyphoonCollectionTypeNSSet;
-    }
-    return TyphoonCollectionTypeUnknown;
-}
-
-- (TyphoonCollectionType)collectionTypeForPropertyInjectionOnInstance:(id<TyphoonIntrospectiveNSObject>)instance
-{
-    Class collectionClass = [self collectionClassForPropertyInjectionOnInstance:instance];
-    TyphoonCollectionType type = [self resolveCollectionTypeWithClass:collectionClass];
-    if (type == TyphoonCollectionTypeUnknown) {
-        [NSException raise:NSInvalidArgumentException format:@"Property named '%@' on '%@' is neither an NSSet nor NSArray.", self.propertyName,
-         NSStringFromClass(collectionClass)];
-    }
-    return type;
-}
-
-- (TyphoonCollectionType)collectionTypeForParameterInjection
-{
-    if (!self.requiredType) {
-        [NSException raise:NSInvalidArgumentException format:@"Required type is missing on injected collection parameter!"];
-    }
-    TyphoonCollectionType type = [self resolveCollectionTypeWithClass:self.requiredType];
-    if (type == TyphoonCollectionTypeUnknown) {
-        [NSException raise:NSInvalidArgumentException format:@"Required collection type '%@' is neither an NSSet nor NSArray.",
-         NSStringFromClass(self.requiredType)];
-    }
-    return type;
+    
+    return result;
 }
 
 #pragma mark - Overrides
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    TyphoonInjectionByCollection *copied = [[TyphoonInjectionByCollection alloc] initWithRequiredType:self.requiredType];
-    copied.collection = self.collection;
+    TyphoonInjectionByCollection *copied = [[TyphoonInjectionByCollection alloc] init];
+    copied.collectionWithInjections = self.collectionWithInjections;
     [self copyBaseProperiesTo:copied];
     return copied;
 }
 
 - (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
 {
-    TyphoonCollectionType type = [self collectionTypeForPropertyInjectionOnInstance:instance];
-    return [_collection withFactory:factory newCollectionOfType:type];
+    Class collectionClass = self.requiredClass;
+    if (!collectionClass) {
+        TyphoonTypeDescriptor *type = [instance typeForPropertyWithName:self.propertyName];
+        collectionClass = type.classOrProtocol;
+    }
+    return [self collectionWithClass:collectionClass withResolvedInjectionsWithFactory:factory args:args];
 }
 
 - (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
 {
-    id collection = [_collection withFactory:factory newCollectionOfType:[self collectionTypeForParameterInjection]];
+    if (!self.requiredClass) {
+        [NSException raise:NSInvalidArgumentException format:@"Required type is missing on injected collection parameter!"];
+    }
+    
+    id<TyphoonCollection> collection = [self collectionWithClass:self.requiredClass withResolvedInjectionsWithFactory:factory args:args];
     [invocation setArgument:&collection atIndex:self.parameterIndex + 2];
 }
 

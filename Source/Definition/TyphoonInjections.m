@@ -16,7 +16,8 @@
 #import "TyphoonInjectionByCollection.h"
 #import "TyphoonInjectionByComponentFactory.h"
 #import "TyphoonInjectionByRuntimeArgument.h"
-
+#import "TyphoonInjectionByObjectInstance.h"
+#import "TyphoonInjectionByReference.h"
 
 id TyphoonInjectionWithObjectFromString(NSString *string)
 {
@@ -28,20 +29,9 @@ id TyphoonInjectionWithObjectFromStringWithType(NSString *string, Class reqiured
     return [[TyphoonInjectionByObjectFromString alloc] initWithString:string objectClass:reqiuredType];
 }
 
-id TyphoonInjectionWithCollection(void (^collection)(id<TyphoonInjectedAsCollection> collectionBuilder))
+id TyphoonInjectionWithCollectionAndType(id collection, Class requiredClass)
 {
-    return TyphoonInjectionWithCollectionAndType(nil, collection);
-}
-
-id TyphoonInjectionWithCollectionAndType(Class collectionClass, void (^collection)(id<TyphoonInjectedAsCollection> collectionBuilder))
-{
-    TyphoonInjectionByCollection *propertyInjectedAsCollection = [[TyphoonInjectionByCollection alloc] initWithRequiredType:collectionClass];
-    
-    if (collection) {
-        __unsafe_unretained TyphoonInjectionByCollection *weakPropertyInjectedAsCollection = propertyInjectedAsCollection;
-        collection(weakPropertyInjectedAsCollection);
-    }
-    return propertyInjectedAsCollection;
+    return [[TyphoonInjectionByCollection alloc] initWithCollection:collection requiredClass:requiredClass];
 }
 
 id TyphoonInjectionWithRuntimeArgumentAtIndex(NSInteger argumentIndex)
@@ -49,3 +39,12 @@ id TyphoonInjectionWithRuntimeArgumentAtIndex(NSInteger argumentIndex)
     return [[TyphoonInjectionByRuntimeArgument alloc] initWithArgumentIndex:argumentIndex];
 }
 
+id TyphoonInjectionWithObject(id object)
+{
+    return [[TyphoonInjectionByObjectInstance alloc] initWithObjectInstance:object];
+}
+
+id TyphoonInjectionWithReference(NSString *reference)
+{
+    return [[TyphoonInjectionByReference alloc] initWithReference:reference args:nil];
+}

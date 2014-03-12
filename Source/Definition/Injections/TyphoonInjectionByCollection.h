@@ -7,30 +7,23 @@
 //
 
 #import "TyphoonAbstractInjection.h"
-#import "TyphoonInjectedAsCollection.h"
 
-@interface TyphoonInjectionByCollection : TyphoonAbstractInjection <TyphoonInjectedAsCollection>
+@protocol TyphoonCollection <NSObject, NSFastEnumeration>
 
-@property (nonatomic, strong, readonly) Class requiredType;
+- (id)initWithCapacity:(NSUInteger)capacity;
 
-- (instancetype)init;
-- (instancetype)initWithRequiredType:(Class)requiredType;
+- (NSUInteger)count;
 
-/**
- * Returns the collection type for the named property on the parameter class. Raises an exception if the property is neither an NSSet nor
- * an NSArray.
- */
-- (TyphoonCollectionType)collectionTypeForPropertyInjectionOnInstance:(id)instance;
-- (TyphoonCollectionType)collectionTypeForParameterInjection;
+- (id)mutableCopy;
 
-#pragma mark - <TyphoonInjectedAsCollection> trait
+- (id)addObject:(id)object;
 
-- (void)addItemWithText:(NSString *)text requiredType:(Class)requiredType;
+@end
 
-- (void)addItemWithComponentName:(NSString *)componentName;
+@interface TyphoonInjectionByCollection : TyphoonAbstractInjection
 
-- (void)addItemWithDefinition:(TyphoonDefinition *)definition;
+- (instancetype)initWithCollection:(id)collection requiredClass:(Class)collectionClass;
 
-- (NSArray *)values;
++ (Class) collectionMutableClassFromClass:(Class)collectionClass;
 
 @end

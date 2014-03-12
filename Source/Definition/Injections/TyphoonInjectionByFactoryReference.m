@@ -33,9 +33,11 @@
 
 - (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
 {
-    [factory evaluateCircularDependency:self.reference propertyName:self.propertyName instance:instance];
+    if (instance) {
+        [factory evaluateCircularDependency:self.reference propertyName:self.propertyName instance:instance];
+    }
     
-    if (![factory isCircularPropertyWithName:self.propertyName onInstance:instance]) {
+    if (!instance || ![factory isCircularPropertyWithName:self.propertyName onInstance:instance]) {
         id factoryReference = [self componentForReferenceWithFactory:factory args:args];
         return [factoryReference valueForKeyPath:self.keyPath];
     }

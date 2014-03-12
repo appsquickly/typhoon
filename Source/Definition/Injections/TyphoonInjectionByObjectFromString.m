@@ -44,7 +44,14 @@
 
 - (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
 {
-    TyphoonTypeDescriptor *type = [instance typeForPropertyWithName:self.propertyName];
+    TyphoonTypeDescriptor *type;
+    if (!instance) {
+        NSAssert(self.requiredClass, @"requiredClass can't be nil when you trying to get value without instance");
+        type = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:self.requiredClass];
+    } else {
+        type = [instance typeForPropertyWithName:self.propertyName];
+    }
+    
     id value = nil;
     
     if (type.isPrimitive) {

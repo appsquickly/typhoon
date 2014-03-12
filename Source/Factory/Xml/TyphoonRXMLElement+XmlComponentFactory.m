@@ -23,6 +23,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 #import "TyphoonReferenceDefinition.h"
 #import "TyphoonInjectionsObjects.h"
 #import "TyphoonInjections.h"
+#import "TyphoonInjectionByCollection.h"
 
 @interface TyphoonInitializer (Private)
 - (void)injectParameterAtIndex:(NSUInteger)index with:(id)injection;
@@ -96,10 +97,12 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
         injectedProperty = [[TyphoonInjectionByObjectFromString alloc] initWithString:value];
     }
     else if (collection) {
-        TyphoonInjectionByCollection *property = [[TyphoonInjectionByCollection alloc] init];
+        
+        NSMutableArray *collectionArray = [[NSMutableArray alloc] init];
+        
         [collection iterate:@"*" usingBlock:^(TyphoonRXMLElement *child) {
             if ([[child tag] isEqualToString:@"ref"]) {
-                [property addItemWithComponentName:[child text]];
+                [collectionArray addObject:TyphoonInjectionWithReference([child text])];
             }
             else if ([[child tag] isEqualToString:@"value"]) {
                 Class type = NSClassFromString([child attribute:@"requiredType"]);
@@ -107,11 +110,11 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
                     [NSException raise:NSInvalidArgumentException format:@"Type '%@' could not be resolved.",
                                                                          [child attribute:@"requiredType"]];
                 }
-                [property addItemWithText:[child text] requiredType:type];
+                [collectionArray addObject:TyphoonInjectionWithObjectFromStringWithType([child text], type)];
             }
         }];
 
-        injectedProperty = property;
+        injectedProperty = TyphoonInjectionWithCollectionAndType(collection, nil);
     }
     else {
         injectedProperty = [[TyphoonInjectionByType alloc] init];
@@ -249,10 +252,10 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 
     if (reference) {
         if (name) {
-            [initializer injectParameter:name with:InjectionWithReference(reference)];
+            [initializer injectParameter:name with:TyphoonInjectionWithReference(reference)];
         }
         else if (index) {
-            [initializer injectParameterAtIndex:[index integerValue] with:InjectionWithReference(reference)];
+            [initializer injectParameterAtIndex:[index integerValue] with:TyphoonInjectionWithReference(reference)];
         }
 
         // TODO: should raise an exception if no name or index specified. is NOT implicit with XML. but it should be - you should not need to specify.
@@ -291,27 +294,29 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
             [NSException raise:NSInvalidArgumentException format:@"'requiredType' is missing for collection initializer argument."];
         }
 
-        void (^asCollectionBlock)(id<TyphoonInjectedAsCollection>) = ^(id<TyphoonInjectedAsCollection> parameterAsCollection) {
-            [collection iterate:@"*" usingBlock:^(TyphoonRXMLElement *child) {
-                if ([[child tag] isEqualToString:@"ref"]) {
-                    [parameterAsCollection addItemWithComponentName:[child text]];
+        NSMutableArray *collectionArray = [[NSMutableArray alloc] init];
+        
+        [collection iterate:@"*" usingBlock:^(TyphoonRXMLElement *child) {
+            if ([[child tag] isEqualToString:@"ref"]) {
+                [collectionArray addObject:TyphoonInjectionWithReference([child text])];
+            }
+            else if ([[child tag] isEqualToString:@"value"]) {
+                Class type = NSClassFromString([child attribute:@"requiredType"]);
+                if (!type) {
+                    [NSException raise:NSInvalidArgumentException format:@"Type '%@' could not be resolved.",
+                     [child attribute:@"requiredType"]];
                 }
-                else if ([[child tag] isEqualToString:@"value"]) {
-                    Class type = NSClassFromString([child attribute:@"requiredType"]);
-                    if (!type) {
-                        [NSException raise:NSInvalidArgumentException format:@"Type '%@' could not be resolved.",
-                                                                             [child attribute:@"requiredType"]];
-                    }
-                    [parameterAsCollection addItemWithText:[child text] requiredType:type];
-                }
-            }];
-        };
+                [collectionArray addObject:TyphoonInjectionWithObjectFromStringWithType([child text], type)];
+            }
+        }];
+        
+        id<TyphoonParameterInjection> collectionInjection = TyphoonInjectionWithCollectionAndType(collectionArray, clazz);
 
         if (name) {
-            [initializer injectParameter:name with:TyphoonInjectionWithCollectionAndType(clazz, asCollectionBlock)];
+            [initializer injectParameter:name with:collectionInjection];
         }
         else if (index) {
-            [initializer injectParameterAtIndex:[index integerValue] with:TyphoonInjectionWithCollectionAndType(clazz, asCollectionBlock)];
+            [initializer injectParameterAtIndex:[index integerValue] with:collectionInjection];
         }
     }
 }
@@ -337,12 +342,6 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
         return attribute;
     }
     return nil;
-}
-
-
-static id InjectionWithReference(NSString *reference)
-{
-    return [[TyphoonInjectionByReference alloc] initWithReference:reference args:nil];
 }
 
 @end

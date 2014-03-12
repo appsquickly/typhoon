@@ -19,29 +19,29 @@
 
 #define Prototype TyphoonComponentLifecyclePrototype
 
-static __inline__ id InjectionWithCollection(void (^collection)(id<TyphoonInjectedAsCollection> collectionBuilder))
-{
-    return TyphoonInjectionWithCollection(collection);
-}
-
-static __inline__ id InjectionWithCollectionAndType(Class collectionClass, void (^collection)(id<TyphoonInjectedAsCollection> collectionBuilder))
-{
-    return TyphoonInjectionWithCollectionAndType(collectionClass, collection);
-}
-
-static __inline__ id InjectionWithObjectFromString(NSString *string)
-{
-    return TyphoonInjectionWithObjectFromString(string);
-}
-
-static __inline__ id InjectionWithObjectFromStringWithType(NSString *string, Class objectClass)
-{
-    return TyphoonInjectionWithObjectFromStringWithType(string, objectClass);
-}
-
-static __inline__ id InjectionWithRuntimeArgumentAtIndex(NSUInteger argumentIndex)
-{
-    return TyphoonInjectionWithRuntimeArgumentAtIndex(argumentIndex);
-}
+//static __inline__ id InjectionWithCollection(void (^collection)(id<TyphoonInjectedAsCollection> collectionBuilder))
+//{
+//    return TyphoonInjectionWithCollection(collection);
+//}
+//
+//static __inline__ id InjectionWithCollectionAndType(Class collectionClass, void (^collection)(id<TyphoonInjectedAsCollection> collectionBuilder))
+//{
+//    return TyphoonInjectionWithCollectionAndType(collectionClass, collection);
+//}
+//
+//static __inline__ id InjectionWithObjectFromString(NSString *string)
+//{
+//    return TyphoonInjectionWithObjectFromString(string);
+//}
+//
+//static __inline__ id InjectionWithObjectFromStringWithType(NSString *string, Class objectClass)
+//{
+//    return TyphoonInjectionWithObjectFromStringWithType(string, objectClass);
+//}
+//
+//static __inline__ id InjectionWithRuntimeArgumentAtIndex(NSUInteger argumentIndex)
+//{
+//    return TyphoonInjectionWithRuntimeArgumentAtIndex(argumentIndex);
+//}
 
 #endif

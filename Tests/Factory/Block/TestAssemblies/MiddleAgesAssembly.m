@@ -165,7 +165,7 @@
 - (id)questWithRuntimeUrl:(NSURL *)url
 {
     return [TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(imageUrl) with:url];
+        [definition injectProperty:@selector(imageUrl) with:[url standardizedURL]];
         definition.scope = TyphoonScopePrototype;
     }];
 }
