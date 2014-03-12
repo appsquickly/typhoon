@@ -17,6 +17,7 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonInjectionByObjectFromString.h"
+#import "TyphoonInjectionByRuntimeArgument.h"
 
 TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
@@ -32,7 +33,14 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
         return [evaluatedObject isKindOfClass:[TyphoonInjectionByObjectFromString class]];
     }];
     return [_injectedParameters filteredArrayUsingPredicate:predicate];
+}
 
+- (NSArray *)parametersInjectedByRuntimeArgument
+{
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject isKindOfClass:[TyphoonInjectionByRuntimeArgument class]];
+    }];
+    return [_injectedParameters filteredArrayUsingPredicate:predicate];
 }
 
 - (NSInvocation *)newInvocationInFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args

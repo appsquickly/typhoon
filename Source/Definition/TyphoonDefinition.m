@@ -17,6 +17,7 @@
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonDefinition+Infrastructure.h"
 
+#import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonPropertyInjection.h"
 #import "TyphoonObjectWithCustomInjection.h"
 #import "TyphoonInjectionByObjectInstance.h"
@@ -74,7 +75,8 @@
             format:@"The lazy attribute is only applicable to singleton scoped definitions, but is set for definition: %@ ", definition];
     }
     
-    if ([[definition propertiesInjectedByRuntimeArgument] count] > 0 && definition.scope != TyphoonScopePrototype) {
+    BOOL hasRuntimeInjections = [[definition.initializer parametersInjectedByRuntimeArgument] count] > 0 || [[definition propertiesInjectedByRuntimeArgument] count] > 0;
+    if (hasRuntimeInjections && definition.scope != TyphoonScopePrototype) {
         [NSException raise:NSInvalidArgumentException
                     format:@"The runtime arguments injections are only applicable to prototype scoped definitions, but is set for definition: %@ ", definition];
 
