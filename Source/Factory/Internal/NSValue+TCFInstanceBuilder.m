@@ -24,7 +24,7 @@
 
 @implementation NSValue (TCFInstanceBuilder)
 
-- (void)typhoon_setAsArgumentForInvocation:(NSInvocation *)invocation atIndex:(NSUInteger)index
+- (void)typhoon_setAsArgumentWithType:(const char *)argumentType forInvocation:(NSInvocation *)invocation atIndex:(NSUInteger)index
 {
     const char *type = [self objCType];
 
@@ -80,7 +80,7 @@
     }
 #endif
     else {
-        [NSException raise:@"InvalidValueType" format:@"Type '%s' is not supported.", type];
+        [NSException raise:@"InvalidValueType" format:@"Invalid Value: Type '%s' is not supported.", type];
     }
 }
 
@@ -88,9 +88,11 @@
 
 @implementation NSNumber (TCFInstanceBuilder)
 
-- (void)typhoon_setAsArgumentForInvocation:(NSInvocation *)invocation atIndex:(NSUInteger)index
+- (void)typhoon_setAsArgumentWithType:(const char *)argumentType forInvocation:(NSInvocation *)invocation atIndex:(NSUInteger)index
 {
-    const char *type = [self objCType];
+    /* Using argument type instead of number type becuase when numberType mismatch argumentType
+     * we should cast to argumentType and then inject */
+    const char *type = argumentType;//[self objCType];
 
     if (CStringEquals(type, @encode(int))) {
         int converted = [self intValue];
@@ -145,7 +147,7 @@
         [invocation setArgument:&converted atIndex:index];
     }
     else {
-        [NSException raise:@"InvalidNumberType" format:@"Type '%s' is not supported.", type];
+        [NSException raise:@"InvalidNumberType" format:@"Invalid Number: Type '%s' is not supported.", type];
     }
 }
 

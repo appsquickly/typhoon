@@ -119,8 +119,10 @@
 {
     BOOL isObjectIsWrapper = [object isKindOfClass:[NSNumber class]] || [object isKindOfClass:[NSValue class]];
     
-    if (isObjectIsWrapper && [self.initializer isPrimitiveParameterAtIndex:_parameterIndex]) {
-        [object typhoon_setAsArgumentForInvocation:invocation atIndex:_parameterIndex + 2];
+    NSString *typeCode = [self.initializer typeCodeForParameterAtIndex:_parameterIndex];
+    
+    if (isObjectIsWrapper && ![typeCode isEqualToString:@"@"]) {
+        [object typhoon_setAsArgumentWithType:[typeCode cStringUsingEncoding:NSASCIIStringEncoding] forInvocation:invocation atIndex:_parameterIndex + 2];
     }
     else {
         [invocation setArgument:&object atIndex:_parameterIndex + 2];

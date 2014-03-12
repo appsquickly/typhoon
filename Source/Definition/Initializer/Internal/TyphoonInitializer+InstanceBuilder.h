@@ -27,6 +27,6 @@
 
 - (void)setDefinition:(TyphoonDefinition *)definition;
 
-- (BOOL)isPrimitiveParameterAtIndex:(NSUInteger)index;
+- (NSString *)typeCodeForParameterAtIndex:(NSUInteger)index;
 
 @end

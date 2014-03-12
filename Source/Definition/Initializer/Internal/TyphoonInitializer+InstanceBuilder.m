@@ -69,14 +69,14 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     return [self resolveIsClassMethod];
 }
 
-- (BOOL)isPrimitiveParameterAtIndex:(NSUInteger)index
+- (NSString *)typeCodeForParameterAtIndex:(NSUInteger)index
 {
     BOOL isClass = [self isClassMethod];
     Class class = self.definition.factory ? self.definition.factory.type : self.definition.type;
     
     NSArray *typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:self.selector ofClass:class isClassMethod:isClass];
     
-    return ![[typeCodes objectAtIndex:index] isEqualToString:@"@"];
+    return typeCodes[index];
 }
 
 /* ====================================================================================================================================== */
