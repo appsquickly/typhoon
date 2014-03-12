@@ -20,7 +20,7 @@
 #import <objc/message.h>
 #import "TyphoonCircularDependencyTerminator.h"
 #import "TyphoonSelector.h"
-
+#import "TyphoonInjections.h"
 
 @implementation TyphoonAssemblyDefinitionBuilder
 {
@@ -166,13 +166,13 @@
     NSMethodSignature *signature = [self.assembly methodSignatureForSelector:NSSelectorFromString(key)];
     
     id cached =
-        objc_msgSend_nullArguments(self.assembly, sel, signature); // the advisedSEL will call through to the original, unwrapped implementation because prepareForUse has been called, and all our definition methods have been swizzled.
+        objc_msgSend_InjectionArguments(self.assembly, sel, signature); // the advisedSEL will call through to the original, unwrapped implementation because prepareForUse has been called, and all our definition methods have been swizzled.
     // This method will likely call through to other definition methods on the assembly, which will go through the advising machinery because of this swizzling.
     // Therefore, the definitions a definition depends on will be fully constructed before they are needed to construct that definition.
     return cached;
 }
 
-static id objc_msgSend_nullArguments(id target, SEL selector, NSMethodSignature *signature)
+static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSignature *signature)
 {
     if (signature.numberOfArguments > 2) {
         void *result;

@@ -143,12 +143,12 @@
 /* ====================================================================================================================================== */
 #pragma mark - Making injections
 
-- (id)injectionFromSelector:(SEL)factorySelector
+- (id)property:(SEL)factorySelector
 {
-    return [self injectionFromKeyPath:NSStringFromSelector(factorySelector)];
+    return [self keyPath:NSStringFromSelector(factorySelector)];
 }
 
-- (id)injectionFromKeyPath:(NSString *)keyPath
+- (id)keyPath:(NSString *)keyPath
 {
     return [[TyphoonInjectionByFactoryReference alloc] initWithReference:self.key args:self.currentRuntimeArguments keyPath:keyPath];
 }

@@ -22,7 +22,7 @@
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "ClassWithConstructor.h"
 #import "TyphoonComponentPostProcessorMock.h"
-
+#import "TyphoonInjections.h"
 
 static NSString *const DEFAULT_QUEST = @"quest";
 
@@ -47,7 +47,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:);
-        [initializer injectParameterWith:InjectionWithReference(DEFAULT_QUEST)];
+        [initializer injectParameterWith:TyphoonInjectionWithReference(DEFAULT_QUEST)];
     }]];
 
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class] key:DEFAULT_QUEST]];
@@ -63,7 +63,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 {
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:);
-        [initializer injectParameterWith:InjectionWithReference(DEFAULT_QUEST)];
+        [initializer injectParameterWith:TyphoonInjectionWithReference(DEFAULT_QUEST)];
     } properties:^(TyphoonDefinition *definition) {
         definition.key = @"knight";
     }]];
@@ -92,7 +92,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         [initializer setSelector:@selector(initWithQuest:)];
-        [initializer injectParameter:@"quest" with:InjectionWithReference(@"quest")];
+        [initializer injectParameter:@"quest" with:TyphoonInjectionWithReference(@"quest")];
     } properties:^(TyphoonDefinition *definition) {
         definition.key = @"knight";
     }]];
@@ -110,7 +110,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         [initializer setSelector:@selector(initWithQuest:)];
-        [initializer injectParameter:@"quest" with:InjectionWithReference(@"quest")];
+        [initializer injectParameter:@"quest" with:TyphoonInjectionWithReference(@"quest")];
     } properties:^(TyphoonDefinition *definition) {
         definition.key = @"knight";
     }]];

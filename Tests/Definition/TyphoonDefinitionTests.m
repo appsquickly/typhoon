@@ -20,6 +20,8 @@
 #import "CampaignQuest.h"
 #import "TyphoonReferenceDefinition.h"
 #import "TyphoonInjectionByObjectInstance.h"
+#import "TyphoonInjections.h"
+#import "TyphoonInjectionByCollection.h"
 
 @interface TyphoonDefinitionTests : SenTestCase
 @end
@@ -82,7 +84,7 @@
     [definition injectProperty:@selector(rapunzal) with:@"ttt"];
 
     //by reference
-    [definition injectProperty:@selector(dd) with:InjectionWithReference(@"someReference")];
+    [definition injectProperty:@selector(dd) with:TyphoonInjectionWithReference(@"someReference")];
 
     assertThatUnsignedLongLong([[definition propertiesInjectedByObjectInstance] count], equalToUnsignedLongLong(2));
 }
@@ -96,7 +98,7 @@
     [definition injectProperty:@selector(rapunzal) with:@"ttt"];
 
     //by reference
-    [definition injectProperty:@selector(dd) with:InjectionWithReference(@"someReference")];
+    [definition injectProperty:@selector(dd) with:TyphoonInjectionWithReference(@"someReference")];
 
     assertThatUnsignedLongLong([[definition propertiesInjectedByReference] count], equalToUnsignedLongLong(1));
 }
@@ -172,10 +174,9 @@
         [initializer injectParameterWith:@(12)];
     } properties:^(TyphoonDefinition *definition) {
         
-        NSArray *damsels = @[[TyphoonReferenceDefinition definitionReferringToComponent:@"mary"], [TyphoonReferenceDefinition definitionReferringToComponent:@"mary"]];
 
-        [definition injectProperty:@selector(favoriteDamsels) with:TyphoonInjectionWithCollectionAndType(damsels, nil)];
-        [definition injectProperty:@selector(friends) with:TyphoonInjectionWithCollectionAndType(@[@"Bob"], nil)];
+        [definition injectProperty:@selector(favoriteDamsels) with:@[[TyphoonReferenceDefinition definitionReferringToComponent:@"mary"], [TyphoonReferenceDefinition definitionReferringToComponent:@"mary"]]];
+        [definition injectProperty:@selector(friends) with:[NSSet setWithObject:@"Bob"]];
     }];
 
     TyphoonDefinition *copy = [definition copy];

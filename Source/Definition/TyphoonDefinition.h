@@ -12,8 +12,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "TyphoonInjections.h"
-
 @class TyphoonInitializer;
 @class TyphoonDefinition;
 @class TyphoonRuntimeArguments;
@@ -242,18 +240,18 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 #pragma mark Making injections from definition
 
 /**
- * Returns injection which can be used in injectProperty:with: method
- * This method will injects result of factorySelector invocation
- * @param factorySelector selector to invoke on resolved definition
+ * Returns injection which can be used for example in injectProperty:with: method
+ * This method will injects result of selector invocation
+ * @param selector selector to invoke on resolved definition
  */
-- (id)injectionFromSelector:(SEL)factorySelector;
+- (id)property:(SEL)selector;
 
 /**
- * Returns injection which can be used in injectProperty:with: method
+ * Returns injection which can be used for example in injectProperty:with: method
  * This method will injects valueForKeyPath: with given keyPath
  * @param keyPath path used as argument while calling valueForKeyPath: on resolved definition
  */
-- (id)injectionFromKeyPath:(NSString *)keyPath;
+- (id)keyPath:(NSString *)keyPath;
 
 - (NSSet *)injectedProperties;
 

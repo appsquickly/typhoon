@@ -11,7 +11,6 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonInjections.h"
 
 @class TyphoonDefinition;
 @class TyphoonParameterInjectedAsCollection;

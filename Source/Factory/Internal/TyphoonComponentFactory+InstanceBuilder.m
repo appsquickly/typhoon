@@ -30,7 +30,6 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
 #import "NSInvocation+TCFInstanceBuilder.h"
-#import "TyphoonInjectionsObjects.h"
 
 #define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type) [NSException raise:@"NSUnknownKeyException" \
 format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",property.propertyName, [instance class]]

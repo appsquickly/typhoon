@@ -11,6 +11,7 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "ClassWithCollectionProperties.h"
+#import "TyphoonInjectionByCollection.h"
 
 @interface TyphoonPropertyInjectedAsCollectionTests : SenTestCase
 {

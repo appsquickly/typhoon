@@ -17,6 +17,7 @@
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "OCLogTemplate.h"
 #import "TyphoonComponentFactory.h"
+#import "TyphoonInjections.h"
 
 @implementation TyphoonPropertyPlaceholderConfigurer
 

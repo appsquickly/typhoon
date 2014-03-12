@@ -14,10 +14,10 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
-#import "TyphoonInjectionsObjects.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonAssembly.h"
+#import "TyphoonInjectionByType.h"
 
 @implementation TyphoonAssemblyPropertyInjectionPostProcessor
 

@@ -18,6 +18,12 @@
 #import "TyphoonInjectionByRuntimeArgument.h"
 #import "TyphoonInjectionByObjectInstance.h"
 #import "TyphoonInjectionByReference.h"
+#import "TyphoonInjectionByType.h"
+
+id TyphoonInjectionMatchedByType(void)
+{
+    return [[TyphoonInjectionByType alloc] init];
+}
 
 id TyphoonInjectionWithObjectFromString(NSString *string)
 {

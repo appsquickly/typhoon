@@ -21,7 +21,6 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonBundleResource.h"
 #import "TyphoonReferenceDefinition.h"
-#import "TyphoonInjectionsObjects.h"
 #import "TyphoonInjections.h"
 #import "TyphoonInjectionByCollection.h"
 
@@ -91,10 +90,10 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
     }
 
     else if ([referenceName length] > 0) {
-        injectedProperty = [[TyphoonInjectionByReference alloc] initWithReference:referenceName args:nil];
+        injectedProperty = TyphoonInjectionWithReference(referenceName);
     }
     else if (value) {
-        injectedProperty = [[TyphoonInjectionByObjectFromString alloc] initWithString:value];
+        injectedProperty = TyphoonInjectionWithObjectFromString(value);
     }
     else if (collection) {
         
@@ -117,7 +116,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
         injectedProperty = TyphoonInjectionWithCollectionAndType(collectionArray, nil);
     }
     else {
-        injectedProperty = [[TyphoonInjectionByType alloc] init];
+        injectedProperty = TyphoonInjectionMatchedByType();
     }
     
     [injectedProperty setPropertyName:propertyName];

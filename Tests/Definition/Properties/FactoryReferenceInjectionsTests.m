@@ -106,9 +106,9 @@ NSString *currentFooString;
     TyphoonDefinition *settings = [factory definitionForType:[ClassWithKnightSettings class]];
 
     TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(damselsRescued) with:[settings injectionFromSelector:@selector(damselsRescued)]];
-        [definition injectProperty:@selector(hasHorseWillTravel) with:[settings injectionFromSelector:@selector(hasHorseWillTravel)]];
-        [definition injectProperty:@selector(foobar) with:[settings injectionFromSelector:@selector(fooString)]];
+        [definition injectProperty:@selector(damselsRescued) with:[settings property:@selector(damselsRescued)]];
+        [definition injectProperty:@selector(hasHorseWillTravel) with:[settings property:@selector(hasHorseWillTravel)]];
+        [definition injectProperty:@selector(foobar) with:[settings property:@selector(fooString)]];
     }];
     [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition args:nil];
 
@@ -128,7 +128,7 @@ NSString *currentFooString;
     TyphoonDefinition *settings = [factory definitionForType:[ClassWithKnightSettings class]];
 
     TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(foobar) with:[settings injectionFromKeyPath:@"fooString.uppercaseString"]];
+        [definition injectProperty:@selector(foobar) with:[settings keyPath:@"fooString.uppercaseString"]];
     }];
     [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition args:nil];
 
@@ -146,8 +146,8 @@ NSString *currentFooString;
 
     TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         [initializer setSelector:@selector(initWithDamselsRescued:foo:)];
-        [initializer injectParameterWith:[settings injectionFromSelector:@selector(damselsRescued)]];
-        [initializer injectParameterWith:[settings injectionFromKeyPath:@"fooString.uppercaseString"]];
+        [initializer injectParameterWith:[settings property:@selector(damselsRescued)]];
+        [initializer injectParameterWith:[settings keyPath:@"fooString.uppercaseString"]];
     }];
 
     [factory registerDefinition:knightDefinition];

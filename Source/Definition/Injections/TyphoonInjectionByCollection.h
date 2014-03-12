@@ -8,6 +8,7 @@
 
 #import "TyphoonAbstractInjection.h"
 
+/** Protocol which should be confirmed by collection (NSArray, NSSet, NSOrderedSet are conforms) */
 @protocol TyphoonCollection <NSObject, NSFastEnumeration>
 
 - (id)initWithCapacity:(NSUInteger)capacity;

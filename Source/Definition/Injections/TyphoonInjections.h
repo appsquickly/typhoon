@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Jasper Blues. All rights reserved.
 //
 
+id TyphoonInjectionMatchedByType(void);
 
 id TyphoonInjectionWithObjectFromString(NSString *string);
 

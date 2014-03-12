@@ -13,6 +13,7 @@
 #import "TyphoonAssistedFactoryBase.h"
 
 #import "TyphoonComponentFactory.h"
+#import "TyphoonAbstractInjection.h"
 
 @interface TyphoonAssistedFactoryBaseTest : SenTestCase
 @end

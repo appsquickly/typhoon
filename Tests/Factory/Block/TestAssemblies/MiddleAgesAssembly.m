@@ -25,7 +25,7 @@
 {
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest) with:[self defaultQuest]];
-        [definition injectProperty:@selector(damselsRescued) with:[[self cavalryMan] injectionFromSelector:@selector(damselsRescued)]];
+        [definition injectProperty:@selector(damselsRescued) with:[[self cavalryMan] property:@selector(damselsRescued)]];
         [definition setScope:TyphoonScopeObjectGraph];
     }];
 }
@@ -77,10 +77,8 @@
     } properties:^(TyphoonDefinition *definition) {
 
         
-        [definition injectProperty:@selector(favoriteDamsels) with:TyphoonInjectionWithCollectionAndType(@[@"Mary", @"Mary"], [NSArray class])];
-
-        NSSet *friendsSet = [NSSet setWithObjects:[self knight], [self anotherKnight], nil];
-        [definition injectProperty:@selector(friends) with:TyphoonInjectionWithCollectionAndType(friendsSet, [NSSet class])];
+        [definition injectProperty:@selector(favoriteDamsels) with:@[@"Mary", @"Mary"]];
+        [definition injectProperty:@selector(friends) with:[NSSet setWithObjects:[self knight], [self anotherKnight], nil]];
     }];
 }
 
@@ -89,7 +87,7 @@
     return [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:favoriteDamsels:);
         [initializer injectParameterWith:[self defaultQuest]];
-        [initializer injectParameterWith:TyphoonInjectionWithCollectionAndType(@[@"Mary", @"Mary"], [NSArray class])];
+        [initializer injectParameterWith:@[@"Mary", @"Mary"]];
     }];
 }
 

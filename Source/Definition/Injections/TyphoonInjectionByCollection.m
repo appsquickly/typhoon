@@ -17,7 +17,7 @@
 
 @interface TyphoonInjectionByCollection ()
 
-@property (nonatomic, strong) NSMutableArray *arrayWithInjections;
+@property (nonatomic, strong) NSMutableArray *injections;
 @property (nonatomic) Class requiredClass;
 
 @end
@@ -71,7 +71,7 @@
 {
     self = [super init];
     if (self) {
-        self.arrayWithInjections = [[NSMutableArray alloc] initWithCapacity:[collection count]];
+        self.injections = [[NSMutableArray alloc] initWithCapacity:[collection count]];
    
         for (id object in collection) {
             
@@ -84,7 +84,7 @@
             } else {
                 injection = TyphoonInjectionWithObject(object);
             }
-            [self.arrayWithInjections addObject:injection];
+            [self.injections addObject:injection];
             
         }
     }
@@ -94,9 +94,9 @@
 - (id<TyphoonCollection>)collectionWithClass:(Class)collectionClass withResolvedInjectionsWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
 {
     Class mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:collectionClass];
-    id<TyphoonCollection> result = [[[mutableClass class] alloc] initWithCapacity:[self.arrayWithInjections count]];
+    id<TyphoonCollection> result = [[[mutableClass class] alloc] initWithCapacity:[self.injections count]];
     
-    for (id<TyphoonPropertyInjection>injection in self.arrayWithInjections) {
+    for (id<TyphoonPropertyInjection>injection in self.injections) {
         id value = [injection valueToInjectPropertyOnInstance:nil withFactory:factory args:args];
         [result addObject:value];
     }
@@ -106,7 +106,7 @@
 
 - (NSUInteger)count
 {
-    return [self.arrayWithInjections count];
+    return [self.injections count];
 }
 
 #pragma mark - Overrides
@@ -114,7 +114,7 @@
 - (id)copyWithZone:(NSZone *)zone
 {
     TyphoonInjectionByCollection *copied = [[TyphoonInjectionByCollection alloc] init];
-    copied.arrayWithInjections = self.arrayWithInjections;
+    copied.injections = self.injections;
     [self copyBaseProperiesTo:copied];
     return copied;
 }
