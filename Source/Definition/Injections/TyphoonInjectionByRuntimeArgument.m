@@ -20,6 +20,12 @@
     return self;
 }
 
+- (id)forwardingTargetForSelector:(SEL)aSelector
+{
+    [NSException raise:NSInvalidArgumentException format:@"You can't call a method on the runtime argument being passed in. It has to be passed in as-is"];
+    return nil;
+}
+
 #pragma mark - Overrides
 
 - (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
