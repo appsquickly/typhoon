@@ -178,6 +178,11 @@ static id objc_msgSend_nullArguments(id target, SEL selector, NSMethodSignature 
         void *result;
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
         [invocation setSelector:selector];
+        /* Fill invocation arguments with TyphoonInjectionWithRuntimeArgumentAtIndex injections */
+        for (int i = 0; i < signature.numberOfArguments - 2; i++) {
+            id injection = TyphoonInjectionWithRuntimeArgumentAtIndex(i);
+            [invocation setArgument:&injection atIndex:i+2];
+        }
         [invocation invokeWithTarget:target];
         [invocation getReturnValue:&result];
         return (__bridge id)result;

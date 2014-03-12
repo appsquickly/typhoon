@@ -142,12 +142,14 @@
     }];
 }
 
+/* Actually 'damselsRescued' replaced with InjectionWithRuntimeArgumentAtIndex(0) and url replaced with InjectionWithRuntimeArgumentAtIndex(1) */
 - (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeQuestUrl:(NSURL *)url
 {
-    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
-        id quest = [self questWithRuntimeUrl:InjectionWithRuntimeArgumentAtIndex(1)];
-        [definition injectProperty:@selector(quest) with:quest];
-        [definition injectProperty:@selector(damselsRescued) with:InjectionWithRuntimeArgumentAtIndex(0)];
+    return [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
+        [initializer setSelector:@selector(initWithQuest:)];
+        [initializer injectParameterWith:[self questWithRuntimeUrl:url]];
+    } properties:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(damselsRescued) with:damselsRescued];
         definition.scope = TyphoonScopePrototype;
     }];
 }
@@ -163,7 +165,7 @@
 - (id)questWithRuntimeUrl:(NSURL *)url
 {
     return [TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(imageUrl) with:InjectionWithRuntimeArgumentAtIndex(0)];
+        [definition injectProperty:@selector(imageUrl) with:url];
         definition.scope = TyphoonScopePrototype;
     }];
 }
