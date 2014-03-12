@@ -114,7 +114,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
             }
         }];
 
-        injectedProperty = TyphoonInjectionWithCollectionAndType(collection, nil);
+        injectedProperty = TyphoonInjectionWithCollectionAndType(collectionArray, nil);
     }
     else {
         injectedProperty = [[TyphoonInjectionByType alloc] init];

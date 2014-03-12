@@ -78,13 +78,13 @@
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
 
     //by value
-    [definition injectProperty:@selector(foobar) with:InjectionWithObjectFromString(@"zzz")];
-    [definition injectProperty:@selector(rapunzal) with:InjectionWithObjectFromString(@"ttt")];
+    [definition injectProperty:@selector(foobar) with:@"zzz"];
+    [definition injectProperty:@selector(rapunzal) with:@"ttt"];
 
     //by reference
     [definition injectProperty:@selector(dd) with:InjectionWithReference(@"someReference")];
 
-    assertThatUnsignedLongLong([[definition propertiesInjectedByValue] count], equalToUnsignedLongLong(2));
+    assertThatUnsignedLongLong([[definition propertiesInjectedByObjectInstance] count], equalToUnsignedLongLong(2));
 }
 
 - (void)test_enumerates_properties_injected_by_reference
@@ -92,8 +92,8 @@
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
 
     //by value
-    [definition injectProperty:@selector(foobar) with:InjectionWithObjectFromString(@"zzz")];
-    [definition injectProperty:@selector(rapunzal) with:InjectionWithObjectFromString(@"ttt")];
+    [definition injectProperty:@selector(foobar) with:@"zzz"];
+    [definition injectProperty:@selector(rapunzal) with:@"ttt"];
 
     //by reference
     [definition injectProperty:@selector(dd) with:InjectionWithReference(@"someReference")];
@@ -117,7 +117,7 @@
     }];
 
     TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(foobar) with:InjectionWithObjectFromString(@"foobar!")];
+        [definition injectProperty:@selector(foobar) with:@"foobar!"];
         [definition setParent:parent];
     }];
 
@@ -171,13 +171,11 @@
         [initializer injectParameterWith:nil];
         [initializer injectParameterWith:@(12)];
     } properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(favoriteDamsels) with:InjectionWithCollection(^(id<TyphoonInjectedAsCollection> collectionBuilder) {
-            [collectionBuilder addItemWithDefinition:[TyphoonReferenceDefinition definitionReferringToComponent:@"mary"]];
-            [collectionBuilder addItemWithDefinition:[TyphoonReferenceDefinition definitionReferringToComponent:@"mary"]];
-        })];
-        [definition injectProperty:@selector(friends) with:InjectionWithCollection(^(id<TyphoonInjectedAsCollection> collectionBuilder) {
-            [collectionBuilder addItemWithText:@"Bob" requiredType:[NSString class]];
-        })];
+        
+        NSArray *damsels = @[[TyphoonReferenceDefinition definitionReferringToComponent:@"mary"], [TyphoonReferenceDefinition definitionReferringToComponent:@"mary"]];
+
+        [definition injectProperty:@selector(favoriteDamsels) with:TyphoonInjectionWithCollectionAndType(damsels, nil)];
+        [definition injectProperty:@selector(friends) with:TyphoonInjectionWithCollectionAndType(@[@"Bob"], nil)];
     }];
 
     TyphoonDefinition *copy = [definition copy];
@@ -189,9 +187,7 @@
     assertThat(copy.injectedProperties, hasCountOf(2));
 
     TyphoonInjectionByCollection *collection = [[[copy injectedProperties] allObjects] objectAtIndex:0];
-    assertThat([collection values], hasCountOf(2));
-
-    LogDebug(@"Values: %@", [collection values]);
+    assertThatUnsignedInteger([collection count], equalToUnsignedInteger(2));
 
 }
 

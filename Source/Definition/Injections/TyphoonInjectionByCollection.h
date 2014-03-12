@@ -14,9 +14,7 @@
 
 - (NSUInteger)count;
 
-- (id)mutableCopy;
-
-- (id)addObject:(id)object;
+- (void)addObject:(id)object;
 
 @end
 
@@ -24,6 +22,9 @@
 
 - (instancetype)initWithCollection:(id)collection requiredClass:(Class)collectionClass;
 
-+ (Class) collectionMutableClassFromClass:(Class)collectionClass;
++ (Class)collectionMutableClassFromClass:(Class)collectionClass;
++ (BOOL)isCollectionClass:(Class)collectionClass;
+
+- (NSUInteger)count;
 
 @end

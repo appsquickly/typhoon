@@ -25,6 +25,8 @@
 
 - (NSSet *)propertiesInjectedByType;
 
+- (NSSet *)propertiesInjectedByObjectInstance;
+
 - (NSSet *)propertiesInjectedByReference;
 
 - (NSSet *)propertiesInjectedByRuntimeArgument;

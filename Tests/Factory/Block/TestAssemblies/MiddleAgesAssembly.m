@@ -34,7 +34,7 @@
 {
     return [TyphoonDefinition withClass:[CavalryMan class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest) with:[self defaultQuest]];
-        [definition injectProperty:@selector(damselsRescued) with:InjectionWithObjectFromString(@"12")];
+        [definition injectProperty:@selector(damselsRescued) with:@(12)];
         definition.scope = TyphoonScopeSingleton;
     }];
 }
@@ -44,10 +44,10 @@
     return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:hitRatio:);
         [initializer injectParameterWith:[self defaultQuest]];
-        [initializer injectParameterWith:InjectionWithObjectFromString(@"13.75")];
+        [initializer injectParameterWith:@(13.75)];
 
     } properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(hasHorseWillTravel) with:InjectionWithObjectFromString(@"YES")];
+        [definition injectProperty:@selector(hasHorseWillTravel) with:@YES];
 
     }];
 }
@@ -59,8 +59,8 @@
         [initializer injectParameterWith:[self defaultQuest]];
 
     } properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(hitRatio) with:InjectionWithObjectFromString(@"13.75")];
-        [definition injectProperty:@selector(hasHorseWillTravel) with:InjectionWithObjectFromString(@"YES")];
+        [definition injectProperty:@selector(hitRatio) with:@(13.75)];
+        [definition injectProperty:@selector(hasHorseWillTravel) with:@YES];
         [definition injectProperty:@selector(propertyInjectedAsInstance) with:@[
             @"foo",
             @"bar"
@@ -76,15 +76,11 @@
 
     } properties:^(TyphoonDefinition *definition) {
 
-        [definition injectProperty:@selector(favoriteDamsels) with:InjectionWithCollection(^(id<TyphoonInjectedAsCollection> collectionBuilder) {
-            [collectionBuilder addItemWithText:@"Mary" requiredType:[NSString class]];
-            [collectionBuilder addItemWithText:@"Mary" requiredType:[NSString class]];
-        })];
+        
+        [definition injectProperty:@selector(favoriteDamsels) with:TyphoonInjectionWithCollectionAndType(@[@"Mary", @"Mary"], [NSArray class])];
 
-        [definition injectProperty:@selector(friends) with:InjectionWithCollection(^(id<TyphoonInjectedAsCollection> collectionBuilder) {
-            [collectionBuilder addItemWithDefinition:[self knight]];
-            [collectionBuilder addItemWithDefinition:[self anotherKnight]];
-        })];
+        NSSet *friendsSet = [NSSet setWithObjects:[self knight], [self anotherKnight], nil];
+        [definition injectProperty:@selector(friends) with:TyphoonInjectionWithCollectionAndType(friendsSet, [NSSet class])];
     }];
 }
 
@@ -93,10 +89,7 @@
     return [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithQuest:favoriteDamsels:);
         [initializer injectParameterWith:[self defaultQuest]];
-        [initializer injectParameterWith:InjectionWithCollectionAndType([NSArray class], ^(id<TyphoonInjectedAsCollection> collection) {
-            [collection addItemWithText:@"Mary" requiredType:[NSString class]];
-            [collection addItemWithText:@"Jane" requiredType:[NSString class]];
-        })];
+        [initializer injectParameterWith:TyphoonInjectionWithCollectionAndType(@[@"Mary", @"Mary"], [NSArray class])];
     }];
 }
 
@@ -114,7 +107,7 @@
 {
     return [TyphoonDefinition withClass:[NSURL class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(URLWithString:);
-        [initializer injectParameter:@"string" with:InjectionWithObjectFromStringWithType(@"http://dev.foobar.com/service/", [NSString class])];
+        [initializer injectParameter:@"string" with:@"http://dev.foobar.com/service/"];
     }];
 }
 
@@ -127,7 +120,7 @@
 {
     return [TyphoonDefinition withClass:[Sword class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(swordWithSpecification:);
-        [initializer injectParameter:@"specification" with:InjectionWithObjectFromStringWithType(@"blue", [NSString class])];
+        [initializer injectParameter:@"specification" with:@"blue"];
     } properties:^(TyphoonDefinition *definition) {
         definition.factory = [self swordFactory];
     }];
@@ -136,8 +129,8 @@
 - (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeFoobar:(NSObject *)runtimeObject
 {
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(damselsRescued) with:InjectionWithRuntimeArgumentAtIndex(0)];
-        [definition injectProperty:@selector(foobar) with:InjectionWithRuntimeArgumentAtIndex(1)];
+        [definition injectProperty:@selector(damselsRescued) with:damselsRescued];
+        [definition injectProperty:@selector(foobar) with:runtimeObject];
         definition.scope = TyphoonScopePrototype;
     }];
 }
@@ -165,7 +158,7 @@
 - (id)questWithRuntimeUrl:(NSURL *)url
 {
     return [TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(imageUrl) with:[url standardizedURL]];
+        [definition injectProperty:@selector(imageUrl) with:url];
         definition.scope = TyphoonScopePrototype;
     }];
 }

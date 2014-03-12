@@ -49,6 +49,11 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     return [self injectedPropertiesWithKind:[TyphoonInjectionByType class]];
 }
 
+- (NSSet *)propertiesInjectedByObjectInstance
+{
+    return [self injectedPropertiesWithKind:[TyphoonInjectionByObjectInstance class]];
+}
+
 - (NSSet *)propertiesInjectedByReference
 {
     return [self injectedPropertiesWithKind:[TyphoonInjectionByReference class]];

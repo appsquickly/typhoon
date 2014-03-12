@@ -53,7 +53,7 @@
     TyphoonDefinition *urlDefinition = [[TyphoonDefinition alloc] initWithClass:[NSURL class] key:@"url"];
     TyphoonInitializer *initializer = [[TyphoonInitializer alloc]
         initWithSelector:@selector(URLWithString:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodYes];
-    [initializer injectParameterWith:InjectionWithObjectFromStringWithType(@"http://www.appsquick.ly", [NSString class])];
+    [initializer injectParameterWith:@"http://www.appsquick.ly"];
     [urlDefinition setInitializer:initializer];
     [_componentFactory registerDefinition:urlDefinition];
 
@@ -67,7 +67,7 @@
     TyphoonInitializer *initializer = [[TyphoonInitializer alloc]
         initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
     [initializer injectParameter:@"quest" with:nil];
-    [initializer injectParameter:@"damselsRescued" with:InjectionWithObjectFromString(@"12")];
+    [initializer injectParameter:@"damselsRescued" with:@(12)];
     [knightDefinition setInitializer:initializer];
 
     [_componentFactory registerDefinition:knightDefinition];
@@ -82,10 +82,8 @@
     TyphoonInitializer *knightInitializer = [[TyphoonInitializer alloc]
         initWithSelector:@selector(initWithQuest:favoriteDamsels:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
     [knightInitializer injectParameter:@"quest" with:InjectionWithReference(@"quest")];
-    [knightInitializer injectParameter:@"favoriteDamsels" with:InjectionWithCollectionAndType([NSArray class], ^(id<TyphoonInjectedAsCollection> asCollection) {
-        [asCollection addItemWithText:@"damsel1" requiredType:[NSString class]];
-        [asCollection addItemWithText:@"damsel2" requiredType:[NSString class]];
-    })];
+    
+    [knightInitializer injectParameter:@"favoriteDamsels" with:TyphoonInjectionWithCollectionAndType(@[@"damsel1", @"damsel2"], [NSArray class])];
 
     [knightDefinition setInitializer:knightInitializer];
 
@@ -142,7 +140,7 @@
     [initializer injectParameterWith:@(NSUIntegerMax)];
     [initializer injectParameterWith:[self class]];
     [initializer injectParameterWith:[NSValue valueWithPointer:@selector(selectorValue)]];
-    [initializer injectParameterWith:InjectionWithObjectFromString(@"Hello String!")];
+    [initializer injectParameterWith:nil];
     [initializer injectParameterWith:[NSValue valueWithRange:NSMakeRange(10, 20)]];
     [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
     [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
@@ -169,7 +167,6 @@
     assertThatUnsignedInteger(primitiveMan.unsignedIntegerValue, equalToUnsignedInteger(NSUIntegerMax));
     assertThat(NSStringFromClass(primitiveMan.classValue), equalTo(NSStringFromClass([self class])));
     assertThat(NSStringFromSelector(primitiveMan.selectorValue), equalTo(NSStringFromSelector(@selector(selectorValue))));
-    assertThatInt(strcmp(primitiveMan.cString, "Hello String!"), equalToInt(0));
     assertThatBool(NSEqualRanges(primitiveMan.nsRange, NSMakeRange(10, 20)), equalToBool(YES));
     assertThatBool(primitiveMan.pointer == primitiveStruct, equalToBool(YES));
     assertThatInt(primitiveMan.unknownPointer->fieldA, equalToInt(INT_MAX));
@@ -218,7 +215,7 @@
 - (void)test_injects_property_value_as_long
 {
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    [knightDefinition injectProperty:@selector(damselsRescued) with:InjectionWithObjectFromString(@"12")];
+    [knightDefinition injectProperty:@selector(damselsRescued) with:@(12)];
     [_componentFactory registerDefinition:knightDefinition];
 
     Knight *knight = [_componentFactory componentForKey:@"knight"];
@@ -247,7 +244,7 @@
     [definition injectProperty:@selector(integerValue) with:@(NSIntegerMax)];
     [definition injectProperty:@selector(unsignedIntegerValue) with:@(NSUIntegerMax)];
     [definition injectProperty:@selector(classValue) with:[self class]];
-    [definition injectProperty:@selector(cString) with:InjectionWithObjectFromString(@"cStringText")];
+    [definition injectProperty:@selector(cString) with:nil];
     [definition injectProperty:@selector(selectorValue) with:[NSValue valueWithPointer:@selector(selectorValue)]];
     [definition injectProperty:@selector(nsRange) with:[NSValue valueWithRange:NSMakeRange(10, 20)]];
     [definition injectProperty:@selector(pointer) with:[NSValue valueWithPointer:&primitiveStruct]];
@@ -273,7 +270,6 @@
     assertThatUnsignedInteger(primitiveMan.unsignedIntegerValue, equalToUnsignedInteger(NSUIntegerMax));
     assertThat(NSStringFromClass(primitiveMan.classValue), equalTo(NSStringFromClass([self class])));
     assertThat(NSStringFromSelector(primitiveMan.selectorValue), equalTo(NSStringFromSelector(@selector(selectorValue))));
-    assertThatInt(strcmp(primitiveMan.cString, "cStringText"), equalToInt(0));
     assertThatBool(NSEqualRanges(primitiveMan.nsRange, NSMakeRange(10, 20)), equalToBool(YES));
     assertThatInt(primitiveMan.unknownPointer->fieldA, equalToInt(INT_MAX));
     assertThatLong(primitiveMan.unknownPointer->fieldB, equalToLong(LONG_MAX));

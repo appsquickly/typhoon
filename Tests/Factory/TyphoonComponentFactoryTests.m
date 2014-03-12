@@ -274,7 +274,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
         [definition injectProperty:@selector(quest)];
     }]];
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CavalryMan class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(hitRatio) with:InjectionWithObjectFromString(@"3.0")];
+        [definition injectProperty:@selector(hitRatio) with:@(3.0f)];
     }]];
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
 
@@ -447,7 +447,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     TyphoonInitializer *initializer = [[TyphoonInitializer alloc] init];
     initializer.selector = @selector(initWithString:);
-    [initializer injectParameterWith:InjectionWithObjectFromStringWithType(string, [NSString class])];
+    [initializer injectParameterWith:string];
     parentDefinition.initializer = initializer;
 
     [_componentFactory registerDefinition:parentDefinition];
@@ -461,7 +461,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     TyphoonInitializer *initializer = [[TyphoonInitializer alloc] init];
     initializer.selector = @selector(initWithString:);
-    [initializer injectParameterWith:InjectionWithObjectFromStringWithType(string, [NSString class])];
+    [initializer injectParameterWith:string];
     parentDefinition.initializer = initializer;
 
     [_componentFactory registerDefinition:parentDefinition];
@@ -486,7 +486,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     TyphoonDefinition *childDefinition = [TyphoonDefinition withClass:pClass initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(initWithString:);
 
-        [initializer injectParameterWith:InjectionWithObjectFromStringWithType(string, [NSString class])];
+        [initializer injectParameterWith:string];
     } properties:^(TyphoonDefinition *definition) {
         if (parentDefinition) {
             definition.parent = parentDefinition;

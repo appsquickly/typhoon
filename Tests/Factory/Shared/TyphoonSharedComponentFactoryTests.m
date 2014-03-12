@@ -118,7 +118,9 @@
 {
     @try {
         NSURL *url = [_exceptionTestFactory componentForKey:@"anotherServiceUrl"];
-        STFail(@"Should have thrown exception");
+        if (![url isEqual:[NSURL URLWithString:@"http://dev.foobar.com/service/"]]) {
+            STFail(@"Should have thrown exception");
+        }
         url = nil;
     }
     @catch (NSException *e) {

@@ -22,7 +22,7 @@
 {
     return [TyphoonDefinition withClass:[NSURL class] initialization:^(TyphoonInitializer *initializer) {
         initializer.selector = @selector(URLWithString:);
-        [initializer injectParameter:@"string" with:InjectionWithObjectFromString(@"http://dev.foobar.com/service/")];
+        [initializer injectParameter:@"string" with:@"http://dev.foobar.com/service/"];
     }];
 }
 
