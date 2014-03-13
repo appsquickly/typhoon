@@ -178,6 +178,7 @@ static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSigna
         void *result;
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
         [invocation setSelector:selector];
+        [invocation retainArguments];
         /* Fill invocation arguments with TyphoonInjectionWithRuntimeArgumentAtIndex injections */
         for (int i = 0; i < signature.numberOfArguments - 2; i++) {
             id injection = TyphoonInjectionWithRuntimeArgumentAtIndex(i);
