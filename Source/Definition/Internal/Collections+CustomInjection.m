@@ -18,11 +18,10 @@ static __inline__ BOOL IsContainsTyphoonObjectInCollection(id<NSFastEnumeration>
     BOOL foundTyphoonObject = NO;
     
     for (id object in collection) {
-        if ([object conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)] ||
-            [object conformsToProtocol:@protocol(TyphoonPropertyInjection)]) {
-                foundTyphoonObject = YES;
-                break;
-            }
+        if ([object conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)] || IsTyphoonInjection(object)) {
+            foundTyphoonObject = YES;
+            break;
+        }
     }
     
     return foundTyphoonObject;

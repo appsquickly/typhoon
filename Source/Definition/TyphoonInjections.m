@@ -19,6 +19,11 @@
 #import "TyphoonInjectionByObjectInstance.h"
 #import "TyphoonInjectionByReference.h"
 #import "TyphoonInjectionByType.h"
+#import "TyphoonInjectionByDictionary.h"
+
+#import "TyphoonObjectWithCustomInjection.h"
+#import "TyphoonPropertyInjection.h"
+#import "TyphoonParameterInjection.h"
 
 id TyphoonInjectionMatchedByType(void)
 {
@@ -40,6 +45,11 @@ id TyphoonInjectionWithCollectionAndType(id collection, Class requiredClass)
     return [[TyphoonInjectionByCollection alloc] initWithCollection:collection requiredClass:requiredClass];
 }
 
+id TyphoonInjectionWithDictionaryAndType(id dictionary, Class requiredClass)
+{
+    return [[TyphoonInjectionByDictionary alloc] initWithDictionary:dictionary requiredClass:requiredClass];
+}
+
 id TyphoonInjectionWithRuntimeArgumentAtIndex(NSInteger argumentIndex)
 {
     return [[TyphoonInjectionByRuntimeArgument alloc] initWithArgumentIndex:argumentIndex];
@@ -54,3 +64,26 @@ id TyphoonInjectionWithReference(NSString *reference)
 {
     return [[TyphoonInjectionByReference alloc] initWithReference:reference args:nil];
 }
+
+id TyphoonMakeInjectionFromObjectIfNeeded(id objectOrInjection)
+{
+    id injection = nil;
+    
+    if ([objectOrInjection conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)]) {
+        injection = [objectOrInjection typhoonCustomObjectInjection];
+    } else if (IsTyphoonInjection(objectOrInjection)) {
+        injection = objectOrInjection;
+    } else {
+        injection = TyphoonInjectionWithObject(objectOrInjection);
+    }
+    
+    return injection;
+}
+
+BOOL IsTyphoonInjection(id objectOrInjection)
+{
+    return [objectOrInjection conformsToProtocol:@protocol(TyphoonPropertyInjection)] || [objectOrInjection conformsToProtocol:@protocol(TyphoonParameterInjection)];
+}
+
+
+

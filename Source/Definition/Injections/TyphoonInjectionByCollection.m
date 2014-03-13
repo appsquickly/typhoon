@@ -38,7 +38,7 @@
     return success;
 }
 
-+ (Class) collectionMutableClassFromClass:(Class)collectionClass
++ (Class)collectionMutableClassFromClass:(Class)collectionClass
 {
     Class result;
     
@@ -74,18 +74,7 @@
         self.injections = [[NSMutableArray alloc] initWithCapacity:[collection count]];
    
         for (id object in collection) {
-            
-            id injection = nil;
-            
-            if ([object conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)]) {
-                injection = [object typhoonCustomObjectInjection];
-            } else if ([object conformsToProtocol:@protocol(TyphoonPropertyInjection)]) {
-                injection = object;
-            } else {
-                injection = TyphoonInjectionWithObject(object);
-            }
-            [self.injections addObject:injection];
-            
+            [self.injections addObject:TyphoonMakeInjectionFromObjectIfNeeded(object)];
         }
     }
     return self;
@@ -115,6 +104,7 @@
 {
     TyphoonInjectionByCollection *copied = [[TyphoonInjectionByCollection alloc] init];
     copied.injections = self.injections;
+    copied.requiredClass = self.requiredClass;
     [self copyBaseProperiesTo:copied];
     return copied;
 }

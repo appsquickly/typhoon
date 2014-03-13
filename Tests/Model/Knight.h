@@ -28,6 +28,7 @@
 @property(nonatomic, strong, readonly) id <Quest> readOnlyQuest;
 @property(nonatomic, strong) NSArray *favoriteDamsels;
 @property(nonatomic, strong) NSSet *friends;
+@property(nonatomic, strong) NSDictionary *friendsDictionary;
 @property(nonatomic, strong) Fort *homeFort;
 
 
@@ -38,7 +39,6 @@
 - (id)initWithQuest:(id <Quest>)quest favoriteDamsels:(NSArray *)favoriteDamsels;
 
 - (id)initWithDamselsRescued:(NSUInteger)damselsRescued foo:(id)foobar;
-
 
 - (NSString *)description;
 

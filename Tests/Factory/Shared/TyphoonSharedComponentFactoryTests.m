@@ -98,6 +98,19 @@
     assertThat(favoriteDamsels, hasCountOf(2));
 }
 
+- (void)test_injection_with_dictionary
+{
+    if ([_componentFactory isKindOfClass:[TyphoonBlockComponentFactory class]]) {
+
+        Knight *knight = [_componentFactory componentForKey:@"knightWithCollections"];
+    
+        assertThat(knight.friendsDictionary, notNilValue());
+        assertThat(knight.friendsDictionary, hasCountOf(2));
+        STAssertTrue([[knight.friendsDictionary[@"knight"] class] isSubclassOfClass:[Knight class]], nil);
+        STAssertTrue([[knight.friendsDictionary[@"anotherKnight"] class] isSubclassOfClass:[CavalryMan class]], nil);
+    }
+}
+
 - (void)test_injects_collection_of_referenced_components_into_set
 {
     Knight *knight = [_componentFactory componentForKey:@"knightWithCollections"];

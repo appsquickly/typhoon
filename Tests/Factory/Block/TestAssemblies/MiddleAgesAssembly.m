@@ -79,6 +79,9 @@
         
         [definition injectProperty:@selector(favoriteDamsels) with:@[@"Mary", @"Mary"]];
         [definition injectProperty:@selector(friends) with:[NSSet setWithObjects:[self knight], [self anotherKnight], nil]];
+        [definition injectProperty:@selector(friendsDictionary) with:@{@"knight" : [self knight],
+                                                                       @"anotherKnight" : [self anotherKnight]
+                                                                       }];
     }];
 }
 

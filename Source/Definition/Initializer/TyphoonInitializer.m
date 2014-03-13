@@ -17,8 +17,8 @@
 #import "TyphoonDefinition.h"
 
 #import "TyphoonParameterInjection.h"
-#import "TyphoonObjectWithCustomInjection.h"
-#import "TyphoonInjectionByObjectInstance.h"
+
+#import "TyphoonInjections.h"
 
 @implementation TyphoonInitializer
 
@@ -82,16 +82,9 @@
 - (void)injectParameterAtIndex:(NSUInteger)index with:(id)injection
 {
     if ([self canAddParameterAtIndex:index]) {
-        if ([injection conformsToProtocol:@protocol(TyphoonParameterInjection)]) {
-            [injection setParameterIndex:index withInitializer:self];
-            [self addParameterInjection:injection];
-        }
-        else if ([injection conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)]) {
-            [self injectParameterAtIndex:index with:[injection typhoonCustomObjectInjection]];
-        }
-        else {
-            [self injectParameterAtIndex:index with:[[TyphoonInjectionByObjectInstance alloc] initWithObjectInstance:injection]];
-        }
+        injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);
+        [injection setParameterIndex:index withInitializer:self];
+        [self addParameterInjection:injection];
     }
 }
 

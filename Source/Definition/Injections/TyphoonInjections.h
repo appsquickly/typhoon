@@ -14,8 +14,14 @@ id TyphoonInjectionWithObjectFromStringWithType(NSString *string, Class objectCl
 
 id TyphoonInjectionWithCollectionAndType(id collection, Class requiredClass);
 
+id TyphoonInjectionWithDictionaryAndType(id dictionary, Class requiredClass);
+
 id TyphoonInjectionWithRuntimeArgumentAtIndex(NSInteger argumentIndex);
 
 id TyphoonInjectionWithObject(id object);
 
 id TyphoonInjectionWithReference(NSString *reference);
+
+id TyphoonMakeInjectionFromObjectIfNeeded(id objectOrInjection);
+
+BOOL IsTyphoonInjection(id objectOrInjection);

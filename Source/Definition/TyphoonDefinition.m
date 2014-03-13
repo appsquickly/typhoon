@@ -24,6 +24,7 @@
 #import "TyphoonInjectionByType.h"
 #import "TyphoonInjectionByReference.h"
 #import "TyphoonInjectionByFactoryReference.h"
+#import "TyphoonInjections.h"
 
 @interface TyphoonDefinition () <TyphoonObjectWithCustomInjection>
 
@@ -63,11 +64,11 @@
     if (initialization) {
         TyphoonInitializer *componentInitializer = [[TyphoonInitializer alloc] init];
         definition.initializer = componentInitializer;
-        __unsafe_unretained TyphoonInitializer *weakInitializer = componentInitializer;
+        __weak TyphoonInitializer *weakInitializer = componentInitializer;
         initialization(weakInitializer);
     }
     if (properties) {
-        __unsafe_unretained TyphoonDefinition *weakDefinition = definition;
+        __weak TyphoonDefinition *weakDefinition = definition;
         properties(weakDefinition);
     }
     if (definition.lazy && definition.scope != TyphoonScopeSingleton) {
@@ -122,16 +123,9 @@
 
 - (void)injectProperty:(SEL)selector with:(id)injection
 {
-    if ([injection conformsToProtocol:@protocol(TyphoonPropertyInjection)]) {
-        [injection setPropertyName:NSStringFromSelector(selector)];
-        [_injectedProperties addObject:injection];
-    }
-    else if ([injection conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)]) {
-        [self injectProperty:selector with:[injection typhoonCustomObjectInjection]];
-    }
-    else {
-        [self injectProperty:selector with:[[TyphoonInjectionByObjectInstance alloc] initWithObjectInstance:injection]];
-    }
+    injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);
+    [injection setPropertyName:NSStringFromSelector(selector)];
+    [_injectedProperties addObject:injection];
 }
 
 - (void)setInitializer:(TyphoonInitializer *)initializer
