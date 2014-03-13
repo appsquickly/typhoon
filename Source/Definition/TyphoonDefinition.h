@@ -27,6 +27,7 @@
 * it is not retained by Typhoon, so will be released when there are no more strong references holding it.
 *
 * <strong>TyphoonScopePrototype</strong>
+* (default for definitions with runtime argument injections)
 * means that a new component is created for each time it is referenced in a collaborator, or retrieved from the factory.
 *
 * <strong>TyphoonScopeSingleton</strong>

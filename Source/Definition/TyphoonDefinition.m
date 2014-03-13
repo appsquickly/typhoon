@@ -30,7 +30,9 @@
 
 @end
 
-@implementation TyphoonDefinition
+@implementation TyphoonDefinition {
+    BOOL isScopeSetByUser;
+}
 
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
@@ -71,17 +73,12 @@
         __weak TyphoonDefinition *weakDefinition = definition;
         properties(weakDefinition);
     }
-    if (definition.lazy && definition.scope != TyphoonScopeSingleton) {
-        [NSException raise:NSInvalidArgumentException
-            format:@"The lazy attribute is only applicable to singleton scoped definitions, but is set for definition: %@ ", definition];
+    
+    if (!definition->isScopeSetByUser && [definition hasRuntimeArgumentInjections]) {
+        definition.scope = TyphoonScopePrototype;
     }
     
-    BOOL hasRuntimeInjections = [[definition.initializer parametersInjectedByRuntimeArgument] count] > 0 || [[definition propertiesInjectedByRuntimeArgument] count] > 0;
-    if (hasRuntimeInjections && definition.scope != TyphoonScopePrototype) {
-        [NSException raise:NSInvalidArgumentException
-                    format:@"The runtime arguments injections are only applicable to prototype scoped definitions, but is set for definition: %@ ", definition];
-
-    }
+    [definition validateScope];
 
     return definition;
 }
@@ -183,12 +180,37 @@
     return [[parentProperties setByAddingObjectsFromSet:_injectedProperties] copy];
 }
 
+- (BOOL)hasRuntimeArgumentInjections
+{
+    return [[self.initializer parametersInjectedByRuntimeArgument] count] > 0 || [[self propertiesInjectedByRuntimeArgument] count] > 0;
+}
+
+- (void)setScope:(TyphoonScope)scope
+{
+    _scope = scope;
+    isScopeSetByUser = YES;
+    [self validateScope];
+}
+
+- (void)validateScope
+{
+    if (self.lazy && self.scope != TyphoonScopeSingleton) {
+        [NSException raise:NSInvalidArgumentException
+                    format:@"The lazy attribute is only applicable to singleton scoped definitions, but is set for definition: %@ ", self];
+    }
+    
+    if (self.scope != TyphoonScopePrototype && [self hasRuntimeArgumentInjections]) {
+        [NSException raise:NSInvalidArgumentException
+                    format:@"The runtime arguments injections are only applicable to prototype scoped definitions, but is set for definition: %@ ", self];
+    }
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Definition: class='%@', key='%@'", NSStringFromClass(_type), _key];
+    return [NSString stringWithFormat:@"Definition: class='%@', key='%@', scope='%@'", NSStringFromClass(_type), _key, TyphoonScopeToString(_scope)];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -199,6 +221,22 @@
         [copy addInjectedProperty:[property copyWithZone:NSDefaultMallocZone()]];
     }
     return copy;
+}
+
+static NSString * TyphoonScopeToString(TyphoonScope scope)
+{
+    switch(scope) {
+        case TyphoonScopeObjectGraph:
+            return @"ObjectGraph";
+        case TyphoonScopePrototype:
+            return @"Prototype";
+        case TyphoonScopeSingleton:
+            return @"Singleton";
+        case TyphoonScopeWeakSingleton:
+            return @"WeakSingleton";
+        default:
+            return @"Unknown";
+    }
 }
 
 

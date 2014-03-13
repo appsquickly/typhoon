@@ -132,7 +132,6 @@
     return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:damselsRescued];
         [definition injectProperty:@selector(foobar) with:runtimeObject];
-        definition.scope = TyphoonScopePrototype;
     }];
 }
 
@@ -144,7 +143,6 @@
         [initializer injectParameterWith:[self questWithRuntimeUrl:url]];
     } properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:damselsRescued];
-        definition.scope = TyphoonScopePrototype;
     }];
 }
 
@@ -160,7 +158,6 @@
 {
     return [TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(imageUrl) with:url];
-        definition.scope = TyphoonScopePrototype;
     }];
 }
 

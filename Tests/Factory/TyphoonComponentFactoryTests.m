@@ -434,7 +434,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
         STFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"Attempt to instantiate abstract definition: Definition: class='NSURL', key='anAbstractDefinition'"));
+        assertThat([e description], equalTo(@"Attempt to instantiate abstract definition: Definition: class='NSURL', key='anAbstractDefinition', scope='ObjectGraph'"));
     }
 }
 
