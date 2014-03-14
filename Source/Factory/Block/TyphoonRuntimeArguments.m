@@ -9,6 +9,11 @@
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonIntrospectionUtils.h"
 
+@interface TyphoonRuntimeNullArgument : NSObject
+@end
+@implementation TyphoonRuntimeNullArgument
+@end
+
 @implementation TyphoonRuntimeArguments {
     NSMutableArray *arguments;
 }
@@ -22,9 +27,14 @@
     NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:count];
     
     for (int i = 2; i < count; i++) {
-        void *argument;
-        [invocation getArgument:&argument atIndex:i];
-        [args addObject:(__bridge id)argument];
+        void *pointer;
+        [invocation getArgument:&pointer atIndex:i];
+        id argument = (__bridge id)pointer;
+        if (argument) {
+            [args addObject:argument];
+        } else {
+            [args addObject:[TyphoonRuntimeNullArgument new]];
+        }
     }
     
     return [[self alloc] initWithArguments:args];
@@ -39,7 +49,12 @@
     
     NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:count];
     for (int i = 0; i < count; i++) {
-        [args addObject:va_arg(list, id)];
+        id argument = va_arg(list, id);
+        if (argument) {
+            [args addObject:argument];
+        } else {
+            [args addObject:[TyphoonRuntimeNullArgument new]];
+        }
     }
     return [[self alloc] initWithArguments:args];
 }
@@ -55,7 +70,12 @@
 
 - (id)argumentValueAtIndex:(NSUInteger)index
 {
-    return arguments[index];
+    id argument = arguments[index];
+    if ([argument isMemberOfClass:[TyphoonRuntimeNullArgument class]]) {
+        return nil;
+    } else {
+        return argument;
+    }
 }
 
 - (void)replaceArgumentAtIndex:(NSUInteger)index withArgument:(id)argument

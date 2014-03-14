@@ -45,6 +45,14 @@
     assertThatInt(knight.damselsRescued, equalToInt(2));
 }
 
+- (void)test_runtime_knight_with_nil
+{
+    Knight *knight = [factory knightWithRuntimeDamselsRescued:nil runtimeQuestUrl:[NSURL URLWithString:@"http://google.com"]];
+    assertThat([knight.quest imageUrl], equalTo([NSURL URLWithString:@"http://google.com"]));
+    assertThatInt(knight.damselsRescued, equalToInt(0));
+}
+
+
 - (void)test_predefined_quest
 {
     Knight *knight = [factory knightWithDefinedQuestUrl];
