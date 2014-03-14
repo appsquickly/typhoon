@@ -7,34 +7,23 @@
 //
 
 #import "TyphoonRuntimeArguments.h"
+#import "TyphoonIntrospectionUtils.h"
 
 @implementation TyphoonRuntimeArguments {
     NSMutableArray *arguments;
 }
 
-/* Counting ':' because methodSignature always for 'componentForKey:args:' selector */
-+ (NSUInteger)numberOfArgumentsInSelector:(SEL)selector
-{
-    NSString *string = NSStringFromSelector(selector);
-    uint count = 0;
-    for (int i = 0; i < string.length; i++) {
-        if ([string characterAtIndex:i] == ':')
-            count++;
-    }
-    return count;
-}
-
 + (instancetype)argumentsFromInvocation:(NSInvocation *)invocation
 {
-    NSUInteger count = [self numberOfArgumentsInSelector:[invocation selector]];
-    if (count == 0) {
+    NSUInteger count = [[invocation methodSignature] numberOfArguments];
+    if (count <= 2) {
         return nil;
     }
     NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:count];
     
-    for (int i = 0; i < count; i++) {
+    for (int i = 2; i < count; i++) {
         void *argument;
-        [invocation getArgument:&argument atIndex:i+2];
+        [invocation getArgument:&argument atIndex:i];
         [args addObject:(__bridge id)argument];
     }
     
@@ -43,7 +32,7 @@
 
 + (instancetype)argumentsFromVAList:(va_list)list selector:(SEL)selector
 {
-    NSUInteger count = [self numberOfArgumentsInSelector:selector];
+    NSUInteger count = [TyphoonIntrospectionUtils numberOfArgumentsInSelector:selector];
     if (count == 0) {
         return nil;
     }

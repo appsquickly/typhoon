@@ -20,6 +20,7 @@
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblyPropertyInjectionPostProcessor.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
+#import "TyphoonIntrospectionUtils.h"
 
 @interface TyphoonComponentFactory (Private)
 
@@ -91,7 +92,6 @@
 }
 
 
-
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
@@ -99,13 +99,18 @@
 {
     NSString *componentKey = NSStringFromSelector([invocation selector]);
     LogTrace(@"Component key: %@", componentKey);
-
+    
     TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:invocation];
-    [invocation setSelector:@selector(componentForKey:args:)];
-    [invocation setArgument:&componentKey atIndex:2];
-    [invocation setArgument:&args atIndex:3];
 
-    [invocation invoke];
+    NSInvocation *internalInvocation = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:@selector(componentForKey:args:)]];
+    [internalInvocation setSelector:@selector(componentForKey:args:)];
+    [internalInvocation setArgument:&componentKey atIndex:2];
+    [internalInvocation setArgument:&args atIndex:3];
+    [internalInvocation invokeWithTarget:self];
+    
+    void *returnValue;
+    [internalInvocation getReturnValue:&returnValue];
+    [invocation setReturnValue:&returnValue];
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
@@ -114,7 +119,7 @@
         return [[self class] instanceMethodSignatureForSelector:aSelector];
     }
     else {
-        return [[self class] instanceMethodSignatureForSelector:@selector(componentForKey:args:)];
+        return [TyphoonIntrospectionUtils methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:aSelector];
     }
 }
 
