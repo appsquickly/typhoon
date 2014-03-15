@@ -116,7 +116,7 @@
 {
     Class collectionClass = self.requiredClass;
     if (!collectionClass) {
-        TyphoonTypeDescriptor *type = [instance typeForPropertyWithName:self.propertyName];
+        TyphoonTypeDescriptor *type = [instance typhoon_typeForPropertyWithName:self.propertyName];
         collectionClass = type.classOrProtocol;
     }
     if (![TyphoonInjectionByCollection isCollectionClass:collectionClass]) {

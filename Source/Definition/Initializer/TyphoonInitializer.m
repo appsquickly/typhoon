@@ -163,7 +163,7 @@
 - (void)setSelector:(SEL)selector
 {
     _selector = selector;
-    _parameterNames = [self parameterNamesForSelector:_selector];
+    _parameterNames = [self typhoon_parameterNamesForSelector:_selector];
 }
 
 /* ====================================================================================================================================== */

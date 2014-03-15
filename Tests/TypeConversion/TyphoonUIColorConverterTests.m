@@ -27,7 +27,7 @@
 - (void)setUp
 {
     [super setUp];
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"color"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"color"];
     self.converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
 
 }

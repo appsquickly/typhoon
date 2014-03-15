@@ -48,7 +48,7 @@ typedef struct
     TyphoonTypeDescriptor *boolDescriptor =
         [TyphoonTypeDescriptor descriptorWithTypeCode:[NSString stringWithCString:@encode(BOOL) encoding:NSASCIIStringEncoding]];
 
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"aBoolProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"aBoolProperty"];
     assertThatBool([descriptor isPrimitive], equalToBool(YES));
     assertThat([descriptor typeBeingDescribed], nilValue());
     assertThat([descriptor protocol], nilValue());
@@ -62,7 +62,7 @@ typedef struct
 
 - (void)test_type_description_class
 {
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"anNSURLProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"anNSURLProperty"];
     assertThatBool([descriptor isPrimitive], equalToBool(NO));
     assertThat([descriptor typeBeingDescribed], equalTo([NSURL class]));
     assertThat([descriptor protocol], nilValue());
@@ -73,7 +73,7 @@ typedef struct
 
 - (void)test_type_description_protocol
 {
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"aQuestProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"aQuestProperty"];
     assertThatBool([descriptor isPrimitive], equalToBool(NO));
     assertThat([descriptor typeBeingDescribed], nilValue());
     assertThat([descriptor protocol], equalTo(@protocol(Quest)));
@@ -84,7 +84,7 @@ typedef struct
 
 - (void)test_type_description_class_and_protocol
 {
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"anObjectQuestProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"anObjectQuestProperty"];
     assertThatBool([descriptor isPrimitive], equalToBool(NO));
     assertThat([descriptor protocol], equalTo(@protocol(Quest)));
     assertThat([descriptor typeBeingDescribed], equalTo([NSObject class]));
@@ -96,14 +96,14 @@ typedef struct
 
 - (void)test_typeForPropertyWithName_char
 {
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"charProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"charProperty"];
     assertThatBool(descriptor.isPrimitive, equalToBool(YES));
     assertThatInt(descriptor.primitiveType, equalToInt(TyphoonPrimitiveTypeChar));
 }
 
 - (void)test_typeForPropertyWithName_int
 {
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"intProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"intProperty"];
     assertThatBool(descriptor.isPrimitive, equalToBool(YES));
     assertThatBool(descriptor.isPointer, equalToBool(NO));
     assertThatInt(descriptor.primitiveType, equalToInt(TyphoonPrimitiveTypeInt));
@@ -111,7 +111,7 @@ typedef struct
 
 - (void)test_typeForPropertyWithName_short
 {
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"shortProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"shortProperty"];
     assertThatBool(descriptor.isPrimitive, equalToBool(YES));
     assertThatBool(descriptor.isPointer, equalToBool(NO));
     assertThatInt(descriptor.primitiveType, equalToInt(TyphoonPrimitiveTypeShort));
@@ -119,21 +119,21 @@ typedef struct
 
 - (void)test_typeForPropertyWithName_long
 {
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"longProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"longProperty"];
     assertThatBool(descriptor.isPrimitive, equalToBool(YES));
     assertThatBool(descriptor.isPointer, equalToBool(NO));
 }
 
 - (void)test_typeForPropertyWithName_pointerToLongLong
 {
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"pointerToLongLongProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"pointerToLongLongProperty"];
     assertThatBool(descriptor.isPrimitive, equalToBool(YES));
     assertThatBool(descriptor.isPointer, equalToBool(YES));
 }
 
 - (void)test_typeForPropertyWithName_struct
 {
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"structProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"structProperty"];
     assertThatBool(descriptor.isPrimitive, equalToBool(YES));
     assertThatBool(descriptor.isPointer, equalToBool(NO));
     assertThatBool(descriptor.isStructure, equalToBool(YES));
@@ -142,7 +142,7 @@ typedef struct
 
 - (void)test_parameterNamesForSelector_init_method
 {
-    NSArray *parameterNames = [self parameterNamesForSelector:@selector(initWithNibName:bundle:)];
+    NSArray *parameterNames = [self typhoon_parameterNamesForSelector:@selector(initWithNibName:bundle:)];
     assertThat(parameterNames, hasCountOf(2));
     assertThat([parameterNames objectAtIndex:0], equalTo(@"nibName"));
     assertThat([parameterNames objectAtIndex:1], equalTo(@"bundle"));
@@ -150,21 +150,21 @@ typedef struct
 
 - (void)test_parameterNamesForSelector_factory_method
 {
-    NSArray *parameterNames = [self parameterNamesForSelector:@selector(URLWithString:)];
+    NSArray *parameterNames = [self typhoon_parameterNamesForSelector:@selector(URLWithString:)];
     assertThat(parameterNames, hasCountOf(1));
     assertThat([parameterNames objectAtIndex:0], equalTo(@"string"));
 }
 
 - (void)test_parameterNamesForSelector_no_parameters_method
 {
-    NSArray *parameterNames = [self parameterNamesForSelector:@selector(init)];
+    NSArray *parameterNames = [self typhoon_parameterNamesForSelector:@selector(init)];
     assertThat(parameterNames, empty());
 }
 
 - (void)test_typeCodesForSelectorWithName
 {
     Knight *knight = [[Knight alloc] initWithQuest:nil damselsRescued:0];
-    NSArray *typeCodes = [knight typeCodesForSelector:@selector(initWithQuest:damselsRescued:)];
+    NSArray *typeCodes = [knight typhoon_typeCodesForSelector:@selector(initWithQuest:damselsRescued:)];
 
     NSString *questTypeCode = [typeCodes objectAtIndex:0];
     assertThat(questTypeCode, equalTo(@"@")); // an object

@@ -51,7 +51,7 @@
         type = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:self.requiredClass];
     }
     else {
-        type = [instance typeForPropertyWithName:self.propertyName];
+        type = [instance typhoon_typeForPropertyWithName:self.propertyName];
     }
 
     id value = nil;

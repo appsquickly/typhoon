@@ -22,16 +22,16 @@ TYPHOON_LINK_CATEGORY(NSObject_TyphoonIntrospectionUtils)
 #import "TyphoonStringUtils.h"
 
 
-static char const *const CIRCULAR_DEPENDENCIES_KEY = "typhoon.injectLater";
+static char const *const TYPHOON_CIRCULAR_DEPENDENCIES_KEY;
 
 @implementation NSObject (TyphoonIntrospectionUtils)
 
-- (TyphoonTypeDescriptor *)typeForPropertyWithName:(NSString *)propertyName;
+- (TyphoonTypeDescriptor *)typhoon_typeForPropertyWithName:(NSString *)propertyName;
 {
     return [TyphoonIntrospectionUtils typeForPropertyWithName:propertyName inClass:[self class]];
 }
 
-- (NSArray *)parameterNamesForSelector:(SEL)selector
+- (NSArray *)typhoon_parameterNamesForSelector:(SEL)selector
 {
     if (![TyphoonStringUtils string:NSStringFromSelector(selector) containsString:@":"]) {
         return @[];
@@ -57,17 +57,17 @@ static char const *const CIRCULAR_DEPENDENCIES_KEY = "typhoon.injectLater";
     return [name stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[[name substringToIndex:1] lowercaseString]];
 }
 
-- (NSArray *)typeCodesForSelector:(SEL)selector
+- (NSArray *)typhoon_typeCodesForSelector:(SEL)selector
 {
     return [TyphoonIntrospectionUtils typeCodesForSelector:selector ofClass:[self class] isClassMethod:NO];
 }
 
-- (NSMutableDictionary *)circularDependentProperties
+- (NSMutableDictionary *)typhoon_circularDependentProperties
 {
-    NSMutableDictionary *circularDependentProperties = objc_getAssociatedObject(self, &CIRCULAR_DEPENDENCIES_KEY);
+    NSMutableDictionary *circularDependentProperties = objc_getAssociatedObject(self, &TYPHOON_CIRCULAR_DEPENDENCIES_KEY);
     if (circularDependentProperties == nil) {
         circularDependentProperties = [[NSMutableDictionary alloc] init];
-        objc_setAssociatedObject(self, &CIRCULAR_DEPENDENCIES_KEY, circularDependentProperties, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self, &TYPHOON_CIRCULAR_DEPENDENCIES_KEY, circularDependentProperties, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return circularDependentProperties;
 }

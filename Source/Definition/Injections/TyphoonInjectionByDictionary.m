@@ -106,7 +106,7 @@
 {
     Class dictionaryClass = self.requiredClass;
     if (!dictionaryClass) {
-        TyphoonTypeDescriptor *type = [instance typeForPropertyWithName:self.propertyName];
+        TyphoonTypeDescriptor *type = [instance typhoon_typeForPropertyWithName:self.propertyName];
         dictionaryClass = type.classOrProtocol;
     }
 

@@ -100,7 +100,7 @@ static NSString *const kScoreKey = @"kScoreKey";
     for (NSString *methodName in methodNames) {
         TyphoonAssistedFactoryCreatorImplicitFactoryMethod *method = [[TyphoonAssistedFactoryCreatorImplicitFactoryMethod alloc] init];
         method.methodName = NSSelectorFromString(methodName);
-        method.methodParameterNames = [self parameterNamesForSelector:method.methodName];
+        method.methodParameterNames = [self typhoon_parameterNamesForSelector:method.methodName];
 
         [factoryMethods addObject:method];
     }
@@ -115,7 +115,7 @@ static NSString *const kScoreKey = @"kScoreKey";
         if ([NSStringFromSelector(methodDescription.name) hasPrefix:@"initWith"]) {
             TyphoonAssistedFactoryCreatorImplicitMethod *method = [[TyphoonAssistedFactoryCreatorImplicitMethod alloc] init];
             method.methodName = methodDescription.name;
-            method.methodParameterNames = [self parameterNamesForSelector:method.methodName];
+            method.methodParameterNames = [self typhoon_parameterNamesForSelector:method.methodName];
 
             [initializerMethods addObject:method];
         }

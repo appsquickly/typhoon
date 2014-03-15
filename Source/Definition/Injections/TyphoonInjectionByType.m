@@ -27,7 +27,7 @@
 {
     id value = nil;
 
-    TyphoonTypeDescriptor *type = [instance typeForPropertyWithName:self.propertyName];
+    TyphoonTypeDescriptor *type = [instance typhoon_typeForPropertyWithName:self.propertyName];
     TyphoonDefinition *definition = [factory definitionForType:[type classOrProtocol]];
 
     [factory evaluateCircularDependency:definition.key propertyName:self.propertyName instance:instance];

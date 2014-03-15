@@ -148,7 +148,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 - (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(id <TyphoonPropertyInjection>)property
     args:(TyphoonRuntimeArguments *)args
 {
-    TyphoonTypeDescriptor *propertyType = [instance typeForPropertyWithName:property.propertyName];
+    TyphoonTypeDescriptor *propertyType = [instance typhoon_typeForPropertyWithName:property.propertyName];
     AssertTypeDescriptionForPropertyOnInstance(propertyType, property, instance);
 
     TyphoonPropertyInjectionLazyValue lazyValue = ^id {
@@ -172,20 +172,20 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 {
 
     if ([_stack isResolvingKey:componentKey]) {
-        NSDictionary *circularDependencies = [instance circularDependentProperties];
+        NSDictionary *circularDependencies = [instance typhoon_circularDependentProperties];
         [circularDependencies setValue:componentKey forKey:propertyName];
-        LogTrace(@"Circular dependency detected: %@", [instance circularDependentProperties]);
+        LogTrace(@"Circular dependency detected: %@", [instance typhoon_circularDependentProperties]);
     }
 }
 
 - (BOOL)isCircularPropertyWithName:(NSString *)name onInstance:(id <TyphoonIntrospectiveNSObject>)instance
 {
-    return [[instance circularDependentProperties] objectForKey:name] != nil;
+    return [[instance typhoon_circularDependentProperties] objectForKey:name] != nil;
 }
 
 - (void)injectCircularDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance
 {
-    NSMutableDictionary *circularDependentProperties = [instance circularDependentProperties];
+    NSMutableDictionary *circularDependentProperties = [instance typhoon_circularDependentProperties];
     for (NSString *propertyName in [circularDependentProperties allKeys]) {
         id propertyValue = [(NSObject *) instance valueForKey:propertyName];
         if (!propertyValue) {

@@ -210,7 +210,7 @@
 - (void)test_set_argument_bool
 {
     NSInvocation *mockInvocation = mock([NSInvocation class]);
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"boolProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"boolProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"true" requiredType:descriptor];
     [verify(mockInvocation) setArgument:(void *) YES atIndex:2];
 }
@@ -218,7 +218,7 @@
 - (void)test_set_argument_class
 {
     NSInvocation *mockInvocation = mock([NSInvocation class]);
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"classProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"classProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"Knight" requiredType:descriptor];
     [verify(mockInvocation) setArgument:(__bridge void *) [NSString class] atIndex:2];
 }
@@ -226,7 +226,7 @@
 - (void)test_set_argument_double
 {
     NSInvocation *mockInvocation = mock([NSInvocation class]);
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"doubleProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"doubleProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"12.75" requiredType:descriptor];
     double expected = 12.75;
     [verify(mockInvocation) setArgument:&expected atIndex:2];
@@ -235,7 +235,7 @@
 - (void)test_set_argument_int
 {
     NSInvocation *mockInvocation = mock([NSInvocation class]);
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"intProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"intProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"12" requiredType:descriptor];
     int expected = 12;
     [verify(mockInvocation) setArgument:&expected atIndex:2];
@@ -244,7 +244,7 @@
 - (void)test_set_argument_long
 {
     NSInvocation *mockInvocation = mock([NSInvocation class]);
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"longProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"longProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"12" requiredType:descriptor];
     long expected = 12;
     [verify(mockInvocation) setArgument:&expected atIndex:2];
@@ -253,7 +253,7 @@
 - (void)test_set_argument_selector
 {
     NSInvocation *mockInvocation = mock([NSInvocation class]);
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"selectorProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"selectorProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"initWithQuest:" requiredType:descriptor];
     SEL expected = @selector(initWithQuest:);
     [verify(mockInvocation) setArgument:&expected atIndex:2];
@@ -262,7 +262,7 @@
 - (void)test_set_argument_c_string
 {
     NSInvocation *mockInvocation = mock([NSInvocation class]);
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"cStringProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"cStringProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"initWithQuest:" requiredType:descriptor];
     char *expected = "the quality";
     [verify(mockInvocation) setArgument:&expected atIndex:2];
@@ -271,7 +271,7 @@
 - (void)test_set_argument_unsigned_char
 {
     NSInvocation *mockInvocation = mock([NSInvocation class]);
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"unsignedCharProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"unsignedCharProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"65" requiredType:descriptor];
     char expected = 'A';
     [verify(mockInvocation) setArgument:&expected atIndex:2];
@@ -280,7 +280,7 @@
 - (void)test_set_argument_unsigned_long_long
 {
     NSInvocation *mockInvocation = mock([NSInvocation class]);
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"unsignedLongLongProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"unsignedLongLongProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"36" requiredType:descriptor];
     NSUInteger expected = 36;
     [verify(mockInvocation) setArgument:&expected atIndex:2];
@@ -289,7 +289,7 @@
 - (void)test_set_argument_unsigned_int
 {
     NSInvocation *mockInvocation = mock([NSInvocation class]);
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"unsignedIntProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"unsignedIntProperty"];
     [_typeConverter setPrimitiveArgumentFor:mockInvocation index:2 textValue:@"36" requiredType:descriptor];
     unsigned int expected = 36;
     [verify(mockInvocation) setArgument:&expected atIndex:2];

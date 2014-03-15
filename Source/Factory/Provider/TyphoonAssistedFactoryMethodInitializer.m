@@ -126,7 +126,7 @@
 - (NSArray *)parameterNames
 {
     if (_parameterNames == nil) {
-        _parameterNames = [self parameterNamesForSelector:_selector];
+        _parameterNames = [self typhoon_parameterNamesForSelector:_selector];
     }
 
     return _parameterNames;
@@ -135,7 +135,7 @@
 - (NSArray *)argumentNames
 {
     if (!_argumentNames) {
-        _argumentNames = [self parameterNamesForSelector:_factoryMethod];
+        _argumentNames = [self typhoon_parameterNamesForSelector:_factoryMethod];
     }
 
     return _argumentNames;

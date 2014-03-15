@@ -35,7 +35,7 @@
 
 - (void)test_raises_exception_when_converter_class_not_registered
 {
-    TyphoonTypeDescriptor *typeDescriptor = [self typeForPropertyWithName:@"data"];
+    TyphoonTypeDescriptor *typeDescriptor = [self typhoon_typeForPropertyWithName:@"data"];
 
     @try {
         id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:typeDescriptor];

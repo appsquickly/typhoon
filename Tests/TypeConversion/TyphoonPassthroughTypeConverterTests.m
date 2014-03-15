@@ -27,7 +27,7 @@
 
 - (void)test_forwards_NSString
 {
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"aStringProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"aStringProperty"];
     id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
     NSString *converted = [converter convert:@"foobar foobar"];
     assertThat(converted, equalTo(@"foobar foobar"));
@@ -36,7 +36,7 @@
 
 - (void)test_forwards_NSMutableString
 {
-    TyphoonTypeDescriptor *descriptor = [self typeForPropertyWithName:@"aMutableStringProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"aMutableStringProperty"];
     id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
     NSString *converted = [converter convert:@"foobar foobar"];
     assertThat(converted, equalTo(@"foobar foobar"));
