@@ -24,6 +24,7 @@
 - (instancetype)initWithCollection:(id)collection requiredClass:(Class)collectionClass;
 
 + (Class)collectionMutableClassFromClass:(Class)collectionClass;
+
 + (BOOL)isCollectionClass:(Class)collectionClass;
 
 - (NSUInteger)count;

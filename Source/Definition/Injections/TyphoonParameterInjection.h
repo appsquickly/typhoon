@@ -14,6 +14,7 @@
 
 - (void)setParameterIndex:(NSUInteger)index withInitializer:(TyphoonInitializer *)initializer;
 
-- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args;
+- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
+    args:(TyphoonRuntimeArguments *)args;
 
 @end

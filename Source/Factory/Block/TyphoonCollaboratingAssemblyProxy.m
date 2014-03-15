@@ -54,7 +54,7 @@
 /* ====================================================================================================================================== */
 #pragma mark - <TyphoonObjectWithCustomInjection>
 
-- (id<TyphoonPropertyInjection,TyphoonParameterInjection>)typhoonCustomObjectInjection
+- (id <TyphoonPropertyInjection, TyphoonParameterInjection>)typhoonCustomObjectInjection
 {
     return [[TyphoonInjectionByComponentFactory alloc] init];
 }

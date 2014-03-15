@@ -20,6 +20,7 @@
 @interface TyphoonFactoryPropertyInjectionPostProcessor : NSObject <TyphoonComponentFactoryPostProcessor>
 
 /* Method to override in subclasses */
-- (BOOL) shouldReplaceInjectionByType:(TyphoonInjectionByType *)propertyInjection withFactoryInjectionInDefinition:(TyphoonDefinition *)definition;
+- (BOOL)shouldReplaceInjectionByType:(TyphoonInjectionByType *)propertyInjection
+    withFactoryInjectionInDefinition:(TyphoonDefinition *)definition;
 
 @end

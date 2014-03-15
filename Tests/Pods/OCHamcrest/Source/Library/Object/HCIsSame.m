@@ -23,7 +23,7 @@
 {
     self = [super init];
     if (self) {
-            object = anObject;
+        object = anObject;
     }
     return self;
 }
@@ -37,7 +37,7 @@
 {
     [mismatchDescription appendText:@"was "];
     if (item) {
-            [mismatchDescription appendText:[NSString stringWithFormat:@"%p ", item]];
+        [mismatchDescription appendText:[NSString stringWithFormat:@"%p ", item]];
     }
     [mismatchDescription appendDescriptionOf:item];
 }

@@ -14,13 +14,13 @@
 
 id <HCMatcher> HCWrapInMatcher(id matcherOrValue) {
     if (!matcherOrValue) {
-            return nil;
+        return nil;
     }
 
     if ([matcherOrValue conformsToProtocol:@protocol(HCMatcher)]) {
-            return matcherOrValue;
-        }
+        return matcherOrValue;
+    }
     else {
-            return HC_equalTo(matcherOrValue);
+        return HC_equalTo(matcherOrValue);
     }
 }

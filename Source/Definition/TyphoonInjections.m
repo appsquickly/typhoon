@@ -25,64 +25,57 @@
 #import "TyphoonPropertyInjection.h"
 #import "TyphoonParameterInjection.h"
 
-id TyphoonInjectionMatchedByType(void)
-{
+id TyphoonInjectionMatchedByType(void) {
     return [[TyphoonInjectionByType alloc] init];
 }
 
-id TyphoonInjectionWithObjectFromString(NSString *string)
-{
+id TyphoonInjectionWithObjectFromString(NSString *string) {
     return TyphoonInjectionWithObjectFromStringWithType(string, nil);
 }
 
-id TyphoonInjectionWithObjectFromStringWithType(NSString *string, Class reqiuredType)
-{
+id TyphoonInjectionWithObjectFromStringWithType(NSString *string, Class reqiuredType) {
     return [[TyphoonInjectionByObjectFromString alloc] initWithString:string objectClass:reqiuredType];
 }
 
-id TyphoonInjectionWithCollectionAndType(id collection, Class requiredClass)
-{
+id TyphoonInjectionWithCollectionAndType(id collection, Class requiredClass) {
     return [[TyphoonInjectionByCollection alloc] initWithCollection:collection requiredClass:requiredClass];
 }
 
-id TyphoonInjectionWithDictionaryAndType(id dictionary, Class requiredClass)
-{
+id TyphoonInjectionWithDictionaryAndType(id dictionary, Class requiredClass) {
     return [[TyphoonInjectionByDictionary alloc] initWithDictionary:dictionary requiredClass:requiredClass];
 }
 
-id TyphoonInjectionWithRuntimeArgumentAtIndex(NSInteger argumentIndex)
-{
+id TyphoonInjectionWithRuntimeArgumentAtIndex(NSInteger argumentIndex) {
     return [[TyphoonInjectionByRuntimeArgument alloc] initWithArgumentIndex:argumentIndex];
 }
 
-id TyphoonInjectionWithObject(id object)
-{
+id TyphoonInjectionWithObject(id object) {
     return [[TyphoonInjectionByObjectInstance alloc] initWithObjectInstance:object];
 }
 
-id TyphoonInjectionWithReference(NSString *reference)
-{
+id TyphoonInjectionWithReference(NSString *reference) {
     return [[TyphoonInjectionByReference alloc] initWithReference:reference args:nil];
 }
 
-id TyphoonMakeInjectionFromObjectIfNeeded(id objectOrInjection)
-{
+id TyphoonMakeInjectionFromObjectIfNeeded(id objectOrInjection) {
     id injection = nil;
-    
+
     if ([objectOrInjection conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)]) {
         injection = [objectOrInjection typhoonCustomObjectInjection];
-    } else if (IsTyphoonInjection(objectOrInjection)) {
+    }
+    else if (IsTyphoonInjection(objectOrInjection)) {
         injection = objectOrInjection;
-    } else {
+    }
+    else {
         injection = TyphoonInjectionWithObject(objectOrInjection);
     }
-    
+
     return injection;
 }
 
-BOOL IsTyphoonInjection(id objectOrInjection)
-{
-    return [objectOrInjection conformsToProtocol:@protocol(TyphoonPropertyInjection)] || [objectOrInjection conformsToProtocol:@protocol(TyphoonParameterInjection)];
+BOOL IsTyphoonInjection(id objectOrInjection) {
+    return [objectOrInjection conformsToProtocol:@protocol(TyphoonPropertyInjection)] ||
+        [objectOrInjection conformsToProtocol:@protocol(TyphoonParameterInjection)];
 }
 
 

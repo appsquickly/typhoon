@@ -25,6 +25,7 @@
 @interface TyphoonComponentFactory (Private)
 
 - (TyphoonDefinition *)definitionForKey:(NSString *)key;
+
 - (void)loadIfNeeded;
 
 @end
@@ -99,15 +100,16 @@
 {
     NSString *componentKey = NSStringFromSelector([invocation selector]);
     LogTrace(@"Component key: %@", componentKey);
-    
+
     TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:invocation];
 
-    NSInvocation *internalInvocation = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:@selector(componentForKey:args:)]];
+    NSInvocation *internalInvocation =
+        [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:@selector(componentForKey:args:)]];
     [internalInvocation setSelector:@selector(componentForKey:args:)];
     [internalInvocation setArgument:&componentKey atIndex:2];
     [internalInvocation setArgument:&args atIndex:3];
     [internalInvocation invokeWithTarget:self];
-    
+
     void *returnValue;
     [internalInvocation getReturnValue:&returnValue];
     [invocation setReturnValue:&returnValue];

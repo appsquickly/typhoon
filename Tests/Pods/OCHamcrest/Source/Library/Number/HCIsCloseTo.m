@@ -33,7 +33,7 @@
 - (BOOL)matches:(id)item
 {
     if (![item isKindOfClass:[NSNumber class]]) {
-            return NO;
+        return NO;
     }
 
     return fabs([item doubleValue] - value) <= delta;
@@ -42,8 +42,8 @@
 - (void)describeMismatchOf:(id)item to:(id <HCDescription>)mismatchDescription
 {
     if (![item isKindOfClass:[NSNumber class]]) {
-            [super describeMismatchOf:item to:mismatchDescription];
-        }
+        [super describeMismatchOf:item to:mismatchDescription];
+    }
     else {
         double actualDelta = fabs([item doubleValue] - value);
         [[[mismatchDescription appendDescriptionOf:item] appendText:@" differed by "] appendDescriptionOf:@(actualDelta)];

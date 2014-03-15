@@ -10,8 +10,8 @@
 
 @interface TyphoonInjectionByReference : TyphoonAbstractInjection
 
-@property (nonatomic, strong, readonly) NSString *reference;
-@property (nonatomic, strong, readonly) TyphoonRuntimeArguments *referenceArguments;
+@property(nonatomic, strong, readonly) NSString *reference;
+@property(nonatomic, strong, readonly) TyphoonRuntimeArguments *referenceArguments;
 
 - (instancetype)initWithReference:(NSString *)reference args:(TyphoonRuntimeArguments *)referenceArguments;
 

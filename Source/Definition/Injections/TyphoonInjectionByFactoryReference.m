@@ -26,7 +26,8 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    TyphoonInjectionByFactoryReference *copied = [[TyphoonInjectionByFactoryReference alloc] initWithReference:self.reference args:self.referenceArguments keyPath:self.keyPath];
+    TyphoonInjectionByFactoryReference *copied =
+        [[TyphoonInjectionByFactoryReference alloc] initWithReference:self.reference args:self.referenceArguments keyPath:self.keyPath];
     [self copyBaseProperiesTo:copied];
     return copied;
 }
@@ -36,7 +37,7 @@
     if (instance) {
         [factory evaluateCircularDependency:self.reference propertyName:self.propertyName instance:instance];
     }
-    
+
     if (!instance || ![factory isCircularPropertyWithName:self.propertyName onInstance:instance]) {
         id factoryReference = [self componentForReferenceWithFactory:factory args:args];
         return [factoryReference valueForKeyPath:self.keyPath];
@@ -44,7 +45,8 @@
     return nil;
 }
 
-- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
+    args:(TyphoonRuntimeArguments *)args
 {
     [[[factory stack] peekForKey:self.reference] instance]; //Raises circular dependencies exception if already initializing.
 

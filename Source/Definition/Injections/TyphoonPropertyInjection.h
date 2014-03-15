@@ -12,6 +12,7 @@
 @protocol TyphoonPropertyInjection <NSObject, NSCopying>
 
 - (void)setPropertyName:(NSString *)name;
+
 - (NSString *)propertyName;
 
 - (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args;

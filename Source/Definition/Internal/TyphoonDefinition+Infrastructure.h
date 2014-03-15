@@ -19,7 +19,7 @@
  */
 @interface TyphoonDefinition (Infrastructure)
 
-@property (nonatomic, strong) TyphoonRuntimeArguments *currentRuntimeArguments;
+@property(nonatomic, strong) TyphoonRuntimeArguments *currentRuntimeArguments;
 
 /**
 * Returns a definition with the given class and key. In the block-style assembly, keys are auto-generated, however infrastructure components

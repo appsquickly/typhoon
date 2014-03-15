@@ -64,7 +64,7 @@
 {
 }
 
-- (BOOL)shouldInjectProperty:(id<TyphoonPropertyInjection>)property withType:(TyphoonTypeDescriptor *)type
+- (BOOL)shouldInjectProperty:(id <TyphoonPropertyInjection>)property withType:(TyphoonTypeDescriptor *)type
     lazyValue:(TyphoonPropertyInjectionLazyValue)lazyValue
 {
     [_injections setObject:lazyValue forKey:property.propertyName];

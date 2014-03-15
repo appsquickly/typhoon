@@ -46,7 +46,7 @@
     if (verificationMode) {
         MKTInvocationMatcher *invocationMatcher = [_mockingProgress pullInvocationMatcher];
         if (!invocationMatcher) {
-                    invocationMatcher = [[MKTInvocationMatcher alloc] init];
+            invocationMatcher = [[MKTInvocationMatcher alloc] init];
         }
         [invocationMatcher setExpectedInvocation:anInvocation];
 

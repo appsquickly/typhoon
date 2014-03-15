@@ -25,7 +25,7 @@
 {
     self = [super init];
     if (self) {
-            valueMatcher = theValueMatcher;
+        valueMatcher = theValueMatcher;
     }
     return self;
 }
@@ -33,11 +33,11 @@
 - (BOOL)matches:(id)dict
 {
     if ([dict respondsToSelector:@selector(allValues)]) {
-            for (id oneValue in [dict allValues]) {
-                if ([valueMatcher matches:oneValue]) {
-                    return YES;
-                }
+        for (id oneValue in [dict allValues]) {
+            if ([valueMatcher matches:oneValue]) {
+                return YES;
             }
+        }
     }
     return NO;
 }

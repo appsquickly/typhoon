@@ -34,7 +34,7 @@
 {
     self = [super init];
     if (self) {
-            description = [aDescription copy];
+        description = [aDescription copy];
     }
     return self;
 }

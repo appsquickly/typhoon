@@ -57,7 +57,7 @@ static NSException *createOCUnitException(const char *fileName, int lineNumber, 
 static NSException *createAssertThatFailure(const char *fileName, int lineNumber, NSString *description) {
     // If the Hamcrest client has linked to OCUnit, generate an OCUnit failure.
     if (NSClassFromString(@"SenTestCase") != Nil) {
-            return createOCUnitException(fileName, lineNumber, description);
+        return createOCUnitException(fileName, lineNumber, description);
     }
 
     NSString *failureReason = [NSString stringWithFormat:@"%s:%d: matcher error: %@", fileName, lineNumber, description];

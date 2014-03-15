@@ -204,8 +204,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 
 - (TyphoonScope)scope
 {
-    if (_parent && !_isScopeSetByUser)
-    {
+    if (_parent && !_isScopeSetByUser) {
         return _parent.scope;
     }
     return _scope;

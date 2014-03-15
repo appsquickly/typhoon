@@ -16,17 +16,19 @@
 - (NSString *)description
 {
     if (self.type == TyphoonInjectionTypeUndefinied) {
-        return [NSString stringWithFormat:@"<%@: %p, type=Undifined>",[self class], self];
-    } else if (self.type == TyphoonInjectionTypeParameter) {
-        return [NSString stringWithFormat:@"<%@: %p, index=%d>",[self class], self, (int)self.parameterIndex];
-    } else {
-        return [NSString stringWithFormat:@"<%@: %p, property=%@>",[self class], self, self.propertyName];
+        return [NSString stringWithFormat:@"<%@: %p, type=Undifined>", [self class], self];
+    }
+    else if (self.type == TyphoonInjectionTypeParameter) {
+        return [NSString stringWithFormat:@"<%@: %p, index=%d>", [self class], self, (int) self.parameterIndex];
+    }
+    else {
+        return [NSString stringWithFormat:@"<%@: %p, property=%@>", [self class], self, self.propertyName];
     }
 }
 
 - (void)setParameterIndex:(NSUInteger)index withInitializer:(TyphoonInitializer *)initializer
 {
-    NSAssert(self.type != TyphoonInjectionTypeProperty, @"Trying to redefine injection with type %d",(int)self.type);
+    NSAssert(self.type != TyphoonInjectionTypeProperty, @"Trying to redefine injection with type %d", (int) self.type);
     _parameterIndex = index;
     _initializer = initializer;
     _type = TyphoonInjectionTypeParameter;
@@ -34,7 +36,7 @@
 
 - (void)setPropertyName:(NSString *)name
 {
-    NSAssert(self.type != TyphoonInjectionTypeProperty, @"Trying to redefine injection with type %d",(int)self.type);
+    NSAssert(self.type != TyphoonInjectionTypeProperty, @"Trying to redefine injection with type %d", (int) self.type);
     _propertyName = name;
     _type = TyphoonInjectionTypeProperty;
 }
@@ -43,7 +45,8 @@
 {
     if (self.type == TyphoonInjectionTypeProperty) {
         return [self.propertyName hash];
-    } else {
+    }
+    else {
         return [super hash];
     }
 }
@@ -56,7 +59,7 @@
     if (!other || ![[other class] isEqual:[self class]]) {
         return NO;
     }
-    
+
     return [self isEqualToBase:other];
 }
 
@@ -68,16 +71,18 @@
     if (base == nil) {
         return NO;
     }
-    
+
     if (self.type != base.type) {
         return NO;
     }
-    
+
     if (self.type == TyphoonInjectionTypeParameter) {
         return self.parameterIndex == base.parameterIndex && self.initializer == base.initializer;
-    } else if (self.type == TyphoonInjectionTypeProperty) {
+    }
+    else if (self.type == TyphoonInjectionTypeProperty) {
         return [self.propertyName isEqualToString:base.propertyName];
-    } else {
+    }
+    else {
         return NO;
     }
 }
@@ -91,7 +96,8 @@
     return nil;
 }
 
-- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
+    args:(TyphoonRuntimeArguments *)args
 {
     [NSException raise:NSInternalInconsistencyException format:@"%@ - %@ is abstract", self, NSStringFromSelector(_cmd)];
 }
@@ -110,19 +116,21 @@
 {
     if (self.type == TyphoonInjectionTypeProperty) {
         [copiedInjection setPropertyName:_propertyName];
-    } else if (self.type == TyphoonInjectionTypeParameter) {
+    }
+    else if (self.type == TyphoonInjectionTypeParameter) {
         [copiedInjection setParameterIndex:_parameterIndex withInitializer:_initializer];
-    }    
+    }
 }
 
 - (void)setObject:(id)object forInvocation:(NSInvocation *)invocation
 {
     BOOL isObjectIsWrapper = [object isKindOfClass:[NSNumber class]] || [object isKindOfClass:[NSValue class]];
-    
+
     NSString *typeCode = [self.initializer typeCodeForParameterAtIndex:_parameterIndex];
-    
+
     if (isObjectIsWrapper && ![typeCode isEqualToString:@"@"]) {
-        [object typhoon_setAsArgumentWithType:[typeCode cStringUsingEncoding:NSASCIIStringEncoding] forInvocation:invocation atIndex:_parameterIndex + 2];
+        [object typhoon_setAsArgumentWithType:[typeCode cStringUsingEncoding:NSASCIIStringEncoding] forInvocation:invocation
+            atIndex:_parameterIndex + 2];
     }
     else {
         [invocation setArgument:&object atIndex:_parameterIndex + 2];

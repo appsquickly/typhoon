@@ -24,7 +24,7 @@
 {
     self = [super init];
     if (self) {
-            countMatcher = matcher;
+        countMatcher = matcher;
     }
     return self;
 }
@@ -32,7 +32,7 @@
 - (BOOL)matches:(id)item
 {
     if (![item respondsToSelector:@selector(count)]) {
-            return NO;
+        return NO;
     }
 
     NSNumber *count = @([item count]);

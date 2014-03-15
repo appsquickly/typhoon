@@ -23,7 +23,7 @@
 {
     self = [super init];
     if (self) {
-            object = anObject;
+        object = anObject;
     }
     return self;
 }
@@ -31,10 +31,10 @@
 - (BOOL)matches:(id)item
 {
     if (item == nil) {
-            return object == nil;
-        }
+        return object == nil;
+    }
     else {
-            return [item isEqual:object];
+        return [item isEqual:object];
     }
 }
 
@@ -44,7 +44,7 @@
         [[[description appendText:@"<"] appendDescriptionOf:object] appendText:@">"];
     }
     else {
-            [description appendDescriptionOf:object];
+        [description appendDescriptionOf:object];
     }
 }
 

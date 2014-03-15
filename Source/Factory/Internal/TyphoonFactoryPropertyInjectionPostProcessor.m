@@ -38,20 +38,23 @@
 /* ====================================================================================================================================== */
 #pragma mark - Instance Methods
 
-- (BOOL) shouldReplaceInjectionByType:(TyphoonInjectionByType *)propertyInjection withFactoryInjectionInDefinition:(TyphoonDefinition *)definition
+- (BOOL)shouldReplaceInjectionByType:(TyphoonInjectionByType *)propertyInjection
+    withFactoryInjectionInDefinition:(TyphoonDefinition *)definition
 {
     BOOL isFactoryClass = NO;
-    
-    TyphoonTypeDescriptor *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyInjection.propertyName inClass:definition.type];
-    
+
+    TyphoonTypeDescriptor
+        *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyInjection.propertyName inClass:definition.type];
+
     if (type.typeBeingDescribed) {
         isFactoryClass = [type.typeBeingDescribed isSubclassOfClass:[TyphoonComponentFactory class]];
     }
-    
+
     return isFactoryClass;
 }
 
-- (void) replaceTypePropertyInjection:(TyphoonInjectionByType *)typeInjection withFactoryInjectionInDefinition:(TyphoonDefinition *)definition
+- (void)replaceTypePropertyInjection:(TyphoonInjectionByType *)typeInjection
+    withFactoryInjectionInDefinition:(TyphoonDefinition *)definition
 {
     NSString *name = typeInjection.propertyName;
     [definition removeInjectedProperty:typeInjection];

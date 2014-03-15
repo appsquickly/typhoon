@@ -34,11 +34,11 @@
 - (BOOL)matches:(id)dict
 {
     if ([dict isKindOfClass:[NSDictionary class]]) {
-            for (id oneKey in dict) {
-                if ([keyMatcher matches:oneKey] && [valueMatcher matches:dict[oneKey]]) {
-                    return YES;
-                }
+        for (id oneKey in dict) {
+            if ([keyMatcher matches:oneKey] && [valueMatcher matches:dict[oneKey]]) {
+                return YES;
             }
+        }
     }
     return NO;
 }

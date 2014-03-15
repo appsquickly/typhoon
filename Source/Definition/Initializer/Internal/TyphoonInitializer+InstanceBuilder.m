@@ -51,7 +51,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
     [invocation setSelector:_selector];
 
-    for (id<TyphoonParameterInjection> parameter in [self injectedParameters]) {
+    for (id <TyphoonParameterInjection> parameter in [self injectedParameters]) {
         [parameter setArgumentOnInvocation:invocation withFactory:factory args:args];
     }
 
@@ -73,9 +73,9 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 {
     BOOL isClass = [self isClassMethod];
     Class class = self.definition.factory ? self.definition.factory.type : self.definition.type;
-    
+
     NSArray *typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:self.selector ofClass:class isClassMethod:isClass];
-    
+
     return typeCodes[index];
 }
 

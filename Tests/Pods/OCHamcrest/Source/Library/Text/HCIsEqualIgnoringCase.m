@@ -26,7 +26,7 @@
 
     self = [super init];
     if (self) {
-            string = [aString copy];
+        string = [aString copy];
     }
     return self;
 }
@@ -34,7 +34,7 @@
 - (BOOL)matches:(id)item
 {
     if (![item isKindOfClass:[NSString class]]) {
-            return NO;
+        return NO;
     }
 
     return [string caseInsensitiveCompare:item] == NSOrderedSame;

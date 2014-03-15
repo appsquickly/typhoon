@@ -50,7 +50,7 @@ void TyphoonAssistedFactoryCreatorForEachMethodInProtocol(Protocol *protocol, Ty
         }
     }
     free(protocols);
-    
+
     unsigned int methodCount = 0;
     struct objc_method_description *methodDescriptions = protocol_copyMethodDescriptionList(protocol, YES, YES, &methodCount);
     for (unsigned int idx = 0; idx < methodCount; idx++) {
@@ -70,7 +70,7 @@ void TyphoonAssistedFactoryCreatorForEachPropertyInProtocol(Protocol *protocol, 
         }
     }
     free(protocols);
-    
+
     unsigned int propertiesCount = 0;
     objc_property_t *properties = protocol_copyPropertyList(protocol, &propertiesCount);
     for (unsigned int idx = 0; idx < propertiesCount; idx++) {
@@ -105,7 +105,7 @@ static NSString *GetFactoryClassName(Protocol *protocol) {
 static unsigned int numberOfNonGetterMethodsForProtocol(Protocol *protocol) {
     unsigned int totalMethods = 0;
     unsigned int protocolCount = 0;
-    
+
     __unsafe_unretained Protocol **protocols = protocol_copyProtocolList(protocol, &protocolCount);
     for (int i = 0; i < protocolCount; i++) {
         Protocol *nestedProtocol = protocols[i];
@@ -113,30 +113,29 @@ static unsigned int numberOfNonGetterMethodsForProtocol(Protocol *protocol) {
             totalMethods += numberOfNonGetterMethodsForProtocol(nestedProtocol);
         }
     }
-    
+
     unsigned int methodCount = 0;
     unsigned int propertiesCount = 0;
-    
+
     struct objc_method_description *methodDescriptions = protocol_copyMethodDescriptionList(protocol, YES, YES, &methodCount);
     objc_property_t *properties = protocol_copyPropertyList(protocol, &propertiesCount);
-    
+
     free(methodDescriptions);
     free(properties);
     free(protocols);
-    
+
     totalMethods += methodCount - propertiesCount;
-    
+
     return totalMethods;
 }
 
 static void AssertValidProtocolForFactory(Protocol *protocol, TyphoonAssistedFactoryDefinition *factoryDefinition) {
     unsigned int totalMethods = numberOfNonGetterMethodsForProtocol(protocol);
-    
+
     // The readonly properties are returned also as their getter methods, so we
     // need to remove those to check that there are only n factory methods left.
     NSCAssert(totalMethods ==
-        [factoryDefinition countOfFactoryMethods], @"protocol factory method count (%u) differs from factory defintion method count (%lu)",
-        totalMethods, (unsigned long) [factoryDefinition countOfFactoryMethods]);
+        [factoryDefinition countOfFactoryMethods], @"protocol factory method count (%u) differs from factory defintion method count (%lu)", totalMethods, (unsigned long) [factoryDefinition countOfFactoryMethods]);
 }
 
 static void AddPropertyGetter(Class factoryClass, objc_property_t property) {

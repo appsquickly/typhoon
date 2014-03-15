@@ -24,16 +24,16 @@
 - (id <HCDescription>)appendDescriptionOf:(id)value
 {
     if (value == nil) {
-            [self append:@"nil"];
-        }
+        [self append:@"nil"];
+    }
     else if ([value conformsToProtocol:@protocol(HCSelfDescribing)]) {
-            [value describeTo:self];
-        }
+        [value describeTo:self];
+    }
     else if ([value isKindOfClass:[NSString class]]) {
-            [self toCSyntaxString:value];
-        }
+        [self toCSyntaxString:value];
+    }
     else {
-            [self appendObjectDescriptionOf:value];
+        [self appendObjectDescriptionOf:value];
     }
 
     return self;
@@ -44,8 +44,8 @@
     NSString *description = [value description];
     NSUInteger descriptionLength = [description length];
     if (descriptionLength == 0) {
-            [self append:[NSString stringWithFormat:@"<%@: %p>", NSStringFromClass([value class]), value]];
-        }
+        [self append:[NSString stringWithFormat:@"<%@: %p>", NSStringFromClass([value class]), value]];
+    }
     else if ([description characterAtIndex:0] == '<' && [description characterAtIndex:descriptionLength - 1] == '>') {
         [self append:description];
     }
@@ -64,7 +64,7 @@
     [self append:start];
     for (id item in values) {
         if (separate) {
-                    [self append:separator];
+            [self append:separator];
         }
         [self appendDescriptionOf:item];
         separate = YES;
@@ -78,7 +78,7 @@
     [self append:@"\""];
     NSUInteger length = [unformatted length];
     for (NSUInteger index = 0; index < length; ++index) {
-            [self toCSyntax:[unformatted characterAtIndex:index]];
+        [self toCSyntax:[unformatted characterAtIndex:index]];
     }
     [self append:@"\""];
 }

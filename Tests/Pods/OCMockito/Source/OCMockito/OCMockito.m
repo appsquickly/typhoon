@@ -20,10 +20,10 @@ static BOOL isValidMock(id mock, id testCase, const char *fileName, int lineNumb
         [underlyingClassName isEqualToString:@"MKTClassObjectMock"] || [underlyingClassName isEqualToString:@"MKTObjectAndProtocolMock"])) {
         NSString *actual = nil;
         if (!underlyingClassName) {
-                    actual = @"nil";
-                }
+            actual = @"nil";
+        }
         else {
-                    actual = [@"type " stringByAppendingString:underlyingClassName];
+            actual = [@"type " stringByAppendingString:underlyingClassName];
         }
 
         NSString *description = [NSString stringWithFormat:@"Argument passed to %@ should be a mock but is %@", functionName, actual];
@@ -42,7 +42,7 @@ MKTOngoingStubbing *MKTGivenWithLocation(id testCase, const char *fileName, int 
 
 id MKTVerifyWithLocation(id mock, id testCase, const char *fileName, int lineNumber) {
     if (!isValidMock(mock, testCase, fileName, lineNumber, @"verify()")) {
-            return nil;
+        return nil;
     }
 
     return MKTVerifyCountWithLocation(mock, MKTTimes(1), testCase, fileName, lineNumber);
@@ -50,7 +50,7 @@ id MKTVerifyWithLocation(id mock, id testCase, const char *fileName, int lineNum
 
 id MKTVerifyCountWithLocation(id mock, id mode, id testCase, const char *fileName, int lineNumber) {
     if (!isValidMock(mock, testCase, fileName, lineNumber, @"verifyCount()")) {
-            return nil;
+        return nil;
     }
 
     MKTMockitoCore *mockitoCore = [MKTMockitoCore sharedCore];

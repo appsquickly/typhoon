@@ -17,11 +17,10 @@
 
 @interface TyphoonInjectionByCollection ()
 
-@property (nonatomic, strong) NSMutableArray *injections;
-@property (nonatomic) Class requiredClass;
+@property(nonatomic, strong) NSMutableArray *injections;
+@property(nonatomic) Class requiredClass;
 
 @end
-
 
 
 @implementation TyphoonInjectionByCollection
@@ -41,38 +40,41 @@
 + (Class)collectionMutableClassFromClass:(Class)collectionClass
 {
     Class result;
-    
+
     if ([collectionClass isSubclassOfClass:[NSArray class]]) {
         result = [NSMutableArray class];
-    } else if ([collectionClass isSubclassOfClass:[NSSet class]]) {
+    }
+    else if ([collectionClass isSubclassOfClass:[NSSet class]]) {
         result = [NSMutableSet class];
-    } else if ([collectionClass isSubclassOfClass:[NSOrderedSet class]]) {
+    }
+    else if ([collectionClass isSubclassOfClass:[NSOrderedSet class]]) {
         result = [NSMutableOrderedSet class];
-    } else {
+    }
+    else {
         result = collectionClass;
     }
-    
+
     return result;
 }
 
 - (instancetype)initWithCollection:(id)collection requiredClass:(Class)collectionClass
 {
     self.requiredClass = collectionClass;
-    
+
     if (self.requiredClass && ![TyphoonInjectionByCollection isCollectionClass:self.requiredClass]) {
         [NSException raise:NSInvalidArgumentException format:@"Required collection type '%@' is neither an NSSet nor NSArray.",
-         NSStringFromClass(self.requiredClass)];
+                                                             NSStringFromClass(self.requiredClass)];
     }
 
     return [self initWithCollection:collection];
 }
 
-- (instancetype)initWithCollection:(id<TyphoonCollection>)collection
+- (instancetype)initWithCollection:(id <TyphoonCollection>)collection
 {
     self = [super init];
     if (self) {
         self.injections = [[NSMutableArray alloc] initWithCapacity:[collection count]];
-   
+
         for (id object in collection) {
             [self.injections addObject:TyphoonMakeInjectionFromObjectIfNeeded(object)];
         }
@@ -80,16 +82,17 @@
     return self;
 }
 
-- (id<TyphoonCollection>)collectionWithClass:(Class)collectionClass withResolvedInjectionsWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (id <TyphoonCollection>)collectionWithClass:(Class)collectionClass withResolvedInjectionsWithFactory:(TyphoonComponentFactory *)factory
+    args:(TyphoonRuntimeArguments *)args
 {
     Class mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:collectionClass];
-    id<TyphoonCollection> result = [[[mutableClass class] alloc] initWithCapacity:[self.injections count]];
-    
-    for (id<TyphoonPropertyInjection>injection in self.injections) {
+    id <TyphoonCollection> result = [[[mutableClass class] alloc] initWithCapacity:[self.injections count]];
+
+    for (id <TyphoonPropertyInjection> injection in self.injections) {
         id value = [injection valueToInjectPropertyOnInstance:nil withFactory:factory args:args];
         [result addObject:value];
     }
-    
+
     return result;
 }
 
@@ -117,23 +120,23 @@
         collectionClass = type.classOrProtocol;
     }
     if (![TyphoonInjectionByCollection isCollectionClass:collectionClass]) {
-        [NSException raise:NSInvalidArgumentException format:@"Property named '%@' on '%@' is neither an NSSet nor NSArray.", self.propertyName,
-         NSStringFromClass(collectionClass)];
+        [NSException raise:NSInvalidArgumentException format:@"Property named '%@' on '%@' is neither an NSSet nor NSArray.",
+                                                             self.propertyName, NSStringFromClass(collectionClass)];
     }
 
     return [self collectionWithClass:collectionClass withResolvedInjectionsWithFactory:factory args:args];
 }
 
-- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
+    args:(TyphoonRuntimeArguments *)args
 {
     if (!self.requiredClass) {
         [NSException raise:NSInvalidArgumentException format:@"Required type is missing on injected collection parameter!"];
     }
-    
-    id<TyphoonCollection> collection = [self collectionWithClass:self.requiredClass withResolvedInjectionsWithFactory:factory args:args];
+
+    id <TyphoonCollection> collection = [self collectionWithClass:self.requiredClass withResolvedInjectionsWithFactory:factory args:args];
     [invocation setArgument:&collection atIndex:self.parameterIndex + 2];
 }
-
 
 
 @end

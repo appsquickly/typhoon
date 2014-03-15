@@ -38,7 +38,7 @@
 {
     self = [super init];
     if (self) {
-            expectedCount = expectedNumberOfInvocations;
+        expectedCount = expectedNumberOfInvocations;
     }
     return self;
 }
@@ -51,7 +51,7 @@
     NSUInteger matchingCount = 0;
     for (NSInvocation *invocation in [[data invocations] registeredInvocations]) {
         if ([[data wanted] matches:invocation]) {
-                    ++matchingCount;
+            ++matchingCount;
         }
     }
 

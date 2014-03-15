@@ -10,7 +10,7 @@
 
 @interface TyphoonInjectionByObjectInstance : TyphoonAbstractInjection
 
-@property (nonatomic, strong, readonly) id objectInstance;
+@property(nonatomic, strong, readonly) id objectInstance;
 
 - (instancetype)initWithObjectInstance:(id)objectInstance;
 

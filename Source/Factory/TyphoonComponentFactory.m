@@ -210,8 +210,10 @@ static TyphoonComponentFactory *defaultFactory;
     TyphoonDefinition *definition = [self definitionForKey:NSStringFromSelector(selector)];
     if (definition) {
         [self doPropertyInjectionEventsOn:instance withDefinition:definition args:nil];
-    } else {
-        [NSException raise:NSInvalidArgumentException format:@"Can't find definition for specified selector %@",NSStringFromSelector(selector)];
+    }
+    else {
+        [NSException raise:NSInvalidArgumentException format:@"Can't find definition for specified selector %@",
+                                                             NSStringFromSelector(selector)];
     }
 }
 

@@ -15,10 +15,10 @@ TYPHOON_LINK_CATEGORY(NSDictionaryCustomInjections)
 
 @implementation NSDictionary (TyphoonObjectWithCustomInjection)
 
-- (id<TyphoonPropertyInjection,TyphoonParameterInjection>)typhoonCustomObjectInjection
+- (id <TyphoonPropertyInjection, TyphoonParameterInjection>)typhoonCustomObjectInjection
 {
     BOOL containsTyphoonObject = NO;
-    
+
     id object = nil;
     NSEnumerator *objectEnumerator = [self objectEnumerator];
     while ((object = [objectEnumerator nextObject])) {
@@ -27,10 +27,11 @@ TYPHOON_LINK_CATEGORY(NSDictionaryCustomInjections)
             break;
         }
     }
-    
+
     if (containsTyphoonObject) {
         return TyphoonInjectionWithDictionaryAndType(self, [self class]);
-    } else {
+    }
+    else {
         return TyphoonInjectionWithObject(self);
     }
 }

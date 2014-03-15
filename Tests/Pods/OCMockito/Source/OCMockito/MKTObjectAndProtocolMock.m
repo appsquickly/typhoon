@@ -25,7 +25,7 @@
 {
     self = [super initWithProtocol:protocol];
     if (self) {
-            _mockedClass = aClass;
+        _mockedClass = aClass;
     }
     return self;
 }
@@ -35,10 +35,10 @@
     NSMethodSignature *signature = [_mockedClass instanceMethodSignatureForSelector:aSelector];
 
     if (signature) {
-            return signature;
-        }
+        return signature;
+    }
     else {
-            return [super methodSignatureForSelector:aSelector];
+        return [super methodSignatureForSelector:aSelector];
     }
 }
 

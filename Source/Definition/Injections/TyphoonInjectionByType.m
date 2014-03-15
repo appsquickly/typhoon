@@ -26,15 +26,15 @@
 - (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
 {
     id value = nil;
-    
+
     TyphoonTypeDescriptor *type = [instance typeForPropertyWithName:self.propertyName];
     TyphoonDefinition *definition = [factory definitionForType:[type classOrProtocol]];
-    
+
     [factory evaluateCircularDependency:definition.key propertyName:self.propertyName instance:instance];
     if (![factory isCircularPropertyWithName:self.propertyName onInstance:instance]) {
         value = [factory componentForKey:definition.key];
     }
-    
+
     return value;
 }
 

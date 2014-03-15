@@ -25,7 +25,7 @@
 {
     self = [super init];
     if (self) {
-            _mockedProtocol = aProtocol;
+        _mockedProtocol = aProtocol;
     }
     return self;
 }
@@ -34,10 +34,10 @@
 {
     struct objc_method_description methodDescription = protocol_getMethodDescription(_mockedProtocol, aSelector, YES, YES);
     if (!methodDescription.name) {
-            methodDescription = protocol_getMethodDescription(_mockedProtocol, aSelector, NO, YES);
+        methodDescription = protocol_getMethodDescription(_mockedProtocol, aSelector, NO, YES);
     }
     if (!methodDescription.name) {
-            return nil;
+        return nil;
     }
     return [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
 }

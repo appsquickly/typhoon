@@ -26,7 +26,7 @@
 
     self = [super init];
     if (self) {
-            theClass = aClass;
+        theClass = aClass;
     }
     return self;
 }

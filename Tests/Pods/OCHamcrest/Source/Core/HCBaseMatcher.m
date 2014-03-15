@@ -31,7 +31,7 @@
 {
     BOOL matchResult = [self matches:item];
     if (!matchResult) {
-            [self describeMismatchOf:item to:mismatchDescription];
+        [self describeMismatchOf:item to:mismatchDescription];
     }
     return matchResult;
 }

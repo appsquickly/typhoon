@@ -58,7 +58,7 @@
 
 - (NSUInteger)hash
 {
-    return (NSUInteger)sel_getName(self.selector);
+    return (NSUInteger) sel_getName(self.selector);
 }
 
 - (BOOL)isEqual:(id)other

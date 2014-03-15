@@ -130,13 +130,12 @@ static NSMutableArray *reservedSelectorsAsStrings;
     class_addMethod(self, sel, imp, "@");
 }
 
-static id ImplementationToConstructDefinitionAndCatchArguments(TyphoonAssembly *me, SEL selector, ...)
-{
+static id ImplementationToConstructDefinitionAndCatchArguments(TyphoonAssembly *me, SEL selector, ...) {
     va_list list;
     va_start(list, selector);
     TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromVAList:list selector:selector];
     va_end(list);
-    
+
     NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
     return [me->_definitionBuilder builtDefinitionForKey:key args:args];
 }
@@ -162,7 +161,7 @@ static id ImplementationToConstructDefinitionAndCatchArguments(TyphoonAssembly *
 /* ====================================================================================================================================== */
 #pragma mark - <TyphoonObjectWithCustomInjection>
 
-- (id<TyphoonPropertyInjection,TyphoonParameterInjection>)typhoonCustomObjectInjection
+- (id <TyphoonPropertyInjection, TyphoonParameterInjection>)typhoonCustomObjectInjection
 {
     return [[TyphoonInjectionByComponentFactory alloc] init];
 }

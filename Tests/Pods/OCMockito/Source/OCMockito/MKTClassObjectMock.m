@@ -23,7 +23,7 @@
 {
     self = [super init];
     if (self) {
-            _mockedClass = aClass;
+        _mockedClass = aClass;
     }
     return self;
 }

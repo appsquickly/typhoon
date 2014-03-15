@@ -21,16 +21,18 @@
 
 @implementation TyphoonAssemblyPropertyInjectionPostProcessor
 
-- (BOOL) shouldReplaceInjectionByType:(TyphoonInjectionByType *)propertyInjection withFactoryInjectionInDefinition:(TyphoonDefinition *)definition
+- (BOOL)shouldReplaceInjectionByType:(TyphoonInjectionByType *)propertyInjection
+    withFactoryInjectionInDefinition:(TyphoonDefinition *)definition
 {
     BOOL isAssemblyClass = NO;
-    
-    TyphoonTypeDescriptor *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyInjection.propertyName inClass:definition.type];
-    
+
+    TyphoonTypeDescriptor
+        *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyInjection.propertyName inClass:definition.type];
+
     if (type.typeBeingDescribed) {
         isAssemblyClass = [type.typeBeingDescribed isSubclassOfClass:[TyphoonAssembly class]];
     }
-    
+
     return isAssemblyClass;
 }
 

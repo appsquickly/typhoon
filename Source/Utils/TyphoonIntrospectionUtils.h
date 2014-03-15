@@ -29,6 +29,7 @@ NSString *TyphoonTypeStringFor(id classOrProtocol);
 + (TyphoonTypeDescriptor *)typeForPropertyWithName:(NSString *)propertyName inClass:(Class)clazz;
 
 + (NSMethodSignature *)methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:(SEL)selector;
+
 + (NSUInteger)numberOfArgumentsInSelector:(SEL)selector;
 
 @end

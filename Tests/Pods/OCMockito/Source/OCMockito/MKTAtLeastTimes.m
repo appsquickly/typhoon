@@ -27,7 +27,7 @@
 {
     self = [super init];
     if (self) {
-            _minimumExpectedCount = minimumExpectedNumberOfInvocations;
+        _minimumExpectedCount = minimumExpectedNumberOfInvocations;
     }
     return self;
 }
@@ -38,13 +38,13 @@
 - (void)verifyData:(MKTVerificationData *)data
 {
     if (_minimumExpectedCount == 0) {
-            return;
+        return;
     }     // this always succeeds
 
     NSUInteger matchingCount = 0;
     for (NSInvocation *invocation in [[data invocations] registeredInvocations]) {
         if ([[data wanted] matches:invocation]) {
-                    ++matchingCount;
+            ++matchingCount;
         }
     }
 

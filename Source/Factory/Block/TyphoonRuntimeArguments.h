@@ -11,6 +11,7 @@
 @interface TyphoonRuntimeArguments : NSObject <NSCopying>
 
 + (instancetype)argumentsFromInvocation:(NSInvocation *)invocation;
+
 + (instancetype)argumentsFromVAList:(va_list)list selector:(SEL)selector;
 
 - (id)argumentValueAtIndex:(NSUInteger)index;

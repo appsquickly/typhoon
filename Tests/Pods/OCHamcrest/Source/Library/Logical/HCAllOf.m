@@ -24,7 +24,7 @@
 {
     self = [super init];
     if (self) {
-            matchers = theMatchers;
+        matchers = theMatchers;
     }
     return self;
 }

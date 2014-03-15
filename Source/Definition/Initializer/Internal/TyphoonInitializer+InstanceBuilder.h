@@ -21,6 +21,7 @@
 @property(nonatomic, readonly) BOOL isClassMethod;
 
 - (NSArray *)parametersInjectedByValue;
+
 - (NSArray *)parametersInjectedByRuntimeArgument;
 
 - (NSInvocation *)newInvocationInFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args;

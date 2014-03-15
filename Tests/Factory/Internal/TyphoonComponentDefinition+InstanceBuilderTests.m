@@ -83,8 +83,11 @@
     TyphoonInitializer *knightInitializer = [[TyphoonInitializer alloc]
         initWithSelector:@selector(initWithQuest:favoriteDamsels:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
     [knightInitializer injectParameter:@"quest" with:TyphoonInjectionWithReference(@"quest")];
-    
-    [knightInitializer injectParameter:@"favoriteDamsels" with:@[@"damsel1", @"damsel2"]];
+
+    [knightInitializer injectParameter:@"favoriteDamsels" with:@[
+        @"damsel1",
+        @"damsel2"
+    ]];
 
     [knightDefinition setInitializer:knightInitializer];
 

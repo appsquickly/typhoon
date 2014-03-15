@@ -39,14 +39,14 @@
 - (BOOL)matches:(id)item
 {
     if (![item isKindOfClass:[NSString class]]) {
-            return NO;
+        return NO;
     }
 
     NSRange searchRange = NSMakeRange(0, [item length]);
     for (NSString *substring in substrings) {
         NSRange substringRange = [item rangeOfString:substring options:0 range:searchRange];
         if (substringRange.location == NSNotFound) {
-                    return NO;
+            return NO;
         }
         searchRange.location = substringRange.location + substringRange.length;
         searchRange.length = [item length] - searchRange.location;

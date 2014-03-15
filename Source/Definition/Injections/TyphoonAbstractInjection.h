@@ -17,20 +17,21 @@ typedef NS_ENUM(NSInteger, TyphoonInjectionType) {
 
 @interface TyphoonAbstractInjection : NSObject <TyphoonParameterInjection, TyphoonPropertyInjection>
 
-@property (nonatomic, readonly) TyphoonInjectionType type;
+@property(nonatomic, readonly) TyphoonInjectionType type;
 
 /* TyphoonInjectionTypeProperty properties */
-@property (nonatomic, readonly, strong) NSString *propertyName;
+@property(nonatomic, readonly, strong) NSString *propertyName;
 
 /* TyphoonInjectionTypeParameter properties */
-@property (nonatomic, readonly) NSUInteger parameterIndex;
-@property (nonatomic, readonly, weak) TyphoonInitializer *initializer;
+@property(nonatomic, readonly) NSUInteger parameterIndex;
+@property(nonatomic, readonly, weak) TyphoonInitializer *initializer;
 
 @end
 
 @interface TyphoonAbstractInjection (Protected)
 
 - (void)copyBaseProperiesTo:(TyphoonAbstractInjection *)copiedInjection;
+
 - (void)setObject:(id)object forInvocation:(NSInvocation *)invocation;
 
 @end

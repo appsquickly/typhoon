@@ -68,7 +68,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 }
 
 //TODO: Method too long, clean it up.
-- (id<TyphoonPropertyInjection>)asInjectedProperty
+- (id <TyphoonPropertyInjection>)asInjectedProperty
 {
     [self assertTagName:@"property"];
 
@@ -96,9 +96,9 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
         injectedProperty = TyphoonInjectionWithObjectFromString(value);
     }
     else if (collection) {
-        
+
         NSMutableArray *collectionArray = [[NSMutableArray alloc] init];
-        
+
         [collection iterate:@"*" usingBlock:^(TyphoonRXMLElement *child) {
             if ([[child tag] isEqualToString:@"ref"]) {
                 [collectionArray addObject:TyphoonInjectionWithReference([child text])];
@@ -118,9 +118,9 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
     else {
         injectedProperty = TyphoonInjectionMatchedByType();
     }
-    
+
     [injectedProperty setPropertyName:propertyName];
-    
+
     return injectedProperty;
 }
 
@@ -294,7 +294,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
         }
 
         NSMutableArray *collectionArray = [[NSMutableArray alloc] init];
-        
+
         [collection iterate:@"*" usingBlock:^(TyphoonRXMLElement *child) {
             if ([[child tag] isEqualToString:@"ref"]) {
                 [collectionArray addObject:TyphoonInjectionWithReference([child text])];
@@ -303,13 +303,13 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
                 Class type = NSClassFromString([child attribute:@"requiredType"]);
                 if (!type) {
                     [NSException raise:NSInvalidArgumentException format:@"Type '%@' could not be resolved.",
-                     [child attribute:@"requiredType"]];
+                                                                         [child attribute:@"requiredType"]];
                 }
                 [collectionArray addObject:TyphoonInjectionWithObjectFromStringWithType([child text], type)];
             }
         }];
-        
-        id<TyphoonParameterInjection> collectionInjection = TyphoonInjectionWithCollectionAndType(collectionArray, clazz);
+
+        id <TyphoonParameterInjection> collectionInjection = TyphoonInjectionWithCollectionAndType(collectionArray, clazz);
 
         if (name) {
             [initializer injectParameter:name with:collectionInjection];

@@ -9,12 +9,13 @@
 #import "TyphoonAbstractInjection.h"
 #import "TyphoonInjectedWithStringRepresentation.h"
 
-@interface TyphoonInjectionByObjectFromString : TyphoonAbstractInjection<TyphoonInjectedWithStringRepresentation>
+@interface TyphoonInjectionByObjectFromString : TyphoonAbstractInjection <TyphoonInjectedWithStringRepresentation>
 
-@property (nonatomic, strong) NSString *textValue;
-@property (nonatomic, strong, readonly) Class requiredClass;
+@property(nonatomic, strong) NSString *textValue;
+@property(nonatomic, strong, readonly) Class requiredClass;
 
 - (instancetype)initWithString:(NSString *)string;
+
 - (instancetype)initWithString:(NSString *)string objectClass:(Class)requiredClass;
 
 @end

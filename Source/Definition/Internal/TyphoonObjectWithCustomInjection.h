@@ -11,6 +11,6 @@
 
 @protocol TyphoonObjectWithCustomInjection <NSObject>
 
-- (id<TyphoonPropertyInjection, TyphoonParameterInjection>) typhoonCustomObjectInjection;
+- (id <TyphoonPropertyInjection, TyphoonParameterInjection>)typhoonCustomObjectInjection;
 
 @end

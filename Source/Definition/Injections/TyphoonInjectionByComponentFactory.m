@@ -17,7 +17,8 @@
     return factory;
 }
 
-- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
+    args:(TyphoonRuntimeArguments *)args
 {
     [self setObject:factory forInvocation:invocation];
 }

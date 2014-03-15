@@ -36,7 +36,7 @@
 {
     self = [super init];
     if (self) {
-            _argumentMatchers = [[NSMutableArray alloc] init];
+        _argumentMatchers = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -49,7 +49,7 @@
         [_argumentMatchers addObject:matcher];
     }
     else {
-            _argumentMatchers[argumentIndex] = matcher;
+        _argumentMatchers[argumentIndex] = matcher;
     }
 }
 
@@ -85,10 +85,10 @@
 
             id <HCMatcher> matcher;
             if (argument != nil) {
-                            matcher = HCWrapInMatcher(argument);
-                        }
+                matcher = HCWrapInMatcher(argument);
+            }
             else {
-                            matcher = nilValue();
+                matcher = nilValue();
             }
 
             [self setMatcher:matcher atIndex:argumentIndex];
@@ -146,7 +146,7 @@ DEFINE_ARGUMENT_MISMATCH_METHOD(double, Double)
 - (BOOL)matches:(NSInvocation *)actual
 {
     if ([_expected selector] != [actual selector]) {
-            return NO;
+        return NO;
     }
 
     NSMethodSignature *methodSignature = [_expected methodSignature];
@@ -155,7 +155,7 @@ DEFINE_ARGUMENT_MISMATCH_METHOD(double, Double)
         const char *argumentType = [methodSignature getArgumentTypeAtIndex:argumentIndex];
         if (MKTTypeEncodingIsObjectOrClass(argumentType)) {
             if ([self argumentObjectClassMismatchInInvocation:actual atIndex:argumentIndex]) {
-                            return NO;
+                return NO;
             }
         }HANDLE_ARGUMENT_TYPE(char, Char)
             HANDLE_ARGUMENT_TYPE(int, Int)

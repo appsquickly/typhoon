@@ -22,7 +22,7 @@
 - (BOOL)matches:(id)item
 {
     if (![item respondsToSelector:@selector(hasPrefix:)]) {
-            return NO;
+        return NO;
     }
 
     return [item hasPrefix:substring];

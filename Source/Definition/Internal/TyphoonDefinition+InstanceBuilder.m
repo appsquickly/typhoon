@@ -69,12 +69,12 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     return [self injectedPropertiesWithKind:[TyphoonInjectionByRuntimeArgument class]];
 }
 
-- (void)addInjectedProperty:(id<TyphoonPropertyInjection>)property
+- (void)addInjectedProperty:(id <TyphoonPropertyInjection>)property
 {
     [_injectedProperties addObject:property];
 }
 
-- (void)removeInjectedProperty:(id<TyphoonPropertyInjection>)property
+- (void)removeInjectedProperty:(id <TyphoonPropertyInjection>)property
 {
     [_injectedProperties removeObject:property];
 }

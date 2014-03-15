@@ -27,7 +27,7 @@
 
     self = [super init];
     if (self) {
-            collection = aCollection;
+        collection = aCollection;
     }
     return self;
 }

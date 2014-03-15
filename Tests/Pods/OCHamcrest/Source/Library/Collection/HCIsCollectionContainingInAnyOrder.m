@@ -51,7 +51,7 @@
 - (BOOL)isFinishedWith:(NSArray *)collection
 {
     if ([matchers count] == 0) {
-            return YES;
+        return YES;
     }
 
     [[[[mismatchDescription appendText:@"no item matches: "] appendList:matchers start:@"" separator:@", " end:@""] appendText:@" in "]
@@ -75,7 +75,7 @@
 {
     self = [super init];
     if (self) {
-            matchers = itemMatchers;
+        matchers = itemMatchers;
     }
     return self;
 }
@@ -94,9 +94,9 @@
 
     HCMatchingInAnyOrder *matchSequence = [[HCMatchingInAnyOrder alloc] initWithMatchers:matchers mismatchDescription:mismatchDescription];
     for (id item in collection) {
-            if (![matchSequence matches:item]) {
-                return NO;
-            }
+        if (![matchSequence matches:item]) {
+            return NO;
+        }
     }
 
     return [matchSequence isFinishedWith:collection];

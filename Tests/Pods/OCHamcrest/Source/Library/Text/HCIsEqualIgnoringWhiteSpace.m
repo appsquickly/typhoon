@@ -19,7 +19,7 @@ static void removeTrailingSpace(NSMutableString *string) {
     if (length > 0) {
         NSUInteger charIndex = length - 1;
         if (isspace([string characterAtIndex:charIndex])) {
-                    [string deleteCharactersInRange:NSMakeRange(charIndex, 1)];
+            [string deleteCharactersInRange:NSMakeRange(charIndex, 1)];
         }
     }
 }
@@ -32,7 +32,7 @@ static NSMutableString *stripSpace(NSString *string) {
         unichar character = [string characterAtIndex:charIndex];
         if (isspace(character)) {
             if (!lastWasSpace) {
-                            [result appendString:@" "];
+                [result appendString:@" "];
             }
             lastWasSpace = true;
         }
@@ -71,7 +71,7 @@ static NSMutableString *stripSpace(NSString *string) {
 - (BOOL)matches:(id)item
 {
     if (![item isKindOfClass:[NSString class]]) {
-            return NO;
+        return NO;
     }
 
     return [strippedString isEqualToString:stripSpace(item)];

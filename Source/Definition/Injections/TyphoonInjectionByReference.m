@@ -38,14 +38,15 @@
     if (instance) {
         [factory evaluateCircularDependency:self.reference propertyName:self.propertyName instance:instance];
     }
-    
+
     if (!instance || ![factory isCircularPropertyWithName:self.propertyName onInstance:instance]) {
         return [self componentForReferenceWithFactory:factory args:args];
     }
     return nil;
 }
 
-- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
+    args:(TyphoonRuntimeArguments *)args
 {
     [[[factory stack] peekForKey:self.reference] instance]; //Raises circular dependencies exception if already initializing.
     id reference = [self componentForReferenceWithFactory:factory args:args];
@@ -54,13 +55,14 @@
 
 #pragma mark - Utils
 
-- (TyphoonRuntimeArguments *)argumentsByReplacingRuntimeArgsReferencesInArgs:(TyphoonRuntimeArguments *)referenceArgs withRuntimeArgs:(TyphoonRuntimeArguments *)runtimeArgs
+- (TyphoonRuntimeArguments *)argumentsByReplacingRuntimeArgsReferencesInArgs:(TyphoonRuntimeArguments *)referenceArgs
+    withRuntimeArgs:(TyphoonRuntimeArguments *)runtimeArgs
 {
     TyphoonRuntimeArguments *result = referenceArgs;
 
     Class runtimeArgInjectionClass = [TyphoonInjectionByRuntimeArgument class];
     BOOL hasRuntimeArgumentReferences = [referenceArgs indexOfArgumentWithKind:runtimeArgInjectionClass] != NSNotFound;
-    
+
     if (referenceArgs && runtimeArgs && hasRuntimeArgumentReferences) {
         result = [referenceArgs copy];
         NSUInteger indexToReplace;
@@ -70,7 +72,7 @@
             [result replaceArgumentAtIndex:indexToReplace withArgument:runtimeValue];
         }
     }
-    
+
     return result;
 }
 
@@ -78,7 +80,8 @@
 
 - (id)componentForReferenceWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)runtimeArgs
 {
-    TyphoonRuntimeArguments *referenceArgumentsWithRuntime = [self argumentsByReplacingRuntimeArgsReferencesInArgs:self.referenceArguments withRuntimeArgs:runtimeArgs];
+    TyphoonRuntimeArguments *referenceArgumentsWithRuntime =
+        [self argumentsByReplacingRuntimeArgsReferencesInArgs:self.referenceArguments withRuntimeArgs:runtimeArgs];
     return [factory componentForKey:self.reference args:referenceArgumentsWithRuntime];
 }
 

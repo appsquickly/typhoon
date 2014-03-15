@@ -20,7 +20,7 @@
 
 @interface UIViewController (TyphoonDefinitionKey)
 
-@property (nonatomic, strong) NSString *typhoonKey;
+@property(nonatomic, strong) NSString *typhoonKey;
 
 @end
 
@@ -47,12 +47,12 @@ static const char *kTyphoonKey;
 
 + (TyphoonStoryboard *)storyboardWithName:(NSString *)name bundle:(NSBundle *)storyboardBundleOrNil
 {
-    return (TyphoonStoryboard *)[super storyboardWithName:name bundle:storyboardBundleOrNil];
+    return (TyphoonStoryboard *) [super storyboardWithName:name bundle:storyboardBundleOrNil];
 }
 
 + (TyphoonStoryboard *)storyboardWithName:(NSString *)name factory:(TyphoonComponentFactory *)factory bundle:(NSBundle *)bundleOrNil
 {
-    TyphoonStoryboard *storyboard = (id)[super storyboardWithName:name bundle:bundleOrNil];
+    TyphoonStoryboard *storyboard = (id) [super storyboardWithName:name bundle:bundleOrNil];
     storyboard.factory = factory;
     return storyboard;
 }
@@ -60,11 +60,11 @@ static const char *kTyphoonKey;
 - (id)instantiateViewControllerWithIdentifier:(NSString *)identifier
 {
     NSAssert(self.factory, @"TyphoonStoryboard's factory property can't be nil!");
-    
+
     id viewController = [super instantiateViewControllerWithIdentifier:identifier];
-    
+
     [self injectPropertiesForViewController:viewController];
-    
+
     return viewController;
 }
 
@@ -72,18 +72,19 @@ static const char *kTyphoonKey;
 {
     if (viewController.typhoonKey.length > 0) {
         [self.factory injectProperties:viewController withDefinition:NSSelectorFromString(viewController.typhoonKey)];
-    } else {
+    }
+    else {
         [self.factory injectProperties:viewController];
     }
-    
+
     if ([viewController isKindOfClass:[UINavigationController class]]) {
-        for (UIViewController *controller in ((UINavigationController *)viewController).viewControllers) {
+        for (UIViewController *controller in ((UINavigationController *) viewController).viewControllers) {
             [self injectPropertiesForViewController:controller];
         }
     }
-    
+
     if ([viewController isKindOfClass:[UITabBarController class]]) {
-        for (UIViewController *controller in ((UITabBarController *)viewController).viewControllers) {
+        for (UIViewController *controller in ((UITabBarController *) viewController).viewControllers) {
             [self injectPropertiesForViewController:controller];
         }
     }

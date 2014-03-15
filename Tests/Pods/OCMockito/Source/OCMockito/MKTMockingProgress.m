@@ -27,7 +27,7 @@
     static id sharedProgress = nil;
 
     if (!sharedProgress) {
-            sharedProgress = [[self alloc] init];
+        sharedProgress = [[self alloc] init];
     }
     return sharedProgress;
 }
@@ -65,7 +65,7 @@
 - (void)setMatcher:(id <HCMatcher>)matcher forArgument:(NSUInteger)index
 {
     if (!_invocationMatcher) {
-            _invocationMatcher = [[MKTInvocationMatcher alloc] init];
+        _invocationMatcher = [[MKTInvocationMatcher alloc] init];
     }
     [_invocationMatcher setMatcher:matcher atIndex:index + 2];
 }

@@ -79,7 +79,7 @@
     NSUInteger count = [keys count];
     NSUInteger index = 0;
     for (; index < count - 1; ++index) {
-            [self describeKeyValueAtIndex:index to:description];
+        [self describeKeyValueAtIndex:index to:description];
     }
     [self describeKeyValueAtIndex:index to:description];
     [description appendText:@"}"];

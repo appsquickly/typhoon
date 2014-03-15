@@ -40,7 +40,7 @@
 - (BOOL)matches:(id)item
 {
     if (item == nil) {
-            return NO;
+        return NO;
     }
 
     NSComparisonResult compare = [expected compare:item];

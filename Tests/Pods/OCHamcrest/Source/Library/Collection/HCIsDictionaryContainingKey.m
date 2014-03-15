@@ -25,7 +25,7 @@
 {
     self = [super init];
     if (self) {
-            keyMatcher = theKeyMatcher;
+        keyMatcher = theKeyMatcher;
     }
     return self;
 }
@@ -33,11 +33,11 @@
 - (BOOL)matches:(id)dict
 {
     if ([dict isKindOfClass:[NSDictionary class]]) {
-            for (id oneKey in dict) {
-                if ([keyMatcher matches:oneKey]) {
-                    return YES;
-                }
+        for (id oneKey in dict) {
+            if ([keyMatcher matches:oneKey]) {
+                return YES;
             }
+        }
     }
     return NO;
 }

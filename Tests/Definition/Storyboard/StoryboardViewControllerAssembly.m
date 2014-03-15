@@ -13,28 +13,28 @@
 
 @implementation StoryboardViewControllerAssembly
 
-- (id) initialViewController
+- (id)initialViewController
 {
     return [TyphoonDefinition withClass:[UIViewController class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(title) with:@"Initial"];
     }];
 }
 
-- (id) firstViewController
+- (id)firstViewController
 {
     return [TyphoonDefinition withClass:[UIViewController class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(title) with:@"First"];
     }];
 }
 
-- (id) secondViewController
+- (id)secondViewController
 {
     return [TyphoonDefinition withClass:[UIViewController class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(title) with:@"Second"];
     }];
 }
 
-- (id) uniqueViewController
+- (id)uniqueViewController
 {
     return [TyphoonDefinition withClass:[UniqueViewController class] properties:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(title) with:@"Unique"];

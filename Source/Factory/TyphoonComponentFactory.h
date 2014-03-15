@@ -127,6 +127,7 @@
 * for component resolution.
 */
 - (id)componentForKey:(NSString *)key;
+
 - (id)componentForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args;
 
 - (NSArray *)registry;

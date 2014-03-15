@@ -26,7 +26,7 @@
 {
     self = [super init];
     if (self) {
-            elementMatcher = anElementMatcher;
+        elementMatcher = anElementMatcher;
     }
     return self;
 }
@@ -34,13 +34,13 @@
 - (BOOL)matches:(id)collection
 {
     if (![collection conformsToProtocol:@protocol(NSFastEnumeration)]) {
-            return NO;
+        return NO;
     }
 
     for (id item in collection) {
-            if ([elementMatcher matches:item]) {
-                return YES;
-            }
+        if ([elementMatcher matches:item]) {
+            return YES;
+        }
     }
     return NO;
 }

@@ -35,7 +35,7 @@
 {
     SEL propertyGetter = NSSelectorFromString(propertyName);
     if (![item respondsToSelector:propertyGetter]) {
-            return NO;
+        return NO;
     }
 
     id propertyValue = [self objectFromInvokingSelector:propertyGetter onObject:item];

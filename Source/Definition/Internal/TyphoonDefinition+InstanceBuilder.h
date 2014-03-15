@@ -31,8 +31,8 @@
 
 - (NSSet *)propertiesInjectedByRuntimeArgument;
 
-- (void)addInjectedProperty:(id<TyphoonPropertyInjection>)property;
+- (void)addInjectedProperty:(id <TyphoonPropertyInjection>)property;
 
-- (void)removeInjectedProperty:(id<TyphoonPropertyInjection>)property;
+- (void)removeInjectedProperty:(id <TyphoonPropertyInjection>)property;
 
 @end

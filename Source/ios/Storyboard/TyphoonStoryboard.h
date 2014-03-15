@@ -30,7 +30,7 @@
  */
 @interface TyphoonStoryboard : UIStoryboard
 
-@property (nonatomic, strong) TyphoonComponentFactory *factory;
+@property(nonatomic, strong) TyphoonComponentFactory *factory;
 
 + (TyphoonStoryboard *)storyboardWithName:(NSString *)name bundle:(NSBundle *)storyboardBundleOrNil;
 

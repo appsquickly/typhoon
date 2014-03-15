@@ -10,7 +10,7 @@
 
 @interface TyphoonInjectionByRuntimeArgument : TyphoonAbstractInjection
 
-@property (nonatomic, readonly) NSUInteger runtimeArgumentIndex;
+@property(nonatomic, readonly) NSUInteger runtimeArgumentIndex;
 
 /* index is zero-based */
 - (instancetype)initWithArgumentIndex:(NSUInteger)index;

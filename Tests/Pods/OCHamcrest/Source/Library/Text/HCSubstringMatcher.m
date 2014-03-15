@@ -26,7 +26,7 @@
 
     self = [super init];
     if (self) {
-            substring = [aString copy];
+        substring = [aString copy];
     }
     return self;
 }

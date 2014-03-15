@@ -11,7 +11,7 @@
 
 @interface TyphoonInjectionByFactoryReference : TyphoonInjectionByReference
 
-@property (nonatomic, readonly) NSString *keyPath;
+@property(nonatomic, readonly) NSString *keyPath;
 
 - (instancetype)initWithReference:(NSString *)reference args:(TyphoonRuntimeArguments *)referenceArguments keyPath:(NSString *)keyPath;
 

@@ -62,7 +62,7 @@
 
 #pragma mark - manipulations with _injectedParameters
 
-- (void)addParameterInjection:(id<TyphoonParameterInjection>)injection
+- (void)addParameterInjection:(id <TyphoonParameterInjection>)injection
 {
     [_injectedParameters addObject:injection];
 }
@@ -172,7 +172,7 @@
 - (id)copyWithZone:(NSZone *)zone
 {
     TyphoonInitializer *copy = [[TyphoonInitializer alloc] initWithSelector:_selector isClassMethodStrategy:_isClassMethodStrategy];
-    for (id<TyphoonParameterInjection> parameter in _injectedParameters) {
+    for (id <TyphoonParameterInjection> parameter in _injectedParameters) {
         [copy addParameterInjection:[parameter copyWithZone:NSDefaultMallocZone()]];
     }
     return copy;

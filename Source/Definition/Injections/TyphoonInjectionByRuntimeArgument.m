@@ -22,7 +22,8 @@
 
 - (id)forwardingTargetForSelector:(SEL)aSelector
 {
-    [NSException raise:NSInvalidArgumentException format:@"You can't call a method on the runtime argument being passed in. It has to be passed in as-is"];
+    [NSException raise:NSInvalidArgumentException
+        format:@"You can't call a method on the runtime argument being passed in. It has to be passed in as-is"];
     return nil;
 }
 
@@ -33,7 +34,8 @@
     return [args argumentValueAtIndex:self.runtimeArgumentIndex];
 }
 
-- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
+    args:(TyphoonRuntimeArguments *)args
 {
     id runtimeArgument = [args argumentValueAtIndex:self.runtimeArgumentIndex];
     [self setObject:runtimeArgument forInvocation:invocation];

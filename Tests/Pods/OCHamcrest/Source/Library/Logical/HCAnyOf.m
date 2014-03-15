@@ -24,7 +24,7 @@
 {
     self = [super init];
     if (self) {
-            matchers = theMatchers;
+        matchers = theMatchers;
     }
     return self;
 }
@@ -32,9 +32,9 @@
 - (BOOL)matches:(id)item
 {
     for (id <HCMatcher> oneMatcher in matchers) {
-            if ([oneMatcher matches:item]) {
-                return YES;
-            }
+        if ([oneMatcher matches:item]) {
+            return YES;
+        }
     }
     return NO;
 }

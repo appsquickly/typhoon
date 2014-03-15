@@ -40,20 +40,20 @@
     if (self) {
         _factoryMethod = factoryMethod;
     }
-    
+
     return self;
 }
 
 - (void)createFromProtocol:(Protocol *)protocol inClass:(Class)factoryClass
 {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:@"You should not create instances of TyphoonAssistedFactoryMethodCreator directly" userInfo:nil];
+        reason:@"You should not create instances of TyphoonAssistedFactoryMethodCreator directly" userInfo:nil];
 }
 
 - (BOOL)methodDescription:(struct objc_method_description *)methodDescription forMethodName:(SEL)methodName inProtocol:(Protocol *)protocol
 {
     unsigned int methodCount = 0;
-    
+
     struct objc_method_description *methodDescriptions = protocol_copyMethodDescriptionList(protocol, YES, YES, &methodCount);
     BOOL found = NO;
     for (unsigned int idx = 0; idx < methodCount; idx++) {
@@ -64,7 +64,7 @@
         }
     }
     free(methodDescriptions);
-    
+
     return found;
 }
 
@@ -73,10 +73,10 @@
     // Search for the right obcj_method_description
     struct objc_method_description methodDescription;
     BOOL found = [self methodDescription:&methodDescription forMethodName:methodName inProtocol:protocol];
-    
+
     if (!found) {
         unsigned int protocolCount = 0;
-        
+
         __unsafe_unretained Protocol **protocols = protocol_copyProtocolList(protocol, &protocolCount);
         for (int i = 0; i < protocolCount; i++) {
             Protocol *nestedProtocol = protocols[i];
@@ -89,9 +89,9 @@
         }
         free(protocols);
     }
-    
+
     NSCAssert(found, @"protocol doesn't support factory method with name %@", NSStringFromSelector(methodName));
-    
+
     return methodDescription;
 }
 

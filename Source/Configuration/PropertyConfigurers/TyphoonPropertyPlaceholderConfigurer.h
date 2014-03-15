@@ -43,4 +43,5 @@
 
 /** Returns injection */
 id TyphoonConfig(NSString *configKey);
+
 id TyphoonConfigWithType(NSString *configKey, Class requiredType);

@@ -30,7 +30,7 @@
 {
     self = [super init];
     if (self) {
-            accumulator = [[NSMutableString alloc] init];
+        accumulator = [[NSMutableString alloc] init];
     }
     return self;
 }

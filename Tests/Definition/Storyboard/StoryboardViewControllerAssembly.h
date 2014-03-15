@@ -10,9 +10,12 @@
 
 @interface StoryboardViewControllerAssembly : TyphoonAssembly
 
-- (id) initialViewController;
-- (id) firstViewController;
-- (id) secondViewController;
-- (id) uniqueViewController;
+- (id)initialViewController;
+
+- (id)firstViewController;
+
+- (id)secondViewController;
+
+- (id)uniqueViewController;
 
 @end

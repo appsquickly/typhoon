@@ -10,11 +10,13 @@
 #import "Typhoon.h"
 #import "TyphoonStoryboard.h"
 #import "StoryboardViewControllerAssembly.h"
+
 @interface StoryboardTests : SenTestCase
 
 @end
 
-@implementation StoryboardTests {
+@implementation StoryboardTests
+{
     UIStoryboard *storyboard;
 }
 
@@ -23,9 +25,9 @@
     [super setUp];
 
     NSBundle *bundle = [NSBundle bundleForClass:[TyphoonBundleResource class]];
-    
+
     TyphoonComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssembly:[StoryboardViewControllerAssembly assembly]];
-    
+
     storyboard = [TyphoonStoryboard storyboardWithName:@"Storyboard" factory:factory bundle:bundle];
 }
 

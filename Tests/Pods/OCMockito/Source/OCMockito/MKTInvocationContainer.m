@@ -61,9 +61,9 @@
 - (id)findAnswerFor:(NSInvocation *)invocation
 {
     for (MKTStubbedInvocationMatcher *stubbedInvocationMatcher in _stubbed) {
-            if ([stubbedInvocationMatcher matches:invocation]) {
-                return [stubbedInvocationMatcher answer];
-            }
+        if ([stubbedInvocationMatcher matches:invocation]) {
+            return [stubbedInvocationMatcher answer];
+        }
     }
 
     return nil;

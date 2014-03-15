@@ -103,7 +103,7 @@
     if ([_componentFactory isKindOfClass:[TyphoonBlockComponentFactory class]]) {
 
         Knight *knight = [_componentFactory componentForKey:@"knightWithCollections"];
-    
+
         assertThat(knight.friendsDictionary, notNilValue());
         assertThat(knight.friendsDictionary, hasCountOf(2));
         STAssertTrue([[knight.friendsDictionary[@"knight"] class] isSubclassOfClass:[Knight class]], nil);
@@ -186,8 +186,8 @@
     NSUInteger internalProcessors = 2;
     if ([_infrastructureComponentsFactory isKindOfClass:[TyphoonBlockComponentFactory class]]) {
         internalProcessors += 1;
-    }
-    assertThatUnsignedLong([_infrastructureComponentsFactory.factoryPostProcessors count], equalToInt(1 + internalProcessors)); //Attached + internal processors
+    }assertThatUnsignedLong([_infrastructureComponentsFactory.factoryPostProcessors count], equalToInt(
+        1 + internalProcessors)); //Attached + internal processors
 }
 
 - (void)test_resolves_property_values_from_multiple_files

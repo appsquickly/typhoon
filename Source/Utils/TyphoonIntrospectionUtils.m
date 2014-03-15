@@ -69,13 +69,13 @@
 
 + (NSMethodSignature *)methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:(SEL)selector
 {
-    NSMutableString *signatureString = [[NSMutableString alloc] initWithFormat:@"%s%s%s",@encode(id),@encode(id),@encode(SEL)];
+    NSMutableString *signatureString = [[NSMutableString alloc] initWithFormat:@"%s%s%s", @encode(id), @encode(id), @encode(SEL)];
     NSUInteger argc = [self numberOfArgumentsInSelector:selector];
     for (NSInteger i = 0; i < argc; i++) {
         [signatureString appendString:[NSString stringWithCString:@encode(id) encoding:NSASCIIStringEncoding]];
     }
     NSMethodSignature *signature = [NSMethodSignature signatureWithObjCTypes:[signatureString cStringUsingEncoding:NSASCIIStringEncoding]];
-    
+
     return signature;
 }
 
@@ -84,8 +84,9 @@
     NSString *string = NSStringFromSelector(selector);
     uint count = 0;
     for (int i = 0; i < string.length; i++) {
-        if ([string characterAtIndex:i] == ':')
-            count++;
+        if ([string characterAtIndex:i] == ':') {
+                    count++;
+        }
     }
     return count;
 }

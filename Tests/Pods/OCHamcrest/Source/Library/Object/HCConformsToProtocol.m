@@ -24,7 +24,7 @@
 
     self = [super init];
     if (self) {
-            theProtocol = aProtocol;
+        theProtocol = aProtocol;
     }
     return self;
 }

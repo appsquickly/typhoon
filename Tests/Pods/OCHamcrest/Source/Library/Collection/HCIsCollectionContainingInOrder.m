@@ -97,7 +97,7 @@
 {
     self = [super init];
     if (self) {
-            matchers = itemMatchers;
+        matchers = itemMatchers;
     }
     return self;
 }
@@ -116,9 +116,9 @@
 
     HCMatchSequence *matchSequence = [[HCMatchSequence alloc] initWithMatchers:matchers mismatchDescription:mismatchDescription];
     for (id item in collection) {
-            if (![matchSequence matches:item]) {
-                return NO;
-            }
+        if (![matchSequence matches:item]) {
+            return NO;
+        }
     }
 
     return [matchSequence isFinished];

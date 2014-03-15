@@ -33,23 +33,23 @@ static HCPairIntNSString separate(NSString *component) {
     for (charIndex = 0; charIndex < length; ++charIndex) {
         unichar character = [component characterAtIndex:charIndex];
         if (!isdigit(character)) {
-                    break;
+            break;
         }
         index = index * 10 + character - '0';
         gotIndex = true;
     }
 
     if (!gotIndex) {
-            return (HCPairIntNSString) {
-                -1,
-                component
-            };
-        }
+        return (HCPairIntNSString) {
+            -1,
+            component
+        };
+    }
     else {
-            return (HCPairIntNSString) {
-                index,
-                [component substringFromIndex:charIndex]
-            };
+        return (HCPairIntNSString) {
+            index,
+            [component substringFromIndex:charIndex]
+        };
     }
 }
 
@@ -96,8 +96,8 @@ static HCPairIntNSString separate(NSString *component) {
         else {
             HCPairIntNSString parseIndex = separate(oneComponent);
             if (parseIndex.first < 0) {
-                            [[description appendText:@"%"] appendText:oneComponent];
-                        }
+                [[description appendText:@"%"] appendText:oneComponent];
+            }
             else {
                 [description appendDescriptionOf:values[(NSUInteger) parseIndex.first]];
                 [description appendText:parseIndex.second];

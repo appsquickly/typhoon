@@ -11,10 +11,12 @@
 
 @interface TyphoonRuntimeNullArgument : NSObject
 @end
+
 @implementation TyphoonRuntimeNullArgument
 @end
 
-@implementation TyphoonRuntimeArguments {
+@implementation TyphoonRuntimeArguments
+{
     NSMutableArray *arguments;
 }
 
@@ -25,18 +27,19 @@
         return nil;
     }
     NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:count];
-    
+
     for (int i = 2; i < count; i++) {
         void *pointer;
         [invocation getArgument:&pointer atIndex:i];
-        id argument = (__bridge id)pointer;
+        id argument = (__bridge id) pointer;
         if (argument) {
             [args addObject:argument];
-        } else {
+        }
+        else {
             [args addObject:[TyphoonRuntimeNullArgument new]];
         }
     }
-    
+
     return [[self alloc] initWithArguments:args];
 }
 
@@ -46,13 +49,14 @@
     if (count == 0) {
         return nil;
     }
-    
+
     NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:count];
     for (int i = 0; i < count; i++) {
         id argument = va_arg(list, id);
         if (argument) {
             [args addObject:argument];
-        } else {
+        }
+        else {
             [args addObject:[TyphoonRuntimeNullArgument new]];
         }
     }
@@ -73,7 +77,8 @@
     id argument = arguments[index];
     if ([argument isMemberOfClass:[TyphoonRuntimeNullArgument class]]) {
         return nil;
-    } else {
+    }
+    else {
         return argument;
     }
 }

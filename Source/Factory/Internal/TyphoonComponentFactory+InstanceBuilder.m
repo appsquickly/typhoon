@@ -124,7 +124,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 {
     [self doBeforePropertyInjectionOn:instance withDefinition:definition];
 
-    for (id<TyphoonPropertyInjection> property in [definition injectedProperties]) {
+    for (id <TyphoonPropertyInjection> property in [definition injectedProperties]) {
         [self doPropertyInjection:instance property:property args:args];
     }
 
@@ -145,7 +145,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 }
 
-- (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(id<TyphoonPropertyInjection>)property args:(TyphoonRuntimeArguments *)args
+- (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(id <TyphoonPropertyInjection>)property
+    args:(TyphoonRuntimeArguments *)args
 {
     TyphoonTypeDescriptor *propertyType = [instance typeForPropertyWithName:property.propertyName];
     AssertTypeDescriptionForPropertyOnInstance(propertyType, property, instance);

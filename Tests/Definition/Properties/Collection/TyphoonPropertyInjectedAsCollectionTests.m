@@ -46,7 +46,7 @@
 {
     Class mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:[NSArray class]];
     assertThat(mutableClass, equalTo([NSMutableArray class]));
-    
+
     mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:[NSMutableArray class]];
     assertThat(mutableClass, equalTo([NSMutableArray class]));
 }
@@ -66,13 +66,13 @@
 {
     Class mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:[NSSet class]];
     assertThat(mutableClass, equalTo([NSMutableSet class]));
-    
+
     mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:[NSMutableSet class]];
     assertThat(mutableClass, equalTo([NSMutableSet class]));
-    
+
     mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:[NSOrderedSet class]];
     assertThat(mutableClass, equalTo([NSMutableOrderedSet class]));
-    
+
     mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:[NSMutableOrderedSet class]];
     assertThat(mutableClass, equalTo([NSMutableOrderedSet class]));
 }
