@@ -87,8 +87,33 @@
 - (void)unload;
 
 /**
-* Sets a given instance of TyphoonComponentFactory, as the default factory so that it can be retrieved later with:
-* [TyphoonComponentFactory defaultFactory];
+* Returns the default component factory, if one has been set. @see [TyphoonComponentFactory makeDefault]. This allows resolving components
+* from the Typhoon another class after the container has been set up.
+*
+* This method is only integrating Typhoon into legacy environments - classes not managed by Typhoon, and its use elsewhere is discouraged
+* as it will create a hard-wired dependency on Typhoon, whenever the default factory is retrieved.
+*
+* A more desirable approach is to use TyphoonComponentFactoryAware or to inject the factory via an assembly. This simplifies unit testing.
+*
+* ## Alternative approach: inject the factory (in this case posing behind a TyphoonAssembly subclass):
+
+@code
+
+- (id)loyaltyManagementController
+{
+    return [TyphoonDefinition withClass:[LoyaltyManagementViewController class]
+        properties:^(TyphoonDefinition* definition)
+    {
+        definition.scope = TyphoonScopePrototype;
+        //Inject the TyphoonComponentFactory posing as an assembly
+        [definition injectProperty:@selector(assembly)];
+    }];
+}
+
+@endcode
+
+* @see [TyphoonComponentFactory makeDefault].
+* @see TyphoonComponentFactoryAware
 *
 */
 - (void)makeDefault;
