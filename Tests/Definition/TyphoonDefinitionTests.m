@@ -17,7 +17,6 @@
 #import "AutoWiringKnight.h"
 #import "AutoWiringSubClassedKnight.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
-#import "CampaignQuest.h"
 #import "TyphoonReferenceDefinition.h"
 #import "TyphoonInjectionByObjectInstance.h"
 #import "TyphoonInjections.h"
@@ -144,6 +143,34 @@
     assertThatInteger([property.objectInstance integerValue], equalToInteger(346));
 }
 
+- (void)test_child_inherits_parent_scope_if_not_explicitly_set
+{
+    TyphoonDefinition *parent = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+        [definition setScope:TyphoonScopeSingleton];
+    }];
+
+    TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(damselsRescued) with:@(346)];
+        [definition setParent:parent];
+    }];
+
+    assertThatInt([child scope], equalToInt(TyphoonScopeSingleton));
+}
+
+- (void)test_child_overrides_parent_scope_if_explicitly_set
+{
+    TyphoonDefinition *parent = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+        [definition setScope:TyphoonScopeSingleton];
+    }];
+
+    TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(damselsRescued) with:@(346)];
+        [definition setScope:TyphoonScopePrototype];
+        [definition setParent:parent];
+    }];
+
+    assertThatInt([child scope], equalToInt(TyphoonScopePrototype));
+}
 
 
 /* ====================================================================================================================================== */

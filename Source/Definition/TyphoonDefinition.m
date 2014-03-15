@@ -26,12 +26,29 @@
 #import "TyphoonInjectionByFactoryReference.h"
 #import "TyphoonInjections.h"
 
+static NSString *TyphoonScopeToString(TyphoonScope scope) {
+    switch (scope) {
+        case TyphoonScopeObjectGraph:
+            return @"ObjectGraph";
+        case TyphoonScopePrototype:
+            return @"Prototype";
+        case TyphoonScopeSingleton:
+            return @"Singleton";
+        case TyphoonScopeWeakSingleton:
+            return @"WeakSingleton";
+        default:
+            return @"Unknown";
+    }
+}
+
+
 @interface TyphoonDefinition () <TyphoonObjectWithCustomInjection>
 
 @end
 
-@implementation TyphoonDefinition {
-    BOOL isScopeSetByUser;
+@implementation TyphoonDefinition
+{
+    BOOL _isScopeSetByUser;
 }
 
 /* ====================================================================================================================================== */
@@ -73,11 +90,11 @@
         __weak TyphoonDefinition *weakDefinition = definition;
         properties(weakDefinition);
     }
-    
-    if (!definition->isScopeSetByUser && [definition hasRuntimeArgumentInjections]) {
+
+    if (!definition->_isScopeSetByUser && [definition hasRuntimeArgumentInjections]) {
         definition.scope = TyphoonScopePrototype;
     }
-    
+
     [definition validateScope];
 
     return definition;
@@ -173,7 +190,7 @@
         }
     }];
 
-    for (id<TyphoonPropertyInjection> overriddenProperty in overriddenProperties) {
+    for (id <TyphoonPropertyInjection> overriddenProperty in overriddenProperties) {
         [parentProperties removeObject:overriddenProperty];
     }
 
@@ -185,57 +202,56 @@
     return [[self.initializer parametersInjectedByRuntimeArgument] count] > 0 || [[self propertiesInjectedByRuntimeArgument] count] > 0;
 }
 
+- (TyphoonScope)scope
+{
+    if (_parent && !_isScopeSetByUser)
+    {
+        return _parent.scope;
+    }
+    return _scope;
+}
+
 - (void)setScope:(TyphoonScope)scope
 {
     _scope = scope;
-    isScopeSetByUser = YES;
+    _isScopeSetByUser = YES;
     [self validateScope];
 }
 
-- (void)validateScope
-{
-    if (self.lazy && self.scope != TyphoonScopeSingleton) {
-        [NSException raise:NSInvalidArgumentException
-                    format:@"The lazy attribute is only applicable to singleton scoped definitions, but is set for definition: %@ ", self];
-    }
-    
-    if (self.scope != TyphoonScopePrototype && [self hasRuntimeArgumentInjections]) {
-        [NSException raise:NSInvalidArgumentException
-                    format:@"The runtime arguments injections are only applicable to prototype scoped definitions, but is set for definition: %@ ", self];
-    }
-}
 
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Definition: class='%@', key='%@', scope='%@'", NSStringFromClass(_type), _key, TyphoonScopeToString(_scope)];
+    return [NSString stringWithFormat:@"Definition: class='%@', key='%@', scope='%@'", NSStringFromClass(_type), _key,
+                                      TyphoonScopeToString(_scope)];
 }
 
 - (id)copyWithZone:(NSZone *)zone
 {
     TyphoonDefinition *copy = [[TyphoonDefinition alloc] initWithClass:_type key:[_key copy] factoryComponent:_factory.key];
     [copy setInitializer:[self.initializer copy]];
-    for (id<TyphoonPropertyInjection> property in _injectedProperties) {
+    for (id <TyphoonPropertyInjection> property in _injectedProperties) {
         [copy addInjectedProperty:[property copyWithZone:NSDefaultMallocZone()]];
     }
     return copy;
 }
 
-static NSString * TyphoonScopeToString(TyphoonScope scope)
+/* ====================================================================================================================================== */
+#pragma mark - Private Methods
+
+- (void)validateScope
 {
-    switch(scope) {
-        case TyphoonScopeObjectGraph:
-            return @"ObjectGraph";
-        case TyphoonScopePrototype:
-            return @"Prototype";
-        case TyphoonScopeSingleton:
-            return @"Singleton";
-        case TyphoonScopeWeakSingleton:
-            return @"WeakSingleton";
-        default:
-            return @"Unknown";
+    if (self.lazy && self.scope != TyphoonScopeSingleton) {
+        [NSException raise:NSInvalidArgumentException
+            format:@"The lazy attribute is only applicable to singleton scoped definitions, but is set for definition: %@ ", self];
+    }
+
+    if (self.scope != TyphoonScopePrototype && [self hasRuntimeArgumentInjections]) {
+        [NSException raise:NSInvalidArgumentException
+            format:@"The runtime arguments injections are only applicable to prototype scoped definitions, but is set for definition: %@ ",
+                   self];
     }
 }
 
