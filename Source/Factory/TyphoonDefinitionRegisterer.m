@@ -39,7 +39,7 @@
     return self;
 }
 
-- (void)register
+- (void)doRegistration
 {
     if ([[_definition.initializer parameterNames] count] != [[_definition.initializer injectedParameters] count]) {
         [NSException raise:NSInvalidArgumentException

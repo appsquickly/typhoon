@@ -23,6 +23,6 @@
 
 - (id)initWithDefinition:(TyphoonDefinition *)definition componentFactory:(TyphoonComponentFactory *)componentFactory;
 
-- (void)register;
+- (void)doRegistration;
 
 @end
