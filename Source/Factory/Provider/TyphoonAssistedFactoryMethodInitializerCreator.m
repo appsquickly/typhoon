@@ -17,13 +17,6 @@
 #import "TyphoonAssistedFactoryMethodInitializer.h"
 
 
-@interface TyphoonAssistedFactoryMethodInitializerCreator ()
-
-@property(nonatomic, strong) TyphoonAssistedFactoryMethodInitializer *factoryMethod;
-
-@end
-
-
 @implementation TyphoonAssistedFactoryMethodInitializerCreator
 
 - (void)createFromProtocol:(Protocol *)protocol inClass:(Class)factoryClass

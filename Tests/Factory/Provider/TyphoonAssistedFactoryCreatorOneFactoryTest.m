@@ -88,11 +88,11 @@
     Class klass = [self paymentFactoryClass];
     id <PaymentFactory> factory = [[klass alloc] init];
 
-    id mockCreditServiceInjectedProperty = mock([TyphoonAbstractInjectedProperty class]);
-    [given([mockCreditServiceInjectedProperty name]) willReturn:@"creditService"];
+    id mockCreditServiceInjectedProperty = mockProtocol(@protocol(TyphoonPropertyInjection));
+    [given([mockCreditServiceInjectedProperty propertyName]) willReturn:@"creditService"];
 
-    id mockAuthServiceInjectedProperty = mock([TyphoonAbstractInjectedProperty class]);
-    [given([mockAuthServiceInjectedProperty name]) willReturn:@"authService"];
+    id mockAuthServiceInjectedProperty = mockProtocol(@protocol(TyphoonPropertyInjection));
+    [given([mockAuthServiceInjectedProperty propertyName]) willReturn:@"authService"];
 
     [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockCreditServiceInjectedProperty withType:nil lazyValue:^{ return _creditService; }];
     [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockAuthServiceInjectedProperty withType:nil lazyValue:^{ return _authService; }];
@@ -106,11 +106,11 @@
     Class klass = [self paymentFactoryClass];
     id <PaymentFactory> factory = [[klass alloc] init];
 
-    id mockCreditServiceInjectedProperty = mock([TyphoonAbstractInjectedProperty class]);
-    [given([mockCreditServiceInjectedProperty name]) willReturn:@"creditService"];
+    id mockCreditServiceInjectedProperty = mockProtocol(@protocol(TyphoonPropertyInjection));
+    [given([mockCreditServiceInjectedProperty propertyName]) willReturn:@"creditService"];
 
-    id mockAuthServiceInjectedProperty = mock([TyphoonAbstractInjectedProperty class]);
-    [given([mockAuthServiceInjectedProperty name]) willReturn:@"authService"];
+    id mockAuthServiceInjectedProperty = mockProtocol(@protocol(TyphoonPropertyInjection));
+    [given([mockAuthServiceInjectedProperty propertyName]) willReturn:@"authService"];
 
     [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockCreditServiceInjectedProperty withType:nil lazyValue:^{ return _creditService; }];
     [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockAuthServiceInjectedProperty withType:nil lazyValue:^{ return _authService; }];

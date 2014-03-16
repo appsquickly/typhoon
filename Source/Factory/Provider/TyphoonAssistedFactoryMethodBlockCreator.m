@@ -20,7 +20,7 @@
 
 @interface TyphoonAssistedFactoryMethodBlockCreator ()
 
-@property(nonatomic, strong) TyphoonAssistedFactoryMethodBlock *factoryMethod;
+@property(nonatomic, strong, readonly) TyphoonAssistedFactoryMethodBlock *factoryMethod;
 
 @end
 

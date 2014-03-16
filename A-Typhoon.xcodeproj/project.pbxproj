@@ -53,6 +53,7 @@
 		4BC6493D17A20BD7007F0463 /* TyphoonShorthand.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79844939DE1F872B92FEFB /* TyphoonShorthand.h */; };
 		65123363189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 65123362189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h */; };
 		65123364189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 65123362189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h */; };
+		652FB92C18D5FC0100805B46 /* TyphoonWeakComponentsPool.m in Sources */ = {isa = PBXBuildFile; fileRef = FA99166418983986000AC4B5 /* TyphoonWeakComponentsPool.m */; };
 		6596DADC189D7E0C00B30708 /* TyphoonAssistedFactoryMethodClosure.h in Headers */ = {isa = PBXBuildFile; fileRef = 6596DADB189D7E0C00B30708 /* TyphoonAssistedFactoryMethodClosure.h */; };
 		6596DADD189D7E0C00B30708 /* TyphoonAssistedFactoryMethodClosure.h in Headers */ = {isa = PBXBuildFile; fileRef = 6596DADB189D7E0C00B30708 /* TyphoonAssistedFactoryMethodClosure.h */; };
 		6596DAE0189D806300B30708 /* TyphoonAssistedFactoryMethodBlockClosure.h in Headers */ = {isa = PBXBuildFile; fileRef = 6596DADE189D806300B30708 /* TyphoonAssistedFactoryMethodBlockClosure.h */; };
@@ -311,7 +312,6 @@
 		FA99166518983986000AC4B5 /* TyphoonWeakComponentsPool.h in Headers */ = {isa = PBXBuildFile; fileRef = FA99166318983986000AC4B5 /* TyphoonWeakComponentsPool.h */; };
 		FA99166618983986000AC4B5 /* TyphoonWeakComponentsPool.h in Headers */ = {isa = PBXBuildFile; fileRef = FA99166318983986000AC4B5 /* TyphoonWeakComponentsPool.h */; };
 		FA99166718983986000AC4B5 /* TyphoonWeakComponentsPool.m in Sources */ = {isa = PBXBuildFile; fileRef = FA99166418983986000AC4B5 /* TyphoonWeakComponentsPool.m */; };
-		FA99166818983986000AC4B5 /* TyphoonWeakComponentsPool.m in Sources */ = {isa = PBXBuildFile; fileRef = FA99166418983986000AC4B5 /* TyphoonWeakComponentsPool.m */; };
 		FAC0B8CF18CDEC66000F0AD0 /* TyphoonRuntimeArguments.h in Headers */ = {isa = PBXBuildFile; fileRef = FAC0B8CD18CDEC66000F0AD0 /* TyphoonRuntimeArguments.h */; };
 		FAC0B8D018CDEC66000F0AD0 /* TyphoonRuntimeArguments.h in Headers */ = {isa = PBXBuildFile; fileRef = FAC0B8CD18CDEC66000F0AD0 /* TyphoonRuntimeArguments.h */; };
 		FAC0B8D118CDEC66000F0AD0 /* TyphoonRuntimeArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC0B8CE18CDEC66000F0AD0 /* TyphoonRuntimeArguments.m */; };
@@ -1398,8 +1398,7 @@
 				4B9BD34317A6DCBA008921C7 /* TyphoonAssemblySelectorAdviser.m in Sources */,
 				FAC0B8D218CDEC66000F0AD0 /* TyphoonRuntimeArguments.m in Sources */,
 				4BC6490217A20BD7007F0463 /* TyphoonInitializer.m in Sources */,
-				FA99166818983986000AC4B5 /* TyphoonWeakComponentsPool.m in Sources */,
-				FA99166818983986000AC4B5 /* TyphoonWeakComponentsPool.m in Sources */,
+				652FB92C18D5FC0100805B46 /* TyphoonWeakComponentsPool.m in Sources */,
 				4BC6490517A20BD7007F0463 /* TyphoonDefinition.m in Sources */,
 				4BC6490917A20BD7007F0463 /* TyphoonTypeConverterRegistry.m in Sources */,
 				4BC6490A17A20BD7007F0463 /* TyphoonTypeDescriptor.m in Sources */,
