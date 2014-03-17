@@ -21,7 +21,7 @@
 
 @implementation TyphoonSelector
 {
-    NSUInteger _hash;
+    
 }
 
 + (TyphoonSelector *)selectorWithName:(NSString *)aName
@@ -44,7 +44,6 @@
     self = [super init];
     if (self) {
         _selector = aSelector;
-        _hash = [[NSValue valueWithBytes:&_selector objCType:@encode(SEL)] hash];
     }
     return self;
 }
@@ -53,13 +52,13 @@
 {
     // <TyphoonSelector: 0x00000 SEL named: 'aDefinitionMethod'>
     NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: %p SEL named: '%@'>", NSStringFromClass([self class]), self,
-                                                                     NSStringFromSelector(self.selector)];
+                                    NSStringFromSelector(self.selector)];
     return description;
 }
 
 - (NSUInteger)hash
 {
-    return _hash;
+    return (NSUInteger) sel_getName(self.selector);
 }
 
 - (BOOL)isEqual:(id)other
@@ -70,7 +69,7 @@
     if (!other || ![[other class] isEqual:[self class]]) {
         return NO;
     }
-
+    
     return [self isEqualToSelector:(TyphoonSelector *) other];
 }
 
