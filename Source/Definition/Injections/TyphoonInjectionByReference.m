@@ -37,20 +37,19 @@
 {
     if (instance) {
         [factory evaluateCircularDependency:self.reference propertyName:self.propertyName instance:instance];
+        if ([factory isCircularPropertyWithName:self.propertyName onInstance:instance]) {
+            return nil;
+        }
     }
-
-    if (!instance || ![factory isCircularPropertyWithName:self.propertyName onInstance:instance]) {
-        return [self componentForReferenceWithFactory:factory args:args];
-    }
-    return nil;
+    
+    return [self componentForReferenceWithFactory:factory args:args];
 }
 
 - (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
                        args:(TyphoonRuntimeArguments *)args
 {
-    [[[factory stack] peekForKey:self.reference] instance]; //Raises circular dependencies exception if already initializing.
-    id reference = [self componentForReferenceWithFactory:factory args:args];
-    [self setObject:reference forType:type andInvocation:invocation];
+    id referenceInstance = [self componentForReferenceWithFactory:factory args:args];
+    [self setObject:referenceInstance forType:type andInvocation:invocation];
 }
 
 #pragma mark - Utils
@@ -78,11 +77,16 @@
 
 #pragma mark - Protected
 
+//Raises circular dependencies exception if already initializing.
 - (id)componentForReferenceWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)runtimeArgs
 {
-    TyphoonRuntimeArguments *referenceArgumentsWithRuntime =
+    id referenceInstance = [[[factory stack] peekForKey:self.reference] instance];
+    if (!referenceInstance) {
+        TyphoonRuntimeArguments *referenceArgumentsWithRuntime =
         [self argumentsByReplacingRuntimeArgsReferencesInArgs:self.referenceArguments withRuntimeArgs:runtimeArgs];
-    return [factory componentForKey:self.reference args:referenceArgumentsWithRuntime];
+        referenceInstance = [factory componentForKey:self.reference args:referenceArgumentsWithRuntime];
+    }
+    return referenceInstance;
 }
 
 @end

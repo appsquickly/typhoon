@@ -209,29 +209,32 @@
 
 - (void)test_resolves_circular_dependencies_for_property_injected_by_reference
 {
-    ClassADependsOnB *classA = [_circularDependenciesFactory componentForKey:@"classA"];
-    assertThat(classA.dependencyOnB, notNilValue());
-    assertThat(classA, equalTo(classA.dependencyOnB.dependencyOnA));
-    assertThat([classA.dependencyOnB class], equalTo([ClassBDependsOnA class]));
-
-    ClassBDependsOnA *classB = [_circularDependenciesFactory componentForKey:@"classB"];
-    assertThat(classB.dependencyOnA, notNilValue());
-    assertThat(classB, equalTo(classB.dependencyOnA.dependencyOnB));
-    assertThat([classB.dependencyOnA class], equalTo([ClassADependsOnB class]));
-
+    if ([_circularDependenciesFactory isKindOfClass:[TyphoonBlockComponentFactory class]]) {
+        ClassADependsOnB *classA = [_circularDependenciesFactory componentForKey:@"classA"];
+        assertThat(classA.dependencyOnB, notNilValue());
+        assertThat(classA, equalTo(classA.dependencyOnB.dependencyOnA));
+        assertThat([classA.dependencyOnB class], equalTo([ClassBDependsOnA class]));
+        
+        ClassBDependsOnA *classB = [_circularDependenciesFactory componentForKey:@"classB"];
+        assertThat(classB.dependencyOnA, notNilValue());
+        assertThat(classB, equalTo(classB.dependencyOnA.dependencyOnB));
+        assertThat([classB.dependencyOnA class], equalTo([ClassADependsOnB class]));
+    }
 }
 
 - (void)test_resolves_circular_dependencies_for_property_injected_by_type
 {
-    ClassADependsOnB *classA = [_circularDependenciesFactory componentForType:[ClassADependsOnB class]];
-    assertThat(classA.dependencyOnB, notNilValue());
-    assertThat(classA, equalTo(classA.dependencyOnB.dependencyOnA));
-    assertThat([classA.dependencyOnB class], equalTo([ClassBDependsOnA class]));
-
-    ClassBDependsOnA *classB = [_circularDependenciesFactory componentForType:[ClassBDependsOnA class]];
-    assertThat(classB.dependencyOnA, notNilValue());
-    assertThat(classB, equalTo(classB.dependencyOnA.dependencyOnB));
-    assertThat([classB.dependencyOnA class], equalTo([ClassADependsOnB class]));
+    if ([_circularDependenciesFactory isKindOfClass:[TyphoonBlockComponentFactory class]]) {
+        ClassADependsOnB *classA = [_circularDependenciesFactory componentForType:[ClassADependsOnB class]];
+        assertThat(classA.dependencyOnB, notNilValue());
+        assertThat(classA, equalTo(classA.dependencyOnB.dependencyOnA));
+        assertThat([classA.dependencyOnB class], equalTo([ClassBDependsOnA class]));
+        
+        ClassBDependsOnA *classB = [_circularDependenciesFactory componentForType:[ClassBDependsOnA class]];
+        assertThat(classB.dependencyOnA, notNilValue());
+        assertThat(classB, equalTo(classB.dependencyOnA.dependencyOnB));
+        assertThat([classB.dependencyOnA class], equalTo([ClassADependsOnB class]));
+    }
 }
 
 - (void)test_resolves_two_circular_dependencies_for_property_injected_by_reference

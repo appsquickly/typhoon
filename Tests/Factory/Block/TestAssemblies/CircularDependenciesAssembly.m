@@ -26,14 +26,18 @@
 - (id)classA
 {
     return [TyphoonDefinition withClass:[ClassADependsOnB class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(dependencyOnB) with:[self classB]];
+        [definition injectMethod:@selector(setDependencyOnB:) withParameters:^(TyphoonMethod *method) {
+            [method injectParameterWith:[self classB]];
+        }];
     }];
 }
 
 - (id)classB
 {
     return [TyphoonDefinition withClass:[ClassBDependsOnA class] properties:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(dependencyOnA) with:[self classA]];
+        [definition injectMethod:@selector(setDependencyOnA:) withParameters:^(TyphoonMethod *method) {
+            [method injectParameterWith:[self classA]];
+        }];
     }];
 }
 

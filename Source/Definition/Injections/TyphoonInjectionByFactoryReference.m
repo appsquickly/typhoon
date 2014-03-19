@@ -36,20 +36,18 @@
 {
     if (instance) {
         [factory evaluateCircularDependency:self.reference propertyName:self.propertyName instance:instance];
+        if ([factory isCircularPropertyWithName:self.propertyName onInstance:instance]) {
+            return nil;
+        }
     }
 
-    if (!instance || ![factory isCircularPropertyWithName:self.propertyName onInstance:instance]) {
-        id factoryReference = [self componentForReferenceWithFactory:factory args:args];
-        return [factoryReference valueForKeyPath:self.keyPath];
-    }
-    return nil;
+    id factoryReference = [self componentForReferenceWithFactory:factory args:args];
+    return [factoryReference valueForKeyPath:self.keyPath];
 }
 
 - (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
                        args:(TyphoonRuntimeArguments *)args
 {
-    [[[factory stack] peekForKey:self.reference] instance]; //Raises circular dependencies exception if already initializing.
-
     id factoryReference = [self componentForReferenceWithFactory:factory args:args];
     id valueToInject = [factoryReference valueForKeyPath:_keyPath];
 

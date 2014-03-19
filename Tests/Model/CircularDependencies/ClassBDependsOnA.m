@@ -17,6 +17,18 @@
 
 @implementation ClassBDependsOnA
 {
-
+    ClassADependsOnB *_dependencyOnA;
 }
+
+- (ClassADependsOnB *)dependencyOnA
+{
+    return _dependencyOnA;
+}
+
+- (void)setDependencyOnA:(ClassADependsOnB *)dependencyOnA
+{
+    _dependencyOnA = dependencyOnA;
+}
+
+
 @end
