@@ -69,6 +69,11 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     return [TyphoonDefinition withClass:clazz key:nil initialization:nil properties:properties];
 }
 
++ (TyphoonDefinition *)withClass:(Class)clazz injections:(TyphoonDefinitionBlock)injections
+{
+    return [TyphoonDefinition withClass:clazz key:nil initialization:nil properties:injections];
+}
+
 + (TyphoonDefinition *)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
     properties:(TyphoonDefinitionBlock)properties
 {
@@ -147,6 +152,13 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     TyphoonMethod *method = [[TyphoonMethod alloc] initWithSelector:selector];
     parametersBlock(method);
     [_injectedMethods addObject:method];
+}
+
+- (void)injectInitializer:(SEL)selector withParameters:(void(^)(TyphoonMethod *initializer))parametersBlock
+{
+    TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:selector];
+    parametersBlock(initializer);
+    self.initializer = initializer;
 }
 
 - (void)setInitializer:(TyphoonMethod *)initializer

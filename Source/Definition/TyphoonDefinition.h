@@ -227,6 +227,8 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
 + (TyphoonDefinition *)withClass:(Class)clazz factory:(TyphoonDefinition *)definition selector:(SEL)selector;
 
++ (TyphoonDefinition *)withClass:(Class)clazz injections:(TyphoonDefinitionBlock)injections;
+
 /* ====================================================================================================================================== */
 #pragma mark Injection
 
@@ -244,8 +246,18 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
  */
 - (void)injectProperty:(SEL)selector with:(id)injection;
 
-
+/** 
+ * Injects method with specified by selector with parameters. 
+ * @see TyphoonMethod documentation for information about parameters
+ */
 - (void)injectMethod:(SEL)selector withParameters:(void(^)(TyphoonMethod *method))parametersBlock;
+
+/**
+ * Injects initializer specified by selector and parameters. 
+ * Initializer allow you to create object with special selector and params. Without this injection,
+ * object will be created by 'alloc-init' calls
+ */
+- (void)injectInitializer:(SEL)selector withParameters:(void(^)(TyphoonMethod *initializer))parametersBlock;
 
 #pragma mark Making injections from definition
 

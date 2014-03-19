@@ -144,11 +144,11 @@
 
 /* Actually 'damselsRescued' replaced with InjectionWithRuntimeArgumentAtIndex(0) and url replaced with InjectionWithRuntimeArgumentAtIndex(1) */
 - (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeQuestUrl:(NSURL *)url
-{
-    return [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonMethod *initializer) {
-        [initializer setSelector:@selector(initWithQuest:)];
-        [initializer injectParameterWith:[self questWithRuntimeUrl:url]];
-    } properties:^(TyphoonDefinition *definition) {
+{    
+    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+        [definition injectInitializer:@selector(initWithQuest:) withParameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:[self questWithRuntimeUrl:url]];
+        }];
         [definition injectProperty:@selector(damselsRescued) with:damselsRescued];
     }];
 }
