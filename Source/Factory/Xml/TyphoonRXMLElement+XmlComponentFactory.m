@@ -104,12 +104,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
                 [collectionArray addObject:TyphoonInjectionWithReference([child text])];
             }
             else if ([[child tag] isEqualToString:@"value"]) {
-                Class type = NSClassFromString([child attribute:@"requiredType"]);
-                if (!type) {
-                    [NSException raise:NSInvalidArgumentException format:@"Type '%@' could not be resolved.",
-                                                                         [child attribute:@"requiredType"]];
-                }
-                [collectionArray addObject:TyphoonInjectionWithObjectFromStringWithType([child text], type)];
+                [collectionArray addObject:TyphoonInjectionWithObjectFromString([child text])];
             }
         }];
 
@@ -260,19 +255,12 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 
     }
     else if (value) {
-        NSString *classAsString = [child attribute:@"required-class"];
-        Class clazz;
-        if (classAsString) {
-            clazz = NSClassFromString(classAsString);
-            if (clazz == nil) {
-                [NSException raise:NSInvalidArgumentException format:@"Class '%@' could not be resolved.", classAsString];
-            }
-        }
+
         if (name) {
-            [initializer injectParameter:name with:TyphoonInjectionWithObjectFromStringWithType(value, clazz)];
+            [initializer injectParameter:name with:TyphoonInjectionWithObjectFromString(value)];
         }
         else if (index) {
-            [initializer injectParameterAtIndex:[index integerValue] with:TyphoonInjectionWithObjectFromStringWithType(value, clazz)];
+            [initializer injectParameterAtIndex:[index integerValue] with:TyphoonInjectionWithObjectFromString(value)];
         }
 
         // TODO: should raise exception instead of silently failing
@@ -299,12 +287,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
                 [collectionArray addObject:TyphoonInjectionWithReference([child text])];
             }
             else if ([[child tag] isEqualToString:@"value"]) {
-                Class type = NSClassFromString([child attribute:@"requiredType"]);
-                if (!type) {
-                    [NSException raise:NSInvalidArgumentException format:@"Type '%@' could not be resolved.",
-                                                                         [child attribute:@"requiredType"]];
-                }
-                [collectionArray addObject:TyphoonInjectionWithObjectFromStringWithType([child text], type)];
+                [collectionArray addObject:TyphoonInjectionWithObjectFromString([child text])];
             }
         }];
 

@@ -33,15 +33,17 @@
 - (id)supportedType
 {
     if (_isMutable) {
-        return [NSMutableString class];
+        return @"NSMutableString";
     }
     else {
-        return [NSString class];
+        return @"NSString";
     }
 }
 
 - (id)convert:(NSString *)stringValue
 {
+    stringValue = [TyphoonTypeConverterRegistry textWithoutTypeFromTextValue:stringValue];
+    
     if (_isMutable) {
         return [NSMutableString stringWithString:stringValue];
     }

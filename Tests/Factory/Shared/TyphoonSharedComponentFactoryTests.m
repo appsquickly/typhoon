@@ -57,8 +57,7 @@
     // Unregister NSNull converter picked up in infrastructure components assembly.
     // Try/catch to make the correct test fail if converterFor: throws an exception because of missing converter.
     @try {
-        TyphoonTypeDescriptor *nullDescriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:[NSNull class]];
-        id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:nullDescriptor];
+        id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterForType:@"NSNull"];
         [[TyphoonTypeConverterRegistry shared] unregisterTypeConverter:converter];
     }
     @catch (NSException *exception) {}
@@ -199,8 +198,7 @@
 
 - (void)test_type_converter_recognized
 {
-    TyphoonTypeDescriptor *nullDescriptor = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:[NSNull class]];
-    id <TyphoonTypeConverter> nullConverter = [[TyphoonTypeConverterRegistry shared] converterFor:nullDescriptor];
+    id <TyphoonTypeConverter> nullConverter = [[TyphoonTypeConverterRegistry shared] converterForType:@"NSNull"];
     assertThat(nullConverter, notNilValue());
 }
 

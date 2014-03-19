@@ -15,7 +15,7 @@
 
 - (id)supportedType
 {
-    return [NSNull class];
+    return @"NSNull";
 }
 
 - (id)convert:(NSString *)stringValue

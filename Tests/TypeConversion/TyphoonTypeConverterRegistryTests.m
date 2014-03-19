@@ -35,16 +35,8 @@
 
 - (void)test_raises_exception_when_converter_class_not_registered
 {
-    TyphoonTypeDescriptor *typeDescriptor = [self typhoon_typeForPropertyWithName:@"data"];
-
-    @try {
-        id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterFor:typeDescriptor];
-        NSLog(@"here's the converter: %@", converter);
-        STFail(@"Should've thrown exception");
-    }
-    @catch (NSException *e) {
-        assertThat([e description], equalTo(@"No type converter registered for type: 'NSData'."));
-    }
+    id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterForType:@"NSData"];
+    assertThat(converter, nilValue());
 }
 
 - (void)test_raises_exception_when_converter_registered_more_than_once

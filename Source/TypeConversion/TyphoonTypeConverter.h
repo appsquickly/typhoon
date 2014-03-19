@@ -11,8 +11,8 @@
 
 
 #import <Foundation/Foundation.h>
+#import "TyphoonTypeConverterRegistry.h"
 
-@class TyphoonTypeDescriptor;
 
 /**
 * Declares a contract for converting configuration arguments to their required runtime type.
@@ -22,7 +22,7 @@
 /**
  The supported type of the converter. Class or protocol.
  */
-- (id)supportedType;
+- (NSString *)supportedType;
 
 /**
  Converts the given string into the supported type.
@@ -30,3 +30,4 @@
 - (id)convert:(NSString *)stringValue;
 
 @end
+

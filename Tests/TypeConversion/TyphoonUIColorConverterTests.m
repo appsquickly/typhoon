@@ -27,8 +27,7 @@
 - (void)setUp
 {
     [super setUp];
-    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"color"];
-    self.converter = [[TyphoonTypeConverterRegistry shared] converterFor:descriptor];
+    self.converter = [[TyphoonTypeConverterRegistry shared] converterForType:@"UIColor"];
 
 }
 
@@ -47,25 +46,25 @@
 
 - (void)test_converts_hex_string
 {
-    UIColor *color = [self.converter convert:@"#ffffff"];
+    UIColor *color = [self.converter convert:@"UIColor(#ffffff)"];
     [self assertColor:color red:1.0f green:1.0f blue:1.0f alpha:1.0f];
 }
 
 - (void)test_converts_hex_string_with_alpha
 {
-    UIColor *color = [self.converter convert:@"#00ffffff"];
+    UIColor *color = [self.converter convert:@"UIColor(#00ffffff)"];
     [self assertColor:color red:1.0f green:1.0f blue:1.0f alpha:0.0f];
 }
 
 - (void)test_converts_css_style_rgb
 {
-    UIColor *color = [self.converter convert:@"rgb(255,255,255)"];
+    UIColor *color = [self.converter convert:@"UIColor(255,255,255)"];
     [self assertColor:color red:1.0f green:1.0f blue:1.0f alpha:1.0f];
 }
 
 - (void)test_converts_css_style_rgba
 {
-    UIColor *color = [self.converter convert:@"rgba(255,255,255,0.5)"];
+    UIColor *color = [self.converter convert:@"UIColor(255,255,255,0.5)"];
     [self assertColor:color red:1.0f green:1.0f blue:1.0f alpha:0.5f];
 }
 

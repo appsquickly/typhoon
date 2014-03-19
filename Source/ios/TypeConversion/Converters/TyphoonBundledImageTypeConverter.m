@@ -18,11 +18,12 @@
 
 - (id)supportedType
 {
-    return [UIImage class];
+    return @"UIImage";
 }
 
 - (id)convert:(NSString *)stringValue
 {
+    stringValue = [TyphoonTypeConverterRegistry textWithoutTypeFromTextValue:stringValue];
     __autoreleasing UIImage *image = [UIImage imageNamed:stringValue];
     return image;
 }

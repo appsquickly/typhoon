@@ -30,11 +30,7 @@ id TyphoonInjectionMatchedByType(void) {
 }
 
 id TyphoonInjectionWithObjectFromString(NSString *string) {
-    return TyphoonInjectionWithObjectFromStringWithType(string, nil);
-}
-
-id TyphoonInjectionWithObjectFromStringWithType(NSString *string, Class reqiuredType) {
-    return [[TyphoonInjectionByObjectFromString alloc] initWithString:string objectClass:reqiuredType];
+    return [[TyphoonInjectionByObjectFromString alloc] initWithString:string];
 }
 
 id TyphoonInjectionWithCollectionAndType(id collection, Class requiredClass) {

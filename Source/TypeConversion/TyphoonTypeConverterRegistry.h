@@ -31,10 +31,18 @@
 */
 + (TyphoonTypeConverterRegistry *)shared;
 
+
++ (NSString *)typeFromTextValue:(NSString *)textValue;
++ (NSString *)textWithoutTypeFromTextValue:(NSString *)textValue;
+
 /**
-* Returns the type converter for the given type either a Class object or @protocol(SomeType).
-*/
-- (id <TyphoonTypeConverter>)converterFor:(TyphoonTypeDescriptor *)typeDescriptor;
+ * Returns the type converter for the given type string. Usually type is class of object you want to convert.
+ * For example for NSURL type, you should use next syntax in properties file.
+ * @code
+ * key=NSURL(http://example.com)
+ * @endcode
+ */
+- (id <TyphoonTypeConverter>)converterForType:(NSString *)type;
 
 /**
 * Returns the type converter for primitives - BOOLS, ints, floats, etc.

@@ -10,8 +10,6 @@ id TyphoonInjectionMatchedByType(void);
 
 id TyphoonInjectionWithObjectFromString(NSString *string);
 
-id TyphoonInjectionWithObjectFromStringWithType(NSString *string, Class objectClass);
-
 id TyphoonInjectionWithCollectionAndType(id collection, Class requiredClass);
 
 id TyphoonInjectionWithDictionaryAndType(id dictionary, Class requiredClass);

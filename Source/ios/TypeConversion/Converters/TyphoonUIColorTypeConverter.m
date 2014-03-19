@@ -19,7 +19,7 @@
 
 - (id)supportedType
 {
-    return [UIColor class];
+    return @"UIColor";
 }
 
 - (UIColor *)colorFromRed:(NSUInteger)red green:(NSUInteger)green blue:(NSUInteger)blue alpha:(CGFloat)alpha
@@ -49,9 +49,6 @@
 
 - (UIColor *)colorFromCssStyleString:(NSString *)cssString
 {
-    cssString = [[[cssString stringByReplacingOccurrencesOfString:@"rgb(" withString:@""]
-        stringByReplacingOccurrencesOfString:@"rgba(" withString:@""] stringByReplacingOccurrencesOfString:@")" withString:@""];
-
     NSArray *colorComponents = [cssString componentsSeparatedByString:@","];
 
     unsigned int red, green, blue;
@@ -64,7 +61,7 @@
         sscanf([cssString UTF8String], "%d,%d,%d,%f", &red, &green, &blue, &alpha);
     }
     else {
-        [NSException raise:NSInvalidArgumentException format:@"%@ requires css style format rgb(r,g,b) or rgba(r,g,b,a).",
+        [NSException raise:NSInvalidArgumentException format:@"%@ requires css style format UIColor(r,g,b) or UIColor(r,g,b,a).",
                                                              NSStringFromClass([self class])];
     }
     return [self colorFromRed:red green:green blue:blue alpha:alpha];
@@ -72,18 +69,17 @@
 
 - (id)convert:(NSString *)stringValue
 {
+    stringValue = [TyphoonTypeConverterRegistry textWithoutTypeFromTextValue:stringValue];
+
     UIColor *color = nil;
 
     if ([stringValue hasPrefix:@"#"] || [stringValue hasPrefix:@"0x"]) {
         color = [self colorFromHexString:stringValue];
     }
-    else if ([stringValue hasPrefix:@"rgb"]) {
+    else {
         color = [self colorFromCssStyleString:stringValue];
     }
-    else {
-        [NSException raise:NSInvalidArgumentException format:@"%@ does not support the color format %@", NSStringFromClass([self class]),
-                                                             stringValue];
-    }
+    
     return color;
 }
 

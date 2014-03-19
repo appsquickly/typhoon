@@ -42,6 +42,35 @@
     return instance;
 }
 
++ (NSString *)typeFromTextValue:(NSString *)textValue
+{
+    NSString *type = nil;
+    
+    NSRange openBraceRange = [textValue rangeOfString:@"("];
+    BOOL hasBraces = [textValue hasSuffix:@")"] && openBraceRange.location != NSNotFound;
+    if (hasBraces) {
+        type = [textValue substringToIndex:openBraceRange.location];
+    }
+    
+    return type;
+}
+
++ (NSString *)textWithoutTypeFromTextValue:(NSString *)textValue
+{
+    NSString *result = textValue;
+    
+    NSRange openBraceRange = [textValue rangeOfString:@"("];
+    BOOL hasBraces = [textValue hasSuffix:@")"] && openBraceRange.location != NSNotFound;
+    
+    if (hasBraces) {
+        NSRange range = NSMakeRange(openBraceRange.location + openBraceRange.length, 0);
+        range.length = [textValue length] - range.location - 1;
+        result = [textValue substringWithRange:range];
+    }
+    
+    return result;
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
@@ -64,16 +93,9 @@
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (id <TyphoonTypeConverter>)converterFor:(TyphoonTypeDescriptor *)typeDescriptor
+- (id <TyphoonTypeConverter>)converterForType:(NSString *)type
 {
-
-    id <TyphoonTypeConverter> converter = [_typeConverters objectForKey:[typeDescriptor classOrProtocol]];
-    if (!converter) {
-        [NSException raise:NSInvalidArgumentException format:@"No type converter registered for type: '%@'.",
-                                                             [typeDescriptor classOrProtocol]];
-
-    }
-    return converter;
+    return [_typeConverters objectForKey:type];
 }
 
 - (TyphoonPrimitiveTypeConverter *)primitiveTypeConverter
@@ -83,14 +105,12 @@
 
 - (void)registerTypeConverter:(id <TyphoonTypeConverter>)converter;
 {
-    id classOrProtocol = [converter supportedType];
-    if (!([_typeConverters objectForKey:classOrProtocol])) {
-        [_typeConverters setObject:converter forKey:(id <NSCopying>) classOrProtocol];
+    NSString *type = [converter supportedType];
+    if (!([_typeConverters objectForKey:type])) {
+        [_typeConverters setObject:converter forKey:type];
     }
     else {
-        BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
-        NSString *name = isClass ? NSStringFromClass(classOrProtocol) : NSStringFromProtocol(classOrProtocol);
-        [NSException raise:NSInvalidArgumentException format:@"Converter for '%@' already registered.", name];
+        [NSException raise:NSInvalidArgumentException format:@"Converter for '%@' already registered.", type];
     }
 }
 

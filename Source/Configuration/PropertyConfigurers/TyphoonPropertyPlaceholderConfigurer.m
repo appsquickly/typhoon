@@ -129,10 +129,6 @@
 @end
 
 id TyphoonConfig(NSString *configKey) {
-    return TyphoonConfigWithType(configKey, nil);
-}
-
-id TyphoonConfigWithType(NSString *configKey, Class requiredType) {
     NSString *key = [NSString stringWithFormat:@"${%@}", configKey];
-    return TyphoonInjectionWithObjectFromStringWithType(key, requiredType);
+    return TyphoonInjectionWithObjectFromString(key);
 }
