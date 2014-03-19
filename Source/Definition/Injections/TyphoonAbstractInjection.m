@@ -27,11 +27,10 @@
     }
 }
 
-- (void)setParameterIndex:(NSUInteger)index withInitializer:(TyphoonMethod *)initializer
+- (void)setParameterIndex:(NSUInteger)index
 {
     NSAssert(self.type != TyphoonInjectionTypeProperty, @"Trying to redefine injection with type %d", (int) self.type);
     _parameterIndex = index;
-    _initializer = initializer;
     _type = TyphoonInjectionTypeParameter;
 }
 
@@ -78,7 +77,7 @@
     }
 
     if (self.type == TyphoonInjectionTypeParameter) {
-        return self.parameterIndex == base.parameterIndex && self.initializer == base.initializer;
+        return self.parameterIndex == base.parameterIndex;
     }
     else if (self.type == TyphoonInjectionTypeProperty) {
         return [self.propertyName isEqualToString:base.propertyName];
@@ -120,7 +119,7 @@
         [copiedInjection setPropertyName:_propertyName];
     }
     else if (self.type == TyphoonInjectionTypeParameter) {
-        [copiedInjection setParameterIndex:_parameterIndex withInitializer:_initializer];
+        [copiedInjection setParameterIndex:_parameterIndex];
     }
 }
 

@@ -13,7 +13,7 @@
 
 @protocol TyphoonParameterInjection <NSObject, NSCopying>
 
-- (void)setParameterIndex:(NSUInteger)index withInitializer:(TyphoonMethod *)initializer;
+- (void)setParameterIndex:(NSUInteger)index;
 
 - (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
     args:(TyphoonRuntimeArguments *)args;

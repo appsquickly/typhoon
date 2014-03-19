@@ -16,4 +16,5 @@
 
 @interface ExtendedMiddleAgesAssembly : MiddleAgesAssembly
 
+
 @end

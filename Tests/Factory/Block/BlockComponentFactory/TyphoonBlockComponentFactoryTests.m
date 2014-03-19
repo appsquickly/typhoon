@@ -59,5 +59,14 @@
     LogTrace(@"%@", knight.propertyInjectedAsInstance);
 }
 
+- (void)test_method_injection
+{
+    Knight *knight = [(MiddleAgesAssembly *)_componentFactory knightWithMethodInjection];
+    
+    assertThat(knight.quest, notNilValue());
+    assertThatUnsignedInteger(knight.damselsRescued, equalToUnsignedInteger(321));
+
+}
+
 @end
 

@@ -170,11 +170,20 @@
 
 - (id)knightClassMethodInit
 {
-    return [TyphoonDefinition withClass:[Knight class]  initialization:^(TyphoonMethod *initializer) {
+    return [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonMethod *initializer) {
         [initializer setSelector:@selector(knightWithDamselsRescued:)];
         [initializer injectParameterWith:@(13)];
     }];
 }
 
+- (id)knightWithMethodInjection
+{
+    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+        [definition injectMethod:@selector(setQuest:andDamselsRescued:) withParameters:^(TyphoonMethod *method) {
+            [method injectParameterWith:[self defaultQuest]];
+            [method injectParameterWith:@321];
+        }];
+    }];
+}
 
 @end

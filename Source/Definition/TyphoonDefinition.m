@@ -209,6 +209,24 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     return [[parentProperties setByAddingObjectsFromSet:_injectedProperties] copy];
 }
 
+- (NSSet *)injectedMethods
+{
+    NSMutableSet *parentMethods = [_parent injectedMethods] ? [[_parent injectedMethods] mutableCopy] : [NSMutableSet set];
+    
+    NSMutableArray *overriddenMethods = [NSMutableArray array];
+    [parentMethods enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+        if ([_injectedMethods containsObject:obj]) {
+            [overriddenMethods addObject:obj];
+        }
+    }];
+    
+    for (TyphoonMethod *overriddenMethod in overriddenMethods) {
+        [parentMethods removeObject:overriddenMethod];
+    }
+    
+    return [[parentMethods setByAddingObjectsFromSet:_injectedMethods] copy];
+}
+
 - (BOOL)hasRuntimeArgumentInjections
 {
     return [[self.initializer parametersInjectedByRuntimeArgument] count] > 0 || [[self propertiesInjectedByRuntimeArgument] count] > 0;

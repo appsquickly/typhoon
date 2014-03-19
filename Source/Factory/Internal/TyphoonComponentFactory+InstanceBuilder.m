@@ -129,6 +129,17 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 }
 
 /* ====================================================================================================================================== */
+#pragma mark - Methods Injection
+
+- (void)doMethodsInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
+{
+    for (TyphoonMethod *method in [definition injectedMethods]) {
+        NSInvocation *invocation = [method newInvocationOnClass:[instance class] withFactory:self args:args];
+        [invocation invokeWithTarget:instance];
+    }
+}
+
+/* ====================================================================================================================================== */
 #pragma mark - Property Injection
 
 - (void)doPropertyInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
@@ -138,6 +149,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     for (id <TyphoonPropertyInjection> property in [definition injectedProperties]) {
         [self doPropertyInjection:instance property:property args:args];
     }
+    
+    [self doMethodsInjectionEventsOn:instance withDefinition:definition args:args];
 
     [self injectAssemblyOnInstanceIfTyphoonAware:instance];
     [self injectCircularDependenciesOn:instance];

@@ -12,7 +12,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class TyphoonMethod;
+#import "TyphoonMethod.h"
 @class TyphoonDefinition;
 @class TyphoonRuntimeArguments;
 
@@ -264,5 +264,6 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 - (id)keyPath:(NSString *)keyPath;
 
 - (NSSet *)injectedProperties;
+- (NSSet *)injectedMethods;
 
 @end

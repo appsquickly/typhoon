@@ -60,6 +60,13 @@
 }
 
 /* ========================================================== Interface Methods ========================================================= */
+
+- (void)setQuest:(id<Quest>)quest andDamselsRescued:(NSUInteger)damselsRescued
+{
+    self.quest = quest;
+    self.damselsRescued = damselsRescued;
+}
+
 - (void)setQuest:(CampaignQuest *)quest
 {
     _quest = quest;

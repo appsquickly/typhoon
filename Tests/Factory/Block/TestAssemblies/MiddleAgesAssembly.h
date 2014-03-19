@@ -44,4 +44,7 @@
 
 - (id)knightClassMethodInit;
 
+- (id)knightWithMethodInjection;
+
+
 @end

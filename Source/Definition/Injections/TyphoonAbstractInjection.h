@@ -24,7 +24,6 @@ typedef NS_ENUM(NSInteger, TyphoonInjectionType) {
 
 /* TyphoonInjectionTypeParameter properties */
 @property(nonatomic, readonly) NSUInteger parameterIndex;
-@property(nonatomic, readonly, weak) TyphoonMethod *initializer;
 
 @end
 

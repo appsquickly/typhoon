@@ -66,7 +66,7 @@
 {
     if ([self canAddParameterAtIndex:index]) {
         injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);
-        [injection setParameterIndex:index withInitializer:self];
+        [injection setParameterIndex:index];
         [self addParameterInjection:injection];
     }
 }
@@ -161,6 +161,35 @@
     return copy;
 }
 
+- (NSUInteger)hash
+{
+    return (NSUInteger)sel_getName(_selector);
+}
+
+
+- (BOOL)isEqual:(id)other
+{
+    if (other == self) {
+        return YES;
+    }
+    if (!other || ![[other class] isEqual:[self class]]) {
+        return NO;
+    }
+    
+    return [self isEqualToMethod:other];
+}
+
+- (BOOL)isEqualToMethod:(TyphoonMethod *)method
+{
+    if (self == method) {
+        return YES;
+    }
+    if (method == nil) {
+        return NO;
+    }
+    
+    return _selector == method.selector && [method->_injectedParameters isEqualToArray:_injectedParameters];
+}
 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
