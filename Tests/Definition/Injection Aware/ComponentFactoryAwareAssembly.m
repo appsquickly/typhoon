@@ -23,29 +23,30 @@
 
 - (id)injectionByProperty
 {
-    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(componentFactory) with:self];
     }];
 }
 
 - (id)injectionByInitialization
 {
-    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] initialization:^(TyphoonMethod *initializer) {
-        initializer.selector = @selector(initWithComponentFactory);
-        [initializer injectParameterWith:self];
+    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] injections:^(TyphoonDefinition *definition) {
+        [definition injectInitializer:@selector(initWithComponentFactory) withParameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:self];
+        }];
     }];
 }
 
 - (id)injectionByPropertyAssemblyType
 {
-    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(assembly)];
     }];
 }
 
 - (id)injectionByPropertyFactoryType
 {
-    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(componentFactory)];
     }];
 }

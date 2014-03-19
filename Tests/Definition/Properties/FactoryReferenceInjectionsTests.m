@@ -35,7 +35,7 @@ NSString *currentFooString;
 
 - (id)knightSettings
 {
-    return [TyphoonDefinition withClass:[ClassWithKnightSettings class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[ClassWithKnightSettings class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:@(currentDamselsRescued)];
         [definition injectProperty:@selector(hasHorseWillTravel) with:@(currentHasHorseWillTravel)];
         [definition injectProperty:@selector(fooString) with:currentFooString];
@@ -69,7 +69,7 @@ NSString *currentFooString;
 {
     Knight *knight = [Knight new];
 
-    TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:@(30)];
         [definition injectProperty:@selector(hasHorseWillTravel) with:@(YES)];
     }];
@@ -86,7 +86,7 @@ NSString *currentFooString;
 
     NSString *testString = @"Hello Knights";
 
-    TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(foobar) with:testString];
     }];
     [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition args:nil];
@@ -105,7 +105,7 @@ NSString *currentFooString;
 
     TyphoonDefinition *settings = [factory definitionForType:[ClassWithKnightSettings class]];
 
-    TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:[settings property:@selector(damselsRescued)]];
         [definition injectProperty:@selector(hasHorseWillTravel) with:[settings property:@selector(hasHorseWillTravel)]];
         [definition injectProperty:@selector(foobar) with:[settings property:@selector(fooString)]];
@@ -127,7 +127,7 @@ NSString *currentFooString;
 
     TyphoonDefinition *settings = [factory definitionForType:[ClassWithKnightSettings class]];
 
-    TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(foobar) with:[settings keyPath:@"fooString.uppercaseString"]];
     }];
     [factory doPropertyInjectionEventsOn:(id) knight withDefinition:knightDefinition args:nil];
@@ -144,10 +144,11 @@ NSString *currentFooString;
 
     TyphoonDefinition *settings = [factory definitionForType:[ClassWithKnightSettings class]];
 
-    TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonMethod *initializer) {
-        [initializer setSelector:@selector(initWithDamselsRescued:foo:)];
-        [initializer injectParameterWith:[settings property:@selector(damselsRescued)]];
-        [initializer injectParameterWith:[settings keyPath:@"fooString.uppercaseString"]];
+    TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+        [definition injectInitializer:@selector(initWithDamselsRescued:foo:) withParameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:[settings property:@selector(damselsRescued)]];
+            [initializer injectParameterWith:[settings keyPath:@"fooString.uppercaseString"]];
+        }];
     }];
 
     [factory registerDefinition:knightDefinition];

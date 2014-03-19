@@ -25,7 +25,7 @@
 
 - (id)classA
 {
-    return [TyphoonDefinition withClass:[ClassADependsOnB class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[ClassADependsOnB class] injections:^(TyphoonDefinition *definition) {
         [definition injectMethod:@selector(setDependencyOnB:) withParameters:^(TyphoonMethod *method) {
             [method injectParameterWith:[self classB]];
         }];
@@ -34,7 +34,7 @@
 
 - (id)classB
 {
-    return [TyphoonDefinition withClass:[ClassBDependsOnA class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[ClassBDependsOnA class] injections:^(TyphoonDefinition *definition) {
         [definition injectMethod:@selector(setDependencyOnA:) withParameters:^(TyphoonMethod *method) {
             [method injectParameterWith:[self classA]];
         }];
@@ -43,7 +43,7 @@
 
 - (id)classC;
 {
-    return [TyphoonDefinition withClass:[ClassCDependsOnDAndE class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[ClassCDependsOnDAndE class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnD) with:[self classD]];
         [definition injectProperty:@selector(dependencyOnE) with:[self classE]];
     }];
@@ -51,14 +51,14 @@
 
 - (id)classD;
 {
-    return [TyphoonDefinition withClass:[ClassDDependsOnC class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[ClassDDependsOnC class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnC) with:[self classC]];
     }];
 }
 
 - (id)classE;
 {
-    return [TyphoonDefinition withClass:[ClassEDependsOnC class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[ClassEDependsOnC class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnC) with:[self classC]];
     }];
 }
@@ -84,17 +84,17 @@
 
 - (id)prototypeInitInjected
 {
-    return [TyphoonDefinition withClass:[PrototypeInitInjected class] initialization:^(TyphoonMethod *initializer) {
-        initializer.selector = @selector(initWithDependency:);
-        [initializer injectParameterWith:[self prototypePropertyInjected]];
-    } properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[PrototypeInitInjected class] injections:^(TyphoonDefinition *definition) {
+        [definition injectInitializer:@selector(initWithDependency:) withParameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:[self prototypePropertyInjected]];
+        }];
         [definition setScope:TyphoonScopePrototype];
     }];
 }
 
 - (id)prototypePropertyInjected
 {
-    return [TyphoonDefinition withClass:[PrototypePropertyInjected class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[PrototypePropertyInjected class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(prototypeInitInjected) with:[self prototypeInitInjected]];
         [definition setScope:TyphoonScopePrototype];
     }];
@@ -104,7 +104,7 @@
 
 - (id)croSingletonA
 {
-    return [TyphoonDefinition withClass:[CROSingletonA class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[CROSingletonA class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(prototypeB) with:[self croPrototypeB]];
         [definition injectProperty:@selector(prototypeA) with:[self croPrototypeA]];
         [definition setScope:TyphoonScopeSingleton];
@@ -113,25 +113,28 @@
 
 - (id)croSingletonB
 {
-    return [TyphoonDefinition withClass:[CROSingletonB class] initialization:^(TyphoonMethod *initializer) {
-        initializer.selector = @selector(initWithPrototypeB:);
-        [initializer injectParameterWith:[self croPrototypeB]];
+    return [TyphoonDefinition withClass:[CROSingletonB class] injections:^(TyphoonDefinition *definition) {
+        [definition injectInitializer:@selector(initWithPrototypeB:) withParameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:[self croPrototypeB]];
+        }];
     }];
 }
 
 - (id)croPrototypeA
 {
-    return [TyphoonDefinition withClass:[CROPrototypeA class] initialization:^(TyphoonMethod *initializer) {
-        initializer.selector = @selector(initWithCROPrototypeB:);
-        [initializer injectParameterWith:[self croPrototypeB]];
+    return [TyphoonDefinition withClass:[CROPrototypeA class] injections:^(TyphoonDefinition *definition) {
+        [definition injectInitializer:@selector(initWithCROPrototypeB:) withParameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:[self croPrototypeB]];
+        }];
     }];
 }
 
 - (id)croPrototypeB
 {
-    return [TyphoonDefinition withClass:[CROPrototypeB class] initialization:^(TyphoonMethod *initializer) {
-        initializer.selector = @selector(initWithCROSingletonA:);
-        [initializer injectParameterWith:[self croSingletonA]];
+    return [TyphoonDefinition withClass:[CROPrototypeB class] injections:^(TyphoonDefinition *definition) {
+        [definition injectInitializer:@selector(initWithCROSingletonA:) withParameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:[self croSingletonA]];
+        }];
     }];
 }
 
@@ -139,10 +142,10 @@
 
 - (id)incorrectPrototypeB
 {
-    return [TyphoonDefinition withClass:[CROPrototypeB class] initialization:^(TyphoonMethod *initializer) {
-        initializer.selector = @selector(initWithCROPrototypeA:);
-        [initializer injectParameterWith:[self incorrectPrototypeA]];
-    } properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[CROPrototypeB class] injections:^(TyphoonDefinition *definition) {
+        [definition injectInitializer:@selector(initWithCROPrototypeA:) withParameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:[self incorrectPrototypeA]];
+        }];
         definition.key = @"incorrectPrototypeB";
         definition.scope = TyphoonScopePrototype;
     }];
@@ -150,10 +153,10 @@
 
 - (id)incorrectPrototypeA
 {
-    return [TyphoonDefinition withClass:[CROPrototypeA class] initialization:^(TyphoonMethod *initializer) {
-        initializer.selector = @selector(initWithCROPrototypeB:);
-        [initializer injectParameterWith:[self incorrectPrototypeB]];
-    } properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[CROPrototypeA class] injections:^(TyphoonDefinition *definition) {
+        [definition injectInitializer:@selector(initWithCROPrototypeB:) withParameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:[self incorrectPrototypeB]];
+        }];
         definition.key = @"incorrectPrototypeA";
         definition.scope = TyphoonScopePrototype;
     }];

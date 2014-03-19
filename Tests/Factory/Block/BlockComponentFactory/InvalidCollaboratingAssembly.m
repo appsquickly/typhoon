@@ -23,7 +23,7 @@
 
 - (id)knightWithExternalQuest
 {
-    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest) with:[[MiddleAgesAssembly assembly] environmentDependentQuest]];
     }];
 }

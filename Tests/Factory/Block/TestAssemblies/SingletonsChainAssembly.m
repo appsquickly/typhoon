@@ -17,7 +17,7 @@
 
 - (id)singletonA
 {
-    return [TyphoonDefinition withClass:[SingletonA class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[SingletonA class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnB) with:[self singletonB]];
         [definition setScope:TyphoonScopeSingleton];
     }];
@@ -25,7 +25,7 @@
 
 - (id)singletonB
 {
-    return [TyphoonDefinition withClass:[SingletonB class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[SingletonB class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnNotSingletonA) with:[self notSingletonA]];
         [definition setScope:TyphoonScopeSingleton];
     }];
@@ -33,9 +33,10 @@
 
 - (id)notSingletonA
 {
-    return [TyphoonDefinition withClass:[NotSingletonA class] initialization:^(TyphoonMethod *initializer) {
-        initializer.selector = @selector(initWithSingletonA:);
-        [initializer injectParameterWith:[self singletonA]];
+    return [TyphoonDefinition withClass:[NotSingletonA class] injections:^(TyphoonDefinition *definition) {
+        [definition injectInitializer:@selector(initWithSingletonA:) withParameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:[self singletonA]];
+        }];
     }];
 }
 

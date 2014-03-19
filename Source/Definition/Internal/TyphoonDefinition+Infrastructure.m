@@ -50,15 +50,12 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 + (instancetype)propertyPlaceholderWithResources:(NSArray *)resources
 {
-    TyphoonDefinition
-        *definition = [self withClass:[TyphoonPropertyPlaceholderConfigurer class] initialization:^(TyphoonMethod *initializer) {
-
-        initializer.selector = @selector(configurerWithResourceList:);
-        [initializer injectParameterWith:resources];
-
+    return [self withClass:[TyphoonPropertyPlaceholderConfigurer class] injections:^(TyphoonDefinition *definition) {
+        [definition injectInitializer:@selector(configurerWithResourceList:) withParameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:resources];
+        }];
+        definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), [[resources firstObject] description]];
     }];
-    definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), [[resources firstObject] description]];
-    return definition;
 }
 
 /* ====================================================================================================================================== */

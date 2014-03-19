@@ -109,16 +109,16 @@
 
 - (void)test_inherits_all_parent_properties
 {
-    TyphoonDefinition *longLostAncestor = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *longLostAncestor = [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(hasHorseWillTravel) with:@(YES)];
     }];
 
-    TyphoonDefinition *parent = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *parent = [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:@(12)];
         [definition setParent:longLostAncestor];
     }];
 
-    TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(foobar) with:@"foobar!"];
         [definition setParent:parent];
     }];
@@ -129,11 +129,11 @@
 
 - (void)test_child_properties_override_parent_properties
 {
-    TyphoonDefinition *parent = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *parent = [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:@(12)];
     }];
 
-    TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:@(346)];
         [definition setParent:parent];
     }];
@@ -146,11 +146,11 @@
 
 - (void)test_child_inherits_parent_scope_if_not_explicitly_set
 {
-    TyphoonDefinition *parent = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *parent = [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
         [definition setScope:TyphoonScopeSingleton];
     }];
 
-    TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:@(346)];
         [definition setParent:parent];
     }];
@@ -160,11 +160,11 @@
 
 - (void)test_child_overrides_parent_scope_if_explicitly_set
 {
-    TyphoonDefinition *parent = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *parent = [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
         [definition setScope:TyphoonScopeSingleton];
     }];
 
-    TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:@(346)];
         [definition setScope:TyphoonScopePrototype];
         [definition setParent:parent];
@@ -196,13 +196,13 @@
 - (void)test_performs_copy
 {
 
-    TyphoonDefinition *definition = [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonMethod *initializer) {
-        initializer.selector = @selector(initWithQuest:damselsRescued:);
-        [initializer injectParameterWith:nil];
-        [initializer injectParameterWith:@(12)];
-    } properties:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *definition = [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
 
-
+        [definition injectInitializer:@selector(initWithQuest:damselsRescued:) withParameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:nil];
+            [initializer injectParameterWith:@(12)];
+        }];
+        
         [definition injectProperty:@selector(favoriteDamsels) with:@[
             [TyphoonReferenceDefinition definitionReferringToComponent:@"mary"],
             [TyphoonReferenceDefinition definitionReferringToComponent:@"mary"]

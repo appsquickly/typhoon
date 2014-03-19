@@ -21,14 +21,14 @@
 
 - (id)yetAnotherKnight
 {
-    return [TyphoonDefinition withClass:[Knight class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:@(296000)];
     }];
 }
 
 - (id)environmentDependentQuest
 {
-    return [TyphoonDefinition withClass:[CampaignQuest class] properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[CampaignQuest class] injections:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(imageUrl) with:[NSURL URLWithString:@"www.foobar.com/quest"]];
     }];
 }

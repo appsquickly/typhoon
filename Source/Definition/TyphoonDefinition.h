@@ -218,16 +218,9 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
 + (TyphoonDefinition *)withClass:(Class)clazz;
 
-+ (TyphoonDefinition *)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
-    properties:(TyphoonDefinitionBlock)properties;
-
-+ (TyphoonDefinition *)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization;
-
-+ (TyphoonDefinition *)withClass:(Class)clazz properties:(TyphoonDefinitionBlock)properties;
++ (TyphoonDefinition *)withClass:(Class)clazz injections:(TyphoonDefinitionBlock)injections;
 
 + (TyphoonDefinition *)withClass:(Class)clazz factory:(TyphoonDefinition *)definition selector:(SEL)selector;
-
-+ (TyphoonDefinition *)withClass:(Class)clazz injections:(TyphoonDefinitionBlock)injections;
 
 /* ====================================================================================================================================== */
 #pragma mark Injection

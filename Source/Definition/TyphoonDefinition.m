@@ -59,38 +59,16 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     return [[TyphoonDefinition alloc] initWithClass:clazz key:nil];
 }
 
-+ (TyphoonDefinition *)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
-{
-    return [TyphoonDefinition withClass:clazz key:nil initialization:initialization properties:nil];
-}
-
-+ (TyphoonDefinition *)withClass:(Class)clazz properties:(TyphoonDefinitionBlock)properties
-{
-    return [TyphoonDefinition withClass:clazz key:nil initialization:nil properties:properties];
-}
-
 + (TyphoonDefinition *)withClass:(Class)clazz injections:(TyphoonDefinitionBlock)injections
 {
-    return [TyphoonDefinition withClass:clazz key:nil initialization:nil properties:injections];
+    return [TyphoonDefinition withClass:clazz key:nil injections:injections];
 }
 
-+ (TyphoonDefinition *)withClass:(Class)clazz initialization:(TyphoonInitializerBlock)initialization
-    properties:(TyphoonDefinitionBlock)properties
-{
-    return [TyphoonDefinition withClass:clazz key:nil initialization:initialization properties:properties];
-}
-
-+ (TyphoonDefinition *)withClass:(Class)clazz key:(NSString *)key initialization:(TyphoonInitializerBlock)initialization
-    properties:(TyphoonDefinitionBlock)properties
++ (TyphoonDefinition *)withClass:(Class)clazz key:(NSString *)key injections:(TyphoonDefinitionBlock)properties
 {
 
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key];
-    if (initialization) {
-        TyphoonMethod *componentInitializer = [[TyphoonMethod alloc] init];
-        definition.initializer = componentInitializer;
-        __weak TyphoonMethod *weakInitializer = componentInitializer;
-        initialization(weakInitializer);
-    }
+
     if (properties) {
         __weak TyphoonDefinition *weakDefinition = definition;
         properties(weakDefinition);
@@ -105,21 +83,10 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     return definition;
 }
 
-+ (TyphoonDefinition *)withClass:(Class)clazz key:(NSString *)key initialization:(TyphoonInitializerBlock)initialization
-{
-    return [TyphoonDefinition withClass:clazz key:key initialization:initialization properties:nil];
-}
-
-+ (TyphoonDefinition *)withClass:(Class)clazz key:(NSString *)key properties:(TyphoonDefinitionBlock)properties
-{
-    return [TyphoonDefinition withClass:clazz key:key initialization:nil properties:properties];
-}
-
 + (TyphoonDefinition *)withClass:(Class)clazz factory:(TyphoonDefinition *)_definition selector:(SEL)selector
 {
-    return [TyphoonDefinition withClass:clazz initialization:^(TyphoonMethod *initializer) {
-        [initializer setSelector:selector];
-    } properties:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:clazz injections:^(TyphoonDefinition *definition) {
+        [definition injectInitializer:@selector(selector) withParameters:nil];
         [definition setFactory:_definition];
     }];
 }
@@ -150,14 +117,18 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 - (void)injectMethod:(SEL)selector withParameters:(void(^)(TyphoonMethod *method))parametersBlock
 {
     TyphoonMethod *method = [[TyphoonMethod alloc] initWithSelector:selector];
-    parametersBlock(method);
+    if (parametersBlock) {
+        parametersBlock(method);
+    }
     [_injectedMethods addObject:method];
 }
 
 - (void)injectInitializer:(SEL)selector withParameters:(void(^)(TyphoonMethod *initializer))parametersBlock
 {
     TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:selector];
-    parametersBlock(initializer);
+    if (parametersBlock) {
+        parametersBlock(initializer);
+    }
     self.initializer = initializer;
 }
 
