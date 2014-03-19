@@ -30,7 +30,7 @@
 
 - (id)injectionByInitialization
 {
-    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] initialization:^(TyphoonInitializer *initializer) {
+    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] initialization:^(TyphoonMethod *initializer) {
         initializer.selector = @selector(initWithComponentFactory);
         [initializer injectParameterWith:self];
     }];

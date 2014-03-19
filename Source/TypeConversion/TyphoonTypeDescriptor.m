@@ -48,7 +48,9 @@
 
 @end
 
-@implementation TyphoonTypeDescriptor
+@implementation TyphoonTypeDescriptor {
+    NSString *_typeCode;
+}
 
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
@@ -104,6 +106,7 @@
             typeCode = [typeCode stringByReplacingOccurrencesOfString:@"T" withString:@""];
             [self parsePrimitiveType:typeCode];
         }
+        _typeCode = typeCode;
     }
     return self;
 }
@@ -119,6 +122,11 @@
     else {
         return _protocol;
     }
+}
+
+- (const char *)encodedType
+{
+    return [_typeCode cStringUsingEncoding:NSUTF8StringEncoding];
 }
 
 /* ====================================================================================================================================== */
@@ -153,6 +161,7 @@
     typeCode = [self extractArrayInformation:typeCode];
     typeCode = [self extractPointerInformation:typeCode];
     typeCode = [self extractStructureInformation:typeCode];
+    typeCode = [self extractObjectInformation:typeCode];
     _primitiveType = [self typeFromTypeCode:typeCode];
 }
 
@@ -185,6 +194,15 @@
         typeCode =
             [[typeCode stringByReplacingOccurrencesOfString:@"{" withString:@""] stringByReplacingOccurrencesOfString:@"}" withString:@""];
         _structureTypeName = [typeCode copy];
+    }
+    return typeCode;
+}
+
+- (NSString *)extractObjectInformation:(NSString *)typeCode
+{
+    if ([typeCode isEqualToString:@"@"]) {
+        _isPrimitive = NO;
+        return @"?";
     }
     return typeCode;
 }

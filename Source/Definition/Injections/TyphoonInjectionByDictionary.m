@@ -118,8 +118,8 @@
     return [self dictionaryWithClass:dictionaryClass withResolvedInjectionsWithFactory:factory args:args];
 }
 
-- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-    args:(TyphoonRuntimeArguments *)args
+- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
+                       args:(TyphoonRuntimeArguments *)args
 {
     if (!self.requiredClass) {
         [NSException raise:NSInvalidArgumentException format:@"Required type is missing on injected dictionary parameter!"];

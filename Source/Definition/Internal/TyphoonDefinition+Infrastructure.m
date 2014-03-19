@@ -17,8 +17,8 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonPropertyPlaceholderConfigurer.h"
 #import "TyphoonResource.h"
-#import "TyphoonInitializer.h"
-#import "TyphoonInitializer+InstanceBuilder.h"
+#import "TyphoonMethod.h"
+#import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonReferenceDefinition.h"
 
 @implementation TyphoonDefinition (Infrastructure)
@@ -51,7 +51,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 + (instancetype)propertyPlaceholderWithResources:(NSArray *)resources
 {
     TyphoonDefinition
-        *definition = [self withClass:[TyphoonPropertyPlaceholderConfigurer class] initialization:^(TyphoonInitializer *initializer) {
+        *definition = [self withClass:[TyphoonPropertyPlaceholderConfigurer class] initialization:^(TyphoonMethod *initializer) {
 
         initializer.selector = @selector(configurerWithResourceList:);
         [initializer injectParameterWith:resources];
@@ -82,6 +82,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
         _key = [key copy];
         _scope = TyphoonScopeObjectGraph;
         _injectedProperties = [[NSMutableSet alloc] init];
+        _injectedMethods = [[NSMutableSet alloc] init];
         if (factoryComponent) {
             _factory = [TyphoonReferenceDefinition definitionReferringToComponent:factoryComponent];
         }
@@ -89,13 +90,6 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     }
     return self;
 }
-
-- (void)dealloc
-{
-    //Null out the __unsafe_unretained property on initializer
-    [_initializer setDefinition:nil];
-}
-
 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods

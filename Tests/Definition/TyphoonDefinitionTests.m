@@ -21,6 +21,7 @@
 #import "TyphoonInjectionByObjectInstance.h"
 #import "TyphoonInjections.h"
 #import "TyphoonInjectionByCollection.h"
+#import "TyphoonMethod+InstanceBuilder.h"
 
 @interface TyphoonDefinitionTests : SenTestCase
 @end
@@ -195,7 +196,7 @@
 - (void)test_performs_copy
 {
 
-    TyphoonDefinition *definition = [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonInitializer *initializer) {
+    TyphoonDefinition *definition = [TyphoonDefinition withClass:[Knight class] initialization:^(TyphoonMethod *initializer) {
         initializer.selector = @selector(initWithQuest:damselsRescued:);
         [initializer injectParameterWith:nil];
         [initializer injectParameterWith:@(12)];

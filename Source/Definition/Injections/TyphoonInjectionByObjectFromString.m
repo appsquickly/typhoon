@@ -13,7 +13,6 @@
 #import "TyphoonTypeConverterRegistry.h"
 #import "TyphoonIntrospectiveNSObject.h"
 #import "TyphoonIntrospectionUtils.h"
-#import "TyphoonInitializer+InstanceBuilder.h"
 #import "TyphoonDefinition.h"
 
 @implementation TyphoonInjectionByObjectFromString
@@ -67,10 +66,17 @@
     return value;
 }
 
-- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-    args:(TyphoonRuntimeArguments *)args
+- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
+                       args:(TyphoonRuntimeArguments *)args
 {
-    TyphoonTypeDescriptor *type = [self typeForParameter];
+    if (self.requiredClass) {
+        type = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:self.requiredClass];
+    } else if (!type.isPrimitive){
+        [NSException raise:NSInvalidArgumentException
+                    format:@"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. "
+         "Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"];
+    }
+    
     if (type.isPrimitive) {
         TyphoonPrimitiveTypeConverter *converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
         [converter setPrimitiveArgumentFor:invocation index:self.parameterIndex + 2 textValue:_textValue requiredType:type];
@@ -82,24 +88,6 @@
     }
 }
 
-- (TyphoonTypeDescriptor *)typeForParameter
-{
-    if (self.requiredClass) {
-        return [TyphoonTypeDescriptor descriptorWithClassOrProtocol:self.requiredClass];
-    }
-    else {
-        BOOL isClass = [self.initializer isClassMethod];
-        Class clazz = self.initializer.definition.factory ? self.initializer.definition.factory.type : self.initializer.definition.type;
-        NSArray *typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:self.initializer.selector ofClass:clazz isClassMethod:isClass];
-
-        if ([[typeCodes objectAtIndex:self.parameterIndex] isEqualToString:@"@"]) {
-            [NSException raise:NSInvalidArgumentException
-                format:@"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. "
-                    "Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"];
-        }
-        return [TyphoonTypeDescriptor descriptorWithTypeCode:[typeCodes objectAtIndex:self.parameterIndex]];
-    }
-}
 
 
 @end

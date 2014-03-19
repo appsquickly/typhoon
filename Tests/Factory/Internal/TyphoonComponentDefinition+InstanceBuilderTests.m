@@ -36,7 +36,7 @@
 - (void)test_injects_required_initializer_dependencies
 {
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    TyphoonInitializer *knightInitializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithQuest:)];
+    TyphoonMethod *knightInitializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithQuest:)];
     [knightInitializer injectParameter:@"quest" with:TyphoonInjectionWithReference(@"quest")];
     [knightDefinition setInitializer:knightInitializer];
     [_componentFactory registerDefinition:knightDefinition];
@@ -52,8 +52,8 @@
 - (void)test_injects_required_initializer_dependencies_with_factory_method
 {
     TyphoonDefinition *urlDefinition = [[TyphoonDefinition alloc] initWithClass:[NSURL class] key:@"url"];
-    TyphoonInitializer *initializer = [[TyphoonInitializer alloc]
-        initWithSelector:@selector(URLWithString:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodYes];
+    TyphoonMethod *initializer = [[TyphoonMethod alloc]
+        initWithSelector:@selector(URLWithString:)];
     [initializer injectParameterWith:@"http://www.appsquick.ly"];
     [urlDefinition setInitializer:initializer];
     [_componentFactory registerDefinition:urlDefinition];
@@ -65,8 +65,8 @@
 - (void)test_injects_initializer_value_as_long
 {
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    TyphoonInitializer *initializer = [[TyphoonInitializer alloc]
-        initWithSelector:@selector(initWithQuest:damselsRescued:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
+    TyphoonMethod *initializer = [[TyphoonMethod alloc]
+        initWithSelector:@selector(initWithQuest:damselsRescued:)];
     [initializer injectParameter:@"quest" with:nil];
     [initializer injectParameter:@"damselsRescued" with:@(12)];
     [knightDefinition setInitializer:initializer];
@@ -80,8 +80,8 @@
 - (void)test_injects_initializer_value_as_collection
 {
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    TyphoonInitializer *knightInitializer = [[TyphoonInitializer alloc]
-        initWithSelector:@selector(initWithQuest:favoriteDamsels:) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodNo];
+    TyphoonMethod *knightInitializer = [[TyphoonMethod alloc]
+        initWithSelector:@selector(initWithQuest:favoriteDamsels:)];
     [knightInitializer injectParameter:@"quest" with:TyphoonInjectionWithReference(@"quest")];
 
     [knightInitializer injectParameter:@"favoriteDamsels" with:@[
@@ -107,7 +107,7 @@
     primitiveStruct->fieldB = LONG_MAX;
 
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[PrimitiveMan class] key:@"primitive"];
-    TyphoonInitializer *initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithIntValue:
+    TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithIntValue:
         unsignedIntValue:
         shortValue:
         unsignedShortValue:

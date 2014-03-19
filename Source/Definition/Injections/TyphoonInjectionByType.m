@@ -38,7 +38,7 @@
     return value;
 }
 
-- (void)setParameterIndex:(NSUInteger)index withInitializer:(TyphoonInitializer *)initializer
+- (void)setParameterIndex:(NSUInteger)index withInitializer:(TyphoonMethod *)initializer
 {
     [NSException raise:NSInternalInconsistencyException format:@"InjectionByType is not supported as parameter injection"];
 }

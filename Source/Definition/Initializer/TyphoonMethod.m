@@ -12,7 +12,7 @@
 
 
 #import "TyphoonCollaboratingAssemblyProxy.h"
-#import "TyphoonInitializer.h"
+#import "TyphoonMethod.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
 #import "TyphoonDefinition.h"
 
@@ -20,44 +20,27 @@
 
 #import "TyphoonInjections.h"
 
-@implementation TyphoonInitializer
+#import <objc/runtime.h>
+
+@implementation TyphoonMethod
 
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithSelector:(SEL)initializer
-{
-    return [self initWithSelector:initializer isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodGuess];
-}
-
-- (id)initWithSelector:(SEL)initializer isClassMethodStrategy:(TyphoonComponentInitializerIsClassMethod)isClassMethod;
+- (id)initWithSelector:(SEL)selector
 {
     self = [super init];
     if (self) {
         _injectedParameters = [[NSMutableArray alloc] init];
-        _isClassMethodStrategy = isClassMethod;
-        self.selector = initializer;
+        self.selector = selector;
     }
     return self;
 }
 
 - (id)init
 {
-    return [self initWithSelector:@selector(init) isClassMethodStrategy:TyphoonComponentInitializerIsClassMethodGuess];
-}
-
-/* ====================================================================================================================================== */
-#pragma mark - Interface Methods
-
-- (TyphoonDefinition *)definition
-{
-    return _definition;
-}
-
-- (NSArray *)injectedParameters
-{
-    return [_injectedParameters copy];
+    return [self initWithSelector:nil];
 }
 
 #pragma mark - manipulations with _injectedParameters
@@ -171,7 +154,7 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    TyphoonInitializer *copy = [[TyphoonInitializer alloc] initWithSelector:_selector isClassMethodStrategy:_isClassMethodStrategy];
+    TyphoonMethod *copy = [[TyphoonMethod alloc] initWithSelector:_selector];
     for (id <TyphoonParameterInjection> parameter in _injectedParameters) {
         [copy addParameterInjection:[parameter copyWithZone:NSDefaultMallocZone()]];
     }

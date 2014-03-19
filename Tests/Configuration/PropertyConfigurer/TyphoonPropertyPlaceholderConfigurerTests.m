@@ -40,7 +40,7 @@
 {
     TyphoonComponentFactory *factory = [[TyphoonComponentFactory alloc] init];
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    knightDefinition.initializer = [[TyphoonInitializer alloc] init];
+    knightDefinition.initializer = [[TyphoonMethod alloc] init];
     knightDefinition.initializer.selector = @selector(initWithQuest:damselsRescued:);
     [knightDefinition.initializer injectParameterWith:nil];
     [knightDefinition.initializer injectParameterWith:TyphoonConfig(@"damsels.rescued")];

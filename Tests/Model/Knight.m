@@ -54,6 +54,11 @@
     return self;
 }
 
++ (id)knightWithDamselsRescued:(NSUInteger)damselsRescued
+{
+    return [[[self class] alloc] initWithDamselsRescued:damselsRescued foo:nil];
+}
+
 /* ========================================================== Interface Methods ========================================================= */
 - (void)setQuest:(CampaignQuest *)quest
 {

@@ -15,7 +15,7 @@
 #import "MiddleAgesAssembly.h"
 #import "TyphoonDefinition.h"
 #import "CavalryMan.h"
-#import "TyphoonInitializer.h"
+#import "TyphoonMethod.h"
 
 @implementation InvalidCollaboratingAssembly_Initializer
 {
@@ -24,7 +24,7 @@
 
 - (id)knightWithExternalQuest
 {
-    return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonInitializer *initializer) {
+    return [TyphoonDefinition withClass:[CavalryMan class] initialization:^(TyphoonMethod *initializer) {
         initializer.selector = @selector(initWithQuest:);
         [initializer injectParameterWith:[[MiddleAgesAssembly assembly] environmentDependentQuest]];
 

@@ -45,15 +45,15 @@
     return nil;
 }
 
-- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-    args:(TyphoonRuntimeArguments *)args
+- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
+                       args:(TyphoonRuntimeArguments *)args
 {
     [[[factory stack] peekForKey:self.reference] instance]; //Raises circular dependencies exception if already initializing.
 
     id factoryReference = [self componentForReferenceWithFactory:factory args:args];
     id valueToInject = [factoryReference valueForKeyPath:_keyPath];
 
-    [self setObject:valueToInject forInvocation:invocation];
+    [self setObject:valueToInject forType:type andInvocation:invocation];
 }
 
 @end

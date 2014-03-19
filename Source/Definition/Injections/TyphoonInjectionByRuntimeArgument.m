@@ -34,11 +34,11 @@
     return [args argumentValueAtIndex:self.runtimeArgumentIndex];
 }
 
-- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-    args:(TyphoonRuntimeArguments *)args
+- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
+                       args:(TyphoonRuntimeArguments *)args
 {
     id runtimeArgument = [args argumentValueAtIndex:self.runtimeArgumentIndex];
-    [self setObject:runtimeArgument forInvocation:invocation];
+    [self setObject:runtimeArgument forType:type andInvocation:invocation];
 }
 
 - (id)copyWithZone:(NSZone *)zone

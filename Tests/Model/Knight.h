@@ -42,5 +42,6 @@
 
 - (NSString *)description;
 
++ (id)knightWithDamselsRescued:(NSUInteger)damselsRescued;
 
 @end

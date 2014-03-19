@@ -12,7 +12,7 @@
 #import "TyphoonViewControllerNibResolver.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
-#import "TyphoonInitializer.h"
+#import "TyphoonMethod.h"
 
 @implementation TyphoonViewControllerNibResolver
 
@@ -39,7 +39,7 @@
 
 - (void)processViewControllerDefinition:(TyphoonDefinition *)definition
 {
-    TyphoonInitializer *initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithNibName:bundle:)];
+    TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithNibName:bundle:)];
     [initializer injectParameterWith:[self resolveNibNameForClass:definition.type]];
     [initializer injectParameterWith:[NSBundle mainBundle]];
     definition.initializer = initializer;
@@ -47,7 +47,7 @@
 
 - (BOOL)shouldProcessDefinition:(TyphoonDefinition *)definition
 {
-    return [definition.type isSubclassOfClass:[UIViewController class]] && definition.initializer.generated;
+    return [definition.type isSubclassOfClass:[UIViewController class]] && definition.initializerGenerated;
 }
 
 @end

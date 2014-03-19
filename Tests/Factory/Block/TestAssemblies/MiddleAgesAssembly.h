@@ -42,4 +42,6 @@
 
 - (id)questWithRuntimeUrl:(NSURL *)url;
 
+- (id)knightClassMethodInit;
+
 @end

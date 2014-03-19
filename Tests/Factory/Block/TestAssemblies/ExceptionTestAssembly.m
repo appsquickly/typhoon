@@ -13,14 +13,14 @@
 
 #import "ExceptionTestAssembly.h"
 #import "TyphoonDefinition.h"
-#import "TyphoonInitializer.h"
+#import "TyphoonMethod.h"
 #import "TyphoonShorthand.h"
 
 @implementation ExceptionTestAssembly
 
 - (id)anotherServiceUrl
 {
-    return [TyphoonDefinition withClass:[NSURL class] initialization:^(TyphoonInitializer *initializer) {
+    return [TyphoonDefinition withClass:[NSURL class] initialization:^(TyphoonMethod *initializer) {
         initializer.selector = @selector(URLWithString:);
         [initializer injectParameter:@"string" with:@"http://dev.foobar.com/service/"];
     }];

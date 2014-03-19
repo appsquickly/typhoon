@@ -11,13 +11,13 @@
 
 
 
-#import "TyphoonInitializer.h"
+#import "TyphoonMethod.h"
 #import "TyphoonDefinition.h"
-#import "TyphoonInitializer+InstanceBuilder.h"
+#import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonDefinition+Infrastructure.h"
 
-#import "TyphoonInitializer+InstanceBuilder.h"
+#import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonPropertyInjection.h"
 #import "TyphoonObjectWithCustomInjection.h"
 #import "TyphoonInjectionByObjectInstance.h"
@@ -81,9 +81,9 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key];
     if (initialization) {
-        TyphoonInitializer *componentInitializer = [[TyphoonInitializer alloc] init];
+        TyphoonMethod *componentInitializer = [[TyphoonMethod alloc] init];
         definition.initializer = componentInitializer;
-        __weak TyphoonInitializer *weakInitializer = componentInitializer;
+        __weak TyphoonMethod *weakInitializer = componentInitializer;
         initialization(weakInitializer);
     }
     if (properties) {
@@ -112,7 +112,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 
 + (TyphoonDefinition *)withClass:(Class)clazz factory:(TyphoonDefinition *)_definition selector:(SEL)selector
 {
-    return [TyphoonDefinition withClass:clazz initialization:^(TyphoonInitializer *initializer) {
+    return [TyphoonDefinition withClass:clazz initialization:^(TyphoonMethod *initializer) {
         [initializer setSelector:selector];
     } properties:^(TyphoonDefinition *definition) {
         [definition setFactory:_definition];
@@ -142,10 +142,16 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     [_injectedProperties addObject:injection];
 }
 
-- (void)setInitializer:(TyphoonInitializer *)initializer
+- (void)injectMethod:(SEL)selector withParameters:(void(^)(TyphoonMethod *method))parametersBlock
+{
+    TyphoonMethod *method = [[TyphoonMethod alloc] initWithSelector:selector];
+    parametersBlock(method);
+    [_injectedMethods addObject:method];
+}
+
+- (void)setInitializer:(TyphoonMethod *)initializer
 {
     _initializer = initializer;
-    [_initializer setDefinition:self];
 }
 
 /* ====================================================================================================================================== */
@@ -164,19 +170,25 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
 
-- (TyphoonInitializer *)initializer
+- (TyphoonMethod *)initializer
 {
     if (!_initializer) {
-        TyphoonInitializer *parentInitializer = _parent.initializer;
+        TyphoonMethod *parentInitializer = _parent.initializer;
         if (parentInitializer) {
             return parentInitializer;
         }
         else {
-            [self setInitializer:[[TyphoonInitializer alloc] init]];
-            [self.initializer setValue:@(YES) forKey:@"generated"];
+            [self setInitializer:[[TyphoonMethod alloc] initWithSelector:@selector(init)]];
+            self.initializerGenerated = YES;
         }
     }
     return _initializer;
+}
+
+- (BOOL)isInitializerGenerated
+{
+    [self initializer]; //call getter to generate initializer if needed
+    return _initializerGenerated;
 }
 
 - (NSSet *)injectedProperties

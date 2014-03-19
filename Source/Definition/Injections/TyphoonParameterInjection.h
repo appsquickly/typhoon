@@ -8,13 +8,14 @@
 
 @class TyphoonComponentFactory;
 @class TyphoonRuntimeArguments;
-@class TyphoonInitializer;
+@class TyphoonMethod;
+@class TyphoonTypeDescriptor;
 
 @protocol TyphoonParameterInjection <NSObject, NSCopying>
 
-- (void)setParameterIndex:(NSUInteger)index withInitializer:(TyphoonInitializer *)initializer;
+- (void)setParameterIndex:(NSUInteger)index withInitializer:(TyphoonMethod *)initializer;
 
-- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
+- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
     args:(TyphoonRuntimeArguments *)args;
 
 @end

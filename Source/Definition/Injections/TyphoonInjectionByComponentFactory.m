@@ -17,10 +17,10 @@
     return factory;
 }
 
-- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-    args:(TyphoonRuntimeArguments *)args
+- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
+                       args:(TyphoonRuntimeArguments *)args
 {
-    [self setObject:factory forInvocation:invocation];
+    [self setObject:factory forType:type andInvocation:invocation];
 }
 
 - (id)copyWithZone:(NSZone *)zone

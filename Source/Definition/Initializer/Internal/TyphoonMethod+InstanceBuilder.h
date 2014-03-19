@@ -11,23 +11,21 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonInitializer.h"
+#import "TyphoonMethod.h"
 
 @class TyphoonComponentFactory;
 @class TyphoonRuntimeArguments;
 
-@interface TyphoonInitializer (InstanceBuilder)
+@interface TyphoonMethod (InstanceBuilder)
 
-@property(nonatomic, readonly) BOOL isClassMethod;
+- (NSArray *)injectedParameters;
 
 - (NSArray *)parametersInjectedByValue;
 
 - (NSArray *)parametersInjectedByRuntimeArgument;
 
-- (NSInvocation *)newInvocationInFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args;
+- (NSInvocation *)newInvocationOnClass:(Class)clazz withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args;
 
-- (void)setDefinition:(TyphoonDefinition *)definition;
-
-- (NSString *)typeCodeForParameterAtIndex:(NSUInteger)index;
+- (BOOL)isClassMethodOnClass:(Class)clazz;
 
 @end

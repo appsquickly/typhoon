@@ -20,7 +20,8 @@
 #import <objc/message.h>
 #import "OCLogTemplate.h"
 #import "TyphoonComponentPostProcessor.h"
-#import "TyphoonInitializer.h"
+#import "TyphoonMethod.h"
+#import "TyphoonMethod+InstanceBuilder.h"
 
 @implementation TyphoonDefinitionRegisterer
 {

@@ -7,8 +7,9 @@
 //
 
 #import "TyphoonAbstractInjection.h"
-#import "TyphoonInitializer+InstanceBuilder.h"
+#import "TyphoonMethod+InstanceBuilder.h"
 #import "NSValue+TCFInstanceBuilder.h"
+#import "TyphoonTypeDescriptor.h"
 
 @implementation TyphoonAbstractInjection
 
@@ -26,7 +27,7 @@
     }
 }
 
-- (void)setParameterIndex:(NSUInteger)index withInitializer:(TyphoonInitializer *)initializer
+- (void)setParameterIndex:(NSUInteger)index withInitializer:(TyphoonMethod *)initializer
 {
     NSAssert(self.type != TyphoonInjectionTypeProperty, @"Trying to redefine injection with type %d", (int) self.type);
     _parameterIndex = index;
@@ -96,8 +97,9 @@
     return nil;
 }
 
-- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-    args:(TyphoonRuntimeArguments *)args
+
+-(void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
+                      args:(TyphoonRuntimeArguments *)args
 {
     [NSException raise:NSInternalInconsistencyException format:@"%@ - %@ is abstract", self, NSStringFromSelector(_cmd)];
 }
@@ -122,14 +124,13 @@
     }
 }
 
-- (void)setObject:(id)object forInvocation:(NSInvocation *)invocation
+- (void)setObject:(id)object forType:(TyphoonTypeDescriptor *)type andInvocation:(NSInvocation *)invocation;
 {
     BOOL isObjectIsWrapper = [object isKindOfClass:[NSNumber class]] || [object isKindOfClass:[NSValue class]];
 
-    NSString *typeCode = [self.initializer typeCodeForParameterAtIndex:_parameterIndex];
-
-    if (isObjectIsWrapper && ![typeCode isEqualToString:@"@"]) {
-        [object typhoon_setAsArgumentWithType:[typeCode cStringUsingEncoding:NSASCIIStringEncoding] forInvocation:invocation
+    if (isObjectIsWrapper && type.isPrimitive) {
+        const char *objcType = [type encodedType];
+        [object typhoon_setAsArgumentWithType:objcType forInvocation:invocation
             atIndex:_parameterIndex + 2];
     }
     else {

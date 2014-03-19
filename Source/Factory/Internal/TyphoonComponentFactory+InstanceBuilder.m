@@ -17,12 +17,12 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import <objc/message.h>
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonDefinition.h"
-#import "TyphoonInitializer.h"
+#import "TyphoonMethod.h"
 #import "TyphoonCallStack.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonPropertyInjectionDelegate.h"
 #import "TyphoonPropertyInjectionInternalDelegate.h"
-#import "TyphoonInitializer+InstanceBuilder.h"
+#import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
 #import "TyphoonComponentFactoryAware.h"
@@ -62,27 +62,38 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 - (id)initializeInstanceWithDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
-    id initTarget = nil;
-
-    if (definition.factory) {
-        initTarget = [self componentForKey:definition.factory.key];
-    }
-    else if (definition.initializer.isClassMethod) {
-        initTarget = definition.type;
-    }
-
     id instance = nil;
 
-    NSInvocation *invocation = [definition.initializer newInvocationInFactory:self args:args];
-
-    if (definition.factory || [definition.initializer isClassMethod]) {
-        instance = [invocation typhoon_resultOfInvokingOnInstance:initTarget];
+    if (definition.factory) {
+        id factoryComponent = [self componentForKey:definition.factory.key];
+        instance = [self resultOfInvocationInitializer:definition.initializer on:factoryComponent withArgs:args];
     }
     else {
-        instance = [invocation typhoon_resultOfInvokingOnAllocationForClass:definition.type];
+        instance = [self resultOfInvocationInitializer:definition.initializer on:definition.type withArgs:args];
     }
 
     return instance;
+}
+
+- (id)resultOfInvocationInitializer:(TyphoonMethod *)initializer on:(id)instanceOrClass withArgs:(TyphoonRuntimeArguments *)args
+{
+    id result;
+    
+    BOOL isClass = class_isMetaClass(object_getClass(instanceOrClass));
+    Class instanceClass = isClass ? instanceOrClass : [instanceOrClass class];
+    
+    NSInvocation *invocation = [initializer newInvocationOnClass:instanceClass withFactory:self args:args];
+    
+    BOOL isClassMethod = [initializer isClassMethodOnClass:instanceClass];
+
+    if (isClass && !isClassMethod) {
+        result = [invocation typhoon_resultOfInvokingOnAllocationForClass:instanceClass];
+    }
+    else {
+        result = [invocation typhoon_resultOfInvokingOnInstance:instanceOrClass];
+    }
+    
+    return result;
 }
 
 - (id)postProcessInstance:(id)instance

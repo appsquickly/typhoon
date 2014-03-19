@@ -33,10 +33,10 @@
     return _objectInstance;
 }
 
-- (void)setArgumentOnInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-    args:(TyphoonRuntimeArguments *)args
+- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
+                       args:(TyphoonRuntimeArguments *)args
 {
-    [self setObject:_objectInstance forInvocation:invocation];
+    [self setObject:_objectInstance forType:type andInvocation:invocation];
 }
 
 

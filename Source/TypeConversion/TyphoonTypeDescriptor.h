@@ -93,5 +93,7 @@ typedef enum
 */
 - (id)classOrProtocol;
 
+/** Returns encoded type as string */
+- (const char *)encodedType;
 
 @end

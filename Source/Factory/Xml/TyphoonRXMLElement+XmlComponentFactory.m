@@ -16,7 +16,7 @@
 TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 
 #import "TyphoonRXMLElement+XmlComponentFactory.h"
-#import "TyphoonInitializer.h"
+#import "TyphoonMethod.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonBundleResource.h"
@@ -24,7 +24,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 #import "TyphoonInjections.h"
 #import "TyphoonInjectionByCollection.h"
 
-@interface TyphoonInitializer (Private)
+@interface TyphoonMethod (Private)
 - (void)injectParameterAtIndex:(NSUInteger)index with:(id)injection;
 @end
 
@@ -125,12 +125,11 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 }
 
 
-- (TyphoonInitializer *)asInitializer
+- (TyphoonMethod *)asInitializer
 {
     [self assertTagName:@"initializer"];
     SEL selector = NSSelectorFromString([self attribute:@"selector"]);
-    TyphoonComponentInitializerIsClassMethod isClassMethod = [self handleIsClassMethod:[self attribute:@"is-class-method"]];
-    TyphoonInitializer *initializer = [[TyphoonInitializer alloc] initWithSelector:selector isClassMethodStrategy:isClassMethod];
+    TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:selector];
 
     [self iterate:@"*" usingBlock:^(TyphoonRXMLElement *child) {
         if ([[child tag] isEqualToString:@"argument"]) {
@@ -232,7 +231,7 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
     }];
 }
 
-- (void)setArgumentOnInitializer:(TyphoonInitializer *)initializer withChildTag:(TyphoonRXMLElement *)child
+- (void)setArgumentOnInitializer:(TyphoonMethod *)initializer withChildTag:(TyphoonRXMLElement *)child
 {
     NSString *name = [child attribute:@"parameterName"];
     NSString *index = [child attribute:@"index"];
@@ -317,20 +316,6 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
         else if (index) {
             [initializer injectParameterAtIndex:[index integerValue] with:collectionInjection];
         }
-    }
-}
-
-- (TyphoonComponentInitializerIsClassMethod)handleIsClassMethod:(NSString *)isClassMethodString
-{
-    if ([[isClassMethodString lowercaseString] isEqualToString:@"yes"] || [[isClassMethodString lowercaseString] isEqualToString:@"true"]) {
-        return TyphoonComponentInitializerIsClassMethodYes;
-    }
-    else if ([[isClassMethodString lowercaseString] isEqualToString:@"no"] ||
-        [[isClassMethodString lowercaseString] isEqualToString:@"no"]) {
-        return TyphoonComponentInitializerIsClassMethodNo;
-    }
-    else {
-        return TyphoonComponentInitializerIsClassMethodGuess;
     }
 }
 

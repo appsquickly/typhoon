@@ -11,7 +11,7 @@
 
 #import "TyphoonDefinition.h"
 #import "TyphoonDefinition+Infrastructure.h"
-#import "TyphoonInitializer.h"
+#import "TyphoonMethod.h"
 #import "TyphoonPropertyPlaceholderConfigurer.h"
 #import "TyphoonFactoryProvider.h"
 #import "TyphoonResource.h"

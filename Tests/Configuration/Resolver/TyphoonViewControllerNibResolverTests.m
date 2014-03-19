@@ -15,8 +15,8 @@
 #import <TyphoonDefinition.h>
 #import <TyphoonDefinition+InstanceBuilder.h>
 #import <TyphoonComponentFactory.h>
-#import <TyphoonInitializer.h>
-#import <TyphoonInitializer+InstanceBuilder.h>
+#import <TyphoonMethod.h>
+#import <TyphoonMethod+InstanceBuilder.h>
 
 @interface TyphoonViewControllerNibResolverTests : SenTestCase
 {
@@ -50,7 +50,7 @@
 - (void)test_skips_view_controller_with_initializer
 {
     TyphoonDefinition *definition = [TyphoonDefinition withClass:[UIViewController class]];
-    TyphoonInitializer *initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithFoobar:)];
+    TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithFoobar:)];
     definition.initializer = initializer;
 
     TyphoonComponentFactory *factory = mock([TyphoonComponentFactory class]);

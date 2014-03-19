@@ -10,9 +10,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <Typhoon/TyphoonInitializer.h>
+#import <Typhoon/TyphoonMethod.h>
 #import <SenTestingKit/SenTestingKit.h>
-
+#import "MiddleAgesAssembly.h"
+#import "Typhoon.h"
+#import "Knight.h"
 
 @interface TyphoonInitializerTests : SenTestCase
 @end
@@ -20,7 +22,14 @@
 
 @implementation TyphoonInitializerTests
 {
-    TyphoonInitializer *_initializer;
+    TyphoonMethod *_initializer;
+    TyphoonComponentFactory *_factory;
+}
+
+- (void)setUp
+{
+    [super setUp];
+    _factory = [TyphoonBlockComponentFactory factoryWithAssembly:[MiddleAgesAssembly assembly]];
 }
 
 
@@ -77,12 +86,18 @@
 
 }
 
+- (void)test_knight_init_by_class_method
+{
+    Knight *knight = [_factory componentForKey:@"knightClassMethodInit"];
+    STAssertTrue(knight.damselsRescued == 13, @"");
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
-- (TyphoonInitializer *)newInitializerWithSelector:(SEL)aSelector
+- (TyphoonMethod *)newInitializerWithSelector:(SEL)aSelector
 {
-    TyphoonInitializer *anInitializer = [[TyphoonInitializer alloc] initWithSelector:aSelector];
+    TyphoonMethod *anInitializer = [[TyphoonMethod alloc] initWithSelector:aSelector];
     return anInitializer;
 }
 

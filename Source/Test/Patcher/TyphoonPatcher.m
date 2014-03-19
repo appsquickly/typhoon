@@ -12,7 +12,7 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonPatcher.h"
 #import "TyphoonPatchObjectFactory.h"
-#import "TyphoonInitializer.h"
+#import "TyphoonMethod.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition+Infrastructure.h"
 
@@ -53,12 +53,12 @@
         if (patchObject) {
             NSString *patcherKey = [NSString stringWithFormat:@"%@%@", definition.key, @"$$$patcher"];
             TyphoonDefinition *patchFactory = [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:patcherKey];
-            patchFactory.initializer = [[TyphoonInitializer alloc] initWithSelector:@selector(initWithCreationBlock:)];
+            patchFactory.initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithCreationBlock:)];
             [patchFactory.initializer injectParameterWith:patchObject];
             [patchFactory setScope:definition.scope];
 
             [definition setFactory:patchFactory];
-            [definition setInitializer:[[TyphoonInitializer alloc] initWithSelector:@selector(patchObject)]];
+            [definition setInitializer:[[TyphoonMethod alloc] initWithSelector:@selector(patchObject)]];
             [definition setValue:nil forKey:@"injectedProperties"];
 
             [factory registerDefinition:patchFactory];
