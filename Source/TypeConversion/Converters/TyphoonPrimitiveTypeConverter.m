@@ -97,7 +97,7 @@
 
 - (void *)convertToPointer:(NSString *)stringValue
 {
-    return [stringValue integerValue];
+    return (void *)[stringValue integerValue];
 }
 
 /* ====================================================================================================================================== */

@@ -54,7 +54,11 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
         [definition injectInitializer:@selector(configurerWithResourceList:) withParameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:resources];
         }];
-        definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), [[resources firstObject] description]];
+        NSString *resourceDescription = @"";
+        if ([resources count] > 0) {
+            resourceDescription = [resources[0] description];
+        }
+        definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), resourceDescription];
     }];
 }
 
