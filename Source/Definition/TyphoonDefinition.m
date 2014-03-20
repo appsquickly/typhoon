@@ -174,42 +174,6 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     return _initializerGenerated;
 }
 
-- (NSSet *)injectedProperties
-{
-    NSMutableSet *parentProperties = [_parent injectedProperties] ? [[_parent injectedProperties] mutableCopy] : [NSMutableSet set];
-
-    NSMutableArray *overriddenProperties = [NSMutableArray array];
-    [parentProperties enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-        if ([_injectedProperties containsObject:obj]) {
-            [overriddenProperties addObject:obj];
-        }
-    }];
-
-    for (id <TyphoonPropertyInjection> overriddenProperty in overriddenProperties) {
-        [parentProperties removeObject:overriddenProperty];
-    }
-
-    return [[parentProperties setByAddingObjectsFromSet:_injectedProperties] copy];
-}
-
-- (NSSet *)injectedMethods
-{
-    NSMutableSet *parentMethods = [_parent injectedMethods] ? [[_parent injectedMethods] mutableCopy] : [NSMutableSet set];
-    
-    NSMutableArray *overriddenMethods = [NSMutableArray array];
-    [parentMethods enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-        if ([_injectedMethods containsObject:obj]) {
-            [overriddenMethods addObject:obj];
-        }
-    }];
-    
-    for (TyphoonMethod *overriddenMethod in overriddenMethods) {
-        [parentMethods removeObject:overriddenMethod];
-    }
-    
-    return [[parentMethods setByAddingObjectsFromSet:_injectedMethods] copy];
-}
-
 - (BOOL)hasRuntimeArgumentInjections
 {
     return [[self.initializer parametersInjectedByRuntimeArgument] count] > 0 || [[self propertiesInjectedByRuntimeArgument] count] > 0;

@@ -15,6 +15,7 @@
 #import <objc/runtime.h>
 
 #import "TyphoonFactoryProviderTestHelper.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
 
 #import "AuthServiceImpl.h"
 #import "CreditServiceImpl.h"
