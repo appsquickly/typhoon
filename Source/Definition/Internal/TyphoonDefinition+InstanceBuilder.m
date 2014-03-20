@@ -79,6 +79,43 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     [_injectedProperties removeObject:property];
 }
 
+- (NSSet *)injectedProperties
+{
+    NSMutableSet *parentProperties = [self.parent injectedProperties] ? [[self.parent injectedProperties] mutableCopy] : [NSMutableSet set];
+    
+    NSMutableArray *overriddenProperties = [NSMutableArray array];
+    [parentProperties enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+        if ([_injectedProperties containsObject:obj]) {
+            [overriddenProperties addObject:obj];
+        }
+    }];
+    
+    for (id <TyphoonPropertyInjection> overriddenProperty in overriddenProperties) {
+        [parentProperties removeObject:overriddenProperty];
+    }
+    
+    return [[parentProperties setByAddingObjectsFromSet:_injectedProperties] copy];
+}
+
+- (NSSet *)injectedMethods
+{
+    NSMutableSet *parentMethods = [self.parent injectedMethods] ? [[self.parent injectedMethods] mutableCopy] : [NSMutableSet set];
+    
+    NSMutableArray *overriddenMethods = [NSMutableArray array];
+    [parentMethods enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+        if ([_injectedMethods containsObject:obj]) {
+            [overriddenMethods addObject:obj];
+        }
+    }];
+    
+    for (TyphoonMethod *overriddenMethod in overriddenMethods) {
+        [parentMethods removeObject:overriddenMethod];
+    }
+    
+    return [[parentMethods setByAddingObjectsFromSet:_injectedMethods] copy];
+}
+
+
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 

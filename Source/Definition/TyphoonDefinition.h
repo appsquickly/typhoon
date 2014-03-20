@@ -268,7 +268,4 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
  */
 - (id)keyPath:(NSString *)keyPath;
 
-- (NSSet *)injectedProperties;
-- (NSSet *)injectedMethods;
-
 @end
