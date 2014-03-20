@@ -22,8 +22,10 @@
 
 #import <objc/runtime.h>
 
-@implementation TyphoonMethod
-
+@implementation TyphoonMethod {
+    BOOL _needUpdateHash;
+    NSUInteger _hash;
+}
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
@@ -34,6 +36,7 @@
     if (self) {
         _injectedParameters = [[NSMutableArray alloc] init];
         self.selector = selector;
+        _needUpdateHash = YES;
     }
     return self;
 }
@@ -68,6 +71,7 @@
         injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);
         [injection setParameterIndex:index];
         [self addParameterInjection:injection];
+        _needUpdateHash = YES;
     }
 }
 
@@ -147,6 +151,7 @@
 {
     _selector = selector;
     _parameterNames = [self typhoon_parameterNamesForSelector:_selector];
+    _needUpdateHash = YES;
 }
 
 /* ====================================================================================================================================== */
@@ -163,7 +168,23 @@
 
 - (NSUInteger)hash
 {
-    return (NSUInteger)sel_getName(_selector);
+    if (_needUpdateHash) {
+        _hash = [self calculateHash];
+        _needUpdateHash = NO;
+    }
+    return _hash;
+}
+
+- (NSUInteger)calculateHash
+{
+    int charactersPerPointer = sizeof(void*)*2;
+    NSString *format = [NSString stringWithFormat:@"%%%dx",charactersPerPointer];
+    NSMutableString *string = [[NSMutableString alloc] initWithCapacity: charactersPerPointer * ([_injectedParameters count] + 1)];
+    [string appendFormat:format,sel_getName(_selector)];
+    for (id <TyphoonParameterInjection> parameter in _injectedParameters) {
+        [string appendFormat:format,parameter];
+    }
+    return [string hash];
 }
 
 
