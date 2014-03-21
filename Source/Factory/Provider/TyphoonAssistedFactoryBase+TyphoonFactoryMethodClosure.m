@@ -82,6 +82,7 @@ static const void *sFactoryMethodClosures = &sFactoryMethodClosures;
     [self.componentFactory injectAssemblyOnInstanceIfTyphoonAware:*(__unsafe_unretained id *) returnValue];
 
     [anInvocation setReturnValue:returnValue];
+    [anInvocation retainArguments];
     free(returnValue);
 }
 
