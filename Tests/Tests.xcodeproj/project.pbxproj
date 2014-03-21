@@ -658,7 +658,6 @@
 			children = (
 				4B84149C179B0EA600916BF5 /* Definition */,
 				4B8414A3179B0EA600916BF5 /* Factory */,
-				4B8414B7179B0EA600916BF5 /* Harlot.h */,
 				FA381FB818BBC3D40094BBFA /* Storyboard */,
 				4B8414B8179B0EA600916BF5 /* Model */,
 				4B8414D7179B0EA600916BF5 /* Resources */,
@@ -802,6 +801,7 @@
 		4B8414B8179B0EA600916BF5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4B8414B7179B0EA600916BF5 /* Harlot.h */,
 				4EFAF60617E0D4B500E93ACF /* CurrentlyResolvingOverwrite */,
 				4EB218F917B4F2C500B901C9 /* SingletonsChain */,
 				4B8414B9179B0EA600916BF5 /* AutoWiring */,
