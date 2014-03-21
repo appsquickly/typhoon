@@ -254,7 +254,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
                                                              TyphoonTypeStringFor(classOrProtocol)];
     }
     if ([candidates count] > 1) {
-        [NSException raise:NSInvalidArgumentException format:@"More than one component is defined satisfying type: '%@'", classOrProtocol];
+        [NSException raise:NSInvalidArgumentException format:@"More than one component is defined satisfying type: '%@'", TyphoonTypeStringFor(classOrProtocol)];
     }
     return [candidates objectAtIndex:0];
 }

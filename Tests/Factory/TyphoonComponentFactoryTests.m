@@ -23,6 +23,7 @@
 #import "ClassWithConstructor.h"
 #import "TyphoonComponentPostProcessorMock.h"
 #import "TyphoonInjections.h"
+#import "MediocreQuest.h"
 
 static NSString *const DEFAULT_QUEST = @"quest";
 
@@ -118,6 +119,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CavalryMan class] key:@"cavalryMan"]];
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
+    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[MediocreQuest class] key:@"unimpressiveQuest"]];
 
     assertThat([_componentFactory componentForType:[CavalryMan class]], notNilValue());
 
@@ -128,6 +130,15 @@ static NSString *const DEFAULT_QUEST = @"quest";
     }
     @catch (NSException *e) {
         assertThat([e description], equalTo(@"More than one component is defined satisfying type: 'Knight'"));
+    }
+    
+    @try {
+        Knight *knight = [_componentFactory componentForType:@protocol(Quest)];
+        STFail(@"Should have thrown exception");
+        knight = nil;
+    }
+    @catch (NSException *e) {
+        assertThat([e description], equalTo(@"More than one component is defined satisfying type: 'id<Quest>'"));
     }
 
     @try {
