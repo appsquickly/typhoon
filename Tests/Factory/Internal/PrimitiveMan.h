@@ -12,7 +12,7 @@
 #import <Foundation/Foundation.h>
 
 
-typedef struct
+typedef struct __attribute__((packed))
 {
     int fieldA;
     long fieldB;

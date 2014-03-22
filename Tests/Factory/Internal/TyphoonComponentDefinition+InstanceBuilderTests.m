@@ -18,6 +18,9 @@
 #import "TyphoonInjections.h"
 #import "TyphoonStringUtils.h"
 
+#define NSValueFromPrimitive(primitive) ([NSValue value:&primitive withObjCType:@encode(typeof(primitive))])
+
+
 @interface ComponentDefinition_InstanceBuilderTests : SenTestCase
 @end
 
@@ -107,20 +110,6 @@
     primitiveStruct->fieldA = INT_MAX;
     primitiveStruct->fieldB = LONG_MAX;
     
-    SEL selector = @selector(selectorValue);
-    NSValue *selectorValue = [NSValue value:&selector withObjCType:@encode(SEL)];
-    
-    const char *cString = "Hello Typhoon";
-    NSValue *cStringValue = [NSValue value:&cString withObjCType:@encode(char*)];
-    
-    NSValue *structureValue;
-    {
-        PrimitiveManStruct structure;
-        structure.fieldA = 23;
-        structure.fieldB = LONG_MAX;
-        structureValue = [NSValue value:&structure withObjCType:@encode(PrimitiveManStruct)];
-    }
-
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[PrimitiveMan class] key:@"primitive"];
     TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithIntValue:
         unsignedIntValue:
@@ -159,13 +148,17 @@
     [initializer injectParameterWith:@(NSIntegerMax)];
     [initializer injectParameterWith:@(NSUIntegerMax)];
     [initializer injectParameterWith:[self class]];
-    [initializer injectParameterWith:selectorValue];
-    [initializer injectParameterWith:cStringValue];
+    [initializer injectParameterWith:NSValueFromPrimitive(@selector(selectorValue))];
+     const char *cString = "Hello Typhoon";
+    [initializer injectParameterWith:NSValueFromPrimitive(cString)];
     [initializer injectParameterWith:[NSValue valueWithRange:NSMakeRange(10, 20)]];
     [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
     [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
     [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
-    [initializer injectParameterWith:structureValue];
+    PrimitiveManStruct structure;
+    structure.fieldA = 23;
+    structure.fieldB = LONG_MAX;
+    [initializer injectParameterWith:NSValueFromPrimitive(structure)];
 
 
     [definition setInitializer:initializer];
@@ -246,8 +239,6 @@
     assertThatLong(knight.damselsRescued, equalToLongLong(12));
 }
 
-#define NSValueFromPrimitive(primitive) ([NSValue value:&primitive withObjCType:@encode(typeof(primitive))])
-
 - (void)test_inject_property_value_as_primitives
 {
     PrimitiveManStruct *primitiveStruct = malloc(sizeof(PrimitiveManStruct));
@@ -312,6 +303,8 @@
     assertThatInt(primitiveMan.unknownStructure.fieldA, equalToInt(INT_MAX));
     assertThatLong(primitiveMan.unknownStructure.fieldB, equalToLong(LONG_MAX));
     STAssertTrue(CStringEquals("Hello world", primitiveMan.cString),nil);
+    
+    [primitiveMan valueForKey:@"unknownStructure"];
     
     primitiveMan.unknownPointer = NULL;
     free(primitiveStruct);
