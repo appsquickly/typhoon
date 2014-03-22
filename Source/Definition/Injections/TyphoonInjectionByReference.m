@@ -11,6 +11,7 @@
 #import "TyphoonInjectionByRuntimeArgument.h"
 #import "TyphoonCallStack.h"
 #import "TyphoonStackElement.h"
+#import "NSInvocation+TCFUnwrapValues.h"
 
 @implementation TyphoonInjectionByReference
 
@@ -49,7 +50,7 @@
                        args:(TyphoonRuntimeArguments *)args
 {
     id referenceInstance = [self componentForReferenceWithFactory:factory args:args];
-    [self setObject:referenceInstance forType:type andInvocation:invocation];
+    [invocation typhoon_setArgumentObject:referenceInstance atIndex:self.parameterIndex + 2];
 }
 
 #pragma mark - Utils

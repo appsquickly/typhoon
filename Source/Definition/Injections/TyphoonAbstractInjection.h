@@ -31,6 +31,4 @@ typedef NS_ENUM(NSInteger, TyphoonInjectionType) {
 
 - (void)copyBaseProperiesTo:(TyphoonAbstractInjection *)copiedInjection;
 
-- (void)setObject:(id)object forType:(TyphoonTypeDescriptor *)type andInvocation:(NSInvocation *)invocation;
-
 @end

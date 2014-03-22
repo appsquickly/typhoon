@@ -15,6 +15,6 @@
 
 @interface NSObject (PropertyInjection)
 
-- (void)injectValue:(id)value forPropertyName:(NSString *)propertyName withType:(TyphoonTypeDescriptor *)type;
+- (void)typhoon_injectValue:(id)value forPropertyName:(NSString *)propertyName;
 
 @end

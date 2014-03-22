@@ -7,6 +7,7 @@
 //
 
 #import "TyphoonInjectionByComponentFactory.h"
+#import "NSInvocation+TCFUnwrapValues.h"
 
 @implementation TyphoonInjectionByComponentFactory
 
@@ -20,7 +21,7 @@
 - (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
                        args:(TyphoonRuntimeArguments *)args
 {
-    [self setObject:factory forType:type andInvocation:invocation];
+    [invocation typhoon_setArgumentObject:factory atIndex:self.parameterIndex + 2];
 }
 
 - (id)copyWithZone:(NSZone *)zone

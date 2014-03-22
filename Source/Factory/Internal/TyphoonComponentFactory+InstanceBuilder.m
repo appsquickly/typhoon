@@ -186,7 +186,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         id valueToInject = lazyValue();
 
         if (valueToInject) {
-            [(NSObject *) instance injectValue:valueToInject forPropertyName:property.propertyName withType:propertyType];
+            [(NSObject *) instance typhoon_injectValue:valueToInject forPropertyName:property.propertyName];
         }
     }
 }
@@ -216,7 +216,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         if (!propertyValue) {
             NSString *componentKey = [circularDependentProperties objectForKey:propertyName];
             [[_stack peekForKey:componentKey] addInstanceCompleteBlock:^(id reference) {
-                [(NSObject *) instance setValue:reference forKey:propertyName];
+                [(NSObject *) instance typhoon_injectValue:reference forPropertyName:propertyName];
             }];
         }
     }

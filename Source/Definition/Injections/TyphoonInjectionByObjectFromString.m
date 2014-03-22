@@ -14,6 +14,7 @@
 #import "TyphoonIntrospectiveNSObject.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonDefinition.h"
+#import "NSInvocation+TCFUnwrapValues.h"
 
 @implementation TyphoonInjectionByObjectFromString
 
@@ -67,7 +68,7 @@
     }
     else {
         id converted = [self convertText:self.textValue];
-        [invocation setArgument:&converted atIndex:self.parameterIndex + 2];
+        [invocation typhoon_setArgumentObject:converted atIndex:self.parameterIndex + 2];
     }
 }
 

@@ -10,6 +10,7 @@
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonCallStack.h"
 #import "TyphoonStackElement.h"
+#import "NSInvocation+TCFUnwrapValues.h"
 
 @implementation TyphoonInjectionByFactoryReference
 
@@ -51,7 +52,7 @@
     id factoryReference = [self componentForReferenceWithFactory:factory args:args];
     id valueToInject = [factoryReference valueForKeyPath:_keyPath];
 
-    [self setObject:valueToInject forType:type andInvocation:invocation];
+    [invocation typhoon_setArgumentObject:valueToInject atIndex:self.parameterIndex + 2];
 }
 
 @end

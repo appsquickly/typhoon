@@ -16,6 +16,7 @@
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "PrimitiveMan.h"
 #import "TyphoonInjections.h"
+#import "TyphoonStringUtils.h"
 
 @interface ComponentDefinition_InstanceBuilderTests : SenTestCase
 @end
@@ -105,6 +106,20 @@
     PrimitiveManStruct *primitiveStruct = malloc(sizeof(PrimitiveManStruct));
     primitiveStruct->fieldA = INT_MAX;
     primitiveStruct->fieldB = LONG_MAX;
+    
+    SEL selector = @selector(selectorValue);
+    NSValue *selectorValue = [NSValue value:&selector withObjCType:@encode(SEL)];
+    
+    const char *cString = "Hello Typhoon";
+    NSValue *cStringValue = [NSValue value:&cString withObjCType:@encode(char*)];
+    
+    NSValue *structureValue;
+    {
+        PrimitiveManStruct structure;
+        structure.fieldA = 23;
+        structure.fieldB = LONG_MAX;
+        structureValue = [NSValue value:&structure withObjCType:@encode(PrimitiveManStruct)];
+    }
 
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[PrimitiveMan class] key:@"primitive"];
     TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithIntValue:
@@ -127,7 +142,8 @@
         nsRange:
         pointerValue:
         unknownPointer:
-        pointerInsideValue:)];
+        pointerInsideValue:
+        unknownStructure:)];
     [initializer injectParameterWith:@(INT_MAX)];
     [initializer injectParameterWith:@(UINT_MAX)];
     [initializer injectParameterWith:@(SHRT_MAX)];
@@ -143,12 +159,13 @@
     [initializer injectParameterWith:@(NSIntegerMax)];
     [initializer injectParameterWith:@(NSUIntegerMax)];
     [initializer injectParameterWith:[self class]];
-    [initializer injectParameterWith:[NSValue valueWithPointer:@selector(selectorValue)]];
-    [initializer injectParameterWith:nil];
+    [initializer injectParameterWith:selectorValue];
+    [initializer injectParameterWith:cStringValue];
     [initializer injectParameterWith:[NSValue valueWithRange:NSMakeRange(10, 20)]];
     [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
     [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
     [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
+    [initializer injectParameterWith:structureValue];
 
 
     [definition setInitializer:initializer];
@@ -171,11 +188,14 @@
     assertThatUnsignedInteger(primitiveMan.unsignedIntegerValue, equalToUnsignedInteger(NSUIntegerMax));
     assertThat(NSStringFromClass(primitiveMan.classValue), equalTo(NSStringFromClass([self class])));
     assertThat(NSStringFromSelector(primitiveMan.selectorValue), equalTo(NSStringFromSelector(@selector(selectorValue))));
+    assertThatInt(strcmp(primitiveMan.cString, "Hello Typhoon"), equalToInt(0));
     assertThatBool(NSEqualRanges(primitiveMan.nsRange, NSMakeRange(10, 20)), equalToBool(YES));
     assertThatBool(primitiveMan.pointer == primitiveStruct, equalToBool(YES));
     assertThatInt(primitiveMan.unknownPointer->fieldA, equalToInt(INT_MAX));
     assertThatLong(primitiveMan.unknownPointer->fieldB, equalToLong(LONG_MAX));
     assertThat(primitiveMan.pointerInsideValue, equalTo([NSValue valueWithPointer:primitiveStruct]));
+    assertThatInt(primitiveMan.unknownStructure.fieldA, equalToInt(23));
+    assertThatLong(primitiveMan.unknownStructure.fieldB, equalToLong(LONG_MAX));
 
     free(primitiveStruct);
 }
@@ -226,11 +246,15 @@
     assertThatLong(knight.damselsRescued, equalToLongLong(12));
 }
 
+#define NSValueFromPrimitive(primitive) ([NSValue value:&primitive withObjCType:@encode(typeof(primitive))])
+
 - (void)test_inject_property_value_as_primitives
 {
     PrimitiveManStruct *primitiveStruct = malloc(sizeof(PrimitiveManStruct));
     primitiveStruct->fieldA = INT_MAX;
     primitiveStruct->fieldB = LONG_MAX;
+    
+    char *string = "Hello world";
 
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[PrimitiveMan class] key:@"primitive"];
     [definition injectProperty:@selector(intValue) with:@(INT_MAX)];
@@ -248,13 +272,19 @@
     [definition injectProperty:@selector(integerValue) with:@(NSIntegerMax)];
     [definition injectProperty:@selector(unsignedIntegerValue) with:@(NSUIntegerMax)];
     [definition injectProperty:@selector(classValue) with:[self class]];
-    [definition injectProperty:@selector(cString) with:nil];
+    [definition injectProperty:@selector(cString) with:NSValueFromPrimitive(string)];
     [definition injectProperty:@selector(selectorValue) with:[NSValue valueWithPointer:@selector(selectorValue)]];
     [definition injectProperty:@selector(nsRange) with:[NSValue valueWithRange:NSMakeRange(10, 20)]];
     [definition injectProperty:@selector(pointer) with:[NSValue valueWithPointer:&primitiveStruct]];
     [definition injectProperty:@selector(pointerInsideValue) with:[NSValue valueWithPointer:&primitiveStruct]];
     [definition injectProperty:@selector(unknownPointer) with:[NSValue valueWithPointer:primitiveStruct]];
-
+    
+    {
+        PrimitiveManStruct primitiveStructOnStack;
+        primitiveStructOnStack.fieldA = INT_MAX;
+        primitiveStructOnStack.fieldB = LONG_MAX;
+        [definition injectProperty:@selector(unknownStructure) with:NSValueFromPrimitive(primitiveStructOnStack)];
+    }
 
     [_componentFactory registerDefinition:definition];
     PrimitiveMan *primitiveMan = [_componentFactory componentForKey:@"primitive"];
@@ -279,7 +309,10 @@
     assertThatLong(primitiveMan.unknownPointer->fieldB, equalToLong(LONG_MAX));
     assertThatBool(primitiveMan.pointer == &primitiveStruct, equalToBool(YES));
     assertThat(primitiveMan.pointerInsideValue, equalTo([NSValue valueWithPointer:&primitiveStruct]));
-
+    assertThatInt(primitiveMan.unknownStructure.fieldA, equalToInt(INT_MAX));
+    assertThatLong(primitiveMan.unknownStructure.fieldB, equalToLong(LONG_MAX));
+    STAssertTrue(CStringEquals("Hello world", primitiveMan.cString),nil);
+    
     primitiveMan.unknownPointer = NULL;
     free(primitiveStruct);
 }

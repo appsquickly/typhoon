@@ -45,6 +45,28 @@
     return typeDescriptor;
 }
 
++ (SEL)setterForPropertyWithName:(NSString *)propertyName inClass:(Class)clazz
+{
+    SEL setterSelector = nil;
+    
+    objc_property_t property = class_getProperty(clazz, [propertyName cStringUsingEncoding:NSASCIIStringEncoding]);
+    if (property) {
+        
+        const char *attributes = property_getAttributes(property);
+        
+        NSString *attributesString = [NSString stringWithCString:attributes encoding:NSASCIIStringEncoding];
+        
+        if (![self isReadonlyPropertyWithAttributes:attributesString]) {
+            NSString *selectorString = [self customSetterForPropertyWithAttributes:attributesString];
+            if (!selectorString) {
+                selectorString = [self defaultSetterForPropertyWithName:propertyName];
+            }
+            setterSelector = NSSelectorFromString(selectorString);
+        }
+    }
+
+    return setterSelector;
+}
 
 + (NSArray *)typeCodesForSelector:(SEL)selector ofClass:(Class)clazz isClassMethod:(BOOL)isClassMethod
 {
@@ -89,6 +111,43 @@
         }
     }
     return count;
+}
+
+#pragma mark - Utils
+
++ (BOOL)isReadonlyPropertyWithAttributes:(NSString *)attributes
+{
+    return [attributes rangeOfString:@",R,"].location != NSNotFound;
+}
+
++ (NSString *)customSetterForPropertyWithAttributes:(NSString *)attributes
+{
+    NSRange setterBeginningRange = [attributes rangeOfString:@",S"];
+    
+    if (setterBeginningRange.location == NSNotFound)
+        return nil;
+    
+    NSRange setterRange;
+    setterRange.location = setterBeginningRange.location + setterBeginningRange.length;
+    
+    NSInteger endLocation = [attributes length];
+    
+    NSRange setterEndingRange = [attributes rangeOfString:@"," options:0 range:NSMakeRange(setterRange.location, [attributes length] - setterRange.location)];
+    
+    if (setterEndingRange.location != NSNotFound) {
+        endLocation = setterEndingRange.location;
+    }
+    
+    setterRange.length = endLocation - setterRange.location;
+    
+    return [attributes substringWithRange:setterRange];
+}
+
++ (NSString *)defaultSetterForPropertyWithName:(NSString *)propertyName
+{
+    NSString *firstLetterUppercase = [[propertyName substringToIndex:1] uppercaseString];
+    NSString *propertyPart = [propertyName stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:firstLetterUppercase];
+    return [NSString stringWithFormat:@"set%@:", propertyPart];
 }
 
 @end

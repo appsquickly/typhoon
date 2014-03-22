@@ -7,6 +7,7 @@
 //
 
 #import "TyphoonInjectionByObjectInstance.h"
+#import "NSInvocation+TCFUnwrapValues.h"
 
 @implementation TyphoonInjectionByObjectInstance
 
@@ -36,7 +37,7 @@
 - (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
                        args:(TyphoonRuntimeArguments *)args
 {
-    [self setObject:_objectInstance forType:type andInvocation:invocation];
+    [invocation typhoon_setArgumentObject:_objectInstance atIndex:self.parameterIndex + 2];
 }
 
 

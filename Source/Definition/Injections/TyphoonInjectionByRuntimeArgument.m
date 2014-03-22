@@ -8,6 +8,7 @@
 
 #import "TyphoonInjectionByRuntimeArgument.h"
 #import "TyphoonRuntimeArguments.h"
+#import "NSInvocation+TCFUnwrapValues.h"
 
 @implementation TyphoonInjectionByRuntimeArgument
 
@@ -38,7 +39,7 @@
                        args:(TyphoonRuntimeArguments *)args
 {
     id runtimeArgument = [args argumentValueAtIndex:self.runtimeArgumentIndex];
-    [self setObject:runtimeArgument forType:type andInvocation:invocation];
+    [invocation typhoon_setArgumentObject:runtimeArgument atIndex:self.parameterIndex + 2];
 }
 
 - (id)copyWithZone:(NSZone *)zone

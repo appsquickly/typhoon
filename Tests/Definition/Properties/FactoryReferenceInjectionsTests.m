@@ -13,6 +13,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "Typhoon.h"
 #import "Knight.h"
+#import "CampaignQuest.h"
 
 NSUInteger currentDamselsRescued;
 BOOL currentHasHorseWillTravel;
@@ -158,6 +159,19 @@ NSString *currentFooString;
     assertThatInteger(knight.damselsRescued, equalToInteger(32));
     assertThat(knight.foobar, equalTo(@"HELLO"));
 
+}
+
+- (void)test_injection_readonly_properties
+{
+    TyphoonDefinition *quest = [TyphoonDefinition withClass:[CampaignQuest class]];
+    
+    TyphoonDefinition *knightDefinition = [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(readOnlyQuest)];
+    }];
+    [factory registerDefinition:quest];
+    [factory registerDefinition:knightDefinition];
+    
+    STAssertThrows([factory componentForType:[Knight class]], @"Should throw exception, because property readonly");
 }
 
 

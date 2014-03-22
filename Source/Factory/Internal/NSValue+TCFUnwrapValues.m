@@ -9,84 +9,34 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "NSValue+TCFInstanceBuilder.h"
+#import "NSValue+TCFUnwrapValues.h"
 #import "TyphoonStringUtils.h"
 
-#if TARGET_OS_IPHONE
-#import <UIKit/UIKit.h>
-
-#endif
-
-#if TARGET_OS_MAC
-#import <QuartzCore/QuartzCore.h>
-
-#endif
-
-@implementation NSValue (TCFInstanceBuilder)
+@implementation NSValue (TCFUnwrapValues)
 
 - (void)typhoon_setAsArgumentWithType:(const char *)argumentType forInvocation:(NSInvocation *)invocation atIndex:(NSUInteger)index
 {
-    const char *type = [self objCType];
+    NSUInteger argumentSize;
+    NSGetSizeAndAlignment(argumentType, &argumentSize, NULL);
 
-    if (CStringEquals(type, @encode(void *))) {
-        void *converted = [self pointerValue];
-        [invocation setArgument:&converted atIndex:index];
+    const char *valueType = [self objCType];
+    if (!CStringEquals(valueType, argumentType)) {
+        NSUInteger valueSize;
+        NSGetSizeAndAlignment(valueType, &valueSize, NULL);
+        NSAssert(valueSize <= argumentSize, @"Trying to inject NSValue with type of different size ('%s' expected, but '%s' passed)", argumentType, valueType);
     }
-    else if (CStringEquals(type, @encode(NSRange))) {
-        NSRange converted = [self rangeValue];
-        [invocation setArgument:&converted atIndex:index];
-    }
-#if TARGET_OS_IPHONE
-    else if (CStringEquals(type, @encode(CGPoint))) {
-        CGPoint converted = [self CGPointValue];
-        [invocation setArgument:&converted atIndex:index];
-    }
-    else if (CStringEquals(type, @encode(CGRect))) {
-        CGRect converted = [self CGRectValue];
-        [invocation setArgument:&converted atIndex:index];
-    }
-    else if (CStringEquals(type, @encode(CGSize))) {
-        CGSize converted = [self CGSizeValue];
-        [invocation setArgument:&converted atIndex:index];
-    }
-    else if (CStringEquals(type, @encode(CGAffineTransform))) {
-        CGAffineTransform converted = [self CGAffineTransformValue];
-        [invocation setArgument:&converted atIndex:index];
-    }
-    else if (CStringEquals(type, @encode(UIEdgeInsets))) {
-        UIEdgeInsets converted = [self UIEdgeInsetsValue];
-        [invocation setArgument:&converted atIndex:index];
-    }
-    else if (CStringEquals(type, @encode(UIOffset))) {
-        UIOffset converted = [self UIOffsetValue];
-        [invocation setArgument:&converted atIndex:index];
-    }
-#elif TARGET_OS_MAC
-    else if (CStringEquals(type, @encode(CATransform3D))) {
-        CATransform3D converted = [self CATransform3DValue];
-        [invocation setArgument:&converted atIndex:index];
-    }
-    else if (CStringEquals(type, @encode(NSRect))) {
-        NSRect converted = [self rectValue];
-        [invocation setArgument:&converted atIndex:index];
-    }
-    else if (CStringEquals(type, @encode(NSSize))) {
-        NSSize converted = [self sizeValue];
-        [invocation setArgument:&converted atIndex:index];
-    }
-    else if (CStringEquals(type, @encode(NSPoint))) {
-        NSPoint converted = [self pointValue];
-        [invocation setArgument:&converted atIndex:index];
-    }
-#endif
-    else {
-        [NSException raise:@"InvalidValueType" format:@"Invalid Value: Type '%s' is not supported.", type];
-    }
+
+    void *buffer = malloc(argumentSize);
+    
+    [self getValue:buffer];
+    [invocation setArgument:buffer atIndex:index];
+    
+    free(buffer);
 }
 
 @end
 
-@implementation NSNumber (TCFInstanceBuilder)
+@implementation NSNumber (TCFUnwrapValues)
 
 - (void)typhoon_setAsArgumentWithType:(const char *)argumentType forInvocation:(NSInvocation *)invocation atIndex:(NSUInteger)index
 {
