@@ -12,6 +12,7 @@
 #import "TyphoonCallStack.h"
 #import "TyphoonStackElement.h"
 #import "NSInvocation+TCFUnwrapValues.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
 
 @implementation TyphoonInjectionByReference
 
@@ -37,7 +38,7 @@
 - (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
 {
     if (instance) {
-        [factory evaluateCircularDependency:self.reference propertyName:self.propertyName instance:instance];
+        [factory evaluateCircularDependency:self.reference propertyName:self.propertyName instance:instance args:args];
         if ([factory isCircularPropertyWithName:self.propertyName onInstance:instance]) {
             return nil;
         }
@@ -81,7 +82,7 @@
 //Raises circular dependencies exception if already initializing.
 - (id)componentForReferenceWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)runtimeArgs
 {
-    id referenceInstance = [[[factory stack] peekForKey:self.reference] instance];
+    id referenceInstance = [[[factory stack] peekForKey:self.reference args:runtimeArgs] instance];
     if (!referenceInstance) {
         TyphoonRuntimeArguments *referenceArgumentsWithRuntime =
         [self argumentsByReplacingRuntimeArgsReferencesInArgs:self.referenceArguments withRuntimeArgs:runtimeArgs];

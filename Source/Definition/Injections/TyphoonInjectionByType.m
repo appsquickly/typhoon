@@ -29,7 +29,7 @@
     TyphoonDefinition *definition = [factory definitionForType:[type classOrProtocol]];
     
     if (instance) {
-        [factory evaluateCircularDependency:definition.key propertyName:self.propertyName instance:instance];
+        [factory evaluateCircularDependency:definition.key propertyName:self.propertyName instance:instance args:args];
         if ([factory isCircularPropertyWithName:self.propertyName onInstance:instance]) {
             return nil;
         }
