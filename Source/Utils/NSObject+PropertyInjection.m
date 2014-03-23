@@ -15,6 +15,7 @@
 #import <objc/message.h>
 
 #import "NSInvocation+TCFUnwrapValues.h"
+#import "NSMethodSignature+TCFUnwrapValues.h"
 #import "TyphoonIntrospectionUtils.h"
 
 @implementation NSObject (PropertyInjection)
@@ -28,11 +29,27 @@
     }
     
     NSMethodSignature *signature = [self methodSignatureForSelector:setterSelector];
+        
+    if ([signature shouldUnwrapValue:value forArgumentAtIndex:2]) {
+        [self typhoon_injectUnwrappedValue:value forPropertySetter:setterSelector signature:signature];
+    } else {
+        [self typhoon_injectObject:value forPropertySetter:setterSelector];
+    }
+}
+
+- (void)typhoon_injectUnwrappedValue:(NSValue *)value forPropertySetter:(SEL)setter signature:(NSMethodSignature *)signature
+{
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
-    [invocation setSelector:setterSelector];
+    [invocation setSelector:setter];
     [invocation typhoon_setArgumentObject:value atIndex:2];
     [invocation invokeWithTarget:self];
 }
+
+- (void)typhoon_injectObject:(id)value forPropertySetter:(SEL)setter
+{
+    objc_msgSend(self, setter, value);
+}
+
 
 
 @end

@@ -12,17 +12,16 @@
 #import "NSInvocation+TCFUnwrapValues.h"
 #import "NSValue+TCFUnwrapValues.h"
 #import "TyphoonStringUtils.h"
+#import "NSMethodSignature+TCFUnwrapValues.h"
 
 @implementation NSInvocation (TCFUnwrapValues)
 
 - (void)typhoon_setArgumentObject:(id)object atIndex:(NSInteger)idx
 {
-    const char *argumentType = [[self methodSignature] getArgumentTypeAtIndex:idx];
+    BOOL isValue = [object isKindOfClass:[NSValue class]];
     
-    BOOL isPrimitive = !CStringEquals(argumentType, @encode(id));
-    BOOL isObjectIsWrapper = [object isKindOfClass:[NSNumber class]] || [object isKindOfClass:[NSValue class]];
-    
-    if (isPrimitive && isObjectIsWrapper) {
+    if (isValue) {
+        const char *argumentType = [[self methodSignature] getArgumentTypeAtIndex:idx];
         [(NSValue *)object typhoon_setAsArgumentWithType:argumentType forInvocation:self atIndex:idx];
     } else {
         [self setArgument:&object atIndex:idx];
