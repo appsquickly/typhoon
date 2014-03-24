@@ -9,22 +9,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
-
-
 #import <Foundation/Foundation.h>
-#import "TyphoonComponentFactory.h"
+#import "TyphoonAssembly.h"
 
-/**
-* @ingroup Factory
-*/
-@interface TyphoonXmlComponentFactory : TyphoonComponentFactory
-{
-    NSMutableArray *_resourceNames;
-}
 
-- (id)initWithConfigFileName:(NSString *)configFileName;
+@interface PropertyPlaceholderAssembly : TyphoonAssembly
 
-- (id)initWithConfigFileNames:(NSString *)configFileNames, ...NS_REQUIRES_NIL_TERMINATION;
+- (id)knight;
+
+- (id)anotherKnight;
 
 @end

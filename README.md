@@ -110,8 +110,7 @@ following:
 
 ## Design Goals / Features
 
-* Non-invasive. ***No macros or XML required***. . . while ***Spring-style XML*** or ***Guice-style macros*** are fully 
-supported (and sometimes useful), the main focus is on a <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">powerful Objective-C runtime approach.</a>
+* Non-invasive. ***No macros or XML required*** . . . The main focus is on a <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">powerful Objective-C runtime approach.</a>
 
 * Its not necessary to change ***any*** of your classes to use the framework. ***Can be introduced into legacy applications.***
 
@@ -150,7 +149,7 @@ ensure that the class is in the required state before and after properties are s
 
 And then:
 
-* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">Assembling Components with Blocks (recommended) </a> ___or___ <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-in-XML">Assembling Components in XML</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">Assembling Components with Blocks</a>
 
 * <a href="https://github.com/typhoon-framework/Typhoon/wiki/Autowiring">Autowiring</a>
 

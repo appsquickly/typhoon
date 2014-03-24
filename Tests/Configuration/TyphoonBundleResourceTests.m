@@ -20,7 +20,7 @@
 
 - (void)test_returns_bundle_resource_as_string
 {
-    id <TyphoonResource> resource = [TyphoonBundleResource withName:@"MiddleAgesAssembly.xml"];
+    id <TyphoonResource> resource = [TyphoonBundleResource withName:@"SomeProperties.properties"];
     NSString *resourceString = [resource asString];
     assertThat(resourceString, notNilValue());
 }
