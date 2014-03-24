@@ -61,13 +61,12 @@
     return element;
 }
 
-
 - (TyphoonStackElement *)peekForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args
 {
     NSUInteger argsHash = [args hash];
     
     for (TyphoonStackElement *item in [_storage reverseObjectEnumerator]) {
-        if ([item.key isEqualToString:key] && args == [item.args hash]) {
+        if ([item.key isEqualToString:key] && argsHash == [item.args hash]) {
             return item;
         }
     }

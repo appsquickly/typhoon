@@ -11,6 +11,7 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonIntrospectiveNSObject.h"
 #import "TyphoonTypeDescriptor.h"
+#import "NSArray+TyphoonManualEnumeration.h"
 
 @interface TyphoonInjectionByDictionary ()
 
@@ -73,22 +74,39 @@
     return self;
 }
 
-- (id <TyphoonDictionary>)dictionaryWithClass:(Class)dictionaryClass withResolvedInjectionsWithFactory:(TyphoonComponentFactory *)factory
-    args:(TyphoonRuntimeArguments *)args
-{
-    Class mutableClass = [TyphoonInjectionByDictionary dictionaryMutableClassFromClass:dictionaryClass];
-    id <TyphoonDictionary> result = [[[mutableClass class] alloc] initWithCapacity:[self.injections count]];
-
-    [self.injections enumerateKeysAndObjectsUsingBlock:^(id key, id <TyphoonPropertyInjection> injection, BOOL *stop) {
-        id value = [injection valueToInjectPropertyOnInstance:nil withFactory:factory args:args];
-        [result setObject:value forKey:key];
-    }];
-    return result;
-}
-
 - (NSUInteger)count
 {
     return [self.injections count];
+}
+
+#pragma mark - Utils
+
+- (void)buildDictionaryWithClass:(Class)dictionaryClass context:(TyphoonInjectionContext *)valuesContext completion:(void(^)(id<TyphoonDictionary>dictionary))completion
+{
+    Class mutableClass = [TyphoonInjectionByDictionary dictionaryMutableClassFromClass:dictionaryClass];
+    id <TyphoonDictionary> result = [[[mutableClass class] alloc] initWithCapacity:[self.injections count]];
+    
+    [[self.injections allKeys] typhoon_enumerateObjectsWithManualIteration:^(id key, id<TyphoonIterator> iterator) {
+        [self.injections[key] valueToInjectWithContext:valuesContext completion:^(id value) {
+            [result setObject:value forKey:key];
+            [iterator next];
+        }];
+    } completion:^{
+        completion(result);
+    }];
+}
+
+- (Class)dictionaryClassForContext:(TyphoonInjectionContext *)context
+{
+    Class dictionaryClass = self.requiredClass;
+    if (!dictionaryClass) {
+        dictionaryClass = context.destinationType.classOrProtocol;
+    }
+    if (![TyphoonInjectionByDictionary isDictionaryClass:dictionaryClass]) {
+        [NSException raise:NSInvalidArgumentException format:@"Property named '%@' on '%@' is not dictionary.", self.propertyName,
+         NSStringFromClass(dictionaryClass)];
+    }
+    return dictionaryClass;
 }
 
 #pragma mark - Overrides
@@ -102,32 +120,16 @@
     return copied;
 }
 
-- (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
-    Class dictionaryClass = self.requiredClass;
-    if (!dictionaryClass) {
-        TyphoonTypeDescriptor *type = [instance typhoon_typeForPropertyWithName:self.propertyName];
-        dictionaryClass = type.classOrProtocol;
-    }
-
-    if (![TyphoonInjectionByDictionary isDictionaryClass:dictionaryClass]) {
-        [NSException raise:NSInvalidArgumentException format:@"Property named '%@' on '%@' is not dictionary.", self.propertyName,
-                                                             NSStringFromClass(dictionaryClass)];
-    }
-
-    return [self dictionaryWithClass:dictionaryClass withResolvedInjectionsWithFactory:factory args:args];
+    Class dictionaryClass = [self dictionaryClassForContext:context];
+    
+    TyphoonInjectionContext *contextForValues = [context copy];
+    contextForValues.destinationType = [TyphoonTypeDescriptor descriptorWithEncodedType:@encode(id)];
+    
+    [self buildDictionaryWithClass:dictionaryClass context:contextForValues completion:^(id<TyphoonDictionary> dictionary) {
+        result(dictionary);
+    }];
 }
-
-- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-                       args:(TyphoonRuntimeArguments *)args
-{
-    if (!self.requiredClass) {
-        [NSException raise:NSInvalidArgumentException format:@"Required type is missing on injected dictionary parameter!"];
-    }
-    id <TyphoonDictionary> dictionary = [self dictionaryWithClass:self.requiredClass withResolvedInjectionsWithFactory:factory args:args];
-
-    [invocation setArgument:&dictionary atIndex:self.parameterIndex + 2];
-}
-
 
 @end

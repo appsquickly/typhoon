@@ -73,7 +73,7 @@
     [self markCurrentlyResolvingKey:key];
 
     if ([self keyInvolvedInCircularDependency:key]) {
-        return [self definitionToTerminateCircularDependencyForKey:key];
+        return [self definitionToTerminateCircularDependencyForKey:key args:args];
     }
 
     id cached = [self populateCacheWithDefinitionForKey:key];
@@ -121,11 +121,13 @@
     return NO;
 }
 
-- (TyphoonDefinition *)definitionToTerminateCircularDependencyForKey:(NSString *)key
+- (TyphoonDefinition *)definitionToTerminateCircularDependencyForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args
 {
     // we return a 'dummy' definition just to terminate the cycle. This dummy definition will be overwritten by the real one in the cache,
     // which will be set further up the stack and will overwrite this one in 'cachedDefinitionsForMethodName'.
-    return [[TyphoonDefinition alloc] initWithClass:[TyphoonCircularDependencyTerminator class] key:key];
+    TyphoonDefinition *dummy = [[TyphoonDefinition alloc] initWithClass:[TyphoonCircularDependencyTerminator class] key:key];
+    dummy.currentRuntimeArguments = args;
+    return dummy;
 }
 
 - (void)markKeyResolved:(NSString *)key

@@ -38,9 +38,6 @@
 
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance;
 
-- (void)evaluateCircularDependency:(NSString *)componentKey propertyName:(NSString *)propertyName
-      instance:(id <TyphoonIntrospectiveNSObject>)instance args:(TyphoonRuntimeArguments *)args;
-
-- (BOOL)isCircularPropertyWithName:(NSString *)name onInstance:(id <TyphoonIntrospectiveNSObject>)instance;
+- (void)resolveCircularDependency:(NSString *)key args:(TyphoonRuntimeArguments *)args resolvedBlock:(void(^)(BOOL isCircular))resolvedBlock;
 
 @end

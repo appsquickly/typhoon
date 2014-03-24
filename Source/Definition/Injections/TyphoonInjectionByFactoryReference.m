@@ -33,26 +33,11 @@
     return copied;
 }
 
-- (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (id)resolveReferenceWithContext:(TyphoonInjectionContext *)context
 {
-    if (instance) {
-        [factory evaluateCircularDependency:self.reference propertyName:self.propertyName instance:instance args:args];
-        if ([factory isCircularPropertyWithName:self.propertyName onInstance:instance]) {
-            return nil;
-        }
-    }
-
-    id factoryReference = [self componentForReferenceWithFactory:factory args:args];
-    return [factoryReference valueForKeyPath:self.keyPath];
-}
-
-- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-                       args:(TyphoonRuntimeArguments *)args
-{
-    id factoryReference = [self componentForReferenceWithFactory:factory args:args];
-    id valueToInject = [factoryReference valueForKeyPath:_keyPath];
-
-    [invocation typhoon_setArgumentObject:valueToInject atIndex:self.parameterIndex + 2];
+    id referenceInstance = [super resolveReferenceWithContext:context];
+    
+    return [referenceInstance valueForKeyPath:self.keyPath];
 }
 
 @end

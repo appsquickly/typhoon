@@ -6,16 +6,11 @@
 //  Copyright (c) 2014 Jasper Blues. All rights reserved.
 //
 
-@class TyphoonComponentFactory;
-@class TyphoonRuntimeArguments;
-@class TyphoonMethod;
-@class TyphoonTypeDescriptor;
+#import "TyphoonInjection.h"
 
-@protocol TyphoonParameterInjection <NSObject, NSCopying>
+@protocol TyphoonParameterInjection <TyphoonInjection>
 
 - (void)setParameterIndex:(NSUInteger)index;
-
-- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-    args:(TyphoonRuntimeArguments *)args;
+- (NSUInteger)parameterIndex;
 
 @end
