@@ -15,6 +15,7 @@
 
 @class TyphoonComponentFactory;
 @class TyphoonRuntimeArguments;
+@class TyphoonInjectionContext;
 
 @interface TyphoonMethod (InstanceBuilder)
 
@@ -24,7 +25,7 @@
 
 - (NSArray *)parametersInjectedByRuntimeArgument;
 
-- (NSInvocation *)newInvocationOnClass:(Class)clazz withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args;
+- (void)createInvocationOnClass:(Class)clazz withContext:(TyphoonInjectionContext *)context completion:(void(^)(NSInvocation *invocation))result;
 
 - (BOOL)isClassMethodOnClass:(Class)clazz;
 

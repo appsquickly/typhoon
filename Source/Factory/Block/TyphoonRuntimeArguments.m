@@ -17,7 +17,9 @@
 
 @implementation TyphoonRuntimeArguments
 {
-    NSMutableArray *arguments;
+    NSMutableArray *_arguments;
+    NSUInteger _hash;
+    BOOL _needRehash;
 }
 
 + (instancetype)argumentsFromInvocation:(NSInvocation *)invocation
@@ -67,14 +69,15 @@
 {
     self = [super init];
     if (self) {
-        arguments = array;
+        _arguments = array;
+        _needRehash = YES;
     }
     return self;
 }
 
 - (id)argumentValueAtIndex:(NSUInteger)index
 {
-    id argument = arguments[index];
+    id argument = _arguments[index];
     if ([argument isMemberOfClass:[TyphoonRuntimeNullArgument class]]) {
         return nil;
     }
@@ -85,12 +88,13 @@
 
 - (void)replaceArgumentAtIndex:(NSUInteger)index withArgument:(id)argument
 {
-    [arguments replaceObjectAtIndex:index withObject:argument];
+    [_arguments replaceObjectAtIndex:index withObject:argument];
+    _needRehash = YES;
 }
 
 - (NSUInteger)indexOfArgumentWithKind:(Class)clazz
 {
-    return [arguments indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+    return [_arguments indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         BOOL found = NO;
         if ([obj isKindOfClass:clazz]) {
             *stop = YES;
@@ -102,7 +106,27 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    return [[TyphoonRuntimeArguments alloc] initWithArguments:[arguments mutableCopy]];
+    return [[TyphoonRuntimeArguments alloc] initWithArguments:[_arguments mutableCopy]];
+}
+
+- (NSUInteger)hash
+{
+    if (_needRehash) {
+        _hash = [self calculateHash];
+        _needRehash = NO;
+    }
+    return _hash;
+}
+
+- (NSUInteger)calculateHash
+{
+    NSUInteger hash = 0;
+    
+    for (id arg in _arguments) {
+        hash ^= [arg hash];
+    }
+    
+    return hash;
 }
 
 @end

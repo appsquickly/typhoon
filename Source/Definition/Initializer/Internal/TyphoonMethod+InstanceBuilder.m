@@ -19,6 +19,8 @@
 #import "TyphoonInjectionByObjectFromString.h"
 #import "TyphoonInjectionByRuntimeArgument.h"
 #import "TyphoonTypeDescriptor.h"
+#import "NSArray+TyphoonManualEnumeration.h"
+#import "NSInvocation+TCFUnwrapValues.h"
 
 TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
@@ -49,23 +51,25 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     return [_injectedParameters filteredArrayUsingPredicate:predicate];
 }
 
-- (NSInvocation *)newInvocationOnClass:(Class)clazz withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args;
+- (void)createInvocationOnClass:(Class)clazz withContext:(TyphoonInjectionContext *)context completion:(void(^)(NSInvocation *invocation))result
 {
     BOOL isClassMethod = [self isClassMethodOnClass:clazz];
     
-    NSArray *typeCodes = [TyphoonIntrospectionUtils typeCodesForSelector:self.selector ofClass:clazz isClassMethod:isClassMethod];
-
     NSMethodSignature *signature = [self methodSignatureWithTarget:clazz isClassMethod:isClassMethod];
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
     [invocation retainArguments];
     [invocation setSelector:_selector];
-
-    [[self injectedParameters] enumerateObjectsUsingBlock:^(id <TyphoonParameterInjection> parameter, NSUInteger index, BOOL *stop) {
-        TyphoonTypeDescriptor *type = [TyphoonTypeDescriptor descriptorWithTypeCode:typeCodes[index]];
-        [parameter setArgumentWithType:type onInvocation:invocation withFactory:factory args:args];
+    
+    [[self injectedParameters] typhoon_enumerateObjectsWithManualIteration:^(id<TyphoonParameterInjection> object, id<TyphoonIterator> iterator) {
+        NSUInteger index = [object parameterIndex] + 2;
+        context.destinationType = [TyphoonTypeDescriptor descriptorWithEncodedType:[signature getArgumentTypeAtIndex:index]];
+        [object valueToInjectWithContext:context completion:^(id value) {
+            [invocation typhoon_setArgumentObject:value atIndex:index];
+            [iterator next];
+        }];
+    } completion:^{
+        result(invocation);
     }];
-
-    return invocation;
 }
 
 /* ====================================================================================================================================== */

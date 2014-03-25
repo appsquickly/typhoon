@@ -164,6 +164,41 @@
     }];
 }
 
+- (id)knightWithDamselsRescued:(NSNumber *)damselsRescued
+{
+    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+        [definition injectInitializer:@selector(initWithDamselsRescued:foo:) withParameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:damselsRescued];
+            [initializer injectParameterWith:[self knightWithFoobarKnightWithDamselsRescued:damselsRescued]];
+        }];
+    }];
+}
+
+- (id)knightWithFoobarKnightWithDamselsRescued:(NSNumber *)damselsRescued
+{
+    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(foobar) with:[self knightWithDamselsRescued:damselsRescued]];
+    }];
+}
+
+
+- (id)knightWithPredefinedCircularDependency:(NSNumber *)damselsRescued
+{
+    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+        [definition injectInitializer:@selector(initWithDamselsRescued:foo:) withParameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:damselsRescued];
+            [initializer injectParameterWith:[self knightWithFoobarKnightWithPredefinedCircularDependency]];
+        }];
+    }];
+}
+
+- (id)knightWithFoobarKnightWithPredefinedCircularDependency
+{
+    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(foobar) with:[self knightWithPredefinedCircularDependency:@25]];
+    }];
+}
+
 - (id)knightClassMethodInit
 {
     return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {

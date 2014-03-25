@@ -60,5 +60,42 @@
     assertThat([knight.quest imageUrl], equalTo([NSURL URLWithString:@"http://example.com"]));
 }
 
+- (void)test_circular_dependency_with_runtime_args
+{
+    Knight *knight = [factory knightWithDamselsRescued:@32];
+    
+    Knight *anotherKnight = knight.foobar;
+    
+    STAssertEquals((int)knight.damselsRescued, 32, @"");
+    STAssertTrue(anotherKnight.foobar == knight, @"");
+    STAssertTrue(knight.foobar == anotherKnight, @"");
+}
+
+- (void)test_circular_dependency_with_predefined_runtime_args
+{
+    Knight *knight = [factory knightWithPredefinedCircularDependency:@25];
+    
+    Knight *anotherKnight = knight.foobar;
+    
+    STAssertEquals((int)knight.damselsRescued, 25, @"");
+    STAssertTrue(anotherKnight.foobar == knight, @"");
+    STAssertTrue(knight.foobar == anotherKnight, @"");
+}
+
+- (void)test_dependency_with_predefined_runtime_args
+{
+    Knight *knight = [factory knightWithPredefinedCircularDependency:@27];
+    
+    Knight *anotherKnight = knight.foobar;
+    
+    Knight *thirdKnight = anotherKnight.foobar;
+    
+    STAssertEquals((int)knight.damselsRescued, 27, @"");
+    STAssertEquals((int)thirdKnight.damselsRescued, 25, @"");
+
+    STAssertTrue(thirdKnight != knight, @"");
+    STAssertTrue(knight.foobar == anotherKnight, @"");
+}
+
 
 @end

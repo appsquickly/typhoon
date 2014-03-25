@@ -12,7 +12,7 @@
 
 #import "TyphoonCallStack.h"
 #import "TyphoonStackElement.h"
-
+#import "TyphoonRuntimeArguments.h"
 
 @implementation TyphoonCallStack
 {
@@ -61,11 +61,12 @@
     return element;
 }
 
-
-- (TyphoonStackElement *)peekForKey:(NSString *)key
+- (TyphoonStackElement *)peekForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args
 {
+    NSUInteger argsHash = [args hash];
+    
     for (TyphoonStackElement *item in [_storage reverseObjectEnumerator]) {
-        if ([item.key isEqualToString:key]) {
+        if ([item.key isEqualToString:key] && argsHash == [item.args hash]) {
             return item;
         }
     }
@@ -77,9 +78,9 @@
     return ([_storage count] == 0);
 }
 
-- (BOOL)isResolvingKey:(NSString *)key
+- (BOOL)isResolvingKey:(NSString *)key withArgs:(TyphoonRuntimeArguments *)args
 {
-    return [self peekForKey:key] != nil;
+    return [self peekForKey:key args:args] != nil;
 }
 
 @end

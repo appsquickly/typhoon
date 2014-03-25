@@ -25,7 +25,7 @@
     SEL setterSelector = [TyphoonIntrospectionUtils setterForPropertyWithName:propertyName inClass:[self class]];
 
     if (!setterSelector) {
-        [NSException raise:@"PropertyInjectionException" format:@"Can't inject property '%@' for object '%@'. Setter selector not found. Make sure that property exists and writable",propertyName, self];
+        [NSException raise:@"TyphoonPropertySetterNotFoundException" format:@"Can't inject property '%@' for object '%@'. Setter selector not found. Make sure that property exists and writable",propertyName, self];
     }
     
     NSMethodSignature *signature = [self methodSignatureForSelector:setterSelector];

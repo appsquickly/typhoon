@@ -30,16 +30,9 @@
 
 #pragma mark - Overrides
 
-- (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
-    return [args argumentValueAtIndex:self.runtimeArgumentIndex];
-}
-
-- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-                       args:(TyphoonRuntimeArguments *)args
-{
-    id runtimeArgument = [args argumentValueAtIndex:self.runtimeArgumentIndex];
-    [invocation typhoon_setArgumentObject:runtimeArgument atIndex:self.parameterIndex + 2];
+    result([context.args argumentValueAtIndex:self.runtimeArgumentIndex]);
 }
 
 - (id)copyWithZone:(NSZone *)zone

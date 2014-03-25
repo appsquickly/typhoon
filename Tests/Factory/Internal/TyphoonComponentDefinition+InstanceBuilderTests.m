@@ -225,7 +225,7 @@
         knight = nil;
     }
     @catch (NSException *e) {
-        assertThat(e.name, equalTo(@"NSUnknownKeyException"));
+        assertThat(e.name, equalTo(@"TyphoonPropertySetterNotFoundException"));
     }
 }
 
@@ -326,7 +326,7 @@
         STFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
-        assertThat(e.name, equalTo(@"NSUnknownKeyException"));
+        assertThat(e.name, equalTo(@"TyphoonPropertySetterNotFoundException"));
     }
 
 }

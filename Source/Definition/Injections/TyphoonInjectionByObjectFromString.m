@@ -37,18 +37,12 @@
     return copied;
 }
 
-- (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
-    TyphoonTypeDescriptor *type;
-    if (!instance) {
-        type = [TyphoonTypeDescriptor descriptorWithClassOrProtocol:[NSString class]];
-    }
-    else {
-        type = [instance typhoon_typeForPropertyWithName:self.propertyName];
-    }
+    TyphoonTypeDescriptor *type = context.destinationType;
 
     id value = nil;
-
+    
     if (type.isPrimitive) {
         TyphoonPrimitiveTypeConverter *converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
         value = [converter valueFromText:self.textValue withType:type];
@@ -56,20 +50,8 @@
     else {
         value = [self convertText:self.textValue];
     }
-    return value;
-}
-
-- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-                       args:(TyphoonRuntimeArguments *)args
-{
-    if (type.isPrimitive) {
-        TyphoonPrimitiveTypeConverter *converter = [[TyphoonTypeConverterRegistry shared] primitiveTypeConverter];
-        [converter setPrimitiveArgumentFor:invocation index:self.parameterIndex + 2 textValue:_textValue requiredType:type];
-    }
-    else {
-        id converted = [self convertText:self.textValue];
-        [invocation typhoon_setArgumentObject:converted atIndex:self.parameterIndex + 2];
-    }
+    
+    result(value);
 }
 
 - (id)convertText:(NSString *)text

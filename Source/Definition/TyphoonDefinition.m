@@ -74,10 +74,6 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
         properties(weakDefinition);
     }
 
-    if (!definition->_isScopeSetByUser && [definition hasRuntimeArgumentInjections]) {
-        definition.scope = TyphoonScopePrototype;
-    }
-
     [definition validateScope];
 
     return definition;
@@ -86,7 +82,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 + (TyphoonDefinition *)withClass:(Class)clazz factory:(TyphoonDefinition *)_definition selector:(SEL)selector
 {
     return [TyphoonDefinition withClass:clazz injections:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(selector) withParameters:nil];
+        [definition injectInitializer:selector withParameters:nil];
         [definition setFactory:_definition];
     }];
 }
@@ -224,9 +220,9 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
             format:@"The lazy attribute is only applicable to singleton scoped definitions, but is set for definition: %@ ", self];
     }
 
-    if (self.scope != TyphoonScopePrototype && [self hasRuntimeArgumentInjections]) {
+    if ((self.scope != TyphoonScopePrototype && self.scope != TyphoonScopeObjectGraph) && [self hasRuntimeArgumentInjections]) {
         [NSException raise:NSInvalidArgumentException
-            format:@"The runtime arguments injections are only applicable to prototype scoped definitions, but is set for definition: %@ ",
+            format:@"The runtime arguments injections are only applicable to prototype and object-graph scoped definitions, but is set for definition: %@ ",
                    self];
     }
 }

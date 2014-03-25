@@ -272,20 +272,30 @@ static TyphoonComponentFactory *defaultFactory;
 {
     [_registry enumerateObjectsUsingBlock:^(id definition, NSUInteger idx, BOOL *stop) {
         if (([definition scope] == TyphoonScopeSingleton) && ![definition isLazy]) {
-            [self sharedInstanceForDefinition:definition fromPool:_singletons];
+            [self sharedInstanceForDefinition:definition args:nil fromPool:_singletons];
         }
     }];
 }
 
-- (id)sharedInstanceForDefinition:(TyphoonDefinition *)definition fromPool:(id <TyphoonComponentsPool>)pool
+- (id)sharedInstanceForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args fromPool:(id <TyphoonComponentsPool>)pool
 {
     @synchronized (self) {
-        id instance = [pool objectForKey:definition.key];
+        NSString *poolKey = [self poolKeyForDefinition:definition args:args];
+        id instance = [pool objectForKey:poolKey];
         if (instance == nil) {
-            instance = [self buildSharedInstanceForDefinition:definition];
-            [pool setObject:instance forKey:definition.key];
+            instance = [self buildSharedInstanceForDefinition:definition args:args];
+            [pool setObject:instance forKey:poolKey];
         }
         return instance;
+    }
+}
+
+- (NSString *)poolKeyForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
+{
+    if (args) {
+        return [NSString stringWithFormat:@"%@-%x", definition.key, [args hash]];
+    } else {
+        return definition.key;
     }
 }
 
@@ -318,13 +328,13 @@ static TyphoonComponentFactory *defaultFactory;
     id instance = nil;
     switch (definition.scope) {
         case TyphoonScopeSingleton:
-            instance = [self sharedInstanceForDefinition:definition fromPool:_singletons];
+            instance = [self sharedInstanceForDefinition:definition args:args fromPool:_singletons];
             break;
         case TyphoonScopeWeakSingleton:
-            instance = [self sharedInstanceForDefinition:definition fromPool:_weakSingletons];
+            instance = [self sharedInstanceForDefinition:definition args:args fromPool:_weakSingletons];
             break;
         case TyphoonScopeObjectGraph:
-            instance = [self sharedInstanceForDefinition:definition fromPool:_objectGraphSharedInstances];
+            instance = [self sharedInstanceForDefinition:definition args:args fromPool:_objectGraphSharedInstances];
             break;
         default:
         case TyphoonScopePrototype:

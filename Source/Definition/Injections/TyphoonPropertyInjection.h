@@ -6,15 +6,11 @@
 //  Copyright (c) 2014 Jasper Blues. All rights reserved.
 //
 
-@class TyphoonComponentFactory;
-@class TyphoonRuntimeArguments;
+#import "TyphoonInjection.h"
 
-@protocol TyphoonPropertyInjection <NSObject, NSCopying>
+@protocol TyphoonPropertyInjection <TyphoonInjection>
 
 - (void)setPropertyName:(NSString *)name;
-
 - (NSString *)propertyName;
-
-- (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args;
 
 @end

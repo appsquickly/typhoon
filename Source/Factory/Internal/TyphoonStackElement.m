@@ -13,24 +13,24 @@
 
 #import "TyphoonStackElement.h"
 
-
 @implementation TyphoonStackElement
 {
     NSMutableSet *completeBlocks;
     id _instance;
 }
 
-+ (instancetype)elementWithKey:(NSString *)key
++ (instancetype)elementWithKey:(NSString *)key args:(TyphoonRuntimeArguments *)args
 {
-    return [[self alloc] initWithKey:key];
+    return [[self alloc] initWithKey:key args:args];
 }
 
 
-- (instancetype)initWithKey:(NSString *)key
+- (instancetype)initWithKey:(NSString *)key args:(TyphoonRuntimeArguments *)args
 {
     self = [super init];
     if (self) {
         _key = key;
+        _args = args;
         completeBlocks = [NSMutableSet new];
     }
     return self;

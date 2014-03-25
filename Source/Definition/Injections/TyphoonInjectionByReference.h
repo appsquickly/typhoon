@@ -15,6 +15,7 @@
 
 - (instancetype)initWithReference:(NSString *)reference args:(TyphoonRuntimeArguments *)referenceArguments;
 
-- (id)componentForReferenceWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)runtimeArgs;
+- (void)resolveCircularDependencyWithContext:(TyphoonInjectionContext *)context block:(dispatch_block_t)block;
+- (id)resolveReferenceWithContext:(TyphoonInjectionContext *)context;
 
 @end

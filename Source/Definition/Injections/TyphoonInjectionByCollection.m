@@ -15,6 +15,8 @@
 #import "TyphoonInjections.h"
 #import "TyphoonPropertyInjection.h"
 
+#import "NSArray+TyphoonManualEnumeration.h"
+
 @interface TyphoonInjectionByCollection ()
 
 @property(nonatomic, strong) NSMutableArray *injections;
@@ -82,23 +84,38 @@
     return self;
 }
 
-- (id <TyphoonCollection>)collectionWithClass:(Class)collectionClass withResolvedInjectionsWithFactory:(TyphoonComponentFactory *)factory
-    args:(TyphoonRuntimeArguments *)args
-{
-    Class mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:collectionClass];
-    id <TyphoonCollection> result = [[[mutableClass class] alloc] initWithCapacity:[self.injections count]];
-
-    for (id <TyphoonPropertyInjection> injection in self.injections) {
-        id value = [injection valueToInjectPropertyOnInstance:nil withFactory:factory args:args];
-        [result addObject:value];
-    }
-
-    return result;
-}
-
 - (NSUInteger)count
 {
     return [self.injections count];
+}
+
+#pragma mark - Utils
+
+- (void)buildCollectionWithClass:(Class)collectionClass context:(TyphoonInjectionContext *)valuesContext completion:(void(^)(id<TyphoonCollection>collection))completion
+{
+    Class mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:collectionClass];
+    id <TyphoonCollection> result = [[[mutableClass class] alloc] initWithCapacity:[self.injections count]];
+    
+    [self.injections typhoon_enumerateObjectsWithManualIteration:^(id<TyphoonInjection> object, id<TyphoonIterator> iterator) {
+        [object valueToInjectWithContext:valuesContext completion:^(id value) {
+            [result addObject:value];
+            [iterator next];
+        }];
+    } completion:^{
+        completion(result);
+    }];
+}
+
+- (Class)collectionClassForContext:(TyphoonInjectionContext *)context
+{
+    Class collectionClass = self.requiredClass;
+    if (!collectionClass) {
+        collectionClass = context.destinationType.classOrProtocol;
+    }
+    if (![TyphoonInjectionByCollection isCollectionClass:collectionClass]) {
+        [NSException raise:NSInvalidArgumentException format:@"Destination type '%@' is neither an NSSet nor NSArray.", NSStringFromClass(collectionClass)];
+    }
+    return collectionClass;
 }
 
 #pragma mark - Overrides
@@ -112,31 +129,16 @@
     return copied;
 }
 
-- (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
-    Class collectionClass = self.requiredClass;
-    if (!collectionClass) {
-        TyphoonTypeDescriptor *type = [instance typhoon_typeForPropertyWithName:self.propertyName];
-        collectionClass = type.classOrProtocol;
-    }
-    if (![TyphoonInjectionByCollection isCollectionClass:collectionClass]) {
-        [NSException raise:NSInvalidArgumentException format:@"Property named '%@' on '%@' is neither an NSSet nor NSArray.",
-                                                             self.propertyName, NSStringFromClass(collectionClass)];
-    }
-
-    return [self collectionWithClass:collectionClass withResolvedInjectionsWithFactory:factory args:args];
+    Class collectionClass = [self collectionClassForContext:context];
+    
+    TyphoonInjectionContext *contextForValues = [context copy];
+    contextForValues.destinationType = [TyphoonTypeDescriptor descriptorWithEncodedType:@encode(id)];
+    
+    [self buildCollectionWithClass:collectionClass context:contextForValues completion:^(id<TyphoonCollection> collection) {
+        result(collection);
+    }];
 }
-
-- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-                       args:(TyphoonRuntimeArguments *)args
-{
-    if (!self.requiredClass) {
-        [NSException raise:NSInvalidArgumentException format:@"Required type is missing on injected collection parameter!"];
-    }
-
-    id <TyphoonCollection> collection = [self collectionWithClass:self.requiredClass withResolvedInjectionsWithFactory:factory args:args];
-    [invocation setArgument:&collection atIndex:self.parameterIndex + 2];
-}
-
 
 @end
