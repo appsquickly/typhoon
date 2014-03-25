@@ -12,7 +12,7 @@
 #import <Foundation/Foundation.h>
 
 
-typedef struct
+typedef struct __attribute__((packed))
 {
     int fieldA;
     long fieldB;
@@ -26,7 +26,7 @@ typedef struct
     unsignedCharValue:(unsigned char)unsignedCharValue floatValue:(float)floatValue doubleValue:(double)doubleValue
     boolValue:(BOOL)boolValue integerValue:(NSInteger)integerValue unsignedIntegerValue:(NSUInteger)unsignedIntegerValue
     classValue:(Class)classValue selectorValue:(SEL)selectorValue cstring:(char *)cString nsRange:(NSRange)nsRange
-    pointerValue:(void *)pointer unknownPointer:(PrimitiveManStruct *)unknownPointer pointerInsideValue:(NSValue *)pointerInsideValue;
+          pointerValue:(void *)pointer unknownPointer:(PrimitiveManStruct *)unknownPointer pointerInsideValue:(NSValue *)pointerInsideValue unknownStructure:(PrimitiveManStruct)unknownStructure;
 
 
 @property(nonatomic, assign) int intValue;
@@ -48,7 +48,9 @@ typedef struct
 @property(nonatomic, assign) NSUInteger unsignedIntegerValue;
 @property(nonatomic, assign) NSRange nsRange;
 @property(nonatomic, assign) void *pointer;
-@property(nonatomic, assign) PrimitiveManStruct *unknownPointer;
+@property(nonatomic, assign, setter = unknownPointerSetter:) PrimitiveManStruct *unknownPointer;
 @property(nonatomic, assign) NSValue *pointerInsideValue;
+@property(nonatomic, assign) PrimitiveManStruct unknownStructure;
+
 
 @end

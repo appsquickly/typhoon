@@ -11,6 +11,8 @@
 #import "TyphoonInjectionByRuntimeArgument.h"
 #import "TyphoonCallStack.h"
 #import "TyphoonStackElement.h"
+#import "NSInvocation+TCFUnwrapValues.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
 
 @implementation TyphoonInjectionByReference
 
@@ -33,37 +35,28 @@
     return copied;
 }
 
-- (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
-    if (instance) {
-        [factory evaluateCircularDependency:self.reference propertyName:self.propertyName instance:instance];
-        if ([factory isCircularPropertyWithName:self.propertyName onInstance:instance]) {
-            return nil;
-        }
+    if (context.raiseExceptionIfCircular) {
+        result([self resolveReferenceWithContext:context]);
+    } else {
+        [self resolveCircularDependencyWithContext:context block:^{
+            result([self resolveReferenceWithContext:context]);
+        }];
     }
-    
-    return [self componentForReferenceWithFactory:factory args:args];
-}
-
-- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-                       args:(TyphoonRuntimeArguments *)args
-{
-    id referenceInstance = [self componentForReferenceWithFactory:factory args:args];
-    [self setObject:referenceInstance forType:type andInvocation:invocation];
 }
 
 #pragma mark - Utils
 
-- (TyphoonRuntimeArguments *)argumentsByReplacingRuntimeArgsReferencesInArgs:(TyphoonRuntimeArguments *)referenceArgs
-    withRuntimeArgs:(TyphoonRuntimeArguments *)runtimeArgs
+- (TyphoonRuntimeArguments *)referenceArgumentsByApplyingRuntimeArgs:(TyphoonRuntimeArguments *)runtimeArgs
 {
-    TyphoonRuntimeArguments *result = referenceArgs;
+    TyphoonRuntimeArguments *result = _referenceArguments;
 
     Class runtimeArgInjectionClass = [TyphoonInjectionByRuntimeArgument class];
-    BOOL hasRuntimeArgumentReferences = [referenceArgs indexOfArgumentWithKind:runtimeArgInjectionClass] != NSNotFound;
+    BOOL hasRuntimeArgumentReferences = [_referenceArguments indexOfArgumentWithKind:runtimeArgInjectionClass] != NSNotFound;
 
-    if (referenceArgs && runtimeArgs && hasRuntimeArgumentReferences) {
-        result = [referenceArgs copy];
+    if (_referenceArguments && runtimeArgs && hasRuntimeArgumentReferences) {
+        result = [_referenceArguments copy];
         NSUInteger indexToReplace;
         while ((indexToReplace = [result indexOfArgumentWithKind:runtimeArgInjectionClass]) != NSNotFound) {
             TyphoonInjectionByRuntimeArgument *runtimeArgPlaceholder = [result argumentValueAtIndex:indexToReplace];
@@ -77,14 +70,22 @@
 
 #pragma mark - Protected
 
-//Raises circular dependencies exception if already initializing.
-- (id)componentForReferenceWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)runtimeArgs
+- (void)resolveCircularDependencyWithContext:(TyphoonInjectionContext *)context block:(dispatch_block_t)block
 {
-    id referenceInstance = [[[factory stack] peekForKey:self.reference] instance];
+    TyphoonRuntimeArguments *args = [self referenceArgumentsByApplyingRuntimeArgs:context.args];
+    [context.factory resolveCircularDependency:self.reference args:args resolvedBlock:^(BOOL isCircular) {
+        block();
+    }];
+}
+
+//Raises circular dependencies exception if already initializing.
+- (id)resolveReferenceWithContext:(TyphoonInjectionContext *)context
+{
+    TyphoonRuntimeArguments *args = [self referenceArgumentsByApplyingRuntimeArgs:context.args];
+    
+    id referenceInstance = [[[context.factory stack] peekForKey:self.reference args:args] instance];
     if (!referenceInstance) {
-        TyphoonRuntimeArguments *referenceArgumentsWithRuntime =
-        [self argumentsByReplacingRuntimeArgsReferencesInArgs:self.referenceArguments withRuntimeArgs:runtimeArgs];
-        referenceInstance = [factory componentForKey:self.reference args:referenceArgumentsWithRuntime];
+        referenceInstance = [context.factory componentForKey:self.reference args:args];
     }
     return referenceInstance;
 }

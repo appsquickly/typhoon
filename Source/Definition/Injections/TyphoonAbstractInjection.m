@@ -8,7 +8,6 @@
 
 #import "TyphoonAbstractInjection.h"
 #import "TyphoonMethod+InstanceBuilder.h"
-#import "NSValue+TCFInstanceBuilder.h"
 #import "TyphoonTypeDescriptor.h"
 
 @implementation TyphoonAbstractInjection
@@ -96,6 +95,10 @@
     return nil;
 }
 
+- (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
+{
+    [NSException raise:NSInternalInconsistencyException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
+}
 
 -(void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
                       args:(TyphoonRuntimeArguments *)args
@@ -103,10 +106,9 @@
     [NSException raise:NSInternalInconsistencyException format:@"%@ - %@ is abstract", self, NSStringFromSelector(_cmd)];
 }
 
-- (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (void)obtainValueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args value:(void(^)(id value))completion
 {
     [NSException raise:NSInternalInconsistencyException format:@"%@ - %@ is abstract", self, NSStringFromSelector(_cmd)];
-    return nil;
 }
 
 @end
@@ -120,20 +122,6 @@
     }
     else if (self.type == TyphoonInjectionTypeParameter) {
         [copiedInjection setParameterIndex:_parameterIndex];
-    }
-}
-
-- (void)setObject:(id)object forType:(TyphoonTypeDescriptor *)type andInvocation:(NSInvocation *)invocation;
-{
-    BOOL isObjectIsWrapper = [object isKindOfClass:[NSNumber class]] || [object isKindOfClass:[NSValue class]];
-
-    if (isObjectIsWrapper && type.isPrimitive) {
-        const char *objcType = [type encodedType];
-        [object typhoon_setAsArgumentWithType:objcType forInvocation:invocation
-            atIndex:_parameterIndex + 2];
-    }
-    else {
-        [invocation setArgument:&object atIndex:_parameterIndex + 2];
     }
 }
 

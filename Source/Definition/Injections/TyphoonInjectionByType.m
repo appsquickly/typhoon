@@ -23,24 +23,19 @@
     return copied;
 }
 
-- (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
-    TyphoonTypeDescriptor *type = [instance typhoon_typeForPropertyWithName:self.propertyName];
-    TyphoonDefinition *definition = [factory definitionForType:[type classOrProtocol]];
+    id classOrProtocol = context.destinationType.classOrProtocol;
     
-    if (instance) {
-        [factory evaluateCircularDependency:definition.key propertyName:self.propertyName instance:instance];
-        if ([factory isCircularPropertyWithName:self.propertyName onInstance:instance]) {
-            return nil;
-        }
+    if (!classOrProtocol) {
+        [NSException raise:NSInternalInconsistencyException format:@"InjectionByType is not supported as parameter injection"];
     }
-
-    return [factory componentForKey:definition.key];
-}
-
-- (void)setParameterIndex:(NSUInteger)index withInitializer:(TyphoonMethod *)initializer
-{
-    [NSException raise:NSInternalInconsistencyException format:@"InjectionByType is not supported as parameter injection"];
+    
+    TyphoonDefinition *definition = [context.factory definitionForType:classOrProtocol];
+    
+    [context.factory resolveCircularDependency:definition.key args:context.args resolvedBlock:^(BOOL isCircular) {
+        result([context.factory componentForKey:definition.key]);
+    }];
 }
 
 @end

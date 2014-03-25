@@ -45,8 +45,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
-
-    TyphoonStackElement *stackElement = [TyphoonStackElement elementWithKey:definition.key];
+    TyphoonStackElement *stackElement = [TyphoonStackElement elementWithKey:definition.key args:args];
     [_stack push:stackElement];
 
     id instance = [self initializeInstanceWithDefinition:definition args:args];
@@ -83,7 +82,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     BOOL isClass = class_isMetaClass(object_getClass(instanceOrClass));
     Class instanceClass = isClass ? instanceOrClass : [instanceOrClass class];
     
-    NSInvocation *invocation = [initializer newInvocationOnClass:instanceClass withFactory:self args:args];
+    NSInvocation *invocation = [self invocationToInit:instanceClass with:initializer args:args];
     
     BOOL isClassMethod = [initializer isClassMethodOnClass:instanceClass];
 
@@ -94,6 +93,20 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         result = [invocation typhoon_resultOfInvokingOnInstance:instanceOrClass];
     }
     
+    return result;
+}
+
+- (NSInvocation *)invocationToInit:(Class)clazz with:(TyphoonMethod *)method args:(TyphoonRuntimeArguments *)args
+{
+    TyphoonInjectionContext *context = [TyphoonInjectionContext new];
+    context.factory = self;
+    context.args = args;
+    context.raiseExceptionIfCircular = YES;
+    
+    __block NSInvocation *result;
+    [method createInvocationOnClass:clazz withContext:context completion:^(NSInvocation *invocation) {
+        result = invocation;
+    }];
     return result;
 }
 
@@ -109,7 +122,6 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance
 {
-
     if ([instance conformsToProtocol:@protocol(TyphoonComponentFactoryAware)]) {
         [self injectAssemblyOnInstance:instance];
     }
@@ -120,24 +132,28 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     [instance setFactory:self];
 }
 
-- (id)buildSharedInstanceForDefinition:(TyphoonDefinition *)definition
+- (id)buildSharedInstanceForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
-    id instance = [_stack peekForKey:definition.key].instance;
+    id instance = [_stack peekForKey:definition.key args:args].instance;
     if (instance) {
         return instance;
     }
-    return [self buildInstanceWithDefinition:definition args:nil];
+    return [self buildInstanceWithDefinition:definition args:args];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Methods Injection
 
-- (void)doMethodsInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
+- (void)doMethodInjection:(TyphoonMethod *)method onInstance:(id)instance args:(TyphoonRuntimeArguments *)args
 {
-    for (TyphoonMethod *method in [definition injectedMethods]) {
-        NSInvocation *invocation = [method newInvocationOnClass:[instance class] withFactory:self args:args];
+    TyphoonInjectionContext *context = [TyphoonInjectionContext new];
+    context.factory = self;
+    context.args = args;
+    context.raiseExceptionIfCircular = NO;
+    
+    [method createInvocationOnClass:[instance class] withContext:context completion:^(NSInvocation *invocation) {
         [invocation invokeWithTarget:instance];
-    }
+    }];
 }
 
 /* ====================================================================================================================================== */
@@ -148,13 +164,14 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     [self doBeforePropertyInjectionOn:instance withDefinition:definition];
 
     for (id <TyphoonPropertyInjection> property in [definition injectedProperties]) {
-        [self doPropertyInjection:instance property:property args:args];
+        [self doPropertyInjectionIfNeededOn:instance property:property args:args];
     }
     
-    [self doMethodsInjectionEventsOn:instance withDefinition:definition args:args];
+    for (TyphoonMethod *method in [definition injectedMethods]) {
+        [self doMethodInjection:method onInstance:instance args:args];
+    }
 
     [self injectAssemblyOnInstanceIfTyphoonAware:instance];
-    [self injectCircularDependenciesOn:instance];
 
     [self doAfterPropertyInjectionOn:instance withDefinition:definition];
 }
@@ -170,55 +187,57 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 }
 
+- (void)doPropertyInjectionIfNeededOn:(id <TyphoonIntrospectiveNSObject, TyphoonPropertyInjectionInternalDelegate>)instance property:(id <TyphoonPropertyInjection>)property
+                                 args:(TyphoonRuntimeArguments *)args
+{
+    //TODO: Refactor this method and 'shouldInjectProperty:withType:lazyValue:' with lazyValue
+    if ([instance respondsToSelector:@selector(shouldInjectProperty:withType:lazyValue:)]) {
+        TyphoonTypeDescriptor *propertyType = [instance typhoon_typeForPropertyWithName:property.propertyName];
+        
+        TyphoonPropertyInjectionLazyValue lazyValue = ^id {
+            TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] init];
+            context.destinationType = propertyType;
+            context.factory = self;
+            context.args = args;
+            context.raiseExceptionIfCircular = YES;
+            __block id result = nil;
+            [property valueToInjectWithContext:context completion:^(id value) {
+                result = value;
+            }];
+            return result;
+        };
+        
+        if ([instance shouldInjectProperty:property withType:propertyType lazyValue:lazyValue]) {
+            [self doPropertyInjection:instance property:property args:args];
+        }
+    } else {
+        [self doPropertyInjection:instance property:property args:args];
+    }
+}
+
 - (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(id <TyphoonPropertyInjection>)property
     args:(TyphoonRuntimeArguments *)args
 {
-    TyphoonTypeDescriptor *propertyType = [instance typhoon_typeForPropertyWithName:property.propertyName];
-    AssertTypeDescriptionForPropertyOnInstance(propertyType, property, instance);
+    TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] init];
+    context.destinationType = [instance typhoon_typeForPropertyWithName:property.propertyName];
+    context.factory = self;
+    context.args = args;
+    context.raiseExceptionIfCircular = NO;
 
-    TyphoonPropertyInjectionLazyValue lazyValue = ^id {
-        return [property valueToInjectPropertyOnInstance:instance withFactory:self args:args];
-    };
-
-    if (![instance respondsToSelector:@selector(shouldInjectProperty:withType:lazyValue:)] ||
-        [(id <TyphoonPropertyInjectionInternalDelegate>) instance shouldInjectProperty:property withType:propertyType
-            lazyValue:lazyValue]) {
-        id valueToInject = lazyValue();
-
-        if (valueToInject) {
-            [(NSObject *) instance injectValue:valueToInject forPropertyName:property.propertyName withType:propertyType];
-        }
-    }
+    [property valueToInjectWithContext:context completion:^(id value) {
+        [(NSObject *)instance typhoon_injectValue:value forPropertyName:property.propertyName];
+    }];
 }
 
-
-- (void)evaluateCircularDependency:(NSString *)componentKey propertyName:(NSString *)propertyName
-    instance:(id <TyphoonIntrospectiveNSObject>)instance
+- (void)resolveCircularDependency:(NSString *)key args:(TyphoonRuntimeArguments *)args resolvedBlock:(void(^)(BOOL isCircular))resolvedBlock
 {
-
-    if ([_stack isResolvingKey:componentKey]) {
-        NSDictionary *circularDependencies = [instance typhoon_circularDependentProperties];
-        [circularDependencies setValue:componentKey forKey:propertyName];
-        LogTrace(@"Circular dependency detected: %@", [instance typhoon_circularDependentProperties]);
-    }
-}
-
-- (BOOL)isCircularPropertyWithName:(NSString *)name onInstance:(id <TyphoonIntrospectiveNSObject>)instance
-{
-    return [[instance typhoon_circularDependentProperties] objectForKey:name] != nil;
-}
-
-- (void)injectCircularDependenciesOn:(id <TyphoonIntrospectiveNSObject>)instance
-{
-    NSMutableDictionary *circularDependentProperties = [instance typhoon_circularDependentProperties];
-    for (NSString *propertyName in [circularDependentProperties allKeys]) {
-        id propertyValue = [(NSObject *) instance valueForKey:propertyName];
-        if (!propertyValue) {
-            NSString *componentKey = [circularDependentProperties objectForKey:propertyName];
-            [[_stack peekForKey:componentKey] addInstanceCompleteBlock:^(id reference) {
-                [(NSObject *) instance setValue:reference forKey:propertyName];
-            }];
-        }
+    TyphoonStackElement *element = [_stack peekForKey:key args:args];
+    if (element) {
+        [element addInstanceCompleteBlock:^(id instance) {
+            resolvedBlock(YES);
+        }];
+    } else {
+        resolvedBlock(NO);
     }
 }
 

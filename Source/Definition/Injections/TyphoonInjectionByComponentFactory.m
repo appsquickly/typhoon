@@ -7,20 +7,15 @@
 //
 
 #import "TyphoonInjectionByComponentFactory.h"
+#import "NSInvocation+TCFUnwrapValues.h"
 
 @implementation TyphoonInjectionByComponentFactory
 
 #pragma mark - Overrides
 
-- (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
-    return factory;
-}
-
-- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-                       args:(TyphoonRuntimeArguments *)args
-{
-    [self setObject:factory forType:type andInvocation:invocation];
+    result(context.factory);
 }
 
 - (id)copyWithZone:(NSZone *)zone

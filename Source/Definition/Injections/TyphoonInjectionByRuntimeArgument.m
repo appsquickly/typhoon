@@ -8,6 +8,7 @@
 
 #import "TyphoonInjectionByRuntimeArgument.h"
 #import "TyphoonRuntimeArguments.h"
+#import "NSInvocation+TCFUnwrapValues.h"
 
 @implementation TyphoonInjectionByRuntimeArgument
 
@@ -29,16 +30,9 @@
 
 #pragma mark - Overrides
 
-- (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
-    return [args argumentValueAtIndex:self.runtimeArgumentIndex];
-}
-
-- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-                       args:(TyphoonRuntimeArguments *)args
-{
-    id runtimeArgument = [args argumentValueAtIndex:self.runtimeArgumentIndex];
-    [self setObject:runtimeArgument forType:type andInvocation:invocation];
+    result([context.args argumentValueAtIndex:self.runtimeArgumentIndex]);
 }
 
 - (id)copyWithZone:(NSZone *)zone

@@ -8,6 +8,7 @@
 
 #import "TyphoonPropertyInjection.h"
 #import "TyphoonParameterInjection.h"
+#import "TyphoonInjectionContext.h"
 
 typedef NS_ENUM(NSInteger, TyphoonInjectionType) {
     TyphoonInjectionTypeUndefinied,
@@ -25,12 +26,11 @@ typedef NS_ENUM(NSInteger, TyphoonInjectionType) {
 /* TyphoonInjectionTypeParameter properties */
 @property(nonatomic, readonly) NSUInteger parameterIndex;
 
+
 @end
 
 @interface TyphoonAbstractInjection (Protected)
 
 - (void)copyBaseProperiesTo:(TyphoonAbstractInjection *)copiedInjection;
-
-- (void)setObject:(id)object forType:(TyphoonTypeDescriptor *)type andInvocation:(NSInvocation *)invocation;
 
 @end

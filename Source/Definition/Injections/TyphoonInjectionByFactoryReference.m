@@ -10,6 +10,7 @@
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonCallStack.h"
 #import "TyphoonStackElement.h"
+#import "NSInvocation+TCFUnwrapValues.h"
 
 @implementation TyphoonInjectionByFactoryReference
 
@@ -32,26 +33,11 @@
     return copied;
 }
 
-- (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (id)resolveReferenceWithContext:(TyphoonInjectionContext *)context
 {
-    if (instance) {
-        [factory evaluateCircularDependency:self.reference propertyName:self.propertyName instance:instance];
-        if ([factory isCircularPropertyWithName:self.propertyName onInstance:instance]) {
-            return nil;
-        }
-    }
-
-    id factoryReference = [self componentForReferenceWithFactory:factory args:args];
-    return [factoryReference valueForKeyPath:self.keyPath];
-}
-
-- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-                       args:(TyphoonRuntimeArguments *)args
-{
-    id factoryReference = [self componentForReferenceWithFactory:factory args:args];
-    id valueToInject = [factoryReference valueForKeyPath:_keyPath];
-
-    [self setObject:valueToInject forType:type andInvocation:invocation];
+    id referenceInstance = [super resolveReferenceWithContext:context];
+    
+    return [referenceInstance valueForKeyPath:self.keyPath];
 }
 
 @end

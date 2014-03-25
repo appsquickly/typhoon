@@ -12,6 +12,7 @@
 #import <Foundation/Foundation.h>
 
 @class TyphoonStackElement;
+@class TyphoonRuntimeArguments;
 
 @interface TyphoonCallStack : NSObject
 
@@ -21,9 +22,9 @@
 
 - (TyphoonStackElement *)pop;
 
-- (TyphoonStackElement *)peekForKey:(NSString *)key;
+- (TyphoonStackElement *)peekForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args;
 
-- (BOOL)isResolvingKey:(NSString *)key;
+- (BOOL)isResolvingKey:(NSString *)key withArgs:(TyphoonRuntimeArguments *)args;
 
 - (BOOL)isEmpty;
 

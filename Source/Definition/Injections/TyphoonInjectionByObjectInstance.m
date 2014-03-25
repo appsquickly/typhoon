@@ -7,6 +7,7 @@
 //
 
 #import "TyphoonInjectionByObjectInstance.h"
+#import "NSInvocation+TCFUnwrapValues.h"
 
 @implementation TyphoonInjectionByObjectInstance
 
@@ -28,16 +29,9 @@
     return copied;
 }
 
-- (id)valueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
-    return _objectInstance;
+    result(_objectInstance);
 }
-
-- (void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-                       args:(TyphoonRuntimeArguments *)args
-{
-    [self setObject:_objectInstance forType:type andInvocation:invocation];
-}
-
 
 @end
