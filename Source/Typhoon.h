@@ -32,4 +32,7 @@
 #import "TyphoonAutowire.h"
 #import "TyphoonShorthand.h"
 
+#if TARGET_OS_IPHONE
+#import "TyphooniOS.h"
+#endif
 
