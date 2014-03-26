@@ -54,8 +54,8 @@ TYPHOON_LINK_CATEGORY(TyphoonRXMLElement_XmlComponentFactory)
 
 
         TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key factoryComponent:factory];
-        [definition setBeforePropertyInjection:NSSelectorFromString([self attribute:@"before-property-injection"])];
-        [definition setAfterPropertyInjection:NSSelectorFromString([self attribute:@"after-property-injection"])];
+        [definition setBeforeInjections:NSSelectorFromString([self attribute:@"before-property-injection"])];
+        [definition setAfterInjections:NSSelectorFromString([self attribute:@"after-property-injection"])];
         [definition setLazy:isLazy];
         [definition setScope:scope];
         NSString *parentRef = [self attributeOrNilIfEmpty:@"parent"];

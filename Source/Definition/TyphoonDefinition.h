@@ -101,7 +101,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 *
 * @see TyphoonPropertyInjectionDelegate
 */
-@property(nonatomic) SEL beforePropertyInjection;
+@property(nonatomic) SEL beforeInjections;
 
 /**
 * A custom callback method that is invoked after property injection occurs. Use this method as an alternative to
@@ -110,7 +110,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 *
 * @see TyphoonPropertyInjectionDelegate
 */
-@property(nonatomic) SEL afterPropertyInjection;
+@property(nonatomic) SEL afterInjections;
 
 /**
 * The scope of the component, default being TyphoonScopeObjectGraph.

@@ -182,8 +182,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         [(id <TyphoonPropertyInjectionDelegate>) instance beforePropertiesSet];
     }
 
-    if ([instance respondsToSelector:definition.beforePropertyInjection]) {
-        objc_msgSend(instance, definition.beforePropertyInjection);
+    if ([instance respondsToSelector:definition.beforeInjections]) {
+        objc_msgSend(instance, definition.beforeInjections);
     }
 }
 
@@ -247,8 +247,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         [(id <TyphoonPropertyInjectionDelegate>) instance afterPropertiesSet];
     }
 
-    if ([instance respondsToSelector:definition.afterPropertyInjection]) {
-        objc_msgSend(instance, definition.afterPropertyInjection);
+    if ([instance respondsToSelector:definition.afterInjections]) {
+        objc_msgSend(instance, definition.afterInjections);
     }
 }
 
