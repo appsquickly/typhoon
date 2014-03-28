@@ -33,6 +33,8 @@
 
 - (void)setQuest:(id<Quest>)quest andDamselsRescued:(NSUInteger)damselsRescued;
 
+- (void)setFoobar:(id<NSObject>)foobar andHasHorse:(BOOL)hasHorse friends:(NSSet *)friends;
+
 - (id)initWithQuest:(id <Quest>)quest;
 
 - (id)initWithQuest:(id <Quest>)quest damselsRescued:(NSUInteger)damselsRescued;

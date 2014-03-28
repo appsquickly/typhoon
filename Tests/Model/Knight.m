@@ -43,6 +43,13 @@
     return self;
 }
 
+- (void)setFoobar:(id<NSObject>)foobar andHasHorse:(BOOL)hasHorse friends:(NSSet *)friends
+{
+    _foobar = foobar;
+    _hasHorseWillTravel = hasHorse;
+    _friends = friends;
+}
+
 - (id)initWithDamselsRescued:(NSUInteger)damselsRescued foo:(id)foobar
 {
     self = [super init];
