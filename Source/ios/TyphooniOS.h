@@ -10,21 +10,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
+#import "TyphoonStoryboard.h"
+#import "TyphoonBundledImageTypeConverter.h"
 
-
-#import <Foundation/Foundation.h>
-#import "TyphoonComponentFactory.h"
-
-/**
-* @ingroup Factory
-*/
-@interface TyphoonXmlComponentFactory : TyphoonComponentFactory
-{
-    NSMutableArray *_resourceNames;
-}
-
-- (id)initWithConfigFileName:(NSString *)configFileName;
-
-- (id)initWithConfigFileNames:(NSString *)configFileNames, ...NS_REQUIRES_NIL_TERMINATION;
-
-@end

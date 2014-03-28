@@ -9,24 +9,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
-
 #import <Foundation/Foundation.h>
-#import "TyphoonRXMLElement.h"
+#import "TyphoonAssembly.h"
 
-@class TyphoonDefinition;
-@class TyphoonMethod;
-@protocol TyphoonPropertyInjection;
 
-@interface TyphoonRXMLElement (XmlComponentFactory)
+@interface PropertyPlaceholderAssembly : TyphoonAssembly
 
-- (BOOL)isComponent;
+- (id)knight;
 
-- (TyphoonDefinition *)asComponentDefinition;
-
-- (id <TyphoonPropertyInjection>)asInjectedProperty;
-
-- (TyphoonMethod *)asInitializer;
-
+- (id)anotherKnight;
 
 @end

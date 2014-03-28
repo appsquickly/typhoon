@@ -18,10 +18,7 @@
 #import "TyphoonBundleResource.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
-#import "TyphoonXmlComponentFactory.h"
 #import "TyphoonComponentFactoryPostProcessor.h"
-#import "TyphoonRXMLElement+XmlComponentFactory.h"
-#import "TyphoonRXMLElement.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonAssembly.h"
 #import "TyphoonCollaboratingAssemblyProxy.h"
@@ -32,4 +29,7 @@
 #import "TyphoonAutowire.h"
 #import "TyphoonShorthand.h"
 
+#if TARGET_OS_IPHONE
+#import "TyphooniOS.h"
+#endif
 
