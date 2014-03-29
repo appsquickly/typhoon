@@ -52,7 +52,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
     [stackElement takeInstance:instance];
 
-    [self doPropertyInjectionEventsOn:instance withDefinition:definition args:args];
+    [self doInjectionEventsOn:instance withDefinition:definition args:args];
 
     instance = [self postProcessInstance:instance];
     [_stack pop];
@@ -159,9 +159,9 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 /* ====================================================================================================================================== */
 #pragma mark - Property Injection
 
-- (void)doPropertyInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
+- (void)doInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
-    [self doBeforePropertyInjectionOn:instance withDefinition:definition];
+    [self doBeforeInjectionsOn:instance withDefinition:definition];
 
     for (id <TyphoonPropertyInjection> property in [definition injectedProperties]) {
         [self doPropertyInjectionIfNeededOn:instance property:property args:args];
@@ -173,10 +173,10 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
     [self injectAssemblyOnInstanceIfTyphoonAware:instance];
 
-    [self doAfterPropertyInjectionOn:instance withDefinition:definition];
+    [self doAfterInjectionsOn:instance withDefinition:definition];
 }
 
-- (void)doBeforePropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition *)definition
+- (void)doBeforeInjectionsOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition *)definition
 {
     if ([instance respondsToSelector:@selector(beforePropertiesSet)]) {
         [(id <TyphoonPropertyInjectionDelegate>) instance beforePropertiesSet];
@@ -241,7 +241,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 }
 
-- (void)doAfterPropertyInjectionOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition *)definition
+- (void)doAfterInjectionsOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition *)definition
 {
     if ([instance respondsToSelector:@selector(afterPropertiesSet)]) {
         [(id <TyphoonPropertyInjectionDelegate>) instance afterPropertiesSet];

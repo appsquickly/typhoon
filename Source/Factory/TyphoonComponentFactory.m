@@ -195,25 +195,29 @@ static TyphoonComponentFactory *defaultFactory;
 
 - (void)injectProperties:(id)instance
 {
-    if (![self isLoaded]) {[self load];}
-    Class class = [instance class];
-    for (TyphoonDefinition *definition in _registry) {
-        if (definition.type == class) {
-            [self doPropertyInjectionEventsOn:instance withDefinition:definition args:nil];
+    @synchronized(self) {
+        if (![self isLoaded]) {[self load];}
+        Class class = [instance class];
+        for (TyphoonDefinition *definition in _registry) {
+            if (definition.type == class) {
+                [self doInjectionEventsOn:instance withDefinition:definition args:nil];
+            }
         }
     }
 }
 
 - (void)injectProperties:(id)instance withDefinition:(SEL)selector
 {
-    if (![self isLoaded]) {[self load];}
-    TyphoonDefinition *definition = [self definitionForKey:NSStringFromSelector(selector)];
-    if (definition) {
-        [self doPropertyInjectionEventsOn:instance withDefinition:definition args:nil];
-    }
-    else {
-        [NSException raise:NSInvalidArgumentException format:@"Can't find definition for specified selector %@",
-                                                             NSStringFromSelector(selector)];
+    @synchronized(self) {
+        if (![self isLoaded]) {[self load];}
+        TyphoonDefinition *definition = [self definitionForKey:NSStringFromSelector(selector)];
+        if (definition) {
+            [self doInjectionEventsOn:instance withDefinition:definition args:nil];
+        }
+        else {
+            [NSException raise:NSInvalidArgumentException format:@"Can't find definition for specified selector %@",
+             NSStringFromSelector(selector)];
+        }
     }
 }
 
@@ -314,39 +318,37 @@ static TyphoonComponentFactory *defaultFactory;
     return nil;
 }
 
-- (id)objectForDefinition:(TyphoonDefinition *)definition
-{
-    return [self objectForDefinition:definition args:nil];
-}
-
 - (id)objectForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
     if (definition.abstract) {
         [NSException raise:NSInvalidArgumentException format:@"Attempt to instantiate abstract definition: %@", definition];
     }
-
-    id instance = nil;
-    switch (definition.scope) {
-        case TyphoonScopeSingleton:
-            instance = [self sharedInstanceForDefinition:definition args:args fromPool:_singletons];
-            break;
-        case TyphoonScopeWeakSingleton:
-            instance = [self sharedInstanceForDefinition:definition args:args fromPool:_weakSingletons];
-            break;
-        case TyphoonScopeObjectGraph:
-            instance = [self sharedInstanceForDefinition:definition args:args fromPool:_objectGraphSharedInstances];
-            break;
-        default:
-        case TyphoonScopePrototype:
-            instance = [self buildInstanceWithDefinition:definition args:args];
-            break;
+    
+    @synchronized(self) {
+        
+        id instance = nil;
+        switch (definition.scope) {
+            case TyphoonScopeSingleton:
+                instance = [self sharedInstanceForDefinition:definition args:args fromPool:_singletons];
+                break;
+            case TyphoonScopeWeakSingleton:
+                instance = [self sharedInstanceForDefinition:definition args:args fromPool:_weakSingletons];
+                break;
+            case TyphoonScopeObjectGraph:
+                instance = [self sharedInstanceForDefinition:definition args:args fromPool:_objectGraphSharedInstances];
+                break;
+            default:
+            case TyphoonScopePrototype:
+                instance = [self buildInstanceWithDefinition:definition args:args];
+                break;
+        }
+        
+        if ([_stack isEmpty]) {
+            [_objectGraphSharedInstances removeAllObjects];
+        }
+        
+        return instance;
     }
-
-    if ([_stack isEmpty]) {
-        [_objectGraphSharedInstances removeAllObjects];
-    }
-
-    return instance;
 }
 
 - (void)addDefinitionToRegistry:(TyphoonDefinition *)definition

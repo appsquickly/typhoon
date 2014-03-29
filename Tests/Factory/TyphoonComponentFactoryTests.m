@@ -400,7 +400,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     }];
     [_componentFactory registerDefinition:childDefinition];
 
-    ClassWithConstructor *child = [_componentFactory objectForDefinition:childDefinition];
+    ClassWithConstructor *child = [_componentFactory objectForDefinition:childDefinition args:nil];
 
     assertThat([child string], equalTo(@"parentArgument"));
 }
@@ -414,7 +414,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
         [self registerChildDefinitionWithClass:[ClassWithConstructor class] parentDefinition:parentDefinition
             initializerString:@"childArgument"];
 
-    ClassWithConstructor *child = [_componentFactory objectForDefinition:childDefinition];
+    ClassWithConstructor *child = [_componentFactory objectForDefinition:childDefinition args:nil];
 
     assertThat([child string], equalTo(@"childArgument"));
 }
@@ -426,7 +426,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     TyphoonDefinition *childDefinition =
         [self registerChildDefinitionWithClass:[ClassWithConstructor class] parentRef:@"parentRef" initializerString:@"childArgument"];
 
-    ClassWithConstructor *child = [_componentFactory objectForDefinition:childDefinition];
+    ClassWithConstructor *child = [_componentFactory objectForDefinition:childDefinition args:nil];
 
     assertThat([child string], equalTo(@"childArgument"));
 }

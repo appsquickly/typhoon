@@ -30,7 +30,7 @@
 
 - (id)buildSharedInstanceForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args;
 
-- (void)doPropertyInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args;
+- (void)doInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args;
 
 - (NSArray *)allDefinitionsForType:(id)classOrProtocol;
 

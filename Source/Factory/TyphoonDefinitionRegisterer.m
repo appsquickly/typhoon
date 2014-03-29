@@ -108,7 +108,7 @@
 {
     LogTrace(@"Registering Infrastructure component: %@ with key: %@", NSStringFromClass(_definition.type), _definition.key);
 
-    id infrastructureComponent = [_componentFactory objectForDefinition:_definition];
+    id infrastructureComponent = [_componentFactory objectForDefinition:_definition args:nil];
     if ([_definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)]) {
         [_componentFactory attachPostProcessor:infrastructureComponent];
     }
