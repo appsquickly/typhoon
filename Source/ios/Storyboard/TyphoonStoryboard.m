@@ -71,10 +71,10 @@ static const char *kTyphoonKey;
 - (void)injectPropertiesForViewController:(UIViewController *)viewController
 {
     if (viewController.typhoonKey.length > 0) {
-        [self.factory injectProperties:viewController withDefinition:NSSelectorFromString(viewController.typhoonKey)];
+        [self.factory inject:viewController withDefinition:NSSelectorFromString(viewController.typhoonKey)];
     }
     else {
-        [self.factory injectProperties:viewController];
+        [self.factory inject:viewController];
     }
 
     if ([viewController isKindOfClass:[UINavigationController class]]) {

@@ -193,7 +193,7 @@ static TyphoonComponentFactory *defaultFactory;
     }
 }
 
-- (void)injectProperties:(id)instance
+- (void)inject:(id)instance
 {
     @synchronized(self) {
         if (![self isLoaded]) {[self load];}
@@ -206,7 +206,7 @@ static TyphoonComponentFactory *defaultFactory;
     }
 }
 
-- (void)injectProperties:(id)instance withDefinition:(SEL)selector
+- (void)inject:(id)instance withDefinition:(SEL)selector
 {
     @synchronized(self) {
         if (![self isLoaded]) {[self load];}

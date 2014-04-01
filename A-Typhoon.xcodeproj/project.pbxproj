@@ -438,7 +438,6 @@
 		BA798263556BF9A8D3735540 /* NSObject+TyphoonIntrospectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TyphoonIntrospectionUtils.m"; sourceTree = "<group>"; };
 		BA79827DB55E4A512AB22C4A /* TyphoonAssistedFactoryCreatorManyFactories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssistedFactoryCreatorManyFactories.h; sourceTree = "<group>"; };
 		BA7982DFFB32EDBAE645CC9E /* TyphoonComponentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TyphoonComponentFactory.h; sourceTree = "<group>"; };
-		BA7983460EDFA97511B4691C /* TyphoonRXMLElement+XmlComponentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyphoonRXMLElement+XmlComponentFactory.h"; sourceTree = "<group>"; };
 		BA79834E5AD71CB49383008B /* TyphoonAssistedFactoryInjectedParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssistedFactoryInjectedParameter.h; sourceTree = "<group>"; };
 		BA79835D5208A90F0FA7AB4A /* TyphoonAssistedFactoryMethodCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssistedFactoryMethodCreator.h; sourceTree = "<group>"; };
 		BA79837B0F703441BFC231B3 /* TyphoonPassThroughTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonPassThroughTypeConverter.m; sourceTree = "<group>"; };
@@ -543,7 +542,7 @@
 		FA1E2C3118B0BD8500744771 /* TyphoonFactoryPropertyInjectionPostProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonFactoryPropertyInjectionPostProcessor.h; sourceTree = "<group>"; };
 		FA1E2C3218B0BD8500744771 /* TyphoonFactoryPropertyInjectionPostProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonFactoryPropertyInjectionPostProcessor.m; sourceTree = "<group>"; };
 		FA381FB218BBB95C0094BBFA /* TyphoonStoryboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonStoryboard.h; sourceTree = "<group>"; };
-		FA381FB318BBB95C0094BBFA /* TyphoonStoryboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TyphoonStoryboard.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		FA381FB318BBB95C0094BBFA /* TyphoonStoryboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TyphoonStoryboard.m; sourceTree = "<group>"; };
 		FA7A96181895370900053EAE /* NSObject+PropertyInjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PropertyInjection.h"; sourceTree = "<group>"; };
 		FA7A96191895370900053EAE /* NSObject+PropertyInjection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PropertyInjection.m"; sourceTree = "<group>"; };
 		FA99164F18983367000AC4B5 /* NSObject+DeallocNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DeallocNotification.h"; sourceTree = "<group>"; };
@@ -996,7 +995,7 @@
 			isa = PBXGroup;
 			children = (
 				FAC0B8D918CF6D2E000F0AD0 /* Injections */,
-				BA798E985943E046737DF9F9 /* Initializer */,
+				BA798E985943E046737DF9F9 /* Method */,
 				BA798CA3A88193EC0242E6EC /* TyphoonDefinition.h */,
 				BA798F905F4B216CEA7A4D8A /* TyphoonDefinition.m */,
 				4BED3D6317A853E6006D262C /* TyphoonInjectedWithStringRepresentation.h */,
@@ -1018,14 +1017,14 @@
 			path = TypeConversion;
 			sourceTree = "<group>";
 		};
-		BA798E985943E046737DF9F9 /* Initializer */ = {
+		BA798E985943E046737DF9F9 /* Method */ = {
 			isa = PBXGroup;
 			children = (
 				BA798012692BC6CFD0CCB60F /* TyphoonMethod.h */,
 				BA798CD7662D6BB212BA5A02 /* TyphoonMethod.m */,
 				BA7980AC90AF8CD229802DE8 /* Internal */,
 			);
-			path = Initializer;
+			path = Method;
 			sourceTree = "<group>";
 		};
 		BA798F0C0CE3F1B08C909FF9 /* TestUtils */ = {

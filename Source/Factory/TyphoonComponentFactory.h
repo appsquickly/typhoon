@@ -164,13 +164,13 @@
 - (void)attachPostProcessor:(id <TyphoonComponentFactoryPostProcessor>)postProcessor;
 
 /**
- * Injects the properties of an object
+ * Injects the properties and methods of an object
  */
-- (void)injectProperties:(id)instance;
+- (void)inject:(id)instance;
 
 /**
- * Injects the properties of an object, descripted in definition
+ * Injects the properties and methods of an object, descripted in definition
  */
-- (void)injectProperties:(id)instance withDefinition:(SEL)selector;
+- (void)inject:(id)instance withDefinition:(SEL)selector;
 
 @end

@@ -45,7 +45,7 @@
 
 @property(nonatomic, readonly) NSArray *parameterNames;
 
-- (id)initWithSelector:(SEL)initializer;
+- (id)initWithSelector:(SEL)selector;
 
 /* ====================================================================================================================================== */
 #pragma mark - inject
