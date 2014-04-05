@@ -15,17 +15,16 @@
 
 @implementation HCIsNot
 
-+ (id)isNot:(id <HCMatcher>)aMatcher
++ (id)isNot:(id<HCMatcher>)aMatcher
 {
     return [[self alloc] initNot:aMatcher];
 }
 
-- (id)initNot:(id <HCMatcher>)aMatcher
+- (id)initNot:(id<HCMatcher>)aMatcher
 {
     self = [super init];
-    if (self) {
+    if (self)
         matcher = aMatcher;
-    }
     return self;
 }
 
@@ -34,7 +33,7 @@
     return ![matcher matches:item];
 }
 
-- (void)describeTo:(id <HCDescription>)description
+- (void)describeTo:(id<HCDescription>)description
 {
     [[description appendText:@"not "] appendDescriptionOf:matcher];
 }
@@ -44,6 +43,7 @@
 
 #pragma mark -
 
-id <HCMatcher> HC_isNot(id aMatcher) {
+id<HCMatcher> HC_isNot(id aMatcher)
+{
     return [HCIsNot isNot:HCWrapInMatcher(aMatcher)];
 }

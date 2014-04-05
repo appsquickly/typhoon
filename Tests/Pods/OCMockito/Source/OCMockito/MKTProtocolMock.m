@@ -24,22 +24,19 @@
 - (id)initWithProtocol:(Protocol *)aProtocol
 {
     self = [super init];
-    if (self) {
+    if (self)
         _mockedProtocol = aProtocol;
-    }
     return self;
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
 {
     struct objc_method_description methodDescription = protocol_getMethodDescription(_mockedProtocol, aSelector, YES, YES);
-    if (!methodDescription.name) {
+    if (!methodDescription.name)
         methodDescription = protocol_getMethodDescription(_mockedProtocol, aSelector, NO, YES);
-    }
-    if (!methodDescription.name) {
+    if (!methodDescription.name)
         return nil;
-    }
-    return [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
+	return [NSMethodSignature signatureWithObjCTypes:methodDescription.types];
 }
 
 

@@ -16,41 +16,37 @@
 
 @implementation HCIsCollectionOnlyContaining
 
-+ (id)isCollectionOnlyContaining:(id <HCMatcher>)aMatcher
++ (id)isCollectionOnlyContaining:(id<HCMatcher>)aMatcher
 {
     return [[self alloc] initWithMatcher:aMatcher];
 }
 
-- (id)initWithMatcher:(id <HCMatcher>)aMatcher
+- (id)initWithMatcher:(id<HCMatcher>)aMatcher
 {
     self = [super init];
-    if (self) {
+    if (self)
         matcher = aMatcher;
-    }
     return self;
 }
 
 - (BOOL)matches:(id)collection
 {
-    if (![collection conformsToProtocol:@protocol(NSFastEnumeration)]) {
+    if (![collection conformsToProtocol:@protocol(NSFastEnumeration)])
         return NO;
-    }
-
-    if ([collection count] == 0) {
+    
+    if ([collection count] == 0)
         return NO;
-    }
-
-    for (id item in collection) {
-        if (![matcher matches:item]) {
+    
+    for (id item in collection)
+        if (![matcher matches:item])
             return NO;
-        }
-    }
     return YES;
 }
 
-- (void)describeTo:(id <HCDescription>)description
+- (void)describeTo:(id<HCDescription>)description
 {
-    [[description appendText:@"a collection containing items matching "] appendDescriptionOf:matcher];
+    [[description appendText:@"a collection containing items matching "]
+                  appendDescriptionOf:matcher];
 }
 
 @end
@@ -58,17 +54,19 @@
 
 #pragma mark -
 
-id <HCMatcher> HC_onlyContains(id itemMatch, ...) {
+id<HCMatcher> HC_onlyContains(id itemMatch, ...)
+{
     NSMutableArray *matchers = [NSMutableArray arrayWithObject:HCWrapInMatcher(itemMatch)];
-
+    
     va_list args;
     va_start(args, itemMatch);
     itemMatch = va_arg(args, id);
-    while (itemMatch != nil) {
+    while (itemMatch != nil)
+    {
         [matchers addObject:HCWrapInMatcher(itemMatch)];
         itemMatch = va_arg(args, id);
     }
     va_end(args);
-
+    
     return [HCIsCollectionOnlyContaining isCollectionOnlyContaining:[HCAnyOf anyOf:matchers]];
 }

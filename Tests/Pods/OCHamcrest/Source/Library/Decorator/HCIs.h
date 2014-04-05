@@ -12,17 +12,16 @@
 
 @interface HCIs : HCBaseMatcher
 {
-    id <HCMatcher> matcher;
+    id<HCMatcher> matcher;
 }
 
-+ (id)is:(id <HCMatcher>)aMatcher;
-
-- (id)initWithMatcher:(id <HCMatcher>)aMatcher;
++ (id)is:(id<HCMatcher>)aMatcher;
+- (id)initWithMatcher:(id<HCMatcher>)aMatcher;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_is(id match);
+OBJC_EXPORT id<HCMatcher> HC_is(id match);
 
 /**
     is(aMatcher) -
@@ -51,5 +50,5 @@ OBJC_EXPORT id <HCMatcher> HC_is(id match);
     @ingroup decorator_matchers
  */
 #ifdef HC_SHORTHAND
-#define is HC_is
+    #define is HC_is
 #endif

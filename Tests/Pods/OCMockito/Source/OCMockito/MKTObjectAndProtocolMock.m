@@ -24,22 +24,19 @@
 - (id)initWithClass:(Class)aClass protocol:(Protocol *)protocol
 {
     self = [super initWithProtocol:protocol];
-    if (self) {
+    if (self)
         _mockedClass = aClass;
-    }
     return self;
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
 {
     NSMethodSignature *signature = [_mockedClass instanceMethodSignatureForSelector:aSelector];
-
-    if (signature) {
+    
+    if (signature)
         return signature;
-    }
-    else {
+    else
         return [super methodSignatureForSelector:aSelector];
-    }
 }
 
 
@@ -47,7 +44,8 @@
 
 - (BOOL)respondsToSelector:(SEL)aSelector
 {
-    return [_mockedClass instancesRespondToSelector:aSelector] || [super respondsToSelector:aSelector];
+    return [_mockedClass instancesRespondToSelector:aSelector] ||
+           [super respondsToSelector:aSelector];
 }
 
 @end

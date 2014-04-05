@@ -16,15 +16,18 @@
 
 @implementation HCIsDictionaryContaining
 
-+ (id)isDictionaryContainingKey:(id <HCMatcher>)aKeyMatcher value:(id <HCMatcher>)aValueMatcher
++ (id)isDictionaryContainingKey:(id<HCMatcher>)aKeyMatcher
+                          value:(id<HCMatcher>)aValueMatcher
 {
     return [[self alloc] initWithKeyMatcher:aKeyMatcher valueMatcher:aValueMatcher];
 }
 
-- (id)initWithKeyMatcher:(id <HCMatcher>)aKeyMatcher valueMatcher:(id <HCMatcher>)aValueMatcher
+- (id)initWithKeyMatcher:(id<HCMatcher>)aKeyMatcher
+            valueMatcher:(id<HCMatcher>)aValueMatcher
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         keyMatcher = aKeyMatcher;
         valueMatcher = aValueMatcher;
     }
@@ -33,20 +36,20 @@
 
 - (BOOL)matches:(id)dict
 {
-    if ([dict isKindOfClass:[NSDictionary class]]) {
-        for (id oneKey in dict) {
-            if ([keyMatcher matches:oneKey] && [valueMatcher matches:dict[oneKey]]) {
+    if ([dict isKindOfClass:[NSDictionary class]])
+        for (id oneKey in dict)
+            if ([keyMatcher matches:oneKey] && [valueMatcher matches:dict[oneKey]])
                 return YES;
-            }
-        }
-    }
     return NO;
 }
 
-- (void)describeTo:(id <HCDescription>)description
+- (void)describeTo:(id<HCDescription>)description
 {
-    [[[[[description appendText:@"a dictionary containing { "] appendDescriptionOf:keyMatcher] appendText:@" = "]
-        appendDescriptionOf:valueMatcher] appendText:@"; }"];
+    [[[[[description appendText:@"a dictionary containing { "]
+                     appendDescriptionOf:keyMatcher]
+                     appendText:@" = "]
+                     appendDescriptionOf:valueMatcher]
+                     appendText:@"; }"];
 }
 
 @end
@@ -54,8 +57,10 @@
 
 #pragma mark -
 
-id <HCMatcher> HC_hasEntry(id keyMatch, id valueMatch) {
+id<HCMatcher> HC_hasEntry(id keyMatch, id valueMatch)
+{
     HCRequireNonNilObject(keyMatch);
     HCRequireNonNilObject(valueMatch);
-    return [HCIsDictionaryContaining isDictionaryContainingKey:HCWrapInMatcher(keyMatch) value:HCWrapInMatcher(valueMatch)];
+    return [HCIsDictionaryContaining isDictionaryContainingKey:HCWrapInMatcher(keyMatch)
+                                                         value:HCWrapInMatcher(valueMatch)];
 }

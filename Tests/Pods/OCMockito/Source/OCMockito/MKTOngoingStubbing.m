@@ -19,9 +19,8 @@
 - (id)initWithInvocationContainer:(MKTInvocationContainer *)invocationContainer
 {
     self = [super init];
-    if (self) {
+    if (self)
         _invocationContainer = invocationContainer;
-    }
     return self;
 }
 
@@ -59,7 +58,7 @@ DEFINE_RETURN_METHOD(double, Double)
 
 - (id)withMatcher:(id <HCMatcher>)matcher forArgument:(NSUInteger)index
 {
-    [_invocationContainer setMatcher:matcher atIndex:index + 2];
+    [_invocationContainer setMatcher:matcher atIndex:index+2];
     return self;
 }
 

@@ -1,1 +1,1 @@
-../../../../Source/Definition/Initializer/Internal/TyphoonMethod+InstanceBuilder.h
+../../../../Source/Definition/Method/Internal/TyphoonMethod+InstanceBuilder.h

@@ -27,21 +27,20 @@
     return NO;
 }
 
-- (BOOL)matches:(id)item describingMismatchTo:(id <HCDescription>)mismatchDescription
+- (BOOL)matches:(id)item describingMismatchTo:(id<HCDescription>)mismatchDescription
 {
     BOOL matchResult = [self matches:item];
-    if (!matchResult) {
+    if (!matchResult)
         [self describeMismatchOf:item to:mismatchDescription];
-    }
     return matchResult;
 }
 
-- (void)describeMismatchOf:(id)item to:(id <HCDescription>)mismatchDescription
+- (void)describeMismatchOf:(id)item to:(id<HCDescription>)mismatchDescription
 {
     [[mismatchDescription appendText:@"was "] appendDescriptionOf:item];
 }
 
-- (void)describeTo:(id <HCDescription>)description
+- (void)describeTo:(id<HCDescription>)description
 {
     ABSTRACT_METHOD;
 }
@@ -49,7 +48,8 @@
 - (void)subclassResponsibility:(SEL)command
 {
     NSString *className = NSStringFromClass([self class]);
-    [NSException raise:NSGenericException format:@"-[%@  %@] not implemented", className, NSStringFromSelector(command)];
+    [NSException raise:NSGenericException
+                format:@"-[%@  %@] not implemented", className, NSStringFromSelector(command)];
 }
 
 @end

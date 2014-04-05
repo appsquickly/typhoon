@@ -12,9 +12,8 @@
 
 #define HC_SHORTHAND
 #if TARGET_OS_MAC
-#import <OCHamcrest/OCHamcrest.h>
-#import <OCHamcrest/HCWrapInMatcher.h>
-
+    #import <OCHamcrest/OCHamcrest.h>
+    #import <OCHamcrest/HCWrapInMatcher.h>
 #else
     #import <OCHamcrestIOS/OCHamcrestIOS.h>
     #import <OCHamcrestIOS/HCWrapInMatcher.h>
@@ -22,7 +21,7 @@
 
 
 @interface MKTInvocationMatcher ()
-@property(nonatomic, strong) NSInvocation *expected;
+@property (nonatomic, strong) NSInvocation *expected;
 @end
 
 
@@ -35,22 +34,21 @@
 - (id)init
 {
     self = [super init];
-    if (self) {
+    if (self)
         _argumentMatchers = [[NSMutableArray alloc] init];
-    }
     return self;
 }
 
 - (void)setMatcher:(id <HCMatcher>)matcher atIndex:(NSUInteger)argumentIndex
 {
     NSUInteger matchersCount = [_argumentMatchers count];
-    if (matchersCount <= argumentIndex) {
+    if (matchersCount <= argumentIndex)
+    {
         [self trueUpArgumentMatchersToCount:argumentIndex];
         [_argumentMatchers addObject:matcher];
     }
-    else {
+    else
         _argumentMatchers[argumentIndex] = matcher;
-    }
 }
 
 - (NSUInteger)argumentMatchersCount
@@ -61,36 +59,37 @@
 - (void)trueUpArgumentMatchersToCount:(NSUInteger)desiredCount
 {
     NSUInteger matchersCount = [_argumentMatchers count];
-    while (matchersCount < desiredCount) {
+    while (matchersCount < desiredCount)
+    {
         [_argumentMatchers addObject:[NSNull null]];
         ++matchersCount;
-    }
+    } 
 }
 
 - (void)setExpectedInvocation:(NSInvocation *)expectedInvocation
 {
     [self setExpected:expectedInvocation];
     [_expected retainArguments];
-
+    
     NSMethodSignature *methodSignature = [_expected methodSignature];
-
+    
     _numberOfArguments = [[_expected methodSignature] numberOfArguments];
     [self trueUpArgumentMatchersToCount:_numberOfArguments];
-
-    for (NSUInteger argumentIndex = 2; argumentIndex < _numberOfArguments; ++argumentIndex) {
+        
+    for (NSUInteger argumentIndex = 2; argumentIndex < _numberOfArguments; ++argumentIndex)
+    {
         const char *argumentType = [methodSignature getArgumentTypeAtIndex:argumentIndex];
-        if (MKTTypeEncodingIsObjectOrClass(argumentType)) {
+        if (MKTTypeEncodingIsObjectOrClass(argumentType))
+        {
             __unsafe_unretained id argument = nil;
             [_expected getArgument:&argument atIndex:argumentIndex];
-
+            
             id <HCMatcher> matcher;
-            if (argument != nil) {
+            if (argument != nil)
                 matcher = HCWrapInMatcher(argument);
-            }
-            else {
+            else
                 matcher = nilValue();
-            }
-
+            
             [self setMatcher:matcher atIndex:argumentIndex];
         }
     }
@@ -100,7 +99,7 @@
 {
     __unsafe_unretained id actualArgument;
     [actual getArgument:&actualArgument atIndex:index];
-
+    
     id <HCMatcher> matcher = _argumentMatchers[index];
     return ![matcher matches:actualArgument];
 }
@@ -145,32 +144,33 @@ DEFINE_ARGUMENT_MISMATCH_METHOD(double, Double)
 
 - (BOOL)matches:(NSInvocation *)actual
 {
-    if ([_expected selector] != [actual selector]) {
+    if ([_expected selector] != [actual selector])
         return NO;
-    }
 
     NSMethodSignature *methodSignature = [_expected methodSignature];
 
-    for (NSUInteger argumentIndex = 2; argumentIndex < _numberOfArguments; ++argumentIndex) {
+    for (NSUInteger argumentIndex = 2; argumentIndex < _numberOfArguments; ++argumentIndex)
+    {
         const char *argumentType = [methodSignature getArgumentTypeAtIndex:argumentIndex];
-        if (MKTTypeEncodingIsObjectOrClass(argumentType)) {
-            if ([self argumentObjectClassMismatchInInvocation:actual atIndex:argumentIndex]) {
+        if (MKTTypeEncodingIsObjectOrClass(argumentType))
+        {
+            if ([self argumentObjectClassMismatchInInvocation:actual atIndex:argumentIndex])
                 return NO;
-            }
-        }HANDLE_ARGUMENT_TYPE(char, Char)
-            HANDLE_ARGUMENT_TYPE(int, Int)
-            HANDLE_ARGUMENT_TYPE(short, Short)
-            HANDLE_ARGUMENT_TYPE(long, Long)
-            HANDLE_ARGUMENT_TYPE(long long, LongLong)
-            HANDLE_ARGUMENT_TYPE(unsigned char, UnsignedChar)
-            HANDLE_ARGUMENT_TYPE(unsigned int, UnsignedInt)
-            HANDLE_ARGUMENT_TYPE(unsigned short, UnsignedShort)
-            HANDLE_ARGUMENT_TYPE(unsigned long, UnsignedLong)
-            HANDLE_ARGUMENT_TYPE(unsigned long long, UnsignedLongLong)
-            HANDLE_ARGUMENT_TYPE(float, Float)
-            HANDLE_ARGUMENT_TYPE(double, Double)
+        }
+        HANDLE_ARGUMENT_TYPE(char, Char)
+        HANDLE_ARGUMENT_TYPE(int, Int)
+        HANDLE_ARGUMENT_TYPE(short, Short)
+        HANDLE_ARGUMENT_TYPE(long, Long)
+        HANDLE_ARGUMENT_TYPE(long long, LongLong)
+        HANDLE_ARGUMENT_TYPE(unsigned char, UnsignedChar)
+        HANDLE_ARGUMENT_TYPE(unsigned int, UnsignedInt)
+        HANDLE_ARGUMENT_TYPE(unsigned short, UnsignedShort)
+        HANDLE_ARGUMENT_TYPE(unsigned long, UnsignedLong)
+        HANDLE_ARGUMENT_TYPE(unsigned long long, UnsignedLongLong)
+        HANDLE_ARGUMENT_TYPE(float, Float)
+        HANDLE_ARGUMENT_TYPE(double, Double)
     }
-
+    
     return YES;
 }
 

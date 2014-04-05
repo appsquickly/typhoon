@@ -10,7 +10,7 @@
 #import <OCHamcrest/HCBaseMatcher.h>
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalToBool(BOOL value);
+OBJC_EXPORT id<HCMatcher> HC_equalToBool(BOOL value);
 
 /**
     equalToBool(value) -
@@ -27,11 +27,11 @@ OBJC_EXPORT id <HCMatcher> HC_equalToBool(BOOL value);
     @ingroup primitive_number_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalToBool HC_equalToBool
+    #define equalToBool HC_equalToBool
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalToChar(char value);
+OBJC_EXPORT id<HCMatcher> HC_equalToChar(char value);
 
 /**
     equalToChar(value) -
@@ -48,11 +48,11 @@ OBJC_EXPORT id <HCMatcher> HC_equalToChar(char value);
     @ingroup primitive_number_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalToChar HC_equalToChar
+    #define equalToChar HC_equalToChar
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalToDouble(double value);
+OBJC_EXPORT id<HCMatcher> HC_equalToDouble(double value);
 
 /**
     equalToDouble(value) -
@@ -69,11 +69,11 @@ OBJC_EXPORT id <HCMatcher> HC_equalToDouble(double value);
     @ingroup primitive_number_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalToDouble HC_equalToDouble
+    #define equalToDouble HC_equalToDouble
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalToFloat(float value);
+OBJC_EXPORT id<HCMatcher> HC_equalToFloat(float value);
 
 /**
     equalToFloat(value) -
@@ -90,11 +90,11 @@ OBJC_EXPORT id <HCMatcher> HC_equalToFloat(float value);
     @ingroup primitive_number_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalToFloat HC_equalToFloat
+    #define equalToFloat HC_equalToFloat
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalToInt(int value);
+OBJC_EXPORT id<HCMatcher> HC_equalToInt(int value);
 
 /**
     equalToInt(value) -
@@ -111,11 +111,11 @@ OBJC_EXPORT id <HCMatcher> HC_equalToInt(int value);
     @ingroup primitive_number_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalToInt HC_equalToInt
+    #define equalToInt HC_equalToInt
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalToLong(long value);
+OBJC_EXPORT id<HCMatcher> HC_equalToLong(long value);
 
 /**
     equalToLong(value) -
@@ -132,11 +132,11 @@ OBJC_EXPORT id <HCMatcher> HC_equalToLong(long value);
     @ingroup primitive_number_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalToLong HC_equalToLong
+    #define equalToLong HC_equalToLong
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalToLongLong(long long value);
+OBJC_EXPORT id<HCMatcher> HC_equalToLongLong(long long value);
 
 /**
     equalToLongLong(value) -
@@ -153,11 +153,11 @@ OBJC_EXPORT id <HCMatcher> HC_equalToLongLong(long long value);
     @ingroup primitive_number_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalToLongLong HC_equalToLongLong
+    #define equalToLongLong HC_equalToLongLong
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalToShort(short value);
+OBJC_EXPORT id<HCMatcher> HC_equalToShort(short value);
 
 /**
     equalToShort(value) -
@@ -174,11 +174,11 @@ OBJC_EXPORT id <HCMatcher> HC_equalToShort(short value);
     @ingroup primitive_number_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalToShort HC_equalToShort
+    #define equalToShort HC_equalToShort
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalToUnsignedChar(unsigned char value);
+OBJC_EXPORT id<HCMatcher> HC_equalToUnsignedChar(unsigned char value);
 
 /**
     equalToUnsignedChar(value) -
@@ -195,11 +195,11 @@ OBJC_EXPORT id <HCMatcher> HC_equalToUnsignedChar(unsigned char value);
     @ingroup primitive_number_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalToUnsignedChar HC_equalToUnsignedChar
+    #define equalToUnsignedChar HC_equalToUnsignedChar
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalToUnsignedInt(unsigned int value);
+OBJC_EXPORT id<HCMatcher> HC_equalToUnsignedInt(unsigned int value);
 
 /**
     equalToUnsignedInt(value) -
@@ -216,11 +216,11 @@ OBJC_EXPORT id <HCMatcher> HC_equalToUnsignedInt(unsigned int value);
     @ingroup primitive_number_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalToUnsignedInt HC_equalToUnsignedInt
+    #define equalToUnsignedInt HC_equalToUnsignedInt
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalToUnsignedLong(unsigned long value);
+OBJC_EXPORT id<HCMatcher> HC_equalToUnsignedLong(unsigned long value);
 
 /**
     equalToUnsignedLong(value) -
@@ -237,11 +237,11 @@ OBJC_EXPORT id <HCMatcher> HC_equalToUnsignedLong(unsigned long value);
     @ingroup primitive_number_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalToUnsignedLong HC_equalToUnsignedLong
+    #define equalToUnsignedLong HC_equalToUnsignedLong
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalToUnsignedLongLong(unsigned long long value);
+OBJC_EXPORT id<HCMatcher> HC_equalToUnsignedLongLong(unsigned long long value);
 
 /**
     equalToUnsignedLongLong(value) -
@@ -258,11 +258,11 @@ OBJC_EXPORT id <HCMatcher> HC_equalToUnsignedLongLong(unsigned long long value);
     @ingroup primitive_number_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalToUnsignedLongLong HC_equalToUnsignedLongLong
+    #define equalToUnsignedLongLong HC_equalToUnsignedLongLong
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalToUnsignedShort(unsigned short value);
+OBJC_EXPORT id<HCMatcher> HC_equalToUnsignedShort(unsigned short value);
 
 /**
     equalToUnsignedShort(value) -
@@ -279,11 +279,11 @@ OBJC_EXPORT id <HCMatcher> HC_equalToUnsignedShort(unsigned short value);
     @ingroup primitive_number_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalToUnsignedShort HC_equalToUnsignedShort
+    #define equalToUnsignedShort HC_equalToUnsignedShort
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalToInteger(NSInteger value);
+OBJC_EXPORT id<HCMatcher> HC_equalToInteger(NSInteger value);
 
 /**
     equalToInteger(value) -
@@ -300,11 +300,11 @@ OBJC_EXPORT id <HCMatcher> HC_equalToInteger(NSInteger value);
     @ingroup primitive_number_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalToInteger HC_equalToInteger
+    #define equalToInteger HC_equalToInteger
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalToUnsignedInteger(NSUInteger value);
+OBJC_EXPORT id<HCMatcher> HC_equalToUnsignedInteger(NSUInteger value);
 
 /**
     equalToUnsignedInteger(value) -
@@ -321,5 +321,5 @@ OBJC_EXPORT id <HCMatcher> HC_equalToUnsignedInteger(NSUInteger value);
     @ingroup primitive_number_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalToUnsignedInteger HC_equalToUnsignedInteger
+    #define equalToUnsignedInteger HC_equalToUnsignedInteger
 #endif

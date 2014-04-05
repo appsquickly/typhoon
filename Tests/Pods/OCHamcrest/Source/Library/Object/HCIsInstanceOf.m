@@ -25,9 +25,8 @@
     HCRequireNonNilObject(aClass);
 
     self = [super init];
-    if (self) {
+    if (self)
         theClass = aClass;
-    }
     return self;
 }
 
@@ -36,9 +35,10 @@
     return [item isKindOfClass:theClass];
 }
 
-- (void)describeTo:(id <HCDescription>)description
+- (void)describeTo:(id<HCDescription>)description
 {
-    [[description appendText:@"an instance of "] appendText:NSStringFromClass(theClass)];
+    [[description appendText:@"an instance of "]
+                  appendText:NSStringFromClass(theClass)];
 }
 
 @end
@@ -46,6 +46,7 @@
 
 #pragma mark -
 
-id <HCMatcher> HC_instanceOf(Class aClass) {
+id<HCMatcher> HC_instanceOf(Class aClass)
+{
     return [HCIsInstanceOf isInstanceOf:aClass];
 }

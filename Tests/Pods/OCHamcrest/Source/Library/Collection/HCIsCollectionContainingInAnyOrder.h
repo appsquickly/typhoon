@@ -16,13 +16,12 @@
 }
 
 + (id)isCollectionContainingInAnyOrder:(NSMutableArray *)itemMatchers;
-
 - (id)initWithMatchers:(NSMutableArray *)itemMatchers;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_containsInAnyOrder(id itemMatch, ...) NS_REQUIRES_NIL_TERMINATION;
+OBJC_EXPORT id<HCMatcher> HC_containsInAnyOrder(id itemMatch, ...) NS_REQUIRES_NIL_TERMINATION;
 
 /**
     containsInAnyOrder(firstMatcher, ...) -
@@ -44,5 +43,5 @@ OBJC_EXPORT id <HCMatcher> HC_containsInAnyOrder(id itemMatch, ...) NS_REQUIRES_
     @ingroup collection_matchers
  */
 #ifdef HC_SHORTHAND
-#define containsInAnyOrder HC_containsInAnyOrder
+    #define containsInAnyOrder HC_containsInAnyOrder
 #endif

@@ -15,17 +15,16 @@
 
 @implementation HCIs
 
-+ (id)is:(id <HCMatcher>)aMatcher
++ (id)is:(id<HCMatcher>)aMatcher
 {
     return [[self alloc] initWithMatcher:aMatcher];
 }
 
-- (id)initWithMatcher:(id <HCMatcher>)aMatcher
+- (id)initWithMatcher:(id<HCMatcher>)aMatcher
 {
     self = [super init];
-    if (self) {
+    if (self)
         matcher = aMatcher;
-    }
     return self;
 }
 
@@ -34,12 +33,12 @@
     return [matcher matches:item];
 }
 
-- (void)describeMismatchOf:(id)item to:(id <HCDescription>)mismatchDescription
+- (void)describeMismatchOf:(id)item to:(id<HCDescription>)mismatchDescription
 {
     [matcher describeMismatchOf:item to:mismatchDescription];
 }
 
-- (void)describeTo:(id <HCDescription>)description
+- (void)describeTo:(id<HCDescription>)description
 {
     [description appendDescriptionOf:matcher];
 }
@@ -49,6 +48,7 @@
 
 #pragma mark -
 
-id <HCMatcher> HC_is(id match) {
+id<HCMatcher> HC_is(id match)
+{
     return [HCIs is:HCWrapInMatcher(match)];
 }

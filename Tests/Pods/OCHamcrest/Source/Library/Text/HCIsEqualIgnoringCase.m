@@ -23,26 +23,25 @@
 - (id)initWithString:(NSString *)aString
 {
     HCRequireNonNilObject(aString);
-
+    
     self = [super init];
-    if (self) {
+    if (self)
         string = [aString copy];
-    }
     return self;
 }
 
 - (BOOL)matches:(id)item
 {
-    if (![item isKindOfClass:[NSString class]]) {
+    if (![item isKindOfClass:[NSString class]])
         return NO;
-    }
-
+    
     return [string caseInsensitiveCompare:item] == NSOrderedSame;
 }
 
-- (void)describeTo:(id <HCDescription>)description
+- (void)describeTo:(id<HCDescription>)description
 {
-    [[description appendDescriptionOf:string] appendText:@" ignoring case"];
+    [[description appendDescriptionOf:string]
+                  appendText:@" ignoring case"];
 }
 
 @end
@@ -50,6 +49,7 @@
 
 #pragma mark -
 
-id <HCMatcher> HC_equalToIgnoringCase(NSString *aString) {
+id<HCMatcher> HC_equalToIgnoringCase(NSString *aString)
+{
     return [HCIsEqualIgnoringCase isEqualIgnoringCase:aString];
 }

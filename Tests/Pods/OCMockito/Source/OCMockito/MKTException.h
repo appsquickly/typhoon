@@ -11,6 +11,8 @@
 
 @interface MKTException : NSException
 
-+ (NSException *)failureInFile:(NSString *)fileName atLine:(int)lineNumber reason:(NSString *)reason;
++ (NSException *)failureInFile:(NSString *)fileName
+                        atLine:(int)lineNumber
+                        reason:(NSString *)reason;
 
 @end

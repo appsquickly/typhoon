@@ -21,18 +21,16 @@
 {
     static id sharedCore = nil;
 
-    if (!sharedCore) {
+    if (!sharedCore)
         sharedCore = [[self alloc] init];
-    }
     return sharedCore;
 }
 
 - (id)init
 {
     self = [super init];
-    if (self) {
+    if (self)
         _mockingProgress = [MKTMockingProgress sharedProgress];
-    }
     return self;
 }
 
@@ -47,7 +45,9 @@
     return [_mockingProgress pullOngoingStubbing];
 }
 
-- (id)verifyMock:(MKTObjectMock *)mock withMode:(id <MKTVerificationMode>)mode atLocation:(MKTTestLocation)location
+- (id)verifyMock:(MKTObjectMock *)mock
+        withMode:(id <MKTVerificationMode>)mode
+      atLocation:(MKTTestLocation)location
 {
     [_mockingProgress verificationStarted:mode atLocation:location];
     return mock;

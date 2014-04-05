@@ -23,7 +23,8 @@
 - (id)initWithValue:(double)aValue delta:(double)aDelta
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         value = aValue;
         delta = aDelta;
     }
@@ -32,27 +33,31 @@
 
 - (BOOL)matches:(id)item
 {
-    if (![item isKindOfClass:[NSNumber class]]) {
+    if (![item isKindOfClass:[NSNumber class]])
         return NO;
-    }
-
+    
     return fabs([item doubleValue] - value) <= delta;
 }
 
-- (void)describeMismatchOf:(id)item to:(id <HCDescription>)mismatchDescription
+- (void)describeMismatchOf:(id)item to:(id<HCDescription>)mismatchDescription
 {
-    if (![item isKindOfClass:[NSNumber class]]) {
+    if (![item isKindOfClass:[NSNumber class]])
         [super describeMismatchOf:item to:mismatchDescription];
-    }
-    else {
+    else
+    {
         double actualDelta = fabs([item doubleValue] - value);
-        [[[mismatchDescription appendDescriptionOf:item] appendText:@" differed by "] appendDescriptionOf:@(actualDelta)];
+        [[[mismatchDescription appendDescriptionOf:item]
+                               appendText:@" differed by "]
+                               appendDescriptionOf:@(actualDelta)];
     }
 }
 
-- (void)describeTo:(id <HCDescription>)description
+- (void)describeTo:(id<HCDescription>)description
 {
-    [[[[description appendText:@"a numeric value within "] appendDescriptionOf:@(delta)] appendText:@" of "] appendDescriptionOf:@(value)];
+    [[[[description appendText:@"a numeric value within "]
+                    appendDescriptionOf:@(delta)]
+                    appendText:@" of "]
+                    appendDescriptionOf:@(value)];
 }
 
 @end
@@ -60,6 +65,7 @@
 
 #pragma mark -
 
-id <HCMatcher> HC_closeTo(double value, double delta) {
+id<HCMatcher> HC_closeTo(double value, double delta)
+{
     return [HCIsCloseTo isCloseTo:value within:delta];
 }

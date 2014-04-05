@@ -18,16 +18,20 @@
     NSString *comparisonDescription;
 }
 
-+ (id)compare:(id)expectedValue minCompare:(NSComparisonResult)min maxCompare:(NSComparisonResult)max
-    comparisonDescription:(NSString *)comparisonDescription;
++ (id)compare:(id)expectedValue
+   minCompare:(NSComparisonResult)min
+   maxCompare:(NSComparisonResult)max
+   comparisonDescription:(NSString *)comparisonDescription;
 
-- (id)initComparing:(id)expectedValue minCompare:(NSComparisonResult)min maxCompare:(NSComparisonResult)max
-    comparisonDescription:(NSString *)comparisonDescription;
+- (id)initComparing:(id)expectedValue
+         minCompare:(NSComparisonResult)min
+         maxCompare:(NSComparisonResult)max
+         comparisonDescription:(NSString *)comparisonDescription;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_greaterThan(id expected);
+OBJC_EXPORT id<HCMatcher> HC_greaterThan(id expected);
 
 /**
     greaterThan(aNumber) -
@@ -44,11 +48,11 @@ OBJC_EXPORT id <HCMatcher> HC_greaterThan(id expected);
     @ingroup number_matchers
  */
 #ifdef HC_SHORTHAND
-#define greaterThan HC_greaterThan
+    #define greaterThan HC_greaterThan
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_greaterThanOrEqualTo(id expected);
+OBJC_EXPORT id<HCMatcher> HC_greaterThanOrEqualTo(id expected);
 
 /**
     greaterThanOrEqualTo(aNumber) -
@@ -65,11 +69,11 @@ OBJC_EXPORT id <HCMatcher> HC_greaterThanOrEqualTo(id expected);
     @ingroup number_matchers
  */
 #ifdef HC_SHORTHAND
-#define greaterThanOrEqualTo HC_greaterThanOrEqualTo
+    #define greaterThanOrEqualTo HC_greaterThanOrEqualTo
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_lessThan(id expected);
+OBJC_EXPORT id<HCMatcher> HC_lessThan(id expected);
 
 /**
     lessThan(aNumber) -
@@ -86,11 +90,11 @@ OBJC_EXPORT id <HCMatcher> HC_lessThan(id expected);
     @ingroup number_matchers
  */
 #ifdef HC_SHORTHAND
-#define lessThan HC_lessThan
+    #define lessThan HC_lessThan
 #endif
 
 
-OBJC_EXPORT id <HCMatcher> HC_lessThanOrEqualTo(id expected);
+OBJC_EXPORT id<HCMatcher> HC_lessThanOrEqualTo(id expected);
 
 /**
     lessThanOrEqualTo(aNumber) -
@@ -107,5 +111,5 @@ OBJC_EXPORT id <HCMatcher> HC_lessThanOrEqualTo(id expected);
     @ingroup number_matchers
  */
 #ifdef HC_SHORTHAND
-#define lessThanOrEqualTo HC_lessThanOrEqualTo
+    #define lessThanOrEqualTo HC_lessThanOrEqualTo
 #endif

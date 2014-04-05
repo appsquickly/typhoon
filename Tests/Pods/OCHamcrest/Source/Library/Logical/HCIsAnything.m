@@ -33,9 +33,8 @@
 - (id)initWithDescription:(NSString *)aDescription
 {
     self = [super init];
-    if (self) {
+    if (self)
         description = [aDescription copy];
-    }
     return self;
 }
 
@@ -44,7 +43,7 @@
     return YES;
 }
 
-- (void)describeTo:(id <HCDescription>)aDescription
+- (void)describeTo:(id<HCDescription>)aDescription
 {
     [aDescription appendText:description];
 }
@@ -54,10 +53,12 @@
 
 #pragma mark -
 
-id <HCMatcher> HC_anything() {
+id<HCMatcher> HC_anything()
+{
     return [HCIsAnything isAnything];
 }
 
-id <HCMatcher> HC_anythingWithDescription(NSString *description) {
+id<HCMatcher> HC_anythingWithDescription(NSString *description)
+{
     return [HCIsAnything isAnythingWithDescription:description];
 }

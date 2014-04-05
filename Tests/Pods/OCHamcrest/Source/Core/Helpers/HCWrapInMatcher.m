@@ -12,15 +12,13 @@
 #import "HCIsEqual.h"
 
 
-id <HCMatcher> HCWrapInMatcher(id matcherOrValue) {
-    if (!matcherOrValue) {
+id<HCMatcher> HCWrapInMatcher(id matcherOrValue)
+{
+    if (!matcherOrValue)
         return nil;
-    }
-
-    if ([matcherOrValue conformsToProtocol:@protocol(HCMatcher)]) {
+    
+    if ([matcherOrValue conformsToProtocol:@protocol(HCMatcher)])
         return matcherOrValue;
-    }
-    else {
+    else
         return HC_equalTo(matcherOrValue);
-    }
 }

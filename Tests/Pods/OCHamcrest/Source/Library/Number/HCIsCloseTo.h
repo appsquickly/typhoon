@@ -17,13 +17,12 @@
 }
 
 + (id)isCloseTo:(double)aValue within:(double)aDelta;
-
 - (id)initWithValue:(double)aValue delta:(double)aDelta;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_closeTo(double aValue, double aDelta);
+OBJC_EXPORT id<HCMatcher> HC_closeTo(double aValue, double aDelta);
 
 /**
     closeTo(aValue, aDelta) -
@@ -44,5 +43,5 @@ OBJC_EXPORT id <HCMatcher> HC_closeTo(double aValue, double aDelta);
     @ingroup number_matchers
  */
 #ifdef HC_SHORTHAND
-#define closeTo HC_closeTo
+    #define closeTo HC_closeTo
 #endif

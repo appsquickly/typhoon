@@ -15,41 +15,39 @@
 
 @implementation HCBaseDescription
 
-- (id <HCDescription>)appendText:(NSString *)text
+- (id<HCDescription>)appendText:(NSString *)text
 {
     [self append:text];
     return self;
 }
 
-- (id <HCDescription>)appendDescriptionOf:(id)value
+- (id<HCDescription>)appendDescriptionOf:(id)value
 {
-    if (value == nil) {
+    if (value == nil)
         [self append:@"nil"];
-    }
-    else if ([value conformsToProtocol:@protocol(HCSelfDescribing)]) {
+    else if ([value conformsToProtocol:@protocol(HCSelfDescribing)])
         [value describeTo:self];
-    }
-    else if ([value isKindOfClass:[NSString class]]) {
+    else if ([value isKindOfClass:[NSString class]])
         [self toCSyntaxString:value];
-    }
-    else {
+    else
         [self appendObjectDescriptionOf:value];
-    }
-
+    
     return self;
 }
 
-- (id <HCDescription>)appendObjectDescriptionOf:(id)value
+- (id<HCDescription>)appendObjectDescriptionOf:(id)value
 {
     NSString *description = [value description];
     NSUInteger descriptionLength = [description length];
-    if (descriptionLength == 0) {
+    if (descriptionLength == 0)
         [self append:[NSString stringWithFormat:@"<%@: %p>", NSStringFromClass([value class]), value]];
-    }
-    else if ([description characterAtIndex:0] == '<' && [description characterAtIndex:descriptionLength - 1] == '>') {
+    else if ([description characterAtIndex:0] == '<'
+             && [description characterAtIndex:descriptionLength - 1] == '>')
+    {
         [self append:description];
     }
-    else {
+    else
+    {
         [self append:@"<"];
         [self append:description];
         [self append:@">"];
@@ -57,15 +55,18 @@
     return self;
 }
 
-- (id <HCDescription>)appendList:(NSArray *)values start:(NSString *)start separator:(NSString *)separator end:(NSString *)end
+- (id<HCDescription>)appendList:(NSArray *)values
+                          start:(NSString *)start
+                      separator:(NSString *)separator
+                            end:(NSString *)end
 {
     BOOL separate = NO;
-
+    
     [self append:start];
-    for (id item in values) {
-        if (separate) {
+    for (id item in values)
+    {
+        if (separate)
             [self append:separator];
-        }
         [self appendDescriptionOf:item];
         separate = YES;
     }
@@ -77,15 +78,15 @@
 {
     [self append:@"\""];
     NSUInteger length = [unformatted length];
-    for (NSUInteger index = 0; index < length; ++index) {
+    for (NSUInteger index = 0; index < length; ++index)
         [self toCSyntax:[unformatted characterAtIndex:index]];
-    }
     [self append:@"\""];
 }
 
 - (void)toCSyntax:(unichar)ch
 {
-    switch (ch) {
+    switch (ch)
+    {
         case '"':
             [self append:@"\\\""];
             break;

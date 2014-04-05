@@ -22,9 +22,8 @@
 - (id)initWithClass:(Class)aClass
 {
     self = [super init];
-    if (self) {
+    if (self)
         _mockedClass = aClass;
-    }
     return self;
 }
 

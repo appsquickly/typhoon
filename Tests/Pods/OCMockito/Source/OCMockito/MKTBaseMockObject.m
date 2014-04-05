@@ -25,7 +25,8 @@
 
 - (id)init
 {
-    if (self) {
+    if (self)
+    {
         _mockingProgress = [MKTMockingProgress sharedProgress];
         _invocationContainer = [[MKTInvocationContainer alloc] initWithMockingProgress:_mockingProgress];
 
@@ -43,43 +44,46 @@
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
     id <MKTVerificationMode> verificationMode = [_mockingProgress pullVerificationMode];
-    if (verificationMode) {
+    if (verificationMode)
+    {
         MKTInvocationMatcher *invocationMatcher = [_mockingProgress pullInvocationMatcher];
-        if (!invocationMatcher) {
+        if (!invocationMatcher)
             invocationMatcher = [[MKTInvocationMatcher alloc] init];
-        }
         [invocationMatcher setExpectedInvocation:anInvocation];
-
+        
         MKTVerificationData *data = [[MKTVerificationData alloc] init];
         [data setInvocations:_invocationContainer];
         [data setWanted:invocationMatcher];
         [data setTestLocation:[_mockingProgress testLocation]];
         [verificationMode verifyData:data];
-
+        
         return;
     }
-
+    
     [_invocationContainer setInvocationForPotentialStubbing:anInvocation];
-    MKTOngoingStubbing *ongoingStubbing = [[MKTOngoingStubbing alloc] initWithInvocationContainer:_invocationContainer];
+    MKTOngoingStubbing *ongoingStubbing = [[MKTOngoingStubbing alloc]
+                                           initWithInvocationContainer:_invocationContainer];
     [_mockingProgress reportOngoingStubbing:ongoingStubbing];
-
+    
     NSMethodSignature *methodSignature = [anInvocation methodSignature];
-    const char *methodReturnType = [methodSignature methodReturnType];
-    if (MKTTypeEncodingIsObjectOrClass(methodReturnType)) {
+    const char* methodReturnType = [methodSignature methodReturnType];
+    if (MKTTypeEncodingIsObjectOrClass(methodReturnType))
+    {
         __unsafe_unretained id answer = [_invocationContainer findAnswerFor:anInvocation];
         [anInvocation setReturnValue:&answer];
-    }HANDLE_METHOD_RETURN_TYPE(char, char)
-        HANDLE_METHOD_RETURN_TYPE(int, int)
-        HANDLE_METHOD_RETURN_TYPE(short, short)
-        HANDLE_METHOD_RETURN_TYPE(long, long)
-        HANDLE_METHOD_RETURN_TYPE(long long, longLong)
-        HANDLE_METHOD_RETURN_TYPE(unsigned char, unsignedChar)
-        HANDLE_METHOD_RETURN_TYPE(unsigned int, unsignedInt)
-        HANDLE_METHOD_RETURN_TYPE(unsigned short, unsignedShort)
-        HANDLE_METHOD_RETURN_TYPE(unsigned long, unsignedLong)
-        HANDLE_METHOD_RETURN_TYPE(unsigned long long, unsignedLongLong)
-        HANDLE_METHOD_RETURN_TYPE(float, float)
-        HANDLE_METHOD_RETURN_TYPE(double, double)
+    }
+    HANDLE_METHOD_RETURN_TYPE(char, char)
+    HANDLE_METHOD_RETURN_TYPE(int, int)
+    HANDLE_METHOD_RETURN_TYPE(short, short)
+    HANDLE_METHOD_RETURN_TYPE(long, long)
+    HANDLE_METHOD_RETURN_TYPE(long long, longLong)
+    HANDLE_METHOD_RETURN_TYPE(unsigned char, unsignedChar)
+    HANDLE_METHOD_RETURN_TYPE(unsigned int, unsignedInt)
+    HANDLE_METHOD_RETURN_TYPE(unsigned short, unsignedShort)
+    HANDLE_METHOD_RETURN_TYPE(unsigned long, unsignedLong)
+    HANDLE_METHOD_RETURN_TYPE(unsigned long long, unsignedLongLong)
+    HANDLE_METHOD_RETURN_TYPE(float, float)
+    HANDLE_METHOD_RETURN_TYPE(double, double)
 }
 
 

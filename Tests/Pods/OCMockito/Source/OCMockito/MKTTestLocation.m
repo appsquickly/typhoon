@@ -20,12 +20,16 @@
 @end
 
 
-void MKTFailTest(id testCase, const char *fileName, int lineNumber, NSString *description) {
+void MKTFailTest(id testCase, const char *fileName, int lineNumber, NSString *description)
+{
     NSString *theFileName = @(fileName);
-    NSException *failure = [MKTException failureInFile:theFileName atLine:lineNumber reason:description];
+    NSException *failure = [MKTException failureInFile:theFileName
+                                                atLine:lineNumber
+                                                reason:description];
     [testCase failWithException:failure];
 }
 
-void MKTFailTestLocation(MKTTestLocation testLocation, NSString *description) {
+void MKTFailTestLocation(MKTTestLocation testLocation, NSString *description)
+{
     MKTFailTest(testLocation.testCase, testLocation.fileName, testLocation.lineNumber, description);
 }

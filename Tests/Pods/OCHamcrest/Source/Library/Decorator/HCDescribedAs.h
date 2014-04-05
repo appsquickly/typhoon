@@ -13,18 +13,22 @@
 @interface HCDescribedAs : HCBaseMatcher
 {
     NSString *descriptionTemplate;
-    id <HCMatcher> matcher;
+    id<HCMatcher> matcher;
     NSArray *values;
 }
 
-+ (id)describedAs:(NSString *)description forMatcher:(id <HCMatcher>)aMatcher overValues:(NSArray *)templateValues;
++ (id)describedAs:(NSString *)description
+       forMatcher:(id<HCMatcher>)aMatcher
+       overValues:(NSArray *)templateValues;
 
-- (id)initWithDescription:(NSString *)description forMatcher:(id <HCMatcher>)aMatcher overValues:(NSArray *)templateValues;
+- (id)initWithDescription:(NSString *)description
+               forMatcher:(id<HCMatcher>)aMatcher
+               overValues:(NSArray *)templateValues;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_describedAs(NSString *description, id <HCMatcher> matcher, ...) NS_REQUIRES_NIL_TERMINATION;
+OBJC_EXPORT id<HCMatcher> HC_describedAs(NSString *description, id<HCMatcher> matcher, ...) NS_REQUIRES_NIL_TERMINATION;
 
 /**
     describedAs(description, matcher, ...) -
@@ -42,5 +46,5 @@ OBJC_EXPORT id <HCMatcher> HC_describedAs(NSString *description, id <HCMatcher> 
     @ingroup decorator_matchers
  */
 #ifdef HC_SHORTHAND
-#define describedAs HC_describedAs
+    #define describedAs HC_describedAs
 #endif

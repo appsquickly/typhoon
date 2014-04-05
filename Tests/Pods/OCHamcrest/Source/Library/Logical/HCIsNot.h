@@ -12,17 +12,16 @@
 
 @interface HCIsNot : HCBaseMatcher
 {
-    id <HCMatcher> matcher;
+    id<HCMatcher> matcher;
 }
 
-+ (id)isNot:(id <HCMatcher>)aMatcher;
-
-- (id)initNot:(id <HCMatcher>)aMatcher;
++ (id)isNot:(id<HCMatcher>)aMatcher;
+- (id)initNot:(id<HCMatcher>)aMatcher;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_isNot(id aMatcher);
+OBJC_EXPORT id<HCMatcher> HC_isNot(id aMatcher);
 
 /**
     isNot(aMatcher) -
@@ -44,5 +43,5 @@ OBJC_EXPORT id <HCMatcher> HC_isNot(id aMatcher);
     @ingroup logical_matchers
  */
 #ifdef HC_SHORTHAND
-#define isNot HC_isNot
+    #define isNot HC_isNot
 #endif

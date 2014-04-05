@@ -25,7 +25,7 @@
     @c MKTMock instead.)
  */
 #ifdef MOCKITO_SHORTHAND
-#define mock(aClass) MKTMock(aClass)
+    #define mock(aClass) MKTMock(aClass)
 #endif
 
 
@@ -38,7 +38,7 @@
     @c MKTMockClass instead.)
  */
 #ifdef MOCKITO_SHORTHAND
-#define mockClass(aClass) MKTMockClass(aClass)
+    #define mockClass(aClass) MKTMockClass(aClass)
 #endif
 
 
@@ -51,7 +51,7 @@
     @c MKTMockProtocol instead.)
  */
 #ifdef MOCKITO_SHORTHAND
-#define mockProtocol(aProtocol) MKTMockProtocol(aProtocol)
+    #define mockProtocol(aProtocol) MKTMockProtocol(aProtocol)
 #endif
 
 
@@ -64,7 +64,7 @@
     @c MKTMockObjectAndProtocol instead.)
  */
 #ifdef MOCKITO_SHORTHAND
-#define mockObjectAndProtocol(aClass, aProtocol) MKTMockObjectAndProtocol(aClass, aProtocol)
+    #define mockObjectAndProtocol(aClass, aProtocol) MKTMockObjectAndProtocol(aClass, aProtocol)
 #endif
 
 OBJC_EXPORT MKTOngoingStubbing *MKTGivenWithLocation(id testCase, const char *fileName, int lineNumber, ...);
@@ -86,7 +86,7 @@ OBJC_EXPORT MKTOngoingStubbing *MKTGivenWithLocation(id testCase, const char *fi
     @c MKTGiven instead.)
  */
 #ifdef MOCKITO_SHORTHAND
-#define given(methodCall) MKTGiven(methodCall)
+    #define given(methodCall) MKTGiven(methodCall)
 #endif
 
 
@@ -116,8 +116,8 @@ verifyCount(mockObject, times(1))
     @c MKTVerify instead.)
  */
 #ifdef MOCKITO_SHORTHAND
-#undef verify
-#define verify(mock) MKTVerify(mock)
+    #undef verify
+    #define verify(mock) MKTVerify(mock)
 #endif
 
 
@@ -142,7 +142,7 @@ OBJC_EXPORT id MKTVerifyCountWithLocation(id mock, id mode, id testCase, const c
     @c MKTVerifyCount instead.)
  */
 #ifdef MOCKITO_SHORTHAND
-#define verifyCount(mock, mode) MKTVerifyCount(mock, mode)
+    #define verifyCount(mock, mode) MKTVerifyCount(mock, mode)
 #endif
 
 
@@ -160,7 +160,7 @@ OBJC_EXPORT id MKTTimes(NSUInteger wantedNumberOfInvocations);
     @c MKTTimes instead.)
  */
 #ifdef MOCKITO_SHORTHAND
-#define times(wantedNumberOfInvocations) MKTTimes(wantedNumberOfInvocations)
+    #define times(wantedNumberOfInvocations) MKTTimes(wantedNumberOfInvocations)
 #endif
 
 
@@ -178,7 +178,7 @@ OBJC_EXPORT id MKTNever(void);
     @c MKTNever instead.)
  */
 #ifdef MOCKITO_SHORTHAND
-#define never() MKTNever()
+    #define never() MKTNever()
 #endif
 
 
@@ -199,7 +199,7 @@ OBJC_EXPORT id MKTAtLeast(NSUInteger minimumWantedNumberOfInvocations);
     @c MKTAtLeast instead.)
  */
 #ifdef MOCKITO_SHORTHAND
-#define atLeast(minimumWantedNumberOfInvocations) MKTAtLeast(minimumWantedNumberOfInvocations)
+    #define atLeast(minimumWantedNumberOfInvocations) MKTAtLeast(minimumWantedNumberOfInvocations)
 #endif
 
 
@@ -217,5 +217,5 @@ OBJC_EXPORT id MKTAtLeastOnce(void);
     @c MKTAtLeastOnce instead.)
  */
 #ifdef MOCKITO_SHORTHAND
-#define atLeastOnce() MKTAtLeastOnce()
+    #define atLeastOnce() MKTAtLeastOnce()
 #endif

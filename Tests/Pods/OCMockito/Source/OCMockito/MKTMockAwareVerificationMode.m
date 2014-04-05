@@ -23,7 +23,8 @@
 - (id)initWithMock:(MKTObjectMock *)mock mode:(id <MKTVerificationMode>)mode
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _mock = [mock retain];
         _mode = [mode retain];
     }

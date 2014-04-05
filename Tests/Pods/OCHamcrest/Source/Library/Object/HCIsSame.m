@@ -22,9 +22,8 @@
 - (id)initSameAs:(id)anObject
 {
     self = [super init];
-    if (self) {
+    if (self)
         object = anObject;
-    }
     return self;
 }
 
@@ -33,18 +32,18 @@
     return item == object;
 }
 
-- (void)describeMismatchOf:(id)item to:(id <HCDescription>)mismatchDescription
+- (void)describeMismatchOf:(id)item to:(id<HCDescription>)mismatchDescription
 {
     [mismatchDescription appendText:@"was "];
-    if (item) {
+    if (item)
         [mismatchDescription appendText:[NSString stringWithFormat:@"%p ", item]];
-    }
     [mismatchDescription appendDescriptionOf:item];
 }
 
-- (void)describeTo:(id <HCDescription>)description
+- (void)describeTo:(id<HCDescription>)description
 {
-    [[description appendText:[NSString stringWithFormat:@"same instance as %p ", object]] appendDescriptionOf:object];
+    [[description appendText:[NSString stringWithFormat:@"same instance as %p ", object]]
+         appendDescriptionOf:object];
 }
 
 @end
@@ -52,6 +51,7 @@
 
 #pragma mark -
 
-id <HCMatcher> HC_sameInstance(id object) {
+id<HCMatcher> HC_sameInstance(id object)
+{
     return [HCIsSame isSameAs:object];
 }

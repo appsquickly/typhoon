@@ -16,7 +16,6 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonAssemblySelectorAdviser.h"
-#import "OCLogTemplate.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblyAdviser.h"
 #import "TyphoonAssemblyDefinitionBuilder.h"
@@ -186,6 +185,7 @@ static id ImplementationToConstructDefinitionAndCatchArguments(TyphoonAssembly *
 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
+
 - (NSArray *)definitions
 {
     return [_definitionBuilder builtDefinitions];

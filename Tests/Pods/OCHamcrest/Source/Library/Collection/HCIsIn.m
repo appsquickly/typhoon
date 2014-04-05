@@ -21,14 +21,16 @@
 
 - (id)initWithCollection:(id)aCollection
 {
-    if (![aCollection respondsToSelector:@selector(containsObject:)]) {
-        @throw [NSException exceptionWithName:@"NotAContainer" reason:@"Object must respond to -containsObject:" userInfo:nil];
+    if (![aCollection respondsToSelector:@selector(containsObject:)])
+    {
+        @throw [NSException exceptionWithName:@"NotAContainer"
+                                       reason:@"Object must respond to -containsObject:"
+                                     userInfo:nil];
     }
-
+    
     self = [super init];
-    if (self) {
+    if (self)
         collection = aCollection;
-    }
     return self;
 }
 
@@ -37,7 +39,7 @@
     return [collection containsObject:item];
 }
 
-- (void)describeTo:(id <HCDescription>)description
+- (void)describeTo:(id<HCDescription>)description
 {
     [description appendText:@"one of "];
     [description appendList:collection start:@"{" separator:@", " end:@"}"];
@@ -48,6 +50,7 @@
 
 #pragma mark -
 
-id <HCMatcher> HC_isIn(id aCollection) {
+id<HCMatcher> HC_isIn(id aCollection)
+{
     return [HCIsIn isInCollection:aCollection];
 }

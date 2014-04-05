@@ -21,10 +21,9 @@
 
 - (BOOL)matches:(id)item
 {
-    if (![item respondsToSelector:@selector(rangeOfString:)]) {
+    if (![item respondsToSelector:@selector(rangeOfString:)])
         return NO;
-    }
-
+    
     return [item rangeOfString:substring].location != NSNotFound;
 }
 
@@ -38,6 +37,7 @@
 
 #pragma mark -
 
-id <HCMatcher> HC_containsString(NSString *aString) {
+id<HCMatcher> HC_containsString(NSString *aString)
+{
     return [HCStringContains stringContains:aString];
 }

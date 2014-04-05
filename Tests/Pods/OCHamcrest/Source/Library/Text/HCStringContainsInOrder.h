@@ -16,13 +16,12 @@
 }
 
 + (id)containsInOrder:(NSArray *)substringList;
-
 - (id)initWithSubstrings:(NSArray *)substringList;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_stringContainsInOrder(NSString *substring, ...) NS_REQUIRES_NIL_TERMINATION;
+OBJC_EXPORT id<HCMatcher> HC_stringContainsInOrder(NSString *substring, ...) NS_REQUIRES_NIL_TERMINATION;
 
 /**
     stringContainsInOrder(firstString, ...) -
@@ -47,5 +46,5 @@ OBJC_EXPORT id <HCMatcher> HC_stringContainsInOrder(NSString *substring, ...) NS
     @ingroup text_matchers
  */
 #ifdef HC_SHORTHAND
-#define stringContainsInOrder HC_stringContainsInOrder
+    #define stringContainsInOrder HC_stringContainsInOrder
 #endif

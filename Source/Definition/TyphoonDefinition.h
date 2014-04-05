@@ -13,6 +13,7 @@
 #import <Foundation/Foundation.h>
 
 #import "TyphoonMethod.h"
+
 @class TyphoonDefinition;
 @class TyphoonRuntimeArguments;
 

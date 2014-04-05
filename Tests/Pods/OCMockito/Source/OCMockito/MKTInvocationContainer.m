@@ -13,7 +13,7 @@
 
 
 @interface MKTInvocationContainer ()
-@property(nonatomic, strong) MKTStubbedInvocationMatcher *invocationMatcherForStubbing;
+@property (nonatomic, strong) MKTStubbedInvocationMatcher *invocationMatcherForStubbing;
 @end
 
 
@@ -26,7 +26,8 @@
 - (id)initWithMockingProgress:(MKTMockingProgress *)mockingProgress
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _registeredInvocations = [[NSMutableArray alloc] init];
         _mockingProgress = mockingProgress;
         _stubbed = [[NSMutableArray alloc] init];
@@ -39,7 +40,7 @@
 {
     [invocation retainArguments];
     [_registeredInvocations addObject:invocation];
-
+    
     MKTStubbedInvocationMatcher *stubbedInvocationMatcher = [[MKTStubbedInvocationMatcher alloc] init];
     [stubbedInvocationMatcher setExpectedInvocation:invocation];
     [self setInvocationMatcherForStubbing:stubbedInvocationMatcher];
@@ -53,19 +54,17 @@
 - (void)addAnswer:(id)answer
 {
     [_registeredInvocations removeLastObject];
-
+    
     [_invocationMatcherForStubbing setAnswer:answer];
     [_stubbed insertObject:_invocationMatcherForStubbing atIndex:0];
 }
 
 - (id)findAnswerFor:(NSInvocation *)invocation
 {
-    for (MKTStubbedInvocationMatcher *stubbedInvocationMatcher in _stubbed) {
-        if ([stubbedInvocationMatcher matches:invocation]) {
+    for (MKTStubbedInvocationMatcher *stubbedInvocationMatcher in _stubbed)
+        if ([stubbedInvocationMatcher matches:invocation])
             return [stubbedInvocationMatcher answer];
-        }
-    }
-
+    
     return nil;
 }
 

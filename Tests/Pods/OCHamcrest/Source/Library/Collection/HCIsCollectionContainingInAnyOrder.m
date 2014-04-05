@@ -17,19 +17,21 @@
 @interface HCMatchingInAnyOrder : NSObject
 {
     NSMutableArray *matchers;
-    id <HCDescription, NSObject> mismatchDescription;
+    id<HCDescription, NSObject> mismatchDescription;
 }
 @end
 
 
 @implementation HCMatchingInAnyOrder
 
-- (id)initWithMatchers:(NSMutableArray *)itemMatchers mismatchDescription:(id <HCDescription, NSObject>)description
+- (id)initWithMatchers:(NSMutableArray *)itemMatchers
+   mismatchDescription:(id<HCDescription, NSObject>)description
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         matchers = itemMatchers;
-        mismatchDescription = description;
+        mismatchDescription = description;        
     }
     return self;
 }
@@ -37,8 +39,10 @@
 - (BOOL)matches:(id)item
 {
     NSUInteger index = 0;
-    for (id <HCMatcher> matcher in matchers) {
-        if ([matcher matches:item]) {
+    for (id<HCMatcher> matcher in matchers)
+    {
+        if ([matcher matches:item])
+        {
             [matchers removeObjectAtIndex:index];
             return YES;
         }
@@ -50,12 +54,13 @@
 
 - (BOOL)isFinishedWith:(NSArray *)collection
 {
-    if ([matchers count] == 0) {
+    if ([matchers count] == 0)
         return YES;
-    }
-
-    [[[[mismatchDescription appendText:@"no item matches: "] appendList:matchers start:@"" separator:@", " end:@""] appendText:@" in "]
-        appendList:collection start:@"[" separator:@", " end:@"]"];
+    
+    [[[[mismatchDescription appendText:@"no item matches: "]
+                            appendList:matchers start:@"" separator:@", " end:@""]
+                            appendText:@" in "]
+                            appendList:collection start:@"[" separator:@", " end:@"]"];
     return NO;
 }
 
@@ -74,9 +79,8 @@
 - (id)initWithMatchers:(NSMutableArray *)itemMatchers
 {
     self = [super init];
-    if (self) {
+    if (self)
         matchers = itemMatchers;
-    }
     return self;
 }
 
@@ -85,31 +89,34 @@
     return [self matches:collection describingMismatchTo:nil];
 }
 
-- (BOOL)matches:(id)collection describingMismatchTo:(id <HCDescription, NSObject>)mismatchDescription
+- (BOOL)matches:(id)collection describingMismatchTo:(id<HCDescription, NSObject>)mismatchDescription
 {
-    if (![collection conformsToProtocol:@protocol(NSFastEnumeration)]) {
+    if (![collection conformsToProtocol:@protocol(NSFastEnumeration)])
+    {
         [super describeMismatchOf:collection to:mismatchDescription];
         return NO;
     }
-
-    HCMatchingInAnyOrder *matchSequence = [[HCMatchingInAnyOrder alloc] initWithMatchers:matchers mismatchDescription:mismatchDescription];
-    for (id item in collection) {
-        if (![matchSequence matches:item]) {
+    
+    HCMatchingInAnyOrder *matchSequence =
+        [[HCMatchingInAnyOrder alloc] initWithMatchers:matchers 
+                                   mismatchDescription:mismatchDescription];
+    for (id item in collection)
+        if (![matchSequence matches:item])
             return NO;
-        }
-    }
-
+    
     return [matchSequence isFinishedWith:collection];
 }
 
-- (void)describeMismatchOf:(id)item to:(id <HCDescription>)mismatchDescription
+- (void)describeMismatchOf:(id)item to:(id<HCDescription>)mismatchDescription
 {
     [self matches:item describingMismatchTo:mismatchDescription];
 }
 
-- (void)describeTo:(id <HCDescription>)description
+- (void)describeTo:(id<HCDescription>)description
 {
-    [[[description appendText:@"a collection over "] appendList:matchers start:@"[" separator:@", " end:@"]"] appendText:@" in any order"];
+    [[[description appendText:@"a collection over "]
+                   appendList:matchers start:@"[" separator:@", " end:@"]"]
+                   appendText:@" in any order"];
 }
 
 @end
@@ -117,17 +124,19 @@
 
 #pragma mark -
 
-id <HCMatcher> HC_containsInAnyOrder(id itemMatch, ...) {
+id<HCMatcher> HC_containsInAnyOrder(id itemMatch, ...)
+{
     NSMutableArray *matchers = [NSMutableArray arrayWithObject:HCWrapInMatcher(itemMatch)];
-
+    
     va_list args;
     va_start(args, itemMatch);
     itemMatch = va_arg(args, id);
-    while (itemMatch != nil) {
+    while (itemMatch != nil)
+    {
         [matchers addObject:HCWrapInMatcher(itemMatch)];
         itemMatch = va_arg(args, id);
     }
     va_end(args);
-
+    
     return [HCIsCollectionContainingInAnyOrder isCollectionContainingInAnyOrder:matchers];
 }

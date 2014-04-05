@@ -10,8 +10,12 @@
 #import "HCRequireNonNilObject.h"
 
 
-void HCRequireNonNilObject(id obj) {
-    if (obj == nil) {
-        @throw [NSException exceptionWithName:@"NilObject" reason:@"Must be non-nil object" userInfo:nil];
+void HCRequireNonNilObject(id obj)
+{
+    if (obj == nil)
+    {
+        @throw [NSException exceptionWithName:@"NilObject"
+                                       reason:@"Must be non-nil object"
+                                     userInfo:nil];
     }
 }

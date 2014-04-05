@@ -16,13 +16,12 @@
 }
 
 + (id)isEqualIgnoringCase:(NSString *)aString;
-
 - (id)initWithString:(NSString *)aString;
 
 @end
 
 
-OBJC_EXPORT id <HCMatcher> HC_equalToIgnoringCase(NSString *aString);
+OBJC_EXPORT id<HCMatcher> HC_equalToIgnoringCase(NSString *aString);
 
 /**
     equalToIgnoringCase(aString) -
@@ -46,5 +45,5 @@ OBJC_EXPORT id <HCMatcher> HC_equalToIgnoringCase(NSString *aString);
     @ingroup text_matchers
  */
 #ifdef HC_SHORTHAND
-#define equalToIgnoringCase HC_equalToIgnoringCase
+    #define equalToIgnoringCase HC_equalToIgnoringCase
 #endif

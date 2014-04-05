@@ -21,10 +21,9 @@
 
 - (BOOL)matches:(id)item
 {
-    if (![item respondsToSelector:@selector(hasSuffix:)]) {
+    if (![item respondsToSelector:@selector(hasSuffix:)])
         return NO;
-    }
-
+    
     return [item hasSuffix:substring];
 }
 
@@ -38,6 +37,7 @@
 
 #pragma mark -
 
-id <HCMatcher> HC_endsWith(NSString *aString) {
+id<HCMatcher> HC_endsWith(NSString *aString)
+{
     return [HCStringEndsWith stringEndsWith:aString];
 }
