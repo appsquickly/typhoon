@@ -26,7 +26,7 @@
 - (id)classA
 {
     return [TyphoonDefinition withClass:[ClassADependsOnB class] injections:^(TyphoonDefinition *definition) {
-        [definition injectMethod:@selector(setDependencyOnB:) withParameters:^(TyphoonMethod *method) {
+        [definition injectMethod:@selector(setDependencyOnB:) parameters:^(TyphoonMethod *method) {
             [method injectParameterWith:[self classB]];
         }];
     }];
@@ -35,7 +35,7 @@
 - (id)classB
 {
     return [TyphoonDefinition withClass:[ClassBDependsOnA class] injections:^(TyphoonDefinition *definition) {
-        [definition injectMethod:@selector(setDependencyOnA:) withParameters:^(TyphoonMethod *method) {
+        [definition injectMethod:@selector(setDependencyOnA:) parameters:^(TyphoonMethod *method) {
             [method injectParameterWith:[self classA]];
         }];
     }];
@@ -85,7 +85,7 @@
 - (id)prototypeInitInjected
 {
     return [TyphoonDefinition withClass:[PrototypeInitInjected class] injections:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(initWithDependency:) withParameters:^(TyphoonMethod *initializer) {
+        [definition injectInitializer:@selector(initWithDependency:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self prototypePropertyInjected]];
         }];
         [definition setScope:TyphoonScopePrototype];
@@ -114,7 +114,7 @@
 - (id)croSingletonB
 {
     return [TyphoonDefinition withClass:[CROSingletonB class] injections:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(initWithPrototypeB:) withParameters:^(TyphoonMethod *initializer) {
+        [definition injectInitializer:@selector(initWithPrototypeB:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self croPrototypeB]];
         }];
     }];
@@ -123,7 +123,7 @@
 - (id)croPrototypeA
 {
     return [TyphoonDefinition withClass:[CROPrototypeA class] injections:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(initWithCROPrototypeB:) withParameters:^(TyphoonMethod *initializer) {
+        [definition injectInitializer:@selector(initWithCROPrototypeB:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self croPrototypeB]];
         }];
     }];
@@ -132,7 +132,7 @@
 - (id)croPrototypeB
 {
     return [TyphoonDefinition withClass:[CROPrototypeB class] injections:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(initWithCROSingletonA:) withParameters:^(TyphoonMethod *initializer) {
+        [definition injectInitializer:@selector(initWithCROSingletonA:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self croSingletonA]];
         }];
     }];
@@ -143,7 +143,7 @@
 - (id)incorrectPrototypeB
 {
     return [TyphoonDefinition withClass:[CROPrototypeB class] injections:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(initWithCROPrototypeA:) withParameters:^(TyphoonMethod *initializer) {
+        [definition injectInitializer:@selector(initWithCROPrototypeA:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self incorrectPrototypeA]];
         }];
         definition.key = @"incorrectPrototypeB";
@@ -154,7 +154,7 @@
 - (id)incorrectPrototypeA
 {
     return [TyphoonDefinition withClass:[CROPrototypeA class] injections:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(initWithCROPrototypeB:) withParameters:^(TyphoonMethod *initializer) {
+        [definition injectInitializer:@selector(initWithCROPrototypeB:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self incorrectPrototypeB]];
         }];
         definition.key = @"incorrectPrototypeA";

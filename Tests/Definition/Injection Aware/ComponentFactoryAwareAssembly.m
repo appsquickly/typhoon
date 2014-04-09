@@ -31,7 +31,7 @@
 - (id)injectionByInitialization
 {
     return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] injections:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(initWithComponentFactory) withParameters:^(TyphoonMethod *initializer) {
+        [definition injectInitializer:@selector(initWithComponentFactory) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:self];
         }];
     }];

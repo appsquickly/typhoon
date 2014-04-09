@@ -82,7 +82,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 + (TyphoonDefinition *)withClass:(Class)clazz factory:(TyphoonDefinition *)_definition selector:(SEL)selector
 {
     return [TyphoonDefinition withClass:clazz injections:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:selector withParameters:nil];
+        [definition injectInitializer:selector parameters:nil];
         [definition setFactory:_definition];
     }];
 }
@@ -110,7 +110,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     [_injectedProperties addObject:injection];
 }
 
-- (void)injectMethod:(SEL)selector withParameters:(void(^)(TyphoonMethod *method))parametersBlock
+- (void)injectMethod:(SEL)selector parameters:(void(^)(TyphoonMethod *method))parametersBlock
 {
     TyphoonMethod *method = [[TyphoonMethod alloc] initWithSelector:selector];
     if (parametersBlock) {
@@ -119,7 +119,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     [_injectedMethods addObject:method];
 }
 
-- (void)injectInitializer:(SEL)selector withParameters:(void(^)(TyphoonMethod *initializer))parametersBlock
+- (void)injectInitializer:(SEL)selector parameters:(void(^)(TyphoonMethod *initializer))parametersBlock
 {
     TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:selector];
     if (parametersBlock) {

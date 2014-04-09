@@ -244,14 +244,14 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
  * Injects method with specified by selector with parameters. 
  * @see TyphoonMethod documentation for information about parameters
  */
-- (void)injectMethod:(SEL)selector withParameters:(void(^)(TyphoonMethod *method))parametersBlock;
+- (void)injectMethod:(SEL)selector parameters:(void(^)(TyphoonMethod *method))parametersBlock;
 
 /**
  * Injects initializer specified by selector and parameters. 
  * Initializer allow you to create object with special selector and params. Without this injection,
  * object will be created by 'alloc-init' calls
  */
-- (void)injectInitializer:(SEL)selector withParameters:(void(^)(TyphoonMethod *initializer))parametersBlock;
+- (void)injectInitializer:(SEL)selector parameters:(void(^)(TyphoonMethod *initializer))parametersBlock;
 
 #pragma mark Making injections from definition
 

@@ -51,7 +51,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 + (instancetype)propertyPlaceholderWithResources:(NSArray *)resources
 {
     return [self withClass:[TyphoonPropertyPlaceholderConfigurer class] injections:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(configurerWithResourceList:) withParameters:^(TyphoonMethod *initializer) {
+        [definition injectInitializer:@selector(configurerWithResourceList:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:resources];
         }];
         NSString *resourceDescription = @"";
