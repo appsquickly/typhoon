@@ -27,11 +27,6 @@ task test(type: XcodeTestTask) {
             sdkVersion: '6.1'
     )
 
-	coverageReport new CoverageReportConfig(
-            directories: ['Source'],
-            excludeSymbols: ['TyphoonJRSwizzle.m', 'NSRange.h', 'once.h']
-    )
-
 	outputDir 'build'
 }
 
