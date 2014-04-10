@@ -34,7 +34,7 @@
 - (id)notSingletonA
 {
     return [TyphoonDefinition withClass:[NotSingletonA class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(initWithSingletonA:) parameters:^(TyphoonMethod *initializer) {
+        [definition useInitializer:@selector(initWithSingletonA:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self singletonA]];
         }];
     }];

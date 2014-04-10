@@ -22,7 +22,7 @@
 - (id)anotherServiceUrl
 {
     return [TyphoonDefinition withClass:[NSURL class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(URLWithString:) parameters:^(TyphoonMethod *initializer) {
+        [definition useInitializer:@selector(URLWithString:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameter:@"string" with:@"http://dev.foobar.com/service/"];
         }];
     }];

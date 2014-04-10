@@ -29,7 +29,7 @@
 - (id)knightWithCircularDependency
 {
     return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(initWithQuest:favoriteDamsels:) parameters:^(TyphoonMethod *initializer) {
+        [definition useInitializer:@selector(initWithQuest:favoriteDamsels:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:self.middleAge.defaultQuest];
             [initializer injectParameterWith:@[
                 [self anotherKnightWithCircularDependency],

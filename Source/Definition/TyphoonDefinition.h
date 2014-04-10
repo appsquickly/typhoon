@@ -232,7 +232,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 - (void)injectProperty:(SEL)withSelector;
 
 /**
- * Injects property for gived selector with injection, where injection can be
+ * Injects property for gives selector with injection, where injection can be
  * - obtained from Injection* functions
  * - another definition
  * - assembly or collaboration assembly reference (TyphoonComponentFactory will be injected)
@@ -251,7 +251,13 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
  * Initializer allow you to create object with special selector and params. Without this injection,
  * object will be created by 'alloc-init' calls
  */
-- (void)injectInitializer:(SEL)selector parameters:(void(^)(TyphoonMethod *initializer))parametersBlock;
+- (void)useInitializer:(SEL)selector parameters:(void(^)(TyphoonMethod *initializer))parametersBlock;
+
+/**
+* Convenience method to use a no-args initializer.
+*
+*/
+- (void)useInitializer:(SEL)selector;
 
 #pragma mark Making injections from definition
 

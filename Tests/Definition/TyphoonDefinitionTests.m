@@ -198,7 +198,7 @@
 
     TyphoonDefinition *definition = [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
 
-        [definition injectInitializer:@selector(initWithQuest:damselsRescued:) parameters:^(TyphoonMethod *initializer) {
+        [definition useInitializer:@selector(initWithQuest:damselsRescued:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:nil];
             [initializer injectParameterWith:@(12)];
         }];

@@ -85,7 +85,7 @@
 - (id)prototypeInitInjected
 {
     return [TyphoonDefinition withClass:[PrototypeInitInjected class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(initWithDependency:) parameters:^(TyphoonMethod *initializer) {
+        [definition useInitializer:@selector(initWithDependency:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self prototypePropertyInjected]];
         }];
         [definition setScope:TyphoonScopePrototype];
@@ -114,7 +114,7 @@
 - (id)croSingletonB
 {
     return [TyphoonDefinition withClass:[CROSingletonB class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(initWithPrototypeB:) parameters:^(TyphoonMethod *initializer) {
+        [definition useInitializer:@selector(initWithPrototypeB:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self croPrototypeB]];
         }];
     }];
@@ -123,7 +123,7 @@
 - (id)croPrototypeA
 {
     return [TyphoonDefinition withClass:[CROPrototypeA class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(initWithCROPrototypeB:) parameters:^(TyphoonMethod *initializer) {
+        [definition useInitializer:@selector(initWithCROPrototypeB:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self croPrototypeB]];
         }];
     }];
@@ -132,7 +132,7 @@
 - (id)croPrototypeB
 {
     return [TyphoonDefinition withClass:[CROPrototypeB class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(initWithCROSingletonA:) parameters:^(TyphoonMethod *initializer) {
+        [definition useInitializer:@selector(initWithCROSingletonA:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self croSingletonA]];
         }];
     }];
@@ -143,7 +143,7 @@
 - (id)incorrectPrototypeB
 {
     return [TyphoonDefinition withClass:[CROPrototypeB class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(initWithCROPrototypeA:) parameters:^(TyphoonMethod *initializer) {
+        [definition useInitializer:@selector(initWithCROPrototypeA:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self incorrectPrototypeA]];
         }];
         definition.key = @"incorrectPrototypeB";
@@ -154,7 +154,7 @@
 - (id)incorrectPrototypeA
 {
     return [TyphoonDefinition withClass:[CROPrototypeA class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectInitializer:@selector(initWithCROPrototypeB:) parameters:^(TyphoonMethod *initializer) {
+        [definition useInitializer:@selector(initWithCROPrototypeB:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self incorrectPrototypeB]];
         }];
         definition.key = @"incorrectPrototypeA";
