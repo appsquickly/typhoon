@@ -23,7 +23,7 @@
 
 - (id)authService
 {
-    return [TyphoonDefinition withClass:[AuthServiceImpl class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[AuthServiceImpl class] configuration:^(TyphoonDefinition *definition) {
         definition.scope = TyphoonScopeSingleton;
         definition.lazy = YES;
     }];

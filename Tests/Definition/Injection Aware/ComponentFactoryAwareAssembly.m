@@ -23,14 +23,14 @@
 
 - (id)injectionByProperty
 {
-    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(componentFactory) with:self];
     }];
 }
 
 - (id)injectionByInitialization
 {
-    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(initWithComponentFactory) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:self];
         }];
@@ -39,14 +39,14 @@
 
 - (id)injectionByPropertyAssemblyType
 {
-    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(assembly)];
     }];
 }
 
 - (id)injectionByPropertyFactoryType
 {
-    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(componentFactory)];
     }];
 }

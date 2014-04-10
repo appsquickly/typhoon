@@ -23,7 +23,7 @@
 
 - (id)knight
 {
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest) with:[self defaultQuest]];
         [definition injectProperty:@selector(damselsRescued) with:[[self cavalryMan] property:@selector(damselsRescued)]];
         [definition setScope:TyphoonScopeObjectGraph];
@@ -32,7 +32,7 @@
 
 - (id)cavalryMan
 {
-    return [TyphoonDefinition withClass:[CavalryMan class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[CavalryMan class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest) with:[self defaultQuest]];
         [definition injectProperty:@selector(damselsRescued) with:@(12)];
         definition.scope = TyphoonScopeSingleton;
@@ -41,7 +41,7 @@
 
 - (id)anotherKnight
 {
-    return [TyphoonDefinition withClass:[CavalryMan class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[CavalryMan class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(initWithQuest:hitRatio:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self defaultQuest]];
             [initializer injectParameterWith:@(13.75)];
@@ -52,7 +52,7 @@
 
 - (id)yetAnotherKnight
 {
-    return [TyphoonDefinition withClass:[CavalryMan class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[CavalryMan class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self defaultQuest]];
         }];
@@ -67,7 +67,7 @@
 
 - (id)knightWithCollections
 {
-    return [TyphoonDefinition withClass:[CavalryMan class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[CavalryMan class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self defaultQuest]];
         }];
@@ -86,7 +86,7 @@
 
 - (id)knightWithCollectionInConstructor
 {
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(initWithQuest:favoriteDamsels:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self defaultQuest]];
             [initializer injectParameterWith:@[
@@ -109,7 +109,7 @@
 
 - (id)serviceUrl
 {
-    return [TyphoonDefinition withClass:[NSURL class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[NSURL class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(URLWithString:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameter:@"string" with:@"http://dev.foobar.com/service/"];
         }];
@@ -123,7 +123,7 @@
 
 - (id)blueSword
 {
-    return [TyphoonDefinition withClass:[Sword class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Sword class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(swordWithSpecification:) parameters:^(TyphoonMethod *initializer) {
             initializer.selector = @selector(swordWithSpecification:);
             [initializer injectParameter:@"specification" with:@"blue"];
@@ -134,7 +134,7 @@
 
 - (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeFoobar:(NSObject *)runtimeObject
 {
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:damselsRescued];
         [definition injectProperty:@selector(foobar) with:runtimeObject];
     }];
@@ -143,7 +143,7 @@
 /* Actually 'damselsRescued' replaced with InjectionWithRuntimeArgumentAtIndex(0) and url replaced with InjectionWithRuntimeArgumentAtIndex(1) */
 - (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeQuestUrl:(NSURL *)url
 {    
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self questWithRuntimeUrl:url]];
         }];
@@ -153,7 +153,7 @@
 
 - (id)knightWithDefinedQuestUrl
 {
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         id quest = [self questWithRuntimeUrl:[NSURL URLWithString:@"http://example.com"]];
         [definition injectProperty:@selector(quest) with:quest];
     }];
@@ -161,14 +161,14 @@
 
 - (id)questWithRuntimeUrl:(NSURL *)url
 {
-    return [TyphoonDefinition withClass:[CampaignQuest class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[CampaignQuest class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(imageUrl) with:url];
     }];
 }
 
 - (id)knightWithDamselsRescued:(NSNumber *)damselsRescued
 {
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(initWithDamselsRescued:foo:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:damselsRescued];
             [initializer injectParameterWith:[self knightWithFoobarKnightWithDamselsRescued:damselsRescued]];
@@ -178,7 +178,7 @@
 
 - (id)knightWithFoobarKnightWithDamselsRescued:(NSNumber *)damselsRescued
 {
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(foobar) with:[self knightWithDamselsRescued:damselsRescued]];
     }];
 }
@@ -186,7 +186,7 @@
 
 - (id)knightWithPredefinedCircularDependency:(NSNumber *)damselsRescued
 {
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(initWithDamselsRescued:foo:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:damselsRescued];
             [initializer injectParameterWith:[self knightWithFoobarKnightWithPredefinedCircularDependency]];
@@ -196,14 +196,14 @@
 
 - (id)knightWithFoobarKnightWithPredefinedCircularDependency
 {
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(foobar) with:[self knightWithPredefinedCircularDependency:@25]];
     }];
 }
 
 - (id)knightClassMethodInit
 {
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(knightWithDamselsRescued:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:@(13)];
         }];
@@ -212,7 +212,7 @@
 
 - (id)knightWithMethodInjection
 {
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectMethod:@selector(setQuest:andDamselsRescued:) parameters:^(TyphoonMethod *method) {
             [method injectParameterWith:[self defaultQuest]];
             [method injectParameterWith:@321];

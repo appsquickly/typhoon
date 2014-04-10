@@ -50,7 +50,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 + (instancetype)propertyPlaceholderWithResources:(NSArray *)resources
 {
-    return [self withClass:[TyphoonPropertyPlaceholderConfigurer class] injections:^(TyphoonDefinition *definition) {
+    return [self withClass:[TyphoonPropertyPlaceholderConfigurer class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(configurerWithResourceList:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:resources];
         }];

@@ -24,7 +24,7 @@
 
 - (id)knightWithExternalQuest
 {
-    return [TyphoonDefinition withClass:[CavalryMan class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[CavalryMan class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[[MiddleAgesAssembly assembly] environmentDependentQuest]];
         }];

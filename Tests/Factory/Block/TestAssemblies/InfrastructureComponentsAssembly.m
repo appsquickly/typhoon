@@ -28,7 +28,7 @@
 
 - (id)knight
 {
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:TyphoonConfig(@"damsels.rescued")];
         [definition injectProperty:@selector(hasHorseWillTravel) with:TyphoonConfig(@"has.horse.will.travel")];
     }];

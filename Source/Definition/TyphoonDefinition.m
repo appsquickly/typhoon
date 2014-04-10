@@ -59,7 +59,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     return [[TyphoonDefinition alloc] initWithClass:clazz key:nil];
 }
 
-+ (TyphoonDefinition *)withClass:(Class)clazz injections:(TyphoonDefinitionBlock)injections
++ (TyphoonDefinition *)withClass:(Class)clazz configuration:(TyphoonDefinitionBlock)injections
 {
     return [TyphoonDefinition withClass:clazz key:nil injections:injections];
 }
@@ -81,7 +81,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 
 + (TyphoonDefinition *)withClass:(Class)clazz factory:(TyphoonDefinition *)_definition selector:(SEL)selector
 {
-    return [TyphoonDefinition withClass:clazz injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:clazz configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:selector parameters:nil];
         [definition setFactory:_definition];
     }];

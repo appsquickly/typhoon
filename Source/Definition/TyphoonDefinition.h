@@ -219,7 +219,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
 + (TyphoonDefinition *)withClass:(Class)clazz;
 
-+ (TyphoonDefinition *)withClass:(Class)clazz injections:(TyphoonDefinitionBlock)injections;
++ (TyphoonDefinition *)withClass:(Class)clazz configuration:(TyphoonDefinitionBlock)injections;
 
 + (TyphoonDefinition *)withClass:(Class)clazz factory:(TyphoonDefinition *)definition selector:(SEL)selector;
 

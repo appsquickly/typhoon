@@ -46,7 +46,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 - (void)test_componentForKey_returns_with_initializer_dependencies_injected
 {
 
-    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:TyphoonInjectionWithReference(DEFAULT_QUEST)];
         }];
@@ -63,7 +63,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
 - (void)test_componentForKey_raises_exception_if_reference_does_not_exist
 {
-    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:TyphoonInjectionWithReference(DEFAULT_QUEST)];
         }];
@@ -92,7 +92,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 - (void)test_allComponentsForType
 {
 
-    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameter:@"quest" with:TyphoonInjectionWithReference(@"quest")];
         }];
@@ -110,7 +110,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 - (void)test_componentForType
 {
 
-    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameter:@"quest" with:TyphoonInjectionWithReference(@"quest")];
         }];
@@ -163,7 +163,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 - (void)test_componentForKey_returns_with_property_dependencies_resolved_by_type
 {
 
-    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest)];
         [definition setScope:TyphoonScopeObjectGraph];
         [definition setKey:@"knight"];
@@ -268,7 +268,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
 - (void)test_injectProperties
 {
-    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest)];
     }]];
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
@@ -282,10 +282,10 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
 - (void)test_injectProperties_subclassing
 {
-    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest)];
     }]];
-    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CavalryMan class] injections:^(TyphoonDefinition *definition) {
+    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CavalryMan class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(hitRatio) with:@(3.0f)];
     }]];
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
@@ -333,15 +333,16 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
 - (void)test_load_singleton
 {
-    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class] injections:^(TyphoonDefinition *definition) {
-        [definition setScope:TyphoonScopeSingleton];
-        [definition setLazy:NO];
-    }]];
-    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class]
+        configuration:^(TyphoonDefinition *definition) {
+            [definition setScope:TyphoonScopeSingleton];
+            [definition setLazy:NO];
+        }]];
+    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition setScope:TyphoonScopeSingleton];
         [definition setLazy:YES];
     }]];
-    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CavalryMan class] injections:^(TyphoonDefinition *definition) {
+    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CavalryMan class] configuration:^(TyphoonDefinition *definition) {
         [definition setScope:TyphoonScopeObjectGraph];
     }]];
     [_componentFactory load];
@@ -353,7 +354,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     TyphoonComponentFactory *localFactory = [[TyphoonComponentFactory alloc] init];
     NSString *key = @"WeakSingleton";
 
-    [localFactory registerDefinition:[TyphoonDefinition withClass:[NSMutableString class] injections:^(TyphoonDefinition *definition) {
+    [localFactory registerDefinition:[TyphoonDefinition withClass:[NSMutableString class] configuration:^(TyphoonDefinition *definition) {
         [definition setKey:key];
         [definition setScope:TyphoonScopeWeakSingleton];
     }]];
@@ -395,7 +396,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     TyphoonDefinition
         *parentDefinition = [self registerParentDefinitionWithClass:[ClassWithConstructor class] initializerString:@"parentArgument"];
     TyphoonDefinition
-        *childDefinition = [TyphoonDefinition withClass:[ClassWithConstructor class] injections:^(TyphoonDefinition *definition) {
+        *childDefinition = [TyphoonDefinition withClass:[ClassWithConstructor class] configuration:^(TyphoonDefinition *definition) {
         definition.parent = parentDefinition;
     }];
     [_componentFactory registerDefinition:childDefinition];
@@ -434,7 +435,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
 - (void)test_prevents_instantiation_of_abstract_definition
 {
-    TyphoonDefinition *definition = [TyphoonDefinition withClass:[NSURL class] injections:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *definition = [TyphoonDefinition withClass:[NSURL class] configuration:^(TyphoonDefinition *definition) {
         definition.key = @"anAbstractDefinition";
         definition.abstract = YES;
     }];
@@ -495,7 +496,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 - (TyphoonDefinition *)registerChildDefinitionWithClass:(Class)pClass parentDefinition:(TyphoonDefinition *)parentDefinition
     parentRef:(NSString *)parentRef initializerString:(NSString *)string
 {
-    TyphoonDefinition *childDefinition = [TyphoonDefinition withClass:pClass injections:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *childDefinition = [TyphoonDefinition withClass:pClass configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(initWithString:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:string];
         }];

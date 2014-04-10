@@ -18,7 +18,7 @@
 
 - (id)knightInjectedByMethod
 {
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectMethod:@selector(setQuest:andDamselsRescued:) parameters:^(TyphoonMethod *method) {
             [method injectParameterWith:self.middleAge.defaultQuest];
             [method injectParameterWith:@3];
@@ -28,7 +28,7 @@
 
 - (id)knightWithCircularDependency
 {
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectInitializer:@selector(initWithQuest:favoriteDamsels:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:self.middleAge.defaultQuest];
             [initializer injectParameterWith:@[
@@ -41,7 +41,7 @@
 
 - (id)anotherKnightWithCircularDependency
 {
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectMethod:@selector(setFoobar:) parameters:^(TyphoonMethod *method) {
             [method injectParameterWith:[self knightWithCircularDependency]];
         }];
@@ -50,7 +50,7 @@
 
 - (id)knightWithMethodRuntimeFoo:(NSString *)foo
 {
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectMethod:@selector(setFoobar:) parameters:^(TyphoonMethod *method) {
             [method injectParameterWith:foo];
         }];
@@ -59,7 +59,7 @@
 
 - (id)knightWithMethodFoo:(NSObject *)foo
 {
-    return [TyphoonDefinition withClass:[Knight class] injections:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectMethod:@selector(setFoobar:andHasHorse:friends:) parameters:^(TyphoonMethod *method) {
             [method injectParameterWith:foo];
             [method injectParameterWith:@YES];
