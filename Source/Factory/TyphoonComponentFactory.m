@@ -170,10 +170,14 @@ static TyphoonComponentFactory *defaultFactory;
 
 - (void)makeDefault
 {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    @synchronized (self)
+    {
+        if (defaultFactory)
+        {
+            NSLog(@"*** Warning *** overriding current default factory.");
+        }
         defaultFactory = self;
-    });
+    }
 }
 
 - (NSArray *)registry
