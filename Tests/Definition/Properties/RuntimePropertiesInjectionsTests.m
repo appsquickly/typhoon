@@ -35,6 +35,18 @@
     assertThat(knight.foobar, equalTo(@"foobar"));
 }
 
+
+- (void)test_runtime_block_arguments
+{
+    __block NSString *foobar = @"initial string";
+    Knight *knight = [factory knightWithRuntimeDamselsRescued:@6 runtimeFoobar:^(NSString *blockArg){
+        foobar = [NSString stringWithFormat:@"set from block %@",blockArg];
+    }];
+    assertThatInt(knight.damselsRescued, equalToInt(6));
+    ((void(^)(NSString *))knight.foobar)(@"arg");
+    assertThat(foobar, equalTo(@"set from block arg"));
+}
+
 - (void)test_runtime_knight_quest
 {
     Knight *knight = [factory knightWithRuntimeDamselsRescued:@3 runtimeQuestUrl:[NSURL URLWithString:@"http://google.com"]];
