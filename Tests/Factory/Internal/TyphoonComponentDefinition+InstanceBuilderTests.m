@@ -184,8 +184,8 @@
     assertThatInt(strcmp(primitiveMan.cString, "Hello Typhoon"), equalToInt(0));
     assertThatBool(NSEqualRanges(primitiveMan.nsRange, NSMakeRange(10, 20)), equalToBool(YES));
     assertThatBool(primitiveMan.pointer == primitiveStruct, equalToBool(YES));
-    assertThatInt(primitiveMan.unknownPointer->fieldA, equalToInt(INT_MAX));
-    assertThatLong(primitiveMan.unknownPointer->fieldB, equalToLong(LONG_MAX));
+    assertThatInt(primitiveMan.unknownPointer->fieldA, equalToInt(INT32_MAX));
+    assertThatLong(primitiveMan.unknownPointer->fieldB, equalToLong(INT64_MAX));
     assertThat(primitiveMan.pointerInsideValue, equalTo([NSValue valueWithPointer:primitiveStruct]));
     assertThatInt(primitiveMan.unknownStructure.fieldA, equalToInt(23));
     assertThatLong(primitiveMan.unknownStructure.fieldB, equalToLong(INT64_MAX));
@@ -296,8 +296,8 @@
     assertThat(NSStringFromClass(primitiveMan.classValue), equalTo(NSStringFromClass([self class])));
     assertThat(NSStringFromSelector(primitiveMan.selectorValue), equalTo(NSStringFromSelector(@selector(selectorValue))));
     assertThatBool(NSEqualRanges(primitiveMan.nsRange, NSMakeRange(10, 20)), equalToBool(YES));
-    assertThatInt(primitiveMan.unknownPointer->fieldA, equalToInt(INT_MAX));
-    assertThatLong(primitiveMan.unknownPointer->fieldB, equalToLong(LONG_MAX));
+    assertThatInt(primitiveMan.unknownPointer->fieldA, equalToInt(INT32_MAX));
+    assertThatLong(primitiveMan.unknownPointer->fieldB, equalToLong(INT64_MAX));
     assertThatBool(primitiveMan.pointer == &primitiveStruct, equalToBool(YES));
     assertThat(primitiveMan.pointerInsideValue, equalTo([NSValue valueWithPointer:&primitiveStruct]));
     assertThatInt(primitiveMan.unknownStructure.fieldA, equalToInt(INT32_MAX));
