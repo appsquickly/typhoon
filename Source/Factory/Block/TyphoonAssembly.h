@@ -13,6 +13,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class TyphoonComponentFactory;
 
 /**
 * @ingroup Factory
@@ -50,5 +51,7 @@ AnalyticsService* service = [assembly analyticsService];
 + (instancetype)defaultAssembly;
 
 + (void)markSelectorReserved:(SEL)selector;
+
+- (TyphoonComponentFactory *)asFactory;
 
 @end

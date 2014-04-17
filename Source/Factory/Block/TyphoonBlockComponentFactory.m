@@ -35,6 +35,11 @@
     return self;
 }
 
+- (TyphoonComponentFactory *)asFactory
+{
+    return self;
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 

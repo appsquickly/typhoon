@@ -70,6 +70,7 @@ static NSMutableArray *reservedSelectorsAsStrings;
     [self markSelectorReserved:@selector(prepareForUse)];
     [self markSelectorReservedFromString:@".cxx_destruct"];
     [self markSelectorReserved:@selector(defaultAssembly)];
+    [self markSelectorReserved:@selector(asFactory)];
     [self markSelectorReserved:@selector(resolveCollaboratingAssemblies)];
 }
 
@@ -181,6 +182,11 @@ static id ImplementationToConstructDefinitionAndCatchArguments(TyphoonAssembly *
 - (void)setCollaboratingAssemblyProxyOnPropertyNamed:(NSString *)name
 {
     [self setValue:[TyphoonCollaboratingAssemblyProxy proxy] forKey:name];
+}
+
+- (TyphoonComponentFactory *)asFactory
+{
+    return (id)self;
 }
 
 /* ====================================================================================================================================== */
