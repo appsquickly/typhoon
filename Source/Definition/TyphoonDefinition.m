@@ -116,6 +116,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     if (parametersBlock) {
         parametersBlock(method);
     }
+    [method checkParametersCount];
     [_injectedMethods addObject:method];
 }
 
@@ -125,6 +126,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     if (parametersBlock) {
         parametersBlock(initializer);
     }
+    [initializer checkParametersCount];
     self.initializer = initializer;
 }
 
@@ -132,7 +134,6 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 {
     [self useInitializer:selector parameters:nil];
 }
-
 
 - (void)setInitializer:(TyphoonMethod *)initializer
 {

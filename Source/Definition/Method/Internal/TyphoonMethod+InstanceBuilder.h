@@ -29,4 +29,6 @@
 
 - (BOOL)isClassMethodOnClass:(Class)clazz;
 
+- (void)checkParametersCount;
+
 @end

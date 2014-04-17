@@ -53,11 +53,6 @@
     [_injectedParameters addObject:injection];
 }
 
-- (BOOL)canAddParameterAtIndex:(NSUInteger)index
-{
-    return index < [_parameterNames count];
-}
-
 - (NSUInteger)indexToAddParameter
 {
     return [_injectedParameters count];
@@ -67,12 +62,10 @@
 
 - (void)injectParameterAtIndex:(NSUInteger)index with:(id)injection
 {
-    if ([self canAddParameterAtIndex:index]) {
-        injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);
-        [injection setParameterIndex:index];
-        [self addParameterInjection:injection];
-        _needUpdateHash = YES;
-    }
+    injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);
+    [injection setParameterIndex:index];
+    [self addParameterInjection:injection];
+    _needUpdateHash = YES;
 }
 
 - (void)injectParameterWith:(id)injection

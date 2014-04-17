@@ -72,6 +72,13 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     }];
 }
 
+- (void)checkParametersCount
+{
+    if ([TyphoonIntrospectionUtils numberOfArgumentsInSelector:_selector] != [_injectedParameters count]) {
+        [NSException raise:NSInternalInconsistencyException format:@"Method '%@' has %d parameters, but %d was injected", NSStringFromSelector(_selector), (int)[_parameterNames count], (int)[_injectedParameters count]];
+    }
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods
 
