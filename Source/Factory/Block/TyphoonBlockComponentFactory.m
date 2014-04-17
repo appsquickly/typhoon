@@ -15,12 +15,9 @@
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonBlockComponentFactory.h"
 #import "TyphoonAssembly.h"
-#import "TyphoonDefinition.h"
 #import "OCLogTemplate.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblyPropertyInjectionPostProcessor.h"
-#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
-#import "TyphoonIntrospectionUtils.h"
 
 @interface TyphoonComponentFactory (Private)
 
@@ -48,12 +45,12 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (instancetype)initWithAssembly:(TyphoonAssembly *)assembly
+- (id)initWithAssembly:(TyphoonAssembly *)assembly
 {
     return [self initWithAssemblies:@[assembly]];
 }
 
-- (instancetype)initWithAssemblies:(NSArray *)assemblies
+- (id)initWithAssemblies:(NSArray *)assemblies
 {
     self = [super init];
     if (self) {

@@ -29,7 +29,7 @@
 *
 * @code
 
-MyAssemblyType* assembly = (MyAssemblyType*) [TyphoonComponentFactory defaultFactory];
+MyAssemblyType* assembly = [factory asAssembly];
 //Use the assembly interface instead of a 'magic string'
 AnalyticsService* service = [assembly analyticsService];
 
