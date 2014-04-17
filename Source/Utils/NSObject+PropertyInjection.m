@@ -47,7 +47,8 @@
 
 - (void)typhoon_injectObject:(id)value forPropertySetter:(SEL)setter
 {
-    objc_msgSend(self, setter, value);
+    void(*setterMethod)(id, SEL, id) = (void *)[self methodForSelector:setter];
+    setterMethod(self, setter, value);
 }
 
 

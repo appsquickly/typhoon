@@ -88,6 +88,12 @@ static const char *kTyphoonKey;
             [self injectPropertiesForViewController:controller];
         }
     }
+    
+    if ([viewController isKindOfClass:[UISplitViewController class]]) {
+        for (UIViewController *controller in ((UISplitViewController *) viewController).viewControllers) {
+            [self injectPropertiesForViewController:controller];
+        }
+    }
 }
 
 @end

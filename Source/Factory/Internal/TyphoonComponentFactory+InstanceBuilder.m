@@ -183,7 +183,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 
     if ([instance respondsToSelector:definition.beforeInjections]) {
-        objc_msgSend(instance, definition.beforeInjections);
+        void(*method)(id, SEL) = (void *)[(NSObject *)instance methodForSelector:definition.beforeInjections];
+        method(instance, definition.beforeInjections);
     }
 }
 
@@ -248,7 +249,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 
     if ([instance respondsToSelector:definition.afterInjections]) {
-        objc_msgSend(instance, definition.afterInjections);
+        void(*method)(id, SEL) = (void *)[(NSObject *)instance methodForSelector:definition.afterInjections];
+        method(instance, definition.afterInjections);
     }
 }
 
