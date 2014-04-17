@@ -36,7 +36,7 @@
 
 @code
 //Using the TyphoonComponentFactory interface:
-- (void)setFactory:(TyphoonComponentFactory*)factory
+- (void)typhoonSetFactory:(TyphoonComponentFactory*)factory
 {
 
     _factory = factory;
@@ -46,7 +46,7 @@
 
 @code
 //Using an Assembly interface
-- (void)setFactory:(MyAssemblyType*)assembly
+- (void)typhoonSetFactory:(MyAssemblyType*)assembly
 {
     _assembly = assembly;
     MyAnalyticsService* service = [assembly analyticsService];
@@ -56,6 +56,8 @@
 * @note Whether the factory is injected as a TyphoonComponentFactory or a TyphoonAssembly sub-class, it can still be casted from one to the
 * other.
 */
-- (void)setFactory:(id)theFactory;
+@optional
+- (void)typhoonSetFactory:(id)theFactory;
+
 
 @end

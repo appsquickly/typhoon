@@ -1,1 +1,1 @@
-../../../../Source/Factory/TyphoonComponentFactoryAware.h
+../../../../Source/Factory/Hooks/TyphoonComponentFactoryAware.h

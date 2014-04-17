@@ -16,7 +16,7 @@
 
 @interface PizzaImpl : NSObject <Pizza>
 
-@property(nonatomic, strong) id factory;
+@property(nonatomic, strong, setter = typhoonSetFactory:) id factory;
 
 - (instancetype)initWithCreditService:(id <CreditService>)creditService radius:(double)radius ingredients:(NSArray *)ingredients;
 

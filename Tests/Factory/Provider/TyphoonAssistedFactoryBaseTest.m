@@ -69,7 +69,7 @@
 {
     id mockFactory = mock([TyphoonComponentFactory class]);
 
-    [assistedFactory setFactory:mockFactory];
+    [assistedFactory typhoonSetFactory:mockFactory];
     assertThat(assistedFactory.componentFactory, is(equalTo(mockFactory)));
 }
 

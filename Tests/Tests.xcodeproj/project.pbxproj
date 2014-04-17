@@ -146,6 +146,7 @@
 		4EFAF61317E0D54700E93ACF /* CROPrototypeB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */; };
 		4EFAF61417E0D54700E93ACF /* CROPrototypeB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */; };
 		4EFAF61517E0D54700E93ACF /* CROPrototypeB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFAF61217E0D54700E93ACF /* CROPrototypeB.m */; };
+		5B55E15219001BCC007D40AB /* MethodInjectinosAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAF538118E399580008BF09 /* MethodInjectinosAssembly.m */; };
 		60A23DF66842404BA2052F31 /* libPods-iOS Tests (Cocoapods).a in Frameworks */ = {isa = PBXBuildFile; fileRef = B90D396911F743468FF96BB5 /* libPods-iOS Tests (Cocoapods).a */; };
 		6511E7E2189C12D800DB8E8B /* TyphoonFactoryProviderIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6511E7E1189C12D800DB8E8B /* TyphoonFactoryProviderIntegrationTest.m */; };
 		6511E7E3189C12D800DB8E8B /* TyphoonFactoryProviderIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6511E7E1189C12D800DB8E8B /* TyphoonFactoryProviderIntegrationTest.m */; };
@@ -1479,6 +1480,7 @@
 				4B0633A517D29402009CDBD6 /* ComponentFactoryAwareAssembly.m in Sources */,
 				4B841518179B0EA600916BF5 /* Sword.m in Sources */,
 				FA1D04C618A01385008586E0 /* TyphoonInvocationUtilsTestObjects.m in Sources */,
+				5B55E15219001BCC007D40AB /* MethodInjectinosAssembly.m in Sources */,
 				4B84151A179B0EA600916BF5 /* SwordFactory.m in Sources */,
 				4B84151C179B0EA600916BF5 /* Knight.m in Sources */,
 				4B84152E179B0EA600916BF5 /* TyphoonPassthroughTypeConverterTests.m in Sources */,

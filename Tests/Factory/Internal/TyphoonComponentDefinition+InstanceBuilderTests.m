@@ -107,8 +107,8 @@
 - (void)test_inject_initializer_values_as_primitives
 {
     PrimitiveManStruct *primitiveStruct = malloc(sizeof(PrimitiveManStruct));
-    primitiveStruct->fieldA = INT_MAX;
-    primitiveStruct->fieldB = LONG_MAX;
+    primitiveStruct->fieldA = INT32_MAX;
+    primitiveStruct->fieldB = INT64_MAX;
     
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[PrimitiveMan class] key:@"primitive"];
     TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithIntValue:
@@ -157,7 +157,7 @@
     [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
     PrimitiveManStruct structure;
     structure.fieldA = 23;
-    structure.fieldB = LONG_MAX;
+    structure.fieldB = INT64_MAX;
     [initializer injectParameterWith:NSValueFromPrimitive(structure)];
 
 
@@ -188,7 +188,7 @@
     assertThatLong(primitiveMan.unknownPointer->fieldB, equalToLong(LONG_MAX));
     assertThat(primitiveMan.pointerInsideValue, equalTo([NSValue valueWithPointer:primitiveStruct]));
     assertThatInt(primitiveMan.unknownStructure.fieldA, equalToInt(23));
-    assertThatLong(primitiveMan.unknownStructure.fieldB, equalToLong(LONG_MAX));
+    assertThatLong(primitiveMan.unknownStructure.fieldB, equalToLong(INT64_MAX));
 
     free(primitiveStruct);
 }
@@ -242,8 +242,8 @@
 - (void)test_inject_property_value_as_primitives
 {
     PrimitiveManStruct *primitiveStruct = malloc(sizeof(PrimitiveManStruct));
-    primitiveStruct->fieldA = INT_MAX;
-    primitiveStruct->fieldB = LONG_MAX;
+    primitiveStruct->fieldA = INT32_MAX;
+    primitiveStruct->fieldB = INT64_MAX;
     
     char *string = "Hello world";
 
@@ -272,8 +272,8 @@
     
     {
         PrimitiveManStruct primitiveStructOnStack;
-        primitiveStructOnStack.fieldA = INT_MAX;
-        primitiveStructOnStack.fieldB = LONG_MAX;
+        primitiveStructOnStack.fieldA = INT32_MAX;
+        primitiveStructOnStack.fieldB = INT64_MAX;
         [definition injectProperty:@selector(unknownStructure) with:NSValueFromPrimitive(primitiveStructOnStack)];
     }
 
@@ -300,11 +300,9 @@
     assertThatLong(primitiveMan.unknownPointer->fieldB, equalToLong(LONG_MAX));
     assertThatBool(primitiveMan.pointer == &primitiveStruct, equalToBool(YES));
     assertThat(primitiveMan.pointerInsideValue, equalTo([NSValue valueWithPointer:&primitiveStruct]));
-    assertThatInt(primitiveMan.unknownStructure.fieldA, equalToInt(INT_MAX));
-    assertThatLong(primitiveMan.unknownStructure.fieldB, equalToLong(LONG_MAX));
+    assertThatInt(primitiveMan.unknownStructure.fieldA, equalToInt(INT32_MAX));
+    assertThatLong(primitiveMan.unknownStructure.fieldB, equalToLong(INT64_MAX));
     STAssertTrue(CStringEquals("Hello world", primitiveMan.cString),nil);
-    
-    [primitiveMan valueForKey:@"unknownStructure"];
     
     primitiveMan.unknownPointer = NULL;
     free(primitiveStruct);

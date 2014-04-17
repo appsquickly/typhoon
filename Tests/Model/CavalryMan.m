@@ -28,12 +28,12 @@
 
 // TODO: why are these empty implemntations here?
 // try to remove.
-- (void)beforePropertiesSet
+- (void)typhoonWillInject
 {
 
 }
 
-- (void)afterPropertiesSet
+- (void)typhoonDidInject
 {
 
 }

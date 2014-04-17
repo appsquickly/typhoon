@@ -31,8 +31,6 @@
 
 - (NSSet *)propertiesInjectedByRuntimeArgument;
 
-- (id<TyphoonPropertyInjection>)propertyInjectionForProperty:(NSString *)property;
-
 - (NSSet *)injectedProperties;
 
 - (NSSet *)injectedMethods;

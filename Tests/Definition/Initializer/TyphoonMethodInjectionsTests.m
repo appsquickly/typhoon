@@ -8,6 +8,7 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "MethodInjectinosAssembly.h"
+#import "Typhoon.h"
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
 #import "Quest.h"

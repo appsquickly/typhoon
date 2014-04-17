@@ -9,11 +9,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "Typhoon.h"
+#import "TyphoonDefinition.h"
 
 #import <Foundation/Foundation.h>
-
-@class TyphoonDefinition;
 
 
 /**

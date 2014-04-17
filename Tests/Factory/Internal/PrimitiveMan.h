@@ -12,10 +12,10 @@
 #import <Foundation/Foundation.h>
 
 
-typedef struct __attribute__((packed))
+typedef struct
 {
-    int fieldA;
-    long fieldB;
+    SInt32 fieldA;
+    SInt64 fieldB;
 } PrimitiveManStruct;
 
 @interface PrimitiveMan : NSObject

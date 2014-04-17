@@ -9,27 +9,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "ComponentFactoryAwareObject.h"
+#import "TyphoonInjectionCallbacks.h"
+#import "TyphoonComponentFactoryAware.h"
 
-@implementation ComponentFactoryAwareObject
-{
-    id factory;
-}
-
-@synthesize factory;
-
-- (void)typhoonSetFactory:(TyphoonComponentFactory *)theFactory
-{
-    factory = theFactory;
-}
-
-- (id)initWithComponentFactory:(TyphoonComponentFactory *)_factory
-{
-    self = [super init];
-    if (self) {
-        [self typhoonSetFactory:_factory];
-    }
-    return self;
-}
+@interface NSObject (FactoryHooks) <TyphoonInjectionCallbacks, TyphoonComponentFactoryAware>
 
 @end

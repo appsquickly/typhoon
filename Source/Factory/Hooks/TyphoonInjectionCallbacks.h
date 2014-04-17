@@ -25,11 +25,11 @@
 * @see TyphoonDefinition.afterPropertyInjection
 *
 */
-@protocol TyphoonPropertyInjectionDelegate <NSObject>
+@protocol TyphoonInjectionCallbacks <NSObject>
 
 @optional
-- (void)beforePropertiesSet;
+- (void)typhoonWillInject;
 
-- (void)afterPropertiesSet;
+- (void)typhoonDidInject;
 
 @end

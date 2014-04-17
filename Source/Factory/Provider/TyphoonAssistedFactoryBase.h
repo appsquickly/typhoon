@@ -24,7 +24,7 @@
  * Part of TyphoonComponentFactoryAware. Renamed to componentFactory to not
  * have code like factory.factory at some point.
  */
-@property(nonatomic, strong, setter = setFactory:) id componentFactory;
+@property(nonatomic, strong, setter = typhoonSetFactory:) id componentFactory;
 
 /** Used internally by the getters of the properties in the subclasses */
 - (id)injectionValueForProperty:(NSString *)property;

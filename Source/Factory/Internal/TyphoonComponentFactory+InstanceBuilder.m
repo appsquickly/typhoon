@@ -21,7 +21,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonMethod.h"
 #import "TyphoonCallStack.h"
 #import "TyphoonTypeDescriptor.h"
-#import "TyphoonPropertyInjectionDelegate.h"
+#import "NSObject+FactoryHooks.h"
 #import "TyphoonPropertyInjectionInternalDelegate.h"
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
@@ -122,14 +122,9 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance
 {
-    if ([instance conformsToProtocol:@protocol(TyphoonComponentFactoryAware)]) {
-        [self injectAssemblyOnInstance:instance];
+    if ([instance respondsToSelector:@selector(typhoonSetFactory:)]) {
+        [(id<TyphoonComponentFactoryAware>)instance typhoonSetFactory:self];
     }
-}
-
-- (void)injectAssemblyOnInstance:(id <TyphoonComponentFactoryAware>)instance
-{
-    [instance setFactory:self];
 }
 
 - (id)buildSharedInstanceForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
@@ -178,8 +173,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 - (void)doBeforeInjectionsOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition *)definition
 {
-    if ([instance respondsToSelector:@selector(beforePropertiesSet)]) {
-        [(id <TyphoonPropertyInjectionDelegate>) instance beforePropertiesSet];
+    if ([instance respondsToSelector:@selector(typhoonWillInject)]) {
+        [(id <TyphoonInjectionCallbacks>) instance typhoonWillInject];
     }
 
     if ([instance respondsToSelector:definition.beforeInjections]) {
@@ -244,8 +239,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
 - (void)doAfterInjectionsOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition *)definition
 {
-    if ([instance respondsToSelector:@selector(afterPropertiesSet)]) {
-        [(id <TyphoonPropertyInjectionDelegate>) instance afterPropertiesSet];
+    if ([instance respondsToSelector:@selector(typhoonDidInject)]) {
+        [(id <TyphoonInjectionCallbacks>) instance typhoonDidInject];
     }
 
     if ([instance respondsToSelector:definition.afterInjections]) {

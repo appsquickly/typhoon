@@ -12,10 +12,10 @@
 
 #import <Foundation/Foundation.h>
 #import "Knight.h"
-#import "TyphoonPropertyInjectionDelegate.h"
+#import "TyphoonComponentFactoryAware.h"
+#import "TyphoonInjectionCallbacks.h"
 
-
-@interface CavalryMan : Knight <TyphoonPropertyInjectionDelegate>
+@interface CavalryMan : Knight <TyphoonInjectionCallbacks>
 
 @property(nonatomic) float hitRatio;
 

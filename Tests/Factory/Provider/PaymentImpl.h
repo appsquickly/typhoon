@@ -16,7 +16,7 @@
 
 @interface PaymentImpl : NSObject <Payment>
 
-@property(nonatomic, strong) id factory;
+@property(nonatomic, strong, setter = typhoonSetFactory:) id factory;
 
 - (instancetype)initWithCreditService:(id <CreditService>)creditService authService:(id <AuthService>)authService
     startDate:(NSDate *)startDate amount:(NSUInteger)amount;
