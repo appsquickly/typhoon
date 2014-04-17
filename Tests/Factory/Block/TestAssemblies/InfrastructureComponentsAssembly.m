@@ -20,7 +20,7 @@
 
 - (id)propertyPlaceHolderConfigurer
 {
-    return [TyphoonDefinition propertyPlaceholderWithResources:@[
+    return [TyphoonDefinition configDefinitionWithResources:@[
         [TyphoonBundleResource withName:@"SomeProperties.properties"],
         [TyphoonBundleResource withName:@"SomeOtherProperties.properties"]
     ]];

@@ -43,12 +43,12 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 }
 
 
-+ (instancetype)propertyPlaceholderWithResource:(id <TyphoonResource>)resource
++ (instancetype)configDefinitionWithResource:(id <TyphoonResource>)resource
 {
-    return [self propertyPlaceholderWithResources:@[resource]];
+    return [self configDefinitionWithResources:@[resource]];
 }
 
-+ (instancetype)propertyPlaceholderWithResources:(NSArray *)resources
++ (instancetype)configDefinitionWithResources:(NSArray *)resources
 {
     return [self withClass:[TyphoonPropertyPlaceholderConfigurer class] configuration:^(TyphoonDefinition *definition) {
         [definition useInitializer:@selector(configurerWithResourceList:) parameters:^(TyphoonMethod *initializer) {

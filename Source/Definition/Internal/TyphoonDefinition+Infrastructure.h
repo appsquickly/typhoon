@@ -32,14 +32,14 @@
  @param resource The resource to load.
  @return a definition.
  */
-+ (instancetype)propertyPlaceholderWithResource:(id <TyphoonResource>)resource;
++ (instancetype)configDefinitionWithResource:(id <TyphoonResource>)resource;
 
 /**
  Factory method for a TyphoonPropertyPlaceholderConfigurer.
  @param resources An array of TyphoonResource objects.
  @return a definition.
  */
-+ (instancetype)propertyPlaceholderWithResources:(NSArray *)resources;
++ (instancetype)configDefinitionWithResources:(NSArray *)resources;
 
 - (id)initWithClass:(Class)clazz key:(NSString *)key;
 
