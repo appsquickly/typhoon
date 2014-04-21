@@ -138,7 +138,7 @@ ensure that the class is in the required state before and after properties are s
 
 * ***Powerful memory management features***. Provides pre-configured objects, without the memory overhead of singletons.
 
-* ***Powerfully Lean***. It has a very low footprint, so is appropriate for CPU and memory constrained devices. Is just 3500 lines of code in total! 
+* ***Lean***. It has a very low footprint, so is appropriate for CPU and memory constrained devices. Typhoon is just 3500 lines of code. 
 
 * ***Battle-tested*** - used in all kinds of Appstore-featured apps. 
 
