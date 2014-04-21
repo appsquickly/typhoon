@@ -110,7 +110,7 @@ following:
 
 ## Design Goals / Features
 
-* Non-invasive. ***No macros or XML required*** . . . The main focus is on a <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">powerful Objective-C runtime approach.</a>
+* Non-invasive. ***No macros or XML required*** . . . Uses <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">powerful Objective-C runtime approach.</a>
 
 * Its not necessary to change ***any*** of your classes to use the framework. ***Can be introduced into legacy applications.***
 
@@ -138,7 +138,7 @@ ensure that the class is in the required state before and after properties are s
 
 * ***Powerful memory management features***. Provides pre-configured objects, without the memory overhead of singletons.
 
-* ***Lean***. It has a very low footprint, so is appropriate for CPU and memory constrained devices. 
+* ***Powerfully Lean***. It has a very low footprint, so is appropriate for CPU and memory constrained devices. Is just 3500 lines of code in total! 
 
 * ***Battle-tested*** - used in all kinds of Appstore-featured apps. 
 
