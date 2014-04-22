@@ -10,7 +10,6 @@
 #import "Typhoon.h"
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
-#import "Quest.h"
 
 @interface RuntimePropertiesInjectionsTests : SenTestCase
 
@@ -76,7 +75,7 @@
 {
     Knight *knight = [factory knightWithDamselsRescued:@32];
     
-    Knight *anotherKnight = knight.foobar;
+    Knight *anotherKnight = (Knight *) knight.foobar;
     
     STAssertEquals((int)knight.damselsRescued, 32, @"");
     STAssertTrue(anotherKnight.foobar == knight, @"");
@@ -87,7 +86,7 @@
 {
     Knight *knight = [factory knightWithPredefinedCircularDependency:@25];
     
-    Knight *anotherKnight = knight.foobar;
+    Knight *anotherKnight = (Knight *) knight.foobar;
     
     STAssertEquals((int)knight.damselsRescued, 25, @"");
     STAssertTrue(anotherKnight.foobar == knight, @"");
@@ -98,9 +97,9 @@
 {
     Knight *knight = [factory knightWithPredefinedCircularDependency:@27];
     
-    Knight *anotherKnight = knight.foobar;
+    Knight *anotherKnight = (Knight *) knight.foobar;
     
-    Knight *thirdKnight = anotherKnight.foobar;
+    Knight *thirdKnight = (Knight *) anotherKnight.foobar;
     
     STAssertEquals((int)knight.damselsRescued, 27, @"");
     STAssertEquals((int)thirdKnight.damselsRescued, 25, @"");

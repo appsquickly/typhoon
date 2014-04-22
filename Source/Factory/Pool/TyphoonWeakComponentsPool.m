@@ -30,7 +30,7 @@
 
 - (void)setObject:(id)object forKey:(id <NSCopying>)aKey
 {
-    __weak typeof (dictionaryWithNonRetainedObjects) weakDict = dictionaryWithNonRetainedObjects;
+    __weak __typeof (dictionaryWithNonRetainedObjects) weakDict = dictionaryWithNonRetainedObjects;
 
     [object setDeallocNotificationInBlock:^{
         [weakDict removeObjectForKey:aKey];

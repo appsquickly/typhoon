@@ -9,8 +9,6 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonFactoryProvider.h"
-
 #import <SenTestingKit/SenTestingKit.h>
 
 #import "AuthServiceImpl.h"
@@ -66,7 +64,7 @@
 {
     id <PaymentFactory> factory = [assembly paymentFactory];
 
-    PaymentImpl *payment = [factory paymentWithStartDate:[NSDate date] amount:456];
+    PaymentImpl *payment = (PaymentImpl *) [factory paymentWithStartDate:[NSDate date] amount:456];
 
     assertThat(payment.factory, is(equalTo(componentFactory)));
 }
@@ -75,7 +73,7 @@
 {
     id <PizzaFactory> factory = [assembly pizzaFactory];
 
-    PizzaImpl *pizza = [factory largePizzaWithIngredients:@[
+    PizzaImpl *pizza = (PizzaImpl *) [factory largePizzaWithIngredients:@[
         @"bacon",
         @"cheese"
     ]];
@@ -125,8 +123,8 @@
 {
     id <PaymentFactory> factory = [assembly paymentFactory];
 
-    PaymentImpl *payment1 = [factory paymentWithStartDate:[NSDate date] amount:456];
-    PaymentImpl *payment2 = [factory paymentWithStartDate:[NSDate date] amount:789];
+    PaymentImpl *payment1 = (PaymentImpl *) [factory paymentWithStartDate:[NSDate date] amount:456];
+    PaymentImpl *payment2 = (PaymentImpl *) [factory paymentWithStartDate:[NSDate date] amount:789];
 
     assertThat(payment1.authService, is(equalTo(payment2.authService)));
     assertThat(payment1.creditService, isNot(equalTo(payment2.creditService)));

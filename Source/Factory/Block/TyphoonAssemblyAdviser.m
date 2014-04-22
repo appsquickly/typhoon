@@ -136,7 +136,7 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 + (void)swapImplementationOfDefinitionSelector:(TyphoonSelector *)wrappedSelector
     withDynamicBeforeAdviceImplementationOnAssembly:(TyphoonAssembly *)assembly
 {
-    return [self swapImplementationOfDefinitionSelector:wrappedSelector
+    [self swapImplementationOfDefinitionSelector:wrappedSelector
         withDynamicBeforeAdviceImplementationOnAssemblyClass:[assembly class]];
 }
 

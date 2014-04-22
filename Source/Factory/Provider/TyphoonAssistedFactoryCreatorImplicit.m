@@ -241,7 +241,7 @@ static NSString *const kScoreKey = @"kScoreKey";
 - (NSDictionary *)findMappingsFrom:(NSArray *)fromNames to:(NSArray *)toNames except:(NSArray *)exceptNamesOrNil
 {
     NSMutableDictionary *mappings = [NSMutableDictionary dictionary];
-    exceptNamesOrNil = exceptNamesOrNil ?: [NSArray array];
+    exceptNamesOrNil = exceptNamesOrNil ? exceptNamesOrNil : [NSArray array];
 
     for (NSString *name in fromNames) {
         if ([toNames containsObject:name] && ![exceptNamesOrNil containsObject:name]) {

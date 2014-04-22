@@ -15,14 +15,19 @@
 
 #endif
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
+
 #define SetNSErrorFor(FUNC, ERROR_VAR, FORMAT,...)    \
     if (ERROR_VAR) {    \
-        NSString *errStr = [NSString stringWithFormat:@"%s: " FORMAT,FUNC,##__VA_ARGS__]; \
+        NSString *errStr = [NSString stringWithFormat:@"%s: " FORMAT,FUNC, ##__VA_ARGS__]; \
         *ERROR_VAR = [NSError errorWithDomain:@"NSCocoaErrorDomain" \
                                          code:-1    \
                                      userInfo:[NSDictionary dictionaryWithObject:errStr forKey:NSLocalizedDescriptionKey]]; \
     }
 #define SetNSError(ERROR_VAR, FORMAT,...) SetNSErrorFor(__func__, ERROR_VAR, FORMAT, ##__VA_ARGS__)
+
+#pragma clang diagnostic pop
 
 #if OBJC_API_VERSION >= 2
 #define GetClass(obj)    object_getClass(obj)
