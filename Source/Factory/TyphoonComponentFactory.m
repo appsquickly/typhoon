@@ -301,7 +301,7 @@ static TyphoonComponentFactory *defaultFactory;
 - (NSString *)poolKeyForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
     if (args) {
-        return [NSString stringWithFormat:@"%@-%x", definition.key, [args hash]];
+        return [NSString stringWithFormat:@"%@-%ld", definition.key, (unsigned long)[args hash]];
     } else {
         return definition.key;
     }

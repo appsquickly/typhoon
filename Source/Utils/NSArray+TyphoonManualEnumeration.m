@@ -42,8 +42,8 @@
 
     NSEnumerator *objectsEnumerator = [self objectEnumerator];
     
-    __weak typeof (self) weakSelf = self;
-    __weak typeof (signal) weakSignal = signal;
+    __weak __typeof (self) weakSelf = self;
+    __weak __typeof (signal) weakSignal = signal;
 
     [signal setNextBlock:^{
         [weakSelf typhoon_doStepWithEnumerator:objectsEnumerator signal:weakSignal block:block completion:completion];

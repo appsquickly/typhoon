@@ -47,7 +47,7 @@
 
 - (void)typhoon_injectObject:(id)value forPropertySetter:(SEL)setter
 {
-    void(*setterMethod)(id, SEL, id) = (void *)[self methodForSelector:setter];
+    void(*setterMethod)(id, SEL, id) = (void ( *)(id, SEL, id)) [self methodForSelector:setter];
     setterMethod(self, setter, value);
 }
 
