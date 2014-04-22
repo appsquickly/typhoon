@@ -1,5 +1,3 @@
-inhibit_all_warnings!
-
 xcodeproj 'Tests'
 workspace '../Typhoon'
 
