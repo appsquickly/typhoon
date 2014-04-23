@@ -18,6 +18,9 @@ typedef void(^TyphoonInjectionValueBlock)(id value);
 @property(nonatomic, strong) TyphoonComponentFactory *factory;
 @property(nonatomic, strong) TyphoonRuntimeArguments *args;
 
+/** Class of destination instance, - used only for better exception description */
+@property(nonatomic, assign) Class destinationInstanceClass;
+
 @property(nonatomic) BOOL raiseExceptionIfCircular;
 
 @end

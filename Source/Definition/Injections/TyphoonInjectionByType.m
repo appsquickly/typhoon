@@ -28,8 +28,14 @@
     id classOrProtocol = context.destinationType.classOrProtocol;
     
     if (!classOrProtocol) {
-        [NSException raise:NSInternalInconsistencyException format:@"InjectionByType is not supported as parameter injection"];
+        if (self.type == TyphoonInjectionTypeProperty) {
+            [NSException raise:NSInternalInconsistencyException format:@"Can't recognize type for property '%@' of class '%@'. Make sure that property exists and has correct type.", self.propertyName, context.destinationInstanceClass];
+        } else {
+            [NSException raise:NSInternalInconsistencyException format:@"Only property injection support InjectionByType"];
+
+        }
     }
+
     
     TyphoonDefinition *definition = [context.factory definitionForType:classOrProtocol];
     

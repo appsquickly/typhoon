@@ -16,6 +16,7 @@
     copied.factory = self.factory;
     copied.args = self.args;
     copied.destinationType = self.destinationType;
+    copied.destinationInstanceClass = self.destinationInstanceClass;
     copied.raiseExceptionIfCircular = self.raiseExceptionIfCircular;
     return copied;
 }

@@ -102,6 +102,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     context.factory = self;
     context.args = args;
     context.raiseExceptionIfCircular = YES;
+    context.destinationInstanceClass = clazz;
     
     __block NSInvocation *result;
     [method createInvocationOnClass:clazz withContext:context completion:^(NSInvocation *invocation) {
@@ -142,6 +143,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 - (void)doMethodInjection:(TyphoonMethod *)method onInstance:(id)instance args:(TyphoonRuntimeArguments *)args
 {
     TyphoonInjectionContext *context = [TyphoonInjectionContext new];
+    context.destinationInstanceClass = [instance class];
     context.factory = self;
     context.args = args;
     context.raiseExceptionIfCircular = NO;
@@ -191,8 +193,9 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         TyphoonTypeDescriptor *propertyType = [instance typhoon_typeForPropertyWithName:property.propertyName];
         
         TyphoonPropertyInjectionLazyValue lazyValue = ^id {
-            TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] init];
+            TyphoonInjectionContext *context = [TyphoonInjectionContext new];
             context.destinationType = propertyType;
+            context.destinationInstanceClass = [instance class];
             context.factory = self;
             context.args = args;
             context.raiseExceptionIfCircular = YES;
@@ -214,8 +217,9 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 - (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(id <TyphoonPropertyInjection>)property
     args:(TyphoonRuntimeArguments *)args
 {
-    TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] init];
+    TyphoonInjectionContext *context = [TyphoonInjectionContext new];
     context.destinationType = [instance typhoon_typeForPropertyWithName:property.propertyName];
+    context.destinationInstanceClass = [instance class];
     context.factory = self;
     context.args = args;
     context.raiseExceptionIfCircular = NO;
