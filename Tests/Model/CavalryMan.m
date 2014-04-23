@@ -11,7 +11,7 @@
 
 
 #import "CavalryMan.h"
-
+#import "NSObject+FactoryHooks.h"
 
 @implementation CavalryMan
 

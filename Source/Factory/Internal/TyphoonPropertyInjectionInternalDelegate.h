@@ -9,7 +9,6 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonInjectionCallbacks.h"
 #import "TyphoonPropertyInjection.h"
 
 @class TyphoonTypeDescriptor;
@@ -17,7 +16,7 @@
 typedef id (^TyphoonPropertyInjectionLazyValue)(void);
 
 
-@protocol TyphoonPropertyInjectionInternalDelegate <TyphoonInjectionCallbacks>
+@protocol TyphoonPropertyInjectionInternalDelegate
 
 @optional
 

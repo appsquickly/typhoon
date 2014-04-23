@@ -26,10 +26,10 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
-#import "TyphoonComponentFactoryAware.h"
 #import "TyphoonComponentPostProcessor.h"
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
+#import "NSObject+FactoryHooks.h"
 #import "NSInvocation+TCFInstanceBuilder.h"
 
 #define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type) [NSException raise:@"NSUnknownKeyException" \
@@ -124,7 +124,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance
 {
     if ([instance respondsToSelector:@selector(typhoonSetFactory:)]) {
-        [(id<TyphoonComponentFactoryAware>)instance typhoonSetFactory:self];
+        [(NSObject *)instance typhoonSetFactory:self];
     }
 }
 
@@ -176,7 +176,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 - (void)doBeforeInjectionsOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition *)definition
 {
     if ([instance respondsToSelector:@selector(typhoonWillInject)]) {
-        [(id <TyphoonInjectionCallbacks>) instance typhoonWillInject];
+        [(NSObject *) instance typhoonWillInject];
     }
 
     if ([instance respondsToSelector:definition.beforeInjections]) {
@@ -244,7 +244,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 - (void)doAfterInjectionsOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition *)definition
 {
     if ([instance respondsToSelector:@selector(typhoonDidInject)]) {
-        [(id <TyphoonInjectionCallbacks>) instance typhoonDidInject];
+        [(NSObject *) instance typhoonDidInject];
     }
 
     if ([instance respondsToSelector:definition.afterInjections]) {

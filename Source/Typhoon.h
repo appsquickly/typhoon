@@ -22,7 +22,6 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonAssembly.h"
 #import "TyphoonCollaboratingAssemblyProxy.h"
-#import "TyphoonComponentFactoryAware.h"
 #import "NSObject+FactoryHooks.h"
 
 #import "TyphoonBlockComponentFactory.h"

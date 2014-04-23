@@ -13,7 +13,7 @@
 
 #import "Typhoon.h"
 
-@protocol Payment <TyphoonComponentFactoryAware, NSObject>
+@protocol Payment <NSObject>
 
 @property(nonatomic, strong, readonly) id <CreditService> creditService;
 @property(nonatomic, strong, readonly) id <AuthService> authService;

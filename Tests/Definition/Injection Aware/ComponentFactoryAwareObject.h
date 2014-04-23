@@ -10,12 +10,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "TyphoonComponentFactoryAware.h"
 
 #import "TyphoonComponentFactory.h"
 #import "ComponentFactoryAwareAssembly.h"
 
-@interface ComponentFactoryAwareObject : NSObject <TyphoonComponentFactoryAware>
+@interface ComponentFactoryAwareObject : NSObject
 
 @property(readonly) id factory;
 

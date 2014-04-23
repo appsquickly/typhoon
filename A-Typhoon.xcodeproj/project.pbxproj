@@ -46,7 +46,6 @@
 		4BC6493C17A20BD7007F0463 /* TyphoonAutowire.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79890C0F10164E6B504106 /* TyphoonAutowire.h */; };
 		4BC6493D17A20BD7007F0463 /* TyphoonShorthand.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79844939DE1F872B92FEFB /* TyphoonShorthand.h */; };
 		5B4F121B18F272E300D366B0 /* NSObject+FactoryHooks.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B4F121918F272E300D366B0 /* NSObject+FactoryHooks.h */; };
-		5B4F121C18F272E300D366B0 /* NSObject+FactoryHooks.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4F121A18F272E300D366B0 /* NSObject+FactoryHooks.m */; };
 		5BA69EC718E197690007DB30 /* TyphooniOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BA69EC618E197690007DB30 /* TyphooniOS.h */; };
 		65123363189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 65123362189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h */; };
 		65123364189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 65123362189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h */; };
@@ -393,10 +392,7 @@
 		4BED3D6117A85010006D262C /* OCLogTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCLogTemplate.h; sourceTree = "<group>"; };
 		4BED3D6217A85010006D262C /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		4BED3D6317A853E6006D262C /* TyphoonInjectedWithStringRepresentation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonInjectedWithStringRepresentation.h; sourceTree = "<group>"; };
-		5B4F121718F2720900D366B0 /* TyphoonComponentFactoryAware.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonComponentFactoryAware.h; sourceTree = "<group>"; };
-		5B4F121818F2720900D366B0 /* TyphoonInjectionCallbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonInjectionCallbacks.h; sourceTree = "<group>"; };
 		5B4F121918F272E300D366B0 /* NSObject+FactoryHooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FactoryHooks.h"; sourceTree = "<group>"; };
-		5B4F121A18F272E300D366B0 /* NSObject+FactoryHooks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FactoryHooks.m"; sourceTree = "<group>"; };
 		5BA69EC618E197690007DB30 /* TyphooniOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphooniOS.h; sourceTree = "<group>"; };
 		65123362189AAC0F00C21E63 /* TyphoonPropertyInjectionInternalDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonPropertyInjectionInternalDelegate.h; sourceTree = "<group>"; };
 		6596DADB189D7E0C00B30708 /* TyphoonAssistedFactoryMethodClosure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssistedFactoryMethodClosure.h; sourceTree = "<group>"; };
@@ -668,10 +664,7 @@
 		5B4F121618F2720900D366B0 /* Hooks */ = {
 			isa = PBXGroup;
 			children = (
-				5B4F121718F2720900D366B0 /* TyphoonComponentFactoryAware.h */,
-				5B4F121818F2720900D366B0 /* TyphoonInjectionCallbacks.h */,
 				5B4F121918F272E300D366B0 /* NSObject+FactoryHooks.h */,
-				5B4F121A18F272E300D366B0 /* NSObject+FactoryHooks.m */,
 			);
 			path = Hooks;
 			sourceTree = "<group>";
@@ -1542,7 +1535,6 @@
 				FAC0B8F618CF7E19000F0AD0 /* TyphoonInjectionByFactoryReference.m in Sources */,
 				FAC0B8E418CF6EA8000F0AD0 /* TyphoonAbstractInjection.m in Sources */,
 				FA99165318983367000AC4B5 /* NSObject+DeallocNotification.m in Sources */,
-				5B4F121C18F272E300D366B0 /* NSObject+FactoryHooks.m in Sources */,
 				FA7A961C1895370900053EAE /* NSObject+PropertyInjection.m in Sources */,
 				FA1E2C3518B0BD8500744771 /* TyphoonFactoryPropertyInjectionPostProcessor.m in Sources */,
 				FAFE1B5018D0F04E00F4E358 /* Collections+CustomInjection.m in Sources */,

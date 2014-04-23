@@ -12,10 +12,8 @@
 
 #import <Foundation/Foundation.h>
 #import "Knight.h"
-#import "TyphoonComponentFactoryAware.h"
-#import "TyphoonInjectionCallbacks.h"
 
-@interface CavalryMan : Knight <TyphoonInjectionCallbacks>
+@interface CavalryMan : Knight 
 
 @property(nonatomic) float hitRatio;
 
