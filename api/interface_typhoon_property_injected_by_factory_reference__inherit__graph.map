@@ -1,4 +1,0 @@
-<map id="TyphoonPropertyInjectedByFactoryReference" name="TyphoonPropertyInjectedByFactoryReference">
-<area shape="rect" id="node2" href="$interface_typhoon_property_injected_by_reference.html" title="Represents a property injected by referencing another definition in the container. " alt="" coords="21,155,208,197"/>
-<area shape="rect" id="node3" href="$interface_typhoon_abstract_injected_property.html" title="Provides a contract for typhoon injected properties (name, injectionType) as well as defines the noti..." alt="" coords="5,80,224,107"/>
-</map>
