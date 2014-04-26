@@ -148,15 +148,8 @@ ensure that the class is in the required state before and after properties are s
 
 And then:
 
-* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">Assembling Components with Blocks</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a>
 
-* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Autowiring">Autowiring</a>
-
-* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Using-Assembled-Components">Using Assembled Components</a>
-
-* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Installing">Incorporating the framework into your project.</a>
-
-* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Configuration-Management-&amp;-Testing">Configuration Management & Testing.</a>
 
 # Reports 
 ![Build Status](http://www.typhoonframework.org/docs/latest/build-status/build-status.png?q=zz)
