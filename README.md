@@ -6,7 +6,7 @@ A new dependency injection container for Objective-C. Light-weight, yet full-fea
 ## Familiar with Dependency Injection?
 
 * Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a>, <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>  ***Updated for version 2.0!!!!***
-* <a href="https://github.com/typhoon-framework/Typhoon-example">Try the sample application</a> (***Now updated for iOS7!!!!***)
+* <a href="https://github.com/typhoon-framework/Typhoon-example">Try the sample application</a> 
 * <a href="https://github.com/typhoon-framework/Typhoon#design-goals--features">Check the feature list</a>.
 otherwise. . . 
 
