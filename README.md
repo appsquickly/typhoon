@@ -109,7 +109,7 @@ following:
 
 ## Design Goals / Features
 
-* Non-invasive. ***No macros or XML required*** . . . Uses a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">powerful Objective-C runtime approach.</a>
+* Non-invasive. ***No macros or XML required*** . . . Uses <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">powerful Objective-C runtime approach.</a>
 
 * Its not necessary to change ***any*** of your classes to use the framework. ***Can be introduced into legacy applications.***
 
