@@ -22,22 +22,21 @@
 * Describes the lifecycle of a Typhoon component.
 
 * <strong>TyphoonScopeObjectGraph</strong>
-* (default) means that a new non-retained component is created when resolved from the factory, and any dependencies declared during
-* resolution of the object graph will be shared. For example, let's both a view controller and a view reference a component called
-* 'validator' - using the object-graph scope, this validator will be shared between the view and controller. However, unlike a singleton,
-* it is not retained by Typhoon, so will be released when there are no more strong references holding it.
+* (default) This scope is essential (and unique to Typhoon) for mobile and desktop applications. When a component is resolved, any
+* dependencies with the object-graph will be treated as shared instances during resolution. Once resolution is complete they are not
+* retained by the TyphoonComponentFactory. This allows instantiating an entire object graph for a use-case (say for a ViewController), and
+* then discarding it when that use-case has completed, therefore making efficient use of memory.
 *
 * <strong>TyphoonScopePrototype</strong>
-* (default for definitions with runtime argument injections)
-* means that a new component is created for each time it is referenced in a collaborator, or retrieved from the factory.
+* Indicates that a new instance should always be created by Typhoon, whenever this component is obtained from an assembly or referenced by
+* another component.
 *
 * <strong>TyphoonScopeSingleton</strong>
-* creates a shared instance. When the DI pattern is applied in a server-side environment, this tends to be the default scope, as the backend
-* could service any use-case at a given time. However in the case of mobile and desktop applications, we typically service one use-case at a
-* time, and furthermore we have more limited system-resources. Therefore singleton should be used more sparingly in these environments.
+Indicates that Typhoon should retain the instance that exists for as long as the TyphoonComponentFactory exists.
 *
 * <strong>TyphoonScopeWeakSingleton</strong>
-* creates an instance that will be shared across all components. However as soon as the instance is not being used it will be deallocated.
+Indicates that a shared instance should be created as long as necessary. When your application's classes stop referencing this component it
+will be deallocated until needed again.
 *
 */
 typedef enum
@@ -126,26 +125,25 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
 - (id)sqliteManager
 {
-    return [TyphoonDefinition withClass:[VBSqliteManager class] initialization:^(TyphoonInitializer* initializer)
+    return [TyphoonDefinition withClass:[MySqliteManager class] configuration:^(TyphoonDefinition* definition)
     {
-        initializer.selector = @selector(initWithDatabaseName:);
-        [initializer injectWithObject:@"app_database_v2.sqlite"];
-    } properties:^(TyphoonDefinition* definition)
-    {
+        [definition useInitializer:@selector(initWithDatabaseName:) parameters:^(TyphoonMethod* initializer)
+        {
+            [initializer injectParameterWith:@"database.sqlite"];
+        }];
         definition.scope = TyphoonScopeSingleton;
     }];
 }
 
 - (id)databaseQueue
 {
-    return [TyphoonDefinition withClass:[FMDatabaseQueue class] initialization:^(TyphoonInitializer* initializer)
+    return [TyphoonDefinition withClass:[FMDatabaseQueue class] configuration:^(TyphoonDefinition* definition)
     {
-        initializer.selector = @selector(queue);
-    } properties:^(TyphoonDefinition* definition)
-    {
+        [definition useInitializer:@selector(queue)];
         definition.factory = [self sqliteManager];
     }];
 }
+
 @endcode
 *
 * @note If the factory method takes arguments, these are provided in the initializer block, just like a regular initializer method.
@@ -165,31 +163,19 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
 - (id)signUpClient
 {
-    return [TyphoonDefinition withClass:[SignUpClientDefaultImpl class] properties:^(TyphoonDefinition* definition)
+    return [TyphoonDefinition withClass:[SignUpClientDefaultImpl class] configuration:^(TyphoonDefinition* definition)
     {
         definition.parent = [self abstractClient];
-    }];
-}
-
-- (id)storeClient
-{
-    return [TyphoonDefinition withClass:[StoreClientDefaultImpl class] properties:^(TyphoonDefinition* definition)
-    {
-        definition.parent = [self abstractClient];
-        [definition injectProperty:@selector(storeDao) withDefinition:[_persistenceComponents storeDao]];
-        [definition injectProperty:@selector(couponDao) withDefinition:[_persistenceComponents couponDao]];
     }];
 }
 
 - (id)abstractClient
 {
-    return [TyphoonDefinition withClass:[ClientBase class] properties:^(TyphoonDefinition* definition)
+    return [TyphoonDefinition withClass:[ClientBase class] configuration:^(TyphoonDefinition* definition)
     {
-        [definition injectProperty:@selector(serviceUrl) withValueAsText:@"${client.serviceUrl}"];
-        [definition injectProperty:@selector(networkMonitor) withDefinition:[self internetMonitor]];
-        [definition injectProperty:@selector(allowInvalidSSLCertificates) withValueAsText:@"${client.allowInvalidSSLCertificates}"];
-        [definition injectProperty:@selector(logRequests) withValueAsText:@"${client.logRequests}"];
-        [definition injectProperty:@selector(logResponses) withValueAsText:@"${client.logResponses}"];
+        [definition injectProperty:@selector(serviceUrl) with:TyphoonConfig(@"service.url"];
+        [definition injectProperty:@selector(networkMonitor) with:[self internetMonitor]];
+        [definition injectProperty:@selector(allowInvalidSSLCertificates) with:@(YES)];
     }];
 }
 
@@ -244,14 +230,14 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
  * Injects method with specified by selector with parameters. 
  * @see TyphoonMethod documentation for information about parameters
  */
-- (void)injectMethod:(SEL)selector parameters:(void(^)(TyphoonMethod *method))parametersBlock;
+- (void)injectMethod:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock;
 
 /**
  * Injects initializer specified by selector and parameters. 
  * Initializer allow you to create object with special selector and params. Without this injection,
  * object will be created by 'alloc-init' calls
  */
-- (void)useInitializer:(SEL)selector parameters:(void(^)(TyphoonMethod *initializer))parametersBlock;
+- (void)useInitializer:(SEL)selector parameters:(void (^)(TyphoonMethod *initializer))parametersBlock;
 
 /**
 * Convenience method to use a no-args initializer.
