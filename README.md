@@ -144,11 +144,10 @@ ensure that the class is in the required state before and after properties are s
 
 # Usage
 
-* <a href="https://github.com/typhoon-framework/Typhoon-example">Play with the sample application</a>.
-
-And then:
 
 * <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a>
+* <a href="https://github.com/typhoon-framework/Typhoon-example">Play with the sample application</a>.
 
 
 # Reports 
