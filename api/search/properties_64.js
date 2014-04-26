@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['defaultscope',['defaultScope',['../interface_typhoon_r_x_m_l_element.html#aaa5e810cb9bf63bc66cfc4b73a9d3a98',1,'TyphoonRXMLElement']]]
+  ['destinationinstanceclass',['destinationInstanceClass',['../interface_typhoon_injection_context.html#a2f4865e237d0ea67f6a5ab4c90d21446',1,'TyphoonInjectionContext']]],
+  ['destinationtype',['destinationType',['../interface_typhoon_injection_context.html#a99be856a9a8b59969080599de39a065d',1,'TyphoonInjectionContext']]]
 ];

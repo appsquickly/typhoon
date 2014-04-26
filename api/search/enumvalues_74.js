@@ -1,13 +1,5 @@
 var searchData=
 [
-  ['typhooncollectiontypensarray',['TyphoonCollectionTypeNSArray',['../_typhoon_injected_as_collection_8h.html#aa7ff8865467a34fd6c11154fb9c39355a0310024ca5e28d8c6c74b083d6d88050',1,'TyphoonInjectedAsCollection.h']]],
-  ['typhooncollectiontypenscountedset',['TyphoonCollectionTypeNSCountedSet',['../_typhoon_injected_as_collection_8h.html#aa7ff8865467a34fd6c11154fb9c39355a9930992459e402c2ad2ed1f35da584fb',1,'TyphoonInjectedAsCollection.h']]],
-  ['typhooncollectiontypensmutablearray',['TyphoonCollectionTypeNSMutableArray',['../_typhoon_injected_as_collection_8h.html#aa7ff8865467a34fd6c11154fb9c39355a8770b972b21f0cba529252c82da76354',1,'TyphoonInjectedAsCollection.h']]],
-  ['typhooncollectiontypensmutableset',['TyphoonCollectionTypeNSMutableSet',['../_typhoon_injected_as_collection_8h.html#aa7ff8865467a34fd6c11154fb9c39355ac7484ba30b504138c00f3c4a51e61a51',1,'TyphoonInjectedAsCollection.h']]],
-  ['typhooncollectiontypensset',['TyphoonCollectionTypeNSSet',['../_typhoon_injected_as_collection_8h.html#aa7ff8865467a34fd6c11154fb9c39355a569b5d65577d154397aefbd16ecb0c03',1,'TyphoonInjectedAsCollection.h']]],
-  ['typhooncomponentinitializerisclassmethodguess',['TyphoonComponentInitializerIsClassMethodGuess',['../_typhoon_initializer_8h.html#aac24b27258c12075c5ff6f72ff688d46abebca04b31ee6b8f881a2a21e4c64d53',1,'TyphoonInitializer.h']]],
-  ['typhooncomponentinitializerisclassmethodno',['TyphoonComponentInitializerIsClassMethodNo',['../_typhoon_initializer_8h.html#aac24b27258c12075c5ff6f72ff688d46ad73435336d1e527c5034c1fec4f55a98',1,'TyphoonInitializer.h']]],
-  ['typhooncomponentinitializerisclassmethodyes',['TyphoonComponentInitializerIsClassMethodYes',['../_typhoon_initializer_8h.html#aac24b27258c12075c5ff6f72ff688d46ac07c507b2a3d646be48ef835df182062',1,'TyphoonInitializer.h']]],
   ['typhoonprimitivetypebitfield',['TyphoonPrimitiveTypeBitField',['../_typhoon_type_descriptor_8h.html#ab1691370e2945f3d15a1002c601817cfa54ce6905caecdf928352b91013f16598',1,'TyphoonTypeDescriptor.h']]],
   ['typhoonprimitivetypeboolean',['TyphoonPrimitiveTypeBoolean',['../_typhoon_type_descriptor_8h.html#ab1691370e2945f3d15a1002c601817cfa4a7bdfed594c160da322b09fa4d94410',1,'TyphoonTypeDescriptor.h']]],
   ['typhoonprimitivetypechar',['TyphoonPrimitiveTypeChar',['../_typhoon_type_descriptor_8h.html#ab1691370e2945f3d15a1002c601817cfa427aee09b0a4dbde6e8ebb6497d9a38d',1,'TyphoonTypeDescriptor.h']]],

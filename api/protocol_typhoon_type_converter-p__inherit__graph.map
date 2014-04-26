@@ -1,5 +1,5 @@
 <map id="&lt;TyphoonTypeConverter&gt;" name="&lt;TyphoonTypeConverter&gt;">
 <area shape="rect" id="node3" href="$interface_typhoon_n_s_u_r_l_type_converter.html" title="TyphoonNSURLTypeConverter" alt="" coords="394,5,601,32"/>
 <area shape="rect" id="node4" href="$interface_typhoon_pass_through_type_converter.html" title="A &#39;type converter&#39; for NSString and NSMutableString. " alt="" coords="377,56,618,83"/>
-<area shape="rect" id="node5" href="$interface_typhoon_u_i_color_type_converter.html" title="TyphoonUIColorTypeConverter" alt="" coords="394,107,601,133"/>
+<area shape="rect" id="node5" href="$interface_typhoon_u_i_color_type_converter.html" title="A type converter for UIColor. " alt="" coords="394,107,601,133"/>
 </map>

@@ -2,7 +2,7 @@ var interface_typhoon_primitive_type_converter =
 [
     [ "convertToBoolean:", "interface_typhoon_primitive_type_converter.html#ad7ab28bf5a83e4e03d6903805b1a5954", null ],
     [ "convertToClass:", "interface_typhoon_primitive_type_converter.html#a26539cf7915a0b283c883829e26f354c", null ],
-    [ "convertToCString:", "interface_typhoon_primitive_type_converter.html#a03e6fb091e19a6daae67c017baad5ccb", null ],
+    [ "convertToCString:", "interface_typhoon_primitive_type_converter.html#a81e3894928d3a2cab37edd379ca0c34b", null ],
     [ "convertToDouble:", "interface_typhoon_primitive_type_converter.html#a42909604f5f655045636dc14dc4dc6b2", null ],
     [ "convertToFloat:", "interface_typhoon_primitive_type_converter.html#a1ca324837c6d4e6cd6cb1f8506d39007", null ],
     [ "convertToInt:", "interface_typhoon_primitive_type_converter.html#aafbe034862471fba0701b8b053223cae", null ],

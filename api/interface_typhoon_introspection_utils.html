@@ -78,7 +78,7 @@ $(document).ready(function(){initNavTree('interface_typhoon_introspection_utils.
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,22 +99,88 @@ $(document).ready(function(){initNavTree('interface_typhoon_introspection_utils.
 Inheritance diagram for TyphoonIntrospectionUtils:</div>
 <div class="dyncontent">
 <div class="center"><img src="interface_typhoon_introspection_utils__inherit__graph.png" border="0" usemap="#_typhoon_introspection_utils_inherit__map" alt="Inheritance graph"/></div>
+<map name="_typhoon_introspection_utils_inherit__map" id="_typhoon_introspection_utils_inherit__map">
+</map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Class Methods</h2></td></tr>
-<tr class="memitem:a8bb6cf36cbda69e20aa87a7b5af6a518"><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#a8bb6cf36cbda69e20aa87a7b5af6a518">typeCodesForSelector:ofClass:isClassMethod:</a></td></tr>
-<tr class="separator:a8bb6cf36cbda69e20aa87a7b5af6a518"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbdccd51d618bc474b58b8eab52d9660"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_typhoon_type_descriptor.html">TyphoonTypeDescriptor</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#acbdccd51d618bc474b58b8eab52d9660">typeForPropertyWithName:inClass:</a></td></tr>
-<tr class="separator:acbdccd51d618bc474b58b8eab52d9660"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af75a61c2d062d41d46fbdfe72f024e96"><td class="memItemLeft" align="right" valign="top">(NSMethodSignature *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#af75a61c2d062d41d46fbdfe72f024e96">methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:</a></td></tr>
+<tr class="separator:af75a61c2d062d41d46fbdfe72f024e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfae072f0c04b9ccdf3f62f5d7ea34eb"><td class="memItemLeft" align="right" valign="top">(NSUInteger)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#abfae072f0c04b9ccdf3f62f5d7ea34eb">numberOfArgumentsInSelector:</a></td></tr>
+<tr class="separator:abfae072f0c04b9ccdf3f62f5d7ea34eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa190816afd6c690e83b2bcff5b1c6e20"><td class="memItemLeft" align="right" valign="top">(SEL)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#aa190816afd6c690e83b2bcff5b1c6e20">setterForPropertyWithName:inClass:</a></td></tr>
+<tr class="separator:aa190816afd6c690e83b2bcff5b1c6e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab40d153fb3f2de289c4aa2832b89dbbe"><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#ab40d153fb3f2de289c4aa2832b89dbbe">typeCodesForSelector:ofClass:isClassMethod:</a></td></tr>
+<tr class="separator:ab40d153fb3f2de289c4aa2832b89dbbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34d5f226d76d10c64534ab62b422e154"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_typhoon_type_descriptor.html">TyphoonTypeDescriptor</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#a34d5f226d76d10c64534ab62b422e154">typeForPropertyWithName:inClass:</a></td></tr>
+<tr class="separator:a34d5f226d76d10c64534ab62b422e154"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Method Documentation</h2>
-<a class="anchor" id="a8bb6cf36cbda69e20aa87a7b5af6a518"></a>
+<a class="anchor" id="af75a61c2d062d41d46fbdfe72f024e96"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">+ (NSArray*) typeCodesForSelector: </td>
+          <td class="memname">+ (NSMethodSignature *) methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector: </td>
+          <td></td>
+          <td class="paramtype">(SEL)&#160;</td>
+          <td class="paramname"><em>selector</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abfae072f0c04b9ccdf3f62f5d7ea34eb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (NSUInteger) numberOfArgumentsInSelector: </td>
+          <td></td>
+          <td class="paramtype">(SEL)&#160;</td>
+          <td class="paramname"><em>selector</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa190816afd6c690e83b2bcff5b1c6e20"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (SEL) setterForPropertyWithName: </td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>property</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">inClass:</td>
+          <td></td>
+          <td class="paramtype">(Class)&#160;</td>
+          <td class="paramname"><em>clazz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab40d153fb3f2de289c4aa2832b89dbbe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (NSArray *) typeCodesForSelector: </td>
           <td></td>
           <td class="paramtype">(SEL)&#160;</td>
           <td class="paramname"><em>selector</em></td>
@@ -141,12 +207,12 @@ Class Methods</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="acbdccd51d618bc474b58b8eab52d9660"></a>
+<a class="anchor" id="a34d5f226d76d10c64534ab62b422e154"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">+ (<a class="el" href="interface_typhoon_type_descriptor.html">TyphoonTypeDescriptor</a>*) typeForPropertyWithName: </td>
+          <td class="memname">+ (<a class="el" href="interface_typhoon_type_descriptor.html">TyphoonTypeDescriptor</a> *) typeForPropertyWithName: </td>
           <td></td>
           <td class="paramtype">(NSString *)&#160;</td>
           <td class="paramname"><em>propertyName</em></td>
@@ -174,7 +240,7 @@ Class Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
         <li class="navelem"><a class="el" href="interface_typhoon_introspection_utils.html">TyphoonIntrospectionUtils</a></li>
-        <li class="footer">Generated on Sat Feb 8 2014 13:44:04 for Typhoon by
+        <li class="footer">Generated on Sat Apr 26 2014 14:26:40 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5
         </li>

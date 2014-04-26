@@ -1,5 +1,5 @@
 var protocol_typhoon_introspective_n_s_object_p =
 [
-    [ "circularDependentProperties", "protocol_typhoon_introspective_n_s_object-p.html#abd2fdc6a1e4dd6caa7d71e40c5c67542", null ],
-    [ "typeForPropertyWithName:", "protocol_typhoon_introspective_n_s_object-p.html#a9c10c51c7ffd89067e73009f07d1f91c", null ]
+    [ "typhoon_circularDependentProperties", "protocol_typhoon_introspective_n_s_object-p.html#abd0135219cef6f06dea4f73751c0b3eb", null ],
+    [ "typhoon_typeForPropertyWithName:", "protocol_typhoon_introspective_n_s_object-p.html#a888949f5298193ddf501df44bcfb0224", null ]
 ];

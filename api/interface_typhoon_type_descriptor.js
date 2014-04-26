@@ -10,7 +10,9 @@ var interface_typhoon_type_descriptor =
     [ "structureTypeName", "interface_typhoon_type_descriptor.html#a51e40b95dc79d9b28a3351efdc5ea7f9", null ],
     [ "typeBeingDescribed", "interface_typhoon_type_descriptor.html#ae088fe986245372f45dc39858059897c", null ],
     [ "classOrProtocol", "interface_typhoon_type_descriptor.html#aa68b95827c65fe611ce4398a902d3069", null ],
-    [ "descriptorWithClassOrProtocol:", "interface_typhoon_type_descriptor.html#a0f0bfe09604c5d07f10ad397e768e311", null ],
-    [ "descriptorWithTypeCode:", "interface_typhoon_type_descriptor.html#a67f4ae8bda2492b42ccd81045484e588", null ],
+    [ "descriptorWithClassOrProtocol:", "interface_typhoon_type_descriptor.html#ac1cf6c42d60c8e174d988bdcbe881b1b", null ],
+    [ "descriptorWithEncodedType:", "interface_typhoon_type_descriptor.html#a66512001ce1c3cd2b95318e7e1202f69", null ],
+    [ "descriptorWithTypeCode:", "interface_typhoon_type_descriptor.html#a8468060fec722072b856e1d470630287", null ],
+    [ "encodedType", "interface_typhoon_type_descriptor.html#a1122f7d0438daa8926fb27cffa7bf074", null ],
     [ "initWithTypeCode:", "interface_typhoon_type_descriptor.html#abeb253dff8861986d28c83bc2f73fb8d", null ]
 ];

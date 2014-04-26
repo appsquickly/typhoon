@@ -78,7 +78,7 @@ $(document).ready(function(){initNavTree('functions_0x73.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,7 +95,7 @@ $(document).ready(function(){initNavTree('functions_0x73.html','');});
 : <a class="el" href="interface_typhoon_definition.html#aa4df6569a008392075c9689a73d13729">TyphoonDefinition</a>
 </li>
 <li>selector
-: <a class="el" href="interface_typhoon_initializer.html#a0afdf647b8c1d9b1e97720142bc2a056">TyphoonInitializer</a>
+: <a class="el" href="interface_typhoon_method.html#a2df02aed8c27d293dad75d3a8c010705">TyphoonMethod</a>
 , <a class="el" href="interface_typhoon_assisted_factory_method_initializer.html#ab6098efcf36729bc4c92d311c4234865">TyphoonAssistedFactoryMethodInitializer</a>
 </li>
 <li>selectorIsAdvised:
@@ -107,20 +107,33 @@ $(document).ready(function(){initNavTree('functions_0x73.html','');});
 <li>setDeallocNotificationWithKey:andBlock:
 : <a class="el" href="category_n_s_object_07_dealloc_notification_08.html#a8db17c2e435c1e9c44013420773f97fc">NSObject(DeallocNotification)</a>
 </li>
-<li>setFactory:
-: <a class="el" href="protocol_typhoon_component_factory_aware-p.html#a87cc9f5101b8b32adbc70b5dd5be7f8e">&lt;TyphoonComponentFactoryAware&gt;</a>
-</li>
 <li>setObject:forKey:
 : <a class="el" href="protocol_typhoon_components_pool-p.html#a831c005126140764088073dec638f17c">&lt;TyphoonComponentsPool&gt;</a>
+, <a class="el" href="protocol_typhoon_dictionary-p.html#ac0cd34033498aa42bd489fc20d01d2b6">&lt;TyphoonDictionary&gt;</a>
+</li>
+<li>setParameterIndex:
+: <a class="el" href="protocol_typhoon_parameter_injection-p.html#ab0b2bc573b5e310b6e7b774687e594f5">&lt;TyphoonParameterInjection&gt;</a>
 </li>
 <li>setPrimitiveArgumentFor:index:textValue:requiredType:
 : <a class="el" href="interface_typhoon_primitive_type_converter.html#ad73d3e3e68756022c0ba5b221f14b3ff">TyphoonPrimitiveTypeConverter</a>
 </li>
+<li>setPropertyName:
+: <a class="el" href="protocol_typhoon_property_injection-p.html#ad12ad20c98b147ed21056a95c6ff5e91">&lt;TyphoonPropertyInjection&gt;</a>
+</li>
+<li>setterForPropertyWithName:inClass:
+: <a class="el" href="interface_typhoon_introspection_utils.html#aa190816afd6c690e83b2bcff5b1c6e20">TyphoonIntrospectionUtils</a>
+</li>
 <li>shared
-: <a class="el" href="interface_typhoon_type_converter_registry.html#a193f50912556ea950a0f65bfe25ce922">TyphoonTypeConverterRegistry</a>
+: <a class="el" href="interface_typhoon_type_converter_registry.html#ae56af9a302e744df8d3482d52f46c6e7">TyphoonTypeConverterRegistry</a>
 </li>
 <li>singletons
 : <a class="el" href="interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785">TyphoonComponentFactory</a>
+</li>
+<li>storyboardWithName:bundle:
+: <a class="el" href="interface_typhoon_storyboard.html#ad79900ef64da7054b8f2fd18869132dd">TyphoonStoryboard</a>
+</li>
+<li>storyboardWithName:factory:bundle:
+: <a class="el" href="interface_typhoon_storyboard.html#a61c6638d08b0080fcb335cd3ed01a487">TyphoonStoryboard</a>
 </li>
 <li>string:containsString:
 : <a class="el" href="interface_typhoon_string_utils.html#a1f6f8cb521a088d0846b90dac980acbe">TyphoonStringUtils</a>
@@ -129,7 +142,7 @@ $(document).ready(function(){initNavTree('functions_0x73.html','');});
 : <a class="el" href="interface_typhoon_type_descriptor.html#a51e40b95dc79d9b28a3351efdc5ea7f9">TyphoonTypeDescriptor</a>
 </li>
 <li>supportedType
-: <a class="el" href="protocol_typhoon_type_converter-p.html#a1b703751b03e4411f6652857248fff68">&lt;TyphoonTypeConverter&gt;</a>
+: <a class="el" href="protocol_typhoon_type_converter-p.html#a6060c2f9ab99d7b68383c80c8403a6bf">&lt;TyphoonTypeConverter&gt;</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -138,7 +151,7 @@ $(document).ready(function(){initNavTree('functions_0x73.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
-        <li class="footer">Generated on Sat Feb 8 2014 13:44:04 for Typhoon by
+        <li class="footer">Generated on Sat Apr 26 2014 14:26:40 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5
         </li>

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['ns_5fenum',['NS_ENUM',['../_typhoon_ordered_8h.html#a8bade92ed408c906ce4cb24b6ecdb5cf',1,'TyphoonOrdered.h']]]
+  ['next',['next',['../protocol_typhoon_iterator-p.html#a448c9c743ae0f55d473b5de6283709ee',1,'TyphoonIterator-p']]],
+  ['ns_5fenum',['NS_ENUM',['../_typhoon_ordered_8h.html#a8bade92ed408c906ce4cb24b6ecdb5cf',1,'NS_ENUM(NSInteger, TyphoonOrder):&#160;TyphoonOrdered.h'],['../_typhoon_abstract_injection_8h.html#a0fbc41e3afeb102f7d9e56e970830edb',1,'NS_ENUM(NSInteger, TyphoonInjectionType):&#160;TyphoonAbstractInjection.h']]],
+  ['numberofargumentsinselector_3a',['numberOfArgumentsInSelector:',['../interface_typhoon_introspection_utils.html#abfae072f0c04b9ccdf3f62f5d7ea34eb',1,'TyphoonIntrospectionUtils']]]
 ];

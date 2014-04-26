@@ -1,6 +1,6 @@
 var interface_typhoon_factory_provider =
 [
-    [ "withProtocol:dependencies:factories:", "interface_typhoon_factory_provider.html#a6ceab7ef446241a2a0d0aa5db842d5a1", null ],
-    [ "withProtocol:dependencies:factory:", "interface_typhoon_factory_provider.html#a85f585a67e0a3bd309d44ad580a7928d", null ],
-    [ "withProtocol:dependencies:returns:", "interface_typhoon_factory_provider.html#a5e5e8ffa843c993940e3cccb1f5660d3", null ]
+    [ "withProtocol:dependencies:factories:", "interface_typhoon_factory_provider.html#a8ac7b33cbd1228d5fe4a538b0a4457ae", null ],
+    [ "withProtocol:dependencies:factory:", "interface_typhoon_factory_provider.html#a4f5768865f0bdd8302383fce7cadd998", null ],
+    [ "withProtocol:dependencies:returns:", "interface_typhoon_factory_provider.html#a9e6527e8cb3fb335d4d8c6d3d64f41d6", null ]
 ];

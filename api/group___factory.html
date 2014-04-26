@@ -78,7 +78,7 @@ $(document).ready(function(){initNavTree('group___factory.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,7 +89,8 @@ $(document).ready(function(){initNavTree('group___factory.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Factory</div>  </div>
 </div><!--header-->
@@ -108,30 +109,92 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the base class for all component factories.  <a href="interface_typhoon_component_factory.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">protocol &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_typhoon_component_factory_aware-p.html">&lt;TyphoonComponentFactoryAware&gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This protocol indicates that a component wishes to be aware of the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> in order to resolve another component.  <a href="protocol_typhoon_component_factory_aware-p.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">protocol &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_typhoon_component_factory_post_processor-p.html">&lt;TyphoonComponentFactoryPostProcessor&gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows for custom modification of a component factory's definitions.  <a href="protocol_typhoon_component_factory_post_processor-p.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_factory_provider.html">TyphoonFactoryProvider</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a factory that combines the convenience of method arguments with assembly-supplied dependencies to construct objects.  <a href="interface_typhoon_factory_provider.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">protocol &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_typhoon_property_injection_delegate-p.html">&lt;TyphoonPropertyInjectionDelegate&gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typhoon components can implement this protocol to participate in property-injection life-cycle events.  <a href="protocol_typhoon_property_injection_delegate-p.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_xml_component_factory.html">TyphoonXmlComponentFactory</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga3dc651b0109dde0ddd73519ccc5eb860"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="group___factory.html#ga3dc651b0109dde0ddd73519ccc5eb860">NSObject(FactoryHooks)::typhoonSetFactory:</a></td></tr>
+<tr class="memdesc:ga3dc651b0109dde0ddd73519ccc5eb860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of method typhoonSetFactory indicates that a component wishes to be aware of the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> in order to resolve another component.  <a href="#ga3dc651b0109dde0ddd73519ccc5eb860">More...</a><br/></td></tr>
+<tr class="separator:ga3dc651b0109dde0ddd73519ccc5eb860"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2c70804a42c7e37fe2015c1c03996173"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="group___factory.html#ga2c70804a42c7e37fe2015c1c03996173">NSObject(FactoryHooks)::typhoonWillInject</a></td></tr>
+<tr class="memdesc:ga2c70804a42c7e37fe2015c1c03996173"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typhoon components can implement this methods to participate in property-injection life-cycle events.  <a href="#ga2c70804a42c7e37fe2015c1c03996173">More...</a><br/></td></tr>
+<tr class="separator:ga2c70804a42c7e37fe2015c1c03996173"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Registering and retrieving component definitions. </p>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="ga3dc651b0109dde0ddd73519ccc5eb860"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) typhoonSetFactory: </td>
+          <td></td>
+          <td class="paramtype">(id)&#160;</td>
+          <td class="paramname"><em>theFactory</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Implementation of method typhoonSetFactory indicates that a component wishes to be aware of the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> in order to resolve another component. </p>
+<p>Typically we'd want to inject all the dependencies, however there are some cases where its desirable to load a component from the factory at runtime. One example is view controller transitions where a given view controller has:</p>
+<ul>
+<li>All of the dependencies for its main use-case injected</li>
+<li>Looks up the view controller for a transition from the container. This allows using prototype scope to load one object-graph at a time, thus making efficient use of memory. Accepts the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> via setter-injection, allowing the factory to be stored to a property or ivar. Note that this method contract uses the type id, which if you're using a block-style assembly allows setting the factory to the <a class="el" href="interface_typhoon_assembly.html" title="Provides a concise way to declare and encapsulate the architecture of an application in one or more c...">TyphoonAssembly</a> sub-class itself without casting. The underlying type is <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a>.</li>
+</ul>
+<h2>Examples:</h2>
+<div class="fragment"><div class="line"><span class="comment">//Using the TyphoonComponentFactory interface:</span></div>
+<div class="line">- (void)typhoonSetFactory:(<a class="code" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a>*)factory</div>
+<div class="line">{</div>
+<div class="line"></div>
+<div class="line">_factory = factory;</div>
+<div class="line">MyAnalyticsService* service = [factory componentForType:[MyAnalyticsService <span class="keyword">class</span>];</div>
+<div class="line">}</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">//Using an Assembly interface</span></div>
+<div class="line">- (void)typhoonSetFactory:(MyAssemblyType*)assembly</div>
+<div class="line">{</div>
+<div class="line">_assembly = assembly;</div>
+<div class="line">MyAnalyticsService* service = [assembly analyticsService];</div>
+<div class="line">}</div>
+</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Whether the factory is injected as a <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> or a <a class="el" href="interface_typhoon_assembly.html" title="Provides a concise way to declare and encapsulate the architecture of an application in one or more c...">TyphoonAssembly</a> sub-class, it can still be casted from one to the other. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2c70804a42c7e37fe2015c1c03996173"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (void) typhoonWillInject </td>
+          <td></td>
+          <td class="paramname"></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Typhoon components can implement this methods to participate in property-injection life-cycle events. </p>
+<p>This gives some of the benefits of initializer-injection - the ability to provide before / after validation - while still allowing the flexibility of property injection.</p>
+<dl class="section note"><dt>Note</dt><dd>If you don't wish to implement these methods on your class, you can also define custom callback selectors on <a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a>.</dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="interface_typhoon_definition.html#a0cf38a4af92c8d324c2f68ee013d2777" title="A custom callback method that is invoked before property injection occurs. ">TyphoonDefinition.beforeInjections</a> </dd>
+<dd>
+<a class="el" href="interface_typhoon_definition.html#a840cfc1303083ede4b0574c1e2ee7fb1" title="A custom callback method that is invoked after property injection occurs. ">TyphoonDefinition.afterInjections</a> Typhoon calls this method (if implemented) just before property and method injections </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.5-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
-        <li class="footer">Generated on Sat Feb 8 2014 13:44:03 for Typhoon by
+        <li class="footer">Generated on Sat Apr 26 2014 14:26:40 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5
         </li>

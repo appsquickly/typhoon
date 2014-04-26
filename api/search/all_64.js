@@ -1,11 +1,13 @@
 var searchData=
 [
-  ['data',['data',['../protocol_typhoon_resource-p.html#a7d63644498c645e5684694b3f44b04b5',1,'TyphoonResource-p']]],
+  ['data',['data',['../protocol_typhoon_resource-p.html#a6531a7fe875c40acee7ac81da7b17ea4',1,'TyphoonResource-p']]],
   ['defaultassembly',['defaultAssembly',['../interface_typhoon_assembly.html#ac445c91bdd47b3389eadedbf33860512',1,'TyphoonAssembly']]],
   ['defaultfactory',['defaultFactory',['../interface_typhoon_component_factory.html#ad0d0eb369da7b2cd39caf403e9c91ddf',1,'TyphoonComponentFactory']]],
-  ['defaultscope',['defaultScope',['../interface_typhoon_r_x_m_l_element.html#aaa5e810cb9bf63bc66cfc4b73a9d3a98',1,'TyphoonRXMLElement']]],
-  ['definition',['definition',['../interface_typhoon_initializer.html#aa438d5dfcd3ef50448186d39b5bee30e',1,'TyphoonInitializer::definition()'],['../group___definition.html',1,'(Global Namespace)']]],
-  ['descriptorwithclassorprotocol_3a',['descriptorWithClassOrProtocol:',['../interface_typhoon_type_descriptor.html#a0f0bfe09604c5d07f10ad397e768e311',1,'TyphoonTypeDescriptor']]],
-  ['descriptorwithtypecode_3a',['descriptorWithTypeCode:',['../interface_typhoon_type_descriptor.html#a67f4ae8bda2492b42ccd81045484e588',1,'TyphoonTypeDescriptor']]],
-  ['doc_5f',['doc_',['../interface_typhoon_r_x_m_l_element.html#aca2fa7a598fdfa1ec127d2a90e705548',1,'TyphoonRXMLElement']]]
+  ['definition',['Definition',['../group___definition.html',1,'']]],
+  ['dependencyvalueforproperty_3a',['dependencyValueForProperty:',['../interface_typhoon_assisted_factory_base.html#a2129f0668d558573b24bbb3ea507fc7b',1,'TyphoonAssistedFactoryBase']]],
+  ['descriptorwithclassorprotocol_3a',['descriptorWithClassOrProtocol:',['../interface_typhoon_type_descriptor.html#ac1cf6c42d60c8e174d988bdcbe881b1b',1,'TyphoonTypeDescriptor']]],
+  ['descriptorwithencodedtype_3a',['descriptorWithEncodedType:',['../interface_typhoon_type_descriptor.html#a66512001ce1c3cd2b95318e7e1202f69',1,'TyphoonTypeDescriptor']]],
+  ['descriptorwithtypecode_3a',['descriptorWithTypeCode:',['../interface_typhoon_type_descriptor.html#a8468060fec722072b856e1d470630287',1,'TyphoonTypeDescriptor']]],
+  ['destinationinstanceclass',['destinationInstanceClass',['../interface_typhoon_injection_context.html#a2f4865e237d0ea67f6a5ab4c90d21446',1,'TyphoonInjectionContext']]],
+  ['destinationtype',['destinationType',['../interface_typhoon_injection_context.html#a99be856a9a8b59969080599de39a065d',1,'TyphoonInjectionContext']]]
 ];
