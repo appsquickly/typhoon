@@ -101,8 +101,6 @@ $(document).ready(function(){initNavTree('interface_typhoon_definition.html','')
 Inheritance diagram for TyphoonDefinition:</div>
 <div class="dyncontent">
 <div class="center"><img src="interface_typhoon_definition__inherit__graph.png" border="0" usemap="#_typhoon_definition_inherit__map" alt="Inheritance graph"/></div>
-<map name="_typhoon_definition_inherit__map" id="_typhoon_definition_inherit__map">
-</map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
@@ -267,24 +265,22 @@ Instance Methods</h2></td></tr>
 <p>For example:</p>
 <div class="fragment"><div class="line">- (id)sqliteManager</div>
 <div class="line">{</div>
-<div class="line">    <span class="keywordflow">return</span> [<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a> withClass:[VBSqliteManager <span class="keyword">class</span>] initialization:^(TyphoonInitializer* <a class="code" href="interface_typhoon_definition.html#a14e72e677e9eee1ba1a2c9b3a7b68d1f">initializer</a>)</div>
+<div class="line">    <span class="keywordflow">return</span> [<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a> withClass:[MySqliteManager <span class="keyword">class</span>] configuration:^(<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a>* definition)</div>
 <div class="line">    {</div>
-<div class="line">        <a class="code" href="interface_typhoon_definition.html#a14e72e677e9eee1ba1a2c9b3a7b68d1f">initializer</a>.<a class="code" href="interface_typhoon_method.html#a2df02aed8c27d293dad75d3a8c010705">selector</a> = <span class="keyword">@selector</span>(initWithDatabaseName:);</div>
-<div class="line">        [<a class="code" href="interface_typhoon_definition.html#a14e72e677e9eee1ba1a2c9b3a7b68d1f">initializer</a> injectWithObject:<span class="stringliteral">@&quot;app_database_v2.sqlite&quot;</span>];</div>
-<div class="line">    } properties:^(<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a>* definition)</div>
-<div class="line">    {</div>
-<div class="line">        definition.scope = <a class="code" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb">TyphoonScopeSingleton</a>;</div>
+<div class="line">        [definition useInitializer:<span class="keyword">@selector</span>(initWithDatabaseName:) parameters:^(<a class="code" href="interface_typhoon_method.html">TyphoonMethod</a>* <a class="code" href="interface_typhoon_definition.html#a14e72e677e9eee1ba1a2c9b3a7b68d1f">initializer</a>)</div>
+<div class="line">        {</div>
+<div class="line">            [initializer injectParameterWith:<span class="stringliteral">@&quot;database.sqlite&quot;</span>];</div>
+<div class="line">        }];</div>
+<div class="line">        definition.<a class="code" href="interface_typhoon_definition.html#aa4df6569a008392075c9689a73d13729">scope</a> = <a class="code" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb">TyphoonScopeSingleton</a>;</div>
 <div class="line">    }];</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line">- (id)databaseQueue</div>
 <div class="line">{</div>
-<div class="line">    <span class="keywordflow">return</span> [<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a> withClass:[FMDatabaseQueue <span class="keyword">class</span>] initialization:^(TyphoonInitializer* <a class="code" href="interface_typhoon_definition.html#a14e72e677e9eee1ba1a2c9b3a7b68d1f">initializer</a>)</div>
+<div class="line">    <span class="keywordflow">return</span> [<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a> withClass:[FMDatabaseQueue <span class="keyword">class</span>] configuration:^(<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a>* definition)</div>
 <div class="line">    {</div>
-<div class="line">        <a class="code" href="interface_typhoon_definition.html#a14e72e677e9eee1ba1a2c9b3a7b68d1f">initializer</a>.<a class="code" href="interface_typhoon_method.html#a2df02aed8c27d293dad75d3a8c010705">selector</a> = <span class="keyword">@selector</span>(queue);</div>
-<div class="line">    } properties:^(<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a>* definition)</div>
-<div class="line">    {</div>
-<div class="line">        definition.factory = [<span class="keyword">self</span> sqliteManager];</div>
+<div class="line">        [definition useInitializer:<span class="keyword">@selector</span>(queue)];</div>
+<div class="line">        definition.<a class="code" href="interface_typhoon_definition.html#aaf3d2e62477e0999b79f0f062d01a1e9">factory</a> = [<span class="keyword">self</span> sqliteManager];</div>
 <div class="line">    }];</div>
 <div class="line">}</div>
 </div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>If the factory method takes arguments, these are provided in the initializer block, just like a regular initializer method.</dd></dl>
@@ -412,31 +408,19 @@ injectProperty:withDefinition:keyPath: An alternative short-hand approach for no
 <p>When parent is defined the initializer and/or properties from a definition are inherited, unless overridden. Example:</p>
 <div class="fragment"><div class="line">- (id)signUpClient</div>
 <div class="line">{</div>
-<div class="line">    <span class="keywordflow">return</span> [<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a> withClass:[SignUpClientDefaultImpl <span class="keyword">class</span>] properties:^(<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a>* definition)</div>
+<div class="line">    <span class="keywordflow">return</span> [<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a> withClass:[SignUpClientDefaultImpl <span class="keyword">class</span>] configuration:^(<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a>* definition)</div>
 <div class="line">    {</div>
 <div class="line">        definition.<a class="code" href="interface_typhoon_definition.html#ade4b4b0d0e6c99e01868746f283ffdaa">parent</a> = [<span class="keyword">self</span> abstractClient];</div>
-<div class="line">    }];</div>
-<div class="line">}</div>
-<div class="line"></div>
-<div class="line">- (id)storeClient</div>
-<div class="line">{</div>
-<div class="line">    <span class="keywordflow">return</span> [<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a> withClass:[StoreClientDefaultImpl <span class="keyword">class</span>] properties:^(<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a>* definition)</div>
-<div class="line">    {</div>
-<div class="line">        definition.<a class="code" href="interface_typhoon_definition.html#ade4b4b0d0e6c99e01868746f283ffdaa">parent</a> = [<span class="keyword">self</span> abstractClient];</div>
-<div class="line">        [definition injectProperty:<span class="keyword">@selector</span>(storeDao) withDefinition:[_persistenceComponents storeDao]];</div>
-<div class="line">        [definition injectProperty:<span class="keyword">@selector</span>(couponDao) withDefinition:[_persistenceComponents couponDao]];</div>
 <div class="line">    }];</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line">- (id)abstractClient</div>
 <div class="line">{</div>
-<div class="line">    <span class="keywordflow">return</span> [<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a> withClass:[ClientBase <span class="keyword">class</span>] properties:^(<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a>* definition)</div>
+<div class="line">    <span class="keywordflow">return</span> [<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a> withClass:[ClientBase <span class="keyword">class</span>] configuration:^(<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a>* definition)</div>
 <div class="line">    {</div>
-<div class="line">        [definition injectProperty:<span class="keyword">@selector</span>(serviceUrl) withValueAsText:<span class="stringliteral">@&quot;${client.serviceUrl}&quot;</span>];</div>
-<div class="line">        [definition injectProperty:<span class="keyword">@selector</span>(networkMonitor) withDefinition:[<span class="keyword">self</span> internetMonitor]];</div>
-<div class="line">        [definition injectProperty:<span class="keyword">@selector</span>(allowInvalidSSLCertificates) withValueAsText:<span class="stringliteral">@&quot;${client.allowInvalidSSLCertificates}&quot;</span>];</div>
-<div class="line">        [definition injectProperty:<span class="keyword">@selector</span>(logRequests) withValueAsText:<span class="stringliteral">@&quot;${client.logRequests}&quot;</span>];</div>
-<div class="line">        [definition injectProperty:<span class="keyword">@selector</span>(logResponses) withValueAsText:<span class="stringliteral">@&quot;${client.logResponses}&quot;</span>];</div>
+<div class="line">        [definition injectProperty:<span class="keyword">@selector</span>(serviceUrl) with:<a class="code" href="_typhoon_property_placeholder_configurer_8h.html#ab9ed52428be61894681b2e05afbd1a57">TyphoonConfig</a>(<span class="stringliteral">@&quot;service.url&quot;</span>];</div>
+<div class="line">        [definition injectProperty:<span class="keyword">@selector</span>(networkMonitor) with:[<span class="keyword">self</span> internetMonitor]];</div>
+<div class="line">        [definition injectProperty:<span class="keyword">@selector</span>(allowInvalidSSLCertificates) with:@(YES)];</div>
 <div class="line">    }];</div>
 <div class="line">}</div>
 </div><!-- fragment --><dl class="section see"><dt>See Also</dt><dd><a class="el" href="interface_typhoon_definition.html#a06ab7dc77ee2f386d87ea3fe75f18693" title="If set, designates that a component can not be instantiated directly. ">abstract</a> </dd></dl>
@@ -743,7 +727,7 @@ injectProperty:withDefinition:keyPath: An alternative short-hand approach for no
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
         <li class="navelem"><a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a></li>
-        <li class="footer">Generated on Sat Apr 26 2014 14:26:40 for Typhoon by
+        <li class="footer">Generated on Sat Apr 26 2014 18:25:16 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5
         </li>
