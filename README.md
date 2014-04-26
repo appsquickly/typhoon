@@ -5,7 +5,7 @@ A new dependency injection container for Objective-C. Light-weight, yet full-fea
 
 ## Familiar with Dependency Injection?
 
-* Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a>, <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>
+* Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a>, <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>  ***Updated for version 2.0!!!!***
 * <a href="https://github.com/typhoon-framework/Typhoon-example">Try the sample application</a> (***Now updated for iOS7!!!!***)
 * <a href="https://github.com/typhoon-framework/Typhoon#design-goals--features">Check the feature list</a>.
 otherwise. . . 
@@ -230,8 +230,6 @@ Here's a few apps built with Typhoon:
 Apache License, Version 2.0, January 2004, http://www.apache.org/licenses/
 
 © 2012 - 2014 Jasper Blues and contributors.
-
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/0e47e2f2028b2badfc88e13f95914938 "githalytics.com")](http://githalytics.com/jasperblues/Typhoon)
 
 
 
