@@ -5,7 +5,7 @@ A new dependency injection container for Objective-C. Light-weight, yet full-fea
 
 ## Familiar with Dependency Injection?
 
-* Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a>, <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>  ***Updated for version 2.0!!!!***
+* Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a>, <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>  ***Updated for version 2.0!!!!***
 * <a href="https://github.com/typhoon-framework/Typhoon-example">Try the sample application</a> 
 * <a href="https://github.com/typhoon-framework/Typhoon#design-goals--features">Check the feature list</a>.
 otherwise. . . 
@@ -148,7 +148,7 @@ ensure that the class is in the required state before and after properties are s
 
 
 * <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a>
-* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a>
 * <a href="https://github.com/typhoon-framework/Typhoon-example">Play with the sample application</a>.
 
 # Installing
