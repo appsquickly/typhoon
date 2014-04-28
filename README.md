@@ -5,7 +5,7 @@ A new dependency injection container for Objective-C. Light-weight, yet full-fea
 
 ## Familiar with Dependency Injection?
 
-* Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a>, <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>  ***Updated for version 2.0!!!!***
+* Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a>, <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>  ***Updated for version 2.0!!!!***
 * <a href="https://github.com/typhoon-framework/Typhoon-example">Try the sample application</a> 
 * <a href="https://github.com/typhoon-framework/Typhoon#design-goals--features">Check the feature list</a>.
 otherwise. . . 
@@ -81,7 +81,9 @@ ___And now, it simply becomes___:
 
 
 ####Is that all they mean by 'injected'?
-Yes it is. Right now, you might be thinking "Geez! That's a pretty fancy name for something so plain." Well, you'd be right. But let's look at the implications on our application architecture: If you do this with significant collaborators throughout your app, it means that the __GoogleWeatherClientImpl__ is now declared in a single place - the top-level assembly, so-to-speak. ___And___ all of the classes that need to use some kind of __id&lt;WeatherClient&gt;__ will have it passed in. This means that: 
+Yes it is. Right now, you might be thinking "Geez! That's a pretty fancy name for something so plain." Well, you'd be right. But let‘s look at what happens when we start to apply this approach: If you pull hard-wired dependencies out from a class, so that they're passed in, now the <em>next class up the chain</em> has hard-wired dependencies. So we keep applying the pattern. . . 
+
+. . . If you do this with significant collaborators throughout your app, it means that the __GoogleWeatherClientImpl__ is now declared in a single place - the top-level assembly, so-to-speak. ___And___ all of the classes that need to use some kind of __id&lt;WeatherClient&gt;__ will have it passed in. This means that: 
 
 * If you want to change from one implementation to another, you need only change a single declaration. 
 * Classes are easier to test, because we can supply simple mocks and stubs in place of concrete collaborators. Or 
@@ -146,7 +148,7 @@ ensure that the class is in the required state before and after properties are s
 
 
 * <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a>
-* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a>
 * <a href="https://github.com/typhoon-framework/Typhoon-example">Play with the sample application</a>.
 
 # Installing
