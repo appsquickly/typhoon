@@ -61,7 +61,7 @@ static NSMutableArray *reservedSelectorsAsStrings;
     [self reserveSelectors];
 }
 
-+ (void)reserveSelectors;
++ (void)reserveSelectors
 {
     reservedSelectorsAsStrings = [[NSMutableArray alloc] init];
 
@@ -72,6 +72,7 @@ static NSMutableArray *reservedSelectorsAsStrings;
     [self markSelectorReserved:@selector(defaultAssembly)];
     [self markSelectorReserved:@selector(asFactory)];
     [self markSelectorReserved:@selector(resolveCollaboratingAssemblies)];
+    
 }
 
 + (void)markSelectorReserved:(SEL)selector
@@ -104,24 +105,13 @@ static NSMutableArray *reservedSelectorsAsStrings;
 
 + (BOOL)selectorCorrespondsToDefinitionMethod:(SEL)sel
 {
-    return ![self selectorReservedOrPropertySetter:sel];
-}
-
-+ (BOOL)selectorReservedOrPropertySetter:(SEL)selector
-{
-    return [self selectorIsReserved:selector] || [self selectorIsPropertySetter:selector];
+    return ![self selectorIsReserved:sel];
 }
 
 + (BOOL)selectorIsReserved:(SEL)selector
 {
     NSString *selectorString = NSStringFromSelector(selector);
     return [reservedSelectorsAsStrings containsObject:selectorString];
-}
-
-+ (BOOL)selectorIsPropertySetter:(SEL)selector
-{
-    NSString *selectorString = NSStringFromSelector(selector);
-    return [selectorString hasPrefix:@"set"] && [selectorString hasSuffix:@":"];
 }
 
 + (void)provideDynamicImplementationToConstructDefinitionForSEL:(SEL)sel;

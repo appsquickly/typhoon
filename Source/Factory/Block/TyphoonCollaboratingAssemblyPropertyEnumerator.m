@@ -33,25 +33,17 @@
 
 - (NSSet *)collaboratingAssemblyProperties
 {
-    NSMutableSet *propertyNames = [[NSMutableSet alloc] init];
+    NSMutableSet *collaboratingAssemblyProperties = [[NSMutableSet alloc] init];
 
-    Class class = [self.assembly class];
-    while ([self classNotRootAssemblyClass:class]) {
-        unsigned int count = 0;
-        objc_property_t *properties = class_copyPropertyList(class, &count);
-        for (int propertyIndex = 0; propertyIndex < count; propertyIndex++) {
-            objc_property_t aProperty = properties[propertyIndex];
-
-            NSString *propertyName = [self propertyNameForProperty:aProperty];
-            if ([self propertyForName:propertyName isCollaboratingAssemblyPropertyOnClass:class]) {
-                [propertyNames addObject:propertyName];
-            }
+    NSSet *properties = [TyphoonIntrospectionUtils properiesForClass:[_assembly class] upToParentClass:[TyphoonAssembly class]];
+    
+    for (NSString *property in properties) {
+        if ([self propertyForName:property isCollaboratingAssemblyPropertyOnClass:[_assembly class]]) {
+            [collaboratingAssemblyProperties addObject:property];
         }
-
-        class = class_getSuperclass(class);
     }
-
-    return propertyNames;
+    
+    return collaboratingAssemblyProperties;
 }
 
 - (BOOL)propertyForName:(NSString *)propertyName isCollaboratingAssemblyPropertyOnClass:(Class)class
