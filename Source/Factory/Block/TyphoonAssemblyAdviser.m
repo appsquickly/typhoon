@@ -19,6 +19,7 @@
 #import "OCLogTemplate.h"
 #import "TyphoonSelector.h"
 #import "TyphoonJRMethodSwizzler.h"
+#import "TyphoonIntrospectionUtils.h"
 
 static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 
@@ -170,6 +171,9 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
         [definitionSelectors unionSet:[self obtainDefinitionSelectorsInAssemblyClass:currentClass]];
         currentClass = class_getSuperclass(currentClass);
     }
+    
+    NSSet *propertySetters = [self propertySetterSelectorsForClass:[self.assembly class]];
+    [definitionSelectors minusSet:propertySetters];
 }
 
 - (BOOL)classNotRootAssemblyClass:(Class)class
@@ -209,7 +213,7 @@ typedef void(^MethodEnumerationBlock)(Method method);
 - (BOOL)method:(Method)method onClassIsNotReserved:(Class)aClass
 {
     SEL methodSelector = method_getName(method);
-    return ![aClass selectorReservedOrPropertySetter:methodSelector];
+    return ![aClass selectorIsReserved:methodSelector];
 }
 
 - (BOOL)method:(Method)pMethod onClassIsNotAdvised:(Class)advised
@@ -223,6 +227,20 @@ typedef void(^MethodEnumerationBlock)(Method method);
     SEL methodSelector = method_getName(method);
     TyphoonSelector *wrappedSEL = [TyphoonSelector selectorWithSEL:methodSelector];
     [definitionSelectors addObject:wrappedSEL];
+}
+
+- (NSSet *)propertySetterSelectorsForClass:(Class)clazz
+{
+    NSMutableSet *propertySetters = [NSMutableSet new];
+    NSSet *properties = [TyphoonIntrospectionUtils properiesForClass:clazz upToParentClass:[TyphoonAssembly class]];
+    for (NSString *propertyName in properties) {
+        SEL properySetter = [TyphoonIntrospectionUtils setterForPropertyWithName:propertyName inClass:clazz];
+        if (properySetter) {
+            TyphoonSelector *wrappedSEL = [TyphoonSelector selectorWithSEL:properySetter];
+            [propertySetters addObject:wrappedSEL];
+        }
+    }
+    return propertySetters;
 }
 
 #pragma mark - Advising Registry

@@ -5,10 +5,9 @@ A new dependency injection container for Objective-C. Light-weight, yet full-fea
 
 ## Familiar with Dependency Injection?
 
-* Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>
-* <a href="https://github.com/typhoon-framework/Typhoon-example">Try the sample application</a> (***Now updated for iOS7!!!!***)
+* Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a>, <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>  ***Updated for version 2.0!!!!***
+* <a href="https://github.com/typhoon-framework/Typhoon-example">Try the sample application</a> 
 * <a href="https://github.com/typhoon-framework/Typhoon#design-goals--features">Check the feature list</a>.
-
 otherwise. . . 
 
 ### What is Dependency Injection? 
@@ -82,7 +81,9 @@ ___And now, it simply becomes___:
 
 
 ####Is that all they mean by 'injected'?
-Yes it is. Right now, you might be thinking "Geez! That's a pretty fancy name for something so plain." Well, you'd be right. But let's look at the implications on our application architecture: If you do this with significant collaborators throughout your app, it means that the __GoogleWeatherClientImpl__ is now declared in a single place - the top-level assembly, so-to-speak. ___And___ all of the classes that need to use some kind of __id&lt;WeatherClient&gt;__ will have it passed in. This means that: 
+Yes it is. Right now, you might be thinking "Geez! That's a pretty fancy name for something so plain." Well, you'd be right. But let‘s look at what happens when we start to apply this approach: If you pull hard-wired dependencies out from a class, so that they're passed in, now the <em>next class up the chain</em> has hard-wired dependencies. So we keep applying the pattern. . . 
+
+. . . If you do this with significant collaborators throughout your app, it means that the __GoogleWeatherClientImpl__ is now declared in a single place - the top-level assembly, so-to-speak. ___And___ all of the classes that need to use some kind of __id&lt;WeatherClient&gt;__ will have it passed in. This means that: 
 
 * If you want to change from one implementation to another, you need only change a single declaration. 
 * Classes are easier to test, because we can supply simple mocks and stubs in place of concrete collaborators. Or 
@@ -110,7 +111,7 @@ following:
 
 ## Design Goals / Features
 
-* Non-invasive. ***No macros or XML required*** . . . Uses a <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">powerful Objective-C runtime approach.</a>
+* Non-invasive. ***No macros or XML required*** . . . Uses <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">powerful Objective-C runtime approach.</a>
 
 * Its not necessary to change ***any*** of your classes to use the framework. ***Can be introduced into legacy applications.***
 
@@ -145,19 +146,14 @@ ensure that the class is in the required state before and after properties are s
 
 # Usage
 
+
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a>
 * <a href="https://github.com/typhoon-framework/Typhoon-example">Play with the sample application</a>.
 
-And then:
+# Installing
 
-* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling-Components-with-Blocks">Assembling Components with Blocks</a>
-
-* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Autowiring">Autowiring</a>
-
-* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Using-Assembled-Components">Using Assembled Components</a>
-
-* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Incorporating">Incorporating the framework into your project.</a>
-
-* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Configuration-Management-&amp;-Testing">Configuration Management & Testing.</a>
+Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods</a> (recommended). Alternatively, add the source files to your project's target or set up an Xcode workspace. 
 
 # Reports 
 ![Build Status](http://www.typhoonframework.org/docs/latest/build-status/build-status.png?q=zz)
@@ -236,8 +232,6 @@ Here's a few apps built with Typhoon:
 Apache License, Version 2.0, January 2004, http://www.apache.org/licenses/
 
 © 2012 - 2014 Jasper Blues and contributors.
-
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/0e47e2f2028b2badfc88e13f95914938 "githalytics.com")](http://githalytics.com/jasperblues/Typhoon)
 
 
 

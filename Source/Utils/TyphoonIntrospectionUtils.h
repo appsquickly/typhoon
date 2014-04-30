@@ -34,4 +34,7 @@ NSString *TyphoonTypeStringFor(id classOrProtocol);
 
 + (NSUInteger)numberOfArgumentsInSelector:(SEL)selector;
 
++ (NSSet *)properiesForClass:(Class)clazz;
++ (NSSet *)properiesForClass:(Class)clazz upToParentClass:(Class)parent;
+
 @end
