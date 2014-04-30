@@ -84,7 +84,7 @@
         [args addObject:[TyphoonRuntimeNullArgument new]];
     }
     
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < count - 1; i++) {
         id argument = va_arg(list, id);
         if (argument) {
             [args addObject:argument];
