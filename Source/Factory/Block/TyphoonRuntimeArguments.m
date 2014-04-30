@@ -65,6 +65,40 @@
     return [[self alloc] initWithArguments:args];
 }
 
++ (instancetype)argumentsWithSelector:(SEL)selector arguments:(id)first, ...
+{
+    NSUInteger count = [TyphoonIntrospectionUtils numberOfArgumentsInSelector:selector];
+    if (count == 0) {
+        return nil;
+    }
+    
+    NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:count];
+    
+    va_list list;
+    va_start(list, first);
+    
+    if (first) {
+        [args addObject:first];
+    }
+    else {
+        [args addObject:[TyphoonRuntimeNullArgument new]];
+    }
+    
+    for (int i = 0; i < count; i++) {
+        id argument = va_arg(list, id);
+        if (argument) {
+            [args addObject:argument];
+        }
+        else {
+            [args addObject:[TyphoonRuntimeNullArgument new]];
+        }
+    }
+    
+    va_end(list);
+    
+    return [[self alloc] initWithArguments:args];
+}
+
 - (id)initWithArguments:(NSMutableArray *)array
 {
     self = [super init];

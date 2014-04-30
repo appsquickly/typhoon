@@ -12,7 +12,9 @@
 
 + (instancetype)argumentsFromInvocation:(NSInvocation *)invocation;
 
-+ (instancetype)argumentsFromVAList:(va_list)list selector:(SEL)selector;
++ (instancetype)argumentsFromVAList:(va_list)list selector:(SEL)selector DEPRECATED_ATTRIBUTE;
+
++ (instancetype)argumentsWithSelector:(SEL)selector arguments:(id)first, ...;
 
 - (id)argumentValueAtIndex:(NSUInteger)index;
 

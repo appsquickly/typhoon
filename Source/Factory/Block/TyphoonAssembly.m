@@ -126,18 +126,158 @@ static NSMutableArray *reservedSelectorsAsStrings;
 
 + (void)provideDynamicImplementationToConstructDefinitionForSEL:(SEL)sel;
 {
-    IMP imp = &ImplementationToConstructDefinitionAndCatchArguments;
-    class_addMethod(self, sel, imp, "@");
+    SEL originalSel = NSSelectorFromString([TyphoonAssemblySelectorAdviser keyForAdvisedSEL:sel]);
+    
+    Method originalMethod = class_getInstanceMethod(self, originalSel);
+    NSUInteger numberOfArguments = method_getNumberOfArguments(originalMethod);
+    
+    const char *types = [ArgumentTypesForMethod(originalMethod) cStringUsingEncoding:NSASCIIStringEncoding];
+    
+    switch (numberOfArguments-2) {
+        case 0:
+            class_addMethod(self, sel, (IMP)&ImplementationToConstructDefinition, types);
+            break;
+        case 1:
+            class_addMethod(self, sel, (IMP)&ImplementationToConstructDefinitionAndCatch1Argument, types);
+            break;
+        case 2:
+            class_addMethod(self, sel, (IMP)&ImplementationToConstructDefinitionAndCatch2Arguments, types);
+            break;
+        case 3:
+            class_addMethod(self, sel, (IMP)&ImplementationToConstructDefinitionAndCatch3Arguments, types);
+            break;
+        case 4:
+            class_addMethod(self, sel, (IMP)&ImplementationToConstructDefinitionAndCatch4Arguments, types);
+            break;
+        case 5:
+            class_addMethod(self, sel, (IMP)&ImplementationToConstructDefinitionAndCatch5Arguments, types);
+            break;
+        case 6:
+            class_addMethod(self, sel, (IMP)&ImplementationToConstructDefinitionAndCatch6Arguments, types);
+            break;
+        case 7:
+            class_addMethod(self, sel, (IMP)&ImplementationToConstructDefinitionAndCatch7Arguments, types);
+            break;
+        case 8:
+            class_addMethod(self, sel, (IMP)&ImplementationToConstructDefinitionAndCatch8Arguments, types);
+            break;
+        case 9:
+            class_addMethod(self, sel, (IMP)&ImplementationToConstructDefinitionAndCatch9Arguments, types);
+            break;
+        case 10:
+            class_addMethod(self, sel, (IMP)&ImplementationToConstructDefinitionAndCatch10Arguments, types);
+            break;
+        default:
+            NSAssert(NO, @"Typhoon not suppot more than %d runtime arguments yet",(int)numberOfArguments-2);
+            break;
+    }
 }
 
-static id ImplementationToConstructDefinitionAndCatchArguments(TyphoonAssembly *me, SEL selector, ...) {
-    va_list list;
-    va_start(list, selector);
-    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromVAList:list selector:selector];
-    va_end(list);
+//TODO: fix it with NSInvocation approach
+#pragma mark - Temporary Ugly Fix
 
+static id ImplementationToConstructDefinition(TyphoonAssembly *me, SEL selector)
+{
+    NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
+    return [me->_definitionBuilder builtDefinitionForKey:key args:nil];
+}
+
+static id ImplementationToConstructDefinitionAndCatch1Argument(TyphoonAssembly *me, SEL selector, id obj)
+{
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsWithSelector:selector arguments:obj];
+    
     NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
     return [me->_definitionBuilder builtDefinitionForKey:key args:args];
+}
+
+static id ImplementationToConstructDefinitionAndCatch2Arguments(TyphoonAssembly *me, SEL selector, id obj, id obj2)
+{
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsWithSelector:selector arguments:obj, obj2];
+    
+    NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
+    return [me->_definitionBuilder builtDefinitionForKey:key args:args];
+}
+
+static id ImplementationToConstructDefinitionAndCatch3Arguments(TyphoonAssembly *me, SEL selector, id obj, id obj2, id obj3)
+{
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsWithSelector:selector arguments:obj, obj2, obj3];
+    
+    NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
+    return [me->_definitionBuilder builtDefinitionForKey:key args:args];
+}
+
+static id ImplementationToConstructDefinitionAndCatch4Arguments(TyphoonAssembly *me, SEL selector, id obj, id obj2, id obj3, id obj4)
+{
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsWithSelector:selector arguments:obj, obj2, obj3, obj4];
+    
+    NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
+    return [me->_definitionBuilder builtDefinitionForKey:key args:args];
+}
+static id ImplementationToConstructDefinitionAndCatch5Arguments(TyphoonAssembly *me, SEL selector, id obj, id obj2, id obj3, id obj4, id obj5)
+{
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsWithSelector:selector arguments:obj, obj2, obj3, obj4, obj5];
+    
+    NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
+    return [me->_definitionBuilder builtDefinitionForKey:key args:args];
+}
+
+static id ImplementationToConstructDefinitionAndCatch6Arguments(TyphoonAssembly *me, SEL selector, id obj, id obj2, id obj3, id obj4, id obj5, id obj6)
+{
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsWithSelector:selector arguments:obj, obj2, obj3, obj4, obj5, obj6];
+    
+    NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
+    return [me->_definitionBuilder builtDefinitionForKey:key args:args];
+}
+
+static id ImplementationToConstructDefinitionAndCatch7Arguments(TyphoonAssembly *me, SEL selector, id obj, id obj2, id obj3, id obj4, id obj5, id obj6, id obj7)
+{
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsWithSelector:selector arguments:obj, obj2, obj3, obj4, obj5, obj6, obj7];
+    
+    NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
+    return [me->_definitionBuilder builtDefinitionForKey:key args:args];
+}
+
+static id ImplementationToConstructDefinitionAndCatch8Arguments(TyphoonAssembly *me, SEL selector, id obj, id obj2, id obj3, id obj4, id obj5, id obj6, id obj7, id obj8)
+{
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsWithSelector:selector arguments:obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8];
+    
+    NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
+    return [me->_definitionBuilder builtDefinitionForKey:key args:args];
+}
+
+static id ImplementationToConstructDefinitionAndCatch9Arguments(TyphoonAssembly *me, SEL selector, id obj, id obj2, id obj3, id obj4, id obj5, id obj6, id obj7, id obj8, id obj9)
+{
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsWithSelector:selector arguments:obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9];
+    
+    NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
+    return [me->_definitionBuilder builtDefinitionForKey:key args:args];
+}
+
+static id ImplementationToConstructDefinitionAndCatch10Arguments(TyphoonAssembly *me, SEL selector, id obj, id obj2, id obj3, id obj4, id obj5, id obj6, id obj7, id obj8, id obj9, id obj10)
+{
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsWithSelector:selector arguments:obj, obj2, obj3, obj4, obj5, obj6, obj7, obj8, obj9, obj10];
+    
+    NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
+    return [me->_definitionBuilder builtDefinitionForKey:key args:args];
+}
+
+static NSString *ArgumentTypesForMethod(Method method)
+{
+    NSMutableString *types = [NSMutableString new];
+    
+    unsigned int argc = method_getNumberOfArguments(method);
+    
+    char buffer[25];
+    method_getReturnType(method, buffer, 25);
+    [types appendString:[NSString stringWithCString:buffer encoding:NSASCIIStringEncoding]];
+    
+    for (int index = 0; index < argc; index++) {
+        char buffer[25];
+        method_getArgumentType(method, index, buffer, 25);
+        [types appendString:[NSString stringWithCString:buffer encoding:NSASCIIStringEncoding]];
+    }
+    
+    return types;
 }
 
 /* ====================================================================================================================================== */
