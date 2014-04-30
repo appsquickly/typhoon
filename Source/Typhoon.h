@@ -9,6 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "TyphoonAssembly.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonMethod.h"
@@ -20,7 +21,6 @@
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonComponentFactoryPostProcessor.h"
 #import "TyphoonIntrospectionUtils.h"
-#import "TyphoonAssembly.h"
 #import "TyphoonCollaboratingAssemblyProxy.h"
 #import "NSObject+FactoryHooks.h"
 
