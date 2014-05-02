@@ -1,7 +1,6 @@
 # Typhoon! (www.typhoonframework.org) 
 
-
-A new dependency injection container for Objective-C. Light-weight, yet full-featured and super-easy to use. 
+Elegant, powerful dependency injection for Objective-C. Light-weight (just 3500 lines of code), yet full-featured and super-easy to use. 
 
 ## Familiar with Dependency Injection?
 
