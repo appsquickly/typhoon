@@ -139,7 +139,7 @@ ensure that the class is in the required state before and after properties are s
 
 * ***Powerful memory management features***. Provides pre-configured objects, without the memory overhead of singletons.
 
-* ***Lean***. It has a very low footprint, so is appropriate for CPU and memory constrained devices. Weighs in at just 3500 lines of code in total. 
+* ***Lightweight***. It has a very low footprint, so is appropriate for CPU and memory constrained devices. Weighs in at just 3500 lines of code in total! 
 
 * ***Battle-tested*** - used in all kinds of Appstore-featured apps. 
 
