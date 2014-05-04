@@ -1,7 +1,6 @@
 # Typhoon! (www.typhoonframework.org) 
 
-
-A new dependency injection container for Objective-C. Light-weight, yet full-featured and super-easy to use. 
+Elegant, powerful dependency injection for Objective-C. Lightweight - just 3500 lines of code - yet full-featured and super-easy to use. 
 
 ## Familiar with Dependency Injection?
 
@@ -81,7 +80,7 @@ ___And now, it simply becomes___:
 
 
 ####Is that all they mean by 'injected'?
-Yes it is. Right now, you might be thinking "Geez! That's a pretty fancy name for something so plain." Well, you'd be right. But let‘s look at what happens when we start to apply this approach: If you pull hard-wired dependencies out from a class, so that they're passed in, now the <em>next class up the chain</em> has hard-wired dependencies. So we keep applying the pattern. . . 
+Yes it is. Right now, you might be thinking "Geez! That's a pretty fancy name for something so plain." Well, you'd be right. But let‘s look at what happens when we start to apply this approach: Let's say you identify some hard-wired network configurations in a your GoogleWeatherClient, and correct this by instead passing them in via an initializer method. Now if you want to use this class, as a collaborator in a new class, let's say a ViewController, then your GoogleWeatherClient itself can be either a hard-wired dependency, or injected. To get the benefits of dependency injection again, we repeat the process, pulling up the class and along with its own dependencies. And we keep applying until we have a logical module or 'assembly' . . .
 
 . . . If you do this with significant collaborators throughout your app, it means that the __GoogleWeatherClientImpl__ is now declared in a single place - the top-level assembly, so-to-speak. ___And___ all of the classes that need to use some kind of __id&lt;WeatherClient&gt;__ will have it passed in. This means that: 
 
@@ -139,7 +138,7 @@ ensure that the class is in the required state before and after properties are s
 
 * ***Powerful memory management features***. Provides pre-configured objects, without the memory overhead of singletons.
 
-* ***Lean***. It has a very low footprint, so is appropriate for CPU and memory constrained devices. Weighs in at just 3500 lines of code in total. 
+* ***Lightweight***. It has a very low footprint, so is appropriate for CPU and memory constrained devices. Weighs in at just 3500 lines of code in total! 
 
 * ***Battle-tested*** - used in all kinds of Appstore-featured apps. 
 
