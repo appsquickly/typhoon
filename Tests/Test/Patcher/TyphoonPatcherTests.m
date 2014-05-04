@@ -23,6 +23,7 @@
 {
     MiddleAgesAssembly *_assembly;
     TyphoonComponentFactory *_factory;
+    TyphoonPatcher *_patcher;
 }
 
 @end
@@ -40,35 +41,47 @@
 
 - (void)test_allows_patching_out_a_component_with_a_mock
 {
-    [self applyAPatchToFactory:_factory assembly:_assembly];
-
-    [self assertPatchAppliedToFactory:_factory];
+    [self applyAPatch];
+    [self assertPatchApplied];
 }
 
 - (void)test_allows_patching_out_a_loaded_component_with_a_mock
 {
     [_factory componentForKey:@"knight"];
 
-    [self applyAPatchToFactory:_factory assembly:_assembly];
-    [self assertPatchAppliedToFactory:_factory];
+    [self applyAPatch];
+    [self assertPatchApplied];
 }
 
 
 - (void)test_honours_the_scope_of_patched_definition
 {
-    [self applyAPatchToFactory:_factory assembly:_assembly];
-    [self assertPatchAppliedToFactory:_factory];
+    [self applyAPatch];
+    [self assertPatchApplied];
+
+    assertThatBool([_factory componentForKey:@"knight"] == [_factory componentForKey:@"knight"], equalToBool(NO));
+    assertThatBool([_factory componentForKey:@"cavalryMan"] == [_factory componentForKey:@"cavalryMan"], equalToBool(YES));
+}
+
+- (void)test_allows_detaching_patcher
+{
+    [self applyAPatch];
+    [self assertPatchApplied];
 
     assertThatBool([_factory componentForKey:@"knight"] == [_factory componentForKey:@"knight"], equalToBool(NO));
     assertThatBool([_factory componentForKey:@"cavalryMan"] == [_factory componentForKey:@"cavalryMan"], equalToBool(YES));
 
+    [_patcher detach];
 
+    Knight *knight = [_factory componentForKey:@"knight"];
+    LogDebug(@"%@", [knight favoriteDamsels]);
 }
 
-- (void)applyAPatchToFactory:(TyphoonComponentFactory *)factory assembly:(MiddleAgesAssembly *)assembly
+- (void)applyAPatch
 {
-    TyphoonPatcher *patcher = [[TyphoonPatcher alloc] init];
-    [patcher patchDefinition:[assembly knight] withObject:^id {
+    MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+    _patcher = [[TyphoonPatcher alloc] init];
+    [_patcher patchDefinition:[assembly knight] withObject:^id {
         Knight *mockKnight = mock([Knight class]);
         [given([mockKnight favoriteDamsels]) willReturn:@[
             @"Mary",
@@ -78,7 +91,7 @@
         return mockKnight;
     }];
 
-    [patcher patchDefinition:[assembly cavalryMan] withObject:^id {
+    [_patcher patchDefinition:[assembly cavalryMan] withObject:^id {
         CavalryMan *cavalryMan = mock([CavalryMan class]);
         [given ([cavalryMan favoriteDamsels]) willReturn:@[
             @"Leonid",
@@ -90,13 +103,14 @@
         return cavalryMan;
     }];
 
-    [factory attachPostProcessor:patcher];
+    [_factory attachPostProcessor:_patcher];
 }
 
-- (void)assertPatchAppliedToFactory:(TyphoonComponentFactory *)factory
+- (void)assertPatchApplied
 {
-    Knight *knight = [factory componentForKey:@"knight"];
+    Knight *knight = [_factory componentForKey:@"knight"];
     assertThatBool([knight favoriteDamsels].count > 0, is(equalToBool(YES)));
 }
+
 
 @end

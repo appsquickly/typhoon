@@ -12,6 +12,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryPostProcessor.h"
+#import "TyphoonAbstractDetachableComponentFactoryPostProcessor.h"
 
 @class TyphoonDefinition;
 
@@ -25,7 +26,7 @@ typedef id (^TyphoonPatchObjectCreationBlock)();
 * difficult put the system in the required state. Patcher allows taking a fully assembled system, changing just the part required for the
 * given test scenario.
 */
-@interface TyphoonPatcher : NSObject <TyphoonComponentFactoryPostProcessor>
+@interface TyphoonPatcher : TyphoonAbstractDetachableComponentFactoryPostProcessor
 {
     NSMutableDictionary *_patches;
 }
@@ -33,5 +34,7 @@ typedef id (^TyphoonPatchObjectCreationBlock)();
 - (void)patchDefinitionWithKey:(NSString *)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock;
 
 - (void)patchDefinition:(TyphoonDefinition *)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock;
+
+- (void)detach;
 
 @end

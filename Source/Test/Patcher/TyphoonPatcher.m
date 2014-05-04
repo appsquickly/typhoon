@@ -12,7 +12,6 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonPatcher.h"
 #import "TyphoonPatchObjectFactory.h"
-#import "TyphoonMethod.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition+Infrastructure.h"
 
@@ -43,11 +42,17 @@
     [self patchDefinitionWithKey:definition.key withObject:objectCreationBlock];
 }
 
+- (void)detach
+{
+    [self rollback];
+}
+
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods
 
 - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
 {
+    [super postProcessComponentFactory:factory];
     for (TyphoonDefinition *definition in [factory registry]) {
         id patchObject = [_patches objectForKey:definition.key];
         if (patchObject) {
