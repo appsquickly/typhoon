@@ -131,15 +131,6 @@
         parameters:^(TyphoonMethod *factoryMethod) {
             [factoryMethod injectParameterWith:@"blue"];
         }];
-
-
-//    Class:[Sword class] configuration:^(TyphoonDefinition *definition) {
-//        [definition useInitializer:@selector(swordWithSpecification:) parameters:^(TyphoonMethod *initializer) {
-//            initializer.selector = @selector(swordWithSpecification:);
-//            [initializer injectParameter:@"specification" with:@"blue"];
-//        }];
-//        definition.factory = [self swordFactory];
-//    }];
 }
 
 - (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeFoobar:(NSObject *)runtimeObject
