@@ -79,11 +79,25 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     return definition;
 }
 
+//Deprecated!
 + (TyphoonDefinition *)withClass:(Class)clazz factory:(TyphoonDefinition *)_definition selector:(SEL)selector
 {
     return [TyphoonDefinition withClass:clazz configuration:^(TyphoonDefinition *definition) {
         [definition useInitializer:selector parameters:nil];
         [definition setFactory:_definition];
+    }];
+}
+
++ (TyphoonDefinition *)withFactory:(TyphoonDefinition *)factory selector:(SEL)selector
+{
+    return [TyphoonDefinition withFactory:factory selector:selector parameters:nil];
+}
+
++ (TyphoonDefinition *)withFactory:(TyphoonDefinition *)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock
+{
+    return [TyphoonDefinition withClass:[NSObject class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:selector parameters:parametersBlock];
+        [definition setFactory:factory];
     }];
 }
 

@@ -207,7 +207,11 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
 + (TyphoonDefinition *)withClass:(Class)clazz configuration:(TyphoonDefinitionBlock)injections;
 
-+ (TyphoonDefinition *)withClass:(Class)clazz factory:(TyphoonDefinition *)definition selector:(SEL)selector;
++ (TyphoonDefinition *)withClass:(Class)clazz factory:(TyphoonDefinition *)definition selector:(SEL)selector DEPRECATED_MSG_ATTRIBUTE("Use withFactory:selector: method instead");
+
++ (TyphoonDefinition *)withFactory:(TyphoonDefinition *)definition selector:(SEL)selector;
+
++ (TyphoonDefinition *)withFactory:(TyphoonDefinition *)definition selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock;
 
 /* ====================================================================================================================================== */
 #pragma mark Injection
