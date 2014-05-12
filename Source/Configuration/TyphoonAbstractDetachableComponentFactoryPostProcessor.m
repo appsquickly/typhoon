@@ -35,7 +35,7 @@
 - (void)rollback
 {
     NSMutableArray *postProcessors = (NSMutableArray *) _factory.factoryPostProcessors;
-    if (!postProcessors.lastObject == self) {
+    if (![postProcessors.lastObject isEqual:self]) {
         [NSException raise:@"Only the last TyphoonAbstractDetachableComponentFactoryPostProcessor can be rolled-back"
             format:NSInternalInconsistencyException];
     }

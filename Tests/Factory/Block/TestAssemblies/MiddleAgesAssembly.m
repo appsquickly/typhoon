@@ -25,7 +25,10 @@
 {
     return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(quest) with:[self defaultQuest]];
-        [definition injectProperty:@selector(favoriteDamsels) with:@[@"foo", @"bar"]];
+        [definition injectProperty:@selector(favoriteDamsels) with:@[
+            @"foo",
+            @"bar"
+        ]];
         [definition injectProperty:@selector(damselsRescued) with:[[self cavalryMan] property:@selector(damselsRescued)]];
         [definition setScope:TyphoonScopeObjectGraph];
     }];
@@ -124,13 +127,19 @@
 
 - (id)blueSword
 {
-    return [TyphoonDefinition withClass:[Sword class] configuration:^(TyphoonDefinition *definition) {
-        [definition useInitializer:@selector(swordWithSpecification:) parameters:^(TyphoonMethod *initializer) {
-            initializer.selector = @selector(swordWithSpecification:);
-            [initializer injectParameter:@"specification" with:@"blue"];
+    return [TyphoonDefinition withFactory:[self swordFactory] selector:@selector(swordWithSpecification:)
+        parameters:^(TyphoonMethod *factoryMethod) {
+            [factoryMethod injectParameterWith:@"blue"];
         }];
-        definition.factory = [self swordFactory];
-    }];
+
+
+//    Class:[Sword class] configuration:^(TyphoonDefinition *definition) {
+//        [definition useInitializer:@selector(swordWithSpecification:) parameters:^(TyphoonMethod *initializer) {
+//            initializer.selector = @selector(swordWithSpecification:);
+//            [initializer injectParameter:@"specification" with:@"blue"];
+//        }];
+//        definition.factory = [self swordFactory];
+//    }];
 }
 
 - (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeFoobar:(NSObject *)runtimeObject
@@ -143,7 +152,7 @@
 
 /* Actually 'damselsRescued' replaced with InjectionWithRuntimeArgumentAtIndex(0) and url replaced with InjectionWithRuntimeArgumentAtIndex(1) */
 - (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeQuestUrl:(NSURL *)url
-{    
+{
     return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition useInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self questWithRuntimeUrl:url]];

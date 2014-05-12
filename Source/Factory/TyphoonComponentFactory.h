@@ -170,7 +170,7 @@
 - (void)inject:(id)instance;
 
 /**
- * Injects the properties and methods of an object, descripted in definition
+ * Injects the properties and methods of an object, described in definition
  */
 - (void)inject:(id)instance withDefinition:(SEL)selector;
 
