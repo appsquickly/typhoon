@@ -9,20 +9,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import <Foundation/Foundation.h>
+#import "TyphoonMethodSwizzler.h"
 
+@interface TyphoonSwizzler : NSObject <TyphoonMethodSwizzler>
 
-#import "TyphoonJRMethodSwizzler.h"
-#import "TyphoonJRSwizzle.h"
-
-
-@implementation TyphoonJRMethodSwizzler
-{
-
-}
-
-- (BOOL)swizzleMethod:(SEL)selA withMethod:(SEL)selB onClass:(Class)pClass error:(NSError **)error
-{
-    return [pClass typhoon_swizzleMethod:selA withMethod:selB error:error];
-}
++ (instancetype)defaultSwizzler;
 
 @end

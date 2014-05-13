@@ -18,8 +18,7 @@
 #import "TyphoonAssembly.h"
 #import "TyphoonSelector.h"
 #import "TyphoonTestMethodSwizzler.h"
-#import "TyphoonJRMethodSwizzler.h"
-
+#import "TyphoonSwizzler.h"
 
 @interface EmptyTestAssembly : TyphoonAssembly
 @end
@@ -91,7 +90,7 @@
     assembly = [[TestAssemblyWithMethod alloc] init];
     adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
-    assertThat([adviser swizzler], instanceOf([TyphoonJRMethodSwizzler class]));
+    assertThat([adviser swizzler], instanceOf([TyphoonSwizzler class]));
 }
 
 @end
