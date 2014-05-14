@@ -96,8 +96,9 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 + (TyphoonDefinition *)withFactory:(TyphoonDefinition *)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock
 {
     return [TyphoonDefinition withClass:[NSObject class] configuration:^(TyphoonDefinition *definition) {
-        [definition useInitializer:selector parameters:parametersBlock];
         [definition setFactory:factory];
+        [definition setScope:TyphoonScopePrototype];
+        [definition useInitializer:selector parameters:parametersBlock];
     }];
 }
 
