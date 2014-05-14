@@ -122,6 +122,9 @@
 
 - (void)replaceArgumentAtIndex:(NSUInteger)index withArgument:(id)argument
 {
+    if (!argument) {
+        argument = [TyphoonRuntimeNullArgument new];
+    }
     [_arguments replaceObjectAtIndex:index withObject:argument];
     _needRehash = YES;
 }

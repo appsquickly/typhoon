@@ -64,6 +64,13 @@
     assertThatInt(knight.damselsRescued, equalToInt(0));
 }
 
+- (void)test_runtime_knight_with_method_arg_nil
+{
+    Knight *knight = [factory knightWithRuntimeDamselsRescued:@(12) runtimeQuestUrl:nil];
+    assertThat([knight.quest imageUrl], equalTo(nil));
+    assertThatInt(knight.damselsRescued, equalToInt(12));
+}
+
 
 - (void)test_predefined_quest
 {
