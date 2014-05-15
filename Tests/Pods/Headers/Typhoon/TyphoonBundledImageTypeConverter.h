@@ -1,1 +1,0 @@
-../../../../Source/ios/TypeConversion/Converters/TyphoonBundledImageTypeConverter.h
