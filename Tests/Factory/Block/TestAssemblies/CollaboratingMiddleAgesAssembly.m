@@ -27,4 +27,11 @@
     }];
 }
 
+- (id)knightWithCollaboratingFoobar:(NSString *)foobar
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(friends) with:[NSSet setWithObject:[_quests knightWithFoobar:foobar]]];
+    }];
+}
+
 @end

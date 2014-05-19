@@ -24,5 +24,6 @@
 @property(nonatomic, strong, readwrite) TyphoonAssembly <QuestProvider> *quests;
 
 - (id)knightWithExternalQuest;
+- (id)knightWithCollaboratingFoobar:(NSString *)foorbar;
 
 @end

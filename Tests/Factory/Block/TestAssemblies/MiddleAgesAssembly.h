@@ -50,4 +50,6 @@
 
 - (id)knightWithPredefinedCircularDependency:(NSNumber *)damselsRescued;
 
+- (id)knightWithFoobar:(NSString *)foobar;
+
 @end

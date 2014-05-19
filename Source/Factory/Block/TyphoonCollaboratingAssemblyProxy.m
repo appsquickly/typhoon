@@ -16,6 +16,8 @@
 #import "TyphoonReferenceDefinition.h"
 #import "TyphoonObjectWithCustomInjection.h"
 #import "TyphoonInjectionByComponentFactory.h"
+#import "TyphoonRuntimeArguments.h"
+#import "TyphoonIntrospectionUtils.h"
 
 @interface TyphoonCollaboratingAssemblyProxy () <TyphoonObjectWithCustomInjection>
 
@@ -34,21 +36,21 @@
     return instance;
 }
 
-+ (BOOL)resolveInstanceMethod:(SEL)sel
+- (void)forwardInvocation:(NSInvocation *)anInvocation
 {
-    if ([super resolveInstanceMethod:sel] == NO) {
-        IMP imp = [self proxyDefinitionForSelector:sel];
-        class_addMethod(self, sel, imp, "@@:");
-    }
-    return YES;
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
+
+    //Since we're resolving a reference to another component, all we need to provide here is the definition's key and runtime args.
+    TyphoonDefinition *definition = [TyphoonReferenceDefinition definitionReferringToComponent:[TyphoonAssemblySelectorAdviser keyForSEL:anInvocation.selector]];
+    definition.currentRuntimeArguments = args;
+
+    [anInvocation retainArguments];
+    [anInvocation setReturnValue:&definition];
 }
 
-+ (IMP)proxyDefinitionForSelector:(SEL)selector
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)selector
 {
-    return imp_implementationWithBlock((__bridge id) objc_unretainedPointer((TyphoonDefinition *) ^(id me) {
-        //Since we're resolving a reference to another component, all we need to provide here is the definition's key.
-        return [TyphoonReferenceDefinition definitionReferringToComponent:[TyphoonAssemblySelectorAdviser keyForSEL:selector]];
-    }));
+    return [TyphoonIntrospectionUtils methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:selector];
 }
 
 /* ====================================================================================================================================== */

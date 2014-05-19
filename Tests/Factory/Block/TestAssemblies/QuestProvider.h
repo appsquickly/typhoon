@@ -14,5 +14,6 @@
 @protocol QuestProvider <NSObject>
 
 - (id)environmentDependentQuest;
+- (id)knightWithFoobar:(NSString *)foobar;
 
 @end

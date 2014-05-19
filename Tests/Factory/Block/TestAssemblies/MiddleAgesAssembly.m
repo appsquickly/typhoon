@@ -221,4 +221,11 @@
     }];
 }
 
+- (id)knightWithFoobar:(NSString *)foobar
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(foobar) with:foobar];
+    }];
+}
+
 @end
