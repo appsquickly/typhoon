@@ -10,9 +10,34 @@
 #import "TyphoonIntrospectionUtils.h"
 
 @interface TyphoonRuntimeNullArgument : NSObject
+
++ (instancetype)null;
+
 @end
 
 @implementation TyphoonRuntimeNullArgument
+
++ (instancetype)null
+{
+    static TyphoonRuntimeNullArgument *sharedNull;
+    static dispatch_once_t once_token;
+    dispatch_once(&once_token, ^{
+        sharedNull = [TyphoonRuntimeNullArgument new];
+    });
+    return sharedNull;
+}
+
+- (NSUInteger)hash
+{
+    /** Any constant can be here, nothing magical */
+    return 25042013;
+}
+
+- (BOOL)isEqual:(id)object
+{
+    return [object isMemberOfClass:[TyphoonRuntimeNullArgument class]];
+}
+
 @end
 
 @implementation TyphoonRuntimeArguments
@@ -38,64 +63,10 @@
             [args addObject:argument];
         }
         else {
-            [args addObject:[TyphoonRuntimeNullArgument new]];
+            [args addObject:[TyphoonRuntimeNullArgument null]];
         }
     }
 
-    return [[self alloc] initWithArguments:args];
-}
-
-+ (instancetype)argumentsFromVAList:(va_list)list selector:(SEL)selector
-{
-    NSUInteger count = [TyphoonIntrospectionUtils numberOfArgumentsInSelector:selector];
-    if (count == 0) {
-        return nil;
-    }
-
-    NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:count];
-    for (int i = 0; i < count; i++) {
-        id argument = va_arg(list, id);
-        if (argument) {
-            [args addObject:argument];
-        }
-        else {
-            [args addObject:[TyphoonRuntimeNullArgument new]];
-        }
-    }
-    return [[self alloc] initWithArguments:args];
-}
-
-+ (instancetype)argumentsWithSelector:(SEL)selector arguments:(id)first, ...
-{
-    NSUInteger count = [TyphoonIntrospectionUtils numberOfArgumentsInSelector:selector];
-    if (count == 0) {
-        return nil;
-    }
-    
-    NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:count];
-    
-    va_list list;
-    va_start(list, first);
-    
-    if (first) {
-        [args addObject:first];
-    }
-    else {
-        [args addObject:[TyphoonRuntimeNullArgument new]];
-    }
-    
-    for (int i = 0; i < count - 1; i++) {
-        id argument = va_arg(list, id);
-        if (argument) {
-            [args addObject:argument];
-        }
-        else {
-            [args addObject:[TyphoonRuntimeNullArgument new]];
-        }
-    }
-    
-    va_end(list);
-    
     return [[self alloc] initWithArguments:args];
 }
 
@@ -123,7 +94,7 @@
 - (void)replaceArgumentAtIndex:(NSUInteger)index withArgument:(id)argument
 {
     if (!argument) {
-        argument = [TyphoonRuntimeNullArgument new];
+        argument = [TyphoonRuntimeNullArgument null];
     }
     [_arguments replaceObjectAtIndex:index withObject:argument];
     _needRehash = YES;
@@ -165,6 +136,5 @@
     
     return hash;
 }
-
 
 @end

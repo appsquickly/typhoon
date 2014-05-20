@@ -149,6 +149,7 @@
             [initializer injectParameterWith:[self questWithRuntimeUrl:url]];
         }];
         [definition injectProperty:@selector(damselsRescued) with:damselsRescued];
+        [definition injectProperty:@selector(foobar) with:[self knightWithPredefinedCircularDependency:damselsRescued]];
     }];
 }
 
@@ -167,7 +168,7 @@
     }];
 }
 
-- (id)knightWithDamselsRescued:(NSNumber *)damselsRescued
+- (id)knightWithCircularDependencyAndDamselsRescued:(NSNumber *)damselsRescued
 {
     return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition useInitializer:@selector(initWithDamselsRescued:foo:) parameters:^(TyphoonMethod *initializer) {
@@ -180,7 +181,7 @@
 - (id)knightWithFoobarKnightWithDamselsRescued:(NSNumber *)damselsRescued
 {
     return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(foobar) with:[self knightWithDamselsRescued:damselsRescued]];
+        [definition injectProperty:@selector(foobar) with:[self knightWithCircularDependencyAndDamselsRescued:damselsRescued]];
     }];
 }
 

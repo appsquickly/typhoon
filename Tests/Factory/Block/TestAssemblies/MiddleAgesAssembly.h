@@ -46,7 +46,7 @@
 
 - (id)knightWithMethodInjection;
 
-- (id)knightWithDamselsRescued:(NSNumber *)damselsRescued;
+- (id)knightWithCircularDependencyAndDamselsRescued:(NSNumber *)damselsRescued;
 
 - (id)knightWithPredefinedCircularDependency:(NSNumber *)damselsRescued;
 

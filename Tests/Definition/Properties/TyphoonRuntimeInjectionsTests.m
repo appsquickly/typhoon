@@ -1,5 +1,5 @@
 //
-//  RuntimePropertiesInjectionsTests.m
+//  TyphoonRuntimeInjectionsTests.m
 //  Tests
 //
 //  Created by Aleksey Garbarev on 10.03.14.
@@ -11,11 +11,11 @@
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
 
-@interface RuntimePropertiesInjectionsTests : SenTestCase
+@interface TyphoonRuntimeInjectionsTests : SenTestCase
 
 @end
 
-@implementation RuntimePropertiesInjectionsTests
+@implementation TyphoonRuntimeInjectionsTests
 {
     MiddleAgesAssembly *factory;
 }
@@ -24,7 +24,7 @@
 {
     [super setUp];
 
-    factory = [TyphoonBlockComponentFactory factoryWithAssembly:[MiddleAgesAssembly assembly]];
+    factory = [[TyphoonBlockComponentFactory factoryWithAssembly:[MiddleAgesAssembly assembly]] asAssembly];
 }
 
 - (void)test_runtime_arguments
@@ -38,7 +38,7 @@
 - (void)test_runtime_block_arguments
 {
     __block NSString *foobar = @"initial string";
-    Knight *knight = [factory knightWithRuntimeDamselsRescued:@6 runtimeFoobar:^(NSString *blockArg){
+    Knight *knight = [factory knightWithRuntimeDamselsRescued:@6 runtimeFoobar:(NSObject *) ^(NSString *blockArg){
         foobar = [NSString stringWithFormat:@"set from block %@",blockArg];
     }];
     assertThatInt(knight.damselsRescued, equalToInt(6));
@@ -69,8 +69,17 @@
     Knight *knight = [factory knightWithRuntimeDamselsRescued:@(12) runtimeQuestUrl:nil];
     assertThat([knight.quest imageUrl], equalTo(nil));
     assertThatInt(knight.damselsRescued, equalToInt(12));
+
+    Knight *friend = (Knight *) knight.foobar;
+    assertThatInt(friend.damselsRescued, equalToInt(12));
 }
 
+- (void)test_runtime_knight_with_method_arg_and_two_nils
+{
+    Knight *knight = [factory knightWithRuntimeDamselsRescued:nil runtimeQuestUrl:nil];
+    assertThat([knight.quest imageUrl], equalTo(nil));
+    assertThatInt(knight.damselsRescued, equalToInt(0));
+}
 
 - (void)test_predefined_quest
 {
@@ -80,11 +89,22 @@
 
 - (void)test_circular_dependency_with_runtime_args
 {
-    Knight *knight = [factory knightWithDamselsRescued:@32];
+    Knight *knight = [factory knightWithCircularDependencyAndDamselsRescued:@32];
     
     Knight *anotherKnight = (Knight *) knight.foobar;
     
     STAssertEquals((int)knight.damselsRescued, 32, @"");
+    STAssertTrue(anotherKnight.foobar == knight, @"");
+    STAssertTrue(knight.foobar == anotherKnight, @"");
+}
+
+- (void)test_circular_dependency_with_runtime_args_as_nil
+{
+    Knight *knight = [factory knightWithCircularDependencyAndDamselsRescued:nil];
+
+    Knight *anotherKnight = (Knight *) knight.foobar;
+
+    STAssertEquals((int)knight.damselsRescued, (int)nil, @"");
     STAssertTrue(anotherKnight.foobar == knight, @"");
     STAssertTrue(knight.foobar == anotherKnight, @"");
 }
