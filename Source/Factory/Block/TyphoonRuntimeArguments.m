@@ -160,10 +160,11 @@
     NSUInteger hash = 0;
     
     for (id arg in _arguments) {
-        hash ^= [arg hash];
+        hash = (hash << 5) - hash + [arg hash];
     }
     
     return hash;
 }
+
 
 @end
