@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonDefinition.h"
-
+#import "TyphoonDefinition+Option.h"
 #import <Foundation/Foundation.h>
 
 @class TyphoonComponentFactory;
