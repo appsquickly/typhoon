@@ -21,6 +21,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2DBA1177991929001EC85AB5 /* DefinitionConfigurationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA137D3646A6E1966C23AD /* DefinitionConfigurationTest.m */; };
+		2DBA1281D828E173F9583000 /* AssemblyWithDefinitionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA14810C15377E0C06FDC2 /* AssemblyWithDefinitionConfiguration.m */; };
+		2DBA128546F67D51A7F5E77B /* DefinitionConfigurationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA137D3646A6E1966C23AD /* DefinitionConfigurationTest.m */; };
+		2DBA1BA0CE220EBBAFE84537 /* AssemblyWithDefinitionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA14810C15377E0C06FDC2 /* AssemblyWithDefinitionConfiguration.m */; };
 		46BD2236184F7481008E89E5 /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BD2235184F7481008E89E5 /* NSNullTypeConverter.m */; };
 		46BD2237184F7481008E89E5 /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BD2235184F7481008E89E5 /* NSNullTypeConverter.m */; };
 		46BD2238184F7481008E89E5 /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BD2235184F7481008E89E5 /* NSNullTypeConverter.m */; };
@@ -370,6 +374,9 @@
 		159D62E0E7314B4D9C0B9CC1 /* Pods-iOS Tests (Cocoapods).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests (Cocoapods).xcconfig"; path = "Pods/Pods-iOS Tests (Cocoapods).xcconfig"; sourceTree = SOURCE_ROOT; };
 		196064E125A34CED821062FF /* libPods-OS X Tests (Cocoapods).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OS X Tests (Cocoapods).a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC491FA50E048988BFB5756 /* libPods-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DBA1315C6139B5C90B8EF5D /* AssemblyWithDefinitionConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssemblyWithDefinitionConfiguration.h; sourceTree = "<group>"; };
+		2DBA137D3646A6E1966C23AD /* DefinitionConfigurationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefinitionConfigurationTest.m; sourceTree = "<group>"; };
+		2DBA14810C15377E0C06FDC2 /* AssemblyWithDefinitionConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssemblyWithDefinitionConfiguration.m; sourceTree = "<group>"; };
 		37EFD46D9A8A4490AD09985E /* Pods-iOS Tests (Static Library).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests (Static Library).xcconfig"; path = "Pods/Pods-iOS Tests (Static Library).xcconfig"; sourceTree = "<group>"; };
 		46BD2234184F7481008E89E5 /* NSNullTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNullTypeConverter.h; sourceTree = "<group>"; };
 		46BD2235184F7481008E89E5 /* NSNullTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNullTypeConverter.m; sourceTree = "<group>"; };
@@ -603,6 +610,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DBA12D92AE31E899D346BA1 /* DefinitionOptionConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				2DBA137D3646A6E1966C23AD /* DefinitionConfigurationTest.m */,
+				2DBA1315C6139B5C90B8EF5D /* AssemblyWithDefinitionConfiguration.h */,
+				2DBA14810C15377E0C06FDC2 /* AssemblyWithDefinitionConfiguration.m */,
+			);
+			path = DefinitionOptionConfiguration;
+			sourceTree = "<group>";
+		};
 		46877CF717D70B5900910D6A /* Initializer */ = {
 			isa = PBXGroup;
 			children = (
@@ -958,6 +975,7 @@
 				BA798B8F5CE2C9292F9F740F /* TyphoonBundleResourceTests.m */,
 				CAE54FA0A9F61F49CBA68D23 /* TyphoonComponentPostProcessorMock.m */,
 				CAE7AEB88A93C6A24EE97E67 /* TyphoonComponentPostProcessorMock.h */,
+				2DBA12D92AE31E899D346BA1 /* DefinitionOptionConfiguration */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -1456,6 +1474,8 @@
 				BA798E0F35187142F478BB60 /* Fort.m in Sources */,
 				CAEDB34ECD72FEA3B58ADB44 /* PropertyPlaceholderAssembly.m in Sources */,
 				C9497B584580CAA1C9876848 /* TyphoonComponentsFactoryCollaboratingWithRuntimeArgsTests.m in Sources */,
+				2DBA128546F67D51A7F5E77B /* DefinitionConfigurationTest.m in Sources */,
+				2DBA1281D828E173F9583000 /* AssemblyWithDefinitionConfiguration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1562,6 +1582,8 @@
 				BA7989D4E3C6EACCBC66B8D2 /* CoverageFixer.m in Sources */,
 				CAEA3636003B83BCED0C8870 /* PropertyPlaceholderAssembly.m in Sources */,
 				C9497209C36EFCE7FDA2DD21 /* TyphoonComponentsFactoryCollaboratingWithRuntimeArgsTests.m in Sources */,
+				2DBA1BA0CE220EBBAFE84537 /* AssemblyWithDefinitionConfiguration.m in Sources */,
+				2DBA1177991929001EC85AB5 /* DefinitionConfigurationTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1751,7 +1773,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/**";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/\"/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -1794,7 +1816,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/**";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/\"/**";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = octest;
 			};
