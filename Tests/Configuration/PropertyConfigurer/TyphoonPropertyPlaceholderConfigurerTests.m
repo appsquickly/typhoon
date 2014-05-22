@@ -31,9 +31,10 @@
 
 - (void)test_parses_property_name_value_pairs
 {
-    NSDictionary *properties = [_configurer properties];
-    LogTrace(@"Properties: %@", properties); // TODO: replace with an actual automated test.
-    properties = nil;
+    // TODO: replace with an actual automated test.
+//    NSDictionary *properties = [_configurer properties];
+//    LogTrace(@"Properties: %@", properties);
+//    properties = nil;
 }
 
 - (void)test_mutates_initializer_values

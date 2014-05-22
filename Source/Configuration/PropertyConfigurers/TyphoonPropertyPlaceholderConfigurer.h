@@ -19,11 +19,6 @@
 * @ingroup Configuration
 */
 @interface TyphoonPropertyPlaceholderConfigurer : NSObject <TyphoonComponentFactoryPostProcessor>
-{
-    NSString *_prefix;
-    NSString *_suffix;
-    NSMutableDictionary *_properties;
-}
 
 + (TyphoonPropertyPlaceholderConfigurer *)configurer;
 
@@ -33,11 +28,11 @@
 
 + (TyphoonPropertyPlaceholderConfigurer *)configurerWithResourceList:(NSArray *)resources;
 
-- (id)initWithPrefix:(NSString *)prefix suffix:(NSString *)suffix;
-
 - (void)usePropertyStyleResource:(id <TyphoonResource>)resource;
 
-- (NSDictionary *)properties;
+- (void)useJsonStyleResource:(id <TyphoonResource>)resource;
+
+- (NSDictionary *)properties UNAVAILABLE_ATTRIBUTE;
 
 @end
 

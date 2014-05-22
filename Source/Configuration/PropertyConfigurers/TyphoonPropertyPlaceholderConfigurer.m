@@ -16,10 +16,17 @@
 #import "TyphoonInjectionByObjectFromString.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "OCLogTemplate.h"
-#import "TyphoonComponentFactory.h"
+#import "TyphoonPropertyStyleConfiguration.h"
 #import "TyphoonInjections.h"
+#import "TyphoonJsonStyleConfiguration.h"
 
-@implementation TyphoonPropertyPlaceholderConfigurer
+NSString static *kTyphoonPropertyPlaceholderPrefix = @"${";
+NSString static *kTyphoonPropertyPlaceholderSuffix = @"}";
+
+@implementation TyphoonPropertyPlaceholderConfigurer {
+    id<TyphoonConfiguration> _propertyStyleConfiguration;
+    id<TyphoonConfiguration> _jsonStyleConfiguration;
+}
 
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
@@ -63,20 +70,14 @@
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
 
-- (id)initWithPrefix:(NSString *)prefix suffix:(NSString *)suffix
+- (id)init
 {
     self = [super init];
     if (self) {
-        _prefix = prefix;
-        _suffix = suffix;
-        _properties = [[NSMutableDictionary alloc] init];
+        _propertyStyleConfiguration = [TyphoonPropertyStyleConfiguration new];
+        _jsonStyleConfiguration = [TyphoonJsonStyleConfiguration new];
     }
     return self;
-}
-
-- (id)init
-{
-    return [self initWithPrefix:@"${" suffix:@"}"];
 }
 
 /* ====================================================================================================================================== */
@@ -84,24 +85,22 @@
 
 - (void)usePropertyStyleResource:(id <TyphoonResource>)resource
 {
-    NSArray *lines = [[resource asString] componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-    for (NSString *line in lines) {
-        if (![line hasPrefix:@"#"]) {
-            NSRange range = [line rangeOfString:@"="];
-            if (range.location != NSNotFound) {
-                NSString *property = [line substringToIndex:range.location];
-                NSString *value = [line substringFromIndex:range.location + range.length];
-                [_properties setObject:value forKey:property];
-            }
-        }
-    }
+    [_propertyStyleConfiguration appendResource:resource];
 }
 
-- (NSDictionary *)properties
+- (void)useJsonStyleResource:(id<TyphoonResource>)resource
 {
-    return [_properties copy];
+    [_jsonStyleConfiguration appendResource:resource];
 }
 
+- (id)configurationValueForKey:(NSString *)key
+{
+    id value = [_jsonStyleConfiguration objectForKey:key];
+    if (!value) {
+        value = [_propertyStyleConfiguration objectForKey:key];
+    }
+    return value;
+}
 
 /* ====================================================================================================================================== */
 #pragma mark - Protocol Methods
@@ -117,10 +116,10 @@
 
 - (void)mutateComponentInjectedByValue:(id <TyphoonInjectedWithStringRepresentation>)component;
 {
-    if ([component.textValue hasPrefix:_prefix] && [component.textValue hasSuffix:_suffix]) {
-        NSString *key = [component.textValue substringFromIndex:[_prefix length]];
-        key = [key substringToIndex:[key length] - [_suffix length]];
-        NSString *value = [_properties valueForKey:key];
+    if ([component.textValue hasPrefix:kTyphoonPropertyPlaceholderPrefix] && [component.textValue hasSuffix:kTyphoonPropertyPlaceholderSuffix]) {
+        NSString *key = [component.textValue substringFromIndex:[kTyphoonPropertyPlaceholderPrefix length]];
+        key = [key substringToIndex:[key length] - [kTyphoonPropertyPlaceholderSuffix length]];
+        NSString *value = [self configurationValueForKey:key]
         LogTrace(@"Setting property '%@' to value '%@'", key, value);
         component.textValue = value;
     }
@@ -129,6 +128,6 @@
 @end
 
 id TyphoonConfig(NSString *configKey) {
-    NSString *key = [NSString stringWithFormat:@"${%@}", configKey];
+    NSString *key = [NSString stringWithFormat:@"%@%@%@", kTyphoonPropertyPlaceholderPrefix, configKey, kTyphoonPropertyPlaceholderSuffix];
     return TyphoonInjectionWithObjectFromString(key);
 }
