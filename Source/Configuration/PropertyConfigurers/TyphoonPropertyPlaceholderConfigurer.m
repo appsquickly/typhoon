@@ -111,6 +111,7 @@ NSString static *kTyphoonPropertyPlaceholderSuffix = @"}";
         for (id <TyphoonInjectedWithStringRepresentation> component in [definition componentsInjectedByValue]) {
             [self mutateComponentInjectedByValue:component];
         }
+
     }
 }
 

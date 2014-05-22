@@ -37,7 +37,7 @@
 
 - (id)objectForKey:(NSString *)key
 {
-    return [_properties valueForKeyPath:key];
+    return [[_properties valueForKeyPath:key] description];
 }
 
 @end
