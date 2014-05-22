@@ -31,13 +31,13 @@
     if (!error) {
         [_properties addEntriesFromDictionary:dictionary];
     } else {
-        NSLog(@"ERROR: Can't parse JSON resource: %@",error);
+        [NSException raise:NSInvalidArgumentException format:@"Can't prase JSON configuration file: %@",error];
     }
 }
 
 - (id)objectForKey:(NSString *)key
 {
-    return [[_properties valueForKeyPath:key] description];
+    return [_properties valueForKeyPath:key];
 }
 
 @end
