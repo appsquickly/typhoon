@@ -20,9 +20,7 @@
           <option name="NAMESPACE_BRACE_PLACEMENT" value="2" />
           <option name="METHOD_BRACE_PLACEMENT" value="2" />
           <option name="METHOD_PARAMETERS_WRAP" value="1" />
-          <option name="METHOD_PARAMETERS_ALIGN_BY_COLONS" value="false" />
           <option name="METHOD_CALL_ARGUMENTS_WRAP" value="1" />
-          <option name="METHOD_CALL_ARGUMENTS_ALIGN_BY_COLONS" value="false" />
         </Objective-C>
         <Objective-C-extensions>
           <option name="GENERATE_INSTANCE_VARIABLES_FOR_PROPERTIES" value="ASK" />
@@ -79,7 +77,6 @@
       </value>
     </option>
     <option name="USE_PER_PROJECT_SETTINGS" value="true" />
-    <option name="PREFERRED_PROJECT_CODE_STYLE" value="K&amp;R" />
   </component>
 </project>
 

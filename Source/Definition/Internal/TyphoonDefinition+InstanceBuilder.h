@@ -14,29 +14,31 @@
 #import "TyphoonDefinition.h"
 
 @protocol TyphoonPropertyInjection;
+@protocol TyphoonInjection;
+
+typedef void(^TyphoonInjectionsEnumerationBlock)(id injection, id*injectionToReplace, BOOL*stop);
+
+typedef enum {
+    TyphoonInjectionsEnumerationOptionProperties = 1 << 0,
+    TyphoonInjectionsEnumerationOptionMethods = 1 << 2
+} TyphoonInjectionsEnumerationOption;
+
+#define TyphoonInjectionsEnumerationOptionAll (TyphoonInjectionsEnumerationOptionProperties | TyphoonInjectionsEnumerationOptionMethods)
 
 @interface TyphoonDefinition (InstanceBuilder)
 
 - (void)setType:(Class)type;
 
-- (NSSet *)componentsInjectedByValue;
-
-- (NSSet *)propertiesInjectedByValue;
-
-- (NSSet *)propertiesInjectedByType;
-
-- (NSSet *)propertiesInjectedByObjectInstance;
-
-- (NSSet *)propertiesInjectedByReference;
-
-- (NSSet *)propertiesInjectedByRuntimeArgument;
-
 - (NSSet *)injectedProperties;
 
 - (NSSet *)injectedMethods;
 
+- (void)enumerateInjectionsOfKind:(Class)injectionClass options:(TyphoonInjectionsEnumerationOption)options
+                       usingBlock:(TyphoonInjectionsEnumerationBlock)block;
+
+- (BOOL)hasRuntimeArgumentInjections;
+
 - (void)addInjectedProperty:(id <TyphoonPropertyInjection>)property;
 
-- (void)removeInjectedProperty:(id <TyphoonPropertyInjection>)property;
 
 @end

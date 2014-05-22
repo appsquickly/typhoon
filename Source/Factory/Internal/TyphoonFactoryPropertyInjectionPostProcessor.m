@@ -27,11 +27,13 @@
 - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
 {
     for (TyphoonDefinition *definition in [factory registry]) {
-        for (TyphoonInjectionByType *typeInjection in [definition propertiesInjectedByType]) {
+
+        [definition enumerateInjectionsOfKind:[TyphoonInjectionByType class] options:TyphoonInjectionsEnumerationOptionProperties
+                                   usingBlock:^(TyphoonInjectionByType *typeInjection, id <TyphoonInjection> *injectionToReplace, BOOL *stop) {
             if ([self shouldReplaceInjectionByType:typeInjection withFactoryInjectionInDefinition:definition]) {
-                [self replaceTypePropertyInjection:typeInjection withFactoryInjectionInDefinition:definition];
+                *injectionToReplace = [self factoryInjectionToReplacePropertyInjection:typeInjection];
             }
-        }
+        }];
     }
 }
 
@@ -53,14 +55,11 @@
     return isFactoryClass;
 }
 
-- (void)replaceTypePropertyInjection:(TyphoonInjectionByType *)typeInjection
-    withFactoryInjectionInDefinition:(TyphoonDefinition *)definition
+- (TyphoonInjectionByComponentFactory *)factoryInjectionToReplacePropertyInjection:(id<TyphoonPropertyInjection>)propertyInjection
 {
-    NSString *name = typeInjection.propertyName;
-    [definition removeInjectedProperty:typeInjection];
     TyphoonInjectionByComponentFactory *newInjection = [[TyphoonInjectionByComponentFactory alloc] init];
-    [newInjection setPropertyName:name];
-    [definition addInjectedProperty:newInjection];
+    [newInjection setPropertyName:[propertyInjection propertyName]];
+    return newInjection;
 }
 
 @end

@@ -21,6 +21,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 #import "TyphoonInjectionByObjectInstance.h"
 #import "TyphoonInjectionByReference.h"
 #import "TyphoonInjectionByRuntimeArgument.h"
+#import "TyphoonInjection.h"
 
 @implementation TyphoonDefinition (InstanceBuilder)
 
@@ -34,15 +35,111 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     _type = type;
 }
 
-- (NSSet *)componentsInjectedByValue;
-{
-    NSMutableSet *set = [[NSMutableSet alloc] init];
-    [set unionSet:[self propertiesInjectedByValue]];
+#pragma mark - Base methods
 
-    NSArray *a = [self.initializer parametersInjectedByValue];
-    [set unionSet:[NSSet setWithArray:a]];
-    return set;
+- (void)enumerateInjectionsOfKind:(Class)injectionClass options:(TyphoonInjectionsEnumerationOption)options
+                       usingBlock:(TyphoonInjectionsEnumerationBlock)block
+{
+    if (options & TyphoonInjectionsEnumerationOptionMethods) {
+        [self enumerateInjectionsOfKind:injectionClass onCollection:[self.initializer injectedParameters] withBlock:block
+                           replaceBlock:^(id injection, id injectionToReplace) {
+            [self.initializer replaceInjection:injection with:injectionToReplace];
+
+        }];
+
+        for (TyphoonMethod *method in [self injectedMethods]) {
+            [self enumerateInjectionsOfKind:injectionClass onCollection:[method injectedParameters] withBlock:block
+                               replaceBlock:^(id injection, id injectionToReplace) {
+                [method replaceInjection:injection with:injectionToReplace];
+            }];
+        }
+    }
+
+    if (options & TyphoonInjectionsEnumerationOptionProperties) {
+        [self enumerateInjectionsOfKind:injectionClass onCollection:[self injectedProperties] withBlock:block
+                           replaceBlock:^(id injection, id injectionToReplace) {
+            [self replacePropertyInjection:injection with:injectionToReplace];
+        }];
+    }
 }
+
+- (void)enumerateInjectionsOfKind:(Class)injectionClass onCollection:(id<NSFastEnumeration>)collection withBlock:(TyphoonInjectionsEnumerationBlock)block
+                     replaceBlock:(void(^)(id injection, id injectionToReplace))replaceBlock
+{
+    for (id<TyphoonInjection>injection in collection) {
+        if ([injection isKindOfClass:injectionClass]) {
+            id injectionToReplace = nil;
+            BOOL stop = NO;
+            block(injection, &injectionToReplace, &stop);
+            if (injectionToReplace) {
+                replaceBlock(injection, injectionToReplace);
+            }
+            if (stop) {
+                break;
+            }
+        }
+    }
+}
+
+- (NSSet *)injectedProperties
+{
+    if (!self.parent) {
+        return [_injectedProperties mutableCopy];
+    }
+
+    NSMutableSet *properties = (NSMutableSet *)[self.parent injectedProperties];
+
+    NSMutableSet *overriddenProperties = [NSMutableSet set];
+
+    for (id<TyphoonPropertyInjection> parentProperty in properties) {
+        for (id <TyphoonPropertyInjection> childProperty in _injectedProperties) {
+            if ([[childProperty propertyName] isEqualToString:[parentProperty propertyName]]) {
+                [overriddenProperties addObject:parentProperty];
+            }
+        }
+    }
+
+    [properties minusSet:overriddenProperties];
+    [properties unionSet:_injectedProperties];
+
+    return properties;
+}
+
+- (NSSet *)injectedMethods
+{
+    if (!self.parent) {
+        return [_injectedMethods mutableCopy];
+    }
+    NSMutableSet *methods = (NSMutableSet *)[self.parent injectedMethods];
+
+    NSMutableSet *overriddenMethods = [NSMutableSet set];
+    for (TyphoonMethod *parentMethod in methods) {
+        for (TyphoonMethod *childMethod in _injectedMethods) {
+            if (parentMethod.selector == childMethod.selector) {
+                [overriddenMethods addObject:parentMethod];
+            }
+        }
+    }
+
+    [methods minusSet:overriddenMethods];
+    [methods unionSet:_injectedMethods];
+
+    return methods;
+}
+
+- (void)replacePropertyInjection:(id<TyphoonPropertyInjection>)injection with:(id<TyphoonPropertyInjection>)injectionToReplace
+{
+    if ([_injectedProperties containsObject:injection]) {
+        [injectionToReplace setPropertyName:[injection propertyName]];
+        [_injectedProperties removeObject:injection];
+        [_injectedProperties addObject:injectionToReplace];
+    } else if (self.parent) {
+        [self.parent replacePropertyInjection:injection with:injectionToReplace];
+    }
+}
+
+
+#pragma mark - Shorthands
 
 - (NSSet *)propertiesInjectedByValue
 {
@@ -74,57 +171,28 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     [_injectedProperties addObject:property];
 }
 
-- (void)removeInjectedProperty:(id <TyphoonPropertyInjection>)property
+- (BOOL)hasRuntimeArgumentInjections
 {
-    [_injectedProperties removeObject:property];
-}
-
-- (NSSet *)injectedProperties
-{
-    NSMutableSet *parentProperties = [self.parent injectedProperties] ? [[self.parent injectedProperties] mutableCopy] : [NSMutableSet set];
-    
-    NSMutableArray *overriddenProperties = [NSMutableArray array];
-    [parentProperties enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-        if ([_injectedProperties containsObject:obj]) {
-            [overriddenProperties addObject:obj];
-        }
+    __block BOOL hasInjections = NO;
+    [self enumerateInjectionsOfKind:[TyphoonInjectionByRuntimeArgument class] options:TyphoonInjectionsEnumerationOptionAll
+                         usingBlock:^(id injection, id *injectionToReplace, BOOL *stop) {
+        hasInjections = YES;
+        *stop = YES;
     }];
-    
-    for (id <TyphoonPropertyInjection> overriddenProperty in overriddenProperties) {
-        [parentProperties removeObject:overriddenProperty];
-    }
-    
-    return [[parentProperties setByAddingObjectsFromSet:_injectedProperties] copy];
+    return hasInjections;
+
 }
-
-- (NSSet *)injectedMethods
-{
-    NSMutableSet *parentMethods = [self.parent injectedMethods] ? [[self.parent injectedMethods] mutableCopy] : [NSMutableSet set];
-    
-    NSMutableArray *overriddenMethods = [NSMutableArray array];
-    [parentMethods enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-        if ([_injectedMethods containsObject:obj]) {
-            [overriddenMethods addObject:obj];
-        }
-    }];
-    
-    for (TyphoonMethod *overriddenMethod in overriddenMethods) {
-        [parentMethods removeObject:overriddenMethod];
-    }
-    
-    return [[parentMethods setByAddingObjectsFromSet:_injectedMethods] copy];
-}
-
-
-/* ====================================================================================================================================== */
-#pragma mark - Private Methods
 
 - (NSSet *)injectedPropertiesWithKind:(Class)clazz
 {
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject isKindOfClass:clazz];
+    NSMutableSet *properties = [NSMutableSet new];
+
+    [self enumerateInjectionsOfKind:clazz options:TyphoonInjectionsEnumerationOptionProperties
+                         usingBlock:^(id <TyphoonInjection> injection, id <TyphoonInjection> *injectionToReplace, BOOL *stop) {
+        [properties addObject:injection];
     }];
-    return [_injectedProperties filteredSetUsingPredicate:predicate];
+
+    return properties;
 }
 
 @end

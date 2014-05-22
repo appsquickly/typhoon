@@ -192,11 +192,6 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     return _initializerGenerated;
 }
 
-- (BOOL)hasRuntimeArgumentInjections
-{
-    return [[self.initializer parametersInjectedByRuntimeArgument] count] > 0 || [[self propertiesInjectedByRuntimeArgument] count] > 0;
-}
-
 - (TyphoonScope)scope
 {
     if (_parent && !_isScopeSetByUser) {

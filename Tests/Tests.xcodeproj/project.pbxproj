@@ -21,9 +21,13 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2DBA1070E97646FA03E61429 /* TyphoonDefinition+InstanceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA17D54659C96DB30ACB4C /* TyphoonDefinition+InstanceBuilder.m */; };
+		2DBA1165BFF53646C3B9D992 /* TyphoonDefinition+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA11B1C9B01504D322488D /* TyphoonDefinition+Tests.m */; };
 		2DBA1177991929001EC85AB5 /* DefinitionConfigurationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA137D3646A6E1966C23AD /* DefinitionConfigurationTest.m */; };
+		2DBA11FA6D519AFC75009D55 /* TyphoonDefinition+InstanceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA17D54659C96DB30ACB4C /* TyphoonDefinition+InstanceBuilder.m */; };
 		2DBA1281D828E173F9583000 /* AssemblyWithDefinitionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA14810C15377E0C06FDC2 /* AssemblyWithDefinitionConfiguration.m */; };
 		2DBA128546F67D51A7F5E77B /* DefinitionConfigurationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA137D3646A6E1966C23AD /* DefinitionConfigurationTest.m */; };
+		2DBA1591BECCF1D99F25D400 /* TyphoonDefinition+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA11B1C9B01504D322488D /* TyphoonDefinition+Tests.m */; };
 		2DBA1BA0CE220EBBAFE84537 /* AssemblyWithDefinitionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA14810C15377E0C06FDC2 /* AssemblyWithDefinitionConfiguration.m */; };
 		46BD2236184F7481008E89E5 /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BD2235184F7481008E89E5 /* NSNullTypeConverter.m */; };
 		46BD2237184F7481008E89E5 /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BD2235184F7481008E89E5 /* NSNullTypeConverter.m */; };
@@ -374,9 +378,12 @@
 		159D62E0E7314B4D9C0B9CC1 /* Pods-iOS Tests (Cocoapods).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests (Cocoapods).xcconfig"; path = "Pods/Pods-iOS Tests (Cocoapods).xcconfig"; sourceTree = SOURCE_ROOT; };
 		196064E125A34CED821062FF /* libPods-OS X Tests (Cocoapods).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OS X Tests (Cocoapods).a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC491FA50E048988BFB5756 /* libPods-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DBA11B1C9B01504D322488D /* TyphoonDefinition+Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TyphoonDefinition+Tests.m"; sourceTree = "<group>"; };
 		2DBA1315C6139B5C90B8EF5D /* AssemblyWithDefinitionConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssemblyWithDefinitionConfiguration.h; sourceTree = "<group>"; };
 		2DBA137D3646A6E1966C23AD /* DefinitionConfigurationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefinitionConfigurationTest.m; sourceTree = "<group>"; };
 		2DBA14810C15377E0C06FDC2 /* AssemblyWithDefinitionConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssemblyWithDefinitionConfiguration.m; sourceTree = "<group>"; };
+		2DBA17D54659C96DB30ACB4C /* TyphoonDefinition+InstanceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TyphoonDefinition+InstanceBuilder.m"; sourceTree = "<group>"; };
+		2DBA19626FA1D66EFAB5AECE /* TyphoonDefinition+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyphoonDefinition+Tests.h"; sourceTree = "<group>"; };
 		37EFD46D9A8A4490AD09985E /* Pods-iOS Tests (Static Library).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests (Static Library).xcconfig"; path = "Pods/Pods-iOS Tests (Static Library).xcconfig"; sourceTree = "<group>"; };
 		46BD2234184F7481008E89E5 /* NSNullTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNullTypeConverter.h; sourceTree = "<group>"; };
 		46BD2235184F7481008E89E5 /* NSNullTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNullTypeConverter.m; sourceTree = "<group>"; };
@@ -711,6 +718,9 @@
 				4B06339E17D29402009CDBD6 /* Injection Aware */,
 				4B84149D179B0EA600916BF5 /* Properties */,
 				4B8414A2179B0EA600916BF5 /* TyphoonDefinitionTests.m */,
+				2DBA17D54659C96DB30ACB4C /* TyphoonDefinition+InstanceBuilder.m */,
+				2DBA19626FA1D66EFAB5AECE /* TyphoonDefinition+Tests.h */,
+				2DBA11B1C9B01504D322488D /* TyphoonDefinition+Tests.m */,
 			);
 			path = Definition;
 			sourceTree = "<group>";
@@ -1476,6 +1486,8 @@
 				C9497B584580CAA1C9876848 /* TyphoonComponentsFactoryCollaboratingWithRuntimeArgsTests.m in Sources */,
 				2DBA128546F67D51A7F5E77B /* DefinitionConfigurationTest.m in Sources */,
 				2DBA1281D828E173F9583000 /* AssemblyWithDefinitionConfiguration.m in Sources */,
+				2DBA11FA6D519AFC75009D55 /* TyphoonDefinition+InstanceBuilder.m in Sources */,
+				2DBA1591BECCF1D99F25D400 /* TyphoonDefinition+Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1584,6 +1596,8 @@
 				C9497209C36EFCE7FDA2DD21 /* TyphoonComponentsFactoryCollaboratingWithRuntimeArgsTests.m in Sources */,
 				2DBA1BA0CE220EBBAFE84537 /* AssemblyWithDefinitionConfiguration.m in Sources */,
 				2DBA1177991929001EC85AB5 /* DefinitionConfigurationTest.m in Sources */,
+				2DBA1070E97646FA03E61429 /* TyphoonDefinition+InstanceBuilder.m in Sources */,
+				2DBA1165BFF53646C3B9D992 /* TyphoonDefinition+Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

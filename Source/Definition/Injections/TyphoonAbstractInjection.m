@@ -35,7 +35,7 @@
 
 - (void)setPropertyName:(NSString *)name
 {
-    NSAssert(self.type != TyphoonInjectionTypeProperty, @"Trying to redefine injection with type %d", (int) self.type);
+    NSAssert(self.type != TyphoonInjectionTypeParameter, @"Trying to redefine injection with type %d", (int) self.type);
     _propertyName = name;
     _type = TyphoonInjectionTypeProperty;
 }

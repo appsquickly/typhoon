@@ -86,7 +86,7 @@
     //by reference
     [definition injectProperty:@selector(dd) with:TyphoonInjectionWithReference(@"someReference")];
 
-    assertThatUnsignedLongLong([[definition propertiesInjectedByObjectInstance] count], equalToUnsignedLongLong(2));
+    assertThatUnsignedLongLong([definition numberOfPropertyInjectionsByObject], equalToUnsignedLongLong(2));
 }
 
 - (void)test_enumerates_properties_injected_by_reference
@@ -100,7 +100,7 @@
     //by reference
     [definition injectProperty:@selector(dd) with:TyphoonInjectionWithReference(@"someReference")];
 
-    assertThatUnsignedLongLong([[definition propertiesInjectedByReference] count], equalToUnsignedLongLong(1));
+    assertThatUnsignedLongLong([definition numberOfPropertyInjectionsByReference], equalToUnsignedLongLong(1));
 }
 
 

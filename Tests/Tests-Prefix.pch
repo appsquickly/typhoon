@@ -20,6 +20,8 @@
 
 #import <OCHamcrest/OCHamcrest.h>
 
+#import "TyphoonDefinition+Tests.h"
+
 #define typhoon_shorthand
 
 #define MOCKITO_SHORTHAND

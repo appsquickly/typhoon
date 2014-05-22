@@ -108,21 +108,30 @@ NSString static *kTyphoonPropertyPlaceholderSuffix = @"}";
 - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
 {
     for (TyphoonDefinition *definition in [factory registry]) {
-        for (id <TyphoonInjectedWithStringRepresentation> component in [definition componentsInjectedByValue]) {
-            [self mutateComponentInjectedByValue:component];
-        }
-
+        [definition enumerateInjectionsOfKind:[TyphoonInjectionByObjectFromString class] options:TyphoonInjectionsEnumerationOptionAll
+                                   usingBlock:^(TyphoonInjectionByObjectFromString *injection, id *injectionToReplace, BOOL *stop) {
+            if ([self shouldMutateInjection:injection]) {
+                [self mutateInjection:injection injectionToReplace:injectionToReplace];
+            }
+        }];
     }
 }
 
-- (void)mutateComponentInjectedByValue:(id <TyphoonInjectedWithStringRepresentation>)component;
+- (BOOL)shouldMutateInjection:(TyphoonInjectionByObjectFromString *)injection
 {
-    if ([component.textValue hasPrefix:kTyphoonPropertyPlaceholderPrefix] && [component.textValue hasSuffix:kTyphoonPropertyPlaceholderSuffix]) {
-        NSString *key = [component.textValue substringFromIndex:[kTyphoonPropertyPlaceholderPrefix length]];
-        key = [key substringToIndex:[key length] - [kTyphoonPropertyPlaceholderSuffix length]];
-        NSString *value = [self configurationValueForKey:key]
-        LogTrace(@"Setting property '%@' to value '%@'", key, value);
-        component.textValue = value;
+    return [injection.textValue hasPrefix:kTyphoonPropertyPlaceholderPrefix] && [injection.textValue hasSuffix:kTyphoonPropertyPlaceholderSuffix];
+}
+
+- (void)mutateInjection:(TyphoonInjectionByObjectFromString *)injection injectionToReplace:(id*)injectionToReplace
+{
+    NSString *key = [injection.textValue substringFromIndex:[kTyphoonPropertyPlaceholderPrefix length]];
+    key = [key substringToIndex:[key length] - [kTyphoonPropertyPlaceholderSuffix length]];
+    id value = [self configurationValueForKey:key];
+
+    if ([value isKindOfClass:[NSString class]]) {
+        injection.textValue = value;
+    } else {
+        *injectionToReplace = TyphoonInjectionWithObject(value);
     }
 }
 

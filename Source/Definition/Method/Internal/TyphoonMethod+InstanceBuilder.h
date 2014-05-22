@@ -16,6 +16,7 @@
 @class TyphoonComponentFactory;
 @class TyphoonRuntimeArguments;
 @class TyphoonInjectionContext;
+@protocol TyphoonParameterInjection;
 
 @interface TyphoonMethod (InstanceBuilder)
 
@@ -30,5 +31,7 @@
 - (BOOL)isClassMethodOnClass:(Class)clazz;
 
 - (void)checkParametersCount;
+
+- (void)replaceInjection:(id<TyphoonParameterInjection>)injection with:(id<TyphoonParameterInjection>)injectionToReplace;
 
 @end

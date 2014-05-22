@@ -7,7 +7,4 @@
 #import "TyphoonConfiguration.h"
 
 @interface TyphoonPropertyStyleConfiguration : NSObject<TyphoonConfiguration>
-
-
-
 @end

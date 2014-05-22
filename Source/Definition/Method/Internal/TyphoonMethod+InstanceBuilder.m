@@ -21,6 +21,7 @@
 #import "TyphoonTypeDescriptor.h"
 #import "NSArray+TyphoonManualEnumeration.h"
 #import "NSInvocation+TCFUnwrapValues.h"
+#import "TyphoonParameterInjection.h"
 
 TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
@@ -29,6 +30,13 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
+
+- (void)replaceInjection:(id<TyphoonParameterInjection>)injection with:(id<TyphoonParameterInjection>)injectionToReplace
+{
+    [injectionToReplace setParameterIndex:[injection parameterIndex]];
+    NSUInteger index = [_injectedParameters indexOfObject:injection];
+    [_injectedParameters replaceObjectAtIndex:index withObject:injectionToReplace];
+}
 
 - (NSArray *)injectedParameters
 {
