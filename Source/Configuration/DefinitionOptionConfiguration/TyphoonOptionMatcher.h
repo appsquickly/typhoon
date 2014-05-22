@@ -16,5 +16,8 @@
 * @note When matching definition from 'option', 'caseOption:use:' has higher priority than matching by definition key */
 - (void)useDefinitionWithKeyMatchedOptionValue;
 
+/** When matcher can't match definition from optionValue, use 'definition' */
+- (void)useDefault:(TyphoonDefinition *)definition;
+
 @end
 

@@ -103,6 +103,15 @@
         [matcher useDefinitionWithKeyMatchedOptionValue];
     }];
 }
+- (id)definitionMatchedByCustomMatcherWithDefaultFromOption:(NSString *)option
+{
+    return [TyphoonDefinition withOption:option matcher:^(TyphoonOptionMatcher *matcher) {
+        [matcher caseOption:@"positive" use:[self trueString]];
+        [matcher caseOption:@"negative" use:[self falseString]];
+        [matcher caseOption:@"nothing" use:[self zeroString]];
+        [matcher useDefault:[self zeroString]];
+    }];
+}
 
 
 @end

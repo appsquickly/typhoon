@@ -29,4 +29,5 @@
 
 - (id)definitionMatchedByCustomMatcherOrNameFromOption:(NSString *)option;
 
+- (id)definitionMatchedByCustomMatcherWithDefaultFromOption:(NSString *)option;
 @end

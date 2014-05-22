@@ -15,6 +15,7 @@
     NSMutableArray *_values;
     NSMutableArray *_definitions;
     BOOL _useMatchingByName;
+    TyphoonDefinition *_defaultDefinition;
 }
 
 - (instancetype)initWithBlock:(TyphoonMatcherBlock)block
@@ -46,6 +47,11 @@
     _useMatchingByName = YES;
 }
 
+- (void)useDefault:(TyphoonDefinition *)definition
+{
+    _defaultDefinition = definition;
+}
+
 - (TyphoonDefinition *)definitionMatchingValue:(id)value withComponentFactory:(TyphoonComponentFactory *)factory
 {
     TyphoonDefinition *result = nil;
@@ -56,6 +62,10 @@
         result = _definitions[index];
     } else if (_useMatchingByName && [value isKindOfClass:[NSString class]]){
         result = [factory definitionForKey:value];
+    }
+
+    if (!result) {
+        result = _defaultDefinition;
     }
 
     if (!result) {

@@ -83,4 +83,9 @@
     STAssertEqualObjects([assembly definitionMatchedByCustomMatcherOrNameFromOption:@"falseString"], @"FALSE", nil);
 }
 
+- (void)test_definition_cant_match_useDefault
+{
+    STAssertEqualObjects([assembly definitionMatchedByCustomMatcherWithDefaultFromOption:@"unknown"], @"ZERO", nil);
+}
+
 @end
