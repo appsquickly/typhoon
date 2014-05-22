@@ -21,12 +21,24 @@
     return self;
 }
 
+- (NSString *)stringWithoutCommentsFromString:(NSString *)string
+{
+    static NSRegularExpression *expression;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        expression = [NSRegularExpression regularExpressionWithPattern:@"((^)([\\s]*)(\\/\\/.*$))" options:NSRegularExpressionAnchorsMatchLines error:nil];
+    });
+
+    return [expression stringByReplacingMatchesInString:string options:0 range:NSMakeRange(0, string.length) withTemplate:@""];
+}
+
 - (void)appendResource:(id<TyphoonResource>)resource
 {
-    NSData *resourceData = [resource data];
+    NSString *jsonWithoutComments = [self stringWithoutCommentsFromString:[resource asString]];
+    NSData *jsonData = [jsonWithoutComments dataUsingEncoding:NSUTF8StringEncoding];
 
     NSError *error = nil;
-    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:resourceData options:NSJSONReadingAllowFragments error:&error];
+    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
 
     if (!error) {
         [_properties addEntriesFromDictionary:dictionary];
