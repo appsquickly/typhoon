@@ -285,6 +285,10 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 
     NSMutableArray *results = [[NSMutableArray alloc] init];
     BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
+    BOOL isProtocol = object_getClass(classOrProtocol) == object_getClass(@protocol(NSObject));
+    if (!isClass && !isProtocol) {
+        [NSException raise:NSInternalInconsistencyException format:@"%@ is not class or protocol",classOrProtocol];
+    }
 
     for (TyphoonDefinition *definition in _registry) {
         if (isClass) {
