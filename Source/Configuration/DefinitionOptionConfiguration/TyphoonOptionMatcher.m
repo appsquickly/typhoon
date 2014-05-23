@@ -47,7 +47,7 @@
     _useMatchingByName = YES;
 }
 
-- (void)useDefault:(TyphoonDefinition *)definition
+- (void)defaultUse:(TyphoonDefinition *)definition
 {
     _defaultDefinition = definition;
 }

@@ -109,7 +109,7 @@
         [matcher caseOption:@"positive" use:[self trueString]];
         [matcher caseOption:@"negative" use:[self falseString]];
         [matcher caseOption:@"nothing" use:[self zeroString]];
-        [matcher useDefault:[self zeroString]];
+        [matcher defaultUse:[self zeroString]];
     }];
 }
 
