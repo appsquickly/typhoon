@@ -13,21 +13,17 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonResource.h"
+#import "TyphoonPathResource.h"
 
 /**
 * @ingroup Configuration
 *
 * Represents a resource within the application bundle.
 */
-@interface TyphoonBundleResource : NSObject <TyphoonResource>
-{
-    NSData *_data;
-}
-
+@interface TyphoonBundleResource : TyphoonPathResource <TyphoonResource>
 
 + (id <TyphoonResource>)withName:(NSString *)name;
 
 + (id <TyphoonResource>)withName:(NSString *)name inBundle:(NSBundle *)bundle;
-
 
 @end

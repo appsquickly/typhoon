@@ -20,19 +20,37 @@
 */
 @interface TyphoonPropertyPlaceholderConfigurer : NSObject <TyphoonComponentFactoryPostProcessor>
 
+/**
+*  You can manage TyphoonPropertyPlaceholderConfigurer registry by mapping configuration classes for file extensions
+*  Configuration class instance must conforms TyphoonConfiguration protocol
+*  */
++ (void)registerConfigurationClass:(Class)configClass forExtension:(NSString *)typeExtension;
+
+/** list of all supported path extensions (configuration types) */
++ (NSArray *)availableExtensions;
+
 + (TyphoonPropertyPlaceholderConfigurer *)configurer;
 
-+ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResource:(id <TyphoonResource>)resource;
+/** Append resource found in main bundle by name */
+- (void)useResourceWithName:(NSString *)name;
 
-+ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResources:(id <TyphoonResource>)first, ...NS_REQUIRES_NIL_TERMINATION;
+/** Append resource loaded from file at path */
+- (void)useResourceAtPath:(NSString *)path;
 
-+ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResourceList:(NSArray *)resources;
+/** Append TyphoonResource with specified extension (@see availableExtensions method) */
+- (void)useResource:(id<TyphoonResource>)resource withExtension:(NSString *)typeExtension;
 
-- (void)usePropertyStyleResource:(id <TyphoonResource>)resource;
+@end
 
-- (void)useJsonStyleResource:(id <TyphoonResource>)resource;
+@interface TyphoonPropertyPlaceholderConfigurer (Deprecated)
 
-- (NSDictionary *)properties UNAVAILABLE_ATTRIBUTE;
++ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResource:(id <TyphoonResource>)resource DEPRECATED_MSG_ATTRIBUTE("check useResource... methods");
+
++ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResources:(id <TyphoonResource>)first, ...NS_REQUIRES_NIL_TERMINATION DEPRECATED_MSG_ATTRIBUTE("check useResource... methods");
+
++ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResourceList:(NSArray *)resources DEPRECATED_MSG_ATTRIBUTE("check useResource... methods");
+
+- (void)usePropertyStyleResource:(id<TyphoonResource>)resource DEPRECATED_MSG_ATTRIBUTE("check useResource... methods");
 
 @end
 

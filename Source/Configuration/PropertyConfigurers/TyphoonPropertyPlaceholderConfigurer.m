@@ -19,13 +19,16 @@
 #import "TyphoonPropertyStyleConfiguration.h"
 #import "TyphoonInjections.h"
 #import "TyphoonJsonStyleConfiguration.h"
+#import "TyphoonBundleResource.h"
+#import "TyphoonPlistStyleConfiguration.h"
 
 NSString static *kTyphoonPropertyPlaceholderPrefix = @"${";
 NSString static *kTyphoonPropertyPlaceholderSuffix = @"}";
 
+static NSMutableDictionary *propertyPlaceholderRegistry;
+
 @implementation TyphoonPropertyPlaceholderConfigurer {
-    id<TyphoonConfiguration> _propertyStyleConfiguration;
-    id<TyphoonConfiguration> _jsonStyleConfiguration;
+    NSDictionary *_configs;
 }
 
 /* ====================================================================================================================================== */
@@ -36,36 +39,20 @@ NSString static *kTyphoonPropertyPlaceholderSuffix = @"}";
     return [[[self class] alloc] init];
 }
 
-+ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResource:(id <TyphoonResource>)resource
++ (void)registerConfigurationClass:(Class)configClass forExtension:(NSString *)typeExtension
 {
-    return [self configurerWithResourceList:@[resource]];
-}
-
-+ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResources:(id <TyphoonResource>)first, ...
-{
-    NSMutableArray *resources = [[NSMutableArray alloc] init];
-    [resources addObject:first];
-
-    va_list resource_list;
-    va_start(resource_list, first);
-    id <TyphoonResource> resource;
-    while ((resource = va_arg( resource_list, id < TyphoonResource >))) {
-        [resources addObject:resource];
+    @synchronized (self) {
+        if (!propertyPlaceholderRegistry) {
+            propertyPlaceholderRegistry = [NSMutableDictionary new];
+        }
+        propertyPlaceholderRegistry[typeExtension] = configClass;
     }
-    va_end(resource_list);
-
-    return [self configurerWithResourceList:resources];
 }
 
-+ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResourceList:(NSArray *)resources
++ (NSArray *)availableExtensions
 {
-    TyphoonPropertyPlaceholderConfigurer *configurer = [TyphoonPropertyPlaceholderConfigurer configurer];
-    for (id <TyphoonResource> resource in resources) {
-        [configurer usePropertyStyleResource:resource];
-    }
-    return configurer;
+    return [propertyPlaceholderRegistry allKeys];
 }
-
 
 /* ====================================================================================================================================== */
 #pragma mark - Initialization & Destruction
@@ -74,31 +61,65 @@ NSString static *kTyphoonPropertyPlaceholderSuffix = @"}";
 {
     self = [super init];
     if (self) {
-        _propertyStyleConfiguration = [TyphoonPropertyStyleConfiguration new];
-        _jsonStyleConfiguration = [TyphoonJsonStyleConfiguration new];
+        NSMutableDictionary *mutableConfigs = [[NSMutableDictionary alloc] initWithCapacity:[propertyPlaceholderRegistry count]];
+        [propertyPlaceholderRegistry enumerateKeysAndObjectsUsingBlock:^(NSString *key, id configClass, BOOL *stop) {
+            mutableConfigs[key] = [configClass new];
+        }];
+        _configs = mutableConfigs;
     }
     return self;
+}
+
++ (void)initialize
+{
+    [super initialize];
+
+    [self registerConfigurationClass:[TyphoonJsonStyleConfiguration class] forExtension:@"json"];
+    [self registerConfigurationClass:[TyphoonPropertyStyleConfiguration class] forExtension:@"properties"];
+    [self registerConfigurationClass:[TyphoonPlistStyleConfiguration class] forExtension:@"plist"];
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Interface Methods
 
-- (void)usePropertyStyleResource:(id <TyphoonResource>)resource
+- (void)useResourceWithName:(NSString *)name
 {
-    [_propertyStyleConfiguration appendResource:resource];
+    [self useResource:[TyphoonBundleResource withName:name] withExtension:[name pathExtension]];
 }
 
-- (void)useJsonStyleResource:(id<TyphoonResource>)resource
+- (void)useResourceAtPath:(NSString *)path
 {
-    [_jsonStyleConfiguration appendResource:resource];
+    [self useResource:[TyphoonPathResource withPath:path] withExtension:[path pathExtension]];
+}
+
+- (void)useResource:(id <TyphoonResource>)resource withExtension:(NSString *)typeExtension
+{
+    id<TyphoonConfiguration>config = _configs[typeExtension];
+    [config appendResource:resource];
 }
 
 - (id)configurationValueForKey:(NSString *)key
 {
-    id value = [_jsonStyleConfiguration objectForKey:key];
-    if (!value) {
-        value = [_propertyStyleConfiguration objectForKey:key];
-    }
+    __block id value = nil;
+    __block NSString *foundExtension = nil;
+    [_configs enumerateKeysAndObjectsUsingBlock:^(NSString *extension, id<TyphoonConfiguration>config, BOOL *stop) {
+
+        value = [config objectForKey:key];
+#if !DEBUG
+        if (value) {
+           *stop = YES;
+        }
+#else
+        if (value) {
+            if (foundExtension) {
+                [NSException raise:NSInternalInconsistencyException format:@"Value for key %@ already exists in %@ config", key, foundExtension];
+            } else {
+                foundExtension = extension;
+            }
+        }
+#endif
+    }];
+
     return value;
 }
 
@@ -133,6 +154,46 @@ NSString static *kTyphoonPropertyPlaceholderSuffix = @"}";
     } else {
         *injectionToReplace = TyphoonInjectionWithObject(value);
     }
+}
+
+@end
+
+
+@implementation TyphoonPropertyPlaceholderConfigurer (Deprecated)
+
++ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResource:(id <TyphoonResource>)resource
+{
+    return [self configurerWithResourceList:@[resource]];
+}
+
++ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResources:(id <TyphoonResource>)first, ...
+{
+    NSMutableArray *resources = [[NSMutableArray alloc] init];
+    [resources addObject:first];
+
+    va_list resource_list;
+    va_start(resource_list, first);
+    id <TyphoonResource> resource;
+    while ((resource = va_arg( resource_list, id < TyphoonResource >))) {
+        [resources addObject:resource];
+    }
+    va_end(resource_list);
+
+    return [self configurerWithResourceList:resources];
+}
+
++ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResourceList:(NSArray *)resources
+{
+    TyphoonPropertyPlaceholderConfigurer *configurer = [TyphoonPropertyPlaceholderConfigurer configurer];
+    for (id <TyphoonResource> resource in resources) {
+        [configurer useResource:resource withExtension:@"properties"];
+    }
+    return configurer;
+}
+
+- (void)usePropertyStyleResource:(id <TyphoonResource>)resource
+{
+    [self useResource:resource withExtension:@"properties"];
 }
 
 @end
