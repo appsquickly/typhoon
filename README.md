@@ -80,16 +80,18 @@ ___And now, it simply becomes___:
 
 
 ####Is that all they mean by 'injected'?
-Yes it is. Right now, you might be thinking "Geez! That's a pretty fancy name for something so plain." Well, you'd be right. But let‘s look at what happens when we start to apply this approach: Let's say you identify some hard-wired network configurations in a your GoogleWeatherClient, and correct this by instead passing them in via an initializer method. Now if you want to use this class, as a collaborator in a new class, let's say a ViewController, then your GoogleWeatherClient itself can be either a hard-wired dependency, or injected. To get the benefits of dependency injection again, we repeat the process, pulling up the class and along with its own dependencies. And we keep applying until we have a logical module or 'assembly' . . .
 
-. . . If you do this with significant collaborators throughout your app, it means that the __GoogleWeatherClientImpl__ is now declared in a single place - the top-level assembly, so-to-speak. ___And___ all of the classes that need to use some kind of __id&lt;WeatherClient&gt;__ will have it passed in. This means that: 
+Yes it is. Right now, you might be thinking “Geez! That’s a pretty fancy name for something so plain.” Well, you‘d be right. But let‘s look at what happens when we start to apply this approach: Let's say you identify some hard-wired network configurations in a your GoogleWeatherClient, and correct this by instead passing them in via an initializer method. Now if you want to use this class, as a collaborator in a new class, let's say a ViewController, then your GoogleWeatherClient itself can be either a hard-wired dependency, or injected. To get the benefits of dependency injection again, we repeat the process, pulling up the class and along with its own dependencies. And we keep applying until we have a logical module or 'assembly'.
 
-* If you want to change from one implementation to another, you need only change a single declaration. 
-* Classes are easier to test, because we can supply simple mocks and stubs in place of concrete collaborators. Or 
-the real collaborators, but configured to be used in a test scenario. (One of my design goals). 
-* It promotes separation of concerns and a clear contract between classes. Its easy to see what each class needs in order
-to do its job. 
-* Your app is easier to maintain and can accommodate new requirements. 
+In this way dependency injection lets your application tell an architectural story. When the key actors are pulled up into an assembly that describes roles and collaborations, then the application’s configuration no longer exhibits fragmentation, duplication or tight-coupling. Having created this "script" that describes roles and collaborations we realize a number of benefits.
+
+####Benefits of Dependency Injection
+
+*    We can substitute another actor to fulfill a given role. If you want to change from one implementation to another, you need only change a single declaration.
+*    By removing tight-coupling, we need not understand all of a problem at once, its easy to evolve our app’s design as the requirements evolve.
+*    Classes are easier to test, because we can supply simple mocks and stubs in place of concrete collaborators. Or the real collaborators, but configured to be used in a test scenario.
+*    It promotes separation of concerns and a clear contract between classes. Its easy to see what each class needs in order to do its job.
+*    We can layout an app's architecture using stubs - the simplest possible implementation of a role - so that we can quickly see an end-to-end use-case taking place. Having done this, we can assign to other team members the responsibility of filling out these stubs for real implementations, and they can do so without breaking the app while they work, and without impacting other team members.
 
 
 # Your Dependency Injection Options
