@@ -31,6 +31,8 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
     NSDictionary *_configs;
 }
 
+
+
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 
@@ -104,16 +106,18 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
     __block NSString *foundExtension = nil;
     [_configs enumerateKeysAndObjectsUsingBlock:^(NSString *extension, id<TyphoonConfiguration>config, BOOL *stop) {
 
-        value = [config objectForKey:key];
+        id object = [config objectForKey:key];
 #if !DEBUG
-        if (value) {
-           *stop = YES;
+        if (object) {
+            value = object;
+            *stop = YES;
         }
 #else
-        if (value) {
-            if (foundExtension) {
+        if (object) {
+            if (value) {
                 [NSException raise:NSInternalInconsistencyException format:@"Value for key %@ already exists in %@ config", key, foundExtension];
             } else {
+                value = object;
                 foundExtension = extension;
             }
         }

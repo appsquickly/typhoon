@@ -27,8 +27,12 @@
 		2DBA11FA6D519AFC75009D55 /* TyphoonDefinition+InstanceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA17D54659C96DB30ACB4C /* TyphoonDefinition+InstanceBuilder.m */; };
 		2DBA1281D828E173F9583000 /* AssemblyWithDefinitionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA14810C15377E0C06FDC2 /* AssemblyWithDefinitionConfiguration.m */; };
 		2DBA128546F67D51A7F5E77B /* DefinitionConfigurationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA137D3646A6E1966C23AD /* DefinitionConfigurationTest.m */; };
+		2DBA155B37F49AB05B9FC512 /* SomeProperties.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA1CB75ACF1451176157E1 /* SomeProperties.json */; };
 		2DBA1591BECCF1D99F25D400 /* TyphoonDefinition+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA11B1C9B01504D322488D /* TyphoonDefinition+Tests.m */; };
+		2DBA19E52E4A35B2411BD356 /* SomeProperties.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA1CB75ACF1451176157E1 /* SomeProperties.json */; };
 		2DBA1BA0CE220EBBAFE84537 /* AssemblyWithDefinitionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA14810C15377E0C06FDC2 /* AssemblyWithDefinitionConfiguration.m */; };
+		2DBA1CCA48C842EB9FDFF39C /* SomeProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA1785E0BBFBB240EF1534 /* SomeProperties.plist */; };
+		2DBA1CFE348ED75C0E87F908 /* SomeProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA1785E0BBFBB240EF1534 /* SomeProperties.plist */; };
 		46BD2236184F7481008E89E5 /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BD2235184F7481008E89E5 /* NSNullTypeConverter.m */; };
 		46BD2237184F7481008E89E5 /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BD2235184F7481008E89E5 /* NSNullTypeConverter.m */; };
 		46BD2238184F7481008E89E5 /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BD2235184F7481008E89E5 /* NSNullTypeConverter.m */; };
@@ -382,8 +386,10 @@
 		2DBA1315C6139B5C90B8EF5D /* AssemblyWithDefinitionConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssemblyWithDefinitionConfiguration.h; sourceTree = "<group>"; };
 		2DBA137D3646A6E1966C23AD /* DefinitionConfigurationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefinitionConfigurationTest.m; sourceTree = "<group>"; };
 		2DBA14810C15377E0C06FDC2 /* AssemblyWithDefinitionConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssemblyWithDefinitionConfiguration.m; sourceTree = "<group>"; };
+		2DBA1785E0BBFBB240EF1534 /* SomeProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = SomeProperties.plist; sourceTree = "<group>"; };
 		2DBA17D54659C96DB30ACB4C /* TyphoonDefinition+InstanceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TyphoonDefinition+InstanceBuilder.m"; sourceTree = "<group>"; };
 		2DBA19626FA1D66EFAB5AECE /* TyphoonDefinition+Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyphoonDefinition+Tests.h"; sourceTree = "<group>"; };
+		2DBA1CB75ACF1451176157E1 /* SomeProperties.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = SomeProperties.json; sourceTree = "<group>"; };
 		37EFD46D9A8A4490AD09985E /* Pods-iOS Tests (Static Library).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Tests (Static Library).xcconfig"; path = "Pods/Pods-iOS Tests (Static Library).xcconfig"; sourceTree = "<group>"; };
 		46BD2234184F7481008E89E5 /* NSNullTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNullTypeConverter.h; sourceTree = "<group>"; };
 		46BD2235184F7481008E89E5 /* NSNullTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNullTypeConverter.m; sourceTree = "<group>"; };
@@ -853,6 +859,8 @@
 				4B8414DE179B0EA600916BF5 /* SomeProperties.properties */,
 				75AB51A490B3C70B90B70509 /* SomeResource */,
 				CAE1370C5429F92760CB0390 /* SomeOtherProperties.properties */,
+				2DBA1CB75ACF1451176157E1 /* SomeProperties.json */,
+				2DBA1785E0BBFBB240EF1534 /* SomeProperties.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1202,6 +1210,8 @@
 				4B841529179B0EA600916BF5 /* SomeProperties.properties in Resources */,
 				75AB53AE7325B44FF5D9BEB1 /* SomeResource in Resources */,
 				CAE7F900AA9C836DFE412203 /* SomeOtherProperties.properties in Resources */,
+				2DBA19E52E4A35B2411BD356 /* SomeProperties.json in Resources */,
+				2DBA1CFE348ED75C0E87F908 /* SomeProperties.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1213,6 +1223,8 @@
 				4B84152A179B0EA600916BF5 /* SomeProperties.properties in Resources */,
 				75AB5233D0F2BE7BD35F21E6 /* SomeResource in Resources */,
 				CAEDC7A4F6804D310052F633 /* SomeOtherProperties.properties in Resources */,
+				2DBA155B37F49AB05B9FC512 /* SomeProperties.json in Resources */,
+				2DBA1CCA48C842EB9FDFF39C /* SomeProperties.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
