@@ -11,7 +11,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <Typhoon/TyphoonComponentFactory.h>
 #import <Typhoon/TyphoonBlockComponentFactory.h>
 #import "MiddleAgesAssembly.h"
@@ -20,7 +20,7 @@
 #import "CampaignQuest.h"
 
 
-@interface TyphoonBlockComponentFactory_CollectionTests : SenTestCase
+@interface TyphoonBlockComponentFactory_CollectionTests : XCTestCase
 @end
 
 

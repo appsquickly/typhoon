@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <objc/message.h>
 #import <Typhoon/OCLogTemplate.h>
 #import "Knight.h"
@@ -23,7 +23,7 @@
 #import "TyphoonInjectionByCollection.h"
 #import "TyphoonMethod+InstanceBuilder.h"
 
-@interface TyphoonDefinitionTests : SenTestCase
+@interface TyphoonDefinitionTests : XCTestCase
 @end
 
 
@@ -56,7 +56,7 @@
     @try {
         TyphoonDefinition *definition = [[TyphoonDefinition alloc] init];
         NSLog(@"Def: %@", definition);
-        STFail(@"Should've thrown exception");
+        XCTFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
         assertThat([e description], equalTo(@"Property 'clazz' is required."));
@@ -65,7 +65,7 @@
     @try {
         TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:nil key:nil];
         NSLog(@"Def: %@", definition);
-        STFail(@"Should've thrown exception");
+        XCTFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
         assertThat([e description], equalTo(@"Property 'clazz' is required."));

@@ -20,20 +20,21 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface CoverageFixer : SenTestLog
+@interface CoverageFixer : XCTestLog
 @end
 
 @implementation CoverageFixer
 
 
-+ (void)testSuiteDidStop:(NSNotification *)aNotification
+- (void)testSuiteDidStop:(XCTestRun *)testRun
 {
     extern void __gcov_flush(void);
     __gcov_flush();
-    [super testSuiteDidStop:aNotification];
+    [super testSuiteDidStop:testRun];
 }
+
 
 @end
 

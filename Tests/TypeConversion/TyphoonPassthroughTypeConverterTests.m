@@ -9,13 +9,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TyphoonTypeConverterRegistry.h"
 #import "TyphoonTypeConverter.h"
 #import "TyphoonTypeDescriptor.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
 
-@interface TyphoonPassThroughTypeConverterTests : SenTestCase
+@interface TyphoonPassThroughTypeConverterTests : XCTestCase
 
 @property NSString *aStringProperty;
 @property NSMutableString *aMutableStringProperty;

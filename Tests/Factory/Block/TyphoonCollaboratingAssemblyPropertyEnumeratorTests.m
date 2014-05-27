@@ -10,14 +10,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TyphoonCollaboratingAssemblyPropertyEnumerator.h"
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "ExtendedMiddleAgesAssembly.h"
 #import "ExtendedSimpleAssembly.h"
 #import "TyphoonCollaboratingAssemblyPropertyEnumeratorTests_AssemblyWithProperty.h"
 
-@interface TyphoonCollaboratingAssemblyPropertyEnumeratorTests : SenTestCase
+@interface TyphoonCollaboratingAssemblyPropertyEnumeratorTests : XCTestCase
 @end
 
 

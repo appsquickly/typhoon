@@ -48,10 +48,8 @@
 		4B0633AA17D29402009CDBD6 /* TyphoonComponentFactoryAwareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A317D29402009CDBD6 /* TyphoonComponentFactoryAwareTests.m */; };
 		4B0633AB17D29402009CDBD6 /* TyphoonComponentFactoryAwareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A317D29402009CDBD6 /* TyphoonComponentFactoryAwareTests.m */; };
 		4B0633AC17D29402009CDBD6 /* TyphoonComponentFactoryAwareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0633A317D29402009CDBD6 /* TyphoonComponentFactoryAwareTests.m */; };
-		4B841470179B0E3900916BF5 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B84146F179B0E3900916BF5 /* SenTestingKit.framework */; };
 		4B841472179B0E3900916BF5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841471179B0E3900916BF5 /* UIKit.framework */; };
 		4B841474179B0E3900916BF5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841473179B0E3900916BF5 /* Foundation.framework */; };
-		4B841488179B0E5200916BF5 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B84146F179B0E3900916BF5 /* SenTestingKit.framework */; };
 		4B84148A179B0E5200916BF5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841489179B0E5200916BF5 /* Cocoa.framework */; };
 		4B8414EA179B0EA600916BF5 /* ClassWithCollectionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B84149F179B0EA600916BF5 /* ClassWithCollectionProperties.m */; };
 		4B8414EB179B0EA600916BF5 /* TyphoonPropertyInjectedAsCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8414A1179B0EA600916BF5 /* TyphoonPropertyInjectedAsCollectionTests.m */; };
@@ -120,7 +118,6 @@
 		4BC648DD17A20AD2007F0463 /* TyphoonPrimitiveTypeConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8414E3179B0EA600916BF5 /* TyphoonPrimitiveTypeConverterTests.m */; };
 		4BC648DE17A20AD2007F0463 /* TyphoonTypeConverterRegistryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8414E4179B0EA600916BF5 /* TyphoonTypeConverterRegistryTests.m */; };
 		4BC648DF17A20AD2007F0463 /* TyphoonTypeDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8414E5179B0EA600916BF5 /* TyphoonTypeDescriptorTests.m */; };
-		4BC648E217A20AD2007F0463 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B84146F179B0E3900916BF5 /* SenTestingKit.framework */; };
 		4BC648E317A20AD2007F0463 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841471179B0E3900916BF5 /* UIKit.framework */; };
 		4BC648E417A20AD2007F0463 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B841473179B0E3900916BF5 /* Foundation.framework */; };
 		4BC648ED17A20AD2007F0463 /* SomeProperties.properties in Resources */ = {isa = PBXBuildFile; fileRef = 4B8414DE179B0EA600916BF5 /* SomeProperties.properties */; };
@@ -211,6 +208,9 @@
 		65FE013E185F7F3000C0785C /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE013D185F7F3000C0785C /* Person.m */; };
 		65FE013F185F7F3000C0785C /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE013D185F7F3000C0785C /* Person.m */; };
 		65FE0140185F7F3000C0785C /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FE013D185F7F3000C0785C /* Person.m */; };
+		6B6B2E0A1934702E00E27442 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6B2E091934702E00E27442 /* XCTest.framework */; };
+		6B6B2E0B1934703800E27442 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6B2E091934702E00E27442 /* XCTest.framework */; };
+		6B6B2E0C1934704000E27442 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6B2E091934702E00E27442 /* XCTest.framework */; };
 		75AB5105A442B91C8829135E /* TyphoonBlockComponentFactory_OverridingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5106A7430A8EF5A6A292 /* TyphoonBlockComponentFactory_OverridingTests.m */; };
 		75AB5133B0D948DF521F1D61 /* TyphoonAssemblyAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5DFD1312598D60881E9D /* TyphoonAssemblyAdviserTests.m */; };
 		75AB51C098497FB1A9B4C75E /* TyphoonCollaboratingAssemblyPropertyEnumeratorTests_AssemblyWithProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AB5057948C5EF8D86D932B /* TyphoonCollaboratingAssemblyPropertyEnumeratorTests_AssemblyWithProperty.m */; };
@@ -505,6 +505,7 @@
 		65FE013B185F787C00C0785C /* PersonFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonFactory.h; sourceTree = "<group>"; };
 		65FE013C185F7F3000C0785C /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		65FE013D185F7F3000C0785C /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		6B6B2E091934702E00E27442 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		75AB5057948C5EF8D86D932B /* TyphoonCollaboratingAssemblyPropertyEnumeratorTests_AssemblyWithProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonCollaboratingAssemblyPropertyEnumeratorTests_AssemblyWithProperty.m; sourceTree = "<group>"; };
 		75AB5106A7430A8EF5A6A292 /* TyphoonBlockComponentFactory_OverridingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonBlockComponentFactory_OverridingTests.m; sourceTree = "<group>"; };
 		75AB51A490B3C70B90B70509 /* SomeResource */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SomeResource; sourceTree = "<group>"; };
@@ -591,7 +592,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B841470179B0E3900916BF5 /* SenTestingKit.framework in Frameworks */,
+				6B6B2E0A1934702E00E27442 /* XCTest.framework in Frameworks */,
 				4B841472179B0E3900916BF5 /* UIKit.framework in Frameworks */,
 				4B841474179B0E3900916BF5 /* Foundation.framework in Frameworks */,
 				60A23DF66842404BA2052F31 /* libPods-iOS Tests (Cocoapods).a in Frameworks */,
@@ -602,7 +603,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B841488179B0E5200916BF5 /* SenTestingKit.framework in Frameworks */,
+				6B6B2E0B1934703800E27442 /* XCTest.framework in Frameworks */,
 				4B84148A179B0E5200916BF5 /* Cocoa.framework in Frameworks */,
 				AA610774FC6148F69759C89B /* libPods-OS X Tests (Cocoapods).a in Frameworks */,
 			);
@@ -612,8 +613,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B6B2E0C1934704000E27442 /* XCTest.framework in Frameworks */,
 				4BCA951917A2F04200EA69D1 /* libTyphoon-iOS.a in Frameworks */,
-				4BC648E217A20AD2007F0463 /* SenTestingKit.framework in Frameworks */,
 				4BC648E317A20AD2007F0463 /* UIKit.framework in Frameworks */,
 				4BC648E417A20AD2007F0463 /* Foundation.framework in Frameworks */,
 				B46F1E8D96944267A56A572C /* libPods-iOS Tests (Static Library).a in Frameworks */,
@@ -692,6 +693,7 @@
 		4B84146E179B0E3900916BF5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6B6B2E091934702E00E27442 /* XCTest.framework */,
 				4B84146F179B0E3900916BF5 /* SenTestingKit.framework */,
 				4B841471179B0E3900916BF5 /* UIKit.framework */,
 				4B841473179B0E3900916BF5 /* Foundation.framework */,
@@ -1174,7 +1176,7 @@
 		4B841461179B0E1B00916BF5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				TargetAttributes = {
 					4B9685A117D26E8200E69723 = {
 						TestTargetID = 4B84146B179B0E3900916BF5;
@@ -1759,7 +1761,6 @@
 			baseConfigurationReference = 159D62E0E7314B4D9C0B9CC1 /* Pods-iOS Tests (Cocoapods).xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1772,6 +1773,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1809,7 +1811,6 @@
 			baseConfigurationReference = 159D62E0E7314B4D9C0B9CC1 /* Pods-iOS Tests (Cocoapods).xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1822,6 +1823,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -1853,7 +1855,6 @@
 			baseConfigurationReference = 147D694256D7435FB81D6419 /* Pods-OS X Tests (Cocoapods).xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1864,7 +1865,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1903,7 +1907,6 @@
 			baseConfigurationReference = 147D694256D7435FB81D6419 /* Pods-OS X Tests (Cocoapods).xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1915,7 +1918,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -1960,7 +1966,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 37EFD46D9A8A4490AD09985E /* Pods-iOS Tests (Static Library).xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1973,6 +1978,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2015,7 +2021,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 37EFD46D9A8A4490AD09985E /* Pods-iOS Tests (Static Library).xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -2028,6 +2033,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;

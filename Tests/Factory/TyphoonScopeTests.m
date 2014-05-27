@@ -10,14 +10,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "ObjectGraphAssembly.h"
 #import "TyphoonBlockComponentFactory.h"
 #import "Knight.h"
 #import "CampaignQuest.h"
 #import "Fort.h"
 
-@interface TyphoonScopeTests : SenTestCase
+@interface TyphoonScopeTests : XCTestCase
 {
     ObjectGraphAssembly *_assembly;
 }

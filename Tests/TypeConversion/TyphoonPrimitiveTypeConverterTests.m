@@ -9,13 +9,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TyphoonPrimitiveTypeConverter.h"
 #import "TyphoonTypeDescriptor.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
 #import "Knight.h"
 
-@interface TyphoonPrimitiveTypeConverterTests : SenTestCase
+@interface TyphoonPrimitiveTypeConverterTests : XCTestCase
 
 @property(nonatomic) BOOL boolProperty;
 @property(nonatomic) int intProperty;
@@ -136,19 +136,19 @@
 - (void)test_converts_to_selector
 {
     SEL converted = [_typeConverter convertToSelector:@"initWithQuest:"];
-    STAssertEquals(converted, @selector(initWithQuest:), nil, nil);
+    XCTAssertEqual(converted, @selector(initWithQuest:));
 }
 
 - (void)test_converts_to_class
 {
     Class converted = [_typeConverter convertToClass:@"NSString"];
-    STAssertTrue(converted == [NSString class], nil);
+    XCTAssertTrue(converted == [NSString class]);
 }
 
 - (void)test_converts_to_c_string
 {
     const char *converted = [_typeConverter convertToCString:@"the quick brown fox"];
-    STAssertTrue(strcmp(converted, [@"the quick brown fox" cStringUsingEncoding:NSUTF8StringEncoding]) == 0, nil);
+    XCTAssertTrue(strcmp(converted, [@"the quick brown fox" cStringUsingEncoding:NSUTF8StringEncoding]) == 0);
 }
 
 
@@ -179,7 +179,7 @@
     id valueOrNumber = [_typeConverter valueFromText:@"123456" withType:pointerType];
 
     void *pointer = [valueOrNumber pointerValue];
-    STAssertEquals(pointer, (void *) 123456, nil);
+    XCTAssertEqual(pointer, (void *) 123456);
 }
 
 - (void)test_unknown_pointer_type
@@ -189,7 +189,7 @@
     id valueOrNumber = [_typeConverter valueFromText:@"123456" withType:unknownPointerType];
 
     void *pointer = [valueOrNumber pointerValue];
-    STAssertEquals(pointer, (void *) 123456, nil);
+    XCTAssertEqual(pointer, (void *) 123456);
 }
 
 - (void)test_unknown_type
@@ -198,7 +198,7 @@
 
     @try {
         [_typeConverter valueFromText:@"123456" withType:unknownType];
-        STFail(@"Attempting to create a value from a non-pointer of unknown type should raise an exception.");
+        XCTFail(@"Attempting to create a value from a non-pointer of unknown type should raise an exception.");
     }
     @catch (NSException *exception) {
     }

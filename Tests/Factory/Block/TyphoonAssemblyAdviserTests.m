@@ -11,7 +11,7 @@
 
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <objc/runtime.h>
 #import "TyphoonAssemblySelectorAdviser.h"
 #import "TyphoonAssemblyAdviser.h"
@@ -40,7 +40,7 @@
 @end
 
 
-@interface TyphoonAssemblyAdviserTests : SenTestCase
+@interface TyphoonAssemblyAdviserTests : XCTestCase
 @end
 
 

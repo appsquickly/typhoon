@@ -11,7 +11,7 @@
 
 #import "TyphoonAssistedFactoryCreatorOneFactory.h"
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #include <objc/runtime.h>
 
 #import "TyphoonFactoryProviderTestHelper.h"
@@ -24,7 +24,7 @@
 #import "TyphoonDefinition.h"
 
 
-@interface TyphoonAssistedFactoryCreatorOneFactoryTest : SenTestCase
+@interface TyphoonAssistedFactoryCreatorOneFactoryTest : XCTestCase
 @end
 
 @implementation TyphoonAssistedFactoryCreatorOneFactoryTest

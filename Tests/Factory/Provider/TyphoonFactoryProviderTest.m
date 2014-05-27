@@ -11,7 +11,7 @@
 
 #import "TyphoonFactoryProvider.h"
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <objc/runtime.h>
 
 #import "TyphoonFactoryProviderTestHelper.h"
@@ -26,7 +26,7 @@
 #import "PaymentImpl.h"
 
 
-@interface TyphoonFactoryProviderTest : SenTestCase
+@interface TyphoonFactoryProviderTest : XCTestCase
 @end
 
 @implementation TyphoonFactoryProviderTest

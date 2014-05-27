@@ -9,11 +9,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TyphoonResource.h"
 #import "TyphoonBundleResource.h"
 
-@interface TyphoonBundleResourceTests : SenTestCase
+@interface TyphoonBundleResourceTests : XCTestCase
 @end
 
 @implementation TyphoonBundleResourceTests
@@ -44,7 +44,7 @@
     @try {
         id <TyphoonResource> resource = [TyphoonBundleResource withName:@"SomeResourceThatDoesNotExist.txt"];
         NSLog(@"Resource: %@", resource);
-        STFail(@"Should have thrown exception");
+        XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
         assertThat([e description], equalTo(@"Resource named 'SomeResourceThatDoesNotExist.txt' not in bundle."));

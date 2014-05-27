@@ -6,10 +6,10 @@
 //
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TyphoonWeakComponentsPool.h"
 
-@interface TyphoonWeakComponentsPoolTests : SenTestCase
+@interface TyphoonWeakComponentsPoolTests : XCTestCase
 
 @end
 

@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "Typhoon.h"
 #import "Knight.h"
 #import "CampaignQuest.h"
@@ -21,7 +21,7 @@
 #define NSValueFromPrimitive(primitive) ([NSValue value:&primitive withObjCType:@encode(typeof(primitive))])
 
 
-@interface ComponentDefinition_InstanceBuilderTests : SenTestCase
+@interface ComponentDefinition_InstanceBuilderTests : XCTestCase
 @end
 
 @implementation ComponentDefinition_InstanceBuilderTests
@@ -221,7 +221,7 @@
 
     @try {
         Knight *knight = [_componentFactory buildInstanceWithDefinition:knightDefinition args:nil];
-        STFail(@"Should have thrown exception");
+        XCTFail(@"Should have thrown exception");
         knight = nil;
     }
     @catch (NSException *e) {
@@ -302,7 +302,7 @@
     assertThat(primitiveMan.pointerInsideValue, equalTo([NSValue valueWithPointer:&primitiveStruct]));
     assertThatInt(primitiveMan.unknownStructure.fieldA, equalToInt(INT32_MAX));
     assertThatLong(primitiveMan.unknownStructure.fieldB, equalToLong(INT64_MAX));
-    STAssertTrue(CStringEquals("Hello world", primitiveMan.cString),nil);
+    XCTAssertTrue(CStringEquals("Hello world", primitiveMan.cString));
     
     primitiveMan.unknownPointer = NULL;
     free(primitiveStruct);
@@ -321,7 +321,7 @@
 
         Knight *knight = [_componentFactory componentForKey:@"knight"];
         NSLog(@"Knight: %@", knight); //Suppress unused warning.
-        STFail(@"Should have thrown exception");
+        XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
         assertThat(e.name, equalTo(@"TyphoonPropertySetterNotFoundException"));

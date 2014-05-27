@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <Typhoon/TyphoonComponentFactory.h>
 #import <Typhoon/TyphoonBlockComponentFactory.h>
 #import "MiddleAgesAssembly.h"
@@ -19,7 +19,7 @@
 #import "OCLogTemplate.h"
 #import "CavalryMan.h"
 
-@interface TyphoonPatcherTests : SenTestCase
+@interface TyphoonPatcherTests : XCTestCase
 {
     MiddleAgesAssembly *_assembly;
     TyphoonComponentFactory *_factory;

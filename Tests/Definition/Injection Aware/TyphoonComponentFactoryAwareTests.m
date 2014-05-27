@@ -9,12 +9,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "ComponentFactoryAwareObject.h"
 #import <TyphoonBlockComponentFactory.h>
 #import "ComponentFactoryAwareAssembly.h"
 
-@interface TyphoonComponentFactoryAwareTests : SenTestCase
+@interface TyphoonComponentFactoryAwareTests : XCTestCase
 
 @end
 

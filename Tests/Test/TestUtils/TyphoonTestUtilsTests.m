@@ -9,11 +9,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "OCLogTemplate.h"
 #import "TyphoonTestUtils.h"
 
-@interface TyphoonTestUtilsTests : SenTestCase
+@interface TyphoonTestUtilsTests : XCTestCase
 
 @end
 
@@ -42,7 +42,7 @@
         [TyphoonTestUtils wait:0.1 secondsForCondition:^BOOL() {
             typhoon_asynch_condition(willNeverLoad != nil);
         } andPerformTests:nil];
-        STFail(@"Should have thrown exception");
+        XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
         assertThat([e description], equalTo(@"Condition didn't happen before timeout: 0.100000"));

@@ -7,12 +7,12 @@
 //
 
 #import <Typhoon/TyphoonBlockComponentFactory.h>
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
 
-@interface TyphoonComponentsFactoryCollaboratingWithRuntimeArgsTests : SenTestCase
+@interface TyphoonComponentsFactoryCollaboratingWithRuntimeArgsTests : XCTestCase
 
 @end
 
@@ -37,7 +37,7 @@
 
     Knight *fried = [knight.friends anyObject];
 
-    STAssertTrue([fried.foobar isEqual:@"Hello"], nil);
+    XCTAssertTrue([fried.foobar isEqual:@"Hello"]);
 }
 
 @end

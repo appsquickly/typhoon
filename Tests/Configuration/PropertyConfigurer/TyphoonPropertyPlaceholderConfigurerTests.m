@@ -9,12 +9,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "Typhoon.h"
 #import "Knight.h"
 #import "OCLogTemplate.h"
 
-@interface TyphoonPropertyPlaceholderConfigurerTests : SenTestCase
+@interface TyphoonPropertyPlaceholderConfigurerTests : XCTestCase
 @end
 
 @implementation TyphoonPropertyPlaceholderConfigurerTests
@@ -84,8 +84,8 @@
     [_configurer postProcessComponentFactory:factory];
 
     Knight *knight = [factory componentForType:[Knight class]];
-    STAssertEquals(knight.damselsRescued, (NSUInteger)42, nil);
-    STAssertEquals(knight.hasHorseWillTravel, (BOOL)YES, nil);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)42);
+    XCTAssertEqual(knight.hasHorseWillTravel, (BOOL)YES);
 }
 
 - (void)test_plist_values
@@ -102,8 +102,8 @@
     [_configurer postProcessComponentFactory:factory];
 
     Knight *knight = [factory componentForType:[Knight class]];
-    STAssertEquals(knight.damselsRescued, (NSUInteger)28, nil);
-    STAssertEquals(knight.hasHorseWillTravel, (BOOL)YES, nil);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)28);
+    XCTAssertEqual(knight.hasHorseWillTravel, (BOOL)YES);
 }
 
 @end

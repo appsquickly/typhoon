@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TyphoonTypeDescriptor.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
 #import "Quest.h"
@@ -21,7 +21,7 @@ typedef struct
     char bar[255];
 } SomeStructType;
 
-@interface TyphoonTypeDescriptorTests : SenTestCase
+@interface TyphoonTypeDescriptorTests : XCTestCase
 
 @property BOOL aBoolProperty;
 @property NSURL *anNSURLProperty;

@@ -6,11 +6,12 @@
 //
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
+#import <XCTest/XCTest.h>
 #import "AssemblyWithDefinitionConfiguration.h"
 #import "TyphoonBlockComponentFactory.h"
 
-@interface DefinitionConfigurationTest : SenTestCase
+@interface DefinitionConfigurationTest : XCTestCase
 
 @end
 
@@ -27,65 +28,65 @@
 
 - (void)test_macros_defined_definition
 {
-    STAssertEqualObjects([assembly definitionMatchedTrueValue], @"TRUE", nil);
+    XCTAssertEqualObjects([assembly definitionMatchedTrueValue], @"TRUE");
 }
 
 - (void)test_runtime_defined_definition
 {
-    STAssertEqualObjects([assembly definitionMatchedRuntimeValue:@YES], @"TRUE", nil);
+    XCTAssertEqualObjects([assembly definitionMatchedRuntimeValue:@YES], @"TRUE");
 }
 
 - (void)test_string_defined_definition
 {
-    STAssertEqualObjects([assembly definitionMatchedFalseAsString], @"FALSE", nil);
+    XCTAssertEqualObjects([assembly definitionMatchedFalseAsString], @"FALSE");
 }
 
 - (void)test_number_defined_definition
 {
-    STAssertEqualObjects([assembly definitionMatchedOneAsNumber], @"TRUE", nil);
+    XCTAssertEqualObjects([assembly definitionMatchedOneAsNumber], @"TRUE");
 }
 
 - (void)test_string_number_defined_definition
 {
-    STAssertEqualObjects([assembly definitionMatchedOneAsString], @"TRUE", nil);
+    XCTAssertEqualObjects([assembly definitionMatchedOneAsString], @"TRUE");
 }
 
 - (void)test_definition_defined_by_another_as_option
 {
-    STAssertEqualObjects([assembly definitionMatchedByAnotherDefinitionWithFalse], @"FALSE", nil);
+    XCTAssertEqualObjects([assembly definitionMatchedByAnotherDefinitionWithFalse], @"FALSE");
 }
 
 - (void)test_definition_matched_by_name
 {
-    STAssertEqualObjects([assembly definitionMatchedDefinitionName:@"trueString"], @"TRUE", nil);
-    STAssertEqualObjects([assembly definitionMatchedDefinitionName:@"falseString"], @"FALSE", nil);
+    XCTAssertEqualObjects([assembly definitionMatchedDefinitionName:@"trueString"], @"TRUE");
+    XCTAssertEqualObjects([assembly definitionMatchedDefinitionName:@"falseString"], @"FALSE");
 }
 
 - (void)test_definition_with_custom_matcher
 {
-    STAssertEqualObjects([assembly definitionMatchedByCustomMatcherFromOption:@"positive"], @"TRUE", nil);
-    STAssertEqualObjects([assembly definitionMatchedByCustomMatcherFromOption:@"negative"], @"FALSE", nil);
-    STAssertEqualObjects([assembly definitionMatchedByCustomMatcherFromOption:@"nothing"], @"ZERO", nil);
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherFromOption:@"positive"], @"TRUE");
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherFromOption:@"negative"], @"FALSE");
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherFromOption:@"nothing"], @"ZERO");
 }
 
 - (void)test_definition_cant_match
 {
-    STAssertThrows([assembly definitionMatchedByCustomMatcherFromOption:@"unknown"], nil);
-    STAssertThrows([assembly definitionMatchedByCustomMatcherOrNameFromOption:@"unknown"], nil);
+    XCTAssertThrows([assembly definitionMatchedByCustomMatcherFromOption:@"unknown"]);
+    XCTAssertThrows([assembly definitionMatchedByCustomMatcherOrNameFromOption:@"unknown"]);
 }
 
 - (void)test_definition_with_custom_matcher_and_name
 {
-    STAssertEqualObjects([assembly definitionMatchedByCustomMatcherOrNameFromOption:@"positive"], @"TRUE", nil);
-    STAssertEqualObjects([assembly definitionMatchedByCustomMatcherOrNameFromOption:@"negative"], @"FALSE", nil);
-    STAssertEqualObjects([assembly definitionMatchedByCustomMatcherOrNameFromOption:@"nothing"], @"ZERO", nil);
-    STAssertEqualObjects([assembly definitionMatchedByCustomMatcherOrNameFromOption:@"trueString"], @"TRUE", nil);
-    STAssertEqualObjects([assembly definitionMatchedByCustomMatcherOrNameFromOption:@"falseString"], @"FALSE", nil);
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherOrNameFromOption:@"positive"], @"TRUE");
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherOrNameFromOption:@"negative"], @"FALSE");
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherOrNameFromOption:@"nothing"], @"ZERO");
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherOrNameFromOption:@"trueString"], @"TRUE");
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherOrNameFromOption:@"falseString"], @"FALSE");
 }
 
 - (void)test_definition_cant_match_useDefault
 {
-    STAssertEqualObjects([assembly definitionMatchedByCustomMatcherWithDefaultFromOption:@"unknown"], @"ZERO", nil);
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherWithDefaultFromOption:@"unknown"], @"ZERO");
 }
 
 @end

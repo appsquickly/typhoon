@@ -9,13 +9,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <Typhoon/TyphoonTypeConverter.h>
 #import <Typhoon/TyphoonTypeConverterRegistry.h>
 #import <Typhoon/NSObject+TyphoonIntrospectionUtils.h>
 #import <UIKit/UIKit.h>
 
-@interface TyphoonUIColorConverterTests : SenTestCase
+@interface TyphoonUIColorConverterTests : XCTestCase
 
 @property(nonatomic, strong, readonly) UIColor *color;
 @property(nonatomic, strong) id <TyphoonTypeConverter> converter;

@@ -6,14 +6,14 @@
 //
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "MethodInjectinosAssembly.h"
 #import "Typhoon.h"
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
 #import "Quest.h"
 
-@interface TyphoonMethodInjectionsTests : SenTestCase
+@interface TyphoonMethodInjectionsTests : XCTestCase
 
 @end
 
@@ -31,8 +31,8 @@
 - (void)test_method_injection
 {
     Knight *knight = [factory knightInjectedByMethod];
-    STAssertNotNil(knight.quest, nil);
-    STAssertEquals((int)knight.damselsRescued, 3, nil);
+    XCTAssertNotNil(knight.quest);
+    XCTAssertEqual((int)knight.damselsRescued, 3);
 }
 
 - (void)test_method_circular_injection_with_array
@@ -43,23 +43,23 @@
     
     Knight *another = damsels[0];
     
-    STAssertTrue(knight == another.foobar, @"knight=%@, another=%@",knight, another);
-    STAssertTrue(damsels.count == 2, nil);
+    XCTAssertTrue(knight == another.foobar, @"knight=%@, another=%@",knight, another);
+    XCTAssertTrue(damsels.count == 2);
 }
 
 - (void)test_method_three_argument
 {
     Knight *knight = [factory knightWithMethodRuntimeFoo:@"foo"];
-    STAssertEqualObjects(knight.foobar, @"foo", nil);
+    XCTAssertEqualObjects(knight.foobar, @"foo");
 }
 
 - (void)test_method_nil_argument
 {
     Knight *knight = [factory knightWithMethodFoo:nil];
     
-    STAssertTrue([knight.friends count] == 2, nil);
-    STAssertTrue(knight.hasHorseWillTravel, nil);
-    STAssertTrue(knight.foobar == nil, nil);
+    XCTAssertTrue([knight.friends count] == 2);
+    XCTAssertTrue(knight.hasHorseWillTravel);
+    XCTAssertTrue(knight.foobar == nil);
 }
 
 

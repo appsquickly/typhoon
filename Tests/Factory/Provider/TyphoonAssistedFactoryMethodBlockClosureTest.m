@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TyphoonAssistedFactoryMethodBlockClosure.h"
 
 #include <objc/runtime.h>
@@ -25,7 +25,7 @@
 
 @end
 
-@interface TyphoonAssistedFactoryMethodBlockClosureTest : SenTestCase
+@interface TyphoonAssistedFactoryMethodBlockClosureTest : XCTestCase
 
 @end
 

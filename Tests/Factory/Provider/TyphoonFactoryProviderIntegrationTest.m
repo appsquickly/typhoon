@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 #import "AuthServiceImpl.h"
 #import "CreditServiceImpl.h"
@@ -19,7 +19,7 @@
 #import "PizzaFactory.h"
 #import "PizzaImpl.h"
 
-@interface TyphoonFactoryProviderIntegrationTest : SenTestCase
+@interface TyphoonFactoryProviderIntegrationTest : XCTestCase
 @end
 
 @implementation TyphoonFactoryProviderIntegrationTest

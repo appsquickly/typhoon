@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TyphoonAssistedFactoryMethodInitializerClosure.h"
 #import "TyphoonAssistedFactoryMethodInitializer.h"
 
@@ -29,7 +29,7 @@
 
 @end
 
-@interface TyphoonAssistedFactoryMethodInitializerClosureTest : SenTestCase
+@interface TyphoonAssistedFactoryMethodInitializerClosureTest : XCTestCase
 
 @property(nonatomic, copy) NSString *stringProperty;
 @property(nonatomic, copy) NSData *dataProperty;
@@ -161,7 +161,7 @@
     @try {
         TyphoonAssistedFactoryMethodInitializerClosure *closure =
             [[TyphoonAssistedFactoryMethodInitializerClosure alloc] initWithInitializer:initializer methodSignature:methodSignature];
-        STFail(@"[TyphoonAssistedFactoryMethodClosure initWithInitializer:methodDescription:] should have failed");
+        XCTFail(@"[TyphoonAssistedFactoryMethodClosure initWithInitializer:methodDescription:] should have failed");
         closure = nil;
     }
     @catch (NSException *exception) {

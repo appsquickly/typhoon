@@ -6,12 +6,12 @@
 //
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "Typhoon.h"
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
 
-@interface TyphoonRuntimeInjectionsTests : SenTestCase
+@interface TyphoonRuntimeInjectionsTests : XCTestCase
 
 @end
 
@@ -93,9 +93,9 @@
     
     Knight *anotherKnight = (Knight *) knight.foobar;
     
-    STAssertEquals((int)knight.damselsRescued, 32, @"");
-    STAssertTrue(anotherKnight.foobar == knight, @"");
-    STAssertTrue(knight.foobar == anotherKnight, @"");
+    XCTAssertEqual((int)knight.damselsRescued, 32, @"");
+    XCTAssertTrue(anotherKnight.foobar == knight, @"");
+    XCTAssertTrue(knight.foobar == anotherKnight, @"");
 }
 
 - (void)test_circular_dependency_with_runtime_args_as_nil
@@ -104,9 +104,9 @@
 
     Knight *anotherKnight = (Knight *) knight.foobar;
 
-    STAssertEquals((int)knight.damselsRescued, (int)nil, @"");
-    STAssertTrue(anotherKnight.foobar == knight, @"");
-    STAssertTrue(knight.foobar == anotherKnight, @"");
+    XCTAssertEqual((int)knight.damselsRescued, (int)nil, @"");
+    XCTAssertTrue(anotherKnight.foobar == knight, @"");
+    XCTAssertTrue(knight.foobar == anotherKnight, @"");
 }
 
 - (void)test_circular_dependency_with_predefined_runtime_args
@@ -115,9 +115,9 @@
     
     Knight *anotherKnight = (Knight *) knight.foobar;
     
-    STAssertEquals((int)knight.damselsRescued, 25, @"");
-    STAssertTrue(anotherKnight.foobar == knight, @"");
-    STAssertTrue(knight.foobar == anotherKnight, @"");
+    XCTAssertEqual((int)knight.damselsRescued, 25, @"");
+    XCTAssertTrue(anotherKnight.foobar == knight, @"");
+    XCTAssertTrue(knight.foobar == anotherKnight, @"");
 }
 
 - (void)test_dependency_with_predefined_runtime_args
@@ -128,11 +128,11 @@
     
     Knight *thirdKnight = (Knight *) anotherKnight.foobar;
     
-    STAssertEquals((int)knight.damselsRescued, 27, @"");
-    STAssertEquals((int)thirdKnight.damselsRescued, 25, @"");
+    XCTAssertEqual((int)knight.damselsRescued, 27, @"");
+    XCTAssertEqual((int)thirdKnight.damselsRescued, 25, @"");
 
-    STAssertTrue(thirdKnight != knight, @"");
-    STAssertTrue(knight.foobar == anotherKnight, @"");
+    XCTAssertTrue(thirdKnight != knight, @"");
+    XCTAssertTrue(knight.foobar == anotherKnight, @"");
 }
 
 

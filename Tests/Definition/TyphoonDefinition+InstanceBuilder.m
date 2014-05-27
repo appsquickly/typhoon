@@ -6,14 +6,14 @@
 //
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TyphoonInjections.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonInjectionByObjectInstance.h"
 #import "TyphoonInjectionByObjectFromString.h"
 
-@interface TyphoonDefinitionInstanceBuilderTests : SenTestCase
+@interface TyphoonDefinitionInstanceBuilderTests : XCTestCase
 
 @end
 
@@ -38,14 +38,14 @@
         injectionsCount++;
     }];
 
-    STAssertTrue(injectionsCount == 6, nil);
+    XCTAssertTrue(injectionsCount == 6);
 
     injectionsCount = 0;
     [definition enumerateInjectionsOfKind:[TyphoonInjectionByObjectFromString class] options:TyphoonInjectionsEnumerationOptionAll
                                usingBlock:^(id <TyphoonInjection> injection, id <TyphoonInjection> *injectionToReplace, BOOL *stop) {
         injectionsCount++;
     }];
-    STAssertTrue(injectionsCount == 1, nil);
+    XCTAssertTrue(injectionsCount == 1);
 }
 
 - (void)test_injections_replacement
@@ -68,7 +68,7 @@
         *injectionToReplace = TyphoonInjectionWithObject(@"B");
     }];
 
-    STAssertTrue(injectionsCount == 2, nil);
+    XCTAssertTrue(injectionsCount == 2);
 
     injectionsCount = 0;
     [definition enumerateInjectionsOfKind:[TyphoonInjectionByObjectFromString class] options:TyphoonInjectionsEnumerationOptionAll
@@ -76,7 +76,7 @@
         injectionsCount++;
     }];
 
-    STAssertTrue(injectionsCount == 0, nil);
+    XCTAssertTrue(injectionsCount == 0);
 }
 
 - (void)test_property_injection_replacement_with_parent
@@ -94,9 +94,9 @@
         *injectionToReplace = TyphoonInjectionWithObjectFromString(@"B");
     }];
 
-    STAssertEquals([parent numberOfPropertyInjectionsByObjectFromString], (NSUInteger)1, nil);
+    XCTAssertEqual([parent numberOfPropertyInjectionsByObjectFromString], (NSUInteger)1);
     NSLog(@"child: %@",child.injectedProperties);
-    STAssertEquals([child numberOfPropertyInjectionsByObjectFromString], (NSUInteger)2, nil);
+    XCTAssertEqual([child numberOfPropertyInjectionsByObjectFromString], (NSUInteger)2);
 }
 
 - (void)test_method_injection_replacement_with_parent
@@ -120,8 +120,8 @@
         *injectionToReplace = TyphoonInjectionWithObjectFromString(@"B");
     }];
 
-    STAssertEquals([parent numberOfMethodInjectionsByObjectFromString], (NSUInteger)1, nil);
-    STAssertEquals([child numberOfMethodInjectionsByObjectFromString], (NSUInteger)2, nil);
+    XCTAssertEqual([parent numberOfMethodInjectionsByObjectFromString], (NSUInteger)1);
+    XCTAssertEqual([child numberOfMethodInjectionsByObjectFromString], (NSUInteger)2);
 }
 
 @end

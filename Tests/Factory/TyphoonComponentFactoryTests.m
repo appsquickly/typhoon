@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "Typhoon.h"
 
 #import "Knight.h"
@@ -27,7 +27,7 @@
 
 static NSString *const DEFAULT_QUEST = @"quest";
 
-@interface TyphoonComponentFactoryTests : SenTestCase
+@interface TyphoonComponentFactoryTests : XCTestCase
 @end
 
 @implementation TyphoonComponentFactoryTests
@@ -73,7 +73,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     @try {
         Knight *knight = [_componentFactory componentForKey:@"knight"];
         NSLog(@"Knight: %@", knight);
-        STFail(@"Should have thrown exception");
+        XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
         assertThat([e description], equalTo(@"No component matching id 'quest'."));
@@ -125,7 +125,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     @try {
         Knight *knight = [_componentFactory componentForType:[Knight class]];
-        STFail(@"Should have thrown exception");
+        XCTFail(@"Should have thrown exception");
         knight = nil;
     }
     @catch (NSException *e) {
@@ -134,7 +134,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     
     @try {
         Knight *knight = [_componentFactory componentForType:@protocol(Quest)];
-        STFail(@"Should have thrown exception");
+        XCTFail(@"Should have thrown exception");
         knight = nil;
     }
     @catch (NSException *e) {
@@ -143,7 +143,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     @try {
         Knight *knight = [_componentFactory componentForType:[Champion class]];
-        STFail(@"Should have thrown exception");
+        XCTFail(@"Should have thrown exception");
         knight = nil;
     }
     @catch (NSException *e) {
@@ -153,7 +153,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     @try {
         id <Harlot> harlot = [_componentFactory componentForType:@protocol(Harlot)];
         NSLog(@"Harlot: %@", harlot); //suppress unused variable warning
-        STFail(@"Should have thrown exception");
+        XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
         assertThat([e description], equalTo(@"No components defined which satisify type: 'id<Harlot>'"));
@@ -384,7 +384,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
         object1 = [localFactory componentForKey:key];
     }
 
-    STAssertTrue([object1 rangeOfString:@"Hello"].location == NSNotFound, nil);
+    XCTAssertTrue([object1 rangeOfString:@"Hello"].location == NSNotFound);
 }
 
 /* ====================================================================================================================================== */
@@ -444,7 +444,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     @try {
         __unused NSURL *url = [_componentFactory componentForKey:@"anAbstractDefinition"];
-        STFail(@"Should've thrown exception");
+        XCTFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
         assertThat([e description], equalTo(@"Attempt to instantiate abstract definition: Definition: class='NSURL', key='anAbstractDefinition', scope='ObjectGraph'"));

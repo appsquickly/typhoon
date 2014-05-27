@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "Typhoon.h"
 #import "Knight.h"
 #import "CampaignQuest.h"
@@ -46,7 +46,7 @@ NSString *currentFooString;
 @end
 
 
-@interface FactoryReferenceInjectionsTests : SenTestCase
+@interface FactoryReferenceInjectionsTests : XCTestCase
 
 @end
 
@@ -171,7 +171,7 @@ NSString *currentFooString;
     [factory registerDefinition:quest];
     [factory registerDefinition:knightDefinition];
     
-    STAssertThrows([factory componentForType:[Knight class]], @"Should throw exception, because property readonly");
+    XCTAssertThrows([factory componentForType:[Knight class]], @"Should throw exception, because property readonly");
 }
 
 

@@ -6,10 +6,10 @@
 //
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <TyphoonAssemblySelectorAdviser.h>
 
-@interface TyphoonAssemblySelectorAdviserTests : SenTestCase
+@interface TyphoonAssemblySelectorAdviserTests : XCTestCase
 
 @end
 
@@ -41,8 +41,8 @@
 
 - (void)test_recognizes_advised
 {
-    STAssertFalse([TyphoonAssemblySelectorAdviser selectorIsAdvised:sel], nil);
-    STAssertTrue([TyphoonAssemblySelectorAdviser selectorIsAdvised:advisedSEL], nil);
+    XCTAssertFalse([TyphoonAssemblySelectorAdviser selectorIsAdvised:sel]);
+    XCTAssertTrue([TyphoonAssemblySelectorAdviser selectorIsAdvised:advisedSEL]);
 }
 
 - (void)test_key_is_selector_as_string
@@ -52,7 +52,7 @@
 
 - (void)test_advised_SEL_for_key
 {
-    STAssertEquals([TyphoonAssemblySelectorAdviser advisedSELForKey:key], advisedSEL, nil);
+    XCTAssertEqual([TyphoonAssemblySelectorAdviser advisedSELForKey:key], advisedSEL);
 }
 
 - (void)test_selector_with_arguments_preserves_arguments
@@ -64,14 +64,14 @@
 #pragma mark - Helper Methods
 - (void)advisedSELShouldHaveNoArguments;
 {
-    STAssertEquals([self numberOfArgumentsInSelector:advisedSEL], (NSUInteger) 0, @"The advised SEL should not have any arguments.");
+    XCTAssertEqual([self numberOfArgumentsInSelector:advisedSEL], (NSUInteger) 0, @"The advised SEL should not have any arguments.");
 }
 
 - (void)advisedSELWithArgumentsShouldHaveTwoArgumentsAndEndWithAnArgument;
 {
     assertThatUnsignedInteger([self numberOfArgumentsInSelector:advisedSELWithArguments], equalToUnsignedInteger(2));
-    STAssertEquals([self numberOfArgumentsInSelector:advisedSELWithArguments], (NSUInteger) 2, @"The wrapped SEL with two arguments should have two arguments.");
-    STAssertTrue([self selectorEndsWithASemicolon:advisedSELWithArguments], nil);
+    XCTAssertEqual([self numberOfArgumentsInSelector:advisedSELWithArguments], (NSUInteger) 2, @"The wrapped SEL with two arguments should have two arguments.");
+    XCTAssertTrue([self selectorEndsWithASemicolon:advisedSELWithArguments]);
 }
 
 - (NSUInteger)numberOfArgumentsInSelector:(SEL)selector;

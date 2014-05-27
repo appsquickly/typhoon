@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TyphoonComponentFactory.h"
 #import "TyphoonBlockComponentFactory.h"
 #import "TyphoonAssembly.h"
@@ -31,7 +31,7 @@
 #import "PrototypeInitInjected.h"
 #import "PrototypePropertyInjected.h"
 
-@interface TyphoonBlockComponentFactoryTests : SenTestCase {
+@interface TyphoonBlockComponentFactoryTests : XCTestCase {
     TyphoonComponentFactory *_componentFactory;
     TyphoonComponentFactory *_exceptionTestFactory;
     TyphoonComponentFactory *_circularDependenciesFactory;
@@ -109,8 +109,8 @@
 
         assertThat(knight.friendsDictionary, notNilValue());
         assertThat(knight.friendsDictionary, hasCountOf(2));
-        STAssertTrue([[knight.friendsDictionary[@"knight"] class] isSubclassOfClass:[Knight class]], nil);
-        STAssertTrue([[knight.friendsDictionary[@"anotherKnight"] class] isSubclassOfClass:[CavalryMan class]], nil);
+        XCTAssertTrue([[knight.friendsDictionary[@"knight"] class] isSubclassOfClass:[Knight class]]);
+        XCTAssertTrue([[knight.friendsDictionary[@"anotherKnight"] class] isSubclassOfClass:[CavalryMan class]]);
     }
 }
 
@@ -153,7 +153,7 @@
     @try {
         NSURL *url = [_exceptionTestFactory componentForKey:@"anotherServiceUrl"];
         if (![url isEqual:[NSURL URLWithString:@"http://dev.foobar.com/service/"]]) {
-            STFail(@"Should have thrown exception");
+            XCTFail(@"Should have thrown exception");
         }
         url = nil;
     }
@@ -320,7 +320,7 @@
 {
     @try {
         [_circularDependenciesFactory componentForKey:@"incorrectPrototypeB"];
-        STFail(@"Should have thrown exception");
+        XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *exception) {
         assertThat([exception name], equalTo(@"CircularInitializerDependence"));

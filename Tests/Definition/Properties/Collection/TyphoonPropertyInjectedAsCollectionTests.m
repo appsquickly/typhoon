@@ -9,11 +9,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "ClassWithCollectionProperties.h"
 #import "TyphoonInjectionByCollection.h"
 
-@interface TyphoonPropertyInjectedAsCollectionTests : SenTestCase
+@interface TyphoonPropertyInjectedAsCollectionTests : XCTestCase
 {
     ClassWithCollectionProperties *_classWithCollectionProperties;
 }
@@ -30,16 +30,16 @@
 
 - (void)test_collection_class_checking_not_collection
 {
-    STAssertFalse([TyphoonInjectionByCollection isCollectionClass:[NSObject class]], nil);
-    STAssertFalse([TyphoonInjectionByCollection isCollectionClass:[NSDictionary class]], nil);
+    XCTAssertFalse([TyphoonInjectionByCollection isCollectionClass:[NSObject class]]);
+    XCTAssertFalse([TyphoonInjectionByCollection isCollectionClass:[NSDictionary class]]);
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Arrays
 - (void)test_collection_class_checking_array
 {
-    STAssertTrue([TyphoonInjectionByCollection isCollectionClass:[NSArray class]], nil);
-    STAssertTrue([TyphoonInjectionByCollection isCollectionClass:[NSMutableArray class]], nil);
+    XCTAssertTrue([TyphoonInjectionByCollection isCollectionClass:[NSArray class]]);
+    XCTAssertTrue([TyphoonInjectionByCollection isCollectionClass:[NSMutableArray class]]);
 }
 
 - (void)test_collection_mutable_class_from_array
@@ -56,10 +56,10 @@
 
 - (void)test_collection_class_checking_set
 {
-    STAssertTrue([TyphoonInjectionByCollection isCollectionClass:[NSSet class]], nil);
-    STAssertTrue([TyphoonInjectionByCollection isCollectionClass:[NSMutableSet class]], nil);
-    STAssertTrue([TyphoonInjectionByCollection isCollectionClass:[NSOrderedSet class]], nil);
-    STAssertTrue([TyphoonInjectionByCollection isCollectionClass:[NSMutableOrderedSet class]], nil);
+    XCTAssertTrue([TyphoonInjectionByCollection isCollectionClass:[NSSet class]]);
+    XCTAssertTrue([TyphoonInjectionByCollection isCollectionClass:[NSMutableSet class]]);
+    XCTAssertTrue([TyphoonInjectionByCollection isCollectionClass:[NSOrderedSet class]]);
+    XCTAssertTrue([TyphoonInjectionByCollection isCollectionClass:[NSMutableOrderedSet class]]);
 }
 
 - (void)test_collection_mutable_class_from_set

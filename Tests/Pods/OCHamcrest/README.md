@@ -69,15 +69,15 @@ My first OCHamcrest test
 ========================
 
 We'll start by writing a very simple Xcode unit test, but instead of using
-OCUnit's ``STAssertEqualObjects`` function, we'll use OCHamcrest's
+OCUnit's ``XCTAssertEqualObjects`` function, we'll use OCHamcrest's
 ``assertThat`` construct and a predefined matcher:
 
-    #import <SenTestingKit/SenTestingKit.h>
+    #import <XCTest/XCTest.h>
 
     #define HC_SHORTHAND
     #import <OCHamcrest/OCHamcrest.h>
 
-    @interface BiscuitTest : SenTestCase
+    @interface BiscuitTest : XCTestCase
     @end
 
     @implementation BiscuitTest

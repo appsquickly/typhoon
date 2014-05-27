@@ -11,11 +11,11 @@
 
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TyphoonMiscUtils.h"
 
 
-@interface TyphoonMiscUtilsTests : SenTestCase
+@interface TyphoonMiscUtilsTests : XCTestCase
 @end
 
 

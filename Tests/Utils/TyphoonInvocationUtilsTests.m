@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TyphoonInvocationUtilsTestObjects.h"
 #import "NSInvocation+TCFInstanceBuilder.h"
 #import <objc/message.h>
@@ -18,7 +18,7 @@
 
 #define retainCount(a) ((int)objc_msgSend(a, NSSelectorFromString(@"retainCount")))
 
-@interface TyphoonInvocationUtilsTests : SenTestCase
+@interface TyphoonInvocationUtilsTests : XCTestCase
 
 @end
 

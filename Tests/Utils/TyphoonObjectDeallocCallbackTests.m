@@ -6,10 +6,10 @@
 //
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "NSObject+DeallocNotification.h"
 
-@interface TyphoonObjectDeallocCallbackTests : SenTestCase
+@interface TyphoonObjectDeallocCallbackTests : XCTestCase
 
 @end
 

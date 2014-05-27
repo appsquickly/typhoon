@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TyphoonTypeConverterRegistry.h"
 #import "TyphoonTypeDescriptor.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
@@ -17,7 +17,7 @@
 #import "TyphoonNSURLTypeConverter.h"
 
 
-@interface TyphoonTypeConverterRegistryTests : SenTestCase
+@interface TyphoonTypeConverterRegistryTests : XCTestCase
 
 @property(nonatomic, strong) NSData *data;
 
@@ -44,7 +44,7 @@
     @try {
         TyphoonNSURLTypeConverter *converter = [[TyphoonNSURLTypeConverter alloc] init];
         [_registry registerTypeConverter:converter];
-        STFail(@"SHould have thrown exception");
+        XCTFail(@"SHould have thrown exception");
     }
     @catch (NSException *e) {
         assertThat([e description], equalTo(@"Converter for 'NSURL' already registered."));

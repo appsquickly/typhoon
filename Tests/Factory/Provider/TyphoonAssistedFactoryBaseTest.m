@@ -9,13 +9,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TyphoonAssistedFactoryBase.h"
 
 #import "TyphoonComponentFactory.h"
 #import "TyphoonAbstractInjection.h"
 
-@interface TyphoonAssistedFactoryBaseTest : SenTestCase
+@interface TyphoonAssistedFactoryBaseTest : XCTestCase
 @end
 
 @implementation TyphoonAssistedFactoryBaseTest

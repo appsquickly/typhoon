@@ -9,13 +9,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TyphoonAssistedFactoryMethodInitializer.h"
 
 #import "TyphoonAssistedFactoryParameterInjectedWithArgumentIndex.h"
 #import "TyphoonAssistedFactoryParameterInjectedWithProperty.h"
 
-@interface TyphoonAssistedFactoryInitializerTest : SenTestCase
+@interface TyphoonAssistedFactoryInitializerTest : XCTestCase
 @end
 
 @implementation TyphoonAssistedFactoryInitializerTest

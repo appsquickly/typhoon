@@ -9,12 +9,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "TyphoonAssistedFactoryDefinition.h"
 
 #import "TyphoonAssistedFactoryMethodBlock.h"
 
-@interface TyphoonAssistedFactoryDefinitionTest : SenTestCase
+@interface TyphoonAssistedFactoryDefinitionTest : XCTestCase
 @end
 
 @implementation TyphoonAssistedFactoryDefinitionTest

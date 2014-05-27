@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <TyphoonViewControllerNibResolver.h>
 #import <UIKit/UIKit.h>
 #import <TyphoonDefinition.h>
@@ -18,7 +18,7 @@
 #import <TyphoonMethod.h>
 #import <TyphoonMethod+InstanceBuilder.h>
 
-@interface TyphoonViewControllerNibResolverTests : SenTestCase
+@interface TyphoonViewControllerNibResolverTests : XCTestCase
 {
     TyphoonViewControllerNibResolver *_nibResolver;
 }
