@@ -24,6 +24,7 @@
 #import "TyphoonObjectWithCustomInjection.h"
 #import "TyphoonPropertyInjection.h"
 #import "TyphoonParameterInjection.h"
+#import "TyphoonInjectionByConfig.h"
 
 id TyphoonInjectionMatchedByType(void) {
     return [[TyphoonInjectionByType alloc] init];
@@ -53,6 +54,11 @@ id TyphoonInjectionWithReference(NSString *reference) {
     return [[TyphoonInjectionByReference alloc] initWithReference:reference args:nil];
 }
 
+id TyphoonInjectionWithConfigKey(NSString *configKey)
+{
+    return [[TyphoonInjectionByConfig alloc] initWithConfigKey:configKey];
+}
+
 id TyphoonMakeInjectionFromObjectIfNeeded(id objectOrInjection) {
     id injection = nil;
 
@@ -73,6 +79,4 @@ BOOL IsTyphoonInjection(id objectOrInjection) {
     return [objectOrInjection conformsToProtocol:@protocol(TyphoonPropertyInjection)] ||
         [objectOrInjection conformsToProtocol:@protocol(TyphoonParameterInjection)];
 }
-
-
 

@@ -13,7 +13,7 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonMethod.h"
-#import "TyphoonPropertyPlaceholderConfigurer.h"
+#import "TyphoonConfigPostProcessor.h"
 #import "TyphoonFactoryProvider.h"
 #import "TyphoonResource.h"
 #import "TyphoonBundleResource.h"

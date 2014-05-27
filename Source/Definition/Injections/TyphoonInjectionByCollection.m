@@ -125,7 +125,7 @@
     TyphoonInjectionByCollection *copied = [[TyphoonInjectionByCollection alloc] init];
     copied.injections = self.injections;
     copied.requiredClass = self.requiredClass;
-    [self copyBaseProperiesTo:copied];
+    [self copyBasePropertiesTo:copied];
     return copied;
 }
 

@@ -100,22 +100,11 @@
     [NSException raise:NSInternalInconsistencyException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
 }
 
--(void)setArgumentWithType:(TyphoonTypeDescriptor *)type onInvocation:(NSInvocation *)invocation withFactory:(TyphoonComponentFactory *)factory
-                      args:(TyphoonRuntimeArguments *)args
-{
-    [NSException raise:NSInternalInconsistencyException format:@"%@ - %@ is abstract", self, NSStringFromSelector(_cmd)];
-}
-
-- (void)obtainValueToInjectPropertyOnInstance:(id)instance withFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args value:(void(^)(id value))completion
-{
-    [NSException raise:NSInternalInconsistencyException format:@"%@ - %@ is abstract", self, NSStringFromSelector(_cmd)];
-}
-
 @end
 
 @implementation TyphoonAbstractInjection (Protected)
 
-- (void)copyBaseProperiesTo:(TyphoonAbstractInjection *)copiedInjection
+- (void)copyBasePropertiesTo:(TyphoonAbstractInjection *)copiedInjection
 {
     if (self.type == TyphoonInjectionTypeProperty) {
         [copiedInjection setPropertyName:_propertyName];

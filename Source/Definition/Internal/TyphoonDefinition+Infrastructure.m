@@ -15,7 +15,7 @@
 TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 #import "TyphoonDefinition+Infrastructure.h"
-#import "TyphoonPropertyPlaceholderConfigurer.h"
+#import "TyphoonConfigPostProcessor.h"
 #import "TyphoonResource.h"
 #import "TyphoonMethod.h"
 #import "TyphoonMethod+InstanceBuilder.h"
@@ -50,7 +50,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 + (instancetype)configDefinitionWithResources:(NSArray *)resources
 {
-    return [self withClass:[TyphoonPropertyPlaceholderConfigurer class] configuration:^(TyphoonDefinition *definition) {
+    return [self withClass:[TyphoonConfigPostProcessor class] configuration:^(TyphoonDefinition *definition) {
         [definition useInitializer:@selector(configurerWithResourceList:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:resources];
         }];

@@ -14,7 +14,7 @@
 #import "Knight.h"
 #import "NSNullTypeConverter.h"
 #import "TyphoonInjections.h"
-#import "TyphoonPropertyPlaceholderConfigurer.h"
+#import "TyphoonConfigPostProcessor.h"
 
 @implementation InfrastructureComponentsAssembly
 

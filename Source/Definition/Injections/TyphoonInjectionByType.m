@@ -19,7 +19,7 @@
 - (id)copyWithZone:(NSZone *)zone
 {
     TyphoonInjectionByType *copied = [[TyphoonInjectionByType alloc] init];
-    [self copyBaseProperiesTo:copied];
+    [self copyBasePropertiesTo:copied];
     return copied;
 }
 

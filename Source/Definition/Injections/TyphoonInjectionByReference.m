@@ -31,7 +31,7 @@
 - (id)copyWithZone:(NSZone *)zone
 {
     TyphoonInjectionByReference *copied = [[TyphoonInjectionByReference alloc] initWithReference:_reference args:_referenceArguments];
-    [self copyBaseProperiesTo:copied];
+    [self copyBasePropertiesTo:copied];
     return copied;
 }
 

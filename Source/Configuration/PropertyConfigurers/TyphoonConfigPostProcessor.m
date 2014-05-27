@@ -10,24 +10,21 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import "TyphoonPropertyPlaceholderConfigurer.h"
+#import "TyphoonConfigPostProcessor.h"
 #import "TyphoonResource.h"
 #import "TyphoonDefinition.h"
-#import "TyphoonInjectionByObjectFromString.h"
+#import "TyphoonInjectionByConfig.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
-#import "OCLogTemplate.h"
 #import "TyphoonPropertyStyleConfiguration.h"
 #import "TyphoonInjections.h"
 #import "TyphoonJsonStyleConfiguration.h"
 #import "TyphoonBundleResource.h"
 #import "TyphoonPlistStyleConfiguration.h"
 
-NSString static *kTyphoonPropertyPlaceholderPrefix = @"${";
-NSString static *kTyphoonPropertyPlaceholderSuffix = @"}";
-
 static NSMutableDictionary *propertyPlaceholderRegistry;
 
-@implementation TyphoonPropertyPlaceholderConfigurer {
+@implementation TyphoonConfigPostProcessor
+{
     NSDictionary *_configs;
 }
 
@@ -36,7 +33,7 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 
-+ (TyphoonPropertyPlaceholderConfigurer *)configurer
++ (TyphoonConfigPostProcessor *)configurer
 {
     return [[[self class] alloc] init];
 }
@@ -133,44 +130,38 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
 {
     for (TyphoonDefinition *definition in [factory registry]) {
-        [definition enumerateInjectionsOfKind:[TyphoonInjectionByObjectFromString class] options:TyphoonInjectionsEnumerationOptionAll
-                                   usingBlock:^(TyphoonInjectionByObjectFromString *injection, id *injectionToReplace, BOOL *stop) {
-            if ([self shouldMutateInjection:injection]) {
-                [self mutateInjection:injection injectionToReplace:injectionToReplace];
-            }
+        [definition enumerateInjectionsOfKind:[TyphoonInjectionByConfig class] options:TyphoonInjectionsEnumerationOptionAll
+                                   usingBlock:^(TyphoonInjectionByConfig *injection, id *injectionToReplace, BOOL *stop) {
+            injection.configuredInjection = [self injectionForConfigInjection:injection];
         }];
     }
 }
 
-- (BOOL)shouldMutateInjection:(TyphoonInjectionByObjectFromString *)injection
+- (id<TyphoonInjection>)injectionForConfigInjection:(TyphoonInjectionByConfig *)injection
 {
-    return [injection.textValue hasPrefix:kTyphoonPropertyPlaceholderPrefix] && [injection.textValue hasSuffix:kTyphoonPropertyPlaceholderSuffix];
-}
-
-- (void)mutateInjection:(TyphoonInjectionByObjectFromString *)injection injectionToReplace:(id*)injectionToReplace
-{
-    NSString *key = [injection.textValue substringFromIndex:[kTyphoonPropertyPlaceholderPrefix length]];
-    key = [key substringToIndex:[key length] - [kTyphoonPropertyPlaceholderSuffix length]];
-    id value = [self configurationValueForKey:key];
+    id value = [self configurationValueForKey:injection.configKey];
+    id<TyphoonInjection>result = nil;
 
     if ([value isKindOfClass:[NSString class]]) {
-        injection.textValue = value;
+        result = TyphoonInjectionWithObjectFromString(value);
     } else {
-        *injectionToReplace = TyphoonInjectionWithObject(value);
+        result = TyphoonInjectionWithObject(value);
     }
+
+    return result;
 }
 
 @end
 
 
-@implementation TyphoonPropertyPlaceholderConfigurer (Deprecated)
+@implementation TyphoonConfigPostProcessor (Deprecated)
 
-+ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResource:(id <TyphoonResource>)resource
++ (TyphoonConfigPostProcessor *)configurerWithResource:(id <TyphoonResource>)resource
 {
     return [self configurerWithResourceList:@[resource]];
 }
 
-+ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResources:(id <TyphoonResource>)first, ...
++ (TyphoonConfigPostProcessor *)configurerWithResources:(id <TyphoonResource>)first, ...
 {
     NSMutableArray *resources = [[NSMutableArray alloc] init];
     [resources addObject:first];
@@ -186,9 +177,9 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
     return [self configurerWithResourceList:resources];
 }
 
-+ (TyphoonPropertyPlaceholderConfigurer *)configurerWithResourceList:(NSArray *)resources
++ (TyphoonConfigPostProcessor *)configurerWithResourceList:(NSArray *)resources
 {
-    TyphoonPropertyPlaceholderConfigurer *configurer = [TyphoonPropertyPlaceholderConfigurer configurer];
+    TyphoonConfigPostProcessor *configurer = [TyphoonConfigPostProcessor configurer];
     for (id <TyphoonResource> resource in resources) {
         [configurer useResource:resource withExtension:@"properties"];
     }
@@ -202,7 +193,8 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 
 @end
 
-id TyphoonConfig(NSString *configKey) {
-    NSString *key = [NSString stringWithFormat:@"%@%@%@", kTyphoonPropertyPlaceholderPrefix, configKey, kTyphoonPropertyPlaceholderSuffix];
-    return TyphoonInjectionWithObjectFromString(key);
+
+id TyphoonConfig(NSString *configKey)
+{
+    return TyphoonInjectionWithConfigKey(configKey);
 }

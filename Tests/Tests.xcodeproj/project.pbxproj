@@ -1893,7 +1893,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/**";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -1937,7 +1937,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/**";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/** \"${PROJECT_DIR}/Tests/Pods\"/**";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;

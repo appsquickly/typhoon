@@ -38,7 +38,7 @@
 - (id)copyWithZone:(NSZone *)zone
 {
     TyphoonInjectionByRuntimeArgument *copied = [[TyphoonInjectionByRuntimeArgument alloc] initWithArgumentIndex:self.runtimeArgumentIndex];
-    [self copyBaseProperiesTo:copied];
+    [self copyBasePropertiesTo:copied];
     return copied;
 }
 

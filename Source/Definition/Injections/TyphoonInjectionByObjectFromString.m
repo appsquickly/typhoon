@@ -33,7 +33,7 @@
 {
     TyphoonInjectionByObjectFromString
         *copied = [[TyphoonInjectionByObjectFromString alloc] initWithString:self.textValue];
-    [self copyBaseProperiesTo:copied];
+    [self copyBasePropertiesTo:copied];
     return copied;
 }
 

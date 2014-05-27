@@ -12,7 +12,7 @@
 #import "PropertyPlaceholderAssembly.h"
 #import "TyphoonDefinition.h"
 #import "Knight.h"
-#import "TyphoonPropertyPlaceholderConfigurer.h"
+#import "TyphoonConfigPostProcessor.h"
 
 @implementation PropertyPlaceholderAssembly
 

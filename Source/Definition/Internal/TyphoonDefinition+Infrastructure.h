@@ -11,7 +11,7 @@
 
 #import "TyphoonDefinition.h"
 
-@class TyphoonPropertyPlaceholderConfigurer;
+@class TyphoonConfigPostProcessor;
 @protocol TyphoonResource;
 
 /**
@@ -28,14 +28,14 @@
 + (instancetype)withClass:(Class)clazz key:(NSString *)key;
 
 /**
- Factory method for a TyphoonPropertyPlaceholderConfigurer.
+ Factory method for a TyphoonConfigPostProcessor.
  @param resource The resource to load.
  @return a definition.
  */
 + (instancetype)configDefinitionWithResource:(id <TyphoonResource>)resource;
 
 /**
- Factory method for a TyphoonPropertyPlaceholderConfigurer.
+ Factory method for a TyphoonConfigPostProcessor.
  @param resources An array of TyphoonResource objects.
  @return a definition.
  */

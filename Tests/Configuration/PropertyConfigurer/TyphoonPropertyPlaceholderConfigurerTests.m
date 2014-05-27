@@ -19,12 +19,12 @@
 
 @implementation TyphoonPropertyPlaceholderConfigurerTests
 {
-    TyphoonPropertyPlaceholderConfigurer *_configurer;
+    TyphoonConfigPostProcessor *_configurer;
 }
 
 - (void)setUp
 {
-    _configurer = [TyphoonPropertyPlaceholderConfigurer configurer];
+    _configurer = [TyphoonConfigPostProcessor configurer];
     [_configurer useResourceWithName:@"SomeProperties.properties"];
     [_configurer useResourceWithName:@"SomeProperties.json"];
     [_configurer useResourceWithName:@"SomeProperties.plist"];

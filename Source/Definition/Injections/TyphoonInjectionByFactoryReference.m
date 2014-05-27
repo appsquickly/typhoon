@@ -29,7 +29,7 @@
 {
     TyphoonInjectionByFactoryReference *copied =
         [[TyphoonInjectionByFactoryReference alloc] initWithReference:self.reference args:self.referenceArguments keyPath:self.keyPath];
-    [self copyBaseProperiesTo:copied];
+    [self copyBasePropertiesTo:copied];
     return copied;
 }
 

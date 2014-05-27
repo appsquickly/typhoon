@@ -20,6 +20,8 @@ id TyphoonInjectionWithObject(id object);
 
 id TyphoonInjectionWithReference(NSString *reference);
 
+id TyphoonInjectionWithConfigKey(NSString *configKey);
+
 id TyphoonMakeInjectionFromObjectIfNeeded(id objectOrInjection);
 
 BOOL IsTyphoonInjection(id objectOrInjection);

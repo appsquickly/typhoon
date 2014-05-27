@@ -11,10 +11,12 @@
 		2DBA1005ED353F7F874A94D0 /* TyphoonDefinition+Option.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA13674F2B4ED471353480 /* TyphoonDefinition+Option.m */; };
 		2DBA1013989FE5491F17BCDB /* TyphoonDefinition+Option.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DBA1B00BFEDB4B5D93FF9DB /* TyphoonDefinition+Option.h */; };
 		2DBA1063B084F84DA5CFC65B /* TyphoonOptionMatcher+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DBA1F98836DB50450475C67 /* TyphoonOptionMatcher+Internal.h */; };
+		2DBA10DB016E9BD1F0ABCD64 /* TyphoonInjectionByConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1244B0F667C8E00FBA50 /* TyphoonInjectionByConfig.m */; };
 		2DBA114269E57F7C3D601DD7 /* TyphoonOptionMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DBA18D5B14D0E9838F429EB /* TyphoonOptionMatcher.h */; };
 		2DBA11C786D04C16EBFEDA11 /* TyphoonPathResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DBA1AA08B77F742B83DDD92 /* TyphoonPathResource.h */; };
 		2DBA128CA41ED11A58255405 /* TyphoonPlistStyleConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1221136D97C78F43BCA9 /* TyphoonPlistStyleConfiguration.m */; };
 		2DBA129593F80E9A645A21AE /* TyphoonMatcherDefinitionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA165B8CAFE1F44D10E7E1 /* TyphoonMatcherDefinitionFactory.m */; };
+		2DBA12D6B2926986557215CD /* TyphoonInjectionByConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1244B0F667C8E00FBA50 /* TyphoonInjectionByConfig.m */; };
 		2DBA12EBC516785A14CB961B /* TyphoonPlistStyleConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1221136D97C78F43BCA9 /* TyphoonPlistStyleConfiguration.m */; };
 		2DBA135B82011316F46EAB88 /* TyphoonSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA196D480DC2442E0F68ED /* TyphoonSwizzler.m */; };
 		2DBA137FE711C0BD77E7B225 /* TyphoonMatcherDefinitionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DBA1A6EC3DD8F70D90FF9D7 /* TyphoonMatcherDefinitionFactory.h */; };
@@ -27,8 +29,10 @@
 		2DBA17C9389FBBBBADD49DD7 /* TyphoonOptionMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA15B9231071DBD906416E /* TyphoonOptionMatcher.m */; };
 		2DBA1882D04ECFC214EE572E /* TyphoonSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA196D480DC2442E0F68ED /* TyphoonSwizzler.m */; };
 		2DBA1A5BED7A70205121CF11 /* TyphoonOptionMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DBA18D5B14D0E9838F429EB /* TyphoonOptionMatcher.h */; };
+		2DBA1B0F1B808B340274C385 /* TyphoonInjectionByConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DBA13D842276AB80B9F876C /* TyphoonInjectionByConfig.h */; };
 		2DBA1B77E6CAD80A9A7987F8 /* TyphoonMatcherDefinitionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DBA1A6EC3DD8F70D90FF9D7 /* TyphoonMatcherDefinitionFactory.h */; };
 		2DBA1B8CE2E98D5B34848FBE /* TyphoonDefinition+Option.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA13674F2B4ED471353480 /* TyphoonDefinition+Option.m */; };
+		2DBA1BC00F46C47389667E4A /* TyphoonInjectionByConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DBA13D842276AB80B9F876C /* TyphoonInjectionByConfig.h */; };
 		2DBA1DC0714A71F4799A5CC4 /* TyphoonPathResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1507744334851093821C /* TyphoonPathResource.m */; };
 		2DBA1DEDDAFE25586E3FD65F /* TyphoonOptionMatcher+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DBA1F98836DB50450475C67 /* TyphoonOptionMatcher+Internal.h */; };
 		2DBA1F7D843358265C6195B4 /* TyphoonPathResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DBA1AA08B77F742B83DDD92 /* TyphoonPathResource.h */; };
@@ -132,7 +136,7 @@
 		BA798121997C3D8182725BB2 /* TyphoonAssistedFactoryCreator.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798A15B345ACC999B3F98C /* TyphoonAssistedFactoryCreator.h */; };
 		BA79812D6E6D1FE8B7461311 /* TyphoonNSURLTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79881AB8FEB2F51E42BB94 /* TyphoonNSURLTypeConverter.h */; };
 		BA79813CA5292BEF2D882861 /* TyphoonMethod+InstanceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7980360D8324223B91CD6C /* TyphoonMethod+InstanceBuilder.m */; };
-		BA798163C49AD3D6D373953D /* TyphoonPropertyPlaceholderConfigurer.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798B8F6800E21D8D3F99B5 /* TyphoonPropertyPlaceholderConfigurer.h */; };
+		BA798163C49AD3D6D373953D /* TyphoonConfigPostProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798B8F6800E21D8D3F99B5 /* TyphoonConfigPostProcessor.h */; };
 		BA798166B307526560F59BD4 /* TyphoonAssistedFactoryMethodBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7989F22881AF5A8FF28A2A /* TyphoonAssistedFactoryMethodBlock.m */; };
 		BA7981834CD667D7E617BCE4 /* TyphoonPrimitiveTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798B9796F501DBFD50C563 /* TyphoonPrimitiveTypeConverter.h */; };
 		BA7981CD651403E7EAFF761B /* TyphoonAssistedFactoryMethodBlockCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798CE45EA768ED73AFC237 /* TyphoonAssistedFactoryMethodBlockCreator.m */; };
@@ -163,7 +167,7 @@
 		BA7983A83850C8B809303BFF /* TyphoonIntrospectiveNSObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798D90E444A0899D50CD00 /* TyphoonIntrospectiveNSObject.h */; };
 		BA7983CD1A640EEAF4B6E855 /* TyphoonStackElement.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798AA10B9FA9B3D53146C0 /* TyphoonStackElement.h */; };
 		BA7983ED49C6504915B9D50E /* TyphoonAssistedFactoryMethodBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798A717F7E3F1E8910C5F7 /* TyphoonAssistedFactoryMethodBlock.h */; };
-		BA7983F00E9F2185BC3B33F5 /* TyphoonPropertyPlaceholderConfigurer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7986F5550A87B611F2F376 /* TyphoonPropertyPlaceholderConfigurer.m */; };
+		BA7983F00E9F2185BC3B33F5 /* TyphoonConfigPostProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7986F5550A87B611F2F376 /* TyphoonConfigPostProcessor.m */; };
 		BA79842B467B10683D2CF7F8 /* TyphoonURLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7983CA8A82C2C30A59A8FD /* TyphoonURLUtils.m */; };
 		BA79845F38B00E6532381410 /* TyphoonAssistedFactoryMethodCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798FAD87DF53F001351D7D /* TyphoonAssistedFactoryMethodCreator.m */; };
 		BA798469C58E7EA4EFA26AE1 /* TyphoonBundleResource.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7984D3143D1EE609E3C4BF /* TyphoonBundleResource.h */; };
@@ -190,7 +194,7 @@
 		BA7985D2AE9A8486CF305866 /* TyphoonAssistedFactoryMethodBlockCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798CE45EA768ED73AFC237 /* TyphoonAssistedFactoryMethodBlockCreator.m */; };
 		BA7985E68B929551DB617326 /* TyphoonURLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7983CA8A82C2C30A59A8FD /* TyphoonURLUtils.m */; };
 		BA798614161FD41D1F0AD3CB /* TyphoonPrimitiveTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798B9796F501DBFD50C563 /* TyphoonPrimitiveTypeConverter.h */; };
-		BA7986149A3BA0CF794B9C2A /* TyphoonPropertyPlaceholderConfigurer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7986F5550A87B611F2F376 /* TyphoonPropertyPlaceholderConfigurer.m */; };
+		BA7986149A3BA0CF794B9C2A /* TyphoonConfigPostProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7986F5550A87B611F2F376 /* TyphoonConfigPostProcessor.m */; };
 		BA798619A135767B6EA0D984 /* TyphoonAssistedFactoryBase.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79819A73FFA79C270217BD /* TyphoonAssistedFactoryBase.h */; };
 		BA79864216DDAED9AD0FBC11 /* TyphoonParentReferenceHydratingPostProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = BA7988CB0A04D544852FC120 /* TyphoonParentReferenceHydratingPostProcessor.h */; };
 		BA79866D6D1A8FD607CF6F4E /* TyphoonDefinition+InstanceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798D287001AE0E60A38B3C /* TyphoonDefinition+InstanceBuilder.m */; };
@@ -218,7 +222,7 @@
 		BA798822E6832A737A063410 /* TyphoonAssistedFactoryDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798FC1ACAE8C8F6FBED626 /* TyphoonAssistedFactoryDefinition.h */; };
 		BA79883A1C7ACBA7B8850015 /* TyphoonAssistedFactoryParameterInjectedWithArgumentIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798748BF3157857183FB6E /* TyphoonAssistedFactoryParameterInjectedWithArgumentIndex.m */; };
 		BA79885689274B5A4D5404A7 /* Typhoon.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79822F46BE0B8FB00814D8 /* Typhoon.h */; };
-		BA798865167C8EF3FD354FDA /* TyphoonPropertyPlaceholderConfigurer.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798B8F6800E21D8D3F99B5 /* TyphoonPropertyPlaceholderConfigurer.h */; };
+		BA798865167C8EF3FD354FDA /* TyphoonConfigPostProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = BA798B8F6800E21D8D3F99B5 /* TyphoonConfigPostProcessor.h */; };
 		BA798871023DB0C8784E3892 /* TyphoonAssistedFactoryMethodInitializerClosure.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79896BC01C931A1CDD16AB /* TyphoonAssistedFactoryMethodInitializerClosure.h */; };
 		BA79888B0D2AB76A2ABDDB0B /* TyphoonAssistedFactoryBase+TyphoonFactoryMethodClosure.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798D563C3365F5505844D1 /* TyphoonAssistedFactoryBase+TyphoonFactoryMethodClosure.m */; };
 		BA7988B88E27909DDF8502EF /* TyphoonTypeConverterRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7983ED26EB786633CAD66E /* TyphoonTypeConverterRegistry.m */; };
@@ -412,8 +416,10 @@
 		205FE9A11847183B002FC261 /* TyphoonLinkerCategoryBugFix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonLinkerCategoryBugFix.h; sourceTree = "<group>"; };
 		2DBA10DA0122B2327F29F17F /* TyphoonPlistStyleConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonPlistStyleConfiguration.h; sourceTree = "<group>"; };
 		2DBA1221136D97C78F43BCA9 /* TyphoonPlistStyleConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonPlistStyleConfiguration.m; sourceTree = "<group>"; };
+		2DBA1244B0F667C8E00FBA50 /* TyphoonInjectionByConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonInjectionByConfig.m; sourceTree = "<group>"; };
 		2DBA1311ECD0DE57C20007AF /* TyphoonSwizzler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonSwizzler.h; sourceTree = "<group>"; };
 		2DBA13674F2B4ED471353480 /* TyphoonDefinition+Option.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TyphoonDefinition+Option.m"; sourceTree = "<group>"; };
+		2DBA13D842276AB80B9F876C /* TyphoonInjectionByConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonInjectionByConfig.h; sourceTree = "<group>"; };
 		2DBA1507744334851093821C /* TyphoonPathResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonPathResource.m; sourceTree = "<group>"; };
 		2DBA15B9231071DBD906416E /* TyphoonOptionMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonOptionMatcher.m; sourceTree = "<group>"; };
 		2DBA165B8CAFE1F44D10E7E1 /* TyphoonMatcherDefinitionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonMatcherDefinitionFactory.m; sourceTree = "<group>"; };
@@ -502,7 +508,7 @@
 		BA7985248728BA11BC7A6482 /* TyphoonFactoryProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonFactoryProvider.m; sourceTree = "<group>"; };
 		BA7985C9F3FF4D1EE99E9818 /* TyphoonComponentFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TyphoonComponentFactory.m; sourceTree = "<group>"; };
 		BA79860517B1CB594E12178B /* TyphoonPrimitiveTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonPrimitiveTypeConverter.m; sourceTree = "<group>"; };
-		BA7986F5550A87B611F2F376 /* TyphoonPropertyPlaceholderConfigurer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonPropertyPlaceholderConfigurer.m; sourceTree = "<group>"; };
+		BA7986F5550A87B611F2F376 /* TyphoonConfigPostProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonConfigPostProcessor.m; sourceTree = "<group>"; };
 		BA7987278D47B1433DBB673F /* TyphoonAbstractDetachableComponentFactoryPostProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAbstractDetachableComponentFactoryPostProcessor.m; sourceTree = "<group>"; };
 		BA79873EF7DD629707AF0CBF /* TyphoonTestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonTestUtils.m; sourceTree = "<group>"; };
 		BA798748BF3157857183FB6E /* TyphoonAssistedFactoryParameterInjectedWithArgumentIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssistedFactoryParameterInjectedWithArgumentIndex.m; sourceTree = "<group>"; };
@@ -529,7 +535,7 @@
 		BA798B32D25F5BBE9016A88E /* TyphoonAssistedFactoryMethodInitializerClosure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssistedFactoryMethodInitializerClosure.m; sourceTree = "<group>"; };
 		BA798B597F1E0DE4005E7D12 /* TyphoonPassThroughTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonPassThroughTypeConverter.h; sourceTree = "<group>"; };
 		BA798B860FD977541FA06A25 /* TyphoonTestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonTestUtils.h; sourceTree = "<group>"; };
-		BA798B8F6800E21D8D3F99B5 /* TyphoonPropertyPlaceholderConfigurer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonPropertyPlaceholderConfigurer.h; sourceTree = "<group>"; };
+		BA798B8F6800E21D8D3F99B5 /* TyphoonConfigPostProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonConfigPostProcessor.h; sourceTree = "<group>"; };
 		BA798B9796F501DBFD50C563 /* TyphoonPrimitiveTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonPrimitiveTypeConverter.h; sourceTree = "<group>"; };
 		BA798BA3206A5366301968B7 /* TyphoonReferenceDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonReferenceDefinition.h; sourceTree = "<group>"; };
 		BA798C0D7B619637FD78FB10 /* NSInvocation+TCFInstanceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+TCFInstanceBuilder.m"; sourceTree = "<group>"; };
@@ -1045,8 +1051,8 @@
 		BA798D377724B433E22B7A1E /* PropertyConfigurers */ = {
 			isa = PBXGroup;
 			children = (
-				BA798B8F6800E21D8D3F99B5 /* TyphoonPropertyPlaceholderConfigurer.h */,
-				BA7986F5550A87B611F2F376 /* TyphoonPropertyPlaceholderConfigurer.m */,
+				BA798B8F6800E21D8D3F99B5 /* TyphoonConfigPostProcessor.h */,
+				BA7986F5550A87B611F2F376 /* TyphoonConfigPostProcessor.m */,
 				C94975EA97F11DAA38FF62F8 /* TyphoonConfiguration */,
 			);
 			path = PropertyConfigurers;
@@ -1198,6 +1204,8 @@
 				FAC0B90B18CF8CF6000F0AD0 /* TyphoonInjectionByComponentFactory.m */,
 				FAC0B91018CF8D9A000F0AD0 /* TyphoonInjectionByRuntimeArgument.h */,
 				FAC0B91118CF8D9A000F0AD0 /* TyphoonInjectionByRuntimeArgument.m */,
+				2DBA1244B0F667C8E00FBA50 /* TyphoonInjectionByConfig.m */,
+				2DBA13D842276AB80B9F876C /* TyphoonInjectionByConfig.h */,
 			);
 			path = Injections;
 			sourceTree = "<group>";
@@ -1298,7 +1306,7 @@
 				FAC0B91318CF8D9A000F0AD0 /* TyphoonInjectionByRuntimeArgument.h in Headers */,
 				BA7983ED49C6504915B9D50E /* TyphoonAssistedFactoryMethodBlock.h in Headers */,
 				BA7983856E10A9006130BA72 /* TyphoonAssistedFactoryMethodBlockCreator.h in Headers */,
-				BA798163C49AD3D6D373953D /* TyphoonPropertyPlaceholderConfigurer.h in Headers */,
+				BA798163C49AD3D6D373953D /* TyphoonConfigPostProcessor.h in Headers */,
 				BA798E8EF4513AB233B8E015 /* TyphoonComponentFactoryPostProcessor.h in Headers */,
 				BA798095C03B157351CAD77B /* TyphoonBundleResource.h in Headers */,
 				BA79807E0FDADF2EA08FB9AA /* TyphoonResource.h in Headers */,
@@ -1338,6 +1346,7 @@
 				C94971EF3E8637D08C854237 /* TyphoonJsonStyleConfiguration.h in Headers */,
 				2DBA11C786D04C16EBFEDA11 /* TyphoonPathResource.h in Headers */,
 				2DBA1FEF4B1AB7091488038C /* TyphoonPlistStyleConfiguration.h in Headers */,
+				2DBA1BC00F46C47389667E4A /* TyphoonInjectionByConfig.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1416,7 +1425,7 @@
 				BA7986B83924351349C6E421 /* TyphoonAssistedFactoryBase+TyphoonFactoryMethodClosure.h in Headers */,
 				BA7985BEB149B8CFBEF2D641 /* TyphoonAssistedFactoryMethodBlock.h in Headers */,
 				BA798C794AD58488B05C3704 /* TyphoonAssistedFactoryMethodBlockCreator.h in Headers */,
-				BA798865167C8EF3FD354FDA /* TyphoonPropertyPlaceholderConfigurer.h in Headers */,
+				BA798865167C8EF3FD354FDA /* TyphoonConfigPostProcessor.h in Headers */,
 				FAC0B8DB18CF6D4A000F0AD0 /* TyphoonPropertyInjection.h in Headers */,
 				BA7980D98259FADB057607B0 /* TyphoonComponentFactoryPostProcessor.h in Headers */,
 				BA798469C58E7EA4EFA26AE1 /* TyphoonBundleResource.h in Headers */,
@@ -1454,6 +1463,7 @@
 				C9497FE669A71DD3314C1432 /* TyphoonJsonStyleConfiguration.h in Headers */,
 				2DBA1F7D843358265C6195B4 /* TyphoonPathResource.h in Headers */,
 				2DBA15DC107A86C17DE5B959 /* TyphoonPlistStyleConfiguration.h in Headers */,
+				2DBA1B0F1B808B340274C385 /* TyphoonInjectionByConfig.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1583,7 +1593,7 @@
 				FA99165418983367000AC4B5 /* NSObject+DeallocNotification.m in Sources */,
 				BA798166B307526560F59BD4 /* TyphoonAssistedFactoryMethodBlock.m in Sources */,
 				BA7985D2AE9A8486CF305866 /* TyphoonAssistedFactoryMethodBlockCreator.m in Sources */,
-				BA7986149A3BA0CF794B9C2A /* TyphoonPropertyPlaceholderConfigurer.m in Sources */,
+				BA7986149A3BA0CF794B9C2A /* TyphoonConfigPostProcessor.m in Sources */,
 				466CC664185D589600742220 /* TyphoonViewControllerNibResolver.m in Sources */,
 				BA7985C94E4D34EB312FFF53 /* TyphoonBundleResource.m in Sources */,
 				BA798C5FE26D0692C730B27D /* TyphoonDefinition+Infrastructure.m in Sources */,
@@ -1617,6 +1627,7 @@
 				C94977E395BE511DBE701CC5 /* TyphoonJsonStyleConfiguration.m in Sources */,
 				2DBA1DC0714A71F4799A5CC4 /* TyphoonPathResource.m in Sources */,
 				2DBA128CA41ED11A58255405 /* TyphoonPlistStyleConfiguration.m in Sources */,
+				2DBA10DB016E9BD1F0ABCD64 /* TyphoonInjectionByConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1680,7 +1691,7 @@
 				FAC0B90E18CF8CF6000F0AD0 /* TyphoonInjectionByComponentFactory.m in Sources */,
 				FAC0B8EA18CF71B7000F0AD0 /* TyphoonInjectionByReference.m in Sources */,
 				BA7981CD651403E7EAFF761B /* TyphoonAssistedFactoryMethodBlockCreator.m in Sources */,
-				BA7983F00E9F2185BC3B33F5 /* TyphoonPropertyPlaceholderConfigurer.m in Sources */,
+				BA7983F00E9F2185BC3B33F5 /* TyphoonConfigPostProcessor.m in Sources */,
 				BA798B050ACB4942BC328412 /* TyphoonBundleResource.m in Sources */,
 				BA798D564FFA6838923BDAAE /* TyphoonDefinition+Infrastructure.m in Sources */,
 				BA798D2895951F12781530D6 /* TyphoonMethod+InstanceBuilder.m in Sources */,
@@ -1711,6 +1722,7 @@
 				C9497E39AB705D9E360AA2F6 /* TyphoonJsonStyleConfiguration.m in Sources */,
 				2DBA1766A3C0115146775AFE /* TyphoonPathResource.m in Sources */,
 				2DBA12EBC516785A14CB961B /* TyphoonPlistStyleConfiguration.m in Sources */,
+				2DBA12D6B2926986557215CD /* TyphoonInjectionByConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

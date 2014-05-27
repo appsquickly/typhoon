@@ -21,7 +21,7 @@
 - (id)copyWithZone:(NSZone *)zone
 {
     TyphoonInjectionByComponentFactory *copied = [[TyphoonInjectionByComponentFactory alloc] init];
-    [self copyBaseProperiesTo:copied];
+    [self copyBasePropertiesTo:copied];
     return copied;
 }
 

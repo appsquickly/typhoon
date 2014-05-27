@@ -15,7 +15,7 @@
 #import "TyphoonAssembly.h"
 #import "MiddleAgesAssembly.h"
 #import "TyphoonBundleResource.h"
-#import "TyphoonPropertyPlaceholderConfigurer.h"
+#import "TyphoonConfigPostProcessor.h"
 #import "ExceptionTestAssembly.h"
 #import "Knight.h"
 #import "CircularDependenciesAssembly.h"
@@ -46,7 +46,7 @@
 - (void)setUp
 {
     _componentFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[MiddleAgesAssembly assembly]];
-    TyphoonPropertyPlaceholderConfigurer *configurer = [[TyphoonPropertyPlaceholderConfigurer alloc] init];
+    TyphoonConfigPostProcessor *configurer = [[TyphoonConfigPostProcessor alloc] init];
     [configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
     [_componentFactory attachPostProcessor:configurer];
 
@@ -188,7 +188,7 @@
 - (void)test_resolves_property_values
 {
     TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[PropertyPlaceholderAssembly assembly]];
-    TyphoonPropertyPlaceholderConfigurer *configurer = [TyphoonPropertyPlaceholderConfigurer configurer];
+    TyphoonConfigPostProcessor *configurer = [TyphoonConfigPostProcessor configurer];
     [configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
     [factory attachPostProcessor:configurer];
 
