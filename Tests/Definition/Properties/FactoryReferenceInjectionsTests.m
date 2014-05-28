@@ -77,8 +77,8 @@ NSString *currentFooString;
 
     [factory doInjectionEventsOn:(id) knight withDefinition:knightDefinition args:nil];
 
-    assertThatInteger(knight.damselsRescued, equalToInteger(30));
-    assertThatBool(knight.hasHorseWillTravel, equalToBool(YES));
+    XCTAssertEqual(knight.damselsRescued, 30);
+    XCTAssertEqual(knight.hasHorseWillTravel, YES);
 }
 
 - (void)test_inject_object
@@ -92,7 +92,7 @@ NSString *currentFooString;
     }];
     [factory doInjectionEventsOn:(id) knight withDefinition:knightDefinition args:nil];
 
-    assertThat(knight.foobar, equalTo([testString copy]));
+    XCTAssertEqual(knight.foobar, [testString copy]);
 }
 
 - (void)test_inject_factorydefinition_selector
@@ -113,9 +113,9 @@ NSString *currentFooString;
     }];
     [factory doInjectionEventsOn:(id) knight withDefinition:knightDefinition args:nil];
 
-    assertThat(knight.foobar, equalTo(@"Hello Knights"));
-    assertThatInteger(knight.damselsRescued, equalToInteger(24));
-    assertThatBool(knight.hasHorseWillTravel, equalToBool(YES));
+    XCTAssertEqual(knight.foobar, @"Hello Knights");
+    XCTAssertEqual(knight.damselsRescued, 24);
+    XCTAssertEqual(knight.hasHorseWillTravel, YES);
 }
 
 - (void)test_inject_factorydefinition_keyPath
@@ -133,7 +133,7 @@ NSString *currentFooString;
     }];
     [factory doInjectionEventsOn:(id) knight withDefinition:knightDefinition args:nil];
 
-    assertThat(knight.foobar, equalTo(@"HELLO"));
+    XCTAssertEqualObjects(knight.foobar, @"HELLO");
 }
 
 
@@ -156,8 +156,8 @@ NSString *currentFooString;
 
     Knight *knight = [factory componentForType:[Knight class]];
 
-    assertThatInteger(knight.damselsRescued, equalToInteger(32));
-    assertThat(knight.foobar, equalTo(@"HELLO"));
+    XCTAssertEqual(knight.damselsRescued, 32);
+    XCTAssertEqualObjects(knight.foobar, @"HELLO");
 
 }
 

@@ -29,16 +29,16 @@
 {
     id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterForType:@"NSString"];
     NSString *converted = [converter convert:@"foobar foobar"];
-    assertThat(converted, equalTo(@"foobar foobar"));
-    assertThatBool([converted isKindOfClass:[NSString class]], equalToBool(YES));
+    XCTAssertEqual(converted, @"foobar foobar");
+    XCTAssertTrue([converted isKindOfClass:[NSString class]]);
 }
 
 - (void)test_forwards_NSMutableString
 {
     id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterForType:@"NSMutableString"];
     NSString *converted = [converter convert:@"foobar foobar"];
-    assertThat(converted, equalTo(@"foobar foobar"));
-    assertThatBool([converted isKindOfClass:[NSMutableString class]], equalToBool(YES));
+    XCTAssertEqualObjects(converted, @"foobar foobar");
+    XCTAssertTrue([converted isKindOfClass:[NSMutableString class]]);
 }
 
 @end

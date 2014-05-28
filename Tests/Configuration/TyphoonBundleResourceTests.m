@@ -22,21 +22,21 @@
 {
     id <TyphoonResource> resource = [TyphoonBundleResource withName:@"SomeProperties.properties"];
     NSString *resourceString = [resource asString];
-    assertThat(resourceString, notNilValue());
+    XCTAssertNotNil(resourceString);
 }
 
 - (void)test_returns_bundle_resource_without_type_as_string
 {
     id <TyphoonResource> resource = [TyphoonBundleResource withName:@"SomeResource"];
     NSString *resourceString = [resource asString];
-    assertThat(resourceString, notNilValue());
+    XCTAssertNotNil(resourceString);
 }
 
 - (void)test_returns_bundle_resource_as_data
 {
     id <TyphoonResource> resource = [TyphoonBundleResource withName:@"SomeResource"];
     NSData *data = [resource data];
-    assertThat(data, notNilValue());
+    XCTAssertNotNil(data);
 }
 
 - (void)test_raises_exception_for_invalid_resource_name
@@ -47,7 +47,7 @@
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"Resource named 'SomeResourceThatDoesNotExist.txt' not in bundle."));
+        XCTAssertEqualObjects([e description], @"Resource named 'SomeResourceThatDoesNotExist.txt' not in bundle.");
     }
 
 }

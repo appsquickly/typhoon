@@ -33,15 +33,15 @@
 
 - (void)assertColor:(UIColor *)color red:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha
 {
-    assertThat(color, notNilValue());
+    XCTAssertNotNil(color);
 
     CGFloat redComponent, greenComponent, blueComponent, alphaComponent;
     [color getRed:&redComponent green:&greenComponent blue:&blueComponent alpha:&alphaComponent];
 
-    assertThatFloat(redComponent, equalToFloat(red));
-    assertThatFloat(greenComponent, equalToFloat(green));
-    assertThatFloat(blueComponent, equalToFloat(blue));
-    assertThatFloat(alphaComponent, equalToFloat(alpha));
+    XCTAssertEqual(redComponent, red);
+    XCTAssertEqual(greenComponent, green);
+    XCTAssertEqual(blueComponent, blue);
+    XCTAssertEqual(alphaComponent, alpha);
 }
 
 - (void)test_converts_hex_string

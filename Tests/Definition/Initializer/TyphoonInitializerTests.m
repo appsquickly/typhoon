@@ -41,7 +41,7 @@
         XCTFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"Unrecognized parameter name: 'strnig' for method 'initWithString:'. Did you mean 'string'?"));
+        XCTAssertEqualObjects([e description], @"Unrecognized parameter name: 'strnig' for method 'initWithString:'. Did you mean 'string'?");
     }
 
 }
@@ -54,7 +54,7 @@
         XCTFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"Unrecognized parameter name: 'keyy' for method 'initWithClass:key:'. Valid parameter names are 'class' or 'key'."));
+        XCTAssertEqualObjects([e description], @"Unrecognized parameter name: 'keyy' for method 'initWithClass:key:'. Valid parameter names are 'class' or 'key'.");
     }
 
 }
@@ -67,7 +67,7 @@
         XCTFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"Unrecognized parameter name: 'path' for method 'initWithContentsOfURL:options:error:'. Valid parameter names are 'contentsOfURL', 'options', or 'error'."));
+        XCTAssertEqualObjects([e description], @"Unrecognized parameter name: 'path' for method 'initWithContentsOfURL:options:error:'. Valid parameter names are 'contentsOfURL', 'options', or 'error'.");
     }
 
 
@@ -81,7 +81,7 @@
         XCTFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"Specified a parameter named 'aParameter', but method 'init' takes no parameters."));
+        XCTAssertEqualObjects([e description], @"Specified a parameter named 'aParameter', but method 'init' takes no parameters.");
     }
 
 }

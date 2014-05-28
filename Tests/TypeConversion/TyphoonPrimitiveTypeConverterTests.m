@@ -39,31 +39,31 @@
 - (void)test_converts_to_bool
 {
     BOOL converted = [_typeConverter convertToBoolean:@"true"];
-    assertThatBool(converted, equalToBool(YES));
+    XCTAssertTrue(converted);
 
     converted = [_typeConverter convertToBoolean:@"yes"];
-    assertThatBool(converted, equalToBool(YES));
+    XCTAssertTrue(converted);
 
     converted = [_typeConverter convertToBoolean:@"1"];
-    assertThatBool(converted, equalToBool(YES));
+    XCTAssertTrue(converted);
 
     converted = [_typeConverter convertToBoolean:@"no"];
-    assertThatBool(converted, equalToBool(NO));
+    XCTAssertFalse(converted);
 
     converted = [_typeConverter convertToBoolean:@"false"];
-    assertThatBool(converted, equalToBool(NO));
+    XCTAssertFalse(converted);
 
     converted = [_typeConverter convertToBoolean:@"0"];
-    assertThatBool(converted, equalToBool(NO));
+    XCTAssertFalse(converted);
 
     NSNumber *number = [_typeConverter valueFromText:@"true" withType:[TyphoonTypeDescriptor descriptorWithEncodedType:@encode(BOOL)]];
-    assertThat(number, equalTo(@YES));
+    XCTAssertEqualObjects(number, @(YES));
 }
 
 - (void)test_converts_to_short
 {
     short converted = [_typeConverter convertToShort:_testNumberString];
-    assertThatShort(converted, equalToShort(TYPHOON_TEST_VALUE));
+    XCTAssertEqual(converted, TYPHOON_TEST_VALUE);
 
     [self verifyNumberFromTestNumberStringWithType:@encode(short)];
 }
@@ -71,7 +71,7 @@
 - (void)test_converts_to_long
 {
     long converted = [_typeConverter convertToLong:_testNumberString];
-    assertThatLong(converted, equalToLong(TYPHOON_TEST_VALUE));
+    XCTAssertEqual(converted, TYPHOON_TEST_VALUE);
 
     [self verifyNumberFromTestNumberStringWithType:@encode(long)];
 }
@@ -79,7 +79,7 @@
 - (void)test_converts_to_long_long
 {
     long long converted = [_typeConverter convertToLongLong:_testNumberString];
-    assertThatLongLong(converted, equalToLongLong(TYPHOON_TEST_VALUE));
+    XCTAssertEqual(converted, TYPHOON_TEST_VALUE);
 
     [self verifyNumberFromTestNumberStringWithType:@encode(long long)];
 }
@@ -87,7 +87,7 @@
 - (void)test_converts_to_unsigned_char
 {
     unsigned char converted = [_typeConverter convertToUnsignedChar:@"65"];
-    assertThatUnsignedChar(converted, equalToUnsignedChar(65));
+    XCTAssertEqual(converted, 65);
 
     [self verifyNumberFromTestNumberStringWithType:@encode(unsigned char)];
 }
@@ -95,7 +95,7 @@
 - (void)test_converts_to_unsigned_int
 {
     unsigned int converted = [_typeConverter convertToUnsignedInt:@"123"];
-    assertThatUnsignedInt(converted, equalToUnsignedChar(123));
+    XCTAssertEqual(converted, 123);
 
     [self verifyNumberFromTestNumberStringWithType:@encode(unsigned int)];
 }
@@ -103,7 +103,7 @@
 - (void)test_converts_to_unsigned_short
 {
     unsigned short converted = [_typeConverter convertToUnsignedShort:@"123"];
-    assertThatUnsignedShort(converted, equalToUnsignedShort(123));
+    XCTAssertEqual(converted, 123);
 
     [self verifyNumberFromTestNumberStringWithType:@encode(unsigned short)];
 }
@@ -111,7 +111,7 @@
 - (void)test_converts_to_unsigned_long
 {
     unsigned long converted = [_typeConverter convertToUnsignedLong:@"123"];
-    assertThatUnsignedLong(converted, equalToUnsignedLong(123));
+    XCTAssertEqual(converted, 123);
 
     [self verifyNumberFromTestNumberStringWithType:@encode(unsigned long)];
 }
@@ -119,7 +119,7 @@
 - (void)test_converts_to_double
 {
     double converted = [_typeConverter convertToDouble:@"3.14159628"];
-    assertThatDouble(converted, equalToDouble(3.14159628));
+    XCTAssertEqual(converted, 3.14159628);
 
     [self verifyNumberFromTestNumberStringWithType:@encode(double)];
 }
@@ -146,19 +146,19 @@
 - (void)test_converts_to_int
 {
     int converted = [_typeConverter convertToInt:@"123"];
-    assertThatInt(converted, equalToInt(123));
+    XCTAssertEqual(converted, 123);
 
     converted = [_typeConverter convertToInt:@"zzz"];
-    assertThatInt(converted, equalToInt(0));
+    XCTAssertEqual(converted, 0);
 }
 
 - (void)test_converts_to_NSUInteger
 {
     NSUInteger converted = [_typeConverter convertToUnsignedLongLong:@"123"];
-    assertThatUnsignedLongLong(converted, equalToUnsignedLongLong(123));
+    XCTAssertEqual(converted, 123);
 
     converted = [_typeConverter convertToUnsignedLongLong:@"zzz"];
-    assertThatUnsignedLongLong(converted, equalToUnsignedLongLong(0));
+    XCTAssertEqual(converted, 0);
 }
 
 #pragma mark - valueForText:withType:
@@ -291,7 +291,7 @@
 - (void)verifyNumberFromTestNumberStringWithType:(char *)type
 {
     NSNumber *number = [_typeConverter valueFromText:_testNumberString withType:[TyphoonTypeDescriptor descriptorWithEncodedType:type]];
-    assertThat(number, equalTo(@(TYPHOON_TEST_VALUE)));
+    XCTAssertEqualObjects(number, @(TYPHOON_TEST_VALUE));
 }
 
 

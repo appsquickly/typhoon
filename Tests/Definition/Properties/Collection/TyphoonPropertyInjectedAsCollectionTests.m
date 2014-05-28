@@ -45,10 +45,10 @@
 - (void)test_collection_mutable_class_from_array
 {
     Class mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:[NSArray class]];
-    assertThat(mutableClass, equalTo([NSMutableArray class]));
+    XCTAssertEqual(mutableClass, [NSMutableArray class]);
 
     mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:[NSMutableArray class]];
-    assertThat(mutableClass, equalTo([NSMutableArray class]));
+    XCTAssertEqual(mutableClass, [NSMutableArray class]);
 }
 
 /* ====================================================================================================================================== */
@@ -65,16 +65,16 @@
 - (void)test_collection_mutable_class_from_set
 {
     Class mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:[NSSet class]];
-    assertThat(mutableClass, equalTo([NSMutableSet class]));
+    XCTAssertEqual(mutableClass, [NSMutableSet class]);
 
     mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:[NSMutableSet class]];
-    assertThat(mutableClass, equalTo([NSMutableSet class]));
+    XCTAssertEqual(mutableClass, [NSMutableSet class]);
 
     mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:[NSOrderedSet class]];
-    assertThat(mutableClass, equalTo([NSMutableOrderedSet class]));
+    XCTAssertEqual(mutableClass, [NSMutableOrderedSet class]);
 
     mutableClass = [TyphoonInjectionByCollection collectionMutableClassFromClass:[NSMutableOrderedSet class]];
-    assertThat(mutableClass, equalTo([NSMutableOrderedSet class]));
+    XCTAssertEqual(mutableClass, [NSMutableOrderedSet class]);
 }
 
 

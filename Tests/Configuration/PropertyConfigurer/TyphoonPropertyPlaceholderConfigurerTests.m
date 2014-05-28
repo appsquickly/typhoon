@@ -52,7 +52,7 @@
     [_configurer postProcessComponentFactory:factory];
 
     Knight *knight = [factory componentForType:[Knight class]];
-    assertThatUnsignedLongLong(knight.damselsRescued, equalToUnsignedLongLong(12));
+    XCTAssertEqual(knight.damselsRescued, 12);
 
 }
 
@@ -66,7 +66,7 @@
     [_configurer postProcessComponentFactory:factory];
 
     Knight *knight = [factory componentForType:[Knight class]];
-    assertThatUnsignedLongLong(knight.damselsRescued, equalToUnsignedLongLong(12));
+    XCTAssertEqual(knight.damselsRescued, 12);
 
 }
 

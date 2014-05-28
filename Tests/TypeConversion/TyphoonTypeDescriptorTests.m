@@ -49,116 +49,116 @@ typedef struct
         [TyphoonTypeDescriptor descriptorWithTypeCode:[NSString stringWithCString:@encode(BOOL) encoding:NSASCIIStringEncoding]];
 
     TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"aBoolProperty"];
-    assertThatBool([descriptor isPrimitive], equalToBool(YES));
-    assertThat([descriptor typeBeingDescribed], nilValue());
-    assertThat([descriptor protocol], nilValue());
-    assertThatBool([descriptor isArray], equalToBool(NO));
-    assertThatInt([descriptor arrayLength], equalToInt(0));
-    assertThatInt(descriptor.primitiveType, equalToInt(boolDescriptor.primitiveType));
+    XCTAssertTrue([descriptor isPrimitive]);
+    XCTAssertNil([descriptor typeBeingDescribed]);
+    XCTAssertNil([descriptor protocol]);
+    XCTAssertFalse([descriptor isArray]);
+    XCTAssertEqual([descriptor arrayLength], 0);
+    XCTAssertEqual(descriptor.primitiveType, boolDescriptor.primitiveType);
 
     NSString *description = [descriptor description];
-    assertThat(description, equalTo([boolDescriptor description]));
+    XCTAssertEqualObjects(description, [boolDescriptor description]);
 }
 
 - (void)test_type_description_class
 {
     TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"anNSURLProperty"];
-    assertThatBool([descriptor isPrimitive], equalToBool(NO));
-    assertThat([descriptor typeBeingDescribed], equalTo([NSURL class]));
-    assertThat([descriptor protocol], nilValue());
+    XCTAssertFalse([descriptor isPrimitive]);
+    XCTAssertEqual([descriptor typeBeingDescribed], [NSURL class]);
+    XCTAssertNil([descriptor protocol]);
 
     NSString *description = [descriptor description];
-    assertThat(description, equalTo(@"Type descriptor: NSURL"));
+    XCTAssertEqualObjects(description, @"Type descriptor: NSURL");
 }
 
 - (void)test_type_description_protocol
 {
     TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"aQuestProperty"];
-    assertThatBool([descriptor isPrimitive], equalToBool(NO));
-    assertThat([descriptor typeBeingDescribed], nilValue());
-    assertThat([descriptor protocol], equalTo(@protocol(Quest)));
+    XCTAssertFalse([descriptor isPrimitive]);
+    XCTAssertNil([descriptor typeBeingDescribed]);
+    XCTAssertEqual([descriptor protocol], @protocol(Quest));
 
     NSString *description = [descriptor description];
-    assertThat(description, equalTo(@"Type descriptor: id<Quest>"));
+    XCTAssertEqualObjects(description, @"Type descriptor: id<Quest>");
 }
 
 - (void)test_type_description_class_and_protocol
 {
     TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"anObjectQuestProperty"];
-    assertThatBool([descriptor isPrimitive], equalToBool(NO));
-    assertThat([descriptor protocol], equalTo(@protocol(Quest)));
-    assertThat([descriptor typeBeingDescribed], equalTo([NSObject class]));
+    XCTAssertFalse([descriptor isPrimitive]);
+    XCTAssertEqual([descriptor protocol], @protocol(Quest));
+    XCTAssertEqual([descriptor typeBeingDescribed], [NSObject class]);
 
     NSString *description = [descriptor description];
-    assertThat(description, equalTo(@"Type descriptor: NSObject<Quest>"));
+    XCTAssertEqualObjects(description, @"Type descriptor: NSObject<Quest>");
 }
 
 
 - (void)test_typeForPropertyWithName_char
 {
     TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"charProperty"];
-    assertThatBool(descriptor.isPrimitive, equalToBool(YES));
-    assertThatInt(descriptor.primitiveType, equalToInt(TyphoonPrimitiveTypeChar));
+    XCTAssertTrue(descriptor.isPrimitive);
+    XCTAssertEqual(descriptor.primitiveType, TyphoonPrimitiveTypeChar);
 }
 
 - (void)test_typeForPropertyWithName_int
 {
     TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"intProperty"];
-    assertThatBool(descriptor.isPrimitive, equalToBool(YES));
-    assertThatBool(descriptor.isPointer, equalToBool(NO));
-    assertThatInt(descriptor.primitiveType, equalToInt(TyphoonPrimitiveTypeInt));
+    XCTAssertTrue(descriptor.isPrimitive);
+    XCTAssertFalse(descriptor.isPointer);
+    XCTAssertEqual(descriptor.primitiveType, TyphoonPrimitiveTypeInt);
 }
 
 - (void)test_typeForPropertyWithName_short
 {
     TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"shortProperty"];
-    assertThatBool(descriptor.isPrimitive, equalToBool(YES));
-    assertThatBool(descriptor.isPointer, equalToBool(NO));
-    assertThatInt(descriptor.primitiveType, equalToInt(TyphoonPrimitiveTypeShort));
+    XCTAssertTrue(descriptor.isPrimitive);
+    XCTAssertFalse(descriptor.isPointer);
+    XCTAssertEqual(descriptor.primitiveType, TyphoonPrimitiveTypeShort);
 }
 
 - (void)test_typeForPropertyWithName_long
 {
     TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"longProperty"];
-    assertThatBool(descriptor.isPrimitive, equalToBool(YES));
-    assertThatBool(descriptor.isPointer, equalToBool(NO));
+    XCTAssertTrue(descriptor.isPrimitive);
+    XCTAssertFalse(descriptor.isPointer);
 }
 
 - (void)test_typeForPropertyWithName_pointerToLongLong
 {
     TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"pointerToLongLongProperty"];
-    assertThatBool(descriptor.isPrimitive, equalToBool(YES));
-    assertThatBool(descriptor.isPointer, equalToBool(YES));
+    XCTAssertTrue(descriptor.isPrimitive);
+    XCTAssertTrue(descriptor.isPointer);
 }
 
 - (void)test_typeForPropertyWithName_struct
 {
     TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"structProperty"];
-    assertThatBool(descriptor.isPrimitive, equalToBool(YES));
-    assertThatBool(descriptor.isPointer, equalToBool(NO));
-    assertThatBool(descriptor.isStructure, equalToBool(YES));
-    assertThat(descriptor.structureTypeName, equalTo(@"?=i[255c]"));
+    XCTAssertTrue(descriptor.isPrimitive);
+    XCTAssertFalse(descriptor.isPointer);
+    XCTAssertTrue(descriptor.isStructure);
+    XCTAssertEqualObjects(descriptor.structureTypeName, @"?=i[255c]");
 }
 
 - (void)test_parameterNamesForSelector_init_method
 {
     NSArray *parameterNames = [self typhoon_parameterNamesForSelector:@selector(initWithNibName:bundle:)];
-    assertThat(parameterNames, hasCountOf(2));
-    assertThat([parameterNames objectAtIndex:0], equalTo(@"nibName"));
-    assertThat([parameterNames objectAtIndex:1], equalTo(@"bundle"));
+    XCTAssertTrue([parameterNames count] == 2);
+    XCTAssertEqualObjects([parameterNames objectAtIndex:0], @"nibName");
+    XCTAssertEqualObjects([parameterNames objectAtIndex:1], @"bundle");
 }
 
 - (void)test_parameterNamesForSelector_factory_method
 {
     NSArray *parameterNames = [self typhoon_parameterNamesForSelector:@selector(URLWithString:)];
-    assertThat(parameterNames, hasCountOf(1));
-    assertThat([parameterNames objectAtIndex:0], equalTo(@"string"));
+    XCTAssertTrue([parameterNames count] == 1);
+    XCTAssertEqualObjects([parameterNames objectAtIndex:0], @"string");
 }
 
 - (void)test_parameterNamesForSelector_no_parameters_method
 {
     NSArray *parameterNames = [self typhoon_parameterNamesForSelector:@selector(init)];
-    assertThat(parameterNames, isEmpty());
+    XCTAssertTrue([parameterNames count] == 0);
 }
 
 - (void)test_typeCodesForSelectorWithName
@@ -167,11 +167,11 @@ typedef struct
     NSArray *typeCodes = [knight typhoon_typeCodesForSelector:@selector(initWithQuest:damselsRescued:)];
 
     NSString *questTypeCode = [typeCodes objectAtIndex:0];
-    assertThat(questTypeCode, equalTo(@"@")); // an object
+    XCTAssertEqualObjects(questTypeCode, @"@"); // an object
 
     NSString *damselsRescuedTypeCode = [typeCodes objectAtIndex:1];
     TyphoonTypeDescriptor *typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:damselsRescuedTypeCode];
-    assertThatBool(typeDescriptor.isPrimitive, equalToBool(YES)); // a primitive. The parameter is NSUInteger, whose type code depends on the architecture.
+    XCTAssertTrue(typeDescriptor.isPrimitive); // a primitive. The parameter is NSUInteger, whose type code depends on the architecture.
 }
 
 @end

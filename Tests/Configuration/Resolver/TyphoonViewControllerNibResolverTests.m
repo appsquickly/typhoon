@@ -39,9 +39,9 @@
 
     [_nibResolver postProcessComponentFactory:factory];
 
-    assertThat(definition.initializer, notNilValue());
-    assertThat(NSStringFromSelector(definition.initializer.selector), equalTo(NSStringFromSelector(@selector(initWithNibName:bundle:))));
-    assertThatUnsignedInteger([[definition.initializer injectedParameters] count], equalToUnsignedInteger(2));
+    XCTAssertNotNil(definition.initializer);
+    XCTAssertEqualObjects(NSStringFromSelector(definition.initializer.selector), NSStringFromSelector(@selector(initWithNibName:bundle:)));
+    XCTAssertEqual([[definition.initializer injectedParameters] count], 2);
 
 }
 
@@ -55,8 +55,8 @@
     [given([factory registry]) willReturn:@[definition]];
 
     [_nibResolver postProcessComponentFactory:factory];
-    assertThat(NSStringFromSelector(initializer.selector), equalTo(NSStringFromSelector(@selector(initWithFoobar:))));
-    assertThat(definition.initializer, equalTo(initializer));
+    XCTAssertEqualObjects(NSStringFromSelector(initializer.selector), NSStringFromSelector(@selector(initWithFoobar:)));
+    XCTAssertEqual(definition.initializer, initializer);
 }
 
 
@@ -64,7 +64,7 @@
 {
     Class clazz = [UIViewController class];
     NSString *nibName = [_nibResolver resolveNibNameForClass:clazz];
-    assertThat(nibName, equalTo(NSStringFromClass(clazz)));
+    XCTAssertEqualObjects(nibName, NSStringFromClass(clazz));
 }
 
 @end

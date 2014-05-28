@@ -36,7 +36,7 @@
 - (void)test_raises_exception_when_converter_class_not_registered
 {
     id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterForType:@"NSData"];
-    assertThat(converter, nilValue());
+    XCTAssertNil(converter);
 }
 
 - (void)test_raises_exception_when_converter_registered_more_than_once
@@ -47,7 +47,7 @@
         XCTFail(@"SHould have thrown exception");
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"Converter for 'NSURL' already registered."));
+        XCTAssertEqualObjects([e description], @"Converter for 'NSURL' already registered.");
     }
 
 }
