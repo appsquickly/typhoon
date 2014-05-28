@@ -30,21 +30,29 @@
 {
     TyphoonCollaboratingAssemblyPropertyEnumerator
         *enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:[CollaboratingMiddleAgesAssembly assembly]];
-    assertThat([enumerator collaboratingAssemblyProperties], onlyContains(@"quests", nil));
+
+    XCTAssertTrue([[enumerator collaboratingAssemblyProperties] count] == 1);
+    XCTAssertNotNil([[enumerator collaboratingAssemblyProperties] member:@"quests"]);
 }
 
 - (void)test_assembly_properties_include_superclasses
 {
     TyphoonCollaboratingAssemblyPropertyEnumerator
         *enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:[ExtendedSimpleAssembly assembly]];
-    assertThat([enumerator collaboratingAssemblyProperties], containsInAnyOrder(@"assemblyA", @"assemblyB", nil));
+
+    XCTAssertTrue([[enumerator collaboratingAssemblyProperties] count] == 2);
+    XCTAssertNotNil([[enumerator collaboratingAssemblyProperties] member:@"assemblyA"]);
+    XCTAssertNotNil([[enumerator collaboratingAssemblyProperties] member:@"assemblyB"]);
+
 }
 
 - (void)test_excludes_non_assembly_types
 {
     TyphoonCollaboratingAssemblyPropertyEnumerator
         *enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:[AssemblyWithProperty assembly]];
-    assertThat([enumerator collaboratingAssemblyProperties], onlyContains(@"assembly", nil));
+
+    XCTAssertTrue([[enumerator collaboratingAssemblyProperties] count] == 1);
+    XCTAssertNotNil([[enumerator collaboratingAssemblyProperties] member:@"assembly"]);
 }
 
 @end

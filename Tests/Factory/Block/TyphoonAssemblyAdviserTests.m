@@ -68,7 +68,8 @@
     NSSet *selectors = [adviser enumerateDefinitionSelectors];
     TyphoonSelector *theSelector = [TyphoonSelector selectorWithName:@"aDefinitionMethod"];
 
-    assertThat(selectors, onlyContains(theSelector, nil));
+    XCTAssertTrue([selectors count] == 1);
+    XCTAssertNotNil([selectors member:theSelector]);
 }
 
 - (void)testAdvisesAssembly
@@ -90,7 +91,7 @@
     assembly = [[TestAssemblyWithMethod alloc] init];
     adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
-    assertThat([adviser swizzler], instanceOf([TyphoonSwizzler class]));
+    XCTAssertTrue([[adviser swizzler] isKindOfClass:[TyphoonSwizzler class]]);
 }
 
 @end

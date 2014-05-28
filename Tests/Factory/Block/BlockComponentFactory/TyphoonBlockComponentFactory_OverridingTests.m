@@ -38,7 +38,7 @@
 
     Knight *knight = [(ExtendedMiddleAgesAssembly *) factory yetAnotherKnight];
     LogTrace(@"Knight: %@", knight);
-    assertThat(knight, notNilValue());
+    XCTAssertNotNil(knight);
 }
 
 - (void)test_allows_overriding_methods_in_a_collaborating_assembly
@@ -49,9 +49,9 @@
     ]];
 
     Knight *knight = [(CollaboratingMiddleAgesAssembly *) factory knightWithExternalQuest];
-    assertThat(knight, notNilValue());
-    assertThatBool([knight.quest isKindOfClass:[CampaignQuest class]], equalToBool(YES));
-    assertThat(knight.quest.imageUrl, equalTo([NSURL URLWithString:@"www.foobar.com/quest"]));
+    XCTAssertNotNil(knight);
+    XCTAssertTrue([knight.quest isKindOfClass:[CampaignQuest class]]);
+    XCTAssertEqualObjects(knight.quest.imageUrl, [NSURL URLWithString:@"www.foobar.com/quest"]);
 }
 
 

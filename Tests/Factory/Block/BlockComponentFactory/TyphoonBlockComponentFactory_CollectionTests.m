@@ -37,8 +37,8 @@
     ]];
 
     Knight *knight = [(CollaboratingMiddleAgesAssembly *) factory knightWithExternalQuest];
-    assertThat(knight, notNilValue());
-    assertThatBool([knight.quest isKindOfClass:[CampaignQuest class]], equalToBool(YES));
+    XCTAssertNotNil(knight);
+    XCTAssertTrue([knight.quest isKindOfClass:[CampaignQuest class]]);
 }
 
 - (void)test_allows_initialization_with_a_collection_of_assemblies_in_any_order
@@ -49,8 +49,8 @@
     ]];
 
     Knight *knight = [(CollaboratingMiddleAgesAssembly *) factory knightWithExternalQuest];
-    assertThat(knight, notNilValue());
-    assertThatBool([knight.quest isKindOfClass:[CampaignQuest class]], equalToBool(YES));
+    XCTAssertNotNil(knight);
+    XCTAssertTrue([knight.quest isKindOfClass:[CampaignQuest class]]);
 }
 
 

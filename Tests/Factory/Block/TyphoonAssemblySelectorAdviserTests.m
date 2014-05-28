@@ -1,10 +1,13 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  TyphoonAssemblySelectorAdviserTests.m
-//  Tests
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
+//  All Rights Reserved.
 //
-//  Created by Robert Gilliam on 8/1/13.
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
 //
-//
+////////////////////////////////////////////////////////////////////////////////
 
 #import <XCTest/XCTest.h>
 #import "TyphoonAssemblySelectorAdviser.h"
@@ -47,7 +50,7 @@
 
 - (void)test_key_is_selector_as_string
 {
-    assertThat([TyphoonAssemblySelectorAdviser keyForAdvisedSEL:advisedSEL], equalTo(key));
+    XCTAssertEqualObjects([TyphoonAssemblySelectorAdviser keyForAdvisedSEL:advisedSEL], key);
 }
 
 - (void)test_advised_SEL_for_key
@@ -62,6 +65,7 @@
 }
 
 #pragma mark - Helper Methods
+
 - (void)advisedSELShouldHaveNoArguments;
 {
     XCTAssertEqual([self numberOfArgumentsInSelector:advisedSEL], (NSUInteger) 0, @"The advised SEL should not have any arguments.");
@@ -69,7 +73,7 @@
 
 - (void)advisedSELWithArgumentsShouldHaveTwoArgumentsAndEndWithAnArgument;
 {
-    assertThatUnsignedInteger([self numberOfArgumentsInSelector:advisedSELWithArguments], equalToUnsignedInteger(2));
+    XCTAssertEqual([self numberOfArgumentsInSelector:advisedSELWithArguments], 2);
     XCTAssertEqual([self numberOfArgumentsInSelector:advisedSELWithArguments], (NSUInteger) 2, @"The wrapped SEL with two arguments should have two arguments.");
     XCTAssertTrue([self selectorEndsWithASemicolon:advisedSELWithArguments]);
 }
