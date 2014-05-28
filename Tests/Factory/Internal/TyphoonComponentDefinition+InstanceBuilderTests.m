@@ -49,8 +49,8 @@
     [_componentFactory registerDefinition:questDefinition];
 
     Knight *knight = [_componentFactory buildInstanceWithDefinition:knightDefinition args:nil];
-    assertThat(knight, notNilValue());
-    assertThat(knight.quest, notNilValue());
+    XCTAssertNotNil(knight);
+    XCTAssertNotNil(knight.quest);
 }
 
 - (void)test_injects_required_initializer_dependencies_with_factory_method
@@ -63,7 +63,7 @@
     [_componentFactory registerDefinition:urlDefinition];
 
     NSURL *url = [_componentFactory buildInstanceWithDefinition:urlDefinition args:nil];
-    assertThat(url, notNilValue());
+    XCTAssertNotNil(url);
 }
 
 - (void)test_injects_initializer_value_as_long
@@ -78,7 +78,7 @@
     [_componentFactory registerDefinition:knightDefinition];
 
     Knight *knight = [_componentFactory componentForKey:@"knight"];
-    assertThatLong(knight.damselsRescued, equalToLongLong(12));
+    XCTAssertEqual(knight.damselsRescued, 12);
 }
 
 - (void)test_injects_initializer_value_as_collection
@@ -101,7 +101,7 @@
     [_componentFactory registerDefinition:knightDefinition];
 
     Knight *knight = [_componentFactory componentForKey:@"knight"];
-    assertThatUnsignedLong([knight.favoriteDamsels count], equalToUnsignedLong(2));
+    XCTAssertEqual([knight.favoriteDamsels count], 2);
 }
 
 - (void)test_inject_initializer_values_as_primitives
@@ -165,30 +165,30 @@
 
     [_componentFactory registerDefinition:definition];
     PrimitiveMan *primitiveMan = [_componentFactory componentForKey:@"primitive"];
-    assertThatInt(primitiveMan.intValue, equalToInt(INT_MAX));
-    assertThatUnsignedInt(primitiveMan.unsignedIntValue, equalToUnsignedInt(UINT_MAX));
-    assertThatShort(primitiveMan.shortValue, equalToShort(SHRT_MAX));
-    assertThatUnsignedShort(primitiveMan.unsignedShortValue, equalToUnsignedShort(USHRT_MAX));
-    assertThatLong(primitiveMan.longValue, equalToLong(LONG_MAX));
-    assertThatUnsignedLong(primitiveMan.unsignedLongValue, equalToUnsignedLong(ULONG_MAX));
-    assertThatLongLong(primitiveMan.longLongValue, equalToLongLong(LONG_LONG_MAX));
-    assertThatUnsignedLongLong(primitiveMan.unsignedLongLongValue, equalToUnsignedLongLong(ULONG_LONG_MAX));
-    assertThatUnsignedChar(primitiveMan.unsignedCharValue, equalToUnsignedChar(UCHAR_MAX));
-    assertThatFloat(primitiveMan.floatValue, equalToFloat(FLT_MAX));
-    assertThatDouble(primitiveMan.doubleValue, equalToDouble(DBL_MAX));
-    assertThatBool(primitiveMan.boolValue, equalToBool(YES));
-    assertThatInteger(primitiveMan.integerValue, equalToInteger(NSIntegerMax));
-    assertThatUnsignedInteger(primitiveMan.unsignedIntegerValue, equalToUnsignedInteger(NSUIntegerMax));
-    assertThat(NSStringFromClass(primitiveMan.classValue), equalTo(NSStringFromClass([self class])));
-    assertThat(NSStringFromSelector(primitiveMan.selectorValue), equalTo(NSStringFromSelector(@selector(selectorValue))));
-    assertThatInt(strcmp(primitiveMan.cString, "Hello Typhoon"), equalToInt(0));
-    assertThatBool(NSEqualRanges(primitiveMan.nsRange, NSMakeRange(10, 20)), equalToBool(YES));
-    assertThatBool(primitiveMan.pointer == primitiveStruct, equalToBool(YES));
-    assertThatInt(primitiveMan.unknownPointer->fieldA, equalToInt(INT32_MAX));
-    assertThatLong(primitiveMan.unknownPointer->fieldB, equalToLong(INT64_MAX));
-    assertThat(primitiveMan.pointerInsideValue, equalTo([NSValue valueWithPointer:primitiveStruct]));
-    assertThatInt(primitiveMan.unknownStructure.fieldA, equalToInt(23));
-    assertThatLong(primitiveMan.unknownStructure.fieldB, equalToLong(INT64_MAX));
+    XCTAssertEqual(primitiveMan.intValue, INT_MAX);
+    XCTAssertEqual(primitiveMan.unsignedIntValue, UINT_MAX);
+    XCTAssertEqual(primitiveMan.shortValue, SHRT_MAX);
+    XCTAssertEqual(primitiveMan.unsignedShortValue, USHRT_MAX);
+    XCTAssertEqual(primitiveMan.longValue, LONG_MAX);
+    XCTAssertEqual(primitiveMan.unsignedLongValue, ULONG_MAX);
+    XCTAssertEqual(primitiveMan.longLongValue, LONG_LONG_MAX);
+    XCTAssertEqual(primitiveMan.unsignedLongLongValue, ULONG_LONG_MAX);
+    XCTAssertEqual(primitiveMan.unsignedCharValue, UCHAR_MAX);
+    XCTAssertEqual(primitiveMan.floatValue, FLT_MAX);
+    XCTAssertEqual(primitiveMan.doubleValue, DBL_MAX);
+    XCTAssertEqual(primitiveMan.boolValue, YES);
+    XCTAssertEqual(primitiveMan.integerValue, NSIntegerMax);
+    XCTAssertEqual(primitiveMan.unsignedIntegerValue, NSUIntegerMax);
+    XCTAssertEqualObjects(NSStringFromClass(primitiveMan.classValue), NSStringFromClass([self class]));
+    XCTAssertEqualObjects(NSStringFromSelector(primitiveMan.selectorValue), NSStringFromSelector(@selector(selectorValue)));
+    XCTAssertEqual(strcmp(primitiveMan.cString, "Hello Typhoon"), 0);
+    XCTAssertTrue(NSEqualRanges(primitiveMan.nsRange, NSMakeRange(10, 20)));
+    XCTAssertTrue(primitiveMan.pointer == primitiveStruct);
+    XCTAssertEqual(primitiveMan.unknownPointer->fieldA, INT32_MAX);
+    XCTAssertEqual(primitiveMan.unknownPointer->fieldB, INT64_MAX);
+    XCTAssertEqualObjects(primitiveMan.pointerInsideValue, [NSValue valueWithPointer:primitiveStruct]);
+    XCTAssertEqual(primitiveMan.unknownStructure.fieldA, 23);
+    XCTAssertEqual(primitiveMan.unknownStructure.fieldB, INT64_MAX);
 
     free(primitiveStruct);
 }
@@ -206,8 +206,8 @@
     [_componentFactory registerDefinition:questDefinition];
 
     Knight *knight = [_componentFactory buildInstanceWithDefinition:knightDefinition args:nil];
-    assertThat(knight, notNilValue());
-    assertThat(knight.quest, notNilValue());
+    XCTAssertNotNil(knight);
+    XCTAssertNotNil(knight.quest);
 }
 
 - (void)test_raises_exception_if_property_setter_does_not_exist
@@ -225,7 +225,7 @@
         knight = nil;
     }
     @catch (NSException *e) {
-        assertThat(e.name, equalTo(@"TyphoonPropertySetterNotFoundException"));
+        XCTAssertEqualObjects(e.name, @"TyphoonPropertySetterNotFoundException");
     }
 }
 
@@ -236,7 +236,7 @@
     [_componentFactory registerDefinition:knightDefinition];
 
     Knight *knight = [_componentFactory componentForKey:@"knight"];
-    assertThatLong(knight.damselsRescued, equalToLongLong(12));
+    XCTAssertEqual(knight.damselsRescued, 12);
 }
 
 - (void)test_inject_property_value_as_primitives
@@ -279,29 +279,29 @@
 
     [_componentFactory registerDefinition:definition];
     PrimitiveMan *primitiveMan = [_componentFactory componentForKey:@"primitive"];
-    assertThatInt(primitiveMan.intValue, equalToInt(INT_MAX));
-    assertThatUnsignedInt(primitiveMan.unsignedIntValue, equalToUnsignedInt(UINT_MAX));
-    assertThatShort(primitiveMan.shortValue, equalToShort(SHRT_MAX));
-    assertThatUnsignedShort(primitiveMan.unsignedShortValue, equalToUnsignedShort(USHRT_MAX));
-    assertThatLong(primitiveMan.longValue, equalToLong(LONG_MAX));
-    assertThatUnsignedLong(primitiveMan.unsignedLongValue, equalToUnsignedLong(ULONG_MAX));
-    assertThatLongLong(primitiveMan.longLongValue, equalToLongLong(LONG_LONG_MAX));
-    assertThatUnsignedLongLong(primitiveMan.unsignedLongLongValue, equalToUnsignedLongLong(ULONG_LONG_MAX));
-    assertThatUnsignedChar(primitiveMan.unsignedCharValue, equalToUnsignedChar(UCHAR_MAX));
-    assertThatFloat(primitiveMan.floatValue, equalToFloat(FLT_MAX));
-    assertThatDouble(primitiveMan.doubleValue, equalToDouble(DBL_MAX));
-    assertThatBool(primitiveMan.boolValue, equalToBool(YES));
-    assertThatInteger(primitiveMan.integerValue, equalToInteger(NSIntegerMax));
-    assertThatUnsignedInteger(primitiveMan.unsignedIntegerValue, equalToUnsignedInteger(NSUIntegerMax));
-    assertThat(NSStringFromClass(primitiveMan.classValue), equalTo(NSStringFromClass([self class])));
-    assertThat(NSStringFromSelector(primitiveMan.selectorValue), equalTo(NSStringFromSelector(@selector(selectorValue))));
-    assertThatBool(NSEqualRanges(primitiveMan.nsRange, NSMakeRange(10, 20)), equalToBool(YES));
-    assertThatInt(primitiveMan.unknownPointer->fieldA, equalToInt(INT32_MAX));
-    assertThatLong(primitiveMan.unknownPointer->fieldB, equalToLong(INT64_MAX));
-    assertThatBool(primitiveMan.pointer == &primitiveStruct, equalToBool(YES));
-    assertThat(primitiveMan.pointerInsideValue, equalTo([NSValue valueWithPointer:&primitiveStruct]));
-    assertThatInt(primitiveMan.unknownStructure.fieldA, equalToInt(INT32_MAX));
-    assertThatLong(primitiveMan.unknownStructure.fieldB, equalToLong(INT64_MAX));
+    XCTAssertEqual(primitiveMan.intValue, INT_MAX);
+    XCTAssertEqual(primitiveMan.unsignedIntValue, UINT_MAX);
+    XCTAssertEqual(primitiveMan.shortValue, SHRT_MAX);
+    XCTAssertEqual(primitiveMan.unsignedShortValue, USHRT_MAX);
+    XCTAssertEqual(primitiveMan.longValue, LONG_MAX);
+    XCTAssertEqual(primitiveMan.unsignedLongValue, ULONG_MAX);
+    XCTAssertEqual(primitiveMan.longLongValue, LONG_LONG_MAX);
+    XCTAssertEqual(primitiveMan.unsignedLongLongValue, ULONG_LONG_MAX);
+    XCTAssertEqual(primitiveMan.unsignedCharValue, UCHAR_MAX);
+    XCTAssertEqual(primitiveMan.floatValue, FLT_MAX);
+    XCTAssertEqual(primitiveMan.doubleValue, DBL_MAX);
+    XCTAssertEqual(primitiveMan.boolValue, YES);
+    XCTAssertEqual(primitiveMan.integerValue, NSIntegerMax);
+    XCTAssertEqual(primitiveMan.unsignedIntegerValue, NSUIntegerMax);
+    XCTAssertEqual(primitiveMan.classValue, [self class]);
+    XCTAssertEqualObjects(NSStringFromSelector(primitiveMan.selectorValue), NSStringFromSelector(@selector(selectorValue)));
+    XCTAssertTrue(NSEqualRanges(primitiveMan.nsRange, NSMakeRange(10, 20)));
+    XCTAssertEqual(primitiveMan.unknownPointer->fieldA, INT32_MAX);
+    XCTAssertEqual(primitiveMan.unknownPointer->fieldB, INT64_MAX);
+    XCTAssertEqual(primitiveMan.pointer, &primitiveStruct);
+    XCTAssertEqualObjects(primitiveMan.pointerInsideValue, [NSValue valueWithPointer:&primitiveStruct]);
+    XCTAssertEqual(primitiveMan.unknownStructure.fieldA, INT32_MAX);
+    XCTAssertEqual(primitiveMan.unknownStructure.fieldB, INT64_MAX);
     XCTAssertTrue(CStringEquals("Hello world", primitiveMan.cString));
     
     primitiveMan.unknownPointer = NULL;
@@ -324,7 +324,7 @@
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
-        assertThat(e.name, equalTo(@"TyphoonPropertySetterNotFoundException"));
+        XCTAssertEqualObjects(e.name, @"TyphoonPropertySetterNotFoundException");
     }
 
 }
