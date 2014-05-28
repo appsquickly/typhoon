@@ -9,6 +9,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#ifdef __IPHONE_5_0
+
+
 
 #import <UIKit/UIKit.h>
 #import "TyphoonComponentFactory.h"
@@ -37,3 +40,5 @@
 + (TyphoonStoryboard *)storyboardWithName:(NSString *)name factory:(TyphoonComponentFactory *)factory bundle:(NSBundle *)bundleOrNil;
 
 @end
+
+#endif
