@@ -30,13 +30,13 @@
 - (void)test_configure_should_inject_factory_itself_as_argument
 {
     [factoryDefinition configure:^(TyphoonAssistedFactoryDefinition *definition) {
-        assertThat(definition, is(equalTo(factoryDefinition)));
+        XCTAssertEqual(definition, factoryDefinition);
     }];
 }
 
 - (void)test_countOfFactoryMethods_should_return_zero_for_no_methods
 {
-    assertThatInteger(factoryDefinition.countOfFactoryMethods, is(equalToInteger(0)));
+    XCTAssertEqual(factoryDefinition.countOfFactoryMethods, 0);
 }
 
 - (void)test_countOfFactoryMethod_should_return_one_for_just_one_method
@@ -44,7 +44,7 @@
     [factoryDefinition factoryMethod:@selector(wadus) body:^{
     }];
 
-    assertThatInteger(factoryDefinition.countOfFactoryMethods, is(equalToInteger(1)));
+    XCTAssertEqual(factoryDefinition.countOfFactoryMethods, 1);
 }
 
 - (void)test_countOfFactoryMethod_should_return_the_number_of_factory_methods
@@ -56,7 +56,7 @@
     [factoryDefinition factoryMethod:@selector(wadusWithWadus:andWadus:) body:^{
     }];
 
-    assertThatInteger(factoryDefinition.countOfFactoryMethods, is(equalToInteger(3)));
+    XCTAssertEqual(factoryDefinition.countOfFactoryMethods, 3);
 }
 
 - (void)test_enumerateFactoryMethods_should_invoke_block_for_no_methods
@@ -67,7 +67,7 @@
         count += 1;
     }];
 
-    assertThatInt(count, is(equalToInt(0)));
+    XCTAssertEqual(count, 0);
 }
 
 - (void)test_enumerateFactoryMethods_should_invoke_block_for_number_of_factory_methods
@@ -84,7 +84,7 @@
         count += 1;
     }];
 
-    assertThatInt(count, is(equalToInt(3)));
+    XCTAssertEqual(count, 3);
 }
 
 - (void)test_enumerateFactoryMethods_should_invoke_block_with_configured_selector
@@ -94,7 +94,7 @@
     }];
 
     [factoryDefinition enumerateFactoryMethods:^(id <TyphoonAssistedFactoryMethod> factoryMethod) {
-        assertThat(NSStringFromSelector(factoryMethod.factoryMethod), is(@"wadusWithWadus:andWadus:"));
+        XCTAssertEqualObjects(NSStringFromSelector(factoryMethod.factoryMethod), @"wadusWithWadus:andWadus:");
     }];
 }
 
@@ -107,7 +107,7 @@
     [factoryDefinition factoryMethod:@selector(wadus) body:bodyBlock];
 
     [factoryDefinition enumerateFactoryMethods:^(TyphoonAssistedFactoryMethodBlock *factoryMethod) {
-        assertThat(factoryMethod.bodyBlock, is(bodyBlock));
+        XCTAssertEqualObjects(factoryMethod.bodyBlock, bodyBlock);
     }];
 }
 

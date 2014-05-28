@@ -36,40 +36,40 @@
 
 - (void)test_after_init_factoryMethod_should_be_initializer_value
 {
-    assertThatInt(strcmp(sel_getName(_factoryMethod), sel_getName(_initializer.factoryMethod)), equalToInt(0));
+    XCTAssertEqual(strcmp(sel_getName(_factoryMethod), sel_getName(_initializer.factoryMethod)), 0);
 }
 
 - (void)test_after_init_selector_should_be_the_selector_value
 {
-    assertThatInt(strcmp(sel_getName(_initializerMethod), sel_getName(_initializer.selector)), equalToInt(0));
+    XCTAssertEqual(strcmp(sel_getName(_initializerMethod), sel_getName(_initializer.selector)), 0);
 }
 
 - (void)test_after_init_parameters_should_be_empty
 {
-    assertThat(_initializer.parameters, hasCountOf(0));
+    XCTAssertTrue([_initializer.parameters count] == 0);
 }
 
 - (void)test_after_init_countOfParameters_should_be_zero
 {
-    assertThatUnsignedInteger([_initializer countOfParameters], equalToUnsignedInteger(0));
+    XCTAssertEqual([_initializer countOfParameters], 0);
 }
 
 - (void)behaviour_inject_common
 {
     // inject should modify parameters array
-    assertThat(_initializer.parameters, hasCountOf(1));
+    XCTAssertEqual([_initializer.parameters count], 1);
 
     // inject should increase countOfParameters
-    assertThatUnsignedInteger([_initializer countOfParameters], equalToUnsignedInteger(1));
+    XCTAssertEqual([_initializer countOfParameters], 1);
 }
 
 - (void)behaviour_inject_with_inexistent_parameter
 {
     // inject should not modify parameters array
-    assertThat(_initializer.parameters, hasCountOf(0));
+    XCTAssertTrue([_initializer.parameters count] == 0);
 
     // inject should not increase countOfParameters
-    assertThatUnsignedInteger([_initializer countOfParameters], equalToUnsignedInteger(0));
+    XCTAssertEqual([_initializer countOfParameters], 0);
 }
 
 - (void)test_injectWithProperty_should_follow_inject_commmon_behaviour
@@ -84,7 +84,7 @@
     [_initializer injectWithProperty:@selector(UTF8String)];
 
     id <TyphoonAssistedFactoryInjectedParameter> last = [_initializer.parameters lastObject];
-    assertThatUnsignedInteger([last parameterIndex], equalToUnsignedInteger(1));
+    XCTAssertEqual([last parameterIndex], 1);
 }
 
 - (void)test_injectParameterNamed_withProperty_should_follow_inject_commmon_behaviour
@@ -118,8 +118,8 @@
 
     TyphoonAssistedFactoryParameterInjectedWithProperty *parameter = [_initializer.parameters lastObject];
 
-    assertThat(parameter, instanceOf([TyphoonAssistedFactoryParameterInjectedWithProperty class]));
-    assertThatInt(strcmp(sel_getName(parameter.property), sel_getName(property)), equalToInt(0));
+    XCTAssertTrue([parameter isKindOfClass:[TyphoonAssistedFactoryParameterInjectedWithProperty class]]);
+    XCTAssertEqual(strcmp(sel_getName(parameter.property), sel_getName(property)), 0);
 }
 
 - (void)test_injectWithArgumentAtIndex_should_follow_inject_commmon_behaviour
@@ -134,7 +134,7 @@
     [_initializer injectWithArgumentAtIndex:0];
 
     id <TyphoonAssistedFactoryInjectedParameter> last = [_initializer.parameters lastObject];
-    assertThatUnsignedInteger([last parameterIndex], equalToUnsignedInteger(1));
+    XCTAssertEqual([last parameterIndex], 1);
 }
 
 - (void)test_injectParameterNamed_withArgumentAtIndex_should_follow_inject_commmon_behaviour
@@ -165,8 +165,8 @@
 {
     [_initializer injectParameterAtIndex:0 withArgumentAtIndex:3];
 
-    assertThat(_initializer.parameters, hasCountOf(0));
-    assertThatUnsignedInteger([_initializer countOfParameters], equalToUnsignedInteger(0));
+    XCTAssertTrue([_initializer.parameters count] == 0);
+    XCTAssertEqual([_initializer countOfParameters], 0);
 }
 
 - (void)test_injectParameterAtIndex_withArgumentAtIndex_should_create_correct_parameter_object
@@ -175,8 +175,8 @@
 
     TyphoonAssistedFactoryParameterInjectedWithArgumentIndex *parameter = [_initializer.parameters lastObject];
 
-    assertThat(parameter, instanceOf([TyphoonAssistedFactoryParameterInjectedWithArgumentIndex class]));
-    assertThatUnsignedInteger(parameter.argumentIndex, equalToUnsignedInteger(1));
+    XCTAssertTrue([parameter isKindOfClass:[TyphoonAssistedFactoryParameterInjectedWithArgumentIndex class]]);
+    XCTAssertEqual(parameter.argumentIndex, 1);
 }
 
 - (void)test_injectWithArgumentNamed_should_follow_inject_commmon_behaviour
@@ -191,7 +191,7 @@
     [_initializer injectWithArgumentNamed:@"contentsOfFile"];
 
     id <TyphoonAssistedFactoryInjectedParameter> last = [_initializer.parameters lastObject];
-    assertThatUnsignedInteger([last parameterIndex], equalToUnsignedInteger(1));
+    XCTAssertEqual([last parameterIndex], 1);
 }
 
 - (void)test_injectParameterNamed_withArgumentNamed_should_follow_inject_commmon_behaviour
@@ -222,8 +222,8 @@
 {
     [_initializer injectParameterAtIndex:0 withArgumentNamed:@"foo"];
 
-    assertThat(_initializer.parameters, hasCountOf(0));
-    assertThatUnsignedInteger([_initializer countOfParameters], equalToUnsignedInteger(0));
+    XCTAssertTrue([_initializer.parameters count] == 0);
+    XCTAssertEqual([_initializer countOfParameters], 0);
 }
 
 - (void)test_injectParameterAtIndex_withArgumentNamed_should_create_correct_parameter_object
@@ -232,8 +232,8 @@
 
     TyphoonAssistedFactoryParameterInjectedWithArgumentIndex *parameter = [_initializer.parameters lastObject];
 
-    assertThat(parameter, instanceOf([TyphoonAssistedFactoryParameterInjectedWithArgumentIndex class]));
-    assertThatUnsignedInteger(parameter.argumentIndex, equalToUnsignedInteger(1));
+    XCTAssertTrue([parameter isKindOfClass:[TyphoonAssistedFactoryParameterInjectedWithArgumentIndex class]]);
+    XCTAssertEqual(parameter.argumentIndex, 1);
 }
 
 @end

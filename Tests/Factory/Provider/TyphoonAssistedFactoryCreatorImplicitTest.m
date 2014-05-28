@@ -92,10 +92,10 @@
 {
     Class klass = [self paymentFactoryClass];
 
-    assertThatBool(class_conformsToProtocol(klass, [self paymentFactoryProtocol]), is(equalToBool(YES)));
+    XCTAssertTrue(class_conformsToProtocol(klass, [self paymentFactoryProtocol]));
 
     Class superklass = class_getSuperclass(klass);
-    assertThat(superklass, is([TyphoonAssistedFactoryBase class]));
+    XCTAssertEqual(superklass, [TyphoonAssistedFactoryBase class]);
 }
 
 - (void)test_factory_should_respond_to_properties
@@ -103,8 +103,8 @@
     Class klass = [self paymentFactoryClass];
     id <PaymentFactory> factory = [[klass alloc] init];
 
-    assertThatBool([factory respondsToSelector:@selector(creditService)], is(equalToBool(YES)));
-    assertThatBool([factory respondsToSelector:@selector(authService)], is(equalToBool(YES)));
+    XCTAssertTrue([factory respondsToSelector:@selector(creditService)]);
+    XCTAssertTrue([factory respondsToSelector:@selector(authService)]);
 }
 
 - (void)test_factory_should_implement_properties
@@ -121,8 +121,8 @@
     [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockCreditServiceInjectedProperty withType:nil lazyValue:^{ return _creditService; }];
     [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockAuthServiceInjectedProperty withType:nil lazyValue:^{ return _authService; }];
 
-    assertThat(factory.creditService, is(_creditService));
-    assertThat(factory.authService, is(_authService));
+    XCTAssertEqual(factory.creditService, _creditService);
+    XCTAssertEqual(factory.authService, _authService);
 }
 
 - (void)test_factory_should_invoke_correct_initializers
@@ -142,10 +142,10 @@
     NSDate *now = [NSDate date];
     id <Payment> payment = [factory paymentWithStartDate:now amount:456];
 
-    assertThat(payment.creditService, is(_creditService));
-    assertThat(payment.authService, is(_authService));
-    assertThat(payment.startDate, is(now));
-    assertThatInteger(payment.amount, is(equalToInteger(456)));
+    XCTAssertEqual(payment.creditService, _creditService);
+    XCTAssertEqual(payment.authService, _authService);
+    XCTAssertEqual(payment.startDate, now);
+    XCTAssertEqual(payment.amount, 456);
 }
 
 - (void)test_multi_factory_should_invoke_correct_initializers
@@ -163,16 +163,16 @@
     [(id<TyphoonPropertyInjectionInternalDelegate>) factory shouldInjectProperty:mockAuthServiceInjectedProperty withType:nil lazyValue:^{ return _authService; }];
 
     Person *p1 = [factory personWithFirstName:@"foo" lastName:@"bar"];
-    assertThatBool(p1.usedInitializer == @selector(initWithCreditService:authService:firstName:lastName:), is(equalToBool(YES)));
+    XCTAssertTrue(p1.usedInitializer == @selector(initWithCreditService:authService:firstName:lastName:));
 
     Person *p2 = [factory personWithFirstName:@"foo"];
-    assertThatBool(p2.usedInitializer == @selector(initWithCreditService:authService:firstName:), is(equalToBool(YES)));
+    XCTAssertTrue(p2.usedInitializer == @selector(initWithCreditService:authService:firstName:));
 
     Person *p3 = [factory personWithLastName:@"foo" authService:_authService];
-    assertThatBool(p3.usedInitializer == @selector(initWithCreditService:authService:lastName:), is(equalToBool(YES)));
+    XCTAssertTrue(p3.usedInitializer == @selector(initWithCreditService:authService:lastName:));
 
     Person *p4 = [factory personWithLastName:@"foo"];
-    assertThatBool(p4.usedInitializer == @selector(initWithCreditService:lastName:), is(equalToBool(YES)));
+    XCTAssertTrue(p4.usedInitializer == @selector(initWithCreditService:lastName:));
 }
 
 @end

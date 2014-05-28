@@ -41,15 +41,15 @@
 
     id <PaymentFactory> factory = [assembly paymentFactory];
 
-    assertThatUnsignedInteger([CreditServiceImpl instanceCounter], is(equalToUnsignedInteger(creditServiceInstanceCounter)));
+    XCTAssertEqual([CreditServiceImpl instanceCounter], creditServiceInstanceCounter);
 
-    assertThatUnsignedInteger([AuthServiceImpl instanceCounter], is(equalToUnsignedInteger(authServiceInstanceCounter)));
+    XCTAssertEqual([AuthServiceImpl instanceCounter], authServiceInstanceCounter);
 
     // No need for the return value.
     [factory paymentWithStartDate:[NSDate date] amount:123];
 
-    assertThatUnsignedInteger([AuthServiceImpl instanceCounter], is(equalToUnsignedInteger(authServiceInstanceCounter + 1)));
-    assertThatUnsignedInteger([CreditServiceImpl instanceCounter], is(equalToUnsignedInteger(creditServiceInstanceCounter + 1)));
+    XCTAssertEqual([AuthServiceImpl instanceCounter], authServiceInstanceCounter + 1);
+    XCTAssertEqual([CreditServiceImpl instanceCounter], creditServiceInstanceCounter + 1);
 }
 
 - (void)test_assisted_factory_is_TyphoonComponentFactoryAware
@@ -57,7 +57,7 @@
     NSObject <PaymentFactory> *factory = [assembly paymentFactory];
 
     id cf = [factory valueForKey:@"componentFactory"];
-    assertThat(cf, is(equalTo(componentFactory)));
+    XCTAssertEqual(cf, componentFactory);
 }
 
 - (void)test_assisted_initializer_factory_injects_component_factory_in_object_instances
@@ -66,7 +66,7 @@
 
     PaymentImpl *payment = (PaymentImpl *) [factory paymentWithStartDate:[NSDate date] amount:456];
 
-    assertThat(payment.factory, is(equalTo(componentFactory)));
+    XCTAssertEqual(payment.factory, componentFactory);
 }
 
 - (void)test_assisted_block_factory_injects_component_factory_in_object_instances
@@ -78,7 +78,7 @@
         @"cheese"
     ]];
 
-    assertThat(pizza.factory, is(equalTo(componentFactory)));
+    XCTAssertEqual(pizza.factory, componentFactory);
 }
 
 - (void)test_assisted_factory_doesnt_blow_up_when_calling_one_of_the_methods
@@ -91,12 +91,12 @@
 
             id <Payment> payment1 = [factory1 paymentWithStartDate:[NSDate date] amount:123];
 
-            assertThat(payment1, is(notNilValue()));
+            XCTAssertNotNil(payment1);
         }
 
         id <Payment> payment2 = [factory1 paymentWithStartDate:[NSDate date] amount:456];
 
-        assertThat(payment2, is(notNilValue()));
+        XCTAssertNotNil(payment2);
     }
 
     @autoreleasepool {
@@ -110,12 +110,12 @@
                 @"Ham"
             ]];
 
-            assertThat(pizza1, is(notNilValue()));
+            XCTAssertNotNil(pizza1);
         }
 
         id <Pizza> pizza2 = [factory2 largePizzaWithIngredients:@[@"Bacon"]];
 
-        assertThat(pizza2, is(notNilValue()));
+        XCTAssertNotNil(pizza2);
     }
 }
 
@@ -126,8 +126,8 @@
     PaymentImpl *payment1 = (PaymentImpl *) [factory paymentWithStartDate:[NSDate date] amount:456];
     PaymentImpl *payment2 = (PaymentImpl *) [factory paymentWithStartDate:[NSDate date] amount:789];
 
-    assertThat(payment1.authService, is(equalTo(payment2.authService)));
-    assertThat(payment1.creditService, isNot(equalTo(payment2.creditService)));
+    XCTAssertEqual(payment1.authService, payment2.authService);
+    XCTAssertNotEqual(payment1.creditService, payment2.creditService);
 }
 
 @end

@@ -96,23 +96,24 @@
 {
     Class klass = [self paymentFactoryBlocksDefinition].type;
 
-    assertThatBool(class_conformsToProtocol(klass, [self paymentFactoryProtocol]), is(equalToBool(YES)));
+    XCTAssertTrue(class_conformsToProtocol(klass, [self paymentFactoryProtocol]));
 
     Class superklass = class_getSuperclass(klass);
-    assertThat(superklass, is([TyphoonAssistedFactoryBase class]));
+    XCTAssertEqual(superklass, [TyphoonAssistedFactoryBase class]);
 }
 
 - (void)test_block_factory_definition_should_have_injected_properties
 {
     NSSet *injectedProperties = [self paymentFactoryBlocksDefinition].injectedProperties;
 
-    NSMutableArray *injectedPropertyNames = [NSMutableArray array];
+    NSMutableSet *injectedPropertyNames = [NSMutableSet set];
     [injectedProperties enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
         [injectedPropertyNames addObject:[obj propertyName]];
     }];
 
-    assertThat(injectedPropertyNames, hasCountOf(2));
-    assertThat(injectedPropertyNames, hasItems(equalTo(@"creditService"), equalTo(@"authService"), nil));
+    XCTAssertTrue([injectedPropertyNames count] == 2);
+    XCTAssertNotNil([injectedPropertyNames member:@"creditService"]);
+    XCTAssertNotNil([injectedPropertyNames member:@"authService"]);
 }
 
 
@@ -120,23 +121,24 @@
 {
     Class klass = [self paymentFactoryInitializerDefinition].type;
 
-    assertThatBool(class_conformsToProtocol(klass, [self paymentFactoryProtocol]), is(equalToBool(YES)));
+    XCTAssertTrue(class_conformsToProtocol(klass, [self paymentFactoryProtocol]));
 
     Class superklass = class_getSuperclass(klass);
-    assertThat(superklass, is([TyphoonAssistedFactoryBase class]));
+    XCTAssertEqual(superklass, [TyphoonAssistedFactoryBase class]);
 }
 
 - (void)test_initializer_factory_definition_should_have_injected_properties
 {
     NSSet *injectedProperties = [self paymentFactoryInitializerDefinition].injectedProperties;
 
-    NSMutableArray *injectedPropertyNames = [NSMutableArray array];
+    NSMutableSet *injectedPropertyNames = [NSMutableSet set];
     [injectedProperties enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
         [injectedPropertyNames addObject:[obj propertyName]];
     }];
 
-    assertThat(injectedPropertyNames, hasCountOf(2));
-    assertThat(injectedPropertyNames, hasItems(equalTo(@"creditService"), equalTo(@"authService"), nil));
+    XCTAssertTrue([injectedPropertyNames count] == 2);
+    XCTAssertNotNil([injectedPropertyNames member:@"creditService"]);
+    XCTAssertNotNil([injectedPropertyNames member:@"authService"]);
 }
 
 @end

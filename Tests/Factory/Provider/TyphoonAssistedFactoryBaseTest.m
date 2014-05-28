@@ -30,7 +30,7 @@
 
 - (void)test_injection_value_should_return_nil_for_unexisting_keys
 {
-    assertThat([assistedFactory injectionValueForProperty:@"does-not-exist"], is(nilValue()));
+    XCTAssertNil([assistedFactory injectionValueForProperty:@"does-not-exist"]);
 }
 
 - (void)test_injection_value_should_return_injected_value
@@ -43,7 +43,7 @@
     [given([mockProperty propertyName]) willReturn:@"property"];
     [assistedFactory shouldInjectProperty:mockProperty withType:nil lazyValue:value];
 
-    assertThat([assistedFactory injectionValueForProperty:@"property"], is(equalTo(value)));
+    XCTAssertEqualObjects([assistedFactory injectionValueForProperty:@"property"], value);
 }
 
 - (void)test_dependency_value_should_return_value_returned_from_injected_value
@@ -57,12 +57,12 @@
     [given([mockProperty propertyName]) willReturn:@"property"];
     [assistedFactory shouldInjectProperty:mockProperty withType:nil lazyValue:lazyValue];
 
-    assertThat([assistedFactory dependencyValueForProperty:@"property"], is(equalTo(value)));
+    XCTAssertEqual([assistedFactory dependencyValueForProperty:@"property"], value);
 }
 
 - (void)test_should_respond_to_dummyGetter
 {
-    assertThatBool([assistedFactory respondsToSelector:@selector(_dummyGetter)], is(equalToBool(YES)));
+    XCTAssertTrue([assistedFactory respondsToSelector:@selector(_dummyGetter)]);
 }
 
 - (void)test_should_conform_to_TyphoonComponentFactoryAware
@@ -70,7 +70,7 @@
     id mockFactory = mock([TyphoonComponentFactory class]);
 
     [assistedFactory typhoonSetFactory:mockFactory];
-    assertThat(assistedFactory.componentFactory, is(equalTo(mockFactory)));
+    XCTAssertEqualObjects(assistedFactory.componentFactory, mockFactory);
 }
 
 @end
