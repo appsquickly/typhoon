@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "ComponentFactoryAwareAssembly.h"
-#import <TyphoonDefinition.h>
+#import "TyphoonDefinition.h"
 #import "ComponentFactoryAwareObject.h"
 #import "Typhoon.h"
 

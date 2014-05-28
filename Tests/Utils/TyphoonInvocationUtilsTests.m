@@ -46,7 +46,7 @@
 
     ObjectInitRetained *object = [invocation typhoon_resultOfInvokingOnAllocationForClass:clazz];
 
-    assertThatInt(retainCount(object), equalToInt(1));
+    XCTAssertEqual(retainCount(object), 1);
 }
 
 - (void)test_object_new_retained
@@ -57,7 +57,7 @@
 
     ObjectNewRetained *object = [invocation typhoon_resultOfInvokingOnInstance:clazz];
 
-    assertThatInt(retainCount(object), equalToInt(1));
+    XCTAssertEqual(retainCount(object), 1);
 
     invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(newObject) class:clazz];
     ObjectNewRetained *arcobject = nil;
@@ -65,7 +65,7 @@
     [invocation invoke];
     [invocation getReturnValue:&arcobject];
 
-    assertThatInt(retainCount(arcobject), equalToInt(1));
+    XCTAssertEqual(retainCount(arcobject), 1);
 }
 
 - (void)test_object_new_autorelease
@@ -76,7 +76,7 @@
 
     ObjectNewAutorelease *object = [invocation typhoon_resultOfInvokingOnInstance:clazz];
 
-    assertThatInt(retainCount(object), equalToInt(1));
+    XCTAssertEqual(retainCount(object), 1);
 }
 
 - (void)test_arc_object_returns_retained_on_not_new_or_init_method
@@ -89,7 +89,7 @@
 
     ClassWithConstructor *object = [invocation typhoon_resultOfInvokingOnInstance:clazz];
 
-    assertThatInt(retainCount(object), equalToInt(1));
+    XCTAssertEqual(retainCount(object), 1);
 }
 
 - (void)test_retained_and_autoreleased_class_method_initializers
@@ -111,7 +111,7 @@
     invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(object) class:[ObjectNewAutorelease class]];
     arcobject = [invocation typhoon_resultOfInvokingOnInstance:[ObjectNewAutorelease class]];
 
-    assertThatInt(retainCount(arcobject), equalToInt(1));
+    XCTAssertEqual(retainCount(arcobject), 1);
 
     // Crashes (because returns autoreleased):
 
@@ -130,7 +130,7 @@
     [invocation setArgument:&capacity atIndex:2];
     array = [invocation typhoon_resultOfInvokingOnInstance:[NSMutableArray class]];
 
-    assertThatInt(retainCount(array), equalToInt(1));
+    XCTAssertEqual(retainCount(array), 1);
 
     // That would work because returns retained
     invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(new) class:[NSMutableArray class]];
@@ -138,7 +138,7 @@
     [invocation invoke];
     [invocation getReturnValue:&array];
 
-    assertThatInt(retainCount(array), equalToInt(1));
+    XCTAssertEqual(retainCount(array), 1);
 
 }
 
@@ -149,7 +149,7 @@
 
     ObjectInitRetained *object = [invocation typhoon_resultOfInvokingOnAllocationForClass:clazz];
 
-    assertThatInt(retainCount(object), equalToInt(1));
+    XCTAssertEqual(retainCount(object), 1);
 }
 
 - (void)test_cluster_autorelease
@@ -159,7 +159,7 @@
 
     ObjectInitRetained *object = [invocation typhoon_resultOfInvokingOnAllocationForClass:clazz];
 
-    assertThatInt(retainCount(object), equalToInt(1));
+    XCTAssertEqual(retainCount(object), 1);
 }
 
 - (void)test_cluster_nil
@@ -169,7 +169,7 @@
 
     ObjectInitRetained *object = [invocation typhoon_resultOfInvokingOnAllocationForClass:clazz];
 
-    assertThat(object, is(nilValue()));
+    XCTAssertNil(object);
 }
 
 @end

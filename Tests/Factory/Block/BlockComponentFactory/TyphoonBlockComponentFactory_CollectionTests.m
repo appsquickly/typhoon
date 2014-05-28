@@ -12,8 +12,8 @@
 
 #import <Foundation/Foundation.h>
 #import <XCTest/XCTest.h>
-#import <Typhoon/TyphoonComponentFactory.h>
-#import <Typhoon/TyphoonBlockComponentFactory.h>
+#import "TyphoonComponentFactory.h"
+#import "TyphoonBlockComponentFactory.h"
 #import "MiddleAgesAssembly.h"
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "Knight.h"

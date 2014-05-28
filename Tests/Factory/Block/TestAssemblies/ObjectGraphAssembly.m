@@ -11,7 +11,7 @@
 
 
 
-#import <Typhoon/TyphoonDefinition.h>
+#import "TyphoonDefinition.h"
 #import "ObjectGraphAssembly.h"
 #import "Knight.h"
 #import "Fort.h"

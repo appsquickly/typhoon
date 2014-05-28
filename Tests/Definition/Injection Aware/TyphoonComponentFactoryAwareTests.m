@@ -11,7 +11,7 @@
 
 #import <XCTest/XCTest.h>
 #import "ComponentFactoryAwareObject.h"
-#import <TyphoonBlockComponentFactory.h>
+#import "TyphoonBlockComponentFactory.h"
 #import "ComponentFactoryAwareAssembly.h"
 
 @interface TyphoonComponentFactoryAwareTests : XCTestCase

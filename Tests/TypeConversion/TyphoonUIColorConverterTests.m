@@ -10,9 +10,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <XCTest/XCTest.h>
-#import <Typhoon/TyphoonTypeConverter.h>
-#import <Typhoon/TyphoonTypeConverterRegistry.h>
-#import <Typhoon/NSObject+TyphoonIntrospectionUtils.h>
+#import "TyphoonTypeConverter.h"
+#import "TyphoonTypeConverterRegistry.h"
+#import "NSObject+TyphoonIntrospectionUtils.h"
 #import <UIKit/UIKit.h>
 
 @interface TyphoonUIColorConverterTests : XCTestCase

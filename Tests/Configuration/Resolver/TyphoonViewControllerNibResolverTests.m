@@ -10,13 +10,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <XCTest/XCTest.h>
-#import <TyphoonViewControllerNibResolver.h>
-#import <UIKit/UIKit.h>
-#import <TyphoonDefinition.h>
-#import <TyphoonDefinition+InstanceBuilder.h>
-#import <TyphoonComponentFactory.h>
-#import <TyphoonMethod.h>
-#import <TyphoonMethod+InstanceBuilder.h>
+#import "TyphoonViewControllerNibResolver.h"
+#import "TyphoonDefinition.h"
+#import "TyphoonComponentFactory.h"
+#import "TyphoonMethod+InstanceBuilder.h"
+
 
 @interface TyphoonViewControllerNibResolverTests : XCTestCase
 {

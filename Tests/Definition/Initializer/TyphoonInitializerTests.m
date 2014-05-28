@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <Typhoon/TyphoonMethod.h>
+#import "TyphoonMethod.h"
 #import <XCTest/XCTest.h>
 #import "MiddleAgesAssembly.h"
 #import "Typhoon.h"

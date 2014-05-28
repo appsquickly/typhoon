@@ -11,8 +11,8 @@
 
 
 #import <XCTest/XCTest.h>
-#import <Typhoon/TyphoonComponentFactory.h>
-#import <Typhoon/TyphoonBlockComponentFactory.h>
+#import "TyphoonComponentFactory.h"
+#import "TyphoonBlockComponentFactory.h"
 #import "MiddleAgesAssembly.h"
 #import "TyphoonPatcher.h"
 #import "Knight.h"
@@ -59,8 +59,8 @@
     [self applyAPatch];
     [self assertPatchApplied];
 
-    assertThatBool([_factory componentForKey:@"knight"] == [_factory componentForKey:@"knight"], equalToBool(NO));
-    assertThatBool([_factory componentForKey:@"cavalryMan"] == [_factory componentForKey:@"cavalryMan"], equalToBool(YES));
+    XCTAssertFalse([_factory componentForKey:@"knight"] == [_factory componentForKey:@"knight"]);
+    XCTAssertTrue([_factory componentForKey:@"cavalryMan"] == [_factory componentForKey:@"cavalryMan"]);
 }
 
 - (void)test_allows_detaching_patcher
@@ -68,8 +68,8 @@
     [self applyAPatch];
     [self assertPatchApplied];
 
-    assertThatBool([_factory componentForKey:@"knight"] == [_factory componentForKey:@"knight"], equalToBool(NO));
-    assertThatBool([_factory componentForKey:@"cavalryMan"] == [_factory componentForKey:@"cavalryMan"], equalToBool(YES));
+    XCTAssertFalse([_factory componentForKey:@"knight"] == [_factory componentForKey:@"knight"]);
+    XCTAssertTrue([_factory componentForKey:@"cavalryMan"] == [_factory componentForKey:@"cavalryMan"]);
 
     [_patcher detach];
 

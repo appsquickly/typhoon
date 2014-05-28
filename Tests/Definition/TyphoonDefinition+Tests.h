@@ -3,7 +3,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Typhoon/TyphoonDefinition.h>
+#import "TyphoonDefinition.h"
 
 @interface TyphoonDefinition (Tests)
 

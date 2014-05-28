@@ -12,9 +12,9 @@
 
 #import <Foundation/Foundation.h>
 #import <XCTest/XCTest.h>
-#import <Typhoon/TyphoonComponentFactory.h>
-#import <Typhoon/TyphoonBlockComponentFactory.h>
-#import <Typhoon/OCLogTemplate.h>
+#import "TyphoonComponentFactory.h"
+#import "TyphoonBlockComponentFactory.h"
+#import "OCLogTemplate.h"
 #import "ExtendedMiddleAgesAssembly.h"
 #import "Knight.h"
 #import "CollaboratingMiddleAgesAssembly.h"

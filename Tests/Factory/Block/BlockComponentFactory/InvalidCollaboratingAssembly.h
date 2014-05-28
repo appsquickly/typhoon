@@ -12,7 +12,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import <Typhoon/TyphoonAssembly.h>
+#import "TyphoonAssembly.h"
 
 
 @interface InvalidCollaboratingAssembly : TyphoonAssembly

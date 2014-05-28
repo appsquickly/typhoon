@@ -158,7 +158,7 @@ typedef struct
 - (void)test_parameterNamesForSelector_no_parameters_method
 {
     NSArray *parameterNames = [self typhoon_parameterNamesForSelector:@selector(init)];
-    assertThat(parameterNames, empty());
+    assertThat(parameterNames, isEmpty());
 }
 
 - (void)test_typeCodesForSelectorWithName

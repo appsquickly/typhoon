@@ -6,7 +6,7 @@
 //
 //
 
-#import <Typhoon/TyphoonBlockComponentFactory.h>
+#import "TyphoonBlockComponentFactory.h"
 #import <XCTest/XCTest.h>
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "MiddleAgesAssembly.h"

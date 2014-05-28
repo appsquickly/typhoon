@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <TyphoonAssemblySelectorAdviser.h>
+#import "TyphoonAssemblySelectorAdviser.h"
 
 @interface TyphoonAssemblySelectorAdviserTests : XCTestCase
 

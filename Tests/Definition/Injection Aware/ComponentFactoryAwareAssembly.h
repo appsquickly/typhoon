@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import <TyphoonAssembly.h>
+#import "TyphoonAssembly.h"
 
 @interface ComponentFactoryAwareAssembly : TyphoonAssembly
 

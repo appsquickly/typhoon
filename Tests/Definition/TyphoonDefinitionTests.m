@@ -11,7 +11,7 @@
 
 #import <XCTest/XCTest.h>
 #import <objc/message.h>
-#import <Typhoon/OCLogTemplate.h>
+#import "OCLogTemplate.h"
 #import "Knight.h"
 #import "Typhoon.h"
 #import "AutoWiringKnight.h"
@@ -22,6 +22,7 @@
 #import "TyphoonInjections.h"
 #import "TyphoonInjectionByCollection.h"
 #import "TyphoonMethod+InstanceBuilder.h"
+#import "TyphoonDefinition+Tests.h"
 
 @interface TyphoonDefinitionTests : XCTestCase
 @end
@@ -47,8 +48,8 @@
 {
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
 
-    assertThat(definition.key, equalTo(@"knight"));
-    assertThat(definition.type, equalTo([Knight class]));
+    XCTAssertEqual(definition.key, @"knight");
+    XCTAssertEqual(definition.type, [Knight class]);
 }
 
 - (void)test_prevents_initialization_without_supplying_required_parameters
@@ -59,7 +60,7 @@
         XCTFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"Property 'clazz' is required."));
+        XCTAssertEqualObjects([e description], @"Property 'clazz' is required.");
     }
 
     @try {
@@ -68,7 +69,7 @@
         XCTFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"Property 'clazz' is required."));
+        XCTAssertEqualObjects([e description], @"Property 'clazz' is required.");
     }
 }
 
@@ -86,7 +87,7 @@
     //by reference
     [definition injectProperty:@selector(dd) with:TyphoonInjectionWithReference(@"someReference")];
 
-    assertThatUnsignedLongLong([definition numberOfPropertyInjectionsByObject], equalToUnsignedLongLong(2));
+    XCTAssertEqual([definition numberOfPropertyInjectionsByObject], 2);
 }
 
 - (void)test_enumerates_properties_injected_by_reference
@@ -100,7 +101,7 @@
     //by reference
     [definition injectProperty:@selector(dd) with:TyphoonInjectionWithReference(@"someReference")];
 
-    assertThatUnsignedLongLong([definition numberOfPropertyInjectionsByReference], equalToUnsignedLongLong(1));
+    XCTAssertEqual([definition numberOfPropertyInjectionsByReference], (1));
 }
 
 
@@ -123,7 +124,7 @@
         [definition setParent:parent];
     }];
 
-    assertThat([child injectedProperties], hasCountOf(3));
+    XCTAssertEqual([[child injectedProperties] count], 3);
 }
 
 
@@ -138,10 +139,10 @@
         [definition setParent:parent];
     }];
 
-    assertThat([child injectedProperties], hasCountOf(1));
+    XCTAssertEqual([[child injectedProperties] count], (1));
 
     TyphoonInjectionByObjectInstance *property = [[child injectedProperties] anyObject];
-    assertThatInteger([property.objectInstance integerValue], equalToInteger(346));
+    XCTAssertEqual([property.objectInstance integerValue], 346);
 }
 
 - (void)test_child_inherits_parent_scope_if_not_explicitly_set
@@ -155,7 +156,7 @@
         [definition setParent:parent];
     }];
 
-    assertThatInt([child scope], equalToInt(TyphoonScopeSingleton));
+    XCTAssertEqual([child scope], (TyphoonScopeSingleton));
 }
 
 - (void)test_child_overrides_parent_scope_if_explicitly_set
@@ -170,7 +171,7 @@
         [definition setParent:parent];
     }];
 
-    assertThatInt([child scope], equalToInt(TyphoonScopePrototype));
+    XCTAssertEqual([child scope], (TyphoonScopePrototype));
 }
 
 
@@ -180,13 +181,13 @@
 - (void)test_autoWired_properties
 {
     NSSet *autoWired = objc_msgSend([AutoWiringKnight class], @selector(typhoonAutoInjectedProperties));
-    assertThatUnsignedLongLong([autoWired count], equalToUnsignedLongLong(1));
-    assertThat(autoWired, hasItem(@"quest"));
+    XCTAssertEqual([autoWired count], (1));
+    XCTAssertTrue([autoWired containsObject:@"quest"]);
 
     autoWired = objc_msgSend([AutoWiringSubClassedKnight class], @selector(typhoonAutoInjectedProperties));
-    assertThatUnsignedLongLong([autoWired count], equalToUnsignedLongLong(2));
-    assertThat(autoWired, hasItem(@"quest"));
-    assertThat(autoWired, hasItem(@"foobar"));
+    XCTAssertEqual([autoWired count], (2));
+    XCTAssertTrue([autoWired containsObject:@"quest"]);
+    XCTAssertTrue([autoWired containsObject:@"foobar"]);
 }
 
 
@@ -211,15 +212,15 @@
     }];
 
     TyphoonDefinition *copy = [definition copy];
-    assertThat(copy, notNilValue());
-    assertThat(copy.type, equalTo([Knight class]));
-    assertThat(copy.initializer, notNilValue());
-    assertThatBool(copy.initializer.selector == @selector(initWithQuest:damselsRescued:), equalToBool(YES));
-    assertThat(copy.initializer.injectedParameters, hasCountOf(2));
-    assertThat(copy.injectedProperties, hasCountOf(2));
+    XCTAssertNotNil(copy);
+    XCTAssertEqual(copy.type, ([Knight class]));
+    XCTAssertNotNil(copy.initializer);
+    XCTAssertTrue(copy.initializer.selector == @selector(initWithQuest:damselsRescued:));
+    XCTAssertEqual([copy.initializer.injectedParameters count], 2);
+    XCTAssertEqual([copy.injectedProperties count], 2);
 
     TyphoonInjectionByCollection *collection = [[[copy injectedProperties] allObjects] objectAtIndex:0];
-    assertThatUnsignedInteger([collection count], equalToUnsignedInteger(2));
+    XCTAssertEqual([collection count], 2);
 
 }
 

@@ -12,6 +12,7 @@
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonInjectionByObjectInstance.h"
 #import "TyphoonInjectionByObjectFromString.h"
+#import "TyphoonDefinition+Tests.h"
 
 @interface TyphoonDefinitionInstanceBuilderTests : XCTestCase
 
