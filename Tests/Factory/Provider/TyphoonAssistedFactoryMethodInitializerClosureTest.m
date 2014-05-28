@@ -60,7 +60,7 @@
 
     NSString *result = nil;
     [invocation getReturnValue:&result];
-    assertThat(result, equalTo(@"test"));
+    XCTAssertEqual(result, @"test");
 }
 
 - (void)test_closure_should_invoke_initializer_from_several_parameter
@@ -89,7 +89,7 @@
 
     NSString *result = nil;
     [invocation getReturnValue:&result];
-    assertThat(result, equalTo(@"áéíóú"));
+    XCTAssertEqualObjects(result, @"áéíóú");
 }
 
 - (void)test_closure_should_invoke_initializer_from_one_property
@@ -114,7 +114,7 @@
 
     NSString *result = nil;
     [invocation getReturnValue:&result];
-    assertThat(result, equalTo(@"testing 123"));
+    XCTAssertEqual(result, @"testing 123");
 }
 
 - (void)test_closure_should_invoke_initializer_from_mixed_property_and_parameter
@@ -143,7 +143,7 @@
 
     NSString *result = nil;
     [invocation getReturnValue:&result];
-    assertThat(result, equalTo(@"testing 123"));
+    XCTAssertEqualObjects(result, @"testing 123");
 }
 
 - (void)test_closure_should_fail_if_not_provided_with_enought_parameters
@@ -165,7 +165,7 @@
         closure = nil;
     }
     @catch (NSException *exception) {
-        assertThat(exception, isNot(nilValue()));
+        XCTAssertNotNil(exception);
     }
 }
 

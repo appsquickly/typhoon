@@ -60,7 +60,7 @@
     id factory = mockProtocol(@protocol(TyphoonAssistedFactoryMethodBlockClosureTestProtocol));
     NSInvocation *invocation = [closure invocationWithFactory:factory forwardedInvocation:forwardedInvocation];
 
-    assertThat(invocation.target, equalTo(factory));
+    XCTAssertEqual(invocation.target, factory);
 }
 
 - (void)test_closure_should_fill_invocation_with_given_selector
@@ -72,8 +72,8 @@
     id factory = mockProtocol(@protocol(TyphoonAssistedFactoryMethodBlockClosureTestProtocol));
     NSInvocation *invocation = [closure invocationWithFactory:factory forwardedInvocation:forwardedInvocation];
 
-    assertThatBool(invocation.selector ==
-        @selector(typhoon_interceptable_originalFactoryMethodWithParameter1:parameter2:), equalToBool(YES));
+    XCTAssertTrue(invocation.selector == @
+        selector(typhoon_interceptable_originalFactoryMethodWithParameter1:parameter2:));
 }
 
 - (void)test_closure_should_copy_arguments_directly
@@ -87,11 +87,11 @@
 
     NSString *aString;
     [invocation getArgument:&aString atIndex:2];
-    assertThat(aString, equalTo(testString));
+    XCTAssertEqual(aString, testString);
 
     NSUInteger aNumber;
     [invocation getArgument:&aNumber atIndex:3];
-    assertThatUnsignedInteger(aNumber, equalToUnsignedInteger(testNumber));
+    XCTAssertEqual(aNumber, testNumber);
 }
 
 @end

@@ -37,11 +37,11 @@
 {
     Knight *objectGraphKnight = [_assembly objectGraphKnight];
     CampaignQuest *quest = objectGraphKnight.quest;
-    assertThatBool(objectGraphKnight.homeFort == quest.fort, equalToBool(YES));
+    XCTAssertTrue(objectGraphKnight.homeFort == quest.fort);
 
     Knight *prototypeKnight = [_assembly prototypeKnight];
     CampaignQuest *prototypeQuest = prototypeKnight.quest;
-    assertThatBool(prototypeKnight.homeFort == prototypeQuest.fort, equalToBool(NO));
+    XCTAssertFalse(prototypeKnight.homeFort == prototypeQuest.fort);
 }
 
 @end

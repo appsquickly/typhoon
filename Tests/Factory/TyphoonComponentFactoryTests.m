@@ -56,9 +56,9 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     Knight *knight = [_componentFactory componentForType:[Knight class]];
 
-    assertThat(knight, notNilValue());
-    assertThat(knight, instanceOf([Knight class]));
-    assertThat(knight.quest, notNilValue());
+    XCTAssertNotNil(knight);
+    XCTAssertTrue([knight isKindOfClass:[Knight class]]);
+    XCTAssertNotNil(knight.quest);
 }
 
 - (void)test_componentForKey_raises_exception_if_reference_does_not_exist
@@ -76,14 +76,14 @@ static NSString *const DEFAULT_QUEST = @"quest";
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"No component matching id 'quest'."));
+        XCTAssertEqualObjects([e description], @"No component matching id 'quest'.");
     }
 }
 
 - (void)test_componentForKey_returns_nil_for_nil_argument
 {
     id value = [_componentFactory componentForKey:nil];
-    assertThat(value, nilValue());
+    XCTAssertNil(value);
 }
 
 /* ====================================================================================================================================== */
@@ -102,9 +102,9 @@ static NSString *const DEFAULT_QUEST = @"quest";
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CavalryMan class] key:@"cavalryMan"]];
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
 
-    assertThat([_componentFactory allComponentsForType:[Knight class]], hasCountOf(2));
-    assertThat([_componentFactory allComponentsForType:[CampaignQuest class]], hasCountOf(1));
-    assertThat([_componentFactory allComponentsForType:@protocol(NSObject)], hasCountOf(3));
+    XCTAssertTrue([[_componentFactory allComponentsForType:[Knight class]] count] == 2);
+    XCTAssertTrue([[_componentFactory allComponentsForType:[CampaignQuest class]] count] == 1);
+    XCTAssertTrue([[_componentFactory allComponentsForType:@ protocol(NSObject)] count] == 3);
 }
 
 - (void)test_componentForType
@@ -121,7 +121,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[MediocreQuest class] key:@"unimpressiveQuest"]];
 
-    assertThat([_componentFactory componentForType:[CavalryMan class]], notNilValue());
+    XCTAssertNotNil([_componentFactory componentForType:[CavalryMan class]]);
 
     @try {
         Knight *knight = [_componentFactory componentForType:[Knight class]];
@@ -129,16 +129,16 @@ static NSString *const DEFAULT_QUEST = @"quest";
         knight = nil;
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"More than one component is defined satisfying type: 'Knight'"));
+        XCTAssertEqualObjects([e description], @"More than one component is defined satisfying type: 'Knight'");
     }
-    
+
     @try {
         Knight *knight = [_componentFactory componentForType:@protocol(Quest)];
         XCTFail(@"Should have thrown exception");
         knight = nil;
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"More than one component is defined satisfying type: 'id<Quest>'"));
+        XCTAssertEqualObjects([e description], @"More than one component is defined satisfying type: 'id<Quest>'");
     }
 
     @try {
@@ -147,7 +147,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
         knight = nil;
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"No components defined which satisify type: 'Champion'"));
+        XCTAssertEqualObjects([e description], @"No components defined which satisify type: 'Champion'");
     }
 
     @try {
@@ -156,7 +156,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"No components defined which satisify type: 'id<Harlot>'"));
+        XCTAssertEqualObjects([e description], @"No components defined which satisify type: 'id<Harlot>'");
     }
 }
 
@@ -173,9 +173,9 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     Knight *knight = [_componentFactory componentForKey:@"knight"];
 
-    assertThat(knight, notNilValue());
-    assertThat(knight, instanceOf([Knight class]));
-    assertThat(knight.quest, notNilValue());
+    XCTAssertNotNil(knight);
+    XCTAssertTrue([knight isKindOfClass:[Knight class]]);
+    XCTAssertNotNil(knight.quest);
 }
 
 /* ====================================================================================================================================== */
@@ -186,7 +186,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class]]];
 
     Knight *knight = [_componentFactory componentForType:[AutoWiringKnight class]];
-    assertThat(knight.quest, notNilValue());
+    XCTAssertNotNil(knight.quest);
 }
 
 /* ====================================================================================================================================== */
@@ -195,7 +195,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 - (void)test_able_to_describe_itself
 {
     NSString *description = [_componentFactory description];
-    assertThat(description, equalTo(@"<TyphoonComponentFactory: _registry=(\n)>"));
+    XCTAssertEqualObjects(description, @"<TyphoonComponentFactory: _registry=(\n)>");
 }
 
 /* ====================================================================================================================================== */
@@ -204,8 +204,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
 - (void)test_post_processor_registration
 {
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorStubImpl class]]];
-    assertThatUnsignedLong([[_componentFactory registry] count], equalToUnsignedLong(0));
-    assertThatUnsignedLong([[_componentFactory factoryPostProcessors] count], equalToUnsignedLong(3)); //Attached + internal processors
+    XCTAssertEqual([[_componentFactory registry] count], 0);
+    XCTAssertEqual([[_componentFactory factoryPostProcessors] count], 3); //Attached + internal processors
 }
 
 - (void)test_post_processors_applied
@@ -216,10 +216,10 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     [_componentFactory load];
 
-    assertThatUnsignedLong([[_componentFactory factoryPostProcessors] count], equalToUnsignedLong(4)); //Attached + internal processors
+    XCTAssertEqual([[_componentFactory factoryPostProcessors] count], 4); //Attached + internal processors
     for (TyphoonComponentFactoryPostProcessorStubImpl *stub in _componentFactory.factoryPostProcessors) {
         if ([stub isKindOfClass:[TyphoonComponentFactoryPostProcessorStubImpl class]]) {
-            assertThatBool(stub.postProcessingCalled, equalToBool(YES));
+            XCTAssertTrue(stub.postProcessingCalled);
         }
     }
 }
@@ -227,8 +227,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
 - (void)test_component_post_processor_registration
 {
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[TyphoonComponentPostProcessorMock class]]];
-    assertThatUnsignedLong([[_componentFactory registry] count], equalToUnsignedLong(0));
-    assertThatUnsignedLong([[_componentFactory componentPostProcessors] count], equalToUnsignedLong(1));
+    XCTAssertEqual([[_componentFactory registry] count], 0);
+    XCTAssertEqual([[_componentFactory componentPostProcessors] count], 1);
 }
 
 - (void)test_component_post_processors_applied_in_order
@@ -256,11 +256,12 @@ static NSString *const DEFAULT_QUEST = @"quest";
     }];
 
     __unused Knight *knight = [_componentFactory componentForType:[Knight class]];
-    assertThat(orderedApplied, equalTo(@[
+    NSArray *expected = @[
         @3,
         @2,
         @1
-    ]));
+    ];
+    XCTAssertEqualObjects(orderedApplied, expected);
 }
 
 /* ====================================================================================================================================== */
@@ -276,7 +277,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     Knight *knight = [[Knight alloc] init];
     [_componentFactory inject:knight];
 
-    assertThat(knight.quest, notNilValue());
+    XCTAssertNotNil(knight.quest);
 
 }
 
@@ -293,32 +294,32 @@ static NSString *const DEFAULT_QUEST = @"quest";
     CavalryMan *cavalryMan = [[CavalryMan alloc] init];
     [_componentFactory inject:cavalryMan];
 
-    assertThat(cavalryMan.quest, nilValue());
-    assertThatFloat(cavalryMan.hitRatio, equalToFloat(3.0f));
+    XCTAssertNil(cavalryMan.quest);
+    XCTAssertEqual(cavalryMan.hitRatio, 3.0f);
 
     Knight *knight = [[Knight alloc] init];
     [_componentFactory inject:knight];
 
-    assertThat(knight.quest, notNilValue());
+    XCTAssertNotNil(knight.quest);
 }
 
 - (void)test_load_isLoad
 {
     [_componentFactory load];
-    assertThatBool([_componentFactory isLoaded], is(@YES));
+    XCTAssertTrue([_componentFactory isLoaded]);
 }
 
 - (void)test_unload_isLoad
 {
     [_componentFactory load];
     [_componentFactory unload];
-    assertThatBool([_componentFactory isLoaded], is(@NO));
+    XCTAssertFalse([_componentFactory isLoaded]);
 }
 
 - (void)test_registery_isLoad
 {
     [_componentFactory registry];
-    assertThatBool([_componentFactory isLoaded], is(@YES));
+    XCTAssertTrue([_componentFactory isLoaded]);
 }
 
 - (void)test_load_post_processors
@@ -334,7 +335,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 - (void)test_load_singleton
 {
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class]
-        configuration:^(TyphoonDefinition *definition) {
+                                                         configuration:^(TyphoonDefinition *definition) {
             [definition setScope:TyphoonScopeSingleton];
             [definition setLazy:NO];
         }]];
@@ -346,7 +347,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
         [definition setScope:TyphoonScopeObjectGraph];
     }]];
     [_componentFactory load];
-    assertThatUnsignedInteger([[_componentFactory singletons] count], is(@1));
+    XCTAssertEqual([[_componentFactory singletons] count], 1);
 }
 
 - (void)test_load_weakSingleton
@@ -367,7 +368,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     @autoreleasepool {
         object1 = [localFactory componentForKey:key];
         object2 = [localFactory componentForKey:key];
-        assertThat(object1, equalTo(object2));
+        XCTAssertEqual(object1, object2);
 
         [object1 appendString:@"Hello"];
     }
@@ -378,7 +379,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     object1 = nil;
     object2 = nil;
 
-    assertThat(weakRef, equalTo(nil));
+    XCTAssertNil(weakRef);
 
     @autoreleasepool {
         object1 = [localFactory componentForKey:key];
@@ -403,7 +404,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     ClassWithConstructor *child = [_componentFactory objectForDefinition:childDefinition args:nil];
 
-    assertThat([child string], equalTo(@"parentArgument"));
+    XCTAssertEqual([child string], @"parentArgument");
 }
 
 //TODO: Move this test to TyphoonDefinitionTests
@@ -413,11 +414,11 @@ static NSString *const DEFAULT_QUEST = @"quest";
         *parentDefinition = [self registerParentDefinitionWithClass:[ClassWithConstructor class] initializerString:@"parentArgument"];
     TyphoonDefinition *childDefinition =
         [self registerChildDefinitionWithClass:[ClassWithConstructor class] parentDefinition:parentDefinition
-            initializerString:@"childArgument"];
+                             initializerString:@"childArgument"];
 
     ClassWithConstructor *child = [_componentFactory objectForDefinition:childDefinition args:nil];
 
-    assertThat([child string], equalTo(@"childArgument"));
+    XCTAssertEqual([child string], @"childArgument");
 }
 
 //TODO: Move this test to TyphoonDefinitionTests
@@ -429,7 +430,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     ClassWithConstructor *child = [_componentFactory objectForDefinition:childDefinition args:nil];
 
-    assertThat([child string], equalTo(@"childArgument"));
+    XCTAssertEqual([child string], @"childArgument");
 }
 
 
@@ -447,7 +448,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
         XCTFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"Attempt to instantiate abstract definition: Definition: class='NSURL', key='anAbstractDefinition', scope='ObjectGraph'"));
+        XCTAssertEqualObjects([e description], @"Attempt to instantiate abstract definition: Definition: class='NSURL', key='anAbstractDefinition', scope='ObjectGraph'");
     }
 }
 
@@ -483,7 +484,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 }
 
 - (TyphoonDefinition *)registerChildDefinitionWithClass:(Class)pClass parentDefinition:(TyphoonDefinition *)parentDefinition
-    initializerString:(NSString *)string
+                                      initializerString:(NSString *)string
 {
     return [self registerChildDefinitionWithClass:pClass parentDefinition:parentDefinition parentRef:nil initializerString:string];
 }
@@ -494,7 +495,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 }
 
 - (TyphoonDefinition *)registerChildDefinitionWithClass:(Class)pClass parentDefinition:(TyphoonDefinition *)parentDefinition
-    parentRef:(NSString *)parentRef initializerString:(NSString *)string
+                                              parentRef:(NSString *)parentRef initializerString:(NSString *)string
 {
     TyphoonDefinition *childDefinition = [TyphoonDefinition withClass:pClass configuration:^(TyphoonDefinition *definition) {
         [definition useInitializer:@selector(initWithString:) parameters:^(TyphoonMethod *initializer) {

@@ -1,10 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  TyphoonWeakComponentsPoolTests.m
-//  Tests
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
+//  All Rights Reserved.
 //
-//  Created by Aleksey Garbarev on 29.01.14.
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
 //
-//
+////////////////////////////////////////////////////////////////////////////////
+
 
 #import <XCTest/XCTest.h>
 #import "TyphoonWeakComponentsPool.h"
@@ -28,17 +32,17 @@
 
     /* AutoreleasePool because ARC returns objects from objectForKey call added to autoreleasepool */
     @autoreleasepool {
-        assertThat([pool objectForKey:@"objectA"], equalTo(objectA));
-        assertThat([pool objectForKey:@"objectB"], equalTo(objectB));
+        XCTAssertEqual([pool objectForKey:@"objectA"], objectA);
+        XCTAssertEqual([pool objectForKey:@"objectB"], objectB);
     }
 
     objectA = nil;
 
-    assertThat([pool objectForKey:@"objectA"], equalTo(nil));
+    XCTAssertNil([pool objectForKey:@"objectA"]);
 
     objectB = nil;
 
-    assertThat([pool objectForKey:@"objectB"], equalTo(nil));
+    XCTAssertNil([pool objectForKey:@"objectB"]);
 }
 
 
