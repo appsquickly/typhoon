@@ -45,7 +45,7 @@
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"Condition didn't happen before timeout: 0.100000"));
+        XCTAssertEqualObjects([e description], @"Condition didn't happen before timeout: 0.100000");
     }
 
 

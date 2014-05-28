@@ -27,7 +27,7 @@
 
     object = nil;
 
-    assertThatBool(notificationCalled, equalToBool(YES));
+    XCTAssertTrue(notificationCalled);
 }
 
 - (void)test_callback_removing
@@ -44,7 +44,7 @@
 
     object = nil;
 
-    assertThatBool(notificationCalled, equalToBool(NO));
+    XCTAssertFalse(notificationCalled);
 }
 
 @end

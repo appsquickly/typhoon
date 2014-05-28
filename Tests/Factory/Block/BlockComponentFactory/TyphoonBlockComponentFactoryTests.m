@@ -31,7 +31,8 @@
 #import "PrototypeInitInjected.h"
 #import "PrototypePropertyInjected.h"
 
-@interface TyphoonBlockComponentFactoryTests : XCTestCase {
+@interface TyphoonBlockComponentFactoryTests : XCTestCase
+{
     TyphoonComponentFactory *_componentFactory;
     TyphoonComponentFactory *_exceptionTestFactory;
     TyphoonComponentFactory *_circularDependenciesFactory;
@@ -74,31 +75,31 @@
 {
     Knight *knight = [_componentFactory componentForKey:@"knight"];
 
-    assertThat(knight, notNilValue());
-    assertThat(knight.quest, notNilValue());
-    assertThat([knight.quest questName], equalTo(@"Campaign Quest"));
-    assertThatUnsignedLongLong(knight.damselsRescued, equalToUnsignedLongLong(12));
+    XCTAssertNotNil(knight);
+    XCTAssertNotNil(knight.quest);
+    XCTAssertEqualObjects([knight.quest questName], @"Campaign Quest");
+    XCTAssertEqual(knight.damselsRescued, 12);
 }
 
 - (void)test_mixed_initializer_and_property_injection
 {
     CavalryMan *anotherKnight = [_componentFactory componentForKey:@"anotherKnight"];
-    assertThat(anotherKnight.quest, notNilValue());
-    assertThatBool(anotherKnight.hasHorseWillTravel, equalToBool(YES));
-    assertThatFloat(anotherKnight.hitRatio, equalToFloat(13.75));
+    XCTAssertNotNil(anotherKnight.quest);
+    XCTAssertEqual(anotherKnight.hasHorseWillTravel, YES);
+    XCTAssertEqual(anotherKnight.hitRatio, 13.75);
 
     CavalryMan *yetAnotherKnight = [_componentFactory componentForKey:@"yetAnotherKnight"];
-    assertThat(yetAnotherKnight.quest, notNilValue());
-    assertThatBool(yetAnotherKnight.hasHorseWillTravel, equalToBool(YES));
-    assertThatFloat(yetAnotherKnight.hitRatio, equalToFloat(13.75));
+    XCTAssertNotNil(yetAnotherKnight.quest);
+    XCTAssertEqual(yetAnotherKnight.hasHorseWillTravel, YES);
+    XCTAssertEqual(yetAnotherKnight.hitRatio, 13.75);
 }
 
 - (void)test_injects_type_converted_array_collection
 {
     Knight *knight = [_componentFactory componentForKey:@"knightWithCollections"];
     NSArray *favoriteDamsels = [knight favoriteDamsels];
-    assertThat(favoriteDamsels, notNilValue());
-    assertThat(favoriteDamsels, hasCountOf(2));
+    XCTAssertNotNil(favoriteDamsels);
+    XCTAssertEqual([favoriteDamsels count], 2);
 }
 
 - (void)test_injection_with_dictionary
@@ -107,8 +108,8 @@
 
         Knight *knight = [_componentFactory componentForKey:@"knightWithCollections"];
 
-        assertThat(knight.friendsDictionary, notNilValue());
-        assertThat(knight.friendsDictionary, hasCountOf(2));
+        XCTAssertNotNil(knight.friendsDictionary);
+        XCTAssertTrue([knight.friendsDictionary count] == 2);
         XCTAssertTrue([[knight.friendsDictionary[@"knight"] class] isSubclassOfClass:[Knight class]]);
         XCTAssertTrue([[knight.friendsDictionary[@"anotherKnight"] class] isSubclassOfClass:[CavalryMan class]]);
     }
@@ -118,34 +119,35 @@
 {
     Knight *knight = [_componentFactory componentForKey:@"knightWithCollections"];
     NSSet *friends = [knight friends];
-    assertThat(friends, notNilValue());
-    assertThat(friends, hasCountOf(2));
+    XCTAssertNotNil(friends);
+    XCTAssertTrue([friends count] == 2);
 }
 
 - (void)test_allows_injecting_properties_with_object_instance
 {
     MiddleAgesAssembly *assembly = (MiddleAgesAssembly *) _componentFactory;
     CavalryMan *knight = [assembly yetAnotherKnight];
-    assertThat(knight.propertyInjectedAsInstance, notNilValue());
+    XCTAssertNotNil(knight.propertyInjectedAsInstance);
 
     LogTrace(@"%@", knight.propertyInjectedAsInstance);
 }
 
 - (void)test_method_injection
 {
-    Knight *knight = [(MiddleAgesAssembly *)_componentFactory knightWithMethodInjection];
+    Knight *knight = [(MiddleAgesAssembly *) _componentFactory knightWithMethodInjection];
 
-    assertThat(knight.quest, notNilValue());
-    assertThatUnsignedInteger(knight.damselsRescued, equalToUnsignedInteger(321));
+    XCTAssertNotNil(knight.quest);
+    XCTAssertEqual(knight.damselsRescued, 321);
 
 }
 
 /* ====================================================================================================================================== */
 #pragma mark Class Method Initializer
+
 - (void)test_class_method_injection
 {
     NSURL *url = [_componentFactory componentForKey:@"serviceUrl"];
-    assertThat(url, isNot(nilValue()));
+    XCTAssertNotNil(url);
 }
 
 - (void)test_class_method_injection_raises_exception_if_required_class_not_set
@@ -158,16 +160,18 @@
         url = nil;
     }
     @catch (NSException *e) {
-        assertThat([e description], equalTo(@"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />"));
+        XCTAssertEqualObjects([e description], @"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required"
+            " class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />");
     }
 
 }
 
 #pragma mark Factory Initializer
+
 - (void)test_returns_component_from_factory_component
 {
     Sword *sword = [_componentFactory componentForKey:@"blueSword"];
-    assertThat([sword description], equalTo(@"A bright blue sword with orange pom-poms at the hilt."));
+    XCTAssertEqualObjects([sword description], @"A bright blue sword with orange pom-poms at the hilt.");
 }
 
 /* ====================================================================================================================================== */
@@ -177,8 +181,8 @@
 {
     Knight *knight = [_componentFactory componentForKey:@"knightWithCollectionInConstructor"];
     NSArray *favoriteDamsels = [knight favoriteDamsels];
-    assertThat(favoriteDamsels, notNilValue());
-    assertThat(favoriteDamsels, hasCountOf(2));
+    XCTAssertNotNil(favoriteDamsels);
+    XCTAssertTrue([favoriteDamsels count] == 2);
 }
 
 
@@ -193,10 +197,10 @@
     [factory attachPostProcessor:configurer];
 
     Knight *knight = [factory componentForKey:@"knight"];
-    assertThatUnsignedLongLong(knight.damselsRescued, equalToUnsignedLongLong(12));
+    XCTAssertEqual(knight.damselsRescued, 12);
 
     CavalryMan *anotherKnight = [factory componentForKey:@"anotherKnight"];
-    assertThatBool(anotherKnight.hasHorseWillTravel, equalToBool(NO));
+    XCTAssertEqual(anotherKnight.hasHorseWillTravel, NO);
 
 }
 
@@ -207,21 +211,22 @@
     NSUInteger internalProcessors = 2;
     if ([_infrastructureComponentsFactory isKindOfClass:[TyphoonBlockComponentFactory class]]) {
         internalProcessors += 1;
-    }assertThatUnsignedLong([_infrastructureComponentsFactory.factoryPostProcessors count], equalToInt(
-        1 + internalProcessors)); //Attached + internal processors
+    }
+    XCTAssertEqual([_infrastructureComponentsFactory.factoryPostProcessors count], 1 + internalProcessors)
+        ; //Attached + internal processors
 }
 
 - (void)test_resolves_property_values_from_multiple_files
 {
     Knight *knight = [_infrastructureComponentsFactory componentForKey:@"knight"];
-    assertThatBool(knight.hasHorseWillTravel, equalToBool(YES));
-    assertThatUnsignedLongLong(knight.damselsRescued, equalToUnsignedLongLong(12));
+    XCTAssertTrue(knight.hasHorseWillTravel);
+    XCTAssertEqual(knight.damselsRescued, 12);
 }
 
 - (void)test_type_converter_recognized
 {
     id <TyphoonTypeConverter> nullConverter = [[TyphoonTypeConverterRegistry shared] converterForType:@"NSNull"];
-    assertThat(nullConverter, notNilValue());
+    XCTAssertNotNil(nullConverter);
 }
 
 /* ====================================================================================================================================== */
@@ -231,14 +236,14 @@
 {
     if ([_circularDependenciesFactory isKindOfClass:[TyphoonBlockComponentFactory class]]) {
         ClassADependsOnB *classA = [_circularDependenciesFactory componentForKey:@"classA"];
-        assertThat(classA.dependencyOnB, notNilValue());
-        assertThat(classA, equalTo(classA.dependencyOnB.dependencyOnA));
-        assertThat([classA.dependencyOnB class], equalTo([ClassBDependsOnA class]));
+        XCTAssertNotNil(classA.dependencyOnB);
+        XCTAssertEqual(classA, classA.dependencyOnB.dependencyOnA);
+        XCTAssertEqual([classA.dependencyOnB class], [ClassBDependsOnA class]);
 
         ClassBDependsOnA *classB = [_circularDependenciesFactory componentForKey:@"classB"];
-        assertThat(classB.dependencyOnA, notNilValue());
-        assertThat(classB, equalTo(classB.dependencyOnA.dependencyOnB));
-        assertThat([classB.dependencyOnA class], equalTo([ClassADependsOnB class]));
+        XCTAssertNotNil(classB.dependencyOnA);
+        XCTAssertEqual(classB, classB.dependencyOnA.dependencyOnB);
+        XCTAssertEqual([classB.dependencyOnA class], [ClassADependsOnB class]);
     }
 }
 
@@ -246,43 +251,44 @@
 {
     if ([_circularDependenciesFactory isKindOfClass:[TyphoonBlockComponentFactory class]]) {
         ClassADependsOnB *classA = [_circularDependenciesFactory componentForType:[ClassADependsOnB class]];
-        assertThat(classA.dependencyOnB, notNilValue());
-        assertThat(classA, equalTo(classA.dependencyOnB.dependencyOnA));
-        assertThat([classA.dependencyOnB class], equalTo([ClassBDependsOnA class]));
+        XCTAssertNotNil(classA.dependencyOnB);
+        XCTAssertEqual(classA, classA.dependencyOnB.dependencyOnA);
+        XCTAssertEqual([classA.dependencyOnB class], [ClassBDependsOnA class]);
 
         ClassBDependsOnA *classB = [_circularDependenciesFactory componentForType:[ClassBDependsOnA class]];
-        assertThat(classB.dependencyOnA, notNilValue());
-        assertThat(classB, equalTo(classB.dependencyOnA.dependencyOnB));
-        assertThat([classB.dependencyOnA class], equalTo([ClassADependsOnB class]));
+        XCTAssertNotNil(classB.dependencyOnA);
+        XCTAssertEqual(classB, classB.dependencyOnA.dependencyOnB);
+        XCTAssertEqual([classB.dependencyOnA class], [ClassADependsOnB class]);
     }
 }
 
 - (void)test_resolves_two_circular_dependencies_for_property_injected_by_reference
 {
     ClassCDependsOnDAndE *classC = [_circularDependenciesFactory componentForKey:@"classC"];
-    assertThat(classC.dependencyOnD, notNilValue());
-    assertThat(classC.dependencyOnE, notNilValue());
-    assertThat(classC, equalTo(classC.dependencyOnD.dependencyOnC));
-    assertThat(classC, equalTo(classC.dependencyOnE.dependencyOnC));
-    assertThat([classC.dependencyOnD class], equalTo([ClassDDependsOnC class]));
-    assertThat([classC.dependencyOnE class], equalTo([ClassEDependsOnC class]));
+    XCTAssertNotNil(classC.dependencyOnD);
+    XCTAssertNotNil(classC.dependencyOnE);
+    XCTAssertEqual(classC, classC.dependencyOnD.dependencyOnC);
+    XCTAssertEqual(classC, classC.dependencyOnE.dependencyOnC);
+    XCTAssertEqual([classC.dependencyOnD class], [ClassDDependsOnC class]);
+    XCTAssertEqual([classC.dependencyOnE class], [ClassEDependsOnC class]);
 
     ClassDDependsOnC *classD = [_circularDependenciesFactory componentForKey:@"classD"];
-    assertThat(classD.dependencyOnC, notNilValue());
-    assertThat(classD, equalTo(classD.dependencyOnC.dependencyOnD));
-    assertThat([classD.dependencyOnC class], equalTo([ClassCDependsOnDAndE class]));
+    XCTAssertNotNil(classD.dependencyOnC);
+    XCTAssertEqual(classD, classD.dependencyOnC.dependencyOnD);
+    XCTAssertEqual([classD.dependencyOnC class], [ClassCDependsOnDAndE class]);
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Circular dependencies on singleton chains
+
 - (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_type
 {
     SingletonA *singletonADependsOnBViaProperty = [_singletonsChainFactory componentForType:[SingletonA class]];
     SingletonB *singletonBDependsOnNotSingletonAViaProperty = [_singletonsChainFactory componentForType:[SingletonB class]];
     NotSingletonA *notSingletonADependsOnAViaInitializer = [_singletonsChainFactory componentForType:[NotSingletonA class]];
-    assertThat(singletonADependsOnBViaProperty.dependencyOnB, is(singletonBDependsOnNotSingletonAViaProperty));
-    assertThat(singletonBDependsOnNotSingletonAViaProperty.dependencyOnNotSingletonA.dependencyOnA, is(singletonADependsOnBViaProperty));
-    assertThat(notSingletonADependsOnAViaInitializer.dependencyOnA, is(singletonADependsOnBViaProperty));
+    XCTAssertEqual(singletonADependsOnBViaProperty.dependencyOnB, singletonBDependsOnNotSingletonAViaProperty);
+    XCTAssertEqual(singletonBDependsOnNotSingletonAViaProperty.dependencyOnNotSingletonA.dependencyOnA, singletonADependsOnBViaProperty);
+    XCTAssertEqual(notSingletonADependsOnAViaInitializer.dependencyOnA, singletonADependsOnBViaProperty);
 }
 
 - (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_reference
@@ -290,9 +296,9 @@
     SingletonA *singletonA = [_singletonsChainFactory componentForKey:@"singletonA"];
     SingletonB *singletonB = [_singletonsChainFactory componentForKey:@"singletonB"];
     NotSingletonA *notSingletonA = [_singletonsChainFactory componentForKey:@"notSingletonA"];
-    assertThat(singletonA.dependencyOnB, is(singletonB));
-    assertThat(singletonB.dependencyOnNotSingletonA.dependencyOnA, is(singletonA));
-    assertThat(notSingletonA.dependencyOnA, is(singletonA));
+    XCTAssertEqual(singletonA.dependencyOnB, singletonB);
+    XCTAssertEqual(singletonB.dependencyOnNotSingletonA.dependencyOnA, singletonA);
+    XCTAssertEqual(notSingletonA.dependencyOnA, singletonA);
 }
 
 - (void)test_initializer_injected_component_is_correctly_resolved_in_circular_dependency
@@ -300,19 +306,20 @@
     PrototypeInitInjected *initializerInjected = [_circularDependenciesFactory componentForType:[PrototypeInitInjected class]];
     PrototypePropertyInjected *propertyInjected = [_circularDependenciesFactory componentForType:[PrototypePropertyInjected class]];
     // should be expected class, but not same instance
-    assertThat(initializerInjected.prototypePropertyInjected, instanceOf([PrototypePropertyInjected class]));
-    assertThat(initializerInjected.prototypePropertyInjected, isNot(propertyInjected));
-    assertThat(propertyInjected.prototypeInitInjected, instanceOf([PrototypeInitInjected class]));
-    assertThat(propertyInjected.prototypeInitInjected, isNot(initializerInjected));
+    XCTAssertTrue([initializerInjected.prototypePropertyInjected isKindOfClass:[PrototypePropertyInjected class]]);
+    XCTAssertNotEqual(initializerInjected.prototypePropertyInjected, propertyInjected);
+    XCTAssertTrue([propertyInjected.prototypeInitInjected isKindOfClass:[PrototypeInitInjected class]]);
+    XCTAssertNotEqual(propertyInjected.prototypeInitInjected, initializerInjected);
 }
 
 /* ====================================================================================================================================== */
 #pragma mark - Currently Resolving Overwriting Problem
+
 - (void)test_currently_resolving_references_dictionary_is_not_overwritten_when_initializing_two_instances_of_prototype_in_the_same_chain
 {
     CROSingletonA *singletonA = [_circularDependenciesFactory componentForType:[CROSingletonA class]];
-    assertThat(singletonA.prototypeB, isNot(nilValue()));
-    assertThat(singletonA.prototypeA, isNot(nilValue()));
+    XCTAssertNotNil(singletonA.prototypeB);
+    XCTAssertNotNil(singletonA.prototypeA);
 }
 
 
@@ -323,7 +330,7 @@
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *exception) {
-        assertThat([exception name], equalTo(@"CircularInitializerDependence"));
+        XCTAssertEqualObjects([exception name], @"CircularInitializerDependence");
     }
 }
 
@@ -331,7 +338,7 @@
 {
     MiddleAgesAssembly *assembly = (MiddleAgesAssembly *) _componentFactory;
     Knight *knight = [assembly knight];
-    assertThat(knight, notNilValue());
+    XCTAssertNotNil(knight);
 }
 
 @end

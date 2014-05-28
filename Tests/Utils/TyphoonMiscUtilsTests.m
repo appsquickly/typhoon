@@ -50,7 +50,7 @@
 
 - (void)expectOrdinal:(NSString *)string forIndex:(int)index
 {
-    assertThat([TyphoonMiscUtils ordinalForIndex:index], equalTo(string));
+    XCTAssertEqualObjects([TyphoonMiscUtils ordinalForIndex:index], string);
 }
 
 // 1st, 2nd, 3rd, 4th, 5th, 6th, 7th, etc

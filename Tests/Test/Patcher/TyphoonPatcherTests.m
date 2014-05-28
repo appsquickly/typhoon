@@ -109,7 +109,7 @@
 - (void)assertPatchApplied
 {
     Knight *knight = [_factory componentForKey:@"knight"];
-    assertThatBool([knight favoriteDamsels].count > 0, is(equalToBool(YES)));
+    XCTAssertTrue([knight favoriteDamsels].count > 0);
 }
 
 

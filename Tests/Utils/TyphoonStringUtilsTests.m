@@ -24,48 +24,47 @@
 
 - (void)test_isAlpha
 {
-    assertThatBool([TyphoonStringUtils isAlpha:@"1234"], equalToBool(NO));
-    assertThatBool([TyphoonStringUtils isAlpha:@"abc1234"], equalToBool(NO));
-
-    assertThatBool([TyphoonStringUtils isAlpha:@"abc"], equalToBool(YES));
+    XCTAssertFalse([TyphoonStringUtils isAlpha:@"1234"]);
+    XCTAssertFalse([TyphoonStringUtils isAlpha:@"abc1234"]);
+    XCTAssertTrue([TyphoonStringUtils isAlpha:@"abc"]);
 }
 
 - (void)test_isAlphaOrSpaces
 {
-    assertThatBool([TyphoonStringUtils isAlphaOrSpaces:@"1234"], equalToBool(NO));
-    assertThatBool([TyphoonStringUtils isAlphaOrSpaces:@"abc1234"], equalToBool(NO));
+    XCTAssertFalse([TyphoonStringUtils isAlphaOrSpaces:@"1234"]);
+    XCTAssertFalse([TyphoonStringUtils isAlphaOrSpaces:@"abc1234"]);
 
-    assertThatBool([TyphoonStringUtils isAlphaOrSpaces:@"abc"], equalToBool(YES));
-    assertThatBool([TyphoonStringUtils isAlphaOrSpaces:@"abc \t\n"], equalToBool(YES));
+    XCTAssertTrue([TyphoonStringUtils isAlphaOrSpaces:@"abc"]);
+    XCTAssertTrue([TyphoonStringUtils isAlphaOrSpaces:@"abc \t\n"]);
 }
 
 - (void)test_isAlphaNumeric
 {
-    assertThatBool([TyphoonStringUtils isAlphanumeric:@"1234"], equalToBool(YES));
-    assertThatBool([TyphoonStringUtils isAlphanumeric:@"abc1234"], equalToBool(YES));
+    XCTAssertTrue([TyphoonStringUtils isAlphanumeric:@"1234"]);
+    XCTAssertTrue([TyphoonStringUtils isAlphanumeric:@"abc1234"]);
 
-    assertThatBool([TyphoonStringUtils isAlphanumeric:@"abc \t\n"], equalToBool(NO));
+    XCTAssertFalse([TyphoonStringUtils isAlphanumeric:@"abc \t\n"]);
 }
 
 - (void)test_isEmpty
 {
-    assertThatBool([TyphoonStringUtils isEmpty:@""], equalToBool(YES));
-    assertThatBool([TyphoonStringUtils isEmpty:@"1234"], equalToBool(NO));
-    assertThatBool([TyphoonStringUtils isEmpty:@" \t\n"], equalToBool(YES));
+    XCTAssertTrue([TyphoonStringUtils isEmpty:@""]);
+    XCTAssertFalse([TyphoonStringUtils isEmpty:@"1234"]);
+    XCTAssertTrue([TyphoonStringUtils isEmpty:@" \t\n"]);
 }
 
 - (void)test_isNotEmpty
 {
-    assertThatBool([TyphoonStringUtils isNotEmpty:@""], equalToBool(NO));
-    assertThatBool([TyphoonStringUtils isNotEmpty:@"1234"], equalToBool(YES));
-    assertThatBool([TyphoonStringUtils isNotEmpty:@" \t\n"], equalToBool(NO));
+    XCTAssertFalse([TyphoonStringUtils isNotEmpty:@""]);
+    XCTAssertTrue([TyphoonStringUtils isNotEmpty:@"1234"]);
+    XCTAssertFalse([TyphoonStringUtils isNotEmpty:@" \t\n"]);
 }
 
 - (void)test_isEmailAddress
 {
-    assertThatBool([TyphoonStringUtils isEmailAddress:@"asdf"], equalToBool(NO));
-    assertThatBool([TyphoonStringUtils isEmailAddress:@"asd@"], equalToBool(NO));
-    assertThatBool([TyphoonStringUtils isEmailAddress:@"asdf@foobar.com"], equalToBool(YES));
+    XCTAssertFalse([TyphoonStringUtils isEmailAddress:@"asdf"]);
+    XCTAssertFalse([TyphoonStringUtils isEmailAddress:@"asd@"]);
+    XCTAssertTrue([TyphoonStringUtils isEmailAddress:@"asdf@foobar.com"]);
 }
 
 
