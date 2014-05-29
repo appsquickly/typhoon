@@ -166,10 +166,9 @@ Test Failures typically indicate a bug that has been flagged, but not yet fixed.
 
 
 * <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API</a>
-* <a href="http://appsquick.dyndns.org:8085/artifact/TPN-TC/JOB1/build-latest/reports/test-results/index.html">Test Results</a>
-* <a href="http://appsquick.dyndns.org:8085/artifact/TPN-TC/JOB1/build-latest/reports/coverage/index.html">Coverage Reports</a>
+* <a href="http://www.typhoonframework.org/docs/latest/test-results/index.html">Test Results</a>
+* <a href="http://www.typhoonframework.org/docs/latest/coverage/index.html">Test Coverage</a>
 
-(These reports are hosted on a temporary server until we fully complete moving our build-system to Gradle)
 
 
 # Feature Requests and Contributions
