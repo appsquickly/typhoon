@@ -1,4 +1,2 @@
-# Description
-
-Build-server generated reports.
+# Build-server generated reports.
 
