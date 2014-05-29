@@ -29,6 +29,8 @@
         build,
         --publish.site"/>
 
+    <target name="publish" depends="--publish.site"/>
+
     <target name="build" depends="
         --clean.make.dirs,
         --stamp.build.failing,
@@ -40,11 +42,11 @@
         --coverage.report,
         --doc"/>
 
-    <target name="test.ios" depends = "--test.ios"/>
+    <target name="test.ios" depends="--test.ios"/>
 
-    <target name="test.osx" depends = "--test.osx"/>
+    <target name="test.osx" depends="--test.osx"/>
 
-    <target name="doc" depends = "--doc"/>
+    <target name="doc" depends="--doc"/>
 
     <target name="no-fail-tests">
         <property name="no-fail-tests" value="yes"/>
@@ -75,7 +77,7 @@
     </target>
 
     <target name="--stamp.build.failing">
-        <mkdir dir = "${reports.dir}/build-status"/>
+        <mkdir dir="${reports.dir}/build-status"/>
         <copy tofile="${reports.dir}/build-status/build-status.png" file="${scripts.dir}/build-failed.png"/>
     </target>
 
@@ -116,7 +118,7 @@
             </filterchain>
         </loadfile>
         <fail if="tests.error" message="Tests failed to build."/>
-        
+
         <loadfile srcfile="${temp.dir}/test-results.txt" property="tests.failed">
             <filterchain>
                 <filterreader classname="org.apache.tools.ant.filters.LineContains">
@@ -135,7 +137,7 @@
         </echo>
         <chmod perm="+x" file="${temp.dir}/convert-test-output.sh"/>
         <exec executable="${temp.dir}/convert-test-output.sh" failonerror="true" failifexecutionfails="true"/>
-        
+
         <junitreport todir="${temp.dir}">
             <fileset dir="${temp.dir}/test-reports" includes="*xml"/>
             <report format="frames" styledir="${basedir}/Scripts" todir="${reports.dir}/test-results">
@@ -163,7 +165,8 @@
         </pathconvert>
 
         <copy todir="${temp.dir}/coverage-data" flatten="true">
-            <fileset dir="${user.home}/Library/Developer/Xcode/DerivedData" includes="${gcno.list}" excludes="**/NSArray+TyphoonManualEnumeration.gcno,**/TyphoonAssemblyAdviser.gcno,**/TyphoonAssemblyDefinitionBuilder.gcno"/>
+            <fileset dir="${user.home}/Library/Developer/Xcode/DerivedData" includes="${gcno.list}"
+                     excludes="**/NSArray+TyphoonManualEnumeration.gcno,**/TyphoonAssemblyAdviser.gcno,**/TyphoonAssemblyDefinitionBuilder.gcno"/>
 
         </copy>
         <pathconvert pathsep=", " property="gcda.list" refid="classes">
@@ -194,7 +197,8 @@
             lcov -r ${temp.dir}/${module.name}-temp.info TyphoonJRSwizzle.m once.h NSRange.h > ${temp.dir}/${module.name}.info
         </echo>
         <chmod perm="+x" file="${temp.dir}/geninfo.sh"/>
-        <exec executable="${temp.dir}/geninfo.sh" failonerror="false" failifexecutionfails="false" outputproperty="geninfo.out" errorproperty="geninfo.error"/>
+        <exec executable="${temp.dir}/geninfo.sh" failonerror="false" failifexecutionfails="false" outputproperty="geninfo.out"
+              errorproperty="geninfo.error"/>
         <echo message="${geninfo.out}"/>
 
         <echo file="${temp.dir}/genhtml.sh">
@@ -203,7 +207,8 @@
             --prefix ${basedir} ${temp.dir}/${module.name}.info
         </echo>
         <chmod perm="+x" file="${temp.dir}/genhtml.sh"/>
-        <exec executable="${temp.dir}/genhtml.sh" failonerror="false" failifexecutionfails="false" outputproperty="genhtml.out" errorproperty="genhtml.error"/>
+        <exec executable="${temp.dir}/genhtml.sh" failonerror="false" failifexecutionfails="false" outputproperty="genhtml.out"
+              errorproperty="genhtml.error"/>
 
         <exec executable="lcov">
             <arg line="--summary ./build/temp/${module.name}.info"/>
@@ -277,7 +282,7 @@
             <env key="PATH" value="${tools.paths}"/>
         </exec>
     </target>
-     <property name="dry.run.site.script" value="${temp.dir}/dry.run-site.sh"/>
+    <property name="dry.run.site.script" value="${temp.dir}/dry.run-site.sh"/>
 
 
 </project>
