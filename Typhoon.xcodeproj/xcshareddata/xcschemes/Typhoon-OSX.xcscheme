@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6B07734519377EAA0083714E"
-               BuildableName = "Typhoon-osx.app"
-               BlueprintName = "Typhoon-osx"
+               BuildableName = "Typhoon-OSX.app"
+               BlueprintName = "Typhoon-OSX"
                ReferencedContainer = "container:Typhoon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,7 +34,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6B07735F19377EAA0083714E"
                BuildableName = "Typhoon-osxTests.xctest"
-               BlueprintName = "Typhoon-osxTests"
+               BlueprintName = "Typhoon-OSXTests"
                ReferencedContainer = "container:Typhoon.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -44,7 +44,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6B07734519377EAA0083714E"
             BuildableName = "Typhoon-osx.app"
-            BlueprintName = "Typhoon-osx"
+            BlueprintName = "Typhoon-OSX"
             ReferencedContainer = "container:Typhoon.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6B07734519377EAA0083714E"
-            BuildableName = "Typhoon-osx.app"
-            BlueprintName = "Typhoon-osx"
+            BuildableName = "Typhoon-OSX.app"
+            BlueprintName = "Typhoon-OSX"
             ReferencedContainer = "container:Typhoon.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -81,7 +81,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6B07734519377EAA0083714E"
             BuildableName = "Typhoon-osx.app"
-            BlueprintName = "Typhoon-osx"
+            BlueprintName = "Typhoon-OSX"
             ReferencedContainer = "container:Typhoon.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

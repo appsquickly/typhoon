@@ -2070,9 +2070,9 @@
 			productReference = 6B076E7E1936F5850083714E /* Typhoon-iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6B07734519377EAA0083714E /* Typhoon-osx */ = {
+		6B07734519377EAA0083714E /* Typhoon-OSX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B07736D19377EAA0083714E /* Build configuration list for PBXNativeTarget "Typhoon-osx" */;
+			buildConfigurationList = 6B07736D19377EAA0083714E /* Build configuration list for PBXNativeTarget "Typhoon-OSX" */;
 			buildPhases = (
 				6B07734219377EAA0083714E /* Sources */,
 				6B07734319377EAA0083714E /* Frameworks */,
@@ -2082,14 +2082,14 @@
 			);
 			dependencies = (
 			);
-			name = "Typhoon-osx";
+			name = "Typhoon-OSX";
 			productName = "Typhoon-osx";
 			productReference = 6B07734619377EAA0083714E /* Typhoon-osx.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6B07735F19377EAA0083714E /* Typhoon-osxTests */ = {
+		6B07735F19377EAA0083714E /* Typhoon-OSXTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B07737019377EAA0083714E /* Build configuration list for PBXNativeTarget "Typhoon-osxTests" */;
+			buildConfigurationList = 6B07737019377EAA0083714E /* Build configuration list for PBXNativeTarget "Typhoon-OSXTests" */;
 			buildPhases = (
 				6B07735C19377EAA0083714E /* Sources */,
 				6B07735D19377EAA0083714E /* Frameworks */,
@@ -2101,7 +2101,7 @@
 			dependencies = (
 				6B07736419377EAA0083714E /* PBXTargetDependency */,
 			);
-			name = "Typhoon-osxTests";
+			name = "Typhoon-OSXTests";
 			productName = "Typhoon-osxTests";
 			productReference = 6B07736019377EAA0083714E /* Typhoon-osxTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -2139,8 +2139,8 @@
 			targets = (
 				6B076E591936F5850083714E /* Typhoon-iOS */,
 				6B076E7D1936F5850083714E /* Typhoon-iOSTests */,
-				6B07734519377EAA0083714E /* Typhoon-osx */,
-				6B07735F19377EAA0083714E /* Typhoon-osxTests */,
+				6B07734519377EAA0083714E /* Typhoon-OSX */,
+				6B07735F19377EAA0083714E /* Typhoon-OSXTests */,
 			);
 		};
 /* End PBXProject section */
@@ -2647,7 +2647,7 @@
 		};
 		6B07736419377EAA0083714E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6B07734519377EAA0083714E /* Typhoon-osx */;
+			target = 6B07734519377EAA0083714E /* Typhoon-OSX */;
 			targetProxy = 6B07736319377EAA0083714E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -3020,7 +3020,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B07736D19377EAA0083714E /* Build configuration list for PBXNativeTarget "Typhoon-osx" */ = {
+		6B07736D19377EAA0083714E /* Build configuration list for PBXNativeTarget "Typhoon-OSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6B07736E19377EAA0083714E /* Debug */,
@@ -3029,7 +3029,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B07737019377EAA0083714E /* Build configuration list for PBXNativeTarget "Typhoon-osxTests" */ = {
+		6B07737019377EAA0083714E /* Build configuration list for PBXNativeTarget "Typhoon-OSXTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6B07737119377EAA0083714E /* Debug */,
