@@ -1,6 +1,6 @@
 //
-//  Typhoon_OSXTests.m
-//  Typhoon-OSXTests
+//  Typhoon_osxTests.m
+//  Typhoon-osxTests
 //
 //  Created by Jasper Blues on 5/29/14.
 //  Copyright (c) 2014 typhoonframework.org. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface Typhoon_OSXTests : XCTestCase
+@interface Typhoon_osxTests : XCTestCase
 
 @end
 
-@implementation Typhoon_OSXTests
+@implementation Typhoon_osxTests
 
 - (void)setUp
 {

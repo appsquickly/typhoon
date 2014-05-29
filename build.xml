@@ -89,7 +89,7 @@
     <target name="--test.osx">
         <echo file="${temp.dir}/build.and.test.sh">
             #!/bin/bash
-            xcodebuild -project ${module.name}.xcodeproj/ -scheme 'Typhoon-OSXTests' test
+            xcodebuild -project ${module.name}.xcodeproj/ -scheme 'Typhoon-osxTests' test
 
         </echo>
         <chmod perm="+x" file="${temp.dir}/build.and.test.sh"/>

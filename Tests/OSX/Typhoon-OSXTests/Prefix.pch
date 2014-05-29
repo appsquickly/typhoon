@@ -6,10 +6,4 @@
 
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
-
-	#define MOCKITO_SHORTHAND
-	#import <OCMockito/OCMockito.h>
-
-    #define typhoon_shorthand
-
 #endif
