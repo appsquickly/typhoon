@@ -1,7 +1,7 @@
 <map id="TyphoonInjectionByObjectFromString" name="TyphoonInjectionByObjectFromString">
-<area shape="rect" id="node2" href="$interface_typhoon_abstract_injection.html" title="TyphoonAbstractInjection" alt="" coords="158,237,329,264"/>
-<area shape="rect" id="node4" href="$protocol_typhoon_parameter_injection-p.html" title="\&lt;TyphoonParameterInjection\&gt;" alt="" coords="107,155,308,181"/>
-<area shape="rect" id="node5" href="$protocol_typhoon_injection-p.html" title="\&lt;TyphoonInjection\&gt;" alt="" coords="359,80,497,107"/>
-<area shape="rect" id="node8" href="$protocol_typhoon_property_injection-p.html" title="\&lt;TyphoonPropertyInjection\&gt;" alt="" coords="333,155,523,181"/>
-<area shape="rect" id="node9" href="$protocol_typhoon_injected_with_string_representation-p.html" title="\&lt;TyphoonInjectedWithString\lRepresentation\&gt;" alt="" coords="428,230,617,271"/>
+<area shape="rect" id="node2" href="$interface_typhoon_abstract_injection.html" title="TyphoonAbstractInjection" alt="" coords="241,237,436,264"/>
+<area shape="rect" id="node5" href="$protocol_typhoon_injection-p.html" title="\&lt;TyphoonInjection\&gt;" alt="" coords="253,80,408,107"/>
+<area shape="rect" id="node8" href="$protocol_typhoon_injected_with_string_representation-p.html" title="\&lt;TyphoonInjectedWithString\lRepresentation\&gt;" alt="" coords="5,230,216,271"/>
+<area shape="rect" id="node4" href="$protocol_typhoon_parameter_injection-p.html" title="\&lt;TyphoonParameterInjection\&gt;" alt="" coords="219,155,441,181"/>
+<area shape="rect" id="node7" href="$protocol_typhoon_property_injection-p.html" title="\&lt;TyphoonPropertyInjection\&gt;" alt="" coords="467,155,677,181"/>
 </map>

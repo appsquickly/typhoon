@@ -13,7 +13,9 @@ var files =
     [ "NSObject+TyphoonIntrospectionUtils.h", "_n_s_object_09_typhoon_introspection_utils_8h.html", [
       [ "NSObject(TyphoonIntrospectionUtils)", "category_n_s_object_07_typhoon_introspection_utils_08.html", "category_n_s_object_07_typhoon_introspection_utils_08" ]
     ] ],
+    [ "OCLogTemplate.h", "_o_c_log_template_8h.html", "_o_c_log_template_8h" ],
     [ "Typhoon.h", "_typhoon_8h.html", null ],
+    [ "TyphoonAbstractDetachableComponentFactoryPostProcessor.h", "_typhoon_abstract_detachable_component_factory_post_processor_8h.html", null ],
     [ "TyphoonAbstractInjection.h", "_typhoon_abstract_injection_8h.html", "_typhoon_abstract_injection_8h" ],
     [ "TyphoonAssembly+TyphoonAssemblyFriend.h", "_typhoon_assembly_09_typhoon_assembly_friend_8h.html", null ],
     [ "TyphoonAssembly.h", "_typhoon_assembly_8h.html", null ],
@@ -95,6 +97,9 @@ var files =
     [ "TyphoonComponentsPool.h", "_typhoon_components_pool_8h.html", [
       [ "<TyphoonComponentsPool>", "protocol_typhoon_components_pool-p.html", "protocol_typhoon_components_pool-p" ]
     ] ],
+    [ "TyphoonConfigPostProcessor.h", "_typhoon_config_post_processor_8h.html", "_typhoon_config_post_processor_8h" ],
+    [ "TyphoonConfiguration.h", "_typhoon_configuration_8h.html", null ],
+    [ "TyphoonDefinition+Option.h", "_typhoon_definition_09_option_8h.html", "_typhoon_definition_09_option_8h" ],
     [ "TyphoonDefinition.h", "_typhoon_definition_8h.html", "_typhoon_definition_8h" ],
     [ "TyphoonDefinitionRegisterer.h", "_typhoon_definition_registerer_8h.html", null ],
     [ "TyphoonFactoryProvider.h", "_typhoon_factory_provider_8h.html", null ],
@@ -111,6 +116,7 @@ var files =
     [ "TyphoonInjectionByComponentFactory.h", "_typhoon_injection_by_component_factory_8h.html", [
       [ "TyphoonInjectionByComponentFactory", "interface_typhoon_injection_by_component_factory.html", null ]
     ] ],
+    [ "TyphoonInjectionByConfig.h", "_typhoon_injection_by_config_8h.html", null ],
     [ "TyphoonInjectionByDictionary.h", "_typhoon_injection_by_dictionary_8h.html", [
       [ "<TyphoonDictionary>", "protocol_typhoon_dictionary-p.html", "protocol_typhoon_dictionary-p" ],
       [ "TyphoonInjectionByDictionary", "interface_typhoon_injection_by_dictionary.html", "interface_typhoon_injection_by_dictionary" ]
@@ -140,16 +146,21 @@ var files =
       [ "<TyphoonIntrospectiveNSObject>", "protocol_typhoon_introspective_n_s_object-p.html", "protocol_typhoon_introspective_n_s_object-p" ]
     ] ],
     [ "TyphooniOS.h", "_typhooni_o_s_8h.html", null ],
-    [ "TyphoonJRMethodSwizzler.h", "_typhoon_j_r_method_swizzler_8h.html", null ],
-    [ "TyphoonJRSwizzle.h", "_typhoon_j_r_swizzle_8h.html", [
-      [ "NSObject(TyphoonJRSwizzle)", "category_n_s_object_07_typhoon_j_r_swizzle_08.html", "category_n_s_object_07_typhoon_j_r_swizzle_08" ]
-    ] ],
+    [ "TyphoonJsonStyleConfiguration.h", "_typhoon_json_style_configuration_8h.html", null ],
     [ "TyphoonLinkerCategoryBugFix.h", "_typhoon_linker_category_bug_fix_8h.html", null ],
+    [ "TyphoonMatchedConfigDefinition.h", "_typhoon_matched_config_definition_8h.html", null ],
+    [ "TyphoonMatcherDefinitionFactory.h", "_typhoon_matcher_definition_factory_8h.html", [
+      [ "TyphoonMatcherDefinitionFactory", "interface_typhoon_matcher_definition_factory.html", "interface_typhoon_matcher_definition_factory" ]
+    ] ],
     [ "TyphoonMethod.h", "_typhoon_method_8h.html", null ],
     [ "TyphoonMethodSwizzler.h", "_typhoon_method_swizzler_8h.html", null ],
     [ "TyphoonMiscUtils.h", "_typhoon_misc_utils_8h.html", null ],
     [ "TyphoonNSURLTypeConverter.h", "_typhoon_n_s_u_r_l_type_converter_8h.html", [
       [ "TyphoonNSURLTypeConverter", "interface_typhoon_n_s_u_r_l_type_converter.html", null ]
+    ] ],
+    [ "TyphoonOptionMatcher+Internal.h", "_typhoon_option_matcher_09_internal_8h.html", null ],
+    [ "TyphoonOptionMatcher.h", "_typhoon_option_matcher_8h.html", [
+      [ "TyphoonOptionMatcher", "interface_typhoon_option_matcher.html", "interface_typhoon_option_matcher" ]
     ] ],
     [ "TyphoonOrdered.h", "_typhoon_ordered_8h.html", "_typhoon_ordered_8h" ],
     [ "TyphoonParameterInjection.h", "_typhoon_parameter_injection_8h.html", [
@@ -162,25 +173,26 @@ var files =
     [ "TyphoonPatchObjectFactory.h", "_typhoon_patch_object_factory_8h.html", [
       [ "TyphoonPatchObjectFactory", "interface_typhoon_patch_object_factory.html", "interface_typhoon_patch_object_factory" ]
     ] ],
+    [ "TyphoonPathResource.h", "_typhoon_path_resource_8h.html", null ],
+    [ "TyphoonPlistStyleConfiguration.h", "_typhoon_plist_style_configuration_8h.html", null ],
     [ "TyphoonPrimitiveTypeConverter.h", "_typhoon_primitive_type_converter_8h.html", [
       [ "TyphoonPrimitiveTypeConverter", "interface_typhoon_primitive_type_converter.html", "interface_typhoon_primitive_type_converter" ]
     ] ],
     [ "TyphoonPropertyInjection.h", "_typhoon_property_injection_8h.html", [
       [ "<TyphoonPropertyInjection>", "protocol_typhoon_property_injection-p.html", "protocol_typhoon_property_injection-p" ]
     ] ],
-    [ "TyphoonPropertyPlaceholderConfigurer.h", "_typhoon_property_placeholder_configurer_8h.html", "_typhoon_property_placeholder_configurer_8h" ],
+    [ "TyphoonPropertyStyleConfiguration.h", "_typhoon_property_style_configuration_8h.html", null ],
     [ "TyphoonResource.h", "_typhoon_resource_8h.html", null ],
     [ "TyphoonRuntimeArguments.h", "_typhoon_runtime_arguments_8h.html", [
       [ "TyphoonRuntimeArguments", "interface_typhoon_runtime_arguments.html", "interface_typhoon_runtime_arguments" ]
     ] ],
     [ "TyphoonSelector.h", "_typhoon_selector_8h.html", null ],
     [ "TyphoonShorthand.h", "_typhoon_shorthand_8h.html", null ],
-    [ "TyphoonStoryboard.h", "_typhoon_storyboard_8h.html", [
-      [ "TyphoonStoryboard", "interface_typhoon_storyboard.html", "interface_typhoon_storyboard" ]
-    ] ],
+    [ "TyphoonStoryboard.h", "_typhoon_storyboard_8h.html", null ],
     [ "TyphoonStringUtils.h", "_typhoon_string_utils_8h.html", [
       [ "TyphoonStringUtils", "interface_typhoon_string_utils.html", "interface_typhoon_string_utils" ]
     ] ],
+    [ "TyphoonSwizzler.h", "_typhoon_swizzler_8h.html", null ],
     [ "TyphoonTestUtils.h", "_typhoon_test_utils_8h.html", "_typhoon_test_utils_8h" ],
     [ "TyphoonTypeConverter.h", "_typhoon_type_converter_8h.html", [
       [ "<TyphoonTypeConverter>", "protocol_typhoon_type_converter-p.html", "protocol_typhoon_type_converter-p" ]

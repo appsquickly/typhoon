@@ -1,3 +1,67 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$interface_typhoon_assembly_property_injection_post_processor.html" title="Replaces property injections by&#45;type with injectuins by&#45;componentFactory when property type subclass ..." alt="" coords="272,5,504,46"/>
+<area shape="rect" id="node2" href="$interface_typhoon_definition.html" title="TyphoonDefinition" alt="" coords="313,157,453,184"/>
+<area shape="rect" id="node3" href="$protocol_typhoon_injection-p.html" title="\&lt;TyphoonInjection\&gt;" alt="" coords="305,208,460,235"/>
+<area shape="rect" id="node16" href="$interface_typhoon_injection_context.html" title="TyphoonInjectionContext" alt="" coords="288,5,477,32"/>
+<area shape="rect" id="node17" href="$interface_typhoon_method.html" title="Represents an initializer for a component. " alt="" coords="319,56,447,83"/>
+<area shape="rect" id="node18" href="$interface_typhoon_runtime_arguments.html" title="TyphoonRuntimeArguments" alt="" coords="282,107,483,133"/>
+<area shape="rect" id="node4" href="$protocol_typhoon_parameter_injection-p.html" title="\&lt;TyphoonParameterInjection\&gt;" alt="" coords="577,232,799,259"/>
+<area shape="rect" id="node15" href="$protocol_typhoon_property_injection-p.html" title="\&lt;TyphoonPropertyInjection\&gt;" alt="" coords="583,305,793,332"/>
+<area shape="rect" id="node5" href="$interface_typhoon_abstract_injection.html" title="TyphoonAbstractInjection" alt="" coords="876,355,1071,381"/>
+<area shape="rect" id="node6" href="$interface_typhoon_injection_by_collection.html" title="TyphoonInjectionByCollection" alt="" coords="1133,296,1350,323"/>
+<area shape="rect" id="node7" href="$interface_typhoon_injection_by_component_factory.html" title="TyphoonInjectionByComponent\lFactory" alt="" coords="1128,347,1355,389"/>
+<area shape="rect" id="node8" href="$interface_typhoon_injection_by_dictionary.html" title="TyphoonInjectionByDictionary" alt="" coords="1132,413,1351,440"/>
+<area shape="rect" id="node9" href="$interface_typhoon_injection_by_object_from_string.html" title="TyphoonInjectionByObject\lFromString" alt="" coords="1143,681,1340,722"/>
+<area shape="rect" id="node10" href="$interface_typhoon_injection_by_object_instance.html" title="TyphoonInjectionByObject\lInstance" alt="" coords="1143,465,1340,506"/>
+<area shape="rect" id="node11" href="$interface_typhoon_injection_by_reference.html" title="TyphoonInjectionByReference" alt="" coords="1132,531,1351,557"/>
+<area shape="rect" id="node13" href="$interface_typhoon_injection_by_runtime_argument.html" title="TyphoonInjectionByRuntime\lArgument" alt="" coords="1139,179,1344,221"/>
+<area shape="rect" id="node14" href="$interface_typhoon_injection_by_type.html" title="TyphoonInjectionByType" alt="" coords="1148,245,1335,272"/>
+<area shape="rect" id="node12" href="$interface_typhoon_injection_by_factory_reference.html" title="TyphoonInjectionByFactory\lReference" alt="" coords="1403,523,1607,565"/>
+<area shape="rect" id="node20" href="$protocol_typhoon_collection-p.html" title="Protocol which should be confirmed by collection (NSArray, NSSet, NSOrderedSet are conforms) ..." alt="" coords="302,259,463,285"/>
+<area shape="rect" id="node22" href="$interface_typhoon_assembly.html" title="Provides a concise way to declare and encapsulate the architecture of an application in one or more c..." alt="" coords="313,1288,453,1315"/>
+<area shape="rect" id="node23" href="$interface_typhoon_assembly_selector_adviser.html" title="TyphoonAssemblySelectorAdviser" alt="" coords="261,1339,504,1365"/>
+<area shape="rect" id="node24" href="$interface_typhoon_assisted_factory_base.html" title="Internal base class for all Typhoon assisted factories. " alt="" coords="275,309,491,336"/>
+<area shape="rect" id="node25" href="$interface_typhoon_assisted_factory_creator.html" title="Creates the full factory class from the given protocol description. " alt="" coords="265,1187,500,1213"/>
+<area shape="rect" id="node29" href="$interface_typhoon_assisted_factory_definition.html" title="TyphoonAssistedFactoryDefinition" alt="" coords="259,1491,506,1517"/>
+<area shape="rect" id="node30" href="$protocol_typhoon_assisted_factory_injected_parameter-p.html" title="\&lt;TyphoonAssistedFactoryInjected\lParameter\&gt;" alt="" coords="258,1542,507,1583"/>
+<area shape="rect" id="node31" href="$interface_typhoon_assisted_factory_parameter_injected_with_argument_index.html" title="Describes a parameter injected from a factory method argument. " alt="" coords="562,1461,814,1502"/>
+<area shape="rect" id="node32" href="$interface_typhoon_assisted_factory_parameter_injected_with_property.html" title="Describes a parameter injected with a factory property. " alt="" coords="562,1571,814,1613"/>
+<area shape="rect" id="node33" href="$protocol_typhoon_assisted_factory_method-p.html" title="\&lt;TyphoonAssistedFactoryMethod\&gt;" alt="" coords="257,1811,509,1837"/>
+<area shape="rect" id="node34" href="$interface_typhoon_assisted_factory_method_block.html" title="Describes how a factory method that will use a block as its implementation. " alt="" coords="571,1765,805,1806"/>
+<area shape="rect" id="node35" href="$interface_typhoon_assisted_factory_method_initializer.html" title="Describes how a factory method will use an init method, by mapping the factory method arguments and f..." alt="" coords="571,1837,805,1878"/>
+<area shape="rect" id="node36" href="$interface_typhoon_assisted_factory_method_block_closure.html" title="A closure of a factory method. " alt="" coords="571,1905,805,1946"/>
+<area shape="rect" id="node37" href="$protocol_typhoon_assisted_factory_method_closure-p.html" title="\&lt;TyphoonAssistedFactoryMethod\lClosure\&gt;" alt="" coords="261,1963,504,2005"/>
+<area shape="rect" id="node38" href="$interface_typhoon_assisted_factory_method_initializer_closure.html" title="A closure of a factory method. " alt="" coords="571,1970,805,2011"/>
+<area shape="rect" id="node39" href="$interface_typhoon_assisted_factory_method_creator.html" title="Creates the implementation for a TyphoonAssistedFactoryMethod. " alt="" coords="265,2081,500,2122"/>
+<area shape="rect" id="node42" href="$interface_typhoon_component_factory.html" title="This is the base class for all component factories. " alt="" coords="281,2147,485,2173"/>
+<area shape="rect" id="node44" href="$protocol_typhoon_component_factory_post_processor-p.html" title="Allows for custom modification of a component factory&#39;s definitions. " alt="" coords="276,2249,489,2290"/>
+<area shape="rect" id="node45" href="$interface_typhoon_config_post_processor.html" title="TyphoonConfigPostProcessor" alt="" coords="581,2237,795,2264"/>
+<area shape="rect" id="node46" href="$interface_typhoon_view_controller_nib_resolver.html" title="Post&#45;Processor that completes the initializer of definitions with type UIViewController. " alt="" coords="591,2307,785,2349"/>
+<area shape="rect" id="node47" href="$protocol_typhoon_components_pool-p.html" title="Methods from NSMutableDictionary which used in componentsPool. " alt="" coords="280,1389,485,1416"/>
+<area shape="rect" id="node48" href="$interface_typhoon_weak_components_pool.html" title="TyphoonWeakComponentsPool" alt="" coords="577,1363,799,1389"/>
+<area shape="rect" id="node49" href="$protocol_typhoon_dictionary-p.html" title="\&lt;TyphoonDictionary\&gt;" alt="" coords="301,2365,464,2392"/>
+<area shape="rect" id="node50" href="$interface_typhoon_factory_provider.html" title="Provides a factory that combines the convenience of method arguments with assembly&#45;supplied dependenc..." alt="" coords="291,2416,474,2443"/>
+<area shape="rect" id="node51" href="$protocol_typhoon_injected_with_string_representation-p.html" title="\&lt;TyphoonInjectedWithString\lRepresentation\&gt;" alt="" coords="867,730,1079,771"/>
+<area shape="rect" id="node52" href="$interface_typhoon_introspection_utils.html" title="TyphoonIntrospectionUtils" alt="" coords="285,360,480,387"/>
+<area shape="rect" id="node53" href="$protocol_typhoon_introspective_n_s_object-p.html" title="\&lt;TyphoonIntrospectiveNSObject\&gt;" alt="" coords="259,411,506,437"/>
+<area shape="rect" id="node55" href="$interface_typhoon_matcher_definition_factory.html" title="TyphoonMatcherDefinition\lFactory" alt="" coords="285,462,480,503"/>
+<area shape="rect" id="node56" href="$interface_typhoon_n_s_u_r_l_type_converter.html" title="TyphoonNSURLTypeConverter" alt="" coords="579,553,797,580"/>
+<area shape="rect" id="node57" href="$interface_typhoon_option_matcher.html" title="TyphoonOptionMatcher" alt="" coords="295,781,471,808"/>
+<area shape="rect" id="node58" href="$interface_typhoon_pass_through_type_converter.html" title="A &#39;type converter&#39; for NSString and NSMutableString. " alt="" coords="557,616,819,643"/>
+<area shape="rect" id="node59" href="$interface_typhoon_patch_object_factory.html" title="TyphoonPatchObjectFactory" alt="" coords="277,832,489,859"/>
+<area shape="rect" id="node60" href="$interface_typhoon_primitive_type_converter.html" title="TyphoonPrimitiveTypeConverter" alt="" coords="267,883,499,909"/>
+<area shape="rect" id="node61" href="$protocol_typhoon_resource-p.html" title="\&lt;TyphoonResource\&gt;" alt="" coords="304,1709,461,1736"/>
+<area shape="rect" id="node63" href="$interface_typhoon_string_utils.html" title="TyphoonStringUtils" alt="" coords="309,984,456,1011"/>
+<area shape="rect" id="node64" href="$interface_typhoon_test_utils.html" title="Provides a utility for performing asynchronous integration tests with Typhoon. " alt="" coords="314,1035,451,1061"/>
+<area shape="rect" id="node65" href="$protocol_typhoon_type_converter-p.html" title="Declares a contract for converting configuration arguments to their required runtime type..." alt="" coords="285,579,480,605"/>
+<area shape="rect" id="node66" href="$interface_typhoon_u_i_color_type_converter.html" title="A type converter for UIColor. " alt="" coords="576,673,800,700"/>
+<area shape="rect" id="node67" href="$interface_typhoon_type_converter_registry.html" title="Registry of type converters, with special treatment for primitives. " alt="" coords="267,1085,498,1112"/>
+<area shape="rect" id="node68" href="$interface_typhoon_type_descriptor.html" title="TyphoonTypeDescriptor" alt="" coords="293,1136,472,1163"/>
+<area shape="rect" id="node26" href="$interface_typhoon_assisted_factory_creator_implicit.html" title="Creates the full factory class from the given protocol description. " alt="" coords="571,1245,805,1286"/>
+<area shape="rect" id="node27" href="$interface_typhoon_assisted_factory_creator_many_factories.html" title="Creates the full factory class from the given protocol description and creates implementation for the..." alt="" coords="571,1114,805,1155"/>
+<area shape="rect" id="node28" href="$interface_typhoon_assisted_factory_creator_one_factory.html" title="Creates the full factory class from the given protocol description. " alt="" coords="571,1179,805,1221"/>
+<area shape="rect" id="node40" href="$interface_typhoon_assisted_factory_method_block_creator.html" title="Creates a method implementation for an block description. " alt="" coords="571,2035,805,2077"/>
+<area shape="rect" id="node41" href="$interface_typhoon_assisted_factory_method_initializer_creator.html" title="Creates a method implementation for an initializer description. " alt="" coords="571,2101,805,2142"/>
+<area shape="rect" id="node43" href="$interface_typhoon_block_component_factory.html" title="TyphoonBlockComponentFactory" alt="" coords="569,2167,807,2193"/>
+<area shape="rect" id="node54" href="$category_n_s_object_07_typhoon_introspection_utils_08.html" title="NSObject(TyphoonIntrospection\lUtils)" alt="" coords="571,403,805,445"/>
+<area shape="rect" id="node62" href="$interface_typhoon_bundle_resource.html" title="Represents a resource within the application bundle. " alt="" coords="597,1684,779,1711"/>
 </map>

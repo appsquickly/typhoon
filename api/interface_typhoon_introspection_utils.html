@@ -99,6 +99,8 @@ $(document).ready(function(){initNavTree('interface_typhoon_introspection_utils.
 Inheritance diagram for TyphoonIntrospectionUtils:</div>
 <div class="dyncontent">
 <div class="center"><img src="interface_typhoon_introspection_utils__inherit__graph.png" border="0" usemap="#_typhoon_introspection_utils_inherit__map" alt="Inheritance graph"/></div>
+<map name="_typhoon_introspection_utils_inherit__map" id="_typhoon_introspection_utils_inherit__map">
+</map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -107,6 +109,10 @@ Class Methods</h2></td></tr>
 <tr class="separator:af75a61c2d062d41d46fbdfe72f024e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfae072f0c04b9ccdf3f62f5d7ea34eb"><td class="memItemLeft" align="right" valign="top">(NSUInteger)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#abfae072f0c04b9ccdf3f62f5d7ea34eb">numberOfArgumentsInSelector:</a></td></tr>
 <tr class="separator:abfae072f0c04b9ccdf3f62f5d7ea34eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dae6009af1451cdbaa314b9eead140d"><td class="memItemLeft" align="right" valign="top">(NSSet *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#a3dae6009af1451cdbaa314b9eead140d">properiesForClass:</a></td></tr>
+<tr class="separator:a3dae6009af1451cdbaa314b9eead140d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98fee5879ee13bbaa36ed30e37ed8005"><td class="memItemLeft" align="right" valign="top">(NSSet *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#a98fee5879ee13bbaa36ed30e37ed8005">properiesForClass:upToParentClass:</a></td></tr>
+<tr class="separator:a98fee5879ee13bbaa36ed30e37ed8005"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa190816afd6c690e83b2bcff5b1c6e20"><td class="memItemLeft" align="right" valign="top">(SEL)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#aa190816afd6c690e83b2bcff5b1c6e20">setterForPropertyWithName:inClass:</a></td></tr>
 <tr class="separator:aa190816afd6c690e83b2bcff5b1c6e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab40d153fb3f2de289c4aa2832b89dbbe"><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#ab40d153fb3f2de289c4aa2832b89dbbe">typeCodesForSelector:ofClass:isClassMethod:</a></td></tr>
@@ -141,6 +147,48 @@ Class Methods</h2></td></tr>
           <td class="paramtype">(SEL)&#160;</td>
           <td class="paramname"><em>selector</em></td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3dae6009af1451cdbaa314b9eead140d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (NSSet *) properiesForClass: </td>
+          <td></td>
+          <td class="paramtype">(Class)&#160;</td>
+          <td class="paramname"><em>clazz</em></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a98fee5879ee13bbaa36ed30e37ed8005"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (NSSet *) <a class="el" href="interface_typhoon_introspection_utils.html#a3dae6009af1451cdbaa314b9eead140d">properiesForClass:</a> </td>
+          <td></td>
+          <td class="paramtype">(Class)&#160;</td>
+          <td class="paramname"><em>clazz</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">upToParentClass:</td>
+          <td></td>
+          <td class="paramtype">(Class)&#160;</td>
+          <td class="paramname"><em>parent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -238,7 +286,7 @@ Class Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
         <li class="navelem"><a class="el" href="interface_typhoon_introspection_utils.html">TyphoonIntrospectionUtils</a></li>
-        <li class="footer">Generated on Sat Apr 26 2014 18:25:16 for Typhoon by
+        <li class="footer">Generated on Thu May 29 2014 18:28:34 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5
         </li>

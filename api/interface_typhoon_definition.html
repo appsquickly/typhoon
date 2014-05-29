@@ -101,6 +101,8 @@ $(document).ready(function(){initNavTree('interface_typhoon_definition.html','')
 Inheritance diagram for TyphoonDefinition:</div>
 <div class="dyncontent">
 <div class="center"><img src="interface_typhoon_definition__inherit__graph.png" border="0" usemap="#_typhoon_definition_inherit__map" alt="Inheritance graph"/></div>
+<map name="_typhoon_definition_inherit__map" id="_typhoon_definition_inherit__map">
+</map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
@@ -144,8 +146,18 @@ Class Methods</h2></td></tr>
 <tr class="separator:aca9fdf061efa7c058b36752dbd430a98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad31405104da843cd56325151a602a36b"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_definition.html#ad31405104da843cd56325151a602a36b">withClass:configuration:</a></td></tr>
 <tr class="separator:ad31405104da843cd56325151a602a36b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6978d24985385a9065b38d866903a05e"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_definition.html#a6978d24985385a9065b38d866903a05e">withClass:factory:selector:</a></td></tr>
-<tr class="separator:a6978d24985385a9065b38d866903a05e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe5a871b01ed9f807fd9311d92dffaa6"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_definition.html#abe5a871b01ed9f807fd9311d92dffaa6">withClass:factory:selector:</a></td></tr>
+<tr class="separator:abe5a871b01ed9f807fd9311d92dffaa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea171d36d437109186e1fcb0ba7d1754"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_definition.html#aea171d36d437109186e1fcb0ba7d1754">withFactory:selector:</a></td></tr>
+<tr class="separator:aea171d36d437109186e1fcb0ba7d1754"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68cf9a55d353d5d888a2aeb8df0c7a1e"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_definition.html#a68cf9a55d353d5d888a2aeb8df0c7a1e">withFactory:selector:parameters:</a></td></tr>
+<tr class="separator:a68cf9a55d353d5d888a2aeb8df0c7a1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32ca1f2c90cffe0024ce1bd11bc6c579"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_definition.html#a32ca1f2c90cffe0024ce1bd11bc6c579">withOption:matcher:</a></td></tr>
+<tr class="memdesc:a32ca1f2c90cffe0024ce1bd11bc6c579"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns definition matching 'option', specified in 'matcherBlock'.  <a href="#a32ca1f2c90cffe0024ce1bd11bc6c579">More...</a><br/></td></tr>
+<tr class="separator:a32ca1f2c90cffe0024ce1bd11bc6c579"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a130e5930484a6bf951b176b092634dc2"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_definition.html#a130e5930484a6bf951b176b092634dc2">withOption:yes:no:</a></td></tr>
+<tr class="memdesc:a130e5930484a6bf951b176b092634dc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">if boolean 'option' value is YES, then return yesDefinition, otherwise return noDefinition  <a href="#a130e5930484a6bf951b176b092634dc2">More...</a><br/></td></tr>
+<tr class="separator:a130e5930484a6bf951b176b092634dc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
@@ -418,7 +430,7 @@ injectProperty:withDefinition:keyPath: An alternative short-hand approach for no
 <div class="line">{</div>
 <div class="line">    <span class="keywordflow">return</span> [<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a> withClass:[ClientBase <span class="keyword">class</span>] configuration:^(<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a>* definition)</div>
 <div class="line">    {</div>
-<div class="line">        [definition injectProperty:<span class="keyword">@selector</span>(serviceUrl) with:<a class="code" href="_typhoon_property_placeholder_configurer_8h.html#ab9ed52428be61894681b2e05afbd1a57">TyphoonConfig</a>(<span class="stringliteral">@&quot;service.url&quot;</span>];</div>
+<div class="line">        [definition injectProperty:<span class="keyword">@selector</span>(serviceUrl) with:<a class="code" href="_typhoon_config_post_processor_8h.html#ab9ed52428be61894681b2e05afbd1a57">TyphoonConfig</a>(<span class="stringliteral">@&quot;service.url&quot;</span>];</div>
 <div class="line">        [definition injectProperty:<span class="keyword">@selector</span>(networkMonitor) with:[<span class="keyword">self</span> internetMonitor]];</div>
 <div class="line">        [definition injectProperty:<span class="keyword">@selector</span>(allowInvalidSSLCertificates) with:@(YES)];</div>
 <div class="line">    }];</div>
@@ -688,7 +700,7 @@ injectProperty:withDefinition:keyPath: An alternative short-hand approach for no
 
 </div>
 </div>
-<a class="anchor" id="a6978d24985385a9065b38d866903a05e"></a>
+<a class="anchor" id="abe5a871b01ed9f807fd9311d92dffaa6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -700,6 +712,32 @@ injectProperty:withDefinition:keyPath: An alternative short-hand approach for no
         </tr>
         <tr>
           <td class="paramkey">factory:</td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td>
+          <td class="paramname"><em>definition</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">selector:</td>
+          <td></td>
+          <td class="paramtype">(&quot;Use <a class="el" href="interface_typhoon_definition.html#aea171d36d437109186e1fcb0ba7d1754">withFactory:selector:</a> method instead&quot;)&#160;</td>
+          <td class="paramname"><em>DEPRECATED_MSG_ATTRIBUTE</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aea171d36d437109186e1fcb0ba7d1754"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *) withFactory: </td>
           <td></td>
           <td class="paramtype">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td>
           <td class="paramname"><em>definition</em></td>
@@ -720,6 +758,104 @@ injectProperty:withDefinition:keyPath: An alternative short-hand approach for no
 
 </div>
 </div>
+<a class="anchor" id="a68cf9a55d353d5d888a2aeb8df0c7a1e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *) withFactory: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td>
+          <td class="paramname"><em>definition</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">selector:</td>
+          <td></td>
+          <td class="paramtype">(SEL)&#160;</td>
+          <td class="paramname"><em>selector</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">parameters:</td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interface_typhoon_method.html">TyphoonMethod</a> *method)&#160;</td>
+          <td class="paramname"><em>parametersBlock</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a32ca1f2c90cffe0024ce1bd11bc6c579"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *) withOption: </td>
+          <td></td>
+          <td class="paramtype">(id)&#160;</td>
+          <td class="paramname"><em>option</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">matcher:</td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="_typhoon_definition_09_option_8h.html#a1cbe2d0c5821145ee78bbe48c981173a">TyphoonMatcherBlock</a>)&#160;</td>
+          <td class="paramname"><em>matcherBlock</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns definition matching 'option', specified in 'matcherBlock'. </p>
+
+<p>Provided by category <a class="el" href="category_typhoon_definition_07_option_08.html#a32ca1f2c90cffe0024ce1bd11bc6c579">TyphoonDefinition(Option)</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a130e5930484a6bf951b176b092634dc2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *) withOption: </td>
+          <td></td>
+          <td class="paramtype">(id)&#160;</td>
+          <td class="paramname"><em>option</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">yes:</td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td>
+          <td class="paramname"><em>yesDefinition</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">no:</td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td>
+          <td class="paramname"><em>noDefinition</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>if boolean 'option' value is YES, then return yesDefinition, otherwise return noDefinition </p>
+
+<p>Provided by category <a class="el" href="category_typhoon_definition_07_option_08.html#a130e5930484a6bf951b176b092634dc2">TyphoonDefinition(Option)</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.5-->
@@ -727,7 +863,7 @@ injectProperty:withDefinition:keyPath: An alternative short-hand approach for no
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
         <li class="navelem"><a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a></li>
-        <li class="footer">Generated on Sat Apr 26 2014 18:25:16 for Typhoon by
+        <li class="footer">Generated on Thu May 29 2014 18:28:34 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5
         </li>

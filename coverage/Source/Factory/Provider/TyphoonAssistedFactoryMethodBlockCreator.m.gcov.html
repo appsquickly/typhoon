@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Typhoon.info - Source/Factory/Provider/TyphoonAssistedFactoryMethodBlockCreator.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Source/Factory/Provider</a> - TyphoonAssistedFactoryMethodBlockCreator.m</td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Typhoon.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2014-05-29</td>
+            <td></td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<span class="lineNum">       1 </span>            : ////////////////////////////////////////////////////////////////////////////////
+<span class="lineNum">       2 </span>            : //
+<span class="lineNum">       3 </span>            : //  TYPHOON FRAMEWORK
+<span class="lineNum">       4 </span>            : //  Copyright 2013, Jasper Blues &amp; Contributors
+<span class="lineNum">       5 </span>            : //  All Rights Reserved.
+<span class="lineNum">       6 </span>            : //
+<span class="lineNum">       7 </span>            : //  NOTICE: The authors permit you to use, modify, and distribute this file
+<span class="lineNum">       8 </span>            : //  in accordance with the terms of the license agreement accompanying it.
+<span class="lineNum">       9 </span>            : //
+<span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span>            : #import &quot;TyphoonAssistedFactoryMethodBlockCreator.h&quot;
+<span class="lineNum">      13 </span>            : #import &quot;TyphoonAssistedFactoryMethodCreator+Private.h&quot;
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span>            : #include &lt;objc/runtime.h&gt;
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span>            : #import &quot;TyphoonAssistedFactoryBase+TyphoonFactoryMethodClosure.h&quot;
+<span class="lineNum">      18 </span>            : #import &quot;TyphoonAssistedFactoryMethodBlock.h&quot;
+<span class="lineNum">      19 </span>            : #import &quot;TyphoonAssistedFactoryMethodBlockClosure.h&quot;
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span>            : @interface TyphoonAssistedFactoryMethodBlockCreator ()
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span>            : @property(nonatomic, strong, readonly) TyphoonAssistedFactoryMethodBlock *factoryMethod;
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span>            : @end
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span>            : @implementation TyphoonAssistedFactoryMethodBlockCreator
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span><span class="lineCov">         18 : - (void)createFromProtocol:(Protocol *)protocol inClass:(Class)factoryClass</span>
+<span class="lineNum">      31 </span>            : {
+<span class="lineNum">      32 </span><span class="lineCov">         18 :     struct objc_method_description methodDescription = [self methodDescriptionFor:self.factoryMethod.factoryMethod inProtocol:protocol];</span>
+<span class="lineNum">      33 </span><span class="lineCov">         18 :     NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:methodDescription.types];</span>
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span>            :     // To be able to intercept the result, we need to create the method with
+<span class="lineNum">      36 </span>            :     // other name.
+<span class="lineNum">      37 </span><span class="lineCov">         18 :     NSString *name = [NSString stringWithFormat:@&quot;typhoon_interceptable_%@&quot;, NSStringFromSelector(methodDescription.name)];</span>
+<span class="lineNum">      38 </span><span class="lineCov">         18 :     SEL nameSEL = sel_registerName([name UTF8String]);</span>
+<span class="lineNum">      39 </span><span class="lineCov">         18 :     IMP methodIMP = imp_implementationWithBlock(self.factoryMethod.bodyBlock);</span>
+<span class="lineNum">      40 </span><span class="lineCov">         18 :     class_addMethod(factoryClass, nameSEL, methodIMP, methodDescription.types);</span>
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span><span class="lineCov">         18 :     TyphoonAssistedFactoryMethodBlockClosure</span>
+<span class="lineNum">      43 </span><span class="lineCov">         36 :         *closure = [[TyphoonAssistedFactoryMethodBlockClosure alloc] initWithSelector:nameSEL methodSignature:methodSignature];</span>
+<span class="lineNum">      44 </span><span class="lineCov">         18 :     [factoryClass _fmc_setClosure:closure forSelector:self.factoryMethod.factoryMethod];</span>
+<span class="lineNum">      45 </span><span class="lineCov">         18 : }</span>
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
