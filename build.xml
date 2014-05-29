@@ -138,7 +138,7 @@
         
         <junitreport todir="${temp.dir}">
             <fileset dir="${temp.dir}/test-reports" includes="*xml"/>
-            <report format="frames" styledir="Scripts" todir="${reports.dir}/test-results">
+            <report format="frames" styledir="${basedir}/Scripts" todir="${reports.dir}/test-results">
                 <param name="TITLE" expression="Test Results"/>
             </report>
         </junitreport>
