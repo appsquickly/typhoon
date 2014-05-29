@@ -4,13 +4,11 @@
 //  The contents of this file are implicitly included at the beginning of every source file.
 //
 
-#import <Availability.h>
-
-
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
-    #define MOCKITO_SHORTHAND
-    #import <OCMockito/OCMockito.h>
+
+	#define MOCKITO_SHORTHAND
+	#import <OCMockito/OCMockito.h>
 
     #define typhoon_shorthand
 

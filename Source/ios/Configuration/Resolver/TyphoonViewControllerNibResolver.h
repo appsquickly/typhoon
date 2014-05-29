@@ -9,7 +9,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#ifdef TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#endif
+
 #import "TyphoonComponentFactoryPostProcessor.h"
 
 /**
@@ -29,3 +32,4 @@
 - (NSString *)resolveNibNameForClass:(Class)viewControllerClass;
 
 @end
+

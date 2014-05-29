@@ -11,7 +11,7 @@
             buildForTesting = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6B5EDD23193619FC00F2CF35"
+               BlueprintIdentifier = "6B076D271936CD2F0083714E"
                BuildableName = "Typhoon-OSXTests.xctest"
                BlueprintName = "Typhoon-OSXTests"
                ReferencedContainer = "container:Typhoon.xcodeproj">
@@ -29,7 +29,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6B5EDD23193619FC00F2CF35"
+               BlueprintIdentifier = "6B076D271936CD2F0083714E"
                BuildableName = "Typhoon-OSXTests.xctest"
                BlueprintName = "Typhoon-OSXTests"
                ReferencedContainer = "container:Typhoon.xcodeproj">
