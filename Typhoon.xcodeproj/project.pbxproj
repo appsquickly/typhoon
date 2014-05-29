@@ -447,6 +447,8 @@
 		6B07745F193784DE0083714E /* SomeProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B0770751936F63A0083714E /* SomeProperties.plist */; };
 		6B077460193784DE0083714E /* SomeProperties.properties in Resources */ = {isa = PBXBuildFile; fileRef = 6B0770761936F63A0083714E /* SomeProperties.properties */; };
 		6B077461193784DE0083714E /* SomeResource in Resources */ = {isa = PBXBuildFile; fileRef = 6B0770771936F63A0083714E /* SomeResource */; };
+		6B077462193786EB0083714E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA798B7BB085030D07102B8E /* Storyboard.storyboard */; };
+		6B077463193786EC0083714E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA798B7BB085030D07102B8E /* Storyboard.storyboard */; };
 		BA7982DB9ED4ECF0C54DA707 /* TyphoonUIColorConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E0CA9E9828D07777F40 /* TyphoonUIColorConverterTests.m */; };
 		BA798643561E55898B87E96A /* UniqueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7980A75A6786BBC2A387F9 /* UniqueViewController.m */; };
 		BA798645ED33923CA832A9CD /* StoryboardViewControllerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798EA3F8F037BFC45CBCB7 /* StoryboardViewControllerAssembly.m */; };
@@ -2150,6 +2152,7 @@
 			files = (
 				6B07727719370A920083714E /* SomeResource in Resources */,
 				6B07726B19370A870083714E /* SomeProperties.json in Resources */,
+				6B077462193786EB0083714E /* Storyboard.storyboard in Resources */,
 				6B07727319370A8E0083714E /* SomeProperties.properties in Resources */,
 				6B07726F19370A8A0083714E /* SomeProperties.plist in Resources */,
 				6B07726719370A830083714E /* SomeOtherProperties.properties in Resources */,
@@ -2168,6 +2171,7 @@
 				6B07727419370A8F0083714E /* SomeProperties.properties in Resources */,
 				6B07727019370A8B0083714E /* SomeProperties.plist in Resources */,
 				6B07726819370A830083714E /* SomeOtherProperties.properties in Resources */,
+				6B077463193786EC0083714E /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
