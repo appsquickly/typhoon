@@ -29,7 +29,12 @@
     // Override point for customization after application launch.
     return YES;
 }
-							
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    extern void __gcov_flush(void);
+    __gcov_flush();
+}
 
 
 @end
