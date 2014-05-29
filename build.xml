@@ -70,6 +70,9 @@
             #!/bin/bash
             set -e # fail script if any commands fail
 
+            git submodule init
+            git sunmodule update
+
             rm -fr build
             rm -fr ~/Library/Developer/Xcode/DerivedData
             xcodebuild -project ${module.name}.xcodeproj/ -scheme 'Typhoon-OSXTests' test
