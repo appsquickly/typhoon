@@ -37,6 +37,7 @@
         --test.evaluate,
         --assemble.coverage.data,
         --coverage.report,
+        --api.report,
         --publish.site.dry.run"/>
 
     <target name="doc" depends = "--api.report"/>
@@ -243,7 +244,6 @@
             rm -fr ./test-results
             cp -fr ${reports.dir}/test-results/ ./test-results
             git add --all --ignore-removal ./test-results
-            cp -fr ${reports.dir}/schema ./schema
             ]]>
         </echo>
         <chmod perm="+x" file="${dry.run.site.script}"/>
