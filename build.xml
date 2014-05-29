@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Typhoon" default="build-publish-dry-run">
+<project name="Typhoon" default="build">
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CONFIGURATION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
     <property name="module.name" value="Typhoon"/>
@@ -26,22 +26,25 @@
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PUBLIC TARGETS (can depend on other targets) ~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
     <target name="build-publish" depends="
-        build-publish-dry-run,
-        --publish.site.push"/>
+        build,
+        --publish.site"/>
 
-    <target name="build-publish-dry-run" depends="
+    <target name="build" depends="
         --clean.make.dirs,
         --stamp.build.failing,
-        --build.and.test.osx,
-        --build.and.test.ios,
+        --test.osx,
+        --test.ios,
         --test.generate.report,
         --test.evaluate,
         --assemble.coverage.data,
         --coverage.report,
-        --api.report,
-        --publish.site.dry.run"/>
+        --doc"/>
 
-    <target name="doc" depends = "--api.report"/>
+    <target name="test.ios" depends = "--test.ios"/>
+
+    <target name="test.osx" depends = "--test.osx"/>
+
+    <target name="doc" depends = "--doc"/>
 
     <target name="no-fail-tests">
         <property name="no-fail-tests" value="yes"/>
@@ -80,7 +83,7 @@
         <copy tofile="${reports.dir}/build-status/build-status.png" file="${scripts.dir}/build-passed.png" overwrite="true"/>
     </target>
 
-    <target name="--build.and.test.osx">
+    <target name="--test.osx">
         <echo file="${temp.dir}/build.and.test.sh">
             #!/bin/bash
             xcodebuild -project ${module.name}.xcodeproj/ -scheme 'Typhoon-OSXTests' test
@@ -91,7 +94,7 @@
         <echo message="${test.osx.output}"/>
     </target>
 
-    <target name="--build.and.test.ios">
+    <target name="--test.ios">
         <echo file="${temp.dir}/build.and.test.sh">
             #!/bin/bash
             xcodebuild -project ${module.name}.xcodeproj/ -scheme 'Typhoon-iOSTests' -configuration Debug -destination OS=7.1,name=iPad test
@@ -209,7 +212,7 @@
     </target>
 
 
-    <target name="--api.report">
+    <target name="--doc">
         <mkdir dir="${reports.dir}/api"/>
         <mkdir dir="${user.home}/Library/Developer/Shared"/>
         <mkdir dir="${user.home}/Library/Developer/Shared/Documentation"/>
@@ -234,7 +237,7 @@
 
     </target>
 
-    <target name="--publish.site.dry.run">
+    <target name="--publish.site">
         <echo file="${dry.run.site.script}">
             <![CDATA[
             #!/bin/bash
@@ -261,6 +264,12 @@
             rm -fr ./test-results
             cp -fr ${reports.dir}/test-results/ ./test-results
             git add --all --ignore-removal ./test-results
+
+            git commit -a -m "publish reports to gh-pages"
+            git push -u origin gh-pages
+            git checkout master
+            find Tests -type f -exec git update-index --no-assume-unchanged '{}' \;
+
             ]]>
         </echo>
         <chmod perm="+x" file="${dry.run.site.script}"/>
@@ -269,24 +278,6 @@
         </exec>
     </target>
      <property name="dry.run.site.script" value="${temp.dir}/dry.run-site.sh"/>
-
-    <target name="--publish.site.push">
-        <echo file="${push.site.script}">
-            git commit -a -m "publish reports to gh-pages"
-            git push -u origin gh-pages
-            git checkout master
-            find Tests -type f -exec git update-index --no-assume-unchanged '{}' \;
-        </echo>
-        <chmod perm="+x" file="${push.site.script}"/>
-        <exec executable="${push.site.script}" failonerror="true" failifexecutionfails="true" outputproperty="push.out" errorproperty="push.error">
-            <env key="PATH" value="${tools.paths}"/>
-        </exec>
-    </target>
-     <property name="push.site.script" value="${temp.dir}/push-site.sh"/>
-
-
-  
-
 
 
 </project>
