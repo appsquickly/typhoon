@@ -37,10 +37,11 @@
         --test.osx,
         --test.ios,
         --test.generate.report,
-        --test.evaluate,
         --assemble.coverage.data,
         --coverage.report,
-        --doc"/>
+        --doc,
+        --build.evaluate,
+        --stamp.build.passing"/>
 
     <target name="test.ios" depends="--test.ios"/>
 
@@ -149,7 +150,7 @@
         </copy>
     </target>
 
-    <target name="--test.evaluate" unless="no-fail-tests">
+    <target name="--build.evaluate" unless="no-fail-tests">
         <fail if="tests.failed" message="Tests failed. Report is at ${reports.dir}/test-results"/>
     </target>
 
