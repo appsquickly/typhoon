@@ -32,7 +32,8 @@
     <target name="build-publish-dry-run" depends="
         --make.dirs,
         --stamp.build.failing,
-        --build.and.test,
+        --build.and.test.osx,
+        --build.and.test.ios,
         --test.generate.report,
         --test.evaluate,
         --assemble.coverage.data,
@@ -54,6 +55,17 @@
         <mkdir dir="${temp.dir}/coverage-data"/>
         <mkdir dir="${reports.dir}"/>
         <mkdir dir="${reports.dir}/tests"/>
+
+        <echo file="${temp.dir}/init-submodules.sh">
+            #!/bin/bash
+            set -e # fail script if any commands fail
+
+            git submodule init
+            git sunmodule update
+        </echo>
+        <chmod perm="+x" file="${temp.dir}/init-submodules.sh"/>
+        <exec executable="${temp.dir}/init-submodules.sh" failonerror="true" failifexecutionfails="true"/>
+
     </target>
 
     <target name="--stamp.build.failing">
@@ -65,31 +77,38 @@
         <copy tofile="${reports.dir}/build-status/build-status.png" file="${scripts.dir}/build-passed.png" overwrite="true"/>
     </target>
 
-    <target name="--build.and.test">
+    <target name="--build.and.test.osx">
         <echo file="${temp.dir}/build.and.test.sh">
             #!/bin/bash
             set -e # fail script if any commands fail
-
-            git submodule init
-            git sunmodule update
 
             rm -fr build
             rm -fr ~/Library/Developer/Xcode/DerivedData
             xcodebuild -project ${module.name}.xcodeproj/ -scheme 'Typhoon-OSXTests' test
 
+        </echo>
+        <chmod perm="+x" file="${temp.dir}/build.and.test.sh"/>
+        <exec executable="${temp.dir}/build.and.test.sh" failonerror="false" failifexecutionfails="false" outputproperty="test.osx.output"/>
+        <echo message="${test.osx.output}"/>
+    </target>
+
+    <target name="--build.and.test.ios">
+        <echo file="${temp.dir}/build.and.test.sh">
+            #!/bin/bash
+            set -e # fail script if any commands fail
 
             rm -fr build
             rm -fr ~/Library/Developer/Xcode/DerivedData
-            xcodebuild -project ${module.name}.xcodeproj/ -scheme 'Typhoon-iOS' -configuration Debug -destination OS=7.1,name=iPad test
+            xcodebuild -project ${module.name}.xcodeproj/ -scheme 'Typhoon-iOSTests' -configuration Debug -destination OS=7.1,name=iPad test
 
         </echo>
         <chmod perm="+x" file="${temp.dir}/build.and.test.sh"/>
-        <exec executable="${temp.dir}/build.and.test.sh" failonerror="false" failifexecutionfails="false" outputproperty="test.output"/>
+        <exec executable="${temp.dir}/build.and.test.sh" failonerror="false" failifexecutionfails="false" outputproperty="test.ios.output"/>
+        <echo message="${test.ios.output}"/>
     </target>
 
     <target name="--test.generate.report">
-        <echo message="${test.output}"/>
-        <echo file="${temp.dir}/test-results.txt" message="${test.output}"/>
+        <echo file="${temp.dir}/test-results.txt" message="${test.ios.output}"/>
 
         <loadfile srcfile="${temp.dir}/test-results.txt" property="tests.error">
             <filterchain>
