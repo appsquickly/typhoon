@@ -78,12 +78,12 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 - (id)resultOfInvocationInitializer:(TyphoonMethod *)initializer on:(id)instanceOrClass withArgs:(TyphoonRuntimeArguments *)args
 {
     id result;
-    
+
     BOOL isClass = class_isMetaClass(object_getClass(instanceOrClass));
     Class instanceClass = isClass ? instanceOrClass : [instanceOrClass class];
-    
+
     NSInvocation *invocation = [self invocationToInit:instanceClass with:initializer args:args];
-    
+
     BOOL isClassMethod = [initializer isClassMethodOnClass:instanceClass];
 
     if (isClass && !isClassMethod) {
@@ -92,7 +92,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     else {
         result = [invocation typhoon_resultOfInvokingOnInstance:instanceOrClass];
     }
-    
+
     return result;
 }
 
@@ -103,7 +103,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     context.args = args;
     context.raiseExceptionIfCircular = YES;
     context.destinationInstanceClass = clazz;
-    
+
     __block NSInvocation *result;
     [method createInvocationOnClass:clazz withContext:context completion:^(NSInvocation *invocation) {
         result = invocation;
@@ -124,7 +124,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance
 {
     if ([instance respondsToSelector:@selector(typhoonSetFactory:)]) {
-        [(NSObject *)instance typhoonSetFactory:self];
+        [(NSObject *) instance typhoonSetFactory:self];
     }
 }
 
@@ -147,7 +147,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     context.factory = self;
     context.args = args;
     context.raiseExceptionIfCircular = NO;
-    
+
     [method createInvocationOnClass:[instance class] withContext:context completion:^(NSInvocation *invocation) {
         [invocation invokeWithTarget:instance];
     }];
@@ -163,7 +163,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     for (id <TyphoonPropertyInjection> property in [definition injectedProperties]) {
         [self doPropertyInjectionIfNeededOn:instance property:property args:args];
     }
-    
+
     for (TyphoonMethod *method in [definition injectedMethods]) {
         [self doMethodInjection:method onInstance:instance args:args];
     }
@@ -180,18 +180,18 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 
     if ([instance respondsToSelector:definition.beforeInjections]) {
-        void(*method)(id, SEL) = (void ( *)(id, SEL)) [(NSObject *)instance methodForSelector:definition.beforeInjections];
+        void(*method)(id, SEL) = (void (*)(id, SEL)) [(NSObject *) instance methodForSelector:definition.beforeInjections];
         method(instance, definition.beforeInjections);
     }
 }
 
-- (void)doPropertyInjectionIfNeededOn:(id <TyphoonIntrospectiveNSObject, TyphoonPropertyInjectionInternalDelegate>)instance property:(id <TyphoonPropertyInjection>)property
-                                 args:(TyphoonRuntimeArguments *)args
+- (void)doPropertyInjectionIfNeededOn:(id <TyphoonIntrospectiveNSObject, TyphoonPropertyInjectionInternalDelegate>)instance
+                             property:(id <TyphoonPropertyInjection>)property args:(TyphoonRuntimeArguments *)args
 {
     //TODO: Refactor this method and 'shouldInjectProperty:withType:lazyValue:' with lazyValue
     if ([instance respondsToSelector:@selector(shouldInjectProperty:withType:lazyValue:)]) {
         TyphoonTypeDescriptor *propertyType = [instance typhoon_typeForPropertyWithName:property.propertyName];
-        
+
         TyphoonPropertyInjectionLazyValue lazyValue = ^id {
             TyphoonInjectionContext *context = [TyphoonInjectionContext new];
             context.destinationType = propertyType;
@@ -205,17 +205,18 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
             }];
             return result;
         };
-        
+
         if ([instance shouldInjectProperty:property withType:propertyType lazyValue:lazyValue]) {
             [self doPropertyInjection:instance property:property args:args];
         }
-    } else {
+    }
+    else {
         [self doPropertyInjection:instance property:property args:args];
     }
 }
 
 - (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(id <TyphoonPropertyInjection>)property
-    args:(TyphoonRuntimeArguments *)args
+                       args:(TyphoonRuntimeArguments *)args
 {
     TyphoonInjectionContext *context = [TyphoonInjectionContext new];
     context.destinationType = [instance typhoon_typeForPropertyWithName:property.propertyName];
@@ -225,18 +226,20 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     context.raiseExceptionIfCircular = NO;
 
     [property valueToInjectWithContext:context completion:^(id value) {
-        [(NSObject *)instance typhoon_injectValue:value forPropertyName:property.propertyName];
+        [(NSObject *) instance typhoon_injectValue:value forPropertyName:property.propertyName];
     }];
 }
 
-- (void)resolveCircularDependency:(NSString *)key args:(TyphoonRuntimeArguments *)args resolvedBlock:(void(^)(BOOL isCircular))resolvedBlock
+- (void)resolveCircularDependency:(NSString *)key args:(TyphoonRuntimeArguments *)args
+                    resolvedBlock:(void (^)(BOOL isCircular))resolvedBlock
 {
     TyphoonStackElement *element = [_stack peekForKey:key args:args];
     if (element) {
         [element addInstanceCompleteBlock:^(id instance) {
             resolvedBlock(YES);
         }];
-    } else {
+    }
+    else {
         resolvedBlock(NO);
     }
 }
@@ -248,7 +251,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     }
 
     if ([instance respondsToSelector:definition.afterInjections]) {
-        void(*method)(id, SEL) = (void ( *)(id, SEL)) [(NSObject *)instance methodForSelector:definition.afterInjections];
+        void(*method)(id, SEL) = (void (*)(id, SEL)) [(NSObject *) instance methodForSelector:definition.afterInjections];
         method(instance, definition.afterInjections);
     }
 }
@@ -274,7 +277,8 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
                                                              TyphoonTypeStringFor(classOrProtocol)];
     }
     if ([candidates count] > 1) {
-        [NSException raise:NSInvalidArgumentException format:@"More than one component is defined satisfying type: '%@'", TyphoonTypeStringFor(classOrProtocol)];
+        [NSException raise:NSInvalidArgumentException format:@"More than one component is defined satisfying type: '%@'",
+                                                             TyphoonTypeStringFor(classOrProtocol)];
     }
     return [candidates objectAtIndex:0];
 }
@@ -287,7 +291,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
     BOOL isProtocol = object_getClass(classOrProtocol) == object_getClass(@protocol(NSObject));
     if (!isClass && !isProtocol) {
-        [NSException raise:NSInternalInconsistencyException format:@"%@ is not class or protocol",classOrProtocol];
+        [NSException raise:NSInternalInconsistencyException format:@"%@ is not class or protocol", classOrProtocol];
     }
 
     for (TyphoonDefinition *definition in _registry) {

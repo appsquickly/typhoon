@@ -1,5 +1,5 @@
 //
-//  TyphoonAppDelegate.h
+//  TyphoonViewController.h
 //  Typhoon-iOS
 //
 //  Created by Jasper Blues on 5/29/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TyphoonAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface TyphoonViewController : UIViewController
 
 @end
