@@ -30,7 +30,7 @@
         --publish.site.push"/>
 
     <target name="build-publish-dry-run" depends="
-        --make.dirs,
+        --clean.make.dirs,
         --stamp.build.failing,
         --build.and.test.osx,
         --build.and.test.ios,
@@ -50,7 +50,7 @@
 
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PRIVATE TARGETS (MUST NOT depend on other targets!) ~~~~~~~~~~~~~~~~~~~ -->
-    <target name="--make.dirs">
+    <target name="--clean.make.dirs">
         <mkdir dir="${temp.dir}"/>
         <mkdir dir="${temp.dir}/coverage-data"/>
         <mkdir dir="${reports.dir}"/>
@@ -59,6 +59,9 @@
         <echo file="${temp.dir}/init-submodules.sh">
             #!/bin/bash
             set -e # fail script if any commands fail
+
+            rm -fr build
+            rm -fr ~/Library/Developer/Xcode/DerivedData
 
             git submodule init
             git submodule update
@@ -80,10 +83,6 @@
     <target name="--build.and.test.osx">
         <echo file="${temp.dir}/build.and.test.sh">
             #!/bin/bash
-            set -e # fail script if any commands fail
-
-            rm -fr build
-            rm -fr ~/Library/Developer/Xcode/DerivedData
             xcodebuild -project ${module.name}.xcodeproj/ -scheme 'Typhoon-OSXTests' test
 
         </echo>
@@ -95,10 +94,6 @@
     <target name="--build.and.test.ios">
         <echo file="${temp.dir}/build.and.test.sh">
             #!/bin/bash
-            set -e # fail script if any commands fail
-
-            rm -fr build
-            rm -fr ~/Library/Developer/Xcode/DerivedData
             xcodebuild -project ${module.name}.xcodeproj/ -scheme 'Typhoon-iOSTests' -configuration Debug -destination OS=7.1,name=iPad test
 
         </echo>
