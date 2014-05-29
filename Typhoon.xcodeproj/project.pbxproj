@@ -239,7 +239,8 @@
 		6B07738C1937806F0083714E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B07737D193780580083714E /* Images.xcassets */; };
 		6B07738D193780720083714E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07737E193780580083714E /* main.m */; };
 		6B07738E193780790083714E /* TyphoonAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B077382193780580083714E /* TyphoonAppDelegate.m */; };
-		6B07738F193780810083714E /* Typhoon_osxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B077388193780580083714E /* Typhoon_osxTests.m */; };
+		6B0773901937827F0083714E /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B077374193780580083714E /* OCHamcrest.framework */; };
+		6B0773911937827F0083714E /* OCMockito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B077375193780580083714E /* OCMockito.framework */; };
 		BA7982DB9ED4ECF0C54DA707 /* TyphoonUIColorConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E0CA9E9828D07777F40 /* TyphoonUIColorConverterTests.m */; };
 		BA798643561E55898B87E96A /* UniqueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7980A75A6786BBC2A387F9 /* UniqueViewController.m */; };
 		BA798645ED33923CA832A9CD /* StoryboardViewControllerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798EA3F8F037BFC45CBCB7 /* StoryboardViewControllerAssembly.m */; };
@@ -706,7 +707,6 @@
 		6B077385193780580083714E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B077386193780580083714E /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		6B077387193780580083714E /* Typhoon-osxTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Typhoon-osxTests-Info.plist"; sourceTree = "<group>"; };
-		6B077388193780580083714E /* Typhoon_osxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Typhoon_osxTests.m; sourceTree = "<group>"; };
 		BA7980A75A6786BBC2A387F9 /* UniqueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniqueViewController.m; sourceTree = "<group>"; };
 		BA7982C084F0AD60B5858F31 /* TyphoonViewControllerNibResolverTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonViewControllerNibResolverTests.m; sourceTree = "<group>"; };
 		BA798539DF28ADC47EFA5937 /* StoryboardViewControllerAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardViewControllerAssembly.h; sourceTree = "<group>"; };
@@ -754,6 +754,8 @@
 			files = (
 				6B07736219377EAA0083714E /* Cocoa.framework in Frameworks */,
 				6B07736119377EAA0083714E /* XCTest.framework in Frameworks */,
+				6B0773901937827F0083714E /* OCHamcrest.framework in Frameworks */,
+				6B0773911937827F0083714E /* OCMockito.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1774,7 +1776,6 @@
 				6B077384193780580083714E /* InfoPlist.strings */,
 				6B077386193780580083714E /* Prefix.pch */,
 				6B077387193780580083714E /* Typhoon-osxTests-Info.plist */,
-				6B077388193780580083714E /* Typhoon_osxTests.m */,
 			);
 			path = "Typhoon-osxTests";
 			sourceTree = "<group>";
@@ -2203,7 +2204,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B07738F193780810083714E /* Typhoon_osxTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2515,6 +2515,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Tests/osx",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2541,6 +2542,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Tests/osx",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
