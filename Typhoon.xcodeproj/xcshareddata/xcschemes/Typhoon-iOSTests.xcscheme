@@ -37,36 +37,6 @@
                ReferencedContainer = "container:Typhoon.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6B0772FD19377A3D0083714E"
-               BuildableName = "OSXTyphoonTests.xctest"
-               BlueprintName = "OSXTyphoonTests"
-               ReferencedContainer = "container:Typhoon.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6B07732E19377BA70083714E"
-               BuildableName = "Typhoon-OSXTests.xctest"
-               BlueprintName = "Typhoon-OSXTests"
-               ReferencedContainer = "container:Typhoon.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6B07735F19377EAA0083714E"
-               BuildableName = "Typhoon-osxTests.xctest"
-               BlueprintName = "Typhoon-osxTests"
-               ReferencedContainer = "container:Typhoon.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
