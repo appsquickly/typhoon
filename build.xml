@@ -61,7 +61,7 @@
             set -e # fail script if any commands fail
 
             git submodule init
-            git sunmodule update
+            git submodule update
         </echo>
         <chmod perm="+x" file="${temp.dir}/init-submodules.sh"/>
         <exec executable="${temp.dir}/init-submodules.sh" failonerror="true" failifexecutionfails="true"/>
