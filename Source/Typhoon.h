@@ -14,7 +14,6 @@
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonMethod.h"
 #import "TyphoonConfigPostProcessor.h"
-#import "TyphoonFactoryProvider.h"
 #import "TyphoonResource.h"
 #import "TyphoonBundleResource.h"
 #import "TyphoonComponentFactory.h"
