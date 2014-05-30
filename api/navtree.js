@@ -7,7 +7,7 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Functions", "functions_func.html", null ],
         [ "Properties", "functions_prop.html", null ]
       ] ]
     ] ],
@@ -28,8 +28,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_n_s_array_09_typhoon_manual_enumeration_8h.html",
-"globals_eval.html",
-"interface_typhoon_runtime_arguments.html#a8b6ae094e6da2c2c5325dff694e6ab4c"
+"interface_typhoon_component_factory.html#a78a4e4fc448f359100ac16bea350f41a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['scope',['scope',['../interface_typhoon_definition.html#aa4df6569a008392075c9689a73d13729',1,'TyphoonDefinition']]],
-  ['selector',['selector',['../interface_typhoon_method.html#a2df02aed8c27d293dad75d3a8c010705',1,'TyphoonMethod::selector()'],['../interface_typhoon_assisted_factory_method_initializer.html#ab6098efcf36729bc4c92d311c4234865',1,'TyphoonAssistedFactoryMethodInitializer::selector()']]],
+  ['selector',['selector',['../interface_typhoon_method.html#a2df02aed8c27d293dad75d3a8c010705',1,'TyphoonMethod']]],
   ['selectorisadvised_3a',['selectorIsAdvised:',['../interface_typhoon_assembly_selector_adviser.html#a3a84226f163361adc8e91ac260835bb5',1,'TyphoonAssemblySelectorAdviser']]],
   ['setdeallocnotificationinblock_3a',['setDeallocNotificationInBlock:',['../category_n_s_object_07_dealloc_notification_08.html#a2859ee082d6a3638451f9a8fb633d2eb',1,'NSObject(DeallocNotification)']]],
   ['setdeallocnotificationwithkey_3aandblock_3a',['setDeallocNotificationWithKey:andBlock:',['../category_n_s_object_07_dealloc_notification_08.html#a8db17c2e435c1e9c44013420773f97fc',1,'NSObject(DeallocNotification)']]],

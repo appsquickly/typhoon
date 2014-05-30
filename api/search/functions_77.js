@@ -11,8 +11,5 @@ var searchData=
   ['withname_3a',['withName:',['../interface_typhoon_bundle_resource.html#aaa604438fada1faf9566dcc0b7b6182c',1,'TyphoonBundleResource']]],
   ['withname_3ainbundle_3a',['withName:inBundle:',['../interface_typhoon_bundle_resource.html#a011c6f5a6fccb50b29bb8f33403b3076',1,'TyphoonBundleResource']]],
   ['withoption_3amatcher_3a',['withOption:matcher:',['../category_typhoon_definition_07_option_08.html#a32ca1f2c90cffe0024ce1bd11bc6c579',1,'TyphoonDefinition(Option)::withOption:matcher:()'],['../interface_typhoon_definition.html#a32ca1f2c90cffe0024ce1bd11bc6c579',1,'TyphoonDefinition::withOption:matcher:()']]],
-  ['withoption_3ayes_3ano_3a',['withOption:yes:no:',['../category_typhoon_definition_07_option_08.html#a130e5930484a6bf951b176b092634dc2',1,'TyphoonDefinition(Option)::withOption:yes:no:()'],['../interface_typhoon_definition.html#a130e5930484a6bf951b176b092634dc2',1,'TyphoonDefinition::withOption:yes:no:()']]],
-  ['withprotocol_3adependencies_3afactories_3a',['withProtocol:dependencies:factories:',['../interface_typhoon_factory_provider.html#a8ac7b33cbd1228d5fe4a538b0a4457ae',1,'TyphoonFactoryProvider']]],
-  ['withprotocol_3adependencies_3afactory_3a',['withProtocol:dependencies:factory:',['../interface_typhoon_factory_provider.html#a4f5768865f0bdd8302383fce7cadd998',1,'TyphoonFactoryProvider']]],
-  ['withprotocol_3adependencies_3areturns_3a',['withProtocol:dependencies:returns:',['../interface_typhoon_factory_provider.html#a9e6527e8cb3fb335d4d8c6d3d64f41d6',1,'TyphoonFactoryProvider']]]
+  ['withoption_3ayes_3ano_3a',['withOption:yes:no:',['../category_typhoon_definition_07_option_08.html#a130e5930484a6bf951b176b092634dc2',1,'TyphoonDefinition(Option)::withOption:yes:no:()'],['../interface_typhoon_definition.html#a130e5930484a6bf951b176b092634dc2',1,'TyphoonDefinition::withOption:yes:no:()']]]
 ];

@@ -14,6 +14,5 @@ var searchData=
   ['resolvecirculardependencywithcontext_3ablock_3a',['resolveCircularDependencyWithContext:block:',['../interface_typhoon_injection_by_reference.html#aca8eccaa02a62ea9d8d2f2b170e98cb8',1,'TyphoonInjectionByReference']]],
   ['resolvenibnameforclass_3a',['resolveNibNameForClass:',['../interface_typhoon_view_controller_nib_resolver.html#af4194a42c7e6483d5a084e1171a0843e',1,'TyphoonViewControllerNibResolver']]],
   ['resolvereferencewithcontext_3a',['resolveReferenceWithContext:',['../interface_typhoon_injection_by_reference.html#a287d372e0c57b33e5054bde9f8c7b4f9',1,'TyphoonInjectionByReference']]],
-  ['returntype',['returnType',['../interface_typhoon_assisted_factory_method_initializer.html#a87946f97ee933f5ea0097179ebc0df35',1,'TyphoonAssistedFactoryMethodInitializer']]],
   ['runtimeargumentindex',['runtimeArgumentIndex',['../interface_typhoon_injection_by_runtime_argument.html#aabdbebbc4a565a4a9d86b975dc0d8e10',1,'TyphoonInjectionByRuntimeArgument']]]
 ];

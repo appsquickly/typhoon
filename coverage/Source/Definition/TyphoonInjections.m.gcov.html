@@ -101,9 +101,9 @@
 <span class="lineNum">      43 </span><span class="lineCov">        544 :     return [[TyphoonInjectionByRuntimeArgument alloc] initWithArgumentIndex:argumentIndex];</span>
 <span class="lineNum">      44 </span>            : }
 <span class="lineNum">      45 </span>            : 
-<span class="lineNum">      46 </span><span class="lineCov">       1117 : id TyphoonInjectionWithObject(id object) {</span>
-<span class="lineNum">      47 </span><span class="lineCov">       1117 :     return [[TyphoonInjectionByObjectInstance alloc] initWithObjectInstance:object];</span>
-<span class="lineNum">      48 </span><span class="lineCov">       1117 : }</span>
+<span class="lineNum">      46 </span><span class="lineCov">       1109 : id TyphoonInjectionWithObject(id object) {</span>
+<span class="lineNum">      47 </span><span class="lineCov">       1109 :     return [[TyphoonInjectionByObjectInstance alloc] initWithObjectInstance:object];</span>
+<span class="lineNum">      48 </span><span class="lineCov">       1109 : }</span>
 <span class="lineNum">      49 </span>            : 
 <span class="lineNum">      50 </span><span class="lineCov">         11 : id TyphoonInjectionWithReference(NSString *reference) {</span>
 <span class="lineNum">      51 </span><span class="lineCov">         11 :     return [[TyphoonInjectionByReference alloc] initWithReference:reference args:nil];</span>
@@ -114,26 +114,26 @@
 <span class="lineNum">      56 </span><span class="lineCov">         57 :     return [[TyphoonInjectionByConfig alloc] initWithConfigKey:configKey];</span>
 <span class="lineNum">      57 </span><span class="lineCov">         57 : }</span>
 <span class="lineNum">      58 </span>            : 
-<span class="lineNum">      59 </span><span class="lineCov">       3396 : id TyphoonMakeInjectionFromObjectIfNeeded(id objectOrInjection) {</span>
-<span class="lineNum">      60 </span><span class="lineCov">       3396 :     id injection = nil;</span>
+<span class="lineNum">      59 </span><span class="lineCov">       3370 : id TyphoonMakeInjectionFromObjectIfNeeded(id objectOrInjection) {</span>
+<span class="lineNum">      60 </span><span class="lineCov">       3370 :     id injection = nil;</span>
 <span class="lineNum">      61 </span>            : 
-<span class="lineNum">      62 </span><span class="lineCov">       3396 :     if ([objectOrInjection conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)]) {</span>
+<span class="lineNum">      62 </span><span class="lineCov">       3370 :     if ([objectOrInjection conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)]) {</span>
 <span class="lineNum">      63 </span><span class="lineCov">       1816 :         injection = [objectOrInjection typhoonCustomObjectInjection];</span>
 <span class="lineNum">      64 </span><span class="lineCov">       1816 :     }</span>
-<span class="lineNum">      65 </span><span class="lineCov">       1580 :     else if (IsTyphoonInjection(objectOrInjection)) {</span>
-<span class="lineNum">      66 </span><span class="lineCov">        709 :         injection = objectOrInjection;</span>
-<span class="lineNum">      67 </span><span class="lineCov">        709 :     }</span>
+<span class="lineNum">      65 </span><span class="lineCov">       1554 :     else if (IsTyphoonInjection(objectOrInjection)) {</span>
+<span class="lineNum">      66 </span><span class="lineCov">        691 :         injection = objectOrInjection;</span>
+<span class="lineNum">      67 </span><span class="lineCov">        691 :     }</span>
 <span class="lineNum">      68 </span>            :     else {
-<span class="lineNum">      69 </span><span class="lineCov">        871 :         injection = TyphoonInjectionWithObject(objectOrInjection);</span>
+<span class="lineNum">      69 </span><span class="lineCov">        863 :         injection = TyphoonInjectionWithObject(objectOrInjection);</span>
 <span class="lineNum">      70 </span>            :     }
 <span class="lineNum">      71 </span>            : 
-<span class="lineNum">      72 </span><span class="lineCov">       3396 :     return injection;</span>
-<span class="lineNum">      73 </span><span class="lineCov">       3396 : }</span>
+<span class="lineNum">      72 </span><span class="lineCov">       3370 :     return injection;</span>
+<span class="lineNum">      73 </span><span class="lineCov">       3370 : }</span>
 <span class="lineNum">      74 </span>            : 
-<span class="lineNum">      75 </span><span class="lineCov">       2112 : BOOL IsTyphoonInjection(id objectOrInjection) {</span>
-<span class="lineNum">      76 </span><span class="lineCov">       5627 :     return [objectOrInjection conformsToProtocol:@protocol(TyphoonPropertyInjection)] ||</span>
+<span class="lineNum">      75 </span><span class="lineCov">       2086 : BOOL IsTyphoonInjection(id objectOrInjection) {</span>
+<span class="lineNum">      76 </span><span class="lineCov">       5567 :     return [objectOrInjection conformsToProtocol:@protocol(TyphoonPropertyInjection)] ||</span>
 <span class="lineNum">      77 </span>            :         [objectOrInjection conformsToProtocol:@protocol(TyphoonParameterInjection)];
-<span class="lineNum">      78 </span><span class="lineCov">       2112 : }</span>
+<span class="lineNum">      78 </span><span class="lineCov">       2086 : }</span>
 <span class="lineNum">      79 </span>            : 
 </pre>
       </td>

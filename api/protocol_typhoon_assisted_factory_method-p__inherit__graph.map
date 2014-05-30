@@ -1,4 +1,0 @@
-<map id="&lt;TyphoonAssistedFactoryMethod&gt;" name="&lt;TyphoonAssistedFactoryMethod&gt;">
-<area shape="rect" id="node3" href="$interface_typhoon_assisted_factory_method_block.html" title="Describes how a factory method that will use a block as its implementation. " alt="" coords="5,155,240,197"/>
-<area shape="rect" id="node4" href="$interface_typhoon_assisted_factory_method_initializer.html" title="Describes how a factory method will use an init method, by mapping the factory method arguments and f..." alt="" coords="264,155,499,197"/>
-</map>
