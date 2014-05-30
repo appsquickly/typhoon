@@ -24,8 +24,6 @@ NSString *TyphoonTypeStringFor(id classOrProtocol);
 
 @interface TyphoonIntrospectionUtils : NSObject
 
-+ (NSArray *)typeCodesForSelector:(SEL)selector ofClass:(Class)clazz isClassMethod:(BOOL)isClassMethod;
-
 + (TyphoonTypeDescriptor *)typeForPropertyWithName:(NSString *)propertyName inClass:(Class)clazz;
 
 + (SEL)setterForPropertyWithName:(NSString *)property inClass:(Class)clazz;

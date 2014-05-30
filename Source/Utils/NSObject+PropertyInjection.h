@@ -11,8 +11,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class TyphoonTypeDescriptor;
-
 @interface NSObject (PropertyInjection)
 
 - (void)typhoon_injectValue:(id)value forPropertyName:(NSString *)propertyName;

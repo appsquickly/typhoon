@@ -22,24 +22,25 @@
 + (TyphoonTypeDescriptor *)typeForPropertyWithName:(NSString *)propertyName inClass:(Class)clazz
 {
     TyphoonTypeDescriptor *typeDescriptor = nil;
-    objc_property_t propertyReflection = class_getProperty(clazz, [propertyName UTF8String]);
+    objc_property_t propertyReflection = class_getProperty(clazz, [propertyName cStringUsingEncoding:NSASCIIStringEncoding]);
     if (propertyReflection) {
-        const char *attrs = property_getAttributes(propertyReflection);
-        if (attrs == NULL) {
+        const char *attributes = property_getAttributes(propertyReflection);
+
+        if (attributes == NULL) {
             return (NULL);
         }
 
         static char buffer[256];
-        const char *e = strchr(attrs, ',');
+        const char *e = strchr(attributes, ',');
         if (e == NULL) {
             return (NULL);
         }
 
-        int len = (int) (e - attrs);
-        memcpy( buffer, attrs, len );
+        int len = (int) (e - attributes);
+        memcpy( buffer, attributes, len );
         buffer[len] = '\0';
 
-        NSString *typeCode = [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
+        NSString *typeCode = [NSString stringWithCString:buffer encoding:NSASCIIStringEncoding];
         typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:typeCode];
     }
     return typeDescriptor;
@@ -68,31 +69,11 @@
     return setterSelector;
 }
 
-+ (NSArray *)typeCodesForSelector:(SEL)selector ofClass:(Class)clazz isClassMethod:(BOOL)isClassMethod
-{
-    NSMutableArray *typeCodes = [[NSMutableArray alloc] init];
-
-    Method method;
-    if (isClassMethod) {
-        method = class_getClassMethod(clazz, selector);
-    }
-    else {
-        method = class_getInstanceMethod(clazz, selector);
-    }
-    unsigned int argumentCount = method_getNumberOfArguments(method);
-
-    for (int i = 2; i < argumentCount; i++) {
-        char typeInfo[100];
-        method_getArgumentType(method, i, typeInfo, 100);
-        [typeCodes addObject:[NSString stringWithUTF8String:typeInfo]];
-    }
-    return [typeCodes copy];
-}
-
 + (NSMethodSignature *)methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:(SEL)selector
 {
-    NSMutableString *signatureString = [[NSMutableString alloc] initWithFormat:@"%s%s%s", @encode(id), @encode(id), @encode(SEL)];
     NSUInteger argc = [self numberOfArgumentsInSelector:selector];
+    NSMutableString *signatureString = [[NSMutableString alloc] initWithCapacity:argc + 3]; //one symbol per encoded type
+    [signatureString appendFormat:@"%s%s%s", @encode(id), @encode(id), @encode(SEL)];
     for (NSInteger i = 0; i < argc; i++) {
         [signatureString appendString:[NSString stringWithCString:@encode(id) encoding:NSASCIIStringEncoding]];
     }
