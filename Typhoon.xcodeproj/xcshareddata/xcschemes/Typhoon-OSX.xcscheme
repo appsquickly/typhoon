@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6B07735F19377EAA0083714E"
-               BuildableName = "Typhoon-osxTests.xctest"
+               BuildableName = "Typhoon-OSXTests.xctest"
                BlueprintName = "Typhoon-OSXTests"
                ReferencedContainer = "container:Typhoon.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6B07734519377EAA0083714E"
-            BuildableName = "Typhoon-osx.app"
+            BuildableName = "Typhoon-OSX.app"
             BlueprintName = "Typhoon-OSX"
             ReferencedContainer = "container:Typhoon.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6B07734519377EAA0083714E"
-            BuildableName = "Typhoon-osx.app"
+            BuildableName = "Typhoon-OSX.app"
             BlueprintName = "Typhoon-OSX"
             ReferencedContainer = "container:Typhoon.xcodeproj">
          </BuildableReference>

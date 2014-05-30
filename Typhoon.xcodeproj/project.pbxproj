@@ -914,8 +914,8 @@
 		6B077174193704F50083714E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6B077175193704F50083714E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6B077176193704F50083714E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		6B07734619377EAA0083714E /* Typhoon-osx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Typhoon-osx.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B07736019377EAA0083714E /* Typhoon-osxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Typhoon-osxTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B07734619377EAA0083714E /* Typhoon-OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Typhoon-OSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B07736019377EAA0083714E /* Typhoon-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Typhoon-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B077374193780580083714E /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OCHamcrest.framework; sourceTree = "<group>"; };
 		6B077375193780580083714E /* OCMockito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OCMockito.framework; sourceTree = "<group>"; };
 		6B077378193780580083714E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -1000,8 +1000,8 @@
 			children = (
 				6B076E5A1936F5850083714E /* Typhoon-iOS.app */,
 				6B076E7E1936F5850083714E /* Typhoon-iOSTests.xctest */,
-				6B07734619377EAA0083714E /* Typhoon-osx.app */,
-				6B07736019377EAA0083714E /* Typhoon-osxTests.xctest */,
+				6B07734619377EAA0083714E /* Typhoon-OSX.app */,
+				6B07736019377EAA0083714E /* Typhoon-OSXTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2084,7 +2084,7 @@
 			);
 			name = "Typhoon-OSX";
 			productName = "Typhoon-osx";
-			productReference = 6B07734619377EAA0083714E /* Typhoon-osx.app */;
+			productReference = 6B07734619377EAA0083714E /* Typhoon-OSX.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6B07735F19377EAA0083714E /* Typhoon-OSXTests */ = {
@@ -2103,7 +2103,7 @@
 			);
 			name = "Typhoon-OSXTests";
 			productName = "Typhoon-osxTests";
-			productReference = 6B07736019377EAA0083714E /* Typhoon-osxTests.xctest */;
+			productReference = 6B07736019377EAA0083714E /* Typhoon-OSXTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -2942,7 +2942,7 @@
 		6B07737119377EAA0083714E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Typhoon-osx.app/Contents/MacOS/Typhoon-osx";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Typhoon-OSX.app/Contents/MacOS/Typhoon-OSX";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -2969,7 +2969,7 @@
 		6B07737219377EAA0083714E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Typhoon-osx.app/Contents/MacOS/Typhoon-osx";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Typhoon-OSX.app/Contents/MacOS/Typhoon-OSX";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
