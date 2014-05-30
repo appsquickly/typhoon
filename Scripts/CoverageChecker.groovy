@@ -2,7 +2,7 @@
 
 class CoverageReportSummaryParser {
 
-    BigDecimal lineCoveragePercent;
+    Double lineCoveragePercent;
     String lineCoverageDetail;
 
     // ================================================================================================================================== //
@@ -32,7 +32,7 @@ class CoverageReportSummaryParser {
         summary.eachLine {
             if (it.startsWith("  lines......:")) {
                 def lineSummary = it.split("%")
-                lineCoveragePercent = new BigDecimal(lineSummary[0].substring(15))
+                lineCoveragePercent = new Double(lineSummary[0].substring(15))
                 lineCoverageDetail = lineSummary[1].trim()
                 linesFound = true
             }
@@ -53,11 +53,11 @@ try {
                 c(longOpt: 'line-coverage', 'Required line coverage', args: 1, type: String, required: true)
             }
     def opt = cli.parse(args)
-    if (!opt) return
+    if (!opt) System.exit(-1)
     if (opt.h) cli.usage()
 
     String inputFile = opt.getProperty("f")
-    BigDecimal requiredCoverage = new BigDecimal(opt.getProperty("c"))
+    Double requiredCoverage = new Double(opt.getProperty("c"))
 
     println "\nReading coverage file: " + inputFile
     OutputStream os = new ByteArrayOutputStream()
@@ -75,6 +75,7 @@ try {
 }
 catch (RuntimeException e) {
     println "\nError: " + e.getMessage();
+    System.exit(-1)
 }
 
 

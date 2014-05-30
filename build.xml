@@ -9,6 +9,7 @@
     <property name="reports.dir" value="${target.dir}/reports"/>
     <property name="tools.paths" value="/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin"/>
     <property name="scripts.dir" value="${basedir}/Scripts"/>
+    <property name="required.coverage" value="87.0"/>
 
 
     <path id="headers">
@@ -152,6 +153,9 @@
 
     <target name="--build.evaluate" unless="no-fail-tests">
         <fail if="tests.failed" message="Tests failed. Report is at ${reports.dir}/test-results"/>
+        <exec executable="${scripts.dir}/CoverageChecker.groovy" failifexecutionfails="true" failonerror="true">
+            <arg line="-f ${temp.dir}/${module.name}.info -c ${required.coverage}"/>
+        </exec>
     </target>
 
     <target name="--assemble.coverage.data">
