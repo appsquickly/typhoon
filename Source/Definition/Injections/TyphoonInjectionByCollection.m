@@ -9,12 +9,9 @@
 #import "TyphoonInjectionByCollection.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonTypeDescriptor.h"
-#import "TyphoonIntrospectiveNSObject.h"
-
 #import "TyphoonObjectWithCustomInjection.h"
 #import "TyphoonInjections.h"
 #import "TyphoonPropertyInjection.h"
-
 #import "NSArray+TyphoonManualEnumeration.h"
 
 @interface TyphoonInjectionByCollection ()

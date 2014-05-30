@@ -9,7 +9,6 @@
 #import "TyphoonInjectionByDictionary.h"
 #import "TyphoonInjections.h"
 #import "TyphoonIntrospectionUtils.h"
-#import "TyphoonIntrospectiveNSObject.h"
 #import "TyphoonTypeDescriptor.h"
 #import "NSArray+TyphoonManualEnumeration.h"
 

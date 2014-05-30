@@ -202,11 +202,11 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 
 typedef void(^MethodEnumerationBlock)(Method method);
 
-- (void)enumerateMethodsInClass:(Class)class usingBlock:(MethodEnumerationBlock)block;
+- (void)enumerateMethodsInClass:(Class)class usingBlock:(MethodEnumerationBlock)block
 {
-    unsigned int methodCount;
+    NSUInteger methodCount;
     Method *methodList = class_copyMethodList(class, &methodCount);
-    for (int i = 0; i < methodCount; i++) {
+    for (NSUInteger i = 0; i < methodCount; i++) {
         Method method = methodList[i];
         block(method);
     }
@@ -234,7 +234,7 @@ typedef void(^MethodEnumerationBlock)(Method method);
 
 #pragma mark - Advising Registry
 
-+ (BOOL)assemblyIsNotAdvised:(TyphoonAssembly *)assembly;
++ (BOOL)assemblyIsNotAdvised:(TyphoonAssembly *)assembly
 {
     return ![self assemblyIsAdvised:assembly];
 }
@@ -249,12 +249,12 @@ typedef void(^MethodEnumerationBlock)(Method method);
     return [[swizzledDefinitionsByAssemblyClass allKeys] containsObject:NSStringFromClass(class)];
 }
 
-+ (void)markAssemblyMethods:(NSSet *)definitionSelectors asAdvised:(TyphoonAssembly *)assembly;
++ (void)markAssemblyMethods:(NSSet *)definitionSelectors asAdvised:(TyphoonAssembly *)assembly
 {
     [swizzledDefinitionsByAssemblyClass setObject:definitionSelectors forKey:NSStringFromClass([assembly class])];
 }
 
-+ (void)markAssemblyMethodsAsNoLongerAdvised:(TyphoonAssembly *)assembly;
++ (void)markAssemblyMethodsAsNoLongerAdvised:(TyphoonAssembly *)assembly
 {
     [swizzledDefinitionsByAssemblyClass removeObjectForKey:NSStringFromClass([assembly class])];
 }

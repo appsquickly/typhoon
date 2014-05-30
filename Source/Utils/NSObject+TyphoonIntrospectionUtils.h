@@ -13,11 +13,10 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonIntrospectiveNSObject.h"
 
 @class TyphoonTypeDescriptor;
 
-@interface NSObject (TyphoonIntrospectionUtils) <TyphoonIntrospectiveNSObject>
+@interface NSObject (TyphoonIntrospectionUtils)
 
 /**
 * Returns a Class object or `TyphoonTypeDescriptor` in the case of a primitive type.

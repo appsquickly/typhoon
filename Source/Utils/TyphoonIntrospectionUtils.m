@@ -74,7 +74,7 @@
     NSUInteger argc = [self numberOfArgumentsInSelector:selector];
     NSMutableString *signatureString = [[NSMutableString alloc] initWithCapacity:argc + 3]; //one symbol per encoded type
     [signatureString appendFormat:@"%s%s%s", @encode(id), @encode(id), @encode(SEL)];
-    for (NSInteger i = 0; i < argc; i++) {
+    for (NSUInteger i = 0; i < argc; i++) {
         [signatureString appendString:[NSString stringWithCString:@encode(id) encoding:NSASCIIStringEncoding]];
     }
     NSMethodSignature *signature = [NSMethodSignature signatureWithObjCTypes:[signatureString cStringUsingEncoding:NSASCIIStringEncoding]];
@@ -99,10 +99,10 @@
     NSMutableSet *propertyNames = [[NSMutableSet alloc] init];
     
     while (clazz != parent) {
-        unsigned int count = 0;
+        NSUInteger count = 0;
         objc_property_t *properties = class_copyPropertyList(clazz, &count);
         
-        for (int propertyIndex = 0; propertyIndex < count; propertyIndex++) {
+        for (NSUInteger propertyIndex = 0; propertyIndex < count; propertyIndex++) {
             objc_property_t aProperty = properties[propertyIndex];
             NSString *propertyName = [NSString stringWithCString:property_getName(aProperty) encoding:NSUTF8StringEncoding];
             [propertyNames addObject:propertyName];
