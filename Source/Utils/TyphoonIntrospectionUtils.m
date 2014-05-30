@@ -104,16 +104,16 @@
 + (NSUInteger)numberOfArgumentsInSelector:(SEL)selector
 {
     NSString *string = NSStringFromSelector(selector);
-    uint count = 0;
-    for (int i = 0; i < string.length; i++) {
+    NSUInteger count = 0;
+    for (NSUInteger i = 0; i < string.length; i++) {
         if ([string characterAtIndex:i] == ':') {
-                    count++;
+            count++;
         }
     }
     return count;
 }
 
-+ (NSSet *)properiesForClass:(Class)clazz upToParentClass:(Class)parent
++ (NSSet *)propertiesForClass:(Class)clazz upToParentClass:(Class)parent
 {
     NSMutableSet *propertyNames = [[NSMutableSet alloc] init];
     
@@ -135,9 +135,9 @@
     return propertyNames;
 }
 
-+ (NSSet *)properiesForClass:(Class)clazz
++ (NSSet *)propertiesForClass:(Class)clazz
 {
-    return [self properiesForClass:clazz upToParentClass:[NSObject class]];
+    return [self propertiesForClass:clazz upToParentClass:[NSObject class]];
 }
 
 #pragma mark - Utils
@@ -157,7 +157,7 @@
     NSRange setterRange;
     setterRange.location = setterBeginningRange.location + setterBeginningRange.length;
     
-    NSInteger endLocation = [attributes length];
+    NSUInteger endLocation = [attributes length];
     
     NSRange setterEndingRange = [attributes rangeOfString:@"," options:0 range:NSMakeRange(setterRange.location, [attributes length] - setterRange.location)];
     

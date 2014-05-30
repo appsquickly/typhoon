@@ -22,8 +22,6 @@ TYPHOON_LINK_CATEGORY(NSObject_TyphoonIntrospectionUtils)
 #import "TyphoonStringUtils.h"
 
 
-static char const *const TYPHOON_CIRCULAR_DEPENDENCIES_KEY;
-
 @implementation NSObject (TyphoonIntrospectionUtils)
 
 - (TyphoonTypeDescriptor *)typhoon_typeForPropertyWithName:(NSString *)propertyName;
@@ -33,13 +31,15 @@ static char const *const TYPHOON_CIRCULAR_DEPENDENCIES_KEY;
 
 - (NSArray *)typhoon_parameterNamesForSelector:(SEL)selector
 {
-    if (![TyphoonStringUtils string:NSStringFromSelector(selector) containsString:@":"]) {
+    NSUInteger parametersCount = [TyphoonIntrospectionUtils numberOfArgumentsInSelector:selector];
+
+    if (parametersCount == 0) {
         return @[];
     }
 
-    NSMutableArray *parameterNames = [[NSMutableArray alloc] init];
+    NSMutableArray *parameterNames = [[NSMutableArray alloc] initWithCapacity:parametersCount];
     NSArray *parameters = [NSStringFromSelector(selector) componentsSeparatedByString:@":"];
-    for (int i = 0; i < [parameters count]; i++) {
+    for (NSUInteger i = 0; i < [parameters count]; i++) {
         NSString *parameterName = [parameters objectAtIndex:i];
         if (i == 0) {
             parameterName = [[parameterName componentsSeparatedByString:@"With"] lastObject];
@@ -49,28 +49,12 @@ static char const *const TYPHOON_CIRCULAR_DEPENDENCIES_KEY;
             [parameterNames addObject:parameterName];
         }
     }
-    return [parameterNames copy];
+    return parameterNames;
 }
 
 - (NSString *)stringByLowerCasingFirstLetter:(NSString *)name
 {
     return [name stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[[name substringToIndex:1] lowercaseString]];
 }
-
-- (NSArray *)typhoon_typeCodesForSelector:(SEL)selector
-{
-    return [TyphoonIntrospectionUtils typeCodesForSelector:selector ofClass:[self class] isClassMethod:NO];
-}
-
-- (NSMutableDictionary *)typhoon_circularDependentProperties
-{
-    NSMutableDictionary *circularDependentProperties = objc_getAssociatedObject(self, &TYPHOON_CIRCULAR_DEPENDENCIES_KEY);
-    if (circularDependentProperties == nil) {
-        circularDependentProperties = [[NSMutableDictionary alloc] init];
-        objc_setAssociatedObject(self, &TYPHOON_CIRCULAR_DEPENDENCIES_KEY, circularDependentProperties, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    }
-    return circularDependentProperties;
-}
-
 
 @end

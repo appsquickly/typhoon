@@ -168,7 +168,7 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 - (NSSet *)propertySetterSelectorsForClass:(Class)clazz
 {
     NSMutableSet *propertySetters = [NSMutableSet new];
-    NSSet *properties = [TyphoonIntrospectionUtils properiesForClass:clazz upToParentClass:[TyphoonAssembly class]];
+    NSSet *properties = [TyphoonIntrospectionUtils propertiesForClass:clazz upToParentClass:[TyphoonAssembly class]];
     for (NSString *propertyName in properties) {
         SEL propertySetter = [TyphoonIntrospectionUtils setterForPropertyWithName:propertyName inClass:clazz];
         if (propertySetter) {
