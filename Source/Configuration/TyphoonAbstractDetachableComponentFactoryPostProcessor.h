@@ -20,8 +20,6 @@
     NSMutableArray *_rollbackDefinitions;
 }
 
-@property(nonatomic, strong, readonly) NSArray *rollbackDefinitions;
-
 /**
  Restores a component factory back to its initial state after post processing.
  */
