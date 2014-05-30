@@ -516,7 +516,6 @@
 		6B076F011936F63A0083714E /* TyphoonRuntimeArguments.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonRuntimeArguments.h; sourceTree = "<group>"; };
 		6B076F021936F63A0083714E /* TyphoonRuntimeArguments.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TyphoonRuntimeArguments.m; sourceTree = "<group>"; };
 		6B076F041936F63A0083714E /* NSObject+FactoryHooks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+FactoryHooks.h"; sourceTree = "<group>"; };
-		6B076F071936F63A0083714E /* TyphoonInstanceRegister.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonInstanceRegister.h; sourceTree = "<group>"; };
 		6B076F081936F63A0083714E /* NSInvocation+TCFInstanceBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+TCFInstanceBuilder.h"; sourceTree = "<group>"; };
 		6B076F091936F63A0083714E /* NSInvocation+TCFInstanceBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+TCFInstanceBuilder.m"; sourceTree = "<group>"; };
 		6B076F0A1936F63A0083714E /* NSInvocation+TCFUnwrapValues.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+TCFUnwrapValues.h"; sourceTree = "<group>"; };
@@ -1099,7 +1098,6 @@
 		6B076F051936F63A0083714E /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				6B076F061936F63A0083714E /* InstanceRegister */,
 				6B076F081936F63A0083714E /* NSInvocation+TCFInstanceBuilder.h */,
 				6B076F091936F63A0083714E /* NSInvocation+TCFInstanceBuilder.m */,
 				6B076F0A1936F63A0083714E /* NSInvocation+TCFUnwrapValues.h */,
@@ -1121,14 +1119,6 @@
 				6B076F1B1936F63A0083714E /* TyphoonStackElement.m */,
 			);
 			path = Internal;
-			sourceTree = "<group>";
-		};
-		6B076F061936F63A0083714E /* InstanceRegister */ = {
-			isa = PBXGroup;
-			children = (
-				6B076F071936F63A0083714E /* TyphoonInstanceRegister.h */,
-			);
-			path = InstanceRegister;
 			sourceTree = "<group>";
 		};
 		6B076F1C1936F63A0083714E /* Pool */ = {
@@ -2474,7 +2464,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/iOS/Typhoon-iOS/Prefix.pch";
@@ -2495,7 +2485,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/iOS/Typhoon-iOS/Prefix.pch";
@@ -2628,6 +2618,7 @@
 					"$(PROJECT_DIR)/Tests/osx",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/osx/Typhoon-osxTests/Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2656,6 +2647,7 @@
 					"$(PROJECT_DIR)/Tests/osx",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/osx/Typhoon-osxTests/Prefix.pch";
 				GCC_WARN_UNDECLARED_SELECTOR = NO;

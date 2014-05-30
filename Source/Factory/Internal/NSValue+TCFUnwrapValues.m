@@ -14,8 +14,10 @@
 
 @implementation NSValue (TCFUnwrapValues)
 
-- (void)typhoon_setAsArgumentWithType:(const char *)argumentType forInvocation:(NSInvocation *)invocation atIndex:(NSUInteger)index
+- (void)typhoon_setAsArgumentForInvocation:(NSInvocation *)invocation atIndex:(NSUInteger)index
 {
+    const char *argumentType = [[invocation methodSignature] getArgumentTypeAtIndex:index];
+
     if (CStringEquals(argumentType, @encode(id))) {
         id selfRef = self;
         [invocation setArgument:&selfRef atIndex:index];
@@ -30,13 +32,11 @@
             NSGetSizeAndAlignment(valueType, &valueSize, NULL);
             NSAssert(valueSize <= argumentSize, @"Trying to inject NSValue with type of different size ('%s' expected, but '%s' passed)", argumentType, valueType);
         }
-        
-        void *buffer = malloc(argumentSize);
-        
+
+        void *buffer = alloca(argumentSize);
+
         [self getValue:buffer];
         [invocation setArgument:buffer atIndex:index];
-        
-        free(buffer);
     }
 }
 
@@ -44,8 +44,14 @@
 
 @implementation NSNumber (TCFUnwrapValues)
 
-- (void)typhoon_setAsArgumentWithType:(const char *)argumentType forInvocation:(NSInvocation *)invocation atIndex:(NSUInteger)index
+- (void)typhoon_setAsArgumentForInvocation:(NSInvocation *)invocation atIndex:(NSUInteger)index
 {
+    const char *argumentType = [[invocation methodSignature] getArgumentTypeAtIndex:index];
+
+    /** Doing this type switching below because when we call NSNumber's methods like 'doubleValue' or 'floatValue',
+    * value will be converted if necessary. (instead of approach when we just copy bytes - see NSValue category above)
+    * That will handle situation when for example argumentType is float, but NSNumber's type is double */
+
     if (CStringEquals(argumentType, @encode(id))) {
         id converted = self;
         [invocation setArgument:&converted atIndex:index];

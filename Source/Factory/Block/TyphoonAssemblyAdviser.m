@@ -204,9 +204,9 @@ typedef void(^MethodEnumerationBlock)(Method method);
 
 - (void)enumerateMethodsInClass:(Class)class usingBlock:(MethodEnumerationBlock)block
 {
-    NSUInteger methodCount;
+    unsigned int methodCount;
     Method *methodList = class_copyMethodList(class, &methodCount);
-    for (NSUInteger i = 0; i < methodCount; i++) {
+    for (unsigned int i = 0; i < methodCount; i++) {
         Method method = methodList[i];
         block(method);
     }
