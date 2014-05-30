@@ -12,7 +12,6 @@ var searchData=
   ['setterforpropertywithname_3ainclass_3a',['setterForPropertyWithName:inClass:',['../interface_typhoon_introspection_utils.html#aa190816afd6c690e83b2bcff5b1c6e20',1,'TyphoonIntrospectionUtils']]],
   ['shared',['shared',['../interface_typhoon_type_converter_registry.html#ae56af9a302e744df8d3482d52f46c6e7',1,'TyphoonTypeConverterRegistry']]],
   ['singletons',['singletons',['../interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785',1,'TyphoonComponentFactory']]],
-  ['string_3acontainsstring_3a',['string:containsString:',['../interface_typhoon_string_utils.html#a1f6f8cb521a088d0846b90dac980acbe',1,'TyphoonStringUtils']]],
   ['structuretypename',['structureTypeName',['../interface_typhoon_type_descriptor.html#a51e40b95dc79d9b28a3351efdc5ea7f9',1,'TyphoonTypeDescriptor']]],
   ['supportedtype',['supportedType',['../protocol_typhoon_type_converter-p.html#a6060c2f9ab99d7b68383c80c8403a6bf',1,'TyphoonTypeConverter-p']]]
 ];

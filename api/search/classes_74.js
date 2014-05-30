@@ -43,7 +43,6 @@ var searchData=
   ['typhoonpropertyinjection_2dp',['TyphoonPropertyInjection-p',['../protocol_typhoon_property_injection-p.html',1,'']]],
   ['typhoonresource_2dp',['TyphoonResource-p',['../protocol_typhoon_resource-p.html',1,'']]],
   ['typhoonruntimearguments',['TyphoonRuntimeArguments',['../interface_typhoon_runtime_arguments.html',1,'']]],
-  ['typhoonstringutils',['TyphoonStringUtils',['../interface_typhoon_string_utils.html',1,'']]],
   ['typhoontestutils',['TyphoonTestUtils',['../interface_typhoon_test_utils.html',1,'']]],
   ['typhoontypeconverter_2dp',['TyphoonTypeConverter-p',['../protocol_typhoon_type_converter-p.html',1,'']]],
   ['typhoontypeconverterregistry',['TyphoonTypeConverterRegistry',['../interface_typhoon_type_converter_registry.html',1,'']]],

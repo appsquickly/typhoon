@@ -621,24 +621,9 @@
             <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
             <Subnodes>
              <Node>
-              <Name>typhoon_circularDependentProperties</Name>
-              <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
-              <Anchor>a4d7eff9af058415e50201da8ce69b1b2</Anchor>
-             </Node>
-             <Node>
               <Name>typhoon_parameterNamesForSelector:</Name>
               <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
               <Anchor>a4733974b1aeabdfa6277a85b90a3ff2b</Anchor>
-             </Node>
-             <Node>
-              <Name>typhoon_typeCodesForSelector:</Name>
-              <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
-              <Anchor>ad21f80a500e072fc9ec900f2a44edfdd</Anchor>
-             </Node>
-             <Node>
-              <Name>typhoon_typeCodesForSelector:onClass:</Name>
-              <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
-              <Anchor>a454e6284e9e435efcc042f7572fc7259</Anchor>
              </Node>
              <Node>
               <Name>typhoon_typeForPropertyWithName:</Name>
@@ -1409,14 +1394,14 @@
               <Anchor>abfae072f0c04b9ccdf3f62f5d7ea34eb</Anchor>
              </Node>
              <Node>
-              <Name>properiesForClass:</Name>
+              <Name>propertiesForClass:</Name>
               <Path>interface_typhoon_introspection_utils.html</Path>
-              <Anchor>a3dae6009af1451cdbaa314b9eead140d</Anchor>
+              <Anchor>af11e00d3df21c58627fd67be08a7200d</Anchor>
              </Node>
              <Node>
-              <Name>properiesForClass:upToParentClass:</Name>
+              <Name>propertiesForClass:upToParentClass:</Name>
               <Path>interface_typhoon_introspection_utils.html</Path>
-              <Anchor>a98fee5879ee13bbaa36ed30e37ed8005</Anchor>
+              <Anchor>a32614ce91e195e021e2517c68b8aeb71</Anchor>
              </Node>
              <Node>
               <Name>setterForPropertyWithName:inClass:</Name>
@@ -1439,11 +1424,6 @@
             <Name>&lt;TyphoonIntrospectiveNSObject&gt;</Name>
             <Path>protocol_typhoon_introspective_n_s_object-p.html</Path>
             <Subnodes>
-             <Node>
-              <Name>typhoon_circularDependentProperties</Name>
-              <Path>protocol_typhoon_introspective_n_s_object-p.html</Path>
-              <Anchor>abd0135219cef6f06dea4f73751c0b3eb</Anchor>
-             </Node>
              <Node>
               <Name>typhoon_typeForPropertyWithName:</Name>
               <Path>protocol_typhoon_introspective_n_s_object-p.html</Path>
@@ -1754,52 +1734,6 @@
               <Name>replaceArgumentAtIndex:withArgument:</Name>
               <Path>interface_typhoon_runtime_arguments.html</Path>
               <Anchor>a8b6ae094e6da2c2c5325dff694e6ab4c</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>TyphoonStringUtils</Name>
-            <Path>interface_typhoon_string_utils.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>isAlpha:</Name>
-              <Path>interface_typhoon_string_utils.html</Path>
-              <Anchor>a83ee753cbf2bf04785a7f5186a5046e9</Anchor>
-             </Node>
-             <Node>
-              <Name>isAlphanumeric:</Name>
-              <Path>interface_typhoon_string_utils.html</Path>
-              <Anchor>adff86900914424fd9f06995406c22004</Anchor>
-             </Node>
-             <Node>
-              <Name>isAlphaOrSpaces:</Name>
-              <Path>interface_typhoon_string_utils.html</Path>
-              <Anchor>a314c331e7af05b3118ee17d6093866e3</Anchor>
-             </Node>
-             <Node>
-              <Name>isEmailAddress:</Name>
-              <Path>interface_typhoon_string_utils.html</Path>
-              <Anchor>a994c2ac4c642149971e5e6fc71ba1961</Anchor>
-             </Node>
-             <Node>
-              <Name>isEmpty:</Name>
-              <Path>interface_typhoon_string_utils.html</Path>
-              <Anchor>a2477c8f65cb8bc973019489ad5330146</Anchor>
-             </Node>
-             <Node>
-              <Name>isMemberOfCharacterSet:characterSet:</Name>
-              <Path>interface_typhoon_string_utils.html</Path>
-              <Anchor>a08f81c8099ae222c7999617b0f82ab9c</Anchor>
-             </Node>
-             <Node>
-              <Name>isNotEmpty:</Name>
-              <Path>interface_typhoon_string_utils.html</Path>
-              <Anchor>a4a8dfea7013110741f99da56d04e33b7</Anchor>
-             </Node>
-             <Node>
-              <Name>string:containsString:</Name>
-              <Path>interface_typhoon_string_utils.html</Path>
-              <Anchor>a1f6f8cb521a088d0846b90dac980acbe</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -2242,10 +2176,6 @@
               <Path>interface_typhoon_runtime_arguments.html</Path>
              </Node>
              <Node>
-              <Name>TyphoonStringUtils</Name>
-              <Path>interface_typhoon_string_utils.html</Path>
-             </Node>
-             <Node>
               <Name>TyphoonTestUtils</Name>
               <Path>interface_typhoon_test_utils.html</Path>
              </Node>
@@ -2561,24 +2491,9 @@
               <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
               <Subnodes>
                <Node>
-                <Name>typhoon_circularDependentProperties</Name>
-                <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
-                <Anchor>a4d7eff9af058415e50201da8ce69b1b2</Anchor>
-               </Node>
-               <Node>
                 <Name>typhoon_parameterNamesForSelector:</Name>
                 <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
                 <Anchor>a4733974b1aeabdfa6277a85b90a3ff2b</Anchor>
-               </Node>
-               <Node>
-                <Name>typhoon_typeCodesForSelector:</Name>
-                <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
-                <Anchor>ad21f80a500e072fc9ec900f2a44edfdd</Anchor>
-               </Node>
-               <Node>
-                <Name>typhoon_typeCodesForSelector:onClass:</Name>
-                <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
-                <Anchor>a454e6284e9e435efcc042f7572fc7259</Anchor>
                </Node>
                <Node>
                 <Name>typhoon_typeForPropertyWithName:</Name>
@@ -3379,14 +3294,14 @@
                 <Anchor>abfae072f0c04b9ccdf3f62f5d7ea34eb</Anchor>
                </Node>
                <Node>
-                <Name>properiesForClass:</Name>
+                <Name>propertiesForClass:</Name>
                 <Path>interface_typhoon_introspection_utils.html</Path>
-                <Anchor>a3dae6009af1451cdbaa314b9eead140d</Anchor>
+                <Anchor>af11e00d3df21c58627fd67be08a7200d</Anchor>
                </Node>
                <Node>
-                <Name>properiesForClass:upToParentClass:</Name>
+                <Name>propertiesForClass:upToParentClass:</Name>
                 <Path>interface_typhoon_introspection_utils.html</Path>
-                <Anchor>a98fee5879ee13bbaa36ed30e37ed8005</Anchor>
+                <Anchor>a32614ce91e195e021e2517c68b8aeb71</Anchor>
                </Node>
                <Node>
                 <Name>setterForPropertyWithName:inClass:</Name>
@@ -3425,11 +3340,6 @@
               <Name>&lt;TyphoonIntrospectiveNSObject&gt;</Name>
               <Path>protocol_typhoon_introspective_n_s_object-p.html</Path>
               <Subnodes>
-               <Node>
-                <Name>typhoon_circularDependentProperties</Name>
-                <Path>protocol_typhoon_introspective_n_s_object-p.html</Path>
-                <Anchor>abd0135219cef6f06dea4f73751c0b3eb</Anchor>
-               </Node>
                <Node>
                 <Name>typhoon_typeForPropertyWithName:</Name>
                 <Path>protocol_typhoon_introspective_n_s_object-p.html</Path>
@@ -3491,10 +3401,6 @@
            <Node>
             <Name>TyphoonMethodSwizzler.h</Name>
             <Path>_typhoon_method_swizzler_8h.html</Path>
-           </Node>
-           <Node>
-            <Name>TyphoonMiscUtils.h</Name>
-            <Path>_typhoon_misc_utils_8h.html</Path>
            </Node>
            <Node>
             <Name>TyphoonNSURLTypeConverter.h</Name>
@@ -3804,54 +3710,6 @@
            <Node>
             <Name>TyphoonStringUtils.h</Name>
             <Path>_typhoon_string_utils_8h.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>TyphoonStringUtils</Name>
-              <Path>interface_typhoon_string_utils.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>isAlpha:</Name>
-                <Path>interface_typhoon_string_utils.html</Path>
-                <Anchor>a83ee753cbf2bf04785a7f5186a5046e9</Anchor>
-               </Node>
-               <Node>
-                <Name>isAlphanumeric:</Name>
-                <Path>interface_typhoon_string_utils.html</Path>
-                <Anchor>adff86900914424fd9f06995406c22004</Anchor>
-               </Node>
-               <Node>
-                <Name>isAlphaOrSpaces:</Name>
-                <Path>interface_typhoon_string_utils.html</Path>
-                <Anchor>a314c331e7af05b3118ee17d6093866e3</Anchor>
-               </Node>
-               <Node>
-                <Name>isEmailAddress:</Name>
-                <Path>interface_typhoon_string_utils.html</Path>
-                <Anchor>a994c2ac4c642149971e5e6fc71ba1961</Anchor>
-               </Node>
-               <Node>
-                <Name>isEmpty:</Name>
-                <Path>interface_typhoon_string_utils.html</Path>
-                <Anchor>a2477c8f65cb8bc973019489ad5330146</Anchor>
-               </Node>
-               <Node>
-                <Name>isMemberOfCharacterSet:characterSet:</Name>
-                <Path>interface_typhoon_string_utils.html</Path>
-                <Anchor>a08f81c8099ae222c7999617b0f82ab9c</Anchor>
-               </Node>
-               <Node>
-                <Name>isNotEmpty:</Name>
-                <Path>interface_typhoon_string_utils.html</Path>
-                <Anchor>a4a8dfea7013110741f99da56d04e33b7</Anchor>
-               </Node>
-               <Node>
-                <Name>string:containsString:</Name>
-                <Path>interface_typhoon_string_utils.html</Path>
-                <Anchor>a1f6f8cb521a088d0846b90dac980acbe</Anchor>
-               </Node>
-              </Subnodes>
-             </Node>
-            </Subnodes>
            </Node>
            <Node>
             <Name>TyphoonSwizzler.h</Name>
@@ -4145,10 +4003,6 @@
               <Path>interface_typhoon_u_i_color_type_converter.html</Path>
              </Node>
             </Subnodes>
-           </Node>
-           <Node>
-            <Name>TyphoonURLUtils.h</Name>
-            <Path>_typhoon_u_r_l_utils_8h.html</Path>
            </Node>
            <Node>
             <Name>TyphoonViewControllerNibResolver.h</Name>

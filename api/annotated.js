@@ -48,7 +48,6 @@ var annotated =
     [ "<TyphoonPropertyInjection>", "protocol_typhoon_property_injection-p.html", "protocol_typhoon_property_injection-p" ],
     [ "<TyphoonResource>", "protocol_typhoon_resource-p.html", "protocol_typhoon_resource-p" ],
     [ "TyphoonRuntimeArguments", "interface_typhoon_runtime_arguments.html", "interface_typhoon_runtime_arguments" ],
-    [ "TyphoonStringUtils", "interface_typhoon_string_utils.html", "interface_typhoon_string_utils" ],
     [ "TyphoonTestUtils", "interface_typhoon_test_utils.html", "interface_typhoon_test_utils" ],
     [ "<TyphoonTypeConverter>", "protocol_typhoon_type_converter-p.html", "protocol_typhoon_type_converter-p" ],
     [ "TyphoonTypeConverterRegistry", "interface_typhoon_type_converter_registry.html", "interface_typhoon_type_converter_registry" ],

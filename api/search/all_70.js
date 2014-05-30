@@ -9,8 +9,8 @@ var searchData=
   ['postprocesscomponentfactory_3a',['postProcessComponentFactory:',['../protocol_typhoon_component_factory_post_processor-p.html#ab64811c01a873e3a727f017543b29223',1,'TyphoonComponentFactoryPostProcessor-p']]],
   ['primitivetype',['primitiveType',['../interface_typhoon_type_descriptor.html#aa79452cdaecc4ee661930c7c3e59888b',1,'TyphoonTypeDescriptor']]],
   ['primitivetypeconverter',['primitiveTypeConverter',['../interface_typhoon_type_converter_registry.html#aa1ff494eddffb2c89e139911aaaaa24a',1,'TyphoonTypeConverterRegistry']]],
-  ['properiesforclass_3a',['properiesForClass:',['../interface_typhoon_introspection_utils.html#a3dae6009af1451cdbaa314b9eead140d',1,'TyphoonIntrospectionUtils']]],
-  ['properiesforclass_3auptoparentclass_3a',['properiesForClass:upToParentClass:',['../interface_typhoon_introspection_utils.html#a98fee5879ee13bbaa36ed30e37ed8005',1,'TyphoonIntrospectionUtils']]],
+  ['propertiesforclass_3a',['propertiesForClass:',['../interface_typhoon_introspection_utils.html#af11e00d3df21c58627fd67be08a7200d',1,'TyphoonIntrospectionUtils']]],
+  ['propertiesforclass_3auptoparentclass_3a',['propertiesForClass:upToParentClass:',['../interface_typhoon_introspection_utils.html#a32614ce91e195e021e2517c68b8aeb71',1,'TyphoonIntrospectionUtils']]],
   ['property_3a',['property:',['../interface_typhoon_definition.html#addb9006c665061a41e8cad2db77ad9b1',1,'TyphoonDefinition']]],
   ['propertyname',['propertyName',['../interface_typhoon_abstract_injection.html#a3ff2ed4760b12b6b24971d591a5b49a9',1,'TyphoonAbstractInjection::propertyName()'],['../protocol_typhoon_property_injection-p.html#ae9f98c0e8d1542ae0107fb7be1010c14',1,'TyphoonPropertyInjection-p::propertyName()']]],
   ['protocol',['protocol',['../interface_typhoon_type_descriptor.html#afaa27415dcb9f128aa557fee5bdd5847',1,'TyphoonTypeDescriptor']]]

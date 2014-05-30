@@ -70,7 +70,6 @@ var hierarchy =
         [ "TyphoonBundleResource", "interface_typhoon_bundle_resource.html", null ]
       ] ],
       [ "TyphoonRuntimeArguments", "interface_typhoon_runtime_arguments.html", null ],
-      [ "TyphoonStringUtils", "interface_typhoon_string_utils.html", null ],
       [ "TyphoonTestUtils", "interface_typhoon_test_utils.html", null ],
       [ "<TyphoonTypeConverter>", "protocol_typhoon_type_converter-p.html", [
         [ "TyphoonNSURLTypeConverter", "interface_typhoon_n_s_u_r_l_type_converter.html", null ],

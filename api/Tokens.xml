@@ -813,26 +813,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>typhoon_circularDependentProperties</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>NSObject(TyphoonIntrospectionUtils)</Scope>
-    </TokenIdentifier>
-    <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
-    <Anchor>a4d7eff9af058415e50201da8ce69b1b2</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>typhoon_circularDependentProperties</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>intfp</Type>
-      <Scope>TyphoonIntrospectiveNSObject-p</Scope>
-    </TokenIdentifier>
-    <Path>protocol_typhoon_introspective_n_s_object-p.html</Path>
-    <Anchor>abd0135219cef6f06dea4f73751c0b3eb</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>typhoon_parameterNamesForSelector:</Name>
       <APILanguage>occ</APILanguage>
       <Type>func</Type>
@@ -840,28 +820,6 @@
     </TokenIdentifier>
     <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
     <Anchor>a4733974b1aeabdfa6277a85b90a3ff2b</Anchor>
-    <DeclaredIn>NSObject+TyphoonIntrospectionUtils.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>typhoon_typeCodesForSelector:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>func</Type>
-      <Scope>NSObject(TyphoonIntrospectionUtils)</Scope>
-    </TokenIdentifier>
-    <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
-    <Anchor>ad21f80a500e072fc9ec900f2a44edfdd</Anchor>
-    <DeclaredIn>NSObject+TyphoonIntrospectionUtils.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>typhoon_typeCodesForSelector:onClass:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>func</Type>
-      <Scope>NSObject(TyphoonIntrospectionUtils)</Scope>
-    </TokenIdentifier>
-    <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
-    <Anchor>a454e6284e9e435efcc042f7572fc7259</Anchor>
     <DeclaredIn>NSObject+TyphoonIntrospectionUtils.h</DeclaredIn>
   </Token>
   <Token>
@@ -3727,24 +3685,24 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>properiesForClass:</Name>
+      <Name>propertiesForClass:</Name>
       <APILanguage>occ</APILanguage>
       <Type>clm</Type>
       <Scope>TyphoonIntrospectionUtils</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_introspection_utils.html</Path>
-    <Anchor>a3dae6009af1451cdbaa314b9eead140d</Anchor>
+    <Anchor>af11e00d3df21c58627fd67be08a7200d</Anchor>
     <DeclaredIn>TyphoonIntrospectionUtils.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>properiesForClass:upToParentClass:</Name>
+      <Name>propertiesForClass:upToParentClass:</Name>
       <APILanguage>occ</APILanguage>
       <Type>clm</Type>
       <Scope>TyphoonIntrospectionUtils</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_introspection_utils.html</Path>
-    <Anchor>a98fee5879ee13bbaa36ed30e37ed8005</Anchor>
+    <Anchor>a32614ce91e195e021e2517c68b8aeb71</Anchor>
     <DeclaredIn>TyphoonIntrospectionUtils.h</DeclaredIn>
   </Token>
   <Token>
@@ -3789,16 +3747,6 @@
     </TokenIdentifier>
     <Path>protocol_typhoon_introspective_n_s_object-p.html</Path>
     <DeclaredIn>TyphoonIntrospectiveNSObject.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>typhoon_circularDependentProperties</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>intfp</Type>
-      <Scope>TyphoonIntrospectiveNSObject-p</Scope>
-    </TokenIdentifier>
-    <Path>protocol_typhoon_introspective_n_s_object-p.html</Path>
-    <Anchor>abd0135219cef6f06dea4f73751c0b3eb</Anchor>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -4522,104 +4470,6 @@
     <Path>interface_typhoon_runtime_arguments.html</Path>
     <Anchor>a8b6ae094e6da2c2c5325dff694e6ab4c</Anchor>
     <DeclaredIn>TyphoonRuntimeArguments.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>TyphoonStringUtils</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cl</Type>
-      <Scope>TyphoonStringUtils</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_string_utils.html</Path>
-    <DeclaredIn>TyphoonStringUtils.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>isAlpha:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonStringUtils</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_string_utils.html</Path>
-    <Anchor>a83ee753cbf2bf04785a7f5186a5046e9</Anchor>
-    <DeclaredIn>TyphoonStringUtils.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>isAlphanumeric:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonStringUtils</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_string_utils.html</Path>
-    <Anchor>adff86900914424fd9f06995406c22004</Anchor>
-    <DeclaredIn>TyphoonStringUtils.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>isAlphaOrSpaces:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonStringUtils</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_string_utils.html</Path>
-    <Anchor>a314c331e7af05b3118ee17d6093866e3</Anchor>
-    <DeclaredIn>TyphoonStringUtils.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>isEmailAddress:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonStringUtils</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_string_utils.html</Path>
-    <Anchor>a994c2ac4c642149971e5e6fc71ba1961</Anchor>
-    <DeclaredIn>TyphoonStringUtils.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>isEmpty:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonStringUtils</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_string_utils.html</Path>
-    <Anchor>a2477c8f65cb8bc973019489ad5330146</Anchor>
-    <DeclaredIn>TyphoonStringUtils.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>isMemberOfCharacterSet:characterSet:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonStringUtils</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_string_utils.html</Path>
-    <Anchor>a08f81c8099ae222c7999617b0f82ab9c</Anchor>
-    <DeclaredIn>TyphoonStringUtils.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>isNotEmpty:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonStringUtils</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_string_utils.html</Path>
-    <Anchor>a4a8dfea7013110741f99da56d04e33b7</Anchor>
-    <DeclaredIn>TyphoonStringUtils.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>string:containsString:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonStringUtils</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_string_utils.html</Path>
-    <Anchor>a1f6f8cb521a088d0846b90dac980acbe</Anchor>
-    <DeclaredIn>TyphoonStringUtils.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
