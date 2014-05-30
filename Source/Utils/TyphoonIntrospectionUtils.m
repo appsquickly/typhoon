@@ -52,7 +52,6 @@
     
     objc_property_t property = class_getProperty(clazz, [propertyName cStringUsingEncoding:NSASCIIStringEncoding]);
     if (property) {
-        
         const char *attributes = property_getAttributes(property);
         
         NSString *attributesString = [NSString stringWithCString:attributes encoding:NSASCIIStringEncoding];
@@ -63,6 +62,13 @@
                 selectorString = [self defaultSetterForPropertyWithName:propertyName];
             }
             setterSelector = NSSelectorFromString(selectorString);
+        }
+    }
+    else if (propertyName.length > 0) {
+        NSString *selectorString = [self defaultSetterForPropertyWithName:propertyName];
+        SEL aSelector = NSSelectorFromString(selectorString);
+        if (class_getInstanceMethod(clazz, aSelector)) {
+            setterSelector = aSelector;
         }
     }
 

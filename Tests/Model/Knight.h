@@ -47,4 +47,9 @@
 
 + (id)knightWithDamselsRescued:(NSUInteger)damselsRescued;
 
+- (void)setFavoriteQuest:(id<Quest>)quest;
+
+- (id<Quest>)favoriteQuest;
+
+
 @end
