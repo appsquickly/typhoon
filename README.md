@@ -156,7 +156,7 @@ ensure that the class is in the required state before and after properties are s
 
 Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods</a> (recommended). Alternatively, add the source files to your project's target or set up an Xcode workspace. 
 
-# Reports 
+# Build Status 
 ![Build Status](http://www.typhoonframework.org/docs/latest/build-status/build-status.png?q=zz)
 
 
