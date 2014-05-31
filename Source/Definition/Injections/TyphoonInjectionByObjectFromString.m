@@ -11,7 +11,6 @@
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonPrimitiveTypeConverter.h"
 #import "TyphoonTypeConverterRegistry.h"
-#import "TyphoonIntrospectiveNSObject.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonDefinition.h"
 #import "NSInvocation+TCFUnwrapValues.h"

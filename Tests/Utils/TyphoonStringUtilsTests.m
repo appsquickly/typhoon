@@ -22,50 +22,20 @@
 
 @implementation TyphoonStringUtilsTests
 
-- (void)test_isAlpha
+- (void)test_same_strings
 {
-    XCTAssertFalse([TyphoonStringUtils isAlpha:@"1234"]);
-    XCTAssertFalse([TyphoonStringUtils isAlpha:@"abc1234"]);
-    XCTAssertTrue([TyphoonStringUtils isAlpha:@"abc"]);
+    XCTAssertTrue(CStringEquals("123", "123"));
 }
 
-- (void)test_isAlphaOrSpaces
+- (void)test_different_strings
 {
-    XCTAssertFalse([TyphoonStringUtils isAlphaOrSpaces:@"1234"]);
-    XCTAssertFalse([TyphoonStringUtils isAlphaOrSpaces:@"abc1234"]);
-
-    XCTAssertTrue([TyphoonStringUtils isAlphaOrSpaces:@"abc"]);
-    XCTAssertTrue([TyphoonStringUtils isAlphaOrSpaces:@"abc \t\n"]);
+    XCTAssertFalse(CStringEquals("123", "321"));
 }
 
-- (void)test_isAlphaNumeric
+- (void)test_same_pointer_strings
 {
-    XCTAssertTrue([TyphoonStringUtils isAlphanumeric:@"1234"]);
-    XCTAssertTrue([TyphoonStringUtils isAlphanumeric:@"abc1234"]);
-
-    XCTAssertFalse([TyphoonStringUtils isAlphanumeric:@"abc \t\n"]);
+    const char *str = "123";
+    XCTAssertTrue(CStringEquals(str, str));
 }
-
-- (void)test_isEmpty
-{
-    XCTAssertTrue([TyphoonStringUtils isEmpty:@""]);
-    XCTAssertFalse([TyphoonStringUtils isEmpty:@"1234"]);
-    XCTAssertTrue([TyphoonStringUtils isEmpty:@" \t\n"]);
-}
-
-- (void)test_isNotEmpty
-{
-    XCTAssertFalse([TyphoonStringUtils isNotEmpty:@""]);
-    XCTAssertTrue([TyphoonStringUtils isNotEmpty:@"1234"]);
-    XCTAssertFalse([TyphoonStringUtils isNotEmpty:@" \t\n"]);
-}
-
-- (void)test_isEmailAddress
-{
-    XCTAssertFalse([TyphoonStringUtils isEmailAddress:@"asdf"]);
-    XCTAssertFalse([TyphoonStringUtils isEmailAddress:@"asd@"]);
-    XCTAssertTrue([TyphoonStringUtils isEmailAddress:@"asdf@foobar.com"]);
-}
-
 
 @end

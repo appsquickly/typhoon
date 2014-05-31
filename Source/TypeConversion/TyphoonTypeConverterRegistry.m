@@ -103,7 +103,7 @@
     return _primitiveTypeConverter;
 }
 
-- (void)registerTypeConverter:(id <TyphoonTypeConverter>)converter;
+- (void)registerTypeConverter:(id <TyphoonTypeConverter>)converter
 {
     NSString *type = [converter supportedType];
     if (!([_typeConverters objectForKey:type])) {

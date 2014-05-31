@@ -210,7 +210,7 @@
 - (NSInteger)indexOfParameter:(NSString *)name
 {
     NSInteger parameterIndex = NSNotFound;
-    for (NSInteger i = 0; i < [_parameterNames count]; i++) {
+    for (NSUInteger i = 0; i < [_parameterNames count]; i++) {
         NSString *parameterName = [_parameterNames objectAtIndex:i];
         if ([name isEqualToString:parameterName]) {
             parameterIndex = i;

@@ -55,7 +55,7 @@
     }
     NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:count];
 
-    for (int i = 2; i < count; i++) {
+    for (NSUInteger i = 2; i < count; i++) {
         void *pointer;
         [invocation getArgument:&pointer atIndex:i];
         id argument = (__bridge id) pointer;

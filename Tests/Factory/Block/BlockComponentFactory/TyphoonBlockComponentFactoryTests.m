@@ -141,6 +141,18 @@
 
 }
 
+- (void)test_fake_property_injection
+{
+    Knight *knight = [(MiddleAgesAssembly *) _componentFactory knightWithFakePropertyQuest];
+
+    XCTAssertNotNil(knight.favoriteQuest);
+}
+
+- (void)test_fake_property_injection_by_type
+{
+    XCTAssertThrows([(MiddleAgesAssembly *) _componentFactory knightWithFakePropertyQuestByType]);
+}
+
 /* ====================================================================================================================================== */
 #pragma mark Class Method Initializer
 

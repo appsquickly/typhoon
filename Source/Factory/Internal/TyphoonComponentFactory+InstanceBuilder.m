@@ -14,27 +14,22 @@
 
 TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
-#import <objc/message.h>
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
-#import "TyphoonMethod.h"
 #import "TyphoonCallStack.h"
 #import "TyphoonTypeDescriptor.h"
 #import "NSObject+FactoryHooks.h"
-#import "TyphoonPropertyInjectionInternalDelegate.h"
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
 #import "TyphoonComponentPostProcessor.h"
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
-#import "NSObject+FactoryHooks.h"
 #import "NSInvocation+TCFInstanceBuilder.h"
-
-#define AssertTypeDescriptionForPropertyOnInstance(type, property, instance) if (!type) [NSException raise:@"NSUnknownKeyException" \
-format:@"Tried to inject property '%@' on object of type '%@', but the instance has no setter for this property.",property.propertyName, [instance class]]
-
+#import "TyphoonInjectionContext.h"
+#import "TyphoonPropertyInjection.h"
+#import "NSObject+TyphoonIntrospectionUtils.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
@@ -138,6 +133,50 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 }
 
 /* ====================================================================================================================================== */
+#pragma mark - Injection process
+
+- (void)doInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
+{
+    [self doBeforeInjectionsOn:instance withDefinition:definition];
+
+    for (id <TyphoonPropertyInjection> property in [definition injectedProperties]) {
+        [self doPropertyInjectionOn:instance property:property args:args];
+    }
+
+    for (TyphoonMethod *method in [definition injectedMethods]) {
+        [self doMethodInjection:method onInstance:instance args:args];
+    }
+
+    [self injectAssemblyOnInstanceIfTyphoonAware:instance];
+
+    [self doAfterInjectionsOn:instance withDefinition:definition];
+}
+
+- (void)doBeforeInjectionsOn:(id)instance withDefinition:(TyphoonDefinition *)definition
+{
+    if ([instance respondsToSelector:@selector(typhoonWillInject)]) {
+        [instance typhoonWillInject];
+    }
+
+    if ([instance respondsToSelector:definition.beforeInjections]) {
+        void(*method)(id, SEL) = (void (*)(id, SEL)) [instance methodForSelector:definition.beforeInjections];
+        method(instance, definition.beforeInjections);
+    }
+}
+
+- (void)doAfterInjectionsOn:(id)instance withDefinition:(TyphoonDefinition *)definition
+{
+    if ([instance respondsToSelector:@selector(typhoonDidInject)]) {
+        [instance typhoonDidInject];
+    }
+
+    if ([instance respondsToSelector:definition.afterInjections]) {
+        void(*method)(id, SEL) = (void (*)(id, SEL)) [instance methodForSelector:definition.afterInjections];
+        method(instance, definition.afterInjections);
+    }
+}
+
+/* ====================================================================================================================================== */
 #pragma mark - Methods Injection
 
 - (void)doMethodInjection:(TyphoonMethod *)method onInstance:(id)instance args:(TyphoonRuntimeArguments *)args
@@ -156,67 +195,7 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
 /* ====================================================================================================================================== */
 #pragma mark - Property Injection
 
-- (void)doInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
-{
-    [self doBeforeInjectionsOn:instance withDefinition:definition];
-
-    for (id <TyphoonPropertyInjection> property in [definition injectedProperties]) {
-        [self doPropertyInjectionIfNeededOn:instance property:property args:args];
-    }
-
-    for (TyphoonMethod *method in [definition injectedMethods]) {
-        [self doMethodInjection:method onInstance:instance args:args];
-    }
-
-    [self injectAssemblyOnInstanceIfTyphoonAware:instance];
-
-    [self doAfterInjectionsOn:instance withDefinition:definition];
-}
-
-- (void)doBeforeInjectionsOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition *)definition
-{
-    if ([instance respondsToSelector:@selector(typhoonWillInject)]) {
-        [(NSObject *) instance typhoonWillInject];
-    }
-
-    if ([instance respondsToSelector:definition.beforeInjections]) {
-        void(*method)(id, SEL) = (void (*)(id, SEL)) [(NSObject *) instance methodForSelector:definition.beforeInjections];
-        method(instance, definition.beforeInjections);
-    }
-}
-
-- (void)doPropertyInjectionIfNeededOn:(id <TyphoonIntrospectiveNSObject, TyphoonPropertyInjectionInternalDelegate>)instance
-                             property:(id <TyphoonPropertyInjection>)property args:(TyphoonRuntimeArguments *)args
-{
-    //TODO: Refactor this method and 'shouldInjectProperty:withType:lazyValue:' with lazyValue
-    if ([instance respondsToSelector:@selector(shouldInjectProperty:withType:lazyValue:)]) {
-        TyphoonTypeDescriptor *propertyType = [instance typhoon_typeForPropertyWithName:property.propertyName];
-
-        TyphoonPropertyInjectionLazyValue lazyValue = ^id {
-            TyphoonInjectionContext *context = [TyphoonInjectionContext new];
-            context.destinationType = propertyType;
-            context.destinationInstanceClass = [instance class];
-            context.factory = self;
-            context.args = args;
-            context.raiseExceptionIfCircular = YES;
-            __block id result = nil;
-            [property valueToInjectWithContext:context completion:^(id value) {
-                result = value;
-            }];
-            return result;
-        };
-
-        if ([instance shouldInjectProperty:property withType:propertyType lazyValue:lazyValue]) {
-            [self doPropertyInjection:instance property:property args:args];
-        }
-    }
-    else {
-        [self doPropertyInjection:instance property:property args:args];
-    }
-}
-
-- (void)doPropertyInjection:(id <TyphoonIntrospectiveNSObject>)instance property:(id <TyphoonPropertyInjection>)property
-                       args:(TyphoonRuntimeArguments *)args
+- (void)doPropertyInjectionOn:(id)instance property:(id <TyphoonPropertyInjection>)property args:(TyphoonRuntimeArguments *)args
 {
     TyphoonInjectionContext *context = [TyphoonInjectionContext new];
     context.destinationType = [instance typhoon_typeForPropertyWithName:property.propertyName];
@@ -226,9 +205,12 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
     context.raiseExceptionIfCircular = NO;
 
     [property valueToInjectWithContext:context completion:^(id value) {
-        [(NSObject *) instance typhoon_injectValue:value forPropertyName:property.propertyName];
+        [instance typhoon_injectValue:value forPropertyName:property.propertyName];
     }];
 }
+
+/* ====================================================================================================================================== */
+#pragma mark - Circular dependencies support
 
 - (void)resolveCircularDependency:(NSString *)key args:(TyphoonRuntimeArguments *)args
                     resolvedBlock:(void (^)(BOOL isCircular))resolvedBlock
@@ -243,20 +225,6 @@ format:@"Tried to inject property '%@' on object of type '%@', but the instance 
         resolvedBlock(NO);
     }
 }
-
-- (void)doAfterInjectionsOn:(id <TyphoonIntrospectiveNSObject>)instance withDefinition:(TyphoonDefinition *)definition
-{
-    if ([instance respondsToSelector:@selector(typhoonDidInject)]) {
-        [(NSObject *) instance typhoonDidInject];
-    }
-
-    if ([instance respondsToSelector:definition.afterInjections]) {
-        void(*method)(id, SEL) = (void (*)(id, SEL)) [(NSObject *) instance methodForSelector:definition.afterInjections];
-        method(instance, definition.afterInjections);
-    }
-}
-
-#pragma mark - End Property Injection
 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods

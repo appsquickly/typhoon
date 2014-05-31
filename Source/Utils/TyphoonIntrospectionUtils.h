@@ -24,8 +24,6 @@ NSString *TyphoonTypeStringFor(id classOrProtocol);
 
 @interface TyphoonIntrospectionUtils : NSObject
 
-+ (NSArray *)typeCodesForSelector:(SEL)selector ofClass:(Class)clazz isClassMethod:(BOOL)isClassMethod;
-
 + (TyphoonTypeDescriptor *)typeForPropertyWithName:(NSString *)propertyName inClass:(Class)clazz;
 
 + (SEL)setterForPropertyWithName:(NSString *)property inClass:(Class)clazz;
@@ -34,7 +32,7 @@ NSString *TyphoonTypeStringFor(id classOrProtocol);
 
 + (NSUInteger)numberOfArgumentsInSelector:(SEL)selector;
 
-+ (NSSet *)properiesForClass:(Class)clazz;
-+ (NSSet *)properiesForClass:(Class)clazz upToParentClass:(Class)parent;
++ (NSSet *)propertiesForClass:(Class)clazz;
++ (NSSet *)propertiesForClass:(Class)clazz upToParentClass:(Class)parent;
 
 @end

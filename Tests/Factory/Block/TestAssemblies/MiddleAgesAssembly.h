@@ -52,4 +52,7 @@
 
 - (id)knightWithFoobar:(NSString *)foobar;
 
+- (id)knightWithFakePropertyQuest;
+
+- (id)knightWithFakePropertyQuestByType;
 @end

@@ -161,17 +161,5 @@ typedef struct
     XCTAssertTrue([parameterNames count] == 0);
 }
 
-- (void)test_typeCodesForSelectorWithName
-{
-    Knight *knight = [[Knight alloc] initWithQuest:nil damselsRescued:0];
-    NSArray *typeCodes = [knight typhoon_typeCodesForSelector:@selector(initWithQuest:damselsRescued:)];
-
-    NSString *questTypeCode = [typeCodes objectAtIndex:0];
-    XCTAssertEqualObjects(questTypeCode, @"@"); // an object
-
-    NSString *damselsRescuedTypeCode = [typeCodes objectAtIndex:1];
-    TyphoonTypeDescriptor *typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:damselsRescuedTypeCode];
-    XCTAssertTrue(typeDescriptor.isPrimitive); // a primitive. The parameter is NSUInteger, whose type code depends on the architecture.
-}
 
 @end

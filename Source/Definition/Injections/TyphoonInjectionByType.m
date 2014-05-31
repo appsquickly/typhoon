@@ -29,7 +29,7 @@
     
     if (!classOrProtocol) {
         if (self.type == TyphoonInjectionTypeProperty) {
-            [NSException raise:NSInternalInconsistencyException format:@"Can't recognize type for property '%@' of class '%@'. Make sure that property exists and has correct type.", self.propertyName, context.destinationInstanceClass];
+            [NSException raise:NSInternalInconsistencyException format:@"Can't recognize type for property '%@' of class '%@'. Make sure that @property exists and has correct type.", self.propertyName, context.destinationInstanceClass];
         } else {
             [NSException raise:NSInternalInconsistencyException format:@"Only property injection support InjectionByType"];
 

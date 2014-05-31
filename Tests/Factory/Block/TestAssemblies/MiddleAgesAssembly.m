@@ -229,4 +229,18 @@
     }];
 }
 
+- (id)knightWithFakePropertyQuest
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(favoriteQuest) with:[self defaultQuest]];
+    }];
+}
+
+- (id)knightWithFakePropertyQuestByType
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(favoriteQuest)];
+    }];
+}
+
 @end

@@ -35,7 +35,7 @@
 {
     NSMutableSet *collaboratingAssemblyProperties = [[NSMutableSet alloc] init];
 
-    NSSet *properties = [TyphoonIntrospectionUtils properiesForClass:[_assembly class] upToParentClass:[TyphoonAssembly class]];
+    NSSet *properties = [TyphoonIntrospectionUtils propertiesForClass:[_assembly class] upToParentClass:[TyphoonAssembly class]];
     
     for (NSString *property in properties) {
         if ([self propertyForName:property isCollaboratingAssemblyPropertyOnClass:[_assembly class]]) {

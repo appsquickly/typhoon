@@ -168,7 +168,7 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 - (NSSet *)propertySetterSelectorsForClass:(Class)clazz
 {
     NSMutableSet *propertySetters = [NSMutableSet new];
-    NSSet *properties = [TyphoonIntrospectionUtils properiesForClass:clazz upToParentClass:[TyphoonAssembly class]];
+    NSSet *properties = [TyphoonIntrospectionUtils propertiesForClass:clazz upToParentClass:[TyphoonAssembly class]];
     for (NSString *propertyName in properties) {
         SEL propertySetter = [TyphoonIntrospectionUtils setterForPropertyWithName:propertyName inClass:clazz];
         if (propertySetter) {
@@ -202,11 +202,11 @@ static NSMutableDictionary *swizzledDefinitionsByAssemblyClass;
 
 typedef void(^MethodEnumerationBlock)(Method method);
 
-- (void)enumerateMethodsInClass:(Class)class usingBlock:(MethodEnumerationBlock)block;
+- (void)enumerateMethodsInClass:(Class)class usingBlock:(MethodEnumerationBlock)block
 {
     unsigned int methodCount;
     Method *methodList = class_copyMethodList(class, &methodCount);
-    for (int i = 0; i < methodCount; i++) {
+    for (unsigned int i = 0; i < methodCount; i++) {
         Method method = methodList[i];
         block(method);
     }
@@ -234,7 +234,7 @@ typedef void(^MethodEnumerationBlock)(Method method);
 
 #pragma mark - Advising Registry
 
-+ (BOOL)assemblyIsNotAdvised:(TyphoonAssembly *)assembly;
++ (BOOL)assemblyIsNotAdvised:(TyphoonAssembly *)assembly
 {
     return ![self assemblyIsAdvised:assembly];
 }
@@ -249,12 +249,12 @@ typedef void(^MethodEnumerationBlock)(Method method);
     return [[swizzledDefinitionsByAssemblyClass allKeys] containsObject:NSStringFromClass(class)];
 }
 
-+ (void)markAssemblyMethods:(NSSet *)definitionSelectors asAdvised:(TyphoonAssembly *)assembly;
++ (void)markAssemblyMethods:(NSSet *)definitionSelectors asAdvised:(TyphoonAssembly *)assembly
 {
     [swizzledDefinitionsByAssemblyClass setObject:definitionSelectors forKey:NSStringFromClass([assembly class])];
 }
 
-+ (void)markAssemblyMethodsAsNoLongerAdvised:(TyphoonAssembly *)assembly;
++ (void)markAssemblyMethodsAsNoLongerAdvised:(TyphoonAssembly *)assembly
 {
     [swizzledDefinitionsByAssemblyClass removeObjectForKey:NSStringFromClass([assembly class])];
 }

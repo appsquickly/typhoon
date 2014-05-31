@@ -65,7 +65,7 @@
     return [[[self class] alloc] initWithTypeCode:typeCode];
 }
 
-+ (TyphoonTypeDescriptor *)descriptorWithClassOrProtocol:(id)classOrProtocol;
++ (TyphoonTypeDescriptor *)descriptorWithClassOrProtocol:(id)classOrProtocol
 {
     if (class_isMetaClass(object_getClass(classOrProtocol))) {
         return [self descriptorWithTypeCode:[NSString stringWithFormat:@"T@%@", NSStringFromClass(classOrProtocol)]];

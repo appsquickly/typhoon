@@ -13,13 +13,10 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonIntrospectiveNSObject.h"
 
 @class TyphoonTypeDescriptor;
 
-@interface NSObject (TyphoonIntrospectionUtils) <TyphoonIntrospectiveNSObject>
-
-@property(nonatomic, strong, readonly) NSMutableDictionary *typhoon_circularDependentProperties;
+@interface NSObject (TyphoonIntrospectionUtils)
 
 /**
 * Returns a Class object or `TyphoonTypeDescriptor` in the case of a primitive type.
@@ -27,10 +24,5 @@
 - (TyphoonTypeDescriptor *)typhoon_typeForPropertyWithName:(NSString *)propertyName;
 
 - (NSArray *)typhoon_parameterNamesForSelector:(SEL)selector;
-
-- (NSArray *)typhoon_typeCodesForSelector:(SEL)selector;
-
-- (NSArray *)typhoon_typeCodesForSelector:(SEL)selector onClass:(Class)class;
-
 
 @end

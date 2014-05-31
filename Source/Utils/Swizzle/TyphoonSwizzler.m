@@ -36,14 +36,6 @@
         }
         return NO;
     }
-
-    const char *encoding;
-    if (!origMethod) {
-        encoding = method_getTypeEncoding(altMethod);
-    }
-    if (!altSel) {
-        encoding = method_getTypeEncoding(origMethod);
-    }
     
     class_addMethod(pClass, origSel, class_getMethodImplementation(pClass, origSel), method_getTypeEncoding(altMethod));
     class_addMethod(pClass, altSel, class_getMethodImplementation(pClass, altSel), method_getTypeEncoding(origMethod));

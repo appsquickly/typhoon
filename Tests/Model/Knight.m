@@ -16,6 +16,9 @@
 
 
 @implementation Knight
+{
+    id <Quest> _favoriteQuest;
+}
 
 /* ============================================================ Initializers ============================================================ */
 - (id)initWithQuest:(id <Quest>)quest
@@ -64,6 +67,16 @@
 + (id)knightWithDamselsRescued:(NSUInteger)damselsRescued
 {
     return [[[self class] alloc] initWithDamselsRescued:damselsRescued foo:nil];
+}
+
+- (void)setFavoriteQuest:(id <Quest>)quest 
+{
+    _favoriteQuest = quest;
+}
+
+- (id <Quest>)favoriteQuest
+{
+    return _favoriteQuest;
 }
 
 /* ========================================================== Interface Methods ========================================================= */
