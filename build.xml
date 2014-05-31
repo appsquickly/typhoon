@@ -67,7 +67,7 @@
             #!/bin/bash
             set -e # fail script if any commands fail
 
-            rm -fr build
+            rm -fr ${target.dir}
             rm -fr ~/Library/Developer/Xcode/DerivedData
 
             git submodule init
