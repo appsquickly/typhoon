@@ -9,22 +9,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
-#import <Foundation/Foundation.h>
 #import "TyphoonMethod.h"
 
-@class TyphoonComponentFactory;
-@class TyphoonRuntimeArguments;
 @class TyphoonInjectionContext;
 @protocol TyphoonParameterInjection;
 
 @interface TyphoonMethod (InstanceBuilder)
 
 - (NSArray *)injectedParameters;
-
-- (NSArray *)parametersInjectedByValue;
-
-- (NSArray *)parametersInjectedByRuntimeArgument;
 
 - (void)createInvocationOnClass:(Class)clazz withContext:(TyphoonInjectionContext *)context completion:(void(^)(NSInvocation *invocation))result;
 

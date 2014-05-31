@@ -43,22 +43,6 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     return [_injectedParameters copy];
 }
 
-- (NSArray *)parametersInjectedByValue
-{
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject isKindOfClass:[TyphoonInjectionByObjectFromString class]];
-    }];
-    return [_injectedParameters filteredArrayUsingPredicate:predicate];
-}
-
-- (NSArray *)parametersInjectedByRuntimeArgument
-{
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject isKindOfClass:[TyphoonInjectionByRuntimeArgument class]];
-    }];
-    return [_injectedParameters filteredArrayUsingPredicate:predicate];
-}
-
 - (void)createInvocationOnClass:(Class)clazz withContext:(TyphoonInjectionContext *)context completion:(void(^)(NSInvocation *invocation))result
 {
     BOOL isClassMethod = [self isClassMethodOnClass:clazz];

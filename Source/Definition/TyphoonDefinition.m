@@ -66,7 +66,6 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 
 + (TyphoonDefinition *)withClass:(Class)clazz key:(NSString *)key injections:(TyphoonDefinitionBlock)properties
 {
-
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key];
 
     if (properties) {

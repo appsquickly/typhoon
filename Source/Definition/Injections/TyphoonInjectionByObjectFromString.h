@@ -7,9 +7,8 @@
 //
 
 #import "TyphoonAbstractInjection.h"
-#import "TyphoonInjectedWithStringRepresentation.h"
 
-@interface TyphoonInjectionByObjectFromString : TyphoonAbstractInjection <TyphoonInjectedWithStringRepresentation>
+@interface TyphoonInjectionByObjectFromString : TyphoonAbstractInjection
 
 @property(nonatomic, strong) NSString *textValue;
 
