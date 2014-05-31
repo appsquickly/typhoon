@@ -1409,25 +1409,9 @@
               <Anchor>aa190816afd6c690e83b2bcff5b1c6e20</Anchor>
              </Node>
              <Node>
-              <Name>typeCodesForSelector:ofClass:isClassMethod:</Name>
-              <Path>interface_typhoon_introspection_utils.html</Path>
-              <Anchor>ab40d153fb3f2de289c4aa2832b89dbbe</Anchor>
-             </Node>
-             <Node>
               <Name>typeForPropertyWithName:inClass:</Name>
               <Path>interface_typhoon_introspection_utils.html</Path>
               <Anchor>a34d5f226d76d10c64534ab62b422e154</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>&lt;TyphoonIntrospectiveNSObject&gt;</Name>
-            <Path>protocol_typhoon_introspective_n_s_object-p.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>typhoon_typeForPropertyWithName:</Name>
-              <Path>protocol_typhoon_introspective_n_s_object-p.html</Path>
-              <Anchor>a888949f5298193ddf501df44bcfb0224</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -1661,11 +1645,6 @@
               <Name>convertToUnsignedShort:</Name>
               <Path>interface_typhoon_primitive_type_converter.html</Path>
               <Anchor>a154126c107209fd7bf5a5fd77e9c0d88</Anchor>
-             </Node>
-             <Node>
-              <Name>setPrimitiveArgumentFor:index:textValue:requiredType:</Name>
-              <Path>interface_typhoon_primitive_type_converter.html</Path>
-              <Anchor>ad73d3e3e68756022c0ba5b221f14b3ff</Anchor>
              </Node>
              <Node>
               <Name>valueFromText:withType:</Name>
@@ -2024,19 +2003,7 @@
             </Subnodes>
            </Node>
            <Node>
-            <Name>NSObject(DeallocNotification)</Name>
-            <Path>category_n_s_object_07_dealloc_notification_08.html</Path>
-           </Node>
-           <Node>
-            <Name>NSObject(FactoryHooks)</Name>
-            <Path>category_n_s_object_07_factory_hooks_08.html</Path>
-           </Node>
-           <Node>
-            <Name>NSObject(PropertyInjection)</Name>
-            <Path>category_n_s_object_07_property_injection_08.html</Path>
-           </Node>
-           <Node>
-            <Name>&lt;NSObject&gt;</Name>
+            <Name>NSObject</Name>
             <Path></Path>
             <Subnodes>
              <Node>
@@ -2052,40 +2019,12 @@
               <Path>interface_typhoon_assembly_selector_adviser.html</Path>
              </Node>
              <Node>
-              <Name>&lt;TyphoonCollection&gt;</Name>
-              <Path>protocol_typhoon_collection-p.html</Path>
-             </Node>
-             <Node>
               <Name>TyphoonComponentFactory</Name>
               <Path>interface_typhoon_component_factory.html</Path>
               <Subnodes>
                <Node>
                 <Name>TyphoonBlockComponentFactory</Name>
                 <Path>interface_typhoon_block_component_factory.html</Path>
-               </Node>
-              </Subnodes>
-             </Node>
-             <Node>
-              <Name>&lt;TyphoonComponentFactoryPostProcessor&gt;</Name>
-              <Path>protocol_typhoon_component_factory_post_processor-p.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>TyphoonConfigPostProcessor</Name>
-                <Path>interface_typhoon_config_post_processor.html</Path>
-               </Node>
-               <Node>
-                <Name>TyphoonViewControllerNibResolver</Name>
-                <Path>interface_typhoon_view_controller_nib_resolver.html</Path>
-               </Node>
-              </Subnodes>
-             </Node>
-             <Node>
-              <Name>&lt;TyphoonComponentsPool&gt;</Name>
-              <Path>protocol_typhoon_components_pool-p.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>TyphoonWeakComponentsPool</Name>
-                <Path>interface_typhoon_weak_components_pool.html</Path>
                </Node>
               </Subnodes>
              </Node>
@@ -2098,40 +2037,12 @@
               <Path>interface_typhoon_definition.html</Path>
              </Node>
              <Node>
-              <Name>&lt;TyphoonDictionary&gt;</Name>
-              <Path>protocol_typhoon_dictionary-p.html</Path>
-             </Node>
-             <Node>
-              <Name>&lt;TyphoonInjectedWithStringRepresentation&gt;</Name>
-              <Path>protocol_typhoon_injected_with_string_representation-p.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>TyphoonInjectionByObjectFromString</Name>
-                <Path>interface_typhoon_injection_by_object_from_string.html</Path>
-               </Node>
-              </Subnodes>
-             </Node>
-             <Node>
-              <Name>&lt;TyphoonInjection&gt;</Name>
-              <Path>protocol_typhoon_injection-p.html</Path>
-             </Node>
-             <Node>
               <Name>TyphoonInjectionContext</Name>
               <Path>interface_typhoon_injection_context.html</Path>
              </Node>
              <Node>
               <Name>TyphoonIntrospectionUtils</Name>
               <Path>interface_typhoon_introspection_utils.html</Path>
-             </Node>
-             <Node>
-              <Name>&lt;TyphoonIntrospectiveNSObject&gt;</Name>
-              <Path>protocol_typhoon_introspective_n_s_object-p.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>NSObject(TyphoonIntrospectionUtils)</Name>
-                <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
-               </Node>
-              </Subnodes>
              </Node>
              <Node>
               <Name>TyphoonMatcherDefinitionFactory</Name>
@@ -2162,40 +2073,12 @@
               <Path>interface_typhoon_primitive_type_converter.html</Path>
              </Node>
              <Node>
-              <Name>&lt;TyphoonResource&gt;</Name>
-              <Path>protocol_typhoon_resource-p.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>TyphoonBundleResource</Name>
-                <Path>interface_typhoon_bundle_resource.html</Path>
-               </Node>
-              </Subnodes>
-             </Node>
-             <Node>
               <Name>TyphoonRuntimeArguments</Name>
               <Path>interface_typhoon_runtime_arguments.html</Path>
              </Node>
              <Node>
               <Name>TyphoonTestUtils</Name>
               <Path>interface_typhoon_test_utils.html</Path>
-             </Node>
-             <Node>
-              <Name>&lt;TyphoonTypeConverter&gt;</Name>
-              <Path>protocol_typhoon_type_converter-p.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>TyphoonNSURLTypeConverter</Name>
-                <Path>interface_typhoon_n_s_u_r_l_type_converter.html</Path>
-               </Node>
-               <Node>
-                <Name>TyphoonPassThroughTypeConverter</Name>
-                <Path>interface_typhoon_pass_through_type_converter.html</Path>
-               </Node>
-               <Node>
-                <Name>TyphoonUIColorTypeConverter</Name>
-                <Path>interface_typhoon_u_i_color_type_converter.html</Path>
-               </Node>
-              </Subnodes>
              </Node>
              <Node>
               <Name>TyphoonTypeConverterRegistry</Name>
@@ -2216,6 +2099,102 @@
              <Node>
               <Name>TyphoonWeakComponentsPool</Name>
               <Path>interface_typhoon_weak_components_pool.html</Path>
+             </Node>
+            </Subnodes>
+           </Node>
+           <Node>
+            <Name>NSObject(DeallocNotification)</Name>
+            <Path>category_n_s_object_07_dealloc_notification_08.html</Path>
+           </Node>
+           <Node>
+            <Name>NSObject(FactoryHooks)</Name>
+            <Path>category_n_s_object_07_factory_hooks_08.html</Path>
+           </Node>
+           <Node>
+            <Name>NSObject(PropertyInjection)</Name>
+            <Path>category_n_s_object_07_property_injection_08.html</Path>
+           </Node>
+           <Node>
+            <Name>NSObject(TyphoonIntrospectionUtils)</Name>
+            <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
+           </Node>
+           <Node>
+            <Name>&lt;NSObject&gt;</Name>
+            <Path></Path>
+            <Subnodes>
+             <Node>
+              <Name>&lt;TyphoonCollection&gt;</Name>
+              <Path>protocol_typhoon_collection-p.html</Path>
+             </Node>
+             <Node>
+              <Name>&lt;TyphoonComponentFactoryPostProcessor&gt;</Name>
+              <Path>protocol_typhoon_component_factory_post_processor-p.html</Path>
+              <Subnodes>
+               <Node>
+                <Name>TyphoonConfigPostProcessor</Name>
+                <Path>interface_typhoon_config_post_processor.html</Path>
+               </Node>
+               <Node>
+                <Name>TyphoonViewControllerNibResolver</Name>
+                <Path>interface_typhoon_view_controller_nib_resolver.html</Path>
+               </Node>
+              </Subnodes>
+             </Node>
+             <Node>
+              <Name>&lt;TyphoonComponentsPool&gt;</Name>
+              <Path>protocol_typhoon_components_pool-p.html</Path>
+              <Subnodes>
+               <Node>
+                <Name>TyphoonWeakComponentsPool</Name>
+                <Path>interface_typhoon_weak_components_pool.html</Path>
+               </Node>
+              </Subnodes>
+             </Node>
+             <Node>
+              <Name>&lt;TyphoonDictionary&gt;</Name>
+              <Path>protocol_typhoon_dictionary-p.html</Path>
+             </Node>
+             <Node>
+              <Name>&lt;TyphoonInjectedWithStringRepresentation&gt;</Name>
+              <Path>protocol_typhoon_injected_with_string_representation-p.html</Path>
+              <Subnodes>
+               <Node>
+                <Name>TyphoonInjectionByObjectFromString</Name>
+                <Path>interface_typhoon_injection_by_object_from_string.html</Path>
+               </Node>
+              </Subnodes>
+             </Node>
+             <Node>
+              <Name>&lt;TyphoonInjection&gt;</Name>
+              <Path>protocol_typhoon_injection-p.html</Path>
+             </Node>
+             <Node>
+              <Name>&lt;TyphoonResource&gt;</Name>
+              <Path>protocol_typhoon_resource-p.html</Path>
+              <Subnodes>
+               <Node>
+                <Name>TyphoonBundleResource</Name>
+                <Path>interface_typhoon_bundle_resource.html</Path>
+               </Node>
+              </Subnodes>
+             </Node>
+             <Node>
+              <Name>&lt;TyphoonTypeConverter&gt;</Name>
+              <Path>protocol_typhoon_type_converter-p.html</Path>
+              <Subnodes>
+               <Node>
+                <Name>TyphoonNSURLTypeConverter</Name>
+                <Path>interface_typhoon_n_s_u_r_l_type_converter.html</Path>
+               </Node>
+               <Node>
+                <Name>TyphoonPassThroughTypeConverter</Name>
+                <Path>interface_typhoon_pass_through_type_converter.html</Path>
+               </Node>
+               <Node>
+                <Name>TyphoonUIColorTypeConverter</Name>
+                <Path>interface_typhoon_u_i_color_type_converter.html</Path>
+               </Node>
+              </Subnodes>
              </Node>
             </Subnodes>
            </Node>
@@ -3309,11 +3288,6 @@
                 <Anchor>aa190816afd6c690e83b2bcff5b1c6e20</Anchor>
                </Node>
                <Node>
-                <Name>typeCodesForSelector:ofClass:isClassMethod:</Name>
-                <Path>interface_typhoon_introspection_utils.html</Path>
-                <Anchor>ab40d153fb3f2de289c4aa2832b89dbbe</Anchor>
-               </Node>
-               <Node>
                 <Name>typeForPropertyWithName:inClass:</Name>
                 <Path>interface_typhoon_introspection_utils.html</Path>
                 <Anchor>a34d5f226d76d10c64534ab62b422e154</Anchor>
@@ -3329,23 +3303,6 @@
               <Name>TyphoonTypeStringFor</Name>
               <Path>_typhoon_introspection_utils_8h.html</Path>
               <Anchor>a4efc9426f64b77b419eea0204eedb57a</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>TyphoonIntrospectiveNSObject.h</Name>
-            <Path>_typhoon_introspective_n_s_object_8h.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>&lt;TyphoonIntrospectiveNSObject&gt;</Name>
-              <Path>protocol_typhoon_introspective_n_s_object-p.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>typhoon_typeForPropertyWithName:</Name>
-                <Path>protocol_typhoon_introspective_n_s_object-p.html</Path>
-                <Anchor>a888949f5298193ddf501df44bcfb0224</Anchor>
-               </Node>
-              </Subnodes>
              </Node>
             </Subnodes>
            </Node>
@@ -3616,11 +3573,6 @@
                 <Name>convertToUnsignedShort:</Name>
                 <Path>interface_typhoon_primitive_type_converter.html</Path>
                 <Anchor>a154126c107209fd7bf5a5fd77e9c0d88</Anchor>
-               </Node>
-               <Node>
-                <Name>setPrimitiveArgumentFor:index:textValue:requiredType:</Name>
-                <Path>interface_typhoon_primitive_type_converter.html</Path>
-                <Anchor>ad73d3e3e68756022c0ba5b221f14b3ff</Anchor>
                </Node>
                <Node>
                 <Name>valueFromText:withType:</Name>

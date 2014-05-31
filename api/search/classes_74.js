@@ -29,7 +29,6 @@ var searchData=
   ['typhooninjectionbytype',['TyphoonInjectionByType',['../interface_typhoon_injection_by_type.html',1,'']]],
   ['typhooninjectioncontext',['TyphoonInjectionContext',['../interface_typhoon_injection_context.html',1,'']]],
   ['typhoonintrospectionutils',['TyphoonIntrospectionUtils',['../interface_typhoon_introspection_utils.html',1,'']]],
-  ['typhoonintrospectivensobject_2dp',['TyphoonIntrospectiveNSObject-p',['../protocol_typhoon_introspective_n_s_object-p.html',1,'']]],
   ['typhooniterator_2dp',['TyphoonIterator-p',['../protocol_typhoon_iterator-p.html',1,'']]],
   ['typhoonmatcherdefinitionfactory',['TyphoonMatcherDefinitionFactory',['../interface_typhoon_matcher_definition_factory.html',1,'']]],
   ['typhoonmethod',['TyphoonMethod',['../interface_typhoon_method.html',1,'']]],

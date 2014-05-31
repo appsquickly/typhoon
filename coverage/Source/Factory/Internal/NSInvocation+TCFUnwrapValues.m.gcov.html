@@ -31,8 +31,8 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">8</td>
-            <td class="headerCovTableEntry">8</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntry">7</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
@@ -74,20 +74,19 @@
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span>            : @implementation NSInvocation (TCFUnwrapValues)
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span><span class="lineCov">        311 : - (void)typhoon_setArgumentObject:(id)object atIndex:(NSInteger)idx</span>
+<span class="lineNum">      19 </span><span class="lineCov">        315 : - (void)typhoon_setArgumentObject:(id)object atIndex:(NSInteger)idx</span>
 <span class="lineNum">      20 </span>            : {
-<span class="lineNum">      21 </span><span class="lineCov">        311 :     BOOL isValue = [object isKindOfClass:[NSValue class]];</span>
+<span class="lineNum">      21 </span><span class="lineCov">        315 :     BOOL isValue = [object isKindOfClass:[NSValue class]];</span>
 <span class="lineNum">      22 </span>            :     
-<span class="lineNum">      23 </span><span class="lineCov">        311 :     if (isValue) {</span>
-<span class="lineNum">      24 </span><span class="lineCov">        153 :         const char *argumentType = [[self methodSignature] getArgumentTypeAtIndex:idx];</span>
-<span class="lineNum">      25 </span><span class="lineCov">        153 :         [(NSValue *)object typhoon_setAsArgumentWithType:argumentType forInvocation:self atIndex:idx];</span>
-<span class="lineNum">      26 </span><span class="lineCov">        153 :     } else {</span>
-<span class="lineNum">      27 </span><span class="lineCov">        158 :         [self setArgument:&amp;object atIndex:idx];</span>
-<span class="lineNum">      28 </span>            :     }
-<span class="lineNum">      29 </span><span class="lineCov">        311 : }</span>
-<span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span>            : @end
-<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      23 </span><span class="lineCov">        315 :     if (isValue) {</span>
+<span class="lineNum">      24 </span><span class="lineCov">        155 :         [(NSValue *) object typhoon_setAsArgumentForInvocation:self atIndex:idx];</span>
+<span class="lineNum">      25 </span><span class="lineCov">        155 :     } else {</span>
+<span class="lineNum">      26 </span><span class="lineCov">        160 :         [self setArgument:&amp;object atIndex:idx];</span>
+<span class="lineNum">      27 </span>            :     }
+<span class="lineNum">      28 </span><span class="lineCov">        315 : }</span>
+<span class="lineNum">      29 </span>            : 
+<span class="lineNum">      30 </span>            : @end
+<span class="lineNum">      31 </span>            : 
 </pre>
       </td>
     </tr>

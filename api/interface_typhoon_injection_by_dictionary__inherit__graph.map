@@ -1,6 +1,6 @@
 <map id="TyphoonInjectionByDictionary" name="TyphoonInjectionByDictionary">
-<area shape="rect" id="node2" href="$interface_typhoon_abstract_injection.html" title="TyphoonAbstractInjection" alt="" coords="99,229,293,256"/>
-<area shape="rect" id="node5" href="$protocol_typhoon_injection-p.html" title="\&lt;TyphoonInjection\&gt;" alt="" coords="119,80,273,107"/>
-<area shape="rect" id="node4" href="$protocol_typhoon_parameter_injection-p.html" title="\&lt;TyphoonParameterInjection\&gt;" alt="" coords="85,155,307,181"/>
-<area shape="rect" id="node7" href="$protocol_typhoon_property_injection-p.html" title="\&lt;TyphoonPropertyInjection\&gt;" alt="" coords="332,155,543,181"/>
+<area shape="rect" id="node2" href="$interface_typhoon_abstract_injection.html" title="TyphoonAbstractInjection" alt="" coords="127,229,321,256"/>
+<area shape="rect" id="node4" href="$protocol_typhoon_parameter_injection-p.html" title="\&lt;TyphoonParameterInjection\&gt;" alt="" coords="113,155,335,181"/>
+<area shape="rect" id="node5" href="$protocol_typhoon_injection-p.html" title="\&lt;TyphoonInjection\&gt;" alt="" coords="267,80,421,107"/>
+<area shape="rect" id="node8" href="$protocol_typhoon_property_injection-p.html" title="\&lt;TyphoonPropertyInjection\&gt;" alt="" coords="360,155,571,181"/>
 </map>

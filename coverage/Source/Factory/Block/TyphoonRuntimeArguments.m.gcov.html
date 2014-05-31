@@ -105,38 +105,38 @@
 <span class="lineNum">      47 </span>            :     BOOL _needRehash;
 <span class="lineNum">      48 </span>            : }
 <span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span><span class="lineCov">       1867 : + (instancetype)argumentsFromInvocation:(NSInvocation *)invocation</span>
+<span class="lineNum">      50 </span><span class="lineCov">       2000 : + (instancetype)argumentsFromInvocation:(NSInvocation *)invocation</span>
 <span class="lineNum">      51 </span>            : {
-<span class="lineNum">      52 </span><span class="lineCov">       1867 :     NSUInteger count = [[invocation methodSignature] numberOfArguments];</span>
-<span class="lineNum">      53 </span><span class="lineCov">       1867 :     if (count &lt;= 2) {</span>
-<span class="lineNum">      54 </span><span class="lineCov">       1517 :         return nil;</span>
+<span class="lineNum">      52 </span><span class="lineCov">       2000 :     NSUInteger count = [[invocation methodSignature] numberOfArguments];</span>
+<span class="lineNum">      53 </span><span class="lineCov">       2000 :     if (count &lt;= 2) {</span>
+<span class="lineNum">      54 </span><span class="lineCov">       1638 :         return nil;</span>
 <span class="lineNum">      55 </span>            :     }
-<span class="lineNum">      56 </span><span class="lineCov">        350 :     NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:count];</span>
+<span class="lineNum">      56 </span><span class="lineCov">        362 :     NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:count];</span>
 <span class="lineNum">      57 </span>            : 
-<span class="lineNum">      58 </span><span class="lineCov">       1414 :     for (int i = 2; i &lt; count; i++) {</span>
-<span class="lineNum">      59 </span><span class="lineCov">        357 :         void *pointer;</span>
-<span class="lineNum">      60 </span><span class="lineCov">        357 :         [invocation getArgument:&amp;pointer atIndex:i];</span>
-<span class="lineNum">      61 </span><span class="lineCov">        357 :         id argument = (__bridge id) pointer;</span>
-<span class="lineNum">      62 </span><span class="lineCov">        357 :         if (argument) {</span>
-<span class="lineNum">      63 </span><span class="lineCov">        351 :             [args addObject:argument];</span>
-<span class="lineNum">      64 </span><span class="lineCov">        351 :         }</span>
+<span class="lineNum">      58 </span><span class="lineCov">       1462 :     for (NSUInteger i = 2; i &lt; count; i++) {</span>
+<span class="lineNum">      59 </span><span class="lineCov">        369 :         void *pointer;</span>
+<span class="lineNum">      60 </span><span class="lineCov">        369 :         [invocation getArgument:&amp;pointer atIndex:i];</span>
+<span class="lineNum">      61 </span><span class="lineCov">        369 :         id argument = (__bridge id) pointer;</span>
+<span class="lineNum">      62 </span><span class="lineCov">        369 :         if (argument) {</span>
+<span class="lineNum">      63 </span><span class="lineCov">        363 :             [args addObject:argument];</span>
+<span class="lineNum">      64 </span><span class="lineCov">        363 :         }</span>
 <span class="lineNum">      65 </span>            :         else {
 <span class="lineNum">      66 </span><span class="lineCov">          6 :             [args addObject:[TyphoonRuntimeNullArgument null]];</span>
 <span class="lineNum">      67 </span>            :         }
-<span class="lineNum">      68 </span><span class="lineCov">        357 :     }</span>
+<span class="lineNum">      68 </span><span class="lineCov">        369 :     }</span>
 <span class="lineNum">      69 </span>            : 
-<span class="lineNum">      70 </span><span class="lineCov">        350 :     return [[self alloc] initWithArguments:args];</span>
-<span class="lineNum">      71 </span><span class="lineCov">       2217 : }</span>
+<span class="lineNum">      70 </span><span class="lineCov">        362 :     return [[self alloc] initWithArguments:args];</span>
+<span class="lineNum">      71 </span><span class="lineCov">       2362 : }</span>
 <span class="lineNum">      72 </span>            : 
-<span class="lineNum">      73 </span><span class="lineCov">        373 : - (id)initWithArguments:(NSMutableArray *)array</span>
+<span class="lineNum">      73 </span><span class="lineCov">        385 : - (id)initWithArguments:(NSMutableArray *)array</span>
 <span class="lineNum">      74 </span>            : {
-<span class="lineNum">      75 </span><span class="lineCov">        373 :     self = [super init];</span>
-<span class="lineNum">      76 </span><span class="lineCov">        373 :     if (self) {</span>
-<span class="lineNum">      77 </span><span class="lineCov">        373 :         _arguments = array;</span>
-<span class="lineNum">      78 </span><span class="lineCov">        373 :         _needRehash = YES;</span>
-<span class="lineNum">      79 </span><span class="lineCov">        373 :     }</span>
-<span class="lineNum">      80 </span><span class="lineCov">        373 :     return self;</span>
-<span class="lineNum">      81 </span><span class="lineCov">        373 : }</span>
+<span class="lineNum">      75 </span><span class="lineCov">        385 :     self = [super init];</span>
+<span class="lineNum">      76 </span><span class="lineCov">        385 :     if (self) {</span>
+<span class="lineNum">      77 </span><span class="lineCov">        385 :         _arguments = array;</span>
+<span class="lineNum">      78 </span><span class="lineCov">        385 :         _needRehash = YES;</span>
+<span class="lineNum">      79 </span><span class="lineCov">        385 :     }</span>
+<span class="lineNum">      80 </span><span class="lineCov">        385 :     return self;</span>
+<span class="lineNum">      81 </span><span class="lineCov">        385 : }</span>
 <span class="lineNum">      82 </span>            : 
 <span class="lineNum">      83 </span><span class="lineCov">         93 : - (id)argumentValueAtIndex:(NSUInteger)index</span>
 <span class="lineNum">      84 </span>            : {

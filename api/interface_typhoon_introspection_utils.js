@@ -5,6 +5,5 @@ var interface_typhoon_introspection_utils =
     [ "propertiesForClass:", "interface_typhoon_introspection_utils.html#af11e00d3df21c58627fd67be08a7200d", null ],
     [ "propertiesForClass:upToParentClass:", "interface_typhoon_introspection_utils.html#a32614ce91e195e021e2517c68b8aeb71", null ],
     [ "setterForPropertyWithName:inClass:", "interface_typhoon_introspection_utils.html#aa190816afd6c690e83b2bcff5b1c6e20", null ],
-    [ "typeCodesForSelector:ofClass:isClassMethod:", "interface_typhoon_introspection_utils.html#ab40d153fb3f2de289c4aa2832b89dbbe", null ],
     [ "typeForPropertyWithName:inClass:", "interface_typhoon_introspection_utils.html#a34d5f226d76d10c64534ab62b422e154", null ]
 ];

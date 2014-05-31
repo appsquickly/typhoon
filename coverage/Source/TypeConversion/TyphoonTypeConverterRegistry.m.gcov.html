@@ -94,10 +94,10 @@
 <span class="lineNum">      36 </span>            :     static dispatch_once_t onceToken;
 <span class="lineNum">      37 </span>            :     static TyphoonTypeConverterRegistry *instance;
 <span class="lineNum">      38 </span>            : 
-<span class="lineNum">      39 </span><span class="lineCov">         89 :     dispatch_once(&amp;onceToken, ^{</span>
+<span class="lineNum">      39 </span><span class="lineCov">         95 :     dispatch_once(&amp;onceToken, ^{</span>
 <span class="lineNum">      40 </span><span class="lineCov">          1 :         instance = [[[self class] alloc] init];</span>
 <span class="lineNum">      41 </span><span class="lineCov">          2 :     });</span>
-<span class="lineNum">      42 </span><span class="lineCov">         88 :     return instance;</span>
+<span class="lineNum">      42 </span><span class="lineCov">         94 :     return instance;</span>
 <span class="lineNum">      43 </span>            : }
 <span class="lineNum">      44 </span>            : 
 <span class="lineNum">      45 </span><span class="lineNoCov">          0 : + (NSString *)typeFromTextValue:(NSString *)textValue</span>
@@ -151,31 +151,31 @@
 <span class="lineNum">      93 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      94 </span>            : #pragma mark - Interface Methods
 <span class="lineNum">      95 </span>            : 
-<span class="lineNum">      96 </span><span class="lineCov">         32 : - (id &lt;TyphoonTypeConverter&gt;)converterForType:(NSString *)type</span>
+<span class="lineNum">      96 </span><span class="lineCov">         34 : - (id &lt;TyphoonTypeConverter&gt;)converterForType:(NSString *)type</span>
 <span class="lineNum">      97 </span>            : {
-<span class="lineNum">      98 </span><span class="lineCov">         32 :     return [_typeConverters objectForKey:type];</span>
-<span class="lineNum">      99 </span><span class="lineCov">         32 : }</span>
+<span class="lineNum">      98 </span><span class="lineCov">         34 :     return [_typeConverters objectForKey:type];</span>
+<span class="lineNum">      99 </span><span class="lineCov">         34 : }</span>
 <span class="lineNum">     100 </span>            : 
 <span class="lineNum">     101 </span>            : - (TyphoonPrimitiveTypeConverter *)primitiveTypeConverter
 <span class="lineNum">     102 </span>            : {
 <span class="lineNum">     103 </span><span class="lineCov">          6 :     return _primitiveTypeConverter;</span>
 <span class="lineNum">     104 </span>            : }
 <span class="lineNum">     105 </span>            : 
-<span class="lineNum">     106 </span><span class="lineCov">         30 : - (void)registerTypeConverter:(id &lt;TyphoonTypeConverter&gt;)converter;</span>
+<span class="lineNum">     106 </span><span class="lineCov">         32 : - (void)registerTypeConverter:(id &lt;TyphoonTypeConverter&gt;)converter</span>
 <span class="lineNum">     107 </span>            : {
-<span class="lineNum">     108 </span><span class="lineCov">         30 :     NSString *type = [converter supportedType];</span>
-<span class="lineNum">     109 </span><span class="lineCov">         30 :     if (!([_typeConverters objectForKey:type])) {</span>
-<span class="lineNum">     110 </span><span class="lineCov">         29 :         [_typeConverters setObject:converter forKey:type];</span>
-<span class="lineNum">     111 </span><span class="lineCov">         29 :     }</span>
+<span class="lineNum">     108 </span><span class="lineCov">         32 :     NSString *type = [converter supportedType];</span>
+<span class="lineNum">     109 </span><span class="lineCov">         32 :     if (!([_typeConverters objectForKey:type])) {</span>
+<span class="lineNum">     110 </span><span class="lineCov">         31 :         [_typeConverters setObject:converter forKey:type];</span>
+<span class="lineNum">     111 </span><span class="lineCov">         31 :     }</span>
 <span class="lineNum">     112 </span>            :     else {
 <span class="lineNum">     113 </span><span class="lineCov">          1 :         [NSException raise:NSInvalidArgumentException format:@&quot;Converter for '%@' already registered.&quot;, type];</span>
 <span class="lineNum">     114 </span>            :     }
-<span class="lineNum">     115 </span><span class="lineCov">         29 : }</span>
+<span class="lineNum">     115 </span><span class="lineCov">         31 : }</span>
 <span class="lineNum">     116 </span>            : 
-<span class="lineNum">     117 </span><span class="lineCov">         24 : - (void)unregisterTypeConverter:(id &lt;TyphoonTypeConverter&gt;)converter</span>
+<span class="lineNum">     117 </span><span class="lineCov">         26 : - (void)unregisterTypeConverter:(id &lt;TyphoonTypeConverter&gt;)converter</span>
 <span class="lineNum">     118 </span>            : {
-<span class="lineNum">     119 </span><span class="lineCov">         24 :     [_typeConverters removeObjectForKey:[converter supportedType]];</span>
-<span class="lineNum">     120 </span><span class="lineCov">         24 : }</span>
+<span class="lineNum">     119 </span><span class="lineCov">         26 :     [_typeConverters removeObjectForKey:[converter supportedType]];</span>
+<span class="lineNum">     120 </span><span class="lineCov">         26 : }</span>
 <span class="lineNum">     121 </span>            : 
 <span class="lineNum">     122 </span>            : 
 <span class="lineNum">     123 </span>            : /* ====================================================================================================================================== */

@@ -84,9 +84,6 @@ var files =
     [ "TyphoonInjectionContext.h", "_typhoon_injection_context_8h.html", "_typhoon_injection_context_8h" ],
     [ "TyphoonInjections.h", "_typhoon_injections_8h.html", "_typhoon_injections_8h" ],
     [ "TyphoonIntrospectionUtils.h", "_typhoon_introspection_utils_8h.html", "_typhoon_introspection_utils_8h" ],
-    [ "TyphoonIntrospectiveNSObject.h", "_typhoon_introspective_n_s_object_8h.html", [
-      [ "<TyphoonIntrospectiveNSObject>", "protocol_typhoon_introspective_n_s_object-p.html", "protocol_typhoon_introspective_n_s_object-p" ]
-    ] ],
     [ "TyphooniOS.h", "_typhooni_o_s_8h.html", null ],
     [ "TyphoonJsonStyleConfiguration.h", "_typhoon_json_style_configuration_8h.html", null ],
     [ "TyphoonLinkerCategoryBugFix.h", "_typhoon_linker_category_bug_fix_8h.html", null ],

@@ -69,15 +69,15 @@
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            : @implementation NSMethodSignature (TCFUnwrapValues)
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">        284 : - (BOOL)shouldUnwrapValue:(id)value forArgumentAtIndex:(NSUInteger)index</span>
+<span class="lineNum">      14 </span><span class="lineCov">        289 : - (BOOL)shouldUnwrapValue:(id)value forArgumentAtIndex:(NSUInteger)index</span>
 <span class="lineNum">      15 </span>            : {
-<span class="lineNum">      16 </span><span class="lineCov">        284 :     const char *argumentType = [self getArgumentTypeAtIndex:index];</span>
+<span class="lineNum">      16 </span><span class="lineCov">        289 :     const char *argumentType = [self getArgumentTypeAtIndex:index];</span>
 <span class="lineNum">      17 </span>            :     
-<span class="lineNum">      18 </span><span class="lineCov">        852 :     BOOL isPrimitive = !CStringEquals(argumentType, @encode(id));</span>
-<span class="lineNum">      19 </span><span class="lineCov">        284 :     BOOL isObjectIsWrapper = [value isKindOfClass:[NSValue class]];</span>
+<span class="lineNum">      18 </span><span class="lineCov">        867 :     BOOL isPrimitive = !CStringEquals(argumentType, @encode(id));</span>
+<span class="lineNum">      19 </span><span class="lineCov">        289 :     BOOL isObjectIsWrapper = [value isKindOfClass:[NSValue class]];</span>
 <span class="lineNum">      20 </span>            :     
-<span class="lineNum">      21 </span><span class="lineCov">        386 :     return isPrimitive &amp;&amp; isObjectIsWrapper;</span>
-<span class="lineNum">      22 </span><span class="lineCov">        284 : }</span>
+<span class="lineNum">      21 </span><span class="lineCov">        393 :     return isPrimitive &amp;&amp; isObjectIsWrapper;</span>
+<span class="lineNum">      22 </span><span class="lineCov">        289 : }</span>
 <span class="lineNum">      23 </span>            : 
 <span class="lineNum">      24 </span>            : @end
 </pre>

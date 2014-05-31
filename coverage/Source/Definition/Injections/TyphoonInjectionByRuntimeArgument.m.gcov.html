@@ -70,14 +70,14 @@
 <span class="lineNum">      12 </span>            : 
 <span class="lineNum">      13 </span>            : @implementation TyphoonInjectionByRuntimeArgument
 <span class="lineNum">      14 </span>            : 
-<span class="lineNum">      15 </span><span class="lineCov">        572 : - (instancetype)initWithArgumentIndex:(NSUInteger)index</span>
+<span class="lineNum">      15 </span><span class="lineCov">        590 : - (instancetype)initWithArgumentIndex:(NSUInteger)index</span>
 <span class="lineNum">      16 </span>            : {
-<span class="lineNum">      17 </span><span class="lineCov">        572 :     self = [super init];</span>
-<span class="lineNum">      18 </span><span class="lineCov">        572 :     if (self) {</span>
-<span class="lineNum">      19 </span><span class="lineCov">        572 :         _runtimeArgumentIndex = index;</span>
-<span class="lineNum">      20 </span><span class="lineCov">        572 :     }</span>
-<span class="lineNum">      21 </span><span class="lineCov">        572 :     return self;</span>
-<span class="lineNum">      22 </span><span class="lineCov">        572 : }</span>
+<span class="lineNum">      17 </span><span class="lineCov">        590 :     self = [super init];</span>
+<span class="lineNum">      18 </span><span class="lineCov">        590 :     if (self) {</span>
+<span class="lineNum">      19 </span><span class="lineCov">        590 :         _runtimeArgumentIndex = index;</span>
+<span class="lineNum">      20 </span><span class="lineCov">        590 :     }</span>
+<span class="lineNum">      21 </span><span class="lineCov">        590 :     return self;</span>
+<span class="lineNum">      22 </span><span class="lineCov">        590 : }</span>
 <span class="lineNum">      23 </span>            : 
 <span class="lineNum">      24 </span><span class="lineNoCov">          0 : - (id)forwardingTargetForSelector:(SEL)aSelector</span>
 <span class="lineNum">      25 </span>            : {

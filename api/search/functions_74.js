@@ -1,13 +1,12 @@
 var searchData=
 [
   ['textwithouttypefromtextvalue_3a',['textWithoutTypeFromTextValue:',['../interface_typhoon_type_converter_registry.html#af70a6163ffa2c615202d43ab436afad3',1,'TyphoonTypeConverterRegistry']]],
-  ['typecodesforselector_3aofclass_3aisclassmethod_3a',['typeCodesForSelector:ofClass:isClassMethod:',['../interface_typhoon_introspection_utils.html#ab40d153fb3f2de289c4aa2832b89dbbe',1,'TyphoonIntrospectionUtils']]],
   ['typeforpropertywithname_3ainclass_3a',['typeForPropertyWithName:inClass:',['../interface_typhoon_introspection_utils.html#a34d5f226d76d10c64534ab62b422e154',1,'TyphoonIntrospectionUtils']]],
   ['typefromtextvalue_3a',['typeFromTextValue:',['../interface_typhoon_type_converter_registry.html#afa80517a752cf484d86113ee782adfb7',1,'TyphoonTypeConverterRegistry']]],
   ['typhoon_5fenumerateobjectswithmanualiteration_3acompletion_3a',['typhoon_enumerateObjectsWithManualIteration:completion:',['../category_n_s_array_07_typhoon_signal_enumerator_08.html#a95ecce680a7d3789c68b89920fa236bb',1,'NSArray(TyphoonSignalEnumerator)']]],
   ['typhoon_5finjectvalue_3aforpropertyname_3a',['typhoon_injectValue:forPropertyName:',['../category_n_s_object_07_property_injection_08.html#aed81783dbefb92b832b2fae545705fbd',1,'NSObject(PropertyInjection)']]],
   ['typhoon_5fparameternamesforselector_3a',['typhoon_parameterNamesForSelector:',['../category_n_s_object_07_typhoon_introspection_utils_08.html#a4733974b1aeabdfa6277a85b90a3ff2b',1,'NSObject(TyphoonIntrospectionUtils)']]],
-  ['typhoon_5ftypeforpropertywithname_3a',['typhoon_typeForPropertyWithName:',['../category_n_s_object_07_typhoon_introspection_utils_08.html#ab68f82a13934024eae6404677cbf9cb5',1,'NSObject(TyphoonIntrospectionUtils)::typhoon_typeForPropertyWithName:()'],['../protocol_typhoon_introspective_n_s_object-p.html#a888949f5298193ddf501df44bcfb0224',1,'TyphoonIntrospectiveNSObject-p::typhoon_typeForPropertyWithName:()']]],
+  ['typhoon_5ftypeforpropertywithname_3a',['typhoon_typeForPropertyWithName:',['../category_n_s_object_07_typhoon_introspection_utils_08.html#ab68f82a13934024eae6404677cbf9cb5',1,'NSObject(TyphoonIntrospectionUtils)']]],
   ['typhoonautowiredproperties',['TyphoonAutoWiredProperties',['../_typhoon_introspection_utils_8h.html#a0336424060fda82f8b5a05fe83909858',1,'TyphoonIntrospectionUtils.h']]],
   ['typhoonconfig',['TyphoonConfig',['../_typhoon_config_post_processor_8h.html#ab9ed52428be61894681b2e05afbd1a57',1,'TyphoonConfigPostProcessor.h']]],
   ['typhoondidinject',['typhoonDidInject',['../category_n_s_object_07_factory_hooks_08.html#ace70d37e0b522cd30d55a74412a54e6c',1,'NSObject(FactoryHooks)']]],

@@ -74,26 +74,26 @@
 <span class="lineNum">      16 </span>            : @implementation TyphoonBundleResource
 <span class="lineNum">      17 </span>            : 
 <span class="lineNum">      18 </span>            : /* =========================================================== Class Methods ============================================================ */
-<span class="lineNum">      19 </span><span class="lineCov">         92 : + (id &lt;TyphoonResource&gt;)withName:(NSString *)name</span>
+<span class="lineNum">      19 </span><span class="lineCov">         98 : + (id &lt;TyphoonResource&gt;)withName:(NSString *)name</span>
 <span class="lineNum">      20 </span>            : {
-<span class="lineNum">      21 </span><span class="lineCov">         92 :     return [self withName:name inBundle:[NSBundle bundleForClass:[self class]]];</span>
-<span class="lineNum">      22 </span><span class="lineCov">         92 : }</span>
+<span class="lineNum">      21 </span><span class="lineCov">         98 :     return [self withName:name inBundle:[NSBundle bundleForClass:[self class]]];</span>
+<span class="lineNum">      22 </span><span class="lineCov">         98 : }</span>
 <span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineCov">         92 : + (id &lt;TyphoonResource&gt;)withName:(NSString *)name inBundle:(NSBundle *)bundle</span>
+<span class="lineNum">      24 </span><span class="lineCov">         98 : + (id &lt;TyphoonResource&gt;)withName:(NSString *)name inBundle:(NSBundle *)bundle</span>
 <span class="lineNum">      25 </span>            : {
-<span class="lineNum">      26 </span><span class="lineCov">         92 :     NSString *filePath = [self filePathForName:name inBundle:bundle];</span>
+<span class="lineNum">      26 </span><span class="lineCov">         98 :     NSString *filePath = [self filePathForName:name inBundle:bundle];</span>
 <span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span><span class="lineCov">         92 :     if (filePath == nil) {</span>
+<span class="lineNum">      28 </span><span class="lineCov">         98 :     if (filePath == nil) {</span>
 <span class="lineNum">      29 </span><span class="lineCov">          1 :         [NSException raise:NSInvalidArgumentException format:@&quot;Resource named '%@' not in bundle.&quot;, name];</span>
 <span class="lineNum">      30 </span><span class="lineCov">          1 :     }</span>
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">         91 :     return [[[self class] alloc] initWithContentsOfFile:filePath];</span>
-<span class="lineNum">      33 </span><span class="lineCov">         91 : }</span>
+<span class="lineNum">      32 </span><span class="lineCov">         97 :     return [[[self class] alloc] initWithContentsOfFile:filePath];</span>
+<span class="lineNum">      33 </span><span class="lineCov">         97 : }</span>
 <span class="lineNum">      34 </span>            : 
-<span class="lineNum">      35 </span><span class="lineCov">         92 : + (NSString *)filePathForName:(NSString *)name inBundle:(NSBundle *)bundle</span>
+<span class="lineNum">      35 </span><span class="lineCov">         98 : + (NSString *)filePathForName:(NSString *)name inBundle:(NSBundle *)bundle</span>
 <span class="lineNum">      36 </span>            : {
-<span class="lineNum">      37 </span><span class="lineCov">         92 :     return [bundle pathForResource:[name stringByDeletingPathExtension] ofType:[name pathExtension]];</span>
-<span class="lineNum">      38 </span><span class="lineCov">         92 : }</span>
+<span class="lineNum">      37 </span><span class="lineCov">         98 :     return [bundle pathForResource:[name stringByDeletingPathExtension] ofType:[name pathExtension]];</span>
+<span class="lineNum">      38 </span><span class="lineCov">         98 : }</span>
 <span class="lineNum">      39 </span>            : 
 <span class="lineNum">      40 </span>            : @end
 </pre>

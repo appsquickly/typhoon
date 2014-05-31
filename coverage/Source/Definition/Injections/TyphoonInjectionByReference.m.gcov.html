@@ -72,48 +72,48 @@
 <span class="lineNum">      14 </span>            : #import &quot;NSInvocation+TCFUnwrapValues.h&quot;
 <span class="lineNum">      15 </span>            : #import &quot;TyphoonDefinition+InstanceBuilder.h&quot;
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span><span class="lineCov">        113 : @implementation TyphoonInjectionByReference</span>
+<span class="lineNum">      17 </span><span class="lineCov">        117 : @implementation TyphoonInjectionByReference</span>
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span><span class="lineCov">       1577 : - (instancetype)initWithReference:(NSString *)reference args:(TyphoonRuntimeArguments *)referenceArguments</span>
+<span class="lineNum">      19 </span><span class="lineCov">       1710 : - (instancetype)initWithReference:(NSString *)reference args:(TyphoonRuntimeArguments *)referenceArguments</span>
 <span class="lineNum">      20 </span>            : {
-<span class="lineNum">      21 </span><span class="lineCov">       1577 :     self = [super init];</span>
-<span class="lineNum">      22 </span><span class="lineCov">       1577 :     if (self) {</span>
-<span class="lineNum">      23 </span><span class="lineCov">       1577 :         _reference = reference;</span>
-<span class="lineNum">      24 </span><span class="lineCov">       1577 :         _referenceArguments = referenceArguments;</span>
-<span class="lineNum">      25 </span><span class="lineCov">       1577 :     }</span>
-<span class="lineNum">      26 </span><span class="lineCov">       1577 :     return self;</span>
-<span class="lineNum">      27 </span><span class="lineCov">       1577 : }</span>
+<span class="lineNum">      21 </span><span class="lineCov">       1710 :     self = [super init];</span>
+<span class="lineNum">      22 </span><span class="lineCov">       1710 :     if (self) {</span>
+<span class="lineNum">      23 </span><span class="lineCov">       1710 :         _reference = reference;</span>
+<span class="lineNum">      24 </span><span class="lineCov">       1710 :         _referenceArguments = referenceArguments;</span>
+<span class="lineNum">      25 </span><span class="lineCov">       1710 :     }</span>
+<span class="lineNum">      26 </span><span class="lineCov">       1710 :     return self;</span>
+<span class="lineNum">      27 </span><span class="lineCov">       1710 : }</span>
 <span class="lineNum">      28 </span>            : 
 <span class="lineNum">      29 </span>            : #pragma mark - Overrides
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">         52 : - (id)copyWithZone:(NSZone *)zone</span>
+<span class="lineNum">      31 </span><span class="lineCov">         56 : - (id)copyWithZone:(NSZone *)zone</span>
 <span class="lineNum">      32 </span>            : {
-<span class="lineNum">      33 </span><span class="lineCov">         52 :     TyphoonInjectionByReference *copied = [[TyphoonInjectionByReference alloc] initWithReference:_reference args:_referenceArguments];</span>
-<span class="lineNum">      34 </span><span class="lineCov">         52 :     [self copyBasePropertiesTo:copied];</span>
-<span class="lineNum">      35 </span><span class="lineCov">         52 :     return copied;</span>
-<span class="lineNum">      36 </span><span class="lineCov">         52 : }</span>
+<span class="lineNum">      33 </span><span class="lineCov">         56 :     TyphoonInjectionByReference *copied = [[TyphoonInjectionByReference alloc] initWithReference:_reference args:_referenceArguments];</span>
+<span class="lineNum">      34 </span><span class="lineCov">         56 :     [self copyBasePropertiesTo:copied];</span>
+<span class="lineNum">      35 </span><span class="lineCov">         56 :     return copied;</span>
+<span class="lineNum">      36 </span><span class="lineCov">         56 : }</span>
 <span class="lineNum">      37 </span>            : 
-<span class="lineNum">      38 </span><span class="lineCov">        327 : - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result</span>
+<span class="lineNum">      38 </span><span class="lineCov">        333 : - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result</span>
 <span class="lineNum">      39 </span>            : {
-<span class="lineNum">      40 </span><span class="lineCov">        195 :     if (context.raiseExceptionIfCircular) {</span>
+<span class="lineNum">      40 </span><span class="lineCov">        198 :     if (context.raiseExceptionIfCircular) {</span>
 <span class="lineNum">      41 </span><span class="lineCov">         63 :         result([self resolveReferenceWithContext:context]);</span>
 <span class="lineNum">      42 </span><span class="lineCov">         63 :     } else {</span>
-<span class="lineNum">      43 </span><span class="lineCov">        264 :         [self resolveCircularDependencyWithContext:context block:^{</span>
-<span class="lineNum">      44 </span><span class="lineCov">        132 :             result([self resolveReferenceWithContext:context]);</span>
-<span class="lineNum">      45 </span><span class="lineCov">        132 :         }];</span>
-<span class="lineNum">      46 </span><span class="lineCov">        132 :     }</span>
-<span class="lineNum">      47 </span><span class="lineCov">        191 : }</span>
+<span class="lineNum">      43 </span><span class="lineCov">        270 :         [self resolveCircularDependencyWithContext:context block:^{</span>
+<span class="lineNum">      44 </span><span class="lineCov">        135 :             result([self resolveReferenceWithContext:context]);</span>
+<span class="lineNum">      45 </span><span class="lineCov">        135 :         }];</span>
+<span class="lineNum">      46 </span><span class="lineCov">        135 :     }</span>
+<span class="lineNum">      47 </span><span class="lineCov">        194 : }</span>
 <span class="lineNum">      48 </span>            : 
 <span class="lineNum">      49 </span>            : #pragma mark - Utils
 <span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span><span class="lineCov">        327 : - (TyphoonRuntimeArguments *)referenceArgumentsByApplyingRuntimeArgs:(TyphoonRuntimeArguments *)runtimeArgs</span>
+<span class="lineNum">      51 </span><span class="lineCov">        333 : - (TyphoonRuntimeArguments *)referenceArgumentsByApplyingRuntimeArgs:(TyphoonRuntimeArguments *)runtimeArgs</span>
 <span class="lineNum">      52 </span>            : {
-<span class="lineNum">      53 </span><span class="lineCov">        327 :     TyphoonRuntimeArguments *result = _referenceArguments;</span>
+<span class="lineNum">      53 </span><span class="lineCov">        333 :     TyphoonRuntimeArguments *result = _referenceArguments;</span>
 <span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span><span class="lineCov">        327 :     Class runtimeArgInjectionClass = [TyphoonInjectionByRuntimeArgument class];</span>
-<span class="lineNum">      56 </span><span class="lineCov">        327 :     BOOL hasRuntimeArgumentReferences = [_referenceArguments indexOfArgumentWithKind:runtimeArgInjectionClass] != NSNotFound;</span>
+<span class="lineNum">      55 </span><span class="lineCov">        333 :     Class runtimeArgInjectionClass = [TyphoonInjectionByRuntimeArgument class];</span>
+<span class="lineNum">      56 </span><span class="lineCov">        333 :     BOOL hasRuntimeArgumentReferences = [_referenceArguments indexOfArgumentWithKind:runtimeArgInjectionClass] != NSNotFound;</span>
 <span class="lineNum">      57 </span>            : 
-<span class="lineNum">      58 </span><span class="lineCov">        389 :     if (_referenceArguments &amp;&amp; runtimeArgs &amp;&amp; hasRuntimeArgumentReferences) {</span>
+<span class="lineNum">      58 </span><span class="lineCov">        395 :     if (_referenceArguments &amp;&amp; runtimeArgs &amp;&amp; hasRuntimeArgumentReferences) {</span>
 <span class="lineNum">      59 </span><span class="lineCov">         23 :         result = [_referenceArguments copy];</span>
 <span class="lineNum">      60 </span><span class="lineCov">         23 :         NSUInteger indexToReplace;</span>
 <span class="lineNum">      61 </span><span class="lineCov">         69 :         while ((indexToReplace = [result indexOfArgumentWithKind:runtimeArgInjectionClass]) != NSNotFound) {</span>
@@ -123,30 +123,30 @@
 <span class="lineNum">      65 </span><span class="lineCov">         23 :         }</span>
 <span class="lineNum">      66 </span><span class="lineCov">         23 :     }</span>
 <span class="lineNum">      67 </span>            : 
-<span class="lineNum">      68 </span><span class="lineCov">        327 :     return result;</span>
-<span class="lineNum">      69 </span><span class="lineCov">        327 : }</span>
+<span class="lineNum">      68 </span><span class="lineCov">        333 :     return result;</span>
+<span class="lineNum">      69 </span><span class="lineCov">        333 : }</span>
 <span class="lineNum">      70 </span>            : 
 <span class="lineNum">      71 </span>            : #pragma mark - Protected
 <span class="lineNum">      72 </span>            : 
-<span class="lineNum">      73 </span><span class="lineCov">        264 : - (void)resolveCircularDependencyWithContext:(TyphoonInjectionContext *)context block:(dispatch_block_t)block</span>
+<span class="lineNum">      73 </span><span class="lineCov">        270 : - (void)resolveCircularDependencyWithContext:(TyphoonInjectionContext *)context block:(dispatch_block_t)block</span>
 <span class="lineNum">      74 </span>            : {
-<span class="lineNum">      75 </span><span class="lineCov">        132 :     TyphoonRuntimeArguments *args = [self referenceArgumentsByApplyingRuntimeArgs:context.args];</span>
-<span class="lineNum">      76 </span><span class="lineCov">        264 :     [context.factory resolveCircularDependency:self.reference args:args resolvedBlock:^(BOOL isCircular) {</span>
-<span class="lineNum">      77 </span><span class="lineCov">        132 :         block();</span>
-<span class="lineNum">      78 </span><span class="lineCov">        132 :     }];</span>
-<span class="lineNum">      79 </span><span class="lineCov">        132 : }</span>
+<span class="lineNum">      75 </span><span class="lineCov">        135 :     TyphoonRuntimeArguments *args = [self referenceArgumentsByApplyingRuntimeArgs:context.args];</span>
+<span class="lineNum">      76 </span><span class="lineCov">        270 :     [context.factory resolveCircularDependency:self.reference args:args resolvedBlock:^(BOOL isCircular) {</span>
+<span class="lineNum">      77 </span><span class="lineCov">        135 :         block();</span>
+<span class="lineNum">      78 </span><span class="lineCov">        135 :     }];</span>
+<span class="lineNum">      79 </span><span class="lineCov">        135 : }</span>
 <span class="lineNum">      80 </span>            : 
 <span class="lineNum">      81 </span>            : //Raises circular dependencies exception if already initializing.
-<span class="lineNum">      82 </span><span class="lineCov">        194 : - (id)resolveReferenceWithContext:(TyphoonInjectionContext *)context</span>
+<span class="lineNum">      82 </span><span class="lineCov">        197 : - (id)resolveReferenceWithContext:(TyphoonInjectionContext *)context</span>
 <span class="lineNum">      83 </span>            : {
-<span class="lineNum">      84 </span><span class="lineCov">        194 :     TyphoonRuntimeArguments *args = [self referenceArgumentsByApplyingRuntimeArgs:context.args];</span>
+<span class="lineNum">      84 </span><span class="lineCov">        197 :     TyphoonRuntimeArguments *args = [self referenceArgumentsByApplyingRuntimeArgs:context.args];</span>
 <span class="lineNum">      85 </span>            :     
-<span class="lineNum">      86 </span><span class="lineCov">        194 :     id referenceInstance = [[[context.factory stack] peekForKey:self.reference args:args] instance];</span>
-<span class="lineNum">      87 </span><span class="lineCov">        194 :     if (!referenceInstance) {</span>
-<span class="lineNum">      88 </span><span class="lineCov">        166 :         referenceInstance = [context.factory componentForKey:self.reference args:args];</span>
-<span class="lineNum">      89 </span><span class="lineCov">        166 :     }</span>
-<span class="lineNum">      90 </span><span class="lineCov">        192 :     return referenceInstance;</span>
-<span class="lineNum">      91 </span><span class="lineCov">        192 : }</span>
+<span class="lineNum">      86 </span><span class="lineCov">        197 :     id referenceInstance = [[[context.factory stack] peekForKey:self.reference args:args] instance];</span>
+<span class="lineNum">      87 </span><span class="lineCov">        197 :     if (!referenceInstance) {</span>
+<span class="lineNum">      88 </span><span class="lineCov">        169 :         referenceInstance = [context.factory componentForKey:self.reference args:args];</span>
+<span class="lineNum">      89 </span><span class="lineCov">        169 :     }</span>
+<span class="lineNum">      90 </span><span class="lineCov">        195 :     return referenceInstance;</span>
+<span class="lineNum">      91 </span><span class="lineCov">        195 : }</span>
 <span class="lineNum">      92 </span>            : 
 <span class="lineNum">      93 </span>            : @end
 </pre>

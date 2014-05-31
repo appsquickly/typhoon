@@ -79,20 +79,20 @@
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            : @implementation TyphoonAssemblyPropertyInjectionPostProcessor
 <span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineCov">          6 : - (BOOL)shouldReplaceInjectionByType:(TyphoonInjectionByType *)propertyInjection</span>
-<span class="lineNum">      25 </span><span class="lineCov">          6 :     withFactoryInjectionInDefinition:(TyphoonDefinition *)definition</span>
+<span class="lineNum">      24 </span><span class="lineCov">         46 : - (BOOL)shouldReplaceInjectionByType:(TyphoonInjectionByType *)propertyInjection</span>
+<span class="lineNum">      25 </span><span class="lineCov">         46 :     withFactoryInjectionInDefinition:(TyphoonDefinition *)definition</span>
 <span class="lineNum">      26 </span>            : {
-<span class="lineNum">      27 </span><span class="lineCov">          6 :     BOOL isAssemblyClass = NO;</span>
+<span class="lineNum">      27 </span><span class="lineCov">         46 :     BOOL isAssemblyClass = NO;</span>
 <span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span><span class="lineCov">          6 :     TyphoonTypeDescriptor</span>
-<span class="lineNum">      30 </span><span class="lineCov">         12 :         *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyInjection.propertyName inClass:definition.type];</span>
+<span class="lineNum">      29 </span><span class="lineCov">         46 :     TyphoonTypeDescriptor</span>
+<span class="lineNum">      30 </span><span class="lineCov">         92 :         *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyInjection.propertyName inClass:definition.type];</span>
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">          6 :     if (type.typeBeingDescribed) {</span>
+<span class="lineNum">      32 </span><span class="lineCov">         46 :     if (type.typeBeingDescribed) {</span>
 <span class="lineNum">      33 </span><span class="lineCov">          5 :         isAssemblyClass = [type.typeBeingDescribed isSubclassOfClass:[TyphoonAssembly class]];</span>
 <span class="lineNum">      34 </span><span class="lineCov">          5 :     }</span>
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span><span class="lineCov">          6 :     return isAssemblyClass;</span>
-<span class="lineNum">      37 </span><span class="lineCov">          6 : }</span>
+<span class="lineNum">      36 </span><span class="lineCov">         46 :     return isAssemblyClass;</span>
+<span class="lineNum">      37 </span><span class="lineCov">         46 : }</span>
 <span class="lineNum">      38 </span>            : 
 <span class="lineNum">      39 </span>            : @end
 </pre>

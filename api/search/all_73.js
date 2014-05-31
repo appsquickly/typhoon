@@ -7,7 +7,6 @@ var searchData=
   ['setdeallocnotificationwithkey_3aandblock_3a',['setDeallocNotificationWithKey:andBlock:',['../category_n_s_object_07_dealloc_notification_08.html#a8db17c2e435c1e9c44013420773f97fc',1,'NSObject(DeallocNotification)']]],
   ['setobject_3aforkey_3a',['setObject:forKey:',['../protocol_typhoon_dictionary-p.html#ac0cd34033498aa42bd489fc20d01d2b6',1,'TyphoonDictionary-p::setObject:forKey:()'],['../protocol_typhoon_components_pool-p.html#a831c005126140764088073dec638f17c',1,'TyphoonComponentsPool-p::setObject:forKey:()']]],
   ['setparameterindex_3a',['setParameterIndex:',['../protocol_typhoon_parameter_injection-p.html#ab0b2bc573b5e310b6e7b774687e594f5',1,'TyphoonParameterInjection-p']]],
-  ['setprimitiveargumentfor_3aindex_3atextvalue_3arequiredtype_3a',['setPrimitiveArgumentFor:index:textValue:requiredType:',['../interface_typhoon_primitive_type_converter.html#ad73d3e3e68756022c0ba5b221f14b3ff',1,'TyphoonPrimitiveTypeConverter']]],
   ['setpropertyname_3a',['setPropertyName:',['../protocol_typhoon_property_injection-p.html#ad12ad20c98b147ed21056a95c6ff5e91',1,'TyphoonPropertyInjection-p']]],
   ['setterforpropertywithname_3ainclass_3a',['setterForPropertyWithName:inClass:',['../interface_typhoon_introspection_utils.html#aa190816afd6c690e83b2bcff5b1c6e20',1,'TyphoonIntrospectionUtils']]],
   ['shared',['shared',['../interface_typhoon_type_converter_registry.html#ae56af9a302e744df8d3482d52f46c6e7',1,'TyphoonTypeConverterRegistry']]],

@@ -93,7 +93,7 @@
 <span class="lineNum">      35 </span>            : 
 <span class="lineNum">      36 </span>            : + (TyphoonConfigPostProcessor *)configurer
 <span class="lineNum">      37 </span>            : {
-<span class="lineNum">      38 </span><span class="lineCov">         30 :     return [[[self class] alloc] init];</span>
+<span class="lineNum">      38 </span><span class="lineCov">         32 :     return [[[self class] alloc] init];</span>
 <span class="lineNum">      39 </span>            : }
 <span class="lineNum">      40 </span>            : 
 <span class="lineNum">      41 </span><span class="lineCov">          3 : + (void)registerConfigurationClass:(Class)configClass forExtension:(NSString *)typeExtension</span>
@@ -116,16 +116,16 @@
 <span class="lineNum">      58 </span>            : 
 <span class="lineNum">      59 </span>            : - (id)init
 <span class="lineNum">      60 </span>            : {
-<span class="lineNum">      61 </span><span class="lineCov">         54 :     self = [super init];</span>
-<span class="lineNum">      62 </span><span class="lineCov">         54 :     if (self) {</span>
-<span class="lineNum">      63 </span><span class="lineCov">        216 :         NSMutableDictionary *mutableConfigs = [[NSMutableDictionary alloc] initWithCapacity:[propertyPlaceholderRegistry count]];</span>
-<span class="lineNum">      64 </span><span class="lineCov">        216 :         [propertyPlaceholderRegistry enumerateKeysAndObjectsUsingBlock:^(NSString *key, id configClass, BOOL *stop) {</span>
-<span class="lineNum">      65 </span><span class="lineCov">        162 :             mutableConfigs[key] = [configClass new];</span>
-<span class="lineNum">      66 </span><span class="lineCov">        162 :         }];</span>
-<span class="lineNum">      67 </span><span class="lineCov">         54 :         _configs = mutableConfigs;</span>
-<span class="lineNum">      68 </span><span class="lineCov">         54 :     }</span>
-<span class="lineNum">      69 </span><span class="lineCov">         54 :     return self;</span>
-<span class="lineNum">      70 </span><span class="lineCov">         54 : }</span>
+<span class="lineNum">      61 </span><span class="lineCov">         58 :     self = [super init];</span>
+<span class="lineNum">      62 </span><span class="lineCov">         58 :     if (self) {</span>
+<span class="lineNum">      63 </span><span class="lineCov">        232 :         NSMutableDictionary *mutableConfigs = [[NSMutableDictionary alloc] initWithCapacity:[propertyPlaceholderRegistry count]];</span>
+<span class="lineNum">      64 </span><span class="lineCov">        232 :         [propertyPlaceholderRegistry enumerateKeysAndObjectsUsingBlock:^(NSString *key, id configClass, BOOL *stop) {</span>
+<span class="lineNum">      65 </span><span class="lineCov">        174 :             mutableConfigs[key] = [configClass new];</span>
+<span class="lineNum">      66 </span><span class="lineCov">        174 :         }];</span>
+<span class="lineNum">      67 </span><span class="lineCov">         58 :         _configs = mutableConfigs;</span>
+<span class="lineNum">      68 </span><span class="lineCov">         58 :     }</span>
+<span class="lineNum">      69 </span><span class="lineCov">         58 :     return self;</span>
+<span class="lineNum">      70 </span><span class="lineCov">         58 : }</span>
 <span class="lineNum">      71 </span>            : 
 <span class="lineNum">      72 </span>            : + (void)initialize
 <span class="lineNum">      73 </span>            : {
@@ -149,11 +149,11 @@
 <span class="lineNum">      91 </span><span class="lineNoCov">          0 :     [self useResource:[TyphoonPathResource withPath:path] withExtension:[path pathExtension]];</span>
 <span class="lineNum">      92 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      93 </span>            : 
-<span class="lineNum">      94 </span><span class="lineCov">         88 : - (void)useResource:(id &lt;TyphoonResource&gt;)resource withExtension:(NSString *)typeExtension</span>
+<span class="lineNum">      94 </span><span class="lineCov">         94 : - (void)useResource:(id &lt;TyphoonResource&gt;)resource withExtension:(NSString *)typeExtension</span>
 <span class="lineNum">      95 </span>            : {
-<span class="lineNum">      96 </span><span class="lineCov">         88 :     id&lt;TyphoonConfiguration&gt;config = _configs[typeExtension];</span>
-<span class="lineNum">      97 </span><span class="lineCov">         88 :     [config appendResource:resource];</span>
-<span class="lineNum">      98 </span><span class="lineCov">         88 : }</span>
+<span class="lineNum">      96 </span><span class="lineCov">         94 :     id&lt;TyphoonConfiguration&gt;config = _configs[typeExtension];</span>
+<span class="lineNum">      97 </span><span class="lineCov">         94 :     [config appendResource:resource];</span>
+<span class="lineNum">      98 </span><span class="lineCov">         94 : }</span>
 <span class="lineNum">      99 </span>            : 
 <span class="lineNum">     100 </span><span class="lineCov">         40 : - (id)configurationValueForKey:(NSString *)key</span>
 <span class="lineNum">     101 </span>            : {
@@ -185,15 +185,15 @@
 <span class="lineNum">     127 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     128 </span>            : #pragma mark - Protocol Methods
 <span class="lineNum">     129 </span>            : 
-<span class="lineNum">     130 </span><span class="lineCov">         17 : - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory</span>
+<span class="lineNum">     130 </span><span class="lineCov">         19 : - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory</span>
 <span class="lineNum">     131 </span>            : {
-<span class="lineNum">     132 </span><span class="lineCov">        532 :     for (TyphoonDefinition *definition in [factory registry]) {</span>
-<span class="lineNum">     133 </span><span class="lineCov">        249 :         [definition enumerateInjectionsOfKind:[TyphoonInjectionByConfig class] options:TyphoonInjectionsEnumerationOptionAll</span>
+<span class="lineNum">     132 </span><span class="lineCov">        676 :     for (TyphoonDefinition *definition in [factory registry]) {</span>
+<span class="lineNum">     133 </span><span class="lineCov">        319 :         [definition enumerateInjectionsOfKind:[TyphoonInjectionByConfig class] options:TyphoonInjectionsEnumerationOptionAll</span>
 <span class="lineNum">     134 </span><span class="lineCov">         10 :                                    usingBlock:^(TyphoonInjectionByConfig *injection, id *injectionToReplace, BOOL *stop) {</span>
 <span class="lineNum">     135 </span><span class="lineCov">         10 :             injection.configuredInjection = [self injectionForConfigInjection:injection];</span>
 <span class="lineNum">     136 </span><span class="lineCov">         20 :         }];</span>
-<span class="lineNum">     137 </span><span class="lineCov">        532 :     }</span>
-<span class="lineNum">     138 </span><span class="lineCov">         17 : }</span>
+<span class="lineNum">     137 </span><span class="lineCov">        676 :     }</span>
+<span class="lineNum">     138 </span><span class="lineCov">         19 : }</span>
 <span class="lineNum">     139 </span>            : 
 <span class="lineNum">     140 </span><span class="lineCov">         10 : - (id&lt;TyphoonInjection&gt;)injectionForConfigInjection:(TyphoonInjectionByConfig *)injection</span>
 <span class="lineNum">     141 </span>            : {
@@ -235,27 +235,27 @@
 <span class="lineNum">     177 </span><span class="lineNoCov">          0 :     return [self configurerWithResourceList:resources];</span>
 <span class="lineNum">     178 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     179 </span>            : 
-<span class="lineNum">     180 </span><span class="lineCov">         24 : + (TyphoonConfigPostProcessor *)configurerWithResourceList:(NSArray *)resources</span>
+<span class="lineNum">     180 </span><span class="lineCov">         26 : + (TyphoonConfigPostProcessor *)configurerWithResourceList:(NSArray *)resources</span>
 <span class="lineNum">     181 </span>            : {
-<span class="lineNum">     182 </span><span class="lineCov">         24 :     TyphoonConfigPostProcessor *configurer = [TyphoonConfigPostProcessor configurer];</span>
-<span class="lineNum">     183 </span><span class="lineCov">        144 :     for (id &lt;TyphoonResource&gt; resource in resources) {</span>
-<span class="lineNum">     184 </span><span class="lineCov">         48 :         [configurer useResource:resource withExtension:@&quot;properties&quot;];</span>
-<span class="lineNum">     185 </span><span class="lineCov">        144 :     }</span>
-<span class="lineNum">     186 </span><span class="lineCov">         24 :     return configurer;</span>
-<span class="lineNum">     187 </span><span class="lineCov">         24 : }</span>
+<span class="lineNum">     182 </span><span class="lineCov">         26 :     TyphoonConfigPostProcessor *configurer = [TyphoonConfigPostProcessor configurer];</span>
+<span class="lineNum">     183 </span><span class="lineCov">        156 :     for (id &lt;TyphoonResource&gt; resource in resources) {</span>
+<span class="lineNum">     184 </span><span class="lineCov">         52 :         [configurer useResource:resource withExtension:@&quot;properties&quot;];</span>
+<span class="lineNum">     185 </span><span class="lineCov">        156 :     }</span>
+<span class="lineNum">     186 </span><span class="lineCov">         26 :     return configurer;</span>
+<span class="lineNum">     187 </span><span class="lineCov">         26 : }</span>
 <span class="lineNum">     188 </span>            : 
-<span class="lineNum">     189 </span><span class="lineCov">         25 : - (void)usePropertyStyleResource:(id &lt;TyphoonResource&gt;)resource</span>
+<span class="lineNum">     189 </span><span class="lineCov">         27 : - (void)usePropertyStyleResource:(id &lt;TyphoonResource&gt;)resource</span>
 <span class="lineNum">     190 </span>            : {
-<span class="lineNum">     191 </span><span class="lineCov">         25 :     [self useResource:resource withExtension:@&quot;properties&quot;];</span>
-<span class="lineNum">     192 </span><span class="lineCov">         25 : }</span>
+<span class="lineNum">     191 </span><span class="lineCov">         27 :     [self useResource:resource withExtension:@&quot;properties&quot;];</span>
+<span class="lineNum">     192 </span><span class="lineCov">         27 : }</span>
 <span class="lineNum">     193 </span>            : 
 <span class="lineNum">     194 </span>            : @end
 <span class="lineNum">     195 </span>            : 
 <span class="lineNum">     196 </span>            : 
-<span class="lineNum">     197 </span><span class="lineCov">         57 : id TyphoonConfig(NSString *configKey)</span>
+<span class="lineNum">     197 </span><span class="lineCov">         61 : id TyphoonConfig(NSString *configKey)</span>
 <span class="lineNum">     198 </span>            : {
-<span class="lineNum">     199 </span><span class="lineCov">         57 :     return TyphoonInjectionWithConfigKey(configKey);</span>
-<span class="lineNum">     200 </span><span class="lineCov">         57 : }</span>
+<span class="lineNum">     199 </span><span class="lineCov">         61 :     return TyphoonInjectionWithConfigKey(configKey);</span>
+<span class="lineNum">     200 </span><span class="lineCov">         61 : }</span>
 </pre>
       </td>
     </tr>

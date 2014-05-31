@@ -71,27 +71,27 @@
 <span class="lineNum">      13 </span>            : 
 <span class="lineNum">      14 </span>            : - (id)init
 <span class="lineNum">      15 </span>            : {
-<span class="lineNum">      16 </span><span class="lineCov">         54 :     self = [super init];</span>
-<span class="lineNum">      17 </span><span class="lineCov">         54 :     if (self) {</span>
-<span class="lineNum">      18 </span><span class="lineCov">         54 :         _properties = [NSMutableDictionary new];</span>
-<span class="lineNum">      19 </span><span class="lineCov">         54 :     }</span>
-<span class="lineNum">      20 </span><span class="lineCov">         54 :     return self;</span>
-<span class="lineNum">      21 </span><span class="lineCov">         54 : }</span>
+<span class="lineNum">      16 </span><span class="lineCov">         58 :     self = [super init];</span>
+<span class="lineNum">      17 </span><span class="lineCov">         58 :     if (self) {</span>
+<span class="lineNum">      18 </span><span class="lineCov">         58 :         _properties = [NSMutableDictionary new];</span>
+<span class="lineNum">      19 </span><span class="lineCov">         58 :     }</span>
+<span class="lineNum">      20 </span><span class="lineCov">         58 :     return self;</span>
+<span class="lineNum">      21 </span><span class="lineCov">         58 : }</span>
 <span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineCov">         78 : - (void)appendResource:(id&lt;TyphoonResource&gt;)resource</span>
+<span class="lineNum">      23 </span><span class="lineCov">         84 : - (void)appendResource:(id&lt;TyphoonResource&gt;)resource</span>
 <span class="lineNum">      24 </span>            : {
-<span class="lineNum">      25 </span><span class="lineCov">         78 :     NSArray *lines = [[resource asString] componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];</span>
-<span class="lineNum">      26 </span><span class="lineCov">        528 :     for (NSString *line in lines) {</span>
-<span class="lineNum">      27 </span><span class="lineCov">        186 :         if (![line hasPrefix:@&quot;#&quot;]) {</span>
-<span class="lineNum">      28 </span><span class="lineCov">        186 :             NSRange range = [line rangeOfString:@&quot;=&quot;];</span>
-<span class="lineNum">      29 </span><span class="lineCov">        186 :             if (range.location != NSNotFound) {</span>
-<span class="lineNum">      30 </span><span class="lineCov">        132 :                 NSString *property = [line substringToIndex:range.location];</span>
-<span class="lineNum">      31 </span><span class="lineCov">        132 :                 NSString *value = [line substringFromIndex:range.location + range.length];</span>
-<span class="lineNum">      32 </span><span class="lineCov">        132 :                 [_properties setObject:value forKey:property];</span>
-<span class="lineNum">      33 </span><span class="lineCov">        132 :             }</span>
-<span class="lineNum">      34 </span><span class="lineCov">        186 :         }</span>
-<span class="lineNum">      35 </span><span class="lineCov">        528 :     }</span>
-<span class="lineNum">      36 </span><span class="lineCov">         78 : }</span>
+<span class="lineNum">      25 </span><span class="lineCov">         84 :     NSArray *lines = [[resource asString] componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];</span>
+<span class="lineNum">      26 </span><span class="lineCov">        568 :     for (NSString *line in lines) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">        200 :         if (![line hasPrefix:@&quot;#&quot;]) {</span>
+<span class="lineNum">      28 </span><span class="lineCov">        200 :             NSRange range = [line rangeOfString:@&quot;=&quot;];</span>
+<span class="lineNum">      29 </span><span class="lineCov">        200 :             if (range.location != NSNotFound) {</span>
+<span class="lineNum">      30 </span><span class="lineCov">        142 :                 NSString *property = [line substringToIndex:range.location];</span>
+<span class="lineNum">      31 </span><span class="lineCov">        142 :                 NSString *value = [line substringFromIndex:range.location + range.length];</span>
+<span class="lineNum">      32 </span><span class="lineCov">        142 :                 [_properties setObject:value forKey:property];</span>
+<span class="lineNum">      33 </span><span class="lineCov">        142 :             }</span>
+<span class="lineNum">      34 </span><span class="lineCov">        200 :         }</span>
+<span class="lineNum">      35 </span><span class="lineCov">        568 :     }</span>
+<span class="lineNum">      36 </span><span class="lineCov">         84 : }</span>
 <span class="lineNum">      37 </span>            : 
 <span class="lineNum">      38 </span><span class="lineCov">         10 : - (id)objectForKey:(NSString *)key</span>
 <span class="lineNum">      39 </span>            : {

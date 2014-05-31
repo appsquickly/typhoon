@@ -3718,17 +3718,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>typeCodesForSelector:ofClass:isClassMethod:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonIntrospectionUtils</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_introspection_utils.html</Path>
-    <Anchor>ab40d153fb3f2de289c4aa2832b89dbbe</Anchor>
-    <DeclaredIn>TyphoonIntrospectionUtils.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>typeForPropertyWithName:inClass:</Name>
       <APILanguage>occ</APILanguage>
       <Type>clm</Type>
@@ -3737,27 +3726,6 @@
     <Path>interface_typhoon_introspection_utils.html</Path>
     <Anchor>a34d5f226d76d10c64534ab62b422e154</Anchor>
     <DeclaredIn>TyphoonIntrospectionUtils.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>TyphoonIntrospectiveNSObject</Name>
-      <APILanguage>c</APILanguage>
-      <Type>intf</Type>
-      <Scope>TyphoonIntrospectiveNSObject</Scope>
-    </TokenIdentifier>
-    <Path>protocol_typhoon_introspective_n_s_object-p.html</Path>
-    <DeclaredIn>TyphoonIntrospectiveNSObject.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>typhoon_typeForPropertyWithName:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>intfm</Type>
-      <Scope>TyphoonIntrospectiveNSObject-p</Scope>
-    </TokenIdentifier>
-    <Path>protocol_typhoon_introspective_n_s_object-p.html</Path>
-    <Anchor>a888949f5298193ddf501df44bcfb0224</Anchor>
-    <DeclaredIn>TyphoonIntrospectiveNSObject.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -4304,17 +4272,6 @@
     </TokenIdentifier>
     <Path>interface_typhoon_primitive_type_converter.html</Path>
     <Anchor>a154126c107209fd7bf5a5fd77e9c0d88</Anchor>
-    <DeclaredIn>TyphoonPrimitiveTypeConverter.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>setPrimitiveArgumentFor:index:textValue:requiredType:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonPrimitiveTypeConverter</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_primitive_type_converter.html</Path>
-    <Anchor>ad73d3e3e68756022c0ba5b221f14b3ff</Anchor>
     <DeclaredIn>TyphoonPrimitiveTypeConverter.h</DeclaredIn>
   </Token>
   <Token>

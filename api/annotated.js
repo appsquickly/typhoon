@@ -34,7 +34,6 @@ var annotated =
     [ "TyphoonInjectionByType", "interface_typhoon_injection_by_type.html", null ],
     [ "TyphoonInjectionContext", "interface_typhoon_injection_context.html", "interface_typhoon_injection_context" ],
     [ "TyphoonIntrospectionUtils", "interface_typhoon_introspection_utils.html", "interface_typhoon_introspection_utils" ],
-    [ "<TyphoonIntrospectiveNSObject>", "protocol_typhoon_introspective_n_s_object-p.html", "protocol_typhoon_introspective_n_s_object-p" ],
     [ "<TyphoonIterator>", "protocol_typhoon_iterator-p.html", "protocol_typhoon_iterator-p" ],
     [ "TyphoonMatcherDefinitionFactory", "interface_typhoon_matcher_definition_factory.html", "interface_typhoon_matcher_definition_factory" ],
     [ "TyphoonMethod", "interface_typhoon_method.html", "interface_typhoon_method" ],

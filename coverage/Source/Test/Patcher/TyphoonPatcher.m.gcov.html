@@ -111,9 +111,9 @@
 <span class="lineNum">      53 </span><span class="lineCov">          4 : - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory</span>
 <span class="lineNum">      54 </span>            : {
 <span class="lineNum">      55 </span><span class="lineCov">          4 :     [super postProcessComponentFactory:factory];</span>
-<span class="lineNum">      56 </span><span class="lineCov">        184 :     for (TyphoonDefinition *definition in [factory registry]) {</span>
-<span class="lineNum">      57 </span><span class="lineCov">         88 :         id patchObject = [_patches objectForKey:definition.key];</span>
-<span class="lineNum">      58 </span><span class="lineCov">         88 :         if (patchObject) {</span>
+<span class="lineNum">      56 </span><span class="lineCov">        200 :     for (TyphoonDefinition *definition in [factory registry]) {</span>
+<span class="lineNum">      57 </span><span class="lineCov">         96 :         id patchObject = [_patches objectForKey:definition.key];</span>
+<span class="lineNum">      58 </span><span class="lineCov">         96 :         if (patchObject) {</span>
 <span class="lineNum">      59 </span><span class="lineCov">          8 :             NSString *patcherKey = [NSString stringWithFormat:@&quot;%@%@&quot;, definition.key, @&quot;$$$patcher&quot;];</span>
 <span class="lineNum">      60 </span><span class="lineCov">          8 :             TyphoonDefinition *patchFactory = [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:patcherKey];</span>
 <span class="lineNum">      61 </span><span class="lineCov">          8 :             patchFactory.initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithCreationBlock:)];</span>
@@ -126,7 +126,7 @@
 <span class="lineNum">      68 </span>            : 
 <span class="lineNum">      69 </span><span class="lineCov">          8 :             [factory registerDefinition:patchFactory];</span>
 <span class="lineNum">      70 </span><span class="lineCov">          8 :         }</span>
-<span class="lineNum">      71 </span><span class="lineCov">        184 :     }</span>
+<span class="lineNum">      71 </span><span class="lineCov">        200 :     }</span>
 <span class="lineNum">      72 </span><span class="lineCov">          4 : }</span>
 <span class="lineNum">      73 </span>            : 
 <span class="lineNum">      74 </span>            : 
