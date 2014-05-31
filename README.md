@@ -1,6 +1,6 @@
 # Typhoon! (www.typhoonframework.org) 
 
-Elegant, powerful dependency injection for Objective-C. Lightweight (just 3000 lines of code), yet full-featured and super-easy to use. 
+Elegant, powerful dependency injection for Objective-C. Lightweight (just 2500 lines of code), yet full-featured and super-easy to use. 
 
 ## Familiar with Dependency Injection?
 
@@ -140,7 +140,7 @@ ensure that the class is in the required state before and after properties are s
 
 * ***Powerful memory management features***. Provides pre-configured objects, without the memory overhead of singletons.
 
-* ***Lightweight***. It has a very low footprint, so is appropriate for CPU and memory constrained devices. Weighs in at just 3500 lines of code in total! 
+* ***Lightweight***. It has a very low footprint, so is appropriate for CPU and memory constrained devices. Weighs in at just 2500 lines of code in total! 
 
 * ***Battle-tested*** - used in all kinds of Appstore-featured apps. 
 
