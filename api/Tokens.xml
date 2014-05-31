@@ -2342,26 +2342,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>TyphoonInjectedWithStringRepresentation</Name>
-      <APILanguage>c</APILanguage>
-      <Type>intf</Type>
-      <Scope>TyphoonInjectedWithStringRepresentation</Scope>
-    </TokenIdentifier>
-    <Path>protocol_typhoon_injected_with_string_representation-p.html</Path>
-    <DeclaredIn>TyphoonInjectedWithStringRepresentation.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>textValue</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>intfp</Type>
-      <Scope>TyphoonInjectedWithStringRepresentation-p</Scope>
-    </TokenIdentifier>
-    <Path>protocol_typhoon_injected_with_string_representation-p.html</Path>
-    <Anchor>a2763305543596eaf125b84ad1dc7c1b7</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>TyphoonInjection</Name>
       <APILanguage>c</APILanguage>
       <Type>intf</Type>
@@ -2983,16 +2963,6 @@
     </TokenIdentifier>
     <Path>interface_typhoon_abstract_injection.html</Path>
     <Anchor>ac73bc0dd6ba0a7915d9d24c9920aee8a</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>textValue</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>intfp</Type>
-      <Scope>TyphoonInjectedWithStringRepresentation-p</Scope>
-    </TokenIdentifier>
-    <Path>protocol_typhoon_injected_with_string_representation-p.html</Path>
-    <Anchor>a2763305543596eaf125b84ad1dc7c1b7</Anchor>
   </Token>
   <Token>
     <TokenIdentifier>

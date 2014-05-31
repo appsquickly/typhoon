@@ -69,9 +69,6 @@ var hierarchy =
         [ "TyphoonWeakComponentsPool", "interface_typhoon_weak_components_pool.html", null ]
       ] ],
       [ "<TyphoonDictionary>", "protocol_typhoon_dictionary-p.html", null ],
-      [ "<TyphoonInjectedWithStringRepresentation>", "protocol_typhoon_injected_with_string_representation-p.html", [
-        [ "TyphoonInjectionByObjectFromString", "interface_typhoon_injection_by_object_from_string.html", null ]
-      ] ],
       [ "<TyphoonInjection>", "protocol_typhoon_injection-p.html", null ],
       [ "<TyphoonResource>", "protocol_typhoon_resource-p.html", [
         [ "TyphoonBundleResource", "interface_typhoon_bundle_resource.html", null ]

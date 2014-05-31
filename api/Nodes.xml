@@ -1187,17 +1187,6 @@
             </Subnodes>
            </Node>
            <Node>
-            <Name>&lt;TyphoonInjectedWithStringRepresentation&gt;</Name>
-            <Path>protocol_typhoon_injected_with_string_representation-p.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>textValue</Name>
-              <Path>protocol_typhoon_injected_with_string_representation-p.html</Path>
-              <Anchor>a2763305543596eaf125b84ad1dc7c1b7</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
             <Name>&lt;TyphoonInjection&gt;</Name>
             <Path>protocol_typhoon_injection-p.html</Path>
             <Subnodes>
@@ -2155,16 +2144,6 @@
               <Path>protocol_typhoon_dictionary-p.html</Path>
              </Node>
              <Node>
-              <Name>&lt;TyphoonInjectedWithStringRepresentation&gt;</Name>
-              <Path>protocol_typhoon_injected_with_string_representation-p.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>TyphoonInjectionByObjectFromString</Name>
-                <Path>interface_typhoon_injection_by_object_from_string.html</Path>
-               </Node>
-              </Subnodes>
-             </Node>
-             <Node>
               <Name>&lt;TyphoonInjection&gt;</Name>
               <Path>protocol_typhoon_injection-p.html</Path>
              </Node>
@@ -2876,23 +2855,6 @@
            <Node>
             <Name>TyphoonDefinitionRegisterer.h</Name>
             <Path>_typhoon_definition_registerer_8h.html</Path>
-           </Node>
-           <Node>
-            <Name>TyphoonInjectedWithStringRepresentation.h</Name>
-            <Path>_typhoon_injected_with_string_representation_8h.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>&lt;TyphoonInjectedWithStringRepresentation&gt;</Name>
-              <Path>protocol_typhoon_injected_with_string_representation-p.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>textValue</Name>
-                <Path>protocol_typhoon_injected_with_string_representation-p.html</Path>
-                <Anchor>a2763305543596eaf125b84ad1dc7c1b7</Anchor>
-               </Node>
-              </Subnodes>
-             </Node>
-            </Subnodes>
            </Node>
            <Node>
             <Name>TyphoonInjection.h</Name>

@@ -2,7 +2,7 @@ var searchData=
 [
   ['typhoon',['Typhoon',['../index.html',1,'']]],
   ['test',['Test',['../group___test.html',1,'']]],
-  ['textvalue',['textValue',['../interface_typhoon_injection_by_object_from_string.html#af92a94f94e7d7be0923cd2abc3bce1ca',1,'TyphoonInjectionByObjectFromString::textValue()'],['../protocol_typhoon_injected_with_string_representation-p.html#a2763305543596eaf125b84ad1dc7c1b7',1,'TyphoonInjectedWithStringRepresentation-p::textValue()']]],
+  ['textvalue',['textValue',['../interface_typhoon_injection_by_object_from_string.html#af92a94f94e7d7be0923cd2abc3bce1ca',1,'TyphoonInjectionByObjectFromString']]],
   ['textwithouttypefromtextvalue_3a',['textWithoutTypeFromTextValue:',['../interface_typhoon_type_converter_registry.html#af70a6163ffa2c615202d43ab436afad3',1,'TyphoonTypeConverterRegistry']]],
   ['type',['type',['../interface_typhoon_abstract_injection.html#ac73bc0dd6ba0a7915d9d24c9920aee8a',1,'TyphoonAbstractInjection::type()'],['../interface_typhoon_definition.html#a1683dd7b003c512248c98fecb26d0985',1,'TyphoonDefinition::type()']]],
   ['typebeingdescribed',['typeBeingDescribed',['../interface_typhoon_type_descriptor.html#ae088fe986245372f45dc39858059897c',1,'TyphoonTypeDescriptor']]],
@@ -61,8 +61,6 @@ var searchData=
   ['typhoondictionary_2dp',['TyphoonDictionary-p',['../protocol_typhoon_dictionary-p.html',1,'']]],
   ['typhoondidinject',['typhoonDidInject',['../category_n_s_object_07_factory_hooks_08.html#ace70d37e0b522cd30d55a74412a54e6c',1,'NSObject(FactoryHooks)']]],
   ['typhooninitializerblock',['TyphoonInitializerBlock',['../_typhoon_definition_8h.html#a2231fb06421947990919fc3241639cd8',1,'TyphoonDefinition.h']]],
-  ['typhooninjectedwithstringrepresentation_2dp',['TyphoonInjectedWithStringRepresentation-p',['../protocol_typhoon_injected_with_string_representation-p.html',1,'']]],
-  ['typhooninjectedwithstringrepresentation_2eh',['TyphoonInjectedWithStringRepresentation.h',['../_typhoon_injected_with_string_representation_8h.html',1,'']]],
   ['typhooninjection_2dp',['TyphoonInjection-p',['../protocol_typhoon_injection-p.html',1,'']]],
   ['typhooninjection_2eh',['TyphoonInjection.h',['../_typhoon_injection_8h.html',1,'']]],
   ['typhooninjectionbycollection',['TyphoonInjectionByCollection',['../interface_typhoon_injection_by_collection.html',1,'']]],

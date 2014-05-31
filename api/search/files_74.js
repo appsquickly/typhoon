@@ -25,7 +25,6 @@ var searchData=
   ['typhoondefinition_2boption_2eh',['TyphoonDefinition+Option.h',['../_typhoon_definition_09_option_8h.html',1,'']]],
   ['typhoondefinition_2eh',['TyphoonDefinition.h',['../_typhoon_definition_8h.html',1,'']]],
   ['typhoondefinitionregisterer_2eh',['TyphoonDefinitionRegisterer.h',['../_typhoon_definition_registerer_8h.html',1,'']]],
-  ['typhooninjectedwithstringrepresentation_2eh',['TyphoonInjectedWithStringRepresentation.h',['../_typhoon_injected_with_string_representation_8h.html',1,'']]],
   ['typhooninjection_2eh',['TyphoonInjection.h',['../_typhoon_injection_8h.html',1,'']]],
   ['typhooninjectionbycollection_2eh',['TyphoonInjectionByCollection.h',['../_typhoon_injection_by_collection_8h.html',1,'']]],
   ['typhooninjectionbycomponentfactory_2eh',['TyphoonInjectionByComponentFactory.h',['../_typhoon_injection_by_component_factory_8h.html',1,'']]],

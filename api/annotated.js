@@ -21,7 +21,6 @@ var annotated =
     [ "TyphoonDefinition", "interface_typhoon_definition.html", "interface_typhoon_definition" ],
     [ "TyphoonDefinition(Option)", "category_typhoon_definition_07_option_08.html", "category_typhoon_definition_07_option_08" ],
     [ "<TyphoonDictionary>", "protocol_typhoon_dictionary-p.html", "protocol_typhoon_dictionary-p" ],
-    [ "<TyphoonInjectedWithStringRepresentation>", "protocol_typhoon_injected_with_string_representation-p.html", "protocol_typhoon_injected_with_string_representation-p" ],
     [ "<TyphoonInjection>", "protocol_typhoon_injection-p.html", "protocol_typhoon_injection-p" ],
     [ "TyphoonInjectionByCollection", "interface_typhoon_injection_by_collection.html", "interface_typhoon_injection_by_collection" ],
     [ "TyphoonInjectionByComponentFactory", "interface_typhoon_injection_by_component_factory.html", null ],

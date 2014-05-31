@@ -45,9 +45,6 @@ var files =
     [ "TyphoonDefinition+Option.h", "_typhoon_definition_09_option_8h.html", "_typhoon_definition_09_option_8h" ],
     [ "TyphoonDefinition.h", "_typhoon_definition_8h.html", "_typhoon_definition_8h" ],
     [ "TyphoonDefinitionRegisterer.h", "_typhoon_definition_registerer_8h.html", null ],
-    [ "TyphoonInjectedWithStringRepresentation.h", "_typhoon_injected_with_string_representation_8h.html", [
-      [ "<TyphoonInjectedWithStringRepresentation>", "protocol_typhoon_injected_with_string_representation-p.html", "protocol_typhoon_injected_with_string_representation-p" ]
-    ] ],
     [ "TyphoonInjection.h", "_typhoon_injection_8h.html", [
       [ "<TyphoonInjection>", "protocol_typhoon_injection-p.html", "protocol_typhoon_injection-p" ]
     ] ],
