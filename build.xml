@@ -183,9 +183,10 @@
             </mapper>
         </pathconvert>
 
-        <!--<echo message="Coverage info files: ${gcno.list}"/>-->
+        <echo message="Coverage info files: ${gcno.list}"/>
         <!--<echo message="Coverage data files: ${gcda.list}"/>-->
-        <!---->
+
+
         <copy todir="${temp.dir}/coverage-data" flatten="true">
             <fileset dir="${user.home}/Library/Developer/Xcode/DerivedData" includes="${gcda.list}"/>
         </copy>
