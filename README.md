@@ -1,6 +1,6 @@
 # Typhoon! (www.typhoonframework.org) 
 
-Elegant, powerful dependency injection for Objective-C. Lightweight (just 2500 lines of code), yet full-featured and super-easy to use. 
+Elegant, powerful dependency injection for Cocoa and CocoaTouch. Lightweight (just 2500 lines of code), yet full-featured and super-easy to use. 
 
 ## Familiar with Dependency Injection?
 
