@@ -25,7 +25,7 @@ ___Without dependency injection, you might have a View Controller like this___:
 
 ```objective-c
 
--(id) init 
+- (id)init 
 {
     self = [super init];
     if (self) 
@@ -66,7 +66,7 @@ ___And now, it simply becomes___:
 
 ```objective-c
 
--(id) initWithWeatherClient:(id<WeatherClient>)weatherClient
+- (id)initWithWeatherClient:(id<WeatherClient>)weatherClient
 {
     self = [super init];
     if (self) 
