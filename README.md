@@ -25,16 +25,16 @@ ___Without dependency injection, you might have a View Controller like this___:
 
 ```objective-c
 
--(id) init 
+- (id)init 
 {
- self = [super init];
- if (self) 
- {
-  //The class using some collaborating class builds its own assistant.
-  //it might be one of several classes using the weatherClient. 
-  _weatherClient = [[GoogleWeatherClientImpl alloc] initWithParameters:xyz];
- }
- return self;
+    self = [super init];
+    if (self) 
+    {
+        //The class using some collaborating class builds its own assistant.
+        //it might be one of several classes using the weatherClient. 
+        _weatherClient = [[GoogleWeatherClientImpl alloc] initWithParameters:xyz];
+    }
+    return self;
 }
 
 ```
@@ -66,14 +66,14 @@ ___And now, it simply becomes___:
 
 ```objective-c
 
--(id) initWithWeatherClient:(id<WeatherClient>)weatherClient
+- (id)initWithWeatherClient:(id<WeatherClient>)weatherClient
 {
- self = [super init];
- if (self) 
- {
-     _weatherClient = weatherClient;
- }
- return self;
+    self = [super init];
+    if (self) 
+    {
+        _weatherClient = weatherClient;
+    }
+    return self;
 }
 
 ```
