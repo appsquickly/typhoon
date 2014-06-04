@@ -36,9 +36,16 @@
         }
         return NO;
     }
+
+    const char *typeEncoding = NULL;
+    if (origMethod) {
+        typeEncoding = method_getTypeEncoding(origMethod);
+    } else {
+        typeEncoding = method_getTypeEncoding(altMethod);
+    }
     
-    class_addMethod(pClass, origSel, class_getMethodImplementation(pClass, origSel), method_getTypeEncoding(altMethod));
-    class_addMethod(pClass, altSel, class_getMethodImplementation(pClass, altSel), method_getTypeEncoding(origMethod));
+    class_addMethod(pClass, origSel, class_getMethodImplementation(pClass, origSel), typeEncoding);
+    class_addMethod(pClass, altSel, class_getMethodImplementation(pClass, altSel), typeEncoding);
     
     method_exchangeImplementations(class_getInstanceMethod(pClass, origSel), class_getInstanceMethod(pClass, altSel));
     
