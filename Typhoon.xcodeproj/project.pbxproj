@@ -909,7 +909,7 @@
 			isa = PBXGroup;
 			children = (
 				6B076E971936F63A0083714E /* DefinitionOptionConfiguration */,
-				6B076EA21936F63A0083714E /* PropertyConfigurers */,
+				6B076EA21936F63A0083714E /* ConfigPostProcessor */,
 				6B076EAD1936F63A0083714E /* Resource */,
 				6B076EB31936F63A0083714E /* TyphoonAbstractDetachableComponentFactoryPostProcessor.h */,
 				6B076EB41936F63A0083714E /* TyphoonAbstractDetachableComponentFactoryPostProcessor.m */,
@@ -945,14 +945,14 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
-		6B076EA21936F63A0083714E /* PropertyConfigurers */ = {
+		6B076EA21936F63A0083714E /* ConfigPostProcessor */ = {
 			isa = PBXGroup;
 			children = (
 				6B076EA31936F63A0083714E /* TyphoonConfigPostProcessor.h */,
 				6B076EA41936F63A0083714E /* TyphoonConfigPostProcessor.m */,
 				6B076EA51936F63A0083714E /* TyphoonConfiguration */,
 			);
-			path = PropertyConfigurers;
+			path = ConfigPostProcessor;
 			sourceTree = "<group>";
 		};
 		6B076EA51936F63A0083714E /* TyphoonConfiguration */ = {

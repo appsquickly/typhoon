@@ -14,8 +14,4 @@
 
 #define autoWire typhoon_autoWire
 
-#define Singleton TyphoonComponentLifecycleSingleton
-
-#define Prototype TyphoonComponentLifecyclePrototype
-
 #endif
