@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-06-04</td>
+            <td class="headerValue">2014-06-05</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -105,11 +105,11 @@
 <span class="lineNum">      47 </span>            :     BOOL _needRehash;
 <span class="lineNum">      48 </span>            : }
 <span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span><span class="lineCov">       2000 : + (instancetype)argumentsFromInvocation:(NSInvocation *)invocation</span>
+<span class="lineNum">      50 </span><span class="lineCov">       2001 : + (instancetype)argumentsFromInvocation:(NSInvocation *)invocation</span>
 <span class="lineNum">      51 </span>            : {
-<span class="lineNum">      52 </span><span class="lineCov">       2000 :     NSUInteger count = [[invocation methodSignature] numberOfArguments];</span>
-<span class="lineNum">      53 </span><span class="lineCov">       2000 :     if (count &lt;= 2) {</span>
-<span class="lineNum">      54 </span><span class="lineCov">       1638 :         return nil;</span>
+<span class="lineNum">      52 </span><span class="lineCov">       2001 :     NSUInteger count = [[invocation methodSignature] numberOfArguments];</span>
+<span class="lineNum">      53 </span><span class="lineCov">       2001 :     if (count &lt;= 2) {</span>
+<span class="lineNum">      54 </span><span class="lineCov">       1639 :         return nil;</span>
 <span class="lineNum">      55 </span>            :     }
 <span class="lineNum">      56 </span><span class="lineCov">        362 :     NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:count];</span>
 <span class="lineNum">      57 </span>            : 
@@ -126,7 +126,7 @@
 <span class="lineNum">      68 </span><span class="lineCov">        369 :     }</span>
 <span class="lineNum">      69 </span>            : 
 <span class="lineNum">      70 </span><span class="lineCov">        362 :     return [[self alloc] initWithArguments:args];</span>
-<span class="lineNum">      71 </span><span class="lineCov">       2362 : }</span>
+<span class="lineNum">      71 </span><span class="lineCov">       2363 : }</span>
 <span class="lineNum">      72 </span>            : 
 <span class="lineNum">      73 </span><span class="lineCov">        385 : - (id)initWithArguments:(NSMutableArray *)array</span>
 <span class="lineNum">      74 </span>            : {

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-06-04</td>
+            <td class="headerValue">2014-06-05</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -82,18 +82,18 @@
 <span class="lineNum">      24 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      25 </span>            : #pragma mark - Protocol Methods
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">        189 : - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory</span>
+<span class="lineNum">      27 </span><span class="lineCov">        191 : - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory</span>
 <span class="lineNum">      28 </span>            : {
-<span class="lineNum">      29 </span><span class="lineCov">       6279 :     for (TyphoonDefinition *definition in [factory registry]) {</span>
+<span class="lineNum">      29 </span><span class="lineCov">       6295 :     for (TyphoonDefinition *definition in [factory registry]) {</span>
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">       2848 :         [definition enumerateInjectionsOfKind:[TyphoonInjectionByType class] options:TyphoonInjectionsEnumerationOptionProperties</span>
+<span class="lineNum">      31 </span><span class="lineCov">       2854 :         [definition enumerateInjectionsOfKind:[TyphoonInjectionByType class] options:TyphoonInjectionsEnumerationOptionProperties</span>
 <span class="lineNum">      32 </span><span class="lineCov">        211 :                                    usingBlock:^(TyphoonInjectionByType *typeInjection, id &lt;TyphoonInjection&gt; *injectionToReplace, BOOL *stop) {</span>
 <span class="lineNum">      33 </span><span class="lineCov">        211 :             if ([self shouldReplaceInjectionByType:typeInjection withFactoryInjectionInDefinition:definition]) {</span>
 <span class="lineNum">      34 </span><span class="lineCov">        120 :                 *injectionToReplace = [self factoryInjectionToReplacePropertyInjection:typeInjection];</span>
 <span class="lineNum">      35 </span><span class="lineCov">        120 :             }</span>
 <span class="lineNum">      36 </span><span class="lineCov">        422 :         }];</span>
-<span class="lineNum">      37 </span><span class="lineCov">       6068 :     }</span>
-<span class="lineNum">      38 </span><span class="lineCov">        189 : }</span>
+<span class="lineNum">      37 </span><span class="lineCov">       6084 :     }</span>
+<span class="lineNum">      38 </span><span class="lineCov">        191 : }</span>
 <span class="lineNum">      39 </span>            : 
 <span class="lineNum">      40 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      41 </span>            : #pragma mark - Instance Methods

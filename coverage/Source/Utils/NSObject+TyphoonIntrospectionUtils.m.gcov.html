@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-06-04</td>
+            <td class="headerValue">2014-06-05</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -87,12 +87,12 @@
 <span class="lineNum">      29 </span><span class="lineCov">        303 :     return [TyphoonIntrospectionUtils typeForPropertyWithName:propertyName inClass:[self class]];</span>
 <span class="lineNum">      30 </span><span class="lineCov">        303 : }</span>
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">       2520 : - (NSArray *)typhoon_parameterNamesForSelector:(SEL)selector</span>
+<span class="lineNum">      32 </span><span class="lineCov">       2523 : - (NSArray *)typhoon_parameterNamesForSelector:(SEL)selector</span>
 <span class="lineNum">      33 </span>            : {
-<span class="lineNum">      34 </span><span class="lineCov">       2520 :     NSUInteger parametersCount = [TyphoonIntrospectionUtils numberOfArgumentsInSelector:selector];</span>
+<span class="lineNum">      34 </span><span class="lineCov">       2523 :     NSUInteger parametersCount = [TyphoonIntrospectionUtils numberOfArgumentsInSelector:selector];</span>
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span><span class="lineCov">       2520 :     if (parametersCount == 0) {</span>
-<span class="lineNum">      37 </span><span class="lineCov">       1372 :         return @[];</span>
+<span class="lineNum">      36 </span><span class="lineCov">       2523 :     if (parametersCount == 0) {</span>
+<span class="lineNum">      37 </span><span class="lineCov">       1375 :         return @[];</span>
 <span class="lineNum">      38 </span>            :     }
 <span class="lineNum">      39 </span>            : 
 <span class="lineNum">      40 </span><span class="lineCov">       1148 :     NSMutableArray *parameterNames = [[NSMutableArray alloc] initWithCapacity:parametersCount];</span>
@@ -108,7 +108,7 @@
 <span class="lineNum">      50 </span><span class="lineCov">       1493 :         }</span>
 <span class="lineNum">      51 </span><span class="lineCov">       2641 :     }</span>
 <span class="lineNum">      52 </span><span class="lineCov">       1148 :     return parameterNames;</span>
-<span class="lineNum">      53 </span><span class="lineCov">       3668 : }</span>
+<span class="lineNum">      53 </span><span class="lineCov">       3671 : }</span>
 <span class="lineNum">      54 </span>            : 
 <span class="lineNum">      55 </span><span class="lineCov">       1493 : - (NSString *)stringByLowerCasingFirstLetter:(NSString *)name</span>
 <span class="lineNum">      56 </span>            : {
