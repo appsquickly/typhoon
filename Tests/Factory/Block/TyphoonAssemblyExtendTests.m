@@ -1,10 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  TyphoonAssemblyExtendTests.m
-//  Typhoon
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
+//  All Rights Reserved.
 //
-//  Created by Aleksey Garbarev on 04.06.14.
-//  Copyright (c) 2014 typhoonframework.org. All rights reserved.
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
 //
+////////////////////////////////////////////////////////////////////////////////
+
 
 #import <XCTest/XCTest.h>
 #import "TyphoonNemoTestAssemblies.h"

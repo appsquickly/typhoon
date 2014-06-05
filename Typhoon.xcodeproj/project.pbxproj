@@ -11,8 +11,6 @@
 		2DBA1413585CE14C74CC72FF /* TyphoonInjections.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1FC6F594C49C7D8261A6 /* TyphoonInjections.m */; };
 		2DBA16336F924D7959EAD561 /* TyphoonNemoTestAssemblies.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA10314E7114955C0AB31E /* TyphoonNemoTestAssemblies.m */; };
 		2DBA1835008EBE89CAC85D1C /* TyphoonNemoTestAssemblies.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA10314E7114955C0AB31E /* TyphoonNemoTestAssemblies.m */; };
-		2DBA1CA9EA1D7C4539A0DA10 /* TyphoonAssemblyExtendTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1FCE33E18E1D7C616156 /* TyphoonAssemblyExtendTests.m */; };
-		2DBA1DEFDB25AB29CA0CFF2D /* TyphoonAssemblyExtendTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1FCE33E18E1D7C616156 /* TyphoonAssemblyExtendTests.m */; };
 		6B076E5E1936F5850083714E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B076E5D1936F5850083714E /* Foundation.framework */; };
 		6B076E601936F5850083714E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B076E5F1936F5850083714E /* CoreGraphics.framework */; };
 		6B076E621936F5850083714E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B076E611936F5850083714E /* UIKit.framework */; };
@@ -380,8 +378,10 @@
 		BA7982DB9ED4ECF0C54DA707 /* TyphoonUIColorConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E0CA9E9828D07777F40 /* TyphoonUIColorConverterTests.m */; };
 		BA798643561E55898B87E96A /* UniqueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7980A75A6786BBC2A387F9 /* UniqueViewController.m */; };
 		BA798645ED33923CA832A9CD /* StoryboardViewControllerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798EA3F8F037BFC45CBCB7 /* StoryboardViewControllerAssembly.m */; };
+		BA79877402AC715A4394D9AA /* TyphoonAssemblyExtendTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1FCE33E18E1D7C616156 /* TyphoonAssemblyExtendTests.m */; };
 		BA7987FA9B7BE2D96C39C105 /* StoryboardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79872D47F864D6B64B479E /* StoryboardTests.m */; };
 		BA798C5BE35D5B38B2F64387 /* TyphoonViewControllerNibResolverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982C084F0AD60B5858F31 /* TyphoonViewControllerNibResolverTests.m */; };
+		BA798F6FC12907089D9E0596 /* TyphoonAssemblyExtendTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1FCE33E18E1D7C616156 /* TyphoonAssemblyExtendTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2037,7 +2037,6 @@
 				6B0770961936F8160083714E /* TyphoonViewController.m in Sources */,
 				2DBA13020BD1DDD15231B84C /* TyphoonInjections.m in Sources */,
 				2DBA16336F924D7959EAD561 /* TyphoonNemoTestAssemblies.m in Sources */,
-				2DBA1CA9EA1D7C4539A0DA10 /* TyphoonAssemblyExtendTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2138,6 +2137,7 @@
 				BA7987FA9B7BE2D96C39C105 /* StoryboardTests.m in Sources */,
 				BA798645ED33923CA832A9CD /* StoryboardViewControllerAssembly.m in Sources */,
 				BA798643561E55898B87E96A /* UniqueViewController.m in Sources */,
+				BA798F6FC12907089D9E0596 /* TyphoonAssemblyExtendTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2217,7 +2217,6 @@
 				6B07738D193780720083714E /* main.m in Sources */,
 				2DBA1413585CE14C74CC72FF /* TyphoonInjections.m in Sources */,
 				2DBA1835008EBE89CAC85D1C /* TyphoonNemoTestAssemblies.m in Sources */,
-				2DBA1DEFDB25AB29CA0CFF2D /* TyphoonAssemblyExtendTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2312,6 +2311,7 @@
 				6B0774541937839D0083714E /* TyphoonObjectDeallocCallbackTests.m in Sources */,
 				6B0774551937839D0083714E /* TyphoonStringUtilsTests.m in Sources */,
 				6B0774561937839D0083714E /* TyphoonTestMethodSwizzler.m in Sources */,
+				BA79877402AC715A4394D9AA /* TyphoonAssemblyExtendTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
