@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-06-05</td>
+            <td class="headerValue">2014-06-06</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -163,10 +163,10 @@
 <span class="lineNum">     105 </span><span class="lineCov">        617 :     NSMutableSet *propertyNames = [[NSMutableSet alloc] init];</span>
 <span class="lineNum">     106 </span>            :     
 <span class="lineNum">     107 </span><span class="lineCov">       1866 :     while (clazz != parent) {</span>
-<span class="lineNum">     108 </span><span class="lineCov">        632 :         NSUInteger count = 0;</span>
+<span class="lineNum">     108 </span><span class="lineCov">        632 :         unsigned int count = 0;</span>
 <span class="lineNum">     109 </span><span class="lineCov">        632 :         objc_property_t *properties = class_copyPropertyList(clazz, &amp;count);</span>
 <span class="lineNum">     110 </span>            :         
-<span class="lineNum">     111 </span><span class="lineCov">       1346 :         for (NSUInteger propertyIndex = 0; propertyIndex &lt; count; propertyIndex++) {</span>
+<span class="lineNum">     111 </span><span class="lineCov">       1346 :         for (unsigned int propertyIndex = 0; propertyIndex &lt; count; propertyIndex++) {</span>
 <span class="lineNum">     112 </span><span class="lineCov">         41 :             objc_property_t aProperty = properties[propertyIndex];</span>
 <span class="lineNum">     113 </span><span class="lineCov">         41 :             NSString *propertyName = [NSString stringWithCString:property_getName(aProperty) encoding:NSUTF8StringEncoding];</span>
 <span class="lineNum">     114 </span><span class="lineCov">         41 :             [propertyNames addObject:propertyName];</span>

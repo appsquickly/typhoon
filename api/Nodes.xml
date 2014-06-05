@@ -2857,6 +2857,10 @@
             <Path>_typhoon_definition_registerer_8h.html</Path>
            </Node>
            <Node>
+            <Name>TyphoonInitialStoryboardResolver.h</Name>
+            <Path>_typhoon_initial_storyboard_resolver_8h.html</Path>
+           </Node>
+           <Node>
             <Name>TyphoonInjection.h</Name>
             <Path>_typhoon_injection_8h.html</Path>
             <Subnodes>
@@ -3616,6 +3620,10 @@
            <Node>
             <Name>TyphoonShorthand.h</Name>
             <Path>_typhoon_shorthand_8h.html</Path>
+           </Node>
+           <Node>
+            <Name>TyphoonStartup.h</Name>
+            <Path>_typhoon_startup_8h.html</Path>
            </Node>
            <Node>
             <Name>TyphoonStoryboard.h</Name>

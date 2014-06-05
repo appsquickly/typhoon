@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-06-05</td>
+            <td class="headerValue">2014-06-06</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -216,7 +216,7 @@
 <span class="lineNum">     158 </span><span class="lineCov">         54 :         [instance typhoonWillInject];</span>
 <span class="lineNum">     159 </span><span class="lineCov">         54 :     }</span>
 <span class="lineNum">     160 </span>            : 
-<span class="lineNum">     161 </span><span class="lineCov">        412 :     if ([instance respondsToSelector:definition.beforeInjections]) {</span>
+<span class="lineNum">     161 </span><span class="lineCov">        824 :     if (definition &amp;&amp; [instance respondsToSelector:definition.beforeInjections]) {</span>
 <span class="lineNum">     162 </span><span class="lineNoCov">          0 :         void(*method)(id, SEL) = (void (*)(id, SEL)) [instance methodForSelector:definition.beforeInjections];</span>
 <span class="lineNum">     163 </span><span class="lineNoCov">          0 :         method(instance, definition.beforeInjections);</span>
 <span class="lineNum">     164 </span><span class="lineNoCov">          0 :     }</span>
@@ -228,7 +228,7 @@
 <span class="lineNum">     170 </span><span class="lineCov">         54 :         [instance typhoonDidInject];</span>
 <span class="lineNum">     171 </span><span class="lineCov">         54 :     }</span>
 <span class="lineNum">     172 </span>            : 
-<span class="lineNum">     173 </span><span class="lineCov">        408 :     if ([instance respondsToSelector:definition.afterInjections]) {</span>
+<span class="lineNum">     173 </span><span class="lineCov">        816 :     if (definition &amp;&amp; [instance respondsToSelector:definition.afterInjections]) {</span>
 <span class="lineNum">     174 </span><span class="lineNoCov">          0 :         void(*method)(id, SEL) = (void (*)(id, SEL)) [instance methodForSelector:definition.afterInjections];</span>
 <span class="lineNum">     175 </span><span class="lineNoCov">          0 :         method(instance, definition.afterInjections);</span>
 <span class="lineNum">     176 </span><span class="lineNoCov">          0 :     }</span>
@@ -332,7 +332,7 @@
 <span class="lineNum">     274 </span><span class="lineCov">         10 :             }</span>
 <span class="lineNum">     275 </span>            :         }
 <span class="lineNum">     276 </span><span class="lineCov">        334 :     }</span>
-<span class="lineNum">     277 </span><span class="lineCov">         34 :     return [results copy];</span>
+<span class="lineNum">     277 </span><span class="lineCov">         34 :     return results;</span>
 <span class="lineNum">     278 </span><span class="lineCov">         34 : }</span>
 <span class="lineNum">     279 </span>            : 
 <span class="lineNum">     280 </span>            : @end

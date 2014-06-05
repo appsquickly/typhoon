@@ -45,6 +45,7 @@ var files =
     [ "TyphoonDefinition+Option.h", "_typhoon_definition_09_option_8h.html", "_typhoon_definition_09_option_8h" ],
     [ "TyphoonDefinition.h", "_typhoon_definition_8h.html", "_typhoon_definition_8h" ],
     [ "TyphoonDefinitionRegisterer.h", "_typhoon_definition_registerer_8h.html", null ],
+    [ "TyphoonInitialStoryboardResolver.h", "_typhoon_initial_storyboard_resolver_8h.html", null ],
     [ "TyphoonInjection.h", "_typhoon_injection_8h.html", [
       [ "<TyphoonInjection>", "protocol_typhoon_injection-p.html", "protocol_typhoon_injection-p" ]
     ] ],
@@ -123,6 +124,7 @@ var files =
     ] ],
     [ "TyphoonSelector.h", "_typhoon_selector_8h.html", null ],
     [ "TyphoonShorthand.h", "_typhoon_shorthand_8h.html", null ],
+    [ "TyphoonStartup.h", "_typhoon_startup_8h.html", null ],
     [ "TyphoonStoryboard.h", "_typhoon_storyboard_8h.html", null ],
     [ "TyphoonStringUtils.h", "_typhoon_string_utils_8h.html", null ],
     [ "TyphoonSwizzler.h", "_typhoon_swizzler_8h.html", null ],
