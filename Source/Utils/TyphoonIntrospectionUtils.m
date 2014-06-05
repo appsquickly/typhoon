@@ -105,10 +105,10 @@
     NSMutableSet *propertyNames = [[NSMutableSet alloc] init];
     
     while (clazz != parent) {
-        NSUInteger count = 0;
+        unsigned int count = 0;
         objc_property_t *properties = class_copyPropertyList(clazz, &count);
         
-        for (NSUInteger propertyIndex = 0; propertyIndex < count; propertyIndex++) {
+        for (unsigned int propertyIndex = 0; propertyIndex < count; propertyIndex++) {
             objc_property_t aProperty = properties[propertyIndex];
             NSString *propertyName = [NSString stringWithCString:property_getName(aProperty) encoding:NSUTF8StringEncoding];
             [propertyNames addObject:propertyName];
