@@ -158,7 +158,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         [instance typhoonWillInject];
     }
 
-    if ([instance respondsToSelector:definition.beforeInjections]) {
+    if (definition && [instance respondsToSelector:definition.beforeInjections]) {
         void(*method)(id, SEL) = (void (*)(id, SEL)) [instance methodForSelector:definition.beforeInjections];
         method(instance, definition.beforeInjections);
     }
@@ -170,7 +170,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         [instance typhoonDidInject];
     }
 
-    if ([instance respondsToSelector:definition.afterInjections]) {
+    if (definition && [instance respondsToSelector:definition.afterInjections]) {
         void(*method)(id, SEL) = (void (*)(id, SEL)) [instance methodForSelector:definition.afterInjections];
         method(instance, definition.afterInjections);
     }
@@ -274,7 +274,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
             }
         }
     }
-    return [results copy];
+    return results;
 }
 
 @end
