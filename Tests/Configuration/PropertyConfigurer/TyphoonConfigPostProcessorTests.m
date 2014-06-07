@@ -14,10 +14,10 @@
 #import "Knight.h"
 #import "OCLogTemplate.h"
 
-@interface TyphoonPropertyPlaceholderConfigurerTests : XCTestCase
+@interface TyphoonConfigPostProcessorTests : XCTestCase
 @end
 
-@implementation TyphoonPropertyPlaceholderConfigurerTests
+@implementation TyphoonConfigPostProcessorTests
 {
     TyphoonConfigPostProcessor *_configurer;
 }
