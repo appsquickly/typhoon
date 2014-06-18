@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-06-07</td>
+            <td class="headerValue">2014-06-18</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -75,34 +75,34 @@
 <span class="lineNum">      17 </span>            : #import &quot;TyphoonTypeDescriptor.h&quot;
 <span class="lineNum">      18 </span>            : #import &quot;TyphoonIntrospectionUtils.h&quot;
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span><span class="lineCov">        211 : @implementation TyphoonCollaboratingAssemblyPropertyEnumerator</span>
+<span class="lineNum">      20 </span><span class="lineCov">        215 : @implementation TyphoonCollaboratingAssemblyPropertyEnumerator</span>
 <span class="lineNum">      21 </span>            : {
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : }
 <span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span><span class="lineCov">        211 : - (id)initWithAssembly:(TyphoonAssembly *)assembly</span>
+<span class="lineNum">      25 </span><span class="lineCov">        215 : - (id)initWithAssembly:(TyphoonAssembly *)assembly</span>
 <span class="lineNum">      26 </span>            : {
-<span class="lineNum">      27 </span><span class="lineCov">        211 :     self = [super init];</span>
-<span class="lineNum">      28 </span><span class="lineCov">        211 :     if (self) {</span>
-<span class="lineNum">      29 </span><span class="lineCov">        211 :         _assembly = assembly;</span>
-<span class="lineNum">      30 </span><span class="lineCov">        211 :     }</span>
-<span class="lineNum">      31 </span><span class="lineCov">        211 :     return self;</span>
-<span class="lineNum">      32 </span><span class="lineCov">        211 : }</span>
+<span class="lineNum">      27 </span><span class="lineCov">        215 :     self = [super init];</span>
+<span class="lineNum">      28 </span><span class="lineCov">        215 :     if (self) {</span>
+<span class="lineNum">      29 </span><span class="lineCov">        215 :         _assembly = assembly;</span>
+<span class="lineNum">      30 </span><span class="lineCov">        215 :     }</span>
+<span class="lineNum">      31 </span><span class="lineCov">        215 :     return self;</span>
+<span class="lineNum">      32 </span><span class="lineCov">        215 : }</span>
 <span class="lineNum">      33 </span>            : 
 <span class="lineNum">      34 </span>            : - (NSSet *)collaboratingAssemblyProperties
 <span class="lineNum">      35 </span>            : {
-<span class="lineNum">      36 </span><span class="lineCov">        215 :     NSMutableSet *collaboratingAssemblyProperties = [[NSMutableSet alloc] init];</span>
+<span class="lineNum">      36 </span><span class="lineCov">        219 :     NSMutableSet *collaboratingAssemblyProperties = [[NSMutableSet alloc] init];</span>
 <span class="lineNum">      37 </span>            : 
-<span class="lineNum">      38 </span><span class="lineCov">        215 :     NSSet *properties = [TyphoonIntrospectionUtils propertiesForClass:[_assembly class] upToParentClass:[TyphoonAssembly class]];</span>
+<span class="lineNum">      38 </span><span class="lineCov">        219 :     NSSet *properties = [TyphoonIntrospectionUtils propertiesForClass:[_assembly class] upToParentClass:[TyphoonAssembly class]];</span>
 <span class="lineNum">      39 </span>            :     
-<span class="lineNum">      40 </span><span class="lineCov">        283 :     for (NSString *property in properties) {</span>
+<span class="lineNum">      40 </span><span class="lineCov">        287 :     for (NSString *property in properties) {</span>
 <span class="lineNum">      41 </span><span class="lineCov">         25 :         if ([self propertyForName:property isCollaboratingAssemblyPropertyOnClass:[_assembly class]]) {</span>
 <span class="lineNum">      42 </span><span class="lineCov">         22 :             [collaboratingAssemblyProperties addObject:property];</span>
 <span class="lineNum">      43 </span><span class="lineCov">         22 :         }</span>
-<span class="lineNum">      44 </span><span class="lineCov">        283 :     }</span>
+<span class="lineNum">      44 </span><span class="lineCov">        287 :     }</span>
 <span class="lineNum">      45 </span>            :     
-<span class="lineNum">      46 </span><span class="lineCov">        215 :     return collaboratingAssemblyProperties;</span>
-<span class="lineNum">      47 </span><span class="lineCov">        215 : }</span>
+<span class="lineNum">      46 </span><span class="lineCov">        219 :     return collaboratingAssemblyProperties;</span>
+<span class="lineNum">      47 </span><span class="lineCov">        219 : }</span>
 <span class="lineNum">      48 </span>            : 
 <span class="lineNum">      49 </span><span class="lineCov">         25 : - (BOOL)propertyForName:(NSString *)propertyName isCollaboratingAssemblyPropertyOnClass:(Class)class</span>
 <span class="lineNum">      50 </span>            : {
