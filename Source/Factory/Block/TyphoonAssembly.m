@@ -47,9 +47,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 + (TyphoonAssembly *)assembly
 {
-    TyphoonAssembly *assembly = [[self alloc] init];
-    [assembly resolveCollaboratingAssemblies];
-    return assembly;
+    return [[self alloc] init];
 }
 
 + (instancetype)defaultAssembly
@@ -119,6 +117,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
     if (self) {
         _definitionBuilder = [[TyphoonAssemblyDefinitionBuilder alloc] initWithAssembly:self];
         _adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:self];
+        [self resolveCollaboratingAssemblies];
     }
     return self;
 }
