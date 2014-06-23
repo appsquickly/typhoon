@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">184</td>
-            <td class="headerCovTableEntry">199</td>
-            <td class="headerCovTableEntryHi">92.5 %</td>
+            <td class="headerCovTableEntry">180</td>
+            <td class="headerCovTableEntry">195</td>
+            <td class="headerCovTableEntryHi">92.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-06-20</td>
+            <td class="headerValue">2014-06-23</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -178,13 +178,13 @@
 <span class="lineNum">     120 </span>            : 
 <span class="lineNum">     121 </span><span class="lineCov">         22 : - (id)componentForType:(id)classOrProtocol</span>
 <span class="lineNum">     122 </span>            : {
-<span class="lineNum">     123 </span><span class="lineCov">         32 :     if (![self isLoaded]) {[self load];}</span>
+<span class="lineNum">     123 </span><span class="lineCov">         22 :     [self loadIfNeeded];</span>
 <span class="lineNum">     124 </span><span class="lineCov">         22 :     return [self objectForDefinition:[self definitionForType:classOrProtocol] args:nil];</span>
 <span class="lineNum">     125 </span><span class="lineCov">         22 : }</span>
 <span class="lineNum">     126 </span>            : 
 <span class="lineNum">     127 </span><span class="lineCov">          3 : - (NSArray *)allComponentsForType:(id)classOrProtocol</span>
 <span class="lineNum">     128 </span>            : {
-<span class="lineNum">     129 </span><span class="lineCov">          4 :     if (![self isLoaded]) {[self load];}</span>
+<span class="lineNum">     129 </span><span class="lineCov">          3 :     [self loadIfNeeded];</span>
 <span class="lineNum">     130 </span><span class="lineCov">          3 :     NSMutableArray *results = [[NSMutableArray alloc] init];</span>
 <span class="lineNum">     131 </span><span class="lineCov">          3 :     NSArray *definitions = [self allDefinitionsForType:classOrProtocol];</span>
 <span class="lineNum">     132 </span><span class="lineCov">         18 :     for (TyphoonDefinition *definition in definitions) {</span>
@@ -216,14 +216,14 @@
 <span class="lineNum">     158 </span>            : 
 <span class="lineNum">     159 </span>            : - (void)loadIfNeeded
 <span class="lineNum">     160 </span>            : {
-<span class="lineNum">     161 </span><span class="lineCov">        640 :     if ([self notLoaded]) {</span>
-<span class="lineNum">     162 </span><span class="lineCov">        471 :         [self load];</span>
-<span class="lineNum">     163 </span><span class="lineCov">        471 :     }</span>
-<span class="lineNum">     164 </span><span class="lineCov">        640 : }</span>
+<span class="lineNum">     161 </span><span class="lineCov">        676 :     if ([self notLoaded]) {</span>
+<span class="lineNum">     162 </span><span class="lineCov">        490 :         [self load];</span>
+<span class="lineNum">     163 </span><span class="lineCov">        490 :     }</span>
+<span class="lineNum">     164 </span><span class="lineCov">        676 : }</span>
 <span class="lineNum">     165 </span>            : 
 <span class="lineNum">     166 </span>            : - (BOOL)notLoaded
 <span class="lineNum">     167 </span>            : {
-<span class="lineNum">     168 </span><span class="lineCov">        640 :     return ![self isLoaded];</span>
+<span class="lineNum">     168 </span><span class="lineCov">        676 :     return ![self isLoaded];</span>
 <span class="lineNum">     169 </span>            : }
 <span class="lineNum">     170 </span>            : 
 <span class="lineNum">     171 </span>            : - (void)makeDefault
@@ -258,172 +258,169 @@
 <span class="lineNum">     200 </span><span class="lineCov">          6 : - (void)inject:(id)instance</span>
 <span class="lineNum">     201 </span>            : {
 <span class="lineNum">     202 </span><span class="lineCov">          6 :     @synchronized(self) {</span>
-<span class="lineNum">     203 </span><span class="lineCov">         22 :         if (![self isLoaded]) {[self load];}</span>
-<span class="lineNum">     204 </span><span class="lineCov">         12 :         Class class = [instance class];</span>
-<span class="lineNum">     205 </span><span class="lineCov">         58 :         for (TyphoonDefinition *definition in _registry) {</span>
-<span class="lineNum">     206 </span><span class="lineCov">         40 :             if (definition.type == class) {</span>
-<span class="lineNum">     207 </span><span class="lineCov">          4 :                 [self doInjectionEventsOn:instance withDefinition:definition args:nil];</span>
-<span class="lineNum">     208 </span><span class="lineCov">          4 :             }</span>
-<span class="lineNum">     209 </span><span class="lineCov">         58 :         }</span>
-<span class="lineNum">     210 </span><span class="lineCov">          6 :     }</span>
-<span class="lineNum">     211 </span><span class="lineCov">          6 : }</span>
-<span class="lineNum">     212 </span>            : 
-<span class="lineNum">     213 </span><span class="lineCov">          5 : - (void)inject:(id)instance withDefinition:(SEL)selector</span>
-<span class="lineNum">     214 </span>            : {
-<span class="lineNum">     215 </span><span class="lineCov">          5 :     @synchronized(self) {</span>
-<span class="lineNum">     216 </span><span class="lineCov">         16 :         if (![self isLoaded]) {[self load];}</span>
-<span class="lineNum">     217 </span><span class="lineCov">         15 :         TyphoonDefinition *definition = [self definitionForKey:NSStringFromSelector(selector)];</span>
-<span class="lineNum">     218 </span><span class="lineCov">          5 :         if (definition) {</span>
-<span class="lineNum">     219 </span><span class="lineCov">          5 :             [self doInjectionEventsOn:instance withDefinition:definition args:nil];</span>
-<span class="lineNum">     220 </span><span class="lineCov">          5 :         }</span>
-<span class="lineNum">     221 </span>            :         else {
-<span class="lineNum">     222 </span><span class="lineNoCov">          0 :             [NSException raise:NSInvalidArgumentException format:@&quot;Can't find definition for specified selector %@&quot;,</span>
-<span class="lineNum">     223 </span><span class="lineNoCov">          0 :              NSStringFromSelector(selector)];</span>
-<span class="lineNum">     224 </span>            :         }
-<span class="lineNum">     225 </span><span class="lineCov">          5 :     }</span>
-<span class="lineNum">     226 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">     203 </span><span class="lineCov">          6 :         [self loadIfNeeded];</span>
+<span class="lineNum">     204 </span><span class="lineCov">         18 :         TyphoonDefinition *definitionForInstance = [self definitionForType:[instance class] orNil:YES includeSubclasses:NO];</span>
+<span class="lineNum">     205 </span><span class="lineCov">          6 :         [self doInjectionEventsOn:instance withDefinition:definitionForInstance args:nil];</span>
+<span class="lineNum">     206 </span><span class="lineCov">          6 :     }</span>
+<span class="lineNum">     207 </span><span class="lineCov">          6 : }</span>
+<span class="lineNum">     208 </span>            : 
+<span class="lineNum">     209 </span><span class="lineCov">          5 : - (void)inject:(id)instance withDefinition:(SEL)selector</span>
+<span class="lineNum">     210 </span>            : {
+<span class="lineNum">     211 </span><span class="lineCov">          5 :     @synchronized(self) {</span>
+<span class="lineNum">     212 </span><span class="lineCov">          5 :         [self loadIfNeeded];</span>
+<span class="lineNum">     213 </span><span class="lineCov">         15 :         TyphoonDefinition *definition = [self definitionForKey:NSStringFromSelector(selector)];</span>
+<span class="lineNum">     214 </span><span class="lineCov">          5 :         if (definition) {</span>
+<span class="lineNum">     215 </span><span class="lineCov">          5 :             [self doInjectionEventsOn:instance withDefinition:definition args:nil];</span>
+<span class="lineNum">     216 </span><span class="lineCov">          5 :         }</span>
+<span class="lineNum">     217 </span>            :         else {
+<span class="lineNum">     218 </span><span class="lineNoCov">          0 :             [NSException raise:NSInvalidArgumentException format:@&quot;Can't find definition for specified selector %@&quot;,</span>
+<span class="lineNum">     219 </span><span class="lineNoCov">          0 :              NSStringFromSelector(selector)];</span>
+<span class="lineNum">     220 </span>            :         }
+<span class="lineNum">     221 </span><span class="lineCov">          5 :     }</span>
+<span class="lineNum">     222 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">     223 </span>            : 
+<span class="lineNum">     224 </span>            : 
+<span class="lineNum">     225 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">     226 </span>            : #pragma mark - Utility Methods
 <span class="lineNum">     227 </span>            : 
-<span class="lineNum">     228 </span>            : /* ====================================================================================================================================== */
-<span class="lineNum">     229 </span>            : #pragma mark - Utility Methods
-<span class="lineNum">     230 </span>            : 
-<span class="lineNum">     231 </span>            : - (NSString *)description
-<span class="lineNum">     232 </span>            : {
-<span class="lineNum">     233 </span><span class="lineCov">          1 :     NSMutableString *description = [NSMutableString stringWithFormat:@&quot;&lt;%@: &quot;, NSStringFromClass([self class])];</span>
-<span class="lineNum">     234 </span><span class="lineCov">          1 :     [description appendFormat:@&quot;_registry=%@&quot;, _registry];</span>
-<span class="lineNum">     235 </span><span class="lineCov">          1 :     [description appendString:@&quot;&gt;&quot;];</span>
-<span class="lineNum">     236 </span><span class="lineCov">          1 :     return description;</span>
-<span class="lineNum">     237 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     238 </span>            : 
+<span class="lineNum">     228 </span>            : - (NSString *)description
+<span class="lineNum">     229 </span>            : {
+<span class="lineNum">     230 </span><span class="lineCov">          1 :     NSMutableString *description = [NSMutableString stringWithFormat:@&quot;&lt;%@: &quot;, NSStringFromClass([self class])];</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 :     [description appendFormat:@&quot;_registry=%@&quot;, _registry];</span>
+<span class="lineNum">     232 </span><span class="lineCov">          1 :     [description appendString:@&quot;&gt;&quot;];</span>
+<span class="lineNum">     233 </span><span class="lineCov">          1 :     return description;</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     235 </span>            : 
+<span class="lineNum">     236 </span>            : 
+<span class="lineNum">     237 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">     238 </span>            : #pragma mark - Private Methods
 <span class="lineNum">     239 </span>            : 
-<span class="lineNum">     240 </span>            : /* ====================================================================================================================================== */
-<span class="lineNum">     241 </span>            : #pragma mark - Private Methods
-<span class="lineNum">     242 </span>            : 
-<span class="lineNum">     243 </span>            : - (void)_load
-<span class="lineNum">     244 </span>            : {
-<span class="lineNum">     245 </span><span class="lineCov">        112 :     [self preparePostProcessors];</span>
-<span class="lineNum">     246 </span><span class="lineCov">        112 :     [self applyPostProcessors];</span>
-<span class="lineNum">     247 </span><span class="lineCov">        112 :     [self instantiateEagerSingletons];</span>
-<span class="lineNum">     248 </span><span class="lineCov">        112 : }</span>
-<span class="lineNum">     249 </span>            : 
-<span class="lineNum">     250 </span><span class="lineCov">        224 : - (NSArray *)orderedArray:(NSMutableArray *)array</span>
-<span class="lineNum">     251 </span>            : {
-<span class="lineNum">     252 </span><span class="lineCov">        461 :     return [array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {</span>
-<span class="lineNum">     253 </span><span class="lineCov">        237 :         NSInteger firstObjectOrder = TyphoonOrderLowestPriority;</span>
-<span class="lineNum">     254 </span><span class="lineCov">        237 :         NSInteger secondObjectOrder = TyphoonOrderLowestPriority;</span>
-<span class="lineNum">     255 </span><span class="lineCov">        237 :         if ([obj1 conformsToProtocol:@protocol(TyphoonOrdered)]) {</span>
-<span class="lineNum">     256 </span><span class="lineCov">          3 :             firstObjectOrder = [obj1 order];</span>
+<span class="lineNum">     240 </span>            : - (void)_load
+<span class="lineNum">     241 </span>            : {
+<span class="lineNum">     242 </span><span class="lineCov">        112 :     [self preparePostProcessors];</span>
+<span class="lineNum">     243 </span><span class="lineCov">        112 :     [self applyPostProcessors];</span>
+<span class="lineNum">     244 </span><span class="lineCov">        112 :     [self instantiateEagerSingletons];</span>
+<span class="lineNum">     245 </span><span class="lineCov">        112 : }</span>
+<span class="lineNum">     246 </span>            : 
+<span class="lineNum">     247 </span><span class="lineCov">        224 : - (NSArray *)orderedArray:(NSMutableArray *)array</span>
+<span class="lineNum">     248 </span>            : {
+<span class="lineNum">     249 </span><span class="lineCov">        461 :     return [array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {</span>
+<span class="lineNum">     250 </span><span class="lineCov">        237 :         NSInteger firstObjectOrder = TyphoonOrderLowestPriority;</span>
+<span class="lineNum">     251 </span><span class="lineCov">        237 :         NSInteger secondObjectOrder = TyphoonOrderLowestPriority;</span>
+<span class="lineNum">     252 </span><span class="lineCov">        237 :         if ([obj1 conformsToProtocol:@protocol(TyphoonOrdered)]) {</span>
+<span class="lineNum">     253 </span><span class="lineCov">          3 :             firstObjectOrder = [obj1 order];</span>
+<span class="lineNum">     254 </span><span class="lineCov">          3 :         }</span>
+<span class="lineNum">     255 </span><span class="lineCov">        237 :         if ([obj2 conformsToProtocol:@protocol(TyphoonOrdered)]) {</span>
+<span class="lineNum">     256 </span><span class="lineCov">          3 :             secondObjectOrder = [obj2 order];</span>
 <span class="lineNum">     257 </span><span class="lineCov">          3 :         }</span>
-<span class="lineNum">     258 </span><span class="lineCov">        237 :         if ([obj2 conformsToProtocol:@protocol(TyphoonOrdered)]) {</span>
-<span class="lineNum">     259 </span><span class="lineCov">          3 :             secondObjectOrder = [obj2 order];</span>
-<span class="lineNum">     260 </span><span class="lineCov">          3 :         }</span>
-<span class="lineNum">     261 </span><span class="lineCov">        237 :         return [@(firstObjectOrder) compare:@(secondObjectOrder)];</span>
-<span class="lineNum">     262 </span><span class="lineCov">        237 :     }];</span>
-<span class="lineNum">     263 </span><span class="lineCov">        224 : }</span>
-<span class="lineNum">     264 </span>            : 
-<span class="lineNum">     265 </span>            : 
-<span class="lineNum">     266 </span>            : - (void)preparePostProcessors
-<span class="lineNum">     267 </span>            : {
-<span class="lineNum">     268 </span><span class="lineCov">        112 :     _factoryPostProcessors = [[self orderedArray:_factoryPostProcessors] mutableCopy];</span>
-<span class="lineNum">     269 </span><span class="lineCov">        112 :     _componentPostProcessors = [[self orderedArray:_componentPostProcessors] mutableCopy];</span>
-<span class="lineNum">     270 </span><span class="lineCov">        112 : }</span>
-<span class="lineNum">     271 </span>            : 
-<span class="lineNum">     272 </span>            : - (void)applyPostProcessors
-<span class="lineNum">     273 </span>            : {
-<span class="lineNum">     274 </span><span class="lineCov">        438 :     [_factoryPostProcessors enumerateObjectsUsingBlock:^(id &lt;TyphoonComponentFactoryPostProcessor&gt; postProcessor, NSUInteger idx, BOOL *stop) {</span>
-<span class="lineNum">     275 </span><span class="lineCov">        326 :         [postProcessor postProcessComponentFactory:self];</span>
-<span class="lineNum">     276 </span><span class="lineCov">        652 :     }];</span>
-<span class="lineNum">     277 </span><span class="lineCov">        112 : }</span>
-<span class="lineNum">     278 </span>            : 
-<span class="lineNum">     279 </span>            : - (void)instantiateEagerSingletons
-<span class="lineNum">     280 </span>            : {
-<span class="lineNum">     281 </span><span class="lineCov">       1569 :     [_registry enumerateObjectsUsingBlock:^(id definition, NSUInteger idx, BOOL *stop) {</span>
-<span class="lineNum">     282 </span><span class="lineCov">       1515 :         if (([definition scope] == TyphoonScopeSingleton) &amp;&amp; ![definition isLazy]) {</span>
-<span class="lineNum">     283 </span><span class="lineCov">         57 :             [self sharedInstanceForDefinition:definition args:nil fromPool:_singletons];</span>
-<span class="lineNum">     284 </span><span class="lineCov">         57 :         }</span>
-<span class="lineNum">     285 </span><span class="lineCov">       2914 :     }];</span>
-<span class="lineNum">     286 </span><span class="lineCov">        112 : }</span>
-<span class="lineNum">     287 </span>            : 
-<span class="lineNum">     288 </span><span class="lineCov">        432 : - (id)sharedInstanceForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args fromPool:(id &lt;TyphoonComponentsPool&gt;)pool</span>
-<span class="lineNum">     289 </span>            : {
-<span class="lineNum">     290 </span><span class="lineCov">        432 :     @synchronized (self) {</span>
-<span class="lineNum">     291 </span><span class="lineCov">        868 :         NSString *poolKey = [self poolKeyForDefinition:definition args:args];</span>
-<span class="lineNum">     292 </span><span class="lineCov">        864 :         id instance = [pool objectForKey:poolKey];</span>
-<span class="lineNum">     293 </span><span class="lineCov">        432 :         if (instance == nil) {</span>
-<span class="lineNum">     294 </span><span class="lineCov">        604 :             instance = [self buildSharedInstanceForDefinition:definition args:args];</span>
-<span class="lineNum">     295 </span><span class="lineCov">        367 :             [pool setObject:instance forKey:poolKey];</span>
-<span class="lineNum">     296 </span><span class="lineCov">        366 :         }</span>
-<span class="lineNum">     297 </span><span class="lineCov">        428 :         return instance;</span>
-<span class="lineNum">     298 </span><span class="lineCov">        436 :     }</span>
-<span class="lineNum">     299 </span><span class="lineCov">        428 : }</span>
-<span class="lineNum">     300 </span>            : 
-<span class="lineNum">     301 </span><span class="lineCov">        432 : - (NSString *)poolKeyForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args</span>
-<span class="lineNum">     302 </span>            : {
-<span class="lineNum">     303 </span><span class="lineCov">        432 :     if (args) {</span>
-<span class="lineNum">     304 </span><span class="lineCov">         34 :         return [NSString stringWithFormat:@&quot;%@-%ld&quot;, definition.key, (unsigned long)[args hash]];</span>
-<span class="lineNum">     305 </span>            :     } else {
-<span class="lineNum">     306 </span><span class="lineCov">        398 :         return definition.key;</span>
-<span class="lineNum">     307 </span>            :     }
-<span class="lineNum">     308 </span><span class="lineCov">        432 : }</span>
+<span class="lineNum">     258 </span><span class="lineCov">        237 :         return [@(firstObjectOrder) compare:@(secondObjectOrder)];</span>
+<span class="lineNum">     259 </span><span class="lineCov">        237 :     }];</span>
+<span class="lineNum">     260 </span><span class="lineCov">        224 : }</span>
+<span class="lineNum">     261 </span>            : 
+<span class="lineNum">     262 </span>            : 
+<span class="lineNum">     263 </span>            : - (void)preparePostProcessors
+<span class="lineNum">     264 </span>            : {
+<span class="lineNum">     265 </span><span class="lineCov">        112 :     _factoryPostProcessors = [[self orderedArray:_factoryPostProcessors] mutableCopy];</span>
+<span class="lineNum">     266 </span><span class="lineCov">        112 :     _componentPostProcessors = [[self orderedArray:_componentPostProcessors] mutableCopy];</span>
+<span class="lineNum">     267 </span><span class="lineCov">        112 : }</span>
+<span class="lineNum">     268 </span>            : 
+<span class="lineNum">     269 </span>            : - (void)applyPostProcessors
+<span class="lineNum">     270 </span>            : {
+<span class="lineNum">     271 </span><span class="lineCov">        438 :     [_factoryPostProcessors enumerateObjectsUsingBlock:^(id &lt;TyphoonComponentFactoryPostProcessor&gt; postProcessor, NSUInteger idx, BOOL *stop) {</span>
+<span class="lineNum">     272 </span><span class="lineCov">        326 :         [postProcessor postProcessComponentFactory:self];</span>
+<span class="lineNum">     273 </span><span class="lineCov">        652 :     }];</span>
+<span class="lineNum">     274 </span><span class="lineCov">        112 : }</span>
+<span class="lineNum">     275 </span>            : 
+<span class="lineNum">     276 </span>            : - (void)instantiateEagerSingletons
+<span class="lineNum">     277 </span>            : {
+<span class="lineNum">     278 </span><span class="lineCov">       1569 :     [_registry enumerateObjectsUsingBlock:^(id definition, NSUInteger idx, BOOL *stop) {</span>
+<span class="lineNum">     279 </span><span class="lineCov">       1515 :         if (([definition scope] == TyphoonScopeSingleton) &amp;&amp; ![definition isLazy]) {</span>
+<span class="lineNum">     280 </span><span class="lineCov">         57 :             [self sharedInstanceForDefinition:definition args:nil fromPool:_singletons];</span>
+<span class="lineNum">     281 </span><span class="lineCov">         57 :         }</span>
+<span class="lineNum">     282 </span><span class="lineCov">       2914 :     }];</span>
+<span class="lineNum">     283 </span><span class="lineCov">        112 : }</span>
+<span class="lineNum">     284 </span>            : 
+<span class="lineNum">     285 </span><span class="lineCov">        432 : - (id)sharedInstanceForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args fromPool:(id &lt;TyphoonComponentsPool&gt;)pool</span>
+<span class="lineNum">     286 </span>            : {
+<span class="lineNum">     287 </span><span class="lineCov">        432 :     @synchronized (self) {</span>
+<span class="lineNum">     288 </span><span class="lineCov">        868 :         NSString *poolKey = [self poolKeyForDefinition:definition args:args];</span>
+<span class="lineNum">     289 </span><span class="lineCov">        864 :         id instance = [pool objectForKey:poolKey];</span>
+<span class="lineNum">     290 </span><span class="lineCov">        432 :         if (instance == nil) {</span>
+<span class="lineNum">     291 </span><span class="lineCov">        604 :             instance = [self buildSharedInstanceForDefinition:definition args:args];</span>
+<span class="lineNum">     292 </span><span class="lineCov">        367 :             [pool setObject:instance forKey:poolKey];</span>
+<span class="lineNum">     293 </span><span class="lineCov">        366 :         }</span>
+<span class="lineNum">     294 </span><span class="lineCov">        428 :         return instance;</span>
+<span class="lineNum">     295 </span><span class="lineCov">        436 :     }</span>
+<span class="lineNum">     296 </span><span class="lineCov">        428 : }</span>
+<span class="lineNum">     297 </span>            : 
+<span class="lineNum">     298 </span><span class="lineCov">        432 : - (NSString *)poolKeyForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args</span>
+<span class="lineNum">     299 </span>            : {
+<span class="lineNum">     300 </span><span class="lineCov">        432 :     if (args) {</span>
+<span class="lineNum">     301 </span><span class="lineCov">         34 :         return [NSString stringWithFormat:@&quot;%@-%ld&quot;, definition.key, (unsigned long)[args hash]];</span>
+<span class="lineNum">     302 </span>            :     } else {
+<span class="lineNum">     303 </span><span class="lineCov">        398 :         return definition.key;</span>
+<span class="lineNum">     304 </span>            :     }
+<span class="lineNum">     305 </span><span class="lineCov">        432 : }</span>
+<span class="lineNum">     306 </span>            : 
+<span class="lineNum">     307 </span>            : @end
+<span class="lineNum">     308 </span>            : 
 <span class="lineNum">     309 </span>            : 
-<span class="lineNum">     310 </span>            : @end
+<span class="lineNum">     310 </span>            : @implementation TyphoonComponentFactory (TyphoonDefinitionRegisterer)
 <span class="lineNum">     311 </span>            : 
-<span class="lineNum">     312 </span>            : 
-<span class="lineNum">     313 </span>            : @implementation TyphoonComponentFactory (TyphoonDefinitionRegisterer)
-<span class="lineNum">     314 </span>            : 
-<span class="lineNum">     315 </span><span class="lineCov">       2733 : - (TyphoonDefinition *)definitionForKey:(NSString *)key</span>
-<span class="lineNum">     316 </span>            : {
-<span class="lineNum">     317 </span><span class="lineCov">      58843 :     for (TyphoonDefinition *definition in _registry) {</span>
-<span class="lineNum">     318 </span><span class="lineCov">      26802 :         if ([definition.key isEqualToString:key]) {</span>
-<span class="lineNum">     319 </span><span class="lineCov">        465 :             return definition;</span>
-<span class="lineNum">     320 </span>            :         }
-<span class="lineNum">     321 </span><span class="lineCov">      64252 :     }</span>
-<span class="lineNum">     322 </span><span class="lineCov">       2268 :     return nil;</span>
-<span class="lineNum">     323 </span><span class="lineCov">       2733 : }</span>
-<span class="lineNum">     324 </span>            : 
-<span class="lineNum">     325 </span><span class="lineCov">        406 : - (id)objectForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args</span>
-<span class="lineNum">     326 </span>            : {
-<span class="lineNum">     327 </span><span class="lineCov">        406 :     if (definition.abstract) {</span>
-<span class="lineNum">     328 </span><span class="lineCov">          1 :         [NSException raise:NSInvalidArgumentException format:@&quot;Attempt to instantiate abstract definition: %@&quot;, definition];</span>
-<span class="lineNum">     329 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     330 </span>            :     
-<span class="lineNum">     331 </span><span class="lineCov">        405 :     @synchronized(self) {</span>
-<span class="lineNum">     332 </span>            :         
-<span class="lineNum">     333 </span><span class="lineCov">        405 :         id instance = nil;</span>
-<span class="lineNum">     334 </span><span class="lineCov">        818 :         switch (definition.scope) {</span>
-<span class="lineNum">     335 </span>            :             case TyphoonScopeSingleton:
-<span class="lineNum">     336 </span><span class="lineCov">         48 :                 instance = [self sharedInstanceForDefinition:definition args:args fromPool:_singletons];</span>
-<span class="lineNum">     337 </span><span class="lineCov">         24 :                 break;</span>
-<span class="lineNum">     338 </span>            :             case TyphoonScopeWeakSingleton:
-<span class="lineNum">     339 </span><span class="lineCov">          6 :                 instance = [self sharedInstanceForDefinition:definition args:args fromPool:_weakSingletons];</span>
-<span class="lineNum">     340 </span><span class="lineCov">          3 :                 break;</span>
-<span class="lineNum">     341 </span>            :             case TyphoonScopeObjectGraph:
-<span class="lineNum">     342 </span><span class="lineCov">        606 :                 instance = [self sharedInstanceForDefinition:definition args:args fromPool:_objectGraphSharedInstances];</span>
-<span class="lineNum">     343 </span><span class="lineCov">        344 :                 break;</span>
-<span class="lineNum">     344 </span>            :             default:
-<span class="lineNum">     345 </span>            :             case TyphoonScopePrototype:
-<span class="lineNum">     346 </span><span class="lineCov">         32 :                 instance = [self buildInstanceWithDefinition:definition args:args];</span>
-<span class="lineNum">     347 </span><span class="lineCov">         26 :                 break;</span>
-<span class="lineNum">     348 </span>            :         }
-<span class="lineNum">     349 </span>            :         
-<span class="lineNum">     350 </span><span class="lineCov">        797 :         if ([_stack isEmpty]) {</span>
-<span class="lineNum">     351 </span><span class="lineCov">        182 :             [_objectGraphSharedInstances removeAllObjects];</span>
-<span class="lineNum">     352 </span><span class="lineCov">        182 :         }</span>
-<span class="lineNum">     353 </span>            :         
-<span class="lineNum">     354 </span><span class="lineCov">        397 :         return instance;</span>
-<span class="lineNum">     355 </span><span class="lineCov">        413 :     }</span>
-<span class="lineNum">     356 </span><span class="lineCov">        397 : }</span>
-<span class="lineNum">     357 </span>            : 
-<span class="lineNum">     358 </span><span class="lineCov">       2210 : - (void)addDefinitionToRegistry:(TyphoonDefinition *)definition</span>
-<span class="lineNum">     359 </span>            : {
-<span class="lineNum">     360 </span><span class="lineCov">       2210 :     [_registry addObject:definition];</span>
-<span class="lineNum">     361 </span><span class="lineCov">       2210 : }</span>
-<span class="lineNum">     362 </span>            : 
-<span class="lineNum">     363 </span><span class="lineCov">          4 : - (void)addComponentPostProcessor:(id &lt;TyphoonComponentPostProcessor&gt;)postProcessor</span>
-<span class="lineNum">     364 </span>            : {
-<span class="lineNum">     365 </span><span class="lineCov">          4 :     [_componentPostProcessors addObject:postProcessor];</span>
-<span class="lineNum">     366 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">     367 </span>            : 
-<span class="lineNum">     368 </span>            : @end
+<span class="lineNum">     312 </span><span class="lineCov">       2733 : - (TyphoonDefinition *)definitionForKey:(NSString *)key</span>
+<span class="lineNum">     313 </span>            : {
+<span class="lineNum">     314 </span><span class="lineCov">      58769 :     for (TyphoonDefinition *definition in _registry) {</span>
+<span class="lineNum">     315 </span><span class="lineCov">      26765 :         if ([definition.key isEqualToString:key]) {</span>
+<span class="lineNum">     316 </span><span class="lineCov">        465 :             return definition;</span>
+<span class="lineNum">     317 </span>            :         }
+<span class="lineNum">     318 </span><span class="lineCov">      64178 :     }</span>
+<span class="lineNum">     319 </span><span class="lineCov">       2268 :     return nil;</span>
+<span class="lineNum">     320 </span><span class="lineCov">       2733 : }</span>
+<span class="lineNum">     321 </span>            : 
+<span class="lineNum">     322 </span><span class="lineCov">        406 : - (id)objectForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args</span>
+<span class="lineNum">     323 </span>            : {
+<span class="lineNum">     324 </span><span class="lineCov">        406 :     if (definition.abstract) {</span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 :         [NSException raise:NSInvalidArgumentException format:@&quot;Attempt to instantiate abstract definition: %@&quot;, definition];</span>
+<span class="lineNum">     326 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     327 </span>            :     
+<span class="lineNum">     328 </span><span class="lineCov">        405 :     @synchronized(self) {</span>
+<span class="lineNum">     329 </span>            :         
+<span class="lineNum">     330 </span><span class="lineCov">        405 :         id instance = nil;</span>
+<span class="lineNum">     331 </span><span class="lineCov">        818 :         switch (definition.scope) {</span>
+<span class="lineNum">     332 </span>            :             case TyphoonScopeSingleton:
+<span class="lineNum">     333 </span><span class="lineCov">         48 :                 instance = [self sharedInstanceForDefinition:definition args:args fromPool:_singletons];</span>
+<span class="lineNum">     334 </span><span class="lineCov">         24 :                 break;</span>
+<span class="lineNum">     335 </span>            :             case TyphoonScopeWeakSingleton:
+<span class="lineNum">     336 </span><span class="lineCov">          6 :                 instance = [self sharedInstanceForDefinition:definition args:args fromPool:_weakSingletons];</span>
+<span class="lineNum">     337 </span><span class="lineCov">          3 :                 break;</span>
+<span class="lineNum">     338 </span>            :             case TyphoonScopeObjectGraph:
+<span class="lineNum">     339 </span><span class="lineCov">        606 :                 instance = [self sharedInstanceForDefinition:definition args:args fromPool:_objectGraphSharedInstances];</span>
+<span class="lineNum">     340 </span><span class="lineCov">        344 :                 break;</span>
+<span class="lineNum">     341 </span>            :             default:
+<span class="lineNum">     342 </span>            :             case TyphoonScopePrototype:
+<span class="lineNum">     343 </span><span class="lineCov">         32 :                 instance = [self buildInstanceWithDefinition:definition args:args];</span>
+<span class="lineNum">     344 </span><span class="lineCov">         26 :                 break;</span>
+<span class="lineNum">     345 </span>            :         }
+<span class="lineNum">     346 </span>            :         
+<span class="lineNum">     347 </span><span class="lineCov">        797 :         if ([_stack isEmpty]) {</span>
+<span class="lineNum">     348 </span><span class="lineCov">        182 :             [_objectGraphSharedInstances removeAllObjects];</span>
+<span class="lineNum">     349 </span><span class="lineCov">        182 :         }</span>
+<span class="lineNum">     350 </span>            :         
+<span class="lineNum">     351 </span><span class="lineCov">        397 :         return instance;</span>
+<span class="lineNum">     352 </span><span class="lineCov">        413 :     }</span>
+<span class="lineNum">     353 </span><span class="lineCov">        397 : }</span>
+<span class="lineNum">     354 </span>            : 
+<span class="lineNum">     355 </span><span class="lineCov">       2210 : - (void)addDefinitionToRegistry:(TyphoonDefinition *)definition</span>
+<span class="lineNum">     356 </span>            : {
+<span class="lineNum">     357 </span><span class="lineCov">       2210 :     [_registry addObject:definition];</span>
+<span class="lineNum">     358 </span><span class="lineCov">       2210 : }</span>
+<span class="lineNum">     359 </span>            : 
+<span class="lineNum">     360 </span><span class="lineCov">          4 : - (void)addComponentPostProcessor:(id &lt;TyphoonComponentPostProcessor&gt;)postProcessor</span>
+<span class="lineNum">     361 </span>            : {
+<span class="lineNum">     362 </span><span class="lineCov">          4 :     [_componentPostProcessors addObject:postProcessor];</span>
+<span class="lineNum">     363 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     364 </span>            : 
+<span class="lineNum">     365 </span>            : @end
 </pre>
       </td>
     </tr>
