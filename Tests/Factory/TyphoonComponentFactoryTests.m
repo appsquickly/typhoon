@@ -123,41 +123,13 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     XCTAssertNotNil([_componentFactory componentForType:[CavalryMan class]]);
 
-    @try {
-        Knight *knight = [_componentFactory componentForType:[Knight class]];
-        XCTFail(@"Should have thrown exception");
-        knight = nil;
-    }
-    @catch (NSException *e) {
-        XCTAssertEqualObjects([e description], @"More than one component is defined satisfying type: 'Knight'");
-    }
+    XCTAssertThrows([_componentFactory componentForType:[Knight class]], @"More than one component is defined satisfying type: 'Knight'");
 
-    @try {
-        Knight *knight = [_componentFactory componentForType:@protocol(Quest)];
-        XCTFail(@"Should have thrown exception");
-        knight = nil;
-    }
-    @catch (NSException *e) {
-        XCTAssertEqualObjects([e description], @"More than one component is defined satisfying type: 'id<Quest>'");
-    }
+    XCTAssertThrows([_componentFactory componentForType:@protocol(Quest)], @"More than one component is defined satisfying type: 'id<Quest>'");
 
-    @try {
-        Knight *knight = [_componentFactory componentForType:[Champion class]];
-        XCTFail(@"Should have thrown exception");
-        knight = nil;
-    }
-    @catch (NSException *e) {
-        XCTAssertEqualObjects([e description], @"No components defined which satisify type: 'Champion'");
-    }
+    XCTAssertThrows([_componentFactory componentForType:[Champion class]], @"No components defined which satisify type: 'Champion'");
 
-    @try {
-        id <Harlot> harlot = [_componentFactory componentForType:@protocol(Harlot)];
-        NSLog(@"Harlot: %@", harlot); //suppress unused variable warning
-        XCTFail(@"Should have thrown exception");
-    }
-    @catch (NSException *e) {
-        XCTAssertEqualObjects([e description], @"No components defined which satisify type: 'id<Harlot>'");
-    }
+    XCTAssertThrows([_componentFactory componentForType:@protocol(Harlot)], @"No components defined which satisify type: 'id<Harlot>'");
 }
 
 - (void)test_componentForKey_returns_with_property_dependencies_resolved_by_type

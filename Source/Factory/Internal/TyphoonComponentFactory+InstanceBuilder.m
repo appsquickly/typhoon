@@ -231,7 +231,12 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (TyphoonDefinition *)definitionForType:(id)classOrProtocol
 {
-    NSArray *candidates = [self allDefinitionsForType:classOrProtocol];
+    return [self definitionForType:classOrProtocol orNil:NO includeSubclasses:YES];
+}
+
+- (TyphoonDefinition *)definitionForType:(id)classOrProtocol orNil:(BOOL)returnNilIfNotFound includeSubclasses:(BOOL)includeSubclasses
+{
+    NSArray *candidates = [self allDefinitionsForType:classOrProtocol includeSubclasses:includeSubclasses];
 
     if ([candidates count] == 0) {
 
@@ -239,22 +244,30 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         if (class_isMetaClass(object_getClass(classOrProtocol)) && [classOrProtocol respondsToSelector:autoInjectedProperties]) {
             LogTrace(@"Class %@ wants auto-wiring. . . registering.", NSStringFromClass(classOrProtocol));
             [self registerDefinition:[TyphoonDefinition withClass:classOrProtocol]];
-            return [self definitionForType:classOrProtocol];
+            return [self definitionForType:classOrProtocol orNil:returnNilIfNotFound includeSubclasses:includeSubclasses];
         }
-        [NSException raise:NSInvalidArgumentException format:@"No components defined which satisify type: '%@'",
-                                                             TyphoonTypeStringFor(classOrProtocol)];
+        if (returnNilIfNotFound) {
+            return nil;
+        } else {
+            [NSException raise:NSInvalidArgumentException format:@"No components defined which satisify type: '%@'", TyphoonTypeStringFor(classOrProtocol)];
+        }
     }
     if ([candidates count] > 1) {
-        [NSException raise:NSInvalidArgumentException format:@"More than one component is defined satisfying type: '%@'",
-                                                             TyphoonTypeStringFor(classOrProtocol)];
+        [NSException raise:NSInvalidArgumentException format:@"More than one component is defined satisfying type: '%@' : %@",
+                                                             TyphoonTypeStringFor(classOrProtocol), candidates];
     }
     return [candidates objectAtIndex:0];
 }
 
 
+
 - (NSArray *)allDefinitionsForType:(id)classOrProtocol
 {
+    return [self allDefinitionsForType:classOrProtocol includeSubclasses:YES];
+}
 
+- (NSArray *)allDefinitionsForType:(id)classOrProtocol includeSubclasses:(BOOL)includeSubclasses
+{
     NSMutableArray *results = [[NSMutableArray alloc] init];
     BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
     BOOL isProtocol = object_getClass(classOrProtocol) == object_getClass(@protocol(NSObject));
@@ -264,7 +277,9 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
     for (TyphoonDefinition *definition in _registry) {
         if (isClass) {
-            if (definition.type == classOrProtocol || [definition.type isSubclassOfClass:classOrProtocol]) {
+            BOOL isSameClass = definition.type == classOrProtocol;
+            BOOL isSubclass = includeSubclasses && [definition.type isSubclassOfClass:classOrProtocol];
+            if (isSameClass || isSubclass) {
                 [results addObject:definition];
             }
         }

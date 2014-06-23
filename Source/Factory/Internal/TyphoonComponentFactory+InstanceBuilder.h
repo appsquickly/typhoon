@@ -16,6 +16,7 @@
 
 
 @class TyphoonCallStack;
+@class TyphoonDefinition;
 
 /**
 * Encapsulates the methods related to assembling an instance using the Objective-C runtime. This is an internal category - the methods will
@@ -33,7 +34,11 @@
 
 - (NSArray *)allDefinitionsForType:(id)classOrProtocol;
 
+- (NSArray *)allDefinitionsForType:(id)classOrProtocol includeSubclasses:(BOOL)includeSubclasses;
+
 - (TyphoonDefinition *)definitionForType:(id)classOrProtocol;
+
+- (TyphoonDefinition *)definitionForType:(id)classOrProtocol orNil:(BOOL)returnNilIfNotFound includeSubclasses:(BOOL)includeSubclasses;
 
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance;
 
