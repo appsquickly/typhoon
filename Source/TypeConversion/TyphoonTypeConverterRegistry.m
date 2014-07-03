@@ -20,7 +20,6 @@
 
 #if TARGET_OS_IPHONE
 
-#import "TyphoonUIColorTypeConverter.h"
 #import "TyphoonBundledImageTypeConverter.h"
 
 #endif
@@ -45,29 +44,29 @@
 + (NSString *)typeFromTextValue:(NSString *)textValue
 {
     NSString *type = nil;
-    
+
     NSRange openBraceRange = [textValue rangeOfString:@"("];
     BOOL hasBraces = [textValue hasSuffix:@")"] && openBraceRange.location != NSNotFound;
     if (hasBraces) {
         type = [textValue substringToIndex:openBraceRange.location];
     }
-    
+
     return type;
 }
 
 + (NSString *)textWithoutTypeFromTextValue:(NSString *)textValue
 {
     NSString *result = textValue;
-    
+
     NSRange openBraceRange = [textValue rangeOfString:@"("];
     BOOL hasBraces = [textValue hasSuffix:@")"] && openBraceRange.location != NSNotFound;
-    
+
     if (hasBraces) {
         NSRange range = NSMakeRange(openBraceRange.location + openBraceRange.length, 0);
         range.length = [textValue length] - range.location - 1;
         result = [textValue substringWithRange:range];
     }
-    
+
     return result;
 }
 
@@ -134,7 +133,7 @@
 {
 #if TARGET_OS_IPHONE
     {
-        [self registerTypeConverter:[[TyphoonUIColorTypeConverter alloc] init]];
+        [self registerTypeConverter:[[NSClassFromString(@"TyphoonUIColorTypeConverter") alloc] init]];
         [self registerTypeConverter:[[TyphoonBundledImageTypeConverter alloc] init]];
     }
 #else
