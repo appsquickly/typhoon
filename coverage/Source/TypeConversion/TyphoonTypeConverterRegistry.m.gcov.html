@@ -192,7 +192,7 @@
 <span class="lineNum">     134 </span>            : #if TARGET_OS_IPHONE
 <span class="lineNum">     135 </span>            :     {
 <span class="lineNum">     136 </span><span class="lineCov">          1 :         [self registerTypeConverter:[[NSClassFromString(@&quot;TyphoonUIColorTypeConverter&quot;) alloc] init]];</span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 :         [self registerTypeConverter:[[TyphoonBundledImageTypeConverter alloc] init]];</span>
+<span class="lineNum">     137 </span><span class="lineCov">          1 :         [self registerTypeConverter:[[NSClassFromString(@&quot;TyphoonBundledImageTypeConverter&quot;) alloc] init]];</span>
 <span class="lineNum">     138 </span>            :     }
 <span class="lineNum">     139 </span>            : #else
 <span class="lineNum">     140 </span>            :     {
