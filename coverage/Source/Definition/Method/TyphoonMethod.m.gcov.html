@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">109</td>
+            <td class="headerCovTableEntry">99</td>
             <td class="headerCovTableEntry">113</td>
-            <td class="headerCovTableEntryHi">96.5 %</td>
+            <td class="headerCovTableEntryMed">87.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -238,29 +238,29 @@
 <span class="lineNum">     180 </span>            : }
 <span class="lineNum">     181 </span>            : 
 <span class="lineNum">     182 </span>            : 
-<span class="lineNum">     183 </span><span class="lineCov">          2 : - (BOOL)isEqual:(id)other</span>
+<span class="lineNum">     183 </span><span class="lineNoCov">          0 : - (BOOL)isEqual:(id)other</span>
 <span class="lineNum">     184 </span>            : {
-<span class="lineNum">     185 </span><span class="lineCov">          2 :     if (other == self) {</span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 :     if (other == self) {</span>
 <span class="lineNum">     186 </span><span class="lineNoCov">          0 :         return YES;</span>
 <span class="lineNum">     187 </span>            :     }
-<span class="lineNum">     188 </span><span class="lineCov">          4 :     if (!other || ![[other class] isEqual:[self class]]) {</span>
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 :     if (!other || ![[other class] isEqual:[self class]]) {</span>
 <span class="lineNum">     189 </span><span class="lineNoCov">          0 :         return NO;</span>
 <span class="lineNum">     190 </span>            :     }
 <span class="lineNum">     191 </span>            :     
-<span class="lineNum">     192 </span><span class="lineCov">          2 :     return [self isEqualToMethod:other];</span>
-<span class="lineNum">     193 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     192 </span><span class="lineNoCov">          0 :     return [self isEqualToMethod:other];</span>
+<span class="lineNum">     193 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     194 </span>            : 
-<span class="lineNum">     195 </span><span class="lineCov">          2 : - (BOOL)isEqualToMethod:(TyphoonMethod *)method</span>
+<span class="lineNum">     195 </span><span class="lineNoCov">          0 : - (BOOL)isEqualToMethod:(TyphoonMethod *)method</span>
 <span class="lineNum">     196 </span>            : {
-<span class="lineNum">     197 </span><span class="lineCov">          2 :     if (self == method) {</span>
+<span class="lineNum">     197 </span><span class="lineNoCov">          0 :     if (self == method) {</span>
 <span class="lineNum">     198 </span><span class="lineNoCov">          0 :         return YES;</span>
 <span class="lineNum">     199 </span>            :     }
-<span class="lineNum">     200 </span><span class="lineCov">          2 :     if (method == nil) {</span>
+<span class="lineNum">     200 </span><span class="lineNoCov">          0 :     if (method == nil) {</span>
 <span class="lineNum">     201 </span><span class="lineNoCov">          0 :         return NO;</span>
 <span class="lineNum">     202 </span>            :     }
 <span class="lineNum">     203 </span>            :     
-<span class="lineNum">     204 </span><span class="lineCov">          2 :     return _selector == method.selector &amp;&amp; [method-&gt;_injectedParameters isEqualToArray:_injectedParameters];</span>
-<span class="lineNum">     205 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 :     return _selector == method.selector &amp;&amp; [method-&gt;_injectedParameters isEqualToArray:_injectedParameters];</span>
+<span class="lineNum">     205 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     206 </span>            : 
 <span class="lineNum">     207 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     208 </span>            : #pragma mark - Private Methods
