@@ -18,12 +18,6 @@
 #import "TyphoonPassThroughTypeConverter.h"
 #import "TyphoonNSURLTypeConverter.h"
 
-#if TARGET_OS_IPHONE
-
-#import "TyphoonBundledImageTypeConverter.h"
-
-#endif
-
 
 @implementation TyphoonTypeConverterRegistry
 
