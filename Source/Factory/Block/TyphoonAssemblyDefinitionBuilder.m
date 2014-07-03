@@ -179,6 +179,7 @@ static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSigna
         [invocation retainArguments];
         /* Fill invocation arguments with TyphoonInjectionWithRuntimeArgumentAtIndex injections */
         for (NSUInteger i = 0; i < signature.numberOfArguments - 2; i++) {
+            AssertArgumentType(target, selector, signature, i + 2);
             id injection = TyphoonInjectionWithRuntimeArgumentAtIndex(i);
             [invocation setArgument:&injection atIndex:i + 2];
         }
@@ -188,6 +189,14 @@ static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSigna
     }
     else {
         return objc_msgSend(target, selector);
+    }
+}
+
+static void AssertArgumentType(id target, SEL selector, NSMethodSignature *signature, int index)
+{
+    const char *argumentType = [signature getArgumentTypeAtIndex:index];
+    if (strcmp(argumentType, "@") != 0) {
+        [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %d. Runtime arguments can only be objects. Use wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector], [target class], index-2];
     }
 }
 
