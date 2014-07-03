@@ -134,7 +134,7 @@
 #if TARGET_OS_IPHONE
     {
         [self registerTypeConverter:[[NSClassFromString(@"TyphoonUIColorTypeConverter") alloc] init]];
-        [self registerTypeConverter:[[TyphoonBundledImageTypeConverter alloc] init]];
+        [self registerTypeConverter:[[NSClassFromString(@"TyphoonBundledImageTypeConverter") alloc] init]];
     }
 #else
     {
