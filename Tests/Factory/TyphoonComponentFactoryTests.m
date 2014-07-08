@@ -171,7 +171,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 }
 
 /* ====================================================================================================================================== */
-#pragma mark - Infrastructure components
+#pragma  mark - Infrastructure components
 
 - (void)test_post_processor_registration
 {

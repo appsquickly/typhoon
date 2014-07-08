@@ -54,12 +54,12 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 
-+ (TyphoonDefinition *)withClass:(Class)clazz
++ (id)withClass:(Class)clazz
 {
     return [[TyphoonDefinition alloc] initWithClass:clazz key:nil];
 }
 
-+ (TyphoonDefinition *)withClass:(Class)clazz configuration:(TyphoonDefinitionBlock)injections
++ (id)withClass:(Class)clazz configuration:(TyphoonDefinitionBlock)injections
 {
     return [TyphoonDefinition withClass:clazz key:nil injections:injections];
 }
@@ -79,7 +79,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 }
 
 //Deprecated!
-+ (TyphoonDefinition *)withClass:(Class)clazz factory:(TyphoonDefinition *)_definition selector:(SEL)selector
++ (id)withClass:(Class)clazz factory:(TyphoonDefinition *)_definition selector:(SEL)selector
 {
     return [TyphoonDefinition withClass:clazz configuration:^(TyphoonDefinition *definition) {
         [definition useInitializer:selector parameters:nil];
@@ -87,12 +87,12 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     }];
 }
 
-+ (TyphoonDefinition *)withFactory:(TyphoonDefinition *)factory selector:(SEL)selector
++ (id)withFactory:(TyphoonDefinition *)factory selector:(SEL)selector
 {
     return [TyphoonDefinition withFactory:factory selector:selector parameters:nil];
 }
 
-+ (TyphoonDefinition *)withFactory:(TyphoonDefinition *)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock
++ (id)withFactory:(TyphoonDefinition *)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock
 {
     return [TyphoonDefinition withClass:[NSObject class] configuration:^(TyphoonDefinition *definition) {
         [definition setFactory:factory];

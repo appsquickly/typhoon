@@ -203,15 +203,15 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 /* ====================================================================================================================================== */
 #pragma mark Factory methods
 
-+ (TyphoonDefinition *)withClass:(Class)clazz;
++ (id)withClass:(Class)clazz;
 
-+ (TyphoonDefinition *)withClass:(Class)clazz configuration:(TyphoonDefinitionBlock)injections;
++ (id)withClass:(Class)clazz configuration:(TyphoonDefinitionBlock)injections;
 
-+ (TyphoonDefinition *)withClass:(Class)clazz factory:(TyphoonDefinition *)definition selector:(SEL)selector DEPRECATED_MSG_ATTRIBUTE("Use withFactory:selector: method instead");
++ (id)withClass:(Class)clazz factory:(TyphoonDefinition *)definition selector:(SEL)selector DEPRECATED_MSG_ATTRIBUTE("Use withFactory:selector: method instead");
 
-+ (TyphoonDefinition *)withFactory:(TyphoonDefinition *)definition selector:(SEL)selector;
++ (id)withFactory:(TyphoonDefinition *)definition selector:(SEL)selector;
 
-+ (TyphoonDefinition *)withFactory:(TyphoonDefinition *)definition selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock;
++ (id)withFactory:(TyphoonDefinition *)definition selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock;
 
 /* ====================================================================================================================================== */
 #pragma mark Injection
