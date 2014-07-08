@@ -100,7 +100,7 @@
 <span class="lineNum">      42 </span>            : 
 <span class="lineNum">      43 </span>            : + (NSString *)initialStoryboardName
 <span class="lineNum">      44 </span>            : {
-<span class="lineNum">      45 </span><span class="lineCov">          1 :     return [[NSBundle mainBundle] infoDictionary][@&quot;UIMainStoryboardFile&quot;];</span>
+<span class="lineNum">      45 </span><span class="lineCov">          1 :     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@&quot;UIMainStoryboardFile&quot;];</span>
 <span class="lineNum">      46 </span>            : }
 <span class="lineNum">      47 </span>            : 
 <span class="lineNum">      48 </span>            : @end
