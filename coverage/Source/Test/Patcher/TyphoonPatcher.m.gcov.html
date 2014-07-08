@@ -80,54 +80,54 @@
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : - (id)init
 <span class="lineNum">      24 </span>            : {
-<span class="lineNum">      25 </span><span class="lineCov">          4 :     self = [super init];</span>
-<span class="lineNum">      26 </span><span class="lineCov">          4 :     if (self) {</span>
-<span class="lineNum">      27 </span><span class="lineCov">          4 :         _patches = [[NSMutableDictionary alloc] init];</span>
-<span class="lineNum">      28 </span><span class="lineCov">          4 :     }</span>
-<span class="lineNum">      29 </span><span class="lineCov">          4 :     return self;</span>
-<span class="lineNum">      30 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      25 </span><span class="lineCov">          5 :     self = [super init];</span>
+<span class="lineNum">      26 </span><span class="lineCov">          5 :     if (self) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">          5 :         _patches = [[NSMutableDictionary alloc] init];</span>
+<span class="lineNum">      28 </span><span class="lineCov">          5 :     }</span>
+<span class="lineNum">      29 </span><span class="lineCov">          5 :     return self;</span>
+<span class="lineNum">      30 </span><span class="lineCov">          5 : }</span>
 <span class="lineNum">      31 </span>            : 
 <span class="lineNum">      32 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      33 </span>            : #pragma mark - Interface Methods
 <span class="lineNum">      34 </span>            : 
-<span class="lineNum">      35 </span><span class="lineCov">          8 : - (void)patchDefinitionWithKey:(NSString *)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock</span>
+<span class="lineNum">      35 </span><span class="lineCov">         15 : - (void)patchDefinitionWithKey:(NSString *)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock</span>
 <span class="lineNum">      36 </span>            : {
-<span class="lineNum">      37 </span><span class="lineCov">          8 :     [_patches setObject:objectCreationBlock forKey:key];</span>
-<span class="lineNum">      38 </span><span class="lineCov">          8 : }</span>
+<span class="lineNum">      37 </span><span class="lineCov">         15 :     [_patches setObject:objectCreationBlock forKey:key];</span>
+<span class="lineNum">      38 </span><span class="lineCov">         15 : }</span>
 <span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span><span class="lineCov">          8 : - (void)patchDefinition:(TyphoonDefinition *)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock</span>
+<span class="lineNum">      40 </span><span class="lineCov">         15 : - (void)patchDefinition:(TyphoonDefinition *)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock</span>
 <span class="lineNum">      41 </span>            : {
-<span class="lineNum">      42 </span><span class="lineCov">          8 :     [self patchDefinitionWithKey:definition.key withObject:objectCreationBlock];</span>
-<span class="lineNum">      43 </span><span class="lineCov">          8 : }</span>
+<span class="lineNum">      42 </span><span class="lineCov">         15 :     [self patchDefinitionWithKey:definition.key withObject:objectCreationBlock];</span>
+<span class="lineNum">      43 </span><span class="lineCov">         15 : }</span>
 <span class="lineNum">      44 </span>            : 
 <span class="lineNum">      45 </span>            : - (void)detach
 <span class="lineNum">      46 </span>            : {
-<span class="lineNum">      47 </span><span class="lineCov">          1 :     [self rollback];</span>
-<span class="lineNum">      48 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      47 </span><span class="lineCov">          2 :     [self rollback];</span>
+<span class="lineNum">      48 </span><span class="lineCov">          2 : }</span>
 <span class="lineNum">      49 </span>            : 
 <span class="lineNum">      50 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      51 </span>            : #pragma mark - Protocol Methods
 <span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span><span class="lineCov">          4 : - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory</span>
+<span class="lineNum">      53 </span><span class="lineCov">          5 : - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory</span>
 <span class="lineNum">      54 </span>            : {
-<span class="lineNum">      55 </span><span class="lineCov">          4 :     [super postProcessComponentFactory:factory];</span>
-<span class="lineNum">      56 </span><span class="lineCov">        200 :     for (TyphoonDefinition *definition in [factory registry]) {</span>
-<span class="lineNum">      57 </span><span class="lineCov">         96 :         id patchObject = [_patches objectForKey:definition.key];</span>
-<span class="lineNum">      58 </span><span class="lineCov">         96 :         if (patchObject) {</span>
-<span class="lineNum">      59 </span><span class="lineCov">          8 :             NSString *patcherKey = [NSString stringWithFormat:@&quot;%@%@&quot;, definition.key, @&quot;$$$patcher&quot;];</span>
-<span class="lineNum">      60 </span><span class="lineCov">          8 :             TyphoonDefinition *patchFactory = [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:patcherKey];</span>
-<span class="lineNum">      61 </span><span class="lineCov">          8 :             patchFactory.initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithCreationBlock:)];</span>
-<span class="lineNum">      62 </span><span class="lineCov">          8 :             [patchFactory.initializer injectParameterWith:patchObject];</span>
-<span class="lineNum">      63 </span><span class="lineCov">          8 :             [patchFactory setScope:definition.scope];</span>
+<span class="lineNum">      55 </span><span class="lineCov">          5 :     [super postProcessComponentFactory:factory];</span>
+<span class="lineNum">      56 </span><span class="lineCov">        250 :     for (TyphoonDefinition *definition in [factory registry]) {</span>
+<span class="lineNum">      57 </span><span class="lineCov">        120 :         id patchObject = [_patches objectForKey:definition.key];</span>
+<span class="lineNum">      58 </span><span class="lineCov">        120 :         if (patchObject) {</span>
+<span class="lineNum">      59 </span><span class="lineCov">         15 :             NSString *patcherKey = [NSString stringWithFormat:@&quot;%@%@&quot;, definition.key, @&quot;$$$patcher&quot;];</span>
+<span class="lineNum">      60 </span><span class="lineCov">         15 :             TyphoonDefinition *patchFactory = [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:patcherKey];</span>
+<span class="lineNum">      61 </span><span class="lineCov">         15 :             patchFactory.initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithCreationBlock:)];</span>
+<span class="lineNum">      62 </span><span class="lineCov">         15 :             [patchFactory.initializer injectParameterWith:patchObject];</span>
+<span class="lineNum">      63 </span><span class="lineCov">         15 :             [patchFactory setScope:definition.scope];</span>
 <span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span><span class="lineCov">          8 :             [definition setFactory:patchFactory];</span>
-<span class="lineNum">      66 </span><span class="lineCov">          8 :             [definition setInitializer:[[TyphoonMethod alloc] initWithSelector:@selector(patchObject)]];</span>
-<span class="lineNum">      67 </span><span class="lineCov">          8 :             [definition setValue:nil forKey:@&quot;injectedProperties&quot;];</span>
+<span class="lineNum">      65 </span><span class="lineCov">         15 :             [definition setFactory:patchFactory];</span>
+<span class="lineNum">      66 </span><span class="lineCov">         15 :             [definition setInitializer:[[TyphoonMethod alloc] initWithSelector:@selector(patchObject)]];</span>
+<span class="lineNum">      67 </span><span class="lineCov">         15 :             [definition setValue:nil forKey:@&quot;injectedProperties&quot;];</span>
 <span class="lineNum">      68 </span>            : 
-<span class="lineNum">      69 </span><span class="lineCov">          8 :             [factory registerDefinition:patchFactory];</span>
-<span class="lineNum">      70 </span><span class="lineCov">          8 :         }</span>
-<span class="lineNum">      71 </span><span class="lineCov">        200 :     }</span>
-<span class="lineNum">      72 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      69 </span><span class="lineCov">         15 :             [factory registerDefinition:patchFactory];</span>
+<span class="lineNum">      70 </span><span class="lineCov">         15 :         }</span>
+<span class="lineNum">      71 </span><span class="lineCov">        250 :     }</span>
+<span class="lineNum">      72 </span><span class="lineCov">          5 : }</span>
 <span class="lineNum">      73 </span>            : 
 <span class="lineNum">      74 </span>            : 
 <span class="lineNum">      75 </span>            : @end

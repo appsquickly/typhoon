@@ -77,51 +77,51 @@
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : @implementation TyphoonIntrospectionUtils
 <span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineCov">        539 : + (TyphoonTypeDescriptor *)typeForPropertyWithName:(NSString *)propertyName inClass:(Class)clazz</span>
+<span class="lineNum">      22 </span><span class="lineCov">        544 : + (TyphoonTypeDescriptor *)typeForPropertyWithName:(NSString *)propertyName inClass:(Class)clazz</span>
 <span class="lineNum">      23 </span>            : {
-<span class="lineNum">      24 </span><span class="lineCov">        539 :     TyphoonTypeDescriptor *typeDescriptor = nil;</span>
-<span class="lineNum">      25 </span><span class="lineCov">        539 :     objc_property_t propertyReflection = class_getProperty(clazz, [propertyName cStringUsingEncoding:NSASCIIStringEncoding]);</span>
-<span class="lineNum">      26 </span><span class="lineCov">        539 :     if (propertyReflection) {</span>
-<span class="lineNum">      27 </span><span class="lineCov">        455 :         const char *attributes = property_getAttributes(propertyReflection);</span>
+<span class="lineNum">      24 </span><span class="lineCov">        544 :     TyphoonTypeDescriptor *typeDescriptor = nil;</span>
+<span class="lineNum">      25 </span><span class="lineCov">        544 :     objc_property_t propertyReflection = class_getProperty(clazz, [propertyName cStringUsingEncoding:NSASCIIStringEncoding]);</span>
+<span class="lineNum">      26 </span><span class="lineCov">        544 :     if (propertyReflection) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">        456 :         const char *attributes = property_getAttributes(propertyReflection);</span>
 <span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span><span class="lineCov">        455 :         if (attributes == NULL) {</span>
+<span class="lineNum">      29 </span><span class="lineCov">        456 :         if (attributes == NULL) {</span>
 <span class="lineNum">      30 </span><span class="lineNoCov">          0 :             return (NULL);</span>
 <span class="lineNum">      31 </span>            :         }
 <span class="lineNum">      32 </span>            : 
 <span class="lineNum">      33 </span>            :         static char buffer[256];
-<span class="lineNum">      34 </span><span class="lineCov">        455 :         const char *e = strchr(attributes, ',');</span>
-<span class="lineNum">      35 </span><span class="lineCov">        455 :         if (e == NULL) {</span>
+<span class="lineNum">      34 </span><span class="lineCov">        456 :         const char *e = strchr(attributes, ',');</span>
+<span class="lineNum">      35 </span><span class="lineCov">        456 :         if (e == NULL) {</span>
 <span class="lineNum">      36 </span><span class="lineNoCov">          0 :             return (NULL);</span>
 <span class="lineNum">      37 </span>            :         }
 <span class="lineNum">      38 </span>            : 
-<span class="lineNum">      39 </span><span class="lineCov">        455 :         int len = (int) (e - attributes);</span>
-<span class="lineNum">      40 </span><span class="lineCov">        455 :         memcpy( buffer, attributes, len );</span>
-<span class="lineNum">      41 </span><span class="lineCov">        455 :         buffer[len] = '\0';</span>
+<span class="lineNum">      39 </span><span class="lineCov">        456 :         int len = (int) (e - attributes);</span>
+<span class="lineNum">      40 </span><span class="lineCov">        456 :         memcpy( buffer, attributes, len );</span>
+<span class="lineNum">      41 </span><span class="lineCov">        456 :         buffer[len] = '\0';</span>
 <span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span><span class="lineCov">        455 :         NSString *typeCode = [NSString stringWithCString:buffer encoding:NSASCIIStringEncoding];</span>
-<span class="lineNum">      44 </span><span class="lineCov">        455 :         typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:typeCode];</span>
-<span class="lineNum">      45 </span><span class="lineCov">        455 :     }</span>
-<span class="lineNum">      46 </span><span class="lineCov">        539 :     return typeDescriptor;</span>
-<span class="lineNum">      47 </span><span class="lineCov">        539 : }</span>
+<span class="lineNum">      43 </span><span class="lineCov">        456 :         NSString *typeCode = [NSString stringWithCString:buffer encoding:NSASCIIStringEncoding];</span>
+<span class="lineNum">      44 </span><span class="lineCov">        456 :         typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:typeCode];</span>
+<span class="lineNum">      45 </span><span class="lineCov">        456 :     }</span>
+<span class="lineNum">      46 </span><span class="lineCov">        544 :     return typeDescriptor;</span>
+<span class="lineNum">      47 </span><span class="lineCov">        544 : }</span>
 <span class="lineNum">      48 </span>            : 
-<span class="lineNum">      49 </span><span class="lineCov">        308 : + (SEL)setterForPropertyWithName:(NSString *)propertyName inClass:(Class)clazz</span>
+<span class="lineNum">      49 </span><span class="lineCov">        309 : + (SEL)setterForPropertyWithName:(NSString *)propertyName inClass:(Class)clazz</span>
 <span class="lineNum">      50 </span>            : {
-<span class="lineNum">      51 </span><span class="lineCov">        308 :     SEL setterSelector = nil;</span>
+<span class="lineNum">      51 </span><span class="lineCov">        309 :     SEL setterSelector = nil;</span>
 <span class="lineNum">      52 </span>            :     
-<span class="lineNum">      53 </span><span class="lineCov">        308 :     objc_property_t property = class_getProperty(clazz, [propertyName cStringUsingEncoding:NSASCIIStringEncoding]);</span>
-<span class="lineNum">      54 </span><span class="lineCov">        308 :     if (property) {</span>
-<span class="lineNum">      55 </span><span class="lineCov">        305 :         const char *attributes = property_getAttributes(property);</span>
+<span class="lineNum">      53 </span><span class="lineCov">        309 :     objc_property_t property = class_getProperty(clazz, [propertyName cStringUsingEncoding:NSASCIIStringEncoding]);</span>
+<span class="lineNum">      54 </span><span class="lineCov">        309 :     if (property) {</span>
+<span class="lineNum">      55 </span><span class="lineCov">        306 :         const char *attributes = property_getAttributes(property);</span>
 <span class="lineNum">      56 </span>            :         
-<span class="lineNum">      57 </span><span class="lineCov">        305 :         NSString *attributesString = [NSString stringWithCString:attributes encoding:NSASCIIStringEncoding];</span>
+<span class="lineNum">      57 </span><span class="lineCov">        306 :         NSString *attributesString = [NSString stringWithCString:attributes encoding:NSASCIIStringEncoding];</span>
 <span class="lineNum">      58 </span>            :         
-<span class="lineNum">      59 </span><span class="lineCov">        305 :         if (![self isReadonlyPropertyWithAttributes:attributesString]) {</span>
-<span class="lineNum">      60 </span><span class="lineCov">        304 :             NSString *selectorString = [self customSetterForPropertyWithAttributes:attributesString];</span>
-<span class="lineNum">      61 </span><span class="lineCov">        304 :             if (!selectorString) {</span>
-<span class="lineNum">      62 </span><span class="lineCov">        303 :                 selectorString = [self defaultSetterForPropertyWithName:propertyName];</span>
-<span class="lineNum">      63 </span><span class="lineCov">        303 :             }</span>
-<span class="lineNum">      64 </span><span class="lineCov">        304 :             setterSelector = NSSelectorFromString(selectorString);</span>
-<span class="lineNum">      65 </span><span class="lineCov">        304 :         }</span>
-<span class="lineNum">      66 </span><span class="lineCov">        305 :     }</span>
+<span class="lineNum">      59 </span><span class="lineCov">        306 :         if (![self isReadonlyPropertyWithAttributes:attributesString]) {</span>
+<span class="lineNum">      60 </span><span class="lineCov">        305 :             NSString *selectorString = [self customSetterForPropertyWithAttributes:attributesString];</span>
+<span class="lineNum">      61 </span><span class="lineCov">        305 :             if (!selectorString) {</span>
+<span class="lineNum">      62 </span><span class="lineCov">        304 :                 selectorString = [self defaultSetterForPropertyWithName:propertyName];</span>
+<span class="lineNum">      63 </span><span class="lineCov">        304 :             }</span>
+<span class="lineNum">      64 </span><span class="lineCov">        305 :             setterSelector = NSSelectorFromString(selectorString);</span>
+<span class="lineNum">      65 </span><span class="lineCov">        305 :         }</span>
+<span class="lineNum">      66 </span><span class="lineCov">        306 :     }</span>
 <span class="lineNum">      67 </span><span class="lineCov">          3 :     else if (propertyName.length &gt; 0) {</span>
 <span class="lineNum">      68 </span><span class="lineCov">          3 :         NSString *selectorString = [self defaultSetterForPropertyWithName:propertyName];</span>
 <span class="lineNum">      69 </span><span class="lineCov">          3 :         SEL aSelector = NSSelectorFromString(selectorString);</span>
@@ -130,55 +130,55 @@
 <span class="lineNum">      72 </span><span class="lineCov">          1 :         }</span>
 <span class="lineNum">      73 </span><span class="lineCov">          3 :     }</span>
 <span class="lineNum">      74 </span>            : 
-<span class="lineNum">      75 </span><span class="lineCov">        308 :     return setterSelector;</span>
-<span class="lineNum">      76 </span><span class="lineCov">        308 : }</span>
+<span class="lineNum">      75 </span><span class="lineCov">        309 :     return setterSelector;</span>
+<span class="lineNum">      76 </span><span class="lineCov">        309 : }</span>
 <span class="lineNum">      77 </span>            : 
-<span class="lineNum">      78 </span><span class="lineCov">         73 : + (NSMethodSignature *)methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:(SEL)selector</span>
+<span class="lineNum">      78 </span><span class="lineCov">         75 : + (NSMethodSignature *)methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:(SEL)selector</span>
 <span class="lineNum">      79 </span>            : {
-<span class="lineNum">      80 </span><span class="lineCov">         73 :     NSUInteger argc = [self numberOfArgumentsInSelector:selector];</span>
-<span class="lineNum">      81 </span><span class="lineCov">         73 :     NSMutableString *signatureString = [[NSMutableString alloc] initWithCapacity:argc + 3]; //one symbol per encoded type</span>
-<span class="lineNum">      82 </span><span class="lineCov">         73 :     [signatureString appendFormat:@&quot;%s%s%s&quot;, @encode(id), @encode(id), @encode(SEL)];</span>
-<span class="lineNum">      83 </span><span class="lineCov">        224 :     for (NSUInteger i = 0; i &lt; argc; i++) {</span>
-<span class="lineNum">      84 </span><span class="lineCov">         39 :         [signatureString appendString:[NSString stringWithCString:@encode(id) encoding:NSASCIIStringEncoding]];</span>
-<span class="lineNum">      85 </span><span class="lineCov">         39 :     }</span>
-<span class="lineNum">      86 </span><span class="lineCov">         73 :     NSMethodSignature *signature = [NSMethodSignature signatureWithObjCTypes:[signatureString cStringUsingEncoding:NSASCIIStringEncoding]];</span>
+<span class="lineNum">      80 </span><span class="lineCov">         75 :     NSUInteger argc = [self numberOfArgumentsInSelector:selector];</span>
+<span class="lineNum">      81 </span><span class="lineCov">         75 :     NSMutableString *signatureString = [[NSMutableString alloc] initWithCapacity:argc + 3]; //one symbol per encoded type</span>
+<span class="lineNum">      82 </span><span class="lineCov">         75 :     [signatureString appendFormat:@&quot;%s%s%s&quot;, @encode(id), @encode(id), @encode(SEL)];</span>
+<span class="lineNum">      83 </span><span class="lineCov">        232 :     for (NSUInteger i = 0; i &lt; argc; i++) {</span>
+<span class="lineNum">      84 </span><span class="lineCov">         41 :         [signatureString appendString:[NSString stringWithCString:@encode(id) encoding:NSASCIIStringEncoding]];</span>
+<span class="lineNum">      85 </span><span class="lineCov">         41 :     }</span>
+<span class="lineNum">      86 </span><span class="lineCov">         75 :     NSMethodSignature *signature = [NSMethodSignature signatureWithObjCTypes:[signatureString cStringUsingEncoding:NSASCIIStringEncoding]];</span>
 <span class="lineNum">      87 </span>            : 
-<span class="lineNum">      88 </span><span class="lineCov">         73 :     return signature;</span>
-<span class="lineNum">      89 </span><span class="lineCov">         73 : }</span>
+<span class="lineNum">      88 </span><span class="lineCov">         75 :     return signature;</span>
+<span class="lineNum">      89 </span><span class="lineCov">         75 : }</span>
 <span class="lineNum">      90 </span>            : 
-<span class="lineNum">      91 </span><span class="lineCov">       3677 : + (NSUInteger)numberOfArgumentsInSelector:(SEL)selector</span>
+<span class="lineNum">      91 </span><span class="lineCov">       3754 : + (NSUInteger)numberOfArgumentsInSelector:(SEL)selector</span>
 <span class="lineNum">      92 </span>            : {
-<span class="lineNum">      93 </span><span class="lineCov">       3677 :     NSString *string = NSStringFromSelector(selector);</span>
-<span class="lineNum">      94 </span><span class="lineCov">       3677 :     NSUInteger count = 0;</span>
-<span class="lineNum">      95 </span><span class="lineCov">     124404 :     for (NSUInteger i = 0; i &lt; string.length; i++) {</span>
-<span class="lineNum">      96 </span><span class="lineCov">      58525 :         if ([string characterAtIndex:i] == ':') {</span>
-<span class="lineNum">      97 </span><span class="lineCov">       2910 :             count++;</span>
-<span class="lineNum">      98 </span><span class="lineCov">       2910 :         }</span>
-<span class="lineNum">      99 </span><span class="lineCov">      58525 :     }</span>
-<span class="lineNum">     100 </span><span class="lineCov">       3677 :     return count;</span>
-<span class="lineNum">     101 </span><span class="lineCov">       3677 : }</span>
+<span class="lineNum">      93 </span><span class="lineCov">       3754 :     NSString *string = NSStringFromSelector(selector);</span>
+<span class="lineNum">      94 </span><span class="lineCov">       3754 :     NSUInteger count = 0;</span>
+<span class="lineNum">      95 </span><span class="lineCov">     126694 :     for (NSUInteger i = 0; i &lt; string.length; i++) {</span>
+<span class="lineNum">      96 </span><span class="lineCov">      59593 :         if ([string characterAtIndex:i] == ':') {</span>
+<span class="lineNum">      97 </span><span class="lineCov">       2965 :             count++;</span>
+<span class="lineNum">      98 </span><span class="lineCov">       2965 :         }</span>
+<span class="lineNum">      99 </span><span class="lineCov">      59593 :     }</span>
+<span class="lineNum">     100 </span><span class="lineCov">       3754 :     return count;</span>
+<span class="lineNum">     101 </span><span class="lineCov">       3754 : }</span>
 <span class="lineNum">     102 </span>            : 
-<span class="lineNum">     103 </span><span class="lineCov">        621 : + (NSSet *)propertiesForClass:(Class)clazz upToParentClass:(Class)parent</span>
+<span class="lineNum">     103 </span><span class="lineCov">        625 : + (NSSet *)propertiesForClass:(Class)clazz upToParentClass:(Class)parent</span>
 <span class="lineNum">     104 </span>            : {
-<span class="lineNum">     105 </span><span class="lineCov">        621 :     NSMutableSet *propertyNames = [[NSMutableSet alloc] init];</span>
+<span class="lineNum">     105 </span><span class="lineCov">        625 :     NSMutableSet *propertyNames = [[NSMutableSet alloc] init];</span>
 <span class="lineNum">     106 </span>            :     
-<span class="lineNum">     107 </span><span class="lineCov">       1881 :     while (clazz != parent) {</span>
-<span class="lineNum">     108 </span><span class="lineCov">        639 :         unsigned int count = 0;</span>
-<span class="lineNum">     109 </span><span class="lineCov">        639 :         objc_property_t *properties = class_copyPropertyList(clazz, &amp;count);</span>
+<span class="lineNum">     107 </span><span class="lineCov">       1893 :     while (clazz != parent) {</span>
+<span class="lineNum">     108 </span><span class="lineCov">        643 :         unsigned int count = 0;</span>
+<span class="lineNum">     109 </span><span class="lineCov">        643 :         objc_property_t *properties = class_copyPropertyList(clazz, &amp;count);</span>
 <span class="lineNum">     110 </span>            :         
-<span class="lineNum">     111 </span><span class="lineCov">       1360 :         for (unsigned int propertyIndex = 0; propertyIndex &lt; count; propertyIndex++) {</span>
+<span class="lineNum">     111 </span><span class="lineCov">       1368 :         for (unsigned int propertyIndex = 0; propertyIndex &lt; count; propertyIndex++) {</span>
 <span class="lineNum">     112 </span><span class="lineCov">         41 :             objc_property_t aProperty = properties[propertyIndex];</span>
 <span class="lineNum">     113 </span><span class="lineCov">         41 :             NSString *propertyName = [NSString stringWithCString:property_getName(aProperty) encoding:NSUTF8StringEncoding];</span>
 <span class="lineNum">     114 </span><span class="lineCov">         41 :             [propertyNames addObject:propertyName];</span>
 <span class="lineNum">     115 </span><span class="lineCov">         41 :         }</span>
 <span class="lineNum">     116 </span>            :         
-<span class="lineNum">     117 </span><span class="lineCov">        639 :         clazz = class_getSuperclass(clazz);</span>
+<span class="lineNum">     117 </span><span class="lineCov">        643 :         clazz = class_getSuperclass(clazz);</span>
 <span class="lineNum">     118 </span>            :         
-<span class="lineNum">     119 </span><span class="lineCov">        639 :         free(properties);</span>
-<span class="lineNum">     120 </span><span class="lineCov">        639 :     }</span>
+<span class="lineNum">     119 </span><span class="lineCov">        643 :         free(properties);</span>
+<span class="lineNum">     120 </span><span class="lineCov">        643 :     }</span>
 <span class="lineNum">     121 </span>            :     
-<span class="lineNum">     122 </span><span class="lineCov">        621 :     return propertyNames;</span>
-<span class="lineNum">     123 </span><span class="lineCov">        621 : }</span>
+<span class="lineNum">     122 </span><span class="lineCov">        625 :     return propertyNames;</span>
+<span class="lineNum">     123 </span><span class="lineCov">        625 : }</span>
 <span class="lineNum">     124 </span>            : 
 <span class="lineNum">     125 </span><span class="lineNoCov">          0 : + (NSSet *)propertiesForClass:(Class)clazz</span>
 <span class="lineNum">     126 </span>            : {
@@ -187,17 +187,17 @@
 <span class="lineNum">     129 </span>            : 
 <span class="lineNum">     130 </span>            : #pragma mark - Utils
 <span class="lineNum">     131 </span>            : 
-<span class="lineNum">     132 </span><span class="lineCov">        305 : + (BOOL)isReadonlyPropertyWithAttributes:(NSString *)attributes</span>
+<span class="lineNum">     132 </span><span class="lineCov">        306 : + (BOOL)isReadonlyPropertyWithAttributes:(NSString *)attributes</span>
 <span class="lineNum">     133 </span>            : {
-<span class="lineNum">     134 </span><span class="lineCov">        305 :     return [attributes rangeOfString:@&quot;,R,&quot;].location != NSNotFound;</span>
-<span class="lineNum">     135 </span><span class="lineCov">        305 : }</span>
+<span class="lineNum">     134 </span><span class="lineCov">        306 :     return [attributes rangeOfString:@&quot;,R,&quot;].location != NSNotFound;</span>
+<span class="lineNum">     135 </span><span class="lineCov">        306 : }</span>
 <span class="lineNum">     136 </span>            : 
-<span class="lineNum">     137 </span><span class="lineCov">        304 : + (NSString *)customSetterForPropertyWithAttributes:(NSString *)attributes</span>
+<span class="lineNum">     137 </span><span class="lineCov">        305 : + (NSString *)customSetterForPropertyWithAttributes:(NSString *)attributes</span>
 <span class="lineNum">     138 </span>            : {
-<span class="lineNum">     139 </span><span class="lineCov">        304 :     NSRange setterBeginningRange = [attributes rangeOfString:@&quot;,S&quot;];</span>
+<span class="lineNum">     139 </span><span class="lineCov">        305 :     NSRange setterBeginningRange = [attributes rangeOfString:@&quot;,S&quot;];</span>
 <span class="lineNum">     140 </span>            :     
-<span class="lineNum">     141 </span><span class="lineCov">        304 :     if (setterBeginningRange.location == NSNotFound)</span>
-<span class="lineNum">     142 </span><span class="lineCov">        303 :         return nil;</span>
+<span class="lineNum">     141 </span><span class="lineCov">        305 :     if (setterBeginningRange.location == NSNotFound)</span>
+<span class="lineNum">     142 </span><span class="lineCov">        304 :         return nil;</span>
 <span class="lineNum">     143 </span>            :     
 <span class="lineNum">     144 </span><span class="lineCov">          1 :     NSRange setterRange;</span>
 <span class="lineNum">     145 </span><span class="lineCov">          1 :     setterRange.location = setterBeginningRange.location + setterBeginningRange.length;</span>
@@ -213,14 +213,14 @@
 <span class="lineNum">     155 </span><span class="lineCov">          1 :     setterRange.length = endLocation - setterRange.location;</span>
 <span class="lineNum">     156 </span>            :     
 <span class="lineNum">     157 </span><span class="lineCov">          1 :     return [attributes substringWithRange:setterRange];</span>
-<span class="lineNum">     158 </span><span class="lineCov">        304 : }</span>
+<span class="lineNum">     158 </span><span class="lineCov">        305 : }</span>
 <span class="lineNum">     159 </span>            : 
-<span class="lineNum">     160 </span><span class="lineCov">        306 : + (NSString *)defaultSetterForPropertyWithName:(NSString *)propertyName</span>
+<span class="lineNum">     160 </span><span class="lineCov">        307 : + (NSString *)defaultSetterForPropertyWithName:(NSString *)propertyName</span>
 <span class="lineNum">     161 </span>            : {
-<span class="lineNum">     162 </span><span class="lineCov">        306 :     NSString *firstLetterUppercase = [[propertyName substringToIndex:1] uppercaseString];</span>
-<span class="lineNum">     163 </span><span class="lineCov">        306 :     NSString *propertyPart = [propertyName stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:firstLetterUppercase];</span>
-<span class="lineNum">     164 </span><span class="lineCov">        306 :     return [NSString stringWithFormat:@&quot;set%@:&quot;, propertyPart];</span>
-<span class="lineNum">     165 </span><span class="lineCov">        306 : }</span>
+<span class="lineNum">     162 </span><span class="lineCov">        307 :     NSString *firstLetterUppercase = [[propertyName substringToIndex:1] uppercaseString];</span>
+<span class="lineNum">     163 </span><span class="lineCov">        307 :     NSString *propertyPart = [propertyName stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:firstLetterUppercase];</span>
+<span class="lineNum">     164 </span><span class="lineCov">        307 :     return [NSString stringWithFormat:@&quot;set%@:&quot;, propertyPart];</span>
+<span class="lineNum">     165 </span><span class="lineCov">        307 : }</span>
 <span class="lineNum">     166 </span>            : 
 <span class="lineNum">     167 </span>            : @end
 <span class="lineNum">     168 </span>            : 

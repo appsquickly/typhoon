@@ -72,26 +72,26 @@
 <span class="lineNum">      14 </span>            : #import &quot;NSInvocation+TCFUnwrapValues.h&quot;
 <span class="lineNum">      15 </span>            : #import &quot;TyphoonDefinition+InstanceBuilder.h&quot;
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span><span class="lineCov">        117 : @implementation TyphoonInjectionByReference</span>
+<span class="lineNum">      17 </span><span class="lineCov">        123 : @implementation TyphoonInjectionByReference</span>
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span><span class="lineCov">       1710 : - (instancetype)initWithReference:(NSString *)reference args:(TyphoonRuntimeArguments *)referenceArguments</span>
+<span class="lineNum">      19 </span><span class="lineCov">       1748 : - (instancetype)initWithReference:(NSString *)reference args:(TyphoonRuntimeArguments *)referenceArguments</span>
 <span class="lineNum">      20 </span>            : {
-<span class="lineNum">      21 </span><span class="lineCov">       1710 :     self = [super init];</span>
-<span class="lineNum">      22 </span><span class="lineCov">       1710 :     if (self) {</span>
-<span class="lineNum">      23 </span><span class="lineCov">       1710 :         _reference = reference;</span>
-<span class="lineNum">      24 </span><span class="lineCov">       1710 :         _referenceArguments = referenceArguments;</span>
-<span class="lineNum">      25 </span><span class="lineCov">       1710 :     }</span>
-<span class="lineNum">      26 </span><span class="lineCov">       1710 :     return self;</span>
-<span class="lineNum">      27 </span><span class="lineCov">       1710 : }</span>
+<span class="lineNum">      21 </span><span class="lineCov">       1748 :     self = [super init];</span>
+<span class="lineNum">      22 </span><span class="lineCov">       1748 :     if (self) {</span>
+<span class="lineNum">      23 </span><span class="lineCov">       1748 :         _reference = reference;</span>
+<span class="lineNum">      24 </span><span class="lineCov">       1748 :         _referenceArguments = referenceArguments;</span>
+<span class="lineNum">      25 </span><span class="lineCov">       1748 :     }</span>
+<span class="lineNum">      26 </span><span class="lineCov">       1748 :     return self;</span>
+<span class="lineNum">      27 </span><span class="lineCov">       1748 : }</span>
 <span class="lineNum">      28 </span>            : 
 <span class="lineNum">      29 </span>            : #pragma mark - Overrides
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">         56 : - (id)copyWithZone:(NSZone *)zone</span>
+<span class="lineNum">      31 </span><span class="lineCov">         70 : - (id)copyWithZone:(NSZone *)zone</span>
 <span class="lineNum">      32 </span>            : {
-<span class="lineNum">      33 </span><span class="lineCov">         56 :     TyphoonInjectionByReference *copied = [[TyphoonInjectionByReference alloc] initWithReference:_reference args:_referenceArguments];</span>
-<span class="lineNum">      34 </span><span class="lineCov">         56 :     [self copyBasePropertiesTo:copied];</span>
-<span class="lineNum">      35 </span><span class="lineCov">         56 :     return copied;</span>
-<span class="lineNum">      36 </span><span class="lineCov">         56 : }</span>
+<span class="lineNum">      33 </span><span class="lineCov">         70 :     TyphoonInjectionByReference *copied = [[TyphoonInjectionByReference alloc] initWithReference:_reference args:_referenceArguments];</span>
+<span class="lineNum">      34 </span><span class="lineCov">         70 :     [self copyBasePropertiesTo:copied];</span>
+<span class="lineNum">      35 </span><span class="lineCov">         70 :     return copied;</span>
+<span class="lineNum">      36 </span><span class="lineCov">         70 : }</span>
 <span class="lineNum">      37 </span>            : 
 <span class="lineNum">      38 </span><span class="lineCov">        333 : - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result</span>
 <span class="lineNum">      39 </span>            : {

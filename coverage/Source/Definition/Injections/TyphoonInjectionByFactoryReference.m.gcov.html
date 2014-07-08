@@ -70,26 +70,26 @@
 <span class="lineNum">      12 </span>            : #import &quot;TyphoonStackElement.h&quot;
 <span class="lineNum">      13 </span>            : #import &quot;NSInvocation+TCFUnwrapValues.h&quot;
 <span class="lineNum">      14 </span>            : 
-<span class="lineNum">      15 </span><span class="lineCov">         16 : @implementation TyphoonInjectionByFactoryReference</span>
+<span class="lineNum">      15 </span><span class="lineCov">         18 : @implementation TyphoonInjectionByFactoryReference</span>
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span><span class="lineCov">         69 : - (instancetype)initWithReference:(NSString *)reference args:(TyphoonRuntimeArguments *)referenceArguments keyPath:(NSString *)keyPath</span>
+<span class="lineNum">      17 </span><span class="lineCov">         72 : - (instancetype)initWithReference:(NSString *)reference args:(TyphoonRuntimeArguments *)referenceArguments keyPath:(NSString *)keyPath</span>
 <span class="lineNum">      18 </span>            : {
-<span class="lineNum">      19 </span><span class="lineCov">         69 :     self = [super initWithReference:reference args:referenceArguments];</span>
-<span class="lineNum">      20 </span><span class="lineCov">         69 :     if (self) {</span>
-<span class="lineNum">      21 </span><span class="lineCov">         69 :         _keyPath = keyPath;</span>
-<span class="lineNum">      22 </span><span class="lineCov">         69 :     }</span>
-<span class="lineNum">      23 </span><span class="lineCov">         69 :     return self;</span>
-<span class="lineNum">      24 </span><span class="lineCov">         69 : }</span>
+<span class="lineNum">      19 </span><span class="lineCov">         72 :     self = [super initWithReference:reference args:referenceArguments];</span>
+<span class="lineNum">      20 </span><span class="lineCov">         72 :     if (self) {</span>
+<span class="lineNum">      21 </span><span class="lineCov">         72 :         _keyPath = keyPath;</span>
+<span class="lineNum">      22 </span><span class="lineCov">         72 :     }</span>
+<span class="lineNum">      23 </span><span class="lineCov">         72 :     return self;</span>
+<span class="lineNum">      24 </span><span class="lineCov">         72 : }</span>
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : #pragma mark - Overrides
 <span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span><span class="lineCov">          4 : - (id)copyWithZone:(NSZone *)zone</span>
+<span class="lineNum">      28 </span><span class="lineCov">          5 : - (id)copyWithZone:(NSZone *)zone</span>
 <span class="lineNum">      29 </span>            : {
-<span class="lineNum">      30 </span><span class="lineCov">          4 :     TyphoonInjectionByFactoryReference *copied =</span>
+<span class="lineNum">      30 </span><span class="lineCov">          5 :     TyphoonInjectionByFactoryReference *copied =</span>
 <span class="lineNum">      31 </span>            :         [[TyphoonInjectionByFactoryReference alloc] initWithReference:self.reference args:self.referenceArguments keyPath:self.keyPath];
-<span class="lineNum">      32 </span><span class="lineCov">          4 :     [self copyBasePropertiesTo:copied];</span>
-<span class="lineNum">      33 </span><span class="lineCov">          4 :     return copied;</span>
-<span class="lineNum">      34 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      32 </span><span class="lineCov">          5 :     [self copyBasePropertiesTo:copied];</span>
+<span class="lineNum">      33 </span><span class="lineCov">          5 :     return copied;</span>
+<span class="lineNum">      34 </span><span class="lineCov">          5 : }</span>
 <span class="lineNum">      35 </span>            : 
 <span class="lineNum">      36 </span><span class="lineCov">         13 : - (id)resolveReferenceWithContext:(TyphoonInjectionContext *)context</span>
 <span class="lineNum">      37 </span>            : {

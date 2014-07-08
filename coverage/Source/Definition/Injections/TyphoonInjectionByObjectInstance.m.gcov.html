@@ -67,30 +67,30 @@
 <span class="lineNum">       9 </span>            : #import &quot;TyphoonInjectionByObjectInstance.h&quot;
 <span class="lineNum">      10 </span>            : #import &quot;NSInvocation+TCFUnwrapValues.h&quot;
 <span class="lineNum">      11 </span>            : 
-<span class="lineNum">      12 </span><span class="lineCov">        147 : @implementation TyphoonInjectionByObjectInstance</span>
+<span class="lineNum">      12 </span><span class="lineCov">        151 : @implementation TyphoonInjectionByObjectInstance</span>
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">       1190 : - (instancetype)initWithObjectInstance:(id)objectInstance</span>
+<span class="lineNum">      14 </span><span class="lineCov">       1224 : - (instancetype)initWithObjectInstance:(id)objectInstance</span>
 <span class="lineNum">      15 </span>            : {
-<span class="lineNum">      16 </span><span class="lineCov">       1190 :     self = [super init];</span>
-<span class="lineNum">      17 </span><span class="lineCov">       1190 :     if (self) {</span>
-<span class="lineNum">      18 </span><span class="lineCov">       1190 :         _objectInstance = objectInstance;</span>
-<span class="lineNum">      19 </span><span class="lineCov">       1190 :     }</span>
-<span class="lineNum">      20 </span><span class="lineCov">       1190 :     return self;</span>
-<span class="lineNum">      21 </span><span class="lineCov">       1190 : }</span>
+<span class="lineNum">      16 </span><span class="lineCov">       1224 :     self = [super init];</span>
+<span class="lineNum">      17 </span><span class="lineCov">       1224 :     if (self) {</span>
+<span class="lineNum">      18 </span><span class="lineCov">       1224 :         _objectInstance = objectInstance;</span>
+<span class="lineNum">      19 </span><span class="lineCov">       1224 :     }</span>
+<span class="lineNum">      20 </span><span class="lineCov">       1224 :     return self;</span>
+<span class="lineNum">      21 </span><span class="lineCov">       1224 : }</span>
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : #pragma mark - Overrides
 <span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span><span class="lineCov">         51 : - (id)copyWithZone:(NSZone *)zone</span>
+<span class="lineNum">      25 </span><span class="lineCov">         63 : - (id)copyWithZone:(NSZone *)zone</span>
 <span class="lineNum">      26 </span>            : {
-<span class="lineNum">      27 </span><span class="lineCov">         51 :     TyphoonInjectionByObjectInstance *copied = [[TyphoonInjectionByObjectInstance alloc] initWithObjectInstance:self.objectInstance];</span>
-<span class="lineNum">      28 </span><span class="lineCov">         51 :     [self copyBasePropertiesTo:copied];</span>
-<span class="lineNum">      29 </span><span class="lineCov">         51 :     return copied;</span>
-<span class="lineNum">      30 </span><span class="lineCov">         51 : }</span>
+<span class="lineNum">      27 </span><span class="lineCov">         63 :     TyphoonInjectionByObjectInstance *copied = [[TyphoonInjectionByObjectInstance alloc] initWithObjectInstance:self.objectInstance];</span>
+<span class="lineNum">      28 </span><span class="lineCov">         63 :     [self copyBasePropertiesTo:copied];</span>
+<span class="lineNum">      29 </span><span class="lineCov">         63 :     return copied;</span>
+<span class="lineNum">      30 </span><span class="lineCov">         63 : }</span>
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">        238 : - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result</span>
+<span class="lineNum">      32 </span><span class="lineCov">        241 : - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result</span>
 <span class="lineNum">      33 </span>            : {
-<span class="lineNum">      34 </span><span class="lineCov">        238 :     result(_objectInstance);</span>
-<span class="lineNum">      35 </span><span class="lineCov">        238 : }</span>
+<span class="lineNum">      34 </span><span class="lineCov">        241 :     result(_objectInstance);</span>
+<span class="lineNum">      35 </span><span class="lineCov">        241 : }</span>
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : @end
 </pre>

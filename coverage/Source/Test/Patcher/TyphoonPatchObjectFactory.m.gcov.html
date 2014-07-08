@@ -71,30 +71,30 @@
 <span class="lineNum">      13 </span>            : #import &quot;TyphoonPatchObjectFactory.h&quot;
 <span class="lineNum">      14 </span>            : 
 <span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span><span class="lineCov">          9 : @implementation TyphoonPatchObjectFactory</span>
+<span class="lineNum">      16 </span><span class="lineCov">         12 : @implementation TyphoonPatchObjectFactory</span>
 <span class="lineNum">      17 </span>            : 
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      20 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineCov">         12 : - (instancetype)initWithCreationBlock:(TyphoonPatchObjectCreationBlock)creationBlock</span>
+<span class="lineNum">      23 </span><span class="lineCov">         15 : - (instancetype)initWithCreationBlock:(TyphoonPatchObjectCreationBlock)creationBlock</span>
 <span class="lineNum">      24 </span>            : {
-<span class="lineNum">      25 </span><span class="lineCov">         12 :     self = [super init];</span>
-<span class="lineNum">      26 </span><span class="lineCov">         12 :     if (self) {</span>
-<span class="lineNum">      27 </span><span class="lineCov">         48 :         NSAssert(creationBlock != nil, @&quot;Creation block can't be nil&quot;);</span>
-<span class="lineNum">      28 </span><span class="lineCov">         12 :         _patchObject = creationBlock();</span>
-<span class="lineNum">      29 </span><span class="lineCov">         12 :     }</span>
+<span class="lineNum">      25 </span><span class="lineCov">         15 :     self = [super init];</span>
+<span class="lineNum">      26 </span><span class="lineCov">         15 :     if (self) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">         60 :         NSAssert(creationBlock != nil, @&quot;Creation block can't be nil&quot;);</span>
+<span class="lineNum">      28 </span><span class="lineCov">         15 :         _patchObject = creationBlock();</span>
+<span class="lineNum">      29 </span><span class="lineCov">         15 :     }</span>
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">         12 :     return self;</span>
-<span class="lineNum">      32 </span><span class="lineCov">         12 : }</span>
+<span class="lineNum">      31 </span><span class="lineCov">         15 :     return self;</span>
+<span class="lineNum">      32 </span><span class="lineCov">         15 : }</span>
 <span class="lineNum">      33 </span>            : 
 <span class="lineNum">      34 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      35 </span>            : #pragma mark - Interface Methods
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : - (id)patchObject
 <span class="lineNum">      38 </span>            : {
-<span class="lineNum">      39 </span><span class="lineCov">         12 :     return _patchObject;</span>
+<span class="lineNum">      39 </span><span class="lineCov">         15 :     return _patchObject;</span>
 <span class="lineNum">      40 </span>            : }
 <span class="lineNum">      41 </span>            : 
 <span class="lineNum">      42 </span>            : 

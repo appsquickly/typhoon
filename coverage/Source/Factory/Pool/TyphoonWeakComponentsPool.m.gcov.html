@@ -77,14 +77,14 @@
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : - (id)init
 <span class="lineNum">      21 </span>            : {
-<span class="lineNum">      22 </span><span class="lineCov">        233 :     self = [super init];</span>
-<span class="lineNum">      23 </span><span class="lineCov">        233 :     if (self) {</span>
-<span class="lineNum">      24 </span><span class="lineCov">        233 :         CFDictionaryValueCallBacks callbacks = {0, NULL, NULL, NULL, NULL};</span>
+<span class="lineNum">      22 </span><span class="lineCov">        234 :     self = [super init];</span>
+<span class="lineNum">      23 </span><span class="lineCov">        234 :     if (self) {</span>
+<span class="lineNum">      24 </span><span class="lineCov">        234 :         CFDictionaryValueCallBacks callbacks = {0, NULL, NULL, NULL, NULL};</span>
 <span class="lineNum">      25 </span>            :         dictionaryWithNonRetainedObjects =
-<span class="lineNum">      26 </span><span class="lineCov">        233 :             (__bridge_transfer id) CFDictionaryCreateMutable(NULL, 0, &amp;kCFTypeDictionaryKeyCallBacks, &amp;callbacks);</span>
-<span class="lineNum">      27 </span><span class="lineCov">        233 :     }</span>
-<span class="lineNum">      28 </span><span class="lineCov">        233 :     return self;</span>
-<span class="lineNum">      29 </span><span class="lineCov">        233 : }</span>
+<span class="lineNum">      26 </span><span class="lineCov">        234 :             (__bridge_transfer id) CFDictionaryCreateMutable(NULL, 0, &amp;kCFTypeDictionaryKeyCallBacks, &amp;callbacks);</span>
+<span class="lineNum">      27 </span><span class="lineCov">        234 :     }</span>
+<span class="lineNum">      28 </span><span class="lineCov">        234 :     return self;</span>
+<span class="lineNum">      29 </span><span class="lineCov">        234 : }</span>
 <span class="lineNum">      30 </span>            : 
 <span class="lineNum">      31 </span><span class="lineCov">          8 : - (void)setObject:(id)object forKey:(id &lt;NSCopying&gt;)aKey</span>
 <span class="lineNum">      32 </span>            : {

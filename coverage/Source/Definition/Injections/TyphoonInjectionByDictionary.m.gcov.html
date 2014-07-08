@@ -72,64 +72,64 @@
 <span class="lineNum">      14 </span>            : 
 <span class="lineNum">      15 </span>            : @interface TyphoonInjectionByDictionary ()
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span><span class="lineCov">        185 : @property(nonatomic, strong) NSMutableDictionary *injections;</span>
-<span class="lineNum">      18 </span><span class="lineCov">        176 : @property(nonatomic) Class requiredClass;</span>
+<span class="lineNum">      17 </span><span class="lineCov">        190 : @property(nonatomic, strong) NSMutableDictionary *injections;</span>
+<span class="lineNum">      18 </span><span class="lineCov">        181 : @property(nonatomic) Class requiredClass;</span>
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : @end
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span><span class="lineCov">          4 : @implementation TyphoonInjectionByDictionary</span>
 <span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineCov">         58 : + (BOOL)isDictionaryClass:(Class)dictionaryClass</span>
+<span class="lineNum">      24 </span><span class="lineCov">         59 : + (BOOL)isDictionaryClass:(Class)dictionaryClass</span>
 <span class="lineNum">      25 </span>            : {
-<span class="lineNum">      26 </span><span class="lineCov">         58 :     dictionaryClass = [self dictionaryMutableClassFromClass:dictionaryClass];</span>
-<span class="lineNum">      27 </span><span class="lineCov">         58 :     BOOL success = YES;</span>
-<span class="lineNum">      28 </span><span class="lineCov">         58 :     success &amp;= [dictionaryClass instancesRespondToSelector:@selector(initWithCapacity:)];</span>
-<span class="lineNum">      29 </span><span class="lineCov">         58 :     success &amp;= [dictionaryClass instancesRespondToSelector:@selector(count)];</span>
-<span class="lineNum">      30 </span><span class="lineCov">         58 :     success &amp;= [dictionaryClass instancesRespondToSelector:@selector(setObject:forKey:)];</span>
-<span class="lineNum">      31 </span><span class="lineCov">         58 :     success &amp;= [dictionaryClass instancesRespondToSelector:@selector(enumerateKeysAndObjectsUsingBlock:)];</span>
+<span class="lineNum">      26 </span><span class="lineCov">         59 :     dictionaryClass = [self dictionaryMutableClassFromClass:dictionaryClass];</span>
+<span class="lineNum">      27 </span><span class="lineCov">         59 :     BOOL success = YES;</span>
+<span class="lineNum">      28 </span><span class="lineCov">         59 :     success &amp;= [dictionaryClass instancesRespondToSelector:@selector(initWithCapacity:)];</span>
+<span class="lineNum">      29 </span><span class="lineCov">         59 :     success &amp;= [dictionaryClass instancesRespondToSelector:@selector(count)];</span>
+<span class="lineNum">      30 </span><span class="lineCov">         59 :     success &amp;= [dictionaryClass instancesRespondToSelector:@selector(setObject:forKey:)];</span>
+<span class="lineNum">      31 </span><span class="lineCov">         59 :     success &amp;= [dictionaryClass instancesRespondToSelector:@selector(enumerateKeysAndObjectsUsingBlock:)];</span>
 <span class="lineNum">      32 </span>            : 
-<span class="lineNum">      33 </span><span class="lineCov">         58 :     return success;</span>
+<span class="lineNum">      33 </span><span class="lineCov">         59 :     return success;</span>
 <span class="lineNum">      34 </span>            : }
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span><span class="lineCov">         61 : + (Class)dictionaryMutableClassFromClass:(Class)dictionaryClass</span>
+<span class="lineNum">      36 </span><span class="lineCov">         62 : + (Class)dictionaryMutableClassFromClass:(Class)dictionaryClass</span>
 <span class="lineNum">      37 </span>            : {
-<span class="lineNum">      38 </span><span class="lineCov">         61 :     Class result;</span>
+<span class="lineNum">      38 </span><span class="lineCov">         62 :     Class result;</span>
 <span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span><span class="lineCov">         61 :     if ([dictionaryClass isSubclassOfClass:[NSDictionary class]]) {</span>
-<span class="lineNum">      41 </span><span class="lineCov">         61 :         result = [NSMutableDictionary class];</span>
-<span class="lineNum">      42 </span><span class="lineCov">         61 :     }</span>
+<span class="lineNum">      40 </span><span class="lineCov">         62 :     if ([dictionaryClass isSubclassOfClass:[NSDictionary class]]) {</span>
+<span class="lineNum">      41 </span><span class="lineCov">         62 :         result = [NSMutableDictionary class];</span>
+<span class="lineNum">      42 </span><span class="lineCov">         62 :     }</span>
 <span class="lineNum">      43 </span>            :     else {
 <span class="lineNum">      44 </span><span class="lineNoCov">          0 :         result = dictionaryClass;</span>
 <span class="lineNum">      45 </span>            :     }
 <span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span><span class="lineCov">         61 :     return result;</span>
+<span class="lineNum">      47 </span><span class="lineCov">         62 :     return result;</span>
 <span class="lineNum">      48 </span>            : }
 <span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span><span class="lineCov">         55 : - (instancetype)initWithDictionary:(id)dictionary requiredClass:(Class)dictionaryClass</span>
+<span class="lineNum">      50 </span><span class="lineCov">         56 : - (instancetype)initWithDictionary:(id)dictionary requiredClass:(Class)dictionaryClass</span>
 <span class="lineNum">      51 </span>            : {
-<span class="lineNum">      52 </span><span class="lineCov">         55 :     self.requiredClass = dictionaryClass;</span>
+<span class="lineNum">      52 </span><span class="lineCov">         56 :     self.requiredClass = dictionaryClass;</span>
 <span class="lineNum">      53 </span>            : 
-<span class="lineNum">      54 </span><span class="lineCov">        110 :     if (self.requiredClass &amp;&amp; ![TyphoonInjectionByDictionary isDictionaryClass:self.requiredClass]) {</span>
+<span class="lineNum">      54 </span><span class="lineCov">        112 :     if (self.requiredClass &amp;&amp; ![TyphoonInjectionByDictionary isDictionaryClass:self.requiredClass]) {</span>
 <span class="lineNum">      55 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Required dictionary type '%@' is not dictionary.&quot;,</span>
 <span class="lineNum">      56 </span><span class="lineNoCov">          0 :                                                              NSStringFromClass(self.requiredClass)];</span>
 <span class="lineNum">      57 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      58 </span>            : 
-<span class="lineNum">      59 </span><span class="lineCov">         55 :     return [self initWithDictionary:dictionary];</span>
-<span class="lineNum">      60 </span><span class="lineCov">         55 : }</span>
+<span class="lineNum">      59 </span><span class="lineCov">         56 :     return [self initWithDictionary:dictionary];</span>
+<span class="lineNum">      60 </span><span class="lineCov">         56 : }</span>
 <span class="lineNum">      61 </span>            : 
-<span class="lineNum">      62 </span><span class="lineCov">         55 : - (instancetype)initWithDictionary:(id &lt;TyphoonDictionary&gt;)dictionary</span>
+<span class="lineNum">      62 </span><span class="lineCov">         56 : - (instancetype)initWithDictionary:(id &lt;TyphoonDictionary&gt;)dictionary</span>
 <span class="lineNum">      63 </span>            : {
-<span class="lineNum">      64 </span><span class="lineCov">         55 :     self = [super init];</span>
-<span class="lineNum">      65 </span><span class="lineCov">         55 :     if (self) {</span>
-<span class="lineNum">      66 </span><span class="lineCov">         55 :         self.injections = [[NSMutableDictionary alloc] initWithCapacity:[dictionary count]];</span>
+<span class="lineNum">      64 </span><span class="lineCov">         56 :     self = [super init];</span>
+<span class="lineNum">      65 </span><span class="lineCov">         56 :     if (self) {</span>
+<span class="lineNum">      66 </span><span class="lineCov">         56 :         self.injections = [[NSMutableDictionary alloc] initWithCapacity:[dictionary count]];</span>
 <span class="lineNum">      67 </span>            : 
-<span class="lineNum">      68 </span><span class="lineCov">        165 :         [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {</span>
-<span class="lineNum">      69 </span><span class="lineCov">        110 :             id injection = TyphoonMakeInjectionFromObjectIfNeeded(obj);</span>
-<span class="lineNum">      70 </span><span class="lineCov">        110 :             [self.injections setObject:injection forKey:key];</span>
-<span class="lineNum">      71 </span><span class="lineCov">        220 :         }];</span>
-<span class="lineNum">      72 </span><span class="lineCov">         55 :     }</span>
-<span class="lineNum">      73 </span><span class="lineCov">         55 :     return self;</span>
-<span class="lineNum">      74 </span><span class="lineCov">         55 : }</span>
+<span class="lineNum">      68 </span><span class="lineCov">        168 :         [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {</span>
+<span class="lineNum">      69 </span><span class="lineCov">        112 :             id injection = TyphoonMakeInjectionFromObjectIfNeeded(obj);</span>
+<span class="lineNum">      70 </span><span class="lineCov">        112 :             [self.injections setObject:injection forKey:key];</span>
+<span class="lineNum">      71 </span><span class="lineCov">        224 :         }];</span>
+<span class="lineNum">      72 </span><span class="lineCov">         56 :     }</span>
+<span class="lineNum">      73 </span><span class="lineCov">         56 :     return self;</span>
+<span class="lineNum">      74 </span><span class="lineCov">         56 : }</span>
 <span class="lineNum">      75 </span>            : 
 <span class="lineNum">      76 </span>            : - (NSUInteger)count
 <span class="lineNum">      77 </span>            : {
@@ -168,14 +168,14 @@
 <span class="lineNum">     110 </span>            : 
 <span class="lineNum">     111 </span>            : #pragma mark - Overrides
 <span class="lineNum">     112 </span>            : 
-<span class="lineNum">     113 </span><span class="lineCov">          4 : - (id)copyWithZone:(NSZone *)zone</span>
+<span class="lineNum">     113 </span><span class="lineCov">          5 : - (id)copyWithZone:(NSZone *)zone</span>
 <span class="lineNum">     114 </span>            : {
-<span class="lineNum">     115 </span><span class="lineCov">          4 :     TyphoonInjectionByDictionary *copied = [[TyphoonInjectionByDictionary alloc] init];</span>
-<span class="lineNum">     116 </span><span class="lineCov">          4 :     copied.injections = self.injections;</span>
-<span class="lineNum">     117 </span><span class="lineCov">          4 :     copied.requiredClass = self.requiredClass;</span>
-<span class="lineNum">     118 </span><span class="lineCov">          4 :     [self copyBasePropertiesTo:copied];</span>
-<span class="lineNum">     119 </span><span class="lineCov">          4 :     return copied;</span>
-<span class="lineNum">     120 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">     115 </span><span class="lineCov">          5 :     TyphoonInjectionByDictionary *copied = [[TyphoonInjectionByDictionary alloc] init];</span>
+<span class="lineNum">     116 </span><span class="lineCov">          5 :     copied.injections = self.injections;</span>
+<span class="lineNum">     117 </span><span class="lineCov">          5 :     copied.requiredClass = self.requiredClass;</span>
+<span class="lineNum">     118 </span><span class="lineCov">          5 :     [self copyBasePropertiesTo:copied];</span>
+<span class="lineNum">     119 </span><span class="lineCov">          5 :     return copied;</span>
+<span class="lineNum">     120 </span><span class="lineCov">          5 : }</span>
 <span class="lineNum">     121 </span>            : 
 <span class="lineNum">     122 </span><span class="lineCov">          6 : - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result</span>
 <span class="lineNum">     123 </span>            : {
