@@ -42,7 +42,7 @@
 
 + (NSString *)initialStoryboardName
 {
-    return [[NSBundle mainBundle] infoDictionary][@"UIMainStoryboardFile"];
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"UIMainStoryboardFile"];
 }
 
 @end

@@ -42,7 +42,7 @@
 {
     TyphoonComponentFactory *result = nil;
 
-    NSArray *assemblyNames = [[NSBundle mainBundle] infoDictionary][@"TyphoonInitialAssemblies"];
+    NSArray *assemblyNames = [self plistAssemblyNames];
     NSAssert(!assemblyNames || [assemblyNames isKindOfClass:[NSArray class]], @"Value for 'TyphoonInitialAssemblies' key must be array");
 
     if ([assemblyNames count] > 0) {
@@ -58,6 +58,25 @@
     }
 
     return result;
+}
+
++ (NSArray *)plistAssemblyNames
+{
+    NSArray *names = nil;
+
+    NSDictionary *bundleInfoDictionary = [[NSBundle mainBundle] infoDictionary];
+#if TARGET_OS_IPHONE
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        names = [bundleInfoDictionary objectForKey:@"TyphoonInitialAssemblies(iPad)"];
+    } else {
+        names = [bundleInfoDictionary objectForKey:@"TyphoonInitialAssemblies(iPhone)"];
+    }
+#endif
+    if (!names) {
+        names = [bundleInfoDictionary objectForKey:@"TyphoonInitialAssemblies"];
+    }
+
+    return names;
 }
 
 + (TyphoonComponentFactory *)factoryFromAppDelegate:(id)appDelegate
