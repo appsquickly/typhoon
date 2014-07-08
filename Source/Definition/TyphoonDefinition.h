@@ -64,6 +64,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
     NSMutableSet *_injectedMethods;
     TyphoonScope _scope;
     TyphoonDefinition *_factory;
+    TyphoonDefinition *_parent;
     TyphoonRuntimeArguments *_currentRuntimeArguments;
 }
 
@@ -154,7 +155,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 *
 *
 */
-@property(nonatomic, strong) TyphoonDefinition *factory;
+@property(nonatomic, strong) id factory;
 
 /**
 * A parent component. When parent is defined the initializer and/or properties from a definition are inherited, unless overridden. Example:
@@ -184,7 +185,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 * @see abstract
 *
 */
-@property(nonatomic, strong) TyphoonDefinition *parent;
+@property(nonatomic, strong) id parent;
 
 /**
 * If set, designates that a component can not be instantiated directly.
@@ -207,11 +208,11 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
 + (id)withClass:(Class)clazz configuration:(TyphoonDefinitionBlock)injections;
 
-+ (id)withClass:(Class)clazz factory:(TyphoonDefinition *)definition selector:(SEL)selector DEPRECATED_MSG_ATTRIBUTE("Use withFactory:selector: method instead");
++ (id)withClass:(Class)clazz factory:(id)definition selector:(SEL)selector DEPRECATED_MSG_ATTRIBUTE("Use withFactory:selector: method instead");
 
-+ (id)withFactory:(TyphoonDefinition *)definition selector:(SEL)selector;
++ (id)withFactory:(id)definition selector:(SEL)selector;
 
-+ (id)withFactory:(TyphoonDefinition *)definition selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock;
++ (id)withFactory:(id)definition selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock;
 
 /* ====================================================================================================================================== */
 #pragma mark Injection

@@ -192,11 +192,11 @@ static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSigna
     }
 }
 
-static void AssertArgumentType(id target, SEL selector, NSMethodSignature *signature, int index)
+static void AssertArgumentType(id target, SEL selector, NSMethodSignature *signature, NSUInteger index)
 {
     const char *argumentType = [signature getArgumentTypeAtIndex:index];
     if (strcmp(argumentType, "@") != 0) {
-        [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %d. Runtime arguments can only be objects. Use wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector], [target class], index-2];
+        [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %d. Runtime arguments can only be objects. Use wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector], [target class], (int)index-2];
     }
 }
 

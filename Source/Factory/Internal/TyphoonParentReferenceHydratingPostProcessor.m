@@ -22,11 +22,11 @@
 {
     [factory.registry enumerateObjectsUsingBlock:^(TyphoonDefinition *definition, NSUInteger idx, BOOL *stop) {
         if (definition.parent) {
-            TyphoonDefinition *parentDefinition = [factory definitionForKey:definition.parent.key];
+            TyphoonDefinition *parentDefinition = [factory definitionForKey:[(TyphoonDefinition *)definition.parent key]];
             [definition setParent:parentDefinition];
         }
         if (definition.factory) {
-            TyphoonDefinition *factoryDefinition = [factory definitionForKey:definition.factory.key];
+            TyphoonDefinition *factoryDefinition = [factory definitionForKey:[(TyphoonDefinition *)definition.factory key]];
             [definition setFactory:factoryDefinition];
         }
     }];

@@ -60,7 +60,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     id instance = nil;
 
     if (definition.factory) {
-        id factoryComponent = [self componentForKey:definition.factory.key];
+        id factoryComponent = [self componentForKey:[(TyphoonDefinition *)definition.factory key]];
         instance = [self resultOfInvocationInitializer:definition.initializer on:factoryComponent withArgs:args];
     }
     else {

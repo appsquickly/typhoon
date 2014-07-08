@@ -79,7 +79,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 }
 
 //Deprecated!
-+ (id)withClass:(Class)clazz factory:(TyphoonDefinition *)_definition selector:(SEL)selector
++ (id)withClass:(Class)clazz factory:(id)_definition selector:(SEL)selector
 {
     return [TyphoonDefinition withClass:clazz configuration:^(TyphoonDefinition *definition) {
         [definition useInitializer:selector parameters:nil];
@@ -87,12 +87,12 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     }];
 }
 
-+ (id)withFactory:(TyphoonDefinition *)factory selector:(SEL)selector
++ (id)withFactory:(id)factory selector:(SEL)selector
 {
     return [TyphoonDefinition withFactory:factory selector:selector parameters:nil];
 }
 
-+ (id)withFactory:(TyphoonDefinition *)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock
++ (id)withFactory:(id)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock
 {
     return [TyphoonDefinition withClass:[NSObject class] configuration:^(TyphoonDefinition *definition) {
         [definition setFactory:factory];
@@ -204,6 +204,22 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     _scope = scope;
     _isScopeSetByUser = YES;
     [self validateScope];
+}
+
+- (void)setFactory:(id)factory
+{
+    _factory = factory;
+    if (![_factory isKindOfClass:[TyphoonDefinition class]]) {
+        [NSException raise:NSInvalidArgumentException format:@"Only TyphoonDefinition object can be set as factory. But in method '%@' object of class %@ set as factory", self.key, [factory class]];
+    }
+}
+
+- (void)setParent:(id)parent
+{
+    _parent = parent;
+    if (![_parent isKindOfClass:[TyphoonDefinition class]]) {
+        [NSException raise:NSInvalidArgumentException format:@"Only TyphoonDefinition object can be set as parent. But in method '%@' object of class %@ set as parent", self.key, [parent class]];
+    }
 }
 
 
