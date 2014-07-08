@@ -31,9 +31,9 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">92</td>
-            <td class="headerCovTableEntry">112</td>
-            <td class="headerCovTableEntryMed">82.1 %</td>
+            <td class="headerCovTableEntry">100</td>
+            <td class="headerCovTableEntry">124</td>
+            <td class="headerCovTableEntryMed">80.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
@@ -137,7 +137,7 @@
 <span class="lineNum">      79 </span><span class="lineCov">       2046 : }</span>
 <span class="lineNum">      80 </span>            : 
 <span class="lineNum">      81 </span>            : //Deprecated!
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 : + (id)withClass:(Class)clazz factory:(TyphoonDefinition *)_definition selector:(SEL)selector</span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 : + (id)withClass:(Class)clazz factory:(id)_definition selector:(SEL)selector</span>
 <span class="lineNum">      83 </span>            : {
 <span class="lineNum">      84 </span><span class="lineNoCov">          0 :     return [TyphoonDefinition withClass:clazz configuration:^(TyphoonDefinition *definition) {</span>
 <span class="lineNum">      85 </span><span class="lineNoCov">          0 :         [definition useInitializer:selector parameters:nil];</span>
@@ -145,12 +145,12 @@
 <span class="lineNum">      87 </span><span class="lineNoCov">          0 :     }];</span>
 <span class="lineNum">      88 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      89 </span>            : 
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 : + (id)withFactory:(TyphoonDefinition *)factory selector:(SEL)selector</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 : + (id)withFactory:(id)factory selector:(SEL)selector</span>
 <span class="lineNum">      91 </span>            : {
 <span class="lineNum">      92 </span><span class="lineNoCov">          0 :     return [TyphoonDefinition withFactory:factory selector:selector parameters:nil];</span>
 <span class="lineNum">      93 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      94 </span>            : 
-<span class="lineNum">      95 </span><span class="lineCov">        110 : + (id)withFactory:(TyphoonDefinition *)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock</span>
+<span class="lineNum">      95 </span><span class="lineCov">        110 : + (id)withFactory:(id)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock</span>
 <span class="lineNum">      96 </span>            : {
 <span class="lineNum">      97 </span><span class="lineCov">        110 :     return [TyphoonDefinition withClass:[NSObject class] configuration:^(TyphoonDefinition *definition) {</span>
 <span class="lineNum">      98 </span><span class="lineCov">         55 :         [definition setFactory:factory];</span>
@@ -264,45 +264,61 @@
 <span class="lineNum">     206 </span><span class="lineCov">        487 :     [self validateScope];</span>
 <span class="lineNum">     207 </span><span class="lineCov">        487 : }</span>
 <span class="lineNum">     208 </span>            : 
-<span class="lineNum">     209 </span>            : 
-<span class="lineNum">     210 </span>            : /* ====================================================================================================================================== */
-<span class="lineNum">     211 </span>            : #pragma mark - Utility Methods
-<span class="lineNum">     212 </span>            : 
-<span class="lineNum">     213 </span>            : - (NSString *)description
-<span class="lineNum">     214 </span>            : {
-<span class="lineNum">     215 </span><span class="lineCov">         10 :     return [NSString stringWithFormat:@&quot;Definition: class='%@', key='%@', scope='%@'&quot;, NSStringFromClass(_type), _key,</span>
-<span class="lineNum">     216 </span><span class="lineCov">          5 :                                       TyphoonScopeToString(_scope)];</span>
-<span class="lineNum">     217 </span>            : }
-<span class="lineNum">     218 </span>            : 
-<span class="lineNum">     219 </span><span class="lineCov">         97 : - (id)copyWithZone:(NSZone *)zone</span>
-<span class="lineNum">     220 </span>            : {
-<span class="lineNum">     221 </span><span class="lineCov">         97 :     TyphoonDefinition *copy = [[TyphoonDefinition alloc] initWithClass:_type key:[_key copy] factoryComponent:_factory.key];</span>
-<span class="lineNum">     222 </span><span class="lineCov">         97 :     [copy setInitializer:[self.initializer copy]];</span>
-<span class="lineNum">     223 </span><span class="lineCov">        342 :     for (id &lt;TyphoonPropertyInjection&gt; property in _injectedProperties) {</span>
-<span class="lineNum">     224 </span><span class="lineCov">         94 :         [copy addInjectedProperty:[property copyWithZone:NSDefaultMallocZone()]];</span>
-<span class="lineNum">     225 </span><span class="lineCov">        342 :     }</span>
-<span class="lineNum">     226 </span><span class="lineCov">         97 :     return copy;</span>
-<span class="lineNum">     227 </span><span class="lineCov">         97 : }</span>
+<span class="lineNum">     209 </span><span class="lineCov">        323 : - (void)setFactory:(id)factory</span>
+<span class="lineNum">     210 </span>            : {
+<span class="lineNum">     211 </span><span class="lineCov">        323 :     _factory = factory;</span>
+<span class="lineNum">     212 </span><span class="lineCov">        323 :     if (![_factory isKindOfClass:[TyphoonDefinition class]]) {</span>
+<span class="lineNum">     213 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Only TyphoonDefinition object can be set as factory. But in method '%@' object of class %@ set as factory&quot;, self.key, [factory class]];</span>
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     215 </span><span class="lineCov">        323 : }</span>
+<span class="lineNum">     216 </span>            : 
+<span class="lineNum">     217 </span><span class="lineCov">         10 : - (void)setParent:(id)parent</span>
+<span class="lineNum">     218 </span>            : {
+<span class="lineNum">     219 </span><span class="lineCov">         10 :     _parent = parent;</span>
+<span class="lineNum">     220 </span><span class="lineCov">         10 :     if (![_parent isKindOfClass:[TyphoonDefinition class]]) {</span>
+<span class="lineNum">     221 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Only TyphoonDefinition object can be set as parent. But in method '%@' object of class %@ set as parent&quot;, self.key, [parent class]];</span>
+<span class="lineNum">     222 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     223 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">     224 </span>            : 
+<span class="lineNum">     225 </span>            : 
+<span class="lineNum">     226 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">     227 </span>            : #pragma mark - Utility Methods
 <span class="lineNum">     228 </span>            : 
-<span class="lineNum">     229 </span>            : /* ====================================================================================================================================== */
-<span class="lineNum">     230 </span>            : #pragma mark - Private Methods
-<span class="lineNum">     231 </span>            : 
-<span class="lineNum">     232 </span>            : - (void)validateScope
-<span class="lineNum">     233 </span>            : {
-<span class="lineNum">     234 </span><span class="lineCov">       2534 :     if (self.lazy &amp;&amp; self.scope != TyphoonScopeSingleton) {</span>
-<span class="lineNum">     235 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException</span>
-<span class="lineNum">     236 </span>            :             format:@&quot;The lazy attribute is only applicable to singleton scoped definitions, but is set for definition: %@ &quot;, self];
-<span class="lineNum">     237 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     238 </span>            : 
-<span class="lineNum">     239 </span><span class="lineCov">       4815 :     if ((self.scope != TyphoonScopePrototype &amp;&amp; self.scope != TyphoonScopeObjectGraph) &amp;&amp; [self hasRuntimeArgumentInjections]) {</span>
-<span class="lineNum">     240 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException</span>
-<span class="lineNum">     241 </span>            :             format:@&quot;The runtime arguments injections are only applicable to prototype and object-graph scoped definitions, but is set for definition: %@ &quot;,
-<span class="lineNum">     242 </span>            :                    self];
-<span class="lineNum">     243 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     244 </span><span class="lineCov">       2533 : }</span>
-<span class="lineNum">     245 </span>            : 
-<span class="lineNum">     246 </span>            : 
-<span class="lineNum">     247 </span>            : @end
+<span class="lineNum">     229 </span>            : - (NSString *)description
+<span class="lineNum">     230 </span>            : {
+<span class="lineNum">     231 </span><span class="lineCov">         10 :     return [NSString stringWithFormat:@&quot;Definition: class='%@', key='%@', scope='%@'&quot;, NSStringFromClass(_type), _key,</span>
+<span class="lineNum">     232 </span><span class="lineCov">          5 :                                       TyphoonScopeToString(_scope)];</span>
+<span class="lineNum">     233 </span>            : }
+<span class="lineNum">     234 </span>            : 
+<span class="lineNum">     235 </span><span class="lineCov">         97 : - (id)copyWithZone:(NSZone *)zone</span>
+<span class="lineNum">     236 </span>            : {
+<span class="lineNum">     237 </span><span class="lineCov">         97 :     TyphoonDefinition *copy = [[TyphoonDefinition alloc] initWithClass:_type key:[_key copy] factoryComponent:_factory.key];</span>
+<span class="lineNum">     238 </span><span class="lineCov">         97 :     [copy setInitializer:[self.initializer copy]];</span>
+<span class="lineNum">     239 </span><span class="lineCov">        342 :     for (id &lt;TyphoonPropertyInjection&gt; property in _injectedProperties) {</span>
+<span class="lineNum">     240 </span><span class="lineCov">         94 :         [copy addInjectedProperty:[property copyWithZone:NSDefaultMallocZone()]];</span>
+<span class="lineNum">     241 </span><span class="lineCov">        342 :     }</span>
+<span class="lineNum">     242 </span><span class="lineCov">         97 :     return copy;</span>
+<span class="lineNum">     243 </span><span class="lineCov">         97 : }</span>
+<span class="lineNum">     244 </span>            : 
+<span class="lineNum">     245 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">     246 </span>            : #pragma mark - Private Methods
+<span class="lineNum">     247 </span>            : 
+<span class="lineNum">     248 </span>            : - (void)validateScope
+<span class="lineNum">     249 </span>            : {
+<span class="lineNum">     250 </span><span class="lineCov">       2534 :     if (self.lazy &amp;&amp; self.scope != TyphoonScopeSingleton) {</span>
+<span class="lineNum">     251 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException</span>
+<span class="lineNum">     252 </span>            :             format:@&quot;The lazy attribute is only applicable to singleton scoped definitions, but is set for definition: %@ &quot;, self];
+<span class="lineNum">     253 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     254 </span>            : 
+<span class="lineNum">     255 </span><span class="lineCov">       4815 :     if ((self.scope != TyphoonScopePrototype &amp;&amp; self.scope != TyphoonScopeObjectGraph) &amp;&amp; [self hasRuntimeArgumentInjections]) {</span>
+<span class="lineNum">     256 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException</span>
+<span class="lineNum">     257 </span>            :             format:@&quot;The runtime arguments injections are only applicable to prototype and object-graph scoped definitions, but is set for definition: %@ &quot;,
+<span class="lineNum">     258 </span>            :                    self];
+<span class="lineNum">     259 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     260 </span><span class="lineCov">       2533 : }</span>
+<span class="lineNum">     261 </span>            : 
+<span class="lineNum">     262 </span>            : 
+<span class="lineNum">     263 </span>            : @end
 </pre>
       </td>
     </tr>

@@ -2010,7 +2010,7 @@
       <Scope>TyphoonDefinition</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_definition.html</Path>
-    <Anchor>aaf3d2e62477e0999b79f0f062d01a1e9</Anchor>
+    <Anchor>aa15fa133879051cd95d39acb8ca5d94f</Anchor>
     <Abstract>A component that will produce an instance (with or without parameters) of this component. </Abstract>
   </Token>
   <Token>
@@ -2065,7 +2065,7 @@
       <Scope>TyphoonDefinition</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_definition.html</Path>
-    <Anchor>ade4b4b0d0e6c99e01868746f283ffdaa</Anchor>
+    <Anchor>add76507109b2465e672b7472c408fa05</Anchor>
     <Abstract>A parent component. </Abstract>
   </Token>
   <Token>
@@ -2119,7 +2119,7 @@
       <Scope>TyphoonDefinition</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_definition.html</Path>
-    <Anchor>ad3f2d6ed4f8d1718df7df9360298e784</Anchor>
+    <Anchor>ad0bdd035d89cbf8b9fb937ec2cceb59c</Anchor>
     <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
   </Token>
   <Token>
@@ -2130,7 +2130,7 @@
       <Scope>TyphoonDefinition</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a84faa8dbb22f224ee81905e763df33a2</Anchor>
+    <Anchor>a967ccf83c6835d0120b0c1d4385e841e</Anchor>
     <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
   </Token>
   <Token>
@@ -2141,7 +2141,7 @@
       <Scope>TyphoonDefinition</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_definition.html</Path>
-    <Anchor>afba2cbfee035ed63156e8a79c92ee1f9</Anchor>
+    <Anchor>a054e83736a4db4becf73e5a7d0936dc7</Anchor>
     <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
   </Token>
   <Token>
