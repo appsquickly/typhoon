@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-07-03</td>
+            <td class="headerValue">2014-07-08</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -134,7 +134,7 @@
 <span class="lineNum">      76 </span>            : * If using the TyphoonBlockComponentFactory style of assembly, the key is automatically generated based on the selector name of the
 <span class="lineNum">      77 </span>            : * component, thus avoiding &quot;magic strings&quot; and providing better integration with IDE refactoring tools.
 <span class="lineNum">      78 </span>            : */
-<span class="lineNum">      79 </span><span class="lineCov">      38752 : @property(nonatomic, strong) NSString *key;</span>
+<span class="lineNum">      79 </span><span class="lineCov">      38722 : @property(nonatomic, strong) NSString *key;</span>
 <span class="lineNum">      80 </span>            : 
 <span class="lineNum">      81 </span>            : /**
 <span class="lineNum">      82 </span>            : * Describes the initializer, ie the selector and arguments that will be used to instantiate this component.
@@ -261,15 +261,15 @@
 <span class="lineNum">     203 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     204 </span>            : #pragma mark Factory methods
 <span class="lineNum">     205 </span>            : 
-<span class="lineNum">     206 </span>            : + (TyphoonDefinition *)withClass:(Class)clazz;
+<span class="lineNum">     206 </span>            : + (id)withClass:(Class)clazz;
 <span class="lineNum">     207 </span>            : 
-<span class="lineNum">     208 </span>            : + (TyphoonDefinition *)withClass:(Class)clazz configuration:(TyphoonDefinitionBlock)injections;
+<span class="lineNum">     208 </span>            : + (id)withClass:(Class)clazz configuration:(TyphoonDefinitionBlock)injections;
 <span class="lineNum">     209 </span>            : 
-<span class="lineNum">     210 </span>            : + (TyphoonDefinition *)withClass:(Class)clazz factory:(TyphoonDefinition *)definition selector:(SEL)selector DEPRECATED_MSG_ATTRIBUTE(&quot;Use withFactory:selector: method instead&quot;);
+<span class="lineNum">     210 </span>            : + (id)withClass:(Class)clazz factory:(TyphoonDefinition *)definition selector:(SEL)selector DEPRECATED_MSG_ATTRIBUTE(&quot;Use withFactory:selector: method instead&quot;);
 <span class="lineNum">     211 </span>            : 
-<span class="lineNum">     212 </span>            : + (TyphoonDefinition *)withFactory:(TyphoonDefinition *)definition selector:(SEL)selector;
+<span class="lineNum">     212 </span>            : + (id)withFactory:(TyphoonDefinition *)definition selector:(SEL)selector;
 <span class="lineNum">     213 </span>            : 
-<span class="lineNum">     214 </span>            : + (TyphoonDefinition *)withFactory:(TyphoonDefinition *)definition selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock;
+<span class="lineNum">     214 </span>            : + (id)withFactory:(TyphoonDefinition *)definition selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock;
 <span class="lineNum">     215 </span>            : 
 <span class="lineNum">     216 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     217 </span>            : #pragma mark Injection
