@@ -63,6 +63,23 @@
     XCTAssertTrue([_factory componentForKey:@"cavalryMan"] == [_factory componentForKey:@"cavalryMan"]);
 }
 
+- (void)test_patcher_with_runtime_args
+{
+    MiddleAgesAssembly *factory = (MiddleAgesAssembly *)_factory;
+
+    [self applyAPatch];
+    [self assertPatchApplied];
+
+    Knight *knight = [factory knightWithFoobar:@"123"];
+    XCTAssertEqual(knight.foobar, @"Fooooo");
+
+    [_patcher detach];
+
+    knight = [factory knightWithFoobar:@"123"];
+    XCTAssertEqual(knight.foobar, @"123");
+
+}
+
 - (void)test_allows_detaching_patcher
 {
     [self applyAPatch];
@@ -101,6 +118,12 @@
         ]];
 
         return cavalryMan;
+    }];
+
+    [_patcher patchDefinition:[assembly knightWithFoobar:nil] withObject:^id {
+        Knight *knight = [Knight new];
+        knight.foobar = @"Fooooo";
+        return knight;
     }];
 
     [_factory attachPostProcessor:_patcher];
