@@ -119,22 +119,22 @@
 <span class="lineNum">      61 </span><span class="lineCov">      27056 :     return (NSUInteger) sel_getName(self.selector);</span>
 <span class="lineNum">      62 </span>            : }
 <span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span><span class="lineCov">      18624 : - (BOOL)isEqual:(id)other</span>
+<span class="lineNum">      64 </span><span class="lineCov">      14186 : - (BOOL)isEqual:(id)other</span>
 <span class="lineNum">      65 </span>            : {
-<span class="lineNum">      66 </span><span class="lineCov">      18624 :     if (other == self) {</span>
+<span class="lineNum">      66 </span><span class="lineCov">      14186 :     if (other == self) {</span>
 <span class="lineNum">      67 </span><span class="lineNoCov">          0 :         return YES;</span>
 <span class="lineNum">      68 </span>            :     }
-<span class="lineNum">      69 </span><span class="lineCov">      37248 :     if (!other || [other class] != [self class]) {</span>
+<span class="lineNum">      69 </span><span class="lineCov">      28372 :     if (!other || [other class] != [self class]) {</span>
 <span class="lineNum">      70 </span><span class="lineNoCov">          0 :         return NO;</span>
 <span class="lineNum">      71 </span>            :     }
 <span class="lineNum">      72 </span>            : 
-<span class="lineNum">      73 </span><span class="lineCov">      18624 :     return [self isEqualToSelector:(TyphoonSelector *) other];</span>
-<span class="lineNum">      74 </span><span class="lineCov">      18624 : }</span>
+<span class="lineNum">      73 </span><span class="lineCov">      14186 :     return [self isEqualToSelector:(TyphoonSelector *) other];</span>
+<span class="lineNum">      74 </span><span class="lineCov">      14186 : }</span>
 <span class="lineNum">      75 </span>            : 
-<span class="lineNum">      76 </span><span class="lineCov">      18624 : - (BOOL)isEqualToSelector:(TyphoonSelector *)wrappedSelector</span>
+<span class="lineNum">      76 </span><span class="lineCov">      14186 : - (BOOL)isEqualToSelector:(TyphoonSelector *)wrappedSelector</span>
 <span class="lineNum">      77 </span>            : {
-<span class="lineNum">      78 </span><span class="lineCov">      18624 :     return sel_isEqual(self.selector, wrappedSelector.selector);</span>
-<span class="lineNum">      79 </span><span class="lineCov">      18624 : }</span>
+<span class="lineNum">      78 </span><span class="lineCov">      14186 :     return sel_isEqual(self.selector, wrappedSelector.selector);</span>
+<span class="lineNum">      79 </span><span class="lineCov">      14186 : }</span>
 <span class="lineNum">      80 </span>            : 
 <span class="lineNum">      81 </span>            : 
 <span class="lineNum">      82 </span>            : @end
