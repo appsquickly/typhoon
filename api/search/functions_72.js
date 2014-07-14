@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['registerconfigurationclass_3aforextension_3a',['registerConfigurationClass:forExtension:',['../interface_typhoon_config_post_processor.html#acd33308b4cdc7e91059b8698a9594e19',1,'TyphoonConfigPostProcessor']]],
   ['registerdefinition_3a',['registerDefinition:',['../interface_typhoon_component_factory.html#ae4569eb6aebca4089de316d2b80d34d1',1,'TyphoonComponentFactory']]],
   ['registertypeconverter_3a',['registerTypeConverter:',['../interface_typhoon_type_converter_registry.html#a4804a1dd2edb02cc8a657ea5388894cb',1,'TyphoonTypeConverterRegistry']]],
   ['registry',['registry',['../interface_typhoon_component_factory.html#afa734936e2f650ba86b731ec67cd7ce9',1,'TyphoonComponentFactory']]],

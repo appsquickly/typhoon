@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Typhoon.info - Source/Factory/TyphoonComponentFactory.h</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">Source/Factory</a> - TyphoonComponentFactory.h</td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Typhoon.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2014-07-08</td>
+            <td></td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<span class="lineNum">       1 </span>            : ////////////////////////////////////////////////////////////////////////////////
+<span class="lineNum">       2 </span>            : //
+<span class="lineNum">       3 </span>            : //  TYPHOON FRAMEWORK
+<span class="lineNum">       4 </span>            : //  Copyright 2014, Jasper Blues &amp; Contributors
+<span class="lineNum">       5 </span>            : //  All Rights Reserved.
+<span class="lineNum">       6 </span>            : //
+<span class="lineNum">       7 </span>            : //  NOTICE: The authors permit you to use, modify, and distribute this file
+<span class="lineNum">       8 </span>            : //  in accordance with the terms of the license agreement accompanying it.
+<span class="lineNum">       9 </span>            : //
+<span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span>            : #import &lt;Foundation/Foundation.h&gt;
+<span class="lineNum">      15 </span>            : #import &quot;TyphoonComponentFactoryPostProcessor.h&quot;
+<span class="lineNum">      16 </span>            : #import &quot;TyphoonComponentsPool.h&quot;
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : @class TyphoonDefinition;
+<span class="lineNum">      19 </span>            : @class TyphoonCallStack;
+<span class="lineNum">      20 </span>            : @class TyphoonRuntimeArguments;
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : /**
+<span class="lineNum">      23 </span>            : *
+<span class="lineNum">      24 </span>            : * @ingroup Factory
+<span class="lineNum">      25 </span>            : *
+<span class="lineNum">      26 </span>            : * This is the base class for all component factories. It defines methods for retrieving components from the factory, as well as a low-level
+<span class="lineNum">      27 </span>            : * API for assembling components from their constituent parts. This low-level API could be used as-is, however its intended to use a higher
+<span class="lineNum">      28 </span>            : * level abstraction such as TyphoonBlockComponentFactory.
+<span class="lineNum">      29 </span>            : */
+<span class="lineNum">      30 </span>            : @interface TyphoonComponentFactory : NSObject
+<span class="lineNum">      31 </span>            : {
+<span class="lineNum">      32 </span>            :     NSMutableArray *_registry;
+<span class="lineNum">      33 </span>            :     id &lt;TyphoonComponentsPool&gt; _singletons;
+<span class="lineNum">      34 </span>            :     id &lt;TyphoonComponentsPool&gt; _objectGraphSharedInstances;
+<span class="lineNum">      35 </span>            :     id &lt;TyphoonComponentsPool&gt; _weakSingletons;
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            :     TyphoonCallStack *_stack;
+<span class="lineNum">      38 </span>            :     NSMutableArray *_factoryPostProcessors;
+<span class="lineNum">      39 </span>            :     NSMutableArray *_componentPostProcessors;
+<span class="lineNum">      40 </span>            :     BOOL _isLoading;
+<span class="lineNum">      41 </span>            : }
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span>            : /**
+<span class="lineNum">      44 </span>            : * The instantiated singletons.
+<span class="lineNum">      45 </span>            : */
+<span class="lineNum">      46 </span>            : @property(nonatomic, strong, readonly) NSArray *singletons;
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span>            : /**
+<span class="lineNum">      49 </span>            : * Say if the factory has been loaded.
+<span class="lineNum">      50 </span>            : */
+<span class="lineNum">      51 </span><span class="lineCov">       3947 : @property(nonatomic, assign, getter = isLoaded) BOOL loaded;</span>
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span>            : /**
+<span class="lineNum">      54 </span>            :  * The attached factory post processors.
+<span class="lineNum">      55 </span>            :  */
+<span class="lineNum">      56 </span><span class="lineCov">          6 : @property(nonatomic, strong, readonly) NSArray *factoryPostProcessors;</span>
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : /**
+<span class="lineNum">      59 </span>            :  * The attached component post processors.
+<span class="lineNum">      60 </span>            :  */
+<span class="lineNum">      61 </span><span class="lineCov">          1 : @property(nonatomic, strong, readonly) NSArray *componentPostProcessors;</span>
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span>            : /**
+<span class="lineNum">      66 </span>            : * Returns the default component factory, if one has been set. @see [TyphoonComponentFactory makeDefault]. This allows resolving components
+<span class="lineNum">      67 </span>            : * from the Typhoon another class after the container has been set up.
+<span class="lineNum">      68 </span>            : *
+<span class="lineNum">      69 </span>            : * A more desirable approach, if possible - especially for a component that is also registered with the container is to use
+<span class="lineNum">      70 </span>            : * TyphoonComponentFactoryAware, which injects the component factory as a dependency on the class that needs it. This latter approach
+<span class="lineNum">      71 </span>            : * simplifies unit testing, in that no special approach to patching out the classes collaborators is required.
+<span class="lineNum">      72 </span>            : *
+<span class="lineNum">      73 </span>            : * @see [TyphoonComponentFactory makeDefault].
+<span class="lineNum">      74 </span>            : * @see TyphoonComponentFactoryAware
+<span class="lineNum">      75 </span>            : *
+<span class="lineNum">      76 </span>            : */
+<span class="lineNum">      77 </span>            : + (id)defaultFactory;
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span>            : /**
+<span class="lineNum">      80 </span>            : * Mutate the component definitions and
+<span class="lineNum">      81 </span>            : * build the not-lazy singletons.
+<span class="lineNum">      82 </span>            : */
+<span class="lineNum">      83 </span>            : - (void)load;
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span>            : /**
+<span class="lineNum">      86 </span>            : * Dump all the singletons.
+<span class="lineNum">      87 </span>            : */
+<span class="lineNum">      88 </span>            : - (void)unload;
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span>            : /**
+<span class="lineNum">      91 </span>            : * Returns the default component factory, if one has been set. @see [TyphoonComponentFactory makeDefault]. This allows resolving components
+<span class="lineNum">      92 </span>            : * from the Typhoon another class after the container has been set up.
+<span class="lineNum">      93 </span>            : *
+<span class="lineNum">      94 </span>            : * This method is only integrating Typhoon into legacy environments - classes not managed by Typhoon, and its use elsewhere is discouraged
+<span class="lineNum">      95 </span>            : * as it will create a hard-wired dependency on Typhoon, whenever the default factory is retrieved.
+<span class="lineNum">      96 </span>            : *
+<span class="lineNum">      97 </span>            : * A more desirable approach is to use TyphoonComponentFactoryAware or to inject the factory via an assembly. This simplifies unit testing.
+<span class="lineNum">      98 </span>            : *
+<span class="lineNum">      99 </span>            : * ## Alternative approach: inject the factory (in this case posing behind a TyphoonAssembly subclass):
+<span class="lineNum">     100 </span>            : 
+<span class="lineNum">     101 </span>            : @code
+<span class="lineNum">     102 </span>            : 
+<span class="lineNum">     103 </span>            : - (id)loyaltyManagementController
+<span class="lineNum">     104 </span>            : {
+<span class="lineNum">     105 </span>            :     return [TyphoonDefinition withClass:[LoyaltyManagementViewController class]
+<span class="lineNum">     106 </span>            :         properties:^(TyphoonDefinition* definition)
+<span class="lineNum">     107 </span>            :     {
+<span class="lineNum">     108 </span>            :         definition.scope = TyphoonScopePrototype;
+<span class="lineNum">     109 </span>            :         //Inject the TyphoonComponentFactory posing as an assembly
+<span class="lineNum">     110 </span>            :         [definition injectProperty:@selector(assembly)];
+<span class="lineNum">     111 </span>            :     }];
+<span class="lineNum">     112 </span>            : }
+<span class="lineNum">     113 </span>            : 
+<span class="lineNum">     114 </span>            : @endcode
+<span class="lineNum">     115 </span>            : 
+<span class="lineNum">     116 </span>            : * @see [TyphoonComponentFactory makeDefault].
+<span class="lineNum">     117 </span>            : * @see TyphoonComponentFactoryAware
+<span class="lineNum">     118 </span>            : *
+<span class="lineNum">     119 </span>            : */
+<span class="lineNum">     120 </span>            : - (void)makeDefault;
+<span class="lineNum">     121 </span>            : 
+<span class="lineNum">     122 </span>            : /**
+<span class="lineNum">     123 </span>            : * Registers a component into the factory. Components can be declared in any order, the container will work out how to resolve them.
+<span class="lineNum">     124 </span>            : */
+<span class="lineNum">     125 </span>            : - (void)registerDefinition:(TyphoonDefinition *)definition;
+<span class="lineNum">     126 </span>            : 
+<span class="lineNum">     127 </span>            : /**
+<span class="lineNum">     128 </span>            : * Returns an an instance of the component matching the supplied class or protocol. For example:
+<span class="lineNum">     129 </span>            : @code
+<span class="lineNum">     130 </span>            : [factory objectForType:[Knight class]];
+<span class="lineNum">     131 </span>            : [factory objectForType:@protocol(Quest)];
+<span class="lineNum">     132 </span>            : @endcode
+<span class="lineNum">     133 </span>            : *
+<span class="lineNum">     134 </span>            : * @exception NSInvalidArgumentException When no singletons or prototypes match the requested type.
+<span class="lineNum">     135 </span>            : * @exception NSInvalidArgumentException When when more than one singleton or prototype matches the requested type.
+<span class="lineNum">     136 </span>            : *
+<span class="lineNum">     137 </span>            : * @warning componentForType with a protocol argument is not currently supported in Objective-C++.
+<span class="lineNum">     138 </span>            : *
+<span class="lineNum">     139 </span>            : * @see: allComponentsForType:
+<span class="lineNum">     140 </span>            : */
+<span class="lineNum">     141 </span>            : - (id)componentForType:(id)classOrProtocol;
+<span class="lineNum">     142 </span>            : 
+<span class="lineNum">     143 </span>            : /**
+<span class="lineNum">     144 </span>            : * Returns an array objects matching the given type.
+<span class="lineNum">     145 </span>            : *
+<span class="lineNum">     146 </span>            : * @see componentForType
+<span class="lineNum">     147 </span>            : */
+<span class="lineNum">     148 </span>            : - (NSArray *)allComponentsForType:(id)classOrProtocol;
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span>            : /**
+<span class="lineNum">     151 </span>            : * Returns the component matching the given key. For the block-style, this is the name of the method on the
+<span class="lineNum">     152 </span>            : * TyphoonAssembly interface, although, for block-style you'd typically use the assembly interface itself
+<span class="lineNum">     153 </span>            : * for component resolution.
+<span class="lineNum">     154 </span>            : */
+<span class="lineNum">     155 </span>            : - (id)componentForKey:(NSString *)key;
+<span class="lineNum">     156 </span>            : 
+<span class="lineNum">     157 </span>            : - (id)componentForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args;
+<span class="lineNum">     158 </span>            : 
+<span class="lineNum">     159 </span>            : - (NSArray *)registry;
+<span class="lineNum">     160 </span>            : 
+<span class="lineNum">     161 </span>            : /**
+<span class="lineNum">     162 </span>            :  Attach a TyphoonComponentFactoryPostProcessor to this component factory.
+<span class="lineNum">     163 </span>            :  @param postProcessor The post-processor to attach.
+<span class="lineNum">     164 </span>            :  */
+<span class="lineNum">     165 </span>            : - (void)attachPostProcessor:(id &lt;TyphoonComponentFactoryPostProcessor&gt;)postProcessor;
+<span class="lineNum">     166 </span>            : 
+<span class="lineNum">     167 </span>            : /**
+<span class="lineNum">     168 </span>            :  * Injects the properties and methods of an object
+<span class="lineNum">     169 </span>            :  */
+<span class="lineNum">     170 </span>            : - (void)inject:(id)instance;
+<span class="lineNum">     171 </span>            : 
+<span class="lineNum">     172 </span>            : /**
+<span class="lineNum">     173 </span>            :  * Injects the properties and methods of an object, described in definition
+<span class="lineNum">     174 </span>            :  */
+<span class="lineNum">     175 </span>            : - (void)inject:(id)instance withDefinition:(SEL)selector;
+<span class="lineNum">     176 </span>            : 
+<span class="lineNum">     177 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

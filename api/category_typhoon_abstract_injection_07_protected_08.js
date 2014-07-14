@@ -1,4 +1,4 @@
 var category_typhoon_abstract_injection_07_protected_08 =
 [
-    [ "copyBaseProperiesTo:", "category_typhoon_abstract_injection_07_protected_08.html#a02677c38ce8b8483aaf6b1fc5e6d998f", null ]
+    [ "copyBasePropertiesTo:", "category_typhoon_abstract_injection_07_protected_08.html#a30504db62ed38e24adb794506a2b95e1", null ]
 ];

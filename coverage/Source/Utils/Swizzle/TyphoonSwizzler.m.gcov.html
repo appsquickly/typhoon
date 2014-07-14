@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Typhoon.info - Source/Utils/Swizzle/TyphoonSwizzler.m</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Source/Utils/Swizzle</a> - TyphoonSwizzler.m</td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Typhoon.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntry">23</td>
+            <td class="headerCovTableEntryLo">73.9 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2014-07-08</td>
+            <td></td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<span class="lineNum">       1 </span>            : ////////////////////////////////////////////////////////////////////////////////
+<span class="lineNum">       2 </span>            : //
+<span class="lineNum">       3 </span>            : //  TYPHOON FRAMEWORK
+<span class="lineNum">       4 </span>            : //  Copyright 2014, Jasper Blues &amp; Contributors
+<span class="lineNum">       5 </span>            : //  All Rights Reserved.
+<span class="lineNum">       6 </span>            : //
+<span class="lineNum">       7 </span>            : //  NOTICE: The authors permit you to use, modify, and distribute this file
+<span class="lineNum">       8 </span>            : //  in accordance with the terms of the license agreement accompanying it.
+<span class="lineNum">       9 </span>            : //
+<span class="lineNum">      10 </span>            : ////////////////////////////////////////////////////////////////////////////////
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span>            : #import &quot;TyphoonSwizzler.h&quot;
+<span class="lineNum">      13 </span>            : #import &lt;objc/runtime.h&gt;
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span>            : @implementation TyphoonSwizzler
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span>            : + (instancetype)defaultSwizzler
+<span class="lineNum">      18 </span>            : {
+<span class="lineNum">      19 </span>            :     static TyphoonSwizzler *defaultSwizzler;
+<span class="lineNum">      20 </span>            :     static dispatch_once_t onceToken;
+<span class="lineNum">      21 </span><span class="lineCov">       2339 :     dispatch_once(&amp;onceToken, ^{</span>
+<span class="lineNum">      22 </span><span class="lineCov">          1 :         defaultSwizzler = [TyphoonSwizzler new];</span>
+<span class="lineNum">      23 </span><span class="lineCov">          1 :     });</span>
+<span class="lineNum">      24 </span><span class="lineCov">       2338 :     return defaultSwizzler;</span>
+<span class="lineNum">      25 </span>            : }
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span><span class="lineCov">       4240 : - (BOOL)swizzleMethod:(SEL)origSel withMethod:(SEL)altSel onClass:(Class)pClass error:(NSError **)error</span>
+<span class="lineNum">      28 </span>            : {
+<span class="lineNum">      29 </span><span class="lineCov">       4240 :     Method origMethod = class_getInstanceMethod(pClass, origSel);</span>
+<span class="lineNum">      30 </span><span class="lineCov">       4240 :     Method altMethod = class_getInstanceMethod(pClass, altSel);</span>
+<span class="lineNum">      31 </span>            :     
+<span class="lineNum">      32 </span><span class="lineCov">       4240 :     if (!origMethod &amp;&amp; !altMethod) {</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :         if (error) {</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :             NSString *description = [NSString stringWithFormat:@&quot;Can't swizzle methods since selector %@ and %@ not implemented in %@&quot;, NSStringFromSelector(origSel), NSStringFromSelector(altSel), NSStringFromClass(pClass)];</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :             *error = [NSError errorWithDomain:@&quot;TyphoonMethodSwizzle&quot; code:0 userInfo:@{NSLocalizedDescriptionKey : description }];</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :         return NO;</span>
+<span class="lineNum">      38 </span>            :     }
+<span class="lineNum">      39 </span>            : 
+<span class="lineNum">      40 </span><span class="lineCov">       4240 :     const char *typeEncoding = NULL;</span>
+<span class="lineNum">      41 </span><span class="lineCov">       4240 :     if (origMethod) {</span>
+<span class="lineNum">      42 </span><span class="lineCov">       4240 :         typeEncoding = method_getTypeEncoding(origMethod);</span>
+<span class="lineNum">      43 </span><span class="lineCov">       4240 :     } else {</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :         typeEncoding = method_getTypeEncoding(altMethod);</span>
+<span class="lineNum">      45 </span>            :     }
+<span class="lineNum">      46 </span>            :     
+<span class="lineNum">      47 </span><span class="lineCov">       4240 :     class_addMethod(pClass, origSel, class_getMethodImplementation(pClass, origSel), typeEncoding);</span>
+<span class="lineNum">      48 </span><span class="lineCov">       4240 :     class_addMethod(pClass, altSel, class_getMethodImplementation(pClass, altSel), typeEncoding);</span>
+<span class="lineNum">      49 </span>            :     
+<span class="lineNum">      50 </span><span class="lineCov">       4240 :     method_exchangeImplementations(class_getInstanceMethod(pClass, origSel), class_getInstanceMethod(pClass, altSel));</span>
+<span class="lineNum">      51 </span>            :     
+<span class="lineNum">      52 </span><span class="lineCov">       4240 :     return YES;</span>
+<span class="lineNum">      53 </span><span class="lineCov">       4240 : }</span>
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            : @end
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

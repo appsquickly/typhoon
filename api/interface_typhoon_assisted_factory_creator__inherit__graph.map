@@ -1,5 +1,0 @@
-<map id="TyphoonAssistedFactoryCreator" name="TyphoonAssistedFactoryCreator">
-<area shape="rect" id="node3" href="$interface_typhoon_assisted_factory_creator_implicit.html" title="Creates the full factory class from the given protocol description. " alt="" coords="395,5,608,46"/>
-<area shape="rect" id="node4" href="$interface_typhoon_assisted_factory_creator_many_factories.html" title="Creates the full factory class from the given protocol description and creates implementation for the..." alt="" coords="395,70,608,111"/>
-<area shape="rect" id="node5" href="$interface_typhoon_assisted_factory_creator_one_factory.html" title="Creates the full factory class from the given protocol description. " alt="" coords="395,135,608,177"/>
-</map>
