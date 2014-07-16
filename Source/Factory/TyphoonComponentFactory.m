@@ -94,7 +94,10 @@ static TyphoonComponentFactory *defaultFactory;
 {
     @synchronized (self) {
         if ([self isLoaded]) {
+            NSAssert([_stack isEmpty], @"Stack should be empty when unloading factory. Please finish all object creation before factory unloading");
             [_singletons removeAllObjects];
+            [_weakSingletons removeAllObjects];
+            [_objectGraphSharedInstances removeAllObjects];
             [self setLoaded:NO];
         }
     }
