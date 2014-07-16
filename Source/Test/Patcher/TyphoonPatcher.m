@@ -42,6 +42,11 @@
     [self patchDefinitionWithKey:definition.key withObject:objectCreationBlock];
 }
 
+- (void)patchDefinitionWithSelector:(SEL)definitionSelector withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock
+{
+    [self patchDefinitionWithKey:NSStringFromSelector(definitionSelector) withObject:objectCreationBlock];
+}
+
 - (void)detach
 {
     [self rollback];

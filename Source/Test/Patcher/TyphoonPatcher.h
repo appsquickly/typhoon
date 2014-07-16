@@ -35,6 +35,8 @@ typedef id (^TyphoonPatchObjectCreationBlock)();
 
 - (void)patchDefinition:(TyphoonDefinition *)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock;
 
+- (void)patchDefinitionWithSelector:(SEL)definitionSelector withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock;
+
 - (void)detach;
 
 @end
