@@ -9,10 +9,10 @@
 @interface TyphoonOptionMatcher : NSObject
 
 /** If 'option' equals 'optionValue' then use 'definition' */
-- (void)caseOption:(id)optionValue use:(TyphoonDefinition *)definition;
+- (void)caseOption:(id)optionValue use:(id)definition;
 
 /** When matcher can't match definition from optionValue, use 'definition' */
-- (void)defaultUse:(TyphoonDefinition *)definition;
+- (void)defaultUse:(id)definition;
 
 /**
 * If this method called, matcher will find definition using 'option' value as key.

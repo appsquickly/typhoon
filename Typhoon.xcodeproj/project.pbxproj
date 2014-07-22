@@ -28,7 +28,6 @@
 		6B0770941936F80A0083714E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07701E1936F63A0083714E /* main.m */; };
 		6B0770951936F8130083714E /* TyphoonAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770221936F63A0083714E /* TyphoonAppDelegate.m */; };
 		6B0770961936F8160083714E /* TyphoonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770241936F63A0083714E /* TyphoonViewController.m */; };
-		6B0770981936F9000083714E /* TyphoonMatchedConfigDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076E9A1936F63A0083714E /* TyphoonMatchedConfigDefinition.m */; };
 		6B0770991936F9000083714E /* TyphoonMatcherDefinitionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076E9C1936F63A0083714E /* TyphoonMatcherDefinitionFactory.m */; };
 		6B07709A1936F9000083714E /* TyphoonDefinition+Option.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076E9F1936F63A0083714E /* TyphoonDefinition+Option.m */; };
 		6B07709B1936F9000083714E /* TyphoonOptionMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076EA11936F63A0083714E /* TyphoonOptionMatcher.m */; };
@@ -212,7 +211,6 @@
 		6B0773911937827F0083714E /* OCMockito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B077375193780580083714E /* OCMockito.framework */; };
 		6B077393193782BD0083714E /* OCHamcrest.framework in Install hamcrest */ = {isa = PBXBuildFile; fileRef = 6B077374193780580083714E /* OCHamcrest.framework */; };
 		6B077394193782BD0083714E /* OCMockito.framework in Install hamcrest */ = {isa = PBXBuildFile; fileRef = 6B077375193780580083714E /* OCMockito.framework */; };
-		6B0773951937831A0083714E /* TyphoonMatchedConfigDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076E9A1936F63A0083714E /* TyphoonMatchedConfigDefinition.m */; };
 		6B0773961937831A0083714E /* TyphoonMatcherDefinitionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076E9C1936F63A0083714E /* TyphoonMatcherDefinitionFactory.m */; };
 		6B0773971937831A0083714E /* TyphoonDefinition+Option.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076E9F1936F63A0083714E /* TyphoonDefinition+Option.m */; };
 		6B0773981937831A0083714E /* TyphoonOptionMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076EA11936F63A0083714E /* TyphoonOptionMatcher.m */; };
@@ -434,8 +432,6 @@
 		6B076E611936F5850083714E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6B076E7E1936F5850083714E /* Typhoon-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Typhoon-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B076E7F1936F5850083714E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		6B076E991936F63A0083714E /* TyphoonMatchedConfigDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonMatchedConfigDefinition.h; sourceTree = "<group>"; };
-		6B076E9A1936F63A0083714E /* TyphoonMatchedConfigDefinition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TyphoonMatchedConfigDefinition.m; sourceTree = "<group>"; };
 		6B076E9B1936F63A0083714E /* TyphoonMatcherDefinitionFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonMatcherDefinitionFactory.h; sourceTree = "<group>"; };
 		6B076E9C1936F63A0083714E /* TyphoonMatcherDefinitionFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TyphoonMatcherDefinitionFactory.m; sourceTree = "<group>"; };
 		6B076E9D1936F63A0083714E /* TyphoonOptionMatcher+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TyphoonOptionMatcher+Internal.h"; sourceTree = "<group>"; };
@@ -936,8 +932,6 @@
 		6B076E981936F63A0083714E /* Factory */ = {
 			isa = PBXGroup;
 			children = (
-				6B076E991936F63A0083714E /* TyphoonMatchedConfigDefinition.h */,
-				6B076E9A1936F63A0083714E /* TyphoonMatchedConfigDefinition.m */,
 				6B076E9B1936F63A0083714E /* TyphoonMatcherDefinitionFactory.h */,
 				6B076E9C1936F63A0083714E /* TyphoonMatcherDefinitionFactory.m */,
 				6B076E9D1936F63A0083714E /* TyphoonOptionMatcher+Internal.h */,
@@ -1986,7 +1980,6 @@
 				6B0770ED1936FD440083714E /* TyphoonSwizzler.m in Sources */,
 				6B0770EE1936FD440083714E /* TyphoonIntrospectionUtils.m in Sources */,
 				6B0770F01936FD440083714E /* TyphoonSelector.m in Sources */,
-				6B0770981936F9000083714E /* TyphoonMatchedConfigDefinition.m in Sources */,
 				6B0770991936F9000083714E /* TyphoonMatcherDefinitionFactory.m in Sources */,
 				6B07709A1936F9000083714E /* TyphoonDefinition+Option.m in Sources */,
 				6B07709B1936F9000083714E /* TyphoonOptionMatcher.m in Sources */,
@@ -2158,7 +2151,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B0773951937831A0083714E /* TyphoonMatchedConfigDefinition.m in Sources */,
 				6B0773961937831A0083714E /* TyphoonMatcherDefinitionFactory.m in Sources */,
 				6B0773971937831A0083714E /* TyphoonDefinition+Option.m in Sources */,
 				6B0773981937831A0083714E /* TyphoonOptionMatcher.m in Sources */,

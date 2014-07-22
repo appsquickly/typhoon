@@ -33,7 +33,7 @@
     return self;
 }
 
-- (void)caseOption:(id)optionValue use:(TyphoonDefinition *)definition
+- (void)caseOption:(id)optionValue use:(id)definition
 {
     NSAssert(optionValue, @"optionValue can't be nil");
     NSAssert(definition, @"definition can't be nil");
@@ -47,7 +47,7 @@
     _useMatchingByName = YES;
 }
 
-- (void)defaultUse:(TyphoonDefinition *)definition
+- (void)defaultUse:(id)definition
 {
     _defaultDefinition = definition;
 }
