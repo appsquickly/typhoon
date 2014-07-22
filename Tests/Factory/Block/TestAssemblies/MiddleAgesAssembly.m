@@ -18,6 +18,9 @@
 #import "CavalryMan.h"
 #import "SwordFactory.h"
 #import "Sword.h"
+#import "Mock.h"
+#import "TyphoonInjectionByRuntimeArgument.h"
+#import "TyphoonInjections.h"
 
 @implementation MiddleAgesAssembly
 
@@ -240,6 +243,17 @@
 {
     return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(favoriteQuest)];
+    }];
+}
+
+- (Mock *)mockWithRuntimeBlock:(NSString *(^)())block andRuntimeClass:(Class)aClass
+{
+    return [TyphoonDefinition withClass:[Mock class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(initWithObject:clazz:block:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:nil];
+            [initializer injectParameterWith:aClass];
+            [initializer injectParameterWith:block];
+        }];
     }];
 }
 

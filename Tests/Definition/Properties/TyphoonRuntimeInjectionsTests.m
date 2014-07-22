@@ -10,6 +10,7 @@
 #import "Typhoon.h"
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
+#import "Mock.h"
 
 @interface TyphoonRuntimeInjectionsTests : XCTestCase
 
@@ -45,6 +46,19 @@
     ((void(^)(NSString *))knight.foobar)(@"arg");
     XCTAssertEqualObjects(foobar, @"set from block arg");
 }
+
+- (void)test_runtime_block_and_class
+{
+
+    Mock *mock = [factory mockWithRuntimeBlock:^NSString *{
+       return @"Hello";
+    } andRuntimeClass:[NSString class]];
+
+    XCTAssertEqualObjects(((NSString *(^)())mock.block)(), @"Hello");
+    XCTAssertEqual(mock.clazz, [NSString class]);
+
+}
+
 
 - (void)test_runtime_knight_quest
 {

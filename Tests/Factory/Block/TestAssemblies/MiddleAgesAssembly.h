@@ -16,7 +16,7 @@
 #import "QuestProvider.h"
 
 @class TyphoonDefinition;
-
+@class Mock;
 
 @interface MiddleAgesAssembly : TyphoonAssembly <QuestProvider>
 
@@ -55,4 +55,7 @@
 - (id)knightWithFakePropertyQuest;
 
 - (id)knightWithFakePropertyQuestByType;
+
+- (Mock *)mockWithRuntimeBlock:(NSString*(^)())block andRuntimeClass:(Class)aClass;
+
 @end

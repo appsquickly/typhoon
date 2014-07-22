@@ -21,6 +21,11 @@
 #import "TyphoonCircularDependencyTerminator.h"
 #import "TyphoonSelector.h"
 #import "TyphoonInjections.h"
+#import "TyphoonStringUtils.h"
+
+static id InjectionForArgumentType(const char *argumentType, NSUInteger index);
+static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSignature *signature);
+static void AssertArgumentType(id target, SEL selector, const char *argumentType, NSUInteger index);
 
 @implementation TyphoonAssemblyDefinitionBuilder
 {
@@ -179,8 +184,9 @@ static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSigna
         [invocation retainArguments];
         /* Fill invocation arguments with TyphoonInjectionWithRuntimeArgumentAtIndex injections */
         for (NSUInteger i = 0; i < signature.numberOfArguments - 2; i++) {
-            AssertArgumentType(target, selector, signature, i + 2);
-            id injection = TyphoonInjectionWithRuntimeArgumentAtIndex(i);
+            const char *argumentType = [signature getArgumentTypeAtIndex:i + 2];
+            AssertArgumentType(target, selector, argumentType, i + 2);
+            id injection = InjectionForArgumentType(argumentType, i);
             [invocation setArgument:&injection atIndex:i + 2];
         }
         [invocation invokeWithTarget:target];
@@ -192,11 +198,26 @@ static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSigna
     }
 }
 
-static void AssertArgumentType(id target, SEL selector, NSMethodSignature *signature, NSUInteger index)
+static void AssertArgumentType(id target, SEL selector, const char *argumentType, NSUInteger index)
 {
-    const char *argumentType = [signature getArgumentTypeAtIndex:index];
-    if (strcmp(argumentType, "@") != 0) {
+    BOOL isObject = CStringEquals(argumentType, "@");
+    BOOL isBlock = CStringEquals(argumentType, "@?");
+    BOOL isMetaClass = CStringEquals(argumentType, "#");
+
+    if (!isObject && !isBlock && !isMetaClass) {
         [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %d. Runtime arguments can only be objects. Use wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector], [target class], (int)index-2];
+    }
+}
+
+static id InjectionForArgumentType(const char *argumentType, NSUInteger index)
+{
+    /** We are checking here, if argument type is block, then we have to wrap our injection into 'real' block,
+    *   otherwise, during assignment runtime will try to call Block_copy and it will crash if object is not 'real' block */
+
+    if (CStringEquals(argumentType, "@?")) {
+        return TyphoonInjectionWithRuntimeArgumentAtIndexWrappedIntoBlock(index);
+    } else {
+        return TyphoonInjectionWithRuntimeArgumentAtIndex(index);
     }
 }
 
