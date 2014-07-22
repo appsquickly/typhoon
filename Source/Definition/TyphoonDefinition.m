@@ -78,15 +78,6 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     return definition;
 }
 
-//Deprecated!
-+ (id)withClass:(Class)clazz factory:(id)_definition selector:(SEL)selector
-{
-    return [TyphoonDefinition withClass:clazz configuration:^(TyphoonDefinition *definition) {
-        [definition useInitializer:selector parameters:nil];
-        [definition setFactory:_definition];
-    }];
-}
-
 + (id)withFactory:(id)factory selector:(SEL)selector
 {
     return [TyphoonDefinition withFactory:factory selector:selector parameters:nil];

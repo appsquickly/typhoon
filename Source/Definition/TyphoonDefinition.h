@@ -208,8 +208,6 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
 + (id)withClass:(Class)clazz configuration:(TyphoonDefinitionBlock)injections;
 
-+ (id)withClass:(Class)clazz factory:(id)definition selector:(SEL)selector DEPRECATED_MSG_ATTRIBUTE("Use withFactory:selector: method instead");
-
 + (id)withFactory:(id)definition selector:(SEL)selector;
 
 + (id)withFactory:(id)definition selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock;
@@ -265,5 +263,11 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
  * @param keyPath path used as argument while calling valueForKeyPath: on resolved definition
  */
 - (id)keyPath:(NSString *)keyPath;
+
+@end
+
+@interface TyphoonDefinition(Unavailable)
+
++ (id)withClass:(Class)clazz factory:(id)definition selector:(SEL)selector __attribute((unavailable("Use withFactory:selector: method instead")));
 
 @end
