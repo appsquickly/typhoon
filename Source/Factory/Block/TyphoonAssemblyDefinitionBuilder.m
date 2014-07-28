@@ -176,7 +176,8 @@ static void AssertArgumentType(id target, SEL selector, const char *argumentType
     return cached;
 }
 
-static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSignature *signature) {
+static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSignature *signature)
+{
     if (signature.numberOfArguments > 2) {
         void *result;
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];

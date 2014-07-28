@@ -56,7 +56,7 @@
     assembly = [[EmptyTestAssembly alloc] init];
     adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
-    NSSet *selectors = [adviser enumerateDefinitionSelectors];
+    NSSet *selectors = [adviser definitionSelectors];
     XCTAssertEqual([selectors count], 0);
 }
 
@@ -65,7 +65,7 @@
     assembly = [[TestAssemblyWithMethod alloc] init];
     adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
-    NSSet *selectors = [adviser enumerateDefinitionSelectors];
+    NSSet *selectors = [adviser definitionSelectors];
     TyphoonSelector *theSelector = [TyphoonSelector selectorWithName:@"aDefinitionMethod"];
 
     XCTAssertTrue([selectors count] == 1);

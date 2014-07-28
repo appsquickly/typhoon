@@ -122,11 +122,6 @@ static NSMutableSet *reservedSelectorsAsStrings;
     return self;
 }
 
-- (void)dealloc
-{
-    [TyphoonAssemblyAdviser undoAdviseMethods:self];
-}
-
 /* ====================================================================================================================================== */
 #pragma mark - <TyphoonObjectWithCustomInjection>
 
@@ -178,7 +173,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 - (void)prepareForUse
 {
-    self.definitionSelectors = [self.adviser enumerateDefinitionSelectors];
+    self.definitionSelectors = [self.adviser definitionSelectors];
     [self.adviser adviseAssembly];
 }
 
