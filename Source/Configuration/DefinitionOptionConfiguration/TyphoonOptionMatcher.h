@@ -11,6 +11,12 @@
 /** If 'option' equals 'optionValue' then use 'definition' */
 - (void)caseOption:(id)optionValue use:(id)definition;
 
+/** If 'option' is kind of class 'optionClass' then use 'definition' */
+- (void)caseKindOfClass:(Class)optionClass use:(id)definition;
+
+/** If 'option' is member of class 'optionClass' then use 'definition' */
+- (void)caseMemberOfClass:(Class)optionClass use:(id)definition;
+
 /** When matcher can't match definition from optionValue, use 'definition' */
 - (void)defaultUse:(id)definition;
 

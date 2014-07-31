@@ -10,12 +10,61 @@
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "TyphoonDefinition+Infrastructure.h"
 
+////////////////////// TyphoonOptionMatcherValue //////////////////
+
+@interface TyphoonOptionMatch : NSObject
+@property (nonatomic, strong) id value;
+@property (nonatomic) Class memberClass;
+@property (nonatomic) Class kindClass;
+@property (nonatomic, strong) TyphoonDefinition *definition;
+@property (nonatomic, strong) TyphoonRuntimeArguments *referenceArguments;
+
++ (id)matchWithValue:(id)value definition:(id)definition;
++ (id)matchWithKindOfClass:(Class)clazz definition:(id)definition;
++ (id)matchWithMemberOfClass:(Class)clazz definition:(id)definition;
+
+@end
+
+@implementation TyphoonOptionMatch
+
++ (id)matchWithValue:(id)value definition:(id)definition
+{
+    TyphoonOptionMatch *match = [TyphoonOptionMatch new];
+    match.value = value;
+    match.definition = definition;
+    return match;
+}
+
++ (id)matchWithKindOfClass:(Class)clazz definition:(id)definition
+{
+    TyphoonOptionMatch *match = [TyphoonOptionMatch new];
+    match.kindClass = clazz;
+    match.definition = definition;
+    return match;
+}
+
++ (id)matchWithMemberOfClass:(Class)clazz definition:(id)definition
+{
+    TyphoonOptionMatch *match = [TyphoonOptionMatch new];
+    match.memberClass = clazz;
+    match.definition = definition;
+    return match;
+}
+
+- (void)setDefinition:(TyphoonDefinition *)definition
+{
+    _definition = definition;
+    self.referenceArguments = definition.currentRuntimeArguments;
+}
+
+@end
+
+
+////////////////////////////////////////
 
 @implementation TyphoonOptionMatcher
 {
-    NSMutableArray *_values;
-    NSMutableArray *_definitions;
-    NSMutableArray *_referenceArguments;
+    NSMutableArray *_matches;
     TyphoonDefinition *_defaultDefinition;
     TyphoonRuntimeArguments *_defaultReferenceArguments;
     BOOL _useMatchingByName;
@@ -25,9 +74,7 @@
 {
     self = [super init];
     if (self) {
-        _values = [NSMutableArray new];
-        _definitions = [NSMutableArray new];
-        _referenceArguments = [NSMutableArray new];
+        _matches = [NSMutableArray new];
         _useMatchingByName = NO;
 
         if (block) {
@@ -37,21 +84,25 @@
     return self;
 }
 
-
 - (void)caseOption:(id)optionValue use:(id)definition
 {
     NSAssert(optionValue, @"optionValue can't be nil");
     NSAssert(definition, @"definition can't be nil");
+    [_matches addObject:[TyphoonOptionMatch matchWithValue:optionValue definition:definition]];
+}
 
-    [_values addObject:optionValue];
-    [_definitions addObject:definition];
+- (void)caseKindOfClass:(Class)optionClass use:(id)definition
+{
+    NSAssert(optionClass, @"optionClass can't be nil");
+    NSAssert(definition, @"definition can't be nil");
+    [_matches addObject:[TyphoonOptionMatch matchWithKindOfClass:optionClass definition:definition]];
+}
 
-    TyphoonRuntimeArguments *currentRuntimeArgs = ((TyphoonDefinition *) definition).currentRuntimeArguments;
-    if (currentRuntimeArgs) {
-        [_referenceArguments addObject:currentRuntimeArgs];
-    } else {
-        [_referenceArguments addObject:[NSNull null]];
-    }
+- (void)caseMemberOfClass:(Class)optionClass use:(id)definition
+{
+    NSAssert(optionClass, @"optionClass can't be nil");
+    NSAssert(definition, @"definition can't be nil");
+    [_matches addObject:[TyphoonOptionMatch matchWithMemberOfClass:optionClass definition:definition]];
 }
 
 - (void)useDefinitionWithKeyMatchedOptionValue
@@ -65,39 +116,15 @@
     _defaultReferenceArguments = ((TyphoonDefinition *)definition).currentRuntimeArguments;
 }
 
-- (TyphoonDefinition *)definitionMatchingValue:(id)value withComponentFactory:(TyphoonComponentFactory *)factory
-{
-    TyphoonDefinition *result = nil;
-
-    NSUInteger index = [_values indexOfObject:value];
-
-    if (index != NSNotFound) {
-        result = _definitions[index];
-    } else if (_useMatchingByName && [value isKindOfClass:[NSString class]]){
-        result = [factory definitionForKey:value];
-    }
-
-    if (!result) {
-        result = _defaultDefinition;
-    }
-
-    if (!result) {
-        [NSException raise:NSInternalInconsistencyException format:@"Can't find definition to match value %@",value];
-    }
-
-    return result;
-}
-
 - (void)findDefinitionMatchedValue:(id)value withFactory:(TyphoonComponentFactory *)factory usingBlock:(TyphoonOptionMatcherDefinitionSearchResult)block
 {
     TyphoonDefinition *result = nil;
     TyphoonRuntimeArguments *resultArgs = nil;
 
-    NSUInteger index = [_values indexOfObject:value];
-
-    if (index != NSNotFound) {
-        result = _definitions[index];
-        resultArgs = _referenceArguments[index];
+    TyphoonOptionMatch *match = [self matchForValue:value];
+    if (match) {
+        result = match.definition;
+        resultArgs = match.referenceArguments;
     } else if (_useMatchingByName && [value isKindOfClass:[NSString class]]){
         result = [factory definitionForKey:value];
     }
@@ -118,6 +145,19 @@
     block(result, resultArgs);
 }
 
+
+- (TyphoonOptionMatch *)matchForValue:(id)value
+{
+    for (TyphoonOptionMatch *match in _matches) {
+        BOOL isEqual = (match.value && [match.value isEqual:value]);
+        BOOL isKind = (match.kindClass && [value isKindOfClass:match.kindClass]);
+        BOOL isMember = (match.memberClass && [value isMemberOfClass:match.memberClass]);
+        if (isEqual || isKind || isMember) {
+            return match;
+        }
+    }
+    return nil;
+}
 
 
 @end
