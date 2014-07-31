@@ -9,10 +9,13 @@
 
 @class TyphoonComponentFactory;
 
+typedef void(^TyphoonOptionMatcherDefinitionSearchResult)(TyphoonDefinition *definition, TyphoonRuntimeArguments *arguments);
+
+
 @interface TyphoonOptionMatcher (Internal)
 
 - (instancetype)initWithBlock:(TyphoonMatcherBlock)block;
 
-- (TyphoonDefinition *)definitionMatchingValue:(id)value withComponentFactory:(TyphoonComponentFactory *)factory;
+- (void)findDefinitionMatchedValue:(id)value withFactory:(TyphoonComponentFactory *)factory usingBlock:(TyphoonOptionMatcherDefinitionSearchResult)block;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonIntrospectionUtils.h"
+#import "TyphoonInjectionByRuntimeArgument.h"
 
 @interface TyphoonRuntimeNullArgument : NSObject
 
@@ -100,6 +101,26 @@
     _needRehash = YES;
 }
 
++ (TyphoonRuntimeArguments *)argumentsFromRuntimeArguments:(TyphoonRuntimeArguments *)runtimeArguments appliedToReferenceArguments:(TyphoonRuntimeArguments *)referenceArguments
+{
+    TyphoonRuntimeArguments *result = referenceArguments;
+
+    Class runtimeArgInjectionClass = [TyphoonInjectionByRuntimeArgument class];
+    BOOL hasRuntimeArgumentReferences = [referenceArguments indexOfArgumentWithKind:runtimeArgInjectionClass] != NSNotFound;
+
+    if (referenceArguments && runtimeArguments && hasRuntimeArgumentReferences) {
+        result = [referenceArguments copy];
+        NSUInteger indexToReplace;
+        while ((indexToReplace = [result indexOfArgumentWithKind:runtimeArgInjectionClass]) != NSNotFound) {
+            TyphoonInjectionByRuntimeArgument *runtimeArgPlaceholder = [result argumentValueAtIndex:indexToReplace];
+            id runtimeValue = [runtimeArguments argumentValueAtIndex:runtimeArgPlaceholder.runtimeArgumentIndex];
+            [result replaceArgumentAtIndex:indexToReplace withArgument:runtimeValue];
+        }
+    }
+
+    return result;
+}
+
 - (NSUInteger)indexOfArgumentWithKind:(Class)clazz
 {
     return [_arguments indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
@@ -135,6 +156,14 @@
     }
     
     return hash;
+}
+
+- (NSString *)description
+{
+    NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
+    [description appendFormat:@"_arguments=%@", _arguments];
+    [description appendString:@">"];
+    return description;
 }
 
 @end

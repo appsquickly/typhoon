@@ -30,4 +30,7 @@
 - (id)definitionMatchedByCustomMatcherOrNameFromOption:(NSString *)option;
 
 - (id)definitionMatchedByCustomMatcherWithDefaultFromOption:(NSString *)option;
+
+- (id)definitionMatchedByCustomMatcherFromOption:(NSString *)option withString:(NSString *)string;
+
 @end

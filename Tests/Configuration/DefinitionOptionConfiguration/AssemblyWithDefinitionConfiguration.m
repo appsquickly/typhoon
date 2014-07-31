@@ -113,5 +113,24 @@
     }];
 }
 
+- (id)definitionMatchedByCustomMatcherFromOption:(NSString *)option withString:(NSString *)string
+{
+    return [TyphoonDefinition withOption:option matcher:^(TyphoonOptionMatcher *matcher) {
+        [matcher caseOption:@"positive" use:[self trueString]];
+        [matcher caseOption:@"negative" use:[self falseString]];
+        [matcher caseOption:@"nothing" use:[self zeroString]];
+        [matcher caseOption:@"custom" use:[self stringWithText:string]];
+        [matcher defaultUse:[self zeroString]];
+    }];
+}
+
+- (id)stringWithText:(NSString *)text
+{
+    return [TyphoonDefinition withClass:[NSString class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(initWithString:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:text];
+        }];
+    }];
+}
 
 @end

@@ -383,6 +383,7 @@
 		BA798848CA5A0D7F6AF44DCF /* TyphoonConfigPostProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E14534FB69AC182D402 /* TyphoonConfigPostProcessorTests.m */; };
 		BA798C5BE35D5B38B2F64387 /* TyphoonViewControllerNibResolverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982C084F0AD60B5858F31 /* TyphoonViewControllerNibResolverTests.m */; };
 		BA798CEBF664D4B2D24EA1A3 /* TyphoonConfigPostProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E14534FB69AC182D402 /* TyphoonConfigPostProcessorTests.m */; };
+		C9497A0F3C744433419C9D5D /* TyphoonInjectionByCurrentRuntimeArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = C94972BE857448DEBA12C1CE /* TyphoonInjectionByCurrentRuntimeArguments.m */; };
 		C9497BE0FC290233160074AC /* Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = C949792A85FC9383BEAD631B /* Mock.m */; };
 /* End PBXBuildFile section */
 
@@ -793,7 +794,9 @@
 		BA798E0CA9E9828D07777F40 /* TyphoonUIColorConverterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonUIColorConverterTests.m; sourceTree = "<group>"; };
 		BA798E14534FB69AC182D402 /* TyphoonConfigPostProcessorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonConfigPostProcessorTests.m; sourceTree = "<group>"; };
 		BA798EA3F8F037BFC45CBCB7 /* StoryboardViewControllerAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardViewControllerAssembly.m; sourceTree = "<group>"; };
+		C94972BE857448DEBA12C1CE /* TyphoonInjectionByCurrentRuntimeArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonInjectionByCurrentRuntimeArguments.m; sourceTree = "<group>"; };
 		C949758EA994B0137DD95E6D /* Mock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mock.h; sourceTree = "<group>"; };
+		C949766E39C445A43A7517B8 /* TyphoonInjectionByCurrentRuntimeArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonInjectionByCurrentRuntimeArguments.h; sourceTree = "<group>"; };
 		C949792A85FC9383BEAD631B /* Mock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mock.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1022,6 +1025,8 @@
 				6B076ED41936F63A0083714E /* TyphoonParameterInjection.h */,
 				6B076ED51936F63A0083714E /* TyphoonPropertyInjection.h */,
 				2DBA1FC6F594C49C7D8261A6 /* TyphoonInjections.m */,
+				C94972BE857448DEBA12C1CE /* TyphoonInjectionByCurrentRuntimeArguments.m */,
+				C949766E39C445A43A7517B8 /* TyphoonInjectionByCurrentRuntimeArguments.h */,
 			);
 			path = Injections;
 			sourceTree = "<group>";
@@ -2048,6 +2053,7 @@
 				2DBA14D07CBAF423D1C4BEA4 /* TyphoonStartup.m in Sources */,
 				2DBA19F9B65EE9FB8DBF13EA /* TyphoonInitialStoryboardResolver.m in Sources */,
 				C9497BE0FC290233160074AC /* Mock.m in Sources */,
+				C9497A0F3C744433419C9D5D /* TyphoonInjectionByCurrentRuntimeArguments.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

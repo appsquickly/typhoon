@@ -89,4 +89,9 @@
     XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherWithDefaultFromOption:@"unknown"], @"ZERO");
 }
 
+- (void)test_definition_with_custom_matcher_and_runtime_args_passing
+{
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherFromOption:@"custom" withString:@"123"], @"123");
+}
+
 @end

@@ -46,33 +46,11 @@
     }
 }
 
-#pragma mark - Utils
-
-- (TyphoonRuntimeArguments *)referenceArgumentsByApplyingRuntimeArgs:(TyphoonRuntimeArguments *)runtimeArgs
-{
-    TyphoonRuntimeArguments *result = _referenceArguments;
-
-    Class runtimeArgInjectionClass = [TyphoonInjectionByRuntimeArgument class];
-    BOOL hasRuntimeArgumentReferences = [_referenceArguments indexOfArgumentWithKind:runtimeArgInjectionClass] != NSNotFound;
-
-    if (_referenceArguments && runtimeArgs && hasRuntimeArgumentReferences) {
-        result = [_referenceArguments copy];
-        NSUInteger indexToReplace;
-        while ((indexToReplace = [result indexOfArgumentWithKind:runtimeArgInjectionClass]) != NSNotFound) {
-            TyphoonInjectionByRuntimeArgument *runtimeArgPlaceholder = [result argumentValueAtIndex:indexToReplace];
-            id runtimeValue = [runtimeArgs argumentValueAtIndex:runtimeArgPlaceholder.runtimeArgumentIndex];
-            [result replaceArgumentAtIndex:indexToReplace withArgument:runtimeValue];
-        }
-    }
-
-    return result;
-}
-
 #pragma mark - Protected
 
 - (void)resolveCircularDependencyWithContext:(TyphoonInjectionContext *)context block:(dispatch_block_t)block
 {
-    TyphoonRuntimeArguments *args = [self referenceArgumentsByApplyingRuntimeArgs:context.args];
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromRuntimeArguments:context.args appliedToReferenceArguments:_referenceArguments];
     [context.factory resolveCircularDependency:self.reference args:args resolvedBlock:^(BOOL isCircular) {
         block();
     }];
@@ -81,7 +59,7 @@
 //Raises circular dependencies exception if already initializing.
 - (id)resolveReferenceWithContext:(TyphoonInjectionContext *)context
 {
-    TyphoonRuntimeArguments *args = [self referenceArgumentsByApplyingRuntimeArgs:context.args];
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromRuntimeArguments:context.args appliedToReferenceArguments:_referenceArguments];
     
     id referenceInstance = [[[context.factory stack] peekForKey:self.reference args:args] instance];
     if (!referenceInstance) {

@@ -19,6 +19,7 @@
 #import "TyphoonInjectionByCollection.h"
 #import "TyphoonInjectionByRuntimeArgument.h"
 #import "TyphoonInjectionByDictionary.h"
+#import "TyphoonInjectionByCurrentRuntimeArguments.h"
 
 #import "TyphoonObjectWithCustomInjection.h"
 #import "TyphoonInjectionByConfig.h"
@@ -66,6 +67,11 @@ id TyphoonInjectionWithReference(NSString *reference) {
 id TyphoonInjectionWithConfigKey(NSString *configKey)
 {
     return [[TyphoonInjectionByConfig alloc] initWithConfigKey:configKey];
+}
+
+id TyphoonInjectionWithCurrentRuntimeArguments()
+{
+    return [TyphoonInjectionByCurrentRuntimeArguments new];
 }
 
 id TyphoonMakeInjectionFromObjectIfNeeded(id objectOrInjection) {

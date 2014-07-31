@@ -18,4 +18,6 @@
 
 - (void)replaceArgumentAtIndex:(NSUInteger)index withArgument:(id)argument;
 
++ (TyphoonRuntimeArguments *)argumentsFromRuntimeArguments:(TyphoonRuntimeArguments *)runtimeArguments appliedToReferenceArguments:(TyphoonRuntimeArguments *)referenceArguments;
+
 @end

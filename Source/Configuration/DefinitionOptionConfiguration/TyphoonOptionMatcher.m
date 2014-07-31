@@ -8,14 +8,17 @@
 #import "TyphoonOptionMatcher+Internal.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 
 @implementation TyphoonOptionMatcher
 {
     NSMutableArray *_values;
     NSMutableArray *_definitions;
-    BOOL _useMatchingByName;
+    NSMutableArray *_referenceArguments;
     TyphoonDefinition *_defaultDefinition;
+    TyphoonRuntimeArguments *_defaultReferenceArguments;
+    BOOL _useMatchingByName;
 }
 
 - (instancetype)initWithBlock:(TyphoonMatcherBlock)block
@@ -24,6 +27,7 @@
     if (self) {
         _values = [NSMutableArray new];
         _definitions = [NSMutableArray new];
+        _referenceArguments = [NSMutableArray new];
         _useMatchingByName = NO;
 
         if (block) {
@@ -33,6 +37,7 @@
     return self;
 }
 
+
 - (void)caseOption:(id)optionValue use:(id)definition
 {
     NSAssert(optionValue, @"optionValue can't be nil");
@@ -40,6 +45,13 @@
 
     [_values addObject:optionValue];
     [_definitions addObject:definition];
+
+    TyphoonRuntimeArguments *currentRuntimeArgs = ((TyphoonDefinition *) definition).currentRuntimeArguments;
+    if (currentRuntimeArgs) {
+        [_referenceArguments addObject:currentRuntimeArgs];
+    } else {
+        [_referenceArguments addObject:[NSNull null]];
+    }
 }
 
 - (void)useDefinitionWithKeyMatchedOptionValue
@@ -50,6 +62,7 @@
 - (void)defaultUse:(id)definition
 {
     _defaultDefinition = definition;
+    _defaultReferenceArguments = ((TyphoonDefinition *)definition).currentRuntimeArguments;
 }
 
 - (TyphoonDefinition *)definitionMatchingValue:(id)value withComponentFactory:(TyphoonComponentFactory *)factory
@@ -74,5 +87,37 @@
 
     return result;
 }
+
+- (void)findDefinitionMatchedValue:(id)value withFactory:(TyphoonComponentFactory *)factory usingBlock:(TyphoonOptionMatcherDefinitionSearchResult)block
+{
+    TyphoonDefinition *result = nil;
+    TyphoonRuntimeArguments *resultArgs = nil;
+
+    NSUInteger index = [_values indexOfObject:value];
+
+    if (index != NSNotFound) {
+        result = _definitions[index];
+        resultArgs = _referenceArguments[index];
+    } else if (_useMatchingByName && [value isKindOfClass:[NSString class]]){
+        result = [factory definitionForKey:value];
+    }
+
+    if (!result) {
+        result = _defaultDefinition;
+        resultArgs = _defaultReferenceArguments;
+    }
+
+    if (!result) {
+        [NSException raise:NSInternalInconsistencyException format:@"Can't find definition to match value %@",value];
+    }
+
+    if ([resultArgs isKindOfClass:[NSNull class]]) {
+        resultArgs = nil;
+    }
+
+    block(result, resultArgs);
+}
+
+
 
 @end

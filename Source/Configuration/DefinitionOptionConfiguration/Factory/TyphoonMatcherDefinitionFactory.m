@@ -6,14 +6,20 @@
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "TyphoonMatcherDefinitionFactory.h"
 #import "TyphoonOptionMatcher+Internal.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 
 @implementation TyphoonMatcherDefinitionFactory
 
-- (id)valueCreatedFromDefinitionMatchedOption:(id)optionValue
+- (id)valueCreatedFromDefinitionMatchedOption:(id)optionValue args:(TyphoonRuntimeArguments *)args
 {
-    TyphoonDefinition *definition = [self.matcher definitionMatchingValue:optionValue withComponentFactory:self.factory];
-    return [self.factory objectForDefinition:definition args:nil];
+    __block id result = nil;
+    [self.matcher findDefinitionMatchedValue:optionValue withFactory:self.factory usingBlock:^(TyphoonDefinition *definition, TyphoonRuntimeArguments *referenceArguments) {
+        TyphoonRuntimeArguments *definitionArgs = [TyphoonRuntimeArguments argumentsFromRuntimeArguments:args appliedToReferenceArguments:referenceArguments];
+        result = [self.factory objectForDefinition:definition args:definitionArgs];
+    }];
+    NSParameterAssert(result);
+    return result;
 }
 
 @end
