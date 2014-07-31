@@ -10,7 +10,7 @@
 
 @implementation TyphoonDefinition (Option)
 
-+ (TyphoonDefinition *)withOption:(id)option yes:(id)yesDefinition no:(id)noDefinition
++ (id)withOption:(id)option yes:(id)yesDefinition no:(id)noDefinition
 {
     return [self withOption:option matcher:^(TyphoonOptionMatcher *matcher) {
         [matcher caseOption:@YES use:yesDefinition];
@@ -22,7 +22,7 @@
     }];
 }
 
-+ (TyphoonDefinition *)withOption:(id)option matcher:(TyphoonMatcherBlock)matcherBlock
++ (id)withOption:(id)option matcher:(TyphoonMatcherBlock)matcherBlock
 {
     TyphoonOptionMatcher *matcher = [[TyphoonOptionMatcher alloc] initWithBlock:matcherBlock];
 
