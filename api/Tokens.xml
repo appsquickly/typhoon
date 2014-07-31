@@ -289,7 +289,17 @@
       <Type>func</Type>
     </TokenIdentifier>
     <Path>_typhoon_injections_8h.html</Path>
-    <Anchor>abd6595032bd02a3ce759eaa452e4722e</Anchor>
+    <Anchor>a717c3615818596e45914de4e0bb998f8</Anchor>
+    <DeclaredIn>TyphoonInjections.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>TyphoonInjectionWithRuntimeArgumentAtIndexWrappedIntoBlock</Name>
+      <APILanguage>c</APILanguage>
+      <Type>func</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_injections_8h.html</Path>
+    <Anchor>ad1b29fdc7ed1b3fd1af061cd5fcad906</Anchor>
     <DeclaredIn>TyphoonInjections.h</DeclaredIn>
   </Token>
   <Token>
@@ -2113,17 +2123,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>withClass:factory:selector:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>ad0bdd035d89cbf8b9fb937ec2cceb59c</Anchor>
-    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>withFactory:selector:</Name>
       <APILanguage>occ</APILanguage>
       <Type>clm</Type>
@@ -2164,7 +2163,7 @@
       <Scope>TyphoonDefinition</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a130e5930484a6bf951b176b092634dc2</Anchor>
+    <Anchor>a4f34bf0942e409dda3d43df3c4abaf8c</Anchor>
     <Abstract>if boolean &amp;#39;option&amp;#39; value is YES, then return yesDefinition, otherwise return noDefinition ...</Abstract>
     <DeclaredIn>TyphoonDefinition+Option.h</DeclaredIn>
   </Token>
@@ -2282,7 +2281,7 @@
       <Scope>TyphoonDefinition(Option)</Scope>
     </TokenIdentifier>
     <Path>category_typhoon_definition_07_option_08.html</Path>
-    <Anchor>a130e5930484a6bf951b176b092634dc2</Anchor>
+    <Anchor>a4f34bf0942e409dda3d43df3c4abaf8c</Anchor>
     <Abstract>if boolean &amp;#39;option&amp;#39; value is YES, then return yesDefinition, otherwise return noDefinition ...</Abstract>
     <DeclaredIn>TyphoonDefinition+Option.h</DeclaredIn>
   </Token>
@@ -3633,6 +3632,28 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>getterForPropertyWithName:inClass:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonIntrospectionUtils</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_introspection_utils.html</Path>
+    <Anchor>a456878cf84be1d93bff460c66e9ae086</Anchor>
+    <DeclaredIn>TyphoonIntrospectionUtils.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>methodsForClass:upToParentClass:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonIntrospectionUtils</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_introspection_utils.html</Path>
+    <Anchor>a1ef9ee9f05dc7f2f9c7a3deb0dd8afba</Anchor>
+    <DeclaredIn>TyphoonIntrospectionUtils.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:</Name>
       <APILanguage>occ</APILanguage>
       <Type>clm</Type>
@@ -3651,17 +3672,6 @@
     </TokenIdentifier>
     <Path>interface_typhoon_introspection_utils.html</Path>
     <Anchor>abfae072f0c04b9ccdf3f62f5d7ea34eb</Anchor>
-    <DeclaredIn>TyphoonIntrospectionUtils.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>propertiesForClass:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonIntrospectionUtils</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_introspection_utils.html</Path>
-    <Anchor>af11e00d3df21c58627fd67be08a7200d</Anchor>
     <DeclaredIn>TyphoonIntrospectionUtils.h</DeclaredIn>
   </Token>
   <Token>
@@ -3876,7 +3886,7 @@
       <Scope>TyphoonOptionMatcher</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_option_matcher.html</Path>
-    <Anchor>a7c68d28eb0512b3b8dd2ef1ec1369817</Anchor>
+    <Anchor>a5cbdce8a9e2f4cbd7a851891bac1615d</Anchor>
     <Abstract>If &amp;#39;option&amp;#39; equals &amp;#39;optionValue&amp;#39; then use &amp;#39;definition&amp;#39;. </Abstract>
     <DeclaredIn>TyphoonOptionMatcher.h</DeclaredIn>
   </Token>
@@ -3888,7 +3898,7 @@
       <Scope>TyphoonOptionMatcher</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_option_matcher.html</Path>
-    <Anchor>aba69c83e828c42b6e7b06132163492bf</Anchor>
+    <Anchor>a19bf4efe1eec58b5b2a4584975eb1121</Anchor>
     <Abstract>When matcher can&amp;#39;t match definition from optionValue, use &amp;#39;definition&amp;#39;. </Abstract>
     <DeclaredIn>TyphoonOptionMatcher.h</DeclaredIn>
   </Token>
@@ -4035,6 +4045,17 @@
     </TokenIdentifier>
     <Path>interface_typhoon_patcher.html</Path>
     <Anchor>a81cd00d79350a44cc9aa10794377e94c</Anchor>
+    <DeclaredIn>TyphoonPatcher.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>patchDefinitionWithSelector:withObject:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonPatcher</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_patcher.html</Path>
+    <Anchor>a439c7ffa79249ea5464584791186b7e7</Anchor>
     <DeclaredIn>TyphoonPatcher.h</DeclaredIn>
   </Token>
   <Token>

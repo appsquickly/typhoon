@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-07-08</td>
+            <td class="headerValue">2014-07-31</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -74,36 +74,36 @@
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span>            : @interface TyphoonInjectionByCollection ()
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span><span class="lineCov">        228 : @property(nonatomic, strong) NSMutableArray *injections;</span>
-<span class="lineNum">      20 </span><span class="lineCov">        225 : @property(nonatomic) Class requiredClass;</span>
+<span class="lineNum">      19 </span><span class="lineCov">        231 : @property(nonatomic, strong) NSMutableArray *injections;</span>
+<span class="lineNum">      20 </span><span class="lineCov">        228 : @property(nonatomic) Class requiredClass;</span>
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            : @end
 <span class="lineNum">      23 </span>            : 
 <span class="lineNum">      24 </span>            : 
 <span class="lineNum">      25 </span><span class="lineCov">          9 : @implementation TyphoonInjectionByCollection</span>
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">         83 : + (BOOL)isCollectionClass:(Class)collectionClass</span>
+<span class="lineNum">      27 </span><span class="lineCov">         84 : + (BOOL)isCollectionClass:(Class)collectionClass</span>
 <span class="lineNum">      28 </span>            : {
-<span class="lineNum">      29 </span><span class="lineCov">         83 :     collectionClass = [self collectionMutableClassFromClass:collectionClass];</span>
-<span class="lineNum">      30 </span><span class="lineCov">         83 :     BOOL success = YES;</span>
-<span class="lineNum">      31 </span><span class="lineCov">         83 :     success &amp;= [collectionClass conformsToProtocol:@protocol(NSFastEnumeration)];</span>
-<span class="lineNum">      32 </span><span class="lineCov">         83 :     success &amp;= [collectionClass instancesRespondToSelector:@selector(initWithCapacity:)];</span>
-<span class="lineNum">      33 </span><span class="lineCov">         83 :     success &amp;= [collectionClass instancesRespondToSelector:@selector(count)];</span>
-<span class="lineNum">      34 </span><span class="lineCov">         83 :     success &amp;= [collectionClass instancesRespondToSelector:@selector(addObject:)];</span>
+<span class="lineNum">      29 </span><span class="lineCov">         84 :     collectionClass = [self collectionMutableClassFromClass:collectionClass];</span>
+<span class="lineNum">      30 </span><span class="lineCov">         84 :     BOOL success = YES;</span>
+<span class="lineNum">      31 </span><span class="lineCov">         84 :     success &amp;= [collectionClass conformsToProtocol:@protocol(NSFastEnumeration)];</span>
+<span class="lineNum">      32 </span><span class="lineCov">         84 :     success &amp;= [collectionClass instancesRespondToSelector:@selector(initWithCapacity:)];</span>
+<span class="lineNum">      33 </span><span class="lineCov">         84 :     success &amp;= [collectionClass instancesRespondToSelector:@selector(count)];</span>
+<span class="lineNum">      34 </span><span class="lineCov">         84 :     success &amp;= [collectionClass instancesRespondToSelector:@selector(addObject:)];</span>
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span><span class="lineCov">         83 :     return success;</span>
+<span class="lineNum">      36 </span><span class="lineCov">         84 :     return success;</span>
 <span class="lineNum">      37 </span>            : }
 <span class="lineNum">      38 </span>            : 
-<span class="lineNum">      39 </span><span class="lineCov">         95 : + (Class)collectionMutableClassFromClass:(Class)collectionClass</span>
+<span class="lineNum">      39 </span><span class="lineCov">         96 : + (Class)collectionMutableClassFromClass:(Class)collectionClass</span>
 <span class="lineNum">      40 </span>            : {
-<span class="lineNum">      41 </span><span class="lineCov">         95 :     Class result;</span>
+<span class="lineNum">      41 </span><span class="lineCov">         96 :     Class result;</span>
 <span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span><span class="lineCov">         95 :     if ([collectionClass isSubclassOfClass:[NSArray class]]) {</span>
+<span class="lineNum">      43 </span><span class="lineCov">         96 :     if ([collectionClass isSubclassOfClass:[NSArray class]]) {</span>
 <span class="lineNum">      44 </span><span class="lineCov">         11 :         result = [NSMutableArray class];</span>
 <span class="lineNum">      45 </span><span class="lineCov">         11 :     }</span>
-<span class="lineNum">      46 </span><span class="lineCov">         84 :     else if ([collectionClass isSubclassOfClass:[NSSet class]]) {</span>
-<span class="lineNum">      47 </span><span class="lineCov">         78 :         result = [NSMutableSet class];</span>
-<span class="lineNum">      48 </span><span class="lineCov">         78 :     }</span>
+<span class="lineNum">      46 </span><span class="lineCov">         85 :     else if ([collectionClass isSubclassOfClass:[NSSet class]]) {</span>
+<span class="lineNum">      47 </span><span class="lineCov">         79 :         result = [NSMutableSet class];</span>
+<span class="lineNum">      48 </span><span class="lineCov">         79 :     }</span>
 <span class="lineNum">      49 </span><span class="lineCov">          6 :     else if ([collectionClass isSubclassOfClass:[NSOrderedSet class]]) {</span>
 <span class="lineNum">      50 </span><span class="lineCov">          4 :         result = [NSMutableOrderedSet class];</span>
 <span class="lineNum">      51 </span><span class="lineCov">          4 :     }</span>
@@ -111,33 +111,33 @@
 <span class="lineNum">      53 </span><span class="lineCov">          2 :         result = collectionClass;</span>
 <span class="lineNum">      54 </span>            :     }
 <span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span><span class="lineCov">         95 :     return result;</span>
+<span class="lineNum">      56 </span><span class="lineCov">         96 :     return result;</span>
 <span class="lineNum">      57 </span>            : }
 <span class="lineNum">      58 </span>            : 
-<span class="lineNum">      59 </span><span class="lineCov">         69 : - (instancetype)initWithCollection:(id)collection requiredClass:(Class)collectionClass</span>
+<span class="lineNum">      59 </span><span class="lineCov">         70 : - (instancetype)initWithCollection:(id)collection requiredClass:(Class)collectionClass</span>
 <span class="lineNum">      60 </span>            : {
-<span class="lineNum">      61 </span><span class="lineCov">         69 :     self.requiredClass = collectionClass;</span>
+<span class="lineNum">      61 </span><span class="lineCov">         70 :     self.requiredClass = collectionClass;</span>
 <span class="lineNum">      62 </span>            : 
-<span class="lineNum">      63 </span><span class="lineCov">        138 :     if (self.requiredClass &amp;&amp; ![TyphoonInjectionByCollection isCollectionClass:self.requiredClass]) {</span>
+<span class="lineNum">      63 </span><span class="lineCov">        140 :     if (self.requiredClass &amp;&amp; ![TyphoonInjectionByCollection isCollectionClass:self.requiredClass]) {</span>
 <span class="lineNum">      64 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Required collection type '%@' is neither an NSSet nor NSArray.&quot;,</span>
 <span class="lineNum">      65 </span><span class="lineNoCov">          0 :                                                              NSStringFromClass(self.requiredClass)];</span>
 <span class="lineNum">      66 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      67 </span>            : 
-<span class="lineNum">      68 </span><span class="lineCov">         69 :     return [self initWithCollection:collection];</span>
-<span class="lineNum">      69 </span><span class="lineCov">         69 : }</span>
+<span class="lineNum">      68 </span><span class="lineCov">         70 :     return [self initWithCollection:collection];</span>
+<span class="lineNum">      69 </span><span class="lineCov">         70 : }</span>
 <span class="lineNum">      70 </span>            : 
-<span class="lineNum">      71 </span><span class="lineCov">         69 : - (instancetype)initWithCollection:(id &lt;TyphoonCollection&gt;)collection</span>
+<span class="lineNum">      71 </span><span class="lineCov">         70 : - (instancetype)initWithCollection:(id &lt;TyphoonCollection&gt;)collection</span>
 <span class="lineNum">      72 </span>            : {
-<span class="lineNum">      73 </span><span class="lineCov">         69 :     self = [super init];</span>
-<span class="lineNum">      74 </span><span class="lineCov">         69 :     if (self) {</span>
-<span class="lineNum">      75 </span><span class="lineCov">         69 :         self.injections = [[NSMutableArray alloc] initWithCapacity:[collection count]];</span>
+<span class="lineNum">      73 </span><span class="lineCov">         70 :     self = [super init];</span>
+<span class="lineNum">      74 </span><span class="lineCov">         70 :     if (self) {</span>
+<span class="lineNum">      75 </span><span class="lineCov">         70 :         self.injections = [[NSMutableArray alloc] initWithCapacity:[collection count]];</span>
 <span class="lineNum">      76 </span>            : 
-<span class="lineNum">      77 </span><span class="lineCov">        406 :         for (id object in collection) {</span>
-<span class="lineNum">      78 </span><span class="lineCov">        134 :             [self.injections addObject:TyphoonMakeInjectionFromObjectIfNeeded(object)];</span>
-<span class="lineNum">      79 </span><span class="lineCov">        406 :         }</span>
-<span class="lineNum">      80 </span><span class="lineCov">         69 :     }</span>
-<span class="lineNum">      81 </span><span class="lineCov">         69 :     return self;</span>
-<span class="lineNum">      82 </span><span class="lineCov">         69 : }</span>
+<span class="lineNum">      77 </span><span class="lineCov">        412 :         for (id object in collection) {</span>
+<span class="lineNum">      78 </span><span class="lineCov">        136 :             [self.injections addObject:TyphoonMakeInjectionFromObjectIfNeeded(object)];</span>
+<span class="lineNum">      79 </span><span class="lineCov">        412 :         }</span>
+<span class="lineNum">      80 </span><span class="lineCov">         70 :     }</span>
+<span class="lineNum">      81 </span><span class="lineCov">         70 :     return self;</span>
+<span class="lineNum">      82 </span><span class="lineCov">         70 : }</span>
 <span class="lineNum">      83 </span>            : 
 <span class="lineNum">      84 </span>            : - (NSUInteger)count
 <span class="lineNum">      85 </span>            : {

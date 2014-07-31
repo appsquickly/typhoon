@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-07-08</td>
+            <td class="headerValue">2014-07-31</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -91,7 +91,7 @@
 <span class="lineNum">      33 </span><span class="lineCov">        110 :     return self;</span>
 <span class="lineNum">      34 </span><span class="lineCov">        110 : }</span>
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span><span class="lineCov">        495 : - (void)caseOption:(id)optionValue use:(TyphoonDefinition *)definition</span>
+<span class="lineNum">      36 </span><span class="lineCov">        495 : - (void)caseOption:(id)optionValue use:(id)definition</span>
 <span class="lineNum">      37 </span>            : {
 <span class="lineNum">      38 </span><span class="lineCov">       1980 :     NSAssert(optionValue, @&quot;optionValue can't be nil&quot;);</span>
 <span class="lineNum">      39 </span><span class="lineCov">       1980 :     NSAssert(definition, @&quot;definition can't be nil&quot;);</span>
@@ -105,7 +105,7 @@
 <span class="lineNum">      47 </span><span class="lineCov">         22 :     _useMatchingByName = YES;</span>
 <span class="lineNum">      48 </span><span class="lineCov">         22 : }</span>
 <span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span><span class="lineCov">         11 : - (void)defaultUse:(TyphoonDefinition *)definition</span>
+<span class="lineNum">      50 </span><span class="lineCov">         11 : - (void)defaultUse:(id)definition</span>
 <span class="lineNum">      51 </span>            : {
 <span class="lineNum">      52 </span><span class="lineCov">         11 :     _defaultDefinition = definition;</span>
 <span class="lineNum">      53 </span><span class="lineCov">         11 : }</span>

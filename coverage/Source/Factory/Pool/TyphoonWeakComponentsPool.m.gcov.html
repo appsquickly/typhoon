@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntry">20</td>
             <td class="headerCovTableEntry">21</td>
-            <td class="headerCovTableEntryMed">85.7 %</td>
+            <td class="headerCovTableEntryHi">95.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-07-08</td>
+            <td class="headerValue">2014-07-31</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -77,14 +77,14 @@
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : - (id)init
 <span class="lineNum">      21 </span>            : {
-<span class="lineNum">      22 </span><span class="lineCov">        234 :     self = [super init];</span>
-<span class="lineNum">      23 </span><span class="lineCov">        234 :     if (self) {</span>
-<span class="lineNum">      24 </span><span class="lineCov">        234 :         CFDictionaryValueCallBacks callbacks = {0, NULL, NULL, NULL, NULL};</span>
+<span class="lineNum">      22 </span><span class="lineCov">        235 :     self = [super init];</span>
+<span class="lineNum">      23 </span><span class="lineCov">        235 :     if (self) {</span>
+<span class="lineNum">      24 </span><span class="lineCov">        235 :         CFDictionaryValueCallBacks callbacks = {0, NULL, NULL, NULL, NULL};</span>
 <span class="lineNum">      25 </span>            :         dictionaryWithNonRetainedObjects =
-<span class="lineNum">      26 </span><span class="lineCov">        234 :             (__bridge_transfer id) CFDictionaryCreateMutable(NULL, 0, &amp;kCFTypeDictionaryKeyCallBacks, &amp;callbacks);</span>
-<span class="lineNum">      27 </span><span class="lineCov">        234 :     }</span>
-<span class="lineNum">      28 </span><span class="lineCov">        234 :     return self;</span>
-<span class="lineNum">      29 </span><span class="lineCov">        234 : }</span>
+<span class="lineNum">      26 </span><span class="lineCov">        235 :             (__bridge_transfer id) CFDictionaryCreateMutable(NULL, 0, &amp;kCFTypeDictionaryKeyCallBacks, &amp;callbacks);</span>
+<span class="lineNum">      27 </span><span class="lineCov">        235 :     }</span>
+<span class="lineNum">      28 </span><span class="lineCov">        235 :     return self;</span>
+<span class="lineNum">      29 </span><span class="lineCov">        235 : }</span>
 <span class="lineNum">      30 </span>            : 
 <span class="lineNum">      31 </span><span class="lineCov">          8 : - (void)setObject:(id)object forKey:(id &lt;NSCopying&gt;)aKey</span>
 <span class="lineNum">      32 </span>            : {
@@ -109,8 +109,8 @@
 <span class="lineNum">      51 </span>            : 
 <span class="lineNum">      52 </span>            : - (void)removeAllObjects
 <span class="lineNum">      53 </span>            : {
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     [dictionaryWithNonRetainedObjects removeAllObjects];</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      54 </span><span class="lineCov">          4 :     [dictionaryWithNonRetainedObjects removeAllObjects];</span>
+<span class="lineNum">      55 </span><span class="lineCov">          4 : }</span>
 <span class="lineNum">      56 </span>            : 
 <span class="lineNum">      57 </span>            : @end
 </pre>

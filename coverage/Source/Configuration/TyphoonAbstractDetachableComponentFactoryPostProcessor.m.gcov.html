@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-07-08</td>
+            <td class="headerValue">2014-07-31</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -108,9 +108,9 @@
 <span class="lineNum">      50 </span><span class="lineCov">          5 : - (void)cacheDefinitionsIn:(TyphoonComponentFactory *)factory</span>
 <span class="lineNum">      51 </span>            : {
 <span class="lineNum">      52 </span><span class="lineCov">          5 :     NSMutableArray *definitions = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      53 </span><span class="lineCov">        250 :     for (TyphoonDefinition *definition in factory.registry) {</span>
-<span class="lineNum">      54 </span><span class="lineCov">        120 :         [definitions addObject:[definition copy]];</span>
-<span class="lineNum">      55 </span><span class="lineCov">        250 :     }</span>
+<span class="lineNum">      53 </span><span class="lineCov">        260 :     for (TyphoonDefinition *definition in factory.registry) {</span>
+<span class="lineNum">      54 </span><span class="lineCov">        125 :         [definitions addObject:[definition copy]];</span>
+<span class="lineNum">      55 </span><span class="lineCov">        260 :     }</span>
 <span class="lineNum">      56 </span><span class="lineCov">          5 :     _rollbackDefinitions = [definitions mutableCopy];</span>
 <span class="lineNum">      57 </span><span class="lineCov">          5 : }</span>
 <span class="lineNum">      58 </span>            : 

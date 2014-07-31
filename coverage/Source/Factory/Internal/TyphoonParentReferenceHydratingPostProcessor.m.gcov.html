@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-07-08</td>
+            <td class="headerValue">2014-07-31</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -76,19 +76,19 @@
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span>            : @implementation TyphoonParentReferenceHydratingPostProcessor
 <span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span><span class="lineCov">       1611 : - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory</span>
+<span class="lineNum">      21 </span><span class="lineCov">       1679 : - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory</span>
 <span class="lineNum">      22 </span>            : {
-<span class="lineNum">      23 </span><span class="lineCov">       1611 :     [factory.registry enumerateObjectsUsingBlock:^(TyphoonDefinition *definition, NSUInteger idx, BOOL *stop) {</span>
-<span class="lineNum">      24 </span><span class="lineCov">       1497 :         if (definition.parent) {</span>
+<span class="lineNum">      23 </span><span class="lineCov">       1679 :     [factory.registry enumerateObjectsUsingBlock:^(TyphoonDefinition *definition, NSUInteger idx, BOOL *stop) {</span>
+<span class="lineNum">      24 </span><span class="lineCov">       1564 :         if (definition.parent) {</span>
 <span class="lineNum">      25 </span><span class="lineNoCov">          0 :             TyphoonDefinition *parentDefinition = [factory definitionForKey:[(TyphoonDefinition *)definition.parent key]];</span>
 <span class="lineNum">      26 </span><span class="lineNoCov">          0 :             [definition setParent:parentDefinition];</span>
 <span class="lineNum">      27 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">      28 </span><span class="lineCov">       1497 :         if (definition.factory) {</span>
-<span class="lineNum">      29 </span><span class="lineCov">        152 :             TyphoonDefinition *factoryDefinition = [factory definitionForKey:[(TyphoonDefinition *)definition.factory key]];</span>
-<span class="lineNum">      30 </span><span class="lineCov">        152 :             [definition setFactory:factoryDefinition];</span>
-<span class="lineNum">      31 </span><span class="lineCov">        152 :         }</span>
-<span class="lineNum">      32 </span><span class="lineCov">       1497 :     }];</span>
-<span class="lineNum">      33 </span><span class="lineCov">        114 : }</span>
+<span class="lineNum">      28 </span><span class="lineCov">       1564 :         if (definition.factory) {</span>
+<span class="lineNum">      29 </span><span class="lineCov">        153 :             TyphoonDefinition *factoryDefinition = [factory definitionForKey:[(TyphoonDefinition *)definition.factory key]];</span>
+<span class="lineNum">      30 </span><span class="lineCov">        153 :             [definition setFactory:factoryDefinition];</span>
+<span class="lineNum">      31 </span><span class="lineCov">        153 :         }</span>
+<span class="lineNum">      32 </span><span class="lineCov">       1564 :     }];</span>
+<span class="lineNum">      33 </span><span class="lineCov">        115 : }</span>
 <span class="lineNum">      34 </span>            : 
 <span class="lineNum">      35 </span>            : 
 <span class="lineNum">      36 </span>            : @end

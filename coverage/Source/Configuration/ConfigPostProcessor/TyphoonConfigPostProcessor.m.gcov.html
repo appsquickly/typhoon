@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-07-08</td>
+            <td class="headerValue">2014-07-31</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -187,12 +187,12 @@
 <span class="lineNum">     129 </span>            : 
 <span class="lineNum">     130 </span><span class="lineCov">         19 : - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory</span>
 <span class="lineNum">     131 </span>            : {
-<span class="lineNum">     132 </span><span class="lineCov">        676 :     for (TyphoonDefinition *definition in [factory registry]) {</span>
-<span class="lineNum">     133 </span><span class="lineCov">        319 :         [definition enumerateInjectionsOfKind:[TyphoonInjectionByConfig class] options:TyphoonInjectionsEnumerationOptionAll</span>
+<span class="lineNum">     132 </span><span class="lineCov">        702 :     for (TyphoonDefinition *definition in [factory registry]) {</span>
+<span class="lineNum">     133 </span><span class="lineCov">        332 :         [definition enumerateInjectionsOfKind:[TyphoonInjectionByConfig class] options:TyphoonInjectionsEnumerationOptionAll</span>
 <span class="lineNum">     134 </span><span class="lineCov">         10 :                                    usingBlock:^(TyphoonInjectionByConfig *injection, id *injectionToReplace, BOOL *stop) {</span>
 <span class="lineNum">     135 </span><span class="lineCov">         10 :             injection.configuredInjection = [self injectionForConfigInjection:injection];</span>
 <span class="lineNum">     136 </span><span class="lineCov">         20 :         }];</span>
-<span class="lineNum">     137 </span><span class="lineCov">        676 :     }</span>
+<span class="lineNum">     137 </span><span class="lineCov">        702 :     }</span>
 <span class="lineNum">     138 </span><span class="lineCov">         19 : }</span>
 <span class="lineNum">     139 </span>            : 
 <span class="lineNum">     140 </span><span class="lineCov">         10 : - (id&lt;TyphoonInjection&gt;)injectionForConfigInjection:(TyphoonInjectionByConfig *)injection</span>

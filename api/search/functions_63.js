@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['caseoption_3ause_3a',['caseOption:use:',['../interface_typhoon_option_matcher.html#a7c68d28eb0512b3b8dd2ef1ec1369817',1,'TyphoonOptionMatcher']]],
+  ['caseoption_3ause_3a',['caseOption:use:',['../interface_typhoon_option_matcher.html#a5cbdce8a9e2f4cbd7a851891bac1615d',1,'TyphoonOptionMatcher']]],
   ['classorprotocol',['classOrProtocol',['../interface_typhoon_type_descriptor.html#aa68b95827c65fe611ce4398a902d3069',1,'TyphoonTypeDescriptor']]],
   ['collectionmutableclassfromclass_3a',['collectionMutableClassFromClass:',['../interface_typhoon_injection_by_collection.html#a00f5a3dfd230236c6856cc8d33350f26',1,'TyphoonInjectionByCollection']]],
   ['componentforkey_3a',['componentForKey:',['../interface_typhoon_component_factory.html#afbe6d5309ee739db59e4c5d35d2ab377',1,'TyphoonComponentFactory']]],

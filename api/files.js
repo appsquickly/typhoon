@@ -85,7 +85,6 @@ var files =
     [ "TyphooniOS.h", "_typhooni_o_s_8h.html", null ],
     [ "TyphoonJsonStyleConfiguration.h", "_typhoon_json_style_configuration_8h.html", null ],
     [ "TyphoonLinkerCategoryBugFix.h", "_typhoon_linker_category_bug_fix_8h.html", null ],
-    [ "TyphoonMatchedConfigDefinition.h", "_typhoon_matched_config_definition_8h.html", null ],
     [ "TyphoonMatcherDefinitionFactory.h", "_typhoon_matcher_definition_factory_8h.html", [
       [ "TyphoonMatcherDefinitionFactory", "interface_typhoon_matcher_definition_factory.html", "interface_typhoon_matcher_definition_factory" ]
     ] ],

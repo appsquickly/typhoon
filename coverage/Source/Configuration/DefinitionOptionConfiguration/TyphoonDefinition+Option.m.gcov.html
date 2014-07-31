@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-07-08</td>
+            <td class="headerValue">2014-07-31</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -67,7 +67,7 @@
 <span class="lineNum">       9 </span>            : 
 <span class="lineNum">      10 </span>            : @implementation TyphoonDefinition (Option)
 <span class="lineNum">      11 </span>            : 
-<span class="lineNum">      12 </span><span class="lineCov">        132 : + (TyphoonDefinition *)withOption:(id)option yes:(TyphoonDefinition *)yesDefinition no:(TyphoonDefinition *)noDefinition</span>
+<span class="lineNum">      12 </span><span class="lineCov">        132 : + (TyphoonDefinition *)withOption:(id)option yes:(id)yesDefinition no:(id)noDefinition</span>
 <span class="lineNum">      13 </span>            : {
 <span class="lineNum">      14 </span><span class="lineCov">        132 :     return [self withOption:option matcher:^(TyphoonOptionMatcher *matcher) {</span>
 <span class="lineNum">      15 </span><span class="lineCov">         66 :         [matcher caseOption:@YES use:yesDefinition];</span>

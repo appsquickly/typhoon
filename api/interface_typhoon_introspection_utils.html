@@ -105,12 +105,14 @@ Inheritance diagram for TyphoonIntrospectionUtils:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Class Methods</h2></td></tr>
+<tr class="memitem:a456878cf84be1d93bff460c66e9ae086"><td class="memItemLeft" align="right" valign="top">(SEL)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#a456878cf84be1d93bff460c66e9ae086">getterForPropertyWithName:inClass:</a></td></tr>
+<tr class="separator:a456878cf84be1d93bff460c66e9ae086"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ef9ee9f05dc7f2f9c7a3deb0dd8afba"><td class="memItemLeft" align="right" valign="top">(NSSet *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#a1ef9ee9f05dc7f2f9c7a3deb0dd8afba">methodsForClass:upToParentClass:</a></td></tr>
+<tr class="separator:a1ef9ee9f05dc7f2f9c7a3deb0dd8afba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af75a61c2d062d41d46fbdfe72f024e96"><td class="memItemLeft" align="right" valign="top">(NSMethodSignature *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#af75a61c2d062d41d46fbdfe72f024e96">methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:</a></td></tr>
 <tr class="separator:af75a61c2d062d41d46fbdfe72f024e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfae072f0c04b9ccdf3f62f5d7ea34eb"><td class="memItemLeft" align="right" valign="top">(NSUInteger)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#abfae072f0c04b9ccdf3f62f5d7ea34eb">numberOfArgumentsInSelector:</a></td></tr>
 <tr class="separator:abfae072f0c04b9ccdf3f62f5d7ea34eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af11e00d3df21c58627fd67be08a7200d"><td class="memItemLeft" align="right" valign="top">(NSSet *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#af11e00d3df21c58627fd67be08a7200d">propertiesForClass:</a></td></tr>
-<tr class="separator:af11e00d3df21c58627fd67be08a7200d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32614ce91e195e021e2517c68b8aeb71"><td class="memItemLeft" align="right" valign="top">(NSSet *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#a32614ce91e195e021e2517c68b8aeb71">propertiesForClass:upToParentClass:</a></td></tr>
 <tr class="separator:a32614ce91e195e021e2517c68b8aeb71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa190816afd6c690e83b2bcff5b1c6e20"><td class="memItemLeft" align="right" valign="top">(SEL)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_introspection_utils.html#aa190816afd6c690e83b2bcff5b1c6e20">setterForPropertyWithName:inClass:</a></td></tr>
@@ -119,6 +121,58 @@ Class Methods</h2></td></tr>
 <tr class="separator:a34d5f226d76d10c64534ab62b422e154"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Method Documentation</h2>
+<a class="anchor" id="a456878cf84be1d93bff460c66e9ae086"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (SEL) getterForPropertyWithName: </td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>property</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">inClass:</td>
+          <td></td>
+          <td class="paramtype">(Class)&#160;</td>
+          <td class="paramname"><em>clazz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1ef9ee9f05dc7f2f9c7a3deb0dd8afba"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">+ (NSSet *) methodsForClass: </td>
+          <td></td>
+          <td class="paramtype">(Class)&#160;</td>
+          <td class="paramname"><em>clazz</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">upToParentClass:</td>
+          <td></td>
+          <td class="paramtype">(Class)&#160;</td>
+          <td class="paramname"><em>parent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="af75a61c2d062d41d46fbdfe72f024e96"></a>
 <div class="memitem">
 <div class="memproto">
@@ -151,28 +205,12 @@ Class Methods</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af11e00d3df21c58627fd67be08a7200d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">+ (NSSet *) propertiesForClass: </td>
-          <td></td>
-          <td class="paramtype">(Class)&#160;</td>
-          <td class="paramname"><em>clazz</em></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="a32614ce91e195e021e2517c68b8aeb71"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">+ (NSSet *) <a class="el" href="interface_typhoon_introspection_utils.html#af11e00d3df21c58627fd67be08a7200d">propertiesForClass:</a> </td>
+          <td class="memname">+ (NSSet *) propertiesForClass: </td>
           <td></td>
           <td class="paramtype">(Class)&#160;</td>
           <td class="paramname"><em>clazz</em></td>
@@ -252,7 +290,7 @@ Class Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
         <li class="navelem"><a class="el" href="interface_typhoon_introspection_utils.html">TyphoonIntrospectionUtils</a></li>
-        <li class="footer">Generated on Tue Jul 8 2014 21:35:53 for Typhoon by
+        <li class="footer">Generated on Thu Jul 31 2014 12:46:56 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5
         </li>

@@ -20,9 +20,8 @@ var interface_typhoon_definition =
     [ "useInitializer:parameters:", "interface_typhoon_definition.html#aba6f185a368279848076ed1411585011", null ],
     [ "withClass:", "interface_typhoon_definition.html#a8128dbbd3c00c248e58770ae3e4e1823", null ],
     [ "withClass:configuration:", "interface_typhoon_definition.html#a63159e475b4d02f6cb98407dfe13f594", null ],
-    [ "withClass:factory:selector:", "interface_typhoon_definition.html#ad0bdd035d89cbf8b9fb937ec2cceb59c", null ],
     [ "withFactory:selector:", "interface_typhoon_definition.html#a967ccf83c6835d0120b0c1d4385e841e", null ],
     [ "withFactory:selector:parameters:", "interface_typhoon_definition.html#a054e83736a4db4becf73e5a7d0936dc7", null ],
     [ "withOption:matcher:", "interface_typhoon_definition.html#a32ca1f2c90cffe0024ce1bd11bc6c579", null ],
-    [ "withOption:yes:no:", "interface_typhoon_definition.html#a130e5930484a6bf951b176b092634dc2", null ]
+    [ "withOption:yes:no:", "interface_typhoon_definition.html#a4f34bf0942e409dda3d43df3c4abaf8c", null ]
 ];

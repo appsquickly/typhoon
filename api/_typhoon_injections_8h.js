@@ -8,6 +8,7 @@ var _typhoon_injections_8h =
     [ "TyphoonInjectionWithObject", "_typhoon_injections_8h.html#a548767c86ba88298aae3fa101757e022", null ],
     [ "TyphoonInjectionWithObjectFromString", "_typhoon_injections_8h.html#a603a8dc4c5bd0e2759c575ec651ce032", null ],
     [ "TyphoonInjectionWithReference", "_typhoon_injections_8h.html#a609ba5d9445da8e4511c4dba7a32e072", null ],
-    [ "TyphoonInjectionWithRuntimeArgumentAtIndex", "_typhoon_injections_8h.html#abd6595032bd02a3ce759eaa452e4722e", null ],
+    [ "TyphoonInjectionWithRuntimeArgumentAtIndex", "_typhoon_injections_8h.html#a717c3615818596e45914de4e0bb998f8", null ],
+    [ "TyphoonInjectionWithRuntimeArgumentAtIndexWrappedIntoBlock", "_typhoon_injections_8h.html#ad1b29fdc7ed1b3fd1af061cd5fcad906", null ],
     [ "TyphoonMakeInjectionFromObjectIfNeeded", "_typhoon_injections_8h.html#af37a21437d5df5ccb9dcb5ebe5dd28c5", null ]
 ];
