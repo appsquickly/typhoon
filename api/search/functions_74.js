@@ -13,6 +13,7 @@ var searchData=
   ['typhooninjectionmatchedbytype',['TyphoonInjectionMatchedByType',['../_typhoon_injections_8h.html#abd90606be6f4d67881fecefb54db0116',1,'TyphoonInjections.h']]],
   ['typhooninjectionwithcollectionandtype',['TyphoonInjectionWithCollectionAndType',['../_typhoon_injections_8h.html#ace8f6ca9ec4ebd24e1fd71c7eb173886',1,'TyphoonInjections.h']]],
   ['typhooninjectionwithconfigkey',['TyphoonInjectionWithConfigKey',['../_typhoon_injections_8h.html#a0a23a4a92ae5cd089ff28945f2bcdfe0',1,'TyphoonInjections.h']]],
+  ['typhooninjectionwithcurrentruntimearguments',['TyphoonInjectionWithCurrentRuntimeArguments',['../_typhoon_injections_8h.html#a34fb12686297644dc18ce9c18e6299ab',1,'TyphoonInjections.h']]],
   ['typhooninjectionwithdictionaryandtype',['TyphoonInjectionWithDictionaryAndType',['../_typhoon_injections_8h.html#a41dfb859e3cc8b040affdb0f626f7c56',1,'TyphoonInjections.h']]],
   ['typhooninjectionwithobject',['TyphoonInjectionWithObject',['../_typhoon_injections_8h.html#a548767c86ba88298aae3fa101757e022',1,'TyphoonInjections.h']]],
   ['typhooninjectionwithobjectfromstring',['TyphoonInjectionWithObjectFromString',['../_typhoon_injections_8h.html#a603a8dc4c5bd0e2759c575ec651ce032',1,'TyphoonInjections.h']]],

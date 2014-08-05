@@ -305,12 +305,12 @@
              <Node>
               <Name>withOption:matcher:</Name>
               <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a32ca1f2c90cffe0024ce1bd11bc6c579</Anchor>
+              <Anchor>ace67617e7c8feea3167bd10342964a3d</Anchor>
              </Node>
              <Node>
               <Name>withOption:yes:no:</Name>
               <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a4f34bf0942e409dda3d43df3c4abaf8c</Anchor>
+              <Anchor>a010c1ec8138e655ab48676876f2f5369</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -1130,12 +1130,12 @@
              <Node>
               <Name>withOption:matcher:</Name>
               <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a32ca1f2c90cffe0024ce1bd11bc6c579</Anchor>
+              <Anchor>ace67617e7c8feea3167bd10342964a3d</Anchor>
              </Node>
              <Node>
               <Name>withOption:yes:no:</Name>
               <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a4f34bf0942e409dda3d43df3c4abaf8c</Anchor>
+              <Anchor>a010c1ec8138e655ab48676876f2f5369</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -1146,12 +1146,12 @@
              <Node>
               <Name>withOption:matcher:</Name>
               <Path>category_typhoon_definition_07_option_08.html</Path>
-              <Anchor>a32ca1f2c90cffe0024ce1bd11bc6c579</Anchor>
+              <Anchor>ace67617e7c8feea3167bd10342964a3d</Anchor>
              </Node>
              <Node>
               <Name>withOption:yes:no:</Name>
               <Path>category_typhoon_definition_07_option_08.html</Path>
-              <Anchor>a4f34bf0942e409dda3d43df3c4abaf8c</Anchor>
+              <Anchor>a010c1ec8138e655ab48676876f2f5369</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -1430,9 +1430,9 @@
               <Anchor>ae5be1239ab3206d7c0b72b01dcd772c4</Anchor>
              </Node>
              <Node>
-              <Name>valueCreatedFromDefinitionMatchedOption:</Name>
+              <Name>valueCreatedFromDefinitionMatchedOption:args:</Name>
               <Path>interface_typhoon_matcher_definition_factory.html</Path>
-              <Anchor>ad61512c894d536da47dda14f5233cb53</Anchor>
+              <Anchor>a3eaaa919fe0b3db64616b7a6b63fe59c</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -1475,6 +1475,16 @@
             <Name>TyphoonOptionMatcher</Name>
             <Path>interface_typhoon_option_matcher.html</Path>
             <Subnodes>
+             <Node>
+              <Name>caseKindOfClass:use:</Name>
+              <Path>interface_typhoon_option_matcher.html</Path>
+              <Anchor>a14a5df24d55afcf472956dfc20a582cf</Anchor>
+             </Node>
+             <Node>
+              <Name>caseMemberOfClass:use:</Name>
+              <Path>interface_typhoon_option_matcher.html</Path>
+              <Anchor>abbd2e583036ac8322b4aae62ea0ac40e</Anchor>
+             </Node>
              <Node>
               <Name>caseOption:use:</Name>
               <Path>interface_typhoon_option_matcher.html</Path>
@@ -1692,6 +1702,11 @@
               <Name>argumentsFromInvocation:</Name>
               <Path>interface_typhoon_runtime_arguments.html</Path>
               <Anchor>a9f06b6f706e185ec4f7facde16894f0e</Anchor>
+             </Node>
+             <Node>
+              <Name>argumentsFromRuntimeArguments:appliedToReferenceArguments:</Name>
+              <Path>interface_typhoon_runtime_arguments.html</Path>
+              <Anchor>a04aecfd10e75c2773e99f473628fc5a8</Anchor>
              </Node>
              <Node>
               <Name>argumentValueAtIndex:</Name>
@@ -2802,12 +2817,12 @@
                <Node>
                 <Name>withOption:matcher:</Name>
                 <Path>category_typhoon_definition_07_option_08.html</Path>
-                <Anchor>a32ca1f2c90cffe0024ce1bd11bc6c579</Anchor>
+                <Anchor>ace67617e7c8feea3167bd10342964a3d</Anchor>
                </Node>
                <Node>
                 <Name>withOption:yes:no:</Name>
                 <Path>category_typhoon_definition_07_option_08.html</Path>
-                <Anchor>a4f34bf0942e409dda3d43df3c4abaf8c</Anchor>
+                <Anchor>a010c1ec8138e655ab48676876f2f5369</Anchor>
                </Node>
               </Subnodes>
              </Node>
@@ -2952,6 +2967,10 @@
            <Node>
             <Name>TyphoonInjectionByConfig.h</Name>
             <Path>_typhoon_injection_by_config_8h.html</Path>
+           </Node>
+           <Node>
+            <Name>TyphoonInjectionByCurrentRuntimeArguments.h</Name>
+            <Path>_typhoon_injection_by_current_runtime_arguments_8h.html</Path>
            </Node>
            <Node>
             <Name>TyphoonInjectionByDictionary.h</Name>
@@ -3198,6 +3217,11 @@
               <Anchor>a0a23a4a92ae5cd089ff28945f2bcdfe0</Anchor>
              </Node>
              <Node>
+              <Name>TyphoonInjectionWithCurrentRuntimeArguments</Name>
+              <Path>_typhoon_injections_8h.html</Path>
+              <Anchor>a34fb12686297644dc18ce9c18e6299ab</Anchor>
+             </Node>
+             <Node>
               <Name>TyphoonInjectionWithDictionaryAndType</Name>
               <Path>_typhoon_injections_8h.html</Path>
               <Anchor>a41dfb859e3cc8b040affdb0f626f7c56</Anchor>
@@ -3322,9 +3346,9 @@
                 <Anchor>ae5be1239ab3206d7c0b72b01dcd772c4</Anchor>
                </Node>
                <Node>
-                <Name>valueCreatedFromDefinitionMatchedOption:</Name>
+                <Name>valueCreatedFromDefinitionMatchedOption:args:</Name>
                 <Path>interface_typhoon_matcher_definition_factory.html</Path>
-                <Anchor>ad61512c894d536da47dda14f5233cb53</Anchor>
+                <Anchor>a3eaaa919fe0b3db64616b7a6b63fe59c</Anchor>
                </Node>
               </Subnodes>
              </Node>
@@ -3353,6 +3377,13 @@
            <Node>
             <Name>TyphoonOptionMatcher+Internal.h</Name>
             <Path>_typhoon_option_matcher_09_internal_8h.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>TyphoonOptionMatcherDefinitionSearchResult</Name>
+              <Path>_typhoon_option_matcher_09_internal_8h.html</Path>
+              <Anchor>a3421599da42028b69f04aff5188749bd</Anchor>
+             </Node>
+            </Subnodes>
            </Node>
            <Node>
             <Name>TyphoonOptionMatcher.h</Name>
@@ -3362,6 +3393,16 @@
               <Name>TyphoonOptionMatcher</Name>
               <Path>interface_typhoon_option_matcher.html</Path>
               <Subnodes>
+               <Node>
+                <Name>caseKindOfClass:use:</Name>
+                <Path>interface_typhoon_option_matcher.html</Path>
+                <Anchor>a14a5df24d55afcf472956dfc20a582cf</Anchor>
+               </Node>
+               <Node>
+                <Name>caseMemberOfClass:use:</Name>
+                <Path>interface_typhoon_option_matcher.html</Path>
+                <Anchor>abbd2e583036ac8322b4aae62ea0ac40e</Anchor>
+               </Node>
                <Node>
                 <Name>caseOption:use:</Name>
                 <Path>interface_typhoon_option_matcher.html</Path>
@@ -3608,6 +3649,11 @@
                 <Name>argumentsFromInvocation:</Name>
                 <Path>interface_typhoon_runtime_arguments.html</Path>
                 <Anchor>a9f06b6f706e185ec4f7facde16894f0e</Anchor>
+               </Node>
+               <Node>
+                <Name>argumentsFromRuntimeArguments:appliedToReferenceArguments:</Name>
+                <Path>interface_typhoon_runtime_arguments.html</Path>
+                <Anchor>a04aecfd10e75c2773e99f473628fc5a8</Anchor>
                </Node>
                <Node>
                 <Name>argumentValueAtIndex:</Name>

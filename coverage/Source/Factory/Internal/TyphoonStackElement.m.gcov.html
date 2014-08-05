@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-07-31</td>
+            <td class="headerValue">2014-08-05</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -71,28 +71,28 @@
 <span class="lineNum">      13 </span>            : 
 <span class="lineNum">      14 </span>            : #import &quot;TyphoonStackElement.h&quot;
 <span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span><span class="lineCov">        405 : @implementation TyphoonStackElement</span>
+<span class="lineNum">      16 </span><span class="lineCov">        408 : @implementation TyphoonStackElement</span>
 <span class="lineNum">      17 </span>            : {
 <span class="lineNum">      18 </span>            :     NSMutableSet *completeBlocks;
 <span class="lineNum">      19 </span>            :     id _instance;
 <span class="lineNum">      20 </span>            : }
 <span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineCov">        414 : + (instancetype)elementWithKey:(NSString *)key args:(TyphoonRuntimeArguments *)args</span>
+<span class="lineNum">      22 </span><span class="lineCov">        417 : + (instancetype)elementWithKey:(NSString *)key args:(TyphoonRuntimeArguments *)args</span>
 <span class="lineNum">      23 </span>            : {
-<span class="lineNum">      24 </span><span class="lineCov">        414 :     return [[self alloc] initWithKey:key args:args];</span>
-<span class="lineNum">      25 </span><span class="lineCov">        414 : }</span>
+<span class="lineNum">      24 </span><span class="lineCov">        417 :     return [[self alloc] initWithKey:key args:args];</span>
+<span class="lineNum">      25 </span><span class="lineCov">        417 : }</span>
 <span class="lineNum">      26 </span>            : 
 <span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span><span class="lineCov">        414 : - (instancetype)initWithKey:(NSString *)key args:(TyphoonRuntimeArguments *)args</span>
+<span class="lineNum">      28 </span><span class="lineCov">        417 : - (instancetype)initWithKey:(NSString *)key args:(TyphoonRuntimeArguments *)args</span>
 <span class="lineNum">      29 </span>            : {
-<span class="lineNum">      30 </span><span class="lineCov">        414 :     self = [super init];</span>
-<span class="lineNum">      31 </span><span class="lineCov">        414 :     if (self) {</span>
-<span class="lineNum">      32 </span><span class="lineCov">        414 :         _key = key;</span>
-<span class="lineNum">      33 </span><span class="lineCov">        414 :         _args = args;</span>
-<span class="lineNum">      34 </span><span class="lineCov">        414 :         completeBlocks = [NSMutableSet new];</span>
-<span class="lineNum">      35 </span><span class="lineCov">        414 :     }</span>
-<span class="lineNum">      36 </span><span class="lineCov">        414 :     return self;</span>
-<span class="lineNum">      37 </span><span class="lineCov">        414 : }</span>
+<span class="lineNum">      30 </span><span class="lineCov">        417 :     self = [super init];</span>
+<span class="lineNum">      31 </span><span class="lineCov">        417 :     if (self) {</span>
+<span class="lineNum">      32 </span><span class="lineCov">        417 :         _key = key;</span>
+<span class="lineNum">      33 </span><span class="lineCov">        417 :         _args = args;</span>
+<span class="lineNum">      34 </span><span class="lineCov">        417 :         completeBlocks = [NSMutableSet new];</span>
+<span class="lineNum">      35 </span><span class="lineCov">        417 :     }</span>
+<span class="lineNum">      36 </span><span class="lineCov">        417 :     return self;</span>
+<span class="lineNum">      37 </span><span class="lineCov">        417 : }</span>
 <span class="lineNum">      38 </span>            : 
 <span class="lineNum">      39 </span>            : - (BOOL)isInitializingInstance
 <span class="lineNum">      40 </span>            : {
@@ -121,15 +121,15 @@
 <span class="lineNum">      63 </span>            : 
 <span class="lineNum">      64 </span><span class="lineCov">         15 : }</span>
 <span class="lineNum">      65 </span>            : 
-<span class="lineNum">      66 </span><span class="lineCov">        409 : - (void)takeInstance:(id)instance</span>
+<span class="lineNum">      66 </span><span class="lineCov">        412 : - (void)takeInstance:(id)instance</span>
 <span class="lineNum">      67 </span>            : {
-<span class="lineNum">      68 </span><span class="lineCov">        409 :     _instance = instance;</span>
+<span class="lineNum">      68 </span><span class="lineCov">        412 :     _instance = instance;</span>
 <span class="lineNum">      69 </span>            : 
-<span class="lineNum">      70 </span><span class="lineCov">        424 :     for (TyphoonInstanceCompleteBlock completeBlock in completeBlocks) {</span>
+<span class="lineNum">      70 </span><span class="lineCov">        427 :     for (TyphoonInstanceCompleteBlock completeBlock in completeBlocks) {</span>
 <span class="lineNum">      71 </span><span class="lineCov">          5 :         completeBlock(instance);</span>
-<span class="lineNum">      72 </span><span class="lineCov">        424 :     }</span>
-<span class="lineNum">      73 </span><span class="lineCov">        409 :     [completeBlocks removeAllObjects];</span>
-<span class="lineNum">      74 </span><span class="lineCov">        409 : }</span>
+<span class="lineNum">      72 </span><span class="lineCov">        427 :     }</span>
+<span class="lineNum">      73 </span><span class="lineCov">        412 :     [completeBlocks removeAllObjects];</span>
+<span class="lineNum">      74 </span><span class="lineCov">        412 : }</span>
 <span class="lineNum">      75 </span>            : 
 <span class="lineNum">      76 </span>            : - (NSString *)description
 <span class="lineNum">      77 </span>            : {

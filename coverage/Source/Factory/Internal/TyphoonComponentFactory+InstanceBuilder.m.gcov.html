@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-07-31</td>
+            <td class="headerValue">2014-08-05</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -96,143 +96,143 @@
 <span class="lineNum">      38 </span><span class="lineCov">        199 :     return _stack;</span>
 <span class="lineNum">      39 </span>            : }
 <span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span><span class="lineCov">        414 : - (id)buildInstanceWithDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args</span>
+<span class="lineNum">      41 </span><span class="lineCov">        417 : - (id)buildInstanceWithDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args</span>
 <span class="lineNum">      42 </span>            : {
-<span class="lineNum">      43 </span><span class="lineCov">        414 :     TyphoonStackElement *stackElement = [TyphoonStackElement elementWithKey:definition.key args:args];</span>
-<span class="lineNum">      44 </span><span class="lineCov">        414 :     [_stack push:stackElement];</span>
+<span class="lineNum">      43 </span><span class="lineCov">        417 :     TyphoonStackElement *stackElement = [TyphoonStackElement elementWithKey:definition.key args:args];</span>
+<span class="lineNum">      44 </span><span class="lineCov">        417 :     [_stack push:stackElement];</span>
 <span class="lineNum">      45 </span>            : 
-<span class="lineNum">      46 </span><span class="lineCov">        414 :     id instance = [self initializeInstanceWithDefinition:definition args:args];</span>
+<span class="lineNum">      46 </span><span class="lineCov">        417 :     id instance = [self initializeInstanceWithDefinition:definition args:args];</span>
 <span class="lineNum">      47 </span>            : 
-<span class="lineNum">      48 </span><span class="lineCov">        414 :     [stackElement takeInstance:instance];</span>
+<span class="lineNum">      48 </span><span class="lineCov">        417 :     [stackElement takeInstance:instance];</span>
 <span class="lineNum">      49 </span>            : 
-<span class="lineNum">      50 </span><span class="lineCov">        414 :     [self doInjectionEventsOn:instance withDefinition:definition args:args];</span>
+<span class="lineNum">      50 </span><span class="lineCov">        417 :     [self doInjectionEventsOn:instance withDefinition:definition args:args];</span>
 <span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span><span class="lineCov">        414 :     instance = [self postProcessInstance:instance];</span>
-<span class="lineNum">      53 </span><span class="lineCov">        414 :     [_stack pop];</span>
+<span class="lineNum">      52 </span><span class="lineCov">        417 :     instance = [self postProcessInstance:instance];</span>
+<span class="lineNum">      53 </span><span class="lineCov">        417 :     [_stack pop];</span>
 <span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span><span class="lineCov">        414 :     return instance;</span>
-<span class="lineNum">      56 </span><span class="lineCov">        414 : }</span>
+<span class="lineNum">      55 </span><span class="lineCov">        417 :     return instance;</span>
+<span class="lineNum">      56 </span><span class="lineCov">        417 : }</span>
 <span class="lineNum">      57 </span>            : 
-<span class="lineNum">      58 </span><span class="lineCov">        414 : - (id)initializeInstanceWithDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args</span>
+<span class="lineNum">      58 </span><span class="lineCov">        417 : - (id)initializeInstanceWithDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args</span>
 <span class="lineNum">      59 </span>            : {
-<span class="lineNum">      60 </span><span class="lineCov">        414 :     id instance = nil;</span>
+<span class="lineNum">      60 </span><span class="lineCov">        417 :     id instance = nil;</span>
 <span class="lineNum">      61 </span>            : 
-<span class="lineNum">      62 </span><span class="lineCov">        414 :     if (definition.factory) {</span>
-<span class="lineNum">      63 </span><span class="lineCov">         35 :         id factoryComponent = [self componentForKey:[(TyphoonDefinition *)definition.factory key]];</span>
-<span class="lineNum">      64 </span><span class="lineCov">         35 :         instance = [self resultOfInvocationInitializer:definition.initializer on:factoryComponent withArgs:args];</span>
-<span class="lineNum">      65 </span><span class="lineCov">         35 :     }</span>
+<span class="lineNum">      62 </span><span class="lineCov">        417 :     if (definition.factory) {</span>
+<span class="lineNum">      63 </span><span class="lineCov">         36 :         id factoryComponent = [self componentForKey:[(TyphoonDefinition *)definition.factory key]];</span>
+<span class="lineNum">      64 </span><span class="lineCov">         36 :         instance = [self resultOfInvocationInitializer:definition.initializer on:factoryComponent withArgs:args];</span>
+<span class="lineNum">      65 </span><span class="lineCov">         36 :     }</span>
 <span class="lineNum">      66 </span>            :     else {
-<span class="lineNum">      67 </span><span class="lineCov">        379 :         instance = [self resultOfInvocationInitializer:definition.initializer on:definition.type withArgs:args];</span>
+<span class="lineNum">      67 </span><span class="lineCov">        381 :         instance = [self resultOfInvocationInitializer:definition.initializer on:definition.type withArgs:args];</span>
 <span class="lineNum">      68 </span>            :     }
 <span class="lineNum">      69 </span>            : 
-<span class="lineNum">      70 </span><span class="lineCov">        409 :     return instance;</span>
-<span class="lineNum">      71 </span><span class="lineCov">        409 : }</span>
+<span class="lineNum">      70 </span><span class="lineCov">        412 :     return instance;</span>
+<span class="lineNum">      71 </span><span class="lineCov">        412 : }</span>
 <span class="lineNum">      72 </span>            : 
-<span class="lineNum">      73 </span><span class="lineCov">        414 : - (id)resultOfInvocationInitializer:(TyphoonMethod *)initializer on:(id)instanceOrClass withArgs:(TyphoonRuntimeArguments *)args</span>
+<span class="lineNum">      73 </span><span class="lineCov">        417 : - (id)resultOfInvocationInitializer:(TyphoonMethod *)initializer on:(id)instanceOrClass withArgs:(TyphoonRuntimeArguments *)args</span>
 <span class="lineNum">      74 </span>            : {
-<span class="lineNum">      75 </span><span class="lineCov">        414 :     id result;</span>
+<span class="lineNum">      75 </span><span class="lineCov">        417 :     id result;</span>
 <span class="lineNum">      76 </span>            : 
-<span class="lineNum">      77 </span><span class="lineCov">        414 :     BOOL isClass = class_isMetaClass(object_getClass(instanceOrClass));</span>
-<span class="lineNum">      78 </span><span class="lineCov">       1239 :     Class instanceClass = isClass ? instanceOrClass : [instanceOrClass class];</span>
+<span class="lineNum">      77 </span><span class="lineCov">        417 :     BOOL isClass = class_isMetaClass(object_getClass(instanceOrClass));</span>
+<span class="lineNum">      78 </span><span class="lineCov">       1248 :     Class instanceClass = isClass ? instanceOrClass : [instanceOrClass class];</span>
 <span class="lineNum">      79 </span>            : 
-<span class="lineNum">      80 </span><span class="lineCov">        411 :     NSInvocation *invocation = [self invocationToInit:instanceClass with:initializer args:args];</span>
+<span class="lineNum">      80 </span><span class="lineCov">        414 :     NSInvocation *invocation = [self invocationToInit:instanceClass with:initializer args:args];</span>
 <span class="lineNum">      81 </span>            : 
-<span class="lineNum">      82 </span><span class="lineCov">        411 :     BOOL isClassMethod = [initializer isClassMethodOnClass:instanceClass];</span>
+<span class="lineNum">      82 </span><span class="lineCov">        414 :     BOOL isClassMethod = [initializer isClassMethodOnClass:instanceClass];</span>
 <span class="lineNum">      83 </span>            : 
-<span class="lineNum">      84 </span><span class="lineCov">        787 :     if (isClass &amp;&amp; !isClassMethod) {</span>
-<span class="lineNum">      85 </span><span class="lineCov">        345 :         result = [invocation typhoon_resultOfInvokingOnAllocationForClass:instanceClass];</span>
-<span class="lineNum">      86 </span><span class="lineCov">        345 :     }</span>
+<span class="lineNum">      84 </span><span class="lineCov">        792 :     if (isClass &amp;&amp; !isClassMethod) {</span>
+<span class="lineNum">      85 </span><span class="lineCov">        347 :         result = [invocation typhoon_resultOfInvokingOnAllocationForClass:instanceClass];</span>
+<span class="lineNum">      86 </span><span class="lineCov">        347 :     }</span>
 <span class="lineNum">      87 </span>            :     else {
-<span class="lineNum">      88 </span><span class="lineCov">         66 :         result = [invocation typhoon_resultOfInvokingOnInstance:instanceOrClass];</span>
+<span class="lineNum">      88 </span><span class="lineCov">         67 :         result = [invocation typhoon_resultOfInvokingOnInstance:instanceOrClass];</span>
 <span class="lineNum">      89 </span>            :     }
 <span class="lineNum">      90 </span>            : 
-<span class="lineNum">      91 </span><span class="lineCov">        409 :     return result;</span>
-<span class="lineNum">      92 </span><span class="lineCov">        409 : }</span>
+<span class="lineNum">      91 </span><span class="lineCov">        412 :     return result;</span>
+<span class="lineNum">      92 </span><span class="lineCov">        412 : }</span>
 <span class="lineNum">      93 </span>            : 
-<span class="lineNum">      94 </span><span class="lineCov">        414 : - (NSInvocation *)invocationToInit:(Class)clazz with:(TyphoonMethod *)method args:(TyphoonRuntimeArguments *)args</span>
+<span class="lineNum">      94 </span><span class="lineCov">        417 : - (NSInvocation *)invocationToInit:(Class)clazz with:(TyphoonMethod *)method args:(TyphoonRuntimeArguments *)args</span>
 <span class="lineNum">      95 </span>            : {
-<span class="lineNum">      96 </span><span class="lineCov">        414 :     TyphoonInjectionContext *context = [TyphoonInjectionContext new];</span>
-<span class="lineNum">      97 </span><span class="lineCov">        414 :     context.factory = self;</span>
-<span class="lineNum">      98 </span><span class="lineCov">        414 :     context.args = args;</span>
-<span class="lineNum">      99 </span><span class="lineCov">        414 :     context.raiseExceptionIfCircular = YES;</span>
-<span class="lineNum">     100 </span><span class="lineCov">        414 :     context.destinationInstanceClass = clazz;</span>
+<span class="lineNum">      96 </span><span class="lineCov">        417 :     TyphoonInjectionContext *context = [TyphoonInjectionContext new];</span>
+<span class="lineNum">      97 </span><span class="lineCov">        417 :     context.factory = self;</span>
+<span class="lineNum">      98 </span><span class="lineCov">        417 :     context.args = args;</span>
+<span class="lineNum">      99 </span><span class="lineCov">        417 :     context.raiseExceptionIfCircular = YES;</span>
+<span class="lineNum">     100 </span><span class="lineCov">        417 :     context.destinationInstanceClass = clazz;</span>
 <span class="lineNum">     101 </span>            : 
-<span class="lineNum">     102 </span><span class="lineCov">       1650 :     __block NSInvocation *result;</span>
-<span class="lineNum">     103 </span><span class="lineCov">        828 :     [method createInvocationOnClass:clazz withContext:context completion:^(NSInvocation *invocation) {</span>
-<span class="lineNum">     104 </span><span class="lineCov">        411 :         result = invocation;</span>
-<span class="lineNum">     105 </span><span class="lineCov">        411 :     }];</span>
-<span class="lineNum">     106 </span><span class="lineCov">        411 :     return result;</span>
-<span class="lineNum">     107 </span><span class="lineCov">        417 : }</span>
+<span class="lineNum">     102 </span><span class="lineCov">       1662 :     __block NSInvocation *result;</span>
+<span class="lineNum">     103 </span><span class="lineCov">        834 :     [method createInvocationOnClass:clazz withContext:context completion:^(NSInvocation *invocation) {</span>
+<span class="lineNum">     104 </span><span class="lineCov">        414 :         result = invocation;</span>
+<span class="lineNum">     105 </span><span class="lineCov">        414 :     }];</span>
+<span class="lineNum">     106 </span><span class="lineCov">        414 :     return result;</span>
+<span class="lineNum">     107 </span><span class="lineCov">        420 : }</span>
 <span class="lineNum">     108 </span>            : 
-<span class="lineNum">     109 </span><span class="lineCov">        405 : - (id)postProcessInstance:(id)instance</span>
+<span class="lineNum">     109 </span><span class="lineCov">        408 : - (id)postProcessInstance:(id)instance</span>
 <span class="lineNum">     110 </span>            : {
-<span class="lineNum">     111 </span><span class="lineCov">        405 :     if (![instance conformsToProtocol:@protocol(TyphoonComponentPostProcessor)]) {</span>
-<span class="lineNum">     112 </span><span class="lineCov">        411 :         for (id &lt;TyphoonComponentPostProcessor&gt; postProcessor in _componentPostProcessors) {</span>
+<span class="lineNum">     111 </span><span class="lineCov">        408 :     if (![instance conformsToProtocol:@protocol(TyphoonComponentPostProcessor)]) {</span>
+<span class="lineNum">     112 </span><span class="lineCov">        414 :         for (id &lt;TyphoonComponentPostProcessor&gt; postProcessor in _componentPostProcessors) {</span>
 <span class="lineNum">     113 </span><span class="lineCov">          3 :             instance = [postProcessor postProcessComponent:instance];</span>
-<span class="lineNum">     114 </span><span class="lineCov">        411 :         }</span>
-<span class="lineNum">     115 </span><span class="lineCov">        404 :     }</span>
-<span class="lineNum">     116 </span><span class="lineCov">        405 :     return instance;</span>
-<span class="lineNum">     117 </span><span class="lineCov">        405 : }</span>
+<span class="lineNum">     114 </span><span class="lineCov">        414 :         }</span>
+<span class="lineNum">     115 </span><span class="lineCov">        407 :     }</span>
+<span class="lineNum">     116 </span><span class="lineCov">        408 :     return instance;</span>
+<span class="lineNum">     117 </span><span class="lineCov">        408 : }</span>
 <span class="lineNum">     118 </span>            : 
-<span class="lineNum">     119 </span><span class="lineCov">        420 : - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance</span>
+<span class="lineNum">     119 </span><span class="lineCov">        423 : - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance</span>
 <span class="lineNum">     120 </span>            : {
-<span class="lineNum">     121 </span><span class="lineCov">        420 :     if ([instance respondsToSelector:@selector(typhoonSetFactory:)]) {</span>
+<span class="lineNum">     121 </span><span class="lineCov">        423 :     if ([instance respondsToSelector:@selector(typhoonSetFactory:)]) {</span>
 <span class="lineNum">     122 </span><span class="lineCov">          5 :         [(NSObject *) instance typhoonSetFactory:self];</span>
 <span class="lineNum">     123 </span><span class="lineCov">          5 :     }</span>
-<span class="lineNum">     124 </span><span class="lineCov">        420 : }</span>
+<span class="lineNum">     124 </span><span class="lineCov">        423 : }</span>
 <span class="lineNum">     125 </span>            : 
-<span class="lineNum">     126 </span><span class="lineCov">        380 : - (id)buildSharedInstanceForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args</span>
+<span class="lineNum">     126 </span><span class="lineCov">        382 : - (id)buildSharedInstanceForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args</span>
 <span class="lineNum">     127 </span>            : {
-<span class="lineNum">     128 </span><span class="lineCov">        380 :     id instance = [_stack peekForKey:definition.key args:args].instance;</span>
-<span class="lineNum">     129 </span><span class="lineCov">        380 :     if (instance) {</span>
+<span class="lineNum">     128 </span><span class="lineCov">        382 :     id instance = [_stack peekForKey:definition.key args:args].instance;</span>
+<span class="lineNum">     129 </span><span class="lineCov">        382 :     if (instance) {</span>
 <span class="lineNum">     130 </span><span class="lineNoCov">          0 :         return instance;</span>
 <span class="lineNum">     131 </span>            :     }
-<span class="lineNum">     132 </span><span class="lineCov">        380 :     return [self buildInstanceWithDefinition:definition args:args];</span>
-<span class="lineNum">     133 </span><span class="lineCov">        376 : }</span>
+<span class="lineNum">     132 </span><span class="lineCov">        382 :     return [self buildInstanceWithDefinition:definition args:args];</span>
+<span class="lineNum">     133 </span><span class="lineCov">        378 : }</span>
 <span class="lineNum">     134 </span>            : 
 <span class="lineNum">     135 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     136 </span>            : #pragma mark - Injection process
 <span class="lineNum">     137 </span>            : 
-<span class="lineNum">     138 </span><span class="lineCov">        424 : - (void)doInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args</span>
+<span class="lineNum">     138 </span><span class="lineCov">        427 : - (void)doInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args</span>
 <span class="lineNum">     139 </span>            : {
-<span class="lineNum">     140 </span><span class="lineCov">        424 :     [self doBeforeInjectionsOn:instance withDefinition:definition];</span>
+<span class="lineNum">     140 </span><span class="lineCov">        427 :     [self doBeforeInjectionsOn:instance withDefinition:definition];</span>
 <span class="lineNum">     141 </span>            : 
-<span class="lineNum">     142 </span><span class="lineCov">       1180 :     for (id &lt;TyphoonPropertyInjection&gt; property in [definition injectedProperties]) {</span>
-<span class="lineNum">     143 </span><span class="lineCov">        296 :         [self doPropertyInjectionOn:instance property:property args:args];</span>
-<span class="lineNum">     144 </span><span class="lineCov">       1169 :     }</span>
+<span class="lineNum">     142 </span><span class="lineCov">       1188 :     for (id &lt;TyphoonPropertyInjection&gt; property in [definition injectedProperties]) {</span>
+<span class="lineNum">     143 </span><span class="lineCov">        298 :         [self doPropertyInjectionOn:instance property:property args:args];</span>
+<span class="lineNum">     144 </span><span class="lineCov">       1177 :     }</span>
 <span class="lineNum">     145 </span>            : 
-<span class="lineNum">     146 </span><span class="lineCov">        465 :     for (TyphoonMethod *method in [definition injectedMethods]) {</span>
+<span class="lineNum">     146 </span><span class="lineCov">        468 :     for (TyphoonMethod *method in [definition injectedMethods]) {</span>
 <span class="lineNum">     147 </span><span class="lineCov">         15 :         [self doMethodInjection:method onInstance:instance args:args];</span>
-<span class="lineNum">     148 </span><span class="lineCov">        465 :     }</span>
+<span class="lineNum">     148 </span><span class="lineCov">        468 :     }</span>
 <span class="lineNum">     149 </span>            : 
-<span class="lineNum">     150 </span><span class="lineCov">        420 :     [self injectAssemblyOnInstanceIfTyphoonAware:instance];</span>
+<span class="lineNum">     150 </span><span class="lineCov">        423 :     [self injectAssemblyOnInstanceIfTyphoonAware:instance];</span>
 <span class="lineNum">     151 </span>            : 
-<span class="lineNum">     152 </span><span class="lineCov">        420 :     [self doAfterInjectionsOn:instance withDefinition:definition];</span>
-<span class="lineNum">     153 </span><span class="lineCov">        420 : }</span>
+<span class="lineNum">     152 </span><span class="lineCov">        423 :     [self doAfterInjectionsOn:instance withDefinition:definition];</span>
+<span class="lineNum">     153 </span><span class="lineCov">        423 : }</span>
 <span class="lineNum">     154 </span>            : 
-<span class="lineNum">     155 </span><span class="lineCov">        424 : - (void)doBeforeInjectionsOn:(id)instance withDefinition:(TyphoonDefinition *)definition</span>
+<span class="lineNum">     155 </span><span class="lineCov">        427 : - (void)doBeforeInjectionsOn:(id)instance withDefinition:(TyphoonDefinition *)definition</span>
 <span class="lineNum">     156 </span>            : {
-<span class="lineNum">     157 </span><span class="lineCov">        424 :     if ([instance respondsToSelector:@selector(typhoonWillInject)]) {</span>
+<span class="lineNum">     157 </span><span class="lineCov">        427 :     if ([instance respondsToSelector:@selector(typhoonWillInject)]) {</span>
 <span class="lineNum">     158 </span><span class="lineCov">         56 :         [instance typhoonWillInject];</span>
 <span class="lineNum">     159 </span><span class="lineCov">         56 :     }</span>
 <span class="lineNum">     160 </span>            : 
-<span class="lineNum">     161 </span><span class="lineCov">        846 :     if (definition &amp;&amp; [instance respondsToSelector:definition.beforeInjections]) {</span>
+<span class="lineNum">     161 </span><span class="lineCov">        852 :     if (definition &amp;&amp; [instance respondsToSelector:definition.beforeInjections]) {</span>
 <span class="lineNum">     162 </span><span class="lineNoCov">          0 :         void(*method)(id, SEL) = (void (*)(id, SEL)) [instance methodForSelector:definition.beforeInjections];</span>
 <span class="lineNum">     163 </span><span class="lineNoCov">          0 :         method(instance, definition.beforeInjections);</span>
 <span class="lineNum">     164 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     165 </span><span class="lineCov">        424 : }</span>
+<span class="lineNum">     165 </span><span class="lineCov">        427 : }</span>
 <span class="lineNum">     166 </span>            : 
-<span class="lineNum">     167 </span><span class="lineCov">        420 : - (void)doAfterInjectionsOn:(id)instance withDefinition:(TyphoonDefinition *)definition</span>
+<span class="lineNum">     167 </span><span class="lineCov">        423 : - (void)doAfterInjectionsOn:(id)instance withDefinition:(TyphoonDefinition *)definition</span>
 <span class="lineNum">     168 </span>            : {
-<span class="lineNum">     169 </span><span class="lineCov">        420 :     if ([instance respondsToSelector:@selector(typhoonDidInject)]) {</span>
+<span class="lineNum">     169 </span><span class="lineCov">        423 :     if ([instance respondsToSelector:@selector(typhoonDidInject)]) {</span>
 <span class="lineNum">     170 </span><span class="lineCov">         56 :         [instance typhoonDidInject];</span>
 <span class="lineNum">     171 </span><span class="lineCov">         56 :     }</span>
 <span class="lineNum">     172 </span>            : 
-<span class="lineNum">     173 </span><span class="lineCov">        838 :     if (definition &amp;&amp; [instance respondsToSelector:definition.afterInjections]) {</span>
+<span class="lineNum">     173 </span><span class="lineCov">        844 :     if (definition &amp;&amp; [instance respondsToSelector:definition.afterInjections]) {</span>
 <span class="lineNum">     174 </span><span class="lineNoCov">          0 :         void(*method)(id, SEL) = (void (*)(id, SEL)) [instance methodForSelector:definition.afterInjections];</span>
 <span class="lineNum">     175 </span><span class="lineNoCov">          0 :         method(instance, definition.afterInjections);</span>
 <span class="lineNum">     176 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     177 </span><span class="lineCov">        420 : }</span>
+<span class="lineNum">     177 </span><span class="lineCov">        423 : }</span>
 <span class="lineNum">     178 </span>            : 
 <span class="lineNum">     179 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     180 </span>            : #pragma mark - Methods Injection
@@ -253,19 +253,19 @@
 <span class="lineNum">     195 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     196 </span>            : #pragma mark - Property Injection
 <span class="lineNum">     197 </span>            : 
-<span class="lineNum">     198 </span><span class="lineCov">        591 : - (void)doPropertyInjectionOn:(id)instance property:(id &lt;TyphoonPropertyInjection&gt;)property args:(TyphoonRuntimeArguments *)args</span>
+<span class="lineNum">     198 </span><span class="lineCov">        595 : - (void)doPropertyInjectionOn:(id)instance property:(id &lt;TyphoonPropertyInjection&gt;)property args:(TyphoonRuntimeArguments *)args</span>
 <span class="lineNum">     199 </span>            : {
-<span class="lineNum">     200 </span><span class="lineCov">        296 :     TyphoonInjectionContext *context = [TyphoonInjectionContext new];</span>
-<span class="lineNum">     201 </span><span class="lineCov">        296 :     context.destinationType = [instance typhoon_typeForPropertyWithName:property.propertyName];</span>
-<span class="lineNum">     202 </span><span class="lineCov">        296 :     context.destinationInstanceClass = [instance class];</span>
-<span class="lineNum">     203 </span><span class="lineCov">        296 :     context.factory = self;</span>
-<span class="lineNum">     204 </span><span class="lineCov">        296 :     context.args = args;</span>
-<span class="lineNum">     205 </span><span class="lineCov">        296 :     context.raiseExceptionIfCircular = NO;</span>
+<span class="lineNum">     200 </span><span class="lineCov">        298 :     TyphoonInjectionContext *context = [TyphoonInjectionContext new];</span>
+<span class="lineNum">     201 </span><span class="lineCov">        298 :     context.destinationType = [instance typhoon_typeForPropertyWithName:property.propertyName];</span>
+<span class="lineNum">     202 </span><span class="lineCov">        298 :     context.destinationInstanceClass = [instance class];</span>
+<span class="lineNum">     203 </span><span class="lineCov">        298 :     context.factory = self;</span>
+<span class="lineNum">     204 </span><span class="lineCov">        298 :     context.args = args;</span>
+<span class="lineNum">     205 </span><span class="lineCov">        298 :     context.raiseExceptionIfCircular = NO;</span>
 <span class="lineNum">     206 </span>            : 
-<span class="lineNum">     207 </span><span class="lineCov">        591 :     [property valueToInjectWithContext:context completion:^(id value) {</span>
-<span class="lineNum">     208 </span><span class="lineCov">        295 :         [instance typhoon_injectValue:value forPropertyName:property.propertyName];</span>
-<span class="lineNum">     209 </span><span class="lineCov">        295 :     }];</span>
-<span class="lineNum">     210 </span><span class="lineCov">        296 : }</span>
+<span class="lineNum">     207 </span><span class="lineCov">        595 :     [property valueToInjectWithContext:context completion:^(id value) {</span>
+<span class="lineNum">     208 </span><span class="lineCov">        297 :         [instance typhoon_injectValue:value forPropertyName:property.propertyName];</span>
+<span class="lineNum">     209 </span><span class="lineCov">        297 :     }];</span>
+<span class="lineNum">     210 </span><span class="lineCov">        298 : }</span>
 <span class="lineNum">     211 </span>            : 
 <span class="lineNum">     212 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     213 </span>            : #pragma mark - Circular dependencies support

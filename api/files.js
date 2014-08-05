@@ -57,6 +57,7 @@ var files =
       [ "TyphoonInjectionByComponentFactory", "interface_typhoon_injection_by_component_factory.html", null ]
     ] ],
     [ "TyphoonInjectionByConfig.h", "_typhoon_injection_by_config_8h.html", null ],
+    [ "TyphoonInjectionByCurrentRuntimeArguments.h", "_typhoon_injection_by_current_runtime_arguments_8h.html", null ],
     [ "TyphoonInjectionByDictionary.h", "_typhoon_injection_by_dictionary_8h.html", [
       [ "<TyphoonDictionary>", "protocol_typhoon_dictionary-p.html", "protocol_typhoon_dictionary-p" ],
       [ "TyphoonInjectionByDictionary", "interface_typhoon_injection_by_dictionary.html", "interface_typhoon_injection_by_dictionary" ]
@@ -93,7 +94,7 @@ var files =
     [ "TyphoonNSURLTypeConverter.h", "_typhoon_n_s_u_r_l_type_converter_8h.html", [
       [ "TyphoonNSURLTypeConverter", "interface_typhoon_n_s_u_r_l_type_converter.html", null ]
     ] ],
-    [ "TyphoonOptionMatcher+Internal.h", "_typhoon_option_matcher_09_internal_8h.html", null ],
+    [ "TyphoonOptionMatcher+Internal.h", "_typhoon_option_matcher_09_internal_8h.html", "_typhoon_option_matcher_09_internal_8h" ],
     [ "TyphoonOptionMatcher.h", "_typhoon_option_matcher_8h.html", [
       [ "TyphoonOptionMatcher", "interface_typhoon_option_matcher.html", "interface_typhoon_option_matcher" ]
     ] ],

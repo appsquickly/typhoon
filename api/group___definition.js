@@ -23,8 +23,8 @@ var group___definition =
       [ "withClass:configuration:", "interface_typhoon_definition.html#a63159e475b4d02f6cb98407dfe13f594", null ],
       [ "withFactory:selector:", "interface_typhoon_definition.html#a967ccf83c6835d0120b0c1d4385e841e", null ],
       [ "withFactory:selector:parameters:", "interface_typhoon_definition.html#a054e83736a4db4becf73e5a7d0936dc7", null ],
-      [ "withOption:matcher:", "interface_typhoon_definition.html#a32ca1f2c90cffe0024ce1bd11bc6c579", null ],
-      [ "withOption:yes:no:", "interface_typhoon_definition.html#a4f34bf0942e409dda3d43df3c4abaf8c", null ]
+      [ "withOption:matcher:", "interface_typhoon_definition.html#ace67617e7c8feea3167bd10342964a3d", null ],
+      [ "withOption:yes:no:", "interface_typhoon_definition.html#a010c1ec8138e655ab48676876f2f5369", null ]
     ] ],
     [ "TyphoonMethod", "interface_typhoon_method.html", [
       [ "parameterNames", "interface_typhoon_method.html#a248d243a0a4975cd8660a7459a70c0e2", null ],

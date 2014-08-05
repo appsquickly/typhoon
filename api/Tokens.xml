@@ -244,6 +244,16 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>TyphoonInjectionWithCurrentRuntimeArguments</Name>
+      <APILanguage>c</APILanguage>
+      <Type>func</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_injections_8h.html</Path>
+    <Anchor>a34fb12686297644dc18ce9c18e6299ab</Anchor>
+    <DeclaredIn>TyphoonInjections.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>TyphoonInjectionWithDictionaryAndType</Name>
       <APILanguage>c</APILanguage>
       <Type>func</Type>
@@ -331,6 +341,16 @@
     <Path>_typhoon_introspection_utils_8h.html</Path>
     <Anchor>a4efc9426f64b77b419eea0204eedb57a</Anchor>
     <DeclaredIn>TyphoonIntrospectionUtils.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>TyphoonOptionMatcherDefinitionSearchResult</Name>
+      <APILanguage>c</APILanguage>
+      <Type>tdef</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_option_matcher_09_internal_8h.html</Path>
+    <Anchor>a3421599da42028b69f04aff5188749bd</Anchor>
+    <DeclaredIn>TyphoonOptionMatcher+Internal.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -2151,7 +2171,7 @@
       <Scope>TyphoonDefinition</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a32ca1f2c90cffe0024ce1bd11bc6c579</Anchor>
+    <Anchor>ace67617e7c8feea3167bd10342964a3d</Anchor>
     <Abstract>Returns definition matching &amp;#39;option&amp;#39;, specified in &amp;#39;matcherBlock&amp;#39;. </Abstract>
     <DeclaredIn>TyphoonDefinition+Option.h</DeclaredIn>
   </Token>
@@ -2163,7 +2183,7 @@
       <Scope>TyphoonDefinition</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a4f34bf0942e409dda3d43df3c4abaf8c</Anchor>
+    <Anchor>a010c1ec8138e655ab48676876f2f5369</Anchor>
     <Abstract>if boolean &amp;#39;option&amp;#39; value is YES, then return yesDefinition, otherwise return noDefinition ...</Abstract>
     <DeclaredIn>TyphoonDefinition+Option.h</DeclaredIn>
   </Token>
@@ -2269,7 +2289,7 @@
       <Scope>TyphoonDefinition(Option)</Scope>
     </TokenIdentifier>
     <Path>category_typhoon_definition_07_option_08.html</Path>
-    <Anchor>a32ca1f2c90cffe0024ce1bd11bc6c579</Anchor>
+    <Anchor>ace67617e7c8feea3167bd10342964a3d</Anchor>
     <Abstract>Returns definition matching &amp;#39;option&amp;#39;, specified in &amp;#39;matcherBlock&amp;#39;. </Abstract>
     <DeclaredIn>TyphoonDefinition+Option.h</DeclaredIn>
   </Token>
@@ -2281,7 +2301,7 @@
       <Scope>TyphoonDefinition(Option)</Scope>
     </TokenIdentifier>
     <Path>category_typhoon_definition_07_option_08.html</Path>
-    <Anchor>a4f34bf0942e409dda3d43df3c4abaf8c</Anchor>
+    <Anchor>a010c1ec8138e655ab48676876f2f5369</Anchor>
     <Abstract>if boolean &amp;#39;option&amp;#39; value is YES, then return yesDefinition, otherwise return noDefinition ...</Abstract>
     <DeclaredIn>TyphoonDefinition+Option.h</DeclaredIn>
   </Token>
@@ -3760,13 +3780,13 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>valueCreatedFromDefinitionMatchedOption:</Name>
+      <Name>valueCreatedFromDefinitionMatchedOption:args:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
       <Scope>TyphoonMatcherDefinitionFactory</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_matcher_definition_factory.html</Path>
-    <Anchor>ad61512c894d536da47dda14f5233cb53</Anchor>
+    <Anchor>a3eaaa919fe0b3db64616b7a6b63fe59c</Anchor>
     <DeclaredIn>TyphoonMatcherDefinitionFactory.h</DeclaredIn>
   </Token>
   <Token>
@@ -3876,6 +3896,30 @@
       <Scope>TyphoonOptionMatcher</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_option_matcher.html</Path>
+    <DeclaredIn>TyphoonOptionMatcher.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>caseKindOfClass:use:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonOptionMatcher</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_option_matcher.html</Path>
+    <Anchor>a14a5df24d55afcf472956dfc20a582cf</Anchor>
+    <Abstract>If &amp;#39;option&amp;#39; is kind of class &amp;#39;optionClass&amp;#39; then use &amp;#39;definition&amp;#39;. </Abstract>
+    <DeclaredIn>TyphoonOptionMatcher.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>caseMemberOfClass:use:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonOptionMatcher</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_option_matcher.html</Path>
+    <Anchor>abbd2e583036ac8322b4aae62ea0ac40e</Anchor>
+    <Abstract>If &amp;#39;option&amp;#39; is member of class &amp;#39;optionClass&amp;#39; then use &amp;#39;definition&amp;#39;. </Abstract>
     <DeclaredIn>TyphoonOptionMatcher.h</DeclaredIn>
   </Token>
   <Token>
@@ -4384,6 +4428,17 @@
     </TokenIdentifier>
     <Path>interface_typhoon_runtime_arguments.html</Path>
     <Anchor>a9f06b6f706e185ec4f7facde16894f0e</Anchor>
+    <DeclaredIn>TyphoonRuntimeArguments.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>argumentsFromRuntimeArguments:appliedToReferenceArguments:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonRuntimeArguments</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_runtime_arguments.html</Path>
+    <Anchor>a04aecfd10e75c2773e99f473628fc5a8</Anchor>
     <DeclaredIn>TyphoonRuntimeArguments.h</DeclaredIn>
   </Token>
   <Token>

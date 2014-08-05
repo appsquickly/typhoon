@@ -30,6 +30,7 @@ var searchData=
   ['typhooninjectionbycollection_2eh',['TyphoonInjectionByCollection.h',['../_typhoon_injection_by_collection_8h.html',1,'']]],
   ['typhooninjectionbycomponentfactory_2eh',['TyphoonInjectionByComponentFactory.h',['../_typhoon_injection_by_component_factory_8h.html',1,'']]],
   ['typhooninjectionbyconfig_2eh',['TyphoonInjectionByConfig.h',['../_typhoon_injection_by_config_8h.html',1,'']]],
+  ['typhooninjectionbycurrentruntimearguments_2eh',['TyphoonInjectionByCurrentRuntimeArguments.h',['../_typhoon_injection_by_current_runtime_arguments_8h.html',1,'']]],
   ['typhooninjectionbydictionary_2eh',['TyphoonInjectionByDictionary.h',['../_typhoon_injection_by_dictionary_8h.html',1,'']]],
   ['typhooninjectionbyfactoryreference_2eh',['TyphoonInjectionByFactoryReference.h',['../_typhoon_injection_by_factory_reference_8h.html',1,'']]],
   ['typhooninjectionbyobjectfromstring_2eh',['TyphoonInjectionByObjectFromString.h',['../_typhoon_injection_by_object_from_string_8h.html',1,'']]],
