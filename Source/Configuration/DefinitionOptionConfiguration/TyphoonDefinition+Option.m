@@ -13,12 +13,12 @@
 + (id)withOption:(id)option yes:(id)yesDefinition no:(id)noDefinition
 {
     return [self withOption:option matcher:^(TyphoonOptionMatcher *matcher) {
-        [matcher caseOption:@YES use:yesDefinition];
-        [matcher caseOption:@"YES" use:yesDefinition];
-        [matcher caseOption:@"1" use:yesDefinition];
-        [matcher caseOption:@NO use:noDefinition];
-        [matcher caseOption:@"NO" use:noDefinition];
-        [matcher caseOption:@"0" use:noDefinition];
+        [matcher caseEqual:@YES use:yesDefinition];
+        [matcher caseEqual:@"YES" use:yesDefinition];
+        [matcher caseEqual:@"1" use:yesDefinition];
+        [matcher caseEqual:@NO use:noDefinition];
+        [matcher caseEqual:@"NO" use:noDefinition];
+        [matcher caseEqual:@"0" use:noDefinition];
     }];
 }
 

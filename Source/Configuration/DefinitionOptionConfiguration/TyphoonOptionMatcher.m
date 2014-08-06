@@ -9,52 +9,56 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonInjections.h"
+#import "TyphoonInjection.h"
 
 ////////////////////// TyphoonOptionMatcherValue //////////////////
+
+@interface TyphoonOptionMatchNilValue : NSObject
+@end
+@implementation TyphoonOptionMatchNilValue
+@end
 
 @interface TyphoonOptionMatch : NSObject
 @property (nonatomic, strong) id value;
 @property (nonatomic) Class memberClass;
 @property (nonatomic) Class kindClass;
-@property (nonatomic, strong) TyphoonDefinition *definition;
-@property (nonatomic, strong) TyphoonRuntimeArguments *referenceArguments;
+@property (nonatomic, strong) id<TyphoonInjection> injection;
 
-+ (id)matchWithValue:(id)value definition:(id)definition;
-+ (id)matchWithKindOfClass:(Class)clazz definition:(id)definition;
-+ (id)matchWithMemberOfClass:(Class)clazz definition:(id)definition;
++ (id)matchWithValue:(id)value injection:(id)injection;
++ (id)matchWithKindOfClass:(Class)clazz injection:(id)injection;
++ (id)matchWithMemberOfClass:(Class)clazz injection:(id)injection;
 
 @end
 
 @implementation TyphoonOptionMatch
 
-+ (id)matchWithValue:(id)value definition:(id)definition
++ (id)matchWithValue:(id)value injection:(id)injection
 {
     TyphoonOptionMatch *match = [TyphoonOptionMatch new];
-    match.value = value;
-    match.definition = definition;
+    if (value) {
+        match.value = value;
+    } else {
+        match.value = [TyphoonOptionMatchNilValue class];
+    }
+    match.injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);
     return match;
 }
 
-+ (id)matchWithKindOfClass:(Class)clazz definition:(id)definition
++ (id)matchWithKindOfClass:(Class)clazz injection:(id)injection
 {
     TyphoonOptionMatch *match = [TyphoonOptionMatch new];
     match.kindClass = clazz;
-    match.definition = definition;
+    match.injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);
     return match;
 }
 
-+ (id)matchWithMemberOfClass:(Class)clazz definition:(id)definition
++ (id)matchWithMemberOfClass:(Class)clazz injection:(id)injection
 {
     TyphoonOptionMatch *match = [TyphoonOptionMatch new];
     match.memberClass = clazz;
-    match.definition = definition;
+    match.injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);
     return match;
-}
-
-- (void)setDefinition:(TyphoonDefinition *)definition
-{
-    _definition = definition;
-    self.referenceArguments = definition.currentRuntimeArguments;
 }
 
 @end
@@ -65,8 +69,7 @@
 @implementation TyphoonOptionMatcher
 {
     NSMutableArray *_matches;
-    TyphoonDefinition *_defaultDefinition;
-    TyphoonRuntimeArguments *_defaultReferenceArguments;
+    id<TyphoonInjection> _defaultInjection;
     BOOL _useMatchingByName;
 }
 
@@ -84,25 +87,19 @@
     return self;
 }
 
-- (void)caseOption:(id)optionValue use:(id)definition
+- (void)caseEqual:(id)optionValue use:(id)injection
 {
-    NSAssert(optionValue, @"optionValue can't be nil");
-    NSAssert(definition, @"definition can't be nil");
-    [_matches addObject:[TyphoonOptionMatch matchWithValue:optionValue definition:definition]];
+    [_matches addObject:[TyphoonOptionMatch matchWithValue:optionValue injection:injection]];
 }
 
-- (void)caseKindOfClass:(Class)optionClass use:(id)definition
+- (void)caseKindOfClass:(Class)optionClass use:(id)injection
 {
-    NSAssert(optionClass, @"optionClass can't be nil");
-    NSAssert(definition, @"definition can't be nil");
-    [_matches addObject:[TyphoonOptionMatch matchWithKindOfClass:optionClass definition:definition]];
+    [_matches addObject:[TyphoonOptionMatch matchWithKindOfClass:optionClass injection:injection]];
 }
 
-- (void)caseMemberOfClass:(Class)optionClass use:(id)definition
+- (void)caseMemberOfClass:(Class)optionClass use:(id)injection
 {
-    NSAssert(optionClass, @"optionClass can't be nil");
-    NSAssert(definition, @"definition can't be nil");
-    [_matches addObject:[TyphoonOptionMatch matchWithMemberOfClass:optionClass definition:definition]];
+    [_matches addObject:[TyphoonOptionMatch matchWithMemberOfClass:optionClass injection:injection]];
 }
 
 - (void)useDefinitionWithKeyMatchedOptionValue
@@ -110,46 +107,37 @@
     _useMatchingByName = YES;
 }
 
-- (void)defaultUse:(id)definition
+- (void)defaultUse:(id)injection
 {
-    _defaultDefinition = definition;
-    _defaultReferenceArguments = ((TyphoonDefinition *)definition).currentRuntimeArguments;
+    _defaultInjection = TyphoonMakeInjectionFromObjectIfNeeded(injection);
 }
 
-- (void)findDefinitionMatchedValue:(id)value withFactory:(TyphoonComponentFactory *)factory usingBlock:(TyphoonOptionMatcherDefinitionSearchResult)block
+- (id<TyphoonInjection>)injectionMatchedValue:(id)value
 {
-    TyphoonDefinition *result = nil;
-    TyphoonRuntimeArguments *resultArgs = nil;
+    id<TyphoonInjection> injection = nil;
 
     TyphoonOptionMatch *match = [self matchForValue:value];
     if (match) {
-        result = match.definition;
-        resultArgs = match.referenceArguments;
+        injection = match.injection;
     } else if (_useMatchingByName && [value isKindOfClass:[NSString class]]){
-        result = [factory definitionForKey:value];
+        injection = TyphoonInjectionWithReference(value);
     }
 
-    if (!result) {
-        result = _defaultDefinition;
-        resultArgs = _defaultReferenceArguments;
+    if (!injection) {
+        injection = _defaultInjection;
     }
 
-    if (!result) {
-        [NSException raise:NSInternalInconsistencyException format:@"Can't find definition to match value %@",value];
+    if (!injection) {
+        [NSException raise:NSInternalInconsistencyException format:@"Can't find injection to match value %@",value];
     }
 
-    if ([resultArgs isKindOfClass:[NSNull class]]) {
-        resultArgs = nil;
-    }
-
-    block(result, resultArgs);
+    return injection;
 }
-
 
 - (TyphoonOptionMatch *)matchForValue:(id)value
 {
     for (TyphoonOptionMatch *match in _matches) {
-        BOOL isEqual = (match.value && [match.value isEqual:value]);
+        BOOL isEqual = (match.value && [match.value isEqual:value]) || ([match.value isEqual:[TyphoonOptionMatchNilValue class]] && !value);
         BOOL isKind = (match.kindClass && [value isKindOfClass:match.kindClass]);
         BOOL isMember = (match.memberClass && [value isMemberOfClass:match.memberClass]);
         if (isEqual || isKind || isMember) {

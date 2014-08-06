@@ -7,18 +7,26 @@
 #import "TyphoonMatcherDefinitionFactory.h"
 #import "TyphoonOptionMatcher+Internal.h"
 #import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonInjection.h"
 
 
 @implementation TyphoonMatcherDefinitionFactory
 
 - (id)valueCreatedFromDefinitionMatchedOption:(id)optionValue args:(TyphoonRuntimeArguments *)args
 {
+    id<TyphoonInjection>injection = [self.matcher injectionMatchedValue:optionValue];
+
+    TyphoonInjectionContext *context = [TyphoonInjectionContext new];
+    context.args = args;
+    context.factory = self.factory;
+    context.raiseExceptionIfCircular = YES;
+    context.destinationType = [TyphoonTypeDescriptor descriptorWithEncodedType:@encode(id)];
+
     __block id result = nil;
-    [self.matcher findDefinitionMatchedValue:optionValue withFactory:self.factory usingBlock:^(TyphoonDefinition *definition, TyphoonRuntimeArguments *referenceArguments) {
-        TyphoonRuntimeArguments *definitionArgs = [TyphoonRuntimeArguments argumentsFromRuntimeArguments:args appliedToReferenceArguments:referenceArguments];
-        result = [self.factory objectForDefinition:definition args:definitionArgs];
+    [injection valueToInjectWithContext:context completion:^(id value) {
+        result = value;
     }];
-    NSParameterAssert(result);
+
     return result;
 }
 

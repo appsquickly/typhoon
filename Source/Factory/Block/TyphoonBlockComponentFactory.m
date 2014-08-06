@@ -18,6 +18,7 @@
 #import "OCLogTemplate.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblyPropertyInjectionPostProcessor.h"
+#import "TyphoonInjection.h"
 #import "TyphoonIntrospectionUtils.h"
 
 @interface TyphoonComponentFactory (Private)

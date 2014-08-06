@@ -94,4 +94,29 @@
     XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherFromOption:@"custom" withString:@"123"], @"123");
 }
 
+- (void)test_definition_with_custom_injections_on_matcher
+{
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomInjectionsMatcherFromOption:@"optionItSelf" withString:@"123"],@"optionItSelf");
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomInjectionsMatcherFromOption:@"customString" withString:@"123"],@"123");
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomInjectionsMatcherFromOption:@"defaultString" withString:nil],@"Typhoon");
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomInjectionsMatcherFromOption:[NSNull null] withString:nil],nil);
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomInjectionsMatcherFromOption:nil withString:nil],[NSNull null]);
+}
+
+- (void)test_definition_with_circular_dependency
+{
+    NSArray *array = [assembly definitionWithCircularDescription];
+    NSLog(@"array: %@", array);
+    NSValue *first = array[0];
+    NSValue *second = array[1];
+    XCTAssertTrue([first pointerValue] == (__bridge void *)array);
+    XCTAssertTrue([second pointerValue] == (__bridge void *)array);
+
+}
+
+- (void)test_definition_with_incorrect_circular_dependency
+{
+    XCTAssertThrows([assembly definitionWithIncorrectCircularDependency]);
+}
+
 @end
