@@ -3900,14 +3900,26 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>caseEqual:use:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonOptionMatcher</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_option_matcher.html</Path>
+    <Anchor>a08d3570cf6d98aaf8ae4f696fb62a6a6</Anchor>
+    <Abstract>If &amp;#39;option&amp;#39; equals &amp;#39;optionValue&amp;#39; then use &amp;#39;injection&amp;#39;. </Abstract>
+    <DeclaredIn>TyphoonOptionMatcher.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>caseKindOfClass:use:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
       <Scope>TyphoonOptionMatcher</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_option_matcher.html</Path>
-    <Anchor>a14a5df24d55afcf472956dfc20a582cf</Anchor>
-    <Abstract>If &amp;#39;option&amp;#39; is kind of class &amp;#39;optionClass&amp;#39; then use &amp;#39;definition&amp;#39;. </Abstract>
+    <Anchor>aaaa3b8e9dca3bf90897c373e86339e84</Anchor>
+    <Abstract>If &amp;#39;option&amp;#39; is kind of class &amp;#39;optionClass&amp;#39; then use &amp;#39;injection&amp;#39;. </Abstract>
     <DeclaredIn>TyphoonOptionMatcher.h</DeclaredIn>
   </Token>
   <Token>
@@ -3918,20 +3930,8 @@
       <Scope>TyphoonOptionMatcher</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_option_matcher.html</Path>
-    <Anchor>abbd2e583036ac8322b4aae62ea0ac40e</Anchor>
-    <Abstract>If &amp;#39;option&amp;#39; is member of class &amp;#39;optionClass&amp;#39; then use &amp;#39;definition&amp;#39;. </Abstract>
-    <DeclaredIn>TyphoonOptionMatcher.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>caseOption:use:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonOptionMatcher</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_option_matcher.html</Path>
-    <Anchor>a5cbdce8a9e2f4cbd7a851891bac1615d</Anchor>
-    <Abstract>If &amp;#39;option&amp;#39; equals &amp;#39;optionValue&amp;#39; then use &amp;#39;definition&amp;#39;. </Abstract>
+    <Anchor>a4d0c1d6f7bd45f9ac3fb39f75579568f</Anchor>
+    <Abstract>If &amp;#39;option&amp;#39; is member of class &amp;#39;optionClass&amp;#39; then use &amp;#39;injection&amp;#39;. </Abstract>
     <DeclaredIn>TyphoonOptionMatcher.h</DeclaredIn>
   </Token>
   <Token>
@@ -3942,8 +3942,8 @@
       <Scope>TyphoonOptionMatcher</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_option_matcher.html</Path>
-    <Anchor>a19bf4efe1eec58b5b2a4584975eb1121</Anchor>
-    <Abstract>When matcher can&amp;#39;t match definition from optionValue, use &amp;#39;definition&amp;#39;. </Abstract>
+    <Anchor>a1dd7e4ae31546b51dbd0ba4c3d0f6c40</Anchor>
+    <Abstract>When matcher can&amp;#39;t match injection from optionValue, use &amp;#39;injection&amp;#39;. </Abstract>
     <DeclaredIn>TyphoonOptionMatcher.h</DeclaredIn>
   </Token>
   <Token>
@@ -4439,6 +4439,7 @@
     </TokenIdentifier>
     <Path>interface_typhoon_runtime_arguments.html</Path>
     <Anchor>a04aecfd10e75c2773e99f473628fc5a8</Anchor>
+    <Abstract>RuntimeArguments - arguments passed by user at runtime ReferenceArguments - arguments specified in th...</Abstract>
     <DeclaredIn>TyphoonRuntimeArguments.h</DeclaredIn>
   </Token>
   <Token>
@@ -4461,17 +4462,6 @@
     </TokenIdentifier>
     <Path>interface_typhoon_runtime_arguments.html</Path>
     <Anchor>a632e212e1dd074e768ffc12179401a61</Anchor>
-    <DeclaredIn>TyphoonRuntimeArguments.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>replaceArgumentAtIndex:withArgument:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonRuntimeArguments</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_runtime_arguments.html</Path>
-    <Anchor>a8b6ae094e6da2c2c5325dff694e6ab4c</Anchor>
     <DeclaredIn>TyphoonRuntimeArguments.h</DeclaredIn>
   </Token>
   <Token>

@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">67</td>
-            <td class="headerCovTableEntry">93</td>
-            <td class="headerCovTableEntryLo">72.0 %</td>
+            <td class="headerCovTableEntry">78</td>
+            <td class="headerCovTableEntryMed">85.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-08-05</td>
+            <td class="headerValue">2014-08-06</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -67,158 +67,146 @@
 <span class="lineNum">       9 </span>            : #import &quot;TyphoonComponentFactory.h&quot;
 <span class="lineNum">      10 </span>            : #import &quot;TyphoonComponentFactory+TyphoonDefinitionRegisterer.h&quot;
 <span class="lineNum">      11 </span>            : #import &quot;TyphoonDefinition+Infrastructure.h&quot;
-<span class="lineNum">      12 </span>            : 
-<span class="lineNum">      13 </span>            : ////////////////////// TyphoonOptionMatcherValue //////////////////
+<span class="lineNum">      12 </span>            : #import &quot;TyphoonInjections.h&quot;
+<span class="lineNum">      13 </span>            : #import &quot;TyphoonInjection.h&quot;
 <span class="lineNum">      14 </span>            : 
-<span class="lineNum">      15 </span>            : @interface TyphoonOptionMatch : NSObject
-<span class="lineNum">      16 </span><span class="lineCov">        680 : @property (nonatomic, strong) id value;</span>
-<span class="lineNum">      17 </span><span class="lineCov">         46 : @property (nonatomic) Class memberClass;</span>
-<span class="lineNum">      18 </span><span class="lineCov">         46 : @property (nonatomic) Class kindClass;</span>
-<span class="lineNum">      19 </span><span class="lineCov">         13 : @property (nonatomic, strong) TyphoonDefinition *definition;</span>
-<span class="lineNum">      20 </span><span class="lineCov">        601 : @property (nonatomic, strong) TyphoonRuntimeArguments *referenceArguments;</span>
+<span class="lineNum">      15 </span>            : ////////////////////// TyphoonOptionMatcherValue //////////////////
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span>            : @interface TyphoonOptionMatchNilValue : NSObject
+<span class="lineNum">      18 </span>            : @end
+<span class="lineNum">      19 </span>            : @implementation TyphoonOptionMatchNilValue
+<span class="lineNum">      20 </span>            : @end
 <span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span>            : + (id)matchWithValue:(id)value definition:(id)definition;
-<span class="lineNum">      23 </span>            : + (id)matchWithKindOfClass:(Class)clazz definition:(id)definition;
-<span class="lineNum">      24 </span>            : + (id)matchWithMemberOfClass:(Class)clazz definition:(id)definition;
-<span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span>            : @end
+<span class="lineNum">      22 </span>            : @interface TyphoonOptionMatch : NSObject
+<span class="lineNum">      23 </span><span class="lineCov">       1055 : @property (nonatomic, strong) id value;</span>
+<span class="lineNum">      24 </span><span class="lineCov">         89 : @property (nonatomic) Class memberClass;</span>
+<span class="lineNum">      25 </span><span class="lineCov">         73 : @property (nonatomic) Class kindClass;</span>
+<span class="lineNum">      26 </span><span class="lineCov">        890 : @property (nonatomic, strong) id&lt;TyphoonInjection&gt; injection;</span>
 <span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 : @implementation TyphoonOptionMatch</span>
-<span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span><span class="lineCov">        588 : + (id)matchWithValue:(id)value definition:(id)definition</span>
-<span class="lineNum">      31 </span>            : {
-<span class="lineNum">      32 </span><span class="lineCov">        588 :     TyphoonOptionMatch *match = [TyphoonOptionMatch new];</span>
-<span class="lineNum">      33 </span><span class="lineCov">        588 :     match.value = value;</span>
-<span class="lineNum">      34 </span><span class="lineCov">        588 :     match.definition = definition;</span>
-<span class="lineNum">      35 </span><span class="lineCov">        588 :     return match;</span>
-<span class="lineNum">      36 </span><span class="lineCov">        588 : }</span>
-<span class="lineNum">      37 </span>            : 
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 : + (id)matchWithKindOfClass:(Class)clazz definition:(id)definition</span>
-<span class="lineNum">      39 </span>            : {
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 :     TyphoonOptionMatch *match = [TyphoonOptionMatch new];</span>
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     match.kindClass = clazz;</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     match.definition = definition;</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     return match;</span>
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      45 </span>            : 
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 : + (id)matchWithMemberOfClass:(Class)clazz definition:(id)definition</span>
-<span class="lineNum">      47 </span>            : {
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 :     TyphoonOptionMatch *match = [TyphoonOptionMatch new];</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     match.memberClass = clazz;</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :     match.definition = definition;</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 :     return match;</span>
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      53 </span>            : 
-<span class="lineNum">      54 </span><span class="lineCov">        588 : - (void)setDefinition:(TyphoonDefinition *)definition</span>
-<span class="lineNum">      55 </span>            : {
-<span class="lineNum">      56 </span><span class="lineCov">        588 :     _definition = definition;</span>
-<span class="lineNum">      57 </span><span class="lineCov">        588 :     self.referenceArguments = definition.currentRuntimeArguments;</span>
-<span class="lineNum">      58 </span><span class="lineCov">        588 : }</span>
-<span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span>            : @end
-<span class="lineNum">      61 </span>            : 
-<span class="lineNum">      62 </span>            : 
-<span class="lineNum">      63 </span>            : ////////////////////////////////////////
-<span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 : @implementation TyphoonOptionMatcher</span>
-<span class="lineNum">      66 </span>            : {
-<span class="lineNum">      67 </span>            :     NSMutableArray *_matches;
-<span class="lineNum">      68 </span>            :     TyphoonDefinition *_defaultDefinition;
-<span class="lineNum">      69 </span>            :     TyphoonRuntimeArguments *_defaultReferenceArguments;
-<span class="lineNum">      70 </span>            :     BOOL _useMatchingByName;
-<span class="lineNum">      71 </span>            : }
-<span class="lineNum">      72 </span>            : 
-<span class="lineNum">      73 </span><span class="lineCov">        132 : - (instancetype)initWithBlock:(TyphoonMatcherBlock)block</span>
-<span class="lineNum">      74 </span>            : {
-<span class="lineNum">      75 </span><span class="lineCov">        132 :     self = [super init];</span>
-<span class="lineNum">      76 </span><span class="lineCov">        132 :     if (self) {</span>
-<span class="lineNum">      77 </span><span class="lineCov">        132 :         _matches = [NSMutableArray new];</span>
-<span class="lineNum">      78 </span><span class="lineCov">        132 :         _useMatchingByName = NO;</span>
-<span class="lineNum">      79 </span>            : 
-<span class="lineNum">      80 </span><span class="lineCov">        132 :         if (block) {</span>
-<span class="lineNum">      81 </span><span class="lineCov">        132 :             block(self);</span>
-<span class="lineNum">      82 </span><span class="lineCov">        132 :         }</span>
-<span class="lineNum">      83 </span><span class="lineCov">        132 :     }</span>
-<span class="lineNum">      84 </span><span class="lineCov">        132 :     return self;</span>
-<span class="lineNum">      85 </span><span class="lineCov">        132 : }</span>
-<span class="lineNum">      86 </span>            : 
-<span class="lineNum">      87 </span><span class="lineCov">        588 : - (void)caseOption:(id)optionValue use:(id)definition</span>
-<span class="lineNum">      88 </span>            : {
-<span class="lineNum">      89 </span><span class="lineCov">       2352 :     NSAssert(optionValue, @&quot;optionValue can't be nil&quot;);</span>
-<span class="lineNum">      90 </span><span class="lineCov">       2352 :     NSAssert(definition, @&quot;definition can't be nil&quot;);</span>
-<span class="lineNum">      91 </span><span class="lineCov">        588 :     [_matches addObject:[TyphoonOptionMatch matchWithValue:optionValue definition:definition]];</span>
-<span class="lineNum">      92 </span><span class="lineCov">        588 : }</span>
-<span class="lineNum">      93 </span>            : 
-<span class="lineNum">      94 </span><span class="lineNoCov">          0 : - (void)caseKindOfClass:(Class)optionClass use:(id)definition</span>
-<span class="lineNum">      95 </span>            : {
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 :     NSAssert(optionClass, @&quot;optionClass can't be nil&quot;);</span>
-<span class="lineNum">      97 </span><span class="lineNoCov">          0 :     NSAssert(definition, @&quot;definition can't be nil&quot;);</span>
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 :     [_matches addObject:[TyphoonOptionMatch matchWithKindOfClass:optionClass definition:definition]];</span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     100 </span>            : 
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 : - (void)caseMemberOfClass:(Class)optionClass use:(id)definition</span>
-<span class="lineNum">     102 </span>            : {
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 :     NSAssert(optionClass, @&quot;optionClass can't be nil&quot;);</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 :     NSAssert(definition, @&quot;definition can't be nil&quot;);</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 :     [_matches addObject:[TyphoonOptionMatch matchWithMemberOfClass:optionClass definition:definition]];</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     107 </span>            : 
-<span class="lineNum">     108 </span>            : - (void)useDefinitionWithKeyMatchedOptionValue
-<span class="lineNum">     109 </span>            : {
-<span class="lineNum">     110 </span><span class="lineCov">         24 :     _useMatchingByName = YES;</span>
-<span class="lineNum">     111 </span><span class="lineCov">         24 : }</span>
-<span class="lineNum">     112 </span>            : 
-<span class="lineNum">     113 </span><span class="lineCov">         24 : - (void)defaultUse:(id)definition</span>
-<span class="lineNum">     114 </span>            : {
-<span class="lineNum">     115 </span><span class="lineCov">         24 :     _defaultDefinition = definition;</span>
-<span class="lineNum">     116 </span><span class="lineCov">         24 :     _defaultReferenceArguments = ((TyphoonDefinition *)definition).currentRuntimeArguments;</span>
-<span class="lineNum">     117 </span><span class="lineCov">         24 : }</span>
+<span class="lineNum">      28 </span>            : + (id)matchWithValue:(id)value injection:(id)injection;
+<span class="lineNum">      29 </span>            : + (id)matchWithKindOfClass:(Class)clazz injection:(id)injection;
+<span class="lineNum">      30 </span>            : + (id)matchWithMemberOfClass:(Class)clazz injection:(id)injection;
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            : @end
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 : @implementation TyphoonOptionMatch</span>
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span><span class="lineCov">        855 : + (id)matchWithValue:(id)value injection:(id)injection</span>
+<span class="lineNum">      37 </span>            : {
+<span class="lineNum">      38 </span><span class="lineCov">        855 :     TyphoonOptionMatch *match = [TyphoonOptionMatch new];</span>
+<span class="lineNum">      39 </span><span class="lineCov">        855 :     if (value) {</span>
+<span class="lineNum">      40 </span><span class="lineCov">        840 :         match.value = value;</span>
+<span class="lineNum">      41 </span><span class="lineCov">        840 :     } else {</span>
+<span class="lineNum">      42 </span><span class="lineCov">         15 :         match.value = [TyphoonOptionMatchNilValue class];</span>
+<span class="lineNum">      43 </span>            :     }
+<span class="lineNum">      44 </span><span class="lineCov">        855 :     match.injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);</span>
+<span class="lineNum">      45 </span><span class="lineCov">        855 :     return match;</span>
+<span class="lineNum">      46 </span><span class="lineCov">        855 : }</span>
+<span class="lineNum">      47 </span>            : 
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 : + (id)matchWithKindOfClass:(Class)clazz injection:(id)injection</span>
+<span class="lineNum">      49 </span>            : {
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 :     TyphoonOptionMatch *match = [TyphoonOptionMatch new];</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :     match.kindClass = clazz;</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :     match.injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :     return match;</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span><span class="lineCov">         15 : + (id)matchWithMemberOfClass:(Class)clazz injection:(id)injection</span>
+<span class="lineNum">      57 </span>            : {
+<span class="lineNum">      58 </span><span class="lineCov">         15 :     TyphoonOptionMatch *match = [TyphoonOptionMatch new];</span>
+<span class="lineNum">      59 </span><span class="lineCov">         15 :     match.memberClass = clazz;</span>
+<span class="lineNum">      60 </span><span class="lineCov">         15 :     match.injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);</span>
+<span class="lineNum">      61 </span><span class="lineCov">         15 :     return match;</span>
+<span class="lineNum">      62 </span><span class="lineCov">         15 : }</span>
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span>            : @end
+<span class="lineNum">      65 </span>            : 
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span>            : ////////////////////////////////////////
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 : @implementation TyphoonOptionMatcher</span>
+<span class="lineNum">      70 </span>            : {
+<span class="lineNum">      71 </span>            :     NSMutableArray *_matches;
+<span class="lineNum">      72 </span>            :     id&lt;TyphoonInjection&gt; _defaultInjection;
+<span class="lineNum">      73 </span>            :     BOOL _useMatchingByName;
+<span class="lineNum">      74 </span>            : }
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span><span class="lineCov">        210 : - (instancetype)initWithBlock:(TyphoonMatcherBlock)block</span>
+<span class="lineNum">      77 </span>            : {
+<span class="lineNum">      78 </span><span class="lineCov">        210 :     self = [super init];</span>
+<span class="lineNum">      79 </span><span class="lineCov">        210 :     if (self) {</span>
+<span class="lineNum">      80 </span><span class="lineCov">        210 :         _matches = [NSMutableArray new];</span>
+<span class="lineNum">      81 </span><span class="lineCov">        210 :         _useMatchingByName = NO;</span>
+<span class="lineNum">      82 </span>            : 
+<span class="lineNum">      83 </span><span class="lineCov">        210 :         if (block) {</span>
+<span class="lineNum">      84 </span><span class="lineCov">        210 :             block(self);</span>
+<span class="lineNum">      85 </span><span class="lineCov">        210 :         }</span>
+<span class="lineNum">      86 </span><span class="lineCov">        210 :     }</span>
+<span class="lineNum">      87 </span><span class="lineCov">        210 :     return self;</span>
+<span class="lineNum">      88 </span><span class="lineCov">        210 : }</span>
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span><span class="lineCov">        855 : - (void)caseEqual:(id)optionValue use:(id)injection</span>
+<span class="lineNum">      91 </span>            : {
+<span class="lineNum">      92 </span><span class="lineCov">        855 :     [_matches addObject:[TyphoonOptionMatch matchWithValue:optionValue injection:injection]];</span>
+<span class="lineNum">      93 </span><span class="lineCov">        855 : }</span>
+<span class="lineNum">      94 </span>            : 
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 : - (void)caseKindOfClass:(Class)optionClass use:(id)injection</span>
+<span class="lineNum">      96 </span>            : {
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :     [_matches addObject:[TyphoonOptionMatch matchWithKindOfClass:optionClass injection:injection]];</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      99 </span>            : 
+<span class="lineNum">     100 </span><span class="lineCov">         15 : - (void)caseMemberOfClass:(Class)optionClass use:(id)injection</span>
+<span class="lineNum">     101 </span>            : {
+<span class="lineNum">     102 </span><span class="lineCov">         15 :     [_matches addObject:[TyphoonOptionMatch matchWithMemberOfClass:optionClass injection:injection]];</span>
+<span class="lineNum">     103 </span><span class="lineCov">         15 : }</span>
+<span class="lineNum">     104 </span>            : 
+<span class="lineNum">     105 </span>            : - (void)useDefinitionWithKeyMatchedOptionValue
+<span class="lineNum">     106 </span>            : {
+<span class="lineNum">     107 </span><span class="lineCov">         30 :     _useMatchingByName = YES;</span>
+<span class="lineNum">     108 </span><span class="lineCov">         30 : }</span>
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span><span class="lineCov">         45 : - (void)defaultUse:(id)injection</span>
+<span class="lineNum">     111 </span>            : {
+<span class="lineNum">     112 </span><span class="lineCov">         45 :     _defaultInjection = TyphoonMakeInjectionFromObjectIfNeeded(injection);</span>
+<span class="lineNum">     113 </span><span class="lineCov">         45 : }</span>
+<span class="lineNum">     114 </span>            : 
+<span class="lineNum">     115 </span><span class="lineCov">         27 : - (id&lt;TyphoonInjection&gt;)injectionMatchedValue:(id)value</span>
+<span class="lineNum">     116 </span>            : {
+<span class="lineNum">     117 </span><span class="lineCov">         27 :     id&lt;TyphoonInjection&gt; injection = nil;</span>
 <span class="lineNum">     118 </span>            : 
-<span class="lineNum">     119 </span><span class="lineCov">         20 : - (void)findDefinitionMatchedValue:(id)value withFactory:(TyphoonComponentFactory *)factory usingBlock:(TyphoonOptionMatcherDefinitionSearchResult)block</span>
-<span class="lineNum">     120 </span>            : {
-<span class="lineNum">     121 </span><span class="lineCov">         20 :     TyphoonDefinition *result = nil;</span>
-<span class="lineNum">     122 </span><span class="lineCov">         20 :     TyphoonRuntimeArguments *resultArgs = nil;</span>
-<span class="lineNum">     123 </span>            : 
-<span class="lineNum">     124 </span><span class="lineCov">         20 :     TyphoonOptionMatch *match = [self matchForValue:value];</span>
-<span class="lineNum">     125 </span><span class="lineCov">         20 :     if (match) {</span>
-<span class="lineNum">     126 </span><span class="lineCov">         13 :         result = match.definition;</span>
-<span class="lineNum">     127 </span><span class="lineCov">         13 :         resultArgs = match.referenceArguments;</span>
-<span class="lineNum">     128 </span><span class="lineCov">         25 :     } else if (_useMatchingByName &amp;&amp; [value isKindOfClass:[NSString class]]){</span>
-<span class="lineNum">     129 </span><span class="lineCov">          5 :         result = [factory definitionForKey:value];</span>
-<span class="lineNum">     130 </span><span class="lineCov">          5 :     }</span>
-<span class="lineNum">     131 </span>            : 
-<span class="lineNum">     132 </span><span class="lineCov">         20 :     if (!result) {</span>
-<span class="lineNum">     133 </span><span class="lineCov">          3 :         result = _defaultDefinition;</span>
-<span class="lineNum">     134 </span><span class="lineCov">          3 :         resultArgs = _defaultReferenceArguments;</span>
-<span class="lineNum">     135 </span><span class="lineCov">          3 :     }</span>
+<span class="lineNum">     119 </span><span class="lineCov">         27 :     TyphoonOptionMatch *match = [self matchForValue:value];</span>
+<span class="lineNum">     120 </span><span class="lineCov">         27 :     if (match) {</span>
+<span class="lineNum">     121 </span><span class="lineCov">         20 :         injection = match.injection;</span>
+<span class="lineNum">     122 </span><span class="lineCov">         32 :     } else if (_useMatchingByName &amp;&amp; [value isKindOfClass:[NSString class]]){</span>
+<span class="lineNum">     123 </span><span class="lineCov">          5 :         injection = TyphoonInjectionWithReference(value);</span>
+<span class="lineNum">     124 </span><span class="lineCov">          5 :     }</span>
+<span class="lineNum">     125 </span>            : 
+<span class="lineNum">     126 </span><span class="lineCov">         27 :     if (!injection) {</span>
+<span class="lineNum">     127 </span><span class="lineCov">          2 :         injection = _defaultInjection;</span>
+<span class="lineNum">     128 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">     129 </span>            : 
+<span class="lineNum">     130 </span><span class="lineCov">         27 :     if (!injection) {</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :         [NSException raise:NSInternalInconsistencyException format:@&quot;Can't find injection to match value %@&quot;,value];</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">     133 </span>            : 
+<span class="lineNum">     134 </span><span class="lineCov">         26 :     return injection;</span>
+<span class="lineNum">     135 </span><span class="lineCov">         26 : }</span>
 <span class="lineNum">     136 </span>            : 
-<span class="lineNum">     137 </span><span class="lineCov">         20 :     if (!result) {</span>
-<span class="lineNum">     138 </span><span class="lineCov">          2 :         [NSException raise:NSInternalInconsistencyException format:@&quot;Can't find definition to match value %@&quot;,value];</span>
-<span class="lineNum">     139 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">     140 </span>            : 
-<span class="lineNum">     141 </span><span class="lineCov">         18 :     if ([resultArgs isKindOfClass:[NSNull class]]) {</span>
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 :         resultArgs = nil;</span>
-<span class="lineNum">     143 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     144 </span>            : 
-<span class="lineNum">     145 </span><span class="lineCov">         18 :     block(result, resultArgs);</span>
-<span class="lineNum">     146 </span><span class="lineCov">         18 : }</span>
-<span class="lineNum">     147 </span>            : 
-<span class="lineNum">     148 </span>            : 
-<span class="lineNum">     149 </span><span class="lineCov">         20 : - (TyphoonOptionMatch *)matchForValue:(id)value</span>
-<span class="lineNum">     150 </span>            : {
-<span class="lineNum">     151 </span><span class="lineCov">        130 :     for (TyphoonOptionMatch *match in _matches) {</span>
-<span class="lineNum">     152 </span><span class="lineCov">         92 :         BOOL isEqual = (match.value &amp;&amp; [match.value isEqual:value]);</span>
-<span class="lineNum">     153 </span><span class="lineCov">         46 :         BOOL isKind = (match.kindClass &amp;&amp; [value isKindOfClass:match.kindClass]);</span>
-<span class="lineNum">     154 </span><span class="lineCov">         46 :         BOOL isMember = (match.memberClass &amp;&amp; [value isMemberOfClass:match.memberClass]);</span>
-<span class="lineNum">     155 </span><span class="lineCov">        112 :         if (isEqual || isKind || isMember) {</span>
-<span class="lineNum">     156 </span><span class="lineCov">         13 :             return match;</span>
-<span class="lineNum">     157 </span>            :         }
-<span class="lineNum">     158 </span><span class="lineCov">        112 :     }</span>
-<span class="lineNum">     159 </span><span class="lineCov">          7 :     return nil;</span>
-<span class="lineNum">     160 </span><span class="lineCov">         20 : }</span>
-<span class="lineNum">     161 </span>            : 
-<span class="lineNum">     162 </span>            : 
-<span class="lineNum">     163 </span>            : @end
+<span class="lineNum">     137 </span><span class="lineCov">         27 : - (TyphoonOptionMatch *)matchForValue:(id)value</span>
+<span class="lineNum">     138 </span>            : {
+<span class="lineNum">     139 </span><span class="lineCov">        198 :     for (TyphoonOptionMatch *match in _matches) {</span>
+<span class="lineNum">     140 </span><span class="lineCov">        202 :         BOOL isEqual = (match.value &amp;&amp; [match.value isEqual:value]) || ([match.value isEqual:[TyphoonOptionMatchNilValue class]] &amp;&amp; !value);</span>
+<span class="lineNum">     141 </span><span class="lineCov">         73 :         BOOL isKind = (match.kindClass &amp;&amp; [value isKindOfClass:match.kindClass]);</span>
+<span class="lineNum">     142 </span><span class="lineCov">         74 :         BOOL isMember = (match.memberClass &amp;&amp; [value isMemberOfClass:match.memberClass]);</span>
+<span class="lineNum">     143 </span><span class="lineCov">        181 :         if (isEqual || isKind || isMember) {</span>
+<span class="lineNum">     144 </span><span class="lineCov">         20 :             return match;</span>
+<span class="lineNum">     145 </span>            :         }
+<span class="lineNum">     146 </span><span class="lineCov">        159 :     }</span>
+<span class="lineNum">     147 </span><span class="lineCov">          7 :     return nil;</span>
+<span class="lineNum">     148 </span><span class="lineCov">         27 : }</span>
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span>            : 
+<span class="lineNum">     151 </span>            : @end
 </pre>
       </td>
     </tr>

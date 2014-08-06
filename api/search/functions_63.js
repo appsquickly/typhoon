@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['casekindofclass_3ause_3a',['caseKindOfClass:use:',['../interface_typhoon_option_matcher.html#a14a5df24d55afcf472956dfc20a582cf',1,'TyphoonOptionMatcher']]],
-  ['casememberofclass_3ause_3a',['caseMemberOfClass:use:',['../interface_typhoon_option_matcher.html#abbd2e583036ac8322b4aae62ea0ac40e',1,'TyphoonOptionMatcher']]],
-  ['caseoption_3ause_3a',['caseOption:use:',['../interface_typhoon_option_matcher.html#a5cbdce8a9e2f4cbd7a851891bac1615d',1,'TyphoonOptionMatcher']]],
+  ['caseequal_3ause_3a',['caseEqual:use:',['../interface_typhoon_option_matcher.html#a08d3570cf6d98aaf8ae4f696fb62a6a6',1,'TyphoonOptionMatcher']]],
+  ['casekindofclass_3ause_3a',['caseKindOfClass:use:',['../interface_typhoon_option_matcher.html#aaaa3b8e9dca3bf90897c373e86339e84',1,'TyphoonOptionMatcher']]],
+  ['casememberofclass_3ause_3a',['caseMemberOfClass:use:',['../interface_typhoon_option_matcher.html#a4d0c1d6f7bd45f9ac3fb39f75579568f',1,'TyphoonOptionMatcher']]],
   ['classorprotocol',['classOrProtocol',['../interface_typhoon_type_descriptor.html#aa68b95827c65fe611ce4398a902d3069',1,'TyphoonTypeDescriptor']]],
   ['collectionmutableclassfromclass_3a',['collectionMutableClassFromClass:',['../interface_typhoon_injection_by_collection.html#a00f5a3dfd230236c6856cc8d33350f26',1,'TyphoonInjectionByCollection']]],
   ['componentforkey_3a',['componentForKey:',['../interface_typhoon_component_factory.html#afbe6d5309ee739db59e4c5d35d2ab377',1,'TyphoonComponentFactory']]],

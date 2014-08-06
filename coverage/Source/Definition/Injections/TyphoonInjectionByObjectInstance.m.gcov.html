@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-08-05</td>
+            <td class="headerValue">2014-08-06</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -69,14 +69,14 @@
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span><span class="lineCov">        155 : @implementation TyphoonInjectionByObjectInstance</span>
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">       1329 : - (instancetype)initWithObjectInstance:(id)objectInstance</span>
+<span class="lineNum">      14 </span><span class="lineCov">       1506 : - (instancetype)initWithObjectInstance:(id)objectInstance</span>
 <span class="lineNum">      15 </span>            : {
-<span class="lineNum">      16 </span><span class="lineCov">       1329 :     self = [super init];</span>
-<span class="lineNum">      17 </span><span class="lineCov">       1329 :     if (self) {</span>
-<span class="lineNum">      18 </span><span class="lineCov">       1329 :         _objectInstance = objectInstance;</span>
-<span class="lineNum">      19 </span><span class="lineCov">       1329 :     }</span>
-<span class="lineNum">      20 </span><span class="lineCov">       1329 :     return self;</span>
-<span class="lineNum">      21 </span><span class="lineCov">       1329 : }</span>
+<span class="lineNum">      16 </span><span class="lineCov">       1506 :     self = [super init];</span>
+<span class="lineNum">      17 </span><span class="lineCov">       1506 :     if (self) {</span>
+<span class="lineNum">      18 </span><span class="lineCov">       1506 :         _objectInstance = objectInstance;</span>
+<span class="lineNum">      19 </span><span class="lineCov">       1506 :     }</span>
+<span class="lineNum">      20 </span><span class="lineCov">       1506 :     return self;</span>
+<span class="lineNum">      21 </span><span class="lineCov">       1506 : }</span>
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : #pragma mark - Overrides
 <span class="lineNum">      24 </span>            : 
@@ -87,10 +87,10 @@
 <span class="lineNum">      29 </span><span class="lineCov">         68 :     return copied;</span>
 <span class="lineNum">      30 </span><span class="lineCov">         68 : }</span>
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">        244 : - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result</span>
+<span class="lineNum">      32 </span><span class="lineCov">        256 : - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result</span>
 <span class="lineNum">      33 </span>            : {
-<span class="lineNum">      34 </span><span class="lineCov">        244 :     result(_objectInstance);</span>
-<span class="lineNum">      35 </span><span class="lineCov">        244 : }</span>
+<span class="lineNum">      34 </span><span class="lineCov">        256 :     result(_objectInstance);</span>
+<span class="lineNum">      35 </span><span class="lineCov">        256 : }</span>
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : @end
 </pre>

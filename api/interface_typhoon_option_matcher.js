@@ -1,8 +1,8 @@
 var interface_typhoon_option_matcher =
 [
-    [ "caseKindOfClass:use:", "interface_typhoon_option_matcher.html#a14a5df24d55afcf472956dfc20a582cf", null ],
-    [ "caseMemberOfClass:use:", "interface_typhoon_option_matcher.html#abbd2e583036ac8322b4aae62ea0ac40e", null ],
-    [ "caseOption:use:", "interface_typhoon_option_matcher.html#a5cbdce8a9e2f4cbd7a851891bac1615d", null ],
-    [ "defaultUse:", "interface_typhoon_option_matcher.html#a19bf4efe1eec58b5b2a4584975eb1121", null ],
+    [ "caseEqual:use:", "interface_typhoon_option_matcher.html#a08d3570cf6d98aaf8ae4f696fb62a6a6", null ],
+    [ "caseKindOfClass:use:", "interface_typhoon_option_matcher.html#aaaa3b8e9dca3bf90897c373e86339e84", null ],
+    [ "caseMemberOfClass:use:", "interface_typhoon_option_matcher.html#a4d0c1d6f7bd45f9ac3fb39f75579568f", null ],
+    [ "defaultUse:", "interface_typhoon_option_matcher.html#a1dd7e4ae31546b51dbd0ba4c3d0f6c40", null ],
     [ "useDefinitionWithKeyMatchedOptionValue", "interface_typhoon_option_matcher.html#a3eaf55d707637e82073100543cbed400", null ]
 ];

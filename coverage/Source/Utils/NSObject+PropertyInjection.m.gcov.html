@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-08-05</td>
+            <td class="headerValue">2014-08-06</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -78,22 +78,22 @@
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span>            : @implementation NSObject (PropertyInjection)
 <span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineCov">        297 : - (void)typhoon_injectValue:(id)value forPropertyName:(NSString *)propertyName</span>
+<span class="lineNum">      23 </span><span class="lineCov">        311 : - (void)typhoon_injectValue:(id)value forPropertyName:(NSString *)propertyName</span>
 <span class="lineNum">      24 </span>            : {
-<span class="lineNum">      25 </span><span class="lineCov">        297 :     SEL setterSelector = [TyphoonIntrospectionUtils setterForPropertyWithName:propertyName inClass:[self class]];</span>
+<span class="lineNum">      25 </span><span class="lineCov">        311 :     SEL setterSelector = [TyphoonIntrospectionUtils setterForPropertyWithName:propertyName inClass:[self class]];</span>
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">        297 :     if (!setterSelector) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">        311 :     if (!setterSelector) {</span>
 <span class="lineNum">      28 </span><span class="lineCov">          3 :         [NSException raise:@&quot;TyphoonPropertySetterNotFoundException&quot; format:@&quot;Can't inject property '%@' for object '%@'. Setter selector not found. Make sure that property exists and writable&quot;,propertyName, self];</span>
 <span class="lineNum">      29 </span><span class="lineCov">          3 :     }</span>
 <span class="lineNum">      30 </span>            :     
-<span class="lineNum">      31 </span><span class="lineCov">        294 :     NSMethodSignature *signature = [self methodSignatureForSelector:setterSelector];</span>
+<span class="lineNum">      31 </span><span class="lineCov">        308 :     NSMethodSignature *signature = [self methodSignatureForSelector:setterSelector];</span>
 <span class="lineNum">      32 </span>            :         
-<span class="lineNum">      33 </span><span class="lineCov">        294 :     if ([signature shouldUnwrapValue:value forArgumentAtIndex:2]) {</span>
+<span class="lineNum">      33 </span><span class="lineCov">        308 :     if ([signature shouldUnwrapValue:value forArgumentAtIndex:2]) {</span>
 <span class="lineNum">      34 </span><span class="lineCov">        102 :         [self typhoon_injectUnwrappedValue:value forPropertySetter:setterSelector signature:signature];</span>
 <span class="lineNum">      35 </span><span class="lineCov">        102 :     } else {</span>
-<span class="lineNum">      36 </span><span class="lineCov">        192 :         [self typhoon_injectObject:value forPropertySetter:setterSelector];</span>
+<span class="lineNum">      36 </span><span class="lineCov">        206 :         [self typhoon_injectObject:value forPropertySetter:setterSelector];</span>
 <span class="lineNum">      37 </span>            :     }
-<span class="lineNum">      38 </span><span class="lineCov">        294 : }</span>
+<span class="lineNum">      38 </span><span class="lineCov">        308 : }</span>
 <span class="lineNum">      39 </span>            : 
 <span class="lineNum">      40 </span><span class="lineCov">        102 : - (void)typhoon_injectUnwrappedValue:(NSValue *)value forPropertySetter:(SEL)setter signature:(NSMethodSignature *)signature</span>
 <span class="lineNum">      41 </span>            : {
@@ -103,11 +103,11 @@
 <span class="lineNum">      45 </span><span class="lineCov">        102 :     [invocation invokeWithTarget:self];</span>
 <span class="lineNum">      46 </span><span class="lineCov">        102 : }</span>
 <span class="lineNum">      47 </span>            : 
-<span class="lineNum">      48 </span><span class="lineCov">        192 : - (void)typhoon_injectObject:(id)value forPropertySetter:(SEL)setter</span>
+<span class="lineNum">      48 </span><span class="lineCov">        206 : - (void)typhoon_injectObject:(id)value forPropertySetter:(SEL)setter</span>
 <span class="lineNum">      49 </span>            : {
-<span class="lineNum">      50 </span><span class="lineCov">        192 :     void(*setterMethod)(id, SEL, id) = (void ( *)(id, SEL, id)) [self methodForSelector:setter];</span>
-<span class="lineNum">      51 </span><span class="lineCov">        192 :     setterMethod(self, setter, value);</span>
-<span class="lineNum">      52 </span><span class="lineCov">        192 : }</span>
+<span class="lineNum">      50 </span><span class="lineCov">        206 :     void(*setterMethod)(id, SEL, id) = (void ( *)(id, SEL, id)) [self methodForSelector:setter];</span>
+<span class="lineNum">      51 </span><span class="lineCov">        206 :     setterMethod(self, setter, value);</span>
+<span class="lineNum">      52 </span><span class="lineCov">        206 : }</span>
 <span class="lineNum">      53 </span>            : 
 <span class="lineNum">      54 </span>            : 
 <span class="lineNum">      55 </span>            : 

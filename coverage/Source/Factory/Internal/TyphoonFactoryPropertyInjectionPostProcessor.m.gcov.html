@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-08-05</td>
+            <td class="headerValue">2014-08-06</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -82,43 +82,43 @@
 <span class="lineNum">      24 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      25 </span>            : #pragma mark - Protocol Methods
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">        199 : - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory</span>
+<span class="lineNum">      27 </span><span class="lineCov">        205 : - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory</span>
 <span class="lineNum">      28 </span>            : {
-<span class="lineNum">      29 </span><span class="lineCov">       7039 :     for (TyphoonDefinition *definition in [factory registry]) {</span>
+<span class="lineNum">      29 </span><span class="lineCov">       7933 :     for (TyphoonDefinition *definition in [factory registry]) {</span>
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">       3204 :         [definition enumerateInjectionsOfKind:[TyphoonInjectionByType class] options:TyphoonInjectionsEnumerationOptionProperties</span>
-<span class="lineNum">      32 </span><span class="lineCov">        239 :                                    usingBlock:^(TyphoonInjectionByType *typeInjection, id &lt;TyphoonInjection&gt; *injectionToReplace, BOOL *stop) {</span>
-<span class="lineNum">      33 </span><span class="lineCov">        239 :             if ([self shouldReplaceInjectionByType:typeInjection withFactoryInjectionInDefinition:definition]) {</span>
-<span class="lineNum">      34 </span><span class="lineCov">        142 :                 *injectionToReplace = [self factoryInjectionToReplacePropertyInjection:typeInjection];</span>
-<span class="lineNum">      35 </span><span class="lineCov">        142 :             }</span>
-<span class="lineNum">      36 </span><span class="lineCov">        478 :         }];</span>
-<span class="lineNum">      37 </span><span class="lineCov">       6800 :     }</span>
-<span class="lineNum">      38 </span><span class="lineCov">        199 : }</span>
+<span class="lineNum">      31 </span><span class="lineCov">       3606 :         [definition enumerateInjectionsOfKind:[TyphoonInjectionByType class] options:TyphoonInjectionsEnumerationOptionProperties</span>
+<span class="lineNum">      32 </span><span class="lineCov">        317 :                                    usingBlock:^(TyphoonInjectionByType *typeInjection, id &lt;TyphoonInjection&gt; *injectionToReplace, BOOL *stop) {</span>
+<span class="lineNum">      33 </span><span class="lineCov">        317 :             if ([self shouldReplaceInjectionByType:typeInjection withFactoryInjectionInDefinition:definition]) {</span>
+<span class="lineNum">      34 </span><span class="lineCov">        220 :                 *injectionToReplace = [self factoryInjectionToReplacePropertyInjection:typeInjection];</span>
+<span class="lineNum">      35 </span><span class="lineCov">        220 :             }</span>
+<span class="lineNum">      36 </span><span class="lineCov">        634 :         }];</span>
+<span class="lineNum">      37 </span><span class="lineCov">       7616 :     }</span>
+<span class="lineNum">      38 </span><span class="lineCov">        205 : }</span>
 <span class="lineNum">      39 </span>            : 
 <span class="lineNum">      40 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">      41 </span>            : #pragma mark - Instance Methods
 <span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span><span class="lineCov">        190 : - (BOOL)shouldReplaceInjectionByType:(TyphoonInjectionByType *)propertyInjection</span>
-<span class="lineNum">      44 </span><span class="lineCov">        190 :     withFactoryInjectionInDefinition:(TyphoonDefinition *)definition</span>
+<span class="lineNum">      43 </span><span class="lineCov">        268 : - (BOOL)shouldReplaceInjectionByType:(TyphoonInjectionByType *)propertyInjection</span>
+<span class="lineNum">      44 </span><span class="lineCov">        268 :     withFactoryInjectionInDefinition:(TyphoonDefinition *)definition</span>
 <span class="lineNum">      45 </span>            : {
-<span class="lineNum">      46 </span><span class="lineCov">        190 :     BOOL isFactoryClass = NO;</span>
+<span class="lineNum">      46 </span><span class="lineCov">        268 :     BOOL isFactoryClass = NO;</span>
 <span class="lineNum">      47 </span>            : 
-<span class="lineNum">      48 </span><span class="lineCov">        190 :     TyphoonTypeDescriptor</span>
-<span class="lineNum">      49 </span><span class="lineCov">        380 :         *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyInjection.propertyName inClass:definition.type];</span>
+<span class="lineNum">      48 </span><span class="lineCov">        268 :     TyphoonTypeDescriptor</span>
+<span class="lineNum">      49 </span><span class="lineCov">        536 :         *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyInjection.propertyName inClass:definition.type];</span>
 <span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span><span class="lineCov">        190 :     if (type.typeBeingDescribed) {</span>
-<span class="lineNum">      52 </span><span class="lineCov">        142 :         isFactoryClass = [type.typeBeingDescribed isSubclassOfClass:[TyphoonComponentFactory class]];</span>
-<span class="lineNum">      53 </span><span class="lineCov">        142 :     }</span>
+<span class="lineNum">      51 </span><span class="lineCov">        268 :     if (type.typeBeingDescribed) {</span>
+<span class="lineNum">      52 </span><span class="lineCov">        220 :         isFactoryClass = [type.typeBeingDescribed isSubclassOfClass:[TyphoonComponentFactory class]];</span>
+<span class="lineNum">      53 </span><span class="lineCov">        220 :     }</span>
 <span class="lineNum">      54 </span>            : 
-<span class="lineNum">      55 </span><span class="lineCov">        190 :     return isFactoryClass;</span>
-<span class="lineNum">      56 </span><span class="lineCov">        190 : }</span>
+<span class="lineNum">      55 </span><span class="lineCov">        268 :     return isFactoryClass;</span>
+<span class="lineNum">      56 </span><span class="lineCov">        268 : }</span>
 <span class="lineNum">      57 </span>            : 
-<span class="lineNum">      58 </span><span class="lineCov">        142 : - (TyphoonInjectionByComponentFactory *)factoryInjectionToReplacePropertyInjection:(id&lt;TyphoonPropertyInjection&gt;)propertyInjection</span>
+<span class="lineNum">      58 </span><span class="lineCov">        220 : - (TyphoonInjectionByComponentFactory *)factoryInjectionToReplacePropertyInjection:(id&lt;TyphoonPropertyInjection&gt;)propertyInjection</span>
 <span class="lineNum">      59 </span>            : {
-<span class="lineNum">      60 </span><span class="lineCov">        142 :     TyphoonInjectionByComponentFactory *newInjection = [[TyphoonInjectionByComponentFactory alloc] init];</span>
-<span class="lineNum">      61 </span><span class="lineCov">        142 :     [newInjection setPropertyName:[propertyInjection propertyName]];</span>
-<span class="lineNum">      62 </span><span class="lineCov">        142 :     return newInjection;</span>
-<span class="lineNum">      63 </span><span class="lineCov">        142 : }</span>
+<span class="lineNum">      60 </span><span class="lineCov">        220 :     TyphoonInjectionByComponentFactory *newInjection = [[TyphoonInjectionByComponentFactory alloc] init];</span>
+<span class="lineNum">      61 </span><span class="lineCov">        220 :     [newInjection setPropertyName:[propertyInjection propertyName]];</span>
+<span class="lineNum">      62 </span><span class="lineCov">        220 :     return newInjection;</span>
+<span class="lineNum">      63 </span><span class="lineCov">        220 : }</span>
 <span class="lineNum">      64 </span>            : 
 <span class="lineNum">      65 </span>            : @end
 </pre>

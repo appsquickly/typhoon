@@ -1476,24 +1476,24 @@
             <Path>interface_typhoon_option_matcher.html</Path>
             <Subnodes>
              <Node>
+              <Name>caseEqual:use:</Name>
+              <Path>interface_typhoon_option_matcher.html</Path>
+              <Anchor>a08d3570cf6d98aaf8ae4f696fb62a6a6</Anchor>
+             </Node>
+             <Node>
               <Name>caseKindOfClass:use:</Name>
               <Path>interface_typhoon_option_matcher.html</Path>
-              <Anchor>a14a5df24d55afcf472956dfc20a582cf</Anchor>
+              <Anchor>aaaa3b8e9dca3bf90897c373e86339e84</Anchor>
              </Node>
              <Node>
               <Name>caseMemberOfClass:use:</Name>
               <Path>interface_typhoon_option_matcher.html</Path>
-              <Anchor>abbd2e583036ac8322b4aae62ea0ac40e</Anchor>
-             </Node>
-             <Node>
-              <Name>caseOption:use:</Name>
-              <Path>interface_typhoon_option_matcher.html</Path>
-              <Anchor>a5cbdce8a9e2f4cbd7a851891bac1615d</Anchor>
+              <Anchor>a4d0c1d6f7bd45f9ac3fb39f75579568f</Anchor>
              </Node>
              <Node>
               <Name>defaultUse:</Name>
               <Path>interface_typhoon_option_matcher.html</Path>
-              <Anchor>a19bf4efe1eec58b5b2a4584975eb1121</Anchor>
+              <Anchor>a1dd7e4ae31546b51dbd0ba4c3d0f6c40</Anchor>
              </Node>
              <Node>
               <Name>useDefinitionWithKeyMatchedOptionValue</Name>
@@ -1717,11 +1717,6 @@
               <Name>indexOfArgumentWithKind:</Name>
               <Path>interface_typhoon_runtime_arguments.html</Path>
               <Anchor>a632e212e1dd074e768ffc12179401a61</Anchor>
-             </Node>
-             <Node>
-              <Name>replaceArgumentAtIndex:withArgument:</Name>
-              <Path>interface_typhoon_runtime_arguments.html</Path>
-              <Anchor>a8b6ae094e6da2c2c5325dff694e6ab4c</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -3394,24 +3389,24 @@
               <Path>interface_typhoon_option_matcher.html</Path>
               <Subnodes>
                <Node>
+                <Name>caseEqual:use:</Name>
+                <Path>interface_typhoon_option_matcher.html</Path>
+                <Anchor>a08d3570cf6d98aaf8ae4f696fb62a6a6</Anchor>
+               </Node>
+               <Node>
                 <Name>caseKindOfClass:use:</Name>
                 <Path>interface_typhoon_option_matcher.html</Path>
-                <Anchor>a14a5df24d55afcf472956dfc20a582cf</Anchor>
+                <Anchor>aaaa3b8e9dca3bf90897c373e86339e84</Anchor>
                </Node>
                <Node>
                 <Name>caseMemberOfClass:use:</Name>
                 <Path>interface_typhoon_option_matcher.html</Path>
-                <Anchor>abbd2e583036ac8322b4aae62ea0ac40e</Anchor>
-               </Node>
-               <Node>
-                <Name>caseOption:use:</Name>
-                <Path>interface_typhoon_option_matcher.html</Path>
-                <Anchor>a5cbdce8a9e2f4cbd7a851891bac1615d</Anchor>
+                <Anchor>a4d0c1d6f7bd45f9ac3fb39f75579568f</Anchor>
                </Node>
                <Node>
                 <Name>defaultUse:</Name>
                 <Path>interface_typhoon_option_matcher.html</Path>
-                <Anchor>a19bf4efe1eec58b5b2a4584975eb1121</Anchor>
+                <Anchor>a1dd7e4ae31546b51dbd0ba4c3d0f6c40</Anchor>
                </Node>
                <Node>
                 <Name>useDefinitionWithKeyMatchedOptionValue</Name>
@@ -3664,11 +3659,6 @@
                 <Name>indexOfArgumentWithKind:</Name>
                 <Path>interface_typhoon_runtime_arguments.html</Path>
                 <Anchor>a632e212e1dd074e768ffc12179401a61</Anchor>
-               </Node>
-               <Node>
-                <Name>replaceArgumentAtIndex:withArgument:</Name>
-                <Path>interface_typhoon_runtime_arguments.html</Path>
-                <Anchor>a8b6ae094e6da2c2c5325dff694e6ab4c</Anchor>
                </Node>
               </Subnodes>
              </Node>
