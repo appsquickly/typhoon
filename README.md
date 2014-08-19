@@ -6,8 +6,7 @@ Elegant, powerful dependency injection for Cocoa and CocoaTouch. Lightweight (ju
 
 We're getting Typhoon ready to work with Swift. 
 
-* Currently its possible to create assemblies and resolve components from TyphoonComponentFactory using componentForType, componentForKey, etc. 
-* Resolving using your assembly interfaces does not yet work in Swift. 
+* . . in the meantime, to use Typhoon with your Swift applications, we recommend writing the assembly part in Objective-C. The rest of your application can be Swift. 
 
 ## Familiar with Dependency Injection?
 
