@@ -250,7 +250,7 @@
              <Node>
               <Name>injectMethod:parameters:</Name>
               <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a1bc2ef77a3e948653e390162b02eeaea</Anchor>
+              <Anchor>a6052afa42a4a9a206dfac94cbd7f5e86</Anchor>
              </Node>
              <Node>
               <Name>injectProperty:</Name>
@@ -280,7 +280,7 @@
              <Node>
               <Name>useInitializer:parameters:</Name>
               <Path>interface_typhoon_definition.html</Path>
-              <Anchor>aba6f185a368279848076ed1411585011</Anchor>
+              <Anchor>ae5d354908e1eec474f7e357bb672d795</Anchor>
              </Node>
              <Node>
               <Name>withClass:</Name>
@@ -300,7 +300,7 @@
              <Node>
               <Name>withFactory:selector:parameters:</Name>
               <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a054e83736a4db4becf73e5a7d0936dc7</Anchor>
+              <Anchor>a5f47d822976a99d40fc1b28d7e15c578</Anchor>
              </Node>
              <Node>
               <Name>withOption:matcher:</Name>
@@ -1075,7 +1075,7 @@
              <Node>
               <Name>injectMethod:parameters:</Name>
               <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a1bc2ef77a3e948653e390162b02eeaea</Anchor>
+              <Anchor>a6052afa42a4a9a206dfac94cbd7f5e86</Anchor>
              </Node>
              <Node>
               <Name>injectProperty:</Name>
@@ -1105,7 +1105,7 @@
              <Node>
               <Name>useInitializer:parameters:</Name>
               <Path>interface_typhoon_definition.html</Path>
-              <Anchor>aba6f185a368279848076ed1411585011</Anchor>
+              <Anchor>ae5d354908e1eec474f7e357bb672d795</Anchor>
              </Node>
              <Node>
               <Name>withClass:</Name>
@@ -1125,7 +1125,7 @@
              <Node>
               <Name>withFactory:selector:parameters:</Name>
               <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a054e83736a4db4becf73e5a7d0936dc7</Anchor>
+              <Anchor>a5f47d822976a99d40fc1b28d7e15c578</Anchor>
              </Node>
              <Node>
               <Name>withOption:matcher:</Name>
@@ -1167,7 +1167,7 @@
              <Node>
               <Name>enumerateKeysAndObjectsUsingBlock:</Name>
               <Path>protocol_typhoon_dictionary-p.html</Path>
-              <Anchor>a76805d768f09902d686c24bf78deee39</Anchor>
+              <Anchor>af7e76af5d513676f499f63c82dc756af</Anchor>
              </Node>
              <Node>
               <Name>initWithCapacity:</Name>
@@ -2254,79 +2254,79 @@
              </Node>
              <Node>
               <Name>b</Name>
-              <Path>functions_0x62.html</Path>
+              <Path>functions_b.html</Path>
              </Node>
              <Node>
               <Name>c</Name>
-              <Path>functions_0x63.html</Path>
+              <Path>functions_c.html</Path>
              </Node>
              <Node>
               <Name>d</Name>
-              <Path>functions_0x64.html</Path>
+              <Path>functions_d.html</Path>
              </Node>
              <Node>
               <Name>e</Name>
-              <Path>functions_0x65.html</Path>
+              <Path>functions_e.html</Path>
              </Node>
              <Node>
               <Name>f</Name>
-              <Path>functions_0x66.html</Path>
+              <Path>functions_f.html</Path>
              </Node>
              <Node>
               <Name>g</Name>
-              <Path>functions_0x67.html</Path>
+              <Path>functions_g.html</Path>
              </Node>
              <Node>
               <Name>i</Name>
-              <Path>functions_0x69.html</Path>
+              <Path>functions_i.html</Path>
              </Node>
              <Node>
               <Name>k</Name>
-              <Path>functions_0x6b.html</Path>
+              <Path>functions_k.html</Path>
              </Node>
              <Node>
               <Name>l</Name>
-              <Path>functions_0x6c.html</Path>
+              <Path>functions_l.html</Path>
              </Node>
              <Node>
               <Name>m</Name>
-              <Path>functions_0x6d.html</Path>
+              <Path>functions_m.html</Path>
              </Node>
              <Node>
               <Name>n</Name>
-              <Path>functions_0x6e.html</Path>
+              <Path>functions_n.html</Path>
              </Node>
              <Node>
               <Name>o</Name>
-              <Path>functions_0x6f.html</Path>
+              <Path>functions_o.html</Path>
              </Node>
              <Node>
               <Name>p</Name>
-              <Path>functions_0x70.html</Path>
+              <Path>functions_p.html</Path>
              </Node>
              <Node>
               <Name>r</Name>
-              <Path>functions_0x72.html</Path>
+              <Path>functions_r.html</Path>
              </Node>
              <Node>
               <Name>s</Name>
-              <Path>functions_0x73.html</Path>
+              <Path>functions_s.html</Path>
              </Node>
              <Node>
               <Name>t</Name>
-              <Path>functions_0x74.html</Path>
+              <Path>functions_t.html</Path>
              </Node>
              <Node>
               <Name>u</Name>
-              <Path>functions_0x75.html</Path>
+              <Path>functions_u.html</Path>
              </Node>
              <Node>
               <Name>v</Name>
-              <Path>functions_0x76.html</Path>
+              <Path>functions_v.html</Path>
              </Node>
              <Node>
               <Name>w</Name>
-              <Path>functions_0x77.html</Path>
+              <Path>functions_w.html</Path>
              </Node>
             </Subnodes>
            </Node>
@@ -2844,27 +2844,27 @@
              </Node>
              <Node>
               <Name>TyphoonScope</Name>
-              <Path>_typhoon_definition_8h.html</Path>
+              <Path>group___definition.html</Path>
               <Anchor>ga6e7c49074062029ada1d93e0feef6c4c</Anchor>
               <Subnodes>
                <Node>
                 <Name>TyphoonScopeObjectGraph</Name>
-                <Path>_typhoon_definition_8h.html</Path>
+                <Path>group___definition.html</Path>
                 <Anchor>gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e</Anchor>
                </Node>
                <Node>
                 <Name>TyphoonScopePrototype</Name>
-                <Path>_typhoon_definition_8h.html</Path>
+                <Path>group___definition.html</Path>
                 <Anchor>gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a</Anchor>
                </Node>
                <Node>
                 <Name>TyphoonScopeSingleton</Name>
-                <Path>_typhoon_definition_8h.html</Path>
+                <Path>group___definition.html</Path>
                 <Anchor>gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb</Anchor>
                </Node>
                <Node>
                 <Name>TyphoonScopeWeakSingleton</Name>
-                <Path>_typhoon_definition_8h.html</Path>
+                <Path>group___definition.html</Path>
                 <Anchor>gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda</Anchor>
                </Node>
               </Subnodes>
@@ -2983,7 +2983,7 @@
                <Node>
                 <Name>enumerateKeysAndObjectsUsingBlock:</Name>
                 <Path>protocol_typhoon_dictionary-p.html</Path>
-                <Anchor>a76805d768f09902d686c24bf78deee39</Anchor>
+                <Anchor>af7e76af5d513676f499f63c82dc756af</Anchor>
                </Node>
                <Node>
                 <Name>initWithCapacity:</Name>

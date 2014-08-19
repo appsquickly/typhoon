@@ -2160,7 +2160,7 @@
       <Scope>TyphoonDefinition</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a054e83736a4db4becf73e5a7d0936dc7</Anchor>
+    <Anchor>a5f47d822976a99d40fc1b28d7e15c578</Anchor>
     <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
   </Token>
   <Token>
@@ -2195,7 +2195,7 @@
       <Scope>TyphoonDefinition</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a1bc2ef77a3e948653e390162b02eeaea</Anchor>
+    <Anchor>a6052afa42a4a9a206dfac94cbd7f5e86</Anchor>
     <Abstract>Injects method with specified by selector with parameters. </Abstract>
     <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
   </Token>
@@ -2267,7 +2267,7 @@
       <Scope>TyphoonDefinition</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_definition.html</Path>
-    <Anchor>aba6f185a368279848076ed1411585011</Anchor>
+    <Anchor>ae5d354908e1eec474f7e357bb672d795</Anchor>
     <Abstract>Injects initializer specified by selector and parameters. </Abstract>
     <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
   </Token>
@@ -2334,7 +2334,7 @@
       <Scope>TyphoonDictionary-p</Scope>
     </TokenIdentifier>
     <Path>protocol_typhoon_dictionary-p.html</Path>
-    <Anchor>a76805d768f09902d686c24bf78deee39</Anchor>
+    <Anchor>af7e76af5d513676f499f63c82dc756af</Anchor>
     <DeclaredIn>TyphoonInjectionByDictionary.h</DeclaredIn>
   </Token>
   <Token>

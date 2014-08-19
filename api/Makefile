@@ -3,7 +3,7 @@ DOCSET_CONTENTS=$(DOCSET_NAME)/Contents
 DOCSET_RESOURCES=$(DOCSET_CONTENTS)/Resources
 DOCSET_DOCUMENTS=$(DOCSET_RESOURCES)/Documents
 DESTDIR=~/Library/Developer/Shared/Documentation/DocSets
-XCODE_INSTALL=$(shell xcode-select -print-path)
+XCODE_INSTALL="$(shell xcode-select -print-path)"
 
 all: docset
 
