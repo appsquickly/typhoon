@@ -1,12 +1,12 @@
 # Typhoon! (www.typhoonframework.org) 
 
-Elegant, powerful dependency injection for Cocoa and CocoaTouch. Lightweight (just 2500 lines of code), yet full-featured and super-easy to use. 
+Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-featured and super-easy to use. 
 
 ### Swift News!!!
 
 We're getting Typhoon ready to work with Swift. 
 
-* . . in the meantime, to use Typhoon with your Swift applications, we recommend writing the assembly part in Objective-C. The rest of your application can be Swift. 
+* . . in the meantime, to use Typhoon with your Swift applications, we recommend writing the assembly part in Objective-C. The rest of your application (or as much as you would like) can be Swift. 
 
 ## Familiar with Dependency Injection?
 
