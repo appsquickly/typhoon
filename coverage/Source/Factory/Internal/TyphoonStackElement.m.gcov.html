@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-08-20 09:35:47</td>
+            <td class="headerValue">2014-08-20 09:41:23</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -103,7 +103,7 @@
 <span class="lineNum">      45 </span>            : {
 <span class="lineNum">      46 </span><span class="lineCov">         31 :     if ([self isInitializingInstance]) {</span>
 <span class="lineNum">      47 </span><span class="lineCov">          2 :         [NSException raise:@&quot;CircularInitializerDependence&quot;</span>
-<span class="lineNum">      48 </span>            :                     format:@&quot;The object for key %@ is currently initializing, but was specified as init dependency in another object.&quot;
+<span class="lineNum">      48 </span>            :                     format:@&quot;The object for key %@ is currently initializing, but was specified as init dependency in another object. &quot;
 <span class="lineNum">      49 </span>            :                                &quot;To inject a circular dependency, use a property setter or method injection instead.&quot;, self.key];
 <span class="lineNum">      50 </span><span class="lineCov">          2 :     }</span>
 <span class="lineNum">      51 </span><span class="lineCov">         29 :     return _instance;</span>
