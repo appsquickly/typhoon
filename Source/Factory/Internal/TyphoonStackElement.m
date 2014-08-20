@@ -45,7 +45,7 @@
 {
     if ([self isInitializingInstance]) {
         [NSException raise:@"CircularInitializerDependence"
-                    format:@"The object for key %@ is currently initializing, but was specified as init dependency in another object."
+                    format:@"The object for key %@ is currently initializing, but was specified as init dependency in another object. "
                                "To inject a circular dependency, use a property setter or method injection instead.", self.key];
     }
     return _instance;
