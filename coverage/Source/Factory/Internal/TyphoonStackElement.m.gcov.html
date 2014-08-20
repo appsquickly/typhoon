@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-08-19 18:59:18</td>
+            <td class="headerValue">2014-08-20 09:35:47</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -103,45 +103,46 @@
 <span class="lineNum">      45 </span>            : {
 <span class="lineNum">      46 </span><span class="lineCov">         31 :     if ([self isInitializingInstance]) {</span>
 <span class="lineNum">      47 </span><span class="lineCov">          2 :         [NSException raise:@&quot;CircularInitializerDependence&quot;</span>
-<span class="lineNum">      48 </span>            :             format:@&quot;The object for key %@ is currently initializing, but was specified as init dependency in another object&quot;, self.key];
-<span class="lineNum">      49 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">      50 </span><span class="lineCov">         29 :     return _instance;</span>
-<span class="lineNum">      51 </span>            : }
-<span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span><span class="lineCov">         15 : - (void)addInstanceCompleteBlock:(TyphoonInstanceCompleteBlock)completeBlock</span>
-<span class="lineNum">      54 </span>            : {
-<span class="lineNum">      55 </span><span class="lineCov">         60 :     NSParameterAssert(completeBlock);</span>
-<span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span><span class="lineCov">         15 :     if ([self isInitializingInstance]) {</span>
-<span class="lineNum">      58 </span><span class="lineCov">          5 :         [completeBlocks addObject:completeBlock];</span>
-<span class="lineNum">      59 </span><span class="lineCov">          5 :     }</span>
-<span class="lineNum">      60 </span>            :     else {
-<span class="lineNum">      61 </span><span class="lineCov">         10 :         completeBlock(_instance);</span>
-<span class="lineNum">      62 </span>            :     }
-<span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span><span class="lineCov">         15 : }</span>
-<span class="lineNum">      65 </span>            : 
-<span class="lineNum">      66 </span><span class="lineCov">        428 : - (void)takeInstance:(id)instance</span>
-<span class="lineNum">      67 </span>            : {
-<span class="lineNum">      68 </span><span class="lineCov">        428 :     _instance = instance;</span>
-<span class="lineNum">      69 </span>            : 
-<span class="lineNum">      70 </span><span class="lineCov">        443 :     for (TyphoonInstanceCompleteBlock completeBlock in completeBlocks) {</span>
-<span class="lineNum">      71 </span><span class="lineCov">          5 :         completeBlock(instance);</span>
-<span class="lineNum">      72 </span><span class="lineCov">        443 :     }</span>
-<span class="lineNum">      73 </span><span class="lineCov">        428 :     [completeBlocks removeAllObjects];</span>
-<span class="lineNum">      74 </span><span class="lineCov">        428 : }</span>
-<span class="lineNum">      75 </span>            : 
-<span class="lineNum">      76 </span>            : - (NSString *)description
-<span class="lineNum">      77 </span>            : {
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 :     NSMutableString *description = [NSMutableString stringWithFormat:@&quot;&lt;%@: &quot;, NSStringFromClass([self class])];</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 :     [description appendFormat:@&quot;self.key=%@&quot;, self.key];</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 :     [description appendFormat:@&quot;, completeBlocksCount=%lu&quot;, (unsigned long) [completeBlocks count]];</span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 :     [description appendString:@&quot;&gt;&quot;];</span>
-<span class="lineNum">      82 </span><span class="lineNoCov">          0 :     return description;</span>
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      48 </span>            :                     format:@&quot;The object for key %@ is currently initializing, but was specified as init dependency in another object.&quot;
+<span class="lineNum">      49 </span>            :                                &quot;To inject a circular dependency, use a property setter or method injection instead.&quot;, self.key];
+<span class="lineNum">      50 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">      51 </span><span class="lineCov">         29 :     return _instance;</span>
+<span class="lineNum">      52 </span>            : }
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span><span class="lineCov">         15 : - (void)addInstanceCompleteBlock:(TyphoonInstanceCompleteBlock)completeBlock</span>
+<span class="lineNum">      55 </span>            : {
+<span class="lineNum">      56 </span><span class="lineCov">         60 :     NSParameterAssert(completeBlock);</span>
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span><span class="lineCov">         15 :     if ([self isInitializingInstance]) {</span>
+<span class="lineNum">      59 </span><span class="lineCov">          5 :         [completeBlocks addObject:completeBlock];</span>
+<span class="lineNum">      60 </span><span class="lineCov">          5 :     }</span>
+<span class="lineNum">      61 </span>            :     else {
+<span class="lineNum">      62 </span><span class="lineCov">         10 :         completeBlock(_instance);</span>
+<span class="lineNum">      63 </span>            :     }
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span><span class="lineCov">         15 : }</span>
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span><span class="lineCov">        428 : - (void)takeInstance:(id)instance</span>
+<span class="lineNum">      68 </span>            : {
+<span class="lineNum">      69 </span><span class="lineCov">        428 :     _instance = instance;</span>
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span><span class="lineCov">        443 :     for (TyphoonInstanceCompleteBlock completeBlock in completeBlocks) {</span>
+<span class="lineNum">      72 </span><span class="lineCov">          5 :         completeBlock(instance);</span>
+<span class="lineNum">      73 </span><span class="lineCov">        443 :     }</span>
+<span class="lineNum">      74 </span><span class="lineCov">        428 :     [completeBlocks removeAllObjects];</span>
+<span class="lineNum">      75 </span><span class="lineCov">        428 : }</span>
+<span class="lineNum">      76 </span>            : 
+<span class="lineNum">      77 </span>            : - (NSString *)description
+<span class="lineNum">      78 </span>            : {
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 :     NSMutableString *description = [NSMutableString stringWithFormat:@&quot;&lt;%@: &quot;, NSStringFromClass([self class])];</span>
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 :     [description appendFormat:@&quot;self.key=%@&quot;, self.key];</span>
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 :     [description appendFormat:@&quot;, completeBlocksCount=%lu&quot;, (unsigned long) [completeBlocks count]];</span>
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 :     [description appendString:@&quot;&gt;&quot;];</span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :     return description;</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      85 </span>            : 
-<span class="lineNum">      86 </span>            : @end
+<span class="lineNum">      86 </span>            : 
+<span class="lineNum">      87 </span>            : @end
 </pre>
       </td>
     </tr>
