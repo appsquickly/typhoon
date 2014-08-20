@@ -17,10 +17,7 @@
 #import "Typhoon.h"
 #import "CavalryMan.h"
 #import "SwordFactory.h"
-#import "Sword.h"
 #import "Mock.h"
-#import "TyphoonInjectionByRuntimeArgument.h"
-#import "TyphoonInjections.h"
 
 @implementation MiddleAgesAssembly
 

@@ -377,9 +377,11 @@
 		6B077462193786EB0083714E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA798B7BB085030D07102B8E /* Storyboard.storyboard */; };
 		6B077463193786EC0083714E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA798B7BB085030D07102B8E /* Storyboard.storyboard */; };
 		BA7982DB9ED4ECF0C54DA707 /* TyphoonUIColorConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E0CA9E9828D07777F40 /* TyphoonUIColorConverterTests.m */; };
+		BA798411A6669EF3D231FE6F /* Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = C949792A85FC9383BEAD631B /* Mock.m */; };
 		BA798643561E55898B87E96A /* UniqueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7980A75A6786BBC2A387F9 /* UniqueViewController.m */; };
 		BA798645ED33923CA832A9CD /* StoryboardViewControllerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798EA3F8F037BFC45CBCB7 /* StoryboardViewControllerAssembly.m */; };
 		BA7987FA9B7BE2D96C39C105 /* StoryboardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79872D47F864D6B64B479E /* StoryboardTests.m */; };
+		BA7987FF3152DA22979AD79B /* TyphoonInjectionByCurrentRuntimeArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = C94972BE857448DEBA12C1CE /* TyphoonInjectionByCurrentRuntimeArguments.m */; };
 		BA798848CA5A0D7F6AF44DCF /* TyphoonConfigPostProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E14534FB69AC182D402 /* TyphoonConfigPostProcessorTests.m */; };
 		BA798C5BE35D5B38B2F64387 /* TyphoonViewControllerNibResolverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982C084F0AD60B5858F31 /* TyphoonViewControllerNibResolverTests.m */; };
 		BA798CEBF664D4B2D24EA1A3 /* TyphoonConfigPostProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E14534FB69AC182D402 /* TyphoonConfigPostProcessorTests.m */; };
@@ -2234,6 +2236,8 @@
 				6B07738D193780720083714E /* main.m in Sources */,
 				2DBA1413585CE14C74CC72FF /* TyphoonInjections.m in Sources */,
 				2DBA1830DDD6B82672A486FA /* TyphoonStartup.m in Sources */,
+				BA7987FF3152DA22979AD79B /* TyphoonInjectionByCurrentRuntimeArguments.m in Sources */,
+				BA798411A6669EF3D231FE6F /* Mock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
