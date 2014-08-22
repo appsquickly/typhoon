@@ -4,7 +4,11 @@ Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-fe
 
 ### Swift News!!!
 
-* Are you using Typhoon with Swift? We've had reports from happy coders, however if you encounter any issues, please let us know. 
+We're working on getting Typhoon ready to work with Swift. Meanwhile . . . 
+
+* At the present time, the best way to use Typhoon with Swift, is to create your assembly in Objective-C (the rest of your app can be Swift)
+
+. . . Typhoon assemblies make good use of the ObjC runtime's dyanmic dispatch features, which current versions of Swift will often second guess. 
 
 ## Familiar with Dependency Injection?
 
