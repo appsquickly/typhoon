@@ -8,7 +8,7 @@ We're working on getting Typhoon ready to work with Swift. Meanwhile . . .
 
 * At the present time, the best way to use Typhoon with Swift, is to create your assembly in Objective-C (the rest of your app can be Swift)
 
-. . . Typhoon assemblies make good use of the ObjC runtime's dyanmic dispatch features. Assemblies are reflected, and each method intercepted (applying an AOP 'around' advice) so that Typhoon has a blueprint to build each of the components in the app's assembly. Swift will try to use static/vtable dispatch where possible (which prevents the required method interception), and current versions do this over-eagerly with Typhoon. One the one hand we have some workarounds and new approaches planned. On the other we're waiting to see how Swift evolves in this regard, particularly version 1.0. 
+. . . Typhoon assemblies make good use of the ObjC runtime's dyanmic dispatch features. Assemblies are reflected, and each method intercepted (applying an AOP 'around' advice) so that Typhoon has a blueprint to build each of the components in the app's assembly. However, Swift will try to use static/vtable dispatch where possible (which prevents the required method interception), and current versions do this over-eagerly with Typhoon. One the one hand we have some workarounds and new approaches planned. On the other we're waiting to see how Swift evolves in this regard, particularly version 1.0. 
 
 ## Familiar with Dependency Injection?
 
