@@ -18,7 +18,7 @@ We're working on getting Typhoon ready to work with Swift. Meanwhile . . .
 * <a href="https://github.com/typhoon-framework/Typhoon-example">Try the sample application</a> 
 * <a href="https://github.com/typhoon-framework/Typhoon#design-goals--features">Check the feature list</a>.
 
-. . . otherwise. . . 
+. . . otherwise . . . 
 
 ### What is Dependency Injection? 
 
