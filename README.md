@@ -8,9 +8,11 @@ We're working on getting Typhoon ready to work with Swift. Meanwhile . . .
 
 * At the present time, the best way to use Typhoon with Swift, is to create your assembly in Objective-C (the rest of your app can be Swift)
 
-. . . Documentation and examples for Swift will be provided shortly. 
+. . . documentation and examples for Swift will be provided shortly. 
 
-## Familiar with Dependency Injection?
+## Familiar with Dependency Injection? Then ask yourself . . . 
+
+* Given a language with top-notch dynamic method invocation, reasonable (not great) type introspection and Ruby-grade method intercpetion/forwarding, what would be the best way to support dependency injection? 
 
 * Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a>, <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>  
 * <a href="https://github.com/typhoon-framework/Typhoon-example">Try the sample application</a> 
