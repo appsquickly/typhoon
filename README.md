@@ -144,8 +144,9 @@ good compromise between integration testing and pure unit testing. (Biggest test
 
 * Supports ***injection of view controllers*** and ***storyboard integration.*** 
 
-* Supports both ***initializer*** and ***property injection***. In the case of the latter, it has customizable call-backs to 
-ensure that the class is in the required state before and after properties are set. 
+* Supports both ***initializer***, ***property*** and ***method injection***. For the latter two, it has customizable call-backs to ensure that the class is in the required state before and after injection. 
+
+* Supports a mixture of static dependencies along with <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections#injection-with-run-time-arguments">run-time arguments</a> to create factories on the fly. This greatly reduces the amount of boiler-plate code that you would normally write. 
 
 * Excellent ***support for circular dependencies.***
 
