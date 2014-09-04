@@ -37,7 +37,7 @@
 
 - (BOOL)isEqualToCustom:(TyphoonInjectionByReference *)injection
 {
-    return [self.reference isEqualTo:injection.reference] && [self.referenceArguments isEqualTo:injection.referenceArguments];
+    return [self.reference isEqual:injection.reference] && [self.referenceArguments isEqual:injection.referenceArguments];
 }
 
 - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
