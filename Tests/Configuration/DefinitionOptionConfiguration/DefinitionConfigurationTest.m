@@ -106,7 +106,7 @@
 - (void)test_definition_with_circular_dependency
 {
     NSArray *array = [assembly definitionWithCircularDescription];
-    NSLog(@"array: %@", array);
+    XCTAssertTrue([array count] == 2, @"array must have 2 items, but has: %@",array);
     NSValue *first = array[0];
     NSValue *second = array[1];
     XCTAssertTrue([first pointerValue] == (__bridge void *)array);
