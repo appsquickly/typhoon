@@ -33,6 +33,11 @@
     return copied;
 }
 
+- (BOOL)isEqualToCustom:(TyphoonInjectionByFactoryReference *)injection
+{
+    return  [super isEqualToCustom:injection] && [self.keyPath isEqualToString:injection.keyPath];
+}
+
 - (id)resolveReferenceWithContext:(TyphoonInjectionContext *)context
 {
     id referenceInstance = [super resolveReferenceWithContext:context];

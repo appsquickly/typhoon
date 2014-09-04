@@ -23,6 +23,11 @@
     return copied;
 }
 
+- (BOOL)isEqualToCustom:(id)injection
+{
+    return YES;
+}
+
 - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
     id classOrProtocol = context.destinationType.classOrProtocol;
@@ -36,7 +41,6 @@
         }
     }
 
-    
     TyphoonDefinition *definition = [context.factory definitionForType:classOrProtocol];
     
     [context.factory resolveCircularDependency:definition.key args:context.args resolvedBlock:^(BOOL isCircular) {

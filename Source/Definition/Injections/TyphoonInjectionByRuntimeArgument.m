@@ -42,5 +42,10 @@
     return copied;
 }
 
+- (BOOL)isEqualToCustom:(TyphoonInjectionByRuntimeArgument *)injection
+{
+    return self.runtimeArgumentIndex == injection.runtimeArgumentIndex;
+}
+
 @end
 

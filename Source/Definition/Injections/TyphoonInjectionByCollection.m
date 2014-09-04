@@ -126,6 +126,11 @@
     return copied;
 }
 
+- (BOOL)isEqualToCustom:(TyphoonInjectionByCollection *)injection
+{
+    return [self.injections isEqualToArray:injection.injections] && self.requiredClass == injection.requiredClass;
+}
+
 - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
     Class collectionClass = [self collectionClassForContext:context];

@@ -35,6 +35,11 @@
     return copied;
 }
 
+- (BOOL)isEqualToCustom:(TyphoonInjectionByReference *)injection
+{
+    return [self.reference isEqualTo:injection.reference] && [self.referenceArguments isEqualTo:injection.referenceArguments];
+}
+
 - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
     if (context.raiseExceptionIfCircular) {

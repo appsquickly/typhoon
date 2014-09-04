@@ -119,6 +119,11 @@
     return copied;
 }
 
+- (BOOL)isEqualToCustom:(TyphoonInjectionByDictionary *)injection
+{
+    return [self.injections isEqualToDictionary:injection.injections] && self.requiredClass == injection.requiredClass;
+}
+
 - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
     Class dictionaryClass = [self dictionaryClassForContext:context];

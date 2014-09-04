@@ -29,6 +29,11 @@
     return copied;
 }
 
+- (BOOL)isEqualToCustom:(TyphoonInjectionByObjectInstance *)injection
+{
+    return [self.objectInstance isEqualTo:injection.objectInstance];
+}
+
 - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
     result(_objectInstance);

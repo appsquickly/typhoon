@@ -27,6 +27,11 @@
     return copied;
 }
 
+- (BOOL)isEqualToCustom:(TyphoonInjectionByConfig *)injection
+{
+    return [self.configKey isEqualToString:injection.configKey];
+}
+
 - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
     if (!self.configuredInjection) {

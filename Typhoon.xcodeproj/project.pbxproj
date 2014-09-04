@@ -998,9 +998,11 @@
 		6B076EB91936F63A0083714E /* Injections */ = {
 			isa = PBXGroup;
 			children = (
+				6B076EBC1936F63A0083714E /* TyphoonInjection.h */,
+				6B076ED51936F63A0083714E /* TyphoonPropertyInjection.h */,
+				6B076ED41936F63A0083714E /* TyphoonParameterInjection.h */,
 				6B076EBA1936F63A0083714E /* TyphoonAbstractInjection.h */,
 				6B076EBB1936F63A0083714E /* TyphoonAbstractInjection.m */,
-				6B076EBC1936F63A0083714E /* TyphoonInjection.h */,
 				6B076EBD1936F63A0083714E /* TyphoonInjectionByCollection.h */,
 				6B076EBE1936F63A0083714E /* TyphoonInjectionByCollection.m */,
 				6B076EBF1936F63A0083714E /* TyphoonInjectionByComponentFactory.h */,
@@ -1023,12 +1025,10 @@
 				6B076ED01936F63A0083714E /* TyphoonInjectionByType.m */,
 				6B076ED11936F63A0083714E /* TyphoonInjectionContext.h */,
 				6B076ED21936F63A0083714E /* TyphoonInjectionContext.m */,
-				6B076ED31936F63A0083714E /* TyphoonInjections.h */,
-				6B076ED41936F63A0083714E /* TyphoonParameterInjection.h */,
-				6B076ED51936F63A0083714E /* TyphoonPropertyInjection.h */,
-				2DBA1FC6F594C49C7D8261A6 /* TyphoonInjections.m */,
-				C94972BE857448DEBA12C1CE /* TyphoonInjectionByCurrentRuntimeArguments.m */,
 				C949766E39C445A43A7517B8 /* TyphoonInjectionByCurrentRuntimeArguments.h */,
+				C94972BE857448DEBA12C1CE /* TyphoonInjectionByCurrentRuntimeArguments.m */,
+				6B076ED31936F63A0083714E /* TyphoonInjections.h */,
+				2DBA1FC6F594C49C7D8261A6 /* TyphoonInjections.m */,
 			);
 			path = Injections;
 			sourceTree = "<group>";

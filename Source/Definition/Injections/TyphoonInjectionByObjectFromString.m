@@ -36,6 +36,11 @@
     return copied;
 }
 
+- (BOOL)isEqualToCustom:(TyphoonInjectionByObjectFromString *)injection
+{
+    return  [self.textValue isEqualToString:injection.textValue];
+}
+
 - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
     TyphoonTypeDescriptor *type = context.destinationType;

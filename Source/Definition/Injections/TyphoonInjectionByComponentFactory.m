@@ -25,4 +25,9 @@
     return copied;
 }
 
+- (BOOL)isEqualToCustom:(TyphoonInjectionByComponentFactory *)injection
+{
+    return YES;
+}
+
 @end

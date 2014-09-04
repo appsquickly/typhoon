@@ -59,7 +59,7 @@
         return NO;
     }
 
-    return [self isEqualToBase:other];
+    return [self isEqualToBase:other] && [self isEqualToCustom:other];
 }
 
 - (BOOL)isEqualToBase:(TyphoonAbstractInjection *)base
@@ -88,6 +88,12 @@
 
 
 #pragma mark - Methods to override
+
+- (BOOL)isEqualToCustom:(id)injection
+{
+    [NSException raise:NSInternalInconsistencyException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
+    return NO;
+}
 
 - (id)copyWithZone:(NSZone *)zone
 {
