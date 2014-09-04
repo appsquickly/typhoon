@@ -10,7 +10,7 @@ We're working on getting Typhoon ready to work with Swift. Meanwhile . . .
 
 . . . documentation and examples for Swift will be provided shortly. 
 
-## Familiar with Dependency Injection? Then ask yourself . . . 
+## Familiar with Dependency Injection?
 
 *Typhoon is a DI library that makes good use of Objective-C's late binding nature in order to perform method interception and forwarding. This makes for a very compelling feature list.*
 
