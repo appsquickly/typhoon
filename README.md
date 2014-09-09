@@ -16,7 +16,7 @@ We're working on getting Typhoon ready to work with Swift. Meanwhile . . .
 
 * In a rush? Here's a <a href="https://github.com/typhoon-framework/Typhoon/wiki/Swift-Quick-Start">Swift Quick Start</a> and an <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Objective-C Quick Start</a>.
 * Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>.  
-* Need a sample application? Here's <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">one for Swift</a> and <a href="https://github.com/typhoon-framework/Typhoon-example">another in Objective-C</a>.
+* Try the <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">Swift Sample Application</a> or the <a href="https://github.com/typhoon-framework/Typhoon-example">Objective-C Sample Application</a>.
 
 . . . otherwise . . . 
 
