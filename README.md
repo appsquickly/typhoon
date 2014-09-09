@@ -6,7 +6,7 @@ Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-fe
 
 We're working on getting Typhoon ready to work with Swift. Meanwhile . . . 
 
-* A sample application for Swift is <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">in progress here</a>
+* A sample application for Swift is <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">in progress here</a>.
 
 . . . documentation and examples for Swift will be provided shortly. 
 
