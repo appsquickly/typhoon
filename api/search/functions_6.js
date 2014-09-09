@@ -23,5 +23,6 @@ var searchData=
   ['injectproperty_3a',['injectProperty:',['../interface_typhoon_definition.html#ae94bc60d51081f565e5183e5b28ea36f',1,'TyphoonDefinition']]],
   ['injectproperty_3awith_3a',['injectProperty:with:',['../interface_typhoon_definition.html#a2dae7a42237c54186dff914a699bf7d9',1,'TyphoonDefinition']]],
   ['iscollectionclass_3a',['isCollectionClass:',['../interface_typhoon_injection_by_collection.html#a1870fdc696c8eba331863da87258a007',1,'TyphoonInjectionByCollection']]],
+  ['isequaltocustom_3a',['isEqualToCustom:',['../interface_typhoon_abstract_injection.html#a9b9a8493d51c13abb6fb01e759f03e25',1,'TyphoonAbstractInjection']]],
   ['istyphooninjection',['IsTyphoonInjection',['../_typhoon_injections_8h.html#aa2463cdad56e4960239ce760ac2781c3',1,'TyphoonInjections.h']]]
 ];

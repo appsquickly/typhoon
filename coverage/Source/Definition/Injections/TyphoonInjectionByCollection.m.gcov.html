@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">73</td>
-            <td class="headerCovTableEntry">80</td>
-            <td class="headerCovTableEntryHi">91.2 %</td>
+            <td class="headerCovTableEntry">83</td>
+            <td class="headerCovTableEntryMed">88.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-09-04 11:46:04</td>
+            <td class="headerValue">2014-09-09 16:19:46</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -184,19 +184,24 @@
 <span class="lineNum">     126 </span><span class="lineCov">          6 :     return copied;</span>
 <span class="lineNum">     127 </span><span class="lineCov">          6 : }</span>
 <span class="lineNum">     128 </span>            : 
-<span class="lineNum">     129 </span><span class="lineCov">         12 : - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result</span>
+<span class="lineNum">     129 </span><span class="lineNoCov">          0 : - (BOOL)isEqualToCustom:(TyphoonInjectionByCollection *)injection</span>
 <span class="lineNum">     130 </span>            : {
-<span class="lineNum">     131 </span><span class="lineCov">          6 :     Class collectionClass = [self collectionClassForContext:context];</span>
-<span class="lineNum">     132 </span>            :     
-<span class="lineNum">     133 </span><span class="lineCov">          6 :     TyphoonInjectionContext *contextForValues = [context copy];</span>
-<span class="lineNum">     134 </span><span class="lineCov">          6 :     contextForValues.destinationType = [TyphoonTypeDescriptor descriptorWithEncodedType:@encode(id)];</span>
-<span class="lineNum">     135 </span>            :     
-<span class="lineNum">     136 </span><span class="lineCov">         12 :     [self buildCollectionWithClass:collectionClass context:contextForValues completion:^(id&lt;TyphoonCollection&gt; collection) {</span>
-<span class="lineNum">     137 </span><span class="lineCov">          6 :         result(collection);</span>
-<span class="lineNum">     138 </span><span class="lineCov">          6 :     }];</span>
-<span class="lineNum">     139 </span><span class="lineCov">          6 : }</span>
-<span class="lineNum">     140 </span>            : 
-<span class="lineNum">     141 </span>            : @end
+<span class="lineNum">     131 </span><span class="lineNoCov">          0 :     return [self.injections isEqualToArray:injection.injections] &amp;&amp; self.requiredClass == injection.requiredClass;</span>
+<span class="lineNum">     132 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     133 </span>            : 
+<span class="lineNum">     134 </span><span class="lineCov">         12 : - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result</span>
+<span class="lineNum">     135 </span>            : {
+<span class="lineNum">     136 </span><span class="lineCov">          6 :     Class collectionClass = [self collectionClassForContext:context];</span>
+<span class="lineNum">     137 </span>            :     
+<span class="lineNum">     138 </span><span class="lineCov">          6 :     TyphoonInjectionContext *contextForValues = [context copy];</span>
+<span class="lineNum">     139 </span><span class="lineCov">          6 :     contextForValues.destinationType = [TyphoonTypeDescriptor descriptorWithEncodedType:@encode(id)];</span>
+<span class="lineNum">     140 </span>            :     
+<span class="lineNum">     141 </span><span class="lineCov">         12 :     [self buildCollectionWithClass:collectionClass context:contextForValues completion:^(id&lt;TyphoonCollection&gt; collection) {</span>
+<span class="lineNum">     142 </span><span class="lineCov">          6 :         result(collection);</span>
+<span class="lineNum">     143 </span><span class="lineCov">          6 :     }];</span>
+<span class="lineNum">     144 </span><span class="lineCov">          6 : }</span>
+<span class="lineNum">     145 </span>            : 
+<span class="lineNum">     146 </span>            : @end
 </pre>
       </td>
     </tr>

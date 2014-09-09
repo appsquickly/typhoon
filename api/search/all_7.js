@@ -26,6 +26,7 @@ var searchData=
   ['injectproperty_3awith_3a',['injectProperty:with:',['../interface_typhoon_definition.html#a2dae7a42237c54186dff914a699bf7d9',1,'TyphoonDefinition']]],
   ['isarray',['isArray',['../interface_typhoon_type_descriptor.html#a17e596f33f0323231b6c9eb9ca2557a5',1,'TyphoonTypeDescriptor']]],
   ['iscollectionclass_3a',['isCollectionClass:',['../interface_typhoon_injection_by_collection.html#a1870fdc696c8eba331863da87258a007',1,'TyphoonInjectionByCollection']]],
+  ['isequaltocustom_3a',['isEqualToCustom:',['../interface_typhoon_abstract_injection.html#a9b9a8493d51c13abb6fb01e759f03e25',1,'TyphoonAbstractInjection']]],
   ['ispointer',['isPointer',['../interface_typhoon_type_descriptor.html#af0011058e7419f08e5b5f7a31ade73a6',1,'TyphoonTypeDescriptor']]],
   ['isprimitive',['isPrimitive',['../interface_typhoon_type_descriptor.html#a5c4c715509a688c5e64c01acccf029e6',1,'TyphoonTypeDescriptor']]],
   ['isstructure',['isStructure',['../interface_typhoon_type_descriptor.html#a6b5f778f69a59dc8c2028bcb2be59aca',1,'TyphoonTypeDescriptor']]],

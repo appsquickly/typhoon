@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-09-04 11:46:04</td>
+            <td class="headerValue">2014-09-09 16:19:46</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -76,22 +76,23 @@
 <span class="lineNum">      18 </span>            : 
 <span class="lineNum">      19 </span>            : @interface TyphoonAbstractInjection : NSObject &lt;TyphoonParameterInjection, TyphoonPropertyInjection&gt;
 <span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span><span class="lineCov">      15304 : @property(nonatomic, readonly) TyphoonInjectionType type;</span>
+<span class="lineNum">      21 </span><span class="lineCov">      15307 : @property(nonatomic, readonly) TyphoonInjectionType type;</span>
 <span class="lineNum">      22 </span>            : 
 <span class="lineNum">      23 </span>            : /* TyphoonInjectionTypeProperty properties */
 <span class="lineNum">      24 </span><span class="lineCov">      10581 : @property(nonatomic, readonly, strong) NSString *propertyName;</span>
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : /* TyphoonInjectionTypeParameter properties */
-<span class="lineNum">      27 </span><span class="lineCov">        496 : @property(nonatomic, readonly) NSUInteger parameterIndex;</span>
+<span class="lineNum">      27 </span><span class="lineCov">        498 : @property(nonatomic, readonly) NSUInteger parameterIndex;</span>
 <span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span>            : @end
-<span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span>            : @interface TyphoonAbstractInjection (Protected)
-<span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span>            : - (void)copyBasePropertiesTo:(TyphoonAbstractInjection *)copiedInjection;
-<span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span>            : @end
+<span class="lineNum">      29 </span>            : - (BOOL)isEqualToCustom:(id)injection;
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span>            : @end
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span>            : @interface TyphoonAbstractInjection (Protected)
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span>            : - (void)copyBasePropertiesTo:(TyphoonAbstractInjection *)copiedInjection;
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : @end
 </pre>
       </td>
     </tr>

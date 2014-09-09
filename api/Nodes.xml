@@ -656,6 +656,11 @@
               <Path>interface_typhoon_abstract_injection.html</Path>
               <Anchor>a30504db62ed38e24adb794506a2b95e1</Anchor>
              </Node>
+             <Node>
+              <Name>isEqualToCustom:</Name>
+              <Path>interface_typhoon_abstract_injection.html</Path>
+              <Anchor>a9b9a8493d51c13abb6fb01e759f03e25</Anchor>
+             </Node>
             </Subnodes>
            </Node>
            <Node>
@@ -2582,6 +2587,11 @@
                 <Name>copyBasePropertiesTo:</Name>
                 <Path>interface_typhoon_abstract_injection.html</Path>
                 <Anchor>a30504db62ed38e24adb794506a2b95e1</Anchor>
+               </Node>
+               <Node>
+                <Name>isEqualToCustom:</Name>
+                <Path>interface_typhoon_abstract_injection.html</Path>
+                <Anchor>a9b9a8493d51c13abb6fb01e759f03e25</Anchor>
                </Node>
               </Subnodes>
              </Node>
