@@ -14,11 +14,12 @@ We're working on getting Typhoon ready to work with Swift. Meanwhile . . .
 
 *Typhoon is a DI library that makes good use of the runtime's (ObjC or Swift) late binding nature in order to perform method interception and forwarding. This makes for a very compelling feature list.*
 
-* <a href="https://github.com/typhoon-framework/Typhoon#design-goals--features">Check the feature list</a>
-* Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Objective-C Quick Start</a> or <a href="https://github.com/typhoon-framework/Typhoon/wiki/Swift-Quick-Start">Swift Quick Start</a>
-* Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">Objective-C User Guide</a> or <a href="https://github.com/typhoon-framework/Typhoon/wiki/Swift-Types-of-Injections">Swift User Guide</a> 
-* Read the <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>  
-* Try the <a href="https://github.com/typhoon-framework/Typhoon-example">Objective-C sample application</a> or <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">Swift sample application</a>.
+* <a href="https://github.com/typhoon-framework/Typhoon#design-goals--features">Check the feature list</a>.
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Swift-Quick-Start">Swift Quick Start</a>
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Objective-C Quick Start</a> or 
+* Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>.  
+* <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">Swift sample application</a>.
+* <a href="https://github.com/typhoon-framework/Typhoon-example">Objective-C sample application</a>.
 
 . . . otherwise . . . 
 
