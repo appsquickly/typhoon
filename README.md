@@ -2,21 +2,13 @@
 
 Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-featured and super-easy to use. 
 
-### Swift News!!!
-
-We're working on getting Typhoon ready to work with Swift. Meanwhile . . . 
-
-* A sample application for Swift is <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">in progress here</a>.
-
-. . . documentation and examples for Swift will be provided shortly. 
-
 ## Familiar with Dependency Injection?
 
 *Typhoon is a DI library that makes good use of the runtime's (ObjC or Swift) late binding nature in order to perform method interception and forwarding. This makes for a very compelling <a href="https://github.com/typhoon-framework/Typhoon#design-goals--features">feature list.</a>*
 
 * In a rush? Here's a <a href="https://github.com/typhoon-framework/Typhoon/wiki/Swift-Quick-Start">Swift Quick Start</a> and an <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Objective-C Quick Start</a>.
 * Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>.  
-* Try the <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">Swift Sample Application</a> or the <a href="https://github.com/typhoon-framework/Typhoon-example">Objective-C Sample Application</a>.
+* Try the <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">Swift Sample Application</a>(in progress) or the <a href="https://github.com/typhoon-framework/Typhoon-example">Objective-C Sample Application</a>.
 
 . . . otherwise . . . 
 
