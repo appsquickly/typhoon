@@ -14,8 +14,8 @@ var indexSectionsWithContent =
   4: "t",
   5: "t",
   6: "t",
-  7: "abcdfiklmoprst",
-  8: "lt",
+  7: "abcdefiklmoprst",
+  8: "ilt",
   9: "cdft",
   10: "t"
 };

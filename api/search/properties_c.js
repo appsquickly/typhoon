@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['scope',['scope',['../interface_typhoon_definition.html#aa4df6569a008392075c9689a73d13729',1,'TyphoonDefinition']]],
-  ['selector',['selector',['../interface_typhoon_method.html#a2df02aed8c27d293dad75d3a8c010705',1,'TyphoonMethod']]],
-  ['singletons',['singletons',['../interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785',1,'TyphoonComponentFactory']]],
-  ['structuretypename',['structureTypeName',['../interface_typhoon_type_descriptor.html#a51e40b95dc79d9b28a3351efdc5ea7f9',1,'TyphoonTypeDescriptor']]]
+  ['raiseexceptionifcircular',['raiseExceptionIfCircular',['../interface_typhoon_injection_context.html#a19be259ff91bfc8848876681c9e89d75',1,'TyphoonInjectionContext']]],
+  ['reference',['reference',['../interface_typhoon_injection_by_reference.html#af357524b98df89bc6264516725ad3870',1,'TyphoonInjectionByReference']]],
+  ['referencearguments',['referenceArguments',['../interface_typhoon_injection_by_reference.html#ac324803fcf4cabd56f0f0fed6e3f1ba2',1,'TyphoonInjectionByReference']]],
+  ['runtimeargumentindex',['runtimeArgumentIndex',['../interface_typhoon_injection_by_runtime_argument.html#aabdbebbc4a565a4a9d86b975dc0d8e10',1,'TyphoonInjectionByRuntimeArgument']]]
 ];

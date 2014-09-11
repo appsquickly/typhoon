@@ -27,6 +27,7 @@ var files =
     [ "TyphoonAssemblySelectorAdviser.h", "_typhoon_assembly_selector_adviser_8h.html", [
       [ "TyphoonAssemblySelectorAdviser", "interface_typhoon_assembly_selector_adviser.html", "interface_typhoon_assembly_selector_adviser" ]
     ] ],
+    [ "TyphoonAutoInjection.h", "_typhoon_auto_injection_8h.html", "_typhoon_auto_injection_8h" ],
     [ "TyphoonAutowire.h", "_typhoon_autowire_8h.html", "_typhoon_autowire_8h" ],
     [ "TyphoonBlockComponentFactory.h", "_typhoon_block_component_factory_8h.html", null ],
     [ "TyphoonBundledImageTypeConverter.h", "_typhoon_bundled_image_type_converter_8h.html", null ],
@@ -45,7 +46,11 @@ var files =
     [ "TyphoonDefinition+Option.h", "_typhoon_definition_09_option_8h.html", "_typhoon_definition_09_option_8h" ],
     [ "TyphoonDefinition.h", "_typhoon_definition_8h.html", "_typhoon_definition_8h" ],
     [ "TyphoonDefinitionRegisterer.h", "_typhoon_definition_registerer_8h.html", null ],
+    [ "TyphoonFactoryAutoInjectionPostProcessor.h", "_typhoon_factory_auto_injection_post_processor_8h.html", null ],
     [ "TyphoonInitialStoryboardResolver.h", "_typhoon_initial_storyboard_resolver_8h.html", null ],
+    [ "TyphoonInjectedObject.h", "_typhoon_injected_object_8h.html", [
+      [ "TyphoonInjectedObject", "interface_typhoon_injected_object.html", null ]
+    ] ],
     [ "TyphoonInjection.h", "_typhoon_injection_8h.html", [
       [ "<TyphoonInjection>", "protocol_typhoon_injection-p.html", "protocol_typhoon_injection-p" ]
     ] ],
@@ -78,7 +83,7 @@ var files =
       [ "TyphoonInjectionByRuntimeArgument", "interface_typhoon_injection_by_runtime_argument.html", "interface_typhoon_injection_by_runtime_argument" ]
     ] ],
     [ "TyphoonInjectionByType.h", "_typhoon_injection_by_type_8h.html", [
-      [ "TyphoonInjectionByType", "interface_typhoon_injection_by_type.html", null ]
+      [ "TyphoonInjectionByType", "interface_typhoon_injection_by_type.html", "interface_typhoon_injection_by_type" ]
     ] ],
     [ "TyphoonInjectionContext.h", "_typhoon_injection_context_8h.html", "_typhoon_injection_context_8h" ],
     [ "TyphoonInjections.h", "_typhoon_injections_8h.html", "_typhoon_injections_8h" ],

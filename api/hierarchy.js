@@ -38,6 +38,7 @@ var hierarchy =
       ] ],
       [ "TyphoonConfigPostProcessor", "interface_typhoon_config_post_processor.html", null ],
       [ "TyphoonDefinition", "interface_typhoon_definition.html", null ],
+      [ "TyphoonInjectedObject", "interface_typhoon_injected_object.html", null ],
       [ "TyphoonInjectionContext", "interface_typhoon_injection_context.html", null ],
       [ "TyphoonIntrospectionUtils", "interface_typhoon_introspection_utils.html", null ],
       [ "TyphoonMatcherDefinitionFactory", "interface_typhoon_matcher_definition_factory.html", null ],

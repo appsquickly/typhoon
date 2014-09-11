@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['objectinstance',['objectInstance',['../interface_typhoon_injection_by_object_instance.html#af08950cbce71241f55abb01cfff8ec98',1,'TyphoonInjectionByObjectInstance']]]
+  ['matcher',['matcher',['../interface_typhoon_matcher_definition_factory.html#ae5be1239ab3206d7c0b72b01dcd772c4',1,'TyphoonMatcherDefinitionFactory']]]
 ];

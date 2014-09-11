@@ -144,6 +144,16 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>InjectedProtocol</Name>
+      <APILanguage>unknown</APILanguage>
+      <Type>macro</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_auto_injection_8h.html</Path>
+    <Anchor>ae73cb690bfababa9898655627175ba7d</Anchor>
+    <DeclaredIn>TyphoonAutoInjection.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>typhoon_autoWire</Name>
       <APILanguage>unknown</APILanguage>
       <Type>macro</Type>
@@ -314,6 +324,16 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>TyphoonInjectionWithType</Name>
+      <APILanguage>c</APILanguage>
+      <Type>func</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_injections_8h.html</Path>
+    <Anchor>a80807a37d7c44843d74518534db9a33e</Anchor>
+    <DeclaredIn>TyphoonInjections.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>TyphoonMakeInjectionFromObjectIfNeeded</Name>
       <APILanguage>c</APILanguage>
       <Type>func</Type>
@@ -321,6 +341,26 @@
     <Path>_typhoon_injections_8h.html</Path>
     <Anchor>af37a21437d5df5ccb9dcb5ebe5dd28c5</Anchor>
     <DeclaredIn>TyphoonInjections.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>IsClass</Name>
+      <APILanguage>c</APILanguage>
+      <Type>func</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_introspection_utils_8h.html</Path>
+    <Anchor>a56969a8f1f7a9a783d717dd87c67f5d3</Anchor>
+    <DeclaredIn>TyphoonIntrospectionUtils.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>IsProtocol</Name>
+      <APILanguage>c</APILanguage>
+      <Type>func</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_introspection_utils_8h.html</Path>
+    <Anchor>a15cce88ef63883f5f6b67918285aa27d</Anchor>
+    <DeclaredIn>TyphoonIntrospectionUtils.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -2372,6 +2412,16 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>TyphoonInjectedObject</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+      <Scope>TyphoonInjectedObject</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_injected_object.html</Path>
+    <DeclaredIn>TyphoonInjectedObject.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>TyphoonInjection</Name>
       <APILanguage>c</APILanguage>
       <Type>intf</Type>
@@ -3581,6 +3631,16 @@
     </TokenIdentifier>
     <Path>interface_typhoon_injection_by_type.html</Path>
     <DeclaredIn>TyphoonInjectionByType.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>explicitClassOrProtocol</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonInjectionByType</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_injection_by_type.html</Path>
+    <Anchor>a04bab4e3f6594b2c0ca8b5c66ebc75c0</Anchor>
   </Token>
   <Token>
     <TokenIdentifier>

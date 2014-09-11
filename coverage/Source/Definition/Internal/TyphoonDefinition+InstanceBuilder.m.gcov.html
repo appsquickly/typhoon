@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">78</td>
-            <td class="headerCovTableEntry">102</td>
-            <td class="headerCovTableEntryMed">76.5 %</td>
+            <td class="headerCovTableEntry">83</td>
+            <td class="headerCovTableEntry">107</td>
+            <td class="headerCovTableEntryMed">77.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-09-09 16:19:46</td>
+            <td class="headerValue">2014-09-12 02:53:47</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -95,10 +95,10 @@
 <span class="lineNum">      37 </span>            : 
 <span class="lineNum">      38 </span>            : #pragma mark - Base methods
 <span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span><span class="lineCov">       4252 : - (void)enumerateInjectionsOfKind:(Class)injectionClass options:(TyphoonInjectionsEnumerationOption)options</span>
-<span class="lineNum">      41 </span><span class="lineCov">       4252 :                        usingBlock:(TyphoonInjectionsEnumerationBlock)block</span>
+<span class="lineNum">      40 </span><span class="lineCov">       4268 : - (void)enumerateInjectionsOfKind:(Class)injectionClass options:(TyphoonInjectionsEnumerationOption)options</span>
+<span class="lineNum">      41 </span><span class="lineCov">       4268 :                        usingBlock:(TyphoonInjectionsEnumerationBlock)block</span>
 <span class="lineNum">      42 </span>            : {
-<span class="lineNum">      43 </span><span class="lineCov">       4252 :     if (options &amp; TyphoonInjectionsEnumerationOptionMethods) {</span>
+<span class="lineNum">      43 </span><span class="lineCov">       4268 :     if (options &amp; TyphoonInjectionsEnumerationOptionMethods) {</span>
 <span class="lineNum">      44 </span><span class="lineCov">        642 :         [self enumerateInjectionsOfKind:injectionClass onCollection:[self.initializer injectedParameters] withBlock:block</span>
 <span class="lineNum">      45 </span><span class="lineNoCov">          0 :                            replaceBlock:^(id injection, id injectionToReplace) {</span>
 <span class="lineNum">      46 </span><span class="lineNoCov">          0 :             [self.initializer replaceInjection:injection with:injectionToReplace];</span>
@@ -113,36 +113,36 @@
 <span class="lineNum">      55 </span><span class="lineCov">        696 :         }</span>
 <span class="lineNum">      56 </span><span class="lineCov">        642 :     }</span>
 <span class="lineNum">      57 </span>            : 
-<span class="lineNum">      58 </span><span class="lineCov">       4252 :     if (options &amp; TyphoonInjectionsEnumerationOptionProperties) {</span>
-<span class="lineNum">      59 </span><span class="lineCov">       4250 :         [self enumerateInjectionsOfKind:injectionClass onCollection:[self injectedProperties] withBlock:block</span>
+<span class="lineNum">      58 </span><span class="lineCov">       4268 :     if (options &amp; TyphoonInjectionsEnumerationOptionProperties) {</span>
+<span class="lineNum">      59 </span><span class="lineCov">       4266 :         [self enumerateInjectionsOfKind:injectionClass onCollection:[self injectedProperties] withBlock:block</span>
 <span class="lineNum">      60 </span><span class="lineCov">        224 :                            replaceBlock:^(id injection, id injectionToReplace) {</span>
 <span class="lineNum">      61 </span><span class="lineCov">        224 :             [self replacePropertyInjection:injection with:injectionToReplace];</span>
 <span class="lineNum">      62 </span><span class="lineCov">        448 :         }];</span>
-<span class="lineNum">      63 </span><span class="lineCov">       4250 :     }</span>
-<span class="lineNum">      64 </span><span class="lineCov">       4252 : }</span>
+<span class="lineNum">      63 </span><span class="lineCov">       4266 :     }</span>
+<span class="lineNum">      64 </span><span class="lineCov">       4268 : }</span>
 <span class="lineNum">      65 </span>            : 
-<span class="lineNum">      66 </span><span class="lineCov">       4911 : - (void)enumerateInjectionsOfKind:(Class)injectionClass onCollection:(id&lt;NSFastEnumeration&gt;)collection withBlock:(TyphoonInjectionsEnumerationBlock)block</span>
-<span class="lineNum">      67 </span><span class="lineCov">       4911 :                      replaceBlock:(void(^)(id injection, id injectionToReplace))replaceBlock</span>
+<span class="lineNum">      66 </span><span class="lineCov">       4927 : - (void)enumerateInjectionsOfKind:(Class)injectionClass onCollection:(id&lt;NSFastEnumeration&gt;)collection withBlock:(TyphoonInjectionsEnumerationBlock)block</span>
+<span class="lineNum">      67 </span><span class="lineCov">       4927 :                      replaceBlock:(void(^)(id injection, id injectionToReplace))replaceBlock</span>
 <span class="lineNum">      68 </span>            : {
-<span class="lineNum">      69 </span><span class="lineCov">      15684 :     for (id&lt;TyphoonInjection&gt;injection in collection) {</span>
-<span class="lineNum">      70 </span><span class="lineCov">       4147 :         if ([injection isKindOfClass:injectionClass]) {</span>
-<span class="lineNum">      71 </span><span class="lineCov">        349 :             id injectionToReplace = nil;</span>
-<span class="lineNum">      72 </span><span class="lineCov">        349 :             BOOL stop = NO;</span>
-<span class="lineNum">      73 </span><span class="lineCov">        349 :             block(injection, &amp;injectionToReplace, &amp;stop);</span>
-<span class="lineNum">      74 </span><span class="lineCov">        349 :             if (injectionToReplace) {</span>
+<span class="lineNum">      69 </span><span class="lineCov">      15715 :     for (id&lt;TyphoonInjection&gt;injection in collection) {</span>
+<span class="lineNum">      70 </span><span class="lineCov">       4153 :         if ([injection isKindOfClass:injectionClass]) {</span>
+<span class="lineNum">      71 </span><span class="lineCov">        355 :             id injectionToReplace = nil;</span>
+<span class="lineNum">      72 </span><span class="lineCov">        355 :             BOOL stop = NO;</span>
+<span class="lineNum">      73 </span><span class="lineCov">        355 :             block(injection, &amp;injectionToReplace, &amp;stop);</span>
+<span class="lineNum">      74 </span><span class="lineCov">        355 :             if (injectionToReplace) {</span>
 <span class="lineNum">      75 </span><span class="lineCov">        226 :                 replaceBlock(injection, injectionToReplace);</span>
 <span class="lineNum">      76 </span><span class="lineCov">        226 :             }</span>
-<span class="lineNum">      77 </span><span class="lineCov">        349 :             if (stop) {</span>
+<span class="lineNum">      77 </span><span class="lineCov">        355 :             if (stop) {</span>
 <span class="lineNum">      78 </span><span class="lineNoCov">          0 :                 break;</span>
 <span class="lineNum">      79 </span>            :             }
-<span class="lineNum">      80 </span><span class="lineCov">       1387 :         }</span>
-<span class="lineNum">      81 </span><span class="lineCov">      30418 :     }</span>
-<span class="lineNum">      82 </span><span class="lineCov">       4911 : }</span>
+<span class="lineNum">      80 </span><span class="lineCov">       1408 :         }</span>
+<span class="lineNum">      81 </span><span class="lineCov">      30497 :     }</span>
+<span class="lineNum">      82 </span><span class="lineCov">       4927 : }</span>
 <span class="lineNum">      83 </span>            : 
 <span class="lineNum">      84 </span>            : - (NSSet *)injectedProperties
 <span class="lineNum">      85 </span>            : {
-<span class="lineNum">      86 </span><span class="lineCov">       4709 :     if (!self.parent) {</span>
-<span class="lineNum">      87 </span><span class="lineCov">       4697 :         return [_injectedProperties mutableCopy];</span>
+<span class="lineNum">      86 </span><span class="lineCov">       4731 :     if (!self.parent) {</span>
+<span class="lineNum">      87 </span><span class="lineCov">       4719 :         return [_injectedProperties mutableCopy];</span>
 <span class="lineNum">      88 </span>            :     }
 <span class="lineNum">      89 </span>            : 
 <span class="lineNum">      90 </span><span class="lineCov">         12 :     NSMutableSet *properties = (NSMutableSet *)[self.parent injectedProperties];</span>
@@ -161,12 +161,12 @@
 <span class="lineNum">     103 </span><span class="lineCov">         12 :     [properties unionSet:_injectedProperties];</span>
 <span class="lineNum">     104 </span>            : 
 <span class="lineNum">     105 </span><span class="lineCov">         12 :     return properties;</span>
-<span class="lineNum">     106 </span><span class="lineCov">       4721 : }</span>
+<span class="lineNum">     106 </span><span class="lineCov">       4743 : }</span>
 <span class="lineNum">     107 </span>            : 
 <span class="lineNum">     108 </span>            : - (NSSet *)injectedMethods
 <span class="lineNum">     109 </span>            : {
-<span class="lineNum">     110 </span><span class="lineCov">       1086 :     if (!self.parent) {</span>
-<span class="lineNum">     111 </span><span class="lineCov">       1079 :         return [_injectedMethods mutableCopy];</span>
+<span class="lineNum">     110 </span><span class="lineCov">       1092 :     if (!self.parent) {</span>
+<span class="lineNum">     111 </span><span class="lineCov">       1085 :         return [_injectedMethods mutableCopy];</span>
 <span class="lineNum">     112 </span>            :     }
 <span class="lineNum">     113 </span><span class="lineCov">          7 :     NSMutableSet *methods = (NSMutableSet *)[self.parent injectedMethods];</span>
 <span class="lineNum">     114 </span>            : 
@@ -183,7 +183,7 @@
 <span class="lineNum">     125 </span><span class="lineCov">          7 :     [methods unionSet:_injectedMethods];</span>
 <span class="lineNum">     126 </span>            : 
 <span class="lineNum">     127 </span><span class="lineCov">          7 :     return methods;</span>
-<span class="lineNum">     128 </span><span class="lineCov">       1093 : }</span>
+<span class="lineNum">     128 </span><span class="lineCov">       1099 : }</span>
 <span class="lineNum">     129 </span>            : 
 <span class="lineNum">     130 </span><span class="lineCov">        225 : - (void)replacePropertyInjection:(id&lt;TyphoonPropertyInjection&gt;)injection with:(id&lt;TyphoonPropertyInjection&gt;)injectionToReplace</span>
 <span class="lineNum">     131 </span>            : {
@@ -229,31 +229,38 @@
 <span class="lineNum">     171 </span><span class="lineCov">        117 :     [_injectedProperties addObject:property];</span>
 <span class="lineNum">     172 </span><span class="lineCov">        117 : }</span>
 <span class="lineNum">     173 </span>            : 
-<span class="lineNum">     174 </span>            : - (BOOL)hasRuntimeArgumentInjections
+<span class="lineNum">     174 </span><span class="lineCov">          6 : - (void)addInjectedPropertyIfNotExists:(id &lt;TyphoonPropertyInjection&gt;)property</span>
 <span class="lineNum">     175 </span>            : {
-<span class="lineNum">     176 </span><span class="lineCov">        302 :     __block BOOL hasInjections = NO;</span>
-<span class="lineNum">     177 </span><span class="lineCov">        604 :     [self enumerateInjectionsOfKind:[TyphoonInjectionByRuntimeArgument class] options:TyphoonInjectionsEnumerationOptionAll</span>
-<span class="lineNum">     178 </span><span class="lineNoCov">          0 :                          usingBlock:^(id injection, id *injectionToReplace, BOOL *stop) {</span>
-<span class="lineNum">     179 </span><span class="lineNoCov">          0 :         hasInjections = YES;</span>
-<span class="lineNum">     180 </span><span class="lineNoCov">          0 :         *stop = YES;</span>
-<span class="lineNum">     181 </span><span class="lineNoCov">          0 :     }];</span>
-<span class="lineNum">     182 </span><span class="lineCov">        302 :     return hasInjections;</span>
-<span class="lineNum">     183 </span>            : 
-<span class="lineNum">     184 </span><span class="lineCov">        302 : }</span>
-<span class="lineNum">     185 </span>            : 
-<span class="lineNum">     186 </span><span class="lineNoCov">          0 : - (NSSet *)injectedPropertiesWithKind:(Class)clazz</span>
-<span class="lineNum">     187 </span>            : {
-<span class="lineNum">     188 </span><span class="lineNoCov">          0 :     NSMutableSet *properties = [NSMutableSet new];</span>
-<span class="lineNum">     189 </span>            : 
-<span class="lineNum">     190 </span><span class="lineNoCov">          0 :     [self enumerateInjectionsOfKind:clazz options:TyphoonInjectionsEnumerationOptionProperties</span>
-<span class="lineNum">     191 </span><span class="lineNoCov">          0 :                          usingBlock:^(id &lt;TyphoonInjection&gt; injection, id &lt;TyphoonInjection&gt; *injectionToReplace, BOOL *stop) {</span>
-<span class="lineNum">     192 </span><span class="lineNoCov">          0 :         [properties addObject:injection];</span>
-<span class="lineNum">     193 </span><span class="lineNoCov">          0 :     }];</span>
-<span class="lineNum">     194 </span>            : 
-<span class="lineNum">     195 </span><span class="lineNoCov">          0 :     return properties;</span>
-<span class="lineNum">     196 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     197 </span>            : 
-<span class="lineNum">     198 </span>            : @end
+<span class="lineNum">     176 </span><span class="lineCov">          6 :     if (![_injectedProperties containsObject:property]) {</span>
+<span class="lineNum">     177 </span><span class="lineCov">          4 :         [_injectedProperties addObject:property];</span>
+<span class="lineNum">     178 </span><span class="lineCov">          4 :     }</span>
+<span class="lineNum">     179 </span><span class="lineCov">          6 : }</span>
+<span class="lineNum">     180 </span>            : 
+<span class="lineNum">     181 </span>            : - (BOOL)hasRuntimeArgumentInjections
+<span class="lineNum">     182 </span>            : {
+<span class="lineNum">     183 </span><span class="lineCov">        302 :     __block BOOL hasInjections = NO;</span>
+<span class="lineNum">     184 </span><span class="lineCov">        604 :     [self enumerateInjectionsOfKind:[TyphoonInjectionByRuntimeArgument class] options:TyphoonInjectionsEnumerationOptionAll</span>
+<span class="lineNum">     185 </span><span class="lineNoCov">          0 :                          usingBlock:^(id injection, id *injectionToReplace, BOOL *stop) {</span>
+<span class="lineNum">     186 </span><span class="lineNoCov">          0 :         hasInjections = YES;</span>
+<span class="lineNum">     187 </span><span class="lineNoCov">          0 :         *stop = YES;</span>
+<span class="lineNum">     188 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     189 </span><span class="lineCov">        302 :     return hasInjections;</span>
+<span class="lineNum">     190 </span>            : 
+<span class="lineNum">     191 </span><span class="lineCov">        302 : }</span>
+<span class="lineNum">     192 </span>            : 
+<span class="lineNum">     193 </span><span class="lineNoCov">          0 : - (NSSet *)injectedPropertiesWithKind:(Class)clazz</span>
+<span class="lineNum">     194 </span>            : {
+<span class="lineNum">     195 </span><span class="lineNoCov">          0 :     NSMutableSet *properties = [NSMutableSet new];</span>
+<span class="lineNum">     196 </span>            : 
+<span class="lineNum">     197 </span><span class="lineNoCov">          0 :     [self enumerateInjectionsOfKind:clazz options:TyphoonInjectionsEnumerationOptionProperties</span>
+<span class="lineNum">     198 </span><span class="lineNoCov">          0 :                          usingBlock:^(id &lt;TyphoonInjection&gt; injection, id &lt;TyphoonInjection&gt; *injectionToReplace, BOOL *stop) {</span>
+<span class="lineNum">     199 </span><span class="lineNoCov">          0 :         [properties addObject:injection];</span>
+<span class="lineNum">     200 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     201 </span>            : 
+<span class="lineNum">     202 </span><span class="lineNoCov">          0 :     return properties;</span>
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     204 </span>            : 
+<span class="lineNum">     205 </span>            : @end
 </pre>
       </td>
     </tr>

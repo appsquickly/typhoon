@@ -1,44 +1,45 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$interface_typhoon_definition.html" title="TyphoonDefinition" alt="" coords="543,367,683,393"/>
-<area shape="rect" id="node3" href="$protocol_typhoon_injection-p.html" title="\&lt;TyphoonInjection\&gt;" alt="" coords="536,164,691,191"/>
-<area shape="rect" id="node16" href="$interface_typhoon_injection_context.html" title="TyphoonInjectionContext" alt="" coords="519,215,708,241"/>
-<area shape="rect" id="node17" href="$interface_typhoon_method.html" title="Represents an initializer for a component. " alt="" coords="549,265,677,292"/>
-<area shape="rect" id="node18" href="$interface_typhoon_runtime_arguments.html" title="TyphoonRuntimeArguments" alt="" coords="513,316,714,343"/>
-<area shape="rect" id="node4" href="$protocol_typhoon_parameter_injection-p.html" title="\&lt;TyphoonParameterInjection\&gt;" alt="" coords="800,215,1023,241"/>
-<area shape="rect" id="node15" href="$protocol_typhoon_property_injection-p.html" title="\&lt;TyphoonPropertyInjection\&gt;" alt="" coords="806,164,1017,191"/>
-<area shape="rect" id="node5" href="$interface_typhoon_abstract_injection.html" title="TyphoonAbstractInjection" alt="" coords="1079,215,1273,241"/>
-<area shape="rect" id="node6" href="$interface_typhoon_injection_by_collection.html" title="TyphoonInjectionByCollection" alt="" coords="1326,5,1543,32"/>
-<area shape="rect" id="node7" href="$interface_typhoon_injection_by_component_factory.html" title="TyphoonInjectionByComponent\lFactory" alt="" coords="1321,57,1548,98"/>
-<area shape="rect" id="node8" href="$interface_typhoon_injection_by_dictionary.html" title="TyphoonInjectionByDictionary" alt="" coords="1325,123,1544,149"/>
-<area shape="rect" id="node9" href="$interface_typhoon_injection_by_object_from_string.html" title="TyphoonInjectionByObject\lFromString" alt="" coords="1336,174,1533,215"/>
-<area shape="rect" id="node10" href="$interface_typhoon_injection_by_object_instance.html" title="TyphoonInjectionByObject\lInstance" alt="" coords="1336,239,1533,281"/>
-<area shape="rect" id="node11" href="$interface_typhoon_injection_by_reference.html" title="TyphoonInjectionByReference" alt="" coords="1325,305,1544,332"/>
-<area shape="rect" id="node13" href="$interface_typhoon_injection_by_runtime_argument.html" title="TyphoonInjectionByRuntime\lArgument" alt="" coords="1332,357,1537,398"/>
-<area shape="rect" id="node14" href="$interface_typhoon_injection_by_type.html" title="TyphoonInjectionByType" alt="" coords="1341,423,1528,449"/>
-<area shape="rect" id="node12" href="$interface_typhoon_injection_by_factory_reference.html" title="TyphoonInjectionByFactory\lReference" alt="" coords="1596,298,1800,339"/>
-<area shape="rect" id="node20" href="$protocol_typhoon_collection-p.html" title="Protocol which should be confirmed by collection (NSArray, NSSet, NSOrderedSet are conforms) ..." alt="" coords="247,189,409,216"/>
-<area shape="rect" id="node22" href="$interface_typhoon_assembly.html" title="Provides a concise way to declare and encapsulate the architecture of an application in one or more c..." alt="" coords="543,468,683,495"/>
-<area shape="rect" id="node23" href="$interface_typhoon_assembly_selector_adviser.html" title="TyphoonAssemblySelectorAdviser" alt="" coords="492,519,735,545"/>
-<area shape="rect" id="node24" href="$interface_typhoon_component_factory.html" title="This is the base class for all component factories. " alt="" coords="511,417,715,444"/>
-<area shape="rect" id="node26" href="$interface_typhoon_config_post_processor.html" title="TyphoonConfigPostProcessor" alt="" coords="507,1311,720,1337"/>
-<area shape="rect" id="node27" href="$interface_typhoon_introspection_utils.html" title="TyphoonIntrospectionUtils" alt="" coords="516,569,711,596"/>
-<area shape="rect" id="node28" href="$interface_typhoon_matcher_definition_factory.html" title="TyphoonMatcherDefinition\lFactory" alt="" coords="516,621,711,662"/>
-<area shape="rect" id="node29" href="$interface_typhoon_n_s_u_r_l_type_converter.html" title="TyphoonNSURLTypeConverter" alt="" coords="504,1143,723,1169"/>
-<area shape="rect" id="node30" href="$interface_typhoon_option_matcher.html" title="TyphoonOptionMatcher" alt="" coords="525,687,701,713"/>
-<area shape="rect" id="node31" href="$interface_typhoon_pass_through_type_converter.html" title="A &#39;type converter&#39; for NSString and NSMutableString. " alt="" coords="483,1193,744,1220"/>
-<area shape="rect" id="node32" href="$interface_typhoon_patch_object_factory.html" title="TyphoonPatchObjectFactory" alt="" coords="507,737,719,764"/>
-<area shape="rect" id="node33" href="$interface_typhoon_primitive_type_converter.html" title="TyphoonPrimitiveTypeConverter" alt="" coords="497,788,729,815"/>
-<area shape="rect" id="node34" href="$interface_typhoon_test_utils.html" title="Provides a utility for performing asynchronous integration tests with Typhoon. " alt="" coords="545,839,682,865"/>
-<area shape="rect" id="node35" href="$interface_typhoon_type_converter_registry.html" title="Registry of type converters, with special treatment for primitives. " alt="" coords="498,889,729,916"/>
-<area shape="rect" id="node36" href="$interface_typhoon_type_descriptor.html" title="TyphoonTypeDescriptor" alt="" coords="524,940,703,967"/>
-<area shape="rect" id="node37" href="$interface_typhoon_u_i_color_type_converter.html" title="A type converter for UIColor. " alt="" coords="501,1092,725,1119"/>
-<area shape="rect" id="node38" href="$interface_typhoon_view_controller_nib_resolver.html" title="Post&#45;Processor that completes the initializer of definitions with type UIViewController. " alt="" coords="517,1245,710,1286"/>
-<area shape="rect" id="node39" href="$interface_typhoon_weak_components_pool.html" title="TyphoonWeakComponentsPool" alt="" coords="502,1041,725,1068"/>
-<area shape="rect" id="node25" href="$interface_typhoon_block_component_factory.html" title="TyphoonBlockComponentFactory" alt="" coords="792,417,1031,444"/>
-<area shape="rect" id="node41" href="$protocol_typhoon_component_factory_post_processor-p.html" title="Allows for custom modification of a component factory&#39;s definitions. " alt="" coords="221,1245,435,1286"/>
-<area shape="rect" id="node42" href="$protocol_typhoon_components_pool-p.html" title="Methods from NSMutableDictionary which used in componentsPool. " alt="" coords="225,1067,431,1093"/>
-<area shape="rect" id="node43" href="$protocol_typhoon_dictionary-p.html" title="\&lt;TyphoonDictionary\&gt;" alt="" coords="247,1016,409,1043"/>
-<area shape="rect" id="node44" href="$protocol_typhoon_resource-p.html" title="\&lt;TyphoonResource\&gt;" alt="" coords="249,1311,407,1337"/>
-<area shape="rect" id="node46" href="$protocol_typhoon_type_converter-p.html" title="Declares a contract for converting configuration arguments to their required runtime type..." alt="" coords="231,1131,425,1157"/>
-<area shape="rect" id="node45" href="$interface_typhoon_bundle_resource.html" title="Represents a resource within the application bundle. " alt="" coords="522,1361,705,1388"/>
+<area shape="rect" id="node2" href="$interface_typhoon_definition.html" title="TyphoonDefinition" alt="" coords="543,56,683,83"/>
+<area shape="rect" id="node3" href="$protocol_typhoon_injection-p.html" title="\&lt;TyphoonInjection\&gt;" alt="" coords="536,883,691,909"/>
+<area shape="rect" id="node16" href="$interface_typhoon_injection_context.html" title="TyphoonInjectionContext" alt="" coords="519,107,708,133"/>
+<area shape="rect" id="node17" href="$interface_typhoon_method.html" title="Represents an initializer for a component. " alt="" coords="549,157,677,184"/>
+<area shape="rect" id="node18" href="$interface_typhoon_runtime_arguments.html" title="TyphoonRuntimeArguments" alt="" coords="513,5,714,32"/>
+<area shape="rect" id="node4" href="$protocol_typhoon_parameter_injection-p.html" title="\&lt;TyphoonParameterInjection\&gt;" alt="" coords="800,933,1023,960"/>
+<area shape="rect" id="node15" href="$protocol_typhoon_property_injection-p.html" title="\&lt;TyphoonPropertyInjection\&gt;" alt="" coords="806,883,1017,909"/>
+<area shape="rect" id="node5" href="$interface_typhoon_abstract_injection.html" title="TyphoonAbstractInjection" alt="" coords="1079,883,1273,909"/>
+<area shape="rect" id="node6" href="$interface_typhoon_injection_by_collection.html" title="TyphoonInjectionByCollection" alt="" coords="1326,673,1543,700"/>
+<area shape="rect" id="node7" href="$interface_typhoon_injection_by_component_factory.html" title="TyphoonInjectionByComponent\lFactory" alt="" coords="1321,725,1548,766"/>
+<area shape="rect" id="node8" href="$interface_typhoon_injection_by_dictionary.html" title="TyphoonInjectionByDictionary" alt="" coords="1325,791,1544,817"/>
+<area shape="rect" id="node9" href="$interface_typhoon_injection_by_object_from_string.html" title="TyphoonInjectionByObject\lFromString" alt="" coords="1336,842,1533,883"/>
+<area shape="rect" id="node10" href="$interface_typhoon_injection_by_object_instance.html" title="TyphoonInjectionByObject\lInstance" alt="" coords="1336,907,1533,949"/>
+<area shape="rect" id="node11" href="$interface_typhoon_injection_by_reference.html" title="TyphoonInjectionByReference" alt="" coords="1325,973,1544,1000"/>
+<area shape="rect" id="node13" href="$interface_typhoon_injection_by_runtime_argument.html" title="TyphoonInjectionByRuntime\lArgument" alt="" coords="1332,1025,1537,1066"/>
+<area shape="rect" id="node14" href="$interface_typhoon_injection_by_type.html" title="TyphoonInjectionByType" alt="" coords="1341,1091,1528,1117"/>
+<area shape="rect" id="node12" href="$interface_typhoon_injection_by_factory_reference.html" title="TyphoonInjectionByFactory\lReference" alt="" coords="1596,966,1800,1007"/>
+<area shape="rect" id="node20" href="$protocol_typhoon_collection-p.html" title="Protocol which should be confirmed by collection (NSArray, NSSet, NSOrderedSet are conforms) ..." alt="" coords="247,933,409,960"/>
+<area shape="rect" id="node22" href="$interface_typhoon_assembly.html" title="Provides a concise way to declare and encapsulate the architecture of an application in one or more c..." alt="" coords="543,731,683,757"/>
+<area shape="rect" id="node23" href="$interface_typhoon_assembly_selector_adviser.html" title="TyphoonAssemblySelectorAdviser" alt="" coords="492,781,735,808"/>
+<area shape="rect" id="node24" href="$interface_typhoon_component_factory.html" title="This is the base class for all component factories. " alt="" coords="511,208,715,235"/>
+<area shape="rect" id="node26" href="$interface_typhoon_config_post_processor.html" title="TyphoonConfigPostProcessor" alt="" coords="507,1152,720,1179"/>
+<area shape="rect" id="node27" href="$interface_typhoon_injected_object.html" title="TyphoonInjectedObject" alt="" coords="524,259,703,285"/>
+<area shape="rect" id="node28" href="$interface_typhoon_introspection_utils.html" title="TyphoonIntrospectionUtils" alt="" coords="516,309,711,336"/>
+<area shape="rect" id="node29" href="$interface_typhoon_matcher_definition_factory.html" title="TyphoonMatcherDefinition\lFactory" alt="" coords="516,361,711,402"/>
+<area shape="rect" id="node30" href="$interface_typhoon_n_s_u_r_l_type_converter.html" title="TyphoonNSURLTypeConverter" alt="" coords="504,984,723,1011"/>
+<area shape="rect" id="node31" href="$interface_typhoon_option_matcher.html" title="TyphoonOptionMatcher" alt="" coords="525,427,701,453"/>
+<area shape="rect" id="node32" href="$interface_typhoon_pass_through_type_converter.html" title="A &#39;type converter&#39; for NSString and NSMutableString. " alt="" coords="483,1035,744,1061"/>
+<area shape="rect" id="node33" href="$interface_typhoon_patch_object_factory.html" title="TyphoonPatchObjectFactory" alt="" coords="507,477,719,504"/>
+<area shape="rect" id="node34" href="$interface_typhoon_primitive_type_converter.html" title="TyphoonPrimitiveTypeConverter" alt="" coords="497,528,729,555"/>
+<area shape="rect" id="node35" href="$interface_typhoon_test_utils.html" title="Provides a utility for performing asynchronous integration tests with Typhoon. " alt="" coords="545,579,682,605"/>
+<area shape="rect" id="node36" href="$interface_typhoon_type_converter_registry.html" title="Registry of type converters, with special treatment for primitives. " alt="" coords="498,629,729,656"/>
+<area shape="rect" id="node37" href="$interface_typhoon_type_descriptor.html" title="TyphoonTypeDescriptor" alt="" coords="524,680,703,707"/>
+<area shape="rect" id="node38" href="$interface_typhoon_u_i_color_type_converter.html" title="A type converter for UIColor. " alt="" coords="501,933,725,960"/>
+<area shape="rect" id="node39" href="$interface_typhoon_view_controller_nib_resolver.html" title="Post&#45;Processor that completes the initializer of definitions with type UIViewController. " alt="" coords="517,1086,710,1127"/>
+<area shape="rect" id="node40" href="$interface_typhoon_weak_components_pool.html" title="TyphoonWeakComponentsPool" alt="" coords="502,1203,725,1229"/>
+<area shape="rect" id="node25" href="$interface_typhoon_block_component_factory.html" title="TyphoonBlockComponentFactory" alt="" coords="792,208,1031,235"/>
+<area shape="rect" id="node42" href="$protocol_typhoon_component_factory_post_processor-p.html" title="Allows for custom modification of a component factory&#39;s definitions. " alt="" coords="221,1086,435,1127"/>
+<area shape="rect" id="node43" href="$protocol_typhoon_components_pool-p.html" title="Methods from NSMutableDictionary which used in componentsPool. " alt="" coords="225,1203,431,1229"/>
+<area shape="rect" id="node44" href="$protocol_typhoon_dictionary-p.html" title="\&lt;TyphoonDictionary\&gt;" alt="" coords="247,1152,409,1179"/>
+<area shape="rect" id="node45" href="$protocol_typhoon_resource-p.html" title="\&lt;TyphoonResource\&gt;" alt="" coords="249,1253,407,1280"/>
+<area shape="rect" id="node47" href="$protocol_typhoon_type_converter-p.html" title="Declares a contract for converting configuration arguments to their required runtime type..." alt="" coords="231,1035,425,1061"/>
+<area shape="rect" id="node46" href="$interface_typhoon_bundle_resource.html" title="Represents a resource within the application bundle. " alt="" coords="522,1279,705,1305"/>
 </map>

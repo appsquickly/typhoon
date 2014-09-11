@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['matcher',['matcher',['../interface_typhoon_matcher_definition_factory.html#ae5be1239ab3206d7c0b72b01dcd772c4',1,'TyphoonMatcherDefinitionFactory']]]
+  ['lazy',['lazy',['../interface_typhoon_definition.html#a07f6703b4e1da5810678d367aab2ac67',1,'TyphoonDefinition']]],
+  ['loaded',['loaded',['../interface_typhoon_component_factory.html#a09b13d5d400d8ca043cc5f1105b8a744',1,'TyphoonComponentFactory']]]
 ];

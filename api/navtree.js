@@ -28,7 +28,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_n_s_array_09_typhoon_manual_enumeration_8h.html",
-"interface_typhoon_component_factory.html#a78a4e4fc448f359100ac16bea350f41a"
+"interface_typhoon_bundle_resource.html#aaa604438fada1faf9566dcc0b7b6182c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

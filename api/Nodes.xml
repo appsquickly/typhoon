@@ -1187,6 +1187,10 @@
             </Subnodes>
            </Node>
            <Node>
+            <Name>TyphoonInjectedObject</Name>
+            <Path>interface_typhoon_injected_object.html</Path>
+           </Node>
+           <Node>
             <Name>&lt;TyphoonInjection&gt;</Name>
             <Path>protocol_typhoon_injection-p.html</Path>
             <Subnodes>
@@ -1336,6 +1340,13 @@
            <Node>
             <Name>TyphoonInjectionByType</Name>
             <Path>interface_typhoon_injection_by_type.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>explicitClassOrProtocol</Name>
+              <Path>interface_typhoon_injection_by_type.html</Path>
+              <Anchor>a04bab4e3f6594b2c0ca8b5c66ebc75c0</Anchor>
+             </Node>
+            </Subnodes>
            </Node>
            <Node>
             <Name>TyphoonInjectionContext</Name>
@@ -2046,6 +2057,10 @@
               <Path>interface_typhoon_definition.html</Path>
              </Node>
              <Node>
+              <Name>TyphoonInjectedObject</Name>
+              <Path>interface_typhoon_injected_object.html</Path>
+             </Node>
+             <Node>
               <Name>TyphoonInjectionContext</Name>
               <Path>interface_typhoon_injection_context.html</Path>
              </Node>
@@ -2684,6 +2699,17 @@
             </Subnodes>
            </Node>
            <Node>
+            <Name>TyphoonAutoInjection.h</Name>
+            <Path>_typhoon_auto_injection_8h.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>InjectedProtocol</Name>
+              <Path>_typhoon_auto_injection_8h.html</Path>
+              <Anchor>ae73cb690bfababa9898655627175ba7d</Anchor>
+             </Node>
+            </Subnodes>
+           </Node>
+           <Node>
             <Name>TyphoonAutowire.h</Name>
             <Path>_typhoon_autowire_8h.html</Path>
             <Subnodes>
@@ -2886,8 +2912,22 @@
             <Path>_typhoon_definition_registerer_8h.html</Path>
            </Node>
            <Node>
+            <Name>TyphoonFactoryAutoInjectionPostProcessor.h</Name>
+            <Path>_typhoon_factory_auto_injection_post_processor_8h.html</Path>
+           </Node>
+           <Node>
             <Name>TyphoonInitialStoryboardResolver.h</Name>
             <Path>_typhoon_initial_storyboard_resolver_8h.html</Path>
+           </Node>
+           <Node>
+            <Name>TyphoonInjectedObject.h</Name>
+            <Path>_typhoon_injected_object_8h.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>TyphoonInjectedObject</Name>
+              <Path>interface_typhoon_injected_object.html</Path>
+             </Node>
+            </Subnodes>
            </Node>
            <Node>
             <Name>TyphoonInjection.h</Name>
@@ -3152,6 +3192,13 @@
              <Node>
               <Name>TyphoonInjectionByType</Name>
               <Path>interface_typhoon_injection_by_type.html</Path>
+              <Subnodes>
+               <Node>
+                <Name>explicitClassOrProtocol</Name>
+                <Path>interface_typhoon_injection_by_type.html</Path>
+                <Anchor>a04bab4e3f6594b2c0ca8b5c66ebc75c0</Anchor>
+               </Node>
+              </Subnodes>
              </Node>
             </Subnodes>
            </Node>
@@ -3257,6 +3304,11 @@
               <Anchor>ad1b29fdc7ed1b3fd1af061cd5fcad906</Anchor>
              </Node>
              <Node>
+              <Name>TyphoonInjectionWithType</Name>
+              <Path>_typhoon_injections_8h.html</Path>
+              <Anchor>a80807a37d7c44843d74518534db9a33e</Anchor>
+             </Node>
+             <Node>
               <Name>TyphoonMakeInjectionFromObjectIfNeeded</Name>
               <Path>_typhoon_injections_8h.html</Path>
               <Anchor>af37a21437d5df5ccb9dcb5ebe5dd28c5</Anchor>
@@ -3307,6 +3359,16 @@
                 <Anchor>a34d5f226d76d10c64534ab62b422e154</Anchor>
                </Node>
               </Subnodes>
+             </Node>
+             <Node>
+              <Name>IsClass</Name>
+              <Path>_typhoon_introspection_utils_8h.html</Path>
+              <Anchor>a56969a8f1f7a9a783d717dd87c67f5d3</Anchor>
+             </Node>
+             <Node>
+              <Name>IsProtocol</Name>
+              <Path>_typhoon_introspection_utils_8h.html</Path>
+              <Anchor>a15cce88ef63883f5f6b67918285aa27d</Anchor>
              </Node>
              <Node>
               <Name>TyphoonAutoWiredProperties</Name>

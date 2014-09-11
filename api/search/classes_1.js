@@ -16,6 +16,7 @@ var searchData=
   ['typhoondefinition',['TyphoonDefinition',['../interface_typhoon_definition.html',1,'']]],
   ['typhoondefinition_28option_29',['TyphoonDefinition(Option)',['../category_typhoon_definition_07_option_08.html',1,'']]],
   ['typhoondictionary_2dp',['TyphoonDictionary-p',['../protocol_typhoon_dictionary-p.html',1,'']]],
+  ['typhooninjectedobject',['TyphoonInjectedObject',['../interface_typhoon_injected_object.html',1,'']]],
   ['typhooninjection_2dp',['TyphoonInjection-p',['../protocol_typhoon_injection-p.html',1,'']]],
   ['typhooninjectionbycollection',['TyphoonInjectionByCollection',['../interface_typhoon_injection_by_collection.html',1,'']]],
   ['typhooninjectionbycomponentfactory',['TyphoonInjectionByComponentFactory',['../interface_typhoon_injection_by_component_factory.html',1,'']]],

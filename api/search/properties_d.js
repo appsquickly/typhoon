@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['textvalue',['textValue',['../interface_typhoon_injection_by_object_from_string.html#af92a94f94e7d7be0923cd2abc3bce1ca',1,'TyphoonInjectionByObjectFromString']]],
-  ['type',['type',['../interface_typhoon_abstract_injection.html#ac73bc0dd6ba0a7915d9d24c9920aee8a',1,'TyphoonAbstractInjection::type()'],['../interface_typhoon_definition.html#a1683dd7b003c512248c98fecb26d0985',1,'TyphoonDefinition::type()']]],
-  ['typebeingdescribed',['typeBeingDescribed',['../interface_typhoon_type_descriptor.html#ae088fe986245372f45dc39858059897c',1,'TyphoonTypeDescriptor']]]
+  ['scope',['scope',['../interface_typhoon_definition.html#aa4df6569a008392075c9689a73d13729',1,'TyphoonDefinition']]],
+  ['selector',['selector',['../interface_typhoon_method.html#a2df02aed8c27d293dad75d3a8c010705',1,'TyphoonMethod']]],
+  ['singletons',['singletons',['../interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785',1,'TyphoonComponentFactory']]],
+  ['structuretypename',['structureTypeName',['../interface_typhoon_type_descriptor.html#a51e40b95dc79d9b28a3351efdc5ea7f9',1,'TyphoonTypeDescriptor']]]
 ];
