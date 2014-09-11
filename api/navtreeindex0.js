@@ -86,8 +86,9 @@ var NAVTREEINDEX0 =
 "_typhoon_introspection_utils_8h.html":[2,0,49],
 "_typhoon_introspection_utils_8h.html#a0336424060fda82f8b5a05fe83909858":[2,0,49,3],
 "_typhoon_introspection_utils_8h.html#a15cce88ef63883f5f6b67918285aa27d":[2,0,49,2],
-"_typhoon_introspection_utils_8h.html#a4efc9426f64b77b419eea0204eedb57a":[2,0,49,4],
+"_typhoon_introspection_utils_8h.html#a4efc9426f64b77b419eea0204eedb57a":[2,0,49,5],
 "_typhoon_introspection_utils_8h.html#a56969a8f1f7a9a783d717dd87c67f5d3":[2,0,49,1],
+"_typhoon_introspection_utils_8h.html#ae1c98d6255f9a3c2bf6c19a46b25599e":[2,0,49,4],
 "_typhoon_json_style_configuration_8h.html":[2,0,51],
 "_typhoon_linker_category_bug_fix_8h.html":[2,0,52],
 "_typhoon_matcher_definition_factory_8h.html":[2,0,53],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "interface_typhoon_block_component_factory.html#a83d50fdf461c4f3341a2db7ce79e901c":[0,0,1,0],
 "interface_typhoon_block_component_factory.html#ac8917e7cdc0db417866674e3e6acea80":[0,0,1,3],
 "interface_typhoon_block_component_factory.html#acc698d2dbe0f8c54259989b1da2f45d5":[0,0,1,4],
-"interface_typhoon_bundle_resource.html":[0,2,0],
-"interface_typhoon_bundle_resource.html#a011c6f5a6fccb50b29bb8f33403b3076":[0,2,0,1]
+"interface_typhoon_bundle_resource.html":[0,2,0]
 };

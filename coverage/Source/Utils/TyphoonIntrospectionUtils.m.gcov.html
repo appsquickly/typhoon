@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">144</td>
             <td class="headerCovTableEntry">152</td>
-            <td class="headerCovTableEntryHi">94.7 %</td>
+            <td class="headerCovTableEntry">160</td>
+            <td class="headerCovTableEntryHi">95.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-09-12 02:53:47</td>
+            <td class="headerValue">2014-09-12 03:17:55</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -281,16 +281,26 @@
 <span class="lineNum">     223 </span>            :     }
 <span class="lineNum">     224 </span><span class="lineCov">          4 : }</span>
 <span class="lineNum">     225 </span>            : 
-<span class="lineNum">     226 </span><span class="lineCov">        501 : BOOL IsClass(id classOrProtocol)</span>
+<span class="lineNum">     226 </span><span class="lineCov">       6382 : Class TyphoonClassFromString(NSString *className)</span>
 <span class="lineNum">     227 </span>            : {
-<span class="lineNum">     228 </span><span class="lineCov">        501 :     return class_isMetaClass(object_getClass(classOrProtocol));</span>
-<span class="lineNum">     229 </span><span class="lineCov">        501 : }</span>
-<span class="lineNum">     230 </span>            : 
-<span class="lineNum">     231 </span><span class="lineCov">         46 : BOOL IsProtocol(id classOrProtocol)</span>
-<span class="lineNum">     232 </span>            : {
-<span class="lineNum">     233 </span><span class="lineCov">         46 :     return object_getClass(classOrProtocol) == object_getClass(@protocol(NSObject));</span>
-<span class="lineNum">     234 </span><span class="lineCov">         46 : }</span>
+<span class="lineNum">     228 </span><span class="lineCov">       6382 :     Class clazz = NSClassFromString(className);</span>
+<span class="lineNum">     229 </span><span class="lineCov">       6382 :     if (!clazz) {</span>
+<span class="lineNum">     230 </span><span class="lineCov">        139 :         NSString *defaultModuleName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@&quot;CFBundleName&quot;];</span>
+<span class="lineNum">     231 </span><span class="lineCov">        139 :         clazz = NSClassFromString([defaultModuleName stringByAppendingFormat:@&quot;.%@&quot;,className]);</span>
+<span class="lineNum">     232 </span><span class="lineCov">        139 :     }</span>
+<span class="lineNum">     233 </span><span class="lineCov">       6382 :     return clazz;</span>
+<span class="lineNum">     234 </span><span class="lineCov">       6382 : }</span>
 <span class="lineNum">     235 </span>            : 
+<span class="lineNum">     236 </span><span class="lineCov">        501 : BOOL IsClass(id classOrProtocol)</span>
+<span class="lineNum">     237 </span>            : {
+<span class="lineNum">     238 </span><span class="lineCov">        501 :     return class_isMetaClass(object_getClass(classOrProtocol));</span>
+<span class="lineNum">     239 </span><span class="lineCov">        501 : }</span>
+<span class="lineNum">     240 </span>            : 
+<span class="lineNum">     241 </span><span class="lineCov">         46 : BOOL IsProtocol(id classOrProtocol)</span>
+<span class="lineNum">     242 </span>            : {
+<span class="lineNum">     243 </span><span class="lineCov">         46 :     return object_getClass(classOrProtocol) == object_getClass(@protocol(NSObject));</span>
+<span class="lineNum">     244 </span><span class="lineCov">         46 : }</span>
+<span class="lineNum">     245 </span>            : 
 </pre>
       </td>
     </tr>

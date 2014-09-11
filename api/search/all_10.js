@@ -38,6 +38,7 @@ var searchData=
   ['typhoonbundleresource',['TyphoonBundleResource',['../interface_typhoon_bundle_resource.html',1,'']]],
   ['typhoonbundleresource_2eh',['TyphoonBundleResource.h',['../_typhoon_bundle_resource_8h.html',1,'']]],
   ['typhooncirculardependencyterminator_2eh',['TyphoonCircularDependencyTerminator.h',['../_typhoon_circular_dependency_terminator_8h.html',1,'']]],
+  ['typhoonclassfromstring',['TyphoonClassFromString',['../_typhoon_introspection_utils_8h.html#ae1c98d6255f9a3c2bf6c19a46b25599e',1,'TyphoonIntrospectionUtils.h']]],
   ['typhooncollaboratingassemblypropertyenumerator_2eh',['TyphoonCollaboratingAssemblyPropertyEnumerator.h',['../_typhoon_collaborating_assembly_property_enumerator_8h.html',1,'']]],
   ['typhooncollaboratingassemblyproxy_2eh',['TyphoonCollaboratingAssemblyProxy.h',['../_typhoon_collaborating_assembly_proxy_8h.html',1,'']]],
   ['typhooncollection_2dp',['TyphoonCollection-p',['../protocol_typhoon_collection-p.html',1,'']]],

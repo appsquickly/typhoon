@@ -374,6 +374,16 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>TyphoonClassFromString</Name>
+      <APILanguage>c</APILanguage>
+      <Type>func</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_introspection_utils_8h.html</Path>
+    <Anchor>ae1c98d6255f9a3c2bf6c19a46b25599e</Anchor>
+    <DeclaredIn>TyphoonIntrospectionUtils.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>TyphoonTypeStringFor</Name>
       <APILanguage>c</APILanguage>
       <Type>func</Type>
