@@ -49,15 +49,6 @@
 
 @end
 
-static Class TyphoonClassFromString(NSString *className)
-{
-    Class clazz = NSClassFromString(className);
-    if (!clazz) {
-        NSString *defaultModuleName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
-        clazz = NSClassFromString([defaultModuleName stringByAppendingFormat:@".%@",className]);
-    }
-    return clazz;
-}
 
 @implementation TyphoonTypeDescriptor {
     NSString *_typeCode;

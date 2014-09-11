@@ -8,6 +8,7 @@
 #import "TyphoonAssembly.h"
 #import "TyphoonBlockComponentFactory.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
+#import "TyphoonIntrospectionUtils.h"
 #import <objc/runtime.h>
 
 #if TARGET_OS_IPHONE
@@ -48,7 +49,7 @@
     if ([assemblyNames count] > 0) {
         NSMutableArray *assemblies = [[NSMutableArray alloc] initWithCapacity:[assemblyNames count]];
         for (NSString *assemblyName in assemblyNames) {
-            Class cls = NSClassFromString(assemblyName);
+            Class cls = TyphoonClassFromString(assemblyName);
             if (!cls) {
                 [NSException raise:NSInvalidArgumentException format:@"Can't resolve assembly for name %@", assemblyName];
             }

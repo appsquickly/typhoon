@@ -13,6 +13,7 @@
 #import "TyphoonPrimitiveTypeConverter.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonStringUtils.h"
+#import "TyphoonIntrospectionUtils.h"
 
 @implementation TyphoonPrimitiveTypeConverter
 
@@ -87,7 +88,7 @@
 
 - (Class)convertToClass:(NSString *)stringValue
 {
-    return NSClassFromString(stringValue);
+    return TyphoonClassFromString(stringValue);
 }
 
 - (SEL)convertToSelector:(NSString *)stringValue

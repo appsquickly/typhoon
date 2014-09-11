@@ -17,6 +17,7 @@
 #import "TyphoonPrimitiveTypeConverter.h"
 #import "TyphoonPassThroughTypeConverter.h"
 #import "TyphoonNSURLTypeConverter.h"
+#import "TyphoonIntrospectionUtils.h"
 
 
 @implementation TyphoonTypeConverterRegistry
@@ -127,8 +128,8 @@
 {
 #if TARGET_OS_IPHONE
     {
-        [self registerTypeConverter:[[NSClassFromString(@"TyphoonUIColorTypeConverter") alloc] init]];
-        [self registerTypeConverter:[[NSClassFromString(@"TyphoonBundledImageTypeConverter") alloc] init]];
+        [self registerTypeConverter:[[TyphoonClassFromString(@"TyphoonUIColorTypeConverter") alloc] init]];
+        [self registerTypeConverter:[[TyphoonClassFromString(@"TyphoonBundledImageTypeConverter") alloc] init]];
     }
 #else
     {

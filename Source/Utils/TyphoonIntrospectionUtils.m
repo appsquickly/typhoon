@@ -223,6 +223,16 @@ NSString *TyphoonTypeStringFor(id classOrProtocol) {
     }
 }
 
+Class TyphoonClassFromString(NSString *className)
+{
+    Class clazz = NSClassFromString(className);
+    if (!clazz) {
+        NSString *defaultModuleName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+        clazz = NSClassFromString([defaultModuleName stringByAppendingFormat:@".%@",className]);
+    }
+    return clazz;
+}
+
 BOOL IsClass(id classOrProtocol)
 {
     return class_isMetaClass(object_getClass(classOrProtocol));
