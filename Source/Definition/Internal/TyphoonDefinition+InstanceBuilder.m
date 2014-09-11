@@ -171,6 +171,13 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     [_injectedProperties addObject:property];
 }
 
+- (void)addInjectedPropertyIfNotExists:(id <TyphoonPropertyInjection>)property
+{
+    if (![_injectedProperties containsObject:property]) {
+        [_injectedProperties addObject:property];
+    }
+}
+
 - (BOOL)hasRuntimeArgumentInjections
 {
     __block BOOL hasInjections = NO;

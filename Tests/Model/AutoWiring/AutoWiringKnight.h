@@ -13,7 +13,9 @@
 
 #import <Foundation/Foundation.h>
 #import "Knight.h"
+#import "TyphoonAutoInjection.h"
 
 
 @interface AutoWiringKnight : Knight
+
 @end

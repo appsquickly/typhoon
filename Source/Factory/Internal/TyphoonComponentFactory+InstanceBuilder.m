@@ -30,6 +30,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonInjectionContext.h"
 #import "TyphoonPropertyInjection.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
+#import "TyphoonFactoryAutoInjectionPostProcessor.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
@@ -74,7 +75,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 {
     id result;
 
-    BOOL isClass = class_isMetaClass(object_getClass(instanceOrClass));
+    BOOL isClass = IsClass(instanceOrClass);
     Class instanceClass = isClass ? instanceOrClass : [instanceOrClass class];
 
     NSInvocation *invocation = [self invocationToInit:instanceClass with:initializer args:args];
@@ -240,12 +241,22 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
     if ([candidates count] == 0) {
 
+        //TODO: Remove it!
         SEL autoInjectedProperties = sel_registerName("typhoonAutoInjectedProperties");
-        if (class_isMetaClass(object_getClass(classOrProtocol)) && [classOrProtocol respondsToSelector:autoInjectedProperties]) {
+        if (IsClass(classOrProtocol) && [classOrProtocol respondsToSelector:autoInjectedProperties]) {
             LogTrace(@"Class %@ wants auto-wiring. . . registering.", NSStringFromClass(classOrProtocol));
             [self registerDefinition:[TyphoonDefinition withClass:classOrProtocol]];
             return [self definitionForType:classOrProtocol orNil:returnNilIfNotFound includeSubclasses:includeSubclasses];
         }
+
+        if (IsClass(classOrProtocol)) {
+            TyphoonDefinition *autoDefinition = [self autoInjectionDefinitionForClass:classOrProtocol];
+            if (autoDefinition) {
+                [self registerDefinition:autoDefinition];
+                return [self definitionForType:classOrProtocol orNil:returnNilIfNotFound includeSubclasses:includeSubclasses];
+            }
+        }
+
         if (returnNilIfNotFound) {
             return nil;
         } else {
@@ -256,10 +267,8 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         [NSException raise:NSInvalidArgumentException format:@"More than one component is defined satisfying type: '%@' : %@",
                                                              TyphoonTypeStringFor(classOrProtocol), candidates];
     }
-    return [candidates objectAtIndex:0];
+    return [candidates firstObject];
 }
-
-
 
 - (NSArray *)allDefinitionsForType:(id)classOrProtocol
 {
@@ -269,8 +278,8 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 - (NSArray *)allDefinitionsForType:(id)classOrProtocol includeSubclasses:(BOOL)includeSubclasses
 {
     NSMutableArray *results = [[NSMutableArray alloc] init];
-    BOOL isClass = class_isMetaClass(object_getClass(classOrProtocol));
-    BOOL isProtocol = object_getClass(classOrProtocol) == object_getClass(@protocol(NSObject));
+    BOOL isClass = IsClass(classOrProtocol);
+    BOOL isProtocol = IsProtocol(classOrProtocol);
     if (!isClass && !isProtocol) {
         [NSException raise:NSInternalInconsistencyException format:@"%@ is not class or protocol", classOrProtocol];
     }
@@ -290,6 +299,34 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         }
     }
     return results;
+}
+
+- (TyphoonDefinition *)autoInjectionDefinitionForClass:(Class)clazz
+{
+    TyphoonDefinition *result = nil;
+
+    TyphoonFactoryAutoInjectionPostProcessor *postProcessor = [self autoInjectionPostProcessor];
+    NSArray *properties = [postProcessor autoInjectedPropertiesForClass:clazz];
+    if (properties) {
+        result = [TyphoonDefinition withClass:clazz];
+        for (id propertyInjection in properties) {
+            [result addInjectedPropertyIfNotExists:propertyInjection];
+        }
+    }
+
+    return result;
+}
+
+- (TyphoonFactoryAutoInjectionPostProcessor *)autoInjectionPostProcessor
+{
+    TyphoonFactoryAutoInjectionPostProcessor *postProcessor = nil;
+    for (id<TyphoonComponentFactoryPostProcessor> item in _factoryPostProcessors) {
+        if ([item isMemberOfClass:[TyphoonFactoryAutoInjectionPostProcessor class]]) {
+            postProcessor = item;
+            break;
+        }
+    }
+    return postProcessor;
 }
 
 @end

@@ -10,4 +10,6 @@
 
 @interface TyphoonInjectionByType : TyphoonAbstractInjection
 
+@property (nonatomic, strong) id explicitClassOrProtocol;
+
 @end

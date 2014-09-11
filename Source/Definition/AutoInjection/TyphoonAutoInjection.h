@@ -13,7 +13,7 @@
 #import "TyphoonInjectedObject.h"
 
 //Injects property by definition matched by Protocol
-#define InjectedProtocol(prot) TyphoonInjectedObject<prot>*
+#define InjectedProtocol(aProtocol) TyphoonInjectedObject<aProtocol>*
 
 //Injects property by definition matched by Class
-#define InjectedClass(class) class<TyphoonInjectedProtocol>*
+#define InjectedClass(aClass) aClass<TyphoonInjectedProtocol>*

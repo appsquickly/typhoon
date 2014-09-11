@@ -21,6 +21,9 @@ NSSet *TyphoonAutoWiredProperties(Class clazz, NSSet *properties);
 
 NSString *TyphoonTypeStringFor(id classOrProtocol);
 
+BOOL IsClass(id classOrProtocol);
+
+BOOL IsProtocol(id classOrProtocol);
 
 @interface TyphoonIntrospectionUtils : NSObject
 

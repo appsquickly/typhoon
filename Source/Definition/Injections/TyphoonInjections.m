@@ -34,6 +34,13 @@ id TyphoonInjectionMatchedByType(void) {
     return [[TyphoonInjectionByType alloc] init];
 }
 
+id TyphoonInjectionWithType(id classOrProtocol)
+{
+    TyphoonInjectionByType *injection = [TyphoonInjectionByType new];
+    injection.explicitClassOrProtocol = classOrProtocol;
+    return injection;
+}
+
 id TyphoonInjectionWithObjectFromString(NSString *string) {
     return [[TyphoonInjectionByObjectFromString alloc] initWithString:string];
 }

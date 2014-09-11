@@ -12,6 +12,8 @@
 
 id TyphoonInjectionMatchedByType(void);
 
+id TyphoonInjectionWithType(id classOrProtocol);
+
 id TyphoonInjectionWithObjectFromString(NSString *string);
 
 id TyphoonInjectionWithCollectionAndType(id collection, Class requiredClass);

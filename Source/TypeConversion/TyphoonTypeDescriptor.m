@@ -13,6 +13,7 @@
 
 #import <objc/runtime.h>
 #import "TyphoonTypeDescriptor.h"
+#import "TyphoonIntrospectionUtils.h"
 
 @implementation NSDictionary (TyphoonPrimitiveType)
 
@@ -77,7 +78,7 @@ static Class TyphoonClassFromString(NSString *className)
 
 + (TyphoonTypeDescriptor *)descriptorWithClassOrProtocol:(id)classOrProtocol
 {
-    if (class_isMetaClass(object_getClass(classOrProtocol))) {
+    if (IsClass(classOrProtocol)) {
         return [self descriptorWithTypeCode:[NSString stringWithFormat:@"T@%@", NSStringFromClass(classOrProtocol)]];
     }
     return [self descriptorWithTypeCode:[NSString stringWithFormat:@"T@<%@>", NSStringFromProtocol(classOrProtocol)]];

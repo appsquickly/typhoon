@@ -41,4 +41,5 @@ typedef enum {
 - (void)addInjectedProperty:(id <TyphoonPropertyInjection>)property;
 
 
+- (void)addInjectedPropertyIfNotExists:(id <TyphoonPropertyInjection>)property;
 @end

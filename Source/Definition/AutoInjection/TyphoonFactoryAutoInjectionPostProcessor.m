@@ -27,12 +27,17 @@ static BOOL IsTyphoonAutoInjectionType(TyphoonTypeDescriptor *type);
 - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
 {
     for (TyphoonDefinition *definition in [factory registry]) {
-        Class clazz = definition.type;
-        if (clazz) {
-            NSArray *properties = [self autoInjectedPropertiesForClass:clazz];
-            for (id<TyphoonPropertyInjection> propertyInjection in properties) {
-                [definition addInjectedProperty:propertyInjection];
-            }
+        [self postProcessDefinition:definition];
+    }
+}
+
+- (void)postProcessDefinition:(TyphoonDefinition *)definition
+{
+    Class clazz = definition.type;
+    if (clazz) {
+        NSArray *properties = [self autoInjectedPropertiesForClass:clazz];
+        for (id<TyphoonPropertyInjection> propertyInjection in properties) {
+            [definition addInjectedPropertyIfNotExists:propertyInjection];
         }
     }
 }
@@ -44,7 +49,7 @@ static BOOL IsTyphoonAutoInjectionType(TyphoonTypeDescriptor *type);
     for (NSString *propertyName in allProperties) {
         TyphoonTypeDescriptor *type = [clazz typhoon_typeForPropertyWithName:propertyName];
         if (IsTyphoonAutoInjectionType(type)) {
-            id<TyphoonPropertyInjection> injection = TyphoonInjectionMatchedByType();
+            id<TyphoonPropertyInjection> injection = TyphoonInjectionWithType(TypeForInjectionFromType(type));
             [injection setPropertyName:propertyName];
             if (!injections) {
                 injections = [[NSMutableArray alloc] initWithCapacity:allProperties.count];
@@ -59,6 +64,15 @@ static BOOL IsTyphoonAutoInjectionType(TyphoonTypeDescriptor *type)
 {
     return protocol_isEqual(type.protocol, @protocol(TyphoonInjectedProtocol)) ||
         type.typeBeingDescribed == [TyphoonInjectedObject class];
+}
+
+static id TypeForInjectionFromType(TyphoonTypeDescriptor *type)
+{
+    if (protocol_isEqual(type.protocol, @protocol(TyphoonInjectedProtocol))) {
+        return type.typeBeingDescribed;
+    } else {
+        return type.protocol;
+    }
 }
 
 @end

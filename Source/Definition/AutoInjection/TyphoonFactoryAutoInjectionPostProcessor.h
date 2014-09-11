@@ -12,7 +12,13 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentFactoryPostProcessor.h"
 
+@class TyphoonDefinition;
+
 
 @interface TyphoonFactoryAutoInjectionPostProcessor : NSObject <TyphoonComponentFactoryPostProcessor>
+
+- (void)postProcessDefinition:(TyphoonDefinition *)definition;
+
+- (NSArray *)autoInjectedPropertiesForClass:(Class)clazz;
 
 @end

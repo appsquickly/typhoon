@@ -20,6 +20,7 @@
 {
     TyphoonInjectionByType *copied = [[TyphoonInjectionByType alloc] init];
     [self copyBasePropertiesTo:copied];
+    copied.explicitClassOrProtocol = self.explicitClassOrProtocol;
     return copied;
 }
 
@@ -30,7 +31,11 @@
 
 - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
-    id classOrProtocol = context.destinationType.classOrProtocol;
+    id classOrProtocol = self.explicitClassOrProtocol;
+
+    if (!classOrProtocol) {
+        classOrProtocol = context.destinationType.classOrProtocol;
+    }
     
     if (!classOrProtocol) {
         if (self.type == TyphoonInjectionTypeProperty) {
