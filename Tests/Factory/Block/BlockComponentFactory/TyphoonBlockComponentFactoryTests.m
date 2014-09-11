@@ -42,11 +42,17 @@
 
 @end
 
-@implementation TyphoonBlockComponentFactoryTests
+@implementation TyphoonBlockComponentFactoryTests {
+    NSUInteger internalProcessorsCount;
+}
 
 - (void)setUp
 {
+
     _componentFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[MiddleAgesAssembly assembly]];
+
+    internalProcessorsCount = [[_componentFactory factoryPostProcessors] count];
+
     TyphoonConfigPostProcessor *configurer = [[TyphoonConfigPostProcessor alloc] init];
     [configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
     [_componentFactory attachPostProcessor:configurer];
@@ -220,11 +226,8 @@
 
 - (void)test_post_processor_component_recognized
 {
-    NSUInteger internalProcessors = 2;
-    if ([_infrastructureComponentsFactory isKindOfClass:[TyphoonBlockComponentFactory class]]) {
-        internalProcessors += 1;
-    }
-    XCTAssertEqual([_infrastructureComponentsFactory.factoryPostProcessors count], 1 + internalProcessors)
+
+    XCTAssertEqual([_infrastructureComponentsFactory.factoryPostProcessors count], 1 + internalProcessorsCount)
         ; //Attached + internal processors
 }
 

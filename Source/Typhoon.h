@@ -25,6 +25,8 @@
 
 #import "TyphoonBlockComponentFactory.h"
 
+#import "TyphoonAutoInjection.h"
+
 #import "TyphoonAutowire.h"
 #import "TyphoonShorthand.h"
 

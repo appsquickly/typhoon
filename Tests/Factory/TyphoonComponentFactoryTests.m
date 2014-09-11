@@ -33,11 +33,13 @@ static NSString *const DEFAULT_QUEST = @"quest";
 @implementation TyphoonComponentFactoryTests
 {
     TyphoonComponentFactory *_componentFactory;
+    NSUInteger internalPostProcessorsCount;
 }
 
 - (void)setUp
 {
     _componentFactory = [[TyphoonComponentFactory alloc] init];
+    internalPostProcessorsCount = [[_componentFactory factoryPostProcessors] count];
 }
 
 /* ====================================================================================================================================== */
@@ -177,7 +179,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 {
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorStubImpl class]]];
     XCTAssertEqual([[_componentFactory registry] count], 0);
-    XCTAssertEqual([[_componentFactory factoryPostProcessors] count], 3); //Attached + internal processors
+    XCTAssertEqual([[_componentFactory factoryPostProcessors] count], internalPostProcessorsCount + 1); //Attached + internal processors
 }
 
 - (void)test_post_processors_applied
@@ -188,7 +190,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     [_componentFactory load];
 
-    XCTAssertEqual([[_componentFactory factoryPostProcessors] count], 4); //Attached + internal processors
+    XCTAssertEqual([[_componentFactory factoryPostProcessors] count], internalPostProcessorsCount + 2); //Attached + internal processors
     for (TyphoonComponentFactoryPostProcessorStubImpl *stub in _componentFactory.factoryPostProcessors) {
         if ([stub isKindOfClass:[TyphoonComponentFactoryPostProcessorStubImpl class]]) {
             XCTAssertTrue(stub.postProcessingCalled);

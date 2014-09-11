@@ -230,6 +230,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     for (id <TyphoonPropertyInjection> property in _injectedProperties) {
         [copy addInjectedProperty:[property copyWithZone:NSDefaultMallocZone()]];
     }
+    copy->_injectedMethods = [_injectedMethods copy];
     return copy;
 }
 

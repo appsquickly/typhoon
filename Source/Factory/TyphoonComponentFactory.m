@@ -23,6 +23,7 @@
 #import "TyphoonFactoryPropertyInjectionPostProcessor.h"
 #import "TyphoonComponentPostProcessor.h"
 #import "TyphoonWeakComponentsPool.h"
+#import "TyphoonFactoryAutoInjectionPostProcessor.h"
 
 typedef id(^TyphoonInstanceBuildBlock)(TyphoonDefinition *definition);
 
@@ -59,9 +60,9 @@ static TyphoonComponentFactory *defaultFactory;
         _stack = [TyphoonCallStack stack];
         _factoryPostProcessors = [[NSMutableArray alloc] init];
         _componentPostProcessors = [[NSMutableArray alloc] init];
-        [self attachPostProcessor:[[TyphoonParentReferenceHydratingPostProcessor alloc] init]];
-        [self attachPostProcessor:[[TyphoonFactoryPropertyInjectionPostProcessor alloc] init]];
-
+        [self attachPostProcessor:[TyphoonParentReferenceHydratingPostProcessor new]];
+        [self attachPostProcessor:[TyphoonFactoryPropertyInjectionPostProcessor new]];
+        [self attachPostProcessor:[TyphoonFactoryAutoInjectionPostProcessor new]];
     }
     return self;
 }
