@@ -14,7 +14,6 @@
 #import "ExceptionTestAssembly.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonMethod.h"
-#import "TyphoonShorthand.h"
 #import "TyphoonInjections.h"
 
 @implementation ExceptionTestAssembly

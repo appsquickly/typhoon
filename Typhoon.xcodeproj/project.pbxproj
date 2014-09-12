@@ -12,6 +12,7 @@
 		2DBA139F1F94E9222E18B764 /* TyphoonFactoryAutoInjectionPostProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1C5E0FDB03006A2223F8 /* TyphoonFactoryAutoInjectionPostProcessor.m */; };
 		2DBA1413585CE14C74CC72FF /* TyphoonInjections.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1FC6F594C49C7D8261A6 /* TyphoonInjections.m */; };
 		2DBA14D07CBAF423D1C4BEA4 /* TyphoonStartup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA184AB89E270A062809E3 /* TyphoonStartup.m */; };
+		2DBA15F7AF1B9724AD19E82C /* AutoWiringKnight.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1C60F38237F082D0E64A /* AutoWiringKnight.m */; };
 		2DBA1724829B45E5C6ADD4A5 /* TyphoonAutoInjectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA167E9C95EF03A56681BF /* TyphoonAutoInjectionTests.m */; };
 		2DBA1830DDD6B82672A486FA /* TyphoonStartup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA184AB89E270A062809E3 /* TyphoonStartup.m */; };
 		2DBA188860E60C45AAC409CF /* TyphoonAutoInjectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA167E9C95EF03A56681BF /* TyphoonAutoInjectionTests.m */; };
@@ -20,6 +21,7 @@
 		2DBA1A73D490C68DEE37DB24 /* TyphoonNemoTestAssemblies.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA10314E7114955C0AB31E /* TyphoonNemoTestAssemblies.m */; };
 		2DBA1AA360C59D1F3360E7F6 /* TyphoonFactoryAutoInjectionPostProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1C5E0FDB03006A2223F8 /* TyphoonFactoryAutoInjectionPostProcessor.m */; };
 		2DBA1BD2F98EAF82D31B9876 /* TyphoonInjectedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1899426943444774AC27 /* TyphoonInjectedObject.m */; };
+		2DBA1DD74E3C1AD545A84C92 /* AutoWiringKnight.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1C60F38237F082D0E64A /* AutoWiringKnight.m */; };
 		2DBA1E7C48AF6D7979721678 /* TyphoonAssemblyExtendTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1FCE33E18E1D7C616156 /* TyphoonAssemblyExtendTests.m */; };
 		2DBA1EB8464302D9A05BCDCE /* TyphoonAutoInjectionAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA198A0174DBC7F1A60761 /* TyphoonAutoInjectionAssembly.m */; };
 		2DBA1EE523691A3F00392B7A /* TyphoonAssemblyExtendTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1FCE33E18E1D7C616156 /* TyphoonAssemblyExtendTests.m */; };
@@ -154,8 +156,6 @@
 		6B0771371936FEA80083714E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07701E1936F63A0083714E /* main.m */; };
 		6B0771381936FEA80083714E /* TyphoonAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770221936F63A0083714E /* TyphoonAppDelegate.m */; };
 		6B0771391936FEA80083714E /* TyphoonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770241936F63A0083714E /* TyphoonViewController.m */; };
-		6B07713A1936FEA80083714E /* AutoWiringKnight.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07702D1936F63A0083714E /* AutoWiringKnight.m */; };
-		6B07713B1936FEA80083714E /* AutoWiringSubClassedKnight.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07702F1936F63A0083714E /* AutoWiringSubClassedKnight.m */; };
 		6B07713C1936FEA80083714E /* CampaignQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770311936F63A0083714E /* CampaignQuest.m */; };
 		6B07713D1936FEA80083714E /* CavalryMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770331936F63A0083714E /* CavalryMan.m */; };
 		6B07713E1936FEA80083714E /* Champion.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770351936F63A0083714E /* Champion.m */; };
@@ -334,8 +334,6 @@
 		6B07742C1937839D0083714E /* TyphoonComponentFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07700F1936F63A0083714E /* TyphoonComponentFactoryTests.m */; };
 		6B07742D1937839D0083714E /* TyphoonScopeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770101936F63A0083714E /* TyphoonScopeTests.m */; };
 		6B07742E1937839D0083714E /* TyphoonWeakComponentsPoolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770121936F63A0083714E /* TyphoonWeakComponentsPoolTests.m */; };
-		6B07742F1937839D0083714E /* AutoWiringKnight.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07702D1936F63A0083714E /* AutoWiringKnight.m */; };
-		6B0774301937839D0083714E /* AutoWiringSubClassedKnight.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07702F1936F63A0083714E /* AutoWiringSubClassedKnight.m */; };
 		6B0774311937839D0083714E /* CampaignQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770311936F63A0083714E /* CampaignQuest.m */; };
 		6B0774321937839D0083714E /* CavalryMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770331936F63A0083714E /* CavalryMan.m */; };
 		6B0774331937839D0083714E /* Champion.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770351936F63A0083714E /* Champion.m */; };
@@ -446,6 +444,7 @@
 		2DBA1B7BFD38DAF1A508B22C /* TyphoonStartup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonStartup.h; sourceTree = "<group>"; };
 		2DBA1BF807CE54BB4F51087E /* TyphoonFactoryAutoInjectionPostProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonFactoryAutoInjectionPostProcessor.h; sourceTree = "<group>"; };
 		2DBA1C5E0FDB03006A2223F8 /* TyphoonFactoryAutoInjectionPostProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonFactoryAutoInjectionPostProcessor.m; sourceTree = "<group>"; };
+		2DBA1C60F38237F082D0E64A /* AutoWiringKnight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoWiringKnight.m; sourceTree = "<group>"; };
 		2DBA1E968487D687338D5E0F /* TyphoonNemoTestAssemblies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonNemoTestAssemblies.h; sourceTree = "<group>"; };
 		2DBA1F19AACBE84474E823C4 /* TyphoonInitialStoryboardResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonInitialStoryboardResolver.m; sourceTree = "<group>"; };
 		2DBA1FC6F594C49C7D8261A6 /* TyphoonInjections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonInjections.m; sourceTree = "<group>"; };
@@ -603,8 +602,6 @@
 		6B076F711936F63A0083714E /* TyphoonTypeDescriptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonTypeDescriptor.h; sourceTree = "<group>"; };
 		6B076F721936F63A0083714E /* TyphoonTypeDescriptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TyphoonTypeDescriptor.m; sourceTree = "<group>"; };
 		6B076F731936F63A0083714E /* Typhoon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Typhoon.h; sourceTree = "<group>"; };
-		6B076F741936F63A0083714E /* TyphoonAutowire.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonAutowire.h; sourceTree = "<group>"; };
-		6B076F751936F63A0083714E /* TyphoonShorthand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonShorthand.h; sourceTree = "<group>"; };
 		6B076F771936F63A0083714E /* NSArray+TyphoonManualEnumeration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+TyphoonManualEnumeration.h"; sourceTree = "<group>"; };
 		6B076F781936F63A0083714E /* NSArray+TyphoonManualEnumeration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TyphoonManualEnumeration.m"; sourceTree = "<group>"; };
 		6B076F791936F63A0083714E /* NSObject+DeallocNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+DeallocNotification.h"; sourceTree = "<group>"; };
@@ -709,9 +706,6 @@
 		6B0770271936F63A0083714E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B0770281936F63A0083714E /* Typhoon-iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Typhoon-iOSTests-Info.plist"; sourceTree = "<group>"; };
 		6B07702C1936F63A0083714E /* AutoWiringKnight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoWiringKnight.h; sourceTree = "<group>"; };
-		6B07702D1936F63A0083714E /* AutoWiringKnight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoWiringKnight.m; sourceTree = "<group>"; };
-		6B07702E1936F63A0083714E /* AutoWiringSubClassedKnight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoWiringSubClassedKnight.h; sourceTree = "<group>"; };
-		6B07702F1936F63A0083714E /* AutoWiringSubClassedKnight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoWiringSubClassedKnight.m; sourceTree = "<group>"; };
 		6B0770301936F63A0083714E /* CampaignQuest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CampaignQuest.h; sourceTree = "<group>"; };
 		6B0770311936F63A0083714E /* CampaignQuest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CampaignQuest.m; sourceTree = "<group>"; };
 		6B0770321936F63A0083714E /* CavalryMan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CavalryMan.h; sourceTree = "<group>"; };
@@ -952,8 +946,6 @@
 				6B076F5D1936F63A0083714E /* Test */,
 				6B076F661936F63A0083714E /* TypeConversion */,
 				6B076F731936F63A0083714E /* Typhoon.h */,
-				6B076F741936F63A0083714E /* TyphoonAutowire.h */,
-				6B076F751936F63A0083714E /* TyphoonShorthand.h */,
 				6B076F761936F63A0083714E /* Utils */,
 				6B076F8F1936F63A0083714E /* Vendor */,
 			);
@@ -1655,9 +1647,7 @@
 			isa = PBXGroup;
 			children = (
 				6B07702C1936F63A0083714E /* AutoWiringKnight.h */,
-				6B07702D1936F63A0083714E /* AutoWiringKnight.m */,
-				6B07702E1936F63A0083714E /* AutoWiringSubClassedKnight.h */,
-				6B07702F1936F63A0083714E /* AutoWiringSubClassedKnight.m */,
+				2DBA1C60F38237F082D0E64A /* AutoWiringKnight.m */,
 			);
 			path = AutoWiring;
 			sourceTree = "<group>";
@@ -2167,8 +2157,6 @@
 				6B0771371936FEA80083714E /* main.m in Sources */,
 				6B0771381936FEA80083714E /* TyphoonAppDelegate.m in Sources */,
 				6B0771391936FEA80083714E /* TyphoonViewController.m in Sources */,
-				6B07713A1936FEA80083714E /* AutoWiringKnight.m in Sources */,
-				6B07713B1936FEA80083714E /* AutoWiringSubClassedKnight.m in Sources */,
 				6B07713C1936FEA80083714E /* CampaignQuest.m in Sources */,
 				6B07713D1936FEA80083714E /* CavalryMan.m in Sources */,
 				6B07713E1936FEA80083714E /* Champion.m in Sources */,
@@ -2217,6 +2205,7 @@
 				2DBA1FC0E15A415D0297317B /* AutoInjectionKnight.m in Sources */,
 				2DBA188860E60C45AAC409CF /* TyphoonAutoInjectionTests.m in Sources */,
 				2DBA1EB8464302D9A05BCDCE /* TyphoonAutoInjectionAssembly.m in Sources */,
+				2DBA1DD74E3C1AD545A84C92 /* AutoWiringKnight.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2353,8 +2342,6 @@
 				6B07742C1937839D0083714E /* TyphoonComponentFactoryTests.m in Sources */,
 				6B07742D1937839D0083714E /* TyphoonScopeTests.m in Sources */,
 				6B07742E1937839D0083714E /* TyphoonWeakComponentsPoolTests.m in Sources */,
-				6B07742F1937839D0083714E /* AutoWiringKnight.m in Sources */,
-				6B0774301937839D0083714E /* AutoWiringSubClassedKnight.m in Sources */,
 				6B0774311937839D0083714E /* CampaignQuest.m in Sources */,
 				6B0774321937839D0083714E /* CavalryMan.m in Sources */,
 				6B0774331937839D0083714E /* Champion.m in Sources */,
@@ -2398,6 +2385,7 @@
 				2DBA12F920B6F629203ABFB3 /* AutoInjectionKnight.m in Sources */,
 				2DBA1724829B45E5C6ADD4A5 /* TyphoonAutoInjectionTests.m in Sources */,
 				2DBA19D13EB2E1F96130F61A /* TyphoonAutoInjectionAssembly.m in Sources */,
+				2DBA15F7AF1B9724AD19E82C /* AutoWiringKnight.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

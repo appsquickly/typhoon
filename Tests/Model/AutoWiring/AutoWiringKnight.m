@@ -16,6 +16,6 @@
 
 
 @implementation AutoWiringKnight
-autoWire(@selector(quest))
+
 
 @end

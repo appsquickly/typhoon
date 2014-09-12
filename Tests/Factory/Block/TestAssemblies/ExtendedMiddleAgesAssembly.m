@@ -15,7 +15,6 @@
 #import "TyphoonDefinition+Infrastructure.h"
 #import "CampaignQuest.h"
 #import "TyphoonInjections.h"
-#import "TyphoonShorthand.h"
 
 @implementation ExtendedMiddleAgesAssembly
 

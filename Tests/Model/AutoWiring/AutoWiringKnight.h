@@ -18,4 +18,6 @@
 
 @interface AutoWiringKnight : Knight
 
+@property (nonatomic, strong) InjectedProtocol(Quest) quest;
+
 @end

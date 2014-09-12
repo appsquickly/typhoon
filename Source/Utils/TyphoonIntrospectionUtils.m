@@ -202,17 +202,6 @@
 
 @end
 
-NSSet *TyphoonAutoWiredProperties(Class clazz, NSSet *properties) {
-    Class superClass = class_getSuperclass([clazz class]);
-    SEL autoInjectedProperties = sel_registerName("typhoonAutoInjectedProperties");
-    if ([superClass respondsToSelector:autoInjectedProperties]) {
-        NSMutableSet *superAutoWired = [objc_msgSend(superClass, autoInjectedProperties) mutableCopy];
-        [superAutoWired unionSet:properties];
-        return superAutoWired;
-    }
-    return properties;
-}
-
 
 NSString *TyphoonTypeStringFor(id classOrProtocol) {
     if (IsClass(classOrProtocol)) {

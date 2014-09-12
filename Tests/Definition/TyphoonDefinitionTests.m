@@ -15,7 +15,6 @@
 #import "Knight.h"
 #import "Typhoon.h"
 #import "AutoWiringKnight.h"
-#import "AutoWiringSubClassedKnight.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonReferenceDefinition.h"
 #import "TyphoonInjectionByObjectInstance.h"
@@ -172,22 +171,6 @@
     }];
 
     XCTAssertEqual([child scope], (TyphoonScopePrototype));
-}
-
-
-/* ====================================================================================================================================== */
-#pragma mark - Auto-wiring
-
-- (void)test_autoWired_properties
-{
-    NSSet *autoWired = objc_msgSend([AutoWiringKnight class], @selector(typhoonAutoInjectedProperties));
-    XCTAssertEqual([autoWired count], (1));
-    XCTAssertTrue([autoWired containsObject:@"quest"]);
-
-    autoWired = objc_msgSend([AutoWiringSubClassedKnight class], @selector(typhoonAutoInjectedProperties));
-    XCTAssertEqual([autoWired count], (2));
-    XCTAssertTrue([autoWired containsObject:@"quest"]);
-    XCTAssertTrue([autoWired containsObject:@"foobar"]);
 }
 
 

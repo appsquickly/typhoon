@@ -241,14 +241,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
     if ([candidates count] == 0) {
 
-        //TODO: Remove it!
-        SEL autoInjectedProperties = sel_registerName("typhoonAutoInjectedProperties");
-        if (IsClass(classOrProtocol) && [classOrProtocol respondsToSelector:autoInjectedProperties]) {
-            LogTrace(@"Class %@ wants auto-wiring. . . registering.", NSStringFromClass(classOrProtocol));
-            [self registerDefinition:[TyphoonDefinition withClass:classOrProtocol]];
-            return [self definitionForType:classOrProtocol orNil:returnNilIfNotFound includeSubclasses:includeSubclasses];
-        }
-
+        //Auto registering definition with AutoInjection
         if (IsClass(classOrProtocol)) {
             TyphoonDefinition *autoDefinition = [self autoInjectionDefinitionForClass:classOrProtocol];
             if (autoDefinition) {

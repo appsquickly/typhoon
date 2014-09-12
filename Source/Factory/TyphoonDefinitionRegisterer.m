@@ -55,8 +55,6 @@
         [NSException raise:NSInvalidArgumentException format:@"Key '%@' is already registered.", _definition.key];
     }
 
-    [self injectAutowiredPropertiesIfNeeded];
-
     [self registerDefinitionWithFactory];
 }
 
@@ -71,17 +69,6 @@
 - (BOOL)definitionAlreadyRegistered
 {
     return [_componentFactory definitionForKey:_definition.key] != nil;
-}
-
-- (void)injectAutowiredPropertiesIfNeeded
-{
-    SEL autoInjectedProperties = sel_registerName("typhoonAutoInjectedProperties");
-    if ([_definition.type respondsToSelector:autoInjectedProperties]) {
-        id autoWiredProperties = objc_msgSend(_definition.type, autoInjectedProperties);
-        for (NSString *anAutoWiredProperty in autoWiredProperties) {
-            [_definition injectProperty:NSSelectorFromString(anAutoWiredProperty)];
-        }
-    }
 }
 
 - (void)registerDefinitionWithFactory

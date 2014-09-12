@@ -17,8 +17,6 @@
 
 @class TyphoonTypeDescriptor;
 
-NSSet *TyphoonAutoWiredProperties(Class clazz, NSSet *properties);
-
 NSString *TyphoonTypeStringFor(id classOrProtocol);
 
 Class TyphoonClassFromString(NSString *className);

@@ -24,7 +24,6 @@
 
     TyphoonInjectionWithReference(nil);
     TyphoonConfig(@"");
-    TyphoonAutoWiredProperties(nil, nil);
 
     // Override point for customization after application launch.
     return YES;
