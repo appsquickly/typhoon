@@ -154,10 +154,10 @@
 
 - (void)test_converts_to_NSUInteger
 {
-    NSUInteger converted = [_typeConverter convertToUnsignedLongLong:@"123"];
+    NSUInteger converted = (NSUInteger)[_typeConverter convertToUnsignedLongLong:@"123"];
     XCTAssertEqual(converted, 123);
 
-    converted = [_typeConverter convertToUnsignedLongLong:@"zzz"];
+    converted = (NSUInteger)[_typeConverter convertToUnsignedLongLong:@"zzz"];
     XCTAssertEqual(converted, 0);
 }
 

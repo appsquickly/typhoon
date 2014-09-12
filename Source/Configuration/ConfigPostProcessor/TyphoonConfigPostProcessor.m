@@ -153,47 +153,6 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 
 @end
 
-
-@implementation TyphoonConfigPostProcessor (Deprecated)
-
-+ (TyphoonConfigPostProcessor *)configurerWithResource:(id <TyphoonResource>)resource
-{
-    return [self configurerWithResourceList:@[resource]];
-}
-
-+ (TyphoonConfigPostProcessor *)configurerWithResources:(id <TyphoonResource>)first, ...
-{
-    NSMutableArray *resources = [[NSMutableArray alloc] init];
-    [resources addObject:first];
-
-    va_list resource_list;
-    va_start(resource_list, first);
-    id <TyphoonResource> resource;
-    while ((resource = va_arg( resource_list, id < TyphoonResource >))) {
-        [resources addObject:resource];
-    }
-    va_end(resource_list);
-
-    return [self configurerWithResourceList:resources];
-}
-
-+ (TyphoonConfigPostProcessor *)configurerWithResourceList:(NSArray *)resources
-{
-    TyphoonConfigPostProcessor *configurer = [TyphoonConfigPostProcessor configurer];
-    for (id <TyphoonResource> resource in resources) {
-        [configurer useResource:resource withExtension:@"properties"];
-    }
-    return configurer;
-}
-
-- (void)usePropertyStyleResource:(id <TyphoonResource>)resource
-{
-    [self useResource:resource withExtension:@"properties"];
-}
-
-@end
-
-
 id TyphoonConfig(NSString *configKey)
 {
     return TyphoonInjectionWithConfigKey(configKey);

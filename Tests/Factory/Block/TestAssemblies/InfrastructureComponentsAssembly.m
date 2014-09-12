@@ -20,10 +20,14 @@
 
 - (id)propertyPlaceHolderConfigurer
 {
-    return [TyphoonDefinition configDefinitionWithResources:@[
-        [TyphoonBundleResource withName:@"SomeProperties.properties"],
-        [TyphoonBundleResource withName:@"SomeOtherProperties.properties"]
-    ]];
+    return [TyphoonDefinition withClass:[TyphoonConfigPostProcessor class]  configuration:^(TyphoonDefinition *definition) {
+        [definition injectMethod:@selector(useResourceWithName:) parameters:^(TyphoonMethod *method) {
+            [method injectParameterWith:@"SomeProperties.properties"];
+        }];
+        [definition injectMethod:@selector(useResourceWithName:) parameters:^(TyphoonMethod *method) {
+            [method injectParameterWith:@"SomeOtherProperties.properties"];
+        }];
+    }];
 }
 
 - (id)knight

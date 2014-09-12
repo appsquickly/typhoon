@@ -28,18 +28,23 @@
 + (instancetype)withClass:(Class)clazz key:(NSString *)key;
 
 /**
- Factory method for a TyphoonConfigPostProcessor.
- @param resource The resource to load.
- @return a definition.
- */
-+ (instancetype)configDefinitionWithResource:(id <TyphoonResource>)resource;
+Factory method for a TyphoonConfigPostProcessor.
+@param fileName The config filename to load. File should be placed in main bundle
+@return a definition.
+*/
++ (instancetype)configDefinitionWithName:(NSString *)fileName;
 
 /**
- Factory method for a TyphoonConfigPostProcessor.
- @param resources An array of TyphoonResource objects.
- @return a definition.
- */
-+ (instancetype)configDefinitionWithResources:(NSArray *)resources;
+Factory method for a TyphoonConfigPostProcessor.
+@param filePath The path to config file to load.
+@return a definition.
+*/
+
++ (instancetype)configDefinitionWithPath:(NSString *)filePath;
+
+
++ (instancetype)configDefinitionWithResource:(id <TyphoonResource>)resource __attribute__((unavailable("Use configDefinitionWithName instead")));
++ (instancetype)configDefinitionWithResources:(NSArray *)array __attribute__((unavailable("Use configDefinitionWithName instead")));
 
 - (id)initWithClass:(Class)clazz key:(NSString *)key;
 

@@ -99,7 +99,7 @@
     XCTAssertEqualObjects([assembly definitionMatchedByCustomInjectionsMatcherFromOption:@"optionItSelf" withString:@"123"],@"optionItSelf");
     XCTAssertEqualObjects([assembly definitionMatchedByCustomInjectionsMatcherFromOption:@"customString" withString:@"123"],@"123");
     XCTAssertEqualObjects([assembly definitionMatchedByCustomInjectionsMatcherFromOption:@"defaultString" withString:nil],@"Typhoon");
-    XCTAssertEqualObjects([assembly definitionMatchedByCustomInjectionsMatcherFromOption:[NSNull null] withString:nil],nil);
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomInjectionsMatcherFromOption:(NSString *)[NSNull null] withString:nil],nil);
     XCTAssertEqualObjects([assembly definitionMatchedByCustomInjectionsMatcherFromOption:nil withString:nil],[NSNull null]);
 }
 

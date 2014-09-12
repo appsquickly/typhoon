@@ -42,17 +42,5 @@
 
 @end
 
-@interface TyphoonConfigPostProcessor (Deprecated)
-
-+ (TyphoonConfigPostProcessor *)configurerWithResource:(id <TyphoonResource>)resource DEPRECATED_MSG_ATTRIBUTE("check useResource... methods");
-
-+ (TyphoonConfigPostProcessor *)configurerWithResources:(id <TyphoonResource>)first, ...NS_REQUIRES_NIL_TERMINATION DEPRECATED_MSG_ATTRIBUTE("check useResource... methods");
-
-+ (TyphoonConfigPostProcessor *)configurerWithResourceList:(NSArray *)resources DEPRECATED_MSG_ATTRIBUTE("check useResource... methods");
-
-- (void)usePropertyStyleResource:(id<TyphoonResource>)resource DEPRECATED_MSG_ATTRIBUTE("check useResource... methods");
-
-@end
-
 id TyphoonConfig(NSString *configKey);
 

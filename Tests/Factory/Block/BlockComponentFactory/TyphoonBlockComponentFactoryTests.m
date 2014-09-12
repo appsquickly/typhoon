@@ -54,7 +54,7 @@
     internalProcessorsCount = [[_componentFactory factoryPostProcessors] count];
 
     TyphoonConfigPostProcessor *configurer = [[TyphoonConfigPostProcessor alloc] init];
-    [configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
+    [configurer useResourceWithName:@"SomeProperties.properties"];
     [_componentFactory attachPostProcessor:configurer];
 
     _exceptionTestFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[ExceptionTestAssembly assembly]];
@@ -211,7 +211,7 @@
 {
     TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[PropertyPlaceholderAssembly assembly]];
     TyphoonConfigPostProcessor *configurer = [TyphoonConfigPostProcessor configurer];
-    [configurer usePropertyStyleResource:[TyphoonBundleResource withName:@"SomeProperties.properties"]];
+    [configurer useResourceWithName:@"SomeProperties.properties"];
     [factory attachPostProcessor:configurer];
 
     Knight *knight = [factory componentForKey:@"knight"];

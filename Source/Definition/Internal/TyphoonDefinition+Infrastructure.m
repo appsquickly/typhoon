@@ -42,23 +42,23 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     return [[TyphoonDefinition alloc] initWithClass:clazz key:key];
 }
 
-
-+ (instancetype)configDefinitionWithResource:(id <TyphoonResource>)resource
-{
-    return [self configDefinitionWithResources:@[resource]];
-}
-
-+ (instancetype)configDefinitionWithResources:(NSArray *)resources
++ (instancetype)configDefinitionWithName:(NSString *)fileName
 {
     return [self withClass:[TyphoonConfigPostProcessor class] configuration:^(TyphoonDefinition *definition) {
-        [definition useInitializer:@selector(configurerWithResourceList:) parameters:^(TyphoonMethod *initializer) {
-            [initializer injectParameterWith:resources];
+        [definition injectMethod:@selector(useResourceWithName:) parameters:^(TyphoonMethod *method) {
+            [method injectParameterWith:fileName];
         }];
-        NSString *resourceDescription = @"";
-        if ([resources count] > 0) {
-            resourceDescription = [resources[0] description];
-        }
-        definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), resourceDescription];
+        definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), fileName];
+    }];
+}
+
++ (instancetype)configDefinitionWithPath:(NSString *)filePath
+{
+    return [self withClass:[TyphoonConfigPostProcessor class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectMethod:@selector(useResourceAtPath:) parameters:^(TyphoonMethod *method) {
+            [method injectParameterWith:filePath];
+        }];
+        definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), [filePath lastPathComponent]];
     }];
 }
 
