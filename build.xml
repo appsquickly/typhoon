@@ -53,6 +53,9 @@
     <target name="no-fail-tests">
         <property name="no-fail-tests" value="yes"/>
     </target>
+
+    <target name="coverage-report" depends="--coverage.report"/>
+
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ END PUBLIC TARGETS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
 
@@ -101,7 +104,7 @@
     <target name="--test.ios">
         <echo file="${temp.dir}/build.and.test.sh">
             #!/bin/bash
-            xcodebuild -project ${module.name}.xcodeproj/ -scheme 'Typhoon-iOSTests' -configuration Debug -destination OS=7.1,name=iPad test
+            xcodebuild test -project ${module.name}.xcodeproj/ -scheme 'Typhoon-iOSTests' -configuration Debug -destination 'platform=iOS Simulator,name=Resizable iPhone,OS=8.0'
 
         </echo>
         <chmod perm="+x" file="${temp.dir}/build.and.test.sh"/>
