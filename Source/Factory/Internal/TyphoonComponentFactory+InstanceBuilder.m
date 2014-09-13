@@ -271,25 +271,15 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (NSArray *)allDefinitionsForType:(id)classOrProtocol includeSubclasses:(BOOL)includeSubclasses
 {
-    NSMutableArray *results = [[NSMutableArray alloc] init];
-    BOOL isClass = IsClass(classOrProtocol);
-    BOOL isProtocol = IsProtocol(classOrProtocol);
-    if (!isClass && !isProtocol) {
+    if (!IsClass(classOrProtocol) && !IsProtocol(classOrProtocol)) {
         [NSException raise:NSInternalInconsistencyException format:@"%@ is not class or protocol", classOrProtocol];
     }
 
+    NSMutableArray *results = [[NSMutableArray alloc] init];
+
     for (TyphoonDefinition *definition in _registry) {
-        if (isClass && definition.autoInjectionVisibility & TyphoonAutoInjectVisibilityByClass) {
-            BOOL isSameClass = definition.type == classOrProtocol;
-            BOOL isSubclass = includeSubclasses && [definition.type isSubclassOfClass:classOrProtocol];
-            if (isSameClass || isSubclass) {
-                [results addObject:definition];
-            }
-        }
-        else if (isProtocol && definition.autoInjectionVisibility & TyphoonAutoInjectVisibilityByProtocol) {
-            if ([definition.type conformsToProtocol:classOrProtocol]) {
-                [results addObject:definition];
-            }
+        if ([definition matchesAutoInjectionWithType:classOrProtocol includeSubclasses:includeSubclasses]) {
+            [results addObject:definition];
         }
     }
     return results;

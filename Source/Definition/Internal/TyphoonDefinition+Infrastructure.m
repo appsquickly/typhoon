@@ -20,6 +20,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 #import "TyphoonMethod.h"
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonReferenceDefinition.h"
+#import "TyphoonIntrospectionUtils.h"
 
 @implementation TyphoonDefinition (Infrastructure)
 
@@ -83,6 +84,26 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     }
     return self;
 }
+
+- (BOOL)matchesAutoInjectionWithType:(id)classOrProtocol includeSubclasses:(BOOL)includeSubclasses
+{
+    BOOL result = NO;
+
+    BOOL isClass = IsClass(classOrProtocol);
+    BOOL isProtocol = IsProtocol(classOrProtocol);
+
+    if (isClass && self.autoInjectionVisibility & TyphoonAutoInjectVisibilityByClass) {
+        BOOL isSameClass = self.type == classOrProtocol;
+        BOOL isSubclass = includeSubclasses && [self.type isSubclassOfClass:classOrProtocol];
+        result = isSameClass || isSubclass;
+    }
+    else if (isProtocol && self.autoInjectionVisibility & TyphoonAutoInjectVisibilityByProtocol) {
+        result = [self.type conformsToProtocol:classOrProtocol];
+    }
+
+    return result;
+}
+
 
 /* ====================================================================================================================================== */
 #pragma mark - Private Methods

@@ -195,7 +195,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
 + (id)withFactory:(id)definition selector:(SEL)selector;
 
-+ (id)withFactory:(id)definition selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock;
++ (id)withFactory:(id)definition selector:(SEL)selector parameters:(void (^)(TyphoonMethod *factoryMethod))parametersBlock;
 
 /* ====================================================================================================================================== */
 #pragma mark Injection

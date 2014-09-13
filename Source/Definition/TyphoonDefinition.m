@@ -55,7 +55,6 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 }
 
 @synthesize key = _key;
-@synthesize initializer = _initializer;
 @synthesize initializerGenerated = _initializerGenerated;
 @synthesize currentRuntimeArguments = _currentRuntimeArguments;
 
@@ -148,11 +147,6 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     [self useInitializer:selector parameters:nil];
 }
 
-- (void)setInitializer:(TyphoonMethod *)initializer
-{
-    _initializer = initializer;
-}
-
 /* ====================================================================================================================================== */
 #pragma mark - Making injections
 
@@ -168,6 +162,11 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 
 /* ====================================================================================================================================== */
 #pragma mark - Overridden Methods
+
+- (void)setInitializer:(TyphoonMethod *)initializer
+{
+    _initializer = initializer;
+}
 
 - (TyphoonMethod *)initializer
 {

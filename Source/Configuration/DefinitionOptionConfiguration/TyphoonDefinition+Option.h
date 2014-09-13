@@ -10,8 +10,8 @@ typedef void(^TyphoonMatcherBlock)(TyphoonOptionMatcher *matcher);
 
 @interface TyphoonDefinition (Option)
 
-/** if boolean 'option' value is YES, then return yesDefinition, otherwise return noDefinition  */
-+ (id)withOption:(id)option yes:(id)yesDefinition no:(id)noDefinition;
+/** if boolean 'option' value is YES, then return yesInjection, otherwise return noInjection  */
++ (id)withOption:(id)option yes:(id)yesInjection no:(id)noInjection;
 
 /** Returns definition matching 'option', specified in 'matcherBlock' */
 + (id)withOption:(id)option matcher:(TyphoonMatcherBlock)matcherBlock;

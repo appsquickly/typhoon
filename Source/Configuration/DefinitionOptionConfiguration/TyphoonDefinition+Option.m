@@ -26,13 +26,11 @@
 {
     TyphoonOptionMatcher *matcher = [[TyphoonOptionMatcher alloc] initWithBlock:matcherBlock];
 
-    TyphoonDefinition *factoryDefinition = [TyphoonDefinition withClass:[TyphoonMatcherDefinitionFactory class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(factory)];
-        [definition injectProperty:@selector(matcher) with:matcher];
-    }];
-
     return [TyphoonDefinition withClass:[TyphoonInternalFactoryContainedDefinition class] configuration:^(TyphoonDefinition *definition) {
-        [definition setFactory:factoryDefinition];
+        [definition setFactory:[TyphoonDefinition withClass:[TyphoonMatcherDefinitionFactory class] configuration:^(TyphoonDefinition *factoryDefinition) {
+            [factoryDefinition injectProperty:@selector(factory)];
+            [factoryDefinition injectProperty:@selector(matcher) with:matcher];
+        }]];
         [definition setScope:TyphoonScopePrototype];
         [definition useInitializer:@selector(valueCreatedFromDefinitionMatchedOption:args:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:option];
