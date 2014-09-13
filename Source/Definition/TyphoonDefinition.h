@@ -48,8 +48,6 @@ typedef enum
 } TyphoonScope;
 
 
-typedef void(^TyphoonInitializerBlock)(TyphoonMethod *initializer);
-
 typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
 /**

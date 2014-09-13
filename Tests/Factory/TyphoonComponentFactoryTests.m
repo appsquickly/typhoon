@@ -96,7 +96,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition useInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
-            [initializer injectParameter:@"quest" with:TyphoonInjectionWithReference(@"quest")];
+            [initializer injectParameterWith:TyphoonInjectionWithReference(@"quest")];
         }];
         definition.key = @"knight";
     }]];
@@ -114,7 +114,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition useInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
-            [initializer injectParameter:@"quest" with:TyphoonInjectionWithReference(@"quest")];
+            [initializer injectParameterWith:TyphoonInjectionWithReference(@"quest")];
         }];
         definition.key = @"knight";
     }]];
@@ -433,8 +433,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 {
     TyphoonDefinition *parentDefinition = [TyphoonDefinition withClass:pClass key:nil];
 
-    TyphoonMethod *initializer = [[TyphoonMethod alloc] init];
-    initializer.selector = @selector(initWithString:);
+    TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithString:)];
     [initializer injectParameterWith:string];
     parentDefinition.initializer = initializer;
 
@@ -447,8 +446,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 {
     TyphoonDefinition *parentDefinition = [TyphoonDefinition withClass:pClass key:key];
 
-    TyphoonMethod *initializer = [[TyphoonMethod alloc] init];
-    initializer.selector = @selector(initWithString:);
+    TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithString:)];
     [initializer injectParameterWith:string];
     parentDefinition.initializer = initializer;
 

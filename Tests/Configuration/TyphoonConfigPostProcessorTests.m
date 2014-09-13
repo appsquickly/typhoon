@@ -43,8 +43,7 @@
 {
     TyphoonComponentFactory *factory = [[TyphoonComponentFactory alloc] init];
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    knightDefinition.initializer = [[TyphoonMethod alloc] init];
-    knightDefinition.initializer.selector = @selector(initWithQuest:damselsRescued:);
+    knightDefinition.initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithQuest:damselsRescued:)];
     [knightDefinition.initializer injectParameterWith:nil];
     [knightDefinition.initializer injectParameterWith:TyphoonConfig(@"damsels.rescued")];
     [factory registerDefinition:knightDefinition];
@@ -74,8 +73,7 @@
 {
     TyphoonComponentFactory *factory = [[TyphoonComponentFactory alloc] init];
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    knightDefinition.initializer = [[TyphoonMethod alloc] init];
-    knightDefinition.initializer.selector = @selector(initWithQuest:damselsRescued:);
+    knightDefinition.initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithQuest:damselsRescued:)];
     [knightDefinition.initializer injectParameterWith:nil];
     [knightDefinition.initializer injectParameterWith:TyphoonConfig(@"json.damsels_rescued")];
     [knightDefinition injectProperty:@selector(hasHorseWillTravel) with:TyphoonConfig(@"json.hasHorseWillTravel")];
@@ -92,8 +90,7 @@
 {
     TyphoonComponentFactory *factory = [[TyphoonComponentFactory alloc] init];
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    knightDefinition.initializer = [[TyphoonMethod alloc] init];
-    knightDefinition.initializer.selector = @selector(initWithQuest:damselsRescued:);
+    knightDefinition.initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithQuest:damselsRescued:)];
     [knightDefinition.initializer injectParameterWith:nil];
     [knightDefinition.initializer injectParameterWith:TyphoonConfig(@"plist.damsels")];
     [knightDefinition injectProperty:@selector(hasHorseWillTravel) with:TyphoonConfig(@"plist.hasHorse")];

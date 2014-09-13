@@ -23,6 +23,4 @@
 */
 - (TyphoonTypeDescriptor *)typhoon_typeForPropertyWithName:(NSString *)propertyName;
 
-- (NSArray *)typhoon_parameterNamesForSelector:(SEL)selector;
-
 @end

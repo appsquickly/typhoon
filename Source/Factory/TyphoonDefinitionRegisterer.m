@@ -23,6 +23,7 @@
 #import "TyphoonMethod.h"
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonMatcherDefinitionFactory.h"
+#import "TyphoonIntrospectionUtils.h"
 
 @implementation TyphoonDefinitionRegisterer
 {
@@ -43,12 +44,6 @@
 
 - (void)doRegistration
 {
-    if ([[_definition.initializer parameterNames] count] != [[_definition.initializer injectedParameters] count]) {
-        [NSException raise:NSInvalidArgumentException
-            format:@"Supplied parameters does not match number of parameters in initializer. Inject with null if necessary. Defintion: %@",
-                   _definition];
-    }
-
     [self setDefinitionKeyRandomlyIfNeeded];
 
     if ([self definitionAlreadyRegistered]) {

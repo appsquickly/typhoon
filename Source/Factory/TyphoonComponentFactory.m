@@ -25,8 +25,6 @@
 #import "TyphoonWeakComponentsPool.h"
 #import "TyphoonFactoryAutoInjectionPostProcessor.h"
 
-typedef id(^TyphoonInstanceBuildBlock)(TyphoonDefinition *definition);
-
 @interface TyphoonDefinition (TyphoonComponentFactory)
 
 @property(nonatomic, strong) NSString *key;

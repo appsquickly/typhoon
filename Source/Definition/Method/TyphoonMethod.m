@@ -11,16 +11,9 @@
 
 
 
-#import "TyphoonCollaboratingAssemblyProxy.h"
 #import "TyphoonMethod.h"
-#import "NSObject+TyphoonIntrospectionUtils.h"
-#import "TyphoonDefinition.h"
-
 #import "TyphoonParameterInjection.h"
-
 #import "TyphoonInjections.h"
-
-#import <objc/runtime.h>
 
 @implementation TyphoonMethod {
     BOOL _needUpdateHash;
@@ -35,7 +28,7 @@
     self = [super init];
     if (self) {
         _injectedParameters = [[NSMutableArray alloc] init];
-        self.selector = selector;
+        _selector = selector;
         _needUpdateHash = YES;
     }
     return self;
@@ -73,80 +66,6 @@
     [self injectParameterAtIndex:[self indexToAddParameter] with:injection];
 }
 
-- (void)injectParameter:(NSString *)parameterName with:(id)injection
-{
-    [self injectParameterNamed:parameterName success:^(NSInteger index) {
-        [self injectParameterAtIndex:index with:injection];
-    }];
-}
-
-//============================================================================================================================================
-#pragma mark - Parameters names
-
-- (void)injectParameterNamed:(NSString *)name success:(void (^)(NSInteger))success
-{
-    NSInteger index = [self indexOfParameter:name];
-    if (index == NSNotFound) {
-        [NSException raise:NSInvalidArgumentException format:@"%@", [self parameterNotFoundErrorMessageWithParameterNamed:name]];
-    }
-
-    if (success) {
-        success(index);
-    }
-}
-
-- (NSString *)parameterNotFoundErrorMessageWithParameterNamed:(NSString *)name
-{
-    if ([_parameterNames count] == 0) {
-        return [NSString stringWithFormat:@"Specified a parameter named '%@', but method '%@' takes no parameters.", name,
-                                          NSStringFromSelector([self selector])];
-    }
-
-    NSString *failureExplanation =
-        [NSString stringWithFormat:@"Unrecognized parameter name: '%@' for method '%@'.", name, NSStringFromSelector([self selector])];
-    NSString *recoverySuggestion = [self recoverySuggestionForMissingParameter];
-    return [NSString stringWithFormat:@"%@ %@", failureExplanation, recoverySuggestion];
-}
-
-- (NSString *)recoverySuggestionForMissingParameter
-{
-    if ([_parameterNames count] == 1) {
-        return [NSString stringWithFormat:@"Did you mean '%@'?", _parameterNames[0]];
-    }
-    else if ([_parameterNames count] == 2) {
-        return [NSString stringWithFormat:@"Valid parameter names are '%@' or '%@'.", _parameterNames[0], _parameterNames[1]];
-    }
-    else {
-        return [self recoverySuggestionForMultipleMissingParameters];
-    }
-}
-
-- (NSString *)recoverySuggestionForMultipleMissingParameters
-{
-    NSMutableString *messageBuilder = [NSMutableString stringWithFormat:@"Valid parameter names are"];
-    [_parameterNames enumerateObjectsUsingBlock:^(NSString *aParameterName, NSUInteger idx, BOOL *stop) {
-        BOOL thisIsLastParameter = (idx == [_parameterNames count] - 1);
-        if (idx == 0) {
-            [messageBuilder appendFormat:@" '%@'", aParameterName];
-        }
-        else if (!thisIsLastParameter) { // middleParameter
-            [messageBuilder appendFormat:@", '%@'", aParameterName];
-        }
-        else { // lastParameter
-            [messageBuilder appendFormat:@", or '%@'.", aParameterName];
-        }
-    }];
-
-    return [NSString stringWithString:messageBuilder];
-}
-
-- (void)setSelector:(SEL)selector
-{
-    _selector = selector;
-    _parameterNames = [self typhoon_parameterNamesForSelector:_selector];
-    _needUpdateHash = YES;
-}
-
 /* ====================================================================================================================================== */
 #pragma mark - Utility Methods
 
@@ -179,7 +98,6 @@
     return hash;
 }
 
-
 - (BOOL)isEqual:(id)other
 {
     if (other == self) {
@@ -203,22 +121,5 @@
     
     return _selector == method.selector && [method->_injectedParameters isEqualToArray:_injectedParameters];
 }
-
-/* ====================================================================================================================================== */
-#pragma mark - Private Methods
-
-- (NSInteger)indexOfParameter:(NSString *)name
-{
-    NSInteger parameterIndex = NSNotFound;
-    for (NSUInteger i = 0; i < [_parameterNames count]; i++) {
-        NSString *parameterName = [_parameterNames objectAtIndex:i];
-        if ([name isEqualToString:parameterName]) {
-            parameterIndex = i;
-            break;
-        }
-    }
-    return parameterIndex;
-}
-
 
 @end

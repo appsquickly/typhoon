@@ -10,9 +10,6 @@
 @class TyphoonComponentFactory;
 @protocol TyphoonInjection;
 
-typedef void(^TyphoonOptionMatcherDefinitionSearchResult)(TyphoonDefinition *definition, TyphoonRuntimeArguments *arguments);
-
-
 @interface TyphoonOptionMatcher (Internal)
 
 - (instancetype)initWithBlock:(TyphoonMatcherBlock)block;

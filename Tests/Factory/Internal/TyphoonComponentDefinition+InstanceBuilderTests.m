@@ -41,7 +41,7 @@
 {
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     TyphoonMethod *knightInitializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithQuest:)];
-    [knightInitializer injectParameter:@"quest" with:TyphoonInjectionWithReference(@"quest")];
+    [knightInitializer injectParameterWith:TyphoonInjectionWithReference(@"quest")];
     [knightDefinition setInitializer:knightInitializer];
     [_componentFactory registerDefinition:knightDefinition];
 
@@ -71,8 +71,8 @@
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     TyphoonMethod *initializer = [[TyphoonMethod alloc]
         initWithSelector:@selector(initWithQuest:damselsRescued:)];
-    [initializer injectParameter:@"quest" with:nil];
-    [initializer injectParameter:@"damselsRescued" with:@(12)];
+    [initializer injectParameterWith:nil];
+    [initializer injectParameterWith:@(12)];
     [knightDefinition setInitializer:initializer];
 
     [_componentFactory registerDefinition:knightDefinition];
@@ -86,9 +86,9 @@
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
     TyphoonMethod *knightInitializer = [[TyphoonMethod alloc]
         initWithSelector:@selector(initWithQuest:favoriteDamsels:)];
-    [knightInitializer injectParameter:@"quest" with:TyphoonInjectionWithReference(@"quest")];
+    [knightInitializer injectParameterWith:TyphoonInjectionWithReference(@"quest")];
 
-    [knightInitializer injectParameter:@"favoriteDamsels" with:@[
+    [knightInitializer injectParameterWith:@[
         @"damsel1",
         @"damsel2"
     ]];

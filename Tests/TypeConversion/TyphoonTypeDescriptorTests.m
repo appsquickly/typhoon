@@ -140,26 +140,5 @@ typedef struct
     XCTAssertEqualObjects(descriptor.structureTypeName, @"?=i[255c]");
 }
 
-- (void)test_parameterNamesForSelector_init_method
-{
-    NSArray *parameterNames = [self typhoon_parameterNamesForSelector:@selector(initWithNibName:bundle:)];
-    XCTAssertTrue([parameterNames count] == 2);
-    XCTAssertEqualObjects([parameterNames objectAtIndex:0], @"nibName");
-    XCTAssertEqualObjects([parameterNames objectAtIndex:1], @"bundle");
-}
-
-- (void)test_parameterNamesForSelector_factory_method
-{
-    NSArray *parameterNames = [self typhoon_parameterNamesForSelector:@selector(URLWithString:)];
-    XCTAssertTrue([parameterNames count] == 1);
-    XCTAssertEqualObjects([parameterNames objectAtIndex:0], @"string");
-}
-
-- (void)test_parameterNamesForSelector_no_parameters_method
-{
-    NSArray *parameterNames = [self typhoon_parameterNamesForSelector:@selector(init)];
-    XCTAssertTrue([parameterNames count] == 0);
-}
-
 
 @end
