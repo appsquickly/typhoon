@@ -183,7 +183,6 @@
 		6B0771541936FEA80083714E /* TyphoonPatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07707A1936F63A0083714E /* TyphoonPatcherTests.m */; };
 		6B0771551936FEA80083714E /* TyphoonTestUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07707C1936F63A0083714E /* TyphoonTestUtilsTests.m */; };
 		6B0771561936FEA80083714E /* ClassWithPrimitiveTypesForConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770801936F63A0083714E /* ClassWithPrimitiveTypesForConversion.m */; };
-		6B0771571936FEA80083714E /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770821936F63A0083714E /* NSNullTypeConverter.m */; };
 		6B0771581936FEA80083714E /* TyphoonPassthroughTypeConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770831936F63A0083714E /* TyphoonPassthroughTypeConverterTests.m */; };
 		6B0771591936FEA80083714E /* TyphoonPrimitiveTypeConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770841936F63A0083714E /* TyphoonPrimitiveTypeConverterTests.m */; };
 		6B07715A1936FEA80083714E /* TyphoonTypeConverterRegistryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770851936F63A0083714E /* TyphoonTypeConverterRegistryTests.m */; };
@@ -361,7 +360,6 @@
 		6B0774491937839D0083714E /* TyphoonPatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07707A1936F63A0083714E /* TyphoonPatcherTests.m */; };
 		6B07744A1937839D0083714E /* TyphoonTestUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B07707C1936F63A0083714E /* TyphoonTestUtilsTests.m */; };
 		6B07744B1937839D0083714E /* ClassWithPrimitiveTypesForConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770801936F63A0083714E /* ClassWithPrimitiveTypesForConversion.m */; };
-		6B07744C1937839D0083714E /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770821936F63A0083714E /* NSNullTypeConverter.m */; };
 		6B07744D1937839D0083714E /* TyphoonPassthroughTypeConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770831936F63A0083714E /* TyphoonPassthroughTypeConverterTests.m */; };
 		6B07744E1937839D0083714E /* TyphoonPrimitiveTypeConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770841936F63A0083714E /* TyphoonPrimitiveTypeConverterTests.m */; };
 		6B07744F1937839D0083714E /* TyphoonTypeConverterRegistryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770851936F63A0083714E /* TyphoonTypeConverterRegistryTests.m */; };
@@ -383,8 +381,13 @@
 		6B077461193784DE0083714E /* SomeResource in Resources */ = {isa = PBXBuildFile; fileRef = 6B0770771936F63A0083714E /* SomeResource */; };
 		6B077462193786EB0083714E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA798B7BB085030D07102B8E /* Storyboard.storyboard */; };
 		6B077463193786EC0083714E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA798B7BB085030D07102B8E /* Storyboard.storyboard */; };
+		BA7980F5B20CA2FCDC9C3074 /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7984A11531DFDE00C583DE /* NSNullTypeConverter.m */; };
 		BA7982DB9ED4ECF0C54DA707 /* TyphoonUIColorConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E0CA9E9828D07777F40 /* TyphoonUIColorConverterTests.m */; };
 		BA798411A6669EF3D231FE6F /* Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = C949792A85FC9383BEAD631B /* Mock.m */; };
+		BA79842948159FC4E5103C1B /* TyphoonNSNumberTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79809B312F99BCEDF489BD /* TyphoonNSNumberTypeConverter.m */; };
+		BA79844AB14B549E98944D30 /* TyphoonNSNumberTypeConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E8847C809A44EA1116F /* TyphoonNSNumberTypeConverterTests.m */; };
+		BA7985DE19FA38D5AF4ABD7F /* TyphoonNSNumberTypeConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E8847C809A44EA1116F /* TyphoonNSNumberTypeConverterTests.m */; };
+		BA7985E9B7C3C34D17FC40FD /* TyphoonNSNumberTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79809B312F99BCEDF489BD /* TyphoonNSNumberTypeConverter.m */; };
 		BA798643561E55898B87E96A /* UniqueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7980A75A6786BBC2A387F9 /* UniqueViewController.m */; };
 		BA798645ED33923CA832A9CD /* StoryboardViewControllerAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798EA3F8F037BFC45CBCB7 /* StoryboardViewControllerAssembly.m */; };
 		BA7987FA9B7BE2D96C39C105 /* StoryboardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79872D47F864D6B64B479E /* StoryboardTests.m */; };
@@ -392,6 +395,8 @@
 		BA798848CA5A0D7F6AF44DCF /* TyphoonConfigPostProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E14534FB69AC182D402 /* TyphoonConfigPostProcessorTests.m */; };
 		BA798C5BE35D5B38B2F64387 /* TyphoonViewControllerNibResolverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982C084F0AD60B5858F31 /* TyphoonViewControllerNibResolverTests.m */; };
 		BA798CEBF664D4B2D24EA1A3 /* TyphoonConfigPostProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E14534FB69AC182D402 /* TyphoonConfigPostProcessorTests.m */; };
+		BA798D442FCA1B5E3C8E4B3B /* TyphoonUIColorConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E0CA9E9828D07777F40 /* TyphoonUIColorConverterTests.m */; };
+		BA798EF5AD7AC635BDD727C0 /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7984A11531DFDE00C583DE /* NSNullTypeConverter.m */; };
 		C9497A0F3C744433419C9D5D /* TyphoonInjectionByCurrentRuntimeArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = C94972BE857448DEBA12C1CE /* TyphoonInjectionByCurrentRuntimeArguments.m */; };
 		C9497BE0FC290233160074AC /* Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = C949792A85FC9383BEAD631B /* Mock.m */; };
 		FAF2E92219C2260F00211DF6 /* TyphoonInjectedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1899426943444774AC27 /* TyphoonInjectedObject.m */; };
@@ -766,8 +771,6 @@
 		6B07707D1936F63A0083714E /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6B07707F1936F63A0083714E /* ClassWithPrimitiveTypesForConversion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassWithPrimitiveTypesForConversion.h; sourceTree = "<group>"; };
 		6B0770801936F63A0083714E /* ClassWithPrimitiveTypesForConversion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassWithPrimitiveTypesForConversion.m; sourceTree = "<group>"; };
-		6B0770811936F63A0083714E /* NSNullTypeConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSNullTypeConverter.h; sourceTree = "<group>"; };
-		6B0770821936F63A0083714E /* NSNullTypeConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSNullTypeConverter.m; sourceTree = "<group>"; };
 		6B0770831936F63A0083714E /* TyphoonPassthroughTypeConverterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TyphoonPassthroughTypeConverterTests.m; sourceTree = "<group>"; };
 		6B0770841936F63A0083714E /* TyphoonPrimitiveTypeConverterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TyphoonPrimitiveTypeConverterTests.m; sourceTree = "<group>"; };
 		6B0770851936F63A0083714E /* TyphoonTypeConverterRegistryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TyphoonTypeConverterRegistryTests.m; sourceTree = "<group>"; };
@@ -801,14 +804,19 @@
 		6B077385193780580083714E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B077386193780580083714E /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		6B077387193780580083714E /* Typhoon-osxTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Typhoon-osxTests-Info.plist"; sourceTree = "<group>"; };
+		BA79809B312F99BCEDF489BD /* TyphoonNSNumberTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonNSNumberTypeConverter.m; sourceTree = "<group>"; };
 		BA7980A75A6786BBC2A387F9 /* UniqueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniqueViewController.m; sourceTree = "<group>"; };
 		BA7982C084F0AD60B5858F31 /* TyphoonViewControllerNibResolverTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonViewControllerNibResolverTests.m; sourceTree = "<group>"; };
+		BA7984A11531DFDE00C583DE /* NSNullTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNullTypeConverter.m; sourceTree = "<group>"; };
 		BA798539DF28ADC47EFA5937 /* StoryboardViewControllerAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardViewControllerAssembly.h; sourceTree = "<group>"; };
+		BA79856305370AE9A94F8B87 /* TyphoonNSNumberTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonNSNumberTypeConverter.h; sourceTree = "<group>"; };
 		BA79870F24D3F4FDD0FDB7BD /* UniqueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniqueViewController.h; sourceTree = "<group>"; };
 		BA79872D47F864D6B64B479E /* StoryboardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardTests.m; sourceTree = "<group>"; };
 		BA798B7BB085030D07102B8E /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		BA798BFD251D2908121708F3 /* NSNullTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNullTypeConverter.h; sourceTree = "<group>"; };
 		BA798E0CA9E9828D07777F40 /* TyphoonUIColorConverterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonUIColorConverterTests.m; sourceTree = "<group>"; };
 		BA798E14534FB69AC182D402 /* TyphoonConfigPostProcessorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonConfigPostProcessorTests.m; sourceTree = "<group>"; };
+		BA798E8847C809A44EA1116F /* TyphoonNSNumberTypeConverterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonNSNumberTypeConverterTests.m; sourceTree = "<group>"; };
 		BA798EA3F8F037BFC45CBCB7 /* StoryboardViewControllerAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardViewControllerAssembly.m; sourceTree = "<group>"; };
 		C94972BE857448DEBA12C1CE /* TyphoonInjectionByCurrentRuntimeArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonInjectionByCurrentRuntimeArguments.m; sourceTree = "<group>"; };
 		C949758EA994B0137DD95E6D /* Mock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mock.h; sourceTree = "<group>"; };
@@ -1318,6 +1326,10 @@
 				6B076F6B1936F63A0083714E /* TyphoonPassThroughTypeConverter.m */,
 				6B076F6C1936F63A0083714E /* TyphoonPrimitiveTypeConverter.h */,
 				6B076F6D1936F63A0083714E /* TyphoonPrimitiveTypeConverter.m */,
+				BA79809B312F99BCEDF489BD /* TyphoonNSNumberTypeConverter.m */,
+				BA79856305370AE9A94F8B87 /* TyphoonNSNumberTypeConverter.h */,
+				BA798BFD251D2908121708F3 /* NSNullTypeConverter.h */,
+				BA7984A11531DFDE00C583DE /* NSNullTypeConverter.m */,
 			);
 			path = Converters;
 			sourceTree = "<group>";
@@ -1743,12 +1755,11 @@
 			children = (
 				6B07707F1936F63A0083714E /* ClassWithPrimitiveTypesForConversion.h */,
 				6B0770801936F63A0083714E /* ClassWithPrimitiveTypesForConversion.m */,
-				6B0770811936F63A0083714E /* NSNullTypeConverter.h */,
-				6B0770821936F63A0083714E /* NSNullTypeConverter.m */,
 				6B0770831936F63A0083714E /* TyphoonPassthroughTypeConverterTests.m */,
 				6B0770841936F63A0083714E /* TyphoonPrimitiveTypeConverterTests.m */,
 				6B0770851936F63A0083714E /* TyphoonTypeConverterRegistryTests.m */,
 				6B0770861936F63A0083714E /* TyphoonTypeDescriptorTests.m */,
+				BA798E8847C809A44EA1116F /* TyphoonNSNumberTypeConverterTests.m */,
 			);
 			path = TypeConversion;
 			sourceTree = "<group>";
@@ -2102,6 +2113,8 @@
 				C9497A0F3C744433419C9D5D /* TyphoonInjectionByCurrentRuntimeArguments.m in Sources */,
 				2DBA1BD2F98EAF82D31B9876 /* TyphoonInjectedObject.m in Sources */,
 				2DBA139F1F94E9222E18B764 /* TyphoonFactoryAutoInjectionPostProcessor.m in Sources */,
+				BA7985E9B7C3C34D17FC40FD /* TyphoonNSNumberTypeConverter.m in Sources */,
+				BA798EF5AD7AC635BDD727C0 /* NSNullTypeConverter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2184,7 +2197,6 @@
 				6B0771541936FEA80083714E /* TyphoonPatcherTests.m in Sources */,
 				6B0771551936FEA80083714E /* TyphoonTestUtilsTests.m in Sources */,
 				6B0771561936FEA80083714E /* ClassWithPrimitiveTypesForConversion.m in Sources */,
-				6B0771571936FEA80083714E /* NSNullTypeConverter.m in Sources */,
 				6B0771581936FEA80083714E /* TyphoonPassthroughTypeConverterTests.m in Sources */,
 				6B0771591936FEA80083714E /* TyphoonPrimitiveTypeConverterTests.m in Sources */,
 				6B07715A1936FEA80083714E /* TyphoonTypeConverterRegistryTests.m in Sources */,
@@ -2206,6 +2218,7 @@
 				2DBA188860E60C45AAC409CF /* TyphoonAutoInjectionTests.m in Sources */,
 				2DBA1EB8464302D9A05BCDCE /* TyphoonAutoInjectionAssembly.m in Sources */,
 				2DBA1DD74E3C1AD545A84C92 /* AutoWiringKnight.m in Sources */,
+				BA7985DE19FA38D5AF4ABD7F /* TyphoonNSNumberTypeConverterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2288,6 +2301,8 @@
 				BA7987FF3152DA22979AD79B /* TyphoonInjectionByCurrentRuntimeArguments.m in Sources */,
 				BA798411A6669EF3D231FE6F /* Mock.m in Sources */,
 				2DBA1AA360C59D1F3360E7F6 /* TyphoonFactoryAutoInjectionPostProcessor.m in Sources */,
+				BA79842948159FC4E5103C1B /* TyphoonNSNumberTypeConverter.m in Sources */,
+				BA7980F5B20CA2FCDC9C3074 /* NSNullTypeConverter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2369,7 +2384,6 @@
 				6B0774491937839D0083714E /* TyphoonPatcherTests.m in Sources */,
 				6B07744A1937839D0083714E /* TyphoonTestUtilsTests.m in Sources */,
 				6B07744B1937839D0083714E /* ClassWithPrimitiveTypesForConversion.m in Sources */,
-				6B07744C1937839D0083714E /* NSNullTypeConverter.m in Sources */,
 				6B07744D1937839D0083714E /* TyphoonPassthroughTypeConverterTests.m in Sources */,
 				6B07744E1937839D0083714E /* TyphoonPrimitiveTypeConverterTests.m in Sources */,
 				6B07744F1937839D0083714E /* TyphoonTypeConverterRegistryTests.m in Sources */,
@@ -2386,6 +2400,8 @@
 				2DBA1724829B45E5C6ADD4A5 /* TyphoonAutoInjectionTests.m in Sources */,
 				2DBA19D13EB2E1F96130F61A /* TyphoonAutoInjectionAssembly.m in Sources */,
 				2DBA15F7AF1B9724AD19E82C /* AutoWiringKnight.m in Sources */,
+				BA79844AB14B549E98944D30 /* TyphoonNSNumberTypeConverterTests.m in Sources */,
+				BA798D442FCA1B5E3C8E4B3B /* TyphoonUIColorConverterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

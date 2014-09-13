@@ -18,6 +18,7 @@
 #import "TyphoonPassThroughTypeConverter.h"
 #import "TyphoonNSURLTypeConverter.h"
 #import "TyphoonIntrospectionUtils.h"
+#import "TyphoonNSNumberTypeConverter.h"
 
 
 @implementation TyphoonTypeConverterRegistry
@@ -122,6 +123,7 @@
     [self registerTypeConverter:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:NO]];
     [self registerTypeConverter:[[TyphoonPassThroughTypeConverter alloc] initWithIsMutable:YES]];
     [self registerTypeConverter:[[TyphoonNSURLTypeConverter alloc] init]];
+    [self registerTypeConverter:[[TyphoonNSNumberTypeConverter alloc] init]];
 }
 
 - (void)registerPlatformConverters

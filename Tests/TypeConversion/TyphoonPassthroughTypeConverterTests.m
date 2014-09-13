@@ -12,8 +12,6 @@
 #import <XCTest/XCTest.h>
 #import "TyphoonTypeConverterRegistry.h"
 #import "TyphoonTypeConverter.h"
-#import "TyphoonTypeDescriptor.h"
-#import "NSObject+TyphoonIntrospectionUtils.h"
 
 @interface TyphoonPassThroughTypeConverterTests : XCTestCase
 
