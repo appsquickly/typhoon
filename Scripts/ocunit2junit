@@ -19,8 +19,8 @@
 #
 #
 # Where to put the XML-files from your unit tests
-TEST_REPORTS_FOLDER = ENV['TEST_REPORTS_FOLDER'] || "test-reports"
-SUPPORT_KIWI = true
+TEST_REPORTS_FOLDER = ENV.has_key?('TEST_REPORTS_FOLDER') ? ENV['TEST_REPORTS_FOLDER'] : "test-reports"
+SUPPORT_KIWI = ENV.has_key?('SUPPORT_KIWI') ? ENV['SUPPORT_KIWI'] : true
 #
 #
 # Don't edit below this line
@@ -46,7 +46,13 @@ class ReportParser
   private
   
   def parse_input
-    @piped_input.each do |piped_row|
+    if @piped_input.respond_to?(:each)
+        line_enumerator = @piped_input.each
+    elsif @piped_input.respond_to?(:each_line)
+        line_enumerator = @piped_input.each_line
+    end
+
+    line_enumerator.each do |piped_row|
       if piped_row.respond_to?("encode!")
         temporary_encoding = (RUBY_VERSION == '1.9.2') ? 'UTF-8' : 'UTF-16'
         piped_row.encode!(temporary_encoding, 'UTF-8', :invalid => :replace, :replace => '')
@@ -55,7 +61,7 @@ class ReportParser
       puts piped_row
       
       description_results = piped_row.scan(/\s\'(.+)\'\s/)
-      if description_results and description_results[0] and description_results[0]
+      if description_results && description_results[0] && description_results[0]
         description = description_results[0][0]
       end
       
@@ -69,7 +75,15 @@ class ReportParser
         when /Test Suite '(\S+)'.*finished at\s+(.*)./
           t = Time.parse($2.to_s)
           handle_end_test_suite($1,t)     
-
+        
+        when /Test Suite '(\S+)'.*passed at\s+(.*)./
+          t = Time.parse($2.to_s)
+          handle_end_test_suite($1,t) 
+        
+        when /Test Suite '(\S+)'.*failed at\s+(.*)./
+          t = Time.parse($2.to_s)
+          handle_end_test_suite($1,t) 
+        
         when /Test Case '-\[\S+\s+(\S+)\]' started./
           test_case = $1
           @last_description = nil
@@ -99,7 +113,7 @@ class ReportParser
           @exit_code = -1;
       end
       
-      unless description.nil?
+      if description
         @last_description = description
       end
     end
@@ -160,8 +174,10 @@ class ReportParser
   end
 
   def handle_test_error(test_suite,test_case,error_message,error_location)
-#    error_message.tr!('<','').tr!('>','')
-    @errors[test_case] = [ error_message, error_location ]
+    # Only record the first error for a test_case
+    if @errors[test_case].nil?
+      @errors[test_case] = [ error_message, error_location ]
+    end
   end
 
   def handle_test_failed(test_case,test_case_duration) 
@@ -170,8 +186,18 @@ class ReportParser
   end
 
   def get_test_case_name(test_case, description)
-    if SUPPORT_KIWI and test_case == "example" and !description.nil?
+    # Kiwi 1.x
+    if SUPPORT_KIWI && test_case == "example" && description
       description
+    # Kiwi 2.x
+    elsif SUPPORT_KIWI && test_case =~ /(.+_)+(Should.+)(_.+)*/
+      test_case.gsub(/([A-Z])([A-Z][a-z]+)/, ' \1 \2')
+               .gsub(/([A-Z][a-z]+)/, ' \1')
+               .gsub(/([A-Z][A-Z]+)/, ' \1')
+               .gsub(/([^A-Za-z ]+)/, ' \1')
+               .gsub(/\s+/, ' ')
+               .split(" _ ")[1..-1].join(", ")
+               .downcase.capitalize
     else
       test_case
     end
@@ -186,3 +212,4 @@ piped_input = ARGF.readlines
 report = ReportParser.new(piped_input)
 
 exit report.exit_code
+
