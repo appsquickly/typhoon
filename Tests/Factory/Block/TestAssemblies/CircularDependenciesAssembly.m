@@ -14,6 +14,7 @@
 #import "CircularDependenciesAssembly.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonMethod.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 #import "PrototypeInitInjected.h"
 #import "PrototypePropertyInjected.h"

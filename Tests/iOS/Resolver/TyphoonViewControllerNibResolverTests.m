@@ -14,7 +14,7 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonMethod+InstanceBuilder.h"
-
+#import "TyphoonDefinition+Infrastructure.h"
 
 @interface TyphoonViewControllerNibResolverTests : XCTestCase
 {

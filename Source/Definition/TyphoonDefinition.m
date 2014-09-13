@@ -43,7 +43,10 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 
 
 @interface TyphoonDefinition () <TyphoonObjectWithCustomInjection>
-
+@property(nonatomic, strong) TyphoonMethod *initializer;
+@property(nonatomic, strong) NSString *key;
+@property(nonatomic, strong) TyphoonRuntimeArguments *currentRuntimeArguments;
+@property(nonatomic, getter = isInitializerGenerated) BOOL initializerGenerated;
 @end
 
 @implementation TyphoonDefinition

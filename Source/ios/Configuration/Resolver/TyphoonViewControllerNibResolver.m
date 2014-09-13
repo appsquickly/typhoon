@@ -13,6 +13,7 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonMethod.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 @implementation TyphoonViewControllerNibResolver
 

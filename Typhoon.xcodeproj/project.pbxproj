@@ -395,7 +395,6 @@
 		BA798848CA5A0D7F6AF44DCF /* TyphoonConfigPostProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E14534FB69AC182D402 /* TyphoonConfigPostProcessorTests.m */; };
 		BA798C5BE35D5B38B2F64387 /* TyphoonViewControllerNibResolverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982C084F0AD60B5858F31 /* TyphoonViewControllerNibResolverTests.m */; };
 		BA798CEBF664D4B2D24EA1A3 /* TyphoonConfigPostProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E14534FB69AC182D402 /* TyphoonConfigPostProcessorTests.m */; };
-		BA798D442FCA1B5E3C8E4B3B /* TyphoonUIColorConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E0CA9E9828D07777F40 /* TyphoonUIColorConverterTests.m */; };
 		BA798EF5AD7AC635BDD727C0 /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7984A11531DFDE00C583DE /* NSNullTypeConverter.m */; };
 		C9497A0F3C744433419C9D5D /* TyphoonInjectionByCurrentRuntimeArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = C94972BE857448DEBA12C1CE /* TyphoonInjectionByCurrentRuntimeArguments.m */; };
 		C9497BE0FC290233160074AC /* Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = C949792A85FC9383BEAD631B /* Mock.m */; };
@@ -2401,7 +2400,6 @@
 				2DBA19D13EB2E1F96130F61A /* TyphoonAutoInjectionAssembly.m in Sources */,
 				2DBA15F7AF1B9724AD19E82C /* AutoWiringKnight.m in Sources */,
 				BA79844AB14B549E98944D30 /* TyphoonNSNumberTypeConverterTests.m in Sources */,
-				BA798D442FCA1B5E3C8E4B3B /* TyphoonUIColorConverterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,6 +25,7 @@
 #import "TyphoonObjectWithCustomInjection.h"
 #import "TyphoonInjectionByComponentFactory.h"
 #import "TyphoonSelector.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 static NSMutableSet *reservedSelectorsAsStrings;
 

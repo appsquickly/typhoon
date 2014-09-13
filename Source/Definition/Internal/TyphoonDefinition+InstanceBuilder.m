@@ -14,6 +14,7 @@
 TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 
 #import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonMethod+InstanceBuilder.h"
 
 #import "TyphoonInjectionByType.h"

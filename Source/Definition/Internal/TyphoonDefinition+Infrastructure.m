@@ -23,17 +23,6 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 @implementation TyphoonDefinition (Infrastructure)
 
-
-- (void)setCurrentRuntimeArguments:(TyphoonRuntimeArguments *)currentRuntimeArguments
-{
-    _currentRuntimeArguments = currentRuntimeArguments;
-}
-
-- (TyphoonRuntimeArguments *)currentRuntimeArguments
-{
-    return _currentRuntimeArguments;
-}
-
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 

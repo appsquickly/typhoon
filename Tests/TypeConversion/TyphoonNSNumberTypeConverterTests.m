@@ -31,7 +31,7 @@
 - (void)test_converts_integer
 {
     NSNumber* number = [self.converter convert:@"5"];
-    XCTAssertEqual([NSNumber numberWithInt:5], number);
+    XCTAssertEqualObjects([NSNumber numberWithInt:5], number);
 }
 
 @end

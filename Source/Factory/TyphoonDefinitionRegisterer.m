@@ -24,6 +24,7 @@
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonMatcherDefinitionFactory.h"
 #import "TyphoonIntrospectionUtils.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 @implementation TyphoonDefinitionRegisterer
 {

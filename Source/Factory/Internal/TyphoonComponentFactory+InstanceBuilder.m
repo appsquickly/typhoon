@@ -14,6 +14,7 @@
 
 TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
+#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
