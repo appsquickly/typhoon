@@ -93,7 +93,7 @@
 
 - (BOOL)definitionHasInternalFactory
 {
-    return _definition.type == [TyphoonInternalFactoryContainedDefinition class];
+    return _definition.class == [TyphoonInfrastructureFactoryDefinition class];
 }
 
 - (void)registerInfrastructureComponentFromDefinition

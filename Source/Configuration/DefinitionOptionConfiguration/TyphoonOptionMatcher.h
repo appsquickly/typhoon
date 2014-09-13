@@ -21,8 +21,8 @@
 - (void)defaultUse:(id)injection;
 
 /**
-* If this method called, matcher will find definition using 'option' value as key.
-* @note When matching definition from 'option', 'caseEqual:use:' has higher priority than matching by definition key */
+* If this method called, matcher will find definition using 'option' value as key for definition.
+* @note When matching definition from 'option', 'caseEqual:use:', 'caseKindOfClass:use:' and 'caseMemberOfClass:use:' has higher priority than matching by definition key */
 - (void)useDefinitionWithKeyMatchedOptionValue;
 
 @end

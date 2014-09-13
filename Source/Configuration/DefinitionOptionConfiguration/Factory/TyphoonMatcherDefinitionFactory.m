@@ -32,5 +32,5 @@
 
 @end
 
-@implementation TyphoonInternalFactoryContainedDefinition
+@implementation TyphoonInfrastructureFactoryDefinition
 @end

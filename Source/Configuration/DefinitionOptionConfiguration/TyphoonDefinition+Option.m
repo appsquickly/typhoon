@@ -7,6 +7,7 @@
 #import "TyphoonOptionMatcher+Internal.h"
 #import "TyphoonMatcherDefinitionFactory.h"
 #import "TyphoonInjections.h"
+#import "TyphoonFactoryDefinition.h"
 
 @implementation TyphoonDefinition (Option)
 
@@ -26,11 +27,13 @@
 {
     TyphoonOptionMatcher *matcher = [[TyphoonOptionMatcher alloc] initWithBlock:matcherBlock];
 
-    return [TyphoonDefinition withClass:[TyphoonInternalFactoryContainedDefinition class] configuration:^(TyphoonDefinition *definition) {
-        [definition setFactory:[TyphoonDefinition withClass:[TyphoonMatcherDefinitionFactory class] configuration:^(TyphoonDefinition *factoryDefinition) {
-            [factoryDefinition injectProperty:@selector(factory)];
-            [factoryDefinition injectProperty:@selector(matcher) with:matcher];
-        }]];
+    TyphoonDefinition *factoryDefinition = [TyphoonDefinition withClass:[TyphoonMatcherDefinitionFactory class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(factory)];
+        [definition injectProperty:@selector(matcher) with:matcher];
+    }];
+
+    return [TyphoonInfrastructureFactoryDefinition withConfiguration:^(TyphoonFactoryDefinition *definition) {
+        [definition setFactory:factoryDefinition];
         [definition setScope:TyphoonScopePrototype];
         [definition useInitializer:@selector(valueCreatedFromDefinitionMatchedOption:args:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:option];

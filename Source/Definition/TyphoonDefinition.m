@@ -25,6 +25,7 @@
 #import "TyphoonInjectionByReference.h"
 #import "TyphoonInjectionByFactoryReference.h"
 #import "TyphoonInjections.h"
+#import "TyphoonFactoryDefinition.h"
 
 static NSString *TyphoonScopeToString(TyphoonScope scope) {
     switch (scope) {
@@ -63,17 +64,17 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 
 + (id)withClass:(Class)clazz
 {
-    return [[TyphoonDefinition alloc] initWithClass:clazz key:nil];
+    return [[self alloc] initWithClass:clazz key:nil];
 }
 
 + (id)withClass:(Class)clazz configuration:(TyphoonDefinitionBlock)injections
 {
-    return [TyphoonDefinition withClass:clazz key:nil injections:injections];
+    return [self withClass:clazz key:nil injections:injections];
 }
 
-+ (TyphoonDefinition *)withClass:(Class)clazz key:(NSString *)key injections:(TyphoonDefinitionBlock)properties
++ (id)withClass:(Class)clazz key:(NSString *)key injections:(TyphoonDefinitionBlock)properties
 {
-    TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:clazz key:key];
+    TyphoonDefinition *definition = [[self alloc] initWithClass:clazz key:key];
 
     if (properties) {
         __weak TyphoonDefinition *weakDefinition = definition;
@@ -87,12 +88,12 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 
 + (id)withFactory:(id)factory selector:(SEL)selector
 {
-    return [TyphoonDefinition withFactory:factory selector:selector parameters:nil];
+    return [self withFactory:factory selector:selector parameters:nil];
 }
 
 + (id)withFactory:(id)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock
 {
-    return [TyphoonDefinition withClass:[NSObject class] configuration:^(TyphoonDefinition *definition) {
+    return [TyphoonFactoryDefinition withConfiguration:^(TyphoonFactoryDefinition *definition) {
         [definition setFactory:factory];
         [definition setScope:TyphoonScopePrototype];
         [definition useInitializer:selector parameters:parametersBlock];
