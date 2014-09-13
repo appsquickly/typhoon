@@ -39,14 +39,14 @@ Indicates that a shared instance should be created as long as necessary. When yo
 will be deallocated until needed again.
 *
 */
-typedef enum
+typedef NS_ENUM(NSInteger, TyphoonScope)
 {
-    TyphoonScopeObjectGraph = 1 << 0,
-    TyphoonScopePrototype = 1 << 1,
-    TyphoonScopeSingleton = 1 << 2,
-    TyphoonScopeWeakSingleton = 1 << 3
-} TyphoonScope;
-
+    TyphoonScopeObjectGraph,
+    TyphoonScopePrototype,
+    TyphoonScopeSingleton,
+    TyphoonScopeLazySingleton,
+    TyphoonScopeWeakSingleton,
+};
 
 typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
@@ -63,7 +63,6 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
     TyphoonScope _scope;
     TyphoonDefinition *_factory;
     TyphoonDefinition *_parent;
-    TyphoonRuntimeArguments *_currentRuntimeArguments;
 }
 
 @property(nonatomic, readonly) Class type;
@@ -168,12 +167,6 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 @property(nonatomic) BOOL abstract;
 
 
-/**
- * Say if the component (scoped as a singleton) should be lazily instantiated.
- */
-@property(nonatomic, assign, getter = isLazy) BOOL lazy;
-
-
 /* ====================================================================================================================================== */
 #pragma mark Factory methods
 
@@ -240,6 +233,8 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 @end
 
 @interface TyphoonDefinition(Unavailable)
+
+@property(nonatomic, assign, getter = isLazy) BOOL lazy __attribute((unavailable("Use TyphoonScopeLazySingleton instead")));
 
 + (id)withClass:(Class)clazz factory:(id)definition selector:(SEL)selector __attribute((unavailable("Use withFactory:selector: method instead")));
 + (instancetype)configDefinitionWithResource:(id)resource __attribute__((unavailable("Use configDefinitionWithName instead")));

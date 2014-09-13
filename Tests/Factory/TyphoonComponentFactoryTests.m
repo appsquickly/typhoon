@@ -311,11 +311,9 @@ static NSString *const DEFAULT_QUEST = @"quest";
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class]
                                                          configuration:^(TyphoonDefinition *definition) {
             [definition setScope:TyphoonScopeSingleton];
-            [definition setLazy:NO];
         }]];
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
-        [definition setScope:TyphoonScopeSingleton];
-        [definition setLazy:YES];
+        [definition setScope:TyphoonScopeLazySingleton];
     }]];
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CavalryMan class] configuration:^(TyphoonDefinition *definition) {
         [definition setScope:TyphoonScopeObjectGraph];

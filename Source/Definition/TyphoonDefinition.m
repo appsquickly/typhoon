@@ -242,11 +242,6 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 
 - (void)validateScope
 {
-    if (self.lazy && self.scope != TyphoonScopeSingleton) {
-        [NSException raise:NSInvalidArgumentException
-            format:@"The lazy attribute is only applicable to singleton scoped definitions, but is set for definition: %@ ", self];
-    }
-
     if ((self.scope != TyphoonScopePrototype && self.scope != TyphoonScopeObjectGraph) && [self hasRuntimeArgumentInjections]) {
         [NSException raise:NSInvalidArgumentException
             format:@"The runtime arguments injections are only applicable to prototype and object-graph scoped definitions, but is set for definition: %@ ",
