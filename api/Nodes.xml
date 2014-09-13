@@ -409,29 +409,9 @@
               <Anchor>a795116f13be1b26da1a5ff5d303d9797</Anchor>
              </Node>
              <Node>
-              <Name>configurerWithResource:</Name>
-              <Path>interface_typhoon_config_post_processor.html</Path>
-              <Anchor>abe89b3da7c51f38a6735f9c7efc735cb</Anchor>
-             </Node>
-             <Node>
-              <Name>configurerWithResourceList:</Name>
-              <Path>interface_typhoon_config_post_processor.html</Path>
-              <Anchor>aafa3a4bd4796d51acbdc6547b4b3fa43</Anchor>
-             </Node>
-             <Node>
-              <Name>configurerWithResources:</Name>
-              <Path>interface_typhoon_config_post_processor.html</Path>
-              <Anchor>aad2191493bca13c18f4dd775aa43cdf8</Anchor>
-             </Node>
-             <Node>
               <Name>registerConfigurationClass:forExtension:</Name>
               <Path>interface_typhoon_config_post_processor.html</Path>
               <Anchor>acd33308b4cdc7e91059b8698a9594e19</Anchor>
-             </Node>
-             <Node>
-              <Name>usePropertyStyleResource:</Name>
-              <Path>interface_typhoon_config_post_processor.html</Path>
-              <Anchor>a1c4617ac56657acd2f53b84c3f7f2493</Anchor>
              </Node>
              <Node>
               <Name>useResource:withExtension:</Name>
@@ -951,29 +931,9 @@
               <Anchor>a795116f13be1b26da1a5ff5d303d9797</Anchor>
              </Node>
              <Node>
-              <Name>configurerWithResource:</Name>
-              <Path>interface_typhoon_config_post_processor.html</Path>
-              <Anchor>abe89b3da7c51f38a6735f9c7efc735cb</Anchor>
-             </Node>
-             <Node>
-              <Name>configurerWithResourceList:</Name>
-              <Path>interface_typhoon_config_post_processor.html</Path>
-              <Anchor>aafa3a4bd4796d51acbdc6547b4b3fa43</Anchor>
-             </Node>
-             <Node>
-              <Name>configurerWithResources:</Name>
-              <Path>interface_typhoon_config_post_processor.html</Path>
-              <Anchor>aad2191493bca13c18f4dd775aa43cdf8</Anchor>
-             </Node>
-             <Node>
               <Name>registerConfigurationClass:forExtension:</Name>
               <Path>interface_typhoon_config_post_processor.html</Path>
               <Anchor>acd33308b4cdc7e91059b8698a9594e19</Anchor>
-             </Node>
-             <Node>
-              <Name>usePropertyStyleResource:</Name>
-              <Path>interface_typhoon_config_post_processor.html</Path>
-              <Anchor>a1c4617ac56657acd2f53b84c3f7f2493</Anchor>
              </Node>
              <Node>
               <Name>useResource:withExtension:</Name>
@@ -989,32 +949,6 @@
               <Name>useResourceWithName:</Name>
               <Path>interface_typhoon_config_post_processor.html</Path>
               <Anchor>aa918daab1e558a2f7a5180de43648059</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>TyphoonConfigPostProcessor(Deprecated)</Name>
-            <Path>category_typhoon_config_post_processor_07_deprecated_08.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>configurerWithResource:</Name>
-              <Path>category_typhoon_config_post_processor_07_deprecated_08.html</Path>
-              <Anchor>abe89b3da7c51f38a6735f9c7efc735cb</Anchor>
-             </Node>
-             <Node>
-              <Name>configurerWithResourceList:</Name>
-              <Path>category_typhoon_config_post_processor_07_deprecated_08.html</Path>
-              <Anchor>aafa3a4bd4796d51acbdc6547b4b3fa43</Anchor>
-             </Node>
-             <Node>
-              <Name>configurerWithResources:</Name>
-              <Path>category_typhoon_config_post_processor_07_deprecated_08.html</Path>
-              <Anchor>aad2191493bca13c18f4dd775aa43cdf8</Anchor>
-             </Node>
-             <Node>
-              <Name>usePropertyStyleResource:</Name>
-              <Path>category_typhoon_config_post_processor_07_deprecated_08.html</Path>
-              <Anchor>a1c4617ac56657acd2f53b84c3f7f2493</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -2227,10 +2161,6 @@
             <Path>category_typhoon_abstract_injection_07_protected_08.html</Path>
            </Node>
            <Node>
-            <Name>TyphoonConfigPostProcessor(Deprecated)</Name>
-            <Path>category_typhoon_config_post_processor_07_deprecated_08.html</Path>
-           </Node>
-           <Node>
             <Name>TyphoonDefinition(Option)</Name>
             <Path>category_typhoon_definition_07_option_08.html</Path>
            </Node>
@@ -2710,17 +2640,6 @@
             </Subnodes>
            </Node>
            <Node>
-            <Name>TyphoonAutowire.h</Name>
-            <Path>_typhoon_autowire_8h.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>typhoon_autoWire</Name>
-              <Path>_typhoon_autowire_8h.html</Path>
-              <Anchor>aa55bf427fafe04d405f16032b29c2bce</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
             <Name>TyphoonBlockComponentFactory.h</Name>
             <Path>_typhoon_block_component_factory_8h.html</Path>
             <Subnodes>
@@ -2800,32 +2719,6 @@
             <Name>TyphoonConfigPostProcessor.h</Name>
             <Path>_typhoon_config_post_processor_8h.html</Path>
             <Subnodes>
-             <Node>
-              <Name>TyphoonConfigPostProcessor(Deprecated)</Name>
-              <Path>category_typhoon_config_post_processor_07_deprecated_08.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>configurerWithResource:</Name>
-                <Path>category_typhoon_config_post_processor_07_deprecated_08.html</Path>
-                <Anchor>abe89b3da7c51f38a6735f9c7efc735cb</Anchor>
-               </Node>
-               <Node>
-                <Name>configurerWithResourceList:</Name>
-                <Path>category_typhoon_config_post_processor_07_deprecated_08.html</Path>
-                <Anchor>aafa3a4bd4796d51acbdc6547b4b3fa43</Anchor>
-               </Node>
-               <Node>
-                <Name>configurerWithResources:</Name>
-                <Path>category_typhoon_config_post_processor_07_deprecated_08.html</Path>
-                <Anchor>aad2191493bca13c18f4dd775aa43cdf8</Anchor>
-               </Node>
-               <Node>
-                <Name>usePropertyStyleResource:</Name>
-                <Path>category_typhoon_config_post_processor_07_deprecated_08.html</Path>
-                <Anchor>a1c4617ac56657acd2f53b84c3f7f2493</Anchor>
-               </Node>
-              </Subnodes>
-             </Node>
              <Node>
               <Name>TyphoonConfig</Name>
               <Path>_typhoon_config_post_processor_8h.html</Path>
@@ -3371,11 +3264,6 @@
               <Anchor>a15cce88ef63883f5f6b67918285aa27d</Anchor>
              </Node>
              <Node>
-              <Name>TyphoonAutoWiredProperties</Name>
-              <Path>_typhoon_introspection_utils_8h.html</Path>
-              <Anchor>a0336424060fda82f8b5a05fe83909858</Anchor>
-             </Node>
-             <Node>
               <Name>TyphoonClassFromString</Name>
               <Path>_typhoon_introspection_utils_8h.html</Path>
               <Anchor>ae1c98d6255f9a3c2bf6c19a46b25599e</Anchor>
@@ -3744,10 +3632,6 @@
            <Node>
             <Name>TyphoonSelector.h</Name>
             <Path>_typhoon_selector_8h.html</Path>
-           </Node>
-           <Node>
-            <Name>TyphoonShorthand.h</Name>
-            <Path>_typhoon_shorthand_8h.html</Path>
            </Node>
            <Node>
             <Name>TyphoonStartup.h</Name>

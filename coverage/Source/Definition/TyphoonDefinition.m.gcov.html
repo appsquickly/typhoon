@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-09-12 03:17:55</td>
+            <td class="headerValue">2014-09-13 14:08:45</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -104,7 +104,7 @@
 <span class="lineNum">      46 </span>            : 
 <span class="lineNum">      47 </span>            : @end
 <span class="lineNum">      48 </span>            : 
-<span class="lineNum">      49 </span><span class="lineCov">        585 : @implementation TyphoonDefinition</span>
+<span class="lineNum">      49 </span><span class="lineCov">        596 : @implementation TyphoonDefinition</span>
 <span class="lineNum">      50 </span>            : {
 <span class="lineNum">      51 </span>            :     BOOL _isScopeSetByUser;
 <span class="lineNum">      52 </span>            : }
@@ -161,37 +161,37 @@
 <span class="lineNum">     103 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     104 </span>            : #pragma mark - Interface Methods
 <span class="lineNum">     105 </span>            : 
-<span class="lineNum">     106 </span><span class="lineCov">        282 : - (void)injectProperty:(SEL)selector</span>
+<span class="lineNum">     106 </span><span class="lineCov">        281 : - (void)injectProperty:(SEL)selector</span>
 <span class="lineNum">     107 </span>            : {
-<span class="lineNum">     108 </span><span class="lineCov">        282 :     [self injectProperty:selector with:[[TyphoonInjectionByType alloc] init]];</span>
-<span class="lineNum">     109 </span><span class="lineCov">        282 : }</span>
+<span class="lineNum">     108 </span><span class="lineCov">        281 :     [self injectProperty:selector with:[[TyphoonInjectionByType alloc] init]];</span>
+<span class="lineNum">     109 </span><span class="lineCov">        281 : }</span>
 <span class="lineNum">     110 </span>            : 
-<span class="lineNum">     111 </span><span class="lineCov">       2195 : - (void)injectProperty:(SEL)selector with:(id)injection</span>
+<span class="lineNum">     111 </span><span class="lineCov">       2194 : - (void)injectProperty:(SEL)selector with:(id)injection</span>
 <span class="lineNum">     112 </span>            : {
-<span class="lineNum">     113 </span><span class="lineCov">       2195 :     injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);</span>
-<span class="lineNum">     114 </span><span class="lineCov">       2195 :     [injection setPropertyName:NSStringFromSelector(selector)];</span>
-<span class="lineNum">     115 </span><span class="lineCov">       2195 :     [_injectedProperties addObject:injection];</span>
-<span class="lineNum">     116 </span><span class="lineCov">       2195 : }</span>
+<span class="lineNum">     113 </span><span class="lineCov">       2194 :     injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);</span>
+<span class="lineNum">     114 </span><span class="lineCov">       2194 :     [injection setPropertyName:NSStringFromSelector(selector)];</span>
+<span class="lineNum">     115 </span><span class="lineCov">       2194 :     [_injectedProperties addObject:injection];</span>
+<span class="lineNum">     116 </span><span class="lineCov">       2194 : }</span>
 <span class="lineNum">     117 </span>            : 
-<span class="lineNum">     118 </span><span class="lineCov">        158 : - (void)injectMethod:(SEL)selector parameters:(void(^)(TyphoonMethod *method))parametersBlock</span>
+<span class="lineNum">     118 </span><span class="lineCov">        210 : - (void)injectMethod:(SEL)selector parameters:(void(^)(TyphoonMethod *method))parametersBlock</span>
 <span class="lineNum">     119 </span>            : {
-<span class="lineNum">     120 </span><span class="lineCov">        158 :     TyphoonMethod *method = [[TyphoonMethod alloc] initWithSelector:selector];</span>
-<span class="lineNum">     121 </span><span class="lineCov">        158 :     if (parametersBlock) {</span>
-<span class="lineNum">     122 </span><span class="lineCov">        158 :         parametersBlock(method);</span>
-<span class="lineNum">     123 </span><span class="lineCov">        158 :     }</span>
-<span class="lineNum">     124 </span><span class="lineCov">        158 :     [method checkParametersCount];</span>
-<span class="lineNum">     125 </span><span class="lineCov">        158 :     [_injectedMethods addObject:method];</span>
-<span class="lineNum">     126 </span><span class="lineCov">        158 : }</span>
+<span class="lineNum">     120 </span><span class="lineCov">        210 :     TyphoonMethod *method = [[TyphoonMethod alloc] initWithSelector:selector];</span>
+<span class="lineNum">     121 </span><span class="lineCov">        210 :     if (parametersBlock) {</span>
+<span class="lineNum">     122 </span><span class="lineCov">        210 :         parametersBlock(method);</span>
+<span class="lineNum">     123 </span><span class="lineCov">        210 :     }</span>
+<span class="lineNum">     124 </span><span class="lineCov">        210 :     [method checkParametersCount];</span>
+<span class="lineNum">     125 </span><span class="lineCov">        210 :     [_injectedMethods addObject:method];</span>
+<span class="lineNum">     126 </span><span class="lineCov">        210 : }</span>
 <span class="lineNum">     127 </span>            : 
-<span class="lineNum">     128 </span><span class="lineCov">       1178 : - (void)useInitializer:(SEL)selector parameters:(void(^)(TyphoonMethod *initializer))parametersBlock</span>
+<span class="lineNum">     128 </span><span class="lineCov">       1152 : - (void)useInitializer:(SEL)selector parameters:(void(^)(TyphoonMethod *initializer))parametersBlock</span>
 <span class="lineNum">     129 </span>            : {
-<span class="lineNum">     130 </span><span class="lineCov">       1178 :     TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:selector];</span>
-<span class="lineNum">     131 </span><span class="lineCov">       1178 :     if (parametersBlock) {</span>
-<span class="lineNum">     132 </span><span class="lineCov">       1178 :         parametersBlock(initializer);</span>
-<span class="lineNum">     133 </span><span class="lineCov">       1178 :     }</span>
-<span class="lineNum">     134 </span><span class="lineCov">       1178 :     [initializer checkParametersCount];</span>
-<span class="lineNum">     135 </span><span class="lineCov">       1178 :     self.initializer = initializer;</span>
-<span class="lineNum">     136 </span><span class="lineCov">       1178 : }</span>
+<span class="lineNum">     130 </span><span class="lineCov">       1152 :     TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:selector];</span>
+<span class="lineNum">     131 </span><span class="lineCov">       1152 :     if (parametersBlock) {</span>
+<span class="lineNum">     132 </span><span class="lineCov">       1152 :         parametersBlock(initializer);</span>
+<span class="lineNum">     133 </span><span class="lineCov">       1152 :     }</span>
+<span class="lineNum">     134 </span><span class="lineCov">       1152 :     [initializer checkParametersCount];</span>
+<span class="lineNum">     135 </span><span class="lineCov">       1152 :     self.initializer = initializer;</span>
+<span class="lineNum">     136 </span><span class="lineCov">       1152 : }</span>
 <span class="lineNum">     137 </span>            : 
 <span class="lineNum">     138 </span><span class="lineNoCov">          0 : - (void)useInitializer:(SEL)selector</span>
 <span class="lineNum">     139 </span>            : {
@@ -222,15 +222,15 @@
 <span class="lineNum">     164 </span>            : - (TyphoonMethod *)initializer
 <span class="lineNum">     165 </span>            : {
 <span class="lineNum">     166 </span><span class="lineCov">       6548 :     if (!_initializer) {</span>
-<span class="lineNum">     167 </span><span class="lineCov">       1465 :         TyphoonMethod *parentInitializer = _parent.initializer;</span>
-<span class="lineNum">     168 </span><span class="lineCov">       1465 :         if (parentInitializer) {</span>
+<span class="lineNum">     167 </span><span class="lineCov">       1491 :         TyphoonMethod *parentInitializer = _parent.initializer;</span>
+<span class="lineNum">     168 </span><span class="lineCov">       1491 :         if (parentInitializer) {</span>
 <span class="lineNum">     169 </span><span class="lineCov">          7 :             return parentInitializer;</span>
 <span class="lineNum">     170 </span>            :         }
 <span class="lineNum">     171 </span>            :         else {
-<span class="lineNum">     172 </span><span class="lineCov">       1458 :             [self setInitializer:[[TyphoonMethod alloc] initWithSelector:@selector(init)]];</span>
-<span class="lineNum">     173 </span><span class="lineCov">       1458 :             self.initializerGenerated = YES;</span>
+<span class="lineNum">     172 </span><span class="lineCov">       1484 :             [self setInitializer:[[TyphoonMethod alloc] initWithSelector:@selector(init)]];</span>
+<span class="lineNum">     173 </span><span class="lineCov">       1484 :             self.initializerGenerated = YES;</span>
 <span class="lineNum">     174 </span>            :         }
-<span class="lineNum">     175 </span><span class="lineCov">      10919 :     }</span>
+<span class="lineNum">     175 </span><span class="lineCov">      10997 :     }</span>
 <span class="lineNum">     176 </span><span class="lineCov">       6541 :     return _initializer;</span>
 <span class="lineNum">     177 </span><span class="lineCov">       6548 : }</span>
 <span class="lineNum">     178 </span>            : 

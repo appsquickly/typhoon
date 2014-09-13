@@ -28,7 +28,6 @@ var files =
       [ "TyphoonAssemblySelectorAdviser", "interface_typhoon_assembly_selector_adviser.html", "interface_typhoon_assembly_selector_adviser" ]
     ] ],
     [ "TyphoonAutoInjection.h", "_typhoon_auto_injection_8h.html", "_typhoon_auto_injection_8h" ],
-    [ "TyphoonAutowire.h", "_typhoon_autowire_8h.html", "_typhoon_autowire_8h" ],
     [ "TyphoonBlockComponentFactory.h", "_typhoon_block_component_factory_8h.html", null ],
     [ "TyphoonBundledImageTypeConverter.h", "_typhoon_bundled_image_type_converter_8h.html", null ],
     [ "TyphoonBundleResource.h", "_typhoon_bundle_resource_8h.html", null ],
@@ -128,7 +127,6 @@ var files =
       [ "TyphoonRuntimeArguments", "interface_typhoon_runtime_arguments.html", "interface_typhoon_runtime_arguments" ]
     ] ],
     [ "TyphoonSelector.h", "_typhoon_selector_8h.html", null ],
-    [ "TyphoonShorthand.h", "_typhoon_shorthand_8h.html", null ],
     [ "TyphoonStartup.h", "_typhoon_startup_8h.html", null ],
     [ "TyphoonStoryboard.h", "_typhoon_storyboard_8h.html", null ],
     [ "TyphoonStringUtils.h", "_typhoon_string_utils_8h.html", null ],

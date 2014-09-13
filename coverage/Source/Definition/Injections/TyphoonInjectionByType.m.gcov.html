@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-09-12 03:17:55</td>
+            <td class="headerValue">2014-09-13 14:08:45</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -70,7 +70,7 @@
 <span class="lineNum">      12 </span>            : #import &quot;TyphoonComponentFactory+InstanceBuilder.h&quot;
 <span class="lineNum">      13 </span>            : #import &quot;TyphoonDefinition.h&quot;
 <span class="lineNum">      14 </span>            : 
-<span class="lineNum">      15 </span><span class="lineCov">        226 : @implementation TyphoonInjectionByType</span>
+<span class="lineNum">      15 </span><span class="lineCov">        227 : @implementation TyphoonInjectionByType</span>
 <span class="lineNum">      16 </span>            : 
 <span class="lineNum">      17 </span>            : #pragma mark - Overrides
 <span class="lineNum">      18 </span>            : 
@@ -82,18 +82,18 @@
 <span class="lineNum">      24 </span><span class="lineCov">          5 :     return copied;</span>
 <span class="lineNum">      25 </span><span class="lineCov">          5 : }</span>
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">          2 : - (BOOL)isEqualToCustom:(id)injection</span>
+<span class="lineNum">      27 </span><span class="lineCov">          3 : - (BOOL)isEqualToCustom:(id)injection</span>
 <span class="lineNum">      28 </span>            : {
-<span class="lineNum">      29 </span><span class="lineCov">          2 :     return YES;</span>
-<span class="lineNum">      30 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      29 </span><span class="lineCov">          3 :     return YES;</span>
+<span class="lineNum">      30 </span><span class="lineCov">          3 : }</span>
 <span class="lineNum">      31 </span>            : 
 <span class="lineNum">      32 </span><span class="lineCov">         19 : - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result</span>
 <span class="lineNum">      33 </span>            : {
 <span class="lineNum">      34 </span><span class="lineCov">         10 :     id classOrProtocol = self.explicitClassOrProtocol;</span>
 <span class="lineNum">      35 </span>            : 
 <span class="lineNum">      36 </span><span class="lineCov">         10 :     if (!classOrProtocol) {</span>
-<span class="lineNum">      37 </span><span class="lineCov">          6 :         classOrProtocol = context.destinationType.classOrProtocol;</span>
-<span class="lineNum">      38 </span><span class="lineCov">          6 :     }</span>
+<span class="lineNum">      37 </span><span class="lineCov">          5 :         classOrProtocol = context.destinationType.classOrProtocol;</span>
+<span class="lineNum">      38 </span><span class="lineCov">          5 :     }</span>
 <span class="lineNum">      39 </span>            :     
 <span class="lineNum">      40 </span><span class="lineCov">         10 :     if (!classOrProtocol) {</span>
 <span class="lineNum">      41 </span><span class="lineCov">          1 :         if (self.type == TyphoonInjectionTypeProperty) {</span>

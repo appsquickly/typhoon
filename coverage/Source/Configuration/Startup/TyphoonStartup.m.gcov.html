@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">46</td>
+            <td class="headerCovTableEntry">45</td>
             <td class="headerCovTableEntry">70</td>
-            <td class="headerCovTableEntryLo">65.7 %</td>
+            <td class="headerCovTableEntryLo">64.3 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-09-12 03:17:55</td>
+            <td class="headerValue">2014-09-13 14:08:45</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -126,9 +126,9 @@
 <span class="lineNum">      68 </span><span class="lineCov">          1 :     NSDictionary *bundleInfoDictionary = [[NSBundle mainBundle] infoDictionary];</span>
 <span class="lineNum">      69 </span>            : #if TARGET_OS_IPHONE
 <span class="lineNum">      70 </span><span class="lineCov">          1 :     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {</span>
-<span class="lineNum">      71 </span><span class="lineCov">          1 :         names = [bundleInfoDictionary objectForKey:@&quot;TyphoonInitialAssemblies(iPad)&quot;];</span>
-<span class="lineNum">      72 </span><span class="lineCov">          1 :     } else {</span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 :         names = [bundleInfoDictionary objectForKey:@&quot;TyphoonInitialAssemblies(iPhone)&quot;];</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 :         names = [bundleInfoDictionary objectForKey:@&quot;TyphoonInitialAssemblies(iPad)&quot;];</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :     } else {</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :         names = [bundleInfoDictionary objectForKey:@&quot;TyphoonInitialAssemblies(iPhone)&quot;];</span>
 <span class="lineNum">      74 </span>            :     }
 <span class="lineNum">      75 </span>            : #endif
 <span class="lineNum">      76 </span><span class="lineCov">          1 :     if (!names) {</span>

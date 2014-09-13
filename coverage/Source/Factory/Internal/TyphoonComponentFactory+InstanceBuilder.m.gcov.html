@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">183</td>
-            <td class="headerCovTableEntry">193</td>
-            <td class="headerCovTableEntryHi">94.8 %</td>
+            <td class="headerCovTableEntry">179</td>
+            <td class="headerCovTableEntry">189</td>
+            <td class="headerCovTableEntryHi">94.7 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-09-12 03:17:55</td>
+            <td class="headerValue">2014-09-13 14:08:45</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -141,10 +141,10 @@
 <span class="lineNum">      83 </span><span class="lineCov">        437 :     BOOL isClassMethod = [initializer isClassMethodOnClass:instanceClass];</span>
 <span class="lineNum">      84 </span>            : 
 <span class="lineNum">      85 </span><span class="lineCov">        831 :     if (isClass &amp;&amp; !isClassMethod) {</span>
-<span class="lineNum">      86 </span><span class="lineCov">        362 :         result = [invocation typhoon_resultOfInvokingOnAllocationForClass:instanceClass];</span>
-<span class="lineNum">      87 </span><span class="lineCov">        362 :     }</span>
+<span class="lineNum">      86 </span><span class="lineCov">        388 :         result = [invocation typhoon_resultOfInvokingOnAllocationForClass:instanceClass];</span>
+<span class="lineNum">      87 </span><span class="lineCov">        388 :     }</span>
 <span class="lineNum">      88 </span>            :     else {
-<span class="lineNum">      89 </span><span class="lineCov">         75 :         result = [invocation typhoon_resultOfInvokingOnInstance:instanceOrClass];</span>
+<span class="lineNum">      89 </span><span class="lineCov">         49 :         result = [invocation typhoon_resultOfInvokingOnInstance:instanceOrClass];</span>
 <span class="lineNum">      90 </span>            :     }
 <span class="lineNum">      91 </span>            : 
 <span class="lineNum">      92 </span><span class="lineCov">        434 :     return result;</span>
@@ -202,9 +202,9 @@
 <span class="lineNum">     144 </span><span class="lineCov">        316 :         [self doPropertyInjectionOn:instance property:property args:args];</span>
 <span class="lineNum">     145 </span><span class="lineCov">       1244 :     }</span>
 <span class="lineNum">     146 </span>            : 
-<span class="lineNum">     147 </span><span class="lineCov">        495 :     for (TyphoonMethod *method in [definition injectedMethods]) {</span>
-<span class="lineNum">     148 </span><span class="lineCov">         17 :         [self doMethodInjection:method onInstance:instance args:args];</span>
-<span class="lineNum">     149 </span><span class="lineCov">        495 :     }</span>
+<span class="lineNum">     147 </span><span class="lineCov">        625 :     for (TyphoonMethod *method in [definition injectedMethods]) {</span>
+<span class="lineNum">     148 </span><span class="lineCov">         69 :         [self doMethodInjection:method onInstance:instance args:args];</span>
+<span class="lineNum">     149 </span><span class="lineCov">        625 :     }</span>
 <span class="lineNum">     150 </span>            : 
 <span class="lineNum">     151 </span><span class="lineCov">        445 :     [self injectAssemblyOnInstanceIfTyphoonAware:instance];</span>
 <span class="lineNum">     152 </span>            : 
@@ -238,18 +238,18 @@
 <span class="lineNum">     180 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     181 </span>            : #pragma mark - Methods Injection
 <span class="lineNum">     182 </span>            : 
-<span class="lineNum">     183 </span><span class="lineCov">         34 : - (void)doMethodInjection:(TyphoonMethod *)method onInstance:(id)instance args:(TyphoonRuntimeArguments *)args</span>
+<span class="lineNum">     183 </span><span class="lineCov">        138 : - (void)doMethodInjection:(TyphoonMethod *)method onInstance:(id)instance args:(TyphoonRuntimeArguments *)args</span>
 <span class="lineNum">     184 </span>            : {
-<span class="lineNum">     185 </span><span class="lineCov">         17 :     TyphoonInjectionContext *context = [TyphoonInjectionContext new];</span>
-<span class="lineNum">     186 </span><span class="lineCov">         17 :     context.destinationInstanceClass = [instance class];</span>
-<span class="lineNum">     187 </span><span class="lineCov">         17 :     context.factory = self;</span>
-<span class="lineNum">     188 </span><span class="lineCov">         17 :     context.args = args;</span>
-<span class="lineNum">     189 </span><span class="lineCov">         17 :     context.raiseExceptionIfCircular = NO;</span>
+<span class="lineNum">     185 </span><span class="lineCov">         69 :     TyphoonInjectionContext *context = [TyphoonInjectionContext new];</span>
+<span class="lineNum">     186 </span><span class="lineCov">         69 :     context.destinationInstanceClass = [instance class];</span>
+<span class="lineNum">     187 </span><span class="lineCov">         69 :     context.factory = self;</span>
+<span class="lineNum">     188 </span><span class="lineCov">         69 :     context.args = args;</span>
+<span class="lineNum">     189 </span><span class="lineCov">         69 :     context.raiseExceptionIfCircular = NO;</span>
 <span class="lineNum">     190 </span>            : 
-<span class="lineNum">     191 </span><span class="lineCov">         34 :     [method createInvocationOnClass:[instance class] withContext:context completion:^(NSInvocation *invocation) {</span>
-<span class="lineNum">     192 </span><span class="lineCov">         17 :         [invocation invokeWithTarget:instance];</span>
-<span class="lineNum">     193 </span><span class="lineCov">         17 :     }];</span>
-<span class="lineNum">     194 </span><span class="lineCov">         17 : }</span>
+<span class="lineNum">     191 </span><span class="lineCov">        138 :     [method createInvocationOnClass:[instance class] withContext:context completion:^(NSInvocation *invocation) {</span>
+<span class="lineNum">     192 </span><span class="lineCov">         69 :         [invocation invokeWithTarget:instance];</span>
+<span class="lineNum">     193 </span><span class="lineCov">         69 :     }];</span>
+<span class="lineNum">     194 </span><span class="lineCov">         69 : }</span>
 <span class="lineNum">     195 </span>            : 
 <span class="lineNum">     196 </span>            : /* ====================================================================================================================================== */
 <span class="lineNum">     197 </span>            : #pragma mark - Property Injection
@@ -299,95 +299,88 @@
 <span class="lineNum">     241 </span>            : 
 <span class="lineNum">     242 </span><span class="lineCov">         43 :     if ([candidates count] == 0) {</span>
 <span class="lineNum">     243 </span>            : 
-<span class="lineNum">     244 </span>            :         //TODO: Remove it!
-<span class="lineNum">     245 </span><span class="lineCov">          6 :         SEL autoInjectedProperties = sel_registerName(&quot;typhoonAutoInjectedProperties&quot;);</span>
-<span class="lineNum">     246 </span><span class="lineCov">         11 :         if (IsClass(classOrProtocol) &amp;&amp; [classOrProtocol respondsToSelector:autoInjectedProperties]) {</span>
-<span class="lineNum">     247 </span>            :             LogTrace(@&quot;Class %@ wants auto-wiring. . . registering.&quot;, NSStringFromClass(classOrProtocol));
-<span class="lineNum">     248 </span><span class="lineCov">          1 :             [self registerDefinition:[TyphoonDefinition withClass:classOrProtocol]];</span>
-<span class="lineNum">     249 </span><span class="lineCov">          1 :             return [self definitionForType:classOrProtocol orNil:returnNilIfNotFound includeSubclasses:includeSubclasses];</span>
-<span class="lineNum">     250 </span>            :         }
-<span class="lineNum">     251 </span>            : 
-<span class="lineNum">     252 </span><span class="lineCov">          5 :         if (IsClass(classOrProtocol)) {</span>
-<span class="lineNum">     253 </span><span class="lineCov">          4 :             TyphoonDefinition *autoDefinition = [self autoInjectionDefinitionForClass:classOrProtocol];</span>
-<span class="lineNum">     254 </span><span class="lineCov">          4 :             if (autoDefinition) {</span>
-<span class="lineNum">     255 </span><span class="lineCov">          1 :                 [self registerDefinition:autoDefinition];</span>
-<span class="lineNum">     256 </span><span class="lineCov">          1 :                 return [self definitionForType:classOrProtocol orNil:returnNilIfNotFound includeSubclasses:includeSubclasses];</span>
-<span class="lineNum">     257 </span>            :             }
-<span class="lineNum">     258 </span><span class="lineCov">         42 :         }</span>
-<span class="lineNum">     259 </span>            : 
-<span class="lineNum">     260 </span><span class="lineCov">          4 :         if (returnNilIfNotFound) {</span>
-<span class="lineNum">     261 </span><span class="lineCov">          2 :             return nil;</span>
-<span class="lineNum">     262 </span>            :         } else {
-<span class="lineNum">     263 </span><span class="lineCov">          2 :             [NSException raise:NSInvalidArgumentException format:@&quot;No components defined which satisify type: '%@'&quot;, TyphoonTypeStringFor(classOrProtocol)];</span>
-<span class="lineNum">     264 </span>            :         }
-<span class="lineNum">     265 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     266 </span><span class="lineCov">         37 :     if ([candidates count] &gt; 1) {</span>
-<span class="lineNum">     267 </span><span class="lineCov">          4 :         [NSException raise:NSInvalidArgumentException format:@&quot;More than one component is defined satisfying type: '%@' : %@&quot;,</span>
-<span class="lineNum">     268 </span><span class="lineCov">          2 :                                                              TyphoonTypeStringFor(classOrProtocol), candidates];</span>
-<span class="lineNum">     269 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">     270 </span><span class="lineCov">         35 :     return [candidates firstObject];</span>
-<span class="lineNum">     271 </span><span class="lineCov">         39 : }</span>
-<span class="lineNum">     272 </span>            : 
-<span class="lineNum">     273 </span><span class="lineCov">          3 : - (NSArray *)allDefinitionsForType:(id)classOrProtocol</span>
-<span class="lineNum">     274 </span>            : {
-<span class="lineNum">     275 </span><span class="lineCov">          3 :     return [self allDefinitionsForType:classOrProtocol includeSubclasses:YES];</span>
-<span class="lineNum">     276 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     277 </span>            : 
-<span class="lineNum">     278 </span><span class="lineCov">         46 : - (NSArray *)allDefinitionsForType:(id)classOrProtocol includeSubclasses:(BOOL)includeSubclasses</span>
-<span class="lineNum">     279 </span>            : {
-<span class="lineNum">     280 </span><span class="lineCov">         46 :     NSMutableArray *results = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">     281 </span><span class="lineCov">         46 :     BOOL isClass = IsClass(classOrProtocol);</span>
-<span class="lineNum">     282 </span><span class="lineCov">         46 :     BOOL isProtocol = IsProtocol(classOrProtocol);</span>
-<span class="lineNum">     283 </span><span class="lineCov">         56 :     if (!isClass &amp;&amp; !isProtocol) {</span>
-<span class="lineNum">     284 </span><span class="lineNoCov">          0 :         [NSException raise:NSInternalInconsistencyException format:@&quot;%@ is not class or protocol&quot;, classOrProtocol];</span>
-<span class="lineNum">     285 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     286 </span>            : 
-<span class="lineNum">     287 </span><span class="lineCov">        432 :     for (TyphoonDefinition *definition in _registry) {</span>
-<span class="lineNum">     288 </span><span class="lineCov">        170 :         if (isClass) {</span>
-<span class="lineNum">     289 </span><span class="lineCov">        141 :             BOOL isSameClass = definition.type == classOrProtocol;</span>
-<span class="lineNum">     290 </span><span class="lineCov">        262 :             BOOL isSubclass = includeSubclasses &amp;&amp; [definition.type isSubclassOfClass:classOrProtocol];</span>
-<span class="lineNum">     291 </span><span class="lineCov">        251 :             if (isSameClass || isSubclass) {</span>
-<span class="lineNum">     292 </span><span class="lineCov">         33 :                 [results addObject:definition];</span>
-<span class="lineNum">     293 </span><span class="lineCov">         33 :             }</span>
-<span class="lineNum">     294 </span><span class="lineCov">        141 :         }</span>
-<span class="lineNum">     295 </span>            :         else {
-<span class="lineNum">     296 </span><span class="lineCov">         29 :             if ([definition.type conformsToProtocol:classOrProtocol]) {</span>
-<span class="lineNum">     297 </span><span class="lineCov">         12 :                 [results addObject:definition];</span>
-<span class="lineNum">     298 </span><span class="lineCov">         12 :             }</span>
-<span class="lineNum">     299 </span>            :         }
-<span class="lineNum">     300 </span><span class="lineCov">        432 :     }</span>
-<span class="lineNum">     301 </span><span class="lineCov">         46 :     return results;</span>
-<span class="lineNum">     302 </span><span class="lineCov">         46 : }</span>
-<span class="lineNum">     303 </span>            : 
-<span class="lineNum">     304 </span><span class="lineCov">          4 : - (TyphoonDefinition *)autoInjectionDefinitionForClass:(Class)clazz</span>
-<span class="lineNum">     305 </span>            : {
-<span class="lineNum">     306 </span><span class="lineCov">          4 :     TyphoonDefinition *result = nil;</span>
-<span class="lineNum">     307 </span>            : 
-<span class="lineNum">     308 </span><span class="lineCov">          4 :     TyphoonFactoryAutoInjectionPostProcessor *postProcessor = [self autoInjectionPostProcessor];</span>
-<span class="lineNum">     309 </span><span class="lineCov">          4 :     NSArray *properties = [postProcessor autoInjectedPropertiesForClass:clazz];</span>
-<span class="lineNum">     310 </span><span class="lineCov">          4 :     if (properties) {</span>
-<span class="lineNum">     311 </span><span class="lineCov">          1 :         result = [TyphoonDefinition withClass:clazz];</span>
-<span class="lineNum">     312 </span><span class="lineCov">          6 :         for (id propertyInjection in properties) {</span>
-<span class="lineNum">     313 </span><span class="lineCov">          2 :             [result addInjectedPropertyIfNotExists:propertyInjection];</span>
-<span class="lineNum">     314 </span><span class="lineCov">          6 :         }</span>
-<span class="lineNum">     315 </span><span class="lineCov">          1 :     }</span>
-<span class="lineNum">     316 </span>            : 
-<span class="lineNum">     317 </span><span class="lineCov">          4 :     return result;</span>
-<span class="lineNum">     318 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">     319 </span>            : 
-<span class="lineNum">     320 </span>            : - (TyphoonFactoryAutoInjectionPostProcessor *)autoInjectionPostProcessor
-<span class="lineNum">     321 </span>            : {
-<span class="lineNum">     322 </span><span class="lineCov">          4 :     TyphoonFactoryAutoInjectionPostProcessor *postProcessor = nil;</span>
-<span class="lineNum">     323 </span><span class="lineCov">         32 :     for (id&lt;TyphoonComponentFactoryPostProcessor&gt; item in _factoryPostProcessors) {</span>
-<span class="lineNum">     324 </span><span class="lineCov">         12 :         if ([item isMemberOfClass:[TyphoonFactoryAutoInjectionPostProcessor class]]) {</span>
-<span class="lineNum">     325 </span><span class="lineCov">          4 :             postProcessor = item;</span>
-<span class="lineNum">     326 </span><span class="lineCov">          4 :             break;</span>
-<span class="lineNum">     327 </span>            :         }
-<span class="lineNum">     328 </span><span class="lineCov">         20 :     }</span>
-<span class="lineNum">     329 </span><span class="lineCov">          4 :     return postProcessor;</span>
-<span class="lineNum">     330 </span><span class="lineCov">          4 : }</span>
-<span class="lineNum">     331 </span>            : 
-<span class="lineNum">     332 </span>            : @end
+<span class="lineNum">     244 </span>            :         //Auto registering definition with AutoInjection
+<span class="lineNum">     245 </span><span class="lineCov">          6 :         if (IsClass(classOrProtocol)) {</span>
+<span class="lineNum">     246 </span><span class="lineCov">          5 :             TyphoonDefinition *autoDefinition = [self autoInjectionDefinitionForClass:classOrProtocol];</span>
+<span class="lineNum">     247 </span><span class="lineCov">          5 :             if (autoDefinition) {</span>
+<span class="lineNum">     248 </span><span class="lineCov">          2 :                 [self registerDefinition:autoDefinition];</span>
+<span class="lineNum">     249 </span><span class="lineCov">          2 :                 return [self definitionForType:classOrProtocol orNil:returnNilIfNotFound includeSubclasses:includeSubclasses];</span>
+<span class="lineNum">     250 </span>            :             }
+<span class="lineNum">     251 </span><span class="lineCov">         42 :         }</span>
+<span class="lineNum">     252 </span>            : 
+<span class="lineNum">     253 </span><span class="lineCov">          4 :         if (returnNilIfNotFound) {</span>
+<span class="lineNum">     254 </span><span class="lineCov">          2 :             return nil;</span>
+<span class="lineNum">     255 </span>            :         } else {
+<span class="lineNum">     256 </span><span class="lineCov">          2 :             [NSException raise:NSInvalidArgumentException format:@&quot;No components defined which satisify type: '%@'&quot;, TyphoonTypeStringFor(classOrProtocol)];</span>
+<span class="lineNum">     257 </span>            :         }
+<span class="lineNum">     258 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     259 </span><span class="lineCov">         37 :     if ([candidates count] &gt; 1) {</span>
+<span class="lineNum">     260 </span><span class="lineCov">          4 :         [NSException raise:NSInvalidArgumentException format:@&quot;More than one component is defined satisfying type: '%@' : %@&quot;,</span>
+<span class="lineNum">     261 </span><span class="lineCov">          2 :                                                              TyphoonTypeStringFor(classOrProtocol), candidates];</span>
+<span class="lineNum">     262 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">     263 </span><span class="lineCov">         35 :     return [candidates firstObject];</span>
+<span class="lineNum">     264 </span><span class="lineCov">         39 : }</span>
+<span class="lineNum">     265 </span>            : 
+<span class="lineNum">     266 </span><span class="lineCov">          3 : - (NSArray *)allDefinitionsForType:(id)classOrProtocol</span>
+<span class="lineNum">     267 </span>            : {
+<span class="lineNum">     268 </span><span class="lineCov">          3 :     return [self allDefinitionsForType:classOrProtocol includeSubclasses:YES];</span>
+<span class="lineNum">     269 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">     270 </span>            : 
+<span class="lineNum">     271 </span><span class="lineCov">         46 : - (NSArray *)allDefinitionsForType:(id)classOrProtocol includeSubclasses:(BOOL)includeSubclasses</span>
+<span class="lineNum">     272 </span>            : {
+<span class="lineNum">     273 </span><span class="lineCov">         46 :     NSMutableArray *results = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">     274 </span><span class="lineCov">         46 :     BOOL isClass = IsClass(classOrProtocol);</span>
+<span class="lineNum">     275 </span><span class="lineCov">         46 :     BOOL isProtocol = IsProtocol(classOrProtocol);</span>
+<span class="lineNum">     276 </span><span class="lineCov">         56 :     if (!isClass &amp;&amp; !isProtocol) {</span>
+<span class="lineNum">     277 </span><span class="lineNoCov">          0 :         [NSException raise:NSInternalInconsistencyException format:@&quot;%@ is not class or protocol&quot;, classOrProtocol];</span>
+<span class="lineNum">     278 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     279 </span>            : 
+<span class="lineNum">     280 </span><span class="lineCov">        432 :     for (TyphoonDefinition *definition in _registry) {</span>
+<span class="lineNum">     281 </span><span class="lineCov">        170 :         if (isClass) {</span>
+<span class="lineNum">     282 </span><span class="lineCov">        141 :             BOOL isSameClass = definition.type == classOrProtocol;</span>
+<span class="lineNum">     283 </span><span class="lineCov">        262 :             BOOL isSubclass = includeSubclasses &amp;&amp; [definition.type isSubclassOfClass:classOrProtocol];</span>
+<span class="lineNum">     284 </span><span class="lineCov">        251 :             if (isSameClass || isSubclass) {</span>
+<span class="lineNum">     285 </span><span class="lineCov">         33 :                 [results addObject:definition];</span>
+<span class="lineNum">     286 </span><span class="lineCov">         33 :             }</span>
+<span class="lineNum">     287 </span><span class="lineCov">        141 :         }</span>
+<span class="lineNum">     288 </span>            :         else {
+<span class="lineNum">     289 </span><span class="lineCov">         29 :             if ([definition.type conformsToProtocol:classOrProtocol]) {</span>
+<span class="lineNum">     290 </span><span class="lineCov">         12 :                 [results addObject:definition];</span>
+<span class="lineNum">     291 </span><span class="lineCov">         12 :             }</span>
+<span class="lineNum">     292 </span>            :         }
+<span class="lineNum">     293 </span><span class="lineCov">        432 :     }</span>
+<span class="lineNum">     294 </span><span class="lineCov">         46 :     return results;</span>
+<span class="lineNum">     295 </span><span class="lineCov">         46 : }</span>
+<span class="lineNum">     296 </span>            : 
+<span class="lineNum">     297 </span><span class="lineCov">          5 : - (TyphoonDefinition *)autoInjectionDefinitionForClass:(Class)clazz</span>
+<span class="lineNum">     298 </span>            : {
+<span class="lineNum">     299 </span><span class="lineCov">          5 :     TyphoonDefinition *result = nil;</span>
+<span class="lineNum">     300 </span>            : 
+<span class="lineNum">     301 </span><span class="lineCov">          5 :     TyphoonFactoryAutoInjectionPostProcessor *postProcessor = [self autoInjectionPostProcessor];</span>
+<span class="lineNum">     302 </span><span class="lineCov">          5 :     NSArray *properties = [postProcessor autoInjectedPropertiesForClass:clazz];</span>
+<span class="lineNum">     303 </span><span class="lineCov">          5 :     if (properties) {</span>
+<span class="lineNum">     304 </span><span class="lineCov">          2 :         result = [TyphoonDefinition withClass:clazz];</span>
+<span class="lineNum">     305 </span><span class="lineCov">         10 :         for (id propertyInjection in properties) {</span>
+<span class="lineNum">     306 </span><span class="lineCov">          3 :             [result addInjectedPropertyIfNotExists:propertyInjection];</span>
+<span class="lineNum">     307 </span><span class="lineCov">         10 :         }</span>
+<span class="lineNum">     308 </span><span class="lineCov">          2 :     }</span>
+<span class="lineNum">     309 </span>            : 
+<span class="lineNum">     310 </span><span class="lineCov">          5 :     return result;</span>
+<span class="lineNum">     311 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">     312 </span>            : 
+<span class="lineNum">     313 </span>            : - (TyphoonFactoryAutoInjectionPostProcessor *)autoInjectionPostProcessor
+<span class="lineNum">     314 </span>            : {
+<span class="lineNum">     315 </span><span class="lineCov">          5 :     TyphoonFactoryAutoInjectionPostProcessor *postProcessor = nil;</span>
+<span class="lineNum">     316 </span><span class="lineCov">         40 :     for (id&lt;TyphoonComponentFactoryPostProcessor&gt; item in _factoryPostProcessors) {</span>
+<span class="lineNum">     317 </span><span class="lineCov">         15 :         if ([item isMemberOfClass:[TyphoonFactoryAutoInjectionPostProcessor class]]) {</span>
+<span class="lineNum">     318 </span><span class="lineCov">          5 :             postProcessor = item;</span>
+<span class="lineNum">     319 </span><span class="lineCov">          5 :             break;</span>
+<span class="lineNum">     320 </span>            :         }
+<span class="lineNum">     321 </span><span class="lineCov">         25 :     }</span>
+<span class="lineNum">     322 </span><span class="lineCov">          5 :     return postProcessor;</span>
+<span class="lineNum">     323 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">     324 </span>            : 
+<span class="lineNum">     325 </span>            : @end
 </pre>
       </td>
     </tr>

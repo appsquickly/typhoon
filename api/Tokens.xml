@@ -154,16 +154,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>typhoon_autoWire</Name>
-      <APILanguage>unknown</APILanguage>
-      <Type>macro</Type>
-    </TokenIdentifier>
-    <Path>_typhoon_autowire_8h.html</Path>
-    <Anchor>aa55bf427fafe04d405f16032b29c2bce</Anchor>
-    <DeclaredIn>TyphoonAutowire.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>TyphoonConfig</Name>
       <APILanguage>c</APILanguage>
       <Type>func</Type>
@@ -360,16 +350,6 @@
     </TokenIdentifier>
     <Path>_typhoon_introspection_utils_8h.html</Path>
     <Anchor>a15cce88ef63883f5f6b67918285aa27d</Anchor>
-    <DeclaredIn>TyphoonIntrospectionUtils.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>TyphoonAutoWiredProperties</Name>
-      <APILanguage>c</APILanguage>
-      <Type>func</Type>
-    </TokenIdentifier>
-    <Path>_typhoon_introspection_utils_8h.html</Path>
-    <Anchor>a0336424060fda82f8b5a05fe83909858</Anchor>
     <DeclaredIn>TyphoonIntrospectionUtils.h</DeclaredIn>
   </Token>
   <Token>
@@ -1894,39 +1874,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>configurerWithResource:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonConfigPostProcessor</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_config_post_processor.html</Path>
-    <Anchor>abe89b3da7c51f38a6735f9c7efc735cb</Anchor>
-    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>configurerWithResourceList:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonConfigPostProcessor</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_config_post_processor.html</Path>
-    <Anchor>aafa3a4bd4796d51acbdc6547b4b3fa43</Anchor>
-    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>configurerWithResources:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonConfigPostProcessor</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_config_post_processor.html</Path>
-    <Anchor>aad2191493bca13c18f4dd775aa43cdf8</Anchor>
-    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>registerConfigurationClass:forExtension:</Name>
       <APILanguage>occ</APILanguage>
       <Type>clm</Type>
@@ -1935,17 +1882,6 @@
     <Path>interface_typhoon_config_post_processor.html</Path>
     <Anchor>acd33308b4cdc7e91059b8698a9594e19</Anchor>
     <Abstract>You can manage TyphoonConfigPostProcessor registry by mapping configuration classes for file extensio...</Abstract>
-    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>usePropertyStyleResource:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonConfigPostProcessor</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_config_post_processor.html</Path>
-    <Anchor>a1c4617ac56657acd2f53b84c3f7f2493</Anchor>
     <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
   </Token>
   <Token>
@@ -1995,60 +1931,6 @@
     <Anchor>ab64811c01a873e3a727f017543b29223</Anchor>
     <Abstract>Post process a component factory after its initialization. </Abstract>
     <DeclaredIn>TyphoonComponentFactoryPostProcessor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>TyphoonConfigPostProcessor(Deprecated)</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cat</Type>
-      <Scope>TyphoonConfigPostProcessor(Deprecated)</Scope>
-    </TokenIdentifier>
-    <Path>category_typhoon_config_post_processor_07_deprecated_08.html</Path>
-    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>configurerWithResource:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>func</Type>
-      <Scope>TyphoonConfigPostProcessor(Deprecated)</Scope>
-    </TokenIdentifier>
-    <Path>category_typhoon_config_post_processor_07_deprecated_08.html</Path>
-    <Anchor>abe89b3da7c51f38a6735f9c7efc735cb</Anchor>
-    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>configurerWithResourceList:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>func</Type>
-      <Scope>TyphoonConfigPostProcessor(Deprecated)</Scope>
-    </TokenIdentifier>
-    <Path>category_typhoon_config_post_processor_07_deprecated_08.html</Path>
-    <Anchor>aafa3a4bd4796d51acbdc6547b4b3fa43</Anchor>
-    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>configurerWithResources:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>func</Type>
-      <Scope>TyphoonConfigPostProcessor(Deprecated)</Scope>
-    </TokenIdentifier>
-    <Path>category_typhoon_config_post_processor_07_deprecated_08.html</Path>
-    <Anchor>aad2191493bca13c18f4dd775aa43cdf8</Anchor>
-    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>usePropertyStyleResource:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>func</Type>
-      <Scope>TyphoonConfigPostProcessor(Deprecated)</Scope>
-    </TokenIdentifier>
-    <Path>category_typhoon_config_post_processor_07_deprecated_08.html</Path>
-    <Anchor>a1c4617ac56657acd2f53b84c3f7f2493</Anchor>
-    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>

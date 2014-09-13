@@ -12,7 +12,6 @@ var searchData=
   ['typhooncomponentfactorypostprocessor_2dp',['TyphoonComponentFactoryPostProcessor-p',['../protocol_typhoon_component_factory_post_processor-p.html',1,'']]],
   ['typhooncomponentspool_2dp',['TyphoonComponentsPool-p',['../protocol_typhoon_components_pool-p.html',1,'']]],
   ['typhoonconfigpostprocessor',['TyphoonConfigPostProcessor',['../interface_typhoon_config_post_processor.html',1,'']]],
-  ['typhoonconfigpostprocessor_28deprecated_29',['TyphoonConfigPostProcessor(Deprecated)',['../category_typhoon_config_post_processor_07_deprecated_08.html',1,'']]],
   ['typhoondefinition',['TyphoonDefinition',['../interface_typhoon_definition.html',1,'']]],
   ['typhoondefinition_28option_29',['TyphoonDefinition(Option)',['../category_typhoon_definition_07_option_08.html',1,'']]],
   ['typhoondictionary_2dp',['TyphoonDictionary-p',['../protocol_typhoon_dictionary-p.html',1,'']]],
