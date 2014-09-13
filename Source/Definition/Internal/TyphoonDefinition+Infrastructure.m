@@ -23,6 +23,8 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 @implementation TyphoonDefinition (Infrastructure)
 
+@dynamic initializer, initializerGenerated, currentRuntimeArguments, key;
+
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 
@@ -69,10 +71,11 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     self = [super init];
     if (self) {
         _type = clazz;
-        _key = [key copy];
-        _scope = TyphoonScopeObjectGraph;
         _injectedProperties = [[NSMutableSet alloc] init];
         _injectedMethods = [[NSMutableSet alloc] init];
+        self.key = [key copy];
+        self.scope = TyphoonScopeObjectGraph;
+        self.autoInjectionVisibility = TyphoonAutoInjectVisibilityDefault;
         if (factoryComponent) {
             _factory = [TyphoonReferenceDefinition definitionReferringToComponent:factoryComponent];
         }

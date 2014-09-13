@@ -48,6 +48,16 @@ typedef NS_ENUM(NSInteger, TyphoonScope)
     TyphoonScopeWeakSingleton,
 };
 
+
+typedef NS_OPTIONS(NSInteger, TyphoonAutoInjectVisibility)
+{
+    TyphoonAutoInjectVisibilityNone = 0,
+    TyphoonAutoInjectVisibilityByClass = 1 << 0,
+    TyphoonAutoInjectVisibilityByProtocol = 1 << 1,
+};
+
+const static TyphoonAutoInjectVisibility TyphoonAutoInjectVisibilityDefault = TyphoonAutoInjectVisibilityByClass | TyphoonAutoInjectVisibilityByProtocol;
+
 typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
 /**
@@ -90,6 +100,15 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 */
 @property(nonatomic) TyphoonScope scope;
 
+/**
+* Specifies visibility for for AutoInjection.
+*
+* AutoInjection performs when using method:
+* - (void)injectProperty:(SEL)withSelector;
+* or when using:
+* InjectedClass or InjectedProtocol marco
+*/
+@property(nonatomic) TyphoonAutoInjectVisibility autoInjectionVisibility;
 
 /**
 * A component that will produce an instance (with or without parameters) of this component. For example:

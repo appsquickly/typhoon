@@ -279,14 +279,14 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     }
 
     for (TyphoonDefinition *definition in _registry) {
-        if (isClass) {
+        if (isClass && definition.autoInjectionVisibility & TyphoonAutoInjectVisibilityByClass) {
             BOOL isSameClass = definition.type == classOrProtocol;
             BOOL isSubclass = includeSubclasses && [definition.type isSubclassOfClass:classOrProtocol];
             if (isSameClass || isSubclass) {
                 [results addObject:definition];
             }
         }
-        else {
+        else if (isProtocol && definition.autoInjectionVisibility & TyphoonAutoInjectVisibilityByProtocol) {
             if ([definition.type conformsToProtocol:classOrProtocol]) {
                 [results addObject:definition];
             }

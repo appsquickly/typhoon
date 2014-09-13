@@ -54,6 +54,11 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     BOOL _isScopeSetByUser;
 }
 
+@synthesize key = _key;
+@synthesize initializer = _initializer;
+@synthesize initializerGenerated = _initializerGenerated;
+@synthesize currentRuntimeArguments = _currentRuntimeArguments;
+
 /* ====================================================================================================================================== */
 #pragma mark - Class Methods
 
