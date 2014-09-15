@@ -19,5 +19,6 @@ var searchData=
   ['asstring',['asString',['../protocol_typhoon_resource-p.html#a42f9702ff28c89b2910011df574f857d',1,'TyphoonResource-p']]],
   ['asstringwithencoding_3a',['asStringWithEncoding:',['../protocol_typhoon_resource-p.html#afed07d1fc2e7fb11a2db3073dd53ddd7',1,'TyphoonResource-p']]],
   ['attachpostprocessor_3a',['attachPostProcessor:',['../interface_typhoon_component_factory.html#a0727001458325fd7d09b6df2e1252180',1,'TyphoonComponentFactory']]],
+  ['autoinjectionvisibility',['autoInjectionVisibility',['../interface_typhoon_definition.html#a7b651ab85991ef1d9641ef5cd1f67187',1,'TyphoonDefinition']]],
   ['availableextensions',['availableExtensions',['../interface_typhoon_config_post_processor.html#a57eacc037c000e78f67f31d6884964bd',1,'TyphoonConfigPostProcessor']]]
 ];

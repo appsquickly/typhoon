@@ -78,7 +78,7 @@ $(document).ready(function(){initNavTree('group___definition.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('group___definition.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Definition</div>  </div>
 </div><!--header-->
@@ -104,28 +104,38 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_method.html">TyphoonMethod</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an initializer for a component.  <a href="interface_typhoon_method.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an method to inject for a component.  <a href="interface_typhoon_method.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:ga6e7c49074062029ada1d93e0feef6c4c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___definition.html#ga6e7c49074062029ada1d93e0feef6c4c">TyphoonScope</a> { <a class="el" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e">TyphoonScopeObjectGraph</a> = 1 &lt;&lt; 0, 
-<a class="el" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a">TyphoonScopePrototype</a> = 1 &lt;&lt; 1, 
-<a class="el" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb">TyphoonScopeSingleton</a> = 1 &lt;&lt; 2, 
-<a class="el" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda">TyphoonScopeWeakSingleton</a> = 1 &lt;&lt; 3
- }</td></tr>
-<tr class="memdesc:ga6e7c49074062029ada1d93e0feef6c4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes the lifecycle of a Typhoon component.  <a href="group___definition.html#ga6e7c49074062029ada1d93e0feef6c4c">More...</a><br /></td></tr>
-<tr class="separator:ga6e7c49074062029ada1d93e0feef6c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gadfc84d5f4f1281bc37369fdbb6b58264"><td class="memItemLeft" align="right" valign="top">typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___definition.html#gadfc84d5f4f1281bc37369fdbb6b58264">NS_ENUM</a> (NSInteger, TyphoonScope)</td></tr>
+<tr class="memdesc:gadfc84d5f4f1281bc37369fdbb6b58264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes the lifecycle of a Typhoon component.  <a href="#gadfc84d5f4f1281bc37369fdbb6b58264">More...</a><br /></td></tr>
+<tr class="separator:gadfc84d5f4f1281bc37369fdbb6b58264"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Describing architectural components and their collaborators. </p>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a class="anchor" id="ga6e7c49074062029ada1d93e0feef6c4c"></a>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="gadfc84d5f4f1281bc37369fdbb6b58264"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="group___definition.html#ga6e7c49074062029ada1d93e0feef6c4c">TyphoonScope</a></td>
+          <td class="memname">typedef NS_ENUM </td>
+          <td>(</td>
+          <td class="paramtype">NSInteger&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TyphoonScope&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -135,27 +145,13 @@ Enumerations</h2></td></tr>
 <p><b>TyphoonScopePrototype</b> Indicates that a new instance should always be created by Typhoon, whenever this component is obtained from an assembly or referenced by another component.</p>
 <p><b>TyphoonScopeSingleton</b> Indicates that Typhoon should retain the instance that exists for as long as the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> exists.</p>
 <p><b>TyphoonScopeWeakSingleton</b> Indicates that a shared instance should be created as long as necessary. When your application's classes stop referencing this component it will be deallocated until needed again. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e"></a>TyphoonScopeObjectGraph&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a"></a>TyphoonScopePrototype&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb"></a>TyphoonScopeSingleton&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda"></a>TyphoonScopeWeakSingleton&#160;</td><td class="fielddoc">
-</td></tr>
-</table>
 <div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e">TyphoonScopeObjectGraph</a> = 1 &lt;&lt; 0,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a">TyphoonScopePrototype</a> = 1 &lt;&lt; 1,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb">TyphoonScopeSingleton</a> = 1 &lt;&lt; 2,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda">TyphoonScopeWeakSingleton</a> = 1 &lt;&lt; 3</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;} <a class="code" href="group___definition.html#ga6e7c49074062029ada1d93e0feef6c4c">TyphoonScope</a>;</div>
-<div class="ttc" id="group___definition_html_ga6e7c49074062029ada1d93e0feef6c4c"><div class="ttname"><a href="group___definition.html#ga6e7c49074062029ada1d93e0feef6c4c">TyphoonScope</a></div><div class="ttdeci">TyphoonScope</div><div class="ttdoc">Describes the lifecycle of a Typhoon component. </div><div class="ttdef"><b>Definition:</b> TyphoonDefinition.h:42</div></div>
-<div class="ttc" id="group___definition_html_gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a"><div class="ttname"><a href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a">TyphoonScopePrototype</a></div><div class="ttdef"><b>Definition:</b> TyphoonDefinition.h:45</div></div>
-<div class="ttc" id="group___definition_html_gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda"><div class="ttname"><a href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda">TyphoonScopeWeakSingleton</a></div><div class="ttdef"><b>Definition:</b> TyphoonDefinition.h:47</div></div>
-<div class="ttc" id="group___definition_html_gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e"><div class="ttname"><a href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e">TyphoonScopeObjectGraph</a></div><div class="ttdef"><b>Definition:</b> TyphoonDefinition.h:44</div></div>
-<div class="ttc" id="group___definition_html_gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb"><div class="ttname"><a href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb">TyphoonScopeSingleton</a></div><div class="ttdef"><b>Definition:</b> TyphoonDefinition.h:46</div></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    TyphoonScopeObjectGraph,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    TyphoonScopePrototype,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    TyphoonScopeSingleton,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    TyphoonScopeLazySingleton,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    TyphoonScopeWeakSingleton,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -165,7 +161,7 @@ Enumerations</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
-        <li class="footer">Generated on Sat Sep 13 2014 14:08:48 for Typhoon by
+        <li class="footer">Generated on Mon Sep 15 2014 11:05:37 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>

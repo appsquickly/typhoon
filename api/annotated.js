@@ -1,6 +1,7 @@
 var annotated =
 [
     [ "NSArray(TyphoonSignalEnumerator)", "category_n_s_array_07_typhoon_signal_enumerator_08.html", "category_n_s_array_07_typhoon_signal_enumerator_08" ],
+    [ "NSNullTypeConverter", "interface_n_s_null_type_converter.html", null ],
     [ "NSObject(DeallocNotification)", "category_n_s_object_07_dealloc_notification_08.html", "category_n_s_object_07_dealloc_notification_08" ],
     [ "NSObject(FactoryHooks)", "category_n_s_object_07_factory_hooks_08.html", "category_n_s_object_07_factory_hooks_08" ],
     [ "NSObject(PropertyInjection)", "category_n_s_object_07_property_injection_08.html", "category_n_s_object_07_property_injection_08" ],

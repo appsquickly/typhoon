@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-09-13 14:08:45</td>
+            <td class="headerValue">2014-09-15 11:05:35</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -71,33 +71,33 @@
 <span class="lineNum">      13 </span>            : 
 <span class="lineNum">      14 </span>            : TYPHOON_LINK_CATEGORY(CollectionsCustomInjections)
 <span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span><span class="lineCov">        303 : static __inline__ BOOL IsContainsTyphoonObjectInCollection(id &lt;NSFastEnumeration&gt; collection) {</span>
-<span class="lineNum">      17 </span><span class="lineCov">        303 :     BOOL foundTyphoonObject = NO;</span>
+<span class="lineNum">      16 </span><span class="lineCov">        283 : static __inline__ BOOL IsContainsTyphoonObjectInCollection(id &lt;NSFastEnumeration&gt; collection) {</span>
+<span class="lineNum">      17 </span><span class="lineCov">        283 :     BOOL foundTyphoonObject = NO;</span>
 <span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span><span class="lineCov">       1676 :     for (id object in collection) {</span>
-<span class="lineNum">      20 </span><span class="lineCov">       1000 :         if ([object conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)] || IsTyphoonInjection(object)) {</span>
-<span class="lineNum">      21 </span><span class="lineCov">         70 :             foundTyphoonObject = YES;</span>
-<span class="lineNum">      22 </span><span class="lineCov">         70 :             break;</span>
+<span class="lineNum">      19 </span><span class="lineCov">       1564 :     for (id object in collection) {</span>
+<span class="lineNum">      20 </span><span class="lineCov">        932 :         if ([object conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)] || IsTyphoonInjection(object)) {</span>
+<span class="lineNum">      21 </span><span class="lineCov">         66 :             foundTyphoonObject = YES;</span>
+<span class="lineNum">      22 </span><span class="lineCov">         66 :             break;</span>
 <span class="lineNum">      23 </span>            :         }
-<span class="lineNum">      24 </span><span class="lineCov">       2165 :     }</span>
+<span class="lineNum">      24 </span><span class="lineCov">       2017 :     }</span>
 <span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span><span class="lineCov">        303 :     return foundTyphoonObject;</span>
-<span class="lineNum">      27 </span><span class="lineCov">        303 : }</span>
+<span class="lineNum">      26 </span><span class="lineCov">        283 :     return foundTyphoonObject;</span>
+<span class="lineNum">      27 </span><span class="lineCov">        283 : }</span>
 <span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span><span class="lineCov">        303 : static __inline__ id InjectionForCollection(id &lt;NSFastEnumeration, NSObject&gt; collection) {</span>
-<span class="lineNum">      30 </span><span class="lineCov">        303 :     if (IsContainsTyphoonObjectInCollection(collection)) {</span>
-<span class="lineNum">      31 </span><span class="lineCov">         70 :         return TyphoonInjectionWithCollectionAndType(collection, [collection class]);</span>
+<span class="lineNum">      29 </span><span class="lineCov">        283 : static __inline__ id InjectionForCollection(id &lt;NSFastEnumeration, NSObject&gt; collection) {</span>
+<span class="lineNum">      30 </span><span class="lineCov">        283 :     if (IsContainsTyphoonObjectInCollection(collection)) {</span>
+<span class="lineNum">      31 </span><span class="lineCov">         66 :         return TyphoonInjectionWithCollectionAndType(collection, [collection class]);</span>
 <span class="lineNum">      32 </span>            :     }
 <span class="lineNum">      33 </span>            :     else {
-<span class="lineNum">      34 </span><span class="lineCov">        233 :         return TyphoonInjectionWithObject(collection);</span>
+<span class="lineNum">      34 </span><span class="lineCov">        217 :         return TyphoonInjectionWithObject(collection);</span>
 <span class="lineNum">      35 </span>            :     }
-<span class="lineNum">      36 </span><span class="lineCov">        303 : }</span>
+<span class="lineNum">      36 </span><span class="lineCov">        283 : }</span>
 <span class="lineNum">      37 </span>            : 
 <span class="lineNum">      38 </span>            : @implementation NSArray (TyphoonObjectWithCustomInjection)
 <span class="lineNum">      39 </span>            : 
 <span class="lineNum">      40 </span>            : - (id &lt;TyphoonPropertyInjection, TyphoonParameterInjection&gt;)typhoonCustomObjectInjection
 <span class="lineNum">      41 </span>            : {
-<span class="lineNum">      42 </span><span class="lineCov">        237 :     return InjectionForCollection(self);</span>
+<span class="lineNum">      42 </span><span class="lineCov">        221 :     return InjectionForCollection(self);</span>
 <span class="lineNum">      43 </span>            : }
 <span class="lineNum">      44 </span>            : 
 <span class="lineNum">      45 </span>            : @end
@@ -106,7 +106,7 @@
 <span class="lineNum">      48 </span>            : 
 <span class="lineNum">      49 </span>            : - (id &lt;TyphoonPropertyInjection, TyphoonParameterInjection&gt;)typhoonCustomObjectInjection
 <span class="lineNum">      50 </span>            : {
-<span class="lineNum">      51 </span><span class="lineCov">         66 :     return InjectionForCollection(self);</span>
+<span class="lineNum">      51 </span><span class="lineCov">         62 :     return InjectionForCollection(self);</span>
 <span class="lineNum">      52 </span>            : }
 <span class="lineNum">      53 </span>            : @end
 <span class="lineNum">      54 </span>            : 

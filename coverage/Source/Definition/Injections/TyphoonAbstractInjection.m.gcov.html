@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-09-13 14:08:45</td>
+            <td class="headerValue">2014-09-15 11:05:35</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -73,68 +73,68 @@
 <span class="lineNum">      15 </span>            : 
 <span class="lineNum">      16 </span>            : - (NSString *)description
 <span class="lineNum">      17 </span>            : {
-<span class="lineNum">      18 </span><span class="lineCov">        281 :     if (self.type == TyphoonInjectionTypeUndefinied) {</span>
+<span class="lineNum">      18 </span><span class="lineCov">        273 :     if (self.type == TyphoonInjectionTypeUndefinied) {</span>
 <span class="lineNum">      19 </span><span class="lineNoCov">          0 :         return [NSString stringWithFormat:@&quot;&lt;%@: %p, type=Undifined&gt;&quot;, [self class], self];</span>
 <span class="lineNum">      20 </span>            :     }
-<span class="lineNum">      21 </span><span class="lineCov">        281 :     else if (self.type == TyphoonInjectionTypeParameter) {</span>
-<span class="lineNum">      22 </span><span class="lineCov">        279 :         return [NSString stringWithFormat:@&quot;&lt;%@: %p, index=%d&gt;&quot;, [self class], self, (int) self.parameterIndex];</span>
+<span class="lineNum">      21 </span><span class="lineCov">        273 :     else if (self.type == TyphoonInjectionTypeParameter) {</span>
+<span class="lineNum">      22 </span><span class="lineCov">        271 :         return [NSString stringWithFormat:@&quot;&lt;%@: %p, index=%d&gt;&quot;, [self class], self, (int) self.parameterIndex];</span>
 <span class="lineNum">      23 </span>            :     }
 <span class="lineNum">      24 </span>            :     else {
 <span class="lineNum">      25 </span><span class="lineCov">          2 :         return [NSString stringWithFormat:@&quot;&lt;%@: %p, property=%@&gt;&quot;, [self class], self, self.propertyName];</span>
 <span class="lineNum">      26 </span>            :     }
-<span class="lineNum">      27 </span><span class="lineCov">        281 : }</span>
+<span class="lineNum">      27 </span><span class="lineCov">        273 : }</span>
 <span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span><span class="lineCov">       2136 : - (void)setParameterIndex:(NSUInteger)index</span>
+<span class="lineNum">      29 </span><span class="lineCov">       2060 : - (void)setParameterIndex:(NSUInteger)index</span>
 <span class="lineNum">      30 </span>            : {
-<span class="lineNum">      31 </span><span class="lineCov">       6408 :     NSAssert(self.type != TyphoonInjectionTypeProperty, @&quot;Trying to redefine injection with type %d&quot;, (int) self.type);</span>
-<span class="lineNum">      32 </span><span class="lineCov">       2136 :     _parameterIndex = index;</span>
-<span class="lineNum">      33 </span><span class="lineCov">       2136 :     _type = TyphoonInjectionTypeParameter;</span>
-<span class="lineNum">      34 </span><span class="lineCov">       2136 : }</span>
+<span class="lineNum">      31 </span><span class="lineCov">       6180 :     NSAssert(self.type != TyphoonInjectionTypeProperty, @&quot;Trying to redefine injection with type %d&quot;, (int) self.type);</span>
+<span class="lineNum">      32 </span><span class="lineCov">       2060 :     _parameterIndex = index;</span>
+<span class="lineNum">      33 </span><span class="lineCov">       2060 :     _type = TyphoonInjectionTypeParameter;</span>
+<span class="lineNum">      34 </span><span class="lineCov">       2060 : }</span>
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span><span class="lineCov">       2763 : - (void)setPropertyName:(NSString *)name</span>
+<span class="lineNum">      36 </span><span class="lineCov">       2671 : - (void)setPropertyName:(NSString *)name</span>
 <span class="lineNum">      37 </span>            : {
-<span class="lineNum">      38 </span><span class="lineCov">      11052 :     NSAssert(self.type != TyphoonInjectionTypeParameter, @&quot;Trying to redefine injection with type %d&quot;, (int) self.type);</span>
-<span class="lineNum">      39 </span><span class="lineCov">       2763 :     _propertyName = name;</span>
-<span class="lineNum">      40 </span><span class="lineCov">       2763 :     _type = TyphoonInjectionTypeProperty;</span>
-<span class="lineNum">      41 </span><span class="lineCov">       2763 : }</span>
+<span class="lineNum">      38 </span><span class="lineCov">      10684 :     NSAssert(self.type != TyphoonInjectionTypeParameter, @&quot;Trying to redefine injection with type %d&quot;, (int) self.type);</span>
+<span class="lineNum">      39 </span><span class="lineCov">       2671 :     _propertyName = name;</span>
+<span class="lineNum">      40 </span><span class="lineCov">       2671 :     _type = TyphoonInjectionTypeProperty;</span>
+<span class="lineNum">      41 </span><span class="lineCov">       2671 : }</span>
 <span class="lineNum">      42 </span>            : 
 <span class="lineNum">      43 </span>            : - (NSUInteger)hash
 <span class="lineNum">      44 </span>            : {
-<span class="lineNum">      45 </span><span class="lineCov">       8683 :     if (self.type == TyphoonInjectionTypeProperty) {</span>
-<span class="lineNum">      46 </span><span class="lineCov">       8683 :         return [self.propertyName hash];</span>
+<span class="lineNum">      45 </span><span class="lineCov">       8519 :     if (self.type == TyphoonInjectionTypeProperty) {</span>
+<span class="lineNum">      46 </span><span class="lineCov">       8519 :         return [self.propertyName hash];</span>
 <span class="lineNum">      47 </span>            :     }
 <span class="lineNum">      48 </span>            :     else {
 <span class="lineNum">      49 </span><span class="lineNoCov">          0 :         return [super hash];</span>
 <span class="lineNum">      50 </span>            :     }
-<span class="lineNum">      51 </span><span class="lineCov">       8683 : }</span>
+<span class="lineNum">      51 </span><span class="lineCov">       8519 : }</span>
 <span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span><span class="lineCov">       2064 : - (BOOL)isEqual:(id)other</span>
+<span class="lineNum">      53 </span><span class="lineCov">       2045 : - (BOOL)isEqual:(id)other</span>
 <span class="lineNum">      54 </span>            : {
-<span class="lineNum">      55 </span><span class="lineCov">       2064 :     if (other == self) {</span>
+<span class="lineNum">      55 </span><span class="lineCov">       2045 :     if (other == self) {</span>
 <span class="lineNum">      56 </span><span class="lineNoCov">          0 :         return YES;</span>
 <span class="lineNum">      57 </span>            :     }
-<span class="lineNum">      58 </span><span class="lineCov">       4128 :     if (!other || ![[other class] isEqual:[self class]]) {</span>
-<span class="lineNum">      59 </span><span class="lineCov">       1901 :         return NO;</span>
+<span class="lineNum">      58 </span><span class="lineCov">       4090 :     if (!other || ![[other class] isEqual:[self class]]) {</span>
+<span class="lineNum">      59 </span><span class="lineCov">       1873 :         return NO;</span>
 <span class="lineNum">      60 </span>            :     }
 <span class="lineNum">      61 </span>            : 
-<span class="lineNum">      62 </span><span class="lineCov">        181 :     return [self isEqualToBase:other] &amp;&amp; [self isEqualToCustom:other];</span>
-<span class="lineNum">      63 </span><span class="lineCov">       2064 : }</span>
+<span class="lineNum">      62 </span><span class="lineCov">        199 :     return [self isEqualToBase:other] &amp;&amp; [self isEqualToCustom:other];</span>
+<span class="lineNum">      63 </span><span class="lineCov">       2045 : }</span>
 <span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span><span class="lineCov">        163 : - (BOOL)isEqualToBase:(TyphoonAbstractInjection *)base</span>
+<span class="lineNum">      65 </span><span class="lineCov">        172 : - (BOOL)isEqualToBase:(TyphoonAbstractInjection *)base</span>
 <span class="lineNum">      66 </span>            : {
-<span class="lineNum">      67 </span><span class="lineCov">        163 :     if (self == base) {</span>
+<span class="lineNum">      67 </span><span class="lineCov">        172 :     if (self == base) {</span>
 <span class="lineNum">      68 </span><span class="lineNoCov">          0 :         return YES;</span>
 <span class="lineNum">      69 </span>            :     }
-<span class="lineNum">      70 </span><span class="lineCov">        163 :     if (base == nil) {</span>
+<span class="lineNum">      70 </span><span class="lineCov">        172 :     if (base == nil) {</span>
 <span class="lineNum">      71 </span><span class="lineNoCov">          0 :         return NO;</span>
 <span class="lineNum">      72 </span>            :     }
 <span class="lineNum">      73 </span>            : 
-<span class="lineNum">      74 </span><span class="lineCov">        163 :     if (self.type != base.type) {</span>
+<span class="lineNum">      74 </span><span class="lineCov">        172 :     if (self.type != base.type) {</span>
 <span class="lineNum">      75 </span><span class="lineNoCov">          0 :         return NO;</span>
 <span class="lineNum">      76 </span>            :     }
 <span class="lineNum">      77 </span>            : 
-<span class="lineNum">      78 </span><span class="lineCov">        163 :     if (self.type == TyphoonInjectionTypeParameter) {</span>
-<span class="lineNum">      79 </span><span class="lineCov">         15 :         return self.parameterIndex == base.parameterIndex;</span>
+<span class="lineNum">      78 </span><span class="lineCov">        172 :     if (self.type == TyphoonInjectionTypeParameter) {</span>
+<span class="lineNum">      79 </span><span class="lineCov">         24 :         return self.parameterIndex == base.parameterIndex;</span>
 <span class="lineNum">      80 </span>            :     }
 <span class="lineNum">      81 </span><span class="lineCov">        148 :     else if (self.type == TyphoonInjectionTypeProperty) {</span>
 <span class="lineNum">      82 </span><span class="lineCov">        148 :         return [self.propertyName isEqualToString:base.propertyName];</span>
@@ -142,7 +142,7 @@
 <span class="lineNum">      84 </span>            :     else {
 <span class="lineNum">      85 </span><span class="lineNoCov">          0 :         return NO;</span>
 <span class="lineNum">      86 </span>            :     }
-<span class="lineNum">      87 </span><span class="lineCov">        163 : }</span>
+<span class="lineNum">      87 </span><span class="lineCov">        172 : }</span>
 <span class="lineNum">      88 </span>            : 
 <span class="lineNum">      89 </span>            : 
 <span class="lineNum">      90 </span>            : #pragma mark - Methods to override

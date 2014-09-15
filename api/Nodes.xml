@@ -203,6 +203,11 @@
               <Anchor>a840cfc1303083ede4b0574c1e2ee7fb1</Anchor>
              </Node>
              <Node>
+              <Name>autoInjectionVisibility</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a7b651ab85991ef1d9641ef5cd1f67187</Anchor>
+             </Node>
+             <Node>
               <Name>beforeInjections</Name>
               <Path>interface_typhoon_definition.html</Path>
               <Anchor>a0cf38a4af92c8d324c2f68ee013d2777</Anchor>
@@ -211,26 +216,6 @@
               <Name>factory</Name>
               <Path>interface_typhoon_definition.html</Path>
               <Anchor>aa15fa133879051cd95d39acb8ca5d94f</Anchor>
-             </Node>
-             <Node>
-              <Name>initializer</Name>
-              <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a14e72e677e9eee1ba1a2c9b3a7b68d1f</Anchor>
-             </Node>
-             <Node>
-              <Name>initializerGenerated</Name>
-              <Path>interface_typhoon_definition.html</Path>
-              <Anchor>af3d2c880ca93e989082c2e9472d09039</Anchor>
-             </Node>
-             <Node>
-              <Name>key</Name>
-              <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a4e5a7c1fba8794b3eabdb8fb47ee0ba6</Anchor>
-             </Node>
-             <Node>
-              <Name>lazy</Name>
-              <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a07f6703b4e1da5810678d367aab2ac67</Anchor>
              </Node>
              <Node>
               <Name>parent</Name>
@@ -300,7 +285,7 @@
              <Node>
               <Name>withFactory:selector:parameters:</Name>
               <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a5f47d822976a99d40fc1b28d7e15c578</Anchor>
+              <Anchor>af78a138a2ba6438475176ab520cafc14</Anchor>
              </Node>
              <Node>
               <Name>withOption:matcher:</Name>
@@ -310,7 +295,7 @@
              <Node>
               <Name>withOption:yes:no:</Name>
               <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a010c1ec8138e655ab48676876f2f5369</Anchor>
+              <Anchor>a96cf46e499d4b083215881a2a9c8808e</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -318,11 +303,6 @@
             <Name>TyphoonMethod</Name>
             <Path>interface_typhoon_method.html</Path>
             <Subnodes>
-             <Node>
-              <Name>parameterNames</Name>
-              <Path>interface_typhoon_method.html</Path>
-              <Anchor>a248d243a0a4975cd8660a7459a70c0e2</Anchor>
-             </Node>
              <Node>
               <Name>selector</Name>
               <Path>interface_typhoon_method.html</Path>
@@ -334,11 +314,6 @@
               <Anchor>a06092f744c76dcdde0be8c4743991bc7</Anchor>
              </Node>
              <Node>
-              <Name>injectParameter:with:</Name>
-              <Path>interface_typhoon_method.html</Path>
-              <Anchor>a7a2871bb4d79b1e5025fd3c150263593</Anchor>
-             </Node>
-             <Node>
               <Name>injectParameterWith:</Name>
               <Path>interface_typhoon_method.html</Path>
               <Anchor>ac9c073e76872ccce153960253c6352db</Anchor>
@@ -346,31 +321,9 @@
             </Subnodes>
            </Node>
            <Node>
-            <Name>TyphoonScope</Name>
+            <Name>NS_ENUM</Name>
             <Path>group___definition.html</Path>
-            <Anchor>ga6e7c49074062029ada1d93e0feef6c4c</Anchor>
-            <Subnodes>
-             <Node>
-              <Name>TyphoonScopeObjectGraph</Name>
-              <Path>group___definition.html</Path>
-              <Anchor>gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e</Anchor>
-             </Node>
-             <Node>
-              <Name>TyphoonScopePrototype</Name>
-              <Path>group___definition.html</Path>
-              <Anchor>gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a</Anchor>
-             </Node>
-             <Node>
-              <Name>TyphoonScopeSingleton</Name>
-              <Path>group___definition.html</Path>
-              <Anchor>gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb</Anchor>
-             </Node>
-             <Node>
-              <Name>TyphoonScopeWeakSingleton</Name>
-              <Path>group___definition.html</Path>
-              <Anchor>gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda</Anchor>
-             </Node>
-            </Subnodes>
+            <Anchor>gadfc84d5f4f1281bc37369fdbb6b58264</Anchor>
            </Node>
           </Subnodes>
          </Node>
@@ -539,6 +492,10 @@
             </Subnodes>
            </Node>
            <Node>
+            <Name>NSNullTypeConverter</Name>
+            <Path>interface_n_s_null_type_converter.html</Path>
+           </Node>
+           <Node>
             <Name>NSObject(DeallocNotification)</Name>
             <Path>category_n_s_object_07_dealloc_notification_08.html</Path>
             <Subnodes>
@@ -600,11 +557,6 @@
             <Name>NSObject(TyphoonIntrospectionUtils)</Name>
             <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
             <Subnodes>
-             <Node>
-              <Name>typhoon_parameterNamesForSelector:</Name>
-              <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
-              <Anchor>a4733974b1aeabdfa6277a85b90a3ff2b</Anchor>
-             </Node>
              <Node>
               <Name>typhoon_typeForPropertyWithName:</Name>
               <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
@@ -967,6 +919,11 @@
               <Anchor>a840cfc1303083ede4b0574c1e2ee7fb1</Anchor>
              </Node>
              <Node>
+              <Name>autoInjectionVisibility</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a7b651ab85991ef1d9641ef5cd1f67187</Anchor>
+             </Node>
+             <Node>
               <Name>beforeInjections</Name>
               <Path>interface_typhoon_definition.html</Path>
               <Anchor>a0cf38a4af92c8d324c2f68ee013d2777</Anchor>
@@ -975,26 +932,6 @@
               <Name>factory</Name>
               <Path>interface_typhoon_definition.html</Path>
               <Anchor>aa15fa133879051cd95d39acb8ca5d94f</Anchor>
-             </Node>
-             <Node>
-              <Name>initializer</Name>
-              <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a14e72e677e9eee1ba1a2c9b3a7b68d1f</Anchor>
-             </Node>
-             <Node>
-              <Name>initializerGenerated</Name>
-              <Path>interface_typhoon_definition.html</Path>
-              <Anchor>af3d2c880ca93e989082c2e9472d09039</Anchor>
-             </Node>
-             <Node>
-              <Name>key</Name>
-              <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a4e5a7c1fba8794b3eabdb8fb47ee0ba6</Anchor>
-             </Node>
-             <Node>
-              <Name>lazy</Name>
-              <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a07f6703b4e1da5810678d367aab2ac67</Anchor>
              </Node>
              <Node>
               <Name>parent</Name>
@@ -1064,7 +1001,7 @@
              <Node>
               <Name>withFactory:selector:parameters:</Name>
               <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a5f47d822976a99d40fc1b28d7e15c578</Anchor>
+              <Anchor>af78a138a2ba6438475176ab520cafc14</Anchor>
              </Node>
              <Node>
               <Name>withOption:matcher:</Name>
@@ -1074,7 +1011,7 @@
              <Node>
               <Name>withOption:yes:no:</Name>
               <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a010c1ec8138e655ab48676876f2f5369</Anchor>
+              <Anchor>a96cf46e499d4b083215881a2a9c8808e</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -1090,7 +1027,7 @@
              <Node>
               <Name>withOption:yes:no:</Name>
               <Path>category_typhoon_definition_07_option_08.html</Path>
-              <Anchor>a010c1ec8138e655ab48676876f2f5369</Anchor>
+              <Anchor>a96cf46e499d4b083215881a2a9c8808e</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -1391,11 +1328,6 @@
             <Path>interface_typhoon_method.html</Path>
             <Subnodes>
              <Node>
-              <Name>parameterNames</Name>
-              <Path>interface_typhoon_method.html</Path>
-              <Anchor>a248d243a0a4975cd8660a7459a70c0e2</Anchor>
-             </Node>
-             <Node>
               <Name>selector</Name>
               <Path>interface_typhoon_method.html</Path>
               <Anchor>a2df02aed8c27d293dad75d3a8c010705</Anchor>
@@ -1404,11 +1336,6 @@
               <Name>initWithSelector:</Name>
               <Path>interface_typhoon_method.html</Path>
               <Anchor>a06092f744c76dcdde0be8c4743991bc7</Anchor>
-             </Node>
-             <Node>
-              <Name>injectParameter:with:</Name>
-              <Path>interface_typhoon_method.html</Path>
-              <Anchor>a7a2871bb4d79b1e5025fd3c150263593</Anchor>
              </Node>
              <Node>
               <Name>injectParameterWith:</Name>
@@ -1961,6 +1888,10 @@
             <Path></Path>
             <Subnodes>
              <Node>
+              <Name>NSNullTypeConverter</Name>
+              <Path>interface_n_s_null_type_converter.html</Path>
+             </Node>
+             <Node>
               <Name>TyphoonAbstractInjection</Name>
               <Path>interface_typhoon_abstract_injection.html</Path>
              </Node>
@@ -2131,6 +2062,10 @@
               <Path>protocol_typhoon_type_converter-p.html</Path>
               <Subnodes>
                <Node>
+                <Name>NSNullTypeConverter</Name>
+                <Path>interface_n_s_null_type_converter.html</Path>
+               </Node>
+               <Node>
                 <Name>TyphoonNSURLTypeConverter</Name>
                 <Path>interface_typhoon_n_s_u_r_l_type_converter.html</Path>
                </Node>
@@ -2197,88 +2132,6 @@
            <Node>
             <Name>All</Name>
             <Path>functions.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>a</Name>
-              <Path>functions.html</Path>
-             </Node>
-             <Node>
-              <Name>b</Name>
-              <Path>functions_b.html</Path>
-             </Node>
-             <Node>
-              <Name>c</Name>
-              <Path>functions_c.html</Path>
-             </Node>
-             <Node>
-              <Name>d</Name>
-              <Path>functions_d.html</Path>
-             </Node>
-             <Node>
-              <Name>e</Name>
-              <Path>functions_e.html</Path>
-             </Node>
-             <Node>
-              <Name>f</Name>
-              <Path>functions_f.html</Path>
-             </Node>
-             <Node>
-              <Name>g</Name>
-              <Path>functions_g.html</Path>
-             </Node>
-             <Node>
-              <Name>i</Name>
-              <Path>functions_i.html</Path>
-             </Node>
-             <Node>
-              <Name>k</Name>
-              <Path>functions_k.html</Path>
-             </Node>
-             <Node>
-              <Name>l</Name>
-              <Path>functions_l.html</Path>
-             </Node>
-             <Node>
-              <Name>m</Name>
-              <Path>functions_m.html</Path>
-             </Node>
-             <Node>
-              <Name>n</Name>
-              <Path>functions_n.html</Path>
-             </Node>
-             <Node>
-              <Name>o</Name>
-              <Path>functions_o.html</Path>
-             </Node>
-             <Node>
-              <Name>p</Name>
-              <Path>functions_p.html</Path>
-             </Node>
-             <Node>
-              <Name>r</Name>
-              <Path>functions_r.html</Path>
-             </Node>
-             <Node>
-              <Name>s</Name>
-              <Path>functions_s.html</Path>
-             </Node>
-             <Node>
-              <Name>t</Name>
-              <Path>functions_t.html</Path>
-             </Node>
-             <Node>
-              <Name>u</Name>
-              <Path>functions_u.html</Path>
-             </Node>
-             <Node>
-              <Name>v</Name>
-              <Path>functions_v.html</Path>
-             </Node>
-             <Node>
-              <Name>w</Name>
-              <Path>functions_w.html</Path>
-             </Node>
-            </Subnodes>
            </Node>
            <Node>
             <Name>Functions</Name>
@@ -2330,6 +2183,16 @@
               <Name>TyphoonManualIterationBlock</Name>
               <Path>_n_s_array_09_typhoon_manual_enumeration_8h.html</Path>
               <Anchor>ac2096872553d34aedf65d8cc6da3494d</Anchor>
+             </Node>
+            </Subnodes>
+           </Node>
+           <Node>
+            <Name>NSNullTypeConverter.h</Name>
+            <Path>_n_s_null_type_converter_8h.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>NSNullTypeConverter</Name>
+              <Path>interface_n_s_null_type_converter.html</Path>
              </Node>
             </Subnodes>
            </Node>
@@ -2417,11 +2280,6 @@
               <Name>NSObject(TyphoonIntrospectionUtils)</Name>
               <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
               <Subnodes>
-               <Node>
-                <Name>typhoon_parameterNamesForSelector:</Name>
-                <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
-                <Anchor>a4733974b1aeabdfa6277a85b90a3ff2b</Anchor>
-               </Node>
                <Node>
                 <Name>typhoon_typeForPropertyWithName:</Name>
                 <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
@@ -2746,7 +2604,7 @@
                <Node>
                 <Name>withOption:yes:no:</Name>
                 <Path>category_typhoon_definition_07_option_08.html</Path>
-                <Anchor>a010c1ec8138e655ab48676876f2f5369</Anchor>
+                <Anchor>a96cf46e499d4b083215881a2a9c8808e</Anchor>
                </Node>
               </Subnodes>
              </Node>
@@ -2767,36 +2625,19 @@
               <Anchor>aabd9ec47d6585742e7a1533f7114ced9</Anchor>
              </Node>
              <Node>
-              <Name>TyphoonInitializerBlock</Name>
-              <Path>_typhoon_definition_8h.html</Path>
-              <Anchor>a2231fb06421947990919fc3241639cd8</Anchor>
+              <Name>NS_ENUM</Name>
+              <Path>group___definition.html</Path>
+              <Anchor>gadfc84d5f4f1281bc37369fdbb6b58264</Anchor>
              </Node>
              <Node>
-              <Name>TyphoonScope</Name>
-              <Path>group___definition.html</Path>
-              <Anchor>ga6e7c49074062029ada1d93e0feef6c4c</Anchor>
-              <Subnodes>
-               <Node>
-                <Name>TyphoonScopeObjectGraph</Name>
-                <Path>group___definition.html</Path>
-                <Anchor>gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e</Anchor>
-               </Node>
-               <Node>
-                <Name>TyphoonScopePrototype</Name>
-                <Path>group___definition.html</Path>
-                <Anchor>gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a</Anchor>
-               </Node>
-               <Node>
-                <Name>TyphoonScopeSingleton</Name>
-                <Path>group___definition.html</Path>
-                <Anchor>gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb</Anchor>
-               </Node>
-               <Node>
-                <Name>TyphoonScopeWeakSingleton</Name>
-                <Path>group___definition.html</Path>
-                <Anchor>gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda</Anchor>
-               </Node>
-              </Subnodes>
+              <Name>NS_OPTIONS</Name>
+              <Path>_typhoon_definition_8h.html</Path>
+              <Anchor>aefa8df7a4406ee402a088e748ee253db</Anchor>
+             </Node>
+             <Node>
+              <Name>TyphoonAutoInjectVisibilityDefault</Name>
+              <Path>_typhoon_definition_8h.html</Path>
+              <Anchor>a55bf05c75200e5d1f608408c76872424</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -3325,6 +3166,10 @@
             <Path>_typhoon_method_swizzler_8h.html</Path>
            </Node>
            <Node>
+            <Name>TyphoonNSNumberTypeConverter.h</Name>
+            <Path>_typhoon_n_s_number_type_converter_8h.html</Path>
+           </Node>
+           <Node>
             <Name>TyphoonNSURLTypeConverter.h</Name>
             <Path>_typhoon_n_s_u_r_l_type_converter_8h.html</Path>
             <Subnodes>
@@ -3337,13 +3182,6 @@
            <Node>
             <Name>TyphoonOptionMatcher+Internal.h</Name>
             <Path>_typhoon_option_matcher_09_internal_8h.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>TyphoonOptionMatcherDefinitionSearchResult</Name>
-              <Path>_typhoon_option_matcher_09_internal_8h.html</Path>
-              <Anchor>a3421599da42028b69f04aff5188749bd</Anchor>
-             </Node>
-            </Subnodes>
            </Node>
            <Node>
             <Name>TyphoonOptionMatcher.h</Name>
@@ -3967,6 +3805,10 @@
            <Node>
             <Name>Functions</Name>
             <Path>globals_func.html</Path>
+           </Node>
+           <Node>
+            <Name>Variables</Name>
+            <Path>globals_vars.html</Path>
            </Node>
            <Node>
             <Name>Typedefs</Name>

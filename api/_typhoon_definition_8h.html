@@ -78,7 +78,7 @@ $(document).ready(function(){initNavTree('_typhoon_definition_8h.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,7 +91,8 @@ $(document).ready(function(){initNavTree('_typhoon_definition_8h.html','');});
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">TyphoonDefinition.h File Reference</div>  </div>
 </div><!--header-->
@@ -106,18 +107,20 @@ Classes</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:aabd9ec47d6585742e7a1533f7114ced9"><td class="memItemLeft" align="right" valign="top">typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_typhoon_definition_8h.html#aabd9ec47d6585742e7a1533f7114ced9">TyphoonDefinitionBlock</a> )(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *definition)</td></tr>
 <tr class="separator:aabd9ec47d6585742e7a1533f7114ced9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2231fb06421947990919fc3241639cd8"><td class="memItemLeft" align="right" valign="top">typedef void(^&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_typhoon_definition_8h.html#a2231fb06421947990919fc3241639cd8">TyphoonInitializerBlock</a> )(<a class="el" href="interface_typhoon_method.html">TyphoonMethod</a> *initializer)</td></tr>
-<tr class="separator:a2231fb06421947990919fc3241639cd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:ga6e7c49074062029ada1d93e0feef6c4c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___definition.html#ga6e7c49074062029ada1d93e0feef6c4c">TyphoonScope</a> { <a class="el" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e">TyphoonScopeObjectGraph</a> = 1 &lt;&lt; 0, 
-<a class="el" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a">TyphoonScopePrototype</a> = 1 &lt;&lt; 1, 
-<a class="el" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb">TyphoonScopeSingleton</a> = 1 &lt;&lt; 2, 
-<a class="el" href="group___definition.html#gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda">TyphoonScopeWeakSingleton</a> = 1 &lt;&lt; 3
- }</td></tr>
-<tr class="memdesc:ga6e7c49074062029ada1d93e0feef6c4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes the lifecycle of a Typhoon component.  <a href="group___definition.html#ga6e7c49074062029ada1d93e0feef6c4c">More...</a><br /></td></tr>
-<tr class="separator:ga6e7c49074062029ada1d93e0feef6c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gadfc84d5f4f1281bc37369fdbb6b58264"><td class="memItemLeft" align="right" valign="top">typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___definition.html#gadfc84d5f4f1281bc37369fdbb6b58264">NS_ENUM</a> (NSInteger, TyphoonScope)</td></tr>
+<tr class="memdesc:gadfc84d5f4f1281bc37369fdbb6b58264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes the lifecycle of a Typhoon component.  <a href="group___definition.html#gadfc84d5f4f1281bc37369fdbb6b58264">More...</a><br /></td></tr>
+<tr class="separator:gadfc84d5f4f1281bc37369fdbb6b58264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefa8df7a4406ee402a088e748ee253db"><td class="memItemLeft" align="right" valign="top">typedef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_typhoon_definition_8h.html#aefa8df7a4406ee402a088e748ee253db">NS_OPTIONS</a> (NSInteger, TyphoonAutoInjectVisibility)</td></tr>
+<tr class="separator:aefa8df7a4406ee402a088e748ee253db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a55bf05c75200e5d1f608408c76872424"><td class="memItemLeft" align="right" valign="top">static const <br class="typebreak" />
+TyphoonAutoInjectVisibility&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_typhoon_definition_8h.html#a55bf05c75200e5d1f608408c76872424">TyphoonAutoInjectVisibilityDefault</a> = TyphoonAutoInjectVisibilityByClass | TyphoonAutoInjectVisibilityByProtocol</td></tr>
+<tr class="separator:a55bf05c75200e5d1f608408c76872424"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a class="anchor" id="aabd9ec47d6585742e7a1533f7114ced9"></a>
@@ -132,14 +135,55 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2231fb06421947990919fc3241639cd8"></a>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="aefa8df7a4406ee402a088e748ee253db"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(^ TyphoonInitializerBlock)(<a class="el" href="interface_typhoon_method.html">TyphoonMethod</a> *initializer)</td>
+          <td class="memname">typedef NS_OPTIONS </td>
+          <td>(</td>
+          <td class="paramtype">NSInteger&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TyphoonAutoInjectVisibility&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    TyphoonAutoInjectVisibilityNone = 0,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    TyphoonAutoInjectVisibilityByClass = 1 &lt;&lt; 0,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    TyphoonAutoInjectVisibilityByProtocol = 1 &lt;&lt; 1,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="a55bf05c75200e5d1f608408c76872424"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const TyphoonAutoInjectVisibility TyphoonAutoInjectVisibilityDefault = TyphoonAutoInjectVisibilityByClass | TyphoonAutoInjectVisibilityByProtocol</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -151,7 +195,7 @@ Enumerations</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
         <li class="navelem"><a class="el" href="dir_9e51036813d6151dfecc72d5fa7c02b3.html">Users</a></li><li class="navelem"><a class="el" href="dir_0fb01263d4f6e222912702d4b500c35b.html">jblues</a></li><li class="navelem"><a class="el" href="dir_d1b80bd0a9735a5f5a46ef616dac0b02.html">bamboo-home</a></li><li class="navelem"><a class="el" href="dir_99bba378f1eab4ba821e1db6308459da.html">xml-data</a></li><li class="navelem"><a class="el" href="dir_feb3324c409b4217a18cc36afb266bde.html">build-dir</a></li><li class="navelem"><a class="el" href="dir_5c82ba156dc11cacf39cd3f6277279d8.html">TPN-TC-JOB1</a></li><li class="navelem"><a class="el" href="dir_6796ef609fe9fb871e43a7a13b342f44.html">Source</a></li><li class="navelem"><a class="el" href="dir_ad1d6e9a95bfb4c747473b65b17e2d23.html">Definition</a></li><li class="navelem"><a class="el" href="_typhoon_definition_8h.html">TyphoonDefinition.h</a></li>
-        <li class="footer">Generated on Sat Sep 13 2014 14:08:47 for Typhoon by
+        <li class="footer">Generated on Mon Sep 15 2014 11:05:37 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>

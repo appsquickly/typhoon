@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-09-13 14:08:45</td>
+            <td class="headerValue">2014-09-15 11:05:35</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -62,22 +62,23 @@
 <span class="lineNum">       4 </span>            : //
 <span class="lineNum">       5 </span>            : 
 <span class="lineNum">       6 </span>            : #import &lt;Foundation/Foundation.h&gt;
-<span class="lineNum">       7 </span>            : 
-<span class="lineNum">       8 </span>            : @class TyphoonComponentFactory;
-<span class="lineNum">       9 </span>            : @class TyphoonOptionMatcher;
-<span class="lineNum">      10 </span>            : 
-<span class="lineNum">      11 </span>            : @interface TyphoonMatcherDefinitionFactory : NSObject
-<span class="lineNum">      12 </span>            : 
-<span class="lineNum">      13 </span><span class="lineCov">         54 : @property (nonatomic, strong) TyphoonOptionMatcher *matcher;</span>
-<span class="lineNum">      14 </span><span class="lineCov">         53 : @property (nonatomic, strong) TyphoonComponentFactory *factory;</span>
-<span class="lineNum">      15 </span>            : 
-<span class="lineNum">      16 </span>            : - (id)valueCreatedFromDefinitionMatchedOption:(id)optionValue args:(TyphoonRuntimeArguments *)args;
-<span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span>            : @end
-<span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span>            : /** Class to indicate, that definition has internal factory */
-<span class="lineNum">      21 </span>            : @interface TyphoonInternalFactoryContainedDefinition : NSObject
-<span class="lineNum">      22 </span>            : @end
+<span class="lineNum">       7 </span>            : #import &quot;TyphoonFactoryDefinition.h&quot;
+<span class="lineNum">       8 </span>            : 
+<span class="lineNum">       9 </span>            : @class TyphoonComponentFactory;
+<span class="lineNum">      10 </span>            : @class TyphoonOptionMatcher;
+<span class="lineNum">      11 </span>            : 
+<span class="lineNum">      12 </span>            : @interface TyphoonMatcherDefinitionFactory : NSObject
+<span class="lineNum">      13 </span>            : 
+<span class="lineNum">      14 </span><span class="lineCov">         54 : @property (nonatomic, strong) TyphoonOptionMatcher *matcher;</span>
+<span class="lineNum">      15 </span><span class="lineCov">         53 : @property (nonatomic, strong) TyphoonComponentFactory *factory;</span>
+<span class="lineNum">      16 </span>            : 
+<span class="lineNum">      17 </span>            : - (id)valueCreatedFromDefinitionMatchedOption:(id)optionValue args:(TyphoonRuntimeArguments *)args;
+<span class="lineNum">      18 </span>            : 
+<span class="lineNum">      19 </span>            : @end
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span>            : /** Class to indicate, that definition has internal factory to register */
+<span class="lineNum">      22 </span>            : @interface TyphoonInfrastructureFactoryDefinition : TyphoonFactoryDefinition
+<span class="lineNum">      23 </span>            : @end
 </pre>
       </td>
     </tr>

@@ -184,12 +184,33 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>TyphoonInitializerBlock</Name>
+      <Name>NS_ENUM</Name>
       <APILanguage>c</APILanguage>
-      <Type>tdef</Type>
+      <Type>func</Type>
+    </TokenIdentifier>
+    <Path>group___definition.html</Path>
+    <Anchor>gadfc84d5f4f1281bc37369fdbb6b58264</Anchor>
+    <Abstract>Describes the lifecycle of a Typhoon component. </Abstract>
+    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>NS_OPTIONS</Name>
+      <APILanguage>c</APILanguage>
+      <Type>func</Type>
     </TokenIdentifier>
     <Path>_typhoon_definition_8h.html</Path>
-    <Anchor>a2231fb06421947990919fc3241639cd8</Anchor>
+    <Anchor>aefa8df7a4406ee402a088e748ee253db</Anchor>
+    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>TyphoonAutoInjectVisibilityDefault</Name>
+      <APILanguage>c</APILanguage>
+      <Type>data</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_definition_8h.html</Path>
+    <Anchor>a55bf05c75200e5d1f608408c76872424</Anchor>
     <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
   </Token>
   <Token>
@@ -371,16 +392,6 @@
     <Path>_typhoon_introspection_utils_8h.html</Path>
     <Anchor>a4efc9426f64b77b419eea0204eedb57a</Anchor>
     <DeclaredIn>TyphoonIntrospectionUtils.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>TyphoonOptionMatcherDefinitionSearchResult</Name>
-      <APILanguage>c</APILanguage>
-      <Type>tdef</Type>
-    </TokenIdentifier>
-    <Path>_typhoon_option_matcher_09_internal_8h.html</Path>
-    <Anchor>a3421599da42028b69f04aff5188749bd</Anchor>
-    <DeclaredIn>TyphoonOptionMatcher+Internal.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -665,42 +676,13 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>TyphoonScopeObjectGraph</Name>
+      <Name>NS_ENUM</Name>
       <APILanguage>c</APILanguage>
-      <Type>econst</Type>
+      <Type>func</Type>
     </TokenIdentifier>
     <Path>group___definition.html</Path>
-    <Anchor>gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e</Anchor>
-    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>TyphoonScopePrototype</Name>
-      <APILanguage>c</APILanguage>
-      <Type>econst</Type>
-    </TokenIdentifier>
-    <Path>group___definition.html</Path>
-    <Anchor>gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a</Anchor>
-    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>TyphoonScopeSingleton</Name>
-      <APILanguage>c</APILanguage>
-      <Type>econst</Type>
-    </TokenIdentifier>
-    <Path>group___definition.html</Path>
-    <Anchor>gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb</Anchor>
-    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>TyphoonScopeWeakSingleton</Name>
-      <APILanguage>c</APILanguage>
-      <Type>econst</Type>
-    </TokenIdentifier>
-    <Path>group___definition.html</Path>
-    <Anchor>gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda</Anchor>
+    <Anchor>gadfc84d5f4f1281bc37369fdbb6b58264</Anchor>
+    <Abstract>Describes the lifecycle of a Typhoon component. </Abstract>
     <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
   </Token>
   <Token>
@@ -739,6 +721,41 @@
     <Path>category_n_s_array_07_typhoon_signal_enumerator_08.html</Path>
     <Anchor>a95ecce680a7d3789c68b89920fa236bb</Anchor>
     <DeclaredIn>NSArray+TyphoonManualEnumeration.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>NSNullTypeConverter</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+      <Scope>NSNullTypeConverter</Scope>
+    </TokenIdentifier>
+    <Path>interface_n_s_null_type_converter.html</Path>
+    <Abstract>Converter used for testing. </Abstract>
+    <DeclaredIn>NSNullTypeConverter.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>convert:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonTypeConverter-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_type_converter-p.html</Path>
+    <Anchor>a176193d749424c8f9a5c116217ef09f2</Anchor>
+    <Abstract>Converts the given string into the supported type. </Abstract>
+    <DeclaredIn>TyphoonTypeConverter.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>supportedType</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonTypeConverter-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_type_converter-p.html</Path>
+    <Anchor>a6060c2f9ab99d7b68383c80c8403a6bf</Anchor>
+    <Abstract>The supported type of the converter. </Abstract>
+    <DeclaredIn>TyphoonTypeConverter.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -869,17 +886,6 @@
       <Scope>NSObject(TyphoonIntrospectionUtils)</Scope>
     </TokenIdentifier>
     <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
-    <DeclaredIn>NSObject+TyphoonIntrospectionUtils.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>typhoon_parameterNamesForSelector:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>func</Type>
-      <Scope>NSObject(TyphoonIntrospectionUtils)</Scope>
-    </TokenIdentifier>
-    <Path>category_n_s_object_07_typhoon_introspection_utils_08.html</Path>
-    <Anchor>a4733974b1aeabdfa6277a85b90a3ff2b</Anchor>
     <DeclaredIn>NSObject+TyphoonIntrospectionUtils.h</DeclaredIn>
   </Token>
   <Token>
@@ -1966,6 +1972,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>autoInjectionVisibility</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonDefinition</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_definition.html</Path>
+    <Anchor>a7b651ab85991ef1d9641ef5cd1f67187</Anchor>
+    <Abstract>Specifies visibility for for AutoInjection. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>beforeInjections</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
@@ -1985,50 +2002,6 @@
     <Path>interface_typhoon_definition.html</Path>
     <Anchor>aa15fa133879051cd95d39acb8ca5d94f</Anchor>
     <Abstract>A component that will produce an instance (with or without parameters) of this component. </Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>initializer</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a14e72e677e9eee1ba1a2c9b3a7b68d1f</Anchor>
-    <Abstract>Describes the initializer, ie the selector and arguments that will be used to instantiate this compon...</Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>initializerGenerated</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>af3d2c880ca93e989082c2e9472d09039</Anchor>
-    <Abstract>Returns true if this is a default initializer generated by Typhoon. </Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>key</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a4e5a7c1fba8794b3eabdb8fb47ee0ba6</Anchor>
-    <Abstract>The key of the component. </Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>lazy</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a07f6703b4e1da5810678d367aab2ac67</Anchor>
-    <Abstract>Say if the component (scoped as a singleton) should be lazily instantiated. </Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -2103,7 +2076,7 @@
       <Scope>TyphoonDefinition</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a5f47d822976a99d40fc1b28d7e15c578</Anchor>
+    <Anchor>af78a138a2ba6438475176ab520cafc14</Anchor>
     <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
   </Token>
   <Token>
@@ -2126,8 +2099,8 @@
       <Scope>TyphoonDefinition</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a010c1ec8138e655ab48676876f2f5369</Anchor>
-    <Abstract>if boolean &amp;#39;option&amp;#39; value is YES, then return yesDefinition, otherwise return noDefinition ...</Abstract>
+    <Anchor>a96cf46e499d4b083215881a2a9c8808e</Anchor>
+    <Abstract>if boolean &amp;#39;option&amp;#39; value is YES, then return yesInjection, otherwise return noInjection ...</Abstract>
     <DeclaredIn>TyphoonDefinition+Option.h</DeclaredIn>
   </Token>
   <Token>
@@ -2139,7 +2112,7 @@
     </TokenIdentifier>
     <Path>interface_typhoon_definition.html</Path>
     <Anchor>a6052afa42a4a9a206dfac94cbd7f5e86</Anchor>
-    <Abstract>Injects method with specified by selector with parameters. </Abstract>
+    <Abstract>Injects method specified by selector with parameters. </Abstract>
     <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
   </Token>
   <Token>
@@ -2244,8 +2217,8 @@
       <Scope>TyphoonDefinition(Option)</Scope>
     </TokenIdentifier>
     <Path>category_typhoon_definition_07_option_08.html</Path>
-    <Anchor>a010c1ec8138e655ab48676876f2f5369</Anchor>
-    <Abstract>if boolean &amp;#39;option&amp;#39; value is YES, then return yesDefinition, otherwise return noDefinition ...</Abstract>
+    <Anchor>a96cf46e499d4b083215881a2a9c8808e</Anchor>
+    <Abstract>if boolean &amp;#39;option&amp;#39; value is YES, then return yesInjection, otherwise return noInjection ...</Abstract>
     <DeclaredIn>TyphoonDefinition+Option.h</DeclaredIn>
   </Token>
   <Token>
@@ -3859,18 +3832,8 @@
       <Scope>TyphoonMethod</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_method.html</Path>
-    <Abstract>Represents an initializer for a component. </Abstract>
+    <Abstract>Represents an method to inject for a component. </Abstract>
     <DeclaredIn>TyphoonMethod.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>parameterNames</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonMethod</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_method.html</Path>
-    <Anchor>a248d243a0a4975cd8660a7459a70c0e2</Anchor>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -3892,17 +3855,6 @@
     </TokenIdentifier>
     <Path>interface_typhoon_method.html</Path>
     <Anchor>a06092f744c76dcdde0be8c4743991bc7</Anchor>
-    <DeclaredIn>TyphoonMethod.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>injectParameter:with:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonMethod</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_method.html</Path>
-    <Anchor>a7a2871bb4d79b1e5025fd3c150263593</Anchor>
     <DeclaredIn>TyphoonMethod.h</DeclaredIn>
   </Token>
   <Token>
@@ -4017,7 +3969,7 @@
     </TokenIdentifier>
     <Path>interface_typhoon_option_matcher.html</Path>
     <Anchor>a3eaf55d707637e82073100543cbed400</Anchor>
-    <Abstract>If this method called, matcher will find definition using &amp;#39;option&amp;#39; value as key. </Abstract>
+    <Abstract>If this method called, matcher will find definition using &amp;#39;option&amp;#39; value as key for definition...</Abstract>
     <DeclaredIn>TyphoonOptionMatcher.h</DeclaredIn>
   </Token>
   <Token>

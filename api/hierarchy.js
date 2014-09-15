@@ -30,6 +30,7 @@ var hierarchy =
       [ "<TyphoonCollection>", "protocol_typhoon_collection-p.html", null ]
     ] ],
     [ "NSObject", null, [
+      [ "NSNullTypeConverter", "interface_n_s_null_type_converter.html", null ],
       [ "TyphoonAbstractInjection", "interface_typhoon_abstract_injection.html", null ],
       [ "TyphoonAssembly", "interface_typhoon_assembly.html", null ],
       [ "TyphoonAssemblySelectorAdviser", "interface_typhoon_assembly_selector_adviser.html", null ],
@@ -75,6 +76,7 @@ var hierarchy =
         [ "TyphoonBundleResource", "interface_typhoon_bundle_resource.html", null ]
       ] ],
       [ "<TyphoonTypeConverter>", "protocol_typhoon_type_converter-p.html", [
+        [ "NSNullTypeConverter", "interface_n_s_null_type_converter.html", null ],
         [ "TyphoonNSURLTypeConverter", "interface_typhoon_n_s_u_r_l_type_converter.html", null ],
         [ "TyphoonPassThroughTypeConverter", "interface_typhoon_pass_through_type_converter.html", null ],
         [ "TyphoonUIColorTypeConverter", "interface_typhoon_u_i_color_type_converter.html", null ]

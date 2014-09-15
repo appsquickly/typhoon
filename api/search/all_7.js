@@ -1,8 +1,6 @@
 var searchData=
 [
   ['indexofargumentwithkind_3a',['indexOfArgumentWithKind:',['../interface_typhoon_runtime_arguments.html#a632e212e1dd074e768ffc12179401a61',1,'TyphoonRuntimeArguments']]],
-  ['initializer',['initializer',['../interface_typhoon_definition.html#a14e72e677e9eee1ba1a2c9b3a7b68d1f',1,'TyphoonDefinition']]],
-  ['initializergenerated',['initializerGenerated',['../interface_typhoon_definition.html#af3d2c880ca93e989082c2e9472d09039',1,'TyphoonDefinition']]],
   ['initwithargumentindex_3a',['initWithArgumentIndex:',['../interface_typhoon_injection_by_runtime_argument.html#a7bc5b2cea72db7a86dd6b35db6788d1a',1,'TyphoonInjectionByRuntimeArgument']]],
   ['initwithassemblies_3a',['initWithAssemblies:',['../interface_typhoon_block_component_factory.html#ac8917e7cdc0db417866674e3e6acea80',1,'TyphoonBlockComponentFactory']]],
   ['initwithassembly_3a',['initWithAssembly:',['../interface_typhoon_block_component_factory.html#acc698d2dbe0f8c54259989b1da2f45d5',1,'TyphoonBlockComponentFactory']]],
@@ -21,7 +19,6 @@ var searchData=
   ['inject_3awithdefinition_3a',['inject:withDefinition:',['../interface_typhoon_component_factory.html#a78a4e4fc448f359100ac16bea350f41a',1,'TyphoonComponentFactory']]],
   ['injectedprotocol',['InjectedProtocol',['../_typhoon_auto_injection_8h.html#ae73cb690bfababa9898655627175ba7d',1,'TyphoonAutoInjection.h']]],
   ['injectmethod_3aparameters_3a',['injectMethod:parameters:',['../interface_typhoon_definition.html#a6052afa42a4a9a206dfac94cbd7f5e86',1,'TyphoonDefinition']]],
-  ['injectparameter_3awith_3a',['injectParameter:with:',['../interface_typhoon_method.html#a7a2871bb4d79b1e5025fd3c150263593',1,'TyphoonMethod']]],
   ['injectparameterwith_3a',['injectParameterWith:',['../interface_typhoon_method.html#ac9c073e76872ccce153960253c6352db',1,'TyphoonMethod']]],
   ['injectproperty_3a',['injectProperty:',['../interface_typhoon_definition.html#ae94bc60d51081f565e5183e5b28ea36f',1,'TyphoonDefinition']]],
   ['injectproperty_3awith_3a',['injectProperty:with:',['../interface_typhoon_definition.html#a2dae7a42237c54186dff914a699bf7d9',1,'TyphoonDefinition']]],

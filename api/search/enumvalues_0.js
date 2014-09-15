@@ -18,9 +18,5 @@ var searchData=
   ['typhoonprimitivetypeunsignedlong',['TyphoonPrimitiveTypeUnsignedLong',['../_typhoon_type_descriptor_8h.html#ab1691370e2945f3d15a1002c601817cfa2deb6fbdbd2a20785d83bd1726342d52',1,'TyphoonTypeDescriptor.h']]],
   ['typhoonprimitivetypeunsignedlonglong',['TyphoonPrimitiveTypeUnsignedLongLong',['../_typhoon_type_descriptor_8h.html#ab1691370e2945f3d15a1002c601817cfa5e7a90f60c56a508472326a9058197cc',1,'TyphoonTypeDescriptor.h']]],
   ['typhoonprimitivetypeunsignedshort',['TyphoonPrimitiveTypeUnsignedShort',['../_typhoon_type_descriptor_8h.html#ab1691370e2945f3d15a1002c601817cfa154bfa2b1216a96de671c410b85dfbed',1,'TyphoonTypeDescriptor.h']]],
-  ['typhoonprimitivetypevoid',['TyphoonPrimitiveTypeVoid',['../_typhoon_type_descriptor_8h.html#ab1691370e2945f3d15a1002c601817cfa4c16ce6a23fd00feac9e63e6661aeaa8',1,'TyphoonTypeDescriptor.h']]],
-  ['typhoonscopeobjectgraph',['TyphoonScopeObjectGraph',['../group___definition.html#gga6e7c49074062029ada1d93e0feef6c4ca6252d2edd3caf1026439f0796bf1727e',1,'TyphoonDefinition.h']]],
-  ['typhoonscopeprototype',['TyphoonScopePrototype',['../group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae4d9ea40654c601babd355e37d0e2c9a',1,'TyphoonDefinition.h']]],
-  ['typhoonscopesingleton',['TyphoonScopeSingleton',['../group___definition.html#gga6e7c49074062029ada1d93e0feef6c4cae009f8d53ea245319ae21775e486b8fb',1,'TyphoonDefinition.h']]],
-  ['typhoonscopeweaksingleton',['TyphoonScopeWeakSingleton',['../group___definition.html#gga6e7c49074062029ada1d93e0feef6c4caf8ae31e461256dfa44c2de0b79c80cda',1,'TyphoonDefinition.h']]]
+  ['typhoonprimitivetypevoid',['TyphoonPrimitiveTypeVoid',['../_typhoon_type_descriptor_8h.html#ab1691370e2945f3d15a1002c601817cfa4c16ce6a23fd00feac9e63e6661aeaa8',1,'TyphoonTypeDescriptor.h']]]
 ];

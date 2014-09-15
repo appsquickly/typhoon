@@ -78,7 +78,7 @@ $(document).ready(function(){initNavTree('interface_typhoon_option_matcher.html'
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Properties</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -118,7 +118,7 @@ Instance Methods</h2></td></tr>
 <tr class="memdesc:a1dd7e4ae31546b51dbd0ba4c3d0f6c40"><td class="mdescLeft">&#160;</td><td class="mdescRight">When matcher can't match injection from optionValue, use 'injection'.  <a href="#a1dd7e4ae31546b51dbd0ba4c3d0f6c40">More...</a><br /></td></tr>
 <tr class="separator:a1dd7e4ae31546b51dbd0ba4c3d0f6c40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3eaf55d707637e82073100543cbed400"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_option_matcher.html#a3eaf55d707637e82073100543cbed400">useDefinitionWithKeyMatchedOptionValue</a></td></tr>
-<tr class="memdesc:a3eaf55d707637e82073100543cbed400"><td class="mdescLeft">&#160;</td><td class="mdescRight">If this method called, matcher will find definition using 'option' value as key.  <a href="#a3eaf55d707637e82073100543cbed400">More...</a><br /></td></tr>
+<tr class="memdesc:a3eaf55d707637e82073100543cbed400"><td class="mdescLeft">&#160;</td><td class="mdescRight">If this method called, matcher will find definition using 'option' value as key for definition.  <a href="#a3eaf55d707637e82073100543cbed400">More...</a><br /></td></tr>
 <tr class="separator:a3eaf55d707637e82073100543cbed400"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Method Documentation</h2>
@@ -237,8 +237,8 @@ Instance Methods</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>If this method called, matcher will find definition using 'option' value as key. </p>
-<dl class="section note"><dt>Note</dt><dd>When matching definition from 'option', 'caseEqual:use:' has higher priority than matching by definition key </dd></dl>
+<p>If this method called, matcher will find definition using 'option' value as key for definition. </p>
+<dl class="section note"><dt>Note</dt><dd>When matching definition from 'option', 'caseEqual:use:', 'caseKindOfClass:use:' and 'caseMemberOfClass:use:' has higher priority than matching by definition key </dd></dl>
 
 </div>
 </div>
@@ -249,7 +249,7 @@ Instance Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
         <li class="navelem"><a class="el" href="interface_typhoon_option_matcher.html">TyphoonOptionMatcher</a></li>
-        <li class="footer">Generated on Sat Sep 13 2014 14:08:48 for Typhoon by
+        <li class="footer">Generated on Mon Sep 15 2014 11:05:37 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>

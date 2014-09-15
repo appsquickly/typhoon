@@ -1,6 +1,9 @@
 var files =
 [
     [ "NSArray+TyphoonManualEnumeration.h", "_n_s_array_09_typhoon_manual_enumeration_8h.html", "_n_s_array_09_typhoon_manual_enumeration_8h" ],
+    [ "NSNullTypeConverter.h", "_n_s_null_type_converter_8h.html", [
+      [ "NSNullTypeConverter", "interface_n_s_null_type_converter.html", null ]
+    ] ],
     [ "NSObject+DeallocNotification.h", "_n_s_object_09_dealloc_notification_8h.html", [
       [ "NSObject(DeallocNotification)", "category_n_s_object_07_dealloc_notification_08.html", "category_n_s_object_07_dealloc_notification_08" ]
     ] ],
@@ -95,10 +98,11 @@ var files =
     ] ],
     [ "TyphoonMethod.h", "_typhoon_method_8h.html", null ],
     [ "TyphoonMethodSwizzler.h", "_typhoon_method_swizzler_8h.html", null ],
+    [ "TyphoonNSNumberTypeConverter.h", "_typhoon_n_s_number_type_converter_8h.html", null ],
     [ "TyphoonNSURLTypeConverter.h", "_typhoon_n_s_u_r_l_type_converter_8h.html", [
       [ "TyphoonNSURLTypeConverter", "interface_typhoon_n_s_u_r_l_type_converter.html", null ]
     ] ],
-    [ "TyphoonOptionMatcher+Internal.h", "_typhoon_option_matcher_09_internal_8h.html", "_typhoon_option_matcher_09_internal_8h" ],
+    [ "TyphoonOptionMatcher+Internal.h", "_typhoon_option_matcher_09_internal_8h.html", null ],
     [ "TyphoonOptionMatcher.h", "_typhoon_option_matcher_8h.html", [
       [ "TyphoonOptionMatcher", "interface_typhoon_option_matcher.html", "interface_typhoon_option_matcher" ]
     ] ],
