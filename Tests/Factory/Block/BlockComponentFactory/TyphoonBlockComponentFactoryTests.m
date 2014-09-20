@@ -74,7 +74,7 @@
     @catch (NSException *exception) {}
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Property Injection
 
 - (void)test_injects_properties_by_reference_and_by_value
@@ -159,7 +159,7 @@
     XCTAssertThrows([(MiddleAgesAssembly *) _componentFactory knightWithFakePropertyQuestByType]);
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark Class Method Initializer
 
 - (void)test_class_method_injection
@@ -192,7 +192,7 @@
     XCTAssertEqualObjects([sword description], @"A bright blue sword with orange pom-poms at the hilt.");
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark initializer injection
 
 - (void)test_injects_collection_in_initializer
@@ -204,7 +204,7 @@
 }
 
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark Property-based configuration
 
 - (void)test_resolves_property_values
@@ -244,7 +244,7 @@
     XCTAssertNotNil(nullConverter);
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Circular dependencies.
 
 - (void)test_resolves_circular_dependencies_for_property_injected_by_reference
@@ -293,7 +293,7 @@
     XCTAssertEqual([classD.dependencyOnC class], [ClassCDependsOnDAndE class]);
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Circular dependencies on singleton chains
 
 - (void)test_resolves_chains_of_circular_dependencies_of_singletons_injected_by_type
@@ -327,7 +327,7 @@
     XCTAssertNotEqual(propertyInjected.prototypeInitInjected, initializerInjected);
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Currently Resolving Overwriting Problem
 
 - (void)test_currently_resolving_references_dictionary_is_not_overwritten_when_initializing_two_instances_of_prototype_in_the_same_chain

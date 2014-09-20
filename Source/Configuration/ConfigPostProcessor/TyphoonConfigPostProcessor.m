@@ -30,7 +30,7 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 
 
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
 
 + (TyphoonConfigPostProcessor *)configurer
@@ -53,7 +53,7 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
     return [propertyPlaceholderRegistry allKeys];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
 
 - (id)init
@@ -78,7 +78,7 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
     [self registerConfigurationClass:[TyphoonPlistStyleConfiguration class] forExtension:@"plist"];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods
 
 - (void)useResourceWithName:(NSString *)name
@@ -124,7 +124,7 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
     return value;
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Protocol Methods
 
 - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory

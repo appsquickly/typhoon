@@ -43,7 +43,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 }
 
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
 
 + (TyphoonAssembly *)assembly
@@ -109,7 +109,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
     return [_definitionBuilder builtDefinitionForKey:key args:args];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
 
 - (id)init
@@ -123,7 +123,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
     return self;
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - <TyphoonObjectWithCustomInjection>
 
 - (id <TyphoonPropertyInjection, TyphoonParameterInjection>)typhoonCustomObjectInjection
@@ -131,7 +131,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
     return [[TyphoonInjectionByComponentFactory alloc] init];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods
 
 - (void)resolveCollaboratingAssemblies
@@ -154,7 +154,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
     return (id)self;
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Private Methods
 
 - (NSArray *)definitions

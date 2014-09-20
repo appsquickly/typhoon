@@ -59,8 +59,9 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 @synthesize initializerGenerated = _initializerGenerated;
 @synthesize currentRuntimeArguments = _currentRuntimeArguments;
 
-/* ====================================================================================================================================== */
-#pragma mark - Class Methods
+//-------------------------------------------------------------------------------------------
+#pragma MARK: - Class Methods
+//-------------------------------------------------------------------------------------------
 
 + (id)withClass:(Class)clazz
 {
@@ -100,16 +101,18 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     }];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - TyphoonObjectWithCustomInjection
+//-------------------------------------------------------------------------------------------
 
 - (id)typhoonCustomObjectInjection
 {
     return [[TyphoonInjectionByReference alloc] initWithReference:self.key args:self.currentRuntimeArguments];
 }
 
-/* ====================================================================================================================================== */
-#pragma mark - Interface Methods
+//-------------------------------------------------------------------------------------------
+#pragma MARK: - Interface Methods
+//-------------------------------------------------------------------------------------------
 
 - (void)injectProperty:(SEL)selector
 {
@@ -148,8 +151,9 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     [self useInitializer:selector parameters:nil];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Making injections
+//-------------------------------------------------------------------------------------------
 
 - (id)property:(SEL)factorySelector
 {
@@ -161,8 +165,9 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     return [[TyphoonInjectionByFactoryReference alloc] initWithReference:self.key args:self.currentRuntimeArguments keyPath:keyPath];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Overridden Methods
+//-------------------------------------------------------------------------------------------
 
 - (void)setInitializer:(TyphoonMethod *)initializer
 {
@@ -222,8 +227,9 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 }
 
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Utility Methods
+//-------------------------------------------------------------------------------------------
 
 - (NSString *)description
 {
@@ -242,8 +248,9 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     return copy;
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Private Methods
+//-------------------------------------------------------------------------------------------
 
 - (void)validateScope
 {

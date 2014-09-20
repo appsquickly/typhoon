@@ -1,14 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-//  AppsQuick.ly
-//  Copyright 2012 AppsQuick.ly
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Jasper Blues & Contributors
 //  All Rights Reserved.
 //
-//  NOTICE: AppsQuick.ly permits you to use, modify, and distribute this file
+//  NOTICE: The authors permit you to use, modify, and distribute this file
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
-
 
 
 #import <Foundation/Foundation.h>
@@ -19,19 +18,21 @@
 @protocol TyphoonResource <NSObject>
 
 /**
+* Returns the resource as data.
+*/
+@property(nonatomic, readonly) NSData* data;
+
+/**
 * Returns the resource with the given name, as an NSString using NSUTF8String encoding.
 */
-- (NSString *)asString;
+@property(nonatomic, readonly, getter=asString) NSString* string;
 
 /**
 * Returns the resource with the given name, using the specified encoding.
 */
 - (NSString *)asStringWithEncoding:(NSStringEncoding)encoding;
 
-/**
-* Returns the resource as data.
-*/
-- (NSData *)data;
+
 
 
 @end

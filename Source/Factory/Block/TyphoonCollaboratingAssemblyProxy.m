@@ -53,7 +53,7 @@
     return [TyphoonIntrospectionUtils methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:selector];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - <TyphoonObjectWithCustomInjection>
 
 - (id <TyphoonPropertyInjection, TyphoonParameterInjection>)typhoonCustomObjectInjection

@@ -77,7 +77,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     id result;
 
     BOOL isClass = IsClass(instanceOrClass);
-    Class instanceClass = isClass ? instanceOrClass : [instanceOrClass class];
+    Class instanceClass = isClass ? (Class) instanceOrClass : [instanceOrClass class];
 
     NSInvocation *invocation = [self invocationToInit:instanceClass with:initializer args:args];
 
@@ -134,8 +134,9 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     return [self buildInstanceWithDefinition:definition args:args];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Injection process
+//-------------------------------------------------------------------------------------------
 
 - (void)doInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
@@ -178,8 +179,9 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     }
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Methods Injection
+//-------------------------------------------------------------------------------------------
 
 - (void)doMethodInjection:(TyphoonMethod *)method onInstance:(id)instance args:(TyphoonRuntimeArguments *)args
 {
@@ -194,8 +196,9 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     }];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Property Injection
+//-------------------------------------------------------------------------------------------
 
 - (void)doPropertyInjectionOn:(id)instance property:(id <TyphoonPropertyInjection>)property args:(TyphoonRuntimeArguments *)args
 {
@@ -211,8 +214,9 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     }];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Circular dependencies support
+//-------------------------------------------------------------------------------------------
 
 - (void)resolveCircularDependency:(NSString *)key args:(TyphoonRuntimeArguments *)args
                     resolvedBlock:(void (^)(BOOL isCircular))resolvedBlock
@@ -228,8 +232,9 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     }
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Private Methods
+//-------------------------------------------------------------------------------------------
 
 - (TyphoonDefinition *)definitionForType:(id)classOrProtocol
 {

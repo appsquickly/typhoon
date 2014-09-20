@@ -15,7 +15,10 @@
 
 @implementation TyphoonBundleResource
 
-/* =========================================================== Class Methods ============================================================ */
+//-------------------------------------------------------------------------------------------
+#pragma MARK: - Class Methods
+//-------------------------------------------------------------------------------------------
+
 + (id <TyphoonResource>)withName:(NSString *)name
 {
     return [self withName:name inBundle:[NSBundle bundleForClass:[self class]]];
@@ -29,7 +32,7 @@
         [NSException raise:NSInvalidArgumentException format:@"Resource named '%@' not in bundle.", name];
     }
 
-    return [[[self class] alloc] initWithContentsOfFile:filePath];
+    return [[TyphoonBundleResource alloc] initWithContentsOfFile:filePath];
 }
 
 + (NSString *)filePathForName:(NSString *)name inBundle:(NSBundle *)bundle

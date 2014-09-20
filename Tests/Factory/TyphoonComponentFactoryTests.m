@@ -42,7 +42,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     internalPostProcessorsCount = [[_componentFactory factoryPostProcessors] count];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Dependencies resolved by reference
 
 - (void)test_componentForKey_returns_with_initializer_dependencies_injected
@@ -88,7 +88,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     XCTAssertNil(value);
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Dependencies resolved by type
 
 - (void)test_allComponentsForType
@@ -152,7 +152,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     XCTAssertNotNil(knight.quest);
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Auto-wiring
 
 - (void)test_autoWires
@@ -163,7 +163,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     XCTAssertNotNil(knight.quest);
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Description
 
 - (void)test_able_to_describe_itself
@@ -172,7 +172,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     XCTAssertEqualObjects(description, @"<TyphoonComponentFactory: _registry=(\n)>");
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma  mark - Infrastructure components
 
 - (void)test_post_processor_registration
@@ -238,7 +238,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     XCTAssertEqualObjects(orderedApplied, expected);
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Inject properties
 
 - (void)test_injectProperties
@@ -360,7 +360,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     XCTAssertTrue([object1 rangeOfString:@"Hello"].location == NSNotFound);
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Definition Inheritance
 
 //TODO: Move this test to TyphoonDefinitionTests
@@ -424,7 +424,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
     }
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Test Utility Methods
 
 - (TyphoonDefinition *)registerParentDefinitionWithClass:(Class)pClass initializerString:(NSString *)string

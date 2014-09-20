@@ -21,7 +21,7 @@
 
 @implementation TyphoonFactoryPropertyInjectionPostProcessor
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Protocol Methods
 
 - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
@@ -37,7 +37,7 @@
     }
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Instance Methods
 
 - (BOOL)shouldReplaceInjectionByType:(TyphoonInjectionByType *)propertyInjection

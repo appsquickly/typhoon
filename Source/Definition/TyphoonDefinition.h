@@ -186,7 +186,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 @property(nonatomic) BOOL abstract;
 
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark Factory methods
 
 + (id)withClass:(Class)clazz;
@@ -197,7 +197,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
 + (id)withFactory:(id)definition selector:(SEL)selector parameters:(void (^)(TyphoonMethod *factoryMethod))parametersBlock;
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark Injection
 
 /**

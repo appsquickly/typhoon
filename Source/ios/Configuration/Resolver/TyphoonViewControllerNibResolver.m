@@ -35,7 +35,7 @@
     return NSStringFromClass(viewControllerClass);
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Private Methods
 
 - (void)processViewControllerDefinition:(TyphoonDefinition *)definition

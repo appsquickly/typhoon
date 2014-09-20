@@ -26,7 +26,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 @dynamic initializer, initializerGenerated, currentRuntimeArguments, key;
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
 
 + (instancetype)withClass:(Class)clazz key:(NSString *)key
@@ -54,7 +54,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     }];
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
 
 - (id)initWithClass:(Class)clazz key:(NSString *)key
@@ -105,7 +105,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 }
 
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Private Methods
 
 - (void)validateRequiredParametersAreSet

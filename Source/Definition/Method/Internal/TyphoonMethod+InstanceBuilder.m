@@ -28,7 +28,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
 @implementation TyphoonMethod (InstanceBuilder)
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods
 
 - (void)replaceInjection:(id<TyphoonParameterInjection>)injection with:(id<TyphoonParameterInjection>)injectionToReplace
@@ -78,7 +78,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     }
 }
 
-/* ====================================================================================================================================== */
+//-------------------------------------------------------------------------------------------
 #pragma mark - Private Methods
 
 - (BOOL)isClassMethodOnClass:(Class)_class
