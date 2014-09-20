@@ -1480,15 +1480,25 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>asString</Name>
+      <Name>data</Name>
       <APILanguage>occ</APILanguage>
-      <Type>intfm</Type>
+      <Type>intfp</Type>
       <Scope>TyphoonResource-p</Scope>
     </TokenIdentifier>
     <Path>protocol_typhoon_resource-p.html</Path>
-    <Anchor>a42f9702ff28c89b2910011df574f857d</Anchor>
+    <Anchor>a80598e5a413e06fd73152a9220b5b9eb</Anchor>
+    <Abstract>Returns the resource as data. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>string</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfp</Type>
+      <Scope>TyphoonResource-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_resource-p.html</Path>
+    <Anchor>a17b8f3ba7548a7d8c5ece07fb3f6c461</Anchor>
     <Abstract>Returns the resource with the given name, as an NSString using NSUTF8String encoding. </Abstract>
-    <DeclaredIn>TyphoonResource.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -1500,18 +1510,6 @@
     <Path>protocol_typhoon_resource-p.html</Path>
     <Anchor>afed07d1fc2e7fb11a2db3073dd53ddd7</Anchor>
     <Abstract>Returns the resource with the given name, using the specified encoding. </Abstract>
-    <DeclaredIn>TyphoonResource.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>data</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>intfm</Type>
-      <Scope>TyphoonResource-p</Scope>
-    </TokenIdentifier>
-    <Path>protocol_typhoon_resource-p.html</Path>
-    <Anchor>a6531a7fe875c40acee7ac81da7b17ea4</Anchor>
-    <Abstract>Returns the resource as data. </Abstract>
     <DeclaredIn>TyphoonResource.h</DeclaredIn>
   </Token>
   <Token>
@@ -4389,15 +4387,25 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>asString</Name>
+      <Name>data</Name>
       <APILanguage>occ</APILanguage>
-      <Type>intfm</Type>
+      <Type>intfp</Type>
       <Scope>TyphoonResource-p</Scope>
     </TokenIdentifier>
     <Path>protocol_typhoon_resource-p.html</Path>
-    <Anchor>a42f9702ff28c89b2910011df574f857d</Anchor>
+    <Anchor>a80598e5a413e06fd73152a9220b5b9eb</Anchor>
+    <Abstract>Returns the resource as data. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>string</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfp</Type>
+      <Scope>TyphoonResource-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_resource-p.html</Path>
+    <Anchor>a17b8f3ba7548a7d8c5ece07fb3f6c461</Anchor>
     <Abstract>Returns the resource with the given name, as an NSString using NSUTF8String encoding. </Abstract>
-    <DeclaredIn>TyphoonResource.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -4409,18 +4417,6 @@
     <Path>protocol_typhoon_resource-p.html</Path>
     <Anchor>afed07d1fc2e7fb11a2db3073dd53ddd7</Anchor>
     <Abstract>Returns the resource with the given name, using the specified encoding. </Abstract>
-    <DeclaredIn>TyphoonResource.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>data</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>intfm</Type>
-      <Scope>TyphoonResource-p</Scope>
-    </TokenIdentifier>
-    <Path>protocol_typhoon_resource-p.html</Path>
-    <Anchor>a6531a7fe875c40acee7ac81da7b17ea4</Anchor>
-    <Abstract>Returns the resource as data. </Abstract>
     <DeclaredIn>TyphoonResource.h</DeclaredIn>
   </Token>
   <Token>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['data',['data',['../protocol_typhoon_resource-p.html#a6531a7fe875c40acee7ac81da7b17ea4',1,'TyphoonResource-p']]],
+  ['data',['data',['../protocol_typhoon_resource-p.html#a80598e5a413e06fd73152a9220b5b9eb',1,'TyphoonResource-p']]],
   ['defaultassembly',['defaultAssembly',['../interface_typhoon_assembly.html#ac445c91bdd47b3389eadedbf33860512',1,'TyphoonAssembly']]],
   ['defaultfactory',['defaultFactory',['../interface_typhoon_component_factory.html#ad0d0eb369da7b2cd39caf403e9c91ddf',1,'TyphoonComponentFactory']]],
   ['defaultuse_3a',['defaultUse:',['../interface_typhoon_option_matcher.html#a1dd7e4ae31546b51dbd0ba4c3d0f6c40',1,'TyphoonOptionMatcher']]],

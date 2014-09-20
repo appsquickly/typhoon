@@ -166,9 +166,9 @@ var NAVTREEINDEX1 =
 "protocol_typhoon_property_injection-p.html#ad12ad20c98b147ed21056a95c6ff5e91":[1,0,44,1],
 "protocol_typhoon_property_injection-p.html#ae9f98c0e8d1542ae0107fb7be1010c14":[1,0,44,0],
 "protocol_typhoon_resource-p.html":[0,2,2],
-"protocol_typhoon_resource-p.html#a42f9702ff28c89b2910011df574f857d":[0,2,2,0],
-"protocol_typhoon_resource-p.html#a6531a7fe875c40acee7ac81da7b17ea4":[0,2,2,2],
-"protocol_typhoon_resource-p.html#afed07d1fc2e7fb11a2db3073dd53ddd7":[0,2,2,1],
+"protocol_typhoon_resource-p.html#a17b8f3ba7548a7d8c5ece07fb3f6c461":[0,2,2,1],
+"protocol_typhoon_resource-p.html#a80598e5a413e06fd73152a9220b5b9eb":[0,2,2,0],
+"protocol_typhoon_resource-p.html#afed07d1fc2e7fb11a2db3073dd53ddd7":[0,2,2,2],
 "protocol_typhoon_type_converter-p.html":[1,0,48],
 "protocol_typhoon_type_converter-p.html#a176193d749424c8f9a5c116217ef09f2":[1,0,48,0],
 "protocol_typhoon_type_converter-p.html#a6060c2f9ab99d7b68383c80c8403a6bf":[1,0,48,1]

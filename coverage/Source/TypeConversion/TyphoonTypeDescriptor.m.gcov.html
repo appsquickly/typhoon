@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-09-15 11:05:35</td>
+            <td class="headerValue">2014-09-20 08:42:55</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -112,7 +112,7 @@
 <span class="lineNum">      54 </span>            :     NSString *_typeCode;
 <span class="lineNum">      55 </span>            : }
 <span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">      57 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">      58 </span>            : #pragma mark - Class Methods
 <span class="lineNum">      59 </span>            : 
 <span class="lineNum">      60 </span><span class="lineCov">        333 : + (TyphoonTypeDescriptor *)descriptorWithEncodedType:(const char *)encodedType</span>
@@ -133,7 +133,7 @@
 <span class="lineNum">      75 </span><span class="lineNoCov">          0 :     return [self descriptorWithTypeCode:[NSString stringWithFormat:@&quot;T@&lt;%@&gt;&quot;, NSStringFromProtocol(classOrProtocol)]];</span>
 <span class="lineNum">      76 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      77 </span>            : 
-<span class="lineNum">      78 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">      78 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">      79 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      80 </span>            : 
 <span class="lineNum">      81 </span><span class="lineCov">      16173 : - (id)initWithTypeCode:(NSString *)typeCode</span>
@@ -171,7 +171,7 @@
 <span class="lineNum">     113 </span><span class="lineCov">      16173 :     return self;</span>
 <span class="lineNum">     114 </span><span class="lineCov">      16173 : }</span>
 <span class="lineNum">     115 </span>            : 
-<span class="lineNum">     116 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">     116 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">     117 </span>            : #pragma mark - Interface Methods
 <span class="lineNum">     118 </span>            : 
 <span class="lineNum">     119 </span>            : - (id)classOrProtocol
@@ -189,7 +189,7 @@
 <span class="lineNum">     131 </span><span class="lineNoCov">          0 :     return [_typeCode cStringUsingEncoding:NSUTF8StringEncoding];</span>
 <span class="lineNum">     132 </span>            : }
 <span class="lineNum">     133 </span>            : 
-<span class="lineNum">     134 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">     134 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">     135 </span>            : #pragma mark - Utility Methods
 <span class="lineNum">     136 </span>            : 
 <span class="lineNum">     137 </span>            : - (NSString *)description
@@ -213,7 +213,7 @@
 <span class="lineNum">     155 </span><span class="lineCov">          3 :     }</span>
 <span class="lineNum">     156 </span><span class="lineCov">          6 : }</span>
 <span class="lineNum">     157 </span>            : 
-<span class="lineNum">     158 </span>            : /* ====================================================================================================================================== */
+<span class="lineNum">     158 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">     159 </span>            : #pragma mark - Private Methods
 <span class="lineNum">     160 </span>            : 
 <span class="lineNum">     161 </span><span class="lineCov">       5010 : - (void)parsePrimitiveType:(NSString *)typeCode</span>

@@ -388,19 +388,19 @@
             <Path>protocol_typhoon_resource-p.html</Path>
             <Subnodes>
              <Node>
-              <Name>asString</Name>
+              <Name>data</Name>
               <Path>protocol_typhoon_resource-p.html</Path>
-              <Anchor>a42f9702ff28c89b2910011df574f857d</Anchor>
+              <Anchor>a80598e5a413e06fd73152a9220b5b9eb</Anchor>
+             </Node>
+             <Node>
+              <Name>string</Name>
+              <Path>protocol_typhoon_resource-p.html</Path>
+              <Anchor>a17b8f3ba7548a7d8c5ece07fb3f6c461</Anchor>
              </Node>
              <Node>
               <Name>asStringWithEncoding:</Name>
               <Path>protocol_typhoon_resource-p.html</Path>
               <Anchor>afed07d1fc2e7fb11a2db3073dd53ddd7</Anchor>
-             </Node>
-             <Node>
-              <Name>data</Name>
-              <Path>protocol_typhoon_resource-p.html</Path>
-              <Anchor>a6531a7fe875c40acee7ac81da7b17ea4</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -1555,19 +1555,19 @@
             <Path>protocol_typhoon_resource-p.html</Path>
             <Subnodes>
              <Node>
-              <Name>asString</Name>
+              <Name>data</Name>
               <Path>protocol_typhoon_resource-p.html</Path>
-              <Anchor>a42f9702ff28c89b2910011df574f857d</Anchor>
+              <Anchor>a80598e5a413e06fd73152a9220b5b9eb</Anchor>
+             </Node>
+             <Node>
+              <Name>string</Name>
+              <Path>protocol_typhoon_resource-p.html</Path>
+              <Anchor>a17b8f3ba7548a7d8c5ece07fb3f6c461</Anchor>
              </Node>
              <Node>
               <Name>asStringWithEncoding:</Name>
               <Path>protocol_typhoon_resource-p.html</Path>
               <Anchor>afed07d1fc2e7fb11a2db3073dd53ddd7</Anchor>
-             </Node>
-             <Node>
-              <Name>data</Name>
-              <Path>protocol_typhoon_resource-p.html</Path>
-              <Anchor>a6531a7fe875c40acee7ac81da7b17ea4</Anchor>
              </Node>
             </Subnodes>
            </Node>
