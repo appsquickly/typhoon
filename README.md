@@ -194,11 +194,19 @@ This looks like a bug | Please raise a <a href="https://github.com/typhoon-frame
 I'll take all the help I can get | While Typhoon is free, open-source and volunteer based, if you're interested in professional consultation/support we do maintain a list of experts and companies that can provide services. Get in touch with us, and we'll do our best to connect you. 
 
 
+# Apps Using Typhoon
+
+Here's a few apps built with Typhoon:
+
+* Mod Productions' ACO Virtual <a href="http://vimeo.com/75451558">iPad controller</a> and <a href="https://itunes.apple.com/au/app/aco-virtual/id623225640?mt=8">companion AR app.</a> (Awarded ***AppStore Best New Apps***). Here's some <a href="https://www.flickr.com/photos/michela/sets/72157633386492756/">more pictures</a> on Flickr.  
+* <a href="http://itunes.com/apps/GonnaGo">GonnaGo</a> - a social travel app. 
+* <a href="http://appstore.com/alpify">Alpify</a> - don't go skiing or snow boarding without it!
+* ***Your app here!!!***
 
 # Core Team
 
 * <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778/">Jasper Blues</a> (Founder / Project Lead) - <a href="mailto:jasper@appsquick.ly?Subject=Typhoon">jasper@appsquick.ly</a>  
-* <a href="https://github.com/alexgarbarev">Aleksey Garbarev</a>
+* <a href="https://github.com/alexgarbarev">Aleksey Garbarev, Principal Developer</a>
 * <a href="https://github.com/rhgills">Robert Gilliam</a> - <a href="mailto:robert@robertgilliam.org?Subject=Typhoon">robert@robertgilliam.org</a>
 * <a href="https://github.com/drodriguez">Daniel Rodríguez Troitiño</a> 
 * <a href="https://github.com/eriksundin">Erik Sundin</a> 
@@ -218,17 +226,6 @@ I'll take all the help I can get | While Typhoon is free, open-source and volunt
 *(If you've sent a pull request and didn't get a mention. . . sorry! Please let us know and we'll correct it).*
 
 ****
-
-
-# Apps Using Typhoon
-
-Here's a few apps built with Typhoon:
-
-* Mod Productions' ACO Virtual <a href="http://vimeo.com/75451558">iPad controller</a> and <a href="https://itunes.apple.com/au/app/aco-virtual/id623225640?mt=8">companion AR app.</a> (Awarded ***AppStore Best New Apps***). 
-* <a href="http://itunes.com/apps/GonnaGo">GonnaGo</a> - a social travel app. 
-* <a href="http://appstore.com/alpify">Alpify</a> - don't go skiing or snow boarding without it!
-* Many others. . . ***Your app here!!!***
-
 
 
 # LICENSE
