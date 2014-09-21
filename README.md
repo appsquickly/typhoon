@@ -197,7 +197,7 @@ I'll take all the help I can get | While Typhoon is free, open-source and volunt
 
 # Core Team
 
-* <a href="ph.linkedin.com/pub/jasper-blues/8/163/778/">Jasper Blues</a> (Founder / Project Lead) - <a href="mailto:jasper@appsquick.ly?Subject=Typhoon">jasper@appsquick.ly</a>  
+* <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778/">Jasper Blues</a> (Founder / Project Lead) - <a href="mailto:jasper@appsquick.ly?Subject=Typhoon">jasper@appsquick.ly</a>  
 * <a href="https://github.com/alexgarbarev">Aleksey Garbarev</a>
 * <a href="https://github.com/rhgills">Robert Gilliam</a> - <a href="mailto:robert@robertgilliam.org?Subject=Typhoon">robert@robertgilliam.org</a>
 * <a href="https://github.com/drodriguez">Daniel Rodríguez Troitiño</a> 
