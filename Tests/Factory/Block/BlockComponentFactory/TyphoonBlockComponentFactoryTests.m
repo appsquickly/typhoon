@@ -25,7 +25,7 @@
 #import "TyphoonTypeConverter.h"
 #import "OCLogTemplate.h"
 #import "Sword.h"
-#import "PropertyPlaceholderAssembly.h"
+#import "TyphoonConfigAssembly.h"
 #import "SingletonA.h"
 #import "NotSingletonA.h"
 #import "PrototypeInitInjected.h"
@@ -209,8 +209,8 @@
 
 - (void)test_resolves_property_values
 {
-    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[PropertyPlaceholderAssembly assembly]];
-    TyphoonConfigPostProcessor *configurer = [TyphoonConfigPostProcessor configurer];
+    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[TyphoonConfigAssembly assembly]];
+    TyphoonConfigPostProcessor *configurer = [TyphoonConfigPostProcessor postProcessor];
     [configurer useResourceWithName:@"SomeProperties.properties"];
     [factory attachPostProcessor:configurer];
 

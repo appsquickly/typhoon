@@ -29,7 +29,7 @@
 /** list of all supported path extensions (configuration types) */
 + (NSArray *)availableExtensions;
 
-+ (TyphoonConfigPostProcessor *)configurer;
++ (TyphoonConfigPostProcessor *)postProcessor;
 
 /** Append resource found in main bundle by name */
 - (void)useResourceWithName:(NSString *)name;

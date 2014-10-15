@@ -13,7 +13,7 @@
 #import "TyphoonAssembly.h"
 
 
-@interface PropertyPlaceholderAssembly : TyphoonAssembly
+@interface TyphoonConfigAssembly : TyphoonAssembly
 
 - (id)knight;
 

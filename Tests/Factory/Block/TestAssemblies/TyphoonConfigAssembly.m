@@ -9,12 +9,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "PropertyPlaceholderAssembly.h"
+#import "TyphoonConfigAssembly.h"
 #import "TyphoonDefinition.h"
 #import "Knight.h"
 #import "TyphoonConfigPostProcessor.h"
 
-@implementation PropertyPlaceholderAssembly
+@implementation TyphoonConfigAssembly
 
 - (id)knight
 {

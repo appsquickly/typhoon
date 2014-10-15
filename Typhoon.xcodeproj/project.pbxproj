@@ -142,7 +142,7 @@
 		6B0771161936FEA80083714E /* MethodInjectinosAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076FD81936F63A0083714E /* MethodInjectinosAssembly.m */; };
 		6B0771171936FEA80083714E /* MiddleAgesAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076FDA1936F63A0083714E /* MiddleAgesAssembly.m */; };
 		6B0771181936FEA80083714E /* ObjectGraphAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076FDC1936F63A0083714E /* ObjectGraphAssembly.m */; };
-		6B0771191936FEA80083714E /* PropertyPlaceholderAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076FDE1936F63A0083714E /* PropertyPlaceholderAssembly.m */; };
+		6B0771191936FEA80083714E /* TyphoonConfigAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076FDE1936F63A0083714E /* TyphoonConfigAssembly.m */; };
 		6B07711A1936FEA80083714E /* SimpleAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076FE11936F63A0083714E /* SimpleAssembly.m */; };
 		6B07711B1936FEA80083714E /* SingletonsChainAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076FE31936F63A0083714E /* SingletonsChainAssembly.m */; };
 		6B07711C1936FEA80083714E /* TyphoonAssemblyAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076FE41936F63A0083714E /* TyphoonAssemblyAdviserTests.m */; };
@@ -322,7 +322,7 @@
 		6B07740E1937839D0083714E /* MethodInjectinosAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076FD81936F63A0083714E /* MethodInjectinosAssembly.m */; };
 		6B07740F1937839D0083714E /* MiddleAgesAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076FDA1936F63A0083714E /* MiddleAgesAssembly.m */; };
 		6B0774101937839D0083714E /* ObjectGraphAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076FDC1936F63A0083714E /* ObjectGraphAssembly.m */; };
-		6B0774111937839D0083714E /* PropertyPlaceholderAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076FDE1936F63A0083714E /* PropertyPlaceholderAssembly.m */; };
+		6B0774111937839D0083714E /* TyphoonConfigAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076FDE1936F63A0083714E /* TyphoonConfigAssembly.m */; };
 		6B0774121937839D0083714E /* SimpleAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076FE11936F63A0083714E /* SimpleAssembly.m */; };
 		6B0774131937839D0083714E /* SingletonsChainAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076FE31936F63A0083714E /* SingletonsChainAssembly.m */; };
 		6B0774141937839D0083714E /* TyphoonAssemblyAdviserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076FE41936F63A0083714E /* TyphoonAssemblyAdviserTests.m */; };
@@ -679,8 +679,8 @@
 		6B076FDA1936F63A0083714E /* MiddleAgesAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiddleAgesAssembly.m; sourceTree = "<group>"; };
 		6B076FDB1936F63A0083714E /* ObjectGraphAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectGraphAssembly.h; sourceTree = "<group>"; };
 		6B076FDC1936F63A0083714E /* ObjectGraphAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjectGraphAssembly.m; sourceTree = "<group>"; };
-		6B076FDD1936F63A0083714E /* PropertyPlaceholderAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PropertyPlaceholderAssembly.h; sourceTree = "<group>"; };
-		6B076FDE1936F63A0083714E /* PropertyPlaceholderAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PropertyPlaceholderAssembly.m; sourceTree = "<group>"; };
+		6B076FDD1936F63A0083714E /* TyphoonConfigAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonConfigAssembly.h; sourceTree = "<group>"; };
+		6B076FDE1936F63A0083714E /* TyphoonConfigAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TyphoonConfigAssembly.m; sourceTree = "<group>"; };
 		6B076FDF1936F63A0083714E /* QuestProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestProvider.h; sourceTree = "<group>"; };
 		6B076FE01936F63A0083714E /* SimpleAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleAssembly.h; sourceTree = "<group>"; };
 		6B076FE11936F63A0083714E /* SimpleAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleAssembly.m; sourceTree = "<group>"; };
@@ -1551,8 +1551,8 @@
 				6B076FDA1936F63A0083714E /* MiddleAgesAssembly.m */,
 				6B076FDB1936F63A0083714E /* ObjectGraphAssembly.h */,
 				6B076FDC1936F63A0083714E /* ObjectGraphAssembly.m */,
-				6B076FDD1936F63A0083714E /* PropertyPlaceholderAssembly.h */,
-				6B076FDE1936F63A0083714E /* PropertyPlaceholderAssembly.m */,
+				6B076FDD1936F63A0083714E /* TyphoonConfigAssembly.h */,
+				6B076FDE1936F63A0083714E /* TyphoonConfigAssembly.m */,
 				6B076FDF1936F63A0083714E /* QuestProvider.h */,
 				6B076FE01936F63A0083714E /* SimpleAssembly.h */,
 				6B076FE11936F63A0083714E /* SimpleAssembly.m */,
@@ -2160,7 +2160,7 @@
 				6B0771161936FEA80083714E /* MethodInjectinosAssembly.m in Sources */,
 				6B0771171936FEA80083714E /* MiddleAgesAssembly.m in Sources */,
 				6B0771181936FEA80083714E /* ObjectGraphAssembly.m in Sources */,
-				6B0771191936FEA80083714E /* PropertyPlaceholderAssembly.m in Sources */,
+				6B0771191936FEA80083714E /* TyphoonConfigAssembly.m in Sources */,
 				6B07711A1936FEA80083714E /* SimpleAssembly.m in Sources */,
 				6B07711B1936FEA80083714E /* SingletonsChainAssembly.m in Sources */,
 				6B07711C1936FEA80083714E /* TyphoonAssemblyAdviserTests.m in Sources */,
@@ -2351,7 +2351,7 @@
 				6B07740E1937839D0083714E /* MethodInjectinosAssembly.m in Sources */,
 				6B07740F1937839D0083714E /* MiddleAgesAssembly.m in Sources */,
 				6B0774101937839D0083714E /* ObjectGraphAssembly.m in Sources */,
-				6B0774111937839D0083714E /* PropertyPlaceholderAssembly.m in Sources */,
+				6B0774111937839D0083714E /* TyphoonConfigAssembly.m in Sources */,
 				6B0774121937839D0083714E /* SimpleAssembly.m in Sources */,
 				6B0774131937839D0083714E /* SingletonsChainAssembly.m in Sources */,
 				6B0774141937839D0083714E /* TyphoonAssemblyAdviserTests.m in Sources */,
