@@ -7,6 +7,7 @@ var searchData=
   ['patchdefinitionwithselector_3awithobject_3a',['patchDefinitionWithSelector:withObject:',['../interface_typhoon_patcher.html#a439c7ffa79249ea5464584791186b7e7',1,'TyphoonPatcher']]],
   ['patchobject',['patchObject',['../interface_typhoon_patch_object_factory.html#a93f80e3e93038ac2ee934513fc880a23',1,'TyphoonPatchObjectFactory']]],
   ['postprocesscomponentfactory_3a',['postProcessComponentFactory:',['../protocol_typhoon_component_factory_post_processor-p.html#ab64811c01a873e3a727f017543b29223',1,'TyphoonComponentFactoryPostProcessor-p']]],
+  ['postprocessor',['postProcessor',['../interface_typhoon_config_post_processor.html#ac342615e85b44734a1954dbe02d1ba76',1,'TyphoonConfigPostProcessor']]],
   ['primitivetype',['primitiveType',['../interface_typhoon_type_descriptor.html#aa79452cdaecc4ee661930c7c3e59888b',1,'TyphoonTypeDescriptor']]],
   ['primitivetypeconverter',['primitiveTypeConverter',['../interface_typhoon_type_converter_registry.html#aa1ff494eddffb2c89e139911aaaaa24a',1,'TyphoonTypeConverterRegistry']]],
   ['propertiesforclass_3auptoparentclass_3a',['propertiesForClass:upToParentClass:',['../interface_typhoon_introspection_utils.html#a32614ce91e195e021e2517c68b8aeb71',1,'TyphoonIntrospectionUtils']]],

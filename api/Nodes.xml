@@ -357,9 +357,9 @@
               <Anchor>a57eacc037c000e78f67f31d6884964bd</Anchor>
              </Node>
              <Node>
-              <Name>configurer</Name>
+              <Name>postProcessor</Name>
               <Path>interface_typhoon_config_post_processor.html</Path>
-              <Anchor>a795116f13be1b26da1a5ff5d303d9797</Anchor>
+              <Anchor>ac342615e85b44734a1954dbe02d1ba76</Anchor>
              </Node>
              <Node>
               <Name>registerConfigurationClass:forExtension:</Name>
@@ -878,9 +878,9 @@
               <Anchor>a57eacc037c000e78f67f31d6884964bd</Anchor>
              </Node>
              <Node>
-              <Name>configurer</Name>
+              <Name>postProcessor</Name>
               <Path>interface_typhoon_config_post_processor.html</Path>
-              <Anchor>a795116f13be1b26da1a5ff5d303d9797</Anchor>
+              <Anchor>ac342615e85b44734a1954dbe02d1ba76</Anchor>
              </Node>
              <Node>
               <Name>registerConfigurationClass:forExtension:</Name>
