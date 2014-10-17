@@ -144,14 +144,15 @@ Functions</h2></td></tr>
 <p><b>TyphoonScopeObjectGraph</b> (default) This scope is essential (and unique to Typhoon) for mobile and desktop applications. When a component is resolved, any dependencies with the object-graph will be treated as shared instances during resolution. Once resolution is complete they are not retained by the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a>. This allows instantiating an entire object graph for a use-case (say for a ViewController), and then discarding it when that use-case has completed, therefore making efficient use of memory.</p>
 <p><b>TyphoonScopePrototype</b> Indicates that a new instance should always be created by Typhoon, whenever this component is obtained from an assembly or referenced by another component.</p>
 <p><b>TyphoonScopeSingleton</b> Indicates that Typhoon should retain the instance that exists for as long as the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> exists.</p>
+<p><b>TyphoonScopeLazySingleton</b> This scope behaves the same as TyphoonScopeSingleton, but the object is not created unless or until it is needed.</p>
 <p><b>TyphoonScopeWeakSingleton</b> Indicates that a shared instance should be created as long as necessary. When your application's classes stop referencing this component it will be deallocated until needed again. </p>
-<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    TyphoonScopeObjectGraph,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    TyphoonScopePrototype,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    TyphoonScopeSingleton,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    TyphoonScopeLazySingleton,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    TyphoonScopeWeakSingleton,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    TyphoonScopeObjectGraph,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    TyphoonScopePrototype,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    TyphoonScopeSingleton,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    TyphoonScopeLazySingleton,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    TyphoonScopeWeakSingleton,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -161,7 +162,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
-        <li class="footer">Generated on Thu Oct 16 2014 07:53:50 for Typhoon by
+        <li class="footer">Generated on Fri Oct 17 2014 15:58:54 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>
