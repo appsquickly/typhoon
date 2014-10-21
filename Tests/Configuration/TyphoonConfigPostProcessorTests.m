@@ -24,7 +24,7 @@
 
 - (void)setUp
 {
-    _configurer = [TyphoonConfigPostProcessor configurer];
+    _configurer = [TyphoonConfigPostProcessor postProcessor];
     [_configurer useResourceWithName:@"SomeProperties.properties"];
     [_configurer useResourceWithName:@"SomeProperties.json"];
     [_configurer useResourceWithName:@"SomeProperties.plist"];

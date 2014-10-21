@@ -33,7 +33,7 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 //-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
 
-+ (TyphoonConfigPostProcessor *)configurer
++ (TyphoonConfigPostProcessor *)postProcessor
 {
     return [[[self class] alloc] init];
 }
