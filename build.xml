@@ -9,7 +9,7 @@
     <property name="reports.dir" value="${target.dir}/reports"/>
     <property name="tools.paths" value="/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin"/>
     <property name="scripts.dir" value="${basedir}/Scripts"/>
-    <property name="required.coverage" value="87"/>
+    <property name="required.coverage" value="85"/>
 
 
     <path id="headers">
