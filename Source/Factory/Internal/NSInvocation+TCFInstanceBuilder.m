@@ -82,9 +82,10 @@ static BOOL typhoon_IsSelectorReturnsRetained(SEL selector) {
 
 #ifndef __clang_analyzer__
     id firstlyCreatedInstance = [aClass alloc];
-#endif
-
     return [self typhoon_resultOfInvokingOn:firstlyCreatedInstance];
+#else
+    return nil;
+#endif
 }
 
 
