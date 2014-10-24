@@ -134,7 +134,7 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
                                    usingBlock:^(TyphoonInjectionByConfig *injection, id *injectionToReplace, BOOL *stop) {
             id configuredInjection = [self injectionForConfigInjection:injection];
             if (configuredInjection) {
-                injection.configuredInjection = [self injectionForConfigInjection:injection];
+                injection.configuredInjection = configuredInjection;
             }
         }];
     }
