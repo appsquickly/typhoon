@@ -132,7 +132,10 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
     for (TyphoonDefinition *definition in [factory registry]) {
         [definition enumerateInjectionsOfKind:[TyphoonInjectionByConfig class] options:TyphoonInjectionsEnumerationOptionAll
                                    usingBlock:^(TyphoonInjectionByConfig *injection, id *injectionToReplace, BOOL *stop) {
-            injection.configuredInjection = [self injectionForConfigInjection:injection];
+            id configuredInjection = [self injectionForConfigInjection:injection];
+            if (configuredInjection) {
+                injection.configuredInjection = [self injectionForConfigInjection:injection];
+            }
         }];
     }
 }
@@ -144,7 +147,7 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 
     if ([value isKindOfClass:[NSString class]]) {
         result = TyphoonInjectionWithObjectFromString(value);
-    } else {
+    } else if (value) {
         result = TyphoonInjectionWithObject(value);
     }
 
