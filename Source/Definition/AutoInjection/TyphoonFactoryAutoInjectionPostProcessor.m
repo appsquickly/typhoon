@@ -21,6 +21,7 @@
 #import "TyphoonInjections.h"
 
 static BOOL IsTyphoonAutoInjectionType(TyphoonTypeDescriptor *type);
+static id TypeForInjectionFromType(TyphoonTypeDescriptor *type);
 
 @implementation TyphoonFactoryAutoInjectionPostProcessor
 
@@ -49,7 +50,11 @@ static BOOL IsTyphoonAutoInjectionType(TyphoonTypeDescriptor *type);
     for (NSString *propertyName in allProperties) {
         TyphoonTypeDescriptor *type = [clazz typhoon_typeForPropertyWithName:propertyName];
         if (IsTyphoonAutoInjectionType(type)) {
-            id<TyphoonPropertyInjection> injection = TyphoonInjectionWithType(TypeForInjectionFromType(type));
+            id explicitType = TypeForInjectionFromType(type);
+            if (!explicitType) {
+                [NSException raise:NSInternalInconsistencyException format:@"Can't resolve '%@' property in %@ class. Make sure that specified protocol/class exist and linked.", propertyName, clazz];
+            }
+            id<TyphoonPropertyInjection> injection = TyphoonInjectionWithType(explicitType);
             [injection setPropertyName:propertyName];
             if (!injections) {
                 injections = [[NSMutableArray alloc] initWithCapacity:allProperties.count];
