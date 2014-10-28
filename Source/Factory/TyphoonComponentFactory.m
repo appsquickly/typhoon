@@ -61,8 +61,8 @@ static TyphoonComponentFactory *defaultFactory;
         _factoryPostProcessors = [[NSMutableArray alloc] init];
         _componentPostProcessors = [[NSMutableArray alloc] init];
         [self attachPostProcessor:[TyphoonParentReferenceHydratingPostProcessor new]];
-        [self attachPostProcessor:[TyphoonFactoryPropertyInjectionPostProcessor new]];
         [self attachPostProcessor:[TyphoonFactoryAutoInjectionPostProcessor new]];
+        [self attachPostProcessor:[TyphoonFactoryPropertyInjectionPostProcessor new]];
     }
     return self;
 }
