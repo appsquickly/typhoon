@@ -58,4 +58,10 @@
 
 - (Mock *)mockWithRuntimeBlock:(NSString*(^)())block andRuntimeClass:(Class)aClass;
 
+- (id)knightRuntimeArgumentsFromDefinition;
+
+- (id)knightRuntimeArgumentsFromDefinitionWithRuntimeArg;
+
+- (id)knightRuntimeArgumentsFromDefinitionsSetWithRuntimeArg;
+
 @end

@@ -152,7 +152,7 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 {
     [definition enumerateInjectionsOfKind:[TyphoonInjectionByReference class] options:TyphoonInjectionsEnumerationOptionAll
                                usingBlock:^(TyphoonInjectionByReference *injection, id *injectionToReplace, BOOL *stop) {
-        [injection.referenceArguments enumerateArgumentsUsingBlock:^(TyphoonInjectionByConfig *argument, NSUInteger index, id *argumentToReplace, BOOL *stop) {
+        [injection.referenceArguments enumerateArgumentsUsingBlock:^(TyphoonInjectionByConfig *argument, NSUInteger index, BOOL *stop) {
            if ([argument isKindOfClass:[TyphoonInjectionByConfig class]]) {
                id configuredInjection = [self injectionForConfigInjection:argument];
                if (configuredInjection) {

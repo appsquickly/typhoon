@@ -16,7 +16,7 @@
 
 - (NSUInteger)indexOfArgumentWithKind:(Class)clazz;
 
-- (void)enumerateArgumentsUsingBlock:(void(^)(id argument, NSUInteger index, id *argumentToReplace, BOOL *stop))block;
+- (void)enumerateArgumentsUsingBlock:(void(^)(id argument, NSUInteger index, BOOL *stop))block;
 
 /** RuntimeArguments - arguments passed by user at runtime
 *   ReferenceArguments - arguments specified in the assembly class

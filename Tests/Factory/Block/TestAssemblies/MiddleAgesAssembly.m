@@ -254,4 +254,51 @@
     }];
 }
 
+- (id)knightRuntimeArgumentsFromDefinition
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(foobar) with:[self urlWithString:[self predefinedUrlString]]];
+    }];
+}
+
+- (NSString *)urlWithString:(NSString *)string
+{
+    return [TyphoonDefinition withClass:[NSURL class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(initWithString:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:string];
+        }];
+    }];
+}
+
+- (NSString *)predefinedUrlString
+{
+    return [TyphoonDefinition withClass:[NSString class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(initWithString:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:@"http://google.com"];
+        }];
+    }];
+}
+
+- (id)knightRuntimeArgumentsFromDefinitionWithRuntimeArg
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(foobar) with:[self urlWithString:[self stringWithValue:@"http://typhoonframework.org"]]];
+    }];
+}
+
+- (NSString *)stringWithValue:(NSString *)value
+{
+    return [TyphoonDefinition withClass:[NSString class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(initWithString:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:value];
+        }];
+    }];
+}
+
+- (id)knightRuntimeArgumentsFromDefinitionsSetWithRuntimeArg
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(foobar) with:[self urlWithString:[self stringWithValue:[self stringWithValue:[self stringWithValue:@"http://example.com"]]]]];
+    }];
+}
 @end

@@ -149,5 +149,22 @@
     XCTAssertTrue(knight.foobar == anotherKnight, @"");
 }
 
+- (void)test_runtime_argument_with_reference_injection
+{
+    Knight *knight = [factory knightRuntimeArgumentsFromDefinition];
+    XCTAssertEqualObjects(knight.foobar, [[NSURL alloc] initWithString:@"http://google.com"]);
+}
+
+- (void)test_runtime_argument_with_reference_injection_with_another_argument
+{
+    Knight *knight = [factory knightRuntimeArgumentsFromDefinitionWithRuntimeArg];
+    XCTAssertEqualObjects(knight.foobar, [[NSURL alloc] initWithString:@"http://typhoonframework.org"]);
+}
+
+- (void)test_runtime_argument_with_reference_injection_with_another_runtime_argument
+{
+    Knight *knight = [factory knightRuntimeArgumentsFromDefinitionsSetWithRuntimeArg];
+    XCTAssertEqualObjects(knight.foobar, [[NSURL alloc] initWithString:@"http://example.com"]);
+}
 
 @end

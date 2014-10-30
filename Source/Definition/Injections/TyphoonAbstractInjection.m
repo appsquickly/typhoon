@@ -58,7 +58,8 @@
 
 - (NSUInteger)customHash
 {
-    return 0;
+    /** Any constant can be here, nothing magical */
+    return 25042013;
 }
 
 - (BOOL)isEqual:(id)other

@@ -10,37 +10,7 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonInjectionByRuntimeArgument.h"
 #import "TyphoonInjections.h"
-
-@interface TyphoonRuntimeNullArgument : NSObject
-
-+ (instancetype)null;
-
-@end
-
-@implementation TyphoonRuntimeNullArgument
-
-+ (instancetype)null
-{
-    static TyphoonRuntimeNullArgument *sharedNull;
-    static dispatch_once_t once_token;
-    dispatch_once(&once_token, ^{
-        sharedNull = [TyphoonRuntimeNullArgument new];
-    });
-    return sharedNull;
-}
-
-- (NSUInteger)hash
-{
-    /** Any constant can be here, nothing magical */
-    return 25042013;
-}
-
-- (BOOL)isEqual:(id)object
-{
-    return [object isMemberOfClass:[TyphoonRuntimeNullArgument class]];
-}
-
-@end
+#import "TyphoonInjectionByReference.h"
 
 @implementation TyphoonRuntimeArguments
 {
@@ -62,16 +32,26 @@
         [invocation getArgument:&pointer atIndex:i];
         id argument = (__bridge id) pointer;
 
-        [args addObject:TyphoonMakeInjectionFromObjectIfNeeded(argument)];
-//        if (argument) {
-//            [args addObject:TyphoonMakeInjectionFromObjectIfNeeded(argument)];
-//        }
-//        else {
-//            [args addObject:[TyphoonRuntimeNullArgument null]];
-//        }
+        id<TyphoonInjection>injection = TyphoonMakeInjectionFromObjectIfNeeded(argument);
+        [self validateRuntimeArgumentWithInjection:injection];
+        [args addObject:injection];
     }
 
     return [[self alloc] initWithArguments:args];
+}
+
++ (void)validateRuntimeArgumentWithInjection:(id)injection
+{
+    if ([injection isKindOfClass:[TyphoonInjectionByReference class]]) {
+        TyphoonInjectionByReference *referenceInjection = injection;
+        [referenceInjection.referenceArguments enumerateArgumentsUsingBlock:^(id argument, NSUInteger index, BOOL *stop) {
+            if ([argument isKindOfClass:[TyphoonInjectionByRuntimeArgument class]]) {
+                [NSException raise:NSInternalInconsistencyException format:@"Using reference injection with definition which accept runtime argument catched from current context as (i.e. pass thru runtime arguments) runtime argument is NOT ALLOWED"];
+            } else {
+                [self validateRuntimeArgumentWithInjection:argument];
+            }
+        }];
+    }
 }
 
 - (id)initWithArguments:(NSMutableArray *)array
@@ -86,16 +66,10 @@
 
 - (id)argumentValueAtIndex:(NSUInteger)index
 {
-    id argument = _arguments[index];
-//    if ([argument isMemberOfClass:[TyphoonRuntimeNullArgument class]]) {
-//        return nil;
-//    }
-//    else {
-        return argument;
-//    }
+    return _arguments[index];
 }
 
-- (void)enumerateArgumentsUsingBlock:(void(^)(id argument, NSUInteger index, id *argumentToReplace, BOOL *stop))block
+- (void)enumerateArgumentsUsingBlock:(void(^)(id argument, NSUInteger index, BOOL *stop))block
 {
     if (!block) {
         return;
@@ -104,12 +78,8 @@
     NSUInteger count = [_arguments count];
     for (NSUInteger i = 0; i < count; ++i) {
         id argument = [self argumentValueAtIndex:i];
-        id argumentToReplace = nil;
         BOOL stop = NO;
-        block(argument, i, &argumentToReplace, &stop);
-        if (argumentToReplace) {
-            [self replaceArgumentAtIndex:i withArgument:argumentToReplace];
-        }
+        block(argument, i, &stop);
         if (stop) {
             break;
         }
@@ -118,9 +88,6 @@
 
 - (void)replaceArgumentAtIndex:(NSUInteger)index withArgument:(id)argument
 {
-//    if (!argument) {
-//        argument = [TyphoonRuntimeNullArgument null];
-//    }
     argument = TyphoonMakeInjectionFromObjectIfNeeded(argument);
     [_arguments replaceObjectAtIndex:index withObject:argument];
     _needRehash = YES;
