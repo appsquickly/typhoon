@@ -13,6 +13,7 @@
 #import "TyphoonInjections.h"
 #import "TyphoonPropertyInjection.h"
 #import "NSArray+TyphoonManualEnumeration.h"
+#import "TyphoonUtils.h"
 
 @interface TyphoonInjectionByCollection ()
 
@@ -141,6 +142,11 @@
     [self buildCollectionWithClass:collectionClass context:contextForValues completion:^(id<TyphoonCollection> collection) {
         result(collection);
     }];
+}
+
+- (NSUInteger)customHash
+{
+    return TyphoonHashByAppendingInteger([self.injections hash], [_requiredClass hash]);
 }
 
 @end

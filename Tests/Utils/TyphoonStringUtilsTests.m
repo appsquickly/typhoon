@@ -11,7 +11,7 @@
 
 
 #import <XCTest/XCTest.h>
-#import "TyphoonStringUtils.h"
+#import "TyphoonUtils.h"
 
 
 @interface TyphoonStringUtilsTests : XCTestCase

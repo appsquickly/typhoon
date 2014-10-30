@@ -5,6 +5,7 @@
 
 #import "TyphoonInjectionByConfig.h"
 #import "TyphoonInjection.h"
+#import "TyphoonUtils.h"
 
 
 @implementation TyphoonInjectionByConfig
@@ -39,6 +40,11 @@
     }
 
     [self.configuredInjection valueToInjectWithContext:context completion:result];
+}
+
+- (NSUInteger)customHash
+{
+    return [self.configKey hash];
 }
 
 @end

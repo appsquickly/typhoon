@@ -11,3 +11,5 @@
 
 
 #define CStringEquals(stringA, stringB) (stringA == stringB || strcmp(stringA, stringB) == 0)
+
+#define TyphoonHashByAppendingInteger(hash, integer) ((hash << 5) - hash + integer)

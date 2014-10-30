@@ -16,7 +16,7 @@
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "PrimitiveMan.h"
 #import "TyphoonInjections.h"
-#import "TyphoonStringUtils.h"
+#import "TyphoonUtils.h"
 
 #define NSValueFromPrimitive(primitive) ([NSValue value:&primitive withObjCType:@encode(typeof(primitive))])
 

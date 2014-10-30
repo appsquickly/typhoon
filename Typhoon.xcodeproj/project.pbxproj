@@ -630,7 +630,7 @@
 		6B076F861936F63A0083714E /* TyphoonLinkerCategoryBugFix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonLinkerCategoryBugFix.h; sourceTree = "<group>"; };
 		6B076F891936F63A0083714E /* TyphoonSelector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonSelector.h; sourceTree = "<group>"; };
 		6B076F8A1936F63A0083714E /* TyphoonSelector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TyphoonSelector.m; sourceTree = "<group>"; };
-		6B076F8B1936F63A0083714E /* TyphoonStringUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonStringUtils.h; sourceTree = "<group>"; };
+		6B076F8B1936F63A0083714E /* TyphoonUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonUtils.h; sourceTree = "<group>"; };
 		6B076F911936F63A0083714E /* OCLogTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCLogTemplate.h; sourceTree = "<group>"; };
 		6B076F921936F63A0083714E /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		6B076F961936F63A0083714E /* AssemblyWithDefinitionConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssemblyWithDefinitionConfiguration.h; sourceTree = "<group>"; };
@@ -1360,7 +1360,7 @@
 				6B076F861936F63A0083714E /* TyphoonLinkerCategoryBugFix.h */,
 				6B076F891936F63A0083714E /* TyphoonSelector.h */,
 				6B076F8A1936F63A0083714E /* TyphoonSelector.m */,
-				6B076F8B1936F63A0083714E /* TyphoonStringUtils.h */,
+				6B076F8B1936F63A0083714E /* TyphoonUtils.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";

@@ -32,7 +32,10 @@
 
 - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
-    result([context.args argumentValueAtIndex:self.runtimeArgumentIndex]);
+    id<TyphoonInjection> injection = [context.args argumentValueAtIndex:self.runtimeArgumentIndex];
+    [injection valueToInjectWithContext:context completion:result];
+
+//    result([context.args argumentValueAtIndex:self.runtimeArgumentIndex]);
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -45,6 +48,11 @@
 - (BOOL)isEqualToCustom:(TyphoonInjectionByRuntimeArgument *)injection
 {
     return self.runtimeArgumentIndex == injection.runtimeArgumentIndex;
+}
+
+- (NSUInteger)customHash
+{
+    return _runtimeArgumentIndex;
 }
 
 @end

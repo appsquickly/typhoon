@@ -39,4 +39,9 @@
     result(_objectInstance);
 }
 
+- (NSUInteger)customHash
+{
+    return [_objectInstance hash];
+}
+
 @end

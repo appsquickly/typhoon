@@ -11,6 +11,7 @@
 #import "TyphoonCallStack.h"
 #import "TyphoonStackElement.h"
 #import "NSInvocation+TCFUnwrapValues.h"
+#import "TyphoonUtils.h"
 
 @implementation TyphoonInjectionByFactoryReference
 
@@ -43,6 +44,11 @@
     id referenceInstance = [super resolveReferenceWithContext:context];
     
     return [referenceInstance valueForKeyPath:self.keyPath];
+}
+
+- (NSUInteger)customHash
+{
+    return TyphoonHashByAppendingInteger([super customHash], [self.keyPath hash]);
 }
 
 @end

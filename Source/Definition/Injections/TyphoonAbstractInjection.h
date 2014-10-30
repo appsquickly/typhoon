@@ -27,6 +27,7 @@ typedef NS_ENUM(NSInteger, TyphoonInjectionType) {
 @property(nonatomic, readonly) NSUInteger parameterIndex;
 
 - (BOOL)isEqualToCustom:(id)injection;
+- (NSUInteger)customHash;
 
 @end
 

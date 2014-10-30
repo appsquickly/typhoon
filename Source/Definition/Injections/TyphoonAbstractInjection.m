@@ -9,6 +9,8 @@
 #import "TyphoonAbstractInjection.h"
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonTypeDescriptor.h"
+#import "TyphoonUtils.h"
+
 
 @implementation TyphoonAbstractInjection
 
@@ -42,12 +44,21 @@
 
 - (NSUInteger)hash
 {
+    NSUInteger hash = self.type;
+
     if (self.type == TyphoonInjectionTypeProperty) {
-        return [self.propertyName hash];
+        hash = TyphoonHashByAppendingInteger(hash, [self.propertyName hash]);
     }
     else {
-        return [super hash];
+        hash = TyphoonHashByAppendingInteger(hash, self.parameterIndex);
     }
+
+    return TyphoonHashByAppendingInteger(hash, [self customHash]);
+}
+
+- (NSUInteger)customHash
+{
+    return 0;
 }
 
 - (BOOL)isEqual:(id)other

@@ -19,7 +19,7 @@ TYPHOON_LINK_CATEGORY(NSObject_TyphoonIntrospectionUtils)
 #import <objc/runtime.h>
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonIntrospectionUtils.h"
-#import "TyphoonStringUtils.h"
+#import "TyphoonUtils.h"
 
 
 @implementation NSObject (TyphoonIntrospectionUtils)

@@ -13,6 +13,7 @@
 #import "TyphoonStackElement.h"
 #import "NSInvocation+TCFUnwrapValues.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonUtils.h"
 
 @implementation TyphoonInjectionByReference
 
@@ -71,6 +72,11 @@
         referenceInstance = [context.factory componentForKey:self.reference args:args];
     }
     return referenceInstance;
+}
+
+- (NSUInteger)customHash
+{
+    return TyphoonHashByAppendingInteger([_reference hash], [_referenceArguments hash]);
 }
 
 @end

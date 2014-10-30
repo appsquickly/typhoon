@@ -11,6 +11,7 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonTypeDescriptor.h"
 #import "NSArray+TyphoonManualEnumeration.h"
+#import "TyphoonUtils.h"
 
 @interface TyphoonInjectionByDictionary ()
 
@@ -134,6 +135,11 @@
     [self buildDictionaryWithClass:dictionaryClass context:contextForValues completion:^(id<TyphoonDictionary> dictionary) {
         result(dictionary);
     }];
+}
+
+- (NSUInteger)customHash
+{
+    return TyphoonHashByAppendingInteger([self.injections hash], [_requiredClass hash]);
 }
 
 @end

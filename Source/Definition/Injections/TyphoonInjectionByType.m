@@ -54,4 +54,9 @@
     }];
 }
 
+- (NSUInteger)customHash
+{
+    return [self.explicitClassOrProtocol hash];
+}
+
 @end

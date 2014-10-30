@@ -21,7 +21,7 @@
 #import "TyphoonCircularDependencyTerminator.h"
 #import "TyphoonSelector.h"
 #import "TyphoonInjections.h"
-#import "TyphoonStringUtils.h"
+#import "TyphoonUtils.h"
 
 static id InjectionForArgumentType(const char *argumentType, NSUInteger index);
 static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSignature *signature);

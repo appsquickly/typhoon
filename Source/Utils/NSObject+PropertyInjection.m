@@ -11,7 +11,7 @@
 
 #import "NSObject+PropertyInjection.h"
 #import "TyphoonTypeDescriptor.h"
-#import "TyphoonStringUtils.h"
+#import "TyphoonUtils.h"
 #import <objc/message.h>
 
 #import "NSInvocation+TCFUnwrapValues.h"

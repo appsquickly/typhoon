@@ -202,9 +202,9 @@
     XCTAssertEqual([copy.initializer.injectedParameters count], 2);
     XCTAssertEqual([copy.injectedProperties count], 2);
 
-    TyphoonInjectionByCollection *collection = [[[copy injectedProperties] allObjects] objectAtIndex:0];
-    XCTAssertEqual([collection count], 2);
-
+    [copy enumerateInjectionsOfKind:[TyphoonInjectionByCollection class] options:TyphoonInjectionsEnumerationOptionProperties usingBlock:^(id collection, id *injectionToReplace, BOOL *stop) {
+        XCTAssertEqual([collection count], 2);
+    }];
 }
 
 @end

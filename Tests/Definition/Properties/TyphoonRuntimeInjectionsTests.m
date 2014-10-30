@@ -130,8 +130,8 @@
     Knight *anotherKnight = (Knight *) knight.foobar;
     
     XCTAssertEqual((int)knight.damselsRescued, 25, @"");
-    XCTAssertTrue(anotherKnight.foobar == knight, @"");
-    XCTAssertTrue(knight.foobar == anotherKnight, @"");
+    XCTAssertEqual(anotherKnight.foobar, knight);
+    XCTAssertEqual(knight.foobar, anotherKnight);
 }
 
 - (void)test_dependency_with_predefined_runtime_args

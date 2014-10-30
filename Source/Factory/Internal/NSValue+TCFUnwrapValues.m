@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "NSValue+TCFUnwrapValues.h"
-#import "TyphoonStringUtils.h"
+#import "TyphoonUtils.h"
 
 @implementation NSValue (TCFUnwrapValues)
 

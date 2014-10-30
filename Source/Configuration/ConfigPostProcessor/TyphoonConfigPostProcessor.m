@@ -131,13 +131,9 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 
 - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
 {
-    TyphoonInjectionContext *context  = [TyphoonInjectionContext new];
-    context.factory = factory;
-    context.destinationType = [TyphoonTypeDescriptor descriptorWithEncodedType:@encode(id)];
-
     for (TyphoonDefinition *definition in [factory registry]) {
         [self configureInjectionsInDefinition:definition];
-        [self configureInjectionsInRuntimeArgumentsInDefinition:definition context:context];
+        [self configureInjectionsInRuntimeArgumentsInDefinition:definition];
     }
 }
 
@@ -152,16 +148,16 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
     }];
 }
 
-- (void)configureInjectionsInRuntimeArgumentsInDefinition:(TyphoonDefinition *)definition context:(TyphoonInjectionContext *)context
+- (void)configureInjectionsInRuntimeArgumentsInDefinition:(TyphoonDefinition *)definition
 {
     [definition enumerateInjectionsOfKind:[TyphoonInjectionByReference class] options:TyphoonInjectionsEnumerationOptionAll
                                usingBlock:^(TyphoonInjectionByReference *injection, id *injectionToReplace, BOOL *stop) {
-        [injection.referenceArguments enumerateArgumentsUsingBlock:^(id argument, NSUInteger index, id *argumentToReplace, BOOL *stop) {
+        [injection.referenceArguments enumerateArgumentsUsingBlock:^(TyphoonInjectionByConfig *argument, NSUInteger index, id *argumentToReplace, BOOL *stop) {
            if ([argument isKindOfClass:[TyphoonInjectionByConfig class]]) {
-               id<TyphoonInjection> configuredInjection = [self injectionForConfigInjection:argument];
-               [configuredInjection valueToInjectWithContext:context completion:^(id value) {
-                   *argumentToReplace = value;
-               }];
+               id configuredInjection = [self injectionForConfigInjection:argument];
+               if (configuredInjection) {
+                   argument.configuredInjection = configuredInjection;
+               }
            }
         }];
     }];

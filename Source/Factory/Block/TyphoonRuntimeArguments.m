@@ -9,6 +9,7 @@
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonInjectionByRuntimeArgument.h"
+#import "TyphoonInjections.h"
 
 @interface TyphoonRuntimeNullArgument : NSObject
 
@@ -60,12 +61,14 @@
         void *pointer;
         [invocation getArgument:&pointer atIndex:i];
         id argument = (__bridge id) pointer;
-        if (argument) {
-            [args addObject:argument];
-        }
-        else {
-            [args addObject:[TyphoonRuntimeNullArgument null]];
-        }
+
+        [args addObject:TyphoonMakeInjectionFromObjectIfNeeded(argument)];
+//        if (argument) {
+//            [args addObject:TyphoonMakeInjectionFromObjectIfNeeded(argument)];
+//        }
+//        else {
+//            [args addObject:[TyphoonRuntimeNullArgument null]];
+//        }
     }
 
     return [[self alloc] initWithArguments:args];
@@ -84,12 +87,12 @@
 - (id)argumentValueAtIndex:(NSUInteger)index
 {
     id argument = _arguments[index];
-    if ([argument isMemberOfClass:[TyphoonRuntimeNullArgument class]]) {
-        return nil;
-    }
-    else {
+//    if ([argument isMemberOfClass:[TyphoonRuntimeNullArgument class]]) {
+//        return nil;
+//    }
+//    else {
         return argument;
-    }
+//    }
 }
 
 - (void)enumerateArgumentsUsingBlock:(void(^)(id argument, NSUInteger index, id *argumentToReplace, BOOL *stop))block
@@ -115,9 +118,10 @@
 
 - (void)replaceArgumentAtIndex:(NSUInteger)index withArgument:(id)argument
 {
-    if (!argument) {
-        argument = [TyphoonRuntimeNullArgument null];
-    }
+//    if (!argument) {
+//        argument = [TyphoonRuntimeNullArgument null];
+//    }
+    argument = TyphoonMakeInjectionFromObjectIfNeeded(argument);
     [_arguments replaceObjectAtIndex:index withObject:argument];
     _needRehash = YES;
 }

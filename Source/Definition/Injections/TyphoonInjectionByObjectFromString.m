@@ -71,4 +71,9 @@
     return result;
 }
 
+- (NSUInteger)customHash
+{
+    return [_textValue hash];
+}
+
 @end
