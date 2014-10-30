@@ -13,6 +13,7 @@
 #import "Typhoon.h"
 #import "Knight.h"
 #import "OCLogTemplate.h"
+#import "TyphoonTestAssemblyConfigPostProcessor.h"
 
 @interface TyphoonConfigPostProcessorTests : XCTestCase
 @end
@@ -101,6 +102,14 @@
     Knight *knight = [factory componentForType:[Knight class]];
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)28);
     XCTAssertEqual(knight.hasHorseWillTravel, (BOOL)YES);
+}
+
+- (void)test_config_as_runtime_argument
+{
+    TyphoonTestAssemblyConfigPostProcessor *assembly = [[[TyphoonBlockComponentFactory alloc] initWithAssembly:[TyphoonTestAssemblyConfigPostProcessor assembly]] asAssembly];
+    [_configurer postProcessComponentFactory:assembly];
+    Knight *knight = [assembly knight];
+    XCTAssertEqualObjects(knight.quest.imageUrl, [NSURL URLWithString:@"http://google.com/"]);
 }
 
 @end

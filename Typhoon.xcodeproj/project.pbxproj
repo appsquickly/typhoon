@@ -10,6 +10,7 @@
 		2DBA12F920B6F629203ABFB3 /* AutoInjectionKnight.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA18F5476952207F6E2B0D /* AutoInjectionKnight.m */; };
 		2DBA13020BD1DDD15231B84C /* TyphoonInjections.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1FC6F594C49C7D8261A6 /* TyphoonInjections.m */; };
 		2DBA139F1F94E9222E18B764 /* TyphoonFactoryAutoInjectionPostProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1C5E0FDB03006A2223F8 /* TyphoonFactoryAutoInjectionPostProcessor.m */; };
+		2DBA1406B666B22C5DDD5F60 /* TyphoonTestAssemblyConfigPostProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA14D1F4E06EDCD57873A2 /* TyphoonTestAssemblyConfigPostProcessor.m */; };
 		2DBA1413585CE14C74CC72FF /* TyphoonInjections.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1FC6F594C49C7D8261A6 /* TyphoonInjections.m */; };
 		2DBA14431D350F4F142A0E3B /* TyphoonFactoryDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA13E1E8F0928568F42BE0 /* TyphoonFactoryDefinition.m */; };
 		2DBA14D07CBAF423D1C4BEA4 /* TyphoonStartup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA184AB89E270A062809E3 /* TyphoonStartup.m */; };
@@ -28,6 +29,7 @@
 		2DBA1EB8464302D9A05BCDCE /* TyphoonAutoInjectionAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA198A0174DBC7F1A60761 /* TyphoonAutoInjectionAssembly.m */; };
 		2DBA1EE523691A3F00392B7A /* TyphoonAssemblyExtendTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1FCE33E18E1D7C616156 /* TyphoonAssemblyExtendTests.m */; };
 		2DBA1F22197B2F62174AC928 /* TyphoonNemoTestAssemblies.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA10314E7114955C0AB31E /* TyphoonNemoTestAssemblies.m */; };
+		2DBA1FB1F6532DA96182BD13 /* TyphoonTestAssemblyConfigPostProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA14D1F4E06EDCD57873A2 /* TyphoonTestAssemblyConfigPostProcessor.m */; };
 		2DBA1FC0E15A415D0297317B /* AutoInjectionKnight.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA18F5476952207F6E2B0D /* AutoInjectionKnight.m */; };
 		6B076E5E1936F5850083714E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B076E5D1936F5850083714E /* Foundation.framework */; };
 		6B076E601936F5850083714E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B076E5F1936F5850083714E /* CoreGraphics.framework */; };
@@ -440,6 +442,7 @@
 		2DBA116C73989B40B232BA11 /* TyphoonAutoInjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAutoInjection.h; sourceTree = "<group>"; };
 		2DBA129FBD11BA18D318694D /* TyphoonInitialStoryboardResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonInitialStoryboardResolver.h; sourceTree = "<group>"; };
 		2DBA13E1E8F0928568F42BE0 /* TyphoonFactoryDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonFactoryDefinition.m; sourceTree = "<group>"; };
+		2DBA14D1F4E06EDCD57873A2 /* TyphoonTestAssemblyConfigPostProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonTestAssemblyConfigPostProcessor.m; sourceTree = "<group>"; };
 		2DBA1590EE8F4E6138F04917 /* TyphoonAutoInjectionAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAutoInjectionAssembly.h; sourceTree = "<group>"; };
 		2DBA16324F9A05FD678B68EF /* AutoInjectionKnight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoInjectionKnight.h; sourceTree = "<group>"; };
 		2DBA167E9C95EF03A56681BF /* TyphoonAutoInjectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAutoInjectionTests.m; sourceTree = "<group>"; };
@@ -457,6 +460,7 @@
 		2DBA1FB2212B952164C02878 /* TyphoonFactoryDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonFactoryDefinition.h; sourceTree = "<group>"; };
 		2DBA1FC6F594C49C7D8261A6 /* TyphoonInjections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonInjections.m; sourceTree = "<group>"; };
 		2DBA1FCE33E18E1D7C616156 /* TyphoonAssemblyExtendTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblyExtendTests.m; sourceTree = "<group>"; };
+		2DBA1FD54EF7A5EA7AF3E9FF /* TyphoonTestAssemblyConfigPostProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonTestAssemblyConfigPostProcessor.h; sourceTree = "<group>"; };
 		6B076E5A1936F5850083714E /* Typhoon-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Typhoon-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B076E5D1936F5850083714E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6B076E5F1936F5850083714E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1416,6 +1420,8 @@
 				6B076FA01936F63A0083714E /* TyphoonComponentPostProcessorMock.h */,
 				6B076FA11936F63A0083714E /* TyphoonComponentPostProcessorMock.m */,
 				BA798E14534FB69AC182D402 /* TyphoonConfigPostProcessorTests.m */,
+				2DBA14D1F4E06EDCD57873A2 /* TyphoonTestAssemblyConfigPostProcessor.m */,
+				2DBA1FD54EF7A5EA7AF3E9FF /* TyphoonTestAssemblyConfigPostProcessor.h */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -2225,6 +2231,7 @@
 				2DBA1EB8464302D9A05BCDCE /* TyphoonAutoInjectionAssembly.m in Sources */,
 				2DBA1DD74E3C1AD545A84C92 /* AutoWiringKnight.m in Sources */,
 				BA7985DE19FA38D5AF4ABD7F /* TyphoonNSNumberTypeConverterTests.m in Sources */,
+				2DBA1FB1F6532DA96182BD13 /* TyphoonTestAssemblyConfigPostProcessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2408,6 +2415,7 @@
 				2DBA19D13EB2E1F96130F61A /* TyphoonAutoInjectionAssembly.m in Sources */,
 				2DBA15F7AF1B9724AD19E82C /* AutoWiringKnight.m in Sources */,
 				BA79844AB14B549E98944D30 /* TyphoonNSNumberTypeConverterTests.m in Sources */,
+				2DBA1406B666B22C5DDD5F60 /* TyphoonTestAssemblyConfigPostProcessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

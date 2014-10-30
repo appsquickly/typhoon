@@ -1,6 +1,7 @@
 {
     "json": {
         "damsels_rescued": 42,
-        "hasHorseWillTravel": true
+        "hasHorseWillTravel": true,
+        "quest_url": "NSURL(http://google.com/)"
     }
 }

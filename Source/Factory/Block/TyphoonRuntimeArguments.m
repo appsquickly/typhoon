@@ -92,6 +92,27 @@
     }
 }
 
+- (void)enumerateArgumentsUsingBlock:(void(^)(id argument, NSUInteger index, id *argumentToReplace, BOOL *stop))block
+{
+    if (!block) {
+        return;
+    }
+
+    NSUInteger count = [_arguments count];
+    for (NSUInteger i = 0; i < count; ++i) {
+        id argument = [self argumentValueAtIndex:i];
+        id argumentToReplace = nil;
+        BOOL stop = NO;
+        block(argument, i, &argumentToReplace, &stop);
+        if (argumentToReplace) {
+            [self replaceArgumentAtIndex:i withArgument:argumentToReplace];
+        }
+        if (stop) {
+            break;
+        }
+    }
+}
+
 - (void)replaceArgumentAtIndex:(NSUInteger)index withArgument:(id)argument
 {
     if (!argument) {
