@@ -68,13 +68,13 @@ var searchData=
   ['typhoonselector_2eh',['TyphoonSelector.h',['../_typhoon_selector_8h.html',1,'']]],
   ['typhoonstartup_2eh',['TyphoonStartup.h',['../_typhoon_startup_8h.html',1,'']]],
   ['typhoonstoryboard_2eh',['TyphoonStoryboard.h',['../_typhoon_storyboard_8h.html',1,'']]],
-  ['typhoonstringutils_2eh',['TyphoonStringUtils.h',['../_typhoon_string_utils_8h.html',1,'']]],
   ['typhoonswizzler_2eh',['TyphoonSwizzler.h',['../_typhoon_swizzler_8h.html',1,'']]],
   ['typhoontestutils_2eh',['TyphoonTestUtils.h',['../_typhoon_test_utils_8h.html',1,'']]],
   ['typhoontypeconverter_2eh',['TyphoonTypeConverter.h',['../_typhoon_type_converter_8h.html',1,'']]],
   ['typhoontypeconverterregistry_2eh',['TyphoonTypeConverterRegistry.h',['../_typhoon_type_converter_registry_8h.html',1,'']]],
   ['typhoontypedescriptor_2eh',['TyphoonTypeDescriptor.h',['../_typhoon_type_descriptor_8h.html',1,'']]],
   ['typhoonuicolortypeconverter_2eh',['TyphoonUIColorTypeConverter.h',['../_typhoon_u_i_color_type_converter_8h.html',1,'']]],
+  ['typhoonutils_2eh',['TyphoonUtils.h',['../_typhoon_utils_8h.html',1,'']]],
   ['typhoonviewcontrollernibresolver_2eh',['TyphoonViewControllerNibResolver.h',['../_typhoon_view_controller_nib_resolver_8h.html',1,'']]],
   ['typhoonweakcomponentspool_2eh',['TyphoonWeakComponentsPool.h',['../_typhoon_weak_components_pool_8h.html',1,'']]]
 ];

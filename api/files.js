@@ -133,7 +133,6 @@ var files =
     [ "TyphoonSelector.h", "_typhoon_selector_8h.html", null ],
     [ "TyphoonStartup.h", "_typhoon_startup_8h.html", null ],
     [ "TyphoonStoryboard.h", "_typhoon_storyboard_8h.html", null ],
-    [ "TyphoonStringUtils.h", "_typhoon_string_utils_8h.html", null ],
     [ "TyphoonSwizzler.h", "_typhoon_swizzler_8h.html", null ],
     [ "TyphoonTestUtils.h", "_typhoon_test_utils_8h.html", "_typhoon_test_utils_8h" ],
     [ "TyphoonTypeConverter.h", "_typhoon_type_converter_8h.html", [
@@ -146,6 +145,7 @@ var files =
     [ "TyphoonUIColorTypeConverter.h", "_typhoon_u_i_color_type_converter_8h.html", [
       [ "TyphoonUIColorTypeConverter", "interface_typhoon_u_i_color_type_converter.html", null ]
     ] ],
+    [ "TyphoonUtils.h", "_typhoon_utils_8h.html", "_typhoon_utils_8h" ],
     [ "TyphoonViewControllerNibResolver.h", "_typhoon_view_controller_nib_resolver_8h.html", null ],
     [ "TyphoonWeakComponentsPool.h", "_typhoon_weak_components_pool_8h.html", [
       [ "TyphoonWeakComponentsPool", "interface_typhoon_weak_components_pool.html", null ]

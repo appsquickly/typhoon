@@ -589,6 +589,11 @@
               <Anchor>a30504db62ed38e24adb794506a2b95e1</Anchor>
              </Node>
              <Node>
+              <Name>customHash</Name>
+              <Path>interface_typhoon_abstract_injection.html</Path>
+              <Anchor>a906df7094d91b16cd003a9e1e01c87c9</Anchor>
+             </Node>
+             <Node>
               <Name>isEqualToCustom:</Name>
               <Path>interface_typhoon_abstract_injection.html</Path>
               <Anchor>a9b9a8493d51c13abb6fb01e759f03e25</Anchor>
@@ -1591,6 +1596,11 @@
               <Anchor>af8bf2b1c1ecd0a633cc1f0cff95b0526</Anchor>
              </Node>
              <Node>
+              <Name>enumerateArgumentsUsingBlock:</Name>
+              <Path>interface_typhoon_runtime_arguments.html</Path>
+              <Anchor>a8bdfac80f8a7f9cda2dd61f138adfc0f</Anchor>
+             </Node>
+             <Node>
               <Name>indexOfArgumentWithKind:</Name>
               <Path>interface_typhoon_runtime_arguments.html</Path>
               <Anchor>a632e212e1dd074e768ffc12179401a61</Anchor>
@@ -2390,6 +2400,11 @@
                 <Name>copyBasePropertiesTo:</Name>
                 <Path>interface_typhoon_abstract_injection.html</Path>
                 <Anchor>a30504db62ed38e24adb794506a2b95e1</Anchor>
+               </Node>
+               <Node>
+                <Name>customHash</Name>
+                <Path>interface_typhoon_abstract_injection.html</Path>
+                <Anchor>a906df7094d91b16cd003a9e1e01c87c9</Anchor>
                </Node>
                <Node>
                 <Name>isEqualToCustom:</Name>
@@ -3459,6 +3474,11 @@
                 <Anchor>af8bf2b1c1ecd0a633cc1f0cff95b0526</Anchor>
                </Node>
                <Node>
+                <Name>enumerateArgumentsUsingBlock:</Name>
+                <Path>interface_typhoon_runtime_arguments.html</Path>
+                <Anchor>a8bdfac80f8a7f9cda2dd61f138adfc0f</Anchor>
+               </Node>
+               <Node>
                 <Name>indexOfArgumentWithKind:</Name>
                 <Path>interface_typhoon_runtime_arguments.html</Path>
                 <Anchor>a632e212e1dd074e768ffc12179401a61</Anchor>
@@ -3478,10 +3498,6 @@
            <Node>
             <Name>TyphoonStoryboard.h</Name>
             <Path>_typhoon_storyboard_8h.html</Path>
-           </Node>
-           <Node>
-            <Name>TyphoonStringUtils.h</Name>
-            <Path>_typhoon_string_utils_8h.html</Path>
            </Node>
            <Node>
             <Name>TyphoonSwizzler.h</Name>
@@ -3773,6 +3789,22 @@
              <Node>
               <Name>TyphoonUIColorTypeConverter</Name>
               <Path>interface_typhoon_u_i_color_type_converter.html</Path>
+             </Node>
+            </Subnodes>
+           </Node>
+           <Node>
+            <Name>TyphoonUtils.h</Name>
+            <Path>_typhoon_utils_8h.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>CStringEquals</Name>
+              <Path>_typhoon_utils_8h.html</Path>
+              <Anchor>ac69c08303e8a9f7a5ceb956c3560c8d1</Anchor>
+             </Node>
+             <Node>
+              <Name>TyphoonHashByAppendingInteger</Name>
+              <Path>_typhoon_utils_8h.html</Path>
+              <Anchor>a304eac1e93cb46843ab45145a9cd8b30</Anchor>
              </Node>
             </Subnodes>
            </Node>

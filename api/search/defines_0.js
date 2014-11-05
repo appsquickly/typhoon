@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['injectedprotocol',['InjectedProtocol',['../_typhoon_auto_injection_8h.html#ae73cb690bfababa9898655627175ba7d',1,'TyphoonAutoInjection.h']]]
+  ['cstringequals',['CStringEquals',['../_typhoon_utils_8h.html#ac69c08303e8a9f7a5ceb956c3560c8d1',1,'TyphoonUtils.h']]]
 ];

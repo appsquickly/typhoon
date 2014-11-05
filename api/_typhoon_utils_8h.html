@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=9"/>
     <meta name="generator" content="Doxygen 1.8.7"/>
-    <title>Typhoon: TyphoonStringUtils.h File Reference</title>
+    <title>Typhoon: TyphoonUtils.h File Reference</title>
     <link href="tabs.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="dynsections.js"></script>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('_typhoon_string_utils_8h.html','');});
+$(document).ready(function(){initNavTree('_typhoon_utils_8h.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -88,18 +88,81 @@ $(document).ready(function(){initNavTree('_typhoon_string_utils_8h.html','');});
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">TyphoonStringUtils.h File Reference</div>  </div>
+<div class="title">TyphoonUtils.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ac69c08303e8a9f7a5ceb956c3560c8d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_typhoon_utils_8h.html#ac69c08303e8a9f7a5ceb956c3560c8d1">CStringEquals</a>(stringA, stringB)&#160;&#160;&#160;(stringA == stringB || strcmp(stringA, stringB) == 0)</td></tr>
+<tr class="separator:ac69c08303e8a9f7a5ceb956c3560c8d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a304eac1e93cb46843ab45145a9cd8b30"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_typhoon_utils_8h.html#a304eac1e93cb46843ab45145a9cd8b30">TyphoonHashByAppendingInteger</a>(hash, integer)&#160;&#160;&#160;((hash &lt;&lt; 5) - hash + integer)</td></tr>
+<tr class="separator:a304eac1e93cb46843ab45145a9cd8b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="ac69c08303e8a9f7a5ceb956c3560c8d1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CStringEquals</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">stringA, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">stringB&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(stringA == stringB || strcmp(stringA, stringB) == 0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a304eac1e93cb46843ab45145a9cd8b30"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TyphoonHashByAppendingInteger</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">hash, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">integer&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;((hash &lt;&lt; 5) - hash + integer)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.5-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
-        <li class="navelem"><a class="el" href="dir_9e51036813d6151dfecc72d5fa7c02b3.html">Users</a></li><li class="navelem"><a class="el" href="dir_0fb01263d4f6e222912702d4b500c35b.html">jblues</a></li><li class="navelem"><a class="el" href="dir_d1b80bd0a9735a5f5a46ef616dac0b02.html">bamboo-home</a></li><li class="navelem"><a class="el" href="dir_99bba378f1eab4ba821e1db6308459da.html">xml-data</a></li><li class="navelem"><a class="el" href="dir_feb3324c409b4217a18cc36afb266bde.html">build-dir</a></li><li class="navelem"><a class="el" href="dir_5c82ba156dc11cacf39cd3f6277279d8.html">TPN-TC-JOB1</a></li><li class="navelem"><a class="el" href="dir_6796ef609fe9fb871e43a7a13b342f44.html">Source</a></li><li class="navelem"><a class="el" href="dir_712f2100ce0f98f104958ddad7a77eec.html">Utils</a></li><li class="navelem"><a class="el" href="_typhoon_string_utils_8h.html">TyphoonStringUtils.h</a></li>
-        <li class="footer">Generated on Sat Oct 25 2014 21:22:41 for Typhoon by
+        <li class="navelem"><a class="el" href="dir_9e51036813d6151dfecc72d5fa7c02b3.html">Users</a></li><li class="navelem"><a class="el" href="dir_0fb01263d4f6e222912702d4b500c35b.html">jblues</a></li><li class="navelem"><a class="el" href="dir_d1b80bd0a9735a5f5a46ef616dac0b02.html">bamboo-home</a></li><li class="navelem"><a class="el" href="dir_99bba378f1eab4ba821e1db6308459da.html">xml-data</a></li><li class="navelem"><a class="el" href="dir_feb3324c409b4217a18cc36afb266bde.html">build-dir</a></li><li class="navelem"><a class="el" href="dir_5c82ba156dc11cacf39cd3f6277279d8.html">TPN-TC-JOB1</a></li><li class="navelem"><a class="el" href="dir_6796ef609fe9fb871e43a7a13b342f44.html">Source</a></li><li class="navelem"><a class="el" href="dir_712f2100ce0f98f104958ddad7a77eec.html">Utils</a></li><li class="navelem"><a class="el" href="_typhoon_utils_8h.html">TyphoonUtils.h</a></li>
+        <li class="footer">Generated on Wed Nov 5 2014 10:04:10 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>

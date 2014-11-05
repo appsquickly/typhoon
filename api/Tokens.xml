@@ -636,6 +636,26 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>CStringEquals</Name>
+      <APILanguage>unknown</APILanguage>
+      <Type>macro</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_utils_8h.html</Path>
+    <Anchor>ac69c08303e8a9f7a5ceb956c3560c8d1</Anchor>
+    <DeclaredIn>TyphoonUtils.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>TyphoonHashByAppendingInteger</Name>
+      <APILanguage>unknown</APILanguage>
+      <Type>macro</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_utils_8h.html</Path>
+    <Anchor>a304eac1e93cb46843ab45145a9cd8b30</Anchor>
+    <DeclaredIn>TyphoonUtils.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>Factory</Name>
       <APILanguage>c</APILanguage>
     </TokenIdentifier>
@@ -949,6 +969,17 @@
     </TokenIdentifier>
     <Path>interface_typhoon_abstract_injection.html</Path>
     <Anchor>a30504db62ed38e24adb794506a2b95e1</Anchor>
+    <DeclaredIn>TyphoonAbstractInjection.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>customHash</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>a906df7094d91b16cd003a9e1e01c87c9</Anchor>
     <DeclaredIn>TyphoonAbstractInjection.h</DeclaredIn>
   </Token>
   <Token>
@@ -2371,6 +2402,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>customHash</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>a906df7094d91b16cd003a9e1e01c87c9</Anchor>
+    <DeclaredIn>TyphoonAbstractInjection.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>isEqualToCustom:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -2518,6 +2560,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>customHash</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>a906df7094d91b16cd003a9e1e01c87c9</Anchor>
+    <DeclaredIn>TyphoonAbstractInjection.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>isEqualToCustom:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -2612,6 +2665,17 @@
     </TokenIdentifier>
     <Path>interface_typhoon_abstract_injection.html</Path>
     <Anchor>a30504db62ed38e24adb794506a2b95e1</Anchor>
+    <DeclaredIn>TyphoonAbstractInjection.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>customHash</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>a906df7094d91b16cd003a9e1e01c87c9</Anchor>
     <DeclaredIn>TyphoonAbstractInjection.h</DeclaredIn>
   </Token>
   <Token>
@@ -2837,6 +2901,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>customHash</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>a906df7094d91b16cd003a9e1e01c87c9</Anchor>
+    <DeclaredIn>TyphoonAbstractInjection.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>isEqualToCustom:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -2975,6 +3050,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>customHash</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>a906df7094d91b16cd003a9e1e01c87c9</Anchor>
+    <DeclaredIn>TyphoonAbstractInjection.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>isEqualToCustom:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -3109,6 +3195,17 @@
     </TokenIdentifier>
     <Path>interface_typhoon_abstract_injection.html</Path>
     <Anchor>a30504db62ed38e24adb794506a2b95e1</Anchor>
+    <DeclaredIn>TyphoonAbstractInjection.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>customHash</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>a906df7094d91b16cd003a9e1e01c87c9</Anchor>
     <DeclaredIn>TyphoonAbstractInjection.h</DeclaredIn>
   </Token>
   <Token>
@@ -3283,6 +3380,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>customHash</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>a906df7094d91b16cd003a9e1e01c87c9</Anchor>
+    <DeclaredIn>TyphoonAbstractInjection.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>isEqualToCustom:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -3421,6 +3529,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>customHash</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>a906df7094d91b16cd003a9e1e01c87c9</Anchor>
+    <DeclaredIn>TyphoonAbstractInjection.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>isEqualToCustom:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -3544,6 +3663,17 @@
     </TokenIdentifier>
     <Path>interface_typhoon_abstract_injection.html</Path>
     <Anchor>a30504db62ed38e24adb794506a2b95e1</Anchor>
+    <DeclaredIn>TyphoonAbstractInjection.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>customHash</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>a906df7094d91b16cd003a9e1e01c87c9</Anchor>
     <DeclaredIn>TyphoonAbstractInjection.h</DeclaredIn>
   </Token>
   <Token>
@@ -4461,6 +4591,17 @@
     </TokenIdentifier>
     <Path>interface_typhoon_runtime_arguments.html</Path>
     <Anchor>af8bf2b1c1ecd0a633cc1f0cff95b0526</Anchor>
+    <DeclaredIn>TyphoonRuntimeArguments.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>enumerateArgumentsUsingBlock:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonRuntimeArguments</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_runtime_arguments.html</Path>
+    <Anchor>a8bdfac80f8a7f9cda2dd61f138adfc0f</Anchor>
     <DeclaredIn>TyphoonRuntimeArguments.h</DeclaredIn>
   </Token>
   <Token>

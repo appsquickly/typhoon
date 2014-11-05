@@ -1,5 +1,8 @@
 var NAVTREEINDEX1 =
 {
+"interface_typhoon_definition.html#a2dae7a42237c54186dff914a699bf7d9":[0,1,0,10],
+"interface_typhoon_definition.html#a6052afa42a4a9a206dfac94cbd7f5e86":[0,1,0,8],
+"interface_typhoon_definition.html#a63159e475b4d02f6cb98407dfe13f594":[0,1,0,16],
 "interface_typhoon_definition.html#a7b651ab85991ef1d9641ef5cd1f67187":[0,1,0,2],
 "interface_typhoon_definition.html#a8128dbbd3c00c248e58770ae3e4e1823":[0,1,0,15],
 "interface_typhoon_definition.html#a840cfc1303083ede4b0574c1e2ee7fb1":[0,1,0,1],
@@ -102,7 +105,8 @@ var NAVTREEINDEX1 =
 "interface_typhoon_primitive_type_converter.html#ad7ab28bf5a83e4e03d6903805b1a5954":[1,0,43,0],
 "interface_typhoon_runtime_arguments.html":[1,0,46],
 "interface_typhoon_runtime_arguments.html#a04aecfd10e75c2773e99f473628fc5a8":[1,0,46,1],
-"interface_typhoon_runtime_arguments.html#a632e212e1dd074e768ffc12179401a61":[1,0,46,3],
+"interface_typhoon_runtime_arguments.html#a632e212e1dd074e768ffc12179401a61":[1,0,46,4],
+"interface_typhoon_runtime_arguments.html#a8bdfac80f8a7f9cda2dd61f138adfc0f":[1,0,46,3],
 "interface_typhoon_runtime_arguments.html#a9f06b6f706e185ec4f7facde16894f0e":[1,0,46,0],
 "interface_typhoon_runtime_arguments.html#af8bf2b1c1ecd0a633cc1f0cff95b0526":[1,0,46,2],
 "interface_typhoon_test_utils.html":[0,3,1],
