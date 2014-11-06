@@ -143,6 +143,8 @@ static TyphoonComponentFactory *initialFactory;
     [initialFactory load];
     TyphoonDefinition *definition = [[initialFactory allDefinitionsForType:[appDelegate class]] lastObject];
     [initialFactory doInjectionEventsOn:appDelegate withDefinition:definition args:nil];
+    [initialFactory registerInstance:appDelegate asSingletonForDefinition:definition];
 }
+
 
 @end

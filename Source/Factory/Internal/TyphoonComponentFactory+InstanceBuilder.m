@@ -134,6 +134,15 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     return [self buildInstanceWithDefinition:definition args:args];
 }
 
+- (void)registerInstance:(id)instance asSingletonForDefinition:(TyphoonDefinition *)definition
+{
+    if (definition.scope == TyphoonScopeSingleton || definition.scope == TyphoonScopeLazySingleton) {
+        [_singletons setObject:instance forKey:definition.key];
+    } else if (definition.scope == TyphoonScopeWeakSingleton) {
+        [_weakSingletons setObject:instance forKey:definition.key];
+    }
+}
+
 //-------------------------------------------------------------------------------------------
 #pragma mark - Injection process
 //-------------------------------------------------------------------------------------------

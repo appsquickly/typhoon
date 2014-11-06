@@ -202,12 +202,23 @@ static TyphoonComponentFactory *defaultFactory;
     }
 }
 
+static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition *definition)
+{
+    if (definition.scope == TyphoonScopeWeakSingleton || definition.scope == TyphoonScopeLazySingleton
+            || definition.scope == TyphoonScopeSingleton) {
+        NSLog(@"Notice: injecting instance '<%@ %p>' with '%@' definition, but this definition scoped as singletone. Instance '<%@ %p>' will not be registered in singletons pool for this definition since was created outside typhoon", [instance class], (__bridge void *)instance, definition.key, [instance class], (__bridge void *)instance);
+    }
+}
+
 - (void)inject:(id)instance
 {
     @synchronized(self) {
         [self loadIfNeeded];
         TyphoonDefinition *definitionForInstance = [self definitionForType:[instance class] orNil:YES includeSubclasses:NO];
-        [self doInjectionEventsOn:instance withDefinition:definitionForInstance args:nil];
+        if (definitionForInstance) {
+            AssertDefinitionScopeForInjectMethod(instance, definitionForInstance);
+            [self doInjectionEventsOn:instance withDefinition:definitionForInstance args:nil];
+        }
     }
 }
 
@@ -217,6 +228,7 @@ static TyphoonComponentFactory *defaultFactory;
         [self loadIfNeeded];
         TyphoonDefinition *definition = [self definitionForKey:NSStringFromSelector(selector)];
         if (definition) {
+            AssertDefinitionScopeForInjectMethod(instance, definition);
             [self doInjectionEventsOn:instance withDefinition:definition args:nil];
         }
         else {

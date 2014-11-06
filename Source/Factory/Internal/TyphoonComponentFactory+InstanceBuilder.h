@@ -40,6 +40,8 @@
 
 - (TyphoonDefinition *)definitionForType:(id)classOrProtocol orNil:(BOOL)returnNilIfNotFound includeSubclasses:(BOOL)includeSubclasses;
 
+- (void)registerInstance:(id)instance asSingletonForDefinition:(TyphoonDefinition *)definition;
+
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance;
 
 - (void)resolveCircularDependency:(NSString *)key args:(TyphoonRuntimeArguments *)args resolvedBlock:(void(^)(BOOL isCircular))resolvedBlock;
