@@ -261,7 +261,7 @@
     }];
 }
 
-- (NSString *)urlWithString:(NSString *)string
+- (NSURL *)urlWithString:(NSString *)string
 {
     return [TyphoonDefinition withClass:[NSURL class] configuration:^(TyphoonDefinition *definition) {
         [definition useInitializer:@selector(initWithString:) parameters:^(TyphoonMethod *initializer) {
@@ -301,4 +301,5 @@
         [definition injectProperty:@selector(foobar) with:[self urlWithString:[self stringWithValue:[self stringWithValue:[self stringWithValue:@"http://example.com"]]]]];
     }];
 }
+
 @end
