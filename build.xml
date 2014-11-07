@@ -104,7 +104,7 @@
     <target name="--test.ios">
         <echo file="${temp.dir}/build.and.test.sh">
             #!/bin/bash
-            xcodebuild test -project ${module.name}.xcodeproj/ -scheme 'Typhoon-iOSTests' -configuration Debug -destination 'platform=iOS Simulator,name=Resizable iPhone,OS=8.0'
+            xcodebuild test -project ${module.name}.xcodeproj/ -scheme 'Typhoon-iOSTests' -configuration Debug -destination 'platform=iOS Simulator,name=Resizable iPhone,OS=8.1'
 
         </echo>
         <chmod perm="+x" file="${temp.dir}/build.and.test.sh"/>
