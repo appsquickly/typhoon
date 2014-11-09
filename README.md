@@ -9,6 +9,7 @@ Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-fe
 * In a rush? Here's a <a href="https://github.com/typhoon-framework/Typhoon/wiki/Swift-Quick-Start">Swift Quick Start</a> and an <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Objective-C Quick Start</a>.
 * Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a> or <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>.  
 * Try the <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">Swift Sample Application</a> (in progress) or the <a href="https://github.com/typhoon-framework/Typhoon-example">Objective-C Sample Application</a>.
+* Need to set up Typhoon with Core Data and Reactive Cocoa? Try <a href="https://github.com/typhoon-framework/Typhoon-CoreData-RAC-Example">this sample application</a>. 
 
 . . . otherwise . . . 
 
