@@ -61,12 +61,21 @@ static TyphoonComponentFactory *defaultFactory;
         _factoryPostProcessors = [[NSMutableArray alloc] init];
         _componentPostProcessors = [[NSMutableArray alloc] init];
         [self attachPostProcessor:[TyphoonParentReferenceHydratingPostProcessor new]];
-        [self attachPostProcessor:[TyphoonFactoryAutoInjectionPostProcessor new]];
+        [self attachAutoInjectionPostProcessorIfNeeded];
         [self attachPostProcessor:[TyphoonFactoryPropertyInjectionPostProcessor new]];
     }
     return self;
 }
 
+- (void)attachAutoInjectionPostProcessorIfNeeded
+{
+    NSDictionary *bundleInfoDictionary = [[NSBundle mainBundle] infoDictionary];
+
+    NSNumber *value = bundleInfoDictionary[@"TyphoonAutoInjectionEnabled"];
+    if (!value || [value boolValue]) {
+        [self attachPostProcessor:[TyphoonFactoryAutoInjectionPostProcessor new]];
+    }
+}
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods
