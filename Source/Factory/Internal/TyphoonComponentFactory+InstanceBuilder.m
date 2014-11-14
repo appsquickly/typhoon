@@ -149,7 +149,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (void)doInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
-    [self doBeforeInjectionsOn:instance withDefinition:definition];
+    [self doBeforeInjectionsOn:instance withDefinition:definition args:args];
 
     for (id <TyphoonPropertyInjection> property in [definition injectedProperties]) {
         [self doPropertyInjectionOn:instance property:property args:args];
@@ -161,30 +161,30 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
     [self injectAssemblyOnInstanceIfTyphoonAware:instance];
 
-    [self doAfterInjectionsOn:instance withDefinition:definition];
+    [self doAfterInjectionsOn:instance withDefinition:definition args:args];
 }
 
-- (void)doBeforeInjectionsOn:(id)instance withDefinition:(TyphoonDefinition *)definition
+- (void)doBeforeInjectionsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
     if ([instance respondsToSelector:@selector(typhoonWillInject)]) {
         [instance typhoonWillInject];
     }
 
-    if (definition && [instance respondsToSelector:definition.beforeInjections]) {
-        void(*method)(id, SEL) = (void (*)(id, SEL)) [instance methodForSelector:definition.beforeInjections];
-        method(instance, definition.beforeInjections);
+    TyphoonMethod *beforeInjections = [definition beforeInjections];
+    if (beforeInjections) {
+        [self doMethodInjection:beforeInjections onInstance:instance args:args];
     }
 }
 
-- (void)doAfterInjectionsOn:(id)instance withDefinition:(TyphoonDefinition *)definition
+- (void)doAfterInjectionsOn:(id)instance withDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
     if ([instance respondsToSelector:@selector(typhoonDidInject)]) {
         [instance typhoonDidInject];
     }
 
-    if (definition && [instance respondsToSelector:definition.afterInjections]) {
-        void(*method)(id, SEL) = (void (*)(id, SEL)) [instance methodForSelector:definition.afterInjections];
-        method(instance, definition.afterInjections);
+    TyphoonMethod *afterInjections = [definition afterInjections];
+    if (afterInjections) {
+        [self doMethodInjection:afterInjections onInstance:instance args:args];
     }
 }
 

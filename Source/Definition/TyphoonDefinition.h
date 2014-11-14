@@ -34,7 +34,7 @@
 * <strong>TyphoonScopeSingleton</strong>
 Indicates that Typhoon should retain the instance that exists for as long as the TyphoonComponentFactory exists.
 
-* <strong>TyphoonScopeLazySingleton</strong>
+* <strong>TnglyphoonScopeLazySieton</strong>
 This scope behaves the same as TyphoonScopeSingleton, but the object is not created unless or until it is needed.
 *
 * <strong>TyphoonScopeWeakSingleton</strong>
@@ -50,7 +50,6 @@ typedef NS_ENUM(NSInteger, TyphoonScope)
     TyphoonScopeLazySingleton,
     TyphoonScopeWeakSingleton,
 };
-
 
 typedef NS_OPTIONS(NSInteger, TyphoonAutoInjectVisibility)
 {
@@ -70,9 +69,13 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 {
     Class _type;
     NSString *_key;
+
     TyphoonMethod *_initializer;
+    TyphoonMethod *_beforeInjections;
     NSMutableSet *_injectedProperties;
     NSMutableSet *_injectedMethods;
+    TyphoonMethod *_afterInjections;
+
     TyphoonScope _scope;
     TyphoonDefinition *_factory;
     TyphoonDefinition *_parent;
@@ -81,22 +84,19 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 @property(nonatomic, readonly) Class type;
 
 /**
-* A custom callback method that is invoked before property injection occurs. Use this method as an alternative to
-* TyphoonPropertyInjectionDelegate if the component being instantiated is a 3rd party library, or if a direct dependency on Typhoon is not
-* desired.
-*
-* @see TyphoonPropertyInjectionDelegate
+* A custom callback methods that is invoked before properties and method injection occurs.
 */
-@property(nonatomic) SEL beforeInjections;
+
+- (void)performBeforeInjections:(SEL)sel;
+- (void)performBeforeInjections:(SEL)sel parameters:(void(^)(TyphoonMethod *params))parametersBlock;
+
 
 /**
-* A custom callback method that is invoked after property injection occurs. Use this method as an alternative to
-* TyphoonPropertyInjectionDelegate if the component being instantiated is a 3rd party library, or if a direct dependency on Typhoon is not
-* desired.
-*
-* @see TyphoonPropertyInjectionDelegate
+* A custom callback methods that is invoked after properties and method injection occurs.
 */
-@property(nonatomic) SEL afterInjections;
+        
+- (void)performAfterInjections:(SEL)sel;
+- (void)performAfterInjections:(SEL)sel parameters:(void(^)(TyphoonMethod *param))parameterBlock;
 
 /**
 * The scope of the component, default being TyphoonScopeObjectGraph.
@@ -251,6 +251,13 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
  * @param keyPath path used as argument while calling valueForKeyPath: on resolved definition
  */
 - (id)keyPath:(NSString *)keyPath;
+
+@end
+
+@interface TyphoonDefinition(Deprecated)
+
+- (void)setBeforeInjections:(SEL)sel DEPRECATED_MSG_ATTRIBUTE("Use performBeforeInjections methods (This method will be unaivalable in Typhoon 3.0)");
+- (void)setAfterInjections:(SEL)sel DEPRECATED_MSG_ATTRIBUTE("Use performAterInjections methods (This method will be unaivalable in Typhoon 3.0)");
 
 @end
 

@@ -68,6 +68,16 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     }
 }
 
+- (TyphoonMethod *)beforeInjections
+{
+    return _beforeInjections;
+}
+
+- (TyphoonMethod *)afterInjections
+{
+    return _afterInjections;
+}
+
 - (NSSet *)injectedProperties
 {
     if (!self.parent) {

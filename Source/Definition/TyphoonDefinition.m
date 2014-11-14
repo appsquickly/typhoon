@@ -151,6 +151,34 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     [self useInitializer:selector parameters:nil];
 }
 
+- (void)performBeforeInjections:(SEL)sel
+{
+    [self performBeforeInjections:sel parameters:nil];
+}
+
+- (void)performBeforeInjections:(SEL)sel parameters:(void (^)(TyphoonMethod *params))parametersBlock
+{
+    _beforeInjections = [[TyphoonMethod alloc] initWithSelector:sel];
+    if (parametersBlock) {
+        parametersBlock(_beforeInjections);
+    }
+    [_beforeInjections checkParametersCount];
+}
+
+- (void)performAfterInjections:(SEL)sel
+{
+    [self performAfterInjections:sel parameters:nil];
+}
+
+- (void)performAfterInjections:(SEL)sel parameters:(void (^)(TyphoonMethod *param))parameterBlock
+{
+    _afterInjections = [[TyphoonMethod alloc] initWithSelector:sel];
+    if (parameterBlock) {
+        parameterBlock(_afterInjections);
+    }
+    [_afterInjections checkParametersCount];
+}
+
 //-------------------------------------------------------------------------------------------
 #pragma mark - Making injections
 //-------------------------------------------------------------------------------------------
@@ -261,5 +289,20 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     }
 }
 
+
+@end
+
+
+@implementation TyphoonDefinition(Deprecated)
+
+- (void)setBeforeInjections:(SEL)sel
+{
+    [self performBeforeInjections:sel];
+}
+
+- (void)setAfterInjections:(SEL)sel
+{
+    [self performAfterInjections:sel];
+}
 
 @end

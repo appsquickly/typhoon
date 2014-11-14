@@ -27,9 +27,13 @@ typedef enum {
 
 @interface TyphoonDefinition (InstanceBuilder)
 
+- (TyphoonMethod *)beforeInjections;
+
 - (NSSet *)injectedProperties;
 
 - (NSSet *)injectedMethods;
+
+- (TyphoonMethod *)afterInjections;
 
 - (void)enumerateInjectionsOfKind:(Class)injectionClass options:(TyphoonInjectionsEnumerationOption)options
                        usingBlock:(TyphoonInjectionsEnumerationBlock)block;

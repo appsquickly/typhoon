@@ -23,5 +23,5 @@ DerivedData
 .DS_Store
 
 # AppCode
-.idea/workspace.xml
-.idea/runConfigurations/
+.idea
+!.idea/codeStyleSettings.xml
