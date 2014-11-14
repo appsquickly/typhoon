@@ -63,6 +63,11 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 #pragma MARK: - Class Methods
 //-------------------------------------------------------------------------------------------
 
+- (id)factory
+{
+    return nil;
+}
+
 + (id)withClass:(Class)clazz
 {
     return [[self alloc] initWithClass:clazz key:nil];
@@ -73,13 +78,12 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     return [self withClass:clazz key:nil injections:injections];
 }
 
-+ (id)withClass:(Class)clazz key:(NSString *)key injections:(TyphoonDefinitionBlock)properties
++ (id)withClass:(Class)clazz key:(NSString *)key injections:(TyphoonDefinitionBlock)configuration
 {
     TyphoonDefinition *definition = [[self alloc] initWithClass:clazz key:key];
 
-    if (properties) {
-        __weak TyphoonDefinition *weakDefinition = definition;
-        properties(weakDefinition);
+    if (configuration) {
+        configuration(definition);
     }
 
     [definition validateScope];
@@ -92,13 +96,20 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     return [self withFactory:factory selector:selector parameters:nil];
 }
 
-+ (id)withFactory:(id)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))parametersBlock
++ (id)withFactory:(id)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))params
 {
-    return [TyphoonFactoryDefinition withConfiguration:^(TyphoonFactoryDefinition *definition) {
-        [definition setFactory:factory];
-        [definition setScope:TyphoonScopePrototype];
-        [definition useInitializer:selector parameters:parametersBlock];
-    }];
+    return [self withFactory:factory selector:selector parameters:params configuration:nil];
+}
+
++ (id)withFactory:(id)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *))parametersBlock configuration:(void (^)(TyphoonFactoryDefinition *))configuration
+{
+    TyphoonFactoryDefinition *definition = [[TyphoonFactoryDefinition alloc] initWithFactory:factory selector:selector parameters:parametersBlock];
+
+    if (configuration) {
+        configuration(definition);
+    }
+
+    return definition;
 }
 
 //-------------------------------------------------------------------------------------------
@@ -143,7 +154,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
         parametersBlock(initializer);
     }
     [initializer checkParametersCount];
-    self.initializer = initializer;
+    _initializer = initializer;
 }
 
 - (void)useInitializer:(SEL)selector
@@ -197,11 +208,6 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 #pragma mark - Overridden Methods
 //-------------------------------------------------------------------------------------------
 
-- (void)setInitializer:(TyphoonMethod *)initializer
-{
-    _initializer = initializer;
-}
-
 - (TyphoonMethod *)initializer
 {
     if (!_initializer) {
@@ -238,14 +244,6 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     [self validateScope];
 }
 
-- (void)setFactory:(id)factory
-{
-    _factory = factory;
-    if (![_factory isKindOfClass:[TyphoonDefinition class]]) {
-        [NSException raise:NSInvalidArgumentException format:@"Only TyphoonDefinition object can be set as factory. But in method '%@' object of class %@ set as factory", self.key, [factory class]];
-    }
-}
-
 - (void)setParent:(id)parent
 {
     _parent = parent;
@@ -261,13 +259,14 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Definition: class='%@', key='%@', scope='%@'", NSStringFromClass(_type), _key,
+    return [NSString stringWithFormat:@"%@: class='%@', key='%@', scope='%@'", NSStringFromClass([self class]),
+    NSStringFromClass(_type), _key,
                                       TyphoonScopeToString(_scope)];
 }
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    TyphoonDefinition *copy = [[TyphoonDefinition alloc] initWithClass:_type key:[_key copy] factoryComponent:_factory.key];
+    TyphoonDefinition *copy = [[TyphoonDefinition alloc] initWithClass:_type key:[_key copy]];
     [copy setInitializer:[self.initializer copy]];
     for (id <TyphoonPropertyInjection> property in _injectedProperties) {
         [copy addInjectedProperty:[property copyWithZone:NSDefaultMallocZone()]];

@@ -11,9 +11,44 @@
 
 #import "TyphoonDefinition.h"
 #import "TyphoonPatcher.h"
-#import "TyphoonPatchObjectFactory.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonRuntimeArguments.h"
+
+@interface TyphoonPatcherDefinition : TyphoonDefinition
+
+@property (nonatomic, strong) TyphoonPatchObjectCreationBlock patchObjectBlock;
+
+- (id)initWithOriginalDefinition:(TyphoonDefinition *)definition patchObjectBlock:(TyphoonPatchObjectCreationBlock)patchObjectBlock;
+
+@end
+
+@implementation TyphoonPatcherDefinition
+
+- (id)initWithOriginalDefinition:(TyphoonDefinition *)definition patchObjectBlock:(TyphoonPatchObjectCreationBlock)patchObjectBlock
+{
+    self = [super initWithClass:definition.type key:definition.key];
+    if (self) {
+        self.patchObjectBlock = patchObjectBlock;
+        self.scope = definition.scope;
+        self.autoInjectionVisibility = definition.autoInjectionVisibility;
+
+    }
+    return self;
+}
+
+- (id)targetForInitializerWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+{
+    return self.patchObjectBlock();
+}
+
+- (id)initializer
+{
+    return nil;
+}
+
+@end
+
 
 @implementation TyphoonPatcher
 
@@ -58,22 +93,13 @@
 - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
 {
     [super postProcessComponentFactory:factory];
-    for (TyphoonDefinition *definition in [factory registry]) {
-        id patchObject = [_patches objectForKey:definition.key];
-        if (patchObject) {
-            NSString *patcherKey = [NSString stringWithFormat:@"%@%@", definition.key, @"$$$patcher"];
-            TyphoonDefinition *patchFactory = [[TyphoonDefinition alloc] initWithClass:[TyphoonPatchObjectFactory class] key:patcherKey];
-            patchFactory.initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithCreationBlock:)];
-            [patchFactory.initializer injectParameterWith:patchObject];
-            [patchFactory setScope:definition.scope];
 
-            [definition setFactory:patchFactory];
-            [definition setInitializer:[[TyphoonMethod alloc] initWithSelector:@selector(patchObject)]];
-            [definition setValue:nil forKey:@"injectedProperties"];
-
-            [factory registerDefinition:patchFactory];
+    [factory enumerateDefinitions:^(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace, BOOL *stop) {
+        TyphoonPatchObjectCreationBlock patchObjectBlock = _patches[definition.key];
+        if (patchObjectBlock) {
+            *definitionToReplace = [[TyphoonPatcherDefinition alloc] initWithOriginalDefinition:definition patchObjectBlock:patchObjectBlock];
         }
-    }
+    }];
 }
 
 

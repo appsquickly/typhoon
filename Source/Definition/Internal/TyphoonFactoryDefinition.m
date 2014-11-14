@@ -5,9 +5,20 @@
 
 #import "TyphoonFactoryDefinition.h"
 #import "TyphoonIntrospectionUtils.h"
+#import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonComponentFactory.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonRuntimeArguments.h"
 
 
-@implementation TyphoonFactoryDefinition
+@implementation TyphoonFactoryDefinition {
+    NSString *_factoryKey;
+};
+
+- (id)targetForInitializerWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+{
+    return [factory componentForKey:_factoryKey];
+}
 
 - (BOOL)matchesAutoInjectionWithType:(id)classOrProtocol includeSubclasses:(BOOL)includeSubclasses
 {
@@ -35,12 +46,24 @@
     return result;
 }
 
-+ (id)withConfiguration:(void(^)(TyphoonFactoryDefinition *definition))injections
+- (id)initWithFactory:(id)factory selector:(SEL)selector parameters:(void(^)(TyphoonMethod *method))params;
 {
-    return [self withClass:[NSObject class] configuration:^(TyphoonDefinition *definition) {
-        injections((TyphoonFactoryDefinition *) definition);
-    }];
+    self = [super initWithClass:[NSObject class] key:nil];
+    if (self) {
+        _factoryKey = [factory key];
+        self.scope = TyphoonScopePrototype;
+        [super useInitializer:selector parameters:params];
+    }
+    return self;
 }
 
+- (void)useInitializer:(SEL)selector parameters:(void (^)(TyphoonMethod *initializer))parametersBlock
+{
+    NSAssert(NO, @"You cannot change initializer of TyphoonFactoryDefinition");
+}
 
+- (void)useInitializer:(SEL)selector
+{
+    NSAssert(NO, @"You cannot change initializer of TyphoonFactoryDefinition");
+}
 @end

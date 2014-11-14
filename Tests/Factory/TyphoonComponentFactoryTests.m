@@ -420,7 +420,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
         XCTFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
-        XCTAssertEqualObjects([e description], @"Attempt to instantiate abstract definition: Definition: class='NSURL', key='anAbstractDefinition', scope='ObjectGraph'");
+        XCTAssertEqualObjects([e description], @"Attempt to instantiate abstract definition: TyphoonDefinition: class='NSURL', key='anAbstractDefinition', scope='ObjectGraph'");
     }
 }
 
@@ -431,9 +431,9 @@ static NSString *const DEFAULT_QUEST = @"quest";
 {
     TyphoonDefinition *parentDefinition = [TyphoonDefinition withClass:pClass key:nil];
 
-    TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithString:)];
-    [initializer injectParameterWith:string];
-    parentDefinition.initializer = initializer;
+    [parentDefinition useInitializer:@selector(initWithString:) parameters:^(TyphoonMethod *initializer) {
+        [initializer injectParameterWith:string];
+    }];
 
     [_componentFactory registerDefinition:parentDefinition];
 
@@ -444,9 +444,9 @@ static NSString *const DEFAULT_QUEST = @"quest";
 {
     TyphoonDefinition *parentDefinition = [TyphoonDefinition withClass:pClass key:key];
 
-    TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithString:)];
-    [initializer injectParameterWith:string];
-    parentDefinition.initializer = initializer;
+    [parentDefinition useInitializer:@selector(initWithString:) parameters:^(TyphoonMethod *initializer) {
+        [initializer injectParameterWith:string];
+    }];
 
     [_componentFactory registerDefinition:parentDefinition];
 

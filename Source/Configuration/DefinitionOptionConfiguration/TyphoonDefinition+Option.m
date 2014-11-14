@@ -5,9 +5,64 @@
 
 #import "TyphoonDefinition+Option.h"
 #import "TyphoonOptionMatcher+Internal.h"
-#import "TyphoonMatcherDefinitionFactory.h"
 #import "TyphoonInjections.h"
 #import "TyphoonFactoryDefinition.h"
+#import "TyphoonComponentFactory.h"
+#import "TyphoonRuntimeArguments.h"
+#import "TyphoonInjectionContext.h"
+#import "TyphoonInjection.h"
+#import "TyphoonDefinition+Infrastructure.h"
+
+@interface TyphoonOptionDefinition : TyphoonFactoryDefinition <TyphoonAutoInjectionConfig>
+
+@property (nonatomic, strong) id<TyphoonInjection> optionInjection;
+@property (nonatomic, strong) TyphoonOptionMatcher *matcher;
+
+@end
+
+@implementation TyphoonOptionDefinition
+
+- (instancetype)initWithOptionValue:(id)value matcher:(TyphoonOptionMatcher *)matcher
+{
+    self = [super initWithClass:[NSObject class] key:nil];
+    if (self) {
+        self.optionInjection = TyphoonMakeInjectionFromObjectIfNeeded(value);
+        self.matcher = matcher;
+        self.scope = TyphoonScopePrototype;
+    }
+    return self;
+}
+
+- (id)targetForInitializerWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+{
+    TyphoonInjectionContext *context = [TyphoonInjectionContext new];
+    context.args = args;
+    context.factory = factory;
+    context.raiseExceptionIfCircular = YES;
+    context.destinationType = [TyphoonTypeDescriptor descriptorWithEncodedType:@encode(id)];
+
+    __block id optionValue = nil;
+    [self.optionInjection valueToInjectWithContext:context completion:^(id value) {
+        optionValue = value;
+    }];
+
+    id<TyphoonInjection>injection = [self.matcher injectionMatchedValue:optionValue];
+
+    __block id result = nil;
+    [injection valueToInjectWithContext:context completion:^(id value) {
+        result = value;
+    }];
+
+    return result;
+}
+
+- (TyphoonMethod *)initializer
+{
+    return nil;
+}
+
+
+@end
 
 @implementation TyphoonDefinition (Option)
 
@@ -27,20 +82,22 @@
 {
     TyphoonOptionMatcher *matcher = [[TyphoonOptionMatcher alloc] initWithBlock:matcherBlock];
 
-    TyphoonDefinition *factoryDefinition = [TyphoonDefinition withClass:[TyphoonMatcherDefinitionFactory class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(factory)];
-        [definition injectProperty:@selector(matcher) with:matcher];
-    }];
-
-    return [TyphoonInfrastructureFactoryDefinition withConfiguration:^(TyphoonFactoryDefinition *definition) {
-        [definition setFactory:factoryDefinition];
-        [definition setScope:TyphoonScopePrototype];
-        [definition useInitializer:@selector(valueCreatedFromDefinitionMatchedOption:args:) parameters:^(TyphoonMethod *initializer) {
-            [initializer injectParameterWith:option];
-            [initializer injectParameterWith:TyphoonInjectionWithCurrentRuntimeArguments()];
-        }];
-    }];
+    return [[TyphoonOptionDefinition alloc] initWithOptionValue:option matcher:matcher];
 }
+
++ (id)withOption:(id)option matcher:(TyphoonMatcherBlock)matcherBlock autoInjectionConfig:(void (^)(id<TyphoonAutoInjectionConfig> config))configBlock
+{
+    TyphoonOptionMatcher *matcher = [[TyphoonOptionMatcher alloc] initWithBlock:matcherBlock];
+
+    TyphoonOptionDefinition *definition = [[TyphoonOptionDefinition alloc] initWithOptionValue:option matcher:matcher];
+
+    if (configBlock) {
+        configBlock(definition);
+    }
+
+    return definition;
+}
+
 
 @end
 

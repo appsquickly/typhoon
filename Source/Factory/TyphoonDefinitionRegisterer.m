@@ -75,9 +75,6 @@
     else {
         LogTrace(@"Registering: %@ with key: %@", NSStringFromClass(_definition.type), _definition.key);
         [_componentFactory addDefinitionToRegistry:_definition];
-        if ([self definitionHasInternalFactory]) {
-            [_componentFactory registerDefinition:_definition.factory];
-        }
     }
 }
 
@@ -89,11 +86,6 @@
         return YES;
     }
     return NO;
-}
-
-- (BOOL)definitionHasInternalFactory
-{
-    return _definition.class == [TyphoonInfrastructureFactoryDefinition class];
 }
 
 - (void)registerInfrastructureComponentFromDefinition

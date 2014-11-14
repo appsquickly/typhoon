@@ -15,6 +15,8 @@
 
 @protocol TyphoonPropertyInjection;
 @protocol TyphoonInjection;
+@class TyphoonComponentFactory;
+@class TyphoonRuntimeArguments;
 
 typedef void(^TyphoonInjectionsEnumerationBlock)(id injection, id*injectionToReplace, BOOL*stop);
 
@@ -42,7 +44,8 @@ typedef enum {
 
 - (void)addInjectedProperty:(id <TyphoonPropertyInjection>)property;
 
-
 - (void)addInjectedPropertyIfNotExists:(id <TyphoonPropertyInjection>)property;
+
+- (id)targetForInitializerWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args;
 
 @end

@@ -32,6 +32,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonPropertyInjection.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
 #import "TyphoonFactoryAutoInjectionPostProcessor.h"
+#import "TyphoonFactoryDefinition.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
@@ -59,16 +60,10 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (id)initializeInstanceWithDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
-    id instance = nil;
-
-    if (definition.factory) {
-        id factoryComponent = [self componentForKey:[(TyphoonDefinition *)definition.factory key]];
-        instance = [self resultOfInvocationInitializer:definition.initializer on:factoryComponent withArgs:args];
+    id instance = [definition targetForInitializerWithFactory:self args:args];
+    if (definition.initializer) {
+        instance = [self resultOfInvocationInitializer:definition.initializer on:instance withArgs:args];
     }
-    else {
-        instance = [self resultOfInvocationInitializer:definition.initializer on:definition.type withArgs:args];
-    }
-
     return instance;
 }
 

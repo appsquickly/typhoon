@@ -192,6 +192,25 @@ static TyphoonComponentFactory *defaultFactory;
     return [_registry copy];
 }
 
+- (void)enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace, BOOL *stop))block
+{
+    [self loadIfNeeded];
+
+    for (NSUInteger i = 0; i < [_registry count]; i++) {
+        TyphoonDefinition *definition = _registry[i];
+        TyphoonDefinition *definitionToReplace = nil;
+        BOOL stop = NO;
+        block(definition, i, &definitionToReplace, &stop);
+        if (definitionToReplace) {
+            _registry[i] = definitionToReplace;
+        }
+        if (stop) {
+            break;
+        }
+    }
+}
+
+
 - (void)attachPostProcessor:(id <TyphoonComponentFactoryPostProcessor>)postProcessor
 {
     LogTrace(@"Attaching post processor: %@", postProcessor);

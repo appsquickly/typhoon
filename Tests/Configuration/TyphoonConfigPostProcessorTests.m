@@ -44,9 +44,10 @@
 {
     TyphoonComponentFactory *factory = [[TyphoonComponentFactory alloc] init];
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    knightDefinition.initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithQuest:damselsRescued:)];
-    [knightDefinition.initializer injectParameterWith:nil];
-    [knightDefinition.initializer injectParameterWith:TyphoonConfig(@"damsels.rescued")];
+    [knightDefinition useInitializer:@selector(initWithQuest:damselsRescued:) parameters:^(TyphoonMethod *initializer) {
+        [initializer injectParameterWith:nil];
+        [initializer injectParameterWith:TyphoonConfig(@"damsels.rescued")];
+    }];
     [factory registerDefinition:knightDefinition];
 
     [_configurer postProcessComponentFactory:factory];
@@ -74,9 +75,10 @@
 {
     TyphoonComponentFactory *factory = [[TyphoonComponentFactory alloc] init];
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    knightDefinition.initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithQuest:damselsRescued:)];
-    [knightDefinition.initializer injectParameterWith:nil];
-    [knightDefinition.initializer injectParameterWith:TyphoonConfig(@"json.damsels_rescued")];
+    [knightDefinition useInitializer:@selector(initWithQuest:damselsRescued:) parameters:^(TyphoonMethod *initializer) {
+        [initializer injectParameterWith:nil];
+        [initializer injectParameterWith:TyphoonConfig(@"json.damsels_rescued")];
+    }];
     [knightDefinition injectProperty:@selector(hasHorseWillTravel) with:TyphoonConfig(@"json.hasHorseWillTravel")];
     [factory registerDefinition:knightDefinition];
 
@@ -91,9 +93,10 @@
 {
     TyphoonComponentFactory *factory = [[TyphoonComponentFactory alloc] init];
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    knightDefinition.initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithQuest:damselsRescued:)];
-    [knightDefinition.initializer injectParameterWith:nil];
-    [knightDefinition.initializer injectParameterWith:TyphoonConfig(@"plist.damsels")];
+    [knightDefinition useInitializer:@selector(initWithQuest:damselsRescued:) parameters:^(TyphoonMethod *initializer) {
+        [initializer injectParameterWith:nil];
+        [initializer injectParameterWith:TyphoonConfig(@"plist.damsels")];
+    }];
     [knightDefinition injectProperty:@selector(hasHorseWillTravel) with:TyphoonConfig(@"plist.hasHorse")];
     [factory registerDefinition:knightDefinition];
 
@@ -107,7 +110,7 @@
 - (void)test_config_as_runtime_argument
 {
     TyphoonTestAssemblyConfigPostProcessor *assembly = [[[TyphoonBlockComponentFactory alloc] initWithAssembly:[TyphoonTestAssemblyConfigPostProcessor assembly]] asAssembly];
-    [_configurer postProcessComponentFactory:assembly];
+    [_configurer postProcessComponentFactory:(id)assembly];
     Knight *knight = [assembly knight];
     XCTAssertEqualObjects(knight.quest.imageUrl, [NSURL URLWithString:@"http://google.com/"]);
 }

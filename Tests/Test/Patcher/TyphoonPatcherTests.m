@@ -108,7 +108,7 @@
         return mockKnight;
     }];
 
-    [_patcher patchDefinition:[assembly cavalryMan] withObject:^id {
+    [_patcher patchDefinitionWithSelector:@selector(cavalryMan) withObject:^id {
         CavalryMan *cavalryMan = mock([CavalryMan class]);
         [given ([cavalryMan favoriteDamsels]) willReturn:@[
             @"Leonid",
@@ -120,7 +120,7 @@
         return cavalryMan;
     }];
 
-    [_patcher patchDefinition:[assembly knightWithFoobar:nil] withObject:^id {
+    [_patcher patchDefinitionWithSelector:@selector(knightWithFoobar:) withObject:^id {
         Knight *knight = [Knight new];
         knight.foobar = @"Fooooo";
         return knight;

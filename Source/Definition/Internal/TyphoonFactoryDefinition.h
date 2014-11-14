@@ -11,6 +11,10 @@
 
 @property (nonatomic, strong) id classOrProtocolForAutoInjection;
 
-+ (id)withConfiguration:(void(^)(TyphoonFactoryDefinition *definition))injections;
+- (id)initWithFactory:(id)factory selector:(SEL)selector parameters:(void(^)(TyphoonMethod *method))params;
+
+- (void)useInitializer:(SEL)selector parameters:(void (^)(TyphoonMethod *initializer))parametersBlock __attribute((unavailable("Initializer of TyphoonFactoryDefinition cannot be changed")));
+
+- (void)useInitializer:(SEL)selector __attribute((unavailable("Initializer of TyphoonFactoryDefinition cannot be changed")));
 
 @end

@@ -40,9 +40,9 @@
 - (void)test_injects_required_initializer_dependencies
 {
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    TyphoonMethod *knightInitializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithQuest:)];
-    [knightInitializer injectParameterWith:TyphoonInjectionWithReference(@"quest")];
-    [knightDefinition setInitializer:knightInitializer];
+    [knightDefinition useInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
+        [initializer injectParameterWith:TyphoonInjectionWithReference(@"quest")];
+    }];
     [_componentFactory registerDefinition:knightDefinition];
 
     TyphoonDefinition *questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
@@ -56,10 +56,9 @@
 - (void)test_injects_required_initializer_dependencies_with_factory_method
 {
     TyphoonDefinition *urlDefinition = [[TyphoonDefinition alloc] initWithClass:[NSURL class] key:@"url"];
-    TyphoonMethod *initializer = [[TyphoonMethod alloc]
-        initWithSelector:@selector(URLWithString:)];
-    [initializer injectParameterWith:@"http://www.appsquick.ly"];
-    [urlDefinition setInitializer:initializer];
+    [urlDefinition useInitializer:@selector(URLWithString:) parameters:^(TyphoonMethod *initializer) {
+        [initializer injectParameterWith:@"http://www.appsquick.ly"];
+    }];
     [_componentFactory registerDefinition:urlDefinition];
 
     NSURL *url = [_componentFactory buildInstanceWithDefinition:urlDefinition args:nil];
@@ -69,11 +68,10 @@
 - (void)test_injects_initializer_value_as_long
 {
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    TyphoonMethod *initializer = [[TyphoonMethod alloc]
-        initWithSelector:@selector(initWithQuest:damselsRescued:)];
-    [initializer injectParameterWith:nil];
-    [initializer injectParameterWith:@(12)];
-    [knightDefinition setInitializer:initializer];
+    [knightDefinition useInitializer:@selector(initWithQuest:damselsRescued:) parameters:^(TyphoonMethod *initializer) {
+        [initializer injectParameterWith:nil];
+        [initializer injectParameterWith:@(12)];
+    }];
 
     [_componentFactory registerDefinition:knightDefinition];
 
@@ -84,16 +82,15 @@
 - (void)test_injects_initializer_value_as_collection
 {
     TyphoonDefinition *knightDefinition = [[TyphoonDefinition alloc] initWithClass:[Knight class] key:@"knight"];
-    TyphoonMethod *knightInitializer = [[TyphoonMethod alloc]
-        initWithSelector:@selector(initWithQuest:favoriteDamsels:)];
-    [knightInitializer injectParameterWith:TyphoonInjectionWithReference(@"quest")];
 
-    [knightInitializer injectParameterWith:@[
-        @"damsel1",
-        @"damsel2"
-    ]];
 
-    [knightDefinition setInitializer:knightInitializer];
+    [knightDefinition useInitializer:@selector(initWithQuest:favoriteDamsels:) parameters:^(TyphoonMethod *initializer) {
+        [initializer injectParameterWith:TyphoonInjectionWithReference(@"quest")];
+        [initializer injectParameterWith:@[
+                @"damsel1",
+                @"damsel2"
+        ]];
+    }];
 
     TyphoonDefinition *questDefinition = [[TyphoonDefinition alloc] initWithClass:[CampaignQuest class] key:@"quest"];
     [_componentFactory registerDefinition:questDefinition];
@@ -111,57 +108,55 @@
     primitiveStruct->fieldB = INT64_MAX;
     
     TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[PrimitiveMan class] key:@"primitive"];
-    TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithIntValue:
-        unsignedIntValue:
-        shortValue:
-        unsignedShortValue:
-        longValue:
-        unsignedLongValue:
-        longLongValue:
-        unsignedLongLongValue:
-        unsignedCharValue:
-        floatValue:
-        doubleValue:
-        boolValue:
-        integerValue:
-        unsignedIntegerValue:
-        classValue:
-        selectorValue:
-        cstring:
-        nsRange:
-        pointerValue:
-        unknownPointer:
-        pointerInsideValue:
-        unknownStructure:)];
-    [initializer injectParameterWith:@(INT_MAX)];
-    [initializer injectParameterWith:@(UINT_MAX)];
-    [initializer injectParameterWith:@(SHRT_MAX)];
-    [initializer injectParameterWith:@(USHRT_MAX)];
-    [initializer injectParameterWith:@(LONG_MAX)];
-    [initializer injectParameterWith:@(ULONG_MAX)];
-    [initializer injectParameterWith:@(LONG_LONG_MAX)];
-    [initializer injectParameterWith:@(ULONG_LONG_MAX)];
-    [initializer injectParameterWith:@(UCHAR_MAX)];
-    [initializer injectParameterWith:@(FLT_MAX)];
-    [initializer injectParameterWith:@(DBL_MAX)];
-    [initializer injectParameterWith:@YES];
-    [initializer injectParameterWith:@(NSIntegerMax)];
-    [initializer injectParameterWith:@(NSUIntegerMax)];
-    [initializer injectParameterWith:[self class]];
-    [initializer injectParameterWith:NSValueFromPrimitive(@selector(selectorValue))];
-     const char *cString = "Hello Typhoon";
-    [initializer injectParameterWith:NSValueFromPrimitive(cString)];
-    [initializer injectParameterWith:[NSValue valueWithRange:NSMakeRange(10, 20)]];
-    [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
-    [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
-    [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
-    PrimitiveManStruct structure;
-    structure.fieldA = 23;
-    structure.fieldB = INT64_MAX;
-    [initializer injectParameterWith:NSValueFromPrimitive(structure)];
-
-
-    [definition setInitializer:initializer];
+    [definition useInitializer:@selector(initWithIntValue:
+            unsignedIntValue:
+            shortValue:
+            unsignedShortValue:
+            longValue:
+            unsignedLongValue:
+            longLongValue:
+            unsignedLongLongValue:
+            unsignedCharValue:
+            floatValue:
+            doubleValue:
+            boolValue:
+            integerValue:
+            unsignedIntegerValue:
+            classValue:
+            selectorValue:
+            cstring:
+            nsRange:
+            pointerValue:
+            unknownPointer:
+            pointerInsideValue:
+            unknownStructure:) parameters:^(TyphoonMethod *initializer) {
+        [initializer injectParameterWith:@(INT_MAX)];
+        [initializer injectParameterWith:@(UINT_MAX)];
+        [initializer injectParameterWith:@(SHRT_MAX)];
+        [initializer injectParameterWith:@(USHRT_MAX)];
+        [initializer injectParameterWith:@(LONG_MAX)];
+        [initializer injectParameterWith:@(ULONG_MAX)];
+        [initializer injectParameterWith:@(LONG_LONG_MAX)];
+        [initializer injectParameterWith:@(ULONG_LONG_MAX)];
+        [initializer injectParameterWith:@(UCHAR_MAX)];
+        [initializer injectParameterWith:@(FLT_MAX)];
+        [initializer injectParameterWith:@(DBL_MAX)];
+        [initializer injectParameterWith:@YES];
+        [initializer injectParameterWith:@(NSIntegerMax)];
+        [initializer injectParameterWith:@(NSUIntegerMax)];
+        [initializer injectParameterWith:[self class]];
+        [initializer injectParameterWith:NSValueFromPrimitive(@selector(selectorValue))];
+        const char *cString = "Hello Typhoon";
+        [initializer injectParameterWith:NSValueFromPrimitive(cString)];
+        [initializer injectParameterWith:[NSValue valueWithRange:NSMakeRange(10, 20)]];
+        [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
+        [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
+        [initializer injectParameterWith:[NSValue valueWithPointer:primitiveStruct]];
+        PrimitiveManStruct structure;
+        structure.fieldA = 23;
+        structure.fieldB = INT64_MAX;
+        [initializer injectParameterWith:NSValueFromPrimitive(structure)];
+    }];
 
     [_componentFactory registerDefinition:definition];
     PrimitiveMan *primitiveMan = [_componentFactory componentForKey:@"primitive"];

@@ -59,16 +59,6 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 - (id)initWithClass:(Class)clazz key:(NSString *)key
 {
-    return [self initWithClass:clazz key:key factoryComponent:nil];
-}
-
-- (id)init
-{
-    return [self initWithClass:nil key:nil factoryComponent:nil];
-}
-
-- (id)initWithClass:(Class)clazz key:(NSString *)key factoryComponent:(NSString *)factoryComponent
-{
     self = [super init];
     if (self) {
         _type = clazz;
@@ -77,12 +67,14 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
         _key = [key copy];
         _scope = TyphoonScopeObjectGraph;
         self.autoInjectionVisibility = TyphoonAutoInjectVisibilityDefault;
-        if (factoryComponent) {
-            _factory = [TyphoonReferenceDefinition definitionReferringToComponent:factoryComponent];
-        }
         [self validateRequiredParametersAreSet];
     }
     return self;
+}
+
+- (id)init
+{
+    return [self initWithClass:nil key:nil];
 }
 
 - (BOOL)matchesAutoInjectionWithType:(id)classOrProtocol includeSubclasses:(BOOL)includeSubclasses

@@ -6,6 +6,7 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonOptionMatcher.h"
 
+@protocol TyphoonAutoInjectionConfig;
 typedef void(^TyphoonMatcherBlock)(TyphoonOptionMatcher *matcher);
 
 @interface TyphoonDefinition (Option)
@@ -16,7 +17,16 @@ typedef void(^TyphoonMatcherBlock)(TyphoonOptionMatcher *matcher);
 /** Returns definition matching 'option', specified in 'matcherBlock' */
 + (id)withOption:(id)option matcher:(TyphoonMatcherBlock)matcherBlock;
 
++ (id)withOption:(id)option matcher:(TyphoonMatcherBlock)matcherBlock autoInjectionConfig:(void(^)(id<TyphoonAutoInjectionConfig> config))configBlock;
+
 @end
 
+
+@protocol TyphoonAutoInjectionConfig<NSObject>
+
+@property (nonatomic, strong) id classOrProtocolForAutoInjection;
+@property (nonatomic) TyphoonAutoInjectVisibility autoInjectionVisibility;
+
+@end
 
 
