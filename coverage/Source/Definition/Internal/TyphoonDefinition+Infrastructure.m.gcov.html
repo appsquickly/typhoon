@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">42</td>
-            <td class="headerCovTableEntry">58</td>
-            <td class="headerCovTableEntryLo">72.4 %</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">52</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-09 10:54:33</td>
+            <td class="headerValue">2014-11-14 22:42:06</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -87,10 +87,10 @@
 <span class="lineNum">      29 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">      30 </span>            : #pragma mark - Class Methods
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">         13 : + (instancetype)withClass:(Class)clazz key:(NSString *)key</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 : + (instancetype)withClass:(Class)clazz key:(NSString *)key</span>
 <span class="lineNum">      33 </span>            : {
-<span class="lineNum">      34 </span><span class="lineCov">         13 :     return [[TyphoonDefinition alloc] initWithClass:clazz key:key];</span>
-<span class="lineNum">      35 </span><span class="lineCov">         13 : }</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :     return [[TyphoonDefinition alloc] initWithClass:clazz key:key];</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span><span class="lineNoCov">          0 : + (instancetype)configDefinitionWithName:(NSString *)fileName</span>
 <span class="lineNum">      38 </span>            : {
@@ -115,65 +115,57 @@
 <span class="lineNum">      57 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">      58 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span><span class="lineCov">       3380 : - (id)initWithClass:(Class)clazz key:(NSString *)key</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 : - (id)initWithClass:(Class)clazz key:(NSString *)key</span>
 <span class="lineNum">      61 </span>            : {
-<span class="lineNum">      62 </span><span class="lineCov">       3380 :     return [self initWithClass:clazz key:key factoryComponent:nil];</span>
-<span class="lineNum">      63 </span><span class="lineCov">       3380 : }</span>
-<span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span>            : - (id)init
-<span class="lineNum">      66 </span>            : {
-<span class="lineNum">      67 </span><span class="lineCov">          1 :     return [self initWithClass:nil key:nil factoryComponent:nil];</span>
-<span class="lineNum">      68 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">      69 </span>            : 
-<span class="lineNum">      70 </span><span class="lineCov">       3537 : - (id)initWithClass:(Class)clazz key:(NSString *)key factoryComponent:(NSString *)factoryComponent</span>
-<span class="lineNum">      71 </span>            : {
-<span class="lineNum">      72 </span><span class="lineCov">       3537 :     self = [super init];</span>
-<span class="lineNum">      73 </span><span class="lineCov">       3537 :     if (self) {</span>
-<span class="lineNum">      74 </span><span class="lineCov">       3537 :         _type = clazz;</span>
-<span class="lineNum">      75 </span><span class="lineCov">       3537 :         _injectedProperties = [[NSMutableSet alloc] init];</span>
-<span class="lineNum">      76 </span><span class="lineCov">       3537 :         _injectedMethods = [[NSMutableSet alloc] init];</span>
-<span class="lineNum">      77 </span><span class="lineCov">       3537 :         _key = [key copy];</span>
-<span class="lineNum">      78 </span><span class="lineCov">       3537 :         _scope = TyphoonScopeObjectGraph;</span>
-<span class="lineNum">      79 </span><span class="lineCov">       3537 :         self.autoInjectionVisibility = TyphoonAutoInjectVisibilityDefault;</span>
-<span class="lineNum">      80 </span><span class="lineCov">       3537 :         if (factoryComponent) {</span>
-<span class="lineNum">      81 </span><span class="lineCov">          5 :             _factory = [TyphoonReferenceDefinition definitionReferringToComponent:factoryComponent];</span>
-<span class="lineNum">      82 </span><span class="lineCov">          5 :         }</span>
-<span class="lineNum">      83 </span><span class="lineCov">       3537 :         [self validateRequiredParametersAreSet];</span>
-<span class="lineNum">      84 </span><span class="lineCov">       3537 :     }</span>
-<span class="lineNum">      85 </span><span class="lineCov">       3535 :     return self;</span>
-<span class="lineNum">      86 </span><span class="lineCov">       3535 : }</span>
-<span class="lineNum">      87 </span>            : 
-<span class="lineNum">      88 </span><span class="lineCov">        170 : - (BOOL)matchesAutoInjectionWithType:(id)classOrProtocol includeSubclasses:(BOOL)includeSubclasses</span>
-<span class="lineNum">      89 </span>            : {
-<span class="lineNum">      90 </span><span class="lineCov">        170 :     BOOL result = NO;</span>
-<span class="lineNum">      91 </span>            : 
-<span class="lineNum">      92 </span><span class="lineCov">        170 :     BOOL isClass = IsClass(classOrProtocol);</span>
-<span class="lineNum">      93 </span><span class="lineCov">        170 :     BOOL isProtocol = IsProtocol(classOrProtocol);</span>
-<span class="lineNum">      94 </span>            : 
-<span class="lineNum">      95 </span><span class="lineCov">        311 :     if (isClass &amp;&amp; self.autoInjectionVisibility &amp; TyphoonAutoInjectVisibilityByClass) {</span>
-<span class="lineNum">      96 </span><span class="lineCov">        141 :         BOOL isSameClass = self.type == classOrProtocol;</span>
-<span class="lineNum">      97 </span><span class="lineCov">        262 :         BOOL isSubclass = includeSubclasses &amp;&amp; [self.type isSubclassOfClass:classOrProtocol];</span>
-<span class="lineNum">      98 </span><span class="lineCov">        392 :         result = isSameClass || isSubclass;</span>
-<span class="lineNum">      99 </span><span class="lineCov">        141 :     }</span>
-<span class="lineNum">     100 </span><span class="lineCov">         58 :     else if (isProtocol &amp;&amp; self.autoInjectionVisibility &amp; TyphoonAutoInjectVisibilityByProtocol) {</span>
-<span class="lineNum">     101 </span><span class="lineCov">         29 :         result = [self.type conformsToProtocol:classOrProtocol];</span>
-<span class="lineNum">     102 </span><span class="lineCov">         29 :     }</span>
-<span class="lineNum">     103 </span>            : 
-<span class="lineNum">     104 </span><span class="lineCov">        170 :     return result;</span>
-<span class="lineNum">     105 </span><span class="lineCov">        170 : }</span>
-<span class="lineNum">     106 </span>            : 
-<span class="lineNum">     107 </span>            : 
-<span class="lineNum">     108 </span>            : //-------------------------------------------------------------------------------------------
-<span class="lineNum">     109 </span>            : #pragma mark - Private Methods
-<span class="lineNum">     110 </span>            : 
-<span class="lineNum">     111 </span>            : - (void)validateRequiredParametersAreSet
-<span class="lineNum">     112 </span>            : {
-<span class="lineNum">     113 </span><span class="lineCov">       3537 :     if (_type == nil) {</span>
-<span class="lineNum">     114 </span><span class="lineCov">          2 :         [NSException raise:NSInvalidArgumentException format:@&quot;Property 'clazz' is required.&quot;];</span>
-<span class="lineNum">     115 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">     116 </span><span class="lineCov">       3535 : }</span>
-<span class="lineNum">     117 </span>            : 
-<span class="lineNum">     118 </span>            : @end
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :     self = [super init];</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 :     if (self) {</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 :         _type = clazz;</span>
+<span class="lineNum">      65 </span><span class="lineNoCov">          0 :         _injectedProperties = [[NSMutableSet alloc] init];</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :         _injectedMethods = [[NSMutableSet alloc] init];</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 :         _key = [key copy];</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :         _scope = TyphoonScopeObjectGraph;</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :         self.autoInjectionVisibility = TyphoonAutoInjectVisibilityDefault;</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :         [self validateRequiredParametersAreSet];</span>
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      74 </span>            : 
+<span class="lineNum">      75 </span>            : - (id)init
+<span class="lineNum">      76 </span>            : {
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 :     return [self initWithClass:nil key:nil];</span>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      79 </span>            : 
+<span class="lineNum">      80 </span><span class="lineNoCov">          0 : - (BOOL)matchesAutoInjectionWithType:(id)classOrProtocol includeSubclasses:(BOOL)includeSubclasses</span>
+<span class="lineNum">      81 </span>            : {
+<span class="lineNum">      82 </span><span class="lineNoCov">          0 :     BOOL result = NO;</span>
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 :     BOOL isClass = IsClass(classOrProtocol);</span>
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 :     BOOL isProtocol = IsProtocol(classOrProtocol);</span>
+<span class="lineNum">      86 </span>            : 
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 :     if (isClass &amp;&amp; self.autoInjectionVisibility &amp; TyphoonAutoInjectVisibilityByClass) {</span>
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 :         BOOL isSameClass = self.type == classOrProtocol;</span>
+<span class="lineNum">      89 </span><span class="lineNoCov">          0 :         BOOL isSubclass = includeSubclasses &amp;&amp; [self.type isSubclassOfClass:classOrProtocol];</span>
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :         result = isSameClass || isSubclass;</span>
+<span class="lineNum">      91 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :     else if (isProtocol &amp;&amp; self.autoInjectionVisibility &amp; TyphoonAutoInjectVisibilityByProtocol) {</span>
+<span class="lineNum">      93 </span><span class="lineNoCov">          0 :         result = [self.type conformsToProtocol:classOrProtocol];</span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      95 </span>            : 
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :     return result;</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      98 </span>            : 
+<span class="lineNum">      99 </span>            : 
+<span class="lineNum">     100 </span>            : //-------------------------------------------------------------------------------------------
+<span class="lineNum">     101 </span>            : #pragma mark - Private Methods
+<span class="lineNum">     102 </span>            : 
+<span class="lineNum">     103 </span>            : - (void)validateRequiredParametersAreSet
+<span class="lineNum">     104 </span>            : {
+<span class="lineNum">     105 </span><span class="lineNoCov">          0 :     if (_type == nil) {</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Property 'clazz' is required.&quot;];</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span>            : @end
 </pre>
       </td>
     </tr>

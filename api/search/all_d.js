@@ -1,17 +1,17 @@
 var searchData=
 [
-  ['parameterindex',['parameterIndex',['../interface_typhoon_abstract_injection.html#aa0035185544e056579c9ef2bd18b08fa',1,'TyphoonAbstractInjection::parameterIndex()'],['../protocol_typhoon_parameter_injection-p.html#ae773f1151fc5b4fc33d70714db2be423',1,'TyphoonParameterInjection-p::parameterIndex()']]],
-  ['parent',['parent',['../interface_typhoon_definition.html#add76507109b2465e672b7472c408fa05',1,'TyphoonDefinition']]],
-  ['patchdefinition_3awithobject_3a',['patchDefinition:withObject:',['../interface_typhoon_patcher.html#a958a23e25a16c2a9d8abfbab1cab0786',1,'TyphoonPatcher']]],
-  ['patchdefinitionwithkey_3awithobject_3a',['patchDefinitionWithKey:withObject:',['../interface_typhoon_patcher.html#a81cd00d79350a44cc9aa10794377e94c',1,'TyphoonPatcher']]],
-  ['patchdefinitionwithselector_3awithobject_3a',['patchDefinitionWithSelector:withObject:',['../interface_typhoon_patcher.html#a439c7ffa79249ea5464584791186b7e7',1,'TyphoonPatcher']]],
-  ['patchobject',['patchObject',['../interface_typhoon_patch_object_factory.html#a93f80e3e93038ac2ee934513fc880a23',1,'TyphoonPatchObjectFactory']]],
-  ['postprocesscomponentfactory_3a',['postProcessComponentFactory:',['../protocol_typhoon_component_factory_post_processor-p.html#ab64811c01a873e3a727f017543b29223',1,'TyphoonComponentFactoryPostProcessor-p']]],
-  ['postprocessor',['postProcessor',['../interface_typhoon_config_post_processor.html#ac342615e85b44734a1954dbe02d1ba76',1,'TyphoonConfigPostProcessor']]],
-  ['primitivetype',['primitiveType',['../interface_typhoon_type_descriptor.html#aa79452cdaecc4ee661930c7c3e59888b',1,'TyphoonTypeDescriptor']]],
-  ['primitivetypeconverter',['primitiveTypeConverter',['../interface_typhoon_type_converter_registry.html#aa1ff494eddffb2c89e139911aaaaa24a',1,'TyphoonTypeConverterRegistry']]],
-  ['propertiesforclass_3auptoparentclass_3a',['propertiesForClass:upToParentClass:',['../interface_typhoon_introspection_utils.html#a32614ce91e195e021e2517c68b8aeb71',1,'TyphoonIntrospectionUtils']]],
-  ['property_3a',['property:',['../interface_typhoon_definition.html#addb9006c665061a41e8cad2db77ad9b1',1,'TyphoonDefinition']]],
-  ['propertyname',['propertyName',['../interface_typhoon_abstract_injection.html#a3ff2ed4760b12b6b24971d591a5b49a9',1,'TyphoonAbstractInjection::propertyName()'],['../protocol_typhoon_property_injection-p.html#ae9f98c0e8d1542ae0107fb7be1010c14',1,'TyphoonPropertyInjection-p::propertyName()']]],
-  ['protocol',['protocol',['../interface_typhoon_type_descriptor.html#afaa27415dcb9f128aa557fee5bdd5847',1,'TyphoonTypeDescriptor']]]
+  ['raiseexceptionifcircular',['raiseExceptionIfCircular',['../interface_typhoon_injection_context.html#a19be259ff91bfc8848876681c9e89d75',1,'TyphoonInjectionContext']]],
+  ['reference',['reference',['../interface_typhoon_injection_by_reference.html#af357524b98df89bc6264516725ad3870',1,'TyphoonInjectionByReference']]],
+  ['referencearguments',['referenceArguments',['../interface_typhoon_injection_by_reference.html#ac324803fcf4cabd56f0f0fed6e3f1ba2',1,'TyphoonInjectionByReference']]],
+  ['registerconfigurationclass_3aforextension_3a',['registerConfigurationClass:forExtension:',['../interface_typhoon_config_post_processor.html#acd33308b4cdc7e91059b8698a9594e19',1,'TyphoonConfigPostProcessor']]],
+  ['registerdefinition_3a',['registerDefinition:',['../interface_typhoon_component_factory.html#ae4569eb6aebca4089de316d2b80d34d1',1,'TyphoonComponentFactory']]],
+  ['registertypeconverter_3a',['registerTypeConverter:',['../interface_typhoon_type_converter_registry.html#a4804a1dd2edb02cc8a657ea5388894cb',1,'TyphoonTypeConverterRegistry']]],
+  ['registry',['registry',['../interface_typhoon_component_factory.html#afa734936e2f650ba86b731ec67cd7ce9',1,'TyphoonComponentFactory']]],
+  ['removeallobjects',['removeAllObjects',['../protocol_typhoon_components_pool-p.html#a464b845d53cc2d9f6d3d42bb60d5e414',1,'TyphoonComponentsPool-p']]],
+  ['removedeallocnotification',['removeDeallocNotification',['../category_n_s_object_07_dealloc_notification_08.html#a64bdfa3f8693f43ff58eaa93117b5681',1,'NSObject(DeallocNotification)']]],
+  ['removedeallocnotificationforkey_3a',['removeDeallocNotificationForKey:',['../category_n_s_object_07_dealloc_notification_08.html#a9ad725b832ca62d032d2fd218916223f',1,'NSObject(DeallocNotification)']]],
+  ['resolvecirculardependencywithcontext_3ablock_3a',['resolveCircularDependencyWithContext:block:',['../interface_typhoon_injection_by_reference.html#aca8eccaa02a62ea9d8d2f2b170e98cb8',1,'TyphoonInjectionByReference']]],
+  ['resolvenibnameforclass_3a',['resolveNibNameForClass:',['../interface_typhoon_view_controller_nib_resolver.html#af4194a42c7e6483d5a084e1171a0843e',1,'TyphoonViewControllerNibResolver']]],
+  ['resolvereferencewithcontext_3a',['resolveReferenceWithContext:',['../interface_typhoon_injection_by_reference.html#a287d372e0c57b33e5054bde9f8c7b4f9',1,'TyphoonInjectionByReference']]],
+  ['runtimeargumentindex',['runtimeArgumentIndex',['../interface_typhoon_injection_by_runtime_argument.html#aabdbebbc4a565a4a9d86b975dc0d8e10',1,'TyphoonInjectionByRuntimeArgument']]]
 ];

@@ -5,7 +5,6 @@ var searchData=
   ['advisednameforname_3a',['advisedNameForName:',['../interface_typhoon_assembly_selector_adviser.html#a7ac8464b58fd2bcdef0249107e921551',1,'TyphoonAssemblySelectorAdviser']]],
   ['advisedselforkey_3a',['advisedSELForKey:',['../interface_typhoon_assembly_selector_adviser.html#a3ede39fd2e0f284444e65db3589a63d0',1,'TyphoonAssemblySelectorAdviser']]],
   ['advisedselforsel_3a',['advisedSELForSEL:',['../interface_typhoon_assembly_selector_adviser.html#a4e446ce199146df21c1b292b04856e29',1,'TyphoonAssemblySelectorAdviser']]],
-  ['afterinjections',['afterInjections',['../interface_typhoon_definition.html#a840cfc1303083ede4b0574c1e2ee7fb1',1,'TyphoonDefinition']]],
   ['allcomponentsfortype_3a',['allComponentsForType:',['../interface_typhoon_component_factory.html#aed7d338f12814ee5e235cbc605203b89',1,'TyphoonComponentFactory']]],
   ['allvalues',['allValues',['../protocol_typhoon_components_pool-p.html#a32d9bab32dbac6a3667c5b2880ca7c5c',1,'TyphoonComponentsPool-p']]],
   ['args',['args',['../interface_typhoon_injection_context.html#a681a05c5153c889d6651ac43ccf15f4e',1,'TyphoonInjectionContext']]],
@@ -18,6 +17,6 @@ var searchData=
   ['assembly',['assembly',['../interface_typhoon_assembly.html#af53fcd1ea8b4e55dda2080a651814c6c',1,'TyphoonAssembly']]],
   ['asstringwithencoding_3a',['asStringWithEncoding:',['../protocol_typhoon_resource-p.html#afed07d1fc2e7fb11a2db3073dd53ddd7',1,'TyphoonResource-p']]],
   ['attachpostprocessor_3a',['attachPostProcessor:',['../interface_typhoon_component_factory.html#a0727001458325fd7d09b6df2e1252180',1,'TyphoonComponentFactory']]],
-  ['autoinjectionvisibility',['autoInjectionVisibility',['../interface_typhoon_definition.html#a7b651ab85991ef1d9641ef5cd1f67187',1,'TyphoonDefinition']]],
+  ['autoinjectionvisibility',['autoInjectionVisibility',['../protocol_typhoon_auto_injection_config-p.html#a9a8d0f25081dfff997f97ba15e0e8bc9',1,'TyphoonAutoInjectionConfig-p::autoInjectionVisibility()'],['../interface_typhoon_definition.html#a7b651ab85991ef1d9641ef5cd1f67187',1,'TyphoonDefinition::autoInjectionVisibility()']]],
   ['availableextensions',['availableExtensions',['../interface_typhoon_config_post_processor.html#a57eacc037c000e78f67f31d6884964bd',1,'TyphoonConfigPostProcessor']]]
 ];

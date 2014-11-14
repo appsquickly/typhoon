@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">22</td>
-            <td class="headerCovTableEntry">22</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-09 10:54:33</td>
+            <td class="headerValue">2014-11-14 22:42:06</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -73,39 +73,39 @@
 <span class="lineNum">      15 </span>            : 
 <span class="lineNum">      16 </span>            : @implementation TyphoonTestUtils
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">          1 : + (void)waitForCondition:(BOOL (^)())condition</span>
+<span class="lineNum">      18 </span><span class="lineNoCov">          0 : + (void)waitForCondition:(BOOL (^)())condition</span>
 <span class="lineNum">      19 </span>            : {
-<span class="lineNum">      20 </span><span class="lineCov">          2 :     [self waitForCondition:condition andPerformTests:^{</span>
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 :     [self waitForCondition:condition andPerformTests:^{</span>
 <span class="lineNum">      21 </span>            :         //No assertions - wait for condition only.
-<span class="lineNum">      22 </span><span class="lineCov">          1 :     }];</span>
-<span class="lineNum">      23 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span><span class="lineCov">          1 : + (void)waitForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : + (void)waitForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions</span>
 <span class="lineNum">      26 </span>            : {
-<span class="lineNum">      27 </span><span class="lineCov">          1 :     [self wait:7 secondsForCondition:condition andPerformTests:assertions];</span>
-<span class="lineNum">      28 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 :     [self wait:7 secondsForCondition:condition andPerformTests:assertions];</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span><span class="lineCov">          2 : + (void)wait:(NSTimeInterval)seconds secondsForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 : + (void)wait:(NSTimeInterval)seconds secondsForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions</span>
 <span class="lineNum">      31 </span>            : {
-<span class="lineNum">      32 </span><span class="lineCov">          2 :     __block BOOL conditionMet = NO;</span>
-<span class="lineNum">      33 </span><span class="lineCov">         10 :     for (float i = 0; i &lt; seconds * 4; i = i + 0.25) {</span>
-<span class="lineNum">      34 </span><span class="lineCov">          9 :         conditionMet = condition();</span>
-<span class="lineNum">      35 </span><span class="lineCov">          4 :         if (conditionMet) {</span>
-<span class="lineNum">      36 </span><span class="lineCov">          1 :             break;</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :     __block BOOL conditionMet = NO;</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     for (float i = 0; i &lt; seconds * 4; i = i + 0.25) {</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :         conditionMet = condition();</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :         if (conditionMet) {</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :             break;</span>
 <span class="lineNum">      37 </span>            :         }
 <span class="lineNum">      38 </span>            :         else {
-<span class="lineNum">      39 </span><span class="lineCov">         12 :             [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.25]];</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :             [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.25]];</span>
 <span class="lineNum">      40 </span>            :         }
-<span class="lineNum">      41 </span><span class="lineCov">          3 :     }</span>
-<span class="lineNum">      42 </span><span class="lineCov">          2 :     if (conditionMet) {</span>
-<span class="lineNum">      43 </span><span class="lineCov">          1 :         if (assertions) {</span>
-<span class="lineNum">      44 </span><span class="lineCov">          1 :             assertions();</span>
-<span class="lineNum">      45 </span><span class="lineCov">          1 :         }</span>
-<span class="lineNum">      46 </span><span class="lineCov">          1 :     }</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     if (conditionMet) {</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :         if (assertions) {</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :             assertions();</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      47 </span>            :     else {
-<span class="lineNum">      48 </span><span class="lineCov">          1 :         [NSException raise:NSGenericException format:@&quot;Condition didn't happen before timeout: %f&quot;, seconds];</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :         [NSException raise:NSGenericException format:@&quot;Condition didn't happen before timeout: %f&quot;, seconds];</span>
 <span class="lineNum">      49 </span>            :     }
-<span class="lineNum">      50 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      50 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      51 </span>            : 
 <span class="lineNum">      52 </span>            : 
 <span class="lineNum">      53 </span>            : @end

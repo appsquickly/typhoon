@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">30</td>
-            <td class="headerCovTableEntryMed">80.0 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-09 10:54:33</td>
+            <td class="headerValue">2014-11-14 22:42:06</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -82,29 +82,29 @@
 <span class="lineNum">      24 </span>            :     
 <span class="lineNum">      25 </span>            : }
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">          3 : + (TyphoonSelector *)selectorWithName:(NSString *)aName</span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 : + (TyphoonSelector *)selectorWithName:(NSString *)aName</span>
 <span class="lineNum">      28 </span>            : {
-<span class="lineNum">      29 </span><span class="lineCov">          3 :     return [[self alloc] initWithName:aName];</span>
-<span class="lineNum">      30 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :     return [[self alloc] initWithName:aName];</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">       5886 : + (TyphoonSelector *)selectorWithSEL:(SEL)aSelector</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 : + (TyphoonSelector *)selectorWithSEL:(SEL)aSelector</span>
 <span class="lineNum">      33 </span>            : {
-<span class="lineNum">      34 </span><span class="lineCov">       5886 :     return [[self alloc] initWithSEL:aSelector];</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :     return [[self alloc] initWithSEL:aSelector];</span>
 <span class="lineNum">      35 </span>            : }
 <span class="lineNum">      36 </span>            : 
-<span class="lineNum">      37 </span><span class="lineCov">          3 : - (id)initWithName:(NSString *)aName</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : - (id)initWithName:(NSString *)aName</span>
 <span class="lineNum">      38 </span>            : {
-<span class="lineNum">      39 </span><span class="lineCov">          3 :     return [self initWithSEL:NSSelectorFromString(aName)];</span>
-<span class="lineNum">      40 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     return [self initWithSEL:NSSelectorFromString(aName)];</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span><span class="lineCov">       5889 : - (id)initWithSEL:(SEL)aSelector</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 : - (id)initWithSEL:(SEL)aSelector</span>
 <span class="lineNum">      43 </span>            : {
-<span class="lineNum">      44 </span><span class="lineCov">       5889 :     self = [super init];</span>
-<span class="lineNum">      45 </span><span class="lineCov">       5889 :     if (self) {</span>
-<span class="lineNum">      46 </span><span class="lineCov">       5889 :         _selector = aSelector;</span>
-<span class="lineNum">      47 </span><span class="lineCov">       5889 :     }</span>
-<span class="lineNum">      48 </span><span class="lineCov">       5889 :     return self;</span>
-<span class="lineNum">      49 </span><span class="lineCov">       5889 : }</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     self = [super init];</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :     if (self) {</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :         _selector = aSelector;</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      48 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      50 </span>            : 
 <span class="lineNum">      51 </span>            : - (NSString *)description
 <span class="lineNum">      52 </span>            : {
@@ -116,25 +116,25 @@
 <span class="lineNum">      58 </span>            : 
 <span class="lineNum">      59 </span>            : - (NSUInteger)hash
 <span class="lineNum">      60 </span>            : {
-<span class="lineNum">      61 </span><span class="lineCov">      24674 :     return (NSUInteger) sel_getName(self.selector);</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :     return (NSUInteger) sel_getName(self.selector);</span>
 <span class="lineNum">      62 </span>            : }
 <span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span><span class="lineCov">      32847 : - (BOOL)isEqual:(id)other</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 : - (BOOL)isEqual:(id)other</span>
 <span class="lineNum">      65 </span>            : {
-<span class="lineNum">      66 </span><span class="lineCov">      32847 :     if (other == self) {</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     if (other == self) {</span>
 <span class="lineNum">      67 </span><span class="lineNoCov">          0 :         return YES;</span>
 <span class="lineNum">      68 </span>            :     }
-<span class="lineNum">      69 </span><span class="lineCov">      65694 :     if (!other || [other class] != [self class]) {</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :     if (!other || [other class] != [self class]) {</span>
 <span class="lineNum">      70 </span><span class="lineNoCov">          0 :         return NO;</span>
 <span class="lineNum">      71 </span>            :     }
 <span class="lineNum">      72 </span>            : 
-<span class="lineNum">      73 </span><span class="lineCov">      32847 :     return [self isEqualToSelector:(TyphoonSelector *) other];</span>
-<span class="lineNum">      74 </span><span class="lineCov">      32847 : }</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :     return [self isEqualToSelector:(TyphoonSelector *) other];</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      75 </span>            : 
-<span class="lineNum">      76 </span><span class="lineCov">      32847 : - (BOOL)isEqualToSelector:(TyphoonSelector *)wrappedSelector</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 : - (BOOL)isEqualToSelector:(TyphoonSelector *)wrappedSelector</span>
 <span class="lineNum">      77 </span>            : {
-<span class="lineNum">      78 </span><span class="lineCov">      32847 :     return sel_isEqual(self.selector, wrappedSelector.selector);</span>
-<span class="lineNum">      79 </span><span class="lineCov">      32847 : }</span>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 :     return sel_isEqual(self.selector, wrappedSelector.selector);</span>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      80 </span>            : 
 <span class="lineNum">      81 </span>            : 
 <span class="lineNum">      82 </span>            : @end

@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['factory',['factory',['../interface_typhoon_matcher_definition_factory.html#a3d7b33c289388535eefc5178cef15f39',1,'TyphoonMatcherDefinitionFactory::factory()'],['../interface_typhoon_injection_context.html#a52059e5816d7a85b5fc2a78f33013e11',1,'TyphoonInjectionContext::factory()'],['../interface_typhoon_definition.html#aa15fa133879051cd95d39acb8ca5d94f',1,'TyphoonDefinition::factory()']]],
-  ['factorypostprocessors',['factoryPostProcessors',['../interface_typhoon_component_factory.html#a8eec64c832482a1e025b80d2cd16a5f3',1,'TyphoonComponentFactory']]]
+  ['isarray',['isArray',['../interface_typhoon_type_descriptor.html#a17e596f33f0323231b6c9eb9ca2557a5',1,'TyphoonTypeDescriptor']]],
+  ['ispointer',['isPointer',['../interface_typhoon_type_descriptor.html#af0011058e7419f08e5b5f7a31ade73a6',1,'TyphoonTypeDescriptor']]],
+  ['isprimitive',['isPrimitive',['../interface_typhoon_type_descriptor.html#a5c4c715509a688c5e64c01acccf029e6',1,'TyphoonTypeDescriptor']]],
+  ['isstructure',['isStructure',['../interface_typhoon_type_descriptor.html#a6b5f778f69a59dc8c2028bcb2be59aca',1,'TyphoonTypeDescriptor']]]
 ];

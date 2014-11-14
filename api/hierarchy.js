@@ -42,12 +42,10 @@ var hierarchy =
       [ "TyphoonInjectedObject", "interface_typhoon_injected_object.html", null ],
       [ "TyphoonInjectionContext", "interface_typhoon_injection_context.html", null ],
       [ "TyphoonIntrospectionUtils", "interface_typhoon_introspection_utils.html", null ],
-      [ "TyphoonMatcherDefinitionFactory", "interface_typhoon_matcher_definition_factory.html", null ],
       [ "TyphoonMethod", "interface_typhoon_method.html", null ],
       [ "TyphoonNSURLTypeConverter", "interface_typhoon_n_s_u_r_l_type_converter.html", null ],
       [ "TyphoonOptionMatcher", "interface_typhoon_option_matcher.html", null ],
       [ "TyphoonPassThroughTypeConverter", "interface_typhoon_pass_through_type_converter.html", null ],
-      [ "TyphoonPatchObjectFactory", "interface_typhoon_patch_object_factory.html", null ],
       [ "TyphoonPrimitiveTypeConverter", "interface_typhoon_primitive_type_converter.html", null ],
       [ "TyphoonRuntimeArguments", "interface_typhoon_runtime_arguments.html", null ],
       [ "TyphoonTestUtils", "interface_typhoon_test_utils.html", null ],
@@ -62,6 +60,7 @@ var hierarchy =
     [ "NSObject(PropertyInjection)", "category_n_s_object_07_property_injection_08.html", null ],
     [ "NSObject(TyphoonIntrospectionUtils)", "category_n_s_object_07_typhoon_introspection_utils_08.html", null ],
     [ "<NSObject>", null, [
+      [ "<TyphoonAutoInjectionConfig>", "protocol_typhoon_auto_injection_config-p.html", null ],
       [ "<TyphoonCollection>", "protocol_typhoon_collection-p.html", null ],
       [ "<TyphoonComponentFactoryPostProcessor>", "protocol_typhoon_component_factory_post_processor-p.html", [
         [ "TyphoonConfigPostProcessor", "interface_typhoon_config_post_processor.html", null ],
@@ -86,6 +85,7 @@ var hierarchy =
       [ "TyphoonPatcher", "interface_typhoon_patcher.html", null ]
     ] ],
     [ "TyphoonAbstractInjection(Protected)", "category_typhoon_abstract_injection_07_protected_08.html", null ],
+    [ "TyphoonDefinition(Deprecated)", "category_typhoon_definition_07_deprecated_08.html", null ],
     [ "TyphoonDefinition(Option)", "category_typhoon_definition_07_option_08.html", null ],
     [ "TyphoonFactoryPropertyInjectionPostProcessor", null, [
       [ "TyphoonAssemblyPropertyInjectionPostProcessor", "interface_typhoon_assembly_property_injection_post_processor.html", null ]

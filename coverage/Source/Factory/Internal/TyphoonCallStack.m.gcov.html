@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">27</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">32</td>
-            <td class="headerCovTableEntryMed">84.4 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-09 10:54:33</td>
+            <td class="headerValue">2014-11-14 22:42:06</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -72,7 +72,7 @@
 <span class="lineNum">      14 </span>            : #import &quot;TyphoonStackElement.h&quot;
 <span class="lineNum">      15 </span>            : #import &quot;TyphoonRuntimeArguments.h&quot;
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span><span class="lineCov">         14 : @implementation TyphoonCallStack</span>
+<span class="lineNum">      17 </span><span class="lineNoCov">          0 : @implementation TyphoonCallStack</span>
 <span class="lineNum">      18 </span>            : {
 <span class="lineNum">      19 </span>            :     NSMutableArray *_storage;
 <span class="lineNum">      20 </span>            : }
@@ -83,7 +83,7 @@
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : + (instancetype)stack
 <span class="lineNum">      27 </span>            : {
-<span class="lineNum">      28 </span><span class="lineCov">        242 :     return [[self alloc] init];</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     return [[self alloc] init];</span>
 <span class="lineNum">      29 </span>            : }
 <span class="lineNum">      30 </span>            : 
 <span class="lineNum">      31 </span>            : //-------------------------------------------------------------------------------------------
@@ -91,49 +91,49 @@
 <span class="lineNum">      33 </span>            : 
 <span class="lineNum">      34 </span>            : - (id)init
 <span class="lineNum">      35 </span>            : {
-<span class="lineNum">      36 </span><span class="lineCov">        242 :     self = [super init];</span>
-<span class="lineNum">      37 </span><span class="lineCov">        242 :     if (self) {</span>
-<span class="lineNum">      38 </span><span class="lineCov">        242 :         _storage = [NSMutableArray array];</span>
-<span class="lineNum">      39 </span><span class="lineCov">        242 :     }</span>
-<span class="lineNum">      40 </span><span class="lineCov">        242 :     return self;</span>
-<span class="lineNum">      41 </span><span class="lineCov">        242 : }</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :     self = [super init];</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :     if (self) {</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :         _storage = [NSMutableArray array];</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      42 </span>            : 
 <span class="lineNum">      43 </span>            : 
 <span class="lineNum">      44 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">      45 </span>            : #pragma mark - Interface Methods
 <span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span><span class="lineCov">        459 : - (void)push:(TyphoonStackElement *)stackItem</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : - (void)push:(TyphoonStackElement *)stackItem</span>
 <span class="lineNum">      48 </span>            : {
-<span class="lineNum">      49 </span><span class="lineCov">        459 :     if (![stackItem isKindOfClass:[TyphoonStackElement class]]) {</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     if (![stackItem isKindOfClass:[TyphoonStackElement class]]) {</span>
 <span class="lineNum">      50 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Not a TyphoonStackItem: %@&quot;, stackItem];</span>
 <span class="lineNum">      51 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      52 </span><span class="lineCov">        459 :     [_storage addObject:stackItem];</span>
-<span class="lineNum">      53 </span><span class="lineCov">        459 : }</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :     [_storage addObject:stackItem];</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      54 </span>            : 
 <span class="lineNum">      55 </span>            : - (TyphoonStackElement *)pop
 <span class="lineNum">      56 </span>            : {
-<span class="lineNum">      57 </span><span class="lineCov">        449 :     id element = [_storage lastObject];</span>
-<span class="lineNum">      58 </span><span class="lineCov">        449 :     if ([self isEmpty] == NO) {</span>
-<span class="lineNum">      59 </span><span class="lineCov">        449 :         [_storage removeLastObject];</span>
-<span class="lineNum">      60 </span><span class="lineCov">        449 :     }</span>
-<span class="lineNum">      61 </span><span class="lineCov">        449 :     return element;</span>
-<span class="lineNum">      62 </span><span class="lineCov">        449 : }</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :     id element = [_storage lastObject];</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :     if ([self isEmpty] == NO) {</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :         [_storage removeLastObject];</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :     return element;</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span><span class="lineCov">        806 : - (TyphoonStackElement *)peekForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 : - (TyphoonStackElement *)peekForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args</span>
 <span class="lineNum">      65 </span>            : {
-<span class="lineNum">      66 </span><span class="lineCov">        806 :     NSUInteger argsHash = [args hash];</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     NSUInteger argsHash = [args hash];</span>
 <span class="lineNum">      67 </span>            :     
-<span class="lineNum">      68 </span><span class="lineCov">       2826 :     for (TyphoonStackElement *item in [_storage reverseObjectEnumerator]) {</span>
-<span class="lineNum">      69 </span><span class="lineCov">        792 :         if ([item.key isEqualToString:key] &amp;&amp; argsHash == [item.args hash]) {</span>
-<span class="lineNum">      70 </span><span class="lineCov">         46 :             return item;</span>
+<span class="lineNum">      68 </span><span class="lineNoCov">          0 :     for (TyphoonStackElement *item in [_storage reverseObjectEnumerator]) {</span>
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 :         if ([item.key isEqualToString:key] &amp;&amp; argsHash == [item.args hash]) {</span>
+<span class="lineNum">      70 </span><span class="lineNoCov">          0 :             return item;</span>
 <span class="lineNum">      71 </span>            :         }
-<span class="lineNum">      72 </span><span class="lineCov">       5114 :     }</span>
-<span class="lineNum">      73 </span><span class="lineCov">        760 :     return nil;</span>
-<span class="lineNum">      74 </span><span class="lineCov">        806 : }</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :     return nil;</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      75 </span>            : 
 <span class="lineNum">      76 </span>            : - (BOOL)isEmpty
 <span class="lineNum">      77 </span>            : {
-<span class="lineNum">      78 </span><span class="lineCov">        900 :     return ([_storage count] == 0);</span>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 :     return ([_storage count] == 0);</span>
 <span class="lineNum">      79 </span>            : }
 <span class="lineNum">      80 </span>            : 
 <span class="lineNum">      81 </span><span class="lineNoCov">          0 : - (BOOL)isResolvingKey:(NSString *)key withArgs:(TyphoonRuntimeArguments *)args</span>

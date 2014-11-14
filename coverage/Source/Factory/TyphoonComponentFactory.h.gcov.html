@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-09 10:54:33</td>
+            <td class="headerValue">2014-11-14 22:42:06</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -106,17 +106,17 @@
 <span class="lineNum">      48 </span>            : /**
 <span class="lineNum">      49 </span>            : * Say if the factory has been loaded.
 <span class="lineNum">      50 </span>            : */
-<span class="lineNum">      51 </span><span class="lineCov">       5130 : @property(nonatomic, assign, getter = isLoaded) BOOL loaded;</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 : @property(nonatomic, assign, getter = isLoaded) BOOL loaded;</span>
 <span class="lineNum">      52 </span>            : 
 <span class="lineNum">      53 </span>            : /**
 <span class="lineNum">      54 </span>            :  * The attached factory post processors.
 <span class="lineNum">      55 </span>            :  */
-<span class="lineNum">      56 </span><span class="lineCov">         56 : @property(nonatomic, strong, readonly) NSArray *factoryPostProcessors;</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : @property(nonatomic, strong, readonly) NSArray *factoryPostProcessors;</span>
 <span class="lineNum">      57 </span>            : 
 <span class="lineNum">      58 </span>            : /**
 <span class="lineNum">      59 </span>            :  * The attached component post processors.
 <span class="lineNum">      60 </span>            :  */
-<span class="lineNum">      61 </span><span class="lineCov">          1 : @property(nonatomic, strong, readonly) NSArray *componentPostProcessors;</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 : @property(nonatomic, strong, readonly) NSArray *componentPostProcessors;</span>
 <span class="lineNum">      62 </span>            : 
 <span class="lineNum">      63 </span>            : 
 <span class="lineNum">      64 </span>            : 
@@ -216,23 +216,25 @@
 <span class="lineNum">     158 </span>            : 
 <span class="lineNum">     159 </span>            : - (NSArray *)registry;
 <span class="lineNum">     160 </span>            : 
-<span class="lineNum">     161 </span>            : /**
-<span class="lineNum">     162 </span>            :  Attach a TyphoonComponentFactoryPostProcessor to this component factory.
-<span class="lineNum">     163 </span>            :  @param postProcessor The post-processor to attach.
-<span class="lineNum">     164 </span>            :  */
-<span class="lineNum">     165 </span>            : - (void)attachPostProcessor:(id &lt;TyphoonComponentFactoryPostProcessor&gt;)postProcessor;
-<span class="lineNum">     166 </span>            : 
-<span class="lineNum">     167 </span>            : /**
-<span class="lineNum">     168 </span>            :  * Injects the properties and methods of an object
-<span class="lineNum">     169 </span>            :  */
-<span class="lineNum">     170 </span>            : - (void)inject:(id)instance;
-<span class="lineNum">     171 </span>            : 
-<span class="lineNum">     172 </span>            : /**
-<span class="lineNum">     173 </span>            :  * Injects the properties and methods of an object, described in definition
-<span class="lineNum">     174 </span>            :  */
-<span class="lineNum">     175 </span>            : - (void)inject:(id)instance withDefinition:(SEL)selector;
-<span class="lineNum">     176 </span>            : 
-<span class="lineNum">     177 </span>            : @end
+<span class="lineNum">     161 </span>            : - (void)enumerateDefinitions:(void(^)(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace, BOOL *stop))block;
+<span class="lineNum">     162 </span>            : 
+<span class="lineNum">     163 </span>            : /**
+<span class="lineNum">     164 </span>            :  Attach a TyphoonComponentFactoryPostProcessor to this component factory.
+<span class="lineNum">     165 </span>            :  @param postProcessor The post-processor to attach.
+<span class="lineNum">     166 </span>            :  */
+<span class="lineNum">     167 </span>            : - (void)attachPostProcessor:(id &lt;TyphoonComponentFactoryPostProcessor&gt;)postProcessor;
+<span class="lineNum">     168 </span>            : 
+<span class="lineNum">     169 </span>            : /**
+<span class="lineNum">     170 </span>            :  * Injects the properties and methods of an object
+<span class="lineNum">     171 </span>            :  */
+<span class="lineNum">     172 </span>            : - (void)inject:(id)instance;
+<span class="lineNum">     173 </span>            : 
+<span class="lineNum">     174 </span>            : /**
+<span class="lineNum">     175 </span>            :  * Injects the properties and methods of an object, described in definition
+<span class="lineNum">     176 </span>            :  */
+<span class="lineNum">     177 </span>            : - (void)inject:(id)instance withDefinition:(SEL)selector;
+<span class="lineNum">     178 </span>            : 
+<span class="lineNum">     179 </span>            : @end
 </pre>
       </td>
     </tr>

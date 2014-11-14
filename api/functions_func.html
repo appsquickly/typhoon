@@ -262,6 +262,9 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>enumerateArgumentsUsingBlock:
 : <a class="el" href="interface_typhoon_runtime_arguments.html#a8bdfac80f8a7f9cda2dd61f138adfc0f">TyphoonRuntimeArguments</a>
 </li>
+<li>enumerateDefinitions:
+: <a class="el" href="interface_typhoon_component_factory.html#a57cb1e89e38d67d01c72cc36bf592d3a">TyphoonComponentFactory</a>
+</li>
 <li>enumerateKeysAndObjectsUsingBlock:
 : <a class="el" href="protocol_typhoon_dictionary-p.html#af7e76af5d513676f499f63c82dc756af">&lt;TyphoonDictionary&gt;</a>
 </li>
@@ -304,9 +307,6 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 </li>
 <li>initWithCollection:requiredClass:
 : <a class="el" href="interface_typhoon_injection_by_collection.html#a0e3e4b7785624e17380e5319ad575bce">TyphoonInjectionByCollection</a>
-</li>
-<li>initWithCreationBlock:
-: <a class="el" href="interface_typhoon_patch_object_factory.html#ab716f752a999d77c8418db7e4afb230e">TyphoonPatchObjectFactory</a>
 </li>
 <li>initWithDictionary:requiredClass:
 : <a class="el" href="interface_typhoon_injection_by_dictionary.html#a221428504a68f87f371c611f6ce0bf3a">TyphoonInjectionByDictionary</a>
@@ -425,8 +425,17 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>patchDefinitionWithSelector:withObject:
 : <a class="el" href="interface_typhoon_patcher.html#a439c7ffa79249ea5464584791186b7e7">TyphoonPatcher</a>
 </li>
-<li>patchObject
-: <a class="el" href="interface_typhoon_patch_object_factory.html#a93f80e3e93038ac2ee934513fc880a23">TyphoonPatchObjectFactory</a>
+<li>performAfterInjections:
+: <a class="el" href="interface_typhoon_definition.html#aa254501ed127ae1a371f42def3ac5797">TyphoonDefinition</a>
+</li>
+<li>performAfterInjections:parameters:
+: <a class="el" href="interface_typhoon_definition.html#a4869169dbd36b81d272f54e17cf89a7d">TyphoonDefinition</a>
+</li>
+<li>performBeforeInjections:
+: <a class="el" href="interface_typhoon_definition.html#ac5a3fa01def0470bad10c3b3708b2923">TyphoonDefinition</a>
+</li>
+<li>performBeforeInjections:parameters:
+: <a class="el" href="interface_typhoon_definition.html#abb1394e8dfff43fb899280a468f87abb">TyphoonDefinition</a>
 </li>
 <li>postProcessComponentFactory:
 : <a class="el" href="protocol_typhoon_component_factory_post_processor-p.html#ab64811c01a873e3a727f017543b29223">&lt;TyphoonComponentFactoryPostProcessor&gt;</a>
@@ -486,6 +495,14 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
 <li>selectorIsAdvised:
 : <a class="el" href="interface_typhoon_assembly_selector_adviser.html#a3a84226f163361adc8e91ac260835bb5">TyphoonAssemblySelectorAdviser</a>
+</li>
+<li>setAfterInjections:
+: <a class="el" href="interface_typhoon_definition.html#a45d5caae23921b2a5cf2c84b3c093d82">TyphoonDefinition</a>
+, <a class="el" href="category_typhoon_definition_07_deprecated_08.html#a45d5caae23921b2a5cf2c84b3c093d82">TyphoonDefinition(Deprecated)</a>
+</li>
+<li>setBeforeInjections:
+: <a class="el" href="interface_typhoon_definition.html#a2c2a25760353ea2c3402dad9c02bf339">TyphoonDefinition</a>
+, <a class="el" href="category_typhoon_definition_07_deprecated_08.html#a2c2a25760353ea2c3402dad9c02bf339">TyphoonDefinition(Deprecated)</a>
 </li>
 <li>setDeallocNotificationInBlock:
 : <a class="el" href="category_n_s_object_07_dealloc_notification_08.html#a2859ee082d6a3638451f9a8fb633d2eb">NSObject(DeallocNotification)</a>
@@ -575,9 +592,6 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 
 
 <h3><a class="anchor" id="index_v"></a>- v -</h3><ul>
-<li>valueCreatedFromDefinitionMatchedOption:args:
-: <a class="el" href="interface_typhoon_matcher_definition_factory.html#a3eaaa919fe0b3db64616b7a6b63fe59c">TyphoonMatcherDefinitionFactory</a>
-</li>
 <li>valueFromText:withType:
 : <a class="el" href="interface_typhoon_primitive_type_converter.html#a6b4fa72355f8b6efcf5c7088d10b25fa">TyphoonPrimitiveTypeConverter</a>
 </li>
@@ -604,10 +618,13 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 : <a class="el" href="interface_typhoon_definition.html#a63159e475b4d02f6cb98407dfe13f594">TyphoonDefinition</a>
 </li>
 <li>withFactory:selector:
-: <a class="el" href="interface_typhoon_definition.html#a967ccf83c6835d0120b0c1d4385e841e">TyphoonDefinition</a>
+: <a class="el" href="interface_typhoon_definition.html#a2c9d7ce4185ab53cc04d0ab51c6881d5">TyphoonDefinition</a>
 </li>
 <li>withFactory:selector:parameters:
-: <a class="el" href="interface_typhoon_definition.html#af78a138a2ba6438475176ab520cafc14">TyphoonDefinition</a>
+: <a class="el" href="interface_typhoon_definition.html#acc264b4c607cb128d72f303e2fc43bb8">TyphoonDefinition</a>
+</li>
+<li>withFactory:selector:parameters:configuration:
+: <a class="el" href="interface_typhoon_definition.html#aeb2db6f4167d2a32126e605ee22db4f2">TyphoonDefinition</a>
 </li>
 <li>withName:
 : <a class="el" href="interface_typhoon_bundle_resource.html#aaa604438fada1faf9566dcc0b7b6182c">TyphoonBundleResource</a>
@@ -618,6 +635,10 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>withOption:matcher:
 : <a class="el" href="interface_typhoon_definition.html#ace67617e7c8feea3167bd10342964a3d">TyphoonDefinition</a>
 , <a class="el" href="category_typhoon_definition_07_option_08.html#ace67617e7c8feea3167bd10342964a3d">TyphoonDefinition(Option)</a>
+</li>
+<li>withOption:matcher:autoInjectionConfig:
+: <a class="el" href="interface_typhoon_definition.html#af42ffbdb443c1e44379a728b1096becb">TyphoonDefinition</a>
+, <a class="el" href="category_typhoon_definition_07_option_08.html#af42ffbdb443c1e44379a728b1096becb">TyphoonDefinition(Option)</a>
 </li>
 <li>withOption:yes:no:
 : <a class="el" href="interface_typhoon_definition.html#a96cf46e499d4b083215881a2a9c8808e">TyphoonDefinition</a>
@@ -630,7 +651,7 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
-        <li class="footer">Generated on Sun Nov 9 2014 10:54:35 for Typhoon by
+        <li class="footer">Generated on Fri Nov 14 2014 22:42:09 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>

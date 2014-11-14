@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['raiseexceptionifcircular',['raiseExceptionIfCircular',['../interface_typhoon_injection_context.html#a19be259ff91bfc8848876681c9e89d75',1,'TyphoonInjectionContext']]],
-  ['reference',['reference',['../interface_typhoon_injection_by_reference.html#af357524b98df89bc6264516725ad3870',1,'TyphoonInjectionByReference']]],
-  ['referencearguments',['referenceArguments',['../interface_typhoon_injection_by_reference.html#ac324803fcf4cabd56f0f0fed6e3f1ba2',1,'TyphoonInjectionByReference']]],
-  ['runtimeargumentindex',['runtimeArgumentIndex',['../interface_typhoon_injection_by_runtime_argument.html#aabdbebbc4a565a4a9d86b975dc0d8e10',1,'TyphoonInjectionByRuntimeArgument']]]
+  ['textvalue',['textValue',['../interface_typhoon_injection_by_object_from_string.html#af92a94f94e7d7be0923cd2abc3bce1ca',1,'TyphoonInjectionByObjectFromString']]],
+  ['type',['type',['../interface_typhoon_abstract_injection.html#ac73bc0dd6ba0a7915d9d24c9920aee8a',1,'TyphoonAbstractInjection::type()'],['../interface_typhoon_definition.html#a1683dd7b003c512248c98fecb26d0985',1,'TyphoonDefinition::type()']]],
+  ['typebeingdescribed',['typeBeingDescribed',['../interface_typhoon_type_descriptor.html#ae088fe986245372f45dc39858059897c',1,'TyphoonTypeDescriptor']]]
 ];

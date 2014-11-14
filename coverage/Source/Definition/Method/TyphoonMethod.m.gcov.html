@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">50</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">56</td>
-            <td class="headerCovTableEntryMed">89.3 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-09 10:54:33</td>
+            <td class="headerValue">2014-11-14 22:42:06</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -73,7 +73,7 @@
 <span class="lineNum">      15 </span>            : #import &quot;TyphoonParameterInjection.h&quot;
 <span class="lineNum">      16 </span>            : #import &quot;TyphoonInjections.h&quot;
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">        222 : @implementation TyphoonMethod {</span>
+<span class="lineNum">      18 </span><span class="lineNoCov">          0 : @implementation TyphoonMethod {</span>
 <span class="lineNum">      19 </span>            :     BOOL _needUpdateHash;
 <span class="lineNum">      20 </span>            :     NSUInteger _hash;
 <span class="lineNum">      21 </span>            : }
@@ -81,16 +81,16 @@
 <span class="lineNum">      23 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">      24 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span><span class="lineCov">       2343 : - (id)initWithSelector:(SEL)selector</span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 : - (id)initWithSelector:(SEL)selector</span>
 <span class="lineNum">      27 </span>            : {
-<span class="lineNum">      28 </span><span class="lineCov">       2343 :     self = [super init];</span>
-<span class="lineNum">      29 </span><span class="lineCov">       2343 :     if (self) {</span>
-<span class="lineNum">      30 </span><span class="lineCov">       2343 :         _injectedParameters = [[NSMutableArray alloc] init];</span>
-<span class="lineNum">      31 </span><span class="lineCov">       2343 :         _selector = selector;</span>
-<span class="lineNum">      32 </span><span class="lineCov">       2343 :         _needUpdateHash = YES;</span>
-<span class="lineNum">      33 </span><span class="lineCov">       2343 :     }</span>
-<span class="lineNum">      34 </span><span class="lineCov">       2343 :     return self;</span>
-<span class="lineNum">      35 </span><span class="lineCov">       2343 : }</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     self = [super init];</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :     if (self) {</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :         _injectedParameters = [[NSMutableArray alloc] init];</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :         _selector = selector;</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :         _needUpdateHash = YES;</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : - (id)init
 <span class="lineNum">      38 </span>            : {
@@ -99,86 +99,86 @@
 <span class="lineNum">      41 </span>            : 
 <span class="lineNum">      42 </span>            : #pragma mark - manipulations with _injectedParameters
 <span class="lineNum">      43 </span>            : 
-<span class="lineNum">      44 </span><span class="lineCov">       2298 : - (void)addParameterInjection:(id &lt;TyphoonParameterInjection&gt;)injection</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 : - (void)addParameterInjection:(id &lt;TyphoonParameterInjection&gt;)injection</span>
 <span class="lineNum">      45 </span>            : {
-<span class="lineNum">      46 </span><span class="lineCov">       2298 :     [_injectedParameters addObject:injection];</span>
-<span class="lineNum">      47 </span><span class="lineCov">       2298 : }</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :     [_injectedParameters addObject:injection];</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      48 </span>            : 
 <span class="lineNum">      49 </span>            : - (NSUInteger)indexToAddParameter
 <span class="lineNum">      50 </span>            : {
-<span class="lineNum">      51 </span><span class="lineCov">       2196 :     return [_injectedParameters count];</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :     return [_injectedParameters count];</span>
 <span class="lineNum">      52 </span>            : }
 <span class="lineNum">      53 </span>            : 
 <span class="lineNum">      54 </span>            : #pragma mark - Injections
 <span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span><span class="lineCov">       2196 : - (void)injectParameterAtIndex:(NSUInteger)index with:(id)injection</span>
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 : - (void)injectParameterAtIndex:(NSUInteger)index with:(id)injection</span>
 <span class="lineNum">      57 </span>            : {
-<span class="lineNum">      58 </span><span class="lineCov">       2196 :     injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);</span>
-<span class="lineNum">      59 </span><span class="lineCov">       2196 :     [injection setParameterIndex:index];</span>
-<span class="lineNum">      60 </span><span class="lineCov">       2196 :     [self addParameterInjection:injection];</span>
-<span class="lineNum">      61 </span><span class="lineCov">       2196 :     _needUpdateHash = YES;</span>
-<span class="lineNum">      62 </span><span class="lineCov">       2196 : }</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :     injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :     [injection setParameterIndex:index];</span>
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 :     [self addParameterInjection:injection];</span>
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :     _needUpdateHash = YES;</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span><span class="lineCov">       2196 : - (void)injectParameterWith:(id)injection</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 : - (void)injectParameterWith:(id)injection</span>
 <span class="lineNum">      65 </span>            : {
-<span class="lineNum">      66 </span><span class="lineCov">       2196 :     [self injectParameterAtIndex:[self indexToAddParameter] with:injection];</span>
-<span class="lineNum">      67 </span><span class="lineCov">       2196 : }</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     [self injectParameterAtIndex:[self indexToAddParameter] with:injection];</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      68 </span>            : 
 <span class="lineNum">      69 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">      70 </span>            : #pragma mark - Utility Methods
 <span class="lineNum">      71 </span>            : 
-<span class="lineNum">      72 </span><span class="lineCov">        156 : - (id)copyWithZone:(NSZone *)zone</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 : - (id)copyWithZone:(NSZone *)zone</span>
 <span class="lineNum">      73 </span>            : {
-<span class="lineNum">      74 </span><span class="lineCov">        156 :     TyphoonMethod *copy = [[TyphoonMethod alloc] initWithSelector:_selector];</span>
-<span class="lineNum">      75 </span><span class="lineCov">        431 :     for (id &lt;TyphoonParameterInjection&gt; parameter in _injectedParameters) {</span>
-<span class="lineNum">      76 </span><span class="lineCov">        102 :         [copy addParameterInjection:[parameter copyWithZone:NSDefaultMallocZone()]];</span>
-<span class="lineNum">      77 </span><span class="lineCov">        431 :     }</span>
-<span class="lineNum">      78 </span><span class="lineCov">        156 :     return copy;</span>
-<span class="lineNum">      79 </span><span class="lineCov">        156 : }</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :     TyphoonMethod *copy = [[TyphoonMethod alloc] initWithSelector:_selector];</span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 :     for (id &lt;TyphoonParameterInjection&gt; parameter in _injectedParameters) {</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 :         [copy addParameterInjection:[parameter copyWithZone:NSDefaultMallocZone()]];</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 :     return copy;</span>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      80 </span>            : 
 <span class="lineNum">      81 </span>            : - (NSUInteger)hash
 <span class="lineNum">      82 </span>            : {
-<span class="lineNum">      83 </span><span class="lineCov">        494 :     if (_needUpdateHash) {</span>
-<span class="lineNum">      84 </span><span class="lineCov">        209 :         _hash = [self calculateHash];</span>
-<span class="lineNum">      85 </span><span class="lineCov">        209 :         _needUpdateHash = NO;</span>
-<span class="lineNum">      86 </span><span class="lineCov">        209 :     }</span>
-<span class="lineNum">      87 </span><span class="lineCov">        494 :     return _hash;</span>
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :     if (_needUpdateHash) {</span>
+<span class="lineNum">      84 </span><span class="lineNoCov">          0 :         _hash = [self calculateHash];</span>
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 :         _needUpdateHash = NO;</span>
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      87 </span><span class="lineNoCov">          0 :     return _hash;</span>
 <span class="lineNum">      88 </span>            : }
 <span class="lineNum">      89 </span>            : 
 <span class="lineNum">      90 </span>            : - (NSUInteger)calculateHash
 <span class="lineNum">      91 </span>            : {
-<span class="lineNum">      92 </span><span class="lineCov">        209 :     NSUInteger hash = (NSUInteger) sel_getName(_selector);</span>
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :     NSUInteger hash = (NSUInteger) sel_getName(_selector);</span>
 <span class="lineNum">      93 </span>            : 
-<span class="lineNum">      94 </span><span class="lineCov">        972 :     for (id &lt;TyphoonParameterInjection&gt; parameter in _injectedParameters) {</span>
-<span class="lineNum">      95 </span><span class="lineCov">        277 :         hash = (NSUInteger) ((5 &lt;&lt; hash) - hash + [[parameter description] hash]);</span>
-<span class="lineNum">      96 </span><span class="lineCov">        972 :     }</span>
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :     for (id &lt;TyphoonParameterInjection&gt; parameter in _injectedParameters) {</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :         hash = (NSUInteger) ((5 &lt;&lt; hash) - hash + [[parameter description] hash]);</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      97 </span>            : 
-<span class="lineNum">      98 </span><span class="lineCov">        209 :     return hash;</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :     return hash;</span>
 <span class="lineNum">      99 </span>            : }
 <span class="lineNum">     100 </span>            : 
-<span class="lineNum">     101 </span><span class="lineCov">         29 : - (BOOL)isEqual:(id)other</span>
+<span class="lineNum">     101 </span><span class="lineNoCov">          0 : - (BOOL)isEqual:(id)other</span>
 <span class="lineNum">     102 </span>            : {
-<span class="lineNum">     103 </span><span class="lineCov">         29 :     if (other == self) {</span>
+<span class="lineNum">     103 </span><span class="lineNoCov">          0 :     if (other == self) {</span>
 <span class="lineNum">     104 </span><span class="lineNoCov">          0 :         return YES;</span>
 <span class="lineNum">     105 </span>            :     }
-<span class="lineNum">     106 </span><span class="lineCov">         58 :     if (!other || ![[other class] isEqual:[self class]]) {</span>
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :     if (!other || ![[other class] isEqual:[self class]]) {</span>
 <span class="lineNum">     107 </span><span class="lineNoCov">          0 :         return NO;</span>
 <span class="lineNum">     108 </span>            :     }
 <span class="lineNum">     109 </span>            :     
-<span class="lineNum">     110 </span><span class="lineCov">         29 :     return [self isEqualToMethod:other];</span>
-<span class="lineNum">     111 </span><span class="lineCov">         29 : }</span>
+<span class="lineNum">     110 </span><span class="lineNoCov">          0 :     return [self isEqualToMethod:other];</span>
+<span class="lineNum">     111 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     112 </span>            : 
-<span class="lineNum">     113 </span><span class="lineCov">         29 : - (BOOL)isEqualToMethod:(TyphoonMethod *)method</span>
+<span class="lineNum">     113 </span><span class="lineNoCov">          0 : - (BOOL)isEqualToMethod:(TyphoonMethod *)method</span>
 <span class="lineNum">     114 </span>            : {
-<span class="lineNum">     115 </span><span class="lineCov">         29 :     if (self == method) {</span>
+<span class="lineNum">     115 </span><span class="lineNoCov">          0 :     if (self == method) {</span>
 <span class="lineNum">     116 </span><span class="lineNoCov">          0 :         return YES;</span>
 <span class="lineNum">     117 </span>            :     }
-<span class="lineNum">     118 </span><span class="lineCov">         29 :     if (method == nil) {</span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :     if (method == nil) {</span>
 <span class="lineNum">     119 </span><span class="lineNoCov">          0 :         return NO;</span>
 <span class="lineNum">     120 </span>            :     }
 <span class="lineNum">     121 </span>            :     
-<span class="lineNum">     122 </span><span class="lineCov">         52 :     return _selector == method.selector &amp;&amp; [method-&gt;_injectedParameters isEqualToArray:_injectedParameters];</span>
-<span class="lineNum">     123 </span><span class="lineCov">         29 : }</span>
+<span class="lineNum">     122 </span><span class="lineNoCov">          0 :     return _selector == method.selector &amp;&amp; [method-&gt;_injectedParameters isEqualToArray:_injectedParameters];</span>
+<span class="lineNum">     123 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     124 </span>            : 
 <span class="lineNum">     125 </span>            : @end
 </pre>

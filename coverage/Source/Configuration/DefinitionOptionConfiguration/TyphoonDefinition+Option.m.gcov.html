@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">25</td>
-            <td class="headerCovTableEntry">25</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">52</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-09 10:54:33</td>
+            <td class="headerValue">2014-11-14 22:42:06</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -63,47 +63,104 @@
 <span class="lineNum">       5 </span>            : 
 <span class="lineNum">       6 </span>            : #import &quot;TyphoonDefinition+Option.h&quot;
 <span class="lineNum">       7 </span>            : #import &quot;TyphoonOptionMatcher+Internal.h&quot;
-<span class="lineNum">       8 </span>            : #import &quot;TyphoonMatcherDefinitionFactory.h&quot;
-<span class="lineNum">       9 </span>            : #import &quot;TyphoonInjections.h&quot;
-<span class="lineNum">      10 </span>            : #import &quot;TyphoonFactoryDefinition.h&quot;
-<span class="lineNum">      11 </span>            : 
-<span class="lineNum">      12 </span>            : @implementation TyphoonDefinition (Option)
-<span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">        180 : + (id)withOption:(id)option yes:(id)yesDefinition no:(id)noDefinition</span>
-<span class="lineNum">      15 </span>            : {
-<span class="lineNum">      16 </span><span class="lineCov">        180 :     return [self withOption:option matcher:^(TyphoonOptionMatcher *matcher) {</span>
-<span class="lineNum">      17 </span><span class="lineCov">         90 :         [matcher caseEqual:@YES use:yesDefinition];</span>
-<span class="lineNum">      18 </span><span class="lineCov">         90 :         [matcher caseEqual:@&quot;YES&quot; use:yesDefinition];</span>
-<span class="lineNum">      19 </span><span class="lineCov">         90 :         [matcher caseEqual:@&quot;1&quot; use:yesDefinition];</span>
-<span class="lineNum">      20 </span><span class="lineCov">         90 :         [matcher caseEqual:@NO use:noDefinition];</span>
-<span class="lineNum">      21 </span><span class="lineCov">         90 :         [matcher caseEqual:@&quot;NO&quot; use:noDefinition];</span>
-<span class="lineNum">      22 </span><span class="lineCov">         90 :         [matcher caseEqual:@&quot;0&quot; use:noDefinition];</span>
-<span class="lineNum">      23 </span><span class="lineCov">         90 :     }];</span>
-<span class="lineNum">      24 </span><span class="lineCov">         90 : }</span>
-<span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span><span class="lineCov">        630 : + (id)withOption:(id)option matcher:(TyphoonMatcherBlock)matcherBlock</span>
-<span class="lineNum">      27 </span>            : {
-<span class="lineNum">      28 </span><span class="lineCov">        420 :     TyphoonOptionMatcher *matcher = [[TyphoonOptionMatcher alloc] initWithBlock:matcherBlock];</span>
-<span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span><span class="lineCov">        630 :     TyphoonDefinition *factoryDefinition = [TyphoonDefinition withClass:[TyphoonMatcherDefinitionFactory class] configuration:^(TyphoonDefinition *definition) {</span>
-<span class="lineNum">      31 </span><span class="lineCov">        210 :         [definition injectProperty:@selector(factory)];</span>
-<span class="lineNum">      32 </span><span class="lineCov">        210 :         [definition injectProperty:@selector(matcher) with:matcher];</span>
-<span class="lineNum">      33 </span><span class="lineCov">        210 :     }];</span>
-<span class="lineNum">      34 </span>            : 
-<span class="lineNum">      35 </span><span class="lineCov">        420 :     return [TyphoonInfrastructureFactoryDefinition withConfiguration:^(TyphoonFactoryDefinition *definition) {</span>
-<span class="lineNum">      36 </span><span class="lineCov">        210 :         [definition setFactory:factoryDefinition];</span>
-<span class="lineNum">      37 </span><span class="lineCov">        210 :         [definition setScope:TyphoonScopePrototype];</span>
-<span class="lineNum">      38 </span><span class="lineCov">        420 :         [definition useInitializer:@selector(valueCreatedFromDefinitionMatchedOption:args:) parameters:^(TyphoonMethod *initializer) {</span>
-<span class="lineNum">      39 </span><span class="lineCov">        210 :             [initializer injectParameterWith:option];</span>
-<span class="lineNum">      40 </span><span class="lineCov">        210 :             [initializer injectParameterWith:TyphoonInjectionWithCurrentRuntimeArguments()];</span>
-<span class="lineNum">      41 </span><span class="lineCov">        210 :         }];</span>
-<span class="lineNum">      42 </span><span class="lineCov">        210 :     }];</span>
-<span class="lineNum">      43 </span><span class="lineCov">        210 : }</span>
-<span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span>            : @end
-<span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span>            : 
+<span class="lineNum">       8 </span>            : #import &quot;TyphoonInjections.h&quot;
+<span class="lineNum">       9 </span>            : #import &quot;TyphoonFactoryDefinition.h&quot;
+<span class="lineNum">      10 </span>            : #import &quot;TyphoonComponentFactory.h&quot;
+<span class="lineNum">      11 </span>            : #import &quot;TyphoonRuntimeArguments.h&quot;
+<span class="lineNum">      12 </span>            : #import &quot;TyphoonInjectionContext.h&quot;
+<span class="lineNum">      13 </span>            : #import &quot;TyphoonInjection.h&quot;
+<span class="lineNum">      14 </span>            : #import &quot;TyphoonDefinition+Infrastructure.h&quot;
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span>            : @interface TyphoonOptionDefinition : TyphoonFactoryDefinition &lt;TyphoonAutoInjectionConfig&gt;
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span><span class="lineNoCov">          0 : @property (nonatomic, strong) id&lt;TyphoonInjection&gt; optionInjection;</span>
+<span class="lineNum">      19 </span><span class="lineNoCov">          0 : @property (nonatomic, strong) TyphoonOptionMatcher *matcher;</span>
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span>            : @end
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : @implementation TyphoonOptionDefinition</span>
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 : - (instancetype)initWithOptionValue:(id)value matcher:(TyphoonOptionMatcher *)matcher</span>
+<span class="lineNum">      26 </span>            : {
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 :     self = [super initWithClass:[NSObject class] key:nil];</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     if (self) {</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :         self.optionInjection = TyphoonMakeInjectionFromObjectIfNeeded(value);</span>
+<span class="lineNum">      30 </span><span class="lineNoCov">          0 :         self.matcher = matcher;</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :         self.scope = TyphoonScopePrototype;</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      34 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 : - (id)targetForInitializerWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args</span>
+<span class="lineNum">      37 </span>            : {
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :     TyphoonInjectionContext *context = [TyphoonInjectionContext new];</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     context.args = args;</span>
+<span class="lineNum">      40 </span><span class="lineNoCov">          0 :     context.factory = factory;</span>
+<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     context.raiseExceptionIfCircular = YES;</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     context.destinationType = [TyphoonTypeDescriptor descriptorWithEncodedType:@encode(id)];</span>
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     __block id optionValue = nil;</span>
+<span class="lineNum">      45 </span><span class="lineNoCov">          0 :     [self.optionInjection valueToInjectWithContext:context completion:^(id value) {</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :         optionValue = value;</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 :     }];</span>
 <span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 :     id&lt;TyphoonInjection&gt;injection = [self.matcher injectionMatchedValue:optionValue];</span>
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :     __block id result = nil;</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :     [injection valueToInjectWithContext:context completion:^(id value) {</span>
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 :         result = value;</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span><span class="lineNoCov">          0 :     return result;</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            : - (TyphoonMethod *)initializer
+<span class="lineNum">      60 </span>            : {
+<span class="lineNum">      61 </span><span class="lineNoCov">          0 :     return nil;</span>
+<span class="lineNum">      62 </span>            : }
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span>            : @end
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span>            : @implementation TyphoonDefinition (Option)
+<span class="lineNum">      68 </span>            : 
+<span class="lineNum">      69 </span><span class="lineNoCov">          0 : + (id)withOption:(id)option yes:(id)yesDefinition no:(id)noDefinition</span>
+<span class="lineNum">      70 </span>            : {
+<span class="lineNum">      71 </span><span class="lineNoCov">          0 :     return [self withOption:option matcher:^(TyphoonOptionMatcher *matcher) {</span>
+<span class="lineNum">      72 </span><span class="lineNoCov">          0 :         [matcher caseEqual:@YES use:yesDefinition];</span>
+<span class="lineNum">      73 </span><span class="lineNoCov">          0 :         [matcher caseEqual:@&quot;YES&quot; use:yesDefinition];</span>
+<span class="lineNum">      74 </span><span class="lineNoCov">          0 :         [matcher caseEqual:@&quot;1&quot; use:yesDefinition];</span>
+<span class="lineNum">      75 </span><span class="lineNoCov">          0 :         [matcher caseEqual:@NO use:noDefinition];</span>
+<span class="lineNum">      76 </span><span class="lineNoCov">          0 :         [matcher caseEqual:@&quot;NO&quot; use:noDefinition];</span>
+<span class="lineNum">      77 </span><span class="lineNoCov">          0 :         [matcher caseEqual:@&quot;0&quot; use:noDefinition];</span>
+<span class="lineNum">      78 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">      79 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      80 </span>            : 
+<span class="lineNum">      81 </span><span class="lineNoCov">          0 : + (id)withOption:(id)option matcher:(TyphoonMatcherBlock)matcherBlock</span>
+<span class="lineNum">      82 </span>            : {
+<span class="lineNum">      83 </span><span class="lineNoCov">          0 :     TyphoonOptionMatcher *matcher = [[TyphoonOptionMatcher alloc] initWithBlock:matcherBlock];</span>
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span><span class="lineNoCov">          0 :     return [[TyphoonOptionDefinition alloc] initWithOptionValue:option matcher:matcher];</span>
+<span class="lineNum">      86 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span><span class="lineNoCov">          0 : + (id)withOption:(id)option matcher:(TyphoonMatcherBlock)matcherBlock autoInjectionConfig:(void (^)(id&lt;TyphoonAutoInjectionConfig&gt; config))configBlock</span>
+<span class="lineNum">      89 </span>            : {
+<span class="lineNum">      90 </span><span class="lineNoCov">          0 :     TyphoonOptionMatcher *matcher = [[TyphoonOptionMatcher alloc] initWithBlock:matcherBlock];</span>
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span><span class="lineNoCov">          0 :     TyphoonOptionDefinition *definition = [[TyphoonOptionDefinition alloc] initWithOptionValue:option matcher:matcher];</span>
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span><span class="lineNoCov">          0 :     if (configBlock) {</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :         configBlock(definition);</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      97 </span>            : 
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :     return definition;</span>
+<span class="lineNum">      99 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     100 </span>            : 
+<span class="lineNum">     101 </span>            : 
+<span class="lineNum">     102 </span>            : @end
+<span class="lineNum">     103 </span>            : 
+<span class="lineNum">     104 </span>            : 
+<span class="lineNum">     105 </span>            : 
 </pre>
       </td>
     </tr>

@@ -93,9 +93,6 @@ var files =
     [ "TyphooniOS.h", "_typhooni_o_s_8h.html", null ],
     [ "TyphoonJsonStyleConfiguration.h", "_typhoon_json_style_configuration_8h.html", null ],
     [ "TyphoonLinkerCategoryBugFix.h", "_typhoon_linker_category_bug_fix_8h.html", null ],
-    [ "TyphoonMatcherDefinitionFactory.h", "_typhoon_matcher_definition_factory_8h.html", [
-      [ "TyphoonMatcherDefinitionFactory", "interface_typhoon_matcher_definition_factory.html", "interface_typhoon_matcher_definition_factory" ]
-    ] ],
     [ "TyphoonMethod.h", "_typhoon_method_8h.html", null ],
     [ "TyphoonMethodSwizzler.h", "_typhoon_method_swizzler_8h.html", null ],
     [ "TyphoonNSNumberTypeConverter.h", "_typhoon_n_s_number_type_converter_8h.html", null ],
@@ -114,9 +111,6 @@ var files =
       [ "TyphoonPassThroughTypeConverter", "interface_typhoon_pass_through_type_converter.html", "interface_typhoon_pass_through_type_converter" ]
     ] ],
     [ "TyphoonPatcher.h", "_typhoon_patcher_8h.html", "_typhoon_patcher_8h" ],
-    [ "TyphoonPatchObjectFactory.h", "_typhoon_patch_object_factory_8h.html", [
-      [ "TyphoonPatchObjectFactory", "interface_typhoon_patch_object_factory.html", "interface_typhoon_patch_object_factory" ]
-    ] ],
     [ "TyphoonPathResource.h", "_typhoon_path_resource_8h.html", null ],
     [ "TyphoonPlistStyleConfiguration.h", "_typhoon_plist_style_configuration_8h.html", null ],
     [ "TyphoonPrimitiveTypeConverter.h", "_typhoon_primitive_type_converter_8h.html", [

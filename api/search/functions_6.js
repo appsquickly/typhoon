@@ -6,7 +6,6 @@ var searchData=
   ['initwithassembly_3a',['initWithAssembly:',['../interface_typhoon_block_component_factory.html#acc698d2dbe0f8c54259989b1da2f45d5',1,'TyphoonBlockComponentFactory']]],
   ['initwithcapacity_3a',['initWithCapacity:',['../protocol_typhoon_collection-p.html#ad24371521a192555655334f2e6fd0ef6',1,'TyphoonCollection-p::initWithCapacity:()'],['../protocol_typhoon_dictionary-p.html#a158d712c4c31f51645959425be64efe6',1,'TyphoonDictionary-p::initWithCapacity:()']]],
   ['initwithcollection_3arequiredclass_3a',['initWithCollection:requiredClass:',['../interface_typhoon_injection_by_collection.html#a0e3e4b7785624e17380e5319ad575bce',1,'TyphoonInjectionByCollection']]],
-  ['initwithcreationblock_3a',['initWithCreationBlock:',['../interface_typhoon_patch_object_factory.html#ab716f752a999d77c8418db7e4afb230e',1,'TyphoonPatchObjectFactory']]],
   ['initwithdictionary_3arequiredclass_3a',['initWithDictionary:requiredClass:',['../interface_typhoon_injection_by_dictionary.html#a221428504a68f87f371c611f6ce0bf3a',1,'TyphoonInjectionByDictionary']]],
   ['initwithismutable_3a',['initWithIsMutable:',['../interface_typhoon_pass_through_type_converter.html#abfb2ddba74053593c177cb587ade6aa6',1,'TyphoonPassThroughTypeConverter']]],
   ['initwithobjectinstance_3a',['initWithObjectInstance:',['../interface_typhoon_injection_by_object_instance.html#af4ace5c8983d3127dbaec03ab96456e7',1,'TyphoonInjectionByObjectInstance']]],

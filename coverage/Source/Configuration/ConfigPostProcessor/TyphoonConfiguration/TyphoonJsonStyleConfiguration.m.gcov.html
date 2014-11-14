@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">34</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">37</td>
-            <td class="headerCovTableEntryHi">91.9 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-09 10:54:33</td>
+            <td class="headerValue">2014-11-14 22:42:06</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -65,64 +65,64 @@
 <span class="lineNum">       7 </span>            : #import &quot;TyphoonResource.h&quot;
 <span class="lineNum">       8 </span>            : 
 <span class="lineNum">       9 </span>            : 
-<span class="lineNum">      10 </span><span class="lineCov">          1 : @implementation TyphoonJsonStyleConfiguration</span>
+<span class="lineNum">      10 </span><span class="lineNoCov">          0 : @implementation TyphoonJsonStyleConfiguration</span>
 <span class="lineNum">      11 </span>            : {
 <span class="lineNum">      12 </span>            :     NSMutableDictionary *_properties;
 <span class="lineNum">      13 </span>            : }
 <span class="lineNum">      14 </span>            : 
 <span class="lineNum">      15 </span>            : - (id)init
 <span class="lineNum">      16 </span>            : {
-<span class="lineNum">      17 </span><span class="lineCov">         59 :     self = [super init];</span>
-<span class="lineNum">      18 </span><span class="lineCov">         59 :     if (self) {</span>
-<span class="lineNum">      19 </span><span class="lineCov">         59 :         _properties = [NSMutableDictionary new];</span>
-<span class="lineNum">      20 </span><span class="lineCov">         59 :     }</span>
-<span class="lineNum">      21 </span><span class="lineCov">         59 :     return self;</span>
-<span class="lineNum">      22 </span><span class="lineCov">         59 : }</span>
+<span class="lineNum">      17 </span><span class="lineNoCov">          0 :     self = [super init];</span>
+<span class="lineNum">      18 </span><span class="lineNoCov">          0 :     if (self) {</span>
+<span class="lineNum">      19 </span><span class="lineNoCov">          0 :         _properties = [NSMutableDictionary new];</span>
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      21 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineCov">         36 : - (NSString *)stringWithoutCommentsFromString:(NSString *)string</span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 : - (NSString *)stringWithoutCommentsFromString:(NSString *)string</span>
 <span class="lineNum">      25 </span>            : {
 <span class="lineNum">      26 </span>            :     static NSRegularExpression *expression;
 <span class="lineNum">      27 </span>            :     static dispatch_once_t once;
-<span class="lineNum">      28 </span><span class="lineCov">          7 :     dispatch_once(&amp;once, ^{</span>
-<span class="lineNum">      29 </span><span class="lineCov">          1 :         expression = [NSRegularExpression regularExpressionWithPattern:@&quot;(([\&quot;'])(?:\\\\\\2|.)*?\\2)|(\\/\\/[^\\n\\r]*(?:[\\n\\r]+|$)|(\\/\\*(?:(?!\\*\\/).|[\\n\\r])*\\*\\/))&quot;</span>
+<span class="lineNum">      28 </span><span class="lineNoCov">          0 :     dispatch_once(&amp;once, ^{</span>
+<span class="lineNum">      29 </span><span class="lineNoCov">          0 :         expression = [NSRegularExpression regularExpressionWithPattern:@&quot;(([\&quot;'])(?:\\\\\\2|.)*?\\2)|(\\/\\/[^\\n\\r]*(?:[\\n\\r]+|$)|(\\/\\*(?:(?!\\*\\/).|[\\n\\r])*\\*\\/))&quot;</span>
 <span class="lineNum">      30 </span>            :                                                                options:NSRegularExpressionAnchorsMatchLines error:nil];
-<span class="lineNum">      31 </span><span class="lineCov">          1 :     });</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     });</span>
 <span class="lineNum">      32 </span>            : 
-<span class="lineNum">      33 </span><span class="lineCov">          6 :     NSArray *matches = [expression matchesInString:string options:0 range:NSMakeRange(0, string.length)];</span>
+<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     NSArray *matches = [expression matchesInString:string options:0 range:NSMakeRange(0, string.length)];</span>
 <span class="lineNum">      34 </span>            : 
-<span class="lineNum">      35 </span><span class="lineCov">          6 :     if ([matches count] &gt; 0) {</span>
-<span class="lineNum">      36 </span><span class="lineCov">         36 :         NSMutableString *mutableString = [string mutableCopy];</span>
-<span class="lineNum">      37 </span><span class="lineCov">         36 :         [matches enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(NSTextCheckingResult *match, NSUInteger idx, BOOL *stop) {</span>
-<span class="lineNum">      38 </span><span class="lineCov">         30 :             unichar character = [string characterAtIndex:match.range.location];</span>
-<span class="lineNum">      39 </span><span class="lineCov">         60 :             if (character != '\'' &amp;&amp; character != '\&quot;') {</span>
+<span class="lineNum">      35 </span><span class="lineNoCov">          0 :     if ([matches count] &gt; 0) {</span>
+<span class="lineNum">      36 </span><span class="lineNoCov">          0 :         NSMutableString *mutableString = [string mutableCopy];</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 :         [matches enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(NSTextCheckingResult *match, NSUInteger idx, BOOL *stop) {</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :             unichar character = [string characterAtIndex:match.range.location];</span>
+<span class="lineNum">      39 </span><span class="lineNoCov">          0 :             if (character != '\'' &amp;&amp; character != '\&quot;') {</span>
 <span class="lineNum">      40 </span><span class="lineNoCov">          0 :                 [mutableString replaceCharactersInRange:match.range withString:@&quot;&quot;];</span>
 <span class="lineNum">      41 </span><span class="lineNoCov">          0 :             }</span>
-<span class="lineNum">      42 </span><span class="lineCov">         30 :         }];</span>
-<span class="lineNum">      43 </span><span class="lineCov">          6 :         string = mutableString;</span>
-<span class="lineNum">      44 </span><span class="lineCov">          6 :     }</span>
+<span class="lineNum">      42 </span><span class="lineNoCov">          0 :         }];</span>
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :         string = mutableString;</span>
+<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      45 </span>            : 
-<span class="lineNum">      46 </span><span class="lineCov">          6 :     return string;</span>
-<span class="lineNum">      47 </span><span class="lineCov">          6 : }</span>
+<span class="lineNum">      46 </span><span class="lineNoCov">          0 :     return string;</span>
+<span class="lineNum">      47 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      48 </span>            : 
-<span class="lineNum">      49 </span><span class="lineCov">          6 : - (void)appendResource:(id&lt;TyphoonResource&gt;)resource</span>
+<span class="lineNum">      49 </span><span class="lineNoCov">          0 : - (void)appendResource:(id&lt;TyphoonResource&gt;)resource</span>
 <span class="lineNum">      50 </span>            : {
-<span class="lineNum">      51 </span><span class="lineCov">          6 :     NSString *jsonWithoutComments = [self stringWithoutCommentsFromString:[resource asString]];</span>
-<span class="lineNum">      52 </span><span class="lineCov">          6 :     NSData *jsonData = [jsonWithoutComments dataUsingEncoding:NSUTF8StringEncoding];</span>
+<span class="lineNum">      51 </span><span class="lineNoCov">          0 :     NSString *jsonWithoutComments = [self stringWithoutCommentsFromString:[resource asString]];</span>
+<span class="lineNum">      52 </span><span class="lineNoCov">          0 :     NSData *jsonData = [jsonWithoutComments dataUsingEncoding:NSUTF8StringEncoding];</span>
 <span class="lineNum">      53 </span>            : 
-<span class="lineNum">      54 </span><span class="lineCov">          6 :     NSError *error = nil;</span>
-<span class="lineNum">      55 </span><span class="lineCov">          6 :     NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&amp;error];</span>
+<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     NSError *error = nil;</span>
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 :     NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&amp;error];</span>
 <span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span><span class="lineCov">          6 :     if (!error) {</span>
-<span class="lineNum">      58 </span><span class="lineCov">          6 :         [_properties addEntriesFromDictionary:dictionary];</span>
-<span class="lineNum">      59 </span><span class="lineCov">          6 :     } else {</span>
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :     if (!error) {</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 :         [_properties addEntriesFromDictionary:dictionary];</span>
+<span class="lineNum">      59 </span><span class="lineNoCov">          0 :     } else {</span>
 <span class="lineNum">      60 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Can't prase JSON configuration file: %@&quot;,error];</span>
 <span class="lineNum">      61 </span>            :     }
-<span class="lineNum">      62 </span><span class="lineCov">          6 : }</span>
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span><span class="lineCov">         11 : - (id)objectForKey:(NSString *)key</span>
+<span class="lineNum">      64 </span><span class="lineNoCov">          0 : - (id)objectForKey:(NSString *)key</span>
 <span class="lineNum">      65 </span>            : {
-<span class="lineNum">      66 </span><span class="lineCov">         11 :     return [_properties valueForKeyPath:key];</span>
-<span class="lineNum">      67 </span><span class="lineCov">         11 : }</span>
+<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     return [_properties valueForKeyPath:key];</span>
+<span class="lineNum">      67 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      68 </span>            : 
 <span class="lineNum">      69 </span>            : @end
 </pre>

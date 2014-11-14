@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntryMed">83.3 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-09 10:54:33</td>
+            <td class="headerValue">2014-11-14 22:42:06</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -75,24 +75,24 @@
 <span class="lineNum">      17 </span>            : 
 <span class="lineNum">      18 </span>            : - (id &lt;TyphoonPropertyInjection, TyphoonParameterInjection&gt;)typhoonCustomObjectInjection
 <span class="lineNum">      19 </span>            : {
-<span class="lineNum">      20 </span><span class="lineCov">         56 :     BOOL containsTyphoonObject = NO;</span>
+<span class="lineNum">      20 </span><span class="lineNoCov">          0 :     BOOL containsTyphoonObject = NO;</span>
 <span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineCov">         56 :     id object = nil;</span>
-<span class="lineNum">      23 </span><span class="lineCov">         56 :     NSEnumerator *objectEnumerator = [self objectEnumerator];</span>
-<span class="lineNum">      24 </span><span class="lineCov">        112 :     while ((object = [objectEnumerator nextObject])) {</span>
-<span class="lineNum">      25 </span><span class="lineCov">        112 :         if (IsTyphoonInjection(object) || [object conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)]) {</span>
-<span class="lineNum">      26 </span><span class="lineCov">         56 :             containsTyphoonObject = YES;</span>
-<span class="lineNum">      27 </span><span class="lineCov">         56 :             break;</span>
+<span class="lineNum">      22 </span><span class="lineNoCov">          0 :     id object = nil;</span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 :     NSEnumerator *objectEnumerator = [self objectEnumerator];</span>
+<span class="lineNum">      24 </span><span class="lineNoCov">          0 :     while ((object = [objectEnumerator nextObject])) {</span>
+<span class="lineNum">      25 </span><span class="lineNoCov">          0 :         if (IsTyphoonInjection(object) || [object conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)]) {</span>
+<span class="lineNum">      26 </span><span class="lineNoCov">          0 :             containsTyphoonObject = YES;</span>
+<span class="lineNum">      27 </span><span class="lineNoCov">          0 :             break;</span>
 <span class="lineNum">      28 </span>            :         }
 <span class="lineNum">      29 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">         56 :     if (containsTyphoonObject) {</span>
-<span class="lineNum">      32 </span><span class="lineCov">         56 :         return TyphoonInjectionWithDictionaryAndType(self, [self class]);</span>
+<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     if (containsTyphoonObject) {</span>
+<span class="lineNum">      32 </span><span class="lineNoCov">          0 :         return TyphoonInjectionWithDictionaryAndType(self, [self class]);</span>
 <span class="lineNum">      33 </span>            :     }
 <span class="lineNum">      34 </span>            :     else {
 <span class="lineNum">      35 </span><span class="lineNoCov">          0 :         return TyphoonInjectionWithObject(self);</span>
 <span class="lineNum">      36 </span>            :     }
-<span class="lineNum">      37 </span><span class="lineCov">         56 : }</span>
+<span class="lineNum">      37 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      38 </span>            : 
 <span class="lineNum">      39 </span>            : @end
 </pre>
