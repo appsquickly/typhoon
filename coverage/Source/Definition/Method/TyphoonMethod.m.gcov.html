@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-15 19:09:12</td>
+            <td class="headerValue">2014-11-15 19:15:10</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -156,29 +156,29 @@
 <span class="lineNum">      98 </span><span class="lineCov">        209 :     return hash;</span>
 <span class="lineNum">      99 </span>            : }
 <span class="lineNum">     100 </span>            : 
-<span class="lineNum">     101 </span><span class="lineCov">         29 : - (BOOL)isEqual:(id)other</span>
+<span class="lineNum">     101 </span><span class="lineCov">         19 : - (BOOL)isEqual:(id)other</span>
 <span class="lineNum">     102 </span>            : {
-<span class="lineNum">     103 </span><span class="lineCov">         29 :     if (other == self) {</span>
+<span class="lineNum">     103 </span><span class="lineCov">         19 :     if (other == self) {</span>
 <span class="lineNum">     104 </span><span class="lineNoCov">          0 :         return YES;</span>
 <span class="lineNum">     105 </span>            :     }
-<span class="lineNum">     106 </span><span class="lineCov">         58 :     if (!other || ![[other class] isEqual:[self class]]) {</span>
+<span class="lineNum">     106 </span><span class="lineCov">         38 :     if (!other || ![[other class] isEqual:[self class]]) {</span>
 <span class="lineNum">     107 </span><span class="lineNoCov">          0 :         return NO;</span>
 <span class="lineNum">     108 </span>            :     }
 <span class="lineNum">     109 </span>            :     
-<span class="lineNum">     110 </span><span class="lineCov">         29 :     return [self isEqualToMethod:other];</span>
-<span class="lineNum">     111 </span><span class="lineCov">         29 : }</span>
+<span class="lineNum">     110 </span><span class="lineCov">         19 :     return [self isEqualToMethod:other];</span>
+<span class="lineNum">     111 </span><span class="lineCov">         19 : }</span>
 <span class="lineNum">     112 </span>            : 
-<span class="lineNum">     113 </span><span class="lineCov">         29 : - (BOOL)isEqualToMethod:(TyphoonMethod *)method</span>
+<span class="lineNum">     113 </span><span class="lineCov">         19 : - (BOOL)isEqualToMethod:(TyphoonMethod *)method</span>
 <span class="lineNum">     114 </span>            : {
-<span class="lineNum">     115 </span><span class="lineCov">         29 :     if (self == method) {</span>
+<span class="lineNum">     115 </span><span class="lineCov">         19 :     if (self == method) {</span>
 <span class="lineNum">     116 </span><span class="lineNoCov">          0 :         return YES;</span>
 <span class="lineNum">     117 </span>            :     }
-<span class="lineNum">     118 </span><span class="lineCov">         29 :     if (method == nil) {</span>
+<span class="lineNum">     118 </span><span class="lineCov">         19 :     if (method == nil) {</span>
 <span class="lineNum">     119 </span><span class="lineNoCov">          0 :         return NO;</span>
 <span class="lineNum">     120 </span>            :     }
 <span class="lineNum">     121 </span>            :     
-<span class="lineNum">     122 </span><span class="lineCov">         58 :     return _selector == method.selector &amp;&amp; [method-&gt;_injectedParameters isEqualToArray:_injectedParameters];</span>
-<span class="lineNum">     123 </span><span class="lineCov">         29 : }</span>
+<span class="lineNum">     122 </span><span class="lineCov">         38 :     return _selector == method.selector &amp;&amp; [method-&gt;_injectedParameters isEqualToArray:_injectedParameters];</span>
+<span class="lineNum">     123 </span><span class="lineCov">         19 : }</span>
 <span class="lineNum">     124 </span>            : 
 <span class="lineNum">     125 </span>            : @end
 </pre>
