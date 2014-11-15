@@ -81,9 +81,7 @@ I'm not sure how to do [xyz]  | Typhoon users and contributors monitor the Typho
 This looks like a bug | Please raise a <a href="https://github.com/typhoon-framework/Typhoon/issues">GitHub issue</a>
 I'll take all the help I can get | While Typhoon is free, open-source and volunteer based, if you're interested in professional consultation/support we do maintain a list of experts and companies that can provide services. Get in touch with us, and we'll do our best to connect you. 
 
-***Typhoon is a free and community driven project. If you've enjoyed using it, we humbly ask that you star us here on Github, send a tweet mentioning us or email info@typhoonframework.org to let us know!
-
-And if you haven't enjoyed it, please let us know what you would like improved.***
+**Typhoon is a free and community driven project. If you've enjoyed using it, we humbly ask that you star us here on Github, send a tweet mentioning us or email info@typhoonframework.org to let us know! And if you haven't enjoyed it, please let us know what you would like improved.**
 
 # LICENSE
 
