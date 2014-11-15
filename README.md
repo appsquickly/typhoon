@@ -6,9 +6,10 @@ Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-fe
 
 Visit <a href="http://typhoonframework.org">the Typhoon website</a> for an introduction. Otherwise. . . 
 
-*Typhoon is a DI library that makes good use of the runtime's (ObjC or Swift) late binding nature in order to perform method interception and forwarding. This makes for a very compelling feature list. 
-
 ## Design Goals / Features
+
+*Typhoon is a DI library that makes good use of the runtime's (ObjC or Swift) late binding nature in order to perform method interception and forwarding. This makes for a very compelling feature list.* 
+
 
 * Non-invasive. ***No macros or XML required*** . . . Uses <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">powerful Objective-C runtime approach.</a>
 
