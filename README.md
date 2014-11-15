@@ -50,9 +50,10 @@ Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods
 
 # Usage
 
-* Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a> or <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a>.
-* Try the <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">Swift Sample Application</a> or the <a href="https://github.com/typhoon-framework/Typhoon-example">Objective-C Sample Application</a>. There's also an sample that features <a href="https://github.com/typhoon-framework/Typhoon-CoreData-RAC-Example">setting up Typhoon with Core Data and Reactive Cocoa</a>.
-* <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>.  
+* Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a> or <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a>
+* Try the <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">Swift Sample Application</a> or the <a href="https://github.com/typhoon-framework/Typhoon-example">Objective-C Sample Application</a> 
+* By popular demand, there's also an sample that features <a href="https://github.com/typhoon-framework/Typhoon-CoreData-RAC-Example">setting up Typhoon with Core Data and Reactive Cocoa</a>
+* Here are the <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>. Generally googling a Typhoon class name will return the correct page as the first hit. 
 
 
 
@@ -80,7 +81,7 @@ I'm not sure how to do [xyz]  | Typhoon users and contributors monitor the Typho
 This looks like a bug | Please raise a <a href="https://github.com/typhoon-framework/Typhoon/issues">GitHub issue</a>
 I'll take all the help I can get | While Typhoon is free, open-source and volunteer based, if you're interested in professional consultation/support we do maintain a list of experts and companies that can provide services. Get in touch with us, and we'll do our best to connect you. 
 
-**Typhoon is a free and community driven project. If you've enjoyed using it, we humbly ask that you let us know by starring us here on Github, sending a tweet mentioning us or emailing info@typhoonframework.org! And if you haven't enjoyed it, please let us know what you would like improved.**
+**Typhoon is a free and community driven project. If you've enjoyed using it, we humbly ask you to let us know by starring us here on Github, sending a tweet mentioning us or emailing info@typhoonframework.org! And if you haven't enjoyed it, please let us know what you would like improved.**
 
 # LICENSE
 
