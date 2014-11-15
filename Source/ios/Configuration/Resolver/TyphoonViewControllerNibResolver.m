@@ -40,10 +40,10 @@
 
 - (void)processViewControllerDefinition:(TyphoonDefinition *)definition
 {
-    TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:@selector(initWithNibName:bundle:)];
-    [initializer injectParameterWith:[self resolveNibNameForClass:definition.type]];
-    [initializer injectParameterWith:[NSBundle mainBundle]];
-    definition.initializer = initializer;
+    [definition useInitializer:@selector(initWithNibName:bundle:) parameters:^(TyphoonMethod *initializer) {
+        [initializer injectParameterWith:[self resolveNibNameForClass:definition.type]];
+        [initializer injectParameterWith:[NSBundle mainBundle]];
+    }];
 }
 
 - (BOOL)shouldProcessDefinition:(TyphoonDefinition *)definition

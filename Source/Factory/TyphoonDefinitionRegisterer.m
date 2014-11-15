@@ -22,7 +22,6 @@
 #import "TyphoonComponentPostProcessor.h"
 #import "TyphoonMethod.h"
 #import "TyphoonMethod+InstanceBuilder.h"
-#import "TyphoonMatcherDefinitionFactory.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonDefinition+Infrastructure.h"
 
