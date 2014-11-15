@@ -12,6 +12,7 @@
 #import "TyphoonInjectionContext.h"
 #import "TyphoonInjection.h"
 #import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
 
 @interface TyphoonOptionDefinition : TyphoonFactoryDefinition <TyphoonAutoInjectionConfig>
 
@@ -59,6 +60,25 @@
 - (TyphoonMethod *)initializer
 {
     return nil;
+}
+
+- (void)enumerateInjectionsOfKind:(Class)injectionClass options:(TyphoonInjectionsEnumerationOption)options usingBlock:(TyphoonInjectionsEnumerationBlock)block
+{
+    if (options & TyphoonInjectionsEnumerationOptionProperties) {
+        if ([self.optionInjection isKindOfClass:injectionClass]) {
+            id injectionToReplace = nil;
+            BOOL stop = NO;
+            block(self.optionInjection, &injectionToReplace, &stop);
+            if (injectionToReplace) {
+                self.optionInjection = injectionToReplace;
+            }
+            if (stop) {
+                return;
+            }
+        }
+    }
+
+    [super enumerateInjectionsOfKind:injectionClass options:options usingBlock:block];
 }
 
 
