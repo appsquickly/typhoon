@@ -78,7 +78,7 @@ Interested in contributing? <a href="https://github.com/typhoon-framework/Typhoo
 | I need help because | Action |
 | :---------- | :------ | 
 I'm not sure how to do [xyz]  | Typhoon users and contributors monitor the Typhoon tag on <a href="http://stackoverflow.com/questions/tagged/typhoon?sort=newest&pageSize=15">Stack Overflow</a>. Chances are your question can be answered there. 
-Bugs and new feature requests | Please raise a <a href="https://github.com/typhoon-framework/Typhoon/issues">GitHub issue</a>
+Bugs and new feature requests | Please raise a <a href="https://github.com/typhoon-framework/Typhoon/issues">GitHub issue</a>.
 I'll take all the help I can get | While Typhoon is free, open-source and volunteer based, if you're interested in professional consultation/support we do maintain a list of experts and companies that can provide services. Get in touch with us, and we'll do our best to connect you. 
 
 **Typhoon is a free and community driven project. If you've enjoyed using it, we humbly ask you to let us know by starring us here on Github, sending a tweet mentioning us or emailing info@typhoonframework.org! And if you haven't enjoyed it, please let us know what you would like improved.**
