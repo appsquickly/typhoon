@@ -70,18 +70,9 @@ Test Failures typically indicate a bug that has been flagged, but not yet fixed.
 * <a href="http://www.typhoonframework.org/docs/latest/coverage/index.html">Test Coverage</a>
 
 
+# Feedback
 
-# Feature Requests and Contributions
-
-. . . are very welcome. 
-
-* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">Contribution Guide.</a>
-
-* Look at, and contribute to the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Roadmap">roadmap</a> here.
-
-
-# Got a question? Need some help? 
-
+Interested in contributing? [[Contribution Guide]]
 
 | I need help because | Action |
 | :---------- | :------ | 
@@ -99,6 +90,15 @@ Here's a few apps built with Typhoon:
 * <a href="http://itunes.com/apps/GonnaGo">GonnaGo</a> - a social travel app. 
 * <a href="http://appstore.com/alpify">Alpify</a> - don't go skiing or snow boarding without it!
 * ***Your app here!!!***
+
+
+# Feature Requests and Contributions
+
+. . . are very welcome. 
+
+* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">Contribution Guide.</a>
+
+* Look at, and contribute to the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Roadmap">roadmap</a> here.
 
 # Core Team
 
