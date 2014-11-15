@@ -52,7 +52,7 @@ Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods
 
 * <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a>
 * <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a>
-* Try the <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">Swift Sample Application</a> or the <a href="https://github.com/typhoon-framework/Typhoon-example">Objective-C Sample Application</a>. There's also an sample that features setting up Typhoon with Core Data and Reactive Cocoa <a href="https://github.com/typhoon-framework/Typhoon-CoreData-RAC-Example">this sample application</a>. 
+* Try the <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">Swift Sample Application</a> or the <a href="https://github.com/typhoon-framework/Typhoon-example">Objective-C Sample Application</a>. There's also an sample that features <a href="https://github.com/typhoon-framework/Typhoon-CoreData-RAC-Example">setting up Typhoon with Core Data and Reactive Cocoa</a>.
 * <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>.  
 
 
