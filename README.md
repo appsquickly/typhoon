@@ -72,7 +72,7 @@ Test Failures typically indicate a bug that has been flagged, but not yet fixed.
 
 # Feedback
 
-Interested in contributing? [[Contribution Guide]]
+Interested in contributing? <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">Contribution Guide.</a>
 
 | I need help because | Action |
 | :---------- | :------ | 
@@ -90,39 +90,6 @@ Here's a few apps built with Typhoon:
 * <a href="http://itunes.com/apps/GonnaGo">GonnaGo</a> - a social travel app. 
 * <a href="http://appstore.com/alpify">Alpify</a> - don't go skiing or snow boarding without it!
 * ***Your app here!!!***
-
-
-# Feature Requests and Contributions
-
-. . . are very welcome. 
-
-* <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">Contribution Guide.</a>
-
-* Look at, and contribute to the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Roadmap">roadmap</a> here.
-
-# Core Team
-
-* <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778/">Jasper Blues</a> (Founder / Project Lead) - <a href="mailto:jasper@appsquick.ly?Subject=Typhoon">jasper@appsquick.ly</a>  
-* <a href="https://github.com/alexgarbarev">Aleksey Garbarev</a>, Principal Developer
-* <a href="https://github.com/rhgills">Robert Gilliam</a> - <a href="mailto:robert@robertgilliam.org?Subject=Typhoon">robert@robertgilliam.org</a>
-* <a href="https://github.com/drodriguez">Daniel Rodríguez Troitiño</a> 
-* <a href="https://github.com/eriksundin">Erik Sundin</a> 
-
-         
-### With contributions from: 
-
-* <a href="https://github.com/cesteban">César Estébanez Tascón</a> : Circular Dependencies fixes. 
-* <a href="https://github.com/BrynCooke">Bryn Cooke</a> : Late injections & story board integration. 
-* <a href="http://www.linkedin.com/in/jeffreydroberts">Jeffrey Roberts</a>, Mobile Software Engineer at 
-<a href="http://www.riotgames.com/">Riot Games</a>, previous contributor to Swiz for ActionScript : Advice, feedback and testing. 
-* <a href="http://es.linkedin.com/in/josegonzalezgomez/">José González Gómez</a>, Mobile and cloud developer at OPEN input : Feedback; testing, support for property placeholders in initializers. 
-* <a href="https://github.com/sergiou87">Sergio Padrino Recio</a> : Performance improvements.
-* <a href="https://github.com/jervine10">Josh Ervine</a> : Feedback and support for TyphoonFactoryProviders.
-* ___Your name here!!!!!!!___ 
-
-*(If you've sent a pull request and didn't get a mention. . . sorry! Please let us know and we'll correct it).*
-
-****
 
 
 # LICENSE
