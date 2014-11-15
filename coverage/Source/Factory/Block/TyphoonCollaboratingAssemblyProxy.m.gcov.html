@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">13</td>
             <td class="headerCovTableEntry">14</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryHi">92.9 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-14 22:53:44</td>
+            <td class="headerValue">2014-11-15 10:08:02</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -88,27 +88,27 @@
 <span class="lineNum">      30 </span>            :     static dispatch_once_t onceToken;
 <span class="lineNum">      31 </span>            :     static TyphoonCollaboratingAssemblyProxy *instance;
 <span class="lineNum">      32 </span>            : 
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 :     dispatch_once(&amp;onceToken, ^{</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 :         instance = [[self alloc] init];</span>
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 :     });</span>
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 :     return instance;</span>
+<span class="lineNum">      33 </span><span class="lineCov">         13 :     dispatch_once(&amp;onceToken, ^{</span>
+<span class="lineNum">      34 </span><span class="lineCov">          1 :         instance = [[self alloc] init];</span>
+<span class="lineNum">      35 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">      36 </span><span class="lineCov">         12 :     return instance;</span>
 <span class="lineNum">      37 </span>            : }
 <span class="lineNum">      38 </span>            : 
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 : - (void)forwardInvocation:(NSInvocation *)anInvocation</span>
+<span class="lineNum">      39 </span><span class="lineCov">         20 : - (void)forwardInvocation:(NSInvocation *)anInvocation</span>
 <span class="lineNum">      40 </span>            : {
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];</span>
+<span class="lineNum">      41 </span><span class="lineCov">         20 :     TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];</span>
 <span class="lineNum">      42 </span>            : 
 <span class="lineNum">      43 </span>            :     //Since we're resolving a reference to another component, all we need to provide here is the definition's key and runtime args.
-<span class="lineNum">      44 </span><span class="lineNoCov">          0 :     TyphoonDefinition *definition = [TyphoonReferenceDefinition definitionReferringToComponent:[TyphoonAssemblySelectorAdviser keyForSEL:anInvocation.selector]];</span>
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 :     definition.currentRuntimeArguments = args;</span>
+<span class="lineNum">      44 </span><span class="lineCov">         20 :     TyphoonDefinition *definition = [TyphoonReferenceDefinition definitionReferringToComponent:[TyphoonAssemblySelectorAdviser keyForSEL:anInvocation.selector]];</span>
+<span class="lineNum">      45 </span><span class="lineCov">         20 :     definition.currentRuntimeArguments = args;</span>
 <span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 :     [anInvocation retainArguments];</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 :     [anInvocation setReturnValue:&amp;definition];</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      47 </span><span class="lineCov">         20 :     [anInvocation retainArguments];</span>
+<span class="lineNum">      48 </span><span class="lineCov">         20 :     [anInvocation setReturnValue:&amp;definition];</span>
+<span class="lineNum">      49 </span><span class="lineCov">         20 : }</span>
 <span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : - (NSMethodSignature *)methodSignatureForSelector:(SEL)selector</span>
+<span class="lineNum">      51 </span><span class="lineCov">         20 : - (NSMethodSignature *)methodSignatureForSelector:(SEL)selector</span>
 <span class="lineNum">      52 </span>            : {
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 :     return [TyphoonIntrospectionUtils methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:selector];</span>
+<span class="lineNum">      53 </span><span class="lineCov">         20 :     return [TyphoonIntrospectionUtils methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:selector];</span>
 <span class="lineNum">      54 </span>            : }
 <span class="lineNum">      55 </span>            : 
 <span class="lineNum">      56 </span>            : //-------------------------------------------------------------------------------------------

@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-14 22:53:44</td>
+            <td class="headerValue">2014-11-15 10:08:02</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -139,7 +139,7 @@
 <span class="lineNum">      81 </span>            :     TyphoonDefinition *_parent;
 <span class="lineNum">      82 </span>            : }
 <span class="lineNum">      83 </span>            : 
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 : @property(nonatomic, readonly) Class type;</span>
+<span class="lineNum">      84 </span><span class="lineCov">      10696 : @property(nonatomic, readonly) Class type;</span>
 <span class="lineNum">      85 </span>            : 
 <span class="lineNum">      86 </span>            : /**
 <span class="lineNum">      87 </span>            : * A custom callback methods that is invoked before properties and method injection occurs.
@@ -169,7 +169,7 @@
 <span class="lineNum">     111 </span>            : * or when using:
 <span class="lineNum">     112 </span>            : * InjectedClass or InjectedProtocol marco
 <span class="lineNum">     113 </span>            : */
-<span class="lineNum">     114 </span><span class="lineNoCov">          0 : @property(nonatomic) TyphoonAutoInjectVisibility autoInjectionVisibility;</span>
+<span class="lineNum">     114 </span><span class="lineCov">       3543 : @property(nonatomic) TyphoonAutoInjectVisibility autoInjectionVisibility;</span>
 <span class="lineNum">     115 </span>            : 
 <span class="lineNum">     116 </span>            : 
 <span class="lineNum">     117 </span>            : /**
@@ -200,14 +200,14 @@
 <span class="lineNum">     142 </span>            : * @see abstract
 <span class="lineNum">     143 </span>            : *
 <span class="lineNum">     144 </span>            : */
-<span class="lineNum">     145 </span><span class="lineNoCov">          0 : @property(nonatomic, strong) id parent;</span>
+<span class="lineNum">     145 </span><span class="lineCov">       9040 : @property(nonatomic, strong) id parent;</span>
 <span class="lineNum">     146 </span>            : 
 <span class="lineNum">     147 </span>            : /**
 <span class="lineNum">     148 </span>            : * If set, designates that a component can not be instantiated directly.
 <span class="lineNum">     149 </span>            : *
 <span class="lineNum">     150 </span>            : * @see parent
 <span class="lineNum">     151 </span>            : */
-<span class="lineNum">     152 </span><span class="lineNoCov">          0 : @property(nonatomic) BOOL abstract;</span>
+<span class="lineNum">     152 </span><span class="lineCov">        416 : @property(nonatomic) BOOL abstract;</span>
 <span class="lineNum">     153 </span>            : 
 <span class="lineNum">     154 </span>            : 
 <span class="lineNum">     155 </span>            : //-------------------------------------------------------------------------------------------

@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">28</td>
             <td class="headerCovTableEntry">29</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryHi">96.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-14 22:53:44</td>
+            <td class="headerValue">2014-11-15 10:08:02</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -77,7 +77,7 @@
 <span class="lineNum">      19 </span>            : @implementation NSInvocation (TCFInstanceBuilder)
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span>            : /** Returns YES if selector returns retained instance (not autoreleased) */
-<span class="lineNum">      22 </span><span class="lineNoCov">          0 : static BOOL typhoon_IsSelectorReturnsRetained(SEL selector) {</span>
+<span class="lineNum">      22 </span><span class="lineCov">        381 : static BOOL typhoon_IsSelectorReturnsRetained(SEL selector) {</span>
 <span class="lineNum">      23 </span>            :     // According to http://clang.llvm.org/docs/AutomaticReferenceCounting.html#method-families
 <span class="lineNum">      24 </span>            :     // for a selector to be in a given family, the selector must start with the
 <span class="lineNum">      25 </span>            :     // family name, ignoring underscore prefixes, and followed by a character
@@ -86,50 +86,50 @@
 <span class="lineNum">      28 </span>            :     // will match incorrectly.
 <span class="lineNum">      29 </span>            :     static NSRegularExpression *methodFamily = nil;
 <span class="lineNum">      30 </span>            :     static dispatch_once_t onceToken;
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     dispatch_once(&amp;onceToken, ^{</span>
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 :         NSError *error = nil;</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 :         methodFamily = [[NSRegularExpression alloc] initWithPattern:@&quot;^_*(init|new|copy|mutableCopy)($|[^a-z])&quot; options:0 error:&amp;error];</span>
+<span class="lineNum">      31 </span><span class="lineCov">        382 :     dispatch_once(&amp;onceToken, ^{</span>
+<span class="lineNum">      32 </span><span class="lineCov">          1 :         NSError *error = nil;</span>
+<span class="lineNum">      33 </span><span class="lineCov">          1 :         methodFamily = [[NSRegularExpression alloc] initWithPattern:@&quot;^_*(init|new|copy|mutableCopy)($|[^a-z])&quot; options:0 error:&amp;error];</span>
 <span class="lineNum">      34 </span>            : 
-<span class="lineNum">      35 </span><span class="lineNoCov">          0 :         if (!methodFamily) {</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :         if (!methodFamily) {</span>
 <span class="lineNum">      36 </span><span class="lineNoCov">          0 :             @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[error localizedDescription]</span>
 <span class="lineNum">      37 </span>            :                 userInfo:[error userInfo]];
 <span class="lineNum">      38 </span>            :         }
-<span class="lineNum">      39 </span><span class="lineNoCov">          0 :     });</span>
+<span class="lineNum">      39 </span><span class="lineCov">          1 :     });</span>
 <span class="lineNum">      40 </span>            : 
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     NSString *selectorString = NSStringFromSelector(selector);</span>
-<span class="lineNum">      42 </span><span class="lineNoCov">          0 :     NSUInteger numberOfMatches =</span>
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 :         [methodFamily numberOfMatchesInString:selectorString options:NSMatchingAnchored range:NSMakeRange(0, selectorString.length)];</span>
+<span class="lineNum">      41 </span><span class="lineCov">        381 :     NSString *selectorString = NSStringFromSelector(selector);</span>
+<span class="lineNum">      42 </span><span class="lineCov">        762 :     NSUInteger numberOfMatches =</span>
+<span class="lineNum">      43 </span><span class="lineCov">        381 :         [methodFamily numberOfMatchesInString:selectorString options:NSMatchingAnchored range:NSMakeRange(0, selectorString.length)];</span>
 <span class="lineNum">      44 </span>            : 
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 :     return numberOfMatches != 0;</span>
+<span class="lineNum">      45 </span><span class="lineCov">        381 :     return numberOfMatches != 0;</span>
 <span class="lineNum">      46 </span>            : }
 <span class="lineNum">      47 </span>            : 
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : - (id)typhoon_resultOfInvokingOn:(id)instanceOrClass</span>
+<span class="lineNum">      48 </span><span class="lineCov">        381 : - (id)typhoon_resultOfInvokingOn:(id)instanceOrClass</span>
 <span class="lineNum">      49 </span>            : {
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :     id returnValue = nil;</span>
+<span class="lineNum">      50 </span><span class="lineCov">        381 :     id returnValue = nil;</span>
 <span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span><span class="lineNoCov">          0 :     BOOL isReturnsRetained;</span>
+<span class="lineNum">      52 </span><span class="lineCov">        381 :     BOOL isReturnsRetained;</span>
 <span class="lineNum">      53 </span>            : 
-<span class="lineNum">      54 </span><span class="lineNoCov">          0 :     @autoreleasepool {</span>
-<span class="lineNum">      55 </span><span class="lineNoCov">          0 :         isReturnsRetained = typhoon_IsSelectorReturnsRetained([self selector]);</span>
-<span class="lineNum">      56 </span><span class="lineNoCov">          0 :         [self invokeWithTarget:instanceOrClass];</span>
-<span class="lineNum">      57 </span><span class="lineNoCov">          0 :         [self getReturnValue:&amp;returnValue];</span>
-<span class="lineNum">      58 </span><span class="lineNoCov">          0 :         [returnValue retain]; /* Retain to take ownership on autoreleased object */</span>
-<span class="lineNum">      59 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      54 </span><span class="lineCov">        381 :     @autoreleasepool {</span>
+<span class="lineNum">      55 </span><span class="lineCov">        381 :         isReturnsRetained = typhoon_IsSelectorReturnsRetained([self selector]);</span>
+<span class="lineNum">      56 </span><span class="lineCov">        381 :         [self invokeWithTarget:instanceOrClass];</span>
+<span class="lineNum">      57 </span><span class="lineCov">        381 :         [self getReturnValue:&amp;returnValue];</span>
+<span class="lineNum">      58 </span><span class="lineCov">        381 :         [returnValue retain]; /* Retain to take ownership on autoreleased object */</span>
+<span class="lineNum">      59 </span><span class="lineCov">        381 :     }</span>
 <span class="lineNum">      60 </span>            : 
 <span class="lineNum">      61 </span>            :     /* Balance retain above if object is not autoreleased */
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 :     if (isReturnsRetained) {</span>
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 :         [returnValue release];</span>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      62 </span><span class="lineCov">        381 :     if (isReturnsRetained) {</span>
+<span class="lineNum">      63 </span><span class="lineCov">        370 :         [returnValue release];</span>
+<span class="lineNum">      64 </span><span class="lineCov">        370 :     }</span>
 <span class="lineNum">      65 </span>            : 
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     return returnValue;</span>
+<span class="lineNum">      66 </span><span class="lineCov">        381 :     return returnValue;</span>
 <span class="lineNum">      67 </span>            : }
 <span class="lineNum">      68 </span>            : 
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 : - (id)typhoon_resultOfInvokingOnInstance:(id)instance</span>
+<span class="lineNum">      69 </span><span class="lineCov">         12 : - (id)typhoon_resultOfInvokingOnInstance:(id)instance</span>
 <span class="lineNum">      70 </span>            : {
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 :     return [self typhoon_resultOfInvokingOn:instance];</span>
+<span class="lineNum">      71 </span><span class="lineCov">         12 :     return [self typhoon_resultOfInvokingOn:instance];</span>
 <span class="lineNum">      72 </span>            : }
 <span class="lineNum">      73 </span>            : 
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 : - (id)typhoon_resultOfInvokingOnAllocationForClass:(Class)aClass</span>
+<span class="lineNum">      74 </span><span class="lineCov">        369 : - (id)typhoon_resultOfInvokingOnAllocationForClass:(Class)aClass</span>
 <span class="lineNum">      75 </span>            : {
 <span class="lineNum">      76 </span>            :     /* To static analyser warning:
 <span class="lineNum">      77 </span>            :      * 'firstlyCreatedInstance' is not leak. There is two cases:
@@ -139,8 +139,8 @@
 <span class="lineNum">      81 </span>            :      * But clang analyzer dont know this.. */
 <span class="lineNum">      82 </span>            : 
 <span class="lineNum">      83 </span>            : #ifndef __clang_analyzer__
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 :     id firstlyCreatedInstance = [aClass alloc];</span>
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 :     return [self typhoon_resultOfInvokingOn:firstlyCreatedInstance];</span>
+<span class="lineNum">      84 </span><span class="lineCov">        369 :     id firstlyCreatedInstance = [aClass alloc];</span>
+<span class="lineNum">      85 </span><span class="lineCov">        369 :     return [self typhoon_resultOfInvokingOn:firstlyCreatedInstance];</span>
 <span class="lineNum">      86 </span>            : #else
 <span class="lineNum">      87 </span>            :     return nil;
 <span class="lineNum">      88 </span>            : #endif

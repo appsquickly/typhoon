@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">57</td>
             <td class="headerCovTableEntry">66</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryMed">86.4 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-14 22:53:44</td>
+            <td class="headerValue">2014-11-15 10:08:02</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -89,13 +89,13 @@
 <span class="lineNum">      31 </span>            : 
 <span class="lineNum">      32 </span>            : @interface TyphoonAssembly () &lt;TyphoonObjectWithCustomInjection&gt;
 <span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 : @property(readwrite) NSSet *definitionSelectors;</span>
+<span class="lineNum">      34 </span><span class="lineCov">        426 : @property(readwrite) NSSet *definitionSelectors;</span>
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 : @property(readonly) TyphoonAssemblyAdviser *adviser;</span>
+<span class="lineNum">      36 </span><span class="lineCov">        426 : @property(readonly) TyphoonAssemblyAdviser *adviser;</span>
 <span class="lineNum">      37 </span>            : 
 <span class="lineNum">      38 </span>            : @end
 <span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 : @implementation TyphoonAssembly</span>
+<span class="lineNum">      40 </span><span class="lineCov">        216 : @implementation TyphoonAssembly</span>
 <span class="lineNum">      41 </span>            : {
 <span class="lineNum">      42 </span>            :     TyphoonAssemblyDefinitionBuilder *_definitionBuilder;
 <span class="lineNum">      43 </span>            : }
@@ -106,7 +106,7 @@
 <span class="lineNum">      48 </span>            : 
 <span class="lineNum">      49 </span>            : + (TyphoonAssembly *)assembly
 <span class="lineNum">      50 </span>            : {
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 :     return [[self alloc] init];</span>
+<span class="lineNum">      51 </span><span class="lineCov">        221 :     return [[self alloc] init];</span>
 <span class="lineNum">      52 </span>            : }
 <span class="lineNum">      53 </span>            : 
 <span class="lineNum">      54 </span>            : + (instancetype)defaultAssembly
@@ -116,77 +116,77 @@
 <span class="lineNum">      58 </span>            : 
 <span class="lineNum">      59 </span>            : + (void)load
 <span class="lineNum">      60 </span>            : {
-<span class="lineNum">      61 </span><span class="lineNoCov">          0 :     [self reserveSelectors];</span>
-<span class="lineNum">      62 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      61 </span><span class="lineCov">          1 :     [self reserveSelectors];</span>
+<span class="lineNum">      62 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      63 </span>            : 
 <span class="lineNum">      64 </span>            : + (void)reserveSelectors
 <span class="lineNum">      65 </span>            : {
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 :     reservedSelectorsAsStrings = [[NSMutableSet alloc] init];</span>
+<span class="lineNum">      66 </span><span class="lineCov">          1 :     reservedSelectorsAsStrings = [[NSMutableSet alloc] init];</span>
 <span class="lineNum">      67 </span>            : 
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 :     [self markSelectorReserved:@selector(init)];</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 :     [self markSelectorReserved:@selector(definitions)];</span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 :     [self markSelectorReserved:@selector(prepareForUse)];</span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 :     [self markSelectorReservedFromString:@&quot;.cxx_destruct&quot;];</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 :     [self markSelectorReserved:@selector(defaultAssembly)];</span>
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 :     [self markSelectorReserved:@selector(asFactory)];</span>
-<span class="lineNum">      74 </span><span class="lineNoCov">          0 :     [self markSelectorReserved:@selector(resolveCollaboratingAssemblies)];</span>
+<span class="lineNum">      68 </span><span class="lineCov">          1 :     [self markSelectorReserved:@selector(init)];</span>
+<span class="lineNum">      69 </span><span class="lineCov">          1 :     [self markSelectorReserved:@selector(definitions)];</span>
+<span class="lineNum">      70 </span><span class="lineCov">          1 :     [self markSelectorReserved:@selector(prepareForUse)];</span>
+<span class="lineNum">      71 </span><span class="lineCov">          1 :     [self markSelectorReservedFromString:@&quot;.cxx_destruct&quot;];</span>
+<span class="lineNum">      72 </span><span class="lineCov">          1 :     [self markSelectorReserved:@selector(defaultAssembly)];</span>
+<span class="lineNum">      73 </span><span class="lineCov">          1 :     [self markSelectorReserved:@selector(asFactory)];</span>
+<span class="lineNum">      74 </span><span class="lineCov">          1 :     [self markSelectorReserved:@selector(resolveCollaboratingAssemblies)];</span>
 <span class="lineNum">      75 </span>            : 
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      77 </span>            : 
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 : + (void)markSelectorReserved:(SEL)selector</span>
+<span class="lineNum">      78 </span><span class="lineCov">          6 : + (void)markSelectorReserved:(SEL)selector</span>
 <span class="lineNum">      79 </span>            : {
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 :     [self markSelectorReservedFromString:NSStringFromSelector(selector)];</span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      80 </span><span class="lineCov">          6 :     [self markSelectorReservedFromString:NSStringFromSelector(selector)];</span>
+<span class="lineNum">      81 </span><span class="lineCov">          6 : }</span>
 <span class="lineNum">      82 </span>            : 
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 : + (void)markSelectorReservedFromString:(NSString *)stringFromSelector</span>
+<span class="lineNum">      83 </span><span class="lineCov">          7 : + (void)markSelectorReservedFromString:(NSString *)stringFromSelector</span>
 <span class="lineNum">      84 </span>            : {
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 :     [reservedSelectorsAsStrings addObject:stringFromSelector];</span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      85 </span><span class="lineCov">          7 :     [reservedSelectorsAsStrings addObject:stringFromSelector];</span>
+<span class="lineNum">      86 </span><span class="lineCov">          7 : }</span>
 <span class="lineNum">      87 </span>            : 
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 : + (BOOL)selectorIsReserved:(SEL)selector</span>
+<span class="lineNum">      88 </span><span class="lineCov">       5420 : + (BOOL)selectorIsReserved:(SEL)selector</span>
 <span class="lineNum">      89 </span>            : {
-<span class="lineNum">      90 </span><span class="lineNoCov">          0 :     NSString *selectorString = NSStringFromSelector(selector);</span>
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 :     return [reservedSelectorsAsStrings containsObject:selectorString];</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      90 </span><span class="lineCov">       5420 :     NSString *selectorString = NSStringFromSelector(selector);</span>
+<span class="lineNum">      91 </span><span class="lineCov">       5420 :     return [reservedSelectorsAsStrings containsObject:selectorString];</span>
+<span class="lineNum">      92 </span><span class="lineCov">       5420 : }</span>
 <span class="lineNum">      93 </span>            : 
 <span class="lineNum">      94 </span>            : #pragma mark - Forwarding definition methods
 <span class="lineNum">      95 </span>            : 
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 : - (void)forwardInvocation:(NSInvocation *)anInvocation</span>
+<span class="lineNum">      96 </span><span class="lineCov">       2688 : - (void)forwardInvocation:(NSInvocation *)anInvocation</span>
 <span class="lineNum">      97 </span>            : {
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 :     TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];</span>
+<span class="lineNum">      98 </span><span class="lineCov">       2688 :     TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];</span>
 <span class="lineNum">      99 </span>            : 
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 :     TyphoonDefinition *definition = [self buildDefinitionForSelector:anInvocation.selector args:args];</span>
+<span class="lineNum">     100 </span><span class="lineCov">       2688 :     TyphoonDefinition *definition = [self buildDefinitionForSelector:anInvocation.selector args:args];</span>
 <span class="lineNum">     101 </span>            : 
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 :     [anInvocation retainArguments];</span>
-<span class="lineNum">     103 </span><span class="lineNoCov">          0 :     [anInvocation setReturnValue:&amp;definition];</span>
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     102 </span><span class="lineCov">       2688 :     [anInvocation retainArguments];</span>
+<span class="lineNum">     103 </span><span class="lineCov">       2688 :     [anInvocation setReturnValue:&amp;definition];</span>
+<span class="lineNum">     104 </span><span class="lineCov">       2688 : }</span>
 <span class="lineNum">     105 </span>            : 
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 : - (TyphoonDefinition *)buildDefinitionForSelector:(SEL)selector args:(TyphoonRuntimeArguments *)args</span>
+<span class="lineNum">     106 </span><span class="lineCov">       2688 : - (TyphoonDefinition *)buildDefinitionForSelector:(SEL)selector args:(TyphoonRuntimeArguments *)args</span>
 <span class="lineNum">     107 </span>            : {
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 :     NSString *key = NSStringFromSelector(selector);</span>
-<span class="lineNum">     109 </span><span class="lineNoCov">          0 :     return [_definitionBuilder builtDefinitionForKey:key args:args];</span>
-<span class="lineNum">     110 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     108 </span><span class="lineCov">       2688 :     NSString *key = NSStringFromSelector(selector);</span>
+<span class="lineNum">     109 </span><span class="lineCov">       2688 :     return [_definitionBuilder builtDefinitionForKey:key args:args];</span>
+<span class="lineNum">     110 </span><span class="lineCov">       2688 : }</span>
 <span class="lineNum">     111 </span>            : 
 <span class="lineNum">     112 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">     113 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">     114 </span>            : 
 <span class="lineNum">     115 </span>            : - (id)init
 <span class="lineNum">     116 </span>            : {
-<span class="lineNum">     117 </span><span class="lineNoCov">          0 :     self = [super init];</span>
-<span class="lineNum">     118 </span><span class="lineNoCov">          0 :     if (self) {</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 :         _definitionBuilder = [[TyphoonAssemblyDefinitionBuilder alloc] initWithAssembly:self];</span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 :         _adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:self];</span>
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 :         [self resolveCollaboratingAssemblies];</span>
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     123 </span><span class="lineNoCov">          0 :     return self;</span>
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     117 </span><span class="lineCov">        225 :     self = [super init];</span>
+<span class="lineNum">     118 </span><span class="lineCov">        225 :     if (self) {</span>
+<span class="lineNum">     119 </span><span class="lineCov">        225 :         _definitionBuilder = [[TyphoonAssemblyDefinitionBuilder alloc] initWithAssembly:self];</span>
+<span class="lineNum">     120 </span><span class="lineCov">        225 :         _adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:self];</span>
+<span class="lineNum">     121 </span><span class="lineCov">        225 :         [self resolveCollaboratingAssemblies];</span>
+<span class="lineNum">     122 </span><span class="lineCov">        225 :     }</span>
+<span class="lineNum">     123 </span><span class="lineCov">        225 :     return self;</span>
+<span class="lineNum">     124 </span><span class="lineCov">        225 : }</span>
 <span class="lineNum">     125 </span>            : 
 <span class="lineNum">     126 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">     127 </span>            : #pragma mark - &lt;TyphoonObjectWithCustomInjection&gt;
 <span class="lineNum">     128 </span>            : 
 <span class="lineNum">     129 </span>            : - (id &lt;TyphoonPropertyInjection, TyphoonParameterInjection&gt;)typhoonCustomObjectInjection
 <span class="lineNum">     130 </span>            : {
-<span class="lineNum">     131 </span><span class="lineNoCov">          0 :     return [[TyphoonInjectionByComponentFactory alloc] init];</span>
+<span class="lineNum">     131 </span><span class="lineCov">         10 :     return [[TyphoonInjectionByComponentFactory alloc] init];</span>
 <span class="lineNum">     132 </span>            : }
 <span class="lineNum">     133 </span>            : 
 <span class="lineNum">     134 </span>            : //-------------------------------------------------------------------------------------------
@@ -194,18 +194,18 @@
 <span class="lineNum">     136 </span>            : 
 <span class="lineNum">     137 </span>            : - (void)resolveCollaboratingAssemblies
 <span class="lineNum">     138 </span>            : {
-<span class="lineNum">     139 </span><span class="lineNoCov">          0 :     TyphoonCollaboratingAssemblyPropertyEnumerator</span>
-<span class="lineNum">     140 </span><span class="lineNoCov">          0 :         *enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:self];</span>
+<span class="lineNum">     139 </span><span class="lineCov">        225 :     TyphoonCollaboratingAssemblyPropertyEnumerator</span>
+<span class="lineNum">     140 </span><span class="lineCov">        450 :         *enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:self];</span>
 <span class="lineNum">     141 </span>            : 
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 :     for (NSString *propertyName in enumerator.collaboratingAssemblyProperties) {</span>
-<span class="lineNum">     143 </span><span class="lineNoCov">          0 :         [self setCollaboratingAssemblyProxyOnPropertyNamed:propertyName];</span>
-<span class="lineNum">     144 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     145 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     142 </span><span class="lineCov">        260 :     for (NSString *propertyName in enumerator.collaboratingAssemblyProperties) {</span>
+<span class="lineNum">     143 </span><span class="lineCov">         12 :         [self setCollaboratingAssemblyProxyOnPropertyNamed:propertyName];</span>
+<span class="lineNum">     144 </span><span class="lineCov">        260 :     }</span>
+<span class="lineNum">     145 </span><span class="lineCov">        225 : }</span>
 <span class="lineNum">     146 </span>            : 
-<span class="lineNum">     147 </span><span class="lineNoCov">          0 : - (void)setCollaboratingAssemblyProxyOnPropertyNamed:(NSString *)name</span>
+<span class="lineNum">     147 </span><span class="lineCov">         12 : - (void)setCollaboratingAssemblyProxyOnPropertyNamed:(NSString *)name</span>
 <span class="lineNum">     148 </span>            : {
-<span class="lineNum">     149 </span><span class="lineNoCov">          0 :     [self setValue:[TyphoonCollaboratingAssemblyProxy proxy] forKey:name];</span>
-<span class="lineNum">     150 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     149 </span><span class="lineCov">         12 :     [self setValue:[TyphoonCollaboratingAssemblyProxy proxy] forKey:name];</span>
+<span class="lineNum">     150 </span><span class="lineCov">         12 : }</span>
 <span class="lineNum">     151 </span>            : 
 <span class="lineNum">     152 </span>            : - (TyphoonComponentFactory *)asFactory
 <span class="lineNum">     153 </span>            : {
@@ -217,7 +217,7 @@
 <span class="lineNum">     159 </span>            : 
 <span class="lineNum">     160 </span>            : - (NSArray *)definitions
 <span class="lineNum">     161 </span>            : {
-<span class="lineNum">     162 </span><span class="lineNoCov">          0 :     return [_definitionBuilder builtDefinitions];</span>
+<span class="lineNum">     162 </span><span class="lineCov">        213 :     return [_definitionBuilder builtDefinitions];</span>
 <span class="lineNum">     163 </span>            : }
 <span class="lineNum">     164 </span>            : 
 <span class="lineNum">     165 </span><span class="lineNoCov">          0 : - (TyphoonDefinition *)definitionForKey:(NSString *)key</span>
@@ -232,9 +232,9 @@
 <span class="lineNum">     174 </span>            : 
 <span class="lineNum">     175 </span>            : - (void)prepareForUse
 <span class="lineNum">     176 </span>            : {
-<span class="lineNum">     177 </span><span class="lineNoCov">          0 :     self.definitionSelectors = [self.adviser definitionSelectors];</span>
-<span class="lineNum">     178 </span><span class="lineNoCov">          0 :     [self.adviser adviseAssembly];</span>
-<span class="lineNum">     179 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     177 </span><span class="lineCov">        213 :     self.definitionSelectors = [self.adviser definitionSelectors];</span>
+<span class="lineNum">     178 </span><span class="lineCov">        213 :     [self.adviser adviseAssembly];</span>
+<span class="lineNum">     179 </span><span class="lineCov">        213 : }</span>
 <span class="lineNum">     180 </span>            : 
 <span class="lineNum">     181 </span>            : 
 <span class="lineNum">     182 </span>            : @end

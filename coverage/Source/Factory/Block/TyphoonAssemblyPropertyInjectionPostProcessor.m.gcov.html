@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">10</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-14 22:53:44</td>
+            <td class="headerValue">2014-11-15 10:08:02</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -79,20 +79,20 @@
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            : @implementation TyphoonAssemblyPropertyInjectionPostProcessor
 <span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineNoCov">          0 : - (BOOL)shouldReplaceInjectionByType:(TyphoonInjectionByType *)propertyInjection</span>
-<span class="lineNum">      25 </span><span class="lineNoCov">          0 :     withFactoryInjectionInDefinition:(TyphoonDefinition *)definition</span>
+<span class="lineNum">      24 </span><span class="lineCov">         56 : - (BOOL)shouldReplaceInjectionByType:(TyphoonInjectionByType *)propertyInjection</span>
+<span class="lineNum">      25 </span><span class="lineCov">         56 :     withFactoryInjectionInDefinition:(TyphoonDefinition *)definition</span>
 <span class="lineNum">      26 </span>            : {
-<span class="lineNum">      27 </span><span class="lineNoCov">          0 :     BOOL isAssemblyClass = NO;</span>
+<span class="lineNum">      27 </span><span class="lineCov">         56 :     BOOL isAssemblyClass = NO;</span>
 <span class="lineNum">      28 </span>            : 
-<span class="lineNum">      29 </span><span class="lineNoCov">          0 :     TyphoonTypeDescriptor</span>
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 :         *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyInjection.propertyName inClass:definition.type];</span>
+<span class="lineNum">      29 </span><span class="lineCov">         56 :     TyphoonTypeDescriptor</span>
+<span class="lineNum">      30 </span><span class="lineCov">        112 :         *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyInjection.propertyName inClass:definition.type];</span>
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineNoCov">          0 :     if (type.typeBeingDescribed) {</span>
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 :         isAssemblyClass = [type.typeBeingDescribed isSubclassOfClass:[TyphoonAssembly class]];</span>
-<span class="lineNum">      34 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      32 </span><span class="lineCov">         56 :     if (type.typeBeingDescribed) {</span>
+<span class="lineNum">      33 </span><span class="lineCov">          9 :         isAssemblyClass = [type.typeBeingDescribed isSubclassOfClass:[TyphoonAssembly class]];</span>
+<span class="lineNum">      34 </span><span class="lineCov">          9 :     }</span>
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span><span class="lineNoCov">          0 :     return isAssemblyClass;</span>
-<span class="lineNum">      37 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      36 </span><span class="lineCov">         56 :     return isAssemblyClass;</span>
+<span class="lineNum">      37 </span><span class="lineCov">         56 : }</span>
 <span class="lineNum">      38 </span>            : 
 <span class="lineNum">      39 </span>            : @end
 </pre>

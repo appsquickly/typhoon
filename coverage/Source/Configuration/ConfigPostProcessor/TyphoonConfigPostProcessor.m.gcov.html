@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">86</td>
             <td class="headerCovTableEntry">92</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryHi">93.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-14 22:53:44</td>
+            <td class="headerValue">2014-11-15 10:08:02</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -83,7 +83,7 @@
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : static NSMutableDictionary *propertyPlaceholderRegistry;
 <span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 : @implementation TyphoonConfigPostProcessor</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : @implementation TyphoonConfigPostProcessor</span>
 <span class="lineNum">      29 </span>            : {
 <span class="lineNum">      30 </span>            :     NSDictionary *_configs;
 <span class="lineNum">      31 </span>            : }
@@ -95,18 +95,18 @@
 <span class="lineNum">      37 </span>            : 
 <span class="lineNum">      38 </span>            : + (TyphoonConfigPostProcessor *)postProcessor
 <span class="lineNum">      39 </span>            : {
-<span class="lineNum">      40 </span><span class="lineNoCov">          0 :     return [[[self class] alloc] init];</span>
+<span class="lineNum">      40 </span><span class="lineCov">          7 :     return [[[self class] alloc] init];</span>
 <span class="lineNum">      41 </span>            : }
 <span class="lineNum">      42 </span>            : 
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : + (void)registerConfigurationClass:(Class)configClass forExtension:(NSString *)typeExtension</span>
+<span class="lineNum">      43 </span><span class="lineCov">          3 : + (void)registerConfigurationClass:(Class)configClass forExtension:(NSString *)typeExtension</span>
 <span class="lineNum">      44 </span>            : {
-<span class="lineNum">      45 </span><span class="lineNoCov">          0 :     @synchronized (self) {</span>
-<span class="lineNum">      46 </span><span class="lineNoCov">          0 :         if (!propertyPlaceholderRegistry) {</span>
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 :             propertyPlaceholderRegistry = [NSMutableDictionary new];</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 :         propertyPlaceholderRegistry[typeExtension] = configClass;</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      51 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      45 </span><span class="lineCov">          3 :     @synchronized (self) {</span>
+<span class="lineNum">      46 </span><span class="lineCov">          3 :         if (!propertyPlaceholderRegistry) {</span>
+<span class="lineNum">      47 </span><span class="lineCov">          2 :             propertyPlaceholderRegistry = [NSMutableDictionary new];</span>
+<span class="lineNum">      48 </span><span class="lineCov">          1 :         }</span>
+<span class="lineNum">      49 </span><span class="lineCov">          3 :         propertyPlaceholderRegistry[typeExtension] = configClass;</span>
+<span class="lineNum">      50 </span><span class="lineCov">          3 :     }</span>
+<span class="lineNum">      51 </span><span class="lineCov">          3 : }</span>
 <span class="lineNum">      52 </span>            : 
 <span class="lineNum">      53 </span>            : + (NSArray *)availableExtensions
 <span class="lineNum">      54 </span>            : {
@@ -118,129 +118,129 @@
 <span class="lineNum">      60 </span>            : 
 <span class="lineNum">      61 </span>            : - (id)init
 <span class="lineNum">      62 </span>            : {
-<span class="lineNum">      63 </span><span class="lineNoCov">          0 :     self = [super init];</span>
-<span class="lineNum">      64 </span><span class="lineNoCov">          0 :     if (self) {</span>
-<span class="lineNum">      65 </span><span class="lineNoCov">          0 :         NSMutableDictionary *mutableConfigs = [[NSMutableDictionary alloc] initWithCapacity:[propertyPlaceholderRegistry count]];</span>
-<span class="lineNum">      66 </span><span class="lineNoCov">          0 :         [propertyPlaceholderRegistry enumerateKeysAndObjectsUsingBlock:^(NSString *key, id configClass, BOOL *stop) {</span>
-<span class="lineNum">      67 </span><span class="lineNoCov">          0 :             mutableConfigs[key] = [configClass new];</span>
-<span class="lineNum">      68 </span><span class="lineNoCov">          0 :         }];</span>
-<span class="lineNum">      69 </span><span class="lineNoCov">          0 :         _configs = mutableConfigs;</span>
-<span class="lineNum">      70 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 :     return self;</span>
-<span class="lineNum">      72 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      63 </span><span class="lineCov">         59 :     self = [super init];</span>
+<span class="lineNum">      64 </span><span class="lineCov">         59 :     if (self) {</span>
+<span class="lineNum">      65 </span><span class="lineCov">        236 :         NSMutableDictionary *mutableConfigs = [[NSMutableDictionary alloc] initWithCapacity:[propertyPlaceholderRegistry count]];</span>
+<span class="lineNum">      66 </span><span class="lineCov">        236 :         [propertyPlaceholderRegistry enumerateKeysAndObjectsUsingBlock:^(NSString *key, id configClass, BOOL *stop) {</span>
+<span class="lineNum">      67 </span><span class="lineCov">        177 :             mutableConfigs[key] = [configClass new];</span>
+<span class="lineNum">      68 </span><span class="lineCov">        177 :         }];</span>
+<span class="lineNum">      69 </span><span class="lineCov">         59 :         _configs = mutableConfigs;</span>
+<span class="lineNum">      70 </span><span class="lineCov">         59 :     }</span>
+<span class="lineNum">      71 </span><span class="lineCov">         59 :     return self;</span>
+<span class="lineNum">      72 </span><span class="lineCov">         59 : }</span>
 <span class="lineNum">      73 </span>            : 
 <span class="lineNum">      74 </span>            : + (void)initialize
 <span class="lineNum">      75 </span>            : {
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 :     [super initialize];</span>
+<span class="lineNum">      76 </span><span class="lineCov">          1 :     [super initialize];</span>
 <span class="lineNum">      77 </span>            : 
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 :     [self registerConfigurationClass:[TyphoonJsonStyleConfiguration class] forExtension:@&quot;json&quot;];</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 :     [self registerConfigurationClass:[TyphoonPropertyStyleConfiguration class] forExtension:@&quot;properties&quot;];</span>
-<span class="lineNum">      80 </span><span class="lineNoCov">          0 :     [self registerConfigurationClass:[TyphoonPlistStyleConfiguration class] forExtension:@&quot;plist&quot;];</span>
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :     [self registerConfigurationClass:[TyphoonJsonStyleConfiguration class] forExtension:@&quot;json&quot;];</span>
+<span class="lineNum">      79 </span><span class="lineCov">          1 :     [self registerConfigurationClass:[TyphoonPropertyStyleConfiguration class] forExtension:@&quot;properties&quot;];</span>
+<span class="lineNum">      80 </span><span class="lineCov">          1 :     [self registerConfigurationClass:[TyphoonPlistStyleConfiguration class] forExtension:@&quot;plist&quot;];</span>
+<span class="lineNum">      81 </span><span class="lineCov">          1 : }</span>
 <span class="lineNum">      82 </span>            : 
 <span class="lineNum">      83 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">      84 </span>            : #pragma mark - Interface Methods
 <span class="lineNum">      85 </span>            : 
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 : - (void)useResourceWithName:(NSString *)name</span>
+<span class="lineNum">      86 </span><span class="lineCov">         97 : - (void)useResourceWithName:(NSString *)name</span>
 <span class="lineNum">      87 </span>            : {
-<span class="lineNum">      88 </span><span class="lineNoCov">          0 :     [self useResource:[TyphoonBundleResource withName:name] withExtension:[name pathExtension]];</span>
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      88 </span><span class="lineCov">         97 :     [self useResource:[TyphoonBundleResource withName:name] withExtension:[name pathExtension]];</span>
+<span class="lineNum">      89 </span><span class="lineCov">         97 : }</span>
 <span class="lineNum">      90 </span>            : 
 <span class="lineNum">      91 </span><span class="lineNoCov">          0 : - (void)useResourceAtPath:(NSString *)path</span>
 <span class="lineNum">      92 </span>            : {
 <span class="lineNum">      93 </span><span class="lineNoCov">          0 :     [self useResource:[TyphoonPathResource withPath:path] withExtension:[path pathExtension]];</span>
 <span class="lineNum">      94 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      95 </span>            : 
-<span class="lineNum">      96 </span><span class="lineNoCov">          0 : - (void)useResource:(id &lt;TyphoonResource&gt;)resource withExtension:(NSString *)typeExtension</span>
+<span class="lineNum">      96 </span><span class="lineCov">         97 : - (void)useResource:(id &lt;TyphoonResource&gt;)resource withExtension:(NSString *)typeExtension</span>
 <span class="lineNum">      97 </span>            : {
-<span class="lineNum">      98 </span><span class="lineNoCov">          0 :     id&lt;TyphoonConfiguration&gt;config = _configs[typeExtension];</span>
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 :     [config appendResource:resource];</span>
-<span class="lineNum">     100 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      98 </span><span class="lineCov">         97 :     id&lt;TyphoonConfiguration&gt;config = _configs[typeExtension];</span>
+<span class="lineNum">      99 </span><span class="lineCov">         97 :     [config appendResource:resource];</span>
+<span class="lineNum">     100 </span><span class="lineCov">         97 : }</span>
 <span class="lineNum">     101 </span>            : 
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 : - (id)configurationValueForKey:(NSString *)key</span>
+<span class="lineNum">     102 </span><span class="lineCov">         44 : - (id)configurationValueForKey:(NSString *)key</span>
 <span class="lineNum">     103 </span>            : {
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 :     __block id value = nil;</span>
-<span class="lineNum">     105 </span><span class="lineNoCov">          0 :     __block NSString *foundExtension = nil;</span>
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 :     [_configs enumerateKeysAndObjectsUsingBlock:^(NSString *extension, id&lt;TyphoonConfiguration&gt;config, BOOL *stop) {</span>
+<span class="lineNum">     104 </span><span class="lineCov">         44 :     __block id value = nil;</span>
+<span class="lineNum">     105 </span><span class="lineCov">         44 :     __block NSString *foundExtension = nil;</span>
+<span class="lineNum">     106 </span><span class="lineCov">         44 :     [_configs enumerateKeysAndObjectsUsingBlock:^(NSString *extension, id&lt;TyphoonConfiguration&gt;config, BOOL *stop) {</span>
 <span class="lineNum">     107 </span>            : 
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 :         id object = [config objectForKey:key];</span>
+<span class="lineNum">     108 </span><span class="lineCov">         33 :         id object = [config objectForKey:key];</span>
 <span class="lineNum">     109 </span>            : #if !DEBUG
 <span class="lineNum">     110 </span>            :         if (object) {
 <span class="lineNum">     111 </span>            :             value = object;
 <span class="lineNum">     112 </span>            :             *stop = YES;
 <span class="lineNum">     113 </span>            :         }
 <span class="lineNum">     114 </span>            : #else
-<span class="lineNum">     115 </span><span class="lineNoCov">          0 :         if (object) {</span>
-<span class="lineNum">     116 </span><span class="lineNoCov">          0 :             if (value) {</span>
+<span class="lineNum">     115 </span><span class="lineCov">         33 :         if (object) {</span>
+<span class="lineNum">     116 </span><span class="lineCov">         11 :             if (value) {</span>
 <span class="lineNum">     117 </span><span class="lineNoCov">          0 :                 [NSException raise:NSInternalInconsistencyException format:@&quot;Value for key %@ already exists in %@ config&quot;, key, foundExtension];</span>
 <span class="lineNum">     118 </span><span class="lineNoCov">          0 :             } else {</span>
-<span class="lineNum">     119 </span><span class="lineNoCov">          0 :                 value = object;</span>
-<span class="lineNum">     120 </span><span class="lineNoCov">          0 :                 foundExtension = extension;</span>
+<span class="lineNum">     119 </span><span class="lineCov">         11 :                 value = object;</span>
+<span class="lineNum">     120 </span><span class="lineCov">         11 :                 foundExtension = extension;</span>
 <span class="lineNum">     121 </span>            :             }
-<span class="lineNum">     122 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     122 </span><span class="lineCov">         11 :         }</span>
 <span class="lineNum">     123 </span>            : #endif
-<span class="lineNum">     124 </span><span class="lineNoCov">          0 :     }];</span>
+<span class="lineNum">     124 </span><span class="lineCov">         33 :     }];</span>
 <span class="lineNum">     125 </span>            : 
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 :     return value;</span>
-<span class="lineNum">     127 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     126 </span><span class="lineCov">         11 :     return value;</span>
+<span class="lineNum">     127 </span><span class="lineCov">         11 : }</span>
 <span class="lineNum">     128 </span>            : 
 <span class="lineNum">     129 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">     130 </span>            : #pragma mark - Protocol Methods
 <span class="lineNum">     131 </span>            : 
-<span class="lineNum">     132 </span><span class="lineNoCov">          0 : - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory</span>
+<span class="lineNum">     132 </span><span class="lineCov">         20 : - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory</span>
 <span class="lineNum">     133 </span>            : {
-<span class="lineNum">     134 </span><span class="lineNoCov">          0 :     for (TyphoonDefinition *definition in [factory registry]) {</span>
-<span class="lineNum">     135 </span><span class="lineNoCov">          0 :         [self configureInjectionsInDefinition:definition];</span>
-<span class="lineNum">     136 </span><span class="lineNoCov">          0 :         [self configureInjectionsInRuntimeArgumentsInDefinition:definition];</span>
-<span class="lineNum">     137 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     138 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     134 </span><span class="lineCov">        864 :     for (TyphoonDefinition *definition in [factory registry]) {</span>
+<span class="lineNum">     135 </span><span class="lineCov">        412 :         [self configureInjectionsInDefinition:definition];</span>
+<span class="lineNum">     136 </span><span class="lineCov">        412 :         [self configureInjectionsInRuntimeArgumentsInDefinition:definition];</span>
+<span class="lineNum">     137 </span><span class="lineCov">        864 :     }</span>
+<span class="lineNum">     138 </span><span class="lineCov">         20 : }</span>
 <span class="lineNum">     139 </span>            : 
-<span class="lineNum">     140 </span><span class="lineNoCov">          0 : - (void)configureInjectionsInDefinition:(TyphoonDefinition *)definition</span>
+<span class="lineNum">     140 </span><span class="lineCov">        412 : - (void)configureInjectionsInDefinition:(TyphoonDefinition *)definition</span>
 <span class="lineNum">     141 </span>            : {
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 :     [definition enumerateInjectionsOfKind:[TyphoonInjectionByConfig class] options:TyphoonInjectionsEnumerationOptionAll</span>
-<span class="lineNum">     143 </span><span class="lineNoCov">          0 :                                usingBlock:^(TyphoonInjectionByConfig *injection, id *injectionToReplace, BOOL *stop) {</span>
-<span class="lineNum">     144 </span><span class="lineNoCov">          0 :         id configuredInjection = [self injectionForConfigInjection:injection];</span>
-<span class="lineNum">     145 </span><span class="lineNoCov">          0 :         if (configuredInjection) {</span>
-<span class="lineNum">     146 </span><span class="lineNoCov">          0 :            injection.configuredInjection = configuredInjection;</span>
-<span class="lineNum">     147 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     148 </span><span class="lineNoCov">          0 :     }];</span>
-<span class="lineNum">     149 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     142 </span><span class="lineCov">        412 :     [definition enumerateInjectionsOfKind:[TyphoonInjectionByConfig class] options:TyphoonInjectionsEnumerationOptionAll</span>
+<span class="lineNum">     143 </span><span class="lineCov">         10 :                                usingBlock:^(TyphoonInjectionByConfig *injection, id *injectionToReplace, BOOL *stop) {</span>
+<span class="lineNum">     144 </span><span class="lineCov">         10 :         id configuredInjection = [self injectionForConfigInjection:injection];</span>
+<span class="lineNum">     145 </span><span class="lineCov">         10 :         if (configuredInjection) {</span>
+<span class="lineNum">     146 </span><span class="lineCov">         10 :            injection.configuredInjection = configuredInjection;</span>
+<span class="lineNum">     147 </span><span class="lineCov">         10 :         }</span>
+<span class="lineNum">     148 </span><span class="lineCov">         20 :     }];</span>
+<span class="lineNum">     149 </span><span class="lineCov">        412 : }</span>
 <span class="lineNum">     150 </span>            : 
-<span class="lineNum">     151 </span><span class="lineNoCov">          0 : - (void)configureInjectionsInRuntimeArgumentsInDefinition:(TyphoonDefinition *)definition</span>
+<span class="lineNum">     151 </span><span class="lineCov">        412 : - (void)configureInjectionsInRuntimeArgumentsInDefinition:(TyphoonDefinition *)definition</span>
 <span class="lineNum">     152 </span>            : {
-<span class="lineNum">     153 </span><span class="lineNoCov">          0 :     [definition enumerateInjectionsOfKind:[TyphoonInjectionByReference class] options:TyphoonInjectionsEnumerationOptionAll</span>
-<span class="lineNum">     154 </span><span class="lineNoCov">          0 :                                usingBlock:^(TyphoonInjectionByReference *injection, id *injectionToReplace, BOOL *stop) {</span>
-<span class="lineNum">     155 </span><span class="lineNoCov">          0 :         [injection.referenceArguments enumerateArgumentsUsingBlock:^(TyphoonInjectionByConfig *argument, NSUInteger index, BOOL *stop) {</span>
-<span class="lineNum">     156 </span><span class="lineNoCov">          0 :            if ([argument isKindOfClass:[TyphoonInjectionByConfig class]]) {</span>
-<span class="lineNum">     157 </span><span class="lineNoCov">          0 :                id configuredInjection = [self injectionForConfigInjection:argument];</span>
-<span class="lineNum">     158 </span><span class="lineNoCov">          0 :                if (configuredInjection) {</span>
-<span class="lineNum">     159 </span><span class="lineNoCov">          0 :                    argument.configuredInjection = configuredInjection;</span>
-<span class="lineNum">     160 </span><span class="lineNoCov">          0 :                }</span>
-<span class="lineNum">     161 </span><span class="lineNoCov">          0 :            }</span>
-<span class="lineNum">     162 </span><span class="lineNoCov">          0 :         }];</span>
-<span class="lineNum">     163 </span><span class="lineNoCov">          0 :     }];</span>
-<span class="lineNum">     164 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     153 </span><span class="lineCov">        412 :     [definition enumerateInjectionsOfKind:[TyphoonInjectionByReference class] options:TyphoonInjectionsEnumerationOptionAll</span>
+<span class="lineNum">     154 </span><span class="lineCov">        248 :                                usingBlock:^(TyphoonInjectionByReference *injection, id *injectionToReplace, BOOL *stop) {</span>
+<span class="lineNum">     155 </span><span class="lineCov">        366 :         [injection.referenceArguments enumerateArgumentsUsingBlock:^(TyphoonInjectionByConfig *argument, NSUInteger index, BOOL *stop) {</span>
+<span class="lineNum">     156 </span><span class="lineCov">        118 :            if ([argument isKindOfClass:[TyphoonInjectionByConfig class]]) {</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :                id configuredInjection = [self injectionForConfigInjection:argument];</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :                if (configuredInjection) {</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :                    argument.configuredInjection = configuredInjection;</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :                }</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :            }</span>
+<span class="lineNum">     162 </span><span class="lineCov">        236 :         }];</span>
+<span class="lineNum">     163 </span><span class="lineCov">        496 :     }];</span>
+<span class="lineNum">     164 </span><span class="lineCov">        412 : }</span>
 <span class="lineNum">     165 </span>            : 
-<span class="lineNum">     166 </span><span class="lineNoCov">          0 : - (id&lt;TyphoonInjection&gt;)injectionForConfigInjection:(TyphoonInjectionByConfig *)injection</span>
+<span class="lineNum">     166 </span><span class="lineCov">         11 : - (id&lt;TyphoonInjection&gt;)injectionForConfigInjection:(TyphoonInjectionByConfig *)injection</span>
 <span class="lineNum">     167 </span>            : {
-<span class="lineNum">     168 </span><span class="lineNoCov">          0 :     id value = [self configurationValueForKey:injection.configKey];</span>
-<span class="lineNum">     169 </span><span class="lineNoCov">          0 :     id&lt;TyphoonInjection&gt;result = nil;</span>
+<span class="lineNum">     168 </span><span class="lineCov">         11 :     id value = [self configurationValueForKey:injection.configKey];</span>
+<span class="lineNum">     169 </span><span class="lineCov">         11 :     id&lt;TyphoonInjection&gt;result = nil;</span>
 <span class="lineNum">     170 </span>            : 
-<span class="lineNum">     171 </span><span class="lineNoCov">          0 :     if ([value isKindOfClass:[NSString class]]) {</span>
-<span class="lineNum">     172 </span><span class="lineNoCov">          0 :         result = TyphoonInjectionWithObjectFromString(value);</span>
-<span class="lineNum">     173 </span><span class="lineNoCov">          0 :     } else if (value) {</span>
-<span class="lineNum">     174 </span><span class="lineNoCov">          0 :         result = TyphoonInjectionWithObject(value);</span>
-<span class="lineNum">     175 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     171 </span><span class="lineCov">         11 :     if ([value isKindOfClass:[NSString class]]) {</span>
+<span class="lineNum">     172 </span><span class="lineCov">          7 :         result = TyphoonInjectionWithObjectFromString(value);</span>
+<span class="lineNum">     173 </span><span class="lineCov">         11 :     } else if (value) {</span>
+<span class="lineNum">     174 </span><span class="lineCov">          4 :         result = TyphoonInjectionWithObject(value);</span>
+<span class="lineNum">     175 </span><span class="lineCov">          4 :     }</span>
 <span class="lineNum">     176 </span>            : 
-<span class="lineNum">     177 </span><span class="lineNoCov">          0 :     return result;</span>
-<span class="lineNum">     178 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     177 </span><span class="lineCov">         11 :     return result;</span>
+<span class="lineNum">     178 </span><span class="lineCov">         11 : }</span>
 <span class="lineNum">     179 </span>            : 
 <span class="lineNum">     180 </span>            : @end
 <span class="lineNum">     181 </span>            : 
-<span class="lineNum">     182 </span><span class="lineNoCov">          0 : id TyphoonConfig(NSString *configKey)</span>
+<span class="lineNum">     182 </span><span class="lineCov">         62 : id TyphoonConfig(NSString *configKey)</span>
 <span class="lineNum">     183 </span>            : {
-<span class="lineNum">     184 </span><span class="lineNoCov">          0 :     return TyphoonInjectionWithConfigKey(configKey);</span>
-<span class="lineNum">     185 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     184 </span><span class="lineCov">         62 :     return TyphoonInjectionWithConfigKey(configKey);</span>
+<span class="lineNum">     185 </span><span class="lineCov">         62 : }</span>
 </pre>
       </td>
     </tr>

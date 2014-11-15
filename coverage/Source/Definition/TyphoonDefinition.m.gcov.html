@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">98</td>
             <td class="headerCovTableEntry">141</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryLo">69.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-14 22:53:44</td>
+            <td class="headerValue">2014-11-15 10:08:02</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -85,10 +85,10 @@
 <span class="lineNum">      27 </span>            : #import &quot;TyphoonInjections.h&quot;
 <span class="lineNum">      28 </span>            : #import &quot;TyphoonFactoryDefinition.h&quot;
 <span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span><span class="lineNoCov">          0 : static NSString *TyphoonScopeToString(TyphoonScope scope) {</span>
-<span class="lineNum">      31 </span><span class="lineNoCov">          0 :     switch (scope) {</span>
+<span class="lineNum">      30 </span><span class="lineCov">          5 : static NSString *TyphoonScopeToString(TyphoonScope scope) {</span>
+<span class="lineNum">      31 </span><span class="lineCov">          5 :     switch (scope) {</span>
 <span class="lineNum">      32 </span>            :         case TyphoonScopeObjectGraph:
-<span class="lineNum">      33 </span><span class="lineNoCov">          0 :             return @&quot;ObjectGraph&quot;;</span>
+<span class="lineNum">      33 </span><span class="lineCov">          5 :             return @&quot;ObjectGraph&quot;;</span>
 <span class="lineNum">      34 </span>            :         case TyphoonScopePrototype:
 <span class="lineNum">      35 </span><span class="lineNoCov">          0 :             return @&quot;Prototype&quot;;</span>
 <span class="lineNum">      36 </span>            :         case TyphoonScopeSingleton:
@@ -98,17 +98,17 @@
 <span class="lineNum">      40 </span>            :         default:
 <span class="lineNum">      41 </span><span class="lineNoCov">          0 :             return @&quot;Unknown&quot;;</span>
 <span class="lineNum">      42 </span>            :     }
-<span class="lineNum">      43 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      43 </span><span class="lineCov">          5 : }</span>
 <span class="lineNum">      44 </span>            : 
 <span class="lineNum">      45 </span>            : 
 <span class="lineNum">      46 </span>            : @interface TyphoonDefinition () &lt;TyphoonObjectWithCustomInjection&gt;
-<span class="lineNum">      47 </span><span class="lineNoCov">          0 : @property(nonatomic, strong) TyphoonMethod *initializer;</span>
-<span class="lineNum">      48 </span><span class="lineNoCov">          0 : @property(nonatomic, strong) NSString *key;</span>
-<span class="lineNum">      49 </span><span class="lineNoCov">          0 : @property(nonatomic, strong) TyphoonRuntimeArguments *currentRuntimeArguments;</span>
-<span class="lineNum">      50 </span><span class="lineNoCov">          0 : @property(nonatomic, getter = isInitializerGenerated) BOOL initializerGenerated;</span>
+<span class="lineNum">      47 </span><span class="lineCov">        766 : @property(nonatomic, strong) TyphoonMethod *initializer;</span>
+<span class="lineNum">      48 </span><span class="lineCov">      52412 : @property(nonatomic, strong) NSString *key;</span>
+<span class="lineNum">      49 </span><span class="lineCov">       8403 : @property(nonatomic, strong) TyphoonRuntimeArguments *currentRuntimeArguments;</span>
+<span class="lineNum">      50 </span><span class="lineCov">        610 : @property(nonatomic, getter = isInitializerGenerated) BOOL initializerGenerated;</span>
 <span class="lineNum">      51 </span>            : @end
 <span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : @implementation TyphoonDefinition</span>
+<span class="lineNum">      53 </span><span class="lineCov">        634 : @implementation TyphoonDefinition</span>
 <span class="lineNum">      54 </span>            : {
 <span class="lineNum">      55 </span>            :     BOOL _isScopeSetByUser;
 <span class="lineNum">      56 </span>            : }
@@ -126,49 +126,49 @@
 <span class="lineNum">      68 </span><span class="lineNoCov">          0 :     return nil;</span>
 <span class="lineNum">      69 </span>            : }
 <span class="lineNum">      70 </span>            : 
-<span class="lineNum">      71 </span><span class="lineNoCov">          0 : + (id)withClass:(Class)clazz</span>
+<span class="lineNum">      71 </span><span class="lineCov">        231 : + (id)withClass:(Class)clazz</span>
 <span class="lineNum">      72 </span>            : {
-<span class="lineNum">      73 </span><span class="lineNoCov">          0 :     return [[self alloc] initWithClass:clazz key:nil];</span>
+<span class="lineNum">      73 </span><span class="lineCov">        231 :     return [[self alloc] initWithClass:clazz key:nil];</span>
 <span class="lineNum">      74 </span>            : }
 <span class="lineNum">      75 </span>            : 
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 : + (id)withClass:(Class)clazz configuration:(TyphoonDefinitionBlock)injections</span>
+<span class="lineNum">      76 </span><span class="lineCov">       2248 : + (id)withClass:(Class)clazz configuration:(TyphoonDefinitionBlock)injections</span>
 <span class="lineNum">      77 </span>            : {
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 :     return [self withClass:clazz key:nil injections:injections];</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      78 </span><span class="lineCov">       2248 :     return [self withClass:clazz key:nil injections:injections];</span>
+<span class="lineNum">      79 </span><span class="lineCov">       2248 : }</span>
 <span class="lineNum">      80 </span>            : 
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : + (id)withClass:(Class)clazz key:(NSString *)key injections:(TyphoonDefinitionBlock)configuration</span>
+<span class="lineNum">      81 </span><span class="lineCov">       2248 : + (id)withClass:(Class)clazz key:(NSString *)key injections:(TyphoonDefinitionBlock)configuration</span>
 <span class="lineNum">      82 </span>            : {
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 :     TyphoonDefinition *definition = [[self alloc] initWithClass:clazz key:key];</span>
+<span class="lineNum">      83 </span><span class="lineCov">       2248 :     TyphoonDefinition *definition = [[self alloc] initWithClass:clazz key:key];</span>
 <span class="lineNum">      84 </span>            : 
-<span class="lineNum">      85 </span><span class="lineNoCov">          0 :     if (configuration) {</span>
-<span class="lineNum">      86 </span><span class="lineNoCov">          0 :         configuration(definition);</span>
-<span class="lineNum">      87 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">      85 </span><span class="lineCov">       2248 :     if (configuration) {</span>
+<span class="lineNum">      86 </span><span class="lineCov">       2248 :         configuration(definition);</span>
+<span class="lineNum">      87 </span><span class="lineCov">       2248 :     }</span>
 <span class="lineNum">      88 </span>            : 
-<span class="lineNum">      89 </span><span class="lineNoCov">          0 :     [definition validateScope];</span>
+<span class="lineNum">      89 </span><span class="lineCov">       2248 :     [definition validateScope];</span>
 <span class="lineNum">      90 </span>            : 
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 :     return definition;</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      91 </span><span class="lineCov">       2248 :     return definition;</span>
+<span class="lineNum">      92 </span><span class="lineCov">       2248 : }</span>
 <span class="lineNum">      93 </span>            : 
 <span class="lineNum">      94 </span><span class="lineNoCov">          0 : + (id)withFactory:(id)factory selector:(SEL)selector</span>
 <span class="lineNum">      95 </span>            : {
 <span class="lineNum">      96 </span><span class="lineNoCov">          0 :     return [self withFactory:factory selector:selector parameters:nil];</span>
 <span class="lineNum">      97 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">      98 </span>            : 
-<span class="lineNum">      99 </span><span class="lineNoCov">          0 : + (id)withFactory:(id)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))params</span>
+<span class="lineNum">      99 </span><span class="lineCov">         56 : + (id)withFactory:(id)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))params</span>
 <span class="lineNum">     100 </span>            : {
-<span class="lineNum">     101 </span><span class="lineNoCov">          0 :     return [self withFactory:factory selector:selector parameters:params configuration:nil];</span>
-<span class="lineNum">     102 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     101 </span><span class="lineCov">         56 :     return [self withFactory:factory selector:selector parameters:params configuration:nil];</span>
+<span class="lineNum">     102 </span><span class="lineCov">         56 : }</span>
 <span class="lineNum">     103 </span>            : 
-<span class="lineNum">     104 </span><span class="lineNoCov">          0 : + (id)withFactory:(id)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *))parametersBlock configuration:(void (^)(TyphoonFactoryDefinition *))configuration</span>
+<span class="lineNum">     104 </span><span class="lineCov">         56 : + (id)withFactory:(id)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *))parametersBlock configuration:(void (^)(TyphoonFactoryDefinition *))configuration</span>
 <span class="lineNum">     105 </span>            : {
-<span class="lineNum">     106 </span><span class="lineNoCov">          0 :     TyphoonFactoryDefinition *definition = [[TyphoonFactoryDefinition alloc] initWithFactory:factory selector:selector parameters:parametersBlock];</span>
+<span class="lineNum">     106 </span><span class="lineCov">         56 :     TyphoonFactoryDefinition *definition = [[TyphoonFactoryDefinition alloc] initWithFactory:factory selector:selector parameters:parametersBlock];</span>
 <span class="lineNum">     107 </span>            : 
-<span class="lineNum">     108 </span><span class="lineNoCov">          0 :     if (configuration) {</span>
+<span class="lineNum">     108 </span><span class="lineCov">         56 :     if (configuration) {</span>
 <span class="lineNum">     109 </span><span class="lineNoCov">          0 :         configuration(definition);</span>
 <span class="lineNum">     110 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">     111 </span>            : 
-<span class="lineNum">     112 </span><span class="lineNoCov">          0 :     return definition;</span>
-<span class="lineNum">     113 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     112 </span><span class="lineCov">         56 :     return definition;</span>
+<span class="lineNum">     113 </span><span class="lineCov">         56 : }</span>
 <span class="lineNum">     114 </span>            : 
 <span class="lineNum">     115 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">     116 </span>            : #pragma mark - TyphoonObjectWithCustomInjection
@@ -176,44 +176,44 @@
 <span class="lineNum">     118 </span>            : 
 <span class="lineNum">     119 </span>            : - (id)typhoonCustomObjectInjection
 <span class="lineNum">     120 </span>            : {
-<span class="lineNum">     121 </span><span class="lineNoCov">          0 :     return [[TyphoonInjectionByReference alloc] initWithReference:self.key args:self.currentRuntimeArguments];</span>
+<span class="lineNum">     121 </span><span class="lineCov">       2948 :     return [[TyphoonInjectionByReference alloc] initWithReference:self.key args:self.currentRuntimeArguments];</span>
 <span class="lineNum">     122 </span>            : }
 <span class="lineNum">     123 </span>            : 
 <span class="lineNum">     124 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">     125 </span>            : #pragma MARK: - Interface Methods
 <span class="lineNum">     126 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">     127 </span>            : 
-<span class="lineNum">     128 </span><span class="lineNoCov">          0 : - (void)injectProperty:(SEL)selector</span>
+<span class="lineNum">     128 </span><span class="lineCov">         70 : - (void)injectProperty:(SEL)selector</span>
 <span class="lineNum">     129 </span>            : {
-<span class="lineNum">     130 </span><span class="lineNoCov">          0 :     [self injectProperty:selector with:[[TyphoonInjectionByType alloc] init]];</span>
-<span class="lineNum">     131 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     130 </span><span class="lineCov">         70 :     [self injectProperty:selector with:[[TyphoonInjectionByType alloc] init]];</span>
+<span class="lineNum">     131 </span><span class="lineCov">         70 : }</span>
 <span class="lineNum">     132 </span>            : 
-<span class="lineNum">     133 </span><span class="lineNoCov">          0 : - (void)injectProperty:(SEL)selector with:(id)injection</span>
+<span class="lineNum">     133 </span><span class="lineCov">       1916 : - (void)injectProperty:(SEL)selector with:(id)injection</span>
 <span class="lineNum">     134 </span>            : {
-<span class="lineNum">     135 </span><span class="lineNoCov">          0 :     injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);</span>
-<span class="lineNum">     136 </span><span class="lineNoCov">          0 :     [injection setPropertyName:NSStringFromSelector(selector)];</span>
-<span class="lineNum">     137 </span><span class="lineNoCov">          0 :     [_injectedProperties addObject:injection];</span>
-<span class="lineNum">     138 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     135 </span><span class="lineCov">       1916 :     injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);</span>
+<span class="lineNum">     136 </span><span class="lineCov">       1916 :     [injection setPropertyName:NSStringFromSelector(selector)];</span>
+<span class="lineNum">     137 </span><span class="lineCov">       1916 :     [_injectedProperties addObject:injection];</span>
+<span class="lineNum">     138 </span><span class="lineCov">       1916 : }</span>
 <span class="lineNum">     139 </span>            : 
-<span class="lineNum">     140 </span><span class="lineNoCov">          0 : - (void)injectMethod:(SEL)selector parameters:(void(^)(TyphoonMethod *method))parametersBlock</span>
+<span class="lineNum">     140 </span><span class="lineCov">        209 : - (void)injectMethod:(SEL)selector parameters:(void(^)(TyphoonMethod *method))parametersBlock</span>
 <span class="lineNum">     141 </span>            : {
-<span class="lineNum">     142 </span><span class="lineNoCov">          0 :     TyphoonMethod *method = [[TyphoonMethod alloc] initWithSelector:selector];</span>
-<span class="lineNum">     143 </span><span class="lineNoCov">          0 :     if (parametersBlock) {</span>
-<span class="lineNum">     144 </span><span class="lineNoCov">          0 :         parametersBlock(method);</span>
-<span class="lineNum">     145 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     146 </span><span class="lineNoCov">          0 :     [method checkParametersCount];</span>
-<span class="lineNum">     147 </span><span class="lineNoCov">          0 :     [_injectedMethods addObject:method];</span>
-<span class="lineNum">     148 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     142 </span><span class="lineCov">        209 :     TyphoonMethod *method = [[TyphoonMethod alloc] initWithSelector:selector];</span>
+<span class="lineNum">     143 </span><span class="lineCov">        209 :     if (parametersBlock) {</span>
+<span class="lineNum">     144 </span><span class="lineCov">        209 :         parametersBlock(method);</span>
+<span class="lineNum">     145 </span><span class="lineCov">        209 :     }</span>
+<span class="lineNum">     146 </span><span class="lineCov">        209 :     [method checkParametersCount];</span>
+<span class="lineNum">     147 </span><span class="lineCov">        209 :     [_injectedMethods addObject:method];</span>
+<span class="lineNum">     148 </span><span class="lineCov">        209 : }</span>
 <span class="lineNum">     149 </span>            : 
-<span class="lineNum">     150 </span><span class="lineNoCov">          0 : - (void)useInitializer:(SEL)selector parameters:(void(^)(TyphoonMethod *initializer))parametersBlock</span>
+<span class="lineNum">     150 </span><span class="lineCov">       1112 : - (void)useInitializer:(SEL)selector parameters:(void(^)(TyphoonMethod *initializer))parametersBlock</span>
 <span class="lineNum">     151 </span>            : {
-<span class="lineNum">     152 </span><span class="lineNoCov">          0 :     TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:selector];</span>
-<span class="lineNum">     153 </span><span class="lineNoCov">          0 :     if (parametersBlock) {</span>
-<span class="lineNum">     154 </span><span class="lineNoCov">          0 :         parametersBlock(initializer);</span>
-<span class="lineNum">     155 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     156 </span><span class="lineNoCov">          0 :     [initializer checkParametersCount];</span>
-<span class="lineNum">     157 </span><span class="lineNoCov">          0 :     _initializer = initializer;</span>
-<span class="lineNum">     158 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     152 </span><span class="lineCov">       1112 :     TyphoonMethod *initializer = [[TyphoonMethod alloc] initWithSelector:selector];</span>
+<span class="lineNum">     153 </span><span class="lineCov">       1112 :     if (parametersBlock) {</span>
+<span class="lineNum">     154 </span><span class="lineCov">       1112 :         parametersBlock(initializer);</span>
+<span class="lineNum">     155 </span><span class="lineCov">       1112 :     }</span>
+<span class="lineNum">     156 </span><span class="lineCov">       1112 :     [initializer checkParametersCount];</span>
+<span class="lineNum">     157 </span><span class="lineCov">       1112 :     _initializer = initializer;</span>
+<span class="lineNum">     158 </span><span class="lineCov">       1112 : }</span>
 <span class="lineNum">     159 </span>            : 
 <span class="lineNum">     160 </span><span class="lineNoCov">          0 : - (void)useInitializer:(SEL)selector</span>
 <span class="lineNum">     161 </span>            : {
@@ -252,15 +252,15 @@
 <span class="lineNum">     194 </span>            : #pragma mark - Making injections
 <span class="lineNum">     195 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">     196 </span>            : 
-<span class="lineNum">     197 </span><span class="lineNoCov">          0 : - (id)property:(SEL)factorySelector</span>
+<span class="lineNum">     197 </span><span class="lineCov">         65 : - (id)property:(SEL)factorySelector</span>
 <span class="lineNum">     198 </span>            : {
-<span class="lineNum">     199 </span><span class="lineNoCov">          0 :     return [self keyPath:NSStringFromSelector(factorySelector)];</span>
+<span class="lineNum">     199 </span><span class="lineCov">         65 :     return [self keyPath:NSStringFromSelector(factorySelector)];</span>
 <span class="lineNum">     200 </span>            : }
 <span class="lineNum">     201 </span>            : 
-<span class="lineNum">     202 </span><span class="lineNoCov">          0 : - (id)keyPath:(NSString *)keyPath</span>
+<span class="lineNum">     202 </span><span class="lineCov">         67 : - (id)keyPath:(NSString *)keyPath</span>
 <span class="lineNum">     203 </span>            : {
-<span class="lineNum">     204 </span><span class="lineNoCov">          0 :     return [[TyphoonInjectionByFactoryReference alloc] initWithReference:self.key args:self.currentRuntimeArguments keyPath:keyPath];</span>
-<span class="lineNum">     205 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     204 </span><span class="lineCov">         67 :     return [[TyphoonInjectionByFactoryReference alloc] initWithReference:self.key args:self.currentRuntimeArguments keyPath:keyPath];</span>
+<span class="lineNum">     205 </span><span class="lineCov">         67 : }</span>
 <span class="lineNum">     206 </span>            : 
 <span class="lineNum">     207 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">     208 </span>            : #pragma mark - Overridden Methods
@@ -268,47 +268,47 @@
 <span class="lineNum">     210 </span>            : 
 <span class="lineNum">     211 </span>            : - (TyphoonMethod *)initializer
 <span class="lineNum">     212 </span>            : {
-<span class="lineNum">     213 </span><span class="lineNoCov">          0 :     if (!_initializer) {</span>
-<span class="lineNum">     214 </span><span class="lineNoCov">          0 :         TyphoonMethod *parentInitializer = _parent.initializer;</span>
-<span class="lineNum">     215 </span><span class="lineNoCov">          0 :         if (parentInitializer) {</span>
-<span class="lineNum">     216 </span><span class="lineNoCov">          0 :             return parentInitializer;</span>
+<span class="lineNum">     213 </span><span class="lineCov">       2048 :     if (!_initializer) {</span>
+<span class="lineNum">     214 </span><span class="lineCov">        616 :         TyphoonMethod *parentInitializer = _parent.initializer;</span>
+<span class="lineNum">     215 </span><span class="lineCov">        616 :         if (parentInitializer) {</span>
+<span class="lineNum">     216 </span><span class="lineCov">          6 :             return parentInitializer;</span>
 <span class="lineNum">     217 </span>            :         }
 <span class="lineNum">     218 </span>            :         else {
-<span class="lineNum">     219 </span><span class="lineNoCov">          0 :             [self setInitializer:[[TyphoonMethod alloc] initWithSelector:@selector(init)]];</span>
-<span class="lineNum">     220 </span><span class="lineNoCov">          0 :             self.initializerGenerated = YES;</span>
+<span class="lineNum">     219 </span><span class="lineCov">        610 :             [self setInitializer:[[TyphoonMethod alloc] initWithSelector:@selector(init)]];</span>
+<span class="lineNum">     220 </span><span class="lineCov">        610 :             self.initializerGenerated = YES;</span>
 <span class="lineNum">     221 </span>            :         }
-<span class="lineNum">     222 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     223 </span><span class="lineNoCov">          0 :     return _initializer;</span>
-<span class="lineNum">     224 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     222 </span><span class="lineCov">       3876 :     }</span>
+<span class="lineNum">     223 </span><span class="lineCov">       2042 :     return _initializer;</span>
+<span class="lineNum">     224 </span><span class="lineCov">       2048 : }</span>
 <span class="lineNum">     225 </span>            : 
 <span class="lineNum">     226 </span>            : - (BOOL)isInitializerGenerated
 <span class="lineNum">     227 </span>            : {
-<span class="lineNum">     228 </span><span class="lineNoCov">          0 :     [self initializer]; //call getter to generate initializer if needed</span>
-<span class="lineNum">     229 </span><span class="lineNoCov">          0 :     return _initializerGenerated;</span>
+<span class="lineNum">     228 </span><span class="lineCov">          2 :     [self initializer]; //call getter to generate initializer if needed</span>
+<span class="lineNum">     229 </span><span class="lineCov">          2 :     return _initializerGenerated;</span>
 <span class="lineNum">     230 </span>            : }
 <span class="lineNum">     231 </span>            : 
 <span class="lineNum">     232 </span>            : - (TyphoonScope)scope
 <span class="lineNum">     233 </span>            : {
-<span class="lineNum">     234 </span><span class="lineNoCov">          0 :     if (_parent &amp;&amp; !_isScopeSetByUser) {</span>
-<span class="lineNum">     235 </span><span class="lineNoCov">          0 :         return _parent.scope;</span>
+<span class="lineNum">     234 </span><span class="lineCov">       7688 :     if (_parent &amp;&amp; !_isScopeSetByUser) {</span>
+<span class="lineNum">     235 </span><span class="lineCov">         20 :         return _parent.scope;</span>
 <span class="lineNum">     236 </span>            :     }
-<span class="lineNum">     237 </span><span class="lineNoCov">          0 :     return _scope;</span>
-<span class="lineNum">     238 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     237 </span><span class="lineCov">       7646 :     return _scope;</span>
+<span class="lineNum">     238 </span><span class="lineCov">       7666 : }</span>
 <span class="lineNum">     239 </span>            : 
-<span class="lineNum">     240 </span><span class="lineNoCov">          0 : - (void)setScope:(TyphoonScope)scope</span>
+<span class="lineNum">     240 </span><span class="lineCov">        614 : - (void)setScope:(TyphoonScope)scope</span>
 <span class="lineNum">     241 </span>            : {
-<span class="lineNum">     242 </span><span class="lineNoCov">          0 :     _scope = scope;</span>
-<span class="lineNum">     243 </span><span class="lineNoCov">          0 :     _isScopeSetByUser = YES;</span>
-<span class="lineNum">     244 </span><span class="lineNoCov">          0 :     [self validateScope];</span>
-<span class="lineNum">     245 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     242 </span><span class="lineCov">        614 :     _scope = scope;</span>
+<span class="lineNum">     243 </span><span class="lineCov">        614 :     _isScopeSetByUser = YES;</span>
+<span class="lineNum">     244 </span><span class="lineCov">        614 :     [self validateScope];</span>
+<span class="lineNum">     245 </span><span class="lineCov">        614 : }</span>
 <span class="lineNum">     246 </span>            : 
-<span class="lineNum">     247 </span><span class="lineNoCov">          0 : - (void)setParent:(id)parent</span>
+<span class="lineNum">     247 </span><span class="lineCov">         10 : - (void)setParent:(id)parent</span>
 <span class="lineNum">     248 </span>            : {
-<span class="lineNum">     249 </span><span class="lineNoCov">          0 :     _parent = parent;</span>
-<span class="lineNum">     250 </span><span class="lineNoCov">          0 :     if (![_parent isKindOfClass:[TyphoonDefinition class]]) {</span>
+<span class="lineNum">     249 </span><span class="lineCov">         10 :     _parent = parent;</span>
+<span class="lineNum">     250 </span><span class="lineCov">         10 :     if (![_parent isKindOfClass:[TyphoonDefinition class]]) {</span>
 <span class="lineNum">     251 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Only TyphoonDefinition object can be set as parent. But in method '%@' object of class %@ set as parent&quot;, self.key, [parent class]];</span>
 <span class="lineNum">     252 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     253 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     253 </span><span class="lineCov">         10 : }</span>
 <span class="lineNum">     254 </span>            : 
 <span class="lineNum">     255 </span>            : 
 <span class="lineNum">     256 </span>            : //-------------------------------------------------------------------------------------------
@@ -317,21 +317,21 @@
 <span class="lineNum">     259 </span>            : 
 <span class="lineNum">     260 </span>            : - (NSString *)description
 <span class="lineNum">     261 </span>            : {
-<span class="lineNum">     262 </span><span class="lineNoCov">          0 :     return [NSString stringWithFormat:@&quot;%@: class='%@', key='%@', scope='%@'&quot;, NSStringFromClass([self class]),</span>
-<span class="lineNum">     263 </span><span class="lineNoCov">          0 :     NSStringFromClass(_type), _key,</span>
-<span class="lineNum">     264 </span><span class="lineNoCov">          0 :                                       TyphoonScopeToString(_scope)];</span>
+<span class="lineNum">     262 </span><span class="lineCov">         15 :     return [NSString stringWithFormat:@&quot;%@: class='%@', key='%@', scope='%@'&quot;, NSStringFromClass([self class]),</span>
+<span class="lineNum">     263 </span><span class="lineCov">          5 :     NSStringFromClass(_type), _key,</span>
+<span class="lineNum">     264 </span><span class="lineCov">          5 :                                       TyphoonScopeToString(_scope)];</span>
 <span class="lineNum">     265 </span>            : }
 <span class="lineNum">     266 </span>            : 
-<span class="lineNum">     267 </span><span class="lineNoCov">          0 : - (id)copyWithZone:(NSZone *)zone</span>
+<span class="lineNum">     267 </span><span class="lineCov">        156 : - (id)copyWithZone:(NSZone *)zone</span>
 <span class="lineNum">     268 </span>            : {
-<span class="lineNum">     269 </span><span class="lineNoCov">          0 :     TyphoonDefinition *copy = [[TyphoonDefinition alloc] initWithClass:_type key:[_key copy]];</span>
-<span class="lineNum">     270 </span><span class="lineNoCov">          0 :     [copy setInitializer:[self.initializer copy]];</span>
-<span class="lineNum">     271 </span><span class="lineNoCov">          0 :     for (id &lt;TyphoonPropertyInjection&gt; property in _injectedProperties) {</span>
-<span class="lineNum">     272 </span><span class="lineNoCov">          0 :         [copy addInjectedProperty:[property copyWithZone:NSDefaultMallocZone()]];</span>
-<span class="lineNum">     273 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     274 </span><span class="lineNoCov">          0 :     copy-&gt;_injectedMethods = [_injectedMethods copy];</span>
-<span class="lineNum">     275 </span><span class="lineNoCov">          0 :     return copy;</span>
-<span class="lineNum">     276 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     269 </span><span class="lineCov">        156 :     TyphoonDefinition *copy = [[TyphoonDefinition alloc] initWithClass:_type key:[_key copy]];</span>
+<span class="lineNum">     270 </span><span class="lineCov">        156 :     [copy setInitializer:[self.initializer copy]];</span>
+<span class="lineNum">     271 </span><span class="lineCov">        506 :     for (id &lt;TyphoonPropertyInjection&gt; property in _injectedProperties) {</span>
+<span class="lineNum">     272 </span><span class="lineCov">        132 :         [copy addInjectedProperty:[property copyWithZone:NSDefaultMallocZone()]];</span>
+<span class="lineNum">     273 </span><span class="lineCov">        506 :     }</span>
+<span class="lineNum">     274 </span><span class="lineCov">        156 :     copy-&gt;_injectedMethods = [_injectedMethods copy];</span>
+<span class="lineNum">     275 </span><span class="lineCov">        156 :     return copy;</span>
+<span class="lineNum">     276 </span><span class="lineCov">        156 : }</span>
 <span class="lineNum">     277 </span>            : 
 <span class="lineNum">     278 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">     279 </span>            : #pragma mark - Private Methods
@@ -339,12 +339,12 @@
 <span class="lineNum">     281 </span>            : 
 <span class="lineNum">     282 </span>            : - (void)validateScope
 <span class="lineNum">     283 </span>            : {
-<span class="lineNum">     284 </span><span class="lineNoCov">          0 :     if ((self.scope != TyphoonScopePrototype &amp;&amp; self.scope != TyphoonScopeObjectGraph) &amp;&amp; [self hasRuntimeArgumentInjections]) {</span>
+<span class="lineNum">     284 </span><span class="lineCov">       5512 :     if ((self.scope != TyphoonScopePrototype &amp;&amp; self.scope != TyphoonScopeObjectGraph) &amp;&amp; [self hasRuntimeArgumentInjections]) {</span>
 <span class="lineNum">     285 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException</span>
 <span class="lineNum">     286 </span>            :             format:@&quot;The runtime arguments injections are only applicable to prototype and object-graph scoped definitions, but is set for definition: %@ &quot;,
 <span class="lineNum">     287 </span>            :                    self];
 <span class="lineNum">     288 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     289 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     289 </span><span class="lineCov">       2862 : }</span>
 <span class="lineNum">     290 </span>            : 
 <span class="lineNum">     291 </span>            : 
 <span class="lineNum">     292 </span>            : @end
