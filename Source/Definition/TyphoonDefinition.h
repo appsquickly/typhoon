@@ -258,8 +258,8 @@ definition.factory = [self sqliteManager];
 
 @interface TyphoonDefinition(Deprecated)
 
-- (void)setBeforeInjections:(SEL)sel DEPRECATED_MSG_ATTRIBUTE("Use performBeforeInjections methods (This method will be unaivalable in Typhoon 3.0)");
-- (void)setAfterInjections:(SEL)sel DEPRECATED_MSG_ATTRIBUTE("Use performAterInjections methods (This method will be unaivalable in Typhoon 3.0)");
+- (void)setBeforeInjections:(SEL)sel DEPRECATED_MSG_ATTRIBUTE("Use performBeforeInjections method. (setBeforeInjections will be unavailable in Typhoon 3.0)");
+- (void)setAfterInjections:(SEL)sel DEPRECATED_MSG_ATTRIBUTE("Use performAterInjections method (setAfterInjections method will be unavailable in Typhoon 3.0)");
 
 @end
 
