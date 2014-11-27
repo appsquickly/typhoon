@@ -46,7 +46,7 @@
         TyphoonInjectionByReference *referenceInjection = injection;
         [referenceInjection.referenceArguments enumerateArgumentsUsingBlock:^(id argument, NSUInteger index, BOOL *stop) {
             if ([argument isKindOfClass:[TyphoonInjectionByRuntimeArgument class]]) {
-                [NSException raise:NSInternalInconsistencyException format:@"Congratulations you've tried to do something über-funky with Typhoon %). You are the 3rd person EVER to receive this error message. Returning a definition that is the result of a nested runtime argument is not supported. Instead unroll the definition."];
+                [NSException raise:NSInternalInconsistencyException format:@"Congratulations you've tried to do something über-funky with Typhoon %%). You are the 3rd person EVER to receive this error message. Returning a definition that is the result of a nested runtime argument is not supported. Instead unroll the definition."];
             } else {
                 [self validateRuntimeArgumentWithInjection:argument];
             }
