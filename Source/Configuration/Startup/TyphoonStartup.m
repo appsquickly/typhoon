@@ -28,8 +28,6 @@
 
 + (void)load
 {
-    [self loadInitialFactory];
-
     __weak __typeof (self) weakSelf = self;
     [[NSNotificationCenter defaultCenter]
          addObserverForName:ApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
@@ -68,13 +66,13 @@
     NSDictionary *bundleInfoDictionary = [[NSBundle mainBundle] infoDictionary];
 #if TARGET_OS_IPHONE
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        names = [bundleInfoDictionary objectForKey:@"TyphoonInitialAssemblies(iPad)"];
+        names = bundleInfoDictionary[@"TyphoonInitialAssemblies(iPad)"];
     } else {
-        names = [bundleInfoDictionary objectForKey:@"TyphoonInitialAssemblies(iPhone)"];
+        names = bundleInfoDictionary[@"TyphoonInitialAssemblies(iPhone)"];
     }
 #endif
     if (!names) {
-        names = [bundleInfoDictionary objectForKey:@"TyphoonInitialAssemblies"];
+        names = bundleInfoDictionary[@"TyphoonInitialAssemblies"];
     }
 
     return names;
@@ -113,6 +111,7 @@ static TyphoonComponentFactory *initialFactory;
     void(*originalImp)(id,SEL,id) = (void(*)(id,SEL,id))method_getImplementation(method);
     
     IMP adjustedImp = imp_implementationWithBlock(^(id instance, id delegate) {
+        [self loadInitialFactory];
         id factoryFromDelegate = [self factoryFromAppDelegate:delegate];
         if (factoryFromDelegate && initialFactory) {
             [NSException raise:NSInternalInconsistencyException format:@"The method 'initialFactory' is implemented on %@, also Info.plist"
