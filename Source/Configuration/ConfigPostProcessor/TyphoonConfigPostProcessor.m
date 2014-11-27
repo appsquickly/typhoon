@@ -102,9 +102,10 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 - (id)configurationValueForKey:(NSString *)key
 {
     __block id value = nil;
+#if DEBUG
     __block NSString *foundExtension = nil;
+#endif
     [_configs enumerateKeysAndObjectsUsingBlock:^(NSString *extension, id<TyphoonConfiguration>config, BOOL *stop) {
-
         id object = [config objectForKey:key];
 #if !DEBUG
         if (object) {
