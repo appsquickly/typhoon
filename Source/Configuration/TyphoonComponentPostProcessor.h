@@ -11,6 +11,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class TyphoonDefinition;
+
 /**
 * @ingroup Factory
 *
@@ -25,5 +27,8 @@
  Post process a component after its initialization and return the processed component.
 */
 - (id)postProcessComponent:(id)component;
+
+- (id)postProcessComponent:(id)component withDefinition:(TyphoonDefinition *)definition;
+
 
 @end

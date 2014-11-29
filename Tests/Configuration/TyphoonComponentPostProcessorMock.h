@@ -11,13 +11,10 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonComponentPostProcessor.h"
-#import "TyphoonOrdered.h"
 
 typedef id (^PostProcessBlock)(id);
 
-@interface TyphoonComponentPostProcessorMock : NSObject <TyphoonComponentPostProcessor, TyphoonOrdered>
-
-- (id)initWithOrder:(NSInteger)order;
+@interface TyphoonComponentPostProcessorMock : NSObject <TyphoonComponentPostProcessor>
 
 @property(nonatomic, copy) PostProcessBlock postProcessBlock;
 

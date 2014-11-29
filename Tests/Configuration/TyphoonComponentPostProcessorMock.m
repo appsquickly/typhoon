@@ -13,18 +13,6 @@
 
 
 @implementation TyphoonComponentPostProcessorMock
-{
-    NSInteger _order;
-}
-
-- (id)initWithOrder:(NSInteger)order
-{
-    self = [super init];
-    if (self) {
-        _order = order;
-    }
-    return self;
-}
 
 - (id)postProcessComponent:(id)component
 {
@@ -32,11 +20,6 @@
         return _postProcessBlock(component);
     }
     return component;
-}
-
-- (NSInteger)order
-{
-    return _order;
 }
 
 @end

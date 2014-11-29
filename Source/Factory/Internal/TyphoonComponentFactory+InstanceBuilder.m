@@ -253,7 +253,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
         //Auto registering definition with AutoInjection
         if (IsClass(classOrProtocol)) {
-            TyphoonDefinition *autoDefinition = [self autoInjectionDefinitionForClass:classOrProtocol];
+            TyphoonDefinition *autoDefinition = [self autoDefinitionForClass:classOrProtocol];
             if (autoDefinition) {
                 [self registerDefinition:autoDefinition];
                 return [self definitionForType:classOrProtocol orNil:returnNilIfNotFound includeSubclasses:includeSubclasses];
@@ -294,26 +294,19 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     return results;
 }
 
-- (TyphoonDefinition *)autoInjectionDefinitionForClass:(Class)clazz
+- (TyphoonDefinition *)autoDefinitionForClass:(Class)clazz
 {
-    TyphoonDefinition *result = nil;
-
-    TyphoonFactoryAutoInjectionPostProcessor *postProcessor = [self autoInjectionPostProcessor];
-    NSArray *properties = [postProcessor autoInjectedPropertiesForClass:clazz];
-    if (properties) {
-        result = [TyphoonDefinition withClass:clazz];
-        for (id propertyInjection in properties) {
-            [result addInjectedPropertyIfNotExists:propertyInjection];
-        }
+    if ([[self autoInjectionPostProcessor] hasAnnotationForClass:clazz]) {
+        return [TyphoonDefinition withClass:clazz];
+    } else {
+        return nil;
     }
-
-    return result;
 }
 
 - (TyphoonFactoryAutoInjectionPostProcessor *)autoInjectionPostProcessor
 {
     TyphoonFactoryAutoInjectionPostProcessor *postProcessor = nil;
-    for (id<TyphoonComponentFactoryPostProcessor> item in _factoryPostProcessors) {
+    for (id<TyphoonDefinitionPostProcessor> item in _definitionPostProcessors) {
         if ([item isMemberOfClass:[TyphoonFactoryAutoInjectionPostProcessor class]]) {
             postProcessor = item;
             break;

@@ -130,12 +130,10 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 //-------------------------------------------------------------------------------------------
 #pragma mark - Protocol Methods
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessDefinition:(TyphoonDefinition *)definition replacement:(TyphoonDefinition **)definitionToReplace
 {
-    for (TyphoonDefinition *definition in [factory registry]) {
-        [self configureInjectionsInDefinition:definition];
-        [self configureInjectionsInRuntimeArgumentsInDefinition:definition];
-    }
+    [self configureInjectionsInDefinition:definition];
+    [self configureInjectionsInRuntimeArgumentsInDefinition:definition];
 }
 
 - (void)configureInjectionsInDefinition:(TyphoonDefinition *)definition

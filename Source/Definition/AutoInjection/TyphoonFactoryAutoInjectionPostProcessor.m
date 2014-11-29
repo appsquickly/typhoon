@@ -25,15 +25,9 @@ static id TypeForInjectionFromType(TyphoonTypeDescriptor *type);
 
 @implementation TyphoonFactoryAutoInjectionPostProcessor
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessDefinition:(TyphoonDefinition *)definition replacement:(TyphoonDefinition **)definitionToReplace
 {
-    for (TyphoonDefinition *definition in [factory registry]) {
-        [self postProcessDefinition:definition];
-    }
-}
-
-- (void)postProcessDefinition:(TyphoonDefinition *)definition
-{
+    //TODO: Handle case of TyphoonFactoryDefinition which haven't _type
     Class clazz = definition.type;
     if (clazz) {
         NSArray *properties = [self autoInjectedPropertiesForClass:clazz];
@@ -64,6 +58,12 @@ static id TypeForInjectionFromType(TyphoonTypeDescriptor *type);
     }
     return injections;
 }
+
+- (BOOL)hasAnnotationForClass:(Class)clazz
+{
+    return [self autoInjectedPropertiesForClass:clazz] != nil;
+}
+
 
 static BOOL IsTyphoonAutoInjectionType(TyphoonTypeDescriptor *type)
 {

@@ -50,7 +50,12 @@
 @end
 
 
-@implementation TyphoonPatcher
+@implementation TyphoonPatcher {
+    NSMutableDictionary *_patches;
+    NSMutableDictionary *_originals;
+    id<TyphoonDefinitionPostProcessorInvalidator> _invalidator;
+    BOOL _isDetaching;
+}
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
@@ -59,7 +64,8 @@
 {
     self = [super init];
     if (self) {
-        _patches = [[NSMutableDictionary alloc] init];
+        _patches = [NSMutableDictionary new];
+        _originals = [NSMutableDictionary new];
     }
     return self;
 }
@@ -69,37 +75,49 @@
 
 - (void)patchDefinitionWithKey:(NSString *)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock
 {
-    [_patches setObject:objectCreationBlock forKey:key];
+    [self patchDefinitionWithSelector:NSSelectorFromString(key) withObject:objectCreationBlock];
 }
 
 - (void)patchDefinition:(TyphoonDefinition *)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock
 {
-    [self patchDefinitionWithKey:definition.key withObject:objectCreationBlock];
+    [self patchDefinitionWithSelector:NSSelectorFromString(definition.key) withObject:objectCreationBlock];
 }
 
 - (void)patchDefinitionWithSelector:(SEL)definitionSelector withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock
 {
-    [self patchDefinitionWithKey:NSStringFromSelector(definitionSelector) withObject:objectCreationBlock];
+    [_patches setObject:objectCreationBlock forKey:NSStringFromSelector(definitionSelector)];
 }
 
 - (void)detach
 {
-    [self rollback];
+    [_invalidator invalidatePostProcessor:self];
+    _isDetaching = YES;
+    [_invalidator forcePostProcessing];
+    [_invalidator removePostProcessor:self];
 }
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Protocol Methods
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessDefinition:(TyphoonDefinition *)definition replacement:(TyphoonDefinition **)definitionToReplace
 {
-    [super postProcessComponentFactory:factory];
-
-    [factory enumerateDefinitions:^(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace, BOOL *stop) {
+    if (!_isDetaching) {
         TyphoonPatchObjectCreationBlock patchObjectBlock = _patches[definition.key];
         if (patchObjectBlock) {
             *definitionToReplace = [[TyphoonPatcherDefinition alloc] initWithOriginalDefinition:definition patchObjectBlock:patchObjectBlock];
+            _originals[definition.key] = definition;
         }
-    }];
+    } else {
+        TyphoonDefinition *originalDefinition = _originals[definition.key];
+        if (originalDefinition) {
+            *definitionToReplace = originalDefinition;
+        }
+    }
+}
+
+- (void)setPostProcessorInvalidator:(id<TyphoonDefinitionPostProcessorInvalidator>)invalidator
+{
+    _invalidator = invalidator;
 }
 
 

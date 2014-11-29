@@ -79,7 +79,7 @@
 
 - (BOOL)definitionIsInfrastructureComponent
 {
-    if ([_definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)] ||
+    if ([_definition.type conformsToProtocol:@protocol(TyphoonDefinitionPostProcessor)] ||
         [_definition.type conformsToProtocol:@protocol(TyphoonComponentPostProcessor)] ||
         [_definition.type conformsToProtocol:@protocol(TyphoonTypeConverter)]) {
         return YES;
@@ -92,7 +92,7 @@
     LogTrace(@"Registering Infrastructure component: %@ with key: %@", NSStringFromClass(_definition.type), _definition.key);
 
     id infrastructureComponent = [_componentFactory objectForDefinition:_definition args:nil];
-    if ([_definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)]) {
+    if ([_definition.type conformsToProtocol:@protocol(TyphoonDefinitionPostProcessor)]) {
         [_componentFactory attachPostProcessor:infrastructureComponent];
     }
     else if ([_definition.type conformsToProtocol:@protocol(TyphoonComponentPostProcessor)]) {

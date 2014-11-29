@@ -17,18 +17,20 @@
 #import "OCLogTemplate.h"
 #import "TyphoonDefinitionRegisterer.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
-#import "TyphoonOrdered.h"
 #import "TyphoonCallStack.h"
-#import "TyphoonParentReferenceHydratingPostProcessor.h"
 #import "TyphoonFactoryPropertyInjectionPostProcessor.h"
 #import "TyphoonComponentPostProcessor.h"
 #import "TyphoonWeakComponentsPool.h"
 #import "TyphoonFactoryAutoInjectionPostProcessor.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
 
 @property(nonatomic, strong) NSString *key;
 
+@end
+
+@interface TyphoonComponentFactory ()<TyphoonDefinitionPostProcessorInvalidator>
 @end
 
 @implementation TyphoonComponentFactory
@@ -58,9 +60,8 @@ static TyphoonComponentFactory *defaultFactory;
         _weakSingletons = [TyphoonWeakComponentsPool new];
         _objectGraphSharedInstances = (id <TyphoonComponentsPool>) [[NSMutableDictionary alloc] init];
         _stack = [TyphoonCallStack stack];
-        _factoryPostProcessors = [[NSMutableArray alloc] init];
+        _definitionPostProcessors = [[NSMutableArray alloc] init];
         _componentPostProcessors = [[NSMutableArray alloc] init];
-        [self attachPostProcessor:[TyphoonParentReferenceHydratingPostProcessor new]];
         [self attachAutoInjectionPostProcessorIfNeeded];
         [self attachPostProcessor:[TyphoonFactoryPropertyInjectionPostProcessor new]];
     }
@@ -117,10 +118,11 @@ static TyphoonComponentFactory *defaultFactory;
 - (void)registerDefinition:(TyphoonDefinition *)definition
 {
     TyphoonDefinitionRegisterer *registerer = [[TyphoonDefinitionRegisterer alloc] initWithDefinition:definition componentFactory:self];
+
     [registerer doRegistration];
 
-    if ([self isLoaded]) {
-        [self _load];
+    if ([registerer definitionIsInfrastructureComponent] && [self isLoaded]) {
+        [self invalidateDefinitionsPostProcessing];
     }
 }
 
@@ -219,17 +221,6 @@ static TyphoonComponentFactory *defaultFactory;
     }
 }
 
-
-- (void)attachPostProcessor:(id <TyphoonComponentFactoryPostProcessor>)postProcessor
-{
-    LogTrace(@"Attaching post processor: %@", postProcessor);
-    [_factoryPostProcessors addObject:postProcessor];
-    if ([self isLoaded]) {
-        LogDebug(@"Definitions registered, refreshing all singletons.");
-        [self unload];
-    }
-}
-
 static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition *definition)
 {
     if (definition.scope == TyphoonScopeWeakSingleton || definition.scope == TyphoonScopeLazySingleton
@@ -286,38 +277,8 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
 
 - (void)_load
 {
-    [self preparePostProcessors];
-    [self applyPostProcessors];
+//    [self forcePostProcessing];
     [self instantiateEagerSingletons];
-}
-
-- (NSArray *)orderedArray:(NSMutableArray *)array
-{
-    return [array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        NSInteger firstObjectOrder = TyphoonOrderLowestPriority;
-        NSInteger secondObjectOrder = TyphoonOrderLowestPriority;
-        if ([obj1 conformsToProtocol:@protocol(TyphoonOrdered)]) {
-            firstObjectOrder = [obj1 order];
-        }
-        if ([obj2 conformsToProtocol:@protocol(TyphoonOrdered)]) {
-            secondObjectOrder = [obj2 order];
-        }
-        return [@(firstObjectOrder) compare:@(secondObjectOrder)];
-    }];
-}
-
-
-- (void)preparePostProcessors
-{
-    _factoryPostProcessors = [[self orderedArray:_factoryPostProcessors] mutableCopy];
-    _componentPostProcessors = [[self orderedArray:_componentPostProcessors] mutableCopy];
-}
-
-- (void)applyPostProcessors
-{
-    [_factoryPostProcessors enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryPostProcessor> postProcessor, NSUInteger idx, BOOL *stop) {
-        [postProcessor postProcessComponentFactory:self];
-    }];
 }
 
 - (void)instantiateEagerSingletons
@@ -351,6 +312,71 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
     }
 }
 
+//-------------------------------------------------------------------------------------------
+#pragma mark - Definition PostProcessor
+//-------------------------------------------------------------------------------------------
+
+- (void)attachPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor
+{
+    if ([postProcessor respondsToSelector:@selector(setPostProcessorInvalidator:)]) {
+        [postProcessor setPostProcessorInvalidator:self];
+    }
+
+    LogTrace(@"Attaching post processor: %@", postProcessor);
+    [_definitionPostProcessors addObject:postProcessor];
+
+    [self invalidateDefinitionsPostProcessing];
+
+    if ([self isLoaded]) {
+        LogTrace(@"Definitions registered, refreshing all singletons.");
+        [self unload];
+    }
+}
+
+- (void)removePostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor
+{
+    //Removing only first equal object
+    NSUInteger index = [_definitionPostProcessors indexOfObject:postProcessor];
+    if (index != NSNotFound) {
+        [_definitionPostProcessors removeObjectAtIndex:index];
+    }
+}
+
+- (void)invalidatePostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor
+{
+    [self invalidateDefinitionsPostProcessing];
+}
+
+- (void)invalidateDefinitionsPostProcessing
+{
+    [self enumerateDefinitions:^(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace, BOOL *stop) {
+        definition.postProcessed = NO;
+    }];
+}
+
+- (void)forcePostProcessing
+{
+    [self enumerateDefinitions:^(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace, BOOL *stop) {
+        TyphoonDefinition *replacement = [self applyPostProcessorsToDefinition:definition];
+        if (replacement && replacement != definition) {
+            *definitionToReplace = replacement;
+        }
+    }];
+}
+
+- (TyphoonDefinition *)applyPostProcessorsToDefinition:(TyphoonDefinition *)definition
+{
+    for (id<TyphoonDefinitionPostProcessor>postProcessor in _definitionPostProcessors) {
+        TyphoonDefinition *replacement = nil;
+        [postProcessor postProcessDefinition:definition replacement:&replacement];
+        if (replacement) {
+            definition = replacement;
+        }
+    }
+    definition.postProcessed = YES;
+    return definition;
+}
+
 @end
 
 
@@ -370,6 +396,10 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
 {
     if (definition.abstract) {
         [NSException raise:NSInvalidArgumentException format:@"Attempt to instantiate abstract definition: %@", definition];
+    }
+
+    if (!definition.postProcessed) {
+        definition = [self applyPostProcessorsToDefinition:definition];
     }
     
     @synchronized(self) {

@@ -10,12 +10,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonComponentFactoryPostProcessorStubImpl.h"
+#import "TyphoonDefinition.h"
 
 @implementation TyphoonComponentFactoryPostProcessorStubImpl
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessDefinition:(TyphoonDefinition *)definition replacement:(TyphoonDefinition **)definitionToReplace
 {
     self.postProcessingCalled = YES;
 }
+
 
 @end

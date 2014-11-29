@@ -25,4 +25,6 @@
 
 - (void)doRegistration;
 
+- (BOOL)definitionIsInfrastructureComponent;
+
 @end

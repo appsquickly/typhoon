@@ -20,6 +20,8 @@
 #import "TyphoonAssemblyPropertyInjectionPostProcessor.h"
 #import "TyphoonInjection.h"
 #import "TyphoonIntrospectionUtils.h"
+#import "TyphoonReferenceDefinition.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 @interface TyphoonComponentFactory (Private)
 
@@ -82,6 +84,19 @@
     [assembly prepareForUse];
 
     [self registerAllDefinitions:assembly];
+
+    [self resolveParentsReferences];
+}
+
+- (void)resolveParentsReferences
+{
+    for (TyphoonDefinition *definition in [self registry]) {
+        if ([definition.parent isKindOfClass:[TyphoonReferenceDefinition class]]) {
+            TyphoonRuntimeArguments *arguments = [definition.parent currentRuntimeArguments];
+            definition.parent = [self definitionForKey:[definition.parent key]];
+            [definition.parent setCurrentRuntimeArguments:arguments];
+        }
+    }
 }
 
 - (void)assertIsAssembly:(TyphoonAssembly *)assembly

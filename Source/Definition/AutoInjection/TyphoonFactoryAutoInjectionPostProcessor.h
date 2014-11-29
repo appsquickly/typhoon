@@ -10,15 +10,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "TyphoonComponentFactoryPostProcessor.h"
+#import "TyphoonDefinitionPostProcessor.h"
 
 @class TyphoonDefinition;
 
 
-@interface TyphoonFactoryAutoInjectionPostProcessor : NSObject <TyphoonComponentFactoryPostProcessor>
+@interface TyphoonFactoryAutoInjectionPostProcessor : NSObject <TyphoonDefinitionPostProcessor>
 
 - (void)postProcessDefinition:(TyphoonDefinition *)definition;
 
 - (NSArray *)autoInjectedPropertiesForClass:(Class)clazz;
+
+- (BOOL)hasAnnotationForClass:(Class)clazz;
 
 @end

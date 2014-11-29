@@ -12,7 +12,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonComponentFactoryPostProcessor.h"
+#import "TyphoonDefinitionPostProcessor.h"
 #import "TyphoonComponentsPool.h"
 
 @class TyphoonDefinition;
@@ -35,7 +35,7 @@
     id <TyphoonComponentsPool> _weakSingletons;
 
     TyphoonCallStack *_stack;
-    NSMutableArray *_factoryPostProcessors;
+    NSMutableArray *_definitionPostProcessors;
     NSMutableArray *_componentPostProcessors;
     BOOL _isLoading;
 }
@@ -53,7 +53,7 @@
 /**
  * The attached factory post processors.
  */
-@property(nonatomic, strong, readonly) NSArray *factoryPostProcessors;
+@property(nonatomic, strong, readonly) NSArray *definitionPostProcessors;
 
 /**
  * The attached component post processors.
@@ -161,10 +161,15 @@
 - (void)enumerateDefinitions:(void(^)(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace, BOOL *stop))block;
 
 /**
- Attach a TyphoonComponentFactoryPostProcessor to this component factory.
+ Attach a TyphoonDefinitionPostProcessor to this component factory.
  @param postProcessor The post-processor to attach.
  */
-- (void)attachPostProcessor:(id <TyphoonComponentFactoryPostProcessor>)postProcessor;
+- (void)attachPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor;
+
+/**
+* TODO: write documentation here..
+* */
+- (void)forcePostProcessing;
 
 /**
  * Injects the properties and methods of an object

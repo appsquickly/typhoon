@@ -24,17 +24,14 @@
 //-------------------------------------------------------------------------------------------
 #pragma mark - Protocol Methods
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessDefinition:(TyphoonDefinition *)definition replacement:(TyphoonDefinition **)definitionToReplace
 {
-    for (TyphoonDefinition *definition in [factory registry]) {
-
-        [definition enumerateInjectionsOfKind:[TyphoonInjectionByType class] options:TyphoonInjectionsEnumerationOptionProperties
-                                   usingBlock:^(TyphoonInjectionByType *typeInjection, id <TyphoonInjection> *injectionToReplace, BOOL *stop) {
-            if ([self shouldReplaceInjectionByType:typeInjection withFactoryInjectionInDefinition:definition]) {
-                *injectionToReplace = [self factoryInjectionToReplacePropertyInjection:typeInjection];
-            }
-        }];
-    }
+    [definition enumerateInjectionsOfKind:[TyphoonInjectionByType class] options:TyphoonInjectionsEnumerationOptionProperties
+                               usingBlock:^(TyphoonInjectionByType *typeInjection, id <TyphoonInjection> *injectionToReplace, BOOL *stop) {
+                                   if ([self shouldReplaceInjectionByType:typeInjection withFactoryInjectionInDefinition:definition]) {
+                                       *injectionToReplace = [self factoryInjectionToReplacePropertyInjection:typeInjection];
+                                   }
+                               }];
 }
 
 //-------------------------------------------------------------------------------------------
