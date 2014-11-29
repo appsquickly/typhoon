@@ -23,19 +23,19 @@
 
 - (void)appendResource:(id<TyphoonResource>)resource
 {
-    NSString *errorString = nil;
-    NSDictionary *dictionary = [NSPropertyListSerialization propertyListFromData:[resource data]
-                                                                mutabilityOption:NSPropertyListImmutable
+    NSError *error = nil;
+    NSDictionary *dictionary = [NSPropertyListSerialization propertyListWithData:[resource data]
+                                                                         options:NSPropertyListImmutable
                                                                           format:NULL
-                                                                errorDescription:&errorString];
+                                                                           error:&error];
     if (![dictionary isKindOfClass:[NSDictionary class]]) {
         [NSException raise:NSInvalidArgumentException format:@"Root plist object must be a dictionary"];
     }
 
-    if (!errorString) {
+    if (!error) {
         [_properties addEntriesFromDictionary:dictionary];
     } else {
-        [NSException raise:NSInvalidArgumentException format:@"Can't prase plist configuration file: %@", errorString];
+        [NSException raise:NSInvalidArgumentException format:@"Can't parse plist configuration file: %@", error.localizedDescription];
     }
 }
 
