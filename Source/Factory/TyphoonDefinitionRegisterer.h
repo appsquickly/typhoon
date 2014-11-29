@@ -21,6 +21,8 @@
 */
 @interface TyphoonDefinitionRegisterer : NSObject
 
++ (id)reusableRegistererForDefinition:(TyphoonDefinition *)definition componentFactory:(TyphoonComponentFactory *)componentFactory;
+
 - (id)initWithDefinition:(TyphoonDefinition *)definition componentFactory:(TyphoonComponentFactory *)componentFactory;
 
 - (void)doRegistration;

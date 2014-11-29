@@ -36,7 +36,7 @@
 
 - (id)targetForInitializerWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
 {
-    TyphoonInjectionContext *context = [TyphoonInjectionContext new];
+    TyphoonInjectionContext *context = [[TyphoonInjectionContextPool shared] dequeueReusableContext];
     context.args = args;
     context.factory = factory;
     context.raiseExceptionIfCircular = YES;
@@ -53,6 +53,8 @@
     [injection valueToInjectWithContext:context completion:^(id value) {
         result = value;
     }];
+
+    [[TyphoonInjectionContextPool shared] enqueueReusableContext:context];
 
     return result;
 }

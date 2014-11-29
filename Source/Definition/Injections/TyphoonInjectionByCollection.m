@@ -136,11 +136,12 @@
 {
     Class collectionClass = [self collectionClassForContext:context];
     
-    TyphoonInjectionContext *contextForValues = [context copy];
+    TyphoonInjectionContext *contextForValues = [context copyWithPool:[TyphoonInjectionContextPool shared]];
     contextForValues.destinationType = [TyphoonTypeDescriptor descriptorWithEncodedType:@encode(id)];
     
     [self buildCollectionWithClass:collectionClass context:contextForValues completion:^(id<TyphoonCollection> collection) {
         result(collection);
+        [[TyphoonInjectionContextPool shared] enqueueReusableContext:contextForValues];
     }];
 }
 

@@ -31,6 +31,19 @@
     TyphoonComponentFactory *_componentFactory;
 }
 
++ (id)reusableRegistererForDefinition:(TyphoonDefinition *)definition componentFactory:(TyphoonComponentFactory *)componentFactory
+{
+    static TyphoonDefinitionRegisterer *registerer = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        registerer = [TyphoonDefinitionRegisterer new];
+    });
+    registerer->_definition = definition;
+    registerer->_componentFactory = componentFactory;
+
+    return registerer;
+}
+
 - (id)initWithDefinition:(TyphoonDefinition *)aDefinition componentFactory:(TyphoonComponentFactory *)aComponentFactory
 {
     self = [super init];

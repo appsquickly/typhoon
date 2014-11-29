@@ -90,7 +90,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (NSInvocation *)invocationToInit:(Class)clazz with:(TyphoonMethod *)method args:(TyphoonRuntimeArguments *)args
 {
-    TyphoonInjectionContext *context = [TyphoonInjectionContext new];
+    TyphoonInjectionContext *context = [[TyphoonInjectionContextPool shared] dequeueReusableContext];
     context.factory = self;
     context.args = args;
     context.raiseExceptionIfCircular = YES;
@@ -99,6 +99,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     __block NSInvocation *result;
     [method createInvocationOnClass:clazz withContext:context completion:^(NSInvocation *invocation) {
         result = invocation;
+        [[TyphoonInjectionContextPool shared] enqueueReusableContext:context];
     }];
     return result;
 }
@@ -189,7 +190,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (void)doMethodInjection:(TyphoonMethod *)method onInstance:(id)instance args:(TyphoonRuntimeArguments *)args
 {
-    TyphoonInjectionContext *context = [TyphoonInjectionContext new];
+    TyphoonInjectionContext *context = [[TyphoonInjectionContextPool shared] dequeueReusableContext];
     context.destinationInstanceClass = [instance class];
     context.factory = self;
     context.args = args;
@@ -197,6 +198,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
     [method createInvocationOnClass:[instance class] withContext:context completion:^(NSInvocation *invocation) {
         [invocation invokeWithTarget:instance];
+        [[TyphoonInjectionContextPool shared] enqueueReusableContext:context];
     }];
 }
 
@@ -206,7 +208,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (void)doPropertyInjectionOn:(id)instance property:(id <TyphoonPropertyInjection>)property args:(TyphoonRuntimeArguments *)args
 {
-    TyphoonInjectionContext *context = [TyphoonInjectionContext new];
+    TyphoonInjectionContext *context = [[TyphoonInjectionContextPool shared] dequeueReusableContext];
     context.destinationType = [instance typhoon_typeForPropertyWithName:property.propertyName];
     context.destinationInstanceClass = [instance class];
     context.factory = self;
@@ -215,6 +217,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
     [property valueToInjectWithContext:context completion:^(id value) {
         [instance typhoon_injectValue:value forPropertyName:property.propertyName];
+        [[TyphoonInjectionContextPool shared] enqueueReusableContext:context];
     }];
 }
 

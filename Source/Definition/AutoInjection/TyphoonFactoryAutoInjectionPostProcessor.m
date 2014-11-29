@@ -39,24 +39,40 @@ static id TypeForInjectionFromType(TyphoonTypeDescriptor *type);
 
 - (NSArray *)autoInjectedPropertiesForClass:(Class)clazz
 {
-    NSMutableArray *injections = nil;
-    NSSet *allProperties = [TyphoonIntrospectionUtils propertiesForClass:clazz upToParentClass:[NSObject class]];
-    for (NSString *propertyName in allProperties) {
-        TyphoonTypeDescriptor *type = [clazz typhoon_typeForPropertyWithName:propertyName];
-        if (IsTyphoonAutoInjectionType(type)) {
-            id explicitType = TypeForInjectionFromType(type);
-            if (!explicitType) {
-                [NSException raise:NSInternalInconsistencyException format:@"Can't resolve '%@' property in %@ class. Make sure that specified protocol/class exist and linked.", propertyName, clazz];
+    NSMutableArray *injections = [[[self class] sharedAnnotationCache] objectForKey:clazz];
+    if (!injections) {
+        NSSet *allProperties = [TyphoonIntrospectionUtils propertiesForClass:clazz upToParentClass:[NSObject class]];
+        for (NSString *propertyName in allProperties) {
+            TyphoonTypeDescriptor *type = [clazz typhoon_typeForPropertyWithName:propertyName];
+            if (IsTyphoonAutoInjectionType(type)) {
+                id explicitType = TypeForInjectionFromType(type);
+                if (!explicitType) {
+                    [NSException raise:NSInternalInconsistencyException format:@"Can't resolve '%@' property in %@ class. Make sure that specified protocol/class exist and linked.", propertyName, clazz];
+                }
+                id<TyphoonPropertyInjection> injection = TyphoonInjectionWithType(explicitType);
+                [injection setPropertyName:propertyName];
+                if (!injections) {
+                    injections = [[NSMutableArray alloc] initWithCapacity:allProperties.count];
+                }
+                [injections addObject:injection];
             }
-            id<TyphoonPropertyInjection> injection = TyphoonInjectionWithType(explicitType);
-            [injection setPropertyName:propertyName];
-            if (!injections) {
-                injections = [[NSMutableArray alloc] initWithCapacity:allProperties.count];
-            }
-            [injections addObject:injection];
         }
+        [[[self class] sharedAnnotationCache] setObject:injections?:[NSNull null] forKey:clazz];
+    } else if ([injections isKindOfClass:[NSNull class]]) {
+        injections = nil;
     }
+
     return injections;
+}
+
++ (NSCache *)sharedAnnotationCache
+{
+    static dispatch_once_t onceToken;
+    static NSCache *cache = nil;
+    dispatch_once(&onceToken, ^{
+    	cache = [[NSCache alloc] init];
+    });
+    return cache;
 }
 
 - (BOOL)hasAnnotationForClass:(Class)clazz

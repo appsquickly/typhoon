@@ -10,6 +10,8 @@
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonComponentFactory.h"
 
+@class TyphoonInjectionContextPool;
+
 typedef void(^TyphoonInjectionValueBlock)(id value);
 
 @interface TyphoonInjectionContext : NSObject<NSCopying>
@@ -22,5 +24,16 @@ typedef void(^TyphoonInjectionValueBlock)(id value);
 @property(nonatomic, assign) Class destinationInstanceClass;
 
 @property(nonatomic) BOOL raiseExceptionIfCircular;
+
+- (id)copyWithPool:(TyphoonInjectionContextPool *)pool;
+
+@end
+
+@interface TyphoonInjectionContextPool : NSObject
+
++ (id)shared;
+
+- (TyphoonInjectionContext *)dequeueReusableContext;
+- (void)enqueueReusableContext:(TyphoonInjectionContext *)context;
 
 @end
