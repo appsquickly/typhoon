@@ -48,6 +48,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 @property(nonatomic, strong) NSString *key;
 @property(nonatomic, strong) TyphoonRuntimeArguments *currentRuntimeArguments;
 @property(nonatomic, getter = isInitializerGenerated) BOOL initializerGenerated;
+@property(nonatomic) BOOL postProcessed;
 @end
 
 @implementation TyphoonDefinition
@@ -216,7 +217,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
             return parentInitializer;
         }
         else {
-            [self setInitializer:[[TyphoonMethod alloc] initWithSelector:@selector(init)]];
+            [self setInitializer:[[TyphoonMethod alloc] initWithSelector:@selector(new)]];
             self.initializerGenerated = YES;
         }
     }
