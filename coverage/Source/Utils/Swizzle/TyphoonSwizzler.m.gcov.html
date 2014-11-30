@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-30 11:03:55</td>
+            <td class="headerValue">2014-11-30 20:39:31</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -76,10 +76,10 @@
 <span class="lineNum">      18 </span>            : {
 <span class="lineNum">      19 </span>            :     static TyphoonSwizzler *defaultSwizzler;
 <span class="lineNum">      20 </span>            :     static dispatch_once_t onceToken;
-<span class="lineNum">      21 </span><span class="lineCov">        225 :     dispatch_once(&amp;onceToken, ^{</span>
+<span class="lineNum">      21 </span><span class="lineCov">        230 :     dispatch_once(&amp;onceToken, ^{</span>
 <span class="lineNum">      22 </span><span class="lineCov">          1 :         defaultSwizzler = [TyphoonSwizzler new];</span>
 <span class="lineNum">      23 </span><span class="lineCov">          1 :     });</span>
-<span class="lineNum">      24 </span><span class="lineCov">        224 :     return defaultSwizzler;</span>
+<span class="lineNum">      24 </span><span class="lineCov">        229 :     return defaultSwizzler;</span>
 <span class="lineNum">      25 </span>            : }
 <span class="lineNum">      26 </span>            : 
 <span class="lineNum">      27 </span><span class="lineCov">        108 : - (BOOL)swizzleMethod:(SEL)origSel withMethod:(SEL)altSel onClass:(Class)pClass error:(NSError **)error</span>

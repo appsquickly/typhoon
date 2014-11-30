@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-30 11:03:55</td>
+            <td class="headerValue">2014-11-30 20:39:31</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -68,33 +68,20 @@
 <span class="lineNum">      10 </span>            : #import &quot;TyphoonTypeDescriptor.h&quot;
 <span class="lineNum">      11 </span>            : #import &quot;TyphoonComponentFactory.h&quot;
 <span class="lineNum">      12 </span>            : 
-<span class="lineNum">      13 </span>            : @class TyphoonInjectionContextPool;
+<span class="lineNum">      13 </span>            : typedef void(^TyphoonInjectionValueBlock)(id value);
 <span class="lineNum">      14 </span>            : 
-<span class="lineNum">      15 </span>            : typedef void(^TyphoonInjectionValueBlock)(id value);
+<span class="lineNum">      15 </span>            : @interface TyphoonInjectionContext : NSObject&lt;NSCopying&gt;
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span>            : @interface TyphoonInjectionContext : NSObject&lt;NSCopying&gt;
-<span class="lineNum">      18 </span>            : 
-<span class="lineNum">      19 </span><span class="lineCov">       1875 : @property(nonatomic, strong) TyphoonTypeDescriptor *destinationType;</span>
-<span class="lineNum">      20 </span><span class="lineCov">       3264 : @property(nonatomic, strong) TyphoonComponentFactory *factory;</span>
-<span class="lineNum">      21 </span><span class="lineCov">       2964 : @property(nonatomic, strong) TyphoonRuntimeArguments *args;</span>
-<span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span>            : /** Class of destination instance, - used only for better exception description */
-<span class="lineNum">      24 </span><span class="lineCov">       2177 : @property(nonatomic, assign) Class destinationInstanceClass;</span>
+<span class="lineNum">      17 </span><span class="lineCov">        567 : @property(nonatomic, strong) TyphoonTypeDescriptor *destinationType;</span>
+<span class="lineNum">      18 </span><span class="lineCov">       1379 : @property(nonatomic, strong) TyphoonComponentFactory *factory;</span>
+<span class="lineNum">      19 </span><span class="lineCov">       1219 : @property(nonatomic, strong) TyphoonRuntimeArguments *args;</span>
+<span class="lineNum">      20 </span>            : 
+<span class="lineNum">      21 </span>            : /** Class of destination instance, - used only for better exception description */
+<span class="lineNum">      22 </span><span class="lineCov">        736 : @property(nonatomic, assign) Class destinationInstanceClass;</span>
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span><span class="lineCov">        998 : @property(nonatomic) BOOL raiseExceptionIfCircular;</span>
 <span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span><span class="lineCov">       2623 : @property(nonatomic) BOOL raiseExceptionIfCircular;</span>
-<span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span>            : - (id)copyWithPool:(TyphoonInjectionContextPool *)pool;
-<span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span>            : @end
-<span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span>            : @interface TyphoonInjectionContextPool : NSObject
-<span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span>            : + (id)shared;
-<span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span>            : - (TyphoonInjectionContext *)dequeueReusableContext;
-<span class="lineNum">      37 </span>            : - (void)enqueueReusableContext:(TyphoonInjectionContext *)context;
-<span class="lineNum">      38 </span>            : 
-<span class="lineNum">      39 </span>            : @end
+<span class="lineNum">      26 </span>            : @end
 </pre>
       </td>
     </tr>

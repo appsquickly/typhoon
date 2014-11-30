@@ -131,7 +131,7 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 : <a class="el" href="protocol_typhoon_resource-p.html#afed07d1fc2e7fb11a2db3073dd53ddd7">&lt;TyphoonResource&gt;</a>
 </li>
 <li>attachPostProcessor:
-: <a class="el" href="interface_typhoon_component_factory.html#a497444322c5eb57d64a327f170cbd389">TyphoonComponentFactory</a>
+: <a class="el" href="interface_typhoon_component_factory.html#a0727001458325fd7d09b6df2e1252180">TyphoonComponentFactory</a>
 </li>
 <li>availableExtensions
 : <a class="el" href="interface_typhoon_config_post_processor.html#a57eacc037c000e78f67f31d6884964bd">TyphoonConfigPostProcessor</a>
@@ -219,9 +219,6 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 : <a class="el" href="interface_typhoon_abstract_injection.html#a30504db62ed38e24adb794506a2b95e1">TyphoonAbstractInjection</a>
 , <a class="el" href="category_typhoon_abstract_injection_07_protected_08.html#a30504db62ed38e24adb794506a2b95e1">TyphoonAbstractInjection(Protected)</a>
 </li>
-<li>copyWithPool:
-: <a class="el" href="interface_typhoon_injection_context.html#a6d73051c69b1554b9f67642c893b57d8">TyphoonInjectionContext</a>
-</li>
 <li>count
 : <a class="el" href="protocol_typhoon_collection-p.html#aadf3f0e08670051fca77ae181356e2b2">&lt;TyphoonCollection&gt;</a>
 , <a class="el" href="protocol_typhoon_dictionary-p.html#a34d747cc86591c46926fe0771d4f07b2">&lt;TyphoonDictionary&gt;</a>
@@ -280,9 +277,6 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 </li>
 <li>factoryWithAssembly:
 : <a class="el" href="interface_typhoon_block_component_factory.html#a6d04577c105c4505cb15487ca2650add">TyphoonBlockComponentFactory</a>
-</li>
-<li>forcePostProcessing
-: <a class="el" href="interface_typhoon_component_factory.html#a518ec88cb948728a33c808bfc9902b4f">TyphoonComponentFactory</a>
 </li>
 </ul>
 
@@ -423,10 +417,10 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 : <a class="el" href="protocol_typhoon_parameter_injection-p.html#ae773f1151fc5b4fc33d70714db2be423">&lt;TyphoonParameterInjection&gt;</a>
 </li>
 <li>patchDefinition:withObject:
-: <a class="el" href="interface_typhoon_patcher.html#ab15727446bc17712318053b960908dc3">TyphoonPatcher</a>
+: <a class="el" href="interface_typhoon_patcher.html#a958a23e25a16c2a9d8abfbab1cab0786">TyphoonPatcher</a>
 </li>
 <li>patchDefinitionWithKey:withObject:
-: <a class="el" href="interface_typhoon_patcher.html#aef82afe3a68f4ed147d8264ad9623859">TyphoonPatcher</a>
+: <a class="el" href="interface_typhoon_patcher.html#a81cd00d79350a44cc9aa10794377e94c">TyphoonPatcher</a>
 </li>
 <li>patchDefinitionWithSelector:withObject:
 : <a class="el" href="interface_typhoon_patcher.html#a439c7ffa79249ea5464584791186b7e7">TyphoonPatcher</a>
@@ -443,8 +437,8 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>performBeforeInjections:parameters:
 : <a class="el" href="interface_typhoon_definition.html#abb1394e8dfff43fb899280a468f87abb">TyphoonDefinition</a>
 </li>
-<li>postProcessDefinition:replacement:
-: <a class="el" href="protocol_typhoon_definition_post_processor-p.html#abc9ccc8231a472eecfa714a98c64998c">&lt;TyphoonDefinitionPostProcessor&gt;</a>
+<li>postProcessComponentFactory:
+: <a class="el" href="protocol_typhoon_component_factory_post_processor-p.html#ab64811c01a873e3a727f017543b29223">&lt;TyphoonComponentFactoryPostProcessor&gt;</a>
 </li>
 <li>postProcessor
 : <a class="el" href="interface_typhoon_config_post_processor.html#ac342615e85b44734a1954dbe02d1ba76">TyphoonConfigPostProcessor</a>
@@ -489,6 +483,9 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>resolveCircularDependencyWithContext:block:
 : <a class="el" href="interface_typhoon_injection_by_reference.html#aca8eccaa02a62ea9d8d2f2b170e98cb8">TyphoonInjectionByReference</a>
 </li>
+<li>resolveNibNameForClass:
+: <a class="el" href="interface_typhoon_view_controller_nib_resolver.html#af4194a42c7e6483d5a084e1171a0843e">TyphoonViewControllerNibResolver</a>
+</li>
 <li>resolveReferenceWithContext:
 : <a class="el" href="interface_typhoon_injection_by_reference.html#a287d372e0c57b33e5054bde9f8c7b4f9">TyphoonInjectionByReference</a>
 </li>
@@ -519,9 +516,6 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 </li>
 <li>setParameterIndex:
 : <a class="el" href="protocol_typhoon_parameter_injection-p.html#ab0b2bc573b5e310b6e7b774687e594f5">&lt;TyphoonParameterInjection&gt;</a>
-</li>
-<li>setPostProcessorInvalidator:
-: <a class="el" href="protocol_typhoon_definition_post_processor-p.html#a77955e60a44e8eca2482a62c4e7ec91e">&lt;TyphoonDefinitionPostProcessor&gt;</a>
 </li>
 <li>setPropertyName:
 : <a class="el" href="protocol_typhoon_property_injection-p.html#ad12ad20c98b147ed21056a95c6ff5e91">&lt;TyphoonPropertyInjection&gt;</a>
@@ -657,7 +651,7 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
-        <li class="footer">Generated on Sun Nov 30 2014 11:03:58 for Typhoon by
+        <li class="footer">Generated on Sun Nov 30 2014 20:39:33 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>

@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">83</td>
-            <td class="headerCovTableEntry">90</td>
-            <td class="headerCovTableEntryHi">92.2 %</td>
+            <td class="headerCovTableEntry">86</td>
+            <td class="headerCovTableEntry">92</td>
+            <td class="headerCovTableEntryHi">93.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-30 11:03:55</td>
+            <td class="headerValue">2014-11-30 20:39:31</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -83,7 +83,7 @@
 <span class="lineNum">      25 </span>            : 
 <span class="lineNum">      26 </span>            : static NSMutableDictionary *propertyPlaceholderRegistry;
 <span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span><span class="lineNoCov">          0 : @implementation TyphoonConfigPostProcessor</span>
+<span class="lineNum">      28 </span><span class="lineCov">          1 : @implementation TyphoonConfigPostProcessor</span>
 <span class="lineNum">      29 </span>            : {
 <span class="lineNum">      30 </span>            :     NSDictionary *_configs;
 <span class="lineNum">      31 </span>            : }
@@ -188,58 +188,60 @@
 <span class="lineNum">     130 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">     131 </span>            : #pragma mark - Protocol Methods
 <span class="lineNum">     132 </span>            : 
-<span class="lineNum">     133 </span><span class="lineCov">         74 : - (void)postProcessDefinition:(TyphoonDefinition *)definition replacement:(TyphoonDefinition **)definitionToReplace</span>
+<span class="lineNum">     133 </span><span class="lineCov">         20 : - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory</span>
 <span class="lineNum">     134 </span>            : {
-<span class="lineNum">     135 </span><span class="lineCov">         74 :     [self configureInjectionsInDefinition:definition];</span>
-<span class="lineNum">     136 </span><span class="lineCov">         74 :     [self configureInjectionsInRuntimeArgumentsInDefinition:definition];</span>
-<span class="lineNum">     137 </span><span class="lineCov">         74 : }</span>
-<span class="lineNum">     138 </span>            : 
-<span class="lineNum">     139 </span><span class="lineCov">         74 : - (void)configureInjectionsInDefinition:(TyphoonDefinition *)definition</span>
-<span class="lineNum">     140 </span>            : {
-<span class="lineNum">     141 </span><span class="lineCov">         74 :     [definition enumerateInjectionsOfKind:[TyphoonInjectionByConfig class] options:TyphoonInjectionsEnumerationOptionAll</span>
-<span class="lineNum">     142 </span><span class="lineCov">         10 :                                usingBlock:^(TyphoonInjectionByConfig *injection, id *injectionToReplace, BOOL *stop) {</span>
-<span class="lineNum">     143 </span><span class="lineCov">         10 :         id configuredInjection = [self injectionForConfigInjection:injection];</span>
-<span class="lineNum">     144 </span><span class="lineCov">         10 :         if (configuredInjection) {</span>
-<span class="lineNum">     145 </span><span class="lineCov">         10 :            injection.configuredInjection = configuredInjection;</span>
-<span class="lineNum">     146 </span><span class="lineCov">         10 :         }</span>
-<span class="lineNum">     147 </span><span class="lineCov">         20 :     }];</span>
-<span class="lineNum">     148 </span><span class="lineCov">         74 : }</span>
-<span class="lineNum">     149 </span>            : 
-<span class="lineNum">     150 </span><span class="lineCov">         74 : - (void)configureInjectionsInRuntimeArgumentsInDefinition:(TyphoonDefinition *)definition</span>
-<span class="lineNum">     151 </span>            : {
-<span class="lineNum">     152 </span><span class="lineCov">         74 :     [definition enumerateInjectionsOfKind:[TyphoonInjectionByReference class] options:TyphoonInjectionsEnumerationOptionAll</span>
-<span class="lineNum">     153 </span><span class="lineCov">         28 :                                usingBlock:^(TyphoonInjectionByReference *injection, id *injectionToReplace, BOOL *stop) {</span>
-<span class="lineNum">     154 </span><span class="lineCov">         29 :         [injection.referenceArguments enumerateArgumentsUsingBlock:^(TyphoonInjectionByConfig *argument, NSUInteger index, BOOL *stop) {</span>
-<span class="lineNum">     155 </span><span class="lineCov">          1 :            if ([argument isKindOfClass:[TyphoonInjectionByConfig class]]) {</span>
-<span class="lineNum">     156 </span><span class="lineCov">          1 :                id configuredInjection = [self injectionForConfigInjection:argument];</span>
-<span class="lineNum">     157 </span><span class="lineCov">          1 :                if (configuredInjection) {</span>
-<span class="lineNum">     158 </span><span class="lineCov">          1 :                    argument.configuredInjection = configuredInjection;</span>
-<span class="lineNum">     159 </span><span class="lineCov">          1 :                }</span>
-<span class="lineNum">     160 </span><span class="lineCov">          1 :            }</span>
-<span class="lineNum">     161 </span><span class="lineCov">          2 :         }];</span>
-<span class="lineNum">     162 </span><span class="lineCov">         56 :     }];</span>
-<span class="lineNum">     163 </span><span class="lineCov">         74 : }</span>
-<span class="lineNum">     164 </span>            : 
-<span class="lineNum">     165 </span><span class="lineCov">         11 : - (id&lt;TyphoonInjection&gt;)injectionForConfigInjection:(TyphoonInjectionByConfig *)injection</span>
-<span class="lineNum">     166 </span>            : {
-<span class="lineNum">     167 </span><span class="lineCov">         11 :     id value = [self configurationValueForKey:injection.configKey];</span>
-<span class="lineNum">     168 </span><span class="lineCov">         11 :     id&lt;TyphoonInjection&gt;result = nil;</span>
-<span class="lineNum">     169 </span>            : 
-<span class="lineNum">     170 </span><span class="lineCov">         11 :     if ([value isKindOfClass:[NSString class]]) {</span>
-<span class="lineNum">     171 </span><span class="lineCov">          7 :         result = TyphoonInjectionWithObjectFromString(value);</span>
-<span class="lineNum">     172 </span><span class="lineCov">         11 :     } else if (value) {</span>
-<span class="lineNum">     173 </span><span class="lineCov">          4 :         result = TyphoonInjectionWithObject(value);</span>
-<span class="lineNum">     174 </span><span class="lineCov">          4 :     }</span>
-<span class="lineNum">     175 </span>            : 
-<span class="lineNum">     176 </span><span class="lineCov">         11 :     return result;</span>
-<span class="lineNum">     177 </span><span class="lineCov">         11 : }</span>
-<span class="lineNum">     178 </span>            : 
-<span class="lineNum">     179 </span>            : @end
+<span class="lineNum">     135 </span><span class="lineCov">        864 :     for (TyphoonDefinition *definition in [factory registry]) {</span>
+<span class="lineNum">     136 </span><span class="lineCov">        412 :         [self configureInjectionsInDefinition:definition];</span>
+<span class="lineNum">     137 </span><span class="lineCov">        412 :         [self configureInjectionsInRuntimeArgumentsInDefinition:definition];</span>
+<span class="lineNum">     138 </span><span class="lineCov">        864 :     }</span>
+<span class="lineNum">     139 </span><span class="lineCov">         20 : }</span>
+<span class="lineNum">     140 </span>            : 
+<span class="lineNum">     141 </span><span class="lineCov">        412 : - (void)configureInjectionsInDefinition:(TyphoonDefinition *)definition</span>
+<span class="lineNum">     142 </span>            : {
+<span class="lineNum">     143 </span><span class="lineCov">        412 :     [definition enumerateInjectionsOfKind:[TyphoonInjectionByConfig class] options:TyphoonInjectionsEnumerationOptionAll</span>
+<span class="lineNum">     144 </span><span class="lineCov">         10 :                                usingBlock:^(TyphoonInjectionByConfig *injection, id *injectionToReplace, BOOL *stop) {</span>
+<span class="lineNum">     145 </span><span class="lineCov">         10 :         id configuredInjection = [self injectionForConfigInjection:injection];</span>
+<span class="lineNum">     146 </span><span class="lineCov">         10 :         if (configuredInjection) {</span>
+<span class="lineNum">     147 </span><span class="lineCov">         10 :            injection.configuredInjection = configuredInjection;</span>
+<span class="lineNum">     148 </span><span class="lineCov">         10 :         }</span>
+<span class="lineNum">     149 </span><span class="lineCov">         20 :     }];</span>
+<span class="lineNum">     150 </span><span class="lineCov">        412 : }</span>
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span><span class="lineCov">        412 : - (void)configureInjectionsInRuntimeArgumentsInDefinition:(TyphoonDefinition *)definition</span>
+<span class="lineNum">     153 </span>            : {
+<span class="lineNum">     154 </span><span class="lineCov">        412 :     [definition enumerateInjectionsOfKind:[TyphoonInjectionByReference class] options:TyphoonInjectionsEnumerationOptionAll</span>
+<span class="lineNum">     155 </span><span class="lineCov">        248 :                                usingBlock:^(TyphoonInjectionByReference *injection, id *injectionToReplace, BOOL *stop) {</span>
+<span class="lineNum">     156 </span><span class="lineCov">        366 :         [injection.referenceArguments enumerateArgumentsUsingBlock:^(TyphoonInjectionByConfig *argument, NSUInteger index, BOOL *stop) {</span>
+<span class="lineNum">     157 </span><span class="lineCov">        118 :            if ([argument isKindOfClass:[TyphoonInjectionByConfig class]]) {</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :                id configuredInjection = [self injectionForConfigInjection:argument];</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :                if (configuredInjection) {</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :                    argument.configuredInjection = configuredInjection;</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :                }</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :            }</span>
+<span class="lineNum">     163 </span><span class="lineCov">        236 :         }];</span>
+<span class="lineNum">     164 </span><span class="lineCov">        496 :     }];</span>
+<span class="lineNum">     165 </span><span class="lineCov">        412 : }</span>
+<span class="lineNum">     166 </span>            : 
+<span class="lineNum">     167 </span><span class="lineCov">         11 : - (id&lt;TyphoonInjection&gt;)injectionForConfigInjection:(TyphoonInjectionByConfig *)injection</span>
+<span class="lineNum">     168 </span>            : {
+<span class="lineNum">     169 </span><span class="lineCov">         11 :     id value = [self configurationValueForKey:injection.configKey];</span>
+<span class="lineNum">     170 </span><span class="lineCov">         11 :     id&lt;TyphoonInjection&gt;result = nil;</span>
+<span class="lineNum">     171 </span>            : 
+<span class="lineNum">     172 </span><span class="lineCov">         11 :     if ([value isKindOfClass:[NSString class]]) {</span>
+<span class="lineNum">     173 </span><span class="lineCov">          7 :         result = TyphoonInjectionWithObjectFromString(value);</span>
+<span class="lineNum">     174 </span><span class="lineCov">         11 :     } else if (value) {</span>
+<span class="lineNum">     175 </span><span class="lineCov">          4 :         result = TyphoonInjectionWithObject(value);</span>
+<span class="lineNum">     176 </span><span class="lineCov">          4 :     }</span>
+<span class="lineNum">     177 </span>            : 
+<span class="lineNum">     178 </span><span class="lineCov">         11 :     return result;</span>
+<span class="lineNum">     179 </span><span class="lineCov">         11 : }</span>
 <span class="lineNum">     180 </span>            : 
-<span class="lineNum">     181 </span><span class="lineCov">         62 : id TyphoonConfig(NSString *configKey)</span>
-<span class="lineNum">     182 </span>            : {
-<span class="lineNum">     183 </span><span class="lineCov">         62 :     return TyphoonInjectionWithConfigKey(configKey);</span>
-<span class="lineNum">     184 </span><span class="lineCov">         62 : }</span>
+<span class="lineNum">     181 </span>            : @end
+<span class="lineNum">     182 </span>            : 
+<span class="lineNum">     183 </span><span class="lineCov">         62 : id TyphoonConfig(NSString *configKey)</span>
+<span class="lineNum">     184 </span>            : {
+<span class="lineNum">     185 </span><span class="lineCov">         62 :     return TyphoonInjectionWithConfigKey(configKey);</span>
+<span class="lineNum">     186 </span><span class="lineCov">         62 : }</span>
 </pre>
       </td>
     </tr>

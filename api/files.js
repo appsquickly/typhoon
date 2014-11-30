@@ -18,6 +18,7 @@ var files =
     ] ],
     [ "OCLogTemplate.h", "_o_c_log_template_8h.html", "_o_c_log_template_8h" ],
     [ "Typhoon.h", "_typhoon_8h.html", null ],
+    [ "TyphoonAbstractDetachableComponentFactoryPostProcessor.h", "_typhoon_abstract_detachable_component_factory_post_processor_8h.html", null ],
     [ "TyphoonAbstractInjection.h", "_typhoon_abstract_injection_8h.html", "_typhoon_abstract_injection_8h" ],
     [ "TyphoonAssembly+TyphoonAssemblyFriend.h", "_typhoon_assembly_09_typhoon_assembly_friend_8h.html", null ],
     [ "TyphoonAssembly.h", "_typhoon_assembly_8h.html", null ],
@@ -37,6 +38,8 @@ var files =
     [ "TyphoonCollaboratingAssemblyPropertyEnumerator.h", "_typhoon_collaborating_assembly_property_enumerator_8h.html", null ],
     [ "TyphoonCollaboratingAssemblyProxy.h", "_typhoon_collaborating_assembly_proxy_8h.html", null ],
     [ "TyphoonComponentFactory.h", "_typhoon_component_factory_8h.html", null ],
+    [ "TyphoonComponentFactoryPostProcessor.h", "_typhoon_component_factory_post_processor_8h.html", null ],
+    [ "TyphoonComponentPostProcessor.h", "_typhoon_component_post_processor_8h.html", null ],
     [ "TyphoonComponentsPool.h", "_typhoon_components_pool_8h.html", [
       [ "<TyphoonComponentsPool>", "protocol_typhoon_components_pool-p.html", "protocol_typhoon_components_pool-p" ]
     ] ],
@@ -44,9 +47,8 @@ var files =
     [ "TyphoonConfiguration.h", "_typhoon_configuration_8h.html", null ],
     [ "TyphoonDefinition+Option.h", "_typhoon_definition_09_option_8h.html", "_typhoon_definition_09_option_8h" ],
     [ "TyphoonDefinition.h", "_typhoon_definition_8h.html", "_typhoon_definition_8h" ],
-    [ "TyphoonDefinitionAutoInjectionPostProcessor.h", "_typhoon_definition_auto_injection_post_processor_8h.html", null ],
-    [ "TyphoonDefinitionPostProcessor.h", "_typhoon_definition_post_processor_8h.html", null ],
     [ "TyphoonDefinitionRegisterer.h", "_typhoon_definition_registerer_8h.html", null ],
+    [ "TyphoonFactoryAutoInjectionPostProcessor.h", "_typhoon_factory_auto_injection_post_processor_8h.html", null ],
     [ "TyphoonInitialStoryboardResolver.h", "_typhoon_initial_storyboard_resolver_8h.html", null ],
     [ "TyphoonInjectedObject.h", "_typhoon_injected_object_8h.html", [
       [ "TyphoonInjectedObject", "interface_typhoon_injected_object.html", null ]
@@ -87,8 +89,6 @@ var files =
     ] ],
     [ "TyphoonInjectionContext.h", "_typhoon_injection_context_8h.html", "_typhoon_injection_context_8h" ],
     [ "TyphoonInjections.h", "_typhoon_injections_8h.html", "_typhoon_injections_8h" ],
-    [ "TyphoonInstanceAutoInjectionPostProcessor.h", "_typhoon_instance_auto_injection_post_processor_8h.html", null ],
-    [ "TyphoonInstancePostProcessor.h", "_typhoon_instance_post_processor_8h.html", null ],
     [ "TyphoonIntrospectionUtils.h", "_typhoon_introspection_utils_8h.html", "_typhoon_introspection_utils_8h" ],
     [ "TyphooniOS.h", "_typhooni_o_s_8h.html", null ],
     [ "TyphoonJsonStyleConfiguration.h", "_typhoon_json_style_configuration_8h.html", null ],
@@ -103,6 +103,7 @@ var files =
     [ "TyphoonOptionMatcher.h", "_typhoon_option_matcher_8h.html", [
       [ "TyphoonOptionMatcher", "interface_typhoon_option_matcher.html", "interface_typhoon_option_matcher" ]
     ] ],
+    [ "TyphoonOrdered.h", "_typhoon_ordered_8h.html", "_typhoon_ordered_8h" ],
     [ "TyphoonParameterInjection.h", "_typhoon_parameter_injection_8h.html", [
       [ "<TyphoonParameterInjection>", "protocol_typhoon_parameter_injection-p.html", "protocol_typhoon_parameter_injection-p" ]
     ] ],
@@ -139,6 +140,7 @@ var files =
       [ "TyphoonUIColorTypeConverter", "interface_typhoon_u_i_color_type_converter.html", null ]
     ] ],
     [ "TyphoonUtils.h", "_typhoon_utils_8h.html", "_typhoon_utils_8h" ],
+    [ "TyphoonViewControllerNibResolver.h", "_typhoon_view_controller_nib_resolver_8h.html", null ],
     [ "TyphoonWeakComponentsPool.h", "_typhoon_weak_components_pool_8h.html", [
       [ "TyphoonWeakComponentsPool", "interface_typhoon_weak_components_pool.html", null ]
     ] ]

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-30 11:03:55</td>
+            <td class="headerValue">2014-11-30 20:39:31</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -69,15 +69,15 @@
 <span class="lineNum">      11 </span>            : 
 <span class="lineNum">      12 </span>            : @implementation NSMethodSignature (TCFUnwrapValues)
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">        421 : - (BOOL)shouldUnwrapValue:(id)value forArgumentAtIndex:(NSUInteger)index</span>
+<span class="lineNum">      14 </span><span class="lineCov">        269 : - (BOOL)shouldUnwrapValue:(id)value forArgumentAtIndex:(NSUInteger)index</span>
 <span class="lineNum">      15 </span>            : {
-<span class="lineNum">      16 </span><span class="lineCov">        421 :     const char *argumentType = [self getArgumentTypeAtIndex:index];</span>
+<span class="lineNum">      16 </span><span class="lineCov">        269 :     const char *argumentType = [self getArgumentTypeAtIndex:index];</span>
 <span class="lineNum">      17 </span>            :     
-<span class="lineNum">      18 </span><span class="lineCov">       1263 :     BOOL isPrimitive = !CStringEquals(argumentType, @encode(id));</span>
-<span class="lineNum">      19 </span><span class="lineCov">        421 :     BOOL isObjectIsWrapper = [value isKindOfClass:[NSValue class]];</span>
+<span class="lineNum">      18 </span><span class="lineCov">        807 :     BOOL isPrimitive = !CStringEquals(argumentType, @encode(id));</span>
+<span class="lineNum">      19 </span><span class="lineCov">        269 :     BOOL isObjectIsWrapper = [value isKindOfClass:[NSValue class]];</span>
 <span class="lineNum">      20 </span>            :     
-<span class="lineNum">      21 </span><span class="lineCov">        561 :     return isPrimitive &amp;&amp; isObjectIsWrapper;</span>
-<span class="lineNum">      22 </span><span class="lineCov">        421 : }</span>
+<span class="lineNum">      21 </span><span class="lineCov">        377 :     return isPrimitive &amp;&amp; isObjectIsWrapper;</span>
+<span class="lineNum">      22 </span><span class="lineCov">        269 : }</span>
 <span class="lineNum">      23 </span>            : 
 <span class="lineNum">      24 </span>            : @end
 </pre>

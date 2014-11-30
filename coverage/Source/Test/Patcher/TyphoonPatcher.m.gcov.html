@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">47</td>
-            <td class="headerCovTableEntry">54</td>
-            <td class="headerCovTableEntryMed">87.0 %</td>
+            <td class="headerCovTableEntry">41</td>
+            <td class="headerCovTableEntry">42</td>
+            <td class="headerCovTableEntryHi">97.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-30 11:03:55</td>
+            <td class="headerValue">2014-11-30 20:39:31</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -75,111 +75,93 @@
 <span class="lineNum">      17 </span>            : 
 <span class="lineNum">      18 </span>            : @interface TyphoonPatcherDefinition : TyphoonDefinition
 <span class="lineNum">      19 </span>            : 
-<span class="lineNum">      20 </span><span class="lineCov">         24 : @property (nonatomic, strong) TyphoonPatchObjectCreationBlock patchObjectBlock;</span>
+<span class="lineNum">      20 </span><span class="lineCov">         30 : @property (nonatomic, strong) TyphoonPatchObjectCreationBlock patchObjectBlock;</span>
 <span class="lineNum">      21 </span>            : 
 <span class="lineNum">      22 </span>            : - (id)initWithOriginalDefinition:(TyphoonDefinition *)definition patchObjectBlock:(TyphoonPatchObjectCreationBlock)patchObjectBlock;
 <span class="lineNum">      23 </span>            : 
 <span class="lineNum">      24 </span>            : @end
 <span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span><span class="lineCov">         14 : @implementation TyphoonPatcherDefinition</span>
+<span class="lineNum">      26 </span><span class="lineCov">          6 : @implementation TyphoonPatcherDefinition</span>
 <span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span><span class="lineCov">         14 : - (id)initWithOriginalDefinition:(TyphoonDefinition *)definition patchObjectBlock:(TyphoonPatchObjectCreationBlock)patchObjectBlock</span>
+<span class="lineNum">      28 </span><span class="lineCov">         15 : - (id)initWithOriginalDefinition:(TyphoonDefinition *)definition patchObjectBlock:(TyphoonPatchObjectCreationBlock)patchObjectBlock</span>
 <span class="lineNum">      29 </span>            : {
-<span class="lineNum">      30 </span><span class="lineCov">         14 :     self = [super initWithClass:definition.type key:definition.key];</span>
-<span class="lineNum">      31 </span><span class="lineCov">         14 :     if (self) {</span>
-<span class="lineNum">      32 </span><span class="lineCov">         14 :         self.patchObjectBlock = patchObjectBlock;</span>
-<span class="lineNum">      33 </span><span class="lineCov">         14 :         self.scope = definition.scope;</span>
-<span class="lineNum">      34 </span><span class="lineCov">         14 :         self.autoInjectionVisibility = definition.autoInjectionVisibility;</span>
+<span class="lineNum">      30 </span><span class="lineCov">         15 :     self = [super initWithClass:definition.type key:definition.key];</span>
+<span class="lineNum">      31 </span><span class="lineCov">         15 :     if (self) {</span>
+<span class="lineNum">      32 </span><span class="lineCov">         15 :         self.patchObjectBlock = patchObjectBlock;</span>
+<span class="lineNum">      33 </span><span class="lineCov">         15 :         self.scope = definition.scope;</span>
+<span class="lineNum">      34 </span><span class="lineCov">         15 :         self.autoInjectionVisibility = definition.autoInjectionVisibility;</span>
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span><span class="lineCov">         14 :     }</span>
-<span class="lineNum">      37 </span><span class="lineCov">         14 :     return self;</span>
-<span class="lineNum">      38 </span><span class="lineCov">         14 : }</span>
+<span class="lineNum">      36 </span><span class="lineCov">         15 :     }</span>
+<span class="lineNum">      37 </span><span class="lineCov">         15 :     return self;</span>
+<span class="lineNum">      38 </span><span class="lineCov">         15 : }</span>
 <span class="lineNum">      39 </span>            : 
-<span class="lineNum">      40 </span><span class="lineCov">         10 : - (id)targetForInitializerWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args</span>
+<span class="lineNum">      40 </span><span class="lineCov">         15 : - (id)targetForInitializerWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args</span>
 <span class="lineNum">      41 </span>            : {
-<span class="lineNum">      42 </span><span class="lineCov">         10 :     return self.patchObjectBlock();</span>
-<span class="lineNum">      43 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">      42 </span><span class="lineCov">         15 :     return self.patchObjectBlock();</span>
+<span class="lineNum">      43 </span><span class="lineCov">         15 : }</span>
 <span class="lineNum">      44 </span>            : 
 <span class="lineNum">      45 </span>            : - (id)initializer
 <span class="lineNum">      46 </span>            : {
-<span class="lineNum">      47 </span><span class="lineCov">         14 :     return nil;</span>
+<span class="lineNum">      47 </span><span class="lineCov">         20 :     return nil;</span>
 <span class="lineNum">      48 </span>            : }
 <span class="lineNum">      49 </span>            : 
 <span class="lineNum">      50 </span>            : @end
 <span class="lineNum">      51 </span>            : 
 <span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span><span class="lineNoCov">          0 : @implementation TyphoonPatcher {</span>
-<span class="lineNum">      54 </span>            :     NSMutableDictionary *_patches;
-<span class="lineNum">      55 </span>            :     NSMutableDictionary *_originals;
-<span class="lineNum">      56 </span>            :     id&lt;TyphoonDefinitionPostProcessorInvalidator&gt; _invalidator;
-<span class="lineNum">      57 </span>            :     BOOL _isDetaching;
-<span class="lineNum">      58 </span>            : }
-<span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span>            : //-------------------------------------------------------------------------------------------
-<span class="lineNum">      61 </span>            : #pragma mark - Initialization &amp; Destruction
-<span class="lineNum">      62 </span>            : 
-<span class="lineNum">      63 </span>            : - (id)init
-<span class="lineNum">      64 </span>            : {
-<span class="lineNum">      65 </span><span class="lineCov">          5 :     self = [super init];</span>
-<span class="lineNum">      66 </span><span class="lineCov">          5 :     if (self) {</span>
-<span class="lineNum">      67 </span><span class="lineCov">          5 :         _patches = [NSMutableDictionary new];</span>
-<span class="lineNum">      68 </span><span class="lineCov">          5 :         _originals = [NSMutableDictionary new];</span>
-<span class="lineNum">      69 </span><span class="lineCov">          5 :     }</span>
-<span class="lineNum">      70 </span><span class="lineCov">          5 :     return self;</span>
-<span class="lineNum">      71 </span><span class="lineCov">          5 : }</span>
-<span class="lineNum">      72 </span>            : 
-<span class="lineNum">      73 </span>            : //-------------------------------------------------------------------------------------------
-<span class="lineNum">      74 </span>            : #pragma mark - Interface Methods
-<span class="lineNum">      75 </span>            : 
-<span class="lineNum">      76 </span><span class="lineNoCov">          0 : - (void)patchDefinitionWithKey:(NSString *)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock</span>
-<span class="lineNum">      77 </span>            : {
-<span class="lineNum">      78 </span><span class="lineNoCov">          0 :     [self patchDefinitionWithSelector:NSSelectorFromString(key) withObject:objectCreationBlock];</span>
-<span class="lineNum">      79 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      80 </span>            : 
-<span class="lineNum">      81 </span><span class="lineNoCov">          0 : - (void)patchDefinition:(TyphoonDefinition *)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock</span>
-<span class="lineNum">      82 </span>            : {
-<span class="lineNum">      83 </span><span class="lineNoCov">          0 :     [self patchDefinitionWithSelector:NSSelectorFromString(definition.key) withObject:objectCreationBlock];</span>
-<span class="lineNum">      84 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">      85 </span>            : 
-<span class="lineNum">      86 </span><span class="lineCov">         15 : - (void)patchDefinitionWithSelector:(SEL)definitionSelector withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock</span>
-<span class="lineNum">      87 </span>            : {
-<span class="lineNum">      88 </span><span class="lineCov">         15 :     [_patches setObject:objectCreationBlock forKey:NSStringFromSelector(definitionSelector)];</span>
-<span class="lineNum">      89 </span><span class="lineCov">         15 : }</span>
-<span class="lineNum">      90 </span>            : 
-<span class="lineNum">      91 </span>            : - (void)detach
-<span class="lineNum">      92 </span>            : {
-<span class="lineNum">      93 </span><span class="lineCov">          2 :     [_invalidator invalidatePostProcessor:self];</span>
-<span class="lineNum">      94 </span><span class="lineCov">          2 :     _isDetaching = YES;</span>
-<span class="lineNum">      95 </span><span class="lineCov">          2 :     [_invalidator forcePostProcessing];</span>
-<span class="lineNum">      96 </span><span class="lineCov">          2 :     [_invalidator removePostProcessor:self];</span>
-<span class="lineNum">      97 </span><span class="lineCov">          2 : }</span>
-<span class="lineNum">      98 </span>            : 
-<span class="lineNum">      99 </span>            : //-------------------------------------------------------------------------------------------
-<span class="lineNum">     100 </span>            : #pragma mark - Protocol Methods
-<span class="lineNum">     101 </span>            : 
-<span class="lineNum">     102 </span><span class="lineCov">         81 : - (void)postProcessDefinition:(TyphoonDefinition *)definition replacement:(TyphoonDefinition **)definitionToReplace</span>
-<span class="lineNum">     103 </span>            : {
-<span class="lineNum">     104 </span><span class="lineCov">         81 :     if (!_isDetaching) {</span>
-<span class="lineNum">     105 </span><span class="lineCov">         19 :         TyphoonPatchObjectCreationBlock patchObjectBlock = _patches[definition.key];</span>
-<span class="lineNum">     106 </span><span class="lineCov">         19 :         if (patchObjectBlock) {</span>
-<span class="lineNum">     107 </span><span class="lineCov">         14 :             *definitionToReplace = [[TyphoonPatcherDefinition alloc] initWithOriginalDefinition:definition patchObjectBlock:patchObjectBlock];</span>
-<span class="lineNum">     108 </span><span class="lineCov">         14 :             _originals[definition.key] = definition;</span>
-<span class="lineNum">     109 </span><span class="lineCov">         14 :         }</span>
-<span class="lineNum">     110 </span><span class="lineCov">         19 :     } else {</span>
-<span class="lineNum">     111 </span><span class="lineCov">         62 :         TyphoonDefinition *originalDefinition = _originals[definition.key];</span>
-<span class="lineNum">     112 </span><span class="lineCov">         62 :         if (originalDefinition) {</span>
-<span class="lineNum">     113 </span><span class="lineCov">          4 :             *definitionToReplace = originalDefinition;</span>
-<span class="lineNum">     114 </span><span class="lineCov">          4 :         }</span>
-<span class="lineNum">     115 </span><span class="lineCov">         62 :     }</span>
-<span class="lineNum">     116 </span><span class="lineCov">         81 : }</span>
-<span class="lineNum">     117 </span>            : 
-<span class="lineNum">     118 </span><span class="lineCov">          5 : - (void)setPostProcessorInvalidator:(id&lt;TyphoonDefinitionPostProcessorInvalidator&gt;)invalidator</span>
-<span class="lineNum">     119 </span>            : {
-<span class="lineNum">     120 </span><span class="lineCov">          5 :     _invalidator = invalidator;</span>
-<span class="lineNum">     121 </span><span class="lineCov">          5 : }</span>
-<span class="lineNum">     122 </span>            : 
-<span class="lineNum">     123 </span>            : 
-<span class="lineNum">     124 </span>            : @end
+<span class="lineNum">      53 </span><span class="lineNoCov">          0 : @implementation TyphoonPatcher</span>
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            : //-------------------------------------------------------------------------------------------
+<span class="lineNum">      56 </span>            : #pragma mark - Initialization &amp; Destruction
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : - (id)init
+<span class="lineNum">      59 </span>            : {
+<span class="lineNum">      60 </span><span class="lineCov">          5 :     self = [super init];</span>
+<span class="lineNum">      61 </span><span class="lineCov">          5 :     if (self) {</span>
+<span class="lineNum">      62 </span><span class="lineCov">          5 :         _patches = [[NSMutableDictionary alloc] init];</span>
+<span class="lineNum">      63 </span><span class="lineCov">          5 :     }</span>
+<span class="lineNum">      64 </span><span class="lineCov">          5 :     return self;</span>
+<span class="lineNum">      65 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span>            : //-------------------------------------------------------------------------------------------
+<span class="lineNum">      68 </span>            : #pragma mark - Interface Methods
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span><span class="lineCov">         15 : - (void)patchDefinitionWithKey:(NSString *)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock</span>
+<span class="lineNum">      71 </span>            : {
+<span class="lineNum">      72 </span><span class="lineCov">         15 :     [_patches setObject:objectCreationBlock forKey:key];</span>
+<span class="lineNum">      73 </span><span class="lineCov">         15 : }</span>
+<span class="lineNum">      74 </span>            : 
+<span class="lineNum">      75 </span><span class="lineCov">          5 : - (void)patchDefinition:(TyphoonDefinition *)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock</span>
+<span class="lineNum">      76 </span>            : {
+<span class="lineNum">      77 </span><span class="lineCov">          5 :     [self patchDefinitionWithKey:definition.key withObject:objectCreationBlock];</span>
+<span class="lineNum">      78 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">      79 </span>            : 
+<span class="lineNum">      80 </span><span class="lineCov">         10 : - (void)patchDefinitionWithSelector:(SEL)definitionSelector withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock</span>
+<span class="lineNum">      81 </span>            : {
+<span class="lineNum">      82 </span><span class="lineCov">         10 :     [self patchDefinitionWithKey:NSStringFromSelector(definitionSelector) withObject:objectCreationBlock];</span>
+<span class="lineNum">      83 </span><span class="lineCov">         10 : }</span>
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span>            : - (void)detach
+<span class="lineNum">      86 </span>            : {
+<span class="lineNum">      87 </span><span class="lineCov">          2 :     [self rollback];</span>
+<span class="lineNum">      88 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span>            : //-------------------------------------------------------------------------------------------
+<span class="lineNum">      91 </span>            : #pragma mark - Protocol Methods
+<span class="lineNum">      92 </span>            : 
+<span class="lineNum">      93 </span><span class="lineCov">          5 : - (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory</span>
+<span class="lineNum">      94 </span>            : {
+<span class="lineNum">      95 </span><span class="lineCov">          5 :     [super postProcessComponentFactory:factory];</span>
+<span class="lineNum">      96 </span>            : 
+<span class="lineNum">      97 </span><span class="lineCov">        160 :     [factory enumerateDefinitions:^(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace, BOOL *stop) {</span>
+<span class="lineNum">      98 </span><span class="lineCov">        155 :         TyphoonPatchObjectCreationBlock patchObjectBlock = _patches[definition.key];</span>
+<span class="lineNum">      99 </span><span class="lineCov">        155 :         if (patchObjectBlock) {</span>
+<span class="lineNum">     100 </span><span class="lineCov">         15 :             *definitionToReplace = [[TyphoonPatcherDefinition alloc] initWithOriginalDefinition:definition patchObjectBlock:patchObjectBlock];</span>
+<span class="lineNum">     101 </span><span class="lineCov">         15 :         }</span>
+<span class="lineNum">     102 </span><span class="lineCov">        310 :     }];</span>
+<span class="lineNum">     103 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">     104 </span>            : 
+<span class="lineNum">     105 </span>            : 
+<span class="lineNum">     106 </span>            : @end
 </pre>
       </td>
     </tr>

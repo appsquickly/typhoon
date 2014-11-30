@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-30 11:03:55</td>
+            <td class="headerValue">2014-11-30 20:39:31</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -80,7 +80,7 @@
 <span class="lineNum">      22 </span>            :     static dispatch_once_t onceToken;
 <span class="lineNum">      23 </span>            :     static NSDictionary *_typhoonPrimitiveTypesAsStrings;
 <span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span><span class="lineCov">        752 :     dispatch_once(&amp;onceToken, ^{</span>
+<span class="lineNum">      25 </span><span class="lineCov">       6104 :     dispatch_once(&amp;onceToken, ^{</span>
 <span class="lineNum">      26 </span><span class="lineCov">          1 :         _typhoonPrimitiveTypesAsStrings = @{</span>
 <span class="lineNum">      27 </span>            :             @&quot;c&quot; : @(TyphoonPrimitiveTypeChar),
 <span class="lineNum">      28 </span>            :             @&quot;i&quot; : @(TyphoonPrimitiveTypeInt),
@@ -102,28 +102,28 @@
 <span class="lineNum">      44 </span>            :             @&quot;?&quot; : @(TyphoonPrimitiveTypeUnknown)
 <span class="lineNum">      45 </span>            :         };
 <span class="lineNum">      46 </span><span class="lineCov">          1 :     });</span>
-<span class="lineNum">      47 </span><span class="lineCov">        751 :     return _typhoonPrimitiveTypesAsStrings;</span>
+<span class="lineNum">      47 </span><span class="lineCov">       6103 :     return _typhoonPrimitiveTypesAsStrings;</span>
 <span class="lineNum">      48 </span>            : }
 <span class="lineNum">      49 </span>            : 
 <span class="lineNum">      50 </span>            : @end
 <span class="lineNum">      51 </span>            : 
 <span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span><span class="lineCov">       1382 : @implementation TyphoonTypeDescriptor {</span>
+<span class="lineNum">      53 </span><span class="lineCov">      19598 : @implementation TyphoonTypeDescriptor {</span>
 <span class="lineNum">      54 </span>            :     NSString *_typeCode;
 <span class="lineNum">      55 </span>            : }
 <span class="lineNum">      56 </span>            : 
 <span class="lineNum">      57 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">      58 </span>            : #pragma mark - Class Methods
 <span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span><span class="lineCov">        337 : + (TyphoonTypeDescriptor *)descriptorWithEncodedType:(const char *)encodedType</span>
+<span class="lineNum">      60 </span><span class="lineCov">        273 : + (TyphoonTypeDescriptor *)descriptorWithEncodedType:(const char *)encodedType</span>
 <span class="lineNum">      61 </span>            : {
-<span class="lineNum">      62 </span><span class="lineCov">        337 :     return [[[self class] alloc] initWithTypeCode:[NSString stringWithCString:encodedType encoding:NSUTF8StringEncoding]];</span>
+<span class="lineNum">      62 </span><span class="lineCov">        273 :     return [[[self class] alloc] initWithTypeCode:[NSString stringWithCString:encodedType encoding:NSUTF8StringEncoding]];</span>
 <span class="lineNum">      63 </span>            : }
 <span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span><span class="lineCov">       1050 : + (TyphoonTypeDescriptor *)descriptorWithTypeCode:(NSString *)typeCode</span>
+<span class="lineNum">      65 </span><span class="lineCov">      19330 : + (TyphoonTypeDescriptor *)descriptorWithTypeCode:(NSString *)typeCode</span>
 <span class="lineNum">      66 </span>            : {
-<span class="lineNum">      67 </span><span class="lineCov">       1050 :     return [[[self class] alloc] initWithTypeCode:typeCode];</span>
-<span class="lineNum">      68 </span><span class="lineCov">       1050 : }</span>
+<span class="lineNum">      67 </span><span class="lineCov">      19330 :     return [[[self class] alloc] initWithTypeCode:typeCode];</span>
+<span class="lineNum">      68 </span><span class="lineCov">      19330 : }</span>
 <span class="lineNum">      69 </span>            : 
 <span class="lineNum">      70 </span><span class="lineNoCov">          0 : + (TyphoonTypeDescriptor *)descriptorWithClassOrProtocol:(id)classOrProtocol</span>
 <span class="lineNum">      71 </span>            : {
@@ -136,40 +136,40 @@
 <span class="lineNum">      78 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">      79 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      80 </span>            : 
-<span class="lineNum">      81 </span><span class="lineCov">       1390 : - (id)initWithTypeCode:(NSString *)typeCode</span>
+<span class="lineNum">      81 </span><span class="lineCov">      19606 : - (id)initWithTypeCode:(NSString *)typeCode</span>
 <span class="lineNum">      82 </span>            : {
-<span class="lineNum">      83 </span><span class="lineCov">       1390 :     self = [super init];</span>
-<span class="lineNum">      84 </span><span class="lineCov">       1390 :     if (self) {</span>
-<span class="lineNum">      85 </span><span class="lineCov">       1390 :         if ([typeCode hasPrefix:@&quot;T@&quot;]) {</span>
-<span class="lineNum">      86 </span><span class="lineCov">        639 :             _isPrimitive = NO;</span>
-<span class="lineNum">      87 </span><span class="lineCov">        639 :             typeCode = [typeCode stringByReplacingOccurrencesOfString:@&quot;T@&quot; withString:@&quot;&quot;];</span>
-<span class="lineNum">      88 </span><span class="lineCov">        639 :             typeCode = [typeCode stringByReplacingOccurrencesOfString:@&quot;\&quot;&quot; withString:@&quot;&quot;];</span>
-<span class="lineNum">      89 </span><span class="lineCov">        776 :             if ([typeCode hasPrefix:@&quot;&lt;&quot;] &amp;&amp; [typeCode hasSuffix:@&quot;&gt;&quot;]) {</span>
-<span class="lineNum">      90 </span><span class="lineCov">        137 :                 typeCode = [typeCode stringByReplacingOccurrencesOfString:@&quot;&lt;&quot; withString:@&quot;&quot;];</span>
-<span class="lineNum">      91 </span><span class="lineCov">        137 :                 typeCode = [typeCode stringByReplacingOccurrencesOfString:@&quot;&gt;&quot; withString:@&quot;&quot;];</span>
-<span class="lineNum">      92 </span><span class="lineCov">        137 :                 _protocol = NSProtocolFromString(typeCode);</span>
-<span class="lineNum">      93 </span><span class="lineCov">        137 :             }</span>
-<span class="lineNum">      94 </span><span class="lineCov">        502 :             else if ([typeCode hasSuffix:@&quot;&gt;&quot;]) {</span>
-<span class="lineNum">      95 </span><span class="lineCov">         27 :                 NSArray *components = [typeCode componentsSeparatedByString:@&quot;&lt;&quot;];</span>
-<span class="lineNum">      96 </span><span class="lineCov">         27 :                 NSString *protocol = [components[1] stringByReplacingOccurrencesOfString:@&quot;&gt;&quot; withString:@&quot;&quot;];</span>
-<span class="lineNum">      97 </span><span class="lineCov">         27 :                 NSString *class = components[0];</span>
+<span class="lineNum">      83 </span><span class="lineCov">      19606 :     self = [super init];</span>
+<span class="lineNum">      84 </span><span class="lineCov">      19606 :     if (self) {</span>
+<span class="lineNum">      85 </span><span class="lineCov">      19606 :         if ([typeCode hasPrefix:@&quot;T@&quot;]) {</span>
+<span class="lineNum">      86 </span><span class="lineCov">      13503 :             _isPrimitive = NO;</span>
+<span class="lineNum">      87 </span><span class="lineCov">      13503 :             typeCode = [typeCode stringByReplacingOccurrencesOfString:@&quot;T@&quot; withString:@&quot;&quot;];</span>
+<span class="lineNum">      88 </span><span class="lineCov">      13503 :             typeCode = [typeCode stringByReplacingOccurrencesOfString:@&quot;\&quot;&quot; withString:@&quot;&quot;];</span>
+<span class="lineNum">      89 </span><span class="lineCov">      16721 :             if ([typeCode hasPrefix:@&quot;&lt;&quot;] &amp;&amp; [typeCode hasSuffix:@&quot;&gt;&quot;]) {</span>
+<span class="lineNum">      90 </span><span class="lineCov">       3218 :                 typeCode = [typeCode stringByReplacingOccurrencesOfString:@&quot;&lt;&quot; withString:@&quot;&quot;];</span>
+<span class="lineNum">      91 </span><span class="lineCov">       3218 :                 typeCode = [typeCode stringByReplacingOccurrencesOfString:@&quot;&gt;&quot; withString:@&quot;&quot;];</span>
+<span class="lineNum">      92 </span><span class="lineCov">       3218 :                 _protocol = NSProtocolFromString(typeCode);</span>
+<span class="lineNum">      93 </span><span class="lineCov">       3218 :             }</span>
+<span class="lineNum">      94 </span><span class="lineCov">      10285 :             else if ([typeCode hasSuffix:@&quot;&gt;&quot;]) {</span>
+<span class="lineNum">      95 </span><span class="lineCov">         82 :                 NSArray *components = [typeCode componentsSeparatedByString:@&quot;&lt;&quot;];</span>
+<span class="lineNum">      96 </span><span class="lineCov">         82 :                 NSString *protocol = [components[1] stringByReplacingOccurrencesOfString:@&quot;&gt;&quot; withString:@&quot;&quot;];</span>
+<span class="lineNum">      97 </span><span class="lineCov">         82 :                 NSString *class = components[0];</span>
 <span class="lineNum">      98 </span>            : 
-<span class="lineNum">      99 </span><span class="lineCov">         27 :                 _protocol = NSProtocolFromString(protocol);</span>
-<span class="lineNum">     100 </span><span class="lineCov">         27 :                 _typeBeingDescribed = TyphoonClassFromString(class);</span>
-<span class="lineNum">     101 </span><span class="lineCov">         27 :             }</span>
+<span class="lineNum">      99 </span><span class="lineCov">         82 :                 _protocol = NSProtocolFromString(protocol);</span>
+<span class="lineNum">     100 </span><span class="lineCov">         82 :                 _typeBeingDescribed = TyphoonClassFromString(class);</span>
+<span class="lineNum">     101 </span><span class="lineCov">         82 :             }</span>
 <span class="lineNum">     102 </span>            :             else {
-<span class="lineNum">     103 </span><span class="lineCov">        475 :                 _typeBeingDescribed = TyphoonClassFromString(typeCode);</span>
+<span class="lineNum">     103 </span><span class="lineCov">      10203 :                 _typeBeingDescribed = TyphoonClassFromString(typeCode);</span>
 <span class="lineNum">     104 </span>            :             }
-<span class="lineNum">     105 </span><span class="lineCov">        639 :         }</span>
+<span class="lineNum">     105 </span><span class="lineCov">      13503 :         }</span>
 <span class="lineNum">     106 </span>            :         else {
-<span class="lineNum">     107 </span><span class="lineCov">        751 :             _isPrimitive = YES;</span>
-<span class="lineNum">     108 </span><span class="lineCov">        751 :             typeCode = [typeCode stringByReplacingOccurrencesOfString:@&quot;T&quot; withString:@&quot;&quot;];</span>
-<span class="lineNum">     109 </span><span class="lineCov">        751 :             [self parsePrimitiveType:typeCode];</span>
+<span class="lineNum">     107 </span><span class="lineCov">       6103 :             _isPrimitive = YES;</span>
+<span class="lineNum">     108 </span><span class="lineCov">       6103 :             typeCode = [typeCode stringByReplacingOccurrencesOfString:@&quot;T&quot; withString:@&quot;&quot;];</span>
+<span class="lineNum">     109 </span><span class="lineCov">       6103 :             [self parsePrimitiveType:typeCode];</span>
 <span class="lineNum">     110 </span>            :         }
-<span class="lineNum">     111 </span><span class="lineCov">       1390 :         _typeCode = typeCode;</span>
-<span class="lineNum">     112 </span><span class="lineCov">       1390 :     }</span>
-<span class="lineNum">     113 </span><span class="lineCov">       1390 :     return self;</span>
-<span class="lineNum">     114 </span><span class="lineCov">       1390 : }</span>
+<span class="lineNum">     111 </span><span class="lineCov">      19606 :         _typeCode = typeCode;</span>
+<span class="lineNum">     112 </span><span class="lineCov">      19606 :     }</span>
+<span class="lineNum">     113 </span><span class="lineCov">      19606 :     return self;</span>
+<span class="lineNum">     114 </span><span class="lineCov">      19606 : }</span>
 <span class="lineNum">     115 </span>            : 
 <span class="lineNum">     116 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">     117 </span>            : #pragma mark - Interface Methods
@@ -216,18 +216,18 @@
 <span class="lineNum">     158 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">     159 </span>            : #pragma mark - Private Methods
 <span class="lineNum">     160 </span>            : 
-<span class="lineNum">     161 </span><span class="lineCov">        751 : - (void)parsePrimitiveType:(NSString *)typeCode</span>
+<span class="lineNum">     161 </span><span class="lineCov">       6103 : - (void)parsePrimitiveType:(NSString *)typeCode</span>
 <span class="lineNum">     162 </span>            : {
-<span class="lineNum">     163 </span><span class="lineCov">        751 :     typeCode = [self extractArrayInformation:typeCode];</span>
-<span class="lineNum">     164 </span><span class="lineCov">        751 :     typeCode = [self extractPointerInformation:typeCode];</span>
-<span class="lineNum">     165 </span><span class="lineCov">        751 :     typeCode = [self extractStructureInformation:typeCode];</span>
-<span class="lineNum">     166 </span><span class="lineCov">        751 :     typeCode = [self extractObjectInformation:typeCode];</span>
-<span class="lineNum">     167 </span><span class="lineCov">        751 :     _primitiveType = [self typeFromTypeCode:typeCode];</span>
-<span class="lineNum">     168 </span><span class="lineCov">        751 : }</span>
+<span class="lineNum">     163 </span><span class="lineCov">       6103 :     typeCode = [self extractArrayInformation:typeCode];</span>
+<span class="lineNum">     164 </span><span class="lineCov">       6103 :     typeCode = [self extractPointerInformation:typeCode];</span>
+<span class="lineNum">     165 </span><span class="lineCov">       6103 :     typeCode = [self extractStructureInformation:typeCode];</span>
+<span class="lineNum">     166 </span><span class="lineCov">       6103 :     typeCode = [self extractObjectInformation:typeCode];</span>
+<span class="lineNum">     167 </span><span class="lineCov">       6103 :     _primitiveType = [self typeFromTypeCode:typeCode];</span>
+<span class="lineNum">     168 </span><span class="lineCov">       6103 : }</span>
 <span class="lineNum">     169 </span>            : 
-<span class="lineNum">     170 </span><span class="lineCov">        751 : - (NSString *)extractArrayInformation:(NSString *)typeCode</span>
+<span class="lineNum">     170 </span><span class="lineCov">       6103 : - (NSString *)extractArrayInformation:(NSString *)typeCode</span>
 <span class="lineNum">     171 </span>            : {
-<span class="lineNum">     172 </span><span class="lineCov">        751 :     if ([typeCode hasPrefix:@&quot;[&quot;] &amp;&amp; [typeCode hasSuffix:@&quot;]&quot;]) {</span>
+<span class="lineNum">     172 </span><span class="lineCov">       6103 :     if ([typeCode hasPrefix:@&quot;[&quot;] &amp;&amp; [typeCode hasSuffix:@&quot;]&quot;]) {</span>
 <span class="lineNum">     173 </span><span class="lineNoCov">          0 :         _isArray = YES;</span>
 <span class="lineNum">     174 </span><span class="lineNoCov">          0 :         typeCode =</span>
 <span class="lineNum">     175 </span>            :             [[typeCode stringByReplacingOccurrencesOfString:@&quot;[&quot; withString:@&quot;&quot;] stringByReplacingOccurrencesOfString:@&quot;]&quot; withString:@&quot;&quot;];
@@ -235,42 +235,42 @@
 <span class="lineNum">     177 </span><span class="lineNoCov">          0 :         [scanner scanInt:&amp;_arrayLength];</span>
 <span class="lineNum">     178 </span><span class="lineNoCov">          0 :         typeCode = [typeCode stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];</span>
 <span class="lineNum">     179 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">     180 </span><span class="lineCov">        751 :     return typeCode;</span>
-<span class="lineNum">     181 </span><span class="lineCov">        751 : }</span>
+<span class="lineNum">     180 </span><span class="lineCov">       6103 :     return typeCode;</span>
+<span class="lineNum">     181 </span><span class="lineCov">       6103 : }</span>
 <span class="lineNum">     182 </span>            : 
-<span class="lineNum">     183 </span><span class="lineCov">        751 : - (NSString *)extractPointerInformation:(NSString *)typeCode</span>
+<span class="lineNum">     183 </span><span class="lineCov">       6103 : - (NSString *)extractPointerInformation:(NSString *)typeCode</span>
 <span class="lineNum">     184 </span>            : {
-<span class="lineNum">     185 </span><span class="lineCov">        751 :     if ([typeCode hasPrefix:@&quot;^&quot;]) {</span>
-<span class="lineNum">     186 </span><span class="lineCov">          9 :         _isPointer = YES;</span>
-<span class="lineNum">     187 </span><span class="lineCov">          9 :         typeCode = [typeCode stringByReplacingOccurrencesOfString:@&quot;^&quot; withString:@&quot;&quot;];</span>
-<span class="lineNum">     188 </span><span class="lineCov">          9 :     }</span>
-<span class="lineNum">     189 </span><span class="lineCov">        751 :     return typeCode;</span>
-<span class="lineNum">     190 </span><span class="lineCov">        751 : }</span>
+<span class="lineNum">     185 </span><span class="lineCov">       6103 :     if ([typeCode hasPrefix:@&quot;^&quot;]) {</span>
+<span class="lineNum">     186 </span><span class="lineCov">         11 :         _isPointer = YES;</span>
+<span class="lineNum">     187 </span><span class="lineCov">         11 :         typeCode = [typeCode stringByReplacingOccurrencesOfString:@&quot;^&quot; withString:@&quot;&quot;];</span>
+<span class="lineNum">     188 </span><span class="lineCov">         11 :     }</span>
+<span class="lineNum">     189 </span><span class="lineCov">       6103 :     return typeCode;</span>
+<span class="lineNum">     190 </span><span class="lineCov">       6103 : }</span>
 <span class="lineNum">     191 </span>            : 
-<span class="lineNum">     192 </span><span class="lineCov">        751 : - (NSString *)extractStructureInformation:(NSString *)typeCode</span>
+<span class="lineNum">     192 </span><span class="lineCov">       6103 : - (NSString *)extractStructureInformation:(NSString *)typeCode</span>
 <span class="lineNum">     193 </span>            : {
-<span class="lineNum">     194 </span><span class="lineCov">        773 :     if ([typeCode hasPrefix:@&quot;{&quot;] &amp;&amp; [typeCode hasSuffix:@&quot;}&quot;]) {</span>
-<span class="lineNum">     195 </span><span class="lineCov">         22 :         _isStructure = YES;</span>
-<span class="lineNum">     196 </span><span class="lineCov">         22 :         typeCode =</span>
+<span class="lineNum">     194 </span><span class="lineCov">       6395 :     if ([typeCode hasPrefix:@&quot;{&quot;] &amp;&amp; [typeCode hasSuffix:@&quot;}&quot;]) {</span>
+<span class="lineNum">     195 </span><span class="lineCov">        292 :         _isStructure = YES;</span>
+<span class="lineNum">     196 </span><span class="lineCov">        292 :         typeCode =</span>
 <span class="lineNum">     197 </span>            :             [[typeCode stringByReplacingOccurrencesOfString:@&quot;{&quot; withString:@&quot;&quot;] stringByReplacingOccurrencesOfString:@&quot;}&quot; withString:@&quot;&quot;];
-<span class="lineNum">     198 </span><span class="lineCov">         22 :         _structureTypeName = [typeCode copy];</span>
-<span class="lineNum">     199 </span><span class="lineCov">         22 :     }</span>
-<span class="lineNum">     200 </span><span class="lineCov">        751 :     return typeCode;</span>
-<span class="lineNum">     201 </span><span class="lineCov">        751 : }</span>
+<span class="lineNum">     198 </span><span class="lineCov">        292 :         _structureTypeName = [typeCode copy];</span>
+<span class="lineNum">     199 </span><span class="lineCov">        292 :     }</span>
+<span class="lineNum">     200 </span><span class="lineCov">       6103 :     return typeCode;</span>
+<span class="lineNum">     201 </span><span class="lineCov">       6103 : }</span>
 <span class="lineNum">     202 </span>            : 
-<span class="lineNum">     203 </span><span class="lineCov">        751 : - (NSString *)extractObjectInformation:(NSString *)typeCode</span>
+<span class="lineNum">     203 </span><span class="lineCov">       6103 : - (NSString *)extractObjectInformation:(NSString *)typeCode</span>
 <span class="lineNum">     204 </span>            : {
-<span class="lineNum">     205 </span><span class="lineCov">        751 :     if ([typeCode isEqualToString:@&quot;@&quot;]) {</span>
-<span class="lineNum">     206 </span><span class="lineCov">        272 :         _isPrimitive = NO;</span>
-<span class="lineNum">     207 </span><span class="lineCov">        272 :         return @&quot;?&quot;;</span>
+<span class="lineNum">     205 </span><span class="lineCov">       6103 :     if ([typeCode isEqualToString:@&quot;@&quot;]) {</span>
+<span class="lineNum">     206 </span><span class="lineCov">        208 :         _isPrimitive = NO;</span>
+<span class="lineNum">     207 </span><span class="lineCov">        208 :         return @&quot;?&quot;;</span>
 <span class="lineNum">     208 </span>            :     }
-<span class="lineNum">     209 </span><span class="lineCov">        479 :     return typeCode;</span>
-<span class="lineNum">     210 </span><span class="lineCov">        751 : }</span>
+<span class="lineNum">     209 </span><span class="lineCov">       5895 :     return typeCode;</span>
+<span class="lineNum">     210 </span><span class="lineCov">       6103 : }</span>
 <span class="lineNum">     211 </span>            : 
-<span class="lineNum">     212 </span><span class="lineCov">        751 : - (TyphoonPrimitiveType)typeFromTypeCode:(NSString *)typeCode</span>
+<span class="lineNum">     212 </span><span class="lineCov">       6103 : - (TyphoonPrimitiveType)typeFromTypeCode:(NSString *)typeCode</span>
 <span class="lineNum">     213 </span>            : {
-<span class="lineNum">     214 </span><span class="lineCov">        751 :     return (TyphoonPrimitiveType) [[[NSDictionary dictionaryWithTyphoonPrimitiveTypesAsStrings] objectForKey:typeCode] intValue];</span>
-<span class="lineNum">     215 </span><span class="lineCov">        751 : }</span>
+<span class="lineNum">     214 </span><span class="lineCov">       6103 :     return (TyphoonPrimitiveType) [[[NSDictionary dictionaryWithTyphoonPrimitiveTypesAsStrings] objectForKey:typeCode] intValue];</span>
+<span class="lineNum">     215 </span><span class="lineCov">       6103 : }</span>
 <span class="lineNum">     216 </span>            : 
 <span class="lineNum">     217 </span>            : @end
 </pre>
