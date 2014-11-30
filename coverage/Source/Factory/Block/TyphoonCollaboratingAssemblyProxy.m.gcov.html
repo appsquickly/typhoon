@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-30 09:37:57</td>
+            <td class="headerValue">2014-11-30 11:03:55</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -99,7 +99,7 @@
 <span class="lineNum">      41 </span><span class="lineCov">         20 :     TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];</span>
 <span class="lineNum">      42 </span>            : 
 <span class="lineNum">      43 </span>            :     //Since we're resolving a reference to another component, all we need to provide here is the definition's key and runtime args.
-<span class="lineNum">      44 </span><span class="lineCov">         20 :     TyphoonDefinition *definition = [TyphoonReferenceDefinition definitionReferringToComponent:[TyphoonAssemblySelectorAdviser keyForSEL:anInvocation.selector]];</span>
+<span class="lineNum">      44 </span><span class="lineCov">         20 :     TyphoonReferenceDefinition *definition = [TyphoonReferenceDefinition definitionReferringToComponent:[TyphoonAssemblySelectorAdviser keyForSEL:anInvocation.selector]];</span>
 <span class="lineNum">      45 </span><span class="lineCov">         20 :     definition.currentRuntimeArguments = args;</span>
 <span class="lineNum">      46 </span>            : 
 <span class="lineNum">      47 </span><span class="lineCov">         20 :     [anInvocation retainArguments];</span>

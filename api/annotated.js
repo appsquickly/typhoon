@@ -16,12 +16,12 @@ var annotated =
     [ "TyphoonBundleResource", "interface_typhoon_bundle_resource.html", "interface_typhoon_bundle_resource" ],
     [ "<TyphoonCollection>", "protocol_typhoon_collection-p.html", "protocol_typhoon_collection-p" ],
     [ "TyphoonComponentFactory", "interface_typhoon_component_factory.html", "interface_typhoon_component_factory" ],
-    [ "<TyphoonComponentFactoryPostProcessor>", "protocol_typhoon_component_factory_post_processor-p.html", "protocol_typhoon_component_factory_post_processor-p" ],
     [ "<TyphoonComponentsPool>", "protocol_typhoon_components_pool-p.html", "protocol_typhoon_components_pool-p" ],
     [ "TyphoonConfigPostProcessor", "interface_typhoon_config_post_processor.html", "interface_typhoon_config_post_processor" ],
     [ "TyphoonDefinition", "interface_typhoon_definition.html", "interface_typhoon_definition" ],
     [ "TyphoonDefinition(Deprecated)", "category_typhoon_definition_07_deprecated_08.html", "category_typhoon_definition_07_deprecated_08" ],
     [ "TyphoonDefinition(Option)", "category_typhoon_definition_07_option_08.html", "category_typhoon_definition_07_option_08" ],
+    [ "<TyphoonDefinitionPostProcessor>", "protocol_typhoon_definition_post_processor-p.html", "protocol_typhoon_definition_post_processor-p" ],
     [ "<TyphoonDictionary>", "protocol_typhoon_dictionary-p.html", "protocol_typhoon_dictionary-p" ],
     [ "TyphoonInjectedObject", "interface_typhoon_injected_object.html", null ],
     [ "<TyphoonInjection>", "protocol_typhoon_injection-p.html", "protocol_typhoon_injection-p" ],
@@ -52,6 +52,5 @@ var annotated =
     [ "TyphoonTypeConverterRegistry", "interface_typhoon_type_converter_registry.html", "interface_typhoon_type_converter_registry" ],
     [ "TyphoonTypeDescriptor", "interface_typhoon_type_descriptor.html", "interface_typhoon_type_descriptor" ],
     [ "TyphoonUIColorTypeConverter", "interface_typhoon_u_i_color_type_converter.html", null ],
-    [ "TyphoonViewControllerNibResolver", "interface_typhoon_view_controller_nib_resolver.html", "interface_typhoon_view_controller_nib_resolver" ],
     [ "TyphoonWeakComponentsPool", "interface_typhoon_weak_components_pool.html", null ]
 ];

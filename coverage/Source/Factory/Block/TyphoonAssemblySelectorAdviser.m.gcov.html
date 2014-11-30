@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-30 09:37:57</td>
+            <td class="headerValue">2014-11-30 11:03:55</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -80,14 +80,14 @@
 <span class="lineNum">      22 </span>            : */
 <span class="lineNum">      23 </span>            : @implementation TyphoonAssemblySelectorAdviser
 <span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span><span class="lineCov">       2812 : + (SEL)advisedSELForKey:(NSString *)key</span>
+<span class="lineNum">      25 </span><span class="lineCov">       2797 : + (SEL)advisedSELForKey:(NSString *)key</span>
 <span class="lineNum">      26 </span>            : {
-<span class="lineNum">      27 </span><span class="lineCov">       2812 :     if ([key hasPrefix:TYPHOON_BEFORE_ADVICE_PREFIX]) {</span>
+<span class="lineNum">      27 </span><span class="lineCov">       2797 :     if ([key hasPrefix:TYPHOON_BEFORE_ADVICE_PREFIX]) {</span>
 <span class="lineNum">      28 </span><span class="lineNoCov">          0 :         [NSException raise:NSInternalInconsistencyException format:@&quot;Don't pass an advised key into a method expecting an unadvised key.&quot;];</span>
 <span class="lineNum">      29 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      30 </span>            : 
-<span class="lineNum">      31 </span><span class="lineCov">       2812 :     return NSSelectorFromString([TYPHOON_BEFORE_ADVICE_PREFIX stringByAppendingString:key]);</span>
-<span class="lineNum">      32 </span><span class="lineCov">       2812 : }</span>
+<span class="lineNum">      31 </span><span class="lineCov">       2797 :     return NSSelectorFromString([TYPHOON_BEFORE_ADVICE_PREFIX stringByAppendingString:key]);</span>
+<span class="lineNum">      32 </span><span class="lineCov">       2797 : }</span>
 <span class="lineNum">      33 </span>            : 
 <span class="lineNum">      34 </span><span class="lineCov">       2681 : + (NSString *)keyForAdvisedSEL:(SEL)advisedSEL</span>
 <span class="lineNum">      35 </span>            : {

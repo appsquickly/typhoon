@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">51</td>
-            <td class="headerCovTableEntry">55</td>
-            <td class="headerCovTableEntryHi">92.7 %</td>
+            <td class="headerCovTableEntry">56</td>
+            <td class="headerCovTableEntry">64</td>
+            <td class="headerCovTableEntryMed">87.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-30 09:37:57</td>
+            <td class="headerValue">2014-11-30 11:03:55</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -78,121 +78,136 @@
 <span class="lineNum">      20 </span>            : #import &quot;TyphoonAssemblyPropertyInjectionPostProcessor.h&quot;
 <span class="lineNum">      21 </span>            : #import &quot;TyphoonInjection.h&quot;
 <span class="lineNum">      22 </span>            : #import &quot;TyphoonIntrospectionUtils.h&quot;
-<span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span>            : @interface TyphoonComponentFactory (Private)
+<span class="lineNum">      23 </span>            : #import &quot;TyphoonReferenceDefinition.h&quot;
+<span class="lineNum">      24 </span>            : #import &quot;TyphoonDefinition+Infrastructure.h&quot;
 <span class="lineNum">      25 </span>            : 
-<span class="lineNum">      26 </span>            : - (TyphoonDefinition *)definitionForKey:(NSString *)key;
+<span class="lineNum">      26 </span>            : @interface TyphoonComponentFactory (Private)
 <span class="lineNum">      27 </span>            : 
-<span class="lineNum">      28 </span>            : - (void)loadIfNeeded;
+<span class="lineNum">      28 </span>            : - (TyphoonDefinition *)definitionForKey:(NSString *)key;
 <span class="lineNum">      29 </span>            : 
-<span class="lineNum">      30 </span>            : @end
+<span class="lineNum">      30 </span>            : - (void)loadIfNeeded;
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span>            : @implementation TyphoonBlockComponentFactory
+<span class="lineNum">      32 </span>            : @end
 <span class="lineNum">      33 </span>            : 
-<span class="lineNum">      34 </span>            : - (id)asAssembly
-<span class="lineNum">      35 </span>            : {
-<span class="lineNum">      36 </span><span class="lineCov">         33 :     return self;</span>
-<span class="lineNum">      37 </span>            : }
-<span class="lineNum">      38 </span>            : 
-<span class="lineNum">      39 </span>            : - (TyphoonComponentFactory *)asFactory
-<span class="lineNum">      40 </span>            : {
-<span class="lineNum">      41 </span><span class="lineNoCov">          0 :     return self;</span>
-<span class="lineNum">      42 </span>            : }
-<span class="lineNum">      43 </span>            : 
-<span class="lineNum">      44 </span>            : //-------------------------------------------------------------------------------------------
-<span class="lineNum">      45 </span>            : #pragma mark - Class Methods
-<span class="lineNum">      46 </span>            : 
-<span class="lineNum">      47 </span><span class="lineCov">         52 : + (id)factoryWithAssembly:(TyphoonAssembly *)assembly</span>
-<span class="lineNum">      48 </span>            : {
-<span class="lineNum">      49 </span><span class="lineCov">         52 :     return [[self alloc] initWithAssemblies:@[assembly]];</span>
-<span class="lineNum">      50 </span><span class="lineCov">         52 : }</span>
-<span class="lineNum">      51 </span>            : 
-<span class="lineNum">      52 </span><span class="lineCov">          9 : + (id)factoryWithAssemblies:(NSArray *)assemblies</span>
-<span class="lineNum">      53 </span>            : {
-<span class="lineNum">      54 </span><span class="lineCov">          9 :     return [[self alloc] initWithAssemblies:assemblies];</span>
-<span class="lineNum">      55 </span><span class="lineCov">          9 : }</span>
-<span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span>            : //-------------------------------------------------------------------------------------------
-<span class="lineNum">      58 </span>            : #pragma mark - Initialization &amp; Destruction
-<span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span><span class="lineCov">        137 : - (id)initWithAssembly:(TyphoonAssembly *)assembly</span>
-<span class="lineNum">      61 </span>            : {
-<span class="lineNum">      62 </span><span class="lineCov">        137 :     return [self initWithAssemblies:@[assembly]];</span>
-<span class="lineNum">      63 </span><span class="lineCov">        137 : }</span>
-<span class="lineNum">      64 </span>            : 
-<span class="lineNum">      65 </span><span class="lineCov">        203 : - (id)initWithAssemblies:(NSArray *)assemblies</span>
-<span class="lineNum">      66 </span>            : {
-<span class="lineNum">      67 </span><span class="lineCov">        203 :     self = [super init];</span>
-<span class="lineNum">      68 </span><span class="lineCov">        203 :     if (self) {</span>
-<span class="lineNum">      69 </span><span class="lineCov">        203 :         [self attachPostProcessor:[TyphoonAssemblyPropertyInjectionPostProcessor new]];</span>
-<span class="lineNum">      70 </span><span class="lineCov">        832 :         for (TyphoonAssembly *assembly in assemblies) {</span>
-<span class="lineNum">      71 </span><span class="lineCov">        213 :             [self buildAssembly:assembly];</span>
-<span class="lineNum">      72 </span><span class="lineCov">        832 :         }</span>
-<span class="lineNum">      73 </span><span class="lineCov">        203 :     }</span>
-<span class="lineNum">      74 </span><span class="lineCov">        203 :     return self;</span>
-<span class="lineNum">      75 </span><span class="lineCov">        203 : }</span>
-<span class="lineNum">      76 </span>            : 
-<span class="lineNum">      77 </span><span class="lineCov">        213 : - (void)buildAssembly:(TyphoonAssembly *)assembly</span>
-<span class="lineNum">      78 </span>            : {
-<span class="lineNum">      79 </span>            :     LogTrace(@&quot;Building assembly: %@&quot;, NSStringFromClass([assembly class]));
-<span class="lineNum">      80 </span><span class="lineCov">        213 :     [self assertIsAssembly:assembly];</span>
-<span class="lineNum">      81 </span>            : 
-<span class="lineNum">      82 </span><span class="lineCov">        213 :     [assembly prepareForUse];</span>
+<span class="lineNum">      34 </span>            : @implementation TyphoonBlockComponentFactory
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : - (id)asAssembly
+<span class="lineNum">      37 </span>            : {
+<span class="lineNum">      38 </span><span class="lineCov">         32 :     return self;</span>
+<span class="lineNum">      39 </span>            : }
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            : - (TyphoonComponentFactory *)asFactory
+<span class="lineNum">      42 </span>            : {
+<span class="lineNum">      43 </span><span class="lineNoCov">          0 :     return self;</span>
+<span class="lineNum">      44 </span>            : }
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span>            : //-------------------------------------------------------------------------------------------
+<span class="lineNum">      47 </span>            : #pragma mark - Class Methods
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span><span class="lineCov">         52 : + (id)factoryWithAssembly:(TyphoonAssembly *)assembly</span>
+<span class="lineNum">      50 </span>            : {
+<span class="lineNum">      51 </span><span class="lineCov">         52 :     return [[self alloc] initWithAssemblies:@[assembly]];</span>
+<span class="lineNum">      52 </span><span class="lineCov">         52 : }</span>
+<span class="lineNum">      53 </span>            : 
+<span class="lineNum">      54 </span><span class="lineCov">          9 : + (id)factoryWithAssemblies:(NSArray *)assemblies</span>
+<span class="lineNum">      55 </span>            : {
+<span class="lineNum">      56 </span><span class="lineCov">          9 :     return [[self alloc] initWithAssemblies:assemblies];</span>
+<span class="lineNum">      57 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            : //-------------------------------------------------------------------------------------------
+<span class="lineNum">      60 </span>            : #pragma mark - Initialization &amp; Destruction
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span><span class="lineCov">        137 : - (id)initWithAssembly:(TyphoonAssembly *)assembly</span>
+<span class="lineNum">      63 </span>            : {
+<span class="lineNum">      64 </span><span class="lineCov">        137 :     return [self initWithAssemblies:@[assembly]];</span>
+<span class="lineNum">      65 </span><span class="lineCov">        137 : }</span>
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span><span class="lineCov">        203 : - (id)initWithAssemblies:(NSArray *)assemblies</span>
+<span class="lineNum">      68 </span>            : {
+<span class="lineNum">      69 </span><span class="lineCov">        203 :     self = [super init];</span>
+<span class="lineNum">      70 </span><span class="lineCov">        203 :     if (self) {</span>
+<span class="lineNum">      71 </span><span class="lineCov">        203 :         [self attachPostProcessor:[TyphoonAssemblyPropertyInjectionPostProcessor new]];</span>
+<span class="lineNum">      72 </span><span class="lineCov">        832 :         for (TyphoonAssembly *assembly in assemblies) {</span>
+<span class="lineNum">      73 </span><span class="lineCov">        213 :             [self buildAssembly:assembly];</span>
+<span class="lineNum">      74 </span><span class="lineCov">        832 :         }</span>
+<span class="lineNum">      75 </span><span class="lineCov">        203 :     }</span>
+<span class="lineNum">      76 </span><span class="lineCov">        203 :     return self;</span>
+<span class="lineNum">      77 </span><span class="lineCov">        203 : }</span>
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span><span class="lineCov">        213 : - (void)buildAssembly:(TyphoonAssembly *)assembly</span>
+<span class="lineNum">      80 </span>            : {
+<span class="lineNum">      81 </span>            :     LogTrace(@&quot;Building assembly: %@&quot;, NSStringFromClass([assembly class]));
+<span class="lineNum">      82 </span><span class="lineCov">        213 :     [self assertIsAssembly:assembly];</span>
 <span class="lineNum">      83 </span>            : 
-<span class="lineNum">      84 </span><span class="lineCov">        213 :     [self registerAllDefinitions:assembly];</span>
-<span class="lineNum">      85 </span><span class="lineCov">        213 : }</span>
-<span class="lineNum">      86 </span>            : 
-<span class="lineNum">      87 </span><span class="lineCov">        213 : - (void)assertIsAssembly:(TyphoonAssembly *)assembly</span>
-<span class="lineNum">      88 </span>            : {
-<span class="lineNum">      89 </span><span class="lineCov">        213 :     if (![assembly isKindOfClass:[TyphoonAssembly class]]) //</span>
-<span class="lineNum">      90 </span>            :     {
-<span class="lineNum">      91 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Class '%@' is not a sub-class of %@&quot;, NSStringFromClass([assembly class]),</span>
-<span class="lineNum">      92 </span><span class="lineNoCov">          0 :                                                              NSStringFromClass([TyphoonAssembly class])];</span>
-<span class="lineNum">      93 </span><span class="lineNoCov">          0 :     }</span>
-<span class="lineNum">      94 </span><span class="lineCov">        213 : }</span>
-<span class="lineNum">      95 </span>            : 
-<span class="lineNum">      96 </span><span class="lineCov">        213 : - (void)registerAllDefinitions:(TyphoonAssembly *)assembly</span>
-<span class="lineNum">      97 </span>            : {
-<span class="lineNum">      98 </span><span class="lineCov">        213 :     NSArray *definitions = [assembly definitions];</span>
-<span class="lineNum">      99 </span><span class="lineCov">       5786 :     for (TyphoonDefinition *definition in definitions) {</span>
-<span class="lineNum">     100 </span><span class="lineCov">       2680 :         [self registerDefinition:definition];</span>
-<span class="lineNum">     101 </span><span class="lineCov">       5786 :     }</span>
-<span class="lineNum">     102 </span><span class="lineCov">        213 : }</span>
-<span class="lineNum">     103 </span>            : 
-<span class="lineNum">     104 </span>            : 
-<span class="lineNum">     105 </span>            : //-------------------------------------------------------------------------------------------
-<span class="lineNum">     106 </span>            : #pragma mark - Overridden Methods
-<span class="lineNum">     107 </span>            : 
-<span class="lineNum">     108 </span><span class="lineCov">         69 : - (void)forwardInvocation:(NSInvocation *)invocation</span>
-<span class="lineNum">     109 </span>            : {
-<span class="lineNum">     110 </span><span class="lineCov">         69 :     NSString *componentKey = NSStringFromSelector([invocation selector]);</span>
-<span class="lineNum">     111 </span>            :     LogTrace(@&quot;Component key: %@&quot;, componentKey);
-<span class="lineNum">     112 </span>            : 
-<span class="lineNum">     113 </span><span class="lineCov">         69 :     TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:invocation];</span>
-<span class="lineNum">     114 </span>            : 
-<span class="lineNum">     115 </span><span class="lineCov">         69 :     NSInvocation *internalInvocation =</span>
-<span class="lineNum">     116 </span>            :         [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:@selector(componentForKey:args:)]];
-<span class="lineNum">     117 </span><span class="lineCov">         69 :     [internalInvocation setSelector:@selector(componentForKey:args:)];</span>
-<span class="lineNum">     118 </span><span class="lineCov">         69 :     [internalInvocation setArgument:&amp;componentKey atIndex:2];</span>
-<span class="lineNum">     119 </span><span class="lineCov">         69 :     [internalInvocation setArgument:&amp;args atIndex:3];</span>
-<span class="lineNum">     120 </span><span class="lineCov">         69 :     [internalInvocation invokeWithTarget:self];</span>
-<span class="lineNum">     121 </span>            : 
-<span class="lineNum">     122 </span><span class="lineCov">         69 :     void *returnValue;</span>
-<span class="lineNum">     123 </span><span class="lineCov">         69 :     [internalInvocation getReturnValue:&amp;returnValue];</span>
-<span class="lineNum">     124 </span><span class="lineCov">         69 :     [invocation setReturnValue:&amp;returnValue];</span>
-<span class="lineNum">     125 </span><span class="lineCov">         69 : }</span>
-<span class="lineNum">     126 </span>            : 
-<span class="lineNum">     127 </span><span class="lineCov">        138 : - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector</span>
-<span class="lineNum">     128 </span>            : {
-<span class="lineNum">     129 </span><span class="lineCov">        138 :     if ([self respondsToSelector:aSelector]) {</span>
-<span class="lineNum">     130 </span><span class="lineCov">         69 :         return [[self class] instanceMethodSignatureForSelector:aSelector];</span>
-<span class="lineNum">     131 </span>            :     }
-<span class="lineNum">     132 </span>            :     else {
-<span class="lineNum">     133 </span><span class="lineCov">         69 :         return [TyphoonIntrospectionUtils methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:aSelector];</span>
-<span class="lineNum">     134 </span>            :     }
-<span class="lineNum">     135 </span><span class="lineCov">        138 : }</span>
+<span class="lineNum">      84 </span><span class="lineCov">        213 :     [assembly prepareForUse];</span>
+<span class="lineNum">      85 </span>            : 
+<span class="lineNum">      86 </span><span class="lineCov">        213 :     [self registerAllDefinitions:assembly];</span>
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span><span class="lineCov">        213 :     [self resolveParentsReferences];</span>
+<span class="lineNum">      89 </span><span class="lineCov">        213 : }</span>
+<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      91 </span>            : - (void)resolveParentsReferences
+<span class="lineNum">      92 </span>            : {
+<span class="lineNum">      93 </span><span class="lineCov">       6070 :     for (TyphoonDefinition *definition in [self registry]) {</span>
+<span class="lineNum">      94 </span><span class="lineCov">       2822 :         if ([definition.parent isKindOfClass:[TyphoonReferenceDefinition class]]) {</span>
+<span class="lineNum">      95 </span><span class="lineNoCov">          0 :             TyphoonRuntimeArguments *arguments = [definition.parent currentRuntimeArguments];</span>
+<span class="lineNum">      96 </span><span class="lineNoCov">          0 :             definition.parent = [self definitionForKey:[definition.parent key]];</span>
+<span class="lineNum">      97 </span><span class="lineNoCov">          0 :             [definition.parent setCurrentRuntimeArguments:arguments];</span>
+<span class="lineNum">      98 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">      99 </span><span class="lineCov">       6070 :     }</span>
+<span class="lineNum">     100 </span><span class="lineCov">        213 : }</span>
+<span class="lineNum">     101 </span>            : 
+<span class="lineNum">     102 </span><span class="lineCov">        213 : - (void)assertIsAssembly:(TyphoonAssembly *)assembly</span>
+<span class="lineNum">     103 </span>            : {
+<span class="lineNum">     104 </span><span class="lineCov">        213 :     if (![assembly isKindOfClass:[TyphoonAssembly class]]) //</span>
+<span class="lineNum">     105 </span>            :     {
+<span class="lineNum">     106 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Class '%@' is not a sub-class of %@&quot;, NSStringFromClass([assembly class]),</span>
+<span class="lineNum">     107 </span><span class="lineNoCov">          0 :                                                              NSStringFromClass([TyphoonAssembly class])];</span>
+<span class="lineNum">     108 </span><span class="lineNoCov">          0 :     }</span>
+<span class="lineNum">     109 </span><span class="lineCov">        213 : }</span>
+<span class="lineNum">     110 </span>            : 
+<span class="lineNum">     111 </span><span class="lineCov">        213 : - (void)registerAllDefinitions:(TyphoonAssembly *)assembly</span>
+<span class="lineNum">     112 </span>            : {
+<span class="lineNum">     113 </span><span class="lineCov">        213 :     NSArray *definitions = [assembly definitions];</span>
+<span class="lineNum">     114 </span><span class="lineCov">       5786 :     for (TyphoonDefinition *definition in definitions) {</span>
+<span class="lineNum">     115 </span><span class="lineCov">       2680 :         [self registerDefinition:definition];</span>
+<span class="lineNum">     116 </span><span class="lineCov">       5786 :     }</span>
+<span class="lineNum">     117 </span><span class="lineCov">        213 : }</span>
+<span class="lineNum">     118 </span>            : 
+<span class="lineNum">     119 </span>            : 
+<span class="lineNum">     120 </span>            : //-------------------------------------------------------------------------------------------
+<span class="lineNum">     121 </span>            : #pragma mark - Overridden Methods
+<span class="lineNum">     122 </span>            : 
+<span class="lineNum">     123 </span><span class="lineCov">         68 : - (void)forwardInvocation:(NSInvocation *)invocation</span>
+<span class="lineNum">     124 </span>            : {
+<span class="lineNum">     125 </span><span class="lineCov">         68 :     NSString *componentKey = NSStringFromSelector([invocation selector]);</span>
+<span class="lineNum">     126 </span>            :     LogTrace(@&quot;Component key: %@&quot;, componentKey);
+<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     128 </span><span class="lineCov">         68 :     TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:invocation];</span>
+<span class="lineNum">     129 </span>            : 
+<span class="lineNum">     130 </span><span class="lineCov">         68 :     NSInvocation *internalInvocation =</span>
+<span class="lineNum">     131 </span>            :         [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:@selector(componentForKey:args:)]];
+<span class="lineNum">     132 </span><span class="lineCov">         68 :     [internalInvocation setSelector:@selector(componentForKey:args:)];</span>
+<span class="lineNum">     133 </span><span class="lineCov">         68 :     [internalInvocation setArgument:&amp;componentKey atIndex:2];</span>
+<span class="lineNum">     134 </span><span class="lineCov">         68 :     [internalInvocation setArgument:&amp;args atIndex:3];</span>
+<span class="lineNum">     135 </span><span class="lineCov">         68 :     [internalInvocation invokeWithTarget:self];</span>
 <span class="lineNum">     136 </span>            : 
-<span class="lineNum">     137 </span>            : @end
+<span class="lineNum">     137 </span><span class="lineCov">         68 :     void *returnValue;</span>
+<span class="lineNum">     138 </span><span class="lineCov">         68 :     [internalInvocation getReturnValue:&amp;returnValue];</span>
+<span class="lineNum">     139 </span><span class="lineCov">         68 :     [invocation setReturnValue:&amp;returnValue];</span>
+<span class="lineNum">     140 </span><span class="lineCov">         68 : }</span>
+<span class="lineNum">     141 </span>            : 
+<span class="lineNum">     142 </span><span class="lineCov">        136 : - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector</span>
+<span class="lineNum">     143 </span>            : {
+<span class="lineNum">     144 </span><span class="lineCov">        136 :     if ([self respondsToSelector:aSelector]) {</span>
+<span class="lineNum">     145 </span><span class="lineCov">         68 :         return [[self class] instanceMethodSignatureForSelector:aSelector];</span>
+<span class="lineNum">     146 </span>            :     }
+<span class="lineNum">     147 </span>            :     else {
+<span class="lineNum">     148 </span><span class="lineCov">         68 :         return [TyphoonIntrospectionUtils methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:aSelector];</span>
+<span class="lineNum">     149 </span>            :     }
+<span class="lineNum">     150 </span><span class="lineCov">        136 : }</span>
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span>            : @end
 </pre>
       </td>
     </tr>

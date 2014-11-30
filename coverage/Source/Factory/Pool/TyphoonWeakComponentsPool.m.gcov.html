@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-30 09:37:57</td>
+            <td class="headerValue">2014-11-30 11:03:55</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -70,21 +70,21 @@
 <span class="lineNum">      12 </span>            : #import &quot;TyphoonWeakComponentsPool.h&quot;
 <span class="lineNum">      13 </span>            : #import &quot;NSObject+DeallocNotification.h&quot;
 <span class="lineNum">      14 </span>            : 
-<span class="lineNum">      15 </span><span class="lineCov">         15 : @implementation TyphoonWeakComponentsPool</span>
+<span class="lineNum">      15 </span><span class="lineCov">          1 : @implementation TyphoonWeakComponentsPool</span>
 <span class="lineNum">      16 </span>            : {
 <span class="lineNum">      17 </span>            :     NSMutableDictionary *dictionaryWithNonRetainedObjects;
 <span class="lineNum">      18 </span>            : }
 <span class="lineNum">      19 </span>            : 
 <span class="lineNum">      20 </span>            : - (id)init
 <span class="lineNum">      21 </span>            : {
-<span class="lineNum">      22 </span><span class="lineCov">        243 :     self = [super init];</span>
-<span class="lineNum">      23 </span><span class="lineCov">        243 :     if (self) {</span>
-<span class="lineNum">      24 </span><span class="lineCov">        243 :         CFDictionaryValueCallBacks callbacks = {0, NULL, NULL, NULL, NULL};</span>
+<span class="lineNum">      22 </span><span class="lineCov">        242 :     self = [super init];</span>
+<span class="lineNum">      23 </span><span class="lineCov">        242 :     if (self) {</span>
+<span class="lineNum">      24 </span><span class="lineCov">        242 :         CFDictionaryValueCallBacks callbacks = {0, NULL, NULL, NULL, NULL};</span>
 <span class="lineNum">      25 </span>            :         dictionaryWithNonRetainedObjects =
-<span class="lineNum">      26 </span><span class="lineCov">        243 :             (__bridge_transfer id) CFDictionaryCreateMutable(NULL, 0, &amp;kCFTypeDictionaryKeyCallBacks, &amp;callbacks);</span>
-<span class="lineNum">      27 </span><span class="lineCov">        243 :     }</span>
-<span class="lineNum">      28 </span><span class="lineCov">        243 :     return self;</span>
-<span class="lineNum">      29 </span><span class="lineCov">        243 : }</span>
+<span class="lineNum">      26 </span><span class="lineCov">        242 :             (__bridge_transfer id) CFDictionaryCreateMutable(NULL, 0, &amp;kCFTypeDictionaryKeyCallBacks, &amp;callbacks);</span>
+<span class="lineNum">      27 </span><span class="lineCov">        242 :     }</span>
+<span class="lineNum">      28 </span><span class="lineCov">        242 :     return self;</span>
+<span class="lineNum">      29 </span><span class="lineCov">        242 : }</span>
 <span class="lineNum">      30 </span>            : 
 <span class="lineNum">      31 </span><span class="lineCov">          8 : - (void)setObject:(id)object forKey:(id &lt;NSCopying&gt;)aKey</span>
 <span class="lineNum">      32 </span>            : {
@@ -109,8 +109,8 @@
 <span class="lineNum">      51 </span>            : 
 <span class="lineNum">      52 </span>            : - (void)removeAllObjects
 <span class="lineNum">      53 </span>            : {
-<span class="lineNum">      54 </span><span class="lineCov">          4 :     [dictionaryWithNonRetainedObjects removeAllObjects];</span>
-<span class="lineNum">      55 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      54 </span><span class="lineCov">        748 :     [dictionaryWithNonRetainedObjects removeAllObjects];</span>
+<span class="lineNum">      55 </span><span class="lineCov">        748 : }</span>
 <span class="lineNum">      56 </span>            : 
 <span class="lineNum">      57 </span>            : @end
 </pre>

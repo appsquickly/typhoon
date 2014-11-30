@@ -80,9 +80,9 @@
               <Anchor>a9c88f88b59f7607416373f761d97b23c</Anchor>
              </Node>
              <Node>
-              <Name>factoryPostProcessors</Name>
+              <Name>definitionPostProcessors</Name>
               <Path>interface_typhoon_component_factory.html</Path>
-              <Anchor>a8eec64c832482a1e025b80d2cd16a5f3</Anchor>
+              <Anchor>a1cdbafd8d079d52fd72cab4efddbbcbc</Anchor>
              </Node>
              <Node>
               <Name>loaded</Name>
@@ -102,7 +102,7 @@
              <Node>
               <Name>attachPostProcessor:</Name>
               <Path>interface_typhoon_component_factory.html</Path>
-              <Anchor>a0727001458325fd7d09b6df2e1252180</Anchor>
+              <Anchor>a497444322c5eb57d64a327f170cbd389</Anchor>
              </Node>
              <Node>
               <Name>componentForKey:</Name>
@@ -128,6 +128,11 @@
               <Name>enumerateDefinitions:</Name>
               <Path>interface_typhoon_component_factory.html</Path>
               <Anchor>a57cb1e89e38d67d01c72cc36bf592d3a</Anchor>
+             </Node>
+             <Node>
+              <Name>forcePostProcessing</Name>
+              <Path>interface_typhoon_component_factory.html</Path>
+              <Anchor>a518ec88cb948728a33c808bfc9902b4f</Anchor>
              </Node>
              <Node>
               <Name>inject:</Name>
@@ -167,13 +172,18 @@
             </Subnodes>
            </Node>
            <Node>
-            <Name>&lt;TyphoonComponentFactoryPostProcessor&gt;</Name>
-            <Path>protocol_typhoon_component_factory_post_processor-p.html</Path>
+            <Name>&lt;TyphoonDefinitionPostProcessor&gt;</Name>
+            <Path>protocol_typhoon_definition_post_processor-p.html</Path>
             <Subnodes>
              <Node>
-              <Name>postProcessComponentFactory:</Name>
-              <Path>protocol_typhoon_component_factory_post_processor-p.html</Path>
-              <Anchor>ab64811c01a873e3a727f017543b29223</Anchor>
+              <Name>postProcessDefinition:replacement:</Name>
+              <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+              <Anchor>abc9ccc8231a472eecfa714a98c64998c</Anchor>
+             </Node>
+             <Node>
+              <Name>setPostProcessorInvalidator:</Name>
+              <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+              <Anchor>a77955e60a44e8eca2482a62c4e7ec91e</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -434,17 +444,6 @@
              </Node>
             </Subnodes>
            </Node>
-           <Node>
-            <Name>TyphoonViewControllerNibResolver</Name>
-            <Path>interface_typhoon_view_controller_nib_resolver.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>resolveNibNameForClass:</Name>
-              <Path>interface_typhoon_view_controller_nib_resolver.html</Path>
-              <Anchor>af4194a42c7e6483d5a084e1171a0843e</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
           </Subnodes>
          </Node>
          <Node>
@@ -463,12 +462,12 @@
              <Node>
               <Name>patchDefinition:withObject:</Name>
               <Path>interface_typhoon_patcher.html</Path>
-              <Anchor>a958a23e25a16c2a9d8abfbab1cab0786</Anchor>
+              <Anchor>ab15727446bc17712318053b960908dc3</Anchor>
              </Node>
              <Node>
               <Name>patchDefinitionWithKey:withObject:</Name>
               <Path>interface_typhoon_patcher.html</Path>
-              <Anchor>a81cd00d79350a44cc9aa10794377e94c</Anchor>
+              <Anchor>aef82afe3a68f4ed147d8264ad9623859</Anchor>
              </Node>
              <Node>
               <Name>patchDefinitionWithSelector:withObject:</Name>
@@ -801,9 +800,9 @@
               <Anchor>a9c88f88b59f7607416373f761d97b23c</Anchor>
              </Node>
              <Node>
-              <Name>factoryPostProcessors</Name>
+              <Name>definitionPostProcessors</Name>
               <Path>interface_typhoon_component_factory.html</Path>
-              <Anchor>a8eec64c832482a1e025b80d2cd16a5f3</Anchor>
+              <Anchor>a1cdbafd8d079d52fd72cab4efddbbcbc</Anchor>
              </Node>
              <Node>
               <Name>loaded</Name>
@@ -823,7 +822,7 @@
              <Node>
               <Name>attachPostProcessor:</Name>
               <Path>interface_typhoon_component_factory.html</Path>
-              <Anchor>a0727001458325fd7d09b6df2e1252180</Anchor>
+              <Anchor>a497444322c5eb57d64a327f170cbd389</Anchor>
              </Node>
              <Node>
               <Name>componentForKey:</Name>
@@ -849,6 +848,11 @@
               <Name>enumerateDefinitions:</Name>
               <Path>interface_typhoon_component_factory.html</Path>
               <Anchor>a57cb1e89e38d67d01c72cc36bf592d3a</Anchor>
+             </Node>
+             <Node>
+              <Name>forcePostProcessing</Name>
+              <Path>interface_typhoon_component_factory.html</Path>
+              <Anchor>a518ec88cb948728a33c808bfc9902b4f</Anchor>
              </Node>
              <Node>
               <Name>inject:</Name>
@@ -884,17 +888,6 @@
               <Name>unload</Name>
               <Path>interface_typhoon_component_factory.html</Path>
               <Anchor>a810e359a13f87d375088a78759227692</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>&lt;TyphoonComponentFactoryPostProcessor&gt;</Name>
-            <Path>protocol_typhoon_component_factory_post_processor-p.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>postProcessComponentFactory:</Name>
-              <Path>protocol_typhoon_component_factory_post_processor-p.html</Path>
-              <Anchor>ab64811c01a873e3a727f017543b29223</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -1134,6 +1127,22 @@
             </Subnodes>
            </Node>
            <Node>
+            <Name>&lt;TyphoonDefinitionPostProcessor&gt;</Name>
+            <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>postProcessDefinition:replacement:</Name>
+              <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+              <Anchor>abc9ccc8231a472eecfa714a98c64998c</Anchor>
+             </Node>
+             <Node>
+              <Name>setPostProcessorInvalidator:</Name>
+              <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+              <Anchor>a77955e60a44e8eca2482a62c4e7ec91e</Anchor>
+             </Node>
+            </Subnodes>
+           </Node>
+           <Node>
             <Name>&lt;TyphoonDictionary&gt;</Name>
             <Path>protocol_typhoon_dictionary-p.html</Path>
             <Subnodes>
@@ -1350,6 +1359,11 @@
               <Path>interface_typhoon_injection_context.html</Path>
               <Anchor>a19be259ff91bfc8848876681c9e89d75</Anchor>
              </Node>
+             <Node>
+              <Name>copyWithPool:</Name>
+              <Path>interface_typhoon_injection_context.html</Path>
+              <Anchor>a6d73051c69b1554b9f67642c893b57d8</Anchor>
+             </Node>
             </Subnodes>
            </Node>
            <Node>
@@ -1499,12 +1513,12 @@
              <Node>
               <Name>patchDefinition:withObject:</Name>
               <Path>interface_typhoon_patcher.html</Path>
-              <Anchor>a958a23e25a16c2a9d8abfbab1cab0786</Anchor>
+              <Anchor>ab15727446bc17712318053b960908dc3</Anchor>
              </Node>
              <Node>
               <Name>patchDefinitionWithKey:withObject:</Name>
               <Path>interface_typhoon_patcher.html</Path>
-              <Anchor>a81cd00d79350a44cc9aa10794377e94c</Anchor>
+              <Anchor>aef82afe3a68f4ed147d8264ad9623859</Anchor>
              </Node>
              <Node>
               <Name>patchDefinitionWithSelector:withObject:</Name>
@@ -1831,17 +1845,6 @@
             <Path>interface_typhoon_u_i_color_type_converter.html</Path>
            </Node>
            <Node>
-            <Name>TyphoonViewControllerNibResolver</Name>
-            <Path>interface_typhoon_view_controller_nib_resolver.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>resolveNibNameForClass:</Name>
-              <Path>interface_typhoon_view_controller_nib_resolver.html</Path>
-              <Anchor>af4194a42c7e6483d5a084e1171a0843e</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
             <Name>TyphoonWeakComponentsPool</Name>
             <Path>interface_typhoon_weak_components_pool.html</Path>
            </Node>
@@ -2020,6 +2023,10 @@
               <Path>interface_typhoon_pass_through_type_converter.html</Path>
              </Node>
              <Node>
+              <Name>TyphoonPatcher</Name>
+              <Path>interface_typhoon_patcher.html</Path>
+             </Node>
+             <Node>
               <Name>TyphoonPrimitiveTypeConverter</Name>
               <Path>interface_typhoon_primitive_type_converter.html</Path>
              </Node>
@@ -2042,10 +2049,6 @@
              <Node>
               <Name>TyphoonUIColorTypeConverter</Name>
               <Path>interface_typhoon_u_i_color_type_converter.html</Path>
-             </Node>
-             <Node>
-              <Name>TyphoonViewControllerNibResolver</Name>
-              <Path>interface_typhoon_view_controller_nib_resolver.html</Path>
              </Node>
              <Node>
               <Name>TyphoonWeakComponentsPool</Name>
@@ -2082,26 +2085,26 @@
               <Path>protocol_typhoon_collection-p.html</Path>
              </Node>
              <Node>
-              <Name>&lt;TyphoonComponentFactoryPostProcessor&gt;</Name>
-              <Path>protocol_typhoon_component_factory_post_processor-p.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>TyphoonConfigPostProcessor</Name>
-                <Path>interface_typhoon_config_post_processor.html</Path>
-               </Node>
-               <Node>
-                <Name>TyphoonViewControllerNibResolver</Name>
-                <Path>interface_typhoon_view_controller_nib_resolver.html</Path>
-               </Node>
-              </Subnodes>
-             </Node>
-             <Node>
               <Name>&lt;TyphoonComponentsPool&gt;</Name>
               <Path>protocol_typhoon_components_pool-p.html</Path>
               <Subnodes>
                <Node>
                 <Name>TyphoonWeakComponentsPool</Name>
                 <Path>interface_typhoon_weak_components_pool.html</Path>
+               </Node>
+              </Subnodes>
+             </Node>
+             <Node>
+              <Name>&lt;TyphoonDefinitionPostProcessor&gt;</Name>
+              <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+              <Subnodes>
+               <Node>
+                <Name>TyphoonConfigPostProcessor</Name>
+                <Path>interface_typhoon_config_post_processor.html</Path>
+               </Node>
+               <Node>
+                <Name>TyphoonPatcher</Name>
+                <Path>interface_typhoon_patcher.html</Path>
                </Node>
               </Subnodes>
              </Node>
@@ -2144,16 +2147,6 @@
                 <Path>interface_typhoon_u_i_color_type_converter.html</Path>
                </Node>
               </Subnodes>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>TyphoonAbstractDetachableComponentFactoryPostProcessor</Name>
-            <Path></Path>
-            <Subnodes>
-             <Node>
-              <Name>TyphoonPatcher</Name>
-              <Path>interface_typhoon_patcher.html</Path>
              </Node>
             </Subnodes>
            </Node>
@@ -2508,10 +2501,6 @@
             <Path>_typhoon_8h.html</Path>
            </Node>
            <Node>
-            <Name>TyphoonAbstractDetachableComponentFactoryPostProcessor.h</Name>
-            <Path>_typhoon_abstract_detachable_component_factory_post_processor_8h.html</Path>
-           </Node>
-           <Node>
             <Name>TyphoonAbstractInjection.h</Name>
             <Path>_typhoon_abstract_injection_8h.html</Path>
             <Subnodes>
@@ -2685,16 +2674,6 @@
             </Subnodes>
            </Node>
            <Node>
-            <Name>TyphoonComponentFactoryPostProcessor.h</Name>
-            <Path>_typhoon_component_factory_post_processor_8h.html</Path>
-            <Subnodes>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>TyphoonComponentPostProcessor.h</Name>
-            <Path>_typhoon_component_post_processor_8h.html</Path>
-           </Node>
-           <Node>
             <Name>TyphoonComponentsPool.h</Name>
             <Path>_typhoon_components_pool_8h.html</Path>
             <Subnodes>
@@ -2832,12 +2811,18 @@
             </Subnodes>
            </Node>
            <Node>
-            <Name>TyphoonDefinitionRegisterer.h</Name>
-            <Path>_typhoon_definition_registerer_8h.html</Path>
+            <Name>TyphoonDefinitionAutoInjectionPostProcessor.h</Name>
+            <Path>_typhoon_definition_auto_injection_post_processor_8h.html</Path>
            </Node>
            <Node>
-            <Name>TyphoonFactoryAutoInjectionPostProcessor.h</Name>
-            <Path>_typhoon_factory_auto_injection_post_processor_8h.html</Path>
+            <Name>TyphoonDefinitionPostProcessor.h</Name>
+            <Path>_typhoon_definition_post_processor_8h.html</Path>
+            <Subnodes>
+            </Subnodes>
+           </Node>
+           <Node>
+            <Name>TyphoonDefinitionRegisterer.h</Name>
+            <Path>_typhoon_definition_registerer_8h.html</Path>
            </Node>
            <Node>
             <Name>TyphoonInitialStoryboardResolver.h</Name>
@@ -3159,6 +3144,11 @@
                 <Path>interface_typhoon_injection_context.html</Path>
                 <Anchor>a19be259ff91bfc8848876681c9e89d75</Anchor>
                </Node>
+               <Node>
+                <Name>copyWithPool:</Name>
+                <Path>interface_typhoon_injection_context.html</Path>
+                <Anchor>a6d73051c69b1554b9f67642c893b57d8</Anchor>
+               </Node>
               </Subnodes>
              </Node>
              <Node>
@@ -3238,6 +3228,14 @@
               <Anchor>af37a21437d5df5ccb9dcb5ebe5dd28c5</Anchor>
              </Node>
             </Subnodes>
+           </Node>
+           <Node>
+            <Name>TyphoonInstanceAutoInjectionPostProcessor.h</Name>
+            <Path>_typhoon_instance_auto_injection_post_processor_8h.html</Path>
+           </Node>
+           <Node>
+            <Name>TyphoonInstancePostProcessor.h</Name>
+            <Path>_typhoon_instance_post_processor_8h.html</Path>
            </Node>
            <Node>
             <Name>TyphoonIntrospectionUtils.h</Name>
@@ -3380,17 +3378,6 @@
                 <Anchor>a3eaf55d707637e82073100543cbed400</Anchor>
                </Node>
               </Subnodes>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>TyphoonOrdered.h</Name>
-            <Path>_typhoon_ordered_8h.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>NS_ENUM</Name>
-              <Path>_typhoon_ordered_8h.html</Path>
-              <Anchor>a8bade92ed408c906ce4cb24b6ecdb5cf</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -3932,12 +3919,6 @@
               <Path>_typhoon_utils_8h.html</Path>
               <Anchor>a304eac1e93cb46843ab45145a9cd8b30</Anchor>
              </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>TyphoonViewControllerNibResolver.h</Name>
-            <Path>_typhoon_view_controller_nib_resolver_8h.html</Path>
-            <Subnodes>
             </Subnodes>
            </Node>
            <Node>

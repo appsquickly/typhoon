@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">67</td>
-            <td class="headerCovTableEntry">80</td>
-            <td class="headerCovTableEntryMed">83.8 %</td>
+            <td class="headerCovTableEntry">60</td>
+            <td class="headerCovTableEntry">81</td>
+            <td class="headerCovTableEntryLo">74.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-30 09:37:57</td>
+            <td class="headerValue">2014-11-30 11:03:55</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -73,12 +73,12 @@
 <span class="lineNum">      15 </span>            : 
 <span class="lineNum">      16 </span>            : @interface TyphoonInjectionByDictionary ()
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">        554 : @property(nonatomic, strong) NSMutableDictionary *injections;</span>
-<span class="lineNum">      19 </span><span class="lineCov">        181 : @property(nonatomic) Class requiredClass;</span>
+<span class="lineNum">      18 </span><span class="lineCov">        330 : @property(nonatomic, strong) NSMutableDictionary *injections;</span>
+<span class="lineNum">      19 </span><span class="lineCov">        171 : @property(nonatomic) Class requiredClass;</span>
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span>            : @end
 <span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineCov">          4 : @implementation TyphoonInjectionByDictionary</span>
+<span class="lineNum">      23 </span><span class="lineNoCov">          0 : @implementation TyphoonInjectionByDictionary</span>
 <span class="lineNum">      24 </span>            : 
 <span class="lineNum">      25 </span><span class="lineCov">         59 : + (BOOL)isDictionaryClass:(Class)dictionaryClass</span>
 <span class="lineNum">      26 </span>            : {
@@ -169,14 +169,14 @@
 <span class="lineNum">     111 </span>            : 
 <span class="lineNum">     112 </span>            : #pragma mark - Overrides
 <span class="lineNum">     113 </span>            : 
-<span class="lineNum">     114 </span><span class="lineCov">          5 : - (id)copyWithZone:(NSZone *)zone</span>
+<span class="lineNum">     114 </span><span class="lineNoCov">          0 : - (id)copyWithZone:(NSZone *)zone</span>
 <span class="lineNum">     115 </span>            : {
-<span class="lineNum">     116 </span><span class="lineCov">          5 :     TyphoonInjectionByDictionary *copied = [[TyphoonInjectionByDictionary alloc] init];</span>
-<span class="lineNum">     117 </span><span class="lineCov">          5 :     copied.injections = self.injections;</span>
-<span class="lineNum">     118 </span><span class="lineCov">          5 :     copied.requiredClass = self.requiredClass;</span>
-<span class="lineNum">     119 </span><span class="lineCov">          5 :     [self copyBasePropertiesTo:copied];</span>
-<span class="lineNum">     120 </span><span class="lineCov">          5 :     return copied;</span>
-<span class="lineNum">     121 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">     116 </span><span class="lineNoCov">          0 :     TyphoonInjectionByDictionary *copied = [[TyphoonInjectionByDictionary alloc] init];</span>
+<span class="lineNum">     117 </span><span class="lineNoCov">          0 :     copied.injections = self.injections;</span>
+<span class="lineNum">     118 </span><span class="lineNoCov">          0 :     copied.requiredClass = self.requiredClass;</span>
+<span class="lineNum">     119 </span><span class="lineNoCov">          0 :     [self copyBasePropertiesTo:copied];</span>
+<span class="lineNum">     120 </span><span class="lineNoCov">          0 :     return copied;</span>
+<span class="lineNum">     121 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     122 </span>            : 
 <span class="lineNum">     123 </span><span class="lineNoCov">          0 : - (BOOL)isEqualToCustom:(TyphoonInjectionByDictionary *)injection</span>
 <span class="lineNum">     124 </span>            : {
@@ -187,20 +187,21 @@
 <span class="lineNum">     129 </span>            : {
 <span class="lineNum">     130 </span><span class="lineCov">          3 :     Class dictionaryClass = [self dictionaryClassForContext:context];</span>
 <span class="lineNum">     131 </span>            :     
-<span class="lineNum">     132 </span><span class="lineCov">          3 :     TyphoonInjectionContext *contextForValues = [context copy];</span>
+<span class="lineNum">     132 </span><span class="lineCov">          6 :     TyphoonInjectionContext *contextForValues = [context copyWithPool:[TyphoonInjectionContextPool shared]];</span>
 <span class="lineNum">     133 </span><span class="lineCov">          3 :     contextForValues.destinationType = [TyphoonTypeDescriptor descriptorWithEncodedType:@encode(id)];</span>
 <span class="lineNum">     134 </span>            :     
 <span class="lineNum">     135 </span><span class="lineCov">          6 :     [self buildDictionaryWithClass:dictionaryClass context:contextForValues completion:^(id&lt;TyphoonDictionary&gt; dictionary) {</span>
 <span class="lineNum">     136 </span><span class="lineCov">          3 :         result(dictionary);</span>
-<span class="lineNum">     137 </span><span class="lineCov">          3 :     }];</span>
-<span class="lineNum">     138 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     139 </span>            : 
-<span class="lineNum">     140 </span>            : - (NSUInteger)customHash
-<span class="lineNum">     141 </span>            : {
-<span class="lineNum">     142 </span><span class="lineCov">        182 :     return TyphoonHashByAppendingInteger([self.injections hash], [_requiredClass hash]);</span>
-<span class="lineNum">     143 </span>            : }
-<span class="lineNum">     144 </span>            : 
-<span class="lineNum">     145 </span>            : @end
+<span class="lineNum">     137 </span><span class="lineCov">          3 :         [[TyphoonInjectionContextPool shared] enqueueReusableContext:contextForValues];</span>
+<span class="lineNum">     138 </span><span class="lineCov">          3 :     }];</span>
+<span class="lineNum">     139 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">     140 </span>            : 
+<span class="lineNum">     141 </span>            : - (NSUInteger)customHash
+<span class="lineNum">     142 </span>            : {
+<span class="lineNum">     143 </span><span class="lineCov">         75 :     return TyphoonHashByAppendingInteger([self.injections hash], [_requiredClass hash]);</span>
+<span class="lineNum">     144 </span>            : }
+<span class="lineNum">     145 </span>            : 
+<span class="lineNum">     146 </span>            : @end
 </pre>
       </td>
     </tr>
