@@ -27,7 +27,6 @@ static id TypeForInjectionFromType(TyphoonTypeDescriptor *type);
 
 - (void)postProcessDefinition:(TyphoonDefinition *)definition replacement:(TyphoonDefinition **)definitionToReplace
 {
-    //TODO: Handle case of TyphoonFactoryDefinition which haven't _type
     Class clazz = definition.type;
     if (clazz) {
         NSArray *properties = [self autoInjectedPropertiesForClass:clazz];

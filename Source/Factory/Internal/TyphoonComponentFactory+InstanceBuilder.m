@@ -286,11 +286,11 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
     NSMutableArray *results = [[NSMutableArray alloc] init];
 
-    for (TyphoonDefinition *definition in _registry) {
+    [_registry enumerateKeysAndObjectsUsingBlock:^(id key, TyphoonDefinition *definition, BOOL *stop) {
         if ([definition matchesAutoInjectionWithType:classOrProtocol includeSubclasses:includeSubclasses]) {
             [results addObject:definition];
         }
-    }
+    }];
     return results;
 }
 

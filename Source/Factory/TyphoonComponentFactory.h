@@ -29,7 +29,7 @@
 */
 @interface TyphoonComponentFactory : NSObject
 {
-    NSMutableArray *_registry;
+    NSMutableDictionary *_registry;
     id <TyphoonComponentsPool> _singletons;
     id <TyphoonComponentsPool> _objectGraphSharedInstances;
     id <TyphoonComponentsPool> _weakSingletons;

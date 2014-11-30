@@ -169,7 +169,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 - (void)test_able_to_describe_itself
 {
     NSString *description = [_componentFactory description];
-    XCTAssertEqualObjects(description, @"<TyphoonComponentFactory: _registry=(\n)>");
+    XCTAssertEqualObjects(description, @"<TyphoonComponentFactory: _registry={\n}>");
 }
 
 //-------------------------------------------------------------------------------------------

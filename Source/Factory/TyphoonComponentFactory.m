@@ -56,7 +56,7 @@ static TyphoonComponentFactory *defaultFactory;
 {
     self = [super init];
     if (self) {
-        _registry = [[NSMutableArray alloc] init];
+        _registry = [NSMutableDictionary new];
         _singletons = (id <TyphoonComponentsPool>) [[NSMutableDictionary alloc] init];
         _weakSingletons = [TyphoonWeakComponentsPool new];
         _objectGraphSharedInstances = (id <TyphoonComponentsPool>) [[NSMutableDictionary alloc] init];
@@ -206,20 +206,21 @@ static TyphoonComponentFactory *defaultFactory;
 {
     [self loadIfNeeded];
 
-    return [_registry copy];
+    return [_registry allValues];
 }
 
 - (void)enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace, BOOL *stop))block
 {
     [self loadIfNeeded];
 
-    for (NSUInteger i = 0; i < [_registry count]; i++) {
-        TyphoonDefinition *definition = _registry[i];
+    NSUInteger i = 0;
+    for (NSString *key in [_registry allKeys]) {
+        TyphoonDefinition *definition = _registry[key];
         TyphoonDefinition *definitionToReplace = nil;
         BOOL stop = NO;
-        block(definition, i, &definitionToReplace, &stop);
+        block(definition, i++, &definitionToReplace, &stop);
         if (definitionToReplace) {
-            _registry[i] = definitionToReplace;
+            _registry[key] = definitionToReplace;
         }
         if (stop) {
             break;
@@ -289,7 +290,7 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
 
 - (void)instantiateEagerSingletons
 {
-    [_registry enumerateObjectsUsingBlock:^(TyphoonDefinition *definition, NSUInteger idx, BOOL *stop) {
+    [_registry enumerateKeysAndObjectsUsingBlock:^(id key, TyphoonDefinition *definition, BOOL *stop) {
         if (definition.scope == TyphoonScopeSingleton) {
             [self sharedInstanceForDefinition:definition args:nil fromPool:_singletons];
         }
@@ -377,12 +378,7 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
 
 - (TyphoonDefinition *)definitionForKey:(NSString *)key
 {
-    for (TyphoonDefinition *definition in _registry) {
-        if ([definition.key isEqualToString:key]) {
-            return definition;
-        }
-    }
-    return nil;
+    return _registry[key];
 }
 
 - (id)objectForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
@@ -425,7 +421,7 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
 
 - (void)addDefinitionToRegistry:(TyphoonDefinition *)definition
 {
-    [_registry addObject:definition];
+    _registry[definition.key] = definition;
 }
 
 - (void)attachInstancePostProcessor:(id <TyphoonInstancePostProcessor>)postProcessor
