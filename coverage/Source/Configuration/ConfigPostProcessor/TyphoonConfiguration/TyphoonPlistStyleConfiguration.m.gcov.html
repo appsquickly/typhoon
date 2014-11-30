@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-11-27 13:42:28</td>
+            <td class="headerValue">2014-11-30 09:37:57</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -81,19 +81,19 @@
 <span class="lineNum">      23 </span>            : 
 <span class="lineNum">      24 </span><span class="lineCov">          6 : - (void)appendResource:(id&lt;TyphoonResource&gt;)resource</span>
 <span class="lineNum">      25 </span>            : {
-<span class="lineNum">      26 </span><span class="lineCov">          6 :     NSString *errorString = nil;</span>
-<span class="lineNum">      27 </span><span class="lineCov">          6 :     NSDictionary *dictionary = [NSPropertyListSerialization propertyListFromData:[resource data]</span>
-<span class="lineNum">      28 </span>            :                                                                 mutabilityOption:NSPropertyListImmutable
+<span class="lineNum">      26 </span><span class="lineCov">          6 :     NSError *error = nil;</span>
+<span class="lineNum">      27 </span><span class="lineCov">          6 :     NSDictionary *dictionary = [NSPropertyListSerialization propertyListWithData:[resource data]</span>
+<span class="lineNum">      28 </span>            :                                                                          options:NSPropertyListImmutable
 <span class="lineNum">      29 </span>            :                                                                           format:NULL
-<span class="lineNum">      30 </span>            :                                                                 errorDescription:&amp;errorString];
+<span class="lineNum">      30 </span>            :                                                                            error:&amp;error];
 <span class="lineNum">      31 </span><span class="lineCov">          6 :     if (![dictionary isKindOfClass:[NSDictionary class]]) {</span>
 <span class="lineNum">      32 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Root plist object must be a dictionary&quot;];</span>
 <span class="lineNum">      33 </span><span class="lineNoCov">          0 :     }</span>
 <span class="lineNum">      34 </span>            : 
-<span class="lineNum">      35 </span><span class="lineCov">          6 :     if (!errorString) {</span>
+<span class="lineNum">      35 </span><span class="lineCov">          6 :     if (!error) {</span>
 <span class="lineNum">      36 </span><span class="lineCov">          6 :         [_properties addEntriesFromDictionary:dictionary];</span>
 <span class="lineNum">      37 </span><span class="lineCov">          6 :     } else {</span>
-<span class="lineNum">      38 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Can't prase plist configuration file: %@&quot;, errorString];</span>
+<span class="lineNum">      38 </span><span class="lineNoCov">          0 :         [NSException raise:NSInvalidArgumentException format:@&quot;Can't parse plist configuration file: %@&quot;, error.localizedDescription];</span>
 <span class="lineNum">      39 </span>            :     }
 <span class="lineNum">      40 </span><span class="lineCov">          6 : }</span>
 <span class="lineNum">      41 </span>            : 
