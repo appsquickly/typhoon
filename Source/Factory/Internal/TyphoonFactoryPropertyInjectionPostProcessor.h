@@ -10,14 +10,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "TyphoonDefinitionPostProcessor.h"
+#import "TyphoonComponentFactoryPostProcessor.h"
 #import "TyphoonInjectionByType.h"
 #import "TyphoonDefinition.h"
 
 /**
  * Replaces property injections by-type with injectuins by-componentFactory when property type subclass of TyphoonComponentFactory
  */
-@interface TyphoonFactoryPropertyInjectionPostProcessor : NSObject <TyphoonDefinitionPostProcessor>
+@interface TyphoonFactoryPropertyInjectionPostProcessor : NSObject <TyphoonComponentFactoryPostProcessor>
 
 /* Method to override in subclasses */
 - (BOOL)shouldReplaceInjectionByType:(TyphoonInjectionByType *)propertyInjection

@@ -24,16 +24,15 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
-#import "TyphoonInstancePostProcessor.h"
+#import "TyphoonComponentPostProcessor.h"
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
 #import "NSInvocation+TCFInstanceBuilder.h"
 #import "TyphoonInjectionContext.h"
 #import "TyphoonPropertyInjection.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
-#import "TyphoonDefinitionAutoInjectionPostProcessor.h"
+#import "TyphoonFactoryAutoInjectionPostProcessor.h"
 #import "TyphoonFactoryDefinition.h"
-#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
@@ -53,7 +52,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
     [self doInjectionEventsOn:instance withDefinition:definition args:args];
 
-    instance = [self postProcessInstance:instance definition:definition];
+    instance = [self postProcessInstance:instance];
     [_stack pop];
 
     return instance;
@@ -91,7 +90,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (NSInvocation *)invocationToInit:(Class)clazz with:(TyphoonMethod *)method args:(TyphoonRuntimeArguments *)args
 {
-    TyphoonInjectionContext *context = [[TyphoonInjectionContextPool shared] dequeueReusableContext];
+    TyphoonInjectionContext *context = [TyphoonInjectionContext new];
     context.factory = self;
     context.args = args;
     context.raiseExceptionIfCircular = YES;
@@ -100,16 +99,15 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     __block NSInvocation *result;
     [method createInvocationOnClass:clazz withContext:context completion:^(NSInvocation *invocation) {
         result = invocation;
-        [[TyphoonInjectionContextPool shared] enqueueReusableContext:context];
     }];
     return result;
 }
 
-- (id)postProcessInstance:(id)instance definition:(TyphoonDefinition *)definition
+- (id)postProcessInstance:(id)instance
 {
-    if (![instance conformsToProtocol:@protocol(TyphoonInstancePostProcessor)]) {
-        for (id <TyphoonInstancePostProcessor> postProcessor in _componentPostProcessors) {
-            instance = [postProcessor postProcessComponent:instance withDefinition:definition];
+    if (![instance conformsToProtocol:@protocol(TyphoonComponentPostProcessor)]) {
+        for (id <TyphoonComponentPostProcessor> postProcessor in _componentPostProcessors) {
+            instance = [postProcessor postProcessComponent:instance];
         }
     }
     return instance;
@@ -191,7 +189,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (void)doMethodInjection:(TyphoonMethod *)method onInstance:(id)instance args:(TyphoonRuntimeArguments *)args
 {
-    TyphoonInjectionContext *context = [[TyphoonInjectionContextPool shared] dequeueReusableContext];
+    TyphoonInjectionContext *context = [TyphoonInjectionContext new];
     context.destinationInstanceClass = [instance class];
     context.factory = self;
     context.args = args;
@@ -199,7 +197,6 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
     [method createInvocationOnClass:[instance class] withContext:context completion:^(NSInvocation *invocation) {
         [invocation invokeWithTarget:instance];
-        [[TyphoonInjectionContextPool shared] enqueueReusableContext:context];
     }];
 }
 
@@ -209,7 +206,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (void)doPropertyInjectionOn:(id)instance property:(id <TyphoonPropertyInjection>)property args:(TyphoonRuntimeArguments *)args
 {
-    TyphoonInjectionContext *context = [[TyphoonInjectionContextPool shared] dequeueReusableContext];
+    TyphoonInjectionContext *context = [TyphoonInjectionContext new];
     context.destinationType = [instance typhoon_typeForPropertyWithName:property.propertyName];
     context.destinationInstanceClass = [instance class];
     context.factory = self;
@@ -218,7 +215,6 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
     [property valueToInjectWithContext:context completion:^(id value) {
         [instance typhoon_injectValue:value forPropertyName:property.propertyName];
-        [[TyphoonInjectionContextPool shared] enqueueReusableContext:context];
     }];
 }
 
@@ -256,8 +252,12 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     if ([candidates count] == 0) {
 
         //Auto registering definition with AutoInjection
-        if (IsClass(classOrProtocol) && [self hasAnnotationsForClass:classOrProtocol]) {
-            return [self autoDefinitionForClass:classOrProtocol];
+        if (IsClass(classOrProtocol)) {
+            TyphoonDefinition *autoDefinition = [self autoInjectionDefinitionForClass:classOrProtocol];
+            if (autoDefinition) {
+                [self registerDefinition:autoDefinition];
+                return [self definitionForType:classOrProtocol orNil:returnNilIfNotFound includeSubclasses:includeSubclasses];
+            }
         }
 
         if (returnNilIfNotFound) {
@@ -286,66 +286,40 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
     NSMutableArray *results = [[NSMutableArray alloc] init];
 
-    [_registry enumerateKeysAndObjectsUsingBlock:^(id key, TyphoonDefinition *definition, BOOL *stop) {
+    for (TyphoonDefinition *definition in _registry) {
         if ([definition matchesAutoInjectionWithType:classOrProtocol includeSubclasses:includeSubclasses]) {
             [results addObject:definition];
         }
-    }];
+    }
     return results;
 }
 
-//-------------------------------------------------------------------------------------------
-#pragma mark - AutoInjection Definition
-//-------------------------------------------------------------------------------------------
-
-- (BOOL)hasAnnotationsForClass:(Class)clazz
+- (TyphoonDefinition *)autoInjectionDefinitionForClass:(Class)clazz
 {
-    return [[self autoInjectionPostProcessor] hasAnnotationForClass:clazz];
-}
+    TyphoonDefinition *result = nil;
 
-- (TyphoonDefinition *)autoDefinitionForClass:(Class)clazz
-{
-    NSString *key = [self definitionKeyForAutoDefinitionForClass:clazz];
-
-    TyphoonDefinition *definition = [self definitionForKey:key];
-    if (!definition) {
-        definition = [TyphoonDefinition withClass:clazz key:key];
-        [self applyPostProcessorsToDefinition:definition];
-        [self registerDefinition:definition];
+    TyphoonFactoryAutoInjectionPostProcessor *postProcessor = [self autoInjectionPostProcessor];
+    NSArray *properties = [postProcessor autoInjectedPropertiesForClass:clazz];
+    if (properties) {
+        result = [TyphoonDefinition withClass:clazz];
+        for (id propertyInjection in properties) {
+            [result addInjectedPropertyIfNotExists:propertyInjection];
+        }
     }
 
-    return definition;
+    return result;
 }
 
-- (NSString *)definitionKeyForAutoDefinitionForClass:(Class)clazz
+- (TyphoonFactoryAutoInjectionPostProcessor *)autoInjectionPostProcessor
 {
-    return [NSString stringWithFormat:@"__auto_definition_for_%@__", NSStringFromClass(clazz)];
-}
-
-- (TyphoonDefinitionAutoInjectionPostProcessor *)autoInjectionPostProcessor
-{
-    TyphoonDefinitionAutoInjectionPostProcessor *postProcessor = nil;
-    for (id<TyphoonDefinitionPostProcessor> item in _definitionPostProcessors) {
-        if ([item isMemberOfClass:[TyphoonDefinitionAutoInjectionPostProcessor class]]) {
+    TyphoonFactoryAutoInjectionPostProcessor *postProcessor = nil;
+    for (id<TyphoonComponentFactoryPostProcessor> item in _factoryPostProcessors) {
+        if ([item isMemberOfClass:[TyphoonFactoryAutoInjectionPostProcessor class]]) {
             postProcessor = item;
             break;
         }
     }
     return postProcessor;
-}
-
-
-- (TyphoonDefinition *)applyPostProcessorsToDefinition:(TyphoonDefinition *)definition
-{
-    for (id<TyphoonDefinitionPostProcessor>postProcessor in _definitionPostProcessors) {
-        TyphoonDefinition *replacement = nil;
-        [postProcessor postProcessDefinition:definition replacement:&replacement];
-        if (replacement) {
-            definition = replacement;
-        }
-    }
-    definition.postProcessed = YES;
-    return definition;
 }
 
 @end

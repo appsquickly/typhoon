@@ -9,16 +9,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+
+
 #import <Foundation/Foundation.h>
-#import "TyphoonDefinitionPostProcessor.h"
+#import "TyphoonComponentFactoryPostProcessor.h"
 
-@class TyphoonDefinition;
-
-
-@interface TyphoonDefinitionAutoInjectionPostProcessor : NSObject <TyphoonDefinitionPostProcessor>
-
-- (NSArray *)autoInjectedPropertiesForClass:(Class)clazz;
-
-- (BOOL)hasAnnotationForClass:(Class)clazz;
-
+/**
+* Sets the full-definition for any parent definitions that have been provided by key-only, thus allowing the definition to inherit
+* the parent (and ancestor) initializer and/or properties.
+*/
+@interface TyphoonParentReferenceHydratingPostProcessor : NSObject <TyphoonComponentFactoryPostProcessor>
 @end

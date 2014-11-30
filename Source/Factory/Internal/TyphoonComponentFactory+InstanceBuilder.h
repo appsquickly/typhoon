@@ -36,10 +36,6 @@
 
 - (NSArray *)allDefinitionsForType:(id)classOrProtocol includeSubclasses:(BOOL)includeSubclasses;
 
-- (BOOL)hasAnnotationsForClass:(Class)clazz;
-
-- (TyphoonDefinition *)autoDefinitionForClass:(Class)clazz;
-
 - (TyphoonDefinition *)definitionForType:(id)classOrProtocol;
 
 - (TyphoonDefinition *)definitionForType:(id)classOrProtocol orNil:(BOOL)returnNilIfNotFound includeSubclasses:(BOOL)includeSubclasses;
@@ -49,7 +45,5 @@
 - (void)injectAssemblyOnInstanceIfTyphoonAware:(id)instance;
 
 - (void)resolveCircularDependency:(NSString *)key args:(TyphoonRuntimeArguments *)args resolvedBlock:(void(^)(BOOL isCircular))resolvedBlock;
-
-- (TyphoonDefinition *)applyPostProcessorsToDefinition:(TyphoonDefinition *)definition;
 
 @end

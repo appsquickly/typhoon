@@ -14,7 +14,6 @@
 #import "Knight.h"
 #import "OCLogTemplate.h"
 #import "TyphoonTestAssemblyConfigPostProcessor.h"
-#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 
 @interface TyphoonConfigPostProcessorTests : XCTestCase
 @end
@@ -51,7 +50,7 @@
     }];
     [factory registerDefinition:knightDefinition];
 
-    [_configurer postProcessDefinition:knightDefinition replacement:nil];
+    [_configurer postProcessComponentFactory:factory];
 
     Knight *knight = [factory componentForType:[Knight class]];
     XCTAssertEqual(knight.damselsRescued, 12);
@@ -65,7 +64,7 @@
     [knightDefinition injectProperty:@selector(damselsRescued) with:TyphoonConfig(@"damsels.rescued")];
     [factory registerDefinition:knightDefinition];
 
-    [_configurer postProcessDefinition:knightDefinition replacement:nil];
+    [_configurer postProcessComponentFactory:factory];
 
     Knight *knight = [factory componentForType:[Knight class]];
     XCTAssertEqual(knight.damselsRescued, 12);
@@ -83,7 +82,7 @@
     [knightDefinition injectProperty:@selector(hasHorseWillTravel) with:TyphoonConfig(@"json.hasHorseWillTravel")];
     [factory registerDefinition:knightDefinition];
 
-    [_configurer postProcessDefinition:knightDefinition replacement:nil];
+    [_configurer postProcessComponentFactory:factory];
 
     Knight *knight = [factory componentForType:[Knight class]];
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)42);
@@ -101,7 +100,7 @@
     [knightDefinition injectProperty:@selector(hasHorseWillTravel) with:TyphoonConfig(@"plist.hasHorse")];
     [factory registerDefinition:knightDefinition];
 
-    [_configurer postProcessDefinition:knightDefinition replacement:nil];
+    [_configurer postProcessComponentFactory:factory];
 
     Knight *knight = [factory componentForType:[Knight class]];
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)28);
@@ -110,10 +109,9 @@
 
 - (void)test_config_as_runtime_argument
 {
-    TyphoonBlockComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[TyphoonTestAssemblyConfigPostProcessor assembly]];
-    [factory attachPostProcessor:_configurer];
-
-    Knight *knight = [factory componentForKey:@"knight"];
+    TyphoonTestAssemblyConfigPostProcessor *assembly = [[[TyphoonBlockComponentFactory alloc] initWithAssembly:[TyphoonTestAssemblyConfigPostProcessor assembly]] asAssembly];
+    [_configurer postProcessComponentFactory:(id)assembly];
+    Knight *knight = [assembly knight];
     XCTAssertEqualObjects(knight.quest.imageUrl, [NSURL URLWithString:@"http://google.com/"]);
 }
 

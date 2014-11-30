@@ -10,9 +10,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "TyphoonDefinitionPostProcessor.h"
+#import "TyphoonComponentFactoryPostProcessor.h"
 
-@interface TyphoonComponentFactoryPostProcessorStubImpl : NSObject <TyphoonDefinitionPostProcessor>
+@interface TyphoonComponentFactoryPostProcessorStubImpl : NSObject <TyphoonComponentFactoryPostProcessor>
 
 @property(nonatomic, assign) BOOL postProcessingCalled;
 

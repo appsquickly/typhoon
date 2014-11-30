@@ -42,6 +42,7 @@
 - (void)test_allows_patching_out_a_component_with_a_mock
 {
     [self applyAPatch];
+    [self assertPatchApplied];
 }
 
 - (void)test_allows_patching_out_a_loaded_component_with_a_mock
@@ -49,12 +50,14 @@
     [_factory componentForKey:@"knight"];
 
     [self applyAPatch];
+    [self assertPatchApplied];
 }
 
 
 - (void)test_honours_the_scope_of_patched_definition
 {
     [self applyAPatch];
+    [self assertPatchApplied];
 
     XCTAssertFalse([_factory componentForKey:@"knight"] == [_factory componentForKey:@"knight"]);
     XCTAssertTrue([_factory componentForKey:@"cavalryMan"] == [_factory componentForKey:@"cavalryMan"]);
@@ -65,6 +68,7 @@
     MiddleAgesAssembly *factory = (MiddleAgesAssembly *)_factory;
 
     [self applyAPatch];
+    [self assertPatchApplied];
 
     Knight *knight = [factory knightWithFoobar:@"123"];
     XCTAssertEqual(knight.foobar, @"Fooooo");
@@ -79,6 +83,7 @@
 - (void)test_allows_detaching_patcher
 {
     [self applyAPatch];
+    [self assertPatchApplied];
 
     XCTAssertFalse([_factory componentForKey:@"knight"] == [_factory componentForKey:@"knight"]);
     XCTAssertTrue([_factory componentForKey:@"cavalryMan"] == [_factory componentForKey:@"cavalryMan"]);
@@ -91,8 +96,9 @@
 
 - (void)applyAPatch
 {
+    MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
     _patcher = [[TyphoonPatcher alloc] init];
-    [_patcher patchDefinitionWithSelector:@selector(knight) withObject:^id {
+    [_patcher patchDefinition:[assembly knight] withObject:^id {
         Knight *mockKnight = mock([Knight class]);
         [given([mockKnight favoriteDamsels]) willReturn:@[
             @"Mary",
@@ -121,21 +127,12 @@
     }];
 
     [_factory attachPostProcessor:_patcher];
-
-    [self assertPatchApplied];
 }
 
 - (void)assertPatchApplied
 {
     Knight *knight = [_factory componentForKey:@"knight"];
-    BOOL isPatched = [[knight favoriteDamsels] isEqualToArray:@[
-            @"Mary",
-            @"Janezzz"
-    ]];
-    XCTAssertTrue(isPatched, @"%@", [knight favoriteDamsels]);
-    if (!isPatched) {
-
-    }
+    XCTAssertTrue([knight favoriteDamsels].count > 0);
 }
 
 

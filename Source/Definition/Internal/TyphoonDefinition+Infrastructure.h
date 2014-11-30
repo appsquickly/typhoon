@@ -48,11 +48,6 @@
 @property(nonatomic, getter = isInitializerGenerated) BOOL initializerGenerated;
 
 /**
-* For private usage
-* */
-@property(nonatomic) BOOL postProcessed;
-
-/**
 * Returns a definition with the given class and key. In the block-style assembly, keys are auto-generated, however infrastructure components
 * may specify their own key.
 */

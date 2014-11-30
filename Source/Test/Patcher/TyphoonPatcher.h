@@ -11,7 +11,8 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonDefinitionPostProcessor.h"
+#import "TyphoonComponentFactoryPostProcessor.h"
+#import "TyphoonAbstractDetachableComponentFactoryPostProcessor.h"
 
 @class TyphoonDefinition;
 
@@ -20,16 +21,19 @@ typedef id (^TyphoonPatchObjectCreationBlock)();
 /**
 * @ingroup Test
 *
-* TyphoonPatcher is a TyphoonDefinitionPostProcessor that allows patching out one or more definitions with another object. Integration
+* TyphoonPatcher is a TyphoonComponentFactoryPostProcessor that allows patching out one or more definitions with another object. Integration
 * testing - testing a class along with its collaborators and configuration - can be a very useful practice. However, its is sometimes
 * difficult put the system in the required state. Patcher allows taking a fully assembled system, changing just the part required for the
 * given test scenario.
 */
-@interface TyphoonPatcher : NSObject <TyphoonDefinitionPostProcessor>
+@interface TyphoonPatcher : TyphoonAbstractDetachableComponentFactoryPostProcessor
+{
+    NSMutableDictionary *_patches;
+}
 
-- (void)patchDefinitionWithKey:(NSString *)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock DEPRECATED_MSG_ATTRIBUTE("Deprecated. Available until 3.0");
+- (void)patchDefinitionWithKey:(NSString *)key withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock;
 
-- (void)patchDefinition:(TyphoonDefinition *)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock DEPRECATED_MSG_ATTRIBUTE("Deprecated. Available until 3.0");
+- (void)patchDefinition:(TyphoonDefinition *)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock;
 
 - (void)patchDefinitionWithSelector:(SEL)definitionSelector withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock;
 

@@ -129,12 +129,11 @@
 {
     Class dictionaryClass = [self dictionaryClassForContext:context];
     
-    TyphoonInjectionContext *contextForValues = [context copyWithPool:[TyphoonInjectionContextPool shared]];
+    TyphoonInjectionContext *contextForValues = [context copy];
     contextForValues.destinationType = [TyphoonTypeDescriptor descriptorWithEncodedType:@encode(id)];
     
     [self buildDictionaryWithClass:dictionaryClass context:contextForValues completion:^(id<TyphoonDictionary> dictionary) {
         result(dictionary);
-        [[TyphoonInjectionContextPool shared] enqueueReusableContext:contextForValues];
     }];
 }
 

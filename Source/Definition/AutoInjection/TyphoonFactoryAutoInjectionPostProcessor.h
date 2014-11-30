@@ -9,13 +9,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonComponentFactoryPostProcessorStubImpl.h"
+#import <Foundation/Foundation.h>
+#import "TyphoonComponentFactoryPostProcessor.h"
 
-@implementation TyphoonComponentFactoryPostProcessorStubImpl
+@class TyphoonDefinition;
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
-{
-    self.postProcessingCalled = YES;
-}
+
+@interface TyphoonFactoryAutoInjectionPostProcessor : NSObject <TyphoonComponentFactoryPostProcessor>
+
+- (void)postProcessDefinition:(TyphoonDefinition *)definition;
+
+- (NSArray *)autoInjectedPropertiesForClass:(Class)clazz;
 
 @end

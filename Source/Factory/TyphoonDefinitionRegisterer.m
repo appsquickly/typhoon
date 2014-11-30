@@ -19,7 +19,7 @@
 #import "TyphoonTypeConverterRegistry.h"
 #import <objc/message.h>
 #import "OCLogTemplate.h"
-#import "TyphoonInstancePostProcessor.h"
+#import "TyphoonComponentPostProcessor.h"
 #import "TyphoonMethod.h"
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
@@ -29,19 +29,6 @@
 {
     TyphoonDefinition *_definition;
     TyphoonComponentFactory *_componentFactory;
-}
-
-+ (id)reusableRegistererForDefinition:(TyphoonDefinition *)definition componentFactory:(TyphoonComponentFactory *)componentFactory
-{
-    static TyphoonDefinitionRegisterer *registerer = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        registerer = [TyphoonDefinitionRegisterer new];
-    });
-    registerer->_definition = definition;
-    registerer->_componentFactory = componentFactory;
-
-    return registerer;
 }
 
 - (id)initWithDefinition:(TyphoonDefinition *)aDefinition componentFactory:(TyphoonComponentFactory *)aComponentFactory
@@ -92,8 +79,8 @@
 
 - (BOOL)definitionIsInfrastructureComponent
 {
-    if ([_definition.type conformsToProtocol:@protocol(TyphoonDefinitionPostProcessor)] ||
-        [_definition.type conformsToProtocol:@protocol(TyphoonInstancePostProcessor)] ||
+    if ([_definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)] ||
+        [_definition.type conformsToProtocol:@protocol(TyphoonComponentPostProcessor)] ||
         [_definition.type conformsToProtocol:@protocol(TyphoonTypeConverter)]) {
         return YES;
     }
@@ -105,11 +92,11 @@
     LogTrace(@"Registering Infrastructure component: %@ with key: %@", NSStringFromClass(_definition.type), _definition.key);
 
     id infrastructureComponent = [_componentFactory objectForDefinition:_definition args:nil];
-    if ([_definition.type conformsToProtocol:@protocol(TyphoonDefinitionPostProcessor)]) {
+    if ([_definition.type conformsToProtocol:@protocol(TyphoonComponentFactoryPostProcessor)]) {
         [_componentFactory attachPostProcessor:infrastructureComponent];
     }
-    else if ([_definition.type conformsToProtocol:@protocol(TyphoonInstancePostProcessor)]) {
-        [_componentFactory attachInstancePostProcessor:infrastructureComponent];
+    else if ([_definition.type conformsToProtocol:@protocol(TyphoonComponentPostProcessor)]) {
+        [_componentFactory addComponentPostProcessor:infrastructureComponent];
     }
     else if ([_definition.type conformsToProtocol:@protocol(TyphoonTypeConverter)]) {
         [[TyphoonTypeConverterRegistry shared] registerTypeConverter:infrastructureComponent];

@@ -10,17 +10,33 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonComponentPostProcessorMock.h"
-#import "TyphoonDefinition.h"
 
 
 @implementation TyphoonComponentPostProcessorMock
+{
+    NSInteger _order;
+}
 
-- (id)postProcessComponent:(id)component withDefinition:(TyphoonDefinition *)definition
+- (id)initWithOrder:(NSInteger)order
+{
+    self = [super init];
+    if (self) {
+        _order = order;
+    }
+    return self;
+}
+
+- (id)postProcessComponent:(id)component
 {
     if (_postProcessBlock) {
         return _postProcessBlock(component);
     }
     return component;
+}
+
+- (NSInteger)order
+{
+    return _order;
 }
 
 @end

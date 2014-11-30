@@ -11,14 +11,14 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonDefinitionPostProcessor.h"
+#import "TyphoonComponentFactoryPostProcessor.h"
 
 @protocol TyphoonResource;
 
 /**
 * @ingroup Configuration
 */
-@interface TyphoonConfigPostProcessor : NSObject <TyphoonDefinitionPostProcessor>
+@interface TyphoonConfigPostProcessor : NSObject <TyphoonComponentFactoryPostProcessor>
 
 /**
 *  You can manage TyphoonConfigPostProcessor registry by mapping configuration classes for file extensions

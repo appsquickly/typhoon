@@ -51,7 +51,7 @@
 
     _componentFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[MiddleAgesAssembly assembly]];
 
-    internalProcessorsCount = [[_componentFactory definitionPostProcessors] count];
+    internalProcessorsCount = [[_componentFactory factoryPostProcessors] count];
 
     TyphoonConfigPostProcessor *configurer = [[TyphoonConfigPostProcessor alloc] init];
     [configurer useResourceWithName:@"SomeProperties.properties"];
@@ -227,7 +227,7 @@
 - (void)test_post_processor_component_recognized
 {
 
-    XCTAssertEqual([_infrastructureComponentsFactory.definitionPostProcessors count], 1 + internalProcessorsCount)
+    XCTAssertEqual([_infrastructureComponentsFactory.factoryPostProcessors count], 1 + internalProcessorsCount)
         ; //Attached + internal processors
 }
 

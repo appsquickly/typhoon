@@ -41,7 +41,7 @@
     TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
 
     //Since we're resolving a reference to another component, all we need to provide here is the definition's key and runtime args.
-    TyphoonReferenceDefinition *definition = [TyphoonReferenceDefinition definitionReferringToComponent:[TyphoonAssemblySelectorAdviser keyForSEL:anInvocation.selector]];
+    TyphoonDefinition *definition = [TyphoonReferenceDefinition definitionReferringToComponent:[TyphoonAssemblySelectorAdviser keyForSEL:anInvocation.selector]];
     definition.currentRuntimeArguments = args;
 
     [anInvocation retainArguments];

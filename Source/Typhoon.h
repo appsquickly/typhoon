@@ -18,7 +18,7 @@
 #import "TyphoonBundleResource.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
-#import "TyphoonDefinitionPostProcessor.h"
+#import "TyphoonComponentFactoryPostProcessor.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonCollaboratingAssemblyProxy.h"
 #import "NSObject+FactoryHooks.h"

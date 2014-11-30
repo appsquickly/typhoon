@@ -15,7 +15,7 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonRuntimeArguments.h"
 
-@protocol TyphoonInstancePostProcessor;
+@protocol TyphoonComponentPostProcessor;
 
 @interface TyphoonComponentFactory (TyphoonDefinitionRegisterer)
 
@@ -25,6 +25,6 @@
 
 - (void)addDefinitionToRegistry:(TyphoonDefinition *)definition;
 
-- (void)attachInstancePostProcessor:(id <TyphoonInstancePostProcessor>)postProcessor;
+- (void)addComponentPostProcessor:(id <TyphoonComponentPostProcessor>)postProcessor;
 
 @end
