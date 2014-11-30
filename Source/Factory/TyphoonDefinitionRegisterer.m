@@ -19,7 +19,7 @@
 #import "TyphoonTypeConverterRegistry.h"
 #import <objc/message.h>
 #import "OCLogTemplate.h"
-#import "TyphoonComponentPostProcessor.h"
+#import "TyphoonInstancePostProcessor.h"
 #import "TyphoonMethod.h"
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
@@ -93,7 +93,7 @@
 - (BOOL)definitionIsInfrastructureComponent
 {
     if ([_definition.type conformsToProtocol:@protocol(TyphoonDefinitionPostProcessor)] ||
-        [_definition.type conformsToProtocol:@protocol(TyphoonComponentPostProcessor)] ||
+        [_definition.type conformsToProtocol:@protocol(TyphoonInstancePostProcessor)] ||
         [_definition.type conformsToProtocol:@protocol(TyphoonTypeConverter)]) {
         return YES;
     }
@@ -108,8 +108,8 @@
     if ([_definition.type conformsToProtocol:@protocol(TyphoonDefinitionPostProcessor)]) {
         [_componentFactory attachPostProcessor:infrastructureComponent];
     }
-    else if ([_definition.type conformsToProtocol:@protocol(TyphoonComponentPostProcessor)]) {
-        [_componentFactory addComponentPostProcessor:infrastructureComponent];
+    else if ([_definition.type conformsToProtocol:@protocol(TyphoonInstancePostProcessor)]) {
+        [_componentFactory attachInstancePostProcessor:infrastructureComponent];
     }
     else if ([_definition.type conformsToProtocol:@protocol(TyphoonTypeConverter)]) {
         [[TyphoonTypeConverterRegistry shared] registerTypeConverter:infrastructureComponent];

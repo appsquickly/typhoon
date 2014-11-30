@@ -15,7 +15,7 @@
 @class TyphoonDefinition;
 
 
-@interface TyphoonFactoryAutoInjectionPostProcessor : NSObject <TyphoonDefinitionPostProcessor>
+@interface TyphoonDefinitionAutoInjectionPostProcessor : NSObject <TyphoonDefinitionPostProcessor>
 
 - (NSArray *)autoInjectedPropertiesForClass:(Class)clazz;
 

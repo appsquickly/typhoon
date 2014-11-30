@@ -203,7 +203,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 {
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[TyphoonComponentPostProcessorMock class]]];
     XCTAssertEqual([[_componentFactory registry] count], 0);
-    XCTAssertEqual([[_componentFactory componentPostProcessors] count], 1);
+    XCTAssertEqual([[_componentFactory componentPostProcessors] count], 2);
 }
 
 - (void)test_component_post_processors_applied_in_order
@@ -211,9 +211,9 @@ static NSString *const DEFAULT_QUEST = @"quest";
     TyphoonComponentPostProcessorMock *processor1 = [[TyphoonComponentPostProcessorMock alloc] init];
     TyphoonComponentPostProcessorMock *processor2 = [[TyphoonComponentPostProcessorMock alloc] init];
     TyphoonComponentPostProcessorMock *processor3 = [[TyphoonComponentPostProcessorMock alloc] init];
-    [_componentFactory addComponentPostProcessor:processor3];
-    [_componentFactory addComponentPostProcessor:processor2];
-    [_componentFactory addComponentPostProcessor:processor1];
+    [_componentFactory attachInstancePostProcessor:processor3];
+    [_componentFactory attachInstancePostProcessor:processor2];
+    [_componentFactory attachInstancePostProcessor:processor1];
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class]]];
 
     __block NSMutableArray *orderedApplied = [[NSMutableArray alloc] initWithCapacity:3];

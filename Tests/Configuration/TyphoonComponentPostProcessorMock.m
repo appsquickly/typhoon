@@ -10,11 +10,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonComponentPostProcessorMock.h"
+#import "TyphoonDefinition.h"
 
 
 @implementation TyphoonComponentPostProcessorMock
 
-- (id)postProcessComponent:(id)component
+- (id)postProcessComponent:(id)component withDefinition:(TyphoonDefinition *)definition
 {
     if (_postProcessBlock) {
         return _postProcessBlock(component);

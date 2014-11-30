@@ -19,10 +19,11 @@
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "TyphoonCallStack.h"
 #import "TyphoonFactoryPropertyInjectionPostProcessor.h"
-#import "TyphoonComponentPostProcessor.h"
+#import "TyphoonInstancePostProcessor.h"
 #import "TyphoonWeakComponentsPool.h"
-#import "TyphoonFactoryAutoInjectionPostProcessor.h"
+#import "TyphoonDefinitionAutoInjectionPostProcessor.h"
 #import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonInstanceAutoInjectionPostProcessor.h"
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
 
@@ -74,7 +75,12 @@ static TyphoonComponentFactory *defaultFactory;
 
     NSNumber *value = bundleInfoDictionary[@"TyphoonAutoInjectionEnabled"];
     if (!value || [value boolValue]) {
-        [self attachPostProcessor:[TyphoonFactoryAutoInjectionPostProcessor new]];
+        TyphoonDefinitionAutoInjectionPostProcessor *definitionPostProcessor = [TyphoonDefinitionAutoInjectionPostProcessor new];
+        [self attachPostProcessor:definitionPostProcessor];
+        TyphoonInstanceAutoInjectionPostProcessor *instancePostProcessor = [TyphoonInstanceAutoInjectionPostProcessor new];
+        instancePostProcessor.factory = self;
+        instancePostProcessor.definitionPostProcessor = definitionPostProcessor;
+        [self attachInstancePostProcessor:instancePostProcessor];
     }
 }
 
@@ -364,19 +370,6 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
     }];
 }
 
-- (TyphoonDefinition *)applyPostProcessorsToDefinition:(TyphoonDefinition *)definition
-{
-    for (id<TyphoonDefinitionPostProcessor>postProcessor in _definitionPostProcessors) {
-        TyphoonDefinition *replacement = nil;
-        [postProcessor postProcessDefinition:definition replacement:&replacement];
-        if (replacement) {
-            definition = replacement;
-        }
-    }
-    definition.postProcessed = YES;
-    return definition;
-}
-
 @end
 
 
@@ -435,7 +428,7 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
     [_registry addObject:definition];
 }
 
-- (void)addComponentPostProcessor:(id <TyphoonComponentPostProcessor>)postProcessor
+- (void)attachInstancePostProcessor:(id <TyphoonInstancePostProcessor>)postProcessor
 {
     [_componentPostProcessors addObject:postProcessor];
 }

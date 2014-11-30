@@ -10,11 +10,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
-#import "TyphoonComponentPostProcessor.h"
+#import "TyphoonInstancePostProcessor.h"
 
 typedef id (^PostProcessBlock)(id);
 
-@interface TyphoonComponentPostProcessorMock : NSObject <TyphoonComponentPostProcessor>
+@interface TyphoonComponentPostProcessorMock : NSObject <TyphoonInstancePostProcessor>
 
 @property(nonatomic, copy) PostProcessBlock postProcessBlock;
 

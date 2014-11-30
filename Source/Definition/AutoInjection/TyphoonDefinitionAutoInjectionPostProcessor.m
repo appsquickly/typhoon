@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonFactoryAutoInjectionPostProcessor.h"
+#import "TyphoonDefinitionAutoInjectionPostProcessor.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
@@ -23,7 +23,7 @@
 static BOOL IsTyphoonAutoInjectionType(TyphoonTypeDescriptor *type);
 static id TypeForInjectionFromType(TyphoonTypeDescriptor *type);
 
-@implementation TyphoonFactoryAutoInjectionPostProcessor
+@implementation TyphoonDefinitionAutoInjectionPostProcessor
 
 - (void)postProcessDefinition:(TyphoonDefinition *)definition replacement:(TyphoonDefinition **)definitionToReplace
 {
@@ -71,6 +71,7 @@ static id TypeForInjectionFromType(TyphoonTypeDescriptor *type);
     static NSCache *cache = nil;
     dispatch_once(&onceToken, ^{
     	cache = [[NSCache alloc] init];
+        [cache setObject:[NSNull null] forKey:[NSObject class]];
     });
     return cache;
 }

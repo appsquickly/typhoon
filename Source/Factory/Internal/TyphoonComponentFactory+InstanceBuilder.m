@@ -24,15 +24,16 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
-#import "TyphoonComponentPostProcessor.h"
+#import "TyphoonInstancePostProcessor.h"
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
 #import "NSInvocation+TCFInstanceBuilder.h"
 #import "TyphoonInjectionContext.h"
 #import "TyphoonPropertyInjection.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
-#import "TyphoonFactoryAutoInjectionPostProcessor.h"
+#import "TyphoonDefinitionAutoInjectionPostProcessor.h"
 #import "TyphoonFactoryDefinition.h"
+#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
@@ -52,7 +53,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
     [self doInjectionEventsOn:instance withDefinition:definition args:args];
 
-    instance = [self postProcessInstance:instance];
+    instance = [self postProcessInstance:instance definition:definition];
     [_stack pop];
 
     return instance;
@@ -104,11 +105,11 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     return result;
 }
 
-- (id)postProcessInstance:(id)instance
+- (id)postProcessInstance:(id)instance definition:(TyphoonDefinition *)definition
 {
-    if (![instance conformsToProtocol:@protocol(TyphoonComponentPostProcessor)]) {
-        for (id <TyphoonComponentPostProcessor> postProcessor in _componentPostProcessors) {
-            instance = [postProcessor postProcessComponent:instance];
+    if (![instance conformsToProtocol:@protocol(TyphoonInstancePostProcessor)]) {
+        for (id <TyphoonInstancePostProcessor> postProcessor in _componentPostProcessors) {
+            instance = [postProcessor postProcessComponent:instance withDefinition:definition];
         }
     }
     return instance;
@@ -255,12 +256,8 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     if ([candidates count] == 0) {
 
         //Auto registering definition with AutoInjection
-        if (IsClass(classOrProtocol)) {
-            TyphoonDefinition *autoDefinition = [self autoDefinitionForClass:classOrProtocol];
-            if (autoDefinition) {
-                [self registerDefinition:autoDefinition];
-                return [self definitionForType:classOrProtocol orNil:returnNilIfNotFound includeSubclasses:includeSubclasses];
-            }
+        if (IsClass(classOrProtocol) && [self hasAnnotationsForClass:classOrProtocol]) {
+            return [self autoDefinitionForClass:classOrProtocol];
         }
 
         if (returnNilIfNotFound) {
@@ -297,25 +294,58 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     return results;
 }
 
-- (TyphoonDefinition *)autoDefinitionForClass:(Class)clazz
+//-------------------------------------------------------------------------------------------
+#pragma mark - AutoInjection Definition
+//-------------------------------------------------------------------------------------------
+
+- (BOOL)hasAnnotationsForClass:(Class)clazz
 {
-    if ([[self autoInjectionPostProcessor] hasAnnotationForClass:clazz]) {
-        return [TyphoonDefinition withClass:clazz];
-    } else {
-        return nil;
-    }
+    return [[self autoInjectionPostProcessor] hasAnnotationForClass:clazz];
 }
 
-- (TyphoonFactoryAutoInjectionPostProcessor *)autoInjectionPostProcessor
+- (TyphoonDefinition *)autoDefinitionForClass:(Class)clazz
 {
-    TyphoonFactoryAutoInjectionPostProcessor *postProcessor = nil;
+    NSString *key = [self definitionKeyForAutoDefinitionForClass:clazz];
+
+    TyphoonDefinition *definition = [self definitionForKey:key];
+    if (!definition) {
+        definition = [TyphoonDefinition withClass:clazz key:key];
+        [self applyPostProcessorsToDefinition:definition];
+        [self registerDefinition:definition];
+    }
+
+    return definition;
+}
+
+- (NSString *)definitionKeyForAutoDefinitionForClass:(Class)clazz
+{
+    return [NSString stringWithFormat:@"__auto_definition_for_%@__", NSStringFromClass(clazz)];
+}
+
+- (TyphoonDefinitionAutoInjectionPostProcessor *)autoInjectionPostProcessor
+{
+    TyphoonDefinitionAutoInjectionPostProcessor *postProcessor = nil;
     for (id<TyphoonDefinitionPostProcessor> item in _definitionPostProcessors) {
-        if ([item isMemberOfClass:[TyphoonFactoryAutoInjectionPostProcessor class]]) {
+        if ([item isMemberOfClass:[TyphoonDefinitionAutoInjectionPostProcessor class]]) {
             postProcessor = item;
             break;
         }
     }
     return postProcessor;
+}
+
+
+- (TyphoonDefinition *)applyPostProcessorsToDefinition:(TyphoonDefinition *)definition
+{
+    for (id<TyphoonDefinitionPostProcessor>postProcessor in _definitionPostProcessors) {
+        TyphoonDefinition *replacement = nil;
+        [postProcessor postProcessDefinition:definition replacement:&replacement];
+        if (replacement) {
+            definition = replacement;
+        }
+    }
+    definition.postProcessed = YES;
+    return definition;
 }
 
 @end
