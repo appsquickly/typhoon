@@ -143,7 +143,9 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     if (parametersBlock) {
         parametersBlock(method);
     }
+    #ifndef NDEBUG
     [method checkParametersCount];
+    #endif
     [_injectedMethods addObject:method];
 }
 
@@ -153,7 +155,9 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     if (parametersBlock) {
         parametersBlock(initializer);
     }
+    #ifndef NDEBUG
     [initializer checkParametersCount];
+    #endif
     _initializer = initializer;
 }
 
@@ -173,7 +177,9 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     if (parametersBlock) {
         parametersBlock(_beforeInjections);
     }
+    #ifndef NDEBUG
     [_beforeInjections checkParametersCount];
+    #endif
 }
 
 - (void)performAfterInjections:(SEL)sel
@@ -187,7 +193,9 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     if (parameterBlock) {
         parameterBlock(_afterInjections);
     }
+    #ifndef NDEBUG
     [_afterInjections checkParametersCount];
+    #endif
 }
 
 //-------------------------------------------------------------------------------------------

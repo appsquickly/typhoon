@@ -66,6 +66,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
 
 - (void)checkParametersCount
 {
+    #ifndef NDEBUG
     NSUInteger numberOfArgumentsInSelector = [TyphoonIntrospectionUtils numberOfArgumentsInSelector:_selector];
     if (numberOfArgumentsInSelector != [_injectedParameters count]) {
         NSString *suggestion = @"";
@@ -76,6 +77,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
         }
         [NSException raise:NSInternalInconsistencyException format:@"Method '%@' has %d parameters, but %d was injected. %@", NSStringFromSelector(_selector), (int)numberOfArgumentsInSelector, (int)[_injectedParameters count], suggestion];
     }
+    #endif
 }
 
 //-------------------------------------------------------------------------------------------
