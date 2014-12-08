@@ -64,6 +64,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     }];
 }
 
+//TODO: Why does this method cause a crash on Swift in release mode. (Its not needed in release mode, but *why* )
 - (void)checkParametersCount
 {
     #ifndef NDEBUG
