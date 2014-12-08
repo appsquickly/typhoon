@@ -64,10 +64,11 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     }];
 }
 
-//TODO: Why does this method cause a crash on Swift in release mode. (Its not needed in release mode, but *why* )
+
 - (void)checkParametersCount
 {
-    #ifndef NDEBUG
+//TODO: Why does this method cause a crash on Swift in release mode. (Its not needed in release mode, but *why* )
+#if DEBUG
     NSUInteger numberOfArgumentsInSelector = [TyphoonIntrospectionUtils numberOfArgumentsInSelector:_selector];
     if (numberOfArgumentsInSelector != [_injectedParameters count]) {
         NSString *suggestion = @"";
@@ -78,7 +79,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
         }
         [NSException raise:NSInternalInconsistencyException format:@"Method '%@' has %d parameters, but %d was injected. %@", NSStringFromSelector(_selector), (int)numberOfArgumentsInSelector, (int)[_injectedParameters count], suggestion];
     }
-    #endif
+#endif
 }
 
 //-------------------------------------------------------------------------------------------
