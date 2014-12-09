@@ -8,7 +8,7 @@
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
-
+#import <UIKit/UIKit.h>
 
 #import "TyphoonStoryboard.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
