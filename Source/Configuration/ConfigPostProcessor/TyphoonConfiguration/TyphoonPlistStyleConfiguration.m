@@ -24,10 +24,24 @@
 - (void)appendResource:(id<TyphoonResource>)resource
 {
     NSString *errorString = nil;
-    NSDictionary *dictionary = [NSPropertyListSerialization propertyListFromData:[resource data]
-                                                                mutabilityOption:NSPropertyListImmutable
-                                                                          format:NULL
-                                                                errorDescription:&errorString];
+    NSDictionary *dictionary = nil;
+    
+    // remove deprecated warning when targeting iOS 8 + and OSX 10.6 +
+#if (TARGET_OS_IPHONE && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8) || (TARGET_OS_MAC && MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_10)
+    NSError * error = nil;
+    dictionary = [NSPropertyListSerialization propertyListWithData:[resource data]
+                                                           options:NSPropertyListImmutable
+                                                            format:NULL
+                                                             error:&error];
+    if (error != nil) {
+        errorString = [error localizedDescription];
+    }
+#else
+    dictionary = [NSPropertyListSerialization propertyListFromData:[resource data]
+                                                  mutabilityOption:NSPropertyListImmutable
+                                                            format:NULL
+                                                  errorDescription:&errorString];
+#endif
     if (![dictionary isKindOfClass:[NSDictionary class]]) {
         [NSException raise:NSInvalidArgumentException format:@"Root plist object must be a dictionary"];
     }
