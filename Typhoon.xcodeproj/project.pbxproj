@@ -3485,6 +3485,7 @@
 		90ABC3FE1A36B09E008D8162 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -3512,6 +3513,7 @@
 		90ABC3FF1A36B09E008D8162 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -3720,6 +3722,7 @@
 				90ABC4D91A36BA53008D8162 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		90ABC4DA1A36BA53008D8162 /* Build configuration list for PBXNativeTarget "TyphoonFrameworkSwiftExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -3728,6 +3731,7 @@
 				90ABC4DC1A36BA53008D8162 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
