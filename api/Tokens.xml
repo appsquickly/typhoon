@@ -134,6 +134,28 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>TyphoonVersionNumber</Name>
+      <APILanguage>c</APILanguage>
+      <Type>data</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_8h.html</Path>
+    <Anchor>a24a5bcfe308850a6f684c02397af3398</Anchor>
+    <Abstract>Project version number for Typhoon. </Abstract>
+    <DeclaredIn>Typhoon.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>TyphoonVersionString</Name>
+      <APILanguage>c</APILanguage>
+      <Type>data</Type>
+    </TokenIdentifier>
+    <Path>_typhoon_8h.html</Path>
+    <Anchor>a013d5f3c65f985afc93f930f33f6fcf7</Anchor>
+    <Abstract>Project version string for Typhoon. </Abstract>
+    <DeclaredIn>Typhoon.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>NS_ENUM</Name>
       <APILanguage>c</APILanguage>
       <Type>func</Type>

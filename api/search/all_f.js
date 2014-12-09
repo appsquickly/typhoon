@@ -177,6 +177,8 @@ var searchData=
   ['typhoonuicolortypeconverter',['TyphoonUIColorTypeConverter',['../interface_typhoon_u_i_color_type_converter.html',1,'']]],
   ['typhoonuicolortypeconverter_2eh',['TyphoonUIColorTypeConverter.h',['../_typhoon_u_i_color_type_converter_8h.html',1,'']]],
   ['typhoonutils_2eh',['TyphoonUtils.h',['../_typhoon_utils_8h.html',1,'']]],
+  ['typhoonversionnumber',['TyphoonVersionNumber',['../_typhoon_8h.html#a24a5bcfe308850a6f684c02397af3398',1,'Typhoon.h']]],
+  ['typhoonversionstring',['TyphoonVersionString',['../_typhoon_8h.html#a013d5f3c65f985afc93f930f33f6fcf7',1,'Typhoon.h']]],
   ['typhoonviewcontrollernibresolver',['TyphoonViewControllerNibResolver',['../interface_typhoon_view_controller_nib_resolver.html',1,'']]],
   ['typhoonviewcontrollernibresolver_2eh',['TyphoonViewControllerNibResolver.h',['../_typhoon_view_controller_nib_resolver_8h.html',1,'']]],
   ['typhoonweakcomponentspool',['TyphoonWeakComponentsPool',['../interface_typhoon_weak_components_pool.html',1,'']]],

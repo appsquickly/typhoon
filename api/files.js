@@ -17,7 +17,7 @@ var files =
       [ "NSObject(TyphoonIntrospectionUtils)", "category_n_s_object_07_typhoon_introspection_utils_08.html", "category_n_s_object_07_typhoon_introspection_utils_08" ]
     ] ],
     [ "OCLogTemplate.h", "_o_c_log_template_8h.html", "_o_c_log_template_8h" ],
-    [ "Typhoon.h", "_typhoon_8h.html", null ],
+    [ "Typhoon.h", "_typhoon_8h.html", "_typhoon_8h" ],
     [ "TyphoonAbstractDetachableComponentFactoryPostProcessor.h", "_typhoon_abstract_detachable_component_factory_post_processor_8h.html", null ],
     [ "TyphoonAbstractInjection.h", "_typhoon_abstract_injection_8h.html", "_typhoon_abstract_injection_8h" ],
     [ "TyphoonAssembly+TyphoonAssemblyFriend.h", "_typhoon_assembly_09_typhoon_assembly_friend_8h.html", null ],

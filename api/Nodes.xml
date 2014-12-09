@@ -2506,6 +2506,18 @@
            <Node>
             <Name>Typhoon.h</Name>
             <Path>_typhoon_8h.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>TyphoonVersionNumber</Name>
+              <Path>_typhoon_8h.html</Path>
+              <Anchor>a24a5bcfe308850a6f684c02397af3398</Anchor>
+             </Node>
+             <Node>
+              <Name>TyphoonVersionString</Name>
+              <Path>_typhoon_8h.html</Path>
+              <Anchor>a013d5f3c65f985afc93f930f33f6fcf7</Anchor>
+             </Node>
+            </Subnodes>
            </Node>
            <Node>
             <Name>TyphoonAbstractDetachableComponentFactoryPostProcessor.h</Name>
