@@ -8,6 +8,17 @@
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
+#import <Foundation/Foundation.h>
+
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#endif
+
+//! Project version number for Typhoon.
+FOUNDATION_EXPORT double TyphoonVersionNumber;
+
+//! Project version string for Typhoon.
+FOUNDATION_EXPORT const unsigned char TyphoonVersionString[];
 
 #import "TyphoonAssembly.h"
 #import "TyphoonDefinition.h"

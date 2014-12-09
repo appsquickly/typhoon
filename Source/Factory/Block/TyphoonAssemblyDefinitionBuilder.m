@@ -23,6 +23,8 @@
 #import "TyphoonInjections.h"
 #import "TyphoonUtils.h"
 
+#import <objc/runtime.h>
+
 static id InjectionForArgumentType(const char *argumentType, NSUInteger index);
 static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSignature *signature);
 static void AssertArgumentType(id target, SEL selector, const char *argumentType, NSUInteger index);
