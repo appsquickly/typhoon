@@ -219,6 +219,58 @@ Class TyphoonClassFromString(NSString *className)
         NSString *defaultModuleName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
         clazz = NSClassFromString([defaultModuleName stringByAppendingFormat:@".%@",className]);
     }
+    if (!clazz) {
+        /**
+         Swift issue:
+         When calling property_getAttributes() for a Swift class that belongs in a different
+         module, the module name is *NOT* returned, therefore attempting to resolve the
+         Swift class via name wont work:
+         
+         1. Foo.BarAssembly in Foo.framework
+         2. App.app includes Foo.framework and references Foo.BarAssembly in AppAssembly
+         
+         import Foo
+         
+         class AppAssembly: TyphonAssembly {
+         
+         var barAssembly: Foo.BarAssembly?
+         }
+         3. property_getAttributes() called on `barAssembly` returns @T"BarAssembly" but
+         should return @T"Foo.BarAssembly"
+         4. NSClassforString("BarAssembly") returns nil because the App.app does not define
+         this class
+         
+         Poor workaround, not the best, but no other way around it unless Apple fixes the objc reflection of
+         Swift classes there is no other way:
+         
+         If we are unable to find the class in the top level project iterate all dynamic
+         frameworks and attempt to resolve the class name by appending the module name
+         
+         This is somewhat brittle as we loose the namespacing modules give us (for example,
+         if 2 modules define the same class then which ever appears first in the list will
+         be used which might not be expected). In order for this to work, developers are required
+         to:
+         - have unique names of assemblies across modules
+         - frameworks bundle ids much match the following format: *.{Name} where Name is
+         the name of the module
+         
+         */
+        NSArray * frameworks = [NSBundle allFrameworks];
+        for (uint i = 0; i < frameworks.count && clazz == nil; ++i) {
+            NSBundle * framework = [frameworks objectAtIndex:i];
+            NSString * bundleIdentifier = [framework bundleIdentifier];
+            // ignore apple frameworks
+            if (![bundleIdentifier hasPrefix:@"com.apple"]) {
+                NSRange range = [bundleIdentifier rangeOfString:@"." options:NSBackwardsSearch];
+                if (range.location != NSNotFound) {
+                    NSString * frameworkName = [bundleIdentifier substringFromIndex:range.location + 1];
+                    if (frameworkName != nil) {
+                        clazz = NSClassFromString([frameworkName stringByAppendingFormat:@".%@", className]);
+                    }
+                }
+            }
+        }
+    }
     return clazz;
 }
 
