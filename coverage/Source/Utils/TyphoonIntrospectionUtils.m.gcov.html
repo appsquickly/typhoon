@@ -31,13 +31,13 @@
             <td class="headerValue">Typhoon.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">146</td>
-            <td class="headerCovTableEntry">150</td>
-            <td class="headerCovTableEntryHi">97.3 %</td>
+            <td class="headerCovTableEntry">162</td>
+            <td class="headerCovTableEntry">166</td>
+            <td class="headerCovTableEntryHi">97.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-12-09 14:48:13</td>
+            <td class="headerValue">2014-12-10 08:12:50</td>
             <td></td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -277,19 +277,71 @@
 <span class="lineNum">     219 </span><span class="lineCov">        147 :         NSString *defaultModuleName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@&quot;CFBundleName&quot;];</span>
 <span class="lineNum">     220 </span><span class="lineCov">        147 :         clazz = NSClassFromString([defaultModuleName stringByAppendingFormat:@&quot;.%@&quot;,className]);</span>
 <span class="lineNum">     221 </span><span class="lineCov">        147 :     }</span>
-<span class="lineNum">     222 </span><span class="lineCov">      10288 :     return clazz;</span>
-<span class="lineNum">     223 </span><span class="lineCov">      10288 : }</span>
-<span class="lineNum">     224 </span>            : 
-<span class="lineNum">     225 </span><span class="lineCov">        601 : BOOL IsClass(id classOrProtocol)</span>
-<span class="lineNum">     226 </span>            : {
-<span class="lineNum">     227 </span><span class="lineCov">        601 :     return class_isMetaClass(object_getClass(classOrProtocol));</span>
-<span class="lineNum">     228 </span><span class="lineCov">        601 : }</span>
-<span class="lineNum">     229 </span>            : 
-<span class="lineNum">     230 </span><span class="lineCov">        180 : BOOL IsProtocol(id classOrProtocol)</span>
-<span class="lineNum">     231 </span>            : {
-<span class="lineNum">     232 </span><span class="lineCov">        180 :     return object_getClass(classOrProtocol) == object_getClass(@protocol(NSObject));</span>
-<span class="lineNum">     233 </span><span class="lineCov">        180 : }</span>
-<span class="lineNum">     234 </span>            : 
+<span class="lineNum">     222 </span><span class="lineCov">      10288 :     if (!clazz) {</span>
+<span class="lineNum">     223 </span>            :         /**
+<span class="lineNum">     224 </span>            :          Swift issue:
+<span class="lineNum">     225 </span>            :          When calling property_getAttributes() for a Swift class that belongs in a different
+<span class="lineNum">     226 </span>            :          module, the module name is *NOT* returned, therefore attempting to resolve the
+<span class="lineNum">     227 </span>            :          Swift class via name wont work:
+<span class="lineNum">     228 </span>            :          
+<span class="lineNum">     229 </span>            :          1. Foo.BarAssembly in Foo.framework
+<span class="lineNum">     230 </span>            :          2. App.app includes Foo.framework and references Foo.BarAssembly in AppAssembly
+<span class="lineNum">     231 </span>            :          
+<span class="lineNum">     232 </span>            :          import Foo
+<span class="lineNum">     233 </span>            :          
+<span class="lineNum">     234 </span>            :          class AppAssembly: TyphonAssembly {
+<span class="lineNum">     235 </span>            :          
+<span class="lineNum">     236 </span>            :          var barAssembly: Foo.BarAssembly?
+<span class="lineNum">     237 </span>            :          }
+<span class="lineNum">     238 </span>            :          3. property_getAttributes() called on `barAssembly` returns @T&quot;BarAssembly&quot; but
+<span class="lineNum">     239 </span>            :          should return @T&quot;Foo.BarAssembly&quot;
+<span class="lineNum">     240 </span>            :          4. NSClassforString(&quot;BarAssembly&quot;) returns nil because the App.app does not define
+<span class="lineNum">     241 </span>            :          this class
+<span class="lineNum">     242 </span>            :          
+<span class="lineNum">     243 </span>            :          Poor workaround, not the best, but no other way around it unless Apple fixes the objc reflection of
+<span class="lineNum">     244 </span>            :          Swift classes there is no other way:
+<span class="lineNum">     245 </span>            :          
+<span class="lineNum">     246 </span>            :          If we are unable to find the class in the top level project iterate all dynamic
+<span class="lineNum">     247 </span>            :          frameworks and attempt to resolve the class name by appending the module name
+<span class="lineNum">     248 </span>            :          
+<span class="lineNum">     249 </span>            :          This is somewhat brittle as we loose the namespacing modules give us (for example,
+<span class="lineNum">     250 </span>            :          if 2 modules define the same class then which ever appears first in the list will
+<span class="lineNum">     251 </span>            :          be used which might not be expected). In order for this to work, developers are required
+<span class="lineNum">     252 </span>            :          to:
+<span class="lineNum">     253 </span>            :          - have unique names of assemblies across modules
+<span class="lineNum">     254 </span>            :          - frameworks bundle ids much match the following format: *.{Name} where Name is
+<span class="lineNum">     255 </span>            :          the name of the module
+<span class="lineNum">     256 </span>            :          
+<span class="lineNum">     257 </span>            :          */
+<span class="lineNum">     258 </span><span class="lineCov">        147 :         NSArray * frameworks = [NSBundle allFrameworks];</span>
+<span class="lineNum">     259 </span><span class="lineCov">      25872 :         for (uint i = 0; i &lt; frameworks.count &amp;&amp; clazz == nil; ++i) {</span>
+<span class="lineNum">     260 </span><span class="lineCov">       8526 :             NSBundle * framework = [frameworks objectAtIndex:i];</span>
+<span class="lineNum">     261 </span><span class="lineCov">       8526 :             NSString * bundleIdentifier = [framework bundleIdentifier];</span>
+<span class="lineNum">     262 </span>            :             // ignore apple frameworks
+<span class="lineNum">     263 </span><span class="lineCov">       8526 :             if (![bundleIdentifier hasPrefix:@&quot;com.apple&quot;]) {</span>
+<span class="lineNum">     264 </span><span class="lineCov">        735 :                 NSRange range = [bundleIdentifier rangeOfString:@&quot;.&quot; options:NSBackwardsSearch];</span>
+<span class="lineNum">     265 </span><span class="lineCov">        735 :                 if (range.location != NSNotFound) {</span>
+<span class="lineNum">     266 </span><span class="lineCov">        735 :                     NSString * frameworkName = [bundleIdentifier substringFromIndex:range.location + 1];</span>
+<span class="lineNum">     267 </span><span class="lineCov">        735 :                     if (frameworkName != nil) {</span>
+<span class="lineNum">     268 </span><span class="lineCov">        294 :                         clazz = NSClassFromString([frameworkName stringByAppendingFormat:@&quot;.%@&quot;, className]);</span>
+<span class="lineNum">     269 </span><span class="lineCov">        294 :                     }</span>
+<span class="lineNum">     270 </span><span class="lineCov">        735 :                 }</span>
+<span class="lineNum">     271 </span><span class="lineCov">        735 :             }</span>
+<span class="lineNum">     272 </span><span class="lineCov">       8526 :         }</span>
+<span class="lineNum">     273 </span><span class="lineCov">        147 :     }</span>
+<span class="lineNum">     274 </span><span class="lineCov">      10288 :     return clazz;</span>
+<span class="lineNum">     275 </span><span class="lineCov">      10288 : }</span>
+<span class="lineNum">     276 </span>            : 
+<span class="lineNum">     277 </span><span class="lineCov">        601 : BOOL IsClass(id classOrProtocol)</span>
+<span class="lineNum">     278 </span>            : {
+<span class="lineNum">     279 </span><span class="lineCov">        601 :     return class_isMetaClass(object_getClass(classOrProtocol));</span>
+<span class="lineNum">     280 </span><span class="lineCov">        601 : }</span>
+<span class="lineNum">     281 </span>            : 
+<span class="lineNum">     282 </span><span class="lineCov">        180 : BOOL IsProtocol(id classOrProtocol)</span>
+<span class="lineNum">     283 </span>            : {
+<span class="lineNum">     284 </span><span class="lineCov">        180 :     return object_getClass(classOrProtocol) == object_getClass(@protocol(NSObject));</span>
+<span class="lineNum">     285 </span><span class="lineCov">        180 : }</span>
+<span class="lineNum">     286 </span>            : 
 </pre>
       </td>
     </tr>
