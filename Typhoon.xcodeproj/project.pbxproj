@@ -381,6 +381,7 @@
 		6B077461193784DE0083714E /* SomeResource in Resources */ = {isa = PBXBuildFile; fileRef = 6B0770771936F63A0083714E /* SomeResource */; };
 		6B077462193786EB0083714E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA798B7BB085030D07102B8E /* Storyboard.storyboard */; };
 		6B077463193786EC0083714E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA798B7BB085030D07102B8E /* Storyboard.storyboard */; };
+		905214711A3770AE006A935B /* OCLogTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F911936F63A0083714E /* OCLogTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90ABC3F51A36B09E008D8162 /* Typhoon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90ABC3EA1A36B09E008D8162 /* Typhoon.framework */; };
 		90ABC4031A36B0BA008D8162 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B076E611936F5850083714E /* UIKit.framework */; };
 		90ABC4041A36B0C0008D8162 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B076E5D1936F5850083714E /* Foundation.framework */; };
@@ -2233,6 +2234,7 @@
 				90ABC4AB1A36B2A3008D8162 /* Typhoon.h in Headers */,
 				90ABC4761A36B29F008D8162 /* TyphoonDefinition+Infrastructure.h in Headers */,
 				90ABC47C1A36B29F008D8162 /* TyphoonMethod.h in Headers */,
+				905214711A3770AE006A935B /* OCLogTemplate.h in Headers */,
 				90ABC4531A36B29E008D8162 /* TyphoonOptionMatcher+Internal.h in Headers */,
 				90ABC4571A36B29E008D8162 /* TyphoonConfiguration.h in Headers */,
 				90ABC4581A36B29E008D8162 /* TyphoonJsonStyleConfiguration.h in Headers */,
@@ -3485,6 +3487,7 @@
 		90ABC3FE1A36B09E008D8162 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -3512,6 +3515,7 @@
 		90ABC3FF1A36B09E008D8162 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -3720,6 +3724,7 @@
 				90ABC4D91A36BA53008D8162 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		90ABC4DA1A36BA53008D8162 /* Build configuration list for PBXNativeTarget "TyphoonFrameworkSwiftExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -3728,6 +3733,7 @@
 				90ABC4DC1A36BA53008D8162 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -3,9 +3,6 @@
 // Copyright (c) 2014 typhoonframework.org. All rights reserved.
 //
 
-#if TARGET_OS_IPHONE
-#import <UIKit/UIKit.h>
-#endif
 #import "TyphoonStartup.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonAssembly.h"
@@ -21,6 +18,7 @@
 #endif
 
 #if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
 #define ApplicationDidFinishLaunchingNotification UIApplicationDidFinishLaunchingNotification
 #elif TARGET_OS_MAC
 #define ApplicationDidFinishLaunchingNotification NSApplicationDidFinishLaunchingNotification
