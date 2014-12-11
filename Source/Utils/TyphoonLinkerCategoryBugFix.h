@@ -8,7 +8,7 @@
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
-
+#import <Foundation/Foundation.h>
 /**
  Add this macro before each category implementation, so we don't have to use
  -all_load or -force_load to load object files from static libraries that only contain

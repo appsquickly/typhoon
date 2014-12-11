@@ -18,6 +18,7 @@
 #endif
 
 #if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
 #define ApplicationDidFinishLaunchingNotification UIApplicationDidFinishLaunchingNotification
 #elif TARGET_OS_MAC
 #define ApplicationDidFinishLaunchingNotification NSApplicationDidFinishLaunchingNotification

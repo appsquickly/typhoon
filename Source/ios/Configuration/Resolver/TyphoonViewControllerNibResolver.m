@@ -8,6 +8,7 @@
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
+#import <UIKit/UIKit.h>
 
 #import "TyphoonViewControllerNibResolver.h"
 #import "TyphoonDefinition.h"
