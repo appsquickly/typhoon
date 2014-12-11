@@ -9,37 +9,38 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+
 #import "TyphoonPlistStyleConfiguration.h"
 #import "TyphoonResource.h"
 
 
 @implementation TyphoonPlistStyleConfiguration
 {
-    NSMutableDictionary* _properties;
+    NSMutableDictionary *_properties;
 }
 
 - (id)init
 {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _properties = [NSMutableDictionary new];
     }
     return self;
 }
 
-- (void)appendResource:(id <TyphoonResource>)resource
+- (void)appendResource:(id<TyphoonResource>)resource
 {
-    NSString* errorString = nil;
-    NSDictionary* dictionary = nil;
-
+    NSString *errorString = nil;
+    NSDictionary *dictionary = nil;
+    
     // remove deprecated warning when targeting iOS 8 + and OSX 10.6 +
 #if (TARGET_OS_IPHONE && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8) || (TARGET_OS_MAC && MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_10)
-    NSError* error = nil;
-    dictionary =
-        [NSPropertyListSerialization propertyListWithData:[resource data] options:NSPropertyListImmutable format:NULL error:&error];
-    if (error != nil)
-    {
+    NSError * error = nil;
+    dictionary = [NSPropertyListSerialization propertyListWithData:[resource data]
+                                                           options:NSPropertyListImmutable
+                                                            format:NULL
+                                                             error:&error];
+    if (error != nil) {
         errorString = [error localizedDescription];
     }
 #else
@@ -48,22 +49,18 @@
                                                             format:NULL
                                                   errorDescription:&errorString];
 #endif
-    if (![dictionary isKindOfClass:[NSDictionary class]])
-    {
+    if (![dictionary isKindOfClass:[NSDictionary class]]) {
         [NSException raise:NSInvalidArgumentException format:@"Root plist object must be a dictionary"];
     }
 
-    if (!errorString)
-    {
+    if (!errorString) {
         [_properties addEntriesFromDictionary:dictionary];
-    }
-    else
-    {
+    } else {
         [NSException raise:NSInvalidArgumentException format:@"Can't prase plist configuration file: %@", errorString];
     }
 }
 
-- (id)objectForKey:(NSString*)key
+- (id)objectForKey:(NSString *)key
 {
     return [_properties valueForKeyPath:key];
 }
