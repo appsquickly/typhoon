@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['uiview_2btyphoonstoryboard_2eh',['UIView+TyphoonStoryboard.h',['../_u_i_view_09_typhoon_storyboard_8h.html',1,'']]],
   ['unload',['unload',['../interface_typhoon_component_factory.html#a810e359a13f87d375088a78759227692',1,'TyphoonComponentFactory']]],
   ['unregistertypeconverter_3a',['unregisterTypeConverter:',['../interface_typhoon_type_converter_registry.html#a9a9497ffd5d74ea02d2173d653afee01',1,'TyphoonTypeConverterRegistry']]],
   ['usedefinitionwithkeymatchedoptionvalue',['useDefinitionWithKeyMatchedOptionValue',['../interface_typhoon_option_matcher.html#a3eaf55d707637e82073100543cbed400',1,'TyphoonOptionMatcher']]],

@@ -27,6 +27,5 @@ var searchData=
   ['converttounsignedshort_3a',['convertToUnsignedShort:',['../interface_typhoon_primitive_type_converter.html#a154126c107209fd7bf5a5fd77e9c0d88',1,'TyphoonPrimitiveTypeConverter']]],
   ['copybasepropertiesto_3a',['copyBasePropertiesTo:',['../category_typhoon_abstract_injection_07_protected_08.html#a30504db62ed38e24adb794506a2b95e1',1,'TyphoonAbstractInjection(Protected)::copyBasePropertiesTo:()'],['../interface_typhoon_abstract_injection.html#a30504db62ed38e24adb794506a2b95e1',1,'TyphoonAbstractInjection::copyBasePropertiesTo:()']]],
   ['count',['count',['../protocol_typhoon_collection-p.html#aadf3f0e08670051fca77ae181356e2b2',1,'TyphoonCollection-p::count()'],['../interface_typhoon_injection_by_collection.html#acc117f17d213ef4bfda02421c04dce96',1,'TyphoonInjectionByCollection::count()'],['../protocol_typhoon_dictionary-p.html#a34d747cc86591c46926fe0771d4f07b2',1,'TyphoonDictionary-p::count()']]],
-  ['currentfactory',['currentFactory',['../interface_typhoon_component_factory.html#a3cc74ef870a21fcb491532e08aad603a',1,'TyphoonComponentFactory']]],
   ['customhash',['customHash',['../interface_typhoon_abstract_injection.html#a906df7094d91b16cd003a9e1e01c87c9',1,'TyphoonAbstractInjection']]]
 ];

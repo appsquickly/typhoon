@@ -1298,18 +1298,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>currentFactory</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a3cc74ef870a21fcb491532e08aad603a</Anchor>
-    <Abstract>Returns factory which currently resolving component or nil if nothing resolving at this time...</Abstract>
-    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>defaultFactory</Name>
       <APILanguage>occ</APILanguage>
       <Type>clm</Type>
@@ -1318,6 +1306,29 @@
     <Path>interface_typhoon_component_factory.html</Path>
     <Anchor>ad0d0eb369da7b2cd39caf403e9c91ddf</Anchor>
     <Abstract>Returns the default component factory, if one has been set. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>factoryForResolvingFromXibs</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonComponentFactory</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_component_factory.html</Path>
+    <Anchor>a9f9dfff1c95f8c83303889d7202df414</Anchor>
+    <Abstract>Factory used to resolve definition from TyphoonLoadedView. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>setFactoryForResolvingFromXibs:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonComponentFactory</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_component_factory.html</Path>
+    <Anchor>abe5efdbe98a5d5779b952cb66e06f0f4</Anchor>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>
@@ -1719,18 +1730,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>currentFactory</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a3cc74ef870a21fcb491532e08aad603a</Anchor>
-    <Abstract>Returns factory which currently resolving component or nil if nothing resolving at this time...</Abstract>
-    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>defaultFactory</Name>
       <APILanguage>occ</APILanguage>
       <Type>clm</Type>
@@ -1739,6 +1738,29 @@
     <Path>interface_typhoon_component_factory.html</Path>
     <Anchor>ad0d0eb369da7b2cd39caf403e9c91ddf</Anchor>
     <Abstract>Returns the default component factory, if one has been set. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>factoryForResolvingFromXibs</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonComponentFactory</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_component_factory.html</Path>
+    <Anchor>a9f9dfff1c95f8c83303889d7202df414</Anchor>
+    <Abstract>Factory used to resolve definition from TyphoonLoadedView. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>setFactoryForResolvingFromXibs:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonComponentFactory</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_component_factory.html</Path>
+    <Anchor>abe5efdbe98a5d5779b952cb66e06f0f4</Anchor>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>

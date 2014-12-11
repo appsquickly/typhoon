@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">45</td>
-            <td class="headerCovTableEntry">71</td>
-            <td class="headerCovTableEntryLo">63.4 %</td>
+            <td class="headerCovTableEntry">72</td>
+            <td class="headerCovTableEntryLo">62.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-12-11 22:38:36</td>
+            <td class="headerValue">2014-12-12 01:15:18</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -181,31 +181,32 @@
 <span class="lineNum">     123 </span><span class="lineNoCov">          0 :         }</span>
 <span class="lineNum">     124 </span><span class="lineCov">          1 :         if (initialFactory) {</span>
 <span class="lineNum">     125 </span><span class="lineNoCov">          0 :             [self injectInitialFactoryIntoDelegate:delegate];</span>
-<span class="lineNum">     126 </span><span class="lineNoCov">          0 :         }</span>
-<span class="lineNum">     127 </span>            : 
-<span class="lineNum">     128 </span><span class="lineCov">          1 :         originalImp(instance, sel, delegate);</span>
-<span class="lineNum">     129 </span><span class="lineCov">          2 :     });</span>
-<span class="lineNum">     130 </span>            :     
-<span class="lineNum">     131 </span><span class="lineCov">          1 :     method_setImplementation(method, adjustedImp);</span>
-<span class="lineNum">     132 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     133 </span>            : 
-<span class="lineNum">     134 </span>            : + (void)releaseInitialFactory
-<span class="lineNum">     135 </span>            : {
-<span class="lineNum">     136 </span><span class="lineCov">          1 :     initialFactory = nil;</span>
-<span class="lineNum">     137 </span><span class="lineCov">          1 : }</span>
-<span class="lineNum">     138 </span>            : 
-<span class="lineNum">     139 </span>            : #pragma mark -
-<span class="lineNum">     140 </span>            : 
-<span class="lineNum">     141 </span><span class="lineNoCov">          0 : + (void)injectInitialFactoryIntoDelegate:(id)appDelegate</span>
-<span class="lineNum">     142 </span>            : {
-<span class="lineNum">     143 </span><span class="lineNoCov">          0 :     [initialFactory load];</span>
-<span class="lineNum">     144 </span><span class="lineNoCov">          0 :     TyphoonDefinition *definition = [[initialFactory allDefinitionsForType:[appDelegate class]] lastObject];</span>
-<span class="lineNum">     145 </span><span class="lineNoCov">          0 :     [initialFactory doInjectionEventsOn:appDelegate withDefinition:definition args:nil];</span>
-<span class="lineNum">     146 </span><span class="lineNoCov">          0 :     [initialFactory registerInstance:appDelegate asSingletonForDefinition:definition];</span>
-<span class="lineNum">     147 </span><span class="lineNoCov">          0 : }</span>
-<span class="lineNum">     148 </span>            : 
+<span class="lineNum">     126 </span><span class="lineNoCov">          0 :             [TyphoonComponentFactory setFactoryForResolvingFromXibs:initialFactory];</span>
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :         }</span>
+<span class="lineNum">     128 </span>            : 
+<span class="lineNum">     129 </span><span class="lineCov">          1 :         originalImp(instance, sel, delegate);</span>
+<span class="lineNum">     130 </span><span class="lineCov">          2 :     });</span>
+<span class="lineNum">     131 </span>            :     
+<span class="lineNum">     132 </span><span class="lineCov">          1 :     method_setImplementation(method, adjustedImp);</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     134 </span>            : 
+<span class="lineNum">     135 </span>            : + (void)releaseInitialFactory
+<span class="lineNum">     136 </span>            : {
+<span class="lineNum">     137 </span><span class="lineCov">          1 :     initialFactory = nil;</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 : }</span>
+<span class="lineNum">     139 </span>            : 
+<span class="lineNum">     140 </span>            : #pragma mark -
+<span class="lineNum">     141 </span>            : 
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 : + (void)injectInitialFactoryIntoDelegate:(id)appDelegate</span>
+<span class="lineNum">     143 </span>            : {
+<span class="lineNum">     144 </span><span class="lineNoCov">          0 :     [initialFactory load];</span>
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :     TyphoonDefinition *definition = [[initialFactory allDefinitionsForType:[appDelegate class]] lastObject];</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :     [initialFactory doInjectionEventsOn:appDelegate withDefinition:definition args:nil];</span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 :     [initialFactory registerInstance:appDelegate asSingletonForDefinition:definition];</span>
+<span class="lineNum">     148 </span><span class="lineNoCov">          0 : }</span>
 <span class="lineNum">     149 </span>            : 
-<span class="lineNum">     150 </span>            : @end
+<span class="lineNum">     150 </span>            : 
+<span class="lineNum">     151 </span>            : @end
 </pre>
       </td>
     </tr>
