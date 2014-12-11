@@ -77,8 +77,10 @@
 + (id)defaultFactory;
 
 
-/** Returns factory which currently resolving component or nil if nothing resolving at this time*/
-+ (id)currentFactory;
++ (void)setFactoryForResolvingFromXibs:(TyphoonComponentFactory *)factory;
+
+/** Factory used to resolve definition from TyphoonLoadedView. */
++ (TyphoonComponentFactory *)factoryForResolvingFromXibs;
 
 /**
 * Mutate the component definitions and

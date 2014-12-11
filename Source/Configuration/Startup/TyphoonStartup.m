@@ -123,6 +123,7 @@ static TyphoonComponentFactory *initialFactory;
         }
         if (initialFactory) {
             [self injectInitialFactoryIntoDelegate:delegate];
+            [TyphoonComponentFactory setFactoryForResolvingFromXibs:initialFactory];
         }
 
         originalImp(instance, sel, delegate);
