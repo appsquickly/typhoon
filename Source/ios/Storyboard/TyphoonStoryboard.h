@@ -39,6 +39,8 @@
 
 + (TyphoonStoryboard *)storyboardWithName:(NSString *)name factory:(TyphoonComponentFactory *)factory bundle:(NSBundle *)bundleOrNil;
 
++ (TyphoonStoryboard *)currentStoryboard;
+
 @end
 
 #endif

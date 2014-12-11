@@ -76,6 +76,10 @@
 */
 + (id)defaultFactory;
 
+
+/** Returns factory which currently resolving component or nil if nothing resolving at this time*/
++ (id)currentFactory;
+
 /**
 * Mutate the component definitions and
 * build the not-lazy singletons.

@@ -35,6 +35,7 @@
 
 static TyphoonComponentFactory *defaultFactory;
 
+static TyphoonComponentFactory *currentFactory = nil;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
@@ -43,6 +44,11 @@ static TyphoonComponentFactory *defaultFactory;
 + (id)defaultFactory
 {
     return defaultFactory;
+}
+
++ (id)currentFactory
+{
+    return currentFactory;
 }
 
 //-------------------------------------------------------------------------------------------
@@ -373,7 +379,9 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
     }
     
     @synchronized(self) {
-        
+
+        currentFactory = self;
+
         id instance = nil;
         switch (definition.scope) {
             case TyphoonScopeSingleton:
@@ -394,6 +402,7 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
         
         if ([_stack isEmpty]) {
             [_objectGraphSharedInstances removeAllObjects];
+            currentFactory = nil;
         }
         
         return instance;

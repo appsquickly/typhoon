@@ -45,6 +45,13 @@ static const char *kTyphoonKey;
 
 @implementation TyphoonStoryboard
 
+static TyphoonStoryboard *currentStoryboard;
+
++ (TyphoonStoryboard *)currentStoryboard
+{
+    return currentStoryboard;
+}
+
 + (TyphoonStoryboard *)storyboardWithName:(NSString *)name bundle:(NSBundle *)storyboardBundleOrNil
 {
     return [self storyboardWithName:name factory:nil bundle:storyboardBundleOrNil];
@@ -61,9 +68,13 @@ static const char *kTyphoonKey;
 {
     NSAssert(self.factory, @"TyphoonStoryboard's factory property can't be nil!");
 
+    currentStoryboard = self;
+
     id viewController = [super instantiateViewControllerWithIdentifier:identifier];
 
     [self injectPropertiesForViewController:viewController];
+
+    currentStoryboard = nil;
 
     return viewController;
 }
