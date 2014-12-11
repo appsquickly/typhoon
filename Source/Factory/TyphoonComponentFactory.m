@@ -46,12 +46,12 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
     return defaultFactory;
 }
 
-- (void)setFactoryForResolvingFromXibs:(TyphoonComponentFactory *)factory
++ (void)setFactoryForResolvingFromXibs:(TyphoonComponentFactory *)factory
 {
     xibResolvingFactory = factory;
 }
 
-- (TyphoonComponentFactory *)factoryForResolvingFromXibs
++ (TyphoonComponentFactory *)factoryForResolvingFromXibs
 {
     return xibResolvingFactory;
 }
