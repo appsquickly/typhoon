@@ -120,6 +120,11 @@
               <Anchor>a8beff23e8b71b958b551ad173ef0feb5</Anchor>
              </Node>
              <Node>
+              <Name>currentFactory</Name>
+              <Path>interface_typhoon_component_factory.html</Path>
+              <Anchor>a3cc74ef870a21fcb491532e08aad603a</Anchor>
+             </Node>
+             <Node>
               <Name>defaultFactory</Name>
               <Path>interface_typhoon_component_factory.html</Path>
               <Anchor>ad0d0eb369da7b2cd39caf403e9c91ddf</Anchor>
@@ -839,6 +844,11 @@
               <Name>componentForType:</Name>
               <Path>interface_typhoon_component_factory.html</Path>
               <Anchor>a8beff23e8b71b958b551ad173ef0feb5</Anchor>
+             </Node>
+             <Node>
+              <Name>currentFactory</Name>
+              <Path>interface_typhoon_component_factory.html</Path>
+              <Anchor>a3cc74ef870a21fcb491532e08aad603a</Anchor>
              </Node>
              <Node>
               <Name>defaultFactory</Name>
@@ -3961,6 +3971,10 @@
               <Path>interface_typhoon_weak_components_pool.html</Path>
              </Node>
             </Subnodes>
+           </Node>
+           <Node>
+            <Name>UIView+TyphoonStoryboard.h</Name>
+            <Path>_u_i_view_09_typhoon_storyboard_8h.html</Path>
            </Node>
           </Subnodes>
          </Node>

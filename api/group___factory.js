@@ -23,6 +23,7 @@ var group___factory =
       [ "componentForKey:", "interface_typhoon_component_factory.html#afbe6d5309ee739db59e4c5d35d2ab377", null ],
       [ "componentForKey:args:", "interface_typhoon_component_factory.html#af6515430a4ff0a5234a7141c99a38b01", null ],
       [ "componentForType:", "interface_typhoon_component_factory.html#a8beff23e8b71b958b551ad173ef0feb5", null ],
+      [ "currentFactory", "interface_typhoon_component_factory.html#a3cc74ef870a21fcb491532e08aad603a", null ],
       [ "defaultFactory", "interface_typhoon_component_factory.html#ad0d0eb369da7b2cd39caf403e9c91ddf", null ],
       [ "enumerateDefinitions:", "interface_typhoon_component_factory.html#a57cb1e89e38d67d01c72cc36bf592d3a", null ],
       [ "inject:", "interface_typhoon_component_factory.html#a82c437de9ea7059e9c2bd148a2f38baa", null ],

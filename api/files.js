@@ -143,5 +143,6 @@ var files =
     [ "TyphoonViewControllerNibResolver.h", "_typhoon_view_controller_nib_resolver_8h.html", null ],
     [ "TyphoonWeakComponentsPool.h", "_typhoon_weak_components_pool_8h.html", [
       [ "TyphoonWeakComponentsPool", "interface_typhoon_weak_components_pool.html", null ]
-    ] ]
+    ] ],
+    [ "UIView+TyphoonStoryboard.h", "_u_i_view_09_typhoon_storyboard_8h.html", null ]
 ];
