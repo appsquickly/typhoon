@@ -3,7 +3,6 @@
 // Copyright (c) 2014 typhoonframework.org. All rights reserved.
 //
 
-#ifdef __IPHONE_6_1
 
 #import "TyphoonLoadedView.h"
 #import "TyphoonStoryboard.h"
@@ -65,8 +64,6 @@
     dst.autoresizingMask = src.autoresizingMask;
 }
 
-#if TARGET_INTERFACE_BUILDER
-
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -100,8 +97,6 @@
     [label drawRect:self.bounds];
 }
 
-#endif
 
 @end
 
-#endif
