@@ -93,5 +93,8 @@ var hierarchy =
     [ "<TyphoonIterator>", "protocol_typhoon_iterator-p.html", null ],
     [ "TyphoonPathResource", null, [
       [ "TyphoonBundleResource", "interface_typhoon_bundle_resource.html", null ]
+    ] ],
+    [ "UIView", null, [
+      [ "TyphoonLoadedView", "interface_typhoon_loaded_view.html", null ]
     ] ]
 ];

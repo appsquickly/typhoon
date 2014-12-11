@@ -37,6 +37,7 @@ var annotated =
     [ "TyphoonInjectionContext", "interface_typhoon_injection_context.html", "interface_typhoon_injection_context" ],
     [ "TyphoonIntrospectionUtils", "interface_typhoon_introspection_utils.html", "interface_typhoon_introspection_utils" ],
     [ "<TyphoonIterator>", "protocol_typhoon_iterator-p.html", "protocol_typhoon_iterator-p" ],
+    [ "TyphoonLoadedView", "interface_typhoon_loaded_view.html", null ],
     [ "TyphoonMethod", "interface_typhoon_method.html", "interface_typhoon_method" ],
     [ "TyphoonNSURLTypeConverter", "interface_typhoon_n_s_u_r_l_type_converter.html", null ],
     [ "TyphoonOptionMatcher", "interface_typhoon_option_matcher.html", "interface_typhoon_option_matcher" ],

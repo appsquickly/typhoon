@@ -108,6 +108,7 @@ var searchData=
   ['typhooniterator_2dp',['TyphoonIterator-p',['../protocol_typhoon_iterator-p.html',1,'']]],
   ['typhoonjsonstyleconfiguration_2eh',['TyphoonJsonStyleConfiguration.h',['../_typhoon_json_style_configuration_8h.html',1,'']]],
   ['typhoonlinkercategorybugfix_2eh',['TyphoonLinkerCategoryBugFix.h',['../_typhoon_linker_category_bug_fix_8h.html',1,'']]],
+  ['typhoonloadedview',['TyphoonLoadedView',['../interface_typhoon_loaded_view.html',1,'']]],
   ['typhoonloadedview_2eh',['TyphoonLoadedView.h',['../_typhoon_loaded_view_8h.html',1,'']]],
   ['typhoonmakeinjectionfromobjectifneeded',['TyphoonMakeInjectionFromObjectIfNeeded',['../_typhoon_injections_8h.html#af37a21437d5df5ccb9dcb5ebe5dd28c5',1,'TyphoonInjections.h']]],
   ['typhoonmanualiterationblock',['TyphoonManualIterationBlock',['../_n_s_array_09_typhoon_manual_enumeration_8h.html#ac2096872553d34aedf65d8cc6da3494d',1,'NSArray+TyphoonManualEnumeration.h']]],

@@ -93,7 +93,9 @@ var files =
     [ "TyphooniOS.h", "_typhooni_o_s_8h.html", null ],
     [ "TyphoonJsonStyleConfiguration.h", "_typhoon_json_style_configuration_8h.html", null ],
     [ "TyphoonLinkerCategoryBugFix.h", "_typhoon_linker_category_bug_fix_8h.html", null ],
-    [ "TyphoonLoadedView.h", "_typhoon_loaded_view_8h.html", null ],
+    [ "TyphoonLoadedView.h", "_typhoon_loaded_view_8h.html", [
+      [ "TyphoonLoadedView", "interface_typhoon_loaded_view.html", null ]
+    ] ],
     [ "TyphoonMethod.h", "_typhoon_method_8h.html", null ],
     [ "TyphoonMethodSwizzler.h", "_typhoon_method_swizzler_8h.html", null ],
     [ "TyphoonNSNumberTypeConverter.h", "_typhoon_n_s_number_type_converter_8h.html", null ],

@@ -1425,6 +1425,10 @@
             </Subnodes>
            </Node>
            <Node>
+            <Name>TyphoonLoadedView</Name>
+            <Path>interface_typhoon_loaded_view.html</Path>
+           </Node>
+           <Node>
             <Name>TyphoonMethod</Name>
             <Path>interface_typhoon_method.html</Path>
             <Subnodes>
@@ -2210,6 +2214,16 @@
              <Node>
               <Name>TyphoonBundleResource</Name>
               <Path>interface_typhoon_bundle_resource.html</Path>
+             </Node>
+            </Subnodes>
+           </Node>
+           <Node>
+            <Name>UIView</Name>
+            <Path></Path>
+            <Subnodes>
+             <Node>
+              <Name>TyphoonLoadedView</Name>
+              <Path>interface_typhoon_loaded_view.html</Path>
              </Node>
             </Subnodes>
            </Node>
@@ -3353,6 +3367,12 @@
            <Node>
             <Name>TyphoonLoadedView.h</Name>
             <Path>_typhoon_loaded_view_8h.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>TyphoonLoadedView</Name>
+              <Path>interface_typhoon_loaded_view.html</Path>
+             </Node>
+            </Subnodes>
            </Node>
            <Node>
             <Name>TyphoonMethod.h</Name>

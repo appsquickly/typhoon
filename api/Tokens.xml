@@ -4134,6 +4134,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>TyphoonLoadedView</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+      <Scope>TyphoonLoadedView</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_loaded_view.html</Path>
+    <Abstract>Just drop this view into your Xib and specify definition key as restorationIdentifier This view will ...</Abstract>
+    <DeclaredIn>TyphoonLoadedView.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>TyphoonMethod</Name>
       <APILanguage>c</APILanguage>
       <Type>cl</Type>
