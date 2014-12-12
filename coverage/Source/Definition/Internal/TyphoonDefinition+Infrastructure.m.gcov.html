@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2014-12-12 07:40:32</td>
+            <td class="headerValue">2014-12-12 18:07:14</td>
             <td></td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
@@ -115,20 +115,20 @@
 <span class="lineNum">      57 </span>            : //-------------------------------------------------------------------------------------------
 <span class="lineNum">      58 </span>            : #pragma mark - Initialization &amp; Destruction
 <span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span><span class="lineCov">       3317 : - (id)initWithClass:(Class)clazz key:(NSString *)key</span>
+<span class="lineNum">      60 </span><span class="lineCov">       3302 : - (id)initWithClass:(Class)clazz key:(NSString *)key</span>
 <span class="lineNum">      61 </span>            : {
-<span class="lineNum">      62 </span><span class="lineCov">       3317 :     self = [super init];</span>
-<span class="lineNum">      63 </span><span class="lineCov">       3317 :     if (self) {</span>
-<span class="lineNum">      64 </span><span class="lineCov">       3317 :         _type = clazz;</span>
-<span class="lineNum">      65 </span><span class="lineCov">       3317 :         _injectedProperties = [[NSMutableSet alloc] init];</span>
-<span class="lineNum">      66 </span><span class="lineCov">       3317 :         _injectedMethods = [[NSMutableSet alloc] init];</span>
-<span class="lineNum">      67 </span><span class="lineCov">       3317 :         _key = [key copy];</span>
-<span class="lineNum">      68 </span><span class="lineCov">       3317 :         _scope = TyphoonScopeObjectGraph;</span>
-<span class="lineNum">      69 </span><span class="lineCov">       3317 :         self.autoInjectionVisibility = TyphoonAutoInjectVisibilityDefault;</span>
-<span class="lineNum">      70 </span><span class="lineCov">       3317 :         [self validateRequiredParametersAreSet];</span>
-<span class="lineNum">      71 </span><span class="lineCov">       3317 :     }</span>
-<span class="lineNum">      72 </span><span class="lineCov">       3315 :     return self;</span>
-<span class="lineNum">      73 </span><span class="lineCov">       3315 : }</span>
+<span class="lineNum">      62 </span><span class="lineCov">       3302 :     self = [super init];</span>
+<span class="lineNum">      63 </span><span class="lineCov">       3302 :     if (self) {</span>
+<span class="lineNum">      64 </span><span class="lineCov">       3302 :         _type = clazz;</span>
+<span class="lineNum">      65 </span><span class="lineCov">       3302 :         _injectedProperties = [[NSMutableSet alloc] init];</span>
+<span class="lineNum">      66 </span><span class="lineCov">       3302 :         _injectedMethods = [[NSMutableSet alloc] init];</span>
+<span class="lineNum">      67 </span><span class="lineCov">       3302 :         _key = [key copy];</span>
+<span class="lineNum">      68 </span><span class="lineCov">       3302 :         _scope = TyphoonScopeObjectGraph;</span>
+<span class="lineNum">      69 </span><span class="lineCov">       3302 :         self.autoInjectionVisibility = TyphoonAutoInjectVisibilityDefault;</span>
+<span class="lineNum">      70 </span><span class="lineCov">       3302 :         [self validateRequiredParametersAreSet];</span>
+<span class="lineNum">      71 </span><span class="lineCov">       3302 :     }</span>
+<span class="lineNum">      72 </span><span class="lineCov">       3300 :     return self;</span>
+<span class="lineNum">      73 </span><span class="lineCov">       3300 : }</span>
 <span class="lineNum">      74 </span>            : 
 <span class="lineNum">      75 </span>            : - (id)init
 <span class="lineNum">      76 </span>            : {
@@ -160,10 +160,10 @@
 <span class="lineNum">     102 </span>            : 
 <span class="lineNum">     103 </span>            : - (void)validateRequiredParametersAreSet
 <span class="lineNum">     104 </span>            : {
-<span class="lineNum">     105 </span><span class="lineCov">       3317 :     if (_type == nil) {</span>
+<span class="lineNum">     105 </span><span class="lineCov">       3302 :     if (_type == nil) {</span>
 <span class="lineNum">     106 </span><span class="lineCov">          2 :         [NSException raise:NSInvalidArgumentException format:@&quot;Property 'clazz' is required.&quot;];</span>
 <span class="lineNum">     107 </span><span class="lineCov">          2 :     }</span>
-<span class="lineNum">     108 </span><span class="lineCov">       3315 : }</span>
+<span class="lineNum">     108 </span><span class="lineCov">       3300 : }</span>
 <span class="lineNum">     109 </span>            : 
 <span class="lineNum">     110 </span>            : @end
 </pre>
