@@ -17,21 +17,13 @@
 
 - (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
 {
-    id result = nil;
-
-    result = [[self class] viewFromDefinition:[self typhoonKey] originalView:self];
-    if (result != self) {
-        CFRelease((__bridge const void*)self);
-        CFRetain((__bridge const void*)result);
-    }
-    
-    return result;
+    return [[self class] viewFromDefinition:[self typhoonKey] originalView:self];
 }
 
 + (id)viewFromDefinition:(NSString *)definitionKey originalView:(UIView *)original
 {
     if ([[original subviews] count] > 0) {
-        NSLog(@"Warning: placeholder view contains (%d) subviews. They will be replaced by typhoon definition '%@'", [[original subviews] count], definitionKey);
+        NSLog(@"Warning: placeholder view contains (%d) subviews. They will be replaced by typhoon definition '%@'", (int)[[original subviews] count], definitionKey);
     }
     TyphoonComponentFactory *currentFactory = [TyphoonComponentFactory factoryForResolvingFromXibs];
     if (!currentFactory) {
