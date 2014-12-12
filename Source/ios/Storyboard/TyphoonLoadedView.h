@@ -5,9 +5,6 @@
 
 #import <Foundation/Foundation.h>
 
-#ifdef IB_DESIGNABLE
-IB_DESIGNABLE
-#endif
 /**
 * Just drop this view into your Xib and specify definition key as restorationIdentifier
 * This view will be dynamically replaced with view from definition at runtime.
