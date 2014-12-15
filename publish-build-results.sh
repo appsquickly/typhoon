@@ -12,6 +12,6 @@ git branch --set-upstream-to=origin/gh-pages gh-pages
 git pull
 cp -fr build/reports/build-status/build-status.png ./build-status/build-status.png
 
-git commit -a -m "publish reports to gh-pages"
+git commit -a -m "publish reports to gh-pages" || true
 git push -u origin gh-pages
 git checkout master
