@@ -62,7 +62,7 @@ echo '--------------------------------------------------------------------------
 #Produce API Documentation
 echo "Generating Doxygen documentation"
 echo '--------------------------------------------------------------------------------'
-doxygen > ${reportsDir}/doxygen_out.txt 2>&1
+doxygen > ${reportsDir}/doxygen_out.txt 2>&1 || true
 ditto ${resourceDir}/navtree.css ${reportsDir}/api
 ditto ${resourceDir}/doxygen.png ${reportsDir}/api
 
