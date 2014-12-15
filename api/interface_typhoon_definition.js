@@ -1,10 +1,5 @@
 var interface_typhoon_definition =
 [
-    [ "abstract", "interface_typhoon_definition.html#a06ab7dc77ee2f386d87ea3fe75f18693", null ],
-    [ "autoInjectionVisibility", "interface_typhoon_definition.html#a7b651ab85991ef1d9641ef5cd1f67187", null ],
-    [ "parent", "interface_typhoon_definition.html#add76507109b2465e672b7472c408fa05", null ],
-    [ "scope", "interface_typhoon_definition.html#aa4df6569a008392075c9689a73d13729", null ],
-    [ "type", "interface_typhoon_definition.html#a1683dd7b003c512248c98fecb26d0985", null ],
     [ "injectMethod:parameters:", "interface_typhoon_definition.html#a6052afa42a4a9a206dfac94cbd7f5e86", null ],
     [ "injectProperty:", "interface_typhoon_definition.html#ae94bc60d51081f565e5183e5b28ea36f", null ],
     [ "injectProperty:with:", "interface_typhoon_definition.html#a2dae7a42237c54186dff914a699bf7d9", null ],
@@ -25,5 +20,10 @@ var interface_typhoon_definition =
     [ "withFactory:selector:parameters:configuration:", "interface_typhoon_definition.html#aeb2db6f4167d2a32126e605ee22db4f2", null ],
     [ "withOption:matcher:", "interface_typhoon_definition.html#ace67617e7c8feea3167bd10342964a3d", null ],
     [ "withOption:matcher:autoInjectionConfig:", "interface_typhoon_definition.html#af42ffbdb443c1e44379a728b1096becb", null ],
-    [ "withOption:yes:no:", "interface_typhoon_definition.html#a96cf46e499d4b083215881a2a9c8808e", null ]
+    [ "withOption:yes:no:", "interface_typhoon_definition.html#a96cf46e499d4b083215881a2a9c8808e", null ],
+    [ "abstract", "interface_typhoon_definition.html#a06ab7dc77ee2f386d87ea3fe75f18693", null ],
+    [ "autoInjectionVisibility", "interface_typhoon_definition.html#a7b651ab85991ef1d9641ef5cd1f67187", null ],
+    [ "parent", "interface_typhoon_definition.html#add76507109b2465e672b7472c408fa05", null ],
+    [ "scope", "interface_typhoon_definition.html#aa4df6569a008392075c9689a73d13729", null ],
+    [ "type", "interface_typhoon_definition.html#a1683dd7b003c512248c98fecb26d0985", null ]
 ];

@@ -1,9 +1,5 @@
 var interface_typhoon_component_factory =
 [
-    [ "componentPostProcessors", "interface_typhoon_component_factory.html#a9c88f88b59f7607416373f761d97b23c", null ],
-    [ "factoryPostProcessors", "interface_typhoon_component_factory.html#a8eec64c832482a1e025b80d2cd16a5f3", null ],
-    [ "loaded", "interface_typhoon_component_factory.html#a09b13d5d400d8ca043cc5f1105b8a744", null ],
-    [ "singletons", "interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785", null ],
     [ "allComponentsForType:", "interface_typhoon_component_factory.html#aed7d338f12814ee5e235cbc605203b89", null ],
     [ "attachPostProcessor:", "interface_typhoon_component_factory.html#a0727001458325fd7d09b6df2e1252180", null ],
     [ "componentForKey:", "interface_typhoon_component_factory.html#afbe6d5309ee739db59e4c5d35d2ab377", null ],
@@ -19,5 +15,9 @@ var interface_typhoon_component_factory =
     [ "registerDefinition:", "interface_typhoon_component_factory.html#ae4569eb6aebca4089de316d2b80d34d1", null ],
     [ "registry", "interface_typhoon_component_factory.html#afa734936e2f650ba86b731ec67cd7ce9", null ],
     [ "setFactoryForResolvingFromXibs:", "interface_typhoon_component_factory.html#abe5efdbe98a5d5779b952cb66e06f0f4", null ],
-    [ "unload", "interface_typhoon_component_factory.html#a810e359a13f87d375088a78759227692", null ]
+    [ "unload", "interface_typhoon_component_factory.html#a810e359a13f87d375088a78759227692", null ],
+    [ "componentPostProcessors", "interface_typhoon_component_factory.html#a9c88f88b59f7607416373f761d97b23c", null ],
+    [ "factoryPostProcessors", "interface_typhoon_component_factory.html#a8eec64c832482a1e025b80d2cd16a5f3", null ],
+    [ "loaded", "interface_typhoon_component_factory.html#a09b13d5d400d8ca043cc5f1105b8a744", null ],
+    [ "singletons", "interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785", null ]
 ];

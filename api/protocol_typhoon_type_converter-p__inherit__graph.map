@@ -1,6 +1,6 @@
 <map id="&lt;TyphoonTypeConverter&gt;" name="&lt;TyphoonTypeConverter&gt;">
-<area shape="rect" id="node3" href="$interface_n_s_null_type_converter.html" title="Converter used for testing. " alt="" coords="449,5,610,32"/>
-<area shape="rect" id="node4" href="$interface_typhoon_n_s_u_r_l_type_converter.html" title="TyphoonNSURLTypeConverter" alt="" coords="420,56,639,83"/>
-<area shape="rect" id="node5" href="$interface_typhoon_pass_through_type_converter.html" title="A &#39;type converter&#39; for NSString and NSMutableString. " alt="" coords="399,107,660,133"/>
-<area shape="rect" id="node6" href="$interface_typhoon_u_i_color_type_converter.html" title="A type converter for UIColor. " alt="" coords="417,157,641,184"/>
+<area shape="rect" id="node3" href="$interface_n_s_null_type_converter.html" title="Converter used for testing. " alt="" coords="418,5,570,32"/>
+<area shape="rect" id="node4" href="$interface_typhoon_n_s_u_r_l_type_converter.html" title="TyphoonNSURLTypeConverter" alt="" coords="391,56,597,83"/>
+<area shape="rect" id="node5" href="$interface_typhoon_pass_through_type_converter.html" title="A &#39;type converter&#39; for NSString and NSMutableString. " alt="" coords="373,107,615,133"/>
+<area shape="rect" id="node6" href="$interface_typhoon_u_i_color_type_converter.html" title="A type converter for UIColor. " alt="" coords="391,157,597,184"/>
 </map>
