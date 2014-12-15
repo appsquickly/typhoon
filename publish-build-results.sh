@@ -12,7 +12,7 @@ git stash
 git checkout gh-pages
 git branch --set-upstream-to=origin/gh-pages gh-pages
 git pull
-cp -fr ${reports.dir}/build-status/build-status.png ./build-status/build-status.png
+cp -fr build/reports/build-status/build-status.png ./build-status/build-status.png
 #rm -fr ./coverage
 #mkdir -p ${reports.dir}/coverage
 #cp -fr ${reports.dir}/coverage/ ./coverage
