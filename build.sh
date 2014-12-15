@@ -13,6 +13,7 @@ echo '--------------------------------------------------------------------------
 #Configuration
 reportsDir=build/reports
 sourceDir=Source
+resourceDir=Resources
 
 
 
