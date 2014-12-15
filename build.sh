@@ -38,11 +38,13 @@ ditto ${resourceDir}/build-failed.png ${reportsDir}/build-status/build-status.pn
 
 #Compile, run tests and produce coverage report for iOS Simulator
 platform=iOS_Simulator
+mkdir -p ${reportsDir}/${platform}
+
 
 rm -fr ~/Library/Developer/Xcode/DerivedData
 xcodebuild test -project Typhoon.xcodeproj -scheme 'Typhoon-iOSTests' -configuration Debug \
 -destination 'platform=iOS Simulator,name=iPhone 5s,OS=8.1' | xcpretty -c --report junit
-ditto ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
+mv ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
 
 groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/iOS_Simulator -r${requiredCoverage}
 echo '----------------------------------------------------------------------------------------------------'
@@ -50,10 +52,11 @@ echo '--------------------------------------------------------------------------
 
 #Compile, run tests and produce coverage report for OSX
 platform=OSX
+mkdir -p ${reportsDir}/${platform}
 
 rm -fr ~/Library/Developer/Xcode/DerivedData
 xcodebuild -project Typhoon.xcodeproj/ -scheme 'Typhoon-OSXTests' test | xcpretty -c --report junit
-ditto ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
+mv ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
 
 groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/OSX -r${requiredCoverage}
 echo '--------------------------------------------------------------------------------'
