@@ -12,6 +12,7 @@ git branch --set-upstream-to=origin/gh-pages gh-pages
 git pull
 cp -fr build/reports/build-status/build-status.png ./build-status/build-status.png
 
-git commit -a -m "publish reports to gh-pages" || true
+git commit -a -m "publish reports to gh-pages" || true || true # allow `remote add` to fail without failing script (if nothing to add)
 git push -u origin gh-pages
 git checkout master
+git pull
