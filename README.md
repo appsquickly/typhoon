@@ -5,7 +5,11 @@ Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-fe
 
 ## Not familiar with Dependency Injection? 
 
-Visit <a href="http://typhoonframework.org">the Typhoon website</a> for an introduction. Otherwise. . . 
+Visit <a href="http://typhoonframework.org">the Typhoon website</a> for an introduction.
+
+## Is Typhoon the right DI framework for you? 
+
+Checkout out the <a href="http://www.typhoonframework.org/#features">feature list</a>. Otherwise . . . 
 
 # Usage
 
@@ -14,42 +18,6 @@ Visit <a href="http://typhoonframework.org">the Typhoon website</a> for an intro
 * By popular demand, there's also an sample that features <a href="https://github.com/typhoon-framework/Typhoon-CoreData-RAC-Example">setting up Typhoon with Core Data and Reactive Cocoa</a>.
 * Here are the <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>. Generally googling a Typhoon class name will return the correct page as the first hit. 
 
-## Design Goals / Features
-
-*Typhoon is a DI library that makes good use of the runtime's (ObjC or Swift) late binding nature in order to perform method interception and forwarding. This makes for a very compelling feature list.* 
-
-* Non-invasive. ***No macros or XML required*** . . . Uses <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">powerful Objective-C runtime approach.</a>
-
-* Its not necessary to change ***any*** of your classes to use the framework. ***Can be introduced into legacy applications.***
-
-* No magic strings - ***supports IDE refactoring, code-completion and compile-time checking.*** 
-
-* Provides ***full-modularization and encapsulation of configuration*** - grouping the application assembly 
-details into a single document, with chapters. ***Let your architecture tell a story.*** 
-
-* ***Dependencies declared in any order.*** (The order that makes sense to humans).
-
-* Makes it easy to have multiple configurations of the same base-class or protocol. 
-
-* Allows both dependency injection (injection of classes defined in the DI context) as well as configuration 
- management (values that get converted to the required type at runtime). Because this allows. . . 
- 
-* . . . ability to configure components for use in eg ___Test___ vs ___Production___ scenarios. This faciliates a 
-good compromise between integration testing and pure unit testing. (Biggest testing bang-for-your-buck). 
-
-* Supports ***injection of view controllers*** and ***storyboard integration.*** 
-
-* Supports both ***initializer***, ***property*** and ***method injection***. For the latter two, it has customizable call-backs to ensure that the class is in the required state before and after injection. 
-
-* Supports a mixture of static dependencies along with <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections#injection-with-run-time-arguments">run-time arguments</a> to create factories on the fly. This greatly reduces the amount of boiler-plate code that you would normally write. 
-
-* Excellent ***support for circular dependencies.***
-
-* ***Powerful memory management features***. Provides pre-configured objects, without the memory overhead of singletons.
-
-* ***Lightweight***. It has a very low footprint, so is appropriate for CPU and memory constrained devices. Weighs in at just 2500 lines of code in total! 
-
-* ***Battle-tested*** - used in all kinds of Appstore-featured apps. 
 
 # Installing
 
