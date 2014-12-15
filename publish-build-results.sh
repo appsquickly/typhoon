@@ -1,5 +1,9 @@
  #!/bin/bash
 
+echo '--------------------------------------------------------------------------------'
+echo 'Publishing build results'
+echo '--------------------------------------------------------------------------------'
+
 set -e # fail script if any commands fail
 
 git remote add origin git@github.com:typhoon-framework/Typhoon.git || true # allow `remote add` to fail without failing script
