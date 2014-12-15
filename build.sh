@@ -13,7 +13,7 @@ echo '--------------------------------------------------------------------------
 #Configuration
 reportsDir=build/reports
 sourceDir=Source
-resourceDir=Resources
+
 
 
 requiredCoverage=85
@@ -58,14 +58,5 @@ groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir
 echo '--------------------------------------------------------------------------------'
 
 
-#Produce API Documentation
-echo "Generating Doxygen documentation"
-echo '--------------------------------------------------------------------------------'
-doxygen > ${reportsDir}/doxygen_out.txt 2>&1 || true
-mkdir -p ${reportsDir}/api/images
-ditto ${resourceDir}/navtree.css ${reportsDir}/api
-ditto ${resourceDir}/doxygen.png ${reportsDir}/api
-ditto ${resourceDir}/images/ ${reportsDir}/api/images/
-
-#Stamp build Initially passing
+#Stamp build passing
 ditto ${resourceDir}/build-passed.png ${reportsDir}/build-status/build-status.png
