@@ -76,6 +76,12 @@
 */
 + (id)defaultFactory;
 
+
++ (void)setFactoryForResolvingFromXibs:(TyphoonComponentFactory *)factory;
+
+/** Factory used to resolve definition from TyphoonLoadedView. */
++ (TyphoonComponentFactory *)factoryForResolvingFromXibs;
+
 /**
 * Mutate the component definitions and
 * build the not-lazy singletons.

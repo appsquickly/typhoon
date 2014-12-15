@@ -35,6 +35,7 @@
 
 static TyphoonComponentFactory *defaultFactory;
 
+static TyphoonComponentFactory *xibResolvingFactory = nil;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
@@ -43,6 +44,16 @@ static TyphoonComponentFactory *defaultFactory;
 + (id)defaultFactory
 {
     return defaultFactory;
+}
+
++ (void)setFactoryForResolvingFromXibs:(TyphoonComponentFactory *)factory
+{
+    xibResolvingFactory = factory;
+}
+
++ (TyphoonComponentFactory *)factoryForResolvingFromXibs
+{
+    return xibResolvingFactory;
 }
 
 //-------------------------------------------------------------------------------------------
@@ -373,7 +384,7 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
     }
     
     @synchronized(self) {
-        
+
         id instance = nil;
         switch (definition.scope) {
             case TyphoonScopeSingleton:
