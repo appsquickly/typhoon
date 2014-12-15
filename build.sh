@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo '----------------------------------------------------------------------------------------------------'
-echo "Building requires the following dependencies to be installed"
+echo "This build script  requires the following dependencies to be installed:"
 echo '----------------------------------------------------------------------------------------------------'
 echo "gem install xcpretty"
 echo "sudo port install lcov"
