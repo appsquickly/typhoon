@@ -42,7 +42,7 @@ rm -fr ~/Library/Developer/Xcode/DerivedData
 xcodebuild test -project Typhoon.xcodeproj -scheme 'Typhoon-iOSTests' -configuration Debug \
 -destination 'platform=iOS Simulator,name=iPhone 5s,OS=8.1' | xcpretty -c --report junit --report html
 ditto ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
-ditto ${reportsDir}/tests.html ${reportsDir}/${platform}/tests.html
+ditto ${reportsDir}/tests.html ${reportsDir}/${platform}/tests_results.html
 
 groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/iOS_Simulator -r${requiredCoverage}
 echo '----------------------------------------------------------------------------------------------------'
@@ -54,7 +54,7 @@ platform=OSX
 rm -fr ~/Library/Developer/Xcode/DerivedData
 xcodebuild -project Typhoon.xcodeproj/ -scheme 'Typhoon-OSXTests' test | xcpretty -c --report junit --report html
 ditto ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
-ditto ${reportsDir}/tests.html ${reportsDir}/${platform}/tests.html
+ditto ${reportsDir}/tests.html ${reportsDir}/${platform}/tests_results.html
 
 groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/OSX -r${requiredCoverage}
 echo '--------------------------------------------------------------------------------'
