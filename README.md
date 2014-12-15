@@ -1,4 +1,5 @@
 # Typhoon! (www.typhoonframework.org) 
+![Build Status](http://www.typhoonframework.org/docs/latest/build-status/build-status.png?q=zz)
 
 Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-featured and super-easy to use. 
 
@@ -54,22 +55,6 @@ Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods
 * Try the <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">Swift Sample Application</a> or the <a href="https://github.com/typhoon-framework/Typhoon-example">Objective-C Sample Application</a>. 
 * By popular demand, there's also an sample that features <a href="https://github.com/typhoon-framework/Typhoon-CoreData-RAC-Example">setting up Typhoon with Core Data and Reactive Cocoa</a>.
 * Here are the <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>. Generally googling a Typhoon class name will return the correct page as the first hit. 
-
-
-
-# Build Status 
-![Build Status](http://www.typhoonframework.org/docs/latest/build-status/build-status.png?q=zz)
-
-
-The following reports are published by our build server after each commit. Note that the status of the CI build is not related to tagged releases that are published and pushed to CocoaPods - these are stable. 
-
-Test Failures typically indicate a bug that has been flagged, but not yet fixed. By policy we maintain more than 90% test coverage. 
-
-
-* <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API</a>
-* <a href="http://www.typhoonframework.org/docs/latest/test-results/index.html">Test Results</a>
-* <a href="http://www.typhoonframework.org/docs/latest/coverage/index.html">Test Coverage</a>
-
 
 # Feedback
 
