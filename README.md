@@ -1,52 +1,15 @@
 # Typhoon! (www.typhoonframework.org) 
+<a href="http://appsquick.broke-it.net/browse/TPN-TC/latest">![Build Status](http://www.typhoonframework.org/docs/latest/build-status/build-status.png?q=zz)</a>
 
 Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-featured and super-easy to use. 
 
 ## Not familiar with Dependency Injection? 
 
-Visit <a href="http://typhoonframework.org">the Typhoon website</a> for an introduction. Otherwise. . . 
+Visit <a href="http://typhoonframework.org">the Typhoon website</a> for an introduction.
 
-## Design Goals / Features
+## Is Typhoon the right DI framework for you? 
 
-*Typhoon is a DI library that makes good use of the runtime's (ObjC or Swift) late binding nature in order to perform method interception and forwarding. This makes for a very compelling feature list.* 
-
-
-* Non-invasive. ***No macros or XML required*** . . . Uses <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">powerful Objective-C runtime approach.</a>
-
-* Its not necessary to change ***any*** of your classes to use the framework. ***Can be introduced into legacy applications.***
-
-* No magic strings - ***supports IDE refactoring, code-completion and compile-time checking.*** 
-
-* Provides ***full-modularization and encapsulation of configuration*** - grouping the application assembly 
-details into a single document, with chapters. ***Let your architecture tell a story.*** 
-
-* ***Dependencies declared in any order.*** (The order that makes sense to humans).
-
-* Makes it easy to have multiple configurations of the same base-class or protocol. 
-
-* Allows both dependency injection (injection of classes defined in the DI context) as well as configuration 
- management (values that get converted to the required type at runtime). Because this allows. . . 
- 
-* . . . ability to configure components for use in eg ___Test___ vs ___Production___ scenarios. This faciliates a 
-good compromise between integration testing and pure unit testing. (Biggest testing bang-for-your-buck). 
-
-* Supports ***injection of view controllers*** and ***storyboard integration.*** 
-
-* Supports both ***initializer***, ***property*** and ***method injection***. For the latter two, it has customizable call-backs to ensure that the class is in the required state before and after injection. 
-
-* Supports a mixture of static dependencies along with <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections#injection-with-run-time-arguments">run-time arguments</a> to create factories on the fly. This greatly reduces the amount of boiler-plate code that you would normally write. 
-
-* Excellent ***support for circular dependencies.***
-
-* ***Powerful memory management features***. Provides pre-configured objects, without the memory overhead of singletons.
-
-* ***Lightweight***. It has a very low footprint, so is appropriate for CPU and memory constrained devices. Weighs in at just 2500 lines of code in total! 
-
-* ***Battle-tested*** - used in all kinds of Appstore-featured apps. 
-
-# Installing
-
-Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods</a> (recommended). Alternatively, add the source files to your project's target or set up an Xcode workspace. 
+Checkout out the <a href="http://www.typhoonframework.org/#features">feature list</a>. Otherwise . . . 
 
 # Usage
 
@@ -56,20 +19,9 @@ Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods
 * Here are the <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>. Generally googling a Typhoon class name will return the correct page as the first hit. 
 
 
+# Installing
 
-# Build Status 
-![Build Status](http://www.typhoonframework.org/docs/latest/build-status/build-status.png?q=zz)
-
-
-The following reports are published by our build server after each commit. Note that the status of the CI build is not related to tagged releases that are published and pushed to CocoaPods - these are stable. 
-
-Test Failures typically indicate a bug that has been flagged, but not yet fixed. By policy we maintain more than 90% test coverage. 
-
-
-* <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API</a>
-* <a href="http://www.typhoonframework.org/docs/latest/test-results/index.html">Test Results</a>
-* <a href="http://www.typhoonframework.org/docs/latest/coverage/index.html">Test Coverage</a>
-
+Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods</a> (recommended). Alternatively, add the source files to your project's target or set up an Xcode workspace. 
 
 # Feedback
 
