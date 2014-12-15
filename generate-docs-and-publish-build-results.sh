@@ -33,7 +33,7 @@ git add build-status
 
 rm -fr ./api
 cp -fr ${reportsDir}/api ./docs/latest/api
-git add api
+git add docs/latest/api
 
 git commit -a -m "publish reports to gh-pages" || true # allow `remote add` to fail without failing script (if nothing to add)
 git push -u origin gh-pages
