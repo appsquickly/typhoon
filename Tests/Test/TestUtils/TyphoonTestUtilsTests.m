@@ -25,12 +25,12 @@
     __block NSString *willLoadLater = nil;
     dispatch_async(dispatch_queue_create("fetcher.queue", DISPATCH_QUEUE_CONCURRENT), ^(void) {
         LogDebug(@"Loading remote data. . . ");
-        [NSThread sleepForTimeInterval:0.05];
+        [NSThread sleepForTimeInterval:0.01];
         willLoadLater = @"Foobar!";
     });
 
     [TyphoonTestUtils waitForCondition:^BOOL() {
-        typhoon_asynch_condition(willLoadLater != nil);
+        return willLoadLater != nil;
     }];
 }
 
@@ -39,13 +39,13 @@
 
     NSString *willNeverLoad = nil;
     @try {
-        [TyphoonTestUtils wait:0.1 secondsForCondition:^BOOL() {
-            typhoon_asynch_condition(willNeverLoad != nil);
+        [TyphoonTestUtils wait:0.01 secondsForCondition:^BOOL() {
+            return willNeverLoad != nil;
         } andPerformTests:nil];
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
-        XCTAssertEqualObjects([e description], @"Condition didn't happen before timeout: 0.100000");
+        XCTAssertEqualObjects([e description], @"Condition didn't happen before timeout: 0.010000");
     }
 
 

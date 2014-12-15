@@ -30,13 +30,13 @@
 + (void)wait:(NSTimeInterval)seconds secondsForCondition:(BOOL (^)())condition andPerformTests:(void (^)())assertions
 {
     __block BOOL conditionMet = NO;
-    for (float i = 0; i < seconds * 4; i = i + 0.25) {
+    for (float i = 0; i < seconds * 4; i = i + 0.1f) {
         conditionMet = condition();
         if (conditionMet) {
             break;
         }
         else {
-            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.25]];
+            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
         }
     }
     if (conditionMet) {
