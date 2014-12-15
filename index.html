@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]>
+<!-->
+<html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+
+
+<title>Typhoon - Powerful Dependency Injection for Objective-C &amp; Swift</title>
+<meta name="description" content="Typhoon - A new dependency injection container for Objective-C">
+
+<!-- mobile stuff -->
+<meta name="viewport" content="width=device-width"/>
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes"/>
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-57x57-precomposed.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="shortcut icon" href="favicon.ico"/>
+
+<!-- This script prevents links from opening in Mobile Safari. https://gist.github.com/1042026 -->
+<script>(function (a, b, c) {
+    if (c in b && b[c]) {
+        var d, e = a.location, f = /^(a|html)$/i;
+        a.addEventListener("click", function (a) {
+            d = a.target;
+            while (!f.test(d.nodeName))d = d.parentNode;
+            "href"in d && (d.href.indexOf("http") || ~d.href.indexOf(e.host)) && (a.preventDefault(), e.href = d.href)
+        }, !1)
+    }
+})(document, window.navigator, "standalone")</script>
+
+<!-- Included CSS Files -->
+<link rel="stylesheet" href="style.css?v=1.0.1">
+<link rel="stylesheet" href="stylesheets/portfolio.css">
+<link rel="stylesheet" href="stylesheets/foundation.css">
+<link rel="stylesheet" href="stylesheets/normalize.css">
+<link rel="stylesheet" href="stylesheets/supersized.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="stylesheets/supersized.shutter.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="stylesheets/prettyPhoto.css" type="text/css" media="screen"
+      title="prettyPhoto main stylesheet"/>
+
+<!-- Google Web Fonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet'
+      type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic&subset=latin,cyrillic-ext,greek-ext,greek,latin-ext'
+      rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic,700,700italic&subset=latin,latin-ext'
+      rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic'
+      rel='stylesheet' type='text/css'>
+
+<!-- Included JS Files -->
+<script src="javascripts/modernizr.foundation.js"></script>
+<script src="javascripts/jquery.js"></script>
+<script src="javascripts/custom.js"></script>
+<script src="javascripts/twitter.js"></script>
+<script src="javascripts/raphael.js" type="text/javascript"></script>
+<script src="javascripts/init.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.content-container').css("margin-top", $(window).height());
+
+        $("a[rel^='prettyPhoto']").prettyPhoto();
+
+        var windowsize = $(window).width();
+
+        $(window).resize(function () {
+            var windowsize = $(window).width();
+        });
+
+        if (windowsize > 1024) {
+            //if the window is greater than 1024px wide then load one orbit settings
+            //.parallax(xPosition, speedFactor, outerHeight) options:
+            //xPosition - Horizontal position of the element
+            //inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling, 2 is twice the speed of scrolling
+            //outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport
+            $('.parallax-two').parallax("50%", 0.5);
+            $('.parallax-three').parallax("50%", 0.5);
+            $('.parallax-contributors').parallax("50%", 0.5);
+            $('.parallax-four').parallax("50%", 0.5);
+            $('.parallax-five').parallax("50%", 0.5);
+            $('.parallax-six').parallax("50%", 0.5);
+        }
+
+        //if submit button is clicked
+        $('#submit').click(function () {
+
+            //Get the data from all the fields
+            var name = $('input[name=name]');
+            var email = $('input[name=email]');
+            var phonenumber = $('input[name=phonenumber]');
+            var website = $('input[name=website]');
+            var projectbudget = $('input[name=projectbudget]');
+            var timeframe = $('input[name=timeframe]');
+            var youreinterestedin = $('input[name=youreinterestedin]');
+            var howdidyouhearaboutus = $('input[name=howdidyouhearaboutus]');
+            var comment = $('textarea[name=comment]');
+
+            //Simple validation to make sure user entered something
+            //If error found, add hightlight class to the text field
+            if (name.val() == '') {
+                name.addClass('hightlight');
+                return false;
+            } else name.removeClass('hightlight');
+
+            if (email.val() == '') {
+                email.addClass('hightlight');
+                return false;
+            } else email.removeClass('hightlight');
+
+            if (comment.val() == '') {
+                comment.addClass('hightlight-message');
+                return false;
+            } else comment.removeClass('hightlight-message');
+
+            //organize the data properly
+            var data = 'name=' + name.val() + '&email=' + email.val() + '&phonenumber=' + phonenumber.val() + '&website=' + website.val() + '&projectbudget=' + projectbudget.val() + '&timeframe=' + timeframe.val() + '&youreinterestedin=' + youreinterestedin.val() + '&howdidyouhearaboutus=' + howdidyouhearaboutus.val() + '&comment=' + encodeURIComponent(comment.val());
+
+            //disabled all the text fields
+            $('.text').attr('disabled', 'true');
+
+            //show the loading sign
+            document.getElementById("submit").disabled = true;
+            document.getElementById("submit").value = 'Please Wait..';
+
+            //start the ajax
+            $.ajax({
+                //this is the php file that processes the data and send mail
+                url: "contact-form.php",
+
+                //GET method is used
+                type: "GET",
+
+                //pass the data
+                data: data,
+
+                //Do not cache the page
+                cache: false,
+
+                //success
+                success: function (html) {
+                    //if process.php returned 1/true (send mail success)
+                    if (html == 1) {
+                        //hide the form
+                        $('.contact-form-div').fadeOut('slow');
+
+                        //show the success message
+                        $('.done').fadeIn('slow');
+
+                        //if process.php returned 0/false (send mail failed)
+                    } else alert('Sorry, unexpected error. Please try again later.');
+                }
+            });
+
+            //cancel the submit button default behaviours
+            return false;
+        });
+    })
+</script>
+
+<!-- Hook up the Loader -->
+<script type="text/javascript">
+    $(window).load(function () {
+        $("#loading").fadeOut("1000", function () {
+            // Animation complete
+            $('#loading img').css("display", "none");
+            $('#loading').css("display", "none");
+            $('#loading').css("background", "none");
+            $('#loading').css("width", "0");
+            $('#loading').css("height", "0");
+        });
+    });
+</script>
+
+<style>
+    h3.faq-on {
+        border-radius: 8px 8px 0 0;
+        color: #38361E;
+        margin-bottom: 0;
+        text-decoration: none;
+        background: none repeat scroll 0 0 #FFFFFF;
+        padding: 20px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    span.notetick {
+        background: url("http://www.theresumator.com/images/cms-about-us/note_tick.gif") no-repeat scroll 60px 0 transparent;
+        display: block;
+        height: 40px;
+
+    }
+
+    p.answer {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border-radius: 0 0 8px 8px;
+        margin: 0 !important;
+        padding: 0 20px 20px;
+        display: none;
+    }
+</style>
+<script>
+
+    function showhide(id) {
+        $('#' + id).slideToggle();
+    }
+
+</script>
+</head>
+<body id="homepage">
+
+<!-- Loader -->
+<div id="loading">
+    <img src="images/loader.gif" alt="Website Loader"/>
+</div>
+
+<!-- Slideshow Pattern & Overlay -->
+<div class="slideshow-pattern"></div>
+<div class="slideshow-overlay"></div>
+
+<div class="triangle-top"></div>
+<div class="triangle-bottom"></div>
+
+<div class="header-container">
+
+    <a href="https://github.com/typhoon-framework/Typhoon"><img style="position: absolute; top: 0; right: 0; border: 0;"
+                                                                src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+                                                                alt="Fork me on GitHub"></a>
+
+    <!-- Basic Needs -->
+    <div class="row">
+
+        <nav class="top-bar">
+
+            <ul>
+                <li class="name"><a href="#homepage"><img src="images/logo.png" alt="Typhoon Logo"></a></li>
+            </ul>
+
+            <section class="hide-for-small">
+                <ul class="right">
+                    <li><a href="#homepage">Home</a></li>
+                    <li><a href="#about-us">Description</a></li>
+                    <li><a href="#portfolio">Sample</a></li>
+                    <li><a href="#our-team">The Community</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a></li>
+                </ul>
+            </section>
+
+            <select class="responsive-nav show-for-medium" onchange="moveTo(this.value)" onFocus="moveTo(this.value)"
+                    style="width: 200px; position: absolute; right: 140px">
+                <option value="" selected="">Main Navigation</option>
+                <option value="#homepage">Home</option>
+                <option value="#about-us">Description</option>
+                <option value="#portfolio">Sample</option>
+                <option value="#our-team">The Community</option>
+                <option value="#faq">FAQ</option>
+                <option value="#contact">Contact</option>
+                <option value="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</option>
+            </select>
+        </nav>
+    </div>
+</div>
+
+<div class="homepage-text">
+    <div class="top-icon">
+        <a href="https://github.com/typhoon-framework/Typhoon" target="_blank"><img
+                src="images/homepage-text-top-icon.png" alt="Homepage Top Icon"></a>
+    </div>
+    <div class="top-divider"></div>
+    <h1>Typhoon</h1>
+
+    <div class="bottom-divider"></div>
+    <h2>Dependency injection for Objective-C &amp; Swift</h2>
+
+    <h3>Status? We've just released version 2.0!</h3>
+
+    <div class="bottom-icon">
+        <a href="#parallax-two"><img src="images/homepage-text-bottom-icon.png" alt="Homepage Bottom Icon"></a>
+    </div>
+</div>
+
+<!-- Main Content Starts HERE -->
+<div class="content-container">
+
+
+<!-- Parallax Two - Content -->
+<div class="parallax-two">
+    <div class="quote-pattern"></div>
+    <div class="row">
+        <div class="twelve columns parallax-container">
+            <h1 class="parallax-title">READ MORE ABOUT TYPHOON</h1>
+
+            <div class="parallax-divider">
+                <img src="images/icons/60px/white/appbar.book.open.writing.png" alt="Read More About Us">
+            </div>
+            <h2 class="parallax-subtitle">Get ready!<br>You’re about to be blown away</h2>
+        </div>
+    </div>
+</div>
+
+<!-- About Us Page -->
+<div class="page-container pattern-1" id="about-us">
+
+<div class="row">
+
+<div class="twelve columns page-content">
+    <h1 class="page-title">Description</h1>
+
+    <h2 class="page-subtitle">What is <span>Dependency Injection</span>?</h2>
+</div>
+<img src="images/about-us/1.png" alt="Dependency Injection">
+
+<div style="padding-bottom:20px;">
+    <p class="testimonial-content mobile-four" style="width:50%; text-align:justify;">
+        Many people have trouble getting the hang of dependency injection, at first. And I think part of the
+        problem is that it is actually so simple that we’re inclined to look for something more complicated.
+        “Surely that there has to be more to it?!”, so to say. So, with that in mind, imagine that you’re
+        writing an app that gives weather reports. You need a cloud-service (excuse the pun ;) )</p>
+
+
+    <p class="testimonial-content mobile-four" style="width:50%; text-align:justify;">
+        to provide the data, and at first you go for a free weather report provider, but in future you’d like to
+        integrate a weather service with better accuracy and more features. So, as do all good object-oriented
+        developers, you make a WeatherClient protocol and back it initially with an implementation based on the
+        free, online data provider.</p>
+
+</div>
+
+<div style="margin-bottom:30px;">
+
+    <h3 class="about-us-title" style="font-size:20px; padding-bottom:15px;">Without dependency injection, you
+        might have a View Controller like this:</h3>
+</div>
+
+<div class="eight columns mobile-four hide-for-760" style="display:none;">
+    <div id="diagram" class="" style="display:none;"></div>
+</div>
+
+
+<div style="margin-top:180px;text-align:left; background: #ffffff; overflow:hidden;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre
+        style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">-</span>(<span
+        style="color: #303090; font-weight: bold">id</span>) <span style="color: #0060B0; font-weight: bold">init</span>
+{
+ self <span style="color: #303030">=</span> [super init];
+ <span style="color: #008000; font-weight: bold">if</span> (self)
+ {
+ <span style="color: #808080">//The class using some collaborating class builds its own assistant.</span>
+ <span style="color: #808080">//it might be one of several classes using the weatherClient. </span>
+  _weatherClient <span style="color: #303030">=</span> [GoogleWeatherClientImpl alloc] <span
+            style="color: #907000; font-weight: bold">initWithParameters:</span>xyz];
+ }
+ <span style="color: #008000; font-weight: bold">return</span> self;
+}
+</pre>
+</div>
+
+<div style="padding-top:15px;">
+
+    <p class="testimonial-content mobile-four" style="padding-bottom:15px;">The thing with this approach is, if
+        you wanted to change to another weather client implementation you’d have to go and find all the places
+        in your code that use the old one, and move them over to the new one. Each time, making sure to pass in
+        the correct initialization parameters. A very common approach is to have a centrally configured
+        singleton:</p>
+</div>
+
+<div style="text-align:left; background: #ffffff; overflow:auto;width:auto;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre
+        style="margin: 0; line-height: 125%">_weatherClient <span style="color: #303030">=</span> [GoogleWeatherClient sharedInstance];
+</pre>
+</div>
+
+
+<div>
+
+    <p class="testimonial-content mobile-four" style="width:50%;text-align:justify; padding-top:15px;">With
+        either of the above approaches, in order to test your view controller, you now have to test its
+        collaborating class (the weather client) at the same time, and this can get tricky, especially as your
+        application gets more complex. Imagine testing Class A, depends on Class B, depends on Class C, depends
+        on… Not much fun! Sure, you could patch out the singleton with a mock or a stub, but this requires
+        peeking inside the code to find the dependencies. Besides taking time that could be better spent
+        else-where, this ends up becoming “glass-box” testing as opposed to “black-box” </p>
+
+    <p class="testimonial-content mobile-four"
+       style="width:50%; text-align:justify; padding-top:15px; padding-bottom:25px;">
+        testing. Isn’t it better to be able to test the external interface to a class, without having worry
+        about what’s going on inside? <em>And</em> you have to remember un-patch again at the end of the
+        test-case or risk strange breakages to other tests, where it’s difficult to pin-point what the real
+        problem might be. So with dependency injection, rather than having objects make their own
+        collaborators, we have them supplied to the class instance via an initializer or property setter.</p>
+
+
+    <h3 class="about-us-title" style="font-size:20px; padding-bottom:15px;">And now, it simply becomes:</h3>
+
+</div>
+
+<div style="margin-top:280px;text-align:left; background: #ffffff; overflow:auto;width:auto;color:black;background:white;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre
+        style="margin: 0; line-height: 125%"><span style="color: #008000; font-weight: bold">-</span>(<span
+        style="color: #303090; font-weight: bold">id</span>) <span style="color: #0060B0; font-weight: bold">initWithWeatherClient:</span>(<span
+        style="color: #303090; font-weight: bold">id</span><span style="color: #303030">&lt;</span>WeatherClient<span
+        style="color: #303030">&gt;</span>)<span style="color: #906030">weatherClient</span>
+{
+ self <span style="color: #303030">=</span> [super init];
+ <span style="color: #008000; font-weight: bold">if</span> (self)
+ {
+     _weatherClient <span style="color: #303030">=</span> weatherClient;
+ }
+ <span style="color: #008000; font-weight: bold">return</span> self;
+}
+</pre>
+</div>
+
+
+<h3 class="about-us-title" style="font-size:20px;">Is that all they mean by ‘injected’?</h3>
+
+<div>
+    <p class="testimonial-content mobile-four" style="text-align:justify; padding-top:15px; float:none;">Yes it is.
+        Right
+        now, you might be thinking “Geez! That’s a pretty fancy name for something so plain.” Well, you‘d be
+        right. But let‘s look at what happens when we start to apply this approach: Let's say you identify some
+        hard-wired network configurations in a your
+        <b>GoogleWeatherClient</b>, and correct this by instead passing them in via an
+        initializer method. Now if you want to <b>use</b> this class, as a
+        collaborator in a new class, let's say a <b>ViewController</b>, then your <b>GoogleWeatherClient</b> itself can
+        be either a hard-wired dependency, or injected. To get the benefits of dependency injection again, we repeat the
+        process, pulling up the class and along with its own dependencies. And we keep applying until we have a logical
+        module or 'assembly'.</p>
+
+    <p class="testimonial-content mobile-four" style="text-align:justify; padding-top:15px; float:none;">
+        In this way dependency injection lets your application <b>tell an architectural story</b>. When the key <b>actors</b>
+        are pulled up into an assembly that describes roles and collaborations, then the application’s configuration no
+        longer exhibits fragmentation, duplication or tight-coupling. Having created this <b>script</b> that
+        describes roles and collaborations we realize a number of benefits.
+    </p>
+</div>
+
+
+<h3 class="about-us-title" style="font-size:20px;">Benefits of Dependency Injection</h3>
+
+<div>
+    <ul style="text-align:justify; padding-top:10px;">
+        <li class="testimonial-content mobile-four">We can substitute another actor to
+            fulfill a given role. If you want to change from one implementation of a class to another,
+            you need only change a single declaration.
+        </li>
+        <li class="testimonial-content mobile-four">
+            By removing tight-coupling, we need not understand all of a problem at once, its easy to evolve our
+            app’s design as the requirements evolve.
+        </li>
+        <li class="testimonial-content mobile-four">Classes are easier to test, because we can supply simple
+            mocks and stubs in place of concrete collaborators. Or
+            the real collaborators, but configured to be used in a test scenario.
+        </li>
+        <li class="testimonial-content mobile-four">It promotes separation of concerns and a clear contract
+            between classes. Its easy to see what each class needs in order
+            to do its job.
+        </li>
+        <li class="testimonial-content mobile-four">We can layout an app's architecture using stubs - the simplest
+            possible implementation of a role - so that we can quickly see an end-to-end use-case taking place.
+            Having done this, we can assign to other team members the responsibility of filling out these stubs for
+            real
+            implementations, and they can do so without breaking the app while they work, and without impacting
+            other
+            team members.
+        </li>
+    </ul>
+</div>
+
+<h3 class="about-us-title" style="font-size:20px;">Your Dependency Injection Options</h3>
+
+<div>
+    <p class="testimonial-content mobile-four" style="text-align:justify; padding-top:15px;">If you proceed with
+        the Dependency Injection pattern (assuming you’re not one of the remaining “flat-earthers”, who believe
+        that Objective-C somehow magically alleviates the need for common-sense: “Oh, I don’t do DI, I use
+        swizzling class-clusters!”), then there are basically two options:</p>
+</div>
+
+<div>
+
+    <p class="testimonial-content mobile-four" style="width:50%;text-align:justify; padding-top:15px;">You can
+        do dependency injection without a framework to help you. It is simple after all, and in fact I recommend
+        you do this, at least as an exercise to fully appreciate the pattern. Still, just as you can also write tests
+        without a test framework, or mocks without a mocking library, once an application
+        gets more complex its good to have help if you can get it - to put the pattern on "rails", so
+        to speak (excuse the pun).</p>
+
+    <p class="testimonial-content mobile-four"
+       style="width:50%; text-align:justify; padding-top:15px; padding-bottom:25px;">
+        So, going down the framework route, there’s been quite a lot of action in Objective-C land, over the
+        last three years. In fact, there are now around 15 Dependency Injection frameworks, many following in
+        the footsteps of Google Guice. The authors have done a great job (Objection is especially good).
+        However, I wanted an approach that allows the following:</p>
+
+
+</div>
+
+
+<div class="twelve columns page-section hide-for-760" id="features">
+
+
+    <h1 class="page-title">Design Goals &amp; Features</h1>
+
+</div>
+
+<div class="twelve columns hide-for-760">
+    <div class="section-divider">
+        <img src="images/crown.png" alt="Features">
+    </div>
+</div>
+
+
+<div class="four columns statistics" style="width: 100%; padding-bottom:100px;">
+    <div class="twelve columns by-numbers projects-numbers">
+        <p class="by-numbers-text">Non-invasive. <span>No macros or XML required.</span> Uses a <span>powerful Objective-C approach.</span>
+        </p>
+    </div>
+    <div class="twelve columns by-numbers projects-numbers">
+        <p class="by-numbers-text"><span>No magic strings</span> – supports IDE refactoring, code-completion and
+            compile-time checking.</p>
+    </div>
+    <div class="twelve columns by-numbers projects-numbers">
+        <p class="by-numbers-text">Provides full-modularization and encapsulation of configuration details.
+            <span>Let your architecture tell a story.</span></p>
+    </div>
+    <div class="twelve columns by-numbers projects-numbers">
+        <p class="by-numbers-text"><span>Dependencies declared in any order.</span> (The order that makes sense
+            to humans).</p>
+    </div>
+    <div class="twelve columns by-numbers projects-numbers">
+        <p class="by-numbers-text">Makes it easy to have <span>multiple configurations of the same base-class or protocol.</span>
+        </p>
+    </div>
+    <div class="twelve columns by-numbers projects-numbers">
+        <p class="by-numbers-text">Supports <span>injection of view controllers</span> and
+            <span>storyboard integration.</span>
+        </p>
+    </div>
+    <div class="twelve columns by-numbers projects-numbers">
+        <p class="by-numbers-text">Supports both <span>initializer</span> and property injection, plus
+            life-cycle management.</p>
+    </div>
+    <div class="twelve columns by-numbers projects-numbers">
+        <p class="by-numbers-text"><span>Powerful memory management features</span>. Provides pre-configured
+            objects, without the memory overhead of singletons.</p>
+    </div>
+    <div class="twelve columns by-numbers projects-numbers">
+        <p class="by-numbers-text">Excellent <span>support for circular dependencies.</span></p>
+    </div>
+    <div class="twelve columns by-numbers projects-numbers">
+        <p class="by-numbers-text"><span>Lean.</span> Has a very low footprint, so is appropriate for CPU and
+            memory constrained devices.</p>
+    </div>
+    <div class="twelve columns by-numbers projects-numbers">
+        <p class="by-numbers-text">While being feature-packed, Typhoon <span>weighs-in</span> at just <a
+                href="http://www.typhoonframework.org/docs/latest/coverage/index.html">3000</a> lines of code in total.
+        </p>
+    </div>
+    <div class="twelve columns by-numbers projects-numbers">
+        <p class="by-numbers-text"><span>Battle-tested</span> — used in all kinds of Appstore-featured apps.</p>
+    </div>
+
+
+    <h2 class="page-subtitle"><span><a href="http://modprods.com/">Mod Productions</a></span> and <span><a
+            href="http://www.aco.com.au/">The Australian Chamber Orchestra</a></span> release the
+        Typhoon-powered <span><a href="http://vimeo.com/75451558">ACO VIRTUAL</a></span>, and are awarded <span>AppStore Best New Apps</span>
+    </h2>
+
+</div>
+</div>
+</div>
+
+<!-- Parallax Three - Content -->
+<div class="parallax-three">
+    <div class="quote-pattern"></div>
+    <div class="row">
+        <div class="twelve columns parallax-container">
+            <h1 class="parallax-title">SAMPLE APPLICATION</h1>
+
+            <div class="parallax-divider">
+                <img src="images/icons/60px/white/appbar.camera.png" alt="Read More About Us">
+            </div>
+            <h2 class="parallax-subtitle">Typhoon lets your application <span>tell an architectural story</span>,
+                modularizing configuration that would otherwise be duplicated.</h2>
+        </div>
+    </div>
+</div>
+
+<!-- Sample app Page -->
+<div class="page-container pattern-2" id="portfolio">
+
+    <div class="row">
+
+        <div class="twelve columns page-content">
+            <h1 class="page-title">Pocket Forecast</h1>
+
+            <h2 class="page-subtitle" style="padding-bottom:50px;">Take a look at the code in this <span><a
+                    href="https://github.com/typhoon-framework/Typhoon-example">example app</a></span>.</h2>
+        </div>
+
+
+        <div class="twelve columns portfolio">
+            <ul class="ourHolder">
+                <li class="four columns item ">
+                    <div class="portfolio-item">
+                        <div class="portfolio-cat-image">
+                            <img src="images/icons/40px/white/96.png" alt="Portfolio Category Image">
+                        </div>
+                        <div class="portfolio-hover-details hide-for-small">
+                            <div class="open-portfolio">
+                                <a href="images/portfolio/1.png" class="open-portfolio-large" rel="prettyPhoto"></a>
+
+                            </div>
+                        </div>
+                        <a href="images/portfolio/1.png" class="photo-link" rel="prettyPhoto"><img
+                                src="images/portfolio/1.png" alt="Portfolio Item" class="wide-image"></a>
+
+                        <div class="portfolio-details hide-for-small">
+                            <h4 class="portfolio-title"><a href="#" data-reveal-id="single-project-photo">Home
+                                Screen</a></h4>
+
+                            <div class="portfolio-divider"></div>
+                            <p class="portfolio-categories">Click to enlarge</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="four columns item ">
+                    <div class="portfolio-item">
+                        <div class="portfolio-cat-image">
+                            <img src="images/icons/40px/white/96.png" alt="Portfolio Category Image">
+                        </div>
+                        <div class="portfolio-hover-details hide-for-small">
+                            <div class="open-portfolio">
+                                <a href="images/portfolio/2.png" class="open-portfolio-large" rel="prettyPhoto"></a>
+
+                            </div>
+                        </div>
+                        <a href="images/portfolio/large/2.png" class="photo-link" rel="prettyPhoto"><img
+                                src="images/portfolio/2.png" alt="Portfolio Item" class="wide-image"></a>
+
+                        <div class="portfolio-details hide-for-small">
+                            <h4 class="portfolio-title"><a href="#" data-reveal-id="single-project-video">Add City</a>
+                            </h4>
+
+                            <div class="portfolio-divider"></div>
+                            <p class="portfolio-categories">Click to enlarge</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="four columns item ">
+                    <div class="portfolio-item">
+                        <div class="portfolio-cat-image">
+                            <img src="images/icons/40px/white/96.png" alt="Portfolio Category Image">
+                        </div>
+                        <div class="portfolio-hover-details hide-for-small">
+                            <div class="open-portfolio">
+                                <a href="images/portfolio/3.png" class="open-portfolio-large" rel="prettyPhoto"></a>
+
+                            </div>
+                        </div>
+                        <a href="images/portfolio/large/3.png" class="photo-link" rel="prettyPhoto"><img
+                                src="images/portfolio/3.png" alt="Portfolio Item" class="wide-image"></a>
+
+                        <div class="portfolio-details hide-for-small">
+                            <h4 class="portfolio-title"><a href="#" data-reveal-id="single-project-photo">Pocket
+                                Forecast</a></h4>
+
+                            <div class="portfolio-divider"></div>
+                            <p class="portfolio-categories">Click to enlarge</p>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+
+        <div>
+            <h3 class="about-us-title" style="font-size:20px;">FEATURES</h3>
+        </div>
+
+        <div class="four columns statistics" style="width:100%; padding-bottom:100px;">
+            <div class="twelve columns by-numbers projects-numbers ">
+                <p class="by-numbers-text"><span>Returns</span> weather reports from a remote cloud service.</p>
+            </div>
+            <div class="twelve columns by-numbers projects-numbers ">
+                <p class="by-numbers-text"><span>Caches</span> weather reports locally, for later off-line use.</p>
+            </div>
+            <div class="twelve columns by-numbers projects-numbers ">
+                <p class="by-numbers-text"><span>Stores</span> (creates, reads, updates deletes) the cities that the
+                    user is interested in receiving reports for.</p>
+            </div>
+            <div class="twelve columns by-numbers projects-numbers ">
+                <p class="by-numbers-text"><span>Can use</span> metric or imperial units.</p>
+            </div>
+
+            <div>
+                <h3 class="about-us-title" style="font-size:20px;">Running the sample</h3>
+            </div>
+
+            <div class="twelve columns by-numbers projects-numbers ">
+                <p class="by-numbers-text">Clone <a href="https://github.com/typhoon-framework/Typhoon-example">this
+                    repository</a>, open the Xcode project in your favorite IDE, and run it. It’ll say you need an API
+                    key.</p>
+            </div>
+            <div class="twelve columns by-numbers projects-numbers ">
+                <p class="by-numbers-text">Get an API key from <a href="http://free.worldweatheronline.com">WorldWeatherOnline</a>
+                </p>
+            </div>
+            <div class="twelve columns by-numbers projects-numbers ">
+                <p class="by-numbers-text">Using your API key, set the <a
+                        href="https://github.com/typhoon-framework/Typhoon-example/blob/master/PocketForecast/Assembly/Configuration.properties">application
+                    configuration.</a></p>
+            </div>
+            <div class="twelve columns by-numbers projects-numbers ">
+                <p class="by-numbers-text">Run the App in the simulator or on your device and proceed to <a
+                        href="https://github.com/typhoon-framework/Typhoon-example#exercises">the exercises here</a>.
+                </p>
+            </div>
+            <div class="twelve columns by-numbers projects-numbers ">
+                <p class="by-numbers-text">Start using <span>Typhoon!</span> Check out the <a
+                        href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">User
+                    Guide</a>.</p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Placing the contributors here. -->
+<!-- Parallax One - Content -->
+
+<div class="parallax-contributors">
+    <div class="quote-pattern"></div>
+    <div class="row">
+        <div class="twelve columns parallax-container">
+            <h1 class="parallax-title">WHO IS BEHIND IT?</h1>
+
+            <div class="parallax-divider">
+                <img src="images/icons/60px/white/appbar.people.multiple.png" alt="Read More About Us">
+            </div>
+            <h2 class="parallax-subtitle">“My passion is to present complex requirements in a way that is simple and
+                intuitive to the user.” — Jasper Blues</h2>
+        </div>
+    </div>
+</div>
+
+<!-- Our Team Page -->
+<div class="page-container pattern-2" id="our-team" style="padding-bottom:100px;">
+
+    <div class="row">
+
+        <div class="twelve columns page-content">
+            <h1 class="page-title">Meet The Contributors</h1>
+
+            <h2 class="page-subtitle"><span>Typhoon</span> — The Dependency Injection Framework for
+                <span>Objective-C</span> and <span>Cocoa</span></h2>
+        </div>
+
+        <div class="two columns offset-by-one padding-four-columns team-member mobile-four">
+            <img src="images/team/team-1.png" alt="Our Team">
+
+            <h3 class="our-team-title">Jasper<br>Blues</h3>
+
+            <h3 class="our-team-subtitle">Founder / Proj. Lead</h3>
+
+            <div class="our-team-divider"></div>
+            <p class="our-team-text">Engineer. Artist. I enjoy the creative utilization of technology to achieve
+                solutions in business.</p>
+
+            <div class="team-hover">
+                <div class="team-social-media">
+                    <a href="http://ph.linkedin.com/pub/jasper-blues/8/163/778" class="team-linkedin"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="two columns padding-four-columns team-member mobile-four">
+            <img src="images/team/team-5.png" alt="Our Team">
+
+            <h3 class="our-team-title">Aleksey<br>Garbarev</h3>
+
+            <h3 class="our-team-subtitle">Principal Developer</h3>
+
+            <div class="our-team-divider"></div>
+            <p class="our-team-text">Perfectionist. I like challenging performance problems —
+                optimising code until it achieves the best possible speed.</p>
+
+            <div class="team-hover">
+                <div class="team-social-media">
+                    <a href="http://ru.linkedin.com/pub/aleksey-garbarev/4a/25/291" class="team-linkedin"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="two columns padding-four-columns team-member mobile-four">
+            <img src="images/team/team-4.png" alt="Our Team">
+
+            <h3 class="our-team-title">Robert<br>Gilliam</h3>
+
+            <h3 class="our-team-subtitle">Developer</h3>
+
+            <div class="our-team-divider"></div>
+            <p class="our-team-text">I'm passionate about software craftsmanship,
+                automated testing and the design of dependable systems.</p>
+
+            <div class="team-hover">
+                <div class="team-social-media">
+                    <a href="http://twitter.com/rhgills" class="team-twitter"></a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="two columns padding-four-columns team-member mobile-four">
+            <img src="images/team/team-2.png" alt="Our Team">
+
+            <h3 class="our-team-title">Daniel<br>Rodríguez</h3>
+
+            <h3 class="our-team-subtitle">Developer</h3>
+
+            <div class="our-team-divider"></div>
+            <p class="our-team-text">I spend most of my time between Cocoa and Ruby, but I always love
+                learning new things.</p>
+
+            <div class="team-hover">
+                <div class="team-social-media">
+                    <a href="https://twitter.com/yonosoytu" class="team-twitter"></a>
+                    <a href="http://www.linkedin.com/in/drodrigueztroitino/en" class="team-linkedin"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="two columns padding-four-columns team-member mobile-four">
+            <img src="images/team/team-3.png" alt="Our Team">
+
+            <h3 class="our-team-title">Erik<br>Sundin</h3>
+
+            <h3 class="our-team-subtitle">Developer</h3>
+
+            <div class="our-team-divider"></div>
+            <p class="our-team-text">I feel great satisfaction in building structured and elegant software. You
+                can't build a great app on a weak foundation.</p>
+
+            <div class="team-hover">
+                <div class="team-social-media">
+                    <a href="http://www.linkedin.com/pub/erik-sundin/a/527/4b4/" class="team-linkedin"></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Parallax Four - Content -->
+<div class="parallax-four">
+    <div class="quote-pattern"></div>
+    <div class="row">
+        <div class="twelve columns parallax-container">
+            <h1 class="parallax-title">It’s Q&amp;A Time!</h1>
+
+            <div class="parallax-divider">
+                <img src="images/icons/60px/white/appbar.cogs.png" alt="Read More About Us">
+            </div>
+            <h2 class="parallax-subtitle">Got any questions?</h2>
+        </div>
+    </div>
+</div>
+
+<!-- FAQ Page -->
+<div class="page-container pattern-1" id="faq">
+
+<div class="row">
+    <div class="twelve columns page-content" style="padding-bottom:50px;">
+        <h1 class="page-title">Frequently Asked Questions</h1>
+
+        <h2 class="page-subtitle">Something’s not clear? <span>Check Below!</span><br>We tried to <span>answer</span>
+            any question you might have.</h2>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="twelve columns page-content">
+
+        <h3 class="faq-on" onclick="showhide('faq-kadyan');">Q. Madrid, Manila, Omsk, Phnom Penh, San Francisco. . .
+            What do these cities have in common?</h3>
+
+        <p id="faq-kadyan" class="answer">
+            <strong>A.</strong> We get this one all the time. <br/><br/>
+
+            These are the cities where the Typhoon core team members live. It goes to show: you never know where you’ll
+            find a ninja coder lurking these days. They’re also the default cities in <a
+                href="https://github.com/typhoon-framework/Typhoon-example">Pocket Forecast</a> - the Typhoon sample
+            application. Incidentally, as I’m writing this its +41° celsius in Phnom Penh and -30° in Omsk!
+        </p>
+
+        <span class="notetick"></span>
+
+        <h3 class="faq-on" onclick="showhide('faq-zero');">Q. I’ve started using Typhoon, now I’ve got a technical
+            question. Where can I get help?</h3>
+
+        <p id="faq-zero" class="answer">
+            <strong>A.</strong> There’s a Typhoon tag on <a
+                href="http://stackoverflow.com/questions/tagged/typhoon?sort=newest&pageSize=15">StackOverflow</a>,
+            which is monitored by Typhoon users and contributors. <br/><br/>
+
+            Alternatively if you’d like professional consultation, please get in touch. While Typhoon is open-source,
+            free and volunteer-based we <em>do</em> maintain a network of skilled consultants, so chances are that we
+            can put you in touch with an expert or company who’d be willing to help you out on a professional basis.
+            For example, Typhoon’s original founder, <a href="ph.linkedin.com/pub/jasper-blues/8/163/778/">Jasper
+            Blues</a>, currently works on a freelance basis. And if you need a larger team, perhaps try
+            <a href="http://aldigit.com/contact/">Al Digit</a>.
+        </p>
+        <span class="notetick"></span>
+
+        <h3 class="faq-on" onclick="showhide('faq-one');">Q. Compatibility</h3>
+
+        <p id="faq-one" class="answer">
+            <strong>A.</strong> Typhoon can be used with OS X and iOS. It has not been tested with GnuStep. It can be
+            used with or without ARC, but not with garbage collection.<br/><br/>
+
+            Internally, Typhoon relies on some weak references which where introduced in iOS 5.0 (iPhone3gs and up, iPad
+            1st generation and up) and OSX 10.7 (most Macs built since 2009).
+        </p>
+        <span class="notetick"></span>
+
+
+        <h3 class="faq-on" onclick="showhide('faq-two');">Q. Isn’t Objective-C a dynamic language?</h3>
+
+        <p id="faq-two" class="answer">
+            <strong>A.</strong> Yes, and I love categories, method swizzling, duck-typing, class clusters, associative
+            references in categories, and all that cool stuff. None of these are replacements for DI.<br/><br/>
+
+        </p>
+        <span class="notetick"></span>
+
+        <h3 class="faq-on" onclick="showhide('faq-three');">Q. Doesn’t Dependency Injection Just Shift Coupling
+            Elsewhere?</h3>
+
+        <p id="faq-three" class="answer">
+            <strong>A.</strong> If by elsewhere you mean from everywhere to one place, and (in the case of statically
+            compiled languages) from compile-time to runtime … then yes! That is the <a
+                href="http://en.wikipedia.org/wiki/Dependency_injection" target="_blank">purpose of dependency
+            injection</a>.
+        </p>
+        <span class="notetick"></span>
+
+
+        <h3 class="faq-on" onclick="showhide('faq-four');" id="25-dollar-difference">Q. But I don't need DI, right? I
+            can just pass arguments to init</h3>
+
+        <p id="faq-four" class="answer">
+            <strong>A.</strong> Well this <b>is</b> how you start. A good first move. But remember that systems are
+            composed of collaborating objects, each with a given responsibility. So let's say you identify some
+            hard-wired dependencies in Class A, and correct this by instead passing them in via an initializer
+            (preferable) or or perhaps property setters or methods. Now if you want to <b>use</b> this class, as a
+            collaborator in a new class, then <b>it</b> can be either a hard-wired dependency, or injected.
+            <br/></br/>
+            To get the benefits of dependency injection again, we repeat the process, pulling up the class and along
+            with its own dependencies. And we keep applying until we have a logical module or 'assembly'.
+            Once we have this module it tells an 'architectural story' that explains the key characters in the system.
+            If we want to replace the component performing, eg the UserManager role for another we can do so by
+            modifying this script. Other benefits? Good cohesion and maintainability; simplifies unit and integration
+            testing.
+            <br/>
+
+        </p>
+        <span class="notetick"></span>
+
+        <h3 class="faq-on" onclick="showhide('faq-six');">Q. Does Typhoon work well on resource-constrained
+            devices?</h3>
+
+        <p id="faq-six" class="answer">
+            <strong>A.</strong> Yes! At start-up Typhoon consumes about the same resources as parsing a JSON response
+            from a network request. Also, Because Typhoon allows the use of prototype-scoped components instead of
+            singletons, components that aren’t required can be deallocated when they’re not being used. <br/><br/>
+            In fact, the award-winning ACO Virtual’s controller app was deployed on iPad 1s, because these represented
+            very good value for money at the time hardware was being purchased. We received a lot of compliments about
+            this app’s stability.
+
+        </p>
+
+        <span class="notetick"></span>
+
+        <h3 class="faq-on" onclick="showhide('faq-seven');">Q. Can Typhoon inject view controllers?</h3>
+
+        <p id="faq-seven" class="answer">
+            <strong>A.</strong> Injecting. Others might consider it banal and somewhat of a drag, but Typhoon actually
+            gets-off on it. Typhoon lives to inject. Once while travelling through a rough-part-of-town in a
+            foreign city, Typhoon and I happened upon a psychopath-gangster-singleton from the 80s. This thing was <em>seriously</em>
+            intimidating and widely reported in the press as being ‘uninjectable’. Well Typhoon <em>injected the shit
+            out of it</em> without even breaking a sweat. <br/><br/>
+
+            View controllers? This is child’s play for Typhoon. Initializers and properties, xibs or no xibs and with or
+            without Storyboards. You can also use it to build complex views, if you like. Take a look
+            at the <a href="https://github.com/typhoon-framework/Typhoon-example" target="_blank">sample app</a>.
+        </p>
+
+        <span class="notetick"></span>
+
+        <h3 class="faq-on" onclick="showhide('faq-eight');">Q. What other customizations have been done for applying DI
+            in a mobile or desktop environment?</h3>
+
+        <p id="faq-eight" class="answer">
+            <strong>A.</strong> Quite a few — we’ve worked hard on this. One example is Typhoon's
+            <a href="http://www.typhoonframework.org/docs/latest/api/group___definition.html#ga6e7c49074062029ada1d93e0feef6c4c">
+                memory management</a></li>. Another is transitioning from one use-case’s object-graph using <a
+                href="https://github.com/typhoon-framework/Typhoon/wiki/Assembling%20Components%20with%20Blocks#injection-with-run-time-arguments">runtime
+            arguments</a>.
+        </p>
+
+
+        <span class="notetick"></span>
+
+        <h3 class="faq-on" onclick="showhide('faq-nine');">Q. What’s with the name Typhoon?</h3>
+
+        <p id="faq-nine" class="answer">
+            <strong>A.</strong> Over the 2012-13 new year, I had a family holiday booked at one of our lovely <a
+                href="http://bit.ly/XN7u6J" target="_blank">beaches</a>… but it turns out there was a late-in-season
+            Typhoon. So I stayed home and wrote this instead… Also it was inspired by the Spring Framework.
+            In temperate climates we have Spring, Summer, Autumn &amp; Winter. But here in the Philippines we have
+            hot-season, sizzling-hot-season and Typhoon-season ;).
+            <br/><br/><strong>Update:</strong> Since then we have had the incredibly destructive super-typhoon Haiyan,
+            which has been very sad. Our sincere condolensces to all those affected.
+        </p>
+
+
+        <span class="notetick"></span>
+
+    </div>
+</div>
+
+
+<!-- Parallax Five - Content -->
+<div class="parallax-six">
+    <div class="quote-pattern"></div>
+    <div class="row">
+        <div class="twelve columns parallax-container">
+            <h1 class="parallax-title">CONTACT US TODAY</h1>
+
+            <div class="parallax-divider">
+                <img src="images/icons/60px/white/appbar.email.png" alt="Read More About Us">
+            </div>
+            <h2 class="parallax-subtitle">Help build this community<br>Get in touch with me below!</h2>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Page -->
+<div class="page-container pattern-1" id="contact">
+
+    <div class="row">
+        <div class="twelve columns page-content">
+            <h1 class="page-title">Get In Touch</h1>
+
+            <h2 class="page-subtitle"><span>Feature Requests</span> and <span>Contributions</span> are very welcome!
+            </h2>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="twelve columns contact">
+            <div id="contact-slider" style="padding-bottom: 150px;">
+
+                <!-- Contact Form -->
+                <div class="contact-form" data-thumb="images/contact-form.png">
+                    <div style="list-style: none outside none; text-align: center; border: 1px solid rgb(204, 204, 204); width: 200px; margin: 0px auto 20px;">
+                        <img src="images/contact-form.png" border="0"/>
+                    </div>
+                    <div class="done"><b style="color:#e44d26;">THANK YOU!</b><br> We have received your message.</div>
+
+                    <form method="post" action="contact-form.php">
+                        <div class="twelve columns contact-form-div">
+                            <div class="eight columns mobile-four-760">
+                                <div class="six columns first-column -670">
+                                    <div class="row collapse">
+                                        <div class="two mobile-one columns">
+                                            <span class="prefix"><img src="images/icons/40px/1.png" alt="Contact Name"></span>
+                                        </div>
+                                        <div class="ten mobile-three columns">
+                                            <input type="text" placeholder="Name *" name="name" value=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="six columns middle-column -670">
+                                    <div class="row collapse">
+                                        <div class="two mobile-one columns">
+                                            <span class="prefix"><img src="images/icons/40px/2.png" alt="Contact Email"></span>
+                                        </div>
+                                        <div class="ten mobile-three columns">
+                                            <input type="text" placeholder="Email *" name="email" value=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="six columns first-column -670">
+                                    <div class="row collapse">
+                                        <div class="two mobile-one columns">
+                                            <span class="prefix"><img src="images/icons/40px/3.png" alt="Phone Number"></span>
+                                        </div>
+                                        <div class="ten mobile-three columns">
+                                            <input type="text" placeholder="Phone Number" name="phonenumber" value=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="six columns middle-column -670">
+                                    <div class="row collapse">
+                                        <div class="two mobile-one columns">
+                                            <span class="prefix"><img src="images/icons/40px/4.png"
+                                                                      alt="Website"></span>
+                                        </div>
+                                        <div class="ten mobile-three columns">
+                                            <input type="text" placeholder="Website / Link" name="website" value=""/>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="six columns first-column -670">
+                                    <div class="row collapse">
+                                        <div class="two mobile-one columns">
+                                            <span class="prefix"><img src="images/icons/40px/7.png"
+                                                                      alt="You're interested in?"></span>
+                                        </div>
+                                        <div class="ten mobile-three columns">
+                                            <input type="text" placeholder="You're interested in?"
+                                                   name="youreinterestedin" value=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="six columns middle-column -670">
+                                    <div class="row collapse">
+                                        <div class="two mobile-one columns">
+                                            <span class="prefix"><img src="images/icons/40px/8.png"
+                                                                      alt="How did you hear about us?"></span>
+                                        </div>
+                                        <div class="ten mobile-three columns">
+                                            <input type="text" placeholder="How did you hear about us?"
+                                                   name="howdidyouhearaboutus" id="subject" value=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="four columns last-column mobile-four-760">
+                                <textarea placeholder="Message *" name="comment"></textarea>
+                            </div>
+                            <div class="twelve columns submit-760">
+                                <input class="button radius secondary submit-wide" value="Send Message" id="submit"
+                                       type="submit" style="margin-bottom:250px;">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</div>
+<div class="footer-container">
+    <div class="row">
+        <div class="four columns first-column hide-for-small">
+            <p class="footer-left">ALL RIGHTS RESERVED 2014</p>
+        </div>
+        <div class="four columns middle-column back-to-top hide-for-small">
+            <a href="#homepage"><img src="images/back-to-top.png" alt="Go Back To Top"></a>
+        </div>
+        <div class="four columns last-column mobile-four">
+            <p class="footer-right"><a href="#" target="_blank">TYPHOON</a></p>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- Included JS Files (Uncompressed) -->
+<!--
+<script src="javascripts/jquery.js"></script>
+<script src="javascripts/jquery.foundation.mediaQueryToggle.js"></script>
+<script src="javascripts/jquery.foundation.forms.js"></script>
+<script src="javascripts/jquery.foundation.navigation.js"></script>
+<script src="javascripts/jquery.foundation.buttons.js"></script>
+<script src="javascripts/jquery.foundation.accordion.js"></script>
+<script src="javascripts/jquery.placeholder.js"></script>
+<script src="javascripts/jquery.foundation.alerts.js"></script>
+<script src="javascripts/jquery.foundation.topbar.js"></script>
+<script src="javascripts/jquery.foundation.joyride.js"></script>
+<script src="javascripts/jquery.foundation.clearing.js"></script>
+<script src="javascripts/jquery.foundation.magellan.js"></script>
+-->
+
+<!-- Included JS Files (Compressed) -->
+<script src="javascripts/foundation.min.js"></script>
+
+<!-- Parallax JS File -->
+<script language="JavaScript">
+    if (screen && screen.width >= 1024) {
+        document.write('<script src="javascripts/jquery.parallax-1.1.3.js" type="text/javascript" ><\/script>');
+    }
+
+</script>
+
+
+<!-- prettyPhoto JS File -->
+<script src="javascripts/jquery.prettyPhoto.js" type="text/javascript"></script>
+
+<!-- Portfolio Filter JS FIles -->
+<script type="text/javascript" src="javascripts/jquery.easing.min.js"></script>
+<script type="text/javascript" src="javascripts/portfolio.js"></script>
+<script type="text/javascript" src="javascripts/jquery.quicksand.js"></script>
+<script type="text/javascript" src="javascripts/jquery-css-transform.js"></script>
+
+<!-- Supersized JS Files -->
+<script type="text/javascript" src="javascripts/supersized.3.2.7.min.js"></script>
+<script type="text/javascript" src="javascripts/supersized.shutter.min.js"></script>
+
+<script type="text/javascript">
+    function initSlideShow() {
+        jQuery(function ($) {
+            $.supersized({
+                // Functionality
+                slideshow: 1,			// Slideshow on/off
+                autoplay: 1,			// Slideshow starts playing automatically
+                start_slide: 1,			// Start slide (0 is random)
+                stop_loop: 0,			// Pauses slideshow on last slide
+                random: 0,			// Randomize slide order (Ignores start slide)
+                slide_interval: 3000,		// Length between transitions
+                transition: 1, 			// 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
+                transition_speed: 1500,		// Speed of transition
+                new_window: 1,			// Image links open in new window/tab
+                pause_hover: 0,			// Pause slideshow on hover
+                keyboard_nav: 1,			// Keyboard navigation on/off
+                performance: 1,			// 0-Normal, 1-Hybrid speed/quality, 2-Optimizes image quality, 3-Optimizes transition speed // (Only works for Firefox/IE, not Webkit)
+                image_protect: 1,			// Disables image dragging and right click with Javascript
+                // Size & Position
+                min_width: 0,			// Min width allowed (in pixels)
+                min_height: 0,			// Min height allowed (in pixels)
+                vertical_center: 1,			// Vertically center background
+                horizontal_center: 1,			// Horizontally center background
+                fit_always: 0,			// Image will never exceed browser width or height (Ignores min. dimensions)
+                fit_portrait: 0,			// Portrait images will not exceed browser height
+                fit_landscape: 0,			// Landscape images will not exceed browser width
+                // Components
+                slide_links: 'blank',	// Individual links for each slide (Options: false, 'num', 'name', 'blank')
+                thumb_links: 1,			// Individual thumb links for each slide
+                thumbnail_navigation: 0,			// Thumbnail navigation
+                slides: [			// Slideshow Images
+                    {image: 'images/homepage-slideshow/1.jpg', title: 'Typhoon - A new dependency injection container for Objective-C'},
+                    {image: 'images/homepage-slideshow/2.jpg', title: 'Typhoon - A new dependency injection container for Objective-C'}
+
+                ],
+
+                // Theme Options
+                progress_bar: 0,			// Timer for each slide
+                mouse_scrub: 0
+
+            });
+        });
+    }
+
+    if (screen && screen.width >= 1024) {
+        initSlideShow();
+    }
+
+
+</script>
+
+<!-- Initialize JS Plugins -->
+<script src="javascripts/app.js"></script>
+<script src="javascripts/jquery.foundation.tooltips.js"></script>
+<script src="javascripts/jquery.foundation.reveal.js"></script>
+<script src="javascripts/jquery.foundation.tabs.js"></script>
+
+<!-- Initialize Orbit -->
+<script src="javascripts/jquery.foundation.orbit.js"></script>
+<script type='text/javascript'>
+    $(window).load(function () {
+        var windowsize = $(window).width();
+
+        $(window).resize(function () {
+            var windowsize = $(window).width();
+        });
+
+        if (windowsize > 1024) {
+            //if the window is greater than 1024px wide then load one orbit settings
+            $('#contact-slider').orbit({
+                fluid: '16x5',
+                timer: false,
+                directionalNav: false,
+                bullets: true,
+                bulletThumbs: true,
+                bulletThumbLocation: ''
+            });
+            $('#news-slider').orbit({
+                fluid: '16x12',
+                timer: false,
+                directionalNav: false,
+                bullets: true,
+                bulletThumbs: true,
+                bulletThumbLocation: ''
+            });
+        }
+        else {
+            if (windowsize > 765) {
+                $('#contact-slider').orbit({
+                    fluid: '16x6',
+                    timer: false,
+                    directionalNav: false,
+                    bullets: true,
+                    bulletThumbs: true,
+                    bulletThumbLocation: ''
+                });
+                $('#news-slider').orbit({
+                    fluid: '16x23',
+                    timer: false,
+                    directionalNav: false,
+                    bullets: true,
+                    bulletThumbs: true,
+                    bulletThumbLocation: ''
+                });
+            }
+        }
+    });
+</script>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function () {
+        $("a[rel^='prettyPhoto']").prettyPhoto();
+    });
+</script>
+
+<!-- Initialize FitVids Script -->
+<script src="javascripts/jquery.fitvids.js"></script>
+<script>
+    $(".single-project-image-video").fitVids();
+</script>
+
+</body>
+</html>

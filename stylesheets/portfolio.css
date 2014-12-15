@@ -1,0 +1,73 @@
+/*- FILTER OPTIONS -*/
+ul.filterOptions {
+	width: 100%;
+	height: 50px;
+	margin: 0;
+	overflow: hidden;
+}
+
+ul.filterOptions li {
+	width:196px;
+	height: 50px;
+	background:#f4f4f4;
+	border:1px solid #bcbec0;
+	margin-right: 0px;
+	display: inline-block;
+	float: left;
+	text-align:center;
+}
+
+ul.filterOptions li:nth-child(n+2) {
+	border-left:none;
+}
+
+ul.filterOptions li a {
+    display: table;
+	width:auto;
+	padding:0;
+	margin:0 auto;
+	text-align:center;
+	font-family: 'PT Sans', sans-serif;
+	color: #808285;
+	font-size:18px;
+	font-weight: 700;
+	text-decoration: none;
+	text-transform:uppercase;
+	position:relative;
+	left:-5px;
+}
+
+ul.filterOptions li a span {
+	text-align:center;
+	font-family: 'PT Sans', sans-serif;
+	color: #808285;
+	font-size:18px;
+	font-weight: 700;
+	padding:11px 0 9px 0;
+	text-decoration: none;
+	text-transform:uppercase;
+	float:left;
+}
+
+ul.filterOptions li a img {
+	padding:5px 0 5px 0;
+	text-align:center;
+	float:left;
+}
+
+/*- OUR DATA HOLDER -*/
+ul.ourHolder {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+}
+
+ul.ourHolder li.item {
+	list-style:none;
+}
+
+ul.ourHolder li.item h3 {
+	margin-top: 10px;
+	font-size: 16px;
+	line-height: 20px;
+}
