@@ -1,10 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  NSMethodSignature+TCFUnwrapValues.m
-//  A-Typhoon
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Typhoon Framework Contributors
+//  All Rights Reserved.
 //
-//  Created by Aleksey Garbarev on 23.03.14.
-//  Copyright (c) 2014 Jasper Blues. All rights reserved.
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
 //
+////////////////////////////////////////////////////////////////////////////////
+
 
 #import "NSMethodSignature+TCFUnwrapValues.h"
 #import "TyphoonUtils.h"

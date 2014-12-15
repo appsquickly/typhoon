@@ -1,6 +1,13 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-// Created by Aleksey Garbarev on 23.05.14.
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Typhoon Framework Contributors
+//  All Rights Reserved.
 //
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
+//
+////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonDefinition+Tests.h"
 #import "TyphoonDefinition+InstanceBuilder.h"

@@ -1,14 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-// Created by Aleksey Garbarev on 22.05.14.
-// Copyright (c) 2014 Jasper Blues. All rights reserved.
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Typhoon Framework Contributors
+//  All Rights Reserved.
 //
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
+//
+////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonDefinition+Option.h"
-#import "TyphoonOptionMatcher.h"
-#import "TyphoonOptionMatcher+Internal.h"
-#import "TyphoonComponentFactory.h"
-#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
-#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonInjections.h"
 #import "TyphoonInjection.h"
 
