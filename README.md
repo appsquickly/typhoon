@@ -1,5 +1,5 @@
 # Typhoon! (www.typhoonframework.org) 
-![Build Status](http://www.typhoonframework.org/docs/latest/build-status/build-status.png?q=zz)
+<a href="http://appsquick.broke-it.net/browse/TPN-TC/latest">![Build Status](http://www.typhoonframework.org/docs/latest/build-status/build-status.png?q=zz)</a>
 
 Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-featured and super-easy to use. 
 
