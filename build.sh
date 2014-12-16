@@ -60,6 +60,8 @@ mv ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
 
 groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/OSX -r${requiredCoverage}
 echo '--------------------------------------------------------------------------------'
+echo '   💉  Typhoon is ready to inject.'
+echo '--------------------------------------------------------------------------------'
 
 
 #Stamp build passing
