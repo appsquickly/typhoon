@@ -1,14 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-//  Copyright 2014 ibipit
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Typhoon Framework Contributors
 //  All Rights Reserved.
 //
-//  NOTICE: This software is the proprietary information of ibipit
-//  Use is subject to license terms.
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
-
-
 
 #import "TyphoonAbstractDetachableComponentFactoryPostProcessor.h"
 #import "TyphoonComponentFactory.h"
