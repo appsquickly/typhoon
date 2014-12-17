@@ -69,9 +69,8 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         TyphoonInjectionContext* context = [[TyphoonInjectionContext alloc]
             initWithFactory:self args:args destinationInstanceClass:instanceClass raiseExceptionIfCircular:YES];
 
-        [(definition.initializer) createInvocationOnClass:instanceClass withContext:context completion:^(NSInvocation* invocation) {
-            BOOL isClassMethod = [(definition.initializer) isClassMethodOnClass:instanceClass];
-            if (isClass && !isClassMethod)
+        [definition.initializer createInvocationOnClass:instanceClass withContext:context completion:^(NSInvocation* invocation) {
+            if (isClass && ![definition.initializer isClassMethodOnClass:instanceClass])
             {
                 instance = [invocation typhoon_resultOfInvokingOnAllocationForClass:instanceClass];
             }
