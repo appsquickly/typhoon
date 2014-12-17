@@ -46,16 +46,18 @@
 
 - (void)push:(TyphoonStackElement *)stackItem
 {
+#if DEBUG
     if (![stackItem isKindOfClass:[TyphoonStackElement class]]) {
         [NSException raise:NSInvalidArgumentException format:@"Not a TyphoonStackItem: %@", stackItem];
     }
+#endif
     [_storage addObject:stackItem];
 }
 
 - (TyphoonStackElement *)pop
 {
     id element = [_storage lastObject];
-    if ([self isEmpty] == NO) {
+    if (![self isEmpty]) {
         [_storage removeLastObject];
     }
     return element;
