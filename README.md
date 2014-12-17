@@ -27,8 +27,6 @@ Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods
 
 # Feedback
 
-Interested in contributing? <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">Contribution Guide.</a>
-
 | I need help because | Action |
 | :---------- | :------ | 
 I'm not sure how to do [xyz]  | Typhoon users and contributors monitor the Typhoon tag on <a href="http://stackoverflow.com/questions/tagged/typhoon?sort=newest&pageSize=15">Stack Overflow</a>. Chances are your question can be answered there. 
@@ -36,6 +34,11 @@ Bugs and new feature requests | Please raise a <a href="https://github.com/typho
 I'll take all the help I can get | While Typhoon is free, open-source and volunteer based, if you're interested in professional consultation/support we do maintain a list of experts and companies that can provide services. Get in touch with us, and we'll do our best to connect you. 
 
 **Typhoon is a free and community driven project. We only ask that if you've found it useful to please let us know by starring us on Github, sending a tweet mentioning us or emailing info@typhoonframework.org! And if not, please let us know what you would like improved.**
+
+**Contributing**
+
+Interested in contributing? Great! Here's the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">contribution guide.</a>
+
 
 # LICENSE
 
