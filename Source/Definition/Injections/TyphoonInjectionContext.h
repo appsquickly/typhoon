@@ -13,6 +13,8 @@
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonComponentFactory.h"
 
+@class TyphoonRuntimeArguments;
+
 typedef void(^TyphoonInjectionValueBlock)(id value);
 
 @interface TyphoonInjectionContext : NSObject<NSCopying>
@@ -25,5 +27,9 @@ typedef void(^TyphoonInjectionValueBlock)(id value);
 @property(nonatomic, assign) Class destinationInstanceClass;
 
 @property(nonatomic) BOOL raiseExceptionIfCircular;
+
+- (instancetype)initWithFactory:(TyphoonComponentFactory*)factory args:(TyphoonRuntimeArguments*)args
+    destinationInstanceClass:(Class)destinationInstanceClass raiseExceptionIfCircular:(BOOL)raiseExceptionIfCircular;
+
 
 @end

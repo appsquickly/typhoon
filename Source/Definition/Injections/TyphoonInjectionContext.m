@@ -10,8 +10,28 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonInjectionContext.h"
+#import "TyphoonRuntimeArguments.h"
 
 @implementation TyphoonInjectionContext
+
+//-------------------------------------------------------------------------------------------
+#pragma mark - Initialization & Destruction
+//-------------------------------------------------------------------------------------------
+
+- (instancetype)initWithFactory:(TyphoonComponentFactory*)factory args:(TyphoonRuntimeArguments*)args
+    destinationInstanceClass:(Class)destinationInstanceClass raiseExceptionIfCircular:(BOOL)raiseExceptionIfCircular
+{
+    self = [super init];
+    if (self)
+    {
+        _factory = factory;
+        _args = args;
+        _destinationInstanceClass = destinationInstanceClass;
+        _raiseExceptionIfCircular = raiseExceptionIfCircular;
+    }
+
+    return self;
+}
 
 - (id)copyWithZone:(NSZone *)zone
 {
