@@ -35,7 +35,7 @@ I'll take all the help I can get | While Typhoon is free, open-source and volunt
 
 **Typhoon is a free and community driven project. We only ask that if you've found it useful to please let us know by starring us on Github, sending a tweet mentioning us or emailing info@typhoonframework.org! And if not, please let us know what you would like improved.**
 
-**Contributing**
+# Contributing
 
 Interested in contributing? Great! Here's the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">contribution guide.</a>
 
