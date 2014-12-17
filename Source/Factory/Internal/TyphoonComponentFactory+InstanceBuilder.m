@@ -62,30 +62,21 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 {
     id instance = [definition targetForInitializerWithFactory:self args:args];
     if (definition.initializer) {
-        instance = [self resultOfInvocationInitializer:definition.initializer on:instance withArgs:args];
+        BOOL isClass = IsClass(instance);
+        Class instanceClass = isClass ? (Class) instance : [instance class];
+
+        NSInvocation *invocation = [self invocationToInit:instanceClass with:definition.initializer args:args];
+
+        BOOL isClassMethod = [(definition.initializer) isClassMethodOnClass:instanceClass];
+
+        if (isClass && !isClassMethod) {
+            instance = [invocation typhoon_resultOfInvokingOnAllocationForClass:instanceClass];
+        }
+        else {
+            instance = [invocation typhoon_resultOfInvokingOnInstance:instance];
+        }
     }
     return instance;
-}
-
-- (id)resultOfInvocationInitializer:(TyphoonMethod *)initializer on:(id)instanceOrClass withArgs:(TyphoonRuntimeArguments *)args
-{
-    id result;
-
-    BOOL isClass = IsClass(instanceOrClass);
-    Class instanceClass = isClass ? (Class) instanceOrClass : [instanceOrClass class];
-
-    NSInvocation *invocation = [self invocationToInit:instanceClass with:initializer args:args];
-
-    BOOL isClassMethod = [initializer isClassMethodOnClass:instanceClass];
-
-    if (isClass && !isClassMethod) {
-        result = [invocation typhoon_resultOfInvokingOnAllocationForClass:instanceClass];
-    }
-    else {
-        result = [invocation typhoon_resultOfInvokingOnInstance:instanceOrClass];
-    }
-
-    return result;
 }
 
 - (NSInvocation *)invocationToInit:(Class)clazz with:(TyphoonMethod *)method args:(TyphoonRuntimeArguments *)args
