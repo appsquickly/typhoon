@@ -1346,6 +1346,11 @@
             <Path>interface_typhoon_injection_context.html</Path>
             <Subnodes>
              <Node>
+              <Name>initWithFactory:args:destinationInstanceClass:raiseExceptionIfCircular:</Name>
+              <Path>interface_typhoon_injection_context.html</Path>
+              <Anchor>a688438d07d377441c07d47097e7c1da2</Anchor>
+             </Node>
+             <Node>
               <Name>args</Name>
               <Path>interface_typhoon_injection_context.html</Path>
               <Anchor>a681a05c5153c889d6651ac43ccf15f4e</Anchor>
@@ -3180,6 +3185,11 @@
               <Name>TyphoonInjectionContext</Name>
               <Path>interface_typhoon_injection_context.html</Path>
               <Subnodes>
+               <Node>
+                <Name>initWithFactory:args:destinationInstanceClass:raiseExceptionIfCircular:</Name>
+                <Path>interface_typhoon_injection_context.html</Path>
+                <Anchor>a688438d07d377441c07d47097e7c1da2</Anchor>
+               </Node>
                <Node>
                 <Name>args</Name>
                 <Path>interface_typhoon_injection_context.html</Path>

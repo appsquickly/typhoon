@@ -7,6 +7,7 @@ var searchData=
   ['initwithcapacity_3a',['initWithCapacity:',['../protocol_typhoon_collection-p.html#ad24371521a192555655334f2e6fd0ef6',1,'TyphoonCollection-p::initWithCapacity:()'],['../protocol_typhoon_dictionary-p.html#a158d712c4c31f51645959425be64efe6',1,'TyphoonDictionary-p::initWithCapacity:()']]],
   ['initwithcollection_3arequiredclass_3a',['initWithCollection:requiredClass:',['../interface_typhoon_injection_by_collection.html#a0e3e4b7785624e17380e5319ad575bce',1,'TyphoonInjectionByCollection']]],
   ['initwithdictionary_3arequiredclass_3a',['initWithDictionary:requiredClass:',['../interface_typhoon_injection_by_dictionary.html#a221428504a68f87f371c611f6ce0bf3a',1,'TyphoonInjectionByDictionary']]],
+  ['initwithfactory_3aargs_3adestinationinstanceclass_3araiseexceptionifcircular_3a',['initWithFactory:args:destinationInstanceClass:raiseExceptionIfCircular:',['../interface_typhoon_injection_context.html#a688438d07d377441c07d47097e7c1da2',1,'TyphoonInjectionContext']]],
   ['initwithismutable_3a',['initWithIsMutable:',['../interface_typhoon_pass_through_type_converter.html#abfb2ddba74053593c177cb587ade6aa6',1,'TyphoonPassThroughTypeConverter']]],
   ['initwithobjectinstance_3a',['initWithObjectInstance:',['../interface_typhoon_injection_by_object_instance.html#af4ace5c8983d3127dbaec03ab96456e7',1,'TyphoonInjectionByObjectInstance']]],
   ['initwithreference_3aargs_3a',['initWithReference:args:',['../interface_typhoon_injection_by_reference.html#ae5310a60bb505b66f35f6246ffcf0259',1,'TyphoonInjectionByReference']]],

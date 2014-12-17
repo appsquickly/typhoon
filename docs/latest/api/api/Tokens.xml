@@ -3975,6 +3975,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>initWithFactory:args:destinationInstanceClass:raiseExceptionIfCircular:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonInjectionContext</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_injection_context.html</Path>
+    <Anchor>a688438d07d377441c07d47097e7c1da2</Anchor>
+    <DeclaredIn>TyphoonInjectionContext.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>args</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
