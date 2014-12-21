@@ -16,15 +16,13 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
-#import "TyphoonDefinition.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonCallStack.h"
 #import "TyphoonTypeDescriptor.h"
 #import "NSObject+FactoryHooks.h"
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
-#import "OCLogTemplate.h"
-#import "TyphoonComponentPostProcessor.h"
+#import "TyphoonInstancePostProcessor.h"
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
 #import "NSInvocation+TCFInstanceBuilder.h"
@@ -32,7 +30,6 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonPropertyInjection.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
 #import "TyphoonFactoryAutoInjectionPostProcessor.h"
-#import "TyphoonFactoryDefinition.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
@@ -66,8 +63,8 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         BOOL isClass = IsClass(instance);
         Class instanceClass = isClass ? (Class) instance : [instance class];
 
-        TyphoonInjectionContext* context = [[TyphoonInjectionContext alloc]
-            initWithFactory:self args:args destinationInstanceClass:instanceClass raiseExceptionIfCircular:YES];
+        TyphoonInjectionContext* context = [[TyphoonInjectionContext alloc] initWithFactory:self args:args raiseExceptionIfCircular:YES];
+        context.classUnderConstruction = instanceClass;
 
         [definition.initializer createInvocationOnClass:instanceClass withContext:context completion:^(NSInvocation* invocation) {
             if (isClass && ![definition.initializer isClassMethodOnClass:instanceClass])
@@ -86,11 +83,11 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (id)postProcessInstance:(id)instance
 {
-    if (![instance conformsToProtocol:@protocol(TyphoonComponentPostProcessor)])
+    if (![instance conformsToProtocol:@protocol(TyphoonInstancePostProcessor)])
     {
-        for (id <TyphoonComponentPostProcessor> postProcessor in _componentPostProcessors)
+        for (id <TyphoonInstancePostProcessor> postProcessor in _componentPostProcessors)
         {
-            instance = [postProcessor postProcessComponent:instance];
+            instance = [postProcessor postProcessInstance:instance];
         }
     }
     return instance;
@@ -183,11 +180,8 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (void)doMethodInjection:(TyphoonMethod*)method onInstance:(id)instance args:(TyphoonRuntimeArguments*)args
 {
-    TyphoonInjectionContext* context = [TyphoonInjectionContext new];
-    context.destinationInstanceClass = [instance class];
-    context.factory = self;
-    context.args = args;
-    context.raiseExceptionIfCircular = NO;
+    TyphoonInjectionContext* context = [[TyphoonInjectionContext alloc] initWithFactory:self args:args raiseExceptionIfCircular:NO];
+    context.classUnderConstruction = [instance class];
 
     [method createInvocationOnClass:[instance class] withContext:context completion:^(NSInvocation* invocation) {
         [invocation invokeWithTarget:instance];
@@ -200,12 +194,9 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (void)doPropertyInjectionOn:(id)instance property:(id <TyphoonPropertyInjection>)property args:(TyphoonRuntimeArguments*)args
 {
-    TyphoonInjectionContext* context = [TyphoonInjectionContext new];
+    TyphoonInjectionContext* context = [[TyphoonInjectionContext alloc] initWithFactory:self args:args raiseExceptionIfCircular:NO];
     context.destinationType = [instance typhoon_typeForPropertyWithName:property.propertyName];
-    context.destinationInstanceClass = [instance class];
-    context.factory = self;
-    context.args = args;
-    context.raiseExceptionIfCircular = NO;
+    context.classUnderConstruction = [instance class];
 
     [property valueToInjectWithContext:context completion:^(id value) {
         [instance typhoon_injectValue:value forPropertyName:property.propertyName];
@@ -321,7 +312,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 - (TyphoonFactoryAutoInjectionPostProcessor*)autoInjectionPostProcessor
 {
     TyphoonFactoryAutoInjectionPostProcessor* postProcessor = nil;
-    for (id <TyphoonComponentFactoryPostProcessor> item in _factoryPostProcessors)
+    for (id <TyphoonDefinitionPostProcessor> item in _factoryPostProcessors)
     {
         if ([item isMemberOfClass:[TyphoonFactoryAutoInjectionPostProcessor class]])
         {

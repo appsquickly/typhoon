@@ -11,7 +11,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonComponentFactoryPostProcessor.h"
+#import "TyphoonDefinitionPostProcessor.h"
 #import "TyphoonAbstractDetachableComponentFactoryPostProcessor.h"
 
 @class TyphoonDefinition;

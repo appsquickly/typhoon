@@ -23,17 +23,18 @@
 
 @interface TyphoonOptionDefinition : TyphoonFactoryDefinition <TyphoonAutoInjectionConfig>
 
-@property (nonatomic, strong) id<TyphoonInjection> optionInjection;
-@property (nonatomic, strong) TyphoonOptionMatcher *matcher;
+@property(nonatomic, strong) id <TyphoonInjection> optionInjection;
+@property(nonatomic, strong) TyphoonOptionMatcher* matcher;
 
 @end
 
 @implementation TyphoonOptionDefinition
 
-- (instancetype)initWithOptionValue:(id)value matcher:(TyphoonOptionMatcher *)matcher
+- (instancetype)initWithOptionValue:(id)value matcher:(TyphoonOptionMatcher*)matcher
 {
     self = [super initWithClass:[NSObject class] key:nil];
-    if (self) {
+    if (self)
+    {
         self.optionInjection = TyphoonMakeInjectionFromObjectIfNeeded(value);
         self.matcher = matcher;
         self.scope = TyphoonScopePrototype;
@@ -41,12 +42,9 @@
     return self;
 }
 
-- (id)targetForInitializerWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+- (id)targetForInitializerWithFactory:(TyphoonComponentFactory*)factory args:(TyphoonRuntimeArguments*)args
 {
-    TyphoonInjectionContext *context = [TyphoonInjectionContext new];
-    context.args = args;
-    context.factory = factory;
-    context.raiseExceptionIfCircular = YES;
+    TyphoonInjectionContext* context = [[TyphoonInjectionContext alloc] initWithFactory:factory args:args raiseExceptionIfCircular:YES];
     context.destinationType = [TyphoonTypeDescriptor descriptorWithEncodedType:@encode(id)];
 
     __block id optionValue = nil;
@@ -54,7 +52,7 @@
         optionValue = value;
     }];
 
-    id<TyphoonInjection>injection = [self.matcher injectionMatchedValue:optionValue];
+    id <TyphoonInjection> injection = [self.matcher injectionMatchedValue:optionValue];
 
     __block id result = nil;
     [injection valueToInjectWithContext:context completion:^(id value) {
@@ -64,22 +62,27 @@
     return result;
 }
 
-- (TyphoonMethod *)initializer
+- (TyphoonMethod*)initializer
 {
     return nil;
 }
 
-- (void)enumerateInjectionsOfKind:(Class)injectionClass options:(TyphoonInjectionsEnumerationOption)options usingBlock:(TyphoonInjectionsEnumerationBlock)block
+- (void)enumerateInjectionsOfKind:(Class)injectionClass options:(TyphoonInjectionsEnumerationOption)options
+    usingBlock:(TyphoonInjectionsEnumerationBlock)block
 {
-    if (options & TyphoonInjectionsEnumerationOptionProperties) {
-        if ([self.optionInjection isKindOfClass:injectionClass]) {
+    if (options & TyphoonInjectionsEnumerationOptionProperties)
+    {
+        if ([self.optionInjection isKindOfClass:injectionClass])
+        {
             id injectionToReplace = nil;
             BOOL stop = NO;
             block(self.optionInjection, &injectionToReplace, &stop);
-            if (injectionToReplace) {
+            if (injectionToReplace)
+            {
                 self.optionInjection = injectionToReplace;
             }
-            if (stop) {
+            if (stop)
+            {
                 return;
             }
         }
@@ -95,7 +98,7 @@
 
 + (id)withOption:(id)option yes:(id)yesDefinition no:(id)noDefinition
 {
-    return [self withOption:option matcher:^(TyphoonOptionMatcher *matcher) {
+    return [self withOption:option matcher:^(TyphoonOptionMatcher* matcher) {
         [matcher caseEqual:@YES use:yesDefinition];
         [matcher caseEqual:@"YES" use:yesDefinition];
         [matcher caseEqual:@"1" use:yesDefinition];
@@ -107,18 +110,20 @@
 
 + (id)withOption:(id)option matcher:(TyphoonMatcherBlock)matcherBlock
 {
-    TyphoonOptionMatcher *matcher = [[TyphoonOptionMatcher alloc] initWithBlock:matcherBlock];
+    TyphoonOptionMatcher* matcher = [[TyphoonOptionMatcher alloc] initWithBlock:matcherBlock];
 
     return [[TyphoonOptionDefinition alloc] initWithOptionValue:option matcher:matcher];
 }
 
-+ (id)withOption:(id)option matcher:(TyphoonMatcherBlock)matcherBlock autoInjectionConfig:(void (^)(id<TyphoonAutoInjectionConfig> config))configBlock
++ (id)withOption:(id)option matcher:(TyphoonMatcherBlock)matcherBlock
+    autoInjectionConfig:(void (^)(id <TyphoonAutoInjectionConfig> config))configBlock
 {
-    TyphoonOptionMatcher *matcher = [[TyphoonOptionMatcher alloc] initWithBlock:matcherBlock];
+    TyphoonOptionMatcher* matcher = [[TyphoonOptionMatcher alloc] initWithBlock:matcherBlock];
 
-    TyphoonOptionDefinition *definition = [[TyphoonOptionDefinition alloc] initWithOptionValue:option matcher:matcher];
+    TyphoonOptionDefinition* definition = [[TyphoonOptionDefinition alloc] initWithOptionValue:option matcher:matcher];
 
-    if (configBlock) {
+    if (configBlock)
+    {
         configBlock(definition);
     }
 

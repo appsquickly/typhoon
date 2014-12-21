@@ -12,34 +12,43 @@
 #import "TyphoonInjectionContext.h"
 #import "TyphoonRuntimeArguments.h"
 
+@interface TyphoonInjectionContext ()
+
+@property(nonatomic, strong, readwrite) TyphoonComponentFactory* factory;
+@property(nonatomic, strong, readwrite) TyphoonRuntimeArguments* args;
+@property(nonatomic, readwrite) BOOL raiseExceptionIfCircular;
+
+@end
+
 @implementation TyphoonInjectionContext
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
-//-------------------------------------------------------------------------------------------
 
 - (instancetype)initWithFactory:(TyphoonComponentFactory*)factory args:(TyphoonRuntimeArguments*)args
-    destinationInstanceClass:(Class)destinationInstanceClass raiseExceptionIfCircular:(BOOL)raiseExceptionIfCircular
+    raiseExceptionIfCircular:(BOOL)raiseExceptionIfCircular
 {
     self = [super init];
     if (self)
     {
         _factory = factory;
         _args = args;
-        _destinationInstanceClass = destinationInstanceClass;
         _raiseExceptionIfCircular = raiseExceptionIfCircular;
     }
-
     return self;
 }
 
-- (id)copyWithZone:(NSZone *)zone
+//-------------------------------------------------------------------------------------------
+
+
+
+- (id)copyWithZone:(NSZone*)zone
 {
-    TyphoonInjectionContext *copied = [[TyphoonInjectionContext allocWithZone:zone] init];
+    TyphoonInjectionContext* copied = [[TyphoonInjectionContext allocWithZone:zone] init];
     copied.factory = self.factory;
     copied.args = self.args;
     copied.destinationType = self.destinationType;
-    copied.destinationInstanceClass = self.destinationInstanceClass;
+    copied.classUnderConstruction = self.classUnderConstruction;
     copied.raiseExceptionIfCircular = self.raiseExceptionIfCircular;
     return copied;
 }

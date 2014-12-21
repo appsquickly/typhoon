@@ -18,7 +18,7 @@
 
 @implementation TyphoonParentReferenceHydratingPostProcessor
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory
 {
     [factory.registry enumerateObjectsUsingBlock:^(TyphoonDefinition *definition, NSUInteger idx, BOOL *stop) {
         if (definition.parent) {

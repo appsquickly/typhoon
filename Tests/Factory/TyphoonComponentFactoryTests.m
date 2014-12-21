@@ -21,7 +21,7 @@
 #import "TyphoonComponentFactoryPostProcessorStubImpl.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "ClassWithConstructor.h"
-#import "TyphoonComponentPostProcessorMock.h"
+#import "TyphoonInstancePostProcessorMock.h"
 #import "TyphoonInjections.h"
 #import "MediocreQuest.h"
 
@@ -200,16 +200,16 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
 - (void)test_component_post_processor_registration
 {
-    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[TyphoonComponentPostProcessorMock class]]];
+    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[TyphoonInstancePostProcessorMock class]]];
     XCTAssertEqual([[_componentFactory registry] count], 0);
     XCTAssertEqual([[_componentFactory componentPostProcessors] count], 1);
 }
 
 - (void)test_component_post_processors_applied_in_order
 {
-    TyphoonComponentPostProcessorMock *processor1 = [[TyphoonComponentPostProcessorMock alloc] initWithOrder:INT_MAX];
-    TyphoonComponentPostProcessorMock *processor2 = [[TyphoonComponentPostProcessorMock alloc] initWithOrder:0];
-    TyphoonComponentPostProcessorMock *processor3 = [[TyphoonComponentPostProcessorMock alloc] initWithOrder:INT_MIN];
+    TyphoonInstancePostProcessorMock*processor1 = [[TyphoonInstancePostProcessorMock alloc] initWithOrder:INT_MAX];
+    TyphoonInstancePostProcessorMock*processor2 = [[TyphoonInstancePostProcessorMock alloc] initWithOrder:0];
+    TyphoonInstancePostProcessorMock*processor3 = [[TyphoonInstancePostProcessorMock alloc] initWithOrder:INT_MIN];
     [_componentFactory addComponentPostProcessor:processor1];
     [_componentFactory addComponentPostProcessor:processor2];
     [_componentFactory addComponentPostProcessor:processor3];
@@ -298,11 +298,11 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
 - (void)test_load_post_processors
 {
-    id <TyphoonComponentFactoryPostProcessor> postProcessor = mockProtocol(@protocol(TyphoonComponentFactoryPostProcessor));
+    id <TyphoonDefinitionPostProcessor> postProcessor = mockProtocol(@protocol(TyphoonDefinitionPostProcessor));
     [_componentFactory attachPostProcessor:postProcessor];
     [_componentFactory load];
     [_componentFactory load]; // Should do nothing
-    [verifyCount(postProcessor, times(1)) postProcessComponentFactory:_componentFactory];
+    [verifyCount(postProcessor, times(1)) postProcessDefinitionsInFactory:_componentFactory];
 }
 
 

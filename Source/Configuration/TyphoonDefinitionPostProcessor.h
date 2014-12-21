@@ -33,6 +33,6 @@
  May be called more than once, if a PostProcessor is added to a ComponentFactory after a component has been retrieved from that factory.
  @param factory The component factory
  */
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory;
+- (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory;
 
 @end

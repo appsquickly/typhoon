@@ -90,9 +90,9 @@
 //-------------------------------------------------------------------------------------------
 #pragma mark - Protocol Methods
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory
 {
-    [super postProcessComponentFactory:factory];
+    [super postProcessDefinitionsInFactory:factory];
 
     [factory enumerateDefinitions:^(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace, BOOL *stop) {
         TyphoonPatchObjectCreationBlock patchObjectBlock = _patches[definition.key];

@@ -12,11 +12,11 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonComponentFactoryPostProcessor.h"
+#import "TyphoonDefinitionPostProcessor.h"
 
 /**
 * Sets the full-definition for any parent definitions that have been provided by key-only, thus allowing the definition to inherit
 * the parent (and ancestor) initializer and/or properties.
 */
-@interface TyphoonParentReferenceHydratingPostProcessor : NSObject <TyphoonComponentFactoryPostProcessor>
+@interface TyphoonParentReferenceHydratingPostProcessor : NSObject <TyphoonDefinitionPostProcessor>
 @end

@@ -25,7 +25,7 @@
 
 @implementation TyphoonAbstractDetachableComponentFactoryPostProcessor
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory
 {
     _factory = factory;
     [self cacheDefinitionsIn:_factory];

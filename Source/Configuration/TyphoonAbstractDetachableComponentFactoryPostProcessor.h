@@ -11,10 +11,10 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonComponentFactoryPostProcessor.h"
+#import "TyphoonDefinitionPostProcessor.h"
 
 
-@interface TyphoonAbstractDetachableComponentFactoryPostProcessor : NSObject <TyphoonComponentFactoryPostProcessor>
+@interface TyphoonAbstractDetachableComponentFactoryPostProcessor : NSObject <TyphoonDefinitionPostProcessor>
 {
     TyphoonComponentFactory* _factory;
     NSMutableArray *_rollbackDefinitions;

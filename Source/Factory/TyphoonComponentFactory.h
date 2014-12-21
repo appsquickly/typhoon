@@ -12,7 +12,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "TyphoonComponentFactoryPostProcessor.h"
+#import "TyphoonDefinitionPostProcessor.h"
 #import "TyphoonComponentsPool.h"
 
 @class TyphoonDefinition;
@@ -170,7 +170,7 @@
  Attach a TyphoonComponentFactoryPostProcessor to this component factory.
  @param postProcessor The post-processor to attach.
  */
-- (void)attachPostProcessor:(id <TyphoonComponentFactoryPostProcessor>)postProcessor;
+- (void)attachPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor;
 
 /**
  * Injects the properties and methods of an object

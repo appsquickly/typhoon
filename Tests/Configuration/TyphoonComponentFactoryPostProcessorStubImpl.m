@@ -13,7 +13,7 @@
 
 @implementation TyphoonComponentFactoryPostProcessorStubImpl
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory
 {
     self.postProcessingCalled = YES;
 }

@@ -17,19 +17,18 @@
 
 typedef void(^TyphoonInjectionValueBlock)(id value);
 
-@interface TyphoonInjectionContext : NSObject<NSCopying>
+@interface TyphoonInjectionContext : NSObject <NSCopying>
 
-@property(nonatomic, strong) TyphoonTypeDescriptor *destinationType;
-@property(nonatomic, strong) TyphoonComponentFactory *factory;
-@property(nonatomic, strong) TyphoonRuntimeArguments *args;
+@property(nonatomic, strong, readonly) TyphoonComponentFactory* factory;
+@property(nonatomic, strong, readonly) TyphoonRuntimeArguments* args;
+@property(nonatomic, readonly) BOOL raiseExceptionIfCircular;
 
 /** Class of destination instance, - used only for better exception description */
-@property(nonatomic, assign) Class destinationInstanceClass;
-
-@property(nonatomic) BOOL raiseExceptionIfCircular;
+@property(nonatomic, assign, readwrite) Class classUnderConstruction;
+@property(nonatomic, strong, readwrite) TyphoonTypeDescriptor* destinationType;
 
 - (instancetype)initWithFactory:(TyphoonComponentFactory*)factory args:(TyphoonRuntimeArguments*)args
-    destinationInstanceClass:(Class)destinationInstanceClass raiseExceptionIfCircular:(BOOL)raiseExceptionIfCircular;
+    raiseExceptionIfCircular:(BOOL)raiseExceptionIfCircular;
 
 
 @end

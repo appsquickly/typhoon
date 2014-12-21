@@ -37,7 +37,7 @@
     TyphoonComponentFactory *factory = mock([TyphoonComponentFactory class]);
     [given([factory registry]) willReturn:@[definition]];
 
-    [_nibResolver postProcessComponentFactory:factory];
+    [_nibResolver postProcessDefinitionsInFactory:factory];
 
     XCTAssertNotNil(definition.initializer);
     XCTAssertEqualObjects(NSStringFromSelector(definition.initializer.selector), NSStringFromSelector(@selector(initWithNibName:bundle:)));
@@ -57,7 +57,7 @@
     TyphoonComponentFactory *factory = mock([TyphoonComponentFactory class]);
     [given([factory registry]) willReturn:@[definition]];
 
-    [_nibResolver postProcessComponentFactory:factory];
+    [_nibResolver postProcessDefinitionsInFactory:factory];
     XCTAssertEqualObjects(NSStringFromSelector(definition.initializer.selector), NSStringFromSelector(@selector(initWithFoobar:)));
 }
 

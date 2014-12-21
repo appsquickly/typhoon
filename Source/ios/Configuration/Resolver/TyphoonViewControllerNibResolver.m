@@ -20,7 +20,7 @@
 
 #pragma mark - Protocol methods
 
-- (void)postProcessComponentFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory
 {
     for (TyphoonDefinition *definition in [factory registry]) {
         if ([self shouldProcessDefinition:definition]) {

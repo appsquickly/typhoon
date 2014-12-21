@@ -21,7 +21,7 @@
 #import "TyphoonCallStack.h"
 #import "TyphoonParentReferenceHydratingPostProcessor.h"
 #import "TyphoonFactoryPropertyInjectionPostProcessor.h"
-#import "TyphoonComponentPostProcessor.h"
+#import "TyphoonInstancePostProcessor.h"
 #import "TyphoonWeakComponentsPool.h"
 #import "TyphoonFactoryAutoInjectionPostProcessor.h"
 
@@ -231,7 +231,7 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
 }
 
 
-- (void)attachPostProcessor:(id <TyphoonComponentFactoryPostProcessor>)postProcessor
+- (void)attachPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor
 {
     LogTrace(@"Attaching post processor: %@", postProcessor);
     [_factoryPostProcessors addObject:postProcessor];
@@ -326,8 +326,8 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
 
 - (void)applyPostProcessors
 {
-    [_factoryPostProcessors enumerateObjectsUsingBlock:^(id <TyphoonComponentFactoryPostProcessor> postProcessor, NSUInteger idx, BOOL *stop) {
-        [postProcessor postProcessComponentFactory:self];
+    [_factoryPostProcessors enumerateObjectsUsingBlock:^(id <TyphoonDefinitionPostProcessor> postProcessor, NSUInteger idx, BOOL *stop) {
+        [postProcessor postProcessDefinitionsInFactory:self];
     }];
 }
 
@@ -416,7 +416,7 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
     [_registry addObject:definition];
 }
 
-- (void)addComponentPostProcessor:(id <TyphoonComponentPostProcessor>)postProcessor
+- (void)addComponentPostProcessor:(id <TyphoonInstancePostProcessor>)postProcessor
 {
     [_componentPostProcessors addObject:postProcessor];
 }
