@@ -38,8 +38,6 @@ var files =
     [ "TyphoonCollaboratingAssemblyPropertyEnumerator.h", "_typhoon_collaborating_assembly_property_enumerator_8h.html", null ],
     [ "TyphoonCollaboratingAssemblyProxy.h", "_typhoon_collaborating_assembly_proxy_8h.html", null ],
     [ "TyphoonComponentFactory.h", "_typhoon_component_factory_8h.html", null ],
-    [ "TyphoonComponentFactoryPostProcessor.h", "_typhoon_component_factory_post_processor_8h.html", null ],
-    [ "TyphoonComponentPostProcessor.h", "_typhoon_component_post_processor_8h.html", null ],
     [ "TyphoonComponentsPool.h", "_typhoon_components_pool_8h.html", [
       [ "<TyphoonComponentsPool>", "protocol_typhoon_components_pool-p.html", "protocol_typhoon_components_pool-p" ]
     ] ],
@@ -47,6 +45,7 @@ var files =
     [ "TyphoonConfiguration.h", "_typhoon_configuration_8h.html", null ],
     [ "TyphoonDefinition+Option.h", "_typhoon_definition_09_option_8h.html", "_typhoon_definition_09_option_8h" ],
     [ "TyphoonDefinition.h", "_typhoon_definition_8h.html", "_typhoon_definition_8h" ],
+    [ "TyphoonDefinitionPostProcessor.h", "_typhoon_definition_post_processor_8h.html", null ],
     [ "TyphoonDefinitionRegisterer.h", "_typhoon_definition_registerer_8h.html", null ],
     [ "TyphoonFactoryAutoInjectionPostProcessor.h", "_typhoon_factory_auto_injection_post_processor_8h.html", null ],
     [ "TyphoonInitialStoryboardResolver.h", "_typhoon_initial_storyboard_resolver_8h.html", null ],
@@ -89,6 +88,7 @@ var files =
     ] ],
     [ "TyphoonInjectionContext.h", "_typhoon_injection_context_8h.html", "_typhoon_injection_context_8h" ],
     [ "TyphoonInjections.h", "_typhoon_injections_8h.html", "_typhoon_injections_8h" ],
+    [ "TyphoonInstancePostProcessor.h", "_typhoon_instance_post_processor_8h.html", null ],
     [ "TyphoonIntrospectionUtils.h", "_typhoon_introspection_utils_8h.html", "_typhoon_introspection_utils_8h" ],
     [ "TyphooniOS.h", "_typhooni_o_s_8h.html", null ],
     [ "TyphoonJsonStyleConfiguration.h", "_typhoon_json_style_configuration_8h.html", null ],

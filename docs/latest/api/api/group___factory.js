@@ -35,8 +35,8 @@ var group___factory =
       [ "loaded", "interface_typhoon_component_factory.html#a09b13d5d400d8ca043cc5f1105b8a744", null ],
       [ "singletons", "interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785", null ]
     ] ],
-    [ "<TyphoonComponentFactoryPostProcessor>", "protocol_typhoon_component_factory_post_processor-p.html", [
-      [ "postProcessComponentFactory:", "protocol_typhoon_component_factory_post_processor-p.html#ab64811c01a873e3a727f017543b29223", null ]
+    [ "<TyphoonDefinitionPostProcessor>", "protocol_typhoon_definition_post_processor-p.html", [
+      [ "postProcessComponentFactory:", "protocol_typhoon_definition_post_processor-p.html#ad9e34336727282d276449d7cd2458e82", null ]
     ] ],
     [ "typhoonSetFactory:", "group___factory.html#ga3dc651b0109dde0ddd73519ccc5eb860", null ],
     [ "typhoonWillInject", "group___factory.html#ga2c70804a42c7e37fe2015c1c03996173", null ]
