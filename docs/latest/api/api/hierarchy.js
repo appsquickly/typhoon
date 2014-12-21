@@ -65,7 +65,10 @@ var hierarchy =
       [ "<TyphoonComponentsPool>", "protocol_typhoon_components_pool-p.html", [
         [ "TyphoonWeakComponentsPool", "interface_typhoon_weak_components_pool.html", null ]
       ] ],
-      [ "<TyphoonDefinitionPostProcessor>", "protocol_typhoon_definition_post_processor-p.html", null ],
+      [ "<TyphoonDefinitionPostProcessor>", "protocol_typhoon_definition_post_processor-p.html", [
+        [ "TyphoonConfigPostProcessor", "interface_typhoon_config_post_processor.html", null ],
+        [ "TyphoonViewControllerNibResolver", "interface_typhoon_view_controller_nib_resolver.html", null ]
+      ] ],
       [ "<TyphoonDictionary>", "protocol_typhoon_dictionary-p.html", null ],
       [ "<TyphoonInjection>", "protocol_typhoon_injection-p.html", null ],
       [ "<TyphoonResource>", "protocol_typhoon_resource-p.html", [
@@ -82,10 +85,6 @@ var hierarchy =
       [ "TyphoonPatcher", "interface_typhoon_patcher.html", null ]
     ] ],
     [ "TyphoonAbstractInjection(Protected)", "category_typhoon_abstract_injection_07_protected_08.html", null ],
-    [ "<TyphoonComponentFactoryPostProcessor>", null, [
-      [ "TyphoonConfigPostProcessor", "interface_typhoon_config_post_processor.html", null ],
-      [ "TyphoonViewControllerNibResolver", "interface_typhoon_view_controller_nib_resolver.html", null ]
-    ] ],
     [ "TyphoonDefinition(Deprecated)", "category_typhoon_definition_07_deprecated_08.html", null ],
     [ "TyphoonDefinition(Option)", "category_typhoon_definition_07_option_08.html", null ],
     [ "TyphoonFactoryPropertyInjectionPostProcessor", null, [

@@ -15,7 +15,7 @@ var group___factory =
     ] ],
     [ "TyphoonComponentFactory", "interface_typhoon_component_factory.html", [
       [ "allComponentsForType:", "interface_typhoon_component_factory.html#aed7d338f12814ee5e235cbc605203b89", null ],
-      [ "attachPostProcessor:", "interface_typhoon_component_factory.html#a0727001458325fd7d09b6df2e1252180", null ],
+      [ "attachPostProcessor:", "interface_typhoon_component_factory.html#a497444322c5eb57d64a327f170cbd389", null ],
       [ "componentForKey:", "interface_typhoon_component_factory.html#afbe6d5309ee739db59e4c5d35d2ab377", null ],
       [ "componentForKey:args:", "interface_typhoon_component_factory.html#af6515430a4ff0a5234a7141c99a38b01", null ],
       [ "componentForType:", "interface_typhoon_component_factory.html#a8beff23e8b71b958b551ad173ef0feb5", null ],
@@ -36,7 +36,7 @@ var group___factory =
       [ "singletons", "interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785", null ]
     ] ],
     [ "<TyphoonDefinitionPostProcessor>", "protocol_typhoon_definition_post_processor-p.html", [
-      [ "postProcessComponentFactory:", "protocol_typhoon_definition_post_processor-p.html#ad9e34336727282d276449d7cd2458e82", null ]
+      [ "postProcessDefinitionsInFactory:", "protocol_typhoon_definition_post_processor-p.html#aec4cc0d59e693dd7fffa0c7247d05915", null ]
     ] ],
     [ "typhoonSetFactory:", "group___factory.html#ga3dc651b0109dde0ddd73519ccc5eb860", null ],
     [ "typhoonWillInject", "group___factory.html#ga2c70804a42c7e37fe2015c1c03996173", null ]

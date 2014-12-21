@@ -1,7 +1,7 @@
 var interface_typhoon_component_factory =
 [
     [ "allComponentsForType:", "interface_typhoon_component_factory.html#aed7d338f12814ee5e235cbc605203b89", null ],
-    [ "attachPostProcessor:", "interface_typhoon_component_factory.html#a0727001458325fd7d09b6df2e1252180", null ],
+    [ "attachPostProcessor:", "interface_typhoon_component_factory.html#a497444322c5eb57d64a327f170cbd389", null ],
     [ "componentForKey:", "interface_typhoon_component_factory.html#afbe6d5309ee739db59e4c5d35d2ab377", null ],
     [ "componentForKey:args:", "interface_typhoon_component_factory.html#af6515430a4ff0a5234a7141c99a38b01", null ],
     [ "componentForType:", "interface_typhoon_component_factory.html#a8beff23e8b71b958b551ad173ef0feb5", null ],

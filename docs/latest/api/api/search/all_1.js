@@ -5,6 +5,7 @@ var searchData=
   ['casememberofclass_3ause_3a',['caseMemberOfClass:use:',['../interface_typhoon_option_matcher.html#a4d0c1d6f7bd45f9ac3fb39f75579568f',1,'TyphoonOptionMatcher']]],
   ['classorprotocol',['classOrProtocol',['../interface_typhoon_type_descriptor.html#aa68b95827c65fe611ce4398a902d3069',1,'TyphoonTypeDescriptor']]],
   ['classorprotocolforautoinjection',['classOrProtocolForAutoInjection',['../protocol_typhoon_auto_injection_config-p.html#a0a00a8ff9000616e220c5c53dc914ed8',1,'TyphoonAutoInjectionConfig-p']]],
+  ['classunderconstruction',['classUnderConstruction',['../interface_typhoon_injection_context.html#a9f28811f68d3e8442f9a576812a23948',1,'TyphoonInjectionContext']]],
   ['collectionmutableclassfromclass_3a',['collectionMutableClassFromClass:',['../interface_typhoon_injection_by_collection.html#a00f5a3dfd230236c6856cc8d33350f26',1,'TyphoonInjectionByCollection']]],
   ['componentforkey_3a',['componentForKey:',['../interface_typhoon_component_factory.html#afbe6d5309ee739db59e4c5d35d2ab377',1,'TyphoonComponentFactory']]],
   ['componentforkey_3aargs_3a',['componentForKey:args:',['../interface_typhoon_component_factory.html#af6515430a4ff0a5234a7141c99a38b01',1,'TyphoonComponentFactory']]],

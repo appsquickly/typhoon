@@ -1328,7 +1328,7 @@
       <Scope>TyphoonComponentFactory</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a0727001458325fd7d09b6df2e1252180</Anchor>
+    <Anchor>a497444322c5eb57d64a327f170cbd389</Anchor>
     <Abstract>Attach a TyphoonComponentFactoryPostProcessor to this component factory. </Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
@@ -1704,7 +1704,7 @@
       <Scope>TyphoonComponentFactory</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a0727001458325fd7d09b6df2e1252180</Anchor>
+    <Anchor>a497444322c5eb57d64a327f170cbd389</Anchor>
     <Abstract>Attach a TyphoonComponentFactoryPostProcessor to this component factory. </Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
@@ -2016,6 +2016,18 @@
     <Anchor>aa918daab1e558a2f7a5180de43648059</Anchor>
     <Abstract>Append resource found in main bundle by name. </Abstract>
     <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>postProcessDefinitionsInFactory:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonDefinitionPostProcessor-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+    <Anchor>aec4cc0d59e693dd7fffa0c7247d05915</Anchor>
+    <Abstract>Post process a component factory after its initialization. </Abstract>
+    <DeclaredIn>TyphoonDefinitionPostProcessor.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -2449,13 +2461,13 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>postProcessComponentFactory:</Name>
+      <Name>postProcessDefinitionsInFactory:</Name>
       <APILanguage>occ</APILanguage>
       <Type>intfm</Type>
       <Scope>TyphoonDefinitionPostProcessor-p</Scope>
     </TokenIdentifier>
     <Path>protocol_typhoon_definition_post_processor-p.html</Path>
-    <Anchor>ad9e34336727282d276449d7cd2458e82</Anchor>
+    <Anchor>aec4cc0d59e693dd7fffa0c7247d05915</Anchor>
     <Abstract>Post process a component factory after its initialization. </Abstract>
     <DeclaredIn>TyphoonDefinitionPostProcessor.h</DeclaredIn>
   </Token>
@@ -3963,13 +3975,13 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>initWithFactory:args:destinationInstanceClass:raiseExceptionIfCircular:</Name>
+      <Name>initWithFactory:args:raiseExceptionIfCircular:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
       <Scope>TyphoonInjectionContext</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_injection_context.html</Path>
-    <Anchor>a688438d07d377441c07d47097e7c1da2</Anchor>
+    <Anchor>a7fee3391384d5332425a28cf3a154be4</Anchor>
     <DeclaredIn>TyphoonInjectionContext.h</DeclaredIn>
   </Token>
   <Token>
@@ -3984,13 +3996,13 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>destinationInstanceClass</Name>
+      <Name>classUnderConstruction</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
       <Scope>TyphoonInjectionContext</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_injection_context.html</Path>
-    <Anchor>a2f4865e237d0ea67f6a5ab4c90d21446</Anchor>
+    <Anchor>a9f28811f68d3e8442f9a576812a23948</Anchor>
     <Abstract>Class of destination instance, - used only for better exception description. </Abstract>
   </Token>
   <Token>
@@ -5181,6 +5193,18 @@
     <Anchor>af4194a42c7e6483d5a084e1171a0843e</Anchor>
     <Abstract>Resolves the nib name for a view controller class. </Abstract>
     <DeclaredIn>TyphoonViewControllerNibResolver.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>postProcessDefinitionsInFactory:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonDefinitionPostProcessor-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+    <Anchor>aec4cc0d59e693dd7fffa0c7247d05915</Anchor>
+    <Abstract>Post process a component factory after its initialization. </Abstract>
+    <DeclaredIn>TyphoonDefinitionPostProcessor.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
