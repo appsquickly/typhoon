@@ -25,7 +25,7 @@
  @see TyphoonConfigPostProcessor for an example implementation.
  @see TyphoonComponentPostProcessor which modifies instances after they've been built, rather than the definitions
  */
-@protocol TyphoonComponentFactoryPostProcessor <NSObject>
+@protocol TyphoonDefinitionPostProcessor <NSObject>
 
 /**
  Post process a component factory after its initialization.

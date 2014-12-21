@@ -10,20 +10,15 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
+#import "TyphoonInstancePostProcessor.h"
+#import "TyphoonOrdered.h"
 
-/**
-* @ingroup Factory
-*
- Allows for custom modification of a component after its instantiation.
+typedef id (^PostProcessBlock)(id);
 
- Component factories can auto-detect TyphoonComponentPostProcessor components in their definitions and will apply them to components created
- by the factory.
- */
-@protocol TyphoonComponentPostProcessor <NSObject>
+@interface TyphoonInstancePostProcessorMock : NSObject <TyphoonInstancePostProcessor, TyphoonOrdered>
 
-/**
- Post process a component after its initialization and return the processed component.
-*/
-- (id)postProcessComponent:(id)component;
+- (id)initWithOrder:(NSInteger)order;
+
+@property(nonatomic, copy) PostProcessBlock postProcessBlock;
 
 @end

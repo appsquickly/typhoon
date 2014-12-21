@@ -9,10 +9,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonComponentPostProcessorMock.h"
+#import "TyphoonInstancePostProcessorMock.h"
 
 
-@implementation TyphoonComponentPostProcessorMock
+@implementation TyphoonInstancePostProcessorMock
 {
     NSInteger _order;
 }
@@ -26,7 +26,7 @@
     return self;
 }
 
-- (id)postProcessComponent:(id)component
+- (id)postProcessInstance:(id)component
 {
     if (_postProcessBlock) {
         return _postProcessBlock(component);
