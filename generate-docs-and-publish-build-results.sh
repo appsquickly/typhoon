@@ -31,7 +31,7 @@ git pull
 cp -fr build/reports/build-status/build-status.png ./build-status/build-status.png
 git add build-status
 
-rm -fr ./api
+rm -fr ./docs/latest/api
 cp -fr ${reportsDir}/api ./docs/latest/api
 git add docs/latest/api
 
