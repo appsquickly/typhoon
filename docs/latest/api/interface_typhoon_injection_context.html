@@ -88,6 +88,7 @@ $(document).ready(function(){initNavTree('interface_typhoon_injection_context.ht
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Instance Methods</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_typhoon_injection_context-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -98,17 +99,20 @@ $(document).ready(function(){initNavTree('interface_typhoon_injection_context.ht
 Inheritance diagram for TyphoonInjectionContext:</div>
 <div class="dyncontent">
 <div class="center"><img src="interface_typhoon_injection_context__inherit__graph.png" border="0" usemap="#_typhoon_injection_context_inherit__map" alt="Inheritance graph"/></div>
-<map name="_typhoon_injection_context_inherit__map" id="_typhoon_injection_context_inherit__map">
-</map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Instance Methods</h2></td></tr>
+<tr class="memitem:a7fee3391384d5332425a28cf3a154be4"><td class="memItemLeft" align="right" valign="top">(instancetype)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_injection_context.html#a7fee3391384d5332425a28cf3a154be4">initWithFactory:args:raiseExceptionIfCircular:</a></td></tr>
+<tr class="separator:a7fee3391384d5332425a28cf3a154be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:a681a05c5153c889d6651ac43ccf15f4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_typhoon_runtime_arguments.html">TyphoonRuntimeArguments</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_injection_context.html#a681a05c5153c889d6651ac43ccf15f4e">args</a></td></tr>
 <tr class="separator:a681a05c5153c889d6651ac43ccf15f4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f4865e237d0ea67f6a5ab4c90d21446"><td class="memItemLeft" align="right" valign="top">Class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_injection_context.html#a2f4865e237d0ea67f6a5ab4c90d21446">destinationInstanceClass</a></td></tr>
-<tr class="memdesc:a2f4865e237d0ea67f6a5ab4c90d21446"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class of destination instance, - used only for better exception description.  <a href="#a2f4865e237d0ea67f6a5ab4c90d21446">More...</a><br /></td></tr>
-<tr class="separator:a2f4865e237d0ea67f6a5ab4c90d21446"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f28811f68d3e8442f9a576812a23948"><td class="memItemLeft" align="right" valign="top">Class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_injection_context.html#a9f28811f68d3e8442f9a576812a23948">classUnderConstruction</a></td></tr>
+<tr class="memdesc:a9f28811f68d3e8442f9a576812a23948"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class of destination instance, - used only for better exception description.  <a href="#a9f28811f68d3e8442f9a576812a23948">More...</a><br /></td></tr>
+<tr class="separator:a9f28811f68d3e8442f9a576812a23948"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99be856a9a8b59969080599de39a065d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_typhoon_type_descriptor.html">TyphoonTypeDescriptor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_injection_context.html#a99be856a9a8b59969080599de39a065d">destinationType</a></td></tr>
 <tr class="separator:a99be856a9a8b59969080599de39a065d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52059e5816d7a85b5fc2a78f33013e11"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_injection_context.html#a52059e5816d7a85b5fc2a78f33013e11">factory</a></td></tr>
@@ -116,6 +120,39 @@ Properties</h2></td></tr>
 <tr class="memitem:a19be259ff91bfc8848876681c9e89d75"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_injection_context.html#a19be259ff91bfc8848876681c9e89d75">raiseExceptionIfCircular</a></td></tr>
 <tr class="separator:a19be259ff91bfc8848876681c9e89d75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Method Documentation</h2>
+<a class="anchor" id="a7fee3391384d5332425a28cf3a154be4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (instancetype) initWithFactory: </td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> *)&#160;</td>
+          <td class="paramname"><em>factory</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">args:</td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interface_typhoon_runtime_arguments.html">TyphoonRuntimeArguments</a> *)&#160;</td>
+          <td class="paramname"><em>args</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">raiseExceptionIfCircular:</td>
+          <td></td>
+          <td class="paramtype">(BOOL)&#160;</td>
+          <td class="paramname"><em>raiseExceptionIfCircular</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a class="anchor" id="a681a05c5153c889d6651ac43ccf15f4e"></a>
 <div class="memitem">
@@ -130,14 +167,14 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a2f4865e237d0ea67f6a5ab4c90d21446"></a>
+<a class="anchor" id="a9f28811f68d3e8442f9a576812a23948"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -145,7 +182,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">- (Class) destinationInstanceClass</td>
+          <td class="memname">- (Class) classUnderConstruction</td>
         </tr>
       </table>
   </td>
@@ -192,7 +229,7 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -212,7 +249,7 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">nonatomic</span><span class="mlabel">assign</span></span>  </td>
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">assign</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -226,7 +263,7 @@ Properties</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
         <li class="navelem"><a class="el" href="interface_typhoon_injection_context.html">TyphoonInjectionContext</a></li>
-        <li class="footer">Generated on Mon Dec 15 2014 13:04:10 for Typhoon by
+        <li class="footer">Generated on Tue Dec 23 2014 22:19:16 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>

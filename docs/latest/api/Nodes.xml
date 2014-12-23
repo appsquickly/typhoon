@@ -82,7 +82,7 @@
              <Node>
               <Name>attachPostProcessor:</Name>
               <Path>interface_typhoon_component_factory.html</Path>
-              <Anchor>a0727001458325fd7d09b6df2e1252180</Anchor>
+              <Anchor>a497444322c5eb57d64a327f170cbd389</Anchor>
              </Node>
              <Node>
               <Name>componentForKey:</Name>
@@ -177,13 +177,13 @@
             </Subnodes>
            </Node>
            <Node>
-            <Name>&lt;TyphoonComponentFactoryPostProcessor&gt;</Name>
-            <Path>protocol_typhoon_component_factory_post_processor-p.html</Path>
+            <Name>&lt;TyphoonDefinitionPostProcessor&gt;</Name>
+            <Path>protocol_typhoon_definition_post_processor-p.html</Path>
             <Subnodes>
              <Node>
-              <Name>postProcessComponentFactory:</Name>
-              <Path>protocol_typhoon_component_factory_post_processor-p.html</Path>
-              <Anchor>ab64811c01a873e3a727f017543b29223</Anchor>
+              <Name>postProcessDefinitionsInFactory:</Name>
+              <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+              <Anchor>aec4cc0d59e693dd7fffa0c7247d05915</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -813,7 +813,7 @@
              <Node>
               <Name>attachPostProcessor:</Name>
               <Path>interface_typhoon_component_factory.html</Path>
-              <Anchor>a0727001458325fd7d09b6df2e1252180</Anchor>
+              <Anchor>a497444322c5eb57d64a327f170cbd389</Anchor>
              </Node>
              <Node>
               <Name>componentForKey:</Name>
@@ -904,17 +904,6 @@
               <Name>singletons</Name>
               <Path>interface_typhoon_component_factory.html</Path>
               <Anchor>a54c45340de66c65390e529f237fc5785</Anchor>
-             </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>&lt;TyphoonComponentFactoryPostProcessor&gt;</Name>
-            <Path>protocol_typhoon_component_factory_post_processor-p.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>postProcessComponentFactory:</Name>
-              <Path>protocol_typhoon_component_factory_post_processor-p.html</Path>
-              <Anchor>ab64811c01a873e3a727f017543b29223</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -1154,6 +1143,17 @@
             </Subnodes>
            </Node>
            <Node>
+            <Name>&lt;TyphoonDefinitionPostProcessor&gt;</Name>
+            <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>postProcessDefinitionsInFactory:</Name>
+              <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+              <Anchor>aec4cc0d59e693dd7fffa0c7247d05915</Anchor>
+             </Node>
+            </Subnodes>
+           </Node>
+           <Node>
             <Name>&lt;TyphoonDictionary&gt;</Name>
             <Path>protocol_typhoon_dictionary-p.html</Path>
             <Subnodes>
@@ -1346,14 +1346,19 @@
             <Path>interface_typhoon_injection_context.html</Path>
             <Subnodes>
              <Node>
+              <Name>initWithFactory:args:raiseExceptionIfCircular:</Name>
+              <Path>interface_typhoon_injection_context.html</Path>
+              <Anchor>a7fee3391384d5332425a28cf3a154be4</Anchor>
+             </Node>
+             <Node>
               <Name>args</Name>
               <Path>interface_typhoon_injection_context.html</Path>
               <Anchor>a681a05c5153c889d6651ac43ccf15f4e</Anchor>
              </Node>
              <Node>
-              <Name>destinationInstanceClass</Name>
+              <Name>classUnderConstruction</Name>
               <Path>interface_typhoon_injection_context.html</Path>
-              <Anchor>a2f4865e237d0ea67f6a5ab4c90d21446</Anchor>
+              <Anchor>a9f28811f68d3e8442f9a576812a23948</Anchor>
              </Node>
              <Node>
               <Name>destinationType</Name>
@@ -2106,8 +2111,18 @@
               <Path>protocol_typhoon_collection-p.html</Path>
              </Node>
              <Node>
-              <Name>&lt;TyphoonComponentFactoryPostProcessor&gt;</Name>
-              <Path>protocol_typhoon_component_factory_post_processor-p.html</Path>
+              <Name>&lt;TyphoonComponentsPool&gt;</Name>
+              <Path>protocol_typhoon_components_pool-p.html</Path>
+              <Subnodes>
+               <Node>
+                <Name>TyphoonWeakComponentsPool</Name>
+                <Path>interface_typhoon_weak_components_pool.html</Path>
+               </Node>
+              </Subnodes>
+             </Node>
+             <Node>
+              <Name>&lt;TyphoonDefinitionPostProcessor&gt;</Name>
+              <Path>protocol_typhoon_definition_post_processor-p.html</Path>
               <Subnodes>
                <Node>
                 <Name>TyphoonConfigPostProcessor</Name>
@@ -2116,16 +2131,6 @@
                <Node>
                 <Name>TyphoonViewControllerNibResolver</Name>
                 <Path>interface_typhoon_view_controller_nib_resolver.html</Path>
-               </Node>
-              </Subnodes>
-             </Node>
-             <Node>
-              <Name>&lt;TyphoonComponentsPool&gt;</Name>
-              <Path>protocol_typhoon_components_pool-p.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>TyphoonWeakComponentsPool</Name>
-                <Path>interface_typhoon_weak_components_pool.html</Path>
                </Node>
               </Subnodes>
              </Node>
@@ -2731,16 +2736,6 @@
             </Subnodes>
            </Node>
            <Node>
-            <Name>TyphoonComponentFactoryPostProcessor.h</Name>
-            <Path>_typhoon_component_factory_post_processor_8h.html</Path>
-            <Subnodes>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>TyphoonComponentPostProcessor.h</Name>
-            <Path>_typhoon_component_post_processor_8h.html</Path>
-           </Node>
-           <Node>
             <Name>TyphoonComponentsPool.h</Name>
             <Path>_typhoon_components_pool_8h.html</Path>
             <Subnodes>
@@ -2875,6 +2870,12 @@
               <Path>_typhoon_definition_8h.html</Path>
               <Anchor>a55bf05c75200e5d1f608408c76872424</Anchor>
              </Node>
+            </Subnodes>
+           </Node>
+           <Node>
+            <Name>TyphoonDefinitionPostProcessor.h</Name>
+            <Path>_typhoon_definition_post_processor_8h.html</Path>
+            <Subnodes>
             </Subnodes>
            </Node>
            <Node>
@@ -3181,14 +3182,19 @@
               <Path>interface_typhoon_injection_context.html</Path>
               <Subnodes>
                <Node>
+                <Name>initWithFactory:args:raiseExceptionIfCircular:</Name>
+                <Path>interface_typhoon_injection_context.html</Path>
+                <Anchor>a7fee3391384d5332425a28cf3a154be4</Anchor>
+               </Node>
+               <Node>
                 <Name>args</Name>
                 <Path>interface_typhoon_injection_context.html</Path>
                 <Anchor>a681a05c5153c889d6651ac43ccf15f4e</Anchor>
                </Node>
                <Node>
-                <Name>destinationInstanceClass</Name>
+                <Name>classUnderConstruction</Name>
                 <Path>interface_typhoon_injection_context.html</Path>
-                <Anchor>a2f4865e237d0ea67f6a5ab4c90d21446</Anchor>
+                <Anchor>a9f28811f68d3e8442f9a576812a23948</Anchor>
                </Node>
                <Node>
                 <Name>destinationType</Name>
@@ -3284,6 +3290,10 @@
               <Anchor>af37a21437d5df5ccb9dcb5ebe5dd28c5</Anchor>
              </Node>
             </Subnodes>
+           </Node>
+           <Node>
+            <Name>TyphoonInstancePostProcessor.h</Name>
+            <Path>_typhoon_instance_post_processor_8h.html</Path>
            </Node>
            <Node>
             <Name>TyphoonIntrospectionUtils.h</Name>

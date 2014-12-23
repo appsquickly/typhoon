@@ -8,7 +8,6 @@ var searchData=
   ['descriptorwithclassorprotocol_3a',['descriptorWithClassOrProtocol:',['../interface_typhoon_type_descriptor.html#ac1cf6c42d60c8e174d988bdcbe881b1b',1,'TyphoonTypeDescriptor']]],
   ['descriptorwithencodedtype_3a',['descriptorWithEncodedType:',['../interface_typhoon_type_descriptor.html#a66512001ce1c3cd2b95318e7e1202f69',1,'TyphoonTypeDescriptor']]],
   ['descriptorwithtypecode_3a',['descriptorWithTypeCode:',['../interface_typhoon_type_descriptor.html#a8468060fec722072b856e1d470630287',1,'TyphoonTypeDescriptor']]],
-  ['destinationinstanceclass',['destinationInstanceClass',['../interface_typhoon_injection_context.html#a2f4865e237d0ea67f6a5ab4c90d21446',1,'TyphoonInjectionContext']]],
   ['destinationtype',['destinationType',['../interface_typhoon_injection_context.html#a99be856a9a8b59969080599de39a065d',1,'TyphoonInjectionContext']]],
   ['detach',['detach',['../interface_typhoon_patcher.html#a40324f86bead032fbcc9a184d7c40bb6',1,'TyphoonPatcher']]]
 ];

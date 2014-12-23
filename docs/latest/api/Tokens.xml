@@ -1328,7 +1328,7 @@
       <Scope>TyphoonComponentFactory</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a0727001458325fd7d09b6df2e1252180</Anchor>
+    <Anchor>a497444322c5eb57d64a327f170cbd389</Anchor>
     <Abstract>Attach a TyphoonComponentFactoryPostProcessor to this component factory. </Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
@@ -1704,7 +1704,7 @@
       <Scope>TyphoonComponentFactory</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a0727001458325fd7d09b6df2e1252180</Anchor>
+    <Anchor>a497444322c5eb57d64a327f170cbd389</Anchor>
     <Abstract>Attach a TyphoonComponentFactoryPostProcessor to this component factory. </Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
@@ -1918,29 +1918,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>TyphoonComponentFactoryPostProcessor</Name>
-      <APILanguage>c</APILanguage>
-      <Type>intf</Type>
-      <Scope>TyphoonComponentFactoryPostProcessor</Scope>
-    </TokenIdentifier>
-    <Path>protocol_typhoon_component_factory_post_processor-p.html</Path>
-    <Abstract>Allows for custom modification of a component factory&amp;#39;s definitions. </Abstract>
-    <DeclaredIn>TyphoonComponentFactoryPostProcessor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>postProcessComponentFactory:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>intfm</Type>
-      <Scope>TyphoonComponentFactoryPostProcessor-p</Scope>
-    </TokenIdentifier>
-    <Path>protocol_typhoon_component_factory_post_processor-p.html</Path>
-    <Anchor>ab64811c01a873e3a727f017543b29223</Anchor>
-    <Abstract>Post process a component factory after its initialization. </Abstract>
-    <DeclaredIn>TyphoonComponentFactoryPostProcessor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>TyphoonComponentsPool</Name>
       <APILanguage>c</APILanguage>
       <Type>intf</Type>
@@ -2042,15 +2019,15 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>postProcessComponentFactory:</Name>
+      <Name>postProcessDefinitionsInFactory:</Name>
       <APILanguage>occ</APILanguage>
       <Type>intfm</Type>
-      <Scope>TyphoonComponentFactoryPostProcessor-p</Scope>
+      <Scope>TyphoonDefinitionPostProcessor-p</Scope>
     </TokenIdentifier>
-    <Path>protocol_typhoon_component_factory_post_processor-p.html</Path>
-    <Anchor>ab64811c01a873e3a727f017543b29223</Anchor>
+    <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+    <Anchor>aec4cc0d59e693dd7fffa0c7247d05915</Anchor>
     <Abstract>Post process a component factory after its initialization. </Abstract>
-    <DeclaredIn>TyphoonComponentFactoryPostProcessor.h</DeclaredIn>
+    <DeclaredIn>TyphoonDefinitionPostProcessor.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -2470,6 +2447,29 @@
     <Anchor>a96cf46e499d4b083215881a2a9c8808e</Anchor>
     <Abstract>if boolean &amp;#39;option&amp;#39; value is YES, then return yesInjection, otherwise return noInjection ...</Abstract>
     <DeclaredIn>TyphoonDefinition+Option.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>TyphoonDefinitionPostProcessor</Name>
+      <APILanguage>c</APILanguage>
+      <Type>intf</Type>
+      <Scope>TyphoonDefinitionPostProcessor</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+    <Abstract>Allows for custom modification of a component factory&amp;#39;s definitions. </Abstract>
+    <DeclaredIn>TyphoonDefinitionPostProcessor.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>postProcessDefinitionsInFactory:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonDefinitionPostProcessor-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+    <Anchor>aec4cc0d59e693dd7fffa0c7247d05915</Anchor>
+    <Abstract>Post process a component factory after its initialization. </Abstract>
+    <DeclaredIn>TyphoonDefinitionPostProcessor.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -3975,6 +3975,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>initWithFactory:args:raiseExceptionIfCircular:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonInjectionContext</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_injection_context.html</Path>
+    <Anchor>a7fee3391384d5332425a28cf3a154be4</Anchor>
+    <DeclaredIn>TyphoonInjectionContext.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>args</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
@@ -3985,13 +3996,13 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>destinationInstanceClass</Name>
+      <Name>classUnderConstruction</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
       <Scope>TyphoonInjectionContext</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_injection_context.html</Path>
-    <Anchor>a2f4865e237d0ea67f6a5ab4c90d21446</Anchor>
+    <Anchor>a9f28811f68d3e8442f9a576812a23948</Anchor>
     <Abstract>Class of destination instance, - used only for better exception description. </Abstract>
   </Token>
   <Token>
@@ -5185,15 +5196,15 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>postProcessComponentFactory:</Name>
+      <Name>postProcessDefinitionsInFactory:</Name>
       <APILanguage>occ</APILanguage>
       <Type>intfm</Type>
-      <Scope>TyphoonComponentFactoryPostProcessor-p</Scope>
+      <Scope>TyphoonDefinitionPostProcessor-p</Scope>
     </TokenIdentifier>
-    <Path>protocol_typhoon_component_factory_post_processor-p.html</Path>
-    <Anchor>ab64811c01a873e3a727f017543b29223</Anchor>
+    <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+    <Anchor>aec4cc0d59e693dd7fffa0c7247d05915</Anchor>
     <Abstract>Post process a component factory after its initialization. </Abstract>
-    <DeclaredIn>TyphoonComponentFactoryPostProcessor.h</DeclaredIn>
+    <DeclaredIn>TyphoonDefinitionPostProcessor.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
