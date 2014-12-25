@@ -473,7 +473,7 @@
              <Node>
               <Name>patchDefinition:withObject:</Name>
               <Path>interface_typhoon_patcher.html</Path>
-              <Anchor>a958a23e25a16c2a9d8abfbab1cab0786</Anchor>
+              <Anchor>a2ff0c830a483cc0af01ba7f36e85796d</Anchor>
              </Node>
              <Node>
               <Name>patchDefinitionWithKey:withObject:</Name>
@@ -1528,7 +1528,7 @@
              <Node>
               <Name>patchDefinition:withObject:</Name>
               <Path>interface_typhoon_patcher.html</Path>
-              <Anchor>a958a23e25a16c2a9d8abfbab1cab0786</Anchor>
+              <Anchor>a2ff0c830a483cc0af01ba7f36e85796d</Anchor>
              </Node>
              <Node>
               <Name>patchDefinitionWithKey:withObject:</Name>
@@ -1539,6 +1539,17 @@
               <Name>patchDefinitionWithSelector:withObject:</Name>
               <Path>interface_typhoon_patcher.html</Path>
               <Anchor>a439c7ffa79249ea5464584791186b7e7</Anchor>
+             </Node>
+            </Subnodes>
+           </Node>
+           <Node>
+            <Name>TyphoonPatcher(Deprecated)</Name>
+            <Path>category_typhoon_patcher_07_deprecated_08.html</Path>
+            <Subnodes>
+             <Node>
+              <Name>patchDefinition:withObject:</Name>
+              <Path>category_typhoon_patcher_07_deprecated_08.html</Path>
+              <Anchor>a2ff0c830a483cc0af01ba7f36e85796d</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -2211,6 +2222,10 @@
            <Node>
             <Name>&lt;TyphoonIterator&gt;</Name>
             <Path>protocol_typhoon_iterator-p.html</Path>
+           </Node>
+           <Node>
+            <Name>TyphoonPatcher(Deprecated)</Name>
+            <Path>category_typhoon_patcher_07_deprecated_08.html</Path>
            </Node>
            <Node>
             <Name>TyphoonPathResource</Name>
@@ -3503,6 +3518,17 @@
             <Name>TyphoonPatcher.h</Name>
             <Path>_typhoon_patcher_8h.html</Path>
             <Subnodes>
+             <Node>
+              <Name>TyphoonPatcher(Deprecated)</Name>
+              <Path>category_typhoon_patcher_07_deprecated_08.html</Path>
+              <Subnodes>
+               <Node>
+                <Name>patchDefinition:withObject:</Name>
+                <Path>category_typhoon_patcher_07_deprecated_08.html</Path>
+                <Anchor>a2ff0c830a483cc0af01ba7f36e85796d</Anchor>
+               </Node>
+              </Subnodes>
+             </Node>
              <Node>
               <Name>TyphoonPatchObjectCreationBlock</Name>
               <Path>_typhoon_patcher_8h.html</Path>

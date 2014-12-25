@@ -91,6 +91,7 @@ var hierarchy =
       [ "TyphoonAssemblyPropertyInjectionPostProcessor", "interface_typhoon_assembly_property_injection_post_processor.html", null ]
     ] ],
     [ "<TyphoonIterator>", "protocol_typhoon_iterator-p.html", null ],
+    [ "TyphoonPatcher(Deprecated)", "category_typhoon_patcher_07_deprecated_08.html", null ],
     [ "TyphoonPathResource", null, [
       [ "TyphoonBundleResource", "interface_typhoon_bundle_resource.html", null ]
     ] ],

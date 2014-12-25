@@ -38,6 +38,7 @@ var searchData=
   ['typhoonparameterinjection_2dp',['TyphoonParameterInjection-p',['../protocol_typhoon_parameter_injection-p.html',1,'']]],
   ['typhoonpassthroughtypeconverter',['TyphoonPassThroughTypeConverter',['../interface_typhoon_pass_through_type_converter.html',1,'']]],
   ['typhoonpatcher',['TyphoonPatcher',['../interface_typhoon_patcher.html',1,'']]],
+  ['typhoonpatcher_28deprecated_29',['TyphoonPatcher(Deprecated)',['../category_typhoon_patcher_07_deprecated_08.html',1,'']]],
   ['typhoonprimitivetypeconverter',['TyphoonPrimitiveTypeConverter',['../interface_typhoon_primitive_type_converter.html',1,'']]],
   ['typhoonpropertyinjection_2dp',['TyphoonPropertyInjection-p',['../protocol_typhoon_property_injection-p.html',1,'']]],
   ['typhoonresource_2dp',['TyphoonResource-p',['../protocol_typhoon_resource-p.html',1,'']]],

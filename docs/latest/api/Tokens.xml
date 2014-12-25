@@ -4421,7 +4421,8 @@
       <Scope>TyphoonPatcher</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_patcher.html</Path>
-    <Anchor>a958a23e25a16c2a9d8abfbab1cab0786</Anchor>
+    <Anchor>a2ff0c830a483cc0af01ba7f36e85796d</Anchor>
+    <Abstract>This method causes confusion, it only works with a non-activated assembly interface. </Abstract>
     <DeclaredIn>TyphoonPatcher.h</DeclaredIn>
   </Token>
   <Token>
@@ -4444,6 +4445,28 @@
     </TokenIdentifier>
     <Path>interface_typhoon_patcher.html</Path>
     <Anchor>a439c7ffa79249ea5464584791186b7e7</Anchor>
+    <DeclaredIn>TyphoonPatcher.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>TyphoonPatcher(Deprecated)</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cat</Type>
+      <Scope>TyphoonPatcher(Deprecated)</Scope>
+    </TokenIdentifier>
+    <Path>category_typhoon_patcher_07_deprecated_08.html</Path>
+    <DeclaredIn>TyphoonPatcher.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>patchDefinition:withObject:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>func</Type>
+      <Scope>TyphoonPatcher(Deprecated)</Scope>
+    </TokenIdentifier>
+    <Path>category_typhoon_patcher_07_deprecated_08.html</Path>
+    <Anchor>a2ff0c830a483cc0af01ba7f36e85796d</Anchor>
+    <Abstract>This method causes confusion, it only works with a non-activated assembly interface. </Abstract>
     <DeclaredIn>TyphoonPatcher.h</DeclaredIn>
   </Token>
   <Token>
