@@ -23,7 +23,17 @@
 
 - (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
 {
-    return [[self class] viewFromDefinition:[self typhoonKey] originalView:self];
+    id replacement = [[self class] viewFromDefinition:[self typhoonKey] originalView:self];
+    if (replacement != self) {
+        /**
+         * Coupling view loaded from Xib with replacement loaded from Typhoon
+         * to retain view loaded from Xib, to avoid UIKit bug that cause crash.
+         * Reason: Sometimes UIKit sends 'isDescendantOfView:' message during AutoLayout solving
+         * to initially loaded view after it's dealloc. It's strange because this view hasn't superview.
+         * */
+        objc_setAssociatedObject(replacement, "TyphoonXibPrototype", self, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return replacement;
 }
 
 + (id)viewFromDefinition:(NSString *)definitionKey originalView:(UIView *)original
