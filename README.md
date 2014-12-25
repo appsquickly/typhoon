@@ -1,5 +1,5 @@
 ![Build Status](http://www.typhoonframework.org/typhoon-splash.png)
-# (www.typhoonframework.org) 
+# www.typhoonframework.org
 <a href="http://appsquick.broke-it.net/browse/TPN-TC/latest">
 ![Build Status](http://www.typhoonframework.org/build-status/build-status.png?q=z)
 </a>
