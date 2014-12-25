@@ -104,7 +104,7 @@ var NAVTREEINDEX0 =
 "_typhoon_parameter_injection_8h.html":[2,0,61],
 "_typhoon_pass_through_type_converter_8h.html":[2,0,62],
 "_typhoon_patcher_8h.html":[2,0,63],
-"_typhoon_patcher_8h.html#a3c49196dec575d5726ed3af899232c26":[2,0,63,0],
+"_typhoon_patcher_8h.html#a3c49196dec575d5726ed3af899232c26":[2,0,63,1],
 "_typhoon_path_resource_8h.html":[2,0,64],
 "_typhoon_plist_style_configuration_8h.html":[2,0,65],
 "_typhoon_primitive_type_converter_8h.html":[2,0,66],
@@ -173,6 +173,8 @@ var NAVTREEINDEX0 =
 "category_typhoon_definition_07_option_08.html#a96cf46e499d4b083215881a2a9c8808e":[1,0,20,2],
 "category_typhoon_definition_07_option_08.html#ace67617e7c8feea3167bd10342964a3d":[1,0,20,0],
 "category_typhoon_definition_07_option_08.html#af42ffbdb443c1e44379a728b1096becb":[1,0,20,1],
+"category_typhoon_patcher_07_deprecated_08.html":[1,0,44],
+"category_typhoon_patcher_07_deprecated_08.html#a2ff0c830a483cc0af01ba7f36e85796d":[1,0,44,0],
 "files.html":[2,0],
 "functions.html":[1,2,0],
 "functions.html":[1,2,0,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "interface_typhoon_bundle_resource.html#aaa604438fada1faf9566dcc0b7b6182c":[0,2,0,0],
 "interface_typhoon_component_factory.html":[0,0,2],
 "interface_typhoon_component_factory.html#a09b13d5d400d8ca043cc5f1105b8a744":[0,0,2,18],
-"interface_typhoon_component_factory.html#a497444322c5eb57d64a327f170cbd389":[0,0,2,1],
-"interface_typhoon_component_factory.html#a4ec88fe6f78db210ec6556a68f15fae4":[0,0,2,11],
-"interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785":[0,0,2,19]
+"interface_typhoon_component_factory.html#a497444322c5eb57d64a327f170cbd389":[0,0,2,1]
 };

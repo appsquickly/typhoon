@@ -128,6 +128,7 @@ var searchData=
   ['typhoonpassthroughtypeconverter',['TyphoonPassThroughTypeConverter',['../interface_typhoon_pass_through_type_converter.html',1,'']]],
   ['typhoonpassthroughtypeconverter_2eh',['TyphoonPassThroughTypeConverter.h',['../_typhoon_pass_through_type_converter_8h.html',1,'']]],
   ['typhoonpatcher',['TyphoonPatcher',['../interface_typhoon_patcher.html',1,'']]],
+  ['typhoonpatcher_28deprecated_29',['TyphoonPatcher(Deprecated)',['../category_typhoon_patcher_07_deprecated_08.html',1,'']]],
   ['typhoonpatcher_2eh',['TyphoonPatcher.h',['../_typhoon_patcher_8h.html',1,'']]],
   ['typhoonpatchobjectcreationblock',['TyphoonPatchObjectCreationBlock',['../_typhoon_patcher_8h.html#a3c49196dec575d5726ed3af899232c26',1,'TyphoonPatcher.h']]],
   ['typhoonpathresource_2eh',['TyphoonPathResource.h',['../_typhoon_path_resource_8h.html',1,'']]],

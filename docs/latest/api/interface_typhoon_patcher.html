@@ -109,8 +109,9 @@ Inheritance diagram for TyphoonPatcher:</div>
 Instance Methods</h2></td></tr>
 <tr class="memitem:a40324f86bead032fbcc9a184d7c40bb6"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_patcher.html#a40324f86bead032fbcc9a184d7c40bb6">detach</a></td></tr>
 <tr class="separator:a40324f86bead032fbcc9a184d7c40bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a958a23e25a16c2a9d8abfbab1cab0786"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_patcher.html#a958a23e25a16c2a9d8abfbab1cab0786">patchDefinition:withObject:</a></td></tr>
-<tr class="separator:a958a23e25a16c2a9d8abfbab1cab0786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ff0c830a483cc0af01ba7f36e85796d"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_patcher.html#a2ff0c830a483cc0af01ba7f36e85796d">patchDefinition:withObject:</a></td></tr>
+<tr class="memdesc:a2ff0c830a483cc0af01ba7f36e85796d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method causes confusion, it only works with a non-activated assembly interface.  <a href="#a2ff0c830a483cc0af01ba7f36e85796d">More...</a><br /></td></tr>
+<tr class="separator:a2ff0c830a483cc0af01ba7f36e85796d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81cd00d79350a44cc9aa10794377e94c"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_patcher.html#a81cd00d79350a44cc9aa10794377e94c">patchDefinitionWithKey:withObject:</a></td></tr>
 <tr class="separator:a81cd00d79350a44cc9aa10794377e94c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a439c7ffa79249ea5464584791186b7e7"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_patcher.html#a439c7ffa79249ea5464584791186b7e7">patchDefinitionWithSelector:withObject:</a></td></tr>
@@ -135,7 +136,7 @@ Instance Methods</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a958a23e25a16c2a9d8abfbab1cab0786"></a>
+<a class="anchor" id="a2ff0c830a483cc0af01ba7f36e85796d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -158,6 +159,11 @@ Instance Methods</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This method causes confusion, it only works with a non-activated assembly interface. </p>
+<p>Users could (rightly) expect it to work with both. Use the alternative methods: patchDefinitionWithKey: and patchDefinitionWithSelector: </p>
+
+<p>Provided by category <a class="el" href="category_typhoon_patcher_07_deprecated_08.html#a2ff0c830a483cc0af01ba7f36e85796d">TyphoonPatcher(Deprecated)</a>.</p>
 
 </div>
 </div>
@@ -220,7 +226,7 @@ Instance Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
         <li class="navelem"><a class="el" href="interface_typhoon_patcher.html">TyphoonPatcher</a></li>
-        <li class="footer">Generated on Thu Dec 25 2014 12:50:49 for Typhoon by
+        <li class="footer">Generated on Thu Dec 25 2014 12:55:49 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>

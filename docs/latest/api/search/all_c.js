@@ -2,7 +2,7 @@ var searchData=
 [
   ['parameterindex',['parameterIndex',['../interface_typhoon_abstract_injection.html#aa0035185544e056579c9ef2bd18b08fa',1,'TyphoonAbstractInjection::parameterIndex()'],['../protocol_typhoon_parameter_injection-p.html#ae773f1151fc5b4fc33d70714db2be423',1,'TyphoonParameterInjection-p::parameterIndex()']]],
   ['parent',['parent',['../interface_typhoon_definition.html#add76507109b2465e672b7472c408fa05',1,'TyphoonDefinition']]],
-  ['patchdefinition_3awithobject_3a',['patchDefinition:withObject:',['../interface_typhoon_patcher.html#a958a23e25a16c2a9d8abfbab1cab0786',1,'TyphoonPatcher']]],
+  ['patchdefinition_3awithobject_3a',['patchDefinition:withObject:',['../category_typhoon_patcher_07_deprecated_08.html#a2ff0c830a483cc0af01ba7f36e85796d',1,'TyphoonPatcher(Deprecated)::patchDefinition:withObject:()'],['../interface_typhoon_patcher.html#a2ff0c830a483cc0af01ba7f36e85796d',1,'TyphoonPatcher::patchDefinition:withObject:()']]],
   ['patchdefinitionwithkey_3awithobject_3a',['patchDefinitionWithKey:withObject:',['../interface_typhoon_patcher.html#a81cd00d79350a44cc9aa10794377e94c',1,'TyphoonPatcher']]],
   ['patchdefinitionwithselector_3awithobject_3a',['patchDefinitionWithSelector:withObject:',['../interface_typhoon_patcher.html#a439c7ffa79249ea5464584791186b7e7',1,'TyphoonPatcher']]],
   ['performafterinjections_3a',['performAfterInjections:',['../interface_typhoon_definition.html#aa254501ed127ae1a371f42def3ac5797',1,'TyphoonDefinition']]],
