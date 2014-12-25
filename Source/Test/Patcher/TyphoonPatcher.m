@@ -72,10 +72,6 @@
     [_patches setObject:objectCreationBlock forKey:key];
 }
 
-- (void)patchDefinition:(TyphoonDefinition *)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock
-{
-    [self patchDefinitionWithKey:definition.key withObject:objectCreationBlock];
-}
 
 - (void)patchDefinitionWithSelector:(SEL)definitionSelector withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock
 {
@@ -102,5 +98,14 @@
     }];
 }
 
+
+@end
+
+@implementation TyphoonPatcher(Deprecated)
+
+- (void)patchDefinition:(TyphoonDefinition *)definition withObject:(TyphoonPatchObjectCreationBlock)objectCreationBlock
+{
+    [self patchDefinitionWithKey:definition.key withObject:objectCreationBlock];
+}
 
 @end
