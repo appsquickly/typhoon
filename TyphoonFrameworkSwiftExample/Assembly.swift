@@ -1,10 +1,13 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  Assembly.swift
-//  Typhoon
+//  TYPHOON FRAMEWORK
+//  Copyright 2015, Typhoon Framework Contributors
+//  All Rights Reserved.
 //
-//  Created by mike.owens on 12/8/14.
-//  Copyright (c) 2014 typhoonframework.org. All rights reserved.
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
 //
+////////////////////////////////////////////////////////////////////////////////
 
 import Foundation
 import Typhoon
