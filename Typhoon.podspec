@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
   spec.name = 'Typhoon'
   spec.version = '2.3.2'
   spec.license = 'Apache2.0'
-  spec.summary = 'A dependency injection container for Objective-C and Swift. Light-weight, yet flexible and full-featured.'
+  spec.summary = 'Dependency injection for Objective-C and Swift. Light-weight, yet flexible and full-featured.'
   spec.homepage = 'http://www.typhoonframework.org'
   spec.author = {'Jasper Blues, Robert Gilliam, Daniel Rodríguez, Erik Sundin, Aleksey Garbarev & Contributors' => 'info@typhoonframework.org'}
   spec.source = {:git => 'https://github.com/typhoon-framework/Typhoon.git', :tag => spec.version.to_s, :submodules => true}
