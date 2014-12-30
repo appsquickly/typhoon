@@ -18,7 +18,7 @@
 
 - (NSArray *)injectedParameters;
 
-- (void)createInvocationOnClass:(Class)clazz withContext:(TyphoonInjectionContext *)context completion:(void(^)(NSInvocation *invocation))result;
+- (void)createInvocationWithContext:(TyphoonInjectionContext *)context completion:(void(^)(NSInvocation *invocation))result;
 
 - (BOOL)isClassMethodOnClass:(Class)clazz;
 

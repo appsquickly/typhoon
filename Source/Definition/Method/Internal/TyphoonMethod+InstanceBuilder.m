@@ -43,11 +43,11 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
     return [_injectedParameters copy];
 }
 
-- (void)createInvocationOnClass:(Class)clazz withContext:(TyphoonInjectionContext *)context completion:(void(^)(NSInvocation *invocation))result
+- (void)createInvocationWithContext:(TyphoonInjectionContext *)context completion:(void(^)(NSInvocation *invocation))result
 {
-    BOOL isClassMethod = [self isClassMethodOnClass:clazz];
+    BOOL isClassMethod = [self isClassMethodOnClass:context.classUnderConstruction];
     
-    NSMethodSignature *signature = [self methodSignatureWithTarget:clazz isClassMethod:isClassMethod];
+    NSMethodSignature *signature = [self methodSignatureWithTarget:context.classUnderConstruction isClassMethod:isClassMethod];
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
     [invocation retainArguments];
     [invocation setSelector:_selector];

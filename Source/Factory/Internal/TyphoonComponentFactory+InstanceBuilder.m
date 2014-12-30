@@ -10,23 +10,19 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
+#import <Typhoon/Typhoon.h>
+#import <Typhoon/TyphoonInstancePostProcessor.h>
 #import "TyphoonLinkerCategoryBugFix.h"
+#import "TyphoonInjectionContext.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
 
 TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
-#import "TyphoonDefinition+Infrastructure.h"
-#import "TyphoonComponentFactory+InstanceBuilder.h"
-#import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonCallStack.h"
-#import "TyphoonTypeDescriptor.h"
-#import "NSObject+FactoryHooks.h"
 #import "TyphoonMethod+InstanceBuilder.h"
-#import "TyphoonIntrospectionUtils.h"
-#import "TyphoonInstancePostProcessor.h"
 #import "TyphoonStackElement.h"
 #import "NSObject+PropertyInjection.h"
 #import "NSInvocation+TCFInstanceBuilder.h"
-#import "TyphoonInjectionContext.h"
 #import "TyphoonPropertyInjection.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
 #import "TyphoonFactoryAutoInjectionPostProcessor.h"
@@ -60,14 +56,13 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     __block id instance = [definition targetForInitializerWithFactory:self args:args];
     if (definition.initializer) {
         BOOL isClass = IsClass(instance);
-        Class instanceClass = isClass ? (Class)instance : [instance class];
 
         TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] initWithFactory:self args:args raiseExceptionIfCircular:YES];
-        context.classUnderConstruction = instanceClass;
+        context.classUnderConstruction = isClass ? (Class)instance : [instance class];;
 
-        [definition.initializer createInvocationOnClass:instanceClass withContext:context completion:^(NSInvocation *invocation) {
-            if (isClass && ![definition.initializer isClassMethodOnClass:instanceClass]) {
-                instance = [invocation typhoon_resultOfInvokingOnAllocationForClass:instanceClass];
+        [definition.initializer createInvocationWithContext:context completion:^(NSInvocation *invocation) {
+            if (isClass && ![definition.initializer isClassMethodOnClass:context.classUnderConstruction]) {
+                instance = [invocation typhoon_resultOfInvokingOnAllocationForClass:context.classUnderConstruction];
             }
             else {
                 instance = [invocation typhoon_resultOfInvokingOnInstance:instance];
@@ -168,7 +163,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] initWithFactory:self args:args raiseExceptionIfCircular:NO];
     context.classUnderConstruction = [instance class];
 
-    [method createInvocationOnClass:[instance class] withContext:context completion:^(NSInvocation *invocation) {
+    [method createInvocationWithContext:context completion:^(NSInvocation *invocation) {
         [invocation invokeWithTarget:instance];
     }];
 }
