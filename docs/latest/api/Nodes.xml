@@ -442,6 +442,11 @@
               <Path>protocol_typhoon_resource-p.html</Path>
               <Anchor>a17b8f3ba7548a7d8c5ece07fb3f6c461</Anchor>
              </Node>
+             <Node>
+              <Name>url</Name>
+              <Path>protocol_typhoon_resource-p.html</Path>
+              <Anchor>abe95f549e728fd208272f6f33b765bb4</Anchor>
+             </Node>
             </Subnodes>
            </Node>
            <Node>
@@ -1673,6 +1678,11 @@
               <Name>string</Name>
               <Path>protocol_typhoon_resource-p.html</Path>
               <Anchor>a17b8f3ba7548a7d8c5ece07fb3f6c461</Anchor>
+             </Node>
+             <Node>
+              <Name>url</Name>
+              <Path>protocol_typhoon_resource-p.html</Path>
+              <Anchor>abe95f549e728fd208272f6f33b765bb4</Anchor>
              </Node>
             </Subnodes>
            </Node>

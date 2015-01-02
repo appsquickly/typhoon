@@ -204,6 +204,7 @@ var NAVTREEINDEX1 =
 "protocol_typhoon_resource-p.html":[0,2,2],
 "protocol_typhoon_resource-p.html#a17b8f3ba7548a7d8c5ece07fb3f6c461":[0,2,2,2],
 "protocol_typhoon_resource-p.html#a80598e5a413e06fd73152a9220b5b9eb":[0,2,2,1],
+"protocol_typhoon_resource-p.html#abe95f549e728fd208272f6f33b765bb4":[0,2,2,3],
 "protocol_typhoon_resource-p.html#afed07d1fc2e7fb11a2db3073dd53ddd7":[0,2,2,0],
 "protocol_typhoon_type_converter-p.html":[1,0,50],
 "protocol_typhoon_type_converter-p.html#a176193d749424c8f9a5c116217ef09f2":[1,0,50,0],

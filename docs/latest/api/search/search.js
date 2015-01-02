@@ -15,7 +15,7 @@ var indexSectionsWithContent =
   5: "t",
   6: "t",
   7: "t",
-  8: "acdefikloprst",
+  8: "acdefikloprstu",
   9: "cilt",
   10: "cdft",
   11: "t"

@@ -1631,6 +1631,16 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>url</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfp</Type>
+      <Scope>TyphoonResource-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_resource-p.html</Path>
+    <Anchor>abe95f549e728fd208272f6f33b765bb4</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>TyphoonCollection</Name>
       <APILanguage>c</APILanguage>
       <Type>intf</Type>
@@ -4741,6 +4751,16 @@
     <Path>protocol_typhoon_resource-p.html</Path>
     <Anchor>a17b8f3ba7548a7d8c5ece07fb3f6c461</Anchor>
     <Abstract>Returns the resource with the given name, as an NSString using NSUTF8String encoding. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>url</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfp</Type>
+      <Scope>TyphoonResource-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_resource-p.html</Path>
+    <Anchor>abe95f549e728fd208272f6f33b765bb4</Anchor>
   </Token>
   <Token>
     <TokenIdentifier>

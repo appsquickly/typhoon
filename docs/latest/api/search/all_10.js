@@ -2,6 +2,7 @@ var searchData=
 [
   ['unload',['unload',['../interface_typhoon_component_factory.html#a810e359a13f87d375088a78759227692',1,'TyphoonComponentFactory']]],
   ['unregistertypeconverter_3a',['unregisterTypeConverter:',['../interface_typhoon_type_converter_registry.html#a9a9497ffd5d74ea02d2173d653afee01',1,'TyphoonTypeConverterRegistry']]],
+  ['url',['url',['../protocol_typhoon_resource-p.html#abe95f549e728fd208272f6f33b765bb4',1,'TyphoonResource-p']]],
   ['usedefinitionwithkeymatchedoptionvalue',['useDefinitionWithKeyMatchedOptionValue',['../interface_typhoon_option_matcher.html#a3eaf55d707637e82073100543cbed400',1,'TyphoonOptionMatcher']]],
   ['useinitializer_3a',['useInitializer:',['../interface_typhoon_definition.html#ae10af4d4327e3ca6d4e56988bd1c0062',1,'TyphoonDefinition']]],
   ['useinitializer_3aparameters_3a',['useInitializer:parameters:',['../interface_typhoon_definition.html#ae5d354908e1eec474f7e357bb672d795',1,'TyphoonDefinition']]],
