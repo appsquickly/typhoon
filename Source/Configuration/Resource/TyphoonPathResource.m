@@ -15,6 +15,7 @@
 
 @implementation TyphoonPathResource
 {
+    NSString *_path;
     NSData *_data;
 }
 
@@ -27,6 +28,7 @@
 {
     self = [super init];
     if (self) {
+        _path = filePath;
         _data = [[NSData alloc] initWithContentsOfFile:filePath];
     }
     return self;
@@ -46,5 +48,11 @@
 {
     return _data;
 }
+
+- (NSURL *)url
+{
+    return [NSURL fileURLWithPath:_path];
+}
+
 
 @end

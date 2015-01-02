@@ -12,6 +12,7 @@
 #import <XCTest/XCTest.h>
 #import "TyphoonResource.h"
 #import "TyphoonBundleResource.h"
+#import "OCLogTemplate.h"
 
 @interface TyphoonBundleResourceTests : XCTestCase
 @end
@@ -21,35 +22,45 @@
 - (void)test_returns_bundle_resource_as_string
 {
     id <TyphoonResource> resource = [TyphoonBundleResource withName:@"SomeProperties.properties"];
-    NSString *resourceString = [resource asString];
+    NSString* resourceString = [resource asString];
     XCTAssertNotNil(resourceString);
 }
 
 - (void)test_returns_bundle_resource_without_type_as_string
 {
     id <TyphoonResource> resource = [TyphoonBundleResource withName:@"SomeResource"];
-    NSString *resourceString = [resource asString];
+    NSString* resourceString = [resource asString];
     XCTAssertNotNil(resourceString);
 }
 
 - (void)test_returns_bundle_resource_as_data
 {
     id <TyphoonResource> resource = [TyphoonBundleResource withName:@"SomeResource"];
-    NSData *data = [resource data];
+    NSData* data = [resource data];
     XCTAssertNotNil(data);
 }
 
 - (void)test_raises_exception_for_invalid_resource_name
 {
-    @try {
+    @try
+    {
         id <TyphoonResource> resource = [TyphoonBundleResource withName:@"SomeResourceThatDoesNotExist.txt"];
         NSLog(@"Resource: %@", resource);
         XCTFail(@"Should have thrown exception");
     }
-    @catch (NSException *e) {
+    @catch (NSException* e)
+    {
         XCTAssertEqualObjects([e description], @"Resource named 'SomeResourceThatDoesNotExist.txt' not in bundle.");
     }
 
+}
+
+- (void)test_returns_url
+{
+    id <TyphoonResource> resource = [TyphoonBundleResource withName:@"SomeProperties.properties"];
+    XCTAssertNotNil(resource.url);
+
+    LogDebug(@"Url: %@", resource.url);
 }
 
 @end
