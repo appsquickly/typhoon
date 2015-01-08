@@ -16,7 +16,7 @@ Checkout out the <a href="http://www.typhoonframework.org/#features">feature lis
 
 # Usage
 
-* <a href="http://ios.caph.jp/typhoon">日本のドキュメンテーション</a>
+* <a href="http://ios.caph.jp/typhoon/introduction">日本のドキュメンテーション</a>
 * Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a> or <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a>.
 * Try the <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">Swift Sample Application</a> or the <a href="https://github.com/typhoon-framework/Typhoon-example">Objective-C Sample Application</a>. 
 * By popular demand, there's also an sample that features <a href="https://github.com/typhoon-framework/Typhoon-CoreData-RAC-Example">setting up Typhoon with Core Data and Reactive Cocoa</a>.
