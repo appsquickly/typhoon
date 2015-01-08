@@ -16,11 +16,11 @@ Checkout out the <a href="http://www.typhoonframework.org/#features">feature lis
 
 # Usage
 
-* <a href="http://ios.caph.jp/typhoon/introduction">日本のドキュメンテーション</a>
 * Read the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Quick Start</a> or <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a>.
 * Try the <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">Swift Sample Application</a> or the <a href="https://github.com/typhoon-framework/Typhoon-example">Objective-C Sample Application</a>. 
 * By popular demand, there's also an sample that features <a href="https://github.com/typhoon-framework/Typhoon-CoreData-RAC-Example">setting up Typhoon with Core Data and Reactive Cocoa</a>.
 * Here are the <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>. Generally googling a Typhoon class name will return the correct page as the first hit. 
+* <a href="http://ios.caph.jp/typhoon/introduction">日本のドキュメンテーション</a>
 
 
 # Installing
@@ -29,13 +29,19 @@ Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods
 
 # Feedback
 
-| I need help because | Action |
-| :---------- | :------ | 
-I'm not sure how to do [xyz]  | Typhoon users and contributors monitor the Typhoon tag on <a href="http://stackoverflow.com/questions/tagged/typhoon?sort=newest&pageSize=15">Stack Overflow</a>. Chances are your question can be answered there. 
-Bugs and new feature requests | Please raise a <a href="https://github.com/typhoon-framework/Typhoon/issues">GitHub issue</a>.
-I'll take all the help I can get | While Typhoon is free, open-source and volunteer based, if you're interested in professional consultation/support we do maintain a list of experts and companies that can provide services. Get in touch with us, and we'll do our best to connect you. 
+### I'm not sure how to do [xyz]
 
-**Typhoon is a free and community driven project. We only ask that if you've found it useful to please let us know by starring us on Github, sending a tweet mentioning us or emailing info@typhoonframework.org! And if not, please let us know what you would like improved.**
+Typhoon users and contributors monitor the Typhoon tag on <a href="http://stackoverflow.com/questions/tagged/typhoon?sort=newest&pageSize=15">Stack Overflow</a>. Chances are your question can be answered there. 
+
+### Bugs and new feature requests
+
+Please raise a <a href="https://github.com/typhoon-framework/Typhoon/issues">GitHub issue</a>.
+
+### I'll take all the help I can get
+
+While Typhoon is free, open-source and volunteer based, if you're interested in professional consultation/support we do maintain a list of experts and companies that can provide services. Get in touch with us, and we'll do our best to connect you. 
+
+**Typhoon is a non-profit, community driven project. We only ask that if you've found it useful to please let us know by starring us on Github, sending a tweet mentioning us or emailing info@typhoonframework.org! And if not, please let us know what you would like improved.**
 
 # Contributing
 
