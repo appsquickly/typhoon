@@ -197,7 +197,7 @@ static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSigna
         return (__bridge id) result;
     }
     else {
-        return objc_msgSend(target, selector);
+        return ((id (*)(id, SEL))objc_msgSend)(target, selector);
     }
 }
 
