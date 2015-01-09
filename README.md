@@ -42,9 +42,9 @@ Typhoon is a non-profit, community driven project. We only ask that if you've fo
 
 Typhoon is sponsored and lead by <a href="http://appsquick.ly">AppsQuick.ly</a> with <a href="https://github.com/appsquickly/Typhoon/graphs/contributors">contributions from around the world</a>. 
 
-# Contributing
+# Interested in contributing?
 
-Interested in contributing? Great! Here's the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">contribution guide.</a>
+ Great! Here's the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">contribution guide.</a>
 
 # LICENSE
 
