@@ -37,7 +37,7 @@ If you can't find what you need in the Quick Start or User Guides above, then Ty
 
 Please raise a <a href="https://github.com/typhoon-framework/Typhoon/issues">GitHub issue</a>.
 
-### I'm Blown Away!
+### I'm blown away!
 
 Typhoon is a non-profit, community driven project. We only ask that if you've found it useful to star us on Github or send a tweet mentioning us (@appsquickly). If you've written Typhoon related blog or tutorial, or published a new Typhoon powered app, we'd certainly be happy to hear about that too. 
 
