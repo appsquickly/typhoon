@@ -17,7 +17,6 @@
 
 @interface TyphoonStartup : NSObject
 
-
 + (TyphoonComponentFactory *)initialFactory;
 
 @end

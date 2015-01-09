@@ -15,6 +15,8 @@
 #import "TyphoonBlockComponentFactory.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
+
+
 #import <objc/runtime.h>
 
 #if TARGET_OS_IPHONE
@@ -35,61 +37,22 @@
 
 + (void)load
 {
-    __weak __typeof (self) weakSelf = self;
+    __weak __typeof(self) weakSelf = self;
     [[NSNotificationCenter defaultCenter]
-         addObserverForName:ApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-        [weakSelf releaseInitialFactory];
-    }];
+        addObserverForName:ApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue]
+        usingBlock:^(NSNotification* note) {
+            [weakSelf releaseInitialFactory];
+        }];
 
     [self swizzleSetDelegateMethodOnApplicationClass];
 }
 
-+ (TyphoonComponentFactory *)factoryFromPlist
++ (TyphoonComponentFactory*)factoryFromAppDelegate:(id)appDelegate
 {
-    TyphoonComponentFactory *result = nil;
+    TyphoonComponentFactory* result = nil;
 
-    NSArray *assemblyNames = [self plistAssemblyNames];
-    NSAssert(!assemblyNames || [assemblyNames isKindOfClass:[NSArray class]], @"Value for 'TyphoonInitialAssemblies' key must be array");
-
-    if ([assemblyNames count] > 0) {
-        NSMutableArray *assemblies = [[NSMutableArray alloc] initWithCapacity:[assemblyNames count]];
-        for (NSString *assemblyName in assemblyNames) {
-            Class cls = TyphoonClassFromString(assemblyName);
-            if (!cls) {
-                [NSException raise:NSInvalidArgumentException format:@"Can't resolve assembly for name %@", assemblyName];
-            }
-            [assemblies addObject:[cls assembly]];
-        }
-        result = [TyphoonBlockComponentFactory factoryWithAssemblies:assemblies];
-    }
-
-    return result;
-}
-
-+ (NSArray *)plistAssemblyNames
-{
-    NSArray *names = nil;
-
-    NSDictionary *bundleInfoDictionary = [[NSBundle mainBundle] infoDictionary];
-#if TARGET_OS_IPHONE
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        names = bundleInfoDictionary[@"TyphoonInitialAssemblies(iPad)"];
-    } else {
-        names = bundleInfoDictionary[@"TyphoonInitialAssemblies(iPhone)"];
-    }
-#endif
-    if (!names) {
-        names = bundleInfoDictionary[@"TyphoonInitialAssemblies"];
-    }
-
-    return names;
-}
-
-+ (TyphoonComponentFactory *)factoryFromAppDelegate:(id)appDelegate
-{
-    TyphoonComponentFactory *result = nil;
-
-    if ([appDelegate respondsToSelector:@selector(initialFactory)]) {
+    if ([appDelegate respondsToSelector:@selector(initialFactory)])
+    {
         result = [appDelegate initialFactory];
     }
 
@@ -98,14 +61,14 @@
 
 #pragma mark -
 
-static TyphoonComponentFactory *initialFactory;
+static TyphoonComponentFactory* initialFactory;
 
 + (void)loadInitialFactory
 {
-    initialFactory = [self factoryFromPlist];
+    initialFactory = [TyphoonBlockComponentFactory factoryFromPlistInBundle:[NSBundle mainBundle]];
 }
 
-+ (TyphoonComponentFactory *)initialFactory
++ (TyphoonComponentFactory*)initialFactory
 {
     return initialFactory;
 }
@@ -114,27 +77,32 @@ static TyphoonComponentFactory *initialFactory;
 {
     SEL sel = @selector(setDelegate:);
     Method method = class_getInstanceMethod(ApplicationClass, sel);
-    
-    void(*originalImp)(id,SEL,id) = (void(*)(id,SEL,id))method_getImplementation(method);
-    
+
+    void(* originalImp)(id, SEL, id) = (void (*)(id, SEL, id)) method_getImplementation(method);
+
     IMP adjustedImp = imp_implementationWithBlock(^(id instance, id delegate) {
         [self loadInitialFactory];
         id factoryFromDelegate = [self factoryFromAppDelegate:delegate];
-        if (factoryFromDelegate && initialFactory) {
-            [NSException raise:NSInternalInconsistencyException format:@"The method 'initialFactory' is implemented on %@, also Info.plist"
-                                                                           " has 'TyphoonInitialAssemblies' key. Typhoon can't decide which factory to use.", [delegate class]];
+        if (factoryFromDelegate && initialFactory)
+        {
+            [NSException raise:NSInternalInconsistencyException
+                format:@"The method 'initialFactory' is implemented on %@, also Info.plist"
+                           " has 'TyphoonInitialAssemblies' key. Typhoon can't decide which factory to use.",
+                       [delegate class]];
         }
-        if (factoryFromDelegate) {
+        if (factoryFromDelegate)
+        {
             initialFactory = factoryFromDelegate;
         }
-        if (initialFactory) {
+        if (initialFactory)
+        {
             [self injectInitialFactoryIntoDelegate:delegate];
             [TyphoonComponentFactory setFactoryForResolvingFromXibs:initialFactory];
         }
 
         originalImp(instance, sel, delegate);
     });
-    
+
     method_setImplementation(method, adjustedImp);
 }
 
@@ -148,7 +116,7 @@ static TyphoonComponentFactory *initialFactory;
 + (void)injectInitialFactoryIntoDelegate:(id)appDelegate
 {
     [initialFactory load];
-    TyphoonDefinition *definition = [[initialFactory allDefinitionsForType:[appDelegate class]] lastObject];
+    TyphoonDefinition* definition = [[initialFactory allDefinitionsForType:[appDelegate class]] lastObject];
     [initialFactory doInjectionEventsOn:appDelegate withDefinition:definition args:nil];
     [initialFactory registerInstance:appDelegate asSingletonForDefinition:definition];
 }
