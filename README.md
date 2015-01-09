@@ -33,7 +33,7 @@ Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods
 
 If you can't find what you need in the Quick Start or User Guides above, then Typhoon users and contributors monitor the Typhoon tag on <a href="http://stackoverflow.com/questions/tagged/typhoon?sort=newest&pageSize=15">Stack Overflow</a>. Chances are your question can be answered there. 
 
-### Bugs and new feature requests
+### I've found a bug, or have a feature request
 
 Please raise a <a href="https://github.com/typhoon-framework/Typhoon/issues">GitHub issue</a>.
 
