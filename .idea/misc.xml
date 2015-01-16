@@ -11,5 +11,7 @@
     <resource url="http://www.typhoonframework.org/schema/assembly" location="$PROJECT_DIR$/schema/assembly.xsd" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="1.7" project-jdk-type="JavaSDK" />
+  <component name="UnicodeBrowser">
+    <option name="fontName" value="Menlo" />
+  </component>
 </project>
-
