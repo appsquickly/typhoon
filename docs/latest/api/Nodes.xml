@@ -49,6 +49,11 @@
               <Anchor>a83d50fdf461c4f3341a2db7ce79e901c</Anchor>
              </Node>
              <Node>
+              <Name>factoryFromPlistInBundle:</Name>
+              <Path>interface_typhoon_block_component_factory.html</Path>
+              <Anchor>a3f8889d2ee60f6dbee9e2d6428fb1c2d</Anchor>
+             </Node>
+             <Node>
               <Name>factoryWithAssemblies:</Name>
               <Path>interface_typhoon_block_component_factory.html</Path>
               <Anchor>a76771b48a6bca0ae838a5a4ecb5d6c38</Anchor>
@@ -746,6 +751,11 @@
               <Name>asAssembly</Name>
               <Path>interface_typhoon_block_component_factory.html</Path>
               <Anchor>a83d50fdf461c4f3341a2db7ce79e901c</Anchor>
+             </Node>
+             <Node>
+              <Name>factoryFromPlistInBundle:</Name>
+              <Path>interface_typhoon_block_component_factory.html</Path>
+              <Anchor>a3f8889d2ee60f6dbee9e2d6428fb1c2d</Anchor>
              </Node>
              <Node>
               <Name>factoryWithAssemblies:</Name>

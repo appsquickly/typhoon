@@ -1463,6 +1463,18 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>factoryFromPlistInBundle:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonBlockComponentFactory</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_block_component_factory.html</Path>
+    <Anchor>a3f8889d2ee60f6dbee9e2d6428fb1c2d</Anchor>
+    <Abstract>Returns a factory by loading the assemblies specified in the bundle&amp;#39;s plist. </Abstract>
+    <DeclaredIn>TyphoonBlockComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>factoryWithAssemblies:</Name>
       <APILanguage>occ</APILanguage>
       <Type>clm</Type>
