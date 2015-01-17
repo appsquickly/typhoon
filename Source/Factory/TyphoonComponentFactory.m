@@ -397,13 +397,12 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
 
         id <TyphoonComponentsPool> pool = [self poolForDefinition:definition];
         id instance = nil;
-        @synchronized (self) {
-            NSString *poolKey = [self poolKeyForDefinition:definition args:args];
-            instance = [pool objectForKey:poolKey];
-            if (instance == nil) {
-                instance = [self buildSharedInstanceForDefinition:definition args:args];
-                [pool setObject:instance forKey:poolKey];
-            }
+
+        NSString *poolKey = [self poolKeyForDefinition:definition args:args];
+        instance = [pool objectForKey:poolKey];
+        if (instance == nil) {
+            instance = [self buildSharedInstanceForDefinition:definition args:args];
+            [pool setObject:instance forKey:poolKey];
         }
 
         if ([_stack isEmpty]) {
