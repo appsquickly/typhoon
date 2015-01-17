@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mg8-lN-kDC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mg8-lN-kDC">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -41,10 +40,10 @@
             </objects>
             <point key="canvasLocation" x="-179" y="-131"/>
         </scene>
-        <!--View Controller - initial_first-->
+        <!--initial_first-->
         <scene sceneID="hKB-7p-bzT">
             <objects>
-                <viewController storyboardIdentifier="first" title="initial_first" id="9MY-L9-RLM" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="first" title="initial_first" id="9MY-L9-RLM" customClass="StoryboardInitialViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gas-Bq-OmT"/>
                         <viewControllerLayoutGuide type="bottom" id="dPO-Rz-7Xx"/>
@@ -78,7 +77,7 @@
             </objects>
             <point key="canvasLocation" x="-179" y="589"/>
         </scene>
-        <!--View Controller - initial_second-->
+        <!--initial_second-->
         <scene sceneID="TZ1-o6-Fa4">
             <objects>
                 <viewController storyboardIdentifier="second" title="initial_second" id="rqb-Fg-W14" sceneMemberID="viewController">
@@ -100,7 +99,7 @@
             </objects>
             <point key="canvasLocation" x="291" y="589"/>
         </scene>
-        <!--Unique View Controller - initial_unique-->
+        <!--initial_unique-->
         <scene sceneID="381-2Z-vYR">
             <objects>
                 <viewController storyboardIdentifier="unique" title="initial_unique" id="zoM-pS-euc" customClass="UniqueViewController" sceneMemberID="viewController">

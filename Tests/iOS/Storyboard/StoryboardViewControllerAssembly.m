@@ -12,32 +12,46 @@
 #import "StoryboardViewControllerAssembly.h"
 #import "Typhoon.h"
 #import "UniqueViewController.h"
+#import "StoryboardInitialViewController.h"
+#import "StoryboardInitialViewController.h"
 #import <UIKit/UIKit.h>
 
 @implementation StoryboardViewControllerAssembly
 
-- (id)initialViewController
+- (StoryboardInitialViewController *)initialViewController
 {
     return [TyphoonDefinition withClass:[UIViewController class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(title) with:@"Initial"];
-    }];
+            [definition injectProperty:@selector(title) with:@"Initial"];
+        }];
 }
 
-- (id)firstViewController
+
+- (UIViewController *)firstViewController
 {
-    return [TyphoonDefinition withClass:[UIViewController class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(title) with:@"First"];
-    }];
+    return [TyphoonDefinition withClass:[StoryboardInitialViewController class]
+        configuration:^(TyphoonDefinition *definition) {
+            [definition injectProperty:@selector(title) with:@"First"];
+            [definition injectProperty:@selector(dependency) with:[self dependency]];
+        }];
 }
 
-- (id)secondViewController
+- (StoryboardControllerDependency *)dependency
+{
+    return [TyphoonDefinition withClass:[StoryboardControllerDependency class]
+        configuration:^(TyphoonDefinition *definition) {
+            [definition injectProperty:@selector(circularDependencyBackToViewController)
+                with:[self firstViewController]];
+        }];
+}
+
+- (UIViewController *)secondViewController
 {
     return [TyphoonDefinition withClass:[UIViewController class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(title) with:@"Second"];
     }];
 }
 
-- (id)uniqueViewController
+- (UIViewController *)uniqueViewController
 {
     return [TyphoonDefinition withClass:[UniqueViewController class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(title) with:@"Unique"];

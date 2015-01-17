@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  TYPHOON FRAMEWORK
-//  Copyright 2013, Typhoon Framework Contributors
+//  Copyright 2015, Typhoon Framework Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -9,19 +9,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
-#import "TyphoonAssembly.h"
+#import <Foundation/Foundation.h>
 
 @class StoryboardInitialViewController;
 
-@interface StoryboardViewControllerAssembly : TyphoonAssembly
 
-- (StoryboardInitialViewController *)initialViewController;
+@interface StoryboardControllerDependency : NSObject
 
-- (UIViewController *)firstViewController;
-
-- (UIViewController *)secondViewController;
-
-- (UIViewController *)uniqueViewController;
+@property (nonatomic, weak) StoryboardInitialViewController *circularDependencyBackToViewController;
 
 @end
