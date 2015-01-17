@@ -21,7 +21,7 @@
 
 - (TyphoonDefinition *)definitionForKey:(NSString *)key;
 
-- (id)objectForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args;
+- (id)newOrScopeCachedInstanceForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args;
 
 - (void)addDefinitionToRegistry:(TyphoonDefinition *)definition;
 

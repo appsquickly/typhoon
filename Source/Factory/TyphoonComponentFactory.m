@@ -149,7 +149,7 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
 - (id)componentForType:(id)classOrProtocol
 {
     [self loadIfNeeded];
-    return [self objectForDefinition:[self definitionForType:classOrProtocol] args:nil];
+    return [self newOrScopeCachedInstanceForDefinition:[self definitionForType:classOrProtocol] args:nil];
 }
 
 - (NSArray *)allComponentsForType:(id)classOrProtocol
@@ -158,7 +158,7 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
     NSMutableArray *results = [[NSMutableArray alloc] init];
     NSArray *definitions = [self allDefinitionsForType:classOrProtocol];
     for (TyphoonDefinition *definition in definitions) {
-        [results addObject:[self objectForDefinition:definition args:nil]];
+        [results addObject:[self newOrScopeCachedInstanceForDefinition:definition args:nil]];
     }
     return [results copy];
 }
@@ -181,7 +181,7 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
         [NSException raise:NSInvalidArgumentException format:@"No component matching id '%@'.", key];
     }
 
-    return [self objectForDefinition:definition args:args];
+    return [self newOrScopeCachedInstanceForDefinition:definition args:args];
 }
 
 - (void)loadIfNeeded
@@ -338,7 +338,7 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
 {
     [_registry enumerateObjectsUsingBlock:^(TyphoonDefinition *definition, NSUInteger idx, BOOL *stop) {
         if (definition.scope == TyphoonScopeSingleton) {
-            [self objectForDefinition:definition args:nil];
+            [self newOrScopeCachedInstanceForDefinition:definition args:nil];
         }
     }];
 }
@@ -384,7 +384,7 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
     return nil;
 }
 
-- (id)objectForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
+- (id)newOrScopeCachedInstanceForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
     if (definition.abstract) {
         [NSException raise:NSInvalidArgumentException format:@"Attempt to instantiate abstract definition: %@",
