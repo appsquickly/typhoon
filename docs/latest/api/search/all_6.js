@@ -16,7 +16,7 @@ var searchData=
   ['initwithstring_3a',['initWithString:',['../interface_typhoon_injection_by_object_from_string.html#adafd7b4494ae9aa8db7fe0a129f7d154',1,'TyphoonInjectionByObjectFromString']]],
   ['initwithtypecode_3a',['initWithTypeCode:',['../interface_typhoon_type_descriptor.html#abeb253dff8861986d28c83bc2f73fb8d',1,'TyphoonTypeDescriptor']]],
   ['inject_3a',['inject:',['../interface_typhoon_component_factory.html#a82c437de9ea7059e9c2bd148a2f38baa',1,'TyphoonComponentFactory']]],
-  ['inject_3awithdefinition_3a',['inject:withDefinition:',['../interface_typhoon_component_factory.html#a78a4e4fc448f359100ac16bea350f41a',1,'TyphoonComponentFactory']]],
+  ['inject_3awithselector_3a',['inject:withSelector:',['../interface_typhoon_component_factory.html#af8164cc8d3bdf9fbdb723e5a5b0011fa',1,'TyphoonComponentFactory']]],
   ['injectedprotocol',['InjectedProtocol',['../_typhoon_auto_injection_8h.html#ae73cb690bfababa9898655627175ba7d',1,'TyphoonAutoInjection.h']]],
   ['injectmethod_3aparameters_3a',['injectMethod:parameters:',['../interface_typhoon_definition.html#a6052afa42a4a9a206dfac94cbd7f5e86',1,'TyphoonDefinition']]],
   ['injectparameterwith_3a',['injectParameterWith:',['../interface_typhoon_method.html#ac9c073e76872ccce153960253c6352db',1,'TyphoonMethod']]],

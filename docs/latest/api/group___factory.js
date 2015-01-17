@@ -24,7 +24,7 @@ var group___factory =
       [ "enumerateDefinitions:", "interface_typhoon_component_factory.html#a57cb1e89e38d67d01c72cc36bf592d3a", null ],
       [ "factoryForResolvingFromXibs", "interface_typhoon_component_factory.html#a9f9dfff1c95f8c83303889d7202df414", null ],
       [ "inject:", "interface_typhoon_component_factory.html#a82c437de9ea7059e9c2bd148a2f38baa", null ],
-      [ "inject:withDefinition:", "interface_typhoon_component_factory.html#a78a4e4fc448f359100ac16bea350f41a", null ],
+      [ "inject:withSelector:", "interface_typhoon_component_factory.html#af8164cc8d3bdf9fbdb723e5a5b0011fa", null ],
       [ "load", "interface_typhoon_component_factory.html#a5682d54bbebb3e5eca92707339bee4ce", null ],
       [ "makeDefault", "interface_typhoon_component_factory.html#a4ec88fe6f78db210ec6556a68f15fae4", null ],
       [ "registerDefinition:", "interface_typhoon_component_factory.html#ae4569eb6aebca4089de316d2b80d34d1", null ],

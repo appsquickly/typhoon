@@ -1392,13 +1392,13 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>inject:withDefinition:</Name>
+      <Name>inject:withSelector:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
       <Scope>TyphoonComponentFactory</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a78a4e4fc448f359100ac16bea350f41a</Anchor>
+    <Anchor>af8164cc8d3bdf9fbdb723e5a5b0011fa</Anchor>
     <Abstract>Injects the properties and methods of an object, described in definition. </Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
@@ -1790,13 +1790,13 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>inject:withDefinition:</Name>
+      <Name>inject:withSelector:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
       <Scope>TyphoonComponentFactory</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a78a4e4fc448f359100ac16bea350f41a</Anchor>
+    <Anchor>af8164cc8d3bdf9fbdb723e5a5b0011fa</Anchor>
     <Abstract>Injects the properties and methods of an object, described in definition. </Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
