@@ -244,15 +244,6 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
     }
 }
 
-static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition *definition)
-{
-    if (definition.scope == TyphoonScopeWeakSingleton || definition.scope == TyphoonScopeLazySingleton ||
-        definition.scope == TyphoonScopeSingleton) {
-        NSLog(
-            @"Notice: injecting instance '<%@ %p>' with '%@' definition, but this definition scoped as singletone. Instance '<%@ %p>' will not be registered in singletons pool for this definition since was created outside typhoon",
-            [instance class], (__bridge void *) instance, definition.key, [instance class], (__bridge void *) instance);
-    }
-}
 
 - (void)inject:(id)instance
 {
@@ -261,7 +252,6 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
         TyphoonDefinition
             *definitionForInstance = [self definitionForType:[instance class] orNil:YES includeSubclasses:NO];
         if (definitionForInstance) {
-            AssertDefinitionScopeForInjectMethod(instance, definitionForInstance);
             [self doInjectionEventsOn:instance withDefinition:definitionForInstance args:nil];
         }
     }
@@ -273,9 +263,14 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
         [self loadIfNeeded];
         TyphoonDefinition *definition = [self definitionForKey:NSStringFromSelector(selector)];
         if (definition) {
-            AssertDefinitionScopeForInjectMethod(instance, definition);
+            id <TyphoonComponentsPool> pool = [self poolForDefinition:definition];
+            [pool setObject:instance forKey:definition.key];
             [_stack push:[TyphoonStackElement elementWithKey:definition.key args:nil]];
             [self doInjectionEventsOn:instance withDefinition:definition args:nil];
+            [_stack pop];
+            if ([_stack isEmpty]) {
+                [_objectGraphSharedInstances removeAllObjects];
+            }
         }
         else {
             [NSException raise:NSInvalidArgumentException format:@"Can't find definition for specified selector %@",
@@ -343,13 +338,12 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
 {
     [_registry enumerateObjectsUsingBlock:^(TyphoonDefinition *definition, NSUInteger idx, BOOL *stop) {
         if (definition.scope == TyphoonScopeSingleton) {
-            [self sharedInstanceForDefinition:definition args:nil fromPool:_singletons];
+            [self newOrCachedInstanceForDefinition:definition args:nil fromPool:_singletons];
         }
     }];
 }
 
-- (id)sharedInstanceForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
-    fromPool:(id <TyphoonComponentsPool>)pool
+- (id)newOrCachedInstanceForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args fromPool:(id <TyphoonComponentsPool>)pool
 {
     @synchronized (self) {
         NSString *poolKey = [self poolKeyForDefinition:definition args:args];
@@ -369,6 +363,22 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
     }
     else {
         return definition.key;
+    }
+}
+
+- (id <TyphoonComponentsPool>)poolForDefinition:(TyphoonDefinition *)definition
+{
+    switch (definition.scope) {
+        case TyphoonScopeSingleton:
+        case TyphoonScopeLazySingleton:
+            return _singletons;
+        case TyphoonScopeWeakSingleton:
+            return _weakSingletons;
+        case TyphoonScopeObjectGraph:
+            return _objectGraphSharedInstances;
+        default:
+        case TyphoonScopePrototype:
+            return nil;
     }
 }
 
@@ -396,23 +406,8 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
 
     @synchronized (self) {
 
-        id instance = nil;
-        switch (definition.scope) {
-            case TyphoonScopeSingleton:
-            case TyphoonScopeLazySingleton:
-                instance = [self sharedInstanceForDefinition:definition args:args fromPool:_singletons];
-                break;
-            case TyphoonScopeWeakSingleton:
-                instance = [self sharedInstanceForDefinition:definition args:args fromPool:_weakSingletons];
-                break;
-            case TyphoonScopeObjectGraph:
-                instance = [self sharedInstanceForDefinition:definition args:args fromPool:_objectGraphSharedInstances];
-                break;
-            default:
-            case TyphoonScopePrototype:
-                instance = [self buildInstanceWithDefinition:definition args:args];
-                break;
-        }
+        id <TyphoonComponentsPool> pool = [self poolForDefinition:definition];
+        id instance = [self newOrCachedInstanceForDefinition:definition args:args fromPool:pool];
 
         if ([_stack isEmpty]) {
             [_objectGraphSharedInstances removeAllObjects];
@@ -431,5 +426,6 @@ static void AssertDefinitionScopeForInjectMethod(id instance, TyphoonDefinition 
 {
     [_componentPostProcessors addObject:postProcessor];
 }
+
 
 @end
