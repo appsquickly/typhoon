@@ -338,22 +338,9 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
 {
     [_registry enumerateObjectsUsingBlock:^(TyphoonDefinition *definition, NSUInteger idx, BOOL *stop) {
         if (definition.scope == TyphoonScopeSingleton) {
-            [self newOrCachedInstanceForDefinition:definition args:nil fromPool:_singletons];
+            [self objectForDefinition:definition args:nil];
         }
     }];
-}
-
-- (id)newOrCachedInstanceForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args fromPool:(id <TyphoonComponentsPool>)pool
-{
-    @synchronized (self) {
-        NSString *poolKey = [self poolKeyForDefinition:definition args:args];
-        id instance = [pool objectForKey:poolKey];
-        if (instance == nil) {
-            instance = [self buildSharedInstanceForDefinition:definition args:args];
-            [pool setObject:instance forKey:poolKey];
-        }
-        return instance;
-    }
 }
 
 - (NSString *)poolKeyForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
@@ -407,7 +394,15 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
     @synchronized (self) {
 
         id <TyphoonComponentsPool> pool = [self poolForDefinition:definition];
-        id instance = [self newOrCachedInstanceForDefinition:definition args:args fromPool:pool];
+        id instance = nil;
+        @synchronized (self) {
+            NSString *poolKey = [self poolKeyForDefinition:definition args:args];
+            instance = [pool objectForKey:poolKey];
+            if (instance == nil) {
+                instance = [self buildSharedInstanceForDefinition:definition args:args];
+                [pool setObject:instance forKey:poolKey];
+            }
+        }
 
         if ([_stack isEmpty]) {
             [_objectGraphSharedInstances removeAllObjects];
