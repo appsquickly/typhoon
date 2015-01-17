@@ -71,7 +71,7 @@ static const char *kTyphoonKey;
 - (void)injectPropertiesForViewController:(UIViewController *)viewController
 {
     if (viewController.typhoonKey.length > 0) {
-        [self.factory inject:viewController withDefinition:NSSelectorFromString(viewController.typhoonKey)];
+        [self.factory inject:viewController withSelector:NSSelectorFromString(viewController.typhoonKey)];
     }
     else {
         [self.factory inject:viewController];

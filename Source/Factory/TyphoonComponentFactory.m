@@ -252,27 +252,18 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
         TyphoonDefinition
             *definitionForInstance = [self definitionForType:[instance class] orNil:YES includeSubclasses:NO];
         if (definitionForInstance) {
-            [self doInjectionEventsOn:instance withDefinition:definitionForInstance args:nil];
+            [self inject:instance withDefinition:definitionForInstance];
         }
     }
 }
 
-- (void)inject:(id)instance withDefinition:(SEL)selector
+- (void)inject:(id)instance withSelector:(SEL)selector
 {
     @synchronized (self) {
         [self loadIfNeeded];
         TyphoonDefinition *definition = [self definitionForKey:NSStringFromSelector(selector)];
         if (definition) {
-            id <TyphoonComponentsPool> pool = [self poolForDefinition:definition];
-            [pool setObject:instance forKey:definition.key];
-            TyphoonStackElement *element = [TyphoonStackElement elementWithKey:definition.key args:nil];
-            [element takeInstance:instance];
-            [_stack push:element];
-            [self doInjectionEventsOn:instance withDefinition:definition args:nil];
-            [_stack pop];
-            if ([_stack isEmpty]) {
-                [_objectGraphSharedInstances removeAllObjects];
-            }
+            [self inject:instance withDefinition:definition];
         }
         else {
             [NSException raise:NSInvalidArgumentException format:@"Can't find definition for specified selector %@",
@@ -368,6 +359,22 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
         default:
         case TyphoonScopePrototype:
             return nil;
+    }
+}
+
+- (void)inject:(id)instance withDefinition:(TyphoonDefinition *)definition
+{
+    @synchronized (self) {
+        id <TyphoonComponentsPool> pool = [self poolForDefinition:definition];
+        [pool setObject:instance forKey:definition.key];
+        TyphoonStackElement *element = [TyphoonStackElement elementWithKey:definition.key args:nil];
+        [element takeInstance:instance];
+        [_stack push:element];
+        [self doInjectionEventsOn:instance withDefinition:definition args:nil];
+        [_stack pop];
+        if ([_stack isEmpty]) {
+            [_objectGraphSharedInstances removeAllObjects];
+        }
     }
 }
 

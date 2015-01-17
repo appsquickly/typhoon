@@ -180,6 +180,6 @@
 /**
  * Injects the properties and methods of an object, described in definition
  */
-- (void)inject:(id)instance withDefinition:(SEL)selector;
+- (void)inject:(id)instance withSelector:(SEL)selector;
 
 @end
