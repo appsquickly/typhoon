@@ -265,7 +265,9 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
         if (definition) {
             id <TyphoonComponentsPool> pool = [self poolForDefinition:definition];
             [pool setObject:instance forKey:definition.key];
-            [_stack push:[TyphoonStackElement elementWithKey:definition.key args:nil]];
+            TyphoonStackElement *element = [TyphoonStackElement elementWithKey:definition.key args:nil];
+            [element takeInstance:instance];
+            [_stack push:element];
             [self doInjectionEventsOn:instance withDefinition:definition args:nil];
             [_stack pop];
             if ([_stack isEmpty]) {

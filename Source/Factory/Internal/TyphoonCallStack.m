@@ -44,14 +44,14 @@
 //-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods
 
-- (void)push:(TyphoonStackElement *)stackItem
+- (void)push:(TyphoonStackElement *)stackElement
 {
 #if DEBUG
-    if (![stackItem isKindOfClass:[TyphoonStackElement class]]) {
-        [NSException raise:NSInvalidArgumentException format:@"Not a TyphoonStackItem: %@", stackItem];
+    if (![stackElement isKindOfClass:[TyphoonStackElement class]]) {
+        [NSException raise:NSInvalidArgumentException format:@"Not a TyphoonStackItem: %@", stackElement];
     }
 #endif
-    [_storage addObject:stackItem];
+    [_storage addObject:stackElement];
 }
 
 - (TyphoonStackElement *)pop

@@ -18,7 +18,7 @@
 
 + (instancetype)stack;
 
-- (void)push:(TyphoonStackElement *)stackItem;
+- (void)push:(TyphoonStackElement *)stackElement;
 
 - (TyphoonStackElement *)pop;
 
