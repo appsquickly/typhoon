@@ -43,7 +43,7 @@
         <!--initial_first-->
         <scene sceneID="hKB-7p-bzT">
             <objects>
-                <viewController storyboardIdentifier="first" title="initial_first" id="9MY-L9-RLM" customClass="StoryboardInitialViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="first" title="initial_first" id="9MY-L9-RLM" customClass="StoryboardFirstViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gas-Bq-OmT"/>
                         <viewControllerLayoutGuide type="bottom" id="dPO-Rz-7Xx"/>

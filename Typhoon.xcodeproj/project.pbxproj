@@ -587,7 +587,7 @@
 		BA798C5BE35D5B38B2F64387 /* TyphoonViewControllerNibResolverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7982C084F0AD60B5858F31 /* TyphoonViewControllerNibResolverTests.m */; };
 		BA798CEBF664D4B2D24EA1A3 /* TyphoonConfigPostProcessorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798E14534FB69AC182D402 /* TyphoonConfigPostProcessorTests.m */; };
 		BA798EF5AD7AC635BDD727C0 /* NSNullTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7984A11531DFDE00C583DE /* NSNullTypeConverter.m */; };
-		BA798F4DA9DF3F578134CB26 /* StoryboardInitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798B51F275F5647924B3A1 /* StoryboardInitialViewController.m */; };
+		BA798F4DA9DF3F578134CB26 /* StoryboardFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798B51F275F5647924B3A1 /* StoryboardFirstViewController.m */; };
 		C9497A0F3C744433419C9D5D /* TyphoonInjectionByCurrentRuntimeArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = C94972BE857448DEBA12C1CE /* TyphoonInjectionByCurrentRuntimeArguments.m */; };
 		C9497BE0FC290233160074AC /* Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = C949792A85FC9383BEAD631B /* Mock.m */; };
 		FAF2E92219C2260F00211DF6 /* TyphoonInjectedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1899426943444774AC27 /* TyphoonInjectedObject.m */; };
@@ -1051,11 +1051,11 @@
 		BA7984A11531DFDE00C583DE /* NSNullTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNullTypeConverter.m; sourceTree = "<group>"; };
 		BA798539DF28ADC47EFA5937 /* StoryboardViewControllerAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardViewControllerAssembly.h; sourceTree = "<group>"; };
 		BA79856305370AE9A94F8B87 /* TyphoonNSNumberTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonNSNumberTypeConverter.h; sourceTree = "<group>"; };
-		BA7986920A495672BF6DC00B /* StoryboardInitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardInitialViewController.h; sourceTree = "<group>"; };
+		BA7986920A495672BF6DC00B /* StoryboardFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardFirstViewController.h; sourceTree = "<group>"; };
 		BA79870F24D3F4FDD0FDB7BD /* UniqueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniqueViewController.h; sourceTree = "<group>"; };
 		BA79872D47F864D6B64B479E /* StoryboardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardTests.m; sourceTree = "<group>"; };
 		BA798969F71AF5247112BEE9 /* StoryboardControllerDependency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardControllerDependency.h; sourceTree = "<group>"; };
-		BA798B51F275F5647924B3A1 /* StoryboardInitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardInitialViewController.m; sourceTree = "<group>"; };
+		BA798B51F275F5647924B3A1 /* StoryboardFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardFirstViewController.m; sourceTree = "<group>"; };
 		BA798B7BB085030D07102B8E /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		BA798BFD251D2908121708F3 /* NSNullTypeConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNullTypeConverter.h; sourceTree = "<group>"; };
 		BA798E0CA9E9828D07777F40 /* TyphoonUIColorConverterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonUIColorConverterTests.m; sourceTree = "<group>"; };
@@ -2190,8 +2190,8 @@
 				BA798EA3F8F037BFC45CBCB7 /* StoryboardViewControllerAssembly.m */,
 				BA79870F24D3F4FDD0FDB7BD /* UniqueViewController.h */,
 				BA7980A75A6786BBC2A387F9 /* UniqueViewController.m */,
-				BA798B51F275F5647924B3A1 /* StoryboardInitialViewController.m */,
-				BA7986920A495672BF6DC00B /* StoryboardInitialViewController.h */,
+				BA798B51F275F5647924B3A1 /* StoryboardFirstViewController.m */,
+				BA7986920A495672BF6DC00B /* StoryboardFirstViewController.h */,
 				BA7983C7D0A3DFE423250300 /* StoryboardControllerDependency.m */,
 				BA798969F71AF5247112BEE9 /* StoryboardControllerDependency.h */,
 			);
@@ -2811,7 +2811,7 @@
 				2DBA1DD74E3C1AD545A84C92 /* AutoWiringKnight.m in Sources */,
 				BA7985DE19FA38D5AF4ABD7F /* TyphoonNSNumberTypeConverterTests.m in Sources */,
 				2DBA1FB1F6532DA96182BD13 /* TyphoonTestAssemblyConfigPostProcessor.m in Sources */,
-				BA798F4DA9DF3F578134CB26 /* StoryboardInitialViewController.m in Sources */,
+				BA798F4DA9DF3F578134CB26 /* StoryboardFirstViewController.m in Sources */,
 				BA798443D914C3CC2B18B1BD /* StoryboardControllerDependency.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

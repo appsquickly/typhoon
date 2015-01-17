@@ -12,11 +12,11 @@
 
 #import "TyphoonAssembly.h"
 
-@class StoryboardInitialViewController;
+@class StoryboardFirstViewController;
 
 @interface StoryboardViewControllerAssembly : TyphoonAssembly
 
-- (StoryboardInitialViewController *)initialViewController;
+- (StoryboardFirstViewController *)initialViewController;
 
 - (UIViewController *)firstViewController;
 

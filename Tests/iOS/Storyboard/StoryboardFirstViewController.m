@@ -9,13 +9,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <Foundation/Foundation.h>
-#import <Typhoon/Typhoon.h>
-#import "StoryboardControllerDependency.h"
+#import "StoryboardFirstViewController.h"
 
 
-@interface StoryboardInitialViewController : UIViewController
+@implementation StoryboardFirstViewController
+{
 
-@property(nonatomic, strong) StoryboardControllerDependency *dependency;
-
+}
 @end

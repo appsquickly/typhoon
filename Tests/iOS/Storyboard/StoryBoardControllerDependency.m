@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "StoryboardControllerDependency.h"
-#import "StoryboardInitialViewController.h"
+#import "StoryboardFirstViewController.h"
 
 
 @implementation StoryboardControllerDependency

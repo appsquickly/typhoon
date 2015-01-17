@@ -14,7 +14,7 @@
 #import "Typhoon.h"
 #import "TyphoonStoryboard.h"
 #import "StoryboardViewControllerAssembly.h"
-#import "StoryboardInitialViewController.h"
+#import "StoryboardFirstViewController.h"
 
 @interface StoryboardTests : XCTestCase
 
@@ -49,9 +49,9 @@
 }
 
 - (void)test_first_resolves_circular_dependencies {
-    StoryboardInitialViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"first"];
+    StoryboardFirstViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"first"];
     StoryboardControllerDependency *dependency = controller.dependency;
-    StoryboardInitialViewController *circular = dependency.circularDependencyBackToViewController;
+    StoryboardFirstViewController *circular = dependency.circularDependencyBackToViewController;
 
     XCTAssertTrue(controller == circular);
 }

@@ -12,13 +12,13 @@
 #import "StoryboardViewControllerAssembly.h"
 #import "Typhoon.h"
 #import "UniqueViewController.h"
-#import "StoryboardInitialViewController.h"
-#import "StoryboardInitialViewController.h"
+#import "StoryboardFirstViewController.h"
+#import "StoryboardFirstViewController.h"
 #import <UIKit/UIKit.h>
 
 @implementation StoryboardViewControllerAssembly
 
-- (StoryboardInitialViewController *)initialViewController
+- (StoryboardFirstViewController *)initialViewController
 {
     return [TyphoonDefinition withClass:[UIViewController class] configuration:^(TyphoonDefinition *definition) {
             [definition injectProperty:@selector(title) with:@"Initial"];
@@ -28,7 +28,7 @@
 
 - (UIViewController *)firstViewController
 {
-    return [TyphoonDefinition withClass:[StoryboardInitialViewController class]
+    return [TyphoonDefinition withClass:[StoryboardFirstViewController class]
         configuration:^(TyphoonDefinition *definition) {
             [definition injectProperty:@selector(title) with:@"First"];
             [definition injectProperty:@selector(dependency) with:[self dependency]];

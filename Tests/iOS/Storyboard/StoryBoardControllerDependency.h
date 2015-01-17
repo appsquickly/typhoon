@@ -11,11 +11,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class StoryboardInitialViewController;
+@class StoryboardFirstViewController;
 
 
 @interface StoryboardControllerDependency : NSObject
 
-@property (nonatomic, weak) StoryboardInitialViewController *circularDependencyBackToViewController;
+@property (nonatomic, weak) StoryboardFirstViewController *circularDependencyBackToViewController;
 
 @end
