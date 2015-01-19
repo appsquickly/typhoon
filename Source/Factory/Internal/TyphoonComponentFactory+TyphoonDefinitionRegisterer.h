@@ -25,6 +25,6 @@
 
 - (void)addDefinitionToRegistry:(TyphoonDefinition *)definition;
 
-- (void)addComponentPostProcessor:(id <TyphoonInstancePostProcessor>)postProcessor;
+- (void)addInstancePostProcessor:(id <TyphoonInstancePostProcessor>)postProcessor;
 
 @end

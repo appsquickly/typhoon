@@ -76,7 +76,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 - (id)postProcessInstance:(id)instance
 {
     if (![instance conformsToProtocol:@protocol(TyphoonInstancePostProcessor)]) {
-        for (id<TyphoonInstancePostProcessor> postProcessor in _componentPostProcessors) {
+        for (id<TyphoonInstancePostProcessor> postProcessor in _instancePostProcessors) {
             instance = [postProcessor postProcessInstance:instance];
         }
     }
@@ -279,7 +279,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 - (TyphoonFactoryAutoInjectionPostProcessor *)autoInjectionPostProcessor
 {
     TyphoonFactoryAutoInjectionPostProcessor *postProcessor = nil;
-    for (id<TyphoonDefinitionPostProcessor> item in _factoryPostProcessors) {
+    for (id<TyphoonDefinitionPostProcessor> item in _definitionPostProcessors) {
         if ([item isMemberOfClass:[TyphoonFactoryAutoInjectionPostProcessor class]]) {
             postProcessor = item;
             break;

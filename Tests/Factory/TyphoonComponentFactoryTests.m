@@ -39,7 +39,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 - (void)setUp
 {
     _componentFactory = [[TyphoonComponentFactory alloc] init];
-    internalPostProcessorsCount = [[_componentFactory factoryPostProcessors] count];
+    internalPostProcessorsCount = [[_componentFactory definitionPostProcessors] count];
 }
 
 //-------------------------------------------------------------------------------------------
@@ -179,7 +179,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 {
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorStubImpl class]]];
     XCTAssertEqual([[_componentFactory registry] count], 0);
-    XCTAssertEqual([[_componentFactory factoryPostProcessors] count], internalPostProcessorsCount + 1); //Attached + internal processors
+    XCTAssertEqual([[_componentFactory definitionPostProcessors] count], internalPostProcessorsCount + 1); //Attached + internal processors
 }
 
 - (void)test_post_processors_applied
@@ -190,8 +190,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     [_componentFactory load];
 
-    XCTAssertEqual([[_componentFactory factoryPostProcessors] count], internalPostProcessorsCount + 2); //Attached + internal processors
-    for (TyphoonComponentFactoryPostProcessorStubImpl *stub in _componentFactory.factoryPostProcessors) {
+    XCTAssertEqual([[_componentFactory definitionPostProcessors] count], internalPostProcessorsCount + 2); //Attached + internal processors
+    for (TyphoonComponentFactoryPostProcessorStubImpl *stub in _componentFactory.definitionPostProcessors) {
         if ([stub isKindOfClass:[TyphoonComponentFactoryPostProcessorStubImpl class]]) {
             XCTAssertTrue(stub.postProcessingCalled);
         }
@@ -202,7 +202,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 {
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[TyphoonInstancePostProcessorMock class]]];
     XCTAssertEqual([[_componentFactory registry] count], 0);
-    XCTAssertEqual([[_componentFactory componentPostProcessors] count], 1);
+    XCTAssertEqual([[_componentFactory instancePostProcessors] count], 1);
 }
 
 - (void)test_component_post_processors_applied_in_order
@@ -210,9 +210,9 @@ static NSString *const DEFAULT_QUEST = @"quest";
     TyphoonInstancePostProcessorMock*processor1 = [[TyphoonInstancePostProcessorMock alloc] initWithOrder:INT_MAX];
     TyphoonInstancePostProcessorMock*processor2 = [[TyphoonInstancePostProcessorMock alloc] initWithOrder:0];
     TyphoonInstancePostProcessorMock*processor3 = [[TyphoonInstancePostProcessorMock alloc] initWithOrder:INT_MIN];
-    [_componentFactory addComponentPostProcessor:processor1];
-    [_componentFactory addComponentPostProcessor:processor2];
-    [_componentFactory addComponentPostProcessor:processor3];
+    [_componentFactory addInstancePostProcessor:processor1];
+    [_componentFactory addInstancePostProcessor:processor2];
+    [_componentFactory addInstancePostProcessor:processor3];
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class]]];
 
     __block NSMutableArray *orderedApplied = [[NSMutableArray alloc] initWithCapacity:3];

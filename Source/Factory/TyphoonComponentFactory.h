@@ -35,8 +35,8 @@
     id <TyphoonComponentsPool> _weakSingletons;
 
     TyphoonCallStack *_stack;
-    NSMutableArray *_factoryPostProcessors;
-    NSMutableArray *_componentPostProcessors;
+    NSMutableArray *_definitionPostProcessors;
+    NSMutableArray *_instancePostProcessors;
     BOOL _isLoading;
 }
 
@@ -53,12 +53,12 @@
 /**
  * The attached factory post processors.
  */
-@property(nonatomic, strong, readonly) NSArray *factoryPostProcessors;
+@property(nonatomic, strong, readonly) NSArray *definitionPostProcessors;
 
 /**
  * The attached component post processors.
  */
-@property(nonatomic, strong, readonly) NSArray *componentPostProcessors;
+@property(nonatomic, strong, readonly) NSArray *instancePostProcessors;
 
 
 

@@ -70,8 +70,8 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
         _weakSingletons = [TyphoonWeakComponentsPool new];
         _objectGraphSharedInstances = (id <TyphoonComponentsPool>) [[NSMutableDictionary alloc] init];
         _stack = [TyphoonCallStack stack];
-        _factoryPostProcessors = [[NSMutableArray alloc] init];
-        _componentPostProcessors = [[NSMutableArray alloc] init];
+        _definitionPostProcessors = [[NSMutableArray alloc] init];
+        _instancePostProcessors = [[NSMutableArray alloc] init];
         [self attachPostProcessor:[TyphoonParentReferenceHydratingPostProcessor new]];
         [self attachAutoInjectionPostProcessorIfNeeded];
         [self attachPostProcessor:[TyphoonFactoryPropertyInjectionPostProcessor new]];
@@ -237,7 +237,7 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
 - (void)attachPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor
 {
     LogTrace(@"Attaching post processor: %@", postProcessor);
-    [_factoryPostProcessors addObject:postProcessor];
+    [_definitionPostProcessors addObject:postProcessor];
     if ([self isLoaded]) {
         LogDebug(@"Definitions registered, refreshing all singletons.");
         [self unload];
@@ -315,13 +315,13 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
 
 - (void)preparePostProcessors
 {
-    _factoryPostProcessors = [[self orderedArray:_factoryPostProcessors] mutableCopy];
-    _componentPostProcessors = [[self orderedArray:_componentPostProcessors] mutableCopy];
+    _definitionPostProcessors = [[self orderedArray:_definitionPostProcessors] mutableCopy];
+    _instancePostProcessors = [[self orderedArray:_instancePostProcessors] mutableCopy];
 }
 
 - (void)applyPostProcessors
 {
-    [_factoryPostProcessors enumerateObjectsUsingBlock:^(id <TyphoonDefinitionPostProcessor> postProcessor,
+    [_definitionPostProcessors enumerateObjectsUsingBlock:^(id <TyphoonDefinitionPostProcessor> postProcessor,
         NSUInteger idx, BOOL *stop) {
         [postProcessor postProcessDefinitionsInFactory:self];
     }];
@@ -425,9 +425,9 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
     [_registry addObject:definition];
 }
 
-- (void)addComponentPostProcessor:(id <TyphoonInstancePostProcessor>)postProcessor
+- (void)addInstancePostProcessor:(id <TyphoonInstancePostProcessor>)postProcessor
 {
-    [_componentPostProcessors addObject:postProcessor];
+    [_instancePostProcessors addObject:postProcessor];
 }
 
 
