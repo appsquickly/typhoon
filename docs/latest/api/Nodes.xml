@@ -160,14 +160,14 @@
               <Anchor>a810e359a13f87d375088a78759227692</Anchor>
              </Node>
              <Node>
-              <Name>componentPostProcessors</Name>
+              <Name>definitionPostProcessors</Name>
               <Path>interface_typhoon_component_factory.html</Path>
-              <Anchor>a9c88f88b59f7607416373f761d97b23c</Anchor>
+              <Anchor>a1cdbafd8d079d52fd72cab4efddbbcbc</Anchor>
              </Node>
              <Node>
-              <Name>factoryPostProcessors</Name>
+              <Name>instancePostProcessors</Name>
               <Path>interface_typhoon_component_factory.html</Path>
-              <Anchor>a8eec64c832482a1e025b80d2cd16a5f3</Anchor>
+              <Anchor>a6647913e4fc87992108fa703df42c970</Anchor>
              </Node>
              <Node>
               <Name>loaded</Name>
@@ -901,14 +901,14 @@
               <Anchor>a810e359a13f87d375088a78759227692</Anchor>
              </Node>
              <Node>
-              <Name>componentPostProcessors</Name>
+              <Name>definitionPostProcessors</Name>
               <Path>interface_typhoon_component_factory.html</Path>
-              <Anchor>a9c88f88b59f7607416373f761d97b23c</Anchor>
+              <Anchor>a1cdbafd8d079d52fd72cab4efddbbcbc</Anchor>
              </Node>
              <Node>
-              <Name>factoryPostProcessors</Name>
+              <Name>instancePostProcessors</Name>
               <Path>interface_typhoon_component_factory.html</Path>
-              <Anchor>a8eec64c832482a1e025b80d2cd16a5f3</Anchor>
+              <Anchor>a6647913e4fc87992108fa703df42c970</Anchor>
              </Node>
              <Node>
               <Name>loaded</Name>
