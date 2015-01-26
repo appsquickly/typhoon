@@ -50,7 +50,7 @@ Typhoon is sponsored and lead by <a href="http://appsquick.ly">AppsQuick.ly</a> 
 
 Apache License, Version 2.0, January 2004, http://www.apache.org/licenses/
 
-© 2012 - 2014 Jasper Blues, Aleksey Garbarev and contributors.
+© 2012 - 2015 Jasper Blues, Aleksey Garbarev and contributors.
 
 
 
