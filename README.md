@@ -12,7 +12,7 @@ Visit <a href="http://typhoonframework.org">the Typhoon website</a> for an intro
 
 ## Is Typhoon the right DI framework for you? 
 
-Checkout out the <a href="http://www.typhoonframework.org/#features">feature list</a>. 
+Check out the <a href="http://www.typhoonframework.org/#features">feature list</a>. 
 
 # Usage
 
