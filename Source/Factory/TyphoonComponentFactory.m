@@ -28,7 +28,7 @@
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
 
-@property(nonatomic, strong) NSString *key;
+@property (nonatomic, strong) NSString *key;
 
 @end
 
@@ -66,9 +66,9 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
     self = [super init];
     if (self) {
         _registry = [[NSMutableArray alloc] init];
-        _singletons = (id <TyphoonComponentsPool>) [[NSMutableDictionary alloc] init];
+        _singletons = (id<TyphoonComponentsPool>)[[NSMutableDictionary alloc] init];
         _weakSingletons = [TyphoonWeakComponentsPool new];
-        _objectGraphSharedInstances = (id <TyphoonComponentsPool>) [[NSMutableDictionary alloc] init];
+        _objectGraphSharedInstances = (id<TyphoonComponentsPool>)[[NSMutableDictionary alloc] init];
         _stack = [TyphoonCallStack stack];
         _definitionPostProcessors = [[NSMutableArray alloc] init];
         _instancePostProcessors = [[NSMutableArray alloc] init];
@@ -118,7 +118,7 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
     @synchronized (self) {
         if ([self isLoaded]) {
             NSAssert([_stack isEmpty],
-                @"Stack should be empty when unloading factory. Please finish all object creation before factory unloading");
+                    @"Stack should be empty when unloading factory. Please finish all object creation before factory unloading");
             [_singletons removeAllObjects];
             [_weakSingletons removeAllObjects];
             [_objectGraphSharedInstances removeAllObjects];
@@ -130,7 +130,7 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
 - (void)registerDefinition:(TyphoonDefinition *)definition
 {
     TyphoonDefinitionRegisterer
-        *registerer = [[TyphoonDefinitionRegisterer alloc] initWithDefinition:definition componentFactory:self];
+            *registerer = [[TyphoonDefinitionRegisterer alloc] initWithDefinition:definition componentFactory:self];
     [registerer doRegistration];
 
     if ([self isLoaded]) {
@@ -215,7 +215,7 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
 
 - (void)
 enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace,
-    BOOL *stop))block
+        BOOL *stop))block
 {
     [self loadIfNeeded];
 
@@ -234,7 +234,7 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
 }
 
 
-- (void)attachPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor
+- (void)attachPostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor
 {
     LogTrace(@"Attaching post processor: %@", postProcessor);
     [_definitionPostProcessors addObject:postProcessor];
@@ -250,7 +250,7 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
     @synchronized (self) {
         [self loadIfNeeded];
         TyphoonDefinition
-            *definitionForInstance = [self definitionForType:[instance class] orNil:YES includeSubclasses:NO];
+                *definitionForInstance = [self definitionForType:[instance class] orNil:YES includeSubclasses:NO];
         if (definitionForInstance) {
             [self inject:instance withDefinition:definitionForInstance];
         }
@@ -321,8 +321,8 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
 
 - (void)applyPostProcessors
 {
-    [_definitionPostProcessors enumerateObjectsUsingBlock:^(id <TyphoonDefinitionPostProcessor> postProcessor,
-        NSUInteger idx, BOOL *stop) {
+    [_definitionPostProcessors enumerateObjectsUsingBlock:^(id<TyphoonDefinitionPostProcessor> postProcessor,
+            NSUInteger idx, BOOL *stop) {
         [postProcessor postProcessDefinitionsInFactory:self];
     }];
 }
@@ -339,14 +339,14 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
 - (NSString *)poolKeyForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
     if (args) {
-        return [NSString stringWithFormat:@"%@-%ld", definition.key, (unsigned long) [args hash]];
+        return [NSString stringWithFormat:@"%@-%ld", definition.key, (unsigned long)[args hash]];
     }
     else {
         return definition.key;
     }
 }
 
-- (id <TyphoonComponentsPool>)poolForDefinition:(TyphoonDefinition *)definition
+- (id<TyphoonComponentsPool>)poolForDefinition:(TyphoonDefinition *)definition
 {
     switch (definition.scope) {
         case TyphoonScopeSingleton:
@@ -365,7 +365,7 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
 - (void)inject:(id)instance withDefinition:(TyphoonDefinition *)definition
 {
     @synchronized (self) {
-        id <TyphoonComponentsPool> pool = [self poolForDefinition:definition];
+        id<TyphoonComponentsPool> pool = [self poolForDefinition:definition];
         [pool setObject:instance forKey:definition.key];
         TyphoonStackElement *element = [TyphoonStackElement elementWithKey:definition.key args:nil];
         [element takeInstance:instance];
@@ -402,14 +402,16 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
 
     @synchronized (self) {
 
-        id <TyphoonComponentsPool> pool = [self poolForDefinition:definition];
+        id<TyphoonComponentsPool> pool = [self poolForDefinition:definition];
         id instance = nil;
 
         NSString *poolKey = [self poolKeyForDefinition:definition args:args];
         instance = [pool objectForKey:poolKey];
         if (instance == nil) {
             instance = [self buildSharedInstanceForDefinition:definition args:args];
-            [pool setObject:instance forKey:poolKey];
+            if (instance) {
+                [pool setObject:instance forKey:poolKey];
+            }
         }
 
         if ([_stack isEmpty]) {
@@ -425,7 +427,7 @@ enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, 
     [_registry addObject:definition];
 }
 
-- (void)addInstancePostProcessor:(id <TyphoonInstancePostProcessor>)postProcessor
+- (void)addInstancePostProcessor:(id<TyphoonInstancePostProcessor>)postProcessor
 {
     [_instancePostProcessors addObject:postProcessor];
 }
