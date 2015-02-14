@@ -143,7 +143,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 {
     if (!_factory) {
         [NSException raise:NSInternalInconsistencyException
-            format:@"componentForType requires the assembly to be activated with TyphooonAssemblyActivator"];
+            format:@"componentForType: requires the assembly to be activated with TyphooonAssemblyActivator"];
     }
     return [_factory componentForType:classOrProtocol];
 }
@@ -152,7 +152,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 {
     if (!_factory) {
         [NSException raise:NSInternalInconsistencyException
-            format:@"allComponentsForType requires the assembly to be activated with TyphooonAssemblyActivator"];
+            format:@"allComponentsForType: requires the assembly to be activated with TyphooonAssemblyActivator"];
     }
     return [_factory allComponentsForType:classOrProtocol];
 }
@@ -161,7 +161,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 {
     if (!_factory) {
         [NSException raise:NSInternalInconsistencyException
-            format:@"componentForKey requires the assembly to be activated with TyphooonAssemblyActivator"];
+            format:@"componentForKey: requires the assembly to be activated with TyphooonAssemblyActivator"];
     }
     return [_factory componentForKey:key];
 }
@@ -174,6 +174,25 @@ static NSMutableSet *reservedSelectorsAsStrings;
     }
     return [_factory componentForKey:key args:args];
 }
+
+- (void)inject:(id)instance
+{
+    if (!_factory) {
+        [NSException raise:NSInternalInconsistencyException
+            format:@"inject: requires the assembly to be activated with TyphooonAssemblyActivator"];
+    }
+    [_factory inject:instance];
+}
+
+- (void)inject:(id)instance withSelector:(SEL)selector
+{
+    if (!_factory) {
+        [NSException raise:NSInternalInconsistencyException
+            format:@"inject: requires the assembly to be activated with TyphooonAssemblyActivator"];
+    }
+    [_factory inject:instance];
+}
+
 
 
 //-------------------------------------------------------------------------------------------

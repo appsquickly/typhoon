@@ -38,7 +38,7 @@
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
-        XCTAssertEqualObjects(@"componentForType requires the assembly to be activated with TyphooonAssemblyActivator",
+        XCTAssertEqualObjects(@"componentForType: requires the assembly to be activated with TyphooonAssemblyActivator",
             [e description]);
     }
 }
@@ -51,7 +51,7 @@
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
-        XCTAssertEqualObjects(@"allComponentsForType requires the assembly to be activated with TyphooonAssemblyActivator",
+        XCTAssertEqualObjects(@"allComponentsForType: requires the assembly to be activated with TyphooonAssemblyActivator",
             [e description]);
     }
 }
@@ -64,7 +64,7 @@
             XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
-        XCTAssertEqualObjects(@"componentForKey requires the assembly to be activated with TyphooonAssemblyActivator",
+        XCTAssertEqualObjects(@"componentForKey: requires the assembly to be activated with TyphooonAssemblyActivator",
             [e description]);
     }
 }

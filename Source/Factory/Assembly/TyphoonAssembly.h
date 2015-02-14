@@ -29,8 +29,8 @@
 *
 * @code
 
-MyAssemblyType* assembly = [factory asAssembly];
-//Use the assembly interface instead of a 'magic string'
+MyAssembly* assembly = [MyAssembly assembly];
+[[TyphoonAssemblyActivator withAssembly:assembly] activate];
 AnalyticsService* service = [assembly analyticsService];
 
 @endcode
@@ -50,9 +50,5 @@ AnalyticsService* service = [assembly analyticsService];
 * Returns the [TyphoonComponentFactory defaultFactory], with components exposed using an assembly interface.
 */
 + (instancetype)defaultAssembly;
-
-+ (void)markSelectorReserved:(SEL)selector;
-
-- (void)activateWithFactory:(TyphoonComponentFactory *)factory;
 
 @end

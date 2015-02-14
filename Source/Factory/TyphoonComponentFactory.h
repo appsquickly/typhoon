@@ -62,6 +62,16 @@
 
 - (id)componentForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args;
 
+/**
+* Injects the properties and methods of an object
+*/
+- (void)inject:(id)instance;
+
+/**
+* Injects the properties and methods of an object, described in definition
+*/
+- (void)inject:(id)instance withSelector:(SEL)selector;
+
 @end
 
 @interface TyphoonComponentFactory : NSObject<TyphoonComponentFactory>
@@ -178,14 +188,5 @@
  */
 - (void)attachPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor;
 
-/**
- * Injects the properties and methods of an object
- */
-- (void)inject:(id)instance;
-
-/**
- * Injects the properties and methods of an object, described in definition
- */
-- (void)inject:(id)instance withSelector:(SEL)selector;
 
 @end
