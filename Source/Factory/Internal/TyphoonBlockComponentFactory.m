@@ -148,8 +148,6 @@
 #pragma mark - Overridden Methods
 //-------------------------------------------------------------------------------------------
 
-//TODO: TyphoonComponentFactory posing as an assembly has been moved to TyphoonAssembly forwardInvocation,
-//TODO: left here for backward compatibility. Remove in future version.
 - (void)forwardInvocation:(NSInvocation*)invocation
 {
     NSString* componentKey = NSStringFromSelector([invocation selector]);

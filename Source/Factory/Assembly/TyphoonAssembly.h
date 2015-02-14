@@ -53,8 +53,6 @@ AnalyticsService* service = [assembly analyticsService];
 
 + (void)markSelectorReserved:(SEL)selector;
 
-- (TyphoonComponentFactory *)asFactory;
-
 - (void)activateWithFactory:(TyphoonComponentFactory *)factory;
 
 @end

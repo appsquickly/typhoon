@@ -99,11 +99,15 @@ static NSMutableSet *reservedSelectorsAsStrings;
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
     if (_factory) {
-
-        [self forwardToFactoryComponentForKey:anInvocation];
+        [_factory forwardInvocation:anInvocation];
     }
     else {
-        [self forwardToDefinitionBuilder:anInvocation];
+        TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
+        NSString *key = NSStringFromSelector(anInvocation.selector);
+        TyphoonDefinition *definition = [_definitionBuilder builtDefinitionForKey:key args:args];
+
+        [anInvocation retainArguments];
+        [anInvocation setReturnValue:&definition];
     }
 }
 
@@ -221,36 +225,6 @@ static NSMutableSet *reservedSelectorsAsStrings;
 {
     self.definitionSelectors = [self.adviser definitionSelectors];
     [self.adviser adviseAssembly];
-}
-
-
-- (void)forwardToFactoryComponentForKey:(NSInvocation *)anInvocation
-{
-    NSString *componentKey = NSStringFromSelector([anInvocation selector]);
-    LogTrace(@"Component key: %@", componentKey);
-
-    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
-
-    NSInvocation *internalInvocation =
-        [NSInvocation invocationWithMethodSignature:[_factory methodSignatureForSelector:@selector(componentForKey:args:)]];
-    [internalInvocation setSelector:@selector(componentForKey:args:)];
-    [internalInvocation setArgument:&componentKey atIndex:2];
-    [internalInvocation setArgument:&args atIndex:3];
-    [internalInvocation invokeWithTarget:_factory];
-
-    void *returnValue;
-    [internalInvocation getReturnValue:&returnValue];
-    [anInvocation setReturnValue:&returnValue];
-}
-
-- (void)forwardToDefinitionBuilder:(NSInvocation *)anInvocation
-{
-    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
-    NSString *key = NSStringFromSelector(anInvocation.selector);
-    TyphoonDefinition *definition = [_definitionBuilder builtDefinitionForKey:key args:args];
-
-    [anInvocation retainArguments];
-    [anInvocation setReturnValue:&definition];
 }
 
 
