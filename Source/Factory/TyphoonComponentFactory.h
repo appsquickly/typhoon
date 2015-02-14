@@ -72,6 +72,8 @@
 */
 - (void)inject:(id)instance withSelector:(SEL)selector;
 
+- (void)makeDefault;
+
 @end
 
 @interface TyphoonComponentFactory : NSObject<TyphoonComponentFactory>
@@ -140,37 +142,6 @@
 */
 - (void)unload;
 
-/**
-* Returns the default component factory, if one has been set. @see [TyphoonComponentFactory makeDefault]. This allows resolving components
-* from the Typhoon another class after the container has been set up.
-*
-* This method is only integrating Typhoon into legacy environments - classes not managed by Typhoon, and its use elsewhere is discouraged
-* as it will create a hard-wired dependency on Typhoon, whenever the default factory is retrieved.
-*
-* A more desirable approach is to use TyphoonComponentFactoryAware or to inject the factory via an assembly. This simplifies unit testing.
-*
-* ## Alternative approach: inject the factory (in this case posing behind a TyphoonAssembly subclass):
-
-@code
-
-- (id)loyaltyManagementController
-{
-    return [TyphoonDefinition withClass:[LoyaltyManagementViewController class]
-        properties:^(TyphoonDefinition* definition)
-    {
-        definition.scope = TyphoonScopePrototype;
-        //Inject the TyphoonComponentFactory posing as an assembly
-        [definition injectProperty:@selector(assembly)];
-    }];
-}
-
-@endcode
-
-* @see [TyphoonComponentFactory makeDefault].
-* @see TyphoonComponentFactoryAware
-*
-*/
-- (void)makeDefault;
 
 /**
 * Registers a component into the factory. Components can be declared in any order, the container will work out how to resolve them.

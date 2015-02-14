@@ -193,6 +193,15 @@ static NSMutableSet *reservedSelectorsAsStrings;
 }
 
 
+- (void)makeDefault
+{
+    if (!_factory) {
+        [NSException raise:NSInternalInconsistencyException
+            format:@"makeDefault requires the assembly to be activated with TyphooonAssemblyActivator"];
+    }
+    [_factory makeDefault];
+}
+
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods

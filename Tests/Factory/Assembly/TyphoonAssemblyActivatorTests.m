@@ -95,6 +95,19 @@
     }
 }
 
+- (void)test_non_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_makeDefault
+{
+    @try {
+        MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+        [assembly makeDefault];
+        XCTFail(@"Should have thrown exception");
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects(@"makeDefault requires the assembly to be activated with TyphooonAssemblyActivator",
+            [e description]);
+    }
+}
+
 - (void)test_after_activation_TyphoonComponentFactory_methods_are_available
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
@@ -113,6 +126,12 @@
     XCTAssertNotNil(knight.quest);
 }
 
+- (void)test_after_activation_assembly_can_be_made_default
+{
+    MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+    [[TyphoonAssemblyActivator withAssembly:assembly] activate];
+    [assembly makeDefault];
+}
 
 
 @end
