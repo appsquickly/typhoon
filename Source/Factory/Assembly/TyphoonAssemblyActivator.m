@@ -30,14 +30,14 @@
 #pragma mark - Class Methods
 //-------------------------------------------------------------------------------------------
 
-+ (instancetype)activatorWithAssemblies:(NSArray *)assemblies
++ (instancetype)withAssemblies:(NSArray *)assemblies
 {
     return [[self alloc] initWithAssemblies:assemblies];
 }
 
-+ (instancetype)activatorWithAssembly:(TyphoonAssembly *)assembly
++ (instancetype)withAssembly:(TyphoonAssembly *)assembly
 {
-    return [self activatorWithAssemblies:@[assembly]];
+    return [self withAssemblies:@[assembly]];
 }
 
 //-------------------------------------------------------------------------------------------

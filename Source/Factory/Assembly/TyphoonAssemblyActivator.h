@@ -16,9 +16,9 @@
 
 @interface TyphoonAssemblyActivator : NSObject
 
-+ (instancetype)activatorWithAssemblies:(NSArray *)assemblies;
++ (instancetype)withAssemblies:(NSArray *)assemblies;
 
-+ (instancetype)activatorWithAssembly:(TyphoonAssembly *)assembly;
++ (instancetype)withAssembly:(TyphoonAssembly *)assembly;
 
 - (void)activate;
 

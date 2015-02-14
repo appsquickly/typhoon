@@ -25,7 +25,7 @@
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
     XCTAssertTrue([[assembly knight] isKindOfClass:[TyphoonDefinition class]]);
 
-    [[TyphoonAssemblyActivator activatorWithAssemblies:@[assembly]] activate];
+    [[TyphoonAssemblyActivator withAssembly:assembly] activate];
 
     XCTAssertTrue([[assembly knight] isKindOfClass:[Knight class]]);
     NSLog(@"Knight: %@", [assembly knight]);
