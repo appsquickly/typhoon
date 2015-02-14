@@ -1104,13 +1104,25 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>activateWithFactory:</Name>
+      <Name>assembly</Name>
       <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
+      <Type>clm</Type>
       <Scope>TyphoonAssembly</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_assembly.html</Path>
-    <Anchor>a326e593f3450f826ebe2295c711c0aea</Anchor>
+    <Anchor>af53fcd1ea8b4e55dda2080a651814c6c</Anchor>
+    <DeclaredIn>TyphoonAssembly.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>defaultAssembly</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonAssembly</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_assembly.html</Path>
+    <Anchor>ac445c91bdd47b3389eadedbf33860512</Anchor>
+    <Abstract>Returns the [TyphoonComponentFactory defaultFactory], with components exposed using an assembly inter...</Abstract>
     <DeclaredIn>TyphoonAssembly.h</DeclaredIn>
   </Token>
   <Token>
@@ -1162,37 +1174,27 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>assembly</Name>
+      <Name>inject:</Name>
       <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonAssembly</Scope>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
     </TokenIdentifier>
-    <Path>interface_typhoon_assembly.html</Path>
-    <Anchor>af53fcd1ea8b4e55dda2080a651814c6c</Anchor>
-    <DeclaredIn>TyphoonAssembly.h</DeclaredIn>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>a4531b1291723ccbaaf31553aea40ee6a</Anchor>
+    <Abstract>Injects the properties and methods of an object. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>defaultAssembly</Name>
+      <Name>inject:withSelector:</Name>
       <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonAssembly</Scope>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
     </TokenIdentifier>
-    <Path>interface_typhoon_assembly.html</Path>
-    <Anchor>ac445c91bdd47b3389eadedbf33860512</Anchor>
-    <Abstract>Returns the [TyphoonComponentFactory defaultFactory], with components exposed using an assembly inter...</Abstract>
-    <DeclaredIn>TyphoonAssembly.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>markSelectorReserved:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonAssembly</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_assembly.html</Path>
-    <Anchor>a37d04b8e0418f5f1aff9a0c3b9745c26</Anchor>
-    <DeclaredIn>TyphoonAssembly.h</DeclaredIn>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>a238c582efa06e034699d9218c6c75539</Anchor>
+    <Abstract>Injects the properties and methods of an object, described in definition. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -1380,30 +1382,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>inject:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a82c437de9ea7059e9c2bd148a2f38baa</Anchor>
-    <Abstract>Injects the properties and methods of an object. </Abstract>
-    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>inject:withSelector:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>af8164cc8d3bdf9fbdb723e5a5b0011fa</Anchor>
-    <Abstract>Injects the properties and methods of an object, described in definition. </Abstract>
-    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>load</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -1506,6 +1484,30 @@
     <Path>protocol_typhoon_component_factory-p.html</Path>
     <Anchor>a3704107f6b10d089a953e2d9ef07e7db</Anchor>
     <Abstract>Returns an an instance of the component matching the supplied class or protocol. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>inject:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>a4531b1291723ccbaaf31553aea40ee6a</Anchor>
+    <Abstract>Injects the properties and methods of an object. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>inject:withSelector:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>a238c582efa06e034699d9218c6c75539</Anchor>
+    <Abstract>Injects the properties and methods of an object, described in definition. </Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>
@@ -1643,6 +1645,30 @@
     <Path>protocol_typhoon_component_factory-p.html</Path>
     <Anchor>a3704107f6b10d089a953e2d9ef07e7db</Anchor>
     <Abstract>Returns an an instance of the component matching the supplied class or protocol. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>inject:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>a4531b1291723ccbaaf31553aea40ee6a</Anchor>
+    <Abstract>Injects the properties and methods of an object. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>inject:withSelector:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>a238c582efa06e034699d9218c6c75539</Anchor>
+    <Abstract>Injects the properties and methods of an object, described in definition. </Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>

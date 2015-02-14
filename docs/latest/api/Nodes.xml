@@ -18,11 +18,6 @@
             <Path>interface_typhoon_assembly.html</Path>
             <Subnodes>
              <Node>
-              <Name>activateWithFactory:</Name>
-              <Path>interface_typhoon_assembly.html</Path>
-              <Anchor>a326e593f3450f826ebe2295c711c0aea</Anchor>
-             </Node>
-             <Node>
               <Name>assembly</Name>
               <Path>interface_typhoon_assembly.html</Path>
               <Anchor>af53fcd1ea8b4e55dda2080a651814c6c</Anchor>
@@ -31,11 +26,6 @@
               <Name>defaultAssembly</Name>
               <Path>interface_typhoon_assembly.html</Path>
               <Anchor>ac445c91bdd47b3389eadedbf33860512</Anchor>
-             </Node>
-             <Node>
-              <Name>markSelectorReserved:</Name>
-              <Path>interface_typhoon_assembly.html</Path>
-              <Anchor>a37d04b8e0418f5f1aff9a0c3b9745c26</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -62,6 +52,16 @@
               <Name>componentForType:</Name>
               <Path>protocol_typhoon_component_factory-p.html</Path>
               <Anchor>a3704107f6b10d089a953e2d9ef07e7db</Anchor>
+             </Node>
+             <Node>
+              <Name>inject:</Name>
+              <Path>protocol_typhoon_component_factory-p.html</Path>
+              <Anchor>a4531b1291723ccbaaf31553aea40ee6a</Anchor>
+             </Node>
+             <Node>
+              <Name>inject:withSelector:</Name>
+              <Path>protocol_typhoon_component_factory-p.html</Path>
+              <Anchor>a238c582efa06e034699d9218c6c75539</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -550,11 +550,6 @@
             <Path>interface_typhoon_assembly.html</Path>
             <Subnodes>
              <Node>
-              <Name>activateWithFactory:</Name>
-              <Path>interface_typhoon_assembly.html</Path>
-              <Anchor>a326e593f3450f826ebe2295c711c0aea</Anchor>
-             </Node>
-             <Node>
               <Name>assembly</Name>
               <Path>interface_typhoon_assembly.html</Path>
               <Anchor>af53fcd1ea8b4e55dda2080a651814c6c</Anchor>
@@ -563,11 +558,6 @@
               <Name>defaultAssembly</Name>
               <Path>interface_typhoon_assembly.html</Path>
               <Anchor>ac445c91bdd47b3389eadedbf33860512</Anchor>
-             </Node>
-             <Node>
-              <Name>markSelectorReserved:</Name>
-              <Path>interface_typhoon_assembly.html</Path>
-              <Anchor>a37d04b8e0418f5f1aff9a0c3b9745c26</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -649,16 +639,6 @@
               <Anchor>a9f9dfff1c95f8c83303889d7202df414</Anchor>
              </Node>
              <Node>
-              <Name>inject:</Name>
-              <Path>interface_typhoon_component_factory.html</Path>
-              <Anchor>a82c437de9ea7059e9c2bd148a2f38baa</Anchor>
-             </Node>
-             <Node>
-              <Name>inject:withSelector:</Name>
-              <Path>interface_typhoon_component_factory.html</Path>
-              <Anchor>af8164cc8d3bdf9fbdb723e5a5b0011fa</Anchor>
-             </Node>
-             <Node>
               <Name>load</Name>
               <Path>interface_typhoon_component_factory.html</Path>
               <Anchor>a5682d54bbebb3e5eca92707339bee4ce</Anchor>
@@ -733,6 +713,16 @@
               <Name>componentForType:</Name>
               <Path>protocol_typhoon_component_factory-p.html</Path>
               <Anchor>a3704107f6b10d089a953e2d9ef07e7db</Anchor>
+             </Node>
+             <Node>
+              <Name>inject:</Name>
+              <Path>protocol_typhoon_component_factory-p.html</Path>
+              <Anchor>a4531b1291723ccbaaf31553aea40ee6a</Anchor>
+             </Node>
+             <Node>
+              <Name>inject:withSelector:</Name>
+              <Path>protocol_typhoon_component_factory-p.html</Path>
+              <Anchor>a238c582efa06e034699d9218c6c75539</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -2408,16 +2398,6 @@
                 <Name>factoryForResolvingFromXibs</Name>
                 <Path>interface_typhoon_component_factory.html</Path>
                 <Anchor>a9f9dfff1c95f8c83303889d7202df414</Anchor>
-               </Node>
-               <Node>
-                <Name>inject:</Name>
-                <Path>interface_typhoon_component_factory.html</Path>
-                <Anchor>a82c437de9ea7059e9c2bd148a2f38baa</Anchor>
-               </Node>
-               <Node>
-                <Name>inject:withSelector:</Name>
-                <Path>interface_typhoon_component_factory.html</Path>
-                <Anchor>af8164cc8d3bdf9fbdb723e5a5b0011fa</Anchor>
                </Node>
                <Node>
                 <Name>load</Name>
