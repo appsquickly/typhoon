@@ -12,14 +12,15 @@
 import Foundation
 import XCTest
 
+
 class SwiftTyphoonAssemblyActivatorTests : XCTestCase {
     
     internal func test_activates() {
         
-        let assembly = MiddleAgesAssembly()
+        let assembly = SwiftMiddleAgesAssembly()
         TyphoonAssemblyActivator.withAssembly(assembly).activate()
         
-        let knight = assembly.knight() as Knight!
+        let knight = assembly.basicKnight() as Knight
         println(knight.description())
         XCTAssertTrue(knight.isKindOfClass(Knight.self))
         

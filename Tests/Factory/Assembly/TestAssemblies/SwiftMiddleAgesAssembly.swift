@@ -11,9 +11,9 @@
 
 import Foundation
 
-class SwiftMiddleAgesAssembly : TyphoonAssembly {
+public class SwiftMiddleAgesAssembly : TyphoonAssembly {
     
-    dynamic func basicKnight() -> AnyObject {
+    public dynamic func basicKnight() -> AnyObject {
         
         return TyphoonDefinition.withClass(Knight.self) {
             (definition) in
@@ -27,7 +27,7 @@ class SwiftMiddleAgesAssembly : TyphoonAssembly {
         }
     }
     
-    dynamic func defaultQuest() -> AnyObject {
+    public dynamic func defaultQuest() -> AnyObject {
         return TyphoonDefinition.withClass(CampaignQuest.self)
     }
     
