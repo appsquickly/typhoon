@@ -1115,17 +1115,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>asFactory</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonAssembly</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_assembly.html</Path>
-    <Anchor>a0079f9362fe9f38bab81bc2c38276360</Anchor>
-    <DeclaredIn>TyphoonAssembly.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>allComponentsForType:</Name>
       <APILanguage>occ</APILanguage>
       <Type>intfm</Type>

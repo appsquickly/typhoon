@@ -23,11 +23,6 @@
               <Anchor>a326e593f3450f826ebe2295c711c0aea</Anchor>
              </Node>
              <Node>
-              <Name>asFactory</Name>
-              <Path>interface_typhoon_assembly.html</Path>
-              <Anchor>a0079f9362fe9f38bab81bc2c38276360</Anchor>
-             </Node>
-             <Node>
               <Name>assembly</Name>
               <Path>interface_typhoon_assembly.html</Path>
               <Anchor>af53fcd1ea8b4e55dda2080a651814c6c</Anchor>
@@ -558,11 +553,6 @@
               <Name>activateWithFactory:</Name>
               <Path>interface_typhoon_assembly.html</Path>
               <Anchor>a326e593f3450f826ebe2295c711c0aea</Anchor>
-             </Node>
-             <Node>
-              <Name>asFactory</Name>
-              <Path>interface_typhoon_assembly.html</Path>
-              <Anchor>a0079f9362fe9f38bab81bc2c38276360</Anchor>
              </Node>
              <Node>
               <Name>assembly</Name>
