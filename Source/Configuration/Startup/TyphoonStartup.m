@@ -12,7 +12,7 @@
 #import "TyphoonStartup.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonAssembly.h"
-#import "TyphoonInstrumentedAssemblyComponentFactory.h"
+#import "TyphoonBlockComponentFactory.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
 
@@ -65,7 +65,7 @@ static TyphoonComponentFactory* initialFactory;
 
 + (void)loadInitialFactory
 {
-    initialFactory = [TyphoonInstrumentedAssemblyComponentFactory factoryFromPlistInBundle:[NSBundle mainBundle]];
+    initialFactory = [TyphoonBlockComponentFactory factoryFromPlistInBundle:[NSBundle mainBundle]];
 }
 
 + (TyphoonComponentFactory*)initialFactory

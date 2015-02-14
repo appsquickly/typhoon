@@ -10,5 +10,32 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-@class TyphoonInstrumentedAssemblyComponentFactory;
-@compatibility_alias TyphoonBlockComponentFactory TyphoonInstrumentedAssemblyComponentFactory;
+#import <Foundation/Foundation.h>
+#import "TyphoonComponentFactory.h"
+#import "TyphoonRuntimeArguments.h"
+
+@class TyphoonAssembly;
+
+/**
+* @ingroup Factory
+*
+*/
+@interface TyphoonBlockComponentFactory : TyphoonComponentFactory
+
++ (id)factoryWithAssembly:(TyphoonAssembly *)assembly;
+
++ (id)factoryWithAssemblies:(NSArray *)assemblies;
+
+/**
+* Returns a factory by loading the assemblies specified in the bundle's plist.
+*/
++ (id)factoryFromPlistInBundle:(NSBundle*)bundle;
+
+- (id)initWithAssembly:(TyphoonAssembly *)assembly;
+
+- (id)initWithAssemblies:(NSArray *)assemblies;
+
+
+@end
+
+

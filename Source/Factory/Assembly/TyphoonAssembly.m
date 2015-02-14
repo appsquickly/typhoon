@@ -69,7 +69,6 @@ static NSMutableSet *reservedSelectorsAsStrings;
     [self markSelectorReserved:@selector(prepareForUse)];
     [self markSelectorReservedFromString:@".cxx_destruct"];
     [self markSelectorReserved:@selector(defaultAssembly)];
-    [self markSelectorReserved:@selector(asFactory)];
     [self markSelectorReserved:@selector(resolveCollaboratingAssemblies)];
     [self markSelectorReserved:@selector(componentForType:)];
     [self markSelectorReserved:@selector(allComponentsForType:)];
@@ -190,11 +189,6 @@ static NSMutableSet *reservedSelectorsAsStrings;
 - (void)setCollaboratingAssemblyProxyOnPropertyNamed:(NSString *)name
 {
     [self setValue:[TyphoonCollaboratingAssemblyProxy proxy] forKey:name];
-}
-
-- (TyphoonComponentFactory *)asFactory
-{
-    return (id)self;
 }
 
 

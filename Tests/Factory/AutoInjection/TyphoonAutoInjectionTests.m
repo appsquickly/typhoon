@@ -12,7 +12,7 @@
 
 #import <XCTest/XCTest.h>
 #import "TyphoonComponentFactory.h"
-#import "TyphoonInstrumentedAssemblyComponentFactory.h"
+#import "TyphoonBlockComponentFactory.h"
 #import "TyphoonAutoInjectionAssembly.h"
 #import "AutoInjectionKnight.h"
 
@@ -29,10 +29,10 @@
 {
     [super setUp];
 
-    factoryWithKnight = [TyphoonInstrumentedAssemblyComponentFactory factoryWithAssemblies:@[[TyphoonAutoInjectionAssembly assembly],
+    factoryWithKnight = [TyphoonBlockComponentFactory factoryWithAssemblies:@[[TyphoonAutoInjectionAssembly assembly],
         [TyphoonAutoInjectionAssemblyWithKnight assembly]]];
 
-    factoryWithoutKnight = [TyphoonInstrumentedAssemblyComponentFactory factoryWithAssemblies:@[[TyphoonAutoInjectionAssembly assembly]]];
+    factoryWithoutKnight = [TyphoonBlockComponentFactory factoryWithAssemblies:@[[TyphoonAutoInjectionAssembly assembly]]];
 }
 
 - (void)testAutoInjectionWithAssembly

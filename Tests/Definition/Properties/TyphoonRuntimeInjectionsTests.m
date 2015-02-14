@@ -15,6 +15,7 @@
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
 #import "Mock.h"
+#import "TyphoonAssemblyActivator.h"
 
 @interface TyphoonRuntimeInjectionsTests : XCTestCase
 
@@ -29,7 +30,8 @@
 {
     [super setUp];
 
-    factory = [[TyphoonInstrumentedAssemblyComponentFactory factoryWithAssembly:[MiddleAgesAssembly assembly]] asAssembly];
+    factory = [MiddleAgesAssembly assembly];
+    [[TyphoonAssemblyActivator withAssembly:factory] activate];
 }
 
 - (void)test_runtime_arguments

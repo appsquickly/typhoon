@@ -13,7 +13,8 @@
 #import <XCTest/XCTest.h>
 #import <XCTest/XCTest.h>
 #import "AssemblyWithDefinitionConfiguration.h"
-#import "TyphoonInstrumentedAssemblyComponentFactory.h"
+#import "TyphoonBlockComponentFactory.h"
+#import "TyphoonAssemblyActivator.h"
 
 @interface DefinitionConfigurationTest : XCTestCase
 
@@ -27,7 +28,8 @@
 {
     [super setUp];
 
-    assembly = [[TyphoonInstrumentedAssemblyComponentFactory factoryWithAssembly:[AssemblyWithDefinitionConfiguration assembly]] asAssembly];
+    assembly = [AssemblyWithDefinitionConfiguration assembly];
+    [[TyphoonAssemblyActivator withAssembly:assembly] activate];
 }
 
 - (void)test_macros_defined_definition

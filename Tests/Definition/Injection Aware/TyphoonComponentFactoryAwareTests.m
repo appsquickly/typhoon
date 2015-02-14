@@ -11,7 +11,7 @@
 
 #import <XCTest/XCTest.h>
 #import "ComponentFactoryAwareObject.h"
-#import "TyphoonInstrumentedAssemblyComponentFactory.h"
+#import "TyphoonBlockComponentFactory.h"
 #import "ComponentFactoryAwareAssembly.h"
 
 @interface TyphoonComponentFactoryAwareTests : XCTestCase
@@ -27,7 +27,7 @@
 
 - (void)setUp;
 {
-    factory = (id) [[TyphoonInstrumentedAssemblyComponentFactory alloc] initWithAssembly:[ComponentFactoryAwareAssembly assembly]];
+    factory = (id) [[TyphoonBlockComponentFactory alloc] initWithAssembly:[ComponentFactoryAwareAssembly assembly]];
 }
 
 - (void)test_reference_to_assembly_set_on_injection_aware_object;

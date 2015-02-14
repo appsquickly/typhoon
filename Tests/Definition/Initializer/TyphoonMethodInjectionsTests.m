@@ -27,7 +27,7 @@
 
 - (void)setUp
 {
-    factory = [TyphoonInstrumentedAssemblyComponentFactory factoryWithAssemblies:@[[MiddleAgesAssembly assembly], [MethodInjectinosAssembly assembly]]];
+    factory = [TyphoonBlockComponentFactory factoryWithAssemblies:@[[MiddleAgesAssembly assembly], [MethodInjectinosAssembly assembly]]];
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }

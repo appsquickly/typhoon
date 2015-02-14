@@ -12,19 +12,19 @@
 
 #import <XCTest/XCTest.h>
 #import "TyphoonNemoTestAssemblies.h"
-#import "TyphoonInstrumentedAssemblyComponentFactory.h"
+#import "TyphoonBlockComponentFactory.h"
 
 @interface TyphoonAssemblyExtendTests : XCTestCase
 
 @end
 
 @implementation TyphoonAssemblyExtendTests {
-    TyphoonInstrumentedAssemblyComponentFactory *_factory;
+    TyphoonBlockComponentFactory *_factory;
 }
 
 - (void)setUp
 {
-    _factory = [TyphoonInstrumentedAssemblyComponentFactory factoryWithAssemblies:@[
+    _factory = [TyphoonBlockComponentFactory factoryWithAssemblies:@[
         [NemoCoreSecondAssembly assembly]
     ]];
 
@@ -34,7 +34,7 @@
 
 - (void)testExtented
 {
-    NemoCoreSecondAssembly *assembly = [_factory asAssembly];
+    NemoCoreSecondAssembly *assembly = (NemoCoreSecondAssembly*)_factory;
     XCTAssertTrue([[assembly firstViewController] isKindOfClass:[NemoCoreSecondViewController class]]);
 }
 

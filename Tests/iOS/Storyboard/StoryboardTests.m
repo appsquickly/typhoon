@@ -31,7 +31,7 @@
 
     NSBundle *bundle = [NSBundle bundleForClass:[TyphoonBundleResource class]];
 
-    TyphoonComponentFactory *factory = [TyphoonInstrumentedAssemblyComponentFactory factoryWithAssembly:[StoryboardViewControllerAssembly assembly]];
+    TyphoonComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssembly:[StoryboardViewControllerAssembly assembly]];
 
     storyboard = [TyphoonStoryboard storyboardWithName:@"Storyboard" factory:factory bundle:bundle];
 }

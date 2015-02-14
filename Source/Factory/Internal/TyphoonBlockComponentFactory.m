@@ -12,7 +12,7 @@
 
 
 #import "TyphoonMethod+InstanceBuilder.h"
-#import "TyphoonInstrumentedAssemblyComponentFactory.h"
+#import "TyphoonBlockComponentFactory.h"
 #import "TyphoonAssembly.h"
 #import "OCLogTemplate.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
@@ -27,17 +27,8 @@
 
 @end
 
-@implementation TyphoonInstrumentedAssemblyComponentFactory
+@implementation TyphoonBlockComponentFactory
 
-- (id)asAssembly
-{
-    return self;
-}
-
-- (TyphoonComponentFactory*)asFactory
-{
-    return self;
-}
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
@@ -74,7 +65,7 @@
             }
             [assemblies addObject:[cls assembly]];
         }
-        result = [TyphoonInstrumentedAssemblyComponentFactory factoryWithAssemblies:assemblies];
+        result = [TyphoonBlockComponentFactory factoryWithAssemblies:assemblies];
     }
 
     return result;

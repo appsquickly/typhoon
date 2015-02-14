@@ -12,7 +12,7 @@
 
 #import <XCTest/XCTest.h>
 #import "TyphoonComponentFactory.h"
-#import "TyphoonInstrumentedAssemblyComponentFactory.h"
+#import "TyphoonBlockComponentFactory.h"
 #import "MiddleAgesAssembly.h"
 #import "TyphoonPatcher.h"
 #import "Knight.h"
@@ -36,7 +36,7 @@
     [super setUp];
 
     _assembly = [MiddleAgesAssembly assembly];
-    _factory = [TyphoonInstrumentedAssemblyComponentFactory factoryWithAssembly:_assembly];
+    _factory = [TyphoonBlockComponentFactory factoryWithAssembly:_assembly];
 }
 
 - (void)test_allows_patching_out_a_component_with_a_mock

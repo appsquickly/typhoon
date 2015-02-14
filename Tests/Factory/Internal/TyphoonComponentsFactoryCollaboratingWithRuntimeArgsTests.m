@@ -10,34 +10,32 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import "TyphoonInstrumentedAssemblyComponentFactory.h"
+#import "TyphoonBlockComponentFactory.h"
 #import <XCTest/XCTest.h>
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
+#import "TyphoonAssemblyActivator.h"
 
 @interface TyphoonComponentsFactoryCollaboratingWithRuntimeArgsTests : XCTestCase
 
 @end
 
 @implementation TyphoonComponentsFactoryCollaboratingWithRuntimeArgsTests {
-    CollaboratingMiddleAgesAssembly *assembly;
+    CollaboratingMiddleAgesAssembly *_assembly;
 }
 
 - (void)setUp
 {
     [super setUp];
 
-    assembly = [[[TyphoonInstrumentedAssemblyComponentFactory alloc] initWithAssemblies:@[
-        [CollaboratingMiddleAgesAssembly assembly],
-        [MiddleAgesAssembly assembly]
-    ]] asAssembly];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    _assembly = [CollaboratingMiddleAgesAssembly assembly];
+    [[TyphoonAssemblyActivator withAssemblies:@[_assembly, [MiddleAgesAssembly assembly]]] activate];
 }
 
 - (void)test_collaborating_assembly_with_runtime_args
 {
-    Knight *knight = [assembly knightWithCollaboratingFoobar:@"Hello"];
+    Knight *knight = [_assembly knightWithCollaboratingFoobar:@"Hello"];
 
     Knight *fried = [knight.friends anyObject];
 
