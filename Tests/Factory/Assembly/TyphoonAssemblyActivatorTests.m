@@ -103,5 +103,16 @@
     XCTAssertTrue([[assembly componentForKey:@"knight"] isKindOfClass:[Knight class]]);
 }
 
+- (void)test_after_activation_can_inject_pre_obtained_instance
+{
+    MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+    [[TyphoonAssemblyActivator withAssembly:assembly] activate];
+
+    Knight *knight = [[Knight alloc] init];
+    [assembly inject:knight withSelector:@selector(knight)];
+    XCTAssertNotNil(knight.quest);
+}
+
+
 
 @end
