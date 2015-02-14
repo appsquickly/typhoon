@@ -1408,7 +1408,7 @@
 		6B076EEC1936F63A0083714E /* Factory */ = {
 			isa = PBXGroup;
 			children = (
-				6B076EED1936F63A0083714E /* Block */,
+				6B076EED1936F63A0083714E /* Assembly */,
 				6B076F031936F63A0083714E /* Hooks */,
 				6B076F051936F63A0083714E /* Internal */,
 				6B076F1C1936F63A0083714E /* Pool */,
@@ -1420,7 +1420,7 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
-		6B076EED1936F63A0083714E /* Block */ = {
+		6B076EED1936F63A0083714E /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
 				6B076EEE1936F63A0083714E /* TyphoonAssembly+TyphoonAssemblyFriend.h */,
@@ -1445,7 +1445,7 @@
 				6B076F011936F63A0083714E /* TyphoonRuntimeArguments.h */,
 				6B076F021936F63A0083714E /* TyphoonRuntimeArguments.m */,
 			);
-			path = Block;
+			path = Assembly;
 			sourceTree = "<group>";
 		};
 		6B076F031936F63A0083714E /* Hooks */ = {
@@ -1768,7 +1768,7 @@
 		6B076FBF1936F63A0083714E /* Factory */ = {
 			isa = PBXGroup;
 			children = (
-				6B076FC01936F63A0083714E /* Block */,
+				6B076FC01936F63A0083714E /* Assembly */,
 				6B076FE91936F63A0083714E /* ClassWithConstructor.h */,
 				6B076FEA1936F63A0083714E /* ClassWithConstructor.m */,
 				6B076FEB1936F63A0083714E /* Internal */,
@@ -1780,7 +1780,7 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
-		6B076FC01936F63A0083714E /* Block */ = {
+		6B076FC01936F63A0083714E /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
 				6B076FC11936F63A0083714E /* BlockComponentFactory */,
@@ -1792,7 +1792,7 @@
 				6B076FE81936F63A0083714E /* TyphoonCollaboratingAssemblyPropertyEnumeratorTests_AssemblyWithProperty.m */,
 				2DBA1FCE33E18E1D7C616156 /* TyphoonAssemblyExtendTests.m */,
 			);
-			path = Block;
+			path = Assembly;
 			sourceTree = "<group>";
 		};
 		6B076FC11936F63A0083714E /* BlockComponentFactory */ = {

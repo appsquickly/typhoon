@@ -46,7 +46,7 @@ xcodebuild test -project Typhoon.xcodeproj -scheme 'Typhoon-iOSTests' -configura
 -destination 'platform=iOS Simulator,name=iPhone 5s,OS=8.1' | xcpretty -c --report junit
 mv ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
 
-groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/iOS_Simulator -r${requiredCoverage}
+groovy http://frankencover.it/with --debug --source-dir Source --output-dir ${reportsDir}/iOS_Simulator -r${requiredCoverage}
 echo '----------------------------------------------------------------------------------------------------'
 
 
