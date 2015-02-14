@@ -26,7 +26,7 @@
     XCTAssertTrue([[assembly knight] isKindOfClass:[TyphoonDefinition class]]);
 
     [[TyphoonAssemblyActivator activatorWithAssemblies:@[assembly]] activate];
-    
+
     XCTAssertTrue([[assembly knight] isKindOfClass:[Knight class]]);
     NSLog(@"Knight: %@", [assembly knight]);
 }

@@ -18,7 +18,7 @@
 
 @interface TyphoonAssemblyDefinitionBuilder : NSObject
 
- 
+
 - (instancetype)initWithAssembly:(TyphoonAssembly *)assembly;
 
 - (NSArray *)builtDefinitions;
