@@ -11,7 +11,6 @@
 
 #import <XCTest/XCTest.h>
 #import "MiddleAgesAssembly.h"
-#import "TyphoonInstrumentedAssemblyComponentFactory.h"
 #import "Knight.h"
 #import "TyphoonAssemblyActivator.h"
 
@@ -29,6 +28,45 @@
 
     XCTAssertTrue([[assembly knight] isKindOfClass:[Knight class]]);
     NSLog(@"Knight: %@", [assembly knight]);
+}
+
+- (void)test_pre_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_componentForType
+{
+    @try {
+        MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+        [assembly componentForType:[Knight class]];
+        XCTFail(@"Should have thrown exception");
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects(@"componentForType requires the assembly to be activated with TyphooonAssemblyActivator",
+            [e description]);
+    }
+}
+
+- (void)test_pre_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_allComponentsForType
+{
+    @try {
+        MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+        [assembly allComponentsForType:[Knight class]];
+        XCTFail(@"Should have thrown exception");
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects(@"allComponentsForType requires the assembly to be activated with TyphooonAssemblyActivator",
+            [e description]);
+    }
+}
+
+- (void)test_pre_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_componentForKey
+{
+    @try {
+        MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+        [assembly componentForKey:@"knight"];
+            XCTFail(@"Should have thrown exception");
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects(@"componentForKey requires the assembly to be activated with TyphooonAssemblyActivator",
+            [e description]);
+    }
 }
 
 @end
