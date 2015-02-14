@@ -13,6 +13,7 @@ var annotated =
     [ "TyphoonBundleResource", "interface_typhoon_bundle_resource.html", "interface_typhoon_bundle_resource" ],
     [ "<TyphoonCollection>", "protocol_typhoon_collection-p.html", "protocol_typhoon_collection-p" ],
     [ "TyphoonComponentFactory", "interface_typhoon_component_factory.html", "interface_typhoon_component_factory" ],
+    [ "<TyphoonComponentFactory>", "protocol_typhoon_component_factory-p.html", "protocol_typhoon_component_factory-p" ],
     [ "<TyphoonComponentsPool>", "protocol_typhoon_components_pool-p.html", "protocol_typhoon_components_pool-p" ],
     [ "TyphoonConfigPostProcessor", "interface_typhoon_config_post_processor.html", "interface_typhoon_config_post_processor" ],
     [ "TyphoonDefinition", "interface_typhoon_definition.html", "interface_typhoon_definition" ],

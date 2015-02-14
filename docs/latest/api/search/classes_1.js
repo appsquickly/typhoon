@@ -7,6 +7,7 @@ var searchData=
   ['typhoonbundleresource',['TyphoonBundleResource',['../interface_typhoon_bundle_resource.html',1,'']]],
   ['typhooncollection_2dp',['TyphoonCollection-p',['../protocol_typhoon_collection-p.html',1,'']]],
   ['typhooncomponentfactory',['TyphoonComponentFactory',['../interface_typhoon_component_factory.html',1,'']]],
+  ['typhooncomponentfactory_2dp',['TyphoonComponentFactory-p',['../protocol_typhoon_component_factory-p.html',1,'']]],
   ['typhooncomponentspool_2dp',['TyphoonComponentsPool-p',['../protocol_typhoon_components_pool-p.html',1,'']]],
   ['typhoonconfigpostprocessor',['TyphoonConfigPostProcessor',['../interface_typhoon_config_post_processor.html',1,'']]],
   ['typhoondefinition',['TyphoonDefinition',['../interface_typhoon_definition.html',1,'']]],

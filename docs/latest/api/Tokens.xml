@@ -1126,6 +1126,53 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>allComponentsForType:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>aea027bcac4e17f242ac23662ac00c6c4</Anchor>
+    <Abstract>Returns an array objects matching the given type. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>componentForKey:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>abbbebd539b0c507d2c22bfb77e954c9c</Anchor>
+    <Abstract>Returns the component matching the given key. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>componentForKey:args:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>aedfb228ec1ba92f61e3648ba73b2408c</Anchor>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>componentForType:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>a3704107f6b10d089a953e2d9ef07e7db</Anchor>
+    <Abstract>Returns an an instance of the component matching the supplied class or protocol. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>assembly</Name>
       <APILanguage>occ</APILanguage>
       <Type>clm</Type>
@@ -1317,19 +1364,6 @@
       <Scope>TyphoonComponentFactory</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_component_factory.html</Path>
-    <Abstract>This is the base class for all component factories. </Abstract>
-    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>allComponentsForType:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>aed7d338f12814ee5e235cbc605203b89</Anchor>
-    <Abstract>Returns an array objects matching the given type. </Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>
@@ -1342,41 +1376,6 @@
     <Path>interface_typhoon_component_factory.html</Path>
     <Anchor>a497444322c5eb57d64a327f170cbd389</Anchor>
     <Abstract>Attach a TyphoonComponentFactoryPostProcessor to this component factory. </Abstract>
-    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>componentForKey:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>afbe6d5309ee739db59e4c5d35d2ab377</Anchor>
-    <Abstract>Returns the component matching the given key. </Abstract>
-    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>componentForKey:args:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>af6515430a4ff0a5234a7141c99a38b01</Anchor>
-    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>componentForType:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a8beff23e8b71b958b551ad173ef0feb5</Anchor>
-    <Abstract>Returns an an instance of the component matching the supplied class or protocol. </Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>
@@ -1475,6 +1474,53 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>allComponentsForType:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>aea027bcac4e17f242ac23662ac00c6c4</Anchor>
+    <Abstract>Returns an array objects matching the given type. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>componentForKey:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>abbbebd539b0c507d2c22bfb77e954c9c</Anchor>
+    <Abstract>Returns the component matching the given key. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>componentForKey:args:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>aedfb228ec1ba92f61e3648ba73b2408c</Anchor>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>componentForType:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>a3704107f6b10d089a953e2d9ef07e7db</Anchor>
+    <Abstract>Returns an an instance of the component matching the supplied class or protocol. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>defaultFactory</Name>
       <APILanguage>occ</APILanguage>
       <Type>clm</Type>
@@ -1551,6 +1597,64 @@
     <Path>interface_typhoon_component_factory.html</Path>
     <Anchor>a54c45340de66c65390e529f237fc5785</Anchor>
     <Abstract>The instantiated singletons. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>TyphoonComponentFactory</Name>
+      <APILanguage>c</APILanguage>
+      <Type>intf</Type>
+      <Scope>TyphoonComponentFactory</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Abstract>This is the base class for all component factories. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>allComponentsForType:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>aea027bcac4e17f242ac23662ac00c6c4</Anchor>
+    <Abstract>Returns an array objects matching the given type. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>componentForKey:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>abbbebd539b0c507d2c22bfb77e954c9c</Anchor>
+    <Abstract>Returns the component matching the given key. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>componentForKey:args:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>aedfb228ec1ba92f61e3648ba73b2408c</Anchor>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>componentForType:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>a3704107f6b10d089a953e2d9ef07e7db</Anchor>
+    <Abstract>Returns an an instance of the component matching the supplied class or protocol. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>

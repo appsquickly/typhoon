@@ -140,9 +140,9 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Describes the lifecycle of a Typhoon component. </p>
-<p><b>TyphoonScopeObjectGraph</b> (default) This scope is essential (and unique to Typhoon) for mobile and desktop applications. When a component is resolved, any dependencies with the object-graph will be treated as shared instances during resolution. Once resolution is complete they are not retained by the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a>. This allows instantiating an entire object graph for a use-case (say for a ViewController), and then discarding it when that use-case has completed, therefore making efficient use of memory.</p>
+<p><b>TyphoonScopeObjectGraph</b> (default) This scope is essential (and unique to Typhoon) for mobile and desktop applications. When a component is resolved, any dependencies with the object-graph will be treated as shared instances during resolution. Once resolution is complete they are not retained by the <a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a>. This allows instantiating an entire object graph for a use-case (say for a ViewController), and then discarding it when that use-case has completed, therefore making efficient use of memory.</p>
 <p><b>TyphoonScopePrototype</b> Indicates that a new instance should always be created by Typhoon, whenever this component is obtained from an assembly or referenced by another component.</p>
-<p><b>TyphoonScopeSingleton</b> Indicates that Typhoon should retain the instance that exists for as long as the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> exists.</p>
+<p><b>TyphoonScopeSingleton</b> Indicates that Typhoon should retain the instance that exists for as long as the <a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> exists.</p>
 <p><b>TnglyphoonScopeLazySieton</b> This scope behaves the same as TyphoonScopeSingleton, but the object is not created unless or until it is needed.</p>
 <p><b>TyphoonScopeWeakSingleton</b> Indicates that a shared instance should be created as long as necessary. When your application's classes stop referencing this component it will be deallocated until needed again. </p>
 <div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
@@ -161,7 +161,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
-        <li class="footer">Generated on Sat Feb 14 2015 17:54:32 for Typhoon by
+        <li class="footer">Generated on Sat Feb 14 2015 19:48:34 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>

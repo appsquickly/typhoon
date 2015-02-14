@@ -57,6 +57,10 @@ var hierarchy =
     [ "<NSObject>", null, [
       [ "<TyphoonAutoInjectionConfig>", "protocol_typhoon_auto_injection_config-p.html", null ],
       [ "<TyphoonCollection>", "protocol_typhoon_collection-p.html", null ],
+      [ "<TyphoonComponentFactory>", "protocol_typhoon_component_factory-p.html", [
+        [ "TyphoonAssembly", "interface_typhoon_assembly.html", null ],
+        [ "TyphoonComponentFactory", "interface_typhoon_component_factory.html", null ]
+      ] ],
       [ "<TyphoonComponentsPool>", "protocol_typhoon_components_pool-p.html", [
         [ "TyphoonWeakComponentsPool", "interface_typhoon_weak_components_pool.html", null ]
       ] ],

@@ -31,6 +31,7 @@ var searchData=
   ['typhoonclassfromstring',['TyphoonClassFromString',['../_typhoon_introspection_utils_8h.html#ae1c98d6255f9a3c2bf6c19a46b25599e',1,'TyphoonIntrospectionUtils.h']]],
   ['typhooncollection_2dp',['TyphoonCollection-p',['../protocol_typhoon_collection-p.html',1,'']]],
   ['typhooncomponentfactory',['TyphoonComponentFactory',['../interface_typhoon_component_factory.html',1,'']]],
+  ['typhooncomponentfactory_2dp',['TyphoonComponentFactory-p',['../protocol_typhoon_component_factory-p.html',1,'']]],
   ['typhooncomponentfactory_2eh',['TyphoonComponentFactory.h',['../_typhoon_component_factory_8h.html',1,'']]],
   ['typhooncomponentspool_2dp',['TyphoonComponentsPool-p',['../protocol_typhoon_components_pool-p.html',1,'']]],
   ['typhooncomponentspool_2eh',['TyphoonComponentsPool.h',['../_typhoon_components_pool_8h.html',1,'']]],

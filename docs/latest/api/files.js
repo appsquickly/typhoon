@@ -26,7 +26,9 @@ var files =
     [ "TyphoonAutoInjection.h", "_typhoon_auto_injection_8h.html", "_typhoon_auto_injection_8h" ],
     [ "TyphoonBundledImageTypeConverter.h", "_typhoon_bundled_image_type_converter_8h.html", null ],
     [ "TyphoonBundleResource.h", "_typhoon_bundle_resource_8h.html", null ],
-    [ "TyphoonComponentFactory.h", "_typhoon_component_factory_8h.html", null ],
+    [ "TyphoonComponentFactory.h", "_typhoon_component_factory_8h.html", [
+      [ "TyphoonComponentFactory", "interface_typhoon_component_factory.html", "interface_typhoon_component_factory" ]
+    ] ],
     [ "TyphoonComponentsPool.h", "_typhoon_components_pool_8h.html", [
       [ "<TyphoonComponentsPool>", "protocol_typhoon_components_pool-p.html", "protocol_typhoon_components_pool-p" ]
     ] ],
