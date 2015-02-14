@@ -342,6 +342,9 @@
 		6B077461193784DE0083714E /* SomeResource in Resources */ = {isa = PBXBuildFile; fileRef = 6B0770771936F63A0083714E /* SomeResource */; };
 		6B077462193786EB0083714E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA798B7BB085030D07102B8E /* Storyboard.storyboard */; };
 		6B077463193786EC0083714E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA798B7BB085030D07102B8E /* Storyboard.storyboard */; };
+		6B43ED5C1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B43ED5B1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift */; };
+		6B43ED5D1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B43ED5B1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift */; };
+		6B43ED5F1A8FAA350071EFC7 /* SwiftTyphoonAssemblyActivatorTests..swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B43ED5E1A8FAA350071EFC7 /* SwiftTyphoonAssemblyActivatorTests..swift */; };
 		905214711A3770AE006A935B /* OCLogTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F911936F63A0083714E /* OCLogTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90ABC3F51A36B09E008D8162 /* Typhoon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90ABC3EA1A36B09E008D8162 /* Typhoon.framework */; };
 		90ABC4031A36B0BA008D8162 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B076E611936F5850083714E /* UIKit.framework */; };
@@ -1001,6 +1004,10 @@
 		6B077385193780580083714E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B077386193780580083714E /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		6B077387193780580083714E /* Typhoon-osxTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Typhoon-osxTests-Info.plist"; sourceTree = "<group>"; };
+		6B43ED591A8FA8870071EFC7 /* Typhoon-iOSTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Typhoon-iOSTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		6B43ED5A1A8FA8870071EFC7 /* Typhoon-OSXTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Typhoon-OSXTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		6B43ED5B1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMiddleAgesAssembly.swift; sourceTree = "<group>"; };
+		6B43ED5E1A8FAA350071EFC7 /* SwiftTyphoonAssemblyActivatorTests..swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftTyphoonAssemblyActivatorTests..swift; sourceTree = "<group>"; };
 		90ABC3EA1A36B09E008D8162 /* Typhoon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Typhoon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90ABC3ED1A36B09E008D8162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90ABC3F41A36B09E008D8162 /* TyphoonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TyphoonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1828,6 +1835,10 @@
 				6B076FE31936F63A0083714E /* SingletonsChainAssembly.m */,
 				2DBA10314E7114955C0AB31E /* TyphoonNemoTestAssemblies.m */,
 				2DBA1E968487D687338D5E0F /* TyphoonNemoTestAssemblies.h */,
+				6B43ED5B1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift */,
+				6B43ED591A8FA8870071EFC7 /* Typhoon-iOSTests-Bridging-Header.h */,
+				6B43ED5A1A8FA8870071EFC7 /* Typhoon-OSXTests-Bridging-Header.h */,
+				6B43ED5E1A8FAA350071EFC7 /* SwiftTyphoonAssemblyActivatorTests..swift */,
 			);
 			path = TestAssemblies;
 			sourceTree = "<group>";
@@ -2731,6 +2742,7 @@
 				6B0771031936FEA80083714E /* TyphoonRuntimeInjectionsTests.m in Sources */,
 				6B0771071936FEA80083714E /* TyphoonDefinition+InstanceBuilder.m in Sources */,
 				6B0771081936FEA80083714E /* TyphoonDefinition+Tests.m in Sources */,
+				6B43ED5F1A8FAA350071EFC7 /* SwiftTyphoonAssemblyActivatorTests..swift in Sources */,
 				6B0771091936FEA80083714E /* TyphoonDefinitionTests.m in Sources */,
 				6B0771101936FEA80083714E /* CircularDependenciesAssembly.m in Sources */,
 				6B0771111936FEA80083714E /* CollaboratingMiddleAgesAssembly.m in Sources */,
@@ -2750,6 +2762,7 @@
 				6B0771341936FEA80083714E /* TyphoonComponentFactoryTests.m in Sources */,
 				6B0771351936FEA80083714E /* TyphoonScopeTests.m in Sources */,
 				6B0771361936FEA80083714E /* TyphoonWeakComponentsPoolTests.m in Sources */,
+				6B43ED5C1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift in Sources */,
 				6B0771371936FEA80083714E /* main.m in Sources */,
 				6B0771381936FEA80083714E /* TyphoonAppDelegate.m in Sources */,
 				6B0771391936FEA80083714E /* TyphoonViewController.m in Sources */,
@@ -2962,6 +2975,7 @@
 				6B0774401937839D0083714E /* CROSingletonB.m in Sources */,
 				6B0774411937839D0083714E /* Sword.m in Sources */,
 				6B0774421937839D0083714E /* SwordFactory.m in Sources */,
+				6B43ED5D1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift in Sources */,
 				6B0774431937839D0083714E /* Fort.m in Sources */,
 				6B0774441937839D0083714E /* Knight.m in Sources */,
 				6B0774451937839D0083714E /* MediocreQuest.m in Sources */,
@@ -3346,6 +3360,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Typhoon-iOS.app/Typhoon-iOS";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -3362,6 +3377,7 @@
 				);
 				GCC_WARN_UNDECLARED_SELECTOR = NO;
 				INFOPLIST_FILE = "Tests/iOS/Typhoon-iOSTests/Typhoon-iOSTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -3370,6 +3386,8 @@
 					XCTest,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Factory/Assembly/TestAssemblies/Typhoon-iOSTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -3379,6 +3397,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Typhoon-iOS.app/Typhoon-iOS";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -3391,6 +3410,7 @@
 				GCC_PREFIX_HEADER = "Tests/iOS/Typhoon-iOSTests/Prefix.pch";
 				GCC_WARN_UNDECLARED_SELECTOR = NO;
 				INFOPLIST_FILE = "Tests/iOS/Typhoon-iOSTests/Typhoon-iOSTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -3399,6 +3419,7 @@
 					XCTest,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Factory/Assembly/TestAssemblies/Typhoon-iOSTests-Bridging-Header.h";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -3457,6 +3478,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Typhoon-OSX.app/Contents/MacOS/Typhoon-OSX";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -3474,9 +3496,12 @@
 				);
 				GCC_WARN_UNDECLARED_SELECTOR = NO;
 				INFOPLIST_FILE = "Tests/osx/Typhoon-osxTests/Typhoon-osxTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Factory/Assembly/TestAssemblies/Typhoon-OSXTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -3486,6 +3511,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Typhoon-OSX.app/Contents/MacOS/Typhoon-OSX";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3500,9 +3526,11 @@
 				GCC_PREFIX_HEADER = "Tests/osx/Typhoon-osxTests/Prefix.pch";
 				GCC_WARN_UNDECLARED_SELECTOR = NO;
 				INFOPLIST_FILE = "Tests/osx/Typhoon-osxTests/Typhoon-osxTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Factory/Assembly/TestAssemblies/Typhoon-OSXTests-Bridging-Header.h";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
