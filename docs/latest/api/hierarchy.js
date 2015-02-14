@@ -23,8 +23,7 @@ var hierarchy =
         ] ]
       ] ],
       [ "TyphoonInjectionContext", "interface_typhoon_injection_context.html", null ],
-      [ "TyphoonMethod", "interface_typhoon_method.html", null ],
-      [ "TyphoonRuntimeArguments", "interface_typhoon_runtime_arguments.html", null ]
+      [ "TyphoonMethod", "interface_typhoon_method.html", null ]
     ] ],
     [ "<NSFastEnumeration>", null, [
       [ "<TyphoonCollection>", "protocol_typhoon_collection-p.html", null ]
@@ -33,10 +32,7 @@ var hierarchy =
       [ "NSNullTypeConverter", "interface_n_s_null_type_converter.html", null ],
       [ "TyphoonAbstractInjection", "interface_typhoon_abstract_injection.html", null ],
       [ "TyphoonAssembly", "interface_typhoon_assembly.html", null ],
-      [ "TyphoonAssemblySelectorAdviser", "interface_typhoon_assembly_selector_adviser.html", null ],
-      [ "TyphoonComponentFactory", "interface_typhoon_component_factory.html", [
-        [ "TyphoonBlockComponentFactory", "interface_typhoon_block_component_factory.html", null ]
-      ] ],
+      [ "TyphoonComponentFactory", "interface_typhoon_component_factory.html", null ],
       [ "TyphoonConfigPostProcessor", "interface_typhoon_config_post_processor.html", null ],
       [ "TyphoonDefinition", "interface_typhoon_definition.html", null ],
       [ "TyphoonInjectedObject", "interface_typhoon_injected_object.html", null ],
@@ -47,7 +43,6 @@ var hierarchy =
       [ "TyphoonOptionMatcher", "interface_typhoon_option_matcher.html", null ],
       [ "TyphoonPassThroughTypeConverter", "interface_typhoon_pass_through_type_converter.html", null ],
       [ "TyphoonPrimitiveTypeConverter", "interface_typhoon_primitive_type_converter.html", null ],
-      [ "TyphoonRuntimeArguments", "interface_typhoon_runtime_arguments.html", null ],
       [ "TyphoonTestUtils", "interface_typhoon_test_utils.html", null ],
       [ "TyphoonTypeConverterRegistry", "interface_typhoon_type_converter_registry.html", null ],
       [ "TyphoonTypeDescriptor", "interface_typhoon_type_descriptor.html", null ],
@@ -87,9 +82,6 @@ var hierarchy =
     [ "TyphoonAbstractInjection(Protected)", "category_typhoon_abstract_injection_07_protected_08.html", null ],
     [ "TyphoonDefinition(Deprecated)", "category_typhoon_definition_07_deprecated_08.html", null ],
     [ "TyphoonDefinition(Option)", "category_typhoon_definition_07_option_08.html", null ],
-    [ "TyphoonFactoryPropertyInjectionPostProcessor", null, [
-      [ "TyphoonAssemblyPropertyInjectionPostProcessor", "interface_typhoon_assembly_property_injection_post_processor.html", null ]
-    ] ],
     [ "<TyphoonIterator>", "protocol_typhoon_iterator-p.html", null ],
     [ "TyphoonPatcher(Deprecated)", "category_typhoon_patcher_07_deprecated_08.html", null ],
     [ "TyphoonPathResource", null, [

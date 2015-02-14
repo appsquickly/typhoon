@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['indexofargumentwithkind_3a',['indexOfArgumentWithKind:',['../interface_typhoon_runtime_arguments.html#a632e212e1dd074e768ffc12179401a61',1,'TyphoonRuntimeArguments']]],
   ['initwithargumentindex_3a',['initWithArgumentIndex:',['../interface_typhoon_injection_by_runtime_argument.html#a7bc5b2cea72db7a86dd6b35db6788d1a',1,'TyphoonInjectionByRuntimeArgument']]],
-  ['initwithassemblies_3a',['initWithAssemblies:',['../interface_typhoon_block_component_factory.html#ac8917e7cdc0db417866674e3e6acea80',1,'TyphoonBlockComponentFactory']]],
-  ['initwithassembly_3a',['initWithAssembly:',['../interface_typhoon_block_component_factory.html#acc698d2dbe0f8c54259989b1da2f45d5',1,'TyphoonBlockComponentFactory']]],
   ['initwithcapacity_3a',['initWithCapacity:',['../protocol_typhoon_collection-p.html#ad24371521a192555655334f2e6fd0ef6',1,'TyphoonCollection-p::initWithCapacity:()'],['../protocol_typhoon_dictionary-p.html#a158d712c4c31f51645959425be64efe6',1,'TyphoonDictionary-p::initWithCapacity:()']]],
   ['initwithcollection_3arequiredclass_3a',['initWithCollection:requiredClass:',['../interface_typhoon_injection_by_collection.html#a0e3e4b7785624e17380e5319ad575bce',1,'TyphoonInjectionByCollection']]],
   ['initwithdictionary_3arequiredclass_3a',['initWithDictionary:requiredClass:',['../interface_typhoon_injection_by_dictionary.html#a221428504a68f87f371c611f6ce0bf3a',1,'TyphoonInjectionByDictionary']]],

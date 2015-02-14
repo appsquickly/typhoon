@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['selectorisadvised_3a',['selectorIsAdvised:',['../interface_typhoon_assembly_selector_adviser.html#a3a84226f163361adc8e91ac260835bb5',1,'TyphoonAssemblySelectorAdviser']]],
   ['setafterinjections_3a',['setAfterInjections:',['../category_typhoon_definition_07_deprecated_08.html#a57429df9ce05390bbf2e743dd9f90e3e',1,'TyphoonDefinition(Deprecated)::setAfterInjections:()'],['../interface_typhoon_definition.html#a57429df9ce05390bbf2e743dd9f90e3e',1,'TyphoonDefinition::setAfterInjections:()']]],
   ['setbeforeinjections_3a',['setBeforeInjections:',['../category_typhoon_definition_07_deprecated_08.html#a669f26a402157077c7ae205a65ee9613',1,'TyphoonDefinition(Deprecated)::setBeforeInjections:()'],['../interface_typhoon_definition.html#a669f26a402157077c7ae205a65ee9613',1,'TyphoonDefinition::setBeforeInjections:()']]],
   ['setdeallocnotificationinblock_3a',['setDeallocNotificationInBlock:',['../category_n_s_object_07_dealloc_notification_08.html#a2859ee082d6a3638451f9a8fb633d2eb',1,'NSObject(DeallocNotification)']]],
