@@ -30,7 +30,7 @@
     NSLog(@"Knight: %@", [assembly knight]);
 }
 
-- (void)test_pre_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_componentForType
+- (void)test_non_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_componentForType
 {
     @try {
         MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
@@ -43,7 +43,7 @@
     }
 }
 
-- (void)test_pre_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_allComponentsForType
+- (void)test_non_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_allComponentsForType
 {
     @try {
         MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
@@ -56,15 +56,41 @@
     }
 }
 
-- (void)test_pre_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_componentForKey
+- (void)test_non_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_componentForKey
 {
     @try {
         MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
         [assembly componentForKey:@"knight"];
-            XCTFail(@"Should have thrown exception");
+        XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
         XCTAssertEqualObjects(@"componentForKey: requires the assembly to be activated with TyphooonAssemblyActivator",
+            [e description]);
+    }
+}
+
+- (void)test_non_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_inject
+{
+    @try {
+        MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+        [assembly inject:nil];
+        XCTFail(@"Should have thrown exception");
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects(@"inject: requires the assembly to be activated with TyphooonAssemblyActivator",
+            [e description]);
+    }
+}
+
+- (void)test_non_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_inject_withSelector
+{
+    @try {
+        MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+        [assembly inject:nil withSelector:nil];
+        XCTFail(@"Should have thrown exception");
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects(@"inject:withSelector: requires the assembly to be activated with TyphooonAssemblyActivator",
             [e description]);
     }
 }
@@ -76,5 +102,6 @@
 
     XCTAssertTrue([[assembly componentForKey:@"knight"] isKindOfClass:[Knight class]]);
 }
+
 
 @end

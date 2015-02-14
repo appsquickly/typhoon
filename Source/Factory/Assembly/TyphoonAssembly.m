@@ -22,7 +22,6 @@
 #import "TyphoonObjectWithCustomInjection.h"
 #import "TyphoonInjectionByComponentFactory.h"
 #import "TyphoonDefinition+Infrastructure.h"
-#import "OCLogTemplate.h"
 
 static NSMutableSet *reservedSelectorsAsStrings;
 
@@ -188,9 +187,9 @@ static NSMutableSet *reservedSelectorsAsStrings;
 {
     if (!_factory) {
         [NSException raise:NSInternalInconsistencyException
-            format:@"inject: requires the assembly to be activated with TyphooonAssemblyActivator"];
+            format:@"inject:withSelector: requires the assembly to be activated with TyphooonAssemblyActivator"];
     }
-    [_factory inject:instance];
+    [_factory inject:instance withSelector:selector];
 }
 
 
