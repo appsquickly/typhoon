@@ -54,4 +54,6 @@ AnalyticsService* service = [assembly analyticsService];
 
 - (TyphoonComponentFactory *)asFactory;
 
+- (void)activateWithFactory:(TyphoonComponentFactory *)factory;
+
 @end

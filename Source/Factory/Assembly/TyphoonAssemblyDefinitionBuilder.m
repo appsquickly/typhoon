@@ -35,10 +35,6 @@ static void AssertArgumentType(id target, SEL selector, const char *argumentType
     NSMutableDictionary *_cachedDefinitionsForMethodName;
 }
 
-+ (instancetype)builderWithAssembly:(TyphoonAssembly *)assembly
-{
-    return [[self alloc] initWithAssembly:assembly];
-}
 
 - (instancetype)initWithAssembly:(TyphoonAssembly *)assembly
 {

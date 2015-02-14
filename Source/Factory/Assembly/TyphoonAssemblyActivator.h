@@ -9,22 +9,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
 #import <Foundation/Foundation.h>
 
 @class TyphoonAssembly;
-@class TyphoonDefinition;
-@class TyphoonRuntimeArguments;
 
-@interface TyphoonAssemblyDefinitionBuilder : NSObject
 
- 
-- (instancetype)initWithAssembly:(TyphoonAssembly *)assembly;
+@interface TyphoonAssemblyActivator : NSObject
 
-- (NSArray *)builtDefinitions;
++ (instancetype)activatorWithAssemblies:(NSArray *)assemblies;
 
-- (TyphoonDefinition *)builtDefinitionForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args;
++ (instancetype)activatorWithAssembly:(TyphoonAssembly *)assembly;
 
-@property(readonly, unsafe_unretained) TyphoonAssembly *assembly;
+- (void)activate;
 
 @end

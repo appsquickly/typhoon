@@ -26,20 +26,23 @@
 #import "TyphoonInjectionByComponentFactory.h"
 #import "TyphoonSelector.h"
 #import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonIntrospectionUtils.h"
+#import "OCLogTemplate.h"
 
 static NSMutableSet *reservedSelectorsAsStrings;
 
-@interface TyphoonAssembly () <TyphoonObjectWithCustomInjection>
+@interface TyphoonAssembly ()<TyphoonObjectWithCustomInjection>
 
-@property(readwrite) NSSet *definitionSelectors;
+@property (readwrite) NSSet *definitionSelectors;
 
-@property(readonly) TyphoonAssemblyAdviser *adviser;
+@property (readonly) TyphoonAssemblyAdviser *adviser;
 
 @end
 
 @implementation TyphoonAssembly
 {
     TyphoonAssemblyDefinitionBuilder *_definitionBuilder;
+    TyphoonComponentFactory *_factory;
 }
 
 
@@ -53,7 +56,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 + (instancetype)defaultAssembly
 {
-    return (TyphoonAssembly *) [TyphoonComponentFactory defaultFactory];
+    return (TyphoonAssembly *)[TyphoonComponentFactory defaultFactory];
 }
 
 + (void)load
@@ -91,16 +94,38 @@ static NSMutableSet *reservedSelectorsAsStrings;
     return [reservedSelectorsAsStrings containsObject:selectorString];
 }
 
+
+
 #pragma mark - Forwarding definition methods
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
-    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
+    if (_factory) {
+        NSString* componentKey = NSStringFromSelector([anInvocation selector]);
+        LogTrace(@"Component key: %@", componentKey);
 
-    TyphoonDefinition *definition = [self buildDefinitionForSelector:anInvocation.selector args:args];
+        TyphoonRuntimeArguments* args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
 
-    [anInvocation retainArguments];
-    [anInvocation setReturnValue:&definition];
+        NSInvocation* internalInvocation =
+            [NSInvocation invocationWithMethodSignature:[_factory methodSignatureForSelector:@selector(componentForKey:args:)]];
+        [internalInvocation setSelector:@selector(componentForKey:args:)];
+        [internalInvocation setArgument:&componentKey atIndex:2];
+        [internalInvocation setArgument:&args atIndex:3];
+        [internalInvocation invokeWithTarget:_factory];
+
+        void* returnValue;
+        [internalInvocation getReturnValue:&returnValue];
+        [anInvocation setReturnValue:&returnValue];
+
+
+    }
+    else {
+        TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
+        TyphoonDefinition *definition = [self buildDefinitionForSelector:anInvocation.selector args:args];
+
+        [anInvocation retainArguments];
+        [anInvocation setReturnValue:&definition];
+    }
 }
 
 - (TyphoonDefinition *)buildDefinitionForSelector:(SEL)selector args:(TyphoonRuntimeArguments *)args
@@ -108,6 +133,8 @@ static NSMutableSet *reservedSelectorsAsStrings;
     NSString *key = NSStringFromSelector(selector);
     return [_definitionBuilder builtDefinitionForKey:key args:args];
 }
+
+
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
@@ -126,7 +153,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 //-------------------------------------------------------------------------------------------
 #pragma mark - <TyphoonObjectWithCustomInjection>
 
-- (id <TyphoonPropertyInjection, TyphoonParameterInjection>)typhoonCustomObjectInjection
+- (id<TyphoonPropertyInjection, TyphoonParameterInjection>)typhoonCustomObjectInjection
 {
     return [[TyphoonInjectionByComponentFactory alloc] init];
 }
@@ -154,8 +181,16 @@ static NSMutableSet *reservedSelectorsAsStrings;
     return (id)self;
 }
 
+
 //-------------------------------------------------------------------------------------------
 #pragma mark - Private Methods
+//-------------------------------------------------------------------------------------------
+
+- (void)activateWithFactory:(TyphoonComponentFactory *)factory
+{
+    _factory = factory;
+}
+
 
 - (NSArray *)definitions
 {
