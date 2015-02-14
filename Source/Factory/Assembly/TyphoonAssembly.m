@@ -13,9 +13,6 @@
 
 #import <objc/runtime.h>
 #import "TyphoonAssembly.h"
-#import "TyphoonDefinition.h"
-#import "TyphoonComponentFactory.h"
-#import "TyphoonAssemblySelectorAdviser.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblyAdviser.h"
 #import "TyphoonAssemblyDefinitionBuilder.h"
@@ -24,9 +21,7 @@
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonObjectWithCustomInjection.h"
 #import "TyphoonInjectionByComponentFactory.h"
-#import "TyphoonSelector.h"
 #import "TyphoonDefinition+Infrastructure.h"
-#import "TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
 
 static NSMutableSet *reservedSelectorsAsStrings;
@@ -76,6 +71,10 @@ static NSMutableSet *reservedSelectorsAsStrings;
     [self markSelectorReserved:@selector(defaultAssembly)];
     [self markSelectorReserved:@selector(asFactory)];
     [self markSelectorReserved:@selector(resolveCollaboratingAssemblies)];
+    [self markSelectorReserved:@selector(componentForType:)];
+    [self markSelectorReserved:@selector(allComponentsForType:)];
+    [self markSelectorReserved:@selector(componentForKey:)];
+    [self markSelectorReserved:@selector(componentForKey:args:)];
 
 }
 
@@ -101,40 +100,13 @@ static NSMutableSet *reservedSelectorsAsStrings;
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
     if (_factory) {
-        NSString *componentKey = NSStringFromSelector([anInvocation selector]);
-        LogTrace(@"Component key: %@", componentKey);
 
-        TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
-
-        NSInvocation *internalInvocation =
-            [NSInvocation invocationWithMethodSignature:[_factory methodSignatureForSelector:@selector(componentForKey:args:)]];
-        [internalInvocation setSelector:@selector(componentForKey:args:)];
-        [internalInvocation setArgument:&componentKey atIndex:2];
-        [internalInvocation setArgument:&args atIndex:3];
-        [internalInvocation invokeWithTarget:_factory];
-
-        void *returnValue;
-        [internalInvocation getReturnValue:&returnValue];
-        [anInvocation setReturnValue:&returnValue];
-
-
+        [self forwardToFactoryComponentForKey:anInvocation];
     }
     else {
-        TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
-        TyphoonDefinition *definition = [self buildDefinitionForSelector:anInvocation.selector args:args];
-
-        [anInvocation retainArguments];
-        [anInvocation setReturnValue:&definition];
+        [self forwardToDefinitionBuilder:anInvocation];
     }
 }
-
-- (TyphoonDefinition *)buildDefinitionForSelector:(SEL)selector args:(TyphoonRuntimeArguments *)args
-{
-    NSString *key = NSStringFromSelector(selector);
-    return [_definitionBuilder builtDefinitionForKey:key args:args];
-}
-
-
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
@@ -166,30 +138,38 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 - (id)componentForType:(id)classOrProtocol
 {
-    [NSException raise:NSInternalInconsistencyException
-        format:@"componentForType requires the assembly to be activated with TyphooonAssemblyActivator"];
-    return nil;
+    if (!_factory) {
+        [NSException raise:NSInternalInconsistencyException
+            format:@"componentForType requires the assembly to be activated with TyphooonAssemblyActivator"];
+    }
+    return [_factory componentForType:classOrProtocol];
 }
 
 - (NSArray *)allComponentsForType:(id)classOrProtocol
 {
-    [NSException raise:NSInternalInconsistencyException
-        format:@"allComponentsForType requires the assembly to be activated with TyphooonAssemblyActivator"];
-    return nil;
+    if (!_factory) {
+        [NSException raise:NSInternalInconsistencyException
+            format:@"allComponentsForType requires the assembly to be activated with TyphooonAssemblyActivator"];
+    }
+    return [_factory allComponentsForType:classOrProtocol];
 }
 
 - (id)componentForKey:(NSString *)key
 {
-    [NSException raise:NSInternalInconsistencyException
-        format:@"componentForKey requires the assembly to be activated with TyphooonAssemblyActivator"];
-    return nil;
+    if (!_factory) {
+        [NSException raise:NSInternalInconsistencyException
+            format:@"componentForKey requires the assembly to be activated with TyphooonAssemblyActivator"];
+    }
+    return [_factory componentForKey:key];
 }
 
 - (id)componentForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args
 {
-    [NSException raise:NSInternalInconsistencyException
-        format:@"componentForKey:args requires the assembly to be activated with TyphooonAssemblyActivator"];
-    return nil;
+    if (!_factory) {
+        [NSException raise:NSInternalInconsistencyException
+            format:@"componentForKey:args requires the assembly to be activated with TyphooonAssemblyActivator"];
+    }
+    return [_factory componentForKey:key args:args];
 }
 
 
@@ -247,6 +227,36 @@ static NSMutableSet *reservedSelectorsAsStrings;
 {
     self.definitionSelectors = [self.adviser definitionSelectors];
     [self.adviser adviseAssembly];
+}
+
+
+- (void)forwardToFactoryComponentForKey:(NSInvocation *)anInvocation
+{
+    NSString *componentKey = NSStringFromSelector([anInvocation selector]);
+    LogTrace(@"Component key: %@", componentKey);
+
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
+
+    NSInvocation *internalInvocation =
+        [NSInvocation invocationWithMethodSignature:[_factory methodSignatureForSelector:@selector(componentForKey:args:)]];
+    [internalInvocation setSelector:@selector(componentForKey:args:)];
+    [internalInvocation setArgument:&componentKey atIndex:2];
+    [internalInvocation setArgument:&args atIndex:3];
+    [internalInvocation invokeWithTarget:_factory];
+
+    void *returnValue;
+    [internalInvocation getReturnValue:&returnValue];
+    [anInvocation setReturnValue:&returnValue];
+}
+
+- (void)forwardToDefinitionBuilder:(NSInvocation *)anInvocation
+{
+    TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
+    NSString *key = NSStringFromSelector(anInvocation.selector);
+    TyphoonDefinition *definition = [_definitionBuilder builtDefinitionForKey:key args:args];
+
+    [anInvocation retainArguments];
+    [anInvocation setReturnValue:&definition];
 }
 
 

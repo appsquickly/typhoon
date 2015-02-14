@@ -69,4 +69,12 @@
     }
 }
 
+- (void)test_after_activation_TyphoonComponentFactory_methods_are_available
+{
+    MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+    [[TyphoonAssemblyActivator withAssembly:assembly] activate];
+
+    XCTAssertTrue([[assembly componentForKey:@"knight"] isKindOfClass:[Knight class]]);
+}
+
 @end
