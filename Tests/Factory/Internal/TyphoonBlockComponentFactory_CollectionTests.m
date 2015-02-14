@@ -13,7 +13,7 @@
 #import <Foundation/Foundation.h>
 #import <XCTest/XCTest.h>
 #import "TyphoonComponentFactory.h"
-#import "TyphoonBlockComponentFactory.h"
+#import "TyphoonInstrumentedAssemblyComponentFactory.h"
 #import "MiddleAgesAssembly.h"
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "Knight.h"
@@ -31,7 +31,7 @@
 
 - (void)test_allows_initialization_with_a_collection_of_assemblies
 {
-    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
+    TyphoonComponentFactory *factory = [[TyphoonInstrumentedAssemblyComponentFactory alloc] initWithAssemblies:@[
         [MiddleAgesAssembly assembly],
         [CollaboratingMiddleAgesAssembly assembly],
     ]];
@@ -43,7 +43,7 @@
 
 - (void)test_allows_initialization_with_a_collection_of_assemblies_in_any_order
 {
-    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
+    TyphoonComponentFactory *factory = [[TyphoonInstrumentedAssemblyComponentFactory alloc] initWithAssemblies:@[
         [CollaboratingMiddleAgesAssembly assembly],
         [MiddleAgesAssembly assembly]
     ]];

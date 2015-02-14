@@ -96,25 +96,24 @@ static NSMutableSet *reservedSelectorsAsStrings;
 }
 
 
-
 #pragma mark - Forwarding definition methods
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
     if (_factory) {
-        NSString* componentKey = NSStringFromSelector([anInvocation selector]);
+        NSString *componentKey = NSStringFromSelector([anInvocation selector]);
         LogTrace(@"Component key: %@", componentKey);
 
-        TyphoonRuntimeArguments* args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
+        TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
 
-        NSInvocation* internalInvocation =
+        NSInvocation *internalInvocation =
             [NSInvocation invocationWithMethodSignature:[_factory methodSignatureForSelector:@selector(componentForKey:args:)]];
         [internalInvocation setSelector:@selector(componentForKey:args:)];
         [internalInvocation setArgument:&componentKey atIndex:2];
         [internalInvocation setArgument:&args atIndex:3];
         [internalInvocation invokeWithTarget:_factory];
 
-        void* returnValue;
+        void *returnValue;
         [internalInvocation getReturnValue:&returnValue];
         [anInvocation setReturnValue:&returnValue];
 
@@ -154,6 +153,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - <TyphoonObjectWithCustomInjection>
+//-------------------------------------------------------------------------------------------
 
 - (id<TyphoonPropertyInjection, TyphoonParameterInjection>)typhoonCustomObjectInjection
 {
@@ -161,7 +161,41 @@ static NSMutableSet *reservedSelectorsAsStrings;
 }
 
 //-------------------------------------------------------------------------------------------
+#pragma mark - <TyphoonInstanceBuilder>
+//-------------------------------------------------------------------------------------------
+
+- (id)componentForType:(id)classOrProtocol
+{
+    [NSException raise:NSInternalInconsistencyException
+        format:@"componentForType requires the assembly to be activated with TyphooonAssemblyActivator"];
+    return nil;
+}
+
+- (NSArray *)allComponentsForType:(id)classOrProtocol
+{
+    [NSException raise:NSInternalInconsistencyException
+        format:@"allComponentsForType requires the assembly to be activated with TyphooonAssemblyActivator"];
+    return nil;
+}
+
+- (id)componentForKey:(NSString *)key
+{
+    [NSException raise:NSInternalInconsistencyException
+        format:@"componentForKey requires the assembly to be activated with TyphooonAssemblyActivator"];
+    return nil;
+}
+
+- (id)componentForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args
+{
+    [NSException raise:NSInternalInconsistencyException
+        format:@"componentForKey:args requires the assembly to be activated with TyphooonAssemblyActivator"];
+    return nil;
+}
+
+
+//-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods
+//-------------------------------------------------------------------------------------------
 
 - (void)resolveCollaboratingAssemblies
 {

@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import "TyphoonBlockComponentFactory.h"
+#import "TyphoonInstrumentedAssemblyComponentFactory.h"
 #import <XCTest/XCTest.h>
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "MiddleAgesAssembly.h"
@@ -28,7 +28,7 @@
 {
     [super setUp];
 
-    assembly = [[[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
+    assembly = [[[TyphoonInstrumentedAssemblyComponentFactory alloc] initWithAssemblies:@[
         [CollaboratingMiddleAgesAssembly assembly],
         [MiddleAgesAssembly assembly]
     ]] asAssembly];

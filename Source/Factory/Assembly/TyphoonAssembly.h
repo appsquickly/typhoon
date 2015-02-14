@@ -11,6 +11,7 @@
 
 #import "TyphoonDefinition.h"
 #import "TyphoonDefinition+Option.h"
+#import "TyphoonComponentFactory.h"
 #import <Foundation/Foundation.h>
 
 @class TyphoonComponentFactory;
@@ -41,7 +42,7 @@ AnalyticsService* service = [assembly analyticsService];
 * - Allows the use of IDE features like refactoring and code completion.
 *
 */
-@interface TyphoonAssembly : NSObject
+@interface TyphoonAssembly : NSObject<TyphoonComponentFactory>
 
 + (instancetype)assembly;
 

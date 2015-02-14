@@ -27,7 +27,44 @@
 * API for assembling components from their constituent parts. This low-level API could be used as-is, however its intended to use a higher
 * level abstraction such as TyphoonBlockComponentFactory.
 */
-@interface TyphoonComponentFactory : NSObject
+
+@protocol TyphoonComponentFactory<NSObject>
+
+/**
+* Returns an an instance of the component matching the supplied class or protocol. For example:
+@code
+[factory objectForType:[Knight class]];
+[factory objectForType:@protocol(Quest)];
+@endcode
+*
+* @exception NSInvalidArgumentException When no singletons or prototypes match the requested type.
+* @exception NSInvalidArgumentException When when more than one singleton or prototype matches the requested type.
+*
+* @warning componentForType with a protocol argument is not currently supported in Objective-C++.
+*
+* @see: allComponentsForType:
+*/
+- (id)componentForType:(id)classOrProtocol;
+
+/**
+* Returns an array objects matching the given type.
+*
+* @see componentForType
+*/
+- (NSArray *)allComponentsForType:(id)classOrProtocol;
+
+/**
+* Returns the component matching the given key. For the block-style, this is the name of the method on the
+* TyphoonAssembly interface, although, for block-style you'd typically use the assembly interface itself
+* for component resolution.
+*/
+- (id)componentForKey:(NSString *)key;
+
+- (id)componentForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args;
+
+@end
+
+@interface TyphoonComponentFactory : NSObject<TyphoonComponentFactory>
 {
     NSMutableArray *_registry;
     id <TyphoonComponentsPool> _singletons;
@@ -130,37 +167,6 @@
 */
 - (void)registerDefinition:(TyphoonDefinition *)definition;
 
-/**
-* Returns an an instance of the component matching the supplied class or protocol. For example:
-@code
-[factory objectForType:[Knight class]];
-[factory objectForType:@protocol(Quest)];
-@endcode
-*
-* @exception NSInvalidArgumentException When no singletons or prototypes match the requested type.
-* @exception NSInvalidArgumentException When when more than one singleton or prototype matches the requested type.
-*
-* @warning componentForType with a protocol argument is not currently supported in Objective-C++.
-*
-* @see: allComponentsForType:
-*/
-- (id)componentForType:(id)classOrProtocol;
-
-/**
-* Returns an array objects matching the given type.
-*
-* @see componentForType
-*/
-- (NSArray *)allComponentsForType:(id)classOrProtocol;
-
-/**
-* Returns the component matching the given key. For the block-style, this is the name of the method on the
-* TyphoonAssembly interface, although, for block-style you'd typically use the assembly interface itself
-* for component resolution.
-*/
-- (id)componentForKey:(NSString *)key;
-
-- (id)componentForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args;
 
 - (NSArray *)registry;
 

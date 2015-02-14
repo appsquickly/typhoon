@@ -12,7 +12,7 @@
 
 #import "TyphoonAssemblyActivator.h"
 #import "TyphoonAssembly.h"
-#import "TyphoonBlockComponentFactory.h"
+#import "TyphoonInstrumentedAssemblyComponentFactory.h"
 
 @interface TyphoonAssembly (Activation)
 
@@ -59,7 +59,7 @@
 
 - (void)activate
 {
-    TyphoonBlockComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:_assemblies];
+    TyphoonInstrumentedAssemblyComponentFactory *factory = [[TyphoonInstrumentedAssemblyComponentFactory alloc] initWithAssemblies:_assemblies];
     for (TyphoonAssembly *assembly in _assemblies) {
         [assembly activateWithFactory:factory];
     }

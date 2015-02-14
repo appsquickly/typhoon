@@ -12,7 +12,7 @@
 
 
 #import "TyphoonMethod+InstanceBuilder.h"
-#import "TyphoonBlockComponentFactory.h"
+#import "TyphoonInstrumentedAssemblyComponentFactory.h"
 #import "TyphoonAssembly.h"
 #import "OCLogTemplate.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
@@ -27,7 +27,7 @@
 
 @end
 
-@implementation TyphoonBlockComponentFactory
+@implementation TyphoonInstrumentedAssemblyComponentFactory
 
 - (id)asAssembly
 {
@@ -74,7 +74,7 @@
             }
             [assemblies addObject:[cls assembly]];
         }
-        result = [TyphoonBlockComponentFactory factoryWithAssemblies:assemblies];
+        result = [TyphoonInstrumentedAssemblyComponentFactory factoryWithAssemblies:assemblies];
     }
 
     return result;

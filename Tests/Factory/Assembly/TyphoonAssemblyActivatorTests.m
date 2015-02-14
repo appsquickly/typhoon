@@ -11,7 +11,7 @@
 
 #import <XCTest/XCTest.h>
 #import "MiddleAgesAssembly.h"
-#import "TyphoonBlockComponentFactory.h"
+#import "TyphoonInstrumentedAssemblyComponentFactory.h"
 #import "Knight.h"
 #import "TyphoonAssemblyActivator.h"
 

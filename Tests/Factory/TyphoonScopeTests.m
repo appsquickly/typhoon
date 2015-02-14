@@ -12,7 +12,7 @@
 
 #import <XCTest/XCTest.h>
 #import "ObjectGraphAssembly.h"
-#import "TyphoonBlockComponentFactory.h"
+#import "TyphoonInstrumentedAssemblyComponentFactory.h"
 #import "Knight.h"
 #import "CampaignQuest.h"
 #import "Fort.h"
@@ -28,7 +28,7 @@
 
 - (void)setUp
 {
-    TyphoonBlockComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssembly:[ObjectGraphAssembly assembly]];
+    TyphoonInstrumentedAssemblyComponentFactory *factory = [TyphoonInstrumentedAssemblyComponentFactory factoryWithAssembly:[ObjectGraphAssembly assembly]];
     _assembly = (ObjectGraphAssembly *) factory;
 }
 

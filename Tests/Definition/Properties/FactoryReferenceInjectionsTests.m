@@ -63,7 +63,7 @@ NSString *currentFooString;
 
 - (void)updateFactory
 {
-    factory = [TyphoonBlockComponentFactory factoryWithAssembly:[ClassWithKnightSettingsAssembly assembly]];
+    factory = [TyphoonInstrumentedAssemblyComponentFactory factoryWithAssembly:[ClassWithKnightSettingsAssembly assembly]];
 }
 
 - (void)test_inject_int_bool

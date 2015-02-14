@@ -109,7 +109,7 @@
 
 - (void)test_config_as_runtime_argument
 {
-    TyphoonTestAssemblyConfigPostProcessor *assembly = [[[TyphoonBlockComponentFactory alloc] initWithAssembly:[TyphoonTestAssemblyConfigPostProcessor assembly]] asAssembly];
+    TyphoonTestAssemblyConfigPostProcessor *assembly = [[[TyphoonInstrumentedAssemblyComponentFactory alloc] initWithAssembly:[TyphoonTestAssemblyConfigPostProcessor assembly]] asAssembly];
     [_configurer postProcessDefinitionsInFactory:(id) assembly];
     Knight *knight = [assembly knight];
     XCTAssertEqualObjects(knight.quest.imageUrl, [NSURL URLWithString:@"http://google.com/"]);

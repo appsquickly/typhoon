@@ -29,7 +29,7 @@
 {
     [super setUp];
 
-    factory = [[TyphoonBlockComponentFactory factoryWithAssembly:[MiddleAgesAssembly assembly]] asAssembly];
+    factory = [[TyphoonInstrumentedAssemblyComponentFactory factoryWithAssembly:[MiddleAgesAssembly assembly]] asAssembly];
 }
 
 - (void)test_runtime_arguments

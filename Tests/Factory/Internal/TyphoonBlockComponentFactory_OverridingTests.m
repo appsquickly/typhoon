@@ -13,7 +13,7 @@
 #import <Foundation/Foundation.h>
 #import <XCTest/XCTest.h>
 #import "TyphoonComponentFactory.h"
-#import "TyphoonBlockComponentFactory.h"
+#import "TyphoonInstrumentedAssemblyComponentFactory.h"
 #import "OCLogTemplate.h"
 #import "ExtendedMiddleAgesAssembly.h"
 #import "Knight.h"
@@ -32,7 +32,7 @@
 
 - (void)test_allows_overriding_methods_in_an_assembly
 {
-    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
+    TyphoonComponentFactory *factory = [[TyphoonInstrumentedAssemblyComponentFactory alloc] initWithAssemblies:@[
         [ExtendedMiddleAgesAssembly assembly],
     ]];
 
@@ -43,7 +43,7 @@
 
 - (void)test_allows_overriding_methods_in_a_collaborating_assembly
 {
-    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[
+    TyphoonComponentFactory *factory = [[TyphoonInstrumentedAssemblyComponentFactory alloc] initWithAssemblies:@[
         [ExtendedMiddleAgesAssembly assembly],
         [CollaboratingMiddleAgesAssembly assembly],
     ]];

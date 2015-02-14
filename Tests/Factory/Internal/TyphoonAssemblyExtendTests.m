@@ -12,19 +12,19 @@
 
 #import <XCTest/XCTest.h>
 #import "TyphoonNemoTestAssemblies.h"
-#import "TyphoonBlockComponentFactory.h"
+#import "TyphoonInstrumentedAssemblyComponentFactory.h"
 
 @interface TyphoonAssemblyExtendTests : XCTestCase
 
 @end
 
 @implementation TyphoonAssemblyExtendTests {
-    TyphoonBlockComponentFactory *_factory;
+    TyphoonInstrumentedAssemblyComponentFactory *_factory;
 }
 
 - (void)setUp
 {
-    _factory = [TyphoonBlockComponentFactory factoryWithAssemblies:@[
+    _factory = [TyphoonInstrumentedAssemblyComponentFactory factoryWithAssemblies:@[
         [NemoCoreSecondAssembly assembly]
     ]];
 

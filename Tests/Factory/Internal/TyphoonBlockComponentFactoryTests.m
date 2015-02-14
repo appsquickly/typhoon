@@ -11,7 +11,7 @@
 
 #import <XCTest/XCTest.h>
 #import "TyphoonComponentFactory.h"
-#import "TyphoonBlockComponentFactory.h"
+#import "TyphoonInstrumentedAssemblyComponentFactory.h"
 #import "TyphoonAssembly.h"
 #import "MiddleAgesAssembly.h"
 #import "TyphoonBundleResource.h"
@@ -49,7 +49,7 @@
 - (void)setUp
 {
 
-    _componentFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[MiddleAgesAssembly assembly]];
+    _componentFactory = [[TyphoonInstrumentedAssemblyComponentFactory alloc] initWithAssembly:[MiddleAgesAssembly assembly]];
 
     internalProcessorsCount = [[_componentFactory definitionPostProcessors] count];
 
@@ -57,10 +57,10 @@
     [configurer useResourceWithName:@"SomeProperties.properties"];
     [_componentFactory attachPostProcessor:configurer];
 
-    _exceptionTestFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[ExceptionTestAssembly assembly]];
-    _circularDependenciesFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[CircularDependenciesAssembly assembly]];
-    _singletonsChainFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[SingletonsChainAssembly assembly]];
-    _infrastructureComponentsFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[InfrastructureComponentsAssembly assembly]];
+    _exceptionTestFactory = [[TyphoonInstrumentedAssemblyComponentFactory alloc] initWithAssembly:[ExceptionTestAssembly assembly]];
+    _circularDependenciesFactory = [[TyphoonInstrumentedAssemblyComponentFactory alloc] initWithAssembly:[CircularDependenciesAssembly assembly]];
+    _singletonsChainFactory = [[TyphoonInstrumentedAssemblyComponentFactory alloc] initWithAssembly:[SingletonsChainAssembly assembly]];
+    _infrastructureComponentsFactory = [[TyphoonInstrumentedAssemblyComponentFactory alloc] initWithAssembly:[InfrastructureComponentsAssembly assembly]];
 }
 
 - (void)tearDown
@@ -110,7 +110,7 @@
 
 - (void)test_injection_with_dictionary
 {
-    if ([_componentFactory isKindOfClass:[TyphoonBlockComponentFactory class]]) {
+    if ([_componentFactory isKindOfClass:[TyphoonInstrumentedAssemblyComponentFactory class]]) {
 
         Knight *knight = [_componentFactory componentForKey:@"knightWithCollections"];
 
@@ -209,7 +209,7 @@
 
 - (void)test_resolves_property_values
 {
-    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[TyphoonConfigAssembly assembly]];
+    TyphoonComponentFactory *factory = [[TyphoonInstrumentedAssemblyComponentFactory alloc] initWithAssembly:[TyphoonConfigAssembly assembly]];
     TyphoonConfigPostProcessor *configurer = [TyphoonConfigPostProcessor postProcessor];
     [configurer useResourceWithName:@"SomeProperties.properties"];
     [factory attachPostProcessor:configurer];
@@ -249,7 +249,7 @@
 
 - (void)test_resolves_circular_dependencies_for_property_injected_by_reference
 {
-    if ([_circularDependenciesFactory isKindOfClass:[TyphoonBlockComponentFactory class]]) {
+    if ([_circularDependenciesFactory isKindOfClass:[TyphoonInstrumentedAssemblyComponentFactory class]]) {
         ClassADependsOnB *classA = [_circularDependenciesFactory componentForKey:@"classA"];
         XCTAssertNotNil(classA.dependencyOnB);
         XCTAssertEqual(classA, classA.dependencyOnB.dependencyOnA);
@@ -264,7 +264,7 @@
 
 - (void)test_resolves_circular_dependencies_for_property_injected_by_type
 {
-    if ([_circularDependenciesFactory isKindOfClass:[TyphoonBlockComponentFactory class]]) {
+    if ([_circularDependenciesFactory isKindOfClass:[TyphoonInstrumentedAssemblyComponentFactory class]]) {
         ClassADependsOnB *classA = [_circularDependenciesFactory componentForType:[ClassADependsOnB class]];
         XCTAssertNotNil(classA.dependencyOnB);
         XCTAssertEqual(classA, classA.dependencyOnB.dependencyOnA);

@@ -29,7 +29,7 @@
 - (void)setUp
 {
     [super setUp];
-    _factory = [TyphoonBlockComponentFactory factoryWithAssembly:[MiddleAgesAssembly assembly]];
+    _factory = [TyphoonInstrumentedAssemblyComponentFactory factoryWithAssembly:[MiddleAgesAssembly assembly]];
 }
 
 
