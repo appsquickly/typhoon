@@ -114,9 +114,6 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a5682d54bbebb3e5eca92707339bee4ce"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_component_factory.html#a5682d54bbebb3e5eca92707339bee4ce">load</a></td></tr>
 <tr class="memdesc:a5682d54bbebb3e5eca92707339bee4ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutate the component definitions and build the not-lazy singletons.  <a href="#a5682d54bbebb3e5eca92707339bee4ce">More...</a><br /></td></tr>
 <tr class="separator:a5682d54bbebb3e5eca92707339bee4ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ec88fe6f78db210ec6556a68f15fae4"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_component_factory.html#a4ec88fe6f78db210ec6556a68f15fae4">makeDefault</a></td></tr>
-<tr class="memdesc:a4ec88fe6f78db210ec6556a68f15fae4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the default component factory, if one has been set.  <a href="#a4ec88fe6f78db210ec6556a68f15fae4">More...</a><br /></td></tr>
-<tr class="separator:a4ec88fe6f78db210ec6556a68f15fae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4569eb6aebca4089de316d2b80d34d1"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_component_factory.html#ae4569eb6aebca4089de316d2b80d34d1">registerDefinition:</a></td></tr>
 <tr class="memdesc:ae4569eb6aebca4089de316d2b80d34d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a component into the factory.  <a href="#ae4569eb6aebca4089de316d2b80d34d1">More...</a><br /></td></tr>
 <tr class="separator:ae4569eb6aebca4089de316d2b80d34d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,6 +140,8 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a238c582efa06e034699d9218c6c75539 inherit pub_methods_protocol_typhoon_component_factory-p"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_typhoon_component_factory-p.html#a238c582efa06e034699d9218c6c75539">inject:withSelector:</a></td></tr>
 <tr class="memdesc:a238c582efa06e034699d9218c6c75539 inherit pub_methods_protocol_typhoon_component_factory-p"><td class="mdescLeft">&#160;</td><td class="mdescRight">Injects the properties and methods of an object, described in definition.  <a href="#a238c582efa06e034699d9218c6c75539">More...</a><br /></td></tr>
 <tr class="separator:a238c582efa06e034699d9218c6c75539 inherit pub_methods_protocol_typhoon_component_factory-p"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90d9f247cd9b8f0fb6f67a1b00a43b0b inherit pub_methods_protocol_typhoon_component_factory-p"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_typhoon_component_factory-p.html#a90d9f247cd9b8f0fb6f67a1b00a43b0b">makeDefault</a></td></tr>
+<tr class="separator:a90d9f247cd9b8f0fb6f67a1b00a43b0b inherit pub_methods_protocol_typhoon_component_factory-p"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Class Methods</h2></td></tr>
@@ -209,9 +208,9 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the default component factory, if one has been set. </p>
-<dl class="section see"><dt>See also</dt><dd>[<a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> <a class="el" href="interface_typhoon_component_factory.html#a4ec88fe6f78db210ec6556a68f15fae4" title="Returns the default component factory, if one has been set. ">- makeDefault</a>]. This allows resolving components from the Typhoon another class after the container has been set up.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd>[<a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> <a class="el" href="protocol_typhoon_component_factory-p.html#a90d9f247cd9b8f0fb6f67a1b00a43b0b">- makeDefault (TyphoonComponentFactory-p)</a>]. This allows resolving components from the Typhoon another class after the container has been set up.</dd></dl>
 <p>A more desirable approach, if possible - especially for a component that is also registered with the container is to use TyphoonComponentFactoryAware, which injects the component factory as a dependency on the class that needs it. This latter approach simplifies unit testing, in that no special approach to patching out the classes collaborators is required.</p>
-<dl class="section see"><dt>See also</dt><dd>[<a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> <a class="el" href="interface_typhoon_component_factory.html#a4ec88fe6f78db210ec6556a68f15fae4" title="Returns the default component factory, if one has been set. ">- makeDefault</a>]. </dd>
+<dl class="section see"><dt>See also</dt><dd>[<a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> <a class="el" href="protocol_typhoon_component_factory-p.html#a90d9f247cd9b8f0fb6f67a1b00a43b0b">- makeDefault (TyphoonComponentFactory-p)</a>]. </dd>
 <dd>
 TyphoonComponentFactoryAware </dd></dl>
 
@@ -264,40 +263,6 @@ TyphoonComponentFactoryAware </dd></dl>
 </div><div class="memdoc">
 
 <p>Mutate the component definitions and build the not-lazy singletons. </p>
-
-</div>
-</div>
-<a class="anchor" id="a4ec88fe6f78db210ec6556a68f15fae4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (void) makeDefault </td>
-          <td></td>
-          <td class="paramname"></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the default component factory, if one has been set. </p>
-<dl class="section see"><dt>See also</dt><dd>[<a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> <a class="el" href="interface_typhoon_component_factory.html#a4ec88fe6f78db210ec6556a68f15fae4" title="Returns the default component factory, if one has been set. ">- makeDefault</a>]. This allows resolving components from the Typhoon another class after the container has been set up.</dd></dl>
-<p>This method is only integrating Typhoon into legacy environments - classes not managed by Typhoon, and its use elsewhere is discouraged as it will create a hard-wired dependency on Typhoon, whenever the default factory is retrieved.</p>
-<p>A more desirable approach is to use TyphoonComponentFactoryAware or to inject the factory via an assembly. This simplifies unit testing.</p>
-<h2>Alternative approach: inject the factory (in this case posing behind a <a class="el" href="interface_typhoon_assembly.html" title="Provides a concise way to declare and encapsulate the architecture of an application in one or more c...">TyphoonAssembly</a> subclass):</h2>
-<div class="fragment"><div class="line">- (id)loyaltyManagementController</div>
-<div class="line">{</div>
-<div class="line">    <span class="keywordflow">return</span> [<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a> withClass:[LoyaltyManagementViewController <span class="keyword">class</span>]</div>
-<div class="line">        properties:^(<a class="code" href="interface_typhoon_definition.html">TyphoonDefinition</a>* definition)</div>
-<div class="line">    {</div>
-<div class="line">        definition.<a class="code" href="interface_typhoon_definition.html#aa4df6569a008392075c9689a73d13729">scope</a> = TyphoonScopePrototype;</div>
-<div class="line">        <span class="comment">//Inject the TyphoonComponentFactory posing as an assembly</span></div>
-<div class="line">        [definition injectProperty:<span class="keyword">@selector</span>(assembly)];</div>
-<div class="line">    }];</div>
-<div class="line">}</div>
-</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd>[<a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> <a class="el" href="interface_typhoon_component_factory.html#a4ec88fe6f78db210ec6556a68f15fae4" title="Returns the default component factory, if one has been set. ">- makeDefault</a>]. </dd>
-<dd>
-TyphoonComponentFactoryAware </dd></dl>
 
 </div>
 </div>
@@ -464,7 +429,7 @@ TyphoonComponentFactoryAware </dd></dl>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
         <li class="navelem"><a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a></li>
-        <li class="footer">Generated on Sat Feb 14 2015 23:30:25 for Typhoon by
+        <li class="footer">Generated on Sat Feb 14 2015 23:42:23 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>

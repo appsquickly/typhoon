@@ -10,7 +10,8 @@ var group___factory =
       [ "componentForKey:args:", "protocol_typhoon_component_factory-p.html#aedfb228ec1ba92f61e3648ba73b2408c", null ],
       [ "componentForType:", "protocol_typhoon_component_factory-p.html#a3704107f6b10d089a953e2d9ef07e7db", null ],
       [ "inject:", "protocol_typhoon_component_factory-p.html#a4531b1291723ccbaaf31553aea40ee6a", null ],
-      [ "inject:withSelector:", "protocol_typhoon_component_factory-p.html#a238c582efa06e034699d9218c6c75539", null ]
+      [ "inject:withSelector:", "protocol_typhoon_component_factory-p.html#a238c582efa06e034699d9218c6c75539", null ],
+      [ "makeDefault", "protocol_typhoon_component_factory-p.html#a90d9f247cd9b8f0fb6f67a1b00a43b0b", null ]
     ] ],
     [ "<TyphoonDefinitionPostProcessor>", "protocol_typhoon_definition_post_processor-p.html", [
       [ "postProcessDefinitionsInFactory:", "protocol_typhoon_definition_post_processor-p.html#aec4cc0d59e693dd7fffa0c7247d05915", null ]
