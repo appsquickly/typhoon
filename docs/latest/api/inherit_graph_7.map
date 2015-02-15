@@ -18,7 +18,7 @@
 <area shape="rect" id="node19" href="$protocol_typhoon_collection-p.html" title="Protocol which should be confirmed by collection (NSArray, NSSet, NSOrderedSet are conforms) ..." alt="" coords="253,164,401,191"/>
 <area shape="rect" id="node21" href="$interface_n_s_null_type_converter.html" title="Converter used for testing. " alt="" coords="535,1193,687,1220"/>
 <area shape="rect" id="node22" href="$interface_typhoon_assembly.html" title="Provides a concise way to declare and encapsulate the architecture of an application in one or more c..." alt="" coords="545,417,677,444"/>
-<area shape="rect" id="node23" href="$interface_typhoon_component_factory.html" title="TyphoonComponentFactory" alt="" coords="518,367,705,393"/>
+<area shape="rect" id="node23" href="$interface_typhoon_component_factory.html" title="This is the base class for all component factories. " alt="" coords="518,367,705,393"/>
 <area shape="rect" id="node24" href="$interface_typhoon_config_post_processor.html" title="TyphoonConfigPostProcessor" alt="" coords="512,924,711,951"/>
 <area shape="rect" id="node25" href="$interface_typhoon_injected_object.html" title="TyphoonInjectedObject" alt="" coords="532,721,691,748"/>
 <area shape="rect" id="node26" href="$interface_typhoon_introspection_utils.html" title="TyphoonIntrospectionUtils" alt="" coords="523,772,699,799"/>
@@ -33,7 +33,7 @@
 <area shape="rect" id="node35" href="$interface_typhoon_view_controller_nib_resolver.html" title="Post&#45;Processor that completes the initializer of definitions with type UIViewController. " alt="" coords="521,975,701,1017"/>
 <area shape="rect" id="node36" href="$interface_typhoon_weak_components_pool.html" title="TyphoonWeakComponentsPool" alt="" coords="506,468,717,495"/>
 <area shape="rect" id="node38" href="$protocol_typhoon_auto_injection_config-p.html" title="\&lt;TyphoonAutoInjectionConfig\&gt;" alt="" coords="224,367,429,393"/>
-<area shape="rect" id="node39" href="$protocol_typhoon_component_factory-p.html" title="This is the base class for all component factories. " alt="" coords="225,417,428,444"/>
+<area shape="rect" id="node39" href="$protocol_typhoon_component_factory-p.html" title="Defines a protocol for resolving built instances, injecting a pre&#45;obtained instance using a factory c..." alt="" coords="225,417,428,444"/>
 <area shape="rect" id="node40" href="$protocol_typhoon_components_pool-p.html" title="Methods from NSMutableDictionary which used in componentsPool. " alt="" coords="231,468,423,495"/>
 <area shape="rect" id="node41" href="$protocol_typhoon_definition_post_processor-p.html" title="Allows for custom modification of a component factory&#39;s definitions. " alt="" coords="211,924,443,951"/>
 <area shape="rect" id="node42" href="$protocol_typhoon_dictionary-p.html" title="\&lt;TyphoonDictionary\&gt;" alt="" coords="252,1117,401,1144"/>

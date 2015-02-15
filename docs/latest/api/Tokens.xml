@@ -1366,6 +1366,7 @@
       <Scope>TyphoonComponentFactory</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_component_factory.html</Path>
+    <Abstract>This is the base class for all component factories. </Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>
@@ -1607,7 +1608,7 @@
       <Scope>TyphoonComponentFactory</Scope>
     </TokenIdentifier>
     <Path>protocol_typhoon_component_factory-p.html</Path>
-    <Abstract>This is the base class for all component factories. </Abstract>
+    <Abstract>Defines a protocol for resolving built instances, injecting a pre-obtained instance using a factory c...</Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>

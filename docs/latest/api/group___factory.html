@@ -103,8 +103,11 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_assembly.html">TyphoonAssembly</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a concise way to declare and encapsulate the architecture of an application in one or more classes that describe how components collaborate together.  <a href="interface_typhoon_assembly.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the base class for all component factories.  <a href="interface_typhoon_component_factory.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">protocol &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_typhoon_component_factory-p.html">&lt;TyphoonComponentFactory&gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the base class for all component factories.  <a href="protocol_typhoon_component_factory-p.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines a protocol for resolving built instances, injecting a pre-obtained instance using a factory containing definitions from one or more <a class="el" href="interface_typhoon_assembly.html" title="Provides a concise way to declare and encapsulate the architecture of an application in one or more c...">TyphoonAssembly</a> classes.  <a href="protocol_typhoon_component_factory-p.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">protocol &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocol_typhoon_definition_post_processor-p.html">&lt;TyphoonDefinitionPostProcessor&gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows for custom modification of a component factory's definitions.  <a href="protocol_typhoon_definition_post_processor-p.html#details">More...</a><br /></td></tr>
@@ -113,7 +116,7 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga3dc651b0109dde0ddd73519ccc5eb860"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="group___factory.html#ga3dc651b0109dde0ddd73519ccc5eb860">NSObject(FactoryHooks)::typhoonSetFactory:</a></td></tr>
-<tr class="memdesc:ga3dc651b0109dde0ddd73519ccc5eb860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of method typhoonSetFactory indicates that a component wishes to be aware of the <a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> in order to resolve another component.  <a href="#ga3dc651b0109dde0ddd73519ccc5eb860">More...</a><br /></td></tr>
+<tr class="memdesc:ga3dc651b0109dde0ddd73519ccc5eb860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of method typhoonSetFactory indicates that a component wishes to be aware of the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> in order to resolve another component.  <a href="#ga3dc651b0109dde0ddd73519ccc5eb860">More...</a><br /></td></tr>
 <tr class="separator:ga3dc651b0109dde0ddd73519ccc5eb860"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2c70804a42c7e37fe2015c1c03996173"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="group___factory.html#ga2c70804a42c7e37fe2015c1c03996173">NSObject(FactoryHooks)::typhoonWillInject</a></td></tr>
 <tr class="memdesc:ga2c70804a42c7e37fe2015c1c03996173"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typhoon components can implement this methods to participate in property-injection life-cycle events.  <a href="#ga2c70804a42c7e37fe2015c1c03996173">More...</a><br /></td></tr>
@@ -136,11 +139,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Implementation of method typhoonSetFactory indicates that a component wishes to be aware of the <a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> in order to resolve another component. </p>
+<p>Implementation of method typhoonSetFactory indicates that a component wishes to be aware of the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> in order to resolve another component. </p>
 <p>Typically we'd want to inject all the dependencies, however there are some cases where its desirable to load a component from the factory at runtime. One example is view controller transitions where a given view controller has:</p>
 <ul>
 <li>All of the dependencies for its main use-case injected</li>
-<li>Looks up the view controller for a transition from the container. This allows using prototype scope to load one object-graph at a time, thus making efficient use of memory. Accepts the <a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> via setter-injection, allowing the factory to be stored to a property or ivar. Note that this method contract uses the type id, which if you're using a block-style assembly allows setting the factory to the <a class="el" href="interface_typhoon_assembly.html" title="Provides a concise way to declare and encapsulate the architecture of an application in one or more c...">TyphoonAssembly</a> sub-class itself without casting. The underlying type is <a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a>.</li>
+<li>Looks up the view controller for a transition from the container. This allows using prototype scope to load one object-graph at a time, thus making efficient use of memory. Accepts the <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> via setter-injection, allowing the factory to be stored to a property or ivar. Note that this method contract uses the type id, which if you're using a block-style assembly allows setting the factory to the <a class="el" href="interface_typhoon_assembly.html" title="Provides a concise way to declare and encapsulate the architecture of an application in one or more c...">TyphoonAssembly</a> sub-class itself without casting. The underlying type is <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a>.</li>
 </ul>
 <h2>Examples:</h2>
 <div class="fragment"><div class="line"><span class="comment">//Using the TyphoonComponentFactory interface:</span></div>
@@ -156,7 +159,7 @@ Functions</h2></td></tr>
 <div class="line">_assembly = assembly;</div>
 <div class="line">MyAnalyticsService* service = [assembly analyticsService];</div>
 <div class="line">}</div>
-</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Whether the factory is injected as a <a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> or a <a class="el" href="interface_typhoon_assembly.html" title="Provides a concise way to declare and encapsulate the architecture of an application in one or more c...">TyphoonAssembly</a> sub-class, it can still be casted from one to the other. </dd></dl>
+</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Whether the factory is injected as a <a class="el" href="interface_typhoon_component_factory.html" title="This is the base class for all component factories. ">TyphoonComponentFactory</a> or a <a class="el" href="interface_typhoon_assembly.html" title="Provides a concise way to declare and encapsulate the architecture of an application in one or more c...">TyphoonAssembly</a> sub-class, it can still be casted from one to the other. </dd></dl>
 
 </div>
 </div>
@@ -188,7 +191,7 @@ TyphoonDefinition.afterInjections Typhoon calls this method (if implemented) jus
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
-        <li class="footer">Generated on Sun Feb 15 2015 08:27:39 for Typhoon by
+        <li class="footer">Generated on Sun Feb 15 2015 08:36:33 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>

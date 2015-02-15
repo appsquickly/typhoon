@@ -1,4 +1,4 @@
 <map id="&lt;TyphoonComponentFactory&gt;" name="&lt;TyphoonComponentFactory&gt;">
 <area shape="rect" id="node3" href="$interface_typhoon_assembly.html" title="Provides a concise way to declare and encapsulate the architecture of an application in one or more c..." alt="" coords="5,155,137,181"/>
-<area shape="rect" id="node4" href="$interface_typhoon_component_factory.html" title="TyphoonComponentFactory" alt="" coords="162,155,349,181"/>
+<area shape="rect" id="node4" href="$interface_typhoon_component_factory.html" title="This is the base class for all component factories. " alt="" coords="162,155,349,181"/>
 </map>
