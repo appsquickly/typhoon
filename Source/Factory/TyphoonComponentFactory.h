@@ -24,7 +24,7 @@
 * @ingroup Factory
 *
 * Defines a protocol for resolving built instances, injecting a pre-obtained instance using a factory containing
-* definitions from one or more TyphoonAssembly classes. 
+* definitions from one or more TyphoonAssembly classes.
 */
 
 @protocol TyphoonComponentFactory<NSObject>

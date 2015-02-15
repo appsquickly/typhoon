@@ -22,8 +22,8 @@
 * Provides a concise way to declare and encapsulate the architecture of an application in one or more classes that describe
 * how components collaborate together.
 *
-* Besides declaring an application architecture at build-time, the assembly interface serves an additional purpose at runtime: we can
-* resolve components using the method name on the interface.
+* Prior to activation the assembly interface returns TyphoonDefinitions. After activation assembly interface poses in
+* of a TyphoonComponentFactory to return built instances.
 *
 * ## Example:
 *
