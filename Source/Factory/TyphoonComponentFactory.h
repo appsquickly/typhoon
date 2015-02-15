@@ -23,9 +23,8 @@
 *
 * @ingroup Factory
 *
-* This is the base class for all component factories. It defines methods for retrieving components from the factory, as well as a low-level
-* API for assembling components from their constituent parts. This low-level API could be used as-is, however its intended to use a higher
-* level abstraction such as TyphoonBlockComponentFactory.
+* Defines a protocol for resolving built instances, injecting a pre-obtained instance using a factory containing
+* definitions from one or more TyphoonAssembly classes. 
 */
 
 @protocol TyphoonComponentFactory<NSObject>
@@ -76,6 +75,14 @@
 
 @end
 
+/**
+*
+* @ingroup Factory
+*
+* This is the base class for all component factories. It defines methods for retrieving components from the factory, as well as a low-level
+* API for assembling components from their constituent parts. This low-level API could be used as-is, however its intended to use a higher
+* level abstraction such as TyphoonBlockComponentFactory.
+*/
 @interface TyphoonComponentFactory : NSObject<TyphoonComponentFactory>
 {
     NSMutableArray *_registry;
