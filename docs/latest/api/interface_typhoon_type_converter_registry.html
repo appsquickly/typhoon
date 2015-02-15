@@ -29,6 +29,7 @@
         <table cellspacing="0" cellpadding="0">
             <tbody>
             <tr style="height: 56px;">
+                <td id="projectlogo"><a href="http://www.typhoonframework.org"><img alt="Logo" src="tests-logo.png"/></a></td>
                 <td style="padding-left: 0.5em;">
                     <div id="projectname">
                     </div>
@@ -88,8 +89,8 @@ $(document).ready(function(){initNavTree('interface_typhoon_type_converter_regis
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Instance Methods</a> &#124;
 <a href="#pub-static-methods">Class Methods</a> &#124;
+<a href="#pub-methods">Instance Methods</a> &#124;
 <a href="class_typhoon_type_converter_registry-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">TyphoonTypeConverterRegistry Class Reference</div>  </div>
@@ -106,6 +107,16 @@ Inheritance diagram for TyphoonTypeConverterRegistry:</div>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Class Methods</h2></td></tr>
+<tr class="memitem:ae56af9a302e744df8d3482d52f46c6e7"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_typhoon_type_converter_registry.html">TyphoonTypeConverterRegistry</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_type_converter_registry.html#ae56af9a302e744df8d3482d52f46c6e7">shared</a></td></tr>
+<tr class="memdesc:ae56af9a302e744df8d3482d52f46c6e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the shard/default registry instance used by the container.  <a href="#ae56af9a302e744df8d3482d52f46c6e7">More...</a><br /></td></tr>
+<tr class="separator:ae56af9a302e744df8d3482d52f46c6e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af70a6163ffa2c615202d43ab436afad3"><td class="memItemLeft" align="right" valign="top">(NSString *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_type_converter_registry.html#af70a6163ffa2c615202d43ab436afad3">textWithoutTypeFromTextValue:</a></td></tr>
+<tr class="separator:af70a6163ffa2c615202d43ab436afad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa80517a752cf484d86113ee782adfb7"><td class="memItemLeft" align="right" valign="top">(NSString *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_type_converter_registry.html#afa80517a752cf484d86113ee782adfb7">typeFromTextValue:</a></td></tr>
+<tr class="separator:afa80517a752cf484d86113ee782adfb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
 <tr class="memitem:a1e19c507a923bb3e23e31b1612de96ad"><td class="memItemLeft" align="right" valign="top">(id&lt; <a class="el" href="protocol_typhoon_type_converter-p.html">TyphoonTypeConverter</a> &gt;)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_type_converter_registry.html#a1e19c507a923bb3e23e31b1612de96ad">converterForType:</a></td></tr>
@@ -120,16 +131,6 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:a9a9497ffd5d74ea02d2173d653afee01"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_type_converter_registry.html#a9a9497ffd5d74ea02d2173d653afee01">unregisterTypeConverter:</a></td></tr>
 <tr class="memdesc:a9a9497ffd5d74ea02d2173d653afee01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister a type converter.  <a href="#a9a9497ffd5d74ea02d2173d653afee01">More...</a><br /></td></tr>
 <tr class="separator:a9a9497ffd5d74ea02d2173d653afee01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Class Methods</h2></td></tr>
-<tr class="memitem:ae56af9a302e744df8d3482d52f46c6e7"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_typhoon_type_converter_registry.html">TyphoonTypeConverterRegistry</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_type_converter_registry.html#ae56af9a302e744df8d3482d52f46c6e7">shared</a></td></tr>
-<tr class="memdesc:ae56af9a302e744df8d3482d52f46c6e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the shard/default registry instance used by the container.  <a href="#ae56af9a302e744df8d3482d52f46c6e7">More...</a><br /></td></tr>
-<tr class="separator:ae56af9a302e744df8d3482d52f46c6e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af70a6163ffa2c615202d43ab436afad3"><td class="memItemLeft" align="right" valign="top">(NSString *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_type_converter_registry.html#af70a6163ffa2c615202d43ab436afad3">textWithoutTypeFromTextValue:</a></td></tr>
-<tr class="separator:af70a6163ffa2c615202d43ab436afad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa80517a752cf484d86113ee782adfb7"><td class="memItemLeft" align="right" valign="top">(NSString *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_type_converter_registry.html#afa80517a752cf484d86113ee782adfb7">typeFromTextValue:</a></td></tr>
-<tr class="separator:afa80517a752cf484d86113ee782adfb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Registry of type converters, with special treatment for primitives. </p>
@@ -263,7 +264,7 @@ Class Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
         <li class="navelem"><a class="el" href="interface_typhoon_type_converter_registry.html">TyphoonTypeConverterRegistry</a></li>
-        <li class="footer">Generated on Sun Feb 15 2015 08:39:26 for Typhoon by
+        <li class="footer">Generated on Sun Feb 15 2015 08:48:35 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>

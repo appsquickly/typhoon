@@ -29,6 +29,7 @@
         <table cellspacing="0" cellpadding="0">
             <tbody>
             <tr style="height: 56px;">
+                <td id="projectlogo"><a href="http://www.typhoonframework.org"><img alt="Logo" src="tests-logo.png"/></a></td>
                 <td style="padding-left: 0.5em;">
                     <div id="projectname">
                     </div>
@@ -88,8 +89,8 @@ $(document).ready(function(){initNavTree('interface_typhoon_method.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Instance Methods</a> &#124;
 <a href="#properties">Properties</a> &#124;
+<a href="#pub-methods">Instance Methods</a> &#124;
 <a href="class_typhoon_method-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">TyphoonMethod Class Reference<div class="ingroups"><a class="el" href="group___definition.html">Definition</a></div></div>  </div>
@@ -106,18 +107,18 @@ Inheritance diagram for TyphoonMethod:</div>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:a2df02aed8c27d293dad75d3a8c010705"><td class="memItemLeft" align="right" valign="top">SEL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_method.html#a2df02aed8c27d293dad75d3a8c010705">selector</a></td></tr>
+<tr class="memdesc:a2df02aed8c27d293dad75d3a8c010705"><td class="mdescLeft">&#160;</td><td class="mdescRight">The selector used to initialize the component.  <a href="#a2df02aed8c27d293dad75d3a8c010705">More...</a><br /></td></tr>
+<tr class="separator:a2df02aed8c27d293dad75d3a8c010705"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
 <tr class="memitem:a06092f744c76dcdde0be8c4743991bc7"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_method.html#a06092f744c76dcdde0be8c4743991bc7">initWithSelector:</a></td></tr>
 <tr class="separator:a06092f744c76dcdde0be8c4743991bc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9c073e76872ccce153960253c6352db"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_method.html#ac9c073e76872ccce153960253c6352db">injectParameterWith:</a></td></tr>
 <tr class="separator:ac9c073e76872ccce153960253c6352db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
-Properties</h2></td></tr>
-<tr class="memitem:a2df02aed8c27d293dad75d3a8c010705"><td class="memItemLeft" align="right" valign="top">SEL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_method.html#a2df02aed8c27d293dad75d3a8c010705">selector</a></td></tr>
-<tr class="memdesc:a2df02aed8c27d293dad75d3a8c010705"><td class="mdescLeft">&#160;</td><td class="mdescRight">The selector used to initialize the component.  <a href="#a2df02aed8c27d293dad75d3a8c010705">More...</a><br /></td></tr>
-<tr class="separator:a2df02aed8c27d293dad75d3a8c010705"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents an method to inject for a component. </p>
@@ -134,7 +135,30 @@ Properties</h2></td></tr>
 <li>No type introspection for objects injected with a text representation.</li>
 </ul>
 <p>Its generally recommended to use initializer-style injection, unless the above drawbacks will manifest. </p>
-</div><h2 class="groupheader">Method Documentation</h2>
+</div><h2 class="groupheader">Property Documentation</h2>
+<a class="anchor" id="a2df02aed8c27d293dad75d3a8c010705"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (SEL) selector</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">assign</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The selector used to initialize the component. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Method Documentation</h2>
 <a class="anchor" id="a06092f744c76dcdde0be8c4743991bc7"></a>
 <div class="memitem">
 <div class="memproto">
@@ -167,29 +191,6 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Property Documentation</h2>
-<a class="anchor" id="a2df02aed8c27d293dad75d3a8c010705"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (SEL) selector</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">assign</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The selector used to initialize the component. </p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.5-->
@@ -197,7 +198,7 @@ Properties</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
         <li class="navelem"><a class="el" href="interface_typhoon_method.html">TyphoonMethod</a></li>
-        <li class="footer">Generated on Sun Feb 15 2015 08:39:26 for Typhoon by
+        <li class="footer">Generated on Sun Feb 15 2015 08:48:35 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>
