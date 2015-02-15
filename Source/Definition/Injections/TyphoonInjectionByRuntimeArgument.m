@@ -15,6 +15,11 @@
 
 @implementation TyphoonInjectionByRuntimeArgument
 
+- (NSString *)customDescription
+{
+    return [NSString stringWithFormat:@"runtimeIndex = %d, ", (int)self.runtimeArgumentIndex];
+}
+
 - (instancetype)initWithArgumentIndex:(NSUInteger)index
 {
     self = [super init];
@@ -37,8 +42,6 @@
 {
     id<TyphoonInjection> injection = [context.args argumentValueAtIndex:self.runtimeArgumentIndex];
     [injection valueToInjectWithContext:context completion:result];
-
-//    result([context.args argumentValueAtIndex:self.runtimeArgumentIndex]);
 }
 
 - (id)copyWithZone:(NSZone *)zone

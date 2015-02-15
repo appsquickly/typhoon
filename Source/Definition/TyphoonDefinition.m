@@ -26,6 +26,7 @@
 #import "TyphoonInjectionByFactoryReference.h"
 #import "TyphoonInjections.h"
 #import "TyphoonFactoryDefinition.h"
+#import "TyphoonRuntimeArguments.h"
 
 static NSString *TyphoonScopeToString(TyphoonScope scope) {
     switch (scope) {
@@ -275,11 +276,19 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 - (id)copyWithZone:(NSZone *)zone
 {
     TyphoonDefinition *copy = [[TyphoonDefinition alloc] initWithClass:_type key:[_key copy]];
-    [copy setInitializer:[self.initializer copy]];
-    for (id <TyphoonPropertyInjection> property in _injectedProperties) {
-        [copy addInjectedProperty:[property copyWithZone:NSDefaultMallocZone()]];
-    }
-    copy->_injectedMethods = [_injectedMethods copy];
+    copy->_keyAutomaticAssigned = _keyAutomaticAssigned;
+    copy->_initializer = [_initializer copy];
+    copy->_beforeInjections = [_beforeInjections copy];
+    copy->_injectedProperties = [_injectedProperties mutableCopy];
+    copy->_injectedMethods = [_injectedMethods mutableCopy];
+    copy->_afterInjections = [_afterInjections copy];
+    copy->_scope = _scope;
+    copy->_parent = _parent;
+    copy->_isScopeSetByUser = _isScopeSetByUser;
+    copy->_autoInjectionVisibility = _autoInjectionVisibility;
+    copy->_abstract = _abstract;
+    copy->_initializerGenerated = _initializerGenerated;
+    copy->_currentRuntimeArguments = [_currentRuntimeArguments copy];
     return copy;
 }
 

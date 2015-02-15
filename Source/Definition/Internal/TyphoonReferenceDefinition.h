@@ -18,4 +18,11 @@
 
 + (instancetype)definitionReferringToComponent:(NSString *)key;
 
+
+@end
+
+@interface TyphoonShortcutDefinition : TyphoonDefinition
+
++ (instancetype)definitionWithKey:(NSString *)key referringTo:(TyphoonDefinition *)definition;
+
 @end
