@@ -1,6 +1,11 @@
 var group___definition =
 [
     [ "TyphoonDefinition", "interface_typhoon_definition.html", [
+      [ "abstract", "interface_typhoon_definition.html#a06ab7dc77ee2f386d87ea3fe75f18693", null ],
+      [ "autoInjectionVisibility", "interface_typhoon_definition.html#a7b651ab85991ef1d9641ef5cd1f67187", null ],
+      [ "parent", "interface_typhoon_definition.html#add76507109b2465e672b7472c408fa05", null ],
+      [ "scope", "interface_typhoon_definition.html#aa4df6569a008392075c9689a73d13729", null ],
+      [ "type", "interface_typhoon_definition.html#a1683dd7b003c512248c98fecb26d0985", null ],
       [ "injectMethod:parameters:", "interface_typhoon_definition.html#a6052afa42a4a9a206dfac94cbd7f5e86", null ],
       [ "injectProperty:", "interface_typhoon_definition.html#ae94bc60d51081f565e5183e5b28ea36f", null ],
       [ "injectProperty:with:", "interface_typhoon_definition.html#a2dae7a42237c54186dff914a699bf7d9", null ],
@@ -21,17 +26,12 @@ var group___definition =
       [ "withFactory:selector:parameters:configuration:", "interface_typhoon_definition.html#aeb2db6f4167d2a32126e605ee22db4f2", null ],
       [ "withOption:matcher:", "interface_typhoon_definition.html#ace67617e7c8feea3167bd10342964a3d", null ],
       [ "withOption:matcher:autoInjectionConfig:", "interface_typhoon_definition.html#af42ffbdb443c1e44379a728b1096becb", null ],
-      [ "withOption:yes:no:", "interface_typhoon_definition.html#a96cf46e499d4b083215881a2a9c8808e", null ],
-      [ "abstract", "interface_typhoon_definition.html#a06ab7dc77ee2f386d87ea3fe75f18693", null ],
-      [ "autoInjectionVisibility", "interface_typhoon_definition.html#a7b651ab85991ef1d9641ef5cd1f67187", null ],
-      [ "parent", "interface_typhoon_definition.html#add76507109b2465e672b7472c408fa05", null ],
-      [ "scope", "interface_typhoon_definition.html#aa4df6569a008392075c9689a73d13729", null ],
-      [ "type", "interface_typhoon_definition.html#a1683dd7b003c512248c98fecb26d0985", null ]
+      [ "withOption:yes:no:", "interface_typhoon_definition.html#a96cf46e499d4b083215881a2a9c8808e", null ]
     ] ],
     [ "TyphoonMethod", "interface_typhoon_method.html", [
+      [ "selector", "interface_typhoon_method.html#a2df02aed8c27d293dad75d3a8c010705", null ],
       [ "initWithSelector:", "interface_typhoon_method.html#a06092f744c76dcdde0be8c4743991bc7", null ],
-      [ "injectParameterWith:", "interface_typhoon_method.html#ac9c073e76872ccce153960253c6352db", null ],
-      [ "selector", "interface_typhoon_method.html#a2df02aed8c27d293dad75d3a8c010705", null ]
+      [ "injectParameterWith:", "interface_typhoon_method.html#ac9c073e76872ccce153960253c6352db", null ]
     ] ],
     [ "NS_ENUM", "group___definition.html#gadfc84d5f4f1281bc37369fdbb6b58264", null ]
 ];

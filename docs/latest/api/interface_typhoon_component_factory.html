@@ -29,6 +29,7 @@
         <table cellspacing="0" cellpadding="0">
             <tbody>
             <tr style="height: 56px;">
+                <td id="projectlogo"><a href="http://www.typhoonframework.org"><img alt="Logo" src="tests-logo.png"/></a></td>
                 <td style="padding-left: 0.5em;">
                     <div id="projectname">
                     </div>
@@ -88,9 +89,9 @@ $(document).ready(function(){initNavTree('interface_typhoon_component_factory.ht
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Instance Methods</a> &#124;
-<a href="#pub-static-methods">Class Methods</a> &#124;
 <a href="#properties">Properties</a> &#124;
+<a href="#pub-static-methods">Class Methods</a> &#124;
+<a href="#pub-methods">Instance Methods</a> &#124;
 <a href="class_typhoon_component_factory-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">TyphoonComponentFactory Class Reference<div class="ingroups"><a class="el" href="group___factory.html">Factory</a></div></div>  </div>
@@ -107,6 +108,32 @@ Inheritance diagram for TyphoonComponentFactory:</div>
 <area shape="rect" id="node3" href="protocol_typhoon_component_factory-p.html" title="Defines a protocol for resolving built instances, injecting a pre&#45;obtained instance using a factory c..." alt="" coords="109,80,311,107"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:a1cdbafd8d079d52fd72cab4efddbbcbc"><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_component_factory.html#a1cdbafd8d079d52fd72cab4efddbbcbc">definitionPostProcessors</a></td></tr>
+<tr class="memdesc:a1cdbafd8d079d52fd72cab4efddbbcbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The attached factory post processors.  <a href="#a1cdbafd8d079d52fd72cab4efddbbcbc">More...</a><br /></td></tr>
+<tr class="separator:a1cdbafd8d079d52fd72cab4efddbbcbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6647913e4fc87992108fa703df42c970"><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_component_factory.html#a6647913e4fc87992108fa703df42c970">instancePostProcessors</a></td></tr>
+<tr class="memdesc:a6647913e4fc87992108fa703df42c970"><td class="mdescLeft">&#160;</td><td class="mdescRight">The attached component post processors.  <a href="#a6647913e4fc87992108fa703df42c970">More...</a><br /></td></tr>
+<tr class="separator:a6647913e4fc87992108fa703df42c970"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09b13d5d400d8ca043cc5f1105b8a744"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_component_factory.html#a09b13d5d400d8ca043cc5f1105b8a744">loaded</a></td></tr>
+<tr class="memdesc:a09b13d5d400d8ca043cc5f1105b8a744"><td class="mdescLeft">&#160;</td><td class="mdescRight">Say if the factory has been loaded.  <a href="#a09b13d5d400d8ca043cc5f1105b8a744">More...</a><br /></td></tr>
+<tr class="separator:a09b13d5d400d8ca043cc5f1105b8a744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54c45340de66c65390e529f237fc5785"><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785">singletons</a></td></tr>
+<tr class="memdesc:a54c45340de66c65390e529f237fc5785"><td class="mdescLeft">&#160;</td><td class="mdescRight">The instantiated singletons.  <a href="#a54c45340de66c65390e529f237fc5785">More...</a><br /></td></tr>
+<tr class="separator:a54c45340de66c65390e529f237fc5785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Class Methods</h2></td></tr>
+<tr class="memitem:ad0d0eb369da7b2cd39caf403e9c91ddf"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_component_factory.html#ad0d0eb369da7b2cd39caf403e9c91ddf">defaultFactory</a></td></tr>
+<tr class="memdesc:ad0d0eb369da7b2cd39caf403e9c91ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the default component factory, if one has been set.  <a href="#ad0d0eb369da7b2cd39caf403e9c91ddf">More...</a><br /></td></tr>
+<tr class="separator:ad0d0eb369da7b2cd39caf403e9c91ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f9dfff1c95f8c83303889d7202df414"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_component_factory.html#a9f9dfff1c95f8c83303889d7202df414">factoryForResolvingFromXibs</a></td></tr>
+<tr class="memdesc:a9f9dfff1c95f8c83303889d7202df414"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory used to resolve definition from <a class="el" href="interface_typhoon_loaded_view.html" title="Just drop this view into your Xib and specify definition key as restorationIdentifier This view will ...">TyphoonLoadedView</a>.  <a href="#a9f9dfff1c95f8c83303889d7202df414">More...</a><br /></td></tr>
+<tr class="separator:a9f9dfff1c95f8c83303889d7202df414"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe5efdbe98a5d5779b952cb66e06f0f4"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_component_factory.html#abe5efdbe98a5d5779b952cb66e06f0f4">setFactoryForResolvingFromXibs:</a></td></tr>
+<tr class="separator:abe5efdbe98a5d5779b952cb66e06f0f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
 <tr class="memitem:a497444322c5eb57d64a327f170cbd389"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_component_factory.html#a497444322c5eb57d64a327f170cbd389">attachPostProcessor:</a></td></tr>
@@ -145,37 +172,100 @@ Instance Methods</h2></td></tr>
 <tr class="separator:a238c582efa06e034699d9218c6c75539 inherit pub_methods_protocol_typhoon_component_factory-p"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90d9f247cd9b8f0fb6f67a1b00a43b0b inherit pub_methods_protocol_typhoon_component_factory-p"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_typhoon_component_factory-p.html#a90d9f247cd9b8f0fb6f67a1b00a43b0b">makeDefault</a></td></tr>
 <tr class="separator:a90d9f247cd9b8f0fb6f67a1b00a43b0b inherit pub_methods_protocol_typhoon_component_factory-p"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Class Methods</h2></td></tr>
-<tr class="memitem:ad0d0eb369da7b2cd39caf403e9c91ddf"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_component_factory.html#ad0d0eb369da7b2cd39caf403e9c91ddf">defaultFactory</a></td></tr>
-<tr class="memdesc:ad0d0eb369da7b2cd39caf403e9c91ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the default component factory, if one has been set.  <a href="#ad0d0eb369da7b2cd39caf403e9c91ddf">More...</a><br /></td></tr>
-<tr class="separator:ad0d0eb369da7b2cd39caf403e9c91ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f9dfff1c95f8c83303889d7202df414"><td class="memItemLeft" align="right" valign="top">(<a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> *)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_component_factory.html#a9f9dfff1c95f8c83303889d7202df414">factoryForResolvingFromXibs</a></td></tr>
-<tr class="memdesc:a9f9dfff1c95f8c83303889d7202df414"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory used to resolve definition from <a class="el" href="interface_typhoon_loaded_view.html" title="Just drop this view into your Xib and specify definition key as restorationIdentifier This view will ...">TyphoonLoadedView</a>.  <a href="#a9f9dfff1c95f8c83303889d7202df414">More...</a><br /></td></tr>
-<tr class="separator:a9f9dfff1c95f8c83303889d7202df414"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe5efdbe98a5d5779b952cb66e06f0f4"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">+ <a class="el" href="interface_typhoon_component_factory.html#abe5efdbe98a5d5779b952cb66e06f0f4">setFactoryForResolvingFromXibs:</a></td></tr>
-<tr class="separator:abe5efdbe98a5d5779b952cb66e06f0f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
-Properties</h2></td></tr>
-<tr class="memitem:a1cdbafd8d079d52fd72cab4efddbbcbc"><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_component_factory.html#a1cdbafd8d079d52fd72cab4efddbbcbc">definitionPostProcessors</a></td></tr>
-<tr class="memdesc:a1cdbafd8d079d52fd72cab4efddbbcbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The attached factory post processors.  <a href="#a1cdbafd8d079d52fd72cab4efddbbcbc">More...</a><br /></td></tr>
-<tr class="separator:a1cdbafd8d079d52fd72cab4efddbbcbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6647913e4fc87992108fa703df42c970"><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_component_factory.html#a6647913e4fc87992108fa703df42c970">instancePostProcessors</a></td></tr>
-<tr class="memdesc:a6647913e4fc87992108fa703df42c970"><td class="mdescLeft">&#160;</td><td class="mdescRight">The attached component post processors.  <a href="#a6647913e4fc87992108fa703df42c970">More...</a><br /></td></tr>
-<tr class="separator:a6647913e4fc87992108fa703df42c970"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09b13d5d400d8ca043cc5f1105b8a744"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_component_factory.html#a09b13d5d400d8ca043cc5f1105b8a744">loaded</a></td></tr>
-<tr class="memdesc:a09b13d5d400d8ca043cc5f1105b8a744"><td class="mdescLeft">&#160;</td><td class="mdescRight">Say if the factory has been loaded.  <a href="#a09b13d5d400d8ca043cc5f1105b8a744">More...</a><br /></td></tr>
-<tr class="separator:a09b13d5d400d8ca043cc5f1105b8a744"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54c45340de66c65390e529f237fc5785"><td class="memItemLeft" align="right" valign="top">NSArray *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785">singletons</a></td></tr>
-<tr class="memdesc:a54c45340de66c65390e529f237fc5785"><td class="mdescLeft">&#160;</td><td class="mdescRight">The instantiated singletons.  <a href="#a54c45340de66c65390e529f237fc5785">More...</a><br /></td></tr>
-<tr class="separator:a54c45340de66c65390e529f237fc5785"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is the base class for all component factories. </p>
 <p>It defines methods for retrieving components from the factory, as well as a low-level API for assembling components from their constituent parts. This low-level API could be used as-is, however its intended to use a higher level abstraction such as TyphoonBlockComponentFactory. </p>
-</div><h2 class="groupheader">Method Documentation</h2>
+</div><h2 class="groupheader">Property Documentation</h2>
+<a class="anchor" id="a1cdbafd8d079d52fd72cab4efddbbcbc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (NSArray*) definitionPostProcessors</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The attached factory post processors. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6647913e4fc87992108fa703df42c970"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (NSArray*) instancePostProcessors</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The attached component post processors. </p>
+
+</div>
+</div>
+<a class="anchor" id="a09b13d5d400d8ca043cc5f1105b8a744"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (BOOL) loaded</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">nonatomic</span><span class="mlabel">assign</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Say if the factory has been loaded. </p>
+
+</div>
+</div>
+<a class="anchor" id="a54c45340de66c65390e529f237fc5785"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (NSArray*) singletons</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The instantiated singletons. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Method Documentation</h2>
 <a class="anchor" id="a497444322c5eb57d64a327f170cbd389"></a>
 <div class="memitem">
 <div class="memproto">
@@ -339,95 +429,6 @@ TyphoonComponentFactoryAware </dd></dl>
 
 </div>
 </div>
-<h2 class="groupheader">Property Documentation</h2>
-<a class="anchor" id="a1cdbafd8d079d52fd72cab4efddbbcbc"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (NSArray*) definitionPostProcessors</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The attached factory post processors. </p>
-
-</div>
-</div>
-<a class="anchor" id="a6647913e4fc87992108fa703df42c970"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (NSArray*) instancePostProcessors</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The attached component post processors. </p>
-
-</div>
-</div>
-<a class="anchor" id="a09b13d5d400d8ca043cc5f1105b8a744"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (BOOL) loaded</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">write</span><span class="mlabel">nonatomic</span><span class="mlabel">assign</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Say if the factory has been loaded. </p>
-
-</div>
-</div>
-<a class="anchor" id="a54c45340de66c65390e529f237fc5785"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (NSArray*) singletons</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The instantiated singletons. </p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.5-->
@@ -435,7 +436,7 @@ TyphoonComponentFactoryAware </dd></dl>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
         <li class="navelem"><a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a></li>
-        <li class="footer">Generated on Sun Feb 15 2015 08:39:26 for Typhoon by
+        <li class="footer">Generated on Sun Feb 15 2015 08:48:34 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>

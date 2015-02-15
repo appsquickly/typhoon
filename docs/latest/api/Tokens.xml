@@ -954,6 +954,36 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>parameterIndex</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>aa0035185544e056579c9ef2bd18b08fa</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>propertyName</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>a3ff2ed4760b12b6b24971d591a5b49a9</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>type</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>ac73bc0dd6ba0a7915d9d24c9920aee8a</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>copyBasePropertiesTo:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -1039,36 +1069,6 @@
     <Path>protocol_typhoon_property_injection-p.html</Path>
     <Anchor>ad12ad20c98b147ed21056a95c6ff5e91</Anchor>
     <DeclaredIn>TyphoonPropertyInjection.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>parameterIndex</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonAbstractInjection</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_abstract_injection.html</Path>
-    <Anchor>aa0035185544e056579c9ef2bd18b08fa</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>propertyName</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonAbstractInjection</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_abstract_injection.html</Path>
-    <Anchor>a3ff2ed4760b12b6b24971d591a5b49a9</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>type</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonAbstractInjection</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_abstract_injection.html</Path>
-    <Anchor>ac73bc0dd6ba0a7915d9d24c9920aee8a</Anchor>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -1272,18 +1272,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>asStringWithEncoding:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>intfm</Type>
-      <Scope>TyphoonResource-p</Scope>
-    </TokenIdentifier>
-    <Path>protocol_typhoon_resource-p.html</Path>
-    <Anchor>afed07d1fc2e7fb11a2db3073dd53ddd7</Anchor>
-    <Abstract>Returns the resource with the given name, using the specified encoding. </Abstract>
-    <DeclaredIn>TyphoonResource.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>data</Name>
       <APILanguage>occ</APILanguage>
       <Type>intfp</Type>
@@ -1313,6 +1301,18 @@
     </TokenIdentifier>
     <Path>protocol_typhoon_resource-p.html</Path>
     <Anchor>abe95f549e728fd208272f6f33b765bb4</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>asStringWithEncoding:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonResource-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_resource-p.html</Path>
+    <Anchor>afed07d1fc2e7fb11a2db3073dd53ddd7</Anchor>
+    <Abstract>Returns the resource with the given name, using the specified encoding. </Abstract>
+    <DeclaredIn>TyphoonResource.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -1367,6 +1367,85 @@
     </TokenIdentifier>
     <Path>interface_typhoon_component_factory.html</Path>
     <Abstract>This is the base class for all component factories. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>definitionPostProcessors</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonComponentFactory</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_component_factory.html</Path>
+    <Anchor>a1cdbafd8d079d52fd72cab4efddbbcbc</Anchor>
+    <Abstract>The attached factory post processors. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>instancePostProcessors</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonComponentFactory</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_component_factory.html</Path>
+    <Anchor>a6647913e4fc87992108fa703df42c970</Anchor>
+    <Abstract>The attached component post processors. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>loaded</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonComponentFactory</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_component_factory.html</Path>
+    <Anchor>a09b13d5d400d8ca043cc5f1105b8a744</Anchor>
+    <Abstract>Say if the factory has been loaded. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>singletons</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonComponentFactory</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_component_factory.html</Path>
+    <Anchor>a54c45340de66c65390e529f237fc5785</Anchor>
+    <Abstract>The instantiated singletons. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>defaultFactory</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonComponentFactory</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_component_factory.html</Path>
+    <Anchor>ad0d0eb369da7b2cd39caf403e9c91ddf</Anchor>
+    <Abstract>Returns the default component factory, if one has been set. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>factoryForResolvingFromXibs</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonComponentFactory</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_component_factory.html</Path>
+    <Anchor>a9f9dfff1c95f8c83303889d7202df414</Anchor>
+    <Abstract>Factory used to resolve definition from TyphoonLoadedView. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>setFactoryForResolvingFromXibs:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonComponentFactory</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_component_factory.html</Path>
+    <Anchor>abe5efdbe98a5d5779b952cb66e06f0f4</Anchor>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>
@@ -1520,85 +1599,6 @@
     <Path>protocol_typhoon_component_factory-p.html</Path>
     <Anchor>a90d9f247cd9b8f0fb6f67a1b00a43b0b</Anchor>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>defaultFactory</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>ad0d0eb369da7b2cd39caf403e9c91ddf</Anchor>
-    <Abstract>Returns the default component factory, if one has been set. </Abstract>
-    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>factoryForResolvingFromXibs</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a9f9dfff1c95f8c83303889d7202df414</Anchor>
-    <Abstract>Factory used to resolve definition from TyphoonLoadedView. </Abstract>
-    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>setFactoryForResolvingFromXibs:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>abe5efdbe98a5d5779b952cb66e06f0f4</Anchor>
-    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>definitionPostProcessors</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a1cdbafd8d079d52fd72cab4efddbbcbc</Anchor>
-    <Abstract>The attached factory post processors. </Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>instancePostProcessors</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a6647913e4fc87992108fa703df42c970</Anchor>
-    <Abstract>The attached component post processors. </Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>loaded</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a09b13d5d400d8ca043cc5f1105b8a744</Anchor>
-    <Abstract>Say if the factory has been loaded. </Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>singletons</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a54c45340de66c65390e529f237fc5785</Anchor>
-    <Abstract>The instantiated singletons. </Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -1760,6 +1760,41 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>availableExtensions</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonConfigPostProcessor</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_config_post_processor.html</Path>
+    <Anchor>a57eacc037c000e78f67f31d6884964bd</Anchor>
+    <Abstract>list of all supported path extensions (configuration types) </Abstract>
+    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>postProcessor</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonConfigPostProcessor</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_config_post_processor.html</Path>
+    <Anchor>ac342615e85b44734a1954dbe02d1ba76</Anchor>
+    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>registerConfigurationClass:forExtension:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonConfigPostProcessor</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_config_post_processor.html</Path>
+    <Anchor>acd33308b4cdc7e91059b8698a9594e19</Anchor>
+    <Abstract>You can manage TyphoonConfigPostProcessor registry by mapping configuration classes for file extensio...</Abstract>
+    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>useResource:withExtension:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -1808,41 +1843,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>availableExtensions</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonConfigPostProcessor</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_config_post_processor.html</Path>
-    <Anchor>a57eacc037c000e78f67f31d6884964bd</Anchor>
-    <Abstract>list of all supported path extensions (configuration types) </Abstract>
-    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>postProcessor</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonConfigPostProcessor</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_config_post_processor.html</Path>
-    <Anchor>ac342615e85b44734a1954dbe02d1ba76</Anchor>
-    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>registerConfigurationClass:forExtension:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonConfigPostProcessor</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_config_post_processor.html</Path>
-    <Anchor>acd33308b4cdc7e91059b8698a9594e19</Anchor>
-    <Abstract>You can manage TyphoonConfigPostProcessor registry by mapping configuration classes for file extensio...</Abstract>
-    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>TyphoonDefinition</Name>
       <APILanguage>c</APILanguage>
       <Type>cl</Type>
@@ -1850,6 +1850,151 @@
     </TokenIdentifier>
     <Path>interface_typhoon_definition.html</Path>
     <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>abstract</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonDefinition</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_definition.html</Path>
+    <Anchor>a06ab7dc77ee2f386d87ea3fe75f18693</Anchor>
+    <Abstract>If set, designates that a component can not be instantiated directly. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>autoInjectionVisibility</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonDefinition</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_definition.html</Path>
+    <Anchor>a7b651ab85991ef1d9641ef5cd1f67187</Anchor>
+    <Abstract>Specifies visibility for for AutoInjection. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>parent</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonDefinition</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_definition.html</Path>
+    <Anchor>add76507109b2465e672b7472c408fa05</Anchor>
+    <Abstract>A parent component. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>scope</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonDefinition</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_definition.html</Path>
+    <Anchor>aa4df6569a008392075c9689a73d13729</Anchor>
+    <Abstract>The scope of the component, default being TyphoonScopeObjectGraph. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>type</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonDefinition</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_definition.html</Path>
+    <Anchor>a1683dd7b003c512248c98fecb26d0985</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>withClass:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonDefinition</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_definition.html</Path>
+    <Anchor>a8128dbbd3c00c248e58770ae3e4e1823</Anchor>
+    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>withClass:configuration:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonDefinition</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_definition.html</Path>
+    <Anchor>a63159e475b4d02f6cb98407dfe13f594</Anchor>
+    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>withFactory:selector:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonDefinition</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_definition.html</Path>
+    <Anchor>a2c9d7ce4185ab53cc04d0ab51c6881d5</Anchor>
+    <Abstract>A component that will produce an instance (with or without parameters) of this component. </Abstract>
+    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>withFactory:selector:parameters:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonDefinition</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_definition.html</Path>
+    <Anchor>acc264b4c607cb128d72f303e2fc43bb8</Anchor>
+    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>withFactory:selector:parameters:configuration:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonDefinition</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_definition.html</Path>
+    <Anchor>aeb2db6f4167d2a32126e605ee22db4f2</Anchor>
+    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>withOption:matcher:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonDefinition</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_definition.html</Path>
+    <Anchor>ace67617e7c8feea3167bd10342964a3d</Anchor>
+    <Abstract>Returns definition matching &amp;#39;option&amp;#39;, specified in &amp;#39;matcherBlock&amp;#39;. </Abstract>
+    <DeclaredIn>TyphoonDefinition+Option.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>withOption:matcher:autoInjectionConfig:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonDefinition</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_definition.html</Path>
+    <Anchor>af42ffbdb443c1e44379a728b1096becb</Anchor>
+    <DeclaredIn>TyphoonDefinition+Option.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>withOption:yes:no:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonDefinition</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_definition.html</Path>
+    <Anchor>a96cf46e499d4b083215881a2a9c8808e</Anchor>
+    <Abstract>if boolean &amp;#39;option&amp;#39; value is YES, then return yesInjection, otherwise return noInjection ...</Abstract>
+    <DeclaredIn>TyphoonDefinition+Option.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -2002,151 +2147,6 @@
     <Anchor>ae5d354908e1eec474f7e357bb672d795</Anchor>
     <Abstract>Injects initializer specified by selector and parameters. </Abstract>
     <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>withClass:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a8128dbbd3c00c248e58770ae3e4e1823</Anchor>
-    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>withClass:configuration:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a63159e475b4d02f6cb98407dfe13f594</Anchor>
-    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>withFactory:selector:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a2c9d7ce4185ab53cc04d0ab51c6881d5</Anchor>
-    <Abstract>A component that will produce an instance (with or without parameters) of this component. </Abstract>
-    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>withFactory:selector:parameters:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>acc264b4c607cb128d72f303e2fc43bb8</Anchor>
-    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>withFactory:selector:parameters:configuration:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>aeb2db6f4167d2a32126e605ee22db4f2</Anchor>
-    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>withOption:matcher:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>ace67617e7c8feea3167bd10342964a3d</Anchor>
-    <Abstract>Returns definition matching &amp;#39;option&amp;#39;, specified in &amp;#39;matcherBlock&amp;#39;. </Abstract>
-    <DeclaredIn>TyphoonDefinition+Option.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>withOption:matcher:autoInjectionConfig:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>af42ffbdb443c1e44379a728b1096becb</Anchor>
-    <DeclaredIn>TyphoonDefinition+Option.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>withOption:yes:no:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a96cf46e499d4b083215881a2a9c8808e</Anchor>
-    <Abstract>if boolean &amp;#39;option&amp;#39; value is YES, then return yesInjection, otherwise return noInjection ...</Abstract>
-    <DeclaredIn>TyphoonDefinition+Option.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>abstract</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a06ab7dc77ee2f386d87ea3fe75f18693</Anchor>
-    <Abstract>If set, designates that a component can not be instantiated directly. </Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>autoInjectionVisibility</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a7b651ab85991ef1d9641ef5cd1f67187</Anchor>
-    <Abstract>Specifies visibility for for AutoInjection. </Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>parent</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>add76507109b2465e672b7472c408fa05</Anchor>
-    <Abstract>A parent component. </Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>scope</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>aa4df6569a008392075c9689a73d13729</Anchor>
-    <Abstract>The scope of the component, default being TyphoonScopeObjectGraph. </Abstract>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>type</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a1683dd7b003c512248c98fecb26d0985</Anchor>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -2345,6 +2345,28 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>collectionMutableClassFromClass:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonInjectionByCollection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_injection_by_collection.html</Path>
+    <Anchor>a00f5a3dfd230236c6856cc8d33350f26</Anchor>
+    <DeclaredIn>TyphoonInjectionByCollection.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>isCollectionClass:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonInjectionByCollection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_injection_by_collection.html</Path>
+    <Anchor>a1870fdc696c8eba331863da87258a007</Anchor>
+    <DeclaredIn>TyphoonInjectionByCollection.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>count</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -2455,28 +2477,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>collectionMutableClassFromClass:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonInjectionByCollection</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_injection_by_collection.html</Path>
-    <Anchor>a00f5a3dfd230236c6856cc8d33350f26</Anchor>
-    <DeclaredIn>TyphoonInjectionByCollection.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>isCollectionClass:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonInjectionByCollection</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_injection_by_collection.html</Path>
-    <Anchor>a1870fdc696c8eba331863da87258a007</Anchor>
-    <DeclaredIn>TyphoonInjectionByCollection.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>parameterIndex</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
@@ -2514,6 +2514,36 @@
     </TokenIdentifier>
     <Path>interface_typhoon_injection_by_component_factory.html</Path>
     <DeclaredIn>TyphoonInjectionByComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>parameterIndex</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>aa0035185544e056579c9ef2bd18b08fa</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>propertyName</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>a3ff2ed4760b12b6b24971d591a5b49a9</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>type</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>ac73bc0dd6ba0a7915d9d24c9920aee8a</Anchor>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -2602,36 +2632,6 @@
     <Path>protocol_typhoon_property_injection-p.html</Path>
     <Anchor>ad12ad20c98b147ed21056a95c6ff5e91</Anchor>
     <DeclaredIn>TyphoonPropertyInjection.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>parameterIndex</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonAbstractInjection</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_abstract_injection.html</Path>
-    <Anchor>aa0035185544e056579c9ef2bd18b08fa</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>propertyName</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonAbstractInjection</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_abstract_injection.html</Path>
-    <Anchor>a3ff2ed4760b12b6b24971d591a5b49a9</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>type</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonAbstractInjection</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_abstract_injection.html</Path>
-    <Anchor>ac73bc0dd6ba0a7915d9d24c9920aee8a</Anchor>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -2784,6 +2784,66 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>keyPath</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonInjectionByFactoryReference</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_injection_by_factory_reference.html</Path>
+    <Anchor>a5cecfaebeef4848e570d530eb9f7f31a</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>reference</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonInjectionByReference</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_injection_by_reference.html</Path>
+    <Anchor>af357524b98df89bc6264516725ad3870</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>referenceArguments</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonInjectionByReference</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_injection_by_reference.html</Path>
+    <Anchor>ac324803fcf4cabd56f0f0fed6e3f1ba2</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>parameterIndex</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>aa0035185544e056579c9ef2bd18b08fa</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>propertyName</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>a3ff2ed4760b12b6b24971d591a5b49a9</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>type</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonAbstractInjection</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_abstract_injection.html</Path>
+    <Anchor>ac73bc0dd6ba0a7915d9d24c9920aee8a</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>initWithReference:args:keyPath:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -2916,33 +2976,23 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>keyPath</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonInjectionByFactoryReference</Scope>
+      <Name>TyphoonInjectionByObjectFromString</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+      <Scope>TyphoonInjectionByObjectFromString</Scope>
     </TokenIdentifier>
-    <Path>interface_typhoon_injection_by_factory_reference.html</Path>
-    <Anchor>a5cecfaebeef4848e570d530eb9f7f31a</Anchor>
+    <Path>interface_typhoon_injection_by_object_from_string.html</Path>
+    <DeclaredIn>TyphoonInjectionByObjectFromString.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>reference</Name>
+      <Name>textValue</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
-      <Scope>TyphoonInjectionByReference</Scope>
+      <Scope>TyphoonInjectionByObjectFromString</Scope>
     </TokenIdentifier>
-    <Path>interface_typhoon_injection_by_reference.html</Path>
-    <Anchor>af357524b98df89bc6264516725ad3870</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>referenceArguments</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonInjectionByReference</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_injection_by_reference.html</Path>
-    <Anchor>ac324803fcf4cabd56f0f0fed6e3f1ba2</Anchor>
+    <Path>interface_typhoon_injection_by_object_from_string.html</Path>
+    <Anchor>af92a94f94e7d7be0923cd2abc3bce1ca</Anchor>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -2973,16 +3023,6 @@
     </TokenIdentifier>
     <Path>interface_typhoon_abstract_injection.html</Path>
     <Anchor>ac73bc0dd6ba0a7915d9d24c9920aee8a</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>TyphoonInjectionByObjectFromString</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cl</Type>
-      <Scope>TyphoonInjectionByObjectFromString</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_injection_by_object_from_string.html</Path>
-    <DeclaredIn>TyphoonInjectionByObjectFromString.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -3085,13 +3125,23 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>textValue</Name>
+      <Name>TyphoonInjectionByObjectInstance</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+      <Scope>TyphoonInjectionByObjectInstance</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_injection_by_object_instance.html</Path>
+    <DeclaredIn>TyphoonInjectionByObjectInstance.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>objectInstance</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
-      <Scope>TyphoonInjectionByObjectFromString</Scope>
+      <Scope>TyphoonInjectionByObjectInstance</Scope>
     </TokenIdentifier>
-    <Path>interface_typhoon_injection_by_object_from_string.html</Path>
-    <Anchor>af92a94f94e7d7be0923cd2abc3bce1ca</Anchor>
+    <Path>interface_typhoon_injection_by_object_instance.html</Path>
+    <Anchor>af08950cbce71241f55abb01cfff8ec98</Anchor>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -3122,16 +3172,6 @@
     </TokenIdentifier>
     <Path>interface_typhoon_abstract_injection.html</Path>
     <Anchor>ac73bc0dd6ba0a7915d9d24c9920aee8a</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>TyphoonInjectionByObjectInstance</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cl</Type>
-      <Scope>TyphoonInjectionByObjectInstance</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_injection_by_object_instance.html</Path>
-    <DeclaredIn>TyphoonInjectionByObjectInstance.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -3234,13 +3274,33 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>objectInstance</Name>
+      <Name>TyphoonInjectionByReference</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+      <Scope>TyphoonInjectionByReference</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_injection_by_reference.html</Path>
+    <DeclaredIn>TyphoonInjectionByReference.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>reference</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
-      <Scope>TyphoonInjectionByObjectInstance</Scope>
+      <Scope>TyphoonInjectionByReference</Scope>
     </TokenIdentifier>
-    <Path>interface_typhoon_injection_by_object_instance.html</Path>
-    <Anchor>af08950cbce71241f55abb01cfff8ec98</Anchor>
+    <Path>interface_typhoon_injection_by_reference.html</Path>
+    <Anchor>af357524b98df89bc6264516725ad3870</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>referenceArguments</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonInjectionByReference</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_injection_by_reference.html</Path>
+    <Anchor>ac324803fcf4cabd56f0f0fed6e3f1ba2</Anchor>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -3271,16 +3331,6 @@
     </TokenIdentifier>
     <Path>interface_typhoon_abstract_injection.html</Path>
     <Anchor>ac73bc0dd6ba0a7915d9d24c9920aee8a</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>TyphoonInjectionByReference</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cl</Type>
-      <Scope>TyphoonInjectionByReference</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_injection_by_reference.html</Path>
-    <DeclaredIn>TyphoonInjectionByReference.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -3405,23 +3455,23 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>reference</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonInjectionByReference</Scope>
+      <Name>TyphoonInjectionByRuntimeArgument</Name>
+      <APILanguage>c</APILanguage>
+      <Type>cl</Type>
+      <Scope>TyphoonInjectionByRuntimeArgument</Scope>
     </TokenIdentifier>
-    <Path>interface_typhoon_injection_by_reference.html</Path>
-    <Anchor>af357524b98df89bc6264516725ad3870</Anchor>
+    <Path>interface_typhoon_injection_by_runtime_argument.html</Path>
+    <DeclaredIn>TyphoonInjectionByRuntimeArgument.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>referenceArguments</Name>
+      <Name>runtimeArgumentIndex</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
-      <Scope>TyphoonInjectionByReference</Scope>
+      <Scope>TyphoonInjectionByRuntimeArgument</Scope>
     </TokenIdentifier>
-    <Path>interface_typhoon_injection_by_reference.html</Path>
-    <Anchor>ac324803fcf4cabd56f0f0fed6e3f1ba2</Anchor>
+    <Path>interface_typhoon_injection_by_runtime_argument.html</Path>
+    <Anchor>aabdbebbc4a565a4a9d86b975dc0d8e10</Anchor>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -3452,16 +3502,6 @@
     </TokenIdentifier>
     <Path>interface_typhoon_abstract_injection.html</Path>
     <Anchor>ac73bc0dd6ba0a7915d9d24c9920aee8a</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>TyphoonInjectionByRuntimeArgument</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cl</Type>
-      <Scope>TyphoonInjectionByRuntimeArgument</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_injection_by_runtime_argument.html</Path>
-    <DeclaredIn>TyphoonInjectionByRuntimeArgument.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -3561,46 +3601,6 @@
     <Path>protocol_typhoon_property_injection-p.html</Path>
     <Anchor>ad12ad20c98b147ed21056a95c6ff5e91</Anchor>
     <DeclaredIn>TyphoonPropertyInjection.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>runtimeArgumentIndex</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonInjectionByRuntimeArgument</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_injection_by_runtime_argument.html</Path>
-    <Anchor>aabdbebbc4a565a4a9d86b975dc0d8e10</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>parameterIndex</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonAbstractInjection</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_abstract_injection.html</Path>
-    <Anchor>aa0035185544e056579c9ef2bd18b08fa</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>propertyName</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonAbstractInjection</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_abstract_injection.html</Path>
-    <Anchor>a3ff2ed4760b12b6b24971d591a5b49a9</Anchor>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>type</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonAbstractInjection</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_abstract_injection.html</Path>
-    <Anchor>ac73bc0dd6ba0a7915d9d24c9920aee8a</Anchor>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -3752,17 +3752,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>initWithFactory:args:raiseExceptionIfCircular:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonInjectionContext</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_injection_context.html</Path>
-    <Anchor>a7fee3391384d5332425a28cf3a154be4</Anchor>
-    <DeclaredIn>TyphoonInjectionContext.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>args</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>
@@ -3811,6 +3800,17 @@
     </TokenIdentifier>
     <Path>interface_typhoon_injection_context.html</Path>
     <Anchor>a19be259ff91bfc8848876681c9e89d75</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithFactory:args:raiseExceptionIfCircular:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonInjectionContext</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_injection_context.html</Path>
+    <Anchor>a7fee3391384d5332425a28cf3a154be4</Anchor>
+    <DeclaredIn>TyphoonInjectionContext.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -3944,6 +3944,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>selector</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonMethod</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_method.html</Path>
+    <Anchor>a2df02aed8c27d293dad75d3a8c010705</Anchor>
+    <Abstract>The selector used to initialize the component. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>initWithSelector:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -3963,17 +3974,6 @@
     <Path>interface_typhoon_method.html</Path>
     <Anchor>ac9c073e76872ccce153960253c6352db</Anchor>
     <DeclaredIn>TyphoonMethod.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>selector</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instp</Type>
-      <Scope>TyphoonMethod</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_method.html</Path>
-    <Anchor>a2df02aed8c27d293dad75d3a8c010705</Anchor>
-    <Abstract>The selector used to initialize the component. </Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -4487,18 +4487,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>asStringWithEncoding:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>intfm</Type>
-      <Scope>TyphoonResource-p</Scope>
-    </TokenIdentifier>
-    <Path>protocol_typhoon_resource-p.html</Path>
-    <Anchor>afed07d1fc2e7fb11a2db3073dd53ddd7</Anchor>
-    <Abstract>Returns the resource with the given name, using the specified encoding. </Abstract>
-    <DeclaredIn>TyphoonResource.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>data</Name>
       <APILanguage>occ</APILanguage>
       <Type>intfp</Type>
@@ -4528,6 +4516,18 @@
     </TokenIdentifier>
     <Path>protocol_typhoon_resource-p.html</Path>
     <Anchor>abe95f549e728fd208272f6f33b765bb4</Anchor>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>asStringWithEncoding:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonResource-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_resource-p.html</Path>
+    <Anchor>afed07d1fc2e7fb11a2db3073dd53ddd7</Anchor>
+    <Abstract>Returns the resource with the given name, using the specified encoding. </Abstract>
+    <DeclaredIn>TyphoonResource.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -4624,6 +4624,40 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>shared</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonTypeConverterRegistry</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_type_converter_registry.html</Path>
+    <Anchor>ae56af9a302e744df8d3482d52f46c6e7</Anchor>
+    <Abstract>Returns the shard/default registry instance used by the container. </Abstract>
+    <DeclaredIn>TyphoonTypeConverterRegistry.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>textWithoutTypeFromTextValue:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonTypeConverterRegistry</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_type_converter_registry.html</Path>
+    <Anchor>af70a6163ffa2c615202d43ab436afad3</Anchor>
+    <DeclaredIn>TyphoonTypeConverterRegistry.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>typeFromTextValue:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonTypeConverterRegistry</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_type_converter_registry.html</Path>
+    <Anchor>afa80517a752cf484d86113ee782adfb7</Anchor>
+    <DeclaredIn>TyphoonTypeConverterRegistry.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>converterForType:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -4672,114 +4706,12 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>shared</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonTypeConverterRegistry</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_type_converter_registry.html</Path>
-    <Anchor>ae56af9a302e744df8d3482d52f46c6e7</Anchor>
-    <Abstract>Returns the shard/default registry instance used by the container. </Abstract>
-    <DeclaredIn>TyphoonTypeConverterRegistry.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>textWithoutTypeFromTextValue:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonTypeConverterRegistry</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_type_converter_registry.html</Path>
-    <Anchor>af70a6163ffa2c615202d43ab436afad3</Anchor>
-    <DeclaredIn>TyphoonTypeConverterRegistry.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>typeFromTextValue:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonTypeConverterRegistry</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_type_converter_registry.html</Path>
-    <Anchor>afa80517a752cf484d86113ee782adfb7</Anchor>
-    <DeclaredIn>TyphoonTypeConverterRegistry.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>TyphoonTypeDescriptor</Name>
       <APILanguage>c</APILanguage>
       <Type>cl</Type>
       <Scope>TyphoonTypeDescriptor</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_type_descriptor.html</Path>
-    <DeclaredIn>TyphoonTypeDescriptor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>classOrProtocol</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonTypeDescriptor</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_type_descriptor.html</Path>
-    <Anchor>aa68b95827c65fe611ce4398a902d3069</Anchor>
-    <Abstract>Returns the class or protocol. </Abstract>
-    <DeclaredIn>TyphoonTypeDescriptor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>encodedType</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonTypeDescriptor</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_type_descriptor.html</Path>
-    <Anchor>a1122f7d0438daa8926fb27cffa7bf074</Anchor>
-    <Abstract>Returns encoded type as string. </Abstract>
-    <DeclaredIn>TyphoonTypeDescriptor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>initWithTypeCode:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonTypeDescriptor</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_type_descriptor.html</Path>
-    <Anchor>abeb253dff8861986d28c83bc2f73fb8d</Anchor>
-    <DeclaredIn>TyphoonTypeDescriptor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>descriptorWithClassOrProtocol:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonTypeDescriptor</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_type_descriptor.html</Path>
-    <Anchor>ac1cf6c42d60c8e174d988bdcbe881b1b</Anchor>
-    <DeclaredIn>TyphoonTypeDescriptor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>descriptorWithEncodedType:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonTypeDescriptor</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_type_descriptor.html</Path>
-    <Anchor>a66512001ce1c3cd2b95318e7e1202f69</Anchor>
-    <DeclaredIn>TyphoonTypeDescriptor.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>descriptorWithTypeCode:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>clm</Type>
-      <Scope>TyphoonTypeDescriptor</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_type_descriptor.html</Path>
-    <Anchor>a8468060fec722072b856e1d470630287</Anchor>
     <DeclaredIn>TyphoonTypeDescriptor.h</DeclaredIn>
   </Token>
   <Token>
@@ -4879,6 +4811,74 @@
     <Path>interface_typhoon_type_descriptor.html</Path>
     <Anchor>ae088fe986245372f45dc39858059897c</Anchor>
     <Abstract>The type being described, or nil if the type is a primitive or protocol. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>descriptorWithClassOrProtocol:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonTypeDescriptor</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_type_descriptor.html</Path>
+    <Anchor>ac1cf6c42d60c8e174d988bdcbe881b1b</Anchor>
+    <DeclaredIn>TyphoonTypeDescriptor.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>descriptorWithEncodedType:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonTypeDescriptor</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_type_descriptor.html</Path>
+    <Anchor>a66512001ce1c3cd2b95318e7e1202f69</Anchor>
+    <DeclaredIn>TyphoonTypeDescriptor.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>descriptorWithTypeCode:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonTypeDescriptor</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_type_descriptor.html</Path>
+    <Anchor>a8468060fec722072b856e1d470630287</Anchor>
+    <DeclaredIn>TyphoonTypeDescriptor.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>classOrProtocol</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonTypeDescriptor</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_type_descriptor.html</Path>
+    <Anchor>aa68b95827c65fe611ce4398a902d3069</Anchor>
+    <Abstract>Returns the class or protocol. </Abstract>
+    <DeclaredIn>TyphoonTypeDescriptor.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>encodedType</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonTypeDescriptor</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_type_descriptor.html</Path>
+    <Anchor>a1122f7d0438daa8926fb27cffa7bf074</Anchor>
+    <Abstract>Returns encoded type as string. </Abstract>
+    <DeclaredIn>TyphoonTypeDescriptor.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>initWithTypeCode:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonTypeDescriptor</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_type_descriptor.html</Path>
+    <Anchor>abeb253dff8861986d28c83bc2f73fb8d</Anchor>
+    <DeclaredIn>TyphoonTypeDescriptor.h</DeclaredIn>
   </Token>
   <Token>
     <TokenIdentifier>
