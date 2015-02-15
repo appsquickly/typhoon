@@ -328,6 +328,11 @@ a.facebook-header:hover, a.twitter-header:hover {
    Pages Common Styles
 ----------------------------------------- */
 
+.logo {
+    color: #ffffff;
+    font-size: 25pt;
+}
+
 .page-container {
     width: 100%;
     height: auto;
