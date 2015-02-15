@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['configuration',['Configuration',['../group___configuration.html',1,'']]]
+  ['assembly',['Assembly',['../group___assembly.html',1,'']]]
 ];

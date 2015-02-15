@@ -21,7 +21,7 @@ var searchData=
   ['typhooninjectionwithruntimeargumentatindexwrappedintoblock',['TyphoonInjectionWithRuntimeArgumentAtIndexWrappedIntoBlock',['../_typhoon_injections_8h.html#ad1b29fdc7ed1b3fd1af061cd5fcad906',1,'TyphoonInjections.h']]],
   ['typhooninjectionwithtype',['TyphoonInjectionWithType',['../_typhoon_injections_8h.html#a80807a37d7c44843d74518534db9a33e',1,'TyphoonInjections.h']]],
   ['typhoonmakeinjectionfromobjectifneeded',['TyphoonMakeInjectionFromObjectIfNeeded',['../_typhoon_injections_8h.html#af37a21437d5df5ccb9dcb5ebe5dd28c5',1,'TyphoonInjections.h']]],
-  ['typhoonsetfactory_3a',['typhoonSetFactory:',['../group___factory.html#ga3dc651b0109dde0ddd73519ccc5eb860',1,'NSObject(FactoryHooks)']]],
+  ['typhoonsetfactory_3a',['typhoonSetFactory:',['../group___assembly.html#ga3dc651b0109dde0ddd73519ccc5eb860',1,'NSObject(FactoryHooks)']]],
   ['typhoontypestringfor',['TyphoonTypeStringFor',['../_typhoon_introspection_utils_8h.html#a4efc9426f64b77b419eea0204eedb57a',1,'TyphoonIntrospectionUtils.h']]],
-  ['typhoonwillinject',['typhoonWillInject',['../group___factory.html#ga2c70804a42c7e37fe2015c1c03996173',1,'NSObject(FactoryHooks)']]]
+  ['typhoonwillinject',['typhoonWillInject',['../group___assembly.html#ga2c70804a42c7e37fe2015c1c03996173',1,'NSObject(FactoryHooks)']]]
 ];

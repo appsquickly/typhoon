@@ -17,7 +17,7 @@ var indexSectionsWithContent =
   7: "t",
   8: "acdefikloprstu",
   9: "cilt",
-  10: "cdft",
+  10: "acdt",
   11: "t"
 };
 

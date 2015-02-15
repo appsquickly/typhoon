@@ -152,7 +152,7 @@ var searchData=
   ['typhoonresource_2dp',['TyphoonResource-p',['../protocol_typhoon_resource-p.html',1,'']]],
   ['typhoonresource_2eh',['TyphoonResource.h',['../_typhoon_resource_8h.html',1,'']]],
   ['typhoonselector_2eh',['TyphoonSelector.h',['../_typhoon_selector_8h.html',1,'']]],
-  ['typhoonsetfactory_3a',['typhoonSetFactory:',['../group___factory.html#ga3dc651b0109dde0ddd73519ccc5eb860',1,'NSObject(FactoryHooks)']]],
+  ['typhoonsetfactory_3a',['typhoonSetFactory:',['../group___assembly.html#ga3dc651b0109dde0ddd73519ccc5eb860',1,'NSObject(FactoryHooks)']]],
   ['typhoonstartup_2eh',['TyphoonStartup.h',['../_typhoon_startup_8h.html',1,'']]],
   ['typhoonstoryboard_2eh',['TyphoonStoryboard.h',['../_typhoon_storyboard_8h.html',1,'']]],
   ['typhoonswizzler_2eh',['TyphoonSwizzler.h',['../_typhoon_swizzler_8h.html',1,'']]],
@@ -175,5 +175,5 @@ var searchData=
   ['typhoonviewcontrollernibresolver_2eh',['TyphoonViewControllerNibResolver.h',['../_typhoon_view_controller_nib_resolver_8h.html',1,'']]],
   ['typhoonweakcomponentspool',['TyphoonWeakComponentsPool',['../interface_typhoon_weak_components_pool.html',1,'']]],
   ['typhoonweakcomponentspool_2eh',['TyphoonWeakComponentsPool.h',['../_typhoon_weak_components_pool_8h.html',1,'']]],
-  ['typhoonwillinject',['typhoonWillInject',['../group___factory.html#ga2c70804a42c7e37fe2015c1c03996173',1,'NSObject(FactoryHooks)']]]
+  ['typhoonwillinject',['typhoonWillInject',['../group___assembly.html#ga2c70804a42c7e37fe2015c1c03996173',1,'NSObject(FactoryHooks)']]]
 ];

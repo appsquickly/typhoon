@@ -10,8 +10,8 @@
         <Path>modules.html</Path>
         <Subnodes>
          <Node>
-          <Name>Factory</Name>
-          <Path>group___factory.html</Path>
+          <Name>Assembly</Name>
+          <Path>group___assembly.html</Path>
           <Subnodes>
            <Node>
             <Name>TyphoonAssembly</Name>
@@ -154,12 +154,12 @@
            </Node>
            <Node>
             <Name>typhoonSetFactory:</Name>
-            <Path>group___factory.html</Path>
+            <Path>group___assembly.html</Path>
             <Anchor>ga3dc651b0109dde0ddd73519ccc5eb860</Anchor>
            </Node>
            <Node>
             <Name>typhoonWillInject</Name>
-            <Path>group___factory.html</Path>
+            <Path>group___assembly.html</Path>
             <Anchor>ga2c70804a42c7e37fe2015c1c03996173</Anchor>
            </Node>
           </Subnodes>
@@ -542,12 +542,12 @@
              </Node>
              <Node>
               <Name>typhoonSetFactory:</Name>
-              <Path>group___factory.html</Path>
+              <Path>group___assembly.html</Path>
               <Anchor>ga3dc651b0109dde0ddd73519ccc5eb860</Anchor>
              </Node>
              <Node>
               <Name>typhoonWillInject</Name>
-              <Path>group___factory.html</Path>
+              <Path>group___assembly.html</Path>
               <Anchor>ga2c70804a42c7e37fe2015c1c03996173</Anchor>
              </Node>
             </Subnodes>
@@ -2222,12 +2222,12 @@
                </Node>
                <Node>
                 <Name>typhoonSetFactory:</Name>
-                <Path>group___factory.html</Path>
+                <Path>group___assembly.html</Path>
                 <Anchor>ga3dc651b0109dde0ddd73519ccc5eb860</Anchor>
                </Node>
                <Node>
                 <Name>typhoonWillInject</Name>
-                <Path>group___factory.html</Path>
+                <Path>group___assembly.html</Path>
                 <Anchor>ga2c70804a42c7e37fe2015c1c03996173</Anchor>
                </Node>
               </Subnodes>

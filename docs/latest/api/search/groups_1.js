@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['definition',['Definition',['../group___definition.html',1,'']]]
+  ['configuration',['Configuration',['../group___configuration.html',1,'']]]
 ];

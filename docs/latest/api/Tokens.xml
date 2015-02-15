@@ -678,11 +678,11 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>Factory</Name>
+      <Name>Assembly</Name>
       <APILanguage>c</APILanguage>
     </TokenIdentifier>
-    <Path>group___factory.html</Path>
-    <Abstract>Registering and retrieving component definitions. </Abstract>
+    <Path>group___assembly.html</Path>
+    <Abstract>Assembling an application from key collaborators and configuraiton. </Abstract>
   </Token>
   <Token>
     <TokenIdentifier>
@@ -691,7 +691,7 @@
       <Type>func</Type>
       <Scope>NSObject(FactoryHooks)</Scope>
     </TokenIdentifier>
-    <Path>group___factory.html</Path>
+    <Path>group___assembly.html</Path>
     <Anchor>ga3dc651b0109dde0ddd73519ccc5eb860</Anchor>
     <Abstract>Implementation of method typhoonSetFactory indicates that a component wishes to be aware of the Typho...</Abstract>
     <DeclaredIn>NSObject+FactoryHooks.h</DeclaredIn>
@@ -703,7 +703,7 @@
       <Type>func</Type>
       <Scope>NSObject(FactoryHooks)</Scope>
     </TokenIdentifier>
-    <Path>group___factory.html</Path>
+    <Path>group___assembly.html</Path>
     <Anchor>ga2c70804a42c7e37fe2015c1c03996173</Anchor>
     <Abstract>Typhoon components can implement this methods to participate in property-injection life-cycle events...</Abstract>
     <DeclaredIn>NSObject+FactoryHooks.h</DeclaredIn>
@@ -882,7 +882,7 @@
       <Type>func</Type>
       <Scope>NSObject(FactoryHooks)</Scope>
     </TokenIdentifier>
-    <Path>group___factory.html</Path>
+    <Path>group___assembly.html</Path>
     <Anchor>ga3dc651b0109dde0ddd73519ccc5eb860</Anchor>
     <Abstract>Implementation of method typhoonSetFactory indicates that a component wishes to be aware of the Typho...</Abstract>
     <DeclaredIn>NSObject+FactoryHooks.h</DeclaredIn>
@@ -894,7 +894,7 @@
       <Type>func</Type>
       <Scope>NSObject(FactoryHooks)</Scope>
     </TokenIdentifier>
-    <Path>group___factory.html</Path>
+    <Path>group___assembly.html</Path>
     <Anchor>ga2c70804a42c7e37fe2015c1c03996173</Anchor>
     <Abstract>Typhoon components can implement this methods to participate in property-injection life-cycle events...</Abstract>
     <DeclaredIn>NSObject+FactoryHooks.h</DeclaredIn>
@@ -1122,7 +1122,7 @@
     </TokenIdentifier>
     <Path>interface_typhoon_assembly.html</Path>
     <Anchor>ac445c91bdd47b3389eadedbf33860512</Anchor>
-    <Abstract>Returns the [TyphoonComponentFactory defaultFactory], with components exposed using an assembly inter...</Abstract>
+    <Abstract>Returns the [TyphoonComponentFactory defaultFactory] posing as a TyphoonAssembly. ...</Abstract>
     <DeclaredIn>TyphoonAssembly.h</DeclaredIn>
   </Token>
   <Token>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['factory',['Factory',['../group___factory.html',1,'']]]
+  ['definition',['Definition',['../group___definition.html',1,'']]]
 ];
