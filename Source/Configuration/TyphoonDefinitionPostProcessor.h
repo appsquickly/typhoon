@@ -15,7 +15,7 @@
 @class TyphoonComponentFactory;
 
 /**
-* @ingroup Factory
+* @ingroup Assembly
 *
  Allows for custom modification of a component factory's definitions.
  

@@ -12,7 +12,7 @@
 #import <Foundation/Foundation.h>
 
 /**
-* @ingroup Factory
+* @ingroup Assembly
 *
  Allows for custom modification of a instance after its instantiation.
 

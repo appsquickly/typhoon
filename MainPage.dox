@@ -16,9 +16,9 @@
     <a href="https://github.com/jasperblues">here</a>. The <a href="modules.html"><b>modules</b></a> section lists the main API classes,
     while the <a href="annotated.html"><b>classes</b></a> section lists everything.
 
-	@defgroup Factory
+	@defgroup Assembly
 
-	Registering and retrieving component definitions.
+	Assembling an application from key collaborators and configuraiton.
 
 	@defgroup Definition
 

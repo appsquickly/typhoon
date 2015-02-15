@@ -21,7 +21,7 @@
 
 /**
 *
-* @ingroup Factory
+* @ingroup Assembly
 *
 * Defines a protocol for resolving built instances, injecting a pre-obtained instance using a factory containing
 * definitions from one or more TyphoonAssembly classes.
@@ -77,7 +77,7 @@
 
 /**
 *
-* @ingroup Factory
+* @ingroup Assembly
 *
 * This is the base class for all component factories. It defines methods for retrieving components from the factory, as well as a low-level
 * API for assembling components from their constituent parts. This low-level API could be used as-is, however its intended to use a higher

@@ -12,7 +12,7 @@
 @interface NSObject (FactoryHooks)
 
 /**
- * @ingroup Factory
+ * @ingroup Assembly
  *
  * Implementation of method typhoonSetFactory indicates that a component wishes to be aware of the TyphoonComponentFactory in order to resolve another component.
  * Typically we'd want to inject all the dependencies, however there are some cases where its desirable to load a component from the factory
@@ -57,7 +57,7 @@
 
 
 /**
- * @ingroup Factory
+ * @ingroup Assembly
  *
  * Typhoon components can implement this methods to participate in property-injection life-cycle events. This gives some of the benefits
  * of initializer-injection - the ability to provide before / after validation - while still allowing the flexibility of property injection.

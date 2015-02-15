@@ -15,7 +15,7 @@
 @class TyphoonDefinition;
 
 /**
-* @ingroup Factory
+* @ingroup Assembly
 *
 * This class allows using the interface from one assembly within another. This is useful for abstracting out environment dependent
 * components. For example you could say "This class X needs to be injected with something conforming to the Foo protocol. This is a

@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, TyphoonOrder)
 };
 
 /**
-* @ingroup Factory
+* @ingroup Assembly
 *
  Protocol that defines ordering.
  Ordering can be used with for instance the TyphoonComponentFactoryPostProcessor and TyphoonComponentPostProcessor to control

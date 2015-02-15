@@ -17,7 +17,7 @@
 @class TyphoonComponentFactory;
 
 /**
-* @ingroup Factory
+* @ingroup Assembly
 *
 * Provides a concise way to declare and encapsulate the architecture of an application in one or more classes that describe
 * how components collaborate together.
@@ -47,7 +47,7 @@ AnalyticsService* service = [assembly analyticsService];
 + (instancetype)assembly;
 
 /**
-* Returns the [TyphoonComponentFactory defaultFactory], with components exposed using an assembly interface.
+* Returns the [TyphoonComponentFactory defaultFactory] posing as a TyphoonAssembly.
 */
 + (instancetype)defaultAssembly;
 

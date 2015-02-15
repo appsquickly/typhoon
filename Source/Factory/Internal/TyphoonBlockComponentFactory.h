@@ -17,7 +17,7 @@
 @class TyphoonAssembly;
 
 /**
-* @ingroup Factory
+* @ingroup Assembly
 *
 */
 @interface TyphoonBlockComponentFactory : TyphoonComponentFactory
