@@ -18,7 +18,6 @@
 #import "CavalryMan.h"
 #import "SwordFactory.h"
 #import "Mock.h"
-#import "TyphoonInjections.h"
 
 @implementation MiddleAgesAssembly
 
@@ -296,38 +295,11 @@
     }];
 }
 
-- (NSString *)stringValueShortcut
-{
-    return [self stringWithValue:@"Hello world!"];
-}
-
-- (Mock *)mockWithRuntimeBlock:(NSString *(^)())block
-{
-    return [self mockWithRuntimeBlock:block andRuntimeClass:[NSString class]];
-}
-
-- (Mock *)mockWithRuntimeClass:(Class)clazz
-{
-    return [self mockWithRuntimeBlock:^NSString * {
-        return @"Hello";
-    } andRuntimeClass:clazz];
-}
-
-- (id)knightWithRuntimeQuestUrl:(NSURL *)url
-{
-    return [self knightWithRuntimeDamselsRescued:@(13) runtimeQuestUrl:url];
-}
-
 - (id)knightRuntimeArgumentsFromDefinitionsSetWithRuntimeArg
 {
     return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(foobar) with:[self urlWithString:[self stringWithValue:[self stringWithValue:[self stringWithValue:@"http://example.com"]]]]];
     }];
-}
-
-- (id)knightWithPredefinedRuntimeQuest
-{
-    return [self knightWithRuntimeDamselsRescued:@(13) runtimeQuestUrl:[NSURL URLWithString:@"http://appsquick.ly"]];
 }
 
 @end

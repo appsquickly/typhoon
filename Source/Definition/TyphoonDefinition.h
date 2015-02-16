@@ -70,7 +70,6 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 {
     Class _type;
     NSString *_key;
-    BOOL _keyAutomaticAssigned;
 
     TyphoonMethod *_initializer;
     TyphoonMethod *_beforeInjections;

@@ -13,7 +13,6 @@
 
 @class TyphoonConfigPostProcessor;
 @protocol TyphoonResource;
-@class TyphoonRuntimeArguments;
 
 /**
  Declares short-hand definition factory methods for infrastructure components.
@@ -21,8 +20,6 @@
 @interface TyphoonDefinition (Infrastructure)
 
 @property(nonatomic, strong) TyphoonRuntimeArguments *currentRuntimeArguments;
-
-@property(nonatomic, getter=isKeyAutomaticAssigned) BOOL keyAutomaticAssigned;
 
 /**
 * The key of the component. A key is useful when multiple configuration of the same class or protocol are desired - for example

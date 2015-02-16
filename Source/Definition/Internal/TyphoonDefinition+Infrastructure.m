@@ -21,7 +21,6 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonReferenceDefinition.h"
 #import "TyphoonIntrospectionUtils.h"
-#import "TyphoonRuntimeArguments.h"
 
 @implementation TyphoonDefinition (Infrastructure)
 
@@ -42,7 +41,6 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
             [method injectParameterWith:fileName];
         }];
         definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), fileName];
-        definition.keyAutomaticAssigned = YES;
     }];
 }
 
@@ -53,7 +51,6 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
             [method injectParameterWith:filePath];
         }];
         definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), [filePath lastPathComponent]];
-        definition.keyAutomaticAssigned = YES;
     }];
 }
 
@@ -68,7 +65,6 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
         _injectedProperties = [[NSMutableSet alloc] init];
         _injectedMethods = [[NSMutableSet alloc] init];
         _key = [key copy];
-        _keyAutomaticAssigned = NO;
         _scope = TyphoonScopeObjectGraph;
         self.autoInjectionVisibility = TyphoonAutoInjectVisibilityDefault;
         [self validateRequiredParametersAreSet];
@@ -99,17 +95,6 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
     return result;
 }
-
-- (void)setKeyAutomaticAssigned:(BOOL)keyAutomaticAssigned
-{
-    _keyAutomaticAssigned = keyAutomaticAssigned;
-}
-
-- (BOOL)isKeyAutomaticAssigned
-{
-    return _keyAutomaticAssigned;
-}
-
 
 
 //-------------------------------------------------------------------------------------------

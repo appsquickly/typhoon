@@ -62,15 +62,6 @@
 
 - (id)knightRuntimeArgumentsFromDefinitionWithRuntimeArg;
 
-- (NSString *)stringValueShortcut;
-
-- (Mock *)mockWithRuntimeBlock:(NSString *(^)())block;
-
-- (Mock *)mockWithRuntimeClass:(Class)clazz;
-
-- (id)knightWithRuntimeQuestUrl:(NSURL *)url;
-
 - (id)knightRuntimeArgumentsFromDefinitionsSetWithRuntimeArg;
 
-- (id)knightWithPredefinedRuntimeQuest;
 @end

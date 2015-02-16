@@ -48,9 +48,4 @@
     return [_objectInstance hash];
 }
 
-- (NSString *)customDescription
-{
-    return [NSString stringWithFormat:@"instanceClass = %@, ", [self.objectInstance class]];
-}
-
 @end

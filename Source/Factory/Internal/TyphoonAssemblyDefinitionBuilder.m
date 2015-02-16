@@ -12,6 +12,7 @@
 
 #import "TyphoonAssemblyDefinitionBuilder.h"
 #import "TyphoonAssembly.h"
+#import "TyphoonDefinition.h"
 #import "OCLogTemplate.h"
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
@@ -21,8 +22,6 @@
 #import "TyphoonSelector.h"
 #import "TyphoonInjections.h"
 #import "TyphoonUtils.h"
-#import "TyphoonRuntimeArguments.h"
-#import "TyphoonReferenceDefinition.h"
 
 #import <objc/runtime.h>
 
@@ -150,7 +149,7 @@ static void AssertArgumentType(id target, SEL selector, const char *argumentType
 
     if (!d) {
         d = [self definitionForKey:key];
-        d = [self populateCacheWithDefinition:d forKey:key];
+        [self populateCacheWithDefinition:d forKey:key];
     }
 
     return d;
@@ -221,26 +220,20 @@ static id InjectionForArgumentType(const char *argumentType, NSUInteger index)
     }
 }
 
-- (TyphoonDefinition *)populateCacheWithDefinition:(TyphoonDefinition *)definition forKey:(NSString *)key
+- (void)populateCacheWithDefinition:(TyphoonDefinition *)definition forKey:(NSString *)key
 {
     if (definition && [definition isKindOfClass:[TyphoonDefinition class]]) {
-        definition = [self definitionBySettingKey:key toDefinition:definition];
-        _cachedDefinitionsForMethodName[key] = definition;
+        [self setKey:key onDefinitionIfExistingKeyEmpty:definition];
+
+        [_cachedDefinitionsForMethodName setObject:definition forKey:key];
     }
-    return definition;
 }
 
-- (TyphoonDefinition *)definitionBySettingKey:(NSString *)key toDefinition:(TyphoonDefinition *)definition
+- (void)setKey:(NSString *)key onDefinitionIfExistingKeyEmpty:(TyphoonDefinition *)definition
 {
-    TyphoonDefinition *result = definition;
-
-    if ([result.key length] == 0) {
-        result.key = key;
-        result.keyAutomaticAssigned = YES;
-    } else if (result.keyAutomaticAssigned && ![definition.key isEqualToString:key]) {
-        result = [TyphoonShortcutDefinition definitionWithKey:key referringTo:definition];
+    if ([definition.key length] == 0) {
+        definition.key = key;
     }
-    return result;
 }
 
 @end

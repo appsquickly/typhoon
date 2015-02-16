@@ -18,21 +18,17 @@
 
 @implementation TyphoonAbstractInjection
 
-- (NSString *)customDescription
-{
-    return @"";
-}
 
 - (NSString *)description
 {
     if (self.type == TyphoonInjectionTypeUndefinied) {
-        return [NSString stringWithFormat:@"<%@: %p, %@type=Undifined>", [self class], self, [self customDescription]];
+        return [NSString stringWithFormat:@"<%@: %p, type=Undifined>", [self class], self];
     }
     else if (self.type == TyphoonInjectionTypeParameter) {
-        return [NSString stringWithFormat:@"<%@: %p, %@index=%d>", [self class], self, [self customDescription], (int) self.parameterIndex];
+        return [NSString stringWithFormat:@"<%@: %p, index=%d>", [self class], self, (int) self.parameterIndex];
     }
     else {
-        return [NSString stringWithFormat:@"<%@: %p, %@property=%@>", [self class], self, [self customDescription], self.propertyName];
+        return [NSString stringWithFormat:@"<%@: %p, property=%@>", [self class], self, self.propertyName];
     }
 }
 

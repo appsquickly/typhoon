@@ -47,11 +47,12 @@
     [self swizzleSetDelegateMethodOnApplicationClass];
 }
 
-+ (TyphoonComponentFactory *)factoryFromAppDelegate:(id)appDelegate
++ (TyphoonComponentFactory*)factoryFromAppDelegate:(id)appDelegate
 {
-    TyphoonComponentFactory *result = nil;
+    TyphoonComponentFactory* result = nil;
 
-    if ([appDelegate respondsToSelector:@selector(initialFactory)]) {
+    if ([appDelegate respondsToSelector:@selector(initialFactory)])
+    {
         result = [appDelegate initialFactory];
     }
 
@@ -60,7 +61,7 @@
 
 #pragma mark -
 
-static TyphoonComponentFactory *initialFactory;
+static TyphoonComponentFactory* initialFactory;
 
 + (void)loadInitialFactory
 {
@@ -77,7 +78,7 @@ static TyphoonComponentFactory *initialFactory;
     SEL sel = @selector(setDelegate:);
     Method method = class_getInstanceMethod(ApplicationClass, sel);
 
-    void(*originalImp)(id, SEL, id) = (void (*)(id, SEL, id))method_getImplementation(method);
+    void(* originalImp)(id, SEL, id) = (void (*)(id, SEL, id)) method_getImplementation(method);
 
     IMP adjustedImp = imp_implementationWithBlock(^(id instance, id delegate) {
         [self loadInitialFactory];
@@ -115,7 +116,7 @@ static TyphoonComponentFactory *initialFactory;
 + (void)injectInitialFactoryIntoDelegate:(id)appDelegate
 {
     [initialFactory load];
-    TyphoonDefinition *definition = [[initialFactory allDefinitionsForType:[appDelegate class]] lastObject];
+    TyphoonDefinition* definition = [[initialFactory allDefinitionsForType:[appDelegate class]] lastObject];
     [initialFactory doInjectionEventsOn:appDelegate withDefinition:definition args:nil];
     [initialFactory registerInstance:appDelegate asSingletonForDefinition:definition];
 }
