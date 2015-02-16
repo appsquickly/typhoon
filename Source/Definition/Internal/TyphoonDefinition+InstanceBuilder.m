@@ -153,7 +153,14 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 
 - (void)addInjectedPropertyIfNotExists:(id <TyphoonPropertyInjection>)property
 {
-    if (![_injectedProperties containsObject:property]) {
+    BOOL isExists = NO;
+    for (id<TyphoonPropertyInjection>p in _injectedProperties) {
+        if ([[p propertyName] isEqualToString:[property propertyName]]) {
+            isExists = YES;
+            break;
+        }
+    }
+    if (!isExists) {
         [_injectedProperties addObject:property];
     }
 }
