@@ -276,7 +276,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 - (id)copyWithZone:(NSZone *)zone
 {
     TyphoonDefinition *copy = [[TyphoonDefinition alloc] initWithClass:_type key:[_key copy]];
-    copy->_keyAutomaticAssigned = _keyAutomaticAssigned;
+    copy->_processed = _processed;
     copy->_initializer = [_initializer copy];
     copy->_beforeInjections = [_beforeInjections copy];
     copy->_injectedProperties = [_injectedProperties mutableCopy];

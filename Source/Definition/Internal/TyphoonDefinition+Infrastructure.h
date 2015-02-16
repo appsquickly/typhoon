@@ -22,7 +22,9 @@
 
 @property(nonatomic, strong) TyphoonRuntimeArguments *currentRuntimeArguments;
 
-@property(nonatomic, getter=isKeyAutomaticAssigned) BOOL keyAutomaticAssigned;
+/** This flag used to distinguish definitions from reference to them. First time, when definition created, processed flag set to NO,
+*  but next time, when this definition returned by reference (shortcut with another runtime args) processed flag will be set to YES */
+@property(nonatomic) BOOL processed;
 
 /**
 * The key of the component. A key is useful when multiple configuration of the same class or protocol are desired - for example

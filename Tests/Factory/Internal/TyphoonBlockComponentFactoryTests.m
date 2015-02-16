@@ -366,6 +366,7 @@ test_currently_resolving_references_dictionary_is_not_overwritten_when_initializ
     TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[[ConfigAssembly assembly]]];
     Knight *knight = [(ConfigAssembly *)factory configuredCavalryMan];
     XCTAssertNotNil(knight);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)3);
 }
 
 @end

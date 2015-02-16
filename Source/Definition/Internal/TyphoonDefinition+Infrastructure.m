@@ -42,7 +42,6 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
             [method injectParameterWith:fileName];
         }];
         definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), fileName];
-        definition.keyAutomaticAssigned = YES;
     }];
 }
 
@@ -53,7 +52,6 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
             [method injectParameterWith:filePath];
         }];
         definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), [filePath lastPathComponent]];
-        definition.keyAutomaticAssigned = YES;
     }];
 }
 
@@ -68,7 +66,6 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
         _injectedProperties = [[NSMutableSet alloc] init];
         _injectedMethods = [[NSMutableSet alloc] init];
         _key = [key copy];
-        _keyAutomaticAssigned = NO;
         _scope = TyphoonScopeObjectGraph;
         self.autoInjectionVisibility = TyphoonAutoInjectVisibilityDefault;
         [self validateRequiredParametersAreSet];
@@ -100,17 +97,15 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     return result;
 }
 
-- (void)setKeyAutomaticAssigned:(BOOL)keyAutomaticAssigned
+- (void)setProcessed:(BOOL)processed
 {
-    _keyAutomaticAssigned = keyAutomaticAssigned;
+    _processed = processed;
 }
 
-- (BOOL)isKeyAutomaticAssigned
+- (BOOL)processed
 {
-    return _keyAutomaticAssigned;
+    return _processed;
 }
-
-
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Private Methods

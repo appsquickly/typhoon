@@ -36,7 +36,6 @@
 {
     TyphoonShortcutDefinition *refDefinition = [[TyphoonShortcutDefinition alloc] initWithClass:definition.type key:key];
     refDefinition->_referringArgs = definition.currentRuntimeArguments;
-    refDefinition->_keyAutomaticAssigned = YES;
     refDefinition->_referringKey = definition.key;
     return refDefinition;
 }

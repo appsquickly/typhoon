@@ -236,10 +236,14 @@ static id InjectionForArgumentType(const char *argumentType, NSUInteger index)
 
     if ([result.key length] == 0) {
         result.key = key;
-        result.keyAutomaticAssigned = YES;
-    } else if (result.keyAutomaticAssigned && ![definition.key isEqualToString:key]) {
+    }
+    
+    if (result.processed && ![definition.key isEqualToString:key]) {
         result = [TyphoonShortcutDefinition definitionWithKey:key referringTo:definition];
     }
+
+    result.processed = YES;
+    
     return result;
 }
 

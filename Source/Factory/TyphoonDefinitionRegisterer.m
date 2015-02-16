@@ -58,7 +58,6 @@
     if ([_definition.key length] == 0) {
         NSString *uuidStr = [[NSProcessInfo processInfo] globallyUniqueString];
         _definition.key = [NSString stringWithFormat:@"%@_%@", NSStringFromClass(_definition.type), uuidStr];
-        _definition.keyAutomaticAssigned = YES;
     }
 }
 
