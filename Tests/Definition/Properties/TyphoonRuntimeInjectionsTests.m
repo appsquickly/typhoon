@@ -173,4 +173,39 @@
     XCTAssertEqualObjects(knight.foobar, [[NSURL alloc] initWithString:@"http://example.com"]);
 }
 
+- (void)test_runtime_argument_shortcut
+{
+    NSString *str = [factory stringValueShortcut];
+    XCTAssertEqualObjects(str, @"Hello world!");
+}
+
+- (void)test_runtime_argument_shortcut_more_than_one_arg
+{
+    Knight *knight = [factory knightWithRuntimeQuestUrl:[NSURL URLWithString:@"http://appsquick.ly"]];
+    XCTAssertEqualObjects(knight.quest.imageUrl, [NSURL URLWithString:@"http://appsquick.ly"]);
+    XCTAssertTrue(knight.damselsRescued == 13);
+}
+
+- (void)test_runtime_argument_shortcut_block_and_class
+{
+    Mock *mock1 = [factory mockWithRuntimeClass:[NSString class]];
+
+    XCTAssertTrue(mock1.clazz == [NSString class]);
+    XCTAssertTrue([((NSString*(^)()) mock1.block)() isEqualToString:@"Hello"]);
+
+    Mock *mock2 = [factory mockWithRuntimeBlock:^NSString * {
+        return @"Hello2";
+    }];
+
+    XCTAssertTrue(mock2.clazz == [NSString class]);
+    XCTAssertTrue([((NSString*(^)()) mock2.block)() isEqualToString:@"Hello2"]);
+}
+
+- (void)test_runtime_argument_shortcut_point_to_shortcut
+{
+    Knight *knight = [factory knightWithPredefinedRuntimeQuest];
+    XCTAssertEqualObjects(knight.quest.imageUrl, [NSURL URLWithString:@"http://appsquick.ly"]);
+    XCTAssertTrue(knight.damselsRescued == 13);
+}
+
 @end
