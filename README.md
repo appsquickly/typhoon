@@ -62,6 +62,14 @@ Typhoon is sponsored and lead by <a href="http://appsquick.ly">AppsQuick.ly</a> 
 # Interested in contributing?
 
  Great! Here's the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">contribution guide.</a>
+ 
+# Change Log
+
+* We regularly release bug-fixes and improvements (micro versions) as soon as they are available. 
+* Minor version when significantly value-adding features are available. 
+* A major version indicates significant new features. 
+
+From version 3.0.0 we maintain a formal [[Change Log]]. 
 
 # LICENSE
 
