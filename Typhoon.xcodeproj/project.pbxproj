@@ -1171,8 +1171,8 @@
 		2DBA12DFCF0F49DFCC18384B /* Startup */ = {
 			isa = PBXGroup;
 			children = (
-				2DBA184AB89E270A062809E3 /* TyphoonStartup.m */,
 				2DBA1B7BFD38DAF1A508B22C /* TyphoonStartup.h */,
+				2DBA184AB89E270A062809E3 /* TyphoonStartup.m */,
 			);
 			path = Startup;
 			sourceTree = "<group>";

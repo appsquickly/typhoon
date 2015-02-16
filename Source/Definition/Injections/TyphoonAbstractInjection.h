@@ -33,6 +33,8 @@ typedef NS_ENUM(NSInteger, TyphoonInjectionType) {
 - (BOOL)isEqualToCustom:(id)injection;
 - (NSUInteger)customHash;
 
+- (NSString *)customDescription;
+
 @end
 
 @interface TyphoonAbstractInjection (Protected)
