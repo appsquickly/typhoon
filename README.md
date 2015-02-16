@@ -69,7 +69,7 @@ Typhoon is sponsored and lead by <a href="http://appsquick.ly">AppsQuick.ly</a> 
 * Minor version when significantly value-adding features are available. 
 * A major version indicates significant new features. 
 
-From version 3.0.0 we maintain a formal <a href="https://github.com/appsquickly/Typhoon/wiki/Change-Log">https://github.com/appsquickly/Typhoon/wiki/Change Log</a>.
+From version 3.0.0 we maintain a formal <a href="https://github.com/appsquickly/Typhoon/wiki/Change-Log">Change Log</a>.
 
 # LICENSE
 
