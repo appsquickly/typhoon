@@ -30,6 +30,7 @@
 #import "NotSingletonA.h"
 #import "PrototypeInitInjected.h"
 #import "PrototypePropertyInjected.h"
+#import "ConfigAssembly.h"
 
 @interface TyphoonBlockComponentFactoryTests : XCTestCase
 {
@@ -42,7 +43,8 @@
 
 @end
 
-@implementation TyphoonBlockComponentFactoryTests {
+@implementation TyphoonBlockComponentFactoryTests
+{
     NSUInteger internalProcessorsCount;
 }
 
@@ -68,7 +70,7 @@
     // Unregister NSNull converter picked up in infrastructure components assembly.
     // Try/catch to make the correct test fail if converterFor: throws an exception because of missing converter.
     @try {
-        id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterForType:@"NSNull"];
+        id<TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterForType:@"NSNull"];
         [[TyphoonTypeConverterRegistry shared] unregisterTypeConverter:converter];
     }
     @catch (NSException *exception) {}
@@ -131,7 +133,7 @@
 
 - (void)test_allows_injecting_properties_with_object_instance
 {
-    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *) _componentFactory;
+    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
     CavalryMan *knight = [assembly yetAnotherKnight];
     XCTAssertNotNil(knight.propertyInjectedAsInstance);
 
@@ -140,7 +142,7 @@
 
 - (void)test_method_injection
 {
-    Knight *knight = [(MiddleAgesAssembly *) _componentFactory knightWithMethodInjection];
+    Knight *knight = [(MiddleAgesAssembly *)_componentFactory knightWithMethodInjection];
 
     XCTAssertNotNil(knight.quest);
     XCTAssertEqual(knight.damselsRescued, 321);
@@ -149,14 +151,14 @@
 
 - (void)test_fake_property_injection
 {
-    Knight *knight = [(MiddleAgesAssembly *) _componentFactory knightWithFakePropertyQuest];
+    Knight *knight = [(MiddleAgesAssembly *)_componentFactory knightWithFakePropertyQuest];
 
     XCTAssertNotNil(knight.favoriteQuest);
 }
 
 - (void)test_fake_property_injection_by_type
 {
-    XCTAssertThrows([(MiddleAgesAssembly *) _componentFactory knightWithFakePropertyQuestByType]);
+    XCTAssertThrows([(MiddleAgesAssembly *)_componentFactory knightWithFakePropertyQuestByType]);
 }
 
 //-------------------------------------------------------------------------------------------
@@ -227,8 +229,7 @@
 - (void)test_post_processor_component_recognized
 {
 
-    XCTAssertEqual([_infrastructureComponentsFactory.definitionPostProcessors count], 1 + internalProcessorsCount)
-        ; //Attached + internal processors
+    XCTAssertEqual([_infrastructureComponentsFactory.definitionPostProcessors count], 1 + internalProcessorsCount); //Attached + internal processors
 }
 
 - (void)test_resolves_property_values_from_multiple_files
@@ -240,7 +241,7 @@
 
 - (void)test_type_converter_recognized
 {
-    id <TyphoonTypeConverter> nullConverter = [[TyphoonTypeConverterRegistry shared] converterForType:@"NSNull"];
+    id<TyphoonTypeConverter> nullConverter = [[TyphoonTypeConverterRegistry shared] converterForType:@"NSNull"];
     XCTAssertNotNil(nullConverter);
 }
 
@@ -330,7 +331,8 @@
 //-------------------------------------------------------------------------------------------
 #pragma mark - Currently Resolving Overwriting Problem
 
-- (void)test_currently_resolving_references_dictionary_is_not_overwritten_when_initializing_two_instances_of_prototype_in_the_same_chain
+- (void)
+test_currently_resolving_references_dictionary_is_not_overwritten_when_initializing_two_instances_of_prototype_in_the_same_chain
 {
     CROSingletonA *singletonA = [_circularDependenciesFactory componentForType:[CROSingletonA class]];
     XCTAssertNotNil(singletonA.prototypeB);
@@ -351,8 +353,18 @@
 
 - (void)test_resolves_component_using_selector
 {
-    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *) _componentFactory;
+    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
     Knight *knight = [assembly knight];
+    XCTAssertNotNil(knight);
+}
+
+//-------------------------------------------------------------------------------------------
+#pragma mark - Configuration
+
+- (void)test_returns_instance_configured_from_typhoon_config
+{
+    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[[ConfigAssembly assembly]]];
+    Knight *knight = [(ConfigAssembly *)factory configuredCavalryMan];
     XCTAssertNotNil(knight);
 }
 
