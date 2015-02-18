@@ -26,7 +26,7 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 * A nice sample that shows how to <a href="https://github.com/typhoon-framework/Typhoon-CoreData-RAC-Example">set up Typhoon with Core Data and Reactive Cocoa</a>. 
 * <a href="https://github.com/JeffBNimble/LoLBookOfChampions-ios">Here's a really fun sample</a> that was created by <a href="https://github.com/JeffBNimble">Jeff Roberts</a> of <a href="http://www.nimblenogginsoftware.com/">Nimble Noggin Software</a>. It was used to teach Typhoon to the good folks at <a href="http://www.riotgames.com/">Riot Games</a>, where he consults. 
 
-Have a Typhoon example applicaiton that you'd like to share? Great! Get in touch with us. 
+*Have a Typhoon example app that you'd like to share? Great! Get in touch with us :)*
 
 # Installing
 
