@@ -1,5 +1,5 @@
 ![Typhoon](http://www.typhoonframework.org/typhoon-splash.png)
-# <a href="http://typhoonframework.org">typhoonframework.org</a>  ![Cocoapods Version](https://cocoapod-badges.herokuapp.com/v/Typhoon/badge.png)
+# <a href="http://typhoonframework.org">typhoonframework.org</a>  
 <a href="http://builds.appsquick.ly/browse/TPN-TC/latest">
 ![Build Status](http://typhoonframework.org/build-status/build-status.png?q=z)
 </a>
@@ -28,7 +28,7 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 
 *Have a Typhoon example app that you'd like to share? Great! Get in touch with us :)*
 
-# Installing
+# Installing ![Cocoapods Version](https://cocoapod-badges.herokuapp.com/v/Typhoon/badge.png)
 
 Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods</a> (recommended). Alternatively, add the source files to your project's target or set up an Xcode workspace. 
 
