@@ -1,8 +1,7 @@
 ![Typhoon](http://www.typhoonframework.org/typhoon-splash.png)
-# <a href="http://typhoonframework.org">typhoonframework.org</a>
+# <a href="http://typhoonframework.org">typhoonframework.org</a>  ![Cocoapods Version](https://cocoapod-badges.herokuapp.com/v/Typhoon/badge.png)
 <a href="http://builds.appsquick.ly/browse/TPN-TC/latest">
 ![Build Status](http://typhoonframework.org/build-status/build-status.png?q=z)
-[![Cocoapods Version](https://cocoapod-badges.herokuapp.com/v/Typhoon/badge.png)]
 </a>
 
 Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-featured and super-easy to use. 
