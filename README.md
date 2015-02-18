@@ -28,7 +28,7 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 
 *Have a Typhoon example app that you'd like to share? Great! Get in touch with us :)*
 
-# Installing ![Cocoapods Version](https://cocoapod-badges.herokuapp.com/v/Typhoon/badge.png)
+# Installing <a href="https://github.com/appsquickly/Typhoon/wiki/Change-Log">![Cocoapods Version](https://cocoapod-badges.herokuapp.com/v/Typhoon/badge.png)</a>
 
 Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods</a> (recommended). Alternatively, add the source files to your project's target or set up an Xcode workspace. 
 
