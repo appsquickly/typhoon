@@ -20,12 +20,13 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 * Here are the <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>. Generally googling a Typhoon class name will return the correct page as the first hit. 
 * <a href="http://ios.caph.jp/typhoon/introduction">日本のドキュメンテーション</a>
 
-# Sample Applications
+# Open Source Sample Applications
 
-* Try the <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">Swift Sample Application</a> or the <a href="https://github.com/typhoon-framework/Typhoon-example">Objective-C Sample Application</a>. 
+* Try the official <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">Swift Sample Application</a> or the <a href="https://github.com/typhoon-framework/Typhoon-example">Objective-C Sample Application</a>. 
 * A nice sample that shows how to <a href="https://github.com/typhoon-framework/Typhoon-CoreData-RAC-Example">set up Typhoon with Core Data and Reactive Cocoa</a>. 
 * Here's a <a href="https://github.com/JeffBNimble/LoLBookOfChampions-ios">really fun sample</a> by <a href="https://github.com/JeffBNimble">Jeff Roberts</a> of Nimble Noggin Software, showing off some great artwork by the folks at <a href="http://www.riotgames.com/">Riot Games</a>.
 
+Have a Typhoon example applicaiton that you'd like to share? Great! Get in touch with us. 
 
 # Installing
 
