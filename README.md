@@ -74,11 +74,6 @@ Typhoon is sponsored and lead by <a href="http://appsquick.ly">AppsQuick.ly</a> 
  Great! Here's the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">contribution guide.</a>
  
 
-
-# LICENSE
-
-Apache License, Version 2.0, January 2004, http://www.apache.org/licenses/
-
 © 2012 - 2015 Jasper Blues, Aleksey Garbarev and contributors.
 
 
