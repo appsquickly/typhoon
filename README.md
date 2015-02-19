@@ -29,10 +29,7 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 
 *Have a Typhoon example app that you'd like to share? Great! Get in touch with us :)*
 
-# Installing <a href="https://github.com/appsquickly/Typhoon/wiki/Change-Log">![Cocoapods Version](https://cocoapod-badges.herokuapp.com/v/Typhoon/badge.png)</a> 
-[![Pod Platform](http://img.shields.io/cocoapods/p/Typhoon.svg?style=flat)](http://typhoonframework.org/docs/latest/api/modules.html)
-[![Pod License](http://img.shields.io/cocoapods/l/Typhoon.svg?style=flat)](https://github.com/appsquickly/Typhoon/blob/master/LICENSE)
-[![Dependency Status](https://www.versioneye.com/objective-c/typhoon/1.1.1/badge.svg?style=flat)](https://www.versioneye.com/objective-c/typhoon)
+# Installing <a href="https://github.com/appsquickly/Typhoon/wiki/Change-Log">![Cocoapods Version](https://cocoapod-badges.herokuapp.com/v/Typhoon/badge.png)</a> [![Pod Platform](http://img.shields.io/cocoapods/p/Typhoon.svg?style=flat)](http://typhoonframework.org/docs/latest/api/modules.html) [![Pod License](http://img.shields.io/cocoapods/l/Typhoon.svg?style=flat)](https://github.com/appsquickly/Typhoon/blob/master/LICENSE) [![Dependency Status](https://www.versioneye.com/objective-c/typhoon/1.1.1/badge.svg?style=flat)](https://www.versioneye.com/objective-c/typhoon)
 
 Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods</a> (recommended). Alternatively, add the source files to your project's target or set up an Xcode workspace. 
 
