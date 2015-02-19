@@ -48,7 +48,9 @@ pod 'Typhoon'
 
 Simply import the Typhoon module in any Swift file that uses the framework:
 
+```Swift
 import Typhoon
+```
 
 # Feedback
 
