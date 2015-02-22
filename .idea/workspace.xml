@@ -29,8 +29,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37414965" vertical-offset="14065" max-vertical-offset="21735">
-              <caret line="956" column="0" selection-start-line="956" selection-start-column="0" selection-end-line="959" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5414966" vertical-offset="14152" max-vertical-offset="21735">
+              <caret line="970" column="26" selection-start-line="968" selection-start-column="20" selection-end-line="970" selection-end-column="26" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#a#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#nav#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -94,7 +94,7 @@
                 <element signature="n#style#0;n#div#7;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h2#0;n#div#0;n#div#0;n#div#7;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#9;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1424578391000" expanded="true" signature="46792:46974" placeholder="..." />
+                <marker date="1424580221000" expanded="true" signature="46792:46974" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -335,15 +335,15 @@
             <element signature="n#style#0;n#div#7;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h2#0;n#div#0;n#div#0;n#div#7;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#9;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1424578391000" expanded="true" signature="46792:46974" placeholder="..." />
+            <marker date="1424580221000" expanded="true" signature="46792:46974" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37414965" vertical-offset="14065" max-vertical-offset="21735">
-          <caret line="956" column="0" selection-start-line="956" selection-start-column="0" selection-end-line="959" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5414966" vertical-offset="14152" max-vertical-offset="21735">
+          <caret line="970" column="26" selection-start-line="968" selection-start-column="20" selection-end-line="970" selection-end-column="26" />
           <folding>
             <element signature="n#style#0;n#img#0;n#a#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#nav#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -407,7 +407,7 @@
             <element signature="n#style#0;n#div#7;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h2#0;n#div#0;n#div#0;n#div#7;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#9;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1424578391000" expanded="true" signature="46792:46974" placeholder="..." />
+            <marker date="1424580221000" expanded="true" signature="46792:46974" placeholder="..." />
           </folding>
         </state>
       </provider>
