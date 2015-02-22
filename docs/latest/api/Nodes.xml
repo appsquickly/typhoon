@@ -599,6 +599,11 @@
               <Anchor>a30504db62ed38e24adb794506a2b95e1</Anchor>
              </Node>
              <Node>
+              <Name>customDescription</Name>
+              <Path>interface_typhoon_abstract_injection.html</Path>
+              <Anchor>a38f646213dea310afd93a89352c2478d</Anchor>
+             </Node>
+             <Node>
               <Name>customHash</Name>
               <Path>interface_typhoon_abstract_injection.html</Path>
               <Anchor>a906df7094d91b16cd003a9e1e01c87c9</Anchor>
@@ -2381,6 +2386,11 @@
                 <Name>copyBasePropertiesTo:</Name>
                 <Path>interface_typhoon_abstract_injection.html</Path>
                 <Anchor>a30504db62ed38e24adb794506a2b95e1</Anchor>
+               </Node>
+               <Node>
+                <Name>customDescription</Name>
+                <Path>interface_typhoon_abstract_injection.html</Path>
+                <Anchor>a38f646213dea310afd93a89352c2478d</Anchor>
                </Node>
                <Node>
                 <Name>customHash</Name>
