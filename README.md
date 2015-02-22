@@ -71,7 +71,7 @@ Typhoon is sponsored and lead by <a href="http://appsquick.ly">AppsQuick.ly</a> 
 
 <br/>
 
-![American Express](http://www.typhoonframework.org/user-logos/American_Express.png) ![Twitter](http://www.typhoonframework.org/user-logos/Twitter_logo.png) ![Polidea](http://www.typhoonframework.org/user-logos/polidea.png) ![Yandex](http://www.typhoonframework.org/user-logos/yandex-logo.png) ![Riot Games](http://www.typhoonframework.org/user-logos/RiotGamesLogo.png) ![Pivotal Labs](http://www.typhoonframework.org/user-logos/pivotal-labs-logo.png) ![Tuenti](http://www.typhoonframework.org/user-logos/tuenti.png)
+![American Express](http://www.typhoonframework.org/user-logos/American_Express.png) <!-- ![Twitter](http://www.typhoonframework.org/user-logos/Twitter_logo.png) --> ![Polidea](http://www.typhoonframework.org/user-logos/polidea.png) ![Yandex](http://www.typhoonframework.org/user-logos/yandex-logo.png) ![Riot Games](http://www.typhoonframework.org/user-logos/RiotGamesLogo.png) ![Pivotal Labs](http://www.typhoonframework.org/user-logos/pivotal-labs-logo.png) ![Tuenti](http://www.typhoonframework.org/user-logos/tuenti.png)
 
 <br/>
 
