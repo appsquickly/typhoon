@@ -67,14 +67,6 @@ Please raise a <a href="https://github.com/typhoon-framework/Typhoon/issues">Git
 
 Typhoon is a non-profit, community driven project. We only ask that if you've found it useful to star us on Github or send a tweet mentioning us (<a href="https://twitter.com/appsquickly">@appsquickly</a>). If you've written Typhoon related blog or tutorial, or published a new Typhoon powered app, we'd certainly be happy to hear about that too. 
 
-Typhoon is sponsored and lead by <a href="http://appsquick.ly">AppsQuick.ly</a> with <a href="https://github.com/appsquickly/Typhoon/graphs/contributors">contributions from around the world</a>. It is used across a range of industry sectors - from entertainment, to communications to enterprise. Folks building Typhoon-powered apps <a href="https://github.com/appsquickly/Typhoon/stargazers">work with companies such as</a> the following: 
-
-<br/>
-
-![American Express](http://www.typhoonframework.org/user-logos/American_Express.png)  ![Polidea](http://www.typhoonframework.org/user-logos/polidea.png) ![Riot Games](http://www.typhoonframework.org/user-logos/RiotGamesLogo.png) ![Pivotal Labs](http://www.typhoonframework.org/user-logos/pivotal-labs-logo.png) ![Tuenti](http://www.typhoonframework.org/user-logos/tuenti.png)
-
-<br/>
-
 # Interested in contributing?
 
  Great! Here's the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">contribution guide.</a>
