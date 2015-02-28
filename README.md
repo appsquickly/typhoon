@@ -38,7 +38,7 @@ Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods
 
 ```ruby
 
-# platform *must* be atleast 5.0
+# platform *must* be at least 5.0
 platform :ios, '5.0'
 
 target :MyAppTarget, :exclusive => true do
@@ -53,7 +53,7 @@ end
 If you're using Swift, you may with to install dynamic frameworks, which can be done with the Podfile shown below: 
 
 ```ruby
-# platform *must* be atleast 8.0
+# platform *must* be at least 8.0
 platform :ios, '8.0'
 
 # flag makes all dependencies build as frameworks
