@@ -32,14 +32,16 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 # Installing 
 <a href="https://github.com/appsquickly/Typhoon/wiki/Change-Log">![Cocoapods Version](https://cocoapod-badges.herokuapp.com/v/Typhoon/badge.png)</a> [![Pod Platform](http://img.shields.io/cocoapods/p/Typhoon.svg?style=flat)](http://typhoonframework.org/docs/latest/api/modules.html) [![Pod License](http://img.shields.io/cocoapods/l/Typhoon.svg?style=flat)](https://github.com/appsquickly/Typhoon/blob/master/LICENSE) [![Dependency Status](https://www.versioneye.com/objective-c/typhoon/1.1.1/badge.svg?style=flat)](https://www.versioneye.com/objective-c/typhoon)
 
-Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods</a> (recommended). Alternatively, add the source files to your project's target or set up an Xcode workspace. 
+Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods</a> (recommended). 
 
 ```ruby
 
 platform :ios, '5.0'
 
 target :MyAppTarget, :exclusive => true do
+
 pod 'Typhoon'
+
 end
 ```
 
@@ -61,6 +63,8 @@ Simply import the Typhoon module in any Swift file that uses the framework:
 ```Swift
 import Typhoon
 ```
+
+Alternatively, add the source files to your project's target or set up an Xcode workspace. 
 
 **NB:** *All version of Typhoon work with iOS5 and up, and OSX 10.7 and up. iOS8 is only required if you wish to use dynamic frameworks.* 
 
