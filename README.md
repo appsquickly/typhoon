@@ -34,6 +34,15 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 
 Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods</a> (recommended). Alternatively, add the source files to your project's target or set up an Xcode workspace. 
 
+```ruby
+
+platform :ios, '5.0'
+
+target :MyAppTarget, :exclusive => true do
+pod 'Typhoon'
+end
+```
+
 If you're using Swift, you may with to install dynamic frameworks, which can be done with the Podfile shown below: 
 
 ```ruby
