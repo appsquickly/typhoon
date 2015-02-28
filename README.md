@@ -69,6 +69,8 @@ Simply import the Typhoon module in any Swift file that uses the framework:
 import Typhoon
 ```
 
+##From Source
+
 Alternatively, add the source files to your project's target or set up an Xcode workspace. 
 
 **NB:** *All version of Typhoon work with iOS5 and up, and OSX 10.7 and up. iOS8 is only required if you wish to use dynamic frameworks.* 
