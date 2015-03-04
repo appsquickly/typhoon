@@ -14,6 +14,8 @@ Visit <a href="http://typhoonframework.org">the Typhoon website</a> for an intro
 
 Check out the <a href="http://www.typhoonframework.org/#features">feature list</a>. 
 
+---------------------------------------
+
 # Usage
 
 * Read the ***Quick Start*** for <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Objective-C</a> or <a href="https://github.com/appsquickly/Typhoon/wiki/Swift-Quick-Start">Swift</a>. 
