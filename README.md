@@ -31,6 +31,8 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 
 *Have a Typhoon example app that you'd like to share? Great! Get in touch with us :)*
 
+---------------------------------------
+
 # Installing 
 <a href="https://github.com/appsquickly/Typhoon/wiki/Change-Log">![Cocoapods Version](https://cocoapod-badges.herokuapp.com/v/Typhoon/badge.png)</a> [![Pod Platform](http://img.shields.io/cocoapods/p/Typhoon.svg?style=flat)](http://typhoonframework.org/docs/latest/api/modules.html) [![Pod License](http://img.shields.io/cocoapods/l/Typhoon.svg?style=flat)](https://github.com/appsquickly/Typhoon/blob/master/LICENSE) [![Dependency Status](https://www.versioneye.com/objective-c/typhoon/1.1.1/badge.svg?style=flat)](https://www.versioneye.com/objective-c/typhoon)
 
@@ -89,13 +91,15 @@ If you can't find what you need in the Quick Start or User Guides above, then Ty
 
 Please raise a <a href="https://github.com/typhoon-framework/Typhoon/issues">GitHub issue</a>.
 
+### Interested in contributing?
+
+ Great! Here's the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">contribution guide.</a>
+
 ### I'm blown away!
 
 Typhoon is a non-profit, community driven project. We only ask that if you've found it useful to star us on Github or send a tweet mentioning us (<a href="https://twitter.com/appsquickly">@appsquickly</a>). If you've written Typhoon related blog or tutorial, or published a new Typhoon powered app, we'd certainly be happy to hear about that too. 
 
-# Interested in contributing?
 
- Great! Here's the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">contribution guide.</a>
  
 ---------------------------------------
 © 2012 - 2015 Jasper Blues, Aleksey Garbarev and contributors.
