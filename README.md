@@ -8,7 +8,7 @@ Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-fe
 
 ## Not familiar with Dependency Injection? 
 
-Visit <a href="http://typhoonframework.org">the Typhoon website</a> for an introduction. There's also a nice intro over at <a href="http://www.bignerdranch.com/blog/dependency-injection-ios/">Big Nerd Ranch</a>, or <a href="http://www.objc.io/issue-15/dependency-injection.html">here's an article</a>, by John Reed. Quite a few books have been written on the topic, though we're not familiar with one that focuses specifically on Objective-C, Swift or Cocoa yet. 
+Visit <a href="http://typhoonframework.org">the Typhoon website</a> for an introduction. There's also a nice intro over at <a href="http://www.bignerdranch.com/blog/dependency-injection-ios/">Big Nerd Ranch</a>, or <a href="http://www.objc.io/issue-15/dependency-injection.html">here's an article</a>, by John Reid. Quite a few books have been written on the topic, though we're not familiar with one that focuses specifically on Objective-C, Swift or Cocoa yet. 
 
 ## Is Typhoon the right DI framework for you? 
 
