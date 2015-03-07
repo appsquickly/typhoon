@@ -1,0 +1,43 @@
+//
+//  PrefixTests.pch
+//  Typhoon
+//
+//  Created by Jeff Roberts on 3/5/15.
+//  Copyright (c) 2015 typhoonframework.org. All rights reserved.
+//
+
+#ifdef __APPLE__
+    #include "TargetConditionals.h"
+
+    #ifdef __OBJC__
+        #define MOCKITO_SHORTHAND
+        #define typhoon_shorthand
+    #endif
+
+    #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+    // iOS
+        #import <Availability.h>
+        #import <OCMockitoIOS/OCMockitoIOS.h>
+
+        #ifndef __IPHONE_5_0
+            #warning "This project uses features only available in iOS SDK 5.0 and later."
+        #endif
+
+        #ifdef __OBJC__
+            #import <UIKit/UIKit.h>
+            #import <Foundation/Foundation.h>
+        #endif
+
+    #elif TARGET_OS_MAC
+    // Other kinds of Mac OS
+        #import <OCMockito/OCMockito.h>
+
+        #ifdef __OBJC__
+            #import <Cocoa/Cocoa.h>
+            #import <AppKit/AppKit.h>
+        #endif
+
+    #else
+    // Unsupported platform
+    #endif
+#endif
