@@ -133,9 +133,7 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
             *registerer = [[TyphoonDefinitionRegisterer alloc] initWithDefinition:definition componentFactory:self];
     [registerer doRegistration];
 
-    if ([self isLoaded]) {
-        [self _load];
-    }
+    [self loadIfNeeded];
 }
 
 - (id)objectForKeyedSubscript:(id)key
@@ -186,14 +184,9 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
 
 - (void)loadIfNeeded
 {
-    if ([self notLoaded]) {
+    if (![self isLoaded]) {
         [self load];
     }
-}
-
-- (BOOL)notLoaded
-{
-    return ![self isLoaded];
 }
 
 - (void)makeDefault
@@ -213,8 +206,7 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
     return [_registry copy];
 }
 
-- (void)
-enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace,
+- (void)enumerateDefinitions:(void (^)(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace,
         BOOL *stop))block
 {
     [self loadIfNeeded];
