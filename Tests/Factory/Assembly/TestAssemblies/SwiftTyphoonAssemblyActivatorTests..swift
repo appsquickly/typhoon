@@ -26,6 +26,19 @@ class SwiftTyphoonAssemblyActivatorTests : XCTestCase {
         
         
     }
+    
+    internal func test_injects_runtime_args() {
+        
+        let assembly = SwiftMiddleAgesAssembly()
+        TyphoonAssemblyActivator.withAssembly(assembly).activate()
+        
+        let fort = Fort()
+        let knight = assembly.wanderingKnight(fort) as Knight
+        println(knight.description())
+        XCTAssertTrue(knight.isKindOfClass(Knight.self))
+        XCTAssertNotNil(knight.homeFort)
+        
+    }
 
 
 }

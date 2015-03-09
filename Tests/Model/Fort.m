@@ -14,7 +14,10 @@
 
 
 @implementation Fort
-{
 
+- (NSString*)description
+{
+    return @"I'm a fort!";
 }
+
 @end

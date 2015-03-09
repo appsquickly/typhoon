@@ -31,6 +31,8 @@
 @property(nonatomic, strong) NSDictionary *friendsDictionary;
 @property(nonatomic, strong) Fort *homeFort;
 
++ (id)knightWithDamselsRescued:(NSUInteger)damselsRescued;
+
 - (void)setQuest:(id<Quest>)quest andDamselsRescued:(NSUInteger)damselsRescued;
 
 - (void)setFoobar:(id<NSObject>)foobar andHasHorse:(BOOL)hasHorse friends:(NSSet *)friends;
@@ -45,7 +47,6 @@
 
 - (NSString *)description;
 
-+ (id)knightWithDamselsRescued:(NSUInteger)damselsRescued;
 
 - (void)setFavoriteQuest:(id<Quest>)quest;
 
