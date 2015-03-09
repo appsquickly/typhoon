@@ -74,7 +74,10 @@
 
     NSInvocation *invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(object) class:clazz];
 
-    ObjectNewAutorelease *object = [invocation typhoon_resultOfInvokingOnInstance:clazz];
+    ObjectNewAutorelease *object;
+    @autoreleasepool {
+        object = [invocation typhoon_resultOfInvokingOnInstance:clazz];
+    }
 
     XCTAssertEqual(retainCount(object), 1);
 }
@@ -87,7 +90,10 @@
     NSString *param = @"123";
     [invocation setArgument:&param atIndex:2];
 
-    ClassWithConstructor *object = [invocation typhoon_resultOfInvokingOnInstance:clazz];
+    ClassWithConstructor *object;
+    @autoreleasepool {
+        object = [invocation typhoon_resultOfInvokingOnInstance:clazz];
+    }
 
     XCTAssertEqual(retainCount(object), 1);
 }
@@ -109,7 +115,9 @@
 
     // Not crashes:
     invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(object) class:[ObjectNewAutorelease class]];
-    arcobject = [invocation typhoon_resultOfInvokingOnInstance:[ObjectNewAutorelease class]];
+    @autoreleasepool {
+        arcobject = [invocation typhoon_resultOfInvokingOnInstance:[ObjectNewAutorelease class]];
+    }
 
     XCTAssertEqual(retainCount(arcobject), 1);
 
@@ -128,7 +136,9 @@
     invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(arrayWithCapacity:) class:[NSMutableArray class]];
     NSUInteger capacity = 10;
     [invocation setArgument:&capacity atIndex:2];
-    array = [invocation typhoon_resultOfInvokingOnInstance:[NSMutableArray class]];
+    @autoreleasepool {
+        array = [invocation typhoon_resultOfInvokingOnInstance:[NSMutableArray class]];
+    }
 
     XCTAssertEqual(retainCount(array), 1);
 

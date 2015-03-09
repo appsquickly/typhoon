@@ -34,6 +34,8 @@
 
 - (id)serviceUrl;
 
+- (id)swordWithSpec:(NSString *)spec error:(NSValue *)error;
+
 - (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeFoobar:(NSObject *)runtimeObject;
 
 - (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeQuestUrl:(NSURL *)url;

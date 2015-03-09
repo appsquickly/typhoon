@@ -134,6 +134,15 @@
         }];
 }
 
+- (id)swordWithSpec:(NSString *)spec error:(NSValue *)error
+{
+    return [TyphoonDefinition withFactory:[self swordFactory] selector:@selector(swordWithSpecification:error:)
+                               parameters:^(TyphoonMethod *factoryMethod) {
+                                   [factoryMethod injectParameterWith:spec];
+                                   [factoryMethod injectParameterWith:error];
+                               }];
+}
+
 - (id)knightWithRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeFoobar:(NSObject *)runtimeObject
 {
     return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {

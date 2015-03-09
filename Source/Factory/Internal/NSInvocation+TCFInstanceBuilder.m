@@ -49,18 +49,11 @@ static BOOL typhoon_IsSelectorReturnsRetained(SEL selector) {
 {
     id returnValue = nil;
 
-    BOOL isReturnsRetained;
-
-    @autoreleasepool {
-        isReturnsRetained = typhoon_IsSelectorReturnsRetained([self selector]);
-        [self invokeWithTarget:instanceOrClass];
-        [self getReturnValue:&returnValue];
+    BOOL isReturnsRetained = typhoon_IsSelectorReturnsRetained([self selector]);
+    [self invokeWithTarget:instanceOrClass];
+    [self getReturnValue:&returnValue];
+    if (!isReturnsRetained) {
         [returnValue retain]; /* Retain to take ownership on autoreleased object */
-    }
-
-    /* Balance retain above if object is not autoreleased */
-    if (isReturnsRetained) {
-        [returnValue release];
     }
 
     return returnValue;

@@ -18,7 +18,8 @@
 
 @interface SwordFactory : NSObject
 
-
 - (Sword *)swordWithSpecification:(NSString *)swordSpecs;
+
+- (Sword *)swordWithSpecification:(NSString *)swordSpec error:(NSError *__autoreleasing*)error;
 
 @end

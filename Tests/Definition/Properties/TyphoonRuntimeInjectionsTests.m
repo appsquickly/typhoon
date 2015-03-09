@@ -16,6 +16,7 @@
 #import "Knight.h"
 #import "Mock.h"
 #import "TyphoonAssemblyActivator.h"
+#import "Sword.h"
 
 @interface TyphoonRuntimeInjectionsTests : XCTestCase
 
@@ -206,6 +207,19 @@
     Knight *knight = [factory knightWithPredefinedRuntimeQuest];
     XCTAssertEqualObjects(knight.quest.imageUrl, [NSURL URLWithString:@"http://appsquick.ly"]);
     XCTAssertTrue(knight.damselsRescued == 13);
+}
+
+- (void)test_runtime_argument_with_error_writeback
+{
+    __autoreleasing NSError *error = nil;
+    Sword *sword = [factory swordWithSpec:@"blue" error:[NSValue valueWithPointer:&error]];
+    XCTAssertEqualObjects(sword.specification, @"blue sword");
+    XCTAssertNil(error);
+
+    __autoreleasing NSError *error2 = nil;
+    Sword *yellow = [factory swordWithSpec:@"yellow" error:[NSValue valueWithPointer:&error2]];
+    XCTAssertNotNil(error2);
+    XCTAssertEqual(error2.code, (NSInteger)404);
 }
 
 @end

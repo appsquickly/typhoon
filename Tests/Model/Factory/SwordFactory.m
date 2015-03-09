@@ -28,5 +28,18 @@
     }
 }
 
+- (Sword *)swordWithSpecification:(NSString *)swordSpecs error:(NSError *__autoreleasing*)error //__strong
+{
+    if ([swordSpecs isEqualToString:@"blue"]) {
+        return [[Sword alloc] initWithSpecification:@"blue sword"];
+    }
+    else {
+        if (error) {
+            *error = [NSError errorWithDomain:@"Typhoon" code:404 userInfo:@{NSLocalizedDescriptionKey: @"Can't make sword for spec"}];
+        }
+        return [[Sword alloc] initWithSpecification:@"Yer typical run-o-the-mill rusty sword."];
+    }
+}
+
 
 @end
