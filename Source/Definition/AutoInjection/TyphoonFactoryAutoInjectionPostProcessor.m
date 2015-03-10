@@ -32,6 +32,11 @@ static id TypeForInjectionFromType(TyphoonTypeDescriptor *type);
     }
 }
 
+- (void)postProcessDefinition:(TyphoonDefinition *)definition withFactory:(TyphoonComponentFactory *)factory
+{
+    [self postProcessDefinition:definition];
+}
+
 - (void)postProcessDefinition:(TyphoonDefinition *)definition
 {
     Class clazz = definition.type;

@@ -21,11 +21,17 @@
 - (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory
 {
     [factory.registry enumerateObjectsUsingBlock:^(TyphoonDefinition *definition, NSUInteger idx, BOOL *stop) {
-        if (definition.parent) {
-            TyphoonDefinition *parentDefinition = [factory definitionForKey:[(TyphoonDefinition *)definition.parent key]];
-            [definition setParent:parentDefinition];
-        }
+        [self postProcessDefinition:definition withFactory:factory];
     }];
+}
+
+- (void)postProcessDefinition:(TyphoonDefinition *)definition withFactory:(TyphoonComponentFactory *)factory
+{
+    if (definition.parent) {
+        TyphoonDefinition *parentDefinition = [factory definitionForKey:[(TyphoonDefinition *)definition.parent key]];
+        [definition setParent:parentDefinition];
+    }
+
 }
 
 

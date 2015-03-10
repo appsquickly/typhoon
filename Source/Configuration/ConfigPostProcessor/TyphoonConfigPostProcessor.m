@@ -133,9 +133,14 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 - (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory
 {
     for (TyphoonDefinition *definition in [factory registry]) {
-        [self configureInjectionsInDefinition:definition];
-        [self configureInjectionsInRuntimeArgumentsInDefinition:definition];
+        [self postProcessDefinition:definition withFactory:factory];
     }
+}
+
+- (void)postProcessDefinition:(TyphoonDefinition *)definition withFactory:(TyphoonComponentFactory *)factory
+{
+    [self configureInjectionsInDefinition:definition];
+    [self configureInjectionsInRuntimeArgumentsInDefinition:definition];
 }
 
 - (void)configureInjectionsInDefinition:(TyphoonDefinition *)definition
