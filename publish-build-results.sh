@@ -2,7 +2,6 @@
 
 reportsDir=build/reports
 resourceDir=Resources
-set -e # fail script if any commands fail
 
 #Publish build results
 echo '--------------------------------------------------------------------------------'
@@ -17,7 +16,7 @@ git stash
 git checkout gh-pages
 git branch --set-upstream-to=origin/gh-pages gh-pages
 git pull
-cp -fr build/reports/build-status/build-status.png ./build-status/build-status.png
+ditto build/reports/build-status/build-status.png ./build-status/build-status.png
 git add build-status
 
 rm -fr ./docs/latest/api
