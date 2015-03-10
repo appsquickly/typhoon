@@ -133,7 +133,9 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
             *registerer = [[TyphoonDefinitionRegisterer alloc] initWithDefinition:definition componentFactory:self];
     [registerer doRegistration];
 
-    [self loadIfNeeded];
+    if ([self isLoaded]) {
+        [self _load];
+    }
 }
 
 - (id)objectForKeyedSubscript:(id)key
