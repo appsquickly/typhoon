@@ -2,7 +2,6 @@
 
 reportsDir=build/reports
 resourceDir=Resources
-set -e # fail script if any commands fail
 
 #Publish build results
 echo '--------------------------------------------------------------------------------'
