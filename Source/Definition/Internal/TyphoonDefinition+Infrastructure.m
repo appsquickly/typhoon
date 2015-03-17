@@ -78,24 +78,27 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     return [self initWithClass:nil key:nil];
 }
 
-- (BOOL)matchesAutoInjectionWithType:(id)classOrProtocol includeSubclasses:(BOOL)includeSubclasses
+- (BOOL)isCandidateForAutoInjectedClass:(Class)clazz includeSubclasses:(BOOL)includeSubclasses
 {
     BOOL result = NO;
-
-    BOOL isClass = IsClass(classOrProtocol);
-    BOOL isProtocol = IsProtocol(classOrProtocol);
-
-    if (isClass && self.autoInjectionVisibility & TyphoonAutoInjectVisibilityByClass) {
-        BOOL isSameClass = self.type == classOrProtocol;
-        BOOL isSubclass = includeSubclasses && [self.type isSubclassOfClass:classOrProtocol];
+    if (self.autoInjectionVisibility & TyphoonAutoInjectVisibilityByClass) {
+        BOOL isSameClass = self.type == clazz;
+        BOOL isSubclass = includeSubclasses && [self.type isSubclassOfClass:clazz];
         result = isSameClass || isSubclass;
     }
-    else if (isProtocol && self.autoInjectionVisibility & TyphoonAutoInjectVisibilityByProtocol) {
-        result = [self.type conformsToProtocol:classOrProtocol];
-    }
-
     return result;
 }
+
+- (BOOL)isCandidateForAutoInjectedProtocol:(Protocol *)aProtocol includeSubProtocols:(BOOL)includeSubprotocols
+{
+    BOOL result = NO;
+    if (self.autoInjectionVisibility & TyphoonAutoInjectVisibilityByProtocol) {
+        result = [self.type conformsToProtocol:aProtocol];
+    }
+    return result;
+
+}
+
 
 - (void)setProcessed:(BOOL)processed
 {

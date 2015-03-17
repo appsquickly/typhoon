@@ -56,18 +56,33 @@
 
 @implementation TyphoonFactoryDefinitionTests
 
-//TODO: Test protocol matching
-- (void)test_matchesAutoInjectionWithType_with_class
+
+
+- (void)test_isCandidateForAutoInjectedClass
 {
     TyphoonDefinition *factory = [TyphoonDefinition withClass:[KnightFactory class]];
 
     TyphoonFactoryDefinition *definition = [TyphoonDefinition withFactory:factory selector:@selector(knight)];
     definition.classOrProtocolForAutoInjection = [CavalryMan class];
-    XCTAssertFalse([definition matchesAutoInjectionWithType:[CampaignQuest class] includeSubclasses:NO]);
-    XCTAssertFalse([definition matchesAutoInjectionWithType:[Knight class] includeSubclasses:NO]);
-    XCTAssertTrue([definition matchesAutoInjectionWithType:[Knight class] includeSubclasses:YES]);
+    XCTAssertFalse([definition isCandidateForAutoInjectedClass:[CampaignQuest class] includeSubclasses:NO]);
+    XCTAssertFalse([definition isCandidateForAutoInjectedClass:[Knight class] includeSubclasses:NO]);
+    XCTAssertTrue([definition isCandidateForAutoInjectedClass:[Knight class] includeSubclasses:YES]);
 }
 
+- (void)test_isCandidateForAutoInjectedProtocol
+{
+    TyphoonDefinition *factory = [TyphoonDefinition withClass:[QuestFactory class]];
+
+    TyphoonFactoryDefinition *definition = [TyphoonDefinition withFactory:factory selector:@selector(quest)];
+    definition.classOrProtocolForAutoInjection = @protocol(Quest);
+
+    XCTAssertFalse([definition isCandidateForAutoInjectedProtocol:@protocol(NSObject) includeSubProtocols:NO]);
+    XCTAssertTrue([definition isCandidateForAutoInjectedProtocol:@protocol(Quest) includeSubProtocols:YES]);
+
+    definition.classOrProtocolForAutoInjection = [CampaignQuest class];
+    XCTAssertTrue([definition isCandidateForAutoInjectedProtocol:@protocol(Quest) includeSubProtocols:YES]);
+
+}
 
 
 @end
