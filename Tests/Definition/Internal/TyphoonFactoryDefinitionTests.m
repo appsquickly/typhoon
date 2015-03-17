@@ -76,11 +76,11 @@
     TyphoonFactoryDefinition *definition = [TyphoonDefinition withFactory:factory selector:@selector(quest)];
     definition.classOrProtocolForAutoInjection = @protocol(Quest);
 
-    XCTAssertFalse([definition isCandidateForAutoInjectedProtocol:@protocol(NSObject) includeSubProtocols:NO]);
-    XCTAssertTrue([definition isCandidateForAutoInjectedProtocol:@protocol(Quest) includeSubProtocols:YES]);
+    XCTAssertFalse([definition isCandidateForAutoInjectedProtocol:@protocol(NSObject)]);
+    XCTAssertTrue([definition isCandidateForAutoInjectedProtocol:@protocol(Quest)]);
 
     definition.classOrProtocolForAutoInjection = [CampaignQuest class];
-    XCTAssertTrue([definition isCandidateForAutoInjectedProtocol:@protocol(Quest) includeSubProtocols:YES]);
+    XCTAssertTrue([definition isCandidateForAutoInjectedProtocol:@protocol(Quest)]);
 
 }
 

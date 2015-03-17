@@ -65,7 +65,7 @@
     return result;
 }
 
-- (BOOL)isCandidateForAutoInjectedProtocol:(Protocol *)aProtocol includeSubProtocols:(BOOL)includeSubprotocols
+- (BOOL)isCandidateForAutoInjectedProtocol:(Protocol *)aProtocol
 {
     Class componentClass = IsClass(self.classOrProtocolForAutoInjection) ? self.classOrProtocolForAutoInjection : nil;
     Protocol *componentProtocol = IsProtocol(self.classOrProtocolForAutoInjection) ? self.classOrProtocolForAutoInjection : nil;

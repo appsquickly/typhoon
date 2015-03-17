@@ -78,7 +78,7 @@ Factory method for a TyphoonConfigPostProcessor.
 
 - (BOOL)isCandidateForAutoInjectedClass:(Class)clazz includeSubclasses:(BOOL)includeSubclasses;
 
-- (BOOL)isCandidateForAutoInjectedProtocol:(Protocol *)aProtocol includeSubProtocols:(BOOL)includeSubprotocols;
+- (BOOL)isCandidateForAutoInjectedProtocol:(Protocol *)aProtocol;
 
 
 @end

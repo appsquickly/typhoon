@@ -89,7 +89,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     return result;
 }
 
-- (BOOL)isCandidateForAutoInjectedProtocol:(Protocol *)aProtocol includeSubProtocols:(BOOL)includeSubprotocols
+- (BOOL)isCandidateForAutoInjectedProtocol:(Protocol *)aProtocol
 {
     BOOL result = NO;
     if (self.autoInjectionVisibility & TyphoonAutoInjectVisibilityByProtocol) {
