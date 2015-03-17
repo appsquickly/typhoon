@@ -76,9 +76,9 @@ Factory method for a TyphoonConfigPostProcessor.
 - (id)initWithClass:(Class)clazz key:(NSString *)key;
 
 
-- (BOOL)isCandidateForAutoInjectedClass:(Class)clazz includeSubclasses:(BOOL)includeSubclasses;
+- (BOOL)isCandidateForInjectedClass:(Class)clazz includeSubclasses:(BOOL)includeSubclasses;
 
-- (BOOL)isCandidateForAutoInjectedProtocol:(Protocol *)aProtocol;
+- (BOOL)isCandidateForInjectedProtocol:(Protocol *)aProtocol;
 
 
 @end

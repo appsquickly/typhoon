@@ -261,10 +261,10 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
     for (TyphoonDefinition *definition in _registry) {
 
-        if (IsClass(classOrProtocol) && [definition isCandidateForAutoInjectedClass:classOrProtocol
+        if (IsClass(classOrProtocol) && [definition isCandidateForInjectedClass:classOrProtocol
             includeSubclasses:includeSubclasses]) {
             [results addObject:definition];
-        } else if (IsProtocol(classOrProtocol) && [definition isCandidateForAutoInjectedProtocol:classOrProtocol]) {
+        } else if (IsProtocol(classOrProtocol) && [definition isCandidateForInjectedProtocol:classOrProtocol]) {
             [results addObject:definition];
         }
     }

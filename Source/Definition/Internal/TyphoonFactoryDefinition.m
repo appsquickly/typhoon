@@ -54,7 +54,7 @@
 #pragma mark - Overridden Methods
 //-------------------------------------------------------------------------------------------
 
-- (BOOL)isCandidateForAutoInjectedClass:(Class)clazz includeSubclasses:(BOOL)includeSubclasses
+- (BOOL)isCandidateForInjectedClass:(Class)clazz includeSubclasses:(BOOL)includeSubclasses
 {
     BOOL result = NO;
     if (self.autoInjectionVisibility & TyphoonAutoInjectVisibilityByClass) {
@@ -65,7 +65,7 @@
     return result;
 }
 
-- (BOOL)isCandidateForAutoInjectedProtocol:(Protocol *)aProtocol
+- (BOOL)isCandidateForInjectedProtocol:(Protocol *)aProtocol
 {
     Class componentClass = IsClass(self.classOrProtocolForAutoInjection) ? self.classOrProtocolForAutoInjection : nil;
     Protocol *componentProtocol = IsProtocol(self.classOrProtocolForAutoInjection) ? self.classOrProtocolForAutoInjection : nil;
