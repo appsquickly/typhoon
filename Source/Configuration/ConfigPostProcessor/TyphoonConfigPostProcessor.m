@@ -85,7 +85,8 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 
 - (void)useResourceWithName:(NSString *)name
 {
-    [self useResource:[TyphoonBundleResource withName:name] withExtension:[name pathExtension]];
+    [self useResource:[TyphoonBundleResource withName:name inBundle:[NSBundle mainBundle]]
+        withExtension:[name pathExtension]];
 }
 
 - (void)useResourceAtPath:(NSString *)path
@@ -93,9 +94,9 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
     [self useResource:[TyphoonPathResource withPath:path] withExtension:[path pathExtension]];
 }
 
-- (void)useResource:(id <TyphoonResource>)resource withExtension:(NSString *)typeExtension
+- (void)useResource:(id<TyphoonResource>)resource withExtension:(NSString *)typeExtension
 {
-    id<TyphoonConfiguration>config = _configs[typeExtension];
+    id<TyphoonConfiguration> config = _configs[typeExtension];
     [config appendResource:resource];
 }
 
@@ -105,7 +106,7 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 #if DEBUG
     __block NSString *foundExtension = nil;
 #endif
-    [_configs enumerateKeysAndObjectsUsingBlock:^(NSString *extension, id<TyphoonConfiguration>config, BOOL *stop) {
+    [_configs enumerateKeysAndObjectsUsingBlock:^(NSString *extension, id<TyphoonConfiguration> config, BOOL *stop) {
         id object = [config objectForKey:key];
 #if !DEBUG
         if (object) {
@@ -115,7 +116,8 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 #else
         if (object) {
             if (value) {
-                [NSException raise:NSInternalInconsistencyException format:@"Value for key %@ already exists in %@ config", key, foundExtension];
+                [NSException raise:NSInternalInconsistencyException
+                    format:@"Value for key %@ already exists in %@ config", key, foundExtension];
             } else {
                 value = object;
                 foundExtension = extension;
@@ -141,33 +143,34 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 - (void)configureInjectionsInDefinition:(TyphoonDefinition *)definition
 {
     [definition enumerateInjectionsOfKind:[TyphoonInjectionByConfig class] options:TyphoonInjectionsEnumerationOptionAll
-                               usingBlock:^(TyphoonInjectionByConfig *injection, id *injectionToReplace, BOOL *stop) {
-        id configuredInjection = [self injectionForConfigInjection:injection];
-        if (configuredInjection) {
-           injection.configuredInjection = configuredInjection;
-        }
-    }];
+        usingBlock:^(TyphoonInjectionByConfig *injection, id *injectionToReplace, BOOL *stop) {
+            id configuredInjection = [self injectionForConfigInjection:injection];
+            if (configuredInjection) {
+                injection.configuredInjection = configuredInjection;
+            }
+        }];
 }
 
 - (void)configureInjectionsInRuntimeArgumentsInDefinition:(TyphoonDefinition *)definition
 {
-    [definition enumerateInjectionsOfKind:[TyphoonInjectionByReference class] options:TyphoonInjectionsEnumerationOptionAll
-                               usingBlock:^(TyphoonInjectionByReference *injection, id *injectionToReplace, BOOL *stop) {
-        [injection.referenceArguments enumerateArgumentsUsingBlock:^(TyphoonInjectionByConfig *argument, NSUInteger index, BOOL *stop) {
-           if ([argument isKindOfClass:[TyphoonInjectionByConfig class]]) {
-               id configuredInjection = [self injectionForConfigInjection:argument];
-               if (configuredInjection) {
-                   argument.configuredInjection = configuredInjection;
-               }
-           }
+    [definition enumerateInjectionsOfKind:[TyphoonInjectionByReference class]
+        options:TyphoonInjectionsEnumerationOptionAll
+        usingBlock:^(TyphoonInjectionByReference *injection, id *injectionToReplace, BOOL *stop) {
+            [injection.referenceArguments enumerateArgumentsUsingBlock:^(TyphoonInjectionByConfig *argument, NSUInteger index, BOOL *stop) {
+                if ([argument isKindOfClass:[TyphoonInjectionByConfig class]]) {
+                    id configuredInjection = [self injectionForConfigInjection:argument];
+                    if (configuredInjection) {
+                        argument.configuredInjection = configuredInjection;
+                    }
+                }
+            }];
         }];
-    }];
 }
 
 - (id<TyphoonInjection>)injectionForConfigInjection:(TyphoonInjectionByConfig *)injection
 {
     id value = [self configurationValueForKey:injection.configKey];
-    id<TyphoonInjection>result = nil;
+    id<TyphoonInjection> result = nil;
 
     if ([value isKindOfClass:[NSString class]]) {
         result = TyphoonInjectionWithObjectFromString(value);
