@@ -51,29 +51,21 @@ static id TypeForInjectionFromType(TyphoonTypeDescriptor *type);
 - (NSArray *)autoInjectedPropertiesForClass:(Class)clazz
 {
     NSMutableArray *injections = nil;
-    NSSet *allProperties = [TyphoonIntrospectionUtils propertiesForClass:clazz upToParentClass:[NSObject class]];
+    NSSet *allProperties = [TyphoonIntrospectionUtils injectedPropertiesForClass:clazz upToParentClass:[NSObject class]];
     for (NSString *propertyName in allProperties) {
         TyphoonTypeDescriptor *type = [clazz typhoon_typeForPropertyWithName:propertyName];
-        if (IsTyphoonAutoInjectionType(type)) {
-            id explicitType = TypeForInjectionFromType(type);
-            if (!explicitType) {
-                [NSException raise:NSInternalInconsistencyException format:@"Can't resolve '%@' property in %@ class. Make sure that specified protocol/class exist and linked.", propertyName, clazz];
-            }
-            id<TyphoonPropertyInjection> injection = TyphoonInjectionWithType(explicitType);
-            [injection setPropertyName:propertyName];
-            if (!injections) {
-                injections = [[NSMutableArray alloc] initWithCapacity:allProperties.count];
-            }
-            [injections addObject:injection];
+        id explicitType = TypeForInjectionFromType(type);
+        if (!explicitType) {
+            [NSException raise:NSInternalInconsistencyException format:@"Can't resolve '%@' property in %@ class. Make sure that specified protocol/class exist and linked.", propertyName, clazz];
         }
+        id<TyphoonPropertyInjection> injection = TyphoonInjectionWithType(explicitType);
+        [injection setPropertyName:propertyName];
+        if (!injections) {
+            injections = [[NSMutableArray alloc] initWithCapacity:allProperties.count];
+        }
+        [injections addObject:injection];
     }
     return injections;
-}
-
-static BOOL IsTyphoonAutoInjectionType(TyphoonTypeDescriptor *type)
-{
-    return protocol_isEqual(type.protocol, @protocol(TyphoonInjectedProtocol)) ||
-        type.typeBeingDescribed == [TyphoonInjectedObject class];
 }
 
 static id TypeForInjectionFromType(TyphoonTypeDescriptor *type)

@@ -297,7 +297,7 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
     [_definitionPostProcessors enumerateObjectsUsingBlock:^(id<TyphoonDefinitionPostProcessor> postProcessor, NSUInteger idx, BOOL *stop) {
         [postProcessor postProcessDefinition:definition withFactory:self];
     }];
-    [self instantiateEagerSingletons];
+    [self newOrScopeCachedInstanceForDefinition:definition args:nil];
 }
 
 - (NSArray *)orderedArray:(NSMutableArray *)array
