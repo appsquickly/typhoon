@@ -6,6 +6,7 @@ var searchData=
   ['textwithouttypefromtextvalue_3a',['textWithoutTypeFromTextValue:',['../interface_typhoon_type_converter_registry.html#af70a6163ffa2c615202d43ab436afad3',1,'TyphoonTypeConverterRegistry']]],
   ['type',['type',['../interface_typhoon_abstract_injection.html#ac73bc0dd6ba0a7915d9d24c9920aee8a',1,'TyphoonAbstractInjection::type()'],['../interface_typhoon_definition.html#a1683dd7b003c512248c98fecb26d0985',1,'TyphoonDefinition::type()']]],
   ['typebeingdescribed',['typeBeingDescribed',['../interface_typhoon_type_descriptor.html#ae088fe986245372f45dc39858059897c',1,'TyphoonTypeDescriptor']]],
+  ['typeforproperty_3a',['typeForProperty:',['../interface_typhoon_introspection_utils.html#a3db6d318de0aba36c4b1d20376e9093f',1,'TyphoonIntrospectionUtils']]],
   ['typeforpropertywithname_3ainclass_3a',['typeForPropertyWithName:inClass:',['../interface_typhoon_introspection_utils.html#a34d5f226d76d10c64534ab62b422e154',1,'TyphoonIntrospectionUtils']]],
   ['typefromtextvalue_3a',['typeFromTextValue:',['../interface_typhoon_type_converter_registry.html#afa80517a752cf484d86113ee782adfb7',1,'TyphoonTypeConverterRegistry']]],
   ['typhoon_2eh',['Typhoon.h',['../_typhoon_8h.html',1,'']]],

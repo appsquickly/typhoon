@@ -146,6 +146,11 @@
             <Path>protocol_typhoon_definition_post_processor-p.html</Path>
             <Subnodes>
              <Node>
+              <Name>postProcessDefinition:withFactory:</Name>
+              <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+              <Anchor>a534dfc2f6c17dba46af030fa9b6e0146</Anchor>
+             </Node>
+             <Node>
               <Name>postProcessDefinitionsInFactory:</Name>
               <Path>protocol_typhoon_definition_post_processor-p.html</Path>
               <Anchor>aec4cc0d59e693dd7fffa0c7247d05915</Anchor>
@@ -1047,6 +1052,11 @@
             <Path>protocol_typhoon_definition_post_processor-p.html</Path>
             <Subnodes>
              <Node>
+              <Name>postProcessDefinition:withFactory:</Name>
+              <Path>protocol_typhoon_definition_post_processor-p.html</Path>
+              <Anchor>a534dfc2f6c17dba46af030fa9b6e0146</Anchor>
+             </Node>
+             <Node>
               <Name>postProcessDefinitionsInFactory:</Name>
               <Path>protocol_typhoon_definition_post_processor-p.html</Path>
               <Anchor>aec4cc0d59e693dd7fffa0c7247d05915</Anchor>
@@ -1287,6 +1297,11 @@
               <Anchor>a456878cf84be1d93bff460c66e9ae086</Anchor>
              </Node>
              <Node>
+              <Name>injectedPropertiesForClass:upToParentClass:</Name>
+              <Path>interface_typhoon_introspection_utils.html</Path>
+              <Anchor>a28dd8fb6b281a2747561515ec39fc696</Anchor>
+             </Node>
+             <Node>
               <Name>methodsForClass:upToParentClass:</Name>
               <Path>interface_typhoon_introspection_utils.html</Path>
               <Anchor>a1ef9ee9f05dc7f2f9c7a3deb0dd8afba</Anchor>
@@ -1310,6 +1325,11 @@
               <Name>setterForPropertyWithName:inClass:</Name>
               <Path>interface_typhoon_introspection_utils.html</Path>
               <Anchor>aa190816afd6c690e83b2bcff5b1c6e20</Anchor>
+             </Node>
+             <Node>
+              <Name>typeForProperty:</Name>
+              <Path>interface_typhoon_introspection_utils.html</Path>
+              <Anchor>a3db6d318de0aba36c4b1d20376e9093f</Anchor>
              </Node>
              <Node>
               <Name>typeForPropertyWithName:inClass:</Name>
@@ -3037,6 +3057,11 @@
                 <Anchor>a456878cf84be1d93bff460c66e9ae086</Anchor>
                </Node>
                <Node>
+                <Name>injectedPropertiesForClass:upToParentClass:</Name>
+                <Path>interface_typhoon_introspection_utils.html</Path>
+                <Anchor>a28dd8fb6b281a2747561515ec39fc696</Anchor>
+               </Node>
+               <Node>
                 <Name>methodsForClass:upToParentClass:</Name>
                 <Path>interface_typhoon_introspection_utils.html</Path>
                 <Anchor>a1ef9ee9f05dc7f2f9c7a3deb0dd8afba</Anchor>
@@ -3060,6 +3085,11 @@
                 <Name>setterForPropertyWithName:inClass:</Name>
                 <Path>interface_typhoon_introspection_utils.html</Path>
                 <Anchor>aa190816afd6c690e83b2bcff5b1c6e20</Anchor>
+               </Node>
+               <Node>
+                <Name>typeForProperty:</Name>
+                <Path>interface_typhoon_introspection_utils.html</Path>
+                <Anchor>a3db6d318de0aba36c4b1d20376e9093f</Anchor>
                </Node>
                <Node>
                 <Name>typeForPropertyWithName:inClass:</Name>

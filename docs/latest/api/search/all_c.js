@@ -9,6 +9,7 @@ var searchData=
   ['performafterinjections_3aparameters_3a',['performAfterInjections:parameters:',['../interface_typhoon_definition.html#a4869169dbd36b81d272f54e17cf89a7d',1,'TyphoonDefinition']]],
   ['performbeforeinjections_3a',['performBeforeInjections:',['../interface_typhoon_definition.html#ac5a3fa01def0470bad10c3b3708b2923',1,'TyphoonDefinition']]],
   ['performbeforeinjections_3aparameters_3a',['performBeforeInjections:parameters:',['../interface_typhoon_definition.html#abb1394e8dfff43fb899280a468f87abb',1,'TyphoonDefinition']]],
+  ['postprocessdefinition_3awithfactory_3a',['postProcessDefinition:withFactory:',['../protocol_typhoon_definition_post_processor-p.html#a534dfc2f6c17dba46af030fa9b6e0146',1,'TyphoonDefinitionPostProcessor-p']]],
   ['postprocessdefinitionsinfactory_3a',['postProcessDefinitionsInFactory:',['../protocol_typhoon_definition_post_processor-p.html#aec4cc0d59e693dd7fffa0c7247d05915',1,'TyphoonDefinitionPostProcessor-p']]],
   ['postprocessor',['postProcessor',['../interface_typhoon_config_post_processor.html#ac342615e85b44734a1954dbe02d1ba76',1,'TyphoonConfigPostProcessor']]],
   ['primitivetype',['primitiveType',['../interface_typhoon_type_descriptor.html#aa79452cdaecc4ee661930c7c3e59888b',1,'TyphoonTypeDescriptor']]],

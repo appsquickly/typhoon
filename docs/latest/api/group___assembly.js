@@ -29,6 +29,7 @@ var group___assembly =
       [ "makeDefault", "protocol_typhoon_component_factory-p.html#a90d9f247cd9b8f0fb6f67a1b00a43b0b", null ]
     ] ],
     [ "<TyphoonDefinitionPostProcessor>", "protocol_typhoon_definition_post_processor-p.html", [
+      [ "postProcessDefinition:withFactory:", "protocol_typhoon_definition_post_processor-p.html#a534dfc2f6c17dba46af030fa9b6e0146", null ],
       [ "postProcessDefinitionsInFactory:", "protocol_typhoon_definition_post_processor-p.html#aec4cc0d59e693dd7fffa0c7247d05915", null ]
     ] ],
     [ "typhoonSetFactory:", "group___assembly.html#ga3dc651b0109dde0ddd73519ccc5eb860", null ],
