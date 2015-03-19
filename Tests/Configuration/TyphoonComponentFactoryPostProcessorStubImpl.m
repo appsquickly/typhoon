@@ -18,4 +18,9 @@
     self.postProcessingCalled = YES;
 }
 
+- (void)postProcessDefinition:(TyphoonDefinition *)definition withFactory:(TyphoonComponentFactory *)factory
+{
+    self.postProcessingCalled = YES;
+}
+
 @end

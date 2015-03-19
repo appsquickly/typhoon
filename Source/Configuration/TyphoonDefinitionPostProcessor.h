@@ -13,6 +13,7 @@
 #import <Foundation/Foundation.h>
 
 @class TyphoonComponentFactory;
+@class TyphoonDefinition;
 
 /**
 * @ingroup Assembly
@@ -34,5 +35,12 @@
  @param factory The component factory
  */
 - (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory;
+
+/**
+ TODO.
+ @param definition The definition.
+ @param factory The component factory.
+ */
+- (void)postProcessDefinition:(TyphoonDefinition *)definition withFactory:(TyphoonComponentFactory *)factory;
 
 @end

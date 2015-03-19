@@ -23,9 +23,14 @@
 - (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory
 {
     for (TyphoonDefinition *definition in [factory registry]) {
-        if ([self shouldProcessDefinition:definition]) {
-            [self processViewControllerDefinition:definition];
-        }
+        [self postProcessDefinition:definition withFactory:factory];
+    }
+}
+
+- (void)postProcessDefinition:(TyphoonDefinition *)definition withFactory:(TyphoonComponentFactory *)factory
+{
+    if ([self shouldProcessDefinition:definition]) {
+        [self processViewControllerDefinition:definition];
     }
 }
 

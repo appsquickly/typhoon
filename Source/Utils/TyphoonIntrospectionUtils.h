@@ -27,6 +27,8 @@ BOOL IsProtocol(id classOrProtocol);
 
 @interface TyphoonIntrospectionUtils : NSObject
 
++ (TyphoonTypeDescriptor *)typeForProperty:(objc_property_t)property;
+
 + (TyphoonTypeDescriptor *)typeForPropertyWithName:(NSString *)propertyName inClass:(Class)clazz;
 
 + (SEL)setterForPropertyWithName:(NSString *)property inClass:(Class)clazz;
@@ -35,6 +37,8 @@ BOOL IsProtocol(id classOrProtocol);
 + (NSMethodSignature *)methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:(SEL)selector;
 
 + (NSUInteger)numberOfArgumentsInSelector:(SEL)selector;
+
++ (NSSet *)injectedPropertiesForClass:(Class)clazz upToParentClass:(Class)parent;
 
 + (NSSet *)propertiesForClass:(Class)clazz upToParentClass:(Class)parent;
 

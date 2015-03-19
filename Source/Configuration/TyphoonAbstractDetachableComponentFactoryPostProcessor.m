@@ -31,6 +31,12 @@
     [self cacheDefinitionsIn:_factory];
 }
 
+- (void)postProcessDefinition:(TyphoonDefinition *)definition withFactory:(TyphoonComponentFactory *)factory
+{
+    _factory = factory;
+    [self cacheDefinitionsIn:_factory];
+}
+
 - (void)rollback
 {
     NSMutableArray *postProcessors = (NSMutableArray *) _factory.definitionPostProcessors;
