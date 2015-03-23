@@ -137,7 +137,7 @@ static NSMutableDictionary * propertiesCache = nil;
     NSString *injectedObjectClassName = NSStringFromClass([TyphoonInjectedObject class]);
     NSString *injectedProtolName = NSStringFromProtocol(@protocol(TyphoonInjectedProtocol));
     
-    while (clazz != parent) {
+    while (clazz && clazz != parent) {
         unsigned int count = 0;
         objc_property_t *properties = class_copyPropertyList(clazz, &count);
         
@@ -177,7 +177,7 @@ static NSMutableDictionary * propertiesCache = nil;
     
     NSMutableSet *propertyNames = [[NSMutableSet alloc] init];
     
-    while (clazz != parent) {
+    while (clazz && clazz != parent) {
         unsigned int count = 0;
         objc_property_t *properties = class_copyPropertyList(clazz, &count);
         
@@ -202,7 +202,7 @@ static NSMutableDictionary * propertiesCache = nil;
 {
     NSMutableSet *methodSelectors = [[NSMutableSet alloc] init];
 
-    while (clazz != parent) {
+    while (clazz && clazz != parent) {
         unsigned int methodCount;
         Method *methodList = class_copyMethodList(clazz, &methodCount);
         for (unsigned int i = 0; i < methodCount; i++) {

@@ -53,7 +53,8 @@ static id TypeForInjectionFromType(TyphoonTypeDescriptor *type);
     NSMutableArray *injections = nil;
     NSSet *allProperties = [TyphoonIntrospectionUtils injectedPropertiesForClass:clazz upToParentClass:[NSObject class]];
     for (NSString *propertyName in allProperties) {
-        TyphoonTypeDescriptor *type = [clazz typhoon_typeForPropertyWithName:propertyName];
+		TyphoonTypeDescriptor *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyName inClass:clazz];
+		
         id explicitType = TypeForInjectionFromType(type);
         if (!explicitType) {
             [NSException raise:NSInternalInconsistencyException format:@"Can't resolve '%@' property in %@ class. Make sure that specified protocol/class exist and linked.", propertyName, clazz];
