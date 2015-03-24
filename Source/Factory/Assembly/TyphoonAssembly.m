@@ -250,17 +250,17 @@ static NSMutableSet *reservedSelectorsAsStrings;
     for (NSString *propertyName in properties) {
         Class clazz = [self typhoon_typeForPropertyWithName:propertyName].typeBeingDescribed;
 
-        if (clazz != terminationClazz && [clazz isSubclassOfClass:[TyphoonAssembly class]]) {
+        if ([clazz isSubclassOfClass:[TyphoonAssembly class]]) {
             //Assembly is declared as a protocol, eg TyphoonAssembly<QuestProvider>
-            if (clazz == [TyphoonAssembly class])
-            {
-                //TODO: What about properties declared on the protocol? 
+            if (clazz == [TyphoonAssembly class]) {
+                //TODO: What about properties declared on the protocol?
                 [self setValue:factory forKey:propertyName];
-            }
-            else {
+            } else {
                 //Assembly is declared as a concrete sub-class of TyphoonAssembly
                 TyphoonAssembly *instance = objc_msgSend(clazz, @selector(assembly), nil);
-                [instance activateWithFactory:factory terminatingAt:terminationClazz];
+                if (clazz != terminationClazz) {
+                    [instance activateWithFactory:factory terminatingAt:terminationClazz];
+                }
                 [self setValue:instance forKey:propertyName];
             }
         }
