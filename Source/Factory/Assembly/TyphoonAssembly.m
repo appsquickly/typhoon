@@ -254,6 +254,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
             //Assembly is declared as a protocol, eg TyphoonAssembly<QuestProvider>
             if (clazz == [TyphoonAssembly class])
             {
+                //TODO: What about properties declared on the protocol? 
                 [self setValue:factory forKey:propertyName];
             }
             else {
