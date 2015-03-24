@@ -238,10 +238,10 @@ static NSMutableSet *reservedSelectorsAsStrings;
 - (void)activateWithFactory:(TyphoonComponentFactory *)factory
 {
 
-    [self activateWithFactory:factory terminatingAt:[self class]];
+    [self activateWithFactory:factory terminatingAt:self];
 }
 
-- (void)activateWithFactory:(TyphoonComponentFactory *)factory terminatingAt:(Class)terminationClazz
+- (void)activateWithFactory:(TyphoonComponentFactory *)factory terminatingAt:(TyphoonAssembly *)circularReference
 {
     _factory = factory;
     NSSet *properties = [TyphoonIntrospectionUtils propertiesForClass:[self class]
@@ -258,10 +258,14 @@ static NSMutableSet *reservedSelectorsAsStrings;
             } else {
                 //Assembly is declared as a concrete sub-class of TyphoonAssembly
                 TyphoonAssembly *instance = objc_msgSend(clazz, @selector(assembly), nil);
-                if (clazz != terminationClazz) {
-                    [instance activateWithFactory:factory terminatingAt:terminationClazz];
+                if (clazz != [circularReference class]) {
+                    [instance activateWithFactory:factory terminatingAt:circularReference];
+                    [self setValue:instance forKey:propertyName];
                 }
-                [self setValue:instance forKey:propertyName];
+                else {
+                    [instance setValue:circularReference forKey:propertyName];
+                }
+
             }
         }
     }
