@@ -12,6 +12,7 @@
 
 
 #import <objc/runtime.h>
+#import <objc/message.h>
 #import "TyphoonAssembly.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblyAdviser.h"
@@ -22,6 +23,8 @@
 #import "TyphoonObjectWithCustomInjection.h"
 #import "TyphoonInjectionByComponentFactory.h"
 #import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonIntrospectionUtils.h"
+#import "NSObject+TyphoonIntrospectionUtils.h"
 
 static NSMutableSet *reservedSelectorsAsStrings;
 
@@ -99,8 +102,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 {
     if (_factory) {
         [_factory forwardInvocation:anInvocation];
-    }
-    else {
+    } else {
         TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
         NSString *key = NSStringFromSelector(anInvocation.selector);
         TyphoonDefinition *definition = [_definitionBuilder builtDefinitionForKey:key args:args];
@@ -209,8 +211,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 - (void)resolveCollaboratingAssemblies
 {
-    TyphoonCollaboratingAssemblyPropertyEnumerator
-        *enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:self];
+    TyphoonCollaboratingAssemblyPropertyEnumerator *enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:self];
 
     for (NSString *propertyName in enumerator.collaboratingAssemblyProperties) {
         [self setCollaboratingAssemblyProxyOnPropertyNamed:propertyName];
@@ -230,6 +231,17 @@ static NSMutableSet *reservedSelectorsAsStrings;
 - (void)activateWithFactory:(TyphoonComponentFactory *)factory
 {
     _factory = factory;
+    NSSet *properties = [TyphoonIntrospectionUtils propertiesForClass:[self class]
+        upToParentClass:[TyphoonAssembly class]];
+
+    for (NSString *propertyName in properties) {
+        Class clazz = [self typhoon_typeForPropertyWithName:propertyName].typeBeingDescribed;
+
+        if ([clazz isSubclassOfClass:[TyphoonAssembly class]] || clazz == [TyphoonCollaboratingAssemblyProxy class]) {
+            [self setValue:factory forKey:propertyName];
+        }
+    }
+
 }
 
 

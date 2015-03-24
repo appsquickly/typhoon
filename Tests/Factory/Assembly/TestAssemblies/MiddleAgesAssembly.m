@@ -19,6 +19,7 @@
 #import "SwordFactory.h"
 #import "Mock.h"
 #import "TyphoonInjections.h"
+#import "CollaboratingMiddleAgesAssembly.h"
 
 @implementation MiddleAgesAssembly
 

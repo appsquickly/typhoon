@@ -17,8 +17,11 @@
 
 @class TyphoonDefinition;
 @class Mock;
+@class CollaboratingMiddleAgesAssembly;
 
-@interface MiddleAgesAssembly : TyphoonAssembly <QuestProvider>
+@interface MiddleAgesAssembly : TyphoonAssembly<QuestProvider>
+
+@property (nonatomic, strong, readonly) CollaboratingMiddleAgesAssembly *collaboratingAssembly;
 
 - (id)knight;
 
@@ -58,7 +61,7 @@
 
 - (id)knightWithFakePropertyQuestByType;
 
-- (Mock *)mockWithRuntimeBlock:(NSString*(^)())block andRuntimeClass:(Class)aClass;
+- (Mock *)mockWithRuntimeBlock:(NSString *(^)())block andRuntimeClass:(Class)aClass;
 
 - (id)knightRuntimeArgumentsFromDefinition;
 
