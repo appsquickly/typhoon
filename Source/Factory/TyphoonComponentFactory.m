@@ -134,7 +134,7 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
     [registerer doRegistration];
 
     if ([self isLoaded]) {
-        [self _load];
+        [self _loadOnlyOne:definition];
     }
 }
 
@@ -289,6 +289,15 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
     [self preparePostProcessors];
     [self applyPostProcessors];
     [self instantiateEagerSingletons];
+}
+
+- (void)_loadOnlyOne:(TyphoonDefinition *)definition
+{
+    [self preparePostProcessors];
+    [_definitionPostProcessors enumerateObjectsUsingBlock:^(id<TyphoonDefinitionPostProcessor> postProcessor, NSUInteger idx, BOOL *stop) {
+        [postProcessor postProcessDefinition:definition withFactory:self];
+    }];
+    [self newOrScopeCachedInstanceForDefinition:definition args:nil];
 }
 
 - (NSArray *)orderedArray:(NSMutableArray *)array

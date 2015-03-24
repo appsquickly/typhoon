@@ -27,14 +27,18 @@
 - (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory
 {
     for (TyphoonDefinition *definition in [factory registry]) {
-
-        [definition enumerateInjectionsOfKind:[TyphoonInjectionByType class] options:TyphoonInjectionsEnumerationOptionProperties
-                                   usingBlock:^(TyphoonInjectionByType *typeInjection, id <TyphoonInjection> *injectionToReplace, BOOL *stop) {
-            if ([self shouldReplaceInjectionByType:typeInjection withFactoryInjectionInDefinition:definition]) {
-                *injectionToReplace = [self factoryInjectionToReplacePropertyInjection:typeInjection];
-            }
-        }];
+        [self postProcessDefinition:definition withFactory:factory];
     }
+}
+
+- (void)postProcessDefinition:(TyphoonDefinition *)definition withFactory:(TyphoonComponentFactory *)factory
+{
+    [definition enumerateInjectionsOfKind:[TyphoonInjectionByType class] options:TyphoonInjectionsEnumerationOptionProperties
+                               usingBlock:^(TyphoonInjectionByType *typeInjection, id <TyphoonInjection> *injectionToReplace, BOOL *stop) {
+                                   if ([self shouldReplaceInjectionByType:typeInjection withFactoryInjectionInDefinition:definition]) {
+                                       *injectionToReplace = [self factoryInjectionToReplacePropertyInjection:typeInjection];
+                                   }
+                               }];
 }
 
 //-------------------------------------------------------------------------------------------
