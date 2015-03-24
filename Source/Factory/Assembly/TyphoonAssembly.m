@@ -96,7 +96,14 @@ static NSMutableSet *reservedSelectorsAsStrings;
 }
 
 
++ (BOOL)resolveInstanceMethod:(SEL)sel
+{
+    return YES;
+}
+
+
 #pragma mark - Forwarding definition methods
+
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
@@ -230,6 +237,12 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 - (void)activateWithFactory:(TyphoonComponentFactory *)factory
 {
+
+    [self activateWithFactory:factory terminatingAt:[self class]];
+}
+
+- (void)activateWithFactory:(TyphoonComponentFactory *)factory terminatingAt:(Class)terminationClazz
+{
     _factory = factory;
     NSSet *properties = [TyphoonIntrospectionUtils propertiesForClass:[self class]
         upToParentClass:[TyphoonAssembly class]];
@@ -237,11 +250,20 @@ static NSMutableSet *reservedSelectorsAsStrings;
     for (NSString *propertyName in properties) {
         Class clazz = [self typhoon_typeForPropertyWithName:propertyName].typeBeingDescribed;
 
-        if ([clazz isSubclassOfClass:[TyphoonAssembly class]] || clazz == [TyphoonCollaboratingAssemblyProxy class]) {
-            [self setValue:factory forKey:propertyName];
+        if (clazz != terminationClazz && [clazz isSubclassOfClass:[TyphoonAssembly class]]) {
+            //Assembly is declared as a protocol, eg TyphoonAssembly<QuestProvider>
+            if (clazz == [TyphoonAssembly class])
+            {
+                [self setValue:factory forKey:propertyName];
+            }
+            else {
+                //Assembly is declared as a concrete sub-class of TyphoonAssembly
+                TyphoonAssembly *instance = objc_msgSend(clazz, @selector(assembly), nil);
+                [instance activateWithFactory:factory terminatingAt:terminationClazz];
+                [self setValue:instance forKey:propertyName];
+            }
         }
     }
-
 }
 
 
