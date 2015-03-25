@@ -257,7 +257,8 @@ static NSMutableSet *reservedSelectorsAsStrings;
                 [self setValue:factory forKey:propertyName];
             } else {
                 //Assembly is declared as a concrete sub-class of TyphoonAssembly
-                TyphoonAssembly *instance = objc_msgSend(clazz, @selector(assembly), nil);
+				
+                TyphoonAssembly *instance = ((TyphoonAssembly * (*)(Class, SEL) )objc_msgSend)(clazz, @selector(assembly));
                 if (clazz != terminationClazz) {
                     [instance activateWithFactory:factory terminatingAt:terminationClazz];
                 }
