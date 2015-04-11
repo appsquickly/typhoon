@@ -137,9 +137,8 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         [instance typhoonWillInject];
     }
 
-    TyphoonMethod *beforeInjections = [definition beforeInjections];
-    if (beforeInjections) {
-        [self doMethodInjection:beforeInjections onInstance:instance args:args];
+    for (TyphoonMethod *method in [definition beforeInjections]) {
+        [self doMethodInjection:method onInstance:instance args:args];
     }
 }
 
@@ -150,9 +149,8 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         [instance typhoonDidInject];
     }
 
-    TyphoonMethod *afterInjections = [definition afterInjections];
-    if (afterInjections) {
-        [self doMethodInjection:afterInjections onInstance:instance args:args];
+    for (TyphoonMethod *method in [definition afterInjections]) {
+        [self doMethodInjection:method onInstance:instance args:args];
     }
 }
 

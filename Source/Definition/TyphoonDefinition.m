@@ -174,13 +174,14 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 
 - (void)performBeforeInjections:(SEL)sel parameters:(void (^)(TyphoonMethod *params))parametersBlock
 {
-    _beforeInjections = [[TyphoonMethod alloc] initWithSelector:sel];
+    TyphoonMethod *method = [[TyphoonMethod alloc] initWithSelector:sel];
     if (parametersBlock) {
-        parametersBlock(_beforeInjections);
+        parametersBlock(method);
     }
 #if DEBUG
-    [_beforeInjections checkParametersCount];
+    [method checkParametersCount];
 #endif
+    [_beforeInjections addObject:method];
 }
 
 - (void)performAfterInjections:(SEL)sel
@@ -190,13 +191,14 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
 
 - (void)performAfterInjections:(SEL)sel parameters:(void (^)(TyphoonMethod *param))parameterBlock
 {
-    _afterInjections = [[TyphoonMethod alloc] initWithSelector:sel];
+    TyphoonMethod *method = [[TyphoonMethod alloc] initWithSelector:sel];
     if (parameterBlock) {
-        parameterBlock(_afterInjections);
+        parameterBlock(method);
     }
 #if DEBUG
-    [_afterInjections checkParametersCount];
+    [method checkParametersCount];
 #endif
+    [_afterInjections addObject:method];
 }
 
 //-------------------------------------------------------------------------------------------
@@ -278,10 +280,10 @@ static NSString *TyphoonScopeToString(TyphoonScope scope) {
     TyphoonDefinition *copy = [[TyphoonDefinition alloc] initWithClass:_type key:[_key copy]];
     copy->_processed = _processed;
     copy->_initializer = [_initializer copy];
-    copy->_beforeInjections = [_beforeInjections copy];
+    copy->_beforeInjections = [_beforeInjections mutableCopy];
     copy->_injectedProperties = [_injectedProperties mutableCopy];
     copy->_injectedMethods = [_injectedMethods mutableCopy];
-    copy->_afterInjections = [_afterInjections copy];
+    copy->_afterInjections = [_afterInjections mutableCopy];
     copy->_scope = _scope;
     copy->_parent = _parent;
     copy->_isScopeSetByUser = _isScopeSetByUser;
