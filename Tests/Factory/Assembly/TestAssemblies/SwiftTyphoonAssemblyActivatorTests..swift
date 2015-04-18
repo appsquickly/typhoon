@@ -20,7 +20,7 @@ class SwiftTyphoonAssemblyActivatorTests : XCTestCase {
         let assembly = SwiftMiddleAgesAssembly()
         TyphoonAssemblyActivator.withAssembly(assembly).activate()
         
-        let knight = assembly.basicKnight() as Knight
+        let knight = assembly.basicKnight() as! Knight
         println(knight.description())
         XCTAssertTrue(knight.isKindOfClass(Knight.self))
         
@@ -33,7 +33,7 @@ class SwiftTyphoonAssemblyActivatorTests : XCTestCase {
         TyphoonAssemblyActivator.withAssembly(assembly).activate()
         
         let fort = Fort()
-        let knight = assembly.wanderingKnight(fort) as Knight
+        let knight = assembly.wanderingKnight(fort) as! Knight
         println(knight.description())
         XCTAssertTrue(knight.isKindOfClass(Knight.self))
         XCTAssertNotNil(knight.homeFort)
