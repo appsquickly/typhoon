@@ -43,7 +43,7 @@ mkdir -p ${reportsDir}/${platform}
 
 rm -fr ~/Library/Developer/Xcode/DerivedData
 xcodebuild test -project Typhoon.xcodeproj -scheme 'Typhoon-iOSTests' -configuration Debug \
--destination 'platform=iOS Simulator,name=iPhone 5s,OS=8.2' | xcpretty -c --report junit
+-destination 'platform=iOS Simulator,name=iPhone 5s,OS=8.3' | xcpretty -c --report junit
 mv ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
 
 groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/iOS_Simulator -r${requiredCoverage}
