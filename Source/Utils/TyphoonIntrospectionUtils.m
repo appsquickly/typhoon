@@ -148,7 +148,9 @@ static NSMutableDictionary * propertiesCache = nil;
             NSString *className = [self classNameOfProperty:aProperty];
             
             // Little bit faster than protocol_isEqual method.
-            if ([className containsString:injectedObjectClassName] || [className containsString:injectedProtolName]) {
+            if (className.length > 0
+                && ([className rangeOfString:injectedObjectClassName].location != NSNotFound
+                    || [className rangeOfString:injectedProtolName].location != NSNotFound)) {
                 [propertyNames addObject:propertyName];
             }
         }
