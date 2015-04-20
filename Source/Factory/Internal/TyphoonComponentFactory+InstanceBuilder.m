@@ -54,7 +54,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 - (id)initializeInstanceWithDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
     __block id instance = [definition targetForInitializerWithFactory:self args:args];
-    if (definition.initializer) {
+    if (definition.initializer && instance) {
         BOOL isClass = IsClass(instance);
 
         TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] initWithFactory:self args:args
