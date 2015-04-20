@@ -33,11 +33,11 @@
  */
 @interface TyphoonStoryboard : UIStoryboard
 
-@property(nonatomic, strong) TyphoonComponentFactory *factory;
+@property(nonatomic, strong) id<TyphoonComponentFactory> factory;
 
 + (TyphoonStoryboard *)storyboardWithName:(NSString *)name bundle:(NSBundle *)storyboardBundleOrNil;
 
-+ (TyphoonStoryboard *)storyboardWithName:(NSString *)name factory:(TyphoonComponentFactory *)factory bundle:(NSBundle *)bundleOrNil;
++ (TyphoonStoryboard *)storyboardWithName:(NSString *)name factory:(id<TyphoonComponentFactory>)factory bundle:(NSBundle *)bundleOrNil;
 
 @end
 
