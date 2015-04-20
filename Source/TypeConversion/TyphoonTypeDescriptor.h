@@ -54,7 +54,13 @@ typedef enum
 @property(nonatomic, readonly) Class typeBeingDescribed;
 
 /**
-* The protocol being described.
+* The protocol being declared.
+*/
+@property (nonatomic, strong, readonly) NSString *declaredProtocol;
+
+/**
+* The protocol being described. Returns NSProtocolFromString(declaredProtocol). This may return nil if the protocol
+* has been trimmed out by the compiler in the case that it has no direct references.
 */
 @property(nonatomic, readonly) Protocol *protocol;
 

@@ -25,6 +25,7 @@
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
+#import "OCLogTemplate.h"
 
 static NSMutableSet *reservedSelectorsAsStrings;
 
@@ -109,7 +110,8 @@ static NSMutableSet *reservedSelectorsAsStrings;
 {
     if (_factory) {
         [_factory forwardInvocation:anInvocation];
-    } else {
+    }
+    else {
         TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
         NSString *key = NSStringFromSelector(anInvocation.selector);
         TyphoonDefinition *definition = [_definitionBuilder builtDefinitionForKey:key args:args];
@@ -218,7 +220,8 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 - (void)resolveCollaboratingAssemblies
 {
-    TyphoonCollaboratingAssemblyPropertyEnumerator *enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc] initWithAssembly:self];
+    TyphoonCollaboratingAssemblyPropertyEnumerator *enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc]
+        initWithAssembly:self];
 
     for (NSString *propertyName in enumerator.collaboratingAssemblyProperties) {
         [self setCollaboratingAssemblyProxyOnPropertyNamed:propertyName];
@@ -235,40 +238,54 @@ static NSMutableSet *reservedSelectorsAsStrings;
 #pragma mark - Private Methods
 //-------------------------------------------------------------------------------------------
 
-- (void)activateWithFactory:(TyphoonComponentFactory *)factory
-{
-
-    [self activateWithFactory:factory terminatingAt:[self class]];
-}
-
-- (void)activateWithFactory:(TyphoonComponentFactory *)factory terminatingAt:(Class)terminationClazz
+- (void)activateWithFactory:(TyphoonComponentFactory *)factory collaborators:(NSArray *)collaborators
 {
     _factory = factory;
     NSSet *properties = [TyphoonIntrospectionUtils propertiesForClass:[self class]
         upToParentClass:[TyphoonAssembly class]];
 
     for (NSString *propertyName in properties) {
-        Class clazz = [self typhoon_typeForPropertyWithName:propertyName].typeBeingDescribed;
-
-        if ([clazz isSubclassOfClass:[TyphoonAssembly class]]) {
-            //Assembly is declared as a protocol, eg TyphoonAssembly<QuestProvider>
-            if (clazz == [TyphoonAssembly class]) {
-                //TODO: What about properties declared on the protocol?
-                [self setValue:factory forKey:propertyName];
-            } else {
-                //Assembly is declared as a concrete sub-class of TyphoonAssembly
-				
-                TyphoonAssembly *instance = ((TyphoonAssembly * (*)(Class, SEL) )objc_msgSend)(clazz, @selector(assembly));
-                if (clazz != terminationClazz) {
-                    [instance activateWithFactory:factory terminatingAt:terminationClazz];
-                }
-                else {
-                    [instance setValue:factory forKey:@"factory"];
-                }
-                [self setValue:instance forKey:propertyName];
+        TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:propertyName];
+        if (descriptor.typeBeingDescribed == [TyphoonAssembly class]) {
+            TyphoonAssembly *collaborator = [self assemblyConformingTo:descriptor.declaredProtocol in:collaborators];
+            if (!collaborator) {
+                LogInfo(@"*** Warning *** Can't find collaborating assembly that conforms to protocol %@. Is this "
+                    "intentional? The property '%@' in class %@ will be left as nil.", descriptor.declaredProtocol,
+                    propertyName, NSStringFromClass([self class]));
             }
+            [self setValue:collaborator forKey:propertyName];
+        }
+        else if ([descriptor.typeBeingDescribed isSubclassOfClass:[TyphoonAssembly class]]) {
+            TyphoonAssembly *collaborator = [self assemblyWithType:descriptor.typeBeingDescribed in:collaborators];
+            if (!collaborator) {
+                LogInfo(@"*** Warning *** Can't find assembly of type %@. Is this intentional? The property '%@' "
+                    "in class %@ will be left as nil.", descriptor.typeBeingDescribed, propertyName,
+                    NSStringFromClass([self class]));
+            }
+            [self setValue:collaborator forKey:propertyName];
         }
     }
+}
+
+- (TyphoonAssembly *)assemblyConformingTo:(NSString *)protocolName in:(NSArray *)assemblies
+{
+    for (TyphoonAssembly *assembly in assemblies) {
+
+        if ([[assembly class] conformsToProtocol:NSProtocolFromString(protocolName)]) {
+            return assembly;
+        }
+    }
+    return nil;
+}
+
+- (TyphoonAssembly *)assemblyWithType:(Class)type in:(NSArray *)assemblies
+{
+    for (TyphoonAssembly *assembly in assemblies) {
+        if ([assembly class] == type) {
+            return assembly;
+        }
+    }
+    return nil;
 }
 
 

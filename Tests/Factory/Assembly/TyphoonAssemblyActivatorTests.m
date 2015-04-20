@@ -25,7 +25,10 @@
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
     XCTAssertTrue([[assembly knight] isKindOfClass:[TyphoonDefinition class]]);
 
-    [[TyphoonAssemblyActivator withAssembly:assembly] activate];
+    [[TyphoonAssemblyActivator withAssemblies:@[
+        assembly,
+        [CollaboratingMiddleAgesAssembly assembly]
+    ]] activate];
 
     XCTAssertTrue([[assembly knight] isKindOfClass:[Knight class]]);
     NSLog(@"Knight: %@", [assembly knight]);
@@ -38,7 +41,8 @@
 
     [[TyphoonAssemblyActivator withAssemblies:@[
         assembly,
-        collaborator]] activate];
+        collaborator
+    ]] activate];
 
     id<Quest> quest = collaborator.quests.environmentDependentQuest;
     NSLog(@"Got quest: %@", quest);
@@ -51,8 +55,10 @@
         MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
         [assembly componentForType:[Knight class]];
         XCTFail(@"Should have thrown exception");
-    } @catch (NSException *e) {
-        XCTAssertEqualObjects(@"componentForType: requires the assembly to be activated with TyphooonAssemblyActivator", [e description]);
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects(@"componentForType: requires the assembly to be activated with TyphooonAssemblyActivator",
+            [e description]);
     }
 }
 
@@ -62,8 +68,11 @@
         MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
         [assembly allComponentsForType:[Knight class]];
         XCTFail(@"Should have thrown exception");
-    } @catch (NSException *e) {
-        XCTAssertEqualObjects(@"allComponentsForType: requires the assembly to be activated with TyphooonAssemblyActivator", [e description]);
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects(
+            @"allComponentsForType: requires the assembly to be activated with TyphooonAssemblyActivator",
+            [e description]);
     }
 }
 
@@ -73,8 +82,10 @@
         MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
         [assembly componentForKey:@"knight"];
         XCTFail(@"Should have thrown exception");
-    } @catch (NSException *e) {
-        XCTAssertEqualObjects(@"componentForKey: requires the assembly to be activated with TyphooonAssemblyActivator", [e description]);
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects(@"componentForKey: requires the assembly to be activated with TyphooonAssemblyActivator",
+            [e description]);
     }
 }
 
@@ -84,8 +95,10 @@
         MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
         [assembly inject:nil];
         XCTFail(@"Should have thrown exception");
-    } @catch (NSException *e) {
-        XCTAssertEqualObjects(@"inject: requires the assembly to be activated with TyphooonAssemblyActivator", [e description]);
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects(@"inject: requires the assembly to be activated with TyphooonAssemblyActivator",
+            [e description]);
     }
 }
 
@@ -95,8 +108,11 @@
         MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
         [assembly inject:nil withSelector:nil];
         XCTFail(@"Should have thrown exception");
-    } @catch (NSException *e) {
-        XCTAssertEqualObjects(@"inject:withSelector: requires the assembly to be activated with TyphooonAssemblyActivator", [e description]);
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects(
+            @"inject:withSelector: requires the assembly to be activated with TyphooonAssemblyActivator",
+            [e description]);
     }
 }
 
@@ -106,8 +122,10 @@
         MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
         [assembly makeDefault];
         XCTFail(@"Should have thrown exception");
-    } @catch (NSException *e) {
-        XCTAssertEqualObjects(@"makeDefault requires the assembly to be activated with TyphooonAssemblyActivator", [e description]);
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects(@"makeDefault requires the assembly to be activated with TyphooonAssemblyActivator",
+            [e description]);
     }
 }
 
@@ -132,7 +150,10 @@
 - (void)test_after_activation_assembly_can_be_made_default
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
-    [[TyphoonAssemblyActivator withAssembly:assembly] activate];
+    [[TyphoonAssemblyActivator withAssemblies:@[
+        assembly,
+        [CollaboratingMiddleAgesAssembly assembly]
+    ]] activate];
     [assembly makeDefault];
 }
 

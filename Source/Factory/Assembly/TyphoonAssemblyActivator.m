@@ -16,7 +16,7 @@
 
 @interface TyphoonAssembly (Activation)
 
-- (void)activateWithFactory:(TyphoonComponentFactory *)factory;
+- (void)activateWithFactory:(TyphoonComponentFactory *)factory collaborators:(NSArray*)collaborators;
 
 @end
 
@@ -61,7 +61,7 @@
 {
     TyphoonBlockComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:_assemblies];
     for (TyphoonAssembly *assembly in _assemblies) {
-        [assembly activateWithFactory:factory];
+        [assembly activateWithFactory:factory collaborators:_assemblies];
     }
 }
 
