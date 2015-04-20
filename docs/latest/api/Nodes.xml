@@ -1689,6 +1689,11 @@
               <Anchor>ad541d952528bcaa20827a8e3d87e23c0</Anchor>
              </Node>
              <Node>
+              <Name>declaredProtocol</Name>
+              <Path>interface_typhoon_type_descriptor.html</Path>
+              <Anchor>ac0c3e046082ece5f6a39fe6b2a0f2c82</Anchor>
+             </Node>
+             <Node>
               <Name>isArray</Name>
               <Path>interface_typhoon_type_descriptor.html</Path>
               <Anchor>a17e596f33f0323231b6c9eb9ca2557a5</Anchor>
@@ -3529,6 +3534,11 @@
                 <Name>arrayLength</Name>
                 <Path>interface_typhoon_type_descriptor.html</Path>
                 <Anchor>ad541d952528bcaa20827a8e3d87e23c0</Anchor>
+               </Node>
+               <Node>
+                <Name>declaredProtocol</Name>
+                <Path>interface_typhoon_type_descriptor.html</Path>
+                <Anchor>ac0c3e046082ece5f6a39fe6b2a0f2c82</Anchor>
                </Node>
                <Node>
                 <Name>isArray</Name>

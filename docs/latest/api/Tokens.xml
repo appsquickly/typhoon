@@ -4883,6 +4883,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>declaredProtocol</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instp</Type>
+      <Scope>TyphoonTypeDescriptor</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_type_descriptor.html</Path>
+    <Anchor>ac0c3e046082ece5f6a39fe6b2a0f2c82</Anchor>
+    <Abstract>The protocol being declared. </Abstract>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>isArray</Name>
       <APILanguage>occ</APILanguage>
       <Type>instp</Type>

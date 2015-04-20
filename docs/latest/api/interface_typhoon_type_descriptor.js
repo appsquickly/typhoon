@@ -1,6 +1,7 @@
 var interface_typhoon_type_descriptor =
 [
     [ "arrayLength", "interface_typhoon_type_descriptor.html#ad541d952528bcaa20827a8e3d87e23c0", null ],
+    [ "declaredProtocol", "interface_typhoon_type_descriptor.html#ac0c3e046082ece5f6a39fe6b2a0f2c82", null ],
     [ "isArray", "interface_typhoon_type_descriptor.html#a17e596f33f0323231b6c9eb9ca2557a5", null ],
     [ "isPointer", "interface_typhoon_type_descriptor.html#af0011058e7419f08e5b5f7a31ade73a6", null ],
     [ "isPrimitive", "interface_typhoon_type_descriptor.html#a5c4c715509a688c5e64c01acccf029e6", null ],

@@ -110,6 +110,9 @@ Properties</h2></td></tr>
 <tr class="memitem:ad541d952528bcaa20827a8e3d87e23c0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_type_descriptor.html#ad541d952528bcaa20827a8e3d87e23c0">arrayLength</a></td></tr>
 <tr class="memdesc:ad541d952528bcaa20827a8e3d87e23c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array length for primitive type.  <a href="#ad541d952528bcaa20827a8e3d87e23c0">More...</a><br /></td></tr>
 <tr class="separator:ad541d952528bcaa20827a8e3d87e23c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0c3e046082ece5f6a39fe6b2a0f2c82"><td class="memItemLeft" align="right" valign="top">NSString *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_type_descriptor.html#ac0c3e046082ece5f6a39fe6b2a0f2c82">declaredProtocol</a></td></tr>
+<tr class="memdesc:ac0c3e046082ece5f6a39fe6b2a0f2c82"><td class="mdescLeft">&#160;</td><td class="mdescRight">The protocol being declared.  <a href="#ac0c3e046082ece5f6a39fe6b2a0f2c82">More...</a><br /></td></tr>
+<tr class="separator:ac0c3e046082ece5f6a39fe6b2a0f2c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17e596f33f0323231b6c9eb9ca2557a5"><td class="memItemLeft" align="right" valign="top">BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_typhoon_type_descriptor.html#a17e596f33f0323231b6c9eb9ca2557a5">isArray</a></td></tr>
 <tr class="memdesc:a17e596f33f0323231b6c9eb9ca2557a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates a primitive type is an array.  <a href="#a17e596f33f0323231b6c9eb9ca2557a5">More...</a><br /></td></tr>
 <tr class="separator:a17e596f33f0323231b6c9eb9ca2557a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,6 +177,28 @@ Instance Methods</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Array length for primitive type. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac0c3e046082ece5f6a39fe6b2a0f2c82"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (NSString*) declaredProtocol</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">read</span><span class="mlabel">nonatomic</span><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The protocol being declared. </p>
 
 </div>
 </div>
@@ -306,6 +331,7 @@ Instance Methods</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The protocol being described. </p>
+<p>Returns NSProtocolFromString(declaredProtocol). This may return nil if the protocol has been trimmed out by the compiler in the case that it has no direct references. </p>
 
 </div>
 </div>
@@ -458,7 +484,7 @@ Instance Methods</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
         <li class="navelem"><a class="el" href="interface_typhoon_type_descriptor.html">TyphoonTypeDescriptor</a></li>
-        <li class="footer">Generated on Mon Apr 20 2015 16:03:45 for Typhoon by
+        <li class="footer">Generated on Mon Apr 20 2015 17:15:31 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>
