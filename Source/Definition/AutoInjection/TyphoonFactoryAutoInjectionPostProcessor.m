@@ -20,7 +20,6 @@
 #import "TyphoonPropertyInjection.h"
 #import "TyphoonInjections.h"
 
-static BOOL IsTyphoonAutoInjectionType(TyphoonTypeDescriptor *type);
 static id TypeForInjectionFromType(TyphoonTypeDescriptor *type);
 
 @implementation TyphoonFactoryAutoInjectionPostProcessor
