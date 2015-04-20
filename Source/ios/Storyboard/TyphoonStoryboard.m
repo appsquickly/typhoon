@@ -50,7 +50,7 @@ static const char *kTyphoonKey;
     return [self storyboardWithName:name factory:nil bundle:storyboardBundleOrNil];
 }
 
-+ (TyphoonStoryboard *)storyboardWithName:(NSString *)name factory:(TyphoonComponentFactory *)factory bundle:(NSBundle *)bundleOrNil
++ (TyphoonStoryboard *)storyboardWithName:(NSString *)name factory:(id<TyphoonComponentFactory>)factory bundle:(NSBundle *)bundleOrNil
 {
     TyphoonStoryboard *storyboard = (id) [super storyboardWithName:name bundle:bundleOrNil];
     storyboard.factory = factory;
