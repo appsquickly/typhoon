@@ -47,16 +47,6 @@ AnalyticsService* service = [assembly analyticsService];
 + (instancetype)assembly;
 
 /**
-* Convenience equivalent to `[[ApplicationAssembly assembly] activate]`.
-*/
-+ (instancetype)activate;
-
-/**
-* Convenience equivalent to `[[ApplicationAssembly assembly] activateWithCollaboratingAssemblies]`.
-*/
-+ (instancetype)activateWithCollaboratingAssemblies:(NSArray*)assemblies;
-
-/**
 * Returns the [TyphoonComponentFactory defaultFactory] posing as a TyphoonAssembly.
 */
 + (instancetype)defaultAssembly;

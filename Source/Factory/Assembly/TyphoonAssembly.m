@@ -51,17 +51,6 @@ static NSMutableSet *reservedSelectorsAsStrings;
     return [[self alloc] init];
 }
 
-+ (instancetype)activate
-{
-    return [[self assembly] activate];
-}
-
-+ (instancetype)activateWithCollaboratingAssemblies:(NSArray *)assemblies
-{
-    return [[self assembly] activateWithCollaboratingAssemblies:assemblies];
-}
-
-
 + (instancetype)defaultAssembly
 {
     return (TyphoonAssembly *)[TyphoonComponentFactory defaultFactory];

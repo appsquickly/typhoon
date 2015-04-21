@@ -32,7 +32,7 @@
 
 - (void)test_activated_assembly_returns_activated_collaborators
 {
-    MiddleAgesAssembly *assembly = [MiddleAgesAssembly activateWithCollaboratingAssemblies:@[
+    MiddleAgesAssembly *assembly = [[MiddleAgesAssembly assembly] activateWithCollaboratingAssemblies:@[
         [CollaboratingMiddleAgesAssembly assembly]
     ]];
 
