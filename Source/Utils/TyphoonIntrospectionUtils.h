@@ -29,7 +29,7 @@ BOOL IsProtocol(id classOrProtocol);
 
 + (TyphoonTypeDescriptor *)typeForProperty:(objc_property_t)property;
 
-+ (TyphoonTypeDescriptor *)typeForPropertyWithName:(NSString *)propertyName inClass:(Class)clazz;
++ (TyphoonTypeDescriptor *)typeForPropertyNamed:(NSString *)propertyName inClass:(Class)clazz;
 
 + (SEL)setterForPropertyWithName:(NSString *)property inClass:(Class)clazz;
 + (SEL)getterForPropertyWithName:(NSString *)property inClass:(Class)clazz;

@@ -48,7 +48,7 @@ typedef struct
     TyphoonTypeDescriptor *boolDescriptor =
         [TyphoonTypeDescriptor descriptorWithTypeCode:[NSString stringWithCString:@encode(BOOL) encoding:NSASCIIStringEncoding]];
 
-    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"aBoolProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:@"aBoolProperty"];
     XCTAssertTrue([descriptor isPrimitive]);
     XCTAssertNil([descriptor typeBeingDescribed]);
     XCTAssertNil([descriptor protocol]);
@@ -62,7 +62,7 @@ typedef struct
 
 - (void)test_type_description_class
 {
-    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"anNSURLProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:@"anNSURLProperty"];
     XCTAssertFalse([descriptor isPrimitive]);
     XCTAssertEqual([descriptor typeBeingDescribed], [NSURL class]);
     XCTAssertNil([descriptor protocol]);
@@ -73,7 +73,7 @@ typedef struct
 
 - (void)test_type_description_protocol
 {
-    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"aQuestProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:@"aQuestProperty"];
     XCTAssertFalse([descriptor isPrimitive]);
     XCTAssertNil([descriptor typeBeingDescribed]);
     XCTAssertEqual([descriptor protocol], @protocol(Quest));
@@ -84,7 +84,7 @@ typedef struct
 
 - (void)test_type_description_class_and_protocol
 {
-    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"anObjectQuestProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:@"anObjectQuestProperty"];
     XCTAssertFalse([descriptor isPrimitive]);
     XCTAssertEqual([descriptor protocol], @protocol(Quest));
     XCTAssertEqual([descriptor typeBeingDescribed], [NSObject class]);
@@ -96,14 +96,14 @@ typedef struct
 
 - (void)test_typeForPropertyWithName_char
 {
-    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"charProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:@"charProperty"];
     XCTAssertTrue(descriptor.isPrimitive);
     XCTAssertEqual(descriptor.primitiveType, TyphoonPrimitiveTypeChar);
 }
 
 - (void)test_typeForPropertyWithName_int
 {
-    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"intProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:@"intProperty"];
     XCTAssertTrue(descriptor.isPrimitive);
     XCTAssertFalse(descriptor.isPointer);
     XCTAssertEqual(descriptor.primitiveType, TyphoonPrimitiveTypeInt);
@@ -111,7 +111,7 @@ typedef struct
 
 - (void)test_typeForPropertyWithName_short
 {
-    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"shortProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:@"shortProperty"];
     XCTAssertTrue(descriptor.isPrimitive);
     XCTAssertFalse(descriptor.isPointer);
     XCTAssertEqual(descriptor.primitiveType, TyphoonPrimitiveTypeShort);
@@ -119,21 +119,21 @@ typedef struct
 
 - (void)test_typeForPropertyWithName_long
 {
-    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"longProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:@"longProperty"];
     XCTAssertTrue(descriptor.isPrimitive);
     XCTAssertFalse(descriptor.isPointer);
 }
 
 - (void)test_typeForPropertyWithName_pointerToLongLong
 {
-    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"pointerToLongLongProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:@"pointerToLongLongProperty"];
     XCTAssertTrue(descriptor.isPrimitive);
     XCTAssertTrue(descriptor.isPointer);
 }
 
 - (void)test_typeForPropertyWithName_struct
 {
-    TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:@"structProperty"];
+    TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:@"structProperty"];
     XCTAssertTrue(descriptor.isPrimitive);
     XCTAssertFalse(descriptor.isPointer);
     XCTAssertTrue(descriptor.isStructure);

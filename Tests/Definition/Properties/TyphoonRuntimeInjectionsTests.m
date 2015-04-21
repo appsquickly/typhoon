@@ -31,8 +31,7 @@
 {
     [super setUp];
 
-    factory = [MiddleAgesAssembly assembly];
-    [[TyphoonAssemblyActivator withAssembly:factory] activate];
+    factory = [[MiddleAgesAssembly assembly] activate];
 }
 
 - (void)test_runtime_arguments
@@ -218,6 +217,7 @@
 
     __autoreleasing NSError *error2 = nil;
     Sword *yellow = [factory swordWithSpec:@"yellow" error:[NSValue valueWithPointer:&error2]];
+    XCTAssertNotNil(yellow);
     XCTAssertNotNil(error2);
     XCTAssertEqual(error2.code, (NSInteger)404);
 }

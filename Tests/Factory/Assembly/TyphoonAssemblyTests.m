@@ -12,23 +12,19 @@
 #import <XCTest/XCTest.h>
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
-#import "TyphoonAssemblyActivator.h"
 #import "CollaboratingMiddleAgesAssembly.h"
 
-@interface TyphoonAssemblyActivatorTests : XCTestCase
+@interface TyphoonAssemblyTests : XCTestCase
 @end
 
-@implementation TyphoonAssemblyActivatorTests
+@implementation TyphoonAssemblyTests
 
 - (void)test_activated_assembly_returns_built_instances
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
     XCTAssertTrue([[assembly knight] isKindOfClass:[TyphoonDefinition class]]);
 
-    [[TyphoonAssemblyActivator withAssemblies:@[
-        assembly,
-        [CollaboratingMiddleAgesAssembly assembly]
-    ]] activate];
+    [assembly activate];
 
     XCTAssertTrue([[assembly knight] isKindOfClass:[Knight class]]);
     NSLog(@"Knight: %@", [assembly knight]);
@@ -37,14 +33,10 @@
 - (void)test_activated_assembly_returns_activated_collaborators
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
-    CollaboratingMiddleAgesAssembly *collaborator = [CollaboratingMiddleAgesAssembly assembly];
 
-    [[TyphoonAssemblyActivator withAssemblies:@[
-        assembly,
-        collaborator
-    ]] activate];
+    [assembly activate];
 
-    id<Quest> quest = collaborator.quests.environmentDependentQuest;
+    id<Quest> quest = assembly.collaboratingAssembly.quests.environmentDependentQuest;
     NSLog(@"Got quest: %@", quest);
     XCTAssertTrue([quest conformsToProtocol:@protocol(Quest)]);
 }
@@ -132,7 +124,7 @@
 - (void)test_after_activation_TyphoonComponentFactory_methods_are_available
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
-    [[TyphoonAssemblyActivator withAssembly:assembly] activate];
+    [assembly activate];
 
     XCTAssertTrue([[assembly componentForKey:@"knight"] isKindOfClass:[Knight class]]);
 }
@@ -140,7 +132,7 @@
 - (void)test_after_activation_can_inject_pre_obtained_instance
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
-    [[TyphoonAssemblyActivator withAssembly:assembly] activate];
+    [assembly activate];
 
     Knight *knight = [[Knight alloc] init];
     [assembly inject:knight withSelector:@selector(knight)];
@@ -150,10 +142,7 @@
 - (void)test_after_activation_assembly_can_be_made_default
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
-    [[TyphoonAssemblyActivator withAssemblies:@[
-        assembly,
-        [CollaboratingMiddleAgesAssembly assembly]
-    ]] activate];
+    [assembly activate];
     [assembly makeDefault];
 }
 

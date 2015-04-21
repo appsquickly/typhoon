@@ -17,5 +17,6 @@
 
 @implementation AutoWiringKnight
 
+@dynamic quest;
 
 @end

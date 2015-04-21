@@ -27,7 +27,7 @@
     BOOL isAssemblyClass = NO;
 
     TyphoonTypeDescriptor
-        *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyInjection.propertyName inClass:definition.type];
+        *type = [TyphoonIntrospectionUtils typeForPropertyNamed:propertyInjection.propertyName inClass:definition.type];
 
     if (type.typeBeingDescribed) {
         isAssemblyClass = [type.typeBeingDescribed isSubclassOfClass:[TyphoonAssembly class]];

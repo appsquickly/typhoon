@@ -13,7 +13,15 @@
 
 @class TyphoonAssembly;
 
+__attribute__ ((deprecated))
 
+/**
+* Activates an assembly. Prior to activation the assembly interface returns TyphoonDefinitions. After activation
+* assembly interface poses in of a TyphoonComponentFactory to return built instances.
+*
+* This class is deprecated, use the TyphoonAssembly#activate and TyphoonAssembly#activateWithCollaboratingAssemblies:
+* instead.
+*/
 @interface TyphoonAssemblyActivator : NSObject
 
 + (instancetype)withAssemblies:(NSArray *)assemblies;

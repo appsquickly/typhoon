@@ -180,7 +180,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 {
     TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] initWithFactory:self args:args
         raiseExceptionIfCircular:NO];
-    context.destinationType = [instance typhoon_typeForPropertyWithName:property.propertyName];
+    context.destinationType = [instance typhoonTypeForPropertyNamed:property.propertyName];
     context.classUnderConstruction = [instance class];
 
     [property valueToInjectWithContext:context completion:^(id value) {

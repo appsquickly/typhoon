@@ -27,9 +27,7 @@
 - (void)setUp
 {
     [super setUp];
-
-    assembly = [AssemblyWithDefinitionConfiguration assembly];
-    [[TyphoonAssemblyActivator withAssembly:assembly] activate];
+    assembly = [[AssemblyWithDefinitionConfiguration assembly] activate];
 }
 
 - (void)test_macros_defined_definition

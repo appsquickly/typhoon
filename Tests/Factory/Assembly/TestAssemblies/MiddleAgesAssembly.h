@@ -78,4 +78,5 @@
 - (id)knightRuntimeArgumentsFromDefinitionsSetWithRuntimeArg;
 
 - (id)knightWithPredefinedRuntimeQuest;
+
 @end

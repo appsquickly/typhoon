@@ -21,7 +21,8 @@
 
 @end
 
-@implementation TyphoonComponentsFactoryCollaboratingWithRuntimeArgsTests {
+@implementation TyphoonComponentsFactoryCollaboratingWithRuntimeArgsTests
+{
     CollaboratingMiddleAgesAssembly *_assembly;
 }
 
@@ -29,8 +30,8 @@
 {
     [super setUp];
 
-    _assembly = [CollaboratingMiddleAgesAssembly assembly];
-    [[TyphoonAssemblyActivator withAssemblies:@[_assembly, [MiddleAgesAssembly assembly]]] activate];
+    _assembly = [[CollaboratingMiddleAgesAssembly assembly]
+        activateWithCollaboratingAssemblies:@[[MiddleAgesAssembly assembly]]];
 }
 
 - (void)test_collaborating_assembly_with_runtime_args

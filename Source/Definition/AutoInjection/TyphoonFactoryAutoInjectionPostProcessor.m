@@ -52,7 +52,7 @@ static id TypeForInjectionFromType(TyphoonTypeDescriptor *type);
     NSMutableArray *injections = nil;
     NSSet *allProperties = [TyphoonIntrospectionUtils injectedPropertiesForClass:clazz upToParentClass:[NSObject class]];
     for (NSString *propertyName in allProperties) {
-		TyphoonTypeDescriptor *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyName inClass:clazz];
+		TyphoonTypeDescriptor *type = [TyphoonIntrospectionUtils typeForPropertyNamed:propertyName inClass:clazz];
 		
         id explicitType = TypeForInjectionFromType(type);
         if (!explicitType) {

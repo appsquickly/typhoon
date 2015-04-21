@@ -51,7 +51,7 @@ static NSMutableDictionary * propertiesCache = nil;
 }
 
 
-+ (TyphoonTypeDescriptor *)typeForPropertyWithName:(NSString *)propertyName inClass:(Class)clazz
++ (TyphoonTypeDescriptor *)typeForPropertyNamed:(NSString *)propertyName inClass:(Class)clazz
 {
     objc_property_t propertyReflection = class_getProperty(clazz, [propertyName cStringUsingEncoding:NSASCIIStringEncoding]);
     return [self typeForProperty:propertyReflection];

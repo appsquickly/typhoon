@@ -21,6 +21,6 @@
 /**
 * Returns a Class object or `TyphoonTypeDescriptor` in the case of a primitive type.
 */
-- (TyphoonTypeDescriptor *)typhoon_typeForPropertyWithName:(NSString *)propertyName;
+- (TyphoonTypeDescriptor *)typhoonTypeForPropertyNamed:(NSString *)propertyName;
 
 @end

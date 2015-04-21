@@ -26,6 +26,7 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
+#import "TyphoonBlockComponentFactory.h"
 
 static NSMutableSet *reservedSelectorsAsStrings;
 
@@ -146,14 +147,14 @@ static NSMutableSet *reservedSelectorsAsStrings;
 }
 
 //-------------------------------------------------------------------------------------------
-#pragma mark - <TyphoonInstanceBuilder>
+#pragma mark - <TyphoonComponentFactory>
 //-------------------------------------------------------------------------------------------
 
 - (id)componentForType:(id)classOrProtocol
 {
     if (!_factory) {
         [NSException raise:NSInternalInconsistencyException
-            format:@"componentForType: requires the assembly to be activated with TyphooonAssemblyActivator"];
+            format:@"componentForType: requires the assembly to be activated."];
     }
     return [_factory componentForType:classOrProtocol];
 }
@@ -162,7 +163,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 {
     if (!_factory) {
         [NSException raise:NSInternalInconsistencyException
-            format:@"allComponentsForType: requires the assembly to be activated with TyphooonAssemblyActivator"];
+            format:@"allComponentsForType: requires the assembly to be activated."];
     }
     return [_factory allComponentsForType:classOrProtocol];
 }
@@ -171,7 +172,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 {
     if (!_factory) {
         [NSException raise:NSInternalInconsistencyException
-            format:@"componentForKey: requires the assembly to be activated with TyphooonAssemblyActivator"];
+            format:@"componentForKey: requires the assembly to be activated."];
     }
     return [_factory componentForKey:key];
 }
@@ -180,7 +181,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 {
     if (!_factory) {
         [NSException raise:NSInternalInconsistencyException
-            format:@"componentForKey:args requires the assembly to be activated with TyphooonAssemblyActivator"];
+            format:@"componentForKey:args requires the assembly to be activated."];
     }
     return [_factory componentForKey:key args:args];
 }
@@ -188,8 +189,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 - (void)inject:(id)instance
 {
     if (!_factory) {
-        [NSException raise:NSInternalInconsistencyException
-            format:@"inject: requires the assembly to be activated with TyphooonAssemblyActivator"];
+        [NSException raise:NSInternalInconsistencyException format:@"inject: requires the assembly to be activated."];
     }
     [_factory inject:instance];
 }
@@ -198,7 +198,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 {
     if (!_factory) {
         [NSException raise:NSInternalInconsistencyException
-            format:@"inject:withSelector: requires the assembly to be activated with TyphooonAssemblyActivator"];
+            format:@"inject:withSelector: requires the assembly to be activated."];
     }
     [_factory inject:instance withSelector:selector];
 }
@@ -208,7 +208,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 {
     if (!_factory) {
         [NSException raise:NSInternalInconsistencyException
-            format:@"makeDefault requires the assembly to be activated with TyphooonAssemblyActivator"];
+            format:@"makeDefault requires the assembly to be activated."];
     }
     [_factory makeDefault];
 }
@@ -216,6 +216,42 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods
+//-------------------------------------------------------------------------------------------
+
+- (instancetype)activate
+{
+    return [self activateWithCollaboratingAssemblies:nil];
+}
+
+- (instancetype)activateWithCollaboratingAssemblies:(NSArray *)assemblies
+{
+    NSMutableArray *collaborators = [[NSMutableArray alloc] initWithArray:@[self]];
+    for (NSString *propertyName in [self collaboratingAssemblyPropertyNames]) {
+        Class assemblyClass = [self typhoonTypeForPropertyNamed:propertyName].typeBeingDescribed;
+        if (assemblyClass != [TyphoonAssembly class]) {
+            for (Class overrideCandidate in assemblies) {
+                if (overrideCandidate != assemblyClass && [overrideCandidate isSubclassOfClass:assemblyClass]) {
+                    LogInfo(@"%@ will act in place of assembly with class: %@", overrideCandidate, assemblyClass);
+                    assemblyClass = overrideCandidate;
+                }
+            }
+            TyphoonAssembly *instance = ((TyphoonAssembly *(*)(Class, SEL))objc_msgSend)(assemblyClass,
+                @selector(assembly));
+            [collaborators addObject:instance];
+        }
+    }
+
+    TyphoonBlockComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssemblies:collaborators];
+    for (TyphoonAssembly *assembly in collaborators) {
+        [assembly activateWithFactory:factory collaborators:collaborators];
+    }
+    return self;
+}
+
+
+
+//-------------------------------------------------------------------------------------------
+#pragma mark - Private Methods
 //-------------------------------------------------------------------------------------------
 
 - (void)resolveCollaboratingAssemblies
@@ -233,19 +269,11 @@ static NSMutableSet *reservedSelectorsAsStrings;
     [self setValue:[TyphoonCollaboratingAssemblyProxy proxy] forKey:name];
 }
 
-
-//-------------------------------------------------------------------------------------------
-#pragma mark - Private Methods
-//-------------------------------------------------------------------------------------------
-
 - (void)activateWithFactory:(TyphoonComponentFactory *)factory collaborators:(NSArray *)collaborators
 {
     _factory = factory;
-    NSSet *properties = [TyphoonIntrospectionUtils propertiesForClass:[self class]
-        upToParentClass:[TyphoonAssembly class]];
-
-    for (NSString *propertyName in properties) {
-        TyphoonTypeDescriptor *descriptor = [self typhoon_typeForPropertyWithName:propertyName];
+    for (NSString *propertyName in [self collaboratingAssemblyPropertyNames]) {
+        TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:propertyName];
         if (descriptor.typeBeingDescribed == [TyphoonAssembly class]) {
             TyphoonAssembly *collaborator = [self assemblyConformingTo:descriptor.declaredProtocol in:collaborators];
             if (!collaborator) {
@@ -266,6 +294,22 @@ static NSMutableSet *reservedSelectorsAsStrings;
         }
     }
 }
+
+- (NSSet *)collaboratingAssemblyPropertyNames
+{
+    NSMutableArray *collaboratingAssemblyPropertyNames = [[NSMutableArray alloc] init];
+    NSSet *properties = [TyphoonIntrospectionUtils propertiesForClass:[self class]
+        upToParentClass:[TyphoonAssembly class]];
+
+    for (NSString *propertyName in properties) {
+        TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:propertyName];
+        if ([descriptor.typeBeingDescribed isSubclassOfClass:[TyphoonAssembly class]]) {
+            [collaboratingAssemblyPropertyNames addObject:propertyName];
+        }
+    }
+    return [NSSet setWithArray:collaboratingAssemblyPropertyNames];
+}
+
 
 - (TyphoonAssembly *)assemblyConformingTo:(NSString *)protocolName in:(NSArray *)assemblies
 {

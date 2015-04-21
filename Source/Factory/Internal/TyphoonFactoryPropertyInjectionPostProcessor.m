@@ -50,7 +50,7 @@
     BOOL isFactoryClass = NO;
 
     TyphoonTypeDescriptor
-        *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyInjection.propertyName inClass:definition.type];
+        *type = [TyphoonIntrospectionUtils typeForPropertyNamed:propertyInjection.propertyName inClass:definition.type];
 
     if (type.typeBeingDescribed) {
         isFactoryClass = [type.typeBeingDescribed isSubclassOfClass:[TyphoonComponentFactory class]];

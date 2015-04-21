@@ -48,7 +48,7 @@
 
 - (BOOL)propertyForName:(NSString *)propertyName isCollaboratingAssemblyPropertyOnClass:(Class)class
 {
-    TyphoonTypeDescriptor *type = [TyphoonIntrospectionUtils typeForPropertyWithName:propertyName inClass:class];
+    TyphoonTypeDescriptor *type = [TyphoonIntrospectionUtils typeForPropertyNamed:propertyName inClass:class];
     return [type.typeBeingDescribed isSubclassOfClass:[TyphoonAssembly class]];
 }
 

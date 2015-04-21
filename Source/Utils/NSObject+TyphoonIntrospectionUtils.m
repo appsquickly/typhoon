@@ -24,9 +24,9 @@ TYPHOON_LINK_CATEGORY(NSObject_TyphoonIntrospectionUtils)
 
 @implementation NSObject (TyphoonIntrospectionUtils)
 
-- (TyphoonTypeDescriptor *)typhoon_typeForPropertyWithName:(NSString *)propertyName
+- (TyphoonTypeDescriptor *)typhoonTypeForPropertyNamed:(NSString *)propertyName
 {
-    return [TyphoonIntrospectionUtils typeForPropertyWithName:propertyName inClass:[self class]];
+    return [TyphoonIntrospectionUtils typeForPropertyNamed:propertyName inClass:[self class]];
 }
 
 @end
