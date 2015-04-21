@@ -64,11 +64,6 @@
               <Anchor>a54c45340de66c65390e529f237fc5785</Anchor>
              </Node>
              <Node>
-              <Name>attachPostProcessor:</Name>
-              <Path>interface_typhoon_component_factory.html</Path>
-              <Anchor>a497444322c5eb57d64a327f170cbd389</Anchor>
-             </Node>
-             <Node>
               <Name>defaultFactory</Name>
               <Path>interface_typhoon_component_factory.html</Path>
               <Anchor>ad0d0eb369da7b2cd39caf403e9c91ddf</Anchor>
@@ -118,6 +113,11 @@
               <Name>allComponentsForType:</Name>
               <Path>protocol_typhoon_component_factory-p.html</Path>
               <Anchor>aea027bcac4e17f242ac23662ac00c6c4</Anchor>
+             </Node>
+             <Node>
+              <Name>attachPostProcessor:</Name>
+              <Path>protocol_typhoon_component_factory-p.html</Path>
+              <Anchor>a3f20949fc0d8da6537e559b79a9d3bce</Anchor>
              </Node>
              <Node>
               <Name>componentForKey:</Name>
@@ -750,11 +750,6 @@
               <Anchor>a54c45340de66c65390e529f237fc5785</Anchor>
              </Node>
              <Node>
-              <Name>attachPostProcessor:</Name>
-              <Path>interface_typhoon_component_factory.html</Path>
-              <Anchor>a497444322c5eb57d64a327f170cbd389</Anchor>
-             </Node>
-             <Node>
               <Name>defaultFactory</Name>
               <Path>interface_typhoon_component_factory.html</Path>
               <Anchor>ad0d0eb369da7b2cd39caf403e9c91ddf</Anchor>
@@ -804,6 +799,11 @@
               <Name>allComponentsForType:</Name>
               <Path>protocol_typhoon_component_factory-p.html</Path>
               <Anchor>aea027bcac4e17f242ac23662ac00c6c4</Anchor>
+             </Node>
+             <Node>
+              <Name>attachPostProcessor:</Name>
+              <Path>protocol_typhoon_component_factory-p.html</Path>
+              <Anchor>a3f20949fc0d8da6537e559b79a9d3bce</Anchor>
              </Node>
              <Node>
               <Name>componentForKey:</Name>

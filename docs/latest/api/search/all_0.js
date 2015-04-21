@@ -10,7 +10,7 @@ var searchData=
   ['arraylength',['arrayLength',['../interface_typhoon_type_descriptor.html#ad541d952528bcaa20827a8e3d87e23c0',1,'TyphoonTypeDescriptor']]],
   ['assembly',['assembly',['../interface_typhoon_assembly.html#af53fcd1ea8b4e55dda2080a651814c6c',1,'TyphoonAssembly::assembly()'],['../group___assembly.html',1,'(Global Namespace)']]],
   ['asstringwithencoding_3a',['asStringWithEncoding:',['../protocol_typhoon_resource-p.html#afed07d1fc2e7fb11a2db3073dd53ddd7',1,'TyphoonResource-p']]],
-  ['attachpostprocessor_3a',['attachPostProcessor:',['../interface_typhoon_component_factory.html#a497444322c5eb57d64a327f170cbd389',1,'TyphoonComponentFactory']]],
+  ['attachpostprocessor_3a',['attachPostProcessor:',['../protocol_typhoon_component_factory-p.html#a3f20949fc0d8da6537e559b79a9d3bce',1,'TyphoonComponentFactory-p']]],
   ['autoinjectionvisibility',['autoInjectionVisibility',['../protocol_typhoon_auto_injection_config-p.html#a9a8d0f25081dfff997f97ba15e0e8bc9',1,'TyphoonAutoInjectionConfig-p::autoInjectionVisibility()'],['../interface_typhoon_definition.html#a7b651ab85991ef1d9641ef5cd1f67187',1,'TyphoonDefinition::autoInjectionVisibility()']]],
   ['availableextensions',['availableExtensions',['../interface_typhoon_config_post_processor.html#a57eacc037c000e78f67f31d6884964bd',1,'TyphoonConfigPostProcessor']]]
 ];

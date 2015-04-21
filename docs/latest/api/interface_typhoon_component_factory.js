@@ -4,7 +4,6 @@ var interface_typhoon_component_factory =
     [ "instancePostProcessors", "interface_typhoon_component_factory.html#a6647913e4fc87992108fa703df42c970", null ],
     [ "loaded", "interface_typhoon_component_factory.html#a09b13d5d400d8ca043cc5f1105b8a744", null ],
     [ "singletons", "interface_typhoon_component_factory.html#a54c45340de66c65390e529f237fc5785", null ],
-    [ "attachPostProcessor:", "interface_typhoon_component_factory.html#a497444322c5eb57d64a327f170cbd389", null ],
     [ "defaultFactory", "interface_typhoon_component_factory.html#ad0d0eb369da7b2cd39caf403e9c91ddf", null ],
     [ "enumerateDefinitions:", "interface_typhoon_component_factory.html#a57cb1e89e38d67d01c72cc36bf592d3a", null ],
     [ "factoryForResolvingFromXibs", "interface_typhoon_component_factory.html#a9f9dfff1c95f8c83303889d7202df414", null ],

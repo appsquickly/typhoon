@@ -136,9 +136,6 @@ Class Methods</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:a497444322c5eb57d64a327f170cbd389"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_component_factory.html#a497444322c5eb57d64a327f170cbd389">attachPostProcessor:</a></td></tr>
-<tr class="memdesc:a497444322c5eb57d64a327f170cbd389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attach a TyphoonComponentFactoryPostProcessor to this component factory.  <a href="#a497444322c5eb57d64a327f170cbd389">More...</a><br /></td></tr>
-<tr class="separator:a497444322c5eb57d64a327f170cbd389"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57cb1e89e38d67d01c72cc36bf592d3a"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_component_factory.html#a57cb1e89e38d67d01c72cc36bf592d3a">enumerateDefinitions:</a></td></tr>
 <tr class="separator:a57cb1e89e38d67d01c72cc36bf592d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5682d54bbebb3e5eca92707339bee4ce"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_typhoon_component_factory.html#a5682d54bbebb3e5eca92707339bee4ce">load</a></td></tr>
@@ -156,6 +153,9 @@ Instance Methods</h2></td></tr>
 <tr class="memitem:aea027bcac4e17f242ac23662ac00c6c4 inherit pub_methods_protocol_typhoon_component_factory-p"><td class="memItemLeft" align="right" valign="top">(NSArray *)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_typhoon_component_factory-p.html#aea027bcac4e17f242ac23662ac00c6c4">allComponentsForType:</a></td></tr>
 <tr class="memdesc:aea027bcac4e17f242ac23662ac00c6c4 inherit pub_methods_protocol_typhoon_component_factory-p"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an array objects matching the given type.  <a href="#aea027bcac4e17f242ac23662ac00c6c4">More...</a><br /></td></tr>
 <tr class="separator:aea027bcac4e17f242ac23662ac00c6c4 inherit pub_methods_protocol_typhoon_component_factory-p"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f20949fc0d8da6537e559b79a9d3bce inherit pub_methods_protocol_typhoon_component_factory-p"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_typhoon_component_factory-p.html#a3f20949fc0d8da6537e559b79a9d3bce">attachPostProcessor:</a></td></tr>
+<tr class="memdesc:a3f20949fc0d8da6537e559b79a9d3bce inherit pub_methods_protocol_typhoon_component_factory-p"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attach a TyphoonComponentFactoryPostProcessor to this component factory.  <a href="#a3f20949fc0d8da6537e559b79a9d3bce">More...</a><br /></td></tr>
+<tr class="separator:a3f20949fc0d8da6537e559b79a9d3bce inherit pub_methods_protocol_typhoon_component_factory-p"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbbebd539b0c507d2c22bfb77e954c9c inherit pub_methods_protocol_typhoon_component_factory-p"><td class="memItemLeft" align="right" valign="top">(id)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_typhoon_component_factory-p.html#abbbebd539b0c507d2c22bfb77e954c9c">componentForKey:</a></td></tr>
 <tr class="memdesc:abbbebd539b0c507d2c22bfb77e954c9c inherit pub_methods_protocol_typhoon_component_factory-p"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the component matching the given key.  <a href="#abbbebd539b0c507d2c22bfb77e954c9c">More...</a><br /></td></tr>
 <tr class="separator:abbbebd539b0c507d2c22bfb77e954c9c inherit pub_methods_protocol_typhoon_component_factory-p"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -266,30 +266,6 @@ Instance Methods</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Method Documentation</h2>
-<a class="anchor" id="a497444322c5eb57d64a327f170cbd389"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (void) attachPostProcessor: </td>
-          <td></td>
-          <td class="paramtype">(id&lt; <a class="el" href="protocol_typhoon_definition_post_processor-p.html">TyphoonDefinitionPostProcessor</a> &gt;)&#160;</td>
-          <td class="paramname"><em>postProcessor</em></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Attach a TyphoonComponentFactoryPostProcessor to this component factory. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">postProcessor</td><td>The post-processor to attach. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="ad0d0eb369da7b2cd39caf403e9c91ddf"></a>
 <div class="memitem">
 <div class="memproto">
@@ -436,7 +412,7 @@ TyphoonComponentFactoryAware </dd></dl>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
         <li class="navelem"><a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a></li>
-        <li class="footer">Generated on Tue Apr 21 2015 12:38:00 for Typhoon by
+        <li class="footer">Generated on Tue Apr 21 2015 18:04:00 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>

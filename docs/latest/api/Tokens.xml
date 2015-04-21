@@ -1207,6 +1207,18 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>attachPostProcessor:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>a3f20949fc0d8da6537e559b79a9d3bce</Anchor>
+    <Abstract>Attach a TyphoonComponentFactoryPostProcessor to this component factory. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>componentForKey:</Name>
       <APILanguage>occ</APILanguage>
       <Type>intfm</Type>
@@ -1518,18 +1530,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>attachPostProcessor:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonComponentFactory</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_component_factory.html</Path>
-    <Anchor>a497444322c5eb57d64a327f170cbd389</Anchor>
-    <Abstract>Attach a TyphoonComponentFactoryPostProcessor to this component factory. </Abstract>
-    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>enumerateDefinitions:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -1596,6 +1596,18 @@
     <Path>protocol_typhoon_component_factory-p.html</Path>
     <Anchor>aea027bcac4e17f242ac23662ac00c6c4</Anchor>
     <Abstract>Returns an array objects matching the given type. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>attachPostProcessor:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>a3f20949fc0d8da6537e559b79a9d3bce</Anchor>
+    <Abstract>Attach a TyphoonComponentFactoryPostProcessor to this component factory. </Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>
@@ -1689,6 +1701,18 @@
     <Path>protocol_typhoon_component_factory-p.html</Path>
     <Anchor>aea027bcac4e17f242ac23662ac00c6c4</Anchor>
     <Abstract>Returns an array objects matching the given type. </Abstract>
+    <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>attachPostProcessor:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>intfm</Type>
+      <Scope>TyphoonComponentFactory-p</Scope>
+    </TokenIdentifier>
+    <Path>protocol_typhoon_component_factory-p.html</Path>
+    <Anchor>a3f20949fc0d8da6537e559b79a9d3bce</Anchor>
+    <Abstract>Attach a TyphoonComponentFactoryPostProcessor to this component factory. </Abstract>
     <DeclaredIn>TyphoonComponentFactory.h</DeclaredIn>
   </Token>
   <Token>
