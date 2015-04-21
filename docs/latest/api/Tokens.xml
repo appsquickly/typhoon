@@ -1864,13 +1864,37 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>postProcessor</Name>
+      <Name>forResourceAtPath:</Name>
       <APILanguage>occ</APILanguage>
       <Type>clm</Type>
       <Scope>TyphoonConfigPostProcessor</Scope>
     </TokenIdentifier>
     <Path>interface_typhoon_config_post_processor.html</Path>
-    <Anchor>ac342615e85b44734a1954dbe02d1ba76</Anchor>
+    <Anchor>ac17d60639a4571a1c22c7d8f3325c8a8</Anchor>
+    <Abstract>Returns a post processor for the resource at the specified path. </Abstract>
+    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>forResourceNamed:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonConfigPostProcessor</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_config_post_processor.html</Path>
+    <Anchor>a65ea4a5229e4f09d77d6286cbca50939</Anchor>
+    <Abstract>Returns a post processor for the bundle resource with the given name. </Abstract>
+    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>processor</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonConfigPostProcessor</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_config_post_processor.html</Path>
+    <Anchor>a41902743cd49555aaa2be5a3f79bd9c9</Anchor>
     <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
   </Token>
   <Token>
