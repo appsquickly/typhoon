@@ -19,6 +19,11 @@
 @interface NSObject (TyphoonIntrospectionUtils)
 
 /**
+* Returns a set of property names up to the parent class.
+*/
+- (NSSet*) /* <NSString> */ typhoonPropertiesUpToParentClass:(Class)clazz;
+
+/**
 * Returns a Class object or `TyphoonTypeDescriptor` in the case of a primitive type.
 */
 - (TyphoonTypeDescriptor *)typhoonTypeForPropertyNamed:(NSString *)propertyName;

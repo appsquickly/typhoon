@@ -24,6 +24,11 @@ TYPHOON_LINK_CATEGORY(NSObject_TyphoonIntrospectionUtils)
 
 @implementation NSObject (TyphoonIntrospectionUtils)
 
+- (NSSet*)typhoonPropertiesUpToParentClass:(Class)clazz
+{
+    return [TyphoonIntrospectionUtils propertiesForClass:[self class] upToParentClass:clazz];
+}
+
 - (TyphoonTypeDescriptor *)typhoonTypeForPropertyNamed:(NSString *)propertyName
 {
     return [TyphoonIntrospectionUtils typeForPropertyNamed:propertyName inClass:[self class]];

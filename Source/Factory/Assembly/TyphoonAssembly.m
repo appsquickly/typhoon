@@ -12,7 +12,6 @@
 
 
 #import <objc/runtime.h>
-#import <objc/message.h>
 #import "TyphoonAssembly.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblyAdviser.h"
@@ -22,8 +21,6 @@
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonObjectWithCustomInjection.h"
 #import "TyphoonInjectionByComponentFactory.h"
-#import "TyphoonDefinition+Infrastructure.h"
-#import "TyphoonIntrospectionUtils.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
 #import "TyphoonBlockComponentFactory.h"
@@ -73,7 +70,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
     [self markSelectorReserved:@selector(prepareForUse)];
     [self markSelectorReservedFromString:@".cxx_destruct"];
     [self markSelectorReserved:@selector(defaultAssembly)];
-    [self markSelectorReserved:@selector(resolveCollaboratingAssemblies)];
+    [self markSelectorReserved:@selector(proxyCollaboratingAssembliesPriorToActivation)];
     [self markSelectorReserved:@selector(componentForType:)];
     [self markSelectorReserved:@selector(allComponentsForType:)];
     [self markSelectorReserved:@selector(componentForKey:)];
@@ -132,7 +129,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
     if (self) {
         _definitionBuilder = [[TyphoonAssemblyDefinitionBuilder alloc] initWithAssembly:self];
         _adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:self];
-        [self resolveCollaboratingAssemblies];
+        [self proxyCollaboratingAssembliesPriorToActivation];
     }
     return self;
 }
@@ -225,25 +222,25 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 - (instancetype)activateWithCollaboratingAssemblies:(NSArray *)assemblies
 {
-    NSMutableArray *collaborators = [[NSMutableArray alloc] initWithArray:@[self]];
-    for (NSString *propertyName in [self collaboratingAssemblyPropertyNames]) {
-        Class assemblyClass = [self typhoonTypeForPropertyNamed:propertyName].typeBeingDescribed;
-        if (assemblyClass != [TyphoonAssembly class]) {
-            for (Class overrideCandidate in assemblies) {
-                if (overrideCandidate != assemblyClass && [overrideCandidate isSubclassOfClass:assemblyClass]) {
-                    LogInfo(@"%@ will act in place of assembly with class: %@", overrideCandidate, assemblyClass);
-                    assemblyClass = overrideCandidate;
-                }
+    NSMutableArray *reconciledAssemblies = [[NSMutableArray alloc] initWithArray:@[self]];
+    for (TyphoonAssembly *assembly in [self collaboratingAssembliesTerminatingAt:[self class]]) {
+
+        TyphoonAssembly *candidate = assembly;
+        for (TyphoonAssembly *overrideCandidate in assemblies) {
+            if ([assembly class] != [overrideCandidate class] &&
+                [[overrideCandidate class] isSubclassOfClass:[assembly class]]) {
+
+                candidate = overrideCandidate;
+                LogInfo(@"%@ will act in place of assembly with class: %@", [overrideCandidate class],
+                    [candidate class]);
             }
-            TyphoonAssembly *instance = ((TyphoonAssembly *(*)(Class, SEL))objc_msgSend)(assemblyClass,
-                @selector(assembly));
-            [collaborators addObject:instance];
         }
+        [reconciledAssemblies addObject:candidate];
     }
 
-    TyphoonBlockComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssemblies:collaborators];
-    for (TyphoonAssembly *assembly in collaborators) {
-        [assembly activateWithFactory:factory collaborators:collaborators];
+    TyphoonBlockComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssemblies:reconciledAssemblies];
+    for (TyphoonAssembly *assembly in reconciledAssemblies) {
+        [assembly activateWithFactory:factory collaborators:reconciledAssemblies];
     }
     return self;
 }
@@ -254,25 +251,20 @@ static NSMutableSet *reservedSelectorsAsStrings;
 #pragma mark - Private Methods
 //-------------------------------------------------------------------------------------------
 
-- (void)resolveCollaboratingAssemblies
+- (void)proxyCollaboratingAssembliesPriorToActivation
 {
     TyphoonCollaboratingAssemblyPropertyEnumerator *enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc]
         initWithAssembly:self];
 
     for (NSString *propertyName in enumerator.collaboratingAssemblyProperties) {
-        [self setCollaboratingAssemblyProxyOnPropertyNamed:propertyName];
+        [self setValue:[TyphoonCollaboratingAssemblyProxy proxy] forKey:propertyName];
     }
-}
-
-- (void)setCollaboratingAssemblyProxyOnPropertyNamed:(NSString *)name
-{
-    [self setValue:[TyphoonCollaboratingAssemblyProxy proxy] forKey:name];
 }
 
 - (void)activateWithFactory:(TyphoonComponentFactory *)factory collaborators:(NSArray *)collaborators
 {
     _factory = factory;
-    for (NSString *propertyName in [self collaboratingAssemblyPropertyNames]) {
+    for (NSString *propertyName in [self typhoonPropertiesUpToParentClass:[TyphoonAssembly class]]) {
         TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:propertyName];
         if (descriptor.typeBeingDescribed == [TyphoonAssembly class]) {
             TyphoonAssembly *collaborator = [self assemblyConformingTo:descriptor.declaredProtocol in:collaborators];
@@ -295,22 +287,6 @@ static NSMutableSet *reservedSelectorsAsStrings;
     }
 }
 
-- (NSSet *)collaboratingAssemblyPropertyNames
-{
-    NSMutableArray *collaboratingAssemblyPropertyNames = [[NSMutableArray alloc] init];
-    NSSet *properties = [TyphoonIntrospectionUtils propertiesForClass:[self class]
-        upToParentClass:[TyphoonAssembly class]];
-
-    for (NSString *propertyName in properties) {
-        TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:propertyName];
-        if ([descriptor.typeBeingDescribed isSubclassOfClass:[TyphoonAssembly class]]) {
-            [collaboratingAssemblyPropertyNames addObject:propertyName];
-        }
-    }
-    return [NSSet setWithArray:collaboratingAssemblyPropertyNames];
-}
-
-
 - (TyphoonAssembly *)assemblyConformingTo:(NSString *)protocolName in:(NSArray *)assemblies
 {
     for (TyphoonAssembly *assembly in assemblies) {
@@ -332,20 +308,30 @@ static NSMutableSet *reservedSelectorsAsStrings;
     return nil;
 }
 
+- (NSSet *)collaboratingAssembliesTerminatingAt:(Class)clazz
+{
+    NSMutableSet *collaboratingAssemblies = [[NSMutableSet alloc] init];
+    NSSet *properties = [self typhoonPropertiesUpToParentClass:[TyphoonAssembly class]];
+
+    for (NSString *propertyName in properties) {
+
+        Class assemblyClass = [self typhoonTypeForPropertyNamed:propertyName].typeBeingDescribed;
+        if (assemblyClass != [TyphoonAssembly class] && assemblyClass != clazz &&
+            [assemblyClass isSubclassOfClass:[TyphoonAssembly class]]) {
+
+            TyphoonAssembly *assemblyInstance = (TyphoonAssembly *)[assemblyClass assembly];
+            [collaboratingAssemblies addObject:assemblyInstance];
+            NSArray *instanceCollaborators = [[assemblyInstance collaboratingAssembliesTerminatingAt:clazz] allObjects];
+            [collaboratingAssemblies addObjectsFromArray:instanceCollaborators];
+        }
+    }
+    return collaboratingAssemblies;
+}
+
 
 - (NSArray *)definitions
 {
     return [_definitionBuilder builtDefinitions];
-}
-
-- (TyphoonDefinition *)definitionForKey:(NSString *)key
-{
-    for (TyphoonDefinition *definition in [self definitions]) {
-        if ([definition.key isEqualToString:key]) {
-            return definition;
-        }
-    }
-    return nil;
 }
 
 - (void)prepareForUse

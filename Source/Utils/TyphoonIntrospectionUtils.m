@@ -18,32 +18,32 @@
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonInjectedObject.h"
 
-static NSMutableDictionary * injectedPropertiesCache = nil;
-static NSMutableDictionary * propertiesCache = nil;
+static NSMutableDictionary *injectedPropertiesCache = nil;
+static NSMutableDictionary *propertiesCache = nil;
 
 @implementation TyphoonIntrospectionUtils
 
 + (TyphoonTypeDescriptor *)typeForProperty:(objc_property_t)property
 {
     TyphoonTypeDescriptor *typeDescriptor = nil;
-    
+
     if (property) {
         const char *attributes = property_getAttributes(property);
-        
+
         if (attributes == NULL) {
             return (NULL);
         }
-        
+
         static char buffer[256];
         const char *e = strchr(attributes, ',');
         if (e == NULL) {
             return (NULL);
         }
-        
-        int len = (int) (e - attributes);
-        memcpy( buffer, attributes, len );
+
+        int len = (int)(e - attributes);
+        memcpy(buffer, attributes, len);
         buffer[len] = '\0';
-        
+
         NSString *typeCode = [NSString stringWithCString:buffer encoding:NSASCIIStringEncoding];
         typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:typeCode];
     }
@@ -53,14 +53,15 @@ static NSMutableDictionary * propertiesCache = nil;
 
 + (TyphoonTypeDescriptor *)typeForPropertyNamed:(NSString *)propertyName inClass:(Class)clazz
 {
-    objc_property_t propertyReflection = class_getProperty(clazz, [propertyName cStringUsingEncoding:NSASCIIStringEncoding]);
+    objc_property_t propertyReflection = class_getProperty(clazz,
+        [propertyName cStringUsingEncoding:NSASCIIStringEncoding]);
     return [self typeForProperty:propertyReflection];
 }
 
 + (SEL)setterForPropertyWithName:(NSString *)propertyName inClass:(Class)clazz
 {
     SEL setterSelector = nil;
-    
+
     objc_property_t property = class_getProperty(clazz, [propertyName cStringUsingEncoding:NSASCIIStringEncoding]);
     if (property) {
         if (![self isReadonlyProperty:property]) {
@@ -99,7 +100,8 @@ static NSMutableDictionary * propertiesCache = nil;
 + (NSMethodSignature *)methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:(SEL)selector
 {
     NSUInteger argc = [self numberOfArgumentsInSelector:selector];
-    NSMutableString *signatureString = [[NSMutableString alloc] initWithCapacity:argc + 3]; //one symbol per encoded type
+    NSMutableString *signatureString = [[NSMutableString alloc]
+        initWithCapacity:argc + 3]; //one symbol per encoded type
     [signatureString appendFormat:@"%s%s%s", @encode(id), @encode(id), @encode(SEL)];
     for (NSUInteger i = 0; i < argc; i++) {
         [signatureString appendString:[NSString stringWithCString:@encode(id) encoding:NSASCIIStringEncoding]];
@@ -126,77 +128,80 @@ static NSMutableDictionary * propertiesCache = nil;
     NSString *key = NSStringFromClass(clazz);
     if (injectedPropertiesCache == nil) {
         injectedPropertiesCache = [NSMutableDictionary dictionary];
-    } else {
+    }
+    else {
         if ([[injectedPropertiesCache allKeys] containsObject:key]) {
             return [injectedPropertiesCache objectForKey:key];
         }
     }
-    
+
     NSMutableSet *propertyNames = [[NSMutableSet alloc] init];
-   
+
     NSString *injectedObjectClassName = NSStringFromClass([TyphoonInjectedObject class]);
     NSString *injectedProtolName = NSStringFromProtocol(@protocol(TyphoonInjectedProtocol));
-    
+
     while (clazz && clazz != parent) {
         unsigned int count = 0;
         objc_property_t *properties = class_copyPropertyList(clazz, &count);
-        
+
         for (unsigned int propertyIndex = 0; propertyIndex < count; propertyIndex++) {
             objc_property_t aProperty = properties[propertyIndex];
-            NSString *propertyName = [NSString stringWithCString:property_getName(aProperty) encoding:NSUTF8StringEncoding];
-            
+            NSString *propertyName = [NSString stringWithCString:property_getName(aProperty)
+                encoding:NSUTF8StringEncoding];
+
             NSString *className = [self classNameOfProperty:aProperty];
-            
+
             // Little bit faster than protocol_isEqual method.
-            if (className.length > 0
-                && ([className rangeOfString:injectedObjectClassName].location != NSNotFound
-                    || [className rangeOfString:injectedProtolName].location != NSNotFound)) {
+            if (className.length > 0 && ([className rangeOfString:injectedObjectClassName].location != NSNotFound ||
+                [className rangeOfString:injectedProtolName].location != NSNotFound)) {
                 [propertyNames addObject:propertyName];
             }
         }
-        
+
         clazz = class_getSuperclass(clazz);
-        
+
         free(properties);
     }
-    
+
     [injectedPropertiesCache setObject:propertyNames forKey:key];
-    
+
     return propertyNames;
 }
 
 + (NSSet *)propertiesForClass:(Class)clazz upToParentClass:(Class)parent
 {
-     NSString *key = NSStringFromClass(clazz);
-    
+    NSString *key = NSStringFromClass(clazz);
+
     if (propertiesCache == nil) {
         propertiesCache = [NSMutableDictionary dictionary];
-    } else {
+    }
+    else {
         if ([[propertiesCache allKeys] containsObject:key]) {
             return [propertiesCache objectForKey:key];
         }
     }
-    
+
     NSMutableSet *propertyNames = [[NSMutableSet alloc] init];
-    
+
     while (clazz && clazz != parent) {
         unsigned int count = 0;
         objc_property_t *properties = class_copyPropertyList(clazz, &count);
-        
+
         for (unsigned int propertyIndex = 0; propertyIndex < count; propertyIndex++) {
             objc_property_t aProperty = properties[propertyIndex];
-            NSString *propertyName = [NSString stringWithCString:property_getName(aProperty) encoding:NSUTF8StringEncoding];
-            
+            NSString *propertyName = [NSString stringWithCString:property_getName(aProperty)
+                encoding:NSUTF8StringEncoding];
+
             [propertyNames addObject:propertyName];
         }
-        
+
         clazz = class_getSuperclass(clazz);
-        
+
         free(properties);
     }
-    
+
     [propertiesCache setObject:propertyNames forKey:key];
-    
+
     return propertyNames;
 }
 
@@ -222,13 +227,14 @@ static NSMutableDictionary * propertiesCache = nil;
 
 + (NSString *)classNameOfProperty:(objc_property_t)property
 {
-    NSString *propertyAttributes = [NSString stringWithCString:property_getAttributes(property) encoding:NSUTF8StringEncoding];
+    NSString *propertyAttributes = [NSString stringWithCString:property_getAttributes(property)
+        encoding:NSUTF8StringEncoding];
     NSArray *splitPropertyAttributes = [propertyAttributes componentsSeparatedByString:@"\""];
     if (splitPropertyAttributes.count >= 2) {
-        
+
         return [splitPropertyAttributes objectAtIndex:1];
     }
-    
+
     return nil;
 }
 
@@ -271,7 +277,8 @@ static NSMutableDictionary * propertiesCache = nil;
 + (NSString *)defaultSetterForPropertyWithName:(NSString *)propertyName
 {
     NSString *firstLetterUppercase = [[propertyName substringToIndex:1] uppercaseString];
-    NSString *propertyPart = [propertyName stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:firstLetterUppercase];
+    NSString *propertyPart = [propertyName stringByReplacingCharactersInRange:NSMakeRange(0, 1)
+        withString:firstLetterUppercase];
     return [NSString stringWithFormat:@"set%@:", propertyPart];
 }
 
@@ -283,7 +290,8 @@ static NSMutableDictionary * propertiesCache = nil;
 @end
 
 
-NSString *TyphoonTypeStringFor(id classOrProtocol) {
+NSString *TyphoonTypeStringFor(id classOrProtocol)
+{
     if (IsClass(classOrProtocol)) {
         return NSStringFromClass(classOrProtocol);
     }
@@ -298,53 +306,53 @@ Class TyphoonClassFromString(NSString *className)
     if (!clazz) {
         NSString *defaultModuleName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
         defaultModuleName = [defaultModuleName stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-        clazz = NSClassFromString([defaultModuleName stringByAppendingFormat:@".%@",className]);
+        clazz = NSClassFromString([defaultModuleName stringByAppendingFormat:@".%@", className]);
     }
     if (!clazz) {
         /**
-         Swift issue:
-         When calling property_getAttributes() for a Swift class that belongs in a different
-         module, the module name is *NOT* returned, therefore attempting to resolve the
-         Swift class via name wont work:
-         
-         1. Foo.BarAssembly in Foo.framework
-         2. App.app includes Foo.framework and references Foo.BarAssembly in AppAssembly
-         
-         import Foo
-         
-         class AppAssembly: TyphonAssembly {
-         
-         var barAssembly: Foo.BarAssembly?
-         }
-         3. property_getAttributes() called on `barAssembly` returns @T"BarAssembly" but
-         should return @T"Foo.BarAssembly"
-         4. NSClassforString("BarAssembly") returns nil because the App.app does not define
-         this class
-         
-         Poor workaround, not the best, but no other way around it unless Apple fixes the objc reflection of
-         Swift classes there is no other way:
-         
-         If we are unable to find the class in the top level project iterate all dynamic
-         frameworks and attempt to resolve the class name by appending the module name
-         
-         This is somewhat brittle as we loose the namespacing modules give us (for example,
-         if 2 modules define the same class then which ever appears first in the list will
-         be used which might not be expected). In order for this to work, developers are required
-         to:
-         - have unique names of assemblies across modules
-         - frameworks bundle ids much match the following format: *.{Name} where Name is
-         the name of the module
-         
-         */
-        NSArray * frameworks = [NSBundle allFrameworks];
+        Swift issue:
+        When calling property_getAttributes() for a Swift class that belongs in a different
+        module, the module name is *NOT* returned, therefore attempting to resolve the
+        Swift class via name wont work:
+
+        1. Foo.BarAssembly in Foo.framework
+        2. App.app includes Foo.framework and references Foo.BarAssembly in AppAssembly
+
+        import Foo
+
+        class AppAssembly: TyphonAssembly {
+
+        var barAssembly: Foo.BarAssembly?
+        }
+        3. property_getAttributes() called on `barAssembly` returns @T"BarAssembly" but
+        should return @T"Foo.BarAssembly"
+        4. NSClassforString("BarAssembly") returns nil because the App.app does not define
+        this class
+
+        Poor workaround, not the best, but no other way around it unless Apple fixes the objc reflection of
+        Swift classes there is no other way:
+
+        If we are unable to find the class in the top level project iterate all dynamic
+        frameworks and attempt to resolve the class name by appending the module name
+
+        This is somewhat brittle as we loose the namespacing modules give us (for example,
+        if 2 modules define the same class then which ever appears first in the list will
+        be used which might not be expected). In order for this to work, developers are required
+        to:
+        - have unique names of assemblies across modules
+        - frameworks bundle ids much match the following format: *.{Name} where Name is
+        the name of the module
+
+        */
+        NSArray *frameworks = [NSBundle allFrameworks];
         for (uint i = 0; i < frameworks.count && clazz == nil; ++i) {
-            NSBundle * framework = [frameworks objectAtIndex:i];
-            NSString * bundleIdentifier = [framework bundleIdentifier];
+            NSBundle *framework = [frameworks objectAtIndex:i];
+            NSString *bundleIdentifier = [framework bundleIdentifier];
             // ignore apple frameworks
             if (![bundleIdentifier hasPrefix:@"com.apple"]) {
                 NSRange range = [bundleIdentifier rangeOfString:@"." options:NSBackwardsSearch];
                 if (range.location != NSNotFound) {
-                    NSString * frameworkName = [bundleIdentifier substringFromIndex:range.location + 1];
+                    NSString *frameworkName = [bundleIdentifier substringFromIndex:range.location + 1];
                     if (frameworkName != nil) {
                         clazz = NSClassFromString([frameworkName stringByAppendingFormat:@".%@", className]);
                     }

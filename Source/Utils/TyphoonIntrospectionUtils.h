@@ -32,6 +32,7 @@ BOOL IsProtocol(id classOrProtocol);
 + (TyphoonTypeDescriptor *)typeForPropertyNamed:(NSString *)propertyName inClass:(Class)clazz;
 
 + (SEL)setterForPropertyWithName:(NSString *)property inClass:(Class)clazz;
+
 + (SEL)getterForPropertyWithName:(NSString *)property inClass:(Class)clazz;
 
 + (NSMethodSignature *)methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:(SEL)selector;
