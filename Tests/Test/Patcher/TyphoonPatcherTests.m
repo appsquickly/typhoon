@@ -22,7 +22,6 @@
 @interface TyphoonPatcherTests : XCTestCase
 {
     MiddleAgesAssembly *_assembly;
-    TyphoonComponentFactory *_factory;
     TyphoonPatcher *_patcher;
 }
 
@@ -35,8 +34,7 @@
 {
     [super setUp];
 
-    _assembly = [MiddleAgesAssembly assembly];
-    _factory = [TyphoonBlockComponentFactory factoryWithAssembly:_assembly];
+    _assembly = [[MiddleAgesAssembly assembly] activate];
 }
 
 - (void)test_allows_patching_out_a_component_with_a_mock
@@ -47,7 +45,7 @@
 
 - (void)test_allows_patching_out_a_loaded_component_with_a_mock
 {
-    [_factory componentForKey:@"knight"];
+    [_assembly componentForKey:@"knight"];
 
     [self applyAPatch];
     [self assertPatchApplied];
@@ -59,23 +57,21 @@
     [self applyAPatch];
     [self assertPatchApplied];
 
-    XCTAssertFalse([_factory componentForKey:@"knight"] == [_factory componentForKey:@"knight"]);
-    XCTAssertTrue([_factory componentForKey:@"cavalryMan"] == [_factory componentForKey:@"cavalryMan"]);
+    XCTAssertFalse([_assembly componentForKey:@"knight"] == [_assembly componentForKey:@"knight"]);
+    XCTAssertTrue([_assembly componentForKey:@"cavalryMan"] == [_assembly componentForKey:@"cavalryMan"]);
 }
 
 - (void)test_patcher_with_runtime_args
 {
-    MiddleAgesAssembly *factory = (MiddleAgesAssembly *)_factory;
-
     [self applyAPatch];
     [self assertPatchApplied];
 
-    Knight *knight = [factory knightWithFoobar:@"123"];
+    Knight *knight = [_assembly knightWithFoobar:@"123"];
     XCTAssertEqual(knight.foobar, @"Fooooo");
 
     [_patcher detach];
 
-    knight = [factory knightWithFoobar:@"123"];
+    knight = [_assembly knightWithFoobar:@"123"];
     XCTAssertEqual(knight.foobar, @"123");
 
 }
@@ -85,20 +81,19 @@
     [self applyAPatch];
     [self assertPatchApplied];
 
-    XCTAssertFalse([_factory componentForKey:@"knight"] == [_factory componentForKey:@"knight"]);
-    XCTAssertTrue([_factory componentForKey:@"cavalryMan"] == [_factory componentForKey:@"cavalryMan"]);
+    XCTAssertFalse([_assembly componentForKey:@"knight"] == [_assembly componentForKey:@"knight"]);
+    XCTAssertTrue([_assembly componentForKey:@"cavalryMan"] == [_assembly componentForKey:@"cavalryMan"]);
 
     [_patcher detach];
 
-    Knight *knight = [_factory componentForKey:@"knight"];
+    Knight *knight = [_assembly componentForKey:@"knight"];
     LogDebug(@"%@", [knight favoriteDamsels]);
 }
 
 - (void)applyAPatch
 {
-    MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
     _patcher = [[TyphoonPatcher alloc] init];
-    [_patcher patchDefinition:[assembly knight] withObject:^id {
+    [_patcher patchDefinitionWithSelector:@selector(knight) withObject:^id {
         Knight *mockKnight = mock([Knight class]);
         [given([mockKnight favoriteDamsels]) willReturn:@[
             @"Mary",
@@ -126,12 +121,12 @@
         return knight;
     }];
 
-    [_factory attachPostProcessor:_patcher];
+    [_assembly attachPostProcessor:_patcher];
 }
 
 - (void)assertPatchApplied
 {
-    Knight *knight = [_factory componentForKey:@"knight"];
+    Knight *knight = [_assembly componentForKey:@"knight"];
     XCTAssertTrue([knight favoriteDamsels].count > 0);
 }
 
