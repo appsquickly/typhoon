@@ -233,20 +233,21 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 - (instancetype)activateWithCollaboratingAssemblies:(NSArray *)assemblies
 {
-    NSMutableArray *reconciledAssemblies = [[NSMutableArray alloc] initWithArray:@[self]];
-    for (TyphoonAssembly *assembly in [self collaboratingAssembliesTerminatingAt:[self class]]) {
+    NSMutableArray *reconciledAssemblies = [[@[self] arrayByAddingObjectsFromArray:assemblies] mutableCopy];
 
-        TyphoonAssembly *candidate = assembly;
+
+    for (TyphoonAssembly *assembly in [self collectCollaboratingAssembliesBackTo:[self class]]) {
+
         for (TyphoonAssembly *overrideCandidate in assemblies) {
             if ([assembly class] != [overrideCandidate class] &&
                 [[overrideCandidate class] isSubclassOfClass:[assembly class]]) {
 
-                candidate = overrideCandidate;
+                [reconciledAssemblies removeObject:assembly];
+                [reconciledAssemblies addObject:overrideCandidate];
                 LogInfo(@"%@ will act in place of assembly with class: %@", [overrideCandidate class],
-                    [candidate class]);
+                    [assembly class]);
             }
         }
-        [reconciledAssemblies addObject:candidate];
     }
 
     TyphoonBlockComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssemblies:reconciledAssemblies];
@@ -319,7 +320,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
     return nil;
 }
 
-- (NSSet *)collaboratingAssembliesTerminatingAt:(Class)clazz
+- (NSSet *)collectCollaboratingAssembliesBackTo:(Class)clazz
 {
     NSMutableSet *collaboratingAssemblies = [[NSMutableSet alloc] init];
     NSSet *properties = [self typhoonPropertiesUpToParentClass:[TyphoonAssembly class]];
@@ -332,7 +333,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
             TyphoonAssembly *assemblyInstance = (TyphoonAssembly *)[assemblyClass assembly];
             [collaboratingAssemblies addObject:assemblyInstance];
-            NSArray *instanceCollaborators = [[assemblyInstance collaboratingAssembliesTerminatingAt:clazz] allObjects];
+            NSArray *instanceCollaborators = [[assemblyInstance collectCollaboratingAssembliesBackTo:clazz] allObjects];
             [collaboratingAssemblies addObjectsFromArray:instanceCollaborators];
         }
     }

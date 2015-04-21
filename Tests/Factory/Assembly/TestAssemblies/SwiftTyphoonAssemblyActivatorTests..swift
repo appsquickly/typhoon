@@ -17,8 +17,7 @@ class SwiftTyphoonAssemblyActivatorTests : XCTestCase {
     
     internal func test_activates() {
         
-        let assembly = SwiftMiddleAgesAssembly()
-        TyphoonAssemblyActivator.withAssembly(assembly).activate()
+        let assembly = SwiftMiddleAgesAssembly().activate()
         
         let knight = assembly.basicKnight() as! Knight
         println(knight.description())
@@ -29,8 +28,7 @@ class SwiftTyphoonAssemblyActivatorTests : XCTestCase {
     
     internal func test_injects_runtime_args() {
         
-        let assembly = SwiftMiddleAgesAssembly()
-        TyphoonAssemblyActivator.withAssembly(assembly).activate()
+        let assembly = SwiftMiddleAgesAssembly().activate()
         
         let fort = Fort()
         let knight = assembly.wanderingKnight(fort) as! Knight

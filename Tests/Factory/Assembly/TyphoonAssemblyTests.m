@@ -32,9 +32,9 @@
 
 - (void)test_activated_assembly_returns_activated_collaborators
 {
-    MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
-
-    [assembly activate];
+    MiddleAgesAssembly *assembly = [MiddleAgesAssembly activateWithCollaboratingAssemblies:@[
+        [CollaboratingMiddleAgesAssembly assembly]
+    ]];
 
     id<Quest> quest = assembly.collaboratingAssembly.quests.environmentDependentQuest;
     NSLog(@"Got quest: %@", quest);
@@ -49,8 +49,7 @@
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
-        XCTAssertEqualObjects(@"componentForType: requires the assembly to be activated.",
-            [e description]);
+        XCTAssertEqualObjects(@"componentForType: requires the assembly to be activated.", [e description]);
     }
 }
 
@@ -62,9 +61,7 @@
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
-        XCTAssertEqualObjects(
-            @"allComponentsForType: requires the assembly to be activated.",
-            [e description]);
+        XCTAssertEqualObjects(@"allComponentsForType: requires the assembly to be activated.", [e description]);
     }
 }
 
@@ -76,8 +73,7 @@
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
-        XCTAssertEqualObjects(@"componentForKey: requires the assembly to be activated.",
-            [e description]);
+        XCTAssertEqualObjects(@"componentForKey: requires the assembly to be activated.", [e description]);
     }
 }
 
@@ -89,8 +85,7 @@
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
-        XCTAssertEqualObjects(@"inject: requires the assembly to be activated.",
-            [e description]);
+        XCTAssertEqualObjects(@"inject: requires the assembly to be activated.", [e description]);
     }
 }
 
@@ -102,9 +97,7 @@
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
-        XCTAssertEqualObjects(
-            @"inject:withSelector: requires the assembly to be activated.",
-            [e description]);
+        XCTAssertEqualObjects(@"inject:withSelector: requires the assembly to be activated.", [e description]);
     }
 }
 
@@ -116,8 +109,7 @@
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {
-        XCTAssertEqualObjects(@"makeDefault requires the assembly to be activated.",
-            [e description]);
+        XCTAssertEqualObjects(@"makeDefault requires the assembly to be activated.", [e description]);
     }
 }
 
