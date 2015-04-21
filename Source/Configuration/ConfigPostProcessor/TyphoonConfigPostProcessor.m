@@ -34,11 +34,27 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
+//-------------------------------------------------------------------------------------------
 
-+ (TyphoonConfigPostProcessor *)postProcessor
++ (TyphoonConfigPostProcessor *)processor
 {
-    return [[[self class] alloc] init];
+    return [[self alloc] init];
 }
+
++ (TyphoonConfigPostProcessor *)forResourceNamed:(NSString *)resourceName
+{
+    TyphoonConfigPostProcessor *processor = [[TyphoonConfigPostProcessor alloc] init];
+    [processor useResourceWithName:resourceName];
+    return processor;
+}
+
++ (TyphoonConfigPostProcessor *)forResourceAtPath:(NSString *)path
+{
+    TyphoonConfigPostProcessor *processor = [[TyphoonConfigPostProcessor alloc] init];
+    [processor useResourceAtPath:path];
+    return processor;
+}
+
 
 + (void)registerConfigurationClass:(Class)configClass forExtension:(NSString *)typeExtension
 {
@@ -57,12 +73,14 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
+//-------------------------------------------------------------------------------------------
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        NSMutableDictionary *mutableConfigs = [[NSMutableDictionary alloc] initWithCapacity:[propertyPlaceholderRegistry count]];
+        NSMutableDictionary *mutableConfigs = [[NSMutableDictionary alloc]
+            initWithCapacity:[propertyPlaceholderRegistry count]];
         [propertyPlaceholderRegistry enumerateKeysAndObjectsUsingBlock:^(NSString *key, id configClass, BOOL *stop) {
             mutableConfigs[key] = [configClass new];
         }];
@@ -82,6 +100,7 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods
+//-------------------------------------------------------------------------------------------
 
 - (void)useResourceWithName:(NSString *)name
 {
@@ -118,7 +137,8 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
             if (value) {
                 [NSException raise:NSInternalInconsistencyException
                     format:@"Value for key %@ already exists in %@ config", key, foundExtension];
-            } else {
+            }
+            else {
                 value = object;
                 foundExtension = extension;
             }
@@ -131,6 +151,7 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Protocol Methods
+//-------------------------------------------------------------------------------------------
 
 - (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory
 {
@@ -161,7 +182,8 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
     [definition enumerateInjectionsOfKind:[TyphoonInjectionByReference class]
         options:TyphoonInjectionsEnumerationOptionAll
         usingBlock:^(TyphoonInjectionByReference *injection, id *injectionToReplace, BOOL *stop) {
-            [injection.referenceArguments enumerateArgumentsUsingBlock:^(TyphoonInjectionByConfig *argument, NSUInteger index, BOOL *stop) {
+            [injection.referenceArguments enumerateArgumentsUsingBlock:^(TyphoonInjectionByConfig *argument,
+                NSUInteger index, BOOL *stop) {
                 if ([argument isKindOfClass:[TyphoonInjectionByConfig class]]) {
                     id configuredInjection = [self injectionForConfigInjection:argument];
                     if (configuredInjection) {
@@ -179,7 +201,8 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 
     if ([value isKindOfClass:[NSString class]]) {
         result = TyphoonInjectionWithObjectFromString(value);
-    } else if (value) {
+    }
+    else if (value) {
         result = TyphoonInjectionWithObject(value);
     }
 

@@ -18,7 +18,21 @@
 /**
 * @ingroup Configuration
 */
-@interface TyphoonConfigPostProcessor : NSObject <TyphoonDefinitionPostProcessor>
+@interface TyphoonConfigPostProcessor : NSObject<TyphoonDefinitionPostProcessor>
+
+
++ (instancetype)processor;
+
+/**
+* Returns a post processor for the bundle resource with the given name.
+*/
++ (instancetype)forResourceNamed:(NSString *)resourceName;
+
+/**
+* Returns a post processor for the resource at the specified path.
+*/
++ (instancetype)forResourceAtPath:(NSString *)path;
+
 
 /**
 *  You can manage TyphoonConfigPostProcessor registry by mapping configuration classes for file extensions
@@ -29,7 +43,6 @@
 /** list of all supported path extensions (configuration types) */
 + (NSArray *)availableExtensions;
 
-+ (TyphoonConfigPostProcessor *)postProcessor;
 
 /** Append resource found in main bundle by name */
 - (void)useResourceWithName:(NSString *)name;

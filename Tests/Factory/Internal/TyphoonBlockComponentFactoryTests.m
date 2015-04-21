@@ -55,14 +55,16 @@
 
     internalProcessorsCount = [[_componentFactory definitionPostProcessors] count];
 
-    TyphoonConfigPostProcessor *configurer = [[TyphoonConfigPostProcessor alloc] init];
-    [configurer useResourceWithName:@"SomeProperties.properties"];
-    [_componentFactory attachPostProcessor:configurer];
+    TyphoonConfigPostProcessor *processor = [TyphoonConfigPostProcessor forResourceNamed:@"SomeProperties.properties"];
+    [_componentFactory attachPostProcessor:processor];
 
     _exceptionTestFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[ExceptionTestAssembly assembly]];
-    _circularDependenciesFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[CircularDependenciesAssembly assembly]];
-    _singletonsChainFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[SingletonsChainAssembly assembly]];
-    _infrastructureComponentsFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[InfrastructureComponentsAssembly assembly]];
+    _circularDependenciesFactory = [[TyphoonBlockComponentFactory alloc]
+        initWithAssembly:[CircularDependenciesAssembly assembly]];
+    _singletonsChainFactory = [[TyphoonBlockComponentFactory alloc]
+        initWithAssembly:[SingletonsChainAssembly assembly]];
+    _infrastructureComponentsFactory = [[TyphoonBlockComponentFactory alloc]
+        initWithAssembly:[InfrastructureComponentsAssembly assembly]];
 }
 
 - (void)tearDown
@@ -180,8 +182,9 @@
         url = nil;
     }
     @catch (NSException *e) {
-        XCTAssertEqualObjects([e description], @"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required"
-            " class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />");
+        XCTAssertEqualObjects([e description],
+            @"Unless the type is primitive (int, BOOL, etc), initializer injection requires the required"
+                " class to be specified. Eg: <argument parameterName=\"string\" value=\"http://dev.foobar.com/service/\" required-class=\"NSString\" />");
     }
 
 }
@@ -211,10 +214,10 @@
 
 - (void)test_resolves_property_values
 {
-    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[TyphoonConfigAssembly assembly]];
-    TyphoonConfigPostProcessor *configurer = [TyphoonConfigPostProcessor postProcessor];
-    [configurer useResourceWithName:@"SomeProperties.properties"];
-    [factory attachPostProcessor:configurer];
+    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc]
+        initWithAssembly:[TyphoonConfigAssembly assembly]];
+    TyphoonConfigPostProcessor *processor = [TyphoonConfigPostProcessor forResourceNamed:@"SomeProperties.properties"];
+    [factory attachPostProcessor:processor];
 
     Knight *knight = [factory componentForKey:@"knight"];
     XCTAssertEqual(knight.damselsRescued, 12);
@@ -229,7 +232,8 @@
 - (void)test_post_processor_component_recognized
 {
 
-    XCTAssertEqual([_infrastructureComponentsFactory.definitionPostProcessors count], 1 + internalProcessorsCount); //Attached + internal processors
+    XCTAssertEqual([_infrastructureComponentsFactory.definitionPostProcessors count],
+        1 + internalProcessorsCount); //Attached + internal processors
 }
 
 - (void)test_resolves_property_values_from_multiple_files
@@ -303,7 +307,8 @@
     SingletonB *singletonBDependsOnNotSingletonAViaProperty = [_singletonsChainFactory componentForType:[SingletonB class]];
     NotSingletonA *notSingletonADependsOnAViaInitializer = [_singletonsChainFactory componentForType:[NotSingletonA class]];
     XCTAssertEqual(singletonADependsOnBViaProperty.dependencyOnB, singletonBDependsOnNotSingletonAViaProperty);
-    XCTAssertEqual(singletonBDependsOnNotSingletonAViaProperty.dependencyOnNotSingletonA.dependencyOnA, singletonADependsOnBViaProperty);
+    XCTAssertEqual(singletonBDependsOnNotSingletonAViaProperty.dependencyOnNotSingletonA.dependencyOnA,
+        singletonADependsOnBViaProperty);
     XCTAssertEqual(notSingletonADependsOnAViaInitializer.dependencyOnA, singletonADependsOnBViaProperty);
 }
 
@@ -363,7 +368,8 @@ test_currently_resolving_references_dictionary_is_not_overwritten_when_initializ
 
 - (void)test_returns_instance_configured_from_typhoon_config
 {
-    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[[ConfigAssembly assembly]]];
+    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc]
+        initWithAssemblies:@[[ConfigAssembly assembly]]];
     Knight *knight = [(ConfigAssembly *)factory configuredCavalryMan];
     XCTAssertNotNil(knight);
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)3);
