@@ -73,6 +73,12 @@
 
 - (void)makeDefault;
 
+/**
+Attach a TyphoonComponentFactoryPostProcessor to this component factory.
+@param postProcessor The post-processor to attach.
+*/
+- (void)attachPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor;
+
 @end
 
 /**
@@ -159,12 +165,6 @@
 - (NSArray *)registry;
 
 - (void)enumerateDefinitions:(void(^)(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace, BOOL *stop))block;
-
-/**
- Attach a TyphoonComponentFactoryPostProcessor to this component factory.
- @param postProcessor The post-processor to attach.
- */
-- (void)attachPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor;
 
 
 @end

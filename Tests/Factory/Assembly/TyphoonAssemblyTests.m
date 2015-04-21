@@ -41,7 +41,7 @@
     XCTAssertTrue([quest conformsToProtocol:@protocol(Quest)]);
 }
 
-- (void)test_non_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_componentForType
+- (void)test_before_activation_raises_exception_when_invoking_TyphoonComponentFactory_componentForType
 {
     @try {
         MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
@@ -53,7 +53,7 @@
     }
 }
 
-- (void)test_non_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_allComponentsForType
+- (void)test_before_activation_raises_exception_when_invoking_TyphoonComponentFactory_allComponentsForType
 {
     @try {
         MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
@@ -65,7 +65,7 @@
     }
 }
 
-- (void)test_non_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_componentForKey
+- (void)test_before_activation_raises_exception_when_invoking_TyphoonComponentFactory_componentForKey
 {
     @try {
         MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
@@ -77,7 +77,7 @@
     }
 }
 
-- (void)test_non_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_inject
+- (void)test_before_activation_raises_exception_when_invoking_TyphoonComponentFactory_inject
 {
     @try {
         MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
@@ -89,7 +89,7 @@
     }
 }
 
-- (void)test_non_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_inject_withSelector
+- (void)test_before_activation_raises_exception_when_invoking_TyphoonComponentFactory_inject_withSelector
 {
     @try {
         MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
@@ -101,7 +101,7 @@
     }
 }
 
-- (void)test_non_activated_assembly_raises_exception_when_invoking_TyphoonComponentFactory_makeDefault
+- (void)test_before_activation_raises_exception_when_invoking_TyphoonComponentFactory_makeDefault
 {
     @try {
         MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
@@ -110,6 +110,18 @@
     }
     @catch (NSException *e) {
         XCTAssertEqualObjects(@"makeDefault requires the assembly to be activated.", [e description]);
+    }
+}
+
+- (void)test_before_activation_raises_exception_when_invoking_attachPostProcessor
+{
+    @try {
+        MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+        [assembly attachPostProcessor:nil];
+        XCTFail(@"Should have thrown exception");
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects(@"attachPostProcessor: requires the assembly to be activated.", [e description]);
     }
 }
 

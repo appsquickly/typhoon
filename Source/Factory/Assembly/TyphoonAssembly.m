@@ -210,6 +210,16 @@ static NSMutableSet *reservedSelectorsAsStrings;
     [_factory makeDefault];
 }
 
+- (void)attachPostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor
+{
+    if (!_factory) {
+        [NSException raise:NSInternalInconsistencyException
+            format:@"attachPostProcessor: requires the assembly to be activated."];
+    }
+    [_factory attachPostProcessor:postProcessor];
+}
+
+
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods
