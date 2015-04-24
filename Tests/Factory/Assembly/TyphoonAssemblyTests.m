@@ -13,6 +13,7 @@
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
 #import "CollaboratingMiddleAgesAssembly.h"
+#import "Quest.h"
 
 @interface TyphoonAssemblyTests : XCTestCase
 @end
