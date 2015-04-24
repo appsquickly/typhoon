@@ -234,19 +234,18 @@ static NSMutableSet *reservedSelectorsAsStrings;
 {
     NSMutableArray *reconciledAssemblies = [[@[self] arrayByAddingObjectsFromArray:assemblies] mutableCopy];
 
-
-    for (TyphoonAssembly *assembly in [self collectCollaboratingAssembliesBackTo:[self class]]) {
+    for (TyphoonAssembly *collaboratingAssembly in [self collectCollaboratingAssembliesBackTo:[self class]]) {
 
         for (TyphoonAssembly *overrideCandidate in assemblies) {
-            if ([assembly class] != [overrideCandidate class] &&
-                [[overrideCandidate class] isSubclassOfClass:[assembly class]]) {
+            if ([collaboratingAssembly class] != [overrideCandidate class] &&
+                [[overrideCandidate class] isSubclassOfClass:[collaboratingAssembly class]]) {
 
-                [reconciledAssemblies removeObject:assembly];
-                [reconciledAssemblies addObject:overrideCandidate];
+                [reconciledAssemblies removeObject:collaboratingAssembly];
                 LogInfo(@"%@ will act in place of assembly with class: %@", [overrideCandidate class],
-                    [assembly class]);
+                    [collaboratingAssembly class]);
             }
         }
+        [reconciledAssemblies addObject:collaboratingAssembly];
     }
 
     TyphoonBlockComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssemblies:reconciledAssemblies];
