@@ -1,6 +1,0 @@
-<map id="TyphoonInjectionByType" name="TyphoonInjectionByType">
-<area shape="rect" id="node2" href="$interface_typhoon_abstract_injection.html" title="TyphoonAbstractInjection" alt="" coords="123,229,295,256"/>
-<area shape="rect" id="node4" href="$protocol_typhoon_parameter_injection-p.html" title="\&lt;TyphoonParameterInjection\&gt;" alt="" coords="108,155,309,181"/>
-<area shape="rect" id="node5" href="$protocol_typhoon_injection-p.html" title="\&lt;TyphoonInjection\&gt;" alt="" coords="249,80,387,107"/>
-<area shape="rect" id="node8" href="$protocol_typhoon_property_injection-p.html" title="\&lt;TyphoonPropertyInjection\&gt;" alt="" coords="334,155,523,181"/>
-</map>
