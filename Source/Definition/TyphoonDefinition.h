@@ -155,11 +155,22 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
 //-------------------------------------------------------------------------------------------
 #pragma mark Factory methods
+//-------------------------------------------------------------------------------------------
 
 + (id)withClass:(Class)clazz;
 
 + (id)withClass:(Class)clazz configuration:(TyphoonDefinitionBlock)injections;
 
+/**
+* Returns a definition that inherits initializer injections, property injections, method injections and scope
+* from the specified parent definition. Parent definitions can be chained.
+*/
++ (id)withParent:(id)parent class:(Class)clazz;
+
+/**
+* Returns a definition that inherits initializer injections, property injections, method injections and scope
+* from the specified parent definition, adding the specified configuration.  Parent definitions can be chained.
+*/
 + (id)withParent:(id)parent class:(Class)clazz configuration:(TyphoonDefinitionBlock)injections;
 
 //TODO: Rewrite this doc
@@ -207,6 +218,7 @@ definition.factory = [self sqliteManager];
 
 //-------------------------------------------------------------------------------------------
 #pragma mark Injection
+//-------------------------------------------------------------------------------------------
 
 /**
 * Injects property with a component from the container that matches the type (class or protocol) of the property.

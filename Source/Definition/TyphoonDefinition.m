@@ -93,6 +93,12 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
     return definition;
 }
 
++ (id)withParent:(id)parent class:(Class)clazz
+{
+    return [self withParent:parent class:clazz configuration:nil];
+}
+
+
 + (id)withParent:(id)parent class:(Class)clazz configuration:(TyphoonDefinitionBlock)injections
 {
     TyphoonDefinition *definition = [TyphoonDefinition withClass:clazz configuration:injections];
