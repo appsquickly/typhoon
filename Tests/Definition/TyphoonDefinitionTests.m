@@ -106,6 +106,7 @@
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Definition inheritance
+//-------------------------------------------------------------------------------------------
 
 - (void)test_inherits_all_parent_properties
 {
@@ -118,9 +119,8 @@
         [definition setParent:longLostAncestor];
     }];
 
-    TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *child = [TyphoonDefinition withParent:parent class:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(foobar) with:@"foobar!"];
-        [definition setParent:parent];
     }];
 
     XCTAssertEqual([[child injectedProperties] count], 3);
@@ -133,9 +133,8 @@
         [definition injectProperty:@selector(damselsRescued) with:@(12)];
     }];
 
-    TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *child = [TyphoonDefinition withParent:parent class:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:@(346)];
-        [definition setParent:parent];
     }];
 
     XCTAssertEqual([[child injectedProperties] count], (1));
@@ -150,9 +149,8 @@
         [definition setScope:TyphoonScopeSingleton];
     }];
 
-    TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *child = [TyphoonDefinition withParent:parent class:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:@(346)];
-        [definition setParent:parent];
     }];
 
     XCTAssertEqual([child scope], (TyphoonScopeSingleton));
@@ -164,10 +162,9 @@
         [definition setScope:TyphoonScopeSingleton];
     }];
 
-    TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+    TyphoonDefinition *child = [TyphoonDefinition withParent:parent class:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:@(346)];
         [definition setScope:TyphoonScopePrototype];
-        [definition setParent:parent];
     }];
 
     XCTAssertEqual([child scope], (TyphoonScopePrototype));
@@ -176,6 +173,8 @@
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Copying
+//-------------------------------------------------------------------------------------------
+
 
 - (void)test_performs_copy
 {
