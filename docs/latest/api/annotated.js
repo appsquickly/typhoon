@@ -17,7 +17,6 @@ var annotated =
     [ "<TyphoonComponentsPool>", "protocol_typhoon_components_pool-p.html", "protocol_typhoon_components_pool-p" ],
     [ "TyphoonConfigPostProcessor", "interface_typhoon_config_post_processor.html", "interface_typhoon_config_post_processor" ],
     [ "TyphoonDefinition", "interface_typhoon_definition.html", "interface_typhoon_definition" ],
-    [ "TyphoonDefinition(Deprecated)", "category_typhoon_definition_07_deprecated_08.html", "category_typhoon_definition_07_deprecated_08" ],
     [ "TyphoonDefinition(Option)", "category_typhoon_definition_07_option_08.html", "category_typhoon_definition_07_option_08" ],
     [ "<TyphoonDefinitionPostProcessor>", "protocol_typhoon_definition_post_processor-p.html", "protocol_typhoon_definition_post_processor-p" ],
     [ "<TyphoonDictionary>", "protocol_typhoon_dictionary-p.html", "protocol_typhoon_dictionary-p" ],

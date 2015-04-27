@@ -15,8 +15,6 @@ var group___definition =
       [ "performBeforeInjections:", "interface_typhoon_definition.html#ac5a3fa01def0470bad10c3b3708b2923", null ],
       [ "performBeforeInjections:parameters:", "interface_typhoon_definition.html#abb1394e8dfff43fb899280a468f87abb", null ],
       [ "property:", "interface_typhoon_definition.html#addb9006c665061a41e8cad2db77ad9b1", null ],
-      [ "setAfterInjections:", "interface_typhoon_definition.html#a57429df9ce05390bbf2e743dd9f90e3e", null ],
-      [ "setBeforeInjections:", "interface_typhoon_definition.html#a669f26a402157077c7ae205a65ee9613", null ],
       [ "useInitializer:", "interface_typhoon_definition.html#ae10af4d4327e3ca6d4e56988bd1c0062", null ],
       [ "useInitializer:parameters:", "interface_typhoon_definition.html#ae5d354908e1eec474f7e357bb672d795", null ],
       [ "withClass:", "interface_typhoon_definition.html#a8128dbbd3c00c248e58770ae3e4e1823", null ],
@@ -26,7 +24,8 @@ var group___definition =
       [ "withFactory:selector:parameters:configuration:", "interface_typhoon_definition.html#aeb2db6f4167d2a32126e605ee22db4f2", null ],
       [ "withOption:matcher:", "interface_typhoon_definition.html#ace67617e7c8feea3167bd10342964a3d", null ],
       [ "withOption:matcher:autoInjectionConfig:", "interface_typhoon_definition.html#af42ffbdb443c1e44379a728b1096becb", null ],
-      [ "withOption:yes:no:", "interface_typhoon_definition.html#a96cf46e499d4b083215881a2a9c8808e", null ]
+      [ "withOption:yes:no:", "interface_typhoon_definition.html#a96cf46e499d4b083215881a2a9c8808e", null ],
+      [ "withParent:class:configuration:", "interface_typhoon_definition.html#a00a901e155b1f8d5797fcb56c9f65572", null ]
     ] ],
     [ "TyphoonMethod", "interface_typhoon_method.html", [
       [ "selector", "interface_typhoon_method.html#a2df02aed8c27d293dad75d3a8c010705", null ],

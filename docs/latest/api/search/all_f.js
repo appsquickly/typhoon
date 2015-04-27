@@ -40,7 +40,6 @@ var searchData=
   ['typhoonconfigpostprocessor_2eh',['TyphoonConfigPostProcessor.h',['../_typhoon_config_post_processor_8h.html',1,'']]],
   ['typhoonconfiguration_2eh',['TyphoonConfiguration.h',['../_typhoon_configuration_8h.html',1,'']]],
   ['typhoondefinition',['TyphoonDefinition',['../interface_typhoon_definition.html',1,'']]],
-  ['typhoondefinition_28deprecated_29',['TyphoonDefinition(Deprecated)',['../category_typhoon_definition_07_deprecated_08.html',1,'']]],
   ['typhoondefinition_28option_29',['TyphoonDefinition(Option)',['../category_typhoon_definition_07_option_08.html',1,'']]],
   ['typhoondefinition_2boption_2eh',['TyphoonDefinition+Option.h',['../_typhoon_definition_09_option_8h.html',1,'']]],
   ['typhoondefinition_2eh',['TyphoonDefinition.h',['../_typhoon_definition_8h.html',1,'']]],

@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['setafterinjections_3a',['setAfterInjections:',['../category_typhoon_definition_07_deprecated_08.html#a57429df9ce05390bbf2e743dd9f90e3e',1,'TyphoonDefinition(Deprecated)::setAfterInjections:()'],['../interface_typhoon_definition.html#a57429df9ce05390bbf2e743dd9f90e3e',1,'TyphoonDefinition::setAfterInjections:()']]],
-  ['setbeforeinjections_3a',['setBeforeInjections:',['../category_typhoon_definition_07_deprecated_08.html#a669f26a402157077c7ae205a65ee9613',1,'TyphoonDefinition(Deprecated)::setBeforeInjections:()'],['../interface_typhoon_definition.html#a669f26a402157077c7ae205a65ee9613',1,'TyphoonDefinition::setBeforeInjections:()']]],
   ['setdeallocnotificationinblock_3a',['setDeallocNotificationInBlock:',['../category_n_s_object_07_dealloc_notification_08.html#a2859ee082d6a3638451f9a8fb633d2eb',1,'NSObject(DeallocNotification)']]],
   ['setdeallocnotificationwithkey_3aandblock_3a',['setDeallocNotificationWithKey:andBlock:',['../category_n_s_object_07_dealloc_notification_08.html#a8db17c2e435c1e9c44013420773f97fc',1,'NSObject(DeallocNotification)']]],
   ['setfactoryforresolvingfromxibs_3a',['setFactoryForResolvingFromXibs:',['../interface_typhoon_component_factory.html#abe5efdbe98a5d5779b952cb66e06f0f4',1,'TyphoonComponentFactory']]],

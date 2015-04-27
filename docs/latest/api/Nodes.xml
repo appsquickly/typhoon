@@ -258,16 +258,6 @@
               <Anchor>addb9006c665061a41e8cad2db77ad9b1</Anchor>
              </Node>
              <Node>
-              <Name>setAfterInjections:</Name>
-              <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a57429df9ce05390bbf2e743dd9f90e3e</Anchor>
-             </Node>
-             <Node>
-              <Name>setBeforeInjections:</Name>
-              <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a669f26a402157077c7ae205a65ee9613</Anchor>
-             </Node>
-             <Node>
               <Name>useInitializer:</Name>
               <Path>interface_typhoon_definition.html</Path>
               <Anchor>ae10af4d4327e3ca6d4e56988bd1c0062</Anchor>
@@ -316,6 +306,11 @@
               <Name>withOption:yes:no:</Name>
               <Path>interface_typhoon_definition.html</Path>
               <Anchor>a96cf46e499d4b083215881a2a9c8808e</Anchor>
+             </Node>
+             <Node>
+              <Name>withParent:class:configuration:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a00a901e155b1f8d5797fcb56c9f65572</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -994,16 +989,6 @@
               <Anchor>addb9006c665061a41e8cad2db77ad9b1</Anchor>
              </Node>
              <Node>
-              <Name>setAfterInjections:</Name>
-              <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a57429df9ce05390bbf2e743dd9f90e3e</Anchor>
-             </Node>
-             <Node>
-              <Name>setBeforeInjections:</Name>
-              <Path>interface_typhoon_definition.html</Path>
-              <Anchor>a669f26a402157077c7ae205a65ee9613</Anchor>
-             </Node>
-             <Node>
               <Name>useInitializer:</Name>
               <Path>interface_typhoon_definition.html</Path>
               <Anchor>ae10af4d4327e3ca6d4e56988bd1c0062</Anchor>
@@ -1053,21 +1038,10 @@
               <Path>interface_typhoon_definition.html</Path>
               <Anchor>a96cf46e499d4b083215881a2a9c8808e</Anchor>
              </Node>
-            </Subnodes>
-           </Node>
-           <Node>
-            <Name>TyphoonDefinition(Deprecated)</Name>
-            <Path>category_typhoon_definition_07_deprecated_08.html</Path>
-            <Subnodes>
              <Node>
-              <Name>setAfterInjections:</Name>
-              <Path>category_typhoon_definition_07_deprecated_08.html</Path>
-              <Anchor>a57429df9ce05390bbf2e743dd9f90e3e</Anchor>
-             </Node>
-             <Node>
-              <Name>setBeforeInjections:</Name>
-              <Path>category_typhoon_definition_07_deprecated_08.html</Path>
-              <Anchor>a669f26a402157077c7ae205a65ee9613</Anchor>
+              <Name>withParent:class:configuration:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>a00a901e155b1f8d5797fcb56c9f65572</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -2142,10 +2116,6 @@
             <Path>category_typhoon_abstract_injection_07_protected_08.html</Path>
            </Node>
            <Node>
-            <Name>TyphoonDefinition(Deprecated)</Name>
-            <Path>category_typhoon_definition_07_deprecated_08.html</Path>
-           </Node>
-           <Node>
             <Name>TyphoonDefinition(Option)</Name>
             <Path>category_typhoon_definition_07_option_08.html</Path>
            </Node>
@@ -2186,84 +2156,6 @@
            <Node>
             <Name>All</Name>
             <Path>functions.html</Path>
-            <Subnodes>
-             <Node>
-              <Name>a</Name>
-              <Path>functions.html</Path>
-             </Node>
-             <Node>
-              <Name>c</Name>
-              <Path>functions_c.html</Path>
-             </Node>
-             <Node>
-              <Name>d</Name>
-              <Path>functions_d.html</Path>
-             </Node>
-             <Node>
-              <Name>e</Name>
-              <Path>functions_e.html</Path>
-             </Node>
-             <Node>
-              <Name>f</Name>
-              <Path>functions_f.html</Path>
-             </Node>
-             <Node>
-              <Name>g</Name>
-              <Path>functions_g.html</Path>
-             </Node>
-             <Node>
-              <Name>i</Name>
-              <Path>functions_i.html</Path>
-             </Node>
-             <Node>
-              <Name>k</Name>
-              <Path>functions_k.html</Path>
-             </Node>
-             <Node>
-              <Name>l</Name>
-              <Path>functions_l.html</Path>
-             </Node>
-             <Node>
-              <Name>m</Name>
-              <Path>functions_m.html</Path>
-             </Node>
-             <Node>
-              <Name>n</Name>
-              <Path>functions_n.html</Path>
-             </Node>
-             <Node>
-              <Name>o</Name>
-              <Path>functions_o.html</Path>
-             </Node>
-             <Node>
-              <Name>p</Name>
-              <Path>functions_p.html</Path>
-             </Node>
-             <Node>
-              <Name>r</Name>
-              <Path>functions_r.html</Path>
-             </Node>
-             <Node>
-              <Name>s</Name>
-              <Path>functions_s.html</Path>
-             </Node>
-             <Node>
-              <Name>t</Name>
-              <Path>functions_t.html</Path>
-             </Node>
-             <Node>
-              <Name>u</Name>
-              <Path>functions_u.html</Path>
-             </Node>
-             <Node>
-              <Name>v</Name>
-              <Path>functions_v.html</Path>
-             </Node>
-             <Node>
-              <Name>w</Name>
-              <Path>functions_w.html</Path>
-             </Node>
-            </Subnodes>
            </Node>
            <Node>
             <Name>Functions</Name>
@@ -2727,22 +2619,6 @@
             <Name>TyphoonDefinition.h</Name>
             <Path>_typhoon_definition_8h.html</Path>
             <Subnodes>
-             <Node>
-              <Name>TyphoonDefinition(Deprecated)</Name>
-              <Path>category_typhoon_definition_07_deprecated_08.html</Path>
-              <Subnodes>
-               <Node>
-                <Name>setAfterInjections:</Name>
-                <Path>category_typhoon_definition_07_deprecated_08.html</Path>
-                <Anchor>a57429df9ce05390bbf2e743dd9f90e3e</Anchor>
-               </Node>
-               <Node>
-                <Name>setBeforeInjections:</Name>
-                <Path>category_typhoon_definition_07_deprecated_08.html</Path>
-                <Anchor>a669f26a402157077c7ae205a65ee9613</Anchor>
-               </Node>
-              </Subnodes>
-             </Node>
              <Node>
               <Name>TyphoonDefinitionBlock</Name>
               <Path>_typhoon_definition_8h.html</Path>

@@ -2126,6 +2126,17 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>withParent:class:configuration:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonDefinition</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_definition.html</Path>
+    <Anchor>a00a901e155b1f8d5797fcb56c9f65572</Anchor>
+    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>injectMethod:parameters:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -2232,28 +2243,6 @@
   </Token>
   <Token>
     <TokenIdentifier>
-      <Name>setAfterInjections:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a57429df9ce05390bbf2e743dd9f90e3e</Anchor>
-    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>setBeforeInjections:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>instm</Type>
-      <Scope>TyphoonDefinition</Scope>
-    </TokenIdentifier>
-    <Path>interface_typhoon_definition.html</Path>
-    <Anchor>a669f26a402157077c7ae205a65ee9613</Anchor>
-    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
       <Name>useInitializer:</Name>
       <APILanguage>occ</APILanguage>
       <Type>instm</Type>
@@ -2274,38 +2263,6 @@
     <Path>interface_typhoon_definition.html</Path>
     <Anchor>ae5d354908e1eec474f7e357bb672d795</Anchor>
     <Abstract>Injects initializer specified by selector and parameters. </Abstract>
-    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>TyphoonDefinition(Deprecated)</Name>
-      <APILanguage>c</APILanguage>
-      <Type>cat</Type>
-      <Scope>TyphoonDefinition(Deprecated)</Scope>
-    </TokenIdentifier>
-    <Path>category_typhoon_definition_07_deprecated_08.html</Path>
-    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>setAfterInjections:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>func</Type>
-      <Scope>TyphoonDefinition(Deprecated)</Scope>
-    </TokenIdentifier>
-    <Path>category_typhoon_definition_07_deprecated_08.html</Path>
-    <Anchor>a57429df9ce05390bbf2e743dd9f90e3e</Anchor>
-    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
-  </Token>
-  <Token>
-    <TokenIdentifier>
-      <Name>setBeforeInjections:</Name>
-      <APILanguage>occ</APILanguage>
-      <Type>func</Type>
-      <Scope>TyphoonDefinition(Deprecated)</Scope>
-    </TokenIdentifier>
-    <Path>category_typhoon_definition_07_deprecated_08.html</Path>
-    <Anchor>a669f26a402157077c7ae205a65ee9613</Anchor>
     <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
   </Token>
   <Token>
