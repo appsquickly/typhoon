@@ -308,6 +308,11 @@
               <Anchor>a96cf46e499d4b083215881a2a9c8808e</Anchor>
              </Node>
              <Node>
+              <Name>withParent:class:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>aa5953cedf9ed19ad64888ef8b244db4c</Anchor>
+             </Node>
+             <Node>
               <Name>withParent:class:configuration:</Name>
               <Path>interface_typhoon_definition.html</Path>
               <Anchor>a00a901e155b1f8d5797fcb56c9f65572</Anchor>
@@ -1037,6 +1042,11 @@
               <Name>withOption:yes:no:</Name>
               <Path>interface_typhoon_definition.html</Path>
               <Anchor>a96cf46e499d4b083215881a2a9c8808e</Anchor>
+             </Node>
+             <Node>
+              <Name>withParent:class:</Name>
+              <Path>interface_typhoon_definition.html</Path>
+              <Anchor>aa5953cedf9ed19ad64888ef8b244db4c</Anchor>
              </Node>
              <Node>
               <Name>withParent:class:configuration:</Name>

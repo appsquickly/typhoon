@@ -230,7 +230,7 @@ var NAVTREEINDEX0 =
 "interface_typhoon_config_post_processor.html#acd33308b4cdc7e91059b8698a9594e19":[0,2,1,4],
 "interface_typhoon_config_post_processor.html#afa3c8345a8cc01cca161be365166c14e":[0,2,1,5],
 "interface_typhoon_definition.html":[0,1,0],
-"interface_typhoon_definition.html#a00a901e155b1f8d5797fcb56c9f65572":[0,1,0,24],
+"interface_typhoon_definition.html#a00a901e155b1f8d5797fcb56c9f65572":[0,1,0,25],
 "interface_typhoon_definition.html#a06ab7dc77ee2f386d87ea3fe75f18693":[0,1,0,0],
 "interface_typhoon_definition.html#a1683dd7b003c512248c98fecb26d0985":[0,1,0,4],
 "interface_typhoon_definition.html#a2c9d7ce4185ab53cc04d0ab51c6881d5":[0,1,0,18],
@@ -244,10 +244,10 @@ var NAVTREEINDEX0 =
 "interface_typhoon_definition.html#a96cf46e499d4b083215881a2a9c8808e":[0,1,0,23],
 "interface_typhoon_definition.html#aa254501ed127ae1a371f42def3ac5797":[0,1,0,9],
 "interface_typhoon_definition.html#aa4df6569a008392075c9689a73d13729":[0,1,0,3],
+"interface_typhoon_definition.html#aa5953cedf9ed19ad64888ef8b244db4c":[0,1,0,24],
 "interface_typhoon_definition.html#abb1394e8dfff43fb899280a468f87abb":[0,1,0,12],
 "interface_typhoon_definition.html#ac5a3fa01def0470bad10c3b3708b2923":[0,1,0,11],
 "interface_typhoon_definition.html#acc264b4c607cb128d72f303e2fc43bb8":[0,1,0,19],
 "interface_typhoon_definition.html#ace67617e7c8feea3167bd10342964a3d":[0,1,0,21],
-"interface_typhoon_definition.html#add76507109b2465e672b7472c408fa05":[0,1,0,2],
-"interface_typhoon_definition.html#addb9006c665061a41e8cad2db77ad9b1":[0,1,0,13]
+"interface_typhoon_definition.html#add76507109b2465e672b7472c408fa05":[0,1,0,2]
 };

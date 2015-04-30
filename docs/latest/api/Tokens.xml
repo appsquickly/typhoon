@@ -2126,6 +2126,18 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>withParent:class:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonDefinition</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_definition.html</Path>
+    <Anchor>aa5953cedf9ed19ad64888ef8b244db4c</Anchor>
+    <Abstract>Returns a definition that inherits initializer injections, property injections, method injections and...</Abstract>
+    <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>withParent:class:configuration:</Name>
       <APILanguage>occ</APILanguage>
       <Type>clm</Type>
@@ -2133,6 +2145,7 @@
     </TokenIdentifier>
     <Path>interface_typhoon_definition.html</Path>
     <Anchor>a00a901e155b1f8d5797fcb56c9f65572</Anchor>
+    <Abstract>Returns a definition that inherits initializer injections, property injections, method injections and...</Abstract>
     <DeclaredIn>TyphoonDefinition.h</DeclaredIn>
   </Token>
   <Token>

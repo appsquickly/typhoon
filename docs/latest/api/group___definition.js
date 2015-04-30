@@ -25,6 +25,7 @@ var group___definition =
       [ "withOption:matcher:", "interface_typhoon_definition.html#ace67617e7c8feea3167bd10342964a3d", null ],
       [ "withOption:matcher:autoInjectionConfig:", "interface_typhoon_definition.html#af42ffbdb443c1e44379a728b1096becb", null ],
       [ "withOption:yes:no:", "interface_typhoon_definition.html#a96cf46e499d4b083215881a2a9c8808e", null ],
+      [ "withParent:class:", "interface_typhoon_definition.html#aa5953cedf9ed19ad64888ef8b244db4c", null ],
       [ "withParent:class:configuration:", "interface_typhoon_definition.html#a00a901e155b1f8d5797fcb56c9f65572", null ]
     ] ],
     [ "TyphoonMethod", "interface_typhoon_method.html", [
