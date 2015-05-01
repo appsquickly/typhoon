@@ -98,7 +98,6 @@
     }];
 }
 
-
 @end
 
 @implementation TyphoonPatcher(Deprecated)

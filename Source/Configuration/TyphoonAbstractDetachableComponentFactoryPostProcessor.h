@@ -17,7 +17,7 @@
 @interface TyphoonAbstractDetachableComponentFactoryPostProcessor : NSObject <TyphoonDefinitionPostProcessor>
 {
     TyphoonComponentFactory* _factory;
-    NSMutableArray *_rollbackDefinitions;
+    NSMutableDictionary *_rollbackDefinitions;
 }
 
 /**

@@ -16,19 +16,15 @@
 #import <objc/message.h>
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonTypeDescriptor.h"
-#import "TyphoonInjectedObject.h"
-
-static NSMutableDictionary *injectedPropertiesCache = nil;
-static NSMutableDictionary *propertiesCache = nil;
 
 @implementation TyphoonIntrospectionUtils
 
-+ (TyphoonTypeDescriptor *)typeForProperty:(objc_property_t)property
++ (TyphoonTypeDescriptor *)typeForPropertyNamed:(NSString *)propertyName inClass:(Class)clazz
 {
     TyphoonTypeDescriptor *typeDescriptor = nil;
-
-    if (property) {
-        const char *attributes = property_getAttributes(property);
+    objc_property_t propertyReflection = class_getProperty(clazz, [propertyName cStringUsingEncoding:NSASCIIStringEncoding]);
+    if (propertyReflection) {
+        const char *attributes = property_getAttributes(propertyReflection);
 
         if (attributes == NULL) {
             return (NULL);
@@ -40,22 +36,14 @@ static NSMutableDictionary *propertiesCache = nil;
             return (NULL);
         }
 
-        int len = (int)(e - attributes);
-        memcpy(buffer, attributes, len);
+        int len = (int) (e - attributes);
+        memcpy( buffer, attributes, len );
         buffer[len] = '\0';
 
         NSString *typeCode = [NSString stringWithCString:buffer encoding:NSASCIIStringEncoding];
         typeDescriptor = [TyphoonTypeDescriptor descriptorWithTypeCode:typeCode];
     }
     return typeDescriptor;
-}
-
-
-+ (TyphoonTypeDescriptor *)typeForPropertyNamed:(NSString *)propertyName inClass:(Class)clazz
-{
-    objc_property_t propertyReflection = class_getProperty(clazz,
-        [propertyName cStringUsingEncoding:NSASCIIStringEncoding]);
-    return [self typeForProperty:propertyReflection];
 }
 
 + (SEL)setterForPropertyWithName:(NSString *)propertyName inClass:(Class)clazz
@@ -123,64 +111,8 @@ static NSMutableDictionary *propertiesCache = nil;
     return count;
 }
 
-+ (NSSet *)injectedPropertiesForClass:(Class)clazz upToParentClass:(Class)parent
-{
-    NSString *key = NSStringFromClass(clazz);
-    if (injectedPropertiesCache == nil) {
-        injectedPropertiesCache = [NSMutableDictionary dictionary];
-    }
-    else {
-        if ([[injectedPropertiesCache allKeys] containsObject:key]) {
-            return [injectedPropertiesCache objectForKey:key];
-        }
-    }
-
-    NSMutableSet *propertyNames = [[NSMutableSet alloc] init];
-
-    NSString *injectedObjectClassName = NSStringFromClass([TyphoonInjectedObject class]);
-    NSString *injectedProtolName = NSStringFromProtocol(@protocol(TyphoonInjectedProtocol));
-
-    while (clazz && clazz != parent) {
-        unsigned int count = 0;
-        objc_property_t *properties = class_copyPropertyList(clazz, &count);
-
-        for (unsigned int propertyIndex = 0; propertyIndex < count; propertyIndex++) {
-            objc_property_t aProperty = properties[propertyIndex];
-            NSString *propertyName = [NSString stringWithCString:property_getName(aProperty)
-                encoding:NSUTF8StringEncoding];
-
-            NSString *className = [self classNameOfProperty:aProperty];
-
-            // Little bit faster than protocol_isEqual method.
-            if (className.length > 0 && ([className rangeOfString:injectedObjectClassName].location != NSNotFound ||
-                [className rangeOfString:injectedProtolName].location != NSNotFound)) {
-                [propertyNames addObject:propertyName];
-            }
-        }
-
-        clazz = class_getSuperclass(clazz);
-
-        free(properties);
-    }
-
-    [injectedPropertiesCache setObject:propertyNames forKey:key];
-
-    return propertyNames;
-}
-
 + (NSSet *)propertiesForClass:(Class)clazz upToParentClass:(Class)parent
 {
-    NSString *key = NSStringFromClass(clazz);
-
-    if (propertiesCache == nil) {
-        propertiesCache = [NSMutableDictionary dictionary];
-    }
-    else {
-        if ([[propertiesCache allKeys] containsObject:key]) {
-            return [propertiesCache objectForKey:key];
-        }
-    }
-
     NSMutableSet *propertyNames = [[NSMutableSet alloc] init];
 
     while (clazz && clazz != parent) {
@@ -199,8 +131,6 @@ static NSMutableDictionary *propertiesCache = nil;
 
         free(properties);
     }
-
-    [propertiesCache setObject:propertyNames forKey:key];
 
     return propertyNames;
 }

@@ -12,6 +12,7 @@
 #import "TyphoonAbstractDetachableComponentFactoryPostProcessor.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 @implementation TyphoonComponentFactory (DetachableComponentFactoryPostProcessor)
 
@@ -34,7 +35,7 @@
 - (void)postProcessDefinition:(TyphoonDefinition *)definition withFactory:(TyphoonComponentFactory *)factory
 {
     _factory = factory;
-    [self cacheDefinitionsIn:_factory];
+    [self cacheDefinition:definition];
 }
 
 - (void)rollback
@@ -45,7 +46,7 @@
             format:@"%@",NSInternalInconsistencyException];
     }
     [postProcessors removeLastObject];
-    _factory.registry = _rollbackDefinitions;
+    _factory.registry = [[_rollbackDefinitions allValues] mutableCopy];
     [_factory unload];
 }
 
@@ -54,11 +55,16 @@
 
 - (void)cacheDefinitionsIn:(TyphoonComponentFactory *)factory
 {
-    NSMutableArray *definitions = [[NSMutableArray alloc] init];
+    NSMutableDictionary *definitions = [NSMutableDictionary new];
     for (TyphoonDefinition *definition in factory.registry) {
-        [definitions addObject:[definition copy]];
+        definitions[[definition key]] = [definition copy];
     }
-    _rollbackDefinitions = [definitions mutableCopy];
+    _rollbackDefinitions = definitions;
+}
+
+- (void)cacheDefinition:(TyphoonDefinition *)definition
+{
+    _rollbackDefinitions[[definition key]] = [definition copy];
 }
 
 

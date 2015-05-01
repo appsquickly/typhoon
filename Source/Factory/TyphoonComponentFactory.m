@@ -293,11 +293,8 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
 
 - (void)_loadOnlyOne:(TyphoonDefinition *)definition
 {
-    [self preparePostProcessors];
-    [_definitionPostProcessors enumerateObjectsUsingBlock:^(id<TyphoonDefinitionPostProcessor> postProcessor, NSUInteger idx, BOOL *stop) {
-        [postProcessor postProcessDefinition:definition withFactory:self];
-    }];
-    [self newOrScopeCachedInstanceForDefinition:definition args:nil];
+    [self applyPostProcessorsToDefinition:definition];
+    [self instantiateIfEagerSingleton:definition];
 }
 
 - (NSArray *)orderedArray:(NSMutableArray *)array
@@ -322,6 +319,7 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
     _instancePostProcessors = [[self orderedArray:_instancePostProcessors] mutableCopy];
 }
 
+//TODO: Remove that method at all..
 - (void)applyPostProcessors
 {
     [_definitionPostProcessors enumerateObjectsUsingBlock:^(id<TyphoonDefinitionPostProcessor> postProcessor,
@@ -330,13 +328,26 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
     }];
 }
 
+- (void)applyPostProcessorsToDefinition:(TyphoonDefinition *)definition
+{
+    [_definitionPostProcessors enumerateObjectsUsingBlock:^(id<TyphoonDefinitionPostProcessor> postProcessor,
+            NSUInteger idx, BOOL *stop) {
+        [postProcessor postProcessDefinition:definition withFactory:self];
+    }];
+}
+
 - (void)instantiateEagerSingletons
 {
     [_registry enumerateObjectsUsingBlock:^(TyphoonDefinition *definition, NSUInteger idx, BOOL *stop) {
-        if (definition.scope == TyphoonScopeSingleton) {
-            [self newOrScopeCachedInstanceForDefinition:definition args:nil];
-        }
+        [self instantiateIfEagerSingleton:definition];
     }];
+}
+
+- (void)instantiateIfEagerSingleton:(TyphoonDefinition *)definition
+{
+    if (definition.scope == TyphoonScopeSingleton) {
+        [self newOrScopeCachedInstanceForDefinition:definition args:nil];
+    }
 }
 
 - (NSString *)poolKeyForDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args

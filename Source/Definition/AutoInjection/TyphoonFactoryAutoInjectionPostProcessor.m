@@ -13,13 +13,13 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
-#import "NSObject+TyphoonIntrospectionUtils.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonTypeDescriptor.h"
 #import "TyphoonInjectedObject.h"
 #import "TyphoonPropertyInjection.h"
 #import "TyphoonInjections.h"
 
+static BOOL IsTyphoonAutoInjectionType(TyphoonTypeDescriptor *type);
 static id TypeForInjectionFromType(TyphoonTypeDescriptor *type);
 
 @implementation TyphoonFactoryAutoInjectionPostProcessor
@@ -50,22 +50,29 @@ static id TypeForInjectionFromType(TyphoonTypeDescriptor *type);
 - (NSArray *)autoInjectedPropertiesForClass:(Class)clazz
 {
     NSMutableArray *injections = nil;
-    NSSet *allProperties = [TyphoonIntrospectionUtils injectedPropertiesForClass:clazz upToParentClass:[NSObject class]];
+    NSSet *allProperties = [TyphoonIntrospectionUtils propertiesForClass:clazz upToParentClass:[NSObject class]];
     for (NSString *propertyName in allProperties) {
-		TyphoonTypeDescriptor *type = [TyphoonIntrospectionUtils typeForPropertyNamed:propertyName inClass:clazz];
-		
-        id explicitType = TypeForInjectionFromType(type);
-        if (!explicitType) {
-            [NSException raise:NSInternalInconsistencyException format:@"Can't resolve '%@' property in %@ class. Make sure that specified protocol/class exist and linked.", propertyName, clazz];
+        TyphoonTypeDescriptor *type = [TyphoonIntrospectionUtils typeForPropertyNamed:propertyName inClass:clazz];
+        if (IsTyphoonAutoInjectionType(type)) {
+            id explicitType = TypeForInjectionFromType(type);
+            if (!explicitType) {
+                [NSException raise:NSInternalInconsistencyException format:@"Can't resolve '%@' property in %@ class. Make sure that specified protocol/class exist and linked.", propertyName, clazz];
+            }
+            id<TyphoonPropertyInjection> injection = TyphoonInjectionWithType(explicitType);
+            [injection setPropertyName:propertyName];
+            if (!injections) {
+                injections = [[NSMutableArray alloc] initWithCapacity:allProperties.count];
+            }
+            [injections addObject:injection];
         }
-        id<TyphoonPropertyInjection> injection = TyphoonInjectionWithType(explicitType);
-        [injection setPropertyName:propertyName];
-        if (!injections) {
-            injections = [[NSMutableArray alloc] initWithCapacity:allProperties.count];
-        }
-        [injections addObject:injection];
     }
     return injections;
+}
+
+static BOOL IsTyphoonAutoInjectionType(TyphoonTypeDescriptor *type)
+{
+    return protocol_isEqual(type.protocol, @protocol(TyphoonInjectedProtocol)) ||
+        type.typeBeingDescribed == [TyphoonInjectedObject class];
 }
 
 static id TypeForInjectionFromType(TyphoonTypeDescriptor *type)
