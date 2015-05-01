@@ -10,15 +10,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonComponentFactoryPostProcessorStubImpl.h"
+#import "TyphoonDefinition.h"
+#import "TyphoonComponentFactory.h"
 
 @implementation TyphoonComponentFactoryPostProcessorStubImpl
 
-- (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory
-{
-    self.postProcessingCalled = YES;
-}
-
-- (void)postProcessDefinition:(TyphoonDefinition *)definition withFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessDefinition:(TyphoonDefinition *)definition replacement:(TyphoonDefinition **)definitionToReplace withFactory:(TyphoonComponentFactory *)factory
 {
     self.postProcessingCalled = YES;
 }

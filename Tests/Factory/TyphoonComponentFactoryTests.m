@@ -296,14 +296,18 @@ static NSString *const DEFAULT_QUEST = @"quest";
     XCTAssertTrue([_componentFactory isLoaded]);
 }
 
-- (void)test_load_post_processors
-{
-    id <TyphoonDefinitionPostProcessor> postProcessor = mockProtocol(@protocol(TyphoonDefinitionPostProcessor));
-    [_componentFactory attachPostProcessor:postProcessor];
-    [_componentFactory load];
-    [_componentFactory load]; // Should do nothing
-    [verifyCount(postProcessor, times(1)) postProcessDefinitionsInFactory:_componentFactory];
-}
+//TODO: This test can't be done with new API, because of restriction of OCMockito
+//- (void)test_load_post_processors
+//{
+//    TyphoonDefinition *quest = [TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"];
+//    [_componentFactory registerDefinition:quest];
+//    id <TyphoonDefinitionPostProcessor> postProcessor = mockProtocol(@protocol(TyphoonDefinitionPostProcessor));
+//    [_componentFactory attachPostProcessor:postProcessor];
+//    [_componentFactory load];
+//    [_componentFactory load]; // Should do nothing
+//    TyphoonDefinition *replacement = nil;
+//    [verifyCount(postProcessor, times(1)) postProcessDefinition:quest replacement:&replacement withFactory:_componentFactory];
+//}
 
 
 - (void)test_load_singleton

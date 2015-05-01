@@ -26,13 +26,16 @@
 
 @implementation TyphoonAbstractDetachableComponentFactoryPostProcessor
 
-- (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory
+- (instancetype)init
 {
-    _factory = factory;
-    [self cacheDefinitionsIn:_factory];
+    self = [super init];
+    if (self) {
+        _rollbackDefinitions = [NSMutableDictionary new];
+    }
+    return self;
 }
 
-- (void)postProcessDefinition:(TyphoonDefinition *)definition withFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessDefinition:(TyphoonDefinition *)definition replacement:(TyphoonDefinition **)definitionToReplace withFactory:(TyphoonComponentFactory *)factory
 {
     _factory = factory;
     [self cacheDefinition:definition];
@@ -52,15 +55,6 @@
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Private Methods
-
-- (void)cacheDefinitionsIn:(TyphoonComponentFactory *)factory
-{
-    NSMutableDictionary *definitions = [NSMutableDictionary new];
-    for (TyphoonDefinition *definition in factory.registry) {
-        definitions[[definition key]] = [definition copy];
-    }
-    _rollbackDefinitions = definitions;
-}
 
 - (void)cacheDefinition:(TyphoonDefinition *)definition
 {

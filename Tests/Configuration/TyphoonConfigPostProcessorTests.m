@@ -50,7 +50,7 @@
     }];
     [factory registerDefinition:knightDefinition];
 
-    [_configurer postProcessDefinitionsInFactory:factory];
+    [self postProcessFactory:factory withPostProcessor:_configurer];
 
     Knight *knight = [factory componentForType:[Knight class]];
     XCTAssertEqual(knight.damselsRescued, 12);
@@ -64,7 +64,7 @@
     [knightDefinition injectProperty:@selector(damselsRescued) with:TyphoonConfig(@"damsels.rescued")];
     [factory registerDefinition:knightDefinition];
 
-    [_configurer postProcessDefinitionsInFactory:factory];
+    [self postProcessFactory:factory withPostProcessor:_configurer];
 
     Knight *knight = [factory componentForType:[Knight class]];
     XCTAssertEqual(knight.damselsRescued, 12);
@@ -82,7 +82,7 @@
     [knightDefinition injectProperty:@selector(hasHorseWillTravel) with:TyphoonConfig(@"json.hasHorseWillTravel")];
     [factory registerDefinition:knightDefinition];
 
-    [_configurer postProcessDefinitionsInFactory:factory];
+    [self postProcessFactory:factory withPostProcessor:_configurer];
 
     Knight *knight = [factory componentForType:[Knight class]];
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)42);
@@ -100,7 +100,7 @@
     [knightDefinition injectProperty:@selector(hasHorseWillTravel) with:TyphoonConfig(@"plist.hasHorse")];
     [factory registerDefinition:knightDefinition];
 
-    [_configurer postProcessDefinitionsInFactory:factory];
+    [self postProcessFactory:factory withPostProcessor:_configurer];
 
     Knight *knight = [factory componentForType:[Knight class]];
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)28);
@@ -111,9 +111,16 @@
 {
     TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc]
         initWithAssembly:[TyphoonTestAssemblyConfigPostProcessor assembly]];
-    [_configurer postProcessDefinitionsInFactory:factory];
+    [self postProcessFactory:factory withPostProcessor:_configurer];
     Knight *knight = [factory componentForType:[Knight class]];
     XCTAssertEqualObjects(knight.quest.imageUrl, [NSURL URLWithString:@"http://google.com/"]);
+}
+
+- (void)postProcessFactory:(TyphoonComponentFactory *)factory withPostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor
+{
+    [factory enumerateDefinitions:^(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace, BOOL *stop) {
+        [postProcessor postProcessDefinition:definition replacement:definitionToReplace withFactory:factory];
+    }];
 }
 
 @end

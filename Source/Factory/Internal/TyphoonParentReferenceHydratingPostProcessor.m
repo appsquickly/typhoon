@@ -18,21 +18,12 @@
 
 @implementation TyphoonParentReferenceHydratingPostProcessor
 
-- (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory
-{
-    [factory.registry enumerateObjectsUsingBlock:^(TyphoonDefinition *definition, NSUInteger idx, BOOL *stop) {
-        [self postProcessDefinition:definition withFactory:factory];
-    }];
-}
-
-- (void)postProcessDefinition:(TyphoonDefinition *)definition withFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessDefinition:(TyphoonDefinition *)definition replacement:(TyphoonDefinition **)definitionToReplace withFactory:(TyphoonComponentFactory *)factory
 {
     if (definition.parent) {
         TyphoonDefinition *parentDefinition = [factory definitionForKey:[(TyphoonDefinition *)definition.parent key]];
         [definition setParent:parentDefinition];
     }
-
 }
-
 
 @end

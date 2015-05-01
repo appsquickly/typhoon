@@ -34,10 +34,8 @@
 - (void)test_process_view_controller_without_initializer
 {
     TyphoonDefinition *definition = [TyphoonDefinition withClass:[UIViewController class]];
-    TyphoonComponentFactory *factory = mock([TyphoonComponentFactory class]);
-    [given([factory registry]) willReturn:@[definition]];
 
-    [_nibResolver postProcessDefinitionsInFactory:factory];
+    [_nibResolver postProcessDefinition:definition replacement:NULL withFactory:nil];
 
     XCTAssertNotNil(definition.initializer);
     XCTAssertEqualObjects(NSStringFromSelector(definition.initializer.selector), NSStringFromSelector(@selector(initWithNibName:bundle:)));
@@ -53,11 +51,8 @@
         [initializer injectParameterWith:@""];
     }];
 
+    [_nibResolver postProcessDefinition:definition replacement:NULL withFactory:nil];
 
-    TyphoonComponentFactory *factory = mock([TyphoonComponentFactory class]);
-    [given([factory registry]) willReturn:@[definition]];
-
-    [_nibResolver postProcessDefinitionsInFactory:factory];
     XCTAssertEqualObjects(NSStringFromSelector(definition.initializer.selector), NSStringFromSelector(@selector(initWithFoobar:)));
 }
 

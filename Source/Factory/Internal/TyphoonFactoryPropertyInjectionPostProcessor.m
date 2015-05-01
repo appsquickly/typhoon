@@ -24,14 +24,7 @@
 //-------------------------------------------------------------------------------------------
 #pragma mark - Protocol Methods
 
-- (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory
-{
-    for (TyphoonDefinition *definition in [factory registry]) {
-        [self postProcessDefinition:definition withFactory:factory];
-    }
-}
-
-- (void)postProcessDefinition:(TyphoonDefinition *)definition withFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessDefinition:(TyphoonDefinition *)definition replacement:(TyphoonDefinition **)definitionToReplace withFactory:(TyphoonComponentFactory *)factory
 {
     [definition enumerateInjectionsOfKind:[TyphoonInjectionByType class] options:TyphoonInjectionsEnumerationOptionProperties
                                usingBlock:^(TyphoonInjectionByType *typeInjection, id <TyphoonInjection> *injectionToReplace, BOOL *stop) {

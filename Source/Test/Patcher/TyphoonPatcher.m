@@ -86,16 +86,14 @@
 //-------------------------------------------------------------------------------------------
 #pragma mark - Protocol Methods
 
-- (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessDefinition:(TyphoonDefinition *)definition replacement:(TyphoonDefinition **)definitionToReplace withFactory:(TyphoonComponentFactory *)factory
 {
-    [super postProcessDefinitionsInFactory:factory];
+    [super postProcessDefinition:definition replacement:definitionToReplace withFactory:factory];
 
-    [factory enumerateDefinitions:^(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace, BOOL *stop) {
-        TyphoonPatchObjectCreationBlock patchObjectBlock = _patches[definition.key];
-        if (patchObjectBlock) {
-            *definitionToReplace = [[TyphoonPatcherDefinition alloc] initWithOriginalDefinition:definition patchObjectBlock:patchObjectBlock];
-        }
-    }];
+    TyphoonPatchObjectCreationBlock patchObjectBlock = _patches[definition.key];
+    if (patchObjectBlock && definitionToReplace) {
+        *definitionToReplace = [[TyphoonPatcherDefinition alloc] initWithOriginalDefinition:definition patchObjectBlock:patchObjectBlock];
+    }
 }
 
 @end

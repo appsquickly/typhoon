@@ -293,7 +293,7 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
 
 - (void)_loadOnlyOne:(TyphoonDefinition *)definition
 {
-    [self applyPostProcessorsToDefinition:definition];
+    definition = [self definitionAfterApplyingPostProcessorsToDefinition:definition];
     [self instantiateIfEagerSingleton:definition];
 }
 
@@ -319,21 +319,29 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
     _instancePostProcessors = [[self orderedArray:_instancePostProcessors] mutableCopy];
 }
 
-//TODO: Remove that method at all..
 - (void)applyPostProcessors
 {
-    [_definitionPostProcessors enumerateObjectsUsingBlock:^(id<TyphoonDefinitionPostProcessor> postProcessor,
-            NSUInteger idx, BOOL *stop) {
-        [postProcessor postProcessDefinitionsInFactory:self];
+    [self enumerateDefinitions:^(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace, BOOL *stop) {
+        TyphoonDefinition *result = [self definitionAfterApplyingPostProcessorsToDefinition:definition];
+        if (definitionToReplace && result != definition) {
+            *definitionToReplace = result;
+        }
     }];
 }
 
-- (void)applyPostProcessorsToDefinition:(TyphoonDefinition *)definition
+- (TyphoonDefinition *)definitionAfterApplyingPostProcessorsToDefinition:(TyphoonDefinition *)definition
 {
-    [_definitionPostProcessors enumerateObjectsUsingBlock:^(id<TyphoonDefinitionPostProcessor> postProcessor,
-            NSUInteger idx, BOOL *stop) {
-        [postProcessor postProcessDefinition:definition withFactory:self];
-    }];
+    TyphoonDefinition *result = definition;
+
+    for (id<TyphoonDefinitionPostProcessor> postProcessor in _definitionPostProcessors) {
+        TyphoonDefinition *currentReplacement = nil;
+        [postProcessor postProcessDefinition:result replacement:&currentReplacement withFactory:self];
+        if (currentReplacement) {
+            result = currentReplacement;
+        }
+    }
+
+    return result;
 }
 
 - (void)instantiateEagerSingletons

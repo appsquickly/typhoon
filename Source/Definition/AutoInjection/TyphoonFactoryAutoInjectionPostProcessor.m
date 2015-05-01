@@ -24,14 +24,7 @@ static id TypeForInjectionFromType(TyphoonTypeDescriptor *type);
 
 @implementation TyphoonFactoryAutoInjectionPostProcessor
 
-- (void)postProcessDefinitionsInFactory:(TyphoonComponentFactory *)factory
-{
-    for (TyphoonDefinition *definition in [factory registry]) {
-        [self postProcessDefinition:definition];
-    }
-}
-
-- (void)postProcessDefinition:(TyphoonDefinition *)definition withFactory:(TyphoonComponentFactory *)factory
+- (void)postProcessDefinition:(TyphoonDefinition *)definition replacement:(TyphoonDefinition **)definitionToReplace withFactory:(TyphoonComponentFactory *)factory
 {
     [self postProcessDefinition:definition];
 }
