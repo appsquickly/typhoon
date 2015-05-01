@@ -77,22 +77,8 @@ static const char *kTyphoonKey;
         [self.factory inject:viewController];
     }
 
-    if ([viewController isKindOfClass:[UINavigationController class]]) {
-        for (UIViewController *controller in ((UINavigationController *) viewController).viewControllers) {
-            [self injectPropertiesForViewController:controller];
-        }
-    }
-
-    if ([viewController isKindOfClass:[UITabBarController class]]) {
-        for (UIViewController *controller in ((UITabBarController *) viewController).viewControllers) {
-            [self injectPropertiesForViewController:controller];
-        }
-    }
-    
-    if ([viewController isKindOfClass:[UISplitViewController class]]) {
-        for (UIViewController *controller in ((UISplitViewController *) viewController).viewControllers) {
-            [self injectPropertiesForViewController:controller];
-        }
+    for (UIViewController *controller in viewController.childViewControllers) {
+        [self injectPropertiesForViewController:controller];
     }
 }
 
