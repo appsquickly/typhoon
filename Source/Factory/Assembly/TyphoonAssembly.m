@@ -211,6 +211,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 - (instancetype)activateWithCollaboratingAssemblies:(NSArray *)assemblies {
     NSMutableSet *reconciledAssemblies = [NSMutableSet setWithArray:[@[self] arrayByAddingObjectsFromArray:assemblies]];
+    NSMutableSet *assembliesToRemove = [[NSMutableSet alloc] init];
 
     for (TyphoonAssembly *collaboratingAssembly in [self collectCollaboratingAssembliesBackTo:[self class]]) {
 
@@ -218,7 +219,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
             if ([collaboratingAssembly class] != [overrideCandidate class] &&
                     [[overrideCandidate class] isSubclassOfClass:[collaboratingAssembly class]]) {
 
-                [reconciledAssemblies removeObject:collaboratingAssembly];
+                [assembliesToRemove addObject:collaboratingAssembly];
                 LogInfo(@"%@ will act in place of assembly with class: %@", [overrideCandidate class],
                         [collaboratingAssembly class]);
             }
@@ -227,6 +228,10 @@ static NSMutableSet *reservedSelectorsAsStrings;
         {
             [reconciledAssemblies addObject:collaboratingAssembly];
         }
+    }
+
+    for (TyphoonAssembly *assembly in assembliesToRemove) {
+        [reconciledAssemblies removeObject:assembly];
     }
 
     TyphoonBlockComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssemblies:
@@ -289,7 +294,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 - (TyphoonAssembly *)assemblyWithType:(Class)type in:(NSSet *)assemblies {
     for (TyphoonAssembly *assembly in assemblies) {
-        if ([assembly class] == type) {
+        if ([[assembly class] isSubclassOfClass:type]) {
             return assembly;
         }
     }
