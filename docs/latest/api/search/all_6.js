@@ -14,7 +14,6 @@ var searchData=
   ['initwithtypecode_3a',['initWithTypeCode:',['../interface_typhoon_type_descriptor.html#abeb253dff8861986d28c83bc2f73fb8d',1,'TyphoonTypeDescriptor']]],
   ['inject_3a',['inject:',['../protocol_typhoon_component_factory-p.html#a4531b1291723ccbaaf31553aea40ee6a',1,'TyphoonComponentFactory-p']]],
   ['inject_3awithselector_3a',['inject:withSelector:',['../protocol_typhoon_component_factory-p.html#a238c582efa06e034699d9218c6c75539',1,'TyphoonComponentFactory-p']]],
-  ['injectedpropertiesforclass_3auptoparentclass_3a',['injectedPropertiesForClass:upToParentClass:',['../interface_typhoon_introspection_utils.html#a28dd8fb6b281a2747561515ec39fc696',1,'TyphoonIntrospectionUtils']]],
   ['injectedprotocol',['InjectedProtocol',['../_typhoon_auto_injection_8h.html#ae73cb690bfababa9898655627175ba7d',1,'TyphoonAutoInjection.h']]],
   ['injectmethod_3aparameters_3a',['injectMethod:parameters:',['../interface_typhoon_definition.html#a6052afa42a4a9a206dfac94cbd7f5e86',1,'TyphoonDefinition']]],
   ['injectparameterwith_3a',['injectParameterWith:',['../interface_typhoon_method.html#ac9c073e76872ccce153960253c6352db',1,'TyphoonMethod']]],

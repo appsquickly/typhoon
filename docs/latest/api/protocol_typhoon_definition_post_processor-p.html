@@ -108,12 +108,9 @@ Inheritance diagram for &lt;TyphoonDefinitionPostProcessor&gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:a534dfc2f6c17dba46af030fa9b6e0146"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_typhoon_definition_post_processor-p.html#a534dfc2f6c17dba46af030fa9b6e0146">postProcessDefinition:withFactory:</a></td></tr>
-<tr class="memdesc:a534dfc2f6c17dba46af030fa9b6e0146"><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO.  <a href="#a534dfc2f6c17dba46af030fa9b6e0146">More...</a><br /></td></tr>
-<tr class="separator:a534dfc2f6c17dba46af030fa9b6e0146"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec4cc0d59e693dd7fffa0c7247d05915"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_typhoon_definition_post_processor-p.html#aec4cc0d59e693dd7fffa0c7247d05915">postProcessDefinitionsInFactory:</a></td></tr>
-<tr class="memdesc:aec4cc0d59e693dd7fffa0c7247d05915"><td class="mdescLeft">&#160;</td><td class="mdescRight">Post process a component factory after its initialization.  <a href="#aec4cc0d59e693dd7fffa0c7247d05915">More...</a><br /></td></tr>
-<tr class="separator:aec4cc0d59e693dd7fffa0c7247d05915"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbfdd0e97695ed3643713d7ec2ddb2ad"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="protocol_typhoon_definition_post_processor-p.html#abbfdd0e97695ed3643713d7ec2ddb2ad">postProcessDefinition:replacement:withFactory:</a></td></tr>
+<tr class="memdesc:abbfdd0e97695ed3643713d7ec2ddb2ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Post process a definition.  <a href="#abbfdd0e97695ed3643713d7ec2ddb2ad">More...</a><br /></td></tr>
+<tr class="separator:abbfdd0e97695ed3643713d7ec2ddb2ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Allows for custom modification of a component factory's definitions. </p>
@@ -122,7 +119,7 @@ Instance Methods</h2></td></tr>
 <dd>
 TyphoonComponentPostProcessor which modifies instances after they've been built, rather than the definitions </dd></dl>
 </div><h2 class="groupheader">Method Documentation</h2>
-<a class="anchor" id="a534dfc2f6c17dba46af030fa9b6e0146"></a>
+<a class="anchor" id="abbfdd0e97695ed3643713d7ec2ddb2ad"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -131,6 +128,12 @@ TyphoonComponentPostProcessor which modifies instances after they've been built,
           <td></td>
           <td class="paramtype">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> *)&#160;</td>
           <td class="paramname"><em>definition</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">replacement:</td>
+          <td></td>
+          <td class="paramtype">(<a class="el" href="interface_typhoon_definition.html">TyphoonDefinition</a> **)&#160;</td>
+          <td class="paramname"><em>definitionToReplace</em></td>
         </tr>
         <tr>
           <td class="paramkey">withFactory:</td>
@@ -146,35 +149,13 @@ TyphoonComponentPostProcessor which modifies instances after they've been built,
       </table>
 </div><div class="memdoc">
 
-<p>TODO. </p>
+<p>Post process a definition. </p>
+<p>Called for each definition in the factory. You able to modify definition and you can return another definition, using definitionToReplace pointer.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">definition</td><td>The definition. </td></tr>
+    <tr><td class="paramname">definitionToReplace</td><td>pointer to definition replacement </td></tr>
     <tr><td class="paramname">factory</td><td>The component factory. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="aec4cc0d59e693dd7fffa0c7247d05915"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">- (void) postProcessDefinitionsInFactory: </td>
-          <td></td>
-          <td class="paramtype">(<a class="el" href="interface_typhoon_component_factory.html">TyphoonComponentFactory</a> *)&#160;</td>
-          <td class="paramname"><em>factory</em></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Post process a component factory after its initialization. </p>
-<p>May be called more than once, if a PostProcessor is added to a ComponentFactory after a component has been retrieved from that factory. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">factory</td><td>The component factory </td></tr>
   </table>
   </dd>
 </dl>
@@ -188,7 +169,7 @@ TyphoonComponentPostProcessor which modifies instances after they've been built,
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
         <li class="navelem"><a class="el" href="protocol_typhoon_definition_post_processor-p.html">TyphoonDefinitionPostProcessor</a></li>
-        <li class="footer">Generated on Thu Apr 30 2015 18:45:10 for Typhoon by
+        <li class="footer">Generated on Fri May 8 2015 13:40:51 for Typhoon by
             <a href="http://www.doxygen.org/index.html">
                 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7
         </li>

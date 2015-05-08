@@ -1,7 +1,6 @@
 var searchData=
 [
   ['textwithouttypefromtextvalue_3a',['textWithoutTypeFromTextValue:',['../interface_typhoon_type_converter_registry.html#af70a6163ffa2c615202d43ab436afad3',1,'TyphoonTypeConverterRegistry']]],
-  ['typeforproperty_3a',['typeForProperty:',['../interface_typhoon_introspection_utils.html#a3db6d318de0aba36c4b1d20376e9093f',1,'TyphoonIntrospectionUtils']]],
   ['typeforpropertynamed_3ainclass_3a',['typeForPropertyNamed:inClass:',['../interface_typhoon_introspection_utils.html#a3cc0430557ce727f326c9d0919b1136b',1,'TyphoonIntrospectionUtils']]],
   ['typefromtextvalue_3a',['typeFromTextValue:',['../interface_typhoon_type_converter_registry.html#afa80517a752cf484d86113ee782adfb7',1,'TyphoonTypeConverterRegistry']]],
   ['typhoon_5fenumerateobjectswithmanualiteration_3acompletion_3a',['typhoon_enumerateObjectsWithManualIteration:completion:',['../category_n_s_array_07_typhoon_signal_enumerator_08.html#a95ecce680a7d3789c68b89920fa236bb',1,'NSArray(TyphoonSignalEnumerator)']]],
