@@ -41,6 +41,31 @@ static const char *kTyphoonKey;
 @end
 
 //-------------------------------------------------------------------------------------------
+#pragma mark - UIView + TyphoonDefinitionKey
+
+@interface UIView (TyphoonDefinitionKey)
+
+@property(nonatomic, strong) NSString *typhoonKey;
+
+@end
+
+@implementation UIView (TyphoonDefinitionKey)
+
+static const char *kTyphoonKey;
+
+- (void)setTyphoonKey:(NSString *)typhoonKey
+{
+    objc_setAssociatedObject(self, &kTyphoonKey, typhoonKey, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSString *)typhoonKey
+{
+    return objc_getAssociatedObject(self, &kTyphoonKey);
+}
+
+@end
+
+//-------------------------------------------------------------------------------------------
 #pragma mark - TyphoonStoryboard
 
 @implementation TyphoonStoryboard
@@ -79,6 +104,23 @@ static const char *kTyphoonKey;
 
     for (UIViewController *controller in viewController.childViewControllers) {
         [self injectPropertiesForViewController:controller];
+    }
+    
+    [self injectPropertiesInView:viewController.view];
+}
+
+- (void)injectPropertiesInView:(UIView *)view
+{
+    if (view.typhoonKey.length > 0) {
+        [self.factory inject:view withSelector:NSSelectorFromString(view.typhoonKey)];
+    }
+    
+    if ([view.subviews count] == 0) {
+        return;
+    }
+    
+    for (UIView *subview in view.subviews) {
+        [self injectPropertiesInView:subview];
     }
 }
 
