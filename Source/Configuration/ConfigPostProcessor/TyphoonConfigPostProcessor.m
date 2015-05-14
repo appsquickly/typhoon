@@ -48,6 +48,13 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
     return processor;
 }
 
++ (TyphoonConfigPostProcessor *)forResourceNamed:(NSString *)resourceName inBundle:(NSBundle *)bundle
+{
+    TyphoonConfigPostProcessor *processor = [[TyphoonConfigPostProcessor alloc] init];
+    [processor useResourceWithName:resourceName bundle:bundle];
+    return processor;
+}
+
 + (TyphoonConfigPostProcessor *)forResourceAtPath:(NSString *)path
 {
     TyphoonConfigPostProcessor *processor = [[TyphoonConfigPostProcessor alloc] init];
@@ -104,7 +111,12 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 
 - (void)useResourceWithName:(NSString *)name
 {
-    [self useResource:[TyphoonBundleResource withName:name inBundle:[NSBundle mainBundle]]
+    [self useResourceWithName:name bundle:[NSBundle mainBundle]];
+}
+
+- (void)useResourceWithName:(NSString *)name bundle:(NSBundle *)bundle
+{
+    [self useResource:[TyphoonBundleResource withName:name inBundle:bundle]
         withExtension:[name pathExtension]];
 }
 

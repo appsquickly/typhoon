@@ -59,11 +59,19 @@ Declares short-hand definition factory methods for infrastructure components.
 + (instancetype)withClass:(Class)clazz key:(NSString *)key;
 
 /**
-Factory method for a TyphoonConfigPostProcessor.
+Factory method for a TyphoonConfigPostProcessor. Don't use it in test targets!
 @param fileName The config filename to load. File should be placed in main bundle
 @return a definition.
 */
 + (instancetype)configDefinitionWithName:(NSString *)fileName;
+
+/**
+ Factory method for a TyphoonConfigPostProcessor.
+ @param fileName    The config filename to load.
+ @param fileBundle  The bundle, where the config file is placed
+ @return a definition.
+ */
++ (instancetype)configDefinitionWithName:(NSString *)fileName bundle:(NSBundle *)fileBundle;
 
 /**
 Factory method for a TyphoonConfigPostProcessor.
