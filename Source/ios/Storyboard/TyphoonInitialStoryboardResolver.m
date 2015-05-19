@@ -48,7 +48,15 @@
 
 + (NSString *)initialStoryboardName
 {
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"UIMainStoryboardFile"];
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+
+    NSString *defaultStoryboardName = infoDictionary[@"UIMainStoryboardFile"];
+
+    if (!defaultStoryboardName) {
+        defaultStoryboardName = infoDictionary[@"NSExtension"][@"NSExtensionMainStoryboard"];
+    }
+
+    return defaultStoryboardName;
 }
 
 @end
