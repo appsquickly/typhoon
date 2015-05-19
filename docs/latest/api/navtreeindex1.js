@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"interface_typhoon_definition.html#ace67617e7c8feea3167bd10342964a3d":[0,1,0,21],
+"interface_typhoon_definition.html#add76507109b2465e672b7472c408fa05":[0,1,0,2],
 "interface_typhoon_definition.html#addb9006c665061a41e8cad2db77ad9b1":[0,1,0,13],
 "interface_typhoon_definition.html#ae10af4d4327e3ca6d4e56988bd1c0062":[0,1,0,14],
 "interface_typhoon_definition.html#ae5d354908e1eec474f7e357bb672d795":[0,1,0,15],

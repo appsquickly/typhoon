@@ -2,5 +2,6 @@ var searchData=
 [
   ['factoryforresolvingfromxibs',['factoryForResolvingFromXibs',['../interface_typhoon_component_factory.html#a9f9dfff1c95f8c83303889d7202df414',1,'TyphoonComponentFactory']]],
   ['forresourceatpath_3a',['forResourceAtPath:',['../interface_typhoon_config_post_processor.html#ac17d60639a4571a1c22c7d8f3325c8a8',1,'TyphoonConfigPostProcessor']]],
-  ['forresourcenamed_3a',['forResourceNamed:',['../interface_typhoon_config_post_processor.html#a65ea4a5229e4f09d77d6286cbca50939',1,'TyphoonConfigPostProcessor']]]
+  ['forresourcenamed_3a',['forResourceNamed:',['../interface_typhoon_config_post_processor.html#a65ea4a5229e4f09d77d6286cbca50939',1,'TyphoonConfigPostProcessor']]],
+  ['forresourcenamed_3ainbundle_3a',['forResourceNamed:inBundle:',['../interface_typhoon_config_post_processor.html#a2acf0278f3c953ac8dd4b4fac791dcc0',1,'TyphoonConfigPostProcessor']]]
 ];

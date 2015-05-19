@@ -382,6 +382,11 @@
               <Anchor>a65ea4a5229e4f09d77d6286cbca50939</Anchor>
              </Node>
              <Node>
+              <Name>forResourceNamed:inBundle:</Name>
+              <Path>interface_typhoon_config_post_processor.html</Path>
+              <Anchor>a2acf0278f3c953ac8dd4b4fac791dcc0</Anchor>
+             </Node>
+             <Node>
               <Name>processor</Name>
               <Path>interface_typhoon_config_post_processor.html</Path>
               <Anchor>a41902743cd49555aaa2be5a3f79bd9c9</Anchor>
@@ -405,6 +410,11 @@
               <Name>useResourceWithName:</Name>
               <Path>interface_typhoon_config_post_processor.html</Path>
               <Anchor>aa918daab1e558a2f7a5180de43648059</Anchor>
+             </Node>
+             <Node>
+              <Name>useResourceWithName:bundle:</Name>
+              <Path>interface_typhoon_config_post_processor.html</Path>
+              <Anchor>a712b70a74dbe9f07a9d5cea052676ea4</Anchor>
              </Node>
             </Subnodes>
            </Node>
@@ -888,6 +898,11 @@
               <Anchor>a65ea4a5229e4f09d77d6286cbca50939</Anchor>
              </Node>
              <Node>
+              <Name>forResourceNamed:inBundle:</Name>
+              <Path>interface_typhoon_config_post_processor.html</Path>
+              <Anchor>a2acf0278f3c953ac8dd4b4fac791dcc0</Anchor>
+             </Node>
+             <Node>
               <Name>processor</Name>
               <Path>interface_typhoon_config_post_processor.html</Path>
               <Anchor>a41902743cd49555aaa2be5a3f79bd9c9</Anchor>
@@ -911,6 +926,11 @@
               <Name>useResourceWithName:</Name>
               <Path>interface_typhoon_config_post_processor.html</Path>
               <Anchor>aa918daab1e558a2f7a5180de43648059</Anchor>
+             </Node>
+             <Node>
+              <Name>useResourceWithName:bundle:</Name>
+              <Path>interface_typhoon_config_post_processor.html</Path>
+              <Anchor>a712b70a74dbe9f07a9d5cea052676ea4</Anchor>
              </Node>
             </Subnodes>
            </Node>

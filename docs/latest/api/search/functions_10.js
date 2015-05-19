@@ -7,5 +7,6 @@ var searchData=
   ['useinitializer_3aparameters_3a',['useInitializer:parameters:',['../interface_typhoon_definition.html#ae5d354908e1eec474f7e357bb672d795',1,'TyphoonDefinition']]],
   ['useresource_3awithextension_3a',['useResource:withExtension:',['../interface_typhoon_config_post_processor.html#afa3c8345a8cc01cca161be365166c14e',1,'TyphoonConfigPostProcessor']]],
   ['useresourceatpath_3a',['useResourceAtPath:',['../interface_typhoon_config_post_processor.html#a95df02cc1f28ad0c0fb08d7a2ec2b98e',1,'TyphoonConfigPostProcessor']]],
-  ['useresourcewithname_3a',['useResourceWithName:',['../interface_typhoon_config_post_processor.html#aa918daab1e558a2f7a5180de43648059',1,'TyphoonConfigPostProcessor']]]
+  ['useresourcewithname_3a',['useResourceWithName:',['../interface_typhoon_config_post_processor.html#aa918daab1e558a2f7a5180de43648059',1,'TyphoonConfigPostProcessor']]],
+  ['useresourcewithname_3abundle_3a',['useResourceWithName:bundle:',['../interface_typhoon_config_post_processor.html#a712b70a74dbe9f07a9d5cea052676ea4',1,'TyphoonConfigPostProcessor']]]
 ];

@@ -1888,6 +1888,18 @@
   </Token>
   <Token>
     <TokenIdentifier>
+      <Name>forResourceNamed:inBundle:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>clm</Type>
+      <Scope>TyphoonConfigPostProcessor</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_config_post_processor.html</Path>
+    <Anchor>a2acf0278f3c953ac8dd4b4fac791dcc0</Anchor>
+    <Abstract>Returns a post processor for the bundle resource with the given name and bundle. </Abstract>
+    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
       <Name>processor</Name>
       <APILanguage>occ</APILanguage>
       <Type>clm</Type>
@@ -1943,6 +1955,18 @@
     <Path>interface_typhoon_config_post_processor.html</Path>
     <Anchor>aa918daab1e558a2f7a5180de43648059</Anchor>
     <Abstract>Append resource found in main bundle by name. </Abstract>
+    <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>useResourceWithName:bundle:</Name>
+      <APILanguage>occ</APILanguage>
+      <Type>instm</Type>
+      <Scope>TyphoonConfigPostProcessor</Scope>
+    </TokenIdentifier>
+    <Path>interface_typhoon_config_post_processor.html</Path>
+    <Anchor>a712b70a74dbe9f07a9d5cea052676ea4</Anchor>
+    <Abstract>Append resource found by name and bundle. </Abstract>
     <DeclaredIn>TyphoonConfigPostProcessor.h</DeclaredIn>
   </Token>
   <Token>
