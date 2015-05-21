@@ -36,13 +36,6 @@
 
 + (void)load
 {
-    __weak __typeof(self) weakSelf = self;
-    [[NSNotificationCenter defaultCenter]
-        addObserverForName:ApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue]
-        usingBlock:^(NSNotification* note) {
-            [weakSelf releaseInitialFactory];
-        }];
-
     [self swizzleSetDelegateMethodOnApplicationClass];
 }
 
@@ -60,13 +53,17 @@
 #pragma mark -
 
 static TyphoonComponentFactory *initialFactory;
+static NSUInteger initialFactoryRequestCount = 0;
 
-+ (void)loadInitialFactory
++ (void)requireInitialFactory
 {
-    initialFactory = [TyphoonBlockComponentFactory factoryFromPlistInBundle:[NSBundle mainBundle]];
+    if (initialFactoryRequestCount == 0) {
+        initialFactory = [TyphoonBlockComponentFactory factoryFromPlistInBundle:[NSBundle mainBundle]];
+    }
+    initialFactoryRequestCount += 1;
 }
 
-+ (TyphoonComponentFactory*)initialFactory
++ (TyphoonComponentFactory *)initialFactory
 {
     return initialFactory;
 }
@@ -79,7 +76,7 @@ static TyphoonComponentFactory *initialFactory;
     void(*originalImp)(id, SEL, id) = (void (*)(id, SEL, id))method_getImplementation(method);
 
     IMP adjustedImp = imp_implementationWithBlock(^(id instance, id delegate) {
-        [self loadInitialFactory];
+        [self requireInitialFactory];
         id factoryFromDelegate = [self factoryFromAppDelegate:delegate];
         if (factoryFromDelegate && initialFactory)
         {
@@ -97,6 +94,7 @@ static TyphoonComponentFactory *initialFactory;
             [self injectInitialFactoryIntoDelegate:delegate];
             [TyphoonComponentFactory setFactoryForResolvingFromXibs:initialFactory];
         }
+        [self releaseInitialFactoryWhenApplicationDidFinishLaunching];
 
         originalImp(instance, sel, delegate);
     });
@@ -104,9 +102,22 @@ static TyphoonComponentFactory *initialFactory;
     method_setImplementation(method, adjustedImp);
 }
 
++ (void)releaseInitialFactoryWhenApplicationDidFinishLaunching
+{
+    __weak __typeof(self) weakSelf = self;
+    [[NSNotificationCenter defaultCenter]
+            addObserverForName:ApplicationDidFinishLaunchingNotification object:nil queue:[NSOperationQueue mainQueue]
+                    usingBlock:^(NSNotification* note) {
+                        [weakSelf releaseInitialFactory];
+                    }];
+}
+
 + (void)releaseInitialFactory
 {
-    initialFactory = nil;
+    initialFactoryRequestCount -= 1;
+    if (initialFactoryRequestCount == 0) {
+        initialFactory = nil;
+    }
 }
 
 #pragma mark -

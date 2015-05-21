@@ -17,6 +17,9 @@
 
 @interface TyphoonStartup : NSObject
 
++ (void)requireInitialFactory;
+
 + (TyphoonComponentFactory *)initialFactory;
 
++ (void)releaseInitialFactory;
 @end
