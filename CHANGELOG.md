@@ -1,8 +1,8 @@
 # Change Log
 
-## [Unreleased](https://github.com/appsquickly/Typhoon/tree/HEAD)
+## [3.1.8](https://github.com/appsquickly/Typhoon/tree/3.1.8) (2015-05-21)
 
-[Full Changelog](https://github.com/appsquickly/Typhoon/compare/3.1.7...HEAD)
+[Full Changelog](https://github.com/appsquickly/Typhoon/compare/3.1.7...3.1.8)
 
 **Closed issues:**
 
@@ -11,6 +11,8 @@
 - Additional collaborating assemblies activation [\#347](https://github.com/appsquickly/Typhoon/issues/347)
 
 **Merged pull requests:**
+
+- Add change log file. [\#354](https://github.com/appsquickly/Typhoon/pull/354) ([skywinder](https://github.com/skywinder))
 
 - Fixed the issue \#348 [\#349](https://github.com/appsquickly/Typhoon/pull/349) ([igrekde](https://github.com/igrekde))
 
