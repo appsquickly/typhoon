@@ -1,8 +1,6 @@
 ![Typhoon](http://www.typhoonframework.org/typhoon-splash.png)
 ## <a href="http://typhoonframework.org">typhoonframework.org</a>  
 
-[![Join the chat at https://gitter.im/appsquickly/Typhoon](https://badges.gitter.im/Join%20Chat.svg)]
-(https://gitter.im/appsquickly/Typhoon?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 <a href="http://builds.appsquick.ly/browse/TPN-TC/latest">
 ![Build Status](http://typhoonframework.org/build-status/build-status.png?q=z)
 </a>
@@ -20,6 +18,8 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 ---------------------------------------
 
 # Usage
+[![Join the chat at https://gitter.im/appsquickly/Typhoon](https://badges.gitter.im/Join%20Chat.svg)]
+(https://gitter.im/appsquickly/Typhoon?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 * Read the ***Quick Start*** for <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Objective-C</a> or <a href="https://github.com/appsquickly/Typhoon/wiki/Swift-Quick-Start">Swift</a>. 
 * Here's the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a>.
