@@ -1,5 +1,7 @@
 ![Typhoon](http://www.typhoonframework.org/typhoon-splash.png)
 ## <a href="http://typhoonframework.org">typhoonframework.org</a>  
+
+[![Join the chat at https://gitter.im/appsquickly/Typhoon](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/appsquickly/Typhoon?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 <a href="http://builds.appsquick.ly/browse/TPN-TC/latest">
 ![Build Status](http://typhoonframework.org/build-status/build-status.png?q=z)
 </a>
