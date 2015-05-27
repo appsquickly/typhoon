@@ -73,10 +73,10 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
     BOOL _processed;
 
     TyphoonMethod *_initializer;
-    TyphoonMethod *_beforeInjections;
+    NSMutableSet *_beforeInjections;
     NSMutableSet *_injectedProperties;
     NSMutableSet *_injectedMethods;
-    TyphoonMethod *_afterInjections;
+    NSMutableSet *_afterInjections;
 
     TyphoonScope _scope;
     TyphoonDefinition *_parent;

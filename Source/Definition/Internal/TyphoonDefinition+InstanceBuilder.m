@@ -42,12 +42,16 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
                 [method replaceInjection:injection with:injectionToReplace];
             }];
         }
-        [self enumerateInjectionsOfKind:injectionClass onCollection:[_afterInjections injectedParameters] withBlock:block replaceBlock:^(id injection, id injectionToReplace) {
-            [_afterInjections replaceInjection:injection with:injectionToReplace];
-        }];
-        [self enumerateInjectionsOfKind:injectionClass onCollection:[_beforeInjections injectedParameters] withBlock:block replaceBlock:^(id injection, id injectionToReplace) {
-            [_beforeInjections replaceInjection:injection with:injectionToReplace];
-        }];
+        for (TyphoonMethod *method in [self afterInjections]) {
+            [self enumerateInjectionsOfKind:injectionClass onCollection:[method injectedParameters] withBlock:block replaceBlock:^(id injection, id injectionToReplace) {
+                [method replaceInjection:injection with:injectionToReplace];
+            }];
+        }
+        for (TyphoonMethod *method in [self beforeInjections]) {
+            [self enumerateInjectionsOfKind:injectionClass onCollection:[method injectedParameters] withBlock:block replaceBlock:^(id injection, id injectionToReplace) {
+                [method replaceInjection:injection with:injectionToReplace];
+            }];
+        }
     }
 
     if (options & TyphoonInjectionsEnumerationOptionProperties) {
@@ -76,12 +80,12 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     }
 }
 
-- (TyphoonMethod *)beforeInjections
+- (NSSet *)beforeInjections
 {
     return _beforeInjections;
 }
 
-- (TyphoonMethod *)afterInjections
+- (NSSet *)afterInjections
 {
     return _afterInjections;
 }
