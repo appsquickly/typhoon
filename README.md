@@ -38,7 +38,7 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 # Video Tutorials
 
 * <a href="https://www.youtube.com/playlist?list=PLhU81D62nv-Yd5jCW9LRjI4_AfI5NwJhe">Here's a good set</a> by Jeff Roberts. They're part of a whole new series where Jeff talks about his League of Legends sample application. 
-* <a href="https://www.youtube.com/watch?v=LO59z3fjc9k">Замечательный разговор на Typhoon хорошими людьми в</a> <a href="http://rambler-co.ru/">Rambler and Co</a>. 
+* <a href="https://www.youtube.com/watch?v=LO59z3fjc9k">Замечательный разговор на Typhoon</a> хорошими людьми в <a href="http://rambler-co.ru/">Rambler and Co</a>. 
 
 *Created a Typhoon video tutorial that you'd like to share? Awesome, post it up! Let's share and discuss.*
 
