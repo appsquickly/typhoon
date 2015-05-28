@@ -1,5 +1,6 @@
 ![Typhoon](http://www.typhoonframework.org/typhoon-splash.png)
 ## <a href="http://typhoonframework.org">typhoonframework.org</a>  
+
 <a href="http://builds.appsquick.ly/browse/TPN-TC/latest">
 ![Build Status](http://typhoonframework.org/build-status/build-status.png?q=z)
 </a>
@@ -20,8 +21,11 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 
 * Read the ***Quick Start*** for <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Objective-C</a> or <a href="https://github.com/appsquickly/Typhoon/wiki/Swift-Quick-Start">Swift</a>. 
 * Here's the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a>.
+* Join the [![Join the chat at https://gitter.im/appsquickly/Typhoon](https://badges.gitter.im/Join%20Chat.svg)]
+(https://gitter.im/appsquickly/Typhoon?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) chatroom. 
 * And here are the <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>. Generally googling a Typhoon class name will return the correct page as the first hit. 
 * <a href="http://ios.caph.jp/typhoon/introduction">日本のドキュメンテーション</a>
+
 
 # Open Source Sample Applications
 
@@ -30,6 +34,13 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 * <a href="https://github.com/JeffBNimble/LoLBookOfChampions-ios">Here's a really fun sample</a> that was created by <a href="https://github.com/JeffBNimble">Jeff Roberts</a> of <a href="http://www.nimblenogginsoftware.com/">Nimble Noggin Software</a>. It was used to teach Typhoon to the good folks at <a href="http://www.riotgames.com/">Riot Games</a>, where he consults. 
 
 *Have a Typhoon example app that you'd like to share? Great! Get in touch with us :)*
+
+# Video Tutorials
+
+* <a href="https://www.youtube.com/playlist?list=PLhU81D62nv-Yd5jCW9LRjI4_AfI5NwJhe">Here's a good set</a> by Jeff Roberts. They're part of a whole new series where Jeff talks about his League of Legends sample application. 
+* <a href="https://www.youtube.com/watch?v=LO59z3fjc9k">Замечательный разговор на Typhoon</a> хорошими людьми в <a href="http://rambler-co.ru/">Rambler and Co</a>. 
+
+*Created a Typhoon video tutorial that you'd like to share? Awesome, post it up! Let's share and discuss.*
 
 ---------------------------------------
 
