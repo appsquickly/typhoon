@@ -234,7 +234,7 @@ Class TyphoonClassFromString(NSString *className)
 {
     Class clazz = NSClassFromString(className);
     if (!clazz) {
-        NSString *defaultModuleName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+        NSString *defaultModuleName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"];
         defaultModuleName = [defaultModuleName stringByReplacingOccurrencesOfString:@" " withString:@"_"];
         clazz = NSClassFromString([defaultModuleName stringByAppendingFormat:@".%@", className]);
     }
