@@ -33,7 +33,7 @@ typedef enum {
 
 - (NSSet *)injectedProperties;
 
-- (NSSet *)injectedMethods;
+- (NSOrderedSet *)injectedMethods;
 
 - (TyphoonMethod *)afterInjections;
 

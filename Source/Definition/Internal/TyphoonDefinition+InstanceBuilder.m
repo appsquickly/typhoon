@@ -110,12 +110,12 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     return properties;
 }
 
-- (NSSet *)injectedMethods
+- (NSOrderedSet *)injectedMethods
 {
     if (!self.parent) {
         return [_injectedMethods mutableCopy];
     }
-    NSMutableSet *methods = (NSMutableSet *)[self.parent injectedMethods];
+    NSMutableOrderedSet *methods = (NSMutableOrderedSet *)[self.parent injectedMethods];
 
     NSMutableSet *overriddenMethods = [NSMutableSet set];
     for (TyphoonMethod *parentMethod in methods) {
@@ -127,7 +127,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     }
 
     [methods minusSet:overriddenMethods];
-    [methods unionSet:_injectedMethods];
+    [methods unionOrderedSet:_injectedMethods];
 
     return methods;
 }

@@ -74,7 +74,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     if (self) {
         _type = clazz;
         _injectedProperties = [[NSMutableSet alloc] init];
-        _injectedMethods = [[NSMutableSet alloc] init];
+        _injectedMethods = [[NSMutableOrderedSet alloc] init];
         _key = [key copy];
         _scope = TyphoonScopeObjectGraph;
         self.autoInjectionVisibility = TyphoonAutoInjectVisibilityDefault;
