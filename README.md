@@ -67,7 +67,7 @@ end
 
 ###Dynamic Framework
 
-If you're using Swift, you may with to install dynamic frameworks, which can be done with the Podfile shown below: 
+If you're using Swift, you may wish to install dynamic frameworks, which can be done with the Podfile shown below: 
 
 ```ruby
 # platform *must* be at least 8.0
@@ -96,7 +96,7 @@ github "appsquickly/Typhoon"
 
 Alternatively, add the source files to your project's target or set up an Xcode workspace. 
 
-**NB:** *All version of Typhoon work with iOS5 and up (and OSX 10.7 and up), iOS8 is only required if you wish to use dynamic frameworks.* 
+**NB:** *All versions of Typhoon work with iOS5 and up (and OSX 10.7 and up), iOS8 is only required if you wish to use dynamic frameworks.* 
 
 ---------------------------------------
 
