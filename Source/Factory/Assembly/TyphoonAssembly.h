@@ -29,8 +29,7 @@
 *
 * @code
 
-MyAssembly* assembly = [MyAssembly assembly];
-[[TyphoonAssemblyActivator withAssembly:assembly] activate];
+MyAssembly* assembly = [[MyAssembly new] activate];
 AnalyticsService* service = [assembly analyticsService];
 
 @endcode
