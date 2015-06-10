@@ -26,7 +26,7 @@
 - (NSString *)description
 {
     if (self.type == TyphoonInjectionTypeUndefinied) {
-        return [NSString stringWithFormat:@"<%@: %p, %@type=Undifined>", [self class], self, [self customDescription]];
+        return [NSString stringWithFormat:@"<%@: %p, %@type=Undefined>", [self class], self, [self customDescription]];
     }
     else if (self.type == TyphoonInjectionTypeParameter) {
         return [NSString stringWithFormat:@"<%@: %p, %@index=%d>", [self class], self, [self customDescription], (int) self.parameterIndex];
