@@ -16,9 +16,15 @@
 #import "CavalryMan.h"
 #import "CampaignQuest.h"
 #import "Quest.h"
+#import "TyphoonAssembly.h"
 
+//-------------------------------------------------------------------------------------------
+#pragma mark - Factories
+//-------------------------------------------------------------------------------------------
 
 @interface KnightFactory : NSObject
+
+@property (nonatomic) CGFloat defaultHitRatio;
 
 - (Knight *)knight;
 
@@ -28,9 +34,10 @@
 
 - (Knight *)knight
 {
-    return [[CavalryMan alloc] init];
+    CavalryMan *cavalery = [[CavalryMan alloc] init];
+    cavalery.hitRatio = self.defaultHitRatio;
+    return cavalery;
 }
-
 
 @end
 
@@ -49,6 +56,40 @@
 
 
 @end
+
+//-------------------------------------------------------------------------------------------
+#pragma mark - Assembly
+//-------------------------------------------------------------------------------------------
+
+@interface FactoriesAssembly: TyphoonAssembly
+
+- (Knight *)createKnight;
+
+- (KnightFactory *)knightsFactoryWithDefaultHitRatio:(NSNumber *)hitRatio;
+
+@end
+
+@implementation FactoriesAssembly
+
+- (Knight *)createKnight
+{
+    return [TyphoonDefinition withFactory:[self knightsFactoryWithDefaultHitRatio:@3.5] selector:@selector(knight)];
+}
+
+- (KnightFactory *)knightsFactoryWithDefaultHitRatio:(NSNumber *)hitRatio
+{
+    return [TyphoonDefinition withClass:[KnightFactory class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(defaultHitRatio) with:hitRatio];
+//        [definition setScope:TyphoonScopeLazySingleton];
+    }];
+}
+
+
+@end
+
+//-------------------------------------------------------------------------------------------
+#pragma mark - Tests
+//-------------------------------------------------------------------------------------------
 
 @interface TyphoonFactoryDefinitionTests : XCTestCase
 @end
@@ -82,6 +123,19 @@
     definition.classOrProtocolForAutoInjection = [CampaignQuest class];
     XCTAssertTrue([definition isCandidateForInjectedProtocol:@protocol(Quest)]);
 
+}
+
+- (void)test_factory_definition_with_runtime_argument
+{
+    FactoriesAssembly *assembly = [FactoriesAssembly new];
+    [assembly activate];
+
+    CavalryMan *knight = (CavalryMan *)[assembly createKnight];
+
+    XCTAssertNotNil(knight);
+    XCTAssertEqual(knight.hitRatio, 3.5f);
+
+//    XCTAssertTrue([assembly knightsFactoryWithDefaultHitRatio:@3.5f] == [assembly knightsFactoryWithDefaultHitRatio:@3.5f]);
 }
 
 
