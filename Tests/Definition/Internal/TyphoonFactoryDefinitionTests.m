@@ -80,7 +80,7 @@
 {
     return [TyphoonDefinition withClass:[KnightFactory class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(defaultHitRatio) with:hitRatio];
-//        [definition setScope:TyphoonScopeLazySingleton];
+        [definition setScope:TyphoonScopeLazySingleton];
     }];
 }
 
@@ -135,7 +135,7 @@
     XCTAssertNotNil(knight);
     XCTAssertEqual(knight.hitRatio, 3.5f);
 
-//    XCTAssertTrue([assembly knightsFactoryWithDefaultHitRatio:@3.5f] == [assembly knightsFactoryWithDefaultHitRatio:@3.5f]);
+    XCTAssertTrue([assembly knightsFactoryWithDefaultHitRatio:@3.5f] == [assembly knightsFactoryWithDefaultHitRatio:@3.5f]);
 }
 
 

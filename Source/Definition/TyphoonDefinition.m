@@ -317,10 +317,9 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
 
 - (void)validateScope
 {
-    if ((self.scope != TyphoonScopePrototype && self.scope != TyphoonScopeObjectGraph) &&
-        [self hasRuntimeArgumentInjections]) {
+    if (self.scope == TyphoonScopeSingleton && [self hasRuntimeArgumentInjections]) {
         [NSException raise:NSInvalidArgumentException
-            format:@"The runtime arguments injections are only applicable to prototype and object-graph scoped definitions, but is set for definition: %@ ",
+            format:@"The runtime arguments injections are not applicable to singleton scoped definitions, because we don't know initial arguments to instantiate eager singletons. But it set for definition: %@ ",
                    self];
     }
 }
