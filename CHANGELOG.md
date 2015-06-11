@@ -1,5 +1,35 @@
 # Change Log
 
+## [Unreleased](https://github.com/appsquickly/Typhoon/tree/HEAD)
+
+[Full Changelog](https://github.com/appsquickly/Typhoon/compare/3.1.8...HEAD)
+
+**Closed issues:**
+
+- why TyphoonStoryboard crash on instantiateInitialViewController? [\#367](https://github.com/appsquickly/Typhoon/issues/367)
+
+- Can we use CFBundleExecutable instead of CFBundleName? [\#359](https://github.com/appsquickly/Typhoon/issues/359)
+
+- Can't get Typhoon to work in Swift project [\#356](https://github.com/appsquickly/Typhoon/issues/356)
+
+- Storyboard integration doesn't work with Share Extensions [\#352](https://github.com/appsquickly/Typhoon/issues/352)
+
+- Accessing the Config file in a Test Target [\#348](https://github.com/appsquickly/Typhoon/issues/348)
+
+- Injection with Run-time Arguments Fails with Swift String [\#324](https://github.com/appsquickly/Typhoon/issues/324)
+
+- Demo on adding Typhoon to an existing/empty Xcode project [\#276](https://github.com/appsquickly/Typhoon/issues/276)
+
+**Merged pull requests:**
+
+- typo [\#369](https://github.com/appsquickly/Typhoon/pull/369) ([plandem](https://github.com/plandem))
+
+- Small typo fixes in the README.md [\#361](https://github.com/appsquickly/Typhoon/pull/361) ([pboschmann](https://github.com/pboschmann))
+
+- Add a Gitter chat badge to README.md [\#355](https://github.com/appsquickly/Typhoon/pull/355) ([gitter-badger](https://github.com/gitter-badger))
+
+- Inject dependencies into storyboard views that have a typhoonKey [\#350](https://github.com/appsquickly/Typhoon/pull/350) ([chazmuzz](https://github.com/chazmuzz))
+
 ## [3.1.8](https://github.com/appsquickly/Typhoon/tree/3.1.8) (2015-05-21)
 
 [Full Changelog](https://github.com/appsquickly/Typhoon/compare/3.1.7...3.1.8)
@@ -62,6 +92,10 @@
 
 - Remove TyphoonComponentFactory asAssembly and vice-versa methods [\#318](https://github.com/appsquickly/Typhoon/issues/318)
 
+**Closed issues:**
+
+- Make `TyphoonAssemblyActivator` implicit  [\#339](https://github.com/appsquickly/Typhoon/issues/339)
+
 ## [3.1.0](https://github.com/appsquickly/Typhoon/tree/3.1.0) (2015-04-21)
 
 [Full Changelog](https://github.com/appsquickly/Typhoon/compare/3.0.3...3.1.0)
@@ -104,6 +138,8 @@
 
 - Singleton auto injection [\#320](https://github.com/appsquickly/Typhoon/issues/320)
 
+- Storyboard Integration: Besides controller injection, also inject the views [\#315](https://github.com/appsquickly/Typhoon/issues/315)
+
 - Quick start still refers to ambiguous notion of a component  [\#302](https://github.com/appsquickly/Typhoon/issues/302)
 
 **Merged pull requests:**
@@ -115,6 +151,10 @@
 [Full Changelog](https://github.com/appsquickly/Typhoon/compare/3.0.0...3.0.1)
 
 **Closed issues:**
+
+- Raise exception if auto-wired property is not fulfilled  [\#284](https://github.com/appsquickly/Typhoon/issues/284)
+
+- TyphoonAssemblyActivator [\#253](https://github.com/appsquickly/Typhoon/issues/253)
 
 - Documentation : Using Typhoon with Swift [\#230](https://github.com/appsquickly/Typhoon/issues/230)
 
@@ -130,6 +170,8 @@
 
 - Building the Typhoon.framework Library [\#316](https://github.com/appsquickly/Typhoon/issues/316)
 
+- Initializers returning nil cause Typhoon to crash [\#314](https://github.com/appsquickly/Typhoon/issues/314)
+
 - Question: Can I use a class convenience method in an assembly initializer? [\#312](https://github.com/appsquickly/Typhoon/issues/312)
 
 - Xcode 6 + Cocoapods 0.36.0.beta.1: Too many arguments to function call, expected 0, have 2; Enable Strict Checking of objc\_msgSend Calls should be set to NO  [\#311](https://github.com/appsquickly/Typhoon/issues/311)
@@ -138,6 +180,14 @@
 
 - -injectMethod:parameters: should be renamed [\#309](https://github.com/appsquickly/Typhoon/issues/309)
 
+- Storyboard viewcontroller circular dependency issue [\#307](https://github.com/appsquickly/Typhoon/issues/307)
+
+- "Injecting Typhoon Itself" not quite correct [\#303](https://github.com/appsquickly/Typhoon/issues/303)
+
+- Keypath injection [\#295](https://github.com/appsquickly/Typhoon/issues/295)
+
+- patchDefinition:withObject should be deprecated? [\#240](https://github.com/appsquickly/Typhoon/issues/240)
+
 ## [2.3.4](https://github.com/appsquickly/Typhoon/tree/2.3.4) (2015-01-17)
 
 [Full Changelog](https://github.com/appsquickly/Typhoon/compare/2.3.3...2.3.4)
@@ -145,6 +195,8 @@
 **Closed issues:**
 
 - Property nil-ed after constructor injection. [\#306](https://github.com/appsquickly/Typhoon/issues/306)
+
+- Add build target for dynamic framework to support [\#281](https://github.com/appsquickly/Typhoon/issues/281)
 
 ## [2.3.3](https://github.com/appsquickly/Typhoon/tree/2.3.3) (2015-01-08)
 
@@ -162,7 +214,11 @@
 
 - Multiple Storyboards and Typhoon [\#301](https://github.com/appsquickly/Typhoon/issues/301)
 
+- Documentation Injection by Reference examples are hard to follow [\#300](https://github.com/appsquickly/Typhoon/issues/300)
+
 - Documentation refers to 'Modules' but there's no such concept in Typhoon code [\#299](https://github.com/appsquickly/Typhoon/issues/299)
+
+- Crash occurs when using existing assembly as a protocol conformer for another assembly [\#298](https://github.com/appsquickly/Typhoon/issues/298)
 
 - Files headers [\#296](https://github.com/appsquickly/Typhoon/issues/296)
 
@@ -170,7 +226,19 @@
 
 - Run-time Arguments Supported with Swift Assembly? [\#293](https://github.com/appsquickly/Typhoon/issues/293)
 
+- Rename TyphoonPostProcessor to TyphoonInstancePostProcessor [\#283](https://github.com/appsquickly/Typhoon/issues/283)
+
+- Rename TyphoonComponentFactoryPostProcessor to TyphoonDefinitionPostProcessor [\#282](https://github.com/appsquickly/Typhoon/issues/282)
+
+- Factory-produced components should have a configuration block [\#271](https://github.com/appsquickly/Typhoon/issues/271)
+
+- TyphoonDefinition allow callback block after building? [\#258](https://github.com/appsquickly/Typhoon/issues/258)
+
 - For initializer method not found error, add instructions for user on Swift protocols \(they require @objc directive to be dynamic\) [\#257](https://github.com/appsquickly/Typhoon/issues/257)
+
+- New Auto-wiring API [\#252](https://github.com/appsquickly/Typhoon/issues/252)
+
+- Typhoon Plugins? [\#228](https://github.com/appsquickly/Typhoon/issues/228)
 
 **Merged pull requests:**
 
@@ -210,6 +278,8 @@
 
 - Cocoapods fails to install Typhoon on Yosemite 10.10 [\#275](https://github.com/appsquickly/Typhoon/issues/275)
 
+- Typhoon with singleton AppDelegate [\#274](https://github.com/appsquickly/Typhoon/issues/274)
+
 - "Quick Start" is not ok \(?\) [\#273](https://github.com/appsquickly/Typhoon/issues/273)
 
 - View controller inject using initializer with storyboard [\#270](https://github.com/appsquickly/Typhoon/issues/270)
@@ -236,11 +306,21 @@
 
 - Failing to install through cocoapods [\#260](https://github.com/appsquickly/Typhoon/issues/260)
 
+- git submodule error from cocoa pod install [\#259](https://github.com/appsquickly/Typhoon/issues/259)
+
+- Shorthand to return view controller inside a UINavigationController [\#255](https://github.com/appsquickly/Typhoon/issues/255)
+
+- Make TyphoonDefinition main header more clear [\#254](https://github.com/appsquickly/Typhoon/issues/254)
+
 - TyphoonComponentFactory is released when application goes to background [\#251](https://github.com/appsquickly/Typhoon/issues/251)
 
 - Swift Assembly with plist integration requires @objc on the assembly class [\#250](https://github.com/appsquickly/Typhoon/issues/250)
 
+- Tell user if selector with parameters does not end with ':'  [\#249](https://github.com/appsquickly/Typhoon/issues/249)
+
 - Typhoon Injection By Type with Swift [\#248](https://github.com/appsquickly/Typhoon/issues/248)
+
+- Use protocol for assembly interface?  [\#247](https://github.com/appsquickly/Typhoon/issues/247)
 
 - Swift : Prevents instrumentation of Typhoon methods by static/vtabling them.  [\#243](https://github.com/appsquickly/Typhoon/issues/243)
 
@@ -270,6 +350,10 @@
 
 - You can't call a method on the runtime argument being passed in. It has to be passed in as-is [\#233](https://github.com/appsquickly/Typhoon/issues/233)
 
+- Delete injectParameter with name? [\#227](https://github.com/appsquickly/Typhoon/issues/227)
+
+- Deprecate and delete .properties config? [\#226](https://github.com/appsquickly/Typhoon/issues/226)
+
 - Recommended approach w/ TyphoonStoryboarrd [\#216](https://github.com/appsquickly/Typhoon/issues/216)
 
 ## [2.2.0](https://github.com/appsquickly/Typhoon/tree/2.2.0) (2014-08-06)
@@ -295,6 +379,8 @@
 **Closed issues:**
 
 - Typhoon 1.3.3 inject collection giving nil [\#236](https://github.com/appsquickly/Typhoon/issues/236)
+
+-  Not possible \(AFAIK\) to call \[TyphoonAssembly assembly\] from Swift. [\#235](https://github.com/appsquickly/Typhoon/issues/235)
 
 ## [2.1.2](https://github.com/appsquickly/Typhoon/tree/2.1.2) (2014-07-03)
 
@@ -326,6 +412,10 @@
 
 - Crash in 1.8.2 [\#219](https://github.com/appsquickly/Typhoon/issues/219)
 
+- Logic-style tests can't be run on device [\#213](https://github.com/appsquickly/Typhoon/issues/213)
+
+- Test coverage has fallen below 90% !! [\#173](https://github.com/appsquickly/Typhoon/issues/173)
+
 - Move tests back into Typhoon project [\#152](https://github.com/appsquickly/Typhoon/issues/152)
 
 - Test Failure links are broken in JUnit report [\#136](https://github.com/appsquickly/Typhoon/issues/136)
@@ -339,6 +429,8 @@
 - Typhoon is not thread-safe [\#79](https://github.com/appsquickly/Typhoon/issues/79)
 
 **Closed issues:**
+
+- Advantages of TyphoonFactoryProvider over runtime args?  [\#225](https://github.com/appsquickly/Typhoon/issues/225)
 
 - Storyboard Example [\#223](https://github.com/appsquickly/Typhoon/issues/223)
 
@@ -360,6 +452,8 @@
 
 - Where did TyphoonParameterInjectedAsCollection go? [\#221](https://github.com/appsquickly/Typhoon/issues/221)
 
+- Convert resolveInstanceMethod in TyphoonAssembly to forwardInvocation/NSInvocation [\#214](https://github.com/appsquickly/Typhoon/issues/214)
+
 ## [2.0.5](https://github.com/appsquickly/Typhoon/tree/2.0.5) (2014-05-14)
 
 [Full Changelog](https://github.com/appsquickly/Typhoon/compare/2.0.4...2.0.5)
@@ -375,6 +469,10 @@
 **Implemented enhancements:**
 
 - Implement <TyphoonDetachableComponentFactoryPostProcessor\>  [\#171](https://github.com/appsquickly/Typhoon/issues/171)
+
+**Closed issues:**
+
+- Missing Commits. [\#215](https://github.com/appsquickly/Typhoon/issues/215)
 
 ## [2.0.3](https://github.com/appsquickly/Typhoon/tree/2.0.3) (2014-05-04)
 
@@ -410,7 +508,13 @@
 
 **Closed issues:**
 
+- Compiler warnings [\#209](https://github.com/appsquickly/Typhoon/issues/209)
+
 - Support MIT license if possible [\#207](https://github.com/appsquickly/Typhoon/issues/207)
+
+- rename injectProperties: [\#205](https://github.com/appsquickly/Typhoon/issues/205)
+
+- Are Lazy properties needed? [\#203](https://github.com/appsquickly/Typhoon/issues/203)
 
 - Typhoon 2.0 release checklist [\#193](https://github.com/appsquickly/Typhoon/issues/193)
 
@@ -427,6 +531,14 @@
 **Fixed bugs:**
 
 - Injecting more parameters than defined in the selector doesn't raise an error [\#208](https://github.com/appsquickly/Typhoon/issues/208)
+
+**Closed issues:**
+
+- New scope: TyphoonScopeNonContained [\#206](https://github.com/appsquickly/Typhoon/issues/206)
+
+- Support object-graph scope for definitions with runtime args [\#202](https://github.com/appsquickly/Typhoon/issues/202)
+
+- -\[TyphoonComponentFactory componentForExactType:\] [\#190](https://github.com/appsquickly/Typhoon/issues/190)
 
 **Merged pull requests:**
 
@@ -458,9 +570,23 @@
 
 **Closed issues:**
 
+- Change TyphoonPropertyPlaceholderConfigurer converters API [\#199](https://github.com/appsquickly/Typhoon/issues/199)
+
+- Method Injection support? [\#198](https://github.com/appsquickly/Typhoon/issues/198)
+
 - Can't inject NSArray runtime arg [\#196](https://github.com/appsquickly/Typhoon/issues/196)
 
+- Drop XML-support in 2.0? [\#194](https://github.com/appsquickly/Typhoon/issues/194)
+
+- TyphoonFactoryProvider + circular dependencies [\#191](https://github.com/appsquickly/Typhoon/issues/191)
+
+- Changing Definition creation API to be more compact [\#185](https://github.com/appsquickly/Typhoon/issues/185)
+
+- FactoryProvider doesn't seem to respect TyphoonScope [\#180](https://github.com/appsquickly/Typhoon/issues/180)
+
 - TyphoonFactoryProvider: By-convention approach fails with 'propertyNotFound' [\#175](https://github.com/appsquickly/Typhoon/issues/175)
+
+- Definitions with a parent should inherit their parent's scope [\#157](https://github.com/appsquickly/Typhoon/issues/157)
 
 **Merged pull requests:**
 
@@ -482,6 +608,16 @@
 
 - Support alpha in TyphoonUIColorTypeConverter [\#181](https://github.com/appsquickly/Typhoon/issues/181)
 
+**Closed issues:**
+
+- TyphoonStoryboard review [\#182](https://github.com/appsquickly/Typhoon/issues/182)
+
+- Typhoon 3.0 focus [\#179](https://github.com/appsquickly/Typhoon/issues/179)
+
+- Warnings [\#170](https://github.com/appsquickly/Typhoon/issues/170)
+
+- Non-invasive version of TyphoonComponentFactoryAware [\#131](https://github.com/appsquickly/Typhoon/issues/131)
+
 **Merged pull requests:**
 
 - Huge performance improvement [\#187](https://github.com/appsquickly/Typhoon/pull/187) ([sergiou87](https://github.com/sergiou87))
@@ -500,13 +636,25 @@
 
 - Use class interface/header for TyphooonAssistedFactoryProvider [\#176](https://github.com/appsquickly/Typhoon/issues/176)
 
+- New initializer injection TyphoonParameterInjectedByFactoryReference [\#153](https://github.com/appsquickly/Typhoon/issues/153)
+
 ## [1.7.9](https://github.com/appsquickly/Typhoon/tree/1.7.9) (2014-02-11)
 
 [Full Changelog](https://github.com/appsquickly/Typhoon/compare/1.7.8...1.7.9)
 
 **Closed issues:**
 
+- Why we use \_\_unsafe\_unretained instead of \_\_weak? [\#172](https://github.com/appsquickly/Typhoon/issues/172)
+
 - Disable x64 architecture for iOS [\#169](https://github.com/appsquickly/Typhoon/issues/169)
+
+- Code-style : proposed change to K&R [\#166](https://github.com/appsquickly/Typhoon/issues/166)
+
+- Document NSInvocation+TyphoonInitializer [\#163](https://github.com/appsquickly/Typhoon/issues/163)
+
+- Initializer, property and collection injection: replace instanceof with polymorphism [\#162](https://github.com/appsquickly/Typhoon/issues/162)
+
+- TyphoonInjectedAsCollection should use composition instead of inheritance [\#159](https://github.com/appsquickly/Typhoon/issues/159)
 
 ## [1.7.8](https://github.com/appsquickly/Typhoon/tree/1.7.8) (2014-02-05)
 
@@ -520,7 +668,11 @@
 
 **Closed issues:**
 
+- Create NSValue category to configure NSInvocation [\#165](https://github.com/appsquickly/Typhoon/issues/165)
+
 - Initializer circular dependencies - support or not?  [\#161](https://github.com/appsquickly/Typhoon/issues/161)
+
+- NSManagedObjectModel required special treatment. Why?  [\#138](https://github.com/appsquickly/Typhoon/issues/138)
 
 ## [1.7.7](https://github.com/appsquickly/Typhoon/tree/1.7.7) (2014-02-02)
 
@@ -558,9 +710,17 @@
 
 [Full Changelog](https://github.com/appsquickly/Typhoon/compare/1.7.2...1.7.3)
 
+**Closed issues:**
+
+- Implement TyphoonScopeWeakSingleton scope [\#155](https://github.com/appsquickly/Typhoon/issues/155)
+
 ## [1.7.2](https://github.com/appsquickly/Typhoon/tree/1.7.2) (2014-01-28)
 
 [Full Changelog](https://github.com/appsquickly/Typhoon/compare/1.7.1...1.7.2)
+
+**Closed issues:**
+
+- Use auto-boxing for primitive initializer injections.  [\#154](https://github.com/appsquickly/Typhoon/issues/154)
 
 ## [1.7.1](https://github.com/appsquickly/Typhoon/tree/1.7.1) (2014-01-27)
 
@@ -585,6 +745,10 @@
 **Fixed bugs:**
 
 - Should issue warning if circular dependent component in initializer [\#75](https://github.com/appsquickly/Typhoon/issues/75)
+
+**Closed issues:**
+
+- Property injection should use KVC [\#150](https://github.com/appsquickly/Typhoon/issues/150)
 
 **Merged pull requests:**
 
@@ -638,6 +802,8 @@
 
 - Version of Typhoon Backwards Compatible for i386 arch [\#143](https://github.com/appsquickly/Typhoon/issues/143)
 
+- AOP Support - where to implement? [\#139](https://github.com/appsquickly/Typhoon/issues/139)
+
 - Unit tests take too long to run [\#133](https://github.com/appsquickly/Typhoon/issues/133)
 
 - CocoaDocs link broken [\#130](https://github.com/appsquickly/Typhoon/issues/130)
@@ -677,6 +843,8 @@
 - Coverage gone after integrating xcpretty [\#137](https://github.com/appsquickly/Typhoon/issues/137)
 
 - Build on GnuStep [\#134](https://github.com/appsquickly/Typhoon/issues/134)
+
+- Broken build policy? [\#128](https://github.com/appsquickly/Typhoon/issues/128)
 
 ## [1.6.5](https://github.com/appsquickly/Typhoon/tree/1.6.5) (2013-12-16)
 
@@ -731,6 +899,10 @@
 - TyphoonComponentFactoryAware is not imported in the main header file Typhoon.h [\#120](https://github.com/appsquickly/Typhoon/issues/120)
 
 - Build Server \(Jenkins\) only publishes test results when the build passes. .  [\#118](https://github.com/appsquickly/Typhoon/issues/118)
+
+- TyphoonInjectionAware  [\#115](https://github.com/appsquickly/Typhoon/issues/115)
+
+- Lazy Typhoon does not work as supposed? [\#111](https://github.com/appsquickly/Typhoon/issues/111)
 
 - Folks still think Typhoon == XML [\#110](https://github.com/appsquickly/Typhoon/issues/110)
 
@@ -874,6 +1046,8 @@
 
 - Can't run tests from Xcode5-GM or AppCode [\#80](https://github.com/appsquickly/Typhoon/issues/80)
 
+- We allow after property injection methods. . .how about a post-construct block?  [\#76](https://github.com/appsquickly/Typhoon/issues/76)
+
 - Coverage reports are broken again [\#66](https://github.com/appsquickly/Typhoon/issues/66)
 
 - ant build broken with Xcode 4 [\#61](https://github.com/appsquickly/Typhoon/issues/61)
@@ -947,6 +1121,10 @@
 [Full Changelog](https://github.com/appsquickly/Typhoon/compare/1.2.8...1.3.0)
 
 **Closed issues:**
+
+- Code organization: separation of private/public methods or step-down rule? [\#60](https://github.com/appsquickly/Typhoon/issues/60)
+
+- Should Tests/Pods be checked into version control? [\#59](https://github.com/appsquickly/Typhoon/issues/59)
 
 - Bamboo build is broken - need to fix for XCode 5 [\#52](https://github.com/appsquickly/Typhoon/issues/52)
 
