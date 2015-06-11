@@ -106,7 +106,9 @@ static const char *kTyphoonKey;
         [self injectPropertiesForViewController:controller];
     }
     
-    [self injectPropertiesInView:viewController.view];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self injectPropertiesInView:viewController.view];
+    });
 }
 
 - (void)injectPropertiesInView:(UIView *)view
