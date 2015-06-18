@@ -18,15 +18,20 @@
 //-------------------------------------------------------------------------------------------
 #pragma mark - UIViewController + TyphoonDefinitionKey
 
-@interface UIViewController (TyphoonDefinitionKey)
+@interface UIViewController (TyphoonStoryboardIntegration)
 
 @property(nonatomic, strong) NSString *typhoonKey;
 
+- (void)setViewDidLoadNotificationBlock:(void(^)())viewDidLoadBlock;
+
++ (void)swizzleViewDidLoadMethod;
+
 @end
 
-@implementation UIViewController (TyphoonDefinitionKey)
+@implementation UIViewController (TyphoonStoryboardIntegration)
 
 static const char *kTyphoonKey;
+static const char *kTyphoonViewDidLoadBlock;
 
 - (void)setTyphoonKey:(NSString *)typhoonKey
 {
@@ -36,6 +41,32 @@ static const char *kTyphoonKey;
 - (NSString *)typhoonKey
 {
     return objc_getAssociatedObject(self, &kTyphoonKey);
+}
+
+- (void)setViewDidLoadNotificationBlock:(void(^)())viewDidLoadBlock
+{
+    objc_setAssociatedObject(self, &kTyphoonViewDidLoadBlock, viewDidLoadBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
++ (void)swizzleViewDidLoadMethod
+{
+    SEL sel = @selector(viewDidLoad);
+    Method method = class_getInstanceMethod([UIViewController class], sel);
+
+    void(*originalImp)(id, SEL) = (void (*)(id, SEL)) method_getImplementation(method);
+
+    IMP adjustedImp = imp_implementationWithBlock(^void(id instance) {
+
+        void(^didLoadBlock)() = objc_getAssociatedObject(instance, &kTyphoonViewDidLoadBlock);
+        if (didLoadBlock) {
+            didLoadBlock();
+            objc_setAssociatedObject(instance, &kTyphoonViewDidLoadBlock, nil, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        }
+
+        originalImp(instance, sel);
+    });
+
+    method_setImplementation(method, adjustedImp);
 }
 
 @end
@@ -69,6 +100,11 @@ static const char *kTyphoonKey;
 #pragma mark - TyphoonStoryboard
 
 @implementation TyphoonStoryboard
+
++ (void)load
+{
+    [UIViewController swizzleViewDidLoadMethod];
+}
 
 + (TyphoonStoryboard *)storyboardWithName:(NSString *)name bundle:(NSBundle *)storyboardBundleOrNil
 {
@@ -105,10 +141,11 @@ static const char *kTyphoonKey;
     for (UIViewController *controller in viewController.childViewControllers) {
         [self injectPropertiesForViewController:controller];
     }
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self injectPropertiesInView:viewController.view];
-    });
+
+    __weak __typeof (viewController) weakViewController = viewController;
+    [viewController setViewDidLoadNotificationBlock:^{
+        [self injectPropertiesInView:weakViewController.view];
+    }];
 }
 
 - (void)injectPropertiesInView:(UIView *)view
