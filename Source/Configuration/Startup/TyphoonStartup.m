@@ -54,11 +54,13 @@
 
 static TyphoonComponentFactory *initialFactory;
 static NSUInteger initialFactoryRequestCount = 0;
+static BOOL initialFactoryWasCreated = NO;
 
 + (void)requireInitialFactory
 {
-    if (initialFactoryRequestCount == 0) {
+    if (initialFactoryRequestCount == 0 && !initialFactoryWasCreated) {
         initialFactory = [TyphoonBlockComponentFactory factoryFromPlistInBundle:[NSBundle mainBundle]];
+        initialFactoryWasCreated = YES;
     }
     initialFactoryRequestCount += 1;
 }
