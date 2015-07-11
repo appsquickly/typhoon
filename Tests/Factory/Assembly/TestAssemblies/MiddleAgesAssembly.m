@@ -340,4 +340,10 @@
     return [self knightWithRuntimeDamselsRescued:@(13) runtimeQuestUrl:[NSURL URLWithString:@"http://appsquick.ly"]];
 }
 
+- (id)knightWithQuest:(id <Quest>)quest {
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(quest) with:quest];
+    }];
+}
+
 @end
