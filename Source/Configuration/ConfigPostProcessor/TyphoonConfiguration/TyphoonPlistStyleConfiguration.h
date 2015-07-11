@@ -11,6 +11,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "TyphoonConfiguration.h"
 
-@interface TyphoonPlistStyleConfiguration : NSObject
+@interface TyphoonPlistStyleConfiguration : NSObject <TyphoonConfiguration>
 @end

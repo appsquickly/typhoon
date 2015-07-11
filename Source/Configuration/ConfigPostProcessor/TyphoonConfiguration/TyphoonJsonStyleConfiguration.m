@@ -63,7 +63,7 @@
     if (!error) {
         [_properties addEntriesFromDictionary:dictionary];
     } else {
-        [NSException raise:NSInvalidArgumentException format:@"Can't prase JSON configuration file: %@",error];
+        [NSException raise:NSInvalidArgumentException format:@"Can't parse JSON configuration file: %@",error];
     }
 }
 
