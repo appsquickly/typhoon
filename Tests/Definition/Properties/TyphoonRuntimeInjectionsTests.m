@@ -17,6 +17,7 @@
 #import "Mock.h"
 #import "TyphoonAssemblyActivator.h"
 #import "Sword.h"
+#import "DecoratedQuest.h"
 
 @interface TyphoonRuntimeInjectionsTests : XCTestCase
 
@@ -220,6 +221,26 @@
     XCTAssertNotNil(yellow);
     XCTAssertNotNil(error2);
     XCTAssertEqual(error2.code, (NSInteger)404);
+}
+
+- (void)test_runtime_argument_with_proxy_object
+{
+    id <Quest> defaultQuest = [factory defaultQuest];
+    XCTAssertNotNil(defaultQuest);
+    
+    DecoratedQuest *decoratedQuest = [DecoratedQuest decoratedQuestWith:defaultQuest];
+    Knight *knight = [factory knightWithQuest:decoratedQuest];
+    
+    XCTAssertNotNil(decoratedQuest);
+    XCTAssertNotNil(knight);
+}
+
+- (void)test_runtime_argument_with_ocmockito_mock
+{
+    id <Quest> mockQuest = mockProtocol(@protocol(Quest));
+    Knight *knightWithMock = [factory knightWithQuest:mockQuest];
+    
+    XCTAssertNotNil(knightWithMock);
 }
 
 @end

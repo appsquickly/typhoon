@@ -18,6 +18,7 @@
 @class TyphoonDefinition;
 @class Mock;
 @class CollaboratingMiddleAgesAssembly;
+@protocol Quest;
 
 @interface MiddleAgesAssembly : TyphoonAssembly<QuestProvider>
 
@@ -78,5 +79,7 @@
 - (id)knightRuntimeArgumentsFromDefinitionsSetWithRuntimeArg;
 
 - (id)knightWithPredefinedRuntimeQuest;
+
+- (id)knightWithQuest:(id <Quest>)quest;
 
 @end
