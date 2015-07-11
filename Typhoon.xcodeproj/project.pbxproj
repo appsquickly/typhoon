@@ -515,6 +515,7 @@
 		90ABC4D61A36BA53008D8162 /* TyphoonFrameworkSwiftExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABC4D51A36BA53008D8162 /* TyphoonFrameworkSwiftExampleTests.swift */; };
 		90ABC4E21A36BAE5008D8162 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABC4E11A36BAE5008D8162 /* Assembly.swift */; };
 		9F766B6E1B512A66005FC561 /* DecoratedQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F766B6D1B512A66005FC561 /* DecoratedQuest.m */; };
+		9F766B701B512FC4005FC561 /* DecoratedQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F766B6D1B512A66005FC561 /* DecoratedQuest.m */; };
 		A5522B801AAA8C9500B93CD9 /* TyphoonPatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076F601936F63A0083714E /* TyphoonPatcher.m */; };
 		A56819061AA9403000ECC4F9 /* TyphoonAssemblyActivator.h in Headers */ = {isa = PBXBuildFile; fileRef = BA79802001176CAE1C666D5B /* TyphoonAssemblyActivator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A56819081AA9462F00ECC4F9 /* Typhoon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90ABC3EA1A36B09E008D8162 /* Typhoon.framework */; };
@@ -2906,6 +2907,7 @@
 				6B0773AC1937831B0083714E /* Collections+CustomInjection.m in Sources */,
 				6B0773AD1937831B0083714E /* NSDictionary+CustomInjection.m in Sources */,
 				6B0773AE1937831B0083714E /* TyphoonDefinition+Infrastructure.m in Sources */,
+				9F766B701B512FC4005FC561 /* DecoratedQuest.m in Sources */,
 				6B0773AF1937831B0083714E /* TyphoonDefinition+InstanceBuilder.m in Sources */,
 				6B0773B01937831B0083714E /* TyphoonReferenceDefinition.m in Sources */,
 				6B0773B11937831B0083714E /* TyphoonMethod+InstanceBuilder.m in Sources */,
