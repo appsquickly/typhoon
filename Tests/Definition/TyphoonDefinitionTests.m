@@ -70,6 +70,15 @@
     @catch (NSException *e) {
         XCTAssertEqualObjects([e description], @"Property 'clazz' is required.");
     }
+    
+    @try {
+        TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[NSProxy class] key:nil];
+        NSLog(@"Def: %@", definition);
+        XCTFail(@"Should've thrown exception");
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects([e description], @"NSObject's subclass is required.");
+    }
 }
 
 //-------------------------------------------------------------------------------------------

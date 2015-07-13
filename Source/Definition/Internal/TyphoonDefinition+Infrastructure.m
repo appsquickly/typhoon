@@ -128,6 +128,10 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     if (_type == nil) {
         [NSException raise:NSInvalidArgumentException format:@"Property 'clazz' is required."];
     }
+
+    if (![_type isSubclassOfClass:[NSObject class]]) {
+        [NSException raise:NSInvalidArgumentException format:@"NSObject's subclass is required."];
+    }
 }
 
 @end
