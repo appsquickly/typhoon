@@ -129,8 +129,9 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
         [NSException raise:NSInvalidArgumentException format:@"Property 'clazz' is required."];
     }
 
-    if (![_type isSubclassOfClass:[NSObject class]]) {
-        [NSException raise:NSInvalidArgumentException format:@"NSObject's subclass is required."];
+    BOOL hasAppropriateSuper = [_type isSubclassOfClass:[NSObject class]] || [_type isSubclassOfClass:[NSProxy class]];
+    if (!hasAppropriateSuper) {
+        [NSException raise:NSInvalidArgumentException format:@"Subclass of NSProxy or NSObject is required."];
     }
 }
 
