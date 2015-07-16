@@ -22,10 +22,10 @@
 #import "TyphoonInjectionByCollection.h"
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonDefinition+Tests.h"
+#import "ClassForNoSubclass.h"
 
 @interface TyphoonDefinitionTests : XCTestCase
 @end
-
 
 @implementation TyphoonDefinitionTests
 
@@ -69,6 +69,15 @@
     }
     @catch (NSException *e) {
         XCTAssertEqualObjects([e description], @"Property 'clazz' is required.");
+    }
+    
+    @try {
+        TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[ClassForNoSubclass class] key:nil];
+        NSLog(@"Def: %@", definition);
+        XCTFail(@"Should've thrown exception");
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects([e description], @"Subclass of NSProxy or NSObject is required.");
     }
 }
 

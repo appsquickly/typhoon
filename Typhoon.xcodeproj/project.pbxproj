@@ -344,6 +344,8 @@
 		6B43ED5C1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B43ED5B1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift */; };
 		6B43ED5D1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B43ED5B1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift */; };
 		6B43ED5F1A8FAA350071EFC7 /* SwiftTyphoonAssemblyActivatorTests..swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B43ED5E1A8FAA350071EFC7 /* SwiftTyphoonAssemblyActivatorTests..swift */; };
+		8994D47E1B55BA6600662766 /* ClassForNoSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8994D47D1B55BA6600662766 /* ClassForNoSubclass.m */; };
+		8994D47F1B55BA6600662766 /* ClassForNoSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8994D47D1B55BA6600662766 /* ClassForNoSubclass.m */; };
 		905214711A3770AE006A935B /* OCLogTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F911936F63A0083714E /* OCLogTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90ABC3F51A36B09E008D8162 /* Typhoon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90ABC3EA1A36B09E008D8162 /* Typhoon.framework */; };
 		90ABC4031A36B0BA008D8162 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B076E611936F5850083714E /* UIKit.framework */; };
@@ -1020,6 +1022,8 @@
 		6B43ED5A1A8FA8870071EFC7 /* Typhoon-OSXTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Typhoon-OSXTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		6B43ED5B1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMiddleAgesAssembly.swift; sourceTree = "<group>"; };
 		6B43ED5E1A8FAA350071EFC7 /* SwiftTyphoonAssemblyActivatorTests..swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftTyphoonAssemblyActivatorTests..swift; sourceTree = "<group>"; };
+		8994D47C1B55BA6600662766 /* ClassForNoSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassForNoSubclass.h; sourceTree = "<group>"; };
+		8994D47D1B55BA6600662766 /* ClassForNoSubclass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassForNoSubclass.m; sourceTree = "<group>"; };
 		90ABC3EA1A36B09E008D8162 /* Typhoon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Typhoon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90ABC3ED1A36B09E008D8162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90ABC3F41A36B09E008D8162 /* TyphoonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TyphoonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1760,6 +1764,8 @@
 				6B076FBC1936F63A0083714E /* TyphoonDefinition+Tests.h */,
 				6B076FBD1936F63A0083714E /* TyphoonDefinition+Tests.m */,
 				6B076FBE1936F63A0083714E /* TyphoonDefinitionTests.m */,
+				8994D47C1B55BA6600662766 /* ClassForNoSubclass.h */,
+				8994D47D1B55BA6600662766 /* ClassForNoSubclass.m */,
 				BA79862822C38A2EC2893F3E /* Internal */,
 			);
 			path = Definition;
@@ -2850,6 +2856,7 @@
 				BA7987FA9B7BE2D96C39C105 /* StoryboardTests.m in Sources */,
 				BA798645ED33923CA832A9CD /* StoryboardViewControllerAssembly.m in Sources */,
 				BA798643561E55898B87E96A /* UniqueViewController.m in Sources */,
+				8994D47E1B55BA6600662766 /* ClassForNoSubclass.m in Sources */,
 				2DBA1A73D490C68DEE37DB24 /* TyphoonNemoTestAssemblies.m in Sources */,
 				BA798848CA5A0D7F6AF44DCF /* TyphoonConfigPostProcessorTests.m in Sources */,
 				2DBA1FC0E15A415D0297317B /* AutoInjectionKnight.m in Sources */,
@@ -2994,6 +3001,7 @@
 				6B07740D1937839D0083714E /* InfrastructureComponentsAssembly.m in Sources */,
 				6B07740E1937839D0083714E /* MethodInjectinosAssembly.m in Sources */,
 				6B07740F1937839D0083714E /* MiddleAgesAssembly.m in Sources */,
+				8994D47F1B55BA6600662766 /* ClassForNoSubclass.m in Sources */,
 				6B0774101937839D0083714E /* ObjectGraphAssembly.m in Sources */,
 				6B0774111937839D0083714E /* TyphoonConfigAssembly.m in Sources */,
 				6B0774121937839D0083714E /* SimpleAssembly.m in Sources */,
