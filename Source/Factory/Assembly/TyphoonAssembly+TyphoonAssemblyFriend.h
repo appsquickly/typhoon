@@ -23,6 +23,8 @@
 
 - (TyphoonDefinition *)definitionForKey:(NSString *)key;
 
+- (Class)assemblyClassForKey:(NSString *)key;
+
 @property(readonly) NSSet *definitionSelectors;
 
 @end

@@ -12,7 +12,7 @@
 #import "TyphoonAssemblySelectorAdviser.h"
 
 
-static NSString *const TYPHOON_BEFORE_ADVICE_PREFIX = @"__typhoonBeforeAdvice__";
+static NSString *const TYPHOON_BEFORE_ADVICE_SUFFIX = @"__typhoonBeforeAdvice__";
 
 
 /**
@@ -22,19 +22,31 @@ static NSString *const TYPHOON_BEFORE_ADVICE_PREFIX = @"__typhoonBeforeAdvice__"
 */
 @implementation TyphoonAssemblySelectorAdviser
 
-+ (SEL)advisedSELForKey:(NSString *)key
++ (NSString *)prefixForClass:(Class)clazz
 {
-    if ([key hasPrefix:TYPHOON_BEFORE_ADVICE_PREFIX]) {
+    return [NSStringFromClass(clazz) stringByAppendingString:TYPHOON_BEFORE_ADVICE_SUFFIX];
+}
+
++ (SEL)advisedSELForKey:(NSString *)key class:(Class)clazz
+{
+    if ([key rangeOfString:TYPHOON_BEFORE_ADVICE_SUFFIX].location != NSNotFound) {
         [NSException raise:NSInternalInconsistencyException format:@"Don't pass an advised key into a method expecting an unadvised key."];
     }
 
-    return NSSelectorFromString([TYPHOON_BEFORE_ADVICE_PREFIX stringByAppendingString:key]);
+    return NSSelectorFromString([[self prefixForClass:clazz] stringByAppendingString:key]);
 }
 
 + (NSString *)keyForAdvisedSEL:(SEL)advisedSEL
 {
     NSString *name = NSStringFromSelector(advisedSEL);
-    NSString *key = [name stringByReplacingOccurrencesOfString:TYPHOON_BEFORE_ADVICE_PREFIX withString:@""];
+
+    NSString *key = name;
+
+    NSRange suffixRange = [name rangeOfString:TYPHOON_BEFORE_ADVICE_SUFFIX];
+    if (suffixRange.location != NSNotFound) {
+        key = [name substringFromIndex:NSMaxRange(suffixRange)];
+    }
+
     return key;
 }
 
@@ -46,16 +58,16 @@ static NSString *const TYPHOON_BEFORE_ADVICE_PREFIX = @"__typhoonBeforeAdvice__"
 + (BOOL)selectorIsAdvised:(SEL)sel
 {
     NSString *name = NSStringFromSelector(sel);
-    return [name hasPrefix:TYPHOON_BEFORE_ADVICE_PREFIX];
+    return [name rangeOfString:TYPHOON_BEFORE_ADVICE_SUFFIX].location != NSNotFound;
 }
 
-+ (SEL)advisedSELForSEL:(SEL)sel
++ (SEL)advisedSELForSEL:(SEL)sel class:(Class)clazz
 {
-    return [self advisedSELForKey:[self keyForSEL:sel]];
+    return [self advisedSELForKey:[self keyForSEL:sel] class:clazz];
 }
 
-+ (NSString *)advisedNameForName:(NSString *)string
++ (NSString *)advisedNameForName:(NSString *)string class:(Class)clazz
 {
-    return NSStringFromSelector([self advisedSELForKey:string]);
+    return NSStringFromSelector([self advisedSELForKey:string class:clazz]);
 }
 @end

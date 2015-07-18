@@ -58,8 +58,9 @@ static NSMutableSet *advisedAssemblyClasses;
 - (void)swizzleAssemblyMethods
 {
     [self enumerateDefinitionSelectorsUsingBlock:^(NSSet *definitionSelectors, Class assemblyClass) {
-        if ([self classIsNotAlreadyAdvised:assemblyClass]) {
+        if (![[self class] assemblyClassIsAdvised:assemblyClass]) {
             [self swizzleDefinitionSelectors:definitionSelectors onAssemblyClass:assemblyClass];
+            [[self class] markAsAdvisedAssemblyClass:assemblyClass];
         }
     }];
 }
@@ -69,13 +70,12 @@ static NSMutableSet *advisedAssemblyClasses;
     [definitionSelectors enumerateObjectsUsingBlock:^(TyphoonSelector *selectorObj, BOOL *stop) {
         [self swapImplementationOfDefinitionSelectorWithAdvisedImplementation:selectorObj onAssemblyClass:assemblyClass];
     }];
-    [[self class] markAsAdvisedAssemblyClass:assemblyClass];
 }
 
 - (void)swapImplementationOfDefinitionSelectorWithAdvisedImplementation:(TyphoonSelector *)wrappedSEL onAssemblyClass:(Class)assemblyClass
 {
     SEL methodSelector = [wrappedSEL selector];
-    SEL advisedSelector = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector];
+    SEL advisedSelector = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector class:assemblyClass];
 
     NSError *error;
     BOOL success = [_swizzler swizzleMethod:methodSelector withMethod:advisedSelector onClass:assemblyClass error:&error];
@@ -104,6 +104,22 @@ static NSMutableSet *advisedAssemblyClasses;
     }];
 
     return definitionSelectors;
+}
+
+- (NSDictionary *)assemblyClassPerDefinitionKey
+{
+    NSMutableDictionary *result = [NSMutableDictionary new];
+
+    [self enumerateDefinitionSelectorsUsingBlock:^(NSSet *definitionSelectors, Class assemblyClass) {
+        for (TyphoonSelector *sel in definitionSelectors) {
+            NSString *key = [TyphoonAssemblySelectorAdviser keyForSEL:sel.selector];
+            if (!result[key]) {
+                result[key] = assemblyClass;
+            }
+        }
+    }];
+
+    return result;
 }
 
 - (void)enumerateDefinitionSelectorsUsingBlock:(void(^)(NSSet *definitionSelectors, Class assemblyClass))block

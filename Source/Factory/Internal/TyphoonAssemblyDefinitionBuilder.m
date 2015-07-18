@@ -164,7 +164,7 @@ static void AssertArgumentType(id target, SEL selector, const char *argumentType
 - (id)definitionForKey:(NSString *)key
 {
     // call the user's assembly method to get it.
-    SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key];
+    SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key class:[_assembly assemblyClassForKey:key]];
 
     NSMethodSignature *signature = [self.assembly methodSignatureForSelector:sel];
 
@@ -205,7 +205,7 @@ static void AssertArgumentType(id target, SEL selector, const char *argumentType
     BOOL isMetaClass = CStringEquals(argumentType, "#");
 
     if (!isObject && !isBlock && !isMetaClass) {
-        [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %d. Runtime arguments can only be objects. Use wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector], [target class], (int)index-2];
+        [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %d. Runtime arguments can only be objects. Use wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector], [target class], (int)index - 2];
     }
 }
 

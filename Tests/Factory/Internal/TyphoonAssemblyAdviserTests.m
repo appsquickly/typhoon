@@ -82,7 +82,7 @@
 
     [adviser adviseAssembly];
 
-    NSString *advisedName = [TyphoonAssemblySelectorAdviser advisedNameForName:@"aDefinitionMethod"];
+    NSString *advisedName = [TyphoonAssemblySelectorAdviser advisedNameForName:@"aDefinitionMethod" class:assembly.class];
     [swizzler assertExchangedImplementationsFor:@"aDefinitionMethod" with:advisedName onClass:[assembly class]];
 }
 

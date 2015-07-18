@@ -19,6 +19,7 @@
 
 @implementation TyphoonAssemblySelectorAdviserTests
 {
+    Class clazz;
     NSString *key;
     SEL sel;
     SEL advisedSEL;
@@ -29,9 +30,10 @@
 
 - (void)setUp
 {
+    clazz = [NSString class];
     sel = @selector(uppercaseString);
     key = NSStringFromSelector(sel);
-    advisedSEL = [TyphoonAssemblySelectorAdviser advisedSELForSEL:sel];
+    advisedSEL = [TyphoonAssemblySelectorAdviser advisedSELForSEL:sel class:clazz];
 
     SELWithArguments = @selector(initWithString:attributes:);
 }
@@ -55,12 +57,12 @@
 
 - (void)test_advised_SEL_for_key
 {
-    XCTAssertEqual([TyphoonAssemblySelectorAdviser advisedSELForKey:key], advisedSEL);
+    XCTAssertEqual([TyphoonAssemblySelectorAdviser advisedSELForKey:key class:clazz], advisedSEL);
 }
 
 - (void)test_selector_with_arguments_preserves_arguments
 {
-    advisedSELWithArguments = [TyphoonAssemblySelectorAdviser advisedSELForSEL:SELWithArguments];
+    advisedSELWithArguments = [TyphoonAssemblySelectorAdviser advisedSELForSEL:SELWithArguments class:clazz];
     [self advisedSELWithArgumentsShouldHaveTwoArgumentsAndEndWithAnArgument];
 }
 

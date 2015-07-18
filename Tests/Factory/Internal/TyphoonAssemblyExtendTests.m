@@ -19,14 +19,11 @@
 @end
 
 @implementation TyphoonAssemblyExtendTests {
-    TyphoonBlockComponentFactory *_factory;
 }
 
 - (void)setUp
 {
-    _factory = [TyphoonBlockComponentFactory factoryWithAssemblies:@[
-        [NemoCoreSecondAssembly assembly]
-    ]];
+
 
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -34,8 +31,34 @@
 
 - (void)testExtented
 {
+    TyphoonBlockComponentFactory *_factory = [TyphoonBlockComponentFactory factoryWithAssemblies:@[
+            [NemoCoreSecondAssembly assembly]
+    ]];
     NemoCoreSecondAssembly *assembly = (NemoCoreSecondAssembly*)_factory;
     XCTAssertTrue([[assembly firstViewController] isKindOfClass:[NemoCoreSecondViewController class]]);
+}
+
+- (void)testMultipleOverrides
+{
+    NemoCoreNemoAssembly *assembly = [NemoCoreNemoAssembly new];
+    [assembly activate];
+    XCTAssertTrue([assembly.firstViewController isKindOfClass:[NemoCoreFirstViewController class]]);
+
+    NemoCoreSecondAssembly *assembly2 = [NemoCoreSecondAssembly new];
+    [assembly2 activate];
+    XCTAssertTrue([assembly2.firstViewController isKindOfClass:[NemoCoreSecondViewController class]]);
+
+
+    NemoCoreNemoAssembly *assembly3 = [NemoCoreNemoAssembly new];
+    [assembly3 activate];
+
+    XCTAssertTrue([assembly3.firstViewController isKindOfClass:[NemoCoreFirstViewController class]]);
+
+    NemoCoreSecondAssembly *assembly4 = [NemoCoreSecondAssembly new];
+    [assembly4 activate];
+    XCTAssertTrue([assembly4.firstViewController isKindOfClass:[NemoCoreSecondViewController class]]);
+
+
 }
 
 @end

@@ -26,6 +26,8 @@
 
 - (NSSet *)definitionSelectors;
 
+- (NSDictionary *)assemblyClassPerDefinitionKey;
+
 @property(readonly, weak) TyphoonAssembly *assembly;
 @property(nonatomic, strong) id <TyphoonMethodSwizzler> swizzler;
 

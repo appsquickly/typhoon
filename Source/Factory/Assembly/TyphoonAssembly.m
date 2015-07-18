@@ -31,6 +31,8 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 @property(readwrite) NSSet *definitionSelectors;
 
+@property(readwrite) NSDictionary *assemblyClassPerDefinitionKey;
+
 @property(readonly) TyphoonAssemblyAdviser *adviser;
 @property(readonly) TyphoonComponentFactory *factory;
 
@@ -327,7 +329,17 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 - (void)prepareForUse {
     self.definitionSelectors = [self.adviser definitionSelectors];
+    self.assemblyClassPerDefinitionKey = [self.adviser assemblyClassPerDefinitionKey];
     [self.adviser adviseAssembly];
+}
+
+- (Class)assemblyClassForKey:(NSString *)key
+{
+    if (self.assemblyClassPerDefinitionKey) {
+        return self.assemblyClassPerDefinitionKey[key];
+    } else {
+        return [self class];
+    }
 }
 
 
