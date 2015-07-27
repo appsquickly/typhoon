@@ -23,12 +23,14 @@
 
 #import "TyphoonObjectWithCustomInjection.h"
 #import "TyphoonInjectionByConfig.h"
+#import "TyphoonIntrospectionUtils.h"
 
 #import <objc/runtime.h>
 
 static const char *typhoonRuntimeArgumentBlockWrapperKey;
 
 BOOL IsWrappedIntoTyphoonBlock(id objectOrBlock) ;
+BOOL HasCustomInjection(id objectOrInjection) ;
 
 id TyphoonInjectionMatchedByType(void) {
     return [[TyphoonInjectionByType alloc] init];
@@ -84,7 +86,7 @@ id TyphoonInjectionWithCurrentRuntimeArguments()
 id TyphoonMakeInjectionFromObjectIfNeeded(id objectOrInjection) {
     id injection = nil;
 
-    if ([objectOrInjection conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)]) {
+    if (HasCustomInjection(objectOrInjection)) {
         injection = [objectOrInjection typhoonCustomObjectInjection];
     }
     else if (IsTyphoonInjection(objectOrInjection)) {
@@ -98,6 +100,11 @@ id TyphoonMakeInjectionFromObjectIfNeeded(id objectOrInjection) {
     }
 
     return injection;
+}
+
+BOOL HasCustomInjection(id objectOrInjection) {
+    return !IsClass(objectOrInjection) &&
+            [objectOrInjection conformsToProtocol:@protocol(TyphoonObjectWithCustomInjection)];
 }
 
 BOOL IsTyphoonInjection(id objectOrInjection) {
