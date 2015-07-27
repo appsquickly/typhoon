@@ -458,7 +458,7 @@
 		90ABC4771A36B29F008D8162 /* TyphoonDefinition+InstanceBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076EDD1936F63A0083714E /* TyphoonDefinition+InstanceBuilder.h */; };
 		90ABC4781A36B29F008D8162 /* TyphoonObjectWithCustomInjection.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076EDF1936F63A0083714E /* TyphoonObjectWithCustomInjection.h */; };
 		90ABC4791A36B29F008D8162 /* TyphoonReferenceDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076EE01936F63A0083714E /* TyphoonReferenceDefinition.h */; };
-		90ABC47A1A36B29F008D8162 /* TyphoonFactoryDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DBA1FB2212B952164C02878 /* TyphoonFactoryDefinition.h */; };
+		90ABC47A1A36B29F008D8162 /* TyphoonFactoryDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DBA1FB2212B952164C02878 /* TyphoonFactoryDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90ABC47B1A36B29F008D8162 /* TyphoonMethod+InstanceBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076EE41936F63A0083714E /* TyphoonMethod+InstanceBuilder.h */; };
 		90ABC47C1A36B29F008D8162 /* TyphoonMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076EE61936F63A0083714E /* TyphoonMethod.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90ABC47D1A36B29F008D8162 /* TyphoonDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076EE81936F63A0083714E /* TyphoonDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -2304,6 +2304,7 @@
 				90ABC4531A36B29E008D8162 /* TyphoonOptionMatcher+Internal.h in Headers */,
 				90ABC4571A36B29E008D8162 /* TyphoonConfiguration.h in Headers */,
 				90ABC4581A36B29E008D8162 /* TyphoonJsonStyleConfiguration.h in Headers */,
+				90ABC47A1A36B29F008D8162 /* TyphoonFactoryDefinition.h in Headers */,
 				90ABC4591A36B29E008D8162 /* TyphoonPlistStyleConfiguration.h in Headers */,
 				90ABC45A1A36B29E008D8162 /* TyphoonPropertyStyleConfiguration.h in Headers */,
 				90ABC45E1A36B29E008D8162 /* TyphoonAbstractDetachableComponentFactoryPostProcessor.h in Headers */,
@@ -2331,7 +2332,6 @@
 				90ABC4771A36B29F008D8162 /* TyphoonDefinition+InstanceBuilder.h in Headers */,
 				90ABC4781A36B29F008D8162 /* TyphoonObjectWithCustomInjection.h in Headers */,
 				90ABC4791A36B29F008D8162 /* TyphoonReferenceDefinition.h in Headers */,
-				90ABC47A1A36B29F008D8162 /* TyphoonFactoryDefinition.h in Headers */,
 				90ABC47B1A36B29F008D8162 /* TyphoonMethod+InstanceBuilder.h in Headers */,
 				90ABC4801A36B29F008D8162 /* TyphoonFactoryAutoInjectionPostProcessor.h in Headers */,
 				90ABC4811A36B29F008D8162 /* TyphoonAssembly+TyphoonAssemblyFriend.h in Headers */,
