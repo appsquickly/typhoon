@@ -20,8 +20,8 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 # Usage
 
 ```swift
-let assembly = SwiftMiddleAgesAssembly().activate()
-let knight = assembly.basicKnight() as! Knight 
+let assembly = MyAssembly().activate()
+let viewControler = assembly.recommendationController() as! RecommendationController
 ```
 
 * Read the ***Quick Start*** for <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Objective-C</a> or <a href="https://github.com/appsquickly/Typhoon/wiki/Swift-Quick-Start">Swift</a>. 
