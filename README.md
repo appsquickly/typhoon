@@ -19,6 +19,11 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 
 # Usage
 
+```swift
+let assembly = SwiftMiddleAgesAssembly().activate()
+let knight = assembly.basicKnight() as! Knight 
+```
+
 * Read the ***Quick Start*** for <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Objective-C</a> or <a href="https://github.com/appsquickly/Typhoon/wiki/Swift-Quick-Start">Swift</a>. 
 * Here's the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a>.
 * Join the [![Join the chat at https://gitter.im/appsquickly/Typhoon](https://badges.gitter.im/Join%20Chat.svg)]
