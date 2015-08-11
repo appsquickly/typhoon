@@ -12,6 +12,14 @@
 
 #import "TyphoonInjectionByComponentFactory.h"
 #import "NSInvocation+TCFUnwrapValues.h"
+#import "TyphoonIntrospectionUtils.h"
+#import "TyphoonAssembly.h"
+
+@interface TyphoonAssembly (Activation)
+
+- (void)activateWithFactory:(TyphoonComponentFactory *)factory collaborators:(NSSet *)collaborators;
+
+@end
 
 @implementation TyphoonInjectionByComponentFactory
 
@@ -19,6 +27,19 @@
 
 - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
+    id factoryType = context.destinationType.classOrProtocol;
+    
+    if (IsClass(factoryType)) {
+        Class factoryClass = factoryType;
+        BOOL isAssemblySubclass = [factoryClass isSubclassOfClass:[TyphoonAssembly class]];
+        if (isAssemblySubclass) {
+            id assembly = [[factoryClass alloc] init];
+            [assembly activateWithFactory:context.factory collaborators:nil];
+            result(assembly);
+            return;
+        }
+    }
+    
     result(context.factory);
 }
 
