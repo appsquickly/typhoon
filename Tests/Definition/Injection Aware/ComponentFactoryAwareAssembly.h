@@ -16,7 +16,9 @@
 
 - (id)injectionAwareObject;
 
-- (id)injectionByProperty;
+- (id)injectionFactoryByProperty;
+
+- (id)injectionAssemblyByProperty;
 
 - (id)injectionByInitialization;
 
