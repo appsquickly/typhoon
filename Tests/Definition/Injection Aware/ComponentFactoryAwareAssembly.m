@@ -21,10 +21,17 @@
     return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class]];
 }
 
-- (id)injectionByProperty
+- (id)injectionFactoryByProperty
 {
     return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(componentFactory) with:self];
+    }];
+}
+
+- (id)injectionAssemblyByProperty
+{
+    return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(assembly) with:self];
     }];
 }
 

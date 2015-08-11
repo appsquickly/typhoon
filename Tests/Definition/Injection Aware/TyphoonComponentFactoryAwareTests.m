@@ -38,13 +38,19 @@
 
 - (void)test_factory_injection_by_property
 {
-    object = [factory injectionByProperty];
+    object = [factory injectionFactoryByProperty];
+    XCTAssertTrue(object.factory == factory);
+}
+
+- (void)test_assembly_injection_by_property
+{
+    object = [factory injectionAssemblyByProperty];
     XCTAssertTrue(object.factory == factory);
 }
 
 - (void)test_factory_injection_by_initialization
 {
-    object = [factory injectionByProperty];
+    object = [factory injectionFactoryByProperty];
     XCTAssertTrue(object.factory == factory);
 }
 
@@ -60,5 +66,16 @@
     XCTAssertTrue(object.factory == factory);
 }
 
+- (void)test_assembly_injection_by_property_class_check {
+    object = [factory injectionAssemblyByProperty];
+    BOOL isRightClass = [object.assembly isKindOfClass:[ComponentFactoryAwareAssembly class]];
+    XCTAssertTrue(isRightClass);
+}
+
+- (void)test_assembly_injection_by_property_assembly_type_class_check {
+    object = [factory injectionByPropertyAssemblyType];
+    BOOL isRightClass = [object.assembly isKindOfClass:[ComponentFactoryAwareAssembly class]];
+    XCTAssertTrue(isRightClass);
+}
 
 @end
