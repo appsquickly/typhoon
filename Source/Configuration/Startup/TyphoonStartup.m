@@ -15,6 +15,7 @@
 #import "TyphoonBlockComponentFactory.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 
 #import <objc/runtime.h>
@@ -37,6 +38,7 @@
 + (void)load
 {
     [self swizzleSetDelegateMethodOnApplicationClass];
+    [TyphoonDefinition configDefinition];
 }
 
 + (TyphoonComponentFactory *)factoryFromAppDelegate:(id)appDelegate
