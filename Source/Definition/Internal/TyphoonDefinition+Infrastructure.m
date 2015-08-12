@@ -35,6 +35,22 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     return [[TyphoonDefinition alloc] initWithClass:clazz key:key];
 }
 
++ (instancetype)configDefinition
+{
+    NSString *fileName = [[NSBundle mainBundle] infoDictionary][@"TyphoonDefinitionFilename"];
+    if (![fileName length])
+    {
+        NSString *bundleID = [[NSBundle mainBundle] infoDictionary][@"CFBundleIdentifier"];
+        NSString *configFilename = [NSString stringWithFormat:@"config_%@.plist", bundleID];
+        NSString *configPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:configFilename];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:configPath])
+        {
+            fileName = configFilename;
+        }
+    }
+    return [self configDefinitionWithName:fileName];
+}
+
 + (instancetype)configDefinitionWithName:(NSString *)fileName
 {
     return [self withClass:[TyphoonConfigPostProcessor class] configuration:^(TyphoonDefinition *definition) {
