@@ -68,12 +68,13 @@ static BOOL initialFactoryWasCreated = NO;
 
 + (id<TyphoonDefinitionPostProcessor>)configPostProcessor
 {
-    NSString *fileName = [[NSBundle mainBundle] infoDictionary][@"TyphoonConfigFilename"];
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSString *fileName = [bundle infoDictionary][@"TyphoonConfigFilename"];
     if (![fileName length])
     {
-        NSString *bundleID = [[NSBundle mainBundle] infoDictionary][@"CFBundleIdentifier"];
+        NSString *bundleID = [bundle infoDictionary][@"CFBundleIdentifier"];
         NSString *configFilename = [NSString stringWithFormat:@"config_%@.plist", bundleID];
-        NSString *configPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:configFilename];
+        NSString *configPath = [[bundle resourcePath] stringByAppendingPathComponent:configFilename];
         if ([[NSFileManager defaultManager] fileExistsAtPath:configPath])
         {
             fileName = configFilename;
