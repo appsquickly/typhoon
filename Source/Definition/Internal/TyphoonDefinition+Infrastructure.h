@@ -61,7 +61,7 @@ Declares short-hand definition factory methods for infrastructure components.
 /**
 Factory method for a TyphoonConfigPostProcessor.
 Will load a file in the main bundle named "config_appID.plist", or can be overridden with a filename
-in the Info.plist in key TyphoonDefinitionFilename.
+in the Info.plist in key TyphoonConfigFilename.
 @return a definition.
 */
 + (instancetype)configDefinition;

@@ -37,7 +37,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 + (instancetype)configDefinition
 {
-    NSString *fileName = [[NSBundle mainBundle] infoDictionary][@"TyphoonDefinitionFilename"];
+    NSString *fileName = [[NSBundle mainBundle] infoDictionary][@"TyphoonConfigFilename"];
     if (![fileName length])
     {
         NSString *bundleID = [[NSBundle mainBundle] infoDictionary][@"CFBundleIdentifier"];
