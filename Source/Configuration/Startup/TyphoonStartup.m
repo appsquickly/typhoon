@@ -15,7 +15,7 @@
 #import "TyphoonBlockComponentFactory.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
-#import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonConfigPostProcessor.h"
 
 
 #import <objc/runtime.h>
@@ -38,7 +38,6 @@
 + (void)load
 {
     [self swizzleSetDelegateMethodOnApplicationClass];
-    [TyphoonDefinition configDefinition];
 }
 
 + (TyphoonComponentFactory *)factoryFromAppDelegate:(id)appDelegate
@@ -67,8 +66,30 @@ static BOOL initialFactoryWasCreated = NO;
     initialFactoryRequestCount += 1;
 }
 
++ (id<TyphoonDefinitionPostProcessor>)configPostProcessor
+{
+    NSString *fileName = [[NSBundle mainBundle] infoDictionary][@"TyphoonConfigFilename"];
+    if (![fileName length])
+    {
+        NSString *bundleID = [[NSBundle mainBundle] infoDictionary][@"CFBundleIdentifier"];
+        NSString *configFilename = [NSString stringWithFormat:@"config_%@.plist", bundleID];
+        NSString *configPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:configFilename];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:configPath])
+        {
+            fileName = configFilename;
+        }
+    }
+    id<TyphoonDefinitionPostProcessor> configProcessor = [TyphoonConfigPostProcessor forResourceNamed:fileName];
+    return configProcessor;
+}
+
 + (TyphoonComponentFactory *)initialFactory
 {
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+        id<TyphoonDefinitionPostProcessor> processor = [self configPostProcessor];
+        [initialFactory attachPostProcessor:processor];
+    });
     return initialFactory;
 }
 
