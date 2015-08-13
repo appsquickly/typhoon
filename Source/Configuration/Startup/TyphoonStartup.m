@@ -80,17 +80,32 @@ static BOOL initialFactoryWasCreated = NO;
             fileName = configFilename;
         }
     }
-    id<TyphoonDefinitionPostProcessor> configProcessor = [TyphoonConfigPostProcessor forResourceNamed:fileName];
+    id<TyphoonDefinitionPostProcessor> configProcessor = nil;
+    if ([fileName length])
+    {
+        [TyphoonConfigPostProcessor forResourceNamed:fileName];
+    }
     return configProcessor;
+}
+
++ (void)loadConfig
+{
+    if (initialFactory)
+    {
+        static dispatch_once_t predicate;
+        dispatch_once(&predicate, ^{
+            id<TyphoonDefinitionPostProcessor> processor = [self configPostProcessor];
+            if (processor)
+            {
+                [initialFactory attachPostProcessor:processor];
+            }
+        });
+    }
 }
 
 + (TyphoonComponentFactory *)initialFactory
 {
-    static dispatch_once_t predicate;
-    dispatch_once(&predicate, ^{
-        id<TyphoonDefinitionPostProcessor> processor = [self configPostProcessor];
-        [initialFactory attachPostProcessor:processor];
-    });
+    [self loadConfig];
     return initialFactory;
 }
 
@@ -153,6 +168,5 @@ static BOOL initialFactoryWasCreated = NO;
     [initialFactory load];
     [initialFactory inject:appDelegate];
 }
-
 
 @end
