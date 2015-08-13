@@ -29,6 +29,7 @@
 {
     id factoryType = context.destinationType.classOrProtocol;
     
+    // TODO: Ideally we shouldn't create a new instance of an assembly, but somehow reference the original one. This can be achieved by either merging TyphoonComponentFactory and TyphoonBlockComponentFactory, or by adding a new injection - TyphoonInjectionByAssembly. In the second case the problem is in TyphoonFactoryPropertyInjectionPostProcessor - it doesn't have enough context to create such injection.
     if (IsClass(factoryType)) {
         Class factoryClass = factoryType;
         BOOL isAssemblySubclass = [factoryClass isSubclassOfClass:[TyphoonAssembly class]];
