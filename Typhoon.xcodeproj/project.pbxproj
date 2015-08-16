@@ -516,6 +516,7 @@
 		90ABC4CA1A36BA53008D8162 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90ABC4C81A36BA53008D8162 /* LaunchScreen.xib */; };
 		90ABC4D61A36BA53008D8162 /* TyphoonFrameworkSwiftExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABC4D51A36BA53008D8162 /* TyphoonFrameworkSwiftExampleTests.swift */; };
 		90ABC4E21A36BAE5008D8162 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABC4E11A36BAE5008D8162 /* Assembly.swift */; };
+		9F50B2251B80A80A0066BBA1 /* TyphoonAssemblyBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F50B2241B80A80A0066BBA1 /* TyphoonAssemblyBuilderTests.m */; };
 		9F7522351B80A16A00AE6219 /* TyphoonAssemblyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7522341B80A16A00AE6219 /* TyphoonAssemblyBuilder.m */; };
 		9F7522381B80A25900AE6219 /* TyphoonAssemblyBuilder+PlistProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7522371B80A25900AE6219 /* TyphoonAssemblyBuilder+PlistProcessor.m */; };
 		9F766B6E1B512A66005FC561 /* DecoratedQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F766B6D1B512A66005FC561 /* DecoratedQuest.m */; };
@@ -1045,6 +1046,7 @@
 		90ABC4D41A36BA53008D8162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90ABC4D51A36BA53008D8162 /* TyphoonFrameworkSwiftExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyphoonFrameworkSwiftExampleTests.swift; sourceTree = "<group>"; };
 		90ABC4E11A36BAE5008D8162 /* Assembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		9F50B2241B80A80A0066BBA1 /* TyphoonAssemblyBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblyBuilderTests.m; sourceTree = "<group>"; };
 		9F7522331B80A16A00AE6219 /* TyphoonAssemblyBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssemblyBuilder.h; sourceTree = "<group>"; };
 		9F7522341B80A16A00AE6219 /* TyphoonAssemblyBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblyBuilder.m; sourceTree = "<group>"; };
 		9F7522361B80A25900AE6219 /* TyphoonAssemblyBuilder+PlistProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyphoonAssemblyBuilder+PlistProcessor.h"; sourceTree = "<group>"; };
@@ -1846,6 +1848,7 @@
 			children = (
 				6B076FCA1936F63A0083714E /* TestAssemblies */,
 				BA79865F96DC091B26F667AB /* TyphoonAssemblyActivatorTests.m */,
+				9F50B2241B80A80A0066BBA1 /* TyphoonAssemblyBuilderTests.m */,
 				BA7982649B0AD013F2290315 /* TyphoonAssemblyTests.m */,
 			);
 			path = Assembly;
@@ -2547,6 +2550,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = Typhoon;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = typhoonframework.org;
 				TargetAttributes = {
@@ -2895,6 +2899,7 @@
 				BA7987DEDB4963E855DCD172 /* TyphoonAssemblyExtendTests.m in Sources */,
 				BA79842CDF9A4CB3E878C0EA /* TyphoonCollaboratingAssemblyPropertyEnumeratorTests.m in Sources */,
 				BA7980BF2F239BB0E445DC9C /* TyphoonAssemblyAdviserTests.m in Sources */,
+				9F50B2251B80A80A0066BBA1 /* TyphoonAssemblyBuilderTests.m in Sources */,
 				BA798D525FCB8965FA1E6541 /* TyphoonCollaboratingAssemblyPropertyEnumeratorTests_AssemblyWithProperty.m in Sources */,
 				BA798DE8EE965F40B4FE0C33 /* ConfigAssembly.m in Sources */,
 				BA798FAE0A06D231257D5CD1 /* TyphoonFactoryDefinitionTests.m in Sources */,

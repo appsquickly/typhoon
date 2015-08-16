@@ -15,7 +15,7 @@
 @implementation TyphoonAssemblyBuilder
 
 + (id)buildAssemblyWithClass:(Class)assemblyClass {
-    return [self buildAssembliesWithClasses:@[assemblyClass]];
+    return [[self buildAssembliesWithClasses:@[assemblyClass]] firstObject];
 }
 
 + (id)buildAssembliesWithClasses:(NSArray *)assemblyClasses {
@@ -27,6 +27,10 @@
     for (Class assemblyClass in assemblyClasses) {
         if (!assemblyClass) {
             [NSException raise:NSInvalidArgumentException format:@"Can't resolve assembly for class %@",
+             assemblyClass];
+        }
+        if (![assemblyClass isSubclassOfClass:[TyphoonAssembly class]]) {
+            [NSException raise:NSInvalidArgumentException format:@"Class %@ is not a subclass of TyphoonAssembly",
              assemblyClass];
         }
         
