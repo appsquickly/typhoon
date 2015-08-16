@@ -19,11 +19,6 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 
 # Usage
 
-```swift
-let assembly = MyAssembly().activate()
-let viewControler = assembly.recommendationController() as! RecommendationController
-```
-
 * Read the ***Quick Start*** for <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Objective-C</a> or <a href="https://github.com/appsquickly/Typhoon/wiki/Swift-Quick-Start">Swift</a>. 
 * Here's the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a>.
 * Join the [![Join the chat at https://gitter.im/appsquickly/Typhoon](https://badges.gitter.im/Join%20Chat.svg)]
@@ -31,6 +26,10 @@ let viewControler = assembly.recommendationController() as! RecommendationContro
 * And here are the <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>. Generally googling a Typhoon class name will return the correct page as the first hit. 
 * <a href="http://ios.caph.jp/typhoon/introduction">日本のドキュメンテーション</a>
 
+```swift
+let assembly = MyAssembly().activate()
+let viewControler = assembly.recommendationController() as! RecommendationController
+```
 
 # Open Source Sample Applications
 
