@@ -26,11 +26,6 @@
 
 + (id)factoryWithAssemblies:(NSArray *)assemblies;
 
-/**
-* Returns a factory by loading the assemblies specified in the bundle's plist.
-*/
-+ (id)factoryFromPlistInBundle:(NSBundle*)bundle;
-
 - (id)initWithAssembly:(TyphoonAssembly *)assembly;
 
 - (id)initWithAssemblies:(NSArray *)assemblies;
