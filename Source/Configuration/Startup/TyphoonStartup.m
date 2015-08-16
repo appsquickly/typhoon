@@ -73,8 +73,10 @@ static BOOL initialFactoryWasCreated = NO;
 {
     if (initialFactoryRequestCount == 0 && !initialFactoryWasCreated) {
         NSArray *assemblies = [TyphoonAssemblyBuilder buildAssembliesFromPlistInBundle:[NSBundle mainBundle]];
-        initialFactory = [TyphoonBlockComponentFactory factoryWithAssemblies:assemblies];
-        initialFactoryWasCreated = YES;
+        if (assemblies.count > 0) {
+            initialFactory = [TyphoonBlockComponentFactory factoryWithAssemblies:assemblies];
+            initialFactoryWasCreated = YES;
+        }
     }
     initialFactoryRequestCount += 1;
 }
