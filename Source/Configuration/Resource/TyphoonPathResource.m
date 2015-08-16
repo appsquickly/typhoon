@@ -19,7 +19,7 @@
     NSData *_data;
 }
 
-+ (id <TyphoonResource>)withPath:(NSString *)filePath
++ (id<TyphoonResource>)withPath:(NSString *)filePath
 {
     return [[TyphoonPathResource alloc] initWithContentsOfFile:filePath];
 }
@@ -52,6 +52,11 @@
 - (NSURL *)url
 {
     return [NSURL fileURLWithPath:_path];
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"TyphoonResource: %@", _path];
 }
 
 

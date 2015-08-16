@@ -33,19 +33,20 @@
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         expression = [NSRegularExpression regularExpressionWithPattern:@"(([\"'])(?:\\\\\\2|.)*?\\2)|(\\/\\/[^\\n\\r]*(?:[\\n\\r]+|$)|(\\/\\*(?:(?!\\*\\/).|[\\n\\r])*\\*\\/))"
-                                                               options:NSRegularExpressionAnchorsMatchLines error:nil];
+            options:NSRegularExpressionAnchorsMatchLines error:nil];
     });
 
     NSArray *matches = [expression matchesInString:string options:0 range:NSMakeRange(0, string.length)];
 
     if ([matches count] > 0) {
         NSMutableString *mutableString = [string mutableCopy];
-        [matches enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(NSTextCheckingResult *match, NSUInteger idx, BOOL *stop) {
-            unichar character = [string characterAtIndex:match.range.location];
-            if (character != '\'' && character != '\"') {
-                [mutableString replaceCharactersInRange:match.range withString:@""];
-            }
-        }];
+        [matches enumerateObjectsWithOptions:NSEnumerationReverse
+            usingBlock:^(NSTextCheckingResult *match, NSUInteger idx, BOOL *stop) {
+                unichar character = [string characterAtIndex:match.range.location];
+                if (character != '\'' && character != '\"') {
+                    [mutableString replaceCharactersInRange:match.range withString:@""];
+                }
+            }];
         string = mutableString;
     }
 
@@ -58,12 +59,14 @@
     NSData *jsonData = [jsonWithoutComments dataUsingEncoding:NSUTF8StringEncoding];
 
     NSError *error = nil;
-    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
+    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments
+        error:&error];
 
     if (!error) {
         [_properties addEntriesFromDictionary:dictionary];
-    } else {
-        [NSException raise:NSInvalidArgumentException format:@"Can't parse JSON configuration file: %@",error];
+    }
+    else {
+        [NSException raise:NSInvalidArgumentException format:@"Can't parse JSON configuration file: %@", error];
     }
 }
 
