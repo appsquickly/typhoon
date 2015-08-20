@@ -25,7 +25,7 @@ set -o pipefail
 
 
 #Clean
-rm -fr ~/Library/Developer/Xcode/DerivedData
+rm -fr ~/Library/Developer/Xcode/DerivedData/
 rm -fr ./build
 
 #Init submodules
