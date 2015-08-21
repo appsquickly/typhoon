@@ -516,7 +516,9 @@
 		90ABC4CA1A36BA53008D8162 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90ABC4C81A36BA53008D8162 /* LaunchScreen.xib */; };
 		90ABC4D61A36BA53008D8162 /* TyphoonFrameworkSwiftExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABC4D51A36BA53008D8162 /* TyphoonFrameworkSwiftExampleTests.swift */; };
 		90ABC4E21A36BAE5008D8162 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABC4E11A36BAE5008D8162 /* Assembly.swift */; };
+		9F123D801B872DE700015E7A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B07701D1936F63A0083714E /* Images.xcassets */; };
 		9F50B2251B80A80A0066BBA1 /* TyphoonAssemblyBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F50B2241B80A80A0066BBA1 /* TyphoonAssemblyBuilderTests.m */; };
+		9F5D32271B872D880023C474 /* TyphoonBundledImageTypeConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5D32261B872D880023C474 /* TyphoonBundledImageTypeConverterTests.m */; };
 		9F7522351B80A16A00AE6219 /* TyphoonAssemblyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7522341B80A16A00AE6219 /* TyphoonAssemblyBuilder.m */; };
 		9F7522381B80A25900AE6219 /* TyphoonAssemblyBuilder+PlistProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7522371B80A25900AE6219 /* TyphoonAssemblyBuilder+PlistProcessor.m */; };
 		9F766B6E1B512A66005FC561 /* DecoratedQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F766B6D1B512A66005FC561 /* DecoratedQuest.m */; };
@@ -1047,6 +1049,7 @@
 		90ABC4D51A36BA53008D8162 /* TyphoonFrameworkSwiftExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TyphoonFrameworkSwiftExampleTests.swift; sourceTree = "<group>"; };
 		90ABC4E11A36BAE5008D8162 /* Assembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		9F50B2241B80A80A0066BBA1 /* TyphoonAssemblyBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblyBuilderTests.m; sourceTree = "<group>"; };
+		9F5D32261B872D880023C474 /* TyphoonBundledImageTypeConverterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonBundledImageTypeConverterTests.m; sourceTree = "<group>"; };
 		9F7522331B80A16A00AE6219 /* TyphoonAssemblyBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssemblyBuilder.h; sourceTree = "<group>"; };
 		9F7522341B80A16A00AE6219 /* TyphoonAssemblyBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblyBuilder.m; sourceTree = "<group>"; };
 		9F7522361B80A25900AE6219 /* TyphoonAssemblyBuilder+PlistProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyphoonAssemblyBuilder+PlistProcessor.h"; sourceTree = "<group>"; };
@@ -2265,6 +2268,7 @@
 			isa = PBXGroup;
 			children = (
 				BA798E0CA9E9828D07777F40 /* TyphoonUIColorConverterTests.m */,
+				9F5D32261B872D880023C474 /* TyphoonBundledImageTypeConverterTests.m */,
 			);
 			path = TypeConversion;
 			sourceTree = "<group>";
@@ -2623,6 +2627,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B07727819370A920083714E /* SomeResource in Resources */,
+				9F123D801B872DE700015E7A /* Images.xcassets in Resources */,
 				6B07726C19370A870083714E /* SomeProperties.json in Resources */,
 				6B07727419370A8F0083714E /* SomeProperties.properties in Resources */,
 				6B07727019370A8B0083714E /* SomeProperties.plist in Resources */,
@@ -2830,6 +2835,7 @@
 				6B0771221936FEA80083714E /* TyphoonComponentDefinition+InstanceBuilderTests.m in Sources */,
 				6B0771341936FEA80083714E /* TyphoonComponentFactoryTests.m in Sources */,
 				6B0771351936FEA80083714E /* TyphoonScopeTests.m in Sources */,
+				9F5D32271B872D880023C474 /* TyphoonBundledImageTypeConverterTests.m in Sources */,
 				6B0771361936FEA80083714E /* TyphoonWeakComponentsPoolTests.m in Sources */,
 				6B43ED5C1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift in Sources */,
 				6B0771371936FEA80083714E /* main.m in Sources */,
