@@ -44,49 +44,6 @@
     return [[self alloc] initWithAssemblies:assemblies];
 }
 
-+ (id)factoryFromPlistInBundle:(NSBundle *)bundle
-{
-    TyphoonComponentFactory *result = nil;
-
-    NSArray *assemblyNames = [self plistAssemblyNames:bundle];
-    NSAssert(!assemblyNames || [assemblyNames isKindOfClass:[NSArray class]],
-            @"Value for 'TyphoonInitialAssemblies' key must be array");
-
-    if ([assemblyNames count] > 0) {
-        NSMutableArray *assemblies = [[NSMutableArray alloc] initWithCapacity:[assemblyNames count]];
-        for (NSString *assemblyName in assemblyNames) {
-            Class cls = TyphoonClassFromString(assemblyName);
-            if (!cls) {
-                [NSException raise:NSInvalidArgumentException format:@"Can't resolve assembly for name %@",
-                                                                     assemblyName];
-            }
-            [assemblies addObject:[cls assembly]];
-        }
-        result = [TyphoonBlockComponentFactory factoryWithAssemblies:assemblies];
-    }
-
-    return result;
-}
-
-+ (NSArray *)plistAssemblyNames:(NSBundle *)bundle
-{
-    NSArray *names = nil;
-
-    NSDictionary *bundleInfoDictionary = [bundle infoDictionary];
-#if TARGET_OS_IPHONE
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        names = bundleInfoDictionary[@"TyphoonInitialAssemblies(iPad)"];
-    } else {
-        names = bundleInfoDictionary[@"TyphoonInitialAssemblies(iPhone)"];
-    }
-#endif
-    if (!names) {
-        names = bundleInfoDictionary[@"TyphoonInitialAssemblies"];
-    }
-
-    return names;
-}
-
 //-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
 //-------------------------------------------------------------------------------------------
