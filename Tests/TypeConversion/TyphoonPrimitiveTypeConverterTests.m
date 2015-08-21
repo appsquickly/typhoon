@@ -150,6 +150,8 @@
 
     converted = [_typeConverter convertToInt:@"zzz"];
     XCTAssertEqual(converted, 0);
+    
+    [self verifyNumberFromTestNumberStringWithType:@encode(int)];
 }
 
 - (void)test_converts_to_NSUInteger
@@ -193,6 +195,15 @@
     }
     @catch (NSException *exception) {
     }
+}
+
+- (void)test_converts_to_float
+{
+    float converted = [_typeConverter convertToFloat:@"0.5"];
+    XCTAssertEqual(converted, 0.5);
+    
+    converted = [_typeConverter convertToFloat:@"zzz"];
+    XCTAssertEqual(converted, 0);
 }
 
 //-------------------------------------------------------------------------------------------
