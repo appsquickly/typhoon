@@ -87,24 +87,32 @@
     if (self) {
         if ([typeCode hasPrefix:@"T@"]) {
             _isPrimitive = NO;
-            typeCode = [typeCode stringByReplacingOccurrencesOfString:@"T@" withString:@""];
-            typeCode = [typeCode stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-            if ([typeCode hasPrefix:@"<"] && [typeCode hasSuffix:@">"]) {
-                typeCode = [typeCode stringByReplacingOccurrencesOfString:@"<" withString:@""];
-                typeCode = [typeCode stringByReplacingOccurrencesOfString:@">" withString:@""];
-                _declaredProtocol = typeCode;
+            
+            NSRange typeNameRange = NSMakeRange(2, typeCode.length - 2);
+            
+            NSRange quoteRange = [typeCode rangeOfString:@"\"" options:0 range:typeNameRange locale:nil];
+            if (quoteRange.length > 0) {
+                typeNameRange.location = quoteRange.location + 1;
+                typeNameRange.length = typeCode.length - typeNameRange.location;
+                
+                NSRange range = [typeCode rangeOfString:@"\"" options:0 range:typeNameRange locale:nil];
+                typeNameRange.length = range.location - typeNameRange.location;
             }
-            else if ([typeCode hasSuffix:@">"]) {
-                NSArray *components = [typeCode componentsSeparatedByString:@"<"];
-                NSString *protocol = [components[1] stringByReplacingOccurrencesOfString:@">" withString:@""];
-                NSString *class = components[0];
-
-                _declaredProtocol = protocol;
-                _typeBeingDescribed = TyphoonClassFromString(class);
+            
+            NSRange protocolRange = [typeCode rangeOfString:@"<" options:0 range:typeNameRange locale:nil];
+            if (protocolRange.length > 0) {
+                NSRange range = [typeCode rangeOfString:@">" options:0 range:typeNameRange locale:nil];
+                
+                typeNameRange.length = protocolRange.location - typeNameRange.location;
+                
+                protocolRange.location += 1;
+                protocolRange.length = range.location - protocolRange.location;
+                
+                _declaredProtocol = [typeCode substringWithRange:protocolRange];
             }
-            else {
-                _typeBeingDescribed = TyphoonClassFromString(typeCode);
-            }
+            
+            NSString *typeName = [typeCode substringWithRange:typeNameRange];
+            _typeBeingDescribed = TyphoonClassFromString(typeName);
         }
         else {
             _isPrimitive = YES;

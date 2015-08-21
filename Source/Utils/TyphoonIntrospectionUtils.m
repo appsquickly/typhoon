@@ -230,14 +230,38 @@ NSString *TyphoonTypeStringFor(id classOrProtocol)
     }
 }
 
+NSString *TyphoonDefaultModuleName()
+{
+    static NSString *defaultModuleName;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        defaultModuleName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"];
+        defaultModuleName = [[defaultModuleName stringByReplacingOccurrencesOfString:@" " withString:@"_"]
+                             stringByReplacingOccurrencesOfString:@"-" withString:@"_"];
+    });
+    return defaultModuleName;
+}
+
+BOOL TyphoonIsInvalidClassName(NSString *className)
+{
+    if (className.length == 0) {
+        return YES;
+    }
+    if ([className isEqualToString:@"?"]) {
+        return YES;
+    }
+    return NO;
+}
+
 Class TyphoonClassFromString(NSString *className)
 {
+    if (TyphoonIsInvalidClassName(className)) {
+        return Nil;
+    }
+    
     Class clazz = NSClassFromString(className);
     if (!clazz) {
-        NSString *defaultModuleName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"];
-        defaultModuleName = [[defaultModuleName stringByReplacingOccurrencesOfString:@" " withString:@"_"]
-                stringByReplacingOccurrencesOfString:@"-" withString:@"_"];
-        clazz = NSClassFromString([defaultModuleName stringByAppendingFormat:@".%@", className]);
+        clazz = NSClassFromString([TyphoonDefaultModuleName() stringByAppendingFormat:@".%@", className]);
     }
     if (!clazz) {
         /**
