@@ -17,7 +17,7 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonConfigPostProcessor.h"
 #import "OCLogTemplate.h"
-
+#import "TyphoonAssemblyBuilder+PlistProcessor.h"
 
 #import <objc/runtime.h>
 
@@ -44,11 +44,22 @@
 + (TyphoonComponentFactory *)factoryFromAppDelegate:(id)appDelegate
 {
     TyphoonComponentFactory *result = nil;
-
-    if ([appDelegate respondsToSelector:@selector(initialFactory)]) {
-        result = [appDelegate initialFactory];
+    SEL initialFactorySelector = NSSelectorFromString(@"initialFactory");
+    SEL initialAssembliesSelector = NSSelectorFromString(@"initialAssemblies");
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    if ([appDelegate respondsToSelector:initialFactorySelector]) {
+        result = [appDelegate performSelector:initialFactorySelector];
     }
-
+    
+    if ([appDelegate respondsToSelector:initialAssembliesSelector]) {
+        NSArray *assemblyClasses = [appDelegate performSelector:initialAssembliesSelector];
+        NSArray *assemblies = [TyphoonAssemblyBuilder buildAssembliesWithClasses:assemblyClasses];
+        result = [TyphoonBlockComponentFactory factoryWithAssemblies:assemblies];
+    }
+#pragma clang diagnostic pop
+    
     return result;
 }
 
@@ -61,8 +72,11 @@ static BOOL initialFactoryWasCreated = NO;
 + (void)requireInitialFactory
 {
     if (initialFactoryRequestCount == 0 && !initialFactoryWasCreated) {
-        initialFactory = [TyphoonBlockComponentFactory factoryFromPlistInBundle:[NSBundle mainBundle]];
-        initialFactoryWasCreated = YES;
+        NSArray *assemblies = [TyphoonAssemblyBuilder buildAssembliesFromPlistInBundle:[NSBundle mainBundle]];
+        if (assemblies.count > 0) {
+            initialFactory = [TyphoonBlockComponentFactory factoryWithAssemblies:assemblies];
+            initialFactoryWasCreated = YES;
+        }
     }
     initialFactoryRequestCount += 1;
 }

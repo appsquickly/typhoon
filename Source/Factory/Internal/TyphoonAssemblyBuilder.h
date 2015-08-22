@@ -9,28 +9,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
 #import <Foundation/Foundation.h>
-#import "TyphoonComponentFactory.h"
-#import "TyphoonRuntimeArguments.h"
 
-@class TyphoonAssembly;
+@interface TyphoonAssemblyBuilder : NSObject
 
-/**
-* @ingroup Assembly
-*
-*/
-@interface TyphoonBlockComponentFactory : TyphoonComponentFactory
-
-+ (id)factoryWithAssembly:(TyphoonAssembly *)assembly;
-
-+ (id)factoryWithAssemblies:(NSArray *)assemblies;
-
-- (id)initWithAssembly:(TyphoonAssembly *)assembly;
-
-- (id)initWithAssemblies:(NSArray *)assemblies;
-
++ (id)buildAssemblyWithClass:(Class)assemblyClass;
++ (NSArray *)buildAssembliesWithClasses:(NSArray *)assemblyClasses;
 
 @end
-
-
