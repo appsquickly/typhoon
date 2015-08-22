@@ -34,7 +34,5 @@
     <array>
         <string>OSXPlistConfiguredAssembly</string>
     </array>
-    <key>TyphoonConfigFilename</key>
-    <string>plist_config.properties</string>
 </dict>
 </plist>

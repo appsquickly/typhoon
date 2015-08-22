@@ -18,6 +18,7 @@
 #import "TyphoonConfigPostProcessor.h"
 #import "OCLogTemplate.h"
 #import "TyphoonAssemblyBuilder+PlistProcessor.h"
+#import "TyphoonAssemblyBuilder.h"
 
 #import <objc/runtime.h>
 

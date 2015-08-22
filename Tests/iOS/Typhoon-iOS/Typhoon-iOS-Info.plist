@@ -49,7 +49,5 @@
     <array>
         <string>iOSPlistConfiguredAssembly</string>
     </array>
-    <key>TyphoonConfigFilename</key>
-    <string>plist_config.properties</string>
 </dict>
 </plist>
