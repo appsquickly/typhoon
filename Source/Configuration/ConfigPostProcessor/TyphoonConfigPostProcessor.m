@@ -127,7 +127,9 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 
 - (void)useResource:(id<TyphoonResource>)resource withExtension:(NSString *)typeExtension
 {
-    LogInfo(@"Using resource: %@", resource);
+    LogInfo("======================================================================================================");
+    LogInfo(@"CONFIG: %@", resource.description);
+    LogInfo("======================================================================================================");
     id<TyphoonConfiguration> config = _configs[typeExtension];
     [config appendResource:resource];
 }
