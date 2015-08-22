@@ -17,8 +17,8 @@
 #import "TyphoonAssemblyAdviser.h"
 #import "TyphoonAssembly.h"
 #import "TyphoonSelector.h"
-#import "TyphoonTestMethodSwizzler.h"
-#import "TyphoonSwizzler.h"
+#import "TyphoonMethodSwizzlerTestUtils.h"
+#import "TyphoonSwizzlerDefaultImpl.h"
 
 @interface EmptyTestAssembly : TyphoonAssembly
 @end
@@ -77,7 +77,7 @@
     assembly = [[TestAssemblyWithMethod alloc] init];
     adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
-    TyphoonTestMethodSwizzler *swizzler = [[TyphoonTestMethodSwizzler alloc] init];
+    TyphoonMethodSwizzlerTestUtils *swizzler = [[TyphoonMethodSwizzlerTestUtils alloc] init];
     adviser.swizzler = swizzler;
 
     [adviser adviseAssembly];
@@ -91,7 +91,7 @@
     assembly = [[TestAssemblyWithMethod alloc] init];
     adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
-    XCTAssertTrue([[adviser swizzler] isKindOfClass:[TyphoonSwizzler class]]);
+    XCTAssertTrue([[adviser swizzler] isKindOfClass:[TyphoonSwizzlerDefaultImpl class]]);
 }
 
 @end

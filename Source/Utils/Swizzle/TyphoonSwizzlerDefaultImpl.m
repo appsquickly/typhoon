@@ -9,17 +9,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonSwizzler.h"
+#import "TyphoonSwizzlerDefaultImpl.h"
 #import <objc/runtime.h>
 
-@implementation TyphoonSwizzler
+@implementation TyphoonSwizzlerDefaultImpl
 
-+ (instancetype)defaultSwizzler
++ (instancetype)instance
 {
-    static TyphoonSwizzler *defaultSwizzler;
+    static TyphoonSwizzlerDefaultImpl *defaultSwizzler;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        defaultSwizzler = [TyphoonSwizzler new];
+        defaultSwizzler = [TyphoonSwizzlerDefaultImpl new];
     });
     return defaultSwizzler;
 }

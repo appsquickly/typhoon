@@ -90,8 +90,6 @@ typedef enum
 
 + (TyphoonTypeDescriptor *)descriptorWithTypeCode:(NSString *)typeCode;
 
-+ (TyphoonTypeDescriptor *)descriptorWithClassOrProtocol:(id)classOrProtocol;
-
 - (id)initWithTypeCode:(NSString *)typeCode;
 
 /**

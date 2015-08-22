@@ -12,8 +12,8 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonMethodSwizzler.h"
 
-@interface TyphoonSwizzler : NSObject <TyphoonMethodSwizzler>
+@interface TyphoonSwizzlerDefaultImpl : NSObject <TyphoonMethodSwizzler>
 
-+ (instancetype)defaultSwizzler;
++ (instancetype)instance;
 
 @end

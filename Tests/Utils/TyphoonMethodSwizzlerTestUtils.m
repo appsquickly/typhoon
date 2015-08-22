@@ -11,11 +11,11 @@
 
 
 
-#import "TyphoonTestMethodSwizzler.h"
+#import "TyphoonMethodSwizzlerTestUtils.h"
 #import "TyphoonSelector.h"
 
 
-@implementation TyphoonTestMethodSwizzler
+@implementation TyphoonMethodSwizzlerTestUtils
 {
     NSMutableDictionary *_exchangedPairsForClass;
 }
@@ -36,7 +36,7 @@
     TyphoonSelector *wrappedMethodA = [TyphoonSelector selectorWithName:methodA];
     TyphoonSelector *wrappedMethodB = [TyphoonSelector selectorWithName:methodB];
 
-    NSMutableArray *exchangedPairs = [_exchangedPairsForClass objectForKey:NSStringFromClass(pClass)];
+    NSMutableArray *exchangedPairs = _exchangedPairsForClass[NSStringFromClass(pClass)];
     [exchangedPairs enumerateObjectsUsingBlock:^(NSArray *exchanged, NSUInteger idx, BOOL *stop) {
         matched = ([exchanged containsObject:wrappedMethodA] && [exchanged containsObject:wrappedMethodB]);
         if (matched) {
@@ -53,10 +53,10 @@
 
 - (BOOL)swizzleMethod:(SEL)selA withMethod:(SEL)selB onClass:(Class)pClass error:(NSError **)error
 {
-    NSMutableArray *exchangedPairs = [_exchangedPairsForClass objectForKey:NSStringFromClass(pClass)];
+    NSMutableArray *exchangedPairs = _exchangedPairsForClass[NSStringFromClass(pClass)];
     if (!exchangedPairs) {
         exchangedPairs = [[NSMutableArray alloc] init];
-        [_exchangedPairsForClass setObject:exchangedPairs forKey:NSStringFromClass(pClass)];
+        _exchangedPairsForClass[NSStringFromClass(pClass)] = exchangedPairs;
     }
 
     NSArray *exchanged = @[

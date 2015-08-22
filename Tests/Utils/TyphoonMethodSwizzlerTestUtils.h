@@ -14,7 +14,7 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonMethodSwizzler.h"
 
-@interface TyphoonTestMethodSwizzler : NSObject <TyphoonMethodSwizzler>
+@interface TyphoonMethodSwizzlerTestUtils : NSObject <TyphoonMethodSwizzler>
 
 - (void)assertExchangedImplementationsFor:(NSString *)methodA with:(NSString *)methodB onClass:(Class)pClass;
 

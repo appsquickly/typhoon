@@ -69,13 +69,7 @@
     return [[self alloc] initWithTypeCode:typeCode];
 }
 
-+ (TyphoonTypeDescriptor *)descriptorWithClassOrProtocol:(id)classOrProtocol
-{
-    if (IsClass(classOrProtocol)) {
-        return [self descriptorWithTypeCode:[NSString stringWithFormat:@"T@%@", NSStringFromClass(classOrProtocol)]];
-    }
-    return [self descriptorWithTypeCode:[NSString stringWithFormat:@"T@<%@>", NSStringFromProtocol(classOrProtocol)]];
-}
+
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
@@ -230,7 +224,7 @@
 
 - (TyphoonPrimitiveType)typeFromTypeCode:(NSString *)typeCode
 {
-    return (TyphoonPrimitiveType)[[[NSDictionary dictionaryWithTyphoonPrimitiveTypesAsStrings] objectForKey:typeCode]
+    return (TyphoonPrimitiveType)[[NSDictionary dictionaryWithTyphoonPrimitiveTypesAsStrings][typeCode]
         intValue];
 }
 

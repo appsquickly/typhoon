@@ -17,7 +17,7 @@
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "OCLogTemplate.h"
 #import "TyphoonSelector.h"
-#import "TyphoonSwizzler.h"
+#import "TyphoonSwizzlerDefaultImpl.h"
 #import "TyphoonIntrospectionUtils.h"
 
 static NSMutableSet *advisedAssemblyClasses;
@@ -41,7 +41,7 @@ static NSMutableSet *advisedAssemblyClasses;
     self = [super init];
     if (self) {
         _assembly = assembly;
-        _swizzler = [TyphoonSwizzler defaultSwizzler];
+        _swizzler = [TyphoonSwizzlerDefaultImpl instance];
     }
     return self;
 }
