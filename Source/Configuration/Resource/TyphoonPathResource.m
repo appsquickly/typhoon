@@ -56,7 +56,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"TyphoonResource: %@", _path.lastPathComponent];
+    return _path.lastPathComponent;
 }
 
 
