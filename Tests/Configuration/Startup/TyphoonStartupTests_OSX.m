@@ -9,14 +9,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import <XCTest/XCTest.h>
+#import "TyphoonOSXAppDelegate.h"
 
-#import "TyphoonDefinition.h"
-#import "ExtendedSimpleAssembly.h"
+@interface TyphoonStartupTests_iOS : XCTestCase
 
+@end
 
-@implementation ExtendedSimpleAssembly
+@implementation TyphoonStartupTests_iOS
+
+- (void)test_loads_configuration
 {
-
+    id delegate = [NSApplication sharedApplication].delegate;
+    XCTAssertEqual(12, [delegate damselsRescued]);
 }
 
 @end

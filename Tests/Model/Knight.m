@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-//  JASPER BLUES
-//  Copyright 2012 Jasper Blues
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Typhoon Framework Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -20,7 +20,10 @@
     id <Quest> _favoriteQuest;
 }
 
-/* ============================================================ Initializers ============================================================ */
+//-------------------------------------------------------------------------------------------
+#pragma mark - Initialization & Destruction
+//-------------------------------------------------------------------------------------------
+
 - (id)initWithQuest:(id <Quest>)quest
 {
     return [self initWithQuest:quest damselsRescued:0];
@@ -79,7 +82,10 @@
     return _favoriteQuest;
 }
 
-/* ========================================================== Interface Methods ========================================================= */
+//-------------------------------------------------------------------------------------------
+#pragma mark - Interface Methods
+//-------------------------------------------------------------------------------------------
+
 
 - (void)setQuest:(id<Quest>)quest andDamselsRescued:(NSUInteger)damselsRescued
 {

@@ -11,8 +11,13 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class iOSPlistConfiguredAssembly;
+
 @interface TyphoonOSXAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (strong, nonatomic) iOSPlistConfiguredAssembly *assembly;
+
+- (NSUInteger)damselsRescued;
 
 @end

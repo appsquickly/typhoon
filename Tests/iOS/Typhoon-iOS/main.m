@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "TyphoonOSXAppDelegate.h"
+#import "TyphooniOSAppDelegate.h"
 
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([TyphoonOSXAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }

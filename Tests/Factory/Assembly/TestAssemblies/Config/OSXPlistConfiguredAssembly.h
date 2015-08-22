@@ -10,13 +10,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import "TyphoonDefinition.h"
-#import "ExtendedSimpleAssembly.h"
+#import <Foundation/Foundation.h>
+#import "TyphoonAssembly.h"
 
 
-@implementation ExtendedSimpleAssembly
-{
-
-}
-
+@interface OSXPlistConfiguredAssembly : TyphoonAssembly
 @end

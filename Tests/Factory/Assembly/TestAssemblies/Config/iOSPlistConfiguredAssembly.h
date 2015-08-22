@@ -10,13 +10,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import "TyphoonDefinition.h"
-#import "ExtendedSimpleAssembly.h"
+#import <Foundation/Foundation.h>
+#import "TyphoonAssembly.h"
+
+@class Knight;
 
 
-@implementation ExtendedSimpleAssembly
-{
+@interface iOSPlistConfiguredAssembly : TyphoonAssembly
 
-}
+- (Knight *)configuredCavalryMan;
 
 @end

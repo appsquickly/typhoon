@@ -10,13 +10,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import "TyphoonOSXAppDelegate.h"
+#import "TyphooniOSAppDelegate.h"
 #import "TyphoonInjections.h"
 #import "TyphoonConfigPostProcessor.h"
 #import "TyphoonIntrospectionUtils.h"
+#import "iOSPlistConfiguredAssembly.h"
+#import "Knight.h"
+#import "OCLogTemplate.h"
 
 
-@implementation TyphoonOSXAppDelegate
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -25,7 +28,8 @@
     TyphoonInjectionWithReference(nil);
     TyphoonConfig(@"");
 
-    // Override point for customization after application launch.
+    LogDebug(@"$$$$$$$$$$ got assembly %@", _assembly);
+
     return YES;
 }
 
@@ -33,6 +37,13 @@
 {
     extern void __gcov_flush(void);
     __gcov_flush();
+}
+
+- (NSUInteger)damselsRescued
+{
+    Knight *knight = [_assembly configuredCavalryMan];
+    LogDebug(@"Got knight: %@", knight);
+    return knight.damselsRescued;
 }
 
 
