@@ -17,7 +17,7 @@ resourceDir=Resources
 
 
 
-requiredCoverage=85
+requiredCoverage=84
 
 #Fail immediately if a task fails
 set -e
@@ -25,7 +25,7 @@ set -o pipefail
 
 
 #Clean
-rm -fr ~/Library/Developer/Xcode/DerivedData/
+rm -fr ~/Library/Developer/Xcode/DerivedData/*
 rm -fr ./build
 
 #Init submodules
@@ -54,7 +54,8 @@ echo '--------------------------------------------------------------------------
 platform=OSX
 mkdir -p ${reportsDir}/${platform}
 
-rm -fr ~/Library/Developer/Xcode/DerivedData
+rm -fr ~/Library/Developer/Xcode/DerivedData/*
+
 xcodebuild -project Typhoon.xcodeproj/ -scheme 'Typhoon-OSXTests' test | xcpretty -c --report junit
 mv ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
 

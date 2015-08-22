@@ -10,13 +10,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import "TyphoonAppDelegate.h"
+#import "TyphoonOSXAppDelegate.h"
 #import "TyphoonInjections.h"
 #import "TyphoonConfigPostProcessor.h"
 #import "TyphoonIntrospectionUtils.h"
 
 
-@implementation TyphoonAppDelegate
+@implementation TyphoonOSXAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

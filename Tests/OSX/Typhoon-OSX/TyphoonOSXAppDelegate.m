@@ -1,14 +1,14 @@
 //
-//  TyphoonAppDelegate.m
+//  TyphoonOSXAppDelegate.m
 //  Typhoon-osx
 //
 //  Created by Jasper Blues on 5/29/14.
 //  Copyright (c) 2014 typhoonframework.org. All rights reserved.
 //
 
-#import "TyphoonAppDelegate.h"
+#import "TyphoonOSXAppDelegate.h"
 
-@implementation TyphoonAppDelegate
+@implementation TyphoonOSXAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
