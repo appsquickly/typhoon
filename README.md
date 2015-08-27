@@ -34,15 +34,6 @@ let viewControler = assembly.recommendationController() as! RecommendationContro
 
 *Have a Typhoon example app that you'd like to share? Great! Get in touch with us :)*
 
-# Video Tutorials
-
-* <a href="https://www.youtube.com/playlist?list=PLhU81D62nv-Yd5jCW9LRjI4_AfI5NwJhe">Here's a good set</a> by Jeff Roberts. They're part of a whole new series where Jeff talks about his League of Legends sample application. 
-* <a href="https://www.youtube.com/watch?v=LO59z3fjc9k">Замечательный разговор на Typhoon</a> хорошими людьми в <a href="http://rambler-co.ru/">Rambler and Co</a>. 
-
-*Created a Typhoon video tutorial that you'd like to share? Awesome, post it up! Let's share and discuss.*
-
----------------------------------------
-
 # Installing 
 <a href="https://github.com/appsquickly/Typhoon/wiki/Change-Log">![Cocoapods Version](https://cocoapod-badges.herokuapp.com/v/Typhoon/badge.png)</a> [![Pod Platform](http://img.shields.io/cocoapods/p/Typhoon.svg?style=flat)](http://typhoonframework.org/docs/latest/api/modules.html) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Dependency Status](https://www.versioneye.com/objective-c/typhoon/1.1.1/badge.svg?style=flat)](https://www.versioneye.com/objective-c/typhoon) [![Pod License](http://img.shields.io/cocoapods/l/Typhoon.svg?style=flat)](https://github.com/appsquickly/Typhoon/blob/master/LICENSE)
 
