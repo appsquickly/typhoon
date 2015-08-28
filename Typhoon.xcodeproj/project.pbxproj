@@ -344,6 +344,8 @@
 		6B43ED5C1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B43ED5B1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift */; };
 		6B43ED5D1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B43ED5B1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift */; };
 		6B43ED5F1A8FAA350071EFC7 /* SwiftTyphoonAssemblyActivatorTests..swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B43ED5E1A8FAA350071EFC7 /* SwiftTyphoonAssemblyActivatorTests..swift */; };
+		8946F2DD1B8E3F44005C4954 /* TyphoonViewHelpersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8946F2DC1B8E3F44005C4954 /* TyphoonViewHelpersTests.m */; };
+		8946F2E01B8E403E005C4954 /* TyphoonViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8946F2DF1B8E403E005C4954 /* TyphoonViewHelpers.m */; };
 		8994D47E1B55BA6600662766 /* ClassForNoSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8994D47D1B55BA6600662766 /* ClassForNoSubclass.m */; };
 		8994D47F1B55BA6600662766 /* ClassForNoSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8994D47D1B55BA6600662766 /* ClassForNoSubclass.m */; };
 		905214711A3770AE006A935B /* OCLogTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F911936F63A0083714E /* OCLogTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1042,6 +1044,9 @@
 		6B43ED5A1A8FA8870071EFC7 /* Typhoon-OSXTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Typhoon-OSXTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		6B43ED5B1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMiddleAgesAssembly.swift; sourceTree = "<group>"; };
 		6B43ED5E1A8FAA350071EFC7 /* SwiftTyphoonAssemblyActivatorTests..swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftTyphoonAssemblyActivatorTests..swift; sourceTree = "<group>"; };
+		8946F2DC1B8E3F44005C4954 /* TyphoonViewHelpersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonViewHelpersTests.m; sourceTree = "<group>"; };
+		8946F2DE1B8E403E005C4954 /* TyphoonViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonViewHelpers.h; sourceTree = "<group>"; };
+		8946F2DF1B8E403E005C4954 /* TyphoonViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonViewHelpers.m; sourceTree = "<group>"; };
 		8994D47C1B55BA6600662766 /* ClassForNoSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassForNoSubclass.h; sourceTree = "<group>"; };
 		8994D47D1B55BA6600662766 /* ClassForNoSubclass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassForNoSubclass.m; sourceTree = "<group>"; };
 		90ABC3EA1A36B09E008D8162 /* Typhoon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Typhoon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1611,6 +1616,8 @@
 				2DBA129FBD11BA18D318694D /* TyphoonInitialStoryboardResolver.h */,
 				2DBA1D75E5069184DF749775 /* TyphoonLoadedView.m */,
 				2DBA1F7A42D15F175F25EF57 /* TyphoonLoadedView.h */,
+				8946F2DE1B8E403E005C4954 /* TyphoonViewHelpers.h */,
+				8946F2DF1B8E403E005C4954 /* TyphoonViewHelpers.m */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -2281,6 +2288,7 @@
 				BA7986920A495672BF6DC00B /* StoryboardFirstViewController.h */,
 				BA7983C7D0A3DFE423250300 /* StoryboardControllerDependency.m */,
 				BA798969F71AF5247112BEE9 /* StoryboardControllerDependency.h */,
+				8946F2DC1B8E3F44005C4954 /* TyphoonViewHelpersTests.m */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -2827,6 +2835,7 @@
 				BA7985E9B7C3C34D17FC40FD /* TyphoonNSNumberTypeConverter.m in Sources */,
 				BA798EF5AD7AC635BDD727C0 /* NSNullTypeConverter.m in Sources */,
 				2DBA14431D350F4F142A0E3B /* TyphoonFactoryDefinition.m in Sources */,
+				8946F2E01B8E403E005C4954 /* TyphoonViewHelpers.m in Sources */,
 				2DBA13903A06BF4A2A8C60CD /* TyphoonOptionMatcher.m in Sources */,
 				9F7522351B80A16A00AE6219 /* TyphoonAssemblyBuilder.m in Sources */,
 				2DBA154ABCBD400589C9B396 /* TyphoonLoadedView.m in Sources */,
@@ -2851,6 +2860,7 @@
 			files = (
 				6B0770F31936FEA80083714E /* AssemblyWithDefinitionConfiguration.m in Sources */,
 				6B0770F41936FEA80083714E /* DefinitionConfigurationTest.m in Sources */,
+				8946F2DD1B8E3F44005C4954 /* TyphoonViewHelpersTests.m in Sources */,
 				6B0770F71936FEA80083714E /* TyphoonBundleResourceTests.m in Sources */,
 				6B0770F81936FEA80083714E /* TyphoonComponentFactoryPostProcessorStubImpl.m in Sources */,
 				6B0770F91936FEA80083714E /* TyphoonInstancePostProcessorMock.m in Sources */,
