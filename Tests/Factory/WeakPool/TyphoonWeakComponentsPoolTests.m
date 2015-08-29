@@ -35,7 +35,7 @@
         XCTAssertEqual([pool objectForKey:@"objectA"], objectA);
         XCTAssertEqual([pool objectForKey:@"objectB"], objectB);
     }
-
+    
     objectA = nil;
 
     XCTAssertNil([pool objectForKey:@"objectA"]);
@@ -45,5 +45,23 @@
     XCTAssertNil([pool objectForKey:@"objectB"]);
 }
 
+- (void)test_pool_return_all_values
+{
+    NSObject *objectA = [NSObject new];
+    NSObject *objectB = [NSObject new];
+    
+    TyphoonWeakComponentsPool *pool = [TyphoonWeakComponentsPool new];
+    
+    [pool setObject:objectA forKey:@"objectA"];
+    [pool setObject:objectB forKey:@"objectB"];
+    
+    NSArray *poolValues = [pool allValues];
+    XCTAssertEqual(poolValues.count, 2);
+    
+    [pool removeAllObjects];
+    
+    poolValues = [pool allValues];
+    XCTAssertEqual(poolValues.count, 0);
+}
 
 @end
