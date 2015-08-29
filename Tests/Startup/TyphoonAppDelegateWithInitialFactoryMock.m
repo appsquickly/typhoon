@@ -1,10 +1,13 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  TyphoonAppDelegateWithInitialFactoryMock.m
-//  Typhoon
+//  TYPHOON FRAMEWORK
+//  Copyright 2013, Typhoon Framework Contributors
+//  All Rights Reserved.
 //
-//  Created by Egor Tolstoy on 30/08/15.
-//  Copyright © 2015 typhoonframework.org. All rights reserved.
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
 //
+////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonAppDelegateWithInitialFactoryMock.h"
 #import "MiddleAgesAssembly.h"
