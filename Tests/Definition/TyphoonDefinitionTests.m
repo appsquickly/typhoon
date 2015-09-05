@@ -80,6 +80,33 @@
     @catch (NSException *e) {
         XCTAssertEqualObjects([e description], @"Subclass of NSProxy or NSObject is required.");
     }
+    
+    @try {
+        TyphoonDefinition *definition = [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+            [definition useInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
+                
+            }];
+        }];
+        NSLog(@"Def: %@", definition);
+        XCTFail(@"Should've thrown exception");
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects([e description], @"Method 'initWithQuest:' has 1 parameters, but 0 was injected. Inject with 'nil' if necessary");
+    }
+    
+    @try {
+        TyphoonDefinition *definition = [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+            [definition useInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
+                [initializer injectParameterWith:[NSObject new]];
+                [initializer injectParameterWith:[NSObject new]];
+            }];
+        }];
+        NSLog(@"Def: %@", definition);
+        XCTFail(@"Should've thrown exception");
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects([e description], @"Method 'initWithQuest:' has 1 parameters, but 2 was injected. ");
+    }
 }
 
 //-------------------------------------------------------------------------------------------

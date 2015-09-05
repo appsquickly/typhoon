@@ -269,6 +269,19 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
 }
 
+- (void)test_does_not_inject_for_unknown_selector
+{
+    @try {
+        Knight *knight = [[Knight alloc] init];
+        [_componentFactory inject:knight withSelector:@selector(knight)];
+
+        XCTFail(@"Should've thrown exception");
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects([e description], @"Can't find definition for specified selector knight");
+    }
+}
+
 - (void)test_injectProperties_subclassing
 {
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {

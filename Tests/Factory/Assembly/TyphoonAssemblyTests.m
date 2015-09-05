@@ -126,6 +126,19 @@
     }
 }
 
+- (void)test_before_activation_raises_exception_when_invoking_subscription
+{
+    @try {
+        MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+        id result = assembly[@"test"];
+        NSLog(@"%@", result);
+        XCTFail(@"Should have thrown exception");
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects(@"objectForKeyedSubscript: requires the assembly to be activated.", [e description]);
+    }
+}
+
 - (void)test_after_activation_TyphoonComponentFactory_methods_are_available
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
