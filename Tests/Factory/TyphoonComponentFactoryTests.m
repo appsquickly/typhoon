@@ -146,10 +146,24 @@ static NSString *const DEFAULT_QUEST = @"quest";
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[CampaignQuest class] key:@"quest"]];
 
     Knight *knight = [_componentFactory componentForKey:@"knight"];
-
     XCTAssertNotNil(knight);
     XCTAssertTrue([knight isKindOfClass:[Knight class]]);
     XCTAssertNotNil(knight.quest);
+}
+
+- (void)test_factory_object_subscripting
+{
+    [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition setKey:@"knight"];
+    }]];
+    
+    Knight *knight_var1 = _componentFactory[@"knight"];
+    XCTAssertNotNil(knight_var1);
+    XCTAssertTrue([knight_var1 isKindOfClass:[Knight class]]);
+    
+    Knight *knight_var2 = _componentFactory[[Knight class]];
+    XCTAssertNotNil(knight_var2);
+    XCTAssertTrue([knight_var2 isKindOfClass:[Knight class]]);
 }
 
 //-------------------------------------------------------------------------------------------
