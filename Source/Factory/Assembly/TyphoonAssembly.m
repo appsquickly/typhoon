@@ -201,7 +201,13 @@ static NSMutableSet *reservedSelectorsAsStrings;
     [_factory attachPostProcessor:postProcessor];
 }
 
-
+- (id)objectForKeyedSubscript:(id)key {
+    if (!_factory) {
+        [NSException raise:NSInternalInconsistencyException
+                    format:@"objectForKeyedSubscript: requires the assembly to be activated."];
+    }
+    return [_factory objectForKeyedSubscript:key];
+}
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Interface Methods
