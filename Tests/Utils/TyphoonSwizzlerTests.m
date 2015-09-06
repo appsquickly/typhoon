@@ -43,6 +43,16 @@
         @"Can't swizzle methods since selector foo and bar not implemented in TyphoonSwizzlerTests");
 }
 
+- (void)test_swizzles_when_origin_method_not_exist
+{
+    NSError *error = nil;
+    
+    [_swizzler swizzleMethod:@selector(foo) withMethod:@selector(methodC) onClass:[self class] error:&error];
+    
+    XCTAssertNil(error);
+    XCTAssertThrows([self methodC]);
+}
+
 - (NSString *)methodA
 {
     return @"MethodA";
@@ -51,6 +61,11 @@
 - (NSString *)methodB
 {
     return @"MethodB";
+}
+
+- (NSString *)methodC
+{
+    return @"MethodC";
 }
 
 @end

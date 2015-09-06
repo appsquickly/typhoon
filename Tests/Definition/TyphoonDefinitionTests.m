@@ -23,6 +23,7 @@
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonDefinition+Tests.h"
 #import "ClassForNoSubclass.h"
+#import "CampaignQuest.h"
 
 @interface TyphoonDefinitionTests : XCTestCase
 @end
@@ -78,6 +79,33 @@
     }
     @catch (NSException *e) {
         XCTAssertEqualObjects([e description], @"Subclass of NSProxy or NSObject is required.");
+    }
+    
+    @try {
+        TyphoonDefinition *definition = [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+            [definition useInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
+                
+            }];
+        }];
+        NSLog(@"Def: %@", definition);
+        XCTFail(@"Should've thrown exception");
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects([e description], @"Method 'initWithQuest:' has 1 parameters, but 0 was injected. Inject with 'nil' if necessary");
+    }
+    
+    @try {
+        TyphoonDefinition *definition = [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+            [definition useInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
+                [initializer injectParameterWith:[NSObject new]];
+                [initializer injectParameterWith:[NSObject new]];
+            }];
+        }];
+        NSLog(@"Def: %@", definition);
+        XCTFail(@"Should've thrown exception");
+    }
+    @catch (NSException *e) {
+        XCTAssertEqualObjects([e description], @"Method 'initWithQuest:' has 1 parameters, but 2 was injected. ");
     }
 }
 
@@ -179,6 +207,14 @@
     XCTAssertEqual([child scope], (TyphoonScopePrototype));
 }
 
+- (void)test_throws_exception_if_parent_is_not_definition
+{
+    id parent = [NSObject new];
+    
+    TyphoonDefinition *child = [TyphoonDefinition withClass:[Knight class]];
+    
+    XCTAssertThrows([child setParent:parent]);
+}
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Copying
@@ -213,6 +249,62 @@
     [copy enumerateInjectionsOfKind:[TyphoonInjectionByCollection class] options:TyphoonInjectionsEnumerationOptionProperties usingBlock:^(id collection, id *injectionToReplace, BOOL *stop) {
         XCTAssertEqual([collection count], 2);
     }];
+}
+
+//-------------------------------------------------------------------------------------------
+#pragma mark - Injection Hooks
+//-------------------------------------------------------------------------------------------
+
+- (void)test_before_injections
+{
+    TyphoonDefinition *definition = [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition performBeforeInjections:@selector(description)];
+    }];
+    
+    XCTAssertEqual(@selector(description), [definition beforeInjections].selector);
+}
+
+- (void)test_before_injections_with_parameters_hook
+{
+    NSUInteger const damselsRescued = 100;
+    CampaignQuest *quest = [CampaignQuest new];
+    
+    TyphoonDefinition *definition = [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition performBeforeInjections:@selector(setQuest:andDamselsRescued:) parameters:^(TyphoonMethod *params) {
+            [params injectParameterWith:quest];
+            [params injectParameterWith:@(damselsRescued)];
+        }];
+    }];
+    
+    XCTAssertEqual(@selector(setQuest:andDamselsRescued:), [definition beforeInjections].selector);
+    XCTAssertEqualObjects(quest, [[definition beforeInjections].injectedParameters[0] objectInstance]);
+    XCTAssertEqualObjects(@(damselsRescued), [[definition beforeInjections].injectedParameters[1] objectInstance]);
+}
+
+- (void)test_after_injections
+{
+    TyphoonDefinition *definition = [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition performAfterInjections:@selector(description)];
+    }];
+    
+    XCTAssertEqual(@selector(description), [definition afterInjections].selector);
+}
+
+- (void)test_after_injections_with_parameters_hook
+{
+    NSUInteger const damselsRescued = 100;
+    CampaignQuest *quest = [CampaignQuest new];
+    
+    TyphoonDefinition *definition = [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition performAfterInjections:@selector(setQuest:andDamselsRescued:) parameters:^(TyphoonMethod *params) {
+            [params injectParameterWith:quest];
+            [params injectParameterWith:@(damselsRescued)];
+        }];
+    }];
+    
+    XCTAssertEqual(@selector(setQuest:andDamselsRescued:), [definition afterInjections].selector);
+    XCTAssertEqualObjects(quest, [[definition afterInjections].injectedParameters[0] objectInstance]);
+    XCTAssertEqualObjects(@(damselsRescued), [[definition afterInjections].injectedParameters[1] objectInstance]);
 }
 
 @end

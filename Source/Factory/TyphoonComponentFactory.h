@@ -62,6 +62,11 @@
 - (id)componentForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args;
 
 /**
+ * You can query the factory by using object subscription syntax: _factory[@"myObject"] or even _factory[[MyObject class]]
+ */
+- (id)objectForKeyedSubscript:(id)key;
+
+/**
 * Injects the properties and methods of an object
 */
 - (void)inject:(id)instance;
