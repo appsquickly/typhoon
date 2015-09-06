@@ -17,7 +17,7 @@ resourceDir=Resources
 
 
 
-requiredCoverage=86
+requiredCoverage=87
 
 #Fail immediately if a task fails
 set -e
