@@ -13,11 +13,11 @@
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
 
-@interface TyphoonNullDefinitionTests : XCTestCase
+@interface TyphoonInjectionDefinitionTests : XCTestCase
 
 @end
 
-@implementation TyphoonNullDefinitionTests
+@implementation TyphoonInjectionDefinitionTests
 {
     MiddleAgesAssembly *_assembly;
 }
@@ -32,6 +32,21 @@
     XCTAssertNil([_assembly nullQuest]);
 }
 
+- (void)testNumber
+{
+    XCTAssertEqualObjects([_assembly simpleNumber], @1);
+}
+
+- (void)testBlock
+{
+    XCTAssertEqualObjects([_assembly blockDefinition](), @"321");
+}
+
+- (void)testString
+{
+    XCTAssertEqualObjects([_assembly simpleString], @"123");
+}
+
 - (void)testNullDependency
 {
     Knight *knight = [_assembly knightWithNullQuest];
@@ -39,6 +54,25 @@
     XCTAssertNotNil(knight);
     XCTAssert([knight isKindOfClass:[Knight class]]);
     XCTAssertNil(knight.quest);
+}
+
+- (void)testReferenceDefinition
+{
+    XCTAssertEqualObjects([_assembly referenceToSimpleString], @"123");
+}
+
+- (void)testCollectionOfSimpleStrings
+{
+    XCTAssertEqualObjects([_assembly simpleArray], (@[@"123", @"123", @"123"]));
+}
+
+- (void)testRuntimeArgument
+{
+    XCTAssertEqualObjects([_assembly simpleRuntimeArgument:@1], @1);
+    XCTAssertEqualObjects([_assembly simpleRuntimeArgument:@"123"], @"123");
+
+    NSNumber*(^block)() = ^{ return @1; };
+    XCTAssertEqualObjects(((id(^)())[_assembly simpleRuntimeArgument:block])(), @1);
 }
 
 @end

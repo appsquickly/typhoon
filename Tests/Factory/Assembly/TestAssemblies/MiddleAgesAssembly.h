@@ -86,4 +86,16 @@
 
 - (id)knightWithNullQuest;
 
+- (NSNumber *)simpleNumber;
+
+- (NSString *)simpleString;
+
+- (NSString *(^)())blockDefinition;
+
+- (NSString *)referenceToSimpleString;
+
+- (NSArray *)simpleArray;
+
+- (id)simpleRuntimeArgument:(id)argument;
+
 @end

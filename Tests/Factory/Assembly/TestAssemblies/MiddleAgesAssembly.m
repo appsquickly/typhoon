@@ -348,7 +348,7 @@
 
 - (id)nullQuest
 {
-    return [TyphoonDefinition withNil];
+    return [TyphoonDefinition with:nil];
 }
 
 - (id)knightWithNullQuest
@@ -357,5 +357,38 @@
         [definition injectProperty:@selector(quest) with:[self nullQuest]];
     }];
 }
+
+- (NSNumber *)simpleNumber
+{
+    return [TyphoonDefinition with:@(1)];
+}
+
+- (NSString *)simpleString
+{
+    return [TyphoonDefinition with:@"123"];
+}
+
+- (NSString *(^)())blockDefinition
+{
+    return [TyphoonDefinition with:^NSString *(){
+        return @"321";
+    }];
+}
+
+- (NSString *)referenceToSimpleString
+{
+    return [TyphoonDefinition with:[self simpleString]];
+}
+
+- (NSArray *)simpleArray
+{
+    return [TyphoonDefinition with:@[[self simpleString], [self referenceToSimpleString], @"123"]];
+}
+
+- (id)simpleRuntimeArgument:(id)argument
+{
+    return [TyphoonDefinition with:argument];
+}
+
 
 @end
