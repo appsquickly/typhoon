@@ -346,4 +346,16 @@
     }];
 }
 
+- (id)nullQuest
+{
+    return [TyphoonDefinition withNil];
+}
+
+- (id)knightWithNullQuest
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(quest) with:[self nullQuest]];
+    }];
+}
+
 @end

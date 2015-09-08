@@ -269,6 +269,10 @@ definition.factory = [self sqliteManager];
  */
 - (id)keyPath:(NSString *)keyPath;
 
+#pragma mark Making nil injection
+
++ (id)withNil;
+
 @end
 
 

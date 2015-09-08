@@ -27,6 +27,7 @@
 #import "TyphoonInjections.h"
 #import "TyphoonFactoryDefinition.h"
 #import "TyphoonRuntimeArguments.h"
+#import "TyphoonNullDefinition.h"
 
 static NSString *TyphoonScopeToString(TyphoonScope scope)
 {
@@ -229,6 +230,11 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
 {
     return [[TyphoonInjectionByFactoryReference alloc]
         initWithReference:self.key args:self.currentRuntimeArguments keyPath:keyPath];
+}
+
++ (id)withNil
+{
+    return [[TyphoonNullDefinition alloc] initWithClass:[NSObject class] key:nil];
 }
 
 //-------------------------------------------------------------------------------------------

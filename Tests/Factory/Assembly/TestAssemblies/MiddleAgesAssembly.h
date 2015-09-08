@@ -82,4 +82,8 @@
 
 - (id)knightWithQuest:(id <Quest>)quest;
 
+- (id)nullQuest;
+
+- (id)knightWithNullQuest;
+
 @end
