@@ -36,12 +36,14 @@ git submodule update
 ditto ${resourceDir}/build-failed.png ${reportsDir}/build-status/build-status.png
 
 
-#Compile, run tests and produce coverage report for iOS Simulator
+#Build framework
 platform=iOS_Simulator
-mkdir -p ${reportsDir}/${platform}
-
-
 rm -fr ~/Library/Developer/Xcode/DerivedData
+
+xcodebuild -project Typhoon.xcodeproj/ -scheme 'Typhoon' clean build | xcpretty -c
+
+#Run tests and produce coverage report for iOS Simulator
+mkdir -p ${reportsDir}/${platform}
 xcodebuild test -project Typhoon.xcodeproj -scheme 'Typhoon-iOSTests' -configuration Debug \
 -destination 'platform=iOS Simulator,name=iPhone 5s,OS=8.4' | xcpretty -c --report junit
 mv ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
