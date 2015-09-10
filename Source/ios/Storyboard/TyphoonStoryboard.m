@@ -12,6 +12,7 @@
 
 #import "TyphoonStoryboard.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
+#import "OCLogTemplate.h"
 
 #import <objc/runtime.h>
 
@@ -109,7 +110,7 @@ static const char *kTyphoonKey;
 + (TyphoonStoryboard *)storyboardWithName:(NSString *)name bundle:(NSBundle *)storyboardBundleOrNil
 {
     LogInfo(@"*** Warning *** The TyphoonStoryboard with name %@ doesn't have a TyphoonComponentFactory inside. Is this "
-            "intentional? You won't be able to inject anything in its ViewControllers", name));
+            "intentional? You won't be able to inject anything in its ViewControllers", name);
     return [self storyboardWithName:name factory:nil bundle:storyboardBundleOrNil];
 }
 
