@@ -14,9 +14,7 @@
 #import "Knight.h"
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "Quest.h"
-#import "TyphoonFirstLoopAssembly.h"
-#import "TyphoonSecondLoopAssembly.h"
-#import "TyphoonThirdLoopAssembly.h"
+#import "TyphoonLoopedCollaboratingAssemblies.h"
 #import "MediocreQuest.h"
 
 @interface TyphoonAssemblyTests : XCTestCase
@@ -46,14 +44,30 @@
     XCTAssertTrue([quest conformsToProtocol:@protocol(Quest)]);
 }
 
-- (void)test_circular_dependent_libraries_activate_without_infinite_loop
+- (void)test_activation_with_looped_collaborators_1_2_3_2
 {
+    /**
+     *  The name of this test contains the collaborators tree structure: 1 -> 2 -> 3 -> 2
+     *  We need a couple of similar tests to be sure in the absence of edge cases.
+     */
     TyphoonFirstLoopAssembly *firstAssembly = [TyphoonFirstLoopAssembly assembly];
     [firstAssembly activateWithCollaboratingAssemblies:@[
                                                         [TyphoonSecondLoopAssembly new],
                                                         [TyphoonThirdLoopAssembly new]
                                                         ]];
     id<Quest> quest = [firstAssembly testQuest];
+    
+    XCTAssertNotNil(quest);
+    XCTAssertTrue([quest isKindOfClass:[MediocreQuest class]]);
+}
+
+- (void)test_activation_with_looped_collaborators_1_2_1
+{
+    TyphoonFourthLoopAssembly *fourthAssembly = [TyphoonFourthLoopAssembly assembly];
+    [fourthAssembly activateWithCollaboratingAssemblies:@[
+                                                         [TyphoonFifthLoopAssembly new]
+                                                         ]];
+    id<Quest> quest = [fourthAssembly testQuest];
     
     XCTAssertNotNil(quest);
     XCTAssertTrue([quest isKindOfClass:[MediocreQuest class]]);
