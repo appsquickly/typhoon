@@ -97,7 +97,7 @@
     BOOL isAlreadyCollected = [classes containsObject:assemblyClass];
     BOOL isSubclassOfTyphoonAssembly = [assemblyClass isSubclassOfClass:[TyphoonAssembly class]];
     
-    return isTyphoonAssembly && isAlreadyCollected && isSubclassOfTyphoonAssembly;
+    return !isTyphoonAssembly && !isAlreadyCollected && isSubclassOfTyphoonAssembly;
 }
 
 @end
