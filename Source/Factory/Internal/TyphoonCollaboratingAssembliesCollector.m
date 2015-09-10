@@ -22,7 +22,12 @@
 
 @implementation TyphoonCollaboratingAssembliesCollector
 
-- (instancetype)initWithAssemblyClass:(Class)assemblyClass {
+//-------------------------------------------------------------------------------------------
+#pragma mark - Initialization
+//-------------------------------------------------------------------------------------------
+
+- (instancetype)initWithAssemblyClass:(Class)assemblyClass
+{
     self = [super init];
     if (self) {
         _assemblyClass = assemblyClass;
@@ -30,50 +35,63 @@
     return self;
 }
 
-- (NSSet *)collaboratingAssembliesForClass:(Class)assemblyClass withCollaboratorClasses:(NSSet *)collaboratorClasses {
-    NSMutableSet *result = [NSMutableSet set];
-    NSSet *properties = [TyphoonIntrospectionUtils propertiesForClass:assemblyClass
-                                                      upToParentClass:[TyphoonAssembly class]];
-    for (NSString *propertyName in properties) {
-        Class collaboratingAssemblyClass = [TyphoonIntrospectionUtils typeForPropertyNamed:propertyName inClass:assemblyClass].typeBeingDescribed;
-        BOOL shouldCollect = [self shouldCollectCollaboratingAssembliesForClass:collaboratingAssemblyClass backTo:collaboratorClasses];
-        if (shouldCollect) {
-            [result addObject:collaboratingAssemblyClass];
-        }
-    }
-    
-    return [result copy];
-}
+//-------------------------------------------------------------------------------------------
+#pragma mark - Public Methods
+//-------------------------------------------------------------------------------------------
 
-- (NSSet *)collectCollaboratingAssembliesBackToClasses:(NSSet *)classes {
-    NSMutableSet *queue = [NSMutableSet setWithObject:self.assemblyClass];
+- (NSSet *)collectCollaboratingAssemblies
+{
+    NSMutableSet *collaboratorsQueue = [NSMutableSet setWithObject:self.assemblyClass];
     NSMutableSet *connectedCollaboratorClasses = [NSMutableSet set];
     
-    while (queue.count > 0) {
-        Class currentClass = [[queue allObjects] firstObject];
+    while (collaboratorsQueue.count > 0) {
+        Class currentClass = [[collaboratorsQueue allObjects] firstObject];
         NSSet *collaboratorsToCollect = [self collaboratingAssembliesForClass:currentClass withCollaboratorClasses:[connectedCollaboratorClasses copy]];
         
-        for (Class collaboratorClass in [collaboratorsToCollect allObjects]) {
+        for (Class collaboratorClass in collaboratorsToCollect) {
             if (![connectedCollaboratorClasses containsObject:collaboratorClass]) {
                 [connectedCollaboratorClasses addObject:collaboratorClass];
-                [queue addObject:collaboratorClass];
+                [collaboratorsQueue addObject:collaboratorClass];
             }
             
         }
-        [queue removeObject:currentClass];
+        [collaboratorsQueue removeObject:currentClass];
     }
     
     NSMutableSet *collaborators = [NSMutableSet set];
-    for (Class collaboratorClass in [connectedCollaboratorClasses allObjects]) {
-        TyphoonAssembly *assemblyInstance = (TyphoonAssembly *)[collaboratorClass assembly];
+    for (Class collaboratorClass in connectedCollaboratorClasses) {
+        TyphoonAssembly *assemblyInstance = [collaboratorClass assembly];
         [collaborators addObject:assemblyInstance];
     }
     
     return [collaborators copy];
 }
 
-- (BOOL)shouldCollectCollaboratingAssembliesForClass:(Class)assemblyClass
-                                              backTo:(NSSet *)classes
+//-------------------------------------------------------------------------------------------
+#pragma mark - Private Methods
+//-------------------------------------------------------------------------------------------
+
+- (NSSet *)collaboratingAssembliesForClass:(Class)inspectedClass withCollaboratorClasses:(NSSet *)collaboratorClasses
+{
+    NSMutableSet *collaboratorsForInspectedClass = [NSMutableSet set];
+    
+    NSSet *properties = [TyphoonIntrospectionUtils propertiesForClass:inspectedClass
+                                                      upToParentClass:[TyphoonAssembly class]];
+    
+    for (NSString *propertyName in properties) {
+        Class propertyClass = [TyphoonIntrospectionUtils typeForPropertyNamed:propertyName inClass:inspectedClass].typeBeingDescribed;
+        
+        BOOL shouldCollect = [self shouldCollectClass:propertyClass
+                                               backTo:collaboratorClasses];
+        if (shouldCollect) {
+            [collaboratorsForInspectedClass addObject:propertyClass];
+        }
+    }
+    
+    return [collaboratorsForInspectedClass copy];
+}
+
+- (BOOL)shouldCollectClass:(Class)assemblyClass backTo:(NSSet *)classes
 {
     BOOL isTyphoonAssembly = assemblyClass == [TyphoonAssembly class];
     BOOL isAlreadyCollected = [classes containsObject:assemblyClass];

@@ -15,6 +15,6 @@
 
 - (instancetype)initWithAssemblyClass:(Class)assemblyClass;
 
-- (NSSet *)collectCollaboratingAssembliesBackToClasses:(NSSet *)classes;
+- (NSSet *)collectCollaboratingAssemblies;
 
 @end
