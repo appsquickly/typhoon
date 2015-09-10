@@ -14,6 +14,8 @@
 #import "Knight.h"
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "Quest.h"
+#import "TyphoonLoopedCollaboratingAssemblies.h"
+#import "MediocreQuest.h"
 
 @interface TyphoonAssemblyTests : XCTestCase
 @end
@@ -40,6 +42,35 @@
     id<Quest> quest = assembly.collaboratingAssembly.quests.environmentDependentQuest;
     NSLog(@"Got quest: %@", quest);
     XCTAssertTrue([quest conformsToProtocol:@protocol(Quest)]);
+}
+
+- (void)test_activation_with_looped_collaborators_1_2_3_2
+{
+    /**
+     *  The name of this test contains the collaborators tree structure: 1 -> 2 -> 3 -> 2
+     *  We need a couple of similar tests to be sure in the absence of edge cases.
+     */
+    TyphoonFirstLoopAssembly *firstAssembly = [TyphoonFirstLoopAssembly assembly];
+    [firstAssembly activateWithCollaboratingAssemblies:@[
+                                                        [TyphoonSecondLoopAssembly new],
+                                                        [TyphoonThirdLoopAssembly new]
+                                                        ]];
+    id<Quest> quest = [firstAssembly testQuest];
+    
+    XCTAssertNotNil(quest);
+    XCTAssertTrue([quest isKindOfClass:[MediocreQuest class]]);
+}
+
+- (void)test_activation_with_looped_collaborators_1_2_1
+{
+    TyphoonFourthLoopAssembly *fourthAssembly = [TyphoonFourthLoopAssembly assembly];
+    [fourthAssembly activateWithCollaboratingAssemblies:@[
+                                                         [TyphoonFifthLoopAssembly new]
+                                                         ]];
+    id<Quest> quest = [fourthAssembly testQuest];
+    
+    XCTAssertNotNil(quest);
+    XCTAssertTrue([quest isKindOfClass:[MediocreQuest class]]);
 }
 
 - (void)test_before_activation_raises_exception_when_invoking_TyphoonComponentFactory_componentForType

@@ -24,6 +24,7 @@
 #import "NSObject+TyphoonIntrospectionUtils.h"
 #import "OCLogTemplate.h"
 #import "TyphoonBlockComponentFactory.h"
+#import "TyphoonCollaboratingAssembliesCollector.h"
 
 static NSMutableSet *reservedSelectorsAsStrings;
 
@@ -35,6 +36,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 @property(readonly) TyphoonAssemblyAdviser *adviser;
 @property(readonly) TyphoonComponentFactory *factory;
+@property(readonly) TyphoonCollaboratingAssembliesCollector *collector;
 
 @end
 
@@ -120,6 +122,8 @@ static NSMutableSet *reservedSelectorsAsStrings;
     if (self) {
         _definitionBuilder = [[TyphoonAssemblyDefinitionBuilder alloc] initWithAssembly:self];
         _adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:self];
+        _collector = [[TyphoonCollaboratingAssembliesCollector alloc] initWithAssemblyClass:[self class]];
+        
         [self proxyCollaboratingAssembliesPriorToActivation];
     }
     return self;
@@ -221,7 +225,8 @@ static NSMutableSet *reservedSelectorsAsStrings;
     NSMutableSet *reconciledAssemblies = [NSMutableSet setWithArray:[@[self] arrayByAddingObjectsFromArray:assemblies]];
     NSMutableSet *assembliesToRemove = [[NSMutableSet alloc] init];
 
-    for (TyphoonAssembly *collaboratingAssembly in [self collectCollaboratingAssembliesBackTo:[self class]]) {
+    NSSet *collaboratingAssemblies = [self.collector collectCollaboratingAssemblies];
+    for (TyphoonAssembly *collaboratingAssembly in collaboratingAssemblies) {
 
         for (TyphoonAssembly *overrideCandidate in assemblies) {
             if ([collaboratingAssembly class] != [overrideCandidate class] &&
@@ -308,26 +313,6 @@ static NSMutableSet *reservedSelectorsAsStrings;
     }
     return nil;
 }
-
-- (NSSet *)collectCollaboratingAssembliesBackTo:(Class)clazz {
-    NSMutableSet *collaboratingAssemblies = [[NSMutableSet alloc] init];
-    NSSet *properties = [self typhoonPropertiesUpToParentClass:[TyphoonAssembly class]];
-
-    for (NSString *propertyName in properties) {
-
-        Class assemblyClass = [self typhoonTypeForPropertyNamed:propertyName].typeBeingDescribed;
-        if (assemblyClass != [TyphoonAssembly class] && assemblyClass != clazz &&
-                [assemblyClass isSubclassOfClass:[TyphoonAssembly class]]) {
-
-            TyphoonAssembly *assemblyInstance = (TyphoonAssembly *) [assemblyClass assembly];
-            [collaboratingAssemblies addObject:assemblyInstance];
-            NSArray *instanceCollaborators = [[assemblyInstance collectCollaboratingAssembliesBackTo:clazz] allObjects];
-            [collaboratingAssemblies addObjectsFromArray:instanceCollaborators];
-        }
-    }
-    return collaboratingAssemblies;
-}
-
 
 - (NSArray *)definitions {
     return [_definitionBuilder builtDefinitions];
