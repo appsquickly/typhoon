@@ -14,6 +14,10 @@
 #import "Knight.h"
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "Quest.h"
+#import "TyphoonFirstLoopAssembly.h"
+#import "TyphoonSecondLoopAssembly.h"
+#import "TyphoonThirdLoopAssembly.h"
+#import "MediocreQuest.h"
 
 @interface TyphoonAssemblyTests : XCTestCase
 @end
@@ -40,6 +44,19 @@
     id<Quest> quest = assembly.collaboratingAssembly.quests.environmentDependentQuest;
     NSLog(@"Got quest: %@", quest);
     XCTAssertTrue([quest conformsToProtocol:@protocol(Quest)]);
+}
+
+- (void)test_circular_dependent_libraries_activate_without_infinite_loop
+{
+    TyphoonFirstLoopAssembly *firstAssembly = [TyphoonFirstLoopAssembly assembly];
+    [firstAssembly activateWithCollaboratingAssemblies:@[
+                                                        [TyphoonSecondLoopAssembly new],
+                                                        [TyphoonThirdLoopAssembly new]
+                                                        ]];
+    id<Quest> quest = [firstAssembly testQuest];
+    
+    XCTAssertNotNil(quest);
+    XCTAssertTrue([quest isKindOfClass:[MediocreQuest class]]);
 }
 
 - (void)test_before_activation_raises_exception_when_invoking_TyphoonComponentFactory_componentForType
