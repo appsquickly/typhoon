@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2de309f-1955-4699-9ca0-732867daedc0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/team/team-1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/team/team-2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/team/team-3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/team/team-4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/team/team-5.jpg" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/team/team-1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/team/team-2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/team/team-3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/team/team-4.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/team/team-5.png" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/portfolio/1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/portfolio/2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/portfolio/3.jpg" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/portfolio/1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/portfolio/2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/portfolio/3.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Typhoon.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,9 +32,11 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6458333">
-              <caret line="872" column="62" selection-start-line="872" selection-start-column="62" selection-end-line="872" selection-end-column="62" />
-              <folding />
+            <state vertical-scroll-proportion="0.39458573">
+              <caret line="709" column="63" selection-start-line="709" selection-start-column="63" selection-end-line="709" selection-end-column="63" />
+              <folding>
+                <element signature="n#style#0;n#h3#0;n#div#2;n#div#0;n#div#1;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -222,7 +219,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#2;n#div#0;n#div#1;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -230,7 +229,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#2;n#div#0;n#div#1;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -253,7 +254,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#2;n#div#0;n#div#1;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -261,7 +264,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#2;n#div#0;n#div#1;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -269,7 +274,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#2;n#div#0;n#div#1;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -277,7 +284,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#2;n#div#0;n#div#1;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -285,7 +294,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#2;n#div#0;n#div#1;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -293,7 +304,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#2;n#div#0;n#div#1;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -301,7 +314,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#2;n#div#0;n#div#1;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -322,9 +337,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6458333">
-          <caret line="872" column="62" selection-start-line="872" selection-start-column="62" selection-end-line="872" selection-end-column="62" />
-          <folding />
+        <state vertical-scroll-proportion="0.39458573">
+          <caret line="709" column="63" selection-start-line="709" selection-start-column="63" selection-end-line="709" selection-end-column="63" />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#2;n#div#0;n#div#1;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
