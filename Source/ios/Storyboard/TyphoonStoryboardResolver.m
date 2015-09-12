@@ -9,54 +9,45 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonInitialStoryboardResolver.h"
+#import "TyphoonStoryboardResolver.h"
 #import "TyphoonStartup.h"
 #import "TyphoonStoryboard.h"
+#import "TyphoonStoryboardProvider.h"
+
 #import <objc/runtime.h>
 
-@implementation TyphoonInitialStoryboardResolver
+@implementation TyphoonStoryboardResolver
 
 + (void)load
 {
-    NSString *initialStoryboardName = [self initialStoryboardName];
-
-    if (initialStoryboardName.length > 0) {
-        [self swizzleUIStoryboardWithName:initialStoryboardName];
+    NSBundle *bundle = [NSBundle mainBundle];
+    TyphoonStoryboardProvider *provider = [TyphoonStoryboardProvider new];
+    NSArray *resolvingStoryboardNames = [provider collectStoryboardsFromBundle:bundle];
+    
+    if (resolvingStoryboardNames.count > 0) {
+        [self swizzleUIStoryboardWithNames:resolvingStoryboardNames];
     }
 }
 
-+ (void)swizzleUIStoryboardWithName:(NSString *)storyboardName
++ (void)swizzleUIStoryboardWithNames:(NSArray *)storyboardNames
 {
     SEL sel = @selector(storyboardWithName:bundle:);
     Method method = class_getClassMethod([UIStoryboard class], sel);
-
+    
     id(*originalImp)(id, SEL, id, id) = (id (*)(id, SEL, id, id)) method_getImplementation(method);
-
+    
     IMP adjustedImp = imp_implementationWithBlock(^id(id instance, NSString *name, NSBundle *bundle) {
         [TyphoonStartup requireInitialFactory];
         id initialFactory = [TyphoonStartup initialFactory];
         [TyphoonStartup releaseInitialFactory];
-        if ([instance class] == [UIStoryboard class] && initialFactory && [name isEqualToString:storyboardName]) {
+        if ([instance class] == [UIStoryboard class] && initialFactory && [storyboardNames containsObject:name]) {
             return [TyphoonStoryboard storyboardWithName:name factory:initialFactory bundle:bundle];
         } else {
             return originalImp(instance, sel, name, bundle);
         }
     });
-
+    
     method_setImplementation(method, adjustedImp);
-}
-
-+ (NSString *)initialStoryboardName
-{
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-
-    NSString *defaultStoryboardName = infoDictionary[@"UIMainStoryboardFile"];
-
-    if (!defaultStoryboardName) {
-        defaultStoryboardName = infoDictionary[@"NSExtension"][@"NSExtensionMainStoryboard"];
-    }
-
-    return defaultStoryboardName;
 }
 
 @end
