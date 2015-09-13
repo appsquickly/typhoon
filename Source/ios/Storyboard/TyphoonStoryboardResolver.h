@@ -13,5 +13,5 @@
 #import <Foundation/Foundation.h>
 
 
-@interface TyphoonInitialStoryboardResolver : NSObject
+@interface TyphoonStoryboardResolver : NSObject
 @end
