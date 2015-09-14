@@ -17,6 +17,7 @@
 #import "TyphoonInjectionByObjectInstance.h"
 #import "TyphoonInjectionByObjectFromString.h"
 #import "TyphoonDefinition+Tests.h"
+#import "OCLogTemplate.h"
 
 @interface TyphoonDefinitionInstanceBuilderTests : XCTestCase
 
@@ -100,7 +101,7 @@
     }];
 
     XCTAssertEqual([parent numberOfPropertyInjectionsByObjectFromString], (NSUInteger)1);
-    NSLog(@"child: %@",child.injectedProperties);
+    LogInfo(@"child: %@",child.injectedProperties);
     XCTAssertEqual([child numberOfPropertyInjectionsByObjectFromString], (NSUInteger)2);
 }
 

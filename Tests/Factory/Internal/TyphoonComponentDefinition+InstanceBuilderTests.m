@@ -17,6 +17,7 @@
 #import "PrimitiveMan.h"
 #import "TyphoonInjections.h"
 #import "TyphoonUtils.h"
+#import "OCLogTemplate.h"
 
 #define NSValueFromPrimitive(primitive) ([NSValue value:&primitive withObjCType:@encode(typeof(primitive))])
 
@@ -315,7 +316,7 @@
         [_componentFactory registerDefinition:knightDefinition];
 
         Knight *knight = [_componentFactory componentForKey:@"knight"];
-        NSLog(@"Knight: %@", knight); //Suppress unused warning.
+        LogInfo(@"Knight: %@", knight); //Suppress unused warning.
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {

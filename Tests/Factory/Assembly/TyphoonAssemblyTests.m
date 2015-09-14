@@ -16,6 +16,7 @@
 #import "Quest.h"
 #import "TyphoonLoopedCollaboratingAssemblies.h"
 #import "MediocreQuest.h"
+#import "OCLogTemplate.h"
 
 @interface TyphoonAssemblyTests : XCTestCase
 @end
@@ -30,7 +31,7 @@
     [assembly activate];
 
     XCTAssertTrue([[assembly knight] isKindOfClass:[Knight class]]);
-    NSLog(@"Knight: %@", [assembly knight]);
+    LogInfo(@"Knight: %@", [assembly knight]);
 }
 
 - (void)test_activated_assembly_returns_activated_collaborators
@@ -40,7 +41,7 @@
     ]];
 
     id<Quest> quest = assembly.collaboratingAssembly.quests.environmentDependentQuest;
-    NSLog(@"Got quest: %@", quest);
+    LogInfo(@"Got quest: %@", quest);
     XCTAssertTrue([quest conformsToProtocol:@protocol(Quest)]);
 }
 
@@ -162,7 +163,7 @@
     @try {
         MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
         id result = assembly[@"test"];
-        NSLog(@"%@", result);
+        LogInfo(@"%@", result);
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {

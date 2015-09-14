@@ -14,6 +14,7 @@
 #import "Knight.h"
 #import "TyphoonAssemblyActivator.h"
 #import "CollaboratingMiddleAgesAssembly.h"
+#import "OCLogTemplate.h"
 
 @interface TyphoonAssemblyActivatorTests : XCTestCase
 @end
@@ -31,7 +32,7 @@
     ]] activate];
 
     XCTAssertTrue([[assembly knight] isKindOfClass:[Knight class]]);
-    NSLog(@"Knight: %@", [assembly knight]);
+    LogInfo(@"Knight: %@", [assembly knight]);
 }
 
 - (void)test_activated_assembly_returns_activated_collaborators
@@ -45,7 +46,7 @@
     ]] activate];
 
     id<Quest> quest = collaborator.quests.environmentDependentQuest;
-    NSLog(@"Got quest: %@", quest);
+    LogInfo(@"Got quest: %@", quest);
     XCTAssertTrue([quest conformsToProtocol:@protocol(Quest)]);
 }
 

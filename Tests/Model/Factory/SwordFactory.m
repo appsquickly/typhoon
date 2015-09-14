@@ -14,6 +14,7 @@
 
 #import "SwordFactory.h"
 #import "Sword.h"
+#import "OCLogTemplate.h"
 
 @implementation SwordFactory
 
@@ -23,7 +24,7 @@
         return [[Sword alloc] initWithSpecification:@"A bright blue sword with orange pom-poms at the hilt."];
     }
     else {
-        NSLog(@"Out of stock. Returning regular sword");
+        LogInfo(@"Out of stock. Returning regular sword");
         return [[Sword alloc] initWithSpecification:@"Yer typical run-o-the-mill rusty sword."];
     }
 }

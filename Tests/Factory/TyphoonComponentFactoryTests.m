@@ -23,6 +23,7 @@
 #import "ClassWithConstructor.h"
 #import "TyphoonInstancePostProcessorMock.h"
 #import "TyphoonInjections.h"
+#import "OCLogTemplate.h"
 #import "MediocreQuest.h"
 
 static NSString *const DEFAULT_QUEST = @"quest";
@@ -74,7 +75,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
     @try {
         Knight *knight = [_componentFactory componentForKey:@"knight"];
-        NSLog(@"Knight: %@", knight);
+        LogInfo(@"Knight: %@", knight);
         XCTFail(@"Should have thrown exception");
     }
     @catch (NSException *e) {

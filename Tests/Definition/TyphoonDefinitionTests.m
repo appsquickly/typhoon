@@ -56,7 +56,7 @@
 {
     @try {
         TyphoonDefinition *definition = [[TyphoonDefinition alloc] init];
-        NSLog(@"Def: %@", definition);
+        LogInfo(@"Def: %@", definition);
         XCTFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
@@ -65,7 +65,7 @@
 
     @try {
         TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:nil key:nil];
-        NSLog(@"Def: %@", definition);
+        LogInfo(@"Def: %@", definition);
         XCTFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
@@ -74,7 +74,7 @@
     
     @try {
         TyphoonDefinition *definition = [[TyphoonDefinition alloc] initWithClass:[ClassForNoSubclass class] key:nil];
-        NSLog(@"Def: %@", definition);
+        LogInfo(@"Def: %@", definition);
         XCTFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
@@ -87,7 +87,7 @@
                 
             }];
         }];
-        NSLog(@"Def: %@", definition);
+        LogInfo(@"Def: %@", definition);
         XCTFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {
@@ -101,7 +101,7 @@
                 [initializer injectParameterWith:[NSObject new]];
             }];
         }];
-        NSLog(@"Def: %@", definition);
+        LogInfo(@"Def: %@", definition);
         XCTFail(@"Should've thrown exception");
     }
     @catch (NSException *e) {

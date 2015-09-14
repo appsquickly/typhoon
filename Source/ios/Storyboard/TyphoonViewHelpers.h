@@ -1,10 +1,13 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  TyphoonLoadedViewHelpers.h
-//  Typhoon
+//  TYPHOON FRAMEWORK
+//  Copyright 2015, Typhoon Framework Contributors
+//  All Rights Reserved.
 //
-//  Created by Herman Saprykin on 26/08/15.
-//  Copyright © 2015 typhoonframework.org. All rights reserved.
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
 //
+////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
 

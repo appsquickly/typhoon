@@ -195,7 +195,7 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
 {
     @synchronized (self) {
         if (defaultFactory) {
-            NSLog(@"*** Warning *** overriding current default factory.");
+            LogInfo(@"*** Warning *** overriding current default factory.");
         }
         defaultFactory = self;
     }
