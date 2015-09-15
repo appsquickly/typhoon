@@ -65,29 +65,6 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     }];
 }
 
-//-------------------------------------------------------------------------------------------
-#pragma mark - Initialization & Destruction
-
-- (id)initWithClass:(Class)clazz key:(NSString *)key
-{
-    self = [super init];
-    if (self) {
-        _type = clazz;
-        _injectedProperties = [[NSMutableSet alloc] init];
-        _injectedMethods = [[NSMutableOrderedSet alloc] init];
-        _key = [key copy];
-        _scope = TyphoonScopeObjectGraph;
-        self.autoInjectionVisibility = TyphoonAutoInjectVisibilityDefault;
-        [self validateRequiredParametersAreSet];
-    }
-    return self;
-}
-
-- (id)init
-{
-    return [self initWithClass:nil key:nil];
-}
-
 - (BOOL)isCandidateForInjectedClass:(Class)clazz includeSubclasses:(BOOL)includeSubclasses
 {
     BOOL result = NO;
@@ -118,21 +95,6 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 - (BOOL)processed
 {
     return _processed;
-}
-
-//-------------------------------------------------------------------------------------------
-#pragma mark - Private Methods
-
-- (void)validateRequiredParametersAreSet
-{
-    if (_type == nil) {
-        [NSException raise:NSInvalidArgumentException format:@"Property 'clazz' is required."];
-    }
-
-    BOOL hasAppropriateSuper = [_type isSubclassOfClass:[NSObject class]] || [_type isSubclassOfClass:[NSProxy class]];
-    if (!hasAppropriateSuper) {
-        [NSException raise:NSInvalidArgumentException format:@"Subclass of NSProxy or NSObject is required."];
-    }
 }
 
 @end

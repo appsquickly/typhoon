@@ -153,6 +153,8 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 @property(nonatomic) BOOL abstract;
 
 
+- (id)initWithClass:(Class)clazz key:(NSString *)key;
+
 //-------------------------------------------------------------------------------------------
 #pragma mark Factory methods
 //-------------------------------------------------------------------------------------------

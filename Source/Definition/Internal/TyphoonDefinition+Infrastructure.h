@@ -80,10 +80,6 @@ Factory method for a TyphoonConfigPostProcessor.
 */
 + (instancetype)configDefinitionWithPath:(NSString *)filePath;
 
-
-- (id)initWithClass:(Class)clazz key:(NSString *)key;
-
-
 - (BOOL)isCandidateForInjectedClass:(Class)clazz includeSubclasses:(BOOL)includeSubclasses;
 
 - (BOOL)isCandidateForInjectedProtocol:(Protocol *)aProtocol;

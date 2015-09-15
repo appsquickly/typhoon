@@ -63,7 +63,32 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
 @synthesize currentRuntimeArguments = _currentRuntimeArguments;
 
 //-------------------------------------------------------------------------------------------
-#pragma MARK: - Class Methods
+#pragma mark: - Initialization
+//-------------------------------------------------------------------------------------------
+
+- (id)initWithClass:(Class)clazz key:(NSString *)key
+{
+    self = [super init];
+    if (self) {
+        _type = clazz;
+        _injectedProperties = [[NSMutableSet alloc] init];
+        _injectedMethods = [[NSMutableOrderedSet alloc] init];
+        _key = [key copy];
+        _scope = TyphoonScopeObjectGraph;
+        self.autoInjectionVisibility = TyphoonAutoInjectVisibilityDefault;
+        [self validateRequiredParametersAreSet];
+    }
+    return self;
+}
+
+- (id)init
+{
+    return [self initWithClass:nil key:nil];
+}
+
+
+//-------------------------------------------------------------------------------------------
+#pragma mark: - Class Methods
 //-------------------------------------------------------------------------------------------
 
 - (id)factory
@@ -141,7 +166,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
 }
 
 //-------------------------------------------------------------------------------------------
-#pragma MARK: - Interface Methods
+#pragma mark: - Interface Methods
 //-------------------------------------------------------------------------------------------
 
 - (void)injectProperty:(SEL)selector
@@ -330,6 +355,22 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
     }
 }
 
+
+//-------------------------------------------------------------------------------------------
+#pragma mark - Private Methods
+//-------------------------------------------------------------------------------------------
+
+- (void)validateRequiredParametersAreSet
+{
+    if (_type == nil) {
+        [NSException raise:NSInvalidArgumentException format:@"Property 'clazz' is required."];
+    }
+    
+    BOOL hasAppropriateSuper = [_type isSubclassOfClass:[NSObject class]] || [_type isSubclassOfClass:[NSProxy class]];
+    if (!hasAppropriateSuper) {
+        [NSException raise:NSInvalidArgumentException format:@"Subclass of NSProxy or NSObject is required."];
+    }
+}
 
 @end
 

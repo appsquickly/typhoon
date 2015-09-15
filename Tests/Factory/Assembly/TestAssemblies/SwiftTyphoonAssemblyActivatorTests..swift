@@ -20,10 +20,7 @@ class SwiftTyphoonAssemblyActivatorTests : XCTestCase {
         let assembly = SwiftMiddleAgesAssembly().activate()
         
         let knight = assembly.basicKnight() as! Knight
-        println(knight.description())
         XCTAssertTrue(knight.isKindOfClass(Knight.self))
-        
-        
     }
     
     internal func test_injects_runtime_args() {
@@ -32,10 +29,8 @@ class SwiftTyphoonAssemblyActivatorTests : XCTestCase {
         
         let fort = Fort()
         let knight = assembly.wanderingKnight(fort) as! Knight
-        println(knight.description())
         XCTAssertTrue(knight.isKindOfClass(Knight.self))
         XCTAssertNotNil(knight.homeFort)
-        
     }
 
 
