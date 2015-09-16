@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26FE43E01BA97DF700D3880E /* Warnings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 26FE43DF1BA97DF700D3880E /* Warnings.xcconfig */; };
-		26FE43E11BA97DF700D3880E /* Warnings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 26FE43DF1BA97DF700D3880E /* Warnings.xcconfig */; };
-		26FE43E21BA97DF700D3880E /* Warnings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 26FE43DF1BA97DF700D3880E /* Warnings.xcconfig */; };
 		26FE43E31BA988D200D3880E /* TyphoonStoryboardProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF58CD1BA4162100678B2B /* TyphoonStoryboardProvider.m */; };
 		2DBA12F920B6F629203ABFB3 /* AutoInjectionKnight.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA18F5476952207F6E2B0D /* AutoInjectionKnight.m */; };
 		2DBA13020BD1DDD15231B84C /* TyphoonInjections.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1FC6F594C49C7D8261A6 /* TyphoonInjections.m */; };
@@ -2663,7 +2660,7 @@
 			attributes = {
 				CLASSPREFIX = Typhoon;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = typhoonframework.org;
 				TargetAttributes = {
 					6B076E7D1936F5850083714E = {
@@ -2726,7 +2723,6 @@
 				6B0770931936F8070083714E /* Images.xcassets in Resources */,
 				6B0770911936F7FF0083714E /* Main_iPhone.storyboard in Resources */,
 				6B0770921936F8020083714E /* Main_iPad.storyboard in Resources */,
-				26FE43E01BA97DF700D3880E /* Warnings.xcconfig in Resources */,
 				BA798A83DCF54BC475E5BAD6 /* development_Config.plist in Resources */,
 				BA798230EE2BC01117C252D1 /* config_typhoonframework.org.Typhoon-iOS.plist in Resources */,
 			);
@@ -2759,7 +2755,6 @@
 				6B07738A193780680083714E /* Credits.rtf in Resources */,
 				6B077458193784D80083714E /* SomeOtherProperties.properties in Resources */,
 				6B07745D193784DE0083714E /* SomeResource in Resources */,
-				26FE43E11BA97DF700D3880E /* Warnings.xcconfig in Resources */,
 				BA798AF94DF1808B61070EB4 /* development_Config.plist in Resources */,
 				BA798506FE044DB53762240D /* config_typhoonframework.org.Typhoon-OSX.plist in Resources */,
 			);
@@ -2783,7 +2778,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA7983B4794E83ACE8567E4F /* development_Config.plist in Resources */,
-				26FE43E21BA97DF700D3880E /* Warnings.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
