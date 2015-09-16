@@ -186,8 +186,11 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 - (BOOL)hasRuntimeArgumentInjections
 {
     __block BOOL hasInjections = NO;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
     [self enumerateInjectionsOfKind:[TyphoonInjectionByRuntimeArgument class] options:TyphoonInjectionsEnumerationOptionAll
                          usingBlock:^(id injection, id *injectionToReplace, BOOL *stop) {
+#pragma clang diagnostic pop
         hasInjections = YES;
         *stop = YES;
     }];

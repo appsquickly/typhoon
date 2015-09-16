@@ -84,18 +84,30 @@
             
             NSRange typeNameRange = NSMakeRange(2, typeCode.length - 2);
             
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
             NSRange quoteRange = [typeCode rangeOfString:@"\"" options:0 range:typeNameRange locale:nil];
+#pragma clang diagnostic pop
             if (quoteRange.length > 0) {
                 typeNameRange.location = quoteRange.location + 1;
                 typeNameRange.length = typeCode.length - typeNameRange.location;
                 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
                 NSRange range = [typeCode rangeOfString:@"\"" options:0 range:typeNameRange locale:nil];
+#pragma clang diagnostic pop
                 typeNameRange.length = range.location - typeNameRange.location;
             }
             
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
             NSRange protocolRange = [typeCode rangeOfString:@"<" options:0 range:typeNameRange locale:nil];
+#pragma clang diagnostic pop
             if (protocolRange.length > 0) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
                 NSRange range = [typeCode rangeOfString:@">" options:0 range:typeNameRange locale:nil];
+#pragma clang diagnostic pop
                 
                 typeNameRange.length = protocolRange.location - typeNameRange.location;
                 

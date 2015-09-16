@@ -59,7 +59,10 @@ typedef NS_OPTIONS(NSInteger, TyphoonAutoInjectVisibility)
     TyphoonAutoInjectVisibilityByProtocol = 1 << 1,
 };
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
 const static TyphoonAutoInjectVisibility TyphoonAutoInjectVisibilityDefault = TyphoonAutoInjectVisibilityByClass | TyphoonAutoInjectVisibilityByProtocol;
+#pragma clang diagnostic pop
 
 typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
