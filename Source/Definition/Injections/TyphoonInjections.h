@@ -30,7 +30,7 @@ id TyphoonInjectionWithReference(NSString *reference);
 
 id TyphoonInjectionWithConfigKey(NSString *configKey);
 
-id TyphoonInjectionWithCurrentRuntimeArguments();
+id TyphoonInjectionWithCurrentRuntimeArguments(void);
 
 id TyphoonMakeInjectionFromObjectIfNeeded(id objectOrInjection);
 
