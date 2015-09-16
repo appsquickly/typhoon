@@ -53,7 +53,7 @@
     [self postProcessFactory:factory withPostProcessor:_configurer];
 
     Knight *knight = [factory componentForType:[Knight class]];
-    XCTAssertEqual(knight.damselsRescued, 12);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
 
 }
 
@@ -67,7 +67,7 @@
     [self postProcessFactory:factory withPostProcessor:_configurer];
 
     Knight *knight = [factory componentForType:[Knight class]];
-    XCTAssertEqual(knight.damselsRescued, 12);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
 
 }
 

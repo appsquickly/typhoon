@@ -95,7 +95,7 @@
 - (void)test_converts_to_unsigned_int
 {
     unsigned int converted = [_typeConverter convertToUnsignedInt:@"123"];
-    XCTAssertEqual(converted, 123);
+    XCTAssertEqual(converted, (NSUInteger)123);
 
     [self verifyNumberFromTestNumberStringWithType:@encode(unsigned int)];
 }
@@ -111,7 +111,7 @@
 - (void)test_converts_to_unsigned_long
 {
     unsigned long converted = [_typeConverter convertToUnsignedLong:@"123"];
-    XCTAssertEqual(converted, 123);
+    XCTAssertEqual(converted, (NSUInteger)123);
 
     [self verifyNumberFromTestNumberStringWithType:@encode(unsigned long)];
 }
@@ -157,10 +157,10 @@
 - (void)test_converts_to_NSUInteger
 {
     NSUInteger converted = (NSUInteger)[_typeConverter convertToUnsignedLongLong:@"123"];
-    XCTAssertEqual(converted, 123);
+    XCTAssertEqual(converted, (NSUInteger)123);
 
     converted = (NSUInteger)[_typeConverter convertToUnsignedLongLong:@"zzz"];
-    XCTAssertEqual(converted, 0);
+    XCTAssertEqual(converted, (NSUInteger)0);
 }
 
 #pragma mark - valueForText:withType:

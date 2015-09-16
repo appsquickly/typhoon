@@ -123,7 +123,7 @@
     //by reference
     [definition injectProperty:@selector(dd) with:TyphoonInjectionWithReference(@"someReference")];
 
-    XCTAssertEqual([definition numberOfPropertyInjectionsByObject], 2);
+    XCTAssertEqual([definition numberOfPropertyInjectionsByObject], (NSUInteger)2);
 }
 
 - (void)test_enumerates_properties_injected_by_reference
@@ -137,7 +137,7 @@
     //by reference
     [definition injectProperty:@selector(dd) with:TyphoonInjectionWithReference(@"someReference")];
 
-    XCTAssertEqual([definition numberOfPropertyInjectionsByReference], (1));
+    XCTAssertEqual([definition numberOfPropertyInjectionsByReference], (NSUInteger)1);
 }
 
 
@@ -160,7 +160,7 @@
         [definition injectProperty:@selector(foobar) with:@"foobar!"];
     }];
 
-    XCTAssertEqual([[child injectedProperties] count], 3);
+    XCTAssertEqual([[child injectedProperties] count], (NSUInteger)3);
 }
 
 
@@ -174,7 +174,7 @@
         [definition injectProperty:@selector(damselsRescued) with:@(346)];
     }];
 
-    XCTAssertEqual([[child injectedProperties] count], (1));
+    XCTAssertEqual([[child injectedProperties] count], (NSUInteger)1);
 
     TyphoonInjectionByObjectInstance *property = [[child injectedProperties] anyObject];
     XCTAssertEqual([property.objectInstance integerValue], 346);
@@ -243,11 +243,11 @@
     XCTAssertEqual(copy.type, ([Knight class]));
     XCTAssertNotNil(copy.initializer);
     XCTAssertTrue(copy.initializer.selector == @selector(initWithQuest:damselsRescued:));
-    XCTAssertEqual([copy.initializer.injectedParameters count], 2);
-    XCTAssertEqual([copy.injectedProperties count], 2);
+    XCTAssertEqual([copy.initializer.injectedParameters count], (NSUInteger)2);
+    XCTAssertEqual([copy.injectedProperties count], (NSUInteger)2);
 
     [copy enumerateInjectionsOfKind:[TyphoonInjectionByCollection class] options:TyphoonInjectionsEnumerationOptionProperties usingBlock:^(id collection, id *injectionToReplace, BOOL *stop) {
-        XCTAssertEqual([collection count], 2);
+        XCTAssertEqual([collection count], (NSUInteger)2);
     }];
 }
 

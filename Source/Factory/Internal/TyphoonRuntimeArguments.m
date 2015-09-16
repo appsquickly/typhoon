@@ -33,7 +33,7 @@
 
     for (NSUInteger i = 2; i < count; i++) {
         void *pointer;
-        [invocation getArgument:&pointer atIndex:i];
+        [invocation getArgument:&pointer atIndex:(NSInteger)i];
         id argument = (__bridge id) pointer;
 
         id<TyphoonInjection>injection = TyphoonMakeInjectionFromObjectIfNeeded(argument);

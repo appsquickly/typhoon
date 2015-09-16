@@ -187,7 +187,7 @@ static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSigna
             const char *argumentType = [signature getArgumentTypeAtIndex:i + 2];
             AssertArgumentType(target, selector, argumentType, i + 2);
             id injection = InjectionForArgumentType(argumentType, i);
-            [invocation setArgument:&injection atIndex:i + 2];
+            [invocation setArgument:&injection atIndex:(NSInteger)(i + 2)];
         }
         [invocation invokeWithTarget:target];
         [invocation getReturnValue:&result];

@@ -75,7 +75,7 @@
 
 - (void)advisedSELWithArgumentsShouldHaveTwoArgumentsAndEndWithAnArgument
 {
-    XCTAssertEqual([self numberOfArgumentsInSelector:advisedSELWithArguments], 2);
+    XCTAssertEqual([self numberOfArgumentsInSelector:advisedSELWithArguments], (NSUInteger)2);
     XCTAssertEqual([self numberOfArgumentsInSelector:advisedSELWithArguments], (NSUInteger) 2, @"The wrapped SEL with two arguments should have two arguments.");
     XCTAssertTrue([self selectorEndsWithASemicolon:advisedSELWithArguments]);
 }

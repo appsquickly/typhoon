@@ -57,7 +57,7 @@
     adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:assembly];
 
     NSSet *selectors = [adviser definitionSelectors];
-    XCTAssertEqual([selectors count], 0);
+    XCTAssertEqual([selectors count], (NSUInteger)0);
 }
 
 - (void)testEnumeratesDefinitionSelectors_AssemblyWithMethod

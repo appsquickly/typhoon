@@ -77,7 +77,7 @@ NSString *currentFooString;
 
     [factory doInjectionEventsOn:(id) knight withDefinition:knightDefinition args:nil];
 
-    XCTAssertEqual(knight.damselsRescued, 30);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)30);
     XCTAssertEqual(knight.hasHorseWillTravel, YES);
 }
 
@@ -114,7 +114,7 @@ NSString *currentFooString;
     [factory doInjectionEventsOn:(id) knight withDefinition:knightDefinition args:nil];
 
     XCTAssertEqual(knight.foobar, @"Hello Knights");
-    XCTAssertEqual(knight.damselsRescued, 24);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)24);
     XCTAssertEqual(knight.hasHorseWillTravel, YES);
 }
 
@@ -156,7 +156,7 @@ NSString *currentFooString;
 
     Knight *knight = [factory componentForType:[Knight class]];
 
-    XCTAssertEqual(knight.damselsRescued, 32);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)32);
     XCTAssertEqualObjects(knight.foobar, @"HELLO");
 
 }
