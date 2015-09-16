@@ -42,11 +42,13 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
                 [method replaceInjection:injection with:injectionToReplace];
             }];
         }
+        
+        TyphoonDefinition *strongSelf = self;
         [self enumerateInjectionsOfKind:injectionClass onCollection:[_afterInjections injectedParameters] withBlock:block replaceBlock:^(id injection, id injectionToReplace) {
-            [_afterInjections replaceInjection:injection with:injectionToReplace];
+            [strongSelf->_afterInjections replaceInjection:injection with:injectionToReplace];
         }];
         [self enumerateInjectionsOfKind:injectionClass onCollection:[_beforeInjections injectedParameters] withBlock:block replaceBlock:^(id injection, id injectionToReplace) {
-            [_beforeInjections replaceInjection:injection with:injectionToReplace];
+            [strongSelf->_beforeInjections replaceInjection:injection with:injectionToReplace];
         }];
     }
 
@@ -184,8 +186,11 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 - (BOOL)hasRuntimeArgumentInjections
 {
     __block BOOL hasInjections = NO;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
     [self enumerateInjectionsOfKind:[TyphoonInjectionByRuntimeArgument class] options:TyphoonInjectionsEnumerationOptionAll
                          usingBlock:^(id injection, id *injectionToReplace, BOOL *stop) {
+#pragma clang diagnostic pop
         hasInjections = YES;
         *stop = YES;
     }];

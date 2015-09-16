@@ -20,7 +20,7 @@
 
     if (CStringEquals(argumentType, @encode(id))) {
         id selfRef = self;
-        [invocation setArgument:&selfRef atIndex:index];
+        [invocation setArgument:&selfRef atIndex:(NSInteger)index];
     }
     else { //argument is primitive
         NSUInteger argumentSize;
@@ -36,7 +36,7 @@
         void *buffer = alloca(argumentSize);
 
         [self getValue:buffer];
-        [invocation setArgument:buffer atIndex:index];
+        [invocation setArgument:buffer atIndex:(NSInteger)index];
     }
 }
 
@@ -54,59 +54,59 @@
 
     if (CStringEquals(argumentType, @encode(id))) {
         id converted = self;
-        [invocation setArgument:&converted atIndex:index];
+        [invocation setArgument:&converted atIndex:(NSInteger)index];
     }
     else if (CStringEquals(argumentType, @encode(int))) {
         int converted = [self intValue];
-        [invocation setArgument:&converted atIndex:index];
+        [invocation setArgument:&converted atIndex:(NSInteger)index];
     }
     else if (CStringEquals(argumentType, @encode(unsigned int))) {
         unsigned int converted = [self unsignedIntValue];
-        [invocation setArgument:&converted atIndex:index];
+        [invocation setArgument:&converted atIndex:(NSInteger)index];
     }
     else if (CStringEquals(argumentType, @encode(char))) {
         char converted = [self charValue];
-        [invocation setArgument:&converted atIndex:index];
+        [invocation setArgument:&converted atIndex:(NSInteger)index];
     }
     else if (CStringEquals(argumentType, @encode(unsigned char))) {
         unsigned char converted = [self unsignedCharValue];
-        [invocation setArgument:&converted atIndex:index];
+        [invocation setArgument:&converted atIndex:(NSInteger)index];
     }
     else if (CStringEquals(argumentType, @encode(bool))) {
         bool converted = [self boolValue];
-        [invocation setArgument:&converted atIndex:index];
+        [invocation setArgument:&converted atIndex:(NSInteger)index];
     }
     else if (CStringEquals(argumentType, @encode(short))) {
         short converted = [self shortValue];
-        [invocation setArgument:&converted atIndex:index];
+        [invocation setArgument:&converted atIndex:(NSInteger)index];
     }
     else if (CStringEquals(argumentType, @encode(unsigned short))) {
         unsigned short converted = [self unsignedShortValue];
-        [invocation setArgument:&converted atIndex:index];
+        [invocation setArgument:&converted atIndex:(NSInteger)index];
     }
     else if (CStringEquals(argumentType, @encode(float))) {
         float converted = [self floatValue];
-        [invocation setArgument:&converted atIndex:index];
+        [invocation setArgument:&converted atIndex:(NSInteger)index];
     }
     else if (CStringEquals(argumentType, @encode(double))) {
         double converted = [self doubleValue];
-        [invocation setArgument:&converted atIndex:index];
+        [invocation setArgument:&converted atIndex:(NSInteger)index];
     }
     else if (CStringEquals(argumentType, @encode(long))) {
         long converted = [self longValue];
-        [invocation setArgument:&converted atIndex:index];
+        [invocation setArgument:&converted atIndex:(NSInteger)index];
     }
     else if (CStringEquals(argumentType, @encode(unsigned long))) {
         unsigned long converted = [self unsignedLongValue];
-        [invocation setArgument:&converted atIndex:index];
+        [invocation setArgument:&converted atIndex:(NSInteger)index];
     }
     else if (CStringEquals(argumentType, @encode(long long))) {
         long long converted = [self longLongValue];
-        [invocation setArgument:&converted atIndex:index];
+        [invocation setArgument:&converted atIndex:(NSInteger)index];
     }
     else if (CStringEquals(argumentType, @encode(unsigned long long))) {
         unsigned long long converted = [self unsignedLongLongValue];
-        [invocation setArgument:&converted atIndex:index];
+        [invocation setArgument:&converted atIndex:(NSInteger)index];
     }
     else {
         [NSException raise:@"InvalidNumberType" format:@"Invalid Number: Type '%s' is not supported.", argumentType];

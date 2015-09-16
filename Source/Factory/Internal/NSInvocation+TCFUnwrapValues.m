@@ -21,7 +21,7 @@
     BOOL isValue = [object isKindOfClass:[NSValue class]];
     
     if (isValue) {
-        [(NSValue *) object typhoon_setAsArgumentForInvocation:self atIndex:idx];
+        [(NSValue *) object typhoon_setAsArgumentForInvocation:self atIndex:(NSUInteger)idx];
     } else {
         [self setArgument:&object atIndex:idx];
     }

@@ -183,7 +183,10 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 
 - (void)configureInjectionsInDefinition:(TyphoonDefinition *)definition
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
     [definition enumerateInjectionsOfKind:[TyphoonInjectionByConfig class] options:TyphoonInjectionsEnumerationOptionAll
+#pragma clang diagnostic pop
         usingBlock:^(TyphoonInjectionByConfig *injection, id *injectionToReplace, BOOL *stop) {
             id configuredInjection = [self injectionForConfigInjection:injection];
             if (configuredInjection) {
@@ -194,11 +197,14 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 
 - (void)configureInjectionsInRuntimeArgumentsInDefinition:(TyphoonDefinition *)definition
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
     [definition enumerateInjectionsOfKind:[TyphoonInjectionByReference class]
         options:TyphoonInjectionsEnumerationOptionAll
         usingBlock:^(TyphoonInjectionByReference *injection, id *injectionToReplace, BOOL *stop) {
+#pragma clang diagnostic pop
             [injection.referenceArguments enumerateArgumentsUsingBlock:^(TyphoonInjectionByConfig *argument,
-                NSUInteger index, BOOL *stop) {
+                NSUInteger index, BOOL *stopInjection) {
                 if ([argument isKindOfClass:[TyphoonInjectionByConfig class]]) {
                     id configuredInjection = [self injectionForConfigInjection:argument];
                     if (configuredInjection) {

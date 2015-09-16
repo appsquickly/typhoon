@@ -78,7 +78,7 @@ id TyphoonInjectionWithConfigKey(NSString *configKey)
     return [[TyphoonInjectionByConfig alloc] initWithConfigKey:configKey];
 }
 
-id TyphoonInjectionWithCurrentRuntimeArguments()
+id TyphoonInjectionWithCurrentRuntimeArguments(void)
 {
     return [TyphoonInjectionByCurrentRuntimeArguments new];
 }

@@ -10,7 +10,7 @@
 
 @implementation UnsatisfiableClassFDependsOnGInInitializer
 
-- (id)initWithG:(UnsatisfiableClassGDependsOnFInInitializer *)dependencyOnG;
+- (id)initWithG:(UnsatisfiableClassGDependsOnFInInitializer *)dependencyOnG
 {
     self = [super init];
     if (!self) {return nil;}

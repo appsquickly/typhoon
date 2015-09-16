@@ -38,7 +38,7 @@
 - (void)test_runtime_arguments
 {
     Knight *knight = [factory knightWithRuntimeDamselsRescued:@6 runtimeFoobar:@"foobar"];
-    XCTAssertEqual(knight.damselsRescued, 6);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)6);
     XCTAssertEqual(knight.foobar, @"foobar");
 }
 
@@ -49,7 +49,7 @@
     Knight *knight = [factory knightWithRuntimeDamselsRescued:@6 runtimeFoobar:(NSObject *) ^(NSString *blockArg){
         foobar = [NSString stringWithFormat:@"set from block %@",blockArg];
     }];
-    XCTAssertEqual(knight.damselsRescued, 6);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)6);
     ((void(^)(NSString *))knight.foobar)(@"arg");
     XCTAssertEqualObjects(foobar, @"set from block arg");
 }
@@ -71,35 +71,35 @@
 {
     Knight *knight = [factory knightWithRuntimeDamselsRescued:@3 runtimeQuestUrl:[NSURL URLWithString:@"http://google.com"]];
     XCTAssertEqualObjects([knight.quest imageUrl], [NSURL URLWithString:@"http://google.com"]);
-    XCTAssertEqual(knight.damselsRescued, 3);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)3);
 
     knight = [factory knightWithRuntimeDamselsRescued:@2 runtimeQuestUrl:[NSURL URLWithString:@"http://apple.com"]];
     XCTAssertEqualObjects([knight.quest imageUrl], [NSURL URLWithString:@"http://apple.com"]);
-    XCTAssertEqual(knight.damselsRescued, 2);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)2);
 }
 
 - (void)test_runtime_knight_with_nil
 {
     Knight *knight = [factory knightWithRuntimeDamselsRescued:nil runtimeQuestUrl:[NSURL URLWithString:@"http://google.com"]];
     XCTAssertEqualObjects([knight.quest imageUrl], [NSURL URLWithString:@"http://google.com"]);
-    XCTAssertEqual(knight.damselsRescued, 0);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)0);
 }
 
 - (void)test_runtime_knight_with_method_arg_nil
 {
     Knight *knight = [factory knightWithRuntimeDamselsRescued:@(12) runtimeQuestUrl:nil];
     XCTAssertNil([knight.quest imageUrl]);
-    XCTAssertEqual(knight.damselsRescued, 12);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
 
     Knight *friend = (Knight *) knight.foobar;
-    XCTAssertEqual(friend.damselsRescued, 12);
+    XCTAssertEqual(friend.damselsRescued, (NSUInteger)12);
 }
 
 - (void)test_runtime_knight_with_method_arg_and_two_nils
 {
     Knight *knight = [factory knightWithRuntimeDamselsRescued:nil runtimeQuestUrl:nil];
     XCTAssertNil([knight.quest imageUrl]);
-    XCTAssertEqual(knight.damselsRescued, 0);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)0);
 }
 
 - (void)test_predefined_quest
@@ -229,7 +229,7 @@
     XCTAssertNotNil(defaultQuest);
     
     DecoratedQuest *decoratedQuest = [DecoratedQuest decoratedQuestWith:defaultQuest];
-    Knight *knight = [factory knightWithQuest:decoratedQuest];
+    Knight *knight = [factory knightWithQuest:(id <Quest>)decoratedQuest];
     
     XCTAssertNotNil(decoratedQuest);
     XCTAssertNotNil(knight);

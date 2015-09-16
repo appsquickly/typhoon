@@ -25,12 +25,12 @@
     ComponentFactoryAwareAssembly *factory;
 }
 
-- (void)setUp;
+- (void)setUp
 {
     factory = (id) [[TyphoonBlockComponentFactory alloc] initWithAssembly:[ComponentFactoryAwareAssembly assembly]];
 }
 
-- (void)test_reference_to_assembly_set_on_injection_aware_object;
+- (void)test_reference_to_assembly_set_on_injection_aware_object
 {
     object = [factory injectionAwareObject];
     XCTAssertTrue(object.factory == factory);

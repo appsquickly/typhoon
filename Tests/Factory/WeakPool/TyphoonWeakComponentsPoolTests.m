@@ -56,12 +56,12 @@
     [pool setObject:objectB forKey:@"objectB"];
     
     NSArray *poolValues = [pool allValues];
-    XCTAssertEqual(poolValues.count, 2);
+    XCTAssertEqual(poolValues.count, (NSUInteger)2);
     
     [pool removeAllObjects];
     
     poolValues = [pool allValues];
-    XCTAssertEqual(poolValues.count, 0);
+    XCTAssertEqual(poolValues.count, (NSUInteger)0);
 }
 
 @end

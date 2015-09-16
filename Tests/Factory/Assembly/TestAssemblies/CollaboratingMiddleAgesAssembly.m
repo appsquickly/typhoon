@@ -22,15 +22,17 @@
 
 - (id)knightWithExternalQuest
 {
+    CollaboratingMiddleAgesAssembly *strongSelf = self;
     return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(quest) with:[_quests environmentDependentQuest]];
+        [definition injectProperty:@selector(quest) with:[strongSelf->_quests environmentDependentQuest]];
     }];
 }
 
 - (id)knightWithCollaboratingFoobar:(NSString *)foobar
 {
+    CollaboratingMiddleAgesAssembly *strongSelf = self;
     return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(friends) with:[NSSet setWithObject:[_quests knightWithFoobar:foobar]]];
+        [definition injectProperty:@selector(friends) with:[NSSet setWithObject:[strongSelf->_quests knightWithFoobar:foobar]]];
     }];
 }
 

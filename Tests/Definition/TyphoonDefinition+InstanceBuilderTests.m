@@ -39,16 +39,22 @@
     }];
 
     __block NSUInteger injectionsCount = 0;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
     [definition enumerateInjectionsOfKind:[TyphoonInjectionByObjectInstance class] options:TyphoonInjectionsEnumerationOptionAll
                                usingBlock:^(id <TyphoonInjection> injection, id <TyphoonInjection> *injectionToReplace, BOOL *stop) {
+#pragma clang diagnostic pop
         injectionsCount++;
     }];
 
     XCTAssertTrue(injectionsCount == 6);
 
     injectionsCount = 0;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
     [definition enumerateInjectionsOfKind:[TyphoonInjectionByObjectFromString class] options:TyphoonInjectionsEnumerationOptionAll
                                usingBlock:^(id <TyphoonInjection> injection, id <TyphoonInjection> *injectionToReplace, BOOL *stop) {
+#pragma clang diagnostic pop
         injectionsCount++;
     }];
     XCTAssertTrue(injectionsCount == 1);
@@ -68,8 +74,11 @@
     }];
 
     __block NSUInteger injectionsCount = 0;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
     [definition enumerateInjectionsOfKind:[TyphoonInjectionByObjectFromString class] options:TyphoonInjectionsEnumerationOptionAll
                                usingBlock:^(id <TyphoonInjection> injection, id <TyphoonInjection> *injectionToReplace, BOOL *stop) {
+#pragma clang diagnostic pop
         injectionsCount++;
         *injectionToReplace = TyphoonInjectionWithObject(@"B");
     }];
@@ -77,8 +86,11 @@
     XCTAssertTrue(injectionsCount == 2);
 
     injectionsCount = 0;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
     [definition enumerateInjectionsOfKind:[TyphoonInjectionByObjectFromString class] options:TyphoonInjectionsEnumerationOptionAll
                                usingBlock:^(id <TyphoonInjection> injection, id <TyphoonInjection> *injectionToReplace, BOOL *stop) {
+#pragma clang diagnostic pop
         injectionsCount++;
     }];
 
@@ -95,8 +107,11 @@
     child.parent = parent;
     [child injectProperty:@selector(propertyA) with:@"C"];
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
     [child enumerateInjectionsOfKind:[TyphoonInjectionByObjectInstance class] options:TyphoonInjectionsEnumerationOptionAll
                           usingBlock:^(id <TyphoonInjection> injection, id <TyphoonInjection> *injectionToReplace, BOOL *stop) {
+#pragma clang diagnostic pop
         *injectionToReplace = TyphoonInjectionWithObjectFromString(@"B");
     }];
 
@@ -121,8 +136,11 @@
         [method injectParameterWith:@"C"];
     }];
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
     [child enumerateInjectionsOfKind:[TyphoonInjectionByObjectInstance class] options:TyphoonInjectionsEnumerationOptionAll
                           usingBlock:^(id <TyphoonInjection> injection, id <TyphoonInjection> *injectionToReplace, BOOL *stop) {
+#pragma clang diagnostic pop
         *injectionToReplace = TyphoonInjectionWithObjectFromString(@"B");
     }];
 

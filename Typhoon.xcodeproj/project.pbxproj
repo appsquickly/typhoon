@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26FE43E31BA988D200D3880E /* TyphoonStoryboardProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF58CD1BA4162100678B2B /* TyphoonStoryboardProvider.m */; };
 		2DBA12F920B6F629203ABFB3 /* AutoInjectionKnight.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA18F5476952207F6E2B0D /* AutoInjectionKnight.m */; };
 		2DBA13020BD1DDD15231B84C /* TyphoonInjections.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1FC6F594C49C7D8261A6 /* TyphoonInjections.m */; };
 		2DBA133CA352D9C555482734 /* TyphoonInjectionDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1851EF633B38D4C7866A /* TyphoonInjectionDefinition.m */; };
@@ -718,6 +719,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		26FE43DF1BA97DF700D3880E /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		2DBA102EFAD54C22C82B4834 /* TyphoonOptionMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonOptionMatcher.m; sourceTree = "<group>"; };
 		2DBA10314E7114955C0AB31E /* TyphoonNemoTestAssemblies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonNemoTestAssemblies.m; sourceTree = "<group>"; };
 		2DBA116C73989B40B232BA11 /* TyphoonAutoInjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAutoInjection.h; sourceTree = "<group>"; };
@@ -2251,6 +2253,7 @@
 			isa = PBXGroup;
 			children = (
 				90ABC3ED1A36B09E008D8162 /* Info.plist */,
+				26FE43DF1BA97DF700D3880E /* Warnings.xcconfig */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2657,7 +2660,7 @@
 			attributes = {
 				CLASSPREFIX = Typhoon;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = typhoonframework.org;
 				TargetAttributes = {
 					6B076E7D1936F5850083714E = {
@@ -3307,6 +3310,7 @@
 				90ABC44F1A36B1B4008D8162 /* NSObject+TyphoonIntrospectionUtils.m in Sources */,
 				90ABC4501A36B1B4008D8162 /* TyphoonSwizzlerDefaultImpl.m in Sources */,
 				90ABC4511A36B1B4008D8162 /* TyphoonIntrospectionUtils.m in Sources */,
+				26FE43E31BA988D200D3880E /* TyphoonStoryboardProvider.m in Sources */,
 				90ABC4521A36B1B4008D8162 /* TyphoonSelector.m in Sources */,
 				BA798291FCA4D6BB580C2786 /* TyphoonCollaboratingAssemblyPropertyEnumerator.m in Sources */,
 				BA7984EC64F2861DE45E14FF /* TyphoonRuntimeArguments.m in Sources */,
@@ -3461,6 +3465,7 @@
 /* Begin XCBuildConfiguration section */
 		6B076E8D1936F5850083714E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26FE43DF1BA97DF700D3880E /* Warnings.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

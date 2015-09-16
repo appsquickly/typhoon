@@ -41,7 +41,7 @@
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
 
-    [[UIColor colorWithWhite:0.93 alpha:1] setFill];
+    [[UIColor colorWithWhite:0.93f alpha:1] setFill];
 
     CGContextFillRect(context, self.bounds);
 
@@ -49,7 +49,7 @@
     label.lineBreakMode = NSLineBreakByWordWrapping;
     label.numberOfLines = 0;
     label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = [UIColor colorWithWhite:0.78 alpha:1];
+    label.textColor = [UIColor colorWithWhite:0.78f alpha:1];
 
     UIFont *baseFont = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:33];
     UIFont *subtitleFont = [baseFont fontWithSize:24];
