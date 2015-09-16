@@ -440,9 +440,9 @@ static NSString *const DEFAULT_QUEST = @"quest";
 
 - (void)test_prevents_instantiation_of_abstract_definition
 {
-    TyphoonDefinition *definition = [TyphoonDefinition withClass:[NSURL class] configuration:^(TyphoonDefinition *definition) {
-        definition.key = @"anAbstractDefinition";
-        definition.abstract = YES;
+    TyphoonDefinition *definition = [TyphoonDefinition withClass:[NSURL class] configuration:^(TyphoonDefinition *innerDefinition) {
+        innerDefinition.key = @"anAbstractDefinition";
+        innerDefinition.abstract = YES;
     }];
 
     [_componentFactory registerDefinition:definition];
