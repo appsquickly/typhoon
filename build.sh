@@ -49,7 +49,7 @@ xcodebuild test -project Typhoon.xcodeproj -scheme 'Typhoon-iOSTests' -configura
 -destination "platform=iOS Simulator,name=iPhone 5s,OS=$osVersion" | xcpretty -c --report junit
 mv ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
 
-groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/$platform -r${requiredCoverage}
+#groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/$platform -r${requiredCoverage}
 echo '----------------------------------------------------------------------------------------------------'
 
 #Run tests and produce coverage report for iOS Simulator
@@ -60,7 +60,7 @@ xcodebuild test -project Typhoon.xcodeproj -scheme 'Typhoon-iOSTests' -configura
 -destination "platform=iOS Simulator,name=iPhone 5s,OS=$osVersion" | xcpretty -c --report junit
 mv ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
 
-groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/$platform -r${requiredCoverage}
+#groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/$platform -r${requiredCoverage}
 echo '----------------------------------------------------------------------------------------------------'
 
 
@@ -73,7 +73,7 @@ rm -fr ~/Library/Developer/Xcode/DerivedData/*
 xcodebuild -project Typhoon.xcodeproj/ -scheme 'Typhoon-OSXTests' test | xcpretty -c --report junit
 mv ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
 
-groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/OSX -r${requiredCoverage}
+#groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/OSX -r${requiredCoverage}
 echo '--------------------------------------------------------------------------------'
 echo '   💉  Typhoon is ready to inject.'
 echo '--------------------------------------------------------------------------------'
