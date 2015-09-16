@@ -38,7 +38,7 @@
 }
 
 
-- (id)initWithFactory:(id)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))params;
+- (id)initWithFactory:(id)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))params
 {
     self = [super initWithClass:[NSObject class] key:nil];
     if (self) {

@@ -39,7 +39,7 @@
     return self;
 }
 
-- (id)initWithQuest:(id <Quest>)quest favoriteDamsels:(NSArray *)favoriteDamsels;
+- (id)initWithQuest:(id <Quest>)quest favoriteDamsels:(NSArray *)favoriteDamsels
 {
     self = [super init];
     if (self) {
