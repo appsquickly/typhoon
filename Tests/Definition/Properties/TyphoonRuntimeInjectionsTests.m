@@ -229,7 +229,7 @@
     XCTAssertNotNil(defaultQuest);
     
     DecoratedQuest *decoratedQuest = [DecoratedQuest decoratedQuestWith:defaultQuest];
-    Knight *knight = [factory knightWithQuest:decoratedQuest];
+    Knight *knight = [factory knightWithQuest:(id <Quest>)decoratedQuest];
     
     XCTAssertNotNil(decoratedQuest);
     XCTAssertNotNil(knight);
