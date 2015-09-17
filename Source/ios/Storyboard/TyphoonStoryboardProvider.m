@@ -48,4 +48,15 @@
     return [filteredStoryboardNames copy];
 }
 
+- (NSString *)initialStoryboardNameInBundle:(NSBundle *)bundle {
+    NSDictionary *infoDictionary = [bundle infoDictionary];
+    NSString *defaultStoryboardName = infoDictionary[@"UIMainStoryboardFile"];
+    
+    if (!defaultStoryboardName) {
+        defaultStoryboardName = infoDictionary[@"NSExtension"][@"NSExtensionMainStoryboard"];
+    }
+    
+    return defaultStoryboardName;
+}
+
 @end

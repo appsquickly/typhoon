@@ -15,4 +15,6 @@
 
 - (NSArray *)collectStoryboardsFromBundle:(NSBundle *)bundle;
 
+- (NSString *)initialStoryboardNameInBundle:(NSBundle *)bundle;
+
 @end

@@ -77,4 +77,33 @@
     }
 }
 
+- (void)test_provider_returns_initial_storyboard_name
+{
+    NSString *initialStoryboardName = @"Main";
+    NSDictionary *testBundleInfo = @{
+                                     @"UIMainStoryboardFile" : initialStoryboardName
+                                     };
+    [given([self.testBundle infoDictionary]) willReturn:testBundleInfo];
+    
+    NSString *result = [self.provider initialStoryboardNameInBundle:self.testBundle];
+    
+    XCTAssertEqualObjects(result, initialStoryboardName);
+}
+
+- (void)test_provider_returns_extension_storyboard_name
+{
+    NSString *initialStoryboardName = @"ExtensionMain";
+    NSDictionary *testBundleInfo = @{
+                                     @"NSExtension" : @{
+                                             @"NSExtensionMainStoryboard" : initialStoryboardName
+                                             }
+                                     };
+    [given([self.testBundle infoDictionary]) willReturn:testBundleInfo];
+    
+    NSString *result = [self.provider initialStoryboardNameInBundle:self.testBundle];
+    
+    XCTAssertEqualObjects(result, initialStoryboardName);
+}
+
+
 @end
