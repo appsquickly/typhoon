@@ -18,6 +18,7 @@
 @class TyphoonDefinition;
 @class TyphoonCallStack;
 @class TyphoonRuntimeArguments;
+@class TyphoonAssembly;
 
 /**
 *

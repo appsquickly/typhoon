@@ -25,6 +25,13 @@
 #import "TyphoonWeakComponentsPool.h"
 #import "TyphoonFactoryAutoInjectionPostProcessor.h"
 #import "TyphoonStackElement.h"
+#import "TyphoonAssembly.h"
+
+@interface TyphoonAssembly (Activation)
+
+- (void)activateWithFactory:(TyphoonComponentFactory *)factory collaborators:(NSSet *)collaborators;
+
+@end
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
 
@@ -266,7 +273,6 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
     }
 }
 
-
 //-------------------------------------------------------------------------------------------
 #pragma mark - Utility Methods
 //-------------------------------------------------------------------------------------------
@@ -398,6 +404,16 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
             [_objectGraphSharedInstances removeAllObjects];
         }
     }
+}
+
+@end
+
+@implementation TyphoonComponentFactory (CollaboratingInjection)
+
+- (id)componentInjectionFactoryForCollaboratingAssembly:(Class)factoryClass {
+    id assembly = [[factoryClass alloc] init];
+    [assembly activateWithFactory:self collaborators:nil];
+    return assembly;
 }
 
 @end

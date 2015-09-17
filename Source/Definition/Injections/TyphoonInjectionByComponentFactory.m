@@ -21,6 +21,12 @@
 
 @end
 
+@interface TyphoonComponentFactory (CollaboratingInjection)
+
+- (id)componentInjectionFactoryForCollaboratingAssembly:(Class)factoryClass;
+
+@end
+
 @implementation TyphoonInjectionByComponentFactory
 
 #pragma mark - Overrides
@@ -28,20 +34,17 @@
 - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
     id factoryType = context.destinationType.classOrProtocol;
-    
-    // TODO: Ideally we shouldn't create a new instance of an assembly, but somehow reference the original one. This can be achieved by either merging TyphoonComponentFactory and TyphoonBlockComponentFactory, or by adding a new injection - TyphoonInjectionByAssembly. In the second case the problem is in TyphoonFactoryPropertyInjectionPostProcessor - it doesn't have enough context to create such injection.
+    id value = context.factory;
+
     if (IsClass(factoryType)) {
         Class factoryClass = factoryType;
         BOOL isAssemblySubclass = [factoryClass isSubclassOfClass:[TyphoonAssembly class]];
         if (isAssemblySubclass) {
-            id assembly = [[factoryClass alloc] init];
-            [assembly activateWithFactory:context.factory collaborators:nil];
-            result(assembly);
-            return;
+            value = [context.factory componentInjectionFactoryForCollaboratingAssembly:factoryClass];
         }
     }
     
-    result(context.factory);
+    result(value);
 }
 
 - (id)copyWithZone:(NSZone *)zone
