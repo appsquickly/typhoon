@@ -42,7 +42,7 @@
     }];
 }
 
-- (id)classC;
+- (id)classC
 {
     return [TyphoonDefinition withClass:[ClassCDependsOnDAndE class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnD) with:[self classD]];
@@ -50,14 +50,14 @@
     }];
 }
 
-- (id)classD;
+- (id)classD
 {
     return [TyphoonDefinition withClass:[ClassDDependsOnC class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnC) with:[self classC]];
     }];
 }
 
-- (id)classE;
+- (id)classE
 {
     return [TyphoonDefinition withClass:[ClassEDependsOnC class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(dependencyOnC) with:[self classC]];

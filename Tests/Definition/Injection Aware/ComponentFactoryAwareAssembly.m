@@ -16,7 +16,7 @@
 
 @implementation ComponentFactoryAwareAssembly
 
-- (id)injectionAwareObject;
+- (id)injectionAwareObject
 {
     return [TyphoonDefinition withClass:[ComponentFactoryAwareObject class]];
 }

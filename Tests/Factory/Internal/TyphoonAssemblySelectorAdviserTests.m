@@ -68,26 +68,26 @@
 
 #pragma mark - Helper Methods
 
-- (void)advisedSELShouldHaveNoArguments;
+- (void)advisedSELShouldHaveNoArguments
 {
     XCTAssertEqual([self numberOfArgumentsInSelector:advisedSEL], (NSUInteger) 0, @"The advised SEL should not have any arguments.");
 }
 
-- (void)advisedSELWithArgumentsShouldHaveTwoArgumentsAndEndWithAnArgument;
+- (void)advisedSELWithArgumentsShouldHaveTwoArgumentsAndEndWithAnArgument
 {
     XCTAssertEqual([self numberOfArgumentsInSelector:advisedSELWithArguments], (NSUInteger)2);
     XCTAssertEqual([self numberOfArgumentsInSelector:advisedSELWithArguments], (NSUInteger)2, @"The wrapped SEL with two arguments should have two arguments.");
     XCTAssertTrue([self selectorEndsWithASemicolon:advisedSELWithArguments]);
 }
 
-- (NSUInteger)numberOfArgumentsInSelector:(SEL)selector;
+- (NSUInteger)numberOfArgumentsInSelector:(SEL)selector
 {
     NSString *original = NSStringFromSelector(selector);
     NSString *withArgumentsRemoved = [original stringByReplacingOccurrencesOfString:@":" withString:@""];
     return [original length] - [withArgumentsRemoved length];
 }
 
-- (BOOL)selectorEndsWithASemicolon:(SEL)selector;
+- (BOOL)selectorEndsWithASemicolon:(SEL)selector
 {
     NSString *s = NSStringFromSelector(selector);
     NSUInteger lastIndex = [s length] - 1;
