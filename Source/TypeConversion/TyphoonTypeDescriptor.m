@@ -84,6 +84,8 @@
             
             NSRange typeNameRange = NSMakeRange(2, typeCode.length - 2);
             
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
             NSRange quoteRange = [typeCode rangeOfString:@"\"" options:0 range:typeNameRange locale:nil];
             if (quoteRange.length > 0) {
                 typeNameRange.location = quoteRange.location + 1;
@@ -104,6 +106,7 @@
                 
                 _declaredProtocol = [typeCode substringWithRange:protocolRange];
             }
+#pragma clang diagnostic pop
             
             NSString *typeName = [typeCode substringWithRange:typeNameRange];
             _typeBeingDescribed = TyphoonClassFromString(typeName);
