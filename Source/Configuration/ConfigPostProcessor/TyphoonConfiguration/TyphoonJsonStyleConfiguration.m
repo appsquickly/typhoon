@@ -36,8 +36,11 @@
             options:NSRegularExpressionAnchorsMatchLines error:nil];
     });
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
     NSArray *matches = [expression matchesInString:string options:0 range:NSMakeRange(0, string.length)];
-
+#pragma clang diagnostic pop
+    
     if ([matches count] > 0) {
         NSMutableString *mutableString = [string mutableCopy];
         [matches enumerateObjectsWithOptions:NSEnumerationReverse

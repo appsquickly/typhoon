@@ -88,7 +88,7 @@
     XCTAssertNotNil(knight);
     XCTAssertNotNil(knight.quest);
     XCTAssertEqualObjects([knight.quest questName], @"Campaign Quest");
-    XCTAssertEqual(knight.damselsRescued, 12);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
 }
 
 - (void)test_mixed_initializer_and_property_injection
@@ -109,7 +109,7 @@
     Knight *knight = [_componentFactory componentForKey:@"knightWithCollections"];
     NSArray *favoriteDamsels = [knight favoriteDamsels];
     XCTAssertNotNil(favoriteDamsels);
-    XCTAssertEqual([favoriteDamsels count], 2);
+    XCTAssertEqual([favoriteDamsels count], (NSUInteger)2);
 }
 
 - (void)test_injection_with_dictionary
@@ -147,7 +147,7 @@
     Knight *knight = [(MiddleAgesAssembly *)_componentFactory knightWithMethodInjection];
 
     XCTAssertNotNil(knight.quest);
-    XCTAssertEqual(knight.damselsRescued, 321);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)321);
 
 }
 
@@ -220,7 +220,7 @@
     [factory attachPostProcessor:processor];
 
     Knight *knight = [factory componentForKey:@"knight"];
-    XCTAssertEqual(knight.damselsRescued, 12);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
 
     CavalryMan *anotherKnight = [factory componentForKey:@"anotherKnight"];
     XCTAssertEqual(anotherKnight.hasHorseWillTravel, NO);
@@ -240,7 +240,7 @@
 {
     Knight *knight = [_infrastructureComponentsFactory componentForKey:@"knight"];
     XCTAssertTrue(knight.hasHorseWillTravel);
-    XCTAssertEqual(knight.damselsRescued, 12);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
 }
 
 - (void)test_type_converter_recognized

@@ -10,7 +10,7 @@
 
 @implementation PrototypeInitInjected
 
-- (id)initWithDependency:(PrototypePropertyInjected *)prototypePropertyInjected;
+- (id)initWithDependency:(PrototypePropertyInjected *)prototypePropertyInjected
 {
     self = [super init];
     if (self) {

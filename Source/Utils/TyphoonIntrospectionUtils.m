@@ -19,6 +19,9 @@
 
 @implementation TyphoonIntrospectionUtils
 
+BOOL TyphoonIsInvalidClassName(NSString *className);
+NSString *TyphoonDefaultModuleName(void);
+
 + (TyphoonTypeDescriptor *)typeForPropertyNamed:(NSString *)propertyName inClass:(Class)clazz
 {
     TyphoonTypeDescriptor *typeDescriptor = nil;
@@ -36,7 +39,7 @@
             return (NULL);
         }
 
-        int len = (int) (e - attributes);
+        NSUInteger len = (NSUInteger) (e - attributes);
         memcpy( buffer, attributes, len );
         buffer[len] = '\0';
 
@@ -230,7 +233,7 @@ NSString *TyphoonTypeStringFor(id classOrProtocol)
     }
 }
 
-NSString *TyphoonDefaultModuleName()
+NSString *TyphoonDefaultModuleName(void)
 {
     static NSString *defaultModuleName;
     static dispatch_once_t onceToken;

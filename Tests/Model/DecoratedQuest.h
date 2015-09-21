@@ -12,7 +12,7 @@
 #import <Foundation/Foundation.h>
 #import "Quest.h"
 
-@interface DecoratedQuest : NSProxy
+@interface DecoratedQuest : NSProxy <Quest>
 
 + (instancetype)decoratedQuestWith:(id <Quest>)quest;
 

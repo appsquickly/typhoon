@@ -720,6 +720,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		269BC6BA1BAFEC19005A1DA3 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		2DBA102EFAD54C22C82B4834 /* TyphoonOptionMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonOptionMatcher.m; sourceTree = "<group>"; };
 		2DBA10314E7114955C0AB31E /* TyphoonNemoTestAssemblies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonNemoTestAssemblies.m; sourceTree = "<group>"; };
 		2DBA116C73989B40B232BA11 /* TyphoonAutoInjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAutoInjection.h; sourceTree = "<group>"; };
@@ -2253,6 +2254,7 @@
 			isa = PBXGroup;
 			children = (
 				90ABC3ED1A36B09E008D8162 /* Info.plist */,
+				269BC6BA1BAFEC19005A1DA3 /* Warnings.xcconfig */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -3465,6 +3467,7 @@
 /* Begin XCBuildConfiguration section */
 		6B076E8D1936F5850083714E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 269BC6BA1BAFEC19005A1DA3 /* Warnings.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -3585,7 +3588,6 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Typhoon-iOS.app/Typhoon-iOS";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(PROJECT_DIR)/Tests/iOS",
@@ -3622,7 +3624,6 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Typhoon-iOS.app/Typhoon-iOS";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(PROJECT_DIR)/Tests/iOS",

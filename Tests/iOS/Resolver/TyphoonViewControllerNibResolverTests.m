@@ -39,7 +39,7 @@
 
     XCTAssertNotNil(definition.initializer);
     XCTAssertEqualObjects(NSStringFromSelector(definition.initializer.selector), NSStringFromSelector(@selector(initWithNibName:bundle:)));
-    XCTAssertEqual([[definition.initializer injectedParameters] count], 2);
+    XCTAssertEqual([[definition.initializer injectedParameters] count], (NSUInteger)2);
 
 }
 

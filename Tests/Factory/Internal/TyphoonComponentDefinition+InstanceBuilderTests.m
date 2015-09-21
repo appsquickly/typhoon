@@ -77,7 +77,7 @@
     [_componentFactory registerDefinition:knightDefinition];
 
     Knight *knight = [_componentFactory componentForKey:@"knight"];
-    XCTAssertEqual(knight.damselsRescued, 12);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
 }
 
 - (void)test_injects_initializer_value_as_collection
@@ -99,7 +99,7 @@
     [_componentFactory registerDefinition:knightDefinition];
 
     Knight *knight = [_componentFactory componentForKey:@"knight"];
-    XCTAssertEqual([knight.favoriteDamsels count], 2);
+    XCTAssertEqual([knight.favoriteDamsels count], (NSUInteger)2);
 }
 
 - (void)test_inject_initializer_values_as_primitives
@@ -232,7 +232,7 @@
     [_componentFactory registerDefinition:knightDefinition];
 
     Knight *knight = [_componentFactory componentForKey:@"knight"];
-    XCTAssertEqual(knight.damselsRescued, 12);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
 }
 
 - (void)test_inject_property_value_as_primitives
