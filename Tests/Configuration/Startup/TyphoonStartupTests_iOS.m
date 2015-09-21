@@ -21,7 +21,7 @@
 - (void)test_loads_configuration
 {
     id delegate = [UIApplication sharedApplication].delegate;
-    XCTAssertEqual(12, [delegate damselsRescued]);
+    XCTAssertEqual((NSUInteger)12, [delegate damselsRescued]);
 }
 
 @end

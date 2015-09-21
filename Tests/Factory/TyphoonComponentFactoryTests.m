@@ -193,7 +193,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
 - (void)test_post_processor_registration
 {
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[TyphoonComponentFactoryPostProcessorStubImpl class]]];
-    XCTAssertEqual([[_componentFactory registry] count], 0);
+    XCTAssertEqual([[_componentFactory registry] count], (NSUInteger)0);
     XCTAssertEqual([[_componentFactory definitionPostProcessors] count], internalPostProcessorsCount + 1); //Attached + internal processors
 }
 
@@ -216,8 +216,8 @@ static NSString *const DEFAULT_QUEST = @"quest";
 - (void)test_component_post_processor_registration
 {
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[TyphoonInstancePostProcessorMock class]]];
-    XCTAssertEqual([[_componentFactory registry] count], 0);
-    XCTAssertEqual([[_componentFactory instancePostProcessors] count], 1);
+    XCTAssertEqual([[_componentFactory registry] count], (NSUInteger)0);
+    XCTAssertEqual([[_componentFactory instancePostProcessors] count], (NSUInteger)1);
 }
 
 - (void)test_component_post_processors_applied_in_order
@@ -351,7 +351,7 @@ static NSString *const DEFAULT_QUEST = @"quest";
         [definition setScope:TyphoonScopeObjectGraph];
     }]];
     [_componentFactory load];
-    XCTAssertEqual([[_componentFactory singletons] count], 1);
+    XCTAssertEqual([[_componentFactory singletons] count], (NSUInteger)1);
 }
 
 - (void)test_load_weakSingleton
