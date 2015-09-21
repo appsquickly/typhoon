@@ -56,7 +56,7 @@ TYPHOON_LINK_CATEGORY(TyphoonInitializer_InstanceBuilder)
         NSUInteger index = [object parameterIndex] + 2;
         context.destinationType = [TyphoonTypeDescriptor descriptorWithEncodedType:[signature getArgumentTypeAtIndex:index]];
         [object valueToInjectWithContext:context completion:^(id value) {
-            [invocation typhoon_setArgumentObject:value atIndex:index];
+            [invocation typhoon_setArgumentObject:value atIndex:(NSInteger)index];
             [iterator next];
         }];
     } completion:^{
