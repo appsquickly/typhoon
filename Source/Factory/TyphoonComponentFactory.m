@@ -129,12 +129,16 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
 
 - (void)registerDefinition:(TyphoonDefinition *)definition
 {
+    if (_isLoading || [self isLoaded]) {
+        definition = [self definitionAfterApplyingPostProcessorsToDefinition:definition];
+    }
+    
     TyphoonDefinitionRegisterer
             *registerer = [[TyphoonDefinitionRegisterer alloc] initWithDefinition:definition componentFactory:self];
     [registerer doRegistration];
 
     if ([self isLoaded]) {
-        [self _loadOnlyOne:definition];
+        [self instantiateIfEagerSingleton:definition];
     }
 }
 
@@ -289,12 +293,6 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
     [self preparePostProcessors];
     [self applyPostProcessors];
     [self instantiateEagerSingletons];
-}
-
-- (void)_loadOnlyOne:(TyphoonDefinition *)definition
-{
-    definition = [self definitionAfterApplyingPostProcessorsToDefinition:definition];
-    [self instantiateIfEagerSingleton:definition];
 }
 
 - (NSArray *)orderedArray:(NSMutableArray *)array

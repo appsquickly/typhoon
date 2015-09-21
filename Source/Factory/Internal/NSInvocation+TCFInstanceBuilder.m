@@ -48,7 +48,7 @@ static BOOL typhoon_IsSelectorReturnsRetained(SEL selector) {
     return numberOfMatches != 0;
 }
 
-- (id)typhoon_resultOfInvokingOn:(id)instanceOrClass
+- (id)typhoon_resultOfInvokingOn:(id)instanceOrClass NS_RETURNS_RETAINED
 {
     id returnValue = nil;
 

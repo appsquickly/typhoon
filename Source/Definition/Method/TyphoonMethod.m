@@ -90,10 +90,9 @@
 - (NSUInteger)calculateHash
 {
     NSUInteger hash = (NSUInteger) sel_getName(_selector);
-    NSUInteger magicNumber = 5;
 
     for (id <TyphoonParameterInjection> parameter in _injectedParameters) {
-        hash = (NSUInteger) ((magicNumber << hash) - hash + [[parameter description] hash]);
+        hash = (NSUInteger) ((5u << hash) - hash + [[parameter description] hash]);
     }
 
     return hash;
