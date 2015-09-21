@@ -22,4 +22,5 @@
 + (TyphoonComponentFactory *)initialFactory;
 
 + (void)releaseInitialFactory;
+
 @end

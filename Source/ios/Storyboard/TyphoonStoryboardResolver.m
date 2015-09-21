@@ -16,8 +16,6 @@
 
 #import <objc/runtime.h>
 
-static TyphoonComponentFactory *componentFactory;
-
 @implementation TyphoonStoryboardResolver
 
 + (void)load
@@ -25,16 +23,13 @@ static TyphoonComponentFactory *componentFactory;
     NSBundle *bundle = [NSBundle mainBundle];
     TyphoonStoryboardProvider *provider = [TyphoonStoryboardProvider new];
     NSArray *resolvingStoryboardNames = [provider collectStoryboardsFromBundle:bundle];
-    NSString *initialStoryboardName = [provider initialStoryboardNameInBundle:bundle];
     
     if (resolvingStoryboardNames.count > 0) {
-        [self swizzleUIStoryboardWithNames:resolvingStoryboardNames
-                     initialStoryboardName:initialStoryboardName];
+        [self swizzleUIStoryboardWithNames:resolvingStoryboardNames];
     }
 }
 
 + (void)swizzleUIStoryboardWithNames:(NSArray *)storyboardNames
-               initialStoryboardName:(NSString *)initialName
 {
     SEL sel = @selector(storyboardWithName:bundle:);
     Method method = class_getClassMethod([UIStoryboard class], sel);
@@ -42,26 +37,17 @@ static TyphoonComponentFactory *componentFactory;
     id(*originalImp)(id, SEL, id, id) = (id (*)(id, SEL, id, id)) method_getImplementation(method);
     
     IMP adjustedImp = imp_implementationWithBlock(^id(id instance, NSString *name, NSBundle *bundle) {
-        BOOL isInitialStoryboard = [name isEqualToString:initialName];
-        if (isInitialStoryboard) {
-            [self retainComponentFactory];
-        }
-        
-        if ([instance class] == [UIStoryboard class] && componentFactory && [storyboardNames containsObject:name]) {
-            return [TyphoonStoryboard storyboardWithName:name factory:componentFactory bundle:bundle];
+        [TyphoonStartup requireInitialFactory];
+        id initialFactory = [TyphoonStartup initialFactory];
+        [TyphoonStartup releaseInitialFactory];
+        if ([instance class] == [UIStoryboard class] && initialFactory && [storyboardNames containsObject:name]) {
+            return [TyphoonStoryboard storyboardWithName:name factory:initialFactory bundle:bundle];
         } else {
             return originalImp(instance, sel, name, bundle);
         }
     });
     
     method_setImplementation(method, adjustedImp);
-}
-
-+ (void)retainComponentFactory
-{
-    [TyphoonStartup requireInitialFactory];
-    componentFactory = [TyphoonStartup initialFactory];
-    [TyphoonStartup releaseInitialFactory];
 }
 
 @end
