@@ -19,6 +19,9 @@
 
 @implementation TyphoonIntrospectionUtils
 
+BOOL TyphoonIsInvalidClassName(NSString *className);
+NSString *TyphoonDefaultModuleName(void);
+
 + (TyphoonTypeDescriptor *)typeForPropertyNamed:(NSString *)propertyName inClass:(Class)clazz
 {
     TyphoonTypeDescriptor *typeDescriptor = nil;
