@@ -22,10 +22,9 @@ typedef void(^TyphoonInjectionsEnumerationBlock)(id injection, id*injectionToRep
 
 typedef enum {
     TyphoonInjectionsEnumerationOptionProperties = 1 << 0,
-    TyphoonInjectionsEnumerationOptionMethods = 1 << 2
+    TyphoonInjectionsEnumerationOptionMethods = 1 << 2,
+    TyphoonInjectionsEnumerationOptionAll = TyphoonInjectionsEnumerationOptionProperties | TyphoonInjectionsEnumerationOptionMethods,
 } TyphoonInjectionsEnumerationOption;
-
-#define TyphoonInjectionsEnumerationOptionAll (TyphoonInjectionsEnumerationOptionProperties | TyphoonInjectionsEnumerationOptionMethods)
 
 @interface TyphoonDefinition (InstanceBuilder)
 
