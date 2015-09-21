@@ -39,7 +39,7 @@ NSString *TyphoonDefaultModuleName(void);
             return (NULL);
         }
 
-        int len = (int) (e - attributes);
+        NSUInteger len = (NSUInteger) (e - attributes);
         memcpy( buffer, attributes, len );
         buffer[len] = '\0';
 
