@@ -3588,7 +3588,6 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Typhoon-iOS.app/Typhoon-iOS";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(PROJECT_DIR)/Tests/iOS",
@@ -3625,7 +3624,6 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Typhoon-iOS.app/Typhoon-iOS";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(PROJECT_DIR)/Tests/iOS",
