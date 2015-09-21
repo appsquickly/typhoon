@@ -230,7 +230,7 @@ NSString *TyphoonTypeStringFor(id classOrProtocol)
     }
 }
 
-NSString *TyphoonDefaultModuleName()
+NSString *TyphoonDefaultModuleName(void)
 {
     static NSString *defaultModuleName;
     static dispatch_once_t onceToken;
