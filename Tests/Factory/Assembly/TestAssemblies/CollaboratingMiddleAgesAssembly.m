@@ -23,14 +23,14 @@
 - (id)knightWithExternalQuest
 {
     return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(quest) with:[_quests environmentDependentQuest]];
+        [definition injectProperty:@selector(quest) with:[self->_quests environmentDependentQuest]];
     }];
 }
 
 - (id)knightWithCollaboratingFoobar:(NSString *)foobar
 {
     return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(friends) with:[NSSet setWithObject:[_quests knightWithFoobar:foobar]]];
+        [definition injectProperty:@selector(friends) with:[NSSet setWithObject:[self->_quests knightWithFoobar:foobar]]];
     }];
 }
 
