@@ -60,3 +60,27 @@
 
 
 @end
+
+@implementation ComponentFactoryAwareCollabortingAssembly
+
+- (id)collaboratingAssemblyObject {
+    return [TyphoonDefinition withClass:[NSNumber class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(numberWithInt:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:@1];
+        }];
+    }];
+}
+
+@end
+
+@implementation AnotherComponentFactoryAwareCollabortingAssembly
+
+- (id)anotherCollaboratingAssemblyObject {
+    return [TyphoonDefinition withClass:[NSNumber class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(numberWithInt:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:@2];
+        }];
+    }];
+}
+
+@end
