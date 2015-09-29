@@ -422,6 +422,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOSTests/Typhoon-iOSTests-Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOSTests/en.lproj/InfoPlist.strings" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Typhoon/Info.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Typhoon/Warnings.xcconfig" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/TyphoonFrameworkSwiftExample/AppDelegate.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/TyphoonFrameworkSwiftExample/Assembly.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/TyphoonFrameworkSwiftExample/Base.lproj/LaunchScreen.xib" isTestSource="false" />

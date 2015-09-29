@@ -24,7 +24,8 @@
 
 - (UIColor *)colorFromRed:(NSUInteger)red green:(NSUInteger)green blue:(NSUInteger)blue alpha:(CGFloat)alpha
 {
-    return [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:alpha];
+    return [UIColor colorWithRed:(CGFloat)(red / 255.0) green:(CGFloat)(green / 255.0) blue:(CGFloat)(blue / 255.0)
+        alpha:alpha];
 }
 
 - (UIColor *)colorFromHexString:(NSString *)hexString
@@ -44,7 +45,7 @@
         [NSException raise:NSInvalidArgumentException format:@"%@ requires a six or eight digit hex string.",
                                                              NSStringFromClass([self class])];
     }
-    return [self colorFromRed:red green:green blue:blue alpha:alpha / 255.0];
+    return [self colorFromRed:red green:green blue:blue alpha:(CGFloat)(alpha / 255.0)];
 }
 
 - (UIColor *)colorFromCssStyleString:(NSString *)cssString
