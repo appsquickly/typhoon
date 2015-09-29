@@ -25,12 +25,12 @@
     ComponentFactoryAwareAssembly *factory;
 }
 
-- (void)setUp;
+- (void)setUp
 {
-    factory = (id) [[TyphoonBlockComponentFactory alloc] initWithAssembly:[ComponentFactoryAwareAssembly assembly]];
+    factory = (id) [[TyphoonBlockComponentFactory alloc] initWithAssemblies:@[[ComponentFactoryAwareAssembly assembly], [ComponentFactoryAwareCollabortingAssembly assembly], [AnotherComponentFactoryAwareCollabortingAssembly assembly]]];
 }
 
-- (void)test_reference_to_assembly_set_on_injection_aware_object;
+- (void)test_reference_to_assembly_set_on_injection_aware_object
 {
     object = [factory injectionAwareObject];
     XCTAssertTrue(object.factory == factory);
@@ -66,16 +66,9 @@
     XCTAssertTrue(object.factory == factory);
 }
 
-- (void)test_assembly_injection_by_property_class_check {
-    object = [factory injectionAssemblyByProperty];
-    BOOL isRightClass = [object.assembly isKindOfClass:[ComponentFactoryAwareAssembly class]];
-    XCTAssertTrue(isRightClass);
-}
-
-- (void)test_assembly_injection_by_property_assembly_type_class_check {
-    object = [factory injectionByPropertyAssemblyType];
-    BOOL isRightClass = [object.assembly isKindOfClass:[ComponentFactoryAwareAssembly class]];
-    XCTAssertTrue(isRightClass);
+- (void)test_factory_with_collaborating_assembly_vending_object {
+    XCTAssertEqualObjects([(id) factory collaboratingAssemblyObject], @1);
+    XCTAssertEqualObjects([(id) factory anotherCollaboratingAssemblyObject], @2);
 }
 
 @end

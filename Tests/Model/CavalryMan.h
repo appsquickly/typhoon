@@ -15,7 +15,7 @@
 
 @interface CavalryMan : Knight 
 
-@property(nonatomic) float hitRatio;
+@property(nonatomic) CGFloat hitRatio;
 
 @property(nonatomic, strong) NSArray *propertyInjectedAsInstance;
 

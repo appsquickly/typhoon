@@ -18,7 +18,7 @@
 
 @interface TyphoonAssemblyAdviser : NSObject
 
-+ (BOOL)assemblyClassIsAdvised:(Class)class;
++ (BOOL)assemblyClassIsAdvised:(Class)klass;
 
 - (id)initWithAssembly:(TyphoonAssembly *)assembly;
 

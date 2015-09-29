@@ -26,10 +26,13 @@
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
     XCTAssertTrue([[assembly knight] isKindOfClass:[TyphoonDefinition class]]);
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [[TyphoonAssemblyActivator withAssemblies:@[
         assembly,
         [CollaboratingMiddleAgesAssembly assembly]
     ]] activate];
+#pragma clang diagnostic pop
 
     XCTAssertTrue([[assembly knight] isKindOfClass:[Knight class]]);
     LogInfo(@"Knight: %@", [assembly knight]);
@@ -40,10 +43,13 @@
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
     CollaboratingMiddleAgesAssembly *collaborator = [CollaboratingMiddleAgesAssembly assembly];
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [[TyphoonAssemblyActivator withAssemblies:@[
         assembly,
         collaborator
     ]] activate];
+#pragma clang diagnostic pop
 
     id<Quest> quest = collaborator.quests.environmentDependentQuest;
     LogInfo(@"Got quest: %@", quest);
@@ -133,7 +139,10 @@
 - (void)test_after_activation_TyphoonComponentFactory_methods_are_available
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [[TyphoonAssemblyActivator withAssembly:assembly] activate];
+#pragma clang diagnostic pop
 
     XCTAssertTrue([[assembly componentForKey:@"knight"] isKindOfClass:[Knight class]]);
 }
@@ -141,7 +150,10 @@
 - (void)test_after_activation_can_inject_pre_obtained_instance
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [[TyphoonAssemblyActivator withAssembly:assembly] activate];
+#pragma clang diagnostic pop
 
     Knight *knight = [[Knight alloc] init];
     [assembly inject:knight withSelector:@selector(knight)];
@@ -151,10 +163,13 @@
 - (void)test_after_activation_assembly_can_be_made_default
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [[TyphoonAssemblyActivator withAssemblies:@[
         assembly,
         [CollaboratingMiddleAgesAssembly assembly]
     ]] activate];
+#pragma clang diagnostic pop
     [assembly makeDefault];
 }
 

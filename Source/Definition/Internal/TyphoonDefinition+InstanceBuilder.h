@@ -20,12 +20,11 @@
 
 typedef void(^TyphoonInjectionsEnumerationBlock)(id injection, id*injectionToReplace, BOOL*stop);
 
-typedef enum {
+typedef NS_OPTIONS(NSInteger, TyphoonInjectionsEnumerationOption) {
     TyphoonInjectionsEnumerationOptionProperties = 1 << 0,
-    TyphoonInjectionsEnumerationOptionMethods = 1 << 2
-} TyphoonInjectionsEnumerationOption;
-
-#define TyphoonInjectionsEnumerationOptionAll (TyphoonInjectionsEnumerationOptionProperties | TyphoonInjectionsEnumerationOptionMethods)
+    TyphoonInjectionsEnumerationOptionMethods = 1 << 2,
+    TyphoonInjectionsEnumerationOptionAll = TyphoonInjectionsEnumerationOptionProperties | TyphoonInjectionsEnumerationOptionMethods,
+};
 
 @interface TyphoonDefinition (InstanceBuilder)
 

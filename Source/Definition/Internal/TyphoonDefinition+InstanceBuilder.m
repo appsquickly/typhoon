@@ -42,11 +42,12 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
                 [method replaceInjection:injection with:injectionToReplace];
             }];
         }
+        
         [self enumerateInjectionsOfKind:injectionClass onCollection:[_afterInjections injectedParameters] withBlock:block replaceBlock:^(id injection, id injectionToReplace) {
-            [_afterInjections replaceInjection:injection with:injectionToReplace];
+            [self->_afterInjections replaceInjection:injection with:injectionToReplace];
         }];
         [self enumerateInjectionsOfKind:injectionClass onCollection:[_beforeInjections injectedParameters] withBlock:block replaceBlock:^(id injection, id injectionToReplace) {
-            [_beforeInjections replaceInjection:injection with:injectionToReplace];
+            [self->_beforeInjections replaceInjection:injection with:injectionToReplace];
         }];
     }
 

@@ -25,3 +25,5 @@ DerivedData
 # AppCode
 .idea
 !.idea/codeStyleSettings.xml
+*.gcno
+*.gcda

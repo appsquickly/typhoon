@@ -13,13 +13,6 @@
 #import "TyphoonInjectionByComponentFactory.h"
 #import "NSInvocation+TCFUnwrapValues.h"
 #import "TyphoonIntrospectionUtils.h"
-#import "TyphoonAssembly.h"
-
-@interface TyphoonAssembly (Activation)
-
-- (void)activateWithFactory:(TyphoonComponentFactory *)factory collaborators:(NSSet *)collaborators;
-
-@end
 
 @implementation TyphoonInjectionByComponentFactory
 
@@ -27,20 +20,6 @@
 
 - (void)valueToInjectWithContext:(TyphoonInjectionContext *)context completion:(TyphoonInjectionValueBlock)result
 {
-    id factoryType = context.destinationType.classOrProtocol;
-    
-    // TODO: Ideally we shouldn't create a new instance of an assembly, but somehow reference the original one. This can be achieved by either merging TyphoonComponentFactory and TyphoonBlockComponentFactory, or by adding a new injection - TyphoonInjectionByAssembly. In the second case the problem is in TyphoonFactoryPropertyInjectionPostProcessor - it doesn't have enough context to create such injection.
-    if (IsClass(factoryType)) {
-        Class factoryClass = factoryType;
-        BOOL isAssemblySubclass = [factoryClass isSubclassOfClass:[TyphoonAssembly class]];
-        if (isAssemblySubclass) {
-            id assembly = [[factoryClass alloc] init];
-            [assembly activateWithFactory:context.factory collaborators:nil];
-            result(assembly);
-            return;
-        }
-    }
-    
     result(context.factory);
 }
 

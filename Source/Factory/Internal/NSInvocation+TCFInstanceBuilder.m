@@ -30,7 +30,10 @@ static BOOL typhoon_IsSelectorReturnsRetained(SEL selector) {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSError *error = nil;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wassign-enum"
         methodFamily = [[NSRegularExpression alloc] initWithPattern:@"^_*(init|new|copy|mutableCopy)($|[^a-z])" options:0 error:&error];
+#pragma clang diagnostic pop
 
         if (!methodFamily) {
             @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[error localizedDescription]
@@ -45,7 +48,7 @@ static BOOL typhoon_IsSelectorReturnsRetained(SEL selector) {
     return numberOfMatches != 0;
 }
 
-- (id)typhoon_resultOfInvokingOn:(id)instanceOrClass
+- (id)typhoon_resultOfInvokingOn:(id)instanceOrClass NS_RETURNS_RETAINED
 {
     id returnValue = nil;
 

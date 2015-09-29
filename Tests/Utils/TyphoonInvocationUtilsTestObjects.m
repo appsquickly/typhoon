@@ -23,7 +23,7 @@
 
 @implementation ObjectNewRetained
 
-+ (instancetype)newObject;
++ (instancetype)newObject
 {
     ObjectNewRetained *object = [[ObjectNewRetained alloc] init];
     return object;
