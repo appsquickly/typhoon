@@ -48,7 +48,7 @@
             componentFactory = [TyphoonStartup initialFactory];
             [TyphoonStartup releaseInitialFactory];
         } else {
-            componentFactory = [TyphoonComponentFactory factoryForResolvingFromXibs];
+            componentFactory = [TyphoonComponentFactory factoryForResolvingUI];
         }
         
         if ([instance class] == [UIStoryboard class] && componentFactory && [storyboardNames containsObject:name]) {

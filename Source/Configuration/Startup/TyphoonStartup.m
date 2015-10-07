@@ -132,7 +132,7 @@ static BOOL initialFactoryWasCreated = NO;
                 [initialFactory attachPostProcessor:processor];
             }
             [self injectInitialFactoryIntoDelegate:delegate];
-            [TyphoonComponentFactory setFactoryForResolvingFromXibs:initialFactory];
+            [TyphoonComponentFactory setFactoryForResolvingUI:initialFactory];
         }
         [self releaseInitialFactoryWhenApplicationDidFinishLaunching];
 
