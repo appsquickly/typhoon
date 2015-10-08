@@ -40,15 +40,13 @@
     id(*originalImp)(id, SEL, id, id) = (id (*)(id, SEL, id, id)) method_getImplementation(method);
     
     IMP adjustedImp = imp_implementationWithBlock(^id(id instance, NSString *name, NSBundle *bundle) {
-        id componentFactory;
+        id componentFactory = [TyphoonComponentFactory factoryForResolvingUI];
         BOOL isInitialStoryboard = [name isEqualToString:initialName];
         
-        if (isInitialStoryboard) {
+        if (isInitialStoryboard && !componentFactory) {
             [TyphoonStartup requireInitialFactory];
             componentFactory = [TyphoonStartup initialFactory];
             [TyphoonStartup releaseInitialFactory];
-        } else {
-            componentFactory = [TyphoonComponentFactory factoryForResolvingUI];
         }
         
         if ([instance class] == [UIStoryboard class] && componentFactory && [storyboardNames containsObject:name]) {
