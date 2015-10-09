@@ -302,6 +302,12 @@ Class TyphoonClassFromString(NSString *className)
         the name of the module
 
         */
+        
+        //Those class names will never be resolved, so no reason to try
+        if(!className || [className isEqual:@"?"] || [className isEqual:@""]) {
+            return nil;
+        }
+        
         NSArray *frameworks = [NSBundle allFrameworks];
         for (uint i = 0; i < frameworks.count && clazz == nil; ++i) {
             NSBundle *framework = [frameworks objectAtIndex:i];
