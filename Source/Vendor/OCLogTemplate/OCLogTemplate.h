@@ -94,8 +94,24 @@
 #pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
 
 // Logging format
-#define LOG_FORMAT_NO_LOCATION(fmt, lvl, ...) NSLog((@"[%@] " fmt), lvl, ##__VA_ARGS__)
-#define LOG_FORMAT_WITH_LOCATION(fmt, lvl, ...) NSLog((@"%s[Line %d] [%@] " fmt), __PRETTY_FUNCTION__, __LINE__, lvl, ##__VA_ARGS__)
+#import "TyphoonLogging.h"
+#define LOG_FORMAT_NO_LOCATION(fmt, lvl, ...)             \
+do                                                        \
+{                                                         \
+    if ([TyphoonLogging isLoggingEnabled] == YES)         \
+    {                                                     \
+        NSLog((@"[%@] " fmt), lvl, ##__VA_ARGS__)         \
+    }                                                     \
+} while (0)
+
+#define LOG_FORMAT_WITH_LOCATION(fmt, lvl, ...)           \
+do                                                        \
+{                                                         \
+    if ([TyphoonLogging isLoggingEnabled] == YES)         \
+    {                                                     \
+        NSLog((@"%s[Line %d] [%@] " fmt), __PRETTY_FUNCTION__, __LINE__, lvl, ##__VA_ARGS__);\
+    }                                                     \
+} while (0)
 
 #if defined(LOGGING_INCLUDE_CODE_LOCATION) && LOGGING_INCLUDE_CODE_LOCATION
 #define LOG_FORMAT(fmt, lvl, ...) LOG_FORMAT_WITH_LOCATION(fmt, lvl, ##__VA_ARGS__)

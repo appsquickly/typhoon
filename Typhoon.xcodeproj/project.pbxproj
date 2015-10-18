@@ -541,6 +541,7 @@
 		9F65CEEB1BA1559E0015765B /* DecoratedQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F65CEE81BA1559A0015765B /* DecoratedQuest.m */; };
 		9F98B2E81BA0BF5D00196820 /* TyphoonLoopedCollaboratingAssemblies.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F98B2E01BA0BF3700196820 /* TyphoonLoopedCollaboratingAssemblies.m */; };
 		9F98B2EB1BA0BF5E00196820 /* TyphoonLoopedCollaboratingAssemblies.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F98B2E01BA0BF3700196820 /* TyphoonLoopedCollaboratingAssemblies.m */; };
+		9FCE2FD21BD40529003896E6 /* TyphoonLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCE2FD11BD40529003896E6 /* TyphoonLogging.m */; settings = {ASSET_TAGS = (); }; };
 		9FDF58CE1BA4162100678B2B /* TyphoonStoryboardProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF58CD1BA4162100678B2B /* TyphoonStoryboardProvider.m */; };
 		9FDF58D11BA4168100678B2B /* TyphoonStoryboardProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF58D01BA4168100678B2B /* TyphoonStoryboardProviderTests.m */; };
 		A5522B801AAA8C9500B93CD9 /* TyphoonPatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076F601936F63A0083714E /* TyphoonPatcher.m */; };
@@ -1093,6 +1094,8 @@
 		9F7522371B80A25900AE6219 /* TyphoonAssemblyBuilder+PlistProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TyphoonAssemblyBuilder+PlistProcessor.m"; sourceTree = "<group>"; };
 		9F98B2DF1BA0BF3700196820 /* TyphoonLoopedCollaboratingAssemblies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonLoopedCollaboratingAssemblies.h; sourceTree = "<group>"; };
 		9F98B2E01BA0BF3700196820 /* TyphoonLoopedCollaboratingAssemblies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonLoopedCollaboratingAssemblies.m; sourceTree = "<group>"; };
+		9FCE2FD01BD40529003896E6 /* TyphoonLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonLogging.h; sourceTree = "<group>"; };
+		9FCE2FD11BD40529003896E6 /* TyphoonLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonLogging.m; sourceTree = "<group>"; };
 		9FDF58CC1BA4162100678B2B /* TyphoonStoryboardProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonStoryboardProvider.h; sourceTree = "<group>"; };
 		9FDF58CD1BA4162100678B2B /* TyphoonStoryboardProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonStoryboardProvider.m; sourceTree = "<group>"; };
 		9FDF58D01BA4168100678B2B /* TyphoonStoryboardProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TyphoonStoryboardProviderTests.m; path = StoryboardProvider/TyphoonStoryboardProviderTests.m; sourceTree = "<group>"; };
@@ -1755,6 +1758,8 @@
 				6B076F861936F63A0083714E /* TyphoonLinkerCategoryBugFix.h */,
 				6B076F891936F63A0083714E /* TyphoonSelector.h */,
 				6B076F8A1936F63A0083714E /* TyphoonSelector.m */,
+				9FCE2FD01BD40529003896E6 /* TyphoonLogging.h */,
+				9FCE2FD11BD40529003896E6 /* TyphoonLogging.m */,
 				6B076F8B1936F63A0083714E /* TyphoonUtils.h */,
 			);
 			path = Utils;
@@ -2856,6 +2861,7 @@
 				6B0770B31936F9000083714E /* TyphoonReferenceDefinition.m in Sources */,
 				6B0770B41936F9000083714E /* TyphoonMethod+InstanceBuilder.m in Sources */,
 				6B0770B51936F9000083714E /* TyphoonMethod.m in Sources */,
+				9FCE2FD21BD40529003896E6 /* TyphoonLogging.m in Sources */,
 				6B0770B61936F9000083714E /* TyphoonDefinition.m in Sources */,
 				6B0770B81936F9000083714E /* TyphoonAssembly.m in Sources */,
 				9F65CEE11BA155590015765B /* TyphoonAssemblyBuilder.m in Sources */,
@@ -3549,6 +3555,10 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Source/Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "Tests/iOS/Typhoon-iOS/Typhoon-iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
