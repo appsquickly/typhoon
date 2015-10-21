@@ -144,10 +144,13 @@ Attach a TyphoonComponentFactoryPostProcessor to this component factory.
 + (id)defaultFactory;
 
 
-+ (void)setFactoryForResolvingFromXibs:(TyphoonComponentFactory *)factory;
++ (void)setFactoryForResolvingUI:(TyphoonComponentFactory *)factory;
+
+/** Factory used to resolve definition for UI. */
++ (TyphoonComponentFactory *)factoryForResolvingUI;
 
 /** Factory used to resolve definition from TyphoonLoadedView. */
-+ (TyphoonComponentFactory *)factoryForResolvingFromXibs;
++ (TyphoonComponentFactory *)factoryForResolvingFromXibs DEPRECATED_MSG_ATTRIBUTE("use factoryForResolvingUI instead");
 
 /**
 * Mutate the component definitions and

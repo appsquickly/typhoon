@@ -36,7 +36,7 @@
 
 static TyphoonComponentFactory *defaultFactory;
 
-static TyphoonComponentFactory *xibResolvingFactory = nil;
+static TyphoonComponentFactory *uiResolvingFactory = nil;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
@@ -47,14 +47,19 @@ static TyphoonComponentFactory *xibResolvingFactory = nil;
     return defaultFactory;
 }
 
-+ (void)setFactoryForResolvingFromXibs:(TyphoonComponentFactory *)factory
++ (void)setFactoryForResolvingUI:(TyphoonComponentFactory *)factory
 {
-    xibResolvingFactory = factory;
+    uiResolvingFactory = factory;
+}
+
++ (TyphoonComponentFactory *)factoryForResolvingUI
+{
+    return uiResolvingFactory;
 }
 
 + (TyphoonComponentFactory *)factoryForResolvingFromXibs
 {
-    return xibResolvingFactory;
+    return uiResolvingFactory;
 }
 
 //-------------------------------------------------------------------------------------------

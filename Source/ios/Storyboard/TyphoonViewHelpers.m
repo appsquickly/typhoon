@@ -20,9 +20,9 @@
     if ([[original subviews] count] > 0) {
         LogInfo(@"Warning: placeholder view contains (%d) subviews. They will be replaced by typhoon definition '%@'", (int)[[original subviews] count], definitionKey);
     }
-    TyphoonComponentFactory *currentFactory = [TyphoonComponentFactory factoryForResolvingFromXibs];
+    TyphoonComponentFactory *currentFactory = [TyphoonComponentFactory factoryForResolvingUI];
     if (!currentFactory) {
-        [NSException raise:NSInternalInconsistencyException format:@"Can't find Typhoon factory to resolve definition from xib. Check [TyphoonComponentFactory setFactoryForResolvingFromXibs:] method."];
+        [NSException raise:NSInternalInconsistencyException format:@"Can't find Typhoon factory to resolve definition from xib. Check [TyphoonComponentFactory setFactoryForResolvingUI:] method."];
     }
     id result = [currentFactory componentForKey:definitionKey];
     if (![result isKindOfClass:[UIView class]]) {

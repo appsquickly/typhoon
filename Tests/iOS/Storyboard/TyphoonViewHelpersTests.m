@@ -56,8 +56,8 @@ BOOL equalProperties(NSLayoutConstraint *c1, NSLayoutConstraint *c2){
 
 - (void)test_factory_exception {
     // given
-    [TyphoonComponentFactory setFactoryForResolvingFromXibs:nil];
-    NSString *expectedDescription = @"Can't find Typhoon factory to resolve definition from xib. Check [TyphoonComponentFactory setFactoryForResolvingFromXibs:] method.";
+    [TyphoonComponentFactory setFactoryForResolvingUI:nil];
+    NSString *expectedDescription = @"Can't find Typhoon factory to resolve definition from xib. Check [TyphoonComponentFactory setFactoryForResolvingUI:] method.";
     NSString *receivedDescription;
     
     // when
@@ -75,7 +75,7 @@ BOOL equalProperties(NSLayoutConstraint *c1, NSLayoutConstraint *c2){
 - (void)test_view_class_exception {
     // given
     TyphoonComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssemblies:@[[TyphoonViewHelpersFactory new]]];
-    [TyphoonComponentFactory setFactoryForResolvingFromXibs:factory];
+    [TyphoonComponentFactory setFactoryForResolvingUI:factory];
     
     NSString *definitionKey = @"notView";
     NSString *expectedDescription = [NSString stringWithFormat:@"Error: definition for key '%@' is not kind of UIView but %@",definitionKey, @""];
@@ -97,7 +97,7 @@ BOOL equalProperties(NSLayoutConstraint *c1, NSLayoutConstraint *c2){
 - (void)test_view_class {
     // given
     TyphoonComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssemblies:@[[TyphoonViewHelpersFactory new]]];
-    [TyphoonComponentFactory setFactoryForResolvingFromXibs:factory];
+    [TyphoonComponentFactory setFactoryForResolvingUI:factory];
     UIView *originalView = [UIView new];
     [originalView addSubview:[UIView new]];
     
