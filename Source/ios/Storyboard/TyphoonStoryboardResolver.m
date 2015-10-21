@@ -23,16 +23,13 @@
     NSBundle *bundle = [NSBundle mainBundle];
     TyphoonStoryboardProvider *provider = [TyphoonStoryboardProvider new];
     NSArray *resolvingStoryboardNames = [provider collectStoryboardsFromBundle:bundle];
-    NSString *initialStoryboardName = [provider obtainInitialStoryboardNameFromBundle:bundle];
     
     if (resolvingStoryboardNames.count > 0) {
-        [self swizzleUIStoryboardWithNames:resolvingStoryboardNames
-                     initialStoryboardName:initialStoryboardName];
+        [self swizzleUIStoryboardWithNames:resolvingStoryboardNames];
     }
 }
 
 + (void)swizzleUIStoryboardWithNames:(NSArray *)storyboardNames
-               initialStoryboardName:(NSString *)initialName
 {
     SEL sel = @selector(storyboardWithName:bundle:);
     Method method = class_getClassMethod([UIStoryboard class], sel);
@@ -41,14 +38,7 @@
     
     IMP adjustedImp = imp_implementationWithBlock(^id(id instance, NSString *name, NSBundle *bundle) {
         id componentFactory = [TyphoonComponentFactory factoryForResolvingUI];
-        BOOL isInitialStoryboard = [name isEqualToString:initialName];
-        
-        if (isInitialStoryboard && !componentFactory) {
-            [TyphoonStartup requireInitialFactory];
-            componentFactory = [TyphoonStartup initialFactory];
-            [TyphoonStartup releaseInitialFactory];
-        }
-        
+
         if ([instance class] == [UIStoryboard class] && componentFactory && [storyboardNames containsObject:name]) {
             return [TyphoonStoryboard storyboardWithName:name factory:componentFactory bundle:bundle];
         } else {

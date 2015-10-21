@@ -32,17 +32,6 @@
     return [storyboardNames allObjects];
 }
 
-- (NSString *)obtainInitialStoryboardNameFromBundle:(NSBundle *)bundle {
-    NSDictionary *infoDictionary = bundle.infoDictionary;
-    NSString *defaultStoryboardName = infoDictionary[@"UIMainStoryboardFile"];
-    
-    if (!defaultStoryboardName) {
-        defaultStoryboardName = infoDictionary[@"NSExtension"][@"NSExtensionMainStoryboard"];
-    }
-    
-    return defaultStoryboardName;
-}
-
 - (NSSet *)filterStoryboards:(NSSet *)storyboardNames withBlackListInBundle:(NSBundle *)bundle {
     NSDictionary *bundleInfoDictionary = [bundle infoDictionary];
     NSSet *blackListedNames = [NSSet setWithArray:bundleInfoDictionary[@"TyphoonCleanStoryboards"]];
