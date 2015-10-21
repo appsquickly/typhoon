@@ -40,6 +40,8 @@ FOUNDATION_EXPORT const unsigned char TyphoonVersionString[];
 
 #import "TyphoonAutoInjection.h"
 
+#import "TyphoonLogging.h"
+
 #if TARGET_OS_IPHONE
 #import "TyphooniOS.h"
 #endif
