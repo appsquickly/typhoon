@@ -39,7 +39,7 @@ ditto ${resourceDir}/build-failed.png ${reportsDir}/build-status/build-status.pn
 xcodebuild -project Typhoon.xcodeproj/ -scheme 'Typhoon' clean build | xcpretty -c
 
 #Run tests and produce coverage report for iOS Simulator
-osVersion=9.0
+osVersion=9.1
 platform=iOS_Simulator_$osVersion
 mkdir -p ${reportsDir}/${platform}
 xcodebuild clean test -project Typhoon.xcodeproj -scheme 'Typhoon-iOSTests' -configuration Debug \
