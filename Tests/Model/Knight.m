@@ -49,6 +49,11 @@
     return self;
 }
 
+- (id)initNilInstance
+{
+    return nil;
+}
+
 - (void)setFoobar:(id<NSObject>)foobar andHasHorse:(BOOL)hasHorse friends:(NSSet *)friends
 {
     _foobar = foobar;

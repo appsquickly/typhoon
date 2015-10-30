@@ -98,4 +98,10 @@
 
 - (id)simpleRuntimeArgument:(id)argument;
 
+- (id)occasionallyNilKnightWithBeforeInjections;
+
+- (id)occasionallyNilKnightWithAfterInjections;
+
+- (id)occasionallyNilKnightWithMethodInjections;
+
 @end

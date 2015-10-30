@@ -390,5 +390,30 @@
     return [TyphoonDefinition with:argument];
 }
 
+- (id)occasionallyNilKnightWithBeforeInjections
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(initNilInstance)];
+        [definition performBeforeInjections:@selector(favoriteQuest)];
+    }];
+}
+
+- (id)occasionallyNilKnightWithAfterInjections
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(initNilInstance)];
+        [definition performAfterInjections:@selector(favoriteQuest)];
+    }];
+}
+
+- (id)occasionallyNilKnightWithMethodInjections
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(initNilInstance)];
+        [definition injectMethod:@selector(setDamselsRescued:) parameters:^(TyphoonMethod *method) {
+            [method injectParameterWith:@42];
+        }];
+    }];
+}
 
 @end

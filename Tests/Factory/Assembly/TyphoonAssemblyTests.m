@@ -196,5 +196,34 @@
     [assembly makeDefault];
 }
 
+- (void)test_nil_definition_with_injection_hooks
+{
+    MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+    [assembly activate];
+
+    @try {
+        Knight *knight = [assembly occasionallyNilKnightWithBeforeInjections];
+        [knight description];
+    }
+    @catch (NSException *e) {
+        XCTAssertNil(e);
+    }
+    
+    @try {
+        Knight *knight = [assembly occasionallyNilKnightWithAfterInjections];
+        [knight description];
+    }
+    @catch (NSException *e) {
+        XCTAssertNil(e);
+    }
+    
+    @try {
+        Knight *knight = [assembly occasionallyNilKnightWithMethodInjections];
+        [knight description];
+    }
+    @catch (NSException *e) {
+        XCTAssertNil(e);
+    }
+}
 
 @end

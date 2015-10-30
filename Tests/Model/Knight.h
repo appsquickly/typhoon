@@ -45,6 +45,8 @@
 
 - (id)initWithDamselsRescued:(NSUInteger)damselsRescued foo:(id)foobar;
 
+- (id)initNilInstance;
+
 - (NSString *)description;
 
 
