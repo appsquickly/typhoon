@@ -17,7 +17,7 @@
 
 }
 
-- (instancetype)initWithObject:(id)object clazz:(Class)clazz block:(void (^)())block
+- (instancetype)initWithObject:(id)object clazz:(Class)clazz block:(void (^)(void))block
 {
     self = [super init];
     if (self) {

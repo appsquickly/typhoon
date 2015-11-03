@@ -14,9 +14,9 @@
 
 #define typhoon_asynch_condition(expression) return expression;
 
-typedef BOOL (^TyphoonAsynchConditionBlock)();
+typedef BOOL (^TyphoonAsynchConditionBlock)(void);
 
-typedef void (^TyphoonTestAssertionsBlock)();
+typedef void (^TyphoonTestAssertionsBlock)(void);
 
 /**
 * @ingroup Test

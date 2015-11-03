@@ -71,8 +71,8 @@
     XCTAssertEqualObjects([_assembly simpleRuntimeArgument:@1], @1);
     XCTAssertEqualObjects([_assembly simpleRuntimeArgument:@"123"], @"123");
 
-    NSNumber*(^block)() = ^{ return @1; };
-    XCTAssertEqualObjects(((id(^)())[_assembly simpleRuntimeArgument:block])(), @1);
+    NSNumber*(^block)(void) = ^{ return @1; };
+    XCTAssertEqualObjects(((id(^)(void))[_assembly simpleRuntimeArgument:block])(), @1);
 }
 
 @end

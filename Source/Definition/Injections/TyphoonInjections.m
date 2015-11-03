@@ -60,7 +60,7 @@ id TyphoonInjectionWithRuntimeArgumentAtIndex(NSUInteger argumentIndex) {
 }
 
 id TyphoonInjectionWithRuntimeArgumentAtIndexWrappedIntoBlock(NSUInteger argumentIndex) {
-    id(^block)() = ^{return[[TyphoonInjectionByRuntimeArgument alloc] initWithArgumentIndex:argumentIndex];};
+    id(^block)(void) = ^{return[[TyphoonInjectionByRuntimeArgument alloc] initWithArgumentIndex:argumentIndex];};
     objc_setAssociatedObject(block, &typhoonRuntimeArgumentBlockWrapperKey, @YES, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     return block;
 }
@@ -93,7 +93,7 @@ id TyphoonMakeInjectionFromObjectIfNeeded(id objectOrInjection) {
         injection = objectOrInjection;
     }
     else if (IsWrappedIntoTyphoonBlock(objectOrInjection)) {
-        injection = ((id(^)())objectOrInjection)();
+        injection = ((id(^)(void))objectOrInjection)();
     }
     else {
         injection = TyphoonInjectionWithObject(objectOrInjection);

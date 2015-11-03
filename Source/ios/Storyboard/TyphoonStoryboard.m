@@ -23,7 +23,7 @@
 
 @property(nonatomic, strong) NSString *typhoonKey;
 
-- (void)setViewDidLoadNotificationBlock:(void(^)())viewDidLoadBlock;
+- (void)setViewDidLoadNotificationBlock:(void(^)(void))viewDidLoadBlock;
 
 + (void)swizzleViewDidLoadMethod;
 
@@ -44,7 +44,7 @@ static const char *kTyphoonViewDidLoadBlock;
     return objc_getAssociatedObject(self, &kTyphoonKey);
 }
 
-- (void)setViewDidLoadNotificationBlock:(void(^)())viewDidLoadBlock
+- (void)setViewDidLoadNotificationBlock:(void(^)(void))viewDidLoadBlock
 {
     objc_setAssociatedObject(self, &kTyphoonViewDidLoadBlock, viewDidLoadBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
@@ -58,7 +58,7 @@ static const char *kTyphoonViewDidLoadBlock;
 
     IMP adjustedImp = imp_implementationWithBlock(^void(id instance) {
 
-        void(^didLoadBlock)() = objc_getAssociatedObject(instance, &kTyphoonViewDidLoadBlock);
+        void(^didLoadBlock)(void) = objc_getAssociatedObject(instance, &kTyphoonViewDidLoadBlock);
         if (didLoadBlock) {
             didLoadBlock();
             objc_setAssociatedObject(instance, &kTyphoonViewDidLoadBlock, nil, OBJC_ASSOCIATION_COPY_NONATOMIC);

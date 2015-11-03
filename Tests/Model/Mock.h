@@ -16,9 +16,9 @@
 
 @property (nonatomic, strong) id object;
 @property (nonatomic, strong) Class clazz;
-@property (nonatomic, strong) void(^block)();
+@property (nonatomic, strong) void(^block)(void);
 
-- (instancetype)initWithObject:(id)object clazz:(Class)clazz block:(void (^)())block;
+- (instancetype)initWithObject:(id)object clazz:(Class)clazz block:(void (^)(void))block;
 
 
 @end

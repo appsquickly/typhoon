@@ -60,8 +60,7 @@
     Mock *mock = [factory mockWithRuntimeBlock:^NSString *{
        return @"Hello";
     } andRuntimeClass:[NSString class]];
-
-    XCTAssertEqualObjects(((NSString *(^)())mock.block)(), @"Hello");
+    XCTAssertEqualObjects(((NSString *(^)(void))mock.block)(), @"Hello");
     XCTAssertEqual(mock.clazz, [NSString class]);
 
 }
@@ -192,14 +191,14 @@
     Mock *mock1 = [factory mockWithRuntimeClass:[NSString class]];
 
     XCTAssertTrue(mock1.clazz == [NSString class]);
-    XCTAssertTrue([((NSString*(^)()) mock1.block)() isEqualToString:@"Hello"]);
+    XCTAssertTrue([((NSString*(^)(void)) mock1.block)() isEqualToString:@"Hello"]);
 
     Mock *mock2 = [factory mockWithRuntimeBlock:^NSString * {
         return @"Hello2";
     }];
 
     XCTAssertTrue(mock2.clazz == [NSString class]);
-    XCTAssertTrue([((NSString*(^)()) mock2.block)() isEqualToString:@"Hello2"]);
+    XCTAssertTrue([((NSString*(^)(void)) mock2.block)() isEqualToString:@"Hello2"]);
 }
 
 - (void)test_runtime_argument_shortcut_point_to_shortcut
