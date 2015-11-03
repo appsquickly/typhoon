@@ -354,7 +354,7 @@
 		8994D47F1B55BA6600662766 /* ClassForNoSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8994D47D1B55BA6600662766 /* ClassForNoSubclass.m */; };
 		89FAD3211BA7C65900D3546B /* TyphoonStoryboardProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF58CD1BA4162100678B2B /* TyphoonStoryboardProvider.m */; settings = {ASSET_TAGS = (); }; };
 		89FAD3221BA7C66300D3546B /* TyphoonStoryboardProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF58CD1BA4162100678B2B /* TyphoonStoryboardProvider.m */; settings = {ASSET_TAGS = (); }; };
-		905214711A3770AE006A935B /* OCLogTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F911936F63A0083714E /* OCLogTemplate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		905214711A3770AE006A935B /* OCLogTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F911936F63A0083714E /* OCLogTemplate.h */; };
 		90ABC3F51A36B09E008D8162 /* Typhoon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90ABC3EA1A36B09E008D8162 /* Typhoon.framework */; };
 		90ABC4031A36B0BA008D8162 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B076E611936F5850083714E /* UIKit.framework */; };
 		90ABC4041A36B0C0008D8162 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B076E5D1936F5850083714E /* Foundation.framework */; };
