@@ -496,8 +496,8 @@
 		90ABC49E1A36B2A1008D8162 /* TyphoonBundledImageTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F561936F63A0083714E /* TyphoonBundledImageTypeConverter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90ABC49F1A36B2A1008D8162 /* TyphoonUIColorTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F581936F63A0083714E /* TyphoonUIColorTypeConverter.h */; };
 		90ABC4A01A36B2A2008D8162 /* TyphooniOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F5A1936F63A0083714E /* TyphooniOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		90ABC4A11A36B2A2008D8162 /* TyphoonPatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F5F1936F63A0083714E /* TyphoonPatcher.h */; };
-		90ABC4A21A36B2A2008D8162 /* TyphoonTestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F641936F63A0083714E /* TyphoonTestUtils.h */; };
+		90ABC4A11A36B2A2008D8162 /* TyphoonPatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F5F1936F63A0083714E /* TyphoonPatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90ABC4A21A36B2A2008D8162 /* TyphoonTestUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F641936F63A0083714E /* TyphoonTestUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90ABC4A31A36B2A2008D8162 /* TyphoonNSURLTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F681936F63A0083714E /* TyphoonNSURLTypeConverter.h */; };
 		90ABC4A41A36B2A2008D8162 /* TyphoonPassThroughTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F6A1936F63A0083714E /* TyphoonPassThroughTypeConverter.h */; };
 		90ABC4A51A36B2A2008D8162 /* TyphoonPrimitiveTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F6C1936F63A0083714E /* TyphoonPrimitiveTypeConverter.h */; };
@@ -524,6 +524,10 @@
 		90ABC4CA1A36BA53008D8162 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90ABC4C81A36BA53008D8162 /* LaunchScreen.xib */; };
 		90ABC4D61A36BA53008D8162 /* TyphoonFrameworkSwiftExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABC4D51A36BA53008D8162 /* TyphoonFrameworkSwiftExampleTests.swift */; };
 		90ABC4E21A36BAE5008D8162 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABC4E11A36BAE5008D8162 /* Assembly.swift */; };
+		9F0591DF1BE883E4007CCB9C /* TyphoonLoadedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DBA1F7A42D15F175F25EF57 /* TyphoonLoadedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9F0591E01BE88404007CCB9C /* TyphoonViewHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 8946F2DE1B8E403E005C4954 /* TyphoonViewHelpers.h */; settings = {ASSET_TAGS = (); }; };
+		9F0591E11BE88408007CCB9C /* TyphoonStoryboardProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FDF58CC1BA4162100678B2B /* TyphoonStoryboardProvider.h */; settings = {ASSET_TAGS = (); }; };
+		9F0591E21BE8847D007CCB9C /* TyphoonInjectionDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DBA1463AEC1B97752A6DF8C /* TyphoonInjectionDefinition.h */; settings = {ASSET_TAGS = (); }; };
 		9F2C08A81BA0C7AF0049D751 /* TyphoonCollaboratingAssembliesCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F2C08A71BA0C7AF0049D751 /* TyphoonCollaboratingAssembliesCollector.m */; };
 		9F5E6FAC1BA15073000356A0 /* TyphoonCollaboratingAssembliesCollectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E6FAB1BA15073000356A0 /* TyphoonCollaboratingAssembliesCollectorTests.m */; };
 		9F65CEDA1BA153850015765B /* TyphoonCollaboratingAssembliesCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F2C08A71BA0C7AF0049D751 /* TyphoonCollaboratingAssembliesCollector.m */; };
@@ -2414,6 +2418,7 @@
 				90ABC45F1A36B29E008D8162 /* TyphoonDefinitionPostProcessor.h in Headers */,
 				90ABC4A01A36B2A2008D8162 /* TyphooniOS.h in Headers */,
 				90ABC47E1A36B29F008D8162 /* TyphoonAutoInjection.h in Headers */,
+				9F0591DF1BE883E4007CCB9C /* TyphoonLoadedView.h in Headers */,
 				90ABC48C1A36B2A0008D8162 /* NSObject+FactoryHooks.h in Headers */,
 				90ABC4B21A36B2A3008D8162 /* TyphoonIntrospectionUtils.h in Headers */,
 				90ABC4991A36B2A1008D8162 /* TyphoonComponentFactory.h in Headers */,
@@ -2475,6 +2480,7 @@
 				90ABC49A1A36B2A1008D8162 /* TyphoonDefinitionRegisterer.h in Headers */,
 				90ABC49B1A36B2A1008D8162 /* TyphoonViewControllerNibResolver.h in Headers */,
 				90ABC49D1A36B2A1008D8162 /* TyphoonStoryboardResolver.h in Headers */,
+				9F0591E21BE8847D007CCB9C /* TyphoonInjectionDefinition.h in Headers */,
 				90ABC49F1A36B2A1008D8162 /* TyphoonUIColorTypeConverter.h in Headers */,
 				90ABC4A11A36B2A2008D8162 /* TyphoonPatcher.h in Headers */,
 				90ABC4A21A36B2A2008D8162 /* TyphoonTestUtils.h in Headers */,
@@ -2495,6 +2501,8 @@
 				90ABC4B51A36B2A4008D8162 /* TyphoonUtils.h in Headers */,
 				BA79856C39847DFDC799BA76 /* TyphoonCollaboratingAssemblyPropertyEnumerator.h in Headers */,
 				BA79830373597A7AA358C2D8 /* TyphoonCollaboratingAssemblyProxy.h in Headers */,
+				9F0591E11BE88408007CCB9C /* TyphoonStoryboardProvider.h in Headers */,
+				9F0591E01BE88404007CCB9C /* TyphoonViewHelpers.h in Headers */,
 				BA798EB0684A45DDBA818962 /* TyphoonBlockComponentFactory.h in Headers */,
 				BA79808B1AE811F764E7B14F /* TyphoonCircularDependencyTerminator.h in Headers */,
 				BA798A97C60EC12681B6AAF4 /* TyphoonAssemblyDefinitionBuilder.h in Headers */,
