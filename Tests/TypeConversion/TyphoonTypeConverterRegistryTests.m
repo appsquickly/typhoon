@@ -54,7 +54,15 @@
     @catch (NSException *e) {
         XCTAssertEqualObjects([e description], @"Converter for 'NSURL' already registered.");
     }
+}
 
+- (void)test_unregisters_converter
+{
+    id <TyphoonTypeConverter> converter = [self.registry converterForType:@"NSURL"];
+    [self.registry unregisterTypeConverter:converter];
+    
+    converter = [self.registry converterForType:@"NSURL"];
+    XCTAssertNil(converter);
 }
 
 @end

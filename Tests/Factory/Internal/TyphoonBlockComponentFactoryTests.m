@@ -249,6 +249,15 @@
     XCTAssertNotNil(nullConverter);
 }
 
+- (void)test_factories_have_different_converter_registries
+{
+    id existingConverter = [_infrastructureComponentsFactory.typeConverterRegistry converterForType:@"NSNull"];
+    id nonExistingConverter = [_componentFactory.typeConverterRegistry converterForType:@"NSNull"];
+    
+    XCTAssertNotNil(existingConverter);
+    XCTAssertNil(nonExistingConverter);
+}
+
 //-------------------------------------------------------------------------------------------
 #pragma mark - Circular dependencies.
 
