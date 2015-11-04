@@ -531,13 +531,13 @@
 		9F0F25171BEA13CA002AD880 /* TyphoonTypeConversionUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F25161BEA13CA002AD880 /* TyphoonTypeConversionUtilsTests.m */; };
 		9F0F25211BEA22B0002AD880 /* TyphoonTypeConversionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F0F25121BEA1267002AD880 /* TyphoonTypeConversionUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F0F25271BEA2374002AD880 /* TyphoonNSColorTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F25251BEA2327002AD880 /* TyphoonNSColorTypeConverter.m */; };
-		9F0F25281BEA237B002AD880 /* TyphoonNSColorTypeConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F25251BEA2327002AD880 /* TyphoonNSColorTypeConverter.m */; };
 		9F0F252C1BEA240B002AD880 /* TyphoonNSColorTypeConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F252A1BEA23E6002AD880 /* TyphoonNSColorTypeConverterTests.m */; };
 		9F0F25301BEA2571002AD880 /* TyphoonColorConversionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F252F1BEA2571002AD880 /* TyphoonColorConversionUtils.m */; };
 		9F0F25311BEA27A7002AD880 /* TyphoonColorConversionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F252F1BEA2571002AD880 /* TyphoonColorConversionUtils.m */; };
 		9F0F25321BEA27A9002AD880 /* TyphoonColorConversionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F252F1BEA2571002AD880 /* TyphoonColorConversionUtils.m */; };
 		9F0F25331BEA2845002AD880 /* TyphoonNSColorTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F0F25241BEA2327002AD880 /* TyphoonNSColorTypeConverter.h */; };
 		9F0F25341BEA2859002AD880 /* TyphoonColorConversionUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F0F252E1BEA2571002AD880 /* TyphoonColorConversionUtils.h */; };
+		9F0F25351BEA37B0002AD880 /* TyphoonTypeConversionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0F25131BEA1267002AD880 /* TyphoonTypeConversionUtils.m */; };
 		9F2C08A81BA0C7AF0049D751 /* TyphoonCollaboratingAssembliesCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F2C08A71BA0C7AF0049D751 /* TyphoonCollaboratingAssembliesCollector.m */; };
 		9F5E6FAC1BA15073000356A0 /* TyphoonCollaboratingAssembliesCollectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E6FAB1BA15073000356A0 /* TyphoonCollaboratingAssembliesCollectorTests.m */; };
 		9F65CEDA1BA153850015765B /* TyphoonCollaboratingAssembliesCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F2C08A71BA0C7AF0049D751 /* TyphoonCollaboratingAssembliesCollector.m */; };
@@ -3375,7 +3375,6 @@
 				90ABC4421A36B1B4008D8162 /* TyphoonUIColorTypeConverter.m in Sources */,
 				90ABC4431A36B1B4008D8162 /* TyphoonPatcher.m in Sources */,
 				90ABC4441A36B1B4008D8162 /* TyphoonTestUtils.m in Sources */,
-				9F0F25281BEA237B002AD880 /* TyphoonNSColorTypeConverter.m in Sources */,
 				90ABC4451A36B1B4008D8162 /* TyphoonNSURLTypeConverter.m in Sources */,
 				90ABC4461A36B1B4008D8162 /* TyphoonPassThroughTypeConverter.m in Sources */,
 				90ABC4471A36B1B4008D8162 /* TyphoonPrimitiveTypeConverter.m in Sources */,
@@ -3397,6 +3396,7 @@
 				BA7980CA5E28C0A57782216D /* TyphoonAssemblyDefinitionBuilder.m in Sources */,
 				BA79832E9C8A2BD2867CFD99 /* TyphoonBlockComponentFactory.m in Sources */,
 				BA79800CECE8B23578FA08B1 /* TyphoonAssemblyAdviser.m in Sources */,
+				9F0F25351BEA37B0002AD880 /* TyphoonTypeConversionUtils.m in Sources */,
 				BA7986EA05EDBA52E3A03713 /* TyphoonCircularDependencyTerminator.m in Sources */,
 				BA798BD91687D3E190DF0428 /* TyphoonAssemblyPropertyInjectionPostProcessor.m in Sources */,
 			);

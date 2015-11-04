@@ -54,9 +54,9 @@
 + (struct RGBA)colorFromRed:(NSUInteger)red green:(NSUInteger)green blue:(NSUInteger)blue alpha:(CGFloat)alpha
 {
     struct RGBA color;
-    color.red = (CGFloat)red / 255.0;
-    color.green = (CGFloat)green / 255.0;
-    color.blue = (CGFloat)blue / 255.0;
+    color.red = (CGFloat)(red / 255.0);
+    color.green = (CGFloat)(green / 255.0);
+    color.blue = (CGFloat)(blue / 255.0);
     color.alpha = (CGFloat)alpha;
     return color;
 }
