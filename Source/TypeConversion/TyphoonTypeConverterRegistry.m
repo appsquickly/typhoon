@@ -19,6 +19,7 @@
 #import "TyphoonNSURLTypeConverter.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonNSNumberTypeConverter.h"
+#import "TyphoonNSColorTypeConverter.h"
 
 @interface TyphoonTypeConverterRegistry ()
 
@@ -96,7 +97,7 @@
     }
 #else
     {
-
+        [self registerTypeConverter:[[TyphoonClassFromString(@"TyphoonNSColorTypeConverter") alloc] init]];
     }
 #endif
 }
