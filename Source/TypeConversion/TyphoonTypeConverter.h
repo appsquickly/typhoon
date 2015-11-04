@@ -12,7 +12,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonTypeConverterRegistry.h"
-
+#import "TyphoonTypeConversionUtils.h"
 
 /**
 * Declares a contract for converting configuration arguments to their required runtime type.

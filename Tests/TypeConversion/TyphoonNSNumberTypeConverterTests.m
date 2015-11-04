@@ -25,7 +25,14 @@
 - (void)setUp
 {
     [super setUp];
-    self.converter = [[TyphoonTypeConverterRegistry shared] converterForType:@"NSNumber"];
+    TyphoonTypeConverterRegistry *registry = [[TyphoonTypeConverterRegistry alloc] init];
+    self.converter = [registry converterForType:@"NSNumber"];
+}
+
+- (void)tearDown
+{
+    [super tearDown];
+    self.converter = nil;
 }
 
 - (void)test_converts_integer

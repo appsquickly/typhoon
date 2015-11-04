@@ -22,7 +22,7 @@
 
 - (id)convert:(NSString *)stringValue
 {
-    stringValue = [TyphoonTypeConverterRegistry textWithoutTypeFromTextValue:stringValue];
+    stringValue = [TyphoonTypeConversionUtils textWithoutTypeFromTextValue:stringValue];
 
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];

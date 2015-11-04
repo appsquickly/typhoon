@@ -22,7 +22,7 @@
 
 - (id)convert:(NSString *)stringValue
 {
-    stringValue = [TyphoonTypeConverterRegistry textWithoutTypeFromTextValue:stringValue];
+    stringValue = [TyphoonTypeConversionUtils textWithoutTypeFromTextValue:stringValue];
     __autoreleasing NSURL *url = [NSURL URLWithString:stringValue];
     return url;
 }

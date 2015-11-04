@@ -72,8 +72,8 @@
     // Unregister NSNull converter picked up in infrastructure components assembly.
     // Try/catch to make the correct test fail if converterFor: throws an exception because of missing converter.
     @try {
-        id<TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterForType:@"NSNull"];
-        [[TyphoonTypeConverterRegistry shared] unregisterTypeConverter:converter];
+        id<TyphoonTypeConverter> converter = [_infrastructureComponentsFactory.typeConverterRegistry converterForType:@"NSNull"];
+        [_infrastructureComponentsFactory.typeConverterRegistry unregisterTypeConverter:converter];
     }
     @catch (NSException *exception) {}
 }
@@ -245,8 +245,17 @@
 
 - (void)test_type_converter_recognized
 {
-    id<TyphoonTypeConverter> nullConverter = [[TyphoonTypeConverterRegistry shared] converterForType:@"NSNull"];
+    id<TyphoonTypeConverter> nullConverter = [_infrastructureComponentsFactory.typeConverterRegistry converterForType:@"NSNull"];
     XCTAssertNotNil(nullConverter);
+}
+
+- (void)test_factories_have_different_converter_registries
+{
+    id existingConverter = [_infrastructureComponentsFactory.typeConverterRegistry converterForType:@"NSNull"];
+    id nonExistingConverter = [_componentFactory.typeConverterRegistry converterForType:@"NSNull"];
+    
+    XCTAssertNotNil(existingConverter);
+    XCTAssertNil(nonExistingConverter);
 }
 
 //-------------------------------------------------------------------------------------------

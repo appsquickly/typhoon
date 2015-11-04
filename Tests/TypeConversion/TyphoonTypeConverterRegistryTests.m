@@ -20,22 +20,27 @@
 @interface TyphoonTypeConverterRegistryTests : XCTestCase
 
 @property(nonatomic, strong) NSData *data;
+@property TyphoonTypeConverterRegistry *registry;
 
 @end
 
 @implementation TyphoonTypeConverterRegistryTests
-{
-    TyphoonTypeConverterRegistry *_registry;
-}
 
 - (void)setUp
 {
-    _registry = [TyphoonTypeConverterRegistry shared];
+    [super setUp];
+    self.registry = [[TyphoonTypeConverterRegistry alloc] init];
+}
+
+- (void)tearDown
+{
+    [super tearDown];
+    self.registry = nil;
 }
 
 - (void)test_raises_exception_when_converter_class_not_registered
 {
-    id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterForType:@"NSData"];
+    id <TyphoonTypeConverter> converter = [self.registry converterForType:@"NSData"];
     XCTAssertNil(converter);
 }
 
@@ -49,7 +54,15 @@
     @catch (NSException *e) {
         XCTAssertEqualObjects([e description], @"Converter for 'NSURL' already registered.");
     }
+}
 
+- (void)test_unregisters_converter
+{
+    id <TyphoonTypeConverter> converter = [self.registry converterForType:@"NSURL"];
+    [self.registry unregisterTypeConverter:converter];
+    
+    converter = [self.registry converterForType:@"NSURL"];
+    XCTAssertNil(converter);
 }
 
 @end

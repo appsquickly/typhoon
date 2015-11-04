@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  TYPHOON FRAMEWORK
-//  Copyright 2013, Typhoon Framework Contributors
+//  Copyright 2015, Typhoon Framework Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -9,19 +9,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
-#import "TyphoonUIColorTypeConverter.h"
+#import "TyphoonNSColorTypeConverter.h"
 
 #import "TyphoonColorConversionUtils.h"
 
-#import <UIKit/UIKit.h>
-
-
-@implementation TyphoonUIColorTypeConverter
+@implementation TyphoonNSColorTypeConverter
 
 - (id)supportedType
 {
-    return @"UIColor";
+    return @"NSColor";
 }
 
 - (id)convert:(NSString *)stringValue
@@ -40,9 +36,9 @@
     return [self colorFromRGBA:color];
 }
 
-- (UIColor *)colorFromRGBA:(struct RGBA)rgba
+- (NSColor *)colorFromRGBA:(struct RGBA)rgba
 {
-    return [UIColor colorWithRed:rgba.red green:rgba.green blue:rgba.blue alpha:rgba.alpha];
+    return [NSColor colorWithRed:rgba.red green:rgba.green blue:rgba.blue alpha:rgba.alpha];
 }
 
 @end
