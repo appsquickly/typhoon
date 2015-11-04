@@ -70,7 +70,7 @@
 
 - (id)convert:(NSString *)stringValue
 {
-    stringValue = [TyphoonTypeConverterRegistry textWithoutTypeFromTextValue:stringValue];
+    stringValue = [TyphoonTypeConversionUtils textWithoutTypeFromTextValue:stringValue];
 
     UIColor *color = nil;
 

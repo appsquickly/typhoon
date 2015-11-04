@@ -65,7 +65,7 @@
 - (id)convertText:(NSString *)text
 {
     id result = text;
-    NSString *typeString = [TyphoonTypeConverterRegistry typeFromTextValue:text];
+    NSString *typeString = [TyphoonTypeConversionUtils typeFromTextValue:text];
     if (typeString) {
         id <TyphoonTypeConverter> converter = [[TyphoonTypeConverterRegistry shared] converterForType:typeString];
         if (converter) {

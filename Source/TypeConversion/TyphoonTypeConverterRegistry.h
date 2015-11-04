@@ -31,10 +31,6 @@
 */
 + (TyphoonTypeConverterRegistry *)shared;
 
-
-+ (NSString *)typeFromTextValue:(NSString *)textValue;
-+ (NSString *)textWithoutTypeFromTextValue:(NSString *)textValue;
-
 /**
  * Returns the type converter for the given type string. Usually type is class of object you want to convert.
  * For example for NSURL type, you should use next syntax in properties file.
