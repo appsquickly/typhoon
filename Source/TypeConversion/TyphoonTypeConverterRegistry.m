@@ -20,6 +20,13 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonNSNumberTypeConverter.h"
 
+@interface TyphoonTypeConverterRegistry ()
+
+@property (strong, nonatomic) TyphoonPrimitiveTypeConverter *primitiveTypeConverter;
+@property (strong, nonatomic) NSMutableDictionary *typeConverters;
+
+@end
+
 @implementation TyphoonTypeConverterRegistry
 
 //-------------------------------------------------------------------------------------------
@@ -34,8 +41,6 @@
 
         [self registerSharedConverters];
         [self registerPlatformConverters];
-
-
     }
     return self;
 }
