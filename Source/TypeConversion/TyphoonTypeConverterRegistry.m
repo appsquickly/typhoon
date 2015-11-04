@@ -23,20 +23,6 @@
 @implementation TyphoonTypeConverterRegistry
 
 //-------------------------------------------------------------------------------------------
-#pragma mark - Class Methods
-
-+ (TyphoonTypeConverterRegistry *)shared
-{
-    static dispatch_once_t onceToken;
-    static TyphoonTypeConverterRegistry *instance;
-
-    dispatch_once(&onceToken, ^{
-        instance = [[[self class] alloc] init];
-    });
-    return instance;
-}
-
-//-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
 
 - (id)init

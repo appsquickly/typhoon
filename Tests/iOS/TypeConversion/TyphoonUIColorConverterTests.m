@@ -24,8 +24,15 @@
 - (void)setUp
 {
     [super setUp];
-    self.converter = [[TyphoonTypeConverterRegistry shared] converterForType:@"UIColor"];
+    TyphoonTypeConverterRegistry *registry = [[TyphoonTypeConverterRegistry alloc] init];
+    self.converter = [registry converterForType:@"UIColor"];
 
+}
+
+- (void)tearDown
+{
+    [super tearDown];
+    self.converter = nil;
 }
 
 - (void)assertColor:(UIColor *)color red:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha

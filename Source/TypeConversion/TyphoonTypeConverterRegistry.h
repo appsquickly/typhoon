@@ -16,7 +16,6 @@
 @class TyphoonTypeDescriptor;
 @class TyphoonPrimitiveTypeConverter;
 
-
 /**
 * Registry of type converters, with special treatment for primitives.
 */
@@ -25,11 +24,6 @@
     TyphoonPrimitiveTypeConverter *_primitiveTypeConverter;
     NSMutableDictionary *_typeConverters;
 }
-
-/**
-* Returns the shard/default registry instance used by the container.
-*/
-+ (TyphoonTypeConverterRegistry *)shared;
 
 /**
  * Returns the type converter for the given type string. Usually type is class of object you want to convert.

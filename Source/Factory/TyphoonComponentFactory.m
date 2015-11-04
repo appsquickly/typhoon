@@ -25,6 +25,7 @@
 #import "TyphoonWeakComponentsPool.h"
 #import "TyphoonFactoryAutoInjectionPostProcessor.h"
 #import "TyphoonStackElement.h"
+#import "TyphoonTypeConverterRegistry.h"
 
 @interface TyphoonDefinition (TyphoonComponentFactory)
 
@@ -75,6 +76,7 @@ static TyphoonComponentFactory *uiResolvingFactory = nil;
         _weakSingletons = [TyphoonWeakComponentsPool new];
         _objectGraphSharedInstances = (id<TyphoonComponentsPool>)[[NSMutableDictionary alloc] init];
         _stack = [TyphoonCallStack stack];
+        _typeConverterRegistry = [[TyphoonTypeConverterRegistry alloc] init];
         _definitionPostProcessors = [[NSMutableArray alloc] init];
         _instancePostProcessors = [[NSMutableArray alloc] init];
         [self attachPostProcessor:[TyphoonParentReferenceHydratingPostProcessor new]];
@@ -208,6 +210,10 @@ static TyphoonComponentFactory *uiResolvingFactory = nil;
         }
         defaultFactory = self;
     }
+}
+
+- (TyphoonTypeConverterRegistry *)typeConverterRegistry {
+    return _typeConverterRegistry;
 }
 
 - (NSArray *)registry

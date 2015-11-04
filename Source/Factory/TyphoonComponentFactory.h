@@ -18,6 +18,7 @@
 @class TyphoonDefinition;
 @class TyphoonCallStack;
 @class TyphoonRuntimeArguments;
+@class TyphoonTypeConverterRegistry;
 
 /**
 *
@@ -102,6 +103,7 @@ Attach a TyphoonComponentFactoryPostProcessor to this component factory.
     id <TyphoonComponentsPool> _weakSingletons;
 
     TyphoonCallStack *_stack;
+    TyphoonTypeConverterRegistry *_typeConverterRegistry;
     NSMutableArray *_definitionPostProcessors;
     NSMutableArray *_instancePostProcessors;
     BOOL _isLoading;
@@ -171,6 +173,8 @@ Attach a TyphoonComponentFactoryPostProcessor to this component factory.
 
 
 - (NSArray *)registry;
+
+- (TyphoonTypeConverterRegistry *)typeConverterRegistry;
 
 - (void)enumerateDefinitions:(void(^)(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace, BOOL *stop))block;
 
