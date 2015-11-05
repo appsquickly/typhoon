@@ -13,13 +13,11 @@
 #import <objc/runtime.h>
 #import "TyphoonTypeConverterRegistry.h"
 #import "TyphoonTypeConverter.h"
-#import "TyphoonTypeDescriptor.h"
 #import "TyphoonPrimitiveTypeConverter.h"
 #import "TyphoonPassThroughTypeConverter.h"
 #import "TyphoonNSURLTypeConverter.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonNSNumberTypeConverter.h"
-#import "TyphoonNSColorTypeConverter.h"
 
 @interface TyphoonTypeConverterRegistry ()
 

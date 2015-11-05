@@ -159,6 +159,8 @@
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/TypeConversion/Converters/TyphoonUIColorTypeConverter.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/TyphooniOS.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/osx/.gitkeep" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/osx/TypeConversion/Converters/TyphoonNSColorTypeConverter.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/osx/TypeConversion/Converters/TyphoonNSColorTypeConverter.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Prefix.pch" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Test/Patcher/TyphoonPatcher.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Test/Patcher/TyphoonPatcher.m" isTestSource="false" />
@@ -174,6 +176,10 @@
       <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonPassThroughTypeConverter.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonPrimitiveTypeConverter.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonPrimitiveTypeConverter.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Helpers/TyphoonColorConversionUtils.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Helpers/TyphoonColorConversionUtils.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeConversionUtils.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeConversionUtils.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeConverter.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeConverterRegistry.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeConverterRegistry.m" isTestSource="false" />
@@ -387,6 +393,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/SingletonsChain/SingletonA.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/SingletonsChain/SingletonB.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/SingletonsChain/SingletonB.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/OSX/TypeConversion/TyphoonNSColorTypeConverterTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/OSX/Typhoon-OSX/Base.lproj/MainMenu.xib" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/OSX/Typhoon-OSX/en.lproj/Credits.rtf" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/OSX/Typhoon-OSX/en.lproj/InfoPlist.strings" isTestSource="false" />
@@ -411,6 +418,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Tests/TypeConversion/TyphoonNSNumberTypeConverterTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/TypeConversion/TyphoonPassthroughTypeConverterTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/TypeConversion/TyphoonPrimitiveTypeConverterTests.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/TypeConversion/TyphoonTypeConversionUtilsTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/TypeConversion/TyphoonTypeConverterRegistryTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/TypeConversion/TyphoonTypeDescriptorTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Utils/TyphoonInvocationUtilsTestObjects.h" isTestSource="false" />
