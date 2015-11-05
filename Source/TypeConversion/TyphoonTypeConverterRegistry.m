@@ -50,7 +50,7 @@
 
 - (id <TyphoonTypeConverter>)converterForType:(NSString *)type
 {
-    return [_typeConverters objectForKey:type];
+    return _typeConverters[type];
 }
 
 - (TyphoonPrimitiveTypeConverter *)primitiveTypeConverter
@@ -61,8 +61,8 @@
 - (void)registerTypeConverter:(id <TyphoonTypeConverter>)converter
 {
     NSString *type = [converter supportedType];
-    if (!([_typeConverters objectForKey:type])) {
-        [_typeConverters setObject:converter forKey:type];
+    if (!(_typeConverters[type])) {
+        _typeConverters[type] = converter;
     }
     else {
         [NSException raise:NSInvalidArgumentException format:@"Converter for '%@' already registered.", type];
