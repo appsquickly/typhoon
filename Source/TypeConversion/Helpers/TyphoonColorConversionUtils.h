@@ -17,7 +17,7 @@ struct RGBA
     CGFloat green;
     CGFloat blue;
     CGFloat alpha;
-} rgba;
+};
 
 @interface TyphoonColorConversionUtils : NSObject
 
