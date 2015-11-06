@@ -35,6 +35,9 @@ FOUNDATION_EXPORT const unsigned char TyphoonVersionString[];
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonCollaboratingAssemblyProxy.h"
 #import "NSObject+FactoryHooks.h"
+#import "TyphoonTestUtils.h"
+#import "TyphoonLoadedView.h"
+#import "TyphoonPatcher.h"
 
 #import "TyphoonBlockComponentFactory.h"
 #import "TyphoonAssemblyActivator.h"
