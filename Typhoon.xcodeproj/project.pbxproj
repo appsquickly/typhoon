@@ -492,7 +492,7 @@
 		90ABC49B1A36B2A1008D8162 /* TyphoonViewControllerNibResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F4F1936F63A0083714E /* TyphoonViewControllerNibResolver.h */; };
 		90ABC49C1A36B2A1008D8162 /* TyphoonStoryboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F521936F63A0083714E /* TyphoonStoryboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90ABC49D1A36B2A1008D8162 /* TyphoonStoryboardResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DBA129FBD11BA18D318694D /* TyphoonStoryboardResolver.h */; };
-		90ABC49E1A36B2A1008D8162 /* TyphoonBundledImageTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F561936F63A0083714E /* TyphoonBundledImageTypeConverter.h */; };
+		90ABC49E1A36B2A1008D8162 /* TyphoonBundledImageTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F561936F63A0083714E /* TyphoonBundledImageTypeConverter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90ABC49F1A36B2A1008D8162 /* TyphoonUIColorTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F581936F63A0083714E /* TyphoonUIColorTypeConverter.h */; };
 		90ABC4A01A36B2A2008D8162 /* TyphooniOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F5A1936F63A0083714E /* TyphooniOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90ABC4A11A36B2A2008D8162 /* TyphoonPatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F5F1936F63A0083714E /* TyphoonPatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
