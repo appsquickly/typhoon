@@ -61,7 +61,7 @@
 {
     self = [super init];
     if (self) {
-        [self attachPostProcessor:[TyphoonAssemblyPropertyInjectionPostProcessor new]];
+        [self attachDefinitionPostProcessor:[TyphoonAssemblyPropertyInjectionPostProcessor new]];
         for (TyphoonAssembly *assembly in assemblies) {
             [self buildAssembly:assembly];
         }
@@ -102,7 +102,7 @@
     
     for (id component in infrastructureComponents) {
         if ([component conformsToProtocol:@protocol(TyphoonDefinitionPostProcessor)]) {
-            [self attachPostProcessor:component];
+            [self attachDefinitionPostProcessor:component];
         }
         else if ([component conformsToProtocol:@protocol(TyphoonInstancePostProcessor)]) {
             [self addInstancePostProcessor:component];

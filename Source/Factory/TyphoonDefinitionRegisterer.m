@@ -93,7 +93,7 @@
 
     id infrastructureComponent = [_componentFactory newOrScopeCachedInstanceForDefinition:_definition args:nil];
     if ([_definition.type conformsToProtocol:@protocol(TyphoonDefinitionPostProcessor)]) {
-        [_componentFactory attachPostProcessor:infrastructureComponent];
+        [_componentFactory attachDefinitionPostProcessor:infrastructureComponent];
     }
     else if ([_definition.type conformsToProtocol:@protocol(TyphoonInstancePostProcessor)]) {
         [_componentFactory addInstancePostProcessor:infrastructureComponent];

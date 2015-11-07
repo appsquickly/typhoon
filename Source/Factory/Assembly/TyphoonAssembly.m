@@ -199,11 +199,18 @@ static NSMutableSet *reservedSelectorsAsStrings;
     [_factory makeDefault];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 - (void)attachPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor {
+    [self attachDefinitionPostProcessor:postProcessor];
+}
+#pragma clang diagnostic pop
+
+- (void)attachDefinitionPostProcessor:(id <TyphoonDefinitionPostProcessor>)definitionPostProcessor {
     if (!_factory) {
-        _preattachedInfrastructureComponents = [_preattachedInfrastructureComponents arrayByAddingObject:postProcessor];
+        [self preattachDefinitionPostProcessor:definitionPostProcessor];
     }
-    [_factory attachPostProcessor:postProcessor];
+    [_factory attachDefinitionPostProcessor:definitionPostProcessor];
 }
 
 - (id)objectForKeyedSubscript:(id)key {
@@ -332,6 +339,10 @@ static NSMutableSet *reservedSelectorsAsStrings;
     } else {
         return [self class];
     }
+}
+
+- (void)preattachDefinitionPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor {
+    _preattachedInfrastructureComponents = [_preattachedInfrastructureComponents arrayByAddingObject:postProcessor];
 }
 
 @end

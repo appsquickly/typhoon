@@ -121,7 +121,7 @@
         return knight;
     }];
 
-    [_assembly attachPostProcessor:_patcher];
+    [_assembly attachDefinitionPostProcessor:_patcher];
 }
 
 - (void)assertPatchApplied

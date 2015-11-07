@@ -80,10 +80,12 @@
 - (void)makeDefault;
 
 /**
-Attach a TyphoonComponentFactoryPostProcessor to this component factory.
-@param postProcessor The post-processor to attach.
+Attach a TyphoonDefinitionPostProcessor to this component factory.
+@param definitionPostProcessor The definition post processor to attach.
 */
-- (void)attachPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor;
+- (void)attachDefinitionPostProcessor:(id<TyphoonDefinitionPostProcessor>)definitionPostProcessor;
+
+- (void)attachPostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor DEPRECATED_MSG_ATTRIBUTE("use  attachDefinitionPostProcessor instead");
 
 @end
 

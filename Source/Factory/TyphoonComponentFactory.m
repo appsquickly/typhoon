@@ -79,9 +79,9 @@ static TyphoonComponentFactory *uiResolvingFactory = nil;
         _typeConverterRegistry = [[TyphoonTypeConverterRegistry alloc] init];
         _definitionPostProcessors = [[NSMutableArray alloc] init];
         _instancePostProcessors = [[NSMutableArray alloc] init];
-        [self attachPostProcessor:[TyphoonParentReferenceHydratingPostProcessor new]];
+        [self attachDefinitionPostProcessor:[TyphoonParentReferenceHydratingPostProcessor new]];
         [self attachAutoInjectionPostProcessorIfNeeded];
-        [self attachPostProcessor:[TyphoonFactoryPropertyInjectionPostProcessor new]];
+        [self attachDefinitionPostProcessor:[TyphoonFactoryPropertyInjectionPostProcessor new]];
     }
     return self;
 }
@@ -92,7 +92,7 @@ static TyphoonComponentFactory *uiResolvingFactory = nil;
 
     NSNumber *value = bundleInfoDictionary[@"TyphoonAutoInjectionEnabled"];
     if (!value || [value boolValue]) {
-        [self attachPostProcessor:[TyphoonFactoryAutoInjectionPostProcessor new]];
+        [self attachDefinitionPostProcessor:[TyphoonFactoryAutoInjectionPostProcessor new]];
     }
 }
 
@@ -242,17 +242,22 @@ static TyphoonComponentFactory *uiResolvingFactory = nil;
     }
 }
 
-
-- (void)attachPostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor
-{
-    LogTrace(@"Attaching post processor: %@", postProcessor);
-    [_definitionPostProcessors addObject:postProcessor];
+- (void)attachDefinitionPostProcessor:(id<TyphoonDefinitionPostProcessor>)definitionPostProcessor {
+    LogTrace(@"Attaching definition post processor: %@", definitionPostProcessor);
+    [_definitionPostProcessors addObject:definitionPostProcessor];
     if ([self isLoaded]) {
         LogDebug(@"Definitions registered, refreshing all singletons.");
         [self unload];
     }
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
+- (void)attachPostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor
+{
+    [self attachDefinitionPostProcessor:postProcessor];
+}
+#pragma clang diagnostic pop
 
 - (void)inject:(id)instance
 {

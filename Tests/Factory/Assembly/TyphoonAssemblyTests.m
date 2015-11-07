@@ -220,16 +220,11 @@
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
     
     TyphoonPatcher *patcher = [TyphoonPatcher new];
-    [assembly attachPostProcessor:patcher];
+    [assembly attachDefinitionPostProcessor:patcher];
     
     TyphoonBlockComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:assembly];
     NSArray *attachedPostProcessors = factory.definitionPostProcessors;
-    BOOL isPatcherAttached = NO;
-    for (id postProcessor in attachedPostProcessors) {
-        if ([postProcessor isEqual:patcher]) {
-            isPatcherAttached = YES;
-        }
-    }
+    BOOL isPatcherAttached = [attachedPostProcessors containsObject:patcher];
     
     XCTAssertTrue(isPatcherAttached);
 }
