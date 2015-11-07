@@ -21,6 +21,8 @@
 
 - (NSArray *)definitions;
 
+- (NSArray *)preattachedInfrastructureComponents;
+
 - (TyphoonDefinition *)definitionForKey:(NSString *)key;
 
 - (Class)assemblyClassForKey:(NSString *)key;

@@ -17,6 +17,7 @@
 #import "TyphoonLoopedCollaboratingAssemblies.h"
 #import "MediocreQuest.h"
 #import "OCLogTemplate.h"
+#import "TyphoonPatcher.h"
 
 @interface TyphoonAssemblyTests : XCTestCase
 @end
@@ -146,18 +147,6 @@
     }
 }
 
-- (void)test_before_activation_raises_exception_when_invoking_attachPostProcessor
-{
-    @try {
-        MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
-        [assembly attachPostProcessor:nil];
-        XCTFail(@"Should have thrown exception");
-    }
-    @catch (NSException *e) {
-        XCTAssertEqualObjects(@"attachPostProcessor: requires the assembly to be activated.", [e description]);
-    }
-}
-
 - (void)test_before_activation_raises_exception_when_invoking_subscription
 {
     @try {
@@ -224,6 +213,25 @@
     @catch (NSException *e) {
         XCTAssertNil(e);
     }
+}
+
+- (void)test_before_activation_stores_post_processors
+{
+    MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+    
+    TyphoonPatcher *patcher = [TyphoonPatcher new];
+    [assembly attachPostProcessor:patcher];
+    
+    TyphoonBlockComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:assembly];
+    NSArray *attachedPostProcessors = factory.definitionPostProcessors;
+    BOOL isPatcherAttached = NO;
+    for (id postProcessor in attachedPostProcessors) {
+        if ([postProcessor isEqual:patcher]) {
+            isPatcherAttached = YES;
+        }
+    }
+    
+    XCTAssertTrue(isPatcherAttached);
 }
 
 @end

@@ -31,6 +31,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 @interface TyphoonAssembly () <TyphoonObjectWithCustomInjection>
 
 @property(readwrite) NSSet *definitionSelectors;
+@property(readwrite) NSArray *preattachedInfrastructureComponents;
 
 @property(readwrite) NSDictionary *assemblyClassPerDefinitionKey;
 
@@ -123,6 +124,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
         _definitionBuilder = [[TyphoonAssemblyDefinitionBuilder alloc] initWithAssembly:self];
         _adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:self];
         _collector = [[TyphoonCollaboratingAssembliesCollector alloc] initWithAssemblyClass:[self class]];
+        _preattachedInfrastructureComponents = [NSArray array];
         
         [self proxyCollaboratingAssembliesPriorToActivation];
     }
@@ -199,8 +201,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 - (void)attachPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor {
     if (!_factory) {
-        [NSException raise:NSInternalInconsistencyException
-                    format:@"attachPostProcessor: requires the assembly to be activated."];
+        _preattachedInfrastructureComponents = [_preattachedInfrastructureComponents arrayByAddingObject:postProcessor];
     }
     [_factory attachPostProcessor:postProcessor];
 }
@@ -332,6 +333,5 @@ static NSMutableSet *reservedSelectorsAsStrings;
         return [self class];
     }
 }
-
 
 @end

@@ -18,6 +18,10 @@
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblyPropertyInjectionPostProcessor.h"
 #import "TyphoonIntrospectionUtils.h"
+#import "TyphoonTypeConverterRegistry.h"
+#import "TyphoonTypeConverter.h"
+#import "TyphoonInstancePostProcessor.h"
+#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 
 @interface TyphoonComponentFactory (Private)
 
@@ -72,6 +76,7 @@
 
     [assembly prepareForUse];
 
+    [self registerAllPreattachedInfrastructureComponents:assembly];
     [self registerAllDefinitions:assembly];
 }
 
@@ -89,6 +94,22 @@
     NSArray *definitions = [assembly definitions];
     for (TyphoonDefinition *definition in definitions) {
         [self registerDefinition:definition];
+    }
+}
+
+- (void)registerAllPreattachedInfrastructureComponents:(TyphoonAssembly *)assembly {
+    NSArray *infrastructureComponents = [assembly preattachedInfrastructureComponents];
+    
+    for (id component in infrastructureComponents) {
+        if ([component conformsToProtocol:@protocol(TyphoonDefinitionPostProcessor)]) {
+            [self attachPostProcessor:component];
+        }
+        else if ([component conformsToProtocol:@protocol(TyphoonInstancePostProcessor)]) {
+            [self addInstancePostProcessor:component];
+        }
+        else if ([component conformsToProtocol:@protocol(TyphoonTypeConverter)]) {
+            [self.typeConverterRegistry registerTypeConverter:component];
+        }
     }
 }
 
