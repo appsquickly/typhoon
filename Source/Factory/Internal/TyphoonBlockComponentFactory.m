@@ -22,6 +22,7 @@
 #import "TyphoonTypeConverter.h"
 #import "TyphoonInstancePostProcessor.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
+#import "TyphoonPreattachedComponentsRegisterer.h"
 
 @interface TyphoonComponentFactory (Private)
 
@@ -62,7 +63,10 @@
     self = [super init];
     if (self) {
         [self attachDefinitionPostProcessor:[TyphoonAssemblyPropertyInjectionPostProcessor new]];
+        TyphoonPreattachedComponentsRegisterer *preattachedComponentsRegisterer = [[TyphoonPreattachedComponentsRegisterer alloc] initWithComponentFactory:self];
+        
         for (TyphoonAssembly *assembly in assemblies) {
+            [preattachedComponentsRegisterer doRegistrationForAssembly:assembly];
             [self buildAssembly:assembly];
         }
     }
@@ -76,7 +80,6 @@
 
     [assembly prepareForUse];
 
-    [self registerAllPreattachedInfrastructureComponents:assembly];
     [self registerAllDefinitions:assembly];
 }
 
@@ -94,22 +97,6 @@
     NSArray *definitions = [assembly definitions];
     for (TyphoonDefinition *definition in definitions) {
         [self registerDefinition:definition];
-    }
-}
-
-- (void)registerAllPreattachedInfrastructureComponents:(TyphoonAssembly *)assembly {
-    NSArray *infrastructureComponents = [assembly preattachedInfrastructureComponents];
-    
-    for (id component in infrastructureComponents) {
-        if ([component conformsToProtocol:@protocol(TyphoonDefinitionPostProcessor)]) {
-            [self attachDefinitionPostProcessor:component];
-        }
-        else if ([component conformsToProtocol:@protocol(TyphoonInstancePostProcessor)]) {
-            [self attachInstancePostProcessor:component];
-        }
-        else if ([component conformsToProtocol:@protocol(TyphoonTypeConverter)]) {
-            [self attachTypeConverter:component];
-        }
     }
 }
 
