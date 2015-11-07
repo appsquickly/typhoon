@@ -96,7 +96,7 @@
         [_componentFactory attachDefinitionPostProcessor:infrastructureComponent];
     }
     else if ([_definition.type conformsToProtocol:@protocol(TyphoonInstancePostProcessor)]) {
-        [_componentFactory addInstancePostProcessor:infrastructureComponent];
+        [_componentFactory attachInstancePostProcessor:infrastructureComponent];
     }
     else if ([_definition.type conformsToProtocol:@protocol(TyphoonTypeConverter)]) {
         [_componentFactory.typeConverterRegistry registerTypeConverter:infrastructureComponent];

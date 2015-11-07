@@ -242,13 +242,18 @@ static TyphoonComponentFactory *uiResolvingFactory = nil;
     }
 }
 
-- (void)attachDefinitionPostProcessor:(id<TyphoonDefinitionPostProcessor>)definitionPostProcessor {
-    LogTrace(@"Attaching definition post processor: %@", definitionPostProcessor);
-    [_definitionPostProcessors addObject:definitionPostProcessor];
+- (void)attachDefinitionPostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor {
+    LogTrace(@"Attaching definition post processor: %@", postProcessor);
+    [_definitionPostProcessors addObject:postProcessor];
     if ([self isLoaded]) {
         LogDebug(@"Definitions registered, refreshing all singletons.");
         [self unload];
     }
+}
+
+- (void)attachInstancePostProcessor:(id<TyphoonInstancePostProcessor>)postProcessor {
+    LogTrace(@"Attaching instance post processor: %@", postProcessor);
+    [_instancePostProcessors addObject:postProcessor];
 }
 
 #pragma clang diagnostic push
@@ -463,10 +468,12 @@ static TyphoonComponentFactory *uiResolvingFactory = nil;
     [_registry addObject:definition];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 - (void)addInstancePostProcessor:(id<TyphoonInstancePostProcessor>)postProcessor
 {
-    [_instancePostProcessors addObject:postProcessor];
+    [self attachInstancePostProcessor:postProcessor];
 }
-
+#pragma clang diagnostic pop
 
 @end

@@ -18,6 +18,7 @@
 #import "MediocreQuest.h"
 #import "OCLogTemplate.h"
 #import "TyphoonPatcher.h"
+#import "TyphoonInstancePostProcessorMock.h"
 
 @interface TyphoonAssemblyTests : XCTestCase
 @end
@@ -215,18 +216,26 @@
     }
 }
 
-- (void)test_before_activation_stores_post_processors
+- (void)test_before_activation_preattaches_infrastructure_components
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
     
     TyphoonPatcher *patcher = [TyphoonPatcher new];
     [assembly attachDefinitionPostProcessor:patcher];
     
+    TyphoonInstancePostProcessorMock *instancePostProcessor = [TyphoonInstancePostProcessorMock new];
+    [assembly attachInstancePostProcessor:instancePostProcessor];
+    
     TyphoonBlockComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:assembly];
-    NSArray *attachedPostProcessors = factory.definitionPostProcessors;
-    BOOL isPatcherAttached = [attachedPostProcessors containsObject:patcher];
+    
+    NSArray *attachedDefinitionPostProcessors = factory.definitionPostProcessors;
+    BOOL isPatcherAttached = [attachedDefinitionPostProcessors containsObject:patcher];
+    
+    NSArray *attachedInstancePostProcessors = factory.instancePostProcessors;
+    BOOL isInstancePostProcessorAttached = [attachedInstancePostProcessors containsObject:instancePostProcessor];
     
     XCTAssertTrue(isPatcherAttached);
+    XCTAssertTrue(isInstancePostProcessorAttached);
 }
 
 @end

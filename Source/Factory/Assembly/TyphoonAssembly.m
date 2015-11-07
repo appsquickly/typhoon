@@ -206,11 +206,18 @@ static NSMutableSet *reservedSelectorsAsStrings;
 }
 #pragma clang diagnostic pop
 
-- (void)attachDefinitionPostProcessor:(id <TyphoonDefinitionPostProcessor>)definitionPostProcessor {
+- (void)attachDefinitionPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor {
     if (!_factory) {
-        [self preattachDefinitionPostProcessor:definitionPostProcessor];
+        [self preattachInfrastructureComponent:postProcessor];
     }
-    [_factory attachDefinitionPostProcessor:definitionPostProcessor];
+    [_factory attachDefinitionPostProcessor:postProcessor];
+}
+
+- (void)attachInstancePostProcessor:(id<TyphoonInstancePostProcessor>)postProcessor {
+    if (!_factory) {
+        [self preattachInfrastructureComponent:postProcessor];
+    }
+    [_factory attachInstancePostProcessor:postProcessor];
 }
 
 - (id)objectForKeyedSubscript:(id)key {
@@ -341,8 +348,8 @@ static NSMutableSet *reservedSelectorsAsStrings;
     }
 }
 
-- (void)preattachDefinitionPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor {
-    _preattachedInfrastructureComponents = [_preattachedInfrastructureComponents arrayByAddingObject:postProcessor];
+- (void)preattachInfrastructureComponent:(id)component {
+    _preattachedInfrastructureComponents = [_preattachedInfrastructureComponents arrayByAddingObject:component];
 }
 
 @end
