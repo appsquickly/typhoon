@@ -220,6 +220,13 @@ static NSMutableSet *reservedSelectorsAsStrings;
     [_factory attachInstancePostProcessor:postProcessor];
 }
 
+- (void)attachTypeConverter:(id<TyphoonTypeConverter>)typeConverter {
+    if (!_factory) {
+        [self preattachInfrastructureComponent:typeConverter];
+    }
+    [_factory attachTypeConverter:typeConverter];
+}
+
 - (id)objectForKeyedSubscript:(id)key {
     if (!_factory) {
         [NSException raise:NSInternalInconsistencyException

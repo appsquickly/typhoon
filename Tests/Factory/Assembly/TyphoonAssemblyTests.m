@@ -19,6 +19,7 @@
 #import "OCLogTemplate.h"
 #import "TyphoonPatcher.h"
 #import "TyphoonInstancePostProcessorMock.h"
+#import "NSNullTypeConverter.h"
 
 @interface TyphoonAssemblyTests : XCTestCase
 @end
@@ -226,6 +227,9 @@
     TyphoonInstancePostProcessorMock *instancePostProcessor = [TyphoonInstancePostProcessorMock new];
     [assembly attachInstancePostProcessor:instancePostProcessor];
     
+    NSNullTypeConverter *typeConverter = [NSNullTypeConverter new];
+    [assembly attachTypeConverter:typeConverter];
+    
     TyphoonBlockComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:assembly];
     
     NSArray *attachedDefinitionPostProcessors = factory.definitionPostProcessors;
@@ -234,8 +238,11 @@
     NSArray *attachedInstancePostProcessors = factory.instancePostProcessors;
     BOOL isInstancePostProcessorAttached = [attachedInstancePostProcessors containsObject:instancePostProcessor];
     
+    BOOL isTypeConverterAttached = [factory.typeConverterRegistry converterForType:[typeConverter supportedType]] != nil;
+    
     XCTAssertTrue(isPatcherAttached);
     XCTAssertTrue(isInstancePostProcessorAttached);
+    XCTAssertTrue(isTypeConverterAttached);
 }
 
 @end

@@ -256,6 +256,11 @@ static TyphoonComponentFactory *uiResolvingFactory = nil;
     [_instancePostProcessors addObject:postProcessor];
 }
 
+- (void)attachTypeConverter:(id<TyphoonTypeConverter>)typeConverter {
+    LogTrace(@"Attaching type conveter: %@", typeConverter);
+    [_typeConverterRegistry registerTypeConverter:typeConverter];
+}
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-implementations"
 - (void)attachPostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor

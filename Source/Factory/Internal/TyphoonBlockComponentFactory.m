@@ -108,7 +108,7 @@
             [self attachInstancePostProcessor:component];
         }
         else if ([component conformsToProtocol:@protocol(TyphoonTypeConverter)]) {
-            [self.typeConverterRegistry registerTypeConverter:component];
+            [self attachTypeConverter:component];
         }
     }
 }
