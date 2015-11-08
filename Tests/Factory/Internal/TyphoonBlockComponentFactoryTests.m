@@ -56,7 +56,7 @@
     internalProcessorsCount = [[_componentFactory definitionPostProcessors] count];
 
     TyphoonConfigPostProcessor *processor = [TyphoonConfigPostProcessor forResourceNamed:@"SomeProperties.properties"];
-    [_componentFactory attachPostProcessor:processor];
+    [_componentFactory attachDefinitionPostProcessor:processor];
 
     _exceptionTestFactory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:[ExceptionTestAssembly assembly]];
     _circularDependenciesFactory = [[TyphoonBlockComponentFactory alloc]
@@ -217,7 +217,7 @@
     TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc]
         initWithAssembly:[TyphoonConfigAssembly assembly]];
     TyphoonConfigPostProcessor *processor = [TyphoonConfigPostProcessor forResourceNamed:@"SomeProperties.properties"];
-    [factory attachPostProcessor:processor];
+    [factory attachDefinitionPostProcessor:processor];
 
     Knight *knight = [factory componentForKey:@"knight"];
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);

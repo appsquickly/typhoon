@@ -17,6 +17,9 @@
 #import "TyphoonLoopedCollaboratingAssemblies.h"
 #import "MediocreQuest.h"
 #import "OCLogTemplate.h"
+#import "TyphoonPatcher.h"
+#import "TyphoonInstancePostProcessorMock.h"
+#import "NSNullTypeConverter.h"
 
 @interface TyphoonAssemblyTests : XCTestCase
 @end
@@ -146,18 +149,6 @@
     }
 }
 
-- (void)test_before_activation_raises_exception_when_invoking_attachPostProcessor
-{
-    @try {
-        MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
-        [assembly attachPostProcessor:nil];
-        XCTFail(@"Should have thrown exception");
-    }
-    @catch (NSException *e) {
-        XCTAssertEqualObjects(@"attachPostProcessor: requires the assembly to be activated.", [e description]);
-    }
-}
-
 - (void)test_before_activation_raises_exception_when_invoking_subscription
 {
     @try {
@@ -224,6 +215,34 @@
     @catch (NSException *e) {
         XCTAssertNil(e);
     }
+}
+
+- (void)test_before_activation_preattaches_infrastructure_components
+{
+    MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
+    
+    TyphoonPatcher *patcher = [TyphoonPatcher new];
+    [assembly attachDefinitionPostProcessor:patcher];
+    
+    TyphoonInstancePostProcessorMock *instancePostProcessor = [TyphoonInstancePostProcessorMock new];
+    [assembly attachInstancePostProcessor:instancePostProcessor];
+    
+    NSNullTypeConverter *typeConverter = [NSNullTypeConverter new];
+    [assembly attachTypeConverter:typeConverter];
+    
+    TyphoonBlockComponentFactory *factory = [[TyphoonBlockComponentFactory alloc] initWithAssembly:assembly];
+    
+    NSArray *attachedDefinitionPostProcessors = factory.definitionPostProcessors;
+    BOOL isPatcherAttached = [attachedDefinitionPostProcessors containsObject:patcher];
+    
+    NSArray *attachedInstancePostProcessors = factory.instancePostProcessors;
+    BOOL isInstancePostProcessorAttached = [attachedInstancePostProcessors containsObject:instancePostProcessor];
+    
+    BOOL isTypeConverterAttached = [factory.typeConverterRegistry converterForType:[typeConverter supportedType]] != nil;
+    
+    XCTAssertTrue(isPatcherAttached);
+    XCTAssertTrue(isInstancePostProcessorAttached);
+    XCTAssertTrue(isTypeConverterAttached);
 }
 
 @end

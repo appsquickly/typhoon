@@ -225,9 +225,9 @@ static NSString *const DEFAULT_QUEST = @"quest";
     TyphoonInstancePostProcessorMock*processor1 = [[TyphoonInstancePostProcessorMock alloc] initWithOrder:INT_MAX];
     TyphoonInstancePostProcessorMock*processor2 = [[TyphoonInstancePostProcessorMock alloc] initWithOrder:0];
     TyphoonInstancePostProcessorMock*processor3 = [[TyphoonInstancePostProcessorMock alloc] initWithOrder:INT_MIN];
-    [_componentFactory addInstancePostProcessor:processor1];
-    [_componentFactory addInstancePostProcessor:processor2];
-    [_componentFactory addInstancePostProcessor:processor3];
+    [_componentFactory attachInstancePostProcessor:processor1];
+    [_componentFactory attachInstancePostProcessor:processor2];
+    [_componentFactory attachInstancePostProcessor:processor3];
     [_componentFactory registerDefinition:[TyphoonDefinition withClass:[Knight class]]];
 
     __block NSMutableArray *orderedApplied = [[NSMutableArray alloc] initWithCapacity:3];

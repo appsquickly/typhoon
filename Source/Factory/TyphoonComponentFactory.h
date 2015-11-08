@@ -13,6 +13,8 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonDefinitionPostProcessor.h"
+#import "TyphoonInstancePostProcessor.h"
+#import "TyphoonTypeConverter.h"
 #import "TyphoonComponentsPool.h"
 
 @class TyphoonDefinition;
@@ -80,10 +82,24 @@
 - (void)makeDefault;
 
 /**
-Attach a TyphoonComponentFactoryPostProcessor to this component factory.
-@param postProcessor The post-processor to attach.
+Attach a TyphoonDefinitionPostProcessor to this component factory.
+@param postProcessor The definition post processor to attach.
 */
-- (void)attachPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor;
+- (void)attachDefinitionPostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor;
+
+/**
+ Attach a TyphoonInstancePostProcessor to this component factory.
+ @param postProcessor The instance post processor to attach.
+ */
+- (void)attachInstancePostProcessor:(id<TyphoonInstancePostProcessor>)postProcessor;
+
+/**
+ Attach a TyphoonTypeConverter to this component factory.
+ @param typeConverter The type converter to attach.
+ */
+- (void)attachTypeConverter:(id<TyphoonTypeConverter>)typeConverter;
+
+- (void)attachPostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor DEPRECATED_MSG_ATTRIBUTE("use attachDefinitionPostProcessor instead");
 
 @end
 

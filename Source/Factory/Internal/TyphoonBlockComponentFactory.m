@@ -18,6 +18,11 @@
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblyPropertyInjectionPostProcessor.h"
 #import "TyphoonIntrospectionUtils.h"
+#import "TyphoonTypeConverterRegistry.h"
+#import "TyphoonTypeConverter.h"
+#import "TyphoonInstancePostProcessor.h"
+#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
+#import "TyphoonPreattachedComponentsRegisterer.h"
 
 @interface TyphoonComponentFactory (Private)
 
@@ -57,8 +62,11 @@
 {
     self = [super init];
     if (self) {
-        [self attachPostProcessor:[TyphoonAssemblyPropertyInjectionPostProcessor new]];
+        [self attachDefinitionPostProcessor:[TyphoonAssemblyPropertyInjectionPostProcessor new]];
+        TyphoonPreattachedComponentsRegisterer *preattachedComponentsRegisterer = [[TyphoonPreattachedComponentsRegisterer alloc] initWithComponentFactory:self];
+        
         for (TyphoonAssembly *assembly in assemblies) {
+            [preattachedComponentsRegisterer doRegistrationForAssembly:assembly];
             [self buildAssembly:assembly];
         }
     }
