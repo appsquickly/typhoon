@@ -141,6 +141,8 @@
       <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonComponentFactory.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonDefinitionRegisterer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonDefinitionRegisterer.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonPreattachedComponentsRegisterer.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonPreattachedComponentsRegisterer.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/Configuration/Resolver/TyphoonViewControllerNibResolver.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/Configuration/Resolver/TyphoonViewControllerNibResolver.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/Storyboard/TyphoonLoadedView.h" isTestSource="false" />

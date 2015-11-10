@@ -41,7 +41,7 @@ AnalyticsService* service = [assembly analyticsService];
 * - Allows the use of IDE features like refactoring and code completion.
 *
 */
-@interface TyphoonAssembly : NSObject<TyphoonComponentFactory>
+@interface TyphoonAssembly : NSObject <TyphoonComponentFactory>
 
 + (instancetype)assembly;
 
@@ -60,6 +60,24 @@ AnalyticsService* service = [assembly analyticsService];
  */
 - (instancetype)activate;
 
+
+/**
+ * Activates the assembly, attaching the specified config resource name from the application bundle.
+ *
+ * This method is a convenience for:
+@code
+
+TyphoonConfigPostProcessor *processor = [TyphoonConfigPostProcessor processor];
+[processor useResourceWithName:@"Config_production.plist"];
+[self attachPostProcessor:processor];
+[self activate];
+
+@endcode
+ *
+ */
+- (instancetype)activateWithConfigResourceName:(NSString *)resourceName;
+
+
 /**
  *  Activates the assembly, explicitly setting the types for collaborating assemblies.
  *
@@ -67,6 +85,8 @@ AnalyticsService* service = [assembly analyticsService];
  * references another assembly of type NetworkProvider, specifying a subclass TestNetworkProvider will override
  * the base type. If collaborating assemblies are backed by a protocol, they must be specified explicitly. 
  */
-- (instancetype)activateWithCollaboratingAssemblies:(NSArray*)assemblies;
+- (instancetype)activateWithCollaboratingAssemblies:(NSArray *)assemblies;
+
+- (instancetype)activateWithCollaboratingAssemblies:(NSArray *)assemblies postProcessors:(NSArray *)postProcessors;
 
 @end

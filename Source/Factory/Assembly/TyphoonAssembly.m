@@ -25,6 +25,7 @@
 #import "OCLogTemplate.h"
 #import "TyphoonBlockComponentFactory.h"
 #import "TyphoonCollaboratingAssembliesCollector.h"
+#import "TyphoonConfigPostProcessor.h"
 
 static NSMutableSet *reservedSelectorsAsStrings;
 
@@ -243,7 +244,19 @@ static NSMutableSet *reservedSelectorsAsStrings;
     return [self activateWithCollaboratingAssemblies:nil];
 }
 
+- (instancetype)activateWithConfigResourceName:(NSString *)resourceName {
+    TyphoonConfigPostProcessor *processor = [TyphoonConfigPostProcessor processor];
+    [processor useResourceWithName:resourceName];
+    return [self activateWithCollaboratingAssemblies:nil postProcessors:@[processor]];
+}
+
 - (instancetype)activateWithCollaboratingAssemblies:(NSArray *)assemblies {
+    return [self activateWithCollaboratingAssemblies:assemblies postProcessors:nil];
+}
+
+- (instancetype)activateWithCollaboratingAssemblies:(NSArray *)assemblies postProcessors:(NSArray *)postProcessors {
+    [self attachProcessors:postProcessors];
+
     NSMutableSet *reconciledAssemblies = [NSMutableSet setWithArray:[@[self] arrayByAddingObjectsFromArray:assemblies]];
     NSMutableSet *assembliesToRemove = [[NSMutableSet alloc] init];
 
@@ -278,10 +291,15 @@ static NSMutableSet *reservedSelectorsAsStrings;
 }
 
 
-
 //-------------------------------------------------------------------------------------------
 #pragma mark - Private Methods
 //-------------------------------------------------------------------------------------------
+
+- (void)attachProcessors:(NSArray *)postProcessors {
+    for (id<TyphoonDefinitionPostProcessor> processor in postProcessors) {
+        [self attachDefinitionPostProcessor:processor];
+    }
+}
 
 - (void)proxyCollaboratingAssembliesPriorToActivation {
     TyphoonCollaboratingAssemblyPropertyEnumerator *enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc]
