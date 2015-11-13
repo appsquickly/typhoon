@@ -1,11 +1,11 @@
-![Typhoon](http://www.typhoonframework.org/typhoon-splash.png)
+![Typhoon](http://typhoonframework.org/typhoon-splash.png)
 ## <a href="http://typhoonframework.org">typhoonframework.org</a>  
 
 Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-featured and super-easy to use. 
 
 ## Not familiar with Dependency Injection? 
 
-Visit <a href="http://typhoonframework.org">the Typhoon website</a> for an introduction. There's also a nice intro over at <a href="http://www.bignerdranch.com/blog/dependency-injection-ios/">Big Nerd Ranch</a>, or <a href="http://www.objc.io/issue-15/dependency-injection.html">here's an article</a>, by <a href="http://qualitycoding.org/">John Reid</a>. Quite a few books have been written on the topic, though we're not familiar with one that focuses specifically on Objective-C, Swift or Cocoa yet. 
+Visit <a href="http://typhoonframework.org">the Typhoon website</a> for an introduction. There's also a nice intro over at <a href="https://www.bignerdranch.com/blog/dependency-injection-ios/">Big Nerd Ranch</a>, or <a href="https://www.objc.io/issues/15-testing/dependency-injection/">here's an article</a>, by <a href="http://qualitycoding.org/">John Reid</a>. Quite a few books have been written on the topic, though we're not familiar with one that focuses specifically on Objective-C, Swift or Cocoa yet. 
 
 ## Is Typhoon the right DI framework for you? 
 
@@ -15,9 +15,9 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 
 # Usage
 
-* Read the ***Quick Start*** for <a href="https://github.com/typhoon-framework/Typhoon/wiki/Quick-Start">Objective-C</a> or <a href="https://github.com/appsquickly/Typhoon/wiki/Swift-Quick-Start">Swift</a>. 
-* Here's the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Types-of-Injections">User Guide</a>.
-* And here are the <a href="http://www.typhoonframework.org/docs/latest/api/modules.html">API Docs</a>. Generally googling a Typhoon class name will return the correct page as the first hit. 
+* Read the ***Quick Start*** for <a href="https://github.com/appsquickly/Typhoon/wiki/Quick-Start">Objective-C</a> or <a href="https://github.com/appsquickly/Typhoon/wiki/Swift-Quick-Start">Swift</a>. 
+* Here's the <a href="https://github.com/appsquickly/Typhoon/wiki/Types-of-Injections">User Guide</a>.
+* And here are the <a href="http://typhoonframework.org/docs/latest/api/modules.html">API Docs</a>. Generally googling a Typhoon class name will return the correct page as the first hit. 
 * <a href="http://ios.caph.jp/typhoon/introduction">日本のドキュメンテーション</a>
 
 ```swift
@@ -27,13 +27,13 @@ let viewControler = assembly.recommendationController() as! RecommendationContro
 
 # Open Source Sample Applications
 
-* Try the official <a href="https://github.com/typhoon-framework/Typhoon-Swift-Example">Swift Sample Application</a> or <a href="https://github.com/typhoon-framework/Typhoon-example">Objective-C Sample Application</a>. 
-* This sample shows how to <a href="https://github.com/typhoon-framework/Typhoon-CoreData-RAC-Example">set up Typhoon with Storyboards, Core Data and Reactive Cocoa</a>. 
+* Try the official <a href="https://github.com/appsquickly/Typhoon-Swift-Example">Swift Sample Application</a> or <a href="https://github.com/appsquickly/Typhoon-example">Objective-C Sample Application</a>. 
+* This sample shows how to <a href="https://github.com/appsquickly/Typhoon-CoreData-RAC-Example">set up Typhoon with Storyboards, Core Data and Reactive Cocoa</a>. 
 
 *Have a Typhoon example app that you'd like to share? Great! Get in touch with us :)*
 
 # Installing 
-![Cocoapods Version](https://cocoapod-badges.herokuapp.com/v/Typhoon/badge.png) [![Pod Platform](http://img.shields.io/cocoapods/p/Typhoon.svg?style=flat)](http://typhoonframework.org/docs/latest/api/modules.html) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Dependency Status](https://www.versioneye.com/objective-c/typhoon/1.1.1/badge.svg?style=flat)](https://www.versioneye.com/objective-c/typhoon) [![Pod License](http://img.shields.io/cocoapods/l/Typhoon.svg?style=flat)](https://github.com/appsquickly/Typhoon/blob/master/LICENSE)
+![Cocoapods Version](https://cocoapod-badges.herokuapp.com/v/Typhoon/badge.png) [![Pod Platform](https://img.shields.io/cocoapods/p/Typhoon.svg?style=flat)](http://typhoonframework.org/docs/latest/api/modules.html) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Dependency Status](https://www.versioneye.com/objective-c/typhoon/1.1.1/badge.svg?style=flat)](https://www.versioneye.com/objective-c/typhoon) [![Pod License](https://img.shields.io/cocoapods/l/Typhoon.svg?style=flat)](https://github.com/appsquickly/Typhoon/blob/master/LICENSE)
 
 Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods</a> or <a href="https://github.com/Carthage/Carthage">Carthage</a>, and also builds easily from source.
 
@@ -96,11 +96,11 @@ If you can't find what you need in the Quick Start or User Guides above, then Ty
 
 ### I've found a bug, or have a feature request
 
-Please raise a <a href="https://github.com/typhoon-framework/Typhoon/issues">GitHub issue</a>.
+Please raise a <a href="https://github.com/appsquickly/Typhoon/issues">GitHub issue</a>.
 
 ### Interested in contributing?
 
- Great! Here's the <a href="https://github.com/typhoon-framework/Typhoon/wiki/Contribution-Guide">contribution guide.</a>
+ Great! Here's the <a href="https://github.com/appsquickly/Typhoon/wiki/Contribution-Guide">contribution guide.</a>
 
 ### I'm blown away!
 
