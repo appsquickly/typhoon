@@ -31,8 +31,6 @@
     TyphoonComponentFactory *_componentFactory;
 }
 
-// Сюда нужно передавать и assembly.
-// При процессинге definition'ов инфраструктурных компонентов, будем их неймспейсить.
 - (id)initWithDefinition:(TyphoonDefinition *)aDefinition componentFactory:(TyphoonComponentFactory *)aComponentFactory
 {
     self = [super init];

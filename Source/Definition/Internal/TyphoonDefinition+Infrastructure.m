@@ -15,6 +15,7 @@
 TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 #import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonDefinition+Namespacing.h"
 #import "TyphoonConfigPostProcessor.h"
 #import "TyphoonResource.h"
 #import "TyphoonMethod.h"
@@ -98,16 +99,22 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 + (instancetype)configDefinitionWithName:(NSString *)fileName
 {
-    return [self withConfigName:fileName];
+    TyphoonDefinition *configDefinition = [self withConfigName:fileName];
+    [configDefinition applyGlobalNamespace];
+    return configDefinition;
 }
 
 + (instancetype)configDefinitionWithName:(NSString *)fileName bundle:(NSBundle *)fileBundle {
-    return [self withConfigName:fileName bundle:fileBundle];
+    TyphoonDefinition *configDefinition = [self withConfigName:fileName bundle:fileBundle];
+    [configDefinition applyGlobalNamespace];
+    return configDefinition;
 }
 
 + (instancetype)configDefinitionWithPath:(NSString *)filePath
 {
-    return [self withConfigPath:filePath];
+    TyphoonDefinition *configDefinition = [self withConfigPath:filePath];
+    [configDefinition applyGlobalNamespace];
+    return configDefinition;
 }
 
 @end
