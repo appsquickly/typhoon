@@ -13,11 +13,11 @@
 #import <Foundation/Foundation.h>
 
 #import "TyphoonMethod.h"
+#import "TyphoonDefinitionNamespace.h"
 
 @class TyphoonDefinition;
 @class TyphoonRuntimeArguments;
 @class TyphoonFactoryDefinition;
-@class TyphoonDefinitionNamespace;
 
 /**
 * @ingroup Definition
@@ -104,6 +104,11 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 * The scope of the component, default being TyphoonScopeObjectGraph.
 */
 @property(nonatomic) TyphoonScope scope;
+
+/**
+ * The namespace of the component&
+ */
+@property(nonatomic, readonly) TyphoonDefinitionNamespace *space;
 
 /**
 * Specifies visibility for for AutoInjection.
