@@ -18,4 +18,6 @@
 
 @property (strong, nonatomic, readonly) NSString *key;
 
+- (BOOL)isGlobalNamespace;
+
 @end

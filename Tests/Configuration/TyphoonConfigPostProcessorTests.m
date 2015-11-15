@@ -116,6 +116,46 @@
     XCTAssertEqualObjects(knight.quest.imageUrl, [NSURL URLWithString:@"http://google.com/"]);
 }
 
+- (void)test_injecting_with_concrete_namespace
+{
+    [_configurer registerNamespace:[TyphoonDefinitionNamespace namespaceWithKey:@"TyphoonTestAssemblyConfigPostProcessor"]];
+    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc]
+                                        initWithAssembly:[TyphoonTestAssemblyConfigPostProcessor assembly]];
+    [self postProcessFactory:factory withPostProcessor:_configurer];
+    Knight *knight = [factory componentForType:[Knight class]];
+    XCTAssertEqualObjects(knight.quest.imageUrl, [NSURL URLWithString:@"http://google.com/"]);
+}
+
+- (void)test_throws_exception_when_config_is_from_another_namespace
+{
+    [_configurer registerNamespace:[TyphoonDefinitionNamespace namespaceWithKey:@"OtherAssembly"]];
+    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc]
+                                        initWithAssembly:[TyphoonTestAssemblyConfigPostProcessor assembly]];
+    [self postProcessFactory:factory withPostProcessor:_configurer];
+    XCTAssertThrows([factory componentForType:[Knight class]]);
+}
+
+- (void)test_choose_right_config_value
+{
+    TyphoonConfigPostProcessor *postProcessor1 = [TyphoonConfigPostProcessor forResourceNamed:@"PropertiesA.plist"];
+    [postProcessor1 registerNamespace:[TyphoonDefinitionNamespace namespaceWithKey:@"TyphoonTestAssemblyConfigPostProcessor"]];
+    TyphoonConfigPostProcessor *postProcessor2 = [TyphoonConfigPostProcessor forResourceNamed:@"PropertiesB.plist"];
+    [postProcessor2 registerNamespace:[TyphoonDefinitionNamespace namespaceWithKey:@"OtherAssembly"]];
+    
+    TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc]
+                                        initWithAssembly:[TyphoonTestAssemblyConfigPostProcessor assembly]];
+    [self postProcessFactory:factory withPostProcessors:@[postProcessor1, postProcessor2]];
+    Knight *knight = [(id)factory otherKnight];
+    XCTAssertEqual(knight.damselsRescued, (unsigned long)23);
+}
+
+- (void)postProcessFactory:(TyphoonComponentFactory *)factory withPostProcessors:(NSArray *)postProcessors
+{
+    for (id<TyphoonDefinitionPostProcessor> postProcessor in postProcessors) {
+        [self postProcessFactory:factory withPostProcessor:postProcessor];
+    }
+}
+
 - (void)postProcessFactory:(TyphoonComponentFactory *)factory withPostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor
 {
     [factory enumerateDefinitions:^(TyphoonDefinition *definition, NSUInteger index, TyphoonDefinition **definitionToReplace, BOOL *stop) {

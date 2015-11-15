@@ -37,6 +37,10 @@ static NSString *const TyphoonDefinitionGlobalNamespace = @"TyphoonDefinitionGlo
     return self;
 }
 
+- (BOOL)isGlobalNamespace {
+    return [self.key isEqualToString:TyphoonDefinitionGlobalNamespace];
+}
+
 - (NSUInteger)hash
 {
     return [self.key hash];

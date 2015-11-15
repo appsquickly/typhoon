@@ -26,6 +26,13 @@
     }];
 }
 
+- (Knight *)otherKnight
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(damselsRescued) with:TyphoonConfig(@"damselsResqued")];
+    }];
+}
+
 - (id<Quest>)questWithUrl:(NSURL *)url
 {
     return [TyphoonDefinition withClass:[CampaignQuest class] configuration:^(TyphoonDefinition *definition) {

@@ -19,5 +19,7 @@
 @interface TyphoonTestAssemblyConfigPostProcessor : TyphoonAssembly
 
 - (Knight *)knight;
+- (Knight *)otherKnight;
+
 
 @end
