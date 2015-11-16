@@ -20,7 +20,7 @@
 
 - (id)config
 {
-    return [TyphoonDefinition configDefinitionWithName:@"development_Config.plist"];
+    return [TyphoonDefinition withConfigName:@"development_Config.plist"];
 }
 
 - (Knight *)configuredCavalryMan

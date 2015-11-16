@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  TYPHOON FRAMEWORK
-//  Copyright 2013, Typhoon Framework Contributors
+//  Copyright 2015, Typhoon Framework Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -9,17 +9,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "TyphoonConfigAppDelegateMock.h"
 
-#import <Foundation/Foundation.h>
-#import "TyphoonAssembly.h"
+@implementation TyphoonConfigAppDelegateMock
 
-@class Knight;
-
-
-@interface TyphoonTestAssemblyConfigPostProcessor : TyphoonAssembly
-
-- (Knight *)knight;
-- (Knight *)otherKnight;
-
+- (NSArray *)globalConfigFilenames {
+    return self.fileNames;
+}
 
 @end

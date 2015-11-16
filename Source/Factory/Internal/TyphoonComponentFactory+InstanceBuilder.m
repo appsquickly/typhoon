@@ -26,6 +26,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonPropertyInjection.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
 #import "TyphoonFactoryAutoInjectionPostProcessor.h"
+#import "TyphoonDefinition+Namespacing.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 
@@ -277,6 +278,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         for (id propertyInjection in properties) {
             [result addInjectedPropertyIfNotExists:propertyInjection];
         }
+        [result applyGlobalNamespace];
     }
 
     return result;

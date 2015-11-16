@@ -13,6 +13,7 @@
 #import <Foundation/Foundation.h>
 
 #import "TyphoonMethod.h"
+#import "TyphoonDefinitionNamespace.h"
 
 @class TyphoonDefinition;
 @class TyphoonRuntimeArguments;
@@ -69,6 +70,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 {
     Class _type;
     NSString *_key;
+    TyphoonDefinitionNamespace *_space;
     BOOL _processed;
 
     TyphoonMethod *_initializer;
@@ -104,6 +106,11 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 @property(nonatomic) TyphoonScope scope;
 
 /**
+ * The namespace of the component&
+ */
+@property(nonatomic, readonly) TyphoonDefinitionNamespace *space;
+
+/**
 * Specifies visibility for for AutoInjection.
 *
 * AutoInjection performs when using method:
@@ -112,7 +119,6 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 * InjectedClass or InjectedProtocol marco
 */
 @property(nonatomic) TyphoonAutoInjectVisibility autoInjectionVisibility;
-
 
 /**
 * A parent component. When parent is defined the initializer and/or properties from a definition are inherited, unless overridden. Example:

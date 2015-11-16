@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  TYPHOON FRAMEWORK
-//  Copyright 2013, Typhoon Framework Contributors
+//  Copyright 2015, Typhoon Framework Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -9,17 +9,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
 #import <Foundation/Foundation.h>
-#import "TyphoonAssembly.h"
 
-@class Knight;
+@interface TyphoonDefinitionNamespace : NSObject
 
++ (instancetype)namespaceWithKey:(NSString *)key;
++ (instancetype)globalNamespace;
 
-@interface TyphoonTestAssemblyConfigPostProcessor : TyphoonAssembly
+@property (strong, nonatomic, readonly) NSString *key;
 
-- (Knight *)knight;
-- (Knight *)otherKnight;
-
+- (BOOL)isGlobalNamespace;
 
 @end

@@ -15,6 +15,7 @@
 TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 #import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonDefinition+Namespacing.h"
 #import "TyphoonConfigPostProcessor.h"
 #import "TyphoonResource.h"
 #import "TyphoonMethod.h"
@@ -35,8 +36,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     return [[TyphoonDefinition alloc] initWithClass:clazz key:key];
 }
 
-+ (instancetype)configDefinitionWithName:(NSString *)fileName
-{
++ (instancetype)withConfigName:(NSString *)fileName {
     return [self withClass:[TyphoonConfigPostProcessor class] configuration:^(TyphoonDefinition *definition) {
         [definition injectMethod:@selector(useResourceWithName:) parameters:^(TyphoonMethod *method) {
             [method injectParameterWith:fileName];
@@ -45,7 +45,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     }];
 }
 
-+ (instancetype)configDefinitionWithName:(NSString *)fileName bundle:(NSBundle *)fileBundle {
++ (instancetype)withConfigName:(NSString *)fileName bundle:(NSBundle *)fileBundle {
     return [self withClass:[TyphoonConfigPostProcessor class] configuration:^(TyphoonDefinition *definition) {
         [definition injectMethod:@selector(useResourceWithName:bundle:) parameters:^(TyphoonMethod *method) {
             [method injectParameterWith:fileName];
@@ -55,8 +55,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
     }];
 }
 
-+ (instancetype)configDefinitionWithPath:(NSString *)filePath
-{
++ (instancetype)withConfigPath:(NSString *)filePath {
     return [self withClass:[TyphoonConfigPostProcessor class] configuration:^(TyphoonDefinition *definition) {
         [definition injectMethod:@selector(useResourceAtPath:) parameters:^(TyphoonMethod *method) {
             [method injectParameterWith:filePath];
@@ -86,7 +85,6 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 }
 
-
 - (void)setProcessed:(BOOL)processed
 {
     _processed = processed;
@@ -95,6 +93,28 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 - (BOOL)processed
 {
     return _processed;
+}
+
+#pragma mark - Deprecated methods
+
++ (instancetype)configDefinitionWithName:(NSString *)fileName
+{
+    TyphoonDefinition *configDefinition = [self withConfigName:fileName];
+    [configDefinition applyGlobalNamespace];
+    return configDefinition;
+}
+
++ (instancetype)configDefinitionWithName:(NSString *)fileName bundle:(NSBundle *)fileBundle {
+    TyphoonDefinition *configDefinition = [self withConfigName:fileName bundle:fileBundle];
+    [configDefinition applyGlobalNamespace];
+    return configDefinition;
+}
+
++ (instancetype)configDefinitionWithPath:(NSString *)filePath
+{
+    TyphoonDefinition *configDefinition = [self withConfigPath:filePath];
+    [configDefinition applyGlobalNamespace];
+    return configDefinition;
 }
 
 @end

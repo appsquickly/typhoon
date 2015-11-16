@@ -24,6 +24,7 @@
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonConfigPostProcessor.h"
 
 @implementation TyphoonDefinitionRegisterer
 {
@@ -92,7 +93,11 @@
     LogTrace(@"Registering Infrastructure component: %@ with key: %@", NSStringFromClass(_definition.type), _definition.key);
 
     id infrastructureComponent = [_componentFactory newOrScopeCachedInstanceForDefinition:_definition args:nil];
-    if ([_definition.type conformsToProtocol:@protocol(TyphoonDefinitionPostProcessor)]) {
+    if (_definition.type == [TyphoonConfigPostProcessor class]) {
+        [infrastructureComponent registerNamespace:_definition.space];
+        [_componentFactory attachDefinitionPostProcessor:infrastructureComponent];
+    }
+    else if ([_definition.type conformsToProtocol:@protocol(TyphoonDefinitionPostProcessor)]) {
         [_componentFactory attachDefinitionPostProcessor:infrastructureComponent];
     }
     else if ([_definition.type conformsToProtocol:@protocol(TyphoonInstancePostProcessor)]) {
