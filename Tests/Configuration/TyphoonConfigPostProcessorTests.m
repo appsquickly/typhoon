@@ -112,7 +112,7 @@
     TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc]
         initWithAssembly:[TyphoonTestAssemblyConfigPostProcessor assembly]];
     [self postProcessFactory:factory withPostProcessor:_configurer];
-    Knight *knight = [factory componentForType:[Knight class]];
+    Knight *knight = [(id)factory knight];
     XCTAssertEqualObjects(knight.quest.imageUrl, [NSURL URLWithString:@"http://google.com/"]);
 }
 
@@ -122,7 +122,7 @@
     TyphoonComponentFactory *factory = [[TyphoonBlockComponentFactory alloc]
                                         initWithAssembly:[TyphoonTestAssemblyConfigPostProcessor assembly]];
     [self postProcessFactory:factory withPostProcessor:_configurer];
-    Knight *knight = [factory componentForType:[Knight class]];
+    Knight *knight = [(id)factory knight];
     XCTAssertEqualObjects(knight.quest.imageUrl, [NSURL URLWithString:@"http://google.com/"]);
 }
 
