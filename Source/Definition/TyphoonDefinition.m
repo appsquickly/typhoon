@@ -29,6 +29,8 @@
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonInjectionDefinition.h"
 
+#import "OCLogTemplate.h"
+
 static NSString *TyphoonScopeToString(TyphoonScope scope)
 {
     switch (scope) {
@@ -177,7 +179,13 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
 - (void)injectProperty:(SEL)selector with:(id)injection
 {
     injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);
-    [injection setPropertyName:NSStringFromSelector(selector)];
+    NSString *propertyName = NSStringFromSelector(selector);
+    [injection setPropertyName:propertyName];
+    
+    if ([_injectedProperties containsObject:injection]) {
+        LogInfo(@"*** Warning *** The definition (key: %@, namespace: %@) contains duplicate injections for property '%@'. Is this intentional?", _key, _space.key, propertyName);
+    }
+    
     [_injectedProperties addObject:injection];
 }
 
