@@ -12,6 +12,7 @@
 
 #import "TyphoonStoryboard.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
+#import "TyphoonComponentFactory+Storyboard.h"
 #import "OCLogTemplate.h"
 
 #import <objc/runtime.h>
@@ -124,12 +125,24 @@ static const char *kTyphoonKey;
 - (id)instantiateViewControllerWithIdentifier:(NSString *)identifier
 {
     NSAssert(self.factory, @"TyphoonStoryboard's factory property can't be nil!");
+    
+    UIViewController *viewController = [super instantiateViewControllerWithIdentifier:identifier];
 
-    id viewController = [super instantiateViewControllerWithIdentifier:identifier];
+    return [self configureOrObtainFromPoolViewControllerForInstance:viewController];
+}
 
-    [self injectPropertiesForViewController:viewController];
+- (id)configureOrObtainFromPoolViewControllerForInstance:(UIViewController *)instance
+{
+    UIViewController *cachedInstance;
+    
+    cachedInstance = [((TyphoonComponentFactory *)self.factory) scopeCachedViewControllerForInstance:instance typhoonKey:instance.typhoonKey];
 
-    return viewController;
+    if (cachedInstance) {
+        return cachedInstance;
+    }
+    
+    [self injectPropertiesForViewController:instance];
+    return instance;
 }
 
 - (void)injectPropertiesForViewController:(UIViewController *)viewController
