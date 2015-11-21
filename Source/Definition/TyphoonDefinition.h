@@ -223,6 +223,11 @@ definition.factory = [self sqliteManager];
 
 + (id)withFactory:(id)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *factoryMethod))params configuration:(void(^)(TyphoonFactoryDefinition *definition))configuration;
 
++ (id)withStoryboardName:(NSString *)storyboardName storyboardId:(NSString *)storyboardId;
++ (id)withStoryboardName:(NSString *)storyboardName storyboardId:(NSString *)storyboardId configuration:(TyphoonDefinitionBlock)injections;
++ (id)withStoryboard:(id)storyboard storyboardId:(NSString *)storyboardId;
++ (id)withStoryboard:(id)storyboard storyboardId:(NSString *)storyboardId configuration:(TyphoonDefinitionBlock)injections;
+
 //-------------------------------------------------------------------------------------------
 #pragma mark Injection
 //-------------------------------------------------------------------------------------------

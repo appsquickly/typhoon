@@ -158,6 +158,33 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
     return definition;
 }
 
++ (id)withStoryboardName:(NSString *)storyboardName storyboardId:(NSString *)storyboardId
+{
+    return [self withStoryboardName:storyboardName storyboardId:storyboardId configuration:nil];
+}
+
++ (id)withStoryboardName:(NSString *)storyboardName storyboardId:(NSString *)storyboardId configuration:(TyphoonDefinitionBlock)injections
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName
+                                                         bundle:[NSBundle mainBundle]];
+    return [self withStoryboard:storyboard storyboardId:storyboardId configuration:injections];
+}
+
++ (id)withStoryboard:(id)storyboard storyboardId:(NSString *)storyboardId
+{
+    return [self withStoryboard:storyboard storyboardId:storyboardId configuration:nil];
+}
+
++ (id)withStoryboard:(id)storyboard storyboardId:(NSString *)storyboardId configuration:(TyphoonDefinitionBlock)injections
+{
+    return [self withFactory:storyboard
+                    selector:@selector(instantiateViewControllerWithIdentifier:)
+                  parameters:^(TyphoonMethod *factoryMethod) {
+                      [factoryMethod injectParameterWith:storyboardId];
+                  }
+               configuration:injections];
+}
+
 //-------------------------------------------------------------------------------------------
 #pragma mark - TyphoonObjectWithCustomInjection
 //-------------------------------------------------------------------------------------------
