@@ -14,9 +14,20 @@
 #import "UniqueViewController.h"
 #import "StoryboardFirstViewController.h"
 #import "StoryboardFirstViewController.h"
+#import "TyphoonStoryboard.h"
 #import <UIKit/UIKit.h>
 
 @implementation StoryboardViewControllerAssembly
+
+- (UIStoryboard *)storyboard {
+    return [TyphoonDefinition withClass:[TyphoonStoryboard class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(storyboardWithName:factory:bundle:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:@"Storyboard"];
+            [initializer injectParameterWith:self];
+            [initializer injectParameterWith:[NSBundle bundleForClass:[self class]]];
+        }];
+    }];
+}
 
 - (StoryboardFirstViewController *)initialViewController
 {
@@ -55,6 +66,37 @@
 {
     return [TyphoonDefinition withClass:[UniqueViewController class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(title) with:@"Unique"];
+    }];
+}
+
+- (UIViewController *)singletonViewController
+{
+    return [TyphoonDefinition withStoryboard:[self storyboard] storyboardId:@"SingletonViewController" configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(title) with:@"singleton"];
+        definition.scope = TyphoonScopeSingleton;
+    }];
+}
+
+- (UIViewController *)lazySingletonViewController
+{
+    return [TyphoonDefinition withStoryboard:[self storyboard] storyboardId:@"SingletonViewController" configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(title) with:@"lazysingleton"];
+        definition.scope = TyphoonScopeLazySingleton;
+    }];
+}
+
+- (UIViewController *)weakSingletonViewController
+{
+    return [TyphoonDefinition withStoryboard:[self storyboard] storyboardId:@"SingletonViewController" configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(title) with:@"weaksingleton"];
+        definition.scope = TyphoonScopeWeakSingleton;
+    }];
+}
+
+- (UIViewController *)prototypeViewController
+{
+    return [TyphoonDefinition withStoryboard:[self storyboard] storyboardId:@"PrototypeViewController" configuration:^(TyphoonDefinition *definition) {
+        definition.scope = TyphoonScopePrototype;
     }];
 }
 

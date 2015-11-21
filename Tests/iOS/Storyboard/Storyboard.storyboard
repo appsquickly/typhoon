@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mg8-lN-kDC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mg8-lN-kDC">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,6 +15,7 @@
                     <view key="view" contentMode="scaleToFill" id="aws-vV-SIt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <userDefinedRuntimeAttributes>
@@ -31,6 +32,7 @@
                 <navigationController storyboardIdentifier="navigation" definesPresentationContext="YES" id="h33-p8-fk0" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lK6-ll-arL">
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="9MY-L9-RLM" kind="relationship" relationship="rootViewController" id="1Zp-S3-qNl"/>
@@ -51,6 +53,7 @@
                     <view key="view" contentMode="scaleToFill" id="eD0-AH-zH8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="YY7-R7-W56"/>
@@ -68,6 +71,7 @@
                 <navigationController storyboardIdentifier="navigation2" definesPresentationContext="YES" id="Wbk-bO-luc" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="psP-Rs-A3h">
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="rqb-Fg-W14" kind="relationship" relationship="rootViewController" id="C3Q-UX-ybR"/>
@@ -88,6 +92,7 @@
                     <view key="view" contentMode="scaleToFill" id="foa-xB-tuk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="idE-S2-aCL"/>
@@ -110,6 +115,7 @@
                     <view key="view" contentMode="scaleToFill" id="Pk3-lw-XCb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
@@ -117,10 +123,93 @@
             </objects>
             <point key="canvasLocation" x="-179" y="1272"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="6ek-4i-0Id">
+            <objects>
+                <viewController storyboardIdentifier="SingletonViewController" id="hbk-i1-Zb4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LOL-6f-bOK"/>
+                        <viewControllerLayoutGuide type="bottom" id="Alx-16-2ov"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="39Z-yK-ubn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="typhoonKey" value="singletonViewController"/>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l2T-Pi-x6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-175" y="1955"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wvN-cm-mRs">
+            <objects>
+                <viewController storyboardIdentifier="LazySingletonViewController" id="xFa-Hg-cWG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PEC-Hz-e4B"/>
+                        <viewControllerLayoutGuide type="bottom" id="hF2-2p-PI3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Yud-GK-Bri">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="typhoonKey" value="lazySingletonViewController"/>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5w7-u3-MU8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="253" y="1955"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Oo8-Ve-1Oa">
+            <objects>
+                <viewController storyboardIdentifier="WeakSingletonViewController" id="rYG-x7-Ujg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9rD-bx-ANL"/>
+                        <viewControllerLayoutGuide type="bottom" id="IaK-kk-b4v"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qak-n8-TZP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="typhoonKey" value="weakSingletonViewController"/>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rPT-9b-u1S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="681" y="1955"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="rrM-kf-ZeQ">
+            <objects>
+                <viewController storyboardIdentifier="PrototypeViewController" id="Abh-1e-h9k" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QLI-PY-5Wk"/>
+                        <viewControllerLayoutGuide type="bottom" id="jjz-AL-TWA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j7G-A2-iED">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="typhoonKey" value="prototypeViewController"/>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nep-2R-XGQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073" y="1955"/>
+        </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
