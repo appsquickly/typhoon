@@ -223,23 +223,6 @@ definition.factory = [self sqliteManager];
 
 + (id)withFactory:(id)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *factoryMethod))params configuration:(void(^)(TyphoonFactoryDefinition *definition))configuration;
 
-/**
- This family of methods produces TyphoonDefinitions especially for UIViewControllers instantiated via storyboards.
- It requires either the definition for the target storyboard or its name.
- These definitions can use the same scopes as usual ones.
- 
- @param storyboardName The name of the storyboard in the main bundle
- @param storyboard     The TyphoonDefinition of the storyboard
- @param storyboardId   The target ViewController storyboard identifier
- @param injections     The definition configuration block
- 
- @return TyphoonDefinition for UIViewController
- */
-+ (id)withStoryboardName:(NSString *)storyboardName storyboardId:(NSString *)storyboardId;
-+ (id)withStoryboardName:(NSString *)storyboardName storyboardId:(NSString *)storyboardId configuration:(TyphoonDefinitionBlock)injections;
-+ (id)withStoryboard:(id)storyboard storyboardId:(NSString *)storyboardId;
-+ (id)withStoryboard:(id)storyboard storyboardId:(NSString *)storyboardId configuration:(TyphoonDefinitionBlock)injections;
-
 //-------------------------------------------------------------------------------------------
 #pragma mark Injection
 //-------------------------------------------------------------------------------------------
