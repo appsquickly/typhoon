@@ -11,6 +11,8 @@
 
 #import "TyphoonDefinition+Storyboard.h"
 
+#import "TyphoonStoryboardDefinition.h"
+
 @implementation TyphoonDefinition (Storyboard)
 
 + (id)withStoryboardName:(NSString *)storyboardName storyboardId:(NSString *)storyboardId
@@ -20,9 +22,13 @@
 
 + (id)withStoryboardName:(NSString *)storyboardName storyboardId:(NSString *)storyboardId configuration:(TyphoonDefinitionBlock)injections
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName
-                                                         bundle:[NSBundle mainBundle]];
-    return [self withStoryboard:storyboard storyboardId:storyboardId configuration:injections];
+    TyphoonStoryboardDefinition *definition = [[TyphoonStoryboardDefinition alloc] initWithStoryboardName:storyboardName storyboardId:storyboardId];
+    
+    if (injections) {
+        injections(definition);
+    }
+    
+    return definition;
 }
 
 + (id)withStoryboard:(id)storyboard storyboardId:(NSString *)storyboardId
@@ -32,12 +38,13 @@
 
 + (id)withStoryboard:(id)storyboard storyboardId:(NSString *)storyboardId configuration:(TyphoonDefinitionBlock)injections
 {
-    return [self withFactory:storyboard
-                    selector:@selector(instantiateViewControllerWithIdentifier:)
-                  parameters:^(TyphoonMethod *factoryMethod) {
-                      [factoryMethod injectParameterWith:storyboardId];
-                  }
-               configuration:injections];
+    TyphoonStoryboardDefinition *definition = [[TyphoonStoryboardDefinition alloc] initWithStoryboard:storyboard storyboardId:storyboardId];
+    
+    if (injections) {
+        injections(definition);
+    }
+    
+    return definition;
 }
 
 @end
