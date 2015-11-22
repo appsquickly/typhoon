@@ -11,19 +11,51 @@
 
 #import "TyphoonStoryboardDefinition.h"
 
+#import "TyphoonViewControllerFactory.h"
+#import "TyphoonStoryboardDefinitionContext.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
+
+@interface TyphoonStoryboardDefinition ()
+
+@property (strong, nonatomic) TyphoonStoryboardDefinitionContext *context;
+
+@end
+
 @implementation TyphoonStoryboardDefinition
+
+- (id)targetForInitializerWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+{
+    if (self.context.type == TyphoonStoryboardDefinitionByFactoryType) {
+        return [super targetForInitializerWithFactory:factory args:args];
+    }
+    
+    TyphoonViewControllerFactory *viewControllerFactory = [[TyphoonViewControllerFactory alloc] initWithFactory:factory];
+    UIViewController *result = [viewControllerFactory viewControllerWithStoryboardContext:self.context];
+    return result;
+}
 
 - (id)initWithStoryboardName:(NSString *)storyboardName storyboardId:(NSString *)storyboardId
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]];
-    return [self initWithStoryboard:storyboard storyboardId:storyboardId];
+    self = [super initWithClass:[NSObject class] key:nil];
+    if (self) {
+        _context = [TyphoonStoryboardDefinitionContext contextWithStoryboardName:storyboardName
+                                                                    storyboardId:storyboardId];
+        _scope = TyphoonScopePrototype;
+    }
+    return self;
 }
 
 - (id)initWithStoryboard:(UIStoryboard *)storyboard storyboardId:(NSString *)storyboardId
 {
-    return [self initWithFactory:storyboard selector:@selector(instantiateViewControllerWithIdentifier:) parameters:^(TyphoonMethod *method) {
-        [method injectParameterWith:storyboardId];
-    }];
+    self = [super initWithFactory:storyboard
+                         selector:@selector(instantiateViewControllerWithIdentifier:)
+                       parameters:^(TyphoonMethod *method) {
+                           [method injectParameterWith:storyboardId];
+                       }];
+    if (self) {
+        _context = [TyphoonStoryboardDefinitionContext contextForPreconfiguredStoryboardWithStoryboardId:storyboardId];
+    }
+    return self;
 }
 
 @end
