@@ -19,5 +19,6 @@
 - (instancetype)initWithFactory:(TyphoonComponentFactory *)factory;
 
 - (UIViewController *)viewControllerWithStoryboardContext:(TyphoonStoryboardDefinitionContext *)context;
+- (UIViewController *)viewControllerWithPrototype:(UIViewController *)prototype;
 
 @end

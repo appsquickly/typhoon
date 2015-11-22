@@ -132,6 +132,12 @@ static const char *kTyphoonKey;
     return result;
 }
 
+- (UIViewController *)viewControllerWithPrototype:(UIViewController *)prototype
+{
+    UIViewController *result = [self configureOrObtainFromPoolViewControllerForInstance:prototype];
+    return result;
+}
+
 - (id)configureOrObtainFromPoolViewControllerForInstance:(UIViewController *)instance
 {
     UIViewController *cachedInstance;

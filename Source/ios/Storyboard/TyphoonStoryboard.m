@@ -13,6 +13,7 @@
 #import "TyphoonStoryboard.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "TyphoonComponentFactory+Storyboard.h"
+#import "TyphoonViewControllerFactory.h"
 #import "OCLogTemplate.h"
 
 #import <objc/runtime.h>
@@ -126,57 +127,11 @@ static const char *kTyphoonKey;
 {
     NSAssert(self.factory, @"TyphoonStoryboard's factory property can't be nil!");
     
-    UIViewController *viewController = [super instantiateViewControllerWithIdentifier:identifier];
+    TyphoonViewControllerFactory *viewControllerFactory = [[TyphoonViewControllerFactory alloc] initWithFactory:self.factory];
+    UIViewController *prototype = [super instantiateViewControllerWithIdentifier:identifier];
+    UIViewController *result = [viewControllerFactory viewControllerWithPrototype:prototype];
 
-    return [self configureOrObtainFromPoolViewControllerForInstance:viewController];
-}
-
-- (id)configureOrObtainFromPoolViewControllerForInstance:(UIViewController *)instance
-{
-    UIViewController *cachedInstance;
-    
-    cachedInstance = [((TyphoonComponentFactory *)self.factory) scopeCachedViewControllerForInstance:instance typhoonKey:instance.typhoonKey];
-
-    if (cachedInstance) {
-        return cachedInstance;
-    }
-    
-    [self injectPropertiesForViewController:instance];
-    return instance;
-}
-
-- (void)injectPropertiesForViewController:(UIViewController *)viewController
-{
-    if (viewController.typhoonKey.length > 0) {
-        [self.factory inject:viewController withSelector:NSSelectorFromString(viewController.typhoonKey)];
-    }
-    else {
-        [self.factory inject:viewController];
-    }
-
-    for (UIViewController *controller in viewController.childViewControllers) {
-        [self injectPropertiesForViewController:controller];
-    }
-
-    __weak __typeof (viewController) weakViewController = viewController;
-    [viewController setViewDidLoadNotificationBlock:^{
-        [self injectPropertiesInView:weakViewController.view];
-    }];
-}
-
-- (void)injectPropertiesInView:(UIView *)view
-{
-    if (view.typhoonKey.length > 0) {
-        [self.factory inject:view withSelector:NSSelectorFromString(view.typhoonKey)];
-    }
-    
-    if ([view.subviews count] == 0) {
-        return;
-    }
-    
-    for (UIView *subview in view.subviews) {
-        [self injectPropertiesInView:subview];
-    }
+    return result;
 }
 
 @end
