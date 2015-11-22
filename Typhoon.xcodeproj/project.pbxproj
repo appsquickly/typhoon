@@ -1149,8 +1149,8 @@
 		9F26AA6F1BF9179F00663188 /* PropertiesB.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PropertiesB.plist; sourceTree = "<group>"; };
 		9F2C08A61BA0C7AF0049D751 /* TyphoonCollaboratingAssembliesCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonCollaboratingAssembliesCollector.h; sourceTree = "<group>"; };
 		9F2C08A71BA0C7AF0049D751 /* TyphoonCollaboratingAssembliesCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonCollaboratingAssembliesCollector.m; sourceTree = "<group>"; };
-		9F36398C1C00D3F000CB88A1 /* TyphoonComponentFactory+Storyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyphoonComponentFactory+Storyboard.h"; sourceTree = "<group>"; };
-		9F36398D1C00D3F000CB88A1 /* TyphoonComponentFactory+Storyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TyphoonComponentFactory+Storyboard.m"; sourceTree = "<group>"; };
+		9F36398C1C00D3F000CB88A1 /* TyphoonComponentFactory+Storyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TyphoonComponentFactory+Storyboard.h"; path = "../../Factory/Internal/TyphoonComponentFactory+Storyboard.h"; sourceTree = "<group>"; };
+		9F36398D1C00D3F000CB88A1 /* TyphoonComponentFactory+Storyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TyphoonComponentFactory+Storyboard.m"; path = "../../Factory/Internal/TyphoonComponentFactory+Storyboard.m"; sourceTree = "<group>"; };
 		9F3639901C00EEC600CB88A1 /* TyphoonDefinition+Storyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyphoonDefinition+Storyboard.h"; sourceTree = "<group>"; };
 		9F3639911C00EEC600CB88A1 /* TyphoonDefinition+Storyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TyphoonDefinition+Storyboard.m"; sourceTree = "<group>"; };
 		9F3639951C01C7C900CB88A1 /* TyphoonStoryboardDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonStoryboardDefinition.h; sourceTree = "<group>"; };
@@ -1646,8 +1646,6 @@
 				6B076F111936F63A0083714E /* TyphoonCallStack.m */,
 				6B076F121936F63A0083714E /* TyphoonComponentFactory+InstanceBuilder.h */,
 				6B076F131936F63A0083714E /* TyphoonComponentFactory+InstanceBuilder.m */,
-				9F36398C1C00D3F000CB88A1 /* TyphoonComponentFactory+Storyboard.h */,
-				9F36398D1C00D3F000CB88A1 /* TyphoonComponentFactory+Storyboard.m */,
 				6B076F141936F63A0083714E /* TyphoonComponentFactory+TyphoonDefinitionRegisterer.h */,
 				6B076F151936F63A0083714E /* TyphoonFactoryPropertyInjectionPostProcessor.h */,
 				6B076F161936F63A0083714E /* TyphoonFactoryPropertyInjectionPostProcessor.m */,
@@ -1724,6 +1722,8 @@
 		6B076F511936F63A0083714E /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				9F36398C1C00D3F000CB88A1 /* TyphoonComponentFactory+Storyboard.h */,
+				9F36398D1C00D3F000CB88A1 /* TyphoonComponentFactory+Storyboard.m */,
 				6B076F521936F63A0083714E /* TyphoonStoryboard.h */,
 				6B076F531936F63A0083714E /* TyphoonStoryboard.m */,
 				2DBA1F19AACBE84474E823C4 /* TyphoonStoryboardResolver.m */,

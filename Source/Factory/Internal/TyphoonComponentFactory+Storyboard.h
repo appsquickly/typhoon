@@ -13,6 +13,8 @@
 
 @interface TyphoonComponentFactory (Storyboard)
 
+@property (strong, nonatomic, readonly) NSMutableDictionary *storyboardPool;
+
 - (id)scopeCachedViewControllerForInstance:(UIViewController *)instance typhoonKey:(NSString *)typhoonKey;
 
 @end

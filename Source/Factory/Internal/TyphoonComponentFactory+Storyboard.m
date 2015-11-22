@@ -16,6 +16,8 @@
 
 @interface TyphoonComponentFactory (Private)
 
+@property(nonatomic, strong) NSString *typhoonKey;
+
 - (TyphoonDefinition *)definitionForKey:(NSString *)key;
 
 - (void)loadIfNeeded;
@@ -26,6 +28,24 @@
 
 @implementation TyphoonComponentFactory (Storyboard)
 
+static const char *kStoryboardPool;
+
+- (void)setStoryboardPool:(NSMutableDictionary *)storyboardsPool
+{
+    objc_setAssociatedObject(self, &kStoryboardPool, storyboardsPool, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSMutableDictionary *)storyboardPool
+{
+    NSMutableDictionary *pool = objc_getAssociatedObject(self, &kStoryboardPool);
+    if (pool == nil) {
+        @synchronized (self) {
+            pool = [NSMutableDictionary new];
+            [self setStoryboardPool:pool];
+        }
+    }
+    return pool;
+}
 
 - (id)scopeCachedViewControllerForInstance:(UIViewController *)instance typhoonKey:(NSString *)typhoonKey
 {
