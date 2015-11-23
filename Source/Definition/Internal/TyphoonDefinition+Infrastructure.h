@@ -86,8 +86,8 @@ Factory method for a TyphoonConfigPostProcessor.
 
 #pragma mark - Deprecated methods
 
-+ (instancetype)configDefinitionWithName:(NSString *)fileName DEPRECATED_MSG_ATTRIBUTE("use attachInstancePostProcessor instead");
-+ (instancetype)configDefinitionWithName:(NSString *)fileName bundle:(NSBundle *)fileBundle DEPRECATED_MSG_ATTRIBUTE("use attachInstancePostProcessor instead");
-+ (instancetype)configDefinitionWithPath:(NSString *)filePath DEPRECATED_MSG_ATTRIBUTE("use attachInstancePostProcessor instead");
++ (instancetype)configDefinitionWithName:(NSString *)fileName DEPRECATED_MSG_ATTRIBUTE("use -withConfigName: instead");
++ (instancetype)configDefinitionWithName:(NSString *)fileName bundle:(NSBundle *)fileBundle DEPRECATED_MSG_ATTRIBUTE("use -withConfigName:bundle: instead");
++ (instancetype)configDefinitionWithPath:(NSString *)filePath DEPRECATED_MSG_ATTRIBUTE("use -withConfigPath: instead");
 
 @end
