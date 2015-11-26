@@ -36,6 +36,8 @@
 		2DBA1F22197B2F62174AC928 /* TyphoonNemoTestAssemblies.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA10314E7114955C0AB31E /* TyphoonNemoTestAssemblies.m */; };
 		2DBA1FB1F6532DA96182BD13 /* TyphoonTestAssemblyConfigPostProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA14D1F4E06EDCD57873A2 /* TyphoonTestAssemblyConfigPostProcessor.m */; };
 		2DBA1FC0E15A415D0297317B /* AutoInjectionKnight.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA18F5476952207F6E2B0D /* AutoInjectionKnight.m */; };
+		39DBE6E61C07119B00C386B6 /* TyphoonDefinition+Namespacing.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FA1C1671BF8E169007030A5 /* TyphoonDefinition+Namespacing.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39DBE6E71C07119F00C386B6 /* TyphoonDefinitionNamespace.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FA1C1641BF8E0DC007030A5 /* TyphoonDefinitionNamespace.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3BB1324F1BA0577600823798 /* TyphoonInjectionDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1851EF633B38D4C7866A /* TyphoonInjectionDefinition.m */; };
 		6B076E5E1936F5850083714E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B076E5D1936F5850083714E /* Foundation.framework */; };
 		6B076E601936F5850083714E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B076E5F1936F5850083714E /* CoreGraphics.framework */; };
@@ -2585,7 +2587,9 @@
 				90ABC46D1A36B29E008D8162 /* TyphoonInjectionByObjectInstance.h in Headers */,
 				90ABC46E1A36B29E008D8162 /* TyphoonInjectionByReference.h in Headers */,
 				90ABC46F1A36B29E008D8162 /* TyphoonInjectionByRuntimeArgument.h in Headers */,
+				39DBE6E61C07119B00C386B6 /* TyphoonDefinition+Namespacing.h in Headers */,
 				90ABC4701A36B29E008D8162 /* TyphoonInjectionByType.h in Headers */,
+				39DBE6E71C07119F00C386B6 /* TyphoonDefinitionNamespace.h in Headers */,
 				90ABC4711A36B29F008D8162 /* TyphoonInjectionContext.h in Headers */,
 				90ABC4721A36B29F008D8162 /* TyphoonInjectionByCurrentRuntimeArguments.h in Headers */,
 				90ABC4731A36B29F008D8162 /* TyphoonInjections.h in Headers */,
