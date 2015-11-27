@@ -86,6 +86,8 @@
     XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherOrNameFromOption:@"nothing"], @"ZERO");
     XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherOrNameFromOption:@"trueString"], @"TRUE");
     XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherOrNameFromOption:@"falseString"], @"FALSE");
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherFromProtocolOption:[NSArray new]], @"TRUE");
+    XCTAssertEqualObjects([assembly definitionMatchedByCustomMatcherFromProtocolOption:[NSString new]], @"ZERO");
 }
 
 - (void)test_definition_cant_match_useDefault

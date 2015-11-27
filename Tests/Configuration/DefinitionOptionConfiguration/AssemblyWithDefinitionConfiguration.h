@@ -36,6 +36,8 @@
 
 - (id)definitionMatchedByCustomMatcherFromOption:(NSString *)option withString:(NSString *)string;
 
+- (id)definitionMatchedByCustomMatcherFromProtocolOption:(NSObject *)option;
+
 - (id)definitionMatchedByCustomInjectionsMatcherFromOption:(NSString *)option withString:(NSString *)string;
 
 - (id)definitionWithCircularDescription;

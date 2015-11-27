@@ -128,6 +128,14 @@
     }];
 }
 
+- (id)definitionMatchedByCustomMatcherFromProtocolOption:(NSObject *)option
+{
+    return [TyphoonDefinition withOption:option matcher:^(TyphoonOptionMatcher *matcher) {
+        [matcher caseConformsToProtocol:@protocol(NSFastEnumeration) use:[self trueString]];
+        [matcher defaultUse:[self zeroString]];
+    }];
+}
+
 - (id)stringWithText:(NSString *)text
 {
     return [TyphoonDefinition withClass:[NSString class] configuration:^(TyphoonDefinition *definition) {
