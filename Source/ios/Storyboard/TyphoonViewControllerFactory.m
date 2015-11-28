@@ -38,19 +38,21 @@
 {
     NSMutableDictionary *storyboardPool = [self.factory storyboardPool];
     
-    UIStoryboard *storyboard = storyboardPool[context.storyboardName];
+    UIStoryboard *storyboard = storyboard = [TyphoonStoryboard storyboardWithName:context.storyboardName
+                                                                          factory:self.factory
+                                                                           bundle:[NSBundle bundleForClass:[self class]]];
     if (!storyboard) {
-        storyboard = [UIStoryboard storyboardWithName:context.storyboardName
-                                               bundle:[NSBundle bundleForClass:[self class]]];
+        storyboard = [TyphoonStoryboard storyboardWithName:context.storyboardName
+                                                   factory:self.factory
+                                                    bundle:[NSBundle bundleForClass:[self class]]];
         @synchronized(self) {
             storyboardPool[context.storyboardName] = storyboard;
         }
     }
     
     UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:context.storyboardId];
-    UIViewController *result = [self configureOrObtainFromPoolViewControllerForInstance:viewController];
-    
-    return result;
+
+    return viewController;
 }
 
 - (UIViewController *)viewControllerWithPrototype:(UIViewController *)prototype

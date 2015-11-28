@@ -100,4 +100,14 @@
     }];
 }
 
+- (UIViewController *)oneMoreViewController
+{
+    return [TyphoonDefinition withStoryboardName:@"Storyboard"
+                                    storyboardId:@"OneMoreViewController" configuration:^(TyphoonDefinition *definition) {
+                                        [definition injectProperty:@selector(title) with:@"OneMoreViewController"];
+                                        definition.scope = TyphoonScopeSingleton;
+                                    }];
+}
+
+
 @end

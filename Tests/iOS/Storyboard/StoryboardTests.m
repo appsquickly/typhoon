@@ -137,4 +137,10 @@
     XCTAssertNotEqualObjects(firstInstance, secondInstance);
 }
 
+- (void)test_controller_created_by_storyboard_name
+{
+    UIViewController *oneMoreViewController = [storyboard instantiateViewControllerWithIdentifier:@"OneMoreViewController"];
+    XCTAssertEqualObjects(oneMoreViewController.title, @"OneMoreViewController");
+}
+
 @end
