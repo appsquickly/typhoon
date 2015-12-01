@@ -24,6 +24,9 @@
 /** If 'option' is member of class 'optionClass' then use 'injection' */
 - (void)caseMemberOfClass:(Class)optionClass use:(id)injection;
 
+/** If 'option' conforms to protocol 'optionProtocol' then use 'injection' */
+- (void)caseConformsToProtocol:(Protocol *)optionProtocol use:(id)injection;
+
 /** When matcher can't match injection from optionValue, use 'injection' */
 - (void)defaultUse:(id)injection;
 

@@ -24,11 +24,13 @@
 @property (nonatomic, strong) id value;
 @property (nonatomic) Class memberClass;
 @property (nonatomic) Class kindClass;
+@property (nonatomic) Protocol *conformProtocol;
 @property (nonatomic, strong) id<TyphoonInjection> injection;
 
 + (id)matchWithValue:(id)value injection:(id)injection;
 + (id)matchWithKindOfClass:(Class)clazz injection:(id)injection;
 + (id)matchWithMemberOfClass:(Class)clazz injection:(id)injection;
++ (id)matchWithConformsToProtocol:(Protocol *)conformProtocol injection:(id)injection;
 
 @end
 
@@ -58,6 +60,14 @@
 {
     TyphoonOptionMatch *match = [TyphoonOptionMatch new];
     match.memberClass = clazz;
+    match.injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);
+    return match;
+}
+
++ (id)matchWithConformsToProtocol:(Protocol *)conformProtocol injection:(id)injection
+{
+    TyphoonOptionMatch *match = [TyphoonOptionMatch new];
+    match.conformProtocol = conformProtocol;
     match.injection = TyphoonMakeInjectionFromObjectIfNeeded(injection);
     return match;
 }
@@ -103,6 +113,11 @@
     [_matches addObject:[TyphoonOptionMatch matchWithMemberOfClass:optionClass injection:injection]];
 }
 
+- (void)caseConformsToProtocol:(Protocol *)optionProtocol use:(id)injection
+{
+    [_matches addObject:[TyphoonOptionMatch matchWithConformsToProtocol:optionProtocol injection:injection]];
+}
+
 - (void)useDefinitionWithKeyMatchedOptionValue
 {
     _useMatchingByName = YES;
@@ -141,7 +156,8 @@
         BOOL isEqual = (match.value && [match.value isEqual:value]) || ([match.value isEqual:[TyphoonOptionMatchNilValue class]] && !value);
         BOOL isKind = (match.kindClass && [value isKindOfClass:match.kindClass]);
         BOOL isMember = (match.memberClass && [value isMemberOfClass:match.memberClass]);
-        if (isEqual || isKind || isMember) {
+        BOOL doesConform = (match.conformProtocol && [value conformsToProtocol:match.conformProtocol]);
+        if (isEqual || isKind || isMember || doesConform) {
             return match;
         }
     }
