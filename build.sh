@@ -36,7 +36,7 @@ git submodule update
 ditto ${resourceDir}/build-failed.png ${reportsDir}/build-status/build-status.png
 
 
-xcodebuild -project Typhoon.xcodeproj/ -scheme 'Typhoon' clean build | xcpretty -c
+#xcodebuild -project Typhoon.xcodeproj/ -scheme 'Typhoon' clean build | xcpretty -c
 
 #Run tests and produce coverage report for iOS Simulator
 osVersion=9.1
