@@ -216,6 +216,61 @@
     XCTAssertThrows([child setParent:parent]);
 }
 
+- (void)test_inherits_injection_hooks
+{
+    NSUInteger expectedInjectedParametersCount = 1;
+    TyphoonDefinition *parent = [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition performBeforeInjections:@selector(setFavoriteQuest:)
+                                 parameters:^(TyphoonMethod *param) {
+                                     [param injectParameterWith:[CampaignQuest new]];
+                                 }];
+        [definition performAfterInjections:@selector(setFavoriteQuest:)
+                                parameters:^(TyphoonMethod *param) {
+                                    [param injectParameterWith:[CampaignQuest new]];
+                                }];
+    }];
+    
+    TyphoonDefinition *child = [TyphoonDefinition withParent:parent class:[Knight class]];
+    
+    XCTAssertEqual([[child beforeInjections] selector], @selector(setFavoriteQuest:));
+    XCTAssertEqual([[[child beforeInjections] injectedParameters] count], expectedInjectedParametersCount);
+    XCTAssertEqual([[child afterInjections] selector], @selector(setFavoriteQuest:));
+    XCTAssertEqual([[[child afterInjections] injectedParameters] count], expectedInjectedParametersCount);
+}
+
+- (void)test_overrides_injection_hooks
+{
+    NSUInteger expectedInjectedParametersCount = 2;
+    TyphoonDefinition *parent = [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition performBeforeInjections:@selector(setFavoriteQuest:)
+                                 parameters:^(TyphoonMethod *param) {
+                                     [param injectParameterWith:[CampaignQuest new]];
+                                 }];
+        [definition performAfterInjections:@selector(setFavoriteQuest:)
+                                parameters:^(TyphoonMethod *param) {
+                                    [param injectParameterWith:[CampaignQuest new]];
+                                }];
+    }];
+    
+    TyphoonDefinition *child = [TyphoonDefinition withParent:parent class:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition performBeforeInjections:@selector(setQuest:andDamselsRescued:)
+                                 parameters:^(TyphoonMethod *param) {
+                                     [param injectParameterWith:[CampaignQuest new]];
+                                     [param injectParameterWith:@42];
+                                 }];
+        [definition performAfterInjections:@selector(setQuest:andDamselsRescued:)
+                                parameters:^(TyphoonMethod *param) {
+                                    [param injectParameterWith:[CampaignQuest new]];
+                                    [param injectParameterWith:@42];
+                                }];
+    }];
+    
+    XCTAssertEqual([[child beforeInjections] selector], @selector(setQuest:andDamselsRescued:));
+    XCTAssertEqual([[[child beforeInjections] injectedParameters] count], expectedInjectedParametersCount);
+    XCTAssertEqual([[child afterInjections] selector], @selector(setQuest:andDamselsRescued:));
+    XCTAssertEqual([[[child afterInjections] injectedParameters] count], expectedInjectedParametersCount);
+}
+
 //-------------------------------------------------------------------------------------------
 #pragma mark - Copying
 //-------------------------------------------------------------------------------------------
