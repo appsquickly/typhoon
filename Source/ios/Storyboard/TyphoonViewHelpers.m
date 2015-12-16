@@ -42,8 +42,10 @@
         BOOL replaceSecondItem = [constraint secondItem] == src;
         id firstItem = replaceFirstItem ? dst : constraint.firstItem;
         id secondItem = replaceSecondItem ? dst : constraint.secondItem;
-        NSLayoutConstraint *copy = [NSLayoutConstraint constraintWithItem:firstItem attribute:constraint.firstAttribute relatedBy:constraint.relation toItem:secondItem attribute:constraint.secondAttribute multiplier:constraint.multiplier constant:constraint.constant];
-        [dst addConstraint:copy];
+        // Use the same constraint instance that the external outlets
+        [constraint setValue:firstItem forKey:NSStringFromSelector(@selector(firstItem))];
+        [constraint setValue:secondItem forKey:NSStringFromSelector(@selector(secondItem))];
+        [dst addConstraint:constraint];
     }
     
     dst.frame = src.frame;
