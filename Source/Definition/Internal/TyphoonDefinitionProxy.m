@@ -17,11 +17,14 @@
 {
     Class _definitionClass;
     NSMutableArray *_methodConfigurationBlocks;
+    TyphoonDefinitionBlock _extraConfigurationBlock;
 }
 
-- (instancetype)initWithClass:(Class)clazz
+- (instancetype)initWithClass:(Class)clazz configuration:(TyphoonDefinitionBlock)configuration
 {
     _definitionClass = clazz;
+    _extraConfigurationBlock = [configuration copy];
+    
     _methodConfigurationBlocks = [NSMutableArray array];
     
     return self;
@@ -70,6 +73,10 @@
     return [TyphoonDefinition withClass:_definitionClass configuration:^(TyphoonDefinition *definition) {
         for (TyphoonDefinitionBlock block in self->_methodConfigurationBlocks) {
             block(definition);
+        }
+        
+        if (self->_extraConfigurationBlock) {
+            self->_extraConfigurationBlock(definition);
         }
     }];
 }

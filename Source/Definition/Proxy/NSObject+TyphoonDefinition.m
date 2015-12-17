@@ -17,7 +17,14 @@
 
 + (instancetype)typhoonDefinition
 {
-    return (id)[[TyphoonDefinitionProxy alloc] initWithClass:[self class]];
+    return (id)[[TyphoonDefinitionProxy alloc] initWithClass:[self class] configuration:nil];
+}
+
++ (instancetype)typhoonDefinitionWithScope:(TyphoonScope)scope
+{
+    return (id)[[TyphoonDefinitionProxy alloc] initWithClass:[self class] configuration:^(TyphoonDefinition *definition) {
+        definition.scope = scope;
+    }];
 }
 
 @end

@@ -15,7 +15,7 @@
 
 @interface TyphoonDefinitionProxy : NSProxy
 
-- (instancetype)initWithClass:(Class)clazz;
+- (instancetype)initWithClass:(Class)clazz configuration:(TyphoonDefinitionBlock)configuration;
 
 - (TyphoonDefinition *)__buildTyphoonDefinition;
 

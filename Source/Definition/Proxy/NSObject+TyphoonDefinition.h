@@ -11,9 +11,12 @@
 
 
 #import <Foundation/Foundation.h>
+#import "TyphoonDefinition.h"
 
 @interface NSObject (TyphoonDefinition)
 
 + (instancetype)typhoonDefinition;
+
++ (instancetype)typhoonDefinitionWithScope:(TyphoonScope)scope;
 
 @end
