@@ -24,6 +24,7 @@ FOUNDATION_EXPORT const unsigned char TyphoonVersionString[];
 #import "TyphoonDefinition.h"
 #import "TyphoonFactoryDefinition.h"
 #import "TyphoonDefinition+Infrastructure.h"
+#import "NSObject+TyphoonDefinition.h"
 #import "TyphoonMethod.h"
 #import "TyphoonConfigPostProcessor.h"
 #import "TyphoonResource.h"
