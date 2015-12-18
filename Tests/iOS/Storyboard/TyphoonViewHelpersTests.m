@@ -154,7 +154,7 @@ BOOL equalProperties(NSLayoutConstraint *c1, NSLayoutConstraint *c2){
     XCTAssertEqual(dst.autoresizingMask, src.autoresizingMask);
     
     for (NSLayoutConstraint *dstConstraint in dst.constraints) {
-        BOOL didFindCopied = NO;
+        BOOL didFindEqualPointer = NO;
         
         for (NSLayoutConstraint *srcConstraint in src.constraints) {
             if (equalProperties(dstConstraint, srcConstraint)){
@@ -165,14 +165,15 @@ BOOL equalProperties(NSLayoutConstraint *c1, NSLayoutConstraint *c2){
                 id secondItem = replaceSecondItem ? dst : srcConstraint.secondItem;
                 
                 if ([dstConstraint.firstItem isEqual:firstItem] &&
-                    [dstConstraint.secondItem isEqual:secondItem]){
-                    didFindCopied = YES;
+                    [dstConstraint.secondItem isEqual:secondItem] &&
+                    dstConstraint == srcConstraint) {
+                    didFindEqualPointer = YES;
                     break;
                 }
             }
         }
         
-        XCTAssertTrue(didFindCopied, @"%@", dstConstraint.description);
+        XCTAssertTrue(didFindEqualPointer, @"%@", dstConstraint.description);
     }
     
     XCTAssertEqual(dst.constraints.count, src.constraints.count);
