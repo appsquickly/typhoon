@@ -384,5 +384,35 @@ test_currently_resolving_references_dictionary_is_not_overwritten_when_initializ
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)3);
 }
 
+//-------------------------------------------------------------------------------------------
+#pragma mark - Definition proxy
+
+- (void)test_returns_instance_configured_with_definition_proxy
+{
+    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
+    
+    Knight *knight = [assembly knightWithDefinitionProxy];
+    XCTAssertNotNil(knight);
+    XCTAssertNotNil(knight.quest);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
+//    XCTAssertEqual(knight.hasHorseWillTravel, YES);
+    XCTAssertEqual(knight.foobar, @(42));
+    
+    Knight *anotherKnight = [assembly knightWithDefinitionProxy];
+    XCTAssertTrue(knight == anotherKnight);
+}
+
+- (void)test_returns_instance_configured_with_definition_proxy_using_custom_initializer_and_runtime_arguments
+{
+    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
+    
+    Knight *knight = [assembly knightWithDefinitionProxyAndRuntimeDamselsRescued:@(12) runtimeFoobar:@(42)];
+    XCTAssertNotNil(knight);
+    XCTAssertNotNil(knight.favoriteQuest);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
+//    XCTAssertEqual(knight.hasHorseWillTravel, YES);
+    XCTAssertEqual(knight.foobar, @(42));
+}
+
 @end
 
