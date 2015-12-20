@@ -58,4 +58,11 @@
     return self;
 }
 
+- (TyphoonMethod *)initializer {
+    if (self.context.type == TyphoonStoryboardDefinitionByFactoryType) {
+        return [super initializer];
+    }
+    return nil;
+}
+
 @end

@@ -43,9 +43,9 @@
         storyboard = [TyphoonStoryboard storyboardWithName:context.storyboardName
                                                    factory:self.factory
                                                     bundle:[NSBundle bundleForClass:[self class]]];
-//        @synchronized(self) {
+        @synchronized(self) {
             storyboardPool[context.storyboardName] = storyboard;
-//        }
+        }
     }
     
     UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:context.storyboardId];
