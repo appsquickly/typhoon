@@ -36,6 +36,10 @@
 
 - (id)initWithStoryboardName:(NSString *)storyboardName viewControllerId:(NSString *)viewControllerId
 {
+    if (!storyboardName) {
+        [NSException raise:NSInvalidArgumentException
+                    format:@"Tried to instantiate ViewController with identifier %@ from the storyboard with unspecified name. This property cannot be nil.", viewControllerId];
+    }
     self = [super initWithClass:[NSObject class] key:nil];
     if (self) {
         _context = [TyphoonStoryboardDefinitionContext contextWithStoryboardName:storyboardName
