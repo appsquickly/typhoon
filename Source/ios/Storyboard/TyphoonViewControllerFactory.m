@@ -48,7 +48,7 @@
         }
     }
     
-    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:context.storyboardId];
+    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:context.viewControllerId];
 
     return viewController;
 }

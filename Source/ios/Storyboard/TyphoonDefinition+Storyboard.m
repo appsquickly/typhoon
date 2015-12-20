@@ -15,14 +15,14 @@
 
 @implementation TyphoonDefinition (Storyboard)
 
-+ (id)withStoryboardName:(NSString *)storyboardName storyboardId:(NSString *)storyboardId
++ (id)withStoryboardName:(NSString *)storyboardName viewControllerId:(NSString *)viewControllerId
 {
-    return [self withStoryboardName:storyboardName storyboardId:storyboardId configuration:nil];
+    return [self withStoryboardName:storyboardName viewControllerId:viewControllerId configuration:nil];
 }
 
-+ (id)withStoryboardName:(NSString *)storyboardName storyboardId:(NSString *)storyboardId configuration:(TyphoonDefinitionBlock)injections
++ (id)withStoryboardName:(NSString *)storyboardName viewControllerId:(NSString *)viewControllerId configuration:(TyphoonDefinitionBlock)injections
 {
-    TyphoonStoryboardDefinition *definition = [[TyphoonStoryboardDefinition alloc] initWithStoryboardName:storyboardName storyboardId:storyboardId];
+    TyphoonStoryboardDefinition *definition = [[TyphoonStoryboardDefinition alloc] initWithStoryboardName:storyboardName viewControllerId:viewControllerId];
     
     if (injections) {
         injections(definition);
@@ -31,14 +31,14 @@
     return definition;
 }
 
-+ (id)withStoryboard:(id)storyboard storyboardId:(NSString *)storyboardId
++ (id)withStoryboard:(id)storyboard viewControllerId:(NSString *)viewControllerId
 {
-    return [self withStoryboard:storyboard storyboardId:storyboardId configuration:nil];
+    return [self withStoryboard:storyboard viewControllerId:viewControllerId configuration:nil];
 }
 
-+ (id)withStoryboard:(id)storyboard storyboardId:(NSString *)storyboardId configuration:(TyphoonDefinitionBlock)injections
++ (id)withStoryboard:(id)storyboard viewControllerId:(NSString *)viewControllerId configuration:(TyphoonDefinitionBlock)injections
 {
-    TyphoonStoryboardDefinition *definition = [[TyphoonStoryboardDefinition alloc] initWithStoryboard:storyboard storyboardId:storyboardId];
+    TyphoonStoryboardDefinition *definition = [[TyphoonStoryboardDefinition alloc] initWithStoryboard:storyboard viewControllerId:viewControllerId];
     
     if (injections) {
         injections(definition);

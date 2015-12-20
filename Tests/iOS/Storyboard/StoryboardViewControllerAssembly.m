@@ -71,7 +71,7 @@
 
 - (UIViewController *)singletonViewController
 {
-    return [TyphoonDefinition withStoryboard:[self storyboard] storyboardId:@"SingletonViewController" configuration:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withStoryboard:[self storyboard] viewControllerId:@"SingletonViewController" configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(title) with:@"singleton"];
         definition.scope = TyphoonScopeSingleton;
     }];
@@ -79,7 +79,7 @@
 
 - (UIViewController *)lazySingletonViewController
 {
-    return [TyphoonDefinition withStoryboard:[self storyboard] storyboardId:@"SingletonViewController" configuration:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withStoryboard:[self storyboard] viewControllerId:@"SingletonViewController" configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(title) with:@"lazysingleton"];
         definition.scope = TyphoonScopeLazySingleton;
     }];
@@ -87,7 +87,7 @@
 
 - (UIViewController *)weakSingletonViewController
 {
-    return [TyphoonDefinition withStoryboard:[self storyboard] storyboardId:@"SingletonViewController" configuration:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withStoryboard:[self storyboard] viewControllerId:@"SingletonViewController" configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(title) with:@"weaksingleton"];
         definition.scope = TyphoonScopeWeakSingleton;
     }];
@@ -95,7 +95,7 @@
 
 - (UIViewController *)prototypeViewController
 {
-    return [TyphoonDefinition withStoryboard:[self storyboard] storyboardId:@"PrototypeViewController" configuration:^(TyphoonDefinition *definition) {
+    return [TyphoonDefinition withStoryboard:[self storyboard] viewControllerId:@"PrototypeViewController" configuration:^(TyphoonDefinition *definition) {
         definition.scope = TyphoonScopePrototype;
     }];
 }
@@ -103,7 +103,7 @@
 - (UIViewController *)oneMoreViewController
 {
     return [TyphoonDefinition withStoryboardName:@"Storyboard"
-                                    storyboardId:@"OneMoreViewController" configuration:^(TyphoonDefinition *definition) {
+                                    viewControllerId:@"OneMoreViewController" configuration:^(TyphoonDefinition *definition) {
                                         [definition injectProperty:@selector(title) with:@"OneMoreViewController"];
                                         definition.scope = TyphoonScopeSingleton;
                                     }];

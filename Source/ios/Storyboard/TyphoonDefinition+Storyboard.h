@@ -18,16 +18,16 @@
  It requires either the definition for the target storyboard or its name.
  These definitions can use the same scopes as usual ones.
  
- @param storyboardName The name of the storyboard in the main bundle
- @param storyboard     The TyphoonDefinition of the storyboard
- @param storyboardId   The target ViewController storyboard identifier
- @param injections     The definition configuration block
+ @param storyboardName   The name of the storyboard in the main bundle
+ @param storyboard       The TyphoonDefinition of the storyboard
+ @param viewControllerId The target ViewController storyboard identifier
+ @param injections       The definition configuration block
  
  @return TyphoonDefinition for UIViewController
  */
-+ (id)withStoryboardName:(NSString *)storyboardName storyboardId:(NSString *)storyboardId;
-+ (id)withStoryboardName:(NSString *)storyboardName storyboardId:(NSString *)storyboardId configuration:(TyphoonDefinitionBlock)injections;
-+ (id)withStoryboard:(id)storyboard storyboardId:(NSString *)storyboardId;
-+ (id)withStoryboard:(id)storyboard storyboardId:(NSString *)storyboardId configuration:(TyphoonDefinitionBlock)injections;
++ (id)withStoryboardName:(NSString *)storyboardName viewControllerId:(NSString *)viewControllerId;
++ (id)withStoryboardName:(NSString *)storyboardName viewControllerId:(NSString *)viewControllerId configuration:(TyphoonDefinitionBlock)injections;
++ (id)withStoryboard:(id)storyboard viewControllerId:(NSString *)viewControllerId;
++ (id)withStoryboard:(id)storyboard viewControllerId:(NSString *)viewControllerId configuration:(TyphoonDefinitionBlock)injections;
 
 @end

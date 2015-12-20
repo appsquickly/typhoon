@@ -15,34 +15,34 @@
 
 @property (assign, nonatomic, readwrite) TyphoonStoryboardDefinitionType type;
 @property (strong, nonatomic, readwrite) NSString *storyboardName;
-@property (strong, nonatomic, readwrite) NSString *storyboardId;
+@property (strong, nonatomic, readwrite) NSString *viewControllerId;
 
 @end
 
 @implementation TyphoonStoryboardDefinitionContext
 
-- (instancetype)initWithType:(TyphoonStoryboardDefinitionType)type storyboardId:(NSString *)storyboardId storyboardName:(NSString *)storyboardName
+- (instancetype)initWithType:(TyphoonStoryboardDefinitionType)type viewControllerId:(NSString *)viewControllerId storyboardName:(NSString *)storyboardName
 {
     self = [super init];
     if (self) {
         _type = type;
-        _storyboardId = storyboardId;
+        _viewControllerId = viewControllerId;
         _storyboardName = storyboardName;
     }
     return self;
 }
 
-+ (instancetype)contextWithStoryboardName:(NSString *)storyboardName storyboardId:(NSString *)storyboardId
++ (instancetype)contextWithStoryboardName:(NSString *)storyboardName viewControllerId:(NSString *)viewControllerId
 {
     return [[[self class] alloc] initWithType:TyphoonStoryboardDefinitionByNameType
-                                 storyboardId:storyboardId
+                             viewControllerId:viewControllerId
                                storyboardName:storyboardName];
 }
 
-+ (instancetype)contextForPreconfiguredStoryboardWithStoryboardId:(NSString *)storyboardId
++ (instancetype)contextForPreconfiguredStoryboardWithViewControllerId:(NSString *)viewControllerId
 {
     return [[[self class] alloc] initWithType:TyphoonStoryboardDefinitionByFactoryType
-                                 storyboardId:storyboardId
+                             viewControllerId:viewControllerId
                                storyboardName:nil];
 }
 

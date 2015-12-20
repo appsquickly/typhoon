@@ -13,7 +13,7 @@
 
 @interface TyphoonStoryboardDefinition : TyphoonFactoryDefinition
 
-- (id)initWithStoryboardName:(NSString *)storyboardName storyboardId:(NSString *)storyboardId;
-- (id)initWithStoryboard:(UIStoryboard *)storyboard storyboardId:(NSString *)storyboardI;
+- (id)initWithStoryboardName:(NSString *)storyboardName viewControllerId:(NSString *)viewControllerId;
+- (id)initWithStoryboard:(UIStoryboard *)storyboard viewControllerId:(NSString *)viewControllerId;
 
 @end
