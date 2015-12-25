@@ -24,7 +24,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 
 @implementation TyphoonDefinition (InstanceBuilder)
 
-#pragma mark - Base methods
+#pragma mark - TyphoonInjectionEnumeration
 
 - (void)enumerateInjectionsOfKind:(Class)injectionClass options:(TyphoonInjectionsEnumerationOption)options
                        usingBlock:(TyphoonInjectionsEnumerationBlock)block
@@ -58,6 +58,8 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
         }];
     }
 }
+
+#pragma mark - Base methods
 
 - (void)enumerateInjectionsOfKind:(Class)injectionClass onCollection:(id<NSFastEnumeration>)collection withBlock:(TyphoonInjectionsEnumerationBlock)block
                      replaceBlock:(void(^)(id injection, id injectionToReplace))replaceBlock
@@ -95,15 +97,15 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     return [self.parent afterInjections];
 }
 
-- (NSSet *)injectedProperties
+- (NSOrderedSet *)injectedProperties
 {
     if (!self.parent) {
         return [_injectedProperties mutableCopy];
     }
 
-    NSMutableSet *properties = (NSMutableSet *)[self.parent injectedProperties];
+    NSMutableOrderedSet *properties = (NSMutableOrderedSet *)[self.parent injectedProperties];
 
-    NSMutableSet *overriddenProperties = [NSMutableSet set];
+    NSMutableOrderedSet *overriddenProperties = [NSMutableOrderedSet orderedSet];
 
     for (id<TyphoonPropertyInjection> parentProperty in properties) {
         for (id <TyphoonPropertyInjection> childProperty in _injectedProperties) {
@@ -113,8 +115,8 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
         }
     }
 
-    [properties minusSet:overriddenProperties];
-    [properties unionSet:_injectedProperties];
+    [properties minusOrderedSet:overriddenProperties];
+    [properties unionOrderedSet:_injectedProperties];
 
     return properties;
 }

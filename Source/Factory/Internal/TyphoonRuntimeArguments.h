@@ -11,8 +11,9 @@
 
 
 #import <Foundation/Foundation.h>
+#import "TyphoonInjectionEnumeration.h"
 
-@interface TyphoonRuntimeArguments : NSObject <NSCopying>
+@interface TyphoonRuntimeArguments : NSObject <NSCopying, TyphoonInjectionEnumeration>
 
 + (instancetype)argumentsFromInvocation:(NSInvocation *)invocation;
 

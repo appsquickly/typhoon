@@ -15,6 +15,7 @@
 #import "TyphoonInjectionByRuntimeArgument.h"
 #import "TyphoonInjections.h"
 #import "TyphoonInjectionByReference.h"
+#import "NSInvocation+TCFWrapValues.h"
 
 @implementation TyphoonRuntimeArguments
 {
@@ -32,9 +33,7 @@
     NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:count];
 
     for (NSInteger i = 2; i < (NSInteger)count; i++) {
-        void *pointer;
-        [invocation getArgument:&pointer atIndex:i];
-        id argument = (__bridge id) pointer;
+        id argument = [invocation typhoon_getArgumentObjectAtIndex:i];
 
         id<TyphoonInjection>injection = TyphoonMakeInjectionFromObjectIfNeeded(argument);
         [self validateRuntimeArgumentWithInjection:injection];
@@ -160,6 +159,24 @@
     [description appendFormat:@"_arguments=%@", _arguments];
     [description appendString:@">"];
     return description;
+}
+
+#pragma mark - TyphoonInjectionEnumeration
+
+- (void)enumerateInjectionsOfKind:(Class)injectionClass options:(TyphoonInjectionsEnumerationOption)options
+                       usingBlock:(TyphoonInjectionsEnumerationBlock)block
+{
+    [self enumerateArgumentsUsingBlock:^(id argument, NSUInteger index, BOOL *stop) {
+        if (![argument isKindOfClass:injectionClass]) {
+            return;
+        }
+        
+        id argumentToReplace = nil;
+        block(argument, &argumentToReplace, stop);
+        if (argumentToReplace) {
+            [self replaceArgumentAtIndex:index withArgument:argumentToReplace];
+        }
+    }];
 }
 
 @end

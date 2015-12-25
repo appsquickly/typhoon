@@ -13,11 +13,12 @@
 #import <Foundation/Foundation.h>
 #import "TyphoonOptionMatcher.h"
 #import "TyphoonDefinition+Option.h"
+#import "TyphoonInjectionEnumeration.h"
 
 @class TyphoonComponentFactory;
 @protocol TyphoonInjection;
 
-@interface TyphoonOptionMatcher (Internal)
+@interface TyphoonOptionMatcher (Internal) <TyphoonInjectionEnumeration>
 
 - (instancetype)initWithBlock:(TyphoonMatcherBlock)block;
 

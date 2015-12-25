@@ -176,7 +176,7 @@
 
     XCTAssertEqual([[child injectedProperties] count], (NSUInteger)1);
 
-    TyphoonInjectionByObjectInstance *property = [[child injectedProperties] anyObject];
+    TyphoonInjectionByObjectInstance *property = [[child injectedProperties] firstObject];
     XCTAssertEqual([property.objectInstance integerValue], 346);
 }
 

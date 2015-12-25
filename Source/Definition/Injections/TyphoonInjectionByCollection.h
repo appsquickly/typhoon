@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonAbstractInjection.h"
+#import "TyphoonInjectionEnumeration.h"
 
 /** Protocol which should be confirmed by collection (NSArray, NSSet, NSOrderedSet are conforms) */
 @protocol TyphoonCollection <NSObject, NSFastEnumeration>
@@ -22,7 +23,7 @@
 
 @end
 
-@interface TyphoonInjectionByCollection : TyphoonAbstractInjection
+@interface TyphoonInjectionByCollection : TyphoonAbstractInjection <TyphoonInjectionEnumeration>
 
 - (instancetype)initWithCollection:(id)collection requiredClass:(Class)collectionClass;
 

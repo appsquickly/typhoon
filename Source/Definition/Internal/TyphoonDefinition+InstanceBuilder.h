@@ -12,32 +12,22 @@
 
 #import <Foundation/Foundation.h>
 #import "TyphoonDefinition.h"
+#import "TyphoonInjectionEnumeration.h"
 
 @protocol TyphoonPropertyInjection;
 @protocol TyphoonInjection;
 @class TyphoonComponentFactory;
 @class TyphoonRuntimeArguments;
 
-typedef void(^TyphoonInjectionsEnumerationBlock)(id injection, id*injectionToReplace, BOOL*stop);
-
-typedef NS_OPTIONS(NSInteger, TyphoonInjectionsEnumerationOption) {
-    TyphoonInjectionsEnumerationOptionProperties = 1 << 0,
-    TyphoonInjectionsEnumerationOptionMethods = 1 << 2,
-    TyphoonInjectionsEnumerationOptionAll = TyphoonInjectionsEnumerationOptionProperties | TyphoonInjectionsEnumerationOptionMethods,
-};
-
-@interface TyphoonDefinition (InstanceBuilder)
+@interface TyphoonDefinition (InstanceBuilder) <TyphoonInjectionEnumeration>
 
 - (TyphoonMethod *)beforeInjections;
 
-- (NSSet *)injectedProperties;
+- (NSOrderedSet *)injectedProperties;
 
 - (NSOrderedSet *)injectedMethods;
 
 - (TyphoonMethod *)afterInjections;
-
-- (void)enumerateInjectionsOfKind:(Class)injectionClass options:(TyphoonInjectionsEnumerationOption)options
-                       usingBlock:(TyphoonInjectionsEnumerationBlock)block;
 
 - (BOOL)hasRuntimeArgumentInjections;
 

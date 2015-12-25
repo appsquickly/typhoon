@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonInjectionDefinition.h"
 
 
@@ -53,6 +54,20 @@
 - (BOOL)isCandidateForInjectedProtocol:(Protocol *)aProtocol
 {
     return NO;
+}
+
+- (void)enumerateInjectionsOfKind:(Class)injectionClass options:(TyphoonInjectionsEnumerationOption)options usingBlock:(TyphoonInjectionsEnumerationBlock)block
+{
+    if ([_injection isKindOfClass:injectionClass]) {
+        id injectionToReplace = nil;
+        BOOL stop = NO;
+        
+        block(_injection, &injectionToReplace, &stop);
+        
+        if (injectionToReplace) {
+            _injection = injectionToReplace;
+        }
+    }
 }
 
 @end

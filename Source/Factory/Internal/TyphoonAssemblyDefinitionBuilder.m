@@ -16,20 +16,20 @@
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblySelectorAdviser.h"
-#import <objc/message.h>
 #import "TyphoonCircularDependencyTerminator.h"
 #import "TyphoonSelector.h"
 #import "TyphoonInjections.h"
+#import "TyphoonInjectionPrimitiveEncoder.h"
 #import "TyphoonUtils.h"
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonReferenceDefinition.h"
 #import "TyphoonDefinition+Namespacing.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
 
+#import <objc/message.h>
 #import <objc/runtime.h>
 
-static id InjectionForArgumentType(const char *argumentType, NSUInteger index);
 static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSignature *signature);
-static void AssertArgumentType(id target, SEL selector, const char *argumentType, NSUInteger index);
 
 @implementation TyphoonAssemblyDefinitionBuilder
 {
@@ -169,17 +169,58 @@ static void AssertArgumentType(id target, SEL selector, const char *argumentType
     SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key class:[_assembly assemblyClassForKey:key]];
 
     NSMethodSignature *signature = [self.assembly methodSignatureForSelector:sel];
-
-    id cached =
+    
+    TyphoonInjectionPrimitiveEncoder *encoder = [TyphoonInjectionPrimitiveEncoder currentEncoder];
+    encoder.shifted = NO;
+    
+    TyphoonDefinition *definition =
         objc_msgSend_InjectionArguments(self.assembly, sel, signature); // the advisedSEL will call through to the original, unwrapped implementation because prepareForUse has been called, and all our definition methods have been swizzled.
     // This method will likely call through to other definition methods on the assembly, which will go through the advising machinery because of this swizzling.
     // Therefore, the definitions a definition depends on will be fully constructed before they are needed to construct that definition.
-    return cached;
+    
+    if ([definition isKindOfClass:[TyphoonDefinition class]]) {
+        TyphoonRuntimeArguments *currentRuntimeArguments = definition.currentRuntimeArguments;
+        
+        encoder.shifted = YES;
+        
+        TyphoonDefinition *shiftedDefinition = objc_msgSend_InjectionArguments(self.assembly, sel, signature);
+        TyphoonRuntimeArguments *shiftedCurrentRuntimeArguments = shiftedDefinition.currentRuntimeArguments;
+        
+        [self decodeInjectionEnumeration:definition withShiftedInjectionEnumeration:shiftedDefinition];
+        
+        if (currentRuntimeArguments && shiftedCurrentRuntimeArguments) {
+            [self decodeInjectionEnumeration:currentRuntimeArguments withShiftedInjectionEnumeration:shiftedCurrentRuntimeArguments];
+            definition.currentRuntimeArguments = currentRuntimeArguments;
+        }
+    }
+    
+    return definition;
+}
+
+- (void)decodeInjectionEnumeration:(id<TyphoonInjectionEnumeration>)enumeration
+   withShiftedInjectionEnumeration:(id<TyphoonInjectionEnumeration>)shiftedEnumeration
+{
+    TyphoonInjectionPrimitiveEncoder *encoder = [TyphoonInjectionPrimitiveEncoder currentEncoder];
+    NSMutableDictionary *shiftedInjections = [[NSMutableDictionary alloc] init];
+
+    encoder.shifted = YES;
+    [encoder decodeInjectionEnumeration:shiftedEnumeration withBlock:^BOOL(id<NSCopying> key, id decodedInjection) {
+        shiftedInjections[key] = decodedInjection;
+        return NO;
+    }];
+    
+    encoder.shifted = NO;
+    [encoder decodeInjectionEnumeration:enumeration withBlock:^BOOL(id<NSCopying> key, id decodedInjection) {
+        id shiftedDecodedInjection = shiftedInjections[key];        
+        return [decodedInjection isEqual:shiftedDecodedInjection];
+    }];
 }
 
 static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSignature *signature)
 {
     if (signature.numberOfArguments > 2) {
+        TyphoonInjectionPrimitiveEncoder *encoder = [TyphoonInjectionPrimitiveEncoder currentEncoder];
+        
         void *result;
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
         [invocation setSelector:selector];
@@ -187,9 +228,29 @@ static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSigna
         /* Fill invocation arguments with TyphoonInjectionWithRuntimeArgumentAtIndex injections */
         for (NSUInteger i = 0; i < signature.numberOfArguments - 2; i++) {
             const char *argumentType = [signature getArgumentTypeAtIndex:i + 2];
-            AssertArgumentType(target, selector, argumentType, i + 2);
-            id injection = InjectionForArgumentType(argumentType, i);
-            [invocation setArgument:&injection atIndex:(NSInteger)(i + 2)];
+            
+            if (CStringEquals(argumentType, "@?")) {
+                /**  If the argument type is block, then we have to wrap our injection into 'real' block, otherwise,
+                *    during assignment runtime will try to call Block_copy and it will crash if object is not 'real' block */
+                
+                id injection = TyphoonInjectionWithRuntimeArgumentAtIndexWrappedIntoBlock(i);
+                [invocation setArgument:&injection atIndex:(NSInteger)(i + 2)];
+            } else {
+                unsigned char encodedValue = [encoder encodeRuntimeArgumentIndex:i];
+                
+                if (CStringEquals(argumentType, "@") || CStringEquals(argumentType, "#")) {
+                    id injection = @(encodedValue);
+                    [invocation setArgument:&injection atIndex:(NSInteger)(i + 2)];
+                } else {
+                    NSUInteger argumentSize;
+                    NSGetSizeAndAlignment(argumentType, &argumentSize, NULL);
+                    
+                    void *buffer = malloc(argumentSize);
+                    memset(buffer, encodedValue, argumentSize);
+                    [invocation setArgument:buffer atIndex:(NSInteger)(i + 2)];
+                    free(buffer);
+                }
+            }
         }
         [invocation invokeWithTarget:target];
         [invocation getReturnValue:&result];
@@ -197,29 +258,6 @@ static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSigna
     }
     else {
         return ((id (*)(id, SEL))objc_msgSend)(target, selector);
-    }
-}
-
-static void AssertArgumentType(id target, SEL selector, const char *argumentType, NSUInteger index)
-{
-    BOOL isObject = CStringEquals(argumentType, "@");
-    BOOL isBlock = CStringEquals(argumentType, "@?");
-    BOOL isMetaClass = CStringEquals(argumentType, "#");
-
-    if (!isObject && !isBlock && !isMetaClass) {
-        [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %d. Runtime arguments can only be objects. Use wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector], [target class], (int)index - 2];
-    }
-}
-
-static id InjectionForArgumentType(const char *argumentType, NSUInteger index)
-{
-    /** We are checking here, if argument type is block, then we have to wrap our injection into 'real' block,
-    *   otherwise, during assignment runtime will try to call Block_copy and it will crash if object is not 'real' block */
-
-    if (CStringEquals(argumentType, "@?")) {
-        return TyphoonInjectionWithRuntimeArgumentAtIndexWrappedIntoBlock(index);
-    } else {
-        return TyphoonInjectionWithRuntimeArgumentAtIndex(index);
     }
 }
 
