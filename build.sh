@@ -39,27 +39,14 @@ ditto ${resourceDir}/build-failed.png ${reportsDir}/build-status/build-status.pn
 #xcodebuild -project Typhoon.xcodeproj/ -scheme 'Typhoon' clean build | xcpretty -c
 
 #Run tests and produce coverage report for iOS Simulator
-osVersion=9.1
-platform=iOS_Simulator_$osVersion
+platform=iOS_Simulator
 mkdir -p ${reportsDir}/${platform}
 xcodebuild clean test -project Typhoon.xcodeproj -scheme 'Typhoon-iOSTests' -configuration Debug \
--destination "platform=iOS Simulator,name=iPhone 5s,OS=$osVersion" | xcpretty -c --report junit
+-destination "platform=iOS Simulator,name=iPhone 5s,OS=latest" | xcpretty -c --report junit
 mv ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
 
-groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/$platform -r${requiredCoverage}
+groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/${platform} -r${requiredCoverage}
 echo '----------------------------------------------------------------------------------------------------'
-
-#Run tests and produce coverage report for iOS Simulator
-osVersion=8.4
-platform=iOS_Simulator_$osVersion
-mkdir -p ${reportsDir}/${platform}
-xcodebuild clean test -project Typhoon.xcodeproj -scheme 'Typhoon-iOSTests' -configuration Debug \
--destination "platform=iOS Simulator,name=iPhone 5s,OS=$osVersion" | xcpretty -c --report junit
-mv ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
-
-groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/$platform -r${requiredCoverage}
-echo '----------------------------------------------------------------------------------------------------'
-
 
 #Compile, run tests and produce coverage report for OSX
 platform=OSX
