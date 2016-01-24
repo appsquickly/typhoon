@@ -147,7 +147,6 @@
         [definition useInitializer:@selector(initWithCROPrototypeA:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self incorrectPrototypeA]];
         }];
-        definition.key = @"incorrectPrototypeB";
         definition.scope = TyphoonScopePrototype;
     }];
 }
@@ -158,7 +157,6 @@
         [definition useInitializer:@selector(initWithCROPrototypeB:) parameters:^(TyphoonMethod *initializer) {
             [initializer injectParameterWith:[self incorrectPrototypeB]];
         }];
-        definition.key = @"incorrectPrototypeA";
         definition.scope = TyphoonScopePrototype;
     }];
 }

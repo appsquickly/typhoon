@@ -176,7 +176,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 
 - (id)targetForInitializerWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
 {
-    return _type;
+    return self.type;
 }
 
 - (BOOL)matchesAutoInjectionByProtocol:(Protocol *)aProtocol

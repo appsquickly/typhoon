@@ -18,7 +18,7 @@
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonInjectionContext.h"
 #import "TyphoonInjection.h"
-#import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonDefinitionBase+Infrastructure.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 
 @interface TyphoonOptionDefinition : TyphoonFactoryDefinition <TyphoonAutoInjectionConfig>

@@ -11,7 +11,7 @@
 
 #import <XCTest/XCTest.h>
 #import "TyphoonFactoryDefinition.h"
-#import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonDefinitionBase+Infrastructure.h"
 #import "Knight.h"
 #import "CavalryMan.h"
 #import "CampaignQuest.h"

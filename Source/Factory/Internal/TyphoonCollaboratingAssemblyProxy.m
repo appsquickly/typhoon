@@ -11,7 +11,7 @@
 
 #import "TyphoonCollaboratingAssemblyProxy.h"
 #import <objc/runtime.h>
-#import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonDefinitionBase+Infrastructure.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import "TyphoonReferenceDefinition.h"
 #import "TyphoonObjectWithCustomInjection.h"

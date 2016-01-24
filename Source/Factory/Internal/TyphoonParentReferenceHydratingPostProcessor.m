@@ -14,7 +14,7 @@
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
-#import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonDefinitionBase+Infrastructure.h"
 
 @implementation TyphoonParentReferenceHydratingPostProcessor
 

@@ -9,8 +9,8 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonInjectionDefinition.h"
+#import "TyphoonDefinitionBase+Infrastructure.h"
 
 
 @implementation TyphoonInjectionDefinition

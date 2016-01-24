@@ -11,7 +11,7 @@
 
 
 #import "TyphoonReferenceDefinition.h"
-#import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonDefinitionBase+Infrastructure.h"
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition+InstanceBuilder.h"

@@ -12,7 +12,7 @@
 
 #import "TyphoonFactoryDefinition.h"
 #import "TyphoonIntrospectionUtils.h"
-#import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonDefinitionBase+Infrastructure.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonRuntimeArguments.h"

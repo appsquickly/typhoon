@@ -12,7 +12,7 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonPatcher.h"
 #import "TyphoonComponentFactory.h"
-#import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonDefinitionBase+Infrastructure.h"
 #import "TyphoonRuntimeArguments.h"
 
 @interface TyphoonPatcherDefinition : TyphoonDefinition

@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
+#import "TyphoonDefinition.h"
 #import "TyphoonInjection.h"
 
 @interface TyphoonInjectionDefinition : TyphoonDefinition
