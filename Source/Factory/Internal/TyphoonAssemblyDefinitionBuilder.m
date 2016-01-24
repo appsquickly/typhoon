@@ -87,7 +87,11 @@ static void AssertArgumentType(id target, SEL selector, const char *argumentType
     if ([cached isKindOfClass:[TyphoonDefinition class]]) {
         /* Set current runtime args to know passed arguments when build definition */
         ((TyphoonDefinition *) cached).currentRuntimeArguments = args;
-        [((TyphoonDefinition *) cached) applyConcreteNamespace:NSStringFromClass([self.assembly class])];
+        
+        BOOL shouldApplyConcreteNamespace = [((TyphoonDefinition *) cached) space] == nil;
+        if (shouldApplyConcreteNamespace) {
+            [((TyphoonDefinition *) cached) applyConcreteNamespace:NSStringFromClass([self.assembly class])];
+        }
     }
 
     LogTrace(@"Did finish building definition for key: '%@'", key);
