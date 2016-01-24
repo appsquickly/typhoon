@@ -104,4 +104,8 @@
 
 - (id)occasionallyNilKnightWithMethodInjections;
 
+- (id)knightWithDefinitionProxy;
+
+- (id)knightWithDefinitionProxyAndRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeFoobar:(NSObject *)runtimeObject;
+
 @end

@@ -416,4 +416,21 @@
     }];
 }
 
+- (id)knightWithDefinitionProxy
+{
+    Knight *knight = [[Knight typhoonDefinitionWithScope:TyphoonScopeSingleton] init];
+    [knight setQuest:[self defaultQuest] andDamselsRescued:(NSUInteger)@(12)];
+//    knight.hasHorseWillTravel = (BOOL)@(YES);
+    knight.foobar = @(42);
+    return knight;
+}
+
+- (id)knightWithDefinitionProxyAndRuntimeDamselsRescued:(NSNumber *)damselsRescued runtimeFoobar:(NSObject *)runtimeObject
+{
+    Knight *knight = [[Knight typhoonDefinition] initWithDamselsRescued:(NSUInteger)damselsRescued foo:runtimeObject];
+//    knight.hasHorseWillTravel = (BOOL)@(YES);
+    [knight setFavoriteQuest:[self defaultQuest]];
+    return knight;
+}
+
 @end

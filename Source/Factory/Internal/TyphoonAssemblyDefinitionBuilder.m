@@ -24,6 +24,7 @@
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonReferenceDefinition.h"
 #import "TyphoonDefinition+Namespacing.h"
+#import "TyphoonDefinitionProxy.h"
 
 #import <objc/runtime.h>
 
@@ -178,6 +179,11 @@ static void AssertArgumentType(id target, SEL selector, const char *argumentType
         objc_msgSend_InjectionArguments(self.assembly, sel, signature); // the advisedSEL will call through to the original, unwrapped implementation because prepareForUse has been called, and all our definition methods have been swizzled.
     // This method will likely call through to other definition methods on the assembly, which will go through the advising machinery because of this swizzling.
     // Therefore, the definitions a definition depends on will be fully constructed before they are needed to construct that definition.
+    
+    if ([cached isKindOfClass:[TyphoonDefinitionProxy class]]) {
+        cached = [((TyphoonDefinitionProxy *)cached) __buildTyphoonDefinition];
+    }
+    
     return cached;
 }
 
