@@ -13,6 +13,7 @@
 #import "TyphoonDefinitionBase.h"
 #import "TyphoonDefinitionBase+Infrastructure.h"
 #import "TyphoonRuntimeArguments.h"
+#import "TyphoonDefinitionNamespace.h"
 
 static NSString *TyphoonScopeToString(TyphoonScope scope)
 {
@@ -59,13 +60,25 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
 }
 
 //-------------------------------------------------------------------------------------------
-#pragma mark - Properties
+#pragma mark - Scope
 //-------------------------------------------------------------------------------------------
 
 - (void)setScope:(TyphoonScope)scope
 {
     _scope = scope;
     _scopeSetByUser = YES;
+}
+
+//-------------------------------------------------------------------------------------------
+#pragma mark - Namespacing
+//-------------------------------------------------------------------------------------------
+
+- (void)applyGlobalNamespace {
+    _space = [TyphoonDefinitionNamespace globalNamespace];
+}
+
+- (void)applyConcreteNamespace:(NSString *)key {
+    _space = [TyphoonDefinitionNamespace namespaceWithKey:key];
 }
 
 //-------------------------------------------------------------------------------------------
@@ -78,6 +91,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
     copy->_scope = _scope;
     copy->_scopeSetByUser = _scopeSetByUser;
     copy->_autoInjectionVisibility = _autoInjectionVisibility;
+    copy->_space = _space;
     copy->_processed = _processed;
     copy->_currentRuntimeArguments = [_currentRuntimeArguments copy];
     return copy;

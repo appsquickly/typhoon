@@ -45,7 +45,6 @@ FOUNDATION_EXPORT const unsigned char TyphoonVersionString[];
 #import "TyphoonAutoInjection.h"
 
 #import "TyphoonDefinitionNamespace.h"
-#import "TyphoonDefinition+Namespacing.h"
 
 #if TARGET_OS_IPHONE
 #import "TyphooniOS.h"

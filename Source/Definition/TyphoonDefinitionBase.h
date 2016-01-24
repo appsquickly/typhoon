@@ -59,9 +59,6 @@ typedef NS_OPTIONS(NSInteger, TyphoonAutoInjectVisibility)
 
 
 @interface TyphoonDefinitionBase : NSObject <NSCopying>
-{
-    TyphoonDefinitionNamespace *_space; // TODO: get rid of this
-}
 
 @property (nonatomic, readonly) Class type;
 
@@ -83,7 +80,11 @@ typedef NS_OPTIONS(NSInteger, TyphoonAutoInjectVisibility)
 /**
  * The namespace of the component.
  */
-@property (nonatomic, readonly) TyphoonDefinitionNamespace *space; // TODO: move to TyphoonBaseDefinition+Namespacing
+@property (nonatomic, readonly) TyphoonDefinitionNamespace *space;
+
+- (void)applyGlobalNamespace;
+
+- (void)applyConcreteNamespace:(NSString *)key;
 
 
 // TODO: parent & abstract?

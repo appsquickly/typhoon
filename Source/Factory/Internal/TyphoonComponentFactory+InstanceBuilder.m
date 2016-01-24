@@ -27,7 +27,6 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 #import "TyphoonPropertyInjection.h"
 #import "NSObject+TyphoonIntrospectionUtils.h"
 #import "TyphoonFactoryAutoInjectionPostProcessor.h"
-#import "TyphoonDefinition+Namespacing.h"
 
 @implementation TyphoonComponentFactory (InstanceBuilder)
 

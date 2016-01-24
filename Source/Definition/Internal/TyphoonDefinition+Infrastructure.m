@@ -16,7 +16,6 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonDefinitionBase+Infrastructure.h"
-#import "TyphoonDefinition+Namespacing.h"
 #import "TyphoonConfigPostProcessor.h"
 #import "TyphoonResource.h"
 #import "TyphoonMethod.h"

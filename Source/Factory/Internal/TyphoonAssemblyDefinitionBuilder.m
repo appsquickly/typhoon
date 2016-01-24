@@ -23,7 +23,6 @@
 #import "TyphoonUtils.h"
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonReferenceDefinition.h"
-#import "TyphoonDefinition+Namespacing.h"
 
 #import <objc/runtime.h>
 
