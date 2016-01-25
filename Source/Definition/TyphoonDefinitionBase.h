@@ -15,30 +15,29 @@
 @class TyphoonDefinitionNamespace;
 
 /**
-* @ingroup Definition
-* Describes the lifecycle of a Typhoon component.
-
-* <strong>TyphoonScopeObjectGraph</strong>
-* (default) This scope is essential (and unique to Typhoon) for mobile and desktop applications. When a component is resolved, any
-* dependencies with the object-graph will be treated as shared instances during resolution. Once resolution is complete they are not
-* retained by the TyphoonComponentFactory. This allows instantiating an entire object graph for a use-case (say for a ViewController), and
-* then discarding it when that use-case has completed, therefore making efficient use of memory.
-*
-* <strong>TyphoonScopePrototype</strong>
-* Indicates that a new instance should always be created by Typhoon, whenever this component is obtained from an assembly or referenced by
-* another component.
-*
-* <strong>TyphoonScopeSingleton</strong>
-Indicates that Typhoon should retain the instance that exists for as long as the TyphoonComponentFactory exists.
-
-* <strong>TnglyphoonScopeLazySieton</strong>
-This scope behaves the same as TyphoonScopeSingleton, but the object is not created unless or until it is needed.
-*
-* <strong>TyphoonScopeWeakSingleton</strong>
-Indicates that a shared instance should be created as long as necessary. When your application's classes stop referencing this component it
-will be deallocated until needed again.
-*
-*/
+ * @ingroup Definition
+ * Describes the lifecycle of a Typhoon component.
+ *
+ * <strong>TyphoonScopeObjectGraph</strong>
+ * (default) This scope is essential (and unique to Typhoon) for mobile and desktop applications. When a component is resolved, any
+ * dependencies with the object-graph will be treated as shared instances during resolution. Once resolution is complete they are not
+ * retained by the TyphoonComponentFactory. This allows instantiating an entire object graph for a use-case (say for a ViewController), and
+ * then discarding it when that use-case has completed, therefore making efficient use of memory.
+ *
+ * <strong>TyphoonScopePrototype</strong>
+ * Indicates that a new instance should always be created by Typhoon, whenever this component is obtained from an assembly or referenced by
+ * another component.
+ *
+ * <strong>TyphoonScopeSingleton</strong>
+ * Indicates that Typhoon should retain the instance that exists for as long as the TyphoonComponentFactory exists.
+ *
+ * <strong>TnglyphoonScopeLazySieton</strong>
+ * This scope behaves the same as TyphoonScopeSingleton, but the object is not created unless or until it is needed.
+ *
+ * <strong>TyphoonScopeWeakSingleton</strong>
+ * Indicates that a shared instance should be created as long as necessary. When your application's classes stop referencing this component,
+ * it will be deallocated until needed again.
+ */
 typedef NS_ENUM(NSInteger, TyphoonScope)
 {
     TyphoonScopeObjectGraph,
@@ -68,12 +67,12 @@ typedef NS_OPTIONS(NSInteger, TyphoonAutoInjectVisibility)
 @property (nonatomic) TyphoonScope scope;
 
 /**
- * Specifies visibility for for AutoInjection.
+ * Specifies visibility for AutoInjection.
  *
- * AutoInjection performs when using method:
+ * AutoInjection is performed when using method:
  * - (void)injectProperty:(SEL)withSelector;
  * or when using:
- * InjectedClass or InjectedProtocol marco
+ * InjectedClass or InjectedProtocol macro
  */
 @property (nonatomic) TyphoonAutoInjectVisibility autoInjectionVisibility;
 
