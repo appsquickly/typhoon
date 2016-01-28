@@ -33,6 +33,9 @@
 @end
 
 @implementation TyphoonBlockComponentFactory
+{
+    NSArray *_assemblies;
+}
 
 
 //-------------------------------------------------------------------------------------------
@@ -62,6 +65,8 @@
 {
     self = [super init];
     if (self) {
+        _assemblies = [assemblies copy];
+        
         [self attachDefinitionPostProcessor:[TyphoonAssemblyPropertyInjectionPostProcessor new]];
         TyphoonPreattachedComponentsRegisterer *preattachedComponentsRegisterer = [[TyphoonPreattachedComponentsRegisterer alloc] initWithComponentFactory:self];
         
@@ -128,9 +133,15 @@
     if ([self respondsToSelector:aSelector]) {
         return [[self class] instanceMethodSignatureForSelector:aSelector];
     }
-    else {
-        return [TyphoonIntrospectionUtils methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:aSelector];
+    
+    for (TyphoonAssembly *assembly in _assemblies) {
+        if ([assembly respondsToSelector:aSelector]) {
+            return [assembly methodSignatureForSelector:aSelector];
+        }
     }
+    
+//    return [TyphoonIntrospectionUtils methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:aSelector];
+    return nil;
 }
 
 @end

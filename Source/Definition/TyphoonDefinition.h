@@ -75,7 +75,7 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 
     TyphoonMethod *_initializer;
     TyphoonMethod *_beforeInjections;
-    NSMutableSet *_injectedProperties;
+    NSMutableOrderedSet *_injectedProperties;
     NSMutableOrderedSet *_injectedMethods;
     TyphoonMethod *_afterInjections;
 

@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonDefinition+Option.h"
+#import "TyphoonOptionMatcher+Internal.h"
 #import "TyphoonInjections.h"
 #import "TyphoonInjection.h"
 
@@ -164,5 +165,29 @@
     return nil;
 }
 
+#pragma mark - TyphoonInjectionEnumeration
+
+- (void)enumerateInjectionsOfKind:(Class)injectionClass options:(TyphoonInjectionsEnumerationOption)options
+                       usingBlock:(TyphoonInjectionsEnumerationBlock)block
+{
+    for (TyphoonOptionMatch *match in _matches) {
+        if (![match.injection isKindOfClass:injectionClass]) {
+            continue;
+        }
+        
+        id injectionToReplace = nil;
+        BOOL stop = NO;
+        
+        block(match.injection, &injectionToReplace, &stop);
+        
+        if (injectionToReplace) {
+            match.injection = injectionToReplace;
+        }
+        
+        if (stop) {
+            break;
+        }
+    }
+}
 
 @end

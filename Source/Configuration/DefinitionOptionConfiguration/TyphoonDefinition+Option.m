@@ -72,19 +72,30 @@
 {
     if (options & TyphoonInjectionsEnumerationOptionProperties)
     {
+        __block BOOL outerStop = NO;
+        
         if ([self.optionInjection isKindOfClass:injectionClass])
         {
             id injectionToReplace = nil;
-            BOOL stop = NO;
-            block(self.optionInjection, &injectionToReplace, &stop);
+            block(self.optionInjection, &injectionToReplace, &outerStop);
             if (injectionToReplace)
             {
                 self.optionInjection = injectionToReplace;
             }
-            if (stop)
+            if (outerStop)
             {
                 return;
             }
+        }
+        
+        [self.matcher enumerateInjectionsOfKind:injectionClass options:options usingBlock:^(id injection, __autoreleasing id *injectionToReplace, BOOL *stop) {
+            block(injection, injectionToReplace, &outerStop);
+            *stop = outerStop;
+        }];
+        
+        if (outerStop)
+        {
+            return;
         }
     }
 

@@ -416,4 +416,14 @@
     }];
 }
 
+- (id)knightWithPrimitiveDamselsRescued:(NSUInteger)damselsRescued
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(initWithDamselsRescued:foo:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:@(damselsRescued)];
+            [initializer injectParameterWith:nil];
+        }];
+    }];
+}
+
 @end

@@ -125,7 +125,7 @@
 - (id)copyWithZone:(NSZone *)zone
 {
     TyphoonInjectionByCollection *copied = [[TyphoonInjectionByCollection alloc] init];
-    copied.injections = self.injections;
+    copied.injections = [self.injections mutableCopy];
     copied.requiredClass = self.requiredClass;
     [self copyBasePropertiesTo:copied];
     return copied;
@@ -151,6 +151,33 @@
 - (NSUInteger)customHash
 {
     return TyphoonHashByAppendingInteger([self.injections hash], [_requiredClass hash]);
+}
+
+#pragma mark - TyphoonInjectionEnumeration
+
+- (void)enumerateInjectionsOfKind:(Class)injectionClass options:(TyphoonInjectionsEnumerationOption)options
+                       usingBlock:(TyphoonInjectionsEnumerationBlock)block
+{
+    NSUInteger idx = 0;
+    for (idx = 0; idx < self.injections.count; ++idx) {
+        id injection = self.injections[idx];
+        if (![injection isKindOfClass:injectionClass]) {
+            continue;
+        }
+        
+        id injectionToReplace = nil;
+        BOOL stop = NO;
+        
+        block(injection, &injectionToReplace, &stop);
+        
+        if (injectionToReplace) {
+            [self.injections replaceObjectAtIndex:idx withObject:injectionToReplace];
+        }
+        
+        if (stop) {
+            break;
+        }
+    }
 }
 
 @end

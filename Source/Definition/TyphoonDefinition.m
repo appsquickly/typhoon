@@ -73,7 +73,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
     self = [super init];
     if (self) {
         _type = clazz;
-        _injectedProperties = [[NSMutableSet alloc] init];
+        _injectedProperties = [[NSMutableOrderedSet alloc] init];
         _injectedMethods = [[NSMutableOrderedSet alloc] init];
         _key = [key copy];
         _scope = TyphoonScopeObjectGraph;

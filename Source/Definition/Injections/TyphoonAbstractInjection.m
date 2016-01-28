@@ -102,7 +102,7 @@
         return [self.propertyName isEqualToString:base.propertyName];
     }
     else {
-        return NO;
+        return YES;
     }
 }
 
