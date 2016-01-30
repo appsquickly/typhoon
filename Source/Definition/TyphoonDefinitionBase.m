@@ -73,11 +73,13 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
 #pragma mark - Namespacing
 //-------------------------------------------------------------------------------------------
 
-- (void)applyGlobalNamespace {
+- (void)applyGlobalNamespace
+{
     _space = [TyphoonDefinitionNamespace globalNamespace];
 }
 
-- (void)applyConcreteNamespace:(NSString *)key {
+- (void)applyConcreteNamespace:(NSString *)key
+{
     _space = [TyphoonDefinitionNamespace namespaceWithKey:key];
 }
 
