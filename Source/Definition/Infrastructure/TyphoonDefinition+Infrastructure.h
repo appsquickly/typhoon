@@ -15,7 +15,10 @@
 @protocol TyphoonResource;
 @class TyphoonRuntimeArguments;
 
-@interface TyphoonDefinition ()
+/**
+ * Declares short-hand definition factory methods for infrastructure components.
+ */
+@interface TyphoonDefinition (Infrastructure)
 
 /**
  * Describes the initializer, ie the selector and arguments that will be used to instantiate this component.
@@ -33,14 +36,6 @@
  * selector is @selector(init)
  */
 @property (nonatomic, getter = isInitializerGenerated) BOOL initializerGenerated;
-
-@end
-
-
-/**
- * Declares short-hand definition factory methods for infrastructure components.
- */
-@interface TyphoonDefinition (Infrastructure)
 
 /**
  * Factory method for a TyphoonConfigPostProcessor. Don't use it in test targets!

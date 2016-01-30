@@ -15,8 +15,8 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
-#import "TyphoonDefinition+Infrastructure.h"
-#import "TyphoonDefinitionBase+Infrastructure.h"
+#import "TyphoonDefinition+Internal.h"
+#import "TyphoonDefinitionBase+Internal.h"
 
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonPropertyInjection.h"

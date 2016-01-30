@@ -10,9 +10,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonDefinition.h"
+#import "TyphoonDefinitionBase+Internal.h"
 #import "TyphoonPatcher.h"
 #import "TyphoonComponentFactory.h"
-#import "TyphoonDefinitionBase+Infrastructure.h"
 #import "TyphoonRuntimeArguments.h"
 
 @interface TyphoonPatcherDefinition : TyphoonDefinition

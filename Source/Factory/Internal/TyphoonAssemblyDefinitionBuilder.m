@@ -13,7 +13,7 @@
 #import "TyphoonAssemblyDefinitionBuilder.h"
 #import "TyphoonAssembly.h"
 #import "OCLogTemplate.h"
-#import "TyphoonDefinitionBase+Infrastructure.h"
+#import "TyphoonDefinitionBase+Internal.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import <objc/message.h>

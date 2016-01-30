@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonInjectionDefinition.h"
-#import "TyphoonDefinitionBase+Infrastructure.h"
+#import "TyphoonDefinitionBase+Internal.h"
 
 
 @implementation TyphoonInjectionDefinition

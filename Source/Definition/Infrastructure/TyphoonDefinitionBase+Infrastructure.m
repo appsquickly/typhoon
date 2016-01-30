@@ -11,11 +11,14 @@
 
 
 #import "TyphoonDefinitionBase+Infrastructure.h"
+#import "TyphoonDefinitionBase+Internal.h"
 #import "TyphoonLinkerCategoryBugFix.h"
 
 TYPHOON_LINK_CATEGORY(TyphoonDefinitionBase_Infrastructure)
 
 @implementation TyphoonDefinitionBase (Infrastructure)
+
+@dynamic key;
 
 + (instancetype)withClass:(Class)clazz key:(NSString *)key
 {

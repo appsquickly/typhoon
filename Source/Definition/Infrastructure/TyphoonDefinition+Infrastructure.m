@@ -26,6 +26,9 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 @implementation TyphoonDefinition (Infrastructure)
 
+@dynamic initializer;
+@dynamic initializerGenerated;
+
 //-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
 
