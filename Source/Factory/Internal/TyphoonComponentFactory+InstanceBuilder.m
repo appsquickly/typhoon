@@ -15,6 +15,7 @@
 #import "TyphoonLinkerCategoryBugFix.h"
 #import "TyphoonInjectionContext.h"
 #import "TyphoonDefinitionBase+Infrastructure.h"
+#import "TyphoonDefinitionBase+InstanceBuilder.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 
 TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
@@ -54,24 +55,23 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (id)initializeInstanceWithDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
-    __block id instance = [definition targetForInitializerWithFactory:self args:args];
-    if (definition.initializer && instance) {
-        BOOL isClass = IsClass(instance);
+    return [definition initializeInstanceWithArgs:args factory:self];
+}
 
-        TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] initWithFactory:self args:args
-            raiseExceptionIfCircular:YES];
-        context.classUnderConstruction = isClass ? (Class)instance : [instance class];
-
-        [definition.initializer createInvocationWithContext:context completion:^(NSInvocation *invocation) {
-            if (isClass && ![definition.initializer isClassMethodOnClass:context.classUnderConstruction]) {
-                instance = [invocation typhoon_resultOfInvokingOnAllocationForClass:context.classUnderConstruction];
-            } else {
-                instance = [invocation typhoon_resultOfInvokingOnInstance:instance];
-            }
-        }];
-
+- (void)doInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition
+                       args:(TyphoonRuntimeArguments *)args
+{
+    if ([instance respondsToSelector:@selector(typhoonWillInject)]) {
+        [instance typhoonWillInject];
     }
-    return instance;
+    
+    [definition doInjectionEventsOn:instance withArgs:args factory:self];
+    
+    [self injectAssemblyOnInstanceIfTyphoonAware:instance];
+    
+    if ([instance respondsToSelector:@selector(typhoonDidInject)]) {
+        [instance typhoonDidInject];
+    }
 }
 
 - (id)postProcessInstance:(id)instance
@@ -98,73 +98,6 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
         return instance;
     }
     return [self buildInstanceWithDefinition:definition args:args];
-}
-
-//-------------------------------------------------------------------------------------------
-#pragma mark - Injection process
-//-------------------------------------------------------------------------------------------
-
-- (void)doInjectionEventsOn:(id)instance withDefinition:(TyphoonDefinition *)definition
-    args:(TyphoonRuntimeArguments *)args
-{
-    [self doBeforeInjectionsOn:instance withDefinition:definition args:args];
-
-    for (id<TyphoonPropertyInjection> property in [definition injectedProperties]) {
-        [self doPropertyInjectionOn:instance property:property args:args];
-    }
-
-    for (TyphoonMethod *method in [definition injectedMethods]) {
-        [self doMethodInjection:method onInstance:instance args:args];
-    }
-
-    [self injectAssemblyOnInstanceIfTyphoonAware:instance];
-
-    [self doAfterInjectionsOn:instance withDefinition:definition args:args];
-}
-
-- (void)doBeforeInjectionsOn:(id)instance withDefinition:(TyphoonDefinition *)definition
-    args:(TyphoonRuntimeArguments *)args
-{
-    if ([instance respondsToSelector:@selector(typhoonWillInject)]) {
-        [instance typhoonWillInject];
-    }
-
-    TyphoonMethod *beforeInjections = [definition beforeInjections];
-    if (beforeInjections) {
-        [self doMethodInjection:beforeInjections onInstance:instance args:args];
-    }
-}
-
-- (void)doAfterInjectionsOn:(id)instance withDefinition:(TyphoonDefinition *)definition
-    args:(TyphoonRuntimeArguments *)args
-{
-    if ([instance respondsToSelector:@selector(typhoonDidInject)]) {
-        [instance typhoonDidInject];
-    }
-
-    TyphoonMethod *afterInjections = [definition afterInjections];
-    if (afterInjections) {
-        [self doMethodInjection:afterInjections onInstance:instance args:args];
-    }
-}
-
-//-------------------------------------------------------------------------------------------
-#pragma mark - Methods Injection
-//-------------------------------------------------------------------------------------------
-
-- (void)doMethodInjection:(TyphoonMethod *)method onInstance:(id)instance args:(TyphoonRuntimeArguments *)args
-{
-    if (instance == nil) {
-        return;
-    }
-    
-    TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] initWithFactory:self args:args
-        raiseExceptionIfCircular:NO];
-    context.classUnderConstruction = [instance class];
-
-    [method createInvocationWithContext:context completion:^(NSInvocation *invocation) {
-        [invocation invokeWithTarget:instance];
-    }];
 }
 
 //-------------------------------------------------------------------------------------------

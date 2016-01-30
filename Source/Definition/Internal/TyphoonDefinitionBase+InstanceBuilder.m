@@ -17,12 +17,14 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinitionBase_InstanceBuilder)
 
 @implementation TyphoonDefinitionBase (InstanceBuilder)
 
-- (id)initializeInstanceWithArgs:(TyphoonRuntimeArguments *)args {
+- (id)initializeInstanceWithArgs:(TyphoonRuntimeArguments *)args factory:(TyphoonComponentFactory *)factory
+{
     [NSException raise:NSInternalInconsistencyException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
     return nil;
 }
 
-- (void)doInjectionEventsOn:(id)instance withArgs:(TyphoonRuntimeArguments *)args {
+- (void)doInjectionEventsOn:(id)instance withArgs:(TyphoonRuntimeArguments *)args factory:(TyphoonComponentFactory *)factory
+{
     [NSException raise:NSInternalInconsistencyException format:@"%@ is abstract", NSStringFromSelector(_cmd)];
 }
 

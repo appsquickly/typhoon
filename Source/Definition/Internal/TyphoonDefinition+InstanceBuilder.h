@@ -10,7 +10,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <Foundation/Foundation.h>
 #import "TyphoonDefinition.h"
 
 @protocol TyphoonPropertyInjection;
