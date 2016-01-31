@@ -13,12 +13,7 @@
 #import "TyphoonAssemblyActivator.h"
 #import "TyphoonAssembly.h"
 #import "TyphoonBlockComponentFactory.h"
-
-@interface TyphoonAssembly (Activation)
-
-- (void)activateWithFactory:(TyphoonComponentFactory *)factory collaborators:(NSSet *)collaborators;
-
-@end
+#import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-implementations"

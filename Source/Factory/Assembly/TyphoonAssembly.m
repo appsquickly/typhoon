@@ -312,6 +312,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 - (void)activateWithFactory:(TyphoonComponentFactory *)factory collaborators:(NSSet *)collaborators {
     _factory = factory;
+    
     for (NSString *propertyName in [self typhoonPropertiesUpToParentClass:[TyphoonAssembly class]]) {
         TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:propertyName];
         if (descriptor.typeBeingDescribed == [TyphoonAssembly class]) {

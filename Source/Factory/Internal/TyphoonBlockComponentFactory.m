@@ -32,8 +32,15 @@
 
 @end
 
-@implementation TyphoonBlockComponentFactory
 
+@interface TyphoonBlockComponentFactory ()
+
+@property (nonatomic, copy) NSSet *assemblies;
+
+@end
+
+
+@implementation TyphoonBlockComponentFactory
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
@@ -62,12 +69,15 @@
 {
     self = [super init];
     if (self) {
+        _assemblies = [NSSet setWithArray:assemblies];
+        
         [self attachDefinitionPostProcessor:[TyphoonAssemblyPropertyInjectionPostProcessor new]];
         TyphoonPreattachedComponentsRegisterer *preattachedComponentsRegisterer = [[TyphoonPreattachedComponentsRegisterer alloc] initWithComponentFactory:self];
         
-        for (TyphoonAssembly *assembly in assemblies) {
+        for (TyphoonAssembly *assembly in _assemblies) {
             [preattachedComponentsRegisterer doRegistrationForAssembly:assembly];
             [self buildAssembly:assembly];
+            [assembly activateWithFactory:self collaborators:_assemblies];
         }
     }
     return self;

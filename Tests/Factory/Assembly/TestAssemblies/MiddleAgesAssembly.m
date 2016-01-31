@@ -416,4 +416,16 @@
     }];
 }
 
+- (id)blockSingletonKnight
+{
+    return [TyphoonBlockDefinition withClass:[Knight class] initializer:^id{
+        return [[Knight alloc] initWithQuest:[self defaultQuest]];
+    } injections:^(Knight *knight) {
+        knight.damselsRescued = 42;
+        [knight setFoobar:@(123) andHasHorse:YES friends:nil];
+    } configuration:^(TyphoonDefinition *definition) {
+        definition.scope = TyphoonScopeWeakSingleton;
+    }];
+}
+
 @end

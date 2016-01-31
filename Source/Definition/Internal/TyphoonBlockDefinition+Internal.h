@@ -14,7 +14,8 @@
 
 @interface TyphoonBlockDefinition ()
 
-@property (nonatomic, strong) id blockTarget;
+// This must be weak to prevent retain cycle between factory, definition and assembly.
+@property (nonatomic, weak) id blockTarget;
 
 @property (nonatomic, assign) SEL blockSelector;
 

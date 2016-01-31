@@ -24,6 +24,8 @@
 
 - (Class)assemblyClassForKey:(NSString *)key;
 
+- (void)activateWithFactory:(TyphoonComponentFactory *)factory collaborators:(NSSet *)collaborators;
+
 @property (readonly) NSSet *definitionSelectors;
 
 @end

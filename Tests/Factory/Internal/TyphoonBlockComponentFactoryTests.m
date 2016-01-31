@@ -384,5 +384,24 @@ test_currently_resolving_references_dictionary_is_not_overwritten_when_initializ
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)3);
 }
 
+//-------------------------------------------------------------------------------------------
+#pragma mark - Block Definitions
+
+- (void)test_returns_instance_configured_with_block_definition
+{
+    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
+    
+    Knight *knight = [assembly blockSingletonKnight];
+    XCTAssertNotNil(knight);
+    XCTAssertNotNil(knight.quest);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)42);
+    XCTAssertEqual(knight.foobar, @(123));
+    XCTAssertEqual(knight.hasHorseWillTravel, YES);
+    XCTAssertNil(knight.friends);
+
+    Knight *anotherKnight = [assembly blockSingletonKnight];
+    XCTAssertTrue(knight == anotherKnight);
+}
+
 @end
 

@@ -104,4 +104,6 @@
 
 - (id)occasionallyNilKnightWithMethodInjections;
 
+- (id)blockSingletonKnight;
+
 @end
