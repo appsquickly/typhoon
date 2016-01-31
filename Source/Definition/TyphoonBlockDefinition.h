@@ -24,3 +24,21 @@ typedef void (^TyphoonBlockDefinitionInjectionsBlock)(id instance);
                            configuration:(TyphoonDefinitionBlock)configuration;
 
 @end
+
+
+@interface TyphoonBlockDefinition (Convenience)
+
++ (id)withClass:(Class)clazz initializer:(TyphoonBlockDefinitionInitializerBlock)initializer;
+
++ (id)withClass:(Class)clazz initializer:(TyphoonBlockDefinitionInitializerBlock)initializer
+                           configuration:(TyphoonDefinitionBlock)configuration;
+
++ (id)withClass:(Class)clazz injections:(TyphoonBlockDefinitionInjectionsBlock)injections;
+
++ (id)withClass:(Class)clazz injections:(TyphoonBlockDefinitionInjectionsBlock)injections
+                          configuration:(TyphoonDefinitionBlock)configuration;
+
++ (id)withClass:(Class)clazz initializer:(TyphoonBlockDefinitionInitializerBlock)initializer
+                              injections:(TyphoonBlockDefinitionInjectionsBlock)injections;
+
+@end

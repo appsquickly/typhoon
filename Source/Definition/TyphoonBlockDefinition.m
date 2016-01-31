@@ -69,12 +69,47 @@
     }
 }
 
-- (TyphoonMethod *)initializer {
+- (TyphoonMethod *)initializer
+{
     return nil;
 }
 
-- (BOOL)isInitializerGenerated {
+- (BOOL)isInitializerGenerated
+{
     return !self.hasInitializerBlock;
+}
+
+@end
+
+
+@implementation TyphoonBlockDefinition (Convenience)
+
++ (id)withClass:(Class)clazz initializer:(TyphoonBlockDefinitionInitializerBlock)initializer
+{
+    return [self withClass:clazz initializer:initializer injections:nil configuration:nil];
+}
+
++ (id)withClass:(Class)clazz initializer:(TyphoonBlockDefinitionInitializerBlock)initializer
+                           configuration:(TyphoonDefinitionBlock)configuration
+{
+    return [self withClass:clazz initializer:initializer injections:nil configuration:configuration];
+}
+
++ (id)withClass:(Class)clazz injections:(TyphoonBlockDefinitionInjectionsBlock)injections
+{
+    return [self withClass:clazz initializer:nil injections:injections configuration:nil];
+}
+
++ (id)withClass:(Class)clazz injections:(TyphoonBlockDefinitionInjectionsBlock)injections
+                          configuration:(TyphoonDefinitionBlock)configuration
+{
+    return [self withClass:clazz initializer:nil injections:injections configuration:configuration];
+}
+
++ (id)withClass:(Class)clazz initializer:(TyphoonBlockDefinitionInitializerBlock)initializer
+                              injections:(TyphoonBlockDefinitionInjectionsBlock)injections
+{
+    return [self withClass:clazz initializer:initializer injections:injections configuration:nil];
 }
 
 @end

@@ -21,7 +21,8 @@ static const char *kAssemblyFactoryKey;
 
 @implementation TyphoonMemoryManagementUtils
 
-+ (void)makeFactory:(TyphoonComponentFactory *)factory retainAssemblies:(NSSet *)assemblies {
++ (void)makeFactory:(TyphoonComponentFactory *)factory retainAssemblies:(NSSet *)assemblies
+{
     objc_setAssociatedObject(factory, &kFactoryAssembliesKey, assemblies, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
     for (TyphoonAssembly *assembly in assemblies) {
@@ -29,7 +30,8 @@ static const char *kAssemblyFactoryKey;
     }
 }
 
-+ (void)makeAssemblies:(NSSet *)assemblies retainFactory:(TyphoonComponentFactory *)factory {
++ (void)makeAssemblies:(NSSet *)assemblies retainFactory:(TyphoonComponentFactory *)factory
+{
     objc_setAssociatedObject(factory, &kFactoryAssembliesKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
     for (TyphoonAssembly *assembly in assemblies) {
