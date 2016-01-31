@@ -14,7 +14,7 @@
 
 @interface TyphoonBlockDefinition ()
 
-@property (nonatomic, weak) id target;
+@property (nonatomic, strong) id target;
 
 @property (nonatomic, assign) SEL selector;
 

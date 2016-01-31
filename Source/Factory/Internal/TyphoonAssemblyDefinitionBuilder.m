@@ -14,17 +14,19 @@
 #import "TyphoonAssembly.h"
 #import "OCLogTemplate.h"
 #import "TyphoonDefinitionBase+Internal.h"
+#import "TyphoonBlockDefinition+Internal.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblySelectorAdviser.h"
-#import <objc/message.h>
 #import "TyphoonCircularDependencyTerminator.h"
 #import "TyphoonSelector.h"
 #import "TyphoonInjections.h"
 #import "TyphoonUtils.h"
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonReferenceDefinition.h"
+#import "TyphoonBlockDefinitionController.h"
 
 #import <objc/runtime.h>
+#import <objc/message.h>
 
 static id InjectionForArgumentType(const char *argumentType, NSUInteger index);
 static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSignature *signature);
@@ -60,6 +62,9 @@ static void AssertArgumentType(id target, SEL selector, const char *argumentType
 
 - (void)populateCache
 {
+    // Make sure we use the correct route for potential TyphoonBlockDefinitions.
+    [TyphoonBlockDefinitionController currentController].route = TyphoonBlockDefinitionRouteConfiguration;
+    
     [[self.assembly definitionSelectors] enumerateObjectsUsingBlock:^(TyphoonSelector *wrappedSEL, BOOL *stop) {
         SEL selector = [wrappedSEL selector];
         NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
@@ -177,6 +182,13 @@ static void AssertArgumentType(id target, SEL selector, const char *argumentType
         objc_msgSend_InjectionArguments(self.assembly, sel, signature); // the advisedSEL will call through to the original, unwrapped implementation because prepareForUse has been called, and all our definition methods have been swizzled.
     // This method will likely call through to other definition methods on the assembly, which will go through the advising machinery because of this swizzling.
     // Therefore, the definitions a definition depends on will be fully constructed before they are needed to construct that definition.
+    
+    if ([cached isKindOfClass:[TyphoonBlockDefinition class]]) {
+        TyphoonBlockDefinition *definition = cached;
+        definition.target = self.assembly;
+        definition.selector = sel;
+    }
+    
     return cached;
 }
 
