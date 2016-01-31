@@ -108,7 +108,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
     else {
         TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
         NSString *key = NSStringFromSelector(anInvocation.selector);
-        TyphoonDefinitionBase *definition = [_definitionBuilder builtDefinitionForKey:key args:args];
+        TyphoonDefinition *definition = [_definitionBuilder builtDefinitionForKey:key args:args];
 
         [anInvocation retainArguments];
         [anInvocation setReturnValue:&definition];

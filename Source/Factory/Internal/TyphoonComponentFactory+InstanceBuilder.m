@@ -14,8 +14,7 @@
 #import <Typhoon/TyphoonInstancePostProcessor.h>
 #import "TyphoonLinkerCategoryBugFix.h"
 #import "TyphoonInjectionContext.h"
-#import "TyphoonDefinitionBase+Infrastructure.h"
-#import "TyphoonDefinitionBase+InstanceBuilder.h"
+#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 
 TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)

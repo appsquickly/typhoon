@@ -11,7 +11,7 @@
 
 
 #import "TyphoonReferenceDefinition.h"
-#import "TyphoonDefinitionBase+Internal.h"
+#import "TyphoonDefinition+Internal.h"
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
@@ -32,7 +32,7 @@
     NSString *_referringKey;
 };
 
-+ (instancetype)definitionWithKey:(NSString *)key referringTo:(TyphoonDefinitionBase *)definition
++ (instancetype)definitionWithKey:(NSString *)key referringTo:(TyphoonDefinition *)definition
 {
     TyphoonShortcutDefinition *refDefinition = [[TyphoonShortcutDefinition alloc] initWithClass:definition.type key:key];
     refDefinition->_referringArgs = definition.currentRuntimeArguments;

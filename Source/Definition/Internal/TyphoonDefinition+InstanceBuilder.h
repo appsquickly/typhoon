@@ -27,6 +27,13 @@ typedef NS_OPTIONS(NSInteger, TyphoonInjectionsEnumerationOption) {
 
 @interface TyphoonDefinition (InstanceBuilder)
 
+- (id)initializeInstanceWithArgs:(TyphoonRuntimeArguments *)args factory:(TyphoonComponentFactory *)factory;
+
+- (void)doInjectionEventsOn:(id)instance withArgs:(TyphoonRuntimeArguments *)args factory:(TyphoonComponentFactory *)factory;
+
+
+// TODO: cleanup these
+
 - (TyphoonMethod *)beforeInjections;
 
 - (NSSet *)injectedProperties;

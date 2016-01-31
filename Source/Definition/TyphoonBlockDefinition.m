@@ -11,8 +11,7 @@
 
 
 #import "TyphoonBlockDefinition.h"
-#import "TyphoonBlockDefinition+Internal.h"
-#import "TyphoonDefinitionBase+Internal.h"
+#import "TyphoonDefinition+Internal.h"
 #import "TyphoonBlockDefinitionController.h"
 
 @implementation TyphoonBlockDefinition

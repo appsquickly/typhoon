@@ -23,7 +23,7 @@
 #import "TyphoonMethod.h"
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
-#import "TyphoonDefinitionBase+Infrastructure.h"
+#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonConfigPostProcessor.h"
 
 @implementation TyphoonDefinitionRegisterer

@@ -23,6 +23,6 @@
 
 @interface TyphoonShortcutDefinition : TyphoonDefinition
 
-+ (instancetype)definitionWithKey:(NSString *)key referringTo:(TyphoonDefinitionBase *)definition;
++ (instancetype)definitionWithKey:(NSString *)key referringTo:(TyphoonDefinition *)definition;
 
 @end

@@ -15,7 +15,7 @@
 TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 #import "TyphoonDefinition+Infrastructure.h"
-#import "TyphoonDefinitionBase+Infrastructure.h"
+#import "TyphoonDefinition+Internal.h"
 #import "TyphoonConfigPostProcessor.h"
 #import "TyphoonResource.h"
 #import "TyphoonMethod.h"
@@ -26,11 +26,17 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
 
 @implementation TyphoonDefinition (Infrastructure)
 
+@dynamic key;
 @dynamic initializer;
 @dynamic initializerGenerated;
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Class Methods
+
++ (instancetype)withClass:(Class)clazz key:(NSString *)key
+{
+    return [[self alloc] initWithClass:clazz key:key];
+}
 
 + (instancetype)withConfigName:(NSString *)fileName {
     return [self withClass:[TyphoonConfigPostProcessor class] configuration:^(TyphoonDefinition *definition) {
@@ -58,6 +64,28 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_Infrastructure)
         }];
         definition.key = [NSString stringWithFormat:@"%@-%@", NSStringFromClass(definition.class), [filePath lastPathComponent]];
     }];
+}
+
+#pragma mark - Instance Methods
+
+- (BOOL)isCandidateForInjectedClass:(Class)clazz includeSubclasses:(BOOL)includeSubclasses
+{
+    BOOL result = NO;
+    if (self.autoInjectionVisibility & TyphoonAutoInjectVisibilityByClass) {
+        BOOL isSameClass = self.type == clazz;
+        BOOL isSubclass = includeSubclasses && [self.type isSubclassOfClass:clazz];
+        result = isSameClass || isSubclass;
+    }
+    return result;
+}
+
+- (BOOL)isCandidateForInjectedProtocol:(Protocol *)aProtocol
+{
+    BOOL result = NO;
+    if (self.autoInjectionVisibility & TyphoonAutoInjectVisibilityByProtocol) {
+        result = [self.type conformsToProtocol:aProtocol];
+    }
+    return result;
 }
 
 #pragma mark - Deprecated methods

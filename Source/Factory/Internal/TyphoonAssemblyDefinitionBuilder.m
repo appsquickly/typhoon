@@ -13,7 +13,7 @@
 #import "TyphoonAssemblyDefinitionBuilder.h"
 #import "TyphoonAssembly.h"
 #import "OCLogTemplate.h"
-#import "TyphoonDefinitionBase+Internal.h"
+#import "TyphoonDefinition+Internal.h"
 #import "TyphoonBlockDefinition+Internal.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblySelectorAdviser.h"
@@ -79,7 +79,7 @@ static void AssertArgumentType(id target, SEL selector, const char *argumentType
     [self builtDefinitionForKey:key args:nil];
 }
 
-- (TyphoonDefinitionBase *)builtDefinitionForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args
+- (TyphoonDefinition *)builtDefinitionForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args
 {
     [self markCurrentlyResolvingKey:key];
 
@@ -90,13 +90,13 @@ static void AssertArgumentType(id target, SEL selector, const char *argumentType
     id cached = [self populateCacheWithDefinitionForKey:key];
     [self markKeyResolved:key];
 
-    if ([cached isKindOfClass:[TyphoonDefinitionBase class]]) {
+    if ([cached isKindOfClass:[TyphoonDefinition class]]) {
         /* Set current runtime args to know passed arguments when build definition */
-        ((TyphoonDefinitionBase *) cached).currentRuntimeArguments = args;
+        ((TyphoonDefinition *) cached).currentRuntimeArguments = args;
         
-        BOOL shouldApplyConcreteNamespace = [((TyphoonDefinitionBase *) cached) space] == nil;
+        BOOL shouldApplyConcreteNamespace = [((TyphoonDefinition *) cached) space] == nil;
         if (shouldApplyConcreteNamespace) {
-            [((TyphoonDefinitionBase *) cached) applyConcreteNamespace:NSStringFromClass([self.assembly class])];
+            [((TyphoonDefinition *) cached) applyConcreteNamespace:NSStringFromClass([self.assembly class])];
         }
     }
 
@@ -187,8 +187,8 @@ static void AssertArgumentType(id target, SEL selector, const char *argumentType
     
     if ([cached isKindOfClass:[TyphoonBlockDefinition class]]) {
         TyphoonBlockDefinition *definition = cached;
-        definition.target = self.assembly;
-        definition.selector = sel;
+        definition.blockTarget = self.assembly;
+        definition.blockSelector = sel;
     }
     
     return cached;
@@ -240,18 +240,18 @@ static id InjectionForArgumentType(const char *argumentType, NSUInteger index)
     }
 }
 
-- (TyphoonDefinitionBase *)populateCacheWithDefinition:(TyphoonDefinitionBase *)definition forKey:(NSString *)key
+- (TyphoonDefinition *)populateCacheWithDefinition:(TyphoonDefinition *)definition forKey:(NSString *)key
 {
-    if (definition && [definition isKindOfClass:[TyphoonDefinitionBase class]]) {
+    if (definition && [definition isKindOfClass:[TyphoonDefinition class]]) {
         definition = [self definitionBySettingKey:key toDefinition:definition];
         _cachedDefinitionsForMethodName[key] = definition;
     }
     return definition;
 }
 
-- (TyphoonDefinitionBase *)definitionBySettingKey:(NSString *)key toDefinition:(TyphoonDefinitionBase *)definition
+- (TyphoonDefinition *)definitionBySettingKey:(NSString *)key toDefinition:(TyphoonDefinition *)definition
 {
-    TyphoonDefinitionBase *result = definition;
+    TyphoonDefinition *result = definition;
 
     if ([result.key length] == 0) {
         result.key = key;

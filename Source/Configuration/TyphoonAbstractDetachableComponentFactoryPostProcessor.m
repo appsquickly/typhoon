@@ -11,8 +11,7 @@
 
 #import "TyphoonAbstractDetachableComponentFactoryPostProcessor.h"
 #import "TyphoonComponentFactory.h"
-#import "TyphoonDefinition.h"
-#import "TyphoonDefinitionBase+Infrastructure.h"
+#import "TyphoonDefinition+Infrastructure.h"
 
 @implementation TyphoonComponentFactory (DetachableComponentFactoryPostProcessor)
 

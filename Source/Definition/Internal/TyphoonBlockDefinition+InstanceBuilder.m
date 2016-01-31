@@ -11,6 +11,7 @@
 
 
 #import "TyphoonBlockDefinition+InstanceBuilder.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonBlockDefinition+Internal.h"
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonComponentFactory.h"
@@ -40,21 +41,23 @@ TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
     [[TyphoonBlockDefinitionController currentController] setRoute:TyphoonBlockDefinitionRouteInjections instance:instance withinBlock:^{
         [self invokeTargetSelectorWithArgs:args];
     }];
+    
+    [super doInjectionEventsOn:instance withArgs:args factory:factory];
 }
 
 #pragma mark - Invocation
 
 - (id)invokeTargetSelectorWithArgs:(TyphoonRuntimeArguments *)args {
-    if (!self.target || !self.selector) {
+    if (!self.blockTarget || !self.blockSelector) {
         [NSException raise:NSInternalInconsistencyException
                     format:@"Target & selector should be set on TyphoonBlockDefinition in order to build an instance."];
     }
     
-    NSMethodSignature *signature = [self.target methodSignatureForSelector:self.selector];
+    NSMethodSignature *signature = [self.blockTarget methodSignatureForSelector:self.blockSelector];
     
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
-    [invocation setTarget:self.target];
-    [invocation setSelector:self.selector];
+    [invocation setTarget:self.blockTarget];
+    [invocation setSelector:self.blockSelector];
     [args enumerateArgumentsUsingBlock:^(id argument, NSUInteger index, BOOL *stop) {
         [invocation typhoon_setArgumentObject:argument atIndex:(NSInteger)index];
     }];

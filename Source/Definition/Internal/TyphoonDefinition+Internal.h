@@ -13,11 +13,29 @@
 #import "TyphoonDefinition.h"
 
 @class TyphoonMethod;
+@class TyphoonRuntimeArguments;
 
 @interface TyphoonDefinition ()
+
+// TODO: doc
+@property (nonatomic) TyphoonRuntimeArguments *currentRuntimeArguments;
+
+/**
+ * This flag used to distinguish definitions from reference to them. First time, when definition created, processed flag set to NO,
+ * but next time, when this definition returned by reference (shortcut with another runtime args) processed flag will be set to YES.
+ */
+@property (nonatomic) BOOL processed;
+
+// TODO: doc
+@property (nonatomic, readonly, getter = isScopeSetByUser) BOOL scopeSetByUser;
+
+// TODO: doc ("see TyphoonDefinition+Infrastructure")
+@property (nonatomic) NSString *key;
 
 @property (nonatomic, readonly) TyphoonMethod *initializer;
 
 @property (nonatomic, getter = isInitializerGenerated) BOOL initializerGenerated;
+
+- (instancetype)initWithClass:(Class)clazz key:(NSString *)key;
 
 @end

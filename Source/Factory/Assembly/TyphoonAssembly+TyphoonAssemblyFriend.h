@@ -12,8 +12,6 @@
 
 #import "TyphoonAssembly.h"
 
-@class TyphoonDefinitionBase;
-
 @interface TyphoonAssembly (TyphoonAssemblyFriend)
 
 + (BOOL)selectorIsReserved:(SEL)selector;

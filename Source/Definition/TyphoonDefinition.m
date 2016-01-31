@@ -16,7 +16,6 @@
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonDefinition+Internal.h"
-#import "TyphoonDefinitionBase+Internal.h"
 
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonPropertyInjection.h"
@@ -33,6 +32,23 @@
 #import "OCLogTemplate.h"
 
 
+static NSString *TyphoonScopeToString(TyphoonScope scope)
+{
+    switch (scope) {
+        case TyphoonScopeObjectGraph:
+            return @"ObjectGraph";
+        case TyphoonScopePrototype:
+            return @"Prototype";
+        case TyphoonScopeSingleton:
+            return @"Singleton";
+        case TyphoonScopeWeakSingleton:
+            return @"WeakSingleton";
+        default:
+            return @"Unknown";
+    }
+}
+
+
 @interface TyphoonDefinition () <TyphoonObjectWithCustomInjection>
 
 @end
@@ -44,15 +60,98 @@
 #pragma mark: - Initialization
 //-------------------------------------------------------------------------------------------
 
-- (id)initWithClass:(Class)clazz key:(NSString *)key
+- (instancetype)init
 {
-    self = [super initWithClass:clazz key:key];
+    return [self initWithClass:Nil key:nil];
+}
+
+- (instancetype)initWithClass:(Class)clazz key:(NSString *)key
+{
+    if (clazz == nil) {
+        [NSException raise:NSInvalidArgumentException format:@"Property 'clazz' is required."];
+    }
+    
+    self = [super init];
     if (self) {
+        _type = clazz;
+        _key = key;
+        _scope = TyphoonScopeObjectGraph;
+        _autoInjectionVisibility = TyphoonAutoInjectVisibilityDefault;
+        
         _injectedProperties = [[NSMutableSet alloc] init];
         _injectedMethods = [[NSMutableOrderedSet alloc] init];
+        
         [self validateRequiredParametersAreSet];
     }
     return self;
+}
+
+//-------------------------------------------------------------------------------------------
+#pragma mark - Scope
+//-------------------------------------------------------------------------------------------
+
+@synthesize scope = _scope;
+
+- (TyphoonScope)scope
+{
+    if (_parent && !_scopeSetByUser) {
+        return _parent.scope;
+    } else {
+        return _scope;
+    }
+}
+
+- (void)setScope:(TyphoonScope)scope
+{
+    _scope = scope;
+    _scopeSetByUser = YES;
+    
+    [self validateScope];
+}
+
+//-------------------------------------------------------------------------------------------
+#pragma mark - Namespacing
+//-------------------------------------------------------------------------------------------
+
+- (void)applyGlobalNamespace
+{
+    _space = [TyphoonDefinitionNamespace globalNamespace];
+}
+
+- (void)applyConcreteNamespace:(NSString *)key
+{
+    _space = [TyphoonDefinitionNamespace namespaceWithKey:key];
+}
+
+//-------------------------------------------------------------------------------------------
+#pragma mark - Properties
+//-------------------------------------------------------------------------------------------
+
+- (TyphoonMethod *)initializer
+{
+    if (!_initializer) {
+        TyphoonMethod *parentInitializer = _parent.initializer;
+        if (parentInitializer) {
+            return parentInitializer;
+        }
+        else {
+            _initializer = [[TyphoonMethod alloc] initWithSelector:@selector(init)];
+            self.initializerGenerated = YES;
+        }
+    }
+    return _initializer;
+}
+
+- (BOOL)isInitializerGenerated
+{
+    [self initializer]; // call getter to generate initializer if needed
+    return _initializerGenerated;
+}
+
+- (void)setParent:(id)parent
+{
+    _parent = parent;
+    [self validateParent];
 }
 
 //-------------------------------------------------------------------------------------------
@@ -205,7 +304,7 @@
     [self performAfterInjections:sel parameters:nil];
 }
 
-- (void)performAfterInjections:(SEL)sel parameters:(void (^)(TyphoonMethod *param))parameterBlock
+- (void)performAfterInjections:(SEL)sel parameters:(void (^)(TyphoonMethod *params))parameterBlock
 {
     _afterInjections = [[TyphoonMethod alloc] initWithSelector:sel];
     if (parameterBlock) {
@@ -237,61 +336,18 @@
 }
 
 //-------------------------------------------------------------------------------------------
-#pragma mark - Properties
-//-------------------------------------------------------------------------------------------
-
-- (TyphoonMethod *)initializer
-{
-    if (!_initializer) {
-        TyphoonMethod *parentInitializer = _parent.initializer;
-        if (parentInitializer) {
-            return parentInitializer;
-        }
-        else {
-            _initializer = [[TyphoonMethod alloc] initWithSelector:@selector(init)];
-            self.initializerGenerated = YES;
-        }
-    }
-    return _initializer;
-}
-
-- (BOOL)isInitializerGenerated
-{
-    [self initializer]; // call getter to generate initializer if needed
-    return _initializerGenerated;
-}
-
-- (void)setParent:(id)parent
-{
-    _parent = parent;
-    [self validateParent];
-}
-
-//-------------------------------------------------------------------------------------------
-#pragma mark - Overridden Methods
-//-------------------------------------------------------------------------------------------
-
-- (TyphoonScope)scope
-{
-    if (_parent && !self.scopeSetByUser) {
-        return _parent.scope;
-    }
-    return [super scope];
-}
-
-- (void)setScope:(TyphoonScope)scope
-{
-    [super setScope:scope];
-    [self validateScope];
-}
-
-//-------------------------------------------------------------------------------------------
 #pragma mark - Utility Methods
 //-------------------------------------------------------------------------------------------
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    TyphoonDefinition *copy = [super copyWithZone:zone];
+    TyphoonDefinition *copy = [[[self class] allocWithZone:zone] initWithClass:_type key:[_key copy]];
+    copy->_scope = _scope;
+    copy->_scopeSetByUser = _scopeSetByUser;
+    copy->_autoInjectionVisibility = _autoInjectionVisibility;
+    copy->_space = _space;
+    copy->_processed = _processed;
+    copy->_currentRuntimeArguments = [_currentRuntimeArguments copy];
     copy->_initializer = [_initializer copy];
     copy->_initializerGenerated = _initializerGenerated;
     copy->_beforeInjections = [_beforeInjections copy];
@@ -301,6 +357,12 @@
     copy->_parent = _parent;
     copy->_abstract = _abstract;
     return copy;
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@: class='%@', key='%@', scope='%@'", NSStringFromClass([self class]),
+            NSStringFromClass(_type), _key, TyphoonScopeToString(_scope)];
 }
 
 //-------------------------------------------------------------------------------------------

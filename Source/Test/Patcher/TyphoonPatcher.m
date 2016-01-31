@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonDefinition.h"
-#import "TyphoonDefinitionBase+Internal.h"
+#import "TyphoonDefinition+Internal.h"
 #import "TyphoonPatcher.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonRuntimeArguments.h"

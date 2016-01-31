@@ -15,7 +15,7 @@
 #import "Knight.h"
 #import "Typhoon.h"
 #import "AutoWiringKnight.h"
-#import "TyphoonDefinitionBase+Internal.h"
+#import "TyphoonDefinition+Internal.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonReferenceDefinition.h"
 #import "TyphoonInjectionByObjectInstance.h"

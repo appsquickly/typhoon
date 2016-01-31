@@ -13,7 +13,7 @@
 #import <Foundation/Foundation.h>
 
 @class TyphoonAssembly;
-@class TyphoonDefinitionBase;
+@class TyphoonDefinition;
 @class TyphoonRuntimeArguments;
 
 @interface TyphoonAssemblyDefinitionBuilder : NSObject
@@ -23,7 +23,7 @@
 
 - (NSArray *)builtDefinitions;
 
-- (TyphoonDefinitionBase *)builtDefinitionForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args;
+- (TyphoonDefinition *)builtDefinitionForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args;
 
 @property(readonly, unsafe_unretained) TyphoonAssembly *assembly;
 

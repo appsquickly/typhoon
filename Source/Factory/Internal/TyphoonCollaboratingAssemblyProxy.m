@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonCollaboratingAssemblyProxy.h"
-#import "TyphoonDefinitionBase+Internal.h"
+#import "TyphoonDefinition+Internal.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import "TyphoonReferenceDefinition.h"
 #import "TyphoonObjectWithCustomInjection.h"

@@ -21,6 +21,15 @@
 @interface TyphoonDefinition (Infrastructure)
 
 /**
+ * The key of the component. A key is useful when multiple configuration of the same class or protocol are desired - for example
+ * MasterCardPaymentClient and VisaPaymentClient.
+ *
+ * If using the TyphoonBlockComponentFactory style of assembly, the key is automatically generated based on the selector name of the
+ * component, thus avoiding "magic strings" and providing better integration with IDE refactoring tools.
+ */
+@property (nonatomic) NSString *key;
+
+/**
  * Describes the initializer, ie the selector and arguments that will be used to instantiate this component.
  *
  * An initializer can be an instance method, a class method, or even a reference to another component's method (see factory property).
@@ -36,6 +45,8 @@
  * selector is @selector(init)
  */
 @property (nonatomic, getter = isInitializerGenerated) BOOL initializerGenerated;
+
++ (instancetype)withClass:(Class)clazz key:(NSString *)key;
 
 /**
  * Factory method for a TyphoonConfigPostProcessor. Don't use it in test targets!
@@ -58,6 +69,10 @@
  * @return a definition.
  */
 + (instancetype)withConfigPath:(NSString *)filePath;
+
+- (BOOL)isCandidateForInjectedClass:(Class)clazz includeSubclasses:(BOOL)includeSubclasses;
+
+- (BOOL)isCandidateForInjectedProtocol:(Protocol *)aProtocol;
 
 #pragma mark - Deprecated methods
 
