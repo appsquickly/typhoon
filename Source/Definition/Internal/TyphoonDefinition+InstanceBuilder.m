@@ -29,7 +29,7 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 
 @implementation TyphoonDefinition (InstanceBuilder)
 
-#pragma mark - TyphoonDefinitionBase implementations
+#pragma mark - Instance Builder
 
 - (id)initializeInstanceWithArgs:(TyphoonRuntimeArguments *)args factory:(TyphoonComponentFactory *)factory
 {
