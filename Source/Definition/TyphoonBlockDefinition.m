@@ -11,14 +11,22 @@
 
 
 #import "TyphoonBlockDefinition.h"
+#import "TyphoonBlockDefinition+Internal.h"
 #import "TyphoonDefinition+Internal.h"
 #import "TyphoonBlockDefinitionController.h"
+
+@interface TyphoonBlockDefinition ()
+
+@property (nonatomic, assign) BOOL hasInitializerBlock;
+
+@end
+
 
 @implementation TyphoonBlockDefinition
 
 + (id)withClass:(Class)clazz initializer:(TyphoonBlockDefinitionInitializerBlock)initializer
                               injections:(TyphoonBlockDefinitionInjectionsBlock)injections
-                           configuration:(TyphoonBlockDefinitionBlock)configuration
+                           configuration:(TyphoonDefinitionBlock)configuration
 {
     TyphoonBlockDefinitionController *controller = [TyphoonBlockDefinitionController currentController];
     
@@ -33,24 +41,40 @@
         case TyphoonBlockDefinitionRouteConfiguration:
         {
             TyphoonBlockDefinition *definition = [[TyphoonBlockDefinition alloc] initWithClass:clazz key:nil];
-            configuration(definition);
+            definition.hasInitializerBlock = initializer != nil;
+            if (configuration) {
+                configuration(definition);
+            }
             return definition;
         }
             
         case TyphoonBlockDefinitionRouteInitializer:
         {
+            if (!initializer) {
+                [NSException raise:NSInternalInconsistencyException
+                            format:@"TyphoonBlockDefinition is supposed to have an initializer block at this point."];
+            }
+            
             id instance = initializer();
             return instance;
         }
             
         case TyphoonBlockDefinitionRouteInjections:
         {
-            if (controller.instance) {
+            if (injections && controller.instance) {
                 injections(controller.instance);
             }
             return controller.instance;
         }
     }
+}
+
+- (TyphoonMethod *)initializer {
+    return nil;
+}
+
+- (BOOL)isInitializerGenerated {
+    return !self.hasInitializerBlock;
 }
 
 @end

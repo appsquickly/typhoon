@@ -12,6 +12,7 @@
 
 #import "TyphoonBlockDefinition+InstanceBuilder.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonDefinition+Internal.h"
 #import "TyphoonBlockDefinition+Internal.h"
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonComponentFactory.h"
@@ -27,13 +28,17 @@ TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
 
 - (id)initializeInstanceWithArgs:(TyphoonRuntimeArguments *)args factory:(TyphoonComponentFactory *)factory
 {
-    __block id instance;
-    
-    [[TyphoonBlockDefinitionController currentController] setRoute:TyphoonBlockDefinitionRouteInitializer instance:nil withinBlock:^{
-        instance = [self invokeTargetSelectorWithArgs:args];
-    }];
-    
-    return instance;
+    if (self.initializerGenerated) {
+        return [super initializeInstanceWithArgs:args factory:factory];
+    } else {
+        __block id instance;
+
+        [[TyphoonBlockDefinitionController currentController] setRoute:TyphoonBlockDefinitionRouteInitializer instance:nil withinBlock:^{
+            instance = [self invokeTargetSelectorWithArgs:args];
+        }];
+        
+        return instance;
+    }
 }
 
 - (void)doInjectionEventsOn:(id)instance withArgs:(TyphoonRuntimeArguments *)args factory:(TyphoonComponentFactory *)factory
@@ -48,16 +53,19 @@ TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
 #pragma mark - Invocation
 
 - (id)invokeTargetSelectorWithArgs:(TyphoonRuntimeArguments *)args {
-    if (!self.blockTarget || !self.blockSelector) {
+    id target = self.blockTarget;
+    SEL selector = self.blockSelector;
+    
+    if (!target || !selector) {
         [NSException raise:NSInternalInconsistencyException
                     format:@"Target & selector should be set on TyphoonBlockDefinition in order to build an instance."];
     }
     
-    NSMethodSignature *signature = [self.blockTarget methodSignatureForSelector:self.blockSelector];
+    NSMethodSignature *signature = [target methodSignatureForSelector:selector];
     
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
-    [invocation setTarget:self.blockTarget];
-    [invocation setSelector:self.blockSelector];
+    [invocation setTarget:target];
+    [invocation setSelector:selector];
     [args enumerateArgumentsUsingBlock:^(id argument, NSUInteger index, BOOL *stop) {
         [invocation typhoon_setArgumentObject:argument atIndex:(NSInteger)index];
     }];

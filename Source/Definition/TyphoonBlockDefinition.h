@@ -12,19 +12,15 @@
 
 #import "TyphoonDefinition.h"
 
-@class TyphoonBlockDefinition;
-
 typedef id (^TyphoonBlockDefinitionInitializerBlock)();
 
 typedef void (^TyphoonBlockDefinitionInjectionsBlock)(id instance);
-
-typedef void (^TyphoonBlockDefinitionBlock)(TyphoonBlockDefinition *definition);
 
 
 @interface TyphoonBlockDefinition : TyphoonDefinition
 
 + (id)withClass:(Class)clazz initializer:(TyphoonBlockDefinitionInitializerBlock)initializer
                               injections:(TyphoonBlockDefinitionInjectionsBlock)injections
-                           configuration:(TyphoonBlockDefinitionBlock)configuration;
+                           configuration:(TyphoonDefinitionBlock)configuration;
 
 @end
