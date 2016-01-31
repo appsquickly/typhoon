@@ -27,4 +27,14 @@ static NSString * const kThreadDictionaryKey = @"org.typhoonframework.blockDefin
     return controller;
 }
 
+- (void)setRoute:(TyphoonBlockDefinitionRoute)route instance:(id)instance withinBlock:(void (^)())block {
+    _route = route;
+    _instance = instance;
+    
+    block();
+    
+    _route = TyphoonBlockDefinitionRouteInvalid;
+    _instance = nil;
+}
+
 @end

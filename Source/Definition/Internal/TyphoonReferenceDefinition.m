@@ -32,7 +32,7 @@
     NSString *_referringKey;
 };
 
-+ (instancetype)definitionWithKey:(NSString *)key referringTo:(TyphoonDefinition *)definition
++ (instancetype)definitionWithKey:(NSString *)key referringTo:(TyphoonDefinitionBase *)definition
 {
     TyphoonShortcutDefinition *refDefinition = [[TyphoonShortcutDefinition alloc] initWithClass:definition.type key:key];
     refDefinition->_referringArgs = definition.currentRuntimeArguments;

@@ -13,6 +13,7 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, TyphoonBlockDefinitionRoute) {
+    TyphoonBlockDefinitionRouteInvalid,
     TyphoonBlockDefinitionRouteConfiguration,
     TyphoonBlockDefinitionRouteInitializer,
     TyphoonBlockDefinitionRouteInjections
@@ -22,8 +23,10 @@ typedef NS_ENUM(NSInteger, TyphoonBlockDefinitionRoute) {
 
 + (instancetype)currentController;
 
-@property (nonatomic, assign) TyphoonBlockDefinitionRoute route;
+@property (nonatomic, assign, readonly) TyphoonBlockDefinitionRoute route;
 
-@property (nonatomic, strong) id instanceBeingInitialized;
+@property (nonatomic, strong, readonly) id instance;
+
+- (void)setRoute:(TyphoonBlockDefinitionRoute)route instance:(id)instance withinBlock:(void (^)())block;
 
 @end

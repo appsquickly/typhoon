@@ -26,16 +26,20 @@ TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
 
 - (id)initializeInstanceWithArgs:(TyphoonRuntimeArguments *)args factory:(TyphoonComponentFactory *)factory
 {
-    [TyphoonBlockDefinitionController currentController].route = TyphoonBlockDefinitionRouteInitializer;
-
-    return [self invokeTargetSelectorWithArgs:args];
+    __block id instance;
+    
+    [[TyphoonBlockDefinitionController currentController] setRoute:TyphoonBlockDefinitionRouteInitializer instance:nil withinBlock:^{
+        instance = [self invokeTargetSelectorWithArgs:args];
+    }];
+    
+    return instance;
 }
 
 - (void)doInjectionEventsOn:(id)instance withArgs:(TyphoonRuntimeArguments *)args factory:(TyphoonComponentFactory *)factory
 {
-    [TyphoonBlockDefinitionController currentController].route = TyphoonBlockDefinitionRouteInjections;
-    
-    [self invokeTargetSelectorWithArgs:args];
+    [[TyphoonBlockDefinitionController currentController] setRoute:TyphoonBlockDefinitionRouteInjections instance:instance withinBlock:^{
+        [self invokeTargetSelectorWithArgs:args];
+    }];
 }
 
 #pragma mark - Invocation

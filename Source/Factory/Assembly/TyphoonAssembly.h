@@ -9,10 +9,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import <Foundation/Foundation.h>
+#import "TyphoonComponentFactory.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonDefinition+Option.h"
-#import "TyphoonComponentFactory.h"
-#import <Foundation/Foundation.h>
 
 @class TyphoonComponentFactory;
 

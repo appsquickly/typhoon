@@ -10,8 +10,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <Foundation/Foundation.h>
 #import "TyphoonAssembly.h"
+
+@class TyphoonDefinitionBase;
 
 @interface TyphoonAssembly (TyphoonAssemblyFriend)
 
@@ -23,10 +24,8 @@
 
 - (NSArray *)preattachedInfrastructureComponents;
 
-- (TyphoonDefinition *)definitionForKey:(NSString *)key;
-
 - (Class)assemblyClassForKey:(NSString *)key;
 
-@property(readonly) NSSet *definitionSelectors;
+@property (readonly) NSSet *definitionSelectors;
 
 @end

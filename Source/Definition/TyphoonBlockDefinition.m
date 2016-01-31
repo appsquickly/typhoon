@@ -24,6 +24,13 @@
     TyphoonBlockDefinitionController *controller = [TyphoonBlockDefinitionController currentController];
     
     switch (controller.route) {
+        case TyphoonBlockDefinitionRouteInvalid:
+        {
+            [NSException raise:NSInternalInconsistencyException
+                        format:@"TyphoonBlockDefinition cannot be used directly. You should only use it inside TyphoonAssembly methods."];
+            return nil;
+        }
+            
         case TyphoonBlockDefinitionRouteConfiguration:
         {
             TyphoonBlockDefinition *definition = [[TyphoonBlockDefinition alloc] initWithClass:clazz key:nil];
@@ -39,11 +46,10 @@
             
         case TyphoonBlockDefinitionRouteInjections:
         {
-            id instance = controller.instanceBeingInitialized;
-            if (instance) {
-                injections(instance);
+            if (controller.instance) {
+                injections(controller.instance);
             }
-            return instance;
+            return controller.instance;
         }
     }
 }
