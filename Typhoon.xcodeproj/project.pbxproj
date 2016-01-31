@@ -39,6 +39,10 @@
 		01A28DF51C5D6529006F0A95 /* TyphoonBlockDefinitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A28DF31C5D6529006F0A95 /* TyphoonBlockDefinitionController.m */; };
 		01A28DF61C5D6529006F0A95 /* TyphoonBlockDefinitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A28DF31C5D6529006F0A95 /* TyphoonBlockDefinitionController.m */; };
 		01A28DF71C5D6529006F0A95 /* TyphoonBlockDefinitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A28DF31C5D6529006F0A95 /* TyphoonBlockDefinitionController.m */; };
+		01A28DFA1C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.h in Headers */ = {isa = PBXBuildFile; fileRef = 01A28DF81C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.h */; };
+		01A28DFB1C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A28DF91C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.m */; };
+		01A28DFC1C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A28DF91C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.m */; };
+		01A28DFD1C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A28DF91C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.m */; };
 		2DBA12F920B6F629203ABFB3 /* AutoInjectionKnight.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA18F5476952207F6E2B0D /* AutoInjectionKnight.m */; };
 		2DBA13020BD1DDD15231B84C /* TyphoonInjections.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1FC6F594C49C7D8261A6 /* TyphoonInjections.m */; };
 		2DBA133CA352D9C555482734 /* TyphoonInjectionDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1851EF633B38D4C7866A /* TyphoonInjectionDefinition.m */; };
@@ -805,6 +809,8 @@
 		01A28DEC1C5D643F006F0A95 /* TyphoonBlockDefinition+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyphoonBlockDefinition+Internal.h"; sourceTree = "<group>"; };
 		01A28DF21C5D6529006F0A95 /* TyphoonBlockDefinitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonBlockDefinitionController.h; sourceTree = "<group>"; };
 		01A28DF31C5D6529006F0A95 /* TyphoonBlockDefinitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonBlockDefinitionController.m; sourceTree = "<group>"; };
+		01A28DF81C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+TCFWrapValues.h"; sourceTree = "<group>"; };
+		01A28DF91C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+TCFWrapValues.m"; sourceTree = "<group>"; };
 		269BC6BA1BAFEC19005A1DA3 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		2DBA102EFAD54C22C82B4834 /* TyphoonOptionMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonOptionMatcher.m; sourceTree = "<group>"; };
 		2DBA10314E7114955C0AB31E /* TyphoonNemoTestAssemblies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonNemoTestAssemblies.m; sourceTree = "<group>"; };
@@ -1687,6 +1693,8 @@
 				6B076F091936F63A0083714E /* NSInvocation+TCFInstanceBuilder.m */,
 				6B076F0A1936F63A0083714E /* NSInvocation+TCFUnwrapValues.h */,
 				6B076F0B1936F63A0083714E /* NSInvocation+TCFUnwrapValues.m */,
+				01A28DF81C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.h */,
+				01A28DF91C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.m */,
 				6B076F0C1936F63A0083714E /* NSMethodSignature+TCFUnwrapValues.h */,
 				6B076F0D1936F63A0083714E /* NSMethodSignature+TCFUnwrapValues.m */,
 				6B076F0E1936F63A0083714E /* NSValue+TCFUnwrapValues.h */,
@@ -2656,6 +2664,7 @@
 				01A28DD61C5D28BC006F0A95 /* TyphoonDefinition+Internal.h in Headers */,
 				90ABC4731A36B29F008D8162 /* TyphoonInjections.h in Headers */,
 				90ABC4741A36B29F008D8162 /* Collections+CustomInjection.h in Headers */,
+				01A28DFA1C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.h in Headers */,
 				90ABC4751A36B29F008D8162 /* NSDictionary+CustomInjection.h in Headers */,
 				01A28DC01C5D2640006F0A95 /* Typhoon+Infrastructure.h in Headers */,
 				90ABC4771A36B29F008D8162 /* TyphoonDefinition+InstanceBuilder.h in Headers */,
@@ -3118,6 +3127,7 @@
 				C9497A0F3C744433419C9D5D /* TyphoonInjectionByCurrentRuntimeArguments.m in Sources */,
 				2DBA1BD2F98EAF82D31B9876 /* TyphoonInjectedObject.m in Sources */,
 				2DBA139F1F94E9222E18B764 /* TyphoonFactoryAutoInjectionPostProcessor.m in Sources */,
+				01A28DFB1C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.m in Sources */,
 				BA7985E9B7C3C34D17FC40FD /* TyphoonNSNumberTypeConverter.m in Sources */,
 				BA798EF5AD7AC635BDD727C0 /* NSNullTypeConverter.m in Sources */,
 				2DBA14431D350F4F142A0E3B /* TyphoonFactoryDefinition.m in Sources */,
@@ -3335,6 +3345,7 @@
 				6B0773E01937831B0083714E /* TyphoonPassThroughTypeConverter.m in Sources */,
 				9F65CEE51BA1555D0015765B /* TyphoonAssemblyBuilder+PlistProcessor.m in Sources */,
 				6B0773E11937831B0083714E /* TyphoonPrimitiveTypeConverter.m in Sources */,
+				01A28DFC1C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.m in Sources */,
 				6B0773E21937831B0083714E /* TyphoonTypeConverterRegistry.m in Sources */,
 				6B0773E31937831B0083714E /* TyphoonTypeDescriptor.m in Sources */,
 				6B0773E41937831B0083714E /* NSArray+TyphoonManualEnumeration.m in Sources */,
@@ -3508,6 +3519,7 @@
 				01A28DE51C5D6142006F0A95 /* TyphoonBlockDefinition.m in Sources */,
 				90ABC40F1A36B1B4008D8162 /* TyphoonAbstractInjection.m in Sources */,
 				90ABC4101A36B1B4008D8162 /* TyphoonInjectionByCollection.m in Sources */,
+				01A28DFD1C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.m in Sources */,
 				90ABC4111A36B1B4008D8162 /* TyphoonInjectionByComponentFactory.m in Sources */,
 				01A28DCB1C5D26B5006F0A95 /* TyphoonDefinition+Infrastructure.m in Sources */,
 				90ABC4121A36B1B4008D8162 /* TyphoonInjectionByConfig.m in Sources */,
