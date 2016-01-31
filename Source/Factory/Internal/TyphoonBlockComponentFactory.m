@@ -23,19 +23,13 @@
 #import "TyphoonInstancePostProcessor.h"
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "TyphoonPreattachedComponentsRegisterer.h"
+#import "TyphoonMemoryManagementUtils.h"
 
 @interface TyphoonComponentFactory (Private)
 
 - (TyphoonDefinition *)definitionForKey:(NSString *)key;
 
 - (void)loadIfNeeded;
-
-@end
-
-
-@interface TyphoonBlockComponentFactory ()
-
-@property (nonatomic, copy) NSSet *assemblies;
 
 @end
 
@@ -69,16 +63,16 @@
 {
     self = [super init];
     if (self) {
-        _assemblies = [NSSet setWithArray:assemblies];
-        
         [self attachDefinitionPostProcessor:[TyphoonAssemblyPropertyInjectionPostProcessor new]];
         TyphoonPreattachedComponentsRegisterer *preattachedComponentsRegisterer = [[TyphoonPreattachedComponentsRegisterer alloc] initWithComponentFactory:self];
         
-        for (TyphoonAssembly *assembly in _assemblies) {
+        for (TyphoonAssembly *assembly in assemblies) {
             [preattachedComponentsRegisterer doRegistrationForAssembly:assembly];
             [self buildAssembly:assembly];
-            [assembly activateWithFactory:self collaborators:_assemblies];
+            [assembly activateWithFactory:self collaborators:[NSSet setWithArray:assemblies]];
         }
+        
+        [TyphoonMemoryManagementUtils makeFactory:self retainAssemblies:[NSSet setWithArray:assemblies]];
     }
     return self;
 }
