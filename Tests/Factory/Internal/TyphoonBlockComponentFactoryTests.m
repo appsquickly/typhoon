@@ -395,12 +395,22 @@ test_currently_resolving_references_dictionary_is_not_overwritten_when_initializ
     XCTAssertNotNil(knight);
     XCTAssertNotNil(knight.quest);
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)42);
-    XCTAssertEqual(knight.foobar, @(123));
+    XCTAssertEqualObjects(knight.foobar, @(123));
     XCTAssertEqual(knight.hasHorseWillTravel, YES);
     XCTAssertNil(knight.friends);
 
     Knight *anotherKnight = [assembly blockSingletonKnight];
     XCTAssertTrue(knight == anotherKnight);
+}
+
+- (void)test_block_definition_can_call_methods_on_definitions
+{
+    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
+    
+    Knight *knight = [assembly blockKnightCallingMethodsOnDefinitions];
+    XCTAssertNotNil(knight);
+    XCTAssertEqualObjects(knight.foobar, [NSURL URLWithString:@"https://foo.bar"]);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
 }
 
 @end

@@ -75,9 +75,9 @@ TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
     // We're invoking a definition selector on assembly so there's no need to check for memory management stuff.
     [invocation invoke];
     
-    id __unsafe_unretained unsafeResult;
+    void *unsafeResult;
     [invocation getReturnValue:&unsafeResult];
-    id result = unsafeResult;
+    id result = (__bridge id)unsafeResult;
 
     return result;
 }

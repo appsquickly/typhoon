@@ -106,4 +106,6 @@
 
 - (id)blockSingletonKnight;
 
+- (id)blockKnightCallingMethodsOnDefinitions;
+
 @end

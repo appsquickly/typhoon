@@ -428,4 +428,31 @@
     }];
 }
 
+- (CampaignQuest *)blockQuest
+{
+    return [TyphoonBlockDefinition withClass:[CampaignQuest class] initializer:^id{
+        return [[CampaignQuest alloc] initWithImageUrl:[NSURL URLWithString:@"https://foo.bar"]];
+    }];
+}
+
+- (Knight *)notSoBlockKnight
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(initWithDamselsRescued:foo:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:@(12)];
+            [initializer injectParameterWith:nil];
+        }];
+    }];
+}
+
+- (id)blockKnightCallingMethodsOnDefinitions
+{
+    return [TyphoonBlockDefinition withClass:[Knight class] initializer:^id{
+        Knight *knight = [[Knight alloc] init];
+        knight.foobar = [self blockQuest].imageUrl;
+        knight.damselsRescued = [self notSoBlockKnight].damselsRescued;
+        return knight;
+    }];
+}
+
 @end
