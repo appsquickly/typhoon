@@ -18,7 +18,8 @@
 
 @interface TyphoonDefinition ()
 
-// TODO: doc
+@property (nonatomic) NSString *key;
+
 @property (nonatomic) TyphoonRuntimeArguments *currentRuntimeArguments;
 
 /**
@@ -27,13 +28,15 @@
  */
 @property (nonatomic) BOOL processed;
 
-// TODO: doc
+/**
+ * This flag indicated where the scope was changed manually by the user.
+ */
 @property (nonatomic, readonly, getter = isScopeSetByUser) BOOL scopeSetByUser;
 
-// TODO: doc ("see TyphoonDefinition+Infrastructure")
-@property (nonatomic) NSString *key;
-
-// This must be weak to prevent retain cycle between factory, definition and assembly.
+/**
+ * An assembly from which this definition was built. 
+ * The property must be weak to prevent a retain cycle between factory, definition and assembly.
+ */
 @property (nonatomic, weak) TyphoonAssembly *assembly;
 
 @property (nonatomic, assign) SEL assemblySelector;

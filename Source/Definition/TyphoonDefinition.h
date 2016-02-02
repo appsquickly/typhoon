@@ -52,7 +52,6 @@ typedef NS_ENUM(NSInteger, TyphoonScope)
     TyphoonScopeWeakSingleton,
 };
 
-// TODO: doc
 typedef NS_OPTIONS(NSInteger, TyphoonAutoInjectVisibility)
 {
     TyphoonAutoInjectVisibilityNone = 0,
