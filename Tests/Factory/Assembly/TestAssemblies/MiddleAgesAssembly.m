@@ -430,14 +430,14 @@
 
 - (CampaignQuest *)blockQuest
 {
-    return [TyphoonBlockDefinition withClass:[CampaignQuest class] initializer:^id{
+    return [TyphoonBlockDefinition withClass:[CampaignQuest class] block:^id{
         return [self blockQuestWithURL:[NSURL URLWithString:@"https://foo.bar"]];
     }];
 }
 
 - (CampaignQuest *)blockQuestWithURL:(NSURL *)URL
 {
-    return [TyphoonBlockDefinition withClass:[CampaignQuest class] initializer:^id{
+    return [TyphoonBlockDefinition withClass:[CampaignQuest class] block:^id{
         return [[CampaignQuest alloc] initWithImageUrl:URL];
     }];
 }
@@ -454,7 +454,7 @@
 
 - (id)blockKnightCallingMethodsOnDefinitions
 {
-    return [TyphoonBlockDefinition withClass:[Knight class] initializer:^id{
+    return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
         Knight *knight = [[Knight alloc] init];
         knight.foobar = [self blockQuest].imageUrl;
         knight.damselsRescued = [self notSoBlockKnight].damselsRescued;
@@ -464,7 +464,7 @@
 
 - (id)blockKnightWithFavoriteDamsels:(NSArray *)favoriteDamsels questURL:(NSURL *)questURL
 {
-    return [TyphoonBlockDefinition withClass:[Knight class] initializer:^id{
+    return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
         Knight *knight = [[Knight alloc] init];
         knight.favoriteDamsels = favoriteDamsels;
         knight.quest = [self blockQuestWithURL:questURL];        
@@ -474,7 +474,7 @@
 
 - (id)blockKnightWithPrimitiveDamsels:(NSUInteger)damsels
 {
-    return [TyphoonBlockDefinition withClass:[Knight class] initializer:^id{
+    return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
         Knight *knight = [[Knight alloc] init];
         knight.damselsRescued = damsels;
         return knight;
