@@ -455,4 +455,13 @@
     }];
 }
 
+- (id)blockKnightWithPrimitiveDamsels:(NSUInteger)damsels
+{
+    return [TyphoonBlockDefinition withClass:[Knight class] initializer:^id{
+        Knight *knight = [[Knight alloc] init];
+        knight.damselsRescued = damsels;
+        return knight;
+    }];
+}
+
 @end

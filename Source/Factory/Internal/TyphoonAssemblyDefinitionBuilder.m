@@ -14,7 +14,6 @@
 #import "TyphoonAssembly.h"
 #import "OCLogTemplate.h"
 #import "TyphoonDefinition+Internal.h"
-#import "TyphoonBlockDefinition+Internal.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import "TyphoonCircularDependencyTerminator.h"
@@ -185,10 +184,9 @@ static void AssertArgumentType(id target, SEL selector, const char *argumentType
     // This method will likely call through to other definition methods on the assembly, which will go through the advising machinery because of this swizzling.
     // Therefore, the definitions a definition depends on will be fully constructed before they are needed to construct that definition.
     
-    if ([cached isKindOfClass:[TyphoonBlockDefinition class]]) {
-        TyphoonBlockDefinition *definition = cached;
-        definition.blockTarget = self.assembly;
-        definition.blockSelector = sel;
+    if ([cached isKindOfClass:[TyphoonDefinition class]]) {
+        ((TyphoonDefinition *)cached).assembly = self.assembly;
+        ((TyphoonDefinition *)cached).assemblySelector = sel;
     }
     
     return cached;
@@ -219,13 +217,13 @@ static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSigna
 
 static void AssertArgumentType(id target, SEL selector, const char *argumentType, NSUInteger index)
 {
-    BOOL isObject = CStringEquals(argumentType, "@");
-    BOOL isBlock = CStringEquals(argumentType, "@?");
-    BOOL isMetaClass = CStringEquals(argumentType, "#");
+//    BOOL isObject = CStringEquals(argumentType, "@");
+//    BOOL isBlock = CStringEquals(argumentType, "@?");
+//    BOOL isMetaClass = CStringEquals(argumentType, "#");
 
-    if (!isObject && !isBlock && !isMetaClass) {
-        [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %d. Runtime arguments can only be objects. Use wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector], [target class], (int)index - 2];
-    }
+//    if (!isObject && !isBlock && !isMetaClass) {
+//        [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %d. Runtime arguments can only be objects. Use wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector], [target class], (int)index - 2];
+//    }
 }
 
 static id InjectionForArgumentType(const char *argumentType, NSUInteger index)

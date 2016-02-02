@@ -108,4 +108,6 @@
 
 - (id)blockKnightCallingMethodsOnDefinitions;
 
+- (id)blockKnightWithPrimitiveDamsels:(NSUInteger)damsels;
+
 @end

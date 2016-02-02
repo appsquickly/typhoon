@@ -21,7 +21,6 @@
 		01A28DE91C5D63FE006F0A95 /* TyphoonBlockDefinition+InstanceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A28DE71C5D63FE006F0A95 /* TyphoonBlockDefinition+InstanceBuilder.m */; };
 		01A28DEA1C5D63FE006F0A95 /* TyphoonBlockDefinition+InstanceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A28DE71C5D63FE006F0A95 /* TyphoonBlockDefinition+InstanceBuilder.m */; };
 		01A28DEB1C5D63FE006F0A95 /* TyphoonBlockDefinition+InstanceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A28DE71C5D63FE006F0A95 /* TyphoonBlockDefinition+InstanceBuilder.m */; };
-		01A28DEE1C5D643F006F0A95 /* TyphoonBlockDefinition+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 01A28DEC1C5D643F006F0A95 /* TyphoonBlockDefinition+Internal.h */; };
 		01A28DF41C5D6529006F0A95 /* TyphoonBlockDefinitionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 01A28DF21C5D6529006F0A95 /* TyphoonBlockDefinitionController.h */; };
 		01A28DF51C5D6529006F0A95 /* TyphoonBlockDefinitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A28DF31C5D6529006F0A95 /* TyphoonBlockDefinitionController.m */; };
 		01A28DF61C5D6529006F0A95 /* TyphoonBlockDefinitionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A28DF31C5D6529006F0A95 /* TyphoonBlockDefinitionController.m */; };
@@ -790,7 +789,6 @@
 		01A28DE11C5D6142006F0A95 /* TyphoonBlockDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonBlockDefinition.m; sourceTree = "<group>"; };
 		01A28DE61C5D63FE006F0A95 /* TyphoonBlockDefinition+InstanceBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyphoonBlockDefinition+InstanceBuilder.h"; sourceTree = "<group>"; };
 		01A28DE71C5D63FE006F0A95 /* TyphoonBlockDefinition+InstanceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TyphoonBlockDefinition+InstanceBuilder.m"; sourceTree = "<group>"; };
-		01A28DEC1C5D643F006F0A95 /* TyphoonBlockDefinition+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyphoonBlockDefinition+Internal.h"; sourceTree = "<group>"; };
 		01A28DF21C5D6529006F0A95 /* TyphoonBlockDefinitionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonBlockDefinitionController.h; sourceTree = "<group>"; };
 		01A28DF31C5D6529006F0A95 /* TyphoonBlockDefinitionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonBlockDefinitionController.m; sourceTree = "<group>"; };
 		01A28DF81C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+TCFWrapValues.h"; sourceTree = "<group>"; };
@@ -1587,7 +1585,6 @@
 			isa = PBXGroup;
 			children = (
 				01A28DD41C5D28BC006F0A95 /* TyphoonDefinition+Internal.h */,
-				01A28DEC1C5D643F006F0A95 /* TyphoonBlockDefinition+Internal.h */,
 				6B076EDD1936F63A0083714E /* TyphoonDefinition+InstanceBuilder.h */,
 				6B076EDE1936F63A0083714E /* TyphoonDefinition+InstanceBuilder.m */,
 				01A28DE61C5D63FE006F0A95 /* TyphoonBlockDefinition+InstanceBuilder.h */,
@@ -2693,7 +2690,6 @@
 				BA79830373597A7AA358C2D8 /* TyphoonCollaboratingAssemblyProxy.h in Headers */,
 				9F0591E11BE88408007CCB9C /* TyphoonStoryboardProvider.h in Headers */,
 				9F0591E01BE88404007CCB9C /* TyphoonViewHelpers.h in Headers */,
-				01A28DEE1C5D643F006F0A95 /* TyphoonBlockDefinition+Internal.h in Headers */,
 				9F1187A21BEE2521008859E0 /* TyphoonPreattachedComponentsRegisterer.h in Headers */,
 				BA798EB0684A45DDBA818962 /* TyphoonBlockComponentFactory.h in Headers */,
 				BA79808B1AE811F764E7B14F /* TyphoonCircularDependencyTerminator.h in Headers */,

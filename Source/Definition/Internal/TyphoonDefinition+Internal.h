@@ -14,6 +14,7 @@
 
 @class TyphoonMethod;
 @class TyphoonRuntimeArguments;
+@class TyphoonAssembly;
 
 @interface TyphoonDefinition ()
 
@@ -31,6 +32,11 @@
 
 // TODO: doc ("see TyphoonDefinition+Infrastructure")
 @property (nonatomic) NSString *key;
+
+// This must be weak to prevent retain cycle between factory, definition and assembly.
+@property (nonatomic, weak) TyphoonAssembly *assembly;
+
+@property (nonatomic, assign) SEL assemblySelector;
 
 @property (nonatomic, readonly) TyphoonMethod *initializer;
 

@@ -17,6 +17,7 @@
 #import "OCLogTemplate.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblyPropertyInjectionPostProcessor.h"
+#import "TyphoonDefinition+Internal.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonTypeConverterRegistry.h"
 #import "TyphoonTypeConverter.h"
@@ -132,9 +133,17 @@
     if ([self respondsToSelector:aSelector]) {
         return [[self class] instanceMethodSignatureForSelector:aSelector];
     }
-    else {
-        return [TyphoonIntrospectionUtils methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:aSelector];
+    
+    NSString *componentKey = NSStringFromSelector(aSelector);
+    TyphoonDefinition *definition = [self definitionForKey:componentKey];
+    TyphoonAssembly *assembly = definition.assembly;
+    
+    if (assembly) {
+        return [assembly methodSignatureForSelector:aSelector];
     }
+    
+    // Last resort.
+    return [TyphoonIntrospectionUtils methodSignatureWithArgumentsAndReturnValueAsObjectsFromSelector:aSelector];
 }
 
 @end

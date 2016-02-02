@@ -413,5 +413,14 @@ test_currently_resolving_references_dictionary_is_not_overwritten_when_initializ
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
 }
 
+- (void)test_block_definition_can_use_primitive_arguments
+{
+    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
+    
+    Knight *knight = [assembly blockKnightWithPrimitiveDamsels:42];
+    XCTAssertNotNil(knight);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)42);
+}
+
 @end
 
